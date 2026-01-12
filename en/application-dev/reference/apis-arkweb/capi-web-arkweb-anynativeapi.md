@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```c
+typedef struct {...} ArkWeb_AnyNativeAPI
+```
+
 ## Overview
 
 Defines the basic native API types.

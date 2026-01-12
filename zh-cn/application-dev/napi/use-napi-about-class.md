@@ -114,7 +114,7 @@ hilog.info(0x0000, 'Node-API', 'napi_new_instance %{public}s', JSON.stringify(ob
 
 ### napi_unwrap
 
-从一个被包装的对象中解除包装并获取与之关联的数据指针。
+从一个被包装的对象中获取与之关联的数据指针。
 
 > **说明：**
 >

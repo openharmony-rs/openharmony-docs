@@ -14,6 +14,7 @@ photoAccessHelper提供监听指定媒体资源变更的接口。
 > 文档中使用到photoAccessHelper的地方默认为使用[开发准备](photoAccessHelper-preparation.md)中获取的对象，如未添加此段代码报photoAccessHelper未定义的错误请自行添加。
 
 媒体资源变更通知相关接口的异步调用仅支持使用callback方式。以下只列出部分接口使用方式，其他使用方式可以查阅[API参考](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)。
+
 如无特别说明，文档中涉及的待获取资源均视为已预置且数据库中存在相应数据。若按示例代码执行后资源为空，请确认文件是否已预置，以及数据库中是否存在该文件的数据。
 
 ## 监听指定URI
@@ -37,9 +38,13 @@ photoAccessHelper提供监听指定媒体资源变更的接口。
 2. 对指定PhotoAsset注册监听。
 3. 将指定媒体资源删除。
 
-```ts
+<!-- @[register_listener_to_photo_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerlistenertophotoassetability/RegisterListenerToPhotoAssetAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -49,7 +54,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     predicates: predicates
   };
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
     let onCallback = (changeData: photoAccessHelper.ChangeData) => {
@@ -58,8 +64,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     phAccessHelper.registerChange(photoAsset.uri, false, onCallback);
     await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error('onCallback failed with err: ' + err);
+    // ...
   }
 }
 ```
@@ -82,21 +90,30 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 3. 将指定用户相册重命名。
 
 
-```ts
+<!-- @[register_listener_to_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerlistenertoalbumability/RegisterListenerToAlbumAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
   let albumName: photoAccessHelper.AlbumKeys = photoAccessHelper.AlbumKeys.ALBUM_NAME;
-  predicates.equalTo(albumName, 'albumName');
+  predicates.equalTo(albumName, 'test');
   let fetchOptions: photoAccessHelper.FetchOptions = {
     fetchColumns: [],
     predicates: predicates
   };
 
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(
+        photoAccessHelper.AlbumType.USER, 
+        photoAccessHelper.AlbumSubtype.USER_GENERIC, 
+        fetchOptions);
+        
     let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
     console.info('getAlbums successfully, albumUri: ' + album.albumUri);
 
@@ -107,8 +124,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     album.albumName = 'newAlbumName' + Date.now();
     await album.commitModify();
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error('onCallback failed with err: ' + err);
+    // ...
   }
 }
 ```
@@ -136,9 +155,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 2. [获取指定媒体资源](photoAccessHelper-resource-guidelines.md#获取指定媒体资源)。
 3. 将指定媒体资源删除。
 
-```ts
+<!-- @[register_for_monitoring_all_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerformonitoringallassetsability/RegisterForMonitoringAllAssetsAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   let onCallback = (changeData: photoAccessHelper.ChangeData) => {
@@ -151,13 +174,16 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     predicates: predicates
   };
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
+      await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
     await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error('onCallback failed with err: ' + err);
+    // ...
   }
 }
 ```
@@ -179,9 +205,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 2. 取消对指定媒体资源uri的监听。
 3. 将指定媒体资源删除。
 
-```ts
+<!-- @[cancel_listening_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/cancellisteninguriability/CancelListeningURIAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -191,7 +221,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     predicates: predicates
   };
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
     let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
@@ -205,8 +236,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     phAccessHelper.unRegisterChange(photoAsset.uri, onCallback1);
     await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error('onCallback failed with err: ' + err);
+    // ...
   }
 }
 ```

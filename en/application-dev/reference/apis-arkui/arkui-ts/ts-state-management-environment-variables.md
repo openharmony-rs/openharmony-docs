@@ -37,4 +37,4 @@ Enumerates system layout directions.
 | ---- | ---- | -------------------- |
 | LTR  | 0    | Left-to-right layout.      |
 | RTL  | 1    | Right-to-left layout.      |
-| AUTO | 2    | Automatic layout direction based on the system.|
+| Auto<sup>8+</sup> | 2    | Automatic layout direction based on the system.|

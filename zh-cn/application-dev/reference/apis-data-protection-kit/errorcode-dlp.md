@@ -291,6 +291,10 @@ The user does not have the permission.
 
 用户无权限。
 
+**可能原因**
+
+当前登录账号无此文件的权限。
+
 **处理步骤**
 
 请检查权限。
@@ -306,6 +310,10 @@ Account not logged in.
 **错误描述**
 
 账号未登录。
+
+**可能原因**
+
+对应类型账号未登录。
 
 **处理步骤**
 
@@ -323,6 +331,10 @@ The system needs to be upgraded.
 
 系统需要升级。
 
+**可能原因**
+
+当前系统版本版本需要升级。
+
 **处理步骤**
 
 请升级系统。
@@ -338,6 +350,10 @@ The uri field is missing in the want parameter.
 
 want参数中没有uri。
 
+**可能原因**
+
+want参数中没有uri。
+
 **处理步骤**
 
 请传入正确的参数。
@@ -349,6 +365,10 @@ want参数中没有uri。
 The displayName field is missing in the want parameter.
 
 **错误描述**
+
+want参数中parameters内没有displayName。
+
+**可能原因**
 
 want参数中parameters内没有displayName。
 
@@ -385,6 +405,10 @@ The DLP file has expired.
 
 DLP文件已过期。
 
+**可能原因**
+
+当前时间超出授权期限。
+
 **处理步骤**
 
 请联系文件拥有者重新授权。
@@ -401,6 +425,10 @@ No network connection.
 
 网络未连接。
 
+**可能原因**
+
+网络未连接或未认证。
+
 **处理步骤**
 
 请连接网络。
@@ -415,6 +443,10 @@ Failed to set the enterprise policy.
 **错误描述**
 
 设置企业应用策略失败。
+
+**可能原因**
+
+输入策略格式异常。
 
 **处理步骤**
 

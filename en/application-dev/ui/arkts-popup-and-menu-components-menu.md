@@ -17,9 +17,9 @@ A context menu displayed using [bindMenu](../reference/apis-arkui/arkui-ts/ts-un
 | Name| Type| Description|
 | --- | --- | --- |
 | aboutToAppear  | () =>  void | Callback triggered when the menu is about to appear.|
-| onAppear | () =>  void | Callback triggered when the menu is displayed.|
+| onAppear | () =>  void | Callback invoked after the menu appears.|
 | aboutToDisappear | () =>  void | Callback triggered when the menu is about to disappear.|
-| onDisappear  | () =>  void | Callback triggered when the menu is hidden.|
+| onDisappear  | () =>  void | Callback invoked after the menu disappears.|
 
 
 
@@ -27,13 +27,15 @@ A context menu displayed using [bindMenu](../reference/apis-arkui/arkui-ts/ts-un
 
 Use the **bindMenu** API to implement a menu. **bindMenu** responds to the click event of the bound component. When the bound component is clicked, the menu is displayed.
 
-```ts
+<!-- @[create_default_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateDefaultMenu.ets) -->
+
+``` TypeScript
 Button('click for Menu')
   .bindMenu([
     {
       value: 'Menu1',
       action: () => {
-        console.info('handle Menu1 select');
+        hilog.info(0xFF00, 'DialogProject', 'handle Menu1 select');
       }
     }
   ])
@@ -47,10 +49,14 @@ If the default style does not meet requirements, you can use [@Builder](../../ap
 
 ### Using @Builder to Customize Menu Content
 
-```ts
+<!-- @[builder_custom_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BuilderCustomMenu.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Replace $r('app.media.xxx') with the image resource file you use.
 class Tmp {
-  // Replace $r('app.media.xxx') with the image resource file you use.
-  iconStr2: ResourceStr = $r("app.media.view_list_filled");
+  public iconStr2: ResourceStr = $r('app.media.view_list_filled');
 
   set(val: Resource) {
     this.iconStr2 = val;
@@ -59,66 +65,76 @@ class Tmp {
 
 @Entry
 @Component
-struct menuExample {
+export struct BuilderCustomMenuExample {
   @State select: boolean = true;
-  private iconStr: ResourceStr = $r("app.media.view_list_filled");
-  private iconStr2: ResourceStr = $r("app.media.view_list_filled");
+  private iconStr: ResourceStr = $r('app.media.view_list_filled');
+  private iconStr2: ResourceStr = $r('app.media.view_list_filled');
+  // The value in the 'app.string.copy' resource file is "Copy."
+  private copy: ResourceStr = $r('app.string.copy');
+  // The value in the 'app.string.paste' resource file is "Paste."
+  private paste: ResourceStr = $r('app.string.paste');
 
   @Builder
   SubMenu() {
     Menu() {
-      MenuItem({ content: "Copy", labelInfo: "Ctrl+C" })
-      MenuItem({ content: "Paste", labelInfo: "Ctrl+V" })
+      MenuItem({ content: this.copy, labelInfo: 'Ctrl+C' })
+      MenuItem({ content: this.paste, labelInfo: 'Ctrl+V' })
     }
   }
 
   @Builder
   MyMenu() {
     Menu() {
-      MenuItem({ startIcon: $r("app.media.icon"), content: "Menu item" })
-      MenuItem({ startIcon: $r("app.media.icon"), content: "Menu item" }).enabled(false)
+      // The value in the 'app.string.menu_selection' resource file is "Menu Option."
+      MenuItem({ startIcon: $r('app.media.icon'), content: $r('app.string.menu_selection') })
+      MenuItem({ startIcon: $r('app.media.icon'), content: $r('app.string.menu_selection') }).enabled(false)
       MenuItem({
         startIcon: this.iconStr,
-        content: "Menu item",
-        endIcon: $r("app.media.arrow_right_filled"),
+        content: $r('app.string.menu_selection'),
+        endIcon: $r('app.media.arrow_right_filled'),
         // When the builder parameter is set, it indicates that a submenu is bound to a menu item. When the user hovers the cursor over the menu item, the submenu is displayed.
         builder: this.SubMenu
       })
-      MenuItemGroup ({ header: 'Subtitle' }) {
-        MenuItem ({ content: "Menu item" })
+      // The value in the 'app.string.menu_subtitle' resource file is "Subtitle."
+      MenuItemGroup({ header: $r('app.string.menu_subtitle') }) {
+        // The value in the 'app.string.menu_selection' resource file is "Menu Option."
+        MenuItem({ content: $r('app.string.menu_selection') })
           .selectIcon(true)
           .selected(this.select)
           .onChange((selected) => {
-            console.info("menuItem select" + selected);
-            let Str: Tmp = new Tmp();
-            Str.set($r("app.media.icon"));
+            hilog.info(0xFF00, 'DialogProject', 'menuItem select' + selected);
+            let str: Tmp = new Tmp();
+            str.set($r('app.media.icon'));
           })
+        // The value in the 'app.string.menu_selection' resource file is "Menu Option."
         MenuItem({
-          startIcon: $r("app.media.view_list_filled"),
-          content: "Menu item",
-          endIcon: $r("app.media.arrow_right_filled"),
+          startIcon: $r('app.media.view_list_filled'),
+          content: $r('app.string.menu_selection'),
+          endIcon: $r('app.media.arrow_right_filled'),
           builder: this.SubMenu
         })
       }
 
+      // The value in the 'app.string.menu_selection' resource file is "Menu Option."
       MenuItem({
         startIcon: this.iconStr2,
-        content: "Menu item",
-        endIcon: $r("app.media.arrow_right_filled")
+        content: $r('app.string.menu_selection'),
+        endIcon: $r('app.media.arrow_right_filled')
       })
     }
   }
 
   build() {
-    // ...
+    // ···
   }
 }
-
 ```
 
 ### Using the bindMenu Attribute to Bind a Component
 
-```ts
+<!-- @[bind_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BuilderCustomMenu.ets) -->
+
+``` TypeScript
 Button('click for Menu')
   .bindMenu(this.MyMenu)
 ```
@@ -131,9 +147,11 @@ Use the **bindContextMenu** API to customize the menu content and menu popup mod
 
 - Use @Builder to customize the menu content. The content configuration follows the same logic as the preceding section.
 - Check the menu popup mode and bind the component through the **bindContextMenu** attribute. In the example, the menu is displayed upon right-clicking.
+
+  <!-- @[create_right_click_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateMenu.ets) -->
   
-  ```ts
-  Button('click for Menu')
+  ``` TypeScript
+  Button('Right-click for Menu')
     .bindContextMenu(this.MyMenu, ResponseType.RightClick)
   ```
 
@@ -144,17 +162,22 @@ Menu haptic feedback is supported since API version 18. By default, menus are di
 - The haptic feedback mode is only configurable for level-1 menus.
 - The settings take effect only when the application has the ohos.permission.VIBRATE permission and the user has enabled haptic feedback. To enable haptic feedback, you must [declare the required permission](../security/AccessToken/declare-permissions.md) under **requestPermissions** in the **module.json5** file of the project as follows:
 
-  ```json
+  <!-- @[menu_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/module.json5) -->
+  
+  ``` JSON5
   "requestPermissions": [
     {
       "name": "ohos.permission.VIBRATE",
     }
-  ]
+  ],
   ```
 
-```ts
-  Button('click for Menu')
-    .bindContextMenu(this.MyMenu, ResponseType.RightClick, { hapticFeedbackMode: HapticFeedbackMode.ENABLED })
+<!-- @[popVibrate_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/PopVibrateMenu.ets) -->
+
+``` TypeScript
+Button('click for Menu')
+  .id('click for Menu')
+  .bindMenu(this.MyMenu, { hapticFeedbackMode: HapticFeedbackMode.ENABLED})
 ```
 
 ## Implementing Center Axis Avoidance
@@ -165,15 +188,27 @@ Since API version 18, menus support center axis avoidance. Since API version 20,
 > - Menus will not avoid the center axis if tapped in the axis area.
 > - On 2-in-1 devices, center axis avoidance occurs only when the window is in waterfall mode.
 
-```ts
+<!-- @[avoid_central_axis_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/SupportAvoidCentralAxisMenu.ets) -->
+
+``` TypeScript
+// Replace $r('app.media.xxx') with the image resource file you use.
 @Entry
 @Component
-struct Index {
+export struct SupportAvoidCentralAxisMenuExample {
   @State message: string = 'Hello World';
-  // Replace $r('app.media.startIcon') with the image resource file you use.
+  @State upScreen: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Upper_half_screen') as string;
+  @State middleAxle: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Middle_axle') as string;
+  @State lowerScreen: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Lower_half_screen') as string;
+  @State zone: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('zone') as string;
+  @State hoverModeStart: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('hoverMode_start') as string;
   private iconStr: Resource = $r('app.media.startIcon');
   @State index: number = 0;
-  @State arrayStr: Array<string> = ['Upper half screen', 'Central axis', 'Lower half screen'];
+  @State arrayStr: Array<string> = [this.upScreen, this.middleAxle, this.lowerScreen];
   @State enableHoverMode: boolean | undefined = true;
   @State showInSubwindow: boolean = false;
   @State placement: Placement | undefined = undefined;
@@ -181,102 +216,113 @@ struct Index {
   @Builder
   MyMenu1() {
     Menu() {
-      MenuItem({ startIcon: this.iconStr, content: 'Menu option' })
-      MenuItem({ startIcon: this.iconStr, content: 'Menu option' })
-      MenuItem({ startIcon: this.iconStr, content: 'Menu option' })
-      MenuItem({ startIcon: this.iconStr, content: 'Menu option' })
+      // The value in the 'app.string.menu_selection' resource file is "Menu Option."
+      MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
+      MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
+      MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
+      MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
     }
   }
 
   @State isShow: boolean = false;
 
   build() {
-    RelativeContainer() {
-      Column() {
-        Button('Area: ' + this.arrayStr[this.index])
-          .onClick(() => {
-            if (this.index < 2) {
-              this.index++
-            } else {
-              this.index = 0
-            }
-          })
+    NavDestination() {
+      RelativeContainer() {
+        Column() {
+          Button(this.zone + this.arrayStr[this.index])
+            .onClick(() => {
+              if (this.index < 2) {
+                this.index++
+              } else {
+                this.index = 0
+              }
+            })
 
-        Button('Hover Mode: ' + this.enableHoverMode)
-          .onClick(() => {
-            if (this.enableHoverMode == undefined) {
-              this.enableHoverMode = true
-            } else if (this.enableHoverMode == true) {
-              this.enableHoverMode = false
-            } else {
-              this.enableHoverMode = undefined
-            }
-          })
+          Button(this.hoverModeStart + this.enableHoverMode)
+            .id('hoverMode_start')
+            .onClick(() => {
+              if (this.enableHoverMode === undefined) {
+                this.enableHoverMode = true
+              } else if (this.enableHoverMode === true) {
+                this.enableHoverMode = false
+              } else {
+                this.enableHoverMode = undefined
+              }
+            })
 
-        Button('MenuPlacement:' + this.placement)
-          .onClick(() => {
-            if (this.placement == undefined) {
-              this.placement = Placement.Bottom
-            } else if (this.placement == Placement.Bottom) {
-              this.placement = Placement.Top
-            } else {
-              this.placement = undefined
-            }
-          })
+          Button('MenuPlacement:' + this.placement)
+            .onClick(() => {
+              if (this.placement === undefined) {
+                this.placement = Placement.Bottom
+              } else if (this.placement === Placement.Bottom) {
+                this.placement = Placement.Top
+              } else {
+                this.placement = undefined
+              }
+            })
+        }
+
+        Row() {
+          Button('Menu')
+            .fontWeight(FontWeight.Bold)
+            .bindMenu(this.MyMenu1(), {
+              enableHoverMode: this.enableHoverMode,
+              showInSubWindow: this.showInSubwindow,
+              placement: this.placement
+            })
+
+          Select([{ value: 'text1' }, { value: 'text2' }, { value: 'text3' }, { value: 'text4' }, { value: 'text5' },
+            { value: 'text6' }, { value: 'text7' }, { value: 'text8' }, { value: 'text9' }, { value: 'text10' },
+            { value: 'text11' },
+            { value: 'text12' }])
+            .value('Select')
+
+        }
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .margin({
+          top: this.index === 2 ? 330 : this.index === 1 ? 50 : 0,
+          bottom: this.index === 0 ? 330 : 0
+        })
       }
-
-      Row() {
-        Button('Menu')
-          .fontWeight(FontWeight.Bold)
-          .bindMenu(this.MyMenu1(), {
-            enableHoverMode: this.enableHoverMode,
-            showInSubWindow: this.showInSubwindow,
-            placement: this.placement
-          })
-
-        Select([{ value: 'text1' }, { value: 'text2' }, { value: 'text3' }, { value: 'text4' }, { value: 'text5' },
-          { value: 'text6' }, { value: 'text7' }, { value: 'text8' }, { value: 'text9' }, { value: 'text10' }, { value: 'text11' },
-          { value: 'text12' }])
-          .value("Select")
-
-      }
-      .alignRules({
-        center: { anchor: '__container__', align: VerticalAlign.Center },
-        middle: { anchor: '__container__', align: HorizontalAlign.Center }
-      })
-      .margin({
-        top: this.index == 2 ? 330 : this.index == 1 ? 50 : 0,
-        bottom: this.index == 0 ? 330 : 0
-      })
+      .height('100%')
+      .width('100%')
     }
-    .height('100%')
-    .width('100%')
+    // ...
   }
 }
-
 ```
 
 ## Controlling Event Passthrough for Subwindow Menus
 
 When a menu appears in a subwindow, surrounding events are passed to the host window by default. Since API version 20, you can use the **modalMode** property in [ContextMenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10) to configure modal behavior when submenus appear, controlling whether surrounding events are passed through. When **modalMode** is set to **ModalMode.TARGET_WINDOW**, events around the menu are blocked, and underlying controls will not respond to interactions.
 
-```ts
+<!-- @[eventTrans_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/EventTransSubWindowMenu.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Index2 {
+export struct EventTransSubWindowMenuExample {
   build() {
-    Column() {
-    }
-    .bindContextMenu(this.contextMenuBuilder, ResponseType.RightClick, {
-      modalMode: ModalMode.TARGET_WINDOW
-    })
-    .onClick(() => {
-      this.getUIContext().getPromptAction().showToast({
-        message: 'Clicked!'
+    NavDestination() {
+      Column() {
+      }
+      .id('click')
+      .bindContextMenu(this.contextMenuBuilder, ResponseType.RightClick, {
+        modalMode: ModalMode.TARGET_WINDOW
       })
-    })
-    .width('100%')
-    .height('100%')
+      .onClick(() => {
+        this.getUIContext().getPromptAction().showToast({
+          message: 'Clicked!'
+        })
+      })
+      .width('100%')
+      .height('100%')
+    }
+    // ···
   }
 
   @Builder
@@ -297,7 +343,6 @@ struct Index2 {
     }
   }
 }
-
 ```
 
 ## Positioning Menus Relative to Bound Components
@@ -311,42 +356,47 @@ Since API version 20, menus can be displayed at specific positions relative to t
 >- With both horizontal and vertical offsets negative, positioning references the bound component's lower left corner.
 >- With only one negative offset, positioning uses the upper left corner with reverse offset applied.
 
-```ts
+<!-- @[bindComponent_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BindComponentMenu.ets) -->
+
+``` TypeScript
+// Replace $r('app.media.xxx') with the image resource file you use.
 @Entry
 @Component
-struct DirectiveMenuExample {
+export struct BindComponentMenuExample {
   @Builder
   MenuBuilder() {
     Column() {
       Menu() {
         MenuItemGroup() {
-          // Replace $r('app.media.app_icon') with the image resource file you use.
-          MenuItem({ startIcon: $r('app.media.app_icon'), content: "Select Mixed Menu 1", labelInfo: "" })
-          MenuItem({ startIcon: $r('app.media.app_icon'), content: "Select Mixed Menu 2", labelInfo: "" })
-          MenuItem({ startIcon: $r('app.media.app_icon'), content: "Select Mixed Menu 3", labelInfo: "" })
+          MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 1', labelInfo: '' })
+          MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 2', labelInfo: '' })
+          MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 3', labelInfo: '' })
         }
       }
     }
   }
 
   build() {
-    Column() {
-      Text()
-        .borderRadius(10)
-        .width(200) 
-        .height(150)
-        .borderWidth(1)
-        .backgroundColor(Color.White)
-        .borderColor(Color.Red)
-        .margin({ top: 200, left: 125 })
-        .bindContextMenu(this.MenuBuilder, ResponseType.RightClick, {
-          anchorPosition: { x: 45, y: 50 },
-        })
+    NavDestination() {
+      Column() {
+        Text()
+          .borderRadius(10)
+          .width(200)
+          .height(150)
+          .borderWidth(1)
+          .backgroundColor(Color.White)
+          .borderColor(Color.Red)
+          .margin({ top: 200, left: 125 })
+          .bindContextMenu(this.MenuBuilder, ResponseType.RightClick, {
+            anchorPosition: { x: 45, y: 50 },
+          })
+      }
+      .alignItems(HorizontalAlign.Start)
+      .width('100%')
+      .height('100%')
+      .backgroundColor('#F5F5F5')
     }
-    .alignItems(HorizontalAlign.Start)
-    .width('100%')
-    .height('100%')
-    .backgroundColor('#F5F5F5')
+    // ···
   }
 }
 ```

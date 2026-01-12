@@ -46,7 +46,7 @@ Defines common APIs for cryptographic operations.
 
 ### OH_Crypto_ErrCode
 
-```
+```c
 enum OH_Crypto_ErrCode
 ```
 
@@ -67,7 +67,7 @@ Enumerates the encryption and decryption error codes.
 
 ### Crypto_CipherMode
 
-```
+```c
 enum Crypto_CipherMode
 ```
 
@@ -87,7 +87,7 @@ Enumerates the cryptographic operation types.
 
 ### OH_Crypto_FreeDataBlob()
 
-```
+```c
 void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)
 ```
 

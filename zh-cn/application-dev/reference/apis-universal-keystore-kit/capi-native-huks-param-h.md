@@ -45,7 +45,7 @@
 
 ### OH_Huks_InitParamSet()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)
 ```
 
@@ -54,7 +54,6 @@ struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)
 初始化参数集，无参数信息，分配参数集默认可用内存空间。初始化后的参数集需要通过OH_Huks_FreeParamSet释放。添加参数的参数集需要使用OH_Huks_AddParams添加参数并且必须使用OH_Huks_BuildParamSet构造参数集。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -70,7 +69,7 @@ struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)
 
 ### OH_Huks_AddParams()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Param *params, uint32_t paramCnt)
 ```
 
@@ -79,7 +78,6 @@ struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet, const
 添加参数到参数集里面。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -97,7 +95,7 @@ struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet, const
 
 ### OH_Huks_BuildParamSet()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)
 ```
 
@@ -106,7 +104,6 @@ struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)
 构造参数集，在初始化参数集和添加参数操作之后，序列化参数集，将blob类型的数据拷贝到paramSet结构尾部相邻内存区域。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -122,7 +119,7 @@ struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)
 
 ### OH_Huks_FreeParamSet()
 
-```
+```c
 void OH_Huks_FreeParamSet(struct OH_Huks_ParamSet **paramSet)
 ```
 
@@ -132,7 +129,6 @@ void OH_Huks_FreeParamSet(struct OH_Huks_ParamSet **paramSet)
 
 **起始版本：** 9
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -141,7 +137,7 @@ void OH_Huks_FreeParamSet(struct OH_Huks_ParamSet **paramSet)
 
 ### OH_Huks_CopyParamSet()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromParamSet, uint32_t fromParamSetSize, struct OH_Huks_ParamSet **paramSet)
 ```
 
@@ -150,7 +146,6 @@ struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromPa
 复制参数集（深拷贝）。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -168,7 +163,7 @@ struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromPa
 
 ### OH_Huks_GetParam()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_GetParam(const struct OH_Huks_ParamSet *paramSet, uint32_t tag, struct OH_Huks_Param **param)
 ```
 
@@ -177,7 +172,6 @@ struct OH_Huks_Result OH_Huks_GetParam(const struct OH_Huks_ParamSet *paramSet, 
 从参数集中获取参数。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -195,7 +189,7 @@ struct OH_Huks_Result OH_Huks_GetParam(const struct OH_Huks_ParamSet *paramSet, 
 
 ### OH_Huks_FreshParamSet()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_FreshParamSet(struct OH_Huks_ParamSet *paramSet, bool isCopy)
 ```
 
@@ -204,7 +198,6 @@ struct OH_Huks_Result OH_Huks_FreshParamSet(struct OH_Huks_ParamSet *paramSet, b
 刷新参数集内[OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md)类型的数据。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -221,7 +214,7 @@ struct OH_Huks_Result OH_Huks_FreshParamSet(struct OH_Huks_ParamSet *paramSet, b
 
 ### OH_Huks_IsParamSetTagValid()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_IsParamSetTagValid(const struct OH_Huks_ParamSet *paramSet)
 ```
 
@@ -230,7 +223,6 @@ struct OH_Huks_Result OH_Huks_IsParamSetTagValid(const struct OH_Huks_ParamSet *
 检查参数集中的参数是否有效、是否有重复。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -246,7 +238,7 @@ struct OH_Huks_Result OH_Huks_IsParamSetTagValid(const struct OH_Huks_ParamSet *
 
 ### OH_Huks_IsParamSetValid()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_IsParamSetValid(const struct OH_Huks_ParamSet *paramSet, uint32_t size)
 ```
 
@@ -255,7 +247,6 @@ struct OH_Huks_Result OH_Huks_IsParamSetValid(const struct OH_Huks_ParamSet *par
 检查参数集大小是否有效。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -272,7 +263,7 @@ struct OH_Huks_Result OH_Huks_IsParamSetValid(const struct OH_Huks_ParamSet *par
 
 ### OH_Huks_CheckParamMatch()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_CheckParamMatch(const struct OH_Huks_Param *baseParam, const struct OH_Huks_Param *param)
 ```
 
@@ -281,7 +272,6 @@ struct OH_Huks_Result OH_Huks_CheckParamMatch(const struct OH_Huks_Param *basePa
 比较两个参数是否相同。
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -298,7 +288,7 @@ struct OH_Huks_Result OH_Huks_CheckParamMatch(const struct OH_Huks_Param *basePa
 
 ### OH_Huks_FreeKeyAliasSet()
 
-```
+```c
 void OH_Huks_FreeKeyAliasSet(struct OH_Huks_KeyAliasSet *keyAliasSet)
 ```
 
@@ -307,7 +297,6 @@ void OH_Huks_FreeKeyAliasSet(struct OH_Huks_KeyAliasSet *keyAliasSet)
 销毁密钥别名的参数集。
 
 **起始版本：** 20
-
 
 **参数：**
 

@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_AI_ShapeInfo {...} OH_AI_ShapeInfo
+```
+
 ## Overview
 
 Defines the maximum number of shapes. The maximum value reserved is **32**, and the maximum number currently supported is **8**.

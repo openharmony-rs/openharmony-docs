@@ -20,45 +20,57 @@ The APIs described in this document are used only for non-universal products, su
 import wifiext from '@ohos.wifiext';
 ```
 
-## wifiext.enableHotspot
+## wifiext.enableHotspot<sup>(deprecated)</sup>
 
 enableHotspot(): boolean;
 
 Enables the WLAN hotspot.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManagerExt.enableHotspot](js-apis-wifiManagerExt.md#wifimanagerextenablehotspotdeprecated) instead.
+
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
 
 **System capability**: SystemCapability.Communication.WiFi.AP.Extension
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
 
 
-## wifiext.disableHotspot
+## wifiext.disableHotspot<sup>(deprecated)</sup>
 
 disableHotspot(): boolean;
 
 Disables the WLAN hotspot.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManagerExt.disableHotspot](js-apis-wifiManagerExt.md#wifimanagerextdisablehotspotdeprecated) instead.
+
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
 
 **System capability**: SystemCapability.Communication.WiFi.AP.Extension
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|
 
 
-## wifiext.getSupportedPowerModel
+## wifiext.getSupportedPowerModel<sup>(deprecated)</sup>
 
 getSupportedPowerModel(): Promise&lt;Array&lt;PowerModel&gt;&gt;
 
 Obtains the supported power models. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManagerExt.getSupportedPowerModel](js-apis-wifiManagerExt.md#wifimanagerextgetsupportedpowermode) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -98,14 +110,18 @@ Obtains the supported power models. This API uses an asynchronous callback to re
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;Array&lt;[PowerModel](#powermodel)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is 0 and **data** is the power models obtained. If **err** is not **0**, an error has occurred.|
+  | callback | AsyncCallback&lt;Array&lt;[PowerModel](#powermodel)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the power models obtained. If the operation fails, **err** is not **0**.|
 
 
-## wifiext.getPowerModel
+## wifiext.getPowerModel<sup>(deprecated)</sup>
 
 getPowerModel(): Promise&lt;PowerModel&gt;
 
 Obtains the power model. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManagerExt.getSupportedPowerModel](js-apis-wifiManagerExt.md#wifimanagerextgetpowermode) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -115,14 +131,18 @@ Obtains the power model. This API uses a promise to return the result.
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;[PowerModel](#powermodel)&gt; | Promise used to return the power model obtained.|
+  | Promise&lt;[PowerModel](#powermodel)&gt; | Promise used to return the power models obtained.|
 
 
-## wifiext.getPowerModel
+## wifiext.getPowerModel<sup>(deprecated)</sup>
 
 getPowerModel(callback: AsyncCallback&lt;PowerModel&gt;): void
 
 Obtains the power model. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManagerExt.getSupportedPowerModel](js-apis-wifiManagerExt.md#wifimanagerextgetpowermode-1) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -153,6 +173,6 @@ setPowerModel(model: PowerModel) : boolean;
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if the operation is successful; returns **false** otherwise.|

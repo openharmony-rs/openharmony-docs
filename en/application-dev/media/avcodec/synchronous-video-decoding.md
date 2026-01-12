@@ -319,7 +319,7 @@ The following walks you through how to implement the entire video decoding proce
                 bool getIntRet = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_PIC_WIDTH, &width) &&
                                  OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_PIC_HEIGHT, &height);
                 if (!getIntRet) {
-             	    // Handle exceptions.
+                    // Handle exceptions.
                 }
                 break;
             }
@@ -645,7 +645,7 @@ The following walks you through how to implement the entire video decoding proce
                            OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
                            OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
                 if (!getIntRet) {
-                 	// Handle exceptions.
+                    // Handle exceptions.
                 }
                 break;
             }

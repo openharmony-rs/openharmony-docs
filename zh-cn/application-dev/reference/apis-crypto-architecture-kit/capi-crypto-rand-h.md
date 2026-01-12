@@ -32,8 +32,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)](#oh_cryptorand_create) | 创建随机数生成器。 |
-| [OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Crypto_DataBlob *out)](#oh_cryptorand_generaterandom) | 生成随机数。 |
+| [OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)](#oh_cryptorand_create) | 创建随机数生成器。<br> 注意：创建的资源必须通过[OH_CryptoRand_Destroy](capi-crypto-rand-h.md#oh_cryptorand_destroy)销毁。 |
+| [OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Crypto_DataBlob *out)](#oh_cryptorand_generaterandom) | 生成随机数。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。 |
 | [const char *OH_CryptoRand_GetAlgoName(OH_CryptoRand *ctx)](#oh_cryptorand_getalgoname) | 获取随机数生成器实例的算法名称。 |
 | [OH_Crypto_ErrCode OH_CryptoRand_SetSeed(OH_CryptoRand *ctx, Crypto_DataBlob *seed)](#oh_cryptorand_setseed) | 设置随机数生成器的种子。 |
 | [OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)](#oh_cryptorand_enablehardwareentropy) | 启用硬件熵源。 |
@@ -43,13 +43,13 @@
 
 ### OH_CryptoRand_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)
 ```
 
 **描述**
 
-创建随机数生成器。
+创建随机数生成器。<br> 注意：创建的资源必须通过[OH_CryptoRand_Destroy](capi-crypto-rand-h.md#oh_cryptorand_destroy)销毁。
 
 **起始版本：** 20
 
@@ -67,13 +67,13 @@ OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)
 
 ### OH_CryptoRand_GenerateRandom()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Crypto_DataBlob *out)
 ```
 
 **描述**
 
-生成随机数。
+生成随机数。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。
 
 **起始版本：** 20
 
@@ -93,7 +93,7 @@ OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Cryp
 
 ### OH_CryptoRand_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoRand_GetAlgoName(OH_CryptoRand *ctx)
 ```
 
@@ -117,7 +117,7 @@ const char *OH_CryptoRand_GetAlgoName(OH_CryptoRand *ctx)
 
 ### OH_CryptoRand_SetSeed()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoRand_SetSeed(OH_CryptoRand *ctx, Crypto_DataBlob *seed)
 ```
 
@@ -142,7 +142,7 @@ OH_Crypto_ErrCode OH_CryptoRand_SetSeed(OH_CryptoRand *ctx, Crypto_DataBlob *see
 
 ### OH_CryptoRand_EnableHardwareEntropy()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)
 ```
 
@@ -166,7 +166,7 @@ OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)
 
 ### OH_CryptoRand_Destroy()
 
-```
+```c
 void OH_CryptoRand_Destroy(OH_CryptoRand *ctx)
 ```
 

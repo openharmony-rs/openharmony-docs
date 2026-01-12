@@ -1,4 +1,4 @@
-# @ohos.reminderAgentManager (Agent-Powered Reminders) (System API)
+# @ohos.reminderAgentManager (Agent-powered Reminder) (System API)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: Resourceschedule-->
@@ -11,9 +11,9 @@ The reminderAgentManager module provides APIs related to agent-powered reminders
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.reminderAgentManager (Agent-Powered Reminders)](js-apis-reminderAgentManager.md).
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.reminderAgentManager (Agent-Powered Reminders)](js-apis-reminderAgentManager.md).
 
 
 ## Modules to Import
@@ -66,3 +66,14 @@ Defines a reminder for a calendar event.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | rruleWantAgent<sup>12+</sup> | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | No| Yes| Custom reminder, which specifies the ServiceExtensionAbility to start.|
+
+## ReminderRequest
+
+Defines the request for publishing a reminder.
+
+**System capability**: SystemCapability.Notification.ReminderAgent
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| notDistributed<sup>23+</sup> | boolean | No| Yes| Whether notifications are not displayed in all scenarios across devices. The default value is **false**. For details, see [NotificationRequest.notDistributed](../apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest).<br> - **true**: Notifications are displayed only on the local device.<br> - **false**: Notifications are displayed on all collaborative devices.<br> **System API**: This is a system API.|
+| forceDistributed<sup>23+</sup> | boolean | No| Yes| Whether notifications are forcibly displayed in all scenarios across devices. The default value is **false**. For details, see [NotificationRequest.forceDistributed](../apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest).<br> - **true**: Notifications are displayed on all collaboration devices.<br> - **false**: Notifications are displayed on the applications that are on the collaborative management list.<br> **System API**: This is a system API.|

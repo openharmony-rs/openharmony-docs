@@ -53,7 +53,7 @@ Defines functions and enums related to encryption parameters of the RDB store.
 
 ### Rdb_EncryptionAlgo
 
-```
+```c
 enum Rdb_EncryptionAlgo
 ```
 
@@ -71,7 +71,7 @@ Enumerates database encryption algorithms.
 
 ### Rdb_HmacAlgo
 
-```
+```c
 enum Rdb_HmacAlgo
 ```
 
@@ -89,7 +89,7 @@ Enumerates HMAC algorithms.
 
 ### Rdb_KdfAlgo
 
-```
+```c
 enum Rdb_KdfAlgo
 ```
 
@@ -110,7 +110,7 @@ Enumerates KDF algorithms.
 
 ### OH_Rdb_CreateCryptoParam()
 
-```
+```c
 OH_Rdb_CryptoParam *OH_Rdb_CreateCryptoParam(void)
 ```
 
@@ -128,7 +128,7 @@ Creates an [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance.
 
 ### OH_Rdb_DestroyCryptoParam()
 
-```
+```c
 int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)
 ```
 
@@ -153,7 +153,7 @@ Destroys an [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance.
 
 ### OH_Crypto_SetEncryptionKey()
 
-```
+```c
 int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, int32_t length)
 ```
 
@@ -180,7 +180,7 @@ Sets the key data of an [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) ins
 
 ### OH_Crypto_SetIteration()
 
-```
+```c
 int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)
 ```
 
@@ -206,7 +206,7 @@ Sets the number of iterations of the KDF algorithm used when opening an encrypte
 
 ### OH_Crypto_SetEncryptionAlgo()
 
-```
+```c
 int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 ```
 
@@ -232,7 +232,7 @@ Sets the encryption algorithm used when opening an encrypted database.
 
 ### OH_Crypto_SetHmacAlgo()
 
-```
+```c
 int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 ```
 
@@ -258,7 +258,7 @@ Sets the HMAC algorithm used when opening an encrypted database.
 
 ### OH_Crypto_SetKdfAlgo()
 
-```
+```c
 int OH_Crypto_SetKdfAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 ```
 
@@ -284,7 +284,7 @@ Sets the KDF algorithm used when opening an encrypted database.
 
 ### OH_Crypto_SetCryptoPageSize()
 
-```
+```c
 int OH_Crypto_SetCryptoPageSize(OH_Rdb_CryptoParam *param, int64_t size)
 ```
 

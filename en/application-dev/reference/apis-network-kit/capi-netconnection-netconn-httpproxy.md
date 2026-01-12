@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetConn_HttpProxy {...} NetConn_HttpProxy
+```
+
 ## Overview
 
 Defines the proxy configuration.

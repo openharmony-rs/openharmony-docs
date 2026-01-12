@@ -4,13 +4,17 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ArkUI provides four pixel units, with vp as the reference data unit.
 
->**NOTE**
+> **NOTE**
 >
->The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The following APIs are deprecated since API version 18: vp2px, px2vp, fp2px, px2fp, lpx2px, px2lpx. Directly using these can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API and then call the[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)/[px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12)/[fp2px](../arkts-apis-uicontext-uicontext.md#fp2px12)/[px2fp](../arkts-apis-uicontext-uicontext.md#px2fp12)/[lpx2px](../arkts-apis-uicontext-uicontext.md#lpx2px12)/[px2lpx](../arkts-apis-uicontext-uicontext.md#px2lpx12) API through this object.
+>
+> - If no UI instance is created, vp2px/px2vp performs conversion using the default screen's virtual pixel ratio. In this case, you can replace vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx with UIContext. For details, see [Replacing Pixel Unit Conversion APIs with UIContext APIs](../../../ui/arkts-global-interface.md#replacing-pixel-unit-conversion-apis-with-uicontext-apis).
 
 
 | Name| Description                                                        |
@@ -20,10 +24,15 @@ ArkUI provides four pixel units, with vp as the reference data unit.
 | fp   | Font pixel, which is similar to vp and varies according to the system font size.|
 | lpx  | Logical pixel unit of the window. It is the ratio of the actual screen width to the logical width (configured by [designWidth](../../../quick-start/module-configuration-file.md#pages)). For example, if **designWidth** is set to **720** (default value), then 1 lpx is equal to 2 px for a screen with an actual width of 1440 physical pixels.|
 
+## vp2px<sup>(deprecated)</sup>
 
-## Pixel Unit Conversion
+vp2px(value: number): number
 
-Conversion between px and other pixel units is supported.
+Converts a value in units of vp to a value in units of px.
+
+> **NOTE**
+>
+> By default, the virtual pixel ratio of the screen where the current UI instance is located is used for conversion. If the UI instance is unclear, the virtual pixel ratio of the default screen is used instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -31,18 +40,141 @@ Conversion between px and other pixel units is supported.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| API                                               | Description                                                        |
-| --------------------------------------------------- | ------------------------------------------------------------ |
-| vp2px(value : number) : number<sup>(deprecated)</sup>  | Converts a value in units of vp to a value in units of px.<br>Value range of **value**: (-∞, +∞).<br>Value range of the return value: (-∞, +∞).<br> **NOTE**<br> By default, the virtual pixel ratio of the screen where the current UI instance is located is used for conversion. If the UI instance is unclear, the virtual pixel ratio of the default screen is used instead.|
-| px2vp(value : number) : number<sup>(deprecated)</sup>  | Converts a value in units of px to a value in units of vp.<br>Value range of **value**: (-∞, +∞).<br>Value range of the return value: (-∞, +∞).<br> **NOTE**<br> By default, the virtual pixel ratio of the screen where the current UI instance is located is used for conversion. If the UI instance is unclear, the virtual pixel ratio of the default screen is used instead.|
-| fp2px(value : number) : number<sup>(deprecated)</sup>  | Converts a value in units of fp to a value in units of px.<br>Value range of **value**: (-∞, +∞).<br>Value range of the return value: (-∞, +∞).                      |
-| px2fp(value : number) : number<sup>(deprecated)</sup>  | Converts a value in units of px to a value in units of fp.<br>Value range of **value**: (-∞, +∞).<br>Value range of the return value: (-∞, +∞).                      |
-| lpx2px(value : number) : number<sup>(deprecated)</sup> | Converts a value in units of lpx to a value in units of px.<br>Value range of **value**: (-∞, +∞).<br>Value range of the return value: (-∞, +∞).                     |
-| px2lpx(value : number) : number<sup>(deprecated)</sup> | Converts a value in units of px to a value in units of lpx.<br>Value range of **value**: (-∞, +∞).<br>Value range of the return value: (-∞, +∞).                     |
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                  |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | Yes  | Converts a value in units of vp to a value in units of px.<br>Value range: (-∞, +∞).|
+
+**Return value**
+
+| Type  | Description          |
+| ------ | -------------- |
+| number | Value after conversion.<br>Value range: (-∞, +∞).|
+
+## px2vp<sup>(deprecated)</sup>
+
+px2vp(value: number): number
+
+Converts a value in units of px to a value in units of vp.
 
 > **NOTE**
 >
-> The following APIs are deprecated since API version 18: vp2px, px2vp, fp2px, px2fp, lpx2px, px2lpx. Directly using these can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API in [UIContext](../arkts-apis-uicontext-uicontext.md) and then call the [vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx](../arkts-apis-uicontext-uicontext.md#vp2px12) API through this object.
+> By default, the virtual pixel ratio of the screen where the current UI instance is located is used for conversion. If the UI instance is unclear, the virtual pixel ratio of the default screen is used instead.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                  |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | Yes  | Converts a value in units of px to a value in units of vp.<br>Value range: (-∞, +∞).|
+
+**Return value**
+
+| Type  | Description          |
+| ------ | -------------- |
+| number | Value after conversion.<br>Value range: (-∞, +∞).|
+
+## fp2px<sup>(deprecated)</sup>
+
+fp2px(value: number): number
+
+Converts a value in units of fp to a value in units of px.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                  |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | Yes  | Converts a value in units of fp to a value in units of px.<br>Value range: (-∞, +∞).|
+
+**Return value**
+
+| Type  | Description          |
+| ------ | -------------- |
+| number | Value after conversion.<br>Value range: (-∞, +∞).|
+
+## px2fp<sup>(deprecated)</sup>
+
+px2fp(value: number): number
+
+Converts a value in units of px to a value in units of fp.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                  |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | Yes  | Converts a value in units of px to a value in units of fp.<br>Value range: (-∞, +∞).|
+
+**Return value**
+
+| Type  | Description          |
+| ------ | -------------- |
+| number | Value after conversion.<br>Value range: (-∞, +∞).|
+
+## lpx2px<sup>(deprecated)</sup>
+
+lpx2px(value: number): number
+
+Converts a value in units of lpx to a value in units of px.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                  |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | Yes  | Converts a value in units of lpx to a value in units of px.<br>Value range: (-∞, +∞).|
+
+**Return value**
+
+| Type  | Description          |
+| ------ | -------------- |
+| number | Value after conversion.<br>Value range: (-∞, +∞).|
+
+## px2lpx<sup>(deprecated)</sup>
+
+px2lpx(value: number): number
+
+Converts a value in units of px to a value in units of lpx.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                  |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | Yes  | Converts a value in units of px to a value in units of lpx.<br>Value range: (-∞, +∞).|
+
+**Return value**
+
+| Type  | Description          |
+| ------ | -------------- |
+| number | Value after conversion.<br>Value range: (-∞, +∞).|
 
 ## Example
 

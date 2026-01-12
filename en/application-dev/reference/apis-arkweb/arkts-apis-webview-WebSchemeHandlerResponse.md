@@ -14,7 +14,7 @@ Represents a request response. You can create a response for an intercepted requ
 >
 > - The initial APIs of this class are supported since API version 12.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## Modules to Import
 
@@ -263,6 +263,7 @@ For details about the sample code, see [constructor](#constructor12).
 getUrl(): string
 
 Obtains the redirection URL or the URL changed due to HSTS.
+
 NOTE: To obtain a URL for the JavaScriptProxy communication API authentication, use [getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](./arkts-apis-webview-WebviewController.md#getlastjavascriptproxycallingframeurl12).
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -371,7 +372,7 @@ For details about the sample code, see [constructor](#constructor12).
 
 getHeaderByName(name: string): string
 
-Obtains the character set of this response.
+Obtains the value of a response header field by name.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

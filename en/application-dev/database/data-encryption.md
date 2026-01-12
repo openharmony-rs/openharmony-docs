@@ -131,7 +131,7 @@ The **cryptoParam** setting involves the following scenarios:
 If **cryptoParam** is not set, the default configuration is used for database encryption and decryption.
 
 
-<!-- @[encryption_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
+<!-- @[encryption_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -141,7 +141,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit'
 
 
 
-<!-- @[defaultConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
+<!-- @[defaultConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
@@ -165,7 +165,7 @@ try {
 
 If **cryptoParam** is set, the specified key and algorithm are used for database encryption and decryption.
 
-<!-- @[customizedConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
+<!-- @[customizedConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;

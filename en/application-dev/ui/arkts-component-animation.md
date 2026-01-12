@@ -24,8 +24,9 @@ For more effects, see [Component Overview](../reference/apis-arkui/arkui-ts/ts-c
 
 Below is the sample code and effect:
 
+<!-- @[component_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template1/Index.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct ComponentDemo {
@@ -43,8 +44,8 @@ struct ComponentDemo {
 }
 ```
 
-![en-us_image_0000001649338585](figures/en-us_image_0000001649338585.gif)
 
+![en-us_image_0000001649338585](figures/en-us_image_0000001649338585.gif)
 
 
 ## Customizing Component Animation
@@ -59,7 +60,9 @@ Some components allow for animation customization for their child components thr
 
 The following is an example of customizing the swipe animation for the **Scroll** component:
 
-```ts
+<!-- @[Component_Scroll](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template2/Index.ets) -->
+
+``` TypeScript
 import { curves, window, display, mediaquery, UIContext } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
 
@@ -67,6 +70,7 @@ export default class GlobalContext extends AppStorage {
   static mainWin: window.Window | undefined = undefined;
   static mainWindowSize: window.Size | undefined = undefined;
 }
+
 /**
  * Encapsulates the WindowManager class.
  */
@@ -77,12 +81,12 @@ export class WindowManager {
   private orientationListener: mediaquery.MediaQueryListener;
 
   constructor(uiContext: UIContext) {
-    this.uiContext = uiContext
+    this.uiContext = uiContext;
     this.orientationListener = this.uiContext.getMediaQuery().matchMediaSync('(orientation: landscape)');
     this.orientationListener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
-      this.onPortrait(mediaQueryResult)
-    })
-    this.loadDisplayInfo()
+      this.onPortrait(mediaQueryResult);
+    });
+    this.loadDisplayInfo();
   }
 
   /**
@@ -91,85 +95,85 @@ export class WindowManager {
    */
   setMainWin(win: window.Window) {
     if (win == null) {
-      return
+      return;
     }
     GlobalContext.mainWin = win;
-    win.on("windowSizeChange", (data: window.Size) => {
+    win.on('windowSizeChange', (data: window.Size) => {
       if (GlobalContext.mainWindowSize == undefined || GlobalContext.mainWindowSize == null) {
         GlobalContext.mainWindowSize = data;
       } else {
         if (GlobalContext.mainWindowSize.width == data.width && GlobalContext.mainWindowSize.height == data.height) {
-          return
+          return;
         }
         GlobalContext.mainWindowSize = data;
       }
 
       let winWidth = this.getMainWindowWidth();
-      AppStorage.setOrCreate<number>('mainWinWidth', winWidth)
+      AppStorage.setOrCreate<number>('mainWinWidth', winWidth);
       let winHeight = this.getMainWindowHeight();
-      AppStorage.setOrCreate<number>('mainWinHeight', winHeight)
-      let context: UIAbility = new UIAbility()
-      context.context.eventHub.emit("windowSizeChange", winWidth, winHeight)
-    })
+      AppStorage.setOrCreate<number>('mainWinHeight', winHeight);
+      let context: UIAbility = new UIAbility();
+      context.context.eventHub.emit('windowSizeChange', winWidth, winHeight);
+    });
   }
 
   static getInstance(uiContext: UIContext): WindowManager {
     if (WindowManager.instance == null) {
       WindowManager.instance = new WindowManager(uiContext);
     }
-    return WindowManager.instance
+    return WindowManager.instance;
   }
 
   private onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
     if (mediaQueryResult.matches == AppStorage.get<boolean>('isLandscape')) {
-      return
+      return;
     }
-    AppStorage.setOrCreate<boolean>('isLandscape', mediaQueryResult.matches)
-    this.loadDisplayInfo()
+    AppStorage.setOrCreate<boolean>('isLandscape', mediaQueryResult.matches);
+    this.loadDisplayInfo();
   }
 
   /**
    * Changes the screen orientation.
-   * @param ori Indicates the orientation.
+   * @param ori Orientation, specified using the enumerated values of window.Orientation.
    */
   changeOrientation(ori: window.Orientation) {
     if (GlobalContext.mainWin != null) {
-      GlobalContext.mainWin.setPreferredOrientation(ori)
+      GlobalContext.mainWin.setPreferredOrientation(ori);
     }
   }
 
   private loadDisplayInfo() {
-    this.displayInfo = display.getDefaultDisplaySync()
-    AppStorage.setOrCreate<number>('displayWidth', this.getDisplayWidth())
-    AppStorage.setOrCreate<number>('displayHeight', this.getDisplayHeight())
+    this.displayInfo = display.getDefaultDisplaySync();
+    AppStorage.setOrCreate<number>('displayWidth', this.getDisplayWidth());
+    AppStorage.setOrCreate<number>('displayHeight', this.getDisplayHeight());
   }
 
   /**
    * Obtains the width of the main window, in vp.
    */
   getMainWindowWidth(): number {
-    return GlobalContext.mainWindowSize != null ? this.uiContext.px2vp(GlobalContext.mainWindowSize.width) : 0
+    return GlobalContext.mainWindowSize != null ? this.uiContext.px2vp(GlobalContext.mainWindowSize.width) : 0;
   }
 
   /**
    * Obtains the height of the main window, in vp.
    */
   getMainWindowHeight(): number {
-    return GlobalContext.mainWindowSize != null ? this.uiContext.px2vp(GlobalContext.mainWindowSize.height) : 0
+    return GlobalContext.mainWindowSize != null ? this.uiContext.px2vp(GlobalContext.mainWindowSize.height) : 0;
   }
 
   /**
    * Obtains the screen width, in vp.
    */
   getDisplayWidth(): number {
-    return this.displayInfo != null ? this.uiContext.px2vp(this.displayInfo.width) : 0
+    return this.displayInfo != null ? this.uiContext.px2vp(this.displayInfo.width) : 0;
   }
 
   /**
    * Obtains the screen height, in vp.
    */
   getDisplayHeight(): number {
-    return this.displayInfo != null ? this.uiContext.px2vp(this.displayInfo.height) : 0
+    return this.displayInfo != null ? this.uiContext.px2vp(this.displayInfo.height) : 0;
   }
 
   /**
@@ -178,11 +182,11 @@ export class WindowManager {
   release() {
     if (this.orientationListener) {
       this.orientationListener.off('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
-        this.onPortrait(mediaQueryResult)
-      })
+        this.onPortrait(mediaQueryResult);
+      });
     }
     if (GlobalContext.mainWin != null) {
-      GlobalContext.mainWin.off('windowSizeChange')
+      GlobalContext.mainWin.off('windowSizeChange');
     }
     WindowManager.instance = null;
   }
@@ -232,7 +236,7 @@ export struct TaskSwitchMainPage {
   @State taskViewOffsetX: number = 0;
   @State cardOffset: number = this.displayWidth / 4;
   lastCardOffset: number = this.cardOffset;
-  startTime: number | undefined = undefined
+  startTime: number | undefined = undefined;
 
   // Initial position of each widget
   aboutToAppear() {
@@ -243,8 +247,9 @@ export struct TaskSwitchMainPage {
 
   // Position of each widget
   getProgress(index: number): number {
-    let progress = (this.cardOffset + this.cardPosition[index] - this.taskViewOffsetX + this.cardWidth / 2) / this.displayWidth;
-    return progress
+    let progress = (this.cardOffset + this.cardPosition[index] - this.taskViewOffsetX +
+      this.cardWidth / 2) / this.displayWidth;
+    return progress;
   }
 
   build() {
@@ -255,7 +260,7 @@ export struct TaskSwitchMainPage {
         .height('100%')
         .backgroundColor(0xF0F0F0)
 
-      // Scroll component
+      // <Scroll> component
       Scroll(this.scroller) {
         Row({ space: this.cardSpace }) {
           ForEach(taskDataArr, (item: TaskData, index) => {
@@ -267,7 +272,7 @@ export struct TaskSwitchMainPage {
               .borderWidth(1)
               .borderColor(0xAFEEEE)
               .borderRadius(15)
-                // Calculate the affine properties of child components.
+              // Calculate the affine properties of child components.
               .scale((this.getProgress(index) >= 0.4 && this.getProgress(index) <= 0.6) ?
                 {
                   x: 1.1 - Math.abs(0.5 - this.getProgress(index)),
@@ -275,7 +280,7 @@ export struct TaskSwitchMainPage {
                 } :
                 { x: 1, y: 1 })
               .animation({ curve: Curve.Smooth })
-                // Apply a pan animation.
+              // Apply a pan animation.
               .translate({ x: this.cardOffset })
               .animation({ curve: curves.springMotion() })
               .zIndex((this.getProgress(index) >= 0.4 && this.getProgress(index) <= 0.6) ? 2 : 1)
@@ -299,7 +304,7 @@ export struct TaskSwitchMainPage {
             })
             .onActionEnd((event: GestureEvent | undefined) => {
               if (event) {
-                let time = 0
+                let time = 0;
                 if (this.startTime) {
                   time = event.timestamp - this.startTime;
                 }
@@ -361,106 +366,112 @@ export struct TaskSwitchMainPage {
 
 You can use the **animateTo** API to replace a specified item in a list with the first item, while other items in the list are rearranged sequentially. Below is the sample code and animation effect demonstrating a custom dynamic replacement animation for the **List** component.
 
-```ts
+<!-- @[Component_List](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template3/Index.ets) -->
+
+``` TypeScript
 import { curves, AnimatorResult } from '@kit.ArkUI';
 
 // This API controls the visual attributes of list items.
 class ListItemModify implements AttributeModifier<ListItemAttribute> {
-  public offsetY: number = 0;
+  public offsetY: number = 0; // Y-axis offset.
 
   applyNormalAttribute(instance: ListItemAttribute): void {
-    instance.translate({ y: this.offsetY }) // Y-axis translation
+    instance.translate({ y: this.offsetY }); // Y-axis translation.
   }
 }
 
 @Observed
 class DragSortCtrl<T> {
-  private arr: Array<T>
-  private modify: Array<ListItemModify>
+  private arr: Array<T>; // Data array.
+  private modify: Array<ListItemModify>; // Attribute modifier array.
   private uiContext: UIContext; // Add a UIContext member.
-  private dragRefOffset: number = 0
-  offsetY: number = 0
-  private ITEM_INTV: number = 0
+  private dragRefOffset: number = 0; // Drag reference offset.
+  offsetY: number = 0; // Current Y-axis offset.
+  private ITEM_INTV: number = 0; // List item interval.
 
   constructor(arr: Array<T>, intv: number, uiContext: UIContext) {
     this.arr = arr;
     this.uiContext = uiContext;
-    this.modify = new Array<ListItemModify>()
-    this.ITEM_INTV = intv
+    this.modify = [];
+    this.ITEM_INTV = intv;
     arr.forEach(() => {
-      this.modify.push(new ListItemModify())
-    })
+      this.modify.push(new ListItemModify());
+    });
   }
 
   itemMove(index: number, newIndex: number): void {
-    let tmp = this.arr.splice(index, 1) // Remove the item at the current index.
-    this.arr.splice(newIndex, 0, tmp[0]) // Insert the removed item at the new index position in the array.
-    let tmp2 = this.modify.splice(index, 1)
-    this.modify.splice(newIndex, 0, tmp2[0])
+    let tmp = this.arr.splice(index, 1); // Remove the item at the current index.
+    this.arr.splice(newIndex, 0, tmp[0]); // Insert the removed item at the previous position.
+    let tmp2 = this.modify.splice(index, 1);
+    this.modify.splice(newIndex, 0, tmp2[0]);
   }
 
   setDragRef(item: T): void {
-    this.dragRefOffset = 0
+    this.dragRefOffset = 0;
   }
 
   onMove(item: T, offset: number) {
-    this.offsetY = offset - this.dragRefOffset // Calculate the per-frame input offset. When the item height threshold is reached, enter the if logic to update dragRefOffset.
-    let index = this.arr.indexOf(item) // Search for the input item in the array.
-    this.modify[index].offsetY = this.offsetY
+    this.offsetY = offset - this.dragRefOffset; // Calculate the per-frame input offset. When the item height threshold is reached, enter the if logic to update dragRefOffset.
+    let index = this.arr.indexOf(item); // Search for the input item in the array.
+    this.modify[index].offsetY = this.offsetY;
     if (this.offsetY < -this.ITEM_INTV / 2) { // Move the specified item to the top, one position at a time.
       // Use the interpolatingSpring curve to generate a spring animation.
-      this.uiContext.animateTo({ curve: curves.interpolatingSpring(0, 1, 400, 38) }, () => {
-        this.offsetY += this.ITEM_INTV // Adjust the offset to implement smooth movement.
-        this.dragRefOffset -= this.ITEM_INTV // Total movement offset.
+      this.uiContext.animateTo({ curve: curves.interpolatingSpring(0, 1, 400, 38) }, () => { // 400: spring stiffness, 38: spring damping.
+        this.offsetY += this.ITEM_INTV; // Adjust the offset for smooth movement.
+        this.dragRefOffset -= this.ITEM_INTV; // Total offset moved.
         console.info(`item offsetY ${this.offsetY} dragRefOffset ${this.dragRefOffset}`);
-        this.itemMove (index, index - 1) // Swap the positions of the list items.
-      })
+        this.itemMove(index, index - 1); // Swap the positions of the list items.
+      });
     }
   }
 
   getModify(item: T): ListItemModify {
-    let index = this.arr.indexOf(item)
-    return this.modify[index]
+    let index = this.arr.indexOf(item);
+    return this.modify[index];
   }
 }
 
 @Entry
 @Component
 struct ListAutoSortExample {
-  @State private arr: Array<number> = [0, 1, 2, 3, 4, 5]
-  @State dragSortCtrl: DragSortCtrl<number> = new DragSortCtrl<number>(this.arr, 120, this.getUIContext())
-  @State firstListItemGroupCount: number = 3
-  private listScroll: ListScroller = new ListScroller()
-  private backAnimator: AnimatorResult | null = null
+  @State private arr: Array<number> = [0, 1, 2, 3, 4, 5]; // List data array.
+  @State dragSortCtrl: DragSortCtrl<number> =
+    new DragSortCtrl<number>(this.arr, 120, this.getUIContext()); // 120: list item height interval.
+  @State firstListItemGroupCount: number = 3; // Number of items in the first list item group.
+  private listScroll: ListScroller = new ListScroller(); // List scroll controller.
+  private backAnimator: AnimatorResult | null = null; // Animation controller.
 
   @Builder
   itemEnd(item: number, index: number) {
     Row() {
-      Button("To TOP").margin("4vp").onClick(() => {
+      Button('To TOP').margin('4vp').onClick(() => { // 4vp: button margin.
         console.info(`item number item ${item} index ${index}`);
         this.listScroll.closeAllSwipeActions({
           onFinish: () => {
-            this.dragSortCtrl.setDragRef(item)
-            let length = 120 * (this.arr.indexOf(item))
-            this.backAnimator = this.getUIContext()?.createAnimator({ // Create a spring animation.
-              duration: 1000,
-              easing: "interpolating-spring(0, 1, 150, 24)",
-              delay: 0,
-              fill: "none",
-              direction: "normal",
-              iterations: 1,
-              begin: 0,
+            this.dragSortCtrl.setDragRef(item);
+            let length = 120 * (this.arr.indexOf(item)); // 120: list item height interval.
+            this.backAnimator = this.getUIContext()?.createAnimator({
+              // Create a spring animation.
+              duration: 1000, // Animation duration, in milliseconds.
+              easing: 'interpolating-spring(0, 1, 150, 24)', // 150: spring stiffness, 24: spring damping.
+              delay: 0, // Animation delay.
+              fill: 'none',
+              direction: 'normal',
+              iterations: 1, // Animation iteration count.
+              begin: 0, // Animation start value.
               end: -length
-            })
+            });
             this.backAnimator.onFrame = (value) => { // Frame-by-frame callback to update the position.
-              this.dragSortCtrl.onMove(item, value) // Handle the list movement and replacement animation.
-            }
-            this.backAnimator.onFinish = () => {}
-            this.backAnimator.play() // Start the animation.
+              this.dragSortCtrl.onMove(item, value); // Handle the list movement and replacement animation.
+            };
+            this.backAnimator.onFinish = () => {
+            };
+            this.backAnimator.play(); // Start the animation.
           }
-        })
+        });
       })
-    }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly)
+    }
+    .padding('4vp').justifyContent(FlexAlign.SpaceEvenly) // 4vp: padding.
   }
 
   @Builder
@@ -473,59 +484,62 @@ struct ListAutoSortExample {
   build() {
     Row() {
       Column() {
-        List({ space: 20, scroller: this.listScroll }) {
-          ListItemGroup({ header: this.header('first ListItemGroup'), space: 20 }) {
+        List({ space: 20, scroller: this.listScroll }) { // 20: list item spacing.
+          ListItemGroup({ header: this.header('first ListItemGroup'), space: 20 }) { // 20: spacing within the list item group.
             ForEach(this.arr, (item: number, index) => {
               if (index < this.firstListItemGroupCount) {
                 ListItem() {
                   Text('' + item)
                     .width('100%')
-                    .height(100)
-                    .fontSize(16)
-                    .borderRadius(10)
+                    .height(100) // 100: list item height.
+                    .fontSize(16) // 16: font size.
+                    .borderRadius(10) // 10: border radius.
                     .textAlign(TextAlign.Center)
-                    .backgroundColor(0xFFFFFF)
+                    .backgroundColor(0xFFFFFF) // 0xFFFFFF: white background.
                 }
                 .swipeAction({
                   end: this.itemEnd(item, index)
                 })
                 .clip(true)
                 .attributeModifier(this.dragSortCtrl.getModify(item)) // Dynamically set attributes.
-                .borderRadius(10)
-                .margin({ left: 20, right: 20 })
+                .borderRadius(10) // 10: border radius.
+                .margin({ left: 20, right: 20 }) // 20: left and right margins.
               }
             })
           }
-          ListItemGroup({ header: this.header('second ListItemGroup'), space: 20 }) {
+
+          ListItemGroup({ header: this.header('second ListItemGroup'), space: 20 }) { // 20: spacing within the list item group.
             ForEach(this.arr, (item: number, index) => {
-              if (index > this.firstListItemGroupCount - 1) {
+              if (index > this.firstListItemGroupCount - 1) { // 1: index offset.
                 ListItem() {
                   Text('' + item)
                     .width('100%')
-                    .height(100)
-                    .fontSize(16)
-                    .borderRadius(10)
+                    .height(100) // 100: list item height.
+                    .fontSize(16) // 16: font size.
+                    .borderRadius(10) // 10: border radius.
                     .textAlign(TextAlign.Center)
-                    .backgroundColor(0xFFFFFF)
+                    .backgroundColor(0xFFFFFF) // 0xFFFFFF: white background.
                 }
                 .swipeAction({
                   end: this.itemEnd(item, index)
                 })
                 .clip(true)
                 .attributeModifier(this.dragSortCtrl.getModify(item))
-                .borderRadius(10)
-                .margin({ left: 20, right: 20 })
+                .borderRadius(10) // 10: border radius.
+                .margin({ left: 20, right: 20 }) // 20: left and right margins.
               }
             })
           }
         }
-        .padding({ top: 20 })
-        .height("100%")
+        .padding({ top: 20 }) // 20: top padding.
+        .height('100%')
       }
-    }.backgroundColor(0xDCDCDC)
+    }
+    .backgroundColor(0xDCDCDC) // 0xDCDCDC: light gray background.
   }
 }
 ```
+
 
 ![listAnimateDemo](figures/listAnimateDemo.gif)
 <!--RP1--><!--RP1End-->

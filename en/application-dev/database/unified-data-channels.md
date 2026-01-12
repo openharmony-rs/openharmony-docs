@@ -56,10 +56,10 @@ The following example walks you through on how to implement many-to-many sharing
 1. Import the **unifiedDataChannel**, **uniformTypeDescriptor**, and **uniformDataStruct** modules.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+    
     ``` TypeScript
     import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
-    import hilog from '@ohos.hilog';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. Create a **UnifiedData** object and insert it to the UDMF public data channel.
@@ -216,10 +216,10 @@ The following example walks you through on how to implement many-to-many sharing
 1. Import the **unifiedDataChannel**, **uniformTypeDescriptor**, and **uniformDataStruct** modules.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+    
     ``` TypeScript
     import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
-    import hilog from '@ohos.hilog';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. Query the full data in the UDMF public data channel.

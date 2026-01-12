@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-```
+```c
 typedef struct ArkWeb_RequestHeaderList_ ArkWeb_RequestHeaderList
 ```
 

@@ -56,7 +56,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| roundness | number | 否 | 是 | 作用范围，取值范围为0到1之间，取值为1时作用范围为全局，默认值为0.707。 |
+| roundness | number | 否 | 是 | 作用范围，取值范围为0到1之间，取值为1时作用范围为全局，默认值为sqrt(0.5)。 |
 | intensity | number | 否 | 是 | 作用强度，默认值为0.4。 |
 
 ## ColorFringeSettings<sup>22+</sup>

@@ -25,16 +25,17 @@ Canvas组件提供画布，用于自定义绘制图形。具体用法请参考[C
 
 ```css
 /* xxx.css */
-.container{
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #F1F3F5;
+.container {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1F3F5;
 }
-canvas{
-  background-color: #00ff73;
+
+canvas {
+    background-color: #00ff73;
 }
 ```
 
@@ -61,19 +62,20 @@ Canvas组件设置宽（width）、高（height）、背景色（background-colo
 
 ```css
 /* xxx.css */
-.container{
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #F1F3F5;
-  width: 100%;
-  height: 100%;
+.container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1F3F5;
+    width: 100%;
+    height: 100%;
 }
-canvas{
-  width: 500px;
-  height: 500px;  
-  background-color: #fdfdfd;  
-  border: 5px solid red;
+
+canvas {
+    width: 500px;
+    height: 500px;
+    background-color: #fdfdfd;
+    border: 5px solid red;
 }
 ```
 
@@ -84,40 +86,46 @@ canvas{
 
 Canvas添加长按事件，长按后可获取Canvas组件的dataUrl值（toDataURL方法返回的图片信息），打印在下方文本区域内。
 
+> **说明：** 
+>
+> promptAction相关接口参考[弹窗](../reference/apis-arkui/js-apis-promptAction.md)。
+
 
 ```html
 <!-- xxx.hml -->
 <div class="container">
-  <canvas ref="canvas1" onlongpress="getUrl"></canvas>
-  <text>dataURL</text>
-  <text class="content">{{dataURL}}</text>
+    <canvas ref="canvas1" onlongpress="getUrl"></canvas>
+    <text>dataURL</text>
+    <text class="content">{{ dataURL }}</text>
 </div>
 ```
 
 
 ```css
 /* xxx.css */
-.container{
-  width:100%;
-  height:100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #F1F3F5;
-  }
-  canvas{  
-    width: 500px;  
+.container {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1F3F5;
+}
+
+canvas {
+    width: 500px;
     height: 500px;
     background-color: #fdfdfd;
     border: 5px solid red;
     margin-bottom: 50px;
 }
-.content{
-  border: 5px solid blue;
-  padding: 10px;
-  width: 90%;
-  height: 400px; 
-  overflow: scroll;
+
+.content {
+    border: 5px solid blue;
+    padding: 10px;
+    width: 90%;
+    height: 400px;
+    overflow: scroll;
 }
 ```
 
@@ -125,21 +133,22 @@ Canvas添加长按事件，长按后可获取Canvas组件的dataUrl值（toDataU
 ```js
 // xxx.js
 import promptAction from '@ohos.promptAction';
+
 export default {
-  data:{
-    dataURL:null,
-  },
-  onShow(){
-    let el = this.$refs.canvas1;
-    let ctx = el.getContext("2d"); 
-    ctx.strokeRect(100,100,300,300);
-  },
-  getUrl(){
-    let el = this.$refs.canvas1
-    let dataUrl = el.toDataURL()
-    this.dataURL = dataUrl;
-    promptAction.showToast({duration:2000,message:"long press,get dataURL"})
-  }
+    data: {
+        dataURL: null,
+    },
+    onShow() {
+        let el = this.$refs.canvas1;
+        let ctx = el.getContext("2d");
+        ctx.strokeRect(100, 100, 300, 300);
+    },
+    getUrl() {
+        let el = this.$refs.canvas1
+        let dataUrl = el.toDataURL()
+        this.dataURL = dataUrl;
+        promptAction.showToast({ duration: 2000, message: "long press,get dataURL" })
+    }
 }
 ```
 

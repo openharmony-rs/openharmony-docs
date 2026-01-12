@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,13 +10,11 @@
 
 > **说明：**
 >
-> 该组件从API Version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[XComponent](ts-basic-components-xcomponent.md)。
 
-## 接口
-
-### XComponentOptions<sup>12+</sup>
+## XComponentOptions<sup>12+</sup>
 
 定义XComponent的具体配置参数。
 
@@ -32,7 +30,7 @@
   >
   > 不支持[ArkUI NDK接口](../../../ui/ndk-build-ui-overview.md)创建的XComponent组件。
 
-## 属性
+## 接口
 
 ### enableTransparentLayer<sup>18+</sup>
 

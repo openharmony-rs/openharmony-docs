@@ -694,8 +694,7 @@ try {
 
 ## cooperate.activateCooperateWithOptions<sup>20+</sup>
 
-activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number,
-    cooperateOptions?: CooperateOptions ): Promise&lt;void&gt;
+activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number, cooperateOptions?: CooperateOptions ): Promise&lt;void&gt;
 
 启动键鼠穿越，使用选项开始屏幕跳转。
 
@@ -763,8 +762,8 @@ try {
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
-| 名称           | 类型            | 只读 | 	可选 | 说明                           |
-| ---------      | -------------- | ---- | ---- | ------------------------       |
+| 名称           | 类型            | 只读 | 可选 | 说明                           |
+| ---------------- | -------------- | ---- | ---- | ------------------------------ |
 | displayX       | number         | 否   | 否   | 鼠标指针位于屏幕的X坐标上的位置。 |
 | displayY       | number         | 否   | 否   | 鼠标指针位于屏幕的Y坐标上的位置。 |
 | displayWidth   | number         | 否   | 否   | 屏幕宽度，单位：px。                      |

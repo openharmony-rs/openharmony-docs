@@ -54,7 +54,7 @@ The file declares the native APIs provided by the AVTranscoder. You can use the 
 
 ### OH_AVTranscoderConfig_Create()
 
-```
+```c
 OH_AVTranscoder_Config *OH_AVTranscoderConfig_Create()
 ```
 
@@ -74,7 +74,7 @@ Creates an instance of the transcoding configuration parameters.
 
 ### OH_AVTranscoderConfig_Release()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_Release(OH_AVTranscoder_Config* config)
 ```
 
@@ -103,7 +103,7 @@ After a successful call, the instance specified by **config** is released and se
 
 ### OH_AVTranscoderConfig_SetSrcFD()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetSrcFD(OH_AVTranscoder_Config *config, int32_t srcFd, int64_t srcOffset, int64_t length)
 ```
 
@@ -135,7 +135,7 @@ This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_p
 
 ### OH_AVTranscoderConfig_SetDstFD()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetDstFD(OH_AVTranscoder_Config *config, int32_t dstFd)
 ```
 
@@ -165,7 +165,7 @@ This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_p
 
 ### OH_AVTranscoderConfig_SetDstVideoType()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoType(OH_AVTranscoder_Config *config, const char *mimeType)
 ```
 
@@ -197,7 +197,7 @@ This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_p
 
 ### OH_AVTranscoderConfig_SetDstAudioType()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioType(OH_AVTranscoder_Config *config, const char *mimeType)
 ```
 
@@ -229,7 +229,7 @@ This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_p
 
 ### OH_AVTranscoderConfig_SetDstFileType()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetDstFileType(OH_AVTranscoder_Config *config, OH_AVOutputFormat mimeType)
 ```
 
@@ -261,7 +261,7 @@ This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_p
 
 ### OH_AVTranscoderConfig_SetDstAudioBitrate()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioBitrate(OH_AVTranscoder_Config *config, int32_t bitrate)
 ```
 
@@ -291,7 +291,7 @@ This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_p
 
 ### OH_AVTranscoderConfig_SetDstVideoBitrate()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoBitrate(OH_AVTranscoder_Config *config, int32_t bitrate)
 ```
 
@@ -321,7 +321,7 @@ This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_p
 
 ### OH_AVTranscoderConfig_SetDstVideoResolution()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoResolution(OH_AVTranscoder_Config *config, int32_t width, int32_t height)
 ```
 
@@ -352,7 +352,7 @@ This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_p
 
 ### OH_AVTranscoderConfig_EnableBFrame()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_EnableBFrame(OH_AVTranscoder_Config *config, bool enabled)
 ```
 
@@ -384,7 +384,7 @@ If the current environment does not meet these constraints, B-frames will be ski
 
 ### OH_AVTranscoder_Create()
 
-```
+```c
 OH_AVTranscoder *OH_AVTranscoder_Create(void)
 ```
 
@@ -404,7 +404,7 @@ Creates an AVTranscoder instance.
 
 ### OH_AVTranscoder_Prepare()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_Prepare(OH_AVTranscoder *transcoder, OH_AVTranscoder_Config *config)
 ```
 
@@ -434,7 +434,7 @@ This function must be called before [OH_AVTranscoder_Start](#oh_avtranscoder_sta
 
 ### OH_AVTranscoder_Start()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_Start(OH_AVTranscoder *transcoder)
 ```
 
@@ -463,7 +463,7 @@ This function must be called after a successful call to [OH_AVTranscoder_Prepare
 
 ### OH_AVTranscoder_Pause()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_Pause(OH_AVTranscoder *transcoder)
 ```
 
@@ -492,7 +492,7 @@ This function must be called when the AVTranscoder is in the AVTRANSCODER_STARTE
 
 ### OH_AVTranscoder_Resume()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_Resume(OH_AVTranscoder *transcoder)
 ```
 
@@ -521,7 +521,7 @@ This function must be called when the AVTranscoder is in the AVTRANSCODER_PAUSED
 
 ### OH_AVTranscoder_Cancel()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_Cancel(OH_AVTranscoder *transcoder)
 ```
 
@@ -550,7 +550,7 @@ This function must be called when the AVTranscoder is in the AVTRANSCODER_STARTE
 
 ### OH_AVTranscoder_Release()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_Release(OH_AVTranscoder *transcoder)
 ```
 
@@ -577,7 +577,7 @@ Releases an AVTranscoder instance.
 
 ### OH_AVTranscoder_SetStateCallback()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_SetStateCallback(OH_AVTranscoder *transcoder, OH_AVTranscoder_OnStateChange callback, void *userData)
 ```
 
@@ -612,7 +612,7 @@ The callback must be registered before [OH_AVTranscoder_Prepare](#oh_avtranscode
 
 ### OH_AVTranscoder_SetErrorCallback()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_SetErrorCallback(OH_AVTranscoder *transcoder, OH_AVTranscoder_OnError callback, void *userData)
 ```
 
@@ -649,7 +649,7 @@ The callback must be registered before [OH_AVTranscoder_Prepare](#oh_avtranscode
 
 ### OH_AVTranscoder_SetProgressUpdateCallback()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_SetProgressUpdateCallback(OH_AVTranscoder *transcoder, OH_AVTranscoder_OnProgressUpdate callback, void *userData)
 ```
 

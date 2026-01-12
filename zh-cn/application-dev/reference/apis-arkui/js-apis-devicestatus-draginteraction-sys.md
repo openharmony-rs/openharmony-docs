@@ -1,4 +1,4 @@
-# @ohos.deviceStatus.dragInteraction（拖拽)(系统接口)
+# @ohos.deviceStatus.dragInteraction (拖拽)(系统接口)
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Msdp-->
@@ -43,7 +43,7 @@ import { dragInteraction } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
-| 名称           | 类型            | 只读 | 	可选 | 说明                           |
+| 名称           | 类型            | 只读 | 可选 | 说明                           |
 | ---------      | -------------- | ---- | ---- | ------------------------     |
 | dataType     | string          | 否   | 否   | 拖拽对象类型。 |
 | dataSize       | number         | 否   | 否   | 拖拽对象数据长度。 |
@@ -169,8 +169,8 @@ getDataSummary(): Array\<Summary>
 **示例：**
 
 ```ts
-let summarys: Array<dragInteraction.Summary> = dragInteraction.getDataSummary();
-console.info(`Drag interaction summarys: ${summarys}`);
+let summary: Array<dragInteraction.Summary> = dragInteraction.getDataSummary();
+console.info(`Drag interaction summary: ${summary}`);
 ```
 
 ## dragInteraction.setDragSwitchState<sup>18+</sup>

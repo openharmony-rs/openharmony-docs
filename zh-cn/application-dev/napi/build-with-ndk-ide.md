@@ -1,4 +1,10 @@
 # 使用DevEco Studio模板构建NDK工程
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 
 NDK通过CMake和Ninja编译应用的C/C++代码，编译过程如下图所示。
@@ -12,7 +18,7 @@ NDK通过CMake和Ninja编译应用的C/C++代码，编译过程如下图所示�
 
 1. 根据CMake配置脚本以及build-profile.json5中配置的externalNativeOptions构建参数，与缓存中的配置比对后，生成CMake命令并执行CMake。
 
-2. 执行Ninja，按照makefile执行编译和链接，将生成的.so以及运行时依赖的.so同步到输出目录，完成构建过程。
+2. 执行Ninja，按照Makefile执行编译和链接，将生成的.so以及运行时依赖的.so同步到输出目录，完成构建过程。
 
 
 通过DevEco Studio提供的应用模板，可以快速生成CMake构建脚本模板，并在build-profile.json5中指定相关编译构建参数。
@@ -22,7 +28,7 @@ NDK通过CMake和Ninja编译应用的C/C++代码，编译过程如下图所示�
 
 通过DevEco Studio模板工程创建的NDK工程中，包含默认生成的CMakeLists.txt脚本，如下所示：
 
-```
+```txt
 # the minimum version of CMake.
 cmake_minimum_required(VERSION 3.4.1)
 project(MyApplication) 
@@ -48,7 +54,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so)
 ## externalNativeOptions
 
 模块级build-profile.json5中externalNativeOptions参数是NDK工程C/C++文件编译配置的入口，可以通过path指定CMake脚本路径、arguments配置CMake参数、cppFlags配置C++编译器参数、abiFilters配置编译架构等。
-```
+```json
 "apiType": "stageMode",
 "buildOption": {
   "arkOptions": {
@@ -70,7 +76,7 @@ externalNativeOptions具体参数说明如下表所示。
 | 配置项 | 类型 | 说明 | 
 | -------- | -------- | -------- |
 | path | string | CMake构建脚本地址，即CMakeLists.txt文件地址。 | 
-| abiFilters | array | 本机的ABI编译环境，包括：<!--Del--><br/>- armeabi-v7a<!--DelEnd--><br/>- arm64-v8a<br/>- x86_64<br/>如不配置该参数，编译时默认编译出arm64-v8a架构相关so。 | 
+| abiFilters | array | 本机的ABI编译环境，包括：<!--Del--><br/>- armeabi-v7a<!--DelEnd--><br/>- arm64-v8a<br/>- x86_64<br/>如不配置该参数，编译时默认编译出arm64-v8a架构相关的so。 | 
 | arguments | string | CMake编译参数。 | 
 | cppFlags | string | C++编译器参数。 | 
 

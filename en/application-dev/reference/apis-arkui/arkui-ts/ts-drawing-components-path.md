@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Path** component is used to draw a custom closed shape based on a specified drawing path.
 
@@ -147,7 +147,7 @@ Sets the stroke dashes. This attribute can be dynamically set using [attributeMo
 
 | Name| Type            | Mandatory| Description                     |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Stroke dashes.<br>Default value: [] (empty array)<br>Default unit: vp<br>The **undefined** and **null** values are treated as the default value.|
+| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the path outline. Elements alternate between dash length and gap length.<br>Default value: [] (empty array)<br>Default unit: vp<br>The **undefined** and **null** values are treated as the default value.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
 
 ### strokeDashOffset
 
@@ -245,7 +245,7 @@ Sets the stroke opacity. This attribute can be dynamically set using [attributeM
 
 strokeWidth(value: Length)
 
-Sets the stroke width. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If of the string type, this attribute cannot be set in percentage. A percentage is processed as 1 px.
+Sets the stroke width. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is of the string type, percentage values are not supported and will be treated as 1 px.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -257,7 +257,7 @@ Sets the stroke width. This attribute can be dynamically set using [attributeMod
 
 | Name| Type                        | Mandatory| Description                    |
 | ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**<br>Default unit: vp<br>Default unit: vp<br>For abnormal values undefined, null, and NaN, the default value is used. For Infinity, the value 0 is used.|
+| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**<br>Default unit: vp<br>For abnormal values undefined, null, and NaN, the default value is used. For Infinity, the value 0 is used.|
 
 ### antiAlias
 
@@ -400,15 +400,15 @@ struct PathTypeExample {
         .fillOpacity(0)
         .stroke(Color.Black)
         .strokeWidth(3)
-      // Use the number type for the width and height to draw an arc.
-      Path({ width: 200, height: 200 })
-        .commands('M0 0 H200 V200 H0 Z')
+      // Use the number type to draw a rectangle.
+      Path({ width: 200, height: 100 })
+        .commands('M200 0 H400 V200 H200 Z')
         .fillOpacity(0)
         .stroke(Color.Black)
         .strokeWidth(3)
-      // Use the Resource type (customized by the user) for the width, height, and command string to draw an arc.
-      Path({ width: $r('app.string.PathWidth'), height: $r('app.string.PathHeight') })
-        .commands($r('app.string.PathCommands'))
+      // Use the Resource type (customized by yourself) for the width, height, and command string to draw an arc.
+      Path({ width: $r('app.string.PathWidth'), height: $r('app.string.PathHeight') }) // In this example, PathWidth and PathHeight are both defined as 200.
+        .commands($r('app.string.PathCommands')) // In this example, PathCommands is defined as "M150 300 Q300 0 450 300 Z".
         .fillOpacity(0)
         .stroke(Color.Black)
         .strokeWidth(3)

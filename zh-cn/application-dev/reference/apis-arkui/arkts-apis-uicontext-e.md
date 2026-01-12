@@ -93,11 +93,11 @@
 | SWIPE | 4| 滑动手势。 |
 | ROTATION| 5 | 旋转手势。 |
 
-## ResolveStrategy<sup>23+</sup>
+## ResolveStrategy<sup>22+</sup>
 
 UIContext对象的解析策略。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

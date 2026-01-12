@@ -57,7 +57,7 @@ bm help
 ## 安装命令（install）
 
 ```bash
-bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId]
+bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId] [-d]
 ```
 
   **安装命令参数列表**
@@ -68,9 +68,10 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId]
 | -h | 帮助信息。 |
 | -p | 可选参数，指定待安装的HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。从API version 22开始，支持指定待安装的APP路径，也可指定只存在一个APP的文件夹路径。 |
 | -r | 可选参数，覆盖安装一个HAP/HSP。默认缺省，缺省时表示覆盖安装。 |
-| -s | 安装应用间HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。指定目录的时候，每个路径目录下只能存在一个HSP。 |
+| -s | 安装应用间HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。指定目录的时候，每个路径目录下只能存在一个HSP。<br>**说明：**<br> 应用间HSP不对三方应用开放，三方无法安装应用间HSP。 |
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为180s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
 | -u | 可选参数，指定[用户](#userid)，默认在当前活跃用户下安装应用。仅支持在当前活跃用户或0用户下安装。<br>**说明：**<br> 如果当前活跃用户是100，使用命令`bm install -p /data/local/tmp/ohos.app.hap -u 102`安装时，只会在当前活跃用户100下安装应用。 |
+| -d | 可选参数，允许应用降级安装，即设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。仅支持签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用降级安装。从API version 23开始支持。 |
 
 
 示例：
@@ -89,6 +90,8 @@ bm install -p aaa.hap -s xxx.hsp yyy.hsp
 bm install -p /data/local/tmp/hapPath/
 # 安装一个hap,等待时间为180s
 bm install -p /data/local/tmp/ohos.app.hap -w 180
+# 设备已安装了一个高版本的应用，覆盖安装一个同包名低版本的hap
+bm install -p /data/local/tmp/ohos.app.hap -d
 ```
 
 ## 卸载命令（uninstall）
@@ -547,9 +550,9 @@ error: user not exist.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```shell
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 304 当前系统账号没有安装HAP包
 **错误信息**
@@ -602,11 +605,13 @@ HAP/HSP包没有签名。
 
 **处理步骤**
 
+请开发者根据实际场景选择自动签名或者手动签名，例如无法连接互联网的情况下推荐使用手动签名方式，详情参考[使用场景说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section54361623194519)。
+
 方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
 
 方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
-方法三. 如果安装APP时报这个错误码，需要在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)里配置appWithSignedPkg为true，保证APP里的HAP/HSP有签名。
+方法三. 如果安装APP时报这个错误码，需要在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)里配置[packOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215)的appWithSignedPkg属性为true，保证APP里的HAP/HSP有签名。
 
 ### 9568321 签名文件解析失败
 **错误信息**
@@ -779,62 +784,63 @@ error: install parse profile prop check error.
 
 **可能原因**
 
-1. [app.json5配置文件](../quick-start/app-configuration-file.md#配置文件标签)中的bundleName、[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中name不符合命名规则。
+1. [app.json5配置文件](../quick-start/app-configuration-file.md#配置文件标签)中的bundleName、[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中name不符合命名规则。<!--Del-->
 
-<!--Del-->
-2. [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities标签)中type字段配置为service或dataShare。
-<!--DelEnd-->
-
+2. [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities标签)中type字段配置为service或dataShare。<!--DelEnd-->
 
 **处理步骤**
-1. 根据命名规则调整app.json5配置文件中bundleName、module.json5文件中的name字段。
-<!--Del-->
+1. 根据命名规则调整app.json5配置文件中bundleName、module.json5文件中的name字段。<!--Del-->
+
 2. 若extensionAbilities中type字段配置为service或dataShare，应用需要配置[allowAppUsePrivilegeExtension特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md)，配置方式如下。
 
     1. 获取新的签名指纹。
 
-        a. 在工程级build-profile.json5(工程根目录下)文件中，signingConfigs字段内的profile的值即为签名文件的存储路径。
+        * 在工程级build-profile.json5(工程根目录下)文件中，signingConfigs字段内的profile的值即为签名文件的存储路径。
 
-        b. 打开该签名文件（后缀为.p7b），打开后在文件内搜索“development-certificate”，将“-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”以及中间的信息拷贝到新的文本中，注意换行并去掉换行符，保存为一个新的.cer文件，如命名为xxx.cer。
+        * 打开该签名文件（后缀为.p7b），打开后在文件内搜索“development-certificate”，将“-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”以及中间的信息拷贝到新的文本中，注意换行并去掉换行符，保存为一个新的.cer文件，如命名为xxx.cer。
 
-        新的.cer文件格式如下图（仅作为格式示意，内容以实际为准）：
+           新的.cer文件格式如下图（仅作为格式示意，内容以实际为准）：
 
-        ![示例图](figures/zh-cn_image_0000001585521364.png)
+           ![示例图](figures/zh-cn_image_0000001585521364.png)
 
-        c. 使用keytool工具（在DevEco Studio安装目录下的jbr/bin文件夹内），执行如下命令，通过.cer文件获取证书指纹的SHA256值。
-          ```
-          keytool -printcert -file xxx.cer
-          ```
-        d. 将证书指纹中SHA256的内容去掉冒号，即为最终要获得的签名指纹。
+        * 使用keytool工具（在DevEco Studio安装目录下的jbr/bin文件夹内），执行如下命令，通过.cer文件获取证书指纹的SHA256值。
 
-        如下图（仅作为格式示意，内容以实际为准）：
+            ```shell
+            keytool -printcert -file xxx.cer
+            ```
+        * 将证书指纹中SHA256的内容去掉冒号，即为最终要获得的签名指纹。
 
-        ![示例图](figures/zh-cn_image_0000001635921233.png)
+           如下图（仅作为格式示意，内容以实际为准）：
 
-        去掉冒号后的签名指纹为：5753DDBC1A8EF88A62058A9FC4B6AFAFC1C5D8D1A1B86FB3532739B625F8F3DB。
+           ![示例图](figures/zh-cn_image_0000001635921233.png)
+
+           去掉冒号后的签名指纹为：5753DDBC1A8EF88A62058A9FC4B6AFAFC1C5D8D1A1B86FB3532739B625F8F3DB。
 
     2. 获取设备的特权管控白名单文件install_list_capability.json。
 
-        a. 连接设备，进入shell。
-        ```
-        hdc shell
-        ```
-        b. 执行如下命令查看设备的特权管控白名单文件install_list_capability.json。
-        ```
-        // 设备中查询白名单文件的位置
-        find /system -name install_list_capability.json
-        ```
-        c. 执行如下命令拉取install_list_capability.json。
-        ```
-        hdc target mount
-        hdc file recv /system/etc/app/install_list_capability.json
-        ```
+        * 连接设备，进入shell。
+
+            ```shell
+            hdc shell
+            ```
+        * 执行如下命令查看设备的特权管控白名单文件install_list_capability.json。
+
+            ```shell
+            // 设备中查询白名单文件的位置
+            find /system -name install_list_capability.json
+            ```
+        * 执行如下命令拉取install_list_capability.json。
+
+            ```shell
+            hdc target mount
+            hdc file recv /system/etc/app/install_list_capability.json
+            ```
 
     3. 将步骤1获取到的签名指纹配置到install_list_capability.json文件的app_signature中，注意要配置到对应的bundleName下。
-    ![示例图](figures/zh-cn_image_0000001635641893.png)
+       ![示例图](figures/zh-cn_image_0000001635641893.png)
     4. 将修改后的install_list_capability.json文件重新推到设备上，并重启设备。
 
-        ```
+        ```shell
         hdc target mount
         hdc file send install_list_capability.json /system/etc/app/install_list_capability.json
         hdc shell chmod 644 /system/etc/app/install_list_capability.json
@@ -897,7 +903,7 @@ error: install parse profile missing prop.
 * 方法2：通过hilog日志判断缺失字段。
 
     开启落盘命令：
-    ```
+    ```shell
     hilog -w start
     ```
 
@@ -1014,6 +1020,23 @@ error: install invalid hap name.
 
 检查安装包的名称后缀是否正确。
 
+### 9568276 安装应用已存在
+**错误信息**
+
+error: install already exist.
+
+**错误描述**
+
+应用已存在，bundleName重复导致安装失败。
+
+**可能原因**
+
+bundleName重复导致安装失败。
+
+**处理步骤**
+
+请更换应用的bundleName。
+
 ### 9568267 entry模块已存在
 **错误信息**
 
@@ -1091,30 +1114,31 @@ error: signature verification failed due to not trusted app source.
 **处理步骤**
 
 <!--RP9-->
-<!--RP9End--><!--Del-->1. <!--DelEnd-->使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
-<!--Del-->
+<!--RP9End-->
+1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。<!--Del-->
+
 2. 如果使用的是手动签名，对于OpenHarmony应用，请参考[OpenHarmony应用手动签名](../security/hapsigntool-guidelines.md)，在UnsgnedDebugProfileTemplate.json文件中添加该调试设备的**UDID**。
 
     1. 获取当前设备的UDID。
 
-    ```
-      //UDID获取命令
-      hdc shell bm get -u
-    ```
+        ```shell
+          //UDID获取命令
+          hdc shell bm get -u
+        ```
 
     2. 打开DevEco Studio安装路径，在sdk目录下找到UnsgnedDebugProfileTemplate.json配置文件。
 
-    ```
-      DevEco Studio安装路径\sdk\版本号或者default\openharmony\toolchains\lib\
+        ```shell
+          DevEco Studio安装路径\sdk\版本号或者default\openharmony\toolchains\lib\
 
-      例如：xxxx\Huawei\DevEco Studio\sdk\HarmonyOS-NEXT-DB1\openharmony\toolchains\lib\
-      例如：xxxx\Huawei\DevEco Studio\sdk\default\openharmony\toolchains\lib\
-    ```
+          例如：xxxx\Huawei\DevEco Studio\sdk\HarmonyOS-NEXT-DB1\openharmony\toolchains\lib\
+          例如：xxxx\Huawei\DevEco Studio\sdk\default\openharmony\toolchains\lib\
+        ```
 
     3. 在UnsgnedDebugProfileTemplate.json文件的device-ids字段中，添加当前设备的UDID。
 
-3. 使用文本编辑器打开已签名的HAP，检查签名中是否包含调试设备的UDID，搜索device-ids。
-<!--DelEnd-->
+3. 使用文本编辑器打开已签名的HAP，检查签名中是否包含调试设备的UDID，搜索device-ids。<!--DelEnd-->
+
 
 
 ### 9568286 安装应用的签名证书profile文件中的类型与已安装应用的不相同
@@ -1203,12 +1227,10 @@ error: install failed due to update hap token failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```shell
+    hdc file recv /data/log/hilog/
+    ```
 
-
-<!--Del-->
 ### 9568291 singleton不一致导致安装失败
 **错误信息**
 
@@ -1226,10 +1248,28 @@ error: install failed due to singleton not same.
 
 方案1：卸载已安装的应用包（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再安装新的应用包。
 
-方案2：更新包调整singleton配置，与已安装包配置一致，重新打包，再更新应用包。<!--DelEnd-->
+方案2：更新包调整singleton配置，与已安装包配置一致，重新打包，再更新应用包。
+
+
+### 9568293 SysCap不一致导致安装失败
+**错误信息**
+
+error: install failed due to check syscap filed.
+
+**错误描述**
+
+SysCap不一致导致安装失败。
+
+**可能原因**
+
+多个HAP/HSP中配置的[SysCap](./../reference/syscap.md)不一致。
+
+**处理步骤**
+
+检查多HAP/HSP中配置的SysCap，请保持一致。
 
 <!--Del-->
-### 9568294 应用类别不一致导致的安装失败
+### 9568294 appType不一致导致的安装失败
 **错误信息**
 
 error: install failed due to apptype not same.
@@ -1244,8 +1284,9 @@ error: install failed due to apptype not same.
 
 **处理步骤**
 
-* 方案1：卸载已安装的HAP包（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再安装新的HAP包。
-* 方案2：修改待安装HAP包的签名文件中的app-feature字段，确保与已安装包配置一致，重新打包、签名[应用/元服务签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)，再重试安装。<!--DelEnd-->
+* 方案一：卸载已安装的HAP包（PC/2in1设备需要确保所有用户下都卸载完成），再安装新的HAP包。
+* 方案二：保证多HAP/HSP使用同一个证书签名，保证签名的一致性。
+* 方案三：修改待安装HAP包的签名文件中的app-feature字段，确保与已安装包配置一致，重新打包、签名[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)，再重试安装。<!--DelEnd-->
 
 ### 9568297 由于设备sdk版本较低导致安装失败
 **错误信息**
@@ -1265,14 +1306,12 @@ error: install failed due to older sdk version in the device.
 **处理步骤**
 
 * 场景一：设备上的镜像版本低于编译打包的SDK版本，请更新设备镜像版本。查询设备镜像版本命令：
-  ```
+  ```bash
   hdc shell param get const.ohos.apiversion
   ```
   如果镜像提供的api版本为10，且应用编译所使用的SDK版本也为10，仍出现该报错，可能是由于镜像版本较低，未兼容新版本SDK校验规则，请将镜像版本更新为最新版本。
 
 * 场景二：对于需要运行在OpenHarmony设备上的应用，请确认runtimeOS已改为OpenHarmony。
-
-
 
 ### 9568299 安装信息异常
 
@@ -1529,9 +1568,9 @@ UserID 0用户安装了非singleton权限的应用。
 **处理步骤**
 
 1. 应用是非singleton权限的，不需要指定用户，直接安装。
-	```bash
-	hdc shell bm install -p /data/hap名.hap
-	```
+    ```bash
+    hdc shell bm install -p /data/hap名.hap
+    ```
 
 
 ### 9568263 无法降级安装
@@ -1550,6 +1589,31 @@ error: install version downgrade.
 **处理步骤**
 
 1. 卸载已安装的应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），重新安装新应用。
+2. 对于已安装的证书分发类型为app_gallery或者签名证书类型为debug的三方应用，当新安装的版本低于当前版本时，支持降级安装，可以使用`-d`命令实现降级安装。
+
+    ``` bash
+    hdc shell bm install -p /data/example.hap -d
+    ```
+
+
+### 9568264 安装检验签名一致性失败
+**错误信息**
+
+error: install verification failed.
+
+**错误描述**
+
+安装时，校验签名一致性失败。
+
+**可能原因**
+
+校验唯一标识[appIdentifier](./../quick-start/common_problem_of_application.md#什么是appidentifier)不一样，导致安装失败。
+
+**处理步骤**
+
+方法一：如果应用可以卸载，可以先卸载应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再重新安装。
+
+方法二：签名文件Profile可以用文本编辑器打开，搜索`app-identifier`字段，调整安装参数中的appIdentifier，需要和签名文件Profile保持一致。
 
 
 ### 9568301 模块类型不一致
@@ -1678,7 +1742,7 @@ error: shared bundle is not exist.
 **处理步骤**
 
 检查需要卸载的应用间HSP是否存在。
-```
+```bash
 hdc shell bm dump-shared -n com.xxx.xxx.demo
 ```
 
@@ -1719,14 +1783,14 @@ error: isolationMode does not match the system.
 **处理步骤**
 
 1. 按照设备的隔离模式配置HAP配置文件isolationMode属性。
-	```bash
-	# 查询设备persist.bms.supportIsolationMode值，若返回errNum is:106说明没配置
-	hdc shell
-	param get persist.bms.supportIsolationMode
-	# 配置设备persist.bms.supportIsolationMode值
-	hdc shell
-	param set persist.bms.supportIsolationMode [true|false]
-	```
+    ```bash
+    # 查询设备persist.bms.supportIsolationMode值，若返回errNum is:106说明没配置
+    hdc shell
+    param get persist.bms.supportIsolationMode
+    # 配置设备persist.bms.supportIsolationMode值
+    hdc shell
+    param set persist.bms.supportIsolationMode [true|false]
+    ```
 
 
 ### 9568310 兼容策略不同
@@ -1767,7 +1831,7 @@ error: bundle manager service is died.
 
 2. 重复上述步骤3到5次后依旧安装失败，请查询设备的/data/log/faultlog/faultlogger/目录下是否存在包含foundation字样的crash文件。
 
-    ```
+    ```bash
     hdc shell
     cd /data/log/faultlog/faultlogger/
     ls -ls
@@ -1775,7 +1839,7 @@ error: bundle manager service is died.
 
 3. 导出crash文件和日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-    ```
+    ```bash
     hdc file recv /data/log/faultlog/faultlogger/
     hdc file recv /data/log/hilog/
     ```
@@ -1815,9 +1879,9 @@ error: copy file failed.
 2. 源文件打开失败。
 3. 获取源文件状态失败。
 4. 源文件的大小无效。
-6. 源文件拷贝失败。
-7. 源文件没有访问权限。
-8. 更改文件权限失败。
+5. 源文件拷贝失败。
+6. 源文件没有访问权限。
+7. 更改文件权限失败。
 
 **处理步骤**
 
@@ -1825,9 +1889,9 @@ error: copy file failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568401 调试包仅支持运行在开发者模式设备
 **错误信息**
@@ -1873,9 +1937,9 @@ error: delivery sign profile failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568405 删除签名配置文件失败
 
@@ -1899,9 +1963,9 @@ error: remove sign profile failed.
 
 2. 重复上述步骤3到5次后依旧卸载失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568381 应用进程删除失败
 **错误信息**
@@ -1956,6 +2020,11 @@ bm工具进程异常或者权限丢失，导致卸载应用时无权限。
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
+
 ### 9568385 卸载服务异常
 **错误信息**
 
@@ -1975,7 +2044,7 @@ error: uninstall bundle mgr service error.
 
 2. 重复上述步骤3到5次后依旧安装失败，请查询设备的/data/log/faultlog/faultlogger/目录下是否存在包含foundation字样的crash文件。
 
-    ```
+    ```bash
     hdc shell
     cd /data/log/faultlog/faultlogger/
     ls -ls
@@ -1983,7 +2052,7 @@ error: uninstall bundle mgr service error.
 
 3. 导出crash文件和日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-    ```
+    ```bash
     hdc file recv /data/log/faultlog/faultlogger/
     hdc file recv /data/log/hilog/
     ```
@@ -2040,6 +2109,11 @@ error: unknown.
 1. 重启手机后再次尝试安装应用。
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568284 安装版本不匹配
 **错误信息**
@@ -2279,10 +2353,10 @@ error: installd param error.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-# 导出日志文件
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568351 创建文件目录异常导致安装失败
@@ -2304,10 +2378,10 @@ error: installd create dir failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-# 导出日志文件
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568354 删除文件目录异常导致安装失败
@@ -2329,10 +2403,10 @@ error: installd remove dir failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-# 导出日志文件
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568355 安装包中提取文件失败
@@ -2354,10 +2428,10 @@ error: installd extract files failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-# 导出日志文件
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568356 安装过程中重命名目录名失败
@@ -2379,10 +2453,10 @@ error: installd rename dir failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-# 导出日志文件
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568357 清理文件失败
 **错误信息**
@@ -2403,10 +2477,10 @@ error: installd clean dir failed.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-# 导出日志文件
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568359 安装设置selinux失败
@@ -2431,6 +2505,61 @@ error: installd set selinux label failed.
 2. 若apl字段有误，修改UnsgnedReleasedProfileTemplate.json文件中apl字段，并重新签名。
 
     ![示例图](figures/zh-cn_image_9568359_2.png)
+
+
+### 9568360 安装overlay应用出现错误
+**错误信息**
+
+error: internal error of overlay installation.
+
+**错误描述**
+
+安装overlay应用出现错误。
+
+**可能原因**
+
+解析overlay安装包失败或者安装内部出现异常导致安装失败。
+
+**处理步骤**
+
+方法一：重新编译overlay应用再尝试安装。
+
+方法二：设备重启之后，再尝试安装。
+
+### 9568361 overlay应用中目标包名为空导致安装失败
+**错误信息**
+
+error: invalid bundle name of overlay installation.
+
+**错误描述**
+
+overlay应用中目标包名为空导致安装失败。
+
+**可能原因**
+
+overlay应用中targetBundleName为空。
+
+**处理步骤**
+
+检查overlay应用中的[app.json5配置文件](../quick-start/app-configuration-file.md)的targetBundleName字段是否配置。
+
+### 9568362 overlay应用中目标模块名称为空导致安装失败
+**错误信息**
+
+error: invalid module name of overlay installation.
+
+**错误描述**
+
+overlay应用中目标模块名称为空导致安装失败。
+
+**可能原因**
+
+overlay应用中targetModuleName为空。
+
+**处理步骤**
+
+检查overlay应用中的[module.json5配置文件](../quick-start/module-configuration-file.md)的targetModuleName字段是否配置。
+
 
 ### 9568398 企业MDM应用/普通企业应用不允许安装
 **错误信息**
@@ -2775,7 +2904,7 @@ error: Check pluginDistributionID between plugin and host application failed.
 **处理步骤**
 
 重新配置应用或者插件<!--RP5-->[签名证书profile文件](../security/app-provision-structure.md)<!--RP5End-->中的 pluginDistributionIDs。配置格式如下：
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
@@ -2783,7 +2912,7 @@ error: Check pluginDistributionID between plugin and host application failed.
 }
 ``` 
 
-### 9568433 应用缺少ohos.permission.SUPPORT_PLUGIN权限
+### 9568433 应用缺少ohos.permission.kernel.SUPPORT_PLUGIN权限
 **错误信息**
 
 error: Failed to install the plugin because host application check permission failed.
@@ -2794,14 +2923,13 @@ error: Failed to install the plugin because host application check permission fa
 
 **可能原因**
 
-应用缺少ohos.permission.SUPPORT_PLUGIN权限。
+应用缺少ohos.permission.kernel.SUPPORT_PLUGIN权限。
 
 **处理步骤**
 
-1. 参考[权限申请指导](../security/AccessToken/declare-permissions.md)申请[ohos.permission.kernel.SUPPORT_PLUGIN权限](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin)。
-<!--Del-->
-2. 该权限等级为system_basic，若[应用APL等级](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)低于system_basic，请[申请受限权限](../security/AccessToken/declare-permissions-in-acl.md)。
-<!--DelEnd-->
+1. 参考[权限申请指导](../security/AccessToken/declare-permissions.md)申请[ohos.permission.kernel.SUPPORT_PLUGIN权限](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin)。<!--Del-->
+
+2. 该权限等级为system_basic，若[应用APL等级](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)低于system_basic，请[申请受限权限](../security/AccessToken/declare-permissions-in-acl.md)。<!--DelEnd-->
 
 
 ### 9568333 模块名称为空
@@ -2927,6 +3055,7 @@ error: Install parse profile prop type error.
 
 使用DevEco Studio重新构建、打包、安装。
 
+
 ### 9568345 配置文件中的字符串长度或者数组大小过大
 **错误信息**
 
@@ -2943,6 +3072,25 @@ error: too large size of string or array type element in the profile.
 **处理步骤**
 
 使用DevEco Studio重新构建、打包、安装。
+
+
+### 9568346 解析安装包获取SysCap信息失败
+
+**错误信息**
+
+error: install parse syscap error.
+
+**错误描述**
+
+安装过程中，解析安装包获取[SysCap](./../reference/syscap.md)信息失败。
+
+**可能原因**
+
+HAP/HSP包损坏。
+
+**处理步骤**
+
+尝试重新安装，如果还是失败，请重新编译签名打包出新的包，再安装新编译的HAP/HSP。
 
 
 ### 9568347 解析本地so文件失败
@@ -2970,7 +3118,7 @@ error: install parse native so failed.
 
 2. 在命令行执行如下[hdc命令](#环境要求hdc工具)，查询设备支持的Abi列表。
 
-    ```
+    ```bash
     hdc shell
     param get const.product.cpu.abilist
     ```
@@ -2978,7 +3126,7 @@ error: install parse native so failed.
 
     <!--Del-->
     * 若返回结果为default，请执行如下命令，查询是否存在lib64文件夹。
-      ```
+      ```bash
       cd /system/
       ls
       ```
@@ -3027,10 +3175,10 @@ error: Installd get proxy error.
 
 2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-```
-# 导出日志文件
-hdc file recv /data/log/hilog/
-```
+    ```bash
+    # 导出日志文件
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568434 设备不具备插件能力
 **错误信息**
@@ -3101,7 +3249,7 @@ error: Failed to install the plugin because the plugin id failed to be parsed.
 **处理步骤**
 
 参考如下格式，重新配置插件<!--RP5-->[签名证书profile文件](../security/app-provision-structure.md)<!--RP5End-->中的"app-services-capabilities"字段。
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"

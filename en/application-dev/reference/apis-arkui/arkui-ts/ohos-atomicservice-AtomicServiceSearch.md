@@ -16,7 +16,7 @@
 
 ## Modules to Import
 
-```
+``` ts
 import { AtomicServiceSearch } from '@kit.ArkUI';
 ```
 
@@ -65,7 +65,7 @@ Provides optional attributes for the selection area.
 | selected                | number| No| Yes| Index of the initially selected item in the drop-down list box. The index of the first item is 0. If this attribute is not set, the default value **-1** is used, indicating that no item is selected.|
 | selectValue             | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Text content of the drop-down list button itself. Default value: **undefined**.|
 | onSelect                | [OnSelectCallback](#onselectcallback) | No| Yes| Callback invoked when an item in the drop-down list box is selected. Default value: **undefined**.|
-| menuItemContentModifier | [ContentModifier&lt;MenuItemConfiguration&gt;](ts-basic-components-select.md#menuitemconfiguration12) | No| Yes| 	Content modifier to apply to the drop-down list box. Once it is applied, the drop-down list box content will be fully customizable by developers. Note that default style attributes (such as dividers, background color, and font styles) will no longer take effect.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. Default value: **undefined**.|
+| menuItemContentModifier | [ContentModifier&lt;MenuItemConfiguration&gt;](ts-basic-components-select.md#menuitemconfiguration12) | No| Yes| Content modifier to apply to the drop-down list box. Once it is applied, the drop-down list box content will be fully customizable by developers. Note that default style attributes (such as dividers, background color, and font styles) will no longer take effect.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. Default value: **undefined**.|
 | divider                 | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[DividerOptions](ts-basic-components-textpicker.md#divideroptions12)&gt; \| null | No| Yes| Divider options.<br>1. If **DividerOptions** is set, the divider is displayed in the configured style. Default value: **{strokeWidth: '1px', color: '#33182431'}**<br>2. If this parameter is set to **null**, the divider is not displayed.<br>3. If the value of **strokeWidth** is too larger, the divider may overlap the text. The divider extends both upwards and downwards from the bottom of each item.<br>4. The default values for **startMargin** and **endMargin** are consistent with the style of the divider when the **divider** attribute is not set. If the sum of **startMargin** and **endMargin** is equal to the value of **optionWidth**, the divider is not displayed. If the sum of **startMargin** and **endMargin** exceeds the value of **optionWidth**, the divider line is displayed in the default style.|
 | font                    | [Font](ts-types.md#font) | No| Yes| Text font of the drop-down list button. Default value: **{size: $r('sys.float.ohos_id_text_size_body1')}**|
 | fontColor               | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color of the selected item in the drop-down list box. Default value: **{fontColor: $r('sys.color.ohos_id_color_text_primary')}**  |

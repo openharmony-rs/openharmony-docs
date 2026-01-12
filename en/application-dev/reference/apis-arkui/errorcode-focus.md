@@ -1,10 +1,10 @@
 # Focus Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -22,11 +22,11 @@ This error code is reported when the current component is not focusable.
 
 **Possible Causes**
 
-The component is not focusable by default or has been set to not focusable through attribute methods such as **focusable**.
+The component is not focusable by default or has been configured through attribute methods such as **focusable**.
 
 **Solution**
 
-N/A
+Check whether the current component is focusable and whether **focusable** is set to **true**.
 
 ## 150002 Ancestor Component Not Focusable
 
@@ -40,11 +40,11 @@ This error code is reported when an ancestor of the current component is not foc
 
 **Possible Causes**
 
-The ancestor component is not focusable by default or has been set to not focusable through attribute methods such as **focusable**.
+The ancestor component is not focusable by default or has been configured through attribute methods such as **focusable**.
 
 **Solution**
 
-N/A
+Check whether the ancestor component is focusable and whether **focusable** is set to **true**.
 
 ## 150003 Component Does Not Exist
 
@@ -62,4 +62,4 @@ The provided ID is incorrect, or the component has been destroyed.
 
 **Solution**
 
-N/A
+Use the correct ID or component.

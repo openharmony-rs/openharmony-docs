@@ -17,6 +17,8 @@
 > 从API version 12开始，在\@ComponentV2装饰的自定义组件中支持使用\@Param装饰器。
 >
 > 从API version 12开始，该装饰器支持在原子化服务中使用。
+>
+> 从API version 23开始，该装饰器支持在ArkTS卡片中使用。
 
 ## 概述
 
@@ -412,7 +414,7 @@ struct Child {
 
 - \@Param装饰的变量表示组件外部输入，需要初始化。支持使用本地初始值或外部传入值进行初始化。当存在外部传入值时，优先使用外部传入值。不允许既不使用本地初始值，也不使用外部传入值。
 
-  ```ts	
+  ```ts
   @ComponentV2
   struct ChildComponent {
     @Param param1: string = 'Initialize local';

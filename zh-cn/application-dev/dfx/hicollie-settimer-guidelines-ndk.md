@@ -56,14 +56,12 @@
 
    引入头文件及定义LOG_TAG。
 
-   <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[EventSub_napi_nohiappevent_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    #include "napi/native_api.h"
-   #include "json/json.h"
+   // ...
    #include "hilog/log.h"
-   #include "hiappevent/hiappevent.h"
-   #include "hiappevent/hiappevent_event.h"
    
    #undef LOG_TAG
    #define LOG_TAG "testTag"
@@ -120,6 +118,7 @@
    ```
 
 5. 编辑“Index.ets”文件。
+   
    引入调用C接口的头文件。
 
    <!-- @[EventSub_Index_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
@@ -151,15 +150,15 @@
 
 7. 在DevEco Studio的底部，切换到“Log->HiLog”窗口，设置日志的过滤条件为“testTag”。
 
-   （1）点击“testHiCollieTimerNdk”按钮执行程序，日志窗口打印任务id。
+   （1）点击“TestHiCollieTimerNdk”按钮执行程序，日志窗口打印任务id。
 
-   ```
+   ```text
    .../testTag ... HiCollieTimer taskId: x
    ```
 
    （2）等待2s后，执行回调函数，日志窗口打印。
 
-   ```
+   ```text
    .../testTag ... HiCollieTimerNdk CallBack
    ```
 

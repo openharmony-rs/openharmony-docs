@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie; @hongjin-li_admin-->
 <!--Designer: @chenxi0605; @JerryH1011-->
 <!--Tester: @leiyuqian-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **fileShare** module provides APIs for granting the access permissions on a user file to another application based on the file Uniform Resource Identifier (URI). Then, the authorized application can access the file by using the [@ohos.file.fs](js-apis-file-fs.md) APIs.
 
@@ -49,14 +49,16 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 143000001 | IPC error. |
+| 14300001 | IPC error. |
 
 **Example**
 
   ```ts
   import { wantConstant } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  let uri: string = 'file://docs/storage/Users/currentUser/Document/1.txt';  // You are advised to use the system API fileUri.getUriFromPath("Sandbox path") to generate a URI.;
+
+  let uri: string =
+    'file://docs/storage/Users/currentUser/Document/1.txt'; // You are advised to use the system API fileUri.getUriFromPath("Sandbox path") to generate a URI.;
   let bundleName: string = 'com.demo.test';
   try {
     fileShare.grantUriPermission(uri, bundleName, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION |
@@ -108,14 +110,16 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 143000001 | IPC error. |
+| 14300001 | IPC error. |
 
 **Example**
 
   ```ts
   import { wantConstant } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  let uri: string = 'file://docs/storage/Users/currentUser/Document/1.txt'; // You are advised to use the system API fileUri.getUriFromPath("Sandbox path") to generate a URI.;
+
+  let uri: string =
+    'file://docs/storage/Users/currentUser/Document/1.txt'; // You are advised to use the system API fileUri.getUriFromPath("Sandbox path") to generate a URI.;
   let bundleName: string = 'com.demo.test';
   try {
     fileShare.grantUriPermission(uri, bundleName, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION |
@@ -170,7 +174,6 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
   import { fileShare } from '@kit.CoreFileKit';
   
   async function checkPersistentPermissionExample() {

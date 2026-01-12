@@ -11,11 +11,11 @@
 >
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-The **webSocket** module implements bidirectional connections between the WebSocket client and WebSocket server for third-party applications. Currently, the WebSocket server is available only for smart TVs.
+Provides WebSocket clients and servers for third-party applications to implement bidirectional connections between the client and server.
 
-On the WebSocket client: You can use WebSocket to establish a bidirectional connection between the server and client. Before doing this, you need to use the [createWebSocket](#websocketcreatewebsocket6) API to create a [WebSocket](#websocket6) object and then use the [connect](#connect6) API to connect to the server. If the connection is successful, the client will receive a callback of the [open](#onopen6) event. Then, the client can communicate with the server using the [send](#send6) API. When the server sends a message to the client, the client will receive a callback of the [message](#onmessage6) event. If the connection is no longer needed, the client can call the [close](#close6) API to close the connection. After successful disconnection, the client will receive a callback of the [close](#onclose6) event. If an error occurs in any of the preceding processes, the client will receive a callback of the [error](#onerror6) event.
+On the WebSocket client: You can use WebSocket to establish a bidirectional connection between the server and client. Before doing this, you need to use the [createWebSocket](#websocketcreatewebsocket) API to create a [WebSocket](#websocket) object and then use the [connect](#connect) API to connect to the server. If the connection is successful, the client will receive a callback of the [open](#onopen) event. Then, the client can communicate with the server using the [send](#send) API. When the server sends a message to the client, the client will receive a callback of the [message](#onmessage) event. If the connection is no longer needed, the client can call the [close](#close) API to close the connection. After successful disconnection, the client will receive a callback of the [close](#onclose) event. If an error occurs in any of the preceding processes, the client will receive a callback of the [error](#onerror) event.
 
-On the WebSocket server: You can use WebSocket to establish a bidirectional connection between the server and client. Before doing this, you need to use the [createWebSocketServer](#websocketcreatewebsocketserver19) API to create a [WebSocketServer](#websocketserver19) object and then use the [start](#start19) API to start the server to listen for connection requests from the client. If the connection is successful, the server receives the callback of the [connect](#onconnect19) event. The server can then communicate with the client by using the [send](#send19) API or obtain information about all connected clients by using the [listAllConnections](#listallconnections19) API. When the client sends a message to the server, the server receives the callback of the [messageReceive](#onmessagereceive19) event. If the connection is no longer needed, the server can call the [close](#close19) API to close the connection. After successful disconnection, the server will receive a callback of the [close](#onclose19) event. To stop the service, the server can use the [stop](#stop19) API. If an error occurs in any of the preceding processes, the server will receive a callback of the [error](#onerror19) event.
+On the WebSocket server: Use the [createWebSocketServer](#websocketcreatewebsocketserver19) method to create a [WebSocketServer](#websocketserver19) object, and then use the [start](#start19) method to start the server and listen to the link setup request message from the client. (The API version 23 and later versions support all devices. In earlier versions, only TV devices are supported.) If the connection is successful, the server receives the callback of the [connect](#onconnect19) event. The server can then communicate with the client by using the [send](#send19) API or obtain information about all connected clients by using the [listAllConnections](#listallconnections19) API. When the client sends a message to the server, the server receives the callback of the [messageReceive](#onmessagereceive19) event. If the connection is no longer needed, the server can call the [close](#close19) API to close the connection. After successful disconnection, the server will receive a callback of the [close](#onclose19) event. To stop the service, the server can use the [stop](#stop19) API. If an error occurs in any of the preceding processes, the server will receive a callback of the [error](#onerror19) event.
 
 ## Modules to Import
 
@@ -23,7 +23,7 @@ On the WebSocket server: You can use WebSocket to establish a bidirectional conn
 import { webSocket } from '@kit.NetworkKit';
 ```
 
-## webSocket.createWebSocket<sup>6+</sup>
+## webSocket.createWebSocket
 
 createWebSocket(): WebSocket
 
@@ -37,7 +37,7 @@ Creates a **WebSocket** object, which provides methods to create or close a WebS
 
 | Type                               | Description                                                        |
 | :---------------------------------- | :----------------------------------------------------------- |
-| [WebSocket](#websocket6) | A **WebSocket** object, which contains the **connect**, **send**, **close**, **on**, or **off** method.|
+| [WebSocket](#websocket) | A **WebSocket** object, which contains the **connect**, **send**, **close**, **on**, or **off** method.|
 
 **Example**
 
@@ -45,11 +45,11 @@ Creates a **WebSocket** object, which provides methods to create or close a WebS
 let ws: webSocket.WebSocket = webSocket.createWebSocket();
 ```
 
-## WebSocket<sup>6+</sup>
+## WebSocket
 
-Defines a **WebSocket** object. Before invoking WebSocket APIs, you need to call [webSocket.createWebSocket](#websocketcreatewebsocket6) to create a **WebSocket** object.
+Defines a **WebSocket** object. Before invoking WebSocket APIs, you need to call [webSocket.createWebSocket](#websocketcreatewebsocket) to create a **WebSocket** object.
 
-### connect<sup>6+</sup>
+### connect
 
 connect(url: string, callback: AsyncCallback\<boolean\>): void
 
@@ -59,7 +59,7 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 >
 > You can listen to **error** events to obtain the operation result. 
 >
->The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen6) before calling this API.
+>The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -67,7 +67,9 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 **System capability**: SystemCapability.Communication.NetStack
 
-**Note**: The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters.
+>**NOTE**
+>
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters.
 
 **Parameters**
 
@@ -108,7 +110,7 @@ ws.connect(url, (err: BusinessError, value: boolean) => {
 });
 ```
 
-### connect<sup>6+</sup>
+### connect
 
 connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<boolean\>): void
 
@@ -118,7 +120,7 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 >
 > You can listen to **error** events to obtain the operation result. If an error occurs, the error code 200 will be returned.
 >
->The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen6) before calling this API.
+>The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -126,7 +128,9 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 **System capability**: SystemCapability.Communication.NetStack
 
-**Note**: The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
+>**NOTE**
+>
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
 
 **Parameters**
 
@@ -176,7 +180,7 @@ ws.connect(url, options, (err: BusinessError, value: Object) => {
 });
 ```
 
-### connect<sup>6+</sup>
+### connect
 
 connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 
@@ -186,7 +190,7 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 >
 > You can listen to **error** events to obtain the operation result. If an error occurs, the error code 200 will be returned.
 >
->The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen6) before calling this API.
+>The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -194,7 +198,9 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 
 **System capability**: SystemCapability.Communication.NetStack
 
-**Note**: The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
+>**NOTE**
+>
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
 
 **Parameters**
 
@@ -238,7 +244,7 @@ promise.then((value: boolean) => {
 });
 ```
 
-### send<sup>6+</sup>
+### send
 
 send(data: string | ArrayBuffer, callback: AsyncCallback\<boolean\>): void
 
@@ -301,7 +307,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 >
 > The **send** API can be called only after an **open** event is listened.
 
-### send<sup>6+</sup>
+### send
 
 send(data: string | ArrayBuffer): Promise\<boolean\>
 
@@ -369,7 +375,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 >
 > The **send** API can be called only after an **open** event is listened.
 
-### close<sup>6+</sup>
+### close
 
 close(callback: AsyncCallback\<boolean\>): void
 
@@ -412,7 +418,7 @@ ws.close((err: BusinessError) => {
 });
 ```
 
-### close<sup>6+</sup>
+### close
 
 close(options: WebSocketCloseOptions, callback: AsyncCallback\<boolean\>): void
 
@@ -462,7 +468,7 @@ ws.close(options, (err: BusinessError) => {
 });
 ```
 
-### close<sup>6+</sup>
+### close
 
 close(options?: WebSocketCloseOptions): Promise\<boolean\>
 
@@ -514,11 +520,11 @@ promise.then((value: boolean) => {
 });
 ```
 
-### on('open')<sup>6+</sup>
+### on('open')
 
 on(type: 'open', callback: AsyncCallback\<Object\>): void
 
-Enables listening for the **open** events of a WebSocket connection. This API uses an asynchronous callback to return the result. This event indicates whether the WebSocket connection is successful. This API must be called before [connect](#connect6) is called to initiate a connection request.
+Enables listening for the **open** events of a WebSocket connection. This API uses an asynchronous callback to return the result. This event indicates whether the WebSocket connection is successful. This API must be called before [connect](#connect) is called to initiate a connection request.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -547,7 +553,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 });
 ```
 
-### off('open')<sup>6+</sup>
+### off('open')
 
 off(type: 'open', callback?: AsyncCallback\<Object\>): void
 
@@ -587,7 +593,7 @@ ws.on('open', callback1);
 ws.off('open', callback1);
 ```
 
-### on('message')<sup>6+</sup>
+### on('message')
 
 on(type: 'message', callback: AsyncCallback\<string | ArrayBuffer\>): void
 
@@ -620,7 +626,7 @@ ws.on('message', (err: BusinessError<void>, value: string | ArrayBuffer) => {
 });
 ```
 
-### off('message')<sup>6+</sup>
+### off('message')
 
 off(type: 'message', callback?: AsyncCallback\<string | ArrayBuffer\>): void
 
@@ -651,7 +657,7 @@ let ws = webSocket.createWebSocket();
 ws.off('message');
 ```
 
-### on('close')<sup>6+</sup>
+### on('close')
 
 on(type: 'close', callback: AsyncCallback\<CloseResult\>): void
 
@@ -680,7 +686,7 @@ ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
 });
 ```
 
-### off('close')<sup>6+</sup>
+### off('close')
 
 off(type: 'close', callback?: AsyncCallback\<CloseResult\>): void
 
@@ -710,7 +716,7 @@ let ws = webSocket.createWebSocket();
 ws.off('close');
 ```
 
-### on('error')<sup>6+</sup>
+### on('error')
 
 on(type: 'error', callback: ErrorCallback): void
 
@@ -739,7 +745,7 @@ ws.on('error', (err: BusinessError) => {
 });
 ```
 
-### off('error')<sup>6+</sup>
+### off('error')
 
 off(type: 'error', callback?: ErrorCallback): void
 
@@ -883,9 +889,11 @@ createWebSocketServer(): WebSocketServer
 
 Creates a **WebSocketServer** object, which provides methods to start or stop the WebSocketServer service, send data over the connection, close the connection, list all connections, and enable or disable listening for the **open**, **close**, **message**, and **error** events.
 
-**System capability**: SystemCapability.Communication.NetStack
+> **NOTE**
+>
+> Supported on all devices since API version 23. In earlier versions, this method is supported only on TV devices.
 
-**Device behavior differences**: This API can be properly called on smart TVs. If it is called on other device types, **nullptr** is returned.
+**System capability**: SystemCapability.Communication.NetStack
 
 **Return value**
 
@@ -1463,7 +1471,7 @@ Defines the optional parameters carried in the request for establishing a WebSoc
 | header | Object |  No |  Yes  | Header carrying optional parameters in the request for establishing a WebSocket connection. You can customize the parameter or leave it unspecified.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | caPath<sup>11+</sup> | string |  No |  Yes | Path of CA certificates. If a path is set, the system uses the CA certificates in this path. If a path is not set, the system uses the preset CA certificate, namely, **/etc/ssl/certs/cacert.pem**. This path is the sandbox mapping path, which can be obtained by using **UIAbilityContext** APIs. Currently, only text certificates in PEM format are supported.|
 | clientCert<sup>11+</sup> | [ClientCert](#clientcert11) |   No |  Yes  | Client certificate.|
-| proxy<sup>12+</sup> | ProxyConfiguration |  No | Yes| Proxy configuration. By default, the system network proxy is used.|
+| proxy<sup>12+</sup> | [ProxyConfiguration](#proxyconfiguration12) |  No | Yes| Proxy configuration. By default, the system network proxy is used.|
 | protocol<sup>12+</sup> | string |  No | Yes| Custom **Sec-WebSocket-Protocol** field. The default value is "".             |
 | skipServerCertVerification<sup>20+</sup> | boolean | No| Yes| Whether to skip server certificate verification. The value **true** means to skip server certificate verification, and the value **false** means the opposite. Default value: **false**.|
 | pingInterval<sup>21+</sup> | number | No| Yes| Custom [heartbeat detection interval](../../network/websocket-connection.md). The default value is 30s. Heartbeat detection is initiated at the specified interval. If the value is set to **0**, heartbeat detection is disabled. The maximum value is 30000s, and the minimum value is 0s.|
@@ -1504,8 +1512,8 @@ Defines the optional parameters carried in the request for closing a WebSocket c
 
 | Name| Type  | Read Only|Optional| Description                                                        |
 | ------ | ------ | ---- | -----|------------------------------------------------------- |
-| code   | number | No  |Yes|Error code. Set this parameter based on the actual situation. The input value must be a positive integer. The default value is **1000**.|
-| reason | string | No  | Yes|Error cause. Set this parameter based on the actual situation. The default value is an empty string ("").|
+| code   | number | No  |Yes|Error code. Set this parameter based on the actual situation. The value must be a positive integer ranging from 1000 to 1015. If no error code is specified or the input value is not within the preceding range, the code will be set to the default value **1000**.|
+| reason | string | No  | Yes|Error cause. Set this parameter based on the actual situation. If no reason value is specified, the reason value is set to the default value **CLOSE_NORMAL**.|
 
 ## CloseResult<sup>10+</sup>
 
@@ -1535,7 +1543,7 @@ Enumerates the response headers sent by the server.
 
 ## Result Codes for Connection Closing
 
-You can customize the result codes sent to the server. The result codes in the following table are for reference only.
+The error code sent to the server must be a positive integer ranging from 1000 to 1015. You can define the error code as required. If no error code is specified or the input value is not within the preceding range, the error code is set to the default value **1000**. The following list is for reference.
 
 **System capability**: SystemCapability.Communication.NetStack
 

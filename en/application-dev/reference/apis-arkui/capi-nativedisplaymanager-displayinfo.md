@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct {...} NativeDisplayManager_DisplayInfo
+```
+
 ## Overview
 
 The struct describes the information about a display.

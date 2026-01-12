@@ -10,7 +10,7 @@
 >
 > - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## WebviewController<sup>9+</sup>
 
@@ -51,6 +51,20 @@ Defines a callback invoked when an SSL error occurs during resource loading.
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
 | sslErrorEvent | [SslErrorEvent](./arkts-basic-components-web-i.md#sslerrorevent12)  | Yes| Details about the callback invoked when an SSL error occurs during resource loading.|
+
+## OnVerifyPinCallback<sup>22+</sup>
+
+type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void
+
+Callback triggered to notify the user of PIN authentication.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name   | Type  | Mandatory  | Description                 |
+| ------ | ------ | ---- | --------------------- |
+| verifyPinEvent | [VerifyPinEvent](./arkts-basic-components-web-i.md#verifypinevent22)  | Yes| Details of the callback triggered to notify the user of PIN authentication.|
 
 ## OnContextMenuHideCallback<sup>11+</sup>
 
@@ -140,8 +154,7 @@ Defines a callback invoked when the first meaningful paint occurs on the page.
 
 ## OnLargestContentfulPaintCallback<sup>12+</sup>
 
-type OnLargestContentfulPaintCallback = (largestContentfulPaint: [LargestContentfulPaint](./arkts-basic-components-web-i.md#largestcontentfulpaint12
-)) => void
+type OnLargestContentfulPaintCallback = (largestContentfulPaint: [LargestContentfulPaint](./arkts-basic-components-web-i.md#largestcontentfulpaint12)) => void
 
 Defines a callback invoked when the largest content paint occurs on the web page.
 
@@ -308,3 +321,67 @@ Defines a callback triggered when a blank screen is detected.
 **Example**
 
 For details about the sample code, see [onDetectedBlankScreen](./arkts-basic-components-web-events.md#ondetectedblankscreen22).
+
+## OnCameraCaptureStateChangeCallback<sup>23+</sup>
+
+type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void;
+
+Defines a callback triggered when the camera state of the page changes.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name              | Type                                       | Mandatory  | Description                        |
+| -------------------- | ----------------------------------------------- | ---- | -------------------------------- |
+| event | [CameraCaptureStateChangeInfo](./arkts-basic-components-web-i.md#cameracapturestatechangeinfo23) | Yes   | Original and new camera state.|
+
+## OnMicrophoneCaptureStateChangeCallback<sup>23+</sup>
+
+type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChangeInfo) => void;
+
+Defines a callback triggered when the microphone state of the page changes.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name              | Type                                       | Mandatory  | Description                        |
+| -------------------- | ----------------------------------------------- | ---- | -------------------------------- |
+| event | [MicrophoneCaptureStateChangeInfo](./arkts-basic-components-web-i.md#microphonecapturestatechangeinfo23) | Yes   | Original and new microphone state.|
+
+## TextSelectionChangeCallback<sup>23+</sup>
+
+type TextSelectionChangeCallback = (selectionText: string) => void
+
+Defines a callback triggered when the text selection changes.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name            | Type     | Mandatory  | Description                                      |
+| -------------- | ---- | ---- | ---------------------------------------- |
+| selectionText | string | Yes| Selected text.     |
+
+**Example**
+
+For details about the complete sample code, see [onTextSelectionChange](./arkts-basic-components-web-events.md#ontextselectionchange23).
+
+## OnFirstScreenPaintCallback<sup>23+<sup>
+
+type OnFirstScreenPaintCallback = (event: FirstScreenPaint) => void
+
+Defines a callback triggered when the first screen paint is complete.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|--------|------|------|------|
+| event | [FirstScreenPaint](./arkts-basic-components-web-i.md#firstscreenpaint23) | Yes| Details about the first screen paint.|
+
+**Example**
+
+For details about the complete sample code, see [onFirstScreenPaint](./arkts-basic-components-web-events.md#onfirstscreenpaint23).

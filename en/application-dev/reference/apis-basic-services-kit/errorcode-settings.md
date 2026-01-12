@@ -1,5 +1,12 @@
 # Settings Error Codes
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Applications-->
+<!--Owner: @YingCong-->
+<!--Designer: @Kun_Wu-->
+<!--Tester: @dyx118186878-->
+<!--Adviser: @zhang_yixin13-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -43,3 +50,23 @@ The current context is not the UIAbility.
 **Solution**
 
 Perform the operation on UIAbility.
+
+## 16900010 Parameter Check Failed
+
+**Error Message**
+
+Parameter error.
+
+**Description**
+
+The type or format of the parameter is incorrect.
+
+**Possible Causes**
+
+1. A null parameter is incorrect (Null Argument Error).
+
+2. A value range is incorrect (Value Range Error).
+
+**Solution**
+
+Make sure all the mandatory parameters are passed. If parameter verification fails, read the parameter specifications and locate the fault based on the possible causes.

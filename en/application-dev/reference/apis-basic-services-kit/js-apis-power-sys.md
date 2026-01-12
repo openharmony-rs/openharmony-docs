@@ -51,7 +51,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
 
-**Example:**
+**Example**
 
 ```js
 try {
@@ -77,7 +77,7 @@ Reboots a device.
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| reason | string | Yes  | Restart reason. The value must be a string.|
+| reason | string | Yes  | Reboot reason. The value must be a string.|
 
 **Error codes**
 
@@ -90,7 +90,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example:**
+**Example**
 
 ```js
 try {
@@ -131,7 +131,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example:**
+**Example**
 
 ```js
 try {
@@ -173,7 +173,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
-**Example:**
+**Example**
 
 ```js
 try {
@@ -204,15 +204,16 @@ Sets the power mode of a device. This API uses an asynchronous callback to retur
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|
+| 4900301 | Setting the power mode failed. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example:**
+**Example**
 
 ```js
 power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (err: Error) => {
@@ -250,15 +251,16 @@ Sets the power mode of a device. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|
+| 4900301 | Setting the power mode failed. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example:**
+**Example**
 
 ```js
 power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
@@ -301,7 +303,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example**:
+**Example**
 
 ```js
 try {
@@ -342,7 +344,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
-**Example**:
+**Example**
 
 ```js
 try {
@@ -382,7 +384,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example**:
+**Example**
 
 ```js
 try {
@@ -421,12 +423,94 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example**:
+**Example**
 
 ```js
 try {
     power.setPowerKeyFilteringStrategy(power.PowerKeyFilteringStrategy.LONG_PRESS_FILTERING_ONCE);
 } catch(err) {
     console.error('setPowerKeyFilteringStrategy failed, err: ' + err);
+}
+```
+
+## power.registerShutdownCallback<sup>23+</sup>
+
+registerShutdownCallback(callback: Callback&lt;boolean&gt;): void
+
+Registers a callback to be invoked when the device is shut down or rebooted. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**Required permission**: ohos.permission.REBOOT
+
+**System capability**: SystemCapability.PowerManager.PowerManager.Core
+
+**Parameters**
+
+| Name  | Type                        | Mandatory| Description                          |
+| -------- | ---------------------------- | ---- | ------------------------------ |
+| callback | Callback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** indicates that the device is rebooted, and **false** indicates that the device is shut down.|
+
+**Error codes**
+
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message   |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+
+**Example**
+
+```js
+try {
+    power.registerShutdownCallback((isReboot: boolean) => {
+        console.info('device shutdown is: ' + isReboot);
+    });
+    console.info('register shutdown callback success.');
+} catch(err) {
+    console.error('register shutdown callback failed, err: ' + err);
+}
+```
+
+## power.unregisterShutdownCallback<sup>23+</sup>
+
+unregisterShutdownCallback(callback?: Callback\<void>): void
+
+Unregisters the callback to be invoked when the device is shut down or rebooted. This API uses a callback to return the result.
+
+**System API**: This is a system API.
+
+**Required permission**: ohos.permission.REBOOT
+
+**System capability**: SystemCapability.PowerManager.PowerManager.Core
+
+**Parameters**
+
+| Name  | Type                | Mandatory| Description                                          |
+| -------- | -------------------- | ---- | ---------------------------------------------- |
+| callback | Callback&lt;void&gt; | No  | Callback that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID  | Error Message   |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+
+**Example**
+
+```js
+try {
+    power.unregisterShutdownCallback(() => {
+        console.info('unsubscribe shutdown success.');
+    });
+    console.info('unregister shutdown callback success.');
+} catch(err) {
+    console.error('unregister shutdown callback failed, err: ' + err);
 }
 ```

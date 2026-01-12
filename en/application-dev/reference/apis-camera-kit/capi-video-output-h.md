@@ -55,7 +55,7 @@ The file declares the video output concepts.
 
 ### OH_VideoOutput_OnFrameStart()
 
-```
+```c
 typedef void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput)
 ```
 
@@ -74,7 +74,7 @@ Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-video
 
 ### OH_VideoOutput_OnFrameEnd()
 
-```
+```c
 typedef void (*OH_VideoOutput_OnFrameEnd)(Camera_VideoOutput* videoOutput, int32_t frameCount)
 ```
 
@@ -94,7 +94,7 @@ Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-video
 
 ### OH_VideoOutput_OnError()
 
-```
+```c
 typedef void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode)
 ```
 
@@ -118,7 +118,7 @@ Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-video
 
 ### OH_VideoOutput_RegisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_RegisterCallback(Camera_VideoOutput* videoOutput, VideoOutput_Callbacks* callback)
 ```
 
@@ -144,7 +144,7 @@ Registers a callback to listen for video output events.
 
 ### OH_VideoOutput_UnregisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_UnregisterCallback(Camera_VideoOutput* videoOutput, VideoOutput_Callbacks* callback)
 ```
 
@@ -170,7 +170,7 @@ Unregisters the callback used to listen for video output events.
 
 ### OH_VideoOutput_Start()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_Start(Camera_VideoOutput* videoOutput)
 ```
 
@@ -191,11 +191,11 @@ Starts video output.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_VideoOutput_Stop()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_Stop(Camera_VideoOutput* videoOutput)
 ```
 
@@ -216,11 +216,11 @@ Stops video output.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_VideoOutput_Release()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_Release(Camera_VideoOutput* videoOutput)
 ```
 
@@ -241,11 +241,11 @@ Releases a VideoOutput instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_VideoOutput_GetActiveProfile()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_GetActiveProfile(Camera_VideoOutput* videoOutput, Camera_VideoProfile** profile)
 ```
 
@@ -267,11 +267,11 @@ Obtains the profile of a VideoOutput instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_VideoOutput_DeleteProfile()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_DeleteProfile(Camera_VideoProfile* profile)
 ```
 
@@ -296,7 +296,7 @@ Deletes the profile of a VideoOutput instance.
 
 ### OH_VideoOutput_IsMirrorSupported()
 
-```
+```c
  Camera_ErrorCode OH_VideoOutput_IsMirrorSupported(Camera_VideoOutput* videoOutput, bool* isSupported)
 ```
 
@@ -318,11 +318,11 @@ Checks whether a video output supports mirror mode.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_VideoOutput_EnableMirror()
 
-```
+```c
  Camera_ErrorCode OH_VideoOutput_EnableMirror(Camera_VideoOutput* videoOutput, bool mirrorMode)
 ```
 
@@ -344,11 +344,11 @@ Enables or disables mirror mode for a video output.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>          **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>          **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>          **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>          **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_VideoOutput_GetVideoRotation()
 
-```
+```c
  Camera_ErrorCode  OH_VideoOutput_GetVideoRotation(Camera_VideoOutput* videoOutput, int deviceDegree,Camera_ImageRotation* imageRotation)
 ```
 
@@ -371,11 +371,11 @@ Obtains the rotation angle of a video output.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>          **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>          **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>          **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>          **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_VideoOutput_GetSupportedFrameRates()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* videoOutput,Camera_FrameRateRange** frameRateRange, uint32_t* size)
 ```
 
@@ -398,11 +398,11 @@ Obtains the list of frame rates supported by a VideoOutput instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_VideoOutput_DeleteFrameRates()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput,Camera_FrameRateRange* frameRateRange)
 ```
 
@@ -428,7 +428,7 @@ Deletes the frame rate list.
 
 ### OH_VideoOutput_SetFrameRate()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput,int32_t minFps, int32_t maxFps)
 ```
 
@@ -455,7 +455,7 @@ Sets the frame rates for a VideoOutput instance.
 
 ### OH_VideoOutput_GetActiveFrameRate()
 
-```
+```c
 Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutput,Camera_FrameRateRange* frameRateRange)
 ```
 
@@ -477,4 +477,4 @@ Obtains the active frame rates of a VideoOutput instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|

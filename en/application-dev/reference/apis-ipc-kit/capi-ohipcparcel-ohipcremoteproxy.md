@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct OHIPCRemoteProxy OHIPCRemoteProxy
+```
+
 ## Overview
 
 Defines an IPC remote proxy object.

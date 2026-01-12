@@ -36,7 +36,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 ## DataBlob
 
-buffer数组，提供blob数据类型。
+二进制数据的封装接口，核心字段data为Uint8Array类型。
 
  **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -55,6 +55,10 @@ buffer数组，提供blob数据类型。
 加解密参数，在进行对称加解密时需要构造其子类对象，并将子类对象传入[init()](#init-1)方法。
 
 适用于需要iv等参数的对称加解密模式（对于无iv等参数的模式如ECB模式，无需构造，在[init()](#init-1)中传入null即可）。
+
+> **说明：**
+>
+> iv（Initialization Vector，初始化向量）是用于对称加密模式（如 CBC/CTR/OFB/CFB/GCM/CCM/Poly1305）中引入随机性或唯一性的字节序列，保证相同明文在相同密钥下产生不同密文。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -128,8 +132,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，长度为7字节。                              |
-| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad，长度为8字节。                             |
+| iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，仅支持7字节。若传入iv长度超过7字节，超出范围将被截断。                              |
+| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad。aad最小长度为1字节，最大为2048字节。                            |
 | authTag | [DataBlob](#datablob) | 否   | 否   | 指定加解密参数authTag，长度为12字节。<br/>在CCM模式加密时，需从[doFinal()](#dofinal)或[doFinalSync()](#dofinalsync12)输出的[DataBlob](#datablob)末尾提取12字节，作为[init()](#init-1)或[initSync()](#initsync12)方法的参数[CcmParamsSpec](#ccmparamsspec)中的authTag。 |
 
 > **说明：**
@@ -731,7 +735,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 >
 > key指的是用户输入的最初的密钥材料。info与salt是可选参数，根据模式的不同可以传空，但是不可不传。
 >
-> 例如：EXTRACT_AND_EXPAND模式需要输入全部的值，EXTRACT_ONLY模式info可以为空，在构建HKDFspec的时候，info传入null值。
+> 例如：EXTRACT_AND_EXPAND模式需要输入全部的值，EXTRACT_ONLY模式info可以为空，在构建HKDFSpec的时候，info传入null值。
 >
 > 默认的模式为EXTRACT_AND_EXPAND，"HKDF|SHA256|EXTRACT_AND_EXPAND"等价于"HKDF|SHA256"。
 
@@ -769,7 +773,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | ------- | ------ | ---- | ---- | ------------ |
 | key | string \| Uint8Array | 否   | 否   | 密钥材料。|
 | info | Uint8Array | 否   | 否   | 附加信息。 |
-| keySize | int | 否   | 否   | 派生得到的密钥字节长度，需要为正整数。 |
+| keySize | number | 否   | 否   | 派生得到的密钥字节长度，需要为正整数。 |
 
 > **说明：**
 >
@@ -814,7 +818,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 >
 > - password是必选参数，表示编码用到的密码。
 >
-> - cipherName是必选参数，可以指定编码用到的算法。当前仅支持AES-128-CBC、AES-192-CBC、AES-256-CBC、DES-EDE3-CBC。
+> - cipherName是必选参数，指定编码用到的算法。当前仅支持AES-128-CBC、AES-192-CBC、AES-256-CBC、DES-EDE3-CBC。
 
 ## MacSpec<sup>18+</sup>
 消息认证码参数，计算HMAC、CMAC消息认证码时，需要构建子类对象并作为输入参数。
@@ -882,7 +886,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 
 密钥（父类），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher](#cipher)实例的[init()](#init-1)方法。
 
-密钥可以通过密钥生成器来生成。
+密钥通过子类密钥生成器来生成，详见子类描述。具体子类有：[SymKey](#symkey)、[PubKey](#pubkey)、[PriKey](#prikey)。
 
 ### 属性
 
@@ -946,7 +950,7 @@ async function testGenerateAesKey() {
 
 对称密钥，是[Key](#key)的子类，在对称加解密时需要将其对象传入[Cipher](#cipher)实例的[init()](#init-1)方法使用。
 
-对称密钥可以通过对称密钥生成器[SymKeyGenerator](#symkeygenerator)来生成。
+对称密钥通过对称密钥生成器[SymKeyGenerator](#symkeygenerator)来生成。
 
 ### clearMem
 
@@ -1452,6 +1456,198 @@ function TestPriKeyPkcs1Encoded() {
 }
 ```
 
+### getPubKey<sup>23+</sup>
+
+getPubKey(): Promise\<PubKey>
+
+从私钥对象中获取公钥对象。使用Promise异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**返回值：**
+
+| 类型                        | 说明                              |
+| --------------------------- | --------------------------------- |
+| Promise\<[PubKey](#pubkey)> | Promise对象，返回公钥对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620001 | memory operation failed. |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17630001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
+  let buf1 = buffer.from(a);
+  let buf2 = buffer.from(b);
+  if (buf1.compare(buf2, 0, b.length, 0, a.length) == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+async function generateAsyKey() {
+  let skData =
+    new Uint8Array([48, 130, 2, 119, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 97, 48,
+      130, 2, 93, 2, 1, 0, 2, 129, 129, 0, 199, 32, 218, 8, 4, 63, 103, 229, 64, 128, 83, 31, 23, 156, 30, 168, 101, 22,
+      80, 100, 197, 243, 217, 60, 127, 110, 127, 242, 8, 251, 87, 127, 235, 38, 226, 149, 149, 108, 54, 202, 53, 1, 21,
+      91, 118, 246, 97, 93, 147, 117, 162, 71, 215, 70, 9, 175, 205, 241, 230, 187, 64, 170, 154, 67, 67, 254, 71, 1,
+      114, 10, 91, 195, 34, 199, 85, 172, 255, 87, 95, 159, 43, 117, 73, 73, 199, 97, 198, 117, 217, 7, 188, 196, 30,
+      248, 9, 181, 150, 243, 41, 145, 91, 8, 226, 161, 251, 12, 120, 28, 36, 146, 3, 196, 48, 243, 136, 201, 207, 131,
+      171, 22, 15, 7, 12, 172, 135, 196, 30, 93, 2, 3, 1, 0, 1, 2, 129, 128, 109, 100, 83, 194, 225, 170, 127, 134, 6,
+      184, 56, 113, 181, 67, 179, 231, 232, 152, 168, 147, 163, 215, 193, 56, 165, 252, 235, 86, 232, 174, 67, 52, 103,
+      215, 149, 212, 125, 32, 212, 188, 162, 255, 180, 94, 233, 236, 146, 50, 153, 6, 159, 158, 253, 217, 97, 10, 238,
+      133, 124, 174, 211, 232, 165, 19, 100, 186, 218, 62, 46, 124, 30, 19, 251, 3, 206, 105, 255, 236, 224, 178, 148,
+      103, 44, 132, 71, 83, 28, 221, 27, 189, 72, 44, 59, 253, 139, 232, 234, 14, 112, 121, 43, 142, 193, 179, 140, 200,
+      97, 234, 110, 63, 205, 24, 88, 116, 86, 184, 8, 19, 254, 204, 77, 84, 66, 238, 240, 69, 72, 21, 2, 65, 0, 233,
+      103, 239, 11, 215, 10, 103, 66, 46, 155, 193, 79, 37, 64, 90, 12, 167, 189, 129, 8, 131, 94, 195, 8, 210, 236, 87,
+      158, 140, 2, 82, 105, 80, 253, 13, 26, 140, 202, 194, 117, 59, 57, 197, 108, 50, 20, 46, 89, 248, 132, 120, 30,
+      149, 180, 135, 134, 196, 156, 160, 123, 38, 253, 15, 7, 2, 65, 0, 218, 103, 122, 117, 154, 149, 213, 110, 24, 149,
+      175, 208, 136, 249, 88, 91, 89, 180, 30, 243, 69, 130, 97, 252, 177, 216, 55, 46, 67, 15, 124, 56, 113, 57, 242,
+      233, 185, 193, 254, 218, 76, 165, 184, 16, 109, 190, 93, 195, 227, 37, 58, 110, 243, 142, 152, 252, 226, 91, 59,
+      145, 218, 35, 106, 123, 2, 65, 0, 210, 131, 88, 58, 32, 144, 148, 131, 63, 144, 97, 112, 165, 211, 125, 164, 110,
+      97, 224, 16, 50, 148, 116, 105, 239, 251, 20, 39, 190, 117, 149, 168, 193, 80, 10, 210, 136, 107, 147, 169, 178,
+      106, 47, 162, 159, 36, 78, 141, 253, 52, 85, 54, 152, 165, 131, 154, 204, 151, 203, 178, 103, 126, 212, 95, 2, 65,
+      0, 193, 254, 80, 3, 205, 255, 112, 200, 142, 5, 199, 88, 207, 145, 203, 45, 185, 12, 8, 193, 196, 231, 254, 233,
+      89, 126, 215, 228, 187, 164, 49, 142, 96, 228, 60, 35, 230, 223, 173, 227, 113, 89, 113, 153, 6, 33, 165, 95, 173,
+      143, 15, 204, 37, 130, 111, 217, 143, 165, 193, 207, 215, 150, 197, 169, 2, 64, 7, 37, 152, 14, 232, 168, 102,
+      169, 167, 97, 161, 33, 86, 178, 77, 140, 12, 114, 78, 129, 47, 103, 87, 217, 177, 80, 156, 91, 240, 149, 254, 90,
+      69, 232, 10, 56, 232, 63, 59, 148, 254, 101, 63, 146, 66, 96, 25, 31, 37, 154, 77, 145, 201, 213, 122, 245, 90,
+      251, 219, 42, 131, 248, 148, 151
+  ])
+  let expectPkdata =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 199, 32, 218, 8, 4, 63, 103, 229, 64, 128, 83, 31, 23, 156, 30, 168, 101, 22, 80, 100, 197, 243,
+      217, 60, 127, 110, 127, 242, 8, 251, 87, 127, 235, 38, 226, 149, 149, 108, 54, 202, 53, 1, 21, 91, 118, 246, 97,
+      93, 147, 117, 162, 71, 215, 70, 9, 175, 205, 241, 230, 187, 64, 170, 154, 67, 67, 254, 71, 1, 114, 10, 91, 195,
+      34, 199, 85, 172, 255, 87, 95, 159, 43, 117, 73, 73, 199, 97, 198, 117, 217, 7, 188, 196, 30, 248, 9, 181, 150,
+      243, 41, 145, 91, 8, 226, 161, 251, 12, 120, 28, 36, 146, 3, 196, 48, 243, 136, 201, 207, 131, 171, 22, 15, 7, 12,
+      172, 135, 196, 30, 93, 2, 3, 1, 0, 1
+  ])
+  let skDataBlob: cryptoFramework.DataBlob = { data: skData };
+  let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  try {
+    let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
+    let priKey = keyPair.priKey;
+    let pubkey = await priKey.getPubKey();
+    let pkBlob = pubkey.getEncoded();
+    console.info('pk1 bin data' + pkBlob.data);
+    let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
+    console.info('result is ' + ret);
+  } catch (e) {
+    console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
+  }
+}
+```
+
+### getPubKeySync<sup>23+</sup>
+
+getPubKeySync(): PubKey
+
+以同步方式，从私钥对象中获取公钥对象。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**返回值：**
+
+| 类型                        | 说明                              |
+| --------------------------- | --------------------------------- |
+| [PubKey](#pubkey) | 公钥对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620001 | memory operation failed. |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17630001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
+  let buf1 = buffer.from(a);
+  let buf2 = buffer.from(b);
+  if (buf1.compare(buf2, 0, b.length, 0, a.length) == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function generateAsyKey() {
+  let skData =
+    new Uint8Array([48, 130, 2, 119, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 97, 48,
+      130, 2, 93, 2, 1, 0, 2, 129, 129, 0, 199, 32, 218, 8, 4, 63, 103, 229, 64, 128, 83, 31, 23, 156, 30, 168, 101, 22,
+      80, 100, 197, 243, 217, 60, 127, 110, 127, 242, 8, 251, 87, 127, 235, 38, 226, 149, 149, 108, 54, 202, 53, 1, 21,
+      91, 118, 246, 97, 93, 147, 117, 162, 71, 215, 70, 9, 175, 205, 241, 230, 187, 64, 170, 154, 67, 67, 254, 71, 1,
+      114, 10, 91, 195, 34, 199, 85, 172, 255, 87, 95, 159, 43, 117, 73, 73, 199, 97, 198, 117, 217, 7, 188, 196, 30,
+      248, 9, 181, 150, 243, 41, 145, 91, 8, 226, 161, 251, 12, 120, 28, 36, 146, 3, 196, 48, 243, 136, 201, 207, 131,
+      171, 22, 15, 7, 12, 172, 135, 196, 30, 93, 2, 3, 1, 0, 1, 2, 129, 128, 109, 100, 83, 194, 225, 170, 127, 134, 6,
+      184, 56, 113, 181, 67, 179, 231, 232, 152, 168, 147, 163, 215, 193, 56, 165, 252, 235, 86, 232, 174, 67, 52, 103,
+      215, 149, 212, 125, 32, 212, 188, 162, 255, 180, 94, 233, 236, 146, 50, 153, 6, 159, 158, 253, 217, 97, 10, 238,
+      133, 124, 174, 211, 232, 165, 19, 100, 186, 218, 62, 46, 124, 30, 19, 251, 3, 206, 105, 255, 236, 224, 178, 148,
+      103, 44, 132, 71, 83, 28, 221, 27, 189, 72, 44, 59, 253, 139, 232, 234, 14, 112, 121, 43, 142, 193, 179, 140, 200,
+      97, 234, 110, 63, 205, 24, 88, 116, 86, 184, 8, 19, 254, 204, 77, 84, 66, 238, 240, 69, 72, 21, 2, 65, 0, 233,
+      103, 239, 11, 215, 10, 103, 66, 46, 155, 193, 79, 37, 64, 90, 12, 167, 189, 129, 8, 131, 94, 195, 8, 210, 236, 87,
+      158, 140, 2, 82, 105, 80, 253, 13, 26, 140, 202, 194, 117, 59, 57, 197, 108, 50, 20, 46, 89, 248, 132, 120, 30,
+      149, 180, 135, 134, 196, 156, 160, 123, 38, 253, 15, 7, 2, 65, 0, 218, 103, 122, 117, 154, 149, 213, 110, 24, 149,
+      175, 208, 136, 249, 88, 91, 89, 180, 30, 243, 69, 130, 97, 252, 177, 216, 55, 46, 67, 15, 124, 56, 113, 57, 242,
+      233, 185, 193, 254, 218, 76, 165, 184, 16, 109, 190, 93, 195, 227, 37, 58, 110, 243, 142, 152, 252, 226, 91, 59,
+      145, 218, 35, 106, 123, 2, 65, 0, 210, 131, 88, 58, 32, 144, 148, 131, 63, 144, 97, 112, 165, 211, 125, 164, 110,
+      97, 224, 16, 50, 148, 116, 105, 239, 251, 20, 39, 190, 117, 149, 168, 193, 80, 10, 210, 136, 107, 147, 169, 178,
+      106, 47, 162, 159, 36, 78, 141, 253, 52, 85, 54, 152, 165, 131, 154, 204, 151, 203, 178, 103, 126, 212, 95, 2, 65,
+      0, 193, 254, 80, 3, 205, 255, 112, 200, 142, 5, 199, 88, 207, 145, 203, 45, 185, 12, 8, 193, 196, 231, 254, 233,
+      89, 126, 215, 228, 187, 164, 49, 142, 96, 228, 60, 35, 230, 223, 173, 227, 113, 89, 113, 153, 6, 33, 165, 95, 173,
+      143, 15, 204, 37, 130, 111, 217, 143, 165, 193, 207, 215, 150, 197, 169, 2, 64, 7, 37, 152, 14, 232, 168, 102,
+      169, 167, 97, 161, 33, 86, 178, 77, 140, 12, 114, 78, 129, 47, 103, 87, 217, 177, 80, 156, 91, 240, 149, 254, 90,
+      69, 232, 10, 56, 232, 63, 59, 148, 254, 101, 63, 146, 66, 96, 25, 31, 37, 154, 77, 145, 201, 213, 122, 245, 90,
+      251, 219, 42, 131, 248, 148, 151
+  ])
+  let expectPkdata =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 199, 32, 218, 8, 4, 63, 103, 229, 64, 128, 83, 31, 23, 156, 30, 168, 101, 22, 80, 100, 197, 243,
+      217, 60, 127, 110, 127, 242, 8, 251, 87, 127, 235, 38, 226, 149, 149, 108, 54, 202, 53, 1, 21, 91, 118, 246, 97,
+      93, 147, 117, 162, 71, 215, 70, 9, 175, 205, 241, 230, 187, 64, 170, 154, 67, 67, 254, 71, 1, 114, 10, 91, 195,
+      34, 199, 85, 172, 255, 87, 95, 159, 43, 117, 73, 73, 199, 97, 198, 117, 217, 7, 188, 196, 30, 248, 9, 181, 150,
+      243, 41, 145, 91, 8, 226, 161, 251, 12, 120, 28, 36, 146, 3, 196, 48, 243, 136, 201, 207, 131, 171, 22, 15, 7, 12,
+      172, 135, 196, 30, 93, 2, 3, 1, 0, 1
+  ])
+  let skDataBlob: cryptoFramework.DataBlob = { data: skData };
+  let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  try {
+    let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
+    let priKey = keyPair.priKey;
+    let pubkey = priKey.getPubKeySync();
+    let pkBlob = pubkey.getEncoded();
+    console.info('pk1 bin data' + pkBlob.data);
+    let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
+    console.info('result is ' + ret);
+  } catch (e) {
+    console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
+  }
+}
+```
+
 ## KeyPair
 
 非对称密钥对包含公钥和私钥。
@@ -1542,7 +1738,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 generateSymKey(callback: AsyncCallback\<SymKey>): void
 
-异步获取对称密钥生成器随机生成的密钥，通过注册回调函数获取结果。
+获取对称密钥生成器随机生成的密钥。使用callback异步回调。
 
 必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
 
@@ -1587,7 +1783,7 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
 
 generateSymKey(): Promise\<SymKey>
 
-异步获取该对称密钥生成器随机生成的密钥，通过Promise获取结果。
+获取该对称密钥生成器随机生成的密钥。使用Promise异步回调。
 
 必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
 
@@ -1679,7 +1875,7 @@ function testGenerateSymKeySync() {
 
 convertKey(key: DataBlob, callback: AsyncCallback\<SymKey>): void
 
-异步根据指定数据生成对称密钥，通过注册回调函数获取结果。
+根据指定数据生成对称密钥。使用callback异步回调。
 
 必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
 
@@ -1735,7 +1931,7 @@ function testConvertKey() {
 
 convertKey(key: DataBlob): Promise\<SymKey>
 
-异步根据指定数据生成对称密钥，通过Promise获取结果。
+根据指定数据生成对称密钥。使用Promise异步回调。
 
 在使用本函数前，需先通过[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器。
 
@@ -1797,7 +1993,7 @@ function testConvertKey() {
 
 convertKeySync(key: DataBlob): SymKey
 
-同步根据指定数据生成对称密钥。
+根据指定数据生成对称密钥。
 
 必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
 
@@ -1913,7 +2109,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
-异步获取非对称密钥生成器随机生成的密钥，通过注册回调函数获取结果。
+获取非对称密钥生成器随机生成的密钥。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1956,7 +2152,7 @@ asyKeyGenerator.generateKeyPair((err, keyPair) => {
 
 generateKeyPair(): Promise\<KeyPair>
 
-异步获取非对称密钥生成器随机生成的密钥，通过Promise获取结果。
+获取非对称密钥生成器随机生成的密钥。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2043,7 +2239,7 @@ try {
 
 convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCallback\<KeyPair\>): void
 
-异步获取指定数据生成非对称密钥，通过注册回调函数获取结果。详情请看下方**密钥转换说明**。
+获取指定数据生成非对称密钥。使用callback异步回调。详情请看下方**密钥转换说明**。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2092,7 +2288,7 @@ asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
 
 convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise\<KeyPair>
 
-异步获取指定数据生成非对称密钥，通过Promise获取结果。详情请看下方**密钥转换说明**。
+获取指定数据生成非对称密钥。使用Promise异步回调。详情请看下方**密钥转换说明**。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2208,7 +2404,7 @@ try {
 
 convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 
-异步获取指定数据生成非对称密钥，通过Promise获取结果。
+获取指定数据生成非对称密钥。使用Promise异步回调。
 
 > **说明：**
 > 1. 当调用convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，公钥应满足ASN.1语法、X.509规范、PEM编码格式，私钥应满足ASN.1语法、PKCS#8规范、PEM编码格式。
@@ -2224,7 +2420,7 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
 | pubKey | string \| null | 是  | 指定的公钥材料。如果公钥不需要转换，可直接传入null。|
-| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，可直接传入null。注：公钥和私钥材料不能同时为null。|
+| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，可直接传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
 
 **返回值：**
 
@@ -2302,7 +2498,7 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
 | pubKey | string \| null | 是  | 指定的公钥材料。如果公钥不需要转换，可直接传入null。|
-| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，可直接传入null。注：公钥和私钥材料不能同时为null。|
+| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，可直接传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
 | password | string | 是 | 指定口令，用于解密私钥。|
 
 **返回值：**
@@ -2375,7 +2571,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
 | pubKey | string \| null| 是   | 指定的公钥材料。如果公钥不需要转换，可直接传入null。|
-| priKey | string \| null| 是   | 指定私钥材料。私钥无需转换时，可传入null。注意：公钥和私钥材料不能同时为null。|
+| priKey | string \| null| 是   | 指定私钥材料。私钥无需转换时，可直接传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
 
 **返回值：**
 
@@ -2516,8 +2712,6 @@ createAsyKeyGeneratorBySpec(asyKeySpec: AsyKeySpec): AsyKeyGeneratorBySpec
 
 指定密钥参数，获取非对称密钥生成器实例。
 
-支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md)。
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -2528,7 +2722,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 | 参数名  | 类型   | 必填 | 说明                             |
 | ------- | ------ | ---- | -------------------------------- |
-| asyKeySpec | [AsyKeySpec](#asykeyspec10) | 是   | 密钥参数。非对称密钥生成器根据指定的这些参数生成公/私钥。 |
+| asyKeySpec | [AsyKeySpec](#asykeyspec10) | 是   | 密钥参数。非对称密钥生成器根据指定的这些参数生成公/私钥。<br>支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md)。|
 
 **返回值：**
 
@@ -2600,7 +2794,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
-异步获取非对称密钥生成器生成的密钥，通过注册回调函数获取结果。
+获取非对称密钥生成器生成的密钥。使用callback异步回调。
 
 当使用[COMMON_PARAMS_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到随机生成的密钥对；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到各项数据与密钥参数一致的密钥对。
 
@@ -2674,7 +2868,7 @@ function testGenerateKeyPair()
 
 generateKeyPair(): Promise\<KeyPair>
 
-异步获取该非对称密钥生成器生成的密钥，通过Promise获取结果。
+获取该非对称密钥生成器生成的密钥。使用Promise异步回调。
 
 当使用[COMMON_PARAMS_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到随机生成的密钥对；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到各项数据与密钥参数一致的密钥对。
 
@@ -2824,7 +3018,7 @@ function testGenerateKeyPairSync()
 
 generatePriKey(callback: AsyncCallback\<PriKey>): void
 
-异步获取非对称密钥生成器生成的密钥，通过注册回调函数获取结果。
+获取非对称密钥生成器生成的密钥。使用callback异步回调。
 
 使用[PRIVATE_KEY_SPEC](#asykeyspectype10)类型密钥参数创建密钥生成器，生成指定私钥。使用[KEY_PAIR_SPEC](#asykeyspectype10)类型密钥参数创建密钥生成器，从生成的密钥对中获取指定私钥。
 
@@ -2898,7 +3092,7 @@ function testGeneratePriKey()
 
 generatePriKey(): Promise\<PriKey>
 
-异步获取该非对称密钥生成器生成的密钥，通过Promise获取结果。
+获取该非对称密钥生成器生成的密钥。使用Promise异步回调。
 
 当使用[PRIVATE_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的私钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的私钥。
 
@@ -3047,7 +3241,7 @@ function testGeneratePriKeySync()
 
 generatePubKey(callback: AsyncCallback\<PubKey>): void
 
-异步获取非对称密钥生成器生成的密钥，通过注册回调函数获取结果。
+获取非对称密钥生成器生成的密钥。使用callback异步回调。
 
 当使用[PUBLIC_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的公钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的公钥。
 
@@ -3121,7 +3315,7 @@ function testGeneratePubKey()
 
 generatePubKey(): Promise\<PubKey>
 
-异步获取该非对称密钥生成器生成的密钥，通过Promise获取结果。
+获取该非对称密钥生成器生成的密钥。使用Promise异步回调。
 
 当使用[PUBLIC_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的公钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的公钥。
 
@@ -3268,13 +3462,13 @@ function testGeneratePubKeySync()
 
 ## ECCKeyUtil<sup>11+</sup>
 
-根据椭圆曲线名生成相应的非对称公共密钥参数。
+用于根据椭圆曲线名称为非对称密钥对生成公共参数。
 
 ### genECCCommonParamsSpec<sup>11+</sup>
 
 static genECCCommonParamsSpec(curveName: string): ECCCommonParamsSpec
 
-根据椭圆曲线相应的NID（Name IDentifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#ecc)和[SM2密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#sm2)。
+根据椭圆曲线相应的NID（Name Identifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#ecc)和[SM2密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#sm2)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3286,7 +3480,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 | 参数名  | 类型   | 必填 | 说明                                           |
 | ------- | ------ | ---- | ---------------------------------------------- |
-| curveName | string | 是   | 椭圆曲线相应的NID（Name IDentifier）字符串名称。 |
+| curveName | string | 是   | 椭圆曲线相应的NID（Name Identifier）字符串名称。 |
 
 **返回值：**
 
@@ -3322,7 +3516,7 @@ try {
 
 static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
-根据椭圆曲线的曲线名，即相应的NID（Name IDentifier），将指定的点数据转换为Point对象。当前支持压缩/非压缩格式的点数据。  
+根据椭圆曲线的曲线名，即相应的NID（Name Identifier），将指定的点数据转换为Point对象。当前支持压缩/非压缩格式的点数据。  
 
 > **说明：**
 >
@@ -3338,7 +3532,7 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
 | 参数名       | 类型        | 必填 | 说明                                           |
 | ------------ | ---------- | ---- | ---------------------------------------------- |
-| curveName    | string     | 是   | 椭圆曲线的曲线名，即相应的NID（Name IDentifier）。 |
+| curveName    | string     | 是   | 椭圆曲线的曲线名，即相应的NID（Name Identifier）。 |
 | encodedPoint | Uint8Array | 是   | 指定的ECC椭圆曲线上的点的数据。 |
 
 **返回值：**
@@ -3372,7 +3566,7 @@ console.info('returnPoint: ' + returnPoint.x.toString(16));
 
 static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Array
 
-根据椭圆曲线的曲线名，即相应的NID（Name IDentifier），按照指定的点数据格式，将Point对象转换为点数据。当前支持压缩/非压缩格式的点数据。
+根据椭圆曲线的曲线名，即相应的NID（Name Identifier），按照指定的点数据格式，将Point对象转换为点数据。当前支持压缩/非压缩格式的点数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3382,7 +3576,7 @@ static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Ar
 
 | 参数名       | 类型               | 必填 | 说明                                           |
 | ------------ | ----------------- | ---- | ---------------------------------------------- |
-| curveName    | string            | 是   | 椭圆曲线的曲线名，即相应的NID（Name IDentifier）。 |
+| curveName    | string            | 是   | 椭圆曲线的曲线名，即相应的NID（Name Identifier）。 |
 | point        | [Point](#point10) | 是   | 椭圆曲线上的Point点对象。 |
 | format       | string            | 是   | 需要获取的点数据格式，当前支持"COMPRESSED"或"UNCOMPRESSED"。 |
 
@@ -3497,7 +3691,7 @@ static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
 | spec   | [SM2CipherTextSpec](#sm2ciphertextspec12) | 是   | 指定的SM2密文参数。 |
-| mode  | string | 否   | 可选的密文转换模式，可用于指定密文参数的拼接顺序，当前仅支持默认值"C1C3C2"。  |
+| mode  | string | 否   | 可选的密文转换模式，可用于指定密文参数的拼接顺序，当前仅支持默认值"C1C3C2"。为空或空字符串时使用默认值。 |
 
 **返回值：**
 
@@ -3549,8 +3743,8 @@ static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec
 
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| cipherText     | [DataBlob](#datablob)                 | 是   | 符合国密标准的ASN.1格式的SM2密文。
-| mode  | string | 否   | 可选的密文转换模式，可用于指定密文参数的拼接顺序，当前仅支持默认值"C1C3C2"。  |
+| cipherText     | [DataBlob](#datablob)                 | 是   | 符合国密标准的ASN.1格式的SM2密文。 |
+| mode  | string | 否   | 可选的密文转换模式，可用于指定密文参数的拼接顺序，当前仅支持默认值"C1C3C2"。为空或空字符串时使用默认值。 |
 
 **返回值：**
 
@@ -3588,8 +3782,6 @@ createCipher(transformation: string): Cipher
 
 通过指定算法名称，获取相应的[Cipher](#cipher)实例。
 
-支持的规格详见[对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md)和[非对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md)。
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
@@ -3600,7 +3792,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名         | 类型   | 必填 | 说明                                                         |
 | -------------- | ------ | ---- | ------------------------------------------------------------ |
-| transformation | string | 是   | 待生成Cipher的算法名称（含密钥长度）、加密模式以及填充方法的组合。 |
+| transformation | string | 是   | 待生成Cipher的算法名称（含密钥长度）、加密模式以及填充方法的组合。<br>支持的规格详见[对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md)和[非对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md)。 |
 
 > **说明：**
 >
@@ -3667,7 +3859,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCallback\<void>): void
 
-初始化加解密的[cipher](#cipher)对象，通过注册回调函数获取结果。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+初始化加解密的[cipher](#cipher)对象，使用callback异步回调获取结果。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
 
 必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
 
@@ -3695,13 +3887,14 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                            |
 | 17620002 | failed to convert parameters between arkts and c.                                          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
 | 17630001 | crypto operation error.|
 
 ### init
 
 init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise\<void>
 
-初始化加解密的cipher对象，通过Promise获取结果。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+初始化加解密的cipher对象。使用Promise异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
 
 必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
 
@@ -3734,6 +3927,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                     |
 | 17620002 | failed to convert parameters between arkts and c.                                    |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
 | 17630001 | crypto operation error.|
 
 ### initSync<sup>12+</sup>
@@ -3765,13 +3959,14 @@ initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
 | 17630001 | crypto operation error. |
 
 ### update
 
 update(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
 
-分段更新加密或者解密数据操作，通过注册回调函数获取加/解密数据。
+分段更新加密或者解密数据操作。使用callback异步回调。
 
 必须在对[Cipher](#cipher)实例使用[init()](#init-1)初始化后，才能使用本函数。
 
@@ -3817,13 +4012,14 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                               |
 | 17620002 | failed to convert parameters between arkts and c.                            |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error.                     |
 
 ### update
 
 update(data: DataBlob): Promise\<DataBlob>
 
-分段更新加密或者解密数据操作，通过Promise获取加/解密数据。
+分段更新加密或者解密数据操作。使用Promise异步回调。
 
 必须在对[Cipher](#cipher)实例使用[init()](#init-1)初始化后，才能使用本函数。
 
@@ -3864,6 +4060,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                |
 | 17620002 | failed to convert parameters between arkts and c.                               |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error.                      |
 
 ### updateSync<sup>12+</sup>
@@ -3901,19 +4098,20 @@ updateSync(data: DataBlob): DataBlob
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error. |
 
 ### doFinal
 
 doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 
-（1）在对称加解密中doFinal用于处理剩余数据和本次传入的数据，并最终结束加密或解密操作，通过注册回调函数获取加密或解密后的数据。如果数据量较小，可以在 `doFinal` 中一次性传入数据，而不使用update；如果在本次加解密流程中已经使用[update](#update)传入过数据，可以在doFinal的data参数处传入null。根据对称加解密的模式不同，doFinal的输出有以下区别：
+（1）在对称加解密中doFinal用于处理剩余数据和本次传入的数据，并最终结束加密或解密操作，使用callback异步回调函数获取加密或解密后的数据。如果数据量较小，可以在 `doFinal` 中一次性传入数据，而不使用update；如果在本次加解密流程中已经使用[update](#update)传入过数据，可以在doFinal的data参数处传入null。根据对称加解密的模式不同，doFinal的输出有以下区别：
 
 - 在GCM和CCM模式的对称加密中，一次加密流程中，将每次update和doFinal的结果拼接起来，会得到“密文 + authTag”。GCM模式下，authTag为末尾的16字节；CCM模式下，authTag为末尾的12字节。其余部分均为密文。如果doFinal的data参数传入null，则doFinal的结果就是authTag。解密时，authTag需要填入[GcmParamsSpec](#gcmparamsspec)或[CcmParamsSpec](#ccmparamsspec)，密文作为解密时的data参数。
 - 对于其他模式的对称加解密及GCM和CCM模式的对称解密：每次加/解密流程中，update和doFinal的结果拼接起来，得到完整的明文或密文。
 
 
-（2）在RSA、SM2非对称加解密中，doFinal加/解密本次传入的数据，通过注册回调函数获取加密或者解密数据。如果数据量较大，可以多次调用doFinal，拼接结果得到完整的明文/密文。
+（2）在RSA、SM2非对称加解密中，doFinal加/解密本次传入的数据，使用callback异步回调函数获取加密或者解密数据。如果数据量较大，可以多次调用doFinal，拼接结果得到完整的明文/密文。
 
 > **说明：**
 >
@@ -3945,6 +4143,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
 | 17620002 | failed to convert parameters between arkts and c.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error. |
 
 **以AES GCM模式加密为例：**
@@ -4003,12 +4202,12 @@ function cipherByCallback() {
 
 doFinal(data: DataBlob | null): Promise\<DataBlob>
 
-（1）在对称加解密中，doFinal加/解密（分组模式产生的）剩余数据和本次传入的数据，最后结束加密或者解密数据操作，通过Promise获取加密或者解密数据。<br/>如果数据量较小，可以在doFinal中一次性传入数据，而不使用update；如果在本次加解密流程中，已经使用update传入过数据，可以在doFinal的data参数处传入null。<br/>根据对称加解密的模式不同，doFinal的输出有如下区别：
+（1）在对称加解密中，doFinal加/解密（分组模式产生的）剩余数据和本次传入的数据，最后结束加密或者解密数据操作，使用Promise异步回调获取加密或者解密数据。<br/>如果数据量较小，可以在doFinal中一次性传入数据，而不使用update；如果在本次加解密流程中，已经使用update传入过数据，可以在doFinal的data参数处传入null。<br/>根据对称加解密的模式不同，doFinal的输出有如下区别：
 
 - 对于GCM和CCM模式的对称加密：一次加密流程中，如果将每一次update和doFinal的结果拼接起来，会得到“密文+authTag”，即末尾的16字节（GCM模式）或12字节（CCM模式）是authTag，而其余部分均为密文。（也就是说，如果doFinal的data参数传入null，则doFinal的结果就是authTag）<br/>authTag需要填入解密时的[GcmParamsSpec](#gcmparamsspec)或[CcmParamsSpec](#ccmparamsspec)；密文则作为解密时的入参data。
 - 对于其他模式的对称加解密及GCM和CCM模式的对称解密：一次加解密流程中，每次update和doFinal的结果拼接起来，得到完整的明文或密文。
 
-（2）在RSA和SM2非对称加解密中，使用doFinal方法加解密传入的数据，并通过Promise获取加密或解密结果。如果数据量较大，可以多次调用doFinal，拼接结果以获得完整的明文或密文。
+（2）在RSA和SM2非对称加解密中，使用doFinal方法加解密传入的数据，并使用Promise异步回调获取加密或解密结果。如果数据量较大，可以多次调用doFinal，拼接结果以获得完整的明文或密文。
 
 > **说明：**
 >
@@ -4049,6 +4248,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                |
 | 17620002 | failed to convert parameters between arkts and c.                               |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error.                      |
 
 **以AES GCM模式加密为例：**
@@ -4141,6 +4341,7 @@ doFinalSync(data: DataBlob | null): DataBlob
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
 | 17620002 | failed to convert parameters between arkts and c.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error. |
 
 **以AES GCM模式加密为例：**
@@ -4195,7 +4396,7 @@ async function cipherBySync() {
 
 setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 
-设置加解密参数。常用的加解密参数可以直接通过[createCipher](#cryptoframeworkcreatecipher) 来指定，剩余参数可以通过本接口指定。当前只支持RSA算法。
+设置加解密参数。常用的加解密参数直接通过[createCipher](#cryptoframeworkcreatecipher) 来指定，剩余参数通过本接口指定。当前只支持RSA算法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4219,6 +4420,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Unsupported itemType.|
 | 17630001 | crypto operation error. |
 
 **示例：**
@@ -4265,6 +4467,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Unsupported itemType.|
 | 17630001 | crypto operation error. |
 
 **示例：**
@@ -4285,8 +4488,6 @@ createSign(algName: string): Sign
 
 生成Sign实例。
 
-支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
@@ -4297,7 +4498,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 指定签名算法：RSA、ECC、DSA、SM2<sup>10+</sup>或Ed25519<sup>11+</sup>。使用RSA PKCS1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。签名时，通过设置OnlySign参数可传入数据摘要仅作签名。 |
+| algName | string | 是   | 指定签名算法：RSA、ECC、DSA、SM2<sup>10+</sup>或Ed25519<sup>11+</sup>。使用RSA PKCS1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。签名时，通过设置OnlySign参数可传入数据摘要仅作签名。<br>支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
 
 **返回值**：
 
@@ -4362,7 +4563,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(priKey: PriKey, callback: AsyncCallback\<void>): void
 
-使用私钥初始化Sign对象，通过注册回调函数获取结果。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
+使用私钥初始化Sign对象。使用callback异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
 
 Sign类不支持重复初始化。
 
@@ -4394,7 +4595,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(priKey: PriKey): Promise\<void>
 
-使用私钥初始化Sign对象，通过Promise获取结果。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
+使用私钥初始化Sign对象。使用Promise异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
 
 Sign类不支持重复初始化。
 
@@ -4460,7 +4661,7 @@ Sign类不支持重复调用initSync。
 
 update(data: DataBlob, callback: AsyncCallback\<void>): void
 
-追加待签名数据，通过注册回调函数完成更新。
+追加待签名数据，使用callback异步回调完成更新。
 
 必须在对[Sign](#sign)实例使用[init()](#init-2)初始化后，才能使用本函数。
 
@@ -4500,7 +4701,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 update(data: DataBlob): Promise\<void>
 
-追加待签名数据，通过Promise方式完成更新。
+追加待签名数据，使用Promise异步回调方式完成更新。
 
 在使用本函数前，必须先使用[Sign](#sign)方法对[init()](#init-3)实例进行初始化。
 
@@ -4588,7 +4789,7 @@ updateSync(data: DataBlob): void
 
 sign(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 
-对数据进行签名，通过注册回调函数获取签名结果。
+对数据进行签名。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4618,7 +4819,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 sign(data: DataBlob | null): Promise\<DataBlob>
 
-对数据进行签名，通过Promise方式返回签名结果。
+对数据进行签名。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4874,8 +5075,6 @@ createVerify(algName: string): Verify
 
 生成Verify实例。
 
-支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
@@ -4886,7 +5085,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 指定签名算法：RSA、ECC、DSA、SM2<sup>10+</sup>或Ed25519<sup>11+</sup>。使用RSA PKCS1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。使用RSA算法验签时，设置Recover参数可支持验签恢复。 |
+| algName | string | 是   | 指定签名算法：RSA、ECC、DSA、SM2<sup>10+</sup>或Ed25519<sup>11+</sup>。使用RSA PKCS1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。使用RSA算法验签时，设置Recover参数可支持验签恢复。<br>支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
 
 **返回值**：
 
@@ -4946,7 +5145,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(pubKey: PubKey, callback: AsyncCallback\<void>): void
 
-传入公钥初始化Verify对象，通过注册回调函数获取结果。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
+传入公钥初始化Verify对象。使用callback异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4976,7 +5175,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(pubKey: PubKey): Promise\<void>
 
-传入公钥初始化Verify对象，通过Promise获取结果。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
+传入公钥初始化Verify对象。使用Promise异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5044,7 +5243,7 @@ initSync(pubKey: PubKey): void
 
 update(data: DataBlob, callback: AsyncCallback\<void>): void
 
-追加待验签数据，通过注册回调函数完成更新。
+追加待验签数据，使用callback异步回调完成更新。
 
 必须在对[Verify](#verify)实例使用[init](#init-4)初始化后，才能使用本函数。
 
@@ -5083,7 +5282,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 update(data: DataBlob): Promise\<void>
 
-追加待验签数据，通过Promise方式完成更新。
+追加待验签数据，使用Promise异步回调完成更新。
 
 必须在对[Verify](#verify)实例使用[init()](#init-5)初始化后，才能使用本函数。
 
@@ -5169,7 +5368,7 @@ updateSync(data: DataBlob): void
 
 verify(data: DataBlob | null, signatureData: DataBlob, callback: AsyncCallback\<boolean>): void
 
-对数据进行验签，通过注册回调函数返回验签结果。
+对数据进行验签。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5183,7 +5382,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | ------------- | -------------------- | ---- | ---------- |
 | data          | [DataBlob](#datablob) \| null<sup>10+</sup>             | 是   | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
 | signatureData | [DataBlob](#datablob)              | 是   | 签名数据。  |
-| callback      | AsyncCallback\<boolean> | 是   | 回调函数，用于获取以boolean值表示的验签结果。 |
+| callback      | AsyncCallback\<boolean> | 是   | 回调函数，用于获取以boolean值表示的验签结果。返回true表示验签通过；返回false表示验签不通过。 |
 
 **错误码：**
 
@@ -5200,7 +5399,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 verify(data: DataBlob | null, signatureData: DataBlob): Promise\<boolean>
 
-对数据进行验签，通过Promise返回验签结果。
+对数据进行验签。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5370,7 +5569,7 @@ function verifyBySync() {
 
 recover(signatureData: DataBlob): Promise\<DataBlob | null>
 
-对数据进行签名恢复原始数据，通过Promise返回恢复结果。
+对数据进行签名恢复原始数据。使用Promise异步回调。
 
 > **说明：**
 >
@@ -5484,7 +5683,7 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 
 setVerifySpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 
-设置验签参数。常用的签名参数可以直接通过[createVerify](#cryptoframeworkcreateverify) 来指定，剩余参数可以通过本接口指定。
+设置验签参数。常用的签名参数直接通过[createVerify](#cryptoframeworkcreateverify) 来指定，剩余参数通过本接口指定。
 
 支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置验签参数。
 
@@ -5581,8 +5780,6 @@ createKeyAgreement(algName: string): KeyAgreement
 
 生成KeyAgreement实例。
 
-支持的规格详见[密钥协商规格](../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md)。
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.KeyAgreement
@@ -5593,7 +5790,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 指定密钥协商算法：目前仅支持ECC，从API version 11开始，增加支持X25519和DH。 |
+| algName | string | 是   | 指定密钥协商算法：目前仅支持ECC，从API version 11开始，增加支持X25519和DH。<br>支持的规格详见[密钥协商规格](../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md)。 |
 
 **返回值**：
 
@@ -5639,7 +5836,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 generateSecret(priKey: PriKey, pubKey: PubKey, callback: AsyncCallback\<DataBlob>): void
 
-基于传入的私钥与公钥进行密钥协商，通过注册回调函数返回共享密钥。
+基于传入的私钥与公钥进行密钥协商。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5670,7 +5867,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 generateSecret(priKey: PriKey, pubKey: PubKey): Promise\<DataBlob>
 
-基于传入的私钥与公钥进行密钥协商，通过Promise返回共享密钥。
+基于传入的私钥与公钥进行密钥协商。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5839,7 +6036,7 @@ try {
 
 ## Md
 
-Md类，调用Md方法可以进行MD（Message Digest）摘要计算。调用前，需要通过[createMd](#cryptoframeworkcreatemd)构造Md实例。
+Md类，调用Md方法进行消息摘要（Message Digest）计算。调用前，需要通过[createMd](#cryptoframeworkcreatemd)构造Md实例。
 
 ### 属性
 
@@ -5857,7 +6054,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 update(input: DataBlob, callback: AsyncCallback\<void>): void
 
-传入消息进行Md更新摘要状态，通过注册回调函数更新。update和digest为两段式接口，需要成组使用。其中digest必选，update可选。
+传入消息进行Md更新摘要状态。使用callback异步回调。update和digest为两段式接口，需要成组使用。其中digest必选，update可选。
 
 > **说明：**
 >
@@ -5892,7 +6089,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 update(input: DataBlob): Promise\<void>
 
-传入消息进行Md更新摘要状态，通过Promise更新。update和digest为两段式接口，需要成组使用。其中digest必选，update可选。
+传入消息进行Md更新摘要状态。使用Promise异步回调。update和digest为两段式接口，需要成组使用。其中digest必选，update可选。
 
 > **说明：**
 >
@@ -5962,7 +6159,7 @@ updateSync(input: DataBlob): void
 
 digest(callback: AsyncCallback\<DataBlob>): void
 
-通过注册回调函数返回Md的计算结果。
+返回Md的计算结果。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6009,7 +6206,7 @@ function mdByCallback() {
 
 digest(): Promise\<DataBlob>
 
-通过Promise返回Md的计算结果。
+返回Md的计算结果。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6234,7 +6431,7 @@ try {
 
 ## Mac
 
-Mac类，调用Mac方法可以进行MAC（Message Authentication Code）加密计算。调用前，需要通过[createMac](#cryptoframeworkcreatemac)构造Mac实例。
+Mac类，调用Mac方法进行消息认证码（Message Authentication Code）计算。调用前，需要通过[createMac](#cryptoframeworkcreatemac)构造Mac实例。
 
 ### 属性
 
@@ -6252,7 +6449,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(key: SymKey, callback: AsyncCallback\<void>): void
 
-使用对称密钥初始化Mac计算，通过注册回调函数获取结果。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+使用对称密钥初始化Mac计算。使用callback异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
 
   > **说明：**
   >
@@ -6285,7 +6482,7 @@ API version 9-11 系统能力为SystemCapability.Security.CryptoFramework；从A
 
 init(key: SymKey): Promise\<void>
 
-使用对称密钥初始化Mac计算，通过Promise获取结果。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+使用对称密钥初始化Mac计算。使用Promise异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6345,7 +6542,7 @@ initSync(key: SymKey): void
 
 update(input: DataBlob, callback: AsyncCallback\<void>): void
 
-传入消息进行Mac更新消息认证码状态，通过注册回调函数获取结果。
+传入消息进行Mac更新消息认证码状态。使用callback异步回调。
 
 > **说明：**
 >
@@ -6378,7 +6575,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 update(input: DataBlob): Promise\<void>
 
-传入消息进行Mac更新消息认证码状态，通过Promise获取结果。
+传入消息进行Mac更新消息认证码状态。使用Promise异步回调。
 
 > **说明：**
 >
@@ -6447,7 +6644,7 @@ updateSync(input: DataBlob): void
 
 doFinal(callback: AsyncCallback\<DataBlob>): void
 
-通过注册回调函数返回Mac的计算结果。
+返回Mac的计算结果。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6499,7 +6696,7 @@ function hmacByCallback() {
 
 doFinal(): Promise\<DataBlob>
 
-通过Promise返回Mac的计算结果。
+返回Mac的计算结果。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6656,8 +6853,6 @@ createRandom(): Random
 
 生成Random实例，用于进行随机数的计算与设置种子。
 
-支持的规格详见框架概述[随机数算法规格](../../security/CryptoArchitectureKit/crypto-generate-random-number.md#支持的算法与规格)。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Rand
@@ -6668,7 +6863,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 类型   | 说明                                            |
 | ------ | ----------------------------------------------- |
-| [Random](#random) | 返回由输入算法指定生成的[Random](#random)对象。 |
+| [Random](#random) | 返回由输入算法指定生成的[Random](#random)对象。<br>支持的规格详见框架概述[随机数算法规格](../../security/CryptoArchitectureKit/crypto-generate-random-number.md#支持的算法与规格)。 |
 
 **错误码：**
 
@@ -6694,7 +6889,7 @@ try {
 
 ## Random
 
-Random类，调用Random方法可以进行随机数计算。调用前，需要通过[createRandom](#cryptoframeworkcreaterandom)构造Random实例。
+Random类，调用Random方法生成随机数。调用前，需要通过[createRandom](#cryptoframeworkcreaterandom)构造Random实例。
 
 ### 属性
 
@@ -6712,7 +6907,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 generateRandom(len: number, callback: AsyncCallback\<DataBlob>): void
 
-异步生成指定长度的随机数，通过注册回调函数返回。
+生成指定长度的随机数。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6758,7 +6953,7 @@ rand.generateRandom(12, (err, randData) => {
 
 generateRandom(len: number): Promise\<DataBlob>
 
-异步生成指定长度的随机数，通过Promise返回。
+生成指定长度的随机数。使用promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6955,7 +7150,7 @@ rand.generateRandom(12, (err, randData) => {
 
 createKdf(algName: string): Kdf
 
-密钥派生函数（key derivation function）实例生成。<br/>支持的规格详见[密钥派生函数规格](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md)。
+密钥派生函数（key derivation function）实例生成。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6967,7 +7162,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 | 参数名  | 类型   | 必填 | 说明                              |
 | ------- | ------ | ---- | --------------------------------- |
-| algName | string | 是   | 指定密钥派生算法（包含HMAC配套的散列函数）：目前支持PBKDF2、HKDF算法、SCRYPT算法，如"PBKDF2\|SHA256", "HKDF\|SHA256", "SCRYPT"。 |
+| algName | string | 是   | 指定密钥派生算法（包含HMAC配套的散列函数）：目前支持PBKDF2、HKDF算法、SCRYPT算法，如"PBKDF2\|SHA256", "HKDF\|SHA256", "SCRYPT"。<br>支持的规格详见[密钥派生函数规格](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md)。|
 
 **返回值**：
 
@@ -7013,7 +7208,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 generateSecret(params: KdfSpec, callback: AsyncCallback\<DataBlob>): void
 
-基于传入的密钥派生参数进行密钥派生，通过注册回调函数返回派生得到的密钥。
+基于传入的密钥派生参数进行密钥派生。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7036,6 +7231,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **示例：**
@@ -7086,7 +7282,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 generateSecret(params: KdfSpec): Promise\<DataBlob>
 
-基于传入的密钥派生参数进行密钥派生，通过Promise形式返回派生得到的密钥。
+基于传入的密钥派生参数进行密钥派生。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7114,6 +7310,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **示例：**
@@ -7191,6 +7388,7 @@ generateSecretSync(params: KdfSpec): DataBlob
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.  |
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c. |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **示例：**

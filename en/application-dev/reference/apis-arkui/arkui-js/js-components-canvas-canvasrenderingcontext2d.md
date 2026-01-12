@@ -1,10 +1,16 @@
 # CanvasRenderingContext2D
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
 >  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
-**CanvasRenderingContext2D** allows you to draw rectangles, text, images, and other objects on a canvas.
+**CanvasRenderingContext2D** allows you to draw rectangles, text, images, and other objects on a [canvas component](./js-components-canvas-canvas.md).
 
 
 **Example**
@@ -46,43 +52,42 @@
   ![en-us_image_0000001127125162](figures/en-us_image_0000001127125162.png)
 
 
-## Attributes
-
+## Properties
 | Name                                      | Type                                      | Description                                      |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| [fillStyle](#fillstyle)                  | &lt;color&gt; \| [CanvasGradient](js-components-canvas-canvasgradient.md) \| CanvasPattern | Style to fill an area.<br>- When the type is **\<color>**, this parameter indicates the color of the filling area.<br>- When the type is **CanvasGradient**, this parameter indicates a gradient object, which is created using the **createLinearGradient()** method.<br>- When the type is **CanvasPattern**, this parameter indicates a canvas pattern, which is created using the **createPattern()** method.|
+| [fillStyle](#fillstyle)                  | &lt;color&gt;&nbsp;\|&nbsp;[CanvasGradient](js-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](../../apis-arkui/arkui-ts/ts-components-canvas-canvaspattern.md) | Style used to fill an area.<br>- When the type is **\<color>**, this parameter indicates the color of the filling area.<br>- When the type is **CanvasGradient**, this parameter indicates a gradient object, which is created using the **createLinearGradient()** method.<br>- When the type is **CanvasPattern**, this parameter indicates a canvas pattern, which is created using the **createPattern()** method.<br>If the value is out of the range, the color is set to black.|
 | [lineWidth](#linewidth)                  | number                                   | Line width.                              |
-| [strokeStyle](#strokestyle)              | &lt;color&gt; \| [CanvasGradient](js-components-canvas-canvasgradient.md) \| CanvasPattern | Stroke style.<br>- When the type is **\<color>**, this parameter indicates the stroke color.<br>- When the type is **CanvasGradient**, this parameter indicates a gradient object, which is created using the **createLinearGradient()** method.<br>- When the type is **CanvasPattern**, this parameter indicates a canvas pattern, which is created using the **createPattern()** method.|
-| [lineCap](#linecap)                      | string                                   | Style of the specified line endpoint. The options are as follows:<br>- **butt**: The endpoints of the line are squared off.<br>- **round**: The endpoints of the line are rounded.<br>- **square**: The endpoints of the line are squared off, and each endpoint has added a rectangle whose length is the same as the line thickness and whose width is half of the line thickness.<br>Default value: **butt**|
-| [lineJoin](#linejoin)                    | string                                   | Style of the intersection point between line segments. The options are as follows:<br>- **round**: The intersection is a sector, whose radius at the rounded corner is equal to the line width.<br>- **bevel**: The intersection is a triangle. The rectangular corner of each line is independent.<br>- **miter**: The intersection has a miter corner by extending the outside edges of the lines until they meet. You can view the effect of this attribute in **miterLimit**.<br>Default value: **miter**|
+| [strokeStyle](#strokestyle)              | &lt;color&gt;&nbsp;\|&nbsp;[CanvasGradient](js-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](../../apis-arkui/arkui-ts/ts-components-canvas-canvaspattern.md) | Stroke style.<br>-&nbsp. If the type is &lt;color&gt;, the color used for the stroke is set.<br>- When the type is **CanvasGradient**, this parameter indicates a gradient object, which is created using the **createLinearGradient()** method.<br>- When the type is **CanvasPattern**, this parameter indicates a canvas pattern, which is created using the **createPattern()** method.|
+| [lineCap](#linecap)                      | string                                   | Style of the line endpoints. The options are as follows:<br>- **butt**: The endpoints of the line are squared off.<br>- **round**: The endpoints of the line are rounded.<br>-&nbsp;square: The line endpoint ends with a square. In this style, a rectangle with the same length as the line segment thickness and half the width of the line segment thickness is added.<br>Default value: butt|
+| [lineJoin](#linejoin)                    | string                                   | Style of the shape used to join line segments. The options are as follows:<br>- **round**: The intersection is a sector, whose radius at the rounded corner is equal to the line width.<br>- **bevel**: The intersection is a triangle. The rectangular corner of each line is independent.<br>- **miter**: The intersection has a miter corner by extending the outside edges of the lines until they meet. You can view the effect of this attribute in **miterLimit**.<br>Default value: **miter**|
 | [miterLimit](#miterlimit)                | number                                   | Maximum miter length. The miter length is the distance between the inner corner and the outer corner where two lines meet.<br>Default value: **10**  |
-| [font](#font)                            | string                                   | Font style.<br>Syntax: ctx.font="font-style font-weight font-size font-family"<sup>5+</sup><br>- (Optional) **font-style**: font style. Available values are **normal** and **italic**.<br>- (Optional) **font-weight**: font weight. Available values are as follows: **normal**, **bold**, **bolder**, **lighter**, **100**, **200**, **300**, **400**, **500**, **600**, **700**, **800**, **900**.<br>- (Optional) **font-size**: font size and row height. The unit can only be pixels.<br>- (Optional) **font-family**: font family. Available values are **sans-serif**, **serif**, and **monospace**.<br>Default value: **"normal normal 14px sans-serif"**|
+| [font](#font)                            | string                                   | Font style.<br>Syntax: ctx.font="font-style font-weight font-size font-family"<sup>5+</sup><br>- (Optional) **font-style**: font style. Available values are **normal** and **italic**.<br>- (Optional) **font-weight**: font weight. Available values are as follows: **normal**, **bold**, **bolder**, **lighter**, **100**, **200**, **300**, **400**, **500**, **600**, **700**, **800**, **900**.<br>- (Optional) **font-size**: font size and row height. The unit can only be pixels.<br>Sets the font family. The value can be -&nbsp;font-family (optional), sans-serif,&nbsp;serif,&nbsp;monospace.<br>Default value: **"normal&nbsp;normal&nbsp;14px&nbsp;sans-serif"**|
 | [textAlign](#textalign)                  | string                                   | Text alignment mode. Available values are as follows:<br>- **left**: The text is left-aligned.<br>- **right**: The text is right-aligned.<br>- **center**: The text is center-aligned.<br>- **start**: The text is aligned with the start bound.<br>- **end**: The text is aligned with the end bound.<br>In the **ltr** layout mode, the value **start** equals **left**. In the **rtl** layout mode, the value **start** equals **right**.<br>Default value: **left**|
-| [textBaseline](#textbaseline)            | string                                   | Horizontal alignment mode of text. Available values are as follows:<br>- **alphabetic**: The text baseline is the normal alphabetic baseline.<br>- **top**: The text baseline is on the top of the text bounding box.<br>- **hanging**: The text baseline is a hanging baseline over the text.<br>- **middle**: The text baseline is in the middle of the text bounding box.<br>- **ideographic**: The text baseline is the ideographic baseline. If a character exceeds the alphabetic baseline, the ideographic baseline is located at the bottom of the excessive character.<br>- **bottom**: The text baseline is at the bottom of the text bounding box. Its difference from the ideographic baseline is that the ideographic baseline does not consider letters in the next line.<br>Default value: **alphabetic**|
-| [globalAlpha](#globalalpha)              | number                                   | Opacity.<br>**0.0**: completely transparent.<br>**1.0**: completely opaque.               |
-| [lineDashOffset](#linedashoffset)        | number                                   | Offset of the dashed line. The precision is float.<br>Default value: **0.0**         |
-| [globalCompositeOperation](#globalcompositeoperation) | string                                   | Composition operation type. Available values are as follows: **source-over**, **source-atop**, **source-in**, **source-out**, **destination-over**, **destination-atop**, **destination-in**, **destination-out**, **lighter**, copy, and **xor**. For details, see [Operation types](#globalcompositeoperation).<br>Default value: **ource-over**|
-| [shadowBlur](#shadowblur)                | number                                   | Blur level during shadow drawing. A larger value indicates a more blurred effect. The precision is float.<br>Default value: **0.0**|
-| [shadowColor](#shadowcolor)              | &lt;color&gt;                            | Shadow color.                           |
-| [shadowOffsetX](#shadowoffsetx)          | number                                   | X-axis shadow offset relative to the original object.                     |
-| [shadowOffsetY](#shadowoffsety)          | number                                   | Y-axis shadow offset relative to the original object.                     |
-| [imageSmoothingEnabled](#imagesmoothingenabled6)<sup>6+</sup> | boolean                                  | Whether to adjust the image smoothness during image drawing. The value **true** means to enable this feature, and **false** means the opposite.<br>Default value: **true**|
+| [textBaseline](#textbaseline)            | string                                   | Horizontal alignment mode of text. Available values are as follows:<br>- **alphabetic**: The text baseline is the normal alphabetic baseline.<br>- **top**: The text baseline is on the top of the text bounding box.<br>- **hanging**: The text baseline is a hanging baseline over the text.<br>- **middle**: The text baseline is in the middle of the text bounding box.<br>- **ideographic**: The text baseline is the ideographic baseline. If a character exceeds the alphabetic baseline, the ideographic baseline is located at the bottom of the excessive character.<br>- **bottom**: The text baseline is at the bottom of the text bounding box. The difference between &nbsp; and &nbsp; ideographic &nbsp; is that &nbsp; ideographic &nbsp; does not need to consider the lower-case letters.<br>Default value: **alphabetic**|
+| [globalAlpha](#globalalpha)              | number                                   | Sets the alpha value.<br>The value ranges from 0.0 (completely transparent) to 1.0 (completely opaque). If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.  |
+| [lineDashOffset](#linedashoffset)        | number                                   | Offset of the dashed line. The precision is float.<br>Default value: **0.0**.         |
+| [globalCompositeOperation](#globalcompositeoperation) | string                                   | Composition operation type. Available values are as follows: **source-over**, **source-atop**, **source-in**, **source-out**, **destination-over**, **destination-atop**, **destination-in**, **destination-out**, **lighter**, copy, and **xor**. For details, see [Operation types](#globalcompositeoperation).<br>Default value: **source-over**|
+| [shadowBlur](#shadowblur)                | number                                   | Blur level during shadow drawing. A larger value indicates a more blurred effect. The precision is float.<br>Default value: **0.0**.|
+| [shadowColor](#shadowcolor)              | &lt;color&gt;                            | Shadow color when a shadow is drawn.                           |
+| [shadowOffsetX](#shadowoffsetx)          | number                                   | Horizontal offset between the shadow and the original object when a shadow is drawn.                     |
+| [shadowOffsetY](#shadowoffsety)          | number                                   | Vertical offset between the shadow and the original object when a shadow is drawn.                     |
+| [imageSmoothingEnabled](#imagesmoothingenabled) | boolean                                  | Whether to adjust the image smoothness during image drawing. The value **true** means to enable this feature, and **false** means the opposite.<br>Default value: **true**.|
 
 
 ### fillStyle
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
   <canvas ref="canvas" style="width: 200px; height: 150px; "></canvas>
 </div>
-  ```
+```
 
 ```js
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.fillStyle = '#0000ff';
     ctx.fillRect(20, 20, 150, 100);
@@ -106,7 +111,7 @@ export default {
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.lineWidth = 5;
     ctx.strokeRect(25, 25, 85, 105);
@@ -131,7 +136,7 @@ export default {
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.lineWidth = 10;
     ctx.strokeStyle = '#0000ff';
@@ -156,7 +161,7 @@ export default {
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.lineWidth = 8;
     ctx.beginPath();
@@ -183,7 +188,7 @@ export default {
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.beginPath();
     ctx.lineWidth = 8;
@@ -211,7 +216,7 @@ export default {
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.lineWidth =14;
     ctx.lineJoin = 'miter';
@@ -240,7 +245,7 @@ export default {
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.font = '30px sans-serif';
     ctx.fillText("Hello World", 20, 60);
@@ -264,7 +269,7 @@ export default {
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.strokeStyle = '#0000ff';
     ctx.moveTo(140, 10);
@@ -303,7 +308,7 @@ export default {
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.strokeStyle = '#0000ff';
     ctx.moveTo(0, 120);
@@ -339,7 +344,7 @@ export default {
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.fillStyle = 'rgb(255,0,0)';
     ctx.fillRect(0, 0, 50, 50);
@@ -366,7 +371,7 @@ export default {
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.arc(100, 75, 50, 0, 6.28);
     ctx.setLineDash([10,20]);
@@ -380,21 +385,21 @@ export default {
 
 ### globalCompositeOperation
 
-Enumerates the operation types.
+Type description.
 
 | Value               | Description                      |
 | ---------------- | ------------------------ |
-| source-over      | Displays the new drawing above the existing drawing. This attribute is used by default.  |
-| source-atop      | Displays the new drawing on the top of the existing drawing.       |
-| source-in        | Displays the new drawing inside the existing drawing.        |
-| source-out       | Displays part of the new drawing that is outside of the existing drawing.       |
-| destination-over | Displays the existing drawing above the new drawing.       |
-| destination-atop | Displays the existing drawing on the top of the new drawing.       |
-| destination-in   | Displays the existing drawing inside the new drawing.        |
-| destination-out  | Displays the existing drawing outside the new drawing.        |
-| lighter          | Displays both the new and existing drawing.         |
-| copy             | Displays the new drawing and neglects the existing drawing.       |
-| xor              | Combines the new drawing and existing drawing using the XOR operation.|
+| source-over      | Displays the new drawing above the existing drawing. Default value.  |
+| source-atop      | Draws new content on top of the existing content.       |
+| source-in        | Displays the new drawing content on the existing drawing content.        |
+| source-out       | Displays the new drawing content outside the existing drawing content.       |
+| destination-over | Displays the existing drawing content above the new drawing content.       |
+| destination-atop | Displays the existing drawing content on top of the new drawing content.       |
+| destination-in   | Displays the existing drawing content in the new drawing content.        |
+| destination-out  | Displays the existing drawing content outside the new drawing content.        |
+| lighter          | Displays both the new drawing content and the existing drawing content.         |
+| copy             | Displays the new drawing content and ignores the existing drawing content.       |
+| xor              | Uses the XOR operation to blend the new drawing content with the existing drawing content.|
 
 **Example**
 
@@ -405,11 +410,11 @@ Enumerates the operation types.
 </div>
 ```
 
-  ```js
+```js
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.fillStyle = 'rgb(255,0,0)';
     ctx.fillRect(20, 20, 50, 50);
@@ -424,26 +429,26 @@ export default {
     ctx.fillRect(150, 50, 50, 50);
   }
 }
-  ```
+```
 
-  ![en-us_image_0000001213192781](figures/en-us_image_0000001213192781.png)
+![en-us_image_0000001213192781](figures/en-us_image_0000001213192781.png)
 
   In the above example, the blue rectangle represents the new drawing, and the red rectangle represents the existing drawing.
 
 ### shadowBlur
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
   <canvas ref="canvas" style="width: 200px; height: 150px; "></canvas>
 </div>
-  ```
+```
 
 ```js
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.shadowBlur = 30;
     ctx.shadowColor = 'rgb(0,0,0)';
@@ -468,7 +473,7 @@ export default {
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.shadowBlur = 30;
     ctx.shadowColor = 'rgb(0,0,255)';
@@ -493,7 +498,7 @@ export default {
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.shadowBlur = 10;
     ctx.shadowOffsetX = 20;
@@ -520,7 +525,7 @@ export default {
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     ctx.shadowBlur = 10;
     ctx.shadowOffsetY = 20;
@@ -533,7 +538,7 @@ export default {
 
 ![en-us_image_0000001213193285](figures/en-us_image_0000001213193285.png)
 
-### imageSmoothingEnabled<sup>6+</sup>
+### imageSmoothingEnabled
 
 ```html
 <!-- xxx.hml -->
@@ -546,9 +551,10 @@ export default {
 // xxx.js
 export default {
   onShow() {
-    const el =this.$refs.canvas;
+    const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     var img = new Image();
+    // Replace 'common/image/example.jpg' with the image resource file you use.
     img.src = 'common/image/example.jpg';
     img.onload = function() {
     ctx.imageSmoothingEnabled = false;
@@ -562,23 +568,24 @@ export default {
 
 
 
-## Methods
-
+## Method
 
 ### fillRect
 
 fillRect(x: number, y: number, width:number, height: number): void
 
-Fills a rectangle on the canvas.
+Fills a rectangle.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name    | Type    | Description           |
-| ------ | ------ | ------------- |
-| x      | number | X-coordinate of the upper left corner of the rectangle.|
-| y      | number | Y-coordinate of the upper left corner of the rectangle.|
-| width  | number | Width of the rectangle.     |
-| height | number | Height of the rectangle.     |
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| x      | number | Yes| X coordinate of the upper left corner of the rectangle.<br>Unit: vp.|
+| y      | number | Yes| Y coordinate of the upper left corner of the rectangle.<br>Unit: vp.|
+| width  | number | Yes| Width of the rectangle.<br>Unit: vp.     |
+| height | number | Yes| Height of the rectangle.<br>Unit: vp.     |
 
 **Example**
 
@@ -593,7 +600,7 @@ Fills a rectangle on the canvas.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.fillRect(20, 20, 200, 150);
     }
@@ -608,14 +615,16 @@ clearRect(x: number, y: number, width:number, height: number): void
 
 Clears the content in a rectangle on the canvas.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name    | Type    | Description           |
-| ------ | ------ | ------------- |
-| x      | number | X-coordinate of the upper left corner of the rectangle.|
-| y      | number | Y-coordinate of the upper left corner of the rectangle.|
-| width  | number | Width of the rectangle.     |
-| height | number | Height of the rectangle.     |
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| x      | number | Yes| X-coordinate of the upper left corner of the rectangle.<br>Unit: vp.|
+| y      | number | Yes| Y-coordinate of the upper left corner of the rectangle.<br>Unit: vp.|
+| width  | number | Yes| Width of the rectangle.<br>Unit: vp.     |
+| height | number | Yes| Height of the rectangle.<br>Unit: vp.     |
 
 **Example**
   ```html
@@ -629,7 +638,7 @@ Clears the content in a rectangle on the canvas.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.fillStyle = 'rgb(0,0,255)';
       ctx.fillRect(0, 0, 400, 200);
@@ -647,14 +656,16 @@ strokeRect(x: number, y: number, width:number, height: number): void
 
 Draws a rectangle stroke on the canvas.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name    | Type    | Description          |
-| ------ | ------ | ------------ |
-| x      | number | X-coordinate of the upper left corner of the rectangle stroke.|
-| y      | number | Y-coordinate of the upper left corner of the rectangle stroke.|
-| width  | number | Width of the rectangle.    |
-| height | number | Height of the rectangle.    |
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| x      | number | Yes| X-coordinate of the upper left corner of the rectangle.<br>Unit: vp.|
+| y      | number | Yes| Y-coordinate of the upper left corner of the rectangle.<br>Unit: vp.|
+| width  | number | Yes| Width of the rectangle.<br>Unit: vp.    |
+| height | number | Yes| Height of the rectangle.<br>Unit: vp.    |
 
 **Example**
   ```html
@@ -668,7 +679,7 @@ Draws a rectangle stroke on the canvas.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.strokeRect(30, 30, 200, 150);
     }
@@ -684,13 +695,15 @@ fillText(text: string, x: number, y: number): void
 
 Draws filled text on the canvas.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name  | Type    | Description             |
-| ---- | ------ | --------------- |
-| text | string | Text to draw.     |
-| x    | number | X-coordinate of the lower left corner of the text.|
-| y    | number | Y-coordinate of the lower left corner of the text.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| text | string | Yes| Text to draw.     |
+| x    | number | Yes| X coordinate of the lower left corner of the text to be drawn.<br>Unit: vp.|
+| y    | number | Yes| Y coordinate of the lower left corner of the text to be drawn.<br>Unit: vp.|
 
 **Example**
   ```html
@@ -704,7 +717,7 @@ Draws filled text on the canvas.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.font = '35px sans-serif';
       ctx.fillText("Hello World!", 10, 60);
@@ -720,13 +733,15 @@ strokeText(text: string, x: number, y: number): void
 
 Draws a text stroke on the canvas.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name  | Type    | Description             |
-| ---- | ------ | --------------- |
-| text | string | Text to draw.     |
-| x    | number | X-coordinate of the lower left corner of the text.|
-| y    | number | Y-coordinate of the lower left corner of the text.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| text | string | Yes| Text to draw.     |
+| x    | number | Yes| X coordinate of the lower left corner of the text to be drawn.<br>Unit: vp.|
+| y    | number | Yes| Y coordinate of the lower left corner of the text to be drawn.<br>Unit: vp.|
 
 **Example**
   ```html
@@ -740,7 +755,7 @@ Draws a text stroke on the canvas.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.font = '25px sans-serif';
       ctx.strokeText("Hello World!", 10, 60);
@@ -756,11 +771,13 @@ measureText(text: string): TextMetrics
 
 Returns a **TextMetrics** object used to obtain the width of specified text.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name  | Type    | Description        |
-| ---- | ------ | ---------- |
-| text | string | Text to be measured.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| text | string | Yes| Text to be measured.|
 
 **Return value**
 
@@ -780,7 +797,7 @@ Returns a **TextMetrics** object used to obtain the width of specified text.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.font = '20px sans-serif';
       var txt = 'Hello World';
@@ -798,6 +815,8 @@ stroke(): void
 
 Draws a stroke.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Example**
   ```html
   <!-- xxx.hml -->
@@ -810,7 +829,7 @@ Draws a stroke.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.moveTo(25, 25);
       ctx.lineTo(25, 250);
@@ -829,6 +848,8 @@ beginPath(): void
 
 Creates a drawing path.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Example**
   ```html
   <!-- xxx.hml -->
@@ -841,7 +862,7 @@ Creates a drawing path.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.beginPath();              
       ctx.lineWidth = '6';
@@ -861,12 +882,14 @@ moveTo(x: number, y: number): void
 
 Moves a drawing path to a target position on the canvas.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name  | Type    | Description                |
-| ---- | ------ | ------------------ |
-| x    | number | X-coordinate of the target position.<br>Unit: vp|
-| y    | number | Y-coordinate of the target position.<br>Unit: vp|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| x    | number | Yes| X coordinate of the target position.<br>Unit: vp.|
+| y    | number | Yes| Y coordinate of the target position.<br>Unit: vp.|
 
 **Example**
   ```html
@@ -880,7 +903,7 @@ Moves a drawing path to a target position on the canvas.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.beginPath();
       ctx.moveTo(10, 10);
@@ -898,12 +921,14 @@ lineTo(x: number, y: number): void
 
 Connects the current point to a target position using a straight line.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name  | Type    | Description       |
-| ---- | ------ | --------- |
-| x    | number | X-coordinate of the target position.<br>Unit: vp|
-| y    | number | Y-coordinate of the target position.<br>Unit: vp|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| x    | number | Yes| X coordinate of the target position.<br>Unit: vp.|
+| y    | number | Yes| Y coordinate of the target position.<br>Unit: vp.|
 
 **Example**
   ```html
@@ -917,7 +942,7 @@ Connects the current point to a target position using a straight line.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.beginPath();
       ctx.moveTo(10, 10);
@@ -935,6 +960,8 @@ closePath(): void
 
 Draws a closed path.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Example**
   ```html
   <!-- xxx.hml -->
@@ -947,7 +974,7 @@ Draws a closed path.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.beginPath();
       ctx.moveTo(30, 30);
@@ -967,12 +994,14 @@ createPattern(image: Image, repetition: string): Object
 
 Creates a pattern for image filling based on a specified source image and repetition mode.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name        | Type    | Description                                      |
-| ---------- | ------ | ---------------------------------------- |
-| image      | Image  | Source image. For details, see [Image](js-components-canvas-image.md).|
-| repetition | string | Repetition mode. The value can be **"repeat"**, **"repeat-x"**, **"repeat-y"**, or **"no-repeat"**.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| image      | Image  | Yes| Image source object. For details, see [Image Object](js-components-canvas-image.md).|
+| repetition | string | Yes| Repetition mode. The value can be **"repeat"**, **"repeat-x"**, **"repeat-y"**, or **"no-repeat"**.|
 
 **Return value**
 
@@ -992,9 +1021,10 @@ Creates a pattern for image filling based on a specified source image and repeti
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       var img = new Image();
+      // Replace 'common/images/example.jpg' with the image resource file required by the developer.
       img.src = 'common/images/example.jpg';
       var pat = ctx.createPattern(img, 'repeat');
       ctx.fillStyle = pat;
@@ -1009,18 +1039,20 @@ Creates a pattern for image filling based on a specified source image and repeti
 
 bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void
 
-Draws a cubic bezier curve on the canvas.
+Creates a path for a cubic Bezier curve.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name  | Type    | Description            |
-| ---- | ------ | -------------- |
-| cp1x | number | X-coordinate of the first parameter of the bezier curve.|
-| cp1y | number | Y-coordinate of the first parameter of the bezier curve.|
-| cp2x | number | X-coordinate of the second parameter of the bezier curve.|
-| cp2y | number | Y-coordinate of the second parameter of the bezier curve.|
-| x    | number | X-coordinate of the end point on the bezier curve.   |
-| y    | number | Y-coordinate of the end point on the bezier curve.   |
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| cp1x | number | Yes| X coordinate of the first Bezier parameter.<br>Unit: vp.|
+| cp1y | number | Yes| Y coordinate of the first Bezier parameter.<br>Unit: vp.|
+| cp2x | number | Yes| X coordinate of the second Bezier parameter.<br>Unit: vp.|
+| cp2y | number | Yes| Y coordinate of the second Bezier parameter.<br>Unit: vp.|
+| x    | number | Yes| X coordinate of the end point of the path.<br>Unit: vp.   |
+| y    | number | Yes| Y coordinate of the end point of the path.<br>Unit: vp.   |
 
 **Example**
   ```html
@@ -1034,7 +1066,7 @@ Draws a cubic bezier curve on the canvas.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.beginPath();
       ctx.moveTo(10, 10);
@@ -1050,16 +1082,18 @@ Draws a cubic bezier curve on the canvas.
 
 quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 
-Draws a quadratic curve on the canvas.
+Create a path for a quadratic Bezier curve.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name  | Type    | Description         |
-| ---- | ------ | ----------- |
-| cpx  | number | X-coordinate of the bezier curve parameter.|
-| cpy  | number | Y-coordinate of the bezier curve parameter.|
-| x    | number | X-coordinate of the end point on the bezier curve.|
-| y    | number | Y-coordinate of the end point on the bezier curve.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| cpx  | number | Yes| X coordinate of the Bezier parameter.<br>Unit: vp.|
+| cpy  | number | Yes| Y coordinate of the Bezier parameter.<br>Unit: vp.|
+| x    | number | Yes| X coordinate of the end point of the path.<br>Unit: vp.|
+| y    | number | Yes| Y coordinate of the end point of the path.<br>Unit: vp.|
 
 **Example**
   ```html
@@ -1073,7 +1107,7 @@ Draws a quadratic curve on the canvas.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.beginPath();
       ctx.moveTo(20, 20);
@@ -1087,20 +1121,22 @@ Draws a quadratic curve on the canvas.
 
 
 ### arc
-arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise: boolean): void
+arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void
 
 Draws an arc on the canvas.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name           | Type     | Description        |
-| ------------- | ------- | ---------- |
-| x             | number  | X-coordinate of the center point of the arc.|
-| y             | number  | Y-coordinate of the center point of the arc.|
-| radius        | number  | Radius of the arc.   |
-| startAngle    | number  | Start radian of the arc.  |
-| endAngle      | number  | End radian of the arc.  |
-| anticlockwise | boolean | Whether to draw the arc counterclockwise.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| x             | number  | Yes| X coordinate of the arc center.<br>Unit: vp.|
+| y             | number  | Yes| Y coordinate of the arc center.<br>Unit: vp.|
+| radius        | number  | Yes| Radius of the arc.<br>Unit: vp.   |
+| startAngle    | number  | Yes| Start radian of the arc.<br>Unit: vp. |
+| endAngle      | number  | Yes| End radian of the arc.<br>Unit: vp.  |
+| counterclockwise | boolean | No| Whether to draw the arc counterclockwise. The value true indicates counterclockwise, and the value false indicates clockwise.<br>Default value: **false**. |
 
 **Example**
   ```html
@@ -1114,7 +1150,7 @@ Draws an arc on the canvas.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.beginPath();
       ctx.arc(100, 75, 50, 0, 6.28);
@@ -1131,15 +1167,17 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
 
 Draws an arc based on the radius and points on the arc.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name    | Type    | Description             |
-| ------ | ------ | --------------- |
-| x1     | number | X-coordinate of the first point on the arc.|
-| y1     | number | Y-coordinate of the first point on the arc.|
-| x2     | number | X-coordinate of the second point on the arc.|
-| y2     | number | Y-coordinate of the second point on the arc.|
-| radius | number | Radius of the arc.       |
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| x1     | number | Yes| X coordinate of the first point that the arc passes through.<br>Unit: vp.|
+| y1     | number | Yes| Y coordinate of the first point that the arc passes through.<br>Unit: vp.|
+| x2     | number | Yes| X coordinate of the second point that the arc passes through.<br>Unit: vp.|
+| y2     | number | Yes| Y coordinate of the second point that the arc passes through.<br>Unit: vp.|
+| radius | number | Yes| Radius of the arc.<br>Unit: vp.       |
 
 **Example**
   ```html
@@ -1153,7 +1191,7 @@ Draws an arc based on the radius and points on the arc.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.moveTo(100, 20);
       ctx.arcTo(150, 20, 150, 70, 50); // Create an arc
@@ -1164,24 +1202,26 @@ Draws an arc based on the radius and points on the arc.
 
   ![en-us_image_0000001169143586](figures/en-us_image_0000001169143586.png)
 
-### ellipse<sup>6+</sup>
+### ellipse
 
-ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, anticlockwise: number): void
+ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, counterclockwise?: number): void
 
 Draws an ellipse in the specified rectangular region on the canvas.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name           | Type    | Description                                  |
-| ------------- | ------ | ------------------------------------ |
-| x             | number | X-coordinate of the ellipse center.                          |
-| y             | number | Y-coordinate of the ellipse center.                          |
-| radiusX       | number | Ellipse radius on the x-axis.                          |
-| radiusY       | number | Ellipse radius on the y-axis.                          |
-| rotation      | number | Rotation angle of the ellipse. The unit is radian.                      |
-| startAngle    | number | Angle of the start point for drawing the ellipse. The unit is radian.                   |
-| endAngle      | number | Angle of the end point for drawing the ellipse. The unit is radian.                   |
-| anticlockwise | number | Whether to draw the ellipse counterclockwise. The value **0** means clockwise, and **1** means counterclockwise. This parameter is optional. The default value is **0**.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| x             | number | Yes| X coordinate of the ellipse center.<br>Unit: vp.                          |
+| y             | number | Yes| Y coordinate of the ellipse center.<br>Unit: vp.                          |
+| radiusX       | number | Yes| Radius of the x axis of an ellipse.<br>Unit: vp.                         |
+| radiusY       | number | Yes| Radius of the y axis of an ellipse.<br>Unit: vp.                         |
+| rotation      | number | Yes| Rotation angle of an ellipse, in radians.<br>Unit: vp.                      |
+| startAngle    | number | Yes| Start angle of an ellipse, in radians.<br>Unit: vp.                   |
+| endAngle      | number | Yes| End angle of an ellipse, in radians.<br>Unit: vp.                   |
+| counterclockwise | number | No| Whether to draw the ellipse counterclockwise. The value **0** means clockwise, and **1** means counterclockwise. Other values are processed by default.<br>Unit: vp.<br>Default value: **0**|
 
 **Example**
   ```html
@@ -1195,7 +1235,7 @@ Draws an ellipse in the specified rectangular region on the canvas.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.beginPath();
       ctx.ellipse(200, 200, 50, 100, Math.PI * 0.25, Math.PI * 0.5, Math.PI, 1);
@@ -1210,16 +1250,18 @@ Draws an ellipse in the specified rectangular region on the canvas.
 ### rect
 rect(x: number, y: number, width: number, height: number): void
 
-Creates a rectangle on the canvas.
+Creates a rectangle.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name    | Type    | Description           |
-| ------ | ------ | ------------- |
-| x      | number | X-coordinate of the upper left corner of the rectangle.|
-| y      | number | Y-coordinate of the upper left corner of the rectangle.|
-| width  | number | Width of the rectangle.     |
-| height | number | Height of the rectangle.     |
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| x      | number | Yes| X coordinate of the upper left corner of a rectangle.<br>Unit: vp.|
+| y      | number | Yes| Y coordinate of the upper left corner of a rectangle.<br>Unit: vp.|
+| width  | number | Yes| Width of the rectangle.<br>Unit: vp.     |
+| height | number | Yes| Height of the rectangle.<br>Unit: vp.     |
 
 **Example**
   ```html
@@ -1233,7 +1275,7 @@ Creates a rectangle on the canvas.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.rect(20, 20, 100, 100); // Create a 100*100 rectangle at (20, 20)
       ctx.stroke(); // Draw it
@@ -1247,7 +1289,9 @@ Creates a rectangle on the canvas.
 
 fill(): void
 
-Fills the area inside a closed path on the canvas.
+Fills the area inside a closed path.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
   ```html
@@ -1261,7 +1305,7 @@ Fills the area inside a closed path on the canvas.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.rect(20, 20, 100, 100); // Create a 100*100 rectangle at (20, 20)
       ctx.fill(); // Draw it in default setting
@@ -1277,6 +1321,8 @@ clip(): void
 
 Sets the current path to a clipping path.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Example**
   ```html
   <!-- xxx.hml -->
@@ -1289,7 +1335,7 @@ Sets the current path to a clipping path.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.rect(0, 0, 200, 200);
       ctx.stroke();
@@ -1309,11 +1355,13 @@ rotate(rotate: number): void
 
 Rotates a canvas clockwise around its coordinate axes.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name    | Type    | Description                                      |
-| ------ | ------ | ---------------------------------------- |
-| rotate | number | Clockwise rotation angle. You can use **Math.PI / 180** to convert the angle to a radian.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| rotate | number | Yes| Clockwise rotation angle. You can use **Math.PI / 180** to convert the angle to a radian.<br>Unit: vp.|
 
 **Example**
   ```html
@@ -1327,7 +1375,7 @@ Rotates a canvas clockwise around its coordinate axes.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.rotate(45 * Math.PI / 180); // Rotate the rectangle 45 degrees
       ctx.fillRect(70, 20, 50, 50);
@@ -1341,14 +1389,16 @@ Rotates a canvas clockwise around its coordinate axes.
 
 scale(x: number, y: number): void
 
-Scales the canvas based on scale factors.
+Scales a canvas based on scale factors.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name  | Type    | Description         |
-| ---- | ------ | ----------- |
-| x    | number | Horizontal scale factor.|
-| y    | number | Vertical scale factor.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| x    | number | Yes| Horizontal scaling value.<br>Unit: vp.|
+| y    | number | Yes| Vertical scaling value.<br>Unit: vp.|
 
 **Example**
   ```html
@@ -1362,7 +1412,7 @@ Scales the canvas based on scale factors.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.strokeRect(10, 10, 25, 25);
       ctx.scale(2, 2);// Scale to 200%
@@ -1379,23 +1429,25 @@ transform(scaleX: number, skewX: number, skewY: number, scale: number, translate
 
 Defines a transformation matrix. To transform a graph, you only need to set parameters of the matrix. The coordinates of the graph are multiplied by the matrix values to obtain new coordinates of the transformed graph. You can use the matrix to implement multiple transform effects.
 
->  **NOTE**<br>
->  The following formulas calculate coordinates of the transformed graph. **x** and **y** represent coordinates before transformation, and **x'** and **y'** represent coordinates after transformation.
+>  **NOTE**
+>  The following formulas calculate the coordinates of a transformed graph. **x** and **y** represent the coordinates before transformation, and **x'** and **y'** represent the coordinates after transformation.
 >
 >  - x' = scaleX \* x + skewY \* y + translateX
 >
 >  - y' = skewX \* x + scaleY \* y + translateY
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name        | Type    | Description      |
-| ---------- | ------ | -------- |
-| scaleX     | number | X-axis scale.|
-| skewX      | number | X-axis skew.|
-| skewY      | number | Y-axis skew.|
-| scaleY     | number | Y-axis scale.|
-| translateX | number | X-axis translation.|
-| translateY | number | Y-axis translation.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| scaleX     | number | Yes| Horizontal scaling value.<br>Unit: vp.|
+| skewX      | number | Yes| Horizontal tilt value.<br>Unit: vp.|
+| skewY      | number | Yes| Vertical tilt value.<br>Unit: vp.|
+| scaleY     | number | Yes| Vertical scaling value.<br>Unit: vp.|
+| translateX | number | Yes| Horizontal movement value.<br>Unit: vp.|
+| translateY | number | Yes| Vertical movement value.<br>Unit: vp.|
 
 **Example**
   ```html
@@ -1409,10 +1461,10 @@ Defines a transformation matrix. To transform a graph, you only need to set para
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.fillStyle = 'rgb(0,0,0)';
-      ctx.fillRect(0, 0, 100, 100)
+      ctx.fillRect(0, 0, 100, 100);
       ctx.transform(1, 0.5, -0.5, 1, 10, 10);
       ctx.fillStyle = 'rgb(255,0,0)';
       ctx.fillRect(0, 0, 100, 100);
@@ -1431,16 +1483,18 @@ setTransform(scaleX: number, skewX: number, skewY: number, scale: number, transl
 
 Resets the existing transformation matrix and creates a new transformation matrix by using the same parameters as the **transform()** API.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name        | Type    | Description      |
-| ---------- | ------ | -------- |
-| scaleX     | number | X-axis scale.|
-| skewX      | number | X-axis skew.|
-| skewY      | number | Y-axis skew.|
-| scaleY     | number | Y-axis scale.|
-| translateX | number | X-axis translation.|
-| translateY | number | Y-axis translation.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| scaleX     | number | Yes| Horizontal scaling value.<br>Unit: vp.|
+| skewX      | number | Yes| Horizontal tilt value.<br>Unit: vp.|
+| skewY      | number | Yes| Vertical tilt value.<br>Unit: vp.|
+| scaleY     | number | Yes| Vertical scaling value.<br>Unit: vp.|
+| translateX | number | Yes| Horizontal movement value.<br>Unit: vp.|
+| translateY | number | Yes| Vertical movement value.<br>Unit: vp.|
 
 **Example**
   ```html
@@ -1454,10 +1508,10 @@ Resets the existing transformation matrix and creates a new transformation matri
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.fillStyle = 'rgb(255,0,0)';
-      ctx.fillRect(0, 0, 100, 100)
+      ctx.fillRect(0, 0, 100, 100);
       ctx.setTransform(1,0.5, -0.5, 1, 10, 10);
       ctx.fillStyle = 'rgb(0,0,255)';
       ctx.fillRect(0, 0, 100, 100);
@@ -1473,12 +1527,14 @@ translate(x: number, y: number): void
 
 Moves the origin of the coordinate system.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name  | Type    | Description      |
-| ---- | ------ | -------- |
-| x    | number | X-axis translation.|
-| y    | number | Y-axis translation.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| x    | number | Yes| Horizontal translation value.<br>Unit: vp.|
+| y    | number | Yes| Vertical translation value.<br>Unit: vp.|
 
 **Example**
   ```html
@@ -1492,7 +1548,7 @@ Moves the origin of the coordinate system.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.fillRect(10, 10, 50, 50);
       ctx.translate(70, 70);
@@ -1509,16 +1565,18 @@ createPath2D(path: Path2D, cmds: string): Path2D
 
 Creates a **Path2D** object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name  | Type    | Description            |
-| ---- | ------ | -------------- |
-| path | Path2D | **Path2D** object.     |
-| cmds | string | Path description of the SVG image.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| path | Path2D | Yes| **Path2D** object.     |
+| cmds | string | Yes| Path description of the SVG image.|
 
 **Return value**
 
-  [Path2D object](js-components-canvas-path2d.md)
+  [Path2D](js-components-canvas-path2d.md)
 
 **Example**
   ```html
@@ -1532,7 +1590,7 @@ Creates a **Path2D** object.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       var path1 = ctx.createPath2D();
       path1.moveTo(100, 100);
@@ -1554,21 +1612,23 @@ Creates a **Path2D** object.
 
 drawImage(image: Image | PixelMap, sx: number, sy: number, sWidth: number, sHeight: number, dx: number, dy: number, dWidth: number, dHeight: number):void
 
-Draws an image on the canvas.
+Draws an image.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name     | Type                            | Description                                      |
-| ------- | ------------------------------ | ---------------------------------------- |
-| image   | Image \| PixelMap<sup>9+</sup> | Image resource. For details, see [Image](js-components-canvas-image.md) or [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7).|
-| sx      | number                         | X-coordinate of the upper left corner of the rectangle used to crop the source image.                    |
-| sy      | number                         | Y-coordinate of the upper left corner of the rectangle used to crop the source image.                    |
-| sWidth  | number                         | Target width to crop the source image.                          |
-| sHeight | number                         | Target height to crop the source image.                          |
-| dx      | number                         | X-coordinate of the upper left corner of the drawing area on the canvas.                          |
-| dy      | number                         | Y-coordinate of the upper left corner of the drawing area on the canvas.                    |
-| dWidth  | number                         | Width of the drawing area.                                |
-| dHeight | number                         | Height of the drawing area.                                |
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| image   | Image \| PixelMap<sup>9+</sup> | Yes| Image resource. For details, see [Image Object](js-components-canvas-image.md) or [PixelMap Object](../../apis-image-kit/arkts-apis-image-PixelMap.md).|
+| sx      | number                         | Yes| X coordinate of the upper left corner of the source image to be cropped.<br>Unit: vp.                    |
+| sy      | number                         | Yes| Y coordinate of the upper left corner of the source image to be cropped.<br>Unit: vp.                   |
+| sWidth  | number                         | Yes| Width of the source image to be cropped.<br>Unit: vp.                    |
+| sHeight | number                         | Yes| Height of the source image to be cropped.<br>Unit: vp.                          |
+| dx      | number                         | Yes| X-coordinate of the upper left corner of the drawing area on the canvas.<br>Unit: vp.                         |
+| dy      | number                         | Yes| Y-coordinate of the upper left corner of the drawing area on the canvas.<br>Unit: vp.                   |
+| dWidth  | number                         | Yes| Width of the drawing area.<br>Unit: vp.                               |
+| dHeight | number                         | Yes| Height of the drawing area.<br>Unit: vp.                              |
 
 **Example**
   ```html
@@ -1585,6 +1645,7 @@ Draws an image on the canvas.
       var test = this.$refs.canvas;
       var ctx = test.getContext('2d');
       var img = new Image();
+      // Replace 'common/image/test.jpg' with the image resource file you use.
       img.src = 'common/image/test.jpg';
       ctx.drawImage(img, 0, 0, 200, 200, 10, 10, 200, 200);
     }
@@ -1599,6 +1660,8 @@ restore(): void
 
 Restores the saved drawing context.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Example**
   ```html
   <!-- xxx.hml -->
@@ -1611,7 +1674,7 @@ Restores the saved drawing context.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.restore();
     }
@@ -1624,6 +1687,8 @@ save(): void
 
 Saves the current drawing context.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Example**
   ```html
   <!-- xxx.hml -->
@@ -1636,7 +1701,7 @@ Saves the current drawing context.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.save();
     }
@@ -1647,16 +1712,18 @@ Saves the current drawing context.
 
 createLinearGradient(x0: number, y0: number, x1: number, y1: number): Object
 
-Creates a linear gradient and returns a **CanvasGradient** object. For details, see [CanvasGradient](js-components-canvas-canvasgradient.md).
+Creates a linear gradient color and returns a CanvasGradient object. For details, see [CanvasGradient Object](js-components-canvas-canvasgradient.md).
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name  | Type    | Description      |
-| ---- | ------ | -------- |
-| x0   | number | X-coordinate of the start point.|
-| y0   | number | Y-coordinate of the start point.|
-| x1   | number | X-coordinate of the end point.|
-| y1   | number | Y-coordinate of the end point.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| x0   | number | Yes| X coordinate of the start point.<br>Unit: vp.|
+| y0   | number | Yes| Y coordinate of the start point.<br>Unit: vp.|
+| x1   | number | Yes| X coordinate of the end point.<br>Unit: vp.|
+| y1   | number | Yes| Y coordinate of the end point.<br>Unit: vp.|
 
 **Return value**
 
@@ -1698,18 +1765,20 @@ Creates a linear gradient and returns a **CanvasGradient** object. For details, 
 
 createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): Object
 
-Creates a radial gradient and returns a **CanvasGradient** object.
+Creates a radial gradient and returns a CanvasGradient object. For details, see CanvasGradient.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name  | Type    | Description               |
-| ---- | ------ | ----------------- |
-| x0   | number | X-coordinate of the center of the start circle.        |
-| y0   | number | Y-coordinate of the center of the start circle.        |
-| r0   | number | Radius of the start circle, which must be a non-negative finite number.|
-| x1   | number | X-coordinate of the center of the end circle.        |
-| y1   | number | Y-coordinate of the center of the end circle.        |
-| r1   | number | Radius of the end circle, which must be a non-negative finite number.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| x0   | number | Yes| X coordinate of the start circle.<br>Unit: vp.        |
+| y0   | number | Yes| Y coordinate of the start circle.<br>Unit: vp.        |
+| r0   | number | Yes| Radius of the start circle, The value must be a non-negative finite number.<br>Unit: vp.|
+| x1   | number | Yes| X coordinate of the end circle.<br>Unit: vp.        |
+| y1   | number | Yes| Y coordinate of the end circle.<br>Unit: vp.        |
+| r1   | number | Yes| Radius of the end circle, The value must be a non-negative finite number.<br>Unit: vp.|
 
 **Return value**
 
@@ -1749,23 +1818,24 @@ Creates a radial gradient and returns a **CanvasGradient** object.
 
 ### createImageData
 
-createImageData(width: number, height: number, imageData: Object): Object
+createImageData(width: number, height: number): ImageData
 
-Creates an **ImageData** object. For details, see [ImageData](js-components-canvas-imagedata.md).
+Creates a new, blank, and specified-size ImageData object. For details, see [ImageData object](js-components-canvas-imagedata.md).
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name       | Type    | Description               |
-| --------- | ------ | ----------------- |
-| width     | number | Width of the **ImageData** object.    |
-| height    | number | Height of the **ImageData** object.    |
-| imagedata | Object | **ImageData** object with the same width and height copied from the original **ImageData** object.|
+| Name       | Type    | Mandatory    | Description               |
+| --------- | ------ | ------ |----------------- |
+| width     | number |  Yes| Width of the **ImageData** object.<br>Unit: vp.    |
+| height    | number |  Yes| Height of the **ImageData** object.<br>Unit: vp.    |
 
 **Return value**
 
 | Type    | Description               |
 | ------ | ----------------- |
-| Object | Created **ImageData** object.|
+| [ImageData](js-components-canvas-imagedata.md) | Created **ImageData** object.|
 
 **Example**
   ```html
@@ -1779,7 +1849,46 @@ Creates an **ImageData** object. For details, see [ImageData](js-components-canv
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
+      const ctx = el.getContext('2d');
+      var imageData = ctx.createImageData(50, 100);  // Create ImageData with 50px width and 100px height
+    }
+  }
+  ```
+
+### createImageData
+
+createImageData(imageData: ImageData): ImageData
+
+Creates an ImageData object with the same width and height as the existing ImageData object, but does not copy the image data. For details, see [ImageData object] (js-components-canvas-imagedata.md).
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name       | Type    | Mandatory    | Description               |
+| --------- | ------ | ------ |----------------- |
+| imageData | [ImageData](js-components-canvas-imagedata.md) | Yes|**ImageData** object with the same width and height copied from the original **ImageData** object.|
+
+**Return value**
+
+| Type    | Description               |
+| ------ | ----------------- |
+| [ImageData](js-components-canvas-imagedata.md) | Created **ImageData** object.|
+
+**Example**
+  ```html
+  <!-- xxx.hml -->
+  <div>
+    <canvas ref="canvas" style="width: 200px; height: 150px; background-color: #ffff00;"></canvas>
+  </div>
+  ```
+
+  ```js
+  //xxx.js
+  export default {
+    onShow() {
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       var imageData = ctx.createImageData(50, 100);  // Create ImageData with 50px width and 100px height
       var newImageData = ctx.createImageData(imageData);  // Create ImageData using the input imageData
@@ -1789,24 +1898,26 @@ Creates an **ImageData** object. For details, see [ImageData](js-components-canv
 
 ### getImageData
 
-getImageData(sx: number, sy: number, sw: number, sh: number): Object
+getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
 
-Obtains the **ImageData** object created with the pixels within the specified area on the canvas.
+Creates an [ImageData object](js-components-canvas-imagedata.md) based on the pixels in the specified area of the current canvas.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name  | Type    | Description             |
-| ---- | ------ | --------------- |
-| sx   | number | X-coordinate of the upper left corner of the output area.|
-| sy   | number | Y-coordinate of the upper left corner of the output area.|
-| sw   | number | Width of the output area.    |
-| sh   | number | Height of the output area.    |
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| sx   | number | Yes| X coordinate of the upper left corner of the area to be output.<br>Unit: vp.|
+| sy   | number | Yes| Y coordinate of the upper left corner of the area to be output.<br>Unit: vp.|
+| sw   | number | Yes| Width of the area to be output.<br>Unit: vp.    |
+| sh   | number | Yes| Height of the area to be output.<br>Unit: vp.    |
 
 **Return value**
 
 | Type    | Description                     |
 | ------ | ----------------------- |
-| Object | **ImageData** object that contains pixels in the specified area on the canvas.|
+| [ImageData](js-components-canvas-imagedata.md) | **ImageData** object that contains pixels in the specified area on the canvas.|
 
 **Example**
   ```html
@@ -1829,27 +1940,72 @@ Obtains the **ImageData** object created with the pixels within the specified ar
 
 ### putImageData
 
-putImageData(imageData: Object, dx: number, dy: number, dirtyX: number, dirtyY: number, dirtyWidth: number, dirtyHeight: number): void
+putImageData(imageData: ImageData, dx: number, dy: number, dirtyX: number, dirtyY: number, dirtyWidth: number, dirtyHeight: number): void
 
-Puts the **ImageData** onto a rectangular area on the canvas.
+Crops the image data and fills it into a new rectangle.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name         | Type    | Description                           |
-| ----------- | ------ | ----------------------------- |
-| imagedata   | Object | **ImageData** object with pixels to put onto the canvas.           |
-| dx          | number | X-axis offset of the rectangular area on the canvas.               |
-| dy          | number | Y-axis offset of the rectangular area on the canvas.               |
-| dirtyX      | number | X-axis offset of the upper left corner of the rectangular area relative to that of the source image.|
-| dirtyY      | number | Y-axis offset of the upper left corner of the rectangular area relative to that of the source image.|
-| dirtyWidth  | number | Width of the rectangular area to crop the source image.              |
-| dirtyHeight | number | Height of the rectangular area to crop the source image.              |
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| imageData   | [ImageData](js-components-canvas-imagedata.md) | Yes| **ImageData** object with pixels to put onto the canvas.           |
+| dx          | number | Yes| X-axis offset of the rectangular area on the canvas.<br>Unit: vp.               |
+| dy          | number | Yes| Y-axis offset of the rectangular area on the canvas.<br>Unit: vp.               |
+| dirtyX      | number | Yes| X-axis offset of the upper left corner of the rectangle cropping range in the source image data.<br>Unit: vp.|
+| dirtyY      | number | Yes| Y-axis offset of the upper left corner of the rectangular area relative to that of the source image.<br>Unit: vp.|
+| dirtyWidth  | number | Yes| Width of the rectangular area to crop the source image.<br>Unit: vp.              |
+| dirtyHeight | number | Yes| Height of the rectangular area to crop the source image.<br>Unit: vp.              |
 
 **Example**
   ```html
   <!-- xxx.hml -->
   <div>
-    <canvas id="getImageData" style="width: 200px; height: 150px; background-color: #ffff00;"></canvas>
+    <canvas id="putImageData" style="width: 200px; height: 150px; background-color: #D5D5D5;"></canvas>
+  </div>
+  ```
+
+  ```js
+  //xxx.js
+  export default {
+      onShow() {
+          const test = this.$element('putImageData')
+          const ctx = test.getContext('2d');
+          var imgData = ctx.createImageData(100, 100);
+          for (var i = 0; i < imgData.data.length; i += 4) {
+              imgData.data[i + 0] = 39;
+              imgData.data[i + 1] = 135;
+              imgData.data[i + 2] = 217;
+              imgData.data[i + 3] = 255;
+          }
+          ctx.putImageData(imgData, 10, 10, 0, 0, 100, 50);
+      }
+  }
+  ```
+![jsCanvasPutimagedata](figures/jsCanvasPutimagedata.png)
+
+### putImageData
+
+putImageData(imageData: ImageData, dx: number, dy: number): void
+
+Puts the **ImageData** onto a rectangular area on the canvas.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| imageData   | [ImageData](js-components-canvas-imagedata.md) | Yes| **ImageData** object with pixels to put onto the canvas.           |
+| dx          | number | Yes| X-axis offset of the rectangular area on the canvas.<br>Unit: vp.               |
+| dy          | number | Yes| Y-axis offset of the rectangular area on the canvas.<br>Unit: vp.               |
+
+**Example**
+  ```html
+  <!-- xxx.hml -->
+  <div>
+    <canvas id="putImageData" style="width: 200px; height: 150px; background-color: #ffff00;"></canvas>
   </div>
   ```
 
@@ -1857,7 +2013,7 @@ Puts the **ImageData** onto a rectangular area on the canvas.
   //xxx.js
   export default {
     onShow() {
-      const test = this.$element('getImageData')
+      const test = this.$element('putImageData')
       const ctx = test.getContext('2d');
       var imgData = ctx.createImageData(100, 100);
       for (var i = 0; i < imgData.data.length; i += 4) {
@@ -1879,20 +2035,22 @@ getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
 
 Obtains the **PixelMap** object created with the pixels within the specified area on the canvas.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name  | Type    | Description          |
-| ---- | ------ | ------------ |
-| sx   | number | X-coordinate of the upper left corner of the specified area.|
-| sy   | number | Y-coordinate of the upper left corner of the specified area.|
-| sw   | number | Width of the specified area.    |
-| sh   | number | Height of the specified area.    |
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| sx   | number | Yes| X-coordinate of the upper left corner of the specified area.<br>Unit: vp.|
+| sy   | number | Yes| Y-coordinate of the upper left corner of the specified area.<br>Unit: vp.|
+| sw   | number | Yes| Width of the specified area.<br>Unit: vp.    |
+| sh   | number | Yes| Height of the specified area.<br>Unit: vp.    |
 
 **Return value**
 
 | Type                                      | Description                    |
 | ---------------------------------------- | ---------------------- |
-| [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) | **PixelMap** object that contains pixels in the specified area on the canvas.|
+| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | **PixelMap** object that contains pixels in the specified area on the canvas.|
 
 **Example**
 
@@ -1920,11 +2078,13 @@ setLineDash(segments: Array): void
 
 Sets the dash line style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
-| Name      | Type   | Description                  |
-| -------- | ----- | -------------------- |
-| segments | Array | An array describing the interval of alternate line segments and length of spacing.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| segments | Array | Yes| An array describing the interval of alternate line segments and length of spacing.|
 
 **Example**
   ```html
@@ -1938,7 +2098,7 @@ Sets the dash line style.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       ctx.arc(100, 75, 50, 0, 6.28);
       ctx.setLineDash([10,20]);
@@ -1954,6 +2114,8 @@ Sets the dash line style.
 getLineDash(): Array
 
 Obtains the dash line style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
 
@@ -1973,7 +2135,7 @@ Obtains the dash line style.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       var info = ctx.getLineDash();
     }
@@ -1984,13 +2146,15 @@ Obtains the dash line style.
 
 transferFromImageBitmap(bitmap: ImageBitmap): void
 
-Displays the specified **ImageBitmap** object.
+Displays the specified [ImageBitmap](js-components-canvas-imagebitmap.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name    | Type         | Description                |
-| ------ | ----------- | ------------------ |
-| bitmap | ImageBitmap | **ImageBitmap** object to display.|
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| bitmap | [ImageBitmap](js-components-canvas-imagebitmap.md) | Yes| **ImageBitmap** object to display.|
 
 **Example**
   ```html
@@ -2004,7 +2168,7 @@ Displays the specified **ImageBitmap** object.
   //xxx.js
   export default {
     onShow() {
-      const el =this.$refs.canvas;
+      const el = this.$refs.canvas;
       const ctx = el.getContext('2d');
       var canvas = this.$refs.canvas.getContext('2d');
       var offscreen = new OffscreenCanvas(500,500);

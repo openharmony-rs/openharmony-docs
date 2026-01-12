@@ -190,14 +190,6 @@ getColorSpaceName(): ColorSpace
 | ------------------ | ------------------------ |
 | [ColorSpace](#colorspace)  | 返回色域类型枚举值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | ----------------------- |
-| 18600001 | The parameter value is abnormal. |
-
 **示例：**
 
 ```ts
@@ -222,14 +214,6 @@ getWhitePoint(): Array\<number\>
 | ------------------ | ------------------------ |
 | Array\<number\>  | 返回色域白点值[x, y]。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | ----------------------- |
-| 18600001 | Invalid parameter value. Possible cause: Used UNKNOWN or CUSTOM color space type enum values to directly create a colorSpaceManager object. |
-
 **示例：**
 
 ```ts
@@ -253,14 +237,6 @@ getGamma(): number
 | 类型                | 说明                     |
 | ------------------ | ------------------------ |
 | number  | 返回色域gamma值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | ----------------------- |
-| 18600001 | Invalid parameter value. Possible cause: Used UNKNOWN or CUSTOM color space type enum values to directly create a colorSpaceManager object. |
 
 **示例：**
 

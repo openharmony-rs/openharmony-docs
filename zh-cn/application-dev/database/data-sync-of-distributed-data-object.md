@@ -113,17 +113,13 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 
 ## 约束限制
 <!--RP5-->
-- 目前分布式数据对象只能在[跨端迁移](../application-models/hop-cross-device-migration.md)和[通过跨设备Call调用实现的多端协同](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)场景中使用。
+- 目前分布式数据对象只能在[跨端迁移](../application-models/hop-cross-device-migration.md)和[通过跨设备Call调用实现的多端协同](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)场景中使用。跨端迁移场景下，每个分布式数据对象大小不超过150KB；多端协同场景下，每个分布式数据对象大小不超过500KB。
 
 - 当前跨设备接续能力支持以下两种场景的​​Ability跨端迁移​​
   - [支持同应用中不同Ability跨端迁移](../application-models/hop-cross-device-migration.md#支持同应用中不同ability跨端迁移)
   - [支持同应用不同BundleName的Ability跨端迁移](../application-models/hop-cross-device-migration.md#支持同应用不同bundlename的ability跨端迁移)
 <!--RP5End-->
 - 分布式数据对象的数据同步发生在同一个应用程序下，且同sessionID之间。
-
-- 不建议创建过多的分布式数据对象，每个分布式数据对象将占用100-150KB内存。
-
-- 每个分布式数据对象大小不超过500KB。
 
 - 设备A修改1KB数据，设备B收到变更通知，50ms内完成。
 
@@ -196,7 +192,7 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 >
 > - 接收端需要将业务数据的初始值设置为undefined，才能恢复发起端保存的数据，否则接收端的数据会覆盖同步到发起端。如果是资产数据，需要将资产数据的各个属性设置为空字符串而不是将整个资产数据设置为undefined。
 >
-> - 暂不支持资产类型数组，如果要迁移多个文件，在业务数据中定义多条资产数据来记录。
+> - API version 20版本之前不支持资产类型数组，如果要迁移多个文件，在业务数据中定义多条资产数据来记录。从API version 20开始，支持资产类型数组的同步。
 >
 > - 目前仅支持迁移分布式文件目录下的文件，非分布式文件目录下的文件可以复制或移动到分布式文件目录下再进行迁移。文件的操作和URI的获取详见[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)和[文件URI](../reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 

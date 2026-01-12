@@ -2,9 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} ArkUI_AccessibleGridInfo
+```
 
 ## Overview
 
@@ -24,4 +28,4 @@ Configures grid layout attributes for specific components including **List**, **
 | -- | -- |
 | int32_t rowCount | Number of rows of the component.|
 | int32_t columnCount | Number of columns of the component.|
-| int32_t selectionMode | Selection mode. The value **0** indicates single-row selection, and other values indicate multi-row selection.|
+| int32_t selectionMode | Selection mode. If the value is **0**, only a single row in the grid can be selected. If the value is not 0, multiple rows can be selected.|

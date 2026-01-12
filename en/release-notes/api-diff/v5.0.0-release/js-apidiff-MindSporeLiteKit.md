@@ -1,0 +1,101 @@
+| Change Type | Old Version | New Version | d.ts File |
+| ---- | ------ | ------ | -------- |
+|API model switching|Class name: Context;<br>API declaration: target?: string[];<br>Differences: NA|Class name: Context;<br>API declaration: target?: string[];<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: Context;<br>API declaration: cpu?: CpuDevice;<br>Differences: NA|Class name: Context;<br>API declaration: cpu?: CpuDevice;<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: Context;<br>API declaration: nnrt?: NNRTDevice;<br>Differences: NA|Class name: Context;<br>API declaration: nnrt?: NNRTDevice;<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: CpuDevice;<br>API declaration: threadNum?: number;<br>Differences: NA|Class name: CpuDevice;<br>API declaration: threadNum?: number;<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: CpuDevice;<br>API declaration: threadAffinityMode?: ThreadAffinityMode;<br>Differences: NA|Class name: CpuDevice;<br>API declaration: threadAffinityMode?: ThreadAffinityMode;<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: CpuDevice;<br>API declaration: threadAffinityCoreList?: number[];<br>Differences: NA|Class name: CpuDevice;<br>API declaration: threadAffinityCoreList?: number[];<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: CpuDevice;<br>API declaration: precisionMode?: string;<br>Differences: NA|Class name: CpuDevice;<br>API declaration: precisionMode?: string;<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: ThreadAffinityMode;<br>API declaration: NO_AFFINITIES = 0<br>Differences: NA|Class name: ThreadAffinityMode;<br>API declaration: NO_AFFINITIES = 0<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: ThreadAffinityMode;<br>API declaration: BIG_CORES_FIRST = 1<br>Differences: NA|Class name: ThreadAffinityMode;<br>API declaration: BIG_CORES_FIRST = 1<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: ThreadAffinityMode;<br>API declaration: LITTLE_CORES_FIRST = 2<br>Differences: NA|Class name: ThreadAffinityMode;<br>API declaration: LITTLE_CORES_FIRST = 2<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: MSTensor;<br>API declaration: name: string;<br>Differences: NA|Class name: MSTensor;<br>API declaration: name: string;<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: MSTensor;<br>API declaration: shape: number[];<br>Differences: NA|Class name: MSTensor;<br>API declaration: shape: number[];<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: MSTensor;<br>API declaration: elementNum: number;<br>Differences: NA|Class name: MSTensor;<br>API declaration: elementNum: number;<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: MSTensor;<br>API declaration: dataSize: number;<br>Differences: NA|Class name: MSTensor;<br>API declaration: dataSize: number;<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: MSTensor;<br>API declaration: dtype: DataType;<br>Differences: NA|Class name: MSTensor;<br>API declaration: dtype: DataType;<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: MSTensor;<br>API declaration: format: Format;<br>Differences: NA|Class name: MSTensor;<br>API declaration: format: Format;<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: DataType;<br>API declaration: TYPE_UNKNOWN = 0<br>Differences: NA|Class name: DataType;<br>API declaration: TYPE_UNKNOWN = 0<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: DataType;<br>API declaration: NUMBER_TYPE_INT8 = 32<br>Differences: NA|Class name: DataType;<br>API declaration: NUMBER_TYPE_INT8 = 32<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: DataType;<br>API declaration: NUMBER_TYPE_INT16 = 33<br>Differences: NA|Class name: DataType;<br>API declaration: NUMBER_TYPE_INT16 = 33<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: DataType;<br>API declaration: NUMBER_TYPE_INT32 = 34<br>Differences: NA|Class name: DataType;<br>API declaration: NUMBER_TYPE_INT32 = 34<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: DataType;<br>API declaration: NUMBER_TYPE_INT64 = 35<br>Differences: NA|Class name: DataType;<br>API declaration: NUMBER_TYPE_INT64 = 35<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: DataType;<br>API declaration: NUMBER_TYPE_UINT8 = 37<br>Differences: NA|Class name: DataType;<br>API declaration: NUMBER_TYPE_UINT8 = 37<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: DataType;<br>API declaration: NUMBER_TYPE_UINT16 = 38<br>Differences: NA|Class name: DataType;<br>API declaration: NUMBER_TYPE_UINT16 = 38<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: DataType;<br>API declaration: NUMBER_TYPE_UINT32 = 39<br>Differences: NA|Class name: DataType;<br>API declaration: NUMBER_TYPE_UINT32 = 39<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: DataType;<br>API declaration: NUMBER_TYPE_UINT64 = 40<br>Differences: NA|Class name: DataType;<br>API declaration: NUMBER_TYPE_UINT64 = 40<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: DataType;<br>API declaration: NUMBER_TYPE_FLOAT16 = 42<br>Differences: NA|Class name: DataType;<br>API declaration: NUMBER_TYPE_FLOAT16 = 42<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: DataType;<br>API declaration: NUMBER_TYPE_FLOAT32 = 43<br>Differences: NA|Class name: DataType;<br>API declaration: NUMBER_TYPE_FLOAT32 = 43<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: DataType;<br>API declaration: NUMBER_TYPE_FLOAT64 = 44<br>Differences: NA|Class name: DataType;<br>API declaration: NUMBER_TYPE_FLOAT64 = 44<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: Format;<br>API declaration: DEFAULT_FORMAT = -1<br>Differences: NA|Class name: Format;<br>API declaration: DEFAULT_FORMAT = -1<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: Format;<br>API declaration: NCHW = 0<br>Differences: NA|Class name: Format;<br>API declaration: NCHW = 0<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: Format;<br>API declaration: NHWC = 1<br>Differences: NA|Class name: Format;<br>API declaration: NHWC = 1<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: Format;<br>API declaration: NHWC4 = 2<br>Differences: NA|Class name: Format;<br>API declaration: NHWC4 = 2<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: Format;<br>API declaration: HWKC = 3<br>Differences: NA|Class name: Format;<br>API declaration: HWKC = 3<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: Format;<br>API declaration: HWCK = 4<br>Differences: NA|Class name: Format;<br>API declaration: HWCK = 4<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|API model switching|Class name: Format;<br>API declaration: KCHW = 5<br>Differences: NA|Class name: Format;<br>API declaration: KCHW = 5<br>Differences: stagemodelonly|api/@ohos.ai.mindSporeLite.d.ts|
+|syscap change|Class name: Context;<br>API declaration: target?: string[];<br>Differences: NA|Class name: Context;<br>API declaration: target?: string[];<br>Differences: SystemCapability.AI.MindSporeLite|api/@ohos.ai.mindSporeLite.d.ts|
+|syscap change|Class name: Context;<br>API declaration: cpu?: CpuDevice;<br>Differences: NA|Class name: Context;<br>API declaration: cpu?: CpuDevice;<br>Differences: SystemCapability.AI.MindSporeLite|api/@ohos.ai.mindSporeLite.d.ts|
+|syscap change|Class name: Context;<br>API declaration: nnrt?: NNRTDevice;<br>Differences: NA|Class name: Context;<br>API declaration: nnrt?: NNRTDevice;<br>Differences: SystemCapability.AI.MindSporeLite|api/@ohos.ai.mindSporeLite.d.ts|
+|syscap change|Class name: CpuDevice;<br>API declaration: threadNum?: number;<br>Differences: NA|Class name: CpuDevice;<br>API declaration: threadNum?: number;<br>Differences: SystemCapability.AI.MindSporeLite|api/@ohos.ai.mindSporeLite.d.ts|
+|syscap change|Class name: CpuDevice;<br>API declaration: threadAffinityMode?: ThreadAffinityMode;<br>Differences: NA|Class name: CpuDevice;<br>API declaration: threadAffinityMode?: ThreadAffinityMode;<br>Differences: SystemCapability.AI.MindSporeLite|api/@ohos.ai.mindSporeLite.d.ts|
+|syscap change|Class name: CpuDevice;<br>API declaration: threadAffinityCoreList?: number[];<br>Differences: NA|Class name: CpuDevice;<br>API declaration: threadAffinityCoreList?: number[];<br>Differences: SystemCapability.AI.MindSporeLite|api/@ohos.ai.mindSporeLite.d.ts|
+|syscap change|Class name: CpuDevice;<br>API declaration: precisionMode?: string;<br>Differences: NA|Class name: CpuDevice;<br>API declaration: precisionMode?: string;<br>Differences: SystemCapability.AI.MindSporeLite|api/@ohos.ai.mindSporeLite.d.ts|
+|syscap change|Class name: MSTensor;<br>API declaration: name: string;<br>Differences: NA|Class name: MSTensor;<br>API declaration: name: string;<br>Differences: SystemCapability.AI.MindSporeLite|api/@ohos.ai.mindSporeLite.d.ts|
+|syscap change|Class name: MSTensor;<br>API declaration: shape: number[];<br>Differences: NA|Class name: MSTensor;<br>API declaration: shape: number[];<br>Differences: SystemCapability.AI.MindSporeLite|api/@ohos.ai.mindSporeLite.d.ts|
+|syscap change|Class name: MSTensor;<br>API declaration: elementNum: number;<br>Differences: NA|Class name: MSTensor;<br>API declaration: elementNum: number;<br>Differences: SystemCapability.AI.MindSporeLite|api/@ohos.ai.mindSporeLite.d.ts|
+|syscap change|Class name: MSTensor;<br>API declaration: dataSize: number;<br>Differences: NA|Class name: MSTensor;<br>API declaration: dataSize: number;<br>Differences: SystemCapability.AI.MindSporeLite|api/@ohos.ai.mindSporeLite.d.ts|
+|syscap change|Class name: MSTensor;<br>API declaration: dtype: DataType;<br>Differences: NA|Class name: MSTensor;<br>API declaration: dtype: DataType;<br>Differences: SystemCapability.AI.MindSporeLite|api/@ohos.ai.mindSporeLite.d.ts|
+|syscap change|Class name: MSTensor;<br>API declaration: format: Format;<br>Differences: NA|Class name: MSTensor;<br>API declaration: format: Format;<br>Differences: SystemCapability.AI.MindSporeLite|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: mindSporeLite;<br>API declaration: function loadTrainModelFromFile(model: string, trainCfg?: TrainCfg, context?: Context): Promise\<Model>;<br>Differences: function loadTrainModelFromFile(model: string, trainCfg?: TrainCfg, context?: Context): Promise\<Model>;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: mindSporeLite;<br>API declaration: function loadTrainModelFromBuffer(model: ArrayBuffer, trainCfg?: TrainCfg, context?: Context): Promise\<Model>;<br>Differences: function loadTrainModelFromBuffer(model: ArrayBuffer, trainCfg?: TrainCfg, context?: Context): Promise\<Model>;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: mindSporeLite;<br>API declaration: function loadTrainModelFromFd(model: number, trainCfg?: TrainCfg, context?: Context): Promise\<Model>;<br>Differences: function loadTrainModelFromFd(model: number, trainCfg?: TrainCfg, context?: Context): Promise\<Model>;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: Model;<br>API declaration: learningRate?: number;<br>Differences: learningRate?: number;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: Model;<br>API declaration: trainMode?: boolean;<br>Differences: trainMode?: boolean;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: Model;<br>API declaration: runStep(inputs: MSTensor[]): boolean;<br>Differences: runStep(inputs: MSTensor[]): boolean;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: Model;<br>API declaration: getWeights(): MSTensor[];<br>Differences: getWeights(): MSTensor[];|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: Model;<br>API declaration: updateWeights(weights: MSTensor[]): boolean;<br>Differences: updateWeights(weights: MSTensor[]): boolean;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: Model;<br>API declaration: setupVirtualBatch(virtualBatchMultiplier: number, lr: number, momentum: number): boolean;<br>Differences: setupVirtualBatch(virtualBatchMultiplier: number, lr: number, momentum: number): boolean;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: Model;<br>API declaration: exportModel(modelFile: string, quantizationType?: QuantizationType, exportInferenceOnly?: boolean, outputTensorName?: string[]): boolean;<br>Differences: exportModel(modelFile: string, quantizationType?: QuantizationType, exportInferenceOnly?: boolean, outputTensorName?: string[]): boolean;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: Model;<br>API declaration: exportWeightsCollaborateWithMicro(weightFile: string, isInference?: boolean, enableFp16?: boolean, changeableWeightsName?: string[]): boolean;<br>Differences: exportWeightsCollaborateWithMicro(weightFile: string, isInference?: boolean, enableFp16?: boolean, changeableWeightsName?: string[]): boolean;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: mindSporeLite;<br>API declaration: export enum QuantizationType<br>Differences: export enum QuantizationType|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: QuantizationType;<br>API declaration: NO_QUANT = 0<br>Differences: NO_QUANT = 0|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: QuantizationType;<br>API declaration: WEIGHT_QUANT = 1<br>Differences: WEIGHT_QUANT = 1|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: QuantizationType;<br>API declaration: FULL_QUANT = 2<br>Differences: FULL_QUANT = 2|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: mindSporeLite;<br>API declaration: export enum OptimizationLevel<br>Differences: export enum OptimizationLevel|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: OptimizationLevel;<br>API declaration: O0 = 0<br>Differences: O0 = 0|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: OptimizationLevel;<br>API declaration: O2 = 2<br>Differences: O2 = 2|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: OptimizationLevel;<br>API declaration: O3 = 3<br>Differences: O3 = 3|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: OptimizationLevel;<br>API declaration: AUTO = 4<br>Differences: AUTO = 4|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: mindSporeLite;<br>API declaration: interface TrainCfg<br>Differences: interface TrainCfg|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: TrainCfg;<br>API declaration: lossName?: string[];<br>Differences: lossName?: string[];|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: TrainCfg;<br>API declaration: optimizationLevel?: OptimizationLevel;<br>Differences: optimizationLevel?: OptimizationLevel;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: mindSporeLite;<br>API declaration: export enum PerformanceMode<br>Differences: export enum PerformanceMode|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: PerformanceMode;<br>API declaration: PERFORMANCE_NONE = 0<br>Differences: PERFORMANCE_NONE = 0|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: PerformanceMode;<br>API declaration: PERFORMANCE_LOW = 1<br>Differences: PERFORMANCE_LOW = 1|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: PerformanceMode;<br>API declaration: PERFORMANCE_MEDIUM = 2<br>Differences: PERFORMANCE_MEDIUM = 2|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: PerformanceMode;<br>API declaration: PERFORMANCE_HIGH = 3<br>Differences: PERFORMANCE_HIGH = 3|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: PerformanceMode;<br>API declaration: PERFORMANCE_EXTREME = 4<br>Differences: PERFORMANCE_EXTREME = 4|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: mindSporeLite;<br>API declaration: export enum Priority<br>Differences: export enum Priority|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: Priority;<br>API declaration: PRIORITY_NONE = 0<br>Differences: PRIORITY_NONE = 0|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: Priority;<br>API declaration: PRIORITY_LOW = 1<br>Differences: PRIORITY_LOW = 1|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: Priority;<br>API declaration: PRIORITY_MEDIUM = 2<br>Differences: PRIORITY_MEDIUM = 2|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: Priority;<br>API declaration: PRIORITY_HIGH = 3<br>Differences: PRIORITY_HIGH = 3|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: mindSporeLite;<br>API declaration: interface Extension<br>Differences: interface Extension|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: Extension;<br>API declaration: name: string;<br>Differences: name: string;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: Extension;<br>API declaration: value: ArrayBuffer;<br>Differences: value: ArrayBuffer;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: mindSporeLite;<br>API declaration: export enum NNRTDeviceType<br>Differences: export enum NNRTDeviceType|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: NNRTDeviceType;<br>API declaration: NNRTDEVICE_OTHERS = 0<br>Differences: NNRTDEVICE_OTHERS = 0|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: NNRTDeviceType;<br>API declaration: NNRTDEVICE_CPU = 1<br>Differences: NNRTDEVICE_CPU = 1|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: NNRTDeviceType;<br>API declaration: NNRTDEVICE_GPU = 2<br>Differences: NNRTDEVICE_GPU = 2|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: NNRTDeviceType;<br>API declaration: NNRTDEVICE_ACCELERATOR = 3<br>Differences: NNRTDEVICE_ACCELERATOR = 3|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: mindSporeLite;<br>API declaration: interface NNRTDeviceDescription<br>Differences: interface NNRTDeviceDescription|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: NNRTDeviceDescription;<br>API declaration: deviceID(): bigint;<br>Differences: deviceID(): bigint;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: NNRTDeviceDescription;<br>API declaration: deviceType(): NNRTDeviceType;<br>Differences: deviceType(): NNRTDeviceType;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: NNRTDeviceDescription;<br>API declaration: deviceName(): string;<br>Differences: deviceName(): string;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: mindSporeLite;<br>API declaration: function getAllNNRTDeviceDescriptions(): NNRTDeviceDescription[];<br>Differences: function getAllNNRTDeviceDescriptions(): NNRTDeviceDescription[];|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: NNRTDevice;<br>API declaration: deviceID?: bigint;<br>Differences: deviceID?: bigint;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: NNRTDevice;<br>API declaration: performanceMode?: PerformanceMode;<br>Differences: performanceMode?: PerformanceMode;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: NNRTDevice;<br>API declaration: priority?: Priority;<br>Differences: priority?: Priority;|api/@ohos.ai.mindSporeLite.d.ts|
+|New API |NA|Class name: NNRTDevice;<br>API declaration: extensions?: Extension[];<br>Differences: extensions?: Extension[];|api/@ohos.ai.mindSporeLite.d.ts|

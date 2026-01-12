@@ -44,19 +44,38 @@ Node-API提供了一组功能，使开发人员能够在Node-API模块中创建�
 
 Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md)，本文仅对接口对应C++及ArkTS相关代码进行展示。
 
+本文cpp部分代码所需引用的头文件如下：
+```cpp
+#include "napi/native_api.h"
+// log.h用于C++中日志打印
+#include "hilog/log.h"
+```
+本文ArkTS侧示例代码所需的模块导入如下：
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+```
+
 ### napi_open_handle_scope、napi_close_handle_scope
 
-通过接口napi_open_handle_scope创建一个上下文环境，并使用napi_close_handle_scope进行关闭。这组接口用于管理ArkTS对象的生命周期，确保在Node-API模块代码处理ArkTS对象时能够正确地管理其句柄，以避免出现对象错误回收的问题。
-需要注意的是合理使用napi_open_handle_scope和napi_close_handle_scope管理napi_value的生命周期，做到生命周期最小化，避免发生内存泄漏问题。
+通过接口napi_open_handle_scope创建一个上下文环境，并使用napi_close_handle_scope进行关闭。这组接口用于管理ArkTS对象的生命周期，确保在Node-API模块代码处理ArkTS对象时能够正确地管理其句柄，以避免出现对象错误回收的问题。  
 
-代码部分也可参考下面链接：
-[生命周期管理](napi-guidelines.md#生命周期管理)
+需要注意的是，接口仅支持单层嵌套的scope结构。在任何时刻，只有一个scope处于活动状态，所有新创建的handles都将与该scope相关联。scope必须按照与打开顺序相反的顺序关闭。此外，在native方法中创建的所有scope必须在该方法返回之前被关闭。
+
+关于生命周期管理的代码部分也可参考下面链接：
+
+[生命周期管理](napi-guidelines.md#生命周期管理)  
+
+关于典型错误使用方法的代码部分也可参考下面链接: 
+
+[典型错误场景](napi-faq-about-stability.md#napi_open_handle_scope与napi_close_handle_scope进行生命周期相关开发典型错误场景)
 
 cpp部分代码
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->  
 
+``` C++
+// napi_open_handle_scope、napi_close_handle_scope
 static napi_value HandleScopeTest(napi_env env, napi_callback_info info)
 {
     // 通过调用napi_open_handle_scope来创建一个句柄作用域
@@ -76,6 +95,7 @@ static napi_value HandleScopeTest(napi_env env, napi_callback_info info)
     napi_close_handle_scope(env, scope);
     // 此处的result能够得到值“handleScope”
     return result;
+    // result已经离开scope的作用域，继续使用可能会存在稳定性问题，如果需要在作用域外使用对象，建议使用napi_open_escapable_handle_scope系列接口
 }
 
 static napi_value HandleScope(napi_env env, napi_callback_info info)
@@ -98,42 +118,86 @@ static napi_value HandleScope(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+
 
 接口声明
 
-```ts
-// index.d.ts
-export const handleScopeTest: () => string;
+index.d.ts
+<!-- @[napi_open_close_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const handleScopeTest: () => string; // napi_open_handle_scope、napi_close_handle_scope
+
 export const handleScope: () => string;
 ```
-<!-- @[napi_open_close_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
 
 ArkTS侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// napi_open_handle_scope  napi_close_handle_scope
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API handleScopeTest: %{public}s', testNapi.handleScopeTest());
+  hilog.info(0x0000, 'testTag', 'Test Node-API handleScopeTest: %{public}s',
+    testNapi.handleScopeTest());
   hilog.info(0x0000, 'testTag', 'Test Node-API handleScope: %{public}s', testNapi.handleScope());
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API handleScopeTest errorCode: %{public}s, errorMessage: %{public}s', error.code, error.message);
+  hilog.error(0x0000, 'testTag',
+    'Test Node-API handleScopeTest errorCode: %{public}s, errorMessage: %{public}s', error.code,
+    error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
+
+
+框架层在核心初始化函数Init中定义了ArkTS侧和native侧的接口映射表，在ArkTS侧通过映射表中的接口访问native侧的函数时，框架层会自动加上scope, 不需要额外增加napi_open_handle_scope、napi_close_handle_scope接口来管理ArkTS对象的生命周期。即：进入开发者自己写的native函数前自动open scope, native函数结束后自动close scope。native侧函数中创建的ArkTS对象的生命周期在native函数返回时结束，不会存在内存泄漏的问题。以NewObject函数举例如下（定义接口映射表中映射的函数不需要手动加napi_open_handle_scope、napi_close_handle_scope管理ArkTS对象的生命周期）：
+```cpp
+// 调用NewObject前会open scope
+napi_value NewObject(napi_env env, napi_callback_info info)
+{
+    napi_value object = nullptr;
+    // 创建一个空对象
+    napi_create_object(env, &object);
+    // 设置对象的属性
+    napi_value name = nullptr;
+    // 设置属性名为"name"
+    napi_create_string_utf8(env, "name", NAPI_AUTO_LENGTH, &name);
+    napi_value value = nullptr;
+    // 设置属性值为"Hello from Node-API!"
+    napi_create_string_utf8(env, "Hello from Node-API!", NAPI_AUTO_LENGTH, &value);
+    // 将属性设置到对象上
+    napi_set_property(env, object, name, value);
+    //result离开作用域后，对象句柄（handle）跟随释放，返回到ArkTS侧的对象由ArkTS侧管理
+    return object;
+}
+// NewObject调用函数结束后框架层会close scope
+
+// 核心初始化函数
+static napi_value Init(napi_env env, napi_value exports)
+{
+    // 定义接口映射表
+    napi_property_descriptor desc[] = {
+        { "newObject", nullptr, NewObject, nullptr, nullptr, nullptr, napi_default, nullptr }
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+```
 
 ### napi_open_escapable_handle_scope、napi_close_escapable_handle_scope、napi_escape_handle
 
 通过接口napi_open_escapable_handle_scope创建出一个可逃逸的handle scope，可将范围内声明的值返回到父作用域。该作用域需要使用napi_close_escapable_handle_scope进行关闭。napi_escape_handle用于提升传入的ArkTS对象的生命周期到其父作用域。
+
 通过上述接口可以更灵活的使用管理传入的ArkTS对象，特别是在处理跨作用域的值传递时非常有用。
 
 cpp部分代码
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_open_close_escapable_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// napi_open_escapable_handle_scope、napi_close_escapable_handle_scope、napi_escape_handle
 static napi_value EscapableHandleScopeTest(napi_env env, napi_callback_info info)
 {
     // 创建一个可逃逸的句柄作用域
@@ -158,29 +222,37 @@ static napi_value EscapableHandleScopeTest(napi_env env, napi_callback_info info
     return result;
 }
 ```
-<!-- @[napi_open_close_escapable_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+
 
 接口声明
 
-```ts
-// index.d.ts
-export const escapableHandleScopeTest: () => string;
-```
+index.d.ts
 <!-- @[napi_open_close_escapable_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const escapableHandleScopeTest: () => string; // napi_open_escapable_handle_scope、napi_close_escapable_handle_scope、napi_escape_handle
+```
+
 
 ArkTS侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_open_close_escapable_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// napi_open_escapable_handle_scope napi_close_escapable_handle_scope、napi_escape_handle
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API EscapableHandleScopeTest: %{public}s', testNapi.escapableHandleScopeTest());
+  hilog.info(0x0000, 'testTag', 'Test Node-API EscapableHandleScopeTest: %{public}s',
+    testNapi.escapableHandleScopeTest());
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API EscapableHandleScopeTest errorCode: %{public}s, errorMessage: %{public}s', error.code, error.message);
+  hilog.error(0x0000, 'testTag',
+    'Test Node-API EscapableHandleScopeTest errorCode: %{public}s, errorMessage: %{public}s',
+    error.code,
+    error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_open_close_escapable_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
+
 
 ### napi_create_reference、napi_delete_reference
 
@@ -208,10 +280,9 @@ try {
 
 cpp部分代码
 
-```cpp
-// log.h用于C++中日志打印
-#include "hilog/log.h"
-#include "napi/native_api.h"
+<!-- @[napi_create_delete_reference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 // 创建一个napi_ref类型的指针，用于存储创建的引用。在调用napi_add_finalizer函数前，分配一个napi_ref类型的变量，并传递其地址作为result参数。
 napi_ref gRefFinalizer = nullptr;
 
@@ -287,7 +358,8 @@ static napi_value CreateReference(napi_env env, napi_callback_info info)
     uint32_t result = 0;
     status = napi_reference_ref(env, gRef, &result);
     OH_LOG_INFO(LOG_APP, "Test Node-API napi_reference_ref, count = %{public}d.", result);
-    if (status != napi_ok || result != 2) {
+    uint32_t numCount = 2;
+    if (status != napi_ok || result != numCount) {
         // 若传入引用的引用计数未增加，则抛出错误
         napi_throw_error(env, nullptr, "napi_reference_ref fail");
         return nullptr;
@@ -315,7 +387,8 @@ static napi_value DeleteReference(napi_env env, napi_callback_info info)
     napi_value count = nullptr;
     napi_status status = napi_reference_unref(env, gRef, &result);
     OH_LOG_INFO(LOG_APP, "Test Node-API napi_reference_unref, count = %{public}d.", result);
-    if (status != napi_ok || result != 1) {
+    uint32_t numCount = 1;
+    if (status != napi_ok || result != numCount) {
         // 若传入引用的引用计数未减少，则抛出错误
         napi_throw_error(env, nullptr, "napi_reference_unref fail");
         return nullptr;
@@ -342,35 +415,48 @@ static napi_value DeleteReference(napi_env env, napi_callback_info info)
     return returnResult;
 }
 ```
-<!-- @[napi_create_delete_reference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+
 
 接口声明
 
-```ts
 // index.d.ts
-export const addFinalizer: () => Object | undefined;
-export const createReference: () => Object | undefined;
-export const useReference: () => Object | undefined;
-export const deleteReference: () => string | undefined;
-```
 <!-- @[napi_create_delete_reference_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const addFinalizer: () => Object | undefined; // napi_add_finalizer
+
+export const createReference: () => Object | undefined; // napi_create_reference、napi_reference_ref
+
+export const useReference: () => Object | undefined; // napi_get_reference_value
+
+export const deleteReference: () => string | undefined; // napi_delete_reference、napi_reference_unref
+```
+
 
 ArkTS侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_create_delete_reference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// napi_add_finalizer
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API addFinalizer: %{public}s', JSON.stringify(testNapi.addFinalizer()));
-  hilog.info(0x0000, 'testTag', 'Test Node-API createReference: %{public}s', JSON.stringify(testNapi.createReference()));
-  hilog.info(0x0000, 'testTag', 'Test Node-API useReference: %{public}s', JSON.stringify(testNapi.useReference()));
-  hilog.info(0x0000, 'testTag', 'Test Node-API deleteReference: %{public}s', testNapi.deleteReference());
+  hilog.info(0x0000, 'testTag', 'Test Node-API addFinalizer: %{public}s',
+    JSON.stringify(testNapi.addFinalizer()));
+  hilog.info(0x0000, 'testTag', 'Test Node-API createReference: %{public}s',
+    JSON.stringify(testNapi.createReference()));
+  hilog.info(0x0000, 'testTag', 'Test Node-API useReference: %{public}s',
+    JSON.stringify(testNapi.useReference()));
+  hilog.info(0x0000, 'testTag', 'Test Node-API deleteReference: %{public}s',
+    testNapi.deleteReference());
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API ReferenceTest errorCode: %{public}s, errorMessage: %{public}s', error.code, error.message);
+  hilog.error(0x0000, 'testTag',
+    'Test Node-API ReferenceTest errorCode: %{public}s, errorMessage: %{public}s', error.code,
+    error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_create_delete_reference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
+
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 

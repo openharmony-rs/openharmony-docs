@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-- [Introduction to Audio Kit](audio-kit-intro.md)
+- [About This Kit](audio-kit-intro.md)
 - [Selecting the Appropriate Audio Stream Types](using-right-streamusage-and-sourcetype.md)
 - [Introduction to Audio Focus and Audio Sessions](audio-playback-concurrency.md)
 - Audio Focus Management<!--audio-session-->
@@ -34,6 +34,9 @@
   <!--Del-->
   - [Distributed Audio Playback (for System Applications Only)](distributed-audio-playback-sys.md)
   <!--DelEnd-->
+  <!--Del-->
+  - [Collaborative Audio Management (for System Applications Only)](audio-collaborative-management-sys.md)
+  <!--DelEnd-->
 - Audio Recording<!--audio-recording-->
   - [Audio Recording Overview](audio-recording-overview.md)
   - [Using AudioCapturer for Audio Recording](using-audiocapturer-for-recording.md)
@@ -53,7 +56,11 @@
 - Audio Call<!--audio-call-->
   - [Audio Call Overview](audio-call-overview.md)
   - [Developing Audio Call](audio-call-development.md)
-- Not Recommended<!--not-recommended-->
+- Audio Creation<!--audio-production-creation-->
+  - [Audio Creation Overview (C/C++)](audio-suite.md)
+  - [Offline Editing (C/C++)](audio-suite-manual-rendering.md)
+  - [Real-Time Rendering (C/C++)](audio-suite-real-time-rendering.md)
+- OpenSL ES Development (Not Recommended)<!--not-recommended-->
   - [Switching from OpenSL ES to OHAudio (C/C++)](replace-opensles-by-ohaudio.md)
   - [Using OpenSL ES for Audio Playback (C/C++)](using-opensl-es-for-playback.md)
   - [Using OpenSL ES for Audio Recording (C/C++)](using-opensl-es-for-recording.md)

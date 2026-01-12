@@ -1,4 +1,10 @@
 # JavaScript
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 You can use a **.js** file in the ECMAScript compliant JavaScript language to define the service logic of an HML page. With dynamic typing, JavaScript can make your application more expressive with a flexible design. The following describes the JavaScript compilation and running.
@@ -60,12 +66,12 @@ The ECMAScript 6.0 syntax is supported. Lite wearables only support the followin
 
 Use **$refs** to obtain a DOM element.
 
-```html
-<!-- index.hml -->
-<div class="container">
-  <image-animator class="image-player" ref="animator" images="{{images}}" duration="1s" onclick="handleClick"></image-animator>
-</div>
-```
+   ```html
+   <!-- index.hml -->
+   <div class="container">
+     <image-animator class="image-player" ref="animator" images="{{images}}" duration="1s" onclick="handleClick"></image-animator>
+   </div>
+   ```
 
 
    ```js

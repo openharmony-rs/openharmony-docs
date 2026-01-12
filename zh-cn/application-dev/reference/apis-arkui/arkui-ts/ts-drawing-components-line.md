@@ -31,7 +31,7 @@ Line(options?: LineOptions)
 
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | options | [LineOptions](ts-drawing-components-line.md#lineoptions18对象说明) | 否 | Line绘制区域。<br/>异常值undefined和null按照无效值处理。 |
 
@@ -511,7 +511,7 @@ struct LineTypeExample {
 class MyLineModifier implements AttributeModifier<LineAttribute> {
   applyNormalAttribute(instance: LineAttribute): void {
     // 一个起始点为（10, 10），终点为（120, 10）的直线，边框颜色#2787D9，边框间隙[20]，向左偏移15，线条两端样式为半圆，边框透明度0.5，边框宽度10，抗锯齿开启
-    instance.startPoint([10,10])
+    instance.startPoint([10, 10])
     instance.endPoint([120, 10])
     instance.stroke("#2787D9")
     instance.strokeDashArray([20])

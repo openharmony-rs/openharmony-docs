@@ -18,19 +18,18 @@ Currently, the HAR has a problem with duplicate packaging, leading an oversize a
 
 1. Set **type** to **shared** and add the **deliveryWithInstall** and **pages** fields in the **module.json5** file of the HAR module.
     <!-- @[har_to_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-	// ···
-    "type": "shared",
-    "deliveryWithInstall": true,
-    "pages": "$profile:main_pages",
-	// ···
-  }
-}
-```
-
+    
+    ``` JSON5
+    {
+      "module": {
+        // ...
+        "type": "shared",
+        "deliveryWithInstall": true,
+        "pages": "$profile:main_pages",
+        // ...
+      }
+    }
+    ```
 
 2. Create a **profile** folder in the **resources\base** directory. Then add the **main_pages.json** file to the created folder and configure it as follows:
     ```json
@@ -45,75 +44,72 @@ Currently, the HAR has a problem with duplicate packaging, leading an oversize a
 3. Create a **pages** folder in the **ets** directory. Then add the **PageIndex.ets** file to the created folder and configure it as follows:
 
     <!-- @[har_to_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/ets/pages/PageIndex.ets) -->
-
-``` TypeScript
-@Entry
-@Component
-struct PageIndex {
-  @State message: string = 'hello world';
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct PageIndex {
+      @State message: string = 'hello world';
+    
+      build() {
+        Row() {
+          Column() {
+            Text(this.message)
+              .fontSize(50)
+              .fontWeight(FontWeight.Bold)
+          }
+          .width('100%')
+        }
+        .height('100%')
       }
-      .width('100%')
     }
-    .height('100%')
-  }
-}
-```
-
+    ```
 
 4. Delete the **consumerFiles** field from the **build-profile.json5** file of the HAR module.
 
 5. Replace the content in the **hvigorfile.ts** file of the HAR module with the following content:
 
     <!-- @[har_to_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/hvigorfile.ts) -->
-
-``` TypeScript
-// library\hvigorfile.ts
-import { hspTasks } from '@ohos/hvigor-ohos-plugin';
-
-export default {
-  system: hspTasks,  // Change the value to the HSP task.
-  plugins:[]
-}
-```
-
+    
+    ``` TypeScript
+    // library\hvigorfile.ts
+    import { hspTasks } from '@ohos/hvigor-ohos-plugin';
+    
+    export default {
+      system: hspTasks,  // Change the value to the HSP task.
+      plugins:[]
+    }
+    ```
 
 6. Add the **packageType** field in the **oh-package.json5** file.
 
     <!-- @[har_to_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/oh-package.json5) -->
-
-``` JSON5
-{
-// ···
-  "packageType": "InterfaceHar"
-}
-```
-
+    
+    ``` JSON5
+    {
+      // ...
+      "packageType": "InterfaceHar"
+    }
+    ```
 
 7. Add the **targets** tag to **build-profile.json5** > **modules** > **library** in the root directory of the project.
 
     <!-- @[har_to_hsp_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/build-profile.json5) -->
-
-``` JSON5
-  "modules": [
-	// ···
-    {
-      "name": "library",
-      "srcPath": "./library",
-      "targets": [
-        {
-          "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
-        }
-      ]
-    }
-  ],
-```
+    
+    ``` JSON5
+    "modules": [
+      // ...
+      {
+        "name": "library",
+        "srcPath": "./library",
+        "targets": [
+          {
+            "name": "default",
+            "applyToProducts": [
+              "default"
+            ]
+          }
+        ]
+      }
+    ],
+    ```

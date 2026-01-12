@@ -8,7 +8,9 @@
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
 ## WindowType<sup>7+</sup>
 
@@ -20,9 +22,9 @@ Enumerates the window types.
 |-------------------------------------| ------ |----------------------------------------------------------------------------------------|
 | TYPE_APP                            | 0      | Child window of an application.<br>**Model restriction**: This API can be used only in the FA model.                                                  |
 | TYPE_SYSTEM_ALERT<sup>(deprecated)</sup>               | 1     | System alert window.<br>Note: This property is supported since API version 7 and deprecated since API version 11.<br>                           |
-| TYPE_FLOAT<sup>9+</sup>             | 8      | Floating window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| TYPE_FLOAT<sup>9+</sup>             | 8      | Global floating window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | TYPE_DIALOG<sup>10+</sup>           | 16      | Modal window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| TYPE_MAIN<sup>18+</sup>             | 32      | Main window of an application.<br>This window type cannot be used when creating a window. It is only for reading purposes in the return value of the **getWindowProperties** API.                              |
+| TYPE_MAIN<sup>18+</sup>             | 32      | Main window of an application.<br>This window type cannot be used during window creation.                              |
 
 ## AvoidAreaType<sup>7+</sup>
 
@@ -53,19 +55,19 @@ Enumerates the window orientations. <!--Del-->For details of the differences bet
 | LANDSCAPE                             | 2    | Landscape.<br> **Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
 | PORTRAIT_INVERTED                     | 3    | Reverse portrait.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | LANDSCAPE_INVERTED                    | 4    | Reverse landscape.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| AUTO_ROTATION                         | 5    | Automatically rotates with the sensor. The orientation can be portrait, landscape, reverse portrait, or reverse landscape.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
-| AUTO_ROTATION_PORTRAIT                | 6    | Automatically rotates with the sensor in the vertical direction. The orientation can be portrait or reverse portrait.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
-| AUTO_ROTATION_LANDSCAPE               | 7    | Automatically rotates with the sensor in the horizontal direction. The orientation can be landscape or reverse landscape.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| AUTO_ROTATION_RESTRICTED              | 8    | Automatically rotates with the sensor, under the restriction of the rotation switch in the Control Panel. The orientation can be portrait, landscape, reverse portrait, or reverse landscape.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| AUTO_ROTATION_PORTRAIT_RESTRICTED     | 9    | Automatically rotates with the sensor, under the restriction of the rotation switch in the Control Panel. The orientation can be portrait or reverse portrait.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
-| AUTO_ROTATION_LANDSCAPE_RESTRICTED    | 10   | Automatically rotates with the sensor, under the restriction of the rotation switch in the Control Panel. The orientation can be landscape or reverse landscape.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
-| LOCKED                                | 11   | Locked.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
-| AUTO_ROTATION_UNSPECIFIED<sup>12+</sup>        | 12   | Automatically rotates with the sensor, under the restriction of the rotation switch in the Control Panel. The orientation that can be rotated to is determined by the system. For example, the window can rotate to portrait, landscape, or reverse landscape, but not reverse portrait, on a certain device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
-| USER_ROTATION_PORTRAIT<sup>12+</sup>           | 13   | Temporarily rotates to portrait mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in the Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
-| USER_ROTATION_LANDSCAPE<sup>12+</sup>          | 14   | Temporarily rotates to landscape mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in the Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
-| USER_ROTATION_PORTRAIT_INVERTED<sup>12+</sup>  | 15   | Temporarily rotates to reverse portrait mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in the Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
-| USER_ROTATION_LANDSCAPE_INVERTED<sup>12+</sup> | 16   | Temporarily rotates to reverse landscape mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in the Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
-| FOLLOW_DESKTOP<sup>12+</sup>                   | 17   | Follows the orientation of the home screen.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
+| AUTO_ROTATION                         | 5    | Automatically rotates with the sensor to four orientations: portrait, landscape, reverse portrait, and reverse landscape. This rotation is not controlled by the rotation switch in Control Panel.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| AUTO_ROTATION_PORTRAIT                | 6    | Automatically rotates with the sensor to two orientations: portrait and reverse portrait. This rotation is not controlled by the rotation switch in Control Panel.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
+| AUTO_ROTATION_LANDSCAPE               | 7    | Automatically rotates with the sensor to two orientations: landscape and reverse landscape. This rotation is not controlled by the rotation switch in Control Panel.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| AUTO_ROTATION_RESTRICTED              | 8    | Automatically rotates with the sensor to four orientations: portrait, landscape, reverse portrait, and reverse landscape. This rotation is controlled by the rotation switch in Control Panel.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| AUTO_ROTATION_PORTRAIT_RESTRICTED     | 9    | Automatically rotates with the sensor to two orientations: portrait and reverse portrait. This rotation is controlled by the rotation switch in Control Panel.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
+| AUTO_ROTATION_LANDSCAPE_RESTRICTED    | 10   | Automatically rotates with the sensor to two orientations: landscape and reverse landscape. This rotation is controlled by the rotation switch in Control Panel.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
+| LOCKED                                | 11   | Locked mode, where the window orientation is consistent with the current screen orientation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
+| AUTO_ROTATION_UNSPECIFIED<sup>12+</sup>        | 12   | Automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system. For example, the window can rotate to portrait, landscape, or reverse landscape, but not reverse portrait, on a certain device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
+| USER_ROTATION_PORTRAIT<sup>12+</sup>           | 13   | Temporarily rotates to portrait mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
+| USER_ROTATION_LANDSCAPE<sup>12+</sup>          | 14   | Temporarily rotates to landscape mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
+| USER_ROTATION_PORTRAIT_INVERTED<sup>12+</sup>  | 15   | Temporarily rotates to reverse portrait mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
+| USER_ROTATION_LANDSCAPE_INVERTED<sup>12+</sup> | 16   | Temporarily rotates to reverse landscape mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
+| FOLLOW_DESKTOP<sup>12+</sup>                   | 17   | Follows the orientation of the home screen, where the window will rotate if the home screen rotates and will not rotate if the home screen does not.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
 
 ## RectChangeReason<sup>12+</sup>
 
@@ -128,6 +130,19 @@ Enumerates the window modes.
 | MINIMIZE    | 3    | The application window is minimized.  |
 | FLOATING    | 4    | The application is displayed in a floating window.  |
 | SPLIT_SCREEN  | 5    | The application is displayed in split-screen mode.  |
+
+## PixelUnit<sup>22+</sup>
+
+Enumerates the pixel units.
+
+You can use [px2vp](./arkts-apis-uicontext-uicontext.md#px2vp12) and [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert between physical pixels and virtual pixels.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name   | Value  | Description  |
+| ------- | ---- | ----- |
+| PX | 0  | Physical pixel unit (px). |
+| VP | 1  | Virtual pixel unit (vp). |
 
 ## MaximizePresentation<sup>12+</sup>
 
@@ -309,3 +324,15 @@ Enumerates the screenshot event types.
 | SCROLL_SHOT_START | 2 | Scroll screenshot starts.|
 | SCROLL_SHOT_END | 3 | Scroll screenshot ends.|
 | SCROLL_SHOT_ABORT | 4 | Scroll screenshot aborted.|
+
+## RotationInfoType<sup>23+</sup>
+
+Enumerates the types of rotation information.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name      | Value    | Description      |
+| ---------- | ------ | ---------- |
+| WINDOW_ORIENTATION  | 0      | Window's screen orientation, based on how the Window module defines landscape/portrait modes.<br>Note that it maps to the **orientation** parameter in [RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19).|
+| DISPLAY_ORIENTATION | 1      | Physical screen orientation, based on how the Display module defines landscape/portrait modes.<br>It maps to the **orientation** property of the [display](js-apis-display.md#display) object.|
+| DISPLAY_ROTATION    | 2      | Physical rotation angle of the device's screen (in degrees, clockwise).<br>It maps to the **rotation** property of the [display](js-apis-display.md#display) object.|

@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **TextInput** component provides single-line text input.
 
@@ -15,6 +15,8 @@ The **TextInput** component provides single-line text input.
 >  This topic describes only system APIs provided by the module. For details about its public APIs, see [TextInput](ts-basic-components-textinput.md).
 
 ## InputType
+
+Sets the single-line text input box type.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

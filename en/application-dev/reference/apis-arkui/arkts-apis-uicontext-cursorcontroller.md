@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides the capability to set cursor styles.
 
@@ -65,7 +65,7 @@ Sets the cursor style.
 
 > **NOTE**
 >
-> This API does not take effect immediately. The cursor style will be changed in the next frame.
+> This API does not take effect immediately. The cursor style will be updated in the next rendering frame.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

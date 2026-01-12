@@ -1,5 +1,12 @@
 # dialog
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
 >  **NOTE**
 >
 >  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
@@ -31,7 +38,7 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 
 ## Styles
 
-Only the **width**, **height**, **margin**, **margin-[left|top|right|bottom]**, and **margin-[start|end]** styles in [Universal Styles](js-components-common-styles.md) are supported.
+Only the **width**, **height**, **margin**, **margin-[left | top | right | bottom]**, and **margin-[start | end]** styles in [Universal Styles](js-components-common-styles.md) are supported.
 
 
 ## Events

@@ -490,7 +490,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
-**起始版本**：18
+**起始版本**：16
 
 ## ohos.permission.MANAGE_APN_SETTING
 
@@ -590,6 +590,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 允许扩展外设驱动访问SCSI DDK接口开发SCSI Peripheral扩展外设驱动。
 
 支持以下类型的外设扩展驱动开发：
+
 外设以USB总线接入主机，且满足：
 
 1. 外设InterfaceClass为Mass Storage(0x08)、InterfaceSubClass为SCSI透明命令集(0x06)。
@@ -901,7 +902,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **支持设备**：PC/2in1
 
-**起始版本**：22
+**起始版本**：23
 
 ## ohos.permission.GET_IP_MAC_INFO
 
@@ -918,3 +919,91 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：General
 
 **起始版本**：22
+
+## ohos.permission.atomicService.MANAGE_AGING
+
+允许原子化服务申请差异化的老化策略。
+
+<!--RP59--><!--RP59End-->
+
+**权限级别**：system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: Phone | PC/2in1 | Tablet
+
+**起始版本**: 23
+
+## ohos.permission.ACCESS_USER_FULL_DISK
+
+允许应用无需弹窗访问用户公共路径。
+
+获取该权限后，应用在用户授权后访问用户公共路径，每次访问不再额外弹窗提示。
+
+<!--RP60--><!--RP60End-->
+
+**权限级别**：system_basic
+
+**授权方式**：手动设置授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：22
+
+## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
+
+允许应用加载二进制证书签名的共享库。
+
+<!--RP61--><!--RP61End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：20
+
+**变更信息**：在API 20-21，该权限面向系统应用开放；从API 22开始，面向普通应用开放。
+
+## ohos.permission.CRYPTO_EXTENSION_REGISTER
+
+允许应用注册和注销crypto扩展。
+
+<!--RP62--><!--RP62End-->
+
+**权限级别**：system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: PC/2in1
+
+**起始版本**: 22
+
+## ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
+
+允许应用获取和管理当前设备正在播放的媒体资源。
+
+<!--RP63--><!--RP63End-->
+
+**权限级别**：system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: Phone | PC/2in1 | Tablet | TV | Car
+
+**起始版本**: 23
+
+## ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+允许应用管理通话状态。如获取来电号码、接听、拒接、挂断等.
+
+<!--RP64--><!--RP64End-->
+
+**权限级别**: system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: Phone | PC/2in1 | Tablet
+
+**起始版本**: 23

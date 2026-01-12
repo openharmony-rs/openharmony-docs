@@ -236,7 +236,7 @@ cb('hello world', (err : Object, ret : string) => {
 
 promisify(original: (err: Object, value: Object) =&gt; void): Function
 
-处理异步函数并返回一个Promise函数。
+接收一个采用“错误优先”回调模式的函数，即以`(err, value) => callback`作为最后一个参数，并返回其Promise函数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -466,7 +466,7 @@ console.info("result = " + result);
 
 promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
-处理异步函数并返回promise函数。
+接收一个采用“错误优先”回调模式的函数，即以`(err, value) => callback`作为最后一个参数，并返回其Promise函数。
 
 > **说明：**
 >
@@ -560,6 +560,35 @@ console.info(stack);
 // 输出当前主线程的栈追踪信息。
 ```
 
+## ArkTSVM<sup>23+</sup>
+
+ArkTSVM是一个类，用于给开发者提供虚拟机的维测能力。
+
+### setMultithreadingDetectionEnabled<sup>23+</sup>
+
+static setMultithreadingDetectionEnabled(enabled: boolean): void
+
+若enabled为true则开启，为false则关闭。开启多线程检测，多线程问题的cppcrash文件里会包含多线程信息。关闭多线程检测，则多线程问题的cppcrash文件里不会包含多线程信息。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| enabled  | boolean  | 是       | 控制多线程检测开关的开启或关闭 。true表示开启，false表示关闭。|
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+//打开多线程检测开关
+util.ArkTSVM.setMultithreadingDetectionEnabled(true);
+//关闭多线程检测开关
+util.ArkTSVM.setMultithreadingDetectionEnabled(false);
+```
+
 ## TextDecoderOptions<sup>11+</sup>
 
 解码相关选项参数，包含两个属性fatal和ignoreBOM。
@@ -641,7 +670,7 @@ class MyClass {
   static data: string = 'data000';
   static bar(arg: string): string {
     console.info('bar arg is ' + arg);
-	return MyClass.data;
+    return MyClass.data;
   }
 }
 
@@ -1124,6 +1153,7 @@ console.info("retStr = " + retStr);
 ## TextEncoder
 
 TextEncoder将字符串编码为字节数组，支持多种编码格式。
+
 在使用TextEncoder进行编码时，需要注意不同编码格式下字符所占的字节数不同。务必明确指定编码格式，以确保编码结果正确。
 
 ### 属性
@@ -2327,7 +2357,7 @@ console.info('result = ' + result);
 
 values(): V[]
 
-获取当前缓冲区中所有值，从最近访问到最近最少访问的顺序列表。
+获取当前缓冲区中所有值，从最近最少访问到最近访问的顺序列表。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2337,25 +2367,33 @@ values(): V[]
 
 | 类型      | 说明                                                         |
 | --------- | ------------------------------------------------------------ |
-| V[] | 按从最近访问到最近最少访问的顺序返回当前缓冲区中所有值的列表。 |
+| V[] | 返回当前缓冲区中所有值的列表，顺序为从最近最少访问（Least Recent）到最近访问（Most Recent）。 |
 
 **示例：**
 
 ```ts
-let pro = new util.LRUCache<number|string,number|string>();
-pro.put(2, 10);
-pro.put(2, "anhu");
-pro.put("afaf", "grfb");
+let pro = new util.LRUCache<number, string>();
+pro.put(1, 'A');
+pro.put(2, "B");
+pro.put(3, 'C');
+pro.put(4, 'D')
+pro.put(5, 'E')
+pro.put(6, 'F')
 let result = pro.values();
 console.info('result = ' + result);
-// 输出结果：result = anhu,grfb
+// 输出结果：result = A,B,C,D,E,F
+pro.get(1);
+pro.get(2);
+result = pro.values();
+console.info('result = ' + result);
+// 输出结果：result = C,D,E,F,A,B
 ```
 
 ### keys<sup>9+</sup>
 
 keys(): K[]
 
-获取当前缓冲区中所有键从最近访问到最近最少访问的升序列表。
+获取当前缓冲区中所有键，从最近最少访问到最近访问的顺序列表。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2365,17 +2403,26 @@ keys(): K[]
 
 | 类型      | 说明                                                         |
 | --------- | ------------------------------------------------------------ |
-| K&nbsp;[] | 按升序返回当前缓冲区中所有键的列表，从最近访问到最近最少访问。 |
+| K[] | 返回当前缓冲区中所有键的列表，顺序为从最近最少访问（Least Recent）到最近访问（Most Recent）。 |
 
 **示例：**
 
 ```ts
-let pro = new util.LRUCache<number, number>();
-pro.put(2, 10);
-pro.put(3, 1);
+let pro = new util.LRUCache<number, string>();
+pro.put(1, 'A');
+pro.put(2, "B");
+pro.put(3, 'C');
+pro.put(4, 'D')
+pro.put(5, 'E')
+pro.put(6, 'F')
 let result = pro.keys();
 console.info('result = ' + result);
-// 输出结果：result = 2,3
+// 输出结果：result = 1,2,3,4,5,6
+pro.get(5);
+pro.get(3);
+result = pro.keys();
+console.info('result = ' + result);
+// 输出结果：result = 1,2,4,6,5,3
 ```
 
 ### remove<sup>9+</sup>
@@ -5932,7 +5979,7 @@ entries(): IterableIterator&lt;[K, V]&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.Symbol.iterator<sup>9+</sup>](#symboliterator9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.[Symbol.iterator]<sup>9+</sup>](#symboliterator9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
 

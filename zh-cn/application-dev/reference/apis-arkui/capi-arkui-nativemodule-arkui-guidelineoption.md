@@ -7,7 +7,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct ArkUI_GuidelineOption ArkUI_GuidelineOption
 ```
 

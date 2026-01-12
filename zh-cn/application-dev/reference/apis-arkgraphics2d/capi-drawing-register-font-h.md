@@ -13,6 +13,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -31,7 +33,7 @@
 
 ### OH_Drawing_RegisterFont()
 
-```
+```c
 uint32_t OH_Drawing_RegisterFont(OH_Drawing_FontCollection*, const char* fontFamily, const char* familySrc)
 ```
 
@@ -60,7 +62,7 @@ uint32_t OH_Drawing_RegisterFont(OH_Drawing_FontCollection*, const char* fontFam
 
 ### OH_Drawing_RegisterFontBuffer()
 
-```
+```c
 uint32_t OH_Drawing_RegisterFontBuffer(OH_Drawing_FontCollection*, const char* fontFamily, uint8_t* fontBuffer,size_t length)
 ```
 
@@ -90,7 +92,7 @@ uint32_t OH_Drawing_RegisterFontBuffer(OH_Drawing_FontCollection*, const char* f
 
 ### OH_Drawing_UnregisterFont()
 
-```
+```c
 uint32_t OH_Drawing_UnregisterFont(OH_Drawing_FontCollection* fontCollection, const char* fontFamily)
 ```
 

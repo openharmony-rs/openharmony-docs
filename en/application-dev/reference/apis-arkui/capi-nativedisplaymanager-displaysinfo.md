@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct {...} NativeDisplayManager_DisplaysInfo
+```
+
 ## Overview
 
 The struct describes the information about displays of a device with multiple screens.

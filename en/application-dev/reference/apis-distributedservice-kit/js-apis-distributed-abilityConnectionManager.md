@@ -51,6 +51,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.|
 
 **Example**
 
@@ -58,7 +59,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
    ```ts
    import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
-   import { common } from '@kit.AbilityKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
  
    let dmClass: distributedDeviceManager.DeviceManager;
@@ -97,7 +97,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
      createSession(): void {
        // Define peer device information.
        const peerInfo: abilityConnectionManager.PeerInfo = {
-         deviceId: "sinkDeviceId",
+         deviceId: getRemoteDeviceId()!,
          bundleName: 'com.example.remotephotodemo',
          moduleName: 'entry',
          abilityName: 'EntryAbility',
@@ -157,7 +157,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
          return sessionId;
        }
     
-       const options = collabParam["ConnectOptions"] as abilityConnectionManager.ConnectOptions;
+       const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
        try {
          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
          AppStorage.setOrCreate('sessionId', sessionId);
@@ -352,7 +352,7 @@ After **createAbilityConnectionSession** is called on device A to create a colla
         return sessionId;
       }
 
-      const options = collabParam["ConnectOptions"] as abilityConnectionManager.ConnectOptions;
+      const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
       try {
         sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
         AppStorage.setOrCreate('sessionId', sessionId);

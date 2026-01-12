@@ -1,4 +1,10 @@
 # Transition Styles
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -11,7 +17,7 @@
 
 | Name     | Type    | Default Value | Description                                      |
 | ------- | ------ | ---- | ---------------------------------------- |
-| shareid | string | -   | Used for the transition of shared elements, which takes effect only when this attribute is set. **\<list-item>**, **\<image>**, **\<text>**, **\<button>**, and **\<label>** components are supported for the transition of shared elements.|
+| shareid | string | -   | Used for the transition of shared elements, which takes effect only when this attribute is set. [\<list-item>](js-components-container-list-item.md), [\<image>](js-components-basic-image.md), [\<text>](js-components-basic-text.md), [\<button>](js-components-basic-button.md), and [\<label>](js-components-basic-label.md) components are supported for the transition of shared elements.|
 
 
 ### Styles
@@ -29,8 +35,8 @@
 
 2. The exchange effect of shared elements is similar to the transition shown below.
 
-**Figure 1** Default transition effect of shared elements
-![en-us_image_0000001238424309](figures/en-us_image_0000001238424309.png)
+   **Figure 1** Default transition effect of shared elements
+   ![en-us_image_0000001238424309](figures/en-us_image_0000001238424309.png)
 
 3. The animation of a shared element does not take effect for the border and background color of the element.
 
@@ -148,7 +154,7 @@ The **source_page** has a title area on the top and a widget list. Users can tap
 
 ```js
 // xxx.js
-import router from '@ohos.router'
+import router from '@ohos.router';
 export default {
   data: { list: [] },
   onInit() {

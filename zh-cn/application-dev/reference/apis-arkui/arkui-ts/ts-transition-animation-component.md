@@ -72,6 +72,8 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 ## TransitionEdge<sup>10+</sup>
 
+转场边缘类型。
+
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -80,10 +82,10 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 | 名称     | 值 | 说明     |
 | ------ | ------ | ------ |
-| TOP    | - | 窗口的上边缘。 |
-| BOTTOM | - | 窗口的下边缘。 |
-| START  | - | 窗口的起始边缘，LTR时为左边缘，RTL时为右边缘。 |
-| END    | - | 窗口的终止边缘，LTR时为右边缘，RTL时为左边缘。 |
+| TOP    | 0 | 窗口的上边缘。 |
+| BOTTOM | 1 | 窗口的下边缘。 |
+| START  | 2 | 窗口的起始边缘，LTR时为左边缘，RTL时为右边缘。 |
+| END    | 3 | 窗口的终止边缘，LTR时为右边缘，RTL时为左边缘。 |
 
 ## TransitionEffect<sup>10+</sup>对象说明
 
@@ -102,7 +104,7 @@ TransitionEffect以函数的形式指定转场效果。提供了以下接口：
 | IDENTITY | [TransitionEffect](#transitioneffect10对象说明)\<"identity"> | 是 | 否| 禁用转场效果。 |
 | OPACITY | [TransitionEffect](#transitioneffect10对象说明)\<"opacity"> | 是 | 否| 为组件添加透明度转场效果，出现时透明度从0到1、消失时透明度从1到0，相当于TransitionEffect.opacity(0)。 |
 | SLIDE | [TransitionEffect](#transitioneffect10对象说明)\<"asymmetric", { appear: [TransitionEffect](#transitioneffect10对象说明)\<"move", [TransitionEdge](#transitionedge10)>; disappear: [TransitionEffect](#transitioneffect10对象说明)\<"move", [TransitionEdge](#transitionedge10)>; }> | 是 | 否 | 相当于TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))。从START边滑入，END边滑出。即在LTR模式下，从左侧滑入，右侧滑出；在RTL模式下，从右侧滑入，左侧滑出。 |
-| SLIDE_SWITCH | [TransitionEffect](#transitioneffect10对象说明)\<"slideSwitch"> | 是 | 否 | 指定出现时从右先缩小再放大侧滑入、消失时从左侧先缩小再放大滑出的转场效果。自带动画参数，也可覆盖动画参数，自带的动画参数时长600ms，指定动画曲线cubicBezierCurve(0.24, 0.0, 0.50, 1.0)，最小缩放比例为0.8。|
+| SLIDE_SWITCH | [TransitionEffect](#transitioneffect10对象说明)\<"slideSwitch"> | 是 | 否 | 指定出现时从右侧先缩小再放大滑入、消失时从左侧先缩小再放大滑出的转场效果。自带动画参数，也可覆盖动画参数，自带的动画参数时长600ms，指定动画曲线cubicBezierCurve(0.24, 0.0, 0.50, 1.0)，最小缩放比例为0.8。|
 
 >  **说明：**
 >
@@ -353,7 +355,9 @@ type TransitionFinishCallback = (transitionIn: boolean) => void
 
 TransitionOptions通过指定结构体内的参数来指定转场效果。
 
-从API version 10开始不再维护，建议使用[TransitionEffect](#transitioneffect10对象说明)代替。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[TransitionEffect](#transitioneffect10对象说明)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -374,7 +378,7 @@ TransitionOptions通过指定结构体内的参数来指定转场效果。
 
 ### 示例1（使用同一接口实现图片出现消失）
 
-该示例主要演示如何通过同一TransitionEffect来实现图片的出现与消失，出现和消失互为逆过程。
+该示例主要演示如何通过同一[TransitionEffect](#transitioneffect10对象说明)来实现图片的出现与消失，出现和消失互为逆过程。
 ```ts
 // xxx.ets
 @Entry
@@ -414,7 +418,7 @@ struct TransitionEffectExample1 {
 
 ### 示例2（使用不同接口实现图片出现消失）
 
-该示例主要演示使用不同TransitionEffect来实现图片的出现和消失。
+该示例主要演示使用不同[TransitionEffect](#transitioneffect10对象说明)来实现图片的出现和消失。
 ```ts
 // xxx.ets
 @Entry
@@ -474,7 +478,7 @@ struct TransitionEffectExample2 {
 
 ### 示例3（设置父子组件为transition）
 
-该示例主要演示通过父子组件都配置transition来实现图片的出现和消失。
+该示例主要演示通过父子组件都配置[transition](#transition)来实现图片的出现和消失。
 ```ts
 // xxx.ets
 @Entry
@@ -496,7 +500,7 @@ struct TransitionEffectExample3 {
           this.flag = !this.flag;
         })
       if (this.flag) {
-        // 改flag条件时，会触发id为"column1"、"image1"、"image2"的transition动画。
+        // 当flag条件改变时，会触发id为"column1"、"image1"、"image2"的transition动画。
         // id为"column1"的组件是这棵新出现/消失的子树的根节点。
         Column() {
           Row() {

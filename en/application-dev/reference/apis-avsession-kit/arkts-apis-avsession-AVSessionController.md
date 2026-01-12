@@ -1068,7 +1068,7 @@ avsessionController.sendControlCommand(avCommand, (err: BusinessError) => {
 
 ## sendCommonCommand<sup>10+</sup>
 
-sendCommonCommand(command: string, args: {[key: string]: Object}): Promise\<void>
+sendCommonCommand(command: string, args: Record\<string, Object>): Promise\<void>
 
 Sends a custom control command to the session through the controller. This API uses a promise to return the result.
 
@@ -1081,7 +1081,7 @@ Sends a custom control command to the session through the controller. This API u
 | Name   | Type                                 | Mandatory| Description                          |
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | command | string | Yes  | Name of the custom control command.|
-| args | {[key: string]: Object} | Yes  | Parameters in key-value pair format carried in the custom control command.|
+| args |Record\<string, Object> | Yes  | Parameters in key-value pair format carried in the custom control command.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is {[key: string]: Object}.|
 
 > **NOTE**
 >
@@ -1099,7 +1099,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1136,7 +1135,7 @@ if (controller !== undefined) {
 
 ## sendCommonCommand<sup>10+</sup>
 
-sendCommonCommand(command: string, args: {[key: string]: Object}, callback: AsyncCallback\<void>): void
+sendCommonCommand(command: string, args: Record\<string, Object>, callback: AsyncCallback\<void>): void
 
 Sends a custom control command to the session through the controller. This API uses an asynchronous callback to return the result.
 
@@ -1147,7 +1146,7 @@ Sends a custom control command to the session through the controller. This API u
 | Name   | Type                                 | Mandatory| Description                          |
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | command | string | Yes  | Name of the custom control command.|
-| args | {[key: string]: Object} | Yes  | Parameters in key-value pair format carried in the custom control command.|
+| args |  Record\<string, Object> | Yes  | Parameters in key-value pair format carried in the custom control command.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is {[key: string]: Object}.|
 | callback | AsyncCallback\<void>                  | Yes  | Callback used to return the result. If the command is sent, **err** is **undefined**; otherwise, **err** is an error object.                    |
 
 > **NOTE**
@@ -1159,7 +1158,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist.     |
 | 6600103  | The session controller does not exist.   |
@@ -1231,27 +1229,49 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
-          
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession) => {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
-}).catch((err: BusinessError) => {
-  console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
-});
 
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).sendCustomData({customData : "This is my data"})
+@Entry
+@Component
+struct Index {
+  private tag: string = "createNewSession";
+  private sessionId: string = "";
+  private controller: avSession.AVSessionController | undefined = undefined;
+  private currentAVSession?: avSession.AVSession;
+  context = this.getUIContext();
+
+  aboutToAppear(): void {
+    avSession.createAVSession(this.getUIContext().getHostContext(), this.tag, "audio")
+      .then(async (data: avSession.AVSession) => {
+        this.currentAVSession = data;
+        this.sessionId = this.currentAVSession.sessionId;
+        this.controller = await this.currentAVSession.getController();
+        console.info(`CreateAVSession : SUCCESS :sessionId = ${this.sessionId}`);
+      })
+      .catch((err: BusinessError) => {
+        console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
+      });
+
+    if (this.controller !== undefined) {
+      (this.controller as avSession.AVSessionController).sendCustomData({ customData: "This is my data" })
+    }
+  }
+
+  build() {
+    Column() {
+      Text('AVSession Demo')
+        .fontSize(20)
+        .margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
 }
 ```
 
 ## getExtras<sup>10+</sup>
 
-getExtras(): Promise\<{[key: string]: Object}>
+getExtras(): Promise\<Record\<string, Object>>
 
 Obtains the custom media packet set by the provider. This API uses a promise to return the result.
 
@@ -1263,7 +1283,7 @@ Obtains the custom media packet set by the provider. This API uses a promise to 
 
 | Type                               | Description                         |
 | ----------------------------------- | ----------------------------- |
-| Promise<{[key: string]: Object}\>   | Promise used to return the custom media packet. The content of the packet is the same as that set in **setExtras**.|
+| Promise\<Record\<string, Object>>  | Promise used to return the custom media packet. The content of the packet is the same as that set in **setExtras**.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the return value type is Promise\<{[key: string]: Object}>.|
 
 **Error codes**
 
@@ -1271,7 +1291,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1283,30 +1302,52 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
-         
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
-}).catch((err: BusinessError) => {
-  console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
-});
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).getExtras().then((extras) => {
-    console.info(`getExtras : SUCCESS : ${extras}`);
-  }).catch((err: BusinessError) => {
-    console.error(`getExtras BusinessError: code: ${err.code}, message: ${err.message}`);
-  });
+
+@Entry
+@Component
+struct Index {
+  private tag: string = "createNewSession";
+  private sessionId: string = "";
+  private controller: avSession.AVSessionController | undefined = undefined;
+  private currentAVSession?: avSession.AVSession;
+  context = this.getUIContext();
+
+  aboutToAppear(): void {
+
+    avSession.createAVSession(this.getUIContext().getHostContext(), this.tag, "audio")
+      .then(async (data: avSession.AVSession) => {
+        this.currentAVSession = data;
+        this.sessionId = this.currentAVSession.sessionId;
+        this.controller = await this.currentAVSession.getController();
+        console.info(`CreateAVSession : SUCCESS :sessionId = ${this.sessionId}`);
+      }).catch((err: BusinessError) => {
+      console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
+    });
+    if (this.controller !== undefined) {
+      (this.controller as avSession.AVSessionController).getExtras().then((extras) => {
+        console.info(`getExtras : SUCCESS : ${extras}`);
+      }).catch((err: BusinessError) => {
+        console.error(`getExtras BusinessError: code: ${err.code}, message: ${err.message}`);
+      });
+    }
+  }
+
+  build() {
+    Column() {
+      Text('AVSession Demo')
+        .fontSize(20)
+        .margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
 }
 ```
 
 ## getExtras<sup>10+</sup>
 
-getExtras(callback: AsyncCallback\<{[key: string]: Object}>): void
+getExtras(callback: AsyncCallback\<Record\<string, Object>>): void
 
 Obtains the custom media packet set by the provider. This API uses an asynchronous callback to return the result.
 
@@ -1316,7 +1357,7 @@ Obtains the custom media packet set by the provider. This API uses an asynchrono
 
 | Name  | Type                                     | Mandatory| Description                      |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| callback | AsyncCallback<{[key: string]: Object}\> | Yes  | Callback used to return the custom media packet. The content of the packet is the same as that set in **setExtras**.|
+| callback | AsyncCallback\<Record\<string, Object>> | Yes  | Callback used to return the custom media packet. The content of the packet is the same as that set in **setExtras**.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is AsyncCallback\<{[key: string]: Object}>.|
 
 **Error codes**
 
@@ -1324,7 +1365,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1422,7 +1462,7 @@ if (controller !== undefined) {
 
 ## on('metadataChange')<sup>10+</sup>
 
-on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (data: AVMetadata) => void)
+on(type: 'metadataChange', filter: Array\<string> | 'all', callback: (data: AVMetadata) => void): void
 
 Subscribes to metadata change events.
 
@@ -1437,7 +1477,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The event **'metadataChange'** is triggered when the session metadata requires an update.<br>"Requires an update" means the corresponding property value has been reset, regardless of whether the new value matches the old one.|
-| filter   | Array\<keyof&nbsp;[AVMetadata](arkts-apis-avsession-i.md#avmetadata10)\>&nbsp;&#124;&nbsp;'all' | Yes  | The value **'all'** indicates monitoring for updates to all metadata fields, and **Array<keyof&nbsp;[AVMetadata](arkts-apis-avsession-i.md#avmetadata10)\>** indicates monitoring for updates to the fields specified in the array.|
+| filter   | Array\<string>\|'all' | Yes  |The value **'all'** indicates that any call state field change will trigger the event, and **Array\<string>** indicates that only changes to the listed call state field will trigger the event.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is Array\<keyof AVMetadata> \| 'all'.|
 | callback | (data: [AVMetadata](arkts-apis-avsession-i.md#avmetadata10)) => void                    | Yes  | Callback used for subscription. The **data** parameter in the callback indicates the metadata that requires an update, but not the complete current metadata set.  |
 
 **Error codes**
@@ -1446,7 +1486,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1465,7 +1504,7 @@ avsessionController.on('metadataChange', ['assetId', 'title', 'description'], (m
 
 ## off('metadataChange')<sup>10+</sup>
 
-off(type: 'metadataChange', callback?: (data: AVMetadata) => void)
+off(type: 'metadataChange', callback?: (data: AVMetadata) => void): void
 
 Unsubscribes from metadata change events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
@@ -1486,7 +1525,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1498,7 +1536,7 @@ avsessionController.off('metadataChange');
 
 ## on('playbackStateChange')<sup>10+</sup>
 
-on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void)
+on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state: AVPlaybackState) => void): void
 
 Subscribes to playback state change events.
 
@@ -1513,7 +1551,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type      | Mandatory| Description     |
 | --------| -----------|-----|------------|
 | type     | string    | Yes  | Event type. The event **'playbackStateChange'** is triggered when the playback state requires an update.<br>"Requires an update" means the corresponding property value has been reset, regardless of whether the new value matches the old one.|
-| filter   | Array\<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>&nbsp;&#124;&nbsp;'all' | Yes  | The value **'all'** indicates monitoring for updates to all playback state fields, and **Array<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>** indicates monitoring for updates to the fields specified in the array.|
+| filter   | Array\<string>\|'all' | Yes  | The value **'all'** indicates monitoring for updates to all playback state fields,<br>Array\<string> indicates listening for updates to fields in the array,<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is Array\<keyof AVPlaybackstate> \| 'all'.|
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void       | Yes  | Callback function, where the **state** parameter indicates the playback state that requires an update, but not the complete current playback state set.|
 
 **Error codes**
@@ -1522,7 +1560,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1561,7 +1598,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1573,7 +1609,7 @@ avsessionController.off('playbackStateChange');
 
 ## on('callMetadataChange')<sup>11+</sup>
 
-on(type: 'callMetadataChange', filter: Array\<keyof CallMetadata> | 'all', callback: Callback\<CallMetadata>): void
+on(type: 'callMetadataChange', filter: Array\<string> | 'all', callback: Callback\<CallMetadata>): void
 
 Subscribes to call metadata change events.
 
@@ -1588,7 +1624,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type      | Mandatory| Description     |
 | --------| -----------|-----|------------|
 | type     | string    | Yes  | Event type. The event **'callMetadataChange'** is triggered when the call metadata changes.|
-| filter   | Array\<keyof&nbsp;[CallMetadata](arkts-apis-avsession-i.md#callmetadata11)\>&nbsp;&#124;&nbsp;'all' | Yes  | The value **'all'** indicates that any call metadata field change will trigger the event, and **Array<keyof&nbsp;[CallMetadata](arkts-apis-avsession-i.md#callmetadata11)\>** indicates that only changes to the listed metadata field will trigger the event.|
+| filter   |  Array\<string>\|'all'| Yes  |The value **'all'** indicates that any call metadata field change will trigger the event, and **Array<string\>** indicates that only changes to the listed metadata field will trigger the event.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is Array\<keyof CallMetadata> \| 'all'.|
 | callback | Callback<[CallMetadata](arkts-apis-avsession-i.md#callmetadata11)\>   | Yes  | Callback used for subscription. The **callmetadata** parameter in the callback indicates the changed call metadata.|
 
 **Error codes**
@@ -1648,7 +1684,7 @@ avsessionController.off('callMetadataChange');
 
 ## on('callStateChange')<sup>11+</sup>
 
-on(type: 'callStateChange', filter: Array\<keyof AVCallState> | 'all', callback: Callback\<AVCallState>): void
+on(type: 'callStateChange', filter: Array\<string> | 'all', callback: Callback\<AVCallState>): void
 
 Subscribes to call state change events.
 
@@ -1663,16 +1699,16 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type      | Mandatory| Description     |
 | --------| -----------|-----|------------|
 | type     | string    | Yes  | Event type. The event **'callStateChange'** is triggered when the call state changes.|
-| filter   | Array<keyof&nbsp;[AVCallState](arkts-apis-avsession-i.md#avcallstate11)\>&nbsp;&#124;&nbsp;'all' | Yes  | The value **'all'** indicates that any call state field change will trigger the event, and **Array<keyof&nbsp;[AVCallState](arkts-apis-avsession-i.md#avcallstate11)\>** indicates that only changes to the listed call state field will trigger the event.|
+| filter   |  Array\<string>\|'all' | Yes  | The value **'all'** indicates that any call state field change will trigger the event, and **Array\<string>** indicates that only changes to the listed call state field will trigger the event.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is Array\<keyof AVCallState> \| 'all'.|
 | callback | Callback<[AVCallState](arkts-apis-avsession-i.md#avcallstate11)\>       | Yes  | Callback function, where the **callstate** parameter indicates the new call state.|
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1707,11 +1743,11 @@ Unsubscribes from call state change events. If a callback is specified, the corr
 
 **Error codes**
 
-For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1719,11 +1755,11 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 ```ts
 avsessionController.off('callMetadataChange');
-```
+``` 
 
 ## on('sessionDestroy')<sup>10+</sup>
 
-on(type: 'sessionDestroy', callback: () => void)
+on(type: 'sessionDestroy', callback: () => void): void
 
 Subscribes to session destruction events.
 
@@ -1746,7 +1782,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1760,7 +1795,7 @@ avsessionController.on('sessionDestroy', () => {
 
 ## off('sessionDestroy')<sup>10+</sup>
 
-off(type: 'sessionDestroy', callback?: () => void)
+off(type: 'sessionDestroy', callback?: () => void): void
 
 Unsubscribes from session destruction events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
@@ -1781,7 +1816,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1793,7 +1827,7 @@ avsessionController.off('sessionDestroy');
 
 ## on('activeStateChange')<sup>10+</sup>
 
-on(type: 'activeStateChange', callback: (isActive: boolean) => void)
+on(type: 'activeStateChange', callback: (isActive: boolean) => void): void
 
 Subscribes to session activation state change events.
 
@@ -1816,7 +1850,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ----------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  |The session controller does not exist. |
 
@@ -1830,7 +1863,7 @@ avsessionController.on('activeStateChange', (isActive: boolean) => {
 
 ## off('activeStateChange')<sup>10+</sup>
 
-off(type: 'activeStateChange', callback?: (isActive: boolean) => void)
+off(type: 'activeStateChange', callback?: (isActive: boolean) => void): void
 
 Unsubscribes from session activation state change events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
@@ -1851,7 +1884,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1863,7 +1895,7 @@ avsessionController.off('activeStateChange');
 
 ## on('validCommandChange')<sup>10+</sup>
 
-on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>) => void)
+on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>) => void): void
 
 Subscribes to valid command change events.
 
@@ -1886,7 +1918,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1901,7 +1932,7 @@ avsessionController.on('validCommandChange', (validCommands: avSession.AVControl
 
 ## off('validCommandChange')<sup>10+</sup>
 
-off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandType>) => void)
+off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandType>) => void): void
 
 Unsubscribes from valid command change events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
@@ -1922,7 +1953,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message          |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2004,7 +2034,7 @@ avsessionController.off('outputDeviceChange');
 
 ## on('sessionEvent')<sup>10+</sup>
 
-on(type: 'sessionEvent', callback: (sessionEvent: string, args: {[key: string]: Object}) => void): void
+on(type: 'sessionEvent', callback: (sessionEvent: string, args: Record\<String, Object>) => void): void
 
 Subscribes to session event change events. This API is called by the controller.
 
@@ -2019,7 +2049,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The event **'sessionEvent'** is triggered when the session event changes.|
-| callback | (sessionEvent: string, args: {[key: string]: Object}) => void         | Yes  | Callback used for subscription. **sessionEvent** in the callback indicates the name of the session event that changes, and **args** indicates the parameters carried in the event.         |
+| callback | (sessionEvent: string, args: Record\<String, Object>) => void         | Yes  | Callback used for subscription. **sessionEvent** in the callback indicates the name of the session event that changes, and **args** indicates the parameters carried in the event.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is (sessionEvent: string, args: {[key: string]: Object}) => void.|
 
 **Error codes**
 
@@ -2027,7 +2057,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2057,7 +2086,7 @@ if (controller !== undefined) {
 
 ## off('sessionEvent')<sup>10+</sup>
 
-off(type: 'sessionEvent', callback?: (sessionEvent: string, args: {[key: string]: Object}) => void): void
+off(type: 'sessionEvent', callback?: (sessionEvent: string, args: Record\<String, Object>) => void): void
 
 Unsubscribes from session events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
@@ -2070,7 +2099,7 @@ Unsubscribes from session events. If a callback is specified, the corresponding 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
 | type     | string                                                       | Yes  | Event type, which is **'sessionEvent'** in this case.   |
-| callback | (sessionEvent: string, args: {[key: string]: Object}) => void         | No  | Callback used for unsubscription. **sessionEvent** in the callback indicates the name of the session event that changes, and **args** indicates the parameters carried in the event.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                     |
+| callback | sessionEvent: string, args: Record\<String, Object> => void       | No  | Callback used for unsubscription. **sessionEvent** in the callback indicates the name of the session event that changes, and **args** indicates the parameters carried in the event.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is (sessionEvent: string, args: {[key: string]: Object}) => void.|
 
 **Error codes**
 
@@ -2078,7 +2107,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2228,7 +2256,7 @@ avsessionController.off('queueTitleChange');
 
 ## on('extrasChange')<sup>10+</sup>
 
-on(type: 'extrasChange', callback: (extras: {[key: string]: Object}) => void): void
+on(type: 'extrasChange', callback: (extras: Record\<string, Object>) => void): void
 
 Subscribes to custom media packet change events. This API is called by the controller.
 
@@ -2241,7 +2269,7 @@ Subscribes to custom media packet change events. This API is called by the contr
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The event **'extrasChange'** is triggered when the provider sets a custom media packet.|
-| callback | (extras: {[key: string]: Object}) => void         | Yes  | Callback used for subscription. The **extras** parameter in the callback indicates the custom media packet set by the provider. This packet is the same as that set in **dispatchSessionEvent**.         |
+| callback | (extras: Record\<string, Object>) => void         | Yes  | Callback used for subscription. The **extras** parameter in the callback indicates the custom media packet set by the provider. This packet is the same as that set in **dispatchSessionEvent**.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is (extras: {[key: string]: Object}) => void.|
 
 **Error codes**
 
@@ -2249,7 +2277,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2279,7 +2306,7 @@ if (controller !== undefined) {
 
 ## off('extrasChange')<sup>10+</sup>
 
-off(type: 'extrasChange', callback?: (extras: {[key: string]: Object}) => void): void
+off(type: 'extrasChange', callback?: (extras: Record\<string, Object>) => void): void
 
 Unsubscribes from custom media packet change events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
@@ -2292,7 +2319,7 @@ Unsubscribes from custom media packet change events. If a callback is specified,
 | Name   | Type                   | Mandatory| Description                                                                                                   |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
 | type     | string                  | Yes  | Event type, which is **'extrasChange'** in this case.                                                        |
-| callback | (extras: {[key: string]: Object}) => void | No  | Callback used for unsubscription.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+|  callback | (extras: Record\<string, Object>) => void | No  | Callback used for unsubscription.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is (extras: {[key: string]: Object}) => void.|
 
 **Error codes**
 
@@ -2300,7 +2327,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ----------------                       |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2333,7 +2359,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **Example**
@@ -2383,7 +2409,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **Example**

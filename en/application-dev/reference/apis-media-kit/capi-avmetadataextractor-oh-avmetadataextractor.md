@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVMetadataExtractor OH_AVMetadataExtractor
+```
+
 ## Overview
 
 The struct describes the OH_AVMetadataExtractor type.

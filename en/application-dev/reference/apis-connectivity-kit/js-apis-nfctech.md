@@ -2161,7 +2161,7 @@ Obtains the index of the sector that holds the specified block.
 
 | **Type**| **Description**                            |
 | ------------------ | --------------------------|
-| number | Index of the sector obtained.|
+| number | Index of the sector obtained. The sector indexes start from **0**.|
 
 **Error codes**
 
@@ -2315,7 +2315,7 @@ function nfcTechDemo() {
         let pageIndex = 1; // Set a correct index.
         mifareUltralight.readMultiplePages(pageIndex, (err : BusinessError, data : number[])=> {
             if (err) {
-                console.log(`mifareUltralight readMultiplePages AsyncCallback Code: ${err.code}, message: ${err.message}`);
+                console.error(`mifareUltralight readMultiplePages AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareUltralight readMultiplePages AsyncCallback data: " + data);
             }
@@ -2554,7 +2554,7 @@ function nfcTechDemo() {
         ndefFormatable.format(ndefMessage).then(() => {
             console.info("ndefFormatable format Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error(`defFormatable format Promise err Code: ${err.code}, message: ${err.message}`);
+            console.error(`ndefFormatable format Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
         console.error(`ndefFormatable format Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);

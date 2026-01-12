@@ -38,9 +38,11 @@
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+
   // 完整的明文被拆分为input1和input2。
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
   let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+
   async function signMessagePromise(priKey: cryptoFramework.PriKey) {
     let signAlg = "ECC256|SHA256";
     let signer = cryptoFramework.createSign(signAlg);
@@ -49,6 +51,7 @@
     let signData = await signer.sign(input2);
     return signData;
   }
+
   async function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
     let verifyAlg = "ECC256|SHA256";
     let verifier = cryptoFramework.createVerify(verifyAlg);
@@ -58,6 +61,7 @@
     console.info("verify result is " + res);
     return res;
   }
+
   async function main() {
     let keyGenAlg = "ECC256";
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
@@ -77,9 +81,11 @@
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+
   // 完整的明文被拆分为input1和input2。
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
   let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+
   function signMessagePromise(priKey: cryptoFramework.PriKey) {
     let signAlg = "ECC256|SHA256";
     let signer = cryptoFramework.createSign(signAlg);
@@ -88,6 +94,7 @@
     let signData = signer.signSync(input2);
     return signData;
   }
+
   function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
     let verifyAlg = "ECC256|SHA256";
     let verifier = cryptoFramework.createVerify(verifyAlg);
@@ -97,6 +104,7 @@
     console.info("verify result is " + res);
     return res;
   }
+
   function main() {
     let keyGenAlg = "ECC256";
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);

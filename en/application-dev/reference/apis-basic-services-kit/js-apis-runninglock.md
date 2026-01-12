@@ -7,7 +7,7 @@
 <!--Tester: @alien0208-->
 <!--Adviser: @w_Machine_cc-->
 
-The **runningLock** module provides APIs for creating, querying, holding, and releasing running locks.
+The **runningLock** module provides APIs for creating, querying, holding, and releasing running locks. A running lock enables the proximity sensor to turn on or off the screen, or prevents the device from entering sleep mode when the screen is off. For details about the running lock types, see [RunningLockType](#runninglocktype).
 
 > **NOTE**
 >
@@ -147,7 +147,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback&lt;boolean&gt;): void
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9).
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9) instead.
 
 **API description**: Checks whether the system supports the running lock of a specified type. This API uses an asynchronous callback to return the result.
 
@@ -167,7 +167,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (
     if (typeof err === 'undefined') {
         console.info('BACKGROUND lock support status: ' + data);
     } else {
-        console.log('check BACKGROUND lock support status failed, err: ' + err);
+        console.error('check BACKGROUND lock support status failed, err: ' + err);
     }
 });
 ```
@@ -176,7 +176,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (
 
 isRunningLockTypeSupported(type: RunningLockType): Promise&lt;boolean>
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9).
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9) instead.
 
 **API description**: Checks whether the system supports the running lock of a specified type. This API uses a promise to return the result.
 
@@ -202,7 +202,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
     console.info('BACKGROUND lock support status: ' + data);
 })
 .catch((err: Error) => {
-    console.log('check BACKGROUND lock support status failed, err: ' + err);
+    console.error('check BACKGROUND lock support status failed, err: ' + err);
 });
 ```
 
@@ -210,7 +210,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
 
 createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9).
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9) instead.
 
 **API description**: Creates a running lock. This API uses an asynchronous callback to return the result.
 
@@ -242,7 +242,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9).
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9) instead.
 
 **API description**: Creates a running lock. This API uses a promise to return the result.
 
@@ -271,7 +271,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
     console.info('created running lock: ' + lock);
 })
 .catch((err: Error) => {
-    console.log('create running lock failed, err: ' + err);
+    console.error('create running lock failed, err: ' + err);
 });
 ```
 
@@ -339,13 +339,11 @@ class RunningLockTest {
 
 unhold(): void
 
-**API description**: Unholds this running lock.
+**API description**: Releases this running lock.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
 **Required permission**: ohos.permission.RUNNING_LOCK
-
-**Parameters**: none
 
 **Error codes**
 
@@ -391,11 +389,9 @@ class RunningLockTest {
 
 isHolding(): boolean
 
-**API description**: Checks whether this running lock is held.
+**API description**: Checks whether this running lock is being held.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
-
-**Parameters**: none
 
 **Returns**
 
@@ -434,7 +430,7 @@ class RunningLockTest {
 
 lock(timeout: number): void
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [RunningLock.hold](#hold9).
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [RunningLock.hold](#hold9) instead.
 
 **API description**: Locks a running lock.
 
@@ -465,13 +461,11 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 unlock(): void
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [RunningLock.unhold](#unhold9).
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [RunningLock.unhold](#unhold9) instead.
 
-**API description**: Unlocks this running lock.
+**API description**: Releases this running lock.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
-
-**Parameters**: none
 
 **Required permission**: ohos.permission.RUNNING_LOCK
 
@@ -492,13 +486,11 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 isUsed(): boolean
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [RunningLock.isHolding](#isholding9).
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [RunningLock.isHolding](#isholding9) instead.
 
 **API description**: Checks whether this running lock is used.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
-
-**Parameters**: none
 
 **Returns**
 | Type   | Description                                                        |
@@ -526,5 +518,6 @@ Enumerates the types of **RunningLock** objects.
 
 | Name                             | Value  | Description                                                        |
 | --------------------------------- | ---- | ------------------------------------------------------------ |
-| BACKGROUND<sup>(deprecated)</sup> | 1    | A lock that prevents the system from hibernating when the screen is off.<br>**NOTE**<br>This parameter is supported since API version 7 and deprecated since API version 10.|
+| BACKGROUND<sup>(deprecated)</sup> | 1    | A lock that prevents the system from entering sleep mode when the screen is off.<br>**NOTE**<br>This parameter is supported since API version 7 and deprecated since API version 10.|
 | PROXIMITY_SCREEN_CONTROL          | 2    | A lock that enables the proximity sensor and turns on or off the screen based on the distance between the sensor and the obstacle. |
+| BACKGROUND_USER_IDLE              | 129  | A background lock that prevents the system from automatically entering sleep mode when the user is inactive for a period of time. Note: This lock cannot prevent the system from entering the forced sleep state in scenarios such as closing the PC lid. The user must listen for the [COMMON_EVENT_ENTER_FORCE_SLEEP](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) event and release this lock after receiving the event. The behavior of this lock varies with devices. For details about how to use this type of lock, see [Preventing the Idle System from Entering Sleep Mode](../../basic-services/powermgr/runningLock/runningLock-dev.md).|

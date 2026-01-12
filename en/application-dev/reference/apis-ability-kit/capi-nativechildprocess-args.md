@@ -7,6 +7,10 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
+```c
+typedef struct {...} NativeChildProcess_Args
+```
+
 ## Overview
 
 The struct describes the parameters passed to the child process.

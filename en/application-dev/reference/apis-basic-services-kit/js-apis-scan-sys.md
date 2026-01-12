@@ -194,8 +194,8 @@ Unregisters the callback used to listen for the scanner addition event. This API
 
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |	
-| type | 'scanDeviceAdd' | Yes| Event type.|	
+| -------- | -------- | -------- | -------- |
+| type | 'scanDeviceAdd' | Yes| Event type.|
 | callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | Yes| Callback used to return the added scanner.|
 
 **Error codes**

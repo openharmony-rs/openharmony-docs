@@ -41,34 +41,34 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify **verify)](#oh_cryptoverify_create) | 创建验签实例。 |
+| [OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify **verify)](#oh_cryptoverify_create) | 创建验签实例。<br> 注意：创建的资源必须通过[OH_CryptoVerify_Destroy](capi-crypto-signature-h.md#oh_cryptoverify_destroy)销毁。 |
 | [OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pubKey)](#oh_cryptoverify_init) | 传入公钥初始化验签实例。 |
 | [OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *in)](#oh_cryptoverify_update) | 追加待验签数据。 |
 | [bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_DataBlob *signData)](#oh_cryptoverify_final) | 对数据进行验签。 |
 | [OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob *signData, Crypto_DataBlob *rawSignData)](#oh_cryptoverify_recover) | 对签名数据进行恢复操作。 |
 | [const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)](#oh_cryptoverify_getalgoname) | 获取验签算法名称。 |
 | [OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)](#oh_cryptoverify_setparam) | 设置验签参数。 |
-| [OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)](#oh_cryptoverify_getparam) | 获取验签参数。 |
+| [OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)](#oh_cryptoverify_getparam) | 获取验签参数。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放value内存。 |
 | [void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)](#oh_cryptoverify_destroy) | 销毁验签实例。 |
-| [OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sign)](#oh_cryptosign_create) | 根据给定的算法名称创建签名实例。 |
+| [OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sign)](#oh_cryptosign_create) | 根据给定的算法名称创建签名实例。<br> 注意：创建的资源必须通过[OH_CryptoSign_Destroy](capi-crypto-signature-h.md#oh_cryptosign_destroy)销毁。 |
 | [OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privKey)](#oh_cryptosign_init) | 初始化签名实例。 |
 | [OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob *in)](#oh_cryptosign_update) | 更新需要签名的数据。 |
-| [OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)](#oh_cryptosign_final) | 完成签名操作。 |
+| [OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)](#oh_cryptosign_final) | 完成签名操作。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。 |
 | [const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)](#oh_cryptosign_getalgoname) | 获取签名实例的算法名称。 |
 | [OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, const Crypto_DataBlob *value)](#oh_cryptosign_setparam) | 设置签名实例的指定参数。 |
-| [OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)](#oh_cryptosign_getparam) | 从签名实例获取指定参数。 |
+| [OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)](#oh_cryptosign_getparam) | 从签名实例获取指定参数。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放value内存。 |
 | [void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)](#oh_cryptosign_destroy) | 销毁签名实例。 |
-| [OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature, OH_CryptoEccSignatureSpec **spec)](#oh_cryptoeccsignaturespec_create) | 创建ECC签名规范。 |
-| [OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)](#oh_cryptoeccsignaturespec_getrands) | 获取ECC签名的r和s值。 |
+| [OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature, OH_CryptoEccSignatureSpec **spec)](#oh_cryptoeccsignaturespec_create) | 创建ECC签名规范。<br> 注意：创建的资源必须通过[OH_CryptoEccSignatureSpec_Destroy](capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_destroy)销毁。 |
+| [OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)](#oh_cryptoeccsignaturespec_getrands) | 获取ECC签名的r和s值。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放r和s内存。 |
 | [OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)](#oh_cryptoeccsignaturespec_setrands) | 设置ECC签名的r和s值。 |
-| [OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *out)](#oh_cryptoeccsignaturespec_encode) | 将ECC签名规范编码为DER格式的签名。 |
+| [OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *out)](#oh_cryptoeccsignaturespec_encode) | 将ECC签名规范编码为DER格式的签名。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。 |
 | [void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)](#oh_cryptoeccsignaturespec_destroy) | 销毁ECC签名规范。 |
 
 ## 枚举类型说明
 
 ### CryptoSignature_ParamType
 
-```
+```c
 enum CryptoSignature_ParamType
 ```
 
@@ -92,16 +92,15 @@ enum CryptoSignature_ParamType
 
 ### OH_CryptoVerify_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify **verify)
 ```
 
 **描述**
 
-创建验签实例。
+创建验签实例。<br> 注意：创建的资源必须通过[OH_CryptoVerify_Destroy](capi-crypto-signature-h.md#oh_cryptoverify_destroy)销毁。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -118,7 +117,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify *
 
 ### OH_CryptoVerify_Init()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pubKey)
 ```
 
@@ -127,7 +126,6 @@ OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pu
 传入公钥初始化验签实例。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -144,14 +142,14 @@ OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pu
 
 **参考：**
 
-[OH_CryptoVerify_Update](#oh_cryptoverify_update)
+[OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update)
 
-[OH_CryptoVerify_Final](#oh_cryptoverify_final)
+[OH_CryptoVerify_Final](capi-crypto-signature-h.md#oh_cryptoverify_final)
 
 
 ### OH_CryptoVerify_Update()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *in)
 ```
 
@@ -160,7 +158,6 @@ OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *
 追加待验签数据。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -177,14 +174,14 @@ OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *
 
 **参考：**
 
-[OH_CryptoVerify_Init](#oh_cryptoverify_init)
+[OH_CryptoVerify_Init](capi-crypto-signature-h.md#oh_cryptoverify_init)
 
-[OH_CryptoVerify_Final](#oh_cryptoverify_final)
+[OH_CryptoVerify_Final](capi-crypto-signature-h.md#oh_cryptoverify_final)
 
 
 ### OH_CryptoVerify_Final()
 
-```
+```c
 bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_DataBlob *signData)
 ```
 
@@ -193,7 +190,6 @@ bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_Dat
 对数据进行验签。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -207,19 +203,19 @@ bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_Dat
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 表示验签是否通过。 |
+| bool | true表示验签通过，false表示验签失败。 |
 
 **参考：**
 
-[OH_CryptoVerify_Init](#oh_cryptoverify_init)
+[OH_CryptoVerify_Init](capi-crypto-signature-h.md#oh_cryptoverify_init)
 
-[OH_CryptoVerify_Update](#oh_cryptoverify_update)
+[OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update)
 
 
 ### OH_CryptoVerify_Recover()
 
-```
-OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob *signData,Crypto_DataBlob *rawSignData)
+```c
+OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob *signData, Crypto_DataBlob *rawSignData)
 ```
 
 **描述**
@@ -227,7 +223,6 @@ OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob 
 对签名数据进行恢复操作。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -245,7 +240,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob 
 
 ### OH_CryptoVerify_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)
 ```
 
@@ -254,7 +249,6 @@ const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)
 获取验签算法名称。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -270,8 +264,8 @@ const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)
 
 ### OH_CryptoVerify_SetParam()
 
-```
-OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type,Crypto_DataBlob *value)
+```c
+OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)
 ```
 
 **描述**
@@ -280,13 +274,12 @@ OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | 指向验签实例。 |
-| [CryptoSignature_ParamType](#cryptosignature_paramtype) type | 用于指定需要设置的验签参数。 |
+| [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | 用于指定需要设置的验签参数。 |
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | 用于指定验签参数的具体值。 |
 
 **返回：**
@@ -297,23 +290,22 @@ OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature
 
 ### OH_CryptoVerify_GetParam()
 
-```
-OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type,Crypto_DataBlob *value)
+```c
+OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)
 ```
 
 **描述**
 
-获取验签参数。
+获取验签参数。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放value内存。
 
 **起始版本：** 12
-
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | 指向验签实例。 |
-| [CryptoSignature_ParamType](#cryptosignature_paramtype) type | 用于指定需要获取的验签参数。 |
+| [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | 用于指定需要获取的验签参数。 |
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | 获取的验签参数的具体值。 |
 
 **返回：**
@@ -324,7 +316,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature
 
 ### OH_CryptoVerify_Destroy()
 
-```
+```c
 void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)
 ```
 
@@ -334,7 +326,6 @@ void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -343,16 +334,15 @@ void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)
 
 ### OH_CryptoSign_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sign)
 ```
 
 **描述**
 
-根据给定的算法名称创建签名实例。
+根据给定的算法名称创建签名实例。<br> 注意：创建的资源必须通过[OH_CryptoSign_Destroy](capi-crypto-signature-h.md#oh_cryptosign_destroy)销毁。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -369,7 +359,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sig
 
 ### OH_CryptoSign_Init()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privKey)
 ```
 
@@ -378,7 +368,6 @@ OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privK
 初始化签名实例。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -395,14 +384,14 @@ OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privK
 
 **参考：**
 
-[OH_CryptoSign_Update](#oh_cryptosign_update)
+[OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update)
 
-[OH_CryptoSign_Final](#oh_cryptosign_final)
+[OH_CryptoSign_Final](capi-crypto-signature-h.md#oh_cryptosign_final)
 
 
 ### OH_CryptoSign_Update()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob *in)
 ```
 
@@ -411,7 +400,6 @@ OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob
 更新需要签名的数据。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -428,23 +416,22 @@ OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob
 
 **参考：**
 
-[OH_CryptoSign_Init](#oh_cryptosign_init)
+[OH_CryptoSign_Init](capi-crypto-signature-h.md#oh_cryptosign_init)
 
-[OH_CryptoSign_Final](#oh_cryptosign_final)
+[OH_CryptoSign_Final](capi-crypto-signature-h.md#oh_cryptosign_final)
 
 
 ### OH_CryptoSign_Final()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)
 ```
 
 **描述**
 
-完成签名操作。
+完成签名操作。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -462,14 +449,14 @@ OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob 
 
 **参考：**
 
-[OH_CryptoSign_Init](#oh_cryptosign_init)
+[OH_CryptoSign_Init](capi-crypto-signature-h.md#oh_cryptosign_init)
 
-[OH_CryptoSign_Update](#oh_cryptosign_update)
+[OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update)
 
 
 ### OH_CryptoSign_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)
 ```
 
@@ -478,7 +465,6 @@ const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)
 获取签名实例的算法名称。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -494,8 +480,8 @@ const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)
 
 ### OH_CryptoSign_SetParam()
 
-```
-OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type,const Crypto_DataBlob *value)
+```c
+OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, const Crypto_DataBlob *value)
 ```
 
 **描述**
@@ -504,13 +490,12 @@ OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 
 **起始版本：** 20
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | 指向签名实例。 |
-| [CryptoSignature_ParamType](#cryptosignature_paramtype) type | 签名参数类型。 |
+| [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | 签名参数类型。 |
 | [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | 输入数据。 |
 
 **返回：**
@@ -521,23 +506,22 @@ OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 
 ### OH_CryptoSign_GetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)
 ```
 
 **描述**
 
-从签名实例获取指定参数。
+从签名实例获取指定参数。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放value内存。
 
 **起始版本：** 20
-
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | 指向签名实例。 |
-| [CryptoSignature_ParamType](#cryptosignature_paramtype) type | 签名参数类型。 |
+| [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | 签名参数类型。 |
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | 输出数据。 |
 
 **返回：**
@@ -548,7 +532,7 @@ OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 
 ### OH_CryptoSign_Destroy()
 
-```
+```c
 void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)
 ```
 
@@ -558,7 +542,6 @@ void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)
 
 **起始版本：** 20
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -567,16 +550,15 @@ void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)
 
 ### OH_CryptoEccSignatureSpec_Create()
 
-```
-OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature,OH_CryptoEccSignatureSpec **spec)
+```c
+OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature, OH_CryptoEccSignatureSpec **spec)
 ```
 
 **描述**
 
-创建ECC签名规范。
+创建ECC签名规范。<br> 注意：创建的资源必须通过[OH_CryptoEccSignatureSpec_Destroy](capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_destroy)销毁。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -593,16 +575,15 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature
 
 ### OH_CryptoEccSignatureSpec_GetRAndS()
 
-```
-OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r,Crypto_DataBlob *s)
+```c
+OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)
 ```
 
 **描述**
 
-获取ECC签名的r和s值。
+获取ECC签名的r和s值。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放r和s内存。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -620,8 +601,8 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *
 
 ### OH_CryptoEccSignatureSpec_SetRAndS()
 
-```
-OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r,Crypto_DataBlob *s)
+```c
+OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)
 ```
 
 **描述**
@@ -629,7 +610,6 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *
 设置ECC签名的r和s值。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -647,16 +627,15 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *
 
 ### OH_CryptoEccSignatureSpec_Encode()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *out)
 ```
 
 **描述**
 
-将ECC签名规范编码为DER格式的签名。
+将ECC签名规范编码为DER格式的签名。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -673,7 +652,7 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *sp
 
 ### OH_CryptoEccSignatureSpec_Destroy()
 
-```
+```c
 void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)
 ```
 
@@ -682,7 +661,6 @@ void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)
 销毁ECC签名规范。
 
 **起始版本：** 20
-
 
 **参数：**
 

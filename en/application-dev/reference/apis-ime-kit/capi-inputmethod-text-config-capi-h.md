@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
@@ -26,7 +26,7 @@ Provides methods for creating, destroying, reading, and writing the text box con
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) | InputMethod_TextConfig | Text box configuration. |
+| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) | InputMethod_TextConfig | Text box configuration.|
 
 ### Function
 
@@ -55,7 +55,7 @@ Provides methods for creating, destroying, reading, and writing the text box con
 
 ### OH_TextConfig_Create()
 
-```
+```c
 InputMethod_TextConfig *OH_TextConfig_Create(void)
 ```
 
@@ -73,7 +73,7 @@ Creates an [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) 
 
 ### OH_TextConfig_Destroy()
 
-```
+```c
 void OH_TextConfig_Destroy(InputMethod_TextConfig *config)
 ```
 
@@ -92,7 +92,7 @@ Destroys an [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)
 
 ### OH_TextConfig_SetInputType()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_SetInputType(InputMethod_TextConfig *config, InputMethod_TextInputType inputType)
 ```
 
@@ -118,7 +118,7 @@ Sets the text box type.
 
 ### OH_TextConfig_SetEnterKeyType()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_SetEnterKeyType(InputMethod_TextConfig *config, InputMethod_EnterKeyType enterKeyType)
 ```
 
@@ -144,7 +144,7 @@ Sets the Enter key type.
 
 ### OH_TextConfig_SetPreviewTextSupport()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_SetPreviewTextSupport(InputMethod_TextConfig *config, bool supported)
 ```
 
@@ -160,7 +160,7 @@ Sets the text preview feature.
 | Name| Description|
 | -- | -- |
 | [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) *config | Pointer to the [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) instance whose value is to be set.|
-| bool supported | Whether text preview is supported.|
+| bool supported | Whether text preview is supported. **true**: Text preview is supported. **false**: Text preview is not supported.|
 
 **Returns**
 
@@ -170,7 +170,7 @@ Sets the text preview feature.
 
 ### OH_TextConfig_SetSelection()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_SetSelection(InputMethod_TextConfig *config, int32_t start, int32_t end)
 ```
 
@@ -197,7 +197,7 @@ Sets the selected text area.
 
 ### OH_TextConfig_SetWindowId()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_SetWindowId(InputMethod_TextConfig *config, int32_t windowId)
 ```
 
@@ -223,7 +223,7 @@ Sets the window ID.
 
 ### OH_TextConfig_SetPlaceholder()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_SetPlaceholder(InputMethod_TextConfig *config, const char16_t *placeholder,size_t length)
 ```
 
@@ -250,7 +250,7 @@ Sets the placeholder text.
 
 ### OH_TextConfig_SetAbilityName()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_SetAbilityName(InputMethod_TextConfig *config, const char16_t *abilityName,size_t length)
 ```
 
@@ -277,7 +277,7 @@ Sets the ability name.
 
 ### OH_TextConfig_GetInputType()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetInputType(InputMethod_TextConfig *config, InputMethod_TextInputType *inputType)
 ```
 
@@ -303,7 +303,7 @@ Obtains the text box type.
 
 ### OH_TextConfig_GetEnterKeyType()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetEnterKeyType(InputMethod_TextConfig *config, InputMethod_EnterKeyType *enterKeyType)
 ```
 
@@ -329,7 +329,7 @@ Obtains the Enter key type.
 
 ### OH_TextConfig_IsPreviewTextSupported()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_IsPreviewTextSupported(InputMethod_TextConfig *config, bool *supported)
 ```
 
@@ -345,7 +345,7 @@ Obtains whether the text preview feature is supported.
 | Name| Description|
 | -- | -- |
 | [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) *config | Pointer to the [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) instance whose value is to be obtained.|
-| bool *supported | Whether text preview is supported.|
+| bool *supported | Whether text preview is supported. **true**: Text preview is supported. **false**: Text preview is not supported.|
 
 **Returns**
 
@@ -355,7 +355,7 @@ Obtains whether the text preview feature is supported.
 
 ### OH_TextConfig_GetCursorInfo()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetCursorInfo(InputMethod_TextConfig *config, InputMethod_CursorInfo **cursorInfo)
 ```
 
@@ -381,7 +381,7 @@ Obtains the cursor information.
 
 ### OH_TextConfig_GetTextAvoidInfo()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetTextAvoidInfo(InputMethod_TextConfig *config, InputMethod_TextAvoidInfo **avoidInfo)
 ```
 
@@ -407,7 +407,7 @@ Obtains the avoidance information.
 
 ### OH_TextConfig_GetSelection()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetSelection(InputMethod_TextConfig *config, int32_t *start, int32_t *end)
 ```
 
@@ -434,7 +434,7 @@ Obtains the selected text area.
 
 ### OH_TextConfig_GetWindowId()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetWindowId(InputMethod_TextConfig *config, int32_t *windowId)
 ```
 
@@ -460,7 +460,7 @@ Obtains the window ID.
 
 ### OH_TextConfig_GetPlaceholder()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetPlaceholder(InputMethod_TextConfig *config, char16_t *placeholder,size_t *length)
 ```
 
@@ -487,7 +487,7 @@ Obtains the placeholder text.
 
 ### OH_TextConfig_GetAbilityName()
 
-```
+```c
 InputMethod_ErrorCode OH_TextConfig_GetAbilityName(InputMethod_TextConfig *config, char16_t *abilityName,size_t *length)
 ```
 

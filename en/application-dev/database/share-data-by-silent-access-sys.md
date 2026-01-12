@@ -335,7 +335,7 @@ In the **module.json5** file, set the data to be hosted in **proxyData**. For de
    let dseUri = ('datashareproxy://com.acts.ohos.data.datasharetest/weather');
    ```
 
-3. Create a **DataAbilityHelper** instance.
+3. Create a **DataShareHelper** instance.
 
    ```ts
    let dsHelper: dataShare.DataShareHelper | undefined = undefined;

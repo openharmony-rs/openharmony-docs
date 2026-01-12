@@ -10,7 +10,10 @@
 This topic walks you through on how to query key aliases.
 
 >**NOTE**<br>
+>
 > <!--RP1-->The mini-system devices<!--RP1End--> do not support query of key aliases.
+
+The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
 ## Add the dynamic library in the CMake script.
 ```txt
@@ -23,7 +26,9 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 2. Call [OH_Huks_ListAliases](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_listaliases) to query key aliases.
 
- ```c++
+<!-- @[query_key_alias_set_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/QueryKeyAliasSet/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 /* Query key aliases. */
 #include "huks/native_huks_api.h"
 #include "huks/native_huks_param.h"
@@ -31,53 +36,55 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 #include <string.h>
 
 OH_Huks_Result InitParamSet(
-    struct OH_Huks_ParamSet **paramSet,
-    const struct OH_Huks_Param *params,
-    uint32_t paramCount)
+   struct OH_Huks_ParamSet **paramSet,
+   const struct OH_Huks_Param *params,
+   uint32_t paramCount)
 {
-    OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        return ret;
-    }
-    ret = OH_Huks_AddParams(*paramSet, params, paramCount);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeParamSet(paramSet);
-        return ret;
-    }
-    ret = OH_Huks_BuildParamSet(paramSet);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeParamSet(paramSet);
-        return ret;
-    }
-    return ret;
+   OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
+   if (ret.errorCode != OH_HUKS_SUCCESS) {
+       return ret;
+   }
+   ret = OH_Huks_AddParams(*paramSet, params, paramCount);
+   if (ret.errorCode != OH_HUKS_SUCCESS) {
+       OH_Huks_FreeParamSet(paramSet);
+       return ret;
+   }
+   ret = OH_Huks_BuildParamSet(paramSet);
+   if (ret.errorCode != OH_HUKS_SUCCESS) {
+       OH_Huks_FreeParamSet(paramSet);
+       return ret;
+   }
+   return ret;
 }
 
 struct OH_Huks_Param g_testQueryParam[] = {
-    {
-        .tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL,
-        .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE
-    }, 
+   {
+       .tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL,
+       .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE
+   }, 
 };
 
 static napi_value ListAliases(napi_env env, napi_callback_info info)
 {
-    struct OH_Huks_ParamSet *testQueryParamSet = nullptr;
-    struct OH_Huks_KeyAliasSet *outData = nullptr;
-    struct OH_Huks_Result ohResult;
-    do {
-        /* 1. Initialize the key property set. */
-        ohResult = InitParamSet(&testQueryParamSet, g_testQueryParam, sizeof(g_testQueryParam) / sizeof(OH_Huks_Param));
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-            break;
-        }
-        /* 2. Query key aliases. */
-        ohResult = OH_Huks_ListAliases(testQueryParamSet, &outData);
-    } while (0);
+   struct OH_Huks_ParamSet *testQueryParamSet = nullptr;
+   struct OH_Huks_KeyAliasSet *outData = nullptr;
+   struct OH_Huks_Result ohResult;
+   do {
+       /* 1. Initialize the key property set. */
+       ohResult = InitParamSet(&testQueryParamSet, g_testQueryParam,
+           sizeof(g_testQueryParam) / sizeof(OH_Huks_Param));
+       if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+           break;
+       }
+       /* 2. Query key aliases. */
+       ohResult = OH_Huks_ListAliases(testQueryParamSet, &outData);
+   } while (0);
 
-    OH_Huks_FreeParamSet(&testQueryParamSet);
-    OH_Huks_FreeKeyAliasSet(outData);
-    napi_value ret;
-    napi_create_int32(env, ohResult.errorCode, &ret);
-    return ret;
+   OH_Huks_FreeParamSet(&testQueryParamSet);
+   OH_Huks_FreeKeyAliasSet(outData);
+   napi_value ret;
+   napi_create_int32(env, ohResult.errorCode, &ret);
+   return ret;
 }
 ```
+<!--no_check-->

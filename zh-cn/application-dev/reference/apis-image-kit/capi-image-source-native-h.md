@@ -47,8 +47,8 @@
 | [Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t *width)](#oh_imagesourceinfo_getwidth) | 获取图片的宽。 |
 | [Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t *height)](#oh_imagesourceinfo_getheight) | 获取图片的高。 |
 | [Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bool *isHdr)](#oh_imagesourceinfo_getdynamicrange) | 获取图片是否为高动态范围的信息。 |
-| [Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimetype)](#oh_imagesourceinfo_getmimetype) | 获取图片源的MIME类型。 |
-| [Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)](#oh_imagesourceinfo_release) | 释放OH_ImageSource_Info指针。 |
+| [Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimeType)](#oh_imagesourceinfo_getmimetype) | 获取图片源的MIME类型。 |
+| [Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)](#oh_imagesourceinfo_release) | 释放OH_ImageSource_Info指针。调用该接口之后，与OH_ImageSourceInfo结构体相关的属性均会被释放。因此在调用该接口前，请务必确认相关属性已不再被需要或对相关属性已完成深拷贝操作。 |
 | [Image_ErrorCode OH_DecodingOptions_Create(OH_DecodingOptions **options)](#oh_decodingoptions_create) | 创建OH_DecodingOptions指针。 |
 | [Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options, int32_t *pixelFormat)](#oh_decodingoptions_getpixelformat) | 获取pixel格式。 |
 | [Image_ErrorCode OH_DecodingOptions_SetPixelFormat(OH_DecodingOptions *options, int32_t pixelFormat)](#oh_decodingoptions_setpixelformat) | 设置pixel格式。 |
@@ -72,7 +72,7 @@
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromUri(char *uri, size_t uriSize, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromuri) | 通过uri创建OH_ImageSourceNative指针。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromFd(int32_t fd, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromfd) | 通过fd创建OH_ImageSourceNative指针。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSize, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromdata) | 通过缓冲区数据创建OH_ImageSourceNative指针。<br> data数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)这一类接口。 |
-| [Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength, OH_ImageSourceNative **imageSource)](#oh_imagesourcenative_createfromdatawithuserbuffer) | 由数据缓存创建图片源。传入的数据缓存将在图片源对象中直接访问，在图片源对象的声明周期内，数据缓存需要保持可用。 |
+| [Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength, OH_ImageSourceNative **imageSource)](#oh_imagesourcenative_createfromdatawithuserbuffer) | 由数据缓存创建图片源。传入的数据缓存将在图片源对象中直接访问，在图片源对象的生命周期内，数据缓存需要保持可用。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFile, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromrawfile) | 通过图像资源文件的RawFileDescriptor创建OH_ImageSourceNative指针。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmap) | 通过图片解码参数创建OH_PixelmapNative指针。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source, OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmapusingallocator) | 根据解码参数创建一个PixelMap，PixelMap使用的内存类型可以通过allocatorType来指定。<br> 默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理通过此接口返回的PixelMap时，请始终考虑步幅（stride）的影响。 |
@@ -81,8 +81,22 @@
 | [Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *source, uint32_t index, OH_PictureNative **picture)](#oh_imagesourcenative_createpictureatindex) | 通过指定序号的图片解码创建OH_PictureNative指针。 |
 | [Image_ErrorCode OH_ImageSourceNative_GetDelayTimeList(OH_ImageSourceNative *source, int32_t *delayTimeList, size_t size)](#oh_imagesourcenative_getdelaytimelist) | 获取图像延迟时间数组。 |
 | [Image_ErrorCode OH_ImageSourceNative_GetImageInfo(OH_ImageSourceNative *source, int32_t index, OH_ImageSource_Info *info)](#oh_imagesourcenative_getimageinfo) | 获取指定序号的图片信息。 |
-| [Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_getimageproperty) | 获取图片指定属性键的值。 |
-| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_getimagepropertywithnull) | 获取图像属性值。输出的value.data以字符串结束符结尾。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_getimageproperty) | 获取图片指定属性键的值。该接口获取到的value.data缺少字符串结束符'\0'，请谨慎使用。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyShort(OH_ImageSourceNative *source, Image_String *key, uint16_t *value)](#oh_imagesourcenative_getimagepropertyshort) | 以短整型类型获取图像属性的值。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyLong(OH_ImageSourceNative *source, Image_String *key, uint32_t *value)](#oh_imagesourcenative_getimagepropertylong) | 以长整型类型获取图像属性的值。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyDouble(OH_ImageSourceNative *source, Image_String *key, double *value)](#oh_imagesourcenative_getimagepropertydouble) | 以浮点型类型获取图像属性的值。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyArraySize(OH_ImageSourceNative *source, Image_String *key, size_t *size)](#oh_imagesourcenative_getimagepropertyarraysize) | 获取数组类型属性的数组长度或字符串类型属性的字符串长度。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyString(OH_ImageSourceNative *source, Image_String *key, char *value, size_t size)](#oh_imagesourcenative_getimagepropertystring) | 以字符串类型获取图像属性的值。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyIntArray(OH_ImageSourceNative *source, Image_String *key, int32_t *value, size_t size)](#oh_imagesourcenative_getimagepropertyintarray) | 以整型数组类型获取图像属性的值。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyDoubleArray(OH_ImageSourceNative *source, Image_String *key, double *value, size_t size)](#oh_imagesourcenative_getimagepropertydoublearray) | 以浮点型数组类型获取图像属性的值。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyBlob(OH_ImageSourceNative *source, Image_String *key, void *value, size_t size)](#oh_imagesourcenative_getimagepropertyblob) | 以二进制对象类型获取图像属性的值。 |
+| [Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyShort(OH_ImageSourceNative *source, Image_String *key, uint16_t value)](#oh_imagesourcenative_modifyimagepropertyshort) | 修改图像属性中短整型的值。 |
+| [Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyLong(OH_ImageSourceNative *source, Image_String *key, uint32_t value)](#oh_imagesourcenative_modifyimagepropertylong) | 修改图像属性中长整型的值。 |
+| [Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyDouble(OH_ImageSourceNative *source, Image_String *key, double value)](#oh_imagesourcenative_modifyimagepropertydouble) | 修改图像属性中浮点型的值。 |
+| [Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyIntArray(OH_ImageSourceNative *source, Image_String *key, int32_t *value, size_t size)](#oh_imagesourcenative_modifyimagepropertyintarray) | 修改图像属性中整型数组型的值。 |
+| [Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyDoubleArray(OH_ImageSourceNative *source, Image_String *key, double *value, size_t size)](#oh_imagesourcenative_modifyimagepropertydoublearray) | 修改图像属性中浮点型数组型的值。 |
+| [Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyBlob(OH_ImageSourceNative *source, Image_String *key, void *value, size_t size)](#oh_imagesourcenative_modifyimagepropertyblob) | 修改图像属性中二进制对象的值。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_getimagepropertywithnull) | 获取图像属性值。输出的value.data以字符串结束符'\0'结尾。 |
 | [Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_modifyimageproperty) | 通过指定的键修改图片属性的值。 |
 | [Image_ErrorCode OH_ImageSourceNative_GetFrameCount(OH_ImageSourceNative *source, uint32_t *frameCount)](#oh_imagesourcenative_getframecount) | 获取图像帧数。 |
 | [Image_ErrorCode OH_ImageSourceNative_GetSupportedFormats(Image_MimeType **supportedFormats, size_t *length)](#oh_imagesourcenative_getsupportedformats) | 获取支持解码的图片格式。 |
@@ -96,7 +110,7 @@
 
 ### IMAGE_DYNAMIC_RANGE
 
-```
+```c
 enum IMAGE_DYNAMIC_RANGE
 ```
 
@@ -114,7 +128,7 @@ enum IMAGE_DYNAMIC_RANGE
 
 ### IMAGE_ALLOCATOR_TYPE
 
-```
+```c
 enum IMAGE_ALLOCATOR_TYPE
 ```
 
@@ -132,7 +146,7 @@ enum IMAGE_ALLOCATOR_TYPE
 
 ### Image_CropAndScaleStrategy
 
-```
+```c
 enum Image_CropAndScaleStrategy
 ```
 
@@ -152,7 +166,7 @@ enum Image_CropAndScaleStrategy
 
 ### OH_ImageSourceInfo_Create()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_Create(OH_ImageSource_Info **info)
 ```
 
@@ -177,7 +191,7 @@ Image_ErrorCode OH_ImageSourceInfo_Create(OH_ImageSource_Info **info)
 
 ### OH_ImageSourceInfo_GetWidth()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t *width)
 ```
 
@@ -203,7 +217,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t 
 
 ### OH_ImageSourceInfo_GetHeight()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t *height)
 ```
 
@@ -229,7 +243,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t
 
 ### OH_ImageSourceInfo_GetDynamicRange()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bool *isHdr)
 ```
 
@@ -245,7 +259,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bo
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | 被操作的OH_ImageSource_Info指针。 |
-| bool *isHdr | 是否为hdr的布尔值。 |
+| bool *isHdr | 表示是否为HDR。true表示是HDR，false表示不是HDR。 |
 
 **返回：**
 
@@ -255,13 +269,19 @@ Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bo
 
 ### OH_ImageSourceInfo_GetMimetype()
 
-```
-Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimetype)
+```c
+Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimeType)
 ```
 
 **描述**
 
 获取图片源的MIME类型。
+
+> **说明**
+>
+> - [mimeType结构体的成员变量](./capi-image-nativemodule-image-string.md#成员变量)data为char *类型指针，其指向info结构体内部持有的mimeType地址，释放info会导致该地址对应的内存也被释放。
+> - 开发者可以自行深拷贝一份mimeType.data，或者等mimeType使用完成后再释放info，以免出现乱码现象。
+> - mimeType.data没有以'\0'结尾，需要配合mimeType.size一起使用。
 
 **起始版本：** 20
 
@@ -271,7 +291,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | OH_ImageSource_Info指针。 |
-| [Image_MimeType](capi-image-nativemodule-image-string.md) *mimetype | 图片源的MIME类型。 |
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *mimeType | 图片源的MIME类型。 |
 
 **返回：**
 
@@ -281,13 +301,13 @@ Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_
 
 ### OH_ImageSourceInfo_Release()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)
 ```
 
 **描述**
 
-释放OH_ImageSource_Info指针。
+释放OH_ImageSource_Info指针。调用该接口之后，与OH_ImageSourceInfo结构体相关的属性均会被释放。因此在调用该接口前，请务必确认相关属性已不再被需要或对相关属性已完成深拷贝操作。
 
 **起始版本：** 12
 
@@ -306,7 +326,7 @@ Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)
 
 ### OH_DecodingOptions_Create()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_Create(OH_DecodingOptions **options)
 ```
 
@@ -331,8 +351,8 @@ Image_ErrorCode OH_DecodingOptions_Create(OH_DecodingOptions **options)
 
 ### OH_DecodingOptions_GetPixelFormat()
 
-```
-Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options,int32_t *pixelFormat)
+```c
+Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options, int32_t *pixelFormat)
 ```
 
 **描述**
@@ -357,7 +377,7 @@ Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options,in
 
 ### OH_DecodingOptions_SetPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetPixelFormat(OH_DecodingOptions *options,int32_t pixelFormat)
 ```
 
@@ -383,7 +403,7 @@ Image_ErrorCode OH_DecodingOptions_SetPixelFormat(OH_DecodingOptions *options,in
 
 ### OH_DecodingOptions_GetIndex()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetIndex(OH_DecodingOptions *options, uint32_t *index)
 ```
 
@@ -409,7 +429,7 @@ Image_ErrorCode OH_DecodingOptions_GetIndex(OH_DecodingOptions *options, uint32_
 
 ### OH_DecodingOptions_SetIndex()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetIndex(OH_DecodingOptions *options, uint32_t index)
 ```
 
@@ -435,7 +455,7 @@ Image_ErrorCode OH_DecodingOptions_SetIndex(OH_DecodingOptions *options, uint32_
 
 ### OH_DecodingOptions_GetRotate()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetRotate(OH_DecodingOptions *options, float *rotate)
 ```
 
@@ -461,7 +481,7 @@ Image_ErrorCode OH_DecodingOptions_GetRotate(OH_DecodingOptions *options, float 
 
 ### OH_DecodingOptions_SetRotate()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetRotate(OH_DecodingOptions *options, float rotate)
 ```
 
@@ -487,8 +507,8 @@ Image_ErrorCode OH_DecodingOptions_SetRotate(OH_DecodingOptions *options, float 
 
 ### OH_DecodingOptions_GetDesiredSize()
 
-```
-Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options,Image_Size *desiredSize)
+```c
+Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)
 ```
 
 **描述**
@@ -513,8 +533,8 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options,Im
 
 ### OH_DecodingOptions_SetDesiredSize()
 
-```
-Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options,Image_Size *desiredSize)
+```c
+Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)
 ```
 
 **描述**
@@ -539,8 +559,8 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options,Im
 
 ### OH_DecodingOptions_GetDesiredRegion()
 
-```
-Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options,Image_Region *desiredRegion)
+```c
+Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options, Image_Region *desiredRegion)
 ```
 
 **描述**
@@ -565,8 +585,8 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options,
 
 ### OH_DecodingOptions_SetDesiredRegion()
 
-```
-Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options,Image_Region *desiredRegion)
+```c
+Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options, Image_Region *desiredRegion)
 ```
 
 **描述**
@@ -591,8 +611,8 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options,
 
 ### OH_DecodingOptions_GetDesiredDynamicRange()
 
-```
-Image_ErrorCode OH_DecodingOptions_GetDesiredDynamicRange(OH_DecodingOptions *options,int32_t *desiredDynamicRange)
+```c
+Image_ErrorCode OH_DecodingOptions_GetDesiredDynamicRange(OH_DecodingOptions *options, int32_t *desiredDynamicRange)
 ```
 
 **描述**
@@ -617,8 +637,8 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredDynamicRange(OH_DecodingOptions *op
 
 ### OH_DecodingOptions_SetDesiredDynamicRange()
 
-```
-Image_ErrorCode OH_DecodingOptions_SetDesiredDynamicRange(OH_DecodingOptions *options,int32_t desiredDynamicRange)
+```c
+Image_ErrorCode OH_DecodingOptions_SetDesiredDynamicRange(OH_DecodingOptions *options, int32_t desiredDynamicRange)
 ```
 
 **描述**
@@ -643,7 +663,7 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredDynamicRange(OH_DecodingOptions *op
 
 ### OH_DecodingOptions_GetDesiredColorSpace()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetDesiredColorSpace(OH_DecodingOptions *options, int32_t *colorSpace)
 ```
 
@@ -669,7 +689,7 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredColorSpace(OH_DecodingOptions *opti
 
 ### OH_DecodingOptions_SetDesiredColorSpace()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetDesiredColorSpace(OH_DecodingOptions *options, int32_t colorSpace)
 ```
 
@@ -695,8 +715,8 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredColorSpace(OH_DecodingOptions *opti
 
 ### OH_DecodingOptions_SetCropAndScaleStrategy()
 
-```
-Image_ErrorCode OH_DecodingOptions_SetCropAndScaleStrategy(OH_DecodingOptions *options,int32_t cropAndScaleStrategy)
+```c
+Image_ErrorCode OH_DecodingOptions_SetCropAndScaleStrategy(OH_DecodingOptions *options, int32_t cropAndScaleStrategy)
 ```
 
 **描述**
@@ -721,8 +741,8 @@ Image_ErrorCode OH_DecodingOptions_SetCropAndScaleStrategy(OH_DecodingOptions *o
 
 ### OH_DecodingOptions_GetCropAndScaleStrategy()
 
-```
-Image_ErrorCode OH_DecodingOptions_GetCropAndScaleStrategy(OH_DecodingOptions *options,int32_t *cropAndScaleStrategy)
+```c
+Image_ErrorCode OH_DecodingOptions_GetCropAndScaleStrategy(OH_DecodingOptions *options, int32_t *cropAndScaleStrategy)
 ```
 
 **描述**
@@ -747,7 +767,7 @@ Image_ErrorCode OH_DecodingOptions_GetCropAndScaleStrategy(OH_DecodingOptions *o
 
 ### OH_DecodingOptions_GetCropRegion()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetCropRegion(OH_DecodingOptions *options, Image_Region *cropRegion)
 ```
 
@@ -756,7 +776,6 @@ Image_ErrorCode OH_DecodingOptions_GetCropRegion(OH_DecodingOptions *options, Im
 获取解码参数中的裁剪区域。
 
 **起始版本：** 19
-
 
 **参数：**
 
@@ -773,7 +792,7 @@ Image_ErrorCode OH_DecodingOptions_GetCropRegion(OH_DecodingOptions *options, Im
 
 ### OH_DecodingOptions_SetCropRegion()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetCropRegion(OH_DecodingOptions *options, Image_Region *cropRegion)
 ```
 
@@ -782,7 +801,6 @@ Image_ErrorCode OH_DecodingOptions_SetCropRegion(OH_DecodingOptions *options, Im
 设置解码参数中的裁剪区域。
 
 **起始版本：** 19
-
 
 **参数：**
 
@@ -799,7 +817,7 @@ Image_ErrorCode OH_DecodingOptions_SetCropRegion(OH_DecodingOptions *options, Im
 
 ### OH_DecodingOptions_Release()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_Release(OH_DecodingOptions *options)
 ```
 
@@ -808,7 +826,6 @@ Image_ErrorCode OH_DecodingOptions_Release(OH_DecodingOptions *options)
 释放OH_DecodingOptions指针。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -824,7 +841,7 @@ Image_ErrorCode OH_DecodingOptions_Release(OH_DecodingOptions *options)
 
 ### OH_ImageSourceNative_CreateFromUri()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreateFromUri(char *uri, size_t uriSize, OH_ImageSourceNative **res)
 ```
 
@@ -833,7 +850,6 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromUri(char *uri, size_t uriSize, OH
 通过uri创建OH_ImageSourceNative指针。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -851,7 +867,7 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromUri(char *uri, size_t uriSize, OH
 
 ### OH_ImageSourceNative_CreateFromFd()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreateFromFd(int32_t fd, OH_ImageSourceNative **res)
 ```
 
@@ -860,7 +876,6 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromFd(int32_t fd, OH_ImageSourceNati
 通过fd创建OH_ImageSourceNative指针。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -877,16 +892,15 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromFd(int32_t fd, OH_ImageSourceNati
 
 ### OH_ImageSourceNative_CreateFromData()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSize, OH_ImageSourceNative **res)
 ```
 
 **描述**
 
-通过缓冲区数据创建OH_ImageSourceNative指针。<br> data数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)这一类接口。
+通过缓冲区数据创建OH_ImageSourceNative指针。<br> data数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据。<br> 如果想通过像素buffer数据创建pixelMap，可以调用[OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)这一类接口。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -904,13 +918,13 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSi
 
 ### OH_ImageSourceNative_CreateFromDataWithUserBuffer()
 
-```
-Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength,OH_ImageSourceNative **imageSource)
+```c
+Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength, OH_ImageSourceNative **imageSource)
 ```
 
 **描述**
 
-由数据缓存创建图片源。传入的数据缓存将在图片源对象中直接访问，在图片源对象的声明周期内，数据缓存需要保持可用。
+由数据缓存创建图片源。传入的数据缓存将在图片源对象中直接访问，在图片源对象的生命周期内，数据缓存需要保持可用。
 
 **起始版本：** 20
 
@@ -931,7 +945,7 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data,
 
 ### OH_ImageSourceNative_CreateFromRawFile()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFile, OH_ImageSourceNative **res)
 ```
 
@@ -940,7 +954,6 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFil
 通过图像资源文件的RawFileDescriptor创建OH_ImageSourceNative指针。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -957,8 +970,8 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFil
 
 ### OH_ImageSourceNative_CreatePixelmap()
 
-```
-Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options,OH_PixelmapNative **pixelmap)
+```c
+Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative **pixelmap)
 ```
 
 **描述**
@@ -984,8 +997,8 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source
 
 ### OH_ImageSourceNative_CreatePixelmapUsingAllocator()
 
-```
-Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source,OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)
+```c
+Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source, OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)
 ```
 
 **描述**
@@ -1012,8 +1025,8 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSource
 
 ### OH_ImageSourceNative_CreatePixelmapList()
 
-```
-Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *source, OH_DecodingOptions *options,OH_PixelmapNative *resVecPixMap[], size_t size)
+```c
+Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative *resVecPixMap[], size_t size)
 ```
 
 **描述**
@@ -1040,8 +1053,8 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *so
 
 ### OH_ImageSourceNative_CreatePicture()
 
-```
-Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source, OH_DecodingOptionsForPicture *options,OH_PictureNative **picture)
+```c
+Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source, OH_DecodingOptionsForPicture *options, OH_PictureNative **picture)
 ```
 
 **描述**
@@ -1067,8 +1080,8 @@ Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source,
 
 ### OH_ImageSourceNative_CreatePictureAtIndex()
 
-```
-Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *source, uint32_t index,OH_PictureNative **picture)
+```c
+Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *source, uint32_t index, OH_PictureNative **picture)
 ```
 
 **描述**
@@ -1094,7 +1107,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *
 
 ### OH_ImageSourceNative_GetDelayTimeList()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetDelayTimeList(OH_ImageSourceNative *source, int32_t *delayTimeList, size_t size)
 ```
 
@@ -1121,8 +1134,8 @@ Image_ErrorCode OH_ImageSourceNative_GetDelayTimeList(OH_ImageSourceNative *sour
 
 ### OH_ImageSourceNative_GetImageInfo()
 
-```
-Image_ErrorCode OH_ImageSourceNative_GetImageInfo(OH_ImageSourceNative *source, int32_t index,OH_ImageSource_Info *info)
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImageInfo(OH_ImageSourceNative *source, int32_t index, OH_ImageSource_Info *info)
 ```
 
 **描述**
@@ -1148,24 +1161,23 @@ Image_ErrorCode OH_ImageSourceNative_GetImageInfo(OH_ImageSourceNative *source, 
 
 ### OH_ImageSourceNative_GetImageProperty()
 
-```
-Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *source, Image_String *key,Image_String *value)
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)
 ```
 
 **描述**
 
-获取图片指定属性键的值。
+获取图片指定属性键的值。<br> 该接口获取到的value.data缺少字符串结束符'\0'，请谨慎使用。
 
 **起始版本：** 12
-
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。 |
-| [Image_String](capi-image-nativemodule-image-string.md) *key | 指示指向属性的指针，详情请参见[Image_String](capi-image-nativemodule-image-string.md)，key的取值范围参考[OHOS_IMAGE_PROPERTY_XXX](capi-image-common-h.md#变量)定义。使用ImageSource后释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
-| [Image_String](capi-image-nativemodule-image-string.md) *value | 指向获取的值的指针。用户可以传入一个空指针和零大小，我们将分配内存，但用户必须在使用后释放内存。 |
+| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。OH_ImageSourceNative使用完成后需要主动释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 指向属性的指针。key的取值范围请参考image_common.h的[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *value | 指向获取的值的指针（输出参数）。调用本接口前，用户应将value->data置为空指针，并将value->size设为0。接口会为value->data自动分配所需内存，并对value->size赋值。完成对该内存的使用后，用户必须使用C标准库提供的free()函数释放value->data指向的内存，否则会出现内存泄漏。 |
 
 **返回：**
 
@@ -1173,15 +1185,386 @@ Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *sour
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_BAD_PARAMETER：参数错误。 |
 
-### OH_ImageSourceNative_GetImagePropertyWithNull()
+### OH_ImageSourceNative_GetImagePropertyShort()
 
-```
-Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNative *source, Image_String *key,Image_String *value)
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyShort(OH_ImageSourceNative *source, Image_String *key, uint16_t *value)
 ```
 
 **描述**
 
-获取图像属性值。输出的value.data以字符串结束符结尾。
+以短整型类型获取图像属性的值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
+| uint16_t *value | 被查询的属性的查询结果。输出参数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是短整型的值。 |
+
+### OH_ImageSourceNative_GetImagePropertyLong()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyLong(OH_ImageSourceNative *source, Image_String *key, uint32_t *value)
+```
+
+**描述**
+
+以长整型类型获取图像属性的值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
+| uint32_t *value | 被查询属性的查询结果。输出参数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是长整型的值。 |
+
+### OH_ImageSourceNative_GetImagePropertyDouble()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyDouble(OH_ImageSourceNative *source, Image_String *key, double *value)
+```
+
+**描述**
+
+以浮点型类型获取图像属性的值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
+| double *value | 被查询属性的查询结果。输出参数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是浮点型的值。 |
+
+### OH_ImageSourceNative_GetImagePropertyArraySize()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyArraySize(OH_ImageSourceNative *source, Image_String *key, size_t *size)
+```
+
+**描述**
+
+获取数组类型属性的数组长度或字符串类型属性的字符串长度。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
+| size_t *size | 数组类型属性的数组长度，字符串类型属性的字符串长度。输出参数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是数组或字符串类型的值。 |
+
+### OH_ImageSourceNative_GetImagePropertyString()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyString(OH_ImageSourceNative *source, Image_String *key, char *value, size_t size)
+```
+
+**描述**
+
+以字符串类型获取图像属性的值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
+| char *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| size_t size | 字符串长度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是字符串类型的值。 |
+
+### OH_ImageSourceNative_GetImagePropertyIntArray()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyIntArray(OH_ImageSourceNative *source, Image_String *key, int32_t *value, size_t size)
+```
+
+**描述**
+
+以整型数组类型获取图像属性的值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
+| int32_t *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| size_t size | 字符串长度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是整型数组类型的值。 |
+
+### OH_ImageSourceNative_GetImagePropertyDoubleArray()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyDoubleArray(OH_ImageSourceNative *source, Image_String *key, double *value, size_t size)
+```
+
+**描述**
+
+以浮点型数组类型获取图像属性的值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
+| double *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| size_t size | 数组长度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是浮点型数组类型的值。 |
+
+### OH_ImageSourceNative_GetImagePropertyBlob()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyBlob(OH_ImageSourceNative *source, Image_String *key, void *value, size_t size)
+```
+
+**描述**
+
+以二进制对象类型获取图像属性的值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
+| void *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| size_t size | 数组长度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是二进制对象类型的值。 |
+
+### OH_ImageSourceNative_ModifyImagePropertyShort()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyShort(OH_ImageSourceNative *source, Image_String *key, uint16_t value)
+```
+
+**描述**
+
+修改图像属性中短整型的值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被修改属性的ImageSource。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 被修改的属性。 |
+| uint16_t value | 为属性设置的值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是短整型的值。 |
+
+### OH_ImageSourceNative_ModifyImagePropertyLong()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyLong(OH_ImageSourceNative *source, Image_String *key, uint32_t value)
+```
+
+**描述**
+
+修改图像属性中长整型的值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被修改属性的ImageSource。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 被修改的属性。 |
+| uint32_t value | 为属性设置的值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是长整型的值。 |
+
+### OH_ImageSourceNative_ModifyImagePropertyDouble()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyDouble(OH_ImageSourceNative *source, Image_String *key, double value)
+```
+
+**描述**
+
+修改图像属性中浮点型的值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被修改属性的ImageSource。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 被修改的属性。 |
+| double value | 为属性设置的值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是浮点型的值。 |
+
+### OH_ImageSourceNative_ModifyImagePropertyIntArray()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyIntArray(OH_ImageSourceNative *source, Image_String *key, int32_t *value, size_t size)
+```
+
+**描述**
+
+修改图像属性中整型数组型的值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被修改属性的ImageSource。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 被修改的属性。 |
+| int32_t *value | 为属性设置的值。 |
+| size_t size | 数组长度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是整型数组类型的值。 |
+
+### OH_ImageSourceNative_ModifyImagePropertyDoubleArray()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyDoubleArray(OH_ImageSourceNative *source, Image_String *key, double *value, size_t size)
+```
+
+**描述**
+
+修改图像属性中浮点型数组型的值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被修改属性的ImageSource。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 被修改的属性。 |
+| double *value | 为属性设置的值。 |
+| size_t size | 数组长度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是浮点型数组类型的值。 |
+
+### OH_ImageSourceNative_ModifyImagePropertyBlob()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_ModifyImagePropertyBlob(OH_ImageSourceNative *source, Image_String *key, void *value, size_t size)
+```
+
+**描述**
+
+修改图像属性中二进制对象的值。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被修改属性的ImageSource。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 被修改的属性。 |
+| void *value | 为属性设置的值。 |
+| size_t size | 数组长度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是二进制对象类型的值。 |
+
+### OH_ImageSourceNative_GetImagePropertyWithNull()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNative *source, Image_String *key, Image_String *value)
+```
+
+**描述**
+
+获取图像属性值。输出的value.data以字符串结束符'\0'结尾。
 
 **起始版本：** 19
 
@@ -1190,9 +1573,9 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNati
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 指向ImageSource的指针。 |
-| [Image_String](capi-image-nativemodule-image-string.md) *key | 指向属性键的指针。 |
-| [Image_String](capi-image-nativemodule-image-string.md) *value | 指向属性值的指针（输出参数）。 |
+| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source |  被操作的OH_ImageSourceNative指针。OH_ImageSourceNative使用完成后需要主动释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 指向属性键的指针。key的取值范围请参考image_common.h的[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *value | 指向属性值的指针（输出参数）。调用本接口前，用户应将value->data置为空指针，并将value->size设为0。接口会为value->data自动分配所需内存，并对value->size赋值。完成对该内存的使用后，用户必须使用C标准库提供的free()函数释放value->data指向的内存，否则可能导致内存泄漏。 |
 
 **返回：**
 
@@ -1202,8 +1585,8 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNati
 
 ### OH_ImageSourceNative_ModifyImageProperty()
 
-```
-Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *source, Image_String *key,Image_String *value)
+```c
+Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)
 ```
 
 **描述**
@@ -1217,8 +1600,8 @@ Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *s
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。 |
-| [Image_String](capi-image-nativemodule-image-string.md) *key | 指向属性键的指针，详情请参见[Image_String](capi-image-nativemodule-image-string.md)，key是一个exif常数。使用ImageSource后释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
+| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。OH_ImageSourceNative使用完成后需要主动释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 指向属性键的指针。key的取值范围请参考image_common.h的[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量。|
 | [Image_String](capi-image-nativemodule-image-string.md) *value | 需要修改的属性值。 |
 
 **返回：**
@@ -1229,7 +1612,7 @@ Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *s
 
 ### OH_ImageSourceNative_GetFrameCount()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetFrameCount(OH_ImageSourceNative *source, uint32_t *frameCount)
 ```
 
@@ -1255,7 +1638,7 @@ Image_ErrorCode OH_ImageSourceNative_GetFrameCount(OH_ImageSourceNative *source,
 
 ### OH_ImageSourceNative_GetSupportedFormats()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetSupportedFormats(Image_MimeType **supportedFormats, size_t *length)
 ```
 
@@ -1281,7 +1664,7 @@ Image_ErrorCode OH_ImageSourceNative_GetSupportedFormats(Image_MimeType **suppor
 
 ### OH_ImageSourceNative_Release()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_Release(OH_ImageSourceNative *source)
 ```
 
@@ -1306,7 +1689,7 @@ Image_ErrorCode OH_ImageSourceNative_Release(OH_ImageSourceNative *source)
 
 ### OH_DecodingOptionsForPicture_Create()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptionsForPicture_Create(OH_DecodingOptionsForPicture **options)
 ```
 
@@ -1331,8 +1714,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_Create(OH_DecodingOptionsForPicture
 
 ### OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures()
 
-```
-Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options,Image_AuxiliaryPictureType **desiredAuxiliaryPictures, size_t *length)
+```c
+Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options, Image_AuxiliaryPictureType **desiredAuxiliaryPictures, size_t *length)
 ```
 
 **描述**
@@ -1358,8 +1741,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures(OH_Deco
 
 ### OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures()
 
-```
-Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options,Image_AuxiliaryPictureType *desiredAuxiliaryPictures, size_t length)
+```c
+Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options, Image_AuxiliaryPictureType *desiredAuxiliaryPictures, size_t length)
 ```
 
 **描述**
@@ -1385,7 +1768,7 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures(OH_Deco
 
 ### OH_DecodingOptionsForPicture_Release()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptionsForPicture_Release(OH_DecodingOptionsForPicture *options)
 ```
 

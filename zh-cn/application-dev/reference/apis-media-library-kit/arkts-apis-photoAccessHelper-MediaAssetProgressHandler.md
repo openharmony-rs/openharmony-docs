@@ -1,11 +1,17 @@
 # Interface (MediaAssetProgressHandler)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+媒体资产进度处理器，应用在onProgress方法中获取媒体资产进度。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 15开始支持。
-
-媒体资产进度处理器，应用在onProgress方法中获取媒体资产进度。
 
 ## 导入模块
 

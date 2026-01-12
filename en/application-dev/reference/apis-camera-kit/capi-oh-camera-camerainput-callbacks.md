@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct CameraInput_Callbacks {...} CameraInput_Callbacks
+```
+
 ## Overview
 
 The struct describes the callbacks used to listen for camera input errors.

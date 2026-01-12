@@ -11,7 +11,7 @@
 对于采用ArkTS开发的应用，提供了应用内组件的主题换肤功能，支持局部的深浅色切换及动态换肤。目前，该功能只支持设置应用内主题换肤，暂不支持在UIAbility或窗口层面进行主题设置，同时也不支持C-API和Node-API。
 
 ## 自定义主题色
-当应用需要使用换肤功能时，应自定义主题颜色。[CustomTheme](../reference/apis-arkui/js-apis-arkui-theme.md#customtheme)用于自定义主题色的内容，其属性可选，仅需要复写需修改的部分，未修改内容将继承系统默认设置，可参考[系统默认的token颜色值](#系统缺省token色值)。请参照以下示例自定义主题色：
+当应用需要使用换肤功能时，应自定义主题颜色。[CustomTheme](../reference/apis-arkui/js-apis-arkui-theme.md#customtheme)用于自定义主题色的内容，其属性可选，仅需对需要修改的token字段赋值，其余token将继承系统默认颜色值，可参考[系统默认的token颜色值](#系统缺省token色值)。请参照以下示例自定义主题色：
 
   <!-- @[app_theme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme1/AppTheme.ets) -->
   
@@ -22,7 +22,7 @@
     // 自定义主题色
     public brand: ResourceColor = '#FF75D9';
     // 使用$r，让一级警示色在深色和浅色模式下，设置为不同的颜色
-    public warning: ResourceColor = $r('app.color.start_window_background');
+    public warning: ResourceColor = $r('sys.color.ohos_id_color_warning');
   }
   
   export class AppTheme implements CustomTheme {
@@ -34,9 +34,10 @@
 
 ## 设置应用内组件自定义主题色
 - 若在页面入口处设置应用内组件自定义主题色，需确保在页面build前执行[ThemeControl](../reference/apis-arkui/js-apis-arkui-theme.md#themecontrol).[setDefaultTheme](../reference/apis-arkui/js-apis-arkui-theme.md#setdefaulttheme)。
+
   示例代码中，[onWillApplyTheme](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12)回调函数用于使自定义组件获取当前生效的Theme对象。
 
-    <!-- @[display_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme1/Theme1.ets) -->
+  <!-- @[display_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme1/Theme1.ets) -->
     
     ``` TypeScript
     // Index.ets
@@ -73,7 +74,7 @@
                       .checked(true)
                   }
                   .width('50%')
-
+    
                   Column() {
                     Text('Dark')
                       .fontSize('16fp')
@@ -121,7 +122,7 @@
                   .alignSelf(ItemAlign.Center)
                   .margin({ left: '14fp' })
                   .width('75%')
-
+    
                   Toggle({ type: ToggleType.Switch, isOn: true })
                     .margin({ right: '14fp' })
                     .alignSelf(ItemAlign.Center)
@@ -138,18 +139,15 @@
                 Text('Warning')
                   .width('100%')
                   .margin({ top: '5vp', left: '14fp' })
-                Button() {
-                  Text('Text')
-                    .fontSize(30)
-                    .fontWeight(FontWeight.Bold)
-                }
-                .type(ButtonType.Capsule)
-                .role(ButtonRole.ERROR)
-                .width('40%')
+                Button('Text')
+                  .type(ButtonType.Capsule)
+                  .role(ButtonRole.ERROR)
+                  .width('40%')
               }
               .width('100%')
               .height('70vp')
               .borderRadius('10vp')
+              .backgroundColor(this.menuItemColor)
             }
           }
         }
@@ -206,16 +204,20 @@
     }
     ```
 
-![systemTheme](figures/systemTheme.png)
+  ![systemTheme](figures/systemTheme.png)
 
-> **说明：**
->
->如果setDefaultTheme的参数为undefined时，默认token值对应的色值参考[系统缺省token色值](#系统缺省token色值)。
->
->setDefaultTheme需要在ArkUI初始化后即windowStage.loadContent的完成时回调中使用。
+  > **说明：**
+  >
+  > - 当setDefaultTheme的参数为undefined时，会清除先前设置的自定义主题，默认token值对应的色值参考[系统缺省token色值](#系统缺省token色值)。
+  >
+  > - setDefaultTheme需要在ArkUI初始化后即windowStage.loadContent的完成时回调中使用。
 
 ## 设置应用局部页面自定义主题风格
 通过设置[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)，将自定义主题Theme的配色应用于内部组件的默认样式。在WithTheme的作用范围内，组件的配色会根据Theme的配色进行调整。
+
+> **说明：**
+>
+> 在自定义节点[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)中使用[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)，为了确保显示效果正确，需手动传递系统环境变化事件，触发节点的全量更新，详细请参考[BuilderNode系统环境变化更新](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)。
 
 如示例所示，使用WithTheme({ theme: this.CustomTheme })可将作用域内组件的配色设置为自定义主题风格。后续可以通过更新this.CustomTheme来更换主题风格。[onWillApplyTheme](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12)回调函数用于使自定义组件能够获取当前生效的Theme对象。
 
@@ -224,7 +226,7 @@
   ``` TypeScript
   import { CustomColors, CustomTheme, Theme } from '@kit.ArkUI';
   import { common } from '@kit.AbilityKit';
-  
+  //请将$r('app.color.xxx')替换为实际资源文件
   class AppColors implements CustomColors {
     public fontPrimary: ResourceColor = $r('app.color.brand_purple');
     public backgroundEmphasize: ResourceColor = $r('app.color.brand_purple');
@@ -247,9 +249,8 @@
   @Component
   struct DisplayPage1 {
     @State customTheme: CustomTheme = new AppTheme();
-    // 'SetCustomThemeStyle'资源文件中的value值为'设置应用局部页面自定义主题风格'
-    @State message: string = (this.getUIContext().getHostContext() as common.UIAbilityContext)
-      .resourceManager.getStringByNameSync('SetCustomThemeStyle');
+    // 请将$r('app.string.SetCustomThemeStyle')替换为实际资源文件，在本示例中该资源文件的value值为"设置应用局部页面自定义主题风格"
+    @State message: ResourceStr = $r('app.string.SetCustomThemeStyle');
     count = 0;
   
     build() {
@@ -354,7 +355,7 @@ dark.json数据示例：
 
 ## 系统缺省token色值
 
-| Token                                      | 场景类别 | Light |           | Dark    |                                              |
+| Token                                      | 场景类别 | Light |    说明       | Dark    |               说明                               |
 |--------------------------------------------|-----| --- |-----------| ------- | -------------------------------------------- |
 | theme.colors.brand                         | 品牌色 |#ff0a59f7| ![](figures/ff0a59f7.png "#ff0a59f7") |#ff317af7|![](figures/ff317af7.png "#ff317af7")|
 | theme.colors.warning                       | 一级警示色 |#ffe84026| ![](figures/ffe84026.png "#ffe84026") |#ffd94838|![](figures/ffd94838.png "#ffd94838")|

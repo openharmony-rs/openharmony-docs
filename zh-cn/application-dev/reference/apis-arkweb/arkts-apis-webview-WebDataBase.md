@@ -14,7 +14,7 @@ Web组件数据库管理对象。
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 >
 > - 目前调用WebDataBase下的方法，都需要先加载Web组件。
 
@@ -43,7 +43,7 @@ static getHttpAuthCredentials(host: string, realm: string): Array\<string>
 
 | 类型  | 说明                                         |
 | ----- | -------------------------------------------- |
-| Array\<string> | 包含用户名和密码的组数，检索失败返回空数组。 |
+| Array\<string> | 包含用户名和密码的数组，检索失败返回空数组。 |
 
 **错误码：**
 

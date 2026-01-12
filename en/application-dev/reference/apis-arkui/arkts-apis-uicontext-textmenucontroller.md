@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides the capability to control text menus.
 
@@ -174,6 +174,10 @@ Disables specified system service menu items in the text selection menu.
 > - When both **disableSystemServiceMenuItems** and **disableMenuItems** are set, the earlier-set **disableSystemServiceMenuItems** takes precedence.
 >
 > - This API takes effect globally, and multiple calls are subject to the last call.
+>
+> - Disabling a first-level menu item will also disable all its second-level menu items. For example, disabling the first-level menu item **autoFill** (parent item) in [TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12) will simultaneously disable the second-level menu item **passwordVault** (child item) in **TextMenuItemId**.
+>
+> - Disabling individual second-level menu items is not supported. If required, this can be achieved by disabling the corresponding first-level menu item.
 >
 > - Disabled menus can be restored in the following ways:
 >

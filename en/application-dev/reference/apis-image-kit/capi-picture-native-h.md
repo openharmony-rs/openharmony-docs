@@ -73,7 +73,7 @@ The file declares the APIs for obtaining picture data and information.
 
 ### Image_AuxiliaryPictureType
 
-```
+```c
 enum Image_AuxiliaryPictureType
 ```
 
@@ -96,7 +96,7 @@ Enumerates the auxiliary picture types.
 
 ### OH_PictureNative_CreatePicture()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_CreatePicture(OH_PixelmapNative *mainPixelmap, OH_PictureNative **picture)
 ```
 
@@ -122,7 +122,7 @@ Creates the pointer to an OH_PictureNative object.
 
 ### OH_PictureNative_GetMainPixelmap()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_GetMainPixelmap(OH_PictureNative *picture, OH_PixelmapNative **mainPixelmap)
 ```
 
@@ -148,7 +148,7 @@ Obtains the pointer to the OH_PixelmapNative object of a main picture.
 
 ### OH_PictureNative_GetHdrComposedPixelmap()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmap(OH_PictureNative *picture, OH_PixelmapNative **hdrPixelmap)
 ```
 
@@ -174,7 +174,7 @@ Obtains the pointer to the OH_PixelmapNative object of an HDR picture.
 
 ### OH_PictureNative_GetGainmapPixelmap()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_GetGainmapPixelmap(OH_PictureNative *picture, OH_PixelmapNative **gainmapPixelmap)
 ```
 
@@ -200,7 +200,7 @@ Obtains the pointer to the OH_PixelmapNative object of a gain map.
 
 ### OH_PictureNative_SetAuxiliaryPicture()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_SetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type,OH_AuxiliaryPictureNative *auxiliaryPicture)
 ```
 
@@ -227,7 +227,7 @@ Sets an auxiliary picture.
 
 ### OH_PictureNative_GetAuxiliaryPicture()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_GetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type,OH_AuxiliaryPictureNative **auxiliaryPicture)
 ```
 
@@ -254,7 +254,7 @@ Obtains an auxiliary picture by type.
 
 ### OH_PictureNative_GetMetadata()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType,OH_PictureMetadata **metadata)
 ```
 
@@ -281,7 +281,7 @@ Obtains the metadata of a main picture.
 
 ### OH_PictureNative_SetMetadata()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType,OH_PictureMetadata *metadata)
 ```
 
@@ -308,7 +308,7 @@ Sets the metadata for a main picture.
 
 ### OH_PictureNative_Release()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)
 ```
 
@@ -333,7 +333,7 @@ Releases the pointer to an OH_PictureNative object.
 
 ### OH_AuxiliaryPictureNative_Create()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size,Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)
 ```
 
@@ -362,7 +362,7 @@ Creates the pointer to an OH_AuxiliaryPictureNative object.
 
 ### OH_AuxiliaryPictureNative_WritePixels()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *source,size_t bufferSize)
 ```
 
@@ -389,7 +389,7 @@ Reads pixels in the buffer and writes the result to an auxiliary picture.
 
 ### OH_AuxiliaryPictureNative_ReadPixels()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *destination,size_t *bufferSize)
 ```
 
@@ -416,7 +416,7 @@ Reads pixels of an auxiliary picture and writes the result to the buffer.
 
 ### OH_AuxiliaryPictureNative_GetType()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_AuxiliaryPictureType *type)
 ```
 
@@ -442,7 +442,7 @@ Obtains the type of an auxiliary picture.
 
 ### OH_AuxiliaryPictureNative_GetInfo()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_GetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture,OH_AuxiliaryPictureInfo **info)
 ```
 
@@ -468,7 +468,7 @@ Obtains the information of an auxiliary picture.
 
 ### OH_AuxiliaryPictureNative_SetInfo()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_SetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture,OH_AuxiliaryPictureInfo *info)
 ```
 
@@ -494,7 +494,7 @@ Sets the information for an auxiliary picture.
 
 ### OH_AuxiliaryPictureNative_GetMetadata()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_GetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_MetadataType metadataType, OH_PictureMetadata **metadata)
 ```
 
@@ -521,7 +521,7 @@ Obtains the metadata of an auxiliary picture.
 
 ### OH_AuxiliaryPictureNative_SetMetadata()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_MetadataType metadataType, OH_PictureMetadata *metadata)
 ```
 
@@ -548,7 +548,7 @@ Sets the metadata for an auxiliary picture.
 
 ### OH_AuxiliaryPictureNative_Release()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_Release(OH_AuxiliaryPictureNative *picture)
 ```
 
@@ -573,7 +573,7 @@ Releases the pointer to an OH_AuxiliaryPictureNative object.
 
 ### OH_AuxiliaryPictureInfo_Create()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_Create(OH_AuxiliaryPictureInfo **info)
 ```
 
@@ -598,7 +598,7 @@ Creates an OH_AuxiliaryPictureInfo object.
 
 ### OH_AuxiliaryPictureInfo_GetType()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType *type)
 ```
 
@@ -624,7 +624,7 @@ Obtains the auxiliary picture type from the auxiliary picture information.
 
 ### OH_AuxiliaryPictureInfo_SetType()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType type)
 ```
 
@@ -650,7 +650,7 @@ Sets the auxiliary picture type in the auxiliary picture information.
 
 ### OH_AuxiliaryPictureInfo_GetSize()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)
 ```
 
@@ -676,7 +676,7 @@ Obtains the size of an auxiliary picture.
 
 ### OH_AuxiliaryPictureInfo_SetSize()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)
 ```
 
@@ -702,7 +702,7 @@ Sets the size for an auxiliary picture.
 
 ### OH_AuxiliaryPictureInfo_GetRowStride()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t *rowStride)
 ```
 
@@ -728,7 +728,7 @@ Obtains the row stride of an auxiliary picture.
 
 ### OH_AuxiliaryPictureInfo_SetRowStride()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t rowStride)
 ```
 
@@ -754,7 +754,7 @@ Sets the row stride for an auxiliary picture.
 
 ### OH_AuxiliaryPictureInfo_GetPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT *pixelFormat)
 ```
 
@@ -780,7 +780,7 @@ Obtains the pixel format of an auxiliary picture.
 
 ### OH_AuxiliaryPictureInfo_SetPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT pixelFormat)
 ```
 
@@ -806,7 +806,7 @@ Sets the pixel format for an auxiliary picture.
 
 ### OH_AuxiliaryPictureInfo_Release()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)
 ```
 

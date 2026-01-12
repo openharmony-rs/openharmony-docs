@@ -1,7 +1,7 @@
 # 支持鼠标输入事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -18,7 +18,7 @@
 
 ## 处理鼠标移动
 
-鼠标事件通过onMouse接口注册一个回调来接收，当鼠标事件发生时，会按照鼠标光标所在位置下的组件进行派发，派发过程同样遵循事件冒泡机制。
+鼠标事件通过[onMouse](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#onmouse)接口注册一个回调来接收，当鼠标事件发生时，会按照鼠标光标所在位置下的组件进行派发，派发过程同样遵循事件冒泡机制。
 
 ### onMouse
 
@@ -89,9 +89,10 @@ struct MouseMove {
 
 上面的示例中给Button绑定onMouse接口。在回调中，打印出鼠标事件的button/action等回调参数值。同时，在外层的Column容器上，也做相同的设置。整个过程可以分为以下两个动作：
 
-1. 移动鼠标：当鼠标从Button外部移入Button的过程中，仅触发了Column的onMouse回调；当鼠标移入到Button内部后，由于onMouse事件默认是冒泡的，所以此时会同时响应Column的onMouse回调和Button的onMouse回调。此过程中，由于鼠标仅有移动动作没有点击动作，因此打印信息中的button均为0（MouseButton.None的枚举值）、action均为3（MouseAction.Move的枚举值）。
+1. 移动鼠标：在鼠标从Button外部移入Button内部前，仅触发了Column的onMouse回调；当鼠标移入到Button内部后，由于onMouse事件默认是冒泡的，所以此时会同时响应Column的onMouse回调和Button的onMouse回调。此过程中，由于鼠标仅有移动动作而没有点击动作，因此打印信息中的button均为0（MouseButton.None的枚举值）、action均为3（MouseAction.Move的枚举值）。
 
 2. 点击鼠标：鼠标进入Button后进行了2次点击，分别是左键点击和右键点击。
+
    左键点击时：button = 1（MouseButton.Left的枚举值），按下时：action = 1（MouseAction.Press的枚举值），抬起时：action = 2（MouseAction.Release的枚举值）。
 
    右键点击时：button = 2（MouseButton.Right的枚举值），按下时：action = 1（MouseAction.Press的枚举值），抬起时：action = 2（MouseAction.Release的枚举值）。
@@ -155,7 +156,7 @@ struct StopPropagation {
 ```
 ![onMouse2](figures/onMouse_2.gif)
 
-在子组件（Button）的onMouse中，通过回调参数event调用stopPropagation回调方法（如下）即可阻止Button子组件的鼠标事件冒泡到父组件Column上。
+在子组件（Button）的onMouse中，通过回调参数event调用stopPropagation回调方法（如上）即可阻止Button子组件的鼠标事件冒泡到父组件Column上。
 
 ### onHover
 
@@ -209,11 +210,11 @@ struct OnHover {
 
 ## 处理鼠标按键
 
-当用户按下鼠标上的按键时，会产生鼠标按下事件，可以通过MouseEvent访问事件的一些重要信息，如发生时间，鼠标按键(MouseButton: 左键/右键等)，也可以通过**getModifierKeyState**接口获取到用户在使用鼠标时，物理键盘上的**ctrl/alt/shift**这几个修饰键的按下状态，可以通过组合判断它们的状态来实现一些便捷操作。
+当用户按下鼠标上的按键时，会产生鼠标按下事件，可以通过[MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)访问事件的一些重要信息，如发生时间，鼠标按键(MouseButton: 左键/右键等)，也可以通过[**getModifierKeyState**](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#getmodifierkeystate12)接口获取到用户在使用鼠标时，物理键盘上的**ctrl/alt/shift**这几个修饰键的按下状态，可以通过组合判断它们的状态来实现一些便捷操作。
 
 以下是一个通过处理鼠标按键实现快速多选的示例：
 
-<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->
+<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->   
 
 ``` TypeScript
 class ListDataSource implements IDataSource {
@@ -263,12 +264,12 @@ class ListDataSource implements IDataSource {
 @Component
 struct ListExample {
   private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  private allSelectedItems: Array<number> = []
-  @State isSelected: boolean[] = []
+  private allSelectedItems: Array<number> = [];
+  @State isSelected: boolean[] = [];
 
   @Styles
   selectedStyle(): void {
-    .backgroundColor(Color.Green)
+    .backgroundColor(Color.Blue);
   }
 
   isItemSelected(item: number): boolean {
@@ -304,25 +305,25 @@ struct ListExample {
             // 判断是否按下鼠标左键
             if (event.button === MouseButton.Left && event.action === MouseAction.Press) {
               // 判断之前是否已经是选中状态
-              let isSelected: boolean = this.isItemSelected(index)
+              let isSelected: boolean = this.isItemSelected(index);
               // 判断修饰键状态
-              let isCtrlPressing: boolean = false
+              let isCtrlPressing: boolean = false;
               if (event.getModifierKeyState) {
-                isCtrlPressing = event.getModifierKeyState(['Ctrl'])
+                isCtrlPressing = event.getModifierKeyState(['Ctrl']);
               }
               // 如果没有按着ctrl键点鼠标，则强制清理掉其他选中的条目并只让当前条目选中
               if (!isCtrlPressing) {
-                this.allSelectedItems = []
+                this.allSelectedItems = [];
                 for (let i = 0; i < this.isSelected.length; i++) {
-                  this.isSelected[i] = false
+                  this.isSelected[i] = false;
                 }
               }
               if (isSelected) {
-                this.allSelectedItems.filter(item => item !== index)
-                this.isSelected[index] = false
+                this.allSelectedItems.filter(item => item !== index);
+                this.isSelected[index] = false;
               } else {
-                this.allSelectedItems.push(index)
-                this.isSelected[index] = true
+                this.allSelectedItems.push(index);
+                this.isSelected[index] = true;
               }
             }
           })
@@ -342,10 +343,12 @@ struct ListExample {
 }
 ```
 
+![ChangeMouse](figures/ChangeMouse.gif)
 
 ## 处理滚轮
 
 鼠标的滚轮是一种可以产生纵向滚动量的输入设备，当用户滚动鼠标滚轮时，系统会产生纵向[轴事件](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md)上报，应用可在组件上通过[onAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#onaxisevent)接口接收轴事件，轴事件中上报的坐标，为鼠标光标所在的位置，而滚轮上报的角度变化可从[BaseEvent](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8)的axisVertical获得。
+
 鼠标滚轮轴事件的上报，每次都以[AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).BEGIN类型开始，当停止滚动时以[AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).End结束，慢速滚动时，会产生多段的BEGIN、END上报。当你处理axisVertical时，应确保理解它的数值含义与单位，其有以下特点：
 - 上报的数值单位为角度，为单次变化量，非总量。
 - 上报数值大小受系统设置中对滚轮放大倍数设置的影响。
@@ -353,6 +356,7 @@ struct ListExample {
 - 向前滚动，上报数值为负，向后滚动，上报数值为正。
 
 如果使用滚动类组件，对于滚轮的响应，系统内部已实现，不需要额外处理。
+
 如果使用[PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md)，对于滚轮的响应，此时向前滚动，offsetY的上报数值为正，向后滚动，offsetY的上报数值为负。
 
 > **说明：**

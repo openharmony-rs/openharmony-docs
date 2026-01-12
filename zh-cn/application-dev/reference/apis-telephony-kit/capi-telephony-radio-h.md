@@ -31,7 +31,7 @@
 
 ### OH_Telephony_GetNetworkState()
 
-```
+```c
 Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state)
 ```
 
@@ -60,7 +60,7 @@ Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state
 
 ### OH_Telephony_GetNetworkStateForSlot()
 
-```
+```c
 Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Telephony_NetworkState *state)
 ```
 

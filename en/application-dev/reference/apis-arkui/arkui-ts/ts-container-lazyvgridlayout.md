@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **LazyVGridLayout** component implements a lazy-loading grid layout, with its parent component restricted to [WaterFlow](ts-container-waterflow.md) or [FlowItem](ts-container-flowitem.md). It can also be used within the **WaterFlow** or **FlowItem** component after being wrapped by custom components or [NodeContainer](ts-basic-components-nodecontainer.md).
 
@@ -38,14 +38,14 @@ Sets the number of columns, fixed column width, or minimum column width of the g
 
 For example, **'1fr 1fr 2fr'** indicates three columns, with the first column taking up 1/4 of the parent component's full width, the second column 1/4, and the third column 2/4.
 
-**columnsTemplate('repeat(auto-fit, track-size)')**: The layout automatically calculates the number of columns and the actual column width, while adhering to the minimum column width specified with **track-size**.
+**columnsTemplate('repeat(auto-fit, track-size)')**: The layout automatically calculates the number of columns and their actual widths while respecting the minimum column width specified by **track-size**.
 
-**columnsTemplate('repeat(auto-fill, track-size)')**: The layout automatically calculates the number of columns based on the fixed column width specified with **track-size**.
+**columnsTemplate('repeat(auto-fill, track-size)')**: The layout automatically calculates the number of columns based on the fixed column width specified by **track-size**.
 
-**columnsTemplate('repeat(auto-stretch, track-size)')**: The layout uses **columnsGap** to define the minimum gap between columns and automatically calculates the number of columns and the actual gap size based on the fixed column width specified with **track-size**.
+**columnsTemplate('repeat(auto-stretch, track-size)')**: The layout uses **columnsGap** to define the minimum gap between columns and automatically calculates the number of columns and the actual gap size based on the fixed column width specified by **track-size**.
 
-**repeat**, **auto-fit**, **auto-fill**, and **auto-stretch** are keywords. **track-size** indicates the column width, in the unit of px, vp (default), %, or any valid digit. The value must be greater than or equal to one valid column width.<br>
-In **auto-stretch** mode, **track-size** must be a valid column width value, in the unit of px, vp, or any valid digit; percentage values (%) are not supported.
+**repeat**, **auto-fit**, **auto-fill**, and **auto-stretch** are keywords. **track-size** indicates the column width, in units of px, vp (default), %, or any valid numeric value. The value must be greater than or equal to a valid column width.<br>
+In **auto-stretch** mode, **track-size** must be a valid numeric column width, in units of px, vp, or any valid numeric value; percentage values (%) are not supported.
 
 If this attribute is set to **'0fr'**, the column width is 0, and child components are not displayed. If this attribute is set to an invalid value, the child components are displayed in a fixed column.
 
@@ -63,7 +63,7 @@ If this attribute is set to **'0fr'**, the column width is 0, and child componen
 
 columnsGap(value: LengthMetrics): T
 
-Sets the gap between columns. A value less than 0 evaluates to the default value.
+Sets the gap between columns. Values less than 0 are treated as the default value.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -79,13 +79,13 @@ Sets the gap between columns. A value less than 0 evaluates to the default value
 
 | Type| Description          |
 | --- | -------------- |
-| T | Current component.|
+| T | Current **LazyVGridLayout** component.|
 
 ### rowsGap
 
 rowsGap(value: LengthMetrics): T
 
-Sets the gap between rows. A value less than 0 evaluates to the default value.
+Sets the gap between rows. Values less than 0 are treated as the default value.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -111,7 +111,7 @@ Only the [universal events](ts-component-general-events.md) are supported.
 
 This example demonstrates how to implement a lazy-loading grid layout using the **WaterFlow** and **LazyVGridLayout** components.
 
-MyDataSource implements the [IDataSource](ts-rendering-control-lazyforeach.md#idatasource) data source API of **LazyForEach**, which is used to provide child components for **LazyVGridLayout** through **LazyForEach**.
+**MyDataSource** implements the [IDataSource](ts-rendering-control-lazyforeach.md#idatasource) API for **LazyForEach**, which provides child components for **LazyVGridLayout** through **LazyForEach**.
 
 <!--code_no_check-->
 ```ts

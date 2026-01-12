@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef void *OH_AI_TensorHandle
+```
+
 ## Overview
 
 Defines the handle of a tensor object.

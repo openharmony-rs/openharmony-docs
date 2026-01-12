@@ -5,8 +5,8 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-```
-typedef struct {...} OHExtDataHandle
+```c
+typedef struct OHExtDataHandle {...} OHExtDataHandle
 ```
 
 ## 概述

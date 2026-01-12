@@ -1,10 +1,10 @@
 # SwipeGesture
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **SwipeGesture** is used to trigger a swipe gesture. This gesture is successfully recognized when the swipe speed exceeds the specified threshold, which is 100 vp/s by default.
 
@@ -29,7 +29,7 @@ Sets the parameters for the swipe gesture. Inherits from [GestureInterface\<T>](
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number; direction?: SwipeDirection; speed?: number } | No| Parameters for the swipe gesture.<br> - **fingers**: minimum number of fingers to trigger the swipe gesture.<br>Default value: **1**<br>Value range: [1, 10].<br> - **direction**: direction in which the swipe gesture can be recognized.<br>Default value: **SwipeDirection.All**<br> - **speed**: minimum speed of the swipe gesture.<br>Default value: 100 vp/s<br>**NOTE**<br>If the value is less than or equal to 0, it will be converted to the default value.|
+| value | { fingers?: number; direction?: SwipeDirection; speed?: number } | No| Parameters for the swipe gesture.<br> - **fingers**: minimum number of fingers to trigger the swipe gesture.<br>Default value: **1**<br>Value range: [1, 10].<br> - **direction**: direction in which the swipe gesture can be recognized.<br>Default value: **SwipeDirection.All**<br> - **speed**: minimum speed of the swipe gesture.<br>Default value: 100 vp/s<br>Value range: (0, +∞).<br>**NOTE**<br>If the value is less than or equal to 0, it will be converted to the default value.|
 
 ### SwipeGesture<sup>15+</sup>
 
@@ -49,6 +49,8 @@ Sets the parameters for the swipe gesture. Compared with [SwipeGesture](#swipege
 
 ## SwipeDirection
 
+Enumerates the directions in which the swipe gesture can be recognized.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -56,8 +58,8 @@ Sets the parameters for the swipe gesture. Compared with [SwipeGesture](#swipege
 | Name| Value| Description|
 | ---- | -- | ----- |
 | All | - | All directions.|
-| Horizontal | - | Horizontal direction. The gesture event is triggered when the angle between the finger moving direction and the x-axis is less than 45 degrees.|
-| Vertical | - | Vertical direction. The gesture event is triggered when the angle between the finger moving direction and the y-axis is less than 45 degrees.|
+| Horizontal | - | Horizontal direction. The gesture is triggered when the angle between the finger moving direction and the x-axis is less than 45 degrees.|
+| Vertical | - | Vertical direction. The gesture is triggered when the angle between the finger moving direction and the y-axis is less than 45 degrees.|
 | None | - | Swiping disabled.|
 
 
@@ -67,15 +69,11 @@ Sets the parameters for the swipe gesture. Compared with [SwipeGesture](#swipege
 >
 >  In **fingerList** of [GestureEvent](ts-gesture-common.md#gestureevent), the index of a finger corresponds to its position, that is, the ID of a finger in **fingerList[index]** refers to its index. If a finger is pressed first and does not participate in triggering of the current gesture, its position in **fingerList** is left empty. You are advised to use **fingerInfos**.
 
-**Atomic service API**: This API can be used in atomic services since API version 8.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 ### onAction
 
 onAction(event: (event: GestureEvent) => void)
 
-Triggered when a swipe gesture is recognized.
+Triggered when the swipe gesture is recognized.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

@@ -1,18 +1,18 @@
 # LongPressGesture
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **LongPressGesture** is used to trigger a long press gesture. This gesture requires one or more fingers to be held down for a specified duration, which is 500 ms by default and can be adjusted using the **duration** parameter.
 
 >  **NOTE**
 >
->  This gesture is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  Since API version 18, on some devices, the system's two-finger long press gesture may take precedence, causing the application's two-finger long press gesture to be ineffective.
+> - Since API version 18, on some devices, the system's two-finger long press gesture may take precedence, causing the application's two-finger long press gesture to be ineffective.
 
 
 ## APIs
@@ -66,9 +66,9 @@ If the long press duration reaches or exceeds 500 milliseconds, the system prior
 
 >  **NOTE**
 >
->  In **fingerList** of [GestureEvent](ts-gesture-common.md#gestureevent), the index of a finger corresponds to its position, that is, the ID of a finger in **fingerList[index]** refers to its index. If a finger is pressed first and does not participate in triggering of the current gesture, its position in **fingerList** is left empty. You are advised to use **fingerInfos** when possible.
+> - In **fingerList** of [GestureEvent](ts-gesture-common.md#gestureevent), the index of a finger corresponds to its position, that is, the ID of a finger in **fingerList[index]** refers to its index. If a finger is pressed first and does not participate in triggering of the current gesture, its position in **fingerList** is left empty. You are advised to use **fingerInfos** when possible.
 >
->  Once a long press gesture is triggered, the information in **fingerList** and **fingerInfo** within the [GestureEvent](ts-gesture-common.md#gestureevent) object is only updated when fingers are pressed down and not updated when fingers are lifted.
+> - Once a long press gesture is triggered, the information in **fingerList** and **fingerInfo** within the [GestureEvent](ts-gesture-common.md#gestureevent) object is only updated when fingers are pressed down and not updated when fingers are lifted.
 
 ### onAction
 
@@ -136,7 +136,7 @@ Registers the callback for long press gesture cancellation. This callback is tri
 
 ## Example
 
-This example demonstrates the recognition of a long press gesture using **LongPressGesture**.
+This example demonstrates the recognition of a long press gesture using **LongPressGesture**. Since API version 22, the **allowableMovement** attribute in [LongPressGestureHandlerOptions](./ts-gesturehandler.md#longpressgesturehandleroptions) can be used to set the maximum movement distance of a gesture to be recognized.
 
 ```ts
 // xxx.ets
@@ -150,7 +150,8 @@ struct LongPressGestureExample {
       Text('LongPress onAction:' + this.count).fontSize(28)
         // This gesture event is triggered when the text is long-pressed with a single finger.
         .gesture(
-        LongPressGesture({ repeat: true })
+        // Set the maximum movement distance allowed for gesture recognition by the long press gesture recognizer to 200 px.
+        LongPressGesture({ repeat: true, allowableMovement: 200 })
           // Since repeat is set to true, the event callback is continuously triggered during the long press, with the triggering interval specified by duration (500 ms by default).
           .onAction((event: GestureEvent) => {
             if (event && event.repeat) {

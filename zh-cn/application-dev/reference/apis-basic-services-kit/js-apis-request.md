@@ -45,8 +45,8 @@ import { request } from '@kit.BasicServicesKit';
 | EXCEPTION_FILEPATH<sup>9+</sup> | number |   13400002   | 特有错误码：文件路径异常。 |
 | EXCEPTION_SERVICE<sup>9+</sup> | number |   13400003   | 特有错误码：服务异常。 |
 | EXCEPTION_OTHERS<sup>9+</sup> | number |   13499999   | 特有错误码：其他错误。 |
-| NETWORK_MOBILE<sup>6+</sup> | number | 0x00000001 | 网络类型：使用蜂窝网络时允许下载的位标志。 |
-| NETWORK_WIFI<sup>6+</sup> | number | 0x00010000 | 网络类型：使用WLAN时允许下载的位标志。 |
+| NETWORK_MOBILE | number | 0x00000001 | 网络类型：使用蜂窝网络时允许下载的位标志。 |
+| NETWORK_WIFI | number | 0x00010000 | 网络类型：使用WLAN时允许下载的位标志。 |
 | ERROR_CANNOT_RESUME<sup>7+</sup> | number |   0   | 下载任务错误码：网络原因导致恢复下载失败。 |
 | ERROR_DEVICE_NOT_FOUND<sup>7+</sup> | number |   1   | 下载任务错误码：找不到SD卡等存储设备。 |
 | ERROR_FILE_ALREADY_EXISTS<sup>7+</sup> | number |   2   | 下载任务错误码：要下载的文件已存在，下载会话无法覆盖现有文件。 |
@@ -89,7 +89,7 @@ uploadFile(context: BaseContext, config: UploadConfig): Promise&lt;UploadTask&gt
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 基于应用程序的上下文。 |
-  | config | [UploadConfig](#uploadconfig6) | 是 | 上传的配置信息。 |
+  | config | [UploadConfig](#uploadconfig) | 是 | 上传的配置信息。 |
 
 
 **返回值：**
@@ -155,7 +155,7 @@ uploadFile(context: BaseContext, config: UploadConfig, callback: AsyncCallback&l
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 基于应用程序的上下文。 |
-  | config | [UploadConfig](#uploadconfig6) | 是 | 上传的配置信息。 |
+  | config | [UploadConfig](#uploadconfig) | 是 | 上传的配置信息。 |
   | callback | AsyncCallback&lt;[UploadTask](#uploadtask)&gt; | 是 | 回调函数，异步返回UploadTask对象。当上传成功，err为undefined，data为获取到的UploadTask对象；否则为错误对象。 |
 
 **错误码：**
@@ -217,7 +217,7 @@ upload(config: UploadConfig): Promise&lt;UploadTask&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [UploadConfig](#uploadconfig6) | 是 | 上传的配置信息。 |
+  | config | [UploadConfig](#uploadconfig) | 是 | 上传的配置信息。 |
 
 **返回值：**
 
@@ -272,7 +272,7 @@ upload(config: UploadConfig, callback: AsyncCallback&lt;UploadTask&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [UploadConfig](#uploadconfig6) | 是 | 上传的配置信息。 |
+  | config | [UploadConfig](#uploadconfig) | 是 | 上传的配置信息。 |
   | callback | AsyncCallback&lt;[UploadTask](#uploadtask)&gt; | 是 | 回调函数，异步返回UploadTask对象。当上传成功，err为undefined，data为获取到的UploadTask对象；否则为错误对象。 |
 
 **错误码：**
@@ -406,7 +406,7 @@ on(type: 'headerReceive', callback:  (header: object) =&gt; void): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 订阅的事件类型，支持的事件包括：`'complete'`\|`'fail'`。<br/>\- `'complete'`：表示上传任务完成，任务完成时触发该事件。 <br/>\- `'fail'`：表示上传任务失败，任务失败时触发该事件。 
+  | type | string | 是 | 订阅的事件类型，支持的事件包括：`'complete'`\|`'fail'`。<br/>\- `'complete'`：表示上传任务完成，任务完成时触发该事件。 <br/>\- `'fail'`：表示上传任务失败，任务失败时触发该事件。| 
   | callback | Callback&lt;Array&lt;[TaskState](#taskstate9)&gt;&gt; | 是 | 上传任务完成或失败的回调函数。返回上传任务的任务状态信息。 |
 
 
@@ -693,7 +693,7 @@ remove(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API Version 9开始不再维护，建议使用[delete](#delete9)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](#delete9)替代。
 
 **返回值：**
 
@@ -732,7 +732,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API Version 9开始不再维护，建议使用[delete](#delete9-1)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](#delete9-1)替代。
 
 **参数：**
 
@@ -762,7 +762,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
   });
   ```
 
-## UploadConfig<sup>6+</sup>
+## UploadConfig
 上传任务的配置信息。
 
 **系统能力**：SystemCapability.MiscServices.Upload
@@ -808,7 +808,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 | 20  | 其他错误，请检查参数是否正确、检查网络状况是否允许，或重试任务。        |
 
 ## File
-[UploadConfig](#uploadconfig6)中的文件列表。
+[UploadConfig](#uploadconfig)中的文件列表。
 
 **系统能力**：SystemCapability.MiscServices.Download
 
@@ -821,7 +821,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 
 
 ## RequestData
-[UploadConfig](#uploadconfig6)中的表单数据。
+[UploadConfig](#uploadconfig)中的表单数据。
 
 **系统能力**：SystemCapability.MiscServices.Download
 
@@ -1979,7 +1979,7 @@ remove(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API Version 9开始不再维护，建议使用[delete](#delete9-2)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](#delete9-2)替代。
 
 **返回值：**
 
@@ -2018,7 +2018,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API Version 9开始不再维护，建议使用[delete](#delete9-3)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[delete](#delete9-3)替代。
 
 **参数：**
 
@@ -2059,7 +2059,7 @@ query(): Promise&lt;DownloadInfo&gt;
 
 > **说明：**
 >
-> 从API Version 7开始支持，从API Version 9开始不再维护，建议使用[getTaskInfo](#gettaskinfo9)替代。
+> 从API version 7开始支持，从API version 9开始废弃,建议使用[getTaskInfo](#gettaskinfo9)替代。
 
 **返回值：**
 
@@ -2098,7 +2098,7 @@ query(callback: AsyncCallback&lt;DownloadInfo&gt;): void
 
 > **说明：**
 >
-> 从API Version 7开始支持，从API Version 9开始不再维护，建议使用[getTaskInfo](#gettaskinfo9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskInfo](#gettaskinfo9-1)替代。
 
 **参数：**
 
@@ -2139,7 +2139,7 @@ queryMimeType(): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从API Version 7开始支持，从API Version 9开始不再维护，建议使用[getTaskMimeType](#gettaskmimetype9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskMimeType](#gettaskmimetype9)替代。
 
 **返回值：**
 
@@ -2178,7 +2178,7 @@ queryMimeType(callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从API Version 7开始支持，从API Version 9开始不再维护，建议使用[getTaskMimeType](#gettaskmimetype9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskMimeType](#gettaskmimetype9-1)替代。
 
 **参数：**
 
@@ -2219,7 +2219,7 @@ pause(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API Version 7开始支持，从API Version 9开始不再维护，建议使用[suspend](#suspend9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[suspend](#suspend9)替代。
 
 **返回值：**
 
@@ -2238,7 +2238,7 @@ pause(): Promise&lt;void&gt;
 **示例：**
 
   ```js
-  downloadTask.pause().then((result: boolean) => {    
+  downloadTask.pause().then(() => {    
     console.info('Succeeded in pausing the download task.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
@@ -2277,7 +2277,7 @@ pause(callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
   ```js
-  downloadTask.pause((err: BusinessError, result: boolean)=>{
+  downloadTask.pause((err: BusinessError) => {
     if(err) {
       console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -2299,7 +2299,7 @@ resume(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API Version 7开始支持，从API Version 9开始不再维护，建议使用[restore](#restore9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[restore](#restore9)替代。
 
 **返回值：**
 
@@ -2318,7 +2318,7 @@ resume(): Promise&lt;void&gt;
 **示例：**
 
   ```js
-  downloadTask.resume().then((result: boolean) => {
+  downloadTask.resume().then(() => {
     console.info('Succeeded in resuming the download task.')
   }).catch((err: BusinessError) => {
     console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
@@ -2338,7 +2338,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API Version 7开始支持，从API Version 9开始不再维护，建议使用[restore](#restore9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[restore](#restore9-1)替代。
 
 **参数：**
 
@@ -2357,7 +2357,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
   ```js
-  downloadTask.resume((err: BusinessError, result: boolean)=>{
+  downloadTask.resume((err: BusinessError) => {
     if (err) {
       console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -2376,7 +2376,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 |------|--------|----|----|-------------------------------|
 | url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。 |
 | header | Object | 否 | 是 | 添加要包含在下载请求中的HTTPS标志头。|
-| enableMetered | boolean | 否 | 是 | 表示设置是否允许在按流量计费的连接下下载任务的配置信息。true表示允许，false表示不允许。默认值为false。<br/>**说明：** Wi-Fi为非计费网络，数据流量为计费网络。 |
+| enableMetered | boolean | 否 | 是 | 表示设置是否允许在按流量计费的连接下下载任务的配置信息。true表示允许，false表示不允许。默认值为false。<br>**说明：**<br> Wi-Fi为非计费网络，数据流量为计费网络。 |
 | enableRoaming | boolean | 否 | 是 | 表示设置是否允许在漫游网络中下载任务的配置信息。true表示允许，false表示不允许。默认值为false。|
 | description | string | 否 | 是 | 设置下载会话的描述。默认值为空字符串。 |
 | filePath<sup>7+</sup> | string | 否 | 是 | 设置下载路径。默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>-&nbsp;FA模型下使用[context](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir)获取应用存储路径。<br/>-&nbsp;Stage模型下使用[AbilityContext](../apis-ability-kit/js-apis-inner-application-context.md)类获取文件路径。|
@@ -2404,7 +2404,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | description | string | 否 | 否 | 待下载任务的描述信息。 |
 | downloadedBytes | number | 否 | 否 | 实时下载大小，单位为字节（B）。 |
 
-## request.agent
+## request.agent<sup>10+</sup>
 
 ### 常量
 
@@ -2461,7 +2461,8 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 ## request.agent.BroadcastEvent<sup>11+</sup>
 
 定义自定义系统事件。用户可以使用公共事件接口获取该事件。
-上传下载 SA 具有 'ohos.permission.SEND_TASK_COMPLETE_EVENT' 该权限，用户可以配置事件的metadata指向的二级配置文件来拦截其他事件发送者。
+
+上传下载SA具有'ohos.permission.SEND_TASK_COMPLETE_EVENT'权限，用户可以配置事件的metadata指向的二级配置文件来拦截其他事件发送者。
 
 调用CommonEventData类型传输公共事件相关数据，成员的内容填写和 [CommonEventData](js-apis-inner-commonEvent-commonEventData.md) 介绍的有所区别，其中CommonEventData.code表示任务的状态，目前为0x40 COMPLETE或0x41 FAILED；CommonEventData.data表示任务的taskId。
 
@@ -2670,8 +2671,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
   <!--code_no_check-->
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { common } from '@kit.AbilityKit';
-  import wantAgent, { WantAgent } from '@ohos.app.ability.wantAgent';
+  import { common, wantAgent, WantAgent } from '@kit.AbilityKit';
 
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -4341,8 +4341,9 @@ off(event: 'wait', callback?: Callback&lt;WaitingReason&gt;): void
 
 start(callback: AsyncCallback&lt;void&gt;): void
 
-启动一个任务，使用callback异步回调。<br>
+启动一个任务。使用callback异步回调。<br>
 以下状态的任务可以被启动：
+
 1. 刚被request.agent.create接口创建的任务。
 2. 使用request.agent.create接口创建的已经失败或者停止的下载任务。
 
@@ -4420,8 +4421,9 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 start(): Promise&lt;void&gt;
 
-启动一个任务，使用Promise异步回调。<br>
+启动一个任务。使用Promise异步回调。<br>
 以下状态的任务可以被启动：
+
 1. 刚被request.agent.create接口创建的任务。
 2. 使用request.agent.create接口创建的已经失败或者停止的下载任务。
 

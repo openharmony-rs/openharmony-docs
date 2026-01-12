@@ -87,9 +87,9 @@ build() {
 }
 ```
 
-Always add data to the end of the data array (**dataArray**) instead of modifying the array directly using the **onDataReloaded()** API of **LazyForEach**.
+Always append data to the end of the data array (**dataArray**) instead of modifying the array directly using the [onDataReloaded](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondatareloaded) API of **LazyForEach**.
 
-Since the heights of the child nodes in the **WaterFlow** component are inconsistent, the position of the lower nodes depends on the upper nodes. Therefore, reloading all data triggers full layout recalculation, potentially causing lag. After adding data to the end of the data array, you must use **onDatasetChange([{ type: DataOperationType.ADD, index: len, count: count }])** to notify the **WaterFlow** component of new data without reprocessing existing items.
+Since the heights of the child nodes in the **WaterFlow** component are inconsistent, the position of the lower nodes depends on the upper nodes. Therefore, reloading all data triggers full layout recalculation, potentially causing lag. When data is appended to the end of the data, you should call [onDatasetChange([{ type: DataOperationType.ADD, index: len, count: count }])](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondatasetchange12) to notify the component, so that the waterfall flow can recognize the newly added data and continue loading it, while avoiding redundant processing of existing data.
 
 ![](figures/waterflow-demo1.gif)
 
@@ -240,7 +240,7 @@ Many application UIs feature supplementary content above the **WaterFlow** compo
 
 ![](figures/waterflow-sections1.png)
 
-When child nodes from different sections can be integrated into a single data source, using **WaterFlowSections** enables mixed layouts within a single **WaterFlow** container. This approach simplifies scroll event handling logic compared to nested scrolling implementations.
+When child nodes from different sections can be merged into a single data source, using [WaterFlowSections](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#waterflowsections12) enables mixed layouts within a single **WaterFlow** container. This approach simplifies scroll event handling logic compared to nested scrolling implementations.
 
 Each **WaterFlow** section can individually set its own number of columns, row spacing, column spacing, margin, and total number of child nodes. The following code can achieve the above effect:
 

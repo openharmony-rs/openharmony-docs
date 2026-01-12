@@ -41,7 +41,7 @@ export struct TextPopupExample {
           })
       }.width('100%').padding({ top: 5 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -50,7 +50,7 @@ export struct TextPopupExample {
 
 ## 添加气泡状态变化的事件
 
-通过onStateChange参数为气泡添加状态变化的事件回调，可以判断气泡的当前显示状态。
+通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的onStateChange属性为气泡添加状态变化的事件回调，可以判断气泡的当前显示状态。
 
 <!-- @[state_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStateChange.ets) -->
 
@@ -79,7 +79,7 @@ export struct StatePopupExample {
             })
         }.width('100%').padding({ top: 5 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -88,7 +88,7 @@ export struct StatePopupExample {
 
 ## 带按钮的提示气泡
 
-通过primaryButton、secondaryButton属性为气泡最多设置两个Button按钮，通过此按钮进行简单的交互，开发者可以通过配置action参数来设置想要触发的操作。
+通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的primaryButton、secondaryButton属性为气泡最多设置两个Button按钮，通过此按钮进行简单的交互，开发者可以通过配置action参数来设置想要触发的操作。
 
 <!-- @[button_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/ButtonPopup.ets) -->
 
@@ -131,7 +131,7 @@ export struct ButtonPopupExample {
             })
         }.width('100%').padding({ top: 5 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -140,7 +140,7 @@ export struct ButtonPopupExample {
 
 ## 气泡的动画
 
-通过定义transition，可以控制气泡的进场和出场动画效果。
+通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)或[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)中的transition属性，可以控制气泡的进场和出场动画效果。
 
 <!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) -->
 
@@ -207,7 +207,7 @@ export struct AnimationPopupExample {
           .position({ x: 80, y: 300 })
       }.width('100%').padding({ top: 5 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -216,12 +216,12 @@ export struct AnimationPopupExample {
 
 ## 自定义气泡
 
-开发者可以使用CustomPopupOptions的builder创建自定义气泡，\@Builder中可以放自定义的内容。除此之外，还可以通过popupColor等参数控制气泡样式。
+开发者可以使用[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)的builder创建自定义气泡，\@Builder中可以放自定义的内容。除此之外，还可以通过popupColor等参数控制气泡样式。
 
 <!-- @[custom_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/CustomPopup.ets) -->
 
 ``` TypeScript
-// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
+// 请将$r('app.media.xxx')替换为实际资源文件
 @Entry
 @Component
 export struct CustomPopupExample {
@@ -238,27 +238,28 @@ export struct CustomPopupExample {
 
   build() {
     NavDestination() {
-        Column() {
-          Button('CustomPopupOptions')
-            .id('CustomPopupOptions')
-            .margin({ top: 300 })
-            .onClick(() => {
-              this.customPopup = !this.customPopup;
-            })
-            .bindPopup(this.customPopup, {
-              builder: this.popupBuilder, // 气泡的内容
-              placement: Placement.Bottom, // 气泡的弹出位置
-              popupColor: Color.Pink, // 气泡的背景色
-              onStateChange: (e) => {
-                if (!e.isVisible) {
-                  this.customPopup = false
-                }
+      Column() {
+        Button('CustomPopupOptions')
+          .id('CustomPopupOptions')
+          .margin({ top: 300 })
+          .onClick(() => {
+            this.customPopup = !this.customPopup;
+          })
+          .bindPopup(this.customPopup, {
+            builder: this.popupBuilder, // 气泡的内容
+            placement: Placement.Bottom, // 气泡的弹出位置
+            popupColor: Color.Pink, // 气泡的背景色
+            backgroundBlurStyle: BlurStyle.NONE,
+            onStateChange: (e) => {
+              if (!e.isVisible) {
+                this.customPopup = false
               }
-            })
-        }
-        .height('100%')
+            }
+          })
+      }
+      .height('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -272,10 +273,14 @@ export struct CustomPopupExample {
 气泡除了可以通过builder实现自定义气泡，还可以通过接口设置气泡的样式和显示效果。
 
 背景颜色：气泡的背景色默认为透明，但是会有一个默认的模糊效果，手机上为COMPONENT\_ULTRA\_THICK。
+
 蒙层样式：气泡默认有蒙层，且蒙层的颜色为透明。
+
 显示大小：气泡大小由内部的builder大小或者message的长度决定的。
-显示位置：气泡默认显示在宿主组件的下方，可以通过Placement接口来配置其显示位置以及对齐方向。
-以下示例通过设置popupColor（背景颜色）、mask（蒙层样式）、width（气泡宽度）、placement（显示位置）实现气泡的样式。
+
+显示位置：气泡默认显示在宿主组件的下方，可以通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的Placement属性来配置其显示位置以及对齐方向。
+
+以下示例通过设置[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的popupColor（背景颜色）、mask（蒙层样式）、width（气泡宽度）、placement（显示位置）实现气泡的样式。
 
 <!-- @[style_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStyle.ets) -->
 
@@ -307,7 +312,7 @@ export struct StylePopupExample {
       }
       .width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -316,7 +321,7 @@ export struct StylePopupExample {
 
 ## 气泡避让软键盘
 
-当软键盘弹出时，气泡默认不会对其避让，可能导致气泡被软键盘覆盖，从API version 15开始，可以设置keyboardAvoidMode为KeyboardAvoidMode.DEFAULT，来使气泡避让键盘。这时如果当前没有位置放下气泡时，气泡会从预设位置平移覆盖宿主组件。
+当软键盘弹出时，气泡默认不会对其避让，可能导致气泡被软键盘覆盖，从API version 15开始，可以设置[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)中keyboardAvoidMode属性的值为KeyboardAvoidMode.DEFAULT，来使气泡避让键盘。这时如果当前没有位置放下气泡时，气泡会从预设位置平移覆盖宿主组件。
 
 <!-- @[avoidSoftKeyboard_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAvoidSoftKeyboard.ets) -->
 
@@ -357,7 +362,7 @@ export struct AvoidSoftKeyboardPopupExample {
       }
       .width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -372,10 +377,11 @@ export struct AvoidSoftKeyboardPopupExample {
 <!-- @[polymorphicEffect_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupPolymorphicEffect.ets) -->
 
 ``` TypeScript
-// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
+// 请将$r('app.media.xxx')替换为实际资源文件
 @Entry
 @Component
 export struct PolymorphicEffectPopupExample {
+  // 请在resources\base\element\string.json文件中配置name为'xxx'，value为非空字符串的资源
   @State scan: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Scan_title') as string;
   @State createGroupChat: string =
@@ -432,7 +438,7 @@ export struct PolymorphicEffectPopupExample {
       .width('100%')
       .justifyContent(FlexAlign.Center)
     }
-    // ···
+    // ...
   }
 }
 
@@ -462,7 +468,7 @@ struct PopupItemChild {
         .backgroundColor(Color.White)
       },
       pressed: {
-        .backgroundColor('#1fbb7d')
+        .backgroundColor('#d4f1ff')
       }
     })
   }
@@ -485,6 +491,7 @@ struct PopupItemChild {
 @Entry
 @Component
 export struct SupportedAvoidAxisPopupExample {
+  // 请在resources\base\element\string.json文件中配置name为'xxx'，value为非空字符串的资源
   @State upScreen: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Upper_half_screen') as string;
   @State middleAxle: string =
@@ -565,7 +572,7 @@ export struct SupportedAvoidAxisPopupExample {
       .height('100%')
       .width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```

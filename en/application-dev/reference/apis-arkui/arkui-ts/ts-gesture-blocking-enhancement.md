@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Gesture blocking enhancement offers components the capability to block gestures. You can handle built-in gestures in parallel with gestures that have a higher priority as needed, and can dynamically control the triggering of gesture events.
 
@@ -706,7 +706,7 @@ struct FatherControlChild {
 
  ### Example 5: Customizing Gesture Recognizer Participation in Gesture Processing
 
-This example shows how to use **onTouchTestDone** to specify whether gesture recognizers participate in subsequent gesture processing. When the callback is triggered, it calls **preventBegin()** to prevent gesture recognizers from participating in further processing.
+This example demonstrates how to use [onTouchTestDone](#ontouchtestdone20) to exclude a gesture recognizer from subsequent gesture processing, available from API version 20. When the callback is triggered, [preventBegin](./ts-gesture-common.md#preventbegin20) is called to prevent the recognizer from participating in further processing.
 
 ```ts
 // xxx.ets

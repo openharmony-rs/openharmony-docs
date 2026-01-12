@@ -982,6 +982,42 @@ let badgeNumber: number = 10;
 notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 ```
 
+## notificationManager.getBadgeNumber<sup>22+</sup>
+
+getBadgeNumber(): Promise\<number\>
+
+获取当前应用角标数量。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**返回值：**
+
+| 类型              | 说明                                        |
+| ----------------- | ------------------------------------------- |
+| Promise\<number\> | Promise对象，返回当前应用角标数量。（查询的角标数量与当前应用通知开关，桌面角标开关是否开启无关） |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getBadgeNumber().then((badgeNumber) => {
+  console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## notificationManager.getActiveNotificationCount
 
 getActiveNotificationCount(callback: AsyncCallback\<number\>): void
@@ -1640,7 +1676,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
-| 1600018  | the notification settings window is already displayed.           |
+| 1600018  | The notification settings window is already displayed.           |
 
 **示例：**
 
@@ -1702,6 +1738,44 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
     console.info(`getNotificationSetting success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNotificationSetting failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.isGeofenceEnabled<sup>23+</sup>
+
+isGeofenceEnabled(): Promise\<boolean\>
+
+检查地理围栏功能是否已启用。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**返回值：**
+
+| 类型               | 说明                                                                                                              |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| Promise\<boolean\> | Promise对象，返回地理围栏开关状态的Promise对象。返回true表示地理围栏功能已启用，返回false表示地理围栏功能未启用。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.   |
+| 1600012  | No memory space.                    |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.isGeofenceEnabled().then((data: boolean) => {
+  hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1970,3 +2044,17 @@ type NotificationProgress = _NotificationProgress
 | 类型 | 说明 |
 | --- | --- |
 | [_NotificationProgress](js-apis-inner-notification-notificationContent.md#notificationprogress11) | 描述通知进度。 |
+
+## PriorityNotificationType<sup>23+</sup>
+
+描述通知的优先级类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| OTHER   | "OTHER"   | 表示通知优先级类型为默认。            |
+| PRIMARY_CONTACT    | "PRIMARY_CONTACT"   | 表示通知优先级类型为重要联系人。                 |
+| AT_ME  | "AT_ME"   | 表示通知优先级类型为@我。            |
+| URGENT_MESSAGE   | "URGENT_MESSAGE"   | 表示通知优先级类型为加急消息。                 |
+| SCHEDULE_REMINDER   | "SCHEDULE_REMINDER"   | 表示通知优先级类型为日程待办。                 |

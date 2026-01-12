@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 fileAccess模块是基于[extension](../../application-models/extensionability-overview.md)机制实现的一个对公共文件访问和操作的框架。该模块一方面对接各类文件管理服务，如存储管理服务等；另一方面为系统应用提供一套统一的文件访问管理接口。存储管理服务可以管理内置存储部分目录，以及共享盘、U盘、SD卡等设备上的资源。
 
@@ -63,8 +63,8 @@ getFileAccessAbilityInfo() : Promise&lt;Array&lt;Want&gt;&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import Want from '@ohos.app.ability.Want';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
   async function getFileAccessAbilityInfo() {
     let wantInfos: Array<Want> = [];
     try {
@@ -104,8 +104,8 @@ getFileAccessAbilityInfo(callback: AsyncCallback&lt;Array&lt;Want&gt;&gt;): void
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import Want from '@ohos.app.ability.Want';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
   async function getFileAccessAbilityInfo() {
     try {
       fileAccess.getFileAccessAbilityInfo((err: BusinessError, wantInfos: Array<Want>) => {
@@ -156,9 +156,9 @@ createFileAccessHelper(context: Context, wants: Array&lt;Want&gt;) : FileAccessH
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import Want from '@ohos.app.ability.Want';
-  import common from '@ohos.app.ability.common';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
+  import { common } from '@kit.AbilityKit';
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
   function createFileAccessHelper01(context: common.UIAbilityContext) {
@@ -216,8 +216,8 @@ createFileAccessHelper(context: Context) : FileAccessHelper
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import common from '@ohos.app.ability.common';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { common } from '@kit.AbilityKit';
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
   function createFileAccessHelper02(context: common.UIAbilityContext) {
@@ -291,7 +291,7 @@ listFile(filter?: Filter) : FileIterator
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // fileInfoDir 表示某个目录信息
   // let filter = { suffix : [".txt", ".jpg", ".xlsx"] };
   let fileInfoDir :Array<fileAccess.FileInfo> = [];
@@ -353,7 +353,7 @@ scanFile(filter?: Filter) : FileIterator;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // fileInfoDir 表示某个目录信息
   // let filter = {suffix : [".txt", ".jpg", ".xlsx"]};
   let fileInfoDir: Array<fileAccess.FileInfo> = [];
@@ -473,7 +473,7 @@ listFile(filter?: Filter) : FileIterator
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // rootInfo 从getRoots()获取
   // let filter = {suffix : [".txt", ".jpg", ".xlsx"]};
   let rootInfo: Array<fileAccess.FileInfo> = [];
@@ -535,7 +535,7 @@ scanFile(filter?: Filter) : FileIterator
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // rootInfo 从 getRoots()获取
   // let filter = {suffix : [".txt", ".jpg", ".xlsx"]};
   let rootInfo: Array<fileAccess.FileInfo> = [];
@@ -615,6 +615,7 @@ FileAccessHelper对象。
 getRoots() : Promise&lt;RootIterator&gt;
 
 以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用Promise异步回调。
+
 该方法返回迭代器对象RootIterator，然后通过[next](#next-1)方法返回[RootInfo](#rootinfo)。
 
 **系统接口**：此接口为系统接口。
@@ -635,7 +636,7 @@ getRoots() : Promise&lt;RootIterator&gt;
 
 **示例：**
 
-  ```ts
+```ts
 async function getRoots() {
   let rootIterator: fileAccess.RootIterator;
   let rootinfos: Array<fileAccess.RootInfo> = [];
@@ -662,13 +663,14 @@ async function getRoots() {
     console.error("getRoots failed, errCode:" + error.code + ", errMessage:" + error.message);
   }
 }
-  ```
+```
 
 ### getRoots
 
 getRoots(callback:AsyncCallback&lt;RootIterator&gt;) : void
 
 以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用callback异步回调。
+
 callback带回迭代器对象RootIterator，然后通过[next](#next-1)方法返回[RootInfo](#rootinfo)。
 
 **系统接口**：此接口为系统接口。
@@ -690,7 +692,7 @@ callback带回迭代器对象RootIterator，然后通过[next](#next-1)方法返
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   async function getRoots() {
     let rootinfos: Array<fileAccess.RootInfo> = [];
     let isDone: boolean = false;
@@ -751,7 +753,7 @@ createFile(uri: string, displayName: string) : Promise&lt;string&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   async function createFile() {
     // 以内置存储目录为例
     // 示例代码sourceUri表示Download目录，该uri是对应的fileInfo中uri
@@ -804,7 +806,7 @@ createFile(uri: string, displayName: string, callback: AsyncCallback&lt;string&g
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 以内置存储目录为例
   // 示例代码sourceUri表示Download目录，该uri是对应的fileInfo中uri
   // 开发者应根据自己实际获取的uri进行开发
@@ -859,7 +861,7 @@ mkDir(parentUri: string, displayName: string) : Promise&lt;string&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 以内置存储目录为例
   // 示例代码sourceUri表示Download目录，该uri是对应的fileInfo中uri
   // 开发者应根据自己实际获取的uri进行开发
@@ -912,7 +914,7 @@ mkDir(parentUri: string, displayName: string, callback: AsyncCallback&lt;string&
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 以内置存储目录为例
   // 示例代码sourceUri表示Download目录，该uri是对应的fileInfo中uri
   // 开发者应根据自己实际获取的uri进行开发
@@ -967,7 +969,7 @@ openFile(uri: string, flags: OPENFLAGS) : Promise&lt;number&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   async function openFile01() {
     // 以内置存储目录为例
     // 示例代码targetUri表示Download目录下文件，该uri是对应的fileInfo中uri
@@ -1013,7 +1015,7 @@ openFile(uri: string, flags: OPENFLAGS, callback: AsyncCallback&lt;number&gt;) :
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 以内置存储目录为例
   // 示例代码targetUri表示Download目录下文件，该uri是对应的fileInfo中uri
   // 开发者应根据自己实际获取的uri进行开发
@@ -1066,7 +1068,7 @@ delete(uri: string) : Promise&lt;number&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   async function deleteFile01() {
     // 以内置存储目录为例
     // 示例代码targetUri表示Download目录下文件，该uri是对应的fileInfo中uri
@@ -1113,7 +1115,7 @@ delete(uri: string, callback: AsyncCallback&lt;number&gt;) : void
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 以内置存储目录为例
   // 示例代码targetUri表示Download目录下文件，该uri是对应的fileInfo中uri
   // 开发者应根据自己实际获取的uri进行开发
@@ -1167,7 +1169,7 @@ move(sourceFile: string, destFile: string) : Promise&lt;string&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   async function moveFile01() {
     // 以内置存储目录为例
     // 示例代码sourceFile destFile表示Download目录下文件和文件夹，该uri是对应的fileInfo中uri
@@ -1215,7 +1217,7 @@ move(sourceFile: string, destFile: string, callback: AsyncCallback&lt;string&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 以内置存储目录为例
   // 示例代码sourceFile destFile表示Download目录下文件和文件夹，该uri是对应的fileInfo中uri
   // 开发者应根据自己实际获取的uri进行开发
@@ -1270,7 +1272,7 @@ rename(uri: string, displayName: string) : Promise&lt;string&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   async function renameFile01() {
     // 以内置存储目录为例
     // 示例代码sourceDir表示Download目录下文件，该uri是对应的fileInfo中uri
@@ -1317,7 +1319,7 @@ rename(uri: string, displayName: string, callback: AsyncCallback&lt;string&gt;) 
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 以内置存储目录为例
   // 示例代码sourceDir表示Download目录下文件，该uri是对应的fileInfo中uri
   // 开发者应根据自己实际获取的uri进行开发
@@ -1370,7 +1372,7 @@ access(sourceFileUri: string) : Promise&lt;boolean&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 以内置存储目录为例
   // 示例代码sourceDir表示Download目录下文件，该uri是对应的fileInfo中uri
   // 开发者应根据自己实际获取的uri进行开发
@@ -1420,7 +1422,7 @@ access(sourceFileUri: string, callback: AsyncCallback&lt;boolean&gt;) : void
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 以内置存储目录为例
   // 示例代码sourceDir表示Download目录下文件夹，该uri是对应的fileInfo中uri
   // 开发者应根据自己实际获取的uri进行开发
@@ -1473,7 +1475,7 @@ getFileInfoFromUri(uri: string) : Promise\<FileInfo>
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 以内置存储目录为例
   // 示例代码sourceUri表示Download目录，该uri是对应的fileInfo中uri
   // 开发者应根据自己实际获取的uri进行开发
@@ -1514,7 +1516,7 @@ getFileInfoFromUri(uri: string, callback: AsyncCallback\<FileInfo>) : void
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 以内置存储目录为例
   // 示例代码sourceUri表示Download目录，该uri是对应的fileInfo中uri
   // 开发者应根据自己实际获取的uri进行开发
@@ -1565,7 +1567,7 @@ getFileInfoFromRelativePath(relativePath: string) : Promise\<FileInfo>
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 示例代码relativePath表示Download目录，该relativePath是对应的fileInfo中relativePath
   // 开发者应根据自己实际获取的relativePath进行开发
   async function getRelativePath() {
@@ -1605,7 +1607,7 @@ getFileInfoFromRelativePath(relativePath: string, callback: AsyncCallback\<FileI
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 示例代码relativePath表示Download目录，该relativePath是对应的fileInfo中relativePath
   // 开发者应根据自己实际获取的relativePath进行开发
   let relativePath: string = "Download/";
@@ -2615,7 +2617,7 @@ moveFile(sourceUri: string, destUri: string, fileName: string) : Promise&lt;stri
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   async function moveFile01() {
     // 以内置存储目录为例
     // 示例代码sourceUri destUri表示Download目录下文件和文件夹，该uri是对应的fileInfo中uri
@@ -2671,7 +2673,7 @@ moveFile(sourceUri: string, destUri: string,  fileName: string, callback: AsyncC
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 以内置存储目录为例
   // 示例代码sourceUri destUri表示Download目录下文件和文件夹，该uri是对应的fileInfo中uri
   // 开发者应根据自己实际获取的uri进行开发

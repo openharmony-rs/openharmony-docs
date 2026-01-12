@@ -23,11 +23,13 @@ declare class DrawModifier {
 
   drawForeground?(drawContext: DrawContext): void;
 
+  drawOverlay(drawContext: DrawContext): void;
+
   invalidate(): void;
 }
 ```
 
-DrawModifier可设置前景(drawForeground)、内容前景(drawFront)、内容(drawContent)和内容背景(drawBehind)的绘制方法，开发者需要重载这些方法，并通过[Canvas](arkts-drawing-customization-on-canvas.md)的接口进行自定义绘制。自定义绘制层级图如下所示。
+DrawModifier可设置遮罩层前景（drawOverlay）、前景（drawForeground）、内容前景（drawFront）、内容（drawContent）和内容背景（drawBehind）的绘制方法，开发者需要重载这些方法，并通过[Canvas](arkts-drawing-customization-on-canvas.md)的接口进行自定义绘制。自定义绘制层级图如下所示。
 
 ![](figures/drawModifier.png)
 
@@ -35,13 +37,15 @@ DrawModifier还提供主动触发重绘的方法invalidate，该接口开发者�
 
 > **说明：**
 >
-> 每个DrawModifier实例只能设置到一个组件上，禁止进行重复设置。
+> * 每个DrawModifier实例只能设置到一个组件上，禁止进行重复设置。
 >
-> drawContent方法会替换组件原本的内容绘制函数。
+> * drawContent方法会替换组件原本的内容绘制函数。
 >
-> drawForeground方法从API version 20开始支持。
+> * drawForeground方法从API version 20开始支持。
 >
-> NDK的自定义绘制能力和示例请参考[自定义绘制](./arkts-user-defined-draw.md)。
+> * drawOverlay方法从API version 23开始支持。
+>
+> * NDK的自定义绘制能力和示例请参考[自定义绘制](./arkts-user-defined-draw.md)。
 
 ## 通过drawFront、drawContent、drawBehind进行自定义绘制
 

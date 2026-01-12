@@ -49,7 +49,7 @@ Provides the enumerated variables, structures, and macros used in USB DDK APIs.
 
 ### UsbDdkErrCode
 
-```
+```c
 enum UsbDdkErrCode
 ```
 

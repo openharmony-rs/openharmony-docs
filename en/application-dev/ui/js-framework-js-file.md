@@ -24,9 +24,9 @@ export default {
 
 ## Application Object<sup>6+</sup>
 
-| Attribute | Data Type | Description | 
+| Property    | Type      | Description                                      |
 | ------ | -------- | ---------------------------------------- |
-| getApp | Function | Obtains the object exposed in the **app.js** file from the custom .js file. | 
+| getApp | Function | Obtains the object exposed in the **app.js** file from the custom **.js** file.|
 
 The following is a sample code snippet:
 
@@ -46,6 +46,6 @@ export default {
 ```
 
 ```js
-// test.js Customize the logic code.
+// test.js custom logic code.
 export var appData = getApp().data;
 ```

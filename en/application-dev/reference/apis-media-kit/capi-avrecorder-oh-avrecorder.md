@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVRecorder OH_AVRecorder
+```
+
 ## Overview
 
 The struct initializes an AVRecorder.

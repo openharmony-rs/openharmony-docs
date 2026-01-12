@@ -10,7 +10,7 @@ Chip用于搜索框历史记录、邮件发送列表等场景。
 
 > **说明：**
 >
-> 该组件从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 
 ## 导入模块
@@ -54,12 +54,12 @@ ChipOptions定义Chip的样式及具体式样参数。
 | size            | [ChipSize](#chipsize) \| [SizeOptions](ts-types.md#sizeoptions) | 否  | 是  | Chip尺寸。<br/>默认值：ChipSize.NORMAL<br/>SizeOptions类型参数不支持百分比设置，异常值按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**说明**：[适老化](../../../ui/arkui-support-for-aging-adaptation.md)在size指定具体宽高时不生效，size设置为{ height: 0, width: 0 }除外。 |
 | enabled         | boolean                                                      | 否  | 是  | Chip是否可选中。<br>默认值：true。<br>true：操作块可选中；false：操作块不可选中。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | activated<sup>12+</sup>    | boolean                                        | 否  | 是  | Chip是否为激活态。<br>默认值：false。<br>true：操作块为激活态；false：操作块为非激活态。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| prefixIcon      | [PrefixIconOptions](#prefixiconoptions)                      | 否  | 是  | 前缀图标属性。<br>默认值：不显示前缀图标<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| prefixSymbol<sup>12+</sup>  | [ChipSymbolGlyphOptions](#chipsymbolglyphoptions12)              | 否  | 是  | 前缀图标属性，symbol类型。<br>默认值：不显示前缀图标<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| prefixIcon      | [PrefixIconOptions](#prefixiconoptions)                      | 否  | 是  | 前缀图标属性。<br>默认值：不显示前缀图标。<br>值为undefined时，按默认值处理。<br/> prefixIcon和prefixSymbol同时设置时，显示prefixSymbol的效果，prefixIcon无效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| prefixSymbol<sup>12+</sup>  | [ChipSymbolGlyphOptions](#chipsymbolglyphoptions12)              | 否  | 是  | 前缀图标属性，symbol类型。<br>默认值：不显示前缀图标。<br>值为undefined时，按默认值处理。<br/> prefixIcon和prefixSymbol同时设置时，显示prefixSymbol的效果，prefixIcon无效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | label           | [LabelOptions](#labeloptions)                                | 否  | 否  | 文本属性。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
-| suffixIcon      | [SuffixIconOptions](#suffixiconoptions)                      | 否  | 是  | 后缀图标属性。<br>默认值：不显示后缀图标<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| suffixSymbol<sup>12+</sup>   | [ChipSymbolGlyphOptions](#chipsymbolglyphoptions12)              | 否  | 是  | 后缀图标属性，symbol类型。<br>默认值：不显示后缀图标<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](#chipsuffixsymbolglyphoptions14) | 否 | 是 | symbol类型后缀图标属性的无障碍朗读功能属性。<br>默认值：不显示后缀图标<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| suffixIcon      | [SuffixIconOptions](#suffixiconoptions)                      | 否  | 是  | 后缀图标属性。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br/> suffixIcon和suffixSymbol同时设置时，显示suffixSymbol的效果，suffixIcon无效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| suffixSymbol<sup>12+</sup>   | [ChipSymbolGlyphOptions](#chipsymbolglyphoptions12)              | 否  | 是  | 后缀图标属性，symbol类型。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br/> suffixIcon和suffixSymbol同时设置时，显示suffixSymbol的效果，suffixIcon无效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](#chipsuffixsymbolglyphoptions14) | 否 | 是 | symbol类型后缀图标属性的无障碍朗读功能属性。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否  | 是  | Chip背景颜色。<br/>默认值：$r('sys.color.ohos_id_color_button_normal')。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | activatedBackgroundColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor)          | 否  | 是  | Chip激活时的背景颜色。<br/>默认值：$r('sys.color.ohos_id_color_emphasize')。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | borderRadius    | [Dimension](ts-types.md#dimension10)                         | 否  | 是  | Chip背景圆角半径大小，不支持百分比。<br/>默认值：$r('sys.float.ohos_id_corner_radius_button')。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -68,9 +68,13 @@ ChipOptions定义Chip的样式及具体式样参数。
 | onClicked<sup>12+</sup>     | Callback\<void> | 否  | 是  | Chip点击事件。<br>值为undefined时，Chip不能被点击。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        |
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction) | 否 | 是 | 布局方向。<br/>默认值：Direction.Auto。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | closeOptions<sup>14+</sup> | [CloseOptions](#closeoptions14) | 否 | 是 | 默认关闭图标的无障碍朗读功能属性。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | Chip组件的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | Chip组件的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的结果。特别是当这些结果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | accessibilityLevel<sup>14+</sup> | string | 否 | 是 | Chip组件无障碍重要性。用于控制后缀图标是否可被无障碍辅助服务所识别。<br>支持的值为:<br>"auto"：当前组件会转化为“yes”。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | accessibilitySelectedType<sup>14+</sup> | [AccessibilitySelectedType](#accessibilityselectedtype14) | 否 | 是 | Chip组件选中态类型。<br>默认值：当设置了activated属性但未指定accessibilitySelectedType时，默认使用CHECKED类型。当未设置activated属性时，默认使用CLICKED类型。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| maxFontScale<sup>23+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是 | Chip组件文本与图标的最大的字体缩放倍数。 <br>取值范围：[1, +∞)<br>设置的值小于1时，按值为1处理。异常值默认不生效。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| minFontScale<sup>23+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是 | Chip组件文本与图标的最小的字体缩放倍数。 <br>取值范围：[0, 1]<br>设置的值小于0时，按值为0处理。设置的值大于1时，按值为1处理。异常值默认不生效。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| padding<sup>23+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12) | 否 | 是 | Chip组件的内边距。<br>默认值：<br>- size为ChipSize.SMALL并且activated为true时，默认值：`{  start: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'),   end: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'),  top: LengthMetrics.vp(4),  bottom: LengthMetrics.vp(4)}` <br>- size为ChipSize.SMALL并且activated为false时，默认值：`{  start: LengthMetrics.resource('sys.float.chip_small_text_padding'),  end: LengthMetrics.resource('sys.float.chip_small_text_padding'),  top: LengthMetrics.vp(4),  bottom: LengthMetrics.vp(4)}` <br>- size不为ChipSize.SMALL并且activated为true时，默认值：`{  start: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'),  end: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'),  top: LengthMetrics.vp(4),  bottom: LengthMetrics.vp(4)}` <br>- size不为ChipSize.SMALL并且activated为false时，默认值：`{  start: LengthMetrics.resource('sys.float.chip_normal_text_padding'),  end: LengthMetrics.resource('sys.float.chip_normal_text_padding'),  top: LengthMetrics.vp(4),  bottom: LengthMetrics.vp(4)}`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| fontSize<sup>23+</sup> | [Dimension](ts-types.md#dimension10) | 否 | 是 | 统一设置Chip组件的文本与图标的字体大小，不支持百分比。<br> 该fontSize的优先级低于prefixSymbol、label、suffixSymbol和closeOptions中的fontSize属性。 <br>默认值：<br>- size为ChipSize.SMALL时，文本默认值：`$r('sys.float.chip_small_font_size')`；图标默认值：`$r('sys.float.chip_small_icon_size')` <br>- 其他情况下，文本默认值：`$r('sys.float.chip_normal_font_size')`；图标默认值：`$r('sys.float.chip_normal_icon_size')` <br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 > **说明：**
 >
@@ -125,7 +129,7 @@ IconCommonOptions定义图标的共通属性。
 | 名称      | 类型                                       | 只读 | 可选 | 说明                                                         |
 | --------- | ------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | src       | [ResourceStr](ts-types.md#resourcestr)     | 否  | 否  | 图标图片或图片地址引用。 |
-| size      | [SizeOptions](ts-types.md#sizeoptions)     | 否  | 是  | 图标大小，不支持百分比。<br/>默认值：{width: 16, height: 16}<br>值为undefined时，按默认值处理。 |
+| size      | [SizeOptions](ts-types.md#sizeoptions)     | 否  | 是  | 图标大小，不支持百分比。<br/>默认值：<br/>- 当ChipOptions.size为ChipSize.SMALL时，默认值为：{width: $r('sys.float.chip_small_icon_size'), height: $r('sys.float.chip_small_icon_size')}<br>- 当ChipOptions.size为ChipSize.NORMAL时，默认值为：{width: $r('sys.float.chip_normal_icon_size'), height: $r('sys.float.chip_normal_icon_size')}<br>单位：vp<br>值为undefined时，按默认值处理。 |
 | fillColor | [ResourceColor](ts-types.md#resourcecolor) | 否  | 是  | 图标填充颜色。<br>默认值：$r('sys.color.chip_usually_icon_color')<br>值为undefined时，按默认值处理。 |
 | activatedFillColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否  | 是  | 操作块激活时图标填充颜色。<br>默认值：$r('sys.color.chip_active_icon_color')<br>值为undefined时，按默认值处理。 |
 
@@ -207,12 +211,12 @@ ChipSymbolGlyphOptions定义前缀图标和后缀图标的属性。
 
 | 名称   | 类型       | 只读 | 可选 | 说明               |
 | ------ | ---------- | ---- | ------------------ | ------------------ |
-| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否  | 是  | 非激活时图标设定。<br>默认值：不显示前缀图标或后缀图标<br>值为undefined时，按默认值处理。 |
-| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否  | 是  | 激活时图标设定。<br>默认值：不显示前缀图标或后缀图标<br>值为undefined时，按默认值处理。 |
+| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否  | 是  | 非激活时图标设定。<br>默认值：不显示前缀图标或后缀图标<br>值为undefined时，按默认值处理。 |
+| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否  | 是  | 激活时图标设定。<br>默认值：不显示前缀图标或后缀图标<br>值为undefined时，按默认值处理。 |
 
 > **说明：**
 >
-> 不支持使用symbolEffect修改动效类型及effectStrategy设置动效。
+> 不支持使用[SymbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12对象说明)修改动效类型及effectStrategy设置动效。
 >
 
 ## LabelOptions
@@ -232,20 +236,22 @@ LabelOptions定义文本属性。
 | fontColor   | [ResourceColor](ts-types.md#resourcecolor) | 否  | 是  | 文字颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_primary')<br>值为undefined时，按默认值处理。 |
 | activatedFontColor<sup>12+</sup>   | [ResourceColor](ts-types.md#resourcecolor) | 否  | 是  | 操作块激活时的文字颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_primary_contrary')<br>值为undefined时，按默认值处理。 |
 | fontFamily  | string                                     | 否  | 是  | 文字字体。<br/>默认值："HarmonyOS Sans"<br>值为undefined时，按默认值处理。 |
-| labelMargin | [LabelMarginOptions](#labelmarginoptions)  | 否  | 是  | 文本与左右侧图标之间间距。<br>默认值：<br>size为ChipSize.SMALL时，默认值：{ left: 4, right: 4 }<br>size为ChipSize.NORMAL时，默认值：{ left: 6, right: 6 }<br>值为undefined时，按默认值处理。 |
+| labelMargin | [LabelMarginOptions](#labelmarginoptions)  | 否  | 是  | 文本与左右侧图标之间间距。<br>默认值：<br>size为ChipSize.SMALL时，默认值：{ left: 4, right: 4 }<br>size为ChipSize.NORMAL时，默认值：{ left: 6, right: 6 }<br>单位：vp<br>值为undefined时，按默认值处理。 |
 | localizedLabelMargin<sup>12+</sup> | [LocalizedLabelMarginOptions](#localizedlabelmarginoptions12) | 否 | 是 | 本地化文本与左右侧图标之间间距。<br/>默认值：<br>size为ChipSize.SMALL时，默认值：<br>`{  start: LengthMetrics.resource($r('sys.float.chip_small_text_margin')),  end: LengthMetrics.resource($r('sys.float.chip_small_text_margin')) }`<br>size为ChipSize.NORMAL时，默认值：<br>`{  start: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')),  end: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')) }`<br>值为undefined时，按默认值处理。 |
 
 ## CloseOptions<sup>14+</sup>
 
-默认关闭图标的无障碍朗读功能属性，accessibilityText默认为"删除"。
+CloseOptions用于定义Chip组件默认的关闭图标功能属性，包括无障碍功能属性，其中accessibilityText默认为"删除"。
 
 继承于[AccessibilityOptions](#accessibilityoptions14)。
-
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+| 名称  | 类型                                 | 只读 | 可选 | 说明                                                         |
+| ----- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+|fontSize<sup>23+</sup> | [Dimension](ts-types.md#dimension10) | 否 | 是 | 设置Chip组件默认关闭图标的大小，不支持百分比。<br>默认值：<br> size为ChipSize.SMALL时，`默认值：$r('sys.float.chip_small_font_size')` <br> 其他情况默认值：`$r('sys.float.chip_normal_font_size')` <br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## LabelMarginOptions
 
@@ -259,8 +265,8 @@ LabelMarginOptions用于定义文本与左右侧图标之间间距。
 
 | 名称  | 类型                                 | 只读 | 可选 | 说明                                                         |
 | ----- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| left  | [Dimension](ts-types.md#dimension10) | 否   | 是   | 文本与左侧图标之间间距，不支持百分比。<br>默认值：<br>size为ChipSize.SMALL时，left默认值：4<br>size为ChipSize.NORMAL时，left默认值：6<br>值为undefined时，按默认值处理。<br>取值范围：[0, +∞)<br>单位：vp |
-| right | [Dimension](ts-types.md#dimension10) | 否   | 是   | 文本与右侧图标之间间距，不支持百分比。<br>默认值：<br>size为ChipSize.SMALL时，right默认值：4<br>size为ChipSize.NORMAL时，right默认值：6<br>值为undefined时，按默认值处理。<br>取值范围：[0, +∞)<br>单位：vp |
+| left  | [Dimension](ts-types.md#dimension10) | 否   | 是   | 文本与左侧图标之间间距，不支持百分比。<br>默认值：<br>size为ChipSize.SMALL时，left默认值：4<br>size为ChipSize.NORMAL时，left默认值：6<br>单位：vp<br>超出取值范围按默认值处理。<br>取值范围：[0, +∞) |
+| right | [Dimension](ts-types.md#dimension10) | 否   | 是   | 文本与右侧图标之间间距，不支持百分比。<br>默认值：<br>size为ChipSize.SMALL时，right默认值：4<br>size为ChipSize.NORMAL时，right默认值：6<br>单位：vp<br>超出取值范围按默认值处理。<br>取值范围：[0, +∞) |
 
 ## LocalizedLabelMarginOptions<sup>12+</sup>
 
@@ -284,7 +290,7 @@ LocalizedLabelMarginOptions用于定义本地化文本与左右侧图标之间�
 通过配置suffixIcon实现自定义操作块的后缀图标。
 
 ```ts
-import { Chip, ChipSize } from '@kit.ArkUI';
+import { Chip, ChipSize, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -315,7 +321,14 @@ struct Index {
         allowClose: false,
         enabled: true,
         backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
-        borderRadius: $r('sys.float.ohos_id_corner_radius_button')
+        borderRadius: $r('sys.float.ohos_id_corner_radius_button'),
+        minFontScale: 0.2,
+        maxFontScale: 2,
+        padding: {
+          start: LengthMetrics.vp(20),
+          end: LengthMetrics.vp(20)
+        },
+        fontSize: 12
       })
     }
   }
@@ -330,7 +343,7 @@ struct Index {
 配置allowClose为true，显示后缀移除图标。
 
 ```ts
-import { Chip, ChipSize } from '@kit.ArkUI';
+import { Chip, ChipSize, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -353,9 +366,17 @@ struct Index {
         },
         size: ChipSize.NORMAL,
         allowClose: true,
+        closeOptions: {fontSize: 12},
         enabled: true,
         backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
-        borderRadius: $r('sys.float.ohos_id_corner_radius_button')
+        borderRadius: $r('sys.float.ohos_id_corner_radius_button'),
+        minFontScale: 0.2,
+        maxFontScale: 2,
+        padding: {
+          start: LengthMetrics.vp(20),
+          end: LengthMetrics.vp(20)
+        },
+        fontSize: 12
       })
     }
   }
@@ -370,7 +391,7 @@ struct Index {
 配置allowClose为false，隐藏后缀移除图标。
 
 ```ts
-import { Chip, ChipSize } from '@kit.ArkUI';
+import { Chip, ChipSize, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -398,7 +419,14 @@ struct Index {
         borderRadius: $r('sys.float.ohos_id_corner_radius_button'),
         onClose: () => {
           console.info('chip on close');
-        }
+        },
+        minFontScale: 0.2,
+        maxFontScale: 2,
+        padding: {
+          start: LengthMetrics.vp(20),
+          end: LengthMetrics.vp(20)
+        },
+        fontSize: 12
       })
     }
   }
@@ -453,9 +481,10 @@ struct Index {
         }
       })
 
-      Button('改变激活状态').onClick(() => {
-        this.isActivated = !this.isActivated;
-      })
+      Button('改变激活状态')
+        .onClick(() => {
+          this.isActivated = !this.isActivated;
+        })
     }
   }
 }
@@ -479,13 +508,6 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Chip({
-        prefixIcon: {
-          // 'app.media.chips'仅作示例，请替换为实际使用图片。
-          src: $r('app.media.chips'),
-          size: { width: 16, height: 16 },
-          fillColor: Color.Blue,
-          activatedFillColor: $r('sys.color.ohos_id_color_text_primary_contrary')
-        },
         prefixSymbol: {
           normal: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontSize(16).fontColor([Color.Green]),
           activated: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontSize(16).fontColor([Color.Red]),
@@ -513,9 +535,10 @@ struct Index {
         }
       })
 
-      Button('改变激活状态').onClick(() => {
-        this.isActivated = !this.isActivated;
-      })
+      Button('改变激活状态')
+        .onClick(() => {
+          this.isActivated = !this.isActivated;
+        })
     }
   }
 }
@@ -562,7 +585,8 @@ struct ChipPage {
         backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
         borderRadius: $r('sys.float.ohos_id_corner_radius_button')
       })
-    }.justifyContent(FlexAlign.Center)
+    }
+    .justifyContent(FlexAlign.Center)
     .width('100%')
     .height('100%')
   }
@@ -574,7 +598,7 @@ struct ChipPage {
 
 ### 示例7（Image类型无障碍朗读）
 
-该示例代码实现Chip组件Image类型后缀图标的无障碍朗读功能。
+该示例代码实现Chip组件Image类型后缀图标的无障碍朗读功能，点击后缀图标播报“图标，按钮，新手提醒”。
 
 ```ts
 import { Chip } from '@kit.ArkUI';
@@ -641,7 +665,7 @@ struct ChipExample2 {
               label: { text: '操作块' },
               suffixIcon: {
                 src: $r('sys.media.ohos_ic_public_cut'),
-                accessibilityText: '图标',
+                accessibilityText: '图标', // 播报“图标，按钮，新手提醒”
                 accessibilityDescription: '新手提醒',
                 action: () => {
                   this.getUIContext().getPromptAction().showToast({
@@ -665,7 +689,7 @@ struct ChipExample2 {
 
 ### 示例8（symbol类型无障碍朗读）
 
-该示例代码实现Chip组件symbol类型后缀图标的无障碍朗读功能。
+该示例代码实现Chip组件symbol类型后缀图标的无障碍朗读功能，点击后缀图标播报“音乐，按钮，新手提醒”。
 
 ```ts
 import { Chip, SymbolGlyphModifier } from '@kit.ArkUI';
@@ -737,7 +761,7 @@ struct ChipExample2 {
               },
               suffixSymbolOptions: {
                 activatedAccessibility: {
-                  accessibilityText: '音乐',
+                  accessibilityText: '音乐', // 播报“音乐，按钮，新手提醒”
                   accessibilityDescription: '新手提醒'
                 },
                 action: () => {
@@ -763,7 +787,7 @@ struct ChipExample2 {
               },
               suffixSymbolOptions: {
                 normalAccessibility: {
-                  accessibilityText: '音乐',
+                  accessibilityText: '音乐', // 播报“音乐，按钮，新手提醒”
                   accessibilityDescription: '新手提醒'
                 },
                 action: () => {

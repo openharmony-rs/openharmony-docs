@@ -36,34 +36,45 @@ In the following example, the **Image** and **Stack** components are located in 
 
 1. Configure drag settings for the **Image** component.
 
-   ```ts
+   <!-- @[component_dragging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) -->
+   
+   ``` TypeScript
+   // Replace $r('sys.media.ohos_app_icon') with the resource file you use.
    Image($r('sys.media.ohos_app_icon'))
      .draggable(true)
      .onDragStart(()=>{
-       promptAction.showToast({ message: "Drag the lower blue area. The Image component responds." });
+     // ···
+       // Replace $r('app.string.Allow_dragging_prompt') with the resource file you use.
+       promptAction.showToast({ message: $r('app.string.Allow_dragging_prompt') });
      })
      .width('200vp').height('200vp')
    ```
 
 2. Set up gestures for the **Stack** component.
 
-   ```ts
-   Stack() {}
-     .width('200vp')
-     .height('200vp')
-     .hitTestBehavior(HitTestMode.Transparent)
-     .gesture(GestureGroup(GestureMode.Parallel,
-       LongPressGesture()
-         .onAction((event: GestureEvent) => {
-           promptAction.showToast({ message: "Long-press the upper red area. The red area responds." });
-         })
-         .tag("longpress")
-     ))
-   ```
+      <!-- @[set_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) -->
+      
+      ``` TypeScript
+      Stack() {}
+      .width('200vp')
+      .height('200vp')
+      .hitTestBehavior(HitTestMode.Transparent)
+      .gesture(GestureGroup(GestureMode.Parallel,
+        LongPressGesture()
+          .onAction((event: GestureEvent) => {
+            // ···
+            // Replace $r('app.string.Stop_dragging_prompt') with the resource file you use.
+            promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt')  });
+          })
+          .tag('longpress')
+      ))
+      ```
 
 3. Set up gesture judgment for the **Stack** component.
 
-   ```ts
+   <!-- @[set_interception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) -->
+   
+   ``` TypeScript
    .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
      // If it is a long press gesture, determine whether the touch position is in the upper half area.
      if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
@@ -72,14 +83,16 @@ In the following example, the **Image** and **Stack** components are located in 
        } else {
          return GestureJudgeResult.REJECT;
        }
-     }
+     };
      return GestureJudgeResult.CONTINUE;
    })
    ```
 
 4. Below is the complete code example.
 
-   ```ts
+   <!-- @[custom_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets) -->   
+   
+   ``` TypeScript
    import { PromptAction } from '@kit.ArkUI';
    
    @Entry
@@ -91,18 +104,22 @@ In the following example, the **Image** and **Stack** components are located in 
      build() {
        Scroll(this.scroller) {
          Column({ space: 8 }) {
-           Text("There are two layers of components, the upper layer component bound to a long press gesture, and the lower layer component bound to a drag. The lower half of the upper layer component is bound to gesture judgment, making this area respond to the drag gesture of the lower layer.").width('100%').fontSize(20).fontColor('0xffdd00')
+           // Replace $r('app.string.Drag_instructions') with the resource file you use.
+           Text($r('app.string.Drag_instructions')).width('100%').fontSize(20).fontColor('0xffdd00')
            Stack({ alignContent: Alignment.Center }) {
              Column() {
                // Simulate the upper and lower half areas.
-               Stack().width('200vp').height('100vp').backgroundColor(Color.Red)
+               Stack().width('200vp').height('100vp').backgroundColor(Color.Gray)
                Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
              }.width('200vp').height('200vp')
+   
              // The lower half area of the stack is an image area bound to the pan gesture.
+             // Replace $r('sys.media.ohos_app_icon') with the resource file you use.
              Image($r('sys.media.ohos_app_icon'))
                .draggable(true)
-               .onDragStart(()=>{
-                 this.promptAction.showToast({ message: "Drag the lower blue area. The Image component responds." });
+               .onDragStart(() => {
+                 // Replace $r('app.string.Allow_dragging_prompt') with the resource file you use.
+                 this.promptAction.showToast({ message: $r('app.string.Allow_dragging_prompt') });
                })
                .width('200vp').height('200vp')
              // The upper half of the Stack component is the floating area bound to the long press gesture.
@@ -114,9 +131,10 @@ In the following example, the **Image** and **Stack** components are located in 
              .gesture(GestureGroup(GestureMode.Parallel,
                LongPressGesture()
                  .onAction((event: GestureEvent) => {
-                   this.promptAction.showToast({ message: "Long-press the upper red area. The red area responds." });
+                   // Replace $r('app.string.Stop_dragging_prompt') with the resource file you use.
+                   this.promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt') });
                  })
-                 .tag("longpress")
+                 .tag('longpress')
              ))
              .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
                // If it is a long press gesture, determine whether the touch position is in the upper half area.
@@ -126,7 +144,7 @@ In the following example, the **Image** and **Stack** components are located in 
                  } else {
                    return GestureJudgeResult.REJECT;
                  }
-               }
+               };
                return GestureJudgeResult.CONTINUE;
              })
            }.width('100%')
@@ -135,6 +153,8 @@ In the following example, the **Image** and **Stack** components are located in 
      }
    }
    ```
+
+   ![StackGesure20251119001](figures/StackGesure20251119001.png)
 
 ## Parallel Gesture Dynamic Control
 
@@ -165,29 +185,34 @@ The following example demonstrates a nested scrolling scenario with two **Scroll
 
 1. Use the **shouldBuiltInRecognizerParallelWith** API to set the **PanGesture** of the outer **Scroll** component to be parallel with the **PanGesture** of the inner **Scroll** component.
 
-   ```ts
+   <!-- @[gesture_simultaneously](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureControl.ets) -->
+   
+   ``` TypeScript
    .shouldBuiltInRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
      for (let i = 0; i < others.length; i++) {
        let target = others[i].getEventTargetInfo();
-       if (target.getId() == "inner" && others[i].isBuiltIn() && others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // Identify the recognizer to work in parallel.
+       if (target.getId() == 'inner' && others[i].isBuiltIn() && others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // Find the recognizer to form a parallel gesture.
          this.currentRecognizer = current; // Save the recognizer of the current component.
          this.childRecognizer = others[i]; // Save the recognizer to work in parallel.
          return others[i]; // Return the recognizer to work in parallel with the current one.
-       }
-     }
+       };
+     };
      return undefined;
    })
    ```
 
 2. Use the **onGestureRecognizerJudgeBegin** API to obtain the pan gesture recognizer of the **Scroll** component and to set the enabled state of the inner and outer gesture recognizers based on the boundary conditions of the **Scroll** components.
 
-   ```ts
-   .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>) => { // When gesture recognition is about to be successful, set the recognizer's enabled state based on the current component state.       
+   <!-- @[gesture_openingclosing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureControl.ets) -->
+   
+   ``` TypeScript
+   .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+     others: Array<GestureRecognizer>) => { // When the implementation is about to succeed, set the recognizer enabling state based on the current component state.
      let target = current.getEventTargetInfo();
-     if (target && target.getId() == "outer" && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+     if (target && target.getId() == 'outer' && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
        for (let i = 0; i < others.length; i++) {
          let target = others[i].getEventTargetInfo() as ScrollableTargetInfo;
-         if (target instanceof ScrollableTargetInfo && target.getId() == "inner") { // Identify the recognizer to work in parallel on the response chain.
+         if (target instanceof ScrollableTargetInfo && target.getId() == 'inner') { // Identify the recognizer to work in parallel on the response chain.
            let panEvent = event as PanGestureEvent;
            this.childRecognizer.setEnabled(true);
            this.currentRecognizer.setEnabled(false);
@@ -195,29 +220,32 @@ The following example demonstrates a nested scrolling scenario with two **Scroll
              if (panEvent && panEvent.offsetY < 0) {
                this.childRecognizer.setEnabled(false);
                this.currentRecognizer.setEnabled(true);
-             }
+             };
            } else if (target.isBegin()) {
              if (panEvent.offsetY > 0) {
                this.childRecognizer.setEnabled(false);
                this.currentRecognizer.setEnabled(true);
-             }
-           }
-         }
-       }
-     }
+             };
+           };
+         };
+       };
+     };
      return GestureJudgeResult.CONTINUE;
    })
    ```
 
 3. Set up a gesture listener to listen for the state changes of the **Scroll** component, dynamically adjust the enabled state of the gesture recognizers, and controls whether gesture callbacks are triggered, allowing you to manage scrolling.
 
-   ```ts
+   <!-- @[listening_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureControl.ets) -->
+   
+   ``` TypeScript
    .parallelGesture ( // Bind a PanGesture as a dynamic controller.
      PanGesture()
        .onActionUpdate((event: GestureEvent)=>{
-         if (this.childRecognizer.getState() != GestureRecognizerState.SUCCESSFUL || this.currentRecognizer.getState() != GestureRecognizerState.SUCCESSFUL) { // If neither recognizer is in the SUCCESSFUL state, no control is applied.
+         if (this.childRecognizer.getState() != GestureRecognizerState.SUCCESSFUL ||
+           this.currentRecognizer.getState() != GestureRecognizerState.SUCCESSFUL) { // If the recognizer is not in the SUCCESSFUL state, no control is applied.
            return;
-         }
+         };
          let target = this.childRecognizer.getEventTargetInfo() as ScrollableTargetInfo;
          let currentTarget = this.currentRecognizer.getEventTargetInfo() as ScrollableTargetInfo;
          if (target instanceof ScrollableTargetInfo && currentTarget instanceof ScrollableTargetInfo) {
@@ -230,8 +258,8 @@ The following example demonstrates a nested scrolling scenario with two **Scroll
                  this.currentRecognizer.setEnabled(false);
                } else {
                  this.currentRecognizer.setEnabled(true);
-               }
-             }
+               };
+             };
            } else if (target.isBegin()) {
              if ((event.offsetY - this.lastOffset) > 0) {
                this.childRecognizer.setEnabled(false);
@@ -239,18 +267,20 @@ The following example demonstrates a nested scrolling scenario with two **Scroll
                  this.currentRecognizer.setEnabled(false);
                } else {
                  this.currentRecognizer.setEnabled(true);
-               }
-             }
-           }
-         }
-         this.lastOffset = event.offsetY
-     })
+               };
+             };
+           };
+         };
+         this.lastOffset = event.offsetY;
+       })
    )
    ```
 
 4. Below is the complete code example.
 
-   ```ts
+   <!-- @[gesture_motioncontrol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureAndMotionControl.ets) -->
+   
+   ``` TypeScript
    // xxx.ets
    @Entry
    @Component
@@ -261,12 +291,12 @@ The following example demonstrates a nested scrolling scenario with two **Scroll
      private childRecognizer: GestureRecognizer = new GestureRecognizer();
      private currentRecognizer: GestureRecognizer = new GestureRecognizer();
      private lastOffset: number = 0;
-
+   
      build() {
        Stack({ alignContent: Alignment.TopStart }) {
          Scroll(this.scroller) { // Outer scroll container.
            Column() {
-             Text("Scroll Area")
+             Text('Scroll Area')
                .width('90%')
                .height(150)
                .backgroundColor(0xFFFFFF)
@@ -276,7 +306,7 @@ The following example demonstrates a nested scrolling scenario with two **Scroll
                .margin({ top: 10 })
              Scroll(this.scroller2) { // Inner scroll container.
                Column() {
-                 Text("Scroll Area2")
+                 Text('Scroll Area2')
                    .width('90%')
                    .height(150)
                    .backgroundColor(0xFFFFFF)
@@ -298,12 +328,12 @@ The following example demonstrates a nested scrolling scenario with two **Scroll
                  }.width('100%')
                }
              }
-             .id("inner")
+             .id('inner')
              .width('100%')
              .height(800)
            }.width('100%')
          }
-         .id("outer")
+         .id('outer')
          .height(600)
          .scrollable(ScrollDirection.Vertical) // The scrollbar scrolls in the vertical direction.
          .scrollBar(BarState.On) // The scrollbar is always displayed.
@@ -313,7 +343,7 @@ The following example demonstrates a nested scrolling scenario with two **Scroll
          .shouldBuiltInRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
            for (let i = 0; i < others.length; i++) {
              let target = others[i].getEventTargetInfo();
-             if (target.getId() == "inner" && others[i].isBuiltIn() &&
+             if (target.getId() == 'inner' && others[i].isBuiltIn() &&
                others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // Identify the recognizer that to be bound to parallelGesture.
                this.currentRecognizer = current; // Save the recognizer of the current component.
                this.childRecognizer = others[i]; // Save the recognizer to work in parallel.
@@ -325,11 +355,11 @@ The following example demonstrates a nested scrolling scenario with two **Scroll
          .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
            others: Array<GestureRecognizer>) => { // When the implementation is about to succeed, set the recognizer enabling state based on the current component state.
            let target = current.getEventTargetInfo();
-           if (target && target.getId() == "outer" && current.isBuiltIn() &&
+           if (target && target.getId() == 'outer' && current.isBuiltIn() &&
              current.getType() == GestureControl.GestureType.PAN_GESTURE) {
              for (let i = 0; i < others.length; i++) {
                let target = others[i].getEventTargetInfo() as ScrollableTargetInfo;
-               if (target instanceof ScrollableTargetInfo && target.getId() == "inner") { // Identify the recognizer to work in parallel on the response chain.
+               if (target instanceof ScrollableTargetInfo && target.getId() == 'inner') { // Identify the recognizer to work in parallel on the response chain.
                  let panEvent = event as PanGestureEvent;
                  this.childRecognizer.setEnabled(true);
                  this.currentRecognizer.setEnabled(false);
@@ -368,8 +398,8 @@ The following example demonstrates a nested scrolling scenario with two **Scroll
                        this.currentRecognizer.setEnabled(false);
                      } else {
                        this.currentRecognizer.setEnabled(true);
-                     }
-                   }
+                     };
+                   };
                  } else if (target.isBegin()) {
                    if ((event.offsetY - this.lastOffset) > 0) {
                      this.childRecognizer.setEnabled(false)
@@ -377,10 +407,10 @@ The following example demonstrates a nested scrolling scenario with two **Scroll
                        this.currentRecognizer.setEnabled(false);
                      } else {
                        this.currentRecognizer.setEnabled(true);
-                     }
-                   }
-                 }
-               }
+                     };
+                   };
+                 };
+               };
                this.lastOffset = event.offsetY;
              })
          )
@@ -397,47 +427,53 @@ Since API version 20, you can use the [onTouchTestDone](../reference/apis-arkui/
 
 Disabling by gesture type:
 
-```typescript
-  .onTouchTestDone((event, recognizers) => {
-    for (let i = 0; i < recognizers.length; i++) {
-      let recognizer = recognizers[i];
-      // Disable all pan gestures based on type.
-      if (recognizer.getType() == GestureControl.GestureType.PAN_GESTURE) {
-        recognizer.preventBegin();
-      }
-    }
-  })
-```
+   <!-- @[disable_gesturetype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
+   
+   ``` TypeScript
+   .onTouchTestDone((event, recognizers) => {
+     for (let i = 0; i < recognizers.length; i++) {
+       let recognizer = recognizers[i];
+       // Disable all pan gestures based on type.
+       if (recognizer.getType() == GestureControl.GestureType.PAN_GESTURE) {
+         recognizer.preventBegin();
+       };
+     };
+   })
+   ```
 
 Disabling by associated component:
 
 Components must be pre-configured with a component ID through the universal attribute [id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id).
 
-```typescript
-  .onTouchTestDone((event, recognizers) => {
-    for (let i = 0; i < recognizers.length; i++) {
-      let recognizer = recognizers[i];
-      // Disable all gestures on the component with ID "myID."
-      if (recognizer.getEventTargetInfo().getId() == "myID") {
-        recognizer.preventBegin();
-      }
-    }
-  })
-```
+   <!-- @[component_disabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
+   
+   ``` TypeScript
+   .onTouchTestDone((event, recognizers) => {
+     for (let i = 0; i < recognizers.length; i++) {
+       let recognizer = recognizers[i];
+       // Disable all gestures on the component with ID "myID."
+       if (recognizer.getEventTargetInfo().getId() == 'myID') {
+         recognizer.preventBegin();
+       };
+     };
+   })
+   ```
 
 Disabling system built-in gestures:
 
-```typescript
-  .onTouchTestDone((event, recognizers) => {
-    for (let i = 0; i < recognizers.length; i++) {
-      let recognizer = recognizers[i];
-      // Disable all system built-in gestures.
-      if (recognizer.isBuiltIn()) {
-        recognizer.preventBegin();
-      }
-    }
-  })
-```
+   <!-- @[builtIn_gestureDisable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
+   
+   ``` TypeScript
+   .onTouchTestDone((event, recognizers) => {
+     for (let i = 0; i < recognizers.length; i++) {
+       let recognizer = recognizers[i];
+       // Disable all system built-in gestures.
+       if (recognizer.isBuiltIn()) {
+         recognizer.preventBegin();
+       };
+     };
+   })
+   ```
 
 Combine the preceding conditions based on specific scenarios.
 
@@ -462,138 +498,163 @@ Solution: Register an **onTouchTestDone** callback on the **Slider** component. 
 
 The following shows the complete sample code:
 
-```typescript
+<!-- @[gesture_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
-  @Local progress: number = 496000 // Initial progress, in seconds.
-  @Local total: number = 27490000   // Total duration, in seconds.
-  @Local currentWidth: string = '100%'
-  @Local currentHeight: string = '100%'
-  private currentPosX: number = 0
-  private currentPosY: number = 0
-  private currentFullScreenState: boolean = true
+  @Local progress: number = 496000; // Initial progress, in seconds.
+  @Local total: number = 27490000; // Total duration, in seconds.
+  @Local currentWidth: string = '100%';
+  @Local currentHeight: string = '100%';
+  private currentPosX: number = 0;
+  private currentPosY: number = 0;
+  private currentFullScreenState: boolean = true;
   private normalPlayTimer: number = -1;
   private isPlaying: boolean = true;
   private fastForwardTimer: number = -1;
+  private context = this.getUIContext().getHostContext()
 
   aboutToAppear(): void {
     // Start a periodic timer to refresh the progress every second.
-    this.startNormalPlayTimer()
-  }
+    this.startNormalPlayTimer();
+  };
 
   startNormalPlayTimer(): void {
     if (this.normalPlayTimer != -1) {
       this.stopNormalPlayTimer()
-    }
+    };
     this.normalPlayTimer = setInterval(() => {
       this.progress = this.progress + 1000
-    }, 1000)
-  }
+    }, 1000);
+  };
 
   stopNormalPlayTimer(): void {
     if (this.normalPlayTimer == -1) {
-      return
-    }
-    clearInterval(this.normalPlayTimer)
-    this.normalPlayTimer = -1
-  }
+      return;
+    };
+    clearInterval(this.normalPlayTimer);
+    this.normalPlayTimer = -1;
+  };
 
   startFastForwardTimer(): void {
     if (this.fastForwardTimer != -1) {
-      this.stopFastForwardTimer()
-    }
+      this.stopFastForwardTimer();
+    };
     this.fastForwardTimer = setInterval(() => {
-      this.progress = this.progress + 100000
-    }, 100)
-  }
+      this.progress = this.progress + 100000;
+    }, 100);
+  };
 
   stopFastForwardTimer(): void {
     if (this.fastForwardTimer == -1) {
-      return
-    }
-    clearInterval(this.fastForwardTimer)
-    this.fastForwardTimer = -1
-  }
+      return;
+    };
+    clearInterval(this.fastForwardTimer);
+    this.fastForwardTimer = -1;
+  };
 
   showMessage(message: string): void {
-    this.getUIContext().getPromptAction().showToast({ message: message, alignment: Alignment.Center })
-  }
+    this.getUIContext().getPromptAction().showToast({ message: message, alignment: Alignment.Center });
+  };
 
   resetPosInfo(): void {
-    this.currentPosX = 0
-    this.currentPosY = 0
-  }
+    this.currentPosX = 0;
+    this.currentPosY = 0;
+  };
 
   toggleFullScreenState(): void {
-    this.currentFullScreenState = !this.currentFullScreenState
+    this.currentFullScreenState = !this.currentFullScreenState;
     if (this.currentFullScreenState) {
-      this.currentWidth = '100%'
-      this.currentHeight = '100%'
+      this.currentWidth = '100%';
+      this.currentHeight = '100%';
     } else {
-      this.currentWidth = '100%'
-      this.currentHeight = '50%'
-    }
-    this.showMessage(this.currentFullScreenState ? 'Full-screen playback' : 'Exit full-screen')
-  }
+      this.currentWidth = '100%';
+      this.currentHeight = '50%';
+    };
+    // Replace $r('app.string.Play_full_screen') with the resource file you use.
+    // Replace $r('app.string.Exit_play_full_screen') with the resource file you use.
+    this.showMessage(this.currentFullScreenState
+      ? this.context!.resourceManager.getStringSync($r('app.string.Play_full_screen').id)
+      : this.context!.resourceManager.getStringSync($r('app.string.Exit_play_full_screen').id));
+  };
 
   togglePlayAndPause(): void {
-    this.isPlaying = !this.isPlaying
+    this.isPlaying = !this.isPlaying;
     if (!this.isPlaying) {
-      this.stopNormalPlayTimer()
+      this.stopNormalPlayTimer();
     } else {
       // Restart the timer.
-      this.startNormalPlayTimer()
-    }
-    this.showMessage(this.isPlaying ? 'Pause playback' : 'Resume playback')
-  }
+      this.startNormalPlayTimer();
+    };
+    // Replace $r('app.string.stop_playing') with the resource file you use.
+    // Replace $r('app.string.Continue_playing') with the resource file you use.
+    this.showMessage(this.isPlaying
+      ? this.context!.resourceManager.getStringSync($r('app.string.stop_playing').id)
+      : this.context!.resourceManager.getStringSync($r('app.string.Continue_playing').id));
+  };
 
   doFastForward(start: boolean): void {
     if (!start) { // Stop fast-forwarding and resume normal playback.
-      this.stopFastForwardTimer()
-      this.startNormalPlayTimer()
-      this.showMessage('Cancel fast-forwarding')
-      return
-    }
+      this.stopFastForwardTimer();
+      this.startNormalPlayTimer();
+      // Replace $r('app.string.Cancel_FastForwarding') with the resource file you use.
+      this.showMessage(
+        this.context!.resourceManager.getStringSync($r('app.string.Cancel_FastForwarding').id));
+      return;
+    };
 
-    this.stopNormalPlayTimer()
-    this.startFastForwardTimer()
-    this.showMessage('Start fast-forwarding')
-  }
+    this.stopNormalPlayTimer();
+    this.startFastForwardTimer();
+    // Replace $r('app.string.Start_FastForwarding') with the resource file you use.
+    this.showMessage(
+      this.context!.resourceManager.getStringSync($r('app.string.Start_FastForwarding').id));
+  };
 
   updateBrightness(start: boolean, event: BaseGestureEvent): void {
-    let newY = event.fingerList[0].localY
+    let newY = event.fingerList[0].localY;
     if (start) {
-      this.currentPosY = newY
-      this.showMessage('Start adjusting brightness')
-      return
-    }
+      this.currentPosY = newY;
+      // Replace $r('app.string.Start_adjusting_brightness') with the resource file you use.
+      this.showMessage(this.context!.resourceManager
+        .getStringSync($r('app.string.Start_adjusting_brightness').id));
+      return;
+    };
     let offsetY = newY - this.currentPosY;
     if (Math.abs(offsetY) > 10) {
-      this.showMessage((offsetY > 0) ? 'Decrease brightness' : 'Increase brightness')
-      this.currentPosY = newY
-    }
-  }
+      // Replace $r('app.string.Reduce_brightness') with the resource file you use.
+      // Replace $r('app.string.Increase_brightness') with the resource file you use.
+      this.showMessage((offsetY > 0)
+        ? this.context!.resourceManager.getStringSync($r('app.string.Reduce_brightness').id)
+        : this.context!.resourceManager.getStringSync($r('app.string.Increase_brightness').id))
+      this.currentPosY = newY;
+    };
+  };
 
   updateProgress(start: boolean, event: BaseGestureEvent): void {
-    let newX = event.fingerList[0].localX
+    let newX = event.fingerList[0].localX;
     if (start) {
-      this.currentPosX = newX
-      this.showMessage('Start adjusting progress')
-      return
-    }
+      this.currentPosX = newX;
+      // Replace $r('app.string.Adjust_schedule') with the resource file you use.
+      this.showMessage(this.context!.resourceManager
+        .getStringSync($r('app.string.Adjust_schedule').id));
+      return;
+    };
     let offsetX = newX - this.currentPosX;
-    this.progress = Math.floor(this.progress + offsetX * 10000)
-    this.currentPosX = newX
-  }
+    this.progress = Math.floor(this.progress + offsetX * 10000);
+    this.currentPosX = newX;
+  };
 
   build() {
     Stack({ alignContent: Alignment.Center }) {
       Column() {
         Column() {
-          Text("Playback progress: " + this.progress)
+          // Replace $r('app.string.Playback_progress') with the resource file you use.
+          Text(this.context!.resourceManager.getStringSync($r('app.string.Playback_progress').id) + this.progress)
         }
-          .width("100%").height("90%")
+        .width('100%').height('90%')
+
         Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
           Slider({
             value: this.progress,
@@ -602,23 +663,23 @@ struct Index {
             style: SliderStyle.OutSet
           })
             .onChange((value: number, mode: SliderChangeMode) => {
-              this.progress = value
+              this.progress = value;
             })
-            .id("progress_layer")
+            .id('progress_layer')
             .onTouchTestDone((event, allRecognizers: Array<GestureRecognizer>) => {
               for (let i = 0; i < allRecognizers.length; i++) {
                 let recognizer = allRecognizers[i];
                 let inspectorInfo = recognizer.getEventTargetInfo().getId();
-                if (inspectorInfo !== "progress_layer") {
+                if (inspectorInfo !== 'progress_layer') {
                   // When the user interacts with the progress bar area, disable all gestures not belonging to progress_layer.
                   recognizer.preventBegin();
-                }
-              }
+                };
+              };
             })
             .margin({ left: 5 })
-            .trackColor(Color.Red)
-            .blockColor(Color.Yellow)
-            .selectedColor(Color.Orange)
+            .trackColor(Color.Blue)
+            .blockColor(Color.Gray)
+            .selectedColor(Color.White)
             .trackThickness(2)
             .flexShrink(1)
             .flexGrow(1)
@@ -635,42 +696,42 @@ struct Index {
         PanGesture({ direction: PanDirection.Vertical, distance: 10 })
           .tag('pan_for_brightness_control')
           .onActionStart((event) => {
-            this.updateBrightness(true, event)
+            this.updateBrightness(true, event);
           })
           .onActionUpdate((event) => {
-            this.updateBrightness(false, event)
+            this.updateBrightness(false, event);
           }),
         PanGesture({ direction: PanDirection.Horizontal, distance: 10 })
           .tag('pan_for_play_progress_control')
           .onActionStart((event) => {
-            this.updateProgress(true, event)
+            this.updateProgress(true, event);
           })
           .onActionUpdate((event) => {
-            this.updateProgress(false, event)
+            this.updateProgress(false, event);
           }),
 
         LongPressGesture()
           .tag('long_press_for_fast_forward_control')
           .onAction(() => {
-            this.doFastForward(true) // Start fast-forwarding.
+            this.doFastForward(true); // Start fast-forwarding.
           })
           .onActionEnd(() => {
-            this.doFastForward(false) // Stop fast-forwarding.
+            this.doFastForward(false); // Stop fast-forwarding.
           })
           .onActionCancel(() => {
-            this.doFastForward(false)
+            this.doFastForward(false);
           }),
 
         TapGesture({ count: 2 })
           .tag('double_tap_on_video')
           .onAction(() => {
-            this.toggleFullScreenState()
+            this.toggleFullScreenState();
           }),
 
         TapGesture()
           .tag('single_tap_on_video')
           .onAction(() => {
-            this.togglePlayAndPause()
+            this.togglePlayAndPause();
           })
       )
     )
@@ -678,4 +739,5 @@ struct Index {
     .height(this.currentHeight)
   }
 }
+
 ```

@@ -943,7 +943,7 @@ console.info(`has sim card: ` + hasSimCard);
 
 getSimAccountInfo\(slotId: number, callback: AsyncCallback\<IccAccountInfo\>\): void
 
-获取SIM卡帐户信息。使用callback异步回调。
+获取SIM卡账户信息。使用callback异步回调。
 
 **需要权限**：ohos.permission.GET_TELEPHONY_STATE
 
@@ -958,7 +958,7 @@ getSimAccountInfo\(slotId: number, callback: AsyncCallback\<IccAccountInfo\>\): 
 | 参数名   | 类型                                                | 必填 | 说明                                   |
 | -------- | --------------------------------------------------- | ---- | -------------------------------------- |
 | slotId   | number                                              | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| callback | AsyncCallback&lt;[IccAccountInfo](#iccaccountinfo10)&gt; | 是   | 回调函数。返回指定卡槽SIM卡的帐户信息。                             |
+| callback | AsyncCallback&lt;[IccAccountInfo](#iccaccountinfo10)&gt; | 是   | 回调函数。返回指定卡槽SIM卡的账户信息。                             |
 
 **错误码：**
 
@@ -990,7 +990,7 @@ sim.getSimAccountInfo(0, (err:BusinessError , data: sim.IccAccountInfo) => {
 
 getSimAccountInfo\(slotId: number\): Promise\<IccAccountInfo\>
 
-获取SIM卡帐户信息。使用Promise异步回调。
+获取SIM卡账户信息。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_TELEPHONY_STATE
 
@@ -1010,7 +1010,7 @@ getSimAccountInfo\(slotId: number\): Promise\<IccAccountInfo\>
 
 | 类型                                         | 说明                                       |
 | -------------------------------------------- | ------------------------------------------ |
-| Promise&lt;[IccAccountInfo](#iccaccountinfo10)&gt; | 以Promise形式返回指定卡槽SIM卡的帐户信息。 |
+| Promise&lt;[IccAccountInfo](#iccaccountinfo10)&gt; | 以Promise形式返回指定卡槽SIM卡的账户信息。 |
 
 **错误码：**
 
@@ -1043,7 +1043,7 @@ sim.getSimAccountInfo(0).then((data: sim.IccAccountInfo) => {
 
 getActiveSimAccountInfoList\(callback: AsyncCallback\<Array\<IccAccountInfo\>\>\): void
 
-获取激活SIM卡帐户信息列表。使用callback异步回调。
+获取激活SIM卡账户信息列表。使用callback异步回调。
 
 **需要权限**：ohos.permission.GET_TELEPHONY_STATE
 
@@ -1057,7 +1057,7 @@ getActiveSimAccountInfoList\(callback: AsyncCallback\<Array\<IccAccountInfo\>\>\
 
 | 参数名   | 类型                                                        | 必填 | 说明       |
 | -------- | ----------------------------------------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;Array&lt;[IccAccountInfo](#iccaccountinfo10)&gt;&gt; | 是   | 回调函数。返回激活SIM卡帐户信息列表。 |
+| callback | AsyncCallback&lt;Array&lt;[IccAccountInfo](#iccaccountinfo10)&gt;&gt; | 是   | 回调函数。返回激活SIM卡账户信息列表。 |
 
 **错误码：**
 
@@ -1110,7 +1110,7 @@ console.info("Result: "+ sim.getMaxSimCount());
 
 getActiveSimAccountInfoList\(\): Promise\<Array\<IccAccountInfo\>\>
 
-获取激活SIM卡帐户信息列表。使用Promise异步回调。
+获取激活SIM卡账户信息列表。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_TELEPHONY_STATE
 
@@ -1124,7 +1124,7 @@ getActiveSimAccountInfoList\(\): Promise\<Array\<IccAccountInfo\>\>
 
 | 类型                                                 | 说明                                           |
 | ---------------------------------------------------- | ---------------------------------------------- |
-| Promise&lt;Array&lt;[IccAccountInfo](#iccaccountinfo10)&gt;&gt; | 以Promise形式返回激活卡槽SIM卡的帐户信息列表。 |
+| Promise&lt;Array&lt;[IccAccountInfo](#iccaccountinfo10)&gt;&gt; | 以Promise形式返回激活卡槽SIM卡的账户信息列表。 |
 
 **错误码：**
 
@@ -1586,10 +1586,10 @@ getSimLabelSync(slotId: number): SimLabel
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-let simState: sim.SimLabel = sim.getSimLabelSync(0);
+
+let simLabel: sim.SimLabel = sim.getSimLabelSync(0);
 console.info(`The sim state is:` + simLabel);
 ```
 
@@ -1652,7 +1652,7 @@ SIM卡状态。
 
 ## IccAccountInfo<sup>10+</sup>
 
-Icc帐户信息。
+Icc账户信息。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 

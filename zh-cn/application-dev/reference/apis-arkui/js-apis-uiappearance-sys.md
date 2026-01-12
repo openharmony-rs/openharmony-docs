@@ -51,22 +51,23 @@ setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 
 **示例：** 
 
-  ```ts
+```ts
 import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK, (error) => {
-      if (error) {
-        console.error('Set dark-mode failed, ' + error.message);
-      } else {
-        console.info('Set dark-mode successfully.');
-      }
-    })
+  uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK, (error) => {
+    if (error) {
+      console.error('Set dark-mode failed, ' + error.message);
+    } else {
+      console.info('Set dark-mode successfully.');
+    }
+  })
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Set dark-mode failed, ' + message);
+  let message = (error as BusinessError).message;
+  console.error('Set dark-mode failed, ' + message);
 }
-  ```
+```
 
 
 ## uiAppearance.setDarkMode
@@ -103,23 +104,24 @@ setDarkMode(mode: DarkMode): Promise\<void>;
 
 **示例：** 
 
-  ```ts
+```ts
 import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK).then(() => {
-      console.info('Set dark-mode successfully.');
-    }).catch((error:Error) => {
-      console.error('Set dark-mode failed, ' + error.message);
-    });
+  uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK).then(() => {
+    console.info('Set dark-mode successfully.');
+  }).catch((error: Error) => {
+    console.error('Set dark-mode failed, ' + error.message);
+  });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('Set dark-mode failed, ' + message);
+  let message = (error as BusinessError).message;
+  console.error('Set dark-mode failed, ' + message);
 }
-  ```
+```
 
 
-## uiAppearance.setFontScale<sup>12+<sup>
+## uiAppearance.setFontScale<sup>12+</sup>
 
 setFontScale(fontScale: number): Promise\<void>
 
@@ -135,7 +137,7 @@ setFontScale(fontScale: number): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| fontScale | number | 是 | 需要设置的字体大小。 |
+| fontScale | number | 是 | 需要设置的字体大小。<br/> 取值范围：(0, 5.0]，超出范围会抛出异常401。 |
 
 **返回值：** 
 
@@ -160,7 +162,7 @@ setFontScale(fontScale: number): Promise\<void>
 
 **示例：** 
 
-  ```ts
+```ts
 import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -176,10 +178,10 @@ try {
     let message = (error as BusinessError).message;
     console.error('Set fontScale failed, ' + message);
 }
-  ```
+```
 
 
-## uiAppearance.setFontWeightScale<sup>12+<sup>
+## uiAppearance.setFontWeightScale<sup>12+</sup>
 
 setFontWeightScale(fontWeightScale: number): Promise\<void>
 
@@ -195,7 +197,7 @@ setFontWeightScale(fontWeightScale: number): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| fontWeightScale | number | 是 | 需要设置的字体粗细。 |
+| fontWeightScale | number | 是 | 需要设置的字体粗细。<br/> 取值范围：(0, 5.0]，超出范围会抛出异常401。 |
 
 **返回值：** 
 
@@ -220,7 +222,7 @@ setFontWeightScale(fontWeightScale: number): Promise\<void>
 
 **示例：** 
 
-  ```ts
+```ts
 import { uiAppearance } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -236,4 +238,4 @@ try {
     let message = (error as BusinessError).message;
     console.error('Set fontWeightScale failed, ' + message);
 }
- ```
+```

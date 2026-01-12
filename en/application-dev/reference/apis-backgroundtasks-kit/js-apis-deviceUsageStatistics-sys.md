@@ -16,11 +16,11 @@ System applications can call these APIs to implement the following features:
 
 > **NOTE**
 >
-> This module is deprecated since API version 9. You are advised to use [@ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)](js-apis-resourceschedule-deviceUsageStatistics-sys.md) instead.
+> - This module is deprecated since API version 9. You are advised to use [@ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)](js-apis-resourceschedule-deviceUsageStatistics-sys.md) instead.
 >
-> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.bundleState](js-apis-deviceUsageStatistics.md).
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.bundleState](js-apis-deviceUsageStatistics.md).
 
 ## Modules to Import
 

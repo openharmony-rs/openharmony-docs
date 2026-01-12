@@ -49,7 +49,7 @@
 
 ### UsbDdkErrCode
 
-```
+```c
 enum UsbDdkErrCode
 ```
 

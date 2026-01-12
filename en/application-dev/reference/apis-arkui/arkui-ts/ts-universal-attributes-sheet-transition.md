@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can bind a sheet to a component through the **bindSheet** attribute. You can also set the sheet to the preset or custom height for when the component is inserted.
 
@@ -19,6 +19,10 @@ You can bind a sheet to a component through the **bindSheet** attribute. You can
 bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 Binds a sheet to the component, which is displayed when the component is touched.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -63,9 +67,9 @@ Provides content configuration options of the sheet.
 | --------------- | --------------------------- | ------------- | ---- | --------------- |
 | height          | [SheetSize](#sheetsize) \| [Length](ts-types.md#length) | No| Yes  | Height of the sheet. Default value: **LARGE**.<br>**NOTE**<br>Since API version 14, for a bottom sheet in landscape mode, the maximum height is 8 vp from the top of the screen if there is no status bar, and 8 vp from the status bar if there is one.<br>When a bottom sheet has **detents** set, this attribute is ineffective.<br>For a bottom sheet in portrait mode, the maximum height is 8 vp from the status bar.<br>For center and popup sheets set to **SheetSize.LARGE** or **SheetSize.MEDIUM**, this attribute is ineffective, with the default height being 560 vp. For center and popup sheets, the minimum height is 320 vp, and the maximum height is 90% of the shorter edge of the window. If the height specified by **Length** and the height adaptively set with **SheetSize.FIT_CONTENT** exceed the maximum height, the maximum height is used instead. If they are less than the minimum height, the minimum height is used instead.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | detents<sup>11+</sup> | [([SheetSize](#sheetsize) \| [Length](ts-types.md#length)), ( [SheetSize](#sheetsize) \| [Length](ts-types.md#length))?, ([SheetSize](#sheetsize) \| [Length](ts-types.md#length))?] | No| Yes| Array of heights where the sheet can rest.<br>**NOTE**<br>Since API version 12, this attribute takes effect for a bottom sheet in landscape mode.<br>In earlier versions, this attribute takes effect only for the bottom sheet in portrait mode. The first height in the tuple is the initial height.<br>The sheet can switch between heights by dragging. After the sheet is dragged and released, it switches to the target height or remains at the current height, depending on the velocity and distance.<br> If the velocity exceeds the threshold, the sheet switches to the target height in the same direction as the velocity. If the velocity is less than the threshold, the displacement distance is used for judgement. If the displacement distance is greater than 1/2 of the distance between the current and target positions, the sheet switches to the target height in the same direction as the velocity; otherwise, the sheet remains at the current height.<br> Velocity threshold: 1000; Distance threshold: 50%.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| preferType<sup>11+</sup> | [SheetType](#sheettype11)| No| Yes| Type of the sheet.<br>**NOTE**<br>The types supported by the sheet vary by window.<br>1. Width < 600 vp: bottom, full-screen.<br>2. 600 vp <= Width < 840 vp: bottom, center, popup, side-aligned, full-screen. (default)<br>3. Width >= 840 vp: bottom, center, popup, side-aligned, full-screen. (default)<br>4. Since API version 20, when the window width is greater than 600 vp, **preferType** can be set to **SheetType.SIDE**.<br>5. Since API version 20, **preferType** can be set to **SheetType.CONTENT_COVER**, enabling full-screen sheet style.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| preferType<sup>11+</sup> | [SheetType](#sheettype11)| No| Yes| Type of the sheet.<br>**NOTE**<br>The types supported by the sheet vary by window.<br>1. Width < 600 vp: bottom, full-screen. Bottom style by default.<br>2. 600 vp <= Width < 840 vp: bottom, center, popup, side-aligned, full-screen. Center style by default.<br>3. Width >= 840 vp: bottom, center, popup, side-aligned, full-screen. Popup style by default.<br>4. Since API version 20, when the window width is greater than 600 vp, **preferType** can be set to **SheetType.SIDE**.<br>5. Since API version 20, **preferType** can be set to **SheetType.CONTENT_COVER**, enabling full-screen sheet style.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | showClose<sup>11+</sup> | boolean \| [Resource](ts-types.md#resource) | No| Yes| Whether to display the close icon.<br> On 2-in-1 devices, the icon does not have a background by default.<br> Default value: **true**.<br> **true**: Display the close icon.<br> **false**: Do not display the close icon.<br>**NOTE**<br>The value of **Resource** must be of the Boolean type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| dragBar         | boolean                                  | No| Yes   | Whether to display the drag bar.<br>**NOTE**<br>By default, the drag bar is displayed only when the sheet's **detents** attribute is set to multiple heights and the settings take effect.  <br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| dragBar         | boolean                                  | No| Yes   | Whether to display the drag bar.<br> Default value: **true**.<br>**true**: Display the drag bar.<br>**false**: Do not display the drag bar.<br>**NOTE**<br>By default, the drag bar is displayed only when the sheet's **detents** attribute is set to multiple heights and the settings take effect.  <br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | blurStyle<sup>11+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No| Yes| Background blur of the sheet. By default, there is no background blur.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | maskColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Mask color of the sheet.<br> Default value: **$r('sys.color.ohos_id_color_mask_thin')**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | title<sup>11+</sup> | [SheetTitleOptions](#sheettitleoptions11) \| [CustomBuilder](ts-types.md#custombuilder8) | No| Yes| Title of the sheet.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -86,12 +90,12 @@ Provides content configuration options of the sheet.
 | mode<sup>12+</sup> | [SheetMode](#sheetmode12)   | No| Yes| Display mode of the sheet.<br>Default value: **SheetMode.OVERLAY**<br>**NOTE**<br> 1. During the display of the sheet, the **mode** attribute does not support dynamic changes. The display hierarchy of the two modes is entirely different, making it impossible to switch a sheet from one mode to another while it is being displayed. You are advised to clearly define and fix the **mode** value to ensure consistency in the display hierarchy.<br> 2. The **UIContext** attribute cannot be set when **SheetMode.EMBEDDED** is set, as their corresponding sheet display hierarchy effects are mutually conflicting.<br>3. For a sheet launched with [openBindSheet](../arkts-apis-uicontext-uicontext.md#openbindsheet12), if a valid target ID is not provided, **SheetMode.EMBEDDED** cannot be set, and the default value **SheetMode.OVERLAY** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | scrollSizeMode<sup>12+</sup> | [ScrollSizeMode](#scrollsizemode12)   | No| Yes| Content update mode of the sheet when it is scrolled.<br>Default value: **ScrollSizeMode.FOLLOW_DETENT**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | keyboardAvoidMode<sup>13+</sup> | [SheetKeyboardAvoidMode](#sheetkeyboardavoidmode13) | No| Yes| How the sheet avoids the soft keyboard when it is brought up.<br> Default value: **TRANSLATE_AND_SCROLL**<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| enableHoverMode<sup>14+</sup>              | boolean | No| Yes  | Whether to respond when the device is in semi-folded mode.<br>Default value: **false**, meaning not to enable the hover mode.<br> Default value for 2-in-1 devices: **true**<br>**NOTE**<br>The bottom and popup sheets do not respond when the device is in semi-folded mode. The subwindow mode does not support the semi-folded mode.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| enableHoverMode<sup>14+</sup>              | boolean | No| Yes  | Whether to respond when the device is in semi-folded mode.<br>Default value: **false**, meaning not to enable the hover mode.<br> Default value for 2-in-1 devices: **true**<br>**true**: Respond when the device is in semi-folded mode.<br>**false**: Do not respond when the device is in semi-folded mode.<br>**NOTE**<br>The bottom and popup sheets do not respond when the device is in semi-folded mode. The subwindow mode does not support the semi-folded mode.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | hoverModeArea<sup>14+</sup>              | [HoverModeAreaType](#hovermodeareatype14) | No| Yes  | Display area of the dialog box in hover mode.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**<br> Default value for 2-in-1 devices: **HoverModeAreaType.TOP_SCREEN**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | radius<sup>15+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [BorderRadiuses](ts-types.md#borderradiuses9) \| [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | No| Yes| Corner radius of the sheet.<br>To deliver the optimal experience, use the same radius for the four corners.<br>Default value: **32vp**<br>**NOTE**<br>1. The corner radius is displayed based on the set value. If it is not set, the default value is used. The bottom sheet does not display the bottom two corners, even if they are set.<br>2. If different corner radii are set for the four corners and one of the values is invalid, the corner pertaining to the invalid value is reset to the default value, while the other corners retain their set values. If a uniform corner radius is set for all four corners and the value is invalid, all four corners are reset to the default value.<br>3. When the corner radius is set as a percentage, the width of the sheet is used as the reference.<br>4. If the corner radius is greater than half the width of the sheet, it is set to half the width of the sheet.<br>5. If the height of the sheet is too small and the corner radius is set too large, it may cause display issues.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | detentSelection<sup>15+</sup>         <br>| [SheetSize](#sheetsize) \| [Length](ts-types.md#length) | No| Yes   | Initial detent (position) for non-gesture switching.<br>Default value: **detents[0]**<br>**NOTE**<br>1. The value must be within the range of the **detents** array. If the value is outside this range, this API has no effect.<br>2. When **SheetSize.FIT_CONTENT** is used, this API has no effect.<br>3. Avoid calling this API when gesture-based detent switching is used.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | placement<sup>18+</sup> | [Placement](ts-appendix-enums.md#placement8) | No| Yes| Display position of the sheet popup relative to the target.<br>Default value: **Placement.Bottom**<br>**NOTE**<br> 1. The system attempts to display the popup at the specified position if the popup fits within the window. If this is not feasible, it tries vertical flipping first, followed by a 90° horizontal rotation.<br>2. If the alignment causes the popup to exceed the window bounds, it will be adjusted horizontally or vertically until fully visible.<br>3. If none of the four directions can accommodate the popup, the behavior depends on the value of the **placementOnTarget** property:<br>(1) If the property value is **true**, the popup moves in the mirror direction of the specified placement until fully visible.<br>(2) If the property value is **false**, the system selects the direction that can fully display the popup width and has the most remaining height. It then adjusts the sheet height to fit this direction, ensuring that the popup is displayed while maintaining the alignment specified by the **placement** setting.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| placementOnTarget<sup>18+</sup> | boolean | No| Yes| Whether the sheet popup can overlap the target if none of the four directions can accommodate the popup.<br> Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| placementOnTarget<sup>18+</sup> | boolean | No| Yes| Whether the sheet popup can overlap the target if none of the four directions can accommodate the popup.<br> Default value: **true**<br>**true**: The sheet popup can overlap the target.<br>**false**: The sheet popup cannot overlap the target.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | effectEdge<sup>18+</sup> | number | No| Yes| Edge effect used when the boundary of the scrolling area in reached in the sheet. Single-edge activation is supported.<br>Default value: [EffectEdge](ts-container-scrollable-common.md#effectedge18).START \| [EffectEdge](ts-container-scrollable-common.md#effectedge18).END (that is, value **3**)<br>**NOTE**<br>1. Only start edge: [EffectEdge](ts-container-scrollable-common.md#effectedge18).START<br>2. Only end edge: [EffectEdge](ts-container-scrollable-common.md#effectedge18).END<br>3. Both edges: [EffectEdge](ts-container-scrollable-common.md#effectedge18).START \| [EffectEdge](ts-container-scrollable-common.md#effectedge18).END (that is, value **3**)<br>4. Neither edge: [EffectEdge](ts-container-scrollable-common.md#effectedge18).START & [EffectEdge](ts-container-scrollable-common.md#effectedge18).END (that is, value **0**)<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | showInSubWindow<sup>19+</sup> | boolean                                  | No| Yes   | Whether to show the sheet in a separate subwindow.<br>Default value: **false**.<br>**NOTE**<br>1. **true**: The sheet displays in a separate subwindow and can extend beyond application window bounds.<br>2. **false**: The sheet displays only within application window bounds.<br>3. To prevent disruptions to the normal behavior of associated components, do not nest multiple dialog boxes where **showInSubWindow** is set to **true**.<br>4. Avoid using picker components (such as **CalendarPicker**, **CalendarPickerDialog**, **DatePickerDialog**, **TextPickerDialog**, and **TimePickerDialog**) in the dialog box where **showInSubWindow** is set to **true**, as the dialog box may affect the behavior of these components.<br>5. This property cannot be dynamically changed when the sheet is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | enableFloatingDragBar<sup>20+</sup>              | boolean | No| Yes  | Whether to display the drag bar in a floating style. **true** to display in a floating style, **false** otherwise.<br>Default value: **false**.<br> **NOTE**<br>The floating style takes effect only when the drag bar is visible, and the floating drag bar does not occupy layout space.<br> This parameter is fixed at **false** when **title** uses [CustomBuilder](ts-types.md#custombuilder8).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
@@ -146,9 +150,9 @@ Enumerates the modal transition types.
 
 | Name     | Value| Description          |
 | ------- | ---- | -------- |
-| NONE    | - | No transition animation for the modal.  |
-| DEFAULT | - | Slide-up and slide-down animation for the modal. |
-| ALPHA   | - | Opacity gradient animation for the modal.|
+| DEFAULT | 0 | Slide-up and slide-down animation for the modal. |
+| NONE    | 1 | No transition animation for the modal.  |
+| ALPHA   | 2 | Opacity gradient animation for the modal.|
 
 ## SheetType<sup>11+</sup>
 
@@ -398,16 +402,16 @@ struct SheetTransitionExample {
           height: this.sheetHeight,
           backgroundColor: Color.Green,
           onWillAppear: () => {
-            console.log("BindSheet onWillAppear.");
+            console.info("BindSheet onWillAppear.");
           },
           onAppear: () => {
-            console.log("BindSheet onAppear.");
+            console.info("BindSheet onAppear.");
           },
           onWillDisappear: () => {
-            console.log("BindSheet onWillDisappear.");
+            console.info("BindSheet onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("BindSheet onDisappear.");
+            console.info("BindSheet onDisappear.");
           }
         })
     }
@@ -759,7 +763,7 @@ struct ListenKeyboardHeightChange {
 
 This example demonstrates how to set different corner radii for a sheet in a mirrored layout. Typically, to avoid a poor visual experience, do not set different values.
 
-In this example, the **radius** property of the sheet uses the LocalizedBorderRadiuses type.
+Since API version 15, the **radius** attribute supports the LocalizedBorderRadiuses type.
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
@@ -814,7 +818,7 @@ The following shows how the example is represented with right-to-left scripts.
 
 ### Example 8: Implementing a Side Sheet
 
-This example demonstrates the side sheet style implementation.
+This example demonstrates how to implement a side sheet. This feature is supported since API version 20.
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
@@ -878,16 +882,16 @@ struct SheetSideExample {
           title: { title: "SideSheet", subtitle: "Default width" },
           backgroundColor: Color.Grey,
           onWillAppear: () => {
-            console.log("SideSheet onWillAppear.");
+            console.info("SideSheet onWillAppear.");
           },
           onAppear: () => {
-            console.log("SideSheet onAppear.");
+            console.info("SideSheet onAppear.");
           },
           onWillDisappear: () => {
-            console.log("SideSheet onWillDisappear.");
+            console.info("SideSheet onWillDisappear.");
           },
           onDisappear: () => {
-            console.log("SideSheet onDisappear.");
+            console.info("SideSheet onDisappear.");
           },
 
           preferType: SheetType.SIDE,  // SheetType.SIDE
@@ -899,10 +903,10 @@ struct SheetSideExample {
           borderColor: this.borderColors,
 
           onHeightDidChange: (height: number)=>{
-            console.log("SideSheet height change:" + height);
+            console.info("SideSheet height change:" + height);
           },
           onTypeDidChange: (type: SheetType) => {
-            console.log("SideSheet type change:" + type);
+            console.info("SideSheet type change:" + type);
           },
         })
     }
@@ -917,7 +921,7 @@ struct SheetSideExample {
 
 ### Example 9: Implementing a Full-Screen Content Cover Sheet
 
-This example demonstrates the full-screen sheet implementation using the content cover style.
+This example demonstrates how to implement a full-screen cover sheet. This feature is supported since API version 20.
 
 ```ts
 // xxx.ets
@@ -955,16 +959,16 @@ struct ContentCoverExample {
           backgroundColor: '#ffd5d5d5',
           maskColor: '#ff707070',
           onWillAppear: () => {
-            console.log("ContentCover onWillAppear.")
+            console.info("ContentCover onWillAppear.")
           },
           onAppear: () => {
-            console.log("ContentCover onAppear.")
+            console.info("ContentCover onAppear.")
           },
           onWillDisappear: () => {
-            console.log("ContentCover onWillDisappear.")
+            console.info("ContentCover onWillDisappear.")
           },
           onDisappear: () => {
-            console.log("ContentCover onDisappear.")
+            console.info("ContentCover onDisappear.")
           },
         })
     }
@@ -975,4 +979,4 @@ struct ContentCoverExample {
   }
 }
 ```
-
+![en-us_sheet](figures/en-us_sheet9_content_cover.gif)

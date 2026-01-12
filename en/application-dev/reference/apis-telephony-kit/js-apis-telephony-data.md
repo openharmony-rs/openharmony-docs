@@ -104,6 +104,8 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
 Obtains the cellular data flow type, which can be uplink or downlink. This API uses an asynchronous callback to return the result.
 
+**Required permission**: ohos.permission.GET_NETWORK_INFO
+
 **System capability**: SystemCapability.Telephony.CellularData
 
 **Parameters**
@@ -111,6 +113,14 @@ Obtains the cellular data flow type, which can be uplink or downlink. This API u
 | Name  | Type                                          | Mandatory| Description      |
 | -------- | ---------------------------------------------- | ---- | ---------- |
 | callback | AsyncCallback\<[DataFlowType](#dataflowtype)\> | Yes  | Callback used to return the result.|
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 
 **Example**
 
@@ -133,6 +143,8 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 
 Obtains the cellular data flow type, which can be uplink or downlink. This API uses a promise to return the result.
 
+**Required permission**: ohos.permission.GET_NETWORK_INFO
+
 **System capability**: SystemCapability.Telephony.CellularData
 
 **Return value**
@@ -140,6 +152,14 @@ Obtains the cellular data flow type, which can be uplink or downlink. This API u
 | Type                                    | Description                                           |
 | ---------------------------------------- | ----------------------------------------------- |
 | Promise\<[DataFlowType](#dataflowtype)\> | Promise used to return the result. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 
 **Example**
 
@@ -160,6 +180,8 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 
 Obtains the cellular data connection status. This API uses an asynchronous callback to return the result.
 
+**Required permission**: ohos.permission.GET_NETWORK_INFO
+
 **System capability**: SystemCapability.Telephony.CellularData
 
 **Parameters**
@@ -167,6 +189,14 @@ Obtains the cellular data connection status. This API uses an asynchronous callb
 | Name  | Type                                                  | Mandatory| Description      |
 | -------- | ------------------------------------------------------ | ---- | ---------- |
 | callback | AsyncCallback\<[DataConnectState](#dataconnectstate)\> | Yes  | Callback used to return the result.|
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 
 **Example**
 
@@ -189,6 +219,8 @@ getCellularDataState(): Promise\<DataConnectState\>
 
 Obtains the cellular data connection status. This API uses a promise to return the result.
 
+**Required permission**: ohos.permission.GET_NETWORK_INFO
+
 **System capability**: SystemCapability.Telephony.CellularData
 
 **Return value**
@@ -196,6 +228,14 @@ Obtains the cellular data connection status. This API uses a promise to return t
 | Type                                            | Description                                 |
 | ------------------------------------------------ | ------------------------------------- |
 | Promise\<[DataConnectState](#dataconnectstate)\> | Promise used to return the result.|
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 
 **Example**
 
@@ -331,7 +371,7 @@ import { data } from '@kit.TelephonyKit';
 try {
     let isEnabled: boolean = data.isCellularDataEnabledSync();
     console.info(`isCellularDataEnabledSync success : ${isEnabled}`);
-} catch (error) {
+} catch (err) {
     console.error(`isCellularDataEnabledSync fail. code: ${err.code}, message: ${err.message}`);  
 }
 ```
@@ -474,7 +514,7 @@ import { data } from '@kit.TelephonyKit';
 try {
     let isEnabled: boolean = data.isCellularDataRoamingEnabledSync(0);
     console.info(`isCellularDataRoamingEnabledSync success : ${isEnabled}`);
-} catch (error) {
+} catch (err) {
     console.error(`isCellularDataRoamingEnabledSync fail. code: ${err.code}, message: ${err.message}`);  
 }
 ```
@@ -519,7 +559,7 @@ Obtains the access point name (APN) of the default SIM card used for mobile data
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -563,7 +603,7 @@ Obtains the APN ID corresponding to the specified **ApnInfo**. This API returns 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -618,7 +658,7 @@ Sets the APN corresponding to the specified **apnId** as the preferred APN. This
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -656,7 +696,7 @@ Obtains the access point name (APN) of the default SIM card used for mobile data
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |

@@ -6,6 +6,10 @@
 <!--Tester: @mhy123456789-->
 <!--Adviser: @RayShih-->
 
+```c
+typedef struct Location_Info Location_Info
+```
+
 ## Overview
 
 Defines the struct for the location information.

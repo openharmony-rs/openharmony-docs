@@ -31,14 +31,17 @@ The **Video** component supports both local and online videos. For details about
 
   Use **$rawfile()** to reference the video resource.
 
-  ```ts
+  <!-- @[local_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/LocalVideo.ets) -->
+  
+  ``` TypeScript
   // xxx.ets
+  // ···
   @Component
-  export struct VideoPlayer {
-    private controller: VideoController = new VideoController()
-    private previewUris: Resource = $r('app.media.preview')
-    private innerResource: Resource = $rawfile('videoTest.mp4')
-
+  export struct LocalVideo {
+    private controller: VideoController = new VideoController();
+    private previewUris: Resource = $r('app.media.preview');
+    private innerResource: Resource = $rawfile('videoTest.mp4');
+  
     build() {
       Column() {
         Video({
@@ -54,14 +57,17 @@ The **Video** component supports both local and online videos. For details about
 
 - Video provided by a [DataAbility](../application-models/dataability-overview.md), whose path contains the **dataability://** prefix<br>Ensure that the corresponding video resource exists.
 
-  ```ts
+  <!-- @[data_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/DataAbility.ets) -->
+  
+  ``` TypeScript
   // xxx.ets
+  // ···
   @Component
-  export struct VideoPlayer {
-    private controller: VideoController = new VideoController()
-    private previewUris: Resource = $r('app.media.preview')
-    private videoSrc: string = 'dataability://device_id/com.domainname.dataability.videodata/video/10'
-
+  export struct LocalVideoTwo {
+    private controller: VideoController = new VideoController();
+    private previewUris: Resource = $r('app.media.preview');
+    private videoSrc: string = 'dataability://device_id/com.domainname.dataability.videodata/video/10';
+  
     build() {
       Column() {
         Video({
@@ -78,12 +84,15 @@ The **Video** component supports both local and online videos. For details about
 
 To load a video in the application sandbox, use a string with the **file://** prefix. Ensure that there are files in the specified path and the application has the read permission to the files.
 
-```ts
+<!-- @[sandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/Sandbox.ets) -->
+
+``` TypeScript
 // xxx.ets
+// ···
 @Component
-export struct VideoPlayer {
-  private controller: VideoController = new VideoController()
-  private videoSrc: string = 'file:///data/storage/el2/base/haps/entry/files/show.mp4'
+export struct Sandbox {
+  private controller: VideoController = new VideoController();
+  private videoSrc: string = 'file:///data/storage/el2/base/haps/entry/files/show.mp4';
 
   build() {
     Column() {
@@ -102,13 +111,16 @@ export struct VideoPlayer {
 To load online videos, you must apply for the ohos.permission.INTERNET permission. For details about how to apply for the permission, see [Declaring Permissions](../security/AccessToken/declare-permissions.md). In this scenario, the **src** attribute indicates the URL of the online video.
 
 
-```ts
+<!-- @[online_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/OnlineVideo.ets) -->
+
+``` TypeScript
 // xxx.ets
+// ···
 @Component
-export struct VideoPlayer {
-  private controller: VideoController = new VideoController()
-  private previewUris: Resource = $r('app.media.preview')
-  private videoSrc: string = 'https://www.example.com/example.mp4' // Replace the URL with that of the actual video to load.
+export struct OnlineVideo {
+  private controller: VideoController = new VideoController();
+  private previewUris: Resource = $r('app.media.preview');
+  private videoSrc: string = 'www.example.com/example.mp4'; // Replace the URL with that of the actual video to load.
 
   build() {
     Column() {
@@ -128,11 +140,14 @@ export struct VideoPlayer {
 Use the [attributes](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#attributes) of the **Video** component to control video playback. For example, you can set whether to mute the video and whether to display the video playback control bar.
 
 
-```ts
+<!-- @[attribute_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/AttributeVideo.ets) -->
+
+``` TypeScript
 // xxx.ets
+// ···
 @Component
-export struct VideoPlayer {
-  private controller: VideoController = new VideoController()
+export struct AttributeVideo {
+  private controller: VideoController = new VideoController();
 
   build() {
     Column() {
@@ -154,14 +169,16 @@ export struct VideoPlayer {
 
   The **Video** component supports various callback events in addition to the universal events. For details, see [Events](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#events).
 
-```ts
+<!-- @[event_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/EventCall.ets) -->
+
+``` TypeScript
 // xxx.ets
 @Entry
 @Component
-struct VideoPlayer {
-  private controller: VideoController = new VideoController()
-  private previewUris: Resource = $r('app.media.preview')
-  private innerResource: Resource = $rawfile('videoTest.mp4')
+struct EventCall {
+  private controller: VideoController = new VideoController();
+  private previewUris: Resource = $r('app.media.preview');
+  private innerResource: Resource = $rawfile('videoTest.mp4');
 
   build() {
     Column() {
@@ -171,16 +188,12 @@ struct VideoPlayer {
         controller: this.controller
       })
         .onUpdate((event) => { // Triggered when the playback progress changes.
-          console.info("Video update.");
         })
         .onPrepared((event) => { // Triggered when video preparation is complete.
-          console.info("Video prepared.");
         })
         .onError(() => { // Triggered when the video playback fails.
-          console.error("Video error.");
         })
         .onStop(() => { // Triggered when the video playback stops.
-          console.info("Video stopped.");
         })
     }
   }
@@ -196,15 +209,17 @@ The video controller is used to control video playback. For details, see [VideoC
 
   The default controller supports four basic features: start playback, pause playback, set the video playback position, and play the video in full screen.
 
-  ```ts
+  <!-- @[video_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/VideoControl.ets) -->
+  
+  ``` TypeScript
   // xxx.ets
   @Entry
   @Component
   struct VideoGuide {
-    @State videoSrc: Resource = $rawfile('videoTest.mp4')
-    @State previewUri: string = 'common/videoIcon.png'
-    @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
-
+    @State videoSrc: Resource = $rawfile('videoTest.mp4');
+    @State previewUri: string = 'common/videoIcon.png';
+    @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
+  
     build() {
       Row() {
         Column() {
@@ -223,19 +238,23 @@ The video controller is used to control video playback. For details, see [VideoC
 
 - Custom controller
 
-  Use the custom controller. Disable the default controller, and then use components such as [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) and [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md) to customize the control and display. This method is suitable for scenarios where strong customization is required.
+  To implement a custom control bar, first disable the default controller. Then, use components such as [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) and [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md) to build your own control and display elements. This approach is suitable for scenarios that require a highly customized UI.
 
-  ```ts
+  <!-- @[customize_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/CustomizedControl.ets) -->
+
+  ``` TypeScript
   // xxx.ets
   @Entry
   @Component
-  struct VideoGuide {
-    @State videoSrc: Resource = $rawfile('videoTest.mp4')
-    @State previewUri: string = 'common/videoIcon.png'
-    @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
-    @State currentTime: number = 0
-    @State durationTime: number = 0
-    controller: VideoController = new VideoController()
+  struct CustomizedControl {
+    @State videoSrc: Resource = $rawfile('videoTest.mp4');
+    @State previewUri: string = 'common/videoIcon.png';
+    @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
+    // Initialize the current time to 0.
+    @State currentTime: number = 0;
+    // Initialize the current time to 0.
+    @State durationTime: number = 0;
+    controller: VideoController = new VideoController();
 
     build() {
       Row() {
@@ -266,13 +285,13 @@ The video controller is used to control video playback. For details, see [VideoC
               max: this.durationTime
             })
               .onChange((value: number, mode: SliderChangeMode) => {
-                this.controller.setCurrentTime(value); // Set the video playback progress to the value.
+                this.controller.setCurrentTime(value); // Set the video playback position to the specified time.
               })
-              .width("90%")
+              .width('90%')
             Text(JSON.stringify(this.durationTime) + 's')
           }
           .opacity(0.8)
-          .width("100%")
+          .width('100%')
         }
         .width('100%')
       }

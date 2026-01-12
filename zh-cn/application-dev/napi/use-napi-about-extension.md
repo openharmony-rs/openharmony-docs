@@ -1,4 +1,4 @@
-# 使用Node-API扩展能力接口
+# 使用Node-API进行扩展能力功能开发
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
@@ -25,7 +25,7 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
-import taskpool from '@ohos.taskpool';
+import { taskpool } from '@kit.ArkTS';
 ```
 
 ## 模块加载
@@ -245,7 +245,7 @@ let value2 = testNapi.createObjectWithNameProperties('ls');
 try {
   hilog.info(0x0000, 'testTag', 'Node-API napi_create_object_with_named_properties:%{public}s', JSON.stringify(value2));
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'TNode-API napi_create_object_with_named_properties: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Node-API napi_create_object_with_named_properties: %{public}s', error.message);
 }
 ```
 
@@ -315,7 +315,7 @@ try { // 在此处执行错误返回false，成功就返回true
 }
 ```
 
-test.js代码，将js代码编成.abc文件，步骤如下：
+test.js代码，将JS代码编译为.abc文件，步骤如下：
 
 1. 在SDK的ets/build-tools/ets-loader/bin/ark/build-win/bin目录下放置test.js文件
 2. 执行命令如es2abc.exe test.js  --output test.abc后便可生成test.abc文件
@@ -508,7 +508,7 @@ private:
     std::mutex numberSetMutex_{};
 };
 
-void FinializerCallback(napi_env env, void *data, void *hint)
+void FinalizerCallback(napi_env env, void *data, void *hint)
 {
     return;
 }
@@ -532,7 +532,7 @@ napi_value AttachCallback(napi_env env, void* value, void* hint)
         {"clear", nullptr, Object::Clear, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, object, sizeof(desc) / sizeof(desc[0]), desc);
     // 将JS对象object和native对象value生命周期进行绑定
-    napi_status status = napi_wrap(env, object, value, FinializerCallback, nullptr, nullptr);
+    napi_status status = napi_wrap(env, object, value, FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
         OH_LOG_INFO(LOG_APP, "Node-API attachCallback is failed.");
     }
@@ -552,7 +552,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"clear", nullptr, Object::Clear, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     auto object = Object::GetInstance();
-    napi_status status = napi_wrap(env, exports, reinterpret_cast<void*>(object), FinializerCallback, nullptr, nullptr);
+    napi_status status = napi_wrap(env, exports, reinterpret_cast<void*>(object), FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
         OH_LOG_INFO(LOG_APP, "Node-API napi_wrap is failed.");
     }
@@ -668,7 +668,7 @@ test01();
 
 **注意事项**
 
-对ArkTS对象A调用`napi_coerce_to_native_binding_object`将开发者实现的detach/attach回调和native对象信息加到A上，再将A跨线程传递。跨线程传递需要对A进行序列化和反序列化。此处的序列化与反序列化是人为控制的，需要调用后文介绍的napi_serialize、napi_deserialize接口。过程如下图所示：在当前线程thread1序列化A得到数据data，序列化阶段执行detach回调。然后将data传给目标线程thread2，在thread2中反序列化data，执行attach回调，最终得到ArkTS对象A。此处的detach/attach是告知开发者序列化与反序列执行完毕的回调。
+对ArkTS对象A调用`napi_coerce_to_native_binding_object`将开发者实现的detach/attach回调和native对象信息加到A上，再将A跨线程传递。跨线程传递需要对A进行序列化和反序列化。此处的序列化与反序列化是人为控制的，需要调用后文介绍的napi_serialize、napi_deserialize接口。过程如下图所示：在当前线程thread1序列化A得到数据data，序列化阶段执行detach回调。然后将data传给目标线程thread2，在thread2中反序列化data，执行attach回调，最终得到ArkTS对象A。此处的detach/attach是告知开发者序列化与反序列化执行完毕的回调。
 
 ![napi_coerce_to_native_binding_object](figures/napi_coerce_to_native_binding_object.png)
 
@@ -1509,3 +1509,18 @@ testNapi.testNapiWrapEnhance();
 **napi_create_strong_sendable_reference、napi_delete_strong_sendable_reference、napi_get_strong_sendable_reference_value**
 
 [使用扩展的Node-API接口创建、销毁和使用Sendable强引用](use-napi-about-sendable-reference.md)
+
+## napi支持抛出错误对象的code属性类型为number的ArkTS Error
+
+### 接口描述
+
+| 接口                      | 描述                                                       |
+| ------------------------- | ---------------------------------------------------------- |
+| napi_throw_business_error | 抛出带文本信息的ArkTS Error，其错误对象的code属性类型为number。|
+
+
+### 使用示例
+
+**napi_throw_business_error**
+
+[使用扩展的Node-API接口抛出ArkTS异常](use-napi-about-error.md)

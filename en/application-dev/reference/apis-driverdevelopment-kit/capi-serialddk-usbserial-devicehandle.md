@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbSerial_DeviceHandle UsbSerial_DeviceHandle
+```
+
 ## Overview
 
 Defines the data structures (opaque) for the USB serial port device.

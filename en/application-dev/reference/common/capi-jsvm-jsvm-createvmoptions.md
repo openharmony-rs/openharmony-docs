@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_CreateVMOptions
+```
+
 ## Overview
 
 Defines options for creating a JavaScript VM.
@@ -28,4 +32,4 @@ Defines options for creating a JavaScript VM.
 | size_t initialYoungGenerationSize | Initial size of the young-generation memory.|
 | const char* snapshotBlobData | Startup snapshot data.|
 | size_t snapshotBlobSize | Size of the startup snapshot data.|
-| bool isForSnapshotting | Whether the VM is used for snapshotting.|
+| bool isForSnapshotting | Whether the VM is used for snapshotting. If the value is **true**, VM is used for snapshotting. If the value is **false**, VM is not used for snapshotting.|

@@ -114,7 +114,7 @@ Call **napi_wrap** to wrap a native instance in an ArkTS object.
 
 ### napi_unwrap
 
-Call **napi_unwrap** to unwrap a native instance from an ArkTS object and obtain the pointer to the data.
+Call **napi_unwrap** to obtain the data pointer wrapped in an object.
 
 > **NOTE**
 >

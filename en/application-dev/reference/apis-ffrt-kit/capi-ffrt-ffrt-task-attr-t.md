@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} ffrt_task_attr_t
+```
+
 ## Overview
 
 The **ffrt_task_attr_t** struct describes a concurrent task attribute.

@@ -6,9 +6,13 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```c
+typedef struct {...} ArkWeb_CookieManagerAPI
+```
+
 ## Overview
 
-Defines the CookieManager API of ArkWeb. Before calling this API, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM.
+Defines the CookieManager API of ArkWeb. Before calling this API, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM. The CookieManager APIs must be called on the UI thread through **OH_ArkWeb_GetNativeAPI**.
 
 **Since**: 12
 
@@ -39,7 +43,7 @@ Defines the CookieManager API of ArkWeb. Before calling this API, you are advise
 
 ### fetchCookieSync()
 
-```
+```c
 ArkWeb_ErrorCode (*fetchCookieSync)(const char* url, bool incognito, bool includeHttpOnly, char** cookieValue)
 ```
 
@@ -64,7 +68,7 @@ Obtains the cookie value of a specified URL.
 
 ### configCookieSync()
 
-```
+```c
 ArkWeb_ErrorCode (*configCookieSync)(const char* url,const char* cookieValue, bool incognito, bool includeHttpOnly)
 ```
 
@@ -89,7 +93,7 @@ Sets the cookie value of a specified URL.
 
 ### existCookies()
 
-```
+```c
 bool (*existCookies)(bool incognito)
 ```
 
@@ -111,7 +115,7 @@ Checks whether cookies exist.
 
 ### clearAllCookiesSync()
 
-```
+```c
 void (*clearAllCookiesSync)(bool incognito)
 ```
 
@@ -128,7 +132,7 @@ Clears all cookies.
 
 ### clearSessionCookiesSync()
 
-```
+```c
 void (*clearSessionCookiesSync)()
 ```
 

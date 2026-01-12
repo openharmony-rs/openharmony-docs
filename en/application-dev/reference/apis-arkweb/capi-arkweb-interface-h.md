@@ -10,6 +10,8 @@
 
 Declares ArkWeb APIs for obtaining native APIs and the basic native API types.
 
+**File to include**: <web/arkweb_interface.h>
+
 **Library**: libohweb.so
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -43,7 +45,7 @@ Declares ArkWeb APIs for obtaining native APIs and the basic native API types.
 
 ### ArkWeb_NativeAPIVariantKind
 
-```
+```c
 enum ArkWeb_NativeAPIVariantKind
 ```
 
@@ -67,7 +69,7 @@ Enumerates the native API types.
 
 ### OH_ArkWeb_GetNativeAPI()
 
-```
+```c
 ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 ```
 
@@ -93,7 +95,7 @@ Obtains the native API struct based on the transferred API type.
 
 ### OH_ArkWeb_RegisterScrollCallback()
 
-```
+```c
 bool OH_ArkWeb_RegisterScrollCallback(const char* webTag, ArkWeb_OnScrollCallback callback, void* userData)
 ```
 

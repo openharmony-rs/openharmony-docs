@@ -1707,7 +1707,7 @@ Describes the animation information of the **Swiper** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name           | Type      | Read Only| Optional| Description                                      |
+| Name           | Type      | Read-Only| Optional| Description                                      |
 | ------------- | ----------- | ---- | ---- |------------------------------- |
 | currentOffset | number | No| No| Offset of the currently displayed element relative to the start position of the **Swiper** along the main axis. Unit: vp<br>Default value: **0**|
 | targetOffset | number | No| No| Offset of the target element relative to the start position of the **Swiper** along the main axis. Unit: vp<br>Default value: **0**|
@@ -1736,7 +1736,7 @@ Implements the proxy object returned during the execution of the custom page tra
 
 ### Attributes
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | --- | ---- | --- |
 | selectedIndex | number | No| No| Index of the currently selected page.|
 | index | number | No| No| Index of a page in the viewport.|

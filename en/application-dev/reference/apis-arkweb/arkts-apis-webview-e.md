@@ -342,6 +342,17 @@ Enumerates the destroy modes of the **Web** component. When the Web component is
 | NORMAL_MODE | 0 | Normal mode. The system determines the destroy time of **Web** component resources.|
 | FAST_MODE   | 1 | Quick mode. When the **Web** component is destroyed, the related internal resources are destroyed immediately.|
 
+## ScrollbarMode<sup>23+</sup>
+
+Enumerates the global scrollbar modes in the web page.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name| Value| Description|
+| ------------------------------- | - | ---------- |
+| OVERLAY_LAYOUT_SCROLLBAR  | 0 | The scrollbar is not always displayed.|
+| FORCE_DISPLAY_SCROLLBAR    | 1 | The scrollbar is always displayed.|
+
 ## WebBlanklessErrorCode<sup>20+</sup>
 
 Enumerates the error codes of the blankless loading.
@@ -356,6 +367,22 @@ Enumerates the error codes of the blankless loading.
 | ERR_CONTROLLER_NOT_INITED   | -3 | **WebViewController** is not bound to any component.|
 | ERR_KEY_NOT_MATCH   | -4 | No key value is matched. [setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20) must be used with [getBlanklessInfoWithKey](./arkts-apis-webview-WebviewController.md#getblanklessinfowithkey20) and their key values must be the same. Otherwise, this error code is returned.|
 | ERR_SIGNIFICANT_CHANGE   | -5 | The similarity is low, and the system determines that the scene change is too large. As a result, the [setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20) API does not enable frame interpolation.|
+| ERR_DURATION_OUT_OF_RANGE<sup>23+</sup>   | -6 | The frame interpolation duration set in [BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23) is out of range.|
+| ERR_EXPIRATION_TIME_OUT_OF_RANGE<sup>23+</sup>   | -7 | The historical frame expiration time set in [BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23) is out of range.|
+
+## BlanklessFrameInterpolationState <sup>23+</sup>
+
+Frame interpolation status of blankless loading.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Value| Description|
+| ------------------------------- | - | ---------- |
+| FRAME_INTERPOLATION_SUCCEEDED | 0 | Frame interpolation succeeded.|
+| FRAME_INTERPOLATION_FAILED   | 1 | Frame interpolation failed.|
+| FRAME_INTERPOLATION_REMOVED   | 2 | The frame interpolation is removed.|
 
 ## ArkWebEngineVersion<sup>20+</sup>
 
@@ -368,12 +395,14 @@ For details about the ArkWeb kernel version, see [Adaptation Guide for the M114 
 | SYSTEM_DEFAULT   | 0     | Default system kernel. For OpenHarmony 6.0, the default kernel is M132.|
 | M114             | 1     | Legacy kernel of OpenHarmony 6.0. You can select this legacy kernel. If it does not exist, the setting is invalid.|
 | M132             | 2     | Evergreen kernel of OpenHarmony 6.0, which is M132 by default. If it does not exist, the setting is invalid.|
+| ARKWEB_EVERGREEN<sup>23+</sup> | 99999 | Evergreen kernel, which is the latest kernel of the system. You can choose to use the latest kernel for each system version. This setting takes effect for OpenHarmony 6.1 and later versions.|
 
->**Table 1** Description of evergreen kernel and legacy kernel
->| **Kernel Type** | **Name** | **Description** |
->| ----------- | -------- | -------- |
->| Evergreen kernel     | EVERGREEN WebCore | Latest Web kernel of the system, based on which the complete functionalities are implemented. This kernel is recommended for applications. |
->| Legacy kernel     | LEGACY WebCore | A previous-release kernel that receives only security and PR-related fixes, used solely for compatibility rollback, and is supported for a fixed duration only. |
+**Table 1** Description of evergreen kernel and legacy kernel
+
+| Kernel Type| Name| Description|
+| ----------- | -------- | -------- |
+| Evergreen kernel    | EVERGREEN WebCore | Latest Web kernel of the system, based on which the complete functionalities are implemented. This kernel is recommended for applications.|
+| Legacy kernel    | LEGACY WebCore    | A previous-release kernel that receives only security and PR-related fixes, used solely for compatibility rollback, and is supported for a fixed duration only.|
 
 
 ## SiteIsolationMode<sup>21+</sup>
@@ -398,3 +427,15 @@ Enumerates the behavior modes of the web soft keyboard.
 | ------------------------------- | - | ---------- |
 | DEFAULT | 0 | When the **Web** component is focused or unfocused, or its status changes to inactive or active, the system attempts to hide or display the soft keyboard. This value is used by default.|
 | DISABLE_AUTO_KEYBOARD_ON_ACTIVE | 1 | When the **Web** component's status changes between inactive and active, the system does not hide or start the soft keyboard.|
+
+## WebHttpCookieSameSitePolicy<sup>23+</sup>
+
+Enumerates the policies for sending cookies in cross-site requests.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name| Value| Description|
+| ---- | -- |----------------------------------------- |
+| NONE | 0 | Cookies can be carried in cross-site requests, but the **secure** attribute must be set.|
+| LAX | 1 | Cookies can be carried in specific cross-site requests, such as navigation scenarios of some GET requests.|
+| STRICT | 2 | Cookies cannot be carried in cross-site requests.|

@@ -24,11 +24,7 @@ AppStorage提供了API接口，允许开发者在自定义组件外手动触发A
 
 AppStorage是在应用启动时创建的单例，用于提供应用状态数据的中心存储。这些状态数据在应用级别可访问。AppStorage在应用运行过程中保留其属性。
 
-AppStorage中保存的属性通过唯一的字符串类型属性名（key）访问，该属性可以和UI组件同步，且可以在应用业务逻辑中被访问。
-
-AppStorage支持应用的[主线程](../../application-models/thread-model-stage.md)内多个[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例间的UI状态数据共享。
-
-AppStorage中的属性通过唯一的字符串类型key值访问，支持与UI组件同步，并可在应用业务逻辑中被访问。其支持应用的[主线程](../../application-models/thread-model-stage.md)内多个[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例间的UI状态数据共享。
+AppStorage中的属性通过唯一的字符串类型属性名（key）访问，支持与UI组件同步，并可在应用业务逻辑中被访问。其支持应用的[主线程](../../application-models/thread-model-stage.md)内多个[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例间的UI状态数据共享。
 
 AppStorage中的属性可以被双向同步，并具有不同的功能，比如数据持久化（详见[PersistentStorage](arkts-persiststorage.md)）。这些UI状态是通过业务逻辑实现，与UI解耦，如果希望这些UI状态在UI中使用，需要用到[@StorageProp](#storageprop)和[@StorageLink](#storagelink)。
 
@@ -156,15 +152,22 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
     @StorageLink('propA') storageLink: number = 2;
     ```
 
-2. \@StorageProp与\@StorageLink不支持装饰Function类型的变量，框架会抛出运行时错误。
+2. \@StorageProp与\@StorageLink不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@StorageProp与\@StorageLink装饰Function类型变量的校验，编译期会报错。
 
 3. AppStorage与[PersistentStorage](arkts-persiststorage.md)以及[Environment](arkts-environment.md)配合使用时，需要注意以下几点：
 
     a. 在AppStorage中创建属性后，调用PersistentStorage.[persistProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#persistpropdeprecated)接口时，会使用AppStorage中已存在的值，并覆盖PersistentStorage中的同名属性。因此，建议使用相反的调用顺序。反例可见[在PersistentStorage之前访问AppStorage中的属性](arkts-persiststorage.md#在persistentstorage之前访问appstorage中的属性)。
 
     b. 如果在AppStorage中已创建属性，再调用Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)创建同名属性，会调用失败。因为AppStorage已有同名属性，Environment环境变量不会再写入AppStorage中，所以建议不要在AppStorage中使用Environment预置环境变量名。
+    
+    ```ts
+    AppStorage.setOrCreate('languageCode', 'en');
+    // result结果为false
+    let result = Environment.envProp('languageCode','en'); 
+    ```
 
-4. 状态装饰器装饰的变量，改变会引起UI的渲染更新。如果改变的变量仅用于消息传递，不用于UI更新，推荐使用emitter方式。具体示例可见[不建议借助@StorageLink的双向同步机制实现事件通知](#不建议借助storagelink的双向同步机制实现事件通知)。
+4. 状态装饰器装饰的变量，改变会引起UI的渲染更新。如果改变的变量仅用于消息传递，不用于UI更新，推荐使用[emitter](../../reference/apis-basic-services-kit/js-apis-emitter.md)方式。具体示例可见[不建议借助@StorageLink的双向同步机制实现事件通知](#不建议借助storagelink的双向同步机制实现事件通知)。
 
 5. AppStorage同一进程内共享，UIAbility和<!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability-sys.md)<!--DelEnd-->是两个进程，所以在<!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability-sys.md)<!--DelEnd-->中不共享主进程的AppStorage。
 
@@ -172,7 +175,7 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
 ### 从应用逻辑使用AppStorage和LocalStorage
 
-AppStorage是单例，其所有API均为静态方法，使用方法类似于LocalStorage中对应的非静态方法。
+AppStorage是单例，其所有API均为静态方法，使用方法类似于[LocalStorage](./arkts-localstorage.md)中对应的非静态方法。
 
 ```ts
 AppStorage.setOrCreate('propA', 47);
@@ -475,6 +478,123 @@ struct SetSample {
 }
 ```
 
+### AppStroage在多页面中共享使用
+
+在下面示例中，Index和Page页面通过同一个全局AppStorage对象共享linkA数据。在一处修改其值，另一处也能获取到更新后的值。
+
+<!-- @[appstorage_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+AppStorage.setOrCreate('linkA', 47)
+AppStorage.setOrCreate('propB', 48)
+
+@Entry
+@Component
+struct Index {
+  @StorageLink('linkA') linkA: number = 1; // 与AppStorage进行双向数据同步
+  @StorageProp('propB') propB: number = 1; // 与AppStorage进行单向数据同步
+  pageStack: NavPathStack = new NavPathStack();
+
+  build() {
+    Navigation(this.pageStack) {
+      Row() {
+        Column({ space: 5 }) {
+          Text(`${this.linkA}`)
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+          Text(`${this.propB}`)
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+          Button('Change linkA')
+            .onClick(() => {
+              // 刷新UI，修改将会被同步回AppStorage
+              this.linkA++;
+            })
+          Button('Change propB')
+            .onClick(() => {
+              // 刷新UI，修改不会被同步回AppStorage
+              this.propB++;
+            })
+          Button('To Page')
+            .onClick(() => {
+              this.pageStack.pushPathByName('Page', null);
+            })
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+  }
+}
+```
+
+<!-- @[appstorage_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Page.ets) --> 
+
+``` TypeScript
+@Builder
+export function PageBuilder() {
+  Page()
+}
+
+// 应用全局共享一个AppStorage
+@Component
+struct Page {
+  @StorageLink('linkA') linkA: number = 2; // 与AppStorage进行双向数据同步
+  @StorageProp('propB') propB: number = 2; // 与AppStorage进行单向数据同步
+  pageStack: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Row() {
+        Column({ space: 5 }) {
+          Text(`${this.linkA}`)
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+          Text(`${this.propB}`)
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+          Button('Change linkA')
+            .onClick(() => {
+              // 刷新UI，修改将会被同步回AppStorage
+              this.linkA++;
+            })
+          Button('Change propB')
+            .onClick(() => {
+              // 刷新UI，修改不会被同步回AppStorage
+              this.propB++;
+            })
+          Button('Back Index')
+            .onClick(() => {
+              this.pageStack.pop();
+            })
+        }
+        .width('100%')
+      }
+    }
+    .onReady((context: NavDestinationContext) => {
+      this.pageStack = context.pathStack;
+    })
+  }
+}
+```
+
+使用Navigation时，需要手动添加系统路由表文件src/main/resources/base/profile/router_map.json，并在module.json5中添加:"routerMap": "$profile:router_map"。
+
+```json
+{
+  "routerMap": [
+    {
+      "name": "Page",
+      "pageSourceFile": "src/main/ets/pages/Page.ets",
+      "buildFunction": "PageBuilder",
+      "data": {
+        "description": "AppStorage example"
+      }
+    }
+  ]
+}
+```
+
 ## AppStorage使用建议
 
 ### 不建议借助@StorageLink的双向同步机制实现事件通知
@@ -507,7 +627,7 @@ class ViewData {
 @Entry
 @Component
 struct Gallery {
-  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  // 请将$r('app.media.startIcon')替换为实际资源文件
   dataList: Array<ViewData> =
     [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
       new ViewData('OMG', $r('app.media.startIcon'))];
@@ -603,7 +723,7 @@ class ViewData {
 @Entry
 @Component
 struct Gallery {
-  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  // 请将$r('app.media.startIcon')替换为实际资源文件
   dataList: Array<ViewData> =
     [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
       new ViewData('OMG', $r('app.media.startIcon'))];
@@ -709,7 +829,7 @@ class ViewData {
 @Entry
 @Component
 struct Gallery {
-  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  // 请将$r('app.media.startIcon')替换为实际资源文件
   dataList: Array<ViewData> =
     [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
       new ViewData('OMG', $r('app.media.startIcon'))];
@@ -765,7 +885,7 @@ export struct TapImage {
 
 ### \@StorageProp和AppStorage接口配合使用时，需要注意更新规则
 
-使用setOrCreate/set接口更新key的值时，如果值相同，setOrCreate不会通知\@StorageLink/\@StorageProp更新，但因为\@StorageProp本身有数据副本，更改值不会同步给AppStorage，这会导致开发者误认己通过AppStorage改了值，但实际上未通知\@StorageProp更新值的情况。
+使用setOrCreate/set接口更新key的值时，如果值相同，setOrCreate不会通知\@StorageLink/\@StorageProp更新，但因为\@StorageProp本身有数据副本，更改值不会同步给AppStorage，这会导致开发者误认已通过AppStorage改了值，但实际上未通知\@StorageProp更新值的情况。
 示例如下。
 
 <!-- @[appstorage_page_ten](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTen.ets) -->

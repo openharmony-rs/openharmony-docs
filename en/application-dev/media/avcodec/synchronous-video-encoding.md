@@ -248,7 +248,7 @@ The following walks you through how to implement the entire video encoding proce
                 bool getIntRet = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_WIDTH, &width) &&
                                  OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_HEIGHT, &height);
                 if (!getIntRet) {
-                 	// Handle exceptions.
+                    // Handle exceptions.
                 }
                 break;
             }
@@ -450,7 +450,7 @@ The following walks you through how to implement the entire video encoding proce
 
     - Call [OH_VideoEncoder_QueryInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryinputbuffer) to obtain the index of the next available input buffer.
     - Based on this index, call [OH_VideoEncoder_GetInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputbuffer) to obtain the buffer instance.
-    - Write the data to be encoded to the buffer, and call [OH_VideoEncoder_PushInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputbuffer) to push it into the encoding input queue for encoding. When all the data to be processed has been passed to the encoder, set flag to **AVCODEC_BUFFER_FLAGS_EOS** to notify the encoder that the input is complete.
+    - Write the data to be encoded to the buffer, and call [OH_VideoEncoder_PushInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputbuffer) to push it into the encoding input queue for encoding. Once the last frame of data is sent to the input buffer for encoding, set the flag to [AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags) to notify the encoder that the input is complete.
 
 
     The meanings of the variables **size**, **offset**, **pts**, **frameData**, and **flags** in the example are the same as those in surface mode.
@@ -482,7 +482,7 @@ The following walks you through how to implement the entire video encoding proce
                     bool getIntRet = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_STRIDE, &widthStride) &&
                                      OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_SLICE_HEIGHT, &heightStride);
                      if (!getIntRet) {
-                     	// Handle exceptions.
+                        // Handle exceptions.
                      }
                     isFirstFrame = false;
                 }
@@ -505,7 +505,10 @@ The following walks you through how to implement the entire video encoding proce
                 OH_AVCodecBufferAttr info;
                 info.size = frameSize;
                 info.offset = 0;
+                // Unlike the surface mode, in buffer mode, the application must explicitly set pts. Compute it based on the intended display time, for example, frameIndex * 1000000 / frameRate.
                 info.pts = 0;
+                // Set the AVCODEC_BUFFER_FLAGS_EOS flag when the last frame of data is input.
+                // info.flags = AVCODEC_BUFFER_FLAGS_EOS;
                 OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &info);
                 if (setBufferRet != AV_ERR_OK) {
                     // Handle exceptions.

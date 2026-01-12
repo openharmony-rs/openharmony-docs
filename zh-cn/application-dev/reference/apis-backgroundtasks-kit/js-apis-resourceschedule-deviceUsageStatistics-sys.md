@@ -16,7 +16,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { usageStatistics } from '@kit.BackgroundTasksKit'
 ```
 
@@ -45,7 +45,7 @@ isIdleState(bundleName: string, callback: AsyncCallback&lt;boolean&gt;): void
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.         |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -96,7 +96,7 @@ isIdleState(bundleName: string): Promise&lt;boolean&gt;
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.         |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -145,7 +145,7 @@ isIdleStateSync(bundleName: string): boolean
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.         |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -320,7 +320,7 @@ queryAppGroup(bundleName : string): Promise&lt;number&gt;
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -369,7 +369,7 @@ queryAppGroup(bundleName : string, callback: AsyncCallback&lt;number&gt;): void
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -424,7 +424,7 @@ queryAppGroupSync(bundleName: string): number
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -471,7 +471,7 @@ setAppGroup(bundleName: string, newGroup: GroupType): Promise&lt;void&gt;
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -521,7 +521,7 @@ setAppGroup(bundleName: string, newGroup: GroupType, callback: AsyncCallback&lt;
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -573,7 +573,7 @@ queryBundleStatsInfos(begin: number, end: number, callback: AsyncCallback&lt;Bun
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -628,7 +628,7 @@ queryBundleStatsInfos(begin: number, end: number): Promise&lt;BundleStatsMap&gt;
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -681,7 +681,7 @@ queryAppStatsInfos(begin: number, end: number): Promise&lt;AppStatsMap&gt;
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -733,7 +733,7 @@ queryLastUseTime(appInfo: Record&lt;string, Array&lt;number&gt;&gt;): Promise&lt
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -783,7 +783,7 @@ queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: num
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -842,7 +842,7 @@ queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: num
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -893,7 +893,7 @@ queryBundleEvents(begin: number, end: number, callback: AsyncCallback&lt;Array&l
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -951,7 +951,7 @@ queryBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -999,7 +999,7 @@ queryCurrentBundleEvents(begin: number, end: number, callback: AsyncCallback&lt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1054,7 +1054,7 @@ queryCurrentBundleEvents(begin: number, end: number): Promise&lt;Array&lt;Bundle
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1110,7 +1110,7 @@ queryDeviceEventStats(begin: number, end: number): Promise&lt;Array&lt;DeviceEve
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1158,7 +1158,7 @@ queryDeviceEventStats(begin: number, end: number, callback: AsyncCallback&lt;Arr
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1213,7 +1213,7 @@ queryNotificationEventStats(begin: number, end: number): Promise&lt;Array&lt;Dev
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1261,7 +1261,7 @@ queryNotificationEventStats(begin: number, end: number, callback: AsyncCallback&
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1311,7 +1311,7 @@ queryModuleUsageRecords(): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1525,7 +1525,7 @@ registerAppGroupCallBack(groupCallback: Callback&lt;AppGroupCallbackInfo&gt;): P
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1579,7 +1579,7 @@ registerAppGroupCallBack(groupCallback: Callback&lt;AppGroupCallbackInfo&gt;, ca
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1634,7 +1634,7 @@ unregisterAppGroupCallBack(): Promise&lt;void&gt;
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1678,7 +1678,7 @@ unregisterAppGroupCallBack(callback: AsyncCallback&lt;void&gt;): void;
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |

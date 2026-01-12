@@ -35,7 +35,7 @@
 **配置示例**
 ```json
 "devDependencies": {
-    "@ohos/hypium": "1.0.24"
+    "@ohos/hypium": "1.0.25"
   }
 ```
 
@@ -61,21 +61,23 @@
 
 <!-- @[basic_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets) -->
 
-```TypeScript
-import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
+``` TypeScript
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility, Want } from '@kit.AbilityKit';
 
 const delegator = abilityDelegatorRegistry.getAbilityDelegator();
+
 function sleep(time: number) {
   return new Promise<void>((resolve: Function) => setTimeout(resolve, time));
 }
+
 export default function abilityTest() {
-  describe('ActsAbilityTest', () =>{
-  // 测试套名称为ActsAbilityTest
+  describe('ActsAbilityTest', () => {
+    // 测试套名称为ActsAbilityTest
     // 可根据此处设置的用例类型、用例规模、用例级别进行用例筛选
-    it('testExample',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-    // 测试用例名称为testExample
+    it('testExample', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      // 测试用例名称为testExample
       await sleep(500);
       const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
       // 启动被测试Ability
@@ -93,7 +95,7 @@ export default function abilityTest() {
   })
 }
 ```
-### DevEco Stuido执行测试脚本
+### DevEco Studio执行测试脚本
 
 连接目标测试设备（如手机），在DevEco Studio页面点击对应按钮执行测试脚本，当前支持以下四种方式：
 
@@ -226,7 +228,7 @@ export default function abilityTest() {
 * 查看测试结果
 
 1. 在命令行模式执行过程中，框架会打印如下日志信息。
-    ```
+    ```txt
     OHOS_REPORT_STATUS: class=ActsAbilityTest
     OHOS_REPORT_STATUS: current=1
     OHOS_REPORT_STATUS: id=JS
@@ -255,7 +257,7 @@ export default function abilityTest() {
     | OHOS_REPORT_STATUS_CODE | 当前用例执行状态。1表示用例开始执行，0表示用例执行通过，-1表示用例执行报错，-2表示用例执行失败。|
     | OHOS_REPORT_STATUS: consuming | 当前用例执行消耗的时长（ms）。 |
 2. 命令行执行完成后，框架会打印如下相关日志信息。
-    ```
+    ```txt
     OHOS_REPORT_RESULT: stream=Tests run: 447, Failure: 0, Error: 1, Pass: 201, Ignore: 245
     OHOS_REPORT_CODE: 0
     
@@ -284,56 +286,58 @@ export default function abilityTest() {
 |  it          | 定义一条测试用例。          |
 |  beforeAll         | 在测试套内定义一个预置条件，在所有测试用例开始前执行且仅执行一次。                        |
 |  beforeEach        | 在测试套内定义一个预置条件，在每条测试用例开始前执行，执行次数与it定义的测试用例数一致。          |
+| beforeEachIt | 在测试套内定义一个单元预置条件，在每条测试用例开始前执行。<br/>外层测试套定义的beforeEachIt会在内部测试套中的测试用例执行前执行。<br/>**说明**：从@ohos/hypium 1.0.25版本开始支持。 |
 |  afterEach         | 在测试套内定义一个单元清理条件，在每条测试用例结束后执行，执行次数与it定义的测试用例数一致。          |
+| afterEachIt | 在测试套内定义一个单元预置条件，在每条测试用例结束后执行。<br/>外层测试套定义的afterEachIt会在内部测试套中的测试用例执行结束后执行。<br/>**说明**：从@ohos/hypium 1.0.25版本开始支持。 |
 |  afterAll          | 在测试套内定义一个清理条件，在所有测试用例结束后执行且仅执行一次。                        |
 |  beforeItSpecified | 在测试套内定义一个单元预置条件，仅在指定测试用例开始前执行。<br>**说明**：从@ohos/hypium 1.0.15版本开始支持。 |
 |  afterItSpecified  | 在测试套内定义一个单元清理条件，仅在指定测试用例结束后执行。<br>**说明**：从@ohos/hypium 1.0.15版本开始支持。 |
 |  expect            | 支持bool类型判断等多种断言能力。                        |
 |  xdescribe    | 定义一个跳过的测试套，测试套中可以定义多个测试用例函数，但不支持异步函数。<br>**说明**：从@ohos/hypium 1.0.17版本开始支持。                             |
-|  xit                | 定义一条跳过的测试用例。    <br>**说明**：从@ohos/hypium 1.0.17版本开始支持。                     |
+|  xit                | 定义一条跳过的测试用例。 <br>**说明**：从@ohos/hypium 1.0.17版本开始支持。                    |
 
 **示例代码1**：beforeAll/beforeEach/afterEach/afterAll使用示例
 
 <!-- @[order1_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder1.test.ets) -->
 
-```TypeScript
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
+``` TypeScript
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 
 export default function exampleTest() {
-  
-  describe('order1_sample', () =>{
-    let testNumA : number = 1;
-    let testNumB : number = 1;
-    
+
+  describe('order1_sample', () => {
+    let testNumA: number = 1;
+    let testNumB: number = 1;
+
     beforeAll(() => {
       testNumA++;
     })
-  
+
     beforeEach(() => {
       testNumA++;
       testNumB++;
     })
- 
+
     afterEach(() => {
       testNumA++;
     })
-  
+
     afterAll(() => {
-      let expectValue : number = 5;
+      let expectValue: number = 5;
       expect(testNumA).assertEqual(expectValue);
     })
-     
-    it('testExampleA',Level.LEVEL1, async (done: Function) => {
-      let expectA : number = 3;
-      let expectB : number = 2;
+
+    it('testExampleA', Level.LEVEL1, async (done: Function) => {
+      let expectA: number = 3;
+      let expectB: number = 2;
       expect(testNumA).assertEqual(expectA);
       expect(testNumB).assertEqual(expectB);
       done();
     })
 
-    it('testExampleB',Level.LEVEL1, async (done: Function) => {
-      let expectA : number = 5;
-      let expectB : number = 3;
+    it('testExampleB', Level.LEVEL1, async (done: Function) => {
+      let expectA: number = 5;
+      let expectB: number = 3;
       expect(testNumA).assertEqual(expectA);
       expect(testNumB).assertEqual(expectB);
       done();
@@ -345,29 +349,29 @@ export default function exampleTest() {
 
 <!-- @[order2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder2.test.ets) -->
 
-```TypeScript
-import { describe, beforeItSpecified, afterItSpecified, it, expect, Level } from '@ohos/hypium';
+``` TypeScript
+import { afterItSpecified, beforeItSpecified, describe, expect, it, Level } from '@ohos/hypium';
 
 export default function exampleTest() {
-    
-  describe('order2_sample', () =>{
-   let testNumA : number = 1;
-   let testNumB : number = 1;
 
-   beforeItSpecified(['testExampleB'], () => {
+  describe('order2_sample', () => {
+    let testNumA: number = 1;
+    let testNumB: number = 1;
+
+    beforeItSpecified(['testExampleB'], () => {
       testNumB++;
     })
-   afterItSpecified(['testExampleA'], () => {
+    afterItSpecified(['testExampleA'], () => {
       testNumA++;
     })
-      
-    it('testExampleA',Level.LEVEL1, async (done: Function) => {
+
+    it('testExampleA', Level.LEVEL1, async (done: Function) => {
       expect(testNumA).assertEqual(1);
       expect(testNumB).assertEqual(1);
       done();
     })
 
-    it('testExampleB',Level.LEVEL1, async (done: Function) => {
+    it('testExampleB', Level.LEVEL1, async (done: Function) => {
       expect(testNumA).assertEqual(2);
       expect(testNumB).assertEqual(2);
       done();
@@ -379,24 +383,64 @@ export default function exampleTest() {
 
 <!-- @[order3_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder3.test.ets) -->
 
-```TypeScript
-import { describe, xit, it, Level } from '@ohos/hypium';
+``` TypeScript
+import { describe, it, Level, xit } from '@ohos/hypium';
 
 export default function describeExampleTest() {
-  
-  describe('order3_sample', () =>{
-    xit('testExampleA',Level.LEVEL1, async (done: Function) => {
+
+  describe('order3_sample', () => {
+    xit('testExampleA', Level.LEVEL1, async (done: Function) => {
       done();
     })
 
-    it('testExampleB',Level.LEVEL1, async (done: Function) => {
+    it('testExampleB', Level.LEVEL1, async (done: Function) => {
       done();
     })
   })
 }
 ```
 
+**示例代码4**：beforeEachIt/afterEachIt使用示例，从1.0.25版本开始支持
+
+<!-- @[order4_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder4.test.ets) -->
+
+``` TypeScript
+import { describe, beforeEach, afterEach, beforeEachIt, afterEachIt, it, expect } from '@ohos/hypium';
+let str = "";
+export default function test() {
+  describe('test0', () => {
+    beforeEach(async () => {
+      str += "A"
+    })
+    beforeEachIt(async () => {
+      str += "B"
+    })
+    afterEach(async () => {
+      str += "C"
+    })
+    afterEachIt(async () => {
+      str += "D"
+    })
+    it('test0000', 0, () => {
+      expect(str).assertEqual("BA");
+    })
+    describe('test1', () => {
+      beforeEach(async () => {
+        str += "E"
+      })
+      beforeEachIt(async () => {
+        str += "F"
+      })
+      it('test1111', 0, async () => {
+        expect(str).assertEqual("BACDBFE");
+      })
+    })
+  })
+}
+```
+
 ### 断言能力
+
 单元测试框架提供了丰富的断言接口，供开发者在不同测试场景下使用，详细接口可查看下表。
 | 接口名                | 功能说明                                                        |
 | :------------------|-------------------------------------------------------------|
@@ -430,11 +474,11 @@ export default function describeExampleTest() {
 
 <!-- @[assert_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/assertExampleTest/AssertExample.test.ets) -->
 
-```TypeScript
-import { describe, it, expect, Level } from '@ohos/hypium';
+``` TypeScript
+import { describe, expect, it, Level } from '@ohos/hypium';
 
 export default function exampleTest() {
-  describe('ExampleTest', () =>{
+  describe('ExampleTest', () => {
     it('assertCloseTest', Level.LEVEL1, () => {
       let a: number = 100;
       let b: number = 0.1;
@@ -443,7 +487,7 @@ export default function exampleTest() {
     })
 
     it('assertContain_1', Level.LEVEL1, () => {
-      let a = "abc";
+      let a = 'abc';
       expect(a).assertContain('b');
     })
 
@@ -535,31 +579,32 @@ export default function exampleTest() {
       expect(a).assertDeepEquals(b);
     })
 
-    it("deepEquals_obj_success_1", Level.LEVEL1, () => {
-      const a: SampleTest = {x: 1};
-      const b: SampleTest = {x: 1};
+    it('deepEquals_obj_success_1', Level.LEVEL1, () => {
+      const a: SampleTest = { x: 1 };
+      const b: SampleTest = { x: 1 };
       expect(a).assertDeepEquals(b);
     })
 
-    it("deepEquals_regExp_success_0", Level.LEVEL1, () => {
-      const a: RegExp = new RegExp("/test/");
-      const b: RegExp = new RegExp("/test/");
+    it('deepEquals_regExp_success_0', Level.LEVEL1, () => {
+      const a: RegExp = new RegExp('/test/');
+      const b: RegExp = new RegExp('/test/');
       expect(a).assertDeepEquals(b);
     })
 
     it('assertPromiseIsPendingTest', Level.LEVEL1, async () => {
-      let p: Promise<void> = new Promise<void>(() => {});
+      let p: Promise<void> = new Promise<void>(() => {
+      });
       await expect(p).assertPromiseIsPending();
     })
 
     it('assertPromiseIsRejectedTest', Level.LEVEL1, async () => {
-      let info: PromiseInfo = {res: "no"};
+      let info: PromiseInfo = { res: 'no' };
       let p: Promise<PromiseInfo> = Promise.reject(info);
       await expect(p).assertPromiseIsRejected();
     })
 
     it('assertPromiseIsRejectedWithTest', Level.LEVEL1, async () => {
-      let info: PromiseInfo = {res: "reject value"};
+      let info: PromiseInfo = { res: 'reject value' };
       let p: Promise<PromiseInfo> = Promise.reject(info);
       await expect(p).assertPromiseIsRejectedWith(info);
     })
@@ -568,20 +613,20 @@ export default function exampleTest() {
       let p1: Promise<TypeError> = Promise.reject(new TypeError('number'));
       await expect(p1).assertPromiseIsRejectedWithError(TypeError);
     })
-    
+
     it('assertPromiseIsResolvedTest', Level.LEVEL1, async () => {
-      let info: PromiseInfo = {res: "result value"};
+      let info: PromiseInfo = { res: 'result value' };
       let p: Promise<PromiseInfo> = Promise.resolve(info);
       await expect(p).assertPromiseIsResolved();
     })
 
     it('assertPromiseIsResolvedWithTest', Level.LEVEL1, async () => {
-      let info: PromiseInfo = {res: "result value"};
+      let info: PromiseInfo = { res: 'result value' };
       let p: Promise<PromiseInfo> = Promise.resolve(info);
       await expect(p).assertPromiseIsResolvedWith(info);
     })
 
-    it("test_message", Level.LEVEL1, () => {
+    it('test_message', Level.LEVEL1, () => {
       expect(1).message('1 is not equal 2!').assertEqual(2); // fail
     })
   })
@@ -602,18 +647,20 @@ interface PromiseInfo {
 >
 >仅支持Mock应用工程中自定义对象，不支持Mock系统API对象。如需Mock系统API，请参考[系统模块Mock指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-test-mock#section8353132513310)。
 >
->不支持Mock对象的私有函数。 
 
 **基础类**
 
-Mockit是Mock的基础类，用于指定需要Mock的实例和函数。
+MockKit是Mock的基础类，用于指定需要Mock的实例和函数。
+
 | 接口名 | 功能说明                 |
 | --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
 | mockFunc| Mock某个类实例中的函数，支持使用异步函数。                                                 |
+| mockPrivateFunc | Mock某个类的实例上的私有方法。<br/>**说明**：从@ohos/hypium 1.0.25版本开始支持。 |
+| mockProperty | Mock某个类的实例上的属性。<br/>**说明**：从@ohos/hypium 1.0.25版本开始支持。 |
 | verify | 验证函数在对应参数下的执行行为是否符合预期，返回一个VerificationMode类。 |
 | ignoreMock | 使用ignoreMock可以还原实例中被Mock后的函数，对被Mock后的函数有效。                                                                                                   |
 | clear | 用例执行完毕后，对被Mock对象实例进行还原处理（还原之后对象恢复被Mock之前的功能）。                                                                       |
-| clearAll | 用例执行完毕后，进行数据和内存清理，不会还原实例中被Mock后的函数。                                  |  
+| clearAll | 用例执行完毕后，进行数据和内存清理，不会还原实例中被Mock后的函数。                                  |
 
 **VerificationMode**
 
@@ -651,11 +698,11 @@ ArgumentMatchers用于用户自定义函数参数，当开发者想基于某类�
 | anyBoolean | 设定用户传任何boolean类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyBoolean方式调用。                                                                               |
 | anyFunction | 设定用户传任何function类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyFunction方式调用。                                                                             |
 | anyNumber | 设定用户传任何数字类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyNumber方式调用。                                                                                     |
-| anyObj | 设定用户传任何对象类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyObj方式调用。 
+| anyObj | 设定用户传任何对象类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyObj方式调用。 |
 
 | 接口名 | 功能说明    |
 | --- |--------------|                                           
-| matchRegexs | 设定用户传任何符合正则表达式验证的参数，执行的结果都是预期的值，使用ArgumentMatchers.matchRegexs(Regex)方式调用。 
+| matchRegexs | 设定用户传任何符合正则表达式验证的参数，执行的结果都是预期的值，使用ArgumentMatchers.matchRegexs(Regex)方式调用。 |
 
 
 > **说明：**
@@ -667,7 +714,7 @@ ArgumentMatchers用于用户自定义函数参数，当开发者想基于某类�
 
 <!-- @[afterReturn_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterReturn.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
@@ -678,6 +725,7 @@ class ClassName {
     return '888888';
   }
 }
+
 export default function afterReturnTest() {
   describe('afterReturn_sample', () => {
     it('afterReturnTest', 0, () => {
@@ -702,8 +750,8 @@ export default function afterReturnTest() {
 
 <!-- @[argumentMatchersForAny_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForAny.test.ets) -->
 
-```TypeScript
-import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+``` TypeScript
+import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
   constructor() {
@@ -713,6 +761,7 @@ class ClassName {
     return '888888';
   }
 }
+
 export default function argumentMatchersAnyTest() {
   describe('argumentMatchersForAny_sample', () => {
     it('testMockfunc', 0, () => {
@@ -726,8 +775,8 @@ export default function argumentMatchersAnyTest() {
       when(mockfunc)(ArgumentMatchers.any).afterReturn('1');
       // 传入不同参数验证是否符合预期
       expect(claser.method_1('test')).assertEqual('1'); // 断言执行通过
-      expect(claser.method_1("123")).assertEqual('1');// 断言执行通过
-      expect(claser.method_1("true")).assertEqual('1');// 断言执行通过
+      expect(claser.method_1('123')).assertEqual('1'); // 断言执行通过
+      expect(claser.method_1('true')).assertEqual('1'); // 断言执行通过
     })
   })
 }
@@ -737,8 +786,8 @@ export default function argumentMatchersAnyTest() {
 
 <!-- @[argumentMatchersForString_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForString.test.ets) -->
 
-```TypeScript
-import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+``` TypeScript
+import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
   constructor() {
@@ -748,6 +797,7 @@ class ClassName {
     return '888888';
   }
 }
+
 export default function argumentMatchersTest() {
   describe('argumentMatchersForString_sample', () => {
     it('testMockfunc', 0, () => {
@@ -771,8 +821,8 @@ export default function argumentMatchersTest() {
 
 <!-- @[argumentMatchersForRegex_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForRegex.test.ets) -->
 
-```TypeScript
-import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+``` TypeScript
+import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
   constructor() {
@@ -782,6 +832,7 @@ class ClassName {
     return '888888';
   }
 }
+
 export default function matchRegexsTest() {
   describe('argumentMatchersForRegex_sample', () => {
     it('testMockfunc', 0, () => {
@@ -804,7 +855,7 @@ export default function matchRegexsTest() {
 
 <!-- @[verify_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/Vertify.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, it, MockKit } from '@ohos/hypium';
 
 class ClassName {
@@ -819,6 +870,7 @@ class ClassName {
     return '999999';
   }
 }
+
 export default function verifyTest() {
   describe('verify_sample', () => {
     it('testMockfunc', 0, () => {
@@ -839,7 +891,7 @@ export default function verifyTest() {
       claser.method_2('111');
       claser.method_2('111', '222');
       // 对Mock后的两个函数进行验证，验证method_2,参数仅为'111'时执行过一次
-      mocker.verify('method_2',['111']).once(); // 断言执行通过
+      mocker.verify('method_2', ['111']).once(); // 断言执行通过
     })
   })
 }
@@ -849,8 +901,8 @@ export default function verifyTest() {
 
 <!-- @[ignoreMock_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/IgnoreMock.test.ets) -->
 
-```TypeScript
-import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+``` TypeScript
+import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
   constructor() {
@@ -864,6 +916,7 @@ class ClassName {
     return '999999';
   }
 }
+
 export default function ignoreMockTest() {
   describe('ignoreMock_sample', () => {
     it('testMockfunc', 0, () => {
@@ -884,7 +937,7 @@ export default function ignoreMockTest() {
       // 现在对Mock后的两个函数的其中一个函数method_1进行还原处理
       mocker.ignoreMock(claser, claser.method_1);
       // 调用claser.method_1函数
-      expect(claser.method_1(123)).assertEqual('888888');// 断言执行通过
+      expect(claser.method_1(123)).assertEqual('888888'); // 断言执行通过
     })
   })
 }
@@ -894,8 +947,8 @@ export default function ignoreMockTest() {
 
 <!-- @[clearMock_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ClearMock.test.ets) -->
 
-```TypeScript
-import { describe, expect, it, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+``` TypeScript
+import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
   constructor() {
@@ -909,6 +962,7 @@ class ClassName {
     return '999999';
   }
 }
+
 export default function clearTest() {
   describe('clearMock_sample', () => {
     it('testMockfunc', 0, () => {
@@ -929,8 +983,8 @@ export default function clearTest() {
       // 还原obj上所有的Mock能力
       mocker.clear(claser);
       // 调用claser.method_1,claser.method_2函数，测试结果
-      expect(claser.method_1(123)).assertEqual('888888');// 断言执行通过
-      expect(claser.method_2(123)).assertEqual('999999');// 断言执行通过
+      expect(claser.method_1(123)).assertEqual('888888'); // 断言执行通过
+      expect(claser.method_2(123)).assertEqual('999999'); // 断言执行通过
     })
   })
 }
@@ -940,7 +994,7 @@ export default function clearTest() {
 
 <!-- @[afterThrow_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterThrow.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
@@ -951,6 +1005,7 @@ class ClassName {
     return '888888';
   }
 }
+
 export default function afterThrowTest() {
   describe('afterThrow_sample', () => {
     it('testMockfunc', 0, () => {
@@ -977,7 +1032,7 @@ export default function afterThrowTest() {
 
 <!-- @[returnPromise_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ReturnPromise.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
@@ -992,6 +1047,7 @@ class ClassName {
     });
   }
 }
+
 export default function mockPromiseTest() {
   describe('returnPromise_sample', () => {
     it('testMockfunc', 0, async (done: Function) => {
@@ -1007,7 +1063,7 @@ export default function mockPromiseTest() {
       }));
       // 执行Mock后的函数，即对定义的Promise进行后续执行
       let result = await claser.method_1('test');
-      expect(result).assertEqual("success something");// 断言执行通过
+      expect(result).assertEqual('success something'); // 断言执行通过
       done();
     })
   })
@@ -1018,7 +1074,7 @@ export default function mockPromiseTest() {
 
 <!-- @[verifyTimes_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/VertifyTimes.test.ets) -->
 
-```TypeScript
+``` TypeScript
 import { describe, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
@@ -1029,6 +1085,7 @@ class ClassName {
     return '888888';
   }
 }
+
 export default function verifyTimesTest() {
   describe('verifyTimes_sample', () => {
     it('test_verify_times', 0, () => {
@@ -1049,9 +1106,9 @@ export default function verifyTimesTest() {
       claser.method_1('abc');
       claser.method_1();
       // 验证函数method_1且参数为'abc'时，执行过的次数是否为2
-      mocker.verify('method_1', ['abc']).times(2);// 断言执行通过
-       // 验证函数method_1且参数为空时，是否至少执行过2次
-      mocker.verify('method_1', []).atLeast(2);// 断言执行通过
+      mocker.verify('method_1', ['abc']).times(2); // 断言执行通过
+      // 验证函数method_1且参数为空时，是否至少执行过2次
+      mocker.verify('method_1', []).atLeast(2); // 断言执行通过
     })
   })
 }
@@ -1061,8 +1118,8 @@ export default function verifyTimesTest() {
 
 <!-- @[mockStatic_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockStatic.test.ets) -->
 
-```TypeScript
-import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+``` TypeScript
+import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
 
 class ClassName {
   constructor() {
@@ -1085,11 +1142,99 @@ export default function staticTest() {
       // 期望被mock后的函数返回结果'mock_data'
       when(func_1)(ArgumentMatchers.any).afterReturn('mock_data');
       let mock_result = ClassName.method_1();
-      expect(mock_result).assertEqual('mock_data');// 断言执行通过
+      expect(mock_result).assertEqual('mock_data'); // 断言执行通过
       // 清除Mock能力
       mocker.clear(ClassName);
       let really_result1 = ClassName.method_1();
-      expect(really_result1).assertEqual('ClassName_method_1_call');// 断言执行通过
+      expect(really_result1).assertEqual('ClassName_method_1_call'); // 断言执行通过
+    })
+  })
+}
+```
+
+**示例代码12**：Mock私有函数（从@ohos/hypium 1.0.25版本开始支持）
+
+<!-- @[mockPrivateFunc_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockPrivateFunc.test.ets) -->
+
+``` TypeScript
+import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+
+class ClassName {
+  constructor() {
+  }
+  method(arg: number):number {
+    return this.method_1(arg);
+  }
+  private method_1(arg: number) {
+    return arg;
+  }
+}
+
+export default function staticTest() {
+  describe('privateTest', () => {
+    it('private_001', 0, () => {
+      let claser: ClassName = new ClassName(); 
+      let really_result = claser.method(123);
+      expect(really_result).assertEqual(123);
+      // 1.创建MockKit对象
+      let mocker: MockKit = new MockKit();
+      // 2.Mock类ClassName对象的私有方法，比如method_1
+      let func_1: Function = mocker.mockPrivateFunc(claser, "method_1");
+      // 3.期望被Mock后的函数返回结果为456
+      when(func_1)(ArgumentMatchers.any).afterReturn(456);
+      let mock_result = claser.method(123);
+      expect(mock_result).assertEqual(456);
+      // 清除Mock能力
+      mocker.clear(claser);
+      let really_result1 = claser.method(123);
+      expect(really_result1).assertEqual(123);
+    })
+  })
+}
+```
+
+**示例代码13**：Mock成员变量（从@ohos/hypium 1.0.25版本开始支持）
+
+<!-- @[mockProperty_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockProperty.test.ets) -->
+
+``` TypeScript
+import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+
+class ClassName {
+  constructor() {
+  }
+  data = 1;
+  private priData = 2;
+  method() {
+    return this.priData;
+  }
+}
+
+export default function staticTest() {
+  describe('propertyTest', () => {
+    it('property_001', 0, () => {
+      let claser: ClassName = new ClassName(); 
+      let data = claser.data;
+      expect(data).assertEqual(1);
+      let priData = claser.method();
+      expect(priData).assertEqual(2);
+      // 1.创建MockKit对象
+      let mocker: MockKit = new MockKit();
+      // 2.Mock类ClassName对象的成员变量data
+      mocker.mockProperty(claser, "data", 3);
+      mocker.mockProperty(claser, "priData", 4);
+      // 3.期望被Mock后的成员和私有成员的值分别为3，4
+      let mock_result = claser.data;
+      let mock_private_result = claser.method();
+      expect(mock_result).assertEqual(3);
+      expect(mock_private_result).assertEqual(4);
+      // 清除Mock能力
+      mocker.ignoreMock(claser, "data");
+      mocker.ignoreMock(claser, "priData");
+      let really_result = claser.data;
+      expect(really_result).assertEqual(1);
+      let really_private_result = claser.method();
+      expect(really_private_result).assertEqual(2);
     })
   })
 }
@@ -1150,7 +1295,7 @@ Stage模型在测试工程中的TestAbility目录下TestAbility.ets文件中导�
 
 <!-- @[dataDriverAbility_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/testability/TestAbility.ets) -->
 
-```TypeScript
+``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { Hypium } from '@ohos/hypium';
@@ -1160,40 +1305,42 @@ import Logger from '../util/Logger';
 import { window } from '@kit.ArkUI';
 
 const TAG = 'testTag';
+
 export default class TestAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        Logger.info(TAG, "TestAbility onCreate");
-        Logger.info(TAG, "want param:" + JSON.stringify(want));
-        Logger.info(TAG, "launchParam:" + JSON.stringify(launchParam));
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-        let abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
-        Logger.info(TAG, "start run testcase!!!");
-        // 设置数据
-        Hypium.setData(data);
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
-    }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    Logger.info(TAG, 'TestAbility onCreate');
+    Logger.info(TAG, 'want param:' + JSON.stringify(want));
+    Logger.info(TAG, 'launchParam:' + JSON.stringify(launchParam));
+    let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+    let abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
+    Logger.info(TAG, 'start run testcase!!!');
+    // 设置数据
+    Hypium.setData(data);
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
+  }
 ```
 
  <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) -->
 
-```TypeScript
+ ``` TypeScript
  import { describe, it } from '@ohos/hypium';
-
+ 
  export default function abilityTest() {
-  describe('AbilityTest', () => {
-    it('testDataDriverAsync', 0, async (done: Function, data: ParmObj) => {
-      done();
-    });
-
-    it('testDataDriver', 0, () => {
-    })
-  })
-}
+   describe('AbilityTest', () => {
+     it('testDataDriverAsync', 0, async (done: Function, data: ParmObj) => {
+       done();
+     });
+ 
+     it('testDataDriver', 0, () => {
+     });
+   })
+ }
+ 
  interface ParmObj {
    name: string,
    value: string
  }
-```
+ ```
 >**说明:** 
 >
 >若要使用数据驱动传入参数功能，测试用例`it`的`func`必须传入两个参数：`done`和`data`，且入参顺序不可调整。若不使用数据驱动传入参数功能，`func`可以不传参或仅传入`done`。

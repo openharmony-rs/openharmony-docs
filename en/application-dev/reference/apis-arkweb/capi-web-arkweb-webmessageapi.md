@@ -6,10 +6,14 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```c
+typedef struct {...} ArkWeb_WebMessageAPI
+```
+
 
 ## Overview
 
-Defines a native API for the post message. Before calling this API, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM.
+Defines a native API for the post message. Before calling this API, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM. The WebMessage APIs must be called on the UI thread through **OH_ArkWeb_GetNativeAPI**.
 
 **Since**: 12
 
@@ -41,7 +45,7 @@ Defines a native API for the post message. Before calling this API, you are advi
 
 ### createWebMessage()
 
-```
+```c
 ArkWeb_WebMessagePtr (*createWebMessage)()
 ```
 
@@ -57,7 +61,7 @@ Creates a message.
 
 ### destroyWebMessage()
 
-```
+```c
 void (*destroyWebMessage)(ArkWeb_WebMessagePtr* webMessage)
 ```
 
@@ -73,7 +77,7 @@ Destroys a message.
 
 ### setType()
 
-```
+```c
 void (*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)
 ```
 
@@ -90,7 +94,7 @@ Sets the message type. @param webMessage Pointer to the message struct. @param t
 
 ### getType()
 
-```
+```c
 ArkWeb_WebMessageType (*getType)(ArkWeb_WebMessagePtr webMessage)
 ```
 
@@ -106,7 +110,7 @@ Obtains the message type.
 
 ### setData()
 
-```
+```c
 void (*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)
 ```
 
@@ -125,7 +129,7 @@ Sets data.
 
 ### getData()
 
-```
+```c
 void* (*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)
 ```
 

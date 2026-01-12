@@ -501,7 +501,7 @@ media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGene
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
-    console.error(`Failed to creat AVImageGenerator, error message:${error.message}`);
+    console.error(`Failed to create AVImageGenerator, error message:${error.message}`);
   }
 });
 ```
@@ -539,10 +539,10 @@ media.createAVImageGenerator().then((generator: media.AVImageGenerator) => {
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
-    console.error('Failed to creat AVImageGenerator');
+    console.error('Failed to create AVImageGenerator');
   }
 }).catch((error: BusinessError) => {
-  console.error(`Failed to creat AVImageGenerator, error message:${error.message}`);
+  console.error(`Failed to create AVImageGenerator, error message:${error.message}`);
 });
 ```
 
@@ -736,8 +736,7 @@ media.createVideoPlayer().then((video: media.VideoPlayer) => {
 
 createAudioRecorder(): AudioRecorder
 
-创建音频录制的实例来控制音频的录制。
-一台设备只允许创建一个录制实例。
+创建音频录制的实例来控制音频的录制。一台设备只允许创建一个录制实例。
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[createAVRecorder](#mediacreateavrecorder9)替代。

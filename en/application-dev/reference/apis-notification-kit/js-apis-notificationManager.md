@@ -982,6 +982,42 @@ let badgeNumber: number = 10;
 notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 ```
 
+## notificationManager.getBadgeNumber<sup>22+</sup>
+
+getBadgeNumber(): Promise\<number\>
+
+Obtains the badge number of this application. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Return value**
+
+| Type             | Description                                       |
+| ----------------- | ------------------------------------------- |
+| Promise\<number\> | Promise used to return the badge number. (The value is irrelevant to whether notifications and home-screen badges of this application are enabled.)|
+
+**Error codes**
+
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getBadgeNumber().then((badgeNumber) => {
+  console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## notificationManager.getActiveNotificationCount
 
 getActiveNotificationCount(callback: AsyncCallback\<number\>): void
@@ -1640,7 +1676,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
-| 1600018  | the notification settings window is already displayed.           |
+| 1600018  | The notification settings window is already displayed.           |
 
 **Example**
 
@@ -1702,6 +1738,44 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
     console.info(`getNotificationSetting success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNotificationSetting failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.isGeofenceEnabled<sup>23+</sup>
+
+isGeofenceEnabled(): Promise\<boolean\>
+
+Checks whether geofencing is enabled. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Return value**
+
+| Type              | Description                                                                                                             |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that geofencing is enabled, and the value **false** indicates the opposite.|
+
+**Error codes**:
+
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.   |
+| 1600012  | No memory space.                    |
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.isGeofenceEnabled().then((data: boolean) => {
+  hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1807,7 +1881,7 @@ Describes the normal text notification.
 
 type NotificationContent = _NotificationContent
 
-Describes the notification contents.
+Describes the notification content.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1970,3 +2044,17 @@ Describes the notification progress.
 | Type| Description|
 | --- | --- |
 | [_NotificationProgress](js-apis-inner-notification-notificationContent.md#notificationprogress11) | Notification progress.|
+
+## PriorityNotificationType<sup>23+</sup>
+
+Enumerates the priority notification types.
+
+**System capability**: SystemCapability.Notification.Notification
+
+| Name                | Value | Description                              |
+| --------------------| --- | --------------------------------- |
+| OTHER   | "OTHER"   | Default.           |
+| PRIMARY_CONTACT    | "PRIMARY_CONTACT"   | Primary contacts.                |
+| AT_ME  | "AT_ME"   | Message that mentions me.           |
+| URGENT_MESSAGE   | "URGENT_MESSAGE"   | Urgent message.                |
+| SCHEDULE_REMINDER   | "SCHEDULE_REMINDER"   | Schedule reminder.                |

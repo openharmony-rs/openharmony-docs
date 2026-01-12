@@ -20,7 +20,7 @@
 ![image5](figures/image5.png)
 
 - 首先通过Web组件的javaScriptProxy属性，将JSBridgeHandle对象注册到H5的window上，作为H5调用原生的通道。当H5开始加载时，在onPageBegin生命周期中调用initJSBridge()方法初始化JSBridge。
-  ```
+  ```ts
   // javaScriptProxy对象
   public get javaScriptProxy() {
       return {
@@ -34,7 +34,7 @@
   }
   ```
 
-  ```
+  ```ts
   // 使用Web组件加载H5页面
   @Component
   struct JsProxy {
@@ -53,7 +53,7 @@
   ```
 
 - 在initJSBridge方法中，通过webviewControll.runJavaScript()将JSBridge初始化脚本注入H5执行。当H5调用时，生成window.callID标识回调函数，将callID与调用参数使用JSBridgeHandle.call传到原生侧。通过JSBridgeCallback接收原生侧执行的结果，根据callID找到对应callback执行并且释放内存。
-  ```
+  ```ts
   // bridgeKey与bridgeMethod动态生成H5侧调用的入口
   bridgeKey: string = 'JSBridge'
   bridgeMethod: string = 'call'
@@ -77,7 +77,7 @@
   ```
 
 - JSBridgeHandle.call()是H5调用原生接口的统一入口，在该方法中根据H5调用的方法名，匹配到对应接口去调用。调用结束后通过this.callback()方法将调用结果返回H5。callback方法中使用webviewControll.runJavaScript()调用H5的JSBridgeCallback回传callID和调用结果。
-  ```
+  ```ts
   // call方法调用原生侧方法，接收结果
   private call = (fun, params) => {
       try {
@@ -143,7 +143,7 @@ onInterceptRequest拦截页面Web的src的链接后返回自定义HTML，但是�
 
 **代码示例**
 
-```
+```ts
 Web({ src: 'www.example.com', controller: this.controller })
   .onInterceptRequest((event) => {
     console.log('url:' + event.request.getRequestUrl())
@@ -188,7 +188,7 @@ Web({ src: 'www.example.com', controller: this.controller })
 
 1. 准备一个html文件，例如：
 
-   ```
+   ```html
    <!DOCTYPE html>
    <html lang="en">
    <head>
@@ -214,7 +214,7 @@ Web({ src: 'www.example.com', controller: this.controller })
 
 2. 在ArkTs中使用JavaScriptProxy方法将ArkTs里的对象注册到H5的window对象中，然后在h5中使用window对象调用该方法。比如下面例子，在ArkTs中将testObj这个对象以别名objName注册到h5的window对象上，在上面的h5中就可以使用window.objName去访问这个对象。
 
-   ```
+   ```ts
    // xxx.ets
    import web_webview from '@ohos.web.webview'
    @Entry
@@ -283,47 +283,47 @@ Web({ src: 'www.example.com', controller: this.controller })
 [GET\_NETWORK\_INFO](../security/AccessToken/permissions-for-all.md#ohospermissionget_network_info)
 
 
-## 如何自定义拼接设置User-Agent参数(API 9)
+## 如何自定义拼接设置User-Agent参数
 
 **解决措施**
 
 默认User-Agent需要通过WebviewController获取。WebviewController对象必须在Web组件绑定后，才能调用WebviewController上的方法getUserAgent获取默认User-Agent。因此在页面加载前通过自定义字符串拼接修改User-Agent，可采用此方式：
 
-1. 使用\@State定义初始User-Agent，绑定到Web组件；
-
-2. 在Web组件的onUrlLoadIntercept回调中，通过WebviewController.getUserAgent()获取默认User-Agent，并修改Web组件绑定的User-Agent
+在Web组件的onControllerAttached回调中，通过WebviewController.getUserAgent()获取默认User-Agent，并通过WebviewController.setCustomUserAgent()设置自定义User-Agent。
 
 **代码示例**
 
-```
-import web_webview from '@ohos.web.webview'
+```ts
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
-struct Index {
-  private controller: web_webview.WebviewController = new web_webview.WebviewController()
-  @State userAgentPa: string = ''
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  // 三方应用相关信息标识
+  @State customUserAgent: string = ' DemoApp';
+
   build() {
-    Row() {
-      Column() {
-        Web({ src: 'http://www.example.com', controller: this.controller }) //需要手动替换为真实网站
-          .width('100%')
-          .userAgent(this.userAgentPa)
-          .onUrlLoadIntercept((event) => {
-            let userAgent = this.controller.getUserAgent();
-            this.userAgentPa = userAgent + ' 111111111'
-            return false;
-          })
-      }
-      .width('100%')
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+      .onControllerAttached(() => {
+        console.log("onControllerAttached");
+        try {
+          let userAgent = this.controller.getUserAgent() + this.customUserAgent;
+          this.controller.setCustomUserAgent(userAgent);
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
     }
-    .height('100%')
   }
 }
 ```
 
 **参考链接**
 
-[userAgent](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#useragentdeprecated)、[getUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getuseragent)
+[User-Agent开发指导（自定义user-agent结构）](../web/web-default-userAgent.md#自定义user-agent结构)
 ## WebView支持同层渲染吗(API 10)
 
 **解决措施**
@@ -427,3 +427,14 @@ Webview提供mixedMode(mixedMode: MixedMode)接口，设置是否允许加载超
 **参考链接**
 
 [JSVM](../reference/common/capi-jsvm.md)
+
+## 无法使用`requestPointerLock`鼠标锁定功能
+
+**问题描述**
+
+1. html调用`requestPointerLock`后，鼠标隐藏但仍然可以移出Web区域。
+2. html调用`requestPointerLock`时，返回错误`SecurityError: The root document of this element is not valid for pointer lock.`。
+
+**解决措施**
+
+从API version 22开始，ArkWeb支持完整的鼠标锁定功能，该功能需要应用权限[ohos.permission.LOCK_WINDOW_CURSOR](../security/AccessToken/permissions-for-all.md#ohospermissionlock_window_cursor)。

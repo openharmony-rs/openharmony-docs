@@ -1068,7 +1068,7 @@ avsessionController.sendControlCommand(avCommand, (err: BusinessError) => {
 
 ## sendCommonCommand<sup>10+</sup>
 
-sendCommonCommand(command: string, args: {[key: string]: Object}): Promise\<void>
+sendCommonCommand(command: string, args: Record\<string, Object>): Promise\<void>
 
 通过会话控制器发送自定义控制命令到其对应的会话。结果通过Promise异步回调方式返回。
 
@@ -1081,7 +1081,7 @@ sendCommonCommand(command: string, args: {[key: string]: Object}): Promise\<void
 | 参数名    | 类型                                  | 必填 | 说明                           |
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | command | string | 是   | 需要设置的自定义控制命令的名称。 |
-| args | {[key: string]: Object} | 是   | 需要传递的控制命令键值对。 |
+| args |Record\<string, Object> | 是   | 需要传递的控制命令键值对。<br>API version 20开始发生兼容变更，在API version 19及之前的版本args的参数类型为：{[key: string]: Object}。|
 
 > **说明：**
 > 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
@@ -1098,7 +1098,6 @@ sendCommonCommand(command: string, args: {[key: string]: Object}): Promise\<void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1135,7 +1134,7 @@ if (controller !== undefined) {
 
 ## sendCommonCommand<sup>10+</sup>
 
-sendCommonCommand(command: string, args: {[key: string]: Object}, callback: AsyncCallback\<void>): void
+sendCommonCommand(command: string, args: Record\<string, Object>, callback: AsyncCallback\<void>): void
 
 通过会话控制器发送自定义命令到其对应的会话。结果通过callback异步回调方式返回。
 
@@ -1146,7 +1145,7 @@ sendCommonCommand(command: string, args: {[key: string]: Object}, callback: Asyn
 | 参数名    | 类型                                  | 必填 | 说明                           |
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | command | string | 是   | 需要设置的自定义控制命令的名称。 |
-| args | {[key: string]: Object} | 是   | 需要传递的控制命令键值对。 |
+| args |  Record\<string, Object> | 是   | 需要传递的控制命令键值对。<br>API version 20开始发生兼容变更，在API version 19及之前的版本args的参数类型为：{[key: string]: Object}。|
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。                     |
 
 > **说明：**
@@ -1158,7 +1157,6 @@ sendCommonCommand(command: string, args: {[key: string]: Object}, callback: Asyn
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist.     |
 | 6600103  | The session controller does not exist.   |
@@ -1230,29 +1228,51 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
-          
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession) => {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
-}).catch((err: BusinessError) => {
-  console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
-});
 
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).sendCustomData({customData : "This is my data"})
+@Entry
+@Component
+struct Index {
+  private tag: string = "createNewSession";
+  private sessionId: string = "";
+  private controller: avSession.AVSessionController | undefined = undefined;
+  private currentAVSession?: avSession.AVSession;
+  context = this.getUIContext();
+
+  aboutToAppear(): void {
+    avSession.createAVSession(this.getUIContext().getHostContext(), this.tag, "audio")
+      .then(async (data: avSession.AVSession) => {
+        this.currentAVSession = data;
+        this.sessionId = this.currentAVSession.sessionId;
+        this.controller = await this.currentAVSession.getController();
+        console.info(`CreateAVSession : SUCCESS :sessionId = ${this.sessionId}`);
+      })
+      .catch((err: BusinessError) => {
+        console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
+      });
+
+    if (this.controller !== undefined) {
+      (this.controller as avSession.AVSessionController).sendCustomData({ customData: "This is my data" })
+    }
+  }
+
+  build() {
+    Column() {
+      Text('AVSession Demo')
+        .fontSize(20)
+        .margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
 }
 ```
 
 ## getExtras<sup>10+</sup>
 
-getExtras(): Promise\<{[key: string]: Object}>
+getExtras(): Promise\<Record\<string, Object>>
 
-获取媒体提供方设置的自定义媒体数据包。结果通过Promise异步回调方式返回。
+获取媒体提供方设置的自定义媒体数据包。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1262,7 +1282,7 @@ getExtras(): Promise\<{[key: string]: Object}>
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-| Promise<{[key: string]: Object}\>   | Promise对象，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 |
+| Promise\<Record\<string, Object>>  | Promise对象，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>API version 23开始发生兼容变更，在API version 22及之前的版本其返回值类型为：Promise\<{[key: string]: Object}>。 |
 
 **错误码：**
 
@@ -1270,7 +1290,6 @@ getExtras(): Promise\<{[key: string]: Object}>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1282,32 +1301,54 @@ getExtras(): Promise\<{[key: string]: Object}>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
-         
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
-}).catch((err: BusinessError) => {
-  console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
-});
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).getExtras().then((extras) => {
-    console.info(`getExtras : SUCCESS : ${extras}`);
-  }).catch((err: BusinessError) => {
-    console.error(`getExtras BusinessError: code: ${err.code}, message: ${err.message}`);
-  });
+
+@Entry
+@Component
+struct Index {
+  private tag: string = "createNewSession";
+  private sessionId: string = "";
+  private controller: avSession.AVSessionController | undefined = undefined;
+  private currentAVSession?: avSession.AVSession;
+  context = this.getUIContext();
+
+  aboutToAppear(): void {
+
+    avSession.createAVSession(this.getUIContext().getHostContext(), this.tag, "audio")
+      .then(async (data: avSession.AVSession) => {
+        this.currentAVSession = data;
+        this.sessionId = this.currentAVSession.sessionId;
+        this.controller = await this.currentAVSession.getController();
+        console.info(`CreateAVSession : SUCCESS :sessionId = ${this.sessionId}`);
+      }).catch((err: BusinessError) => {
+      console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
+    });
+    if (this.controller !== undefined) {
+      (this.controller as avSession.AVSessionController).getExtras().then((extras) => {
+        console.info(`getExtras : SUCCESS : ${extras}`);
+      }).catch((err: BusinessError) => {
+        console.error(`getExtras BusinessError: code: ${err.code}, message: ${err.message}`);
+      });
+    }
+  }
+
+  build() {
+    Column() {
+      Text('AVSession Demo')
+        .fontSize(20)
+        .margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
 }
 ```
 
 ## getExtras<sup>10+</sup>
 
-getExtras(callback: AsyncCallback\<{[key: string]: Object}>): void
+getExtras(callback: AsyncCallback\<Record\<string, Object>>): void
 
-获取媒体提供方设置的自定义媒体数据包,结果通过callback异步回调方式返回。
+获取媒体提供方设置的自定义媒体数据包。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1315,7 +1356,7 @@ getExtras(callback: AsyncCallback\<{[key: string]: Object}>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| callback | AsyncCallback<{[key: string]: Object}\> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 |
+| callback | AsyncCallback\<Record\<string, Object>> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>在API version 23参数类型变更为AsyncCallback\<Record\<string, Object>>，在API version 22及之前的版本callback的参数类型为：AsyncCallback\<{[key: string]: Object}>，无需适配仍可使用。 |
 
 **错误码：**
 
@@ -1323,7 +1364,6 @@ getExtras(callback: AsyncCallback\<{[key: string]: Object}>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1419,9 +1459,669 @@ if (controller !== undefined) {
 }
 ```
 
+## isDesktopLyricEnabled<sup>23+</sup>
+
+isDesktopLyricEnabled(): Promise\<boolean>
+
+查询是否启用桌面歌词功能。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<boolean> | Promise对象。返回true表示启用桌面歌词功能；返回false表示不启用桌面歌词功能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            let enabled: boolean = await controller.isDesktopLyricEnabled()
+            console.info(`desktop lyric enabled:${enabled}`)
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## onDesktopLyricEnabled<sup>23+</sup>
+
+onDesktopLyricEnabled(callback: Callback\<boolean>): void
+
+桌面歌词功能启用状态变更的监听事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 是   | 回调函数。返回true表示桌面歌词功能启用；返回false表示桌面歌词功能未启用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.onDesktopLyricEnabled((enabled: boolean) => {
+              console.info(`desktop lyric enabled state : ${enabled}`);
+            })
+            console.info('onDesktopLyricEnabled successfully');
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## offDesktopLyricEnabled<sup>23+</sup>
+
+offDesktopLyricEnabled(callback?: Callback\<boolean>): void
+
+取消桌面歌词启用状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词功能启用状态变更事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.offDesktopLyricEnabled();
+            console.info('offDesktopLyricEnabled successfully');
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## setDesktopLyricVisible<sup>23+</sup>
+
+setDesktopLyricVisible(visible: boolean): Promise\<void>
+
+设置当前会话桌面歌词的显示状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明       |
+| ------ | ------ | ---- | ---------- |
+| visible | boolean | 是   | 是否显示桌面歌词。true表示显示；false表示不显示。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> |  Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            await controller.setDesktopLyricVisible(true);
+            console.info('setDesktopLyricVisible successfully');
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## isDesktopLyricVisible<sup>23+</sup>
+
+isDesktopLyricVisible(): Promise\<boolean>
+
+查询当前会话桌面歌词的显示状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<boolean> | Promise对象。返回true表示显示桌面歌词；返回false表示不显示桌面歌词。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            let visible: boolean = await controller.isDesktopLyricVisible();
+            console.info(`isDesktopLyricVisible: ${visible}`);
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## onDesktopLyricVisibilityChanged<sup>23+</sup>
+
+onDesktopLyricVisibilityChanged(callback: Callback\<boolean>): void
+
+显示桌面歌词状态变更的监听事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 是   | 回调函数。返回true表示开启显示桌面歌词状态；返回false表示关闭显示桌面歌词状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.onDesktopLyricVisibilityChanged((visible: boolean) => {
+              console.info(`desktop lyric visible state: ${visible}`);
+            });
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## offDesktopLyricVisibilityChanged<sup>23+</sup>
+
+offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
+
+取消显示桌面歌词状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有显示桌面歌词状态变更事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.offDesktopLyricVisibilityChanged();
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## setDesktopLyricState<sup>23+</sup>
+
+setDesktopLyricState(state: DesktopLyricState): Promise\<void>
+
+设置当前会话桌面歌词状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明       |
+| ------ | ------ | ---- | ---------- |
+| state | [DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23) | 是   | 桌面歌词状态。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> |  Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            let state: avSession.DesktopLyricState = {
+              isLocked: true,
+            };
+            await controller.setDesktopLyricState(state);
+            console.info('setDesktopLyricState successfully');
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## getDesktopLyricState<sup>23+</sup>
+
+getDesktopLyricState(): Promise\<DesktopLyricState>
+
+获取当前会话桌面歌词状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> |  Promise对象。返回桌面歌词状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            let state: avSession.DesktopLyricState = await controller.getDesktopLyricState();
+            console.info(`getDesktopLyricState: ${state.isLocked}`);
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## onDesktopLyricStateChanged<sup>23+</sup>
+
+onDesktopLyricStateChanged(callback: Callback\<DesktopLyricState>): void
+
+桌面歌词状态变更的监听事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 是   | 回调函数。返回桌面歌词状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
+              console.info(`desktop lyric isLocked : ${state.isLocked}`);
+            })
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## offDesktopLyricStateChanged<sup>23+</sup>
+
+offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
+
+取消桌面歌词状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词状态变更事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.offDesktopLyricStateChanged();
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## on('metadataChange')<sup>10+</sup>
 
-on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (data: AVMetadata) => void)
+on(type: 'metadataChange', filter: Array\<string> | 'all', callback: (data: AVMetadata) => void): void
 
 设置元数据变化的监听事件。
 
@@ -1436,7 +2136,7 @@ on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'metadataChange'`：当元数据需要更新时，触发该事件。<br>需要更新表示对应属性值被重新设置过，不论新值与旧值是否相同。 |
-| filter   | Array\<keyof&nbsp;[AVMetadata](arkts-apis-avsession-i.md#avmetadata10)\>&nbsp;&#124;&nbsp;'all' | 是   | 'all'表示关注元数据所有字段更新。<br>Array<keyof&nbsp;[AVMetadata](arkts-apis-avsession-i.md#avmetadata10)\> 表示关注Array中的字段更新。 |
+| filter   | Array\<string>\|'all' | 是   |'all'表示关注通话状态所有字段变化；Array\<string>表示关注Array中的字段变化。<br>API version 20开始发生兼容变更，在API version 19及之前filter参数类型为：Array\<keyof AVMetadata> \| 'all'。|
 | callback | (data: [AVMetadata](arkts-apis-avsession-i.md#avmetadata10)) => void                    | 是   | 回调函数，参数data是需要更新的元数据。只包含需要更新的元数据属性，不代表当前全量的元数据。   |
 
 **错误码：**
@@ -1445,7 +2145,6 @@ on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1464,7 +2163,7 @@ avsessionController.on('metadataChange', ['assetId', 'title', 'description'], (m
 
 ## off('metadataChange')<sup>10+</sup>
 
-off(type: 'metadataChange', callback?: (data: AVMetadata) => void)
+off(type: 'metadataChange', callback?: (data: AVMetadata) => void): void
 
 取消元数据变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -1485,7 +2184,6 @@ off(type: 'metadataChange', callback?: (data: AVMetadata) => void)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1497,7 +2195,7 @@ avsessionController.off('metadataChange');
 
 ## on('playbackStateChange')<sup>10+</sup>
 
-on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void)
+on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state: AVPlaybackState) => void): void
 
 设置播放状态变化的监听事件。
 
@@ -1512,7 +2210,7 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 | 参数名   | 类型       | 必填 | 说明      |
 | --------| -----------|-----|------------|
 | type     | string    | 是   | 事件回调类型，支持事件`'playbackStateChange'`，当播放状态需要更新时，触发该事件。<br>需要更新表示对应属性值被重新设置过，不论新值与旧值是否相同。 |
-| filter   | Array\<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>&nbsp;&#124;&nbsp;'all' | 是   | 'all'表示关注播放状态所有字段更新。<br>Array<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\> 表示关注Array中的字段更新。 |
+| filter   | Array\<string>\|'all' | 是   | 'all'表示关注播放状态所有字段更新。<br>Array\<string> 表示关注Array中的字段更新。<br>API version 20开始发生兼容变更，在API version 19及之前filter参数类型为：Array\<keyof AVPlaybackstate> \| 'all'。 |
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void       | 是   | 回调函数，参数state是需要更新的播放状态。只包含需要更新的播放状态属性，并不代表当前全量的播放状态。|
 
 **错误码：**
@@ -1521,7 +2219,6 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1539,7 +2236,7 @@ avsessionController.on('playbackStateChange', ['state', 'speed', 'loopMode'], (p
 
 ## off('playbackStateChange')<sup>10+</sup>
 
-off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void)
+off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): void
 
 取消播放状态变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -1560,7 +2257,6 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1572,7 +2268,7 @@ avsessionController.off('playbackStateChange');
 
 ## on('callMetadataChange')<sup>11+</sup>
 
-on(type: 'callMetadataChange', filter: Array\<keyof CallMetadata> | 'all', callback: Callback\<CallMetadata>): void
+on(type: 'callMetadataChange', filter: Array\<string> | 'all', callback: Callback\<CallMetadata>): void
 
 设置通话元数据变化的监听事件。
 
@@ -1587,7 +2283,7 @@ on(type: 'callMetadataChange', filter: Array\<keyof CallMetadata> | 'all', callb
 | 参数名   | 类型       | 必填 | 说明      |
 | --------| -----------|-----|------------|
 | type     | string    | 是   | 事件回调类型，支持事件`'callMetadataChange'`：当通话元数据变化时，触发该事件。 |
-| filter   | Array\<keyof&nbsp;[CallMetadata](arkts-apis-avsession-i.md#callmetadata11)\>&nbsp;&#124;&nbsp;'all' | 是   | 'all' 表示关注通话元数据所有字段变化；Array<keyof&nbsp;[CallMetadata](arkts-apis-avsession-i.md#callmetadata11)\> 表示关注Array中的字段变化。 |
+| filter   |  Array\<string>\|'all'| 是   |'all'表示关注通话元数据所有字段变化；Array<string\> 表示关注Array中的字段变化。<br>API version 20开始发生兼容变更，在API version 19及之前filter参数类型为：Array\<keyof CallMetadata> \| 'all'。|
 | callback | Callback<[CallMetadata](arkts-apis-avsession-i.md#callmetadata11)\>   | 是   | 回调函数，参数callmetadata是变化后的通话元数据。|
 
 **错误码：**
@@ -1647,7 +2343,7 @@ avsessionController.off('callMetadataChange');
 
 ## on('callStateChange')<sup>11+</sup>
 
-on(type: 'callStateChange', filter: Array\<keyof AVCallState> | 'all', callback: Callback\<AVCallState>): void
+on(type: 'callStateChange', filter: Array\<string> | 'all', callback: Callback\<AVCallState>): void
 
 设置通话状态变化的监听事件。
 
@@ -1662,16 +2358,16 @@ on(type: 'callStateChange', filter: Array\<keyof AVCallState> | 'all', callback:
 | 参数名   | 类型       | 必填 | 说明      |
 | --------| -----------|-----|------------|
 | type     | string    | 是   | 事件回调类型，支持事件`'callStateChange'`：当通话状态变化时，触发该事件。 |
-| filter   | Array<keyof&nbsp;[AVCallState](arkts-apis-avsession-i.md#avcallstate11)\>&nbsp;&#124;&nbsp;'all' | 是   | 'all' 表示关注通话状态所有字段变化；Array<keyof&nbsp;[AVCallState](arkts-apis-avsession-i.md#avcallstate11)\> 表示关注Array中的字段变化。 |
+| filter   |  Array\<string>\|'all' | 是   | 'all' 表示关注通话状态所有字段变化；Array\<string>表示关注Array中的字段变化。<br>API version 20开始发生兼容变更，在API version 19及之前filter参数类型为：Array\<keyof AVCallState> \| 'all'。 |
 | callback | Callback<[AVCallState](arkts-apis-avsession-i.md#avcallstate11)\>       | 是   | 回调函数，参数callstate是变化后的通话状态。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1706,11 +2402,11 @@ off(type: 'callStateChange', callback?: Callback\<AVCallState>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1718,11 +2414,11 @@ off(type: 'callStateChange', callback?: Callback\<AVCallState>): void
 
 ```ts
 avsessionController.off('callMetadataChange');
-```
+``` 
 
 ## on('sessionDestroy')<sup>10+</sup>
 
-on(type: 'sessionDestroy', callback: () => void)
+on(type: 'sessionDestroy', callback: () => void): void
 
 会话销毁的监听事件。
 
@@ -1745,7 +2441,6 @@ on(type: 'sessionDestroy', callback: () => void)
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1759,7 +2454,7 @@ avsessionController.on('sessionDestroy', () => {
 
 ## off('sessionDestroy')<sup>10+</sup>
 
-off(type: 'sessionDestroy', callback?: () => void)
+off(type: 'sessionDestroy', callback?: () => void): void
 
 取消监听会话的销毁事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -1780,7 +2475,6 @@ off(type: 'sessionDestroy', callback?: () => void)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1792,7 +2486,7 @@ avsessionController.off('sessionDestroy');
 
 ## on('activeStateChange')<sup>10+</sup>
 
-on(type: 'activeStateChange', callback: (isActive: boolean) => void)
+on(type: 'activeStateChange', callback: (isActive: boolean) => void): void
 
 会话的激活状态的监听事件。
 
@@ -1815,7 +2509,6 @@ on(type: 'activeStateChange', callback: (isActive: boolean) => void)
 
 | 错误码ID | 错误信息 |
 | -------- | ----------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  |The session controller does not exist. |
 
@@ -1829,7 +2522,7 @@ avsessionController.on('activeStateChange', (isActive: boolean) => {
 
 ## off('activeStateChange')<sup>10+</sup>
 
-off(type: 'activeStateChange', callback?: (isActive: boolean) => void)
+off(type: 'activeStateChange', callback?: (isActive: boolean) => void): void
 
 取消监听会话激活状态变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -1850,7 +2543,6 @@ off(type: 'activeStateChange', callback?: (isActive: boolean) => void)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1862,7 +2554,7 @@ avsessionController.off('activeStateChange');
 
 ## on('validCommandChange')<sup>10+</sup>
 
-on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>) => void)
+on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>) => void): void
 
 会话支持的有效命令变化监听事件。
 
@@ -1885,7 +2577,6 @@ on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1900,7 +2591,7 @@ avsessionController.on('validCommandChange', (validCommands: avSession.AVControl
 
 ## off('validCommandChange')<sup>10+</sup>
 
-off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandType>) => void)
+off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandType>) => void): void
 
 取消监听会话有效命令变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -1921,7 +2612,6 @@ off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandTyp
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2003,7 +2693,7 @@ avsessionController.off('outputDeviceChange');
 
 ## on('sessionEvent')<sup>10+</sup>
 
-on(type: 'sessionEvent', callback: (sessionEvent: string, args: {[key: string]: Object}) => void): void
+on(type: 'sessionEvent', callback: (sessionEvent: string, args: Record\<String, Object>) => void): void
 
 媒体控制器设置会话自定义事件变化的监听器。
 
@@ -2018,7 +2708,7 @@ on(type: 'sessionEvent', callback: (sessionEvent: string, args: {[key: string]: 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'sessionEvent'`：当会话事件变化时，触发该事件。 |
-| callback | (sessionEvent: string, args: {[key: string]: Object}) => void         | 是   | 回调函数，sessionEvent为变化的会话事件名，args为事件的参数。          |
+| callback | (sessionEvent: string, args: Record\<String, Object>) => void         | 是   | 回调函数，sessionEvent为变化的会话事件名，args为事件的参数。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(sessionEvent: string, args: {[key: string]: Object}) => void。|
 
 **错误码：**
 
@@ -2026,7 +2716,6 @@ on(type: 'sessionEvent', callback: (sessionEvent: string, args: {[key: string]: 
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2056,7 +2745,7 @@ if (controller !== undefined) {
 
 ## off('sessionEvent')<sup>10+</sup>
 
-off(type: 'sessionEvent', callback?: (sessionEvent: string, args: {[key: string]: Object}) => void): void
+off(type: 'sessionEvent', callback?: (sessionEvent: string, args: Record\<String, Object>) => void): void
 
 取消会话事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -2069,7 +2758,7 @@ off(type: 'sessionEvent', callback?: (sessionEvent: string, args: {[key: string]
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
 | type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'sessionEvent'`。    |
-| callback | (sessionEvent: string, args: {[key: string]: Object}) => void         | 否   | 回调函数，参数sessionEvent是变化的事件名，args为事件的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对sessionEvent事件的监听。                      |
+| callback | sessionEvent: string, args: Record\<String, Object> => void       | 否   | 回调函数，参数sessionEvent是变化的事件名，args为事件的参数。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(sessionEvent: string, args: {[key: string]: Object}) => void。|
 
 **错误码：**
 
@@ -2077,7 +2766,6 @@ off(type: 'sessionEvent', callback?: (sessionEvent: string, args: {[key: string]
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2227,7 +2915,7 @@ avsessionController.off('queueTitleChange');
 
 ## on('extrasChange')<sup>10+</sup>
 
-on(type: 'extrasChange', callback: (extras: {[key: string]: Object}) => void): void
+on(type: 'extrasChange', callback: (extras: Record\<string, Object>) => void): void
 
 媒体控制器设置自定义媒体数据包事件变化的监听器。
 
@@ -2240,7 +2928,7 @@ on(type: 'extrasChange', callback: (extras: {[key: string]: Object}) => void): v
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'extrasChange'`：当媒体提供方设置自定义媒体数据包时，触发该事件。 |
-| callback | (extras: {[key: string]: Object}) => void         | 是   | 回调函数，extras为媒体提供方新设置的自定义媒体数据包，该自定义媒体数据包与dispatchSessionEvent方法设置的数据包完全一致。          |
+| callback | (extras: Record\<string, Object>) => void         | 是   | 回调函数，extras为媒体提供方新设置的自定义媒体数据包，该自定义媒体数据包与dispatchSessionEvent方法设置的数据包完全一致。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(extras: {[key: string]: Object}) => void。|
 
 **错误码：**
 
@@ -2248,7 +2936,6 @@ on(type: 'extrasChange', callback: (extras: {[key: string]: Object}) => void): v
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2278,7 +2965,7 @@ if (controller !== undefined) {
 
 ## off('extrasChange')<sup>10+</sup>
 
-off(type: 'extrasChange', callback?: (extras: {[key: string]: Object}) => void): void
+off(type: 'extrasChange', callback?: (extras: Record\<string, Object>) => void): void
 
 取消自定义媒体数据包变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -2291,7 +2978,7 @@ off(type: 'extrasChange', callback?: (extras: {[key: string]: Object}) => void):
 | 参数名    | 类型                    | 必填 | 说明                                                                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
 | type     | string                  | 是   | 取消对应的监听事件，支持事件`'extrasChange'`。                                                         |
-| callback | (extras: {[key: string]: Object}) => void | 否   | 注册监听事件时的回调函数。<br>该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 |
+|  callback | (extras: Record\<string, Object>) => void | 否   | 注册监听事件时的回调函数。<br>该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(extras: {[key: string]: Object}) => void。|
 
 **错误码：**
 
@@ -2299,7 +2986,6 @@ off(type: 'extrasChange', callback?: (extras: {[key: string]: Object}) => void):
 
 | 错误码ID | 错误信息 |
 | -------- | ----------------                       |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2332,7 +3018,7 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -2382,7 +3068,7 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**

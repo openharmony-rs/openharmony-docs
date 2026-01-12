@@ -5,7 +5,7 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-```
+```c
 typedef struct OH_NativeBuffer OH_NativeBuffer
 ```
 

@@ -11,7 +11,7 @@
 ## 状态管理hidumper、调试与调优
 为提升开发者定位状态管理问题的效率，UI提供针对状态变量的hidumper、调试与调优功能，将状态变量的黑盒信息暴露给开发者，帮助开发者深入了解状态变量和UI组件的变化过程，提升开发高性能应用的效率。
 ### 状态管理hidumper能力
-状态管理接入[hidumper](../dfx/hidumper.md)，支持通过`-jsdump`获取状态变量关联的组件、自定义组件树等信息，方便开发者了解状态变量影响的UI范围，便于写出高性能应用代码。
+状态管理接入[hidumper](../dfx/hidumper.md)，支持通过`-jsdump`获取状态变量关联的组件、自定义组件树等信息，方便开发者了解状态变量影响的UI范围，写出高性能应用代码。
 
 下面介绍dump状态变量每个参数的含义：
 
@@ -23,6 +23,7 @@
 - registerdElementIds：打印当前自定义组件拥有的elementId。
 
 具体例子如下：
+
 下面的例子为嵌套两层子组件的典型示例，使用了装饰器[\@State](./state-management/arkts-state.md)和 [\@Link](./state-management/arkts-link.md)。开发者可组合使用上述命令，展示前端组件树、状态变量和其影响的组件等信息。
 
 ```ts
@@ -66,15 +67,16 @@ struct GrandChild {
 ```
 
 步骤1：获取当前激活窗口的id。
-```
+``` shell
 hdc shell hidumper -s WindowManagerService -a '-a'
 ```
 
 步骤2：执行打印状态变量dump信息的命令。
+
 假定激活的窗口id是90，可通过下面的命令dump出自定义组件树和根节点的状态变量的信息。
 - 命令1：递归打印所有自定义组件和根节点的状态变量信息：
 
-  ```
+  ``` shell
   hdc shell hidumper -s WindowManagerService -a '-w 90 -jsdump -dumpAll -r'
   ```
   
@@ -142,7 +144,7 @@ hdc shell hidumper -s WindowManagerService -a '-a'
   Total: 0
   ```
 - 命令2：打印指定自定义组件的状态变量信息。例如，dump组件id为7的状态变量，可执行如下命令：
-  ```
+  ``` shell
   hdc shell hidumper -s WindowManagerService -a '-w 90 -jsdump -dumpAll -viewId=7'
   ```
   输出信息如下。

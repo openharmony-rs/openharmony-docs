@@ -34,17 +34,21 @@ import { bundleMonitor } from '@kit.AbilityKit';
 
 ## BundleChangedEvent
 
+type BundleChangedEvent = 'add' | 'update' | 'remove'
+
 Enumerates the types of events to listen for.
+
+The value type is one of the types listed in the table below.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **System API**: This is a system API.
 
-| Name      | Description            |
-| ---------- | --------------- |
-| add        | Bundle installation event.  |
-| update     | Bundle update event.  |
-| remove     | Bundle uninstall event.  |
+| Type      | Description                                     |
+| ---------- | ----------------------------------------- |
+| 'add'      | To subscribe to bundle installation events, the value is fixed at **'add'**.     |
+| 'update'   | To subscribe to bundle update events, the value is fixed at **'update'**.  |
+| 'remove'   | To subscribe to bundle removal events, the value is fixed at **'remove'**.  |
 
 ## bundleMonitor.on
 
@@ -83,15 +87,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { bundleMonitor } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let callbackFun = (bundleChangeInfo: bundleMonitor.BundleChangedInfo) => {
   console.info(`bundleName : ${bundleChangeInfo.bundleName} userId : ${bundleChangeInfo.userId}`);
 };
 try {
-    bundleMonitor.on('add', callbackFun);
+  bundleMonitor.on('add', callbackFun);
 } catch (errData) {
-    let message = (errData as BusinessError).message;
-    let errCode = (errData as BusinessError).code;
-    console.error(`errData is errCode:${errCode}  message:${message}`);
+  let message = (errData as BusinessError).message;
+  let errCode = (errData as BusinessError).code;
+  console.error(`errData is errCode:${errCode}  message:${message}`);
 }
 ```
 
@@ -136,10 +141,10 @@ let callbackFun = (bundleChangeInfo: bundleMonitor.BundleChangedInfo) => {
 };
 
 try {
-    bundleMonitor.off('add', callbackFun);
+  bundleMonitor.off('add', callbackFun);
 } catch (errData) {
-    let message = (errData as BusinessError).message;
-    let errCode = (errData as BusinessError).code;
-    console.error(`errData is errCode:${errCode}  message:${message}`);
+  let message = (errData as BusinessError).message;
+  let errCode = (errData as BusinessError).code;
+  console.error(`errData is errCode:${errCode}  message:${message}`);
 }
 ```

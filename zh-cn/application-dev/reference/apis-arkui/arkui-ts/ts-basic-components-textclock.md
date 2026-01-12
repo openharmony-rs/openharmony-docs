@@ -1,9 +1,9 @@
 # TextClock
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Zhang-Dong-Hui-->
+<!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
-<!--Tester: @xiong0104-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 TextClock组件通过文本将当前系统时间显示在设备上。支持不同时区的时间显示，最高精度到秒级。
@@ -12,7 +12,7 @@ TextClock组件通过文本将当前系统时间显示在设备上。支持不�
 
 >**说明：**
 >
->该组件从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 
 ## 子组件
@@ -138,7 +138,7 @@ fontColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 字体颜色。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 字体颜色。<br/>Wearable设备上默认值：'#c5ffffff'，其他设备默认值：'e6182431' |
 
 ### fontSize
 
@@ -174,7 +174,7 @@ fontStyle(value: FontStyle)
 
 | 参数名 | 类型                                        | 必填 | 说明                                    |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 字体样式。<br/>默认值：FontStyle.Normal |
+| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 字体样式。<br/>默认值：FontStyle.Normal，表示标准的字体样式（非斜体）。 |
 
 ### fontWeight
 
@@ -228,7 +228,7 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 是   | 文字阴影效果。 |
+| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 是   | 文字的字体阴影效果。 |
 
 ### fontFeature<sup>11+</sup>
 
@@ -413,13 +413,13 @@ struct Second {
         })
         .margin(20)
         .fontSize(30)
-      Button("start TextClock")
+      Button('start TextClock')
         .margin({ bottom: 10 })
         .onClick(() => {
           // 启动文本时钟
           this.controller.start();
         })
-      Button("stop TextClock")
+      Button('stop TextClock')
         .onClick(() => {
           // 停止文本时钟
           this.controller.stop();
@@ -535,14 +535,14 @@ struct TextClockExample {
         .format('aa hh:mm:ss')
         .fontSize(30)
         .contentModifier(new MyTextClockStyle('ContentModifier:'))
-      Button("start TextClock")
+      Button('start TextClock')
         .margin({ top: 20, bottom: 10 })
         .onClick(() => {
           // 启动文本时钟
           this.controller1.start();
           this.controller2.start();
         })
-      Button("stop TextClock")
+      Button('stop TextClock')
         .margin({ bottom: 30 })
         .onClick(() => {
           // 停止文本时钟
@@ -567,21 +567,21 @@ struct TextClockExample {
   build() {
     Column({ space: 8 }) {
       Row() {
-        Text("24小时制去除前导0：")
+        Text('24小时制去除前导0：')
           .fontSize(20)
         TextClock()
           .fontSize(20)
-          .format("HH:mm:ss")
-          .dateTimeOptions({ hour: "numeric" })
+          .format('HH:mm:ss')
+          .dateTimeOptions({ hour: 'numeric' })
       }
 
       Row() {
-        Text("12小时制增加前导0：")
+        Text('12小时制增加前导0：')
           .fontSize(20)
         TextClock()
           .fontSize(20)
-          .format("aa hh:mm:ss")
-          .dateTimeOptions({ hour: "2-digit" })
+          .format('aa hh:mm:ss')
+          .dateTimeOptions({ hour: '2-digit' })
       }
     }
     .alignItems(HorizontalAlign.Start)

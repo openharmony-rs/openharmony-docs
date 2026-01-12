@@ -30,7 +30,7 @@
 **错误描述**<br>
 @BuilderParam装饰的变量只能被@Builder装饰的函数初始化。
 
-**可能或原因**<br> 
+**可能原因**<br> 
 用普通函数其他类型变量初始化@BuilderParam装饰的变量。
 
 **处理步骤**<br>
@@ -610,7 +610,7 @@ The property \'xxx\' must specify a type.
 
 ## 10903329 资源名称使用校验异常
 **错误信息**<br>
-Unknown resouce name \'xxx\'.
+Unknown resource name \'xxx\'.
 
 **错误描述**<br>
 资源名称校验失败。

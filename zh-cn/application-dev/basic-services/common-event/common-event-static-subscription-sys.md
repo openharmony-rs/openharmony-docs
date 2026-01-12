@@ -52,7 +52,7 @@
    ```json
    {
      "module": {
-   	// ...
+    // ...
        "extensionAbilities": [
          {
            "name": "StaticSubscriber",
@@ -70,7 +70,7 @@
            ]
          }
        ],
-   	// ...
+    // ...
      }
    }
    ```

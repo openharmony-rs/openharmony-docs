@@ -236,7 +236,7 @@ cb('hello world', (err : Object, ret : string) => {
 
 promisify(original: (err: Object, value: Object) =&gt; void): Function
 
-Processes an asynchronous function and returns a promise.
+Receives a function that uses the error-first callback mode, that is, uses `(err, value) => callback` as the last parameter, and uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -466,7 +466,7 @@ console.info("result = " + result);
 
 promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
-Processes an asynchronous function and returns a promise.
+Receives a function that uses the error-first callback mode, that is, uses `(err, value) => callback` as the last parameter, and uses a promise to return the result.
 
 > **NOTE**
 >
@@ -560,6 +560,35 @@ console.info(stack);
 // Obtain the stack trace information of the main thread.
 ```
 
+## ArkTSVM<sup>23+</sup>
+
+A class that provides VM maintenance and test capabilities for developers.
+
+### setMultithreadingDetectionEnabled<sup>23+</sup>
+
+static setMultithreadingDetectionEnabled(enabled: boolean): void
+
+Sets whether to enable multithreading detection. When **enabled** is set to **true**, the detection is turned on, and multithreading-related details will be included in the cppcrash files generated for multithreading issues. When **enabled** is set to **false**, the detection is turned off, and no such details will be present in the corresponding cppcrash files.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| enabled  | boolean  | Yes      | Controls whether to enable multithreading detection. **true** means enabling the detection, and **false** means disabling it.|
+
+**Example**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+// Enable multithreading detection.
+util.ArkTSVM.setMultithreadingDetectionEnabled(true);
+// Disable multithreading detection.
+util.ArkTSVM.setMultithreadingDetectionEnabled(false);
+```
+
 ## TextDecoderOptions<sup>11+</sup>
 
 Describes decoding-related options, which include **fatal** and **ignoreBOM**.
@@ -641,7 +670,7 @@ class MyClass {
   static data: string = 'data000';
   static bar(arg: string): string {
     console.info('bar arg is ' + arg);
-	return MyClass.data;
+    return MyClass.data;
   }
 }
 
@@ -1124,6 +1153,7 @@ Encrypted information, including the number of read characters and the number of
 ## TextEncoder
 
 Provides APIs to encode strings into byte arrays. Multiple encoding formats are supported.
+
 When **TextEncoder** is used for encoding, the number of bytes occupied by a character varies according to the encoding format. You must explicitly specify the encoding format to obtain the required encoding result.
 
 ### Properties
@@ -2327,7 +2357,7 @@ console.info('result = ' + result);
 
 values(): V[]
 
-Obtains all values in this cache, listed from the most to the least recently accessed.
+Obtains all values in this cache, listed from the least to the most recently accessed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2337,25 +2367,33 @@ Obtains all values in this cache, listed from the most to the least recently acc
 
 | Type     | Description                                                        |
 | --------- | ------------------------------------------------------------ |
-| V[] | All values in the cache, listed from the most to the least recently accessed.|
+| V[] | The list of all values in this cache, listed from the least to the most recently accessed.|
 
 **Example**
 
 ```ts
-let pro = new util.LRUCache<number|string,number|string>();
-pro.put(2, 10);
-pro.put(2, "anhu");
-pro.put("afaf", "grfb");
+let pro = new util.LRUCache<number, string>();
+pro.put(1, 'A');
+pro.put(2, "B");
+pro.put(3, 'C');
+pro.put(4, 'D')
+pro.put(5, 'E')
+pro.put(6, 'F')
 let result = pro.values();
 console.info('result = ' + result);
-// Output: result = anhu,grfb
+// Output: result = A,B,C,D,E,F
+pro.get(1);
+pro.get(2);
+result = pro.values();
+console.info('result = ' + result);
+// Output: result = C,D,E,F,A,B
 ```
 
 ### keys<sup>9+</sup>
 
 keys(): K[]
 
-Obtains all keys in this cache, listed from the most to the least recently accessed.
+Obtains all keys in this cache, listed from the least to the most recently accessed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2365,17 +2403,26 @@ Obtains all keys in this cache, listed from the most to the least recently acces
 
 | Type     | Description                                                        |
 | --------- | ------------------------------------------------------------ |
-| K&nbsp;[] | All keys in the cache, listed from the most to the least recently accessed.|
+| K[] | The list of all keys in this cache, listed from the least to the most recently accessed.|
 
 **Example**
 
 ```ts
-let pro = new util.LRUCache<number, number>();
-pro.put(2, 10);
-pro.put(3, 1);
+let pro = new util.LRUCache<number, string>();
+pro.put(1, 'A');
+pro.put(2, "B");
+pro.put(3, 'C');
+pro.put(4, 'D')
+pro.put(5, 'E')
+pro.put(6, 'F')
 let result = pro.keys();
 console.info('result = ' + result);
-// Output: result = 2,3
+// Output: result = 1,2,3,4,5,6
+pro.get(5);
+pro.get(3);
+result = pro.keys();
+console.info('result = ' + result);
+// Output: result = 1,2,4,6,5,3
 ```
 
 ### remove<sup>9+</sup>
@@ -5932,7 +5979,7 @@ Obtains a two-dimensional array in key-value pairs.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [LRUCache.Symbol.iterator<sup>9+</sup>](#symboliterator9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [LRUCache.[Symbol.iterator]<sup>9+</sup>](#symboliterator9) instead.
 
 **System capability**: SystemCapability.Utils.Lang
 

@@ -9,6 +9,9 @@
 Since API version 14, the **Web** component supports the [createPdf](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createpdf14) method for saving frontend pages as PDF files.
 
 After an instance is generated using [createPdf](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createpdf14), obtain the binary stream using the **pdfArrayBuffer** method, and save it as a PDF file using the **fileIo** method. In this way, users can save frontend page content such as reports and invoices as PDF files for sharing.
+> **Description**
+>
+> You can adjust the PDF page size and frontend page zoom ratio through [pdfconfiguration](../reference/apis-arkweb/arkts-apis-webview-i.md#pdfconfiguration14). You are advised to use the frontend page adaptation policy and optimize the PDF layout through CSS media query (**@media print**).
 
 ## Required Permissions
 To obtain network documents, you need to configure the network access permission in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
@@ -33,11 +36,6 @@ import { fileIo as fs } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import hilog from '@ohos.hilog';
-
-const TAG = '[Sample_WebCreatePdf]'
-const DOMAIN = 0xF811
-const BUNDLE = 'WebCreatePdf_'
 
 @Entry
 @Component
@@ -67,17 +65,16 @@ struct Index {
                 let filePath = context.filesDir + '/test.pdf';
                 let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
                 fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
-                  hilog.info(DOMAIN, TAG, BUNDLE + 'createPDF write data to file succeed and size is:' + writeLen);
+                  console.info('createPDF write data to file succeed and size is:' + writeLen);
                 }).catch((err: BusinessError) => {
-                  hilog.error(DOMAIN, TAG,
-                    BUNDLE + 'createPDF write data to file failed with error message: ' + err.message +
+                  console.error('createPDF write data to file failed with error message: ' + err.message +
                       ', error code: ' + err.code);
                 }).finally(() => {
                   // Close the file.
                   fs.closeSync(file);
                 });
               } catch (resError) {
-                hilog.error(DOMAIN, TAG, BUNDLE +
+                console.error(
                   `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
             });
@@ -98,11 +95,6 @@ import { fileIo as fs } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import hilog from '@ohos.hilog';
-
-const TAG = '[Sample_WebCreatePdf]'
-const DOMAIN = 0xF811
-const BUNDLE = 'WebCreatePdf_'
 
 @Entry
 @Component
@@ -131,17 +123,16 @@ struct Index {
                 let filePath = context.filesDir + '/test.pdf';
                 let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
                 fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
-                  hilog.info(DOMAIN, TAG, BUNDLE + 'createPDF write data to file succeed and size is:' + writeLen);
+                  console.info('createPDF write data to file succeed and size is:' + writeLen);
                 }).catch((err: BusinessError) => {
-                  hilog.error(DOMAIN, TAG,
-                    BUNDLE + 'createPDF write data to file failed with error message: ' + err.message +
+                  console.error('createPDF write data to file failed with error message: ' + err.message +
                       ', error code: ' + err.code);
                 }).finally(() => {
                   // Close the file.
                   fs.closeSync(file);
                 });
               } catch (resError) {
-                hilog.error(DOMAIN, TAG, BUNDLE +
+                console.error(
                   `ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
               }
             })

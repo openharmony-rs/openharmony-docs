@@ -4,7 +4,7 @@
 <!--Owner: @fangzhiyuan1-->
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -26,4 +26,4 @@ The number of nodes listening for render state exceeds the maximum allowed limit
 
 **Solution**
 
-N/A
+Ensure that less than 64 nodes are registered to listen for render state.

@@ -21,7 +21,7 @@ restool是一种应用工程资源编译工具，通过编译资源文件创建�
 | -j | 不可缺省 | 带参数 | 指定config.json或者module.json文件路径。 |
 | -o | 不可缺省 | 带参数 | 指定已编译资源的输出路径。 |
 | -p | 不可缺省 | 带参数 | 指定编译资源的bundle名称。 |
-| -r | 不可缺省 | 带参数 | 指定资源的头文件生成路径，文件内容为资源名称与资源ID的映射表，支持4种格式：“.txt”、“.js”、“.h”、“.ts”。<br>**说明：**<br>- “.txt”、“.js”、“.h”格式的文件包含-i指定的所有资源目录下的资源映射表。<br>- 从API version 22开始，支持“.ts”格式，文件内容仅包含-i指定的HAR编译产物的资源目录下的资源映射表。|
+| -r | 不可缺省 | 带参数 | 指定资源的头文件生成路径，文件内容为资源名称与资源ID的映射表，支持4种格式：“.txt”、“.js”、“.h”、“.ts”。<br>**说明：**<br>- “.txt”、“.js”、“.h”格式的文件包含-i指定的所有资源目录下的资源映射表。<br>- 从API version 23开始，支持“.ts”格式，文件内容仅包含-i指定的HAR编译产物的资源目录下的资源映射表。|
 | -e | 可缺省 | 带参数 | 指定生成资源的起始ID值，例如：0x01000000,范围[0x01000000, 0x06FFFFFF),[0x08000000, 0x41FFFFFF)。 |
 | -f | 可缺省 | 不带参数 | 如果输出路径已经存在。强制删除，重新生成。 |
 | -h | 可缺省 | 不带参数 | 查看工具帮助信息。 |
@@ -32,10 +32,10 @@ restool是一种应用工程资源编译工具，通过编译资源文件创建�
 | --ids | 可缺省 | 带参数 | 指定生成id_defined.json的输出目录。 |
 | --defined-ids | 可缺省 | 带参数 | 指定id_defined.json文件路径，一般都是通过--ids生成。<br>id_defined.json包含资源类型、名称及其ID的列表。<br>开发者可以自定义id_defined.json中的资源ID。 |
 | --icon-check | 可缺省 | 不带参数 | 开启icon和startWindowIcon的PNG图片校验功能。 |
-| --thread | 可缺省 | 带参数 | 指定资源编译时开启的子线程数量。 <br>**说明：** 从API version 18开始，支持该选项。|
+| --thread | 可缺省 | 带参数 | 指定资源编译时开启的子线程数量。 <br>**说明：**<br> 从API version 18开始，支持该选项。|
 | --target-config | 可缺省 | 带参数 | 与“-i”命令同时使用，支持选择编译。<br>具体可参考如下**target-config参数说明**。|
-| --ignored-file | 可缺省 | 带参数 | 指定资源文件和资源目录的忽略规则，格式为正则表达式，多个规则之间以“:”分隔。文件、目录的名称与正则表达式匹配的会被忽略。<br>例如：“\\.git:\\.svn”可以忽略所有名称为“.git”、“.svn”的文件和目录。<br>**说明：** 从API version 19开始，支持该选项。|
-| --ignored-path | 可缺省 | 带参数 | 指定资源文件和资源目录的忽略规则，格式为正则表达式，多个规则之间以“:”分隔。文件、目录的名称或路径与正则表达式匹配的会被忽略。<br>例如：“.+/rawfile/\\.git:\\.svn”中第一个正则包含指定路径“.+/rawfile/”，可以忽略rawfile目录下的“.git”文件和目录，不会忽略其他目录下的“.git”文件和目录；第二个规则不包含任何指定路径，可以忽略所有名称为“.svn”的文件和目录。<br>**说明：** 从API version 22开始，支持该选项。|
+| --ignored-file | 可缺省 | 带参数 | 指定资源文件和资源目录的忽略规则，格式为正则表达式，多个规则之间以“:”分隔。文件、目录的名称与正则表达式匹配的会被忽略。<br>例如：“\\.git:\\.svn”可以忽略所有名称为“.git”、“.svn”的文件和目录。<br>**说明：**<br> 从API version 19开始，支持该选项。|
+| --ignored-path | 可缺省 | 带参数 | 指定资源文件和资源目录的忽略规则，格式为正则表达式，多个规则之间以“:”分隔。文件、目录的名称或路径与正则表达式匹配的会被忽略。<br>例如：“.+/rawfile/\\.git:\\.svn”中第一个正则包含指定路径“.+/rawfile/”，可以忽略rawfile目录下的“.git”文件和目录，不会忽略其他目录下的“.git”文件和目录；第二个规则不包含任何指定路径，可以忽略所有名称为“.svn”的文件和目录。<br>**说明：**<br> 从API version 23开始，支持该选项。|
 
 **target-config参数说明**
 
@@ -63,7 +63,7 @@ Locale匹配规则：Locale匹配需满足以下三条规则。
 
 **dump命令**
 
-```
+```sh
 restool dump [-h] [config] filePath
 ```
 
@@ -86,7 +86,7 @@ restool dump config entry.hap
 ## 使用实例
 
 例如，entry目录结构如下：
-```
+```text
 entry/src/main
 |    |----resource
 |    |    |----base
@@ -104,7 +104,7 @@ entry/src/main
 
 1、全量资源编译，命令如下：
 
-```
+```sh
 restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
 ```
 
@@ -112,18 +112,18 @@ restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out 
 
 步骤一：生成资源中间件，命令如下:
 
-```
+```sh
 restool -x entry/src/main/resource -o out
 ```
 步骤二：编译资源中间件，命令如下:
 
-```
+```sh
 restool -i out1 -i out2 -o out -p com.ohos.demo -r out/ResourceTable.txt -j entry/src/main/module.json -f -z
 ```
 
 3、叠加资源编译，命令如下：
 
-```
+```sh
 # hapResource为解压后的HAP包路径
 restool -i entry/src/main -i hapResource -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
 ```
@@ -136,13 +136,13 @@ restool -i entry/src/main -i hapResource -j entry/src/main/module.json -p com.oh
 
 + 方式一：通过命令行生成此文件，命令如下：
 
-```
+```sh
 restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt --ids out -f
 ```
 
 + 方式二：自定义文件，文件名必须是id_defined.json，文件内容如下：
 
-```
+```json5
 {
     "record" :
     [
@@ -158,12 +158,12 @@ restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out 
 步骤二：完成资源ID固定。完成固定的方式有两种，通过命令一完成固定或者将自定义的id_defined.json放在resource/base/element/目录下后通过命令二完成固定。
 
 + 命令一：
-```
+```sh
 restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out1 -r out1/ResourceTable.txt --defined-ids out/id_defined.json -f
 ```
 
 + 命令二：
-```
+```sh
 restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out1 -r out1/ResourceTable.txt  -f
 ```
 ## restool工具错误码
@@ -1004,7 +1004,7 @@ id_defined.json中资源的order属性值与资源在`record`数组中的声明�
 
 id_defined.json中资源的order属性值错误，如下错误示例：
 
-```
+```json
 {
     "startId": "0x07800000",
     "record": [
@@ -1209,7 +1209,7 @@ theme资源的parent值为空。
 **可能原因**
 
 theme资源的parent属性是可选的，其值需配置为其他theme资源的名称，不能是空字符串。如下正确示例：
-```
+```json
 {
   "theme": [
     {
@@ -1297,7 +1297,7 @@ Duplicated quantity 'xxx' of the plural resource 'xxx'.
 **可能原因**
 
 单复数资源中重复声明了相同的类别，如下错误示例中`eat_apple`重复声明了类别`one`：
-```
+```json
 {
   "plural": [
     {

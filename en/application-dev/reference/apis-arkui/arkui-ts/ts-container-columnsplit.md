@@ -4,7 +4,7 @@
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **ColumnSplit** component lays out child components vertically and inserts a horizontal divider between every two child components.
 
@@ -66,7 +66,7 @@ Margin of the divider.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ColumnSplitDividerStyle](#columnsplitdividerstyle10) \| null | Yes  | Margin of the divider, defining the spacing between the divider and adjacent child components.<br>Default value: **null**. If this parameter is set to **null**, the top and bottom margins of the divider are 0.0 vp.<br>Invalid values are treated as the default value.|
+| value  | [ColumnSplitDividerStyle](#columnsplitdividerstyle10)&nbsp;\|&nbsp;null | Yes  | Margin of the divider, defining the spacing between the divider and adjacent child components.<br>Default value: **null**. If this parameter is set to **null**, the top and bottom margins of the divider are 0.0 vp.<br>Invalid values are treated as the default value.|
 
 ## ColumnSplitDividerStyle<sup>10+</sup>
 
@@ -93,9 +93,11 @@ The [universal events](ts-component-general-events.md) are supported.
 
 ## Example
 
-This example demonstrates the basic usage of **ColumnSplit** by creating a vertical layout with draggable child components.
+### Example 1: Setting the Resizable ColumnSplit Component
 
-```ts
+This example shows how to set the resizable **ColumnSplit** component and its effect.
+
+``` ts
 // xxx.ets
 @Entry
 @Component
@@ -119,3 +121,33 @@ struct ColumnSplitExample {
 ```
 
 ![en-us_image_0000001219982708](figures/en-us_image_0000001219982708.gif)
+
+### Example 2: Setting the ColumnSplit Component with Spacing
+
+This example shows how to set the **ColumnSplit** component with spacing and its effect.
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct ColumnSplitDividerExample {
+  build() {
+    Column() {
+      Text('The dividing line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      ColumnSplit() {
+        Text('1').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('2').width('100%').height(50).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('3').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('4').width('100%').height(50).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('5').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+      }
+      .borderWidth(1)
+      .divider ({ startMargin: 5, endMargin: 5 }) // Set the spacing.
+      .width('90%')
+      .height('60%')
+    }.width('100%')
+  }
+}
+```
+
+![ColumnSplitDividerExample](figures/ColumnSplitDividerExample.png)

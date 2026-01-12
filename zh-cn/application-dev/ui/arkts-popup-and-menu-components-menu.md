@@ -12,20 +12,10 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 
 使用[bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11)或bindContextMenu未设置预览图时，菜单弹出无蒙层，此时为非模态。
 
-## 生命周期
-
-| 名称| 类型 | 说明 |
-| --- | --- | --- |
-| aboutToAppear  | () =>  void | 菜单显示动效前的事件回调。 |
-| onAppear | () =>  void | 菜单弹出后的事件回调。 |
-| aboutToDisappear | () =>  void | 菜单退出动效前的事件回调。 |
-| onDisappear  | () =>  void | 菜单消失后的事件回调。 |
-
-
 
 ## 创建默认样式的菜单
 
-菜单需要调用bindMenu接口来实现。bindMenu响应绑定组件的点击事件，绑定组件后手势点击对应组件后即可弹出。
+菜单需要调用[bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)接口来实现。bindMenu响应绑定组件的点击事件，绑定组件后手势点击对应组件后即可弹出。
 
 <!-- @[create_default_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateDefaultMenu.ets) -->
 
@@ -54,8 +44,8 @@ Button('click for Menu')
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
 class Tmp {
+  // 请将$r('app.media.view_list_filled')替换为实际资源文件
   public iconStr2: ResourceStr = $r('app.media.view_list_filled');
 
   set(val: Resource) {
@@ -67,11 +57,12 @@ class Tmp {
 @Component
 export struct BuilderCustomMenuExample {
   @State select: boolean = true;
+   // 请将$r('app.media.view_list_filled')替换为实际资源文件
   private iconStr: ResourceStr = $r('app.media.view_list_filled');
   private iconStr2: ResourceStr = $r('app.media.view_list_filled');
-  // 'app.string.copy'资源文件中的value值为"复制"。
+  // 请将$r('app.string.copy')替换为实际资源文件，在本示例中该资源文件的value值为"复制"
   private copy: ResourceStr = $r('app.string.copy');
-  // 'app.string.paste'资源文件中的value值为"粘贴"。
+  // 请将$r('app.string.paste')替换为实际资源文件，在本示例中该资源文件的value值为"粘贴"
   private paste: ResourceStr = $r('app.string.paste');
 
   @Builder
@@ -85,7 +76,9 @@ export struct BuilderCustomMenuExample {
   @Builder
   MyMenu() {
     Menu() {
-      // 'app.string.menu_selection'资源文件中的value值为"菜单选项"。
+      // 请将$r('app.string.menu_selection')替换为实际资源文件，在本示例中该资源文件的value值为"菜单选项"
+      // 请将$r('app.media.icon')替换为实际资源文件
+      // 请将$r('app.media.arrow_right_filled')替换为实际资源文件
       MenuItem({ startIcon: $r('app.media.icon'), content: $r('app.string.menu_selection') })
       MenuItem({ startIcon: $r('app.media.icon'), content: $r('app.string.menu_selection') }).enabled(false)
       MenuItem({
@@ -95,9 +88,9 @@ export struct BuilderCustomMenuExample {
         // 当builder参数进行配置时，表示与menuItem项绑定了子菜单。鼠标hover在该菜单项时，会显示子菜单。
         builder: this.SubMenu
       })
-      // 'app.string.menu_subtitle'资源文件中的value值为"小标题"。
+      // 请将$r('app.string.menu_subtitle')替换为实际资源文件，在本示例中该资源文件的value值为"小标题"
       MenuItemGroup({ header: $r('app.string.menu_subtitle') }) {
-        // 'app.string.menu_selection'资源文件中的value值为"菜单选项"。
+        // 请将$r('app.string.menu_selection')替换为实际资源文件，在本示例中该资源文件的value值为"菜单选项"
         MenuItem({ content: $r('app.string.menu_selection') })
           .selectIcon(true)
           .selected(this.select)
@@ -106,7 +99,9 @@ export struct BuilderCustomMenuExample {
             let str: Tmp = new Tmp();
             str.set($r('app.media.icon'));
           })
-        // 'app.string.menu_selection'资源文件中的value值为"菜单选项"。
+        // 请将$r('app.string.menu_selection')替换为实际资源文件，在本示例中该资源文件的value值为"菜单选项"
+        // 请将$r('app.media.view_list_filled')替换为实际资源文件
+        // 请将$r('app.media.arrow_right_filled')替换为实际资源文件
         MenuItem({
           startIcon: $r('app.media.view_list_filled'),
           content: $r('app.string.menu_selection'),
@@ -115,7 +110,8 @@ export struct BuilderCustomMenuExample {
         })
       }
 
-      // 'app.string.menu_selection'资源文件中的value值为"菜单选项"。
+      // 请将$r('app.string.menu_selection')替换为实际资源文件，在本示例中该资源文件的value值为"菜单选项"
+      // 请将$r('app.media.arrow_right_filled')替换为实际资源文件
       MenuItem({
         startIcon: this.iconStr2,
         content: $r('app.string.menu_selection'),
@@ -125,7 +121,7 @@ export struct BuilderCustomMenuExample {
   }
 
   build() {
-    // ···
+    // ...
   }
 }
 ```
@@ -143,7 +139,7 @@ Button('click for Menu')
 
 ## 创建支持右键或长按的菜单
 
-通过bindContextMenu接口自定义菜单，设置菜单弹出的触发方式，触发方式为右键或长按。使用bindContextMenu弹出的菜单项是在独立子窗口内的，可显示在应用窗口外部。
+通过[bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8)接口自定义菜单，设置菜单弹出的触发方式，触发方式为右键或长按。使用bindContextMenu弹出的菜单项是在独立子窗口内的，可显示在应用窗口外部。
 
 - 使用@Builder自定义菜单内容，与上文写法相同。
 - 确认菜单的弹出方式，并使用bindContextMenu属性绑定组件。示例中为右键弹出菜单。
@@ -151,7 +147,7 @@ Button('click for Menu')
   <!-- @[create_right_click_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateMenu.ets) -->
   
   ``` TypeScript
-  Button('click for Menu')
+  Button('Right-click for Menu')
     .bindContextMenu(this.MyMenu, ResponseType.RightClick)
   ```
 
@@ -177,7 +173,7 @@ Button('click for Menu')
 ``` TypeScript
 Button('click for Menu')
   .id('click for Menu')
-  .bindContextMenu(this.MyMenu, ResponseType.RightClick, { hapticFeedbackMode: HapticFeedbackMode.ENABLED})
+  .bindMenu(this.MyMenu, { hapticFeedbackMode: HapticFeedbackMode.ENABLED})
 ```
 
 ## 菜单支持避让中轴
@@ -191,11 +187,11 @@ Button('click for Menu')
 <!-- @[avoid_central_axis_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/SupportAvoidCentralAxisMenu.ets) -->
 
 ``` TypeScript
-// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
 @Entry
 @Component
 export struct SupportAvoidCentralAxisMenuExample {
   @State message: string = 'Hello World';
+  // 请在resources\base\element\string.json文件中配置name为'xxx'，value为非空字符串的资源
   @State upScreen: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Upper_half_screen') as string;
   @State middleAxle: string =
@@ -206,6 +202,7 @@ export struct SupportAvoidCentralAxisMenuExample {
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('zone') as string;
   @State hoverModeStart: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('hoverMode_start') as string;
+  // 请将$r('app.media.startIcon')替换为实际资源文件
   private iconStr: Resource = $r('app.media.startIcon');
   @State index: number = 0;
   @State arrayStr: Array<string> = [this.upScreen, this.middleAxle, this.lowerScreen];
@@ -216,7 +213,7 @@ export struct SupportAvoidCentralAxisMenuExample {
   @Builder
   MyMenu1() {
     Menu() {
-      // 'app.string.menu_selection'资源文件中的value值为"菜单选项"。
+      // 请将$r('app.string.menu_selection')替换为实际资源文件，在本示例中该资源文件的value值为"菜单选项"
       MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
       MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
       MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
@@ -296,6 +293,8 @@ export struct SupportAvoidCentralAxisMenuExample {
 }
 ```
 
+<!--RP1--><!--RP1End-->
+
 ## 控制子窗菜单的事件透传
 
 当菜单在子窗口中弹出时，默认情况下，菜单周围的事件会传递至所在窗口。从API version 20开始，开发者可通过[ContextMenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10)的modalMode属性设置子菜单弹出时的模态模式，以控制菜单周围事件是否传递。将modalMode设置为ModalMode.TARGET_WINDOW时，菜单周围的事件将不再传递，菜单下方的控件也不会响应事件。
@@ -322,7 +321,7 @@ export struct EventTransSubWindowMenuExample {
       .width('100%')
       .height('100%')
     }
-    // ···
+    // ...
   }
 
   @Builder
@@ -345,6 +344,8 @@ export struct EventTransSubWindowMenuExample {
 }
 ```
 
+<!--RP2--><!--RP2End-->
+
 ## 基于绑定组件指定位置弹出菜单
 
 菜单从API version 20开始支持基于绑定组件在指定位置弹出。通过设置水平与垂直偏移量，控制菜单相对于绑定组件左上角的弹出位置。与单独使用offset接口不同，此方法可使菜单覆盖显示在绑定组件上。需要指定弹出位置时，可使用[ContextMenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10)的anchorPosition属性进行设置。
@@ -359,7 +360,6 @@ export struct EventTransSubWindowMenuExample {
 <!-- @[bindComponent_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BindComponentMenu.ets) -->
 
 ``` TypeScript
-// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
 @Entry
 @Component
 export struct BindComponentMenuExample {
@@ -368,6 +368,7 @@ export struct BindComponentMenuExample {
     Column() {
       Menu() {
         MenuItemGroup() {
+          // 请将$r('app.media.app_icon')替换为实际资源文件
           MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 1', labelInfo: '' })
           MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 2', labelInfo: '' })
           MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 3', labelInfo: '' })
@@ -396,7 +397,7 @@ export struct BindComponentMenuExample {
       .height('100%')
       .backgroundColor('#F5F5F5')
     }
-    // ···
+    // ...
   }
 }
 ```

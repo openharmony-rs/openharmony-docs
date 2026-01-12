@@ -16,7 +16,7 @@
 
 | 名称      | 类型     | 默认值  | 描述                                       |
 | ------- | ------ | ---- | ---------------------------------------- |
-| shareid | string | 无    | 进行共享元素转场时使用，若不配置，则转场样式不生效。共享元素转场当前支持的组件：list-item、image、text、button、label。 |
+| shareid | string | 无    | 进行共享元素转场时使用，若不配置，则转场样式不生效。共享元素转场当前支持的组件：[list-item](js-components-container-list-item.md)、[image](js-components-basic-image.md)、[text](js-components-basic-text.md)、[button](js-components-basic-button.md)、[label](js-components-basic-label.md)。 |
 
 
 ### 样式
@@ -25,7 +25,7 @@
 | --------------------------------- | ------ | -------- | ---------------------------------------- |
 | shared-transition-effect          | string | exchange | 配置共享元素转场时的入场样式。<br/>-&nbsp;exchange（默认值）：源页面元素移动到目的页元素位置，并进行适当缩放。<br/>-&nbsp;static：目的页元素位置不变，用户可配置透明度动画。当前仅跳转目标页配置的static效果生效。 |
 | shared-transition-name            | string | -        | 转场时，目的页配置的样式优先生效。该样式用于配置共享元素的动画效果，一个由@keyframes定义的动画序列，支持transform和透明度动画。若共享元素效果与自定义的动画冲突，以自定义动画为准。 |
-| shared-transition-timing-function | string | friction | 转场时，目的页配置的样式优先生效。该属性定义了共享元素转场时的差值曲线。若不配置，默认使用friction曲线。 |
+| shared-transition-timing-function | string | friction | 转场时，目的页配置的样式优先生效。该属性定义了共享元素转场时的插值曲线。若不配置，默认使用friction曲线。 |
 
 
 ### 注意事项
@@ -34,8 +34,8 @@
 
 2. 共享元素的exchange效果类似下图。
 
-**图1** 共享元素转场默认效果
-![zh-cn_image_0000001238424309](figures/zh-cn_image_0000001238424309.png)
+   **图1** 共享元素转场默认效果
+   ![zh-cn_image_0000001238424309](figures/zh-cn_image_0000001238424309.png)
 
 3. 共享元素动画对元素的边框、背景色不生效。
 
@@ -57,7 +57,7 @@ PageA跳转到PageB，跳转的共享元素为image， shareid为“shareImage�
       <image src="item.jpg" shareid="shareImage" onclick="jump" class="shared-transition-style"></image>
     </list-item>
     <list-item>
-      <text onclick="jump">Click on picture to Jump to the details</text>
+      <text onclick="jump">Click on picture to jump to the details</text>
     </list-item>
   </list>
 </div>
@@ -229,8 +229,8 @@ export default {
 
 | 名称                         | 类型     | 默认值           | 描述                                       |
 | -------------------------- | ------ | ------------- | ---------------------------------------- |
-| transition-enter           | string | -             | 与@keyframes配套使用，支持transform和透明度动画，详见[动画样式 表 @keyframes属性说明](js-components-common-animation.md)。 |
-| transition-exit            | string | -             | 与\@keyframes配套使用，支持transform和透明度动画，详见[动画样式 表 @keyframes属性说明](js-components-common-animation.md)。 |
+| transition-enter           | string | -             | 与@keyframes配套使用，支持transform和透明度动画，详见[动画样式 表2 @keyframes属性说明](js-components-common-animation.md)。 |
+| transition-exit            | string | -             | 与\@keyframes配套使用，支持transform和透明度动画，详见[动画样式 表2 @keyframes属性说明](js-components-common-animation.md)。 |
 | transition-duration        | string | 跟随设备默认的页面转场时间 | 支持的单位为[s(秒)\|ms(毫秒)&nbsp;]，默认单位为ms，未配置时使用系统默认值。 |
 | transition-timing-function | string | friction      | 描述转场动画执行的速度曲线，用于使转场更为平滑。详细参数见[动画样式](js-components-common-animation.md)中“animation-timing-function”有效值说明。 |
 
@@ -244,9 +244,11 @@ export default {
 3. transition-enter/transition-exit说明如下：
 
    a. push场景下：进入页面栈的Page2.js应用transition-enter描述的动画配置；进入页面栈第二位置的Page1.js应用transition-exit描述的动画配置。
+
    ![zh-cn_image_0000001193704354](figures/zh-cn_image_0000001193704354.png)
 
    b. back场景下：退出页面栈的Page2.js应用transition-enter描述的动画配置，并进行倒播；从页面栈第二位置进入栈顶位置的Page1.js应用transition-exit描述的动画配置，并进行倒播。
+   
    ![zh-cn_image_0000001238184345](figures/zh-cn_image_0000001238184345.png)
 
 ### 示例

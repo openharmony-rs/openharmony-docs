@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+相机管理器类，使用前需要通过[getCameraManager](arkts-apis-camera-f.md#cameragetcameramanager)接口获取相机管理实例。
+
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-相机管理器类，使用前需要通过[getCameraManager](arkts-apis-camera-f.md#cameragetcameramanager)接口获取相机管理实例。
 
 ## 导入模块
 
@@ -118,6 +118,42 @@ getSupportedOutputCapability(camera: CameraDevice, mode: SceneMode): CameraOutpu
 ```ts
 function getSupportedOutputCapability(camera: camera.CameraDevice, cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): camera.CameraOutputCapability {
   let cameraOutputCapability: camera.CameraOutputCapability = cameraManager.getSupportedOutputCapability(camera, sceneMode);
+  return cameraOutputCapability;
+}
+```
+
+## getSupportedFullOutputCapability<sup>23+</sup>
+
+getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraOutputCapability
+
+查询指定相机在指定模式下支持的完整输出能力，包括未压缩图（YUV）、HEIF和HDR等能力。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名         | 类型                                                            | 必填 | 说明                      |
+| ------------ |--------------------------------------------------------------- | -- | -------------------------- |
+| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | 是 | 相机设备信息，通过[getSupportedCameras](#getsupportedcameras)接口获取。       |
+| mode | [SceneMode](arkts-apis-camera-e.md#scenemode11)                              | 是 | 相机模式，通过[getSupportedSceneModes](#getsupportedscenemodes11)接口获取。       |
+
+**返回值：**
+
+| 类型                                             | 说明                           |
+| ----------------------------------------------- | ---------------------------- |
+| [CameraOutputCapability](arkts-apis-camera-i.md#cameraoutputcapability)            | 相机输出能力。                   |
+
+**示例：**
+
+```ts
+import { camera } from '@kit.CameraKit';
+
+function getSupportedFullOutputCapability(camera: camera.CameraDevice, cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): camera.CameraOutputCapability {
+  let cameraOutputCapability: camera.CameraOutputCapability = cameraManager.getSupportedFullOutputCapability(camera, sceneMode);
   return cameraOutputCapability;
 }
 ```
@@ -968,6 +1004,56 @@ function getCameraDevice(cameraManager: camera.CameraManager, position: camera.C
     // 失败返回错误码并处理。
     let err = error as BusinessError;
     console.error(`The getCameraDevice call failed. error code: ${err.code}`);
+  }
+}
+```
+
+## getCameraDevices<sup>23+</sup>
+
+getCameraDevices(position: CameraPosition, types: Array\<CameraType>, connectType: ConnectionType): Array\<CameraDevice>
+
+根据相机位置、相机类型数组和连接类型查询符合条件的相机列表。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名      | 类型                                                    | 必填 | 说明                                                 |
+| ----------- | ------------------------------------------------------- | ---- | ---------------------------------------------------- |
+| position    | [CameraPosition](arkts-apis-camera-e.md#cameraposition) | 是   | 相机的位置。 |
+| types       | Array\<[CameraType](arkts-apis-camera-e.md#cameratype)>  | 是   | 相机类型数组。 |
+| connectType | [ConnectionType](arkts-apis-camera-e.md#connectiontype) | 是   | 相机的连接类型。 |
+
+**返回值：**
+
+| 类型                                                       | 说明                                                       |
+| ---------------------------------------------------------- | ---------------------------------------------------------- |
+| Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)> | 根据相机位置、相机类型数组和连接类型查询符合条件的相机列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400201 | Camera service fatal error. |
+
+**示例：**
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getCameraDevices(cameraManager: camera.CameraManager, position: camera.CameraPosition, types: Array<camera.CameraType>, connectType: camera.ConnectionType): void {
+  try {
+    let cameraDevs: Array<camera.CameraDevice> = [];
+    cameraDevs = cameraManager.getCameraDevices(position, types, connectType);
+  } catch (error) {
+    // 失败返回错误码并处理。
+    let err = error as BusinessError;
+    console.error(`The getCameraDevices call failed. error code: ${err.code}`);
   }
 }
 ```

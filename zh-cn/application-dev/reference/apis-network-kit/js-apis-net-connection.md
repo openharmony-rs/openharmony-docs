@@ -27,7 +27,9 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 
 创建一个NetConnection对象，[netSpecifier](#netspecifier)指定关注的网络的各项特征；timeout是超时时间(单位是毫秒)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。
 
-**注意：** createNetConnection注册回调函数的数量不能超过2000（个），否则无法继续注册网络监听。
+>**注意：**
+>
+>createNetConnection注册回调函数的数量不能超过2000（个），否则无法继续注册网络监听。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -66,7 +68,17 @@ let netConnectionCellular = connection.createNetConnection({
 
 getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 
-异步获取默认激活的数据网络，使用callback方式作为异步方法。可以使用[getNetCapabilities](#connectiongetnetcapabilities)去获取网络类型、拥有能力等信息。
+获取系统默认使用的网络ID，使用callback异步回调。
+
+> **说明：**
+>
+>- 系统默认使用的网络，该网络的capabilities必须具备[NET_CAPABILITY_INTERNET](#netcap)且不是VPN类型的网络。
+>
+>- 该接口的返回由系统决定，与应用是否指定网络无关。
+>
+>- 一般情况下，优先级：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
+>
+>- NetHandle为网络唯一标识，当无网络可用时，返回0，该ID可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -110,7 +122,17 @@ connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
 
 getDefaultNet(): Promise\<NetHandle>
 
-异步获取默认激活的数据网络，使用Promise方式作为异步方法。可以使用[getNetCapabilities](#connectiongetnetcapabilities)去获取网络的类型、拥有的能力等信息。
+获取系统默认使用的网络ID，使用Promise异步回调。
+
+> **说明：**
+>
+>- 系统默认使用的网络，该网络的capabilities必须具备[NET_CAPABILITY_INTERNET](#netcap)且不是VPN类型的网络。
+>
+>- 该接口的返回由系统决定，与应用是否指定网络无关。
+>
+>- 一般情况下，优先级：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
+>
+>- NetHandle为网络唯一标识，当无网络可用时，返回0，该id可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -148,7 +170,17 @@ connection.getDefaultNet().then((data: connection.NetHandle) => {
 
 getDefaultNetSync(): NetHandle
 
-使用同步方法获取默认激活的数据网络。可以使用[getNetCapabilities](#connectiongetnetcapabilities)去获取网络的类型、拥有的能力等信息。
+同步获取系统默认使用的网络ID。
+
+> **说明：**
+>
+>- 系统默认使用的网络，该网络的capabilities必须具备[NET_CAPABILITY_INTERNET](#netcap)且不是VPN类型的网络。
+>
+>- 该接口的返回由系统决定，与应用是否指定网络无关。
+>
+>- 一般情况下，优先级：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
+>
+>- NetHandle为网络唯一标识，当无网络可用时，返回0，该id可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -1726,7 +1758,12 @@ connection.clearCustomDnsRules().then(() => {
 
 setPacFileUrl(pacFileUrl: string): void
 
-设置当前PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，比如：http://127.0.0.1:21998/PacProxyScript.pac。通过解析脚本地址可以获取代理信息。
+设置PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，并启动PAC代理能力，比如：http://127.0.0.1:21998/PacProxyScript.pac 。通过解析脚本地址可以获取代理信息。
+
+>**注意：**
+>
+> 1、本接口当前只在PC设备上支持解析脚本并启用PAC代理能力，其他设备类型上只保存脚本地址，不会启用PAC代理能力。<br>
+> 2、该接口不会校验URL真实性，PC设备上在设置完成之后，会启动PAC代理，若URL有误，则启动代理失败，返回2100002错误码。
 
 **需要权限**：ohos.permission.SET_PAC_URL
 
@@ -1790,7 +1827,13 @@ console.info(pacFileUrl);
 
 findProxyForUrl(url: string): string
 
-根据给定的URL查找PAC代理信息。
+通过设置的PAC脚本，解析指定的URL代理地址，返回对应的PAC代理信息。
+
+> **说明：**
+>
+> 1、可通过 [setPacFileUrl](#connectionsetpacfileurl20) 或 [setPacUrl](#connectionsetpacurl15) 设置PAC脚本。<br>
+> 2、如果调用本接口前未设置PAC脚本，则返回空字符串。
+> 3、由于[setPacFileUrl](#connectionsetpacfileurl20)接口当前仅支持PC设备解析脚本并启用PAC代理能力，因此本接口当前也仅支持PC设备获取PAC代理信息。 其他设备调用本接口功能不生效，返回空字串。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -1821,6 +1864,10 @@ console.info(proxyInfo);
 setPacUrl(pacUrl: string): void
 
 设置系统级代理自动配置（Proxy Auto Config，PAC）脚本地址。
+
+> **说明：**
+>
+> 只支持设置脚本地址，不支持解析和启用代理功能，如需设置脚本并启用代理，则可调用[setPacFileUrl](#connectionsetpacfileurl20)接口。
 
 **需要权限**：ohos.permission.SET_PAC_URL
 
@@ -2091,6 +2138,8 @@ getIpNeighTable(): Promise\<Array\<NetIpMacInfo>>
 
 > **说明：**
 >
+> 该接口获取IP邻居表的缓存的数据，并非局域网内所有连接的数据。
+>
 > 当开发者需要排查网络异常、解析IP地址与MAC地址映射时，可使用此接口。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO 和 ohos.permission.GET_IP_MAC_INFO
@@ -2127,7 +2176,6 @@ connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
     console.info(`macAddress:${data[0].macAddress}`);
   }
 }).catch((error: BusinessError) => {
-  console.error("error fetching ip neigh table:", Code:JSON.stringify(error));
   console.error(`error fetching ip neigh table. Code:${error.code}, message:${error.message}`);
 });
 ```
@@ -2152,7 +2200,9 @@ register(callback: AsyncCallback\<void>): void
 
 订阅指定网络状态变化的通知。如需监听特定事件，确保调用on监听事件后再调用register进行注册。
 
-**注意：** 使用完register接口后需要及时调用unregister取消注册。
+>**注意：**
+>
+>使用完register接口后需要及时调用unregister取消注册。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -3014,6 +3064,9 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 ## ConnectionProperties
 
 网络连接信息。
+>**注意：**
+>
+> linkAddresses、routes和dnses可能为空，需要做好空值保护。  
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -3038,7 +3091,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。       |
 | gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。       |
 | hasGateway     | boolean                     | 否 | 否 | 是否有网关。true：有网关；false：无网关。     |
-| isDefaultRoute | boolean                     | 否 | 否 | 是否为默认路由。true：默认路由；false：非默认路由。 |
+| isDefaultRoute | boolean                     | 否 | 否 | 是否为默认路由。true：默认路由；false：非默认路由。IPv4默认路由：目的地址为0.0.0.0/0的路由；IPv6默认路由：目的地址为::/0的路由。 |
 | isExcludedRoute<sup>20+</sup>| boolean                     | 否 | 是 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。|
 
 ## LinkAddress
@@ -3084,7 +3137,7 @@ type HttpRequest = http.HttpRequest
 
 type TCPSocket = socket.TCPSocket
 
-定义一个TCPSocket对象，可以通过[socket.constructTCPSocketInstance](js-apis-socket.md#socketconstructtcpsocketinstance7)创建。
+定义一个TCPSocket对象，可以通过[socket.constructTCPSocketInstance](js-apis-socket.md#socketconstructtcpsocketinstance)创建。
 
 **系统能力**：SystemCapability.Communication.NetStack
 

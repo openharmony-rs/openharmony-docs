@@ -79,8 +79,8 @@ If the **type** field in **startAbilityByType** is set to **finance**, **wantPar
 
         | Value          | Description                        |
         | -------------- | ---------------------------- |
-        | Transfer     | The application supports transfer.		|
-        | CreditCardRepayment      | The application supports credit card repayment.	|
+        | Transfer     | The application supports transfer.        |
+        | CreditCardRepayment      | The application supports credit card repayment.   |
    2. Set **scheme**, **host**, **port**, and **path** or **pathStartWith** to match the URIs in Want to distinguish different features.
 
     ```json

@@ -10,8 +10,15 @@
 该模块提供充电状态及剩余电量的查询功能。
 
 >  **说明：**
->  - 从API Version 6开始不再维护，建议使用[`@ohos.batteryInfo`](js-apis-battery-info.md)替代。
->  - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+>- 模块维护策略：
+>
+>    \- 对于Lite Wearable设备类型，该模块长期维护，正常使用。
+>
+>    \- 对于支持该模块的其他设备类型，该模块从API Version 6开始不再维护，建议使用[`@ohos.batteryInfo`](js-apis-battery-info.md)替代。
+>
+>- 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
 
 
 ## 导入模块
@@ -67,7 +74,7 @@ Battery.getStatus({
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 
-| 参数名 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| charging | boolean | 是 | 否 | 当前电池是否在充电中。true表示在充电，false表示没有充电，默认为false。 |
-| level | number | 是 | 否 | 当前电池的电量，取值范围：0.00&nbsp;-&nbsp;1.00&nbsp;。 |
+| charging | boolean | 否 | 否 | 当前电池是否在充电中。true表示在充电，false表示没有充电，默认为false。<br>**说明：** 除Lite Wearable外，从API Version 6开始不再维护，建议使用[`batteryInfo.chargingStatus`](js-apis-battery-info.md#常量)替代。 |
+| level | number | 否 | 否 | 当前电池的电量，取值范围：0.00&nbsp;-&nbsp;1.00&nbsp;。 <br>**说明：** 除Lite Wearable外，从API Version 6开始不再维护，建议使用[`batteryInfo.batterySOC`](js-apis-battery-info.md#常量)替代。 |

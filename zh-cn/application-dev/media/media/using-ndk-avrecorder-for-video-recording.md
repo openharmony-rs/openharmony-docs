@@ -10,7 +10,7 @@ AVRecorder支持开发音视频录制，集成了音频捕获，音频编码，�
 
 本开发指导将以“开始录制-暂停录制-恢复录制-停止录制”的一次流程为示例，向开发者讲解如何使用AVRecorder进行视频录制。
 
-在进行应用开发的过程中，开发者可以通过AVRecorder的state属性主动获取当前状态，或使用OH_AVRecorder_SetStateCallback方法注册回调监听状态变化。开发过程中应该严格遵循状态机要求，例如只能在started状态下调用pause()接口，只能在paused状态下调用resume()接口。
+在进行应用开发的过程中，开发者可以通过AVRecorder的state属性主动获取当前状态，或使用OH_AVRecorder_SetStateCallback方法注册回调监听状态变化。开发过程中应严格遵循状态机要求，例如只能在started状态下调用pause()接口，只能在paused状态下调用resume()接口。
 
 **图1** 录制状态变化示意图
 
@@ -44,28 +44,28 @@ AVRecorder支持开发音视频录制，集成了音频捕获，音频编码，�
 
 AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis-media-kit/capi-avrecorder.md)。
 
-在 CMake 脚本中链接动态库。
-```
+在CMake脚本中链接动态库。
+```C++
 target_link_libraries(entry PUBLIC libavrecorder.so)
 ```
 
 使用[OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
-```
+```C++
 #include <multimedia/player_framework/native_avformat.h>
 ```
 
-并在 CMake 脚本中链接如下动态库。
-```
+并在CMake脚本中链接如下动态库。
+```C++
 target_link_libraries(entry PUBLIC libnative_media_core.so)
 ```
 
 开发者使用系统日志能力时，需引入如下头文件。
-```
+```C++
 #include <hilog/log.h>
 ```
 
-并需要在 CMake 脚本中链接如下动态库。
-```
+并需要在CMake脚本中链接如下动态库。
+```C++
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 ```
 
@@ -168,7 +168,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    >
    > - 配置参数之前需要确保完成对应权限的申请，请参考[申请权限](#申请权限)。
    >
-   > - prepare接口的入参OH_AVRecorder_Config中设置音视频相关的配置参数，如示例代码所示。
+   > - prepare接口的入参OH_AVRecorder_Config中设置的音视频相关的配置参数，如示例代码所示。
    >
    > - 需要使用支持的[录制规格](media-kit-intro.md#支持的格式)，视频比特率、分辨率、帧率以实际硬件设备支持的范围为准。
    >
@@ -222,8 +222,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
         SetConfig(*config);
     
         // 1.设置URL（fileGenerationMode选择APP_CREATE时设置）。
-        const std::string AVREORDER_ROOT = "/data/storage/el2/base/files/";
-        int32_t outputFd = open((AVREORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
+        const std::string AVRECORDER_ROOT = "/data/storage/el2/base/files/";
+        int32_t outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
         std::string fileUrl = "fd://" + std::to_string(outputFd);
         config->url = const_cast<char *>(fileUrl.c_str());
         OH_LOG_INFO(LOG_APP, "config.url is: %s", const_cast<char *>(fileUrl.c_str()));
@@ -261,6 +261,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    ```
 
 4. 获取视频录制需要的SurfaceID，初始化视频数据输入源。该步骤需要在输入源模块完成，以相机为例，需要创建录像输出流，包括创建Camera对象、获取相机列表、创建相机输入流等，相机详细步骤请参考[相机-录像方案](../camera/native-camera-recording.md)。
+
    调用getInputSurface()接口，接口的返回值SurfaceID用于传递给视频数据输入源模块。常用的输入源模块为相机，以下示例代码中，仅展示获取SurfaceID的步骤。
 
    输入源模块通过SurfaceID可以获取到Surface，通过Surface可以将视频数据流传递给AVRecorder，由AVRecorder再进行视频数据的处理。
@@ -278,29 +279,29 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 5. 初始化视频数据输入源。该步骤需要在输入源模块完成，以相机为例，需要创建录像输出流，包括创建Camera对象、获取相机列表、创建相机输入流等，相机详细步骤请参考[相机-录像方案](../camera/native-camera-recording.md)。
 
 6. 开始录制，启动输入源输入视频数据，例如相机模块调用OH_VideoOutput_Start()接口启动相机录制。然后调用OH_AVRecorder_Start()接口，此时AVRecorder进入started状态。
-   ```
+   ```C++
    OH_AVRecorder_Start(g_avRecorder);
    ```
 7. 暂停录制，调用OH_AVRecorder_Pause()接口，此时AVRecorder进入paused状态，同时暂停输入源输入数据。例如相机模块调用OH_VideoOutput_Stop()停止相机视频数据输入。
-   ```
+   ```C++
    OH_AVRecorder_Pause(g_avRecorder);
    ```
 8. 恢复录制，调用OH_AVRecorder_Resume()接口，此时再次进入started状态。
-   ```
+   ```C++
    OH_AVRecorder_Resume(g_avRecorder);
    ```
 9. 停止录制，调用OH_AVRecorder_Stop()接口，此时进入stopped状态，同时停止相机录制。
-   ```
+   ```C++
    OH_AVRecorder_Stop(g_avRecorder);
    ```
 10. 重置资源，调用OH_AVRecorder_Reset()重新进入idle状态，允许重新配置录制参数。
-      ```
-      OH_AVRecorder_Reset(g_avRecorder);
-      ```
+    ```C++
+    OH_AVRecorder_Reset(g_avRecorder);
+    ```
 11. 销毁实例，调用OH_AVRecorder_Release()进入released状态，退出录制，释放视频数据输入源相关资源，例如相机资源。
-      ```
-      OH_AVRecorder_Release(g_avRecorder);
-      ```
+    ```C++
+    OH_AVRecorder_Release(g_avRecorder);
+    ```
 
 
 ## 完整示例
@@ -444,8 +445,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       SetConfig(*config);
 
       // 1.1设置URL（fileGenerationMode选择APP_CREATE时设置）。
-      const std::string AVREORDER_ROOT = "/data/storage/el2/base/files/";
-      g_outputFd = open((AVREORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
+      const std::string AVRECORDER_ROOT = "/data/storage/el2/base/files/";
+      g_outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
       std::string fileUrl = "fd://" + std::to_string(g_outputFd);
       config->url = const_cast<char *>(fileUrl.c_str());
 

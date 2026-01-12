@@ -14,7 +14,7 @@ Implements a **WebContextMenuResult** object. For details about the sample code,
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor<sup>9+</sup>
 
@@ -101,5 +101,13 @@ Performs the paste operation related to the context menu. The pasted content mat
 > **NOTE**
 >
 > The **ohos.permission.READ_PASTEBOARD** permission must be declared.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+## requestPasswordAutoFill<sup>23+</sup>
+
+requestPasswordAutoFill(): void
+
+Requests the username or password data in the password vault to be automatically filled in the current focused text box.
 
 **System capability**: SystemCapability.Web.Webview.Core

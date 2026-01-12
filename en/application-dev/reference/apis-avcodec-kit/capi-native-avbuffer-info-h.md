@@ -41,7 +41,7 @@ The file declares the attribute definition of the media struct AVBuffer.
 
 ### OH_AVCodecBufferFlags
 
-```
+```c
 enum OH_AVCodecBufferFlags
 ```
 
@@ -60,5 +60,5 @@ Enumerates the flags for the buffer of an OH_AVCodec instance.
 | AVCODEC_BUFFER_FLAGS_SYNC_FRAME = 1 << 1 | The buffer contains key frames.|
 | AVCODEC_BUFFER_FLAGS_INCOMPLETE_FRAME = 1 << 2 | The data in the buffer is only part of the frame.|
 | AVCODEC_BUFFER_FLAGS_CODEC_DATA = 1 << 3 | The buffer contains codec-specific data.|
-| AVCODEC_BUFFER_FLAGS_DISCARD = 1 << 4 | The decoding process depends on the buffer, and the decoded data can be discarded.	<br>**Since**: 12|
-| AVCODEC_BUFFER_FLAGS_DISPOSABLE = 1 << 5 | The buffer can be disposed directly.	<br>**Since**: 12|
+| AVCODEC_BUFFER_FLAGS_DISCARD = 1 << 4 | The decoding process depends on the buffer, and the decoded data can be discarded.<br>**Since**: 12|
+| AVCODEC_BUFFER_FLAGS_DISPOSABLE = 1 << 5 | The buffer can be disposed directly.<br>**Since**: 12|

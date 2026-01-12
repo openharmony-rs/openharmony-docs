@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetStack_CertificatePinning {...} NetStack_CertificatePinning
+```
+
 ## Overview
 
 Defines certificate pinning information.

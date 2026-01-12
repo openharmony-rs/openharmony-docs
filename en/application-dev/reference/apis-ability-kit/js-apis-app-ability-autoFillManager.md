@@ -27,33 +27,40 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 Implements callbacks triggered when auto-save is complete.
 
-### onSuccess
+**System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-onSuccess(): void
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| onSuccess | [OnSuccessFn](#onsuccessfn23) | No   | No   | Called when auto-save is successful.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**NOTE**<br>Starting from API version 23, the original **onSuccess()** API is changed to a property, but its usage remains unchanged.|
+| onFailure | [OnFailureFn](#onfailurefn23) | No   | No   | Called when auto-save fails.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**NOTE**<br>Starting from API version 23, the original **onFailure()** API is changed to a property, but its usage remains unchanged.|
+
+## OnSuccessFn<sup>23+</sup>
+
+type OnSuccessFn = () => void
 
 Called when auto-save is successful.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Example**
 
-See [AutoSaveCallback.onFailure](#onfailure).
+See [AutoSaveCallback.onFailure](#onfailurefn23).
 
-### onFailure
+## OnFailureFn<sup>23+</sup>
 
-onFailure(): void
+type OnFailureFn = () => void
 
 Called when auto-save fails.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Example**
 
-  ```ts
+```ts
 // Index.ets, a page containing components such as the account and password text boxes.
 import { autoFillManager } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
@@ -84,7 +91,7 @@ struct Index {
       })
   }
 }
-  ```
+```
 
 > **NOTE**
 >
@@ -119,7 +126,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
+```ts
 // EntryAbility.ets
 import { UIAbility, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -156,10 +163,10 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
-  ```
+```
 
-  ```ts
-  // Index.ets
+```ts
+// Index.ets
 import { autoFillManager } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -198,4 +205,4 @@ struct Index {
     .height('100%')
   }
 }
-  ```
+```

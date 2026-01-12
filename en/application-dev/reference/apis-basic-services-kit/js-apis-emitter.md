@@ -19,10 +19,6 @@ The **Emitter** module provides the capabilities of sending and processing inter
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
-## Required Permissions
-
-None.
-
 ## emitter.on
 
 on(event: InnerEvent, callback: Callback\<EventData\>): void
@@ -402,6 +398,8 @@ Emits a specified event.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Notification.Emitter
@@ -439,6 +437,8 @@ Emits a specified event.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Notification.Emitter
@@ -470,6 +470,8 @@ emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 Emits a specified event.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -510,6 +512,8 @@ Emits an event of a specified priority.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Notification.Emitter
@@ -546,6 +550,8 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 Emits an event of a specified priority.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -622,7 +628,7 @@ Enumerates the event priorities.
 
 | Name     | Value   | Description                                               |
 | --------- | ---- | --------------------------------------------------- |
-| IMMEDIATE | 0    | The event will be emitted immediately.                                 |
+| IMMEDIATE | 0    | The event will be emitted before high-priority events.                                 |
 | HIGH      | 1    | The event will be emitted before low-priority events.                          |
 | LOW       | 2    | The event will be emitted before idle-priority events. By default, an event is in LOW priority.    |
 | IDLE      | 3    | The event will be emitted after all the other events.            |
@@ -642,7 +648,7 @@ Describes an event to subscribe to or emit. The **EventPriority** settings do no
 
 ## EventData
 
-Describes the data passed in the event.
+Describes the data carried by the emitted event.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -674,7 +680,7 @@ Describes the generic data passed in the event.
 
 | Name    | Type                           | Read Only| Optional| Description          |
 | -------- | ------------------------------- | ---- | ---- | -------------- |
-| data | T | No  | Yes  | Data passed in the event. **T**: generic type.|
+| data | T | No  | Yes  | Data carried by the emitted event. **T**: generic type.|
 
 
 ## Emitter<sup>22+</sup>
@@ -964,9 +970,11 @@ emitter1.off("eventId", callback);
 
 emit(eventId: string, data?: EventData): void
 
-Emits a specified event to the Emitter instance.
+Emits a specified event to the Emitter class instance.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -997,9 +1005,11 @@ emitter1.emit("eventId", eventData);
 
 emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 
-Emits a specified event to the current Emitter class instance.
+Emits a specified event to the Emitter class instance.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1043,6 +1053,8 @@ Emits an event of a specified priority to the Emitter instance.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
+
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Notification.Emitter
@@ -1083,7 +1095,7 @@ emitter1.emit("eventId", options, eventData);
 
 ### getListenerCount<sup>22+</sup>
 
-getListenerCount(eventId: string): long
+getListenerCount(eventId: string): number
 
 Obtains the number of subscriptions to a specified event of the Emitter instance.
 
@@ -1101,7 +1113,7 @@ Obtains the number of subscriptions to a specified event of the Emitter instance
 
 | Type    | Description        |
 | ----- | ----- |
-| long | Number of subscriptions to a specified event.|
+| number | Number of subscriptions to a specified event.|
 
 
 **Example**

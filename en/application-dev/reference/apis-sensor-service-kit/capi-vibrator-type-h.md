@@ -31,7 +31,7 @@ Defines the structs for the vibrator attribute and vibrator file description and
 
 ### Enumeration
 
-| API| typedef Keyword| Description|
+| Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [Vibrator_ErrorCode](#vibrator_errorcode) | Vibrator_ErrorCode | Enumerates the vibrator error codes.|
 | [Vibrator_Usage](#vibrator_usage) | Vibrator_Usage | Enumerates the vibration scenarios.|
@@ -40,7 +40,7 @@ Defines the structs for the vibrator attribute and vibrator file description and
 
 ### Vibrator_ErrorCode
 
-```
+```c
 enum Vibrator_ErrorCode
 ```
 
@@ -59,7 +59,7 @@ Enumerates the vibrator error codes.
 
 ### Vibrator_Usage
 
-```
+```c
 enum Vibrator_Usage
 ```
 
@@ -71,12 +71,12 @@ Enumerates the vibration scenarios.
 
 | Enum Item| Description|
 | -- | -- |
-| USAGE_UNKNOWN = 0 | Unknown scenario|
-| USAGE_ALARM = 1 | Alarming|
-| USAGE_RING = 2 | Ringing|
-| USAGE_NOTIFICATION = 3 | Notification|
-| USAGE_COMMUNICATION = 4 | Telecommunications|
-| USAGE_TOUCH = 5 | Touch|
-| USAGE_MEDIA = 6 | Multimedia|
-| USAGE_PHYSICAL_FEEDBACK = 7 | Physical feedback|
-| USAGE_SIMULATE_REALITY = 8 | Simulated reality|
+| VIBRATOR_USAGE_UNKNOWN = 0 | Unknown scenario|
+| VIBRATOR_USAGE_ALARM = 1 | Alarming|
+| VIBRATOR_USAGE_RING = 2 | Ringing|
+| VIBRATOR_USAGE_NOTIFICATION = 3 | Notification|
+| VIBRATOR_USAGE_COMMUNICATION = 4 | Telecommunications|
+| VIBRATOR_USAGE_TOUCH = 5 | Touch|
+| VIBRATOR_USAGE_MEDIA = 6 | Multimedia|
+| VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7 | Physical feedback|
+| VIBRATOR_USAGE_SIMULATE_REALITY = 8 | Simulated reality|

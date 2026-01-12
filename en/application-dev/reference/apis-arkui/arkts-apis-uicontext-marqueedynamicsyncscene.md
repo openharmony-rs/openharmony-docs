@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides frame rate configuration APIs for the **Marquee** component.
 
@@ -22,7 +22,7 @@ Provides frame rate configuration APIs for the **Marquee** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type                                                     | Read Only| Optional| Description                               |
+| Name      | Type                                                     | Read-Only| Optional| Description                               |
 | --------- | --------------------------------------------------------- | ---- | ---- | ---------------------------------- |
 | type      | [MarqueeDynamicSyncSceneType](./arkts-apis-uicontext-e.md#marqueedynamicsyncscenetype14) | Yes  | No  | Dynamic sync scene of the **Marquee** component.            |
 

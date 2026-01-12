@@ -8,9 +8,11 @@
 
 <!--Del-->
 - Getting Started<!--quick-start-->
-  - [Before You Start](start-overview.md)
+  - [Preparations for Development](start-overview.md)
   - [Building the First ArkTS Application in Stage Model](start-with-ets-stage.md)
 <!--DelEnd-->
+<!--RP1-->
+<!--RP1End-->
 - Development Fundamentals<!--development-fundamentals-->
   - Application Package Fundamentals<!--application-package-fundamentals-->
     - [Application Package Overview](application-package-overview.md)
@@ -34,20 +36,20 @@
     - [Structure of the deviceConfig Tag](deviceconfig-structure.md)
     - [Structure of the module Tag](module-structure.md)
   - Typical Scenarios Development<!--application-typical-scenarios-->
-    - [Integrated HSP](integrated-hsp.md)
-    - [Converting HAR to HSP](har-to-hsp.md)
-    - [Converting HSP to HAR](hsp-to-har.md)
-    - [Converting HAP to HAR](hap-to-har.md)
     - [Creating a Static Shortcut of the Application](typical-scenario-configuration.md)
     - [Creating an Application Clone](app-clone.md)
     - [Creating an Application Multi-Instance](multiInstance.md)
     - [Configuring an Application Icon and Label](layered-image.md)
+    - [Converting HAR to HSP](har-to-hsp.md)
+    - [Converting HSP to HAR](hsp-to-har.md)
+    - [Converting HAP to HAR](hap-to-har.md)
+    - [Integrated HSP](integrated-hsp.md)
   - [FAQs About Application Packages](common_problem_of_application.md)
   - [Application Package Glossary](application-package-glossary.md)
 - [Resource Categories and Access](resource-categories-and-access.md)
 - Learning ArkTS<!--learning-arkts-->
   - [Getting Started with ArkTS](arkts-get-started.md)
-  - [Introduction to ArkTS](introduction-to-arkts.md)
+  - [About This Kit](introduction-to-arkts.md)
   - [ArkTS Coding Style Guide](arkts-coding-style-guide.md)
   - Migration from TypeScript to ArkTS<!--typescript-to-arkts-migration-->
     - [ArkTS Migration Background](arkts-migration-background.md)

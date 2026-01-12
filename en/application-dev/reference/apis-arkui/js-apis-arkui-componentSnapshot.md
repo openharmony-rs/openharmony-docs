@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **componentSnapshot** module provides APIs for obtaining component snapshots, including snapshots of components that have been loaded and snapshots of components that have not been loaded yet. Snapshots are strictly limited to the component's layout bounds. Content drawn outside the area of the owning component or the parent component is not visible in the snapshots. In addition, sibling components stacked in the component's area are not displayed in the snapshot.
 
@@ -84,8 +84,14 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.img')).autoResize(true).width(200).height(200).margin(5).id("root")
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
       }
+
       Button("click to generate UI snapshot")
         .onClick(() => {
           // You are advised to use this.getUIContext().getComponentSnapshot().get().
@@ -95,7 +101,7 @@ struct SnapshotExample {
               return;
             }
             this.pixmap = pixmap
-          }, {scale : 2, waitUntilRenderFinished : true})
+          }, { scale: 2, waitUntilRenderFinished: true })
         }).margin(10)
     }
     .width('100%')
@@ -166,15 +172,21 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.img')).autoResize(true).width(200).height(200).margin(5).id("root")
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
       }
+
       Button("click to generate UI snapshot")
         .onClick(() => {
           // You are advised to use this.getUIContext().getComponentSnapshot().get().
-          componentSnapshot.get("root", {scale : 2, waitUntilRenderFinished : true})
+          componentSnapshot.get("root", { scale: 2, waitUntilRenderFinished: true })
             .then((pixmap: image.PixelMap) => {
               this.pixmap = pixmap
-            }).catch((err:Error) => {
+            }).catch((err: Error) => {
             console.error("error: " + err)
           })
         }).margin(10)
@@ -214,9 +226,9 @@ Renders a custom component in the application background and outputs its snapsho
 
 | Name     | Type                                      | Mandatory  | Description        |
 | -------- | ---------------------------------------- | ---- | ---------- |
-| builder  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | Yes   | Builder of the custom component.<br>**NOTE**<br>The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001.|
+| builder  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | Yes   | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001.|
 | callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt;      | Yes   | Callback used to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback.|
-| delay<sup>12+</sup>   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When pixel map resources are used or when **syncLoad** to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>**NOTE**<br>In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used.|
+| delay<sup>12+</sup>   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When pixel map resources are used or when **syncLoad** to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used.|
 | checkImageStatus<sup>12+</sup>  | boolean | No   | Whether to verify the image decoding status before taking a snapshot. <br>**true**: Check whether all Image components have been decoded. <br>**false**: Skip verification. If the verification is not completed, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**.|
 | options<sup>12+</sup>       | [SnapshotOptions](#snapshotoptions12)           | No   | Custom settings of the snapshot.|
 
@@ -269,9 +281,11 @@ struct OffscreenSnapshotExample {
       Button("click to generate offscreen UI snapshot")
         .onClick(() => {
           // You are advised to use this.getUIContext().getComponentSnapshot().createFromBuilder().
-          componentSnapshot.createFromBuilder(()=>{this.RandomBuilder()},
+          componentSnapshot.createFromBuilder(() => {
+            this.RandomBuilder()
+          },
             (error: Error, pixmap: image.PixelMap) => {
-              if(error){
+              if (error) {
                 console.error("error: " + JSON.stringify(error))
                 return;
               }
@@ -280,8 +294,9 @@ struct OffscreenSnapshotExample {
               // ....
               // Obtain the component size and position.
               let info = this.getUIContext().getComponentUtils().getRectangleById("builder")
-              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' + info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
-            }, 320, true, {scale : 2, waitUntilRenderFinished : true})
+              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' +
+              info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
+            }, 320, true, { scale: 2, waitUntilRenderFinished: true })
         })
       Image(this.pixmap)
         .margin(10)
@@ -321,8 +336,8 @@ Renders a custom component in the application background and outputs its snapsho
 
 | Name    | Type                                      | Mandatory  | Description        |
 | ------- | ---------------------------------------- | ---- | ---------- |
-| builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | Yes   | Builder of the custom component.<br>**NOTE**<br>The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001.|
-| delay<sup>12+</sup>   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When pixel map resources are used or when **syncLoad** to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>**NOTE**<br>In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms|
+| builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | Yes   | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001.|
+| delay<sup>12+</sup>   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When pixel map resources are used or when **syncLoad** to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms|
 | checkImageStatus<sup>12+</sup>  | boolean | No   | Whether to verify the image decoding status before taking a snapshot. <br>**true**: Check whether all Image components have been decoded. <br>**false**: Skip verification. If the verification is not completed, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**.|
 | options<sup>12+</sup>       | [SnapshotOptions](#snapshotoptions12)           | No   | Custom settings of the snapshot.|
 
@@ -380,15 +395,18 @@ struct OffscreenSnapshotExample {
       Button("click to generate offscreen UI snapshot")
         .onClick(() => {
           // You are advised to use this.getUIContext().getComponentSnapshot().createFromBuilder().
-          componentSnapshot.createFromBuilder(()=>{this.RandomBuilder()}, 320, true, {scale : 2, waitUntilRenderFinished : true})
+          componentSnapshot.createFromBuilder(() => {
+            this.RandomBuilder()
+          }, 320, true, { scale: 2, waitUntilRenderFinished: true })
             .then((pixmap: image.PixelMap) => {
               this.pixmap = pixmap
               // Save the pixmap to a file.
               // ....
               // Obtain the component size and position.
               let info = this.getUIContext().getComponentUtils().getRectangleById("builder")
-              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' + info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
-            }).catch((err:Error) => {
+              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' +
+              info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
+            }).catch((err: Error) => {
             console.error("error: " + err)
           })
         })
@@ -460,13 +478,19 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.img')).autoResize(true).width(200).height(200).margin(5).id("root")
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
       }
+
       Button("click to generate UI snapshot")
         .onClick(() => {
           try {
-          // You are advised to use this.getUIContext().getComponentSnapshot().getSync().
-            let pixelmap = componentSnapshot.getSync("root", {scale : 2, waitUntilRenderFinished : true})
+            // You are advised to use this.getUIContext().getComponentSnapshot().getSync().
+            let pixelmap = componentSnapshot.getSync("root", { scale: 2, waitUntilRenderFinished: true })
             this.pixmap = pixelmap
           } catch (error) {
             console.error("getSync errorCode: " + error.code + " message: " + error.message)
@@ -545,14 +569,16 @@ Defines the rectangular region for capturing the component snapshot, with coordi
 
 ```ts
 import { image } from '@kit.ImageKit';
+
 @Entry
 @Component
 struct SnapshotExample {
   @State pixmap: image.PixelMap | undefined = undefined
+
   build() {
     Column() {
       Row() {
-        Column(){
+        Column() {
           TextClock()
           Button("Button ABCDE").type(ButtonType.Normal)
           Row() {
@@ -562,6 +588,7 @@ struct SnapshotExample {
             Checkbox()
             Text("×")
           }.align(Alignment.Start)
+
           TextInput()
         }
         .align(Alignment.Start)
@@ -573,11 +600,21 @@ struct SnapshotExample {
         .borderColor(Color.Green)
 
       }
+
       Button("get capture")
-      .onClick(() => {
+        .onClick(() => {
           try {
             let pixelmap = this.getUIContext().getComponentSnapshot().getSync("component1",
-              {scale : 2, waitUntilRenderFinished : true,region: {start:20,top:20, end:200,bottom:240}})
+              {
+                scale: 2,
+                waitUntilRenderFinished: true,
+                region: {
+                  start: 20,
+                  top: 20,
+                  end: 200,
+                  bottom: 240
+                }
+              })
             this.pixmap = pixelmap
           } catch (error) {
             console.error("getSync errorCode: " + error.code + " message: " + error.message)

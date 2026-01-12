@@ -73,10 +73,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   
   class TmpOne {
-    public x:number = 0;
-    public y:number = 0;
-    public width:number = 300;
-    public height:number = 300;
+    public x: number = 0;
+    public y: number = 0;
+    public width: number = 300;
+    public height: number = 300;
   }
   
   @Entry
@@ -88,41 +88,41 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     build() {
       Column() {
         // 画一个宽高都为75的圆
-        // $r('app.string.OriginalSizeCircle')需要替换为开发者所需的资源文件
-        Text($r('app.string.OriginalSizeCircle'))
-        Circle({ width: 75, height: 75 }).fill('#E87361')
+        // 请将$r('app.string.OriginalSizeCircle')替换为实际资源文件，在本示例中该资源文件的value值为"原始尺寸Circle组件"
+        Text($r('app.string.OriginalSizeCircle')).margin({ top: 20 })
+        Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
   
         Row({ space: 10 }) {
           Column() {
             // 创建一个宽高都为150的shape组件，背景色为黄色，一个宽高都为75的viewPort。
             // 用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个直径为75的圆。
             // 绘制结束，viewPort会根据组件宽高放大两倍。
-            // $r('app.string.EnlargedCircle')需要替换为开发者所需的资源文件
+            // 请将$r('app.string.EnlargedCircle')替换为实际资源文件，在本示例中该资源文件的value值为"shape内放大的Circle组件"
             Text($r('app.string.EnlargedCircle'))
             Shape() {
-              Rect().width('100%').height('100%').fill('#0097D4')
-              Circle({ width: 75, height: 75 }).fill('#E87361')
+              Rect().width('100%').height('100%').fill('rgb(39, 135, 217)')
+              Circle({ width: 75, height: 75 }).fill('rgb(213, 213, 213)')
             }
             .viewPort(this.viep)
             .width(150)
             .height(150)
-            .backgroundColor('#F5DC62')
+            .backgroundColor('rgb(23, 169, 141)')
           }
   
           Column() {
             // 创建一个宽高都为150的shape组件，背景色为黄色，一个宽高都为300的viewPort。
             // 用一个绿色的矩形来填充viewPort，在viewPort中绘制一个直径为75的圆。
             // 绘制结束，viewPort会根据组件宽高缩小两倍。
-            // $r('app.string.ShrunkCircle')需要替换为开发者所需的资源文件
+            // 请将$r('app.string.ShrunkCircle')替换为实际资源文件，在本示例中该资源文件的value值为"Shape内缩小的Circle组件"
             Text($r('app.string.ShrunkCircle'))
             Shape() {
-              Rect().width('100%').height('100%').fill('#BDDB69')
-              Circle({width: 75, height: 75}).fill('#E87361')
+              Rect().width('100%').height('100%').fill('rgb(213, 213, 213)')
+              Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
             }
             .viewPort(this.viep1)
             .width(150)
             .height(150)
-            .backgroundColor('#F5DC62')
+            .backgroundColor('rgb(23, 169, 141)')
           }
         }
       }
@@ -130,7 +130,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
-  ![2023032401632](figures/2023032401632.jpg)
+  ![2023032401632](figures/2023032401632.png)
 
 - 创建一个宽高都为300的shape组件，背景色为黄色，创建一个宽高都为300的viewPort。用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个半径为75的圆。
 
@@ -203,6 +203,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 ## 自定义样式
 
+> **说明：**
+>
+> 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+
 绘制组件支持通过各种属性更改组件样式。
 
 - 通过[fill](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#fill)可以设置组件填充区域颜色。
@@ -271,7 +275,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   ![strokeLineJoin](figures/strokeLineJoin.jpg)
 
 - 通过[strokeMiterLimit](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokemiterlimit)设置斜接长度与边框宽度比值的极限值。
-  斜接长度表示外边框外边交点到内边交点的距离，边框宽度即[strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth)属性的值。strokeMiterLimit取值需大于等于1，且在[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)属性取值LineJoinStyle.Miter时生效。
+
+  斜接长度表示外边框外边交点到内边交点的距离，边框宽度即[strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth)属性的值。
+  
+  strokeMiterLimit取值需大于等于1，且在[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)属性取值LineJoinStyle.Miter时生效。
 
   <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) -->
   
@@ -332,6 +339,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   ![2023032411518](figures/2023032411518.jpg)
 
 - 通过[mesh](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#mesh8)设置网格效果，实现图像局部扭曲。
+
+  > **说明：**
+  >
+  > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
 
   <!-- @[mesh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Mesh.ets) -->
   
@@ -495,6 +506,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   在Shape的(-80, -5)点绘制一个封闭路径，填充颜色0x317AF7，线条宽度3，边框颜色红色，拐角样式锐角（默认值）。
 
+  > **说明：**
+  >
+  > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+
   <!-- @[shape_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ShapeExample.ets) -->
   
   ``` TypeScript
@@ -506,9 +521,14 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
         Shape() {
           Path().width(200).height(60).commands('M0 0 L400 0 L400 150 Z')
         }
-        .viewPort({ x: -80, y: -5, width: 500, height: 300 })
-        .fill(0x317AF7)
-        .stroke(Color.Red)
+        .viewPort({
+          x: -80,
+          y: -5,
+          width: 500,
+          height: 300
+        })
+        .fill('rgb(213, 213, 213)')
+        .stroke('rgb(39, 135, 217)')
         .strokeWidth(3)
         .strokeLineJoin(LineJoinStyle.Miter)
         .strokeMiterLimit(5)
@@ -517,11 +537,15 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
-  ![场景1](figures/场景1.jpg)
+  ![场景1](figures/场景1.png)
 
 ### 绘制圆和圆环
 
   绘制一个直径为150的圆，和一个直径为150、线条为红色虚线的圆环（宽高设置不一致时以短边为直径）。
+
+  > **说明：**
+  >
+  > 本示例通过strokeDashArray属性设置边框间隙来实现红色虚线的圆环，strokeDashArray属性参考[strokeDashArray](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#strokedasharray)。  
 
   <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
   

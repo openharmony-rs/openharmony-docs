@@ -3,14 +3,14 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @leiguangyu-->
-<!--Designer: @Maplestroy-->
+<!--Designer: @Maplestroy91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
 hiperf is a command line tool that integrates multiple performance analysis capabilities, enabling you to identify system bottlenecks, locate software hotspots, optimize code efficiency, and collect and analyze runtime performance data.
 
 
-You can preferentially use a graphical frontend tool such as [DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-time) or [SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_hiperf.md) to collect the call stack of a function, obtain the execution time of the function at each layer in the call stack, and view the call chain information in a swimlane diagram for performance analysis. To specify the event, sampling period, collection duration, and number of CPU cores, you can use HiPerf. The **perf.data** file can be opened using SmartPerf and displayed in a flame graph.
+You can use hiperf through [Deveco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install) or [SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host/releases) to collect the function call stack, obtain the execution time of each function on the call stack, and view the call chain information in a swimlane diagram for performance analysis. For details, see [Basic Time Analysis: Time](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-time) and [hiperf Usage](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_hiperf.md). To specify the event, sampling period, collection duration, and number of CPU cores, you can use HiPerf. The **perf.data** file can be opened using SmartPerf and displayed in a flame graph.
 
 
 This topic describes how to use hiperf to perform performance analysis.
@@ -131,7 +131,7 @@ See 'hiperf help [command]' for more information on a specific command.
 1. Count the **1745** and **1910** processes for 10 seconds.
 
 
-    ```
+    ```shell
     $ hiperf stat -d 10 -p 1745,1910
     Profiling duration is 10.000 seconds.
     Start Profiling...
@@ -150,7 +150,7 @@ See 'hiperf help [command]' for more information on a specific command.
 2. Count processes **1745** and **1910** for **10** seconds, with event types set to **hw-cpu-cycles**, **hw-instructions**, and **sw-task-clock**, and a print interval of **3000** ms.
 
 
-    ```
+    ```shell
     $ hiperf stat -d 10 -p 1745,1910 -e hw-cpu-cycles,hw-instructions,sw-task-clock -i 3000
     Profiling duration is 10.000 seconds.
     Start Profiling...
@@ -176,7 +176,7 @@ See 'hiperf help [command]' for more information on a specific command.
 3. Count the process **1910** for **3** seconds, with the event types to **hw-cpu-cycles** and **hw-instructions**, and print detailed information.
 
 
-    ```
+    ```shell
     $ hiperf stat -d 3 -p 1910 -e hw-cpu-cycles,hw-instructions --verbose
     Profiling duration is 3.000 seconds.
     Start Profiling...
@@ -197,30 +197,6 @@ See 'hiperf help [command]' for more information on a specific command.
     ```
 
 
-## Debug-Type Applications
-
-
-> **NOTE**
->
-> The **hiperf record/stat -p [pid]** command should be used for applications signed by the debug certificate.
-> 
-> Run the **hdc shell "bm dump -n bundlename | grep appProvisionType"** command to check whether the application specified in the command is a debug-type application. The expected output is **"appProvisionType": "debug"**.
-> 
-> For example, run the following command to check the bundle name **com.example.myapplication**:
-> 
-> ```shell
-> hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
-> ```
-> 
-> If the application is a debug-type application, the following information is displayed:
-> 
-> ```shell
-> "appProvisionType": "debug",
-> ```
-> 
-> To build a debug-type application, you need to use a debug certificate for signature. For details about how to request and use the debug certificate, see [Requesting a Debug Certificate](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-debugcert-0000001914263178).
-
-
 ## list
 
 Displays the performance event types supported by the system, which can be used as parameters of the **-e** option in the **record** and **stat** commands.
@@ -238,14 +214,14 @@ Displays the performance event types supported by the system, which can be used 
 
 **Example**
 
-```
+```shell
 Usage: hiperf list [event type name]
 ```
 
 Query the supported hardware event types.
 
 
-```
+```shell
 $ hiperf list hw
 event not support hw-ref-cpu-cycles
 
@@ -264,7 +240,11 @@ Supported events for hardware:
 
 ## record
 
-Collects the performance data of a specified process or application, including the CPU cycle, number of instructions, and function calls, and saves the sampling data to a specified file.
+Collects the performance data of a specified process or application, including the CPU cycle, number of instructions, and function calls, and saves the sampling data to a specified file. (For the default path, run the **hiperf record -h/--help** command to view the description of the **-o** parameter.)
+
+> **NOTE**
+>
+> The process collected by the command must be that of a [debug-type application](hiperf.md#what-should-i-do-if-hiperf-fails-to-collect-applications-without-the-debug-certificate-signature).
 
 **Parameters of the record command**
 
@@ -299,7 +279,7 @@ Collects the performance data of a specified process or application, including t
 | --app | Sets the application names to collect. Use commas (,) to separate them. The application must already be running. If it has not started, the command waits up to 20s and then exits automatically. This parameter cannot be used together with **-a**.| 
 | --chkms | Sets the query interval, in milliseconds. The value ranges from 1 to 200. The default value is **10**.| 
 | --data-limit | Sets the limit of the output data size. When this limit is reached, the collection stops. By default, there is no limit.| 
-| -o | Sets the output file path. For the default path, run the **hiperf record -h/--help** command to view the description of the **-o** parameter. You can customize the file name.| 
+| -o | Sets the output file path. You can customize the file name.| 
 | -z | Outputs the data in a .gz file.| 
 | --restart | Collects performance metrics about application startup. If the process is not started within 30 seconds, the collection stops.| 
 | --verbose | Outputs a more detailed report.| 
@@ -313,17 +293,20 @@ Collects the performance data of a specified process or application, including t
 | -a | Collects the device performance data.| 
 | --exclude-hiperf | Excludes the performance data of the hiperf process. This parameter must be used together with **-a**.| 
 | --exclude-process | Specifies the process name not to collect. This parameter must be used together with **-a**.|
+| --pipe_input | Establishes a command input pipe when the client process calls hiperf in device development. For details about how to use this capability, see [hiperf](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-toolchain-hiperf.md). This parameter is not required for application development.|
+| --pipe_output | Establishes an output pipe when the client process calls hiperf in device development. For details about how to use this capability, see [hiperf](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-toolchain-hiperf.md). This parameter is not required for application development.|
+| --append-smo-data | Appends the original .so file name to the packed .so file name.<br>Note: This parameter is supported since API version 23.|
 <!--RP1End-->
 
 **Example**
 
-```
+```shell
 Usage: hiperf record [options] [command [command-args]]
 ```
 
 Sample the process 267 for 10 seconds and use **dwarf** to unwind the stack.
 
-```
+```shell
 $ hiperf record -p 267 -d 10 -s dwarf
 ```
 
@@ -331,6 +314,10 @@ $ hiperf record -p 267 -d 10 -s dwarf
 ## stat
 
 Monitors the specified application and periodically prints the values of performance counters.
+
+> **NOTE**
+>
+> The process collected by the command must be that of a [debug-type application](hiperf.md#what-should-i-do-if-hiperf-fails-to-collect-applications-without-the-debug-certificate-signature).
 
 **Parameters of the stat command**
 
@@ -353,19 +340,19 @@ Monitors the specified application and periodically prints the values of perform
 | --restart | Collects performance indicator information about application startup. If a process is not started within 30 seconds, the record exits. This parameter must be used together with **--app**.| 
 | --verbose | Outputs detailed information.| 
 | --dumpoptions | Displays details about all options in the list.| 
-| --control [command] | Controls the collection operation. The commands include **prepare**, **start**, and **stop**. This parameter cannot be used together with **-d**.<br>**NOTE**: This parameter is supported since API version 20.| 
-| -o | Sets the output file path. For the default path, run the **hiperf stat -h/--help** command to view the description of the **-o** parameter. You can customize the file name. This parameter must be used with **--control prepare**, and cannot be used with **--control**.<br>**NOTE**: This parameter is supported since API version 20.| 
+| --control [command] | Controls the collection operation. The commands include **prepare**, **start**, and **stop**. This parameter cannot be used together with **-d**.<br>Note: This parameter is supported since API version 20.| 
+| -o | Sets the output file path. You can customize the file name.<br>For the default path, run the **hiperf stat -h/--help** command to view the description of the **-o** parameter.<br>This parameter must be used with **--control prepare**, and cannot be used with **--control**.<br>Note: This parameter is supported since API version 20.| 
 | -a | Collects the device performance data.|
 
 **Example**
 
-```
+```shell
 hiperf stat [options] [command [command-args]]
 ```
 
 Run the **stat** command to monitor the performance data of the process **2349** that runs on CPU 0 for three seconds.
 
-```
+```shell
 $ hiperf stat -p 1745 -d 3 -c 0
 ```
 
@@ -391,13 +378,13 @@ Converts performance data files in different formats (for example, **perf.data**
 
 **Example**
 
-```
+```shell
 Usage: hiperf dump [option] \<filename\>
 ```
 
 Run the **dump** command to read the **/data/local/tmp/perf.data** file and export it to the **/data/local/tmp/perf.dump** file.
 
-```
+```shell
 $ hiperf dump -i /data/local/tmp/perf.data -o /data/local/tmp/perf.dump
 ```
 
@@ -428,11 +415,46 @@ Converts the sampling data (**perf.data**) to the specified format (such as JSON
 
 **Example**
 
-```
+```shell
 Usage: hiperf report [option] \<filename\>
 ```
 
 Extract key data that has a great impact on performance (≥ 1%) from the **perf.data** file and displays the data in a report.
-```
+```shell
 $ hiperf report -i /data/local/tmp/perf.data --limit-percent 1
 ```
+
+
+## FAQs
+
+### What should I do if hiperf fails to collect applications without the debug certificate signature
+
+**Symptom**
+
+Only applications with the debug certificate signature can be collected. The message "only support debug application" is displayed.
+
+**Possible Causes and Solution**
+
+**Causes**
+
+The application does not have the debug certificate signature.
+
+**Solution**
+
+When the **hiperf record/stat -p [pid]** command is used, the process to be collected must be that of an application signed with the debug certificate.
+
+Run the **hdc shell "bm dump -n bundlename | grep appProvisionType"** command to check whether the application specified in the command is a debug-type application. The expected output is **"appProvisionType": "debug"**.
+
+For example, run the following command to check the bundle name **com.example.myapplication**:
+
+```shell
+hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
+```
+
+If the application is a debug-type application, the following information is displayed:
+
+```shell
+"appProvisionType": "debug",
+```
+
+To build a debug-type application, you need to use a debug certificate for signature. For details about how to request and use the debug certificate, see [Requesting a Debug Certificate](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-debugcert-0000001914263178).

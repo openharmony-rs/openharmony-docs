@@ -26,8 +26,9 @@ Blur effects add a sense of depth and allow for distinction of hierarchical rela
 
 ## Applying Background Blur with backdropBlur
 
+<!-- @[animationBlur_template1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template1/BlurEffectsExample.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct BlurEffectsExample {
@@ -40,8 +41,8 @@ struct BlurEffectsExample {
         .fontColor(Color.White)
         .textAlign(TextAlign.Center)
         .backdropBlur(10)// Apply background blur.
-        // Replace $r('app.media.share') with the image resource file you use.
-        .backgroundImage($r('app.media.share'))
+         // Replace $r("app.media.bg") with the image resource file you use.
+        .backgroundImage($r('app.media.bg'))
         .backgroundImageSize({ width: 400, height: 300 })
     }
     .width('100%')
@@ -52,24 +53,29 @@ struct BlurEffectsExample {
 ```
 
 
-
 ![en-us_image_0000001599812870](figures/en-us_image_0000001599812870.png)
 
 
 ## Applying Foreground Blur with blur
 
+<!-- @[animationBlur_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template2/Index.ets) -->
 
-```ts
+``` TypeScript
+import { common } from '@kit.AbilityKit';
+
 @Entry
 @Component
-struct Index1 {
+struct Index {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State radius: number = 0;
   @State text: string = '';
-  @State y: string = 'Finger not on the screen';
+  @State y: Resource | string = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text1').id);// The value in the app.string.animation_blur_text1 resource file is 'Finger not on the screen.'
 
   aboutToAppear() {
-    this.text = "Press a finger on the screen and slide up and down\n" + "Current finger position on the y-axis: " + this.y +
-      "\n" + "Blur radius:" + this.radius;
+    // Replace $r('app.string.xxx') with the resource file you use.
+    this.text = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text2').id) + 
+    "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text3').id) + this.y +
+      "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text4').id) + this.radius;
   }
 
   build() {
@@ -80,8 +86,8 @@ struct Index1 {
         .fontWeight(FontWeight.Bold)
         .fontFamily("cursive")
         .fontStyle(FontStyle.Italic)
-      // Replace $r("app.media.wall") with the image resource file you use.
-      Image($r("app.media.wall"))
+      // Replace $r("app.media.bg") with the image resource file you use.
+      Image($r("app.media.bg"))
         .blur(this.radius)// Apply foreground blur.
         .height('100%')
         .width("100%")
@@ -96,11 +102,13 @@ struct Index1 {
         }
         if (event.type === TouchType.Up) {
           this.radius = 0;
-          this.y = 'Finger off the screen';
+          // The value in the app.string.animation_blur_text1 resource file is 'Finger not on the screen.'
+          this.y = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text1').id);
         }
       }
-      this.text = "Press a finger on the screen and slide up and down\n" + "Current finger position on the y-axis: " + this.y +
-        "\n" + "Blur radius:" + this.radius;
+      // Replace $r('app.string.xxx') with the resource file you use.
+      this.text = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text2').id) + "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text3').id) + this.y +
+        "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text4').id) + this.radius;
     })
   }
 }
@@ -110,11 +118,11 @@ struct Index1 {
 
 
 
-
 ## Applying Background Blur with backgroundBlurStyle
 
+<!-- @[animationBlur_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template3/BackDropBlurStyleDemo.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct BackDropBlurStyleDemo {
@@ -123,7 +131,8 @@ struct BackDropBlurStyleDemo {
       GridItem() {
         Column() {
           Column() {
-            Text('Original')
+            // The value in the $r('app.string.originalImage') resource file is 'Original.'
+            Text($r('app.string.originalImage'))
               .fontSize(20)
               .fontColor(Color.White)
               .textAlign(TextAlign.Center)
@@ -133,10 +142,11 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
 
-          Text('Original')
+          // The value in the $r('app.string.originalImage') resource file is 'Original.'
+          Text($r('app.string.originalImage'))
             .fontSize(12)
             .fontColor(Color.Black)
         }
@@ -159,8 +169,8 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
           // BlurStyle.Thin: Thin blur is applied.
           // ThemeColorMode.LIGHT: The light color mode is used.
           // AdaptiveColor.DEFAULT: Adaptive color mode is not used. The default color is used as the mask color.
@@ -194,8 +204,8 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.Regular, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -225,8 +235,8 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.Thick, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -256,8 +266,8 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_THIN, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -287,8 +297,8 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_REGULAR, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -318,8 +328,8 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_THICK, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -349,8 +359,8 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_ULTRA_THICK, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -377,15 +387,15 @@ struct BackDropBlurStyleDemo {
 ```
 
 
-
 ![en-us_image_0000001649455517](figures/en-us_image_0000001649455517.png)
 
 
 
 ## Applying Foreground Blur with foregroundBlurStyle
 
+<!-- @[animationBlur_template4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template4/ForegroundBlurStyleDemo.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct ForegroundBlurStyleDemo {
@@ -394,7 +404,8 @@ struct ForegroundBlurStyleDemo {
       GridItem() {
         Column() {
           Column() {
-            Text('Original')
+            // The value in the $r('app.string.originalImage') resource file is 'Original.'
+            Text($r('app.string.originalImage'))
               .fontSize(20)
               .fontColor(Color.White)
               .textAlign(TextAlign.Center)
@@ -404,10 +415,11 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
 
-          Text('Original')
+          // The value in the $r('app.string.originalImage') resource file is 'Original.'
+          Text($r('app.string.originalImage'))
             .fontSize(12)
             .fontColor(Color.Black)
         }
@@ -430,8 +442,8 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
           // BlurStyle.Thin: Thin blur is applied.
           // ThemeColorMode.LIGHT: The light color mode is used.
           // AdaptiveColor.DEFAULT: Adaptive color mode is not used. The default color is used as the mask color.
@@ -465,8 +477,8 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.Regular, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -496,8 +508,8 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.Thick, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -527,8 +539,8 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_THIN, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -558,8 +570,8 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_REGULAR, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -589,8 +601,8 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_THICK, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -620,8 +632,8 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.share') with the image resource file you use.
-          .backgroundImage($r('app.media.share'))
+          // Replace $r('app.media.bg') with the resource file you use.
+          .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_ULTRA_THICK, {
             colorMode: ThemeColorMode.LIGHT,
             adaptiveColor: AdaptiveColor.DEFAULT,
@@ -648,57 +660,55 @@ struct ForegroundBlurStyleDemo {
 ```
 
 
-
 ![en-us_image_0000001599658168](figures/en-us_image_0000001599658168.png)
 
 
 ## Applying Motion Blur with motionBlur
 
-```ts
+<!-- @[animationBlur_template5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template5/MotionBlurTest.ets) -->
+
+``` TypeScript
 import { curves } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct motionBlurTest {
-  @State widthSize: number = 400;
-  @State heightSize: number = 320;
+  @State widthSize: number = 300;
+  @State heightSize: number = 240;
   @State flag: boolean = true;
   @State radius: number = 0;
-  @State x: number = 0;
-  @State y: number = 0;
+  @State x: number = 0.5;
+  @State y: number = 0.5;
 
   build() {
     Column() {
       Column() {
-        // Replace $r('app.media.testImg') with the image resource file you use.
+        // Replace $r('app.media.testImg') with the resource file you use.
         Image($r('app.media.testImg'))
           .width(this.widthSize)
           .height(this.heightSize)
+          .scale({ x: this.flag ? 1 : 0.8,y: this.flag ? 1 : 0.8 ,centerX: '50%', centerY: '50%' })
           .onClick(() => {
-            this.radius = 5;
+            this.radius = 50;
             this.x = 0.5;
             this.y = 0.5;
-            if (this.flag) {
-              this.widthSize = 100;
-              this.heightSize = 80;
-            } else {
-              this.widthSize = 400;
-              this.heightSize = 320;
-            }
             this.flag = !this.flag;
           })
           .animation({
             duration: 2000,
-            curve: curves.springCurve(10, 1, 228, 30),
+            iterations:1,
+            playMode:PlayMode.Alternate,
             onFinish: () => {
               this.radius = 0;
             }
           })
           .motionBlur({ radius: this.radius, anchor: { x: this.x, y: this.y } })
       }
-    }.width('100%').margin({ top: 5 })
+    }.width('100%').margin({ top: 50 })
   }
 }
 ```
+
+
 
 ![motionBlurTest](figures/motionBlur.gif)

@@ -4,9 +4,9 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **NodeContent** module implements a manager for [ContentSlot](./arkui-ts/ts-components-contentSlot.md) components in ArkUI.
+**NodeContent** is the ArkUI-provided manager for [ContentSlot](./arkui-ts/ts-components-contentSlot.md).
 
 > **NOTE**
 >
@@ -20,7 +20,7 @@ import { NodeContent } from '@kit.ArkUI';
 
 ## NodeContent
 
-**NodeContent** is the entity encapsulation of node content.
+**NodeContent** is the entity-level encapsulation of node content.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -62,6 +62,8 @@ struct Parent {
 }
 ```
 
+For details about the implementation of the .so file in the preceding code, see <!--RP1-->[Native XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NativeXComponent)<!--RP1End-->.
+
 ### addFrameNode<sup>12+</sup>
 
 addFrameNode(node: FrameNode): void
@@ -77,6 +79,14 @@ Adds a FrameNode to this **NodeContent** object.
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
 | node | [FrameNode](./js-apis-arkui-frameNode.md) | Yes  | FrameNode to add.|
+
+**Error codes**
+
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
+| ID| Error Message                        |
+| -------- | -------------------------------- |
+| 100025 | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
 
 ### removeFrameNode<sup>12+</sup>
 

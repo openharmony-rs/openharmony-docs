@@ -121,7 +121,7 @@ controller: this.webController
 在非编辑区域中，选中的文本满足以下条件时，文本选择菜单将展示对应的AI菜单选项：
 
 - 选中文本经过UTF-8编码转换后，其字节长度不超过255字节。
-- 选中文本中仅包含一个匹配识别类型的实体词（可通过[dataDetectorConfig](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20)配置支持的识别类型。
+- 选中文本中仅包含一个匹配识别类型的实体词（可通过[dataDetectorConfig](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20)配置支持的识别类型）。
 - 不处于“全选”操作状态下的文本。
 
 ![web-data-detector-selection-menu](figures/web-data-detector-selection-menu.gif)

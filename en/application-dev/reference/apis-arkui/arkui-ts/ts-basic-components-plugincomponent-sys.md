@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **PluginComponent** allows an application to display external UI from another application. To implement update through inter-process communication (IPC), see [@ohos.pluginComponent](../js-apis-plugincomponent.md).
 
@@ -48,10 +48,10 @@ Defines options for constructing a **PluginComponent**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type  | Description                       |
-| ---------- | ------ | --------------------------- |
-| template<sup>9+</sup>   | [PluginComponentTemplate](#plugincomponenttemplate9) | Template of the **PluginComponent**, which is bound to the component defined by the provider.               |
-| data<sup>9+</sup>       | any    | Data passed to the **PluginComponent** provider.|
+| Name      | Type  | Read-Only|Optional| Description                       |
+| ---------- | ------ | ------ | ------ |--------------------------- |
+| template<sup>9+</sup>   | [PluginComponentTemplate](#plugincomponenttemplate9) | No| No| Template of the **PluginComponent**, which is bound to the component defined by the provider.               |
+| data<sup>9+</sup>       | any | No| No | Data passed to the **PluginComponent** provider.|
 
 ## PluginComponentTemplate<sup>9+</sup>
 
@@ -59,26 +59,28 @@ Defines options for constructing a **PluginComponent**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type  | Description                       |
-| ---------- | ------ | --------------------------- |
-| source     | string | Component template name.               |
-| bundleName | string | Bundle name of the provider ability.|
+| Name      | Type | Read-Only| Optional| Description                       |
+| ---------- | ------ | ------ | ------ | --------------------------- |
+| source     | string | No| No| Component template name.               |
+| bundleName | string | No| No| Bundle name of the provider ability.|
 
 ## Attributes
 
 The width and height of the component must be explicitly set to non-zero valid values.
 
-**NOTE**
-
-  The template can be provided in either of the following modes:
-* 1. Use an absolute path. In this case, set **source** to the absolute path of the template and leave **bundleName** blank. This mode is not recommended as it is applicable only to standalone templates that do not need to load resources.
-* 2. Use an application package. In this case, set **bundleName** to the application bundle name and **source** to the relative path of the HAP file template. In the multi-HAP scenario, a HAP file is identified based on its relative path and name.
-
-  Example: **{source: 'pages/PluginProviderExample.ets&entry', bundleName: 'com.example.provider'}**
-
-  The template is provided only when **source** can be set to an ability name or bundle name in the FA model.
-
-  Example: **{source: 'plugin', bundleName: 'com.example.provider'}**
+> **NOTE**
+>
+> The template can be provided in either of the following modes:
+>
+> 1. Use an absolute path. In this case, set **source** to the absolute path of the template and leave **bundleName** blank. This mode is not recommended as it is applicable only to standalone templates that do not need to load resources.
+>
+> 2. Use an application package. In this case, set **bundleName** to the application bundle name and **source** to the relative path of the HAP file template. In the multi-HAP scenario, a HAP file is identified based on its relative path and name.
+>
+>  Example: **{source: 'pages/PluginProviderExample.ets&entry', bundleName: 'com.example.provider'}**
+>
+>  The template is provided only when **source** can be set to an ability name or bundle name in the FA model.
+>
+>  Example: **{source: 'plugin', bundleName: 'com.example.provider'}**
 
 
 ## Events
@@ -101,7 +103,7 @@ Triggered when the component loading is complete.
 
 | Name | Type                                                    | Mandatory| Description                                                    |
 | ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [VoidCallback](../../apis-basic-services-kit/js-apis-base.md#callback) | Yes  | Callback function, which is triggered when the component loading is complete.|
+| callback | [VoidCallback](../../apis-basic-services-kit/js-apis-base.md#callback) | Yes  | Callback invoked when the component loading is complete.|
 
 ### onError
 
@@ -143,23 +145,23 @@ Data provided when the error occurs.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type  | Description                       |
-| ---------- | ------ | -------------------------- |
-| errcode<sup>9+</sup>    | number | Error code.                   |
-| msg<sup>9+</sup>        | string | Error message.                 |
+| Name      | Type | Read-Only| Optional| Description                       |
+| ---------- | ------ | ------ | ------ |-------------------------- |
+| errcode<sup>9+</sup>    | number | No| No|Error code.                   |
+| msg<sup>9+</sup>        | string | No| No|Error message.                 |
 
-Error code 1 is the default error code. The following table describes the error information and handling suggestions.
+Error code 1 is the default error code. The following table describes the error messages and handling suggestions.
 
 | Error Message  | Description                       | Handling Suggestion|
 | ------ | -------------------------- | ----------------- |
-| package path is empty. | Empty package path.| Check whether the source field in the PluginComponentTemplate parameter is correct. |
-| Query Active OsAccountIds failed! | Failed to obtain the activated user ID.| Check whether the Account service is abnormal or whether the application has the permission to query the user ID.   |
-| Template source is empty. | The template source is empty.| Check whether the source field in the PluginComponentTemplate parameter is correct. |
-| Bms bundleManager is nullptr. | Failed to obtain the bundle manager.|  Check whether the BMS service is abnormal or whether the application has the ohos.permission.GET_BUNDLE_INFO_PRIVILEGED,ohos.permission.GET_BUNDLE_INFO,ohos.permission.REQUIRE_FORM permission.                 |
-| App bundleName is empty. | The application package name is empty. | Check whether the bundleName field in the PluginComponentTemplate parameter is correct.                  |
-| Bms get bundleName failed! | Failed to obtain the package name. |  Check whether the bundleName field in the PluginComponentTemplate parameter is correct, whether the package corresponding to the bundleName field is correctly installed, whether the BMS service is abnormal, or whether the application has the ohos.permission.GET_BUNDLE_INFO_PRIVILEGED,ohos.permission.GET_BUNDLE_INFO,ohos.permission.REQUIRE_FORM permission.               |
-| Bms moduleResPaths is empty. | The moduleResPaths attribute of the plugin package is empty.|  Check whether the moduleResPaths attribute of the package corresponding to the bundleName field is abnormal or whether the BMS service is abnormal.                  |
-| Bms get hapPath failed! Cannot find hap according to BundleName and ModuleName! | Failed to obtain the hapPath. |   Check whether the bundleName field in the PluginComponentTemplate parameter is correct and whether the module corresponding to the bundleName field is correctly installed.              |
+| package path is empty. | The package path is empty.| Check whether the **source** field in the **PluginComponentTemplate** parameter is correct. |
+| Query Active OsAccountIds failed! | Failed to obtain the active user ID.| Make sure the Account service works correctly and the application has the permission to query the user ID.   |
+| Template source is empty. | The template source is empty.| Check whether the **source** field in the **PluginComponentTemplate** parameter is correct. |
+| Bms bundleManager is nullptr. | Failed to obtain the bundle manager.|  Make sure the BMS service works correctly and the application has the ohos.permission.GET_BUNDLE_INFO_PRIVILEGED, ohos.permission.GET_BUNDLE_INFO, and ohos.permission.REQUIRE_FORM permissions.                 |
+| App bundleName is empty. | The application package name is empty. | Check whether the **bundleName** field in the** PluginComponentTemplate** parameter is correct.                  |
+| Bms get bundleName failed! | Failed to obtain the package name. |  Check whether the **bundleName** field in the **PluginComponentTemplate** parameter is correct, whether the package corresponding to the **bundleName** field is correctly installed, whether the BMS service works correctly, and whether the application has the ohos.permission.GET_BUNDLE_INFO_PRIVILEGED, ohos.permission.GET_BUNDLE_INFO, and ohos.permission.REQUIRE_FORM permissions.               |
+| Bms moduleResPaths is empty. | The moduleResPaths property of the plugin package is empty.|  Check whether the **moduleResPaths** property of the bundle corresponding to the bundleName field is abnormal and whether the BMS service works correctly.                  |
+| Bms get hapPath failed! Cannot find hap according to BundleName and ModuleName! | Failed to obtain the hapPath. |   Check whether the **bundleName** field in the **PluginComponentTemplate** parameter is correct and whether the module corresponding to the **bundleName** field is correctly installed.              |
 
 
 ## Example: Loading a PluginComponent

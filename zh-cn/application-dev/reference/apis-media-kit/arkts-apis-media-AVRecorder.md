@@ -112,7 +112,7 @@ prepare(config: AVRecorderConfig): Promise\<void>
 
 **需要权限：** ohos.permission.MICROPHONE
 
-不涉及音频录制时，可以不需要获ohos.permission.MICROPHONE权限。
+不涉及音频录制时，可以不需要获取ohos.permission.MICROPHONE权限。
 
 使用相机视频录制还需要与相机模块配合，相机模块接口的使用详情见[相机管理](../apis-camera-kit/arkts-apis-camera.md)。
 
@@ -186,6 +186,7 @@ avRecorder.prepare(avRecorderConfig).then(() => {
 getInputSurface(callback: AsyncCallback\<string>): void
 
 获得录制需要的surface。使用callback异步回调。
+
 开发者从此surface中获取surfaceBuffer，填入相应的视频数据。
 
 应当注意，填入的视频数据需要携带时间戳（单位ns）和buffersize。时间戳的起始时间请以系统启动时间为基准。
@@ -232,6 +233,7 @@ avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 getInputSurface(): Promise\<string>
 
 获得录制需要的surface。使用Promise异步回调。
+
 开发者从此surface中获取surfaceBuffer，填入相应的视频数据。
 
 应当注意，填入的视频数据需要携带时间戳（单位ns）和buffersize。时间戳的起始时间请以系统启动时间为基准。
@@ -1405,22 +1407,13 @@ on(type: 'photoAssetAvailable', callback: Callback\<photoAccessHelper.PhotoAsset
 <!--code_no_check-->
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
-import { common } from '@kit.AbilityKit'
 let photoAsset: photoAccessHelper.PhotoAsset;
-let context: Context | undefined;
-constructor(context: Context) {
-  this.context = context; // this.getUIContext().getHostContext();
-}
 
 // 例：处理photoAsset回调，保存video。
-async function saveVideo(asset: photoAccessHelper.PhotoAsset) {
+async function saveVideo(context: Context, asset: photoAccessHelper.PhotoAsset) {
   console.info("saveVideo called");
-  if (!this.context) {
-    console.error('context is undefined');
-    return;
-  }
   try {
-    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
     let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
     assetChangeRequest.saveCameraPhoto();
     await phAccessHelper.applyChanges(assetChangeRequest);
@@ -1430,12 +1423,12 @@ async function saveVideo(asset: photoAccessHelper.PhotoAsset) {
   }
 }
 // 注册photoAsset监听。
-avRecorder.on('photoAssetAvailable',  (asset: photoAccessHelper.PhotoAsset) => {
+avRecorder.on('photoAssetAvailable', (asset: photoAccessHelper.PhotoAsset) => {
   console.info('photoAssetAvailable called');
   if (asset != undefined) {
     photoAsset = asset;
     // 处理photoAsset回调。
-    // 例：this.saveVideo(asset);
+    // 例：this.saveVideo(context, asset);
   } else {
     console.error('photoAsset is undefined');
   }

@@ -41,7 +41,7 @@ Queries the Wi-Fi status of the current device.
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -96,7 +96,7 @@ Configures Wi-Fi for the current device to connect to a specified network.
 
 | Name | Type                                                   | Mandatory| Description                  |
 | ------- | ------------------------------------------------------- | ---- | ---------------------- |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | profile | [WifiProfile](#wifiprofile)                             | Yes  | Wi-Fi configuration information.        |
 
 **Error codes**
@@ -115,7 +115,6 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace it as required.
@@ -159,7 +158,7 @@ A policy conflict is reported when this API is called in the following scenarios
 
 | Name      | Type                                                      | Mandatory| Description                                                        |
 | ------------ | -------------------------------------------------------    | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md)    | Yes  | EnterpriseAdminExtensionAbility.                                      |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md)    | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
 | list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                   | Yes  | Array of allowed Wi-Fi networks. The maximum length of the array is 200. For example, if there are already 100 Wi-Fi networks, a maximum of 100 more can be added.|
 
 **Error codes**
@@ -214,7 +213,7 @@ Removes Wi-Fi networks from the allowed list. If some Wi-Fi networks are removed
 
 | Name      | Type                                                   | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
 | list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | Yes  | Array of Wi-Fi networks to be removed from the allowed list. The maximum length of the array is 200.                                           |
 
 **Error codes**
@@ -268,7 +267,7 @@ Obtains Wi-Fi networks from the allowed list.
 
 | Name| Type                                                   | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -327,7 +326,7 @@ A policy conflict is reported when this API is called in the following scenarios
 
 | Name      | Type                                                   | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
 | list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | Yes  | Array of disallowed Wi-Fi networks. The maximum length of the array is 200. For example, if there are already 100 Wi-Fi networks, a maximum of 100 more can be added.|
 
 **Error codes**
@@ -382,7 +381,7 @@ Removes disallowed Wi-Fi networks. If some Wi-Fi networks are removed from the d
 
 | Name      | Type                                                   | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
 | list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | Yes  | Array of Wi-Fi networks to be removed. The maximum length of the array is 200.                     |
 
 **Error codes**
@@ -436,7 +435,7 @@ Obtains disallowed Wi-Fi networks.
 
 | Name| Type                                                   | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -634,7 +633,7 @@ Enables Wi-Fi.
 
 Wi-Fi cannot be enabled using this API in the following scenario:
 
-​	Wi-Fi has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API. You must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable it.
+​Wi-Fi has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API. You must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable it.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 
@@ -646,7 +645,7 @@ Wi-Fi cannot be enabled using this API in the following scenario:
 
 | Name | Type                                                   | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
 | isForce | boolean                                                 | Yes  | Whether to forcibly enable Wi-Fi.<br>The value **true** means to forcibly Wi-Fi. Once enabled, it cannot be disabled manually. You must call [turnOffWifi](#wifimanagerturnoffwifi20) instead. The value **false** means the opposite and the Wi-Fi can be disabled manually.|
 
 **Error codes**
@@ -688,7 +687,7 @@ Disables Wi-Fi.
 
 Wi-Fi cannot be disabled using this API in the following scenario:
 
-​	Wi-Fi has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API. You must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable it.
+​Wi-Fi has been disabled using the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) API. You must call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable it.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_WIFI
 
@@ -700,7 +699,7 @@ Wi-Fi cannot be disabled using this API in the following scenario:
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Error codes**
 

@@ -1,4 +1,10 @@
 # Custom Font Styles
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hddgzw-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The custom font can be loaded from the font file in a project. The font file must be in .ttf or .otf format.
 
@@ -9,7 +15,8 @@ The custom font can be loaded from the font file in a project. The font file mus
 
 ## Defining @font-face
 
-```
+```js
+// xxx.js
 @font-face {   
   font-family: font; 
   src: url('/common/font.ttf'); 
@@ -24,7 +31,7 @@ Customize a font.
 
 Supported sources of custom fonts:
 
-- Font file in the project: Specify the absolute path of the font file in the project through **url**. For details, see [File Access Rules](../../../ui/js-framework-file.md).
+- Font file in the project: Specify the absolute path of the font file in the project through **url**. For details, see [File Access Rules](../../../ui/js-framework-file.md#file-access-rules).
 
 - You can set only one **src** attribute.
 

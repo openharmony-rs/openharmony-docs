@@ -1,16 +1,28 @@
 # OffscreenCanvasRenderingContext2D
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
-**OffscreenCanvasRenderingContext2D** allows you to perform offscreen drawing on a canvas. This involves drawing content such as rectangles, images, and text in a buffer first, converting that content into an image, and then rendering the image onto the canvas. Because offscreen drawing uses the CPU for rendering, it can be slower than GPU-accelerated drawing. If the drawing speed is a critical concern, avoid using offscreen drawing.
+**OffscreenCanvasRenderingContext2D** allows you to perform offscreen drawing on a canvas. Offscreen drawing refers to drawing the content to be drawn in the buffer, converting the content to an image, and drawing the image to the canvas at a time. Because offscreen drawing uses the CPU for rendering, it can be slower than GPU-accelerated drawing. If the drawing speed is a critical concern, avoid using offscreen drawing.
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>  This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>
+>  OffscreenCanvasRenderingContext2D cannot be used in ServiceExtensionAbility. You are advised to use the [Drawing module](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md) for offscreen drawing in ServiceExtensionAbility.
+>
+>  The [beginPath](#beginpath), [moveTo](#moveto), [lineTo](#lineto), [closePath](#closepath), [bezierCurveTo](#beziercurveto), [quadraticCurveTo](#quadraticcurveto), [arc](#arc), [arcTo](#arcto), [ellipse](#ellipse), [rect](#rect), and [roundRect](#roundrect20) APIs can take effect only on the paths in OffscreenCanvasRenderingContext2D and cannot take effect on the paths set in [CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md) and [Path2D](./ts-components-canvas-path2d.md).
 
+## Constructor
 
+### constructor
 
-## APIs
+constructor(width: number, height: number, settings?: RenderingContextSettings)
 
-OffscreenCanvasRenderingContext2D(width: number, height: number, settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
+Creates an offscreen canvas object. You can configure the canvas width, canvas height, and parameters of the OffscreenCanvasRenderingContext2D object.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -22,41 +34,58 @@ OffscreenCanvasRenderingContext2D(width: number, height: number, settings?: Rend
 
 | Name     | Type     | Mandatory  | Description|
 | -------- | ---------------------------------------- | ---- | ------------------------------ |
-| width    | number                                   | Yes   | Width of the offscreen canvas.<br>Default unit: vp                       |
-| height   | number                                   | Yes   | Height of the offscreen canvas.<br>Default unit: vp                       |
-| settings | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | No   | Settings of the **OffscreenCanvasRenderingContext2D** object.<br>Default value: **null**|
-| unit<sup>12+</sup> | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | No| Unit mode of the **OffscreenCanvasRenderingContext2D** object. The value cannot be dynamically changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md#lengthmetricsunit12).<br>Default value: **DEFAULT**|
+| width    | number                                   | Yes   | Width of the offscreen canvas. The default unit is vp.<br>NaN and Infinity are considered as invalid values.|
+| height   | number                                   | Yes   | Height of the offscreen canvas. The default unit is vp.<br>NaN and Infinity are considered as invalid values.|
+| settings | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | No   | Settings of the **OffscreenCanvasRenderingContext2D** object.<br>If the value is undefined, the default value of [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) is used.<br>Default value: **null**.|
+
+### constructor<sup>12+<sup>
+
+constructor(width: number, height: number, settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
+
+Constructs an offscreen canvas object. You can configure the canvas width, height, parameters of the OffscreenCanvasRenderingContext2D object, and unit mode.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name     | Type     | Mandatory  | Description|
+| -------- | ---------------------------------------- | ---- | ------------------------------ |
+| width    | number                                   | Yes   | Width of the offscreen canvas. The default unit is vp.<br>NaN and Infinity are considered as invalid values.|
+| height   | number                                   | Yes   | Height of the offscreen canvas. The default unit is vp.<br>NaN and Infinity are considered as invalid values.|
+| settings | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | No   | Settings of the **OffscreenCanvasRenderingContext2D** object.<br>If the value is undefined, the default value of [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) is used.<br>Default value: **null**.|
+| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | No| Unit mode of the OffscreenCanvasRenderingContext2D object. The unit mode cannot be dynamically changed after being configured. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>Invalid values **undefined**, **NaN** and **Infinity** are treated as the default value.<br>Default value: DEFAULT|
 
 ## Attributes
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| [fillStyle](#fillstyle) | string \|number<sup>10+</sup> \|[CanvasGradient](ts-components-canvas-canvasgradient.md) \| [CanvasPattern](ts-components-canvas-canvaspattern.md#canvaspattern) | No| No| Style to fill an area.<br>- When the type is string, this attribute indicates the color of the fill area. For details about the color format, see the description for the string type in [ResourceColor](ts-types.md#resourcecolor).<br>Default value: **'#000000'**<br>- When the type is number, this attribute indicates the color of the fill area. Fully transparent colors are not supported. For details about the color format, see the description for the number type in [ResourceColor](ts-types.md#resourcecolor).<br>Default value: **0x000000**<br>- When the type is **CanvasGradient**, this attribute indicates a gradient object, which is created using the **[createLinearGradient](#createlineargradient)** API.<br>- When the type is **CanvasPattern**, this attribute indicates a pattern, which is created using the **[createPattern](#createpattern)** API.|
-| [lineWidth](#linewidth)                  | number                                   | No| No| Line width.<br>Default value: **1** (px)<br>Default unit: vp<br>The value cannot be **0** or a negative number. If it is set to **0** or a negative number, the default value is used instead.|
-| [strokeStyle](#strokestyle)              | string \|number<sup>10+</sup> \|[CanvasGradient](ts-components-canvas-canvasgradient.md) \| [CanvasPattern](ts-components-canvas-canvaspattern.md#canvaspattern) | No| No| Stroke color.<br>- When the type is string, this attribute indicates the stroke color. For details about the color format, see the description for the string type in [ResourceColor](ts-types.md#resourcecolor).<br>Default value: **'#000000'**<br>- When the type is number, this attribute indicates the stroke color. Fully transparent colors are not supported. For details about the color format, see the description for the number type in [ResourceColor](ts-types.md#resourcecolor).<br>Default value: **0x000000**<br>- When the type is **CanvasGradient**, this attribute indicates a gradient object, which is created using the **[createLinearGradient](#createlineargradient)** API.<br>- When the type is **CanvasPattern**, this attribute indicates a pattern, which is created using the **[createPattern](#createpattern)** API.|
-| [lineCap](#linecap) | [CanvasLineCap](ts-canvasrenderingcontext2d.md#canvaslinecap) | No| No| Style of the line endpoints. The options are as follows:<br>- **butt**: The endpoints of the line are squared off.<br>- **round**: The endpoints of the line are rounded.<br>- **square**: The endpoints of the line are squared off, and each endpoint has added a rectangle whose length is the same as the line thickness and whose width is half of the line thickness.<br>Default value: **'butt'**|
-| [lineJoin](#linejoin) | [CanvasLineJoin](ts-canvasrenderingcontext2d.md#canvaslinejoin) | No| No| Style of the shape used to join line segments. The options are as follows:<br>- **round**: The intersection is a sector, whose radius at the rounded corner is equal to the line width.<br>- **bevel**: The intersection is a triangle. The rectangular corner of each line is independent.<br>- **miter**: The intersection has a miter corner by extending the outside edges of the lines until they meet. You can view the effect of this attribute in **miterLimit**.<br>Default value: **'miter'**|
-| [miterLimit](#miterlimit) | number | No| No| Maximum miter length. The miter length is the distance between the inner corner and the outer corner where two lines meet.<br>Default value: **10** (px)<br>Unit: px<br>The value cannot be **0** or a negative number. If it is set to **0** or a negative number, the default value is used instead.|
-| [font](#font) | string | No| No| Font style.<br>Syntax: ctx.font='font-style font-weight font-size font-family'<br>- (Optional) **font-style**: font style. Available values are **normal** and **italic**.<br>- (Optional) **font-weight**: font weight. Available values are as follows: **normal**, **bold**, **bolder**, **lighter**, **100**, **200**, **300**, **400**, **500**, **600**, **700**, **800**, **900**.<br>- (Optional) **font-size**: font size and line height. The unit can be px or vp and must be specified.<br>- (Optional) **font-family**: font family. Available values are **sans-serif**, **serif**, and **monospace**. Custom fonts are also supported but can only be used on the main thread. They are not supported in worker threads or in DevEco Studio Previewer. For details, see the [custom font example](#font).<br>Default value: **'normal normal 14px sans-serif'**|
-| [textAlign](#textalign) | [CanvasTextAlign](ts-canvasrenderingcontext2d.md#canvastextalign) | No| No| Text alignment mode. Available values are as follows:<br>- **left**: The text is left-aligned.<br>- **right**: The text is right-aligned.<br>- **center**: The text is center-aligned.<br>- **start**: The text is aligned with the start bound.<br>- **end**: The text is aligned with the end bound.<br>**NOTE**<br><br>In the **ltr** layout mode, the value **'start'** equals **'left'**. In the **rtl** layout mode, the value **'start'** equals **'right'**.<br>Default value: **'start'**|
-| [textBaseline](#textbaseline)            | [CanvasTextBaseline](ts-canvasrenderingcontext2d.md#canvastextbaseline) | No| No| Horizontal alignment mode of text. Available values are as follows:<br>- **alphabetic**: The text baseline is the normal alphabetic baseline.<br>- **top**: The text baseline is on the top of the text bounding box.<br>- **hanging**: The text baseline is a hanging baseline over the text.<br>- **middle**: The text baseline is in the middle of the text bounding box.<br>**'ideographic'**: The text baseline is the ideographic baseline. If a character exceeds the alphabetic baseline, the ideographic baseline is located at the bottom of the excess character.<br>- **bottom**: The text baseline is at the bottom of the text bounding box. Its difference from the ideographic baseline is that the ideographic baseline does not consider letters in the next line.<br>Default value: **'alphabetic'**|
-| [globalAlpha](#globalalpha) | number | No| No| Opacity. The value ranges from 0.0 (completely transparent) to 1.0 (completely opaque). If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.<br>Default value: **1.0**|
-| [lineDashOffset](#linedashoffset) | number | No| No| Offset of the dashed line. The precision is float.<br>Default value: **0.0**<br>Unit: vp|
-| [globalCompositeOperation](#globalcompositeoperation) | string | No| No| Composition operation type. Available values are as follows: **'source-over'**, **'source-atop'**, **'source-in'**, **'source-out'**, **'destination-over'**, **'destination-atop'**, **'destination-in'**, **'destination-out'**, **'lighter'**, **'copy'**, and **'xor'**.<br>- Default value: **'source-over'**|
-| [shadowBlur](#shadowblur)                | number | No| No| Blur level during shadow drawing. A larger value indicates a more blurred effect. The precision is float, and the value must be greater than or equal to 0.<br>Default value: **0.0**<br>Unit: px<br>The value cannot be a negative number. If it is set to a negative number, the default value is used instead.|
-| [shadowColor](#shadowcolor)              | string | No| No| Shadow color. For details about the color format, see the description for the string type in [ResourceColor](ts-types.md#resourcecolor).<br>Default value: transparent black|
-| [shadowOffsetX](#shadowoffsetx)          | number | No| No| X-axis shadow offset relative to the original object.<br>Default value: **0.0**<br>Default unit: vp|
-| [shadowOffsetY](#shadowoffsety)          | number | No| No| Y-axis shadow offset relative to the original object.<br>Default value: **0.0**<br>Default unit: vp|
-| [imageSmoothingEnabled](#imagesmoothingenabled) | boolean | No| No| Whether to adjust the image smoothness during image drawing. The value **true** means to enable this feature, and **false** means the opposite.<br>Default value: **true**|
-| [imageSmoothingQuality](#imagesmoothingquality) | [ImageSmoothingQuality](ts-canvasrenderingcontext2d.md#imagesmoothingquality) | No| No| Quality of image smoothing. This attribute works only when **imageSmoothingEnabled** is set to **true**. Available values are as follows:<br>- **'low'**: low quality.<br>- **'medium'**: medium quality.<br>- **'high'**: high quality.<br>Default value: **'low'**|
-| [direction](#direction)                  | [CanvasDirection](ts-canvasrenderingcontext2d.md#canvasdirection) | No| No| Text direction used for drawing text. Available values are as follows:<br>- **'inherit'** The default layout direction is used.<br>- **'ltr'**: The text direction is from left to right.<br>- **'rtl'**: The text direction is from right to left.<br>Default value: **'inherit'**|
-| [filter](#filter)                        | string | No| No| Filter effect for an image. You can combine any number of filter effects.<br>Available values are as follows:<br>- **'none'**: no filter effect.<br>- 'blur(\<length>)': applies the Gaussian blur for the image. The value must be greater than or equal to 0. The unit can be px, vp, or rem. The default unit is vp, and the default value is **blur(0px)**.<br>- 'brightness([\<number>\|\<percentage>])': applies a linear multiplication to the image to make it look brighter or darker. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **brightness(1)**.<br>- 'contrast([\<number>\|\<percentage>])': adjusts the image contrast. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **contrast(1)**.<br>- 'grayscale([\<number>\|\<percentage>])': converts the image to a grayscale image. The value can be a number or percentage. The value range is [0, 1]. The default value is **grayscale(0)**.<br>- 'hue-rotate(\<angle>)': applies hue rotation to the image. The value ranges from 0deg to 360deg. The default value is **hue-rotate (0deg)**.<br>- 'invert([\<number>\|\<percentage>])': inverts the input image. The value can be a number or percentage. The value range is [0, 1]. The default value is **invert (0)**.<br>- 'opacity([\<number>\|\<percentage>])': sets the opacity of the image. The value can be a number or percentage. The value range is [0, 1]. The default value is **opacity(1)**.<br>- 'saturate([\<number>\|\<percentage>])': sets the saturation of the image. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **saturate(1)**.<br>- 'sepia([\<number>\|\<percentage>])': converts the image to dark brown. The value can be a number or percentage. The value range is [0, 1]. The default value is **sepia(0)**.|
+| [fillStyle](#fillstyle) | string \|number<sup>10+</sup> \|[CanvasGradient](ts-components-canvas-canvasgradient.md) \| [CanvasPattern](ts-components-canvas-canvaspattern.md) | No| No| Sets the fill color of the drawing. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>- When the type is string, this attribute indicates the color of the fill area. For details about the color format, see the description for the string type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is number, this attribute indicates the color of the fill area. Fully transparent colors are not supported. For details about the color format, see the description for the number type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is **CanvasGradient**, this attribute indicates a gradient object, which is created using the **[createLinearGradient](#createlineargradient)** API.<br>- When the type is **CanvasPattern**, this attribute indicates a pattern, which is created using the **[createPattern](#createpattern)** API.<br>Default value: '#000000' (black)<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [lineWidth](#linewidth)                  | number                                   | No| No| Sets the width of the drawing line. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>Default value: **1** (px)<br>Default unit: vp<br>The value of lineWidth cannot be 0 or a negative number. If the value is 0, a negative number, or NaN, the default value is used. If the value is Infinity, the APIs related to the lineWidth attribute cannot be drawn.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [strokeStyle](#strokestyle)              | string \|number<sup>10+</sup> \|[CanvasGradient](ts-components-canvas-canvasgradient.md) \| [CanvasPattern](ts-components-canvas-canvaspattern.md) | No| No| Sets the line color. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>- When the type is string, this attribute indicates the stroke color. For details about the color format, see the description for the string type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is number, this attribute indicates the stroke color. Fully transparent colors are not supported. For details about the color format, see the description for the number type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is **CanvasGradient**, this attribute indicates a gradient object, which is created using the **[createLinearGradient](#createlineargradient)** API.<br>- When the type is **CanvasPattern**, this attribute indicates a pattern, which is created using the **[createPattern](#createpattern)** API.<br>Default value: '#000000' (black)<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [lineCap](#linecap) | [CanvasLineCap](ts-canvasrenderingcontext2d.md#canvaslinecap) | No| No| Sets the style of the line endpoint. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>Available values are as follows:<br>- **butt**: The endpoints of the line are squared off.<br>- **round**: The endpoints of the line are rounded.<br>- **square**: The endpoints of the line are squared off, and each endpoint has added a rectangle whose length is the same as the line thickness and whose width is half of the line thickness.<br>Default value: **'butt'**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [lineJoin](#linejoin) | [CanvasLineJoin](ts-canvasrenderingcontext2d.md#canvaslinejoin) | No| No| Sets the style of the intersection point between line segments. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.<br>Available values are as follows:<br>- **round**: The intersection is a sector, whose radius at the rounded corner is equal to the line width.<br>- **bevel**: The intersection is a triangle. The rectangular corner of each line is independent.<br>- **miter**: The intersection has a miter corner by extending the outside edges of the lines until they meet. You can view the effect of this attribute in **miterLimit**.<br>Default value: **'miter'**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [miterLimit](#miterlimit) | number | No| No| Sets the miter limit of the bevel. This value specifies the distance between the inner and outer angles where the lines intersect. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.<br>Default value: **10** (px)<br>Unit: px<br>The value of miterLimit cannot be 0 or a negative number. If the value is 0, a negative number, or NaN, the default value is used. If the value is Infinity, the APIs related to the miterLimit attribute cannot be drawn.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [font](#font) | string | No| No| Sets the font style for text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.<br>Syntax: ctx.font = 'font-style font-weight font-size font-family'<br>- (Optional) **font-style**: font style. Available values are **normal** and **italic**.<br>- (Optional) **font-weight**: font weight. Available values are as follows: **normal**, **bold**, **bolder**, **lighter**, **100**, **200**, **300**, **400**, **500**, **600**, **700**, **800**, **900**.<br>- (Optional) **font-size**: font size and line height. The unit can be px or vp and must be specified.<br>- (Optional) **font-family**: font family. Available values are **sans-serif**, **serif**, and **monospace**. Custom fonts registered in API version 20 or later (can be used only in the main thread and cannot be used in the worker thread; the DevEco Studio Previewer does not support custom fonts). For details, see the [font](#font) example.<br>Default value: **'normal normal 14px sans-serif'**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [textAlign](#textalign) | [CanvasTextAlign](ts-canvasrenderingcontext2d.md#canvastextalign) | No| No| Sets the text alignment mode during text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.<br>Available values are as follows:<br>- **left**: The text is left-aligned.<br>- **right**: The text is right-aligned.<br>- **center**: The text is center-aligned.<br>- **start**: The text is aligned with the start bound.<br>- **end**: The text is aligned with the end bound.<br> **NOTE**<br>In the ltr layout mode, 'start' is the same as 'left'. In the rtl layout mode, 'start' is the same as 'right'.<br>Default value: 'left'<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [textBaseline](#textbaseline)            | [CanvasTextBaseline](ts-canvasrenderingcontext2d.md#canvastextbaseline) | No| No| Sets the horizontal alignment mode of text drawing. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.<br>Available values are as follows:<br>- **alphabetic**: The text baseline is the normal alphabetic baseline.<br>- **top**: The text baseline is on the top of the text bounding box.<br>- **hanging**: The text baseline is a hanging baseline over the text.<br>- **middle**: The text baseline is in the middle of the text bounding box.<br>- 'ideographic': The text baseline is the ideographic baseline. If the character itself exceeds the alphabetic baseline, the ideographic baseline is at the bottom of the character.<br>- **bottom**: The text baseline is at the bottom of the text bounding box. Its difference from the ideographic baseline is that the ideographic baseline does not consider letters in the next line.<br>Default value: **'alphabetic'**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [globalAlpha](#globalalpha) | number | No| No| Sets the opacity. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.<br>The value ranges from 0.0 to 1.0. 0.0 indicates completely transparent, and 1.0 indicates completely opaque. If the given value is less than 0.0, the value 0.0 is used. If the given value is greater than 1.0, the value 1.0 is used.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. In API version 18 and later versions, if NaN or Infinity is set, the current API does not take effect, and other drawing methods with valid parameters are drawn normally.<br>Default value: **1.0**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [lineDashOffset](#linedashoffset) | number | No| No| Sets the dashed line offset of the canvas. The precision is float. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>Default value: 0.0<br>Unit: vp<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [globalCompositeOperation](#globalcompositeoperation) | string | No| No| Sets the synthesis operation mode. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>Available values are as follows: **'source-over'**, **'source-atop'**, **'source-in'**, **'source-out'**, **'destination-over'**, **'destination-atop'**, **'destination-in'**, **'destination-out'**, **'lighter'**, **'copy'**, and **'xor'**.<br>- Default value: **'source-over'**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [shadowBlur](#shadowblur)                | number | No| No| Sets the blur level when a shadow is drawn. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>A larger value indicates a more blurred effect. The value is of the float type. The value must be greater than or equal to 0.<br>Default value: 0.0<br>Unit: px<br>The value of shadowBlur cannot be a negative number. If the value is a negative number, NaN, or Infinity, the default value is used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [shadowColor](#shadowcolor)              | string | No| No| Sets the shadow color when a shadow is drawn. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>For details about the color notation, see the description of the string type in [ResourceColor](ts-types.md#resourcecolor).<br>Default value: transparent black<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [shadowOffsetX](#shadowoffsetx)          | number | No| No| Sets the horizontal offset between the shadow and the original object when a shadow is drawn. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>Default value: 0.0<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [shadowOffsetY](#shadowoffsety)          | number | No| No| Sets the vertical offset between the shadow and the original object when a shadow is drawn. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>Default value: 0.0<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [imageSmoothingEnabled](#imagesmoothingenabled) | boolean | No| No| Indicates whether to adjust the image smoothness when drawing an image. The value true indicates that the image smoothness is adjusted, and the value false indicates that the image smoothness is not adjusted. This attribute is read-only. You can set its value by using an assignment statement, but cannot obtain its current value by reading. If you attempt to read the value, undefined is returned.<br>Default value: **true**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [imageSmoothingQuality](#imagesmoothingquality) | [ImageSmoothingQuality](ts-canvasrenderingcontext2d.md#imagesmoothingquality) | No| No| Sets the image smoothness when imageSmoothingEnabled is true. This attribute is read-only. You can set its value by using an assignment statement, but cannot obtain its current value by reading. If you attempt to read the value, undefined is returned.<br>Available values are as follows:<br>- **'low'**: low quality.<br>- **'medium'**: medium quality.<br>- **'high'**: high quality.<br>Default value: "low"<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [direction](#direction)                  | [CanvasDirection](ts-canvasrenderingcontext2d.md#canvasdirection) | No| No| Sets the text direction used for drawing text. This attribute is read-only. You can set its value by using an assignment statement, but cannot obtain its current value by reading. If you attempt to read the value, undefined is returned.<br>Available values are as follows:<br>- **'inherit'** The default layout direction is used.<br>- **'ltr'**: The text direction is from left to right.<br>- **'rtl'**: The text direction is from right to left.<br>Default value: "inherit"<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [filter](#filter)                        | string | No| No| Sets the filter of an image. You can combine any number of filters. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>Available values are as follows:<br>- **'none'**: no filter effect.<br>- 'blur(\<length>)': applies Gaussian blur to an image. The value must be greater than or equal to 0. The unit can be px, vp, or rem. The default value is blur(0px).<br>- 'brightness([\<number>\|\<percentage>])': applies a linear multiplication to the image to make it look brighter or darker. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **brightness(1)**.<br>- 'contrast([\<number>\|\<percentage>])': adjusts the image contrast. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **contrast(1)**.<br>- 'grayscale([\<number>\|\<percentage>])': converts the image to a grayscale image. The value can be a number or percentage. The value range is [0, 1]. The default value is **grayscale(0)**.<br>- 'hue-rotate(\<angle>)': applies hue rotation to an image. The value ranges from 0 to 360. The default value is hue-rotate(0deg).<br>- 'invert([\<number>\|\<percentage>])': inverts the input image. The value can be a number or percentage. The value range is [0, 1]. The default value is **invert (0)**.<br>- 'opacity([\<number>\|\<percentage>])': sets the opacity of the image. The value can be a number or percentage. The value range is [0, 1]. The default value is **opacity(1)**.<br>- 'saturate([\<number>\|\<percentage>])': sets the saturation of the image. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **saturate(1)**.<br>- 'sepia([\<number>\|\<percentage>])': converts the image to dark brown. The value can be a number or percentage. The value range is [0, 1]. The default value is **sepia(0)**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| [letterSpacing<sup>18+</sup>](#letterspacing18)                  | string \| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| No| Spacing between letters when text is drawn. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain the current value through a read operation. If you attempt to read the value, undefined is returned.<br>Spacing between characters.<br>When the LengthMetrics type is used:<br>The spacing is set according to the specified unit.<br>The FP, PERCENT, and LPX units are not supported and will be treated as invalid values.<br>Negative and fractional values are supported. When set to a fraction, the spacing is not rounded.<br>When the string type is used:<br>Percentage values are not supported and will be treated as invalid.<br>Negative and fractional values are supported. When set to a fraction, the spacing is not rounded.<br>If no unit is specified (for example, **letterSpacing = '10'**) and **LengthMetricsUnit** is not set, the default unit is vp.<br>If **LengthMetricsUnit** is set to px, the default unit is px.<br>If the value of letterSpacing is specified with a unit (for example, letterSpacing='10vp'), the letter spacing is set based on the specified unit.<br>Default value: **0** (Invalid values are treated as the default value.)<br>Note: LengthMetrics is recommended for better performance.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 > **NOTE**
 > For **fillStyle**, **shadowColor**, and **strokeStyle**, the value format of the string type is 'rgb(255, 255, 255)', 'rgba(255, 255, 255, 1.0)', '\#FFFFFF'.
@@ -69,9 +98,9 @@ OffscreenCanvasRenderingContext2D(width: number, height: number, settings?: Rend
 @Entry
 @Component
 struct FillStyleExample {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -100,9 +129,9 @@ struct FillStyleExample {
 @Entry
 @Component
 struct FillStyleExample {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -134,9 +163,9 @@ struct FillStyleExample {
 @Entry
 @Component
 struct LineWidthExample {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -168,9 +197,9 @@ struct LineWidthExample {
 @Entry
 @Component
 struct StrokeStyleExample {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -200,9 +229,9 @@ struct StrokeStyleExample {
 @Entry
 @Component
 struct StrokeStyleExample {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -235,9 +264,9 @@ struct StrokeStyleExample {
 @Entry
 @Component
 struct LineCapExample {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -273,9 +302,9 @@ struct LineCapExample {
 @Entry
 @Component
 struct LineJoinExample {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -312,9 +341,9 @@ struct LineJoinExample {
 @Entry
 @Component
 struct MiterLimit {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
   
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -346,34 +375,19 @@ struct MiterLimit {
 
 ### font
 
-Before using the **font** property to load custom fonts, you must first register the custom font in the **EntryAbility.ets** file located in the **src/main/ets/entryability/** directory. The following is an example of how to do this.
-
-> The value of **familyName** must be a continuous string without spaces, for example, **"customFont"**. Otherwise, the **font** property will fail to load the custom font.
-> 
-> The **familySrc** path should point to the font file located in the **font** folder, which is at the same level as the **pages** folder.
+> **NOTE**
+>
+> You can register a custom font in either of the following ways: You can register a custom font by calling the asynchronous API this.uiContext.getFont().[registerFont](../arkts-apis-uicontext-font.md#registerfont) of ArkUI. However, if you call this API immediately after the registration, the custom font may not take effect. Alternatively, you can directly call the fontCollection.[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) API of the font engine to register the custom font. When you directly call the font engine API to register a custom font, the fontCollection instance must be text.FontCollection.getGlobalInstance(), because the component loads fonts from this instance by default. If you use another instance, the custom font may not take effect.
 
 ```ts
-onWindowStageCreate(windowStage: window.WindowStage): void {
-  windowStage.loadContent('pages/Index', (err) => {
-    windowStage.getMainWindow().then(res => {
-      const uiCtc = res.getUIContext()
-      uiCtc.getFont().registerFont({
-        familyName: 'customFont',
-        familySrc: '/font/myFont.ttf'
-      })
-    })
-  });
-}
-```
+import { text } from '@kit.ArkGraphics2D';
 
-```ts
-// xxx.ets
 @Entry
 @Component
-struct Fonts {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+struct FontDemo {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -381,16 +395,21 @@ struct Fonts {
         .width('100%')
         .height('100%')
         .backgroundColor('rgb(213,213,213)')
-        .onReady(() =>{
-          let offContext = this.offCanvas.getContext("2d", this.settings)
-          offContext.font = '30px sans-serif'
+        .onReady(() => {
+          let offContext = this.offCanvas.getContext("2d", this.settings);
+          // Normal font style, normal weight, font size of 30px, and font family of sans-serif
+          offContext.font = 'normal normal 30px sans-serif'
           offContext.fillText("Hello px", 20, 60)
-          offContext.font = '30vp sans-serif'
+          // Italic style, bold, font size of 30 vp, and font family of monospace
+          offContext.font = 'italic bold 30vp monospace'
           offContext.fillText("Hello vp", 20, 100)
-          // Use a custom font by specifying its familyName.
-          offContext.font = '30vp customFont'
-          offContext.fillText("Hello", 20, 140)
-          let image = this.offCanvas.transferToImageBitmap()
+          // Load the custom font file HarmonyOS_Sans_Thin_Italic.ttf in the rawfile directory.
+          let fontCollection = text.FontCollection.getGlobalInstance();
+          fontCollection.loadFontSync('HarmonyOS_Sans_Thin_Italic', $rawfile("HarmonyOS_Sans_Thin_Italic.ttf"))
+          // Bold, font size of 30 vp, and font family of HarmonyOS_Sans_Thin_Italic
+          offContext.font = "bold 30vp HarmonyOS_Sans_Thin_Italic"
+          offContext.fillText("Hello customFont", 20, 140)
+          let image = this.offCanvas.transferToImageBitmap();
           this.context.transferFromImageBitmap(image)
         })
     }
@@ -400,7 +419,7 @@ struct Fonts {
 }
 ```
 
-![new_font](figures/new_font.jpeg)
+![font](figures/offCanvasFont.jpeg)
 
 ### textAlign
 
@@ -409,9 +428,9 @@ struct Fonts {
 @Entry
 @Component
 struct CanvasExample {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
   
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -458,9 +477,9 @@ struct CanvasExample {
 @Entry
 @Component
 struct TextBaseline {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
   
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -507,9 +526,9 @@ struct TextBaseline {
 @Entry
 @Component
 struct GlobalAlpha {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
   
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -544,9 +563,9 @@ struct GlobalAlpha {
 @Entry
 @Component
 struct LineDashOffset {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
   
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -594,9 +613,9 @@ struct LineDashOffset {
 @Entry
 @Component
 struct GlobalCompositeOperation {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
   
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -636,9 +655,9 @@ struct GlobalCompositeOperation {
 @Entry
 @Component
 struct ShadowBlur {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
   
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -672,9 +691,9 @@ struct ShadowBlur {
 @Entry
 @Component
 struct ShadowColor {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
   
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -708,9 +727,9 @@ struct ShadowColor {
 @Entry
 @Component
 struct ShadowOffsetX {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
   
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -745,9 +764,9 @@ struct ShadowOffsetX {
 @Entry
 @Component
 struct ShadowOffsetY {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -782,10 +801,11 @@ struct ShadowOffsetY {
 @Entry
 @Component
 struct ImageSmoothingEnabled {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private img:ImageBitmap = new ImageBitmap("common/images/icon.jpg")
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  // Replace "common/images/icon.jpg" with the image resource file required by the developer.
+  private img:ImageBitmap = new ImageBitmap("common/images/icon.jpg");
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
   
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -820,7 +840,8 @@ struct ImageSmoothingEnabled {
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.
 settings);
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+    // Replace "common/images/example.jpg" with the image resource file you use.
     private img:ImageBitmap = new ImageBitmap("common/images/example.jpg");
 
     build() {
@@ -859,7 +880,7 @@ justifyContent: FlexAlign.Center }) {
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.
 settings);
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, 
@@ -899,7 +920,8 @@ justifyContent: FlexAlign.Center }) {
   struct FilterDemoOff {
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+    // Replace "common/images/example.jpg" with the image resource file you use.
     private img: ImageBitmap = new ImageBitmap("common/images/example.jpg");
 
     build() {
@@ -922,7 +944,7 @@ justifyContent: FlexAlign.Center }) {
             offContext.filter = 'saturate(30%)';
             offContext.drawImage(img, 0, 100, 100, 100);
 
-            offContext.filter = 'hue-rotate(90degree)';
+            offContext.filter = 'hue-rotate(90deg)';
             offContext.drawImage(img, 100, 100, 100, 100);
 
             offContext.filter = 'invert(100%)';
@@ -956,6 +978,44 @@ justifyContent: FlexAlign.Center }) {
 
 ![filterDemo](figures/filterDemo.jpeg)
 
+### letterSpacing<sup>18+</sup>
+
+```ts
+  // xxx.ets
+  import { LengthMetrics, LengthUnit } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct letterSpacingDemo {
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
+    build() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Canvas(this.context)
+          .width('100%')
+          .height('100%')
+          .backgroundColor('rgb(213,213,213)')
+          .onReady(() => {
+            let offContext = this.offCanvas.getContext("2d", this.settings)
+            offContext.font = '30vp'
+            offContext.letterSpacing = '10vp'
+            offContext.fillText('hello world', 30, 50)
+            offContext.letterSpacing = new LengthMetrics(10, LengthUnit.VP)
+            offContext.fillText('hello world', 30, 100)
+            let image = this.offCanvas.transferToImageBitmap()
+            this.context.transferFromImageBitmap(image)
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+```
+
+![letterSpacingDemo](figures/letterSpacingDemo.jpeg)
+
 ## Methods
 
 
@@ -975,10 +1035,10 @@ Fills a rectangle on the canvas.
 
 | Name   | Type    | Mandatory  | Description           |
 | ------ | ------ | ---- | ------------- |
-| x      | number | Yes  | X coordinate of the upper left corner of the rectangle.<br>Default unit: vp|
-| y      | number | Yes  | Y coordinate of the upper left corner of the rectangle.<br>Default unit: vp|
-| w      | number | Yes  | Width of the rectangle.<br>Default unit: vp|
-| h      | number | Yes  | Height of the rectangle.<br>Default unit: vp|
+| x      | number | Yes  | X coordinate of the upper left corner of the rectangle.<br>The abnormal values undefined, null, NaN, and Infinity are processed as invalid values and are not drawn.<br>Default unit: vp|
+| y      | number | Yes  | Y coordinate of the upper left corner of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, the value is invalid and not drawn.<br>Default unit: vp|
+| w      | number | Yes  | Width of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, the value is invalid and not drawn.<br>Default unit: vp|
+| h      | number | Yes  | Height of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, the value is invalid and not drawn.<br>Default unit: vp|
 
  **Example**
 
@@ -987,9 +1047,9 @@ Fills a rectangle on the canvas.
   @Entry
   @Component
   struct FillRect {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
     
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1029,10 +1089,10 @@ Draws an outlined rectangle on the canvas.
 
 | Name    | Type    | Mandatory  | Description          |
 | ------ | ------ | ---- | ------------ |
-| x      | number | Yes  | X coordinate of the upper left corner of the rectangle.<br>Default unit: vp|
-| y      | number | Yes  | Y coordinate of the upper left corner of the rectangle.<br>Default unit: vp|
-| width  | number | Yes  | Width of the rectangle.<br>Default unit: vp|
-| height | number | Yes  | Height of the rectangle.<br>Default unit: vp|
+| x      | number | Yes  | X coordinate of the upper left corner of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, the value is invalid and the rectangle is not drawn.<br>Default unit: vp|
+| y      | number | Yes  | Y coordinate of the upper left corner of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, the value is invalid and the rectangle is not drawn.<br>Default unit: vp|
+| width  | number | Yes  | Width of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, the value is invalid and the rectangle is not drawn.<br>Default unit: vp|
+| height | number | Yes  | Height of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, the value is invalid and the rectangle is not drawn.<br>Default unit: vp|
 
  **Example**
 
@@ -1041,9 +1101,9 @@ Draws an outlined rectangle on the canvas.
   @Entry
   @Component
   struct StrokeRect {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1083,10 +1143,10 @@ Clears the content in a rectangle on the canvas.
 
 | Name  | Type    | Mandatory  | Description           |
 | ------ | ------ | ---- | ------------- |
-| x      | number | Yes  | X coordinate of the upper left corner of the rectangle.<br>Default unit: vp|
-| y      | number | Yes  | Y coordinate of the upper left corner of the rectangle.<br>Default unit: vp|
-| width  | number | Yes  | Width of the rectangle.<br>Default unit: vp|
-| height | number | Yes  | Height of the rectangle.<br>Default unit: vp|
+| x      | number | Yes  | X coordinate of the upper left corner of the rectangle.<br>The abnormal values undefined, null, NaN, and Infinity are processed as invalid values and are not drawn.<br>Default unit: vp|
+| y      | number | Yes  | Y coordinate of the upper left corner of the rectangle.<br>The abnormal values undefined, null, NaN, and Infinity are processed as invalid values and are not drawn.<br>Default unit: vp|
+| width  | number | Yes  | Width of the rectangle.<br>The abnormal values undefined, null, NaN, and Infinity are processed as invalid values and are not drawn.<br>Default unit: vp|
+| height | number | Yes  | Height of the rectangle.<br>The abnormal values undefined, null, NaN, and Infinity are processed as invalid values and are not drawn.<br>Default unit: vp|
 
  **Example**
 
@@ -1095,9 +1155,9 @@ Clears the content in a rectangle on the canvas.
   @Entry
   @Component
   struct ClearRect {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1139,10 +1199,10 @@ Draws filled text on the canvas.
 
 | Name      | Type    | Mandatory  | Description             |
 | -------- | ------ | ----  | --------------- |
-| text     | string | Yes   | Text to draw.|
-| x        | number | Yes   | X coordinate of the lower left corner of the text.<br>Default unit: vp|
-| y        | number | Yes   | Y coordinate of the lower left corner of the text.<br>Default unit: vp|
-| maxWidth | number | No   | Maximum width allowed for the text.<br>Default unit: vp<br>Default value: no width restriction|
+| text     | string | Yes   | Text to draw.<br>If the value is undefined or null, the text is not drawn.|
+| x        | number | Yes   | X coordinate of the start point for drawing text.<br>If the value is undefined, null, NaN, or Infinity, the text is not drawn.<br>Default unit: vp|
+| y        | number | Yes   | Y coordinate of the start point for drawing text.<br>If the value is undefined, null, NaN, or Infinity, the text is not drawn.<br>Default unit: vp|
+| maxWidth | number | No   | Maximum width allowed for the text.<br>If the value is null, the text is not drawn. If the value is undefined, NaN, or Infinity, the default value is used.<br>Default unit: vp<br>Default value: no width restriction|
 
  **Example**
 
@@ -1151,9 +1211,9 @@ Draws filled text on the canvas.
   @Entry
   @Component
   struct FillText {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1194,10 +1254,10 @@ Draws a text stroke on the canvas.
 
 | Name      | Type    | Mandatory  | Description      |
 | -------- | ------ | ---- | --------------- |
-| text     | string | Yes | Text to draw.|
-| x        | number | Yes | X coordinate of the lower left corner of the text.<br>Default unit: vp|
-| y        | number | Yes | Y coordinate of the lower left corner of the text.<br>Default unit: vp|
-| maxWidth | number | No | Maximum width of the text.<br>Default unit: vp<br>Default value: no width restriction|
+| text     | string | Yes | Text to draw.<br>If the value is undefined or null, the value is invalid and the text is not drawn.|
+| x        | number | Yes | X coordinate of the start point for drawing text.<br>If the value is undefined, null, NaN, or Infinity, the value is invalid and the text is not drawn.<br>Default unit: vp|
+| y        | number | Yes | Y coordinate of the start point for drawing text.<br>If the value is undefined, null, NaN, or Infinity, the value is invalid and the text is not drawn.<br>Default unit: vp|
+| maxWidth | number | No | Maximum width of the text.<br>If the value is null, the text is not drawn. If the value is undefined, NaN, or Infinity, the default value is used.<br>Default unit: vp<br>Default value: no width restriction|
 
  **Example**
 
@@ -1206,9 +1266,9 @@ Draws a text stroke on the canvas.
   @Entry
   @Component
   struct StrokeText {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1255,7 +1315,7 @@ Returns a **TextMetrics** object used to obtain the width of specified text.
 
 | Type         | Description                                      |
 | ----------- | ---------------------------------------- |
-| [TextMetrics](ts-canvasrenderingcontext2d.md#textmetrics) | **TextMetrics** object.|
+| [TextMetrics](ts-canvasrenderingcontext2d.md#textmetrics) | **TextMetrics** object.<br>If the input value is undefined or null, the value is calculated as undefined or null.|
 
  **Example**
 
@@ -1264,16 +1324,16 @@ Returns a **TextMetrics** object used to obtain the width of specified text.
   @Entry
   @Component
   struct MeasureText {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
+          .backgroundColor('rgb(213,213,213)')
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.font = '50px sans-serif'
@@ -1311,9 +1371,9 @@ Strokes (outlines) this path.
   @Entry
   @Component
   struct Stroke {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1341,6 +1401,8 @@ Strokes (outlines) this path.
 
   ![en-us_image_0000001238832389](figures/en-us_image_0000001238832393.png)
 
+### stroke
+
 stroke(path: Path2D): void
 
 Strokes (outlines) a specified path.
@@ -1355,7 +1417,7 @@ Strokes (outlines) a specified path.
 
 | Name  | Type                                      | Mandatory  | Description|
 | ---- | ---------------------------------------- | ---- | ------------ |
-| path | [Path2D](ts-components-canvas-path2d.md) | Yes   |  A **Path2D** path to draw.|
+| path | [Path2D](ts-components-canvas-path2d.md) | Yes   |  A **Path2D** path to draw.<br>The abnormal value undefined or null is processed as an invalid value and is not drawn.|
 
  **Example**
 
@@ -1364,10 +1426,10 @@ Strokes (outlines) a specified path.
   @Entry
   @Component
   struct Stroke {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
-    private path2Da: Path2D = new Path2D()
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+    private path2Da: Path2D = new Path2D();
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1415,9 +1477,9 @@ Creates a drawing path.
   @Entry
   @Component
   struct BeginPath {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1462,8 +1524,14 @@ Moves a drawing path to a target position on the canvas.
 
 | Name  | Type    | Mandatory  | Description       |
 | ---- | ------ | ---- | --------- |
-| x    | number | Yes   | X coordinate of the target position.<br>Default unit: vp|
-| y    | number | Yes   | Y coordinate of the target position.<br>Default unit: vp|
+| x    | number | Yes   | X coordinate of the target position.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes   | Y coordinate of the target position.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+
+> **NOTE**
+>
+> If the moveTo API is not called or invalid parameters are passed to the moveTo API before API version 18, the path starts from (0,0).
+>
+> If the moveTo API is not called or invalid parameters are passed to the moveTo API in API version 18 or later, the path starts from the start point of the lineTo, arcTo, bezierCurveTo, or quadraticCurveTo API that is called for the first time.
 
  **Example**
 
@@ -1472,9 +1540,9 @@ Moves a drawing path to a target position on the canvas.
   @Entry
   @Component
   struct MoveTo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1517,8 +1585,8 @@ Connects the current point to a target position using a straight line.
 
 | Name  | Type    | Mandatory  | Description       |
 | ---- | ------ | ----  | --------- |
-| x    | number | Yes   | X coordinate of the target position.<br>Default unit: vp|
-| y    | number | Yes   | Y coordinate of the target position.<br>Default unit: vp|
+| x    | number | Yes   | X coordinate of the target position.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes   | Y coordinate of the target position.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
 
  **Example**
 
@@ -1527,9 +1595,9 @@ Connects the current point to a target position using a straight line.
   @Entry
   @Component
   struct LineTo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1575,9 +1643,9 @@ Draws a closed path.
   @Entry
   @Component
   struct ClosePath {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1622,14 +1690,14 @@ Creates a pattern for image filling based on a specified source image and repeti
 
 | Name| Type| Mandatory  | Description|
 | ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| image      | [ImageBitmap](ts-components-canvas-imagebitmap.md) | Yes   | Source image. For details, see **ImageBitmap**.|
-| repetition | string \| null | Yes   | Repetition mode. The value can be **'repeat'**, **'repeat-x'**, **'repeat-y'**, **'no-repeat'**, **'clamp'**, or **'mirror'**.|
+| image      | [ImageBitmap](ts-components-canvas-imagebitmap.md) | Yes   | Source image. For details, see **ImageBitmap**.<br>The abnormal value undefined or null is processed as an invalid value.|
+| repetition | string \| null  | Yes | Repetition mode.<br>**'repeat'**: The image is repeated along both the x-axis and y-axis.<br>**'repeat-x'**: The image is repeated along the x-axis.<br>**'repeat-y'**: The image is repeated along the y-axis.<br>**'no-repeat'**: The image is not repeated.<br>**'clamp'**: Coordinates outside the original bounds are clamped to the edge of the image.<br>'mirror': The image is repeatedly flipped along the x-axis and y-axis.<br>The abnormal value undefined or null is processed as an invalid value.|
 
 **Return value**
 
 | Type                                      | Description                     |
 | ---------------------------------------- | ----------------------- |
-| [CanvasPattern](ts-components-canvas-canvaspattern.md#canvaspattern) \| null | Created pattern for image filling based on a specified source image and repetition mode.|
+| [CanvasPattern](ts-components-canvas-canvaspattern.md) \| null | Created pattern for image filling based on a specified source image and repetition mode.|
 
  **Example**
 
@@ -1638,10 +1706,11 @@ Creates a pattern for image filling based on a specified source image and repeti
   @Entry
   @Component
   struct CreatePattern {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private img:ImageBitmap = new ImageBitmap("common/images/example.jpg")
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    // Replace "common/images/example.jpg" with the image resource file you use.
+    private img:ImageBitmap = new ImageBitmap("common/images/example.jpg");
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1671,7 +1740,7 @@ Creates a pattern for image filling based on a specified source image and repeti
 
 bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void
 
-Draws a cubic bezier curve on the canvas.
+Path for creating a cubic Bezier curve.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1683,12 +1752,12 @@ Draws a cubic bezier curve on the canvas.
 
 | Name  | Type    | Mandatory | Description            |
 | ---- | ------ | ---- | -------------- |
-| cp1x | number | Yes | X coordinate of the first parameter of the bezier curve.<br>Default unit: vp|
-| cp1y | number | Yes | Y coordinate of the first parameter of the bezier curve.<br>Default unit: vp|
-| cp2x | number | Yes | X coordinate of the second parameter of the bezier curve.<br>Default unit: vp|
-| cp2y | number | Yes | Y coordinate of the second parameter of the bezier curve.<br>Default unit: vp|
-| x    | number | Yes | X coordinate of the end point on the bezier curve.<br>Default unit: vp|
-| y    | number | Yes | Y coordinate of the end point on the bezier curve.<br>Default unit: vp|
+| cp1x | number | Yes | X coordinate of the first parameter of the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| cp1y | number | Yes | Y coordinate of the first parameter of the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| cp2x | number | Yes | X coordinate of the second parameter of the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| cp2y | number | Yes | Y coordinate of the second parameter of the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| x    | number | Yes | X coordinate of the end point on the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes | Y coordinate of the end point on the bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
 
  **Example**
 
@@ -1697,9 +1766,9 @@ Draws a cubic bezier curve on the canvas.
   @Entry
   @Component
   struct BezierCurveTo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1730,7 +1799,7 @@ Draws a cubic bezier curve on the canvas.
 
 quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 
-Draws a quadratic curve on the canvas.
+Creates a quadratic Bezier curve.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1742,10 +1811,10 @@ Draws a quadratic curve on the canvas.
  
 | Name  | Type    | Mandatory | Description            |
 | ---- | ------ | ---- | -------------- |
-| cpx  | number | Yes  | X coordinate of the bezier curve parameter.<br>Default unit: vp|
-| cpy  | number | Yes  | Y coordinate of the bezier curve parameter.<br>Default unit: vp|
-| x    | number | Yes  | X coordinate of the end point on the bezier curve.<br>Default unit: vp|
-| y    | number | Yes  | Y coordinate of the end point on the bezier curve.<br>Default unit: vp|
+| cpx  | number | Yes  | X coordinate of the Bezier curve parameter.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| cpy  | number | Yes  | Y coordinate of the Bezier curve parameter.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| x    | number | Yes  | X coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes  | Y coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
 
  **Example**
 
@@ -1754,9 +1823,9 @@ Draws a quadratic curve on the canvas.
   @Entry
   @Component
   struct QuadraticCurveTo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1799,12 +1868,12 @@ Draws an arc on the canvas.
 
 | Name| Type     | Mandatory  | Description        |
 | ---------------- | ------- | ---- | ---------- |
-| x                | number  | Yes  | X coordinate of the center point of the arc.<br>Default unit: vp|
-| y                | number  | Yes  | Y coordinate of the center point of the arc.<br>Default unit: vp|
-| radius           | number  | Yes  | Radius of the arc.<br>Default unit: vp|
-| startAngle       | number  | Yes  | Start radian of the arc.<br>Default unit: radian|
-| endAngle         | number  | Yes  | End radian of the arc.<br>Default unit: radian|
-| counterclockwise | boolean | No  | Whether to draw the arc counterclockwise.<br>**true**: Draw the arc counterclockwise.<br>**false**: Draw the arc clockwise.<br>Default value: **false**|
+| x                | number  | Yes  | X coordinate of the center point of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| y                | number  | Yes  | Y coordinate of the center point of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| radius           | number  | Yes  | Radius of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| startAngle       | number  | Yes  | Start radian of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: radian|
+| endAngle         | number  | Yes  | End radian of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: radian|
+| counterclockwise | boolean | No  | Whether to draw the arc counterclockwise.<br>**true**: Draw the arc counterclockwise.<br>**false**: Draw the arc clockwise.<br>The default value is false. If this parameter is set to null or undefined, the default value is used.|
 
  **Example**
 
@@ -1813,9 +1882,9 @@ Draws an arc on the canvas.
   @Entry
   @Component
   struct Arc {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1857,11 +1926,11 @@ Creates a circular arc using the given control points and radius.
 
 | Name   | Type    | Mandatory | Description        |
 | ------ | ------ | ---- | --------------- |
-| x1     | number | Yes | X coordinate of the first control point.<br>Default unit: vp|
-| y1     | number | Yes | Y coordinate of the first control point.<br>Default unit: vp|
-| x2     | number | Yes | X coordinate of the second control point.<br>Default unit: vp|
-| y2     | number | Yes | Y coordinate of the second control point.<br>Default unit: vp|
-| radius | number | Yes | Radius of the arc.<br>Default unit: vp|
+| x1     | number | Yes | X coordinate of the first control point.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| y1     | number | Yes | Y coordinate of the first control point.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| x2     | number | Yes | X coordinate of the second control point.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| y2     | number | Yes | Y coordinate of the second control point.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| radius | number | Yes | Radius of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
 
  **Example**
 
@@ -1870,9 +1939,9 @@ Creates a circular arc using the given control points and radius.
   @Entry
   @Component
   struct ArcTo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1946,14 +2015,14 @@ Draws an ellipse in the specified rectangular region on the canvas.
 
 | Name             | Type     | Mandatory  | Description|
 | ---------------- | ------- | ---- | ---------------------------------------- |
-| x                | number  | Yes    | X coordinate of the ellipse center.<br>Default unit: vp|
-| y                | number  | Yes    | Y coordinate of the ellipse center.<br>Default unit: vp|
-| radiusX          | number  | Yes    | Radius of the ellipse on the x-axis.<br>Default unit: vp|
-| radiusY          | number  | Yes    | Radius of the ellipse on the y-axis.<br>Default unit: vp|
-| rotation         | number  | Yes    | Rotation angle of the ellipse.<br>Unit: radian|
-| startAngle       | number  | Yes    | Angle of the start point for drawing the ellipse.<br>Unit: radian|
-| endAngle         | number  | Yes    | Angle of the end point for drawing the ellipse.<br>Unit: radian|
-| counterclockwise | boolean | No    | Whether to draw the ellipse counterclockwise.<br>**true**: Draw the ellipse counterclockwise.<br>**false**: Draw the ellipse clockwise.<br>Default value: **false**|
+| x                | number  | Yes    | X coordinate of the ellipse center.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| y                | number  | Yes    | Y coordinate of the ellipse center.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| radiusX          | number  | Yes    | Radius of the ellipse on the x-axis.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| radiusY          | number  | Yes    | Radius of the ellipse on the y-axis.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| rotation         | number  | Yes    | Rotation angle of the ellipse.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian|
+| startAngle       | number  | Yes    | Angle of the start point for drawing the ellipse.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian|
+| endAngle         | number  | Yes    | Angle of the end point for drawing the ellipse.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian|
+| counterclockwise | boolean | No    | Whether to draw the ellipse counterclockwise.<br>true: Draw the ellipse in the counterclockwise direction.<br>false: Draw the ellipse in the clockwise direction.<br>Default value: false. If null or undefined is set, the default value is used.|
 
  **Example**
 
@@ -1962,9 +2031,9 @@ Draws an ellipse in the specified rectangular region on the canvas.
   @Entry
   @Component
   struct CanvasExample {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
@@ -2008,10 +2077,10 @@ Creates a rectangle on the canvas.
 
 | Name | Type    | Mandatory| Description|
 | ---- | ------ | ---- | ------------- |
-| x    | number | Yes | X coordinate of the upper left corner of the rectangle.<br>Default unit: vp|
-| y    | number | Yes | Y coordinate of the upper left corner of the rectangle.<br>Default unit: vp|
-| w    | number | Yes | Width of the rectangle.<br>Default unit: vp|
-| h    | number | Yes | Height of the rectangle.<br>Default unit: vp|
+| x    | number | Yes | X coordinate of the upper left corner of the rectangle.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes | Y coordinate of the upper left corner of the rectangle.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| w    | number | Yes | Width of the rectangle.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| h    | number | Yes | Height of the rectangle.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
 
  **Example**
 
@@ -2020,9 +2089,9 @@ Creates a rectangle on the canvas.
   @Entry
   @Component
   struct CanvasExample {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -2046,12 +2115,114 @@ Creates a rectangle on the canvas.
 
   ![en-us_image_0000001238712445](figures/en-us_image_0000001238712445.jpeg)
 
+### roundRect<sup>20+</sup>
+
+roundRect(x: number, y: number, w: number, h: number, radii?: number | Array\<number>): void
+
+Creates a rounded rectangle path. This method does not directly render content. To draw the rounded rectangle on the canvas, use the fill or stroke method.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 20.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type    | Mandatory  | Description           |
+| ---- | ------ | ---- | ------------- |
+| x    | number | Yes   | X coordinate of the upper left corner of the rectangle.<br>If the value is null, 0 is used. If the value is undefined, the value is invalid and the drawing is not performed.<br>To draw a complete rectangle, the value range is [0, Canvas width).<br>Default unit: vp|
+| y    | number | Yes   | Y coordinate of the upper left corner of the rectangle.<br>If the value is null, 0 is used. If the value is undefined, the value is invalid and the drawing is not performed.<br>To draw a complete rectangle, the value range is [0, Canvas height).<br>Default unit: vp|
+| w    | number | Yes   | Width of the rectangle. A negative value indicates that the rectangle is drawn from left to right.<br>If the value is null, 0 is used. If the value is undefined, the value is invalid and the drawing is not performed.<br>To draw a complete rectangle, the value range is [-x, Canvas width - x].<br>Default unit: vp|
+| h    | number | Yes   | Height of the rectangle. A negative value indicates upward drawing.<br>If the value is null, it is processed as 0. If the value is undefined, it is processed as an invalid value and not drawn.<br>To draw a complete rectangle, the value range is [-y, Canvas height - y].<br>Default unit: vp|
+| radii | number \| Array\<number> | No| Number or list of arc radii used for the rectangle corners.<br>If the parameter type is number, the arc radius of all rectangle corners is the number.<br>If the parameter type is Array\<number>, the number is 1 to 4.<br>[Arc radius of all rectangle corners]<br>[Arc radius of the upper left and lower right rectangle corners, and arc radius of the upper right and lower left rectangle corners]<br>[Arc radius of the upper left rectangle corner, arc radius of the upper right and lower left rectangle corners, and arc radius of the lower right rectangle corner]<br>[Arc radius of the upper left rectangle corner, arc radius of the upper right rectangle corner, arc radius of the lower right rectangle corner, and arc radius of the lower left rectangle corner]<br>If radii contains a negative number or the number of lists is not within [1,4], error code 103701 is reported.<br>Default value: 0. The default value is used for null and undefined.<br>If the arc radius exceeds the width and height of the rectangle, the arc radius is scaled proportionally to the width and height of the rectangle.<br>Default unit: vp|
+
+**Error codes**
+
+For details about the following error codes, see [Canvas Error Codes](../errorcode-canvas.md).
+
+| ID| Error Message| Possible Causes|
+| -------- | -------- | -------- |
+| 103701   | Parameter error.| 1. The param radii is a list that has zero or more than four elements; 2. The param radii contains negative value. |
+
+**Example**
+
+The following example shows how to draw six rounded rectangles:
+
+1. Create a rounded rectangle with the start point (10vp, 10vp), width and height of 100vp, and arc radius of 10vp for the four rectangle corners, and fill the rounded rectangle.
+
+2. Create a rounded rectangle with the start point (120vp, 10vp), width and height of 100vp, and arc radius of 10vp for the four rectangle corners, and fill the rounded rectangle.
+
+3. Create a rounded rectangle with the start point (10vp, 120vp), width and height of 100vp, arc radius of 10vp for the upper left and lower right rectangle corners, arc radius of 20vp for the upper right and lower left rectangle corners, and stroke the rounded rectangle.
+
+4. Create a rounded rectangle with the start point (120vp, 120vp), width and height of 100vp, arc radius of 10vp for the upper left rectangle corner, arc radius of 20vp for the upper right and lower left rectangle corners, arc radius of 30vp for the lower right rectangle corner, and stroke the rounded rectangle.
+
+5. Create a rounded rectangle with the start point (10 vp, 230 vp), width and height of 100 vp, and the radius of the upper-left, upper-right, lower-right, and lower-left rounded corners of 10 vp, 20 vp, 30 vp, and 40 vp, respectively. Then, outline the rounded rectangle.
+
+6. Create a rounded rectangle with the start point (220 vp, 330 vp), width and height of -100 vp, and the radius of the upper-left, upper-right, lower-right, and lower-left rounded corners of 10 vp, 20 vp, 30 vp, and 40 vp, respectively. Then, outline the rounded rectangle.
+
+  ```ts
+  // xxx.ets
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct CanvasExample {
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
+    build() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Canvas(this.context)
+          .width('100%')
+          .height('100%')
+          .backgroundColor('#D5D5D5')
+          .onReady(() => {
+            let offContext = this.offCanvas.getContext("2d", this.settings)
+            try {
+              offContext.fillStyle = '#707070'
+              offContext.beginPath()
+              //Create a rounded rectangle with the start point (10 vp, 10 vp), width and height of 100 vp, and the radius of the four rounded corners of 10 vp.
+              offContext.roundRect(10, 10, 100, 100, 10)
+              // Create a rounded rectangle with the start point (120 vp, 10 vp), width and height of 100 vp, and four rounded corners with the radius of 10 vp.
+              offContext.roundRect(120, 10, 100, 100, [10])
+              offContext.fill()
+              offContext.beginPath()
+              // Create a rounded rectangle with the start point (10 vp, 120 vp), width and height of 100 vp, the radius of the upper-left and lower-right rounded corners of 10 vp, and the radius of the upper-right and lower-left rounded corners of 20 vp.
+              offContext.roundRect(10, 120, 100, 100, [10, 20])
+              // Create a rounded rectangle with the start point (120 vp, 120 vp), width and height of 100 vp, the radius of the upper-left rounded corner of 10 vp, the radius of the upper-right and lower-left rounded corners of 20 vp, and the radius of the lower-right rounded corner of 30 vp.
+              offContext.roundRect(120, 120, 100, 100, [10, 20, 30])
+              // Create a rounded rectangle with the start point (10 vp, 230 vp), width and height of 100 vp, the radius of the upper-left rounded corner of 10 vp, the radius of the upper-right rounded corner of 20 vp, the radius of the lower-right rounded corner of 30 vp, and the radius of the lower-left rounded corner of 40 vp.
+              offContext.roundRect(10, 230, 100, 100, [10, 20, 30, 40])
+              // Create a rounded rectangle with the start point (220 vp, 330 vp), width and height of -100 vp, the radius of the upper-left rounded corner of 10 vp, the radius of the upper-right rounded corner of 20 vp, the radius of the lower-right rounded corner of 30 vp, and the radius of the lower-left rounded corner of 40 vp.
+              offContext.roundRect(220, 330, -100, -100, [10, 20, 30, 40])
+              offContext.stroke()
+            } catch (error) {
+              let e: BusinessError = error as BusinessError;
+              console.error(`Failed to create roundRect. Code: ${e.code}, message: ${e.message}`);
+            }
+            // Create an ImageBitmap object on the image rendered closest to the offscreen canvas.
+            let image = this.offCanvas.transferToImageBitmap()
+            // Display the created ImageBitmap object on the canvas.
+            this.context.transferFromImageBitmap(image)
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
+
+  ![CanvasRoundRect](figures/CanvasRoundRect.jpeg)
+
+
 
 ### fill
 
 fill(fillRule?: CanvasFillRule): void
 
-Fills the area inside a closed path on the canvas.
+Fills the current path.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -2063,16 +2234,16 @@ Fills the area inside a closed path on the canvas.
 
 | Name| Type| Mandatory  | Description|
 | -------- | -------------- | ---- | ---------------------------------------- |
-| fillRule | [CanvasFillRule](ts-canvasrenderingcontext2d.md#canvasfillrule) | No| Rule by which to determine whether a point is inside or outside the area to fill.<br>The options are **"nonzero"** and **"evenodd"**.<br>Default value: **"nonzero"**|
+| fillRule | [CanvasFillRule](ts-canvasrenderingcontext2d.md#canvasfillrule) | No| Rule by which to determine whether a point is inside or outside the area to fill.<br>The options are "nonzero" and "evenodd".<br>The **undefined** and **null** values are treated as the default value.<br>Default value: "nonzero"|
 
   ```ts
   // xxx.ets
   @Entry
   @Component
   struct Fill {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -2097,10 +2268,11 @@ Fills the area inside a closed path on the canvas.
 
   ![en-us_image_0000001194192462](figures/en-us_image_0000001194192462.png)
 
+### fill
 
 fill(path: Path2D, fillRule?: CanvasFillRule): void
 
-Fills the area inside a closed path on the canvas.
+Fills a specified path.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -2112,8 +2284,8 @@ Fills the area inside a closed path on the canvas.
 
 | Name      | Type| Mandatory| Description|
 | -------- | -------------- | ---- | ----------------- |
-| path     | [Path2D](ts-components-canvas-path2d.md)         | Yes  | A **Path2D** path to fill.                             |
-| fillRule | [CanvasFillRule](ts-canvasrenderingcontext2d.md#canvasfillrule) | No| Rule by which to determine whether a point is inside or outside the area to fill.<br>The options are **"nonzero"** and **"evenodd"**.<br>Default value: **"nonzero"**|
+| path     | [Path2D](ts-components-canvas-path2d.md)         | Yes  | A **Path2D** path to fill.<br>If the value is undefined or null, the value is invalid.|
+| fillRule | [CanvasFillRule](ts-canvasrenderingcontext2d.md#canvasfillrule) | No| Rule by which to determine whether a point is inside or outside the area to fill.<br>The optional parameter is "nonzero" or "evenodd".<br>The **undefined** and **null** values are treated as the default value.<br>Default value: "nonzero"|
 
 **Example**  
 
@@ -2122,9 +2294,9 @@ Fills the area inside a closed path on the canvas.
 @Entry
 @Component
 struct Fill {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -2157,8 +2329,6 @@ struct Fill {
 
  ![en-us_image_000000127777775](figures/en-us_image_000000127777775.jpg)
 
-
-
 ### clip
 
 clip(fillRule?: CanvasFillRule): void
@@ -2175,7 +2345,7 @@ Sets the current path to a clipping path.
 
 | Name| Type| Mandatory  | Description|
 | -------- | -------------- | ---- | ---------------------------------------- |
-| fillRule | [CanvasFillRule](ts-canvasrenderingcontext2d.md#canvasfillrule) | No| Rule by which to determine whether a point is inside or outside the area to clip.<br>The options are **"nonzero"** and **"evenodd"**.<br>Default value: **"nonzero"**|
+| fillRule | [CanvasFillRule](ts-canvasrenderingcontext2d.md#canvasfillrule) | No| Rule by which to determine whether a point is inside or outside the area to clip.<br>The options are "nonzero" and "evenodd".<br>The **undefined** and **null** values are treated as the default value.<br>Default value: "nonzero"|
 
  **Example**
 
@@ -2184,9 +2354,9 @@ Sets the current path to a clipping path.
   @Entry
   @Component
   struct Clip {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -2213,10 +2383,11 @@ Sets the current path to a clipping path.
 
   ![en-us_image_0000001194032462](figures/en-us_image_0000001194032462.png)
 
+### clip
 
 clip(path: Path2D, fillRule?: CanvasFillRule): void
 
-Sets a closed path to a clipping path.
+Sets a specified path as the clipping path.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -2228,8 +2399,8 @@ Sets a closed path to a clipping path.
 
 | Name      | Type| Mandatory  | Description                                      |
 | -------- | -------------- | ---- | ---------------------------------------- |
-| path | [Path2D](ts-components-canvas-path2d.md) | Yes| A **Path2D** path to clip.|
-| fillRule | [CanvasFillRule](ts-canvasrenderingcontext2d.md#canvasfillrule) | No| Rule by which to determine whether a point is inside or outside the area to clip.<br>The options are **"nonzero"** and **"evenodd"**.<br>Default value: **"nonzero"**|
+| path | [Path2D](ts-components-canvas-path2d.md) | Yes| A **Path2D** path to clip.<br>If the value is undefined or null, the value is invalid.|
+| fillRule | [CanvasFillRule](ts-canvasrenderingcontext2d.md#canvasfillrule) | No| Rule by which to determine whether a point is inside or outside the area to clip.<br>The optional parameter is "nonzero" or "evenodd".<br>The **undefined** and **null** values are treated as the default value.<br>Default value: "nonzero"|
 
  **Example**
 
@@ -2238,9 +2409,9 @@ Sets a closed path to a clipping path.
   @Entry
   @Component
   struct Clip {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -2291,9 +2462,9 @@ Resets this **OffscreenCanvasRenderingContext2D** object to its default state an
   @Entry
   @Component
   struct Reset {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -2336,9 +2507,9 @@ Saves this layer.
   @Entry
   @Component
   struct saveLayer {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -2400,9 +2571,9 @@ Resets the current transform to the identity matrix.
   @Entry
   @Component
   struct ResetTransform {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -2445,7 +2616,7 @@ Rotates a canvas clockwise around its coordinate axes.
 
 | Name   | Type    | Mandatory  | Description|
 | ----- | ------ | ---- | ---------------------------------------- |
-| angle | number | Yes   | Clockwise rotation angle. You can convert degrees to radians using the following formula: degree * Math.PI/180.<br>Unit: radian|
+| angle | number | Yes   | Clockwise rotation angle. You can convert degrees to radians using the following formula: degree * Math.PI/180.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is normal.<br>Unit: radian|
 
  **Example**
 
@@ -2454,9 +2625,9 @@ Rotates a canvas clockwise around its coordinate axes.
   @Entry
   @Component
   struct Rotate {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -2497,8 +2668,8 @@ Scales the canvas based on scale factors.
 
 | Name  | Type    | Mandatory  |  Description     |
 | ---- | ------ | ---- | ----------- |
-| x    | number | Yes | Horizontal scale factor.|
-| y    | number | Yes | Vertical scale factor.|
+| x    | number | Yes | Horizontal scale factor.<br>In versions earlier than API version 18, when NaN or Infinity is set, the drawing method executed after this method cannot be used for drawing. When null or undefined is set, the current API does not take effect. In API version 18 or later, if NaN, Infinity, null, or undefined is set, the current API does not take effect. Other drawing methods with valid parameters are normal.|
+| y    | number | Yes | Vertical scale factor.<br>In versions earlier than API version 18, when NaN or Infinity is set, the drawing method executed after this method cannot be used for drawing. When null or undefined is set, the current API does not take effect. In API version 18 or later, if NaN, Infinity, null, or undefined is set, the current API does not take effect. Other drawing methods with valid parameters are normal.|
 
  **Example**
 
@@ -2507,9 +2678,9 @@ Scales the canvas based on scale factors.
   @Entry
   @Component
   struct Scale {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -2549,22 +2720,25 @@ Defines a transformation matrix. To transform a graph, you only need to set para
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 > **NOTE**
+>
+> The coordinates of each point in the graph after transformation can be calculated using the following formula:
+>
 > The following formulas calculate the coordinates of a transformed graph. **x** and **y** represent the coordinates before transformation, and **x'** and **y'** represent the coordinates after transformation.
 >
-> - x' = scaleX \* x + skewY \* y + translateX
+> - x' = a \* x + c \* y + e
 >
-> - y' = skewX \* x + scaleY \* y + translateY
+> - y' = b \* x + d \* y + f
 
 **Parameters**
 
 | Name  | Type    | Mandatory| Description|
 | ---- | ------ | ---- | -------------------- |
-| a    | number | Yes   | **scaleX**: x-axis scale.|
-| b    | number | Yes   | **skewY**: y-axis skew. |
-| c    | number | Yes   | **skewX**: x-axis skew. |
-| d    | number | Yes   | **scaleY**: y-axis scale.|
-| e    | number | Yes   | **translateX**: distance to translate on the x-axis.<br>Default unit: vp|
-| f    | number | Yes   | **translateY**: distance to translate on the y-axis.<br>Default unit: vp|
+| a    | number | Yes   | scaleX: horizontal scaling value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.|
+| b    | number | Yes   | skewY: vertical skewing value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally. |
+| c    | number | Yes   | skewX: horizontal skewing value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally. |
+| d    | number | Yes   | scaleY: vertical scaling value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.|
+| e    | number | Yes   | translateX: horizontal translation value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is normal.<br>Default unit: vp|
+| f    | number | Yes   | translateY: vertical movement value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this API does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is normal.<br>Default unit: vp|
 
  **Example**
 
@@ -2573,9 +2747,9 @@ Defines a transformation matrix. To transform a graph, you only need to set para
   @Entry
   @Component
   struct Transform {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -2585,13 +2759,13 @@ Defines a transformation matrix. To transform a graph, you only need to set para
           .backgroundColor('rgb(213,213,213)')
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.fillStyle = 'rgb(0,0,0)'
+            offContext.fillStyle = 'rgb(112,112,112)'
             offContext.fillRect(0, 0, 100, 100)
             offContext.transform(1, 0.5, -0.5, 1, 10, 10)
-            offContext.fillStyle = 'rgb(255,0,0)'
+            offContext.fillStyle = 'rgb(0,74,175)'
             offContext.fillRect(0, 0, 100, 100)
             offContext.transform(1, 0.5, -0.5, 1, 10, 10)
-            offContext.fillStyle = 'rgb(0,0,255)'
+            offContext.fillStyle = 'rgb(39,135,217)'
             offContext.fillRect(0, 0, 100, 100)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
@@ -2618,16 +2792,26 @@ Resets the existing transformation matrix and creates a new transformation matri
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+> **NOTE**
+>
+> The coordinates of each point in the graph after transformation may be calculated by using the following coordinate calculation formula.
+>
+> The following formulas calculate the coordinates of a transformed graph. **x** and **y** represent the coordinates before transformation, and **x'** and **y'** represent the coordinates after transformation.
+>
+> - x' = a \* x + c \* y + e
+>
+> - y' = b \* x + d \* y + f
+
 **Parameters**
 
-| Name  | Type    | Mandatory | Description                  |
+| Name  | Type    | Mandatory| Description|
 | ---- | ------ | ---- | -------------------- |
-| a    | number | Yes   | **scaleX**: x-axis scale.|
-| b    | number | Yes   | **skewY**: y-axis skew. |
-| c    | number | Yes   | **skewX**: x-axis skew. |
-| d    | number | Yes   | **scaleY**: y-axis scale.|
-| e    | number | Yes   | **translateX**: distance to translate on the x-axis.<br>Default unit: vp|
-| f    | number | Yes   | **translateY**: distance to translate on the y-axis.<br>Default unit: vp|
+| a    | number | Yes   | scaleX: horizontal scaling value. The value can be a negative number.<br>In versions earlier than API version 18, when NaN or Infinity is set, the drawing method executed after this method cannot be used for drawing. When null or undefined is set, the current API does not take effect. In API version 18 or later, if NaN, Infinity, null, or undefined is set, the current API does not take effect. Other drawing methods with valid parameters are normal.|
+| b    | number | Yes   | skewY: specifies the vertical skew value. The value can be a negative number.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is normal. |
+| c    | number | Yes   | skewX: specifies the horizontal skew value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is normal. |
+| d    | number | Yes   | scaleY: specifies the vertical scaling value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is normal.|
+| e    | number | Yes   | translateX: specifies the horizontal movement value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is normal.<br>Default unit: vp|
+| f    | number | Yes   | translateY: specifies the vertical movement value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is normal.<br>Default unit: vp|
 
  **Example**
 
@@ -2636,9 +2820,9 @@ Resets the existing transformation matrix and creates a new transformation matri
   @Entry
   @Component
   struct SetTransform {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -2665,6 +2849,8 @@ Resets the existing transformation matrix and creates a new transformation matri
 
   ![en-us_image_0000001193872526](figures/en-us_image_0000001193872526.png)
 
+### setTransform
+
 setTransform(transform?: Matrix2D): void
 
 Resets the current transformation and creates a new transformation matrix based on the specified **Matrix2D** object.
@@ -2679,7 +2865,7 @@ Resets the current transformation and creates a new transformation matrix based 
 
 | Name      | Type| Mandatory  | Description   |
 | --------- | ---------------------------------------- | ---- | ----- |
-| transform | [Matrix2D](ts-components-canvas-matrix2d.md#Matrix2D) | No| Transformation matrix.<br>Default value: **null**|
+| transform | [Matrix2D](ts-components-canvas-matrix2d.md) | No| Transformation matrix.<br>The **undefined** and **null** values are treated as invalid.<br>Default value: **null**.|
 
 **Example**
  ```ts
@@ -2744,7 +2930,7 @@ Obtains the current transformation matrix being applied to the context.
 
 | Type                                      | Description   |
 | ---------------------------------------- | ----- |
-| [Matrix2D](ts-components-canvas-matrix2d.md#Matrix2D) | Matrix object.|
+| [Matrix2D](ts-components-canvas-matrix2d.md) | Current transformation matrix applied to the context.|
 
 **Example**
 
@@ -2781,7 +2967,7 @@ Obtains the current transformation matrix being applied to the context.
           .onReady(() =>{
             this.offcontext2.fillRect(50, 50, 50, 50);
             let storedTransform = this.offcontext1.getTransform();
-            console.log("Matrix [scaleX = " + storedTransform.scaleX + ", scaleY = " + storedTransform.scaleY +
+            console.info("Matrix [scaleX = " + storedTransform.scaleX + ", scaleY = " + storedTransform.scaleY +
             ", rotateX = " + storedTransform.rotateX + ", rotateY = " + storedTransform.rotateY +
             ", translateX = " + storedTransform.translateX + ", translateY = " + storedTransform.translateY + "]")
             this.offcontext2.setTransform(storedTransform);
@@ -2814,8 +3000,8 @@ Moves the origin of the coordinate system.
 
 | Name  | Type    | Mandatory  | Description|
 | ---- | ------ | ---- | -------- |
-| x    | number | Yes | Distance to translate on the x-axis.<br>Default unit: vp|
-| y    | number | Yes | Distance to translate on the y-axis.<br>Default unit: vp|
+| x    | number | Yes | Distance to translate on the x-axis.<br>In versions earlier than API version 18, when NaN or Infinity is set, the drawing method executed after this method cannot be used for drawing. When null or undefined is set, the current API does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is normal.<br>Default unit: vp|
+| y    | number | Yes | Sets the vertical translation amount.<br>In versions earlier than API version 18, when NaN or Infinity is set, the drawing method executed after this method cannot be used for drawing. When null or undefined is set, the current API does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is normal.<br>Default unit: vp|
 
  **Example**
 
@@ -2824,9 +3010,9 @@ Moves the origin of the coordinate system.
   @Entry
   @Component
   struct Translate {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -2868,53 +3054,9 @@ Draws an image on the canvas.
 
 | Name   | Type| Mandatory  | Description|
 | ----- | ---------------------------------------- | ---- | ----------------------------- |
-| image | [ImageBitmap](ts-components-canvas-imagebitmap.md) or [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7)| Yes| Image resource. For details, see **ImageBitmap** or **PixelMap**.|
-| dx    | number | Yes | X coordinate of the upper left corner of the drawing area on the canvas.<br>Default unit: vp|
-| dy    | number | Yes | Y coordinate of the upper left corner of the drawing area on the canvas.<br>Default unit: vp|
-
-drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh: number): void
-
-Draws an image on the canvas.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9, except that **PixelMap** objects are not supported.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
- **Parameters**
-
-| Name   | Type| Mandatory  | Description|
-| ----- | ---------------------------------------- | ---- | ----------------------------- |
-| image | [ImageBitmap](ts-components-canvas-imagebitmap.md) or [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7)| Yes| Image resource. For details, see **ImageBitmap** or **PixelMap**.|
-| dx    | number | Yes | X coordinate of the upper left corner of the drawing area on the canvas.<br>Default unit: vp|
-| dy    | number | Yes | Y coordinate of the upper left corner of the drawing area on the canvas.<br>Default unit: vp|
-| dw    | number | Yes | Width of the drawing area.<br>Default unit: vp|
-| dh    | number | Yes | Height of the drawing area.<br>Default unit: vp|
-
-drawImage(image: ImageBitmap | PixelMap, sx: number, sy: number, sw: number, sh: number, dx: number, dy: number, dw: number, dh: number): void
-
-Draws an image on the canvas.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9, except that **PixelMap** objects are not supported.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
- **Parameters**
-
-| Name   | Type| Mandatory  | Description|
-| ----- | ---------------------------------------- | ---- | ----------------------------- |
-| image | [ImageBitmap](ts-components-canvas-imagebitmap.md) or [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7)| Yes| Image resource. For details, see **ImageBitmap** or **PixelMap**.|
-| sx    | number | Yes | X coordinate of the upper left corner of the rectangle used to crop the source image.<br>If the type of **image** is ImageBitmap, the default unit is vp.<br>If the type of **image** is PixelMap, the default unit is px.|
-| sy    | number | Yes | Y coordinate of the upper left corner of the rectangle used to crop the source image.<br>If the type of **image** is ImageBitmap, the default unit is vp.<br>If the type of **image** is PixelMap, the default unit is px.|
-| sw    | number | Yes | Target width by which the source image is cropped.<br>If the type of **image** is ImageBitmap, the default unit is vp.<br>If the type of **image** is PixelMap, the default unit is px.|
-| sh    | number | Yes | Target height by which the source image is cropped.<br>If the type of **image** is ImageBitmap, the default unit is vp.<br>If the type of **image** is PixelMap, the default unit is px.|
-| dx    | number | Yes | X coordinate of the upper left corner of the drawing area on the canvas.<br>Default unit: vp|
-| dy    | number | Yes | Y coordinate of the upper left corner of the drawing area on the canvas.<br>Default unit: vp|
-| dw    | number | Yes | Width of the drawing area.<br>Default unit: vp|
-| dh    | number | Yes | Height of the drawing area.<br>Default unit: vp|
+| image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes| Image resource. For details, see **ImageBitmap** or **PixelMap**.<br>Undefined or null values are considered as invalid values and are not drawn.|
+| dx    | number | Yes | X coordinate of the upper left corner of the drawing area on the canvas.<br>Undefined or null values are considered as 0 values, and NaN and Infinity values are considered as invalid values and are not drawn.<br>Default unit: vp|
+| dy    | number | Yes | Y coordinate of the upper left corner of the drawing area on the canvas.<br>Undefined or null values are considered as 0 values, and NaN and Infinity values are considered as invalid values and are not drawn.<br>Default unit: vp|
 
  **Example**
 
@@ -2923,21 +3065,21 @@ Draws an image on the canvas.
   @Entry
   @Component
   struct DrawImage {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private img:ImageBitmap = new ImageBitmap("common/images/example.jpg")
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    // Replace "common/images/example.jpg" with the image resource file you use.
+    private img: ImageBitmap = new ImageBitmap("common/images/example.jpg");
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
+          .backgroundColor('#D5D5D5')
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.drawImage(this.img, 0, 0)
-            offContext.drawImage(this.img, 0, 150, 300, 100)
-            offContext.drawImage(this.img, 0, 0, 500, 500, 0, 300, 400, 200)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
           })
@@ -2948,8 +3090,123 @@ Draws an image on the canvas.
   }
   ```
 
-  ![en-us_image_0000001238712447](figures/en-us_image_0000001238712447.png)
+  ![drawImage](figures/offDrawImage1.png)
 
+### drawImage
+
+drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh: number): void
+
+Stretch or compress the image.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9, except that **PixelMap** objects are not supported.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+ **Parameters**
+
+| Name   | Type| Mandatory  | Description|
+| ----- | ---------------------------------------- | ---- | ----------------------------- |
+| image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes| Image resource. For details, see **ImageBitmap** or **PixelMap**.<br>The abnormal value undefined or null is processed as an invalid value and is not drawn.|
+| dx    | number | Yes | X coordinate of the upper left corner of the drawing area on the canvas.<br>The abnormal value undefined or null is processed as 0. NaN and Infinity are processed as invalid values and are not drawn.<br>Default unit: vp|
+| dy    | number | Yes | Y coordinate of the upper left corner of the drawing area on the canvas.<br>The abnormal value undefined or null is processed as 0. NaN and Infinity are processed as invalid values and are not drawn.<br>Default unit: vp|
+| dw    | number | Yes | Width of the drawing area.<br>Negative numbers, undefined values, and null values are processed as 0. NaN and Infinity values are processed as invalid values and are not drawn.<br>Default unit: vp|
+| dh    | number | Yes | Height of the drawing area.<br>Negative numbers, undefined values, and null values are processed as 0. NaN and Infinity values are processed as invalid values and are not drawn.<br>Default unit: vp|
+
+ **Example**
+
+  ```ts
+  // xxx.ets
+  @Entry
+  @Component
+  struct DrawImage {
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    // Replace "common/images/example.jpg" with the image resource file you use.
+    private img: ImageBitmap = new ImageBitmap("common/images/example.jpg");
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
+    build() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Canvas(this.context)
+          .width('100%')
+          .height('100%')
+          .backgroundColor('#D5D5D5')
+          .onReady(() => {
+            let offContext = this.offCanvas.getContext("2d", this.settings)
+            offContext.drawImage(this.img, 0, 0, 300, 300)
+            let image = this.offCanvas.transferToImageBitmap()
+            this.context.transferFromImageBitmap(image)
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
+
+  ![drawImage](figures/offDrawImage2.png)
+
+### drawImage
+
+drawImage(image: ImageBitmap | PixelMap, sx: number, sy: number, sw: number, sh: number, dx: number, dy: number, dw: number, dh: number): void
+
+Stretches or compresses a cropped image.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9, except that **PixelMap** objects are not supported.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+ **Parameters**
+
+| Name   | Type| Mandatory  | Description|
+| ----- | ---------------------------------------- | ---- | ----------------------------- |
+| image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes| Image resource. For details, see **ImageBitmap** or **PixelMap**.<br>If the value is undefined or null, the value is invalid and the image is not drawn.|
+| sx    | number | Yes | X coordinate of the upper left corner of the rectangle used to crop the source image.<br>If the value is undefined or null, the value is 0; if the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>If the image type is ImageBitmap, the default unit is vp.<br>If the image type is PixelMap, the default unit is px before API version 18 and vp in API version 18 and later.|
+| sy    | number | Yes | Y coordinate of the upper left corner of the rectangle used to crop the source image.<br>If the value is undefined or null, the value is 0; if the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>If the image type is ImageBitmap, the default unit is vp.<br>If the image type is PixelMap, the default unit is px before API version 18 and vp in API version 18 and later.|
+| sw    | number | Yes | Target width by which the source image is cropped.<br>If the value is a negative number, undefined, or null, the value is 0; if the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>If the image type is ImageBitmap, the default unit is vp.<br>If the image type is PixelMap, the default unit is px before API version 18 and vp in API version 18 and later.|
+| sh    | number | Yes | Target height by which the source image is cropped.<br>If the value is a negative number, undefined, or null, the value is 0; if the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>vp if the image type is ImageBitmap.<br>px before API version 18 and vp for API version 18 and later if the image type is PixelMap.|
+| dx    | number | Yes | X coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the drawing is not performed.<br>Default unit: vp|
+| dy    | number | Yes | Y coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the drawing is not performed.<br>Default unit: vp|
+| dw    | number | Yes | Width of the drawing area.<br>If the value is a negative number, undefined, or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the drawing is not performed.<br>Default unit: vp|
+| dh    | number | Yes | Height of the drawing area.<br>If the value is a negative number, undefined, or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the drawing is not performed.<br>Default unit: vp|
+
+ **Example**
+
+  ```ts
+  // xxx.ets
+  @Entry
+  @Component
+  struct DrawImage {
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    // Replace "common/images/example.jpg" with the image resource file you use.
+    private img: ImageBitmap = new ImageBitmap("common/images/example.jpg");
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
+    build() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Canvas(this.context)
+          .width('100%')
+          .height('100%')
+          .backgroundColor('#D5D5D5')
+          .onReady(() => {
+            let offContext = this.offCanvas.getContext("2d", this.settings)
+            offContext.drawImage(this.img, 0, 0, 500, 500, 0, 0, 400, 300)
+            let image = this.offCanvas.transferToImageBitmap()
+            this.context.transferFromImageBitmap(image)
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
+
+  ![drawImage](figures/offDrawImage3.png)
 
 ### createImageData
 
@@ -2967,9 +3224,16 @@ Creates an [ImageData](ts-components-canvas-imagedata.md) object with the same w
 
 | Name  | Type    | Mandatory    | Description  |
 | ---- | ------ | ---- | ------------- |
-| sw   | number | Yes  | Width of the **ImageData** object.<br>Default unit: vp|
-| sh   | number | Yes  | Height of the **ImageData** object.<br>Default unit: vp|
+| sw   | number | Yes  | Width of the **ImageData** object.<br>If the value is undefined, null, NaN, or Infinity, the value is 0.<br>Default unit: vp|
+| sh   | number | Yes  | Height of the **ImageData** object.<br>If the value is undefined, null, NaN, or Infinity, the value is 0.<br>Default unit: vp|
 
+ **Return value**
+
+| Type                                      | Description           |
+| ---------------------------------------- | ------------- |
+| [ImageData](ts-components-canvas-imagedata.md) | New ImageData object.|
+
+### createImageData
 
 createImageData(imageData: ImageData): ImageData
 
@@ -2981,19 +3245,19 @@ Creates an [ImageData](ts-components-canvas-imagedata.md) object by copying an e
 
 | Name      | Type| Mandatory  | Description|
 | --------- | ---------------------------------------- | ---- | ---------------- |
-| imagedata | [ImageData](ts-components-canvas-imagedata.md) | Yes | **ImageData** object to copy.|
+| imageData | [ImageData](ts-components-canvas-imagedata.md) | Yes | **ImageData** object to copy.<br>Abnormal values undefined and null are processed as ImageData whose width and height are 0.|
 
  **Return value**
 
 | Type                                      | Description           |
 | ---------------------------------------- | ------------- |
-| [ImageData](ts-components-canvas-imagedata.md) | New **ImageData** object.|
+| [ImageData](ts-components-canvas-imagedata.md) | New ImageData object.|
 
 ### getPixelMap
 
 getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
 
-Obtains the [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) object created with the pixels within the specified area on the canvas. This API involves time-consuming memory copy. Therefore, avoid frequent calls to it.
+Creates a [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) object based on the pixels in the specified area of the current canvas. This API involves memory copy and is time-consuming. Therefore, do not use this API frequently.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3003,16 +3267,16 @@ Obtains the [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) object c
 
 | Name  | Type    | Mandatory | Description           |
 | ---- | ------ | ---- | --------------- |
-| sx   | number | Yes | X coordinate of the upper left corner of the output area.<br>Default unit: vp|
-| sy   | number | Yes | Y coordinate of the upper left corner of the output area.<br>Default unit: vp|
-| sw   | number | Yes | Width of the output area.<br>Default unit: vp|
-| sh   | number | Yes | Height of the output area.<br>Default unit: vp|
+| sx   | number | Yes | X coordinate of the upper left corner of the output area.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| sy   | number | Yes | Y coordinate of the upper left corner of the output area.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| sw   | number | Yes | Width of the output area.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| sh   | number | Yes | Height of the output area.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
 
 **Return value**
 
 | Type                                      | Description          |
 | ---------------------------------------- | ------------ |
-| [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) | **PixelMap** object.|
+| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | **PixelMap** object.|
 
 **Example**
 
@@ -3025,10 +3289,11 @@ Obtains the [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) object c
   @Entry
   @Component
   struct GetPixelMap {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private img: ImageBitmap = new ImageBitmap("common/images/example.jpg")
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    // Replace "common/images/example.jpg" with the image resource file you use.
+    private img: ImageBitmap = new ImageBitmap("common/images/example.jpg");
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -3057,7 +3322,7 @@ Obtains the [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) object c
 
 setPixelMap(value?: PixelMap): void
 
-Draws the input [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) object on the canvas. The example is the same as that of **getPixelMap**.
+Draws the input [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) object on the canvas. The example is the same as that of **getPixelMap**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3067,7 +3332,7 @@ Draws the input [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) obje
 
 | Name  | Type    | Mandatory  | Description|
 | ---- | ------ | ---- | --------------- |
-|  value  | [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) | No| **PixelMap** object that contains pixel values.<br>Default value: **null**|
+|  value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | No| PixelMap object that contains pixel values.<br>Abnormal values undefined and null are processed as invalid values and are not drawn.<br>Default value: **null**.|
 
 
 ### getImageData
@@ -3086,16 +3351,16 @@ Obtains the [ImageData](ts-components-canvas-imagedata.md) object created with t
 
 | Name  | Type    | Mandatory| Description     |
 | ---- | ------ | ---- | --------------- |
-| sx   | number | Yes| X coordinate of the upper left corner of the output area.<br>Default unit: vp|
-| sy   | number | Yes| Y coordinate of the upper left corner of the output area.<br>Default unit: vp|
-| sw   | number | Yes| Width of the output area.<br>Default unit: vp|
-| sh   | number | Yes| Height of the output area.<br>Default unit: vp|
+| sx   | number | Yes| X coordinate of the upper left corner of the output area.<br>Undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| sy   | number | Yes| Y coordinate of the upper left corner of the output area.<br>Undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| sw   | number | Yes| Width of the output area.<br>Undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| sh   | number | Yes| Height of the output area.<br>Undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
 
    **Return value**
 
 | Type                                      | Description           |
 | ---------------------------------------- | ------------- |
-| [ImageData](ts-components-canvas-imagedata.md) | New **ImageData** object.|
+| [ImageData](ts-components-canvas-imagedata.md) | New ImageData object.|
 
 
 **Example**
@@ -3105,10 +3370,11 @@ Obtains the [ImageData](ts-components-canvas-imagedata.md) object created with t
   @Entry
   @Component
   struct GetImageData {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
-    private img:ImageBitmap = new ImageBitmap("/common/images/1234.png")
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+    // Replace "/common/images/1234.png" with the image resource file you use.
+    private img:ImageBitmap = new ImageBitmap("/common/images/1234.png");
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -3119,8 +3385,8 @@ Obtains the [ImageData](ts-components-canvas-imagedata.md) object created with t
           .onReady(() =>{
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.drawImage(this.img,0,0,130,130)
-            let imagedata = offContext.getImageData(50,50,130,130)
-            offContext.putImageData(imagedata,150,150)
+            let imageData = offContext.getImageData(50,50,130,130)
+            offContext.putImageData(imageData,150,150)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
           })
@@ -3150,13 +3416,55 @@ Puts an **[ImageData](ts-components-canvas-imagedata.md)** object onto a rectang
 
 | Name         | Type| Mandatory| Description|
 | ----------- | ---------------------------------------- | ---- | ----------------------------- |
-| imagedata   | Object | Yes| **ImageData** object with pixels to put onto the canvas.|
-| dx          | number \| string<sup>10+</sup> | Yes| X-axis offset of the rectangular area on the canvas.<br>Default unit: vp|
-| dy          | number \| string<sup>10+</sup> | Yes  | Y-axis offset of the rectangular area on the canvas.<br>Default unit: vp|
+| imageData   | [ImageData](ts-components-canvas-imagedata.md) | Yes| **ImageData** object with pixels to put onto the canvas.<br>If the value is undefined or null, it is processed as an invalid value and is not drawn.|
+| dx          | number \| string<sup>10+</sup> | Yes| X-axis offset of the rectangular area on the canvas.<br>If the value is undefined, null, NaN, or Infinity, it is processed as 0.<br>Default unit: vp|
+| dy          | number \| string<sup>10+</sup> | Yes  | Y-axis offset of the rectangular area on the canvas.<br>Abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+
+ **Example**
+
+  ```ts
+  // xxx.ets
+  @Entry
+  @Component
+  struct PutImageData {
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
+    build() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Canvas(this.context)
+          .width('100%')
+          .height('100%')
+          .backgroundColor('rgb(213,213,213)')
+          .onReady(() => {
+            let offContext = this.offCanvas.getContext("2d", this.settings)
+            let imageDataNum = offContext.createImageData(100, 100)
+            let imageData = offContext.createImageData(imageDataNum)
+            for (let i = 0; i < imageData.data.length; i += 4) {
+              imageData.data[i + 0] = 112
+              imageData.data[i + 1] = 112
+              imageData.data[i + 2] = 112
+              imageData.data[i + 3] = 255
+            }
+            offContext.putImageData(imageData, 10, 10)
+            let image = this.offCanvas.transferToImageBitmap()
+            this.context.transferFromImageBitmap(image)
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
+
+  ![PutImageData](figures/offPutImageData.png)
+
+### putImageData
 
 putImageData(imageData: ImageData, dx: number | string, dy: number | string, dirtyX: number | string, dirtyY: number | string, dirtyWidth?: number | string, dirtyHeight: number | string): void
 
-Puts an **[ImageData](ts-components-canvas-imagedata.md)** object onto a rectangular area on the canvas.
+Fills the new rectangular area with the [ImageData](ts-components-canvas-imagedata.md) data after cropping.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -3168,13 +3476,13 @@ Puts an **[ImageData](ts-components-canvas-imagedata.md)** object onto a rectang
 
 | Name         | Type| Mandatory| Description|
 | ----------- | ---------------------------------------- | ---- | ----------------------------- |
-| imagedata   | Object | Yes| **ImageData** object with pixels to put onto the canvas.|
-| dx          | number \| string<sup>10+</sup> | Yes| X-axis offset of the rectangular area on the canvas.<br>Default unit: vp|
-| dy          | number \| string<sup>10+</sup> | Yes  | Y-axis offset of the rectangular area on the canvas.<br>Default unit: vp|
-| dirtyX      | number \| string<sup>10+</sup> | Yes | X-axis offset of the upper left corner of the rectangular area relative to that of the source image.<br>Default unit: vp|
-| dirtyY      | number \| string<sup>10+</sup> | Yes | Y-axis offset of the upper left corner of the rectangular area relative to that of the source image.<br>Default unit: vp|
-| dirtyWidth  | number \| string<sup>10+</sup> | Yes| Width of the rectangular area to crop the source image.<br>Default unit: vp|
-| dirtyHeight | number \| string<sup>10+</sup> | Yes| Height of the rectangular area to crop the source image.<br>Default unit: vp|
+| imageData   | [ImageData](ts-components-canvas-imagedata.md) | Yes| **ImageData** object with pixels to put onto the canvas.<br>If the value is undefined or null, it is processed as an invalid value and is not drawn.|
+| dx          | number \| string<sup>10+</sup> | Yes| X-axis offset of the rectangular area on the canvas.<br>If the value is undefined, null, NaN, or Infinity, 0 is used.<br>Default unit: vp|
+| dy          | number \| string<sup>10+</sup> | Yes  | Y-axis offset of the rectangular area on the canvas.<br>If the value is undefined, null, NaN, or Infinity, 0 is used.<br>Default unit: vp|
+| dirtyX      | number \| string<sup>10+</sup> | Yes | X-axis offset of the upper left corner of the rectangular area relative to that of the source image.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| dirtyY      | number \| string<sup>10+</sup> | Yes | Y-axis offset of the upper left corner of the rectangular area relative to that of the source image.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| dirtyWidth  | number \| string<sup>10+</sup> | Yes| Width of the rectangular area to crop the source image.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| dirtyHeight | number \| string<sup>10+</sup> | Yes| Height of the rectangular area to crop the source image.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
 
  **Example**
 
@@ -3183,28 +3491,27 @@ Puts an **[ImageData](ts-components-canvas-imagedata.md)** object onto a rectang
   @Entry
   @Component
   struct PutImageData {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
+          .backgroundColor('rgb(213,213,213)')
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let imageDataNum = offContext.createImageData(100, 100)
             let imageData = offContext.createImageData(imageDataNum)
             for (let i = 0; i < imageData.data.length; i += 4) {
-              imageData.data[i + 0] = 255
-              imageData.data[i + 1] = 0
-              imageData.data[i + 2] = 255
+              imageData.data[i + 0] = 112
+              imageData.data[i + 1] = 112
+              imageData.data[i + 2] = 112
               imageData.data[i + 3] = 255
             }
-            offContext.putImageData(imageData, 10, 10)
-            offContext.putImageData(imageData, 150, 10, 0, 0, 50, 50)
+            offContext.putImageData(imageData, 10, 10, 0, 0, 100, 50)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
           })
@@ -3231,32 +3538,33 @@ Sets the dash line style.
 
 | Name     | Type  |  Mandatory | Description            |
 | -------- | -------- | -------- | ------------------- |
-| segments | number[] | Yes| An array of numbers that specify distances to alternately draw a line and a gap.<br>Default unit: vp|
+| segments | number[] | Yes| An array of numbers that specify distances to alternately draw a line and a gap.<br>The **undefined** and **null** values are treated as invalid.<br>Default unit: vp|
 
 **Example**
 
   ```ts
+  // xxx.ets
   @Entry
   @Component
   struct SetLineDash {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
-    
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .backgroundColor('#D5D5D5')
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.arc(100, 75, 50, 0, 6.28)
-            offContext.setLineDash([10,20])
+            offContext.setLineDash([10, 20])
             offContext.stroke()
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
-        })
+          })
       }
       .width('100%')
       .height('100%')
@@ -3280,7 +3588,7 @@ Obtains the dash line style.
 
 | Type      | Description                      |
 | -------- | ------------------------ |
-| number[] | Interval of alternate line segments and the length of spacing.<br>Default unit: vp|
+| number[] | Interval of alternate line segments and the length of spacing.<br>The **undefined** and **null** values are treated as invalid.<br>Default unit: vp|
 
 **Example**
 
@@ -3289,32 +3597,28 @@ Obtains the dash line style.
   @Entry
   @Component
   struct OffscreenCanvasGetLineDash {
-    @State message: string = 'Hello World'
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    @State message: string = 'Hello World';
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
     build() {
       Row() {
         Column() {
           Text(this.message)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
-            .onClick(()=>{
-              console.error('before getlinedash clicked')
-              let offContext = this.offCanvas.getContext("2d", this.settings)
-              let res = offContext.getLineDash()
-              console.error(JSON.stringify(res))
-            })
           Canvas(this.context)
             .width('100%')
             .height('100%')
-            .backgroundColor('#ffff00')
+            .backgroundColor('#D5D5D5')
             .onReady(() => {
               let offContext = this.offCanvas.getContext("2d", this.settings)
               offContext.arc(100, 75, 50, 0, 6.28)
-              offContext.setLineDash([10,20])
+              offContext.setLineDash([10, 20])
               offContext.stroke()
               let res = offContext.getLineDash()
+              this.message = JSON.stringify(res)
               let image = this.offCanvas.transferToImageBitmap()
               this.context.transferFromImageBitmap(image)
             })
@@ -3345,8 +3649,8 @@ Creates a data URL that contains a representation of an image. This API involves
 
 | Name    | Type  | Mandatory  | Description                                      |
 | ------- | ------ | ---- | ---------------------------------------- |
-| type    | string | No | Image format.<br>The options are as follows: **"image/png"**, **"image/jpeg"**, **"image/webp"**.<br>Default value: **"image/png"**           |
-| quality | any | No | Image quality, which ranges from 0 to 1, when the image format is **image/jpeg** or **image/webp**. If the set value is beyond the value range, the default value **0.92** is used.<br>Default value: **0.92**|
+| type    | string | No | Image format.<br>The options are image/png, image/jpeg, and image/webp.<br>The **undefined** and **null** values are treated as the default value.<br>Default value: image/png|
+| quality | any | No | Image quality, which ranges from 0 to 1, when the image format is **image/jpeg** or **image/webp**. If the set value is beyond the value range, the default value **0.92** is used.<br>For abnormal values undefined, null, NaN, and Infinity, the default values are used.<br>Default value: 0.92|
 
 **Return value**
 
@@ -3361,10 +3665,10 @@ Creates a data URL that contains a representation of an image. This API involves
   @Entry
   @Component
   struct ToDataURL {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(100, 100)
-    @State dataURL: string = ""
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(100, 100);
+    @State dataURL: string = "";
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -3413,23 +3717,23 @@ Creates an **ImageBitmap** object from the most recently rendered image of the o
   @Entry
   @Component
   struct PutImageData {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .backgroundColor('rgb(213,213,213)')
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let imageData = offContext.createImageData(100, 100)
             for (let i = 0; i < imageData.data.length; i += 4) {
-              imageData.data[i + 0] = 255
-              imageData.data[i + 1] = 0
-              imageData.data[i + 2] = 255
+              imageData.data[i + 0] = 112
+              imageData.data[i + 1] = 112
+              imageData.data[i + 2] = 112
               imageData.data[i + 3] = 255
             }
             offContext.putImageData(imageData, 10, 10)
@@ -3469,9 +3773,9 @@ Restores the saved drawing context.
   @Entry
   @Component
   struct CanvasExample {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
     
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -3517,9 +3821,9 @@ Saves the current drawing context.
   @Entry
   @Component
   struct CanvasExample {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
     
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -3562,10 +3866,10 @@ Creates a linear gradient.
 
 | Name  | Type    | Mandatory | Description|
 | ---- | ------ | ---- | -------- |
-| x0   | number | Yes | X coordinate of the start point.<br>Default unit: vp|
-| y0   | number | Yes | Y coordinate of the start point.<br>Default unit: vp|
-| x1   | number | Yes | X coordinate of the end point.<br>Default unit: vp|
-| y1   | number | Yes | Y coordinate of the end point.<br>Default unit: vp|
+| x0   | number | Yes | X coordinate of the start point.<br>If the abnormal values are undefined and null, the interface returns undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
+| y0   | number | Yes | Y coordinate of the start point.<br>If the abnormal values are undefined and null, the interface returns undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
+| x1   | number | Yes | X coordinate of the end point.<br>If the abnormal values are undefined and null, the interface returns undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
+| y1   | number | Yes | Y coordinate of the end point.<br>If the abnormal values are undefined and null, the interface returns undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
 
 **Return value**
 
@@ -3580,9 +3884,9 @@ Creates a linear gradient.
   @Entry
   @Component
   struct CreateLinearGradient {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
     
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -3627,12 +3931,12 @@ Creates a radial gradient.
 
 | Name  | Type    | Mandatory  | Description|
 | ---- | ------ | ---- | ----------------- |
-| x0   | number | Yes   | X coordinate of the center of the start circle.<br>Default unit: vp|
-| y0   | number | Yes   | Y coordinate of the center of the start circle.<br>Default unit: vp|
-| r0   | number | Yes   | Radius of the start circle, which must be a non-negative finite number.<br>Default unit: vp|
-| x1   | number | Yes   | X coordinate of the center of the end circle.<br>Default unit: vp|
-| y1   | number | Yes   | Y coordinate of the center of the end circle.<br>Default unit: vp|
-| r1   | number | Yes   | Radius of the end circle, which must be a non-negative finite number.<br>Default unit: vp|
+| x0   | number | Yes | X coordinate of the center of the start circle.<br>If the abnormal values are undefined and null, the interface returns undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
+| y0   | number | Yes | Y coordinate of the center of the start circle.<br>If the abnormal values are undefined and null, the interface returns undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
+| r0   | number | Yes | Radius of the start circle, which must be a non-negative finite number.<br>If the abnormal values are undefined and null, the interface returns undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
+| x1   | number | Yes | X coordinate of the center of the end circle.<br>If the abnormal values are undefined and null, the interface returns undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
+| y1   | number | Yes | Y coordinate of the center of the end circle.<br>If the abnormal values are undefined and null, the interface returns undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
+| r1   | number | Yes | Radius of the end circle, which must be a non-negative finite number.<br>If the abnormal values are undefined and null, the interface returns undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
 
 **Return value**
 
@@ -3647,9 +3951,9 @@ Creates a radial gradient.
   @Entry
   @Component
   struct CreateRadialGradient {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
     
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -3691,9 +3995,9 @@ Creates a conic gradient.
 
 | Name| Type| Mandatory| Description|
 | ---------- | ------ | ----  | ----------------------------------- |
-| startAngle | number | Yes| Angle at which the gradient starts. The angle measurement starts horizontally from the right side of the center and moves clockwise.<br>Unit: radian|
-| x          | number | Yes| X coordinate of the center of the conic gradient.<br>Default unit: vp|
-| y          | number | Yes| Y coordinate of the center of the conic gradient.<br>Default unit: vp|
+| startAngle | number | Yes   | Angle at which the gradient starts. The angle measurement starts horizontally from the right side of the center and moves clockwise.<br>The abnormal values undefined and null are processed as 0, and NaN and Infinity are processed as invalid values.<br>Unit: radian|
+| x          | number | Yes   | X coordinate of the center of the conic gradient.<br>The abnormal values undefined and null are processed as 0, and NaN and Infinity are processed as invalid values.<br>Default unit: vp|
+| y          | number | Yes   | Y coordinate of the center of the conic gradient.<br>The abnormal values undefined and null are processed as 0, and NaN and Infinity are processed as invalid values.<br>Default unit: vp|
 
 **Return value**
 
@@ -3708,9 +4012,9 @@ Creates a conic gradient.
 @Entry
 @Component
 struct OffscreenCanvasConicGradientPage {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {

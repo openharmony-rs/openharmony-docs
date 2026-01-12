@@ -714,7 +714,7 @@ Matrix的拷贝函数，可以拷贝一份当前的矩阵对象。
 
 > **说明：**
 >
-> 从API version 10开始废弃。建议使用[Matrix4Transit.copy](#copy)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[Matrix4Transit.copy](#copy)替代。
 
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
@@ -766,7 +766,7 @@ Matrix的逆函数，可以返回一个当前矩阵对象的逆矩阵，即效�
 
 > **说明：**
 >
-> 从API version 10开始废弃。建议使用[Matrix4Transit.invert](#invert)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[Matrix4Transit.invert](#invert)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -784,7 +784,7 @@ Matrix的叠加函数，可以将两个矩阵的效果叠加起来生成一个�
 
 > **说明：**
 >
-> 从API version 10开始废弃。建议使用[Matrix4Transit.combine](#combine)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[Matrix4Transit.combine](#combine)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -808,7 +808,7 @@ Matrix的平移函数，可以为当前矩阵增加x轴/y轴/z轴平移效果。
 
 > **说明：**
 >
-> 从API version 10开始废弃。建议使用[Matrix4Transit.translate](#translate)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[Matrix4Transit.translate](#translate)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -832,7 +832,7 @@ Matrix的缩放函数，可以为当前矩阵增加x轴/y轴/z轴缩放效果。
 
 > **说明：**
 >
-> 从API version 10开始废弃。建议使用[Matrix4Transit.scale](#scale)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[Matrix4Transit.scale](#scale)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -856,7 +856,7 @@ Matrix的旋转函数，可以为当前矩阵增加x轴/y轴/z轴旋转效果。
 
 > **说明：**
 >
-> 从API version 10开始废弃。建议使用[Matrix4Transit.rotate](#rotate)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[Matrix4Transit.rotate](#rotate)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -880,7 +880,7 @@ Matrix的坐标点转换函数，可以将当前的变换效果作用到一个�
 
 > **说明：**
 >
-> 从API version 10开始废弃。建议使用[Matrix4Transit.transformPoint](#transformpoint)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[Matrix4Transit.transformPoint](#transformpoint)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 

@@ -26,6 +26,7 @@ import { privacyManager } from '@kit.AbilityKit';
 addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCount: number, failCount: number, options?: AddPermissionUsedRecordOptions): Promise&lt;void&gt;
 
 受应用权限保护的应用在被其他服务、应用调用时，可以使用该接口增加一条权限使用记录。使用Promise异步回调。
+
 权限使用记录包括：调用方的应用身份标识、使用的应用权限名称，和其访问本应用成功、失败的次数。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS，仅系统应用可用。
@@ -46,7 +47,7 @@ addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCou
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -92,6 +93,7 @@ privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1,
 addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCount: number, failCount: number, callback: AsyncCallback&lt;void&gt;): void
 
 受应用权限保护的应用在被其他服务、应用调用时，可以使用该接口增加一条权限使用记录。使用callback异步回调。
+
 权限使用记录包括：调用方的应用身份标识、使用的应用权限名称，和其访问本应用成功、失败的次数。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS，仅系统应用可用。
@@ -106,7 +108,7 @@ addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCou
 | permissionName | Permissions | 是   | 应用权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | successCount | number | 是   | 访问成功的次数。 |
 | failCount | number | 是   | 访问失败的次数。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当添加使用记录成功时，err为undefined；否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当添加使用记录成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -160,7 +162,7 @@ getPermissionUsedRecord(request: PermissionUsedRequest): Promise&lt;PermissionUs
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise<[PermissionUsedResponse](#permissionusedresponse)> | Promise对象。返回查询的权限使用记录。|
+| Promise<[PermissionUsedResponse](#permissionusedresponse)> | Promise对象，返回查询的权限使用记录。|
 
 **错误码：**
 
@@ -213,7 +215,7 @@ getPermissionUsedRecord(request: PermissionUsedRequest, callback: AsyncCallback&
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
 | request | [PermissionUsedRequest](#permissionusedrequest) | 是 | 查询权限使用记录的请求。 |
-| callback | AsyncCallback<[PermissionUsedResponse](#permissionusedresponse)> | 是 | 回调函数。当查询记录成功时，err为undefined，data为查询到的权限使用记录；否则为错误对象。 |
+| callback | AsyncCallback<[PermissionUsedResponse](#permissionusedresponse)> | 是 | 回调函数。当查询记录成功，err为undefined，data为查询到的权限使用记录；否则err为错误对象。 |
 
 **错误码：**
 
@@ -257,7 +259,7 @@ privacyManager.getPermissionUsedRecord(request, (err: BusinessError, data: priva
 
 setPermissionUsedRecordToggleStatus(status: boolean): Promise&lt;void&gt;
 
-设置是否记录当前用户的权限使用情况。系统应用调用此接口，可以设置当前用户的权限使用记录开关状态，使用Promise异步回调。
+设置是否记录当前用户的权限使用情况。系统应用调用此接口，可以设置当前用户的权限使用记录开关状态。使用Promise异步回调。
 
 status为true时，[addPermissionUsedRecord](#privacymanageraddpermissionusedrecord)接口可以正常添加使用记录；status为false时，[addPermissionUsedRecord](#privacymanageraddpermissionusedrecord)接口不记录权限使用记录，并且删除当前用户的历史记录。
 
@@ -275,7 +277,7 @@ status为true时，[addPermissionUsedRecord](#privacymanageraddpermissionusedrec
 
 | 类型          | 说明                                    |
 | ------------- | --------------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -306,7 +308,7 @@ privacyManager.setPermissionUsedRecordToggleStatus(true).then(() => {
 
 getPermissionUsedRecordToggleStatus(): Promise&lt;boolean&gt;
 
-系统应用调用此接口，可以获取当前用户的权限使用记录开关状态，使用Promise异步回调。
+系统应用调用此接口，可以获取当前用户的权限使用记录开关状态。使用Promise异步回调。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS，仅系统应用可用。
 
@@ -316,7 +318,7 @@ getPermissionUsedRecordToggleStatus(): Promise&lt;boolean&gt;
 
 | 类型          | 说明                                    |
 | ------------- | --------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象，返回当前用户的开关状态值。true表示开启，false表示关闭。|
+| Promise&lt;boolean&gt; | Promise对象。返回true，表示当前用户的开关状态值为开启。返回false，表示当前用户的开关状态值为关闭。|
 
 **错误码：**
 
@@ -369,7 +371,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;v
 
 | 类型          | 说明                                    |
 | ------------- | --------------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -430,7 +432,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions, pid?: number,
 
 | 类型          | 说明                                    |
 | ------------- | --------------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -502,7 +504,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions, callback: Asy
 | -------------- | --------------------- | ---- | ------------------------------------ |
 | tokenID        | number                | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
 | permissionName | Permissions                | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
-| callback       | AsyncCallback&lt;void&gt; | 是   | 回调函数。当开始使用权限成功时，err为undefined；否则为错误对象。 |
+| callback       | AsyncCallback&lt;void&gt; | 是   | 回调函数。当开始使用权限成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -557,7 +559,7 @@ stopUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;vo
 
 | 类型          | 说明                                    |
 | ------------- | --------------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -612,7 +614,7 @@ pid需要与startUsingPermission传入的pid相同。
 
 | 类型          | 说明                                    |
 | ------------- | --------------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -670,7 +672,7 @@ stopUsingPermission(tokenID: number, permissionName: Permissions, callback: Asyn
 | -------------- | --------------------- | ---- | ------------------------------------ |
 | tokenID        | number                | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
 | permissionName | Permissions                | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
-| callback       | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止使用权限成功时，err为undefined；否则为错误对象。 |
+| callback       | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止使用权限成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -707,7 +709,7 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: 
 
 on(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callback: Callback&lt;ActiveChangeResponse&gt;): void
 
-订阅指定权限列表的权限使用状态变更事件。
+订阅指定权限列表的权限使用状态变更事件。使用callback异步回调。
 
 允许相同permissionList订阅多个callback。
 
@@ -723,7 +725,7 @@ on(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callback
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | 是   | 订阅事件类型，固定为'activeStateChange'，权限使用状态变更事件。   |
 | permissionList | Array&lt;Permissions&gt;   | 是   | 订阅的权限名列表，为空时表示订阅所有的权限使用状态变化，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
-| callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | 是 | 订阅指定权限使用状态变更事件的回调。 |
+| callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | 是 | 回调函数，返回订阅指定权限使用状态变更事件的对象。 |
 
 **错误码：**
 
@@ -760,7 +762,7 @@ try {
 
 off(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callback?: Callback&lt;ActiveChangeResponse&gt;): void
 
-取消订阅指定权限列表的权限使用状态变更事件。
+取消订阅指定权限列表的权限使用状态变更事件。使用callback异步回调。
 
 取消订阅时，若不传入callback，则批量删除permissionList下的所有callback。
 
@@ -773,8 +775,8 @@ off(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callbac
 | 参数名             | 类型                   | 必填 | 说明                                                          |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | 是   | 取消订阅事件类型，固定为'activeStateChange'，权限使用状态变更事件。   |
-| permissionList | Array&lt;Permissions&gt;   | 是   | 取消订阅的权限名列表，为空时表示订阅所有的权限状态变化，必须与on的输入一致，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
-| callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | 否 | 取消订阅指定tokenId与指定权限名状态变更事件的回调。|
+| permissionList | Array&lt;Permissions&gt;   | 是   | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与[on](#privacymanageron)的输入一致，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
+| callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | 否 | 回调函数，返回取消订阅指定tokenId与指定权限名状态变更事件的对象。|
 
 **错误码：**
 
@@ -786,7 +788,7 @@ off(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callbac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The permissionList is not in the listening list. |
-| 12100004 | The API is not used in pair with 'on'. |
+| 12100004 | The API is not used in pair with "on". |
 | 12100007 | The service is abnormal. |
 | 12100008 | Out of memory. |
 
@@ -824,7 +826,7 @@ getPermissionUsedTypeInfos(tokenId?: number | null, permissionName?: Permissions
 
 | 类型          | 说明                                    |
 | ------------- | --------------------------------------- |
-| Promise&lt;Array&lt;[PermissionUsedTypeInfo](#permissionusedtypeinfo12)&gt;&gt; | Promise对象。返回权限访问类型信息列表的Promise对象。|
+| Promise&lt;Array&lt;[PermissionUsedTypeInfo](#permissionusedtypeinfo12)&gt;&gt; | Promise对象，返回权限访问类型信息列表的Promise对象。|
 
 **错误码：**
 
@@ -952,11 +954,11 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 
 | 名称       | 类型             | 只读 | 可选 | 说明                                       |
 | -------- | -------------- | ---- | ---- | ---------------------------------------- |
-| status  | number         | 否    | 否    | 访问状态。                                 |
-| lockScreenStatus<sup>11+</sup>  | number         | 否    | 是    | 访问时的锁屏状态。<br> - 1，表示非锁屏场景使用权限。<br> - 2，表示锁屏场景使用权限。                                 |
+| status  | number         | 否    | 否    | 访问状态。 |
+| lockScreenStatus<sup>11+</sup>  | number         | 否    | 是    | 访问时的锁屏状态。<br> - 1，表示非锁屏场景使用权限。<br> - 2，表示锁屏场景使用权限。 |
 | timestamp | number         | 否    | 否    | 访问时的时间戳，单位：ms。 |
-| accessDuration  | number         | 否    | 否    | 访问时长，单位：ms。                                 |
-| count<sup>11+</sup> | number | 否 | 是    | 成功或失败次数。
+| accessDuration  | number         | 否    | 否    | 访问时长，单位：ms。 |
+| count<sup>11+</sup> | number | 否 | 是    | 成功或失败次数。 |
 | usedType<sup>12+</sup> | [PermissionUsedType](#permissionusedtype12) | 否 | 是    | 敏感权限访问方式。 |
 
 ## PermissionActiveStatus

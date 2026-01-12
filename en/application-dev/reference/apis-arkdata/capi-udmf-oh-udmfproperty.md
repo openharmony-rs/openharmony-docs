@@ -6,7 +6,7 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct OH_UdmfProperty OH_UdmfProperty
 ```
 

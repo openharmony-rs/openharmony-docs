@@ -19,6 +19,8 @@ The following lists the APIs used in this example. For details about more APIs a
 | [onAdminDisabled(): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonadmindisabled)                   | Called when a device administrator application is disabled.|
 | [onBundleAdded(bundleName: string): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonbundleadded)   | Called when an application is installed.            |
 | [onBundleRemoved(bundleName: string): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonbundleremoved) | Called when an application is uninstalled.            |
+| [onDeviceAdminEnabled(bundleName: string): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityondeviceadminenabled23) | Called when a device administrator application is enabled.|
+| [onDeviceAdminDisabled(bundleName: string): void](../../application-dev/reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityondeviceadmindisabled23) | Called when a device administrator application is disabled.|
 
 ## How to Develop
 
@@ -61,6 +63,16 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   // Callback to be invoked when an application is uninstalled. This callback can be used to report events.
   onBundleRemoved(bundleName: string) {
     console.info('EnterpriseAdminAbility onBundleRemoved bundleName' + bundleName);
+  }
+
+  // Callback to be invoked when a common device administrator application is enabled. Initialization policy can be set in this callback.
+  onDeviceAdminEnabled(bundleName: string) {
+    console.info("EnterpriseAdminAbility onDeviceAdminEnabled bundleName:" + bundleName);
+  }
+
+  // Callback to be invoked when a common device administrator application is disabled. This callback can be used to notify the enterprise administrator that the device is no longer under management.
+  onDeviceAdminDisabled(bundleName: string) {
+    console.info("EnterpriseAdminAbility onDeviceAdminDisabled bundleName" + bundleName);
   }
 };
 ```

@@ -412,6 +412,7 @@ $ hdc -s 127.0.0.1:8710 list targets
 **连接步骤**
 
 1. 服务器配置
+
    服务器通过USB连接对应hdc设备后，执行以下命令：
 
    ```shell
@@ -423,6 +424,7 @@ $ hdc -s 127.0.0.1:8710 list targets
    ```
 
 2. 客户端连接
+
    客户端可以连通服务器IP地址，满足条件后执行以下命令：
 
    ```shell
@@ -632,7 +634,7 @@ $ hdc shell -b com.example.myapplication ls data/storage/el2/base/
 应用安装功能在设备端集成bm模块[安装命令（install）](../tools/bm-tool.md#安装命令install)，简化了安装流程，开发者可以在电脑端直接执行命令完成应用安装。命令格式如下：
 
 ```shell
-hdc install [-cwd path|-r|-s|-w waitingTime|-u userId] src
+hdc install [-cwd path|-r|-s|-w waitingTime|-u userId|-p|-h] src
 ```
 
 **参数**：
@@ -645,6 +647,8 @@ hdc install [-cwd path|-r|-s|-w waitingTime|-u userId] src
 | -s | 安装应用HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。指定目录的时候，每个路径目录下只能存在一个HSP。 |
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为180s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
 | -u | 可选参数，指定[用户](../tools/bm-tool.md#userid)，默认在当前活跃用户下安装应用。 |
+| -p | 可选参数，指定待安装的HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。从API version 22开始，支持指定待安装的APP路径，也可指定只存在一个APP的文件夹路径。 |
+| -h | 可选参数，显示bm模块[安装命令（install）](../tools/bm-tool.md#安装命令install)帮助信息。 |
 
 **返回信息**：
 
@@ -689,6 +693,11 @@ AppMod finish
 $ hdc "-u 100" install D:\example.hap
 [Info]App install path:D:\example.hap msg:install bundle successfully.
 AppMod finish
+
+# 安装D:\hap_dir下应用示例（-p为bm模块install命令支持参数，指定安装路径）
+$ hdc -p install D:\hap_dir
+[Info]App install path:D:\hap_dir msg:install bundle successfully.
+AppMod finish
 ```
 
 ### 卸载应用
@@ -696,7 +705,7 @@ AppMod finish
 应用卸载功能在设备端集成bm模块[卸载命令（uninstall）](../tools/bm-tool.md#卸载命令uninstall)，简化了卸载流程，开发者可以在电脑端直接执行命令完成应用卸载。命令格式如下：
 
 ```shell
-hdc uninstall [-n|-m|-k|-s|-v|-u] bundlename
+hdc uninstall [-n|-k|-s|-h] bundlename
 ```
 
 **参数**：
@@ -705,11 +714,9 @@ hdc uninstall [-n|-m|-k|-s|-v|-u] bundlename
 | -------- | -------- |
 | bundlename | 应用安装包。 |
 | -n | 可选参数，指定Bundle名称卸载应用。|
-| -m | 可选参数，应用模块名称，指定卸载应用的一个模块。默认卸载所有模块。 |
 | -k | 可选参数，卸载应用时保存应用数据。默认卸载应用时不保存应用数据。 |
 | -s | 根据场景判断，卸载应用间HSP时必选参数，其他场景为可选参数。卸载指定的共享库。|
-| -v | 可选参数，指定共享包的版本号。默认卸载同包名的所有共享包。 |
-| -u | 可选参数，指定[用户](../tools/bm-tool.md#userid)，默认在当前活跃用户下卸载应用。
+| -h | 可选参数，bm模块[卸载命令（uninstall）](../tools/bm-tool.md#卸载命令uninstall)帮助信息。 |
 
 **返回信息**：
 
@@ -719,10 +726,6 @@ hdc uninstall [-n|-m|-k|-s|-v|-u] bundlename
 | 具体卸载失败的原因。 | 失败时返回卸载失败的信息。 |
 
 **使用方法**：
-
-> **注意：**
->
-> 执行uninstall命令使用bm模块命令参数，对-m，-v和-u参数需参数值组合使用的情况，需将参数变量和参数值放在引号内使用，如"-m entry"，"-v 100001"和"-u 100"，防止参数解析异常导致命令执行失败。
 
 ```shell
 # 卸载com.ohos.example包示例
@@ -735,28 +738,13 @@ $ hdc uninstall -n com.ohos.example
 [Info]App uninstall path: msg:uninstall bundle successfully.
 AppMod finish
 
-# 卸载com.ohos.example包示例（-m为bm模块uninstall命令支持参数，指定卸载应用的一个模块）
-$ hdc uninstall -n "-m entry" com.ohos.example
-[Info]App uninstall path: msg:uninstall bundle successfully.
-AppMod finish
-
 # 卸载com.ohos.example包示例（-k为bm模块uninstall命令支持参数，卸载应用时保存应用数据）
-$ hdc uninstall -n -k com.ohos.example
+$ hdc uninstall -k com.ohos.example
 [Info]App uninstall path: msg:uninstall bundle successfully.
 AppMod finish
 
 # 卸载com.ohos.example包示例（-s为bm模块uninstall命令支持参数，卸载hsp时为必选参数）
-$ hdc uninstall -n -s com.ohos.example
-[Info]App uninstall path: msg:uninstall bundle successfully.
-AppMod finish
-
-# 卸载com.ohos.example包示例（-v为bm模块uninstall命令支持参数，指定共享包的版本号）
-$ hdc uninstall -n "-v 100001" com.ohos.example
-[Info]App uninstall path: msg:uninstall bundle successfully.
-AppMod finish
-
-# 卸载com.ohos.example包示例（-u为bm模块uninstall命令支持参数，指定用户id）
-$ hdc uninstall -n "-u 100" com.ohos.example
+$ hdc uninstall -s com.ohos.example
 [Info]App uninstall path: msg:uninstall bundle successfully.
 AppMod finish
 ```
@@ -862,20 +850,20 @@ FileTransfer finish, Size:xxx, File...
 
 | 命令 | 说明 |
 | -------- | -------- |
-| fport ls | 列出全部转发端口转发任务。 |
-| fport [IP:port] [IP:port] | 设置正向端口转发任务：监听“主机端口”，接收请求并进行转发， 转发到“设备端口”。设备端口范围1~65535。 |
-| rport [IP:port] [IP:port] | 设置反向端口转发任务：监听“设备端口”，接收请求并进行转发，转发到“主机端口”。设备端口范围1024~65535。 |
-| fport rm [IP:port] [IP:port] | 删除指定的端口转发任务。 |
+| fport ls | 列出所有端口转发任务。 |
+| fport localnode remotenode | 设置正向端口转发任务：监听“电脑端端口”(localnode)请求并转发到“设备端端口”(remotenode)。任务格式为<转发类型>:<转发端口>，如"tcp:1234"。 |
+| rport remotenode localnode | 设置反向端口转发任务：监听“设备端端口”(remotenode)请求并转发到“电脑端端口”(localnode)。任务格式为<转发类型>:<转发端口>，如"tcp:1234"。 |
+| fport rm taskstr | 删除指定的端口转发任务。 |
 
 > **说明：**
 >
 > 电脑端支持的端口转发类型：tcp。
 >
-> 设备端支持的端口转发类型：tcp，dev，localabstract，localfilesystem，jdwp，ark。
+> 设备端支持的端口转发类型：tcp，dev，localabstract， localreserved，localfilesystem，jdwp，ark。
 
 ### 查询端口转发任务列表
 
-命令格式如下：
+查询所有的正向端口转发任务和反向端口转发任务，命令格式如下：
 
 ```shell
 hdc fport ls
@@ -893,15 +881,16 @@ hdc fport ls
 
 ```shell
 $ hdc fport ls
-[Empty]
+connect-key tcp:2080 tcp:2345 [Reverse]
+connect-key tcp:1234 tcp:1080 [Forward]
 ```
 
 ### 创建正向端口转发任务
 
-设置正向端口转发任务，系统将指定的“主机端口”转发到“设备端口”，命令格式如下：
+设置正向端口转发任务，将指定的“电脑端端口”转发到“设备端端口”，命令格式如下：
 
 ```shell
-hdc fport [IP:port] [IP:port]
+hdc fport localnode remotenode
 ```
 
 **返回信息**：
@@ -920,9 +909,10 @@ hdc fport [IP:port] [IP:port]
 $ hdc fport tcp:1234 tcp:1080
 Forwardport result:OK
 ```
+
 > **说明：**
 >
-> 在创建正向端口转发任务时，如果本地端口为TCP协议，指定端口为port，且启动服务进程时使用了-e参数， 则本地主机会监听-e参数指定的IP地址的port端口；如果启动服务进程时未使用-e参数，则本地主机会监听127.0.0.1:port。
+> 创建正向端口转发任务时，电脑端使用TCP协议类型且指定端口为port，默认监听127.0.0.1:port。如果在启动服务进程时使用-e参数指定了监听主机IP地址，则电脑端会监听-e指定的IP:port。
 
 
 ### 创建反向端口转发任务
@@ -930,7 +920,7 @@ Forwardport result:OK
 设置反向端口转发任务，系统将指定的“设备端口”转发到“主机端口”，命令格式如下：
 
 ```shell
-hdc rport [IP:port] [IP:port]
+hdc rport remotenode localnode
 ```
 
 **返回信息**：
@@ -951,17 +941,21 @@ Forwardport result:OK
 
 ### 删除端口转发任务
 
-删除指定的转发任务，命令格式如下：
+删除指定的正向端口转发任务或反向端口转发任务，命令格式如下：
 
 ```shell
-hdc fport rm [IP:port][IP:port]
+hdc fport rm taskstr
 ```
+
+> **说明：**
+>
+> taskstr参数为具体的正向端口转发任务或反向端口转发任务，建议优先通过hdc fport ls命令查询后删除。
 
 **参数**：
 
 | 参数 | 说明 |
 | -------- | -------- |
-| IP:port | 端口转发任务，形如 tcp:XXXX tcp:XXXX。 |
+| taskstr | 端口转发任务，形如 tcp:XXXX tcp:XXXX。 |
 
 **返回信息**：
 
@@ -1452,7 +1446,7 @@ hdc -l 5 start
 | 平台 | 路径 | 备注 |
 | -------- | -------- | -------- |
 | Windows | %temp%\ | 实际路径参考：C:\\Users\用户名\AppData\Local\Temp<br/>（实际使用请替换用户名变量）。 |
-| Linux | /tmp/ |  |
+| Linux | /tmp/ | - |
 | MacOS | $TMPDIR/ | 实际路径可通过echo $TMPDIR查看，执行cd $TMPDIR命令可直接跳转至相应目录。 |
 
 日志文件类型包括：
@@ -1462,7 +1456,7 @@ hdc -l 5 start
 | 实时日志 | hdc.log | 实时记录服务器进程日志。 | 每次重启hdc服务进程，将会重命名原有日志并记录新的hdc.log。 |
 | 历史日志临时文件 | hdc-%Y%m%d-%H%M%S.log | 转储历史日志归档生成的中间文件。 | 以时间2024年9月19日16:18:57.921为例，对应时间格式为：20240919-161857921，生成的日志临时文件名为：hdc-20240919-161857921.log。 |
 | 历史日志归档文件 | hdc-%Y%m%d-%H%M%S.log.tgz | 压缩存储历史日志。 | 归档文件为.tgz类型压缩文件，可使用解压工具进行解压查看。以历史日志临时文件名hdc-20240919-161857921.log为例，对应的历史日志归档文件名为：hdc-20240919-161857921.log.tgz，历史日志归档文件生成后，对应的历史日志临时文件将自动删除。 |
-| 实时日志缓存临时文件 | .hdc.cache.log | 实时日志产生的临时缓存。 |  |
+| 实时日志缓存临时文件 | .hdc.cache.log | 实时日志产生的临时缓存。 | - |
 
 ### 设备端日志
 
@@ -1520,8 +1514,8 @@ hdc file recv /data/log/hilog {local_path}            # 获取hilog已落盘日�
 | 平台 | 路径 | 备注 |
 | -------- | -------- | -------- |
 | Windows | %temp%\hdc_cmd\ | 实际路径参考：C:\\Users\用户名\AppData\Local\Temp\hdc_cmd\<br/>（实际使用请替换用户名变量）。 |
-| Linux | /tmp/hdc_cmd/ |  |
-| MacOS | $TMPDIR/hdc_cmd/ |  |
+| Linux | /tmp/hdc_cmd/ | - |
+| MacOS | $TMPDIR/hdc_cmd/ | - |
 
 ### OHOS_HDC_ENCRYPT_CHANNEL
 
@@ -1652,9 +1646,11 @@ MacOS环境：
 解决方法如下：
 
 1. 排查具有自带hdc功能的软件进程。
+
    如果存在自带hdc的软件（DevEco Studio、DevEco Testing），请关闭这些软件后再执行hdc相关命令。
 
 2. 查询hdc端口情况。
+
    以设置OHOS_HDC_SERVER_PORT为8710端口为例，不同平台的查询命令如下：
 
    Unix：
@@ -1804,7 +1800,9 @@ hdc文件传输命令执行出现乱码，如使用file recv从设备端发送�
 1. 同时按下Win+R键，启动运行工具，在输入栏中输入regedit以打开注册表；
 
 2. 注册表地址栏输入以下内容并按下回车
+
    计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography\Protect\Providers\df9d8cd0-1501-11d1-8c7a-00c04fc297eb；
+   
 
 3. 右键新建DWORD(32位)值(D)，新增值名称为ProtectionPolicy 值为 1 （16进制），然后点击确定；
 
@@ -2166,6 +2164,7 @@ Invalid bundle name: bundlename.
 **处理步骤**
 
 - 场景一：确认命令指定包名的应用已安装到设备上。
+
   执行hdc shell "bm dump -a | grep bundlename"查询对应包名的应用是否已安装到设备上，预期返回信息为 bundlename；
 
   以应用名com.example.myapplication为例，查询命令如下：

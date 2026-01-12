@@ -7,10 +7,12 @@
 <!--Adviser: @HelloShuo-->
 
 
-Web组件提供了在新窗口打开页面的能力，开发者可以通过[multiWindowAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#multiwindowaccess9)接口来设置是否允许网页在新窗口打开。当有新窗口打开时，应用侧会在[onWindowNew()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownew9)接口中收到Web组件新窗口事件。开发者需要在此接口事件中新建窗口来处理Web组件的窗口请求。
+Web组件提供了在新窗口打开页面的能力，开发者可以通过[multiWindowAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#multiwindowaccess9)接口来设置是否允许网页在新窗口打开。当有新窗口打开时，应用侧会在[onWindowNew()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownew9)接口或[onWindowNewExt()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownewext23)接口中收到Web组件新窗口事件。开发者需要在此接口事件中新建窗口来处理Web组件的窗口请求。
 
 
 > **说明：**
+>
+> - [onWindowNewExt()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownewext23)接口为[onWindowNew()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownew9)接口的功能增强接口，`OnWindowNewExtEvent`比`OnWindowNewEvent`新增了[NavigationPolicy](../reference/apis-arkweb/arkts-basic-components-web-e.md#navigationpolicy23)和[WindowFeatures](../reference/apis-arkweb/arkts-basic-components-web-i.md#windowfeatures23)，用于通知应用新窗口的打开方式和位置大小信息。当在同一个Web组件上同时使用这两个接口时，只有[onWindowNewExt()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownewext23)接口会被触发。 
 >
 > - [allowWindowOpenMethod()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#allowwindowopenmethod10)接口设置为true时，前端页面通过JavaScript函数调用的方式打开新窗口。
 >
@@ -28,69 +30,70 @@ Web组件提供了在新窗口打开页面的能力，开发者可以通过[mult
 
 - 应用侧代码。
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+<!-- @[receive_a_web_component_new_window_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/OpenPageNewWin.ets) -->
 
-  // 在同一界面有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
-  @CustomDialog
-  struct NewWebViewComp {
-    controller?: CustomDialogController;
-    webviewController1: webview.WebviewController = new webview.WebviewController();
+``` TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
 
-    build() {
-      Column() {
-        Web({ src: "", controller: this.webviewController1 })
-          .javaScriptAccess(true)
-          .multiWindowAccess(false)
-          .onWindowExit(() => {
-            console.info("NewWebViewComp onWindowExit");
-            if (this.controller) {
-              this.controller.close();
-            }
-          })
-          .onActivateContent(() => {
-            //该Web需要展示到前台，建议应用在这里进行tab或window切换的动作
-            console.log("NewWebViewComp onActivateContent")
-          })
-      }
+// 在同一界面有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
+@CustomDialog
+struct NewWebViewComp {
+  controller?: CustomDialogController;
+  webviewController1: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: '', controller: this.webviewController1 })
+        .javaScriptAccess(true)
+        .multiWindowAccess(false)
+        .onWindowExit(() => {
+          console.info('NewWebViewComp onWindowExit');
+          if (this.controller) {
+            this.controller.close();
+          }
+        })
+        .onActivateContent(() => {
+          //该Web需要展示到前台，建议应用在这里进行tab或window切换的动作
+          console.info('NewWebViewComp onActivateContent')
+        })
     }
   }
+}
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    dialogController: CustomDialogController | null = null;
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  dialogController: CustomDialogController | null = null;
 
-    build() {
-      Column() {
-        Web({ src: $rawfile("window.html"), controller: this.controller })
-          .javaScriptAccess(true)
-            // 需要使能multiWindowAccess
-          .multiWindowAccess(true)
-          .allowWindowOpenMethod(true)
-          .onWindowNew((event) => {
-            if (this.dialogController) {
-              this.dialogController.close()
-            }
-            let popController: webview.WebviewController = new webview.WebviewController();
-            this.dialogController = new CustomDialogController({
-              builder: NewWebViewComp({ webviewController1: popController }),
-              // isModal设置为false，防止新窗口被销毁而无法触发onActivateContent回调
-              isModal: false
-            })
-            this.dialogController.open();
-            // 将新窗口对应WebviewController返回给Web内核。
-            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
-            // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
-            event.handler.setWebController(popController);
+  build() {
+    Column() {
+      Web({ src: $rawfile('window.html'), controller: this.controller })
+        .javaScriptAccess(true)
+          // 需要使能multiWindowAccess
+        .multiWindowAccess(true)
+        .allowWindowOpenMethod(true)
+        .onWindowNew((event) => {
+          if (this.dialogController) {
+            this.dialogController.close()
+          }
+          let popController: webview.WebviewController = new webview.WebviewController();
+          this.dialogController = new CustomDialogController({
+            builder: NewWebViewComp({ webviewController1: popController }),
+            // isModal设置为false，防止新窗口被销毁而无法触发onActivateContent回调
+            isModal: false
           })
-      }
+          this.dialogController.open();
+          // 将新窗口对应WebviewController返回给Web内核。
+          // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
+          // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
+          event.handler.setWebController(popController);
+        })
     }
   }
-  ```
-
+}
+```
 
 - window.html页面代码。
 

@@ -14,100 +14,116 @@ Two methods are available for registering the application code:<br>Call [javaScr
 
 The following example registers the **test()** function with the frontend page. This way, the **test()** function can be triggered and run on the frontend page.
 
+Sample code for the application using [javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy) for registration:
 
-- Sample code for using [javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy):
+<!-- @[functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/JavaScriptProxy.ets) -->
 
-  ```ts
-  // xxx.ets
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class TestClass {
+  constructor() {
+  }
+
+  test(): string {
+    return 'ArkTS Hello World!';
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  webviewController: webview.WebviewController = new webview.WebviewController();
+  // Declare the object to be registered.
+  @State testObj: TestClass = new TestClass();
+
+  build() {
+    Column() {
+      Button('deleteJavaScriptRegister')
+        .onClick(() => {
+          try {
+            this.webviewController.deleteJavaScriptRegister('testObjName');
+            this.webviewController.refresh();
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      // Load the local index.html page.
+      Web({ src: $rawfile('index1.html'), controller: this.webviewController})
+        // Inject the object to the web client.
+        .javaScriptProxy({
+          object: this.testObj,
+          name: 'testObjName',
+          methodList: ['test'],
+          controller: this.webviewController,
+          // Optional parameter.
+          asyncMethodList: [],
+          permission: '{"javascriptProxyPermission":{"urlPermissionList":' +
+            '[{"scheme":"resource","host":"rawfile","port":"","path":""},' +
+            '{"scheme":"e","host":"f","port":"g","path":"h"}],"methodList":' +
+            '[{"methodName":"test","urlPermissionList":' +
+            '[{"scheme":"https","host":"xxx.com","port":"","path":""},' +
+            '{"scheme":"resource","host":"rawfile","port":"","path":""}]},' +
+            '{"methodName":"test11","urlPermissionList":' +
+            '[{"scheme":"q","host":"r","port":"","path":"t"},' +
+            '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
+        })
+    }
+  }
+}
+```
+
+  Sample code for the application using [registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy) for registration:
+
+  > **NOTE**
+  >
+  > - The registration performed by [registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy) takes effect after the next loading or reloading.
+
+- Example 1:
+
+  <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class TestClass {
     constructor() {
     }
-
+  
     test(): string {
-      return 'ArkTS Hello World!';
+      return 'ArkUI Web Component';
     }
-  }
-
-  @Entry
-  @Component
-  struct WebComponent {
-    webviewController: webview.WebviewController = new webview.WebviewController();
-    // Declare the object to be registered.
-    @State testObj: TestClass = new TestClass();
-
-    build() {
-      Column() {
-        Button('deleteJavaScriptRegister')
-          .onClick(() => {
-            try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        // Load the local index.html page.
-        Web({ src: $rawfile('index.html'), controller: this.webviewController})
-          // Inject the object to the web client.
-          .javaScriptProxy({
-            object: this.testObj,
-            name: "testObjName",
-            methodList: ["test"],
-            controller: this.webviewController,
-            // Optional parameter.
-            asyncMethodList: [],
-            permission: '{"javascriptProxyPermission":{"urlPermissionList":[{"scheme":"resource","host":"rawfile","port":"","path":""},' +
-                        '{"scheme":"e","host":"f","port":"g","path":"h"}],"methodList":[{"methodName":"test","urlPermissionList":' +
-                        '[{"scheme":"https","host":"xxx.com","port":"","path":""},{"scheme":"resource","host":"rawfile","port":"","path":""}]},' +
-                        '{"methodName":"test11","urlPermissionList":[{"scheme":"q","host":"r","port":"","path":"t"},' +
-                        '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
-          })
-      }
-    }
-  }
-  ```
-- Sample code for the application using [registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy) for registration:
-
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  class TestClass {
-    constructor() {
-    }
-
-    test(): string {
-      return "ArkUI Web Component";
-    }
-
+  
     toString(): void {
       console.info('Web Component toString');
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
-        Button('refresh')
+        // Unregister the JSB object to prevent memory leaks.
+        Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
+              this.webviewController.deleteJavaScriptRegister('testObjName');
               this.webviewController.refresh();
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Button('Register JavaScript To Window')
-          .onClick(() => {
+        Web({ src: $rawfile('index1.html'), controller: this.webviewController })
+          .onControllerAttached(()=>{
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"],
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
                       // Optional parameter: asyncMethodList
                       [],
                       // Optional parameter: permission
@@ -121,23 +137,79 @@ The following example registers the **test()** function with the frontend page. 
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Button('deleteJavaScriptRegister')
-          .onClick(() => {
-            try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
       }
     }
   }
   ```
+ 
+- Example 2:
 
-  > **NOTE**
-  >
-  > - You need to call the [refresh()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#refresh) method for the registration to take effect after using the [registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy) method.
+   <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->
+   
+   ``` TypeScript
+   // xxx.ets
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   class TestClass {
+     constructor() {
+     }
+   
+     test(): string {
+       return 'ArkUI Web Component';
+     }
+   
+     toString(): void {
+       console.info('Web Component toString');
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     webviewController: webview.WebviewController = new webview.WebviewController();
+     @State testObj: TestClass = new TestClass();
+     @State isRegistered: boolean = false;
+   
+     build() {
+       Column() {
+         // Unregister the JSB object to prevent memory leaks.
+         Button('deleteJavaScriptRegister')
+           .onClick(() => {
+             try {
+               this.webviewController.deleteJavaScriptRegister('testObjName');
+               this.webviewController.refresh();
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: $rawfile('index1.html'), controller: this.webviewController })
+           .onPageEnd(()=>{
+             try {
+               if(!this.isRegistered){
+               this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
+                       // Optional parameter: asyncMethodList
+                       [],
+                       // Optional parameter: permission
+                       '{"javascriptProxyPermission":{"urlPermissionList":[{"scheme":"resource","host":"rawfile","port":"","path":""},' +
+                       '{"scheme":"e","host":"f","port":"g","path":"h"}],"methodList":[{"methodName":"test","urlPermissionList":' +
+                       '[{"scheme":"https","host":"xxx.com","port":"","path":""},{"scheme":"resource","host":"rawfile","port":"","path":""}]},' +
+                       '{"methodName":"test11","urlPermissionList":[{"scheme":"q","host":"r","port":"","path":"t"},' +
+                       '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
+                 );
+                 this.isRegistered = true;
+                 // After the method is registered in onPageEnd, the method takes effect only after reloading.
+                 this.webviewController.refresh();              
+               }
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+       }
+     }
+   }
+   ```
 
 - The optional parameter permission is a JSON string. The following is an example:
   ```json
@@ -197,10 +269,10 @@ The following example registers the **test()** function with the frontend page. 
   }
   ```
 
-- Sample code for invoking application functions on the **index.html** frontend page:
+- Sample code for invoking application functions on the **index1.html** frontend page:
 
   ```html
-  <!-- index.html -->
+  <!-- index1.html -->
   <!DOCTYPE html>
   <html>
   <body>

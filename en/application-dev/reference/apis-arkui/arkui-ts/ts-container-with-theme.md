@@ -4,7 +4,7 @@
 <!--Owner: @lushi871202-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **WithTheme** component is designed to customize the theme style for a specific part of an application page. It allows for the setting of light and dark modes for child components, as well as the use of custom color schemes.
 
@@ -12,7 +12,9 @@ The **WithTheme** component is designed to customize the theme style for a speci
 >
 > This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> Supported built-in components: [TextInput](./ts-basic-components-textinput.md), [Search](./ts-basic-components-search.md), [Button](./ts-basic-components-button.md), [Badge](./ts-container-badge.md), [Swiper](./ts-container-swiper.md), [Text](./ts-basic-components-text.md), [Select](./ts-basic-components-select.md), [Menu](./ts-basic-components-menu.md), [Counter](./ts-container-counter.md), [TimePicker](./ts-basic-components-timepicker.md), [DatePicker](./ts-basic-components-datepicker.md), [TextPicker](./ts-basic-components-textpicker.md), [Checkbox](./ts-basic-components-checkbox.md), [CheckboxGroup](./ts-basic-components-checkboxgroup.md), [Radio](./ts-basic-components-radio.md), [Slider](./ts-basic-components-slider.md), [Progress](./ts-basic-components-progress.md), [QRCode](./ts-basic-components-qrcode.md), [Toggle](./ts-basic-components-toggle.md), [PatternLock](./ts-basic-components-patternlock.md), [Divider](./ts-basic-components-divider.md).
+> **WithTheme** supports the following built-in components: [TextInput](./ts-basic-components-textinput.md), [Search](./ts-basic-components-search.md), [Button](./ts-basic-components-button.md), [Badge](./ts-container-badge.md), [Swiper](./ts-container-swiper.md), [Text](./ts-basic-components-text.md), [Select](./ts-basic-components-select.md), [Menu](./ts-basic-components-menu.md), [TimePicker](./ts-basic-components-timepicker.md), [DatePicker](./ts-basic-components-datepicker.md), [TextPicker](./ts-basic-components-textpicker.md), [Checkbox](./ts-basic-components-checkbox.md), [CheckboxGroup](./ts-basic-components-checkboxgroup.md), [Radio](./ts-basic-components-radio.md), [Slider](./ts-basic-components-slider.md), [Progress](./ts-basic-components-progress.md), [QRCode](./ts-basic-components-qrcode.md), [Toggle](./ts-basic-components-toggle.md), [PatternLock](./ts-basic-components-patternlock.md), and [Divider](./ts-basic-components-divider.md).
+>
+> For details about how to use **WithTheme**, see [Configuring In-Application Theme Skinning](../../../ui/theme_skinning.md).
 
 ## Child Components
 
@@ -21,6 +23,8 @@ This component supports only one child component.
 ## APIs
 
 WithTheme(options: WithThemeOptions)
+
+Sets a custom theme style for specific application pages.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -48,10 +52,10 @@ Defines the default theme and color mode for components within the **WithTheme**
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type                              | Mandatory| Description               |
-|------------------------|---------------------------------------------------------| ---- |------------------------------------------------------------------|
-| theme     | [CustomTheme](#customtheme)    | No  | Default theme for components in the **WithTheme** scope.<br> Default value: **undefined**, indicating that the styles will follow the system's default theme.|
-| colorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode) | No  | Color mode for components in the **WithTheme** scope.<br>Default value: **ThemeColorMode.SYSTEM**      |
+| Name       | Type                              | Read-Only | Optional| Description               |
+|------------------------|---------------------------------------------------------| ---- | ---- |------------------------------------------------------------------|
+| theme     | [CustomTheme](#customtheme)    | No| Yes | Default theme for components in the **WithTheme** scope.<br> Default value: **undefined**. The default style follows the [default token style](../../../ui/theme_skinning.md#system-default-token-color-values).|
+| colorMode | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode) | No| Yes | Color mode for components in the **WithTheme** scope.<br>Default value: **ThemeColorMode.SYSTEM**      |
 
 ## CustomTheme
 
@@ -69,7 +73,7 @@ Defines a custom theme.
 
 ## Example
 
-This example demonstrates how to use **WithTheme** to set the color mode, which is effective only when a **dark.json** resource file is included.
+For the light and dark modes to take effect, add a **dark.json** resource file.
 
 ![resources_dark](figures/resources_dark.png)
 
@@ -85,8 +89,10 @@ Example of the **dark.json** file content:
     }
   ```
 
+### Example 1: Setting the Local Color Mode
+
 ```ts
-// Specify the local color mode.
+// Set the local color mode.
 @Entry
 @Component
 struct Index {
@@ -140,8 +146,10 @@ struct Index {
 ```
 ![withThemeColorMode](figures/witheThemeColorMode.png)
 
+### Example 2: Customizing the Theme with WithTheme
+
 ```ts
-// Customize the default theme for components in the WithTheme scope.
+// Customize the theme for components in the WithTheme scope.
 import { CustomTheme, CustomColors } from '@kit.ArkUI';
 
 class GreenColors implements CustomColors {

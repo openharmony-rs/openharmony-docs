@@ -22,7 +22,10 @@
 
 4. 调用[CertExtension.checkCA](../../reference/apis-device-certificate-kit/js-apis-cert.md#checkca10)判断证书是否为CA证书。
 
-```ts
+<!-- @[create_parse_validate_certificate_extension_info_objects](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParseVerifyCertextensionObject.ets) -->
+
+``` TypeScript
+
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';

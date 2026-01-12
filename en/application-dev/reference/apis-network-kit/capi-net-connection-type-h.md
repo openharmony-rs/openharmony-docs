@@ -1,4 +1,10 @@
 # net_connection_type.h
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
 
 ## Overview
 
@@ -47,14 +53,14 @@ Provides the C APIs of the network connection module for network management.
 
 | Name| Description| 
 | -------- | -------- |
-| **NETCONN_MAX_RTT_NUM** | 4 | 
-| **NETCONN_MAX_NET_SIZE** | 32 | 
-| **NETCONN_MAX_BEARER_TYPE_SIZE** | 32 | 
-| **NETCONN_MAX_CAP_SIZE** | 32 | 
-| **NETCONN_MAX_ADDR_SIZE** | 32 | 
-| **NETCONN_MAX_ROUTE_SIZE** | 64 | 
-| **NETCONN_MAX_EXCLUSION_SIZE** | 256 | 
-| **NETCONN_MAX_STR_LEN** | 256 | 
+| NETCONN_MAX_RTT_NUM   4  | Length of the **rtt** array of the [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) member variable.| 
+| NETCONN_MAX_NET_SIZE   32     | Length of the **netHandles** array of the [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md) member variable.| 
+| NETCONN_MAX_BEARER_TYPE_SIZE   32    | Length of the **bearerTypes** array of the [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) member variable.| 
+| NETCONN_MAX_CAP_SIZE   32    | Length of the **netCaps** array of the [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) member variable.| 
+| NETCONN_MAX_ADDR_SIZE   32    | Length of the **netAddrList** and **dnsList** arrays of the [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) member variable.| 
+| NETCONN_MAX_ROUTE_SIZE   64   | Length of **routeList** array of [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) member variable.| 
+| NETCONN_MAX_EXCLUSION_SIZE   256   | Length of the **exclusionList** array of [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) member variable.| 
+| NETCONN_MAX_STR_LEN   256   | Length of the **host** array of [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) member variable.| 
 
 ### Functions
 
@@ -73,7 +79,7 @@ Provides the C APIs of the network connection module for network management.
 
 ### NetConn_NetCap
 
-```
+```c
 enum NetConn_NetCap
 ```
 
@@ -95,7 +101,7 @@ Defines the network capability set.
 
 ### NetConn_NetBearerType
 
-```
+```c
 enum NetConn_NetBearerType
 ```
 
@@ -115,7 +121,7 @@ Network carrier type.
 
 ### NetConn_ErrorCode
 
-```
+```c
 enum NetConn_ErrorCode
 ```
 
@@ -135,7 +141,7 @@ Enumerates network connection error codes.
 
 ### NetConn_PacketsType
 
-```
+```c
 enum NetConn_PacketsType
 ```
 
@@ -155,7 +161,7 @@ Enumerates trace route packet types.
 
 ### OH_NetConn_CustomDnsResolver()
 
-```
+```c
 typedef int (*OH_NetConn_CustomDnsResolver)(const char *host, const char *serv,const struct addrinfo *hint, struct addrinfo **res)
 ```
 
@@ -177,7 +183,7 @@ Pointer to the custom DNS resolver.
 
 ### OH_NetConn_AppHttpProxyChange()
 
-```
+```c
 typedef void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy)
 ```
 
@@ -196,7 +202,7 @@ Callback invoked when the HTTP proxy information of the application changes.
 
 ### OH_NetConn_NetworkAvailable()
 
-```
+```c
 typedef void (*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle)
 ```
 
@@ -215,7 +221,7 @@ Callback invoked when the network is available.
 
 ### OH_NetConn_NetCapabilitiesChange()
 
-```
+```c
 typedef void (*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle,NetConn_NetCapabilities *netCapabilities)
 ```
 
@@ -235,7 +241,7 @@ Callback invoked when the network capabilities change.
 
 ### OH_NetConn_NetConnectionPropertiesChange()
 
-```
+```c
 typedef void (*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netHandle,NetConn_ConnectionProperties *connConnetionProperties)
 ```
 
@@ -255,7 +261,7 @@ Callback invoked when network connection properties change.
 
 ### OH_NetConn_NetLost()
 
-```
+```c
 typedef void (*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle)
 ```
 
@@ -274,7 +280,7 @@ Callback invoked when the network is disconnected.
 
 ### OH_NetConn_NetUnavailable()
 
-```
+```c
 typedef void (*OH_NetConn_NetUnavailable)(void)
 ```
 
@@ -286,7 +292,7 @@ Callback invoked when the network is unavailable. This callback is triggered whe
 
 ### OH_NetConn_NetBlockStatusChange()
 
-```
+```c
 typedef void (*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bool blocked)
 ```
 

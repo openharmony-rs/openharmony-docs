@@ -4,9 +4,9 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-Continuous recognition, parallel recognition, and exclusive recognition are supported for a group of gestures.
+Combined gestures integrate two or more gestures into a compound gesture, supporting sequential recognition, parallel recognition, and exclusive recognition.
 
 >  **NOTE**
 >
@@ -25,7 +25,7 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 | Name | Type                                                    | Mandatory| Description                                                    |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | mode    | [GestureMode](#gesturemode)                          | Yes  | Recognition mode of combined gestures.<br>Default value: **GestureMode.Sequence**     |
-| gesture | [GestureType](./ts-gesture-common.md#gesturetype11-1)[] | No  | One or more basic gestures to be recognized simultaneously. If this parameter is left empty, simultaneous recognition will not take effect.<br>**NOTE**<br>To add both single-tap and double-tap gestures for a component, add two [TapGesture](ts-basic-gestures-tapgesture.md) instances, with the double-tap gesture preceding the single-tap gesture. The gestures will not work correctly if this order is reversed.|
+| gesture | [GestureType](./ts-gesture-common.md#gesturetype)[] | No  | One or more basic gestures to be recognized simultaneously. If this parameter is left empty, simultaneous recognition will not take effect.<br>**NOTE**<br>To add both single-tap and double-tap gestures for a component, add two [TapGesture](ts-basic-gestures-tapgesture.md) instances, with the double-tap gesture preceding the single-tap gesture. The gestures will not work correctly if this order is reversed.|
 
 ## GestureMode
 
@@ -35,7 +35,7 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
 | Name   | Value   | Description                                      |
 | --------- | -------| ------------------------------------- |
-| Sequence | - | Sequential recognition. Gestures are recognized in the registration sequence until all gestures are recognized successfully. If any gesture fails to be recognized, the subsequent gestures cannot be recognized.<br>Only the last gesture of the combined gestures with sequential recognition can respond to onActionEnd.|
+| Sequence | - | Sequential recognition. Gestures are recognized in the registration sequence until all gestures are recognized successfully. If any gesture in the sequence fails recognition, subsequent gestures will not be recognized.<br>Only the last gesture in a sequentially recognized gesture group can trigger **onActionEnd**.|
 | Parallel | - | Parallel recognition. Registered gestures are recognized concurrently until all gestures are recognized. The recognition result of each gesture does not affect each other.    |
 | Exclusive| - | Exclusive recognition. All registered gestures are processed simultaneously. Once any gesture is recognized successfully, the recognition process ends, and all other gestures are deemed unrecognized.      |
 
@@ -50,7 +50,7 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
 onCancel(event: () => void)
 
-Invoked when a tap cancellation event is received after a gesture is recognized.
+Triggered when a tap cancellation event is received after a gesture is recognized.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

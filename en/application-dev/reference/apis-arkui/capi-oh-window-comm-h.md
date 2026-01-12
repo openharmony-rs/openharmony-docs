@@ -46,7 +46,7 @@ The file declares the common enums and definitions of the window manager.
 
 ### WindowManager_ErrorCode
 
-```
+```c
 enum WindowManager_ErrorCode
 ```
 
@@ -75,7 +75,7 @@ Enumerates the status codes returned by the window manager interface.
 
 ### WindowManager_AvoidAreaType
 
-```
+```c
 enum WindowManager_AvoidAreaType
 ```
 
@@ -95,7 +95,7 @@ Enumerates the avoid area types.
 
 ### WindowManager_WindowType
 
-```
+```c
 enum WindowManager_WindowType
 ```
 

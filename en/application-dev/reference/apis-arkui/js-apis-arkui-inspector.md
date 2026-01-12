@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @pengzhiwen3-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Inspector** module provides APIs for registering the component layout and drawing completion callbacks.
 
@@ -27,7 +27,7 @@ Binds to the specified component and returns the corresponding observation handl
 
 > **NOTE**
 > 
-> - This API is deprecated since API version 18. You are advised to use [createComponentObserver](arkts-apis-uicontext-uiinspector.md#createcomponentobserver) instead on the obtained [UIInspector](arkts-apis-uicontext-uiinspector.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [createComponentObserver](arkts-apis-uicontext-uiinspector.md#createcomponentobserver) instead. Obtain the [UIInspector](arkts-apis-uicontext-uiinspector.md) instance using the [getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector) method in [UIContext](arkts-apis-uicontext-uicontext.md), and then call the createComponentObserver method via this instance.
 >
 > - Since API version 10, you can use the [getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [UIInspector](arkts-apis-uicontext-uiinspector.md) object associated with the current UI context.
 
@@ -179,11 +179,13 @@ struct ImageExample {
             .border({ width: 1 })
             .id('IMAGE_ID')
         }
+        .id('ROW_ID')
       }
     }.height(320).width(360).padding({ right: 10, top: 10 })
   }
 
-  listener: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
+  listenerForImage: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID')
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID')
 
   aboutToAppear() {
     let onLayoutComplete: () => void = (): void => {
@@ -203,14 +205,14 @@ struct ImageExample {
     let OffFuncDraw = onDrawComplete
     let OffFuncDrawChildren = onDrawChildrenComplete
 
-    this.listener.on('layout', FuncLayout)
-    this.listener.on('draw', FuncDraw)
-    this.listener.on('drawChildren', FuncDrawChildren)
+    this.listenerForImage.on('layout', FuncLayout)
+    this.listenerForImage.on('draw', FuncDraw)
+    this.listenerForRow.on('drawChildren', FuncDrawChildren)
 
     // Unregister callbacks through the handle. You should decide when to call these APIs.
-    // this.listener.off('layout', OffFuncLayout)
-    // this.listener.off('draw', OffFuncDraw)
-    // this.listener.off('drawChildren', OffFuncDrawChildren)
+    // this.listenerForImage.off('layout', OffFuncLayout)
+    // this.listenerForImage.off('draw', OffFuncDraw)
+    // this.listenerForRow.off('drawChildren', OffFuncDrawChildren)
   }
 }
 ```

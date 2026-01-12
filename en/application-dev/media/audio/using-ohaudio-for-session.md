@@ -47,7 +47,7 @@ During the activation, specify an [audio session strategy](../../reference/apis-
 
   ```cpp
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
-  
+
   OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   ```
 
@@ -114,7 +114,7 @@ Refer to the sample code below to complete the process of creating, activating, 
   ```cpp
   #include <cstdint>
   #include "ohaudio/native_audio_session_manager.h"
-  
+
   int32_t MyAudioSessionDeactivatedCallback(OH_AudioSession_DeactivatedEvent event)
   {
     switch(event.reason) {
@@ -126,28 +126,28 @@ Refer to the sample code below to complete the process of creating, activating, 
         return 0;
     }
   }
-  
+
   OH_AudioSessionManager *audioSessionManager;
 
   // Create an OH_AudioSessionManager instance.
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
-  
+
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
 
   // Set an audio concurrency mode and activate an audio session.
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
-  
+
   // Check whether the audio session is activated.
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
-  
+
   // Listen for audio session deactivation events.
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager, MyAudioSessionDeactivatedCallback);
 
   // After the audio session is activated, the application can perform operations such as playing, pausing, stopping, and releasing audio streams.
-  
+
   // Cancel listening for audio session deactivation events.
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager, MyAudioSessionDeactivatedCallback);
-  
+
   // Deactivate the audio session.
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   ```
@@ -155,7 +155,6 @@ Refer to the sample code below to complete the process of creating, activating, 
 The application requests focus using an audio session. Call [OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) to set the scene parameters, and then call [OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) to activate the audio session.
 
   ```cpp
-
   OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
 
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
@@ -169,13 +168,12 @@ Listen for audio session focus state changes through [OH_AudioSession_StateChang
 **Below is a comprehensive example of requesting focus for an audio session and listening for focus change events:**
 
   ```cpp
+  OH_AudioSessionManager *audioSessionManager;
 
-OH_AudioSessionManager *audioSessionManager;
+  // Create an OH_AudioSessionManager instance.
+  OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
 
-// Create an OH_AudioSessionManager instance.
-OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
-
-void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
+  void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
   {
     switch(event.stateChangeHint) {
       case AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE:
@@ -201,7 +199,7 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
         break;
       default:
         break;
-      }
+    }
   }
 
   OH_AudioCommon_Result result = OH_AudioSessionManager_RegisterStateChangeCallback(audioSessionManager, AudioSessionStateChangedCallback);
@@ -219,5 +217,4 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
   result = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
 
   result = OH_AudioSessionManager_UnregisterStateChangeCallback(audioSessionManager, AudioSessionStateChangedCallback);
-
   ```

@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```c
+typedef struct {...} ArkWeb_JavaScriptValueAPI
+```
+
 ## Overview
 
 Defines the JavaScriptValue API of ArkWeb. Before calling this API, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM.
@@ -34,13 +38,13 @@ Defines the JavaScriptValue API of ArkWeb. Before calling this API, you are advi
 
 ### createJavaScriptValue()
 
-```
+```c
 ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)
 ```
 
 **Description**
 
-Sets the mode for processing key events.
+Creates a JavaScript value to be returned to HTML.
 
 **Since**: 18
 

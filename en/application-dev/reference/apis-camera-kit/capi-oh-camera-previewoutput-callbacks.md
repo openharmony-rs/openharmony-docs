@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct PreviewOutput_Callbacks {...} PreviewOutput_Callbacks
+```
+
 ## Overview
 
 The struct describes the callbacks related to preview output.

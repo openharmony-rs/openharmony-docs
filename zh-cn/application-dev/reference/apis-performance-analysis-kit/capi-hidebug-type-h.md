@@ -47,6 +47,7 @@ HiDebug模块代码结构体定义。
 | [HiDebug_ErrorCode](#hidebug_errorcode) | HiDebug_ErrorCode | 错误码定义。 |
 | [HiDebug_TraceFlag](#hidebug_traceflag) | HiDebug_TraceFlag | 采集trace线程的类型。 |
 | [HiDebug_StackFrameType](#hidebug_stackframetype) | HiDebug_StackFrameType | 栈帧类型的枚举值定义。 |
+| [HiDebug_CrashObjType](#hidebug_crashobjtype) | HiDebug_CrashObjType | 维测信息数据类型的枚举。 |
 
 ### 宏定义
 
@@ -89,7 +90,7 @@ HiDebug模块代码结构体定义。
 
 ### HiDebug_ErrorCode
 
-```
+```c
 enum HiDebug_ErrorCode
 ```
 
@@ -114,7 +115,7 @@ enum HiDebug_ErrorCode
 
 ### HiDebug_TraceFlag
 
-```
+```c
 enum HiDebug_TraceFlag
 ```
 
@@ -131,7 +132,7 @@ enum HiDebug_TraceFlag
 
 ### HiDebug_StackFrameType
 
-```
+```c
 enum HiDebug_StackFrameType
 ```
 
@@ -146,12 +147,32 @@ enum HiDebug_StackFrameType
 | HIDEBUG_STACK_FRAME_TYPE_JS = 1 | js类型栈帧。 |
 | HIDEBUG_STACK_FRAME_TYPE_NATIVE = 2 | native类型栈帧。 |
 
+### HiDebug_CrashObjType
+
+```c
+enum HiDebug_CrashObjType
+```
+
+**描述**
+
+维测信息数据类型的枚举。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| HIDEBUG_CRASHOBJ_STRING = 0 | 字符串 |
+| HIDEBUG_CRASHOBJ_MEMORY_64B = 1 | 64字节内存块 |
+| HIDEBUG_CRASHOBJ_MEMORY_256B = 2 | 256字节内存块 |
+| HIDEBUG_CRASHOBJ_MEMORY_1024B = 3 | 1024字节内存块 |
+| HIDEBUG_CRASHOBJ_MEMORY_2048B = 4 | 2048字节内存块 |
+| HIDEBUG_CRASHOBJ_MEMORY_4096B = 5 | 4096字节内存块 |
 
 ## 宏定义说明
 
 ### HIDEBUG_TRACE_TAG_FFRT
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_FFRT (1ULL << 13)
 ```
 
@@ -163,7 +184,7 @@ FFRT任务标签。
 
 ### HIDEBUG_TRACE_TAG_COMMON_LIBRARY
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_COMMON_LIBRARY (1ULL << 16)
 ```
 
@@ -175,7 +196,7 @@ FFRT任务标签。
 
 ### HIDEBUG_TRACE_TAG_HDF
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_HDF (1ULL << 18)
 ```
 
@@ -187,7 +208,7 @@ HDF子系统标签。
 
 ### HIDEBUG_TRACE_TAG_NET
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_NET (1ULL << 23)
 ```
 
@@ -199,7 +220,7 @@ HDF子系统标签。
 
 ### HIDEBUG_TRACE_TAG_NWEB
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_NWEB (1ULL << 24)
 ```
 
@@ -211,7 +232,7 @@ NWeb标签。
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_AUDIO
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_AUDIO (1ULL << 27)
 ```
 
@@ -223,7 +244,7 @@ NWeb标签。
 
 ### HIDEBUG_TRACE_TAG_FILE_MANAGEMENT
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_FILE_MANAGEMENT (1ULL << 29)
 ```
 
@@ -235,7 +256,7 @@ NWeb标签。
 
 ### HIDEBUG_TRACE_TAG_OHOS
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_OHOS (1ULL << 30)
 ```
 
@@ -247,7 +268,7 @@ OHOS通用标签。
 
 ### HIDEBUG_TRACE_TAG_ABILITY_MANAGER
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_ABILITY_MANAGER (1ULL << 31)
 ```
 
@@ -259,7 +280,7 @@ Ability Manager标签。
 
 ### HIDEBUG_TRACE_TAG_CAMERA
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_CAMERA (1ULL << 32)
 ```
 
@@ -271,7 +292,7 @@ Ability Manager标签。
 
 ### HIDEBUG_TRACE_TAG_MEDIA
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_MEDIA (1ULL << 33)
 ```
 
@@ -283,7 +304,7 @@ Ability Manager标签。
 
 ### HIDEBUG_TRACE_TAG_IMAGE
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_IMAGE (1ULL << 34)
 ```
 
@@ -295,7 +316,7 @@ Ability Manager标签。
 
 ### HIDEBUG_TRACE_TAG_AUDIO
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_AUDIO (1ULL << 35)
 ```
 
@@ -307,7 +328,7 @@ Ability Manager标签。
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_DATA
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_DATA (1ULL << 36)
 ```
 
@@ -319,7 +340,7 @@ Ability Manager标签。
 
 ### HIDEBUG_TRACE_TAG_GRAPHICS
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_GRAPHICS (1ULL << 38)
 ```
 
@@ -331,7 +352,7 @@ Ability Manager标签。
 
 ### HIDEBUG_TRACE_TAG_ARKUI
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_ARKUI (1ULL << 39)
 ```
 
@@ -343,7 +364,7 @@ ArkUI开发框架标签。
 
 ### HIDEBUG_TRACE_TAG_NOTIFICATION
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_NOTIFICATION (1ULL << 40)
 ```
 
@@ -355,7 +376,7 @@ ArkUI开发框架标签。
 
 ### HIDEBUG_TRACE_TAG_MISC
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_MISC (1ULL << 41)
 ```
 
@@ -367,7 +388,7 @@ MISC模块标签。
 
 ### HIDEBUG_TRACE_TAG_MULTIMODAL_INPUT
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_MULTIMODAL_INPUT (1ULL << 42)
 ```
 
@@ -379,7 +400,7 @@ MISC模块标签。
 
 ### HIDEBUG_TRACE_TAG_RPC
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_RPC (1ULL << 46)
 ```
 
@@ -391,7 +412,7 @@ RPC标签。
 
 ### HIDEBUG_TRACE_TAG_ARK
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_ARK (1ULL << 47)
 ```
 
@@ -403,7 +424,7 @@ JSVM虚拟机标签。
 
 ### HIDEBUG_TRACE_TAG_WINDOW_MANAGER
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_WINDOW_MANAGER (1ULL << 48)
 ```
 
@@ -415,7 +436,7 @@ JSVM虚拟机标签。
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_SCREEN
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_SCREEN (1ULL << 50)
 ```
 
@@ -427,7 +448,7 @@ JSVM虚拟机标签。
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_CAMERA
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_CAMERA (1ULL << 51)
 ```
 
@@ -439,7 +460,7 @@ JSVM虚拟机标签。
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_HARDWARE_FRAMEWORK
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_HARDWARE_FRAMEWORK (1ULL << 52)
 ```
 
@@ -451,7 +472,7 @@ JSVM虚拟机标签。
 
 ### HIDEBUG_TRACE_TAG_GLOBAL_RESOURCE_MANAGER
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_GLOBAL_RESOURCE_MANAGER (1ULL << 53)
 ```
 
@@ -463,7 +484,7 @@ JSVM虚拟机标签。
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_HARDWARE_DEVICE_MANAGER
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_HARDWARE_DEVICE_MANAGER (1ULL << 54)
 ```
 
@@ -475,7 +496,7 @@ JSVM虚拟机标签。
 
 ### HIDEBUG_TRACE_TAG_SAMGR
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_SAMGR (1ULL << 55)
 ```
 
@@ -487,7 +508,7 @@ SA标签。
 
 ### HIDEBUG_TRACE_TAG_POWER_MANAGER
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_POWER_MANAGER (1ULL << 56)
 ```
 
@@ -499,7 +520,7 @@ SA标签。
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_SCHEDULER
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_SCHEDULER (1ULL << 57)
 ```
 
@@ -511,7 +532,7 @@ SA标签。
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_INPUT
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_INPUT (1ULL << 59)
 ```
 
@@ -523,7 +544,7 @@ SA标签。
 
 ### HIDEBUG_TRACE_TAG_BLUETOOTH
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_BLUETOOTH (1ULL << 60)
 ```
 

@@ -27,18 +27,20 @@ The following table lists the APIs provided by the Node-API module for convertin
 | napi_get_value_int32 | Obtains a C int32_t value from an ArkTS number.|
 | napi_get_value_int64 | Obtains a C int64_t value from an ArkTS number.|
 | napi_get_value_double | Obtains a C double value from an ArkTS number.|
-| [napi_get_value_bool](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-primitive#napi_get_value_bool) | Obtains a C bool value from an ArkTS boolean.|
-| [napi_get_value_string_utf8](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_get_value_string_utf8) | Obtains a C UTF-8-encoded string value from an ArkTS string.|
-| [napi_get_value_string_utf16](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_get_value_string_utf16) | Obtains a C UTF-16-encoded string value from an ArkTS string.|
-| [napi_get_value_string_latin1](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_get_value_string_latin1) | Obtains a C ISO-8859-1-encoded string value from an ArkTS string.|
+| [napi_get_value_bool](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-primitive#napi_get_value_bool)| Obtains a C bool value from an ArkTS boolean.|
+| [napi_get_value_string_utf8](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_get_value_string_utf8) | Obtains a C UTF-8-encoded string value from an ArkTS string.|
+| [napi_get_value_string_utf16](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_get_value_string_utf16) | Obtains a C UTF-16-encoded string value from an ArkTS string.|
+| [napi_get_value_string_latin1](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_get_value_string_latin1) | Obtains a C ISO-8859-1-encoded string value from an ArkTS string.|
 | napi_create_int32 | Creates an ArkTS number from a 32-bit signed integer.|
 | napi_create_uint32 | Creates an ArkTS number from a 32-bit unsigned integer.|
 | napi_create_int64 | Creates an ArkTS number from a 64-bit signed integer.|
 | napi_create_double | Creates an ArkTS number from a double-precision floating-point number.|
-| [napi_get_boolean](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-primitive#napi_get_boolean) | Obtain an ArkTS boolean from a C bool.|
-| [napi_create_string_utf8](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_create_string_utf8) | Creates an ArkTS string from a C UTF-8-encoded string.|
-| [napi_create_string_utf16](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_create_string_utf16) | Creates an ArkTS string from a C UTF-16-encoded string.|
-| [napi_create_string_latin1](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_create_string_latin1) | Creates an ArkTS string from a C ISO-8859-1-encoded string.|
+| [napi_get_boolean](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-primitive#napi_get_boolean) | Obtain an ArkTS boolean from a C bool.|
+| [napi_create_string_utf8](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_string_utf8) | Creates an ArkTS string from a C UTF-8-encoded string.|
+| [napi_create_string_utf16](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_string_utf16) | Creates an ArkTS string from a C UTF-16-encoded string.|
+| [napi_create_string_latin1](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_string_latin1) | Creates an ArkTS string from a C ISO-8859-1-encoded string.|
+| [napi_create_external_string_ascii](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_external_string_ascii) | Creates an ArkTS string from a C ASCII-encoded string without copying.|
+| [napi_create_external_string_utf16](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_external_string_utf16) | Creates an ArkTS string from a C UTF16-encoded string without copying.|
 
 ## Example
 

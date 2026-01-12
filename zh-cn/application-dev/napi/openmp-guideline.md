@@ -32,7 +32,7 @@ target_link_libraries(entry PUBLIC libomp.a libace_napi.z.so libhilog_ndk.z.so)
 
 （2）打开entry/build-profile.json5，在buildOption->externalNativeOptions->cppFlags下添加编译参数"-static-openmp -fopenmp"。
 
-```
+```JSON
 "buildOption": {
     "externalNativeOptions": {
       "path": "./src/main/cpp/CMakeLists.txt",
@@ -52,7 +52,7 @@ target_link_libraries(entry PUBLIC libomp.so libace_napi.z.so libhilog_ndk.z.so)
 
 （2）打开entry/build-profile.json5，在buildOption->externalNativeOptions->cppFlags下添加编译参数"-fopenmp"。
 
-```
+```JSON
 "buildOption": {
     "externalNativeOptions": {
       "path": "./src/main/cpp/CMakeLists.txt",

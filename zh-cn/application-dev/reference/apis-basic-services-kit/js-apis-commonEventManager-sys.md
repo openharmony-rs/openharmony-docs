@@ -31,7 +31,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): void
 
-以回调的形式向指定用户发布公共事件。
+向指定用户发布公共事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -43,7 +43,7 @@ publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): vo
 | -------- | -------------------- | ---- | ---------------------------------- |
 | event    | string               | 是   | 表示要发送的公共事件。详见[系统公共事件定义](./common_event/commonEventManager-definitions.md)。             |
 | userId   | number               | 是   | 表示指定向该用户ID发送此公共事件。 |
-| callback | AsyncCallback\<void> | 是   | 表示被指定的回调方法。             |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。             |
 
 **错误码：**
 
@@ -85,7 +85,7 @@ try {
 
 publishAsUser(event: string, userId: number, options: CommonEventPublishData, callback: AsyncCallback\<void>): void
 
-以回调形式向指定用户发布公共事件并指定发布信息。
+向指定用户发布公共事件并指定发布信息。使用callback异步回调。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -98,7 +98,7 @@ publishAsUser(event: string, userId: number, options: CommonEventPublishData, ca
 | event    | string                 | 是   | 表示要发布的公共事件。详见[系统公共事件定义](./common_event/commonEventManager-definitions.md)。  |
 | userId   | number | 是 | 表示指定向该用户ID发送此公共事件。 |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | 是   | 表示发布公共事件的属性。 |
-| callback | AsyncCallback\<void>   | 是   | 表示被指定的回调方法。  |
+| callback | AsyncCallback\<void>   | 是   | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。  |
 
 **错误码：**
 
@@ -120,7 +120,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 公共事件相关信息
 let options:commonEventManager.CommonEventPublishData = {
-  code: 0,			 // 公共事件的初始代码
+  code: 0,       // 公共事件的初始代码
   data: 'initial data',// 公共事件的初始数据
 }
 
@@ -145,7 +145,7 @@ try {
 
 removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
 
-以回调形式移除粘性公共事件。
+移除粘性公共事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -158,7 +158,7 @@ removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                 | 必填 | 说明                             |
 | -------- | -------------------- | ---- | -------------------------------- |
 | event    | string               | 是   | 表示被移除的粘性公共事件。详见[系统公共事件定义](./common_event/commonEventManager-definitions.md)。       |
-| callback | AsyncCallback\<void> | 是   | 表示移除粘性公共事件的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当移除粘性事件成功，err为undefined，否则为错误对象。。 |
 
 **错误码：**
 
@@ -191,7 +191,7 @@ commonEventManager.removeStickyCommonEvent('sticky_event', (err: BusinessError) 
 
 removeStickyCommonEvent(event: string): Promise\<void>
 
-以Promise形式移除粘性公共事件。
+移除粘性公共事件。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -209,7 +209,7 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 | 类型           | 说明                         |
 | -------------- | ---------------------------- |
-| Promise\<void> | 表示移除粘性公共事件的对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -240,7 +240,7 @@ commonEventManager.removeStickyCommonEvent('sticky_event').then(() => {
 
 setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 
-方法介绍：为当前应用设置静态订阅事件使能或去使能状态。使用callback异步回调。
+为当前应用设置静态订阅事件使能或去使能状态。使用callback异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -253,7 +253,7 @@ setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
 | enable  | boolean | 是   | 表示静态订阅事件使能状态。 true:使能 false：去使能。 |
-| callback  | AsyncCallback\<void> | 是   | 表示设置静态订阅事件使能状态的回调方法。 |
+| callback  | AsyncCallback\<void> | 是   | 回调函数。当设置静态订阅事件使能状态成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -284,7 +284,7 @@ commonEventManager.setStaticSubscriberState(true, (err: BusinessError) => {
 
 setStaticSubscriberState(enable: boolean): Promise\<void>
 
-方法介绍：为当前应用设置静态订阅事件使能或去使能状态。使用Promise异步回调。
+为当前应用设置静态订阅事件使能或去使能状态。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -302,7 +302,7 @@ setStaticSubscriberState(enable: boolean): Promise\<void>
 
 | 类型           | 说明                         |
 | -------------- | ---------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。|
+| Promise\<void> |  Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -351,7 +351,7 @@ setStaticSubscriberState(enable: boolean, events?: Array\<string>): Promise\<voi
 
 | 类型           | 说明                                 |
 | -------------- | ------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 

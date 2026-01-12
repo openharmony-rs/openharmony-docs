@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiDebug_ThreadCpuUsage {...} HiDebug_ThreadCpuUsage
+```
+
 ## Overview
 
 Defines the struct for the CPU usage of all threads of an application.

@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Rating** component provides a rating bar.
 
@@ -12,7 +12,7 @@ The **Rating** component provides a rating bar.
 >
 > - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - If the parent node of the Rating component has a specified width and height, you need to specify the width and height for the Rating component or set the [clip](ts-universal-attributes-sharp-clipping.md#clip18) attribute whose value is true for the parent node.
+> - If the parent node of the **Rating** component has fixed dimensions, you must also specify the width and height for the **Rating** component, or set its parent node's [clip](ts-universal-attributes-sharp-clipping.md#clip18) attribute to **true**.
 
 
 ## Child Components
@@ -42,7 +42,7 @@ Rating(options?: RatingOptions)
 
 stars(value: number)
 
-Sets the total number of ratings (stars). If the value set is less than or equal to 0, the default value is used.
+Sets the total number of stars. Values less than 0 are treated as the default value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -54,13 +54,13 @@ Sets the total number of ratings (stars). If the value set is less than or equal
 
 | Name| Type  | Mandatory| Description                        |
 | ------ | ------ | ---- | ---------------------------- |
-| value  | number | Yes  | Total number of ratings.<br>Default value: **5**|
+| value  | number | Yes  | Total number of stars.<br>Default value: **5**|
 
 ### stars<sup>18+</sup>
 
 stars(starCount: Optional\<number>)
 
-Sets the total number of ratings (stars). If the value set is less than or equal to 0, the default value is used. Compared with [stars](#stars), this API supports the **undefined** type for the **starCount** parameter.
+Sets the total number of stars. Values less than 0 are treated as the default value. Compared with [stars](#stars), this API supports the **undefined** type for the **starCount** parameter.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -72,13 +72,13 @@ Sets the total number of ratings (stars). If the value set is less than or equal
 
 | Name   | Type                                                        | Mandatory| Description                                                      |
 | --------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| starCount | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | Yes  | Total number of ratings.<br>If **starCount** is set to **undefined**, the default value **5** is used.|
+| starCount | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | Yes  | Total number of stars.<br>If **starCount** is set to **undefined**, the default value **5** is used.|
 
 ### stepSize
 
 stepSize(value: number)
 
-Sets the step for rating. A value less than 0.1 evaluates to the default value.
+Sets the step for rating. Values less than 0.1 are treated as the default value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -96,7 +96,7 @@ Sets the step for rating. A value less than 0.1 evaluates to the default value.
 
 stepSize(size: Optional\<number>)
 
-Sets the step for rating. A value less than 0.1 evaluates to the default value. Compared with [stepSize](#stepsize), this API supports the **undefined** type for the **size** parameter.
+Sets the step for rating. Values less than 0.1 are treated as the default value. Compared with [stepSize](#stepsize), this API supports the **undefined** type for the **size** parameter.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -116,7 +116,7 @@ starStyle(options: StarStyleOptions)
 
 Sets the star style. For details about the supported image types, see [Image](ts-basic-components-image.md).
 
-Local and network images can be loaded. The PixelMap type is not supported currently.
+Local and network images are supported. The PixelMap type is not supported.
 
 By default, the image is loaded in asynchronous mode. Synchronous loading is not supported.
 
@@ -130,7 +130,7 @@ By default, the image is loaded in asynchronous mode. Synchronous loading is not
 
 | Name | Type                                           | Mandatory| Description                                                        |
 | ------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [StarStyleOptions](#starstyleoptions18) | Yes  | Star style.<br>**NOTE**<br>If the image path specified by backgroundUri, foregroundUri, or secondaryUri is incorrect, the image is not displayed.<br>When backgroundUri or foregroundUri is set to undefined or an empty string, the Rating component loads the default star chart source.<br>If secondaryUri is not set or is set to undefined or an empty string, backgroundUri is preferentially used. The effect is the same as that when only foregroundUri and backgroundUri are set.|
+| options | [StarStyleOptions](#starstyleoptions18) | Yes  | Star style.<br>**NOTE**<br>If an incorrect image path is provided for **backgroundUri**, **foregroundUri**, or **secondaryUri**, the previously displayed image will be retained. If the first provided path is incorrect, no image will be displayed.<br>When **backgroundUri** or **foregroundUri** is set to **undefined** or an empty string, the **Rating** component falls back to the default star image.<br>If **secondaryUri** is not set, or is set to **undefined** or an empty string, **backgroundUri** will be used as a fallback. The behavior in this case is the same as when only **foregroundUri** and **backgroundUri** are configured.|
 
 ### starStyle<sup>18+</sup>
 
@@ -138,7 +138,7 @@ starStyle(options: Optional\<StarStyleOptions>)
 
 Sets the star style. For details about the supported image types, see [Image](ts-basic-components-image.md).
 
-Local and network images can be loaded. The PixelMap type is not supported currently.
+Local and network images are supported. The PixelMap type is not supported.
 
 By default, the image is loaded in asynchronous mode. Synchronous loading is not supported.
 
@@ -154,13 +154,13 @@ Compared with [starStyle](#starstyle), this API supports the **undefined** type 
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[StarStyleOptions](#starstyleoptions18)> | Yes  | Star style.<br>**NOTE**<br>If the image path specified by backgroundUri, foregroundUri, or secondaryUri is incorrect, the image is not displayed.<br>When backgroundUri or foregroundUri is set to undefined or an empty string, the Rating component loads the default star chart source.<br>If secondaryUri is not set or is set to undefined or an empty string, backgroundUri is preferentially used. The effect is the same as that when only foregroundUri and backgroundUri are set.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[StarStyleOptions](#starstyleoptions18)> | Yes  | Star style.<br>**NOTE**<br>If an incorrect image path is provided for **backgroundUri**, **foregroundUri**, or **secondaryUri**, the previously displayed image will be retained. If the first provided path is incorrect, no image will be displayed.<br>When **backgroundUri** or **foregroundUri** is set to **undefined** or an empty string, the **Rating** component falls back to the default star image.<br>If **secondaryUri** is not set, or is set to **undefined** or an empty string, **backgroundUri** will be used as a fallback. The behavior in this case is the same as when only **foregroundUri** and **backgroundUri** are configured.|
 
 >  **NOTE**
 >
->  When the width and height of the Rating component are [width, height], the drawing area of a single image is [width/stars, height].
+>  When the **Rating** component's size is [width, height], the drawing area for each star is [width / stars, height].
 >
->  To ensure that the drawing area is square, you are advised to customize the width and height in the format of [height * stars, height], that is, width = height * stars.
+>  To ensure a square drawing area for each star, it is recommended that you set the width and height in the format [height × stars, height]; that is, width = height × stars.
 
 ### contentModifier<sup>12+</sup>
 
@@ -230,13 +230,13 @@ Triggered when the rating value changes. Compared with [onChange](#onchange), th
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnRatingChangeCallback](#onratingchangecallback18)> | Yes  | Called when the rating of the rating bar changes.<br>If **callback** is set to **undefined**, the callback function is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnRatingChangeCallback](#onratingchangecallback18)> | Yes  | Defines the callback triggered when the rating value changes.<br>If **callback** is set to **undefined**, the callback function is not used.|
 
 ## OnRatingChangeCallback<sup>18+</sup>
 
 type OnRatingChangeCallback = (rating: number) => void
 
-Called when the rating of the rating bar changes.
+Defines the callback triggered when the rating value changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -265,17 +265,17 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type   |    Read Only   |    Optional     |  Description             |
+| Name | Type   |    Read-Only   |    Optional     |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | rating    | number  | No| No| Value to rate.<br>Default value: **0**<br>Value range: [0, stars]<br>Values less than 0 are treated as **0**, and values greater than the value of [stars](#stars) are treated as the value of **stars**.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This parameter supports two-way binding through the [!! syntax](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).|
-| indicator | boolean | No| No| Whether the rating bar is used as an indicator.<br>**true**: The rating bar is used as an indicator.<br>**false**: The rating bar is not used as an indicator.<br>Default value: **false**|
+| indicator | boolean | No| No| Whether the rating bar is used as an indicator. **true**: used as an indicator. **false**: not used as an indicator.<br>Default value: **false**|
 | stars | number | No| No|Total number of ratings.<br>Default value: **5**|
 | stepSize | number | No| No|Step of an operation.<br>Default value: **0.5**|
 | triggerChange | Callback\<number> | No| No|Callback triggered when the rating value changes.|
 
 ## RatingOptions<sup>18+</sup>
 
-Information about the rating component.
+Provides configuration options for the **Rating** component.
 
 > **NOTE**
 >
@@ -287,14 +287,14 @@ Information about the rating component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                  | Type   | Read Only| Optional| Description                                                        |
+| Name                  | Type   | Read-Only| Optional| Description                                                        |
 | ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | rating<sup>7+</sup>    | number  | No  | No  | Value to rate.<br>Default value: **0**<br>Value range: [0, stars]<br>Values less than 0 are treated as **0**, and values greater than the value of [stars](#stars) are treated as the value of **stars**.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| indicator<sup>7+</sup> | boolean | No  | Yes  | Sets the rating component to be used as an indicator. If the value is true, the rating cannot be changed.<br>Default value: **false**<br>**NOTE**<br>When **indicator** is set to **true**, the default component height is 12.0 vp, and the component width is calculated as follows: Height x Value of **stars**.<br>When **indicator** is set to **false**, the default component height is 28.0 vp, and the component width is calculated as follows: Height x Value of **stars**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| indicator<sup>7+</sup> | boolean | No  | Yes  | Whether the component is used as an indicator. If this parameter is set to **true**, the rating value cannot be changed.<br>Default value: **false**<br>**NOTE**<br>When **indicator** is set to **true**, the default component height is 12.0 vp, and the component width is calculated as follows: Height x Value of **stars**.<br>When **indicator** is set to **false**, the default component height is 28.0 vp, and the component width is calculated as follows: Height x Value of **stars**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## StarStyleOptions<sup>18+</sup>
 
-Styles of the selected, unselected, and partially selected stars of the rating component.
+Provides style settings for the selected, unselected, and partially selected stars in the **Rating** component.
 
 > **NOTE**
 >
@@ -306,21 +306,21 @@ Styles of the selected, unselected, and partially selected stars of the rating c
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                      | Type  | Read Only| Optional| Description                                                        |
+| Name                      | Type  | Read-Only| Optional| Description                                                        |
 | -------------------------- | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| backgroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | No | Image path for the unselected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>This API can be used to set resources since API version 20. For details, see [Example 4: Setting the Rating Style Through Resource Configuration](#example-4-setting-the-rating-style-through-resource-configuration).|
-| foregroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | No | Image path for the selected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>This API can be used to set resources since API version 20. For details, see [Example 4: Setting the Rating Style Through Resource Configuration](#example-4-setting-the-rating-style-through-resource-configuration).|
-| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Image path for the partially selected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>This API can be used to set resources since API version 20. For details, see [Example 4: Setting the Rating Style Through Resource Configuration](#example-4-setting-the-rating-style-through-resource-configuration).|
+| backgroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | No | Image path for the unselected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Resource configuration is supported since API version 20. For details, see [Example 4: Setting the Rating Style Through Resource Configuration](#example-4-setting-the-rating-style-through-resource-configuration).|
+| foregroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | No | Image path for the selected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Resource configuration is supported since API version 20. For details, see [Example 4: Setting the Rating Style Through Resource Configuration](#example-4-setting-the-rating-style-through-resource-configuration).|
+| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Image path for the partially selected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Resource configuration is supported since API version 20. For details, see [Example 4: Setting the Rating Style Through Resource Configuration](#example-4-setting-the-rating-style-through-resource-configuration).|
 
 > **NOTE**
 >
-> The string format can be used to load network images and local images. When a relative path is used to reference a local image, for example, Image("common/test.jpg"), the common directory is at the same level as the pages directory. In addition, the Base64 character string is supported.
+> The string type can be used to load network images and local images. When a relative path is used to reference a local image, for example, **Image("common/test.jpg")**, the **common** directory must be placed at the same level as the **pages** directory. Base64-encoded strings are also supported.
 
 ## Example
 
 ### Example 1: Setting the Default Rating Style
 
-This example demonstrates how to set the default star rating style.
+This example shows how to create a **Rating** component with the default star style.
 
 ```ts
 // xxx.ets
@@ -378,7 +378,7 @@ struct RatingExample {
 
 ### Example 2: Customizing the Rating Style
 
-This example demonstrates how to configure **starStyle** to use custom image links for stars.
+This example shows how to customize the star images by configuring **starStyle**.
 
 ```ts
 // xxx.ets
@@ -413,7 +413,7 @@ struct RatingExample {
 ![rating1](figures/rating1.gif)
 
 ### Example 3: Implementing a Custom Rating Bar
-The following example shows how to customize a rating bar. Each circle indicates 0.5 point. When ratingIndicator is set to true, the rating bar is used as an indicator and the rating cannot be changed. When ratingIndicator is set to false, the rating can be changed. ratingStars is used to set the total number of ratings, and ratingStepsize is used to set the rating step.
+This example implements a custom rating bar, with each circle representing 0.5 point. When **ratingIndicator** is set to **true**, the rating bar acts as an indicator and the value cannot be changed. When **ratingIndicator** is set to **false**, the rating is interactive. **ratingStars** sets the total number of stars, and **ratingStepSize** sets the increment step.
 
 ```ts
 // xxx.ets
@@ -589,7 +589,7 @@ struct ratingExample {
           }).margin({ top: 5 })
 
         Button(this.ratingStars > 0 ? "ratingStars - 1, ratingStars =" + this.ratingStars :
-          "ratingStars is less than or equal to 0 by default. The default value is 5.")
+          "ratingStars: Values less than or equal to 0 are treated as 5")
           .onClick((event) => {
             if (this.ratingStars > 0) {
               this.ratingStars -= 1;
@@ -618,7 +618,7 @@ struct ratingExample {
 
 ### Example 4: Setting the Rating Style Through Resource Configuration
 
-This example demonstrates how to implement custom star image links by configuring **starStyle** through Resource configuration.
+This example shows how to configure custom star images through resource configuration using **starStyle**.
 
 ```ts
 // xxx.ets

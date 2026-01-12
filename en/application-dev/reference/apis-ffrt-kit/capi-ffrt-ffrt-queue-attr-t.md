@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} ffrt_queue_attr_t
+```
+
 ## Overview
 
 The **ffrt_queue_attr_t** struct describes a serial queue attribute.

@@ -1,10 +1,10 @@
-# XComponent
+# XComponent (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **XComponent** provides a surface for graphics rendering and media data input into your view. You can customize the position and size of the surface as needed.
 
@@ -14,15 +14,11 @@
 >
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [XComponent](ts-basic-components-xcomponent.md).
 
-## APIs
-
-### XComponentOptions<sup>12+</sup>
+## XComponentOptions<sup>12+</sup>
 
 Defines the options of the **XComponent**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -34,7 +30,7 @@ Defines the options of the **XComponent**.
   >
   > It is not supported for **XComponent** components created using the [ArkUI NDK API](../../../ui/ndk-build-ui-overview.md).
 
-## Attributes
+## APIs
 
 ### enableTransparentLayer<sup>18+</sup>
 

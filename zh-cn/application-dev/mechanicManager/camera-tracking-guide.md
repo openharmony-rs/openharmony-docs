@@ -1,14 +1,14 @@
-# 智能拍摄跟踪开发指南
+# 目标拍摄跟踪开发指南
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
 <!--Owner: @hobbycao-->
 <!--Designer: @saga2025-->
 <!--Tester: @zhaodengqi-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @hu-zhiqiong-->
 
-从API version 20开始，支持使用机械体设备控制器，提供更丰富的拍摄体验，如人脸智能跟踪和自动构图等专业功能，支持第三方应用。
+从API version 20开始，支持使用机械体设备控制器，提供更丰富的拍摄体验，如目标跟踪和自动构图等专业功能，支持第三方应用。
 
-智能拍摄跟踪功能通过机械体设备实现人脸和物体的自动化跟踪，提升拍摄质量和用户体验，助力开发者构建更智能、高效的拍摄解决方案。
+目标拍摄跟踪功能通过机械体设备实现人脸和物体的自动化跟踪，提升拍摄质量和用户体验，助力开发者构建更自动化、高效的拍摄解决方案。
 
 ## 接口介绍
 
@@ -33,7 +33,7 @@
 ### 开发准备
 
 1. 支持Mechanic Kit协议的机械体设备。
-2. 若要验证智能跟踪功能，主设备的相机驱动必须支持人脸检测。
+2. 若要验证目标跟踪功能，主设备的相机驱动必须支持人脸检测。
 3. 请将SDK更新到API 20或以上版本，具体操作参见[更新指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-software-install)。
 4. 请确保机械体设备已通过蓝牙与主设备连接。
 
@@ -42,12 +42,14 @@
 确保机械体设备连接或断开时，应用能及时响应，支持设备连接状态的动态管理。
 
 1. 导入机械体设备管理模块。
+   <!-- @[import_mechanicManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
     import { mechanicManager } from '@kit.MechanicKit';
     ```
 
 2. 获取已连接的机械体列表。
+   <!-- @[get_mechDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
     let savedMechanicIds: number[] = [];
@@ -77,6 +79,7 @@
     ```
 
 3. 监听设备的连接状态变化，以便及时响应。
+   <!-- @[on_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
 
     ```ts
     const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
@@ -96,7 +99,7 @@
     ```
 
 4. 处理设备的连接与断开的事件。
-
+   <!-- @[handle_device_attached_detached](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
     ```ts
     function handleDeviceAttached(mechInfo: mechanicManager.MechInfo) {
     console.info(`New device is connected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
@@ -112,18 +115,18 @@
     ```
 
 5. 取消连接状态的监听。
-
+   <!-- @[off_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
     ```ts
     // 取消连接状态的监听
     mechanicManager.off('attachStateChange', attachStateChangeCallback);
     ```
 
-### 控制设备智能跟踪拍摄
+### 控制设备目标跟踪拍摄
 
-启用智能拍摄功能后，设备将自动识别人脸并进行跟踪拍摄。
+启用目标拍摄功能后，设备将自动识别人脸并进行跟踪拍摄。
 
-1. 启用摄像头的智能拍摄功能。
-
+1. 启用摄像头的目标拍摄功能。
+   <!-- @[set_cameraTracking_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
     ```ts
     try {
     //检查前判断savedMechIds不为空
@@ -143,7 +146,7 @@
     ```
 
 2. 监听相机跟踪状态的变化。
-
+   <!-- @[on_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
     ```ts
     const trackingStateCallback = (eventInfo : mechanicManager.TrackingEventInfo) => {
     switch (eventInfo.event) {
@@ -167,7 +170,7 @@
     ```
 
 3. 处理跟踪状态变化事件。
-
+   <!-- @[handle_tracking_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
     ```ts
     function handleTrackingEnabled() {
     console.info('Handling camera tracking enable events');
@@ -206,11 +209,11 @@
     ```
 
 4. 取消跟踪状态变化的监听。
-
+   <!-- @[off_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
     ```ts
     // 取消跟踪状态监听
     mechanicManager.off('trackingStateChange', trackingStateCallback);
-
+    
     // 或者取消所有跟踪状态监听
     mechanicManager.off('trackingStateChange');
     ```
@@ -226,9 +229,9 @@
 **功能验证步骤**
 
 1. **设备列表查询**：调用 `getAttachedMechDevices` 接口查询当前已连接的机械体设备列表，验证设备是否正确识别。
-2. **智能拍摄跟踪**：调用 `setCameraTrackingEnabled` 启用摄像头智能跟踪功能，使用 `getCameraTrackingEnabled` 验证状态，测试设备是否能跟随目标自动旋转。
+2. **目标拍摄跟踪**：调用 `setCameraTrackingEnabled` 启用摄像头目标跟踪功能，使用 `getCameraTrackingEnabled` 验证状态，测试设备是否能跟随目标自动旋转。
 
 **验证结果说明**
 
 - 如果 `getAttachedMechDevices` 返回设备列表，表示设备识别成功。
-- 如果 `getCameraTrackingEnabled` 返回真，智能拍摄跟踪启用成功。应用打开相机后，画面中出现人脸时，设备会跟随人脸转动。
+- 如果 `getCameraTrackingEnabled` 返回真，目标拍摄跟踪启用成功。应用打开相机后，画面中出现人脸时，设备会跟随人脸转动。

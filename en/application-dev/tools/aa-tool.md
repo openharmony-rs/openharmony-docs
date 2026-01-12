@@ -51,11 +51,12 @@ aa help
 Starts an application component. The target component can be the PageAbility and ServiceAbility components of the FA model or the UIAbility and ServiceExtensionAbility components of the Stage model. The **exported** tag in the configuration file of the target component cannot be set to **false**.
 
 ```bash
-# Display the ability started.
-aa start [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <integer-value>] [--pb <key> <bool-value: true/false/t/f is case-insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+# Start an ability explicitly.
+# To enable an application clone, use [--pi ohos.extra.param.key.appCloneIndex <unsigned integer-value>] to specify the index of the application clone.
+aa start [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f is case-insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
 
 # Implicitly start an ability. If none of the parameters in the command is set, the startup fails.
-aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c] [-D] [-E] [-R] [--pi <key> <integer-value>] [--pb <key> <bool-value: true/false/t/f is case insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c] [-D] [-E] [-R] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f is case insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
 ```
 
   **Parameters**
@@ -67,13 +68,13 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
   | -a | Ability name. This parameter is optional.|
   | -b | Bundle name. This parameter is optional. |
   | -m | Module name. This parameter is optional. |
-  | -U | URI. This parameter is optional.        |
+  | -U | URI. This parameter is optional.<br>Note: Only strings can be passed.|
   | -A | Action. This parameter is optional.     |
   | -e | Entity. This parameter is optional.     |
   | -t | Type. This parameter is optional.       |
-  | --pi  | Key-value pair of the integer type. This parameter is optional.    |
+  | --pi  | Key-value pair of the integer type. This parameter is optional.<br>Note: Only unsigned integer values are supported.    |
   | --pb  | Key-value pair of the Boolean type. This parameter is optional.    |
-  | --ps  | Key-value pair of the string type. This parameter is optional.   |
+  | --ps  | Key-value pair of the string type. This parameter is optional.<br>Note: The string value cannot start with a hyphen (-).   |
   | --psn | Keyword of an empty string. This parameter is optional.    |
   | --wl | Left margin of the window, in px. This parameter is optional.<br>**Constraints**:<br>This field is valid only when the 2-in-1 device is in developer mode and the application to start uses a debug signature.|
   | --wt | Top margin of the window, in px. This parameter is optional.<br>**Constraints**:<br>This field is valid only when the 2-in-1 device is in developer mode and the application to start uses a debug signature.|
@@ -91,7 +92,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
 
   **Return value**
 
-  Returns "start ability successfully." if the ability is started; returns "error: failed to start ability." and the corresponding error information otherwise.
+  If the ability is started successfully, "start ability successfully." is returned; otherwise, the error message "error: failed to start ability." and the corresponding error information are returned.
 
   **Error codes**
 
@@ -302,7 +303,7 @@ aa force-stop <bundle-name> [-p pid] [-r kill-reason]
 
   **Return value**
 
-  Returns "force stop process successfully." if the process is forcibly stopped; returns "error: failed to force stop process." otherwise.
+  "force stop process successfully." is returned if the process is forcibly stopped; "error: failed to force stop process." is returned otherwise.
 
   **Error codes**
 
@@ -330,7 +331,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
 
 > **NOTE**
 > 
-> For details about parameters such as **class**, **level**, **size**, and **testType**, see <!--RP2-->[Parameters in the aa test Commands](../application-test/unittest-guidelines.md#running-test-scripts-in-the-cli) <!--RP2End-->.
+> For details about parameters such as **class**, **level**, **size**, and **testType**, see <!--RP2-->[Parameters in the aa test Commands](../application-test/unittest-guidelines.md#running-test-scripts-in-the-cli)<!--RP2End-->.
 
   **Parameters**
   | Name| Description|
@@ -351,7 +352,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
 
   **Return value**
 
-  Returns "user test started." if the test framework is started; returns "error: failed to start user test." and the corresponding error information otherwise.
+  "user test started." is returned if the test framework is started; "error: failed to start user test." and the corresponding error information are returned otherwise.
 
   **Error codes**
 
@@ -389,7 +390,7 @@ aa attach -b <bundleName>
 
   **Return value**
 
-  Returns "attach app debug successfully." if the application enters the debugging mode; returns "fail: unknown option." and prints the help information if the specified parameter is invalid.
+  "attach app debug successfully." is returned if the application enters the debugging mode; "fail: unknown option." and the help information are returned if the specified parameter is invalid.
 
   **Error codes**
 
@@ -424,7 +425,7 @@ aa detach -b <bundleName>
 
   **Return value**
 
-  Returns "detach app debug successfully." if the application exits the debugging mode; returns "fail: unknown option." and prints the help information if the specified parameter is invalid.
+  "detach app debug successfully." is returned if the application exits the debugging mode; "fail: unknown option." and the help information are returned if the specified parameter is invalid.
 
   **Error codes**
 
@@ -462,7 +463,7 @@ aa appdebug -b <bundleName> [-p]
 
   **Return value**
 
-  Returns "app debug successfully." if the operation is successful; returns "error: not developer mode." if the operation fails because the application is not in developer mode; returns "error: failed to app debug." if the operation fails due to other reasons.
+  "app debug successfully." is returned if the operation is successful; "error: not developer mode." is returned if the operation fails because the application is not in developer mode; "error: failed to app debug." is returned if the operation fails due to other reasons.
 
   **Error codes**
 
@@ -514,7 +515,7 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
 
   **Return value**
 
-  Returns "start native process successfully." if this command is executed successfully; returns "start native process successfully." if this command fails to be executed; returns "start native process successfully." and prints the help information if the specified parameter is invalid.
+  "start native process successfully." is returned if this command is executed successfully; "start native process successfully." is returned if this command fails to be executed; "start native process successfully." and the help information are returned if the specified parameter is invalid.
 
   | ID| Error Message|
   | ------- | -------- |
@@ -534,7 +535,7 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
 
 ## send-memory-level
 
-Since API version 13, you can use this command to debug the [onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel) lifecycle of an application. You can specify the PID and memory usage level of a process to trigger the **onMemoryLevel** lifecycle callback of the process.
+Since API version 13, you can use this command to debug the [onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel) lifecycle of an application. You can specify the PID and memory usage level of a process to trigger the **onMemoryLevel** lifecycle callback of the process. This command provides only basic application debugging capabilities and cannot completely simulate real memory pressure test scenarios.
 
 ```bash
 # Trigger the onMemoryLevel callback.
@@ -551,7 +552,7 @@ aa send-memory-level -p <processId> -l <memoryLevel>
 
 **Return value**
 
-If the command is executed successfully, the message "send memory level successfully." is returned. If the command fails to be executed, the message "error: failed to send memory level." is returned. If the specified parameter value is missing, the message "fail: unknown option." is returned and the help information is printed.
+"send memory level successfully." is returned if the command is executed successfully; "error: failed to send memory level." is returned if the command fails to be executed; "fail: unknown option." and the help information are returned if the specified parameter value is missing.
 
 | ID| Error Message|
 | ------- | -------- |
@@ -602,11 +603,11 @@ The specified ability is not installed.
 
 1. Check whether the **-a** parameter **abilityName** and the **-b** parameter **bundleName** in the aa command are correct.
 2. Check whether the application corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
-    ```
+    ```bash
     hdc shell bm dump -a
     ```
 3. For a multi-HAP application, check whether the HAP to which the ability belongs is installed. You can run the following command to query the bundle information. If the installed application does not contain the corresponding HAP and ability, the HAP to which the ability belongs is not installed.
-    ```
+    ```bash
     hdc shell bm dump -n bundleName
     ```
 
@@ -682,7 +683,7 @@ The **AbilityInfo** obtained through BMS is empty when the ability request is ge
 
 Check whether the application corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
 
-  ```
+  ```bash
   hdc shell bm dump -a
   ```
 
@@ -740,7 +741,7 @@ The target application is signed by the release certificate.
 
 **Solution**
 
-Use the debug signature certificate to sign the application again. After the HAP is signed, run the command again.
+Use the debug signing certificate to sign the application again. After the HAP is signed, run the command again.
 
 ### 10100101 Failed to Obtain Application Information
 
@@ -760,11 +761,11 @@ The application name or bundle name in the app information obtained from BMS is 
 
 1. Check whether the **-a** parameter **abilityName** and the **-b** parameter **bundleName** in the aa command are correct.
 2. Check whether the application corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
-    ```
+    ```bash
     hdc shell bm dump -a
     ```
 3. For a multi-HAP application, check whether the HAP to which the ability belongs is installed. You can run the following command to query the bundle information. If the installed application does not contain the corresponding HAP and ability, the HAP to which the ability belongs is not installed.
-    ```
+    ```bash
     hdc shell bm dump -n bundleName
     ```
 
@@ -958,7 +959,7 @@ An internal error occurs while attempting to launch the ability.
 
 **Symptom**
 
-An error occurs during internal processing, such as memory application or multi-thread processing.
+An error occurs during internal processing, such as memory allocation or multithreaded processing.
 
 **Possible Causes**
 
@@ -1004,7 +1005,7 @@ The application corresponding to the specified bundle name is not installed.
 
 1. Check whether the specified bundle name is correct.
 2. Check whether the application corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
-    ```
+    ```bash
     hdc shell bm dump -a
     ```
 
@@ -1027,7 +1028,7 @@ The process fails to be terminated.
 
 1. Check whether the application corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
 
-    ```
+    ```bash
     hdc shell bm dump -a
     ```
 2. Restart the device.
@@ -1062,7 +1063,7 @@ An internal error occurs during the execution of the aa test command.
 
 **Symptom**
 
-An error occurs during internal processing, such as memory application or multi-thread processing.
+An error occurs during internal processing, such as memory allocation or multithreaded processing.
 
 **Possible Causes**
 
@@ -1080,7 +1081,7 @@ An internal error occurs while attempting to enter/exit debug mode.
 
 **Symptom**
 
-An error occurs during internal processing, such as memory application or multi-thread processing.
+An error occurs during internal processing, such as memory allocation or multithreaded processing.
 
 **Possible Causes**
 
@@ -1108,7 +1109,7 @@ The bundle name specified by the **aa attach** or **aa detach** command does not
 
 Check whether the application corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
 
-  ```
+  ```bash
   hdc shell bm dump -a
   ```
 
@@ -1129,4 +1130,5 @@ The value of the **type** parameter in the signing tool is not **debug**.
 **Solution**
 
 Use the debug signature certificate to sign the application again. After the HAP is signed, run the command again.
+
 For details about the signing tool and certificate, see [Signing Your App/Atomic Service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).

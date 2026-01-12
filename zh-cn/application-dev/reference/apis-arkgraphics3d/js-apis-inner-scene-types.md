@@ -183,7 +183,7 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 | ---- | ---- | ---- | ---- | ---- |
 | radius | number | 否 | 否 | 圆柱体的底面半径，取值范围大于0。 |
 | height | number | 否 | 否 | 圆柱体的高度，取值范围大于0。 |
-| segmentCount | number | 否 | 否 | 圆柱体圆周方向的分段面数量，取值范围是大于等于3的正整数。该数值直接影响圆柱体侧面的光滑度：数值越大，侧面包含的面片数量越多，视觉上越接近光滑曲面；数值越小，侧面会呈现明显的多边形轮廓。注意数值过大会延长几何创建耗时，还可能导致线程阻塞。|
+| segmentCount | number | 否 | 否 | 圆柱体圆周方向的分段面数量，取值范围是大于等于3的正整数，若设为浮点数将自动向下取整。该数值直接影响圆柱体侧面的光滑度：数值越大，侧面包含的面片数量越多，视觉上越接近光滑曲面；数值越小，侧面会呈现明显的多边形轮廓。注意数值过大会延长几何创建耗时，还可能导致线程阻塞。|
 
 >**说明：**
 >
@@ -192,6 +192,17 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 以radius=0.5，height=1，segmentCount=20为例，生成圆柱体的网格以及UV布局如下：
 
 ![cylinder](figures/cylinder.png)
+
+## Mat4x4<sup>23+</sup>
+相机矩阵，它是一个将三维世界坐标映射到二维图像坐标的数学工具。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| x | [Vec4](#vec4) | 否 | 否 | 矩阵的第一列，其值是一个四维向量。 |
+| y | [Vec4](#vec4) | 否 | 否 | 矩阵的第二列，其值是一个四维向量。 |
+| z | [Vec4](#vec4) | 否 | 否 | 矩阵的第三列，其值是一个四维向量。 |
+| w | [Vec4](#vec4) | 否 | 否 | 矩阵的第四列，其值是一个四维向量。 |
 
 ## Position3
 type Position3 = Vec3

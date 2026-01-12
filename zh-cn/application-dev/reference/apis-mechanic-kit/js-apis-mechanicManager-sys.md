@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @saga2025-->
 <!--Tester: @zhaodengqi-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @hu-zhiqiong-->
 
 本模块提供与机械体设备交互的能力，包括设备连接管理、控制和监控功能。
 
@@ -597,14 +597,16 @@ searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
 **示例：**
 
 ```ts
-let targetInfo : mechanicManager.TargetInfo = {
-	targetType: mechanicManager.TargetType.HUMAN_FACE};
-let searchParams : mechanicManager.SearchParams= {
-	direction:mechanicManager.SearchDirection.DEFAULT}
-mechanicManager.searchTarget(targetInfo, 
-	searchParams, (searchResult).then(searchResult)=>{
-    	console.info(`'result:' ${searchResult}`);
-    });
+let targetInfo: mechanicManager.TargetInfo = {
+    targetType: mechanicManager.TargetType.HUMAN_FACE
+};
+let searchParams: mechanicManager.SearchParams = {
+    direction: mechanicManager.SearchDirection.DEFAULT
+}
+mechanicManager.searchTarget(targetInfo,
+    searchParams).then((searchResult) => {
+    console.info(`'result:' ${searchResult}`);
+});
 ```
 ## RotationAngles
 

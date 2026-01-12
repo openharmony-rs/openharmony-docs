@@ -1,4 +1,4 @@
-# 卡片使用方开发指导（仅对系统应用开放）
+# ArkTS卡片使用方开发指导（仅对系统应用开放）
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
@@ -20,7 +20,7 @@
   
   - 卡片管理服务：用于管理系统中所添加卡片的常驻代理服务，包括卡片对象的管理与使用，以及卡片周期性刷新等。
   
-   ![formHostMoudle](./figures/widget-host-development-guide-1.png)
+   ![formHostModule](./figures/widget-host-development-guide-1.png)
 
 ## 场景介绍
 
@@ -61,13 +61,13 @@ formHost提供一系列的卡片使用方接口，来操作卡片的更新、删
 
 ## 卡片使用方示例
 <!-- @[form_host_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormHost/entry/src/main/ets/pages/Index.ets) -->
+
 ``` TypeScript
-//Index.ets
 import { HashMap, HashSet } from '@kit.ArkTS';
 import { formHost, formInfo, formObserver } from '@kit.FormKit';
 import { bundleMonitor } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG: string = 'FormHost';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -93,11 +93,11 @@ struct formHostSample {
     [60, 60], // 1*1
     [240, 360],// 6*4
   ]
-  // $r('app.string.Host')需要替换为开发者所需的资源文件
+  // 请将$r('app.string.Host')替换为实际资源文件，在本示例中该资源文件的value值为"卡片使用方"
   @State message: Resource | string = $r('app.string.Host');
   formCardHashMap: HashMap<string, formInfo.FormInfo> = new HashMap();
   @State showFormPicker: boolean = false;
-  // $r('app.string.formOperation')需要替换为开发者所需的资源文件
+  // 请将$r('app.string.formOperation')替换为实际资源文件，在本示例中该资源文件的value值为"卡片操作"
   @State operation: Resource | string = $r('app.string.formOperation');
   @State index: number = 2;
   @State space: number = 8;
@@ -115,6 +115,7 @@ struct formHostSample {
     descriptionId: 0,
     type: formInfo.FormType.eTS,
     jsComponentName: '',
+    // ...
     isDefault: false,
     updateEnabled: false,
     formVisibleNotify: true,
@@ -129,7 +130,7 @@ struct formHostSample {
     transparencyEnabled: false
   }
   formInfoRecord: TextCascadePickerRangeContent[] = [];
-  // $r('app.string.formType')需要替换为开发者所需的资源文件
+  // 请将$r('app.string.formType')替换为实际资源文件，在本示例中该资源文件的value值为"卡片类型"
   pickerBtnMsg: Resource | string = $r('app.string.formType');
   @State showForm: boolean = true;
   @State selectFormId: string = '0';
@@ -257,7 +258,7 @@ struct formHostSample {
         bundleFormList.forEach((formItemInfo) => {
           let dimensionName = formHostSample.FORM_DIMENSIONS_MAP[formItemInfo.defaultDimension - 1];
           bundleFormInfo.children?.push({ text: formItemInfo.name + '#' + dimensionName });
-          this.formCardHashMap.set(formBundle + "#" + formItemInfo.name + '#' + dimensionName, formItemInfo);
+          this.formCardHashMap.set(formBundle + '#' + formItemInfo.name + '#' + dimensionName, formItemInfo);
         })
         this.formInfoRecord.push(bundleFormInfo);
       }
@@ -278,14 +279,14 @@ struct formHostSample {
 
       Row() {
         // 点击查询所有卡片信息。
-        // $r('app.string.inquiryForm')需要替换为开发者所需的资源文件
+        // 请将$r('app.string.inquiryForm')替换为实际资源文件，在本示例中该资源文件的value值为"查询卡片"
         Button($r('app.string.inquiryForm'))
           .onClick(() => {
             this.getAllBundleFormsInfo();
           })
 
         // 点击按钮弹出选择界面，点击确定后，添加默认尺寸的所选卡片。
-        // $r('app.string.selectAddForm')需要替换为开发者所需的资源文件
+        // 请将$r('app.string.selectAddForm')替换为实际资源文件，在本示例中该资源文件的value值为"选择添加卡片"
         Button($r('app.string.selectAddForm'))
           .enabled(this.showFormPicker)
           .onClick(() => {
@@ -298,7 +299,7 @@ struct formHostSample {
               textStyle: { color: Color.Black, font: { size: 12, weight: FontWeight.Normal } },
               selectedTextStyle: { color: Color.Blue, font: { size: 12, weight: FontWeight.Bolder } },
               onAccept: (result: TextPickerResult) => {
-                this.currentFormKey = result.value[0] + "#" + result.value[1];
+                this.currentFormKey = result.value[0] + '#' + result.value[1];
                 this.pickDialogIndex = result.index[0]
                 hilog.info(DOMAIN_NUMBER, TAG,
                   `TextPickerDialog onAccept： ${this.currentFormKey}, ${this.pickDialogIndex}`);
@@ -370,12 +371,17 @@ struct formHostSample {
 
         // select列表，列出部分formHost接口功能。
         Row() {
-          // $r('app.string.xxx')需要替换为开发者所需的资源文件
+          // 请将$r('app.string.deleteForm')替换为实际资源文件，在本示例中该资源文件的value值为"删除卡片"
           Select([{ value: $r('app.string.deleteForm') },
+            // 请将$r('app.string.updateForm')替换为实际资源文件，在本示例中该资源文件的value值为"更新卡片"
             { value: $r('app.string.updateForm') },
+            // 请将$r('app.string.visibleForms')替换为实际资源文件，在本示例中该资源文件的value值为"卡片可见"
             { value: $r('app.string.visibleForms') },
+            // 请将$r('app.string.invisibleForms')替换为实际资源文件，在本示例中该资源文件的value值为"卡片不可见"
             { value: $r('app.string.invisibleForms') },
+            // 请将$r('app.string.enableFormsUpdate')替换为实际资源文件，在本示例中该资源文件的value值为"可以更新"
             { value: $r('app.string.enableFormsUpdate') },
+            // 请将$r('app.string.disableFormsUpdate')替换为实际资源文件，在本示例中该资源文件的value值为"不可更新"
             { value: $r('app.string.disableFormsUpdate') },
           ])
             .selected(this.index)
@@ -398,7 +404,7 @@ struct formHostSample {
             })
 
           // 根据select列表所选的功能，对当前卡片执行对应操作。
-          // $r('app.string.execute')需要替换为开发者所需的资源文件
+          // 请将$r('app.string.execute')替换为实际资源文件，在本示例中该资源文件的value值为"执行"
           Button($r('app.string.execute'), {
             type: ButtonType.Capsule
           })

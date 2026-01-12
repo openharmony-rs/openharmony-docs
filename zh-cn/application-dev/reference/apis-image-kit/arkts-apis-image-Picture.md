@@ -6,12 +6,14 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+Picture类，一些包含特殊信息的图片可以解码为Picture（也可以称为多图对象）。多图对象一般包含主图、辅助图和元数据。其中主图包含图像的大部分信息，主要用于显示图像内容；辅助图用于存储与主图相关但不同的数据，展示图像更丰富的信息；元数据一般用来存储关于图像文件的信息。多图对象类用于读取或写入多图对象。在调用Picture的方法前，需要先通过[image.createPicture](arkts-apis-image-f.md#imagecreatepicture13)创建一个Picture实例。
+
+由于图片占用内存较大，所以当Picture实例使用完成后，应主动调用[release](#release13)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 13开始支持。
-
-一些包含特殊信息的图片可以解码为多图对象，多图对象一般包含主图、辅助图和元数据。其中主图包含图像的大部分信息，主要用于显示图像内容；辅助图用于存储与主图相关但不同的数据，展示图像更丰富的信息；元数据一般用来存储关于图像文件的信息。多图对象类用于读取或写入多图对象。在调用Picture的方法前，需要先通过[createPicture](arkts-apis-image-f.md#imagecreatepicture13)创建一个Picture实例。
 
 ## 导入模块
 
@@ -61,7 +63,7 @@ async function GetMainPixelmap(pictureObj : image.Picture) {
 
 getHdrComposedPixelmap(): Promise\<PixelMap>
 
-合成hdr图并获取hdr图的pixelmap。使用Promise异步回调。
+合成HDR图并获取HDR图的pixelmap。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -101,6 +103,67 @@ async function GetHdrComposedPixelmap(pictureObj : image.Picture) {
   } else {
     console.error('PictureObj is null');
   }
+}
+```
+
+## getHdrComposedPixelmapWithOptions<sup>23+</sup>
+
+getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise\<PixelMap | undefined>
+
+合成HDR图像并返回HDR图像的PixelMap，支持传入合成参数（如PixelMapFormat等）。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名           | 类型                 | 必填 | 说明         |
+| ---------------- | -------------------- | ---- | ------------ |
+| options             | [HdrComposeOptions](arkts-apis-image-i.md#hdrcomposeoptions23) | 否   | 合成HDR的选项。 |
+
+**返回值：**
+
+| 类型                          | 说明                        |
+| ----------------------------- | --------------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap或undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7600201 | Unsupported operation.|
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
+  if (picture == null) {
+    console.error('picture is null');
+    return;
+  }
+
+  let opt: image.HdrComposeOptions = {
+    desiredPixelFormat: image.PixelMapFormat.RGBA_1010102
+  };
+  let hdrComposedPixelmap: image.PixelMap | undefined = await picture.getHdrComposedPixelmapWithOptions(opt);
+  if (hdrComposedPixelmap == null || hdrComposedPixelmap == undefined) {
+    console.error(`GetHdrComposedPixelmapWithOptions failed`);
+    return;
+  }
+
+  hdrComposedPixelmap.getImageInfo().then((imageInfo: image.ImageInfo) => {
+    if (imageInfo !== null) {
+      console.info(`GetHdrComposedPixelmapWithOptions information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`GetHdrComposedPixelmapWithOptions information failed error.code: ${error.code} ,error.message: ${error.message}`);
+  });
 }
 ```
 
@@ -240,7 +303,7 @@ async function GetAuxiliaryPicture(pictureObj : image.Picture) {
 
 setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
-设置主图的元数据。
+设置主图的元数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -304,7 +367,7 @@ async function SetPictureObjMetadata(exifContext: Context) {
 
 getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
-获取主图的元数据。
+获取主图的元数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -422,6 +485,10 @@ async function Marshalling_UnMarshalling(pictureObj : image.Picture) {
 release(): void
 
 释放picture对象。
+
+由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用该方法及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

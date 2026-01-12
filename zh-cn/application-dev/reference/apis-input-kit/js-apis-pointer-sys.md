@@ -11,9 +11,9 @@
 
 > **说明**：
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.pointer (鼠标光标)](js-apis-pointer.md)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.pointer (鼠标光标)](js-apis-pointer.md)。
 
 ## 导入模块
 
@@ -52,6 +52,7 @@ setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -61,7 +62,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setPointerSpeed(5, (error: Error) => {
+            pointer.setPointerSpeed(5, (error: BusinessError) => {
               if (error) {
                 console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -113,6 +114,7 @@ setPointerSpeed(speed: number): Promise&lt;void&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -124,7 +126,9 @@ struct Index {
           try {
             pointer.setPointerSpeed(5).then(() => {
               console.info(`Set pointer speed success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set pointer failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -213,6 +217,7 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -222,7 +227,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getPointerSpeed((error: Error, speed: number) => {
+            pointer.getPointerSpeed((error: BusinessError, speed: number) => {
               if (error) {
                 console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -266,6 +271,7 @@ getPointerSpeed(): Promise&lt;number&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -277,7 +283,9 @@ struct Index {
           try {
             pointer.getPointerSpeed().then(speed => {
               console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get pointer failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -366,6 +374,7 @@ setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -375,7 +384,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setHoverScrollState(true, (error: Error) => {
+            pointer.setHoverScrollState(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -426,6 +435,7 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -437,7 +447,9 @@ struct Index {
           try {
             pointer.setHoverScrollState(true).then(() => {
               console.info(`Set the mouse hover scroll success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -476,6 +488,7 @@ getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -485,8 +498,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getHoverScrollState((error: Error, state: boolean) => {
-              console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+            pointer.getHoverScrollState((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -526,6 +543,7 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -537,7 +555,9 @@ struct Index {
           try {
             pointer.getHoverScrollState().then((state: boolean) => {
               console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -577,6 +597,7 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -586,7 +607,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT, (error: Error) => {
+            pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT, (error: BusinessError) => {
               if (error) {
                 console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -637,6 +658,7 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -648,7 +670,9 @@ struct Index {
           try {
             pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT).then(() => {
               console.info(`Set mouse primary button success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set mouse failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -687,6 +711,7 @@ getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -696,8 +721,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getMousePrimaryButton((error: Error, primary: pointer.PrimaryButton) => {
-              console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+            pointer.getMousePrimaryButton((error: BusinessError, primary: pointer.PrimaryButton) => {
+              if (error) {
+                console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+              }
             });
           } catch (error) {
             console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -737,6 +766,7 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -748,7 +778,9 @@ struct Index {
           try {
             pointer.getMousePrimaryButton().then((primary: pointer.PrimaryButton) => {
               console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get mouse failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -788,6 +820,7 @@ setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -797,7 +830,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setMouseScrollRows(1, (error: Error) => {
+            pointer.setMouseScrollRows(1, (error: BusinessError) => {
               if (error) {
                 console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -848,6 +881,7 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -859,7 +893,9 @@ struct Index {
           try {
             pointer.setMouseScrollRows(20).then(() => {
               console.info(`setMouseScrollRows success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set mouse scroll rows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -898,6 +934,7 @@ getMouseScrollRows(callback: AsyncCallback&lt;number&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -907,8 +944,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getMouseScrollRows((error: Error, rows: number) => {
-              console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+            pointer.getMouseScrollRows((error: BusinessError, rows: number) => {
+              if (error) {
+                console.error(`getMouseScrollRows error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+              }
             });
           } catch (error) {
             console.error(`getMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -948,6 +989,7 @@ getMouseScrollRows(): Promise&lt;number&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -959,7 +1001,9 @@ struct Index {
           try {
             pointer.getMouseScrollRows().then((rows: number) => {
               console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get mouse scroll rows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -999,6 +1043,7 @@ setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1008,7 +1053,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadScrollSwitch(true, (error: Error) => {
+            pointer.setTouchpadScrollSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -1059,6 +1104,7 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1070,7 +1116,9 @@ struct Index {
           try {
             pointer.setTouchpadScrollSwitch(false).then(() => {
               console.info(`setTouchpadScrollSwitch success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad scroll switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1109,6 +1157,7 @@ getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1118,8 +1167,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadScrollSwitch((error: Error, state: boolean) => {
-              console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+            pointer.getTouchpadScrollSwitch((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`getTouchpadScrollSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1159,6 +1212,7 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1170,7 +1224,9 @@ struct Index {
           try {
             pointer.getTouchpadScrollSwitch().then((state) => {
               console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad scroll switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1210,6 +1266,7 @@ setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1219,7 +1276,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadScrollDirection(true, (error: Error) => {
+            pointer.setTouchpadScrollDirection(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -1270,6 +1327,7 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1281,7 +1339,9 @@ struct Index {
           try {
             pointer.setTouchpadScrollDirection (false).then(() => {
               console.info(`setTouchpadScrollDirection success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1320,6 +1380,7 @@ getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1329,7 +1390,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadScrollDirection ((error: Error, state: boolean) => {
+            pointer.getTouchpadScrollDirection ((error: BusinessError, state: boolean) => {
               console.info(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
@@ -1370,6 +1431,7 @@ getTouchpadScrollDirection(): Promise\<boolean>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1381,7 +1443,9 @@ struct Index {
           try {
             pointer.getTouchpadScrollDirection().then((state: boolean) => {
               console.info(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1421,6 +1485,7 @@ setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1430,7 +1495,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadTapSwitch(true, (error: Error) => {
+            pointer.setTouchpadTapSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -1438,7 +1503,7 @@ struct Index {
               console.info(`setTouchpadTapSwitch success`);
             });
           } catch (error) {
-            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`); 
           }
         })
     }
@@ -1481,6 +1546,7 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1492,7 +1558,9 @@ struct Index {
           try {
             pointer.setTouchpadTapSwitch(false).then(() => {
               console.info(`setTouchpadTapSwitch success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad tap switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1531,6 +1599,7 @@ getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1540,8 +1609,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadTapSwitch((error: Error, state: boolean) => {
-              console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+            pointer.getTouchpadTapSwitch((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`getTouchpadTapSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1581,6 +1654,7 @@ getTouchpadTapSwitch(): Promise\<boolean>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1592,7 +1666,9 @@ struct Index {
           try {
             pointer.getTouchpadTapSwitch().then((state: boolean) => {
               console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad tap switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1632,6 +1708,7 @@ setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1641,7 +1718,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadPointerSpeed(1, (error: Error) => {
+            pointer.setTouchpadPointerSpeed(1, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadPointerSpeedfailed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -1692,6 +1769,7 @@ setTouchpadPointerSpeed(speed: number): Promise\<void>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1703,7 +1781,9 @@ struct Index {
           try {
             pointer.setTouchpadPointerSpeed(10).then(() => {
               console.info(`setTouchpadPointerSpeed success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1742,6 +1822,7 @@ getTouchpadPointerSpeed(callback: AsyncCallback\<number>): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1751,8 +1832,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadPointerSpeed((error: Error, speed: number) => {
-              console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+            pointer.getTouchpadPointerSpeed((error: BusinessError, speed: number) => {
+              if (error) {
+                console.error(`getTouchpadPointerSpeed error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1792,6 +1877,7 @@ getTouchpadPointerSpeed(): Promise\<number>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1803,7 +1889,9 @@ struct Index {
           try {
             pointer.getTouchpadPointerSpeed().then((speed: number) => {
               console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1843,6 +1931,7 @@ setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1852,7 +1941,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadTapSwitch(true, (error: Error) => {
+            pointer.setTouchpadPinchSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -1903,6 +1992,7 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1914,7 +2004,9 @@ struct Index {
           try {
             pointer.setTouchpadPinchSwitch(false).then(() => {
               console.info(`setTouchpadPinchSwitch success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad pinch switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1953,6 +2045,7 @@ getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1962,8 +2055,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadPinchSwitch((error: Error, state: boolean) => {
-              console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+            pointer.getTouchpadPinchSwitch((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`getTouchpadPinchSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2003,6 +2100,7 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2014,7 +2112,9 @@ struct Index {
           try {
             pointer.getTouchpadPinchSwitch().then((state: boolean) => {
               console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad pinch switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2054,6 +2154,7 @@ setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2063,7 +2164,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadSwipeSwitch(true, (error: Error) => {
+            pointer.setTouchpadSwipeSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -2114,6 +2215,7 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2125,7 +2227,9 @@ struct Index {
           try {
             pointer.setTouchpadSwipeSwitch(false).then(() => {
               console.info(`setTouchpadSwipeSwitch success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad swipe switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2164,6 +2268,7 @@ getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2173,7 +2278,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadSwipeSwitch((error: Error, state: boolean) => {
+            pointer.getTouchpadSwipeSwitch((error: BusinessError, state: boolean) => {
               console.info(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
@@ -2214,6 +2319,7 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2225,7 +2331,9 @@ struct Index {
           try {
             pointer.getTouchpadSwipeSwitch().then((state: boolean) => {
               console.info(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad swipe switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2265,6 +2373,7 @@ setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>):
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2274,7 +2383,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON , (error: Error) => {
+            pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON , (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadRightClickType, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -2325,6 +2434,7 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2336,7 +2446,9 @@ struct Index {
           try {
             pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON).then(() => {
               console.info(`setTouchpadRightClickType success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad right click type failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2375,6 +2487,7 @@ getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2384,7 +2497,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadRightClickType((error: Error, type: pointer.RightClickType) => {
+            pointer.getTouchpadRightClickType((error: BusinessError, type: pointer.RightClickType) => {
               console.info(`getTouchpadRightClickType success, type: ${JSON.stringify(type)}`);
             });
           } catch (error) {
@@ -2425,6 +2538,7 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2435,8 +2549,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadRightClickType().then((type: pointer.RightClickType) => {
-              console.info(`getTouchpadRightClickType success, typeed: ${JSON.stringify(type)}`);
-            });
+              console.info(`getTouchpadRightClickType success, type: ${JSON.stringify(type)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad right click type failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2476,6 +2592,7 @@ setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2485,7 +2602,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setPointerSize(1, (error: Error) => {
+            pointer.setPointerSize(1, (error: BusinessError) => {
               if (error) {
                 console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -2536,6 +2653,7 @@ setPointerSize(size: number): Promise&lt;void&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2547,7 +2665,9 @@ struct Index {
           try {
             pointer.setPointerSize(3).then(() => {
               console.info(`setPointerSize success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set pointer size failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2635,6 +2755,7 @@ getPointerSize(callback: AsyncCallback&lt;number&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2644,8 +2765,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getPointerSize((error: Error, size: number) => {
-              console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
+            pointer.getPointerSize((error: BusinessError, size: number) => {
+              if (error) {
+                console.error(`getPointerSize error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
+              }
             });
           } catch (error) {
             console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2685,6 +2810,7 @@ getPointerSize(): Promise&lt;number&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2696,7 +2822,9 @@ struct Index {
           try {
             pointer.getPointerSize().then((size: number) => {
               console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get pointer size failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2761,7 +2889,7 @@ setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
 
 设置鼠标光标颜色，使用AsyncCallback异步方式返回结果。
 
-**说明**
+> **说明**：
 >
 > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
@@ -2789,6 +2917,7 @@ setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2798,7 +2927,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setPointerColor(0xF6C800, (error: Error) => {
+            pointer.setPointerColor(0xF6C800, (error: BusinessError) => {
               if (error) {
                 console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -2820,7 +2949,7 @@ setPointerColor(color: number): Promise&lt;void&gt;
 
 设置鼠标光标颜色，使用Promise异步回调。
 
-**说明**
+> **说明**：
 >
 > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
@@ -2853,6 +2982,7 @@ setPointerColor(color: number): Promise&lt;void&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2864,7 +2994,9 @@ struct Index {
           try {
             pointer.setPointerColor(0xF6C800).then(() => {
               console.info(`setPointerColor success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set pointer color failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2880,7 +3012,7 @@ setPointerColorSync(color: number): void
 
 设置鼠标光标颜色，使用同步方式进行设置。
 
-**说明**
+> **说明**：
 >
 > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
@@ -2956,6 +3088,7 @@ getPointerColor(callback: AsyncCallback&lt;number&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2965,8 +3098,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getPointerColor((error: Error, color: number) => {
-              console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
+            pointer.getPointerColor((error: BusinessError, color: number) => {
+              if (error) {
+                console.error(`getPointerColor error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
+              }
             });
           } catch (error) {
             console.error(`getPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3006,6 +3143,7 @@ getPointerColor(): Promise&lt;number&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3017,7 +3155,9 @@ struct Index {
           try {
             pointer.getPointerColor().then((color: number) => {
               console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get pointer color failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -3090,7 +3230,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。|
+| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。 |
 | callback | AsyncCallback\<void> | 是    | 回调函数。|
 
 **错误码**：
@@ -3106,6 +3246,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3115,7 +3256,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadDoubleTapAndDragState(true, (error: Error) => {
+            pointer.setTouchpadDoubleTapAndDragState(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -3145,7 +3286,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| 是    |  双击拖拽开关的状态，true代表开启，false代表关闭。 |
+| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。 |
 
 **返回值**：
 
@@ -3166,6 +3307,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3177,7 +3319,9 @@ struct Index {
           try {
             pointer.setTouchpadDoubleTapAndDragState(false).then(() => {
               console.info(`setTouchpadDoubleTapAndDragState success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -3216,6 +3360,7 @@ getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3225,8 +3370,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadDoubleTapAndDragState((error: Error, state: boolean) => {
-              console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+            pointer.getTouchpadDoubleTapAndDragState((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`getTouchpadDoubleTapAndDragState error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3265,6 +3414,7 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3276,7 +3426,9 @@ struct Index {
           try {
             pointer.getTouchpadDoubleTapAndDragState().then((state) => {
               console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }

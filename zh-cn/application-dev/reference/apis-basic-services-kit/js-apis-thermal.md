@@ -115,7 +115,7 @@ console.info('thermal level is: ' + level);
 
 subscribeThermalLevel(callback: AsyncCallback&lt;ThermalLevel&gt;): void
 
-> **说明：**<br>从API version 9开始不再维护，建议使用[thermal.registerThermalLevelCallback](#thermalregisterthermallevelcallback9)替代。
+> **说明：**<br>从API version 8开始支持，从API version 9开始不再维护，建议使用[thermal.registerThermalLevelCallback](#thermalregisterthermallevelcallback9)替代。
 
 **方法介绍：** 订阅热档位变化时的回调提醒。使用callback异步回调。
 
@@ -139,7 +139,7 @@ thermal.subscribeThermalLevel((err: Error, level: thermal.ThermalLevel) => {
 
 unsubscribeThermalLevel(callback?: AsyncCallback\<void>): void
 
-> **说明：**<br>从API version 9开始不再维护，建议使用[thermal.unregisterThermalLevelCallback](#thermalunregisterthermallevelcallback9)替代。
+> **说明：**<br>从API version 8开始支持，从API version 9开始不再维护，建议使用[thermal.unregisterThermalLevelCallback](#thermalunregisterthermallevelcallback9)替代。
 
 **方法介绍：** 取消订阅热档位变化时的回调提醒。使用callback异步回调。
 
@@ -163,7 +163,7 @@ thermal.unsubscribeThermalLevel(() => {
 
 getThermalLevel(): ThermalLevel
 
-> **说明：**<br>从API version 9开始不再维护，建议使用[thermal.getLevel](#thermalgetlevel9)替代。
+> **说明：**<br>从API version 8开始支持，从API version 9开始不再维护，建议使用[thermal.getLevel](#thermalgetlevel9)替代。
 
 **方法介绍：** 获取当前热档位信息。
 

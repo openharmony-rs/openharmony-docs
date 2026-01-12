@@ -22,6 +22,10 @@
 
 - [订阅应用冻屏事件（C/C++）](hiappevent-watcher-freeze-events-ndk.md)
 
+> **说明：**
+>
+> 应用冻屏事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
+
 ## 事件字段说明
 
 ### params字段说明
@@ -32,7 +36,7 @@
 | -------- | -------- | -------- |
 | time | number | 事件触发时间，单位为ms。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台；false表示应用处于后台。 |
-| release_type | string | 标识应用打包时使用的SDK的发布类型。具体说明详见[ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的releaseType。<br>**说明**：从API version 23开始支持 |
+| release_type | string | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持 |
 | cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
@@ -41,7 +45,7 @@
 | uid | number | 应用的用户ID。 |
 | uuid | string | 根据故障信息生成的故障特征码，用于标识特征相同的崩溃故障。 |
 | exception | object | 异常信息，详见exception属性。 |
-| hilog | string[] | 日志信息。 |
+| hilog | string[] | 日志信息。当生成应用无响应事件日志时，从hilog缓冲区中获取最多100行故障进程日志信息。 |
 | event_handler | string[] | 主线程未处理消息。 |
 | event_handler_size_3s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s-应用主线程卡死超时)（仅在应用无响应事件生效）中3s时任务栈中任务数量。 |
 | event_handler_size_6s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s-应用主线程卡死超时)（仅在应用无响应事件生效）中6s时任务栈中任务数量。 |
@@ -66,6 +70,12 @@
 | thread_name | string | 线程名。 |
 | tid | number | 线程id。 |
 | frames | object[] | 线程调用栈，详见frame属性。 |
+| state | string | 线程运行状态。读取自/proc/pid/stat的state的值。<br>**说明**：从API version 23开始支持。 |
+| utime | number | 线程在用户态下消耗的CPU的嘀嗒数。读取自/proc/pid/stat的utime的值。<br>**说明**：从API version 23开始支持。|
+| stime | number | 线程在内核态下消耗的CPU的嘀嗒数。读取自/proc/pid/stat的stime的值。<br>**说明**：从API version 23开始支持。|
+| priority | number | 实时优先级。读取自/proc/pid/stat的priority的值。<br>**说明**：从API version 23开始支持。|
+| nice | number | 静态优先级。读取自/proc/pid/stat的nice的值。<br>**说明**：从API version 23开始支持。|
+| clk | number | 每秒的时钟嘀嗒次数。使用sysconf(_SC_CLK_TCK)获取，获取失败时使用默认值100。通过嘀嗒数除以该值可以计算得到运行时间（单位：秒）。<br>**说明**：从API version 23开始支持。|
 
 ### frame字段说明
 

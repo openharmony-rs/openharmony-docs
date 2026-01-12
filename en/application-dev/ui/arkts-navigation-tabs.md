@@ -9,15 +9,13 @@
 
 When there is a large amount of page information, to enable the user to focus on the currently displayed content, the page content needs to be classified to improve the page space utilization. The [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md) component can quickly switch between views on a page, improving information search efficiency and reducing the amount of information that users receive at a time.
 
-
 ## Basic Layout
 
-  The **Tabs** component consists of two parts: **TabContent** and **TabBar**. **TabContent** is the content page, and **TabBar** is the navigation tab bar. The following figure shows the page structure. The layout varies according to the navigation type. In bottom navigation, top navigation, and side navigation, the navigation tab bar is located at the bottom, top, and edge, respectively.
+  The **Tabs** component consists of two parts: [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) and [TabBar](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar). **TabContent** is the content page, and **TabBar** is the navigation tab bar. The following figure shows the page structure. The layout varies according to the navigation type. In bottom navigation, top navigation, and side navigation, the navigation tab bar is located at the bottom, top, and edge, respectively.
 
   **Figure 1** Tabs component layout 
 
 ![tabs-layout](figures/tabs-layout.png)
-
 
 >**NOTE**
 >
@@ -36,37 +34,56 @@ The **Tabs** component uses braces to wrap **TabContent** child components, as s
 
 Each **TabContent** component should be mapped to a tab page, which can be configured through the **tabBar** attribute. The following is an example.
 
-```ts
- TabContent() {
-   Text('Home tab content').fontSize(30)
- }
-.tabBar('Home')
+<!-- @[basic_layout_displays_one_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/TabsLayout.ets) -->
+
+``` TypeScript
+TabContent() {
+  // The value in the app.string.homepage_content resource file is "Home tab content."
+  Text($r('app.string.homepage_content'))
+    .fontSize(30)
+}
+// The value in the app.string.homepage resource file is "Home."
+.tabBar($r('app.string.homepage'))
 ```
 
 
 When setting multiple **TabContent** components, place them in sequence in the **Tabs** component.
 
-```ts
+<!-- @[basic_layout_displays_many_contents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/TabsLayout.ets) -->
+
+``` TypeScript
 Tabs() {
   TabContent() {
-    Text('Home tab content').fontSize(30)
+    // The value in the app.string.homepage_content resource file is "Home tab content."
+    Text($r('app.string.homepage_content'))
+      .fontSize(30)
   }
-  .tabBar('Home')
+  // The value in the app.string.homepage resource file is "Home."
+  .tabBar($r('app.string.homepage'))
 
   TabContent() {
-    Text('Recommended tab content').fontSize(30)
+    // The value in the app.string.recommend_content resource file is "Recommended tab content."
+    Text($r('app.string.recommend_content'))
+      .fontSize(30)
   }
-  .tabBar('Recommended')
+  // The value in the app.string.recommend resource file is "Recommended."
+  .tabBar($r('app.string.recommend'))
 
   TabContent() {
-    Text('Discover tab content').fontSize(30)
+    // The value in the app.string.discover_content resource file is "Discover tab content."
+    Text($r('app.string.discover_content'))
+      .fontSize(30)
   }
-  .tabBar('Discover')
-  
+  // The value in the app.string.discover resource file is "Discover."
+  .tabBar($r('app.string.discover'))
+
   TabContent() {
-    Text('Me tab content').fontSize(30)
+    // The value in the app.string.mine_content resource file is "Me tab content."
+    Text($r('app.string.mine_content'))
+      .fontSize(30)
   }
-  .tabBar("Me")
+  // The value in the app.string.mine_content resource file is "Me."
+  .tabBar($r('app.string.mine'))
 }
 ```
 
@@ -84,10 +101,12 @@ Bottom navigation is the most common navigation mode in applications. The bottom
 You set the position of the navigation bar through the **barPosition** parameter of the **Tabs** component. By default, **barPosition** is set to **BarPosition.Start**, which means that the navigation bar is located on the top. To display the navigation bar at the bottom, set **barPosition** to **BarPosition.End**.
 
 
-```ts
+<!-- @[bottom_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/BottomTabBar.ets) -->
+
+``` TypeScript
 Tabs({ barPosition: BarPosition.End }) {
   // TabContent: Home, Discover, Recommended, and Me
-  // ...
+  // ···
 }
 ```
 
@@ -103,10 +122,12 @@ Top navigation comes in handy when there are many content categories and users n
 ![top-navigation](figures/top-navigation.gif)
 
 
-```ts
+<!-- @[top_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/TopTabBar.ets) -->
+
+``` TypeScript
 Tabs({ barPosition: BarPosition.Start }) {
   // TabContent: Following, Video, Game, Digital, Technology, Sports, Movie
-  // ...
+  // ···
 }
 ```
 
@@ -121,32 +142,35 @@ Side navigation is seldom used in applications. It is more applicable to landsca
 ![side-navigation](figures/side-navigation.png)
 
 
-To implement the side navigation bar, set the **vertical** attribute of the **Tabs** component to **true**. By default, **vertical** is set to **false**, indicating that the content page and navigation bar are aligned vertically.
+To implement the side navigation bar, set the [vertical](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#vertical) attribute of the **Tabs** component to true. By default, **vertical** is set to **false**, indicating that the content page and navigation bar are aligned vertically.
 
 
 
-```ts
-Tabs({ barPosition: BarPosition.Start }) {
-  // TabContent: Home, Discover, Recommended, and Me
-  // ...
-}
-.vertical(true)
-.barWidth(100)
-.barHeight(200)
+<!-- @[side_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/SideTabBar.ets) -->
+
+``` TypeScript
+  Tabs({ barPosition: BarPosition.Start }) {
+    // TabContent: Home, Discover, Recommended, and Me
+    // ···
+  }
+// ···
+  .vertical(true)
+  .barWidth(100)
+  .barHeight(200)
 ```
 
 
 >**NOTE**
 >
-> - When the **vertical** attribute is set to **false**, the tab bar takes up the whole screen width by default. Set **barWidth** to a proper value.
+> - When the **vertical** attribute is set to **false**, the tab bar takes up the whole screen width by default. Set [barWidth](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#barwidth) to a proper value.
 >
-> - When the **vertical** attribute is set to **true**, the tab bar takes up the actual content height by default. Set **barHeight** to a proper value.
+> - When the **vertical** attribute is set to **true**, the tab bar takes up the actual content height by default. Set [barHeight](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#barheight) to a proper value.
 
 
 ## Restricting the Scrolling of the Navigation Bar
 
   By default, the navigation bar is scrollable. On some pages that require multi-level classification of content, for example, when both bottom navigation and top navigation are used, the scroll effect of the bottom navigation bar may conflict with that of the top navigation bar. In this case, the scrolling of the bottom navigation bar needs to be restricted to improve user experience.
-
+  
   **Figure 6** Restricting the scrolling of the bottom navigation bar 
 
 ![restricted-navigation](figures/restricted-navigation.gif)
@@ -154,24 +178,28 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 The attribute that enables or disables the scrolling is **scrollable**. Its default value is **true**, indicating that scrolling is enabled. To disable the scrolling, set the attribute to **false**.
 
-```ts
-Tabs({ barPosition: BarPosition.End }) {
-  TabContent(){
-    Column(){
-      Tabs(){
-        // Content on the top navigation bar
-        // ...
-      }
-    }
-    .backgroundColor('#ff08a8f1')
-    .width('100%')
-  }
-  .tabBar('Home')
+<!-- @[swipe_locked_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/SwipeLockedTabBar.ets) -->
 
-  // Other TabContent content: Discover, Recommended, and Me
-  // ...
-}
-.scrollable(false)
+``` TypeScript
+  Tabs({ barPosition: BarPosition.End }) {
+    TabContent() {
+      Column() {
+        Tabs() {
+          // Content on the top navigation bar
+        // ···
+        }
+      }
+      .backgroundColor('#ff08a8f1')
+      .width('100%')
+    }
+    // The value in the app.string.homepage resource file is "Home."
+    .tabBar($r('app.string.homepage'))
+
+    // Other TabContent content: Discover, Recommended, and Me
+    // ···
+  }
+// ···
+  .scrollable(false)
 ```
 
 
@@ -185,12 +213,14 @@ When the content categories are relatively fixed and not scalable, a fixed navig
 ![fixed-navigation](figures/fixed-navigation.gif)
 
 
-To use a fixed navigation bar, set the **barMode** attribute of the **Tabs** component to **barMode.Fixed** (default).
+To use a fixed navigation bar, set the [barMode](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#barmode10) attribute of the **Tabs** component to **BarMode.Fixed** (default).
 
-```ts
+<!-- @[fixed_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/FixedTabBar.ets) -->
+
+``` TypeScript
 Tabs({ barPosition: BarPosition.End }) {
   // TabContent: Home, Discover, Recommended, and Me
-  // ...
+  // ···
 }
 .barMode(BarMode.Fixed)
 ```
@@ -208,10 +238,12 @@ The top navigation bar or side navigation bar can be set to be scrollable if the
 
 To use a scrollable navigation bar, set the **barMode** attribute of the **Tabs** component to **BarMode.Scrollable**.
 
-```ts
+<!-- @[scrollable_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ScrollableTabBar.ets) -->
+
+``` TypeScript
 Tabs({ barPosition: BarPosition.Start }) {
   // TabContent: follow, video, game, digital, technology, sports, movie, humanities, art, nature, and military
-  // ...
+  // ···
 }
 .barMode(BarMode.Scrollable)
 ```
@@ -232,10 +264,13 @@ By default, the system uses an underscore (_) to indicate the active tab. For a 
 
 To customize the navigation bar, use the **tabBar** parameter and pass in to it custom function component styles in **CustomBuilder** mode. In this example, a custom function component **tabBuilder** is declared, and the input parameters include **title** (tab title), **targetIndex** (target index of the tab), **selectedImg** (image for the selected state), and **normalImg** (image for the unselected state). The UI display style is determined based on whether the value of **currentIndex** (index of the active tab) matches that of **targetIndex** (target index of the tab).
 
-```ts
+<!-- @[custom_tab_bar_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/CustomTabBar.ets) -->
+
+``` TypeScript
 @State currentIndex: number = 0;
 
-@Builder tabBuilder(title: string, targetIndex: number, selectedImg: Resource, normalImg: Resource) {
+@Builder
+tabBuilder(title: ResourceStr, targetIndex: number, selectedImg: Resource, normalImg: Resource) {
   Column() {
     Image(this.currentIndex === targetIndex ? selectedImg : normalImg)
       .size({ width: 25, height: 25 })
@@ -251,16 +286,20 @@ To customize the navigation bar, use the **tabBar** parameter and pass in to it 
 
 Pass the custom function component to the **tabBar** attribute corresponding to the tab content and transfer the corresponding parameters.
 
-```ts
+<!-- @[set_custom_tab_bar_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/CustomTabBar.ets) -->
+
+``` TypeScript
 TabContent() {
-  Column(){
-    Text('Me tab content') 
+  Column() {
+    // The value in the app.string.mine_content resource file is "Me tab content."
+    Text($r('app.string.mine_content'))  
   }
   .width('100%')
   .height('100%')
   .backgroundColor('#007DFF')
 }
-.tabBar(this.tabBuilder('Me', 0, $r('app.media.mine_selected'), $r('app.media.mine_normal')))
+// The value in the app.string.mine resource file is "Me."
+.tabBar(this.tabBuilder($r('app.string.mine'), 0, $r('app.media.mine_selected'), $r('app.media.mine_normal')))
 ```
 
 
@@ -275,47 +314,65 @@ Non-custom navigation bars follow the default switching logic. If you are using 
 
 Since API version 18, the **Tabs** component supports the [onSelected](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#onselected18) event method. This method listens for index changes and passes the selected element's index value to **selectIndex**, enabling tab switching functionality.
 
-```ts
+<!-- @[content_page_tab_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentPageNoAndTabLinkage.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct TabsExample1 {
+export struct ContentPageNoAndTabLinkage {
+
   @State selectIndex: number = 0;
-  @Builder tabBuilder(title: string, targetIndex: number) {
+  @Builder tabBuilder(title: Resource, targetIndex: number) {
     Column() {
       Text(title)
         .fontColor(this.selectIndex === targetIndex ? '#1698CE' : '#6B6B6B')
     }
   }
-
   build() {
-    Column() {
-      Tabs({ barPosition: BarPosition.End }) {
-        TabContent() {
-          Text("Home tab content").width('100%').height('100%').backgroundColor('rgb(213,213,213)')
-            .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
-        }.tabBar(this.tabBuilder('Home', 0))
+    NavDestination() {
+      Column({ space: 12 }) {
+        // ...
+          Tabs({ barPosition: BarPosition.End }) {
+            TabContent() {
+              // The value in the app.string.homepage_content resource file is "Home tab content."
+              Text($r('app.string.homepage_content')).width('100%').height('100%').backgroundColor('rgb(213,213,213)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            // The value in the app.string.homepage resource file is "Home."
+            }.tabBar(this.tabBuilder($r('app.string.homepage'), 0))
 
-        TabContent() {
-          Text("Discover tab content").width('100%').height('100%').backgroundColor('rgb(112,112,112)')
-            .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
-        }.tabBar(this.tabBuilder('Discover', 1))
+            TabContent() {
+              // The value in the app.string.discover_content resource file is "Discover tab content."
+              Text($r('app.string.discover_content')).width('100%').height('100%').backgroundColor('rgb(112,112,112)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            // The value in the app.string.discover resource file is "Discover."
+            }.tabBar(this.tabBuilder($r('app.string.discover'), 1))
 
-        TabContent() {
-          Text("Recommended tab content").width('100%').height('100%').backgroundColor('rgb(39,135,217)')
-            .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
-        }.tabBar(this.tabBuilder('Recommended', 2))
+            TabContent() {
+              // The value in the app.string.recommend_content resource file is "Recommended tab content."
+              Text($r('app.string.recommend_content')).width('100%').height('100%').backgroundColor('rgb(39,135,217)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            // The value in the app.string.recommend resource file is "Recommended."
+            }.tabBar(this.tabBuilder($r('app.string.recommend'), 2))
 
-        TabContent() {
-          Text("Me tab content").width('100%').height('100%').backgroundColor('rgb(0,74,175)')
-            .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
-        }.tabBar(this.tabBuilder('Me',3))
+            TabContent() {
+              // The value in the app.string.mine_content resource file is "Me tab content."
+              Text($r('app.string.mine_content')).width('100%').height('100%').backgroundColor('rgb(0,74,175)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            }
+            // The value in the app.string.mine resource file is "Me."
+            .tabBar(this.tabBuilder($r('app.string.mine'), 3))
+          }
+          .animationDuration(0)
+          .backgroundColor('#F1F3F5')
+          .onSelected((index: number) => {
+            this.selectIndex = index;
+          })
+        // ...
       }
-      .animationDuration(0)
-      .backgroundColor('#F1F3F5')
-      .onSelected((index: number) => {
-        this.selectIndex = index;
-      })
-    }.width('100%')
+      .width('100%')
+      // ...
+    }
+    // ...
   }
 }
 ```
@@ -323,58 +380,68 @@ struct TabsExample1 {
 
 ![Content Page and Tab Bar Synced](figures/tabcontent_tabbar_sync.gif)
 
-To enable switching between content pages and tabs without swiping, you can pass **currentIndex** to the **index** parameter of **Tabs**. By changing the value of **currentIndex**, you can navigate to the content page corresponding to a specific index. Alternatively, use **TabsController**, which is the controller for the **Tabs** component, to manage content page switches. By using the **changeIndex** API of **TabsController**, you can set your application to display the tab content corresponding to the specified index.
-```ts
-@State currentIndex: number = 2;
-@State currentAnimationMode: AnimationMode = AnimationMode.CONTENT_FIRST;
-private controller: TabsController = new TabsController();
+To enable switching between content pages and tabs without swiping, you can pass **currentIndex** to the **index** parameter of **Tabs**. By changing the value of **currentIndex**, you can navigate to the content page corresponding to a specific index. Alternatively, use [TabsController](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabscontroller), which is the controller for the **Tabs** component, to manage switching of tabs. By using the **changeIndex** API of **TabsController**, you can set your application to display the tab content corresponding to the specified index.
+<!-- @[switch_the_tab_specific_tab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
 
-Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controller }) {
+``` TypeScript
+// ...
+  @State currentIndex: number = 2;
+  @State currentAnimationMode: AnimationMode = AnimationMode.CONTENT_FIRST;
+  private controller: TabsController = new TabsController();
+
   // ...
-}
-.height(600)
-.animationMode(this.currentAnimationMode)
-.onChange((index: number) => {
-   this.currentIndex = index;
-})
+              Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controller }) {
+                // ...
+              }
+              .animationDuration(0)
+              .height(300)
+              .animationMode(this.currentAnimationMode)
+              .onChange((index: number) => {
+                this.currentIndex = index;
+              })
 
-Button('Dynamically Change AnimationMode').width('50%').margin({ top: 1 }).height(25)
-  .onClick(()=>{
-    if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST) {
-      this.currentAnimationMode = AnimationMode.ACTION_FIRST;
-    } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST) {
-      this.currentAnimationMode = AnimationMode.NO_ANIMATION;
-    } else if (this.currentAnimationMode === AnimationMode.NO_ANIMATION) {
-      this.currentAnimationMode = AnimationMode.CONTENT_FIRST_WITH_JUMP;
-    } else if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST_WITH_JUMP) {
-      this.currentAnimationMode = AnimationMode.ACTION_FIRST_WITH_JUMP;
-    } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST_WITH_JUMP) {
-      this.currentAnimationMode = AnimationMode.CONTENT_FIRST;
-    }
-})
+              // The value in the app.string.ContentWillChange_animationMode resource file is "Dynamically Change AnimationMode."
+              Button($r('app.string.ContentWillChange_animationMode')).width('50%').margin({ top: 20 })
+                .onClick(()=>{
+                  if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST) {
+                    this.currentAnimationMode = AnimationMode.ACTION_FIRST;
+                  } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST) {
+                    this.currentAnimationMode = AnimationMode.NO_ANIMATION;
+                  } else if (this.currentAnimationMode === AnimationMode.NO_ANIMATION) {
+                    this.currentAnimationMode = AnimationMode.CONTENT_FIRST_WITH_JUMP;
+                  } else if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST_WITH_JUMP) {
+                    this.currentAnimationMode = AnimationMode.ACTION_FIRST_WITH_JUMP;
+                  } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST_WITH_JUMP) {
+                    this.currentAnimationMode = AnimationMode.CONTENT_FIRST;
+                  }
+                })
 
-Button('Dynamically Change Index').width('50%').margin({ top: 20 })
-  .onClick(()=>{
-    this.currentIndex = (this.currentIndex + 1) % 4;
-})
+              // The value in the app.string.ContentWillChange_changeIndex resource file is "Dynamically Change Index."
+              Button($r('app.string.ContentWillChange_changeIndex')).width('50%').margin({ top: 20 })
+                .onClick(() => {
+                  this.currentIndex = (this.currentIndex + 1) % 4;
+                })
 
-Button('Change Index via Controller').width('50%').margin({ top: 20 })
-  .onClick(()=>{
-    let index = (this.currentIndex + 1) % 4;
-    this.controller.changeIndex(index);
-})
+              Button('Change Index via Controller').width('50%').margin({ top: 20 })
+                .onClick(() => {
+                  let index = (this.currentIndex + 1) % 4;
+                  this.controller.changeIndex(index);
+                })
 ```
-
+  
   **Figure 12** Switching to a specific tab page   
 
 ![Switching to a Specified Tab Page](figures/TabsChange.gif)
 
-You can use the **onContentWillChange** API of the **Tabs** component to customize the interception callback function. The interception callback function is called when a new page is about to be displayed. If the callback returns **true**, the tab can switch to the new page. If the callback returns **false**, the tab cannot switch to the new page and will remain on the current page.
+You can use the [onContentWillChange](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#oncontentwillchange12) API of the **Tabs** component to customize the interception callback. The interception callback function is called when a new page is about to be displayed. If the callback returns **true**, the tab can switch to the new page. If the callback returns **false**, the tab cannot switch to the new page and will remain on the current page.
+  
+<!-- @[custom_page_toggle_interception_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
 
-```ts
-Tabs({ barPosition: BarPosition.End, controller: this.controller, index: this.currentIndex }) {
-  // ...
+``` TypeScript
+  Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controllerTwo }) {
+    // ···
   }
+// ···
   .onContentWillChange((currentIndex, comingIndex) => {
     if (comingIndex == 2) {
       return false;
@@ -384,7 +451,7 @@ Tabs({ barPosition: BarPosition.End, controller: this.controller, index: this.cu
 ```
   **Figure 13** Customizing the page switching interception event
 
-
+![TabsChange3](figures/TabsChange3.gif)
 <!--Del-->
 ## Supporting Aging-Friendly Design
 
@@ -398,14 +465,19 @@ In aging-friendly scenarios with large font sizes, the bottom tab bar offers a d
 
 ![Aging-Friendly Design](figures/tabs11.png)
 
-```ts
+<!-- @[age_friendly_tab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/AgeFriendlyTabs.ets) -->
+
+``` TypeScript
 import { abilityManager, Configuration } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { uiAppearance } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+const DOMAIN = 0x0000;
+const TAG: string = 'AgeFriendlyTabs';
 @Entry
 @Component
-struct Demo {
+export struct AgeFriendlyTabs {
   @State fontColor: string = '#182431';
   @State selectedFontColor: string = '#007DFF';
   @State currentIndex: number = 0;
@@ -421,7 +493,7 @@ struct Demo {
     };
     abilityManager.updateConfiguration(configInit, (err: BusinessError) => {
       if (err) {
-        console.error(`updateConfiguration fail, err: ${JSON.stringify(err)}`);
+        hilog.error(DOMAIN, TAG, 'updateConfiguration fail, err: %{public}s', JSON.stringify(err));
         this.getUIContext().getPromptAction().showToast({ message: `scale:${scale}, err:${JSON.stringify(err)}` });
       } else {
         this.currentFontSizeScale = String(scale);
@@ -430,7 +502,7 @@ struct Demo {
         } else {
           this.fontSize = 15;
         }
-        console.info('updateConfiguration success.');
+        hilog.info(DOMAIN, TAG, 'updateConfiguration success.');
         this.getUIContext().getPromptAction().showToast({ message: `scale:${scale}, updateConfiguration success.` });
       }
     });
@@ -442,108 +514,112 @@ struct Demo {
       mode = uiAppearance.DarkMode.ALWAYS_DARK;
     }
     if (mode == uiAppearance.getDarkMode()) {
-      console.info(`TitleDarkMode Set ${this.darkModeKey[mode]} successfully.`);
+      hilog.info(DOMAIN, TAG, `TitleDarkMode Set ${this.darkModeKey[mode]} successfully.`);
       return;
     }
     try {
       uiAppearance.setDarkMode(mode).then(() => {
-        console.info(`TitleDarkMode Set ${this.darkModeKey[mode]} successfully.`);
+        hilog.info(DOMAIN, TAG, `TitleDarkMode Set ${this.darkModeKey[mode]} successfully.`);
       }).catch((error: Error) => {
-        console.error(`TitleDarkMode Set ${this.darkModeKey[mode]} failed, ${error.message}`);
+        hilog.error(DOMAIN, TAG, `TitleDarkMode Set ${this.darkModeKey[mode]} failed, ${error.message}`);
       });
     } catch (error) {
       let message = (error as BusinessError).message;
-      console.error(`TitleDarkMode Set dark-mode failed, ${message}`);
+      hilog.error(DOMAIN, TAG, `TitleDarkMode Set dark-mode failed, ${message}`);
     }
   }
 
   build() {
-    Column() {
+    NavDestination() {
       Column() {
-        Row() {
-          Text(`current fontSizeScale:${this.currentFontSizeScale}`)
-            .margin({ top: 5, bottom: 5 })
-            .fontSize(this.fontSize)
-        }
+        Column() {
+          Row() {
+            Text(`current fontSizeScale:${this.currentFontSizeScale}`)
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+          }
 
-        Row() {
-          Button('1.75')
-            .margin({ top: 5, bottom: 5 })
-            .fontSize(this.fontSize)
-            .width('40%')
-            .onClick(async () => {
-              await this.setFontScale(1.75);
-            })
-          Button('2')
-            .margin({ top: 5, bottom: 5 })
-            .fontSize(this.fontSize)
-            .width('40%')
-            .onClick(async () => {
-              await this.setFontScale(2);
-            })
-        }.margin({ top: 25 })
+          Row() {
+            Button('1.75')
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(async () => {
+                await this.setFontScale(1.75);
+              })
+            Button('2')
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(async () => {
+                await this.setFontScale(2);
+              })
+          }.margin({ top: 25 })
 
-        Row() {
-          Button('3.2')
-            .margin({ top: 5, bottom: 5 })
-            .fontSize(this.fontSize)
-            .width('40%')
-            .onClick(async () => {
-              await this.setFontScale(3.2);
-            })
-          Button('1')
-            .margin({ top: 5, bottom: 5 })
-            .fontSize(this.fontSize)
-            .width('40%')
-            .onClick(async () => {
-              await this.setFontScale(1);
-            })
-        }
+          Row() {
+            Button('3.2')
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(async () => {
+                await this.setFontScale(3.2);
+              })
+            Button('1')
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(async () => {
+                await this.setFontScale(1);
+              })
+          }
 
-        Row() {
-          Button('Dark Mode')
-            .margin({ top: 5, bottom: 5 })
-            .fontSize(this.fontSize)
-            .width('40%')
-            .onClick(async () => {
-              this.darkMode(true);
-            })
-          Button('Light Mode')
-            .margin({ top: 5, bottom: 5 })
-            .fontSize(this.fontSize)
-            .width('40%')
-            .onClick(async () => {
-              this.darkMode(false);
-            })
-        }
-      }.alignItems(HorizontalAlign.Start)
+          Row() {
+            // The value in the app.string.Dark_mode resource file is "Dark Mode."
+            Button($r('app.string.Dark_mode'))
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(async () => {
+                this.darkMode(true);
+              })
+            // The value in the app.string.Light_mode resource file is "Light Mode."
+            Button($r('app.string.Light_mode'))
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(async () => {
+                this.darkMode(false);
+              })
+          }
+        }.alignItems(HorizontalAlign.Start)
 
-      Column() {
-        Tabs({ barPosition: BarPosition.End }) {
-          TabContent() {
-            Column().width('100%').height('100%').backgroundColor(Color.Pink)
-          }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'OverLength'))
-          TabContent() {
-            Column().width('100%').height('100%').backgroundColor(Color.Yellow)
-          }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'SixLine'))
-          TabContent() {
-            Column().width('100%').height('100%').backgroundColor(Color.Blue)
-          }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Blue'))
-          TabContent() {
-            Column().width('100%').height('100%').backgroundColor(Color.Green)
-          }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Green'))
-        }
-        .vertical(false)
-        .scrollable(true)
-        .barMode(BarMode.Fixed)
-        .onChange((index: number) => {
-          console.info(index.toString());
-        })
-        .width('100%')
-        .backgroundColor(0xF1F3F5)
-      }.width('80%').height(200)
-      .margin({ top: 200 })
-    }.width('100%')
+        Column() {
+          Tabs({ barPosition: BarPosition.End }) {
+            TabContent() {
+              Column().width('100%').height('100%').backgroundColor(Color.Pink)
+            }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'OverLength'))
+            TabContent() {
+              Column().width('100%').height('100%').backgroundColor(Color.Yellow)
+            }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'SixLine'))
+            TabContent() {
+              Column().width('100%').height('100%').backgroundColor(Color.Blue)
+            }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Blue'))
+            TabContent() {
+              Column().width('100%').height('100%').backgroundColor(Color.Green)
+            }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Green'))
+          }
+          .vertical(false)
+          .scrollable(true)
+          .barMode(BarMode.Fixed)
+          .onChange((index: number) => {
+            hilog.info(DOMAIN, TAG, index.toString());
+          })
+          .width('100%')
+          .backgroundColor(0xF1F3F5)
+        }.width('80%').height(200)
+        .margin({ top: 200 })
+      }.width('100%')
+    }
   }
 }
 ```
@@ -555,45 +631,49 @@ Since API version 19, you can use the [cachedMaxCount](https://../reference/apis
 
 >  **NOTE**
 >
-> 1. When **TabsCacheMode** is set to **CACHE_BOTH_SIDE**, the currently displayed child component and the adjacent components on both sides are cached.
+> - When **TabsCacheMode** is set to **CACHE_BOTH_SIDE**, the currently displayed child component and the adjacent components on both sides are cached.
 >
-> 2. When **TabsCacheMode** is set to **CACHE_LATEST_SWITCHED**, the currently displayed child component and the most recently switched child component are cached.
+> - When **TabsCacheMode** is set to **CACHE_LATEST_SWITCHED**, the currently displayed child component and the most recently switched child component are cached.
 >
-> 3. If a page switching animation is enabled and users switch directly from page 1 to page 3, the animation will include page 2, causing it to be temporarily loaded. If page 2 falls outside the cache range, it will be released immediately after the page switching animation completes.
+> - If a page switching animation is enabled and users switch directly from page 1 to page 3, the animation will include page 2, causing it to be temporarily loaded. If page 2 falls outside the cache range, it will be released immediately after the page switching animation completes.
 
 **Figure 15** Page switching by clicking the yellow button with page caching enabled
 
 ![cachedMaxCount2](figures/cachedMaxCount1.gif)
-```ts
+<!-- @[number_of_caches_tabBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/NumberOfCachesTabBar.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct TabsExample {
+export struct NumberOfCachesTabBar {
   build() {
-    Tabs() {
-      TabContent() {
-        MyComponent({ color: '#00CB87' })
-      }.tabBar(SubTabBarStyle.of('green'))
+    // ···
+          Tabs({ barPosition: BarPosition.Start }) {
+            TabContent() {
+              MyComponent({ color: '#00CB87' })
+            }.tabBar(SubTabBarStyle.of('green'))
 
-      TabContent() {
-        MyComponent({ color: '#007DFF' })
-      }.tabBar(SubTabBarStyle.of('blue'))
+            TabContent() {
+              MyComponent({ color: '#007DFF' })
+            }.tabBar(SubTabBarStyle.of('blue'))
 
-      TabContent() {
-        MyComponent({ color: '#FFBF00' })
-      }.tabBar(SubTabBarStyle.of('yellow'))
+            TabContent() {
+              MyComponent({ color: '#FFBF00' })
+            }.tabBar(SubTabBarStyle.of('yellow'))
 
-      TabContent() {
-        MyComponent({ color: '#E67C92' })
-      }.tabBar(SubTabBarStyle.of('pink'))
+            TabContent() {
+              MyComponent({ color: '#E67C92' })
+            }.tabBar(SubTabBarStyle.of('pink'))
 
-      TabContent() {
-        MyComponent({ color: '#FF0000' })
-      }.tabBar(SubTabBarStyle.of('red'))
-    }
-    .width(360)
-    .height(296)
-    .backgroundColor('#F1F3F5')
-    .cachedMaxCount(1, TabsCacheMode.CACHE_BOTH_SIDE)
+            TabContent() {
+              MyComponent({ color: '#FF0000' })
+            }.tabBar(SubTabBarStyle.of('red'))
+          }
+          .width(360)
+          .height(296)
+          .backgroundColor('#F1F3F5')
+          .cachedMaxCount(1, TabsCacheMode.CACHE_BOTH_SIDE)
+        // ···
   }
 }
 
@@ -621,25 +701,25 @@ Based on the preceding example code, the caching behavior in different scenarios
 
 1. In Figure 16, the default page switching animation is enabled and the **CACHE_BOTH_SIDE** mode is used with **n=2**. When users switch to the yellow page using the tab bar, TabContent1 through TabContent3 are cached. Subsequently switching to the red page releases TabContent1 and TabContent2, while caching TabContent3 through TabContent5.
 
-**Figure 16** Default page switching animation in CACHE_BOTH_SIDE mode
+   **Figure 16** Default page switching animation in CACHE_BOTH_SIDE mode
 
-![cachedMaxCount1](figures/cachedMaxCount1.png)
+   ![cachedMaxCount1](figures/cachedMaxCount1.png)
 
 2. In Figure 17, the default page switching animation is enabled and the **CACHE_LATEST_SWITCHED** mode is used with **n=2**. When users switch to the yellow page using the tab bar, TabContent1 and TabContent3 are cached while TabContent2 is released. Subsequently switching to the red page caches TabContent1, TabContent3, and TabContent5, while releasing TabContent4.
 
-**Figure 17** Default page switching animation in CACHE_LATEST_SWITCHED mode
+   **Figure 17** Default page switching animation in CACHE_LATEST_SWITCHED mode
 
-![cachedMaxCount2](figures/cachedMaxCount2.png)
+   ![cachedMaxCount2](figures/cachedMaxCount2.png)
 
 3. In Figure 18, the default page switching animation is disabled and the **CACHE_BOTH_SIDE** mode is used with **n=2**. When users switch to the yellow page using the tab bar, TabContent1 and TabContent3 are cached. Subsequently switching to the red page caches TabContent3 and TabContent5, while releasing TabContent1.
 
-**Figure 18** CACHE_BOTH_SIDE mode with the page switching animation disabled
+   **Figure 18** CACHE_BOTH_SIDE mode with the page switching animation disabled
 
-![cachedMaxCount3](figures/cachedMaxCount3.png)
+   ![cachedMaxCount3](figures/cachedMaxCount3.png)
 
 4. In Figure 19, the default page switching animation is disabled and the **CACHE_LATEST_SWITCHED** mode is used with **n=2**. When users switch to the yellow page using the tab bar, TabContent1 and TabContent3 are cached. Subsequently switching to the red page caches TabContent1, TabContent3, and TabContent5.
 
-**Figure 19** CACHE_LATEST_SWITCHED mode with the page switching animation disabled
+   **Figure 19** CACHE_LATEST_SWITCHED mode with the page switching animation disabled
 
-![cachedMaxCount4](figures/cachedMaxCount4.png)
+   ![cachedMaxCount4](figures/cachedMaxCount4.png)
 

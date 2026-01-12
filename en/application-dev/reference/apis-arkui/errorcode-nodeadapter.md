@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -18,15 +18,15 @@ The lazy loading adapter is not bound to the component.
 
 **Description**
 
-This error code is reported when the NodeAdapter is not set for the component.
+This error code is reported when no **NodeAdapter** is set for the component.
 
 **Possible Causes**
 
-No NodeAdapter is set for the component.
+No **NodeAdapter** is set for the component.
 
 **Solution**
 
-Set a NodeAdapter for the component.
+Set a **NodeAdapter** for the component.
 
 ## 106105 Adapter Already Exists
 

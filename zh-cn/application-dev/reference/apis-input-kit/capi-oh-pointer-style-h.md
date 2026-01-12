@@ -33,7 +33,7 @@
 
 ### Input_PointerStyle
 
-```
+```c
 enum Input_PointerStyle
 ```
 

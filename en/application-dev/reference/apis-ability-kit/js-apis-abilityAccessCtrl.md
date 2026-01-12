@@ -140,7 +140,7 @@ console.info(`Result: ${data}`);
 
 on(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, callback: Callback&lt;PermissionStateChangeInfo&gt;): void
 
-Subscribes to the permission state change events of the specified permission list of the current application. Such event triggers a corresponding callback.
+Subscribes to the permission state change events of the specified permission list of the current application. Such event triggers a corresponding callback. This API uses an asynchronous callback to return the result.
 
 - When this subscription API is called for multiple times, if the subscribed permission lists are the same but the callbacks are different, the subscription is successful.
 
@@ -156,7 +156,7 @@ Subscribes to the permission state change events of the specified permission lis
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | Yes  | Event type. The value is **'selfPermissionStateChange'**, which indicates the changes in the permission states specific to this application alone. |
 | permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | Yes  | List of target permissions. If this parameter is not specified, this API will subscribe to state changes of all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | Yes| Callback used to return the permission state change.|
+| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | Yes| Callback used to return the result of subscribing to state changes of the specified permission.|
 
 **Error codes**
 
@@ -189,7 +189,7 @@ try {
 
 off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, callback?: Callback&lt;PermissionStateChangeInfo&gt;): void
 
-Unsubscribes from changes in the state of the specified permissions for this application.
+Unsubscribes from changes in the state of the specified permissions for this application. This API uses an asynchronous callback to return the result.
 
 If **callback** is not specified, this API will unregister all callbacks for **permissionList**.
 
@@ -202,8 +202,8 @@ If **callback** is not specified, this API will unregister all callbacks for **p
 | Name            | Type                  | Mandatory| Description                                                         |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string         | Yes  | Event type. The value is **'selfPermissionStateChange'**, which indicates the changes in the permission states specific to this application alone. |
-| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | Yes  | List of target permissions. The value must be the same as that in **on()**. If this parameter is not specified, this API will unsubscribe from state changes for all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | No| Callback to unregister.|
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | Yes  | List of target permissions. The value must be the same as that in [on](#on18). If this parameter is not specified, this API will unsubscribe from state changes for all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | No| Callback used to return the result of canceling the subscription to state changes of the specified token ID and permission.|
 
 **Error codes**
 
@@ -212,7 +212,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100004 | The API is not used in pair with 'on'. |
+| 12100004 | The API is not used in pair with "on". |
 | 12100007 | The service is abnormal. |
 
 **Example**
@@ -253,7 +253,7 @@ If the user rejects to grant permissions, the dialog box cannot be displayed aga
 | -------- | -------- | -------- | -------- |
 | context | [Context](js-apis-inner-application-context.md) | Yes| Context of the <!--RP1-->UIAbility<!--RP1End--> that requests the permission.|
 | permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | Yes| Permissions to request. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| requestCallback | AsyncCallback&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Yes| Callback used to return the result.|
+| requestCallback | AsyncCallback&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Yes| Callback used to return the result. If the dialog box for requesting permissions is displayed successfully, **err** is **undefined**, and **data** is the obtained **PermissionRequestResult**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -284,6 +284,7 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: 
     console.info('requestPermissionsFromUser data permissions:' + data.permissions);
     console.info('requestPermissionsFromUser data authResults:' + data.authResults);
     console.info('requestPermissionsFromUser data dialogShownResults:' + data.dialogShownResults);
+    console.info('requestPermissionsFromUser data errorReasons:' + data.errorReasons);
   }
 });
 ```
@@ -341,6 +342,7 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((
   console.info('requestPermissionsFromUser data permissions:' + data.permissions);
   console.info('requestPermissionsFromUser data authResults:' + data.authResults);
   console.info('requestPermissionsFromUser data dialogShownResults:' + data.dialogShownResults);
+  console.info('requestPermissionsFromUser data errorReasons:' + data.errorReasons);
 }).catch((err: BusinessError) => {
   console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.message}`);
 });
@@ -350,7 +352,7 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((
 
 requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permissions&gt;): Promise&lt;Array&lt;GrantStatus&gt;&gt;
 
-Starts a permission setting dialog box again for [UIAbility](js-apis-app-ability-uiAbility.md#uiability) or [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability).
+Starts a permission setting dialog box again for [UIAbility](js-apis-app-ability-uiAbility.md#uiability) or [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability). This API uses a promise to return the result.
 
 Before calling this API, the application must have called [requestPermissionsFromUser](#requestpermissionsfromuser9). If the user grants the permissions required when the authorization dialog box is displayed the first time, calling this API will not display the permission settings dialog box.
 
@@ -383,7 +385,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission list contains the permission that is not declared in the module.json file;<br>3. The permission list is invalid because the permissions in it do not belong to the same permission group;<br>4. The permission list contains one or more system_grant permissions. |
 | 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining user operation result. |
 | 12100011 | All permissions in the permission list have been granted. |
@@ -410,7 +411,7 @@ atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((
 
 requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 
-Displays a dialog box for setting a global switch for UIAbility or UIExtensionAbility.
+Displays a dialog box for setting a global switch for UIAbility or UIExtensionAbility. This API uses a promise to return the result.
 
 When the features such as recording and photographing are disabled, the application can display the dialog box, asking the user to enable the related features. If the global switch is turned on, no dialog box will be displayed.
 
@@ -435,7 +436,7 @@ When the features such as recording and photographing are disabled, the applicat
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the global switch status. **true** to enable, **false** otherwise.|
+| Promise&lt;boolean&gt; | Promise used to return the result. Returns **true** if the global switch is enabled. Returns **false** if the global switch is disabled.|
 
 **Error codes**
 
@@ -654,7 +655,7 @@ Checks whether the user has granted the permission. This API uses a promise to r
 
 > **NOTE**
 >
-> This API is no longer maintained since API version 9. Use [checkAccessToken](#checkaccesstoken9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [checkAccessToken](#checkaccesstoken9) instead.
 
 **System capability**: SystemCapability.Security.AccessToken
 

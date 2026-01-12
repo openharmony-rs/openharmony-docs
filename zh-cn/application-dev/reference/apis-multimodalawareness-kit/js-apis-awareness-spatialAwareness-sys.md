@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.spatialAwareness (空间感知)
+# @ohos.multimodalAwareness.spatialAwareness (空间感知)(系统接口)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
@@ -11,7 +11,6 @@
 > **说明：**
 >
 > 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
 
 ## 导入模块
 
@@ -108,8 +107,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.onDistanceMeasure
 
-onDistanceMeasure(configParams: DistanceMeasurementConfigParams,
-    callback: Callback&lt;DistanceMeasurementResponse&gt;): void;
+onDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
 订阅测距事件后，返回测距结果。
 
@@ -121,7 +119,7 @@ onDistanceMeasure(configParams: DistanceMeasurementConfigParams,
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数
+| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数 |
 | callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | 是   | 回调函数，返回测距结果。                                   |
 
 **错误码**：
@@ -130,7 +128,7 @@ onDistanceMeasure(configParams: DistanceMeasurementConfigParams,
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system application. |
+| 201      | Permission denied. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100002 | Subscription failed. |
@@ -159,8 +157,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.offDistanceMeasure
 
-offDistanceMeasure(configParams: DistanceMeasurementConfigParams,
-    callback?: Callback&lt;DistanceMeasurementResponse&gt;): void;
+offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
 取消订阅测距事件。取消订阅测距事件后，不会发生测距。
 
@@ -172,7 +169,7 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams,
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数
+| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数 |
 | callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | 否   | 回调函数，返回测距结果。                                 |
 
 **错误码**：
@@ -181,7 +178,7 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams,
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system application. |
+| 201      | Permission denied. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |
@@ -210,8 +207,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.onIndoorOrOutdoorIdentify
 
-onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
-    callback: Callback&lt;DoorPositionResponse&gt;): void;
+onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callback: Callback&lt;DoorPositionResponse&gt;): void;
 订阅门内外识别事件后返回结果。返回设备在门内还是门外的信息。
 
 **需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
@@ -222,7 +218,7 @@ onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数
+| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数 |
 | callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | 是   | 回调函数，返回门内外信息。                                   |
 
 **错误码**：
@@ -231,7 +227,7 @@ onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system application. |
+| 201      | Permission denied. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100002 | Subscription failed. |
@@ -260,8 +256,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.offIndoorOrOutdoorIdentify
 
-offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
-    callback?: Callback&lt;DoorPositionResponse&gt;): void;
+offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callback?: Callback&lt;DoorPositionResponse&gt;): void;
 
 取消识别门内外订阅事件。不返回门内外信息。
 
@@ -273,7 +268,7 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数
+| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数 |
 | callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | 否   | 回调函数，返回门内外信息。                                   |
 
 **错误码**：
@@ -282,7 +277,7 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system application.
+| 201      | Permission denied. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |

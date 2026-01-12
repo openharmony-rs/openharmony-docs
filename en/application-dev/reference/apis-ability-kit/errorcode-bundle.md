@@ -26,10 +26,10 @@ The specified bundle name does not exist.
 **Solution**<br>
 1. Check whether the spelling of the bundle name is correct.
 2. Run the [dump command](../../tools/bm-tool.md#dump), and check the command output. If the bundle is not installed, an error is reported.
-```
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell bm dump -n com.xxx.demo
-```
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700002 Module Name Does Not Exist
 
@@ -46,10 +46,10 @@ The specified module name does not exist.
 **Solution**<br>
 1. Check whether the spelling of the module name is correct.
 2. Run the [dump command](../../tools/bm-tool.md#dump), and check whether the module name exists in the list of the **hapModuleNames** field in the output. If not, the module is not installed.
-```
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell bm dump -n com.xxx.demo
-```
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700003 Ability Name Does Not Exist
 
@@ -62,14 +62,16 @@ The specified ability name does not exist.
 **Possible Causes**<br>
 1. The ability name is misspelled.
 2. The application does not have the ability specified by **abilityName**.
+3. When [bundleManager.getProfileByAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability) or [bundleManager.getProfileByExtensionAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyextensionability) is used for query based on a combination of ability name and module name, the application does not have the module specified by **moduleName** or the specified ability under that module.
 
 **Solution**<br>
 1. Check whether the spelling of the ability name is correct.
 2. Run the [dump command](../../tools/bm-tool.md#dump), and check whether **abilityInfos** under the **hapModuleInfos** field in the output contains an entry where the name equals this ability name. If no such entry is found, the ability name does not exist.
-```
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell bm dump -n com.xxx.demo
-```
+3. Run the [dump command](../../tools/bm-tool.md#dump), and check the **hapModuleNames** field in the output. If the specified module name is not in the list, the application has not installed the module, and the ability under that module also does not exist.
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700004 User ID Does Not Exist
 
@@ -233,14 +235,16 @@ The version number is earlier than the version in use.
 Ensure that the version of the bundle to install is not earlier than the version in use.
 
 1. To query the version of an existing application, run [the dump command](../../dfx/hdc.md#environment-setup). The output contains the version code of the installed application. If multiple version codes are displayed, select the one greater than 0. If no result is displayed, the application is not installed.
-```
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell "bm dump -n com.xxx.demo |grep versionCode"
-```
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell "bm dump -n com.xxx.demo |grep versionCode"
+    ```
 
 2. To query the version of a newly installed application, use DevEco Studio to open the HAP or HSP file and check the value of **versionCode** in the **module.json** file.
 
-![Example](figures/hap_verisonCode.PNG)
+    ![Example](figures/hap_verisonCode.PNG)
+
+3. For a installed third-party application whose signing certificate distribution type is **app_gallery** or signing certificate type is **debug**, downgrade installation is supported when the newly installed version is lower than the current version. For details about the parameter configuration, you can refer to the description of **parameters** in [InstallParam](js-apis-installer-sys.md#installparam).
 
 ## 17700018 Bundle Installation Failure Because the Dependent Module Does Not Exist
 
@@ -285,7 +289,7 @@ The application corresponding to the UID does not exist.
 
 **Solution**<br>
 Check whether the UID exists in the system. Run the [dump command](../../tools/bm-tool.md#dump), and check the UID of the installed application. If multiple UIDs are displayed, select the one greater than 0. If no result is displayed, the application is not installed.
-```
+```shell
 # Replace **com.xxx.demo** with the actual bundle name.
 hdc shell "bm dump -n com.xxx.demo |grep uid"
 ```
@@ -331,17 +335,13 @@ When an API for querying the profile is called, the profile does not exist.
 
 **Possible Causes**<br>
 1. The metadata name passed in the API does not exist in the profile.
-2. The content of the profile is not in JSON format.
-<!--Del-->
-3. The type of the profile to query does not exist.
-<!--DelEnd-->
+2. The content of the profile is not in JSON format.<!--Del-->
+3. The type of the profile to query does not exist.<!--DelEnd-->
 
 **Solution**<br>
 1. Check whether the metadata name in the **ability** or **extensionAbility** to be queried exists.
-2. Check whether the content of the profile to be queried is in JSON format.
-<!--Del-->
-3. Check whether the application contains a profile that matches the value of **profileType** passed in.
-<!--DelEnd-->
+2. Check whether the content of the profile to be queried is in JSON format.<!--Del-->
+3. Check whether the application contains a profile that matches the value of **profileType** passed in.<!--DelEnd-->
 <!--Del-->
 ## 17700025 Invalid Type
 
@@ -935,7 +935,7 @@ The application does not support creating a clone instance.
 
 **Solution**<br>
 1. Check whether the application is configured to support clone mode. For details, see [Creating an Application Clone](../../quick-start/app-clone.md).
-2. Check whether the enterprise device has security policies that disable application cloning. You can verify this by navigating to **Settings > System > App Clone** on the device to see whether cloning is supported for the application.
+2. Check whether the enterprise device has security policies that disable application cloning. You can verify this by navigating to **Settings > System > App Clone** on the device to see whether cloning is supported for the application.<!--DelEnd-->
 
 ## 17700070 Invalid Shortcut ID
 
@@ -951,6 +951,7 @@ A shortcut with the same bundle name, clone index, user ID, and shortcut ID alre
 **Solution**<br>
 1. Check whether the bundle name and shortcut ID are correct.
 
+<!--Del-->
 ## 17700071 Enterprise Applications Cannot Be Installed
 **Error Message**<br>
 It is not allowed to install the enterprise bundle.
@@ -1203,7 +1204,7 @@ The **pluginDistributionIDs** in the signing certificate profile does not confor
 
 **Solution**<br>
 Reconfigure the **app-services-capabilities** field in the [profile](../../security/app-provision-structure.md) as follows:
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
@@ -1225,7 +1226,7 @@ The **pluginDistributionIDs** between the plugin and the application do not shar
 
 **Solution**<br>
 Reconfigure the **pluginDistributionIDs** field in the [profile](../../security/app-provision-structure.md) as follows:
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
@@ -1284,7 +1285,7 @@ The system throws an uncaught error code, such as IPC failure or file copy failu
 
 2. If the request still fails after the preceding steps are performed for three to five times, check whether a crash file containing **foundation** exists in the **/data/log/faultlog/faultlogger/** directory of the device.
 
-    ```
+    ```shell
     hdc shell
     cd /data/log/faultlog/faultlogger/
     ls -ls
@@ -1292,7 +1293,7 @@ The system throws an uncaught error code, such as IPC failure or file copy failu
 
 3. Export the crash file and log file and submit them to [online tickets](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-    ```
+    ```shell
     hdc file recv /data/log/faultlog/faultlogger/
     hdc file recv /data/log/hilog/
     ```
@@ -1433,4 +1434,42 @@ The file type array is invalid. For example:
 
 **Solution**<br>
 Verify the file type array configuration. Refer to the parameter specifications and check for the issues listed above.
+
+## 18100001 Inconsistent bundleName and appIndex Combinations in the shortcutInfo List
+**Error Message**<br>
+A combination of bundleName and appIndex in the shutcutInfo list is different from the others.
+
+**Description**<br>
+The **shortcutInfo** list contains a combination of **bundleName** and **appIndex** that is inconsistent with other entries.
+
+**Possible Causes**<br>
+The **shortcutInfo** list contains a combination of **bundleName** and **appIndex** that is inconsistent with other entries.
+
+For example, the following list is passed to [shortcutManager.addDynamicShortcutInfos](../apis-ability-kit/js-apis-shortcutManager-sys.md#shortcutmanageradddynamicshortcutinfos23):
+```ts
+const bundleName = "com.example.dynamic";
+const bundleName1 = "com.example.dynamic1";
+let moduleName = 'entry';
+const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
+  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+    // Verification fails because the bundleName and appIndex combination is different from other shortcutInfo entries.
+  { id: "3", bundleName: bundleName1, moduleName: moduleName, appIndex: 0, sourceType: 2 }
+]
+```
+Or:
+```ts
+const bundleName = "com.example.dynamic";
+let moduleName = 'entry';
+const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
+  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  // Verification fails because the bundleName and appIndex combination is different from other shortcutInfo entries.
+  { id: "3", bundleName: bundleName, moduleName: moduleName, appIndex: 1, sourceType: 2 }
+]
+```
+
+**Solution**<br>
+Check the **shortcutInfo** list to ensure all **bundleName** and **appIndex** combinations are consistent.
+
 <!--DelEnd-->

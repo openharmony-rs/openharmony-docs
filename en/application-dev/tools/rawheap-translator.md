@@ -73,7 +73,7 @@ rawheap_translator [rawheap_file] [heapsnapshot_file]
 | Parameter| Mandatory| Description|
 | -------- | --- | ----------------- |
 | [rawheap_file] | Yes| Path of the .rawheap file generated upon an OOM error of the application to be parsed.|
-| [heapsnapshot_file] | No| Path of the heapsnapshot file generated upon parsing. The path must have the read and write permissions.<br>If no parameter is specified, the path of the command is used by default.<br>If this parameter is specified, the file name extension must be **heapsnapshot**.
+| [heapsnapshot_file] | No| Path of the heapsnapshot file generated upon parsing. The path must have the read and write permissions.<br>If no parameter is specified, the path of the command is used by default.<br>If this parameter is specified, the file name extension must be **heapsnapshot**.|
 
 ## Using Parsing Commands
 
@@ -81,21 +81,25 @@ rawheap_translator [rawheap_file] [heapsnapshot_file]
 
 
 On OHOS
+
 On OHOS, the tool path is **/bin/rawheap_translator**. You are advised to specify the path for generating the **.heapsnapshot** file as **/data/local/tmp**. If you specify another path, the write permission may be unavailable.
 ```bash
 > /bin/rawheap_translator /data/log/reliability/resource_leak/memory_leak/memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap /data/local/tmp/myapplication-7979-7979.heapsnapshot
 ```
 On Windows
+
 Open the cmd window, go to the .rawheap file path, and run the parsing command to generate the .heapsnapshot file in the current path.
 ```bash
 > rawheap_translator.exe memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
 ```
 On Linux
+
 Go to the path of the .rawheap file, and run the parsing command to generate the .heapsnapshot file in the current path.
 ```bash
 > ./rawheap_translator memory_leak/memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
 ```
 On macOS
+
 Open the device, go to the .rawheap file path, and run the parsing command to generate the .heapsnapshot file in the current path.
 ```bash
 > rawheap_translator memory_leak/memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
@@ -123,7 +127,7 @@ Output example
 
 The rawheap-file size and generation time are strongly and positively correlated with the current ArkTS heap size and the number of live objects. When the ArkTS heap memory usage is high and the number of live objects is large, the generated rawheap file is larger and the generation takes longer. You can subscribe to the [resource leak events](../dfx/hiappevent-watcher-resourceleak-events.md) and customize the event processing logic.
 
-Since API version 20, the VM supports two specifications of heap dump.
+Since API version 20, the VM supports two specifications of heap dump. For details about how to switch between the specifications, see [hidebug.setJsRawHeapTrimLevel](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugsetjsrawheaptrimlevel20)
 | Specifications| Features|
 | :--- | :--- |
 | TRIM_LEVEL_1 | The dump speed is fast, and the generated rawheap file is large.<br>Before API version 20, the VM uses **TRIM_LEVEL_1** by default.|

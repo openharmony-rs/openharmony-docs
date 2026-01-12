@@ -4,7 +4,7 @@
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **mediaquery** module provides different styles for different media types.
 
@@ -22,12 +22,21 @@ The **mediaquery** module provides different styles for different media types.
 import mediaquery from '@system.mediaquery';
 ```
 
+## MediaQuery
 
-## mediaquery.matchMedia
+Defines the MediaQuery API.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+### matchMedia
 
 matchMedia(condition: string): MediaQueryList
 
 Creates a **MediaQueryList** object based on the query condition.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,7 +50,7 @@ Creates a **MediaQueryList** object based on the query condition.
 
 | Type          | Description                                      |
 | -------------- | ---------------------------------------- |
-| MediaQueryList | Attributes of the **MediaQueryList** object created. For details, see **MediaQueryList** attributes.|
+| [MediaQueryList](./js-apis-system-mediaquery.md#mediaquerylist) | Attributes of the **MediaQueryList** object created. For details, see the descriptions below.|
 
 **Example**
 
@@ -53,38 +62,29 @@ let mMediaQueryList = mediaquery.matchMedia('(max-width: 466)');
 
 Defines a media query event.
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type   | Mandatory  | Description   |
-| ------- | ------- | ---- | ----- |
-| matches | boolean | Yes   | Matching result. The value **true** means that the query conditions are met, and **false** means the opposite.|
+| Name     | Type   | Read-Only| Optional  | Description   |
+| ------- | ------- | ---- | ---- | ----- |
+| matches | boolean | No|No   | Matching result. The value **true** means that the query condition is met, and **false** means the opposite.|
 
 ## MediaQueryList
 
-Defines a media query list.
+Represents media query list information.
 
 ### Properties
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name     | Type   | Mandatory  | Description               |
-| ------- | ------- | ---- | ----------------- |
-| media   | string  | No   | Serialized media query condition. This parameter is read-only.|
-| matches | boolean | Yes   | Matching result. The value **true** means that the query conditions are met, and **false** means the opposite.           |
-
-### onchange
-
-onchange?: (matches: boolean) => void
-
-Called when the **matches** value changes.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
-| Name    | Type     | Mandatory  | Description            |
-| ------- | ------- | ---- | -------------- |
-| matches | boolean | Yes   | New **matches** value. The value **true** means that the query conditions are met, and **false** means the opposite.|
+| Name     | Type   | Read-Only| Optional  | Description               |
+| ------- | ------- | ---- |---- | ----------------- |
+| media   | string  | No|  Yes   | Serialized media query condition. This parameter is read-only.|
+| matches | boolean | No|  Yes    | Matching result. The value **true** means that the query condition is met, and **false** means the opposite.           |
+| onchange | (matches: boolean) => void | No|  Yes    | Callback invoked when the match result changes. **matches** indicates whether the media query condition is met. The value **true** means that the query condition is met, and **false** means the opposite.|
 
 
 ### MediaQueryList.addListener
@@ -92,6 +92,8 @@ Called when the **matches** value changes.
 addListener(callback: (event: MediaQueryEvent) => void): void
 
 Adds a listener for this **MediaQueryList** object. The listener must be added before **onShow** is called, that is, it must be added in the **onInit** or **onReady** API.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,13 +124,15 @@ removeListener(callback: (event: MediaQueryEvent) => void): void
 
 Removes the listener for this **MediaQueryList** object.
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name     | Type                               | Mandatory  | Description            |
 | -------- | --------------------------------- | ---- | -------------- |
-| callback | (event: MediaQueryEvent) => void) | Yes   | Callback invoked when the query condition changes.|
+| callback | (event: MediaQueryEvent) => void | Yes   | Callback invoked when the query condition changes.|
 
 **Example**
 

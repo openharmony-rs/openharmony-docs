@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides common APIs related to gestures.
 
@@ -68,7 +68,7 @@ Sets the input types that can trigger the gesture response.
 
 Provides the information about the scrollable container component corresponding to the gesture recognizer. It inherits from [EventTargetInfo](#eventtargetinfo12).
 
-### isBegin<sup>12+</sup>
+### isBegin<sup>12+</sup> 
 
 isBegin(): boolean
 
@@ -314,7 +314,7 @@ Checks whether the preset gesture detects the number of fingers on the screen.
 
 | Type    | Description       |
 | ------ | --------- |
-| boolean | Whether the preset gesture detects the number of fingers on the screen. Returns **true** if the gesture event is bound and the number of fingers on the touch screen is detected; **false** otherwise.|
+| boolean | Whether the preset gesture will detect the number of fingers on the screen. **true** if the gesture event is bound and detects the number of fingers; **false** otherwise.|
 
 ### preventBegin<sup>20+</sup>
 
@@ -648,7 +648,7 @@ Defines the finger information type.
 | globalDisplayX<sup>20+</sup> | number | No |  Yes    |X-coordinate relative to the upper left corner of the global display, in vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | globalDisplayY<sup>20+</sup> | number | No |  Yes    |Y-coordinate relative to the upper left corner of the global display, in vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
-## GestureType<sup>11+</sup>
+## GestureType
 
 type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | SwipeGesture | RotationGesture | GestureGroup
 

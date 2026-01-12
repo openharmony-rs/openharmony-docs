@@ -1,10 +1,17 @@
 # select
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhanghaibo0-->
+<!--Designer: @zhanghaibo0-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+The **<select\>** component provides a drop-down list that allows users to select among multiple options.
 
 >  **NOTE**
 >
 >  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
-The **<select\>** component provides a drop-down list that allows users to select among multiple options.
 
 ## Child Components
 
@@ -48,7 +55,7 @@ The [universal methods](js-components-common-methods.md) are supported.
 ```html
 <!-- xxx.hml -->
 <div class="container">
-    <select @change="onChange">
+    <select>
         <option for="{{ array }}" value="{{ $item.value }}">
             {{ $item.name }}
         </option>
@@ -85,28 +92,8 @@ export default {
                 "value": "Option 3", "name": "Option 3"
             },
         ]
-    },
-    getData() {
-        let other = [
-            {
-                "value": "Option A", "name": "Option A"
-            },
-            {
-                "value": "Option B", "name": "Option B"
-            },
-            {
-                "value": "Option C", "name": "Option C"
-            },
-            {
-                "value": "Option D", "name": "Option D"
-            },
-        ]
-        return other
-    },
-    onChange() {
-        this.array = this.getData()
     }
 }
 ```
 
-![en-us_image_0000001152588538](figures/en-us_image_0000001152588538.gif)
+![en-us_image_0000001152588538](figures/en-us_image_0000001152588538.png)

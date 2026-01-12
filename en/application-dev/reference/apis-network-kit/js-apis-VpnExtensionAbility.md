@@ -45,7 +45,7 @@ Called when the third-party VPN is initialized upon startup.
 
 **Example**
 
-  ```ts
+```ts
 import { VpnExtensionAbility } from '@kit.NetworkKit';
 import { Want } from '@kit.AbilityKit';
 
@@ -54,7 +54,7 @@ class MyVpnExtAbility extends VpnExtensionAbility {
        console.info('MyVpnExtAbility onCreate');
     }
 }
-  ```
+```
 
 ## VpnExtensionAbility.onDestroy
 
@@ -66,7 +66,7 @@ Called when the third-party VPN is destroyed to clear resources.
 
 **Example**
 
-  ```ts
+```ts
 import { VpnExtensionAbility } from '@kit.NetworkKit';
 
 class MyVpnExtAbility extends VpnExtensionAbility {
@@ -74,4 +74,4 @@ class MyVpnExtAbility extends VpnExtensionAbility {
        console.info('MyVpnExtAbility onDestroy');
     }
 }
-  ```
+```

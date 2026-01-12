@@ -175,7 +175,7 @@ private:
             value[0] = {1};
             ArkUI_AttributeItem width{value, 1};
             nodeApi_->setAttribute(flowItem, NODE_WIDTH_PERCENT, &width);
-            value[0] = {.u32 = 0xFFFF0000};
+            value[0] = {.u32 = 0xFFD3D3D3};
             ArkUI_AttributeItem backgroundColor{value, 1};
 
             nodeApi_->setAttribute(flowItem, NODE_BACKGROUND_COLOR, &backgroundColor);

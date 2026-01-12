@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-帧动画具备逐帧回调的特性，便于开发者在每一帧中处理需调整的属性。通过向应用提供onFrame逐帧回调，帧动画使开发者能够在应用的每一帧设置属性值，从而实现组件属性值变化的自然过渡，营造出动画效果。帧动画接口详情可参考[@ohos.animator (动画)](../reference/apis-arkui/js-apis-animator.md)。
+帧动画具备逐帧回调的特性，便于开发者在每一帧中处理需调整的属性。通过向应用提供[AnimatorResult](../reference/apis-arkui/js-apis-animator.md#animatorresult)的onFrame属性逐帧回调，帧动画使开发者能够在应用的每一帧设置属性值，从而实现组件属性值变化的自然过渡，营造出动画效果。帧动画接口详情可参考[@ohos.animator (动画)](../reference/apis-arkui/js-apis-animator.md)。
 
 与属性动画相比，帧动画能让开发者实时感知动画进程，即时调整UI值，具备事件即时响应和可暂停的优势，但在性能上略逊于属性动画。当属性动画能满足需求时，建议优先采用属性动画接口实现。属性动画接口可参考[实现属性动画](./arkts-attribute-animation-apis.md)。
 
@@ -115,12 +115,12 @@
      }
      //动画取消时执行方法
      this.animatorOptions.onCancel = () => {
-       // $r('app.string.cancel')资源文件中的value值为'取消'
+       // 请将$r('app.string.cancel')替换为实际资源文件，在本示例中该资源文件的value值为"取消"
        this.animatorStatus = $r('app.string.cancel');
      }
      //动画完成时执行方法
      this.animatorOptions.onFinish = () => {
-       // $r('app.string.complete')资源文件中的value值为'完成'
+       // 请将$r('app.string.complete')替换为实际资源文件，在本示例中该资源文件的value值为"完成"
        this.animatorStatus = $r('app.string.complete');
      }
      //动画重复播放时执行方法
@@ -136,21 +136,21 @@
    <!-- @[animator_template4_buttons_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
    
    ``` TypeScript
-   // $r('app.string.play')资源文件中的value值为'播放'
+   // 请将$r('app.string.play')替换为实际资源文件，在本示例中该资源文件的value值为"播放"
    Button($r('app.string.play')).onClick(() => {
      this.animatorOptions?.play();
-     // $r('app.string.playing')资源文件中的value值为'播放中'
+     // 请将$r('app.string.playing')替换为实际资源文件，在本示例中该资源文件的value值为"播放中"
      this.animatorStatus = $r('app.string.playing');
    }).width(80).height(35)
-   // $r('app.string.reset')资源文件中的value值为'重置'
+   // 请将$r('app.string.reset')替换为实际资源文件，在本示例中该资源文件的value值为"重置"
    Button($r('app.string.reset')).onClick(() => {
      this.translateX = 0;
      this.translateY = 0;
    }).width(80).height(35)
-   // $r('app.string.pause')资源文件中的value值为'暂停'
+   // 请将$r('app.string.pause')替换为实际资源文件，在本示例中该资源文件的value值为"暂停"
    Button($r('app.string.pause')).onClick(() => {
      this.animatorOptions?.pause();
-     // $r('app.string.pause')资源文件中的value值为'暂停'
+     // 请将$r('app.string.pause')替换为实际资源文件，在本示例中该资源文件的value值为"暂停"
      this.animatorStatus = $r('app.string.pause');
    }).width(80).height(35)
    ```
@@ -182,7 +182,7 @@ const TAG: string = '[AnimatorTest]';
 struct Index {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   private manager = this.context.resourceManager;
-  @State animatorOptions: AnimatorResult | undefined = undefined;
+  @State animatorResult: AnimatorResult | undefined = undefined;
   // 'create'资源文件中的value值为'创建'
   @State animatorStatus: string = 'create';
   begin: number = 0;
@@ -205,48 +205,48 @@ struct Index {
   @State translateY: number = 0;
 
   onPageShow(): void {
-    this.animatorOptions = this.getUIContext().createAnimator(this.animatorOption);
-    this.animatorOptions.onFrame = (progress: number) => {
+    this.animatorResult = this.getUIContext().createAnimator(this.animatorOption);
+    this.animatorResult.onFrame = (progress: number) => {
       this.translateX = progress;
       if (progress > this.topWidth && this.translateY < this.bottomHeight) {
         this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
       }
     }
-    this.animatorOptions.onCancel = () => {
+    this.animatorResult.onCancel = () => {
       // 'cancel'资源文件中的value值为'取消'
       this.animatorStatus = 'cancel';
     }
-    this.animatorOptions.onFinish = () => {
+    this.animatorResult.onFinish = () => {
       // 'complete'资源文件中的value值为'完成'
       this.animatorStatus = 'complete';
     }
-    this.animatorOptions.onRepeat = () => {
+    this.animatorResult.onRepeat = () => {
       // 'repeat'资源文件中的value值为'动画重复播放'
       hilog.info(DOMAIN, TAG, this.manager.getStringByNameSync('repeat'));
     }
   }
 
   onPageHide(): void {
-    this.animatorOptions = undefined;
+    this.animatorResult = undefined;
   }
 
   build() {
     Column() {
       Column({ space: 30 }) {
-        // $r('app.string.play')资源文件中的value值为'播放'
+        // 请将$r('app.string.play')替换为实际资源文件，在本示例中该资源文件的value值为"播放"
         Button($r('app.string.play')).onClick(() => {
-          this.animatorOptions?.play();
+          this.animatorResult?.play();
           // 'playing'资源文件中的value值为'播放中'
           this.animatorStatus = 'playing';
         }).width(80).height(35)
-        // $r('app.string.reset')资源文件中的value值为'重置'
+        // 请将$r('app.string.reset')替换为实际资源文件，在本示例中该资源文件的value值为"重置"
         Button($r('app.string.reset')).onClick(() => {
           this.translateX = 0;
           this.translateY = 0;
         }).width(80).height(35)
-        // $r('app.string.pause')资源文件中的value值为'暂停'
+        // 请将$r('app.string.pause')替换为实际资源文件，在本示例中该资源文件的value值为"暂停"
         Button($r('app.string.pause')).onClick(() => {
-          this.animatorOptions?.pause();
+          this.animatorResult?.pause();
           // 'pause'资源文件中的value值为'暂停'
           this.animatorStatus = 'pause';
         }).width(80).height(35)

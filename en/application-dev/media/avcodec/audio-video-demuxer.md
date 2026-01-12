@@ -359,6 +359,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       int32_t ret;
 
       while (!isEnd.load()) {
+         // Before calling OH_AVDemuxer_ReadSampleBuffer, call OH_AVDemuxer_SelectTrackByID to select the track from which the demuxer reads data.
+         // Note:
+         // For AVI, MPG, and WMV formats, since the container standard does not support encapsulating timestamp information, the demultiplexed frames do not contain PTS information. The caller needs to calculate display timestamps based on the frame rate and the display order of the decoded frames.
          ret = OH_AVDemuxer_ReadSampleBuffer(demuxer, trackIndex, buffer);
          if (ret == AV_ERR_OK) {
                OH_AVBuffer_GetBufferAttr(buffer, &info);

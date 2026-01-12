@@ -34,11 +34,11 @@ The data provider can call **addRecord()** provided by the UDMF to add data reco
 1. Import the required modules.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+    
     ``` TypeScript
     // 1. Import the unifiedDataChannel and uniformTypeDescriptor modules.
     import { uniformDataStruct, uniformTypeDescriptor, unifiedDataChannel } from '@kit.ArkData';
-    import hilog from '@ohos.hilog';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. Create a data record for a hyperlink.

@@ -8,6 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 [瀑布流](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)常用于展示图片信息，尤其在购物和资讯类应用中。
+
 ArkUI提供了WaterFlow容器组件，用于构建瀑布流布局。WaterFlow组件支持条件渲染、循环渲染和懒加载等方式生成子组件。
 
 > **说明：** 
@@ -40,7 +41,8 @@ itemFoot() {
   Row() {
     LoadingProgress()
       .color(Color.Blue).height(50).aspectRatio(1).width('20%')
-    Text(`正在加载`)
+    // 请将$r('app.string.waterFlow_text1')替换为实际资源文件，在本示例中该资源文件的value值为"正在加载 "
+    Text($r('app.string.waterFlow_text1'))
       .fontSize(20)
       .width('30%')
       .height(50)
@@ -52,7 +54,7 @@ itemFoot() {
 build() {
   NavDestination() {
     Column({ space: 12 }) {
-      // $r('app.string.WaterFlowInfiniteScrolling_title')需要替换为开发者所需的资源文件
+      // 请将$r('app.string.WaterFlowInfiniteScrolling_title')替换为实际资源文件，在本示例中该资源文件的value值为"无限滚动（到达末尾时新增数据）"
       ComponentCard({ title: $r('app.string.WaterFlowInfiniteScrolling_title') }) {
         WaterFlow({ footer: this.itemFoot(), layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
           LazyForEach(this.dataSource, (item: number) => {
@@ -82,14 +84,14 @@ build() {
     .padding({ left: 12, right: 12 })
   }
   .backgroundColor('#f1f2f3')
-  // $r('app.string.WaterFlowInfiniteScrolling_title')需要替换为开发者所需的资源文件
+  // 请将$r('app.string.WaterFlowInfiniteScrolling_title')替换为实际资源文件，在本示例中该资源文件的value值为"无限滚动（到达末尾时新增数据）"
   .title($r('app.string.WaterFlowInfiniteScrolling_title'))
 }
 ```
 
-在此处应通过在数据末尾添加元素的方式来新增数据，不可直接修改dataArray后通过LazyForEach的onDataReloaded()方法通知瀑布流重新加载数据。
+在此处应通过在数据末尾添加元素的方式来新增数据，不可直接修改dataArray后通过LazyForEach的[onDataReloaded](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondatareloaded)方法通知瀑布流重新加载数据。
 
-由于在瀑布流布局中，各子节点的高度不一致，下面的节点位置依赖于上面的节点，所以重新加载所有数据会触发整个瀑布流重新计算布局，可能会导致卡顿。在数据末尾增加数据后，应使用`onDatasetChange([{ type: DataOperationType.ADD, index: len, count: count }])`通知，以使瀑布流能够识别新增数据并继续加载，同时避免对已有数据进行重复处理。
+由于在瀑布流布局中，各子节点的高度不一致，下面的节点位置依赖于上面的节点，所以重新加载所有数据会触发整个瀑布流重新计算布局，可能会导致卡顿。在数据末尾增加数据后，应使用[`onDatasetChange([{ type: DataOperationType.ADD, index: len, count: count }])`](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondatasetchange12)通知，以使瀑布流能够识别新增数据并继续加载，同时避免对已有数据进行重复处理。
 
 ![](figures/waterflow-demo1.gif)
 
@@ -105,7 +107,7 @@ build() {
 build() {
   NavDestination() {
     Column({ space: 12 }) {
-      // $r('app.string.WaterFlowInfiniteScrollingEarly_title')需要替换为开发者所需的资源文件
+      // 请将$r('app.string.WaterFlowInfiniteScrollingEarly_title')替换为实际资源文件，在本示例中该资源文件的value值为"无限滚动（提前新增数据）"
       ComponentCard({ title: $r('app.string.WaterFlowInfiniteScrollingEarly_title') }) {
         WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
           LazyForEach(this.dataSource, (item: number) => {
@@ -137,7 +139,7 @@ build() {
     .padding({ left: 12, right: 12 })
   }
   .backgroundColor('#f1f2f3')
-  // $r('app.string.WaterFlowInfiniteScrollingEarly_title')需要替换为开发者所需的资源文件
+  // 请将$r('app.string.WaterFlowInfiniteScrollingEarly_title')替换为实际资源文件，在本示例中该资源文件的value值为"无限滚动（提前新增数据）"
   .title($r('app.string.WaterFlowInfiniteScrollingEarly_title'))
 }
 ```
@@ -177,14 +179,15 @@ export struct WaterFlowDynamicSwitchover {
   // 通过状态变量设置列数，可以按需修改触发布局更新
   @State columns: number = 2;
 
-// ···
+  // ...
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // $r('app.string.WaterFlowDynamicSwitchover_title')需要替换为开发者所需的资源文件
+        // 请将$r('app.string.WaterFlowDynamicSwitchover_title')替换为实际资源文件，在本示例中该资源文件的value值为"动态切换列数"
         ComponentCard({ title: $r('app.string.WaterFlowDynamicSwitchover_title') }) {
           Column({ space: 2 }) {
-            Button('切换列数').fontSize(20).onClick(() => {
+            // 请将$r('app.string.waterFlow_text2')替换为实际资源文件，在本示例中该资源文件的value值为"切换列数 "
+            Button($r('app.string.waterFlow_text2')).fontSize(20).onClick(() => {
               if (this.columns === 2) {
                 this.columns = 1;
               } else {
@@ -218,7 +221,7 @@ export struct WaterFlowDynamicSwitchover {
                 }, 1000);
               }
             })
-            // ···
+            // ...
           }
         }
       }
@@ -226,7 +229,7 @@ export struct WaterFlowDynamicSwitchover {
       .height('100%')
     }
     .backgroundColor('#f1f2f3')
-    // $r('app.string.WaterFlowDynamicSwitchover_title')需要替换为开发者所需的资源文件
+    // 请将$r('app.string.WaterFlowDynamicSwitchover_title')替换为实际资源文件，在本示例中该资源文件的value值为"动态切换列数"
     .title($r('app.string.WaterFlowDynamicSwitchover_title'))
   }
 }
@@ -240,7 +243,7 @@ export struct WaterFlowDynamicSwitchover {
 
 ![](figures/waterflow-sections1.png)
 
-如果能够将不同部分的子节点整合到一个数据源中，那么通过设置 WaterFlowSections，可以在一个 WaterFlow 容器内实现混合布局。与嵌套滚动相比，这种方法可以简化滚动事件处理等应用逻辑。
+如果能够将不同部分的子节点整合到一个数据源中，那么通过设置[WaterFlowSections](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#waterflowsections12)，可以在一个 WaterFlow 容器内实现混合布局。与嵌套滚动相比，这种方法可以简化滚动事件处理等应用逻辑。
 
 每个瀑布流分组可以分别设置自己的列数、行间距、列间距、margin和子节点总数，如下代码可以实现上述效果：
 
@@ -307,7 +310,7 @@ export struct WaterFlowGroupingMixing {
 
   build() {
     NavDestination() {
-      // $r('app.string.WaterFlowGroupingMixing_title')需要替换为开发者所需的资源文件
+      // 请将$r('app.string.WaterFlowGroupingMixing_title')替换为实际资源文件，在本示例中该资源文件的value值为"分组混合布局"
       ComponentCard({ title: $r('app.string.WaterFlowGroupingMixing_title') }) {
         WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW, sections: this.sections }) {
           LazyForEach(this.dataSource, (item: number) => {
@@ -350,7 +353,7 @@ export struct WaterFlowGroupingMixing {
         .margin(10)
       }
     }.backgroundColor('#f1f2f3')
-    // $r('app.string.WaterFlowGroupingMixing_title')需要替换为开发者所需的资源文件
+    // 请将$r('app.string.WaterFlowGroupingMixing_title')替换为实际资源文件，在本示例中该资源文件的value值为"分组混合布局"
     .title($r('app.string.WaterFlowGroupingMixing_title'))
   }
 }

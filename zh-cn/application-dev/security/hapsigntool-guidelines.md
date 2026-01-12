@@ -1,4 +1,10 @@
 # 应用包签名工具指导
+<!--Kit: Common-->
+<!--Subsystem: Security-->
+<!--Owner: @scuteehuangjun-->
+<!--Designer: @scuteehuangjun; @liuchibin-->
+<!--Tester: @wwrongs-->
+<!--Adviser: @zengyawen-->
 
 ## 编译构建
 
@@ -6,11 +12,11 @@
 
 1. 该工具基于Maven3编译构建，请确认环境已安装配置Maven3环境，并且版本正确
   
-        mvn -version
+   mvn -version
 
 2. 下载代码，命令行打开文件目录至developtools_hapsigner/hapsigntool，执行命令进行编译打包
             
-        mvn package
+   mvn package
 
 3. 编译后得到二进制文件，目录为: ./hap_sign_tool/target
 
@@ -36,197 +42,190 @@ OpenHarmony系统内置密钥库文件，文件名称为OpenHarmony.p12，内含
 
 按照有无应用签名证书可分为以下两种场景：
 
-1. 无应用签名证书场景：
-   开发者使用该工具对应用包签名时，需按照签名步骤从第一步生成应用签名证书密钥对依次完成应用签名证书生成、profile文件签名、应用签名流程。
-2. 有应用签名证书场景：
-   开发者可直接从签名步骤第三步对profile文件进行签名开始开发，使用应用签名证书和包含对应密钥的本地密钥库文件对应用进行签名。
-
-### 命令说明
-
 1. 输出命令帮助信息。
 
-     ```
-     -help     # 输出命令帮助信息（不输入参数默认输出命令帮助信息）
-     ```
+   ```log
+   -help     # 输出命令帮助信息（不输入参数默认输出命令帮助信息）
+   ```
 
 2. 输出版本信息。
 
-     ```
-     -version  # 输出版本信息
-     ```
+   ```log
+   -version  # 输出版本信息
+   ```
 
 3. 生成密钥对。
 
-     ```
-     generate-keypair : 生成密钥对
-         ├── -keyAlias          # 密钥别名，必填项
-         ├── -keyPwd            # 密钥口令，可选项
-         ├── -keyAlg            # 密钥算法，必填项，包括RSA/ECC
-         ├── -keySize           # 密钥长度，必填项，RSA算法的长度为2048/3072/4096，ECC算法的长度NIST-P-256/NIST-P-384
-         ├── -keystoreFile      # 密钥库文件，必填项
-         ├── -keystorePwd       # 密钥库口令，可选项
-     ```
+   ```log
+   generate-keypair : 生成密钥对
+       ├── -keyAlias          # 密钥别名，必填项
+       ├── -keyPwd            # 密钥口令，可选项
+       ├── -keyAlg            # 密钥算法，必填项，包括RSA/ECC
+       ├── -keySize           # 密钥长度，必填项，RSA算法的长度为2048/3072/4096，ECC算法的长度NIST-P-256/NIST-P-384
+       ├── -keystoreFile      # 密钥库文件，必填项
+       ├── -keystorePwd       # 密钥库口令，可选项
+   ```
 
 4. 生成证书签名请求。
-     ```
-     generate-csr : 生成证书签名请求
-         ├── -keyAlias          # 密钥别名，必填项
-         ├── -keyPwd            # 密钥口令，可选项
-         ├── -subject           # 证书主题，必填项
-         ├── -signAlg           # 签名算法，必填项，包括SHA256withRSA / SHA384withRSA / SHA256withECDSA / SHA384withECDSA
-         ├── -keystoreFile      # 密钥库文件，必填项
-         ├── -keystorePwd       # 密钥库口令，可选项
-         ├── -outFile           # 输出文件，可选项，如果不填，则直接输出到控制台
-     ```
-     
+  
+   ```log
+   generate-csr : 生成证书签名请求
+       ├── -keyAlias          # 密钥别名，必填项
+       ├── -keyPwd            # 密钥口令，可选项
+       ├── -subject           # 证书主题，必填项
+       ├── -signAlg           # 签名算法，必填项，包括SHA256withRSA / SHA384withRSA / SHA256withECDSA / SHA384withECDSA
+       ├── -keystoreFile      # 密钥库文件，必填项
+       ├── -keystorePwd       # 密钥库口令，可选项
+       ├── -outFile           # 输出文件，可选项，如果不填，则直接输出到控制台
+   ```
+  
 5. 生成根CA/中间CA证书。
 
-     ```
-     generate-ca : 生成根CA/中间CA证书，如果密钥不存在，一起生成密钥
-         ├── -keyAlias                        # 密钥别名，必填项
-         ├── -keyPwd                          # 密钥口令，可选项
-         ├── -keyAlg                          # 密钥算法，必填项，包括RSA/ECC
-         ├── -keySize                         # 密钥长度，必填项，RSA算法的长度为2048/3072/4096，ECC算法的长度NIST-P-256/NIST-P-384
-         ├── -issuer                          # 颁发者的主题，可选项，如果不填，表示根CA
-         ├── -issuerKeyAlias                  # 颁发者的密钥别名，可选项，如果不填，表示根CA
-         ├── -issuerKeyPwd                    # 颁发者的密钥口令，可选项
-         ├── -subject                         # 证书主题，必填项
-         ├── -validity                        # 证书有效期，可选项，默认为3650天
-         ├── -signAlg                         # 签名算法，必填项，包括SHA256withRSA / SHA384withRSA / SHA256withECDSA / SHA384withECDSA
-         ├── -basicConstraintsPathLen         # 路径长度，可选项，默认为0
-         ├── -keystoreFile                    # 密钥库文件，必填项
-         ├── -keystorePwd                     # 密钥库口令，可选项
-         ├── -issuerKeystoreFile              # 签发者密钥库文件，可选项
-         ├── -issuerKeystorePwd               # 签发者密钥库口令，可选项
-         ├── -outFile                         # 输出文件，可选项，如果不填，则直接输出到控制台
-     ```
+   ```log
+   generate-ca : 生成根CA/中间CA证书，如果密钥不存在，一起生成密钥
+       ├── -keyAlias                        # 密钥别名，必填项
+       ├── -keyPwd                          # 密钥口令，可选项
+       ├── -keyAlg                          # 密钥算法，必填项，包括RSA/ECC
+       ├── -keySize                         # 密钥长度，必填项，RSA算法的长度为2048/3072/4096，ECC算法的长度NIST-P-256/NIST-P-384
+       ├── -issuer                          # 颁发者的主题，可选项，如果不填，表示根CA
+       ├── -issuerKeyAlias                  # 颁发者的密钥别名，可选项，如果不填，表示根CA
+       ├── -issuerKeyPwd                    # 颁发者的密钥口令，可选项
+       ├── -subject                         # 证书主题，必填项
+       ├── -validity                        # 证书有效期，可选项，默认为3650天
+       ├── -signAlg                         # 签名算法，必填项，包括SHA256withRSA / SHA384withRSA / SHA256withECDSA / SHA384withECDSA
+       ├── -basicConstraintsPathLen         # 路径长度，可选项，默认为0
+       ├── -keystoreFile                    # 密钥库文件，必填项
+       ├── -keystorePwd                     # 密钥库口令，可选项
+       ├── -issuerKeystoreFile              # 签发者密钥库文件，可选项
+       ├── -issuerKeystorePwd               # 签发者密钥库口令，可选项
+       ├── -outFile                         # 输出文件，可选项，如果不填，则直接输出到控制台
+   ```
 
 6. 生成应用调试/发布证书。
 
-     ```
-     generate-app-cert : 生成应用调试/发布证书
-         ├── -keyAlias                        # 密钥别名，必填项
-         ├── -keyPwd                          # 密钥口令，可选项
-         ├── -issuer                          # 颁发者的主题，必填项
-         ├── -issuerKeyAlias                  # 颁发者的密钥别名，必填项
-         ├── -issuerKeyPwd                    # 颁发者的密钥口令，可选项
-         ├── -subject                         # 证书主题，必填项
-         ├── -validity                        # 证书有效期，可选项，默认为3650天
-         ├── -signAlg                         # 签名算法，必填项，包括SHA256withECDSA / SHA384withECDSA；
-         ├── -issuerKeystoreFile              # 签发者密钥库文件，可选项，JKS或P12格式
-         ├── -issuerKeystorePwd               # 签发者密钥库口令，可选项
-         ├── -keystoreFile                    # 密钥库文件，必填项
-         ├── -keystorePwd                     # 密钥库口令，可选项
-         ├── -outForm                         # 输出证书文件的格式，包括 cert / certChain，可选项，默认为certChain
-         ├── -rootCaCertFile                  #  outForm为certChain时必填，根CA证书文件
-         ├── -subCaCertFile                   #  outForm为certChain时必填，中间CA证书文件
-         ├── -outFile                         #  输出证书文件(证书或证书链)，可选项，如果不填，则直接输出到控制台
-     ```
+   ```log
+   generate-app-cert : 生成应用调试/发布证书
+       ├── -keyAlias                        # 密钥别名，必填项
+       ├── -keyPwd                          # 密钥口令，可选项
+       ├── -issuer                          # 颁发者的主题，必填项
+       ├── -issuerKeyAlias                  # 颁发者的密钥别名，必填项
+       ├── -issuerKeyPwd                    # 颁发者的密钥口令，可选项
+       ├── -subject                         # 证书主题，必填项
+       ├── -validity                        # 证书有效期，可选项，默认为3650天
+       ├── -signAlg                         # 签名算法，必填项，包括SHA256withECDSA / SHA384withECDSA；
+       ├── -issuerKeystoreFile              # 签发者密钥库文件，可选项，JKS或P12格式
+       ├── -issuerKeystorePwd               # 签发者密钥库口令，可选项
+       ├── -keystoreFile                    # 密钥库文件，必填项
+       ├── -keystorePwd                     # 密钥库口令，可选项
+       ├── -outForm                         # 输出证书文件的格式，包括 cert / certChain，可选项，默认为certChain
+       ├── -rootCaCertFile                  #  outForm为certChain时必填，根CA证书文件
+       ├── -subCaCertFile                   #  outForm为certChain时必填，中间CA证书文件
+       ├── -outFile                         #  输出证书文件(证书或证书链)，可选项，如果不填，则直接输出到控制台
+   ```
 
 7. 生成profile调试/发布证书。
 
-     ```
-     generate-profile-cert : 生成profile调试/发布证书
-         ├── -keyAlias                        # 密钥别名，必填项
-         ├── -keyPwd                          # 密钥口令，可选项
-         ├── -issuer                          # 颁发者的主题，必填项
-         ├── -issuerKeyAlias                  # 颁发者的密钥别名，必填项
-         ├── -issuerKeyPwd                    # 颁发者的密钥口令，可选项
-         ├── -subject                         # 证书主题，必填项
-         ├── -validity                        # 证书有效期，可选项，默认为3650天
-         ├── -signAlg                         # 签名算法，必填项，包括SHA256withECDSA / SHA384withECDSA；
-         ├── -issuerKeystoreFile              # 签发者密钥库文件，可选项，JKS或P12格式
-         ├── -issuerKeystorePwd               # 签发者密钥库口令，可选项
-         ├── -keystoreFile                    # 密钥库文件，必填项
-         ├── -keystorePwd                     # 密钥库口令，可选项
-         ├── -outForm                         # 输出证书文件的格式，包括 cert / certChain，可选项，默认为certChain
-         ├── -rootCaCertFile                  #  outForm为certChain时必填，根CA证书文件
-         ├── -subCaCertFile                   #  outForm为certChain时必填，中间CA证书文件
-         ├── -outFile                         #  输出证书文件(证书或证书链)，可选项，如果不填，则直接输出到控制台
-     ```
+   ```log
+   generate-profile-cert : 生成profile调试/发布证书
+       ├── -keyAlias                        # 密钥别名，必填项
+       ├── -keyPwd                          # 密钥口令，可选项
+       ├── -issuer                          # 颁发者的主题，必填项
+       ├── -issuerKeyAlias                  # 颁发者的密钥别名，必填项
+       ├── -issuerKeyPwd                    # 颁发者的密钥口令，可选项
+       ├── -subject                         # 证书主题，必填项
+       ├── -validity                        # 证书有效期，可选项，默认为3650天
+       ├── -signAlg                         # 签名算法，必填项，包括SHA256withECDSA / SHA384withECDSA；
+       ├── -issuerKeystoreFile              # 签发者密钥库文件，可选项，JKS或P12格式
+       ├── -issuerKeystorePwd               # 签发者密钥库口令，可选项
+       ├── -keystoreFile                    # 密钥库文件，必填项
+       ├── -keystorePwd                     # 密钥库口令，可选项
+       ├── -outForm                         # 输出证书文件的格式，包括 cert / certChain，可选项，默认为certChain
+       ├── -rootCaCertFile                  #  outForm为certChain时必填，根CA证书文件
+       ├── -subCaCertFile                   #  outForm为certChain时必填，中间CA证书文件
+       ├── -outFile                         #  输出证书文件(证书或证书链)，可选项，如果不填，则直接输出到控制台
+   ```
 
 8. 通用证书生成，可以生成自定义证书。
 
-     ```
-     generate-cert : 通用证书生成，可以生成自定义证书
-         ├── -keyAlias                          # 密钥别名，必填项
-         ├── -keyPwd                            # 密钥口令，可选项
-         ├── -issuer                            # 颁发者的主题，必填项
-         ├── -issuerKeyAlias                    # 颁发者的密钥别名，必填项
-         ├── -issuerKeyPwd                      # 颁发者的密钥口令，可选项
-         ├── -subject                           # 证书主题，必填项
-         ├── -validity                          # 证书有效期，可选项，默认为1095天
-         ├── -keyUsage                          # 密钥用法，必选项，包括digitalSignature, nonRepudiation, keyEncipherment,
-         ├                                        dataEncipherment, keyAgreement, certificateSignature, crlSignature，
-         ├                                        encipherOnly和decipherOnly，如果证书包括多个密钥用法，用逗号分隔
-         ├── -keyUsageCritical                  # keyUsage是否为关键项，可选项，默认为是
-         ├── -extKeyUsage                       # 扩展密钥用法，可选项，包括clientAuthentication，serverAuthentication，
-         ├                                        codeSignature，emailProtection，smartCardLogin，timestamp，ocspSignature
-         ├── -extKeyUsageCritical               # extKeyUsage是否为关键项，可选项，默认为否
-         ├── -signAlg                           # 签名算法，必填项，包括SHA256withRSA/SHA384withRSA/SHA256withECDSA/SHA384withECDSA 
-         ├── -basicConstraints                  # 是否包含basicConstraints，可选项，默认为否
-         ├── -basicConstraintsCritical          # basicConstraints是否包含为关键项，可选项，默认为否
-         ├── -basicConstraintsCa                # 是否为CA，可选项，默认为否
-         ├── -basicConstraintsPathLen           # 路径长度，可选项，默认为0
-         ├── -issuerKeystoreFile                # 签发者密钥库文件，可选项
-         ├── -issuerKeystorePwd                 # 签发者密钥库口令，可选项
-         ├── -keystoreFile                      # 密钥库文件，必填项
-         ├── -keystorePwd                       # 密钥库口令，可选项
-         ├── -outFile                           # 输出证书文件，可选项，如果不填，则直接输出到控制台
-     ```
+   ```log
+   generate-cert : 通用证书生成，可以生成自定义证书
+       ├── -keyAlias                          # 密钥别名，必填项
+       ├── -keyPwd                            # 密钥口令，可选项
+       ├── -issuer                            # 颁发者的主题，必填项
+       ├── -issuerKeyAlias                    # 颁发者的密钥别名，必填项
+       ├── -issuerKeyPwd                      # 颁发者的密钥口令，可选项
+       ├── -subject                           # 证书主题，必填项
+       ├── -validity                          # 证书有效期，可选项，默认为1095天
+       ├── -keyUsage                          # 密钥用法，必选项，包括digitalSignature, nonRepudiation, keyEncipherment,
+       ├                                        dataEncipherment, keyAgreement, certificateSignature, crlSignature，
+       ├                                        encipherOnly和decipherOnly，如果证书包括多个密钥用法，用逗号分隔
+       ├── -keyUsageCritical                  # keyUsage是否为关键项，可选项，默认为是
+       ├── -extKeyUsage                       # 扩展密钥用法，可选项，包括clientAuthentication，serverAuthentication，
+       ├                                        codeSignature，emailProtection，smartCardLogin，timestamp，ocspSignature
+       ├── -extKeyUsageCritical               # extKeyUsage是否为关键项，可选项，默认为否
+       ├── -signAlg                           # 签名算法，必填项，包括SHA256withRSA/SHA384withRSA/SHA256withECDSA/SHA384withECDSA 
+       ├── -basicConstraints                  # 是否包含basicConstraints，可选项，默认为否
+       ├── -basicConstraintsCritical          # basicConstraints是否包含为关键项，可选项，默认为否
+       ├── -basicConstraintsCa                # 是否为CA，可选项，默认为否
+       ├── -basicConstraintsPathLen           # 路径长度，可选项，默认为0
+       ├── -issuerKeystoreFile                # 签发者密钥库文件，可选项
+       ├── -issuerKeystorePwd                 # 签发者密钥库口令，可选项
+       ├── -keystoreFile                      # 密钥库文件，必填项
+       ├── -keystorePwd                       # 密钥库口令，可选项
+       ├── -outFile                           # 输出证书文件，可选项，如果不填，则直接输出到控制台
+   ```
 
 9. profile文件签名。
 
-     ```
-     sign-profile : profile文件签名
-         ├── -mode            # 签名模式，必填项，包括localSign，remoteSign
-         ├── -keyAlias        # 密钥别名，必填项
-         ├── -keyPwd          # 密钥口令，可选项
-         ├── -profileCertFile # Profile签名证书（证书链，顺序为最终实体证书-中间CA证书-根证书），必填项
-         ├── -inFile          # 输入原始的模板Profile文件，文件为json格式，所在目录为developtools_hapsigner/autosign/UnsgnedReleasedProfileTemplate.json，必填项
-         ├── -signAlg         # 签名算法，必填项，包括SHA256withECDSA / SHA384withECDSA
-         ├── -keystoreFile    # 密钥库文件，localSign模式时为必填项
-         ├── -keystorePwd     # 密钥库口令，可选项
-         ├── -outFile         # 输出签名后的profile文件，p7b格式，必填项
-     ```
+   ```log
+   sign-profile : profile文件签名
+       ├── -mode            # 签名模式，必填项，包括localSign，remoteSign
+       ├── -keyAlias        # 密钥别名，必填项
+       ├── -keyPwd          # 密钥口令，可选项
+       ├── -profileCertFile # Profile签名证书（证书链，顺序为最终实体证书-中间CA证书-根证书），必填项
+       ├── -inFile          # 输入原始的模板Profile文件，文件为json格式，所在目录为developtools_hapsigner/autosign/UnsgnedReleasedProfileTemplate.json，必填项
+       ├── -signAlg         # 签名算法，必填项，包括SHA256withECDSA / SHA384withECDSA
+       ├── -keystoreFile    # 密钥库文件，localSign模式时为必填项
+       ├── -keystorePwd     # 密钥库口令，可选项
+       ├── -outFile         # 输出签名后的profile文件，p7b格式，必填项
+   ```
 
 10. profile文件验签。
 
-     ```
-     verify-profile : profile文件验签
-         ├── -inFile       # 已签名的profile文件，p7b格式，必填项
-         ├── -outFile      # 验证结果文件（包含验证结果和profile内容），json格式，可选项；如果不填，则直接输出到控制台
-     ```
+    ```log
+    verify-profile : profile文件验签
+        ├── -inFile       # 已签名的profile文件，p7b格式，必填项
+        ├── -outFile      # 验证结果文件（包含验证结果和profile内容），json格式，可选项；如果不填，则直接输出到控制台
+    ```
 
 11. 应用包和调试工具签名。
 
-      ```
-     sign-app : 应用包和二进制工具签名
-          ├── -mode          # 签名模式，必填项，包括localSign，remoteSign，remoteResign
-          ├── -keyAlias      # 密钥别名，必填项
-          ├── -keyPwd        # 密钥口令，可选项
-          ├── -appCertFile   # 应用签名证书文件（证书链，顺序为实体证书-中间CA证书-根证书），必填项
-          ├── -profileFile   # 签名后的Provision Profile文件名，profileSigned为1时为p7b格式，profileSigned为0时为json格式，应用包签名必填项，二进制工具签名选填
-          ├── -profileSigned # 指示profile文件是否带有签名，1表示有签名，0表示没有签名，默认为1。可选项
-          ├── -inForm        # 输入的原始文件的格式，枚举值：zip、elf或bin；zip应用包对应zip，二进制工具对应elf，bin应用包为bin，默认zip；可选项
-          ├── -inFile        # 输入的原始文件，应用包、elf或bin文件，必填项
-          ├── -signAlg       # 签名算法，必填项，包括SHA256withECDSA / SHA384withECDSA
-          ├── -keystoreFile  # 密钥库文件，localSign模式时为必填项
-          ├── -keystorePwd   # 密钥库口令，可选项
-          ├── -outFile       # 输出签名后的包文件，必填项
-          ├── -signCode      # 是否启用代码签名，1表示开启代码签名，0表示关闭代码签名。可选项。默认对hap、hsp、hqf、elf开启代码签名，通过参数配置为0关闭。
-
-      ```
+    ```log
+    sign-app : 应用包和二进制工具签名
+        ├── -mode          # 签名模式，必填项，包括localSign，remoteSign，remoteResign
+        ├── -keyAlias      # 密钥别名，必填项
+        ├── -keyPwd        # 密钥口令，可选项
+        ├── -appCertFile   # 应用签名证书文件（证书链，顺序为实体证书-中间CA证书-根证书），必填项
+        ├── -profileFile   # 签名后的Provision Profile文件名，profileSigned为1时为p7b格式，profileSigned为0时为json格式，应用包签名必填项，二进制工具签名选填
+        ├── -profileSigned # 指示profile文件是否带有签名，1表示有签名，0表示没有签名，默认为1。可选项
+        ├── -inForm        # 输入的原始文件的格式，枚举值：zip、elf或bin；zip应用包对应zip，二进制工具对应elf，bin应用包为bin，默认zip；可选项
+        ├── -inFile        # 输入的原始文件，应用包、elf或bin文件，必填项
+        ├── -signAlg       # 签名算法，必填项，包括SHA256withECDSA / SHA384withECDSA
+        ├── -keystoreFile  # 密钥库文件，localSign模式时为必填项
+        ├── -keystorePwd   # 密钥库口令，可选项
+        ├── -outFile       # 输出签名后的包文件，必填项
+        ├── -signCode      # 是否启用代码签名，1表示开启代码签名，0表示关闭代码签名。可选项。默认对hap、hsp、hqf、elf开启代码签名，通过参数配置为0关闭。
+    ```
 
 12. 应用包和调试工具文件验签。
 
-      ```
-      verify-app : 应用包和二进制工具文件验签
-         ├── -inFile          # 已签名的文件，应用包、elf或bin文件，必填项
-         ├── -outCertChain    # 签名的证书链文件，必填项
-         ├── -outProfile      # 应用包中的profile文件，必填项
-         ├── -inForm          # 输入的原始文件的格式，枚举值：zip、elf或bin；zip应用包对应zip，二进制工具对应elf，bin应用包为bin，默认zip；可选项
-      ```
+    ```log
+    verify-app : 应用包和二进制工具文件验签
+        ├── -inFile          # 已签名的文件，应用包、elf或bin文件，必填项
+        ├── -outCertChain    # 签名的证书链文件，必填项
+        ├── -outProfile      # 应用包中的profile文件，必填项
+        ├── -inForm          # 输入的原始文件的格式，枚举值：zip、elf或bin；zip应用包对应zip，二进制工具对应elf，bin应用包为bin，默认zip；可选项
+    ```
 
 ### 签名步骤
 对应用包签名的完整步骤为：
@@ -264,7 +263,7 @@ OpenHarmony系统内置密钥库文件，文件名称为OpenHarmony.p12，内含
 
    该命令的参数说明：
 
-   ```
+   ```log
    generate-keypair : 生成应用签名证书密钥对
        ├── -keyAlias         #用于生成应用签名证书的密钥别名，存于OpenHarmony.p12密钥库文件中，该参数必填
        ├── -keyAlg           #密钥算法，推荐使用ECC，该参数必填
@@ -292,7 +291,7 @@ OpenHarmony系统内置密钥库文件，文件名称为OpenHarmony.p12，内含
 
    该命令的参数说明：
 
-   ```
+   ```log
    generate-app-cert：生成应用签名证书
        ├── -keyAlias         # 用于生成应用签名证书的密钥别名，请与第一步生成密钥对的密钥别名-keyAlias保持一致
        ├── -signAlg          # 签名算法，必填项，包括 SHA256withECDSA / SHA384withECDSA
@@ -328,7 +327,7 @@ OpenHarmony系统内置密钥库文件，文件名称为OpenHarmony.p12，内含
 
    该命令的参数说明：
 
-   ```
+   ```log
    sign-profile：签名profile文件
        ├── -keyAlias         # 生成profile证书的密钥别名，该参数必填且不能修改
        ├── -signAlg          # 签名算法，包括 SHA256withECDSA / SHA384withECDSA，该参数必填
@@ -368,7 +367,7 @@ OpenHarmony系统内置密钥库文件，文件名称为OpenHarmony.p12，内含
 
    该命令的参数说明：
 
-   ```
+   ```log
    sign-app：签名应用包
        ├── -keyAlias          # 密钥别名，为第一步生成的密钥信息别名，该参数必填
        ├── -signAlg           # 签名算法，包括 SHA256withECDSA / SHA384withECDSA，该参数必填

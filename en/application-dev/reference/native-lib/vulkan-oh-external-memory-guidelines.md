@@ -18,6 +18,7 @@ This enables efficient sharing of video frames, camera outputs, and image decode
 This guide introduces how to achieve zero-copy between video decoders and renderers by directly importing OHNativeBuffers output by the decoder into Vulkan.
 
 
+
 ## Available APIs
 
 
@@ -393,6 +394,10 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
 
 
 9.  Create a corresponding ImageView in Vulkan for rendering and display based on NativeBuffer, and create a sampler of the corresponding format to sample the YUV format image into an RGBA image for correct rendering and display.
+    > **NOTE**
+    >
+    > - Before API version 23, the system supports the extension type VK_EXTERNAL_MEMORY_HANDLE_TYPE_OHOS_NATIVE_BUFFER_BIT_OHOS based on the standard library VkExternalMemoryImageCreateInfo struct.
+    > - Starting from API version 23, **VK_EXTERNAL_MEMORY_HANDLE_TYPE_OHOS_NATIVE_BUFFER_BIT_OHOS** is deprecated. Use **VK_EXTERNAL_MEMORY_HANDLE_TYPE_OH_NATIVE_BUFFER_BIT_OHOS** instead.
     ```c++
     void VulkanRender::hwBufferToTexture(OH_NativeBuffer *buffer, float transformMatrix[16]) {
         OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "VulkanRenderThread", "hwBufferToTexture.");
@@ -457,7 +462,7 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
         VkExternalMemoryImageCreateInfo externalMemoryImageInfo = {
             .sType = VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO,
             .pNext = &externalFormat,
-            .handleTypes = VK_EXTERNAL_MEMORY_HANDLE_TYPE_OHOS_NATIVE_BUFFER_BIT_OHOS,
+            .handleTypes = VK_EXTERNAL_MEMORY_HANDLE_TYPE_OH_NATIVE_BUFFER_BIT_OHOS,
         };
 
         VkImageUsageFlags usageFlags = VK_IMAGE_USAGE_SAMPLED_BIT;
@@ -596,4 +601,7 @@ The following steps illustrate how to import the OHNativeBuffer output by the vi
         OH_LOG_INFO(LOG_APP, "hwBufferToTexture end");
     }
     ```
+
+
+
 

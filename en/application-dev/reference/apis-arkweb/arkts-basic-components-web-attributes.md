@@ -12,7 +12,7 @@ Only the [aspectRatio](../apis-arkui/arkui-ts/ts-universal-attributes-layout-con
 >
 > - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## domStorageAccess
 
@@ -275,7 +275,7 @@ Sets the behavior when a secure source attempts to load resources from an insecu
 
 | Name      | Type                       | Mandatory  | Description     |
 | --------- | --------------------------- | ---- | --------- |
-| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | Yes   | Mixed content mode to be set.<br>When **undefined** or **null** is passed in, the value is **MixedMode.None**. |
+| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | Yes   | Mixed content mode to be set.<br>If **undefined** or **null** is passed in, the value **MixedMode.All** is used. |
 
 **Example**
 
@@ -405,7 +405,11 @@ Sets whether to load web pages by using the overview mode. That is, zoom out the
 
 databaseAccess(databaseAccess: boolean)
 
-Sets whether to enable database access. When this attribute is not explicitly called, database access is disabled by default.
+Sets whether to enable the Web SQL Database storage API permission. If this permission is not explicitly called, it is disabled by default.
+
+> **NOTE**
+>
+> - After the ArkWeb kernel is upgraded to M132, the API's control over the Web SQL Database becomes invalid because the kernel discards Web SQL. For details about the ArkWeb kernel version, see [Constraints](../../web/web-component-overview.md#constraints).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -413,7 +417,7 @@ Sets whether to enable database access. When this attribute is not explicitly ca
 
 | Name           | Type   | Mandatory  | Description             |
 | -------------- | ------- | ---- | ----------------- |
-| databaseAccess | boolean | Yes   | Whether to enable database access.<br>The value **true** means to enable database access, and the value **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
+| databaseAccess | boolean | Yes   | Whether to enable Web SQL Database storage API permission.<br>**true** means enabling the detection, and **false** means disabling it.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -528,6 +532,7 @@ HTML file to be loaded:
 multiWindowAccess(multiWindow: boolean)
 
 Sets whether to enable the multi-window permission.
+
 Enabling the multi-window permission requires implementation of the **onWindowNew** event. For the sample code, see [onWindowNew](./arkts-basic-components-web-events.md#onwindownew9).
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -754,21 +759,21 @@ Sets the pasteboard copy options. When this attribute is not explicitly called, 
 **Example**
 
   ```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .copyOptions(CopyOptions.None)
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .copyOptions(CopyOptions.None)
+      }
     }
   }
-}
   ```
 
 ## textZoomRatio<sup>9+</sup>
@@ -853,7 +858,7 @@ Sets whether to block online downloads. When this attribute is not explicitly ca
 
 | Name  | Type   | Mandatory  | Description               |
 | ----- | ------- | ---- | ------------------- |
-| block | boolean | Yes   | Whether to allow online downloads.<br>The value **true** means to block online downloads, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **true**.|
+| block | boolean | Yes   | Whether to allow online downloads.<br>The value **true** means to block online downloads, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -1284,7 +1289,7 @@ When dark mode is enabled, the **Web** component enables the dark style defined 
 
 | Name | Type                            | Mandatory  | Description                    |
 | ---- | -------------------------------- | ---- | ------------------------ |
-| mode | [WebDarkMode](./arkts-basic-components-web-e.md#webdarkmode9) | Yes   | Dark mode for the web page, which can be set to **Off**, **On**, or **Auto**.|
+| mode | [WebDarkMode](./arkts-basic-components-web-e.md#webdarkmode9) | Yes   | Dark mode for the web page, which can be set to **Off**, **On**, or **Auto**.<br>When **null** or **undefined** is passed, the value is **WebDarkMode.Off**.|
 
 **Example**
 
@@ -1401,8 +1406,8 @@ Sets whether to allow a new window to automatically open through JavaScript.
 
 **Example**
 
-  ```ts
-  // xxx.ets
+```ts
+// xxx.ets
 import { webview } from '@kit.ArkWeb';
 
 // There are two Web components on the same page. When the WebComponent object opens a new window, the NewWebViewComp object is displayed.
@@ -1462,7 +1467,7 @@ struct WebComponent {
         }
     }
 }
-  ```
+```
 **Example of the HTML file**
 
 ```html
@@ -1635,31 +1640,31 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 **Example**
 
   ```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
 
-@Entry
-@Component
-struct Index {
-  controller: webview.WebviewController = new webview.WebviewController();
-  private jsStr: string =
-    "window.document.getElementById(\"result\").innerHTML = 'this is msg from javaScriptOnDocumentEnd'";
-  @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
-  ];
+  @Entry
+  @Component
+  struct Index {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private jsStr: string =
+      "window.document.getElementById(\"result\").innerHTML = 'this is msg from javaScriptOnDocumentEnd'";
+    @State scripts: Array<ScriptItem> = [
+      { script: this.jsStr, scriptRules: ["*"] }
+    ];
 
-  build() {
-    Column({ space: 20 }) {
-      Web({ src: $rawfile('index.html'), controller: this.controller })
-        .javaScriptAccess(true)
-        .domStorageAccess(true)
-        .backgroundColor(Color.Grey)
-        .javaScriptOnDocumentEnd(this.scripts)
-        .width('100%')
-        .height('100%')
+    build() {
+      Column({ space: 20 }) {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .javaScriptAccess(true)
+          .domStorageAccess(true)
+          .backgroundColor(Color.Grey)
+          .javaScriptOnDocumentEnd(this.scripts)
+          .width('100%')
+          .height('100%')
+      }
     }
   }
-}
   ```
 
 ```html
@@ -1714,8 +1719,11 @@ Injects a JavaScript script into the **Web** component. When the specified page 
           "if (typeof(Storage) !== 'undefined') {" +
           "   localStorage.setItem('color', 'Red');" +
           "}";
+      private localStorage2: string =
+          "console.info('runJavaScriptOnDocumentStart urlRegexRules Matching succeeded.')";
       @State scripts: Array<ScriptItem> = [
-          { script: this.localStorage, scriptRules: ["*"] }
+          { script: this.localStorage, scriptRules: ["*"] },
+          { script: this.localStorage2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
       ];
 
       build() {
@@ -1783,31 +1791,33 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 **Example**
 
   ```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
 
-@Entry
-@Component
-struct Index {
-  controller: webview.WebviewController = new webview.WebviewController();
-  private jsStr: string =
-    "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnDocumentEnd'";
-  @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
-  ];
+  @Entry
+  @Component
+  struct Index {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private jsStr: string =
+      "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnDocumentEnd'";
+    private jsStr2: string = "console.info('runJavaScriptOnDocumentEnd urlRegexRules Matching succeeded.')";
+    @State scripts: Array<ScriptItem> = [
+      { script: this.jsStr, scriptRules: ["*"] },
+      { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
+    ];
 
-  build() {
-    Column({ space: 20 }) {
-      Web({ src: $rawfile('index.html'), controller: this.controller })
-        .javaScriptAccess(true)
-        .domStorageAccess(true)
-        .backgroundColor(Color.Grey)
-        .runJavaScriptOnDocumentEnd(this.scripts)
-        .width('100%')
-        .height('100%')
+    build() {
+      Column({ space: 20 }) {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .javaScriptAccess(true)
+          .domStorageAccess(true)
+          .backgroundColor(Color.Grey)
+          .runJavaScriptOnDocumentEnd(this.scripts)
+          .width('100%')
+          .height('100%')
+      }
     }
   }
-}
   ```
 
 ```html
@@ -1846,7 +1856,7 @@ Injects a JavaScript script into the **Web** component. When the **head** tag of
 
 **Example**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -1856,8 +1866,10 @@ struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
   private jsStr: string =
     "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnHeadEnd'";
+  private jsStr2: string = "console.info('runJavaScriptOnHeadEnd urlRegexRules Matching succeeded.')";
   @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
+    { script: this.jsStr, scriptRules: ["*"] },
+    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
   ];
 
   build() {
@@ -1872,7 +1884,7 @@ struct Index {
     }
   }
 }
-  ```
+```
 
 ```html
 <!--index.html-->
@@ -1978,7 +1990,7 @@ Sets nested scrolling options.
 
 | Name  | Type                                    | Mandatory  | Description            |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| value | [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10)\| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> | Yes   | Nested scrolling options.<br> When the value is of the **NestedScrollOptions** type (forward and backward), the default nested scrolling mode of the **scrollForward** and **scrollBackward** options is [NestedScrollMode.SELF_FIRST](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10).<br> When the value is of the **NestedScrollOptionsExt** type (up, down, left, and right), the default nested scrolling mode of the **scrollUp**, **scrollDown**, **scrollLeft**, and **scrollRight** options is **NestedScrollMode.SELF_FIRST**.
+| value | [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10)\| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> | Yes   | Nested scrolling options.<br> When the value is of the **NestedScrollOptions** type (forward and backward), the default nested scrolling mode of the **scrollForward** and **scrollBackward** options is [NestedScrollMode.SELF_FIRST](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10).<br> When the value is of the **NestedScrollOptionsExt** type (up, down, left, and right), the default nested scrolling mode of the **scrollUp**, **scrollDown**, **scrollLeft**, and **scrollRight** options is **NestedScrollMode.SELF_FIRST**.|
 
 **Example**
 
@@ -2104,9 +2116,9 @@ Sets the rendering process to bypass vsync (vertical synchronization) scheduling
 
 ## enableNativeEmbedMode<sup>11+</sup>
 
-enableNativeEmbedMode(mode: boolean)
+enableNativeEmbedMode(enabled: boolean)
 
-Sets whether to enable the same-layer rendering feature. When this attribute is not explicitly called, the same-layer rendering feature is disabled by default.
+Sets whether to enable the same-layer rendering feature. When this method is not explicitly called, the same-layer rendering feature is disabled by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2114,7 +2126,7 @@ Sets whether to enable the same-layer rendering feature. When this attribute is 
 
 | Name  | Type                     | Mandatory  | Description            |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| mode |  boolean | Yes   | Whether to enable the same-layer rendering feature.<br>The value **true** means to enable the same-layer rendering feature, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **false**.|
+| enabled |  boolean | Yes   | Whether to enable the same-layer rendering feature.<br>The value **true** means to enable the same-layer rendering feature, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -2411,7 +2423,7 @@ Sets whether the **viewport** attribute of the **meta** tag is enabled. When thi
 
 **Example**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -2427,7 +2439,7 @@ struct WebComponent {
     }
   }
 }
-  ```
+```
 HTML file to be loaded:
 ```html
 <!--index.html-->
@@ -3112,7 +3124,7 @@ struct SelectionMenuLongPress {
     </div>
 
     <div class="context">
-        <a href="https://www.example.com">Touch and hold the link to display the menu</a>
+        <a  href="https://www.example.com">Touch and hold the link to display the menu</a>
     </div>
 
     <div class="context">
@@ -3217,7 +3229,7 @@ Sets whether the **Web** component can change the font weight according to the s
 
 | Name      | Type                            | Mandatory| Description                               |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| follow | boolean | Yes   | Whether the **Web** component can change the font weight according to the system settings.<br>The value **true** means that the **Web** component can change the font weight according to the system settings, and **false** means the opposite.|
+| follow | boolean | Yes   | Whether the **Web** component can change the font weight according to the system settings.<br>The value **true** means that the **Web** component can change the font weight according to the system settings, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **true**.|
 
 **Example**
 
@@ -3853,6 +3865,140 @@ Sets the blank screen detection configuration, such as whether to enable the det
   }
   ```
 
+## enableImageAnalyzer<sup>23+</sup>
+
+enableImageAnalyzer(enable: boolean)
+
+Sets whether to enable AI analyzer for web images. Currently, the image text recognition is supported, which is enabled by default.
+
+> **NOTE**
+>
+> When you long-press or hover the mouse over the image text, AI analyzer is triggered and the text in the image can be selected. The specifications of images that can trigger analyzer are as follows:
+>
+> - The original width and height of the image are greater than or equal to 100 pixels.
+>
+> - For [devices](../../quick-start/module-configuration-file.md#devicetypes) other than 2-in-1 devices, the image rendering width must exceed 80% of the web page width.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                             |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean | Yes  | Whether to enable AI analyzer for web page images. The value **true** means to enable AI analyzer, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is reset to **true**.|
+
+**Example**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableImageAnalyzer(true) // To disable the image analyzer, set this parameter to false.
+      }
+    }
+  }
+  ```
+
+  HTML file to be loaded:
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .image-container {
+        width: 90%;
+      }
+      .image-container img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-container">
+      <!--example.jpg is in the same directory as the HTML file-->
+      <img src="example.jpg" alt="Image to be analyzed by AI">
+    </div>
+  </body>
+  </html>
+  ```
+
+## enableAutoFill<sup>23+</sup>
+
+enableAutoFill(value: boolean)
+
+Sets whether to enable web page autofill. By default, this feature is enabled.
+
+<!--RP1-->
+> **NOTE**
+>
+> The autofill feature of this API depends on SmartFill service and Password Autofill Service.
+<!--RP1End-->
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                             |
+| ------ | ------- | ---- | --------------------------------- |
+| value  | boolean | Yes  | Whether to enable autofill for web pages. The value **true** means to enable autofill, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **true**.|
+
+**Example**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableAutoFill(true)
+      }
+    }
+  }
+  ```
+
+  HTML file to be loaded:
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport"/>
+      <title>Autofill test</title>
+    </head>
+    <body>
+      <h4 align="center">Autofill test</h4>
+      <form method="post" action="">
+        <div align="center">
+          <label for="name" style="width: 120px; display: inline-block; text-align: end;">Name:</label>
+          <input type="text" id="name" autocomplete="name"/><br/><br/>
+          <label for="tel-national" style="width: 120px; display: inline-block; text-align: end;">Mobile number:</label>
+          <input type="text" id="tel-national" autocomplete="tel-national"/><br/><br/>
+        </div>
+        <div align="center">
+          <button type="submit" style="width: 80px">Submit</button>
+        </div>
+      </form>
+    </body>
+  </html>
+  ```
+
 ## password<sup>(deprecated)</sup>
 
 password(password: boolean)
@@ -3861,7 +4007,7 @@ Sets whether to save the password. This API is an empty API.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 10. No substitute API is provided.
+> This API is supported since API version 8 and deprecated since API version 10. You are advised to use [enableAutoFill<sup>23+</sup>](#enableautofill23) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3954,7 +4100,7 @@ Sets whether to save form data. When this attribute is not explicitly called, th
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 10. No substitute API is provided.
+> This API is supported since API version 8 and deprecated since API version 10. You are advised to use [enableAutoFill<sup>23+</sup>](#enableautofill23) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4000,7 +4146,7 @@ The API only supports the selection of plain text; if the selected content conta
 
 | Name             | Type                                                        | Mandatory  | Description         |
 | ------------------- | ----------------------------------------------------------    | ---- | ------------- |
-| expandedMenuOptions | Array<[ExpandedMenuItemOptions](./arkts-basic-components-web-i.md#expandedmenuitemoptions12)> | Yes   | Extended options of the custom context menu on selection.<br>The number of menu options, menu content size, and start icon size must be the same as those of the ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md) component.|
+| expandedMenuOptions | Array<[ExpandedMenuItemOptions](./arkts-basic-components-web-i.md#expandedmenuitemoptionsdeprecated)> | Yes   | Extended options of the custom context menu on selection.<br>The number of menu options, menu content size, and start icon size must be the same as those of the ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md) component.|
 
 **Example**
 
@@ -4050,6 +4196,7 @@ The API only supports the selection of plain text; if the selected content conta
 zoomControlAccess(zoomControlAccess: boolean)
 
 Sets whether to allow zooming by pressing **Ctrl + '-/+'** or **Ctrl** + mouse wheel/touchpad.
+
 If this attribute is not explicitly called, zooming by pressing **Ctrl + '-/+'** or **Ctrl** + mouse wheel/touchpad is allowed by default.
 
 **System capability**: SystemCapability.Web.Webview.Core

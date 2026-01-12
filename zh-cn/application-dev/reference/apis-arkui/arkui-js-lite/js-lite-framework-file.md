@@ -16,11 +16,11 @@ JS FA应用的JS模块(entry/src/main/js/module)的典型开发目录结构如�
 
 目录结构中文件分类如下：
 
-- .hml结尾的HML模板文件，这个文件用来描述当前页面的文件布局结构。
+- .hml结尾的HML模板文件，该文件用来描述当前页面的文件布局结构。
 
-- .css结尾的CSS样式文件，这个文件用于描述页面样式。
+- .css结尾的CSS样式文件，该文件用于描述页面样式。
 
-- .js结尾的JS文件，这个文件用于处理页面和用户的交互。
+- .js结尾的JS文件，该文件用于处理页面和用户的交互。
 
 各个文件夹的作用：
 
@@ -66,13 +66,13 @@ JS FA应用的JS模块(entry/src/main/js/module)的典型开发目录结构如�
 
 | 格式   | 支持版本                     | 支持的文件类型 |
 | ---- | ------------------------ | ------- |
-| BMP  | API&nbsp;Version&nbsp;4+ | .bmp    |
-| JPEG | API&nbsp;Version&nbsp;4+ | .jpg    |
-| PNG  | API&nbsp;Version&nbsp;4+ | .png    |
+| BMP  | API&nbsp;version&nbsp;4+ | .bmp    |
+| JPEG | API&nbsp;version&nbsp;4+ | .jpg    |
+| PNG  | API&nbsp;version&nbsp;4+ | .png    |
 
 ## 存储目录定义
 
-从API Version 5开始，[image](js-lite-components-basic-image.md)组件支持应用私有目录内的图片资源访问。
+从API version 5开始，[image](js-lite-components-basic-image.md)组件支持应用私有目录内的图片资源访问。
 
 | 目录类型   | 路径前缀            | 访问可见性  | 说明                          |
 | ------ | --------------- | ------ | --------------------------- |

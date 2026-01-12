@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 This module provides common features related to user key management, including user key uninstallation.
 
@@ -54,7 +54,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { keyManager } from "@kit.CoreFileKit";
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let userId: number = 100;
   try {
     keyManager.deactivateUserKey(userId);

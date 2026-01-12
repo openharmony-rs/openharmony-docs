@@ -16,7 +16,7 @@
 
 1. 在业务SIG需求Issue中给出【配套文档】的分解，如果涉及开发者文档新增、更新，需要关联SIG-Docs。
 
-2. 在 [OpenHarmony社区版本发布计划](https://gitee.com/openharmony/release-management/blob/master/OpenHarmony-RoadMap.md)中查看对应版本的特性需求，此文档中给出了OpenHarmony的版本发布时间计划、各版本交付特性、特性状态，所属SIG。
+2. 在 [OpenHarmony社区版本发布计划](https://gitcode.com/openharmony/release-management/blob/master/OpenHarmony-RoadMap.md)中查看对应版本的特性需求，此文档中给出了OpenHarmony的版本发布时间计划、各版本交付特性、特性状态，所属SIG。
 
    如果该特性需求涉及文档交付，需要在对应的Need Docs列补充判断，SIG_Docs，便于SIG Docs团队闭环跟踪文档交付。
 
@@ -27,13 +27,13 @@
 
 如果你需要文档组织方面的帮助，请在`#SIG-Docs` Zulip频道中提问求助。
 
-1. 参考[评审人沟通表](docs-reviewers.md)，联系SIG Docs资料作者，沟通文档设计建议。
+1. 通过PR中的审查人或Codeowners，联系SIG Docs资料作者，沟通文档设计建议。
 2. 获取[文档模板](template)，了解文档写作规范。
 3. 尽可能为功能特性提供详细的文档及使用说明，完成功能特性初稿后，提交PR并在PR描述中提供对应的需求Issue链接。
 
 ### 提交PR评审
 
-所有新增内容的PR评审，为确保技术描述准确性需要指定相应业务SIG的技术专家参与技术评审，同时指定SIG Docs的资料专家评审文档规范性内容，请参考[评审人沟通表](docs-reviewers.md)在PR评论区@相关专家。也可以在`#SIG-Docs` Zulip频道中反馈评审需求。
+所有新增内容的PR评审，为确保技术描述准确性需要指定相应业务SIG的技术专家参与技术评审，同时指定SIG Docs的资料专家评审文档规范性内容，请参考PR中的审查人或Codeowners，在PR评论区@相关专家。也可以在`#SIG-Docs` Zulip频道中反馈评审需求。
 
 在评审周期内，所有评审意见闭环修改后，该PR通过审核可以合并入仓的必要条件：
 
@@ -50,7 +50,7 @@
 
 OpenHarmony社区为开发者提供中文、英文的官方文档，中文文档完成评审、测试定稿后，可提交翻译需求Issue，由SIG Docs团队的翻译专家完成英文文档。
 
-翻译专家通过PR提交英文文档，并在PR描述中提供对应的中文需求Issue链接。为确保技术翻译描述准确性需要指定相应业务SIG的技术专家参与技术评审，可以是中文文档作者，请参考[评审人沟通表](docs-reviewers.md)在PR评论区@相关专家。
+翻译专家通过PR提交英文文档，并在PR描述中提供对应的中文需求Issue链接。为确保技术翻译描述准确性需要指定相应业务SIG的技术专家参与技术评审，可以是中文文档作者，请参考PR中的审查人或Codeowners，在PR评论区@相关专家。
 
 在评审周期内，所有评审意见闭环修改后，该PR通过审核可以合并入仓的必要条件：
 
@@ -65,7 +65,7 @@ OpenHarmony社区为开发者提供中文、英文的官方文档，中文文档
 
 1. 相关中文文档为发布交付件质量标准。
 2. 提供中文文档PR或相关文档路径。
-3. 中文临时文件可提交至[SIG-Docs仓](https://gitee.com/openharmony/community/tree/master/sig/)。
+3. 中文临时文件可提交至[SIG-Docs仓](https://gitcode.com/openharmony/community/tree/master/sig/)。
 
 ## Docs SIG团队成员或文档贡献者
 
@@ -73,9 +73,9 @@ SIG Docs团队成员或文档贡献者或，配合各业务SIG团队，评审、
 
 ### 了解发行版本规划特性
 
-想要了解对应发行版本规划的功能特性、发布计划，可以参加每双周周五例行组织的[SIG Release](https://gitee.com/openharmony/release-management/blob/master/README.md)例会。了解版本进度，需求交付进度，文档交付进度等。
+想要了解对应发行版本规划的功能特性、发布计划，可以参加每双周周五例行组织的[SIG Release](https://gitcode.com/openharmony/release-management/blob/master/README.md)例会。了解版本进度，需求交付进度，文档交付进度等。
 
-同时可以在 [OpenHarmony社区版本发布计划](https://gitee.com/openharmony/release-management/blob/master/OpenHarmony-RoadMap.md)中查看对应版本的特性需求，选择标识有SIG_Docs的相关特性Issue，及关联的文档PR。
+同时可以在 [OpenHarmony社区版本发布计划](https://gitcode.com/openharmony/release-management/blob/master/OpenHarmony-RoadMap.md)中查看对应版本的特性需求，选择标识有SIG_Docs的相关特性Issue，及关联的文档PR。
 
 ![版本特性清单](figures/sig-task.png)
 

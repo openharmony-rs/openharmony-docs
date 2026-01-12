@@ -14,9 +14,9 @@ Web组件获取控制台信息对象。示例代码参考[onConsole事件](./ark
 >
 > - 本Class首批接口从API version 8开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
-## constructor
+## constructor<sup>(deprecated)</sup>
 
 constructor(message: string, sourceId: string, lineNumber: number, messageLevel: MessageLevel)
 
@@ -100,3 +100,17 @@ getSourceId(): string
 | 类型     | 说明            |
 | ------ | ------------- |
 | string | 返回网页源文件路径和名字。 |
+
+## getSource<sup>23+</sup>
+
+getSource(): ConsoleMessageSource
+
+获取ConsoleMessage的日志来源。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型     | 说明            |
+| ------ | ------------- |
+| [ConsoleMessageSource](./arkts-basic-components-web-e.md#consolemessagesource23) | 返回ConsoleMessage的日志来源。 |

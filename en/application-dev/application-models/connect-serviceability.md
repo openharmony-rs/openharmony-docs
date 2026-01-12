@@ -96,7 +96,7 @@ struct PageServiceAbility {
 ```
 
 
-When the ServiceAbility is connected, the [onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect) callback is invoked and returns an [IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject) defining the proxy used for communicating with the ServiceAbility. The system provides a default implementation of **IRemoteObject**. You can extend [rpc.RemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#remoteobject) to implement your own class of **IRemoteObject**.
+When the ServiceAbility is connected, the [onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#connectoptions-1) callback is invoked and returns an [IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject) defining the proxy used for communicating with the ServiceAbility.  The system provides a default implementation of **IRemoteObject**. You can extend [rpc.RemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#remoteobject) to implement your own class of **IRemoteObject**.
 
 
 The following sample code shows how the ServiceAbility returns itself to the caller:

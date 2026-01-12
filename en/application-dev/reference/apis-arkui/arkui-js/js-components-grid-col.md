@@ -1,4 +1,10 @@
 # grid-col
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lanshouren-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -22,10 +28,10 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 
 | Name    | Type            | Default Value | Mandatory  | Description                                      |
 | ------ | -------------- | ---- | ---- | ---------------------------------------- |
-| xs     | number\|object | -    | No   | Number of columns occupied by this item and its offset when **sizetype** is **xs**. If you set the value of the number type, you only set the number of columns. You can set a value of the object type for both the number of occupied columns and the offset, for example, **{"span": 1, "offset": 0}**. |
-| sm     | number\|object | -    | No   | Number of columns occupied by this item and its offset when **sizetype** is **sm**. If you set the value of the number type, you only set the number of columns. You can set a value of the object type for both the number of occupied columns and the offset, for example, **{"span": 1, "offset": 0}**. |
-| md     | number\|object | -    | No   | Number of columns occupied by this item and its offset when **sizetype** is **md**. If you set the value of the number type, you only set the number of columns. You can set a value of the object type for both the number of occupied columns and the offset, for example, **{"span": 1, "offset": 0}**. |
-| lg     | number\|object | -    | No   | Number of columns occupied by this item and its offset when **sizetype** is **lg**. If you set the value of the number type, you only set the number of columns. You can set a value of the object type for both the number of occupied columns and the offset, for example, **{"span": 1, "offset": 0}**. |
+| xs     | number \| object | -    | No   | Number of columns occupied by this item and its offset when **sizetype** is **xs**. If you set the value of the number type, you only set the number of columns. You can set a value of the object type for both the number of occupied columns and the offset, for example, **{"span": 1, "offset": 0}**. |
+| sm     | number \| object | -    | No   | Number of columns occupied by this item and its offset when **sizetype** is **sm**. If you set the value of the number type, you only set the number of columns. You can set a value of the object type for both the number of occupied columns and the offset, for example, **{"span": 1, "offset": 0}**. |
+| md     | number \| object | -    | No   | Number of columns occupied by this item and its offset when **sizetype** is **md**. If you set the value of the number type, you only set the number of columns. You can set a value of the object type for both the number of occupied columns and the offset, for example, **{"span": 1, "offset": 0}**. |
+| lg     | number \| object | -    | No   | Number of columns occupied by this item and its offset when **sizetype** is **lg**. If you set the value of the number type, you only set the number of columns. You can set a value of the object type for both the number of occupied columns and the offset, for example, **{"span": 1, "offset": 0}**. |
 | span   | number         | 1    | No   | Default number of columns occupied by the item when no breakpoint is set.                        |
 | offset | number         | 0    | No   | Default number of offset columns in the container layout direction when **"offset"** is not set for a specific **sizetype**.      |
 
@@ -64,6 +70,7 @@ The [universal methods](js-components-common-methods.md) are supported.
 
 ## Example
 
+<!--code_no_check-->
 ```html
 <!-- index.hml -->
 <div class="container">
@@ -94,11 +101,11 @@ The [universal methods](js-components-common-methods.md) are supported.
 
 ```js
 // index.js
-import prompt from '@system.prompt';
+import promptAction from '@ohos.promptAction';
 export default {
   getCol(e) {
     this.$element('mygrid').getColumns(function (result) {
-      prompt.showToast({
+      promptAction.showToast({
         message: e.target.id + ' result = ' + result,
         duration: 3000,
       });
@@ -106,7 +113,7 @@ export default {
   },
   getColWidth(e) {
     this.$element('mygrid').getColumnWidth(function (result) {
-      prompt.showToast({
+      promptAction.showToast({
         message: e.target.id + ' result = ' + result,
         duration: 3000,
       });

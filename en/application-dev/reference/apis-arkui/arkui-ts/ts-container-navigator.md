@@ -3,8 +3,8 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Tester: @Giacinta-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Navigator** component provides redirection.
 
@@ -22,7 +22,13 @@ Supported
 
 ## APIs
 
+### Navigator<sup>(deprecated)</sup>
+
 Navigator(value?: {target: string, type?: NavigationType})
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [Navigation](ts-basic-components-navigation.md) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -33,9 +39,25 @@ Navigator(value?: {target: string, type?: NavigationType})
 | Name| Type      | Mandatory| Description                                      |
 | ------ | -------------- | ---- | ---------------------------------------------- |
 | target | string         | Yes  | Path of the target page to be redirected to.    |
-| type   | [NavigationType](#navigationtype) | No  | Navigation type.<br>Default value: **NavigationType.Push**|
+| type   | [NavigationType](#navigationtypedeprecated)| No  | Navigation type.<br>Default value: **NavigationType.Push**|
 
-## NavigationType
+### Navigator<sup>(deprecated)</sup>
+
+Navigator()
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [Navigation](ts-basic-components-navigation.md) instead.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+## NavigationType<sup>(deprecated)</sup>
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [Navigation](ts-basic-components-navigation.md) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -49,11 +71,15 @@ Navigator(value?: {target: string, type?: NavigationType})
 
 ## Attributes
 
-### active
+### active<sup>(deprecated)</sup>
 
 active(value: boolean)
 
 Sets whether the **Navigator** component is activated. If the component is activated, the corresponding navigation takes effect.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 13. No substitute is provided.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -65,11 +91,15 @@ Sets whether the **Navigator** component is activated. If the component is activ
 | ------ | ------- | ---- | -------------------------- |
 | value  | boolean | Yes  | Whether the **Navigator** component is activated. The value **true** means that the component is activated, and **false** means the opposite.|
 
-### params
+### params<sup>(deprecated)</sup>
 
 params(value: object)
 
 Sets the data that needs to be passed to the target page during redirection.
+
+> **NOTE**
+>
+> This API is supported since API version 11 and deprecated since API version 13. No substitute is provided.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -81,11 +111,15 @@ Sets the data that needs to be passed to the target page during redirection.
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | object | Yes  | Data that needs to be passed to the target page during redirection. You can use [router.getParams()](../js-apis-router.md#routergetparamsdeprecated) to obtain the data on the target page.|
 
-### target
+### target<sup>(deprecated)</sup>
 
 target(value: string)
 
-Path of the target page to be redirected to. The target page must be added to the **main_pages.json** file.
+Sets the path of the target page to be redirected to. The target page must be added to the **main_pages.json** file.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 13. No substitute is provided.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -97,10 +131,14 @@ Path of the target page to be redirected to. The target page must be added to th
 | ------ | ------ | ---- | ------------------ |
 | value  | string | Yes  | Path of the target page to be redirected to.|
 
-### type
+### type<sup>(deprecated)</sup>
 type(value: NavigationType)
 
 Sets the navigation type.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 13. No substitute is provided.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -110,7 +148,7 @@ Sets the navigation type.
 
 | Name| Type  | Mandatory| Description                                          |
 | ------ | ------ | ---- | ---------------------------------------------- |
-| value  | [NavigationType](#navigationtype) | Yes  | Navigation type.<br>Default value: **NavigationType.Push**|
+| value  | [NavigationType](#navigationtypedeprecated)| Yes  | Navigation type.<br>Default value: **NavigationType.Push**|
 
 ## Example
 

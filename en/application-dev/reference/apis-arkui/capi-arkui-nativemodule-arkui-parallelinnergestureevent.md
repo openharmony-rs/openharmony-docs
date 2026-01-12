@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_ParallelInnerGestureEvent ArkUI_ParallelInnerGestureEvent
+```
+
 ## Overview
 
 Defines a parallel internal gesture event.

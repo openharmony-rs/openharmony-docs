@@ -151,7 +151,7 @@ async function demo() {
     }
     finish(true); // 调用finish回调函数，通知代码段执行结束，且执行符合预期
   }
-  let resetCode = async (finish: Callback<boolean>) => {  // 定义测试结束环境重置代码段
+  let resetCode = async (finish: Callback<boolean>) => { // 定义测试结束环境重置代码段
     num = 0;
     finish(true);
   }

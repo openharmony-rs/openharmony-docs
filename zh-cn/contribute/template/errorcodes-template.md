@@ -15,7 +15,7 @@
 | 3    | 错误简述<br/>Short Description | **字段含义**：中文错误码简述。<br/>**要求**：<br/>1.与”错误信息“对应的中文简述，应当简洁、具体，避免过于宽泛的定义。 |
 | 4    | 错误描述<br/>Description       | **字段含义**：错误码详细描述，告知错误码所属的业务场景、产生位置等。<br/>**要求**：<br/>1.描述错误码所属的业务场景（比如开发xx业务、开发xx功能时）。<br/>2.描述出现异常的具体现象、产生位置（比如xx模块、xx类、xx接口等），辅助开发者理解和处理异常。 |
 | 5    | 可能原因<br/>Possible Causes   | **字段含义**：列举出现该异常的所有可能原因（对应该错误码的产生机制）。<br/>**要求**：<br/>1.全面、无遗漏。<br/>2.言简意赅。<br/>3.根据可能性从高到低排序。 |
-| 6    | 处理步骤<br/>Procedure         | **字段含义**：根据错误现象及可能原因，告知开发者遇到该异常时如何应对。<br/>**要求**：<br/>1.采用step样式描述处理指导。每个大步骤与可能原因一一对应，按顺序分别给出各原因对应的处理指导。大步骤下可以有子步骤。<br/>2.步骤要明确、具体、可执行。涉及判断的，提供明确的判断标准。<br/>3.对系统或业务有影响的操作，在操作前以“注意”或“警告”形式提供警示信息。具体提示要求，请参见“风格指南”中的“提示与说明”：https://gitee.com/openharmony/docs/blob/master/zh-cn/contribute/style-guide/style-guide-content-elements.md |
+| 6    | 处理步骤<br/>Procedure         | **字段含义**：根据错误现象及可能原因，告知开发者遇到该异常时如何应对。<br/>**要求**：<br/>1.采用step样式描述处理指导。每个大步骤与可能原因一一对应，按顺序分别给出各原因对应的处理指导。大步骤下可以有子步骤。<br/>2.步骤要明确、具体、可执行。涉及判断的，提供明确的判断标准。<br/>3.对系统或业务有影响的操作，在操作前以“注意”或“警告”形式提供警示信息。具体提示要求，请参见“风格指南”中的“提示与说明”：https://gitcode.com/openharmony/docs/blob/master/zh-cn/contribute/style-guide/style-guide-content-elements.md |
 
 ## 1300001 重复操作 *（错误码number+空格+错误简述）*
 
@@ -59,7 +59,7 @@ This is repeat operation.
 >
 > *2.步骤要**明确、具体、可执行。涉及判断的，提供明确的判断标准**。*
 >
-> *3.对系统或业务有影响的操作，在操作前以“注意”或“警告”形式提供警示信息。具体提示要求，请参见“风格指南”中的“提示与说明”：https://gitee.com/openharmony/docs/blob/master/zh-cn/contribute/style-guide/style-guide-content-elements.md*
+> *3.对系统或业务有影响的操作，在操作前以“注意”或“警告”形式提供警示信息。具体提示要求，请参见“风格指南”中的“提示与说明”：https://git.com/openharmony/docs/blob/master/zh-cn/contribute/style-guide/style-guide-content-elements.md*
 
 
 1. 检查该窗口是否已创建。

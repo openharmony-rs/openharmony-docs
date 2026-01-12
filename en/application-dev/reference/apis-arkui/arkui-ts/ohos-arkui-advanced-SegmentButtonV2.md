@@ -14,7 +14,7 @@
 
 ## Modules to Import
 
-```
+```ts
 import { TabSegmentButtonV2, CapsuleSegmentButtonV2, MultiCapsuleSegmentButtonV2, SegmentButtonV2Items } from '@kit.ArkUI';
 ```
 
@@ -244,9 +244,9 @@ MultiCapsuleSegmentButtonV2({
 | $selectedIndexes               | [OnSelectedIndexesChange](#onselectedindexeschange)          | Yes  | @Event             | Callback invoked when the selected item changes.                        |
 | onItemClicked                  | Callback\<number>                                            | No  | @Event             | Callback invoked when a segmented button item is clicked.                    |
 | itemBackgroundColor            | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Background color of unselected segmented button items.<br>Default value: **$r('sys.color.segment_button_v2_multi_capsule_button_background')**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.|
-| itemBackgroundEffect           | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | No  | @Param             | Background effect of unselected segmented button items.<br>Default value: **undefined**.<br>This property is read-only.|
-| itemBackgroundBlurStyle        | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No  | @Param             | Background blur style of unselected segmented button items.<br>Default value: **undefined**.<br>This property is read-only.|
-| itemBackgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)| No  | @Param             | Background blur style options of unselected segmented button items.<br>Default value: **undefined**.<br>This property is read-only.|
+| itemBackgroundEffect           | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | No  | @Param             | Background effect of segmented button items.<br>Default value: **undefined**.<br>This property is read-only.|
+| itemBackgroundBlurStyle        | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No  | @Param             | Background blur style of segmented button items.<br>Default value: **undefined**.<br>This property is read-only.|
+| itemBackgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)| No  | @Param             | Background blur style options of segmented button items.<br>Default value: **undefined**.<br>This property is read-only.|
 | itemSelectedBackgroundColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Background color of the selected segmented button item.<br>Default value: **$r('sys.color.comp_background_emphasize')**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.|
 | itemMinHeight                  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Minimum height of the segmented button item.<br>Value range: [0, +∞).<br>Default value:<br>**$r('sys.float.segment_button_v2_singleline_selected_height')** for text-only buttons and icon-only buttons, and **$r('sys.float.segment_button_v2_doubleline_selected_height')** for buttons with both an icon and text.<br>If the value is **undefined**, the default value is used.<br>This property is read-only.|
 | itemPadding                    | [LocalizedPadding](ts-types.md#localizedpadding12)           | No  | @Param             | Padding of the segmented button item.<br>Default value: **{top: LengthMetrics.resource ($r('sys.float.padding_level2')), bottom: LengthMetrics.resource ($r('sys.float.padding_level2')), start: LengthMetrics.resource($r('sys.float.padding_level4')), end: LengthMetrics.resource($r('sys.float.padding_level4'))}**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.|

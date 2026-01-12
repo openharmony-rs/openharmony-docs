@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct Camera_Manager Camera_Manager
 ```
 

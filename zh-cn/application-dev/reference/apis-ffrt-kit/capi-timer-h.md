@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -34,13 +34,14 @@
 
 ### ffrt_timer_start()
 
-```
+```c
 FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void* data, ffrt_timer_cb cb, bool repeat)
 ```
 
 **描述**
 
 启动计时器。
+
 不建议在`cb`中调用`exit`函数，可能导致未定义行为。
 
 **起始版本：** 12
@@ -64,7 +65,7 @@ FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void*
 
 ### ffrt_timer_stop()
 
-```
+```c
 FFRT_C_API int ffrt_timer_stop(ffrt_qos_t qos, ffrt_timer_t handle)
 ```
 

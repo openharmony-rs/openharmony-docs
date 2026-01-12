@@ -16,7 +16,7 @@
 
 onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallback): T
 
-组件可见区域变化时触发该回调。
+组件可见区域变化时触发该回调。开发指导及常见问题请参考[感知组件可见性](./../../../ui/arkts-manage-components-visibility.md)指南。
 
 > **说明：**
 >
@@ -38,7 +38,7 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| ratios | Array&lt;number&gt;                                 | 是   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。<br/>**说明：** <br/>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
+| ratios | Array&lt;number&gt;                                 | 是   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br/>**说明：** <br/>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
 | event  | [VisibleAreaChangeCallback](./ts-universal-component-visible-area-change-event.md#visibleareachangecallback12) | 是   | 组件可见区域变化事件的回调。 |
 
 **返回值：**
@@ -51,7 +51,7 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 
 onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallback, measureFromViewport: boolean): T
 
-组件可见区域变化时触发该回调。可以通过measureFromViewport设置可见区域计算模式。
+组件可见区域变化时触发该回调。可以通过measureFromViewport设置可见区域计算模式。开发指导及常见问题请参考[感知组件可见性](./../../../ui/arkts-manage-components-visibility.md)指南。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -61,7 +61,7 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| ratios | Array&lt;number&gt;                                 | 是   | 阈值数组。其中，每个阈值代表组件可见面积与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。<br/>**说明：**<br/>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
+| ratios | Array&lt;number&gt;                                 | 是   | 阈值数组。其中，每个阈值代表组件可见面积与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br/>**说明：**<br/>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
 | event  | [VisibleAreaChangeCallback](./ts-universal-component-visible-area-change-event.md#visibleareachangecallback12) | 是   | 组件可见区域变化事件的回调。 |
 | measureFromViewport  | boolean | 是  | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12) 属性设置。如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](./ts-universal-attributes-sharp-clipping.md#clip12)的影响，直接将组件超出父组件的部分视为不可见区域。<br/>measureFromViewport设置为true时，祖先节点设置[scale](ts-universal-attributes-transformation.md#scale)属性，组件可见比例会被正确计算。 |
 
@@ -127,7 +127,7 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 
 | 名称 | 类型                                                | 只读 | 可选 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | -------- | ------------------------------------------------------------ |
-| ratios | Array&lt;number&gt;                                 | 否 | 否   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ratios | Array&lt;number&gt;                                 | 否 | 否   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | expectedUpdateInterval | number | 否 | 是 | 定义了开发者期望的计算间隔，单位为ms。<br/>默认值：1000 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | measureFromViewport<sup>22+</sup> | boolean | 否 | 是 | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12) 属性设置。如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](./ts-universal-attributes-sharp-clipping.md#clip12)的影响，直接将组件超出父组件的部分视为不可见区域。<br/>默认值：false <br/>measureFromViewport设置为true时，祖先节点设置[scale](ts-universal-attributes-transformation.md#scale)属性，组件可见比例会被正确计算。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 
@@ -184,11 +184,11 @@ struct ScrollExample {
             .height(200)
             .margin({ top: 50, bottom: 20 })
             .backgroundColor(Color.Green)
-              // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调。
+            // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调。
             .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-              console.info('Test Text isExpanding: ' + isExpanding + ', currentRatio:' + currentRatio)
+              console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
               if (isExpanding && currentRatio >= 1.0) {
-                console.info('Test Text is fully visible. currentRatio:' + currentRatio)
+                console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`)
                 this.testTextStr = 'Test Text is fully visible'
               }
 
@@ -199,7 +199,7 @@ struct ScrollExample {
             })
 
           Row() {
-            Text('Test Row Visible  Change')
+            Text('Test Row Visible Change')
               .fontSize(20)
               .margin({ bottom: 20 })
 
@@ -207,7 +207,7 @@ struct ScrollExample {
           .height(200)
           .backgroundColor(Color.Yellow)
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            console.info('Test Row isExpanding:' + isExpanding + ', currentRatio:' + currentRatio)
+            console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
             if (isExpanding && currentRatio >= 1.0) {
               console.info('Test Row is fully visible.')
               this.testRowStr = 'Test Row is fully visible'
@@ -219,7 +219,7 @@ struct ScrollExample {
             }
           })
 
-          ForEach(this.arr, (item:number) => {
+          ForEach(this.arr, (item: number) => {
             Text(item.toString())
               .width('90%')
               .height(150)
@@ -228,7 +228,7 @@ struct ScrollExample {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, (item:number) => (item.toString()))
+          }, (item: number) => (item.toString()))
 
         }.width('100%')
       }
@@ -238,7 +238,7 @@ struct ScrollExample {
       .scrollBarColor(Color.Gray)
       .scrollBarWidth(10)
       .onWillScroll((xOffset: number, yOffset: number, scrollState: ScrollState) => {
-        console.info(xOffset + ' ' + yOffset)
+        console.info(`${xOffset} ${yOffset}`)
       })
       .onScrollEdge((side: Edge) => {
         console.info('To the edge')
@@ -286,22 +286,23 @@ struct ScrollExample {
             .height(200)
             .margin({ top: 50, bottom: 20 })
             .backgroundColor(Color.Green)
-              // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调。
-            .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 1000}, (isExpanding: boolean, currentRatio: number) => {
-              console.info('Test Text isExpanding: ' + isExpanding + ', currentRatio:' + currentRatio)
-              if (isExpanding && currentRatio >= 1.0) {
-                console.info('Test Text is fully visible. currentRatio:' + currentRatio)
-                this.testTextStr = 'Test Text is fully visible'
-              }
+            // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调。
+            .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 1000 },
+              (isExpanding: boolean, currentRatio: number) => {
+                console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
+                if (isExpanding && currentRatio >= 1.0) {
+                  console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`)
+                  this.testTextStr = 'Test Text is fully visible'
+                }
 
-              if (!isExpanding && currentRatio <= 0.0) {
-                console.info('Test Text is completely invisible.')
-                this.testTextStr = 'Test Text is completely invisible'
-              }
-            })
+                if (!isExpanding && currentRatio <= 0.0) {
+                  console.info('Test Text is completely invisible.')
+                  this.testTextStr = 'Test Text is completely invisible'
+                }
+              })
 
           Row() {
-            Text('Test Row Visible  Change')
+            Text('Test Row Visible Change')
               .fontSize(20)
               .margin({ bottom: 20 })
 
@@ -309,7 +310,7 @@ struct ScrollExample {
           .height(200)
           .backgroundColor(Color.Yellow)
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            console.info('Test Row isExpanding:' + isExpanding + ', currentRatio:' + currentRatio)
+            console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`)
             if (isExpanding && currentRatio >= 1.0) {
               console.info('Test Row is fully visible.')
               this.testRowStr = 'Test Row is fully visible'
@@ -321,7 +322,7 @@ struct ScrollExample {
             }
           })
 
-          ForEach(this.arr, (item:number) => {
+          ForEach(this.arr, (item: number) => {
             Text(item.toString())
               .width('90%')
               .height(150)
@@ -330,7 +331,7 @@ struct ScrollExample {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, (item:number) => (item.toString()))
+          }, (item: number) => (item.toString()))
 
         }.width('100%')
       }
@@ -340,7 +341,7 @@ struct ScrollExample {
       .scrollBarColor(Color.Gray)
       .scrollBarWidth(10)
       .onWillScroll((xOffset: number, yOffset: number, scrollState: ScrollState) => {
-        console.info(xOffset + ' ' + yOffset)
+        console.info(`${xOffset} ${yOffset}`)
       })
       .onScrollEdge((side: Edge) => {
         console.info('To the edge')
@@ -380,8 +381,12 @@ struct OnVisibleAreaChangeSample {
           .width(120)
           .offset({ x: 0, y: 60 })
           // measureFromViewport设置为true，父组件未设置clip(true)，超出父组件的区域被视为可见区域。
-          .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 500, measureFromViewport: true}, (isExpanding: boolean, currentRatio: number) => {
-            console.log(`onVisibleAreaApproximateChange1 isExpanding:${isExpanding} currentRatio:${currentRatio}`)
+          .onVisibleAreaApproximateChange({
+            ratios: [0.0, 1.0],
+            expectedUpdateInterval: 500,
+            measureFromViewport: true
+          }, (isExpanding: boolean, currentRatio: number) => {
+            console.log(`onVisibleAreaApproximateChange1 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
           })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio1 = currentRatio
@@ -407,9 +412,10 @@ struct OnVisibleAreaChangeSample {
           .width(120)
           .offset({ x: 0, y: 60 })
           // 不设置measureFromViewport，measureFromViewport默认为false，父组件未设置clip(true)，超出父组件的区域被视为不可见区域。
-          .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 500}, (isExpanding: boolean, currentRatio: number) => {
-            console.log(`onVisibleAreaApproximateChange2 isExpanding:${isExpanding} currentRatio:${currentRatio}`)
-          })
+          .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 500 },
+            (isExpanding: boolean, currentRatio: number) => {
+              console.log(`onVisibleAreaApproximateChange2 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+            })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio2 = currentRatio
           })
@@ -434,8 +440,12 @@ struct OnVisibleAreaChangeSample {
           .width(120)
           .offset({ x: 0, y: 60 })
           // measureFromViewport设置为true，父组件设置clip(true)，超出父组件的区域被视为不可见区域。
-          .onVisibleAreaApproximateChange({ratios: [0.0, 1.0], expectedUpdateInterval: 500, measureFromViewport: true}, (isExpanding: boolean, currentRatio: number) => {
-            console.log(`onVisibleAreaApproximateChange3 isExpanding:${isExpanding} currentRatio:${currentRatio}`)
+          .onVisibleAreaApproximateChange({
+            ratios: [0.0, 1.0],
+            expectedUpdateInterval: 500,
+            measureFromViewport: true
+          }, (isExpanding: boolean, currentRatio: number) => {
+            console.log(`onVisibleAreaApproximateChange3 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
           })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio3 = currentRatio

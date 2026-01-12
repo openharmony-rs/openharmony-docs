@@ -44,7 +44,7 @@ Declares the USB Serial DDK APIs used by the host to access the serial port devi
 
 ### OH_UsbSerial_Init()
 
-```
+```c
 int32_t OH_UsbSerial_Init(void)
 ```
 
@@ -64,7 +64,7 @@ Initializes the USB Serial DDK.
 
 ### OH_UsbSerial_Release()
 
-```
+```c
 int32_t OH_UsbSerial_Release(void)
 ```
 
@@ -84,7 +84,7 @@ Releases the USB Serial DDK.
 
 ### OH_UsbSerial_Open()
 
-```
+```c
 int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_DeviceHandle **dev)
 ```
 
@@ -113,7 +113,7 @@ Enables the USB serial port device based on the specified **deviceId** and **int
 
 ### OH_UsbSerial_Close()
 
-```
+```c
 int32_t OH_UsbSerial_Close(UsbSerial_DeviceHandle *dev)
 ```
 
@@ -140,7 +140,7 @@ Disables the USB serial port device.
 
 ### OH_UsbSerial_Read()
 
-```
+```c
 int32_t OH_UsbSerial_Read(UsbSerial_DeviceHandle *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead)
 ```
 
@@ -170,7 +170,7 @@ Reads data from the USB serial port device to the buffer.
 
 ### OH_UsbSerial_Write()
 
-```
+```c
 int32_t OH_UsbSerial_Write(UsbSerial_DeviceHandle *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten)
 ```
 
@@ -200,7 +200,7 @@ Writes the data in the buffer to the USB serial port device.
 
 ### OH_UsbSerial_SetBaudRate()
 
-```
+```c
 int32_t OH_UsbSerial_SetBaudRate(UsbSerial_DeviceHandle *dev, uint32_t baudRate)
 ```
 
@@ -228,7 +228,7 @@ Sets the baud rate for a USB serial port device. If the parameters of the USB se
 
 ### OH_UsbSerial_SetParams()
 
-```
+```c
 int32_t OH_UsbSerial_SetParams(UsbSerial_DeviceHandle *dev, UsbSerial_Params *params)
 ```
 
@@ -256,7 +256,7 @@ Sets the parameters of the USB serial port device. If the parameters of the USB 
 
 ### OH_UsbSerial_SetTimeout()
 
-```
+```c
 int32_t OH_UsbSerial_SetTimeout(UsbSerial_DeviceHandle *dev, int timeout)
 ```
 
@@ -284,7 +284,7 @@ Sets the timeout interval (ms) for reading data reported by a USB serial port de
 
 ### OH_UsbSerial_SetFlowControl()
 
-```
+```c
 int32_t OH_UsbSerial_SetFlowControl(UsbSerial_DeviceHandle *dev, UsbSerial_FlowControl flowControl)
 ```
 
@@ -312,7 +312,7 @@ Sets flow control parameters. Flow control is used to manage the data transfer r
 
 ### OH_UsbSerial_Flush()
 
-```
+```c
 int32_t OH_UsbSerial_Flush(UsbSerial_DeviceHandle *dev)
 ```
 
@@ -339,7 +339,7 @@ Clears the input and output buffers after the write operation is complete. If a 
 
 ### OH_UsbSerial_FlushInput()
 
-```
+```c
 int32_t OH_UsbSerial_FlushInput(UsbSerial_DeviceHandle *dev)
 ```
 
@@ -366,7 +366,7 @@ Refreshes the input buffer. The data in the buffer is cleared immediately. Durin
 
 ### OH_UsbSerial_FlushOutput()
 
-```
+```c
 int32_t OH_UsbSerial_FlushOutput(UsbSerial_DeviceHandle *dev)
 ```
 

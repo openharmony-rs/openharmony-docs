@@ -46,7 +46,7 @@ The file declares the APIs for obtaining the following ability resource informat
 
 ### OH_NativeBundle_GetBundleName()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_GetBundleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** bundleName)
 ```
 
@@ -72,7 +72,7 @@ Obtains the bundle name of the ability. After using this function, you must manu
 
 ### OH_NativeBundle_GetModuleName()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_GetModuleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** moduleName)
 ```
 
@@ -98,7 +98,7 @@ Obtains the module name of the ability. After using this function, you must manu
 
 ### OH_NativeBundle_GetAbilityName()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_GetAbilityName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** abilityName)
 ```
 
@@ -124,7 +124,7 @@ Obtains the ability name. After using this function, you must manually release t
 
 ### OH_NativeBundle_GetDrawableDescriptor()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)
 ```
 
@@ -150,7 +150,7 @@ Obtains the [DrawableDescriptor](../apis-arkui/capi-arkui-nativemodule-arkui-dra
 
 ### OH_NativeBundle_GetLabel()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_GetLabel(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** label)
 ```
 
@@ -176,7 +176,7 @@ Obtains the application name of the ability. After using this function, you must
 
 ### OH_NativeBundle_GetAppIndex()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_GetAppIndex(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, int* appIndex)
 ```
 
@@ -202,7 +202,7 @@ Obtains the clone index of the ability.
 
 ### OH_NativeBundle_CheckDefaultApp()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, bool* isDefault)
 ```
 
@@ -228,7 +228,7 @@ Checks whether the application to which the ability belongs is a default applica
 
 ### OH_AbilityResourceInfo_Destroy()
 
-```
+```c
 BundleManager_ErrorCode OH_AbilityResourceInfo_Destroy(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, size_t count)
 ```
 
@@ -254,7 +254,7 @@ Releases memory allocated for ability resource information.
 
 ### OH_NativeBundle_GetSize()
 
-```
+```c
 int OH_NativeBundle_GetSize()
 ```
 

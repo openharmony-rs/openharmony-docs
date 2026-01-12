@@ -1,4 +1,4 @@
-# Native Window Development (C/C++)
+# NativeWindow Development (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
@@ -7,11 +7,11 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-The native window module is a local platform-based window that represents the producer of a graphics queue. It provides APIs for you to request and flush a buffer and configure buffer attributes.
+The NativeWindow module is a local platform-based window that represents the producer of a graphics queue. It provides APIs for you to request and flush a buffer and configure buffer attributes.
 
-The following scenarios are common for native window development:
+The following scenarios are common for NativeWindow development:
 
-* Apply for a graphics `Buffer` through the Native API provided by `NativeWindow`, write the generated graphics content to the graphics `Buffer`, and submit the `Buffer` to the graphics queue.
+* Request a graphics buffer by using the NativeWindow API, write the produced graphics content to the buffer, and flush the buffer to the graphics queue.
 * Request and flush a buffer when adapting to the **eglswapbuffer** interface at the EGL.
 
 ## Available APIs
@@ -26,7 +26,7 @@ For details, see [native_window](../reference/apis-arkgraphics2d/capi-nativewind
 
 ## How to Develop
 
-The following procedure describes how to use the native APIs provided by `NativeWindow` to apply for a graphics `buffer`, write graphics content, and submit the `buffer` to the graphics queue.
+Request a graphics buffer by using the NativeWindow API, write the produced graphics content to the buffer, and flush the buffer to the graphics queue.
 
 **Adding Dynamic Link Libraries**
 
@@ -47,7 +47,7 @@ libnative_window.so
 
 1. Obtain an **OHNativeWindow** instance.
 
-    You can obtain the OHNativeWindow through the [`OH_NativeXComponent_Callback`](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-callback.md) API. The sample code is as follows: For details about how to use the XComponent module, see [XComponent Development Guidelines](../ui/napi-xcomponent-guidelines.md).
+    You can obtain the **OHNativeWindow** instance via the [`OH_NativeXComponent_Callback`](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-callback.md) API. The sample code is as follows: For details about how to use the **XComponent** module, see [XComponent Development Guidelines](../ui/napi-xcomponent-guidelines.md).
 
     1. Add an **XComponent** to the .ets file.
         <!-- @[create_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/ets/pages/Index.ets) -->
@@ -130,7 +130,7 @@ libnative_window.so
         OH_NativeXComponent_RegisterCallback(nativeXComponent, &callback_);
         ```
 
-2. Set the attributes of an **OHNativeWindowBuffer** Use `OH_NativeWindow_NativeWindowHandleOpt` to set the attributes of `OHNativeWindowBuffer`. (By default, the NATIVEBUFFER_USAGE_CPU_READ usage parameter is carried. If the CPU is not used to read and write data, you are advised to remove the NATIVEBUFFER_USAGE_CPU_READ usage parameter. For details, see [Disabling CPU Access to Window Buffer Data](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-arkgraphics-2d-14).)
+2. Set the attributes of an **OHNativeWindowBuffer** by using `OH_NativeWindow_NativeWindowHandleOpt`. By default, the **usage** parameter of **NATIVEBUFFER_USAGE_CPU_READ** is carried. If the CPU is not used to read and write data, you are advised to remove this parameter. For details, see [How do I proactively disable CPU access to window buffers to reduce power consumption?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-arkgraphics-2d-14).
     <!-- @[set_buffer_geometry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
     ``` C++
@@ -197,7 +197,7 @@ libnative_window.so
     }
     ```
 
-7. Unmaps memory using munmap.
+7. Use **munmap** to cancel memory mapping.
     <!-- @[munmap_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
     ``` C++
@@ -210,6 +210,6 @@ libnative_window.so
 
 ## Samples
 
-The following samples are provided to help you better understand how to use the native Window module for development:
+The following samples are provided to help you better understand how to use the NativeWindow module for development:
 
-- [NativeWindow (API11) ](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow)
+- [NativeWindow (API Version 11)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow)

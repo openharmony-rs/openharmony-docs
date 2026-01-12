@@ -4,7 +4,7 @@
 <!--Owner: @song-song-song-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The custom layout of a custom component is used to lay out its child components through data calculation.
 
@@ -44,7 +44,7 @@ Invoked when the custom component needs to determine its size. Through this call
 
 ## onPlaceChildren<sup>10+</sup>
 
-onPlaceChildren?(selfLayoutInfo: GeometryInfo, children: Array&lt;Layoutable&gt;, constraint: ConstraintSizeOptions):void
+onPlaceChildren?(selfLayoutInfo: GeometryInfo, children: Array&lt;Layoutable&gt;, constraint: ConstraintSizeOptions): void
 
 Invoked when the custom component needs to determine the positions of its child components. Through this callback the component receives its child component size constraints from the ArkUI framework. State variables should not be changed in this callback.
 
@@ -56,7 +56,7 @@ Invoked when the custom component needs to determine the positions of its child 
 
 | Name           | Type                                                        |Mandatory| Description              |
 |----------------|------------------------------------------------------------|---|------------------|
-| selfLayoutInfo | [GeometryInfo](#geometryinfo10)                            |Yes|Information about the component's computed layout properties after measurement of the parent component (custom component).        |
+| selfLayoutInfo | [GeometryInfo](#geometryinfo10)                            |Yes|Information about the component's computed layout properties after measurement.        |
 | children       | Array&lt;[Layoutable](#layoutable10)&gt;                   |Yes|Array containing layout information for all child components after measurement.        |
 | constraint     | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) |Yes|Layout constraints applied to the component.|
 
@@ -66,7 +66,7 @@ See the [example for customizing a layout](#example).
 
 ## GeometryInfo<sup>10+</sup>
 
-Provides the parent component (custom component) layout information. Inherits from [SizeResult](#sizeresult10).
+Provides layout geometry information of the parent component (a custom component). Inherits from [SizeResult](#sizeresult10).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -74,9 +74,9 @@ Provides the parent component (custom component) layout information. Inherits fr
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| borderWidth | [EdgeWidth](ts-types.md#edgewidths9) |No|No| Border width of the parent component (custom component).<br>Unit: vp.           |
-| margin      | [Margin](ts-types.md#margin)       | No|No|Margin information of the parent component (custom component).<br>Unit: vp.      |
-| padding     | [Padding](ts-types.md#padding)   |No|No| Padding information of the parent component (custom component).<br>Unit: vp.|
+| borderWidth | [EdgeWidth](ts-types.md#edgewidths9) |No|No| Width of the parent component's border.<br>Unit: vp.           |
+| margin      | [Margin](ts-types.md#margin)       | No|No|Margin values of the parent component.<br>Unit: vp.      |
+| padding     | [Padding](ts-types.md#padding)   |No|No| Padding values of the parent component.<br>Unit: vp.|
 
 ## Layoutable<sup>10+</sup>
 
@@ -93,7 +93,7 @@ Provides the child component layout information.
 
 ### layout
 
-layout(position: Position) : void
+layout(position: Position): void
 
 Applies the specified position information to the child component.
 
@@ -109,7 +109,7 @@ Applies the specified position information to the child component.
 
 ### getMargin<sup>12+</sup>
 
-getMargin() : DirectionalEdgesT\<number>
+getMargin(): DirectionalEdgesT\<number>
 
 Obtains the margin values of the child component.
 
@@ -125,7 +125,7 @@ Obtains the margin values of the child component.
 
  ### getPadding<sup>12+</sup>
 
-getPadding() : DirectionalEdgesT\<number>
+getPadding(): DirectionalEdgesT\<number>
 
  Obtains the padding values of the child component.
 
@@ -141,7 +141,7 @@ getPadding() : DirectionalEdgesT\<number>
 
 ### getBorderWidth<sup>12+</sup>
 
-getBorderWidth() : DirectionalEdgesT\<number>
+getBorderWidth(): DirectionalEdgesT\<number>
 
 Obtains the border widths of the child component.
 
@@ -198,7 +198,7 @@ Provides the child component position information.
 
  ### getMargin<sup>12+</sup>
 
- getMargin() : DirectionalEdgesT\<number\>
+ getMargin(): DirectionalEdgesT\<number\>
 
  Obtains the margin values of the child component.
 
@@ -214,7 +214,7 @@ Provides the child component position information.
 
 ### getPadding<sup>12+</sup>
 
-getPadding() : DirectionalEdgesT\<number\>
+getPadding(): DirectionalEdgesT\<number\>
 
 Obtains the padding values of the child component.
 
@@ -230,7 +230,7 @@ Obtains the padding values of the child component.
 
  ### getBorderWidth<sup>12+</sup>
 
-getBorderWidth() : DirectionalEdgesT\<number\>
+getBorderWidth(): DirectionalEdgesT\<number\>
 
 Obtains the border widths of the child component.
 
@@ -257,6 +257,14 @@ Provides the measurement result of the component. This API inherits from [SizeRe
 
 Provides the component size information.
 
+> **NOTE**
+>
+>- The custom layout does not support the LazyForEach syntax.
+>- When a custom layout is created in builder mode, only **this.builder()** is allowed in the **build()** method of a custom component, as shown in the recommended usage in the example below.
+>- The size parameters of the parent component (custom component), except **aspectRatio**, are at a lower priority than those specified by **onMeasureSize**.
+>- The position parameters of the child component, except **offset**, **position**, and **markAnchor**, are at a lower priority than those specified by **onPlaceChildren**, and do not take effect.
+>- When using the custom layout method, you must call **onMeasureSize** and **onPlaceChildren** at the same time for the layout to display properly.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -266,21 +274,15 @@ Provides the component size information.
 | width  | number | No|No|Width obtained from the measurement result.<br>Unit: vp.|
 | height | number | No|No|Height obtained from the measurement result.<br>Unit: vp.|
 
-> **NOTE**
->
->- The custom layout does not support the LazyForEach syntax.
->- When a custom layout is created in builder mode, only **this.builder()** is allowed in the **build()** method of a custom component, as shown in the recommended usage in the example below.
->- The size parameters of the parent component (custom component), except **aspectRatio**, are at a lower priority than those specified by **onMeasureSize**.
->- The position parameters of the child component, except **offset**, **position**, and **markAnchor**, are at a lower priority than those specified by **onPlaceChildren**, and do not take effect.
->- When using the custom layout method, you must call **onMeasureSize** and **onPlaceChildren** at the same time for the layout to display properly.
-
 ## onLayout<sup>(deprecated)</sup>
 
 onLayout?(children: Array&lt;LayoutChild&gt;, constraint: ConstraintSizeOptions): void
 
 Invoked when the custom component lays out its child components. Through this callback the component receives its child component layout information and size constraint from the ArkUI framework. State variables should not be changed in this callback.
 
-This API is supported since API version 9 and deprecated since API version 10. You are advised to use [onPlaceChildren](#onplacechildren10) instead.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [onPlaceChildren](#onplacechildren10) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -299,7 +301,9 @@ onMeasure?(children: Array&lt;LayoutChild&gt;, constraint: ConstraintSizeOptions
 
 Invoked when the custom component needs to determine its size. Through this callback the component receives its child component layout information and its own size constraints from the ArkUI framework. State variables should not be changed in this callback.
 
-This API is supported since API version 9 and deprecated since API version 10. You are advised to use [onMeasureSize](#onmeasuresize10) instead.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [onMeasureSize](#onmeasuresize10) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -314,7 +318,7 @@ This API is supported since API version 9 and deprecated since API version 10. Y
 
 ## LayoutChild<sup>(deprecated)</sup>
 
-Child component layout information.
+Provides child component layout information.
 
 > **NOTE**
 >
@@ -336,13 +340,13 @@ Child component layout information.
 
 ### measure<sup>(deprecated)</sup>
 
-measure(childConstraint: ConstraintSizeOptions) : void
+measure(childConstraint: ConstraintSizeOptions)
 
-Method called to apply the size constraint to the child component.
+Applies specified size constraints to child components.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [measure](#measure) instead.
+> This API is supported since API version 9 and deprecated since API version 10. No substitute is provided. You can use [measure](#measure) to apply size constraints to child components.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -352,17 +356,17 @@ Method called to apply the size constraint to the child component.
 
 | Name       | Type    |Mandatory| Description              |
 |------------|-----------|------|------------------|
-| childConstraint   | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | Yes | Constraints on the size range of the child component.|
+| childConstraint   | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | Yes | Size constraints to apply to child components.|
 
 ### layout<sup>(deprecated)</sup>
 
-layout(childLayoutInfo: LayoutInfo) : void
+layout(childLayoutInfo: LayoutInfo)
 
-Applies the specified position information to the child component.
+Applies specified layout constraints to child components.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [layout](#layout) instead.
+> This API is supported since API version 9 and deprecated since API version 10. No substitute is provided. You can use [layout](#layout) to apply the specified layout constraints to child components.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -372,13 +376,15 @@ Applies the specified position information to the child component.
 
 | Name       | Type    |Mandatory| Description              |
 |------------|-----------|------|------------------|
-| childLayoutInfo   | [LayoutInfo](#layoutinfodeprecated) | Yes |Provides the layout information of the child component.|
+| childLayoutInfo   | [LayoutInfo](#layoutinfodeprecated) | Yes |Layout constraints to apply to child components|
 
 ## LayoutBorderInfo<sup>(deprecated)</sup>
 
 Provides the border information of the child component.
 
-This API is supported since API version 9 and deprecated since API version 10. It is supported in ArkTS widgets.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [getBorderWidth](#getborderwidth12), [getMargin](#getmargin12), and [getPadding](#getpadding12) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -394,7 +400,9 @@ This API is supported since API version 9 and deprecated since API version 10. I
 
 Provides the layout information of the child component.
 
-This API is supported since API version 9 and deprecated since API version 10. It is supported in ArkTS widgets.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -458,9 +466,13 @@ struct CustomLayout {
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;
     children.forEach((child) => {
-      let result: MeasureResult = child.measure({ minHeight: size, minWidth: size, maxWidth: size, maxHeight: size })
-      size += result.width / 2
-      ;
+      let result: MeasureResult = child.measure({
+        minHeight: size,
+        minWidth: size,
+        maxWidth: size,
+        maxHeight: size
+      })
+      size += result.width / 2;
     })
     this.result.width = 100;
     this.result.height = 400;
@@ -487,8 +499,8 @@ struct Index {
       CustomLayout({ builder: ColumnChildren })
     }
     .justifyContent(FlexAlign.Center)
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 
@@ -542,7 +554,7 @@ struct CustomLayout {
     let width = 0;
     let height = 0;
     this.overFlowIndex = -1;
-    // Assume that the component width cannot exceed 200 vp or the maximum constraint.
+    // Restrict the maximum width of the parent component to the smaller value between 200 vp and the maximum width from layout constraints.
     let maxWidth = Math.min(200, constraint.maxWidth as number);
     for (let index = 0; index < children.length; ++index) {
       let child = children[index];
@@ -559,7 +571,7 @@ struct CustomLayout {
         this.overFlowIndex = index;
         break;
       }
-      // Accumulate the width and height of the parent component.
+      // Update the parent component's cumulative width and height.
       width = newWidth;
       height = Math.max(height, childResult.height + margin.top + margin.bottom);
     }
@@ -625,7 +637,7 @@ struct CustomLayout {
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;
     children.forEach((child) => {
-      console.info("child uniqueId: ", child.uniqueId)
+      console.info('child uniqueId: ', child.uniqueId)
       const uiContext = this.getUIContext()
       if (uiContext) {
         let node: FrameNode | null = uiContext.getFrameNodeByUniqueId(child.uniqueId) // Obtain the FrameNode of the NodeContainer component.
@@ -657,9 +669,9 @@ This example demonstrates how to use the **fixAtIdealSize** property of the [Lay
 struct Index {
   @Builder
   ColumnChildrenText() {
-    Text("=====Text=====Text=====Text=====Text=====Text=====Text=====Text=====Text" )
+    Text('=====Text=====Text=====Text=====Text=====Text=====Text=====Text=====Text' )
       .fontSize(16).fontColor(Color.Black)
-      .borderWidth(2).backgroundColor("#fff8dc")
+      .borderWidth(2).backgroundColor('#fff8dc')
       .width(LayoutPolicy.fixAtIdealSize) // Set the child component's width to be unrestricted by the parent component.
       .height(LayoutPolicy.fixAtIdealSize)  // Set the child component's height to be unrestricted by the parent component.
   }
@@ -668,7 +680,7 @@ struct Index {
     Column() {
       Column() {
         CustomLayoutText({ builder: this.ColumnChildrenText })
-          .backgroundColor("#f0ffff").borderRadius(20).margin(10)
+          .backgroundColor('#f0ffff').borderRadius(20).margin(10)
       }
       .width(300)
       .height(150)
@@ -740,7 +752,6 @@ struct Index {
     }
   }
 }
-
 
 @Component
 struct CustomLayout {

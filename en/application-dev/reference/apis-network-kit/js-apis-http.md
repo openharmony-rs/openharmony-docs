@@ -106,7 +106,9 @@ httpRequest.request(// Customize EXAMPLE_URL in extraData on your own. It is up 
         remoteFileName: 'fileName.txt' // Optional. This field is supported since API version 11.
       }
     ],
-    addressFamily: http.AddressFamily.DEFAULT // Optional. By default, the IPv4 or IPv6 address of the target domain name is selected. This attribute is supported since API version 15.
+    addressFamily: http.AddressFamily.DEFAULT // Optional. By default, the IPv4 or IPv6 address of the target domain name is selected. Supported since API 15.
+    customMethod: 'GET', // Optional. Supported since API 23.
+    maxRedirects: 30 // Optional. The default value is 30. Supported since API 23.
   },
   (err: BusinessError, data: http.HttpResponse) => {
     if (!err) {
@@ -761,7 +763,7 @@ on(type: "headerReceive", callback: AsyncCallback\<Object\>): void
 Registers an observer for HTTP Response Header events.
 
 > **NOTE**
-> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [on("headersReceive")<sup>8+</sup>](#onheadersreceive8) instead.
+> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [on("headersReceive")](#onheadersreceive8) instead.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -792,7 +794,7 @@ Unregisters the observer for HTTP Response Header events.
 
 > **NOTE**
 >
-> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [off("headersReceive")<sup>8+</sup>](#offheadersreceive8) instead.
+> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [off("headersReceive")](#offheadersreceive8) instead.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1147,8 +1149,8 @@ Defines the options for initiating an HTTP request.
 | readTimeout                  | number                          | No | Yes | Read timeout duration. The default value is **60000**, in ms. The input value must be an uint32_t integer.<br>The value **0** indicates no timeout.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | connectTimeout               | number                          | No | Yes | Connection timeout interval. The default value is **60000**, in ms. The input value must be an uint32_t integer.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | usingProtocol<sup>9+</sup>   | [HttpProtocol](#httpprotocol9)  | No | Yes | Protocol. The default value is automatically specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| usingProxy<sup>10+</sup>     | boolean \| [HttpProxy](js-apis-net-connection.md#httpproxy10)               | No | Yes | HTTP proxy configuration. If this parameter is not set, no proxy is used.<br>- If **usingProxy** is set to **true**, the default network proxy is used. If **usingProxy** is set to **false**, no proxy is used.<br>- If **usingProxy** is of the **HttpProxy** type, the specified network proxy is used. Currently, **username** and **password** cannot be specified for **HttpProxy**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| caPath<sup>10+</sup>     | string               | No | Yes | CA certificate path. If the CA certificate path is set, the system uses the CA certificate in the specified path. Otherwise, the system uses the preset CA certificate.<br>The preset CA certificate is available at **/etc/ssl/certs/cacert.pem**. This path is the sandbox mapping path, which can be obtained by using **UIAbilityContext** APIs. Currently, only **.pem** certificates are supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| usingProxy<sup>10+</sup>     | boolean \| [HttpProxy](js-apis-net-connection.md#httpproxy10)               | No | Yes | HTTP proxy configuration. If this parameter is not set, no proxy is used.<br>- If **usingProxy** is set to **true**, the default network proxy is used. If **usingProxy** is set to **false**, no proxy is used.<br>- If **usingProxy** is of the **HttpProxy** type, the specified network proxy is used. The HttpProxy supports the **username** and **password** fields from API version 22.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| caPath<sup>10+</sup>     | string               | No | Yes | CA certificate data. If this parameter is set and the certificate is valid, the system uses the specified CA certificate and the preset CA certificate. Otherwise, the system uses only the preset CA certificate. The CA certificate path is the sandbox mapping path, which can be obtained by using **UIAbilityContext** APIs. Currently, only **.pem** certificates are supported.<br> The preset CA certificate is available at **/etc/ssl/certs/cacert.pem**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | caData<sup>20+</sup>     | string               | No | Yes | CA certificate data. If this parameter is set and the certificate is valid, the system uses the specified CA certificate and the preset CA certificate. Otherwise, the system uses only the preset CA certificate. If both **caPath** and **caData** are set, **caData** is ignored by the system. Currently, only certificates in **.pem** format are supported. The maximum length is 8000 bytes. Only one certificate can be specified. A certificate chain is not allowed.<br>The preset CA certificate is available at **/etc/ssl/certs/cacert.pem**. This path is the sandbox mapping path, which can be obtained by using **UIAbilityContext** APIs.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | resumeFrom<sup>11+</sup> | number | No| Yes| Download start position. This field can be used only for the GET method. As stipulated in section 3.1 of RFC 7233, servers are allowed to ignore range requests.<br>- If the HTTP PUT method is used, do not use this option because it may conflict with other options.<br>- The value ranges from **1** to **4294967296** (4 GB). If the value is out of this range, this field does not take effect.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | resumeTo<sup>11+</sup> | number | No| Yes| Download end position. This field can be used only for the GET method. As stipulated in section 3.1 of RFC 7233, servers are allowed to ignore range requests.<br>- If the HTTP PUT method is used, do not use this option because it may conflict with other options.<br>- The value ranges from **1** to **4294967296** (4 GB). If the value is out of this range, this field does not take effect.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
@@ -1164,6 +1166,8 @@ Defines the options for initiating an HTTP request.
 | serverAuthentication<sup>18+</sup> | [ServerAuthentication](#serverauthentication18)                     | No| Yes| Indicates whether to verify the server identity during a secure connection. The identity is not verified by default.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | sslType<sup>20+</sup> | [SslType](#ssltype20) | No| Yes| Security communication protocol. You can use TLS (default) or TLCP. If TLCP is used, the related options (such as **caPath**, **clientCert**, and **clientEncCert**) must be set to valid values.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | clientEncCert<sup>20+</sup> | [ClientCert](#clientcert11) | No| Yes| Client certificate, which is used by the server to verify the client identity.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| customMethod<sup>23+</sup> | string | No| Yes| Custom request method. For example, when the WebDAV extension protocol is implemented, **customMethod** has a higher priority than **method**.<br>- If **customMethod** meets the WebDAV extension protocol request requirements but the server does not support the request, the server response code of the request is usually 405 or 501 (the actual result depends on the server behavior).<br>- If **customMethod** does not meet the WebDAV extension protocol request requirements, the server response code of the request is usually 400 or 405 (the actual result depends on the server behavior).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| maxRedirects<sup>23+</sup> | number | No| Yes| The maximum number of redirections can be specified for HttpRequest.<br>- The default maximum number of redirections is **30**.<br>- The value range is [0, 2147483647]. If this parameter is set to **0**, redirection is disabled. If the number of redirections exceeds the maximum number of redirections, error code 2300047 is returned. If the value is out of the range, the default value **30** takes effect.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## RequestMethod
 
@@ -1504,7 +1508,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 
@@ -1540,7 +1544,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 
@@ -1868,4 +1872,359 @@ Defines the secure communications protocol.
 | Type  | Description                                  |
 | ------ | -------------------------------------- |
 | 'TLS' | TLS protocol. The value is fixed to **TLS**.  |
-| 'TLCP' | TLCP protocol. The value is fixed to **TLCP**.|
+| 'TLCP' | TLCP protocol. The value is fixed to **TLCP**.<br>**NOTE**<br>(1) The certificate supports the following string specifications:<br> - UTF8String (English character set)<br> - PrintableString<br>  - IA5String<br>Supported since API Version 22:<br> - TeletexString<br>(2) The certificate supports the following extended specifications:<br> - BasicConstraints (OID 2.5.29.19)<br> - KeyUsage (OID2.5.29.15)<br> - SubjectKeyIdentifier (OID2.5.29.14)<br> - AuthorityKeyIdentifier (OID2.5.29.35)<br>Supported since API Version 22:<br> - SubjectAltName (OID 2.5.29.17)<br> - ExtendedKeyUsage (OID 2.5.29.37)<br>|
+
+## InterceptorType<sup>22+</sup>
+
+Enumerates the types of HTTP interceptors.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+| Name  | Value|Description                                  |
+| ------ | --|-------------------------------------- |
+| INITIAL_REQUEST |'INITIAL_REQUEST' |Intercepts after the initial HTTP request is assembled.|
+| REDIRECTION | 'REDIRECTION' |Intercepts when a redirection response is received.|
+| CACHE_CHECKED | 'READ_CACHE' |Intercepts when the HTTP cache is checked and hit.|
+| NETWORK_CONNECT | 'CONNECT_NETWORK' |Intercepts before the network request is sent.|
+| FINAL_RESPONSE | 'FINAL_RESPONSE' |Intercepts when the final HTTP response is obtained.|
+
+## HttpRequestContext<sup>22+</sup>
+
+HTTP request context data. The object instance is passed as a parameter in the [interceptorHandle](#interceptorhandle22) method of the interceptor. You can use this object to obtain and modify the information about the HTTP request.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+### Attributes
+
+| Name  | Type|Read Only|Optional|Description                     |
+| --   | -- |-- |-- |--                      |
+| url   | string |No|No|URL obtained by the HTTP interceptor from the HTTP request, which can be modified in the interceptor.|
+| header   | Object |No|No|Request header obtained by the HTTP interceptor from the HTTP request, which can be modified in the interceptor.|
+| body   | Object |No|No|Request body obtained by the HTTP interceptor from the HTTP request, which can be modified in the interceptor.|
+
+## ChainContinue<sup>22+</sup>
+
+type ChainContinue = boolean
+
+Whether to continue to process the interceptor chain.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+| Type  | Description                                   |
+| ------ | -------------------------------------- |
+| boolean | The value **true** indicates that the interceptor chain continues to be processed, and the value **false** indicates that the interceptor chain is terminated and an HTTP response is returned.                  |
+
+## HttpInterceptor<sup>22+</sup>
+
+HTTP interceptor API, used to define the interception processing function.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+### Attributes
+
+| Name  | Type|Read Only|Optional|Description                     |
+| --   | -- |-- |-- |--                      |
+| interceptorType   | [InterceptorType](#interceptortype22)|No|No|Interceptor type, which defines when the interceptor is called.                     |
+
+
+### interceptorHandle<sup>22+</sup>
+
+interceptorHandle(reqContext: HttpRequestContext, rspContext: HttpResponse): Promise\<ChainContinue\>
+
+Intercepts the HTTP processing process and modifies it as required.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Parameters**
+
+| Name  | Type| Mandatory|Description                     |
+| --   | -- | -- | --                      |
+| reqContext   | [HttpRequestContext](#httprequestcontext22) |Yes|Context of the request parameters passed through the HTTP interceptor.                     |
+| rspContext   | [HttpResponse](#httpresponse) |Yes|Context of the return result passed through the HTTP interceptor.                     |
+
+**Return value**
+
+| Type  | Description                                  |
+| ------ | -------------------------------------- |
+| Promise\<[ChainContinue](#chaincontinue22)\> | Continues the HTTP processing or stops and returns an HTTP response.  |
+
+**Example**
+
+```ts
+import { http } from '@kit.NetworkKit';
+
+// Create a custom interceptor.
+class CustomInterceptor implements http.HttpInterceptor {
+  interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
+
+  async interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // Add the authentication header in the initial request phase.
+    reqContext.header['Authorization'] = 'Bearer token';
+    console.info('Interceptor: Added authorization header');
+    return true; // Continue to process the interceptor chain.
+  }
+}
+
+let customInterceptor = new CustomInterceptor();
+```
+
+## HttpInterceptorChain<sup>22+</sup>
+
+HTTP interceptor chain.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Example**
+
+```ts
+import { http } from '@kit.NetworkKit';
+
+let interceptorChain = new http.HttpInterceptorChain();
+```
+
+### addChain<sup>22+</sup>
+
+addChain(chain: HttpInterceptor[]): boolean
+
+Adds an interceptor to the HTTP client.
+
+> **NOTE**
+>
+> An interceptor chain cannot contain interceptor instances of the same type. If interceptors of the same type are passed in, the error code **2300802** (Duplicated interceptor type in the chain) is reported.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Parameters**
+
+| Name  | Type  |Mandatory  |Description  |
+| ------ | ------ | ------ | ------ |
+| chain | [HttpInterceptor](#httpinterceptor22)[] | Yes| Interception chain composed of interceptor instances. A single interceptor or multiple interceptors of different types can be passed in.|
+
+**Return value**
+
+| Type  | Description                                  |
+| ------ | -------------------------------------- |
+| boolean | Whether the interceptor is added successfully. The value **true** indicates that the interceptor is successfully added, and the value **false** indicates the opposite.                  |
+
+**Error codes**
+
+For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
+The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+
+| ID   | Error Message                                              |
+| ------      | --------------------------------------                |
+| 2300801 | Parameter type not supported by the interceptor.          |
+| 2300802 | Duplicated interceptor type in the chain.                 |
+| 2300999 | Internal error.                                           |
+
+**Example**
+
+```ts
+import { http } from '@kit.NetworkKit';
+
+// Create an authentication interceptor.
+class AuthInterceptor implements http.HttpInterceptor {
+  interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
+
+  async interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // Add the authentication header in the initial request phase.
+    reqContext.header['Authorization'] = 'Bearer token';
+    console.info('Interceptor: Added authorization header');
+    return true; // Continue to process the interceptor chain.
+  }
+}
+
+class LoggingInterceptor implements http.HttpInterceptor {
+  interceptorType: http.InterceptorType = http.InterceptorType.FINAL_RESPONSE;
+
+  async interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // Record logs in the final response phase.
+    console.info(`LoggingInterceptor: Request to ${reqContext.url} completed with status ${rspContext.responseCode}`);
+    return true; // Continue to process the interceptor chain.
+  }
+}
+
+// Create an interceptor chain and apply the interceptor chain to the request.
+let interceptorChain = new http.HttpInterceptorChain();
+let authInterceptor = new AuthInterceptor();
+let loggingInterceptor = new LoggingInterceptor();
+
+// Add the interceptor to the chain.
+try {
+  let success = interceptorChain.addChain([authInterceptor, loggingInterceptor]);
+  if (!success) {
+    console.error('Failed to add interceptor chain');
+  }
+} catch (e) {
+  console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
+}
+```
+
+### getChain<sup>22+</sup>
+
+getChain(): HttpInterceptor[]
+
+Obtains all interceptor instances in the current interceptor chain.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Return value**
+
+| Type  | Description                                    |
+| ------ | --------------------------------------   |
+| [HttpInterceptor](#httpinterceptor22)[] | Returns all interceptor instances added by the [addChain](#addchain22) method.            |
+
+**Example**
+
+```ts
+import { http } from '@kit.NetworkKit';
+
+// Create a custom interceptor.
+class CustomInterceptor implements http.HttpInterceptor {
+  interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
+
+  async interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // Add the authentication header in the initial request phase.
+    reqContext.header['Authorization'] = 'Bearer token';
+    console.info('Interceptor: Added authorization header');
+    return true; // Continue to process the interceptor chain.
+  }
+}
+
+// Create an interceptor chain and apply the interceptor chain to the request.
+let interceptorChain = new http.HttpInterceptorChain();
+let customInterceptor = new CustomInterceptor();
+
+// Add the interceptor to the chain.
+try {
+  let success = interceptorChain.addChain([customInterceptor]);
+  if (!success) {
+    console.error('Failed to add interceptor chain');
+  }
+} catch (e) {
+  console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
+}
+
+// Obtain all interceptors in the current interceptor chain.
+let chain = interceptorChain.getChain();
+console.info(`Current interceptor chain has ${chain.length} interceptors`);
+```
+
+### apply<sup>22+</sup>
+
+apply(httpRequest: HttpRequest): boolean
+
+Adds an interceptor chain to the target HTTP request. Each HTTP request instance can have only one interceptor chain attached.
+
+> **NOTE**
+>
+> After an interceptor chain is attached to an [HttpRequest](#httprequest) instance, when the instance initiates an HTTP request, interceptors of the corresponding type in the attached interceptor chain are triggered.<br>
+> For more information about how to trigger interceptors using HTTP requests, see [HTTP Interceptor Function Code Example](../../network/http-request.md#http-interceptor).<br>
+> The HTTP interceptor feature is supported only by [HttpRequest.request](#request) APIs, and is not supported by [HttpRequest.requestInStream](#requestinstream10) APIs (streaming transmission).
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Parameters**
+
+| Name  | Type  |Mandatory  |Description  |
+| ------ | ------ | ------ | ------ |
+| httpRequest | [HttpRequest](#httprequest) | Yes| [HttpRequest](#httprequest) that initiates an HTTP request.|
+
+**Return value**
+
+| Type  | Description                                  |
+| ------ | -------------------------------------- |
+| boolean | Whether the interceptor is attached successfully. The value **true** indicates that the interceptor is successfully added, and the value **false** indicates the opposite.                  |
+
+**Error codes**
+
+For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
+The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+
+| ID   | Error Message                                              |
+| ------      | --------------------------------------                |
+| 2300801 | Parameter type not supported by the interceptor.          |
+| 2300999 | Internal error.                                           |
+
+**Example**
+
+```ts
+import { http } from '@kit.NetworkKit';
+
+// Create an authentication interceptor.
+class AuthInterceptor implements http.HttpInterceptor {
+  interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
+
+  async interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // Add the authentication header in the initial request phase.
+    reqContext.header['Authorization'] = 'Bearer token';
+    console.info('Interceptor: Added authorization header');
+    return true; // Continue to process the interceptor chain.
+  }
+}
+
+class LoggingInterceptor implements http.HttpInterceptor {
+  interceptorType: http.InterceptorType = http.InterceptorType.FINAL_RESPONSE;
+
+  async interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // Record logs in the final response phase.
+    console.info(`LoggingInterceptor: Request to ${reqContext.url} completed with status ${rspContext.responseCode}`);
+    return true; // Continue to process the interceptor chain.
+  }
+}
+
+// Create an interceptor chain.
+let interceptorChain = new http.HttpInterceptorChain();
+let authInterceptor = new AuthInterceptor();
+let loggingInterceptor = new LoggingInterceptor();
+
+// Create an HTTP request.
+let httpRequest = http.createHttp();
+
+try {
+  // Add the interceptor to the chain.
+  let success = interceptorChain.addChain([authInterceptor, loggingInterceptor]);
+  if (!success) {
+    console.error('Failed to add interceptor chain');
+  }
+
+  // Apply the interceptor chain to the HTTP request.
+  let applySuccess = interceptorChain.apply(httpRequest);
+  if (!applySuccess) {
+    console.error('Failed to apply interceptor chain');
+  }
+} catch (e) {
+  console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
+}
+
+// Initiate an HTTP request. If interception is required, the request can be initiated only through the request API.
+httpRequest.request("EXAMPLE_URL", {
+  method: http.RequestMethod.GET,
+  header: { 'Content-Type': 'application/json' }
+}, (err: Error, data: http.HttpResponse) => {
+  if (!err) {
+    console.info('Request completed with response code: ' + data.responseCode);
+  } else {
+    console.error('Request failed: ' + JSON.stringify(err));
+  }
+  httpRequest.destroy();
+});
+```

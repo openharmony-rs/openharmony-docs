@@ -87,7 +87,7 @@ Reason:Signal:SIGSEGV(SEGV_ACCERR)@0x0000005c5f09a280
 
 **参考链接**
 
-[跨组件层级双向同步](state-management/arkts-new-Provider-and-Consumer.md)。
+[跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)。
 
 
 ## @Link数据源类型错误
@@ -97,6 +97,10 @@ Reason:Signal:SIGSEGV(SEGV_ACCERR)@0x0000005c5f09a280
 应用闪退并生成如下jscrash崩溃栈：
 
 ![SynchedPropertyTwoWayPUCrashLog](figures/SynchedPropertyTwoWayPUCrashLog.png)
+
+从API version 23开始，添加对`@Link`数据源错误的校验，运行时错误变为编译期报错：
+
+![LinkSourceDataError](figures/LinkSourceDataError.png)
 
 **可能原因**
 
@@ -133,4 +137,4 @@ Reason:Signal:SIGSEGV(SEGV_ACCERR)@0x0000005c5f09a280
 
 **参考链接**
 
-[跨组件层级双向同步](state-management/arkts-new-Provider-and-Consumer.md)。
+[跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)。

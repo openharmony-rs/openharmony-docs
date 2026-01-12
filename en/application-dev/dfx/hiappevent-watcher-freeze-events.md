@@ -22,6 +22,10 @@ You can subscribe to the application freeze event **hiAppEvent.event.APP_FREEZE*
 
 - [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md)
 
+> **NOTE**
+>
+> Application freeze events can be subscribed to using HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) and atomic services. Since API version 22, this feature is also supported for [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
+
 ## Event Fields
 
 ### params
@@ -32,6 +36,8 @@ The **params** attribute in the event information is described as follows.
 | -------- | -------- | -------- |
 | time | number | Event triggering time, in ms.|
 | foreground | boolean | Whether the application is running in the foreground. The value **true** indicates that the application is in the foreground, and the value **false** indicates the opposite.|
+| release_type | string | Application version type. The value **release** indicates that the application is a [release-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916), and the value **debug** indicates that the application is a [debug-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916).<br>Note: This field is supported since API version 23.|
+| cpu_abi | string | ABI type.<br>Note: This field is supported since API version 23.|
 | bundle_version | string | Application version.|
 | bundle_name | string | Application name.|
 | process_name | string | Process name of the application.|
@@ -39,7 +45,7 @@ The **params** attribute in the event information is described as follows.
 | uid | number | User ID of an application.|
 | uuid | string | Error ID, which is generated based on fault information and uniquely identifies crash faults of the same type.|
 | exception | object | Exception information. For details, see **exception**.|
-| hilog | string[] | Log information.|
+| hilog | string[] | Log information. For the application freeze event, a maximum of 100 lines of faulty process log information can be obtained from the hilog buffer.|
 | event_handler | string[] | Events not yet handled by the main thread.|
 | event_handler_size_3s | string | Number of tasks in the task stack at 3s during the [THREAD_BLOCK_6S event](appfreeze-guidelines.md#thread_block_6s-application-main-thread-timeout). This parameter is available only in the application freeze event.|
 | event_handler_size_6s | string | Number of tasks in the task stack at 6s during the [THREAD_BLOCK_6S event](appfreeze-guidelines.md#thread_block_6s-application-main-thread-timeout). This parameter is available only in the application freeze event.|
@@ -64,6 +70,12 @@ The **params** attribute in the event information is described as follows.
 | thread_name | string | Thread name.|
 | tid | number | Thread ID.|
 | frames | object[] | Thread call stack. For details, see **frame**.|
+| state | string | Thread running state, which is read from the value of **state** in **/proc/pid/stat**.<br>Note: This field is supported since API version 23.|
+| utime | number | Number of CPU ticks consumed by the thread in user mode, which is read from the value of **utime** in **/proc/pid/stat**.<br>Note: This field is supported since API version 23.|
+| stime | number | Number of CPU ticks consumed by the thread in kernel mode, which is read from the value of **stime** in **/proc/pid/stat**.<br>Note: This field is supported since API version 23.|
+| priority | number | Real-time priority, which is read from the value of **priority** in **/proc/pid/stat**.<br>Note: This field is supported since API version 23.|
+| nice | number | Static priority, which is read from the value of **nice** in **/proc/pid/stat**.<br>Note: This field is supported since API version 23.|
+| clk | number | Number of clock ticks per second, which is obtained through **sysconf(_SC_CLK_TCK)**. If the value fails to be obtained, the default value **100** is used. The running time (unit: second) can be calculated by dividing the number of clock ticks by this value.<br>Note: This field is supported since API version 23.|
 
 ### frame
 

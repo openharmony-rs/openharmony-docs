@@ -45,7 +45,7 @@
 
 ### ArkWeb_NativeAPIVariantKind
 
-```
+```c
 enum ArkWeb_NativeAPIVariantKind
 ```
 
@@ -69,7 +69,7 @@ enum ArkWeb_NativeAPIVariantKind
 
 ### OH_ArkWeb_GetNativeAPI()
 
-```
+```c
 ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 ```
 
@@ -95,7 +95,7 @@ ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 
 ### OH_ArkWeb_RegisterScrollCallback()
 
-```
+```c
 bool OH_ArkWeb_RegisterScrollCallback(const char* webTag, ArkWeb_OnScrollCallback callback, void* userData)
 ```
 

@@ -58,7 +58,7 @@ Neural Network Runtime的接口目前均不支持多线程并发调用。
 
 ### OH_NNQuantParam_Create()
 
-```
+```c
 NN_QuantParam *OH_NNQuantParam_Create()
 ```
 
@@ -78,7 +78,7 @@ NN_QuantParam *OH_NNQuantParam_Create()
 
 ### OH_NNQuantParam_SetScales()
 
-```
+```c
 OH_NN_ReturnCode OH_NNQuantParam_SetScales(NN_QuantParam *quantParams, const double *scales, size_t quantCount)
 ```
 
@@ -107,7 +107,7 @@ OH_NN_ReturnCode OH_NNQuantParam_SetScales(NN_QuantParam *quantParams, const dou
 
 ### OH_NNQuantParam_SetZeroPoints()
 
-```
+```c
 OH_NN_ReturnCode OH_NNQuantParam_SetZeroPoints(NN_QuantParam *quantParams, const int32_t *zeroPoints, size_t quantCount)
 ```
 
@@ -136,7 +136,7 @@ OH_NN_ReturnCode OH_NNQuantParam_SetZeroPoints(NN_QuantParam *quantParams, const
 
 ### OH_NNQuantParam_SetNumBits()
 
-```
+```c
 OH_NN_ReturnCode OH_NNQuantParam_SetNumBits(NN_QuantParam *quantParams, const uint32_t *numBits, size_t quantCount)
 ```
 
@@ -165,7 +165,7 @@ OH_NN_ReturnCode OH_NNQuantParam_SetNumBits(NN_QuantParam *quantParams, const ui
 
 ### OH_NNQuantParam_Destroy()
 
-```
+```c
 OH_NN_ReturnCode OH_NNQuantParam_Destroy(NN_QuantParam **quantParams)
 ```
 
@@ -192,7 +192,7 @@ OH_NN_ReturnCode OH_NNQuantParam_Destroy(NN_QuantParam **quantParams)
 
 ### OH_NNModel_Construct()
 
-```
+```c
 OH_NNModel *OH_NNModel_Construct(void)
 ```
 
@@ -214,7 +214,7 @@ OH_NNModel *OH_NNModel_Construct(void)
 
 ### OH_NNModel_AddTensorToModel()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_AddTensorToModel(OH_NNModel *model, const NN_TensorDesc *tensorDesc)
 ```
 
@@ -246,7 +246,7 @@ Neural Network Runtime支持动态形状的输入和输出张量。在添加动�
 
 ### OH_NNModel_SetTensorData()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_SetTensorData(OH_NNModel *model, uint32_t index, const void *dataBuffer, size_t length)
 ```
 
@@ -276,7 +276,7 @@ OH_NN_ReturnCode OH_NNModel_SetTensorData(OH_NNModel *model, uint32_t index, con
 
 ### OH_NNModel_SetTensorQuantParams()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_SetTensorQuantParams(OH_NNModel *model, uint32_t index, NN_QuantParam *quantParam)
 ```
 
@@ -303,7 +303,7 @@ OH_NN_ReturnCode OH_NNModel_SetTensorQuantParams(OH_NNModel *model, uint32_t ind
 
 ### OH_NNModel_SetTensorType()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_SetTensorType(OH_NNModel *model, uint32_t index, OH_NN_TensorType tensorType)
 ```
 
@@ -330,7 +330,7 @@ OH_NN_ReturnCode OH_NNModel_SetTensorType(OH_NNModel *model, uint32_t index, OH_
 
 ### OH_NNModel_AddOperation()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_AddOperation(OH_NNModel *model,OH_NN_OperationType op,const OH_NN_UInt32Array *paramIndices,const OH_NN_UInt32Array *inputIndices,const OH_NN_UInt32Array *outputIndices)
 ```
 
@@ -371,7 +371,7 @@ paramIndices、inputIndices和outputIndices中存储的是张量的索引值，�
 
 ### OH_NNModel_SpecifyInputsAndOutputs()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_SpecifyInputsAndOutputs(OH_NNModel *model,const OH_NN_UInt32Array *inputIndices,const OH_NN_UInt32Array *outputIndices)
 ```
 
@@ -402,7 +402,7 @@ OH_NN_ReturnCode OH_NNModel_SpecifyInputsAndOutputs(OH_NNModel *model,const OH_N
 
 ### OH_NNModel_Finish()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_Finish(OH_NNModel *model)
 ```
 
@@ -433,7 +433,7 @@ OH_NN_ReturnCode OH_NNModel_Finish(OH_NNModel *model)
 
 ### OH_NNModel_Destroy()
 
-```
+```c
 void OH_NNModel_Destroy(OH_NNModel **model)
 ```
 
@@ -456,7 +456,7 @@ void OH_NNModel_Destroy(OH_NNModel **model)
 
 ### OH_NNModel_GetAvailableOperations()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_GetAvailableOperations(OH_NNModel *model,size_t deviceID,const bool **isSupported,uint32_t *opCount)
 ```
 
@@ -490,7 +490,7 @@ OH_NN_ReturnCode OH_NNModel_GetAvailableOperations(OH_NNModel *model,size_t devi
 
 ### OH_NNModel_AddTensor()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_AddTensor(OH_NNModel *model, const OH_NN_Tensor *tensor)
 ```
 
@@ -528,7 +528,7 @@ Neural Network Runtime支持动态形状输入和输出。
 
 ### OH_NNExecutor_SetInput()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_SetInput(OH_NNExecutor *executor,uint32_t inputIndex,const OH_NN_Tensor *tensor,const void *dataBuffer,size_t length)
 ```
 
@@ -570,7 +570,7 @@ inputIndex指定设置的输入，tensor用于设置输入张量的形状、数�
 
 ### OH_NNExecutor_SetOutput()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_SetOutput(OH_NNExecutor *executor,uint32_t outputIndex,void *dataBuffer,size_t length)
 ```
 
@@ -609,7 +609,7 @@ OH_NN_ReturnCode OH_NNExecutor_SetOutput(OH_NNExecutor *executor,uint32_t output
 
 ### OH_NNExecutor_Run()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_Run(OH_NNExecutor *executor)
 ```
 
@@ -637,7 +637,7 @@ OH_NN_ReturnCode OH_NNExecutor_Run(OH_NNExecutor *executor)
 
 ### OH_NNExecutor_AllocateInputMemory()
 
-```
+```c
 OH_NN_Memory *OH_NNExecutor_AllocateInputMemory(OH_NNExecutor *executor, uint32_t inputIndex, size_t length)
 ```
 
@@ -672,7 +672,7 @@ Neural Network Runtime 提供主动申请硬件共享内存的方法。
 
 ### OH_NNExecutor_AllocateOutputMemory()
 
-```
+```c
 OH_NN_Memory *OH_NNExecutor_AllocateOutputMemory(OH_NNExecutor *executor, uint32_t outputIndex, size_t length)
 ```
 
@@ -707,7 +707,7 @@ Neural Network Runtime 提供主动申请硬件共享内存的方法。
 
 ### OH_NNExecutor_DestroyInputMemory()
 
-```
+```c
 void OH_NNExecutor_DestroyInputMemory(OH_NNExecutor *executor, uint32_t inputIndex, OH_NN_Memory **memory)
 ```
 
@@ -736,7 +736,7 @@ inputIndex和memory的对应关系需要和创建内存实例时保持一致。 
 
 ### OH_NNExecutor_DestroyOutputMemory()
 
-```
+```c
 void OH_NNExecutor_DestroyOutputMemory(OH_NNExecutor *executor, uint32_t outputIndex, OH_NN_Memory **memory)
 ```
 
@@ -767,7 +767,7 @@ outputIndex和memory的对应关系需要和创建内存实例时保持一致。
 
 ### OH_NNExecutor_SetInputWithMemory()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_SetInputWithMemory(OH_NNExecutor *executor,uint32_t inputIndex,const OH_NN_Tensor *tensor,const OH_NN_Memory *memory)
 ```
 
@@ -805,7 +805,7 @@ OH_NN_ReturnCode OH_NNExecutor_SetInputWithMemory(OH_NNExecutor *executor,uint32
 
 ### OH_NNExecutor_SetOutputWithMemory()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_SetOutputWithMemory(OH_NNExecutor *executor,uint32_t outputIndex,const OH_NN_Memory *memory)
 ```
 

@@ -1,7 +1,7 @@
 # PatternLock
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Zhang-Dong-Hui-->
+<!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester:@jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -19,6 +19,8 @@
 ## 接口
 
 PatternLock(controller?: PatternLockController)
+
+创建图案密码锁组件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -167,7 +169,7 @@ pathStrokeWidth(value: number | string)
 
 | 参数名 | 类型                       | 必填 | 说明                          |
 | ------ | -------------------------- | ---- | ----------------------------- |
-| value  | number&nbsp;\|&nbsp;string | 是   | 连线的宽度。<br/>默认值：12vp<br/>取值范围：(0, sideLength/3]，超过最大值按最大值处理。 |
+| value  | number&nbsp;\|&nbsp;string | 是   | 连线的宽度。<br/>默认值：12vp<br/>取值范围：(0, sideLength/3]，设置为0或负数时连线不显示，超过最大值按最大值处理。 |
 
 ### autoReset
 
@@ -215,7 +217,7 @@ skipUnselectedPoint(skipped: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| skipped  | boolean | 是   | 未选中的宫格圆点在密码路径经过时是否自动选中。<br/>默认值：false，自动选中密码路径经过的宫格圆点。|
+| skipped  | boolean | 是   | 未选中的宫格圆点在密码路径经过时是否自动选中。<br/>true：跳过选中密码路径经过的宫格圆点；false：自动选中密码路径经过的宫格圆点。默认值：false。|
 
 ## 事件
 
@@ -268,10 +270,10 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 背景圆环颜色。 <br/>默认值：与[pathColor](#pathcolor)值相同。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 背景圆环颜色。 <br/>默认值：'#33182431'。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | radius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 背景圆环的半径。<br/>默认值：[circleRadius](#circleradius)的1.833倍（即11/6）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| enableWaveEffect | boolean | 否 | 是 | 选中宫格圆点后的波浪效果开关。<br/>默认值：true，表示波浪效果打开。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| enableForeground<sup>15+</sup> | boolean | 否 | 是 | 背景圆环是否显示在宫格圆点上层。<br/>默认值：false，背景圆环显示在宫格圆点下层，不遮盖宫格圆点。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| enableWaveEffect | boolean | 否 | 是 | 选中宫格圆点后的波浪效果开关。<br/>true：显示波浪效果；false：不显示波浪效果。<br/>默认值：true。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| enableForeground<sup>15+</sup> | boolean | 否 | 是 | 背景圆环是否显示在宫格圆点上层。<br/>true：背景圆环显示在宫格圆点上层，遮盖宫格圆点；false：背景圆环显示在宫格圆点下层，不遮盖宫格圆点。<br/>默认值：false。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
 ## PatternLockController
 
@@ -317,7 +319,7 @@ setChallengeResult(result: PatternLockChallengeResult): void
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| result | [PatternLockChallengeResult](#patternlockchallengeresult11枚举说明) | 是   | 图案密码状态。 |
+| result | [PatternLockChallengeResult](#patternlockchallengeresult11枚举说明) | 是   | 图案密码状态。包括正确和错误状态。 |
 
 ## PatternLockChallengeResult<sup>11+</sup>枚举说明
 
@@ -358,9 +360,11 @@ struct PatternLockExample {
         .selectedColor('#707070')
         .pathColor('#707070')
         .backgroundColor('#F5F5F5')
+        .regularColor(Color.Black)
+        .skipUnselectedPoint(false)
         .autoReset(true)
         .onDotConnect((index: number) => {
-          console.info("onDotConnect index: " + index);
+          console.info('onDotConnect index: ' + index);
         })
     }.width('100%').height('100%')
   }
@@ -371,7 +375,7 @@ struct PatternLockExample {
 
 ### 示例2（判断密码是否正确）
 
-该示例通过[sideLength](#sidelength)属性设置九宫格的大小、[circleRadius](#circleradius)等属性设置宫格圆点样式、[onPatternComplete](#onpatterncomplete)属性设置密码输入时的回调。 
+该示例通过[sideLength](#sidelength)属性设置九宫格的大小、[circleRadius](#circleradius)属性设置宫格圆点样式、[onPatternComplete](#onpatterncomplete)属性设置密码输入时的回调。 
 
 当用户密码输入完成后，按输入的密码不同，给予不同的回应：输入的密码长度小于5时，提示重新输入；第一次输入完成后，提示第二次输入密码；第二次输入完成后，判断两次输入的密码是否相同，相同则提示密码设置成功，否则提示重新输入。 
 
@@ -406,7 +410,7 @@ struct PatternLockExample {
           enableWaveEffect: true
         })
         .onDotConnect((index: number) => {
-          console.info("onDotConnect index: " + index);
+          console.info('onDotConnect index: ' + index);
         })
         .onPatternComplete((input: Array<number>) => {
           // 输入的密码长度小于5时，提示重新输入
@@ -428,7 +432,7 @@ struct PatternLockExample {
           } else {
             // 提示第二次输入密码
             this.passwords = input;
-            this.message = "Please enter again.";
+            this.message = 'Please enter again.';
           }
         })
       Button('Reset PatternLock').margin(30).onClick(() => {

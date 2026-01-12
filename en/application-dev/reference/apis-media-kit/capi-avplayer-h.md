@@ -81,7 +81,7 @@ The file declares the AVPlayer APIs. You can use the native AVPlayer APIs to pla
 
 ### Player_MediaKeySystemInfoCallback()
 
-```
+```c
 typedef void (*Player_MediaKeySystemInfoCallback)(OH_AVPlayer *player, DRM_MediaKeySystemInfo* mediaKeySystemInfo)
 ```
 
@@ -100,7 +100,7 @@ Called when media key system information of the AVPlayer is updated.
 
 ### OH_AVPlayer_Create()
 
-```
+```c
 OH_AVPlayer *OH_AVPlayer_Create(void)
 ```
 
@@ -124,7 +124,7 @@ You are advised to create a maximum of 16 AVPlayer instances for an application 
 
 ### OH_AVPlayer_SetURLSource()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetURLSource(OH_AVPlayer *player, const char *url)
 ```
 
@@ -151,7 +151,7 @@ Sets the HTTP URL of a media source to be played by an AVPlayer.
 
 ### OH_AVPlayer_SetFDSource()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetFDSource(OH_AVPlayer *player, int32_t fd, int64_t offset, int64_t size)
 ```
 
@@ -180,7 +180,7 @@ Sets the file descriptor of a media source to be played by an AVPlayer.
 
 ### OH_AVPlayer_SetDataSource()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetDataSource(OH_AVPlayer *player, OH_AVDataSourceExt* datasrc, void* userData)
 ```
 
@@ -208,7 +208,7 @@ Sets the media source of the AVPlayer. The data of this media source is provided
 
 ### OH_AVPlayer_Prepare()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_Prepare(OH_AVPlayer *player)
 ```
 
@@ -234,7 +234,7 @@ Prepares the playback environment and buffers media data.<br> This function must
 
 ### OH_AVPlayer_Play()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_Play(OH_AVPlayer *player)
 ```
 
@@ -260,7 +260,7 @@ Starts playback.<br> This function must be called after [OH_AVPlayer_Prepare](#o
 
 ### OH_AVPlayer_Pause()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_Pause(OH_AVPlayer *player)
 ```
 
@@ -286,7 +286,7 @@ Pauses playback.
 
 ### OH_AVPlayer_Stop()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_Stop(OH_AVPlayer *player)
 ```
 
@@ -312,7 +312,7 @@ Stops playback.
 
 ### OH_AVPlayer_Reset()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_Reset(OH_AVPlayer *player)
 ```
 
@@ -338,7 +338,7 @@ Restores the AVPlayer to the initial state.<br> After the function is called, yo
 
 ### OH_AVPlayer_Release()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_Release(OH_AVPlayer *player)
 ```
 
@@ -364,7 +364,7 @@ Asynchronously releases an OH_AVPlayer instance.<br> The asynchronous function i
 
 ### OH_AVPlayer_ReleaseSync()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_ReleaseSync(OH_AVPlayer *player)
 ```
 
@@ -390,7 +390,7 @@ Synchronously releases an OH_AVPlayer instance.<br> The synchronous function ens
 
 ### OH_AVPlayer_SetVolume()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetVolume(OH_AVPlayer *player, float leftVolume, float rightVolume)
 ```
 
@@ -418,7 +418,7 @@ Sets the volume for an AVPlayer.<br> This function can be used when the AVPlayer
 
 ### OH_AVPlayer_SetLoudnessGain()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetLoudnessGain(OH_AVPlayer *player, float loudnessGain)
 ```
 
@@ -445,7 +445,7 @@ Sets the loudness of the AVPlayer. This function can be called when the AVPlayer
 
 ### OH_AVPlayer_Seek()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_Seek(OH_AVPlayer *player, int32_t mSeconds, AVPlayerSeekMode mode)
 ```
 
@@ -473,7 +473,7 @@ Seeks to a playback position.<br> This function can be used when the AVPlayer is
 
 ### OH_AVPlayer_GetCurrentTime()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetCurrentTime(OH_AVPlayer *player, int32_t *currentTime)
 ```
 
@@ -500,7 +500,7 @@ Obtains the playback position, in milliseconds.
 
 ### OH_AVPlayer_GetVideoWidth()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetVideoWidth(OH_AVPlayer *player, int32_t *videoWidth)
 ```
 
@@ -527,7 +527,7 @@ Obtains the video width.
 
 ### OH_AVPlayer_GetVideoHeight()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetVideoHeight(OH_AVPlayer *player, int32_t *videoHeight)
 ```
 
@@ -554,7 +554,7 @@ Obtains the video height.
 
 ### OH_AVPlayer_SetPlaybackSpeed()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed speed)
 ```
 
@@ -581,7 +581,7 @@ Sets the playback speed of the AVPlayer. For details about the playback speed, s
 
 ### OH_AVPlayer_SetPlaybackRate()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)
 ```
 
@@ -608,7 +608,7 @@ Sets the playback rate of an AVPlayer within the valid range.<br> The supported 
 
 ### OH_AVPlayer_GetPlaybackSpeed()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed *speed)
 ```
 
@@ -635,7 +635,7 @@ Obtains the playback speed of an AVPlayer.
 
 ### OH_AVPlayer_SetAudioRendererInfo()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetAudioRendererInfo(OH_AVPlayer *player, OH_AudioStream_Usage streamUsage)
 ```
 
@@ -662,7 +662,7 @@ Sets the audio stream type for an AVPlayer.
 
 ### OH_AVPlayer_SetVolumeMode()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetVolumeMode(OH_AVPlayer *player, OH_AudioStream_VolumeMode volumeMode)
 ```
 
@@ -689,7 +689,7 @@ Sets the audio volume mode for an AVPlayer.
 
 ### OH_AVPlayer_SetAudioInterruptMode()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetAudioInterruptMode(OH_AVPlayer *player, OH_AudioInterrupt_Mode interruptMode)
 ```
 
@@ -716,7 +716,7 @@ Sets the audio interruption mode for an AVPlayer.
 
 ### OH_AVPlayer_SetAudioEffectMode()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetAudioEffectMode(OH_AVPlayer *player, OH_AudioStream_AudioEffectMode effectMode)
 ```
 
@@ -743,7 +743,7 @@ Sets the audio effect mode for an AVPlayer.
 
 ### OH_AVPlayer_SelectBitRate()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SelectBitRate(OH_AVPlayer *player, uint32_t bitRate)
 ```
 
@@ -770,7 +770,7 @@ Sets the bit rate used by an HLS player. This function is valid only for HLS net
 
 ### OH_AVPlayer_SetVideoSurface()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetVideoSurface(OH_AVPlayer *player, OHNativeWindow *window)
 ```
 
@@ -797,7 +797,7 @@ Sets a playback window.<br> This function must be called after **SetSource** and
 
 ### OH_AVPlayer_GetDuration()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetDuration(OH_AVPlayer *player, int32_t *duration)
 ```
 
@@ -824,7 +824,7 @@ Obtains the total duration of a media file, in milliseconds.
 
 ### OH_AVPlayer_GetState()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetState(OH_AVPlayer *player, AVPlayerState *state)
 ```
 
@@ -851,7 +851,7 @@ Obtains the AVPlayer state.
 
 ### OH_AVPlayer_IsPlaying()
 
-```
+```c
 bool OH_AVPlayer_IsPlaying(OH_AVPlayer *player)
 ```
 
@@ -877,7 +877,7 @@ Checks whether an AVPlayer is playing.
 
 ### OH_AVPlayer_IsLooping()
 
-```
+```c
 bool OH_AVPlayer_IsLooping(OH_AVPlayer *player)
 ```
 
@@ -903,7 +903,7 @@ Checks whether an AVPlayer is looping.
 
 ### OH_AVPlayer_SetLooping()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetLooping(OH_AVPlayer *player, bool loop)
 ```
 
@@ -930,7 +930,7 @@ Enables loop playback.
 
 ### OH_AVPlayer_SetPlayerCallback()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback callback)
 ```
 
@@ -941,6 +941,10 @@ Sets an AVPlayer callback.<br> The callbacks [OH_AVPlayerOnInfo](capi-avplayer-b
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
 **Since**: 11
+
+**Deprecated from**: 12
+
+**Substitute**: [OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback)
 
 **Parameters**
 
@@ -957,7 +961,7 @@ Sets an AVPlayer callback.<br> The callbacks [OH_AVPlayerOnInfo](capi-avplayer-b
 
 ### OH_AVPlayer_SelectTrack()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)
 ```
 
@@ -984,7 +988,7 @@ Selects an audio or subtitle track.<br> By default, the first audio track with d
 
 ### OH_AVPlayer_DeselectTrack()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_DeselectTrack(OH_AVPlayer *player, int32_t index)
 ```
 
@@ -1011,7 +1015,7 @@ Deselects an audio or subtitle track.
 
 ### OH_AVPlayer_GetCurrentTrack()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType, int32_t *index)
 ```
 
@@ -1039,7 +1043,7 @@ Obtains the currently valid track. You can set the track to the prepared, playin
 
 ### OH_AVPlayer_SetMediaKeySystemInfoCallback()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetMediaKeySystemInfoCallback(OH_AVPlayer *player, Player_MediaKeySystemInfoCallback callback)
 ```
 
@@ -1066,7 +1070,7 @@ Sets a callback to return the media key system information for an AVPlayer.
 
 ### OH_AVPlayer_GetMediaKeySystemInfo()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_GetMediaKeySystemInfo(OH_AVPlayer *player, DRM_MediaKeySystemInfo *mediaKeySystemInfo)
 ```
 
@@ -1093,7 +1097,7 @@ Obtains the media key system information to create a media key session.
 
 ### OH_AVPlayer_SetDecryptionConfig()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetDecryptionConfig(OH_AVPlayer *player, MediaKeySession *mediaKeySession, bool secureVideoPath)
 ```
 
@@ -1121,7 +1125,7 @@ Sets the decryption information.
 
 ### OH_AVPlayer_SetOnInfoCallback()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetOnInfoCallback(OH_AVPlayer *player, OH_AVPlayerOnInfoCallback callback, void *userData)
 ```
 
@@ -1149,7 +1153,7 @@ Sets a callback for the event indicating that the AVPlayer receives a message.
 
 ### OH_AVPlayer_SetOnErrorCallback()
 
-```
+```c
 OH_AVErrCode OH_AVPlayer_SetOnErrorCallback(OH_AVPlayer *player, OH_AVPlayerOnErrorCallback callback, void *userData)
 ```
 
@@ -1177,7 +1181,7 @@ Sets a callback for the event indicating that an error occurs in the AVPlayer.
 
 ### OH_AVPlayer_GetMediaDescription()
 
-```
+```c
 OH_AVFormat *OH_AVPlayer_GetMediaDescription(OH_AVPlayer *player)
 ```
 
@@ -1203,7 +1207,7 @@ Obtains the media source information for the AVPlayer. This function can be call
 
 ### OH_AVPlayer_GetTrackDescription()
 
-```
+```c
 OH_AVFormat *OH_AVPlayer_GetTrackDescription(OH_AVPlayer *player, uint32_t index)
 ```
 

@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVRecorder_EncoderInfo {...} OH_AVRecorder_EncoderInfo
+```
+
 ## 概述
 
 提供编码器信息。

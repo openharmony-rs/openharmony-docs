@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **PluginComponentManager** module provides APIs for the **PluginComponent** user to request components and data and send component templates and data. For details about how to display the **PluginComponent** template, see [PluginComponent](arkui-ts/ts-basic-components-plugincomponent-sys.md).
 
@@ -20,7 +20,7 @@ The **PluginComponentManager** module provides APIs for the **PluginComponent** 
 import { pluginComponentManager } from '@kit.ArkUI';
 ```
 
-### PushParameterForStage
+### PushParameterForStage<sup>9+</sup>
 
 Sets the parameters to be passed in the **PluginManager.Push** API in the stage model.
 
@@ -39,7 +39,7 @@ Sets the parameters to be passed in the **PluginManager.Push** API in the stage 
 | extraData | [KVObject](js-apis-plugincomponent.md#kvobject)          | No   | No   | Additional data.                                  |
 | jsonPath  | string                         |  No  | Yes   | Path to the [external.json](#about-the-externaljson-file) file that stores the template path.|
 
-### RequestParameterForStage
+### RequestParameterForStage<sup>9+</sup>
 
 Sets the parameters to be passed in the **PluginManager.Request** API in the stage model.
 
@@ -57,7 +57,7 @@ Sets the parameters to be passed in the **PluginManager.Request** API in the sta
 | data     | [KVObject](js-apis-plugincomponent.md#kvobject)        |   No   | No   | Additional data.                                   |
 | jsonPath | string                         |  No  | Yes   | Path to the [external.json](#about-the-externaljson-file) file that stores the template path. If the **jsonPath** field is not empty, the Request communication is not triggered.|
 
-### push
+### push<sup>9+</sup>
 
 push(param: PushParameterForStage, callback: AsyncCallback&lt;void&gt;): void
 
@@ -67,16 +67,19 @@ Pushes components and data to the component user.
 
 **Model restriction**: This API can be used only in the [stage model](arkui-ts/ts-basic-components-plugincomponent-sys.md#stage-model).
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 | Name     | Type                                      | Mandatory  | Description          |
 | -------- | ---------------------------------------- | ---- | ------------ |
-| param    | [PushParameterForStage](#pushparameterforstage) | Yes   | Parameters to be sent by the component provider. |
+| param    | [PushParameterForStage](#pushparameterforstage9) | Yes   | Parameters to be sent by the component provider. |
 | callback | AsyncCallback&lt;void&gt;                | Yes   | Asynchronous callback used to return the result.|
 
 **Example**
 
 ```ts
 import { pluginComponentManager } from '@kit.ArkUI';
+
 pluginComponentManager.push(
   {
     owner: {
@@ -105,7 +108,7 @@ pluginComponentManager.push(
 )
 ```
 
-### request
+### request<sup>9+</sup>
 
 request(param: RequestParameterForStage, callback: AsyncCallback&lt;RequestCallbackParameters&gt;): void
 
@@ -115,17 +118,20 @@ Requests the component from the component provider.
 
 **Model restriction**: This API can be used only in the [stage model](arkui-ts/ts-basic-components-plugincomponent-sys.md#stage-model).
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                                 |
 | -------- | ---------------------------------------- | ---- | ----------------------------------- |
-| param    | [RequestParameterForStage](js-apis-plugincomponent-sys.md#requestparameterforstage) | Yes   | Information about the component request.                       |
+| param    | [RequestParameterForStage](js-apis-plugincomponent-sys.md#requestparameterforstage9) | Yes   | Information about the component request.                       |
 | callback | AsyncCallback&lt;[RequestCallbackParameters](js-apis-plugincomponent.md#requestcallbackparameters) \| void&gt; | Yes   | Asynchronous callback used to return the requested data.|
 
 **Example**
 
 ```ts
 import { pluginComponentManager } from '@kit.ArkUI';
+
 pluginComponentManager.request(
   {
     owner: {

@@ -29,6 +29,7 @@ Toybox can be executed in either of the following ways:
 - Run the **[command] [arguments...]** command.
 
 **[command]** can be any command supported by toybox. You can run the **toybox** command to query the supported commands.
+
 **[arguments...]** are the parameters required by a [command].
 
 <!--RP1-->
@@ -308,7 +309,7 @@ Format: help [-ah] [command]
 ## FAQs
 
 ### What should I do if "Unknown command xxx" is displayed?
-If the error message "Unknown command xxx" is displayed when you enter **xxx**, **toybox xxx**, or **help xxx** in the command line, the toybox does not support the **xxx** command.
+If the error message "Unknown command xxx" is displayed when you input **xxx**, **toybox xxx**, or **help xxx** in the command line, the toybox does not support the **xxx** command.
 <!--RP2-->
 If the command is described in this topic, the command is not compiled. You are advised to ask questions in the OpenHarmony official forum.
 <!--RP2End-->
@@ -317,7 +318,9 @@ If the command is described in this topic, the command is not compiled. You are 
 Toybox contains a large number of commands for operating files and processes. If you do not have the permission on the operated object, an error is reported.
 1. The permission is missing. Check whether you have the read, write, and execute permissions on the file and its folder.
 2. SELinux interception. You can search for the keyword "avc: denied" in the kernel log.
+
 Example:
+
 If error message similar to "avc: denied { xxx } for comm='ls' xxxxxx" is displayed, the **ls** command triggers SELinux interception.
 
 <!--RP3-->
@@ -326,22 +329,28 @@ If the permission is missing and you need to run this command, you are advised t
 
 ### What should I do if other standard Linux errors are reported?
 Most toybox commands are used to call the kernel. When an error occurs, **perror** is used to print the text corresponding to the Linux kernel error code.
-Common errors include "File exists"/"Not a directory"/"Read-only file system".
+
+Common errors are as follows: "File exists", "Not a directory", and "Read-only file system".
+
 These errors are standard Linux errors. You can query the error causes by referring to related Linux documents. Check whether the command parameters or command format is correct based on the error information.
 
 Example:
+
 When a file is created in a read-only file system, the error message "Read-only file system" is displayed.
+
 The **cat** command can be used to print a file. If you use this command to print a directory, the error message "Is a directory" is displayed.
+
 If you run the **ls** command to view a file or directory that does not exist, the error message "No such file or directory" is displayed.
 
 ### What should I do if a command does not comply with the toybox description?
-If the command parameters entered in the shell are inconsistent with the toybox command parameters, the possible causes are as follows:
+If the command parameters input in the shell are inconsistent with the toybox command parameters, the possible causes are as follows:
 
 1. The shell implementation instead of toybox is invoked.
 
-For commands such as **time**, **test**, **pwd**, **realpath**, **ulimit**, and **kill**, shell uses its own implementation.
-To invoke a toybox command, use the format of **toybox [command] [arguments...]**.
+   For commands such as **time**, **test**, **pwd**, **realpath**, **ulimit**, and **kill**, shell uses its own implementation.
+
+   To invoke a toybox command, use the format of **toybox [command] [arguments...]**.
 
 2. The device does not configure this command for toybox, but has another implementation.
 
-To invoke a toybox command, use the format of **toybox [command] [arguments...]**.
+   To invoke a toybox command, use the format of **toybox [command] [arguments...]**.

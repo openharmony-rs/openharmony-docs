@@ -16,9 +16,9 @@ This module provides the following functions:
 - [Component<sup>9+</sup>](#component9): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
 - [Driver<sup>9+</sup>](#driver9): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
 - [UiWindow<sup>9+</sup>](#uiwindow9): works as the entry class and provides APIs for obtaining window attributes, dragging windows, and adjusting window sizes.
-- [By<sup>(deprecated)</sup>](#bydeprecated): provides UI component feature description APIs for component filtering and matching. This class is deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
-- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This class is deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
-- [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. This class is deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
+- [By<sup>(deprecated)</sup>](#bydeprecated): provides UI component feature description APIs for component filtering and matching. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
+- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [[Component<sup>9+</sup>](#component9)](#on9) instead.
+- [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 > **NOTE**
 > - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -175,7 +175,7 @@ Enumerates the window change event types that can be listened for.
 
 | Name               | Value  | Description        |
 | ------------------- | ---- | ------------ |
-| WINDOW_UNDEFINED   | 0    | Non-window change event. **Note**: This value can only be used as a return value. If it is passed in an API, an exception will be thrown.  |
+| WINDOW_UNDEFINED   | 0    | Non-window change event.<br>Note: This value can only be used as a return value. If it is passed in an API, an exception will be thrown.  |
 | WINDOW_ADDED  | 1    | Window adding event.  |
 | WINDOW_REMOVED | 2    | Window removing event.|
 | WINDOW_BOUNDS_CHANGED | 3    | Window bounds change event.|
@@ -191,14 +191,12 @@ Enumerates the component operation event types that can be listened for.
 
 | Name               | Value  | Description        |
 | ------------------- | ---- | ------------ |
-| COMPONENT_UNDEFINED   | 0    | Non-component operation event. **Note**: This value can only be used as a return value. If it is passed in an API, an exception will be thrown.  |
+| COMPONENT_UNDEFINED   | 0    | Non-component operation event.<br>Note: This value can only be used as a return value. If it is passed in an API, an exception will be thrown.  |
 | COMPONENT_CLICKED  | 1    | Component clicked event.  |
 | COMPONENT_LONG_CLICKED | 2    | Component long-clicked event.|
 | COMPONENT_SCROLL_START | 3    | Component scroll start event.|
 | COMPONENT_SCROLL_END  | 4    | Component scroll end event.  |
 | COMPONENT_TEXT_CHANGED | 5    | Text change event of the [text input component](../../ui/arkts-common-components-text-input.md).|
-| COMPONENT_HOVER_ENTER | 6    | Event triggered when the mouse pointer hovers over a component and enters it.|
-| COMPONENT_HOVER_EXIT | 7    | Event triggered when the mouse pointer hovers over a component and leaves it.|
 
 
 ## WindowChangeOptions<sup>22+</sup>
@@ -212,7 +210,7 @@ Describes the extended configuration of window change event listening, which is 
 | Name      | Type  | Read-Only| Optional| Description                 |
 | ---------- | ------ | ---- | ---- | --------------------- |
 | timeout | number | No  | Yes  | Listening timeout interval, in milliseconds. The default value is 10000.     |
-| bundleName       | string | No  | Yes  | Bundle name of the window to listen for. By default, all windows are listened for.      |
+| bundleName       | string | No  | Yes  | Bundle name of the window to be listened for. By default, all windows are listened for.      |
 
 
 ## ComponentEventOptions<sup>22+</sup>
@@ -324,7 +322,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.text('123'); // Use the static constructor ON to create an On object and specify the text attribute of the target component.
+
+let on: On = ON.text('123'); // Use the static constructor ON to create an On object and specify the text attribute of the target component.
 ```
 
 ### id<sup>9+</sup>
@@ -362,7 +361,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { On, ON } from '@kit.TestKit';
 
-let on:On = ON.id('123'); // Use the static constructor ON to create an On object and specify the id attribute of the target component.
+let on: On = ON.id('123'); // Use the static constructor ON to create an On object and specify the ID attribute of the target component.
 ```
 
 ### id<sup>18+</sup>
@@ -401,7 +400,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { MatchPattern, On, ON } from '@kit.TestKit';
 
-let on:On = ON.id('id', MatchPattern.REG_EXP_ICASE) // Use case-insensitive regular expression to match the ID attribute value of the component.
+let on: On = ON.id('id', MatchPattern.REG_EXP_ICASE); // Use case-insensitive regular expression to match the ID attribute value of the component.
 ```
 
 ### type<sup>9+</sup>
@@ -438,7 +437,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.type('Button'); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
+
+let on: On = ON.type('Button'); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
 ```
 
 ### type<sup>18+</sup>
@@ -476,7 +476,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON, MatchPattern } from '@kit.TestKit';
-let on:On = ON.type('Button', MatchPattern.EQUALS); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
+
+let on: On = ON.type('Button', MatchPattern.EQUALS); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
 ```
 
 ### clickable<sup>9+</sup>
@@ -513,7 +514,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.clickable(true); // Use the static constructor ON to create an On object and specify the clickable attribute of the target component.
+
+let on: On = ON.clickable(true); // Use the static constructor ON to create an On object and specify the clickable attribute of the target component.
 ```
 
 ### longClickable<sup>9+</sup>
@@ -550,7 +552,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.longClickable(true); // Use the static constructor ON to create an On object and specify the longClickable attribute of the target component.
+
+let on: On = ON.longClickable(true); // Use the static constructor ON to create an On object and specify the longClickable attribute of the target component.
 ```
 
 ### scrollable<sup>9+</sup>
@@ -587,7 +590,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.scrollable(true); // Use the static constructor ON to create an On object and specify the scrollable attribute of the target component.
+
+let on: On = ON.scrollable(true); // Use the static constructor ON to create an On object and specify the scrollable attribute of the target component.
 ```
 
 ### enabled<sup>9+</sup>
@@ -624,7 +628,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.enabled(true); // Use the static constructor ON to create an On object and specify the enabled attribute of the target component.
+
+let on: On = ON.enabled(true); // Use the static constructor ON to create an On object and specify the enabled attribute of the target component.
 ```
 
 ### focused<sup>9+</sup>
@@ -661,7 +666,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.focused(true); // Use the static constructor ON to create an On object and specify the focused attribute of the target component.
+
+let on: On = ON.focused(true); // Use the static constructor ON to create an On object and specify the focused attribute of the target component.
 ```
 
 ### selected<sup>9+</sup>
@@ -698,7 +704,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.selected(true); // Use the static constructor ON to create an On object and specify the selected attribute of the target component.
+
+let on: On = ON.selected(true); // Use the static constructor ON to create an On object and specify the selected attribute of the target component.
 ```
 
 ### checked<sup>9+</sup>
@@ -735,7 +742,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.checked(true); // Use the static constructor ON to create an On object and specify the checked attribute of the target component.
+
+let on: On = ON.checked(true); // Use the static constructor ON to create an On object and specify the checked attribute of the target component.
 ```
 
 ### checkable<sup>9+</sup>
@@ -772,7 +780,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.checkable(true); // Use the static constructor ON to create an On object and specify the checkable attribute of the target component.
+
+let on: On = ON.checkable(true); // Use the static constructor ON to create an On object and specify the checkable attribute of the target component.
 ```
 
 ### isBefore<sup>9+</sup>
@@ -811,7 +820,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located before the given attribute component.
-let on:On = ON.type('Button').isBefore(ON.text('123')); // Search for the first <Button> component located before the component whose text is 123.
+let on: On = ON.type('Button').isBefore(ON.text('123')); // Search for the first Button component located before the component whose text is 123.
 ```
 
 ### isAfter<sup>9+</sup>
@@ -850,7 +859,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located after the given attribute component.
-let on:On = ON.type('Text').isAfter(ON.text('123'));  // Search for the first <Text> component located after the component whose text is 123.
+let on: On = ON.type('Text').isAfter(ON.text('123')); // Search for the first Text component located after the component whose text is 123.
 ```
 
 ### within<sup>10+</sup>
@@ -887,8 +896,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
+
 // Use the static constructor ON to create an On object and specify that the target component is located within the given attribute component.
-let on:On = ON.text('java').within(ON.type('Scroll'));  // Search for the child component whose text is java within the <Scroller> component.
+let on: On = ON.text('java').within(ON.type('Scroll')); // Search for the child component whose text is java within the Scroller component.
 ```
 
 ### inWindow<sup>10+</sup>
@@ -925,7 +935,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.inWindow('com.uitestScene.acts'); // Use the static constructor ON to create an On object and specify that the target component is located within the given application window.
+
+let on: On = ON.inWindow('com.uitestScene.acts'); // Use the static constructor ON to create an On object and specify that the target component is located within the given application window.
 ```
 
 ### description<sup>11+</sup>
@@ -963,7 +974,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.description('123'); // Use the static constructor ON to create an On object and specify the description attribute of the target component.
+
+let on: On = ON.description('123'); // Use the static constructor ON to create an On object and specify the description attribute of the target component.
 ```
 
 ### hint<sup>18+</sup>
@@ -1000,9 +1012,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
- import { MatchPattern, On, ON } from '@kit.TestKit';
- 
- let on:On = ON.hint('welcome', MatchPattern.EQUALS); // Use the static constructor ON to create an On object with the hint text attribute of the target component specified.
+import { MatchPattern, On, ON } from '@kit.TestKit';
+
+let on: On = ON.hint('welcome', MatchPattern.EQUALS); // Use the static constructor ON to create an On object with the hint text attribute of the target component specified.
 ```
 
 ### belongingDisplay<sup>20+</sup>
@@ -1038,9 +1050,9 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
- import { On, ON } from '@kit.TestKit';
- 
- let on:On = ON.belongingDisplay(0); // Use the static constructor ON to create an On object and specify the ID of the display to which the target component belongs.
+import { On, ON } from '@kit.TestKit';
+
+let on: On = ON.belongingDisplay(0); // Use the static constructor ON to create an On object and specify the ID of the display to which the target component belongs.
 ```
 
 ### originalText<sup>20+</sup>
@@ -1083,7 +1095,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 ```ts
 import { On, ON } from '@kit.TestKit';
 
-let on:On = ON.originalText('123'); // Use the static constructor ON to create an On object and specify the originalText attribute of the target component.
+let on: On = ON.originalText('123'); // Use the static constructor ON to create an On object and specify the originalText attribute of the target component.
 ```
 
 ## Component<sup>9+</sup>
@@ -1095,7 +1107,7 @@ All APIs provided in this class use a promise to return the result and must be i
 
 click(): Promise\<void>
 
-Clicks a component object. This API uses a promise to return the result.
+Clicks this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1120,8 +1132,9 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, ON, Component } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
   await button.click();
 }
@@ -1131,43 +1144,7 @@ async function demo() {
 
 doubleClick(): Promise\<void>
 
-Double-clicks a component object. This API uses a promise to return the result.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.Test.UiTest
-
-**Return value**
-
-| Type            | Description             |
-|----------------|-----------------|
-| Promise\<void> | Promise that returns no value.|
-
-**Error codes**
-
-For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
-
-| ID| Error Message                                |
-| -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
-| 17000004 | The window or component is invisible or destroyed.           |
-
-**Example**
-
-```ts
-import {Component, Driver, ON } from '@kit.TestKit';
-async function demo() {
-  let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  await button.doubleClick();
-}
-```
-
-### longClick<sup>9+</sup>
-
-longClick(): Promise\<void>
-
-Long-clicks a component object. This API uses a promise to return the result.
+Double-clicks this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1192,6 +1169,44 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let button: Component = await driver.findComponent(ON.type('Button'));
+  await button.doubleClick();
+}
+```
+
+### longClick<sup>9+</sup>
+
+longClick(): Promise\<void>
+
+Long-clicks this component. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Test.UiTest
+
+**Return value**
+
+| Type            | Description             |
+|----------------|-----------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md).
+
+| ID| Error Message                                |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.           |
+
+**Example**
+
+```ts
+import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1203,7 +1218,7 @@ async function demo() {
 
 getId(): Promise\<string>
 
-Obtains the ID of a component object. This API uses a promise to return the result.
+Obtains the ID of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1228,6 +1243,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1268,6 +1284,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1279,7 +1296,7 @@ async function demo() {
 
 getType(): Promise\<string>
 
-Obtains the type of a component object. This API uses a promise to return the result.
+Obtains the type of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1304,6 +1321,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1315,7 +1333,7 @@ async function demo() {
 
 getBounds(): Promise\<Rect>
 
-Obtains the bound information of this component. This API uses a promise to return the result.
+Obtains the bounds information of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1340,6 +1358,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1351,7 +1370,7 @@ async function demo() {
 
 getBoundsCenter(): Promise\<Point>
 
-Obtains the center point of the area occupied by a component object. This API uses a promise to return the result.
+Obtains the center point of the area occupied by this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1376,6 +1395,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1387,7 +1407,7 @@ async function demo() {
 
 isClickable(): Promise\<boolean>
 
-Obtains the clickable attribute of a component object. This API uses a promise to return the result.
+Obtains the clickable status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1412,10 +1432,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isClickable()) {
+  if (await button.isClickable()) {
     console.info('This button can be Clicked');
   } else {
     console.info('This button can not be Clicked');
@@ -1427,7 +1448,7 @@ async function demo() {
 
 isLongClickable(): Promise\<boolean>
 
-Obtains the long-clickable attribute of a component object. This API uses a promise to return the result.
+Obtains the long-clickable status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1452,10 +1473,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isLongClickable()) {
+  if (await button.isLongClickable()) {
     console.info('This button can longClick');
   } else {
     console.info('This button can not longClick');
@@ -1467,7 +1489,7 @@ async function demo() {
 
 isChecked(): Promise\<boolean>
 
-Obtains the checked status of a component object. This API uses a promise to return the result.
+Obtains the checked status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1492,10 +1514,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let checkBox: Component = await driver.findComponent(ON.type('Checkbox'));
-  if(await checkBox.isChecked()) {
+  if (await checkBox.isChecked()) {
     console.info('This checkBox is checked');
   } else {
     console.info('This checkBox is not checked');
@@ -1507,7 +1530,7 @@ async function demo() {
 
 isCheckable(): Promise\<boolean>
 
-Obtains whether a component object is checkable. This API uses a promise to return the result.
+Obtains the checkable status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1532,10 +1555,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let checkBox: Component = await driver.findComponent(ON.type('Checkbox'));
-  if(await checkBox.isCheckable()) {
+  if (await checkBox.isCheckable()) {
     console.info('This checkBox is checkable');
   } else {
     console.info('This checkBox is not checkable');
@@ -1547,7 +1571,7 @@ async function demo() {
 
 isScrollable(): Promise\<boolean>
 
-Obtains whether a component object is scrollable. This API uses a promise to return the result.
+Obtains the scrollable status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1572,10 +1596,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.scrollable(true));
-  if(await scrollBar.isScrollable()) {
+  if (await scrollBar.isScrollable()) {
     console.info('This scrollBar can be operated');
   } else {
     console.info('This scrollBar can not be operated');
@@ -1588,7 +1613,7 @@ async function demo() {
 
 isEnabled(): Promise\<boolean>
 
-Obtains whether the component is enabled. This API uses a promise to return the result.
+Obtains the enabled status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1613,10 +1638,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isEnabled()) {
+  if (await button.isEnabled()) {
     console.info('This button can be operated');
   } else {
     console.info('This button can not be operated');
@@ -1628,7 +1654,7 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-Checks whether the component is focused. This API uses a promise to return the result.
+Checks whether a component is focused. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1638,7 +1664,7 @@ Checks whether the component is focused. This API uses a promise to return the r
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the component is focused. The value **true** indicates that the window is focused, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component is focused. The value **true** indicates that the component is focused, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1653,10 +1679,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isFocused()) {
+  if (await button.isFocused()) {
     console.info('This button is focused');
   } else {
     console.info('This button is not focused');
@@ -1668,7 +1695,7 @@ async function demo() {
 
 isSelected(): Promise\<boolean>
 
-Obtains whether a component is selected. This API uses a promise to return the result.
+Obtains the selected status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1693,10 +1720,11 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isSelected()) {
+  if (await button.isSelected()) {
     console.info('This button is selected');
   } else {
     console.info('This button is not selected');
@@ -1708,7 +1736,7 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-Clears the original text in the component and inputs the specified text. This API takes effect only for editable text components.
+Clears the original text in a component and inputs the specified text. This API takes effect only for editable text components. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1740,6 +1768,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.text('hello world'));
@@ -1751,7 +1780,7 @@ async function demo() {
 
 inputText(text: string, mode: InputTextMode): Promise\<void>
 
-Inputs text to a component in the specified input mode. This API takes effect only for editable text components.
+Inputs text to a component in a specified text input mode. This API takes effect only for editable text components. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -1797,7 +1826,7 @@ async function mode_demo() {
 
 clearText(): Promise\<void>
 
-Clears the text information of a component. This API takes effect only for editable text components.
+Clears the text information of a component. This API takes effect only for editable text components. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1821,6 +1850,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.text('hello world'));
@@ -1832,7 +1862,7 @@ async function demo() {
 
 scrollSearch(on: On): Promise\<Component>
 
-Scrolls on this component to search for the target component. This API is applicable to components that support scrolling and uses a promise to return the result.
+Scrolls on this component to search for the target component. This API is applicable to components that support scrolling. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1876,7 +1906,7 @@ async function demo() {
 
 scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-Scrolls on a scrollable component to search for the target component. You can specify the scrolling direction and the offset between the scrolling start and end points and the component border. This API uses a promise to return the result.
+Scrolls on this component to search for the target component. This API is applicable to components that support scrolling. You can specify the scrolling direction and the offset between the scrolling start and end points and the component border. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1910,6 +1940,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1921,7 +1952,7 @@ async function demo() {
 
 scrollToTop(speed?: number): Promise\<void>
 
-Scrolls to the top of a scrollable component. This API uses a promise to return the result.
+Scrolls to the top of this component. This API is applicable to components that support scrolling. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1953,6 +1984,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1964,7 +1996,7 @@ async function demo() {
 
 scrollToBottom(speed?: number): Promise\<void>
 
-Scrolls to the bottom of a scrollable component. This API uses a promise to return the result.
+Scrolls to the bottom of this component. This API is applicable to components that support scrolling. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1996,6 +2028,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -2041,6 +2074,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -2053,7 +2087,7 @@ async function demo() {
 
 pinchOut(scale: number): Promise\<void>
 
-Pinches a component to zoom in based on the specified scale. This API uses a promise to return the result.
+Pinches out a component at the specified scale. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2085,6 +2119,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let image: Component = await driver.findComponent(ON.type('Image'));
@@ -2096,7 +2131,7 @@ async function demo() {
 
 pinchIn(scale: number): Promise\<void>
 
-Pinches a component to zoom out based on the specified scale. This API uses a promise to return the result.
+Pinches in a component at the specified scale. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2128,6 +2163,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let image: Component = await driver.findComponent(ON.type('Image'));
@@ -2164,6 +2200,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -2199,6 +2236,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('TextInput'));
@@ -2246,7 +2284,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-Obtains the original text information of this component. If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext9) cannot.
+Obtains the text information of this component. This API uses a promise to return the result. If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext9) cannot.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2312,6 +2350,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
 }
@@ -2321,7 +2360,7 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-Delays within a specified period. This API uses a promise to return the result.
+Delays execution for the specified duration. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2352,6 +2391,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.delayMs(1000);
@@ -2393,6 +2433,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.text('next page'));
@@ -2403,7 +2444,7 @@ async function demo() {
 
 findComponents(on: On): Promise\<Array\<Component>>
 
-Searches for all matched components based on the given attributes and saves them in a list. This API uses a promise to return the result.
+Searches for all matched components based on the specified attributes and saves them in a list. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2434,6 +2475,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let buttonList: Array<Component> = await driver.findComponents(ON.text('next page'));
@@ -2444,7 +2486,7 @@ async function demo() {
 
 findWindow(filter: WindowFilter): Promise\<UiWindow>
 
-Searches for a window based on the attributes. This API uses a promise to return the result.
+Searches for a window based on the specified attributes. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2475,9 +2517,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
 }
 ```
 
@@ -2517,9 +2560,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.waitForComponent(ON.text('next page'),500);
+  let button: Component = await driver.waitForComponent(ON.text('next page'), 500);
 }
 ```
 
@@ -2559,6 +2603,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.assertComponentExist(ON.text('next page'));
@@ -2569,7 +2614,7 @@ async function demo() {
 
 pressBack(): Promise\<void>
 
-Presses the BACK button. This API uses a promise to return the result.
+Presses the Back button. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2593,6 +2638,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressBack();
@@ -2603,7 +2649,7 @@ async function demo() {
 
 pressBack(displayId: number): Promise\<void>
 
-Presses the **BACK** button on a specified display. This API uses a promise to return the result.
+Presses the Back button on the specified screen. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2634,6 +2680,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressBack(0);
@@ -2644,7 +2691,7 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-Triggers a key event based on the key value. This API uses a promise to return the result.
+Triggers a key event by passing the key value. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2687,7 +2734,7 @@ async function demo() {
 
 triggerKey(keyCode: number, displayId: number): Promise\<void>
 
-Triggers a key event on the specified display based on the key value. This API uses a promise to return the result.
+Triggers a key event by passing the key value on the specified screen. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2764,6 +2811,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.triggerCombineKeys(2072, 2047, 2035);
@@ -2774,7 +2822,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number): Promise\<void>
 
-Triggers a combination key event on the specified display based on the specified key values. This API uses a promise to return the result. For example, if the value of **Key** is (2072, 2019), the combination key **Ctrl+C** that matches the value is found and clicked.
+Triggers a combination key event based on the specified key values on the specified screen. This API uses a promise to return the result. For example, if the value of **Key** is (2072, 2019), the combination key **Ctrl+C** that matches the value is found and clicked.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2819,7 +2867,7 @@ async function demo() {
 
 click(x: number, y: number): Promise\<void>
 
-Clicks the target coordinate. This API uses a promise to return the result.
+Clicks the target coordinate point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2851,9 +2899,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.click(100,100);
+  await driver.click(100, 100);
 }
 ```
 
@@ -2903,7 +2952,7 @@ async function demo() {
 
 doubleClick(x: number, y: number): Promise\<void>
 
-Double-clicks the target point. This API uses a promise to return the result.
+Double-clicks the target coordinate point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2935,9 +2984,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.doubleClick(100,100);
+  await driver.doubleClick(100, 100);
 }
 ```
 
@@ -2987,7 +3037,7 @@ async function demo() {
 
 longClick(x: number, y: number): Promise\<void>
 
-Long-clicks the target point. This API uses a promise to return the result.
+Long-clicks the target coordinate point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3019,9 +3069,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.longClick(100,100);
+  await driver.longClick(100, 100);
 }
 ```
 
@@ -3029,7 +3080,7 @@ async function demo() {
 
 longClickAt(point: Point, duration?: number): Promise\<void>
 
-Long-clicks the target coordinate point for a specified duration. This promise uses a promise to return the result.
+Long-clicks the target coordinate point for a specified duration. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3107,9 +3158,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.swipe(100,100,200,200,600);
+  await driver.swipe(100, 100, 200, 200, 600);
 }
 ```
 
@@ -3153,7 +3205,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.swipeBetween({x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800);
+  await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800);
 }
 ```
 
@@ -3248,7 +3300,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.dragBetween( {x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800, 1500);
+  await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800, 1500);
 }
 ```
 
@@ -3256,7 +3308,7 @@ async function demo() {
 
 screenCap(savePath: string): Promise\<boolean>
 
-Captures the current screen and saves it as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
+Captures the current screen and saves it as a PNG image to the given save path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3272,7 +3324,7 @@ Captures the current screen and saves it as a PNG image to the specified path. T
 
 | Type             | Description                                       |
 | ----------------- |-------------------------------------------|
-| Promise\<boolean> | Promise used to return whether the screenshot operation is successful. The value **true** indicates that the screen capture operation is successful, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the screenshot operation is successful. The value **true** indicates that the operation is successful, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -3287,6 +3339,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.screenCap('/data/storage/el2/base/cache/1.png');
@@ -3297,7 +3350,7 @@ async function demo() {
 
 screenCap(savePath: string, displayId: number): Promise\<boolean>
 
-Captures the specified screen and saves it as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
+Captures the specified screen and saves it as a PNG image to the given save path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3340,7 +3393,7 @@ async function demo() {
 
 setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
-Sets the display rotation of the current scene to the specified direction. This API uses a promise to return the result. It applies to rotatable scenarios.
+Sets the display rotation of the current scene. This API uses a promise to return the result. It applies to rotatable scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3373,6 +3426,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, DisplayRotation } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.setDisplayRotation(DisplayRotation.ROTATION_180);
@@ -3407,6 +3461,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { DisplayRotation, Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let rotation: DisplayRotation = await driver.getDisplayRotation();
@@ -3459,7 +3514,7 @@ async function demo() {
 
 setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
-Sets whether to enable the screen rotation feature. This API uses a promise to return the result.
+Enables or disables display rotation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3492,6 +3547,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.setDisplayRotationEnabled(false);
@@ -3537,7 +3593,7 @@ async function demo() {
 
 getDisplaySize(displayId: number): Promise\<Point>
 
-Obtains the size of the specified display of the current device. This API uses a promise to return the result.
+Obtains the size of the specified display on the current device. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3603,6 +3659,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let density = await driver.getDisplayDensity();
@@ -3679,6 +3736,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.wakeUpDisplay();
@@ -3715,6 +3773,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressHome();
@@ -3725,7 +3784,7 @@ async function demo() {
 
 pressHome(displayId: number): Promise\<void>
 
-Injects the operation of returning to the home screen on the specified display. This API uses a promise to return the result.
+Injects an operation of returning to the home screen on the specified display. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3769,7 +3828,7 @@ async function demo() {
 
 waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
-Checks whether all components on the current page are idle. This API uses a promise to return the result.
+Checks whether all components on the current UI are idle. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3801,9 +3860,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let idled: boolean = await driver.waitForIdle(4000,5000);
+  let idled: boolean = await driver.waitForIdle(4000, 5000);
 }
 ```
 
@@ -3848,7 +3908,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.fling({x: 500, y: 480},{x: 450, y: 480}, 5, 600);
+  await driver.fling({ x: 500, y: 480 }, { x: 450, y: 480 }, 5, 600);
 }
 ```
 
@@ -3892,16 +3952,16 @@ import { Driver, PointerMatrix } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
-  pointers.setPoint(0, 0, {x:250, y:480});
-  pointers.setPoint(0, 1, {x:250, y:440});
-  pointers.setPoint(0, 2, {x:250, y:400});
-  pointers.setPoint(0, 3, {x:250, y:360});
-  pointers.setPoint(0, 4, {x:250, y:320});
-  pointers.setPoint(1, 0, {x:250, y:480});
-  pointers.setPoint(1, 1, {x:250, y:440});
-  pointers.setPoint(1, 2, {x:250, y:400});
-  pointers.setPoint(1, 3, {x:250, y:360});
-  pointers.setPoint(1, 4, {x:250, y:320});
+  pointers.setPoint(0, 0, { x: 250, y: 480 });
+  pointers.setPoint(0, 1, { x: 250, y: 440 });
+  pointers.setPoint(0, 2, { x: 250, y: 400 });
+  pointers.setPoint(0, 3, { x: 250, y: 360 });
+  pointers.setPoint(0, 4, { x: 250, y: 320 });
+  pointers.setPoint(1, 0, { x: 250, y: 480 });
+  pointers.setPoint(1, 1, { x: 250, y: 440 });
+  pointers.setPoint(1, 2, { x: 250, y: 400 });
+  pointers.setPoint(1, 3, { x: 250, y: 360 });
+  pointers.setPoint(1, 4, { x: 250, y: 320 });
   await driver.injectMultiPointerAction(pointers);
 }
 ```
@@ -3910,7 +3970,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number): Promise\<void>
 
-Simulates a fling operation with the specified direction and speed.
+Simulates a fling operation with the specified direction and speed. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3942,6 +4002,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, UiDirection } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.fling(UiDirection.DOWN, 10000);
@@ -3952,7 +4013,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
-Simulates a fling operation on a display with the specified direction and speed.
+Simulates a fling operation on a specified display with the specified direction and speed. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3996,7 +4057,7 @@ async function demo() {
 
 screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
-Captures the specified area of the current screen and saves it as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
+Captures the specified area of the current screen and saves the captured screenshot as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4028,9 +4089,15 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.screenCapture('/data/storage/el2/base/cache/1.png', {left: 0, top: 0, right: 100, bottom: 100});
+  await driver.screenCapture('/data/storage/el2/base/cache/1.png', {
+    left: 0,
+    top: 0,
+    right: 100,
+    bottom: 100
+  });
 }
 ```
 
@@ -4038,7 +4105,7 @@ async function demo() {
 
 mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse click action at a specified coordinate point and presses the corresponding combination key at the same time. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with the mouse click.
+Injects a mouse click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with the mouse click.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4071,10 +4138,11 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  await driver.mouseClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4082,7 +4150,7 @@ async function demo() {
 
 mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse scrolling action at a specified coordinate point and presses the corresponding combination key at the same time. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with mouse scrolling.
+Injects a mouse scroll action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with mouse scrolling.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4120,7 +4188,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseScroll({x:360, y:640}, true, 30, 2072);
+  await driver.mouseScroll({ x: 360, y: 640 }, true, 30, 2072);
 }
 ```
 
@@ -4128,7 +4196,7 @@ async function demo() {
 
 mouseMoveTo(p: Point): Promise\<void>
 
-Moves the cursor to the target point. This API uses a promise to return the result.
+Moves the mouse cursor to the target point. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -4162,7 +4230,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseMoveTo({x:100, y:100});
+  await driver.mouseMoveTo({ x: 100, y: 100 });
 }
 ```
 
@@ -4205,7 +4273,7 @@ async function demo() {
 
 mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, speed?: number): Promise\<void>
 
-Injects a mouse wheel scrolling action at the specified coordinate point. The corresponding combination key can be pressed at the same time and the scrolling speed can be specified. This API uses a promise to return the result.
+Injects a mouse scroll action at the specified coordinates, with the optional key or key combination and the specified scroll speed. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4244,7 +4312,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseScroll({x:360, y:640}, true, 30, 2072,20);
+  await driver.mouseScroll({ x: 360, y: 640 }, true, 30, 2072, 20);
 }
 ```
 
@@ -4252,7 +4320,7 @@ async function demo() {
 
 mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse double-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time. This API uses a promise to return the result. For example, if the value of **key** is **2072**, the **Ctrl** button is pressed with the double-click.
+Injects a double-click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **key** is **2072**, the **Ctrl** button is pressed with the double-click.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4285,10 +4353,11 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDoubleClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  await driver.mouseDoubleClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4296,7 +4365,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse long-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
+Injects a mouse long-click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4329,10 +4398,11 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
-  await driver.mouseLongClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  let driver: Driver = Driver.create();
+  await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4340,7 +4410,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise\<void>
 
-Injects a mouse long-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time and the click duration can be specified. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
+Injects a mouse long-click action at the specified coordinates, with the optional key or key combination and the specified duration. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -4374,11 +4444,11 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
-  let driver:Driver = Driver.create();
-  await driver.mouseLongClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072, 0, 2000);
+  let driver: Driver = Driver.create();
+  await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072, 0, 2000);
 }
 ```
 
@@ -4386,7 +4456,7 @@ async function demo() {
 
 mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
 
-Moves the mouse from the start point to the end point. This API uses a promise to return the result.
+Moves the mouse pointer from the start point to the end point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4422,7 +4492,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseMoveWithTrack({x:100, y:100}, {x:200, y:200}, 600);
+  await driver.mouseMoveWithTrack({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
 }
 ```
 
@@ -4430,7 +4500,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
-Drags the mouse from the start point to the end point with the left mouse button clicked. This API uses a promise to return the result.
+Drags the mouse pointer from the start point to the end point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4468,7 +4538,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDrag({x:100, y:100},{x:200, y:200}, 600);
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
 }
 ```
 
@@ -4476,7 +4546,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-Drags the mouse from the start point to the end point with the left mouse button clicked. You can specify the drag speed and click duration before dragging. This API uses a promise to return the result.
+Drags the mouse from the start point to the end point. You can specify the dragging speed and the duration before dragging. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -4515,7 +4585,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDrag({x:100, y:100},{x:200, y:200}, 600, 2000);
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600, 2000);
 }
 ```
 
@@ -4555,8 +4625,9 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.type('TextInput'));
   let point = await text.getBoundsCenter();
   await driver.inputText(point, '123');
@@ -4606,7 +4677,7 @@ async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.type('TextInput'));
   let point = await text.getBoundsCenter();
-  await driver.inputText(point, '123', {paste: true, addition: false});
+  await driver.inputText(point, '123', { paste: true, addition: false });
 }
 
 async function demo_Chinese() {
@@ -4658,8 +4729,9 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, UiDirection } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
 }
 ```
@@ -4668,7 +4740,7 @@ async function demo() {
 
 touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?: number): Promise\<void>
 
-Simulates a two-finger scroll gesture on the touchpad.
+Simulates a two-finger scroll gesture on the touchpad. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -4708,7 +4780,7 @@ import { Driver, UiDirection } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.touchPadTwoFingersScroll({x: 100, y: 100}, UiDirection.UP, 20, 10);
+  await driver.touchPadTwoFingersScroll({ x: 100, y: 100 }, UiDirection.UP, 20, 10);
 }
 ```
 
@@ -4716,7 +4788,7 @@ async function demo() {
 
 penClick(point: Point): Promise\<void>
 
-Simulates a pen click. This API uses a promise to return the result.
+Simulates a pen click operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -4747,9 +4819,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penClick({x: 100, y: 100});
+  await driver.penClick({ x: 100, y: 100 });
 }
 ```
 
@@ -4757,7 +4830,7 @@ async function demo() {
 
 penLongClick(point: Point, pressure?: number): Promise\<void>
 
-Simulates a pen long-click. This API uses a promise to return the result.
+Simulates a pen long-click operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -4789,9 +4862,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penLongClick({x: 100, y: 100}, 0.5);
+  await driver.penLongClick({ x: 100, y: 100 }, 0.5);
 }
 ```
 
@@ -4799,7 +4873,7 @@ async function demo() {
 
 penDoubleClick(point: Point): Promise\<void>
 
-Simulates a pen double-click. This API uses a promise to return the result.
+Simulates a pen double-click operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -4831,9 +4905,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penDoubleClick({x: 100, y: 100});
+  await driver.penDoubleClick({ x: 100, y: 100 });
 }
 ```
 
@@ -4841,7 +4916,7 @@ async function demo() {
 
 penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number): Promise\<void>
 
-Simulates a pen swipe. This API uses a promise to return the result.
+Simulates a pen swipe operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -4874,10 +4949,11 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
- import { Driver } from '@kit.TestKit';
+import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penSwipe({x: 100, y: 100}, {x: 100, y: 500}, 600, 0.5);
+  await driver.penSwipe({ x: 100, y: 100 }, { x: 100, y: 500 }, 600, 0.5);
 }
 ```
 
@@ -4885,7 +4961,7 @@ async function demo() {
 
 injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: number): Promise\<void>
 
-Simulates a continuous multi-point pen injection. This API uses a promise to return the result.
+Simulates a continuous multi-point pen injection operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -4919,11 +4995,12 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, PointerMatrix } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let pointer = PointerMatrix.create(1, 8);
   for (let step = 0; step < 8; step++) {
-    pointer.setPoint(0, step, {x: 500, y: 1100 - 100 *step});
+    pointer.setPoint(0, step, { x: 500, y: 1100 - 100 * step });
   }
   await driver.injectPenPointerAction(pointer, 600, 0.5);
 }
@@ -4982,7 +5059,7 @@ async function demo() {
 
 knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
 
-Simulates a knuckle knock on the display.
+Simulates a knuckle knock on the display. This API uses a promise to return the result.
 
 > **NOTE**
 > 
@@ -5025,16 +5102,16 @@ import { Driver, Point } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   // Simulate a single-knuckle double-knock gesture.
-  let points: Array<Point> = [{x: 100, y: 100}];
+  let points: Array<Point> = [{ x: 100, y: 100 }];
   await driver.knuckleKnock(points, 2);
 }
 ```
 
 ### injectKnucklePointerAction<sup>22+</sup>
 
-injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise<\void>
+injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise\<void>
 
-Simulates a multi-point knuckle scrolling operation.
+Simulates a multi-point knuckle scrolling operation. This API uses a promise to return the result.
 
 > **NOTE**
 > 
@@ -5076,14 +5153,14 @@ import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  // Simulate a knuckle gesture to draw an S on the screen.
+  // Simulate a knuckle gesture to draw an S on the display.
   let pointers: PointerMatrix = PointerMatrix.create(1, 6);
-  pointers.setPoint(0, 0, {x: 750, y: 300});
-  pointers.setPoint(0, 1, {x: 500, y: 100});
-  pointers.setPoint(0, 2, {x: 250, y: 300});
-  pointers.setPoint(0, 3, {x: 750, y: 800});
-  pointers.setPoint(0, 4, {x: 500, y: 1000});
-  pointers.setPoint(0, 5, {x: 250, y: 800});
+  pointers.setPoint(0, 0, { x: 750, y: 300 });
+  pointers.setPoint(0, 1, { x: 500, y: 100 });
+  pointers.setPoint(0, 2, { x: 250, y: 300 });
+  pointers.setPoint(0, 3, { x: 750, y: 800 });
+  pointers.setPoint(0, 4, { x: 500, y: 1000 });
+  pointers.setPoint(0, 5, { x: 250, y: 800 });
   await driver.injectKnucklePointerAction(pointers);
 }
 ```
@@ -5092,7 +5169,7 @@ async function demo() {
 
 isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promise\<boolean>
 
-Long-clicks at the specified coordinates and checks whether the target component exists.
+Long-clicks at the specified coordinates and checks whether the target component exists. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -5110,7 +5187,7 @@ Long-clicks at the specified coordinates and checks whether the target component
 
 | Type            | Description             |
 |----------------|-----------------|
-| Promise\<boolean> | Promise used to return whether the target component exists during the long-press operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the target component exists during a long-click operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -5128,7 +5205,7 @@ import { Driver, ON } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let isExist = await driver.isComponentPresentWhenLongClick(ON.id('123'), {x: 100, y: 100}, 2000);
+  let isExist = await driver.isComponentPresentWhenLongClick(ON.id('123'), { x: 100, y: 100 }, 2000);
 }
 ```
 
@@ -5136,7 +5213,7 @@ async function demo() {
 
 isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, duration?: number): Promise\<boolean>
 
-Drags from the start point to the end point and checks whether the target component exists.
+Drags from the start point to the end point and checks whether the target component exists. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -5156,7 +5233,7 @@ Drags from the start point to the end point and checks whether the target compon
 
 | Type            | Description             |
 |----------------|-----------------|
-| Promise\<boolean> | Promise used to return whether the target component exists during the drag operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the target component exists during the dragging operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -5174,7 +5251,7 @@ import { Driver, ON } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let isExist = await driver.isComponentPresentWhenDrag(ON.id('123'), {x: 100, y: 100}, {x: 200, y: 200}, 1000, 2000);
+  let isExist = await driver.isComponentPresentWhenDrag(ON.id('123'), { x: 100, y: 100 }, { x: 200, y: 200 }, 1000, 2000);
 }
 ```
 
@@ -5182,7 +5259,7 @@ async function demo() {
 
 isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Promise\<boolean>
 
-Swipes from the start point to the end point and checks whether the target component exists.
+Swipes from the start point to the end point and checks whether the target component exists. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -5201,7 +5278,7 @@ Swipes from the start point to the end point and checks whether the target compo
 
 | Type            | Description             |
 |----------------|-----------------|
-| Promise\<boolean> | Promise used to return whether the target component exists during the swipe operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the target component exists during the swiping operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -5219,7 +5296,7 @@ import { Driver, ON } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let isExist = await driver.isComponentPresentWhenSwipe(ON.id('123'), {x: 100, y: 100}, {x: 200, y: 200}, 1000);
+  let isExist = await driver.isComponentPresentWhenSwipe(ON.id('123'), { x: 100, y: 100 }, { x: 200, y: 200 }, 1000);
 }
 ```
 
@@ -5301,16 +5378,16 @@ import { PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
-  pointers.setPoint(0, 0, {x:250, y:480});
-  pointers.setPoint(0, 1, {x:250, y:440});
-  pointers.setPoint(0, 2, {x:250, y:400});
-  pointers.setPoint(0, 3, {x:250, y:360});
-  pointers.setPoint(0, 4, {x:250, y:320});
-  pointers.setPoint(1, 0, {x:250, y:480});
-  pointers.setPoint(1, 1, {x:250, y:440});
-  pointers.setPoint(1, 2, {x:250, y:400});
-  pointers.setPoint(1, 3, {x:250, y:360});
-  pointers.setPoint(1, 4, {x:250, y:320});
+  pointers.setPoint(0, 0, { x: 250, y: 480 });
+  pointers.setPoint(0, 1, { x: 250, y: 440 });
+  pointers.setPoint(0, 2, { x: 250, y: 400 });
+  pointers.setPoint(0, 3, { x: 250, y: 360 });
+  pointers.setPoint(0, 4, { x: 250, y: 320 });
+  pointers.setPoint(1, 0, { x: 250, y: 480 });
+  pointers.setPoint(1, 1, { x: 250, y: 440 });
+  pointers.setPoint(1, 2, { x: 250, y: 400 });
+  pointers.setPoint(1, 3, { x: 250, y: 360 });
+  pointers.setPoint(1, 4, { x: 250, y: 320 });
 }
 ```
 
@@ -5323,7 +5400,7 @@ All APIs provided in this class use a promise to return the result and must be i
 
 getBundleName(): Promise\<string>
 
-Obtains the bundle name of the application to which the window belongs. This API uses a promise to return the result.
+Obtains the bundle name of the application to which a window belongs. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5351,7 +5428,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let name: string = await window.getBundleName();
 }
 ```
@@ -5360,7 +5437,7 @@ async function demo() {
 
 getBounds(): Promise\<Rect>
 
-Obtains the border information of a window. This API uses a promise to return the result.
+Obtains the bounds information of a window. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5385,9 +5462,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let rect = await window.getBounds();
 }
 ```
@@ -5421,9 +5499,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let title = await window.getTitle();
 }
 ```
@@ -5432,7 +5511,7 @@ async function demo() {
 
 getWindowMode(): Promise\<WindowMode>
 
-Obtains the window mode information. This API uses a promise to return the result.
+Obtains the window mode. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5457,9 +5536,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let mode = await window.getWindowMode();
 }
 ```
@@ -5468,7 +5548,7 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-Checks whether the window is focused. This API uses a promise to return the result.
+Checks whether a window is focused. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5478,7 +5558,7 @@ Checks whether the window is focused. This API uses a promise to return the resu
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the window is focused. The value **true** indicates that the window is focused, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the window is focused. The value **true** indicates that the component is focused, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -5493,9 +5573,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let focused = await window.isFocused();
 }
 ```
@@ -5504,9 +5585,11 @@ async function demo() {
 
 isActived(): Promise\<boolean>
 
-Checks whether this window is active. This API uses a promise to return the result.
+Checks whether a window is active. This API uses a promise to return the result.
 
-This API is supported since API version 9 and deprecated since API version 11. You are advised to use [isActive<sup>11+</sup>](#isactive11) instead.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 11. You are advised to use [isActive<sup>11+</sup>](#isactive11) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -5529,9 +5612,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let focused = await window.isActived();
 }
 ```
@@ -5540,7 +5624,7 @@ async function demo() {
 
 focus(): Promise\<void>
 
-Focuses the window. This API uses a promise to return the result.
+Focuses a window. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5565,9 +5649,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.focus();
 }
 ```
@@ -5612,9 +5697,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.moveTo(100, 100);
 }
 ```
@@ -5623,7 +5709,7 @@ async function demo() {
 
 resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
-Resizes the window based on the specified width, height, and direction. This API uses a promise to return the result. This API is applicable to resizable windows.
+Resizes a window based on the specified width, height, and direction. This API uses a promise to return the result. This API is applicable to resizable windows.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5658,9 +5744,10 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 ```ts
 import { Driver, ResizeDirection, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.resize(100, 100, ResizeDirection.LEFT);
 }
 ```
@@ -5697,9 +5784,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.split();
 }
 ```
@@ -5736,9 +5824,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.maximize();
 }
 ```
@@ -5775,9 +5864,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.minimize();
 }
 ```
@@ -5786,7 +5876,7 @@ async function demo() {
 
 resume(): Promise\<void>
 
-Restores a window to its previous mode. This API uses a promise to return the result.
+Resumes a window to its previous mode. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5814,9 +5904,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.resume();
 }
 ```
@@ -5853,9 +5944,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let driver: Driver = Driver.create();
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.close();
 }
 ```
@@ -5864,7 +5956,7 @@ async function demo() {
 
 isActive(): Promise\<boolean>
 
-Checks whether this window is active. This API uses a promise to return the result.
+Checks whether a window is active. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5889,9 +5981,10 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({active: true});
+  let window: UiWindow = await driver.findWindow({ active: true });
   let focused = await window.isActive();
 }
 ```
@@ -5900,7 +5993,7 @@ async function demo() {
 
 getDisplayId(): Promise\<number>
 
-Obtains the ID of the display to which the window belongs. This API uses a promise to return the result.
+Obtains the ID of the display to which a window belongs. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -5928,7 +6021,7 @@ import { UiWindow, Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({active: true});
+  let window: UiWindow = await driver.findWindow({ active: true });
   let id = await window.getDisplayId();
 }
 ```
@@ -5969,8 +6062,8 @@ import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer:  UIEventObserver = await driver.createUIEventObserver();
-  let  callback = (UIElementInfo: UIElementInfo)=>{
+  let observer: UIEventObserver = await driver.createUIEventObserver();
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -6012,7 +6105,7 @@ import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let observer: UIEventObserver = await driver.createUIEventObserver();
-  let  callback = (UIElementInfo: UIElementInfo)=>{
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -6059,9 +6152,9 @@ async function demo() {
   let observer: UIEventObserver = driver.createUIEventObserver();
   let options: WindowChangeOptions = {
     timeout: 20000,
-    bundleName: "com.example.myapplication"  // Use the actual bundle name.
+    bundleName: 'com.example.myapplication'  // Use the actual bundle name.
   }
-  let callback = (UIElementInfo: UIElementInfo)=> {
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -6112,7 +6205,7 @@ async function demo() {
     timeout: 20000,
     on: ON.id('123')  // Use the actual component ID.
   };
-  let callback = (UIElementInfo: UIElementInfo)=> {
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -6133,10 +6226,13 @@ async function demo() {
 The UiTest framework provides a wide range of UI component feature description APIs in the **By** class to filter and match components.<br>
 The APIs provided by the **By** class exhibit the following features:<br>1. Allow one or more attributes as the match conditions. For example, you can specify both the **text** and **id** attributes to find the target component.<br>2. Provide multiple match patterns for component attributes.<br>3. Support absolute positioning and relative positioning for components. APIs such as [By.isBefore<sup>(deprecated)</sup>](#isbeforedeprecated) and [By.isAfter<sup>(deprecated)</sup>](#isafterdeprecated) can be used to specify the features of adjacent components to assist positioning.<br>All APIs provided in the **By** class are synchronous. You are advised to use the static constructor **BY** to create a **By** object in chain mode.
 
-This class is deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
 
 ```ts
 import { BY } from '@kit.TestKit';
+
 BY.text('123').type('Button');
 ```
 
@@ -6146,7 +6242,9 @@ text(txt: string, pattern?: MatchPattern): By
 
 Specifies the text attribute of the target component. Multiple match patterns are supported.
 
-This API is deprecated since API version 9. You are advised to use [text<sup>9+</sup>](#text9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [text<sup>9+</sup>](#text9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6167,6 +6265,7 @@ This API is deprecated since API version 9. You are advised to use [text<sup>9+<
 
 ```ts
 import { BY, By } from '@kit.TestKit';
+
 let by: By = BY.text('123'); // Use the static constructor BY to create a By object and specify the text attribute of the target component.
 ```
 
@@ -6177,7 +6276,9 @@ key(key: string): By
 
 Specifies the key attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [id<sup>9+</sup>](#id9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [id<sup>9+</sup>](#id9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6197,6 +6298,7 @@ This API is deprecated since API version 9. You are advised to use [id<sup>9+</s
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.key('123'); // Use the static constructor BY to create a By object and specify the key attribute of the target component.
 ```
 
@@ -6207,7 +6309,9 @@ id(id: number): By
 
 Specifies the ID attribute of the target component.
 
-This API is deprecated since API version 9.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [id<sup>9+</sup>](#id9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6227,6 +6331,7 @@ This API is deprecated since API version 9.
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.id(123); // Use the static constructor BY to create a By object and specify the id attribute of the target component.
 ```
 
@@ -6237,7 +6342,9 @@ type(tp: string): By
 
 Specifies the type attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [type<sup>9+</sup>](#type9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [type<sup>9+</sup>](#type9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6257,6 +6364,7 @@ This API is deprecated since API version 9. You are advised to use [type<sup>9+<
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.type('Button'); // Use the static constructor BY to create a By object and specify the type attribute of the target component.
 ```
 
@@ -6267,7 +6375,9 @@ clickable(b?: boolean): By
 
 Specifies the clickable attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [clickable<sup>9+</sup>](#clickable9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [clickable<sup>9+</sup>](#clickable9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6287,6 +6397,7 @@ This API is deprecated since API version 9. You are advised to use [clickable<su
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.clickable(true); // Use the static constructor BY to create a By object and specify the clickable attribute of the target component.
 ```
 
@@ -6297,7 +6408,9 @@ scrollable(b?: boolean): By
 
 Specifies the scrollable attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [scrollable<sup>9+</sup>](#scrollable9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [scrollable<sup>9+</sup>](#scrollable9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6317,6 +6430,7 @@ This API is deprecated since API version 9. You are advised to use [scrollable<s
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.scrollable(true); // Use the static constructor BY to create a By object and specify the scrollable attribute of the target component.
 ```
 
@@ -6326,7 +6440,9 @@ enabled(b?: boolean): By
 
 Specifies the enabled attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [enabled<sup>9+</sup>](#enabled9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [enabled<sup>9+</sup>](#enabled9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6346,6 +6462,7 @@ This API is deprecated since API version 9. You are advised to use [enabled<sup>
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.enabled(true); // Use the static constructor BY to create a By object and specify the enabled attribute of the target component.
 ```
 
@@ -6355,7 +6472,9 @@ focused(b?: boolean): By
 
 Specifies the focused attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [focused<sup>9+</sup>](#focused9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [focused<sup>9+</sup>](#focused9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6375,6 +6494,7 @@ This API is deprecated since API version 9. You are advised to use [focused<sup>
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.focused(true); // Use the static constructor BY to create a By object and specify the focused attribute of the target component.
 ```
 
@@ -6384,7 +6504,9 @@ selected(b?: boolean): By
 
 Specifies the selected status of the target component.
 
-This API is deprecated since API version 9. You are advised to use [selected<sup>9+</sup>](#selected9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [selected<sup>9+</sup>](#selected9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6404,6 +6526,7 @@ This API is deprecated since API version 9. You are advised to use [selected<sup
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.selected(true); // Use the static constructor BY to create a By object and specify the selected attribute of the target component.
 ```
 
@@ -6413,7 +6536,9 @@ isBefore(by: By): By
 
 Specifies that the target component is located before the given attribute component.
 
-This API is deprecated since API version 9. You are advised to use [isBefore<sup>9+</sup>](#isbefore9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isBefore<sup>9+</sup>](#isbefore9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6435,7 +6560,7 @@ This API is deprecated since API version 9. You are advised to use [isBefore<sup
 import { By, BY } from '@kit.TestKit';
 
 // Use the static constructor BY to create a by object and specify that the target component is located before the given attribute component.
-let by: By = BY.type('Button').isBefore(BY.text('123')); // Search for the first <Button> component located before the component whose text is 123.
+let by: By = BY.type('Button').isBefore(BY.text('123')); // Search for the first Button component located before the component whose text is 123.
 ```
 
 ### isAfter<sup>(deprecated)</sup>
@@ -6444,7 +6569,9 @@ isAfter(by: By): By
 
 Specifies that the target component is located after the given attribute component.
 
-This API is deprecated since API version 9. You are advised to use [isAfter<sup>9+</sup>](#isafter9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isAfter<sup>9+</sup>](#isafter9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6466,23 +6593,28 @@ This API is deprecated since API version 9. You are advised to use [isAfter<sup>
 import { By, BY } from '@kit.TestKit';
 
 // Use the static constructor BY to create a by object and specify that the target component is located after the given attribute component.
-let by: By = BY.type('Text').isAfter(BY.text('123')); // Search for the first <Text> component located after the component whose text is 123.
+let by: By = BY.type('Text').isAfter(BY.text('123')); // Search for the first Text component located after the component whose text is 123.
 ```
+
 
 ## UiComponent<sup>(deprecated)</sup>
 
 In **UiTest**, the **UiComponent** class represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
-This class is deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [[Component<sup>9+</sup>](#component9)](#on9) instead.
 
 ### click<sup>(deprecated)</sup>
 
 click(): Promise\<void>
 
-Clicks this component.
+Clicks this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [click<sup>9+</sup>](#click9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [click<sup>9+</sup>](#click9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6496,6 +6628,7 @@ This API is deprecated since API version 9. You are advised to use [click<sup>9+
 
 ```ts
 import { UiDriver, BY, Driver, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6507,9 +6640,11 @@ async function demo() {
 
 doubleClick(): Promise\<void>
 
-Double-clicks this component.
+Double-clicks this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [doubleClick<sup>9+</sup>](#doubleclick9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [doubleClick<sup>9+</sup>](#doubleclick9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6523,6 +6658,7 @@ This API is deprecated since API version 9. You are advised to use [doubleClick<
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6534,9 +6670,11 @@ async function demo() {
 
 longClick(): Promise\<void>
 
-Long-clicks this component.
+Long-clicks this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [longClick<sup>9+</sup>](#longclick9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [longClick<sup>9+</sup>](#longclick9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6550,6 +6688,7 @@ This API is deprecated since API version 9. You are advised to use [longClick<su
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6561,9 +6700,11 @@ async function demo() {
 
 getId(): Promise\<number>
 
-Obtains the ID of this component.
+Obtains the ID of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getId<sup>9+</sup>](#getid9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6577,6 +6718,7 @@ This API is deprecated since API version 9.
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6588,9 +6730,11 @@ async function demo() {
 
 getKey(): Promise\<string>
 
-Obtains the key of this component.
+Obtains the key of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [getId<sup>9+</sup>](#getid9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getId<sup>9+</sup>](#getid9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6604,6 +6748,7 @@ This API is deprecated since API version 9. You are advised to use [getId<sup>9+
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6615,9 +6760,11 @@ async function demo() {
 
 getText(): Promise\<string>
 
-Obtains the text information of this component.
+Obtains the text information of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [getText<sup>9+</sup>](#gettext9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getText<sup>9+</sup>](#gettext9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6631,6 +6778,7 @@ This API is deprecated since API version 9. You are advised to use [getText<sup>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6642,9 +6790,11 @@ async function demo() {
 
 getType(): Promise\<string>
 
-Obtains the type of this component.
+Obtains the type of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [getType<sup>9+</sup>](#gettype9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getType<sup>9+</sup>](#gettype9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6658,6 +6808,7 @@ This API is deprecated since API version 9. You are advised to use [getType<sup>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6669,9 +6820,11 @@ async function demo() {
 
 isClickable(): Promise\<boolean>
 
-Obtains the clickable status of this component.
+Obtains the clickable status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isClickable<sup>9+</sup>](#isclickable9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isClickable<sup>9+</sup>](#isclickable9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6685,6 +6838,7 @@ This API is deprecated since API version 9. You are advised to use [isClickable<
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6700,9 +6854,11 @@ async function demo() {
 
 isScrollable(): Promise\<boolean>
 
-Obtains the scrollable status of this component.
+Obtains the scrollable status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isScrollable<sup>9+</sup>](#isscrollable9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isScrollable<sup>9+</sup>](#isscrollable9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6716,6 +6872,7 @@ This API is deprecated since API version 9. You are advised to use [isScrollable
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let scrollBar: UiComponent = await driver.findComponent(BY.scrollable(true));
@@ -6732,9 +6889,11 @@ async function demo() {
 
 isEnabled(): Promise\<boolean>
 
-Obtains the enabled status of this component.
+Obtains the enabled status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isEnabled<sup>9+</sup>](#isenabled9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isEnabled<sup>9+</sup>](#isenabled9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6748,6 +6907,7 @@ This API is deprecated since API version 9. You are advised to use [isEnabled<su
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6764,9 +6924,11 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-Obtains the focused status of this component.
+Obtains the focused status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isFocused<sup>9+</sup>](#isfocused9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isFocused<sup>9+</sup>](#isfocused9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6774,12 +6936,13 @@ This API is deprecated since API version 9. You are advised to use [isFocused<su
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the component is focused. The value **true** indicates that the window is focused, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component is focused. The value **true** indicates that the component is focused, and **false** indicates the opposite.|
 
 **Example**
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6795,9 +6958,11 @@ async function demo() {
 
 isSelected(): Promise\<boolean>
 
-Obtains the selected status of this component.
+Obtains the selected status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isSelected<sup>9+</sup>](#isselected9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isSelected<sup>9+</sup>](#isselected9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6811,6 +6976,7 @@ This API is deprecated since API version 9. You are advised to use [isSelected<s
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6826,9 +6992,11 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-Inputs text to a component. This API takes effect only for editable text components.
+Inputs text to a component. This API takes effect only for editable text components. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [inputText<sup>9+</sup>](#inputtext9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputText<sup>9+</sup>](#inputtext9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6848,6 +7016,7 @@ This API is deprecated since API version 9. You are advised to use [inputText<su
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let text: UiComponent = await driver.findComponent(BY.text('hello world'));
@@ -6859,9 +7028,11 @@ async function demo() {
 
 scrollSearch(by: By): Promise\<UiComponent>
 
-Scrolls on this component to search for the target component (applicable to components that support scrolling, such as **List**).
+Scrolls on this component to search for the target component (applicable to components that support scrolling, such as **List**). This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [scrollSearch<sup>9+</sup>](#scrollsearch9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [scrollSearch<sup>9+</sup>](#scrollsearch9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6881,6 +7052,7 @@ This API is deprecated since API version 9. You are advised to use [scrollSearch
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let scrollBar: UiComponent = await driver.findComponent(BY.type('Scroll'));
@@ -6893,7 +7065,9 @@ async function demo() {
 The **UiDriver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
 All APIs provided by this class, except **UiDriver.create()**, use a promise to return the result and must be invoked using **await**.
 
-This class is deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
+> **NOTE**
+>
+> This method is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 ### create<sup>(deprecated)</sup>
 
@@ -6901,7 +7075,9 @@ static create(): UiDriver
 
 Creates a **UiDriver** object and returns the object created. This API is a static API.
 
-This API is deprecated since API version 9. You are advised to use [create<sup>9+</sup>](#create9) instead.
+> **NOTE**
+>
+> This method is supported since API version 8 and deprecated since API version 9. You are advised to use [create<sup>9+</sup>](#create9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6915,6 +7091,7 @@ This API is deprecated since API version 9. You are advised to use [create<sup>9
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
 }
@@ -6924,9 +7101,11 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-Delays this **UiDriver** object within the specified duration.
+Delays this **UiDriver** object within the specified duration. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [delayMs<sup>9+</sup>](#delayms9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [delayMs<sup>9+</sup>](#delayms9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6946,6 +7125,7 @@ This API is deprecated since API version 9. You are advised to use [delayMs<sup>
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.delayMs(1000);
@@ -6956,9 +7136,11 @@ async function demo() {
 
 findComponent(by: By): Promise\<UiComponent>
 
-Searches this **UiDriver** object for the target component that matches the given attributes.
+Searches this **UiDriver** object for the target component that matches the given attributes. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [findComponent<sup>9+</sup>](#findcomponent9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [findComponent<sup>9+</sup>](#findcomponent9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6978,6 +7160,7 @@ This API is deprecated since API version 9. You are advised to use [findComponen
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.text('next page'));
@@ -6988,9 +7171,11 @@ async function demo() {
 
 findComponents(by: By): Promise\<Array\<UiComponent>>
 
-Searches this **UiDriver** object for all components that match the given attributes.
+Searches this **UiDriver** object for all components that match the given attributes. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [findComponents<sup>9+</sup>](#findcomponents9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [findComponents<sup>9+</sup>](#findcomponents9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7010,6 +7195,7 @@ This API is deprecated since API version 9. You are advised to use [findComponen
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let buttonList: Array<UiComponent> = await driver.findComponents(BY.text('next page'));
@@ -7020,9 +7206,11 @@ async function demo() {
 
 assertComponentExist(by: By): Promise\<void>
 
-Asserts that a component that matches the given attributes exists on the current page. If the component does not exist, the API throws a JS exception, causing the current test case to fail.
+Asserts that a component that matches the given attributes exists on the current page. If the component does not exist, the API throws a JS exception, causing the current test case to fail. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [assertComponentExist<sup>9+</sup>](#assertcomponentexist9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [assertComponentExist<sup>9+</sup>](#assertcomponentexist9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7052,6 +7240,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 ```ts
 import { UiDriver, BY } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.assertComponentExist(BY.text('next page'));
@@ -7062,9 +7251,11 @@ async function demo() {
 
 pressBack(): Promise\<void>
 
-Presses the Back button on this **UiDriver** object.
+Presses the Back button on this **UiDriver** object. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [pressBack<sup>9+</sup>](#pressback9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [pressBack<sup>9+</sup>](#pressback9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7078,6 +7269,7 @@ This API is deprecated since API version 9. You are advised to use [pressBack<su
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.pressBack();
@@ -7088,9 +7280,11 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-Triggers the key of this **UiDriver** object that matches the given key code.
+Triggers the key of this **UiDriver** object that matches the given key code. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [triggerKey<sup>9+</sup>](#triggerkey9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [triggerKey<sup>9+</sup>](#triggerkey9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7123,9 +7317,11 @@ async function demo() {
 
 click(x: number, y: number): Promise\<void>
 
-Clicks a specific point of this **UiDriver** object based on the given coordinates.
+Clicks a specific point of this **UiDriver** object based on the given coordinates. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [click<sup>9+</sup>](#click9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [click<sup>9+</sup>](#click9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7157,9 +7353,11 @@ async function demo() {
 
 doubleClick(x: number, y: number): Promise\<void>
 
-Double-clicks a specific point of this **UiDriver** object based on the given coordinates.
+Double-clicks a specific point of this **UiDriver** object based on the given coordinates. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [doubleClick<sup>9+</sup>](#doubleclick9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [doubleClick<sup>9+</sup>](#doubleclick9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7191,9 +7389,11 @@ async function demo() {
 
 longClick(x: number, y: number): Promise\<void>
 
-Long-clicks a specific point of this **UiDriver** object based on the given coordinates.
+Long-clicks a specific point of this **UiDriver** object based on the given coordinates. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [longClick<sup>9+</sup>](#longclick9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [longClick<sup>9+</sup>](#longclick9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7214,6 +7414,7 @@ This API is deprecated since API version 9. You are advised to use [longClick<su
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.longClick(100, 100);
@@ -7224,9 +7425,11 @@ async function demo() {
 
 swipe(startx: number, starty: number, endx: number, endy: number): Promise\<void>
 
-Swipes on this **UiDriver** object from the start point to the end point based on the given coordinates.
+Swipes on this **UiDriver** object from the start point to the end point based on the given coordinates. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [swipe<sup>9+</sup>](#swipe9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [swipe<sup>9+</sup>](#swipe9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7260,9 +7463,11 @@ async function demo() {
 
 screenCap(savePath: string): Promise\<boolean>
 
-Captures the current screen of this **UiDriver** object and saves it as a PNG image to the given save path.
+Captures the current screen of this **UiDriver** object and saves it as a PNG image to the given save path. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [screenCap<sup>9+</sup>](#screencap9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [screenCap<sup>9+</sup>](#screencap9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7283,6 +7488,7 @@ This API is deprecated since API version 9. You are advised to use [screenCap<su
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.screenCap('/data/storage/el2/base/cache/1.png');

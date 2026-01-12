@@ -6,8 +6,8 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-```
-typedef struct {...} Rdb_TableDetails
+```c
+typedef struct Rdb_TableDetails {...} Rdb_TableDetails
 ```
 
 ## Overview

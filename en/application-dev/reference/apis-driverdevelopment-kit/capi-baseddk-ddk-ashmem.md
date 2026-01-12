@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct DDK_Ashmem {...} DDK_Ashmem
+```
+
 ## Overview
 
 Device memory map created by calling **OH_DDK_CreateAshmem**. A buffer using the device memory map can provide better performance.

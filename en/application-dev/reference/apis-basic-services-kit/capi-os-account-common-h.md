@@ -1,4 +1,10 @@
 # os_account_common.h
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
 
 ## Overview
 
@@ -26,7 +32,7 @@ Defines common types used in **OsAccount** APIs.
 
 ### OsAccount_ErrCode
 
-```
+```c
 enum OsAccount_ErrCode
 ```
 

@@ -129,7 +129,9 @@ preDecode(value: number)
 
 设置预解码的图片数量。
 
-从API version 9开始废弃。
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。当前无可替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -199,7 +201,7 @@ monitorInvisibleArea(monitorInvisibleArea: boolean)
 
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | -------- | -------------- | -------- | -------- | -------- |
-| src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](ts-image-common.md#pixelmap)<sup>12+</sup> | 否  | 否   | 图片路径，图片格式为jpg、jpeg、svg、png、bmp、webp、ico和heif，从API Version9开始支持[Resource](ts-types.md#resource)类型的路径，从API version 12开始支持[PixelMap](ts-image-common.md#pixelmap)类型。 <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。|
+| src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](ts-image-common.md#pixelmap)<sup>12+</sup> | 否  | 否   | 图片路径，图片格式为jpg、jpeg、svg、png、bmp、webp、ico和heif，从API version9开始支持[Resource](ts-types.md#resource)类型的路径，从API version 12开始支持[PixelMap](ts-image-common.md#pixelmap)类型。 <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。|
 | width    | number&nbsp;\|&nbsp;string | 否 | 是 | 图片宽度。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp   <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用       |
 | height   | number&nbsp;\|&nbsp;string | 否 | 是 | 图片高度。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp     <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用        |
 | top      | number&nbsp;\|&nbsp;string | 否 | 是 | 图片相对于组件左上角的纵向坐标。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp  <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用  |
@@ -539,11 +541,11 @@ struct ImageAnimatorAutoPauseTest {
             .height(240)
             .margin({ top: 100 })
             .onStart(() => {
-              this.preCallBack = "Start";
+              this.preCallBack = 'Start';
               console.info('ImageAnimator Start');
             })
             .onPause(() => {
-              this.preCallBack = "Pause";
+              this.preCallBack = 'Pause';
               console.info('ImageAnimator Pause');
             })
             .onRepeat(() => {
@@ -583,7 +585,7 @@ struct ImageAnimatorAutoPauseTest {
         console.info('Scroll Stop');
       })
 
-      Text("上次触发的回调（Pause/Start）：" + this.preCallBack)
+      Text('上次触发的回调（Pause/Start）：' + this.preCallBack)
         .margin({ top: 60, left: 20 })
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
   }

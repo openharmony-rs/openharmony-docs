@@ -19,22 +19,29 @@ Text popups are usually used to display informational text messages, suitable fo
 
 In the example below, with the **Popup** attribute bound to a **Button** component, each click toggles the boolean value in **handlePopup**. When the value becomes **true**, it triggers **bindPopup** to display the popup.
 
-```ts
+<!-- @[text_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/TextPrompts.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct PopupExample {
+export struct TextPopupExample {
   @State handlePopup: boolean = false;
 
   build() {
-    Column() {
-      Button('PopupOptions')
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup;
-        })
-        .bindPopup(this.handlePopup, {
-          message: 'This is a popup with PopupOptions',
-        })
-    }.width('100%').padding({ top: 5 })
+    NavDestination() {
+      Column() {
+        Button('PopupOptions')
+          .id('PopupOptions')
+          .margin({ top: 300 })
+          .onClick(() => {
+            this.handlePopup = !this.handlePopup;
+          })
+          .bindPopup(this.handlePopup, {
+            message: 'This is a popup with PopupOptions',
+          })
+      }.width('100%').padding({ top: 5 })
+    }
+    // ···
   }
 }
 ```
@@ -45,27 +52,34 @@ struct PopupExample {
 
 You can use the **onStateChange** parameter to add an event callback for popup state changes, so as to determine the current state of the popup.
 
-```ts
+<!-- @[state_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStateChange.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct PopupExample {
+export struct StatePopupExample {
   @State handlePopup: boolean = false;
 
   build() {
-    Column() {
-      Button('PopupOptions')
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup;
-        })
-        .bindPopup(this.handlePopup, {
-          message: 'This is a popup with PopupOptions',
-          onStateChange: (e)=> {// Return the current popup state.
-            if (!e.isVisible) {
-              this.handlePopup = false;
-            }
-          }
-        })
-    }.width('100%').padding({ top: 5 })
+    NavDestination() {
+        Column() {
+          Button('PopupOptions')
+            .id('PopupOptions')
+            .margin({ top: 300 })
+            .onClick(() => {
+              this.handlePopup = !this.handlePopup;
+            })
+            .bindPopup(this.handlePopup, {
+              message: 'This is a popup with PopupOptions',
+              onStateChange: (e)=> {// Return the current popup state.
+                if (!e.isVisible) {
+                  this.handlePopup = false;
+                }
+              }
+            })
+        }.width('100%').padding({ top: 5 })
+    }
+    // ···
   }
 }
 ```
@@ -76,40 +90,48 @@ struct PopupExample {
 
 You can add a maximum of two buttons to a popup through the **primaryButton** and **secondaryButton** attributes. For each of the buttons, you can set the **action** parameter to specify the operation to be triggered.
 
-```ts
+<!-- @[button_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/ButtonPopup.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
 @Entry
 @Component
-struct PopupExample22 {
+export struct ButtonPopupExample {
   @State handlePopup: boolean = false;
 
   build() {
-    Column() {
-      Button('PopupOptions').margin({ top: 200 })
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup;
-        })
-        .bindPopup(this.handlePopup, {
-          message: 'This is a popup with PopupOptions',
-          primaryButton: {
-            value: 'Confirm',
-            action: () => {
+    NavDestination() {
+        Column() {
+          Button('PopupOptions').margin({ top: 300 })
+            .id('PopupOptions')
+            .onClick(() => {
               this.handlePopup = !this.handlePopup;
-              console.info('confirm Button click');
-            }
-          },
-          secondaryButton: {
-            value: 'Cancel',
-            action: () => {
-              this.handlePopup = !this.handlePopup;
-            }
-          },
-          onStateChange: (e) => {
-            if (!e.isVisible) {
-              this.handlePopup = false;
-            }
-          }
-        })
-    }.width('100%').padding({ top: 5 })
+            })
+            .bindPopup(this.handlePopup, {
+              message: 'This is a popup with PopupOptions',
+              primaryButton: {
+                value: 'Confirm',
+                action: () => {
+                  this.handlePopup = !this.handlePopup;
+                  hilog.info(0xFF00, 'DialogProject', 'confirm Button click');
+                }
+              },
+              secondaryButton: {
+                value: 'Cancel',
+                action: () => {
+                  this.handlePopup = !this.handlePopup;
+                }
+              },
+              onStateChange: (e) => {
+                if (!e.isVisible) {
+                  this.handlePopup = false;
+                }
+              }
+            })
+        }.width('100%').padding({ top: 5 })
+    }
+    // ···
   }
 }
 ```
@@ -120,64 +142,72 @@ struct PopupExample22 {
 
 You implement the entrance and exit animation effects of popups through **transition**.
 
-```ts
+<!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) -->
+
+``` TypeScript
 // xxx.ets
 @Entry
 @Component
-struct PopupExample {
+export struct AnimationPopupExample {
   @State handlePopup: boolean = false;
   @State customPopup: boolean = false;
 
   // Define the popup content in the popup builder.
-  @Builder popupBuilder() {
+  @Builder
+  popupBuilder() {
     Row() {
       Text('Custom Popup with transitionEffect').fontSize(10)
     }.height(50).padding(5)
   }
 
   build() {
-    Flex({ direction: FlexDirection.Column }) {
-      // PopupOptions for setting the popup
-      Button('PopupOptions')
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup;
-        })
-        .bindPopup(this.handlePopup, {
-          message: 'This is a popup with transitionEffect',
-          placement: Placement.Top,
-          showInSubWindow: false,
-          onStateChange: (e) => {
-            if (!e.isVisible) {
-              this.handlePopup = false;
-            }
-          },
-          // Set the popup animation to a combination of opacity and translation effects, with no exit animation.
-          transition:TransitionEffect.asymmetric(
-            TransitionEffect.OPACITY.animation({ duration: 1000, curve: Curve.Ease }).combine(
-              TransitionEffect.translate({ x: 50, y: 50 })),
-            TransitionEffect.IDENTITY)
-        })
-        .position({ x: 100, y: 150 })
+    NavDestination() {
+      Flex({ direction: FlexDirection.Column }) {
+        // PopupOptions for setting the popup
+        Button('PopupOptions')
+          .id('PopupOptions')
+          .onClick(() => {
+            this.handlePopup = !this.handlePopup;
+          })
+          .bindPopup(this.handlePopup, {
+            message: 'This is a popup with transitionEffect',
+            placement: Placement.Top,
+            showInSubWindow: false,
+            onStateChange: (e) => {
+              if (!e.isVisible) {
+                this.handlePopup = false;
+              }
+            },
+            // Set the popup animation to a combination of opacity and translation effects, with no exit animation.
+            transition: TransitionEffect.asymmetric(
+              TransitionEffect.OPACITY.animation({ duration: 1000, curve: Curve.Ease }).combine(
+                TransitionEffect.translate({ x: 50, y: 50 })),
+              TransitionEffect.IDENTITY)
+          })
+          .position({ x: 100, y: 150 })
 
-      // CustomPopupOptions for setting the popup
-      Button('CustomPopupOptions')
-        .onClick(() => {
-          this.customPopup = !this.customPopup;
-        })
-        .bindPopup(this.customPopup, {
-          builder: this.popupBuilder,
-          placement: Placement.Top,
-          showInSubWindow: false,
-          onStateChange: (e) => {
-            if (!e.isVisible) {
-              this.customPopup = false;
-            }
-          },
-          // Set the popup entrance and exit animations to be a scaling effect.
-          transition:TransitionEffect.scale({ x: 1, y: 0 }).animation({ duration: 500, curve: Curve.Ease })
-        })
-        .position({ x: 80, y: 300 })
-    }.width('100%').padding({ top: 5 })
+        // CustomPopupOptions for setting the popup
+        Button('CustomPopupOptions')
+          .id('CustomPopupOptions')
+          .onClick(() => {
+            this.customPopup = !this.customPopup;
+          })
+          .bindPopup(this.customPopup, {
+            builder: this.popupBuilder,
+            placement: Placement.Top,
+            showInSubWindow: false,
+            onStateChange: (e) => {
+              if (!e.isVisible) {
+                this.customPopup = false;
+              }
+            },
+            // Set the popup entrance and exit animations to be a scaling effect.
+            transition: TransitionEffect.scale({ x: 1, y: 0 }).animation({ duration: 500, curve: Curve.Ease })
+          })
+          .position({ x: 80, y: 300 })
+      }.width('100%').padding({ top: 5 })
+    }
+    // ···
   }
 }
 ```
@@ -188,38 +218,48 @@ struct PopupExample {
 
 You can create a custom popup with **builder** in **CustomPopupOptions**, defining custom content in \@Builder. In addition, you can use parameters such as **popupColor** to control the popup style.
 
-```ts
+<!-- @[custom_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/CustomPopup.ets) -->
+
+``` TypeScript
+// Replace $r('app.media.xxx') with the image resource file you use.
 @Entry
 @Component
-struct Index {
+export struct CustomPopupExample {
   @State customPopup: boolean = false;
+
   // Define the popup content in the popup builder.
-  @Builder popupBuilder() {
+  @Builder
+  popupBuilder() {
     Row({ space: 2 }) {
-      // Replace $r('app.media.icon') with the image resource file you use.
-      Image($r("app.media.icon")).width(24).height(24).margin({ left: 5 })
+      Image($r('app.media.app_icon')).width(24).height(24).margin({ left: 5 })
       Text('This is Custom Popup').fontSize(15)
     }.width(200).height(50).padding(5)
   }
+
   build() {
-    Column() {
-      Button('CustomPopupOptions')
-        .position({x:100,y:200})
-        .onClick(() => {
-          this.customPopup = !this.customPopup;
-        })
-        .bindPopup(this.customPopup, {
-          builder: this.popupBuilder, // Content of the popup.
-          placement:Placement.Bottom, // Position of the popup.
-          popupColor:Color.Pink, // Background color of the popup.
-          onStateChange: (e) => {
-            if (!e.isVisible) {
-              this.customPopup = false;
+    NavDestination() {
+      Column() {
+        Button('CustomPopupOptions')
+          .id('CustomPopupOptions')
+          .margin({ top: 300 })
+          .onClick(() => {
+            this.customPopup = !this.customPopup;
+          })
+          .bindPopup(this.customPopup, {
+            builder: this.popupBuilder, // Content of the popup.
+            placement: Placement.Bottom, // Position of the popup.
+            popupColor: Color.Pink, // Popup background color
+            backgroundBlurStyle: BlurStyle.NONE,
+            onStateChange: (e) => {
+              if (!e.isVisible) {
+                this.customPopup = false
+              }
             }
-          }
-        })
+          })
+      }
+      .height('100%')
     }
-    .height('100%')
+    // ...
   }
 }
 ```
@@ -238,32 +278,37 @@ Size: The size of a popup is determined by the content within the builder or the
 Position: Popups are located below their host component by default. You can control the display position and alignment using the **Placement** API.
 The following example demonstrates how to configure a popup's style using **popupColor**, **mask**, **width**, and **placement**.
 
-```ts
+<!-- @[style_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStyle.ets) -->
+
+``` TypeScript
 // xxx.ets
 
 @Entry
 @Component
-struct PopupExample {
+export struct StylePopupExample {
   @State handlePopup: boolean = false;
 
   build() {
-    Column({ space: 100 }) {
-      Button('PopupOptions')
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup;
-        })
-        .bindPopup(this.handlePopup, {
-          width: 200,
-          message: 'This is a popup.',
-          popupColor: Color.Red, // Set the background color for the popup.
-          mask: {
-            color: '#33d9d9d9'
-          },
-          placement: Placement.Top,
-          backgroundBlurStyle: BlurStyle.NONE // Remove the blur effect for the popup.
-        })
+    NavDestination() {
+      Column({ space: 100 }) {
+        Button('PopupOptions')
+          .onClick(() => {
+            this.handlePopup = !this.handlePopup;
+          })
+          .bindPopup(this.handlePopup, {
+            width: 200,
+            message: 'This is a popup.',
+            popupColor: Color.Red, // Set the background color for the popup.
+            mask: {
+              color: '#33d9d9d9'
+            },
+            placement: Placement.Top,
+            backgroundBlurStyle: BlurStyle.NONE // Remove the blur effect for the popup.
+          })
+      }
+      .width('100%')
     }
-    .width('100%')
+    // ···
   }
 }
 ```
@@ -272,17 +317,19 @@ struct PopupExample {
 
 ## Enabling the Popup to Avoid the Soft Keyboard
 
-By default, popups do not avoid the soft keyboard and may be obscured by it. Setting **keyboardAvoidMode** to **KeyboardAvoidMode.DEFAULT** enables keyboard avoidance. If there is insufficient space, the popup will shift from its default position to overlay its host component.
+By default, popups do not avoid the soft keyboard and may be obscured by it. To enable keyboard avoidance, set **keyboardAvoidMode** (supported since API version 15) to **KeyboardAvoidMode.DEFAULT**. If there is insufficient space, the popup will shift from its default position to overlay its host component.
 
-```ts
+<!-- @[avoidSoftKeyboard_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAvoidSoftKeyboard.ets) -->
+
+``` TypeScript
 // xxx.ets
-
 @Entry
 @Component
-struct PopupExample {
+export struct AvoidSoftKeyboardPopupExample {
   @State handlePopup: boolean = false;
 
-  @Builder popupBuilder() {
+  @Builder
+  popupBuilder() {
     Column({ space: 2 }) {
       Text('Custom Popup').fontSize(20)
         .borderWidth(2)
@@ -291,23 +338,27 @@ struct PopupExample {
   }
 
   build() {
-    Column({ space: 100 }) {
-      TextInput()
-      Button('PopupOptions')
-        .onClick(() => {
-          this.handlePopup = !this.handlePopup;
-        })
-        .bindPopup(this.handlePopup!!, {
-          width: 200,
-          builder: this.popupBuilder(),
-          placement: Placement.Bottom,
-          mask: false,
-          autoCancel: false,
-          keyboardAvoidMode: KeyboardAvoidMode.DEFAULT
-        })
-        .position({x: 100, y: 300})
+    NavDestination() {
+      Column({ space: 100 }) {
+        TextInput()
+        Button('PopupOptions')
+          .id('PopupOptions')
+          .onClick(() => {
+            this.handlePopup = !this.handlePopup;
+          })
+          .bindPopup(this.handlePopup!!, {
+            width: 200,
+            builder: this.popupBuilder(),
+            placement: Placement.Bottom,
+            mask: false,
+            autoCancel: false,
+            keyboardAvoidMode: KeyboardAvoidMode.DEFAULT
+          })
+          .position({ x: 100, y: 300 })
+      }
+      .width('100%')
     }
-    .width('100%')
+    // ···
   }
 }
 ```
@@ -319,11 +370,20 @@ struct PopupExample {
 
 When @Builder is used for custom popup content, polymorphic styles are not supported by default. To achieve background color changes on press, implement a component with @Component.
 
-```ts
+<!-- @[polymorphicEffect_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupPolymorphicEffect.ets) -->
+
+``` TypeScript
+// Replace $r('app.media.xxx') with the image resource file you use.
 @Entry
 @Component
-struct PopupPage {
-  private menus: Array<string> = ["Scan", "Create Group Chat", "Employee ID Card"]
+export struct PolymorphicEffectPopupExample {
+  @State scan: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Scan_title') as string;
+  @State createGroupChat: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Create_group_chat') as string;
+  @State electronicWorkCard: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Electronic_work_card') as string;
+  private menus: Array<string> = [this.scan, this.createGroupChat, this.electronicWorkCard];
 
   // Define the popup content in the popup builder.
   @Builder
@@ -350,26 +410,30 @@ struct PopupPage {
   @State customPopup: boolean = false;
 
   build() {
-    Column() {
-      Button('Click Me')
-        .onClick(() => {
-          this.customPopup = !this.customPopup
-        })
-        .bindPopup(
-          this.customPopup,
-          {
-            builder: this.popupBuilder, // Content of the popup.
-            placement: Placement.Bottom, // Position of the popup.
-            popupColor: Color.White, // Background color of the popup.
-            onStateChange: (event) => {
-              if (!event.isVisible) {
-                this.customPopup = false
-              }
-            }
+    NavDestination() {
+      Column() {
+        Button('click me')
+          .id('click me')
+          .onClick(() => {
+            this.customPopup = !this.customPopup
           })
+          .bindPopup(
+            this.customPopup,
+            {
+              builder: this.popupBuilder, // Content of the popup.
+              placement: Placement.Bottom, // Position of the popup.
+              popupColor: Color.White, // Background color of the popup.
+              onStateChange: (event) => {
+                if (!event.isVisible) {
+                  this.customPopup = false
+                }
+              }
+            })
+      }
+      .width('100%')
+      .justifyContent(FlexAlign.Center)
     }
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
+    // ...
   }
 }
 
@@ -377,10 +441,11 @@ struct PopupPage {
 struct PopupItemChild {
   @Prop childName: string = '';
   @Prop childAction: string = '';
+  @State selected: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Selected') as string;
 
   build() {
     Row({ space: 8 }) {
-      // Replace $r('app.media.startIcon') with the image resource file you use.
       Image($r('app.media.startIcon'))
         .width(24)
         .height(24)
@@ -391,14 +456,14 @@ struct PopupItemChild {
     .height(50)
     .padding(8)
     .onClick(() => {
-      this.getUIContext().getPromptAction().showToast({ message: 'Selected ' + this.childName })
+      this.getUIContext().getPromptAction().showToast({ message: this.selected + this.childName })
     })
     .stateStyles({
       normal: {
         .backgroundColor(Color.White)
       },
       pressed: {
-        .backgroundColor('#1fbb7d')
+        .backgroundColor('#d4f1ff')
       }
     })
   }
@@ -415,70 +480,93 @@ Since API version 18, popups support center axis avoidance. Since API version 20
 > - Popups will not avoid the center axis if clicked in the axis area.
 > - On 2-in-1 devices, axis avoidance occurs only when the window is in waterfall mode.
 
-```ts
+<!-- @[supportedAvoidAxis_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupSupportedAvoidAxis.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct Index {
+export struct SupportedAvoidAxisPopupExample {
+  @State upScreen: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Upper_half_screen') as string;
+  @State middleAxle: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Middle_axle') as string;
+  @State lowerScreen: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Lower_half_screen') as string;
+  @State subwindowDisplay: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Subwindow_display') as string;
+  @State subwindow: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Subwindow') as string;
+  @State nonSubwindow: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Non_Subwindow') as string;
+  @State zone: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('zone') as string;
+  @State hoverModeStart: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('hoverMode_start') as string;
+
   @State message: string = 'Hello World';
   @State index: number = 0;
-  @State arrayStr: Array<string> = ['Upper half screen', 'Central axis', 'Lower half screen'];
+  @State arrayStr: Array<string> = [this.upScreen, this.middleAxle, this.lowerScreen];
   @State enableHoverMode: boolean | undefined = true;
   @State showInSubwindow: boolean = false;
   @State placement: Placement | undefined = undefined;
   @State isShow: boolean = false;
 
   build() {
-    RelativeContainer() {
-      Column() {
-        Button('Area: ' + this.arrayStr[this.index])
-          .onClick(() => {
-            if (this.index < 2) {
-              this.index++
-            } else {
-              this.index = 0
-            }
-          })
+    NavDestination() {
+      RelativeContainer() {
+        Column() {
+          Button(this.zone + this.arrayStr[this.index])
+            .onClick(() => {
+              if (this.index < 2) {
+                this.index++
+              } else {
+                this.index = 0
+              }
+            })
 
-        Button('Subwindow: ' + (this.showInSubwindow ? 'Yes' : 'No'))
-          .onClick(() => {
-            this.showInSubwindow = !this.showInSubwindow
-          })
+          Button(this.subwindowDisplay + (this.showInSubwindow ? this.subwindow : this.nonSubwindow))
+            .onClick(() => {
+              this.showInSubwindow = !this.showInSubwindow
+            })
 
-        Button('Hover Mode: ' + this.enableHoverMode)
-          .onClick(() => {
-            if (this.enableHoverMode == undefined) {
-              this.enableHoverMode = true
-            } else if (this.enableHoverMode == true) {
-              this.enableHoverMode = false
-            } else {
-              this.enableHoverMode = undefined
-            }
-          })
+          Button(this.hoverModeStart + this.enableHoverMode)
+            .onClick(() => {
+              if (this.enableHoverMode === undefined) {
+                this.enableHoverMode = true
+              } else if (this.enableHoverMode === true) {
+                this.enableHoverMode = false
+              } else {
+                this.enableHoverMode = undefined
+              }
+            })
+        }
+
+        Row() {
+          Button('Popup')
+            .id('Popup')
+            .fontWeight(FontWeight.Bold)
+            .bindPopup(this.isShow, {
+              message: 'popup',
+              enableHoverMode: this.enableHoverMode,
+              showInSubWindow: this.showInSubwindow,
+            })
+            .onClick(() => {
+              this.isShow = !this.isShow
+            })
+        }
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .margin({
+          top: this.index === 2 ? 330 : this.index === 1 ? 50 : 0,
+          bottom: this.index === 0 ? 330 : 0
+        })
       }
-
-      Row() {
-        Button('Popup')
-          .fontWeight(FontWeight.Bold)
-          .bindPopup(this.isShow, {
-            message: 'popup',
-            enableHoverMode: this.enableHoverMode,
-            showInSubWindow: this.showInSubwindow,
-          })
-          .onClick(() => {
-            this.isShow = !this.isShow
-          })
-      }
-      .alignRules({
-        center: { anchor: '__container__', align: VerticalAlign.Center },
-        middle: { anchor: '__container__', align: HorizontalAlign.Center }
-      })
-      .margin({
-        top: this.index == 2 ? 330 : this.index == 1 ? 50 : 0,
-        bottom: this.index == 0 ? 330 : 0
-      })
+      .height('100%')
+      .width('100%')
     }
-    .height('100%')
-    .width('100%')
+    // ···
   }
 }
 ```

@@ -51,7 +51,7 @@
 
 ### ScsiPeripheral_DdkErrCode
 
-```
+```c
 enum ScsiPeripheral_DdkErrCode
 ```
 
@@ -76,7 +76,7 @@ SCSI Peripheral DDK错误码。
 
 ### ScsiPeripheral_Status
 
-```
+```c
 enum ScsiPeripheral_Status
 ```
 

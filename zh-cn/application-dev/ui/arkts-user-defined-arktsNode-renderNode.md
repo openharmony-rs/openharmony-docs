@@ -78,7 +78,7 @@ export struct OperationNodeTree {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Row() {
         NodeContainer(this.myNodeController)
           .width(200)
@@ -97,10 +97,9 @@ export struct OperationNodeTree {
           });
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## 设置和获取渲染相关属性
@@ -163,42 +162,53 @@ export struct RenderingProperties {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
         Column() {
           NodeContainer(this.myNodeController);
         };
 
+        // 设置RenderNode的位置
         Button('position')
           .width(300)
           .onClick(() => {
             renderNode.position = { x: 10, y: 10 };
             hilog.info(DOMAIN, TEST_TAG, ' position:' + JSON.stringify(renderNode.position));
           });
+
+        // 设置RenderNode的轴心
         Button('pivot')
           .width(300)
           .onClick(() => {
             renderNode.pivot = { x: 0.5, y: 0.6 };
             hilog.info(DOMAIN, TEST_TAG, ' pivot:' + JSON.stringify(renderNode.pivot));
           });
+
+        // 修改RenderNode的缩放比例
         Button('scale')
           .width(300)
           .onClick(() => {
             renderNode.scale = { x: 0.5, y: 1 };
             hilog.info(DOMAIN, TEST_TAG, ' scale:' + JSON.stringify(renderNode.scale));
           });
+
+        // 设置RenderNode的平移量
         Button('translation')
           .width(300)
           .onClick(() => {
             renderNode.translation = { x: 100, y: 0 };
             hilog.info(DOMAIN, TEST_TAG, ' translation:' + JSON.stringify(renderNode.translation));
           });
+
+        // 设置RenderNode的旋转角度
         Button('rotation')
           .width(300)
           .onClick(() => {
             renderNode.rotation = { x: 45, y: 0, z: 0 };
             hilog.info(DOMAIN, TEST_TAG, ' rotation:' + JSON.stringify(renderNode.rotation));
           });
+
+        // 设置RenderNode的变换矩阵
         Button('transform')
           .width(300)
           .onClick(() => {
@@ -210,10 +220,12 @@ export struct RenderingProperties {
             ];
             hilog.info(DOMAIN, TEST_TAG, ' transform:' + JSON.stringify(renderNode.transform));
           });
+
+        // 设置RenderNode的阴影属性
         Button('shadow')
           .width(300)
           .onClick(() => {
-            renderNode.shadowElevation = 10;
+            renderNode.shadowElevation = 10; // 设置阴影的光照高度
             renderNode.shadowColor = 0XFF00FF00;
             renderNode.shadowOffset = { x: 10, y: 10 };
             renderNode.shadowAlpha = 0.1;
@@ -222,6 +234,8 @@ export struct RenderingProperties {
             hilog.info(DOMAIN, TEST_TAG, ' shadowOffset:' + JSON.stringify(renderNode.shadowOffset));
             hilog.info(DOMAIN, TEST_TAG, ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
           });
+
+        // 设置RenderNode的阴影模糊半径
         Button('shadowRadius')
           .width(300)
           .onClick(() => {
@@ -232,6 +246,8 @@ export struct RenderingProperties {
             hilog.info(DOMAIN, TEST_TAG, ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
             hilog.info(DOMAIN, TEST_TAG, ' shadowRadius:' + JSON.stringify(renderNode.shadowRadius));
           });
+
+        // 设置RenderNode的边框样式
         Button('border')
           .width(300)
           .onClick(() => {
@@ -264,12 +280,16 @@ export struct RenderingProperties {
             hilog.info(DOMAIN, TEST_TAG, ' borderColor:' + JSON.stringify(renderNode.borderColor));
             hilog.info(DOMAIN, TEST_TAG, ' borderRadius:' + JSON.stringify(renderNode.borderRadius));
           })
+
+        // 设置RenderNode的遮罩
         Button('shapeMask')
           .width(300)
           .onClick(() => {
             renderNode.shapeMask = mask;
             hilog.info(DOMAIN, TEST_TAG, ' shapeMask:' + JSON.stringify(renderNode.shapeMask));
           });
+
+        // 设置RenderNode的剪裁形状
         Button('shapeClip')
           .width(300)
           .onClick(() => {
@@ -286,10 +306,9 @@ export struct RenderingProperties {
       .width('100%')
       .height('100%');
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## 自定义绘制
@@ -378,7 +397,7 @@ export struct CustomDraw {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Column() {
         NodeContainer(this.myNodeController)
           .width('100%');
@@ -391,10 +410,9 @@ export struct CustomDraw {
           });
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## 调整自定义绘制Canvas的变换矩阵
@@ -533,7 +551,7 @@ export struct CustomDrawCanvas {
   myNodeController1: MyNodeController1 = new MyNodeController1();
 
   build() {
-    // ···
+    // ...
       Row() {
         Column() {
           NodeContainer(this.myNodeController)
@@ -548,10 +566,9 @@ export struct CustomDrawCanvas {
         .width('45%');
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ![RenderNode-canvas](./figures/renderNode-canvas.png)
@@ -719,15 +736,14 @@ export struct CustomDrawCanvasNative {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Row() {
         NodeContainer(this.myNodeController);
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## 设置标签
@@ -772,7 +788,7 @@ export struct SetLabel {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Column() {
         NodeContainer(this.myNodeController)
           .width(300)
@@ -780,10 +796,9 @@ export struct SetLabel {
           .backgroundColor(Color.Gray);
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## 查询当前RenderNode是否解除引用
@@ -837,7 +852,7 @@ export struct CheckRanderNodeDisposed {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Column({ space: 4 }) {
         NodeContainer(this.myNodeController);
         Button('RenderNode dispose')
@@ -859,8 +874,7 @@ export struct CheckRanderNodeDisposed {
       .width('100%')
       .height('100%');
 
-    // ···
+      // ...
   }
 }
-
 ```

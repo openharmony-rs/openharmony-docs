@@ -2,12 +2,12 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
-typedef struct OHNativeWindow OHNativeWindow
+```c
+typedef struct NativeWindow OHNativeWindow
 ```
 
 ## 概述

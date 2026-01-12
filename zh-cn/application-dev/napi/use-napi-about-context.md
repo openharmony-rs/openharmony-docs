@@ -35,7 +35,7 @@
 
 如果上下文环境不一致，这些NAPI接口会将当前的运行时环境切换成接口参数指定的上下文环境。
 
-当然不涉及主动切换上下文环境的接口意味着这部分接口和运行时上下文无关，使用任意一个有效的上下文环境都行正常执行。
+当然不涉及主动切换上下文环境的接口意味着这部分接口和运行时上下文无关，使用任意一个有效的上下文环境都能正常执行。
 
 | 接口 | 是否会主动进行上下文切换 |
 | -------- | -------- |
@@ -68,7 +68,7 @@
 |napi_ref_threadsafe_function | 否 |
 |napi_add_async_cleanup_hook | 否 |
 |napi_remove_async_cleanup_hook | 否 |
-node_api_get_module_file_name | 否 |
+|node_api_get_module_file_name | 否 |
 |napi_get_last_error_info | 否 |
 |napi_get_undefined | 否 |
 |napi_get_null | 否 |
@@ -199,6 +199,13 @@ node_api_get_module_file_name | 否 |
 |napi_delete_serialization_data | 否 |
 |napi_call_threadsafe_function_with_priority | 否 |
 |napi_wrap_enhance | 是 |
+|napi_open_critical_scope | 否 |
+|napi_close_critical_scope | 否 |
+|napi_get_buffer_string_utf16_in_critical_scope | 否 |
+|napi_create_strong_reference | 否 |
+|napi_delete_strong_reference | 否 |
+|napi_get_strong_reference_value | 否 |
+|napi_throw_business_error | 是 |
 
 ## 不支持多运行时上下文环境调用的NAPI接口
 | 接口 | 多运行时上下文环境调用返回值 |
@@ -352,7 +359,7 @@ node_api_get_module_file_name | 否 |
 
 - 编译配置
 1. CMakeLists.txt文件需要按照如下配置
-    ```
+    ```txt
     // CMakeLists.txt
     # the minimum version of CMake.
     cmake_minimum_required(VERSION 3.5.0)

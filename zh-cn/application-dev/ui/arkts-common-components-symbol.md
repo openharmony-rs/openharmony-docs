@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -165,7 +165,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   ``` TypeScript
   Row() {
     Column() {
-      // 'app.string.single_color'资源文件中的value值为"单色"
+      // 请将$r('app.string.single_color')替换为实际资源文件，在本示例中该资源文件的value值为"单色"
       Text($r('app.string.single_color'));
       Text() {
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
@@ -176,7 +176,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
     }
   
     Column() {
-      // 'app.string.multi_color'资源文件中的value值为"多色"
+      // 请将$r('app.string.multi_color')替换为实际资源文件，在本示例中该资源文件的value值为"多色"
       Text($r('app.string.multi_color'));
       Text() {
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
@@ -187,7 +187,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
     }
   
     Column() {
-      // 'app.string.hierarchical'资源文件中的value值为"分层"
+      // 请将$r('app.string.hierarchical')替换为实际资源文件，在本示例中该资源文件的value值为"分层"
       Text($r('app.string.hierarchical'));
       Text() {
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
@@ -208,7 +208,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   ``` TypeScript
   Row() {
     Column() {
-      // 'app.string.no_action'资源文件中的value值为"无动效"
+      // 请将$r('app.string.no_action')替换为实际资源文件，在本示例中该资源文件的value值为"无动效"
       Text($r('app.string.no_action'));
       Text() {
         SymbolSpan($r('sys.symbol.ohos_wifi'))
@@ -218,7 +218,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
     }
   
     Column() {
-      // 'app.string.overall_scaling_animation_effect'资源文件中的value值为"整体缩放动效"
+      // 请将$r('app.string.overall_scaling_animation_effect')替换为实际资源文件，在本示例中该资源文件的value值为"整体缩放动效"
       Text($r('app.string.overall_scaling_animation_effect'));
       Text() {
         SymbolSpan($r('sys.symbol.ohos_wifi'))
@@ -228,7 +228,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
     }
   
     Column() {
-      // 'app.string.hierarchical_animation'资源文件中的value值为"层级动效"
+      // 请将$r('app.string.hierarchical_animation')替换为实际资源文件，在本示例中该资源文件的value值为"层级动效"
       Text($r('app.string.hierarchical_animation'));
       Text() {
         SymbolSpan($r('sys.symbol.ohos_wifi'))
@@ -261,13 +261,13 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   
   ``` TypeScript
   Column() {
-    // 'app.string.variable_color_animation'资源文件中的value值为"可变颜色动效"
+    // 请将$r('app.string.variable_color_animation')替换为实际资源文件，在本示例中该资源文件的value值为"可变颜色动效"
     Text($r('app.string.variable_color_animation'));
     SymbolGlyph($r('sys.symbol.ohos_wifi'))
       .fontSize(96)
       .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
-    // 'app.string.off'资源文件中的value值为"关闭"
-    // 'app.string.on'资源文件中的value值为"播放"
+    // 请将$r('app.string.off')替换为实际资源文件，在本示例中该资源文件的value值为"关闭"
+    // 请将$r('app.string.on')替换为实际资源文件，在本示例中该资源文件的value值为"播放"
     Button(this.isActive ? $r('app.string.off') : $r('app.string.on')).onClick(() => {
       this.isActive = !this.isActive;
     })
@@ -288,7 +288,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   
   ``` TypeScript
   Column() {
-    // 'app.string.bounce_animation'资源文件中的value值为"弹跳动效"
+    // 请将$r('app.string.bounce_animation')替换为实际资源文件，在本示例中该资源文件的value值为"弹跳动效"
     Text($r('app.string.bounce_animation'));
     SymbolGlyph($r('sys.symbol.ellipsis_message_1'))
       .fontSize(96)
@@ -317,7 +317,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   
   ``` TypeScript
   Column() {
-    // 'app.string.disable_animation'资源文件中的value值为"禁用动效"
+    // 请将$r('app.string.disable_animation')替换为实际资源文件，在本示例中该资源文件的value值为"禁用动效"
     Text($r('app.string.disable_animation'));
     SymbolGlyph(this.replaceFlag ? $r('sys.symbol.eye_slash') : $r('sys.symbol.eye'))
       .fontSize(96)
@@ -346,7 +346,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   
   ``` TypeScript
   Column() {
-    // 'app.string.quick_replacement_animation'资源文件中的value值为"快速替换动效"
+    // 请将$r('app.string.quick_replacement_animation')替换为实际资源文件，在本示例中该资源文件的value值为"快速替换动效"
     Text($r('app.string.quick_replacement_animation'));
     SymbolGlyph(this.replaceFlag ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
       .fontSize(96)
@@ -382,14 +382,14 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   
   ``` TypeScript
   Column() {
-    // 'app.string.shadow_ability'资源文件中的value值为"阴影能力"
+    // 请将$r('app.string.shadow_ability')替换为实际资源文件，在本示例中该资源文件的value值为"阴影能力"
     Text($r('app.string.shadow_ability'));
     SymbolGlyph($r('sys.symbol.ohos_wifi'))
       .fontSize(96)
       .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), !this.isActive)
       .symbolShadow(this.options)
-    // 'app.string.off'资源文件中的value值为"关闭"
-    // 'app.string.on'资源文件中的value值为"播放"
+    // 请将$r('app.string.off')替换为实际资源文件，在本示例中该资源文件的value值为"关闭"
+    // 请将$r('app.string.on')替换为实际资源文件，在本示例中该资源文件的value值为"播放"
     Button(!this.isActive ? $r('app.string.off') : $r('app.string.on')).onClick(() => {
       this.isActive = !this.isActive;
     })
@@ -415,7 +415,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   
   ``` TypeScript
   Column() {
-    // 'app.string.radial_gradient'资源文件中的value值为"径向渐变"
+    // 请将$r('app.string.radial_gradient')替换为实际资源文件，在本示例中该资源文件的value值为"径向渐变"
     Text($r('app.string.radial_gradient'))
       .fontSize(18)
       .fontColor(0xCCCCCC)
@@ -470,11 +470,11 @@ struct SymbolMusicDemo {
     [$r('sys.symbol.repeat'), $r('sys.symbol.repeat_1'), $r('sys.symbol.arrow_left_arrow_right')];
   @State symbolSourcesIndex: number = 0;
   @State symbolText: string[] = [
-    // 'app.string.play_in_order'资源文件中的value值为"顺序播放"
+    // 请将$r('app.string.play_in_order')替换为实际资源文件，在本示例中该资源文件的value值为"顺序播放"
     resourceGetString.resourceToString($r('app.string.play_in_order')),
-    // 'app.string.play_in_single_repeat'资源文件中的value值为"单曲循环"
+    // 请将$r('app.string.play_in_single_repeat')替换为实际资源文件，在本示例中该资源文件的value值为"单曲循环"
     resourceGetString.resourceToString($r('app.string.play_in_single_repeat')),
-    // 'app.string.shuffle_play'资源文件中的value值为"随机播放"
+    // 请将$r('app.string.shuffle_play')替换为实际资源文件，在本示例中该资源文件的value值为"随机播放"
     resourceGetString.resourceToString($r('app.string.shuffle_play')),
   ];
   @State symbolTextIndex: number = 0;
@@ -485,7 +485,7 @@ struct SymbolMusicDemo {
     Column({ space: 10 }) {
       Row() {
         Text() {
-          // 'app.string.current_playlist'资源文件中的value值为"当前播放列表"
+          // 请将$r('app.string.current_playlist')替换为实际资源文件，在本示例中该资源文件的value值为"当前播放列表"
           Span(resourceGetString.resourceToString($r('app.string.current_playlist')))
             .fontSize(20)
             .fontWeight(FontWeight.Bolder)
@@ -541,7 +541,7 @@ struct SymbolMusicDemo {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          // 'app.string.song'资源文件中的value值为"歌曲一"
+          // 请将$r('app.string.song')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲一"
           Text($r('app.string.song'))
         }.width('82%')
 
@@ -558,7 +558,7 @@ struct SymbolMusicDemo {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          // 'app.string.song_again'资源文件中的value值为"歌曲二"
+          // 请将$r('app.string.song_again')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲二"
           Text($r('app.string.song_again'))
         }.width('82%')
 
@@ -575,7 +575,7 @@ struct SymbolMusicDemo {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          // 'app.string.again_song'资源文件中的value值为"歌曲三"
+          // 请将$r('app.string.again_song')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲三"
           Text($r('app.string.again_song'))
         }.width('82%')
 
@@ -592,7 +592,7 @@ struct SymbolMusicDemo {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          // 'app.string.song_repeat'资源文件中的value值为"歌曲四"
+          // 请将$r('app.string.song_repeat')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲四"
           Text($r('app.string.song_repeat'))
         }.width('82%')
 
@@ -609,7 +609,7 @@ struct SymbolMusicDemo {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          // 'app.string.repeat_song'资源文件中的value值为"歌曲五"
+          // 请将$r('app.string.repeat_song')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲五"
           Text($r('app.string.repeat_song'))
         }.width('82%')
 
@@ -626,7 +626,7 @@ struct SymbolMusicDemo {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          // 'app.string.song_play'资源文件中的value值为"歌曲六"
+          // 请将$r('app.string.song_play')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲六"
           Text($r('app.string.song_play'))
         }.width('82%')
 
@@ -643,7 +643,7 @@ struct SymbolMusicDemo {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          // 'app.string.play_song'资源文件中的value值为"歌曲七"
+          // 请将$r('app.string.play_song')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲七"
           Text($r('app.string.play_song'))
         }.width('82%')
 
@@ -659,7 +659,7 @@ struct SymbolMusicDemo {
 
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Column() {
-        // 'app.string.off'资源文件中的value值为"关闭"
+        // 请将$r('app.string.off')替换为实际资源文件，在本示例中该资源文件的value值为"关闭"
         Text($r('app.string.off'))
       }
       .alignItems(HorizontalAlign.Center)

@@ -6,8 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Implements a **NativeMediaPlayerHandler** object used as a parameter of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback.
-The application uses this object to report the player status to the ArkWeb engine.
+Implements a **NativeMediaPlayerHandler** object used as a parameter of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback. The application uses this object to report the player status to the ArkWeb engine.
 
 > **NOTE**
 >
@@ -15,9 +14,9 @@ The application uses this object to report the player status to the ArkWeb engin
 >
 > - The initial APIs of this interface are supported since API version 12.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
-## handleStatusChanged<sup>12+<sup>
+## handleStatusChanged<sup>12+</sup>
 
 handleStatusChanged(status: PlaybackStatus): void
 
@@ -35,7 +34,7 @@ Called to notify the ArkWeb engine of the playback status of the player when the
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## handleVolumeChanged<sup>12+<sup>
+## handleVolumeChanged<sup>12+</sup>
 
 handleVolumeChanged(volume: number): void
 
@@ -53,7 +52,7 @@ Called to notify the ArkWeb engine of the volume of the player when the volume c
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## handleMutedChanged<sup>12+<sup>
+## handleMutedChanged<sup>12+</sup>
 
 handleMutedChanged(muted: boolean): void
 
@@ -71,7 +70,7 @@ Called to notify the ArkWeb engine of the muted status of the player when the mu
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## handlePlaybackRateChanged<sup>12+<sup>
+## handlePlaybackRateChanged<sup>12+</sup>
 
 handlePlaybackRateChanged(playbackRate: number): void
 
@@ -89,7 +88,7 @@ Called to notify the ArkWeb engine of the playback rate of the player when the p
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## handleDurationChanged<sup>12+<sup>
+## handleDurationChanged<sup>12+</sup>
 
 handleDurationChanged(duration: number): void
 
@@ -107,7 +106,7 @@ Called to notify the ArkWeb engine of the total duration of the media.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## handleTimeUpdate<sup>12+<sup>
+## handleTimeUpdate<sup>12+</sup>
 
 handleTimeUpdate(currentPlayTime: number): void
 
@@ -125,7 +124,7 @@ Called to notify the ArkWeb engine of the playback progress when the playback pr
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## handleBufferedEndTimeChanged<sup>12+<sup>
+## handleBufferedEndTimeChanged<sup>12+</sup>
 
 handleBufferedEndTimeChanged(bufferedEndTime: number): void
 
@@ -143,7 +142,7 @@ Called to notify the ArkWeb engine of the buffer time when the buffer time chang
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## handleEnded<sup>12+<sup>
+## handleEnded<sup>12+</sup>
 
 handleEnded(): void
 
@@ -155,7 +154,7 @@ Called to notify the ArkWeb engine that the media playback ends.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## handleNetworkStateChanged<sup>12+<sup>
+## handleNetworkStateChanged<sup>12+</sup>
 
 handleNetworkStateChanged(state: NetworkState): void
 
@@ -173,7 +172,7 @@ Called to notify the ArkWeb engine of the network status of the player when the 
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## handleReadyStateChanged<sup>12+<sup>
+## handleReadyStateChanged<sup>12+</sup>
 
 handleReadyStateChanged(state: ReadyState): void
 
@@ -191,7 +190,7 @@ Called to notify the ArkWeb engine of the cache status of the player when the ca
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## handleFullscreenChanged<sup>12+<sup>
+## handleFullscreenChanged<sup>12+</sup>
 
 handleFullscreenChanged(fullscreen: boolean): void
 
@@ -209,7 +208,7 @@ Called to notify the ArkWeb engine of the full screen status of the player when 
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## handleSeeking<sup>12+<sup>
+## handleSeeking<sup>12+</sup>
 
 handleSeeking(): void
 
@@ -221,7 +220,7 @@ Called to notify the ArkWeb engine that the player enters the seek state.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## handleSeekFinished<sup>12+<sup>
+## handleSeekFinished<sup>12+</sup>
 
 handleSeekFinished(): void
 
@@ -233,7 +232,7 @@ Called to notify the ArkWeb engine that the seek operation is complete.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## handleError<sup>12+<sup>
+## handleError<sup>12+</sup>
 
 handleError(error: MediaError, errorMessage: string): void
 
@@ -252,7 +251,7 @@ Called to notify the ArkWeb engine that an error occurs with the player.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## handleVideoSizeChanged<sup>12+<sup>
+## handleVideoSizeChanged<sup>12+</sup>
 
 handleVideoSizeChanged(width: number, height: number): void
 

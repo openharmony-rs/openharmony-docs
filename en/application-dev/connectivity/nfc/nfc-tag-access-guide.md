@@ -236,6 +236,15 @@ export default class EntryAbility extends UIAbility {
 3. Obtain an NFC tag object of the specific technology type.
 4. Read and write the tag data.
 
+To enable NFC tags to be read without starting an application, declare NFC-related attributes in the **module.json5** file.
+
+> **NOTE**
+>
+>1. The **actions** field must contain **ohos.nfc.tag.action.TAG_FOUND** and cannot be changed.
+>2. The **type** field under **uris** must start with **tag-tech/**, followed by NfcA, NfcB, NfcF, NfcV, IsoDep, Ndef, MifareClassic, MifareUL, or NdefFormatable. If there are multiple types, enter them in different lines. Incorrect setting will cause a parsing failure.
+>3. The **name** field of **requestPermissions** is mandatory. It must be **ohos.permission.NFC_TAG** and cannot be changed.
+>4. Wearable devices do not support reading NFC tags without starting an application.
+
 ```ts
     "abilities": [
       {

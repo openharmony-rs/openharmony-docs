@@ -22,7 +22,7 @@
 
 ### 添加事件观察者
 
-以实现对发生主线程超时场景生成的主线程超时事件订阅为例，说明开发步骤。
+以主线程超时事件订阅为例，说明开发步骤。
 
 1. 新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
 
@@ -32,7 +32,7 @@
     import { fileIo as fs } from '@kit.CoreFileKit';
    ```
 
-2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，可在onCreate、onForeground等其他接口中添加系统事件的订阅（结合业务需求，在合适的位置添加订阅方法），示例代码如下：
+2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，可在onCreate、onForeground等生命周期接口中添加系统事件的订阅（结合业务需求，在合适的位置添加订阅方法），示例代码如下：
 
    ```ts
     hiAppEvent.addWatcher({
@@ -195,11 +195,11 @@
 
 5. 该步骤可用于模拟主线程超时采样trace事件。
 
-   编辑工程中的“entry > src > main > ets  > pages> Index.ets”文件，添加按钮并在其onClick函数触发主线程超时采集trace功能，具体如下：
+   编辑工程中的“entry > src > main > ets > pages> Index.ets”文件，添加按钮并在其onClick函数触发主线程超时采集trace功能，具体如下：
 
    > **注意：**
    >
-   > 启动主线程超时检测抓取trace的功能的前提是开发者使用nolog版本并且关闭开发者模式。
+   > 启动主线程超时检测抓取trace的功能的前提是开发者使用[nolog版本](performance-analysis-kit-terminology.md#nolog版本)并且关闭开发者模式。
 
    ```ts
      @Entry
@@ -228,7 +228,15 @@
 
 6. 点击DevEco Studio界面中的运行按钮，运行应用工程。
 
-  由于主线程超时触发的条件是连续两次检测到超时事件后，才会开启采集堆栈，因此用户可以多次尝试：连续快速点击两次触发超时的按钮，触发主线程超时事件。
+   > **注意：**
+   >
+   > 默认情况下，由于应用启动过程本身较为耗时，系统将在**应用启动10s后再进行测试，开始主线程超时事件检测**；
+   >
+   > 若开发者使用setEventConfig接口设置自定义设置采样栈参数，系统将**在开发者设定的ignore_startup_time时间后，开始主线程超时事件检测**。
+
+   主线程超时触发的条件：在检测任务的间隔内，检测到连续两次超时事件后，才会开启采集堆栈。
+  
+   用户可以连续快速点击2~3次触发超时的按钮，以触发主线程超时事件。
 
 ### 验证观察者是否订阅到主线程超时事件
 

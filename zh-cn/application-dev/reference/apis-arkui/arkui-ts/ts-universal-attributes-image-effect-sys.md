@@ -6,15 +6,15 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件与下方画布已有内容进行混合的图像效果。
+本模块提供设置组件的模糊、阴影、球面效果以及设置图片的图像效果等相关接口。
 
 > **说明：**
 >
-> 本模块首批接口从API version 13开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[图像效果](ts-universal-attributes-image-effect.md)。
 
-## advancedBlendMode
+## advancedBlendMode<sup>13+</sup>
 
 advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 
@@ -31,7 +31,7 @@ advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 | 参数名 | 类型                            | 必填 | 说明                                                         |
 | ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
 | effect  | [BlendMode](ts-universal-attributes-image-effect.md#blendmode11枚举说明)&nbsp;\|&nbsp;[Blender](../../apis-arkgraphics2d/js-apis-uiEffect-sys.md#blender13)  | 是   | 入参类型为BlendMode时表示混合模式。<br/>默认值：BlendMode.NONE <br/>入参类型为Blender时表示混合器类型，用于描述混合效果。<br/>需要使用uiEffect模块中的方法创建Blender实例。例如：[uiEffect.createBrightnessBlender](../../apis-arkgraphics2d/js-apis-uiEffect-sys.md#uieffectcreatebrightnessblender)。使用自定义object作为入参不会生效。  |
-| type   | [BlendApplyType](ts-universal-attributes-image-effect.md#blendapplytype11枚举说明)  |    否    | blendMode实现方式是否离屏。<br/>默认值：BlendApplyType.FAST<br/>**说明：**<br/>1. 设置BlendApplyType.FAST时，不离屏。<br/>2. 设置BlendApplyType.OFFSCREEN时，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。<br/>3. 不离屏情况下对文字类组件中emoji表情不生效。     |
+| type   | [BlendApplyType](ts-universal-attributes-image-effect-sys.md#blendapplytype枚举说明)  |    否    | blendMode实现方式是否离屏。<br/>默认值：BlendApplyType.FAST<br/>**说明：**<br/>1. 设置为BlendApplyType.FAST，不离屏。<br/>2. 设置为BlendApplyType.OFFSCREEN，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。<br/>3. 不离屏情况下对文字类组件中emoji表情不生效。<br/>4. 相比BlendApplyType.OFFSCREEN，设置为BlendApplyType.OFFSCREEN_WITH_BACKGROUND，系统在创建与当前组件大小一致的离屏画布时，会先复制一份带有背景的画布作为初始化底色（BlendApplyType.OFFSCREEN类型的画布初始为透明背景），随后在此基础上进行混合操作。两者在其他功能特性上保持一致。     |
 
 **返回值：**
 
@@ -39,7 +39,90 @@ advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 | -------- | -------- |
 | T | 返回当前组件。 |
 
+## BlendApplyType枚举说明
+
+标识如何将指定的混合模式应用于视图的内容。
+
+**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称           | 值   | 说明                                                             |
+| ---------------| ------ | ---------------------------------------------------------------- |
+| OFFSCREEN_WITH_BACKGROUND<sup>23+</sup> | 2 |创建离屏画布时，先拷贝一份背景初始化画布，再将此组件和子组件内容绘制到离屏画布上，然后整体进行混合。 <br> **系统接口：** 此接口为系统接口。 |
+
+## excludeFromRenderGroup<sup>22+</sup>
+
+excludeFromRenderGroup(exclude: boolean \| undefined): T
+
+设置当前组件和其子组件是否从祖先组件的节点组中剔除。需搭配祖先组件设置节点组[renderGroup](./ts-universal-attributes-image-effect.md#rendergroup18)属性使用，单独使用无效果。
+
+从节点组剔除后，当前组件和子组件不再影响祖先组件的离屏画布，不会引起节点组的缓存失效，从而达到复用节点组缓存的目的。如果当前组件的显示区域只占节点组绘制内容显示区域的一部分，且当前组件及子组件的显示效果频繁更新，设置excludeFromRenderGroup属性有助于绘制性能优化。
+
+不设置该属性时，默认当前组件和其子组件不从祖先组件的节点组中剔除。
+
+> **说明：**
+>
+> 设置excludeFromRenderGroup为true的组件及其子组件的绘制内容不能超过该组件本身的边界范围，否则会出现显示内容被裁剪的问题。例如当子组件通过[translate](./ts-universal-attributes-transformation.md#translate)或[scale](./ts-universal-attributes-transformation.md#scale)等属性导致子组件超出当前组件范围，或当前组件上有[shadow](./ts-universal-attributes-image-effect.md#shadow)、[pixelStretchEffect](./ts-universal-attributes-image-effect.md#pixelstretcheffect12)等属性导致当前组件的绘制内容超出组件边界时，可能出现显示内容被裁剪的问题。此类场景不应设置excludeFromRenderGroup属性为true。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：** 
+
+| 参数名  | 类型               | 必填 | 说明                                                         |
+| ------- | ------------------ | ---- | ------------------------------------------------------------ |
+| exclude | boolean \| undefined | 是   | 设置当前组件及其子组件是否从祖先组件的节点组中剔除。<br/>true表示当前组件及其子组件从祖先组件的节点组中剔除，不属于祖先组件的节点组；false表示当前组件及其子组件归属于祖先组件的节点组。<br/>当exclude的值为undefined时，按false处理。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
+## systemMaterial<sup>23+</sup>
+
+systemMaterial(material: SystemUiMaterial | undefined): T
+
+设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。使用示例请参考[设置系统材质](../arkts-apis-uimaterial-sys.md#示例1设置系统材质)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：** 
+
+| 参数名 | 类型                            | 必填 | 说明                                                         |
+| ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
+| material  | [SystemUiMaterial](#systemuimaterial23) &nbsp;\|&nbsp; undefined  | 是   | 组件的系统材质对象。设置为undefined时恢复为无材质的效果。  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
+## SystemUiMaterial<sup>23+</sup>
+
+type SystemUiMaterial = uiMaterial.Material
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+| 类型                              | 说明           |
+| --------------------------------- | -------------- |
+| [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material)     | 系统材质对象。 |
+
 ## 示例
+### 示例1（设置组件提亮）
 
 该示例主要通过advancedBlendMode给组件添加提亮效果。
 
@@ -101,3 +184,122 @@ struct Index {
 效果图如下：
 
 ![advancedBlendMode](figures/advancedBlendMode.jpg)
+
+### 示例2（设置节点组剔除属性）
+
+该示例演示在组件的属性动画场景下，如何通过使用节点组剔除属性[excludeFromRenderGroup](#excludefromrendergroup22)，避免节点组缓存反复失效。
+
+从API version 22开始，新增[excludeFromRenderGroup](#excludefromrendergroup22)属性。
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct ExcludeFromRenderGroupDemo {
+  readonly color1: ResourceColor = '#2787d9';
+  readonly color2: ResourceColor = '#ffc000';
+  @State myColor: ResourceColor = this.color1;
+  @State isExcluded: boolean = false;
+  animationCnt: number = 0;
+
+  build() {
+    Column() {
+      Column({ space: 10 }) {
+        Column()
+          .width(100)
+          .height(100)
+          .backgroundColor(this.myColor)
+          .excludeFromRenderGroup(this.isExcluded)// 设置excludeFromRenderGroup属性。该组件做背景色动画时，实际显示效果需频繁更新属性，且该组件区域只占节点组区域的一部分，因此设置excludeFromRenderGroup属性以复用节点组缓存
+          .onClick(() => {
+            this.isExcluded = true; // 在播放动画前，修改节点组剔除属性为true
+            this.animationCnt++;
+            this.getUIContext().animateTo({
+              duration: 600,
+              onFinish: () => {
+                this.animationCnt--;
+                if (this.animationCnt == 0) { // animationCnt变为0表示所有动画都结束
+                  this.isExcluded = false; // 在组件动画结束后，组件上不再发生属性变化时，可以重置节点组剔除属性
+                }
+              }
+            }, () => {
+              this.myColor = (this.myColor === this.color1) ? this.color2 : this.color1;
+            })
+          })
+        // 节点组内的其他组件
+        Image($r('app.media.bg1'))// $r('app.media.bg1')需要替换为开发者所需的图像资源文件
+          .width(100)
+          .height(100)
+        Image($r('app.media.bg1'))// $r('app.media.bg1')需要替换为开发者所需的图像资源文件
+          .width(100)
+          .height(100)
+      }.renderGroup(true)
+      .width('100%')
+      .height('70%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+![excludeFromRenderGroup](figures/excludeFromRenderGroup.gif)
+
+### 示例3（设置组件提亮并渐隐）
+
+从API version 23开始，该示例主要演示如何通过advancedBlendMode给组件同时添加提亮和渐隐效果。
+
+```ts
+// xxx.ets
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+// uiEffect.createBrightnessBlender创建BrightnessBlender实例用于给组件添加提亮效果
+let blender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
+  cubicRate: 0.5,
+  quadraticRate: 0.5,
+  linearRate: 0.5,
+  degree: 0.5,
+  saturation: 0.5,
+  positiveCoefficient: [2.3, 4.5, 2.0],
+  negativeCoefficient: [0.5, 2.0, 0.5],
+  fraction: 0.3
+});
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Stack() {
+        Column() {
+          Text(String.fromCodePoint(0x1F600) + ' BlendApplyType OFFSCREEN WITH BACKGROUND ' +
+          String.fromCodePoint(0x1F600))
+            .fontSize(35)
+            .fontColor(Color.Black)
+        }
+        .advancedBlendMode(blender, BlendApplyType.FAST)
+
+        Column()
+          .width('100%')
+          .height('100%')
+          .linearGradient({
+            direction: GradientDirection.Right,
+            colors: [
+              [Color.Transparent, 0.0],
+              [Color.Black, 0.50],
+              [Color.Black, 0.55],
+              [Color.Transparent, 1.0]
+            ]
+          })
+          .blendMode(BlendMode.DST_IN, BlendApplyType.FAST)
+      }
+      .advancedBlendMode(BlendMode.SRC_OVER, BlendApplyType.OFFSCREEN_WITH_BACKGROUND)
+      .width('100%')
+      .height('20%')
+    }
+    .backgroundColor('rgb(254, 238, 239)')
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![advancedBlendMode2](figures/advancedBlendMode2.jpg)

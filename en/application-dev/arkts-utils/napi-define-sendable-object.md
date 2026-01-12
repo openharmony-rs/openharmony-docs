@@ -41,6 +41,9 @@ The following demonstrates how to implement shared data access across concurrent
     include_directories(${NATIVERENDER_ROOT_PATH}
                         ${NATIVERENDER_ROOT_PATH}/include)
 
+    add_definitions("-DLOG_DOMAIN=0x0000")
+    add_definitions("-DLOG_TAG=\"testTag\"")
+
     add_library(entry SHARED napi_init.cpp)
     target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
     ```
@@ -80,10 +83,6 @@ The following demonstrates how to implement shared data access across concurrent
     void MyObject::Destructor(napi_env env, void *nativeObject, [[maybe_unused]] void *finalize_hint)
     {
         OH_LOG_INFO(LOG_APP, "MyObject::Destructor called");
-        if (g_ref != nullptr) {
-            napi_delete_reference(env, g_ref);
-            g_ref = nullptr;
-        }
         reinterpret_cast<MyObject *>(nativeObject)->~MyObject();
     }
 

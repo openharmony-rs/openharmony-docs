@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Curves** module provides APIs for interpolation calculation to create step, cubic Bezier, and spring curves.
 
@@ -45,8 +45,6 @@ Implements initialization for the interpolation curve, which is used to create a
 ## Curve
 
 Defines an interpolation curve. For details about the curves and animations, see <!--RP1-->[Bezier Curve](../../../design/ux-design/animation-attributes.md)<!--RP1End-->.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -121,9 +119,9 @@ Creates a cubic Bezier curve, with x-coordinates automatically normalized betwee
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| x1     | number | Yes  | X coordinate of the first point on the Bezier curve.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is handed as **0**. A value greater than 1 is handed as **1**.|
+| x1     | number | Yes  | X coordinate of the first point on the Bezier curve.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**.|
 | y1     | number | Yes  | Y coordinate of the first point on the Bezier curve.<br>Value range: (-∞, +∞)         |
-| x2     | number | Yes  | X coordinate of the second point on the Bezier curve.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is handed as **0**. A value greater than 1 is handed as **1**.|
+| x2     | number | Yes  | X coordinate of the second point on the Bezier curve.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**.|
 | y2     | number | Yes  | Y coordinate of the second point on the Bezier curve.<br>Value range: (-∞, +∞)         |
 
 **Return value**
@@ -137,7 +135,7 @@ Creates a cubic Bezier curve, with x-coordinates automatically normalized betwee
 
 ```ts
 import { curves } from '@kit.ArkUI';
-curves.cubicBezierCurve(0.1, 0.0, 0.1, 1.0) // Create a cubic Bezier curve.
+curves.cubicBezierCurve(0.1, 0.0, 0.1, 1.0) // Create a cubic Bézier curve.
 ```
 
 
@@ -227,7 +225,7 @@ Creates a responsive spring animation curve. It is a special case of [springMoti
 | --------- | ------ | ---- | ----- |
 | response  | number | No   | See **response** in **springMotion**.<br>Default value: **0.15**<br>Unit: second<br>Value range: (0, +∞)<br>**NOTE**<br>If this parameter is set to a value less than or equal to 0, the default value **0.15** is used.|
 | dampingFraction      | number | No   | See **dampingFraction** in **springMotion**.<br>Default value: **0.86**<br>Unit: second<br>Value range: [0, +∞)<br>**NOTE**<br>A value less than 0 evaluates to the default value **0.86**.|
-| overlapDuration | number | No   | See **overlapDuration** in **springMotion**.<br>Default value: **0.25**<br>Unit: second<br>Value range: [0, +∞)<br>**NOTE**<br>A value less than 0 evaluates to the default value **0.25**.<br>**ResponsiveSpringMotion** is a special case of **springMotion**; only the default values are different. To apply custom settings for a spring animation, you are advised to use **springMotion**. When using **responsiveSpringMotion**, you are advised to retain the default settings.<br>The duration of the responsive spring animation depends on the **responsiveSpringMotion** parameters and the previous velocity, rather than the duration parameter in [animation](arkui-ts/ts-animatorproperty.md), [animateTo](arkui-ts/ts-explicit-animation.md), or [pageTransition](arkui-ts/ts-page-transition-animation.md). In addition, the interpolation cannot be obtained using the **interpolate** function of the curve.|
+| overlapDuration | number | No   | See **overlapDuration** in **springMotion**.<br>Default value: **0.25**<br>Unit: second<br>Value range: [0, +∞)<br>**NOTE**<br>A value less than 0 evaluates to the default value **0.25**.<br>**ResponsiveSpringMotion** is a special case of **springMotion**, with the only difference in the default values. To apply custom settings for a spring animation, you are advised to use **springMotion**. When using **responsiveSpringMotion**, you are advised to retain the default settings.<br>The duration of the responsive spring animation depends on the **responsiveSpringMotion** parameters and the previous velocity, rather than the duration parameter in [animation](arkui-ts/ts-animatorproperty.md), [animateTo](arkui-ts/ts-explicit-animation.md), or [pageTransition](arkui-ts/ts-page-transition-animation.md). In addition, the interpolation cannot be obtained using the **interpolate** function of the curve.|
 
 **Return value**
 
@@ -265,7 +263,7 @@ Creates an interpolating spring curve animated from 0 to 1. The actual animation
 
 | Type                          | Description            |
 | ---------------------------------- | ---------------- |
-| [ICurve](#icurve9) | Curve.<br>**NOTE**<br>The spring animation curve is physics-based. Its duration depends on the **interpolatingSpring** parameters, rather than the **duration** parameter in [animation](arkui-ts/ts-animatorproperty.md), [animateTo](arkui-ts/ts-explicit-animation.md), or [pageTransition](arkui-ts/ts-page-transition-animation.md). The time cannot be normalized. Therefore, the interpolation cannot be obtained using the [interpolate](#interpolate9) function of the curve.|
+| [ICurve](#icurve9) | Curve.<br>Note: The spring animation curve is physics-based. Its duration depends on the **interpolatingSpring** parameters, rather than the **duration** parameter in [animation](arkui-ts/ts-animatorproperty.md), [animateTo](arkui-ts/ts-explicit-animation.md), or [pageTransition](arkui-ts/ts-page-transition-animation.md). The time cannot be normalized. Therefore, the interpolation cannot be obtained using the [interpolate](#interpolate9) function of the curve.|
 
 **Example**
 
@@ -288,7 +286,7 @@ Creates a custom curve.
 
 | Name     | Type                        | Mandatory| Description                                                        |
 | ----------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| interpolate | (fraction: number) => number | Yes  | Custom interpolation callback.<br>**fraction**: input x value for interpolation when the animation starts. Value range: [0, 1]<br>The return value is the y value of the curve. Value range: [0, 1]<br>**NOTE**<br>If **fraction** is **0**, the return value **0** corresponds to the animation start point; any other return value means that the animation jumps at the start point.<br>If **fraction** is **1**, the return value **1** corresponds to the animation end point; any other return value means that the end value of the animation is not the value of the state variable, which will result in an effect of transition from that end value to the value of the state variable.|
+| interpolate | (fraction: number) => number | Yes  | Custom interpolation callback.<br>**fraction**: input x value for interpolation when the animation starts. Value range: [0, 1].<br>The return value is the y value of the curve. Value range: [0, 1].<br>**NOTE**<br>If **fraction** is **0**, the return value **0** corresponds to the animation start point; any other return value means that the animation jumps at the start point.<br>If **fraction** is **1**, the return value **1** corresponds to the animation end point; any other return value means that the end value of the animation is not the value of the state variable, which will result in an effect of transition from that end value to the value of the state variable.|
 
 **Return value**
 
@@ -346,7 +344,11 @@ let value: number = curveValue.interpolate(0.5) // Calculate the interpolation f
 init(curve?: Curve): string
 
 
-Implements initialization to create a curve. This API is deprecated since API version 9. You are advised to use [Curves.initCurve](#curvesinitcurve9) instead.
+Implements initialization for the interpolation curve, which is used to create an interpolation curve based on the input parameter.
+
+> **NOTE** 
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [Curves.initCurve](#curvesinitcurve9) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -368,7 +370,11 @@ Implements initialization to create a curve. This API is deprecated since API ve
 steps(count: number, end: boolean): string
 
 
-Creates a step curve. This API is deprecated since API version 9. You are advised to use [Curves.stepsCurve](#curvesstepscurve9) instead.
+Creates a step curve.
+
+> **NOTE** 
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [Curves.stepsCurve](#curvesstepscurve9) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -383,7 +389,7 @@ Creates a step curve. This API is deprecated since API version 9. You are advise
 
 | Type| Description|
 | -------- | -------- |
-| string | Step curve object.|
+| string | Steps curve object.|
 
 
 ## curves.cubicBezier<sup>(deprecated)</sup>
@@ -391,31 +397,38 @@ Creates a step curve. This API is deprecated since API version 9. You are advise
 cubicBezier(x1: number, y1: number, x2: number, y2: number): string
 
 
-Creates a cubic Bezier curve. The curve value must range from 0 to 1. This API is deprecated since API version 9. You are advised to use [Curves.cubicBezierCurve](#curvescubicbeziercurve9) instead.
+Creates a cubic Bézier curve. The curve values must be between 0 and 1.
+
+> **NOTE** 
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [Curves.cubicBezierCurve](#curvescubicbeziercurve9) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 | Name | Type    | Mandatory  | Description            |
 | ---- | ------ | ---- | -------------- |
-| x1   | number | Yes   | X coordinate of the first point on the Bezier curve.|
-| y1   | number | Yes   | Y coordinate of the first point on the Bezier curve.|
-| x2   | number | Yes   | X coordinate of the second point on the Bezier curve.|
-| y2   | number | Yes   | Y coordinate of the second point on the Bezier curve.|
+| x1   | number | Yes   | X coordinate of the first point on the Bézier curve.|
+| y1   | number | Yes   | Y coordinate of the first point on the Bézier curve.|
+| x2   | number | Yes   | X coordinate of the second point on the Bézier curve.|
+| y2   | number | Yes   | Y coordinate of the second point on the Bézier curve.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| string | Returns a cubic Bezier curve object.|
+| string | Cubic Bézier curve object.|
 
 
 ## curves.spring<sup>(deprecated)</sup>
 
 spring(velocity: number, mass: number, stiffness: number, damping: number): string
 
+Constructs a spring curve object.
 
-Creates a spring curve. This API is deprecated since API version 9. You are advised to use [Curves.springCurve](#curvesspringcurve9) instead.
+> **NOTE** 
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [Curves.springCurve](#curvesspringcurve9) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

@@ -40,7 +40,7 @@
 
 ### OH_NetStack_CertVerification()
 
-```
+```c
 uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, const struct NetStack_CertBlob *caCert)
 ```
 
@@ -68,7 +68,7 @@ uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, cons
 
 ### OH_NetStack_GetPinSetForHostName()
 
-```
+```c
 int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_CertificatePinning *pin)
 ```
 
@@ -96,7 +96,7 @@ int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_Certific
 
 ### OH_NetStack_GetCertificatesForHostName()
 
-```
+```c
 int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Certificates *certs)
 ```
 
@@ -124,7 +124,7 @@ int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Ce
 
 ### OH_Netstack_DestroyCertificatesContent()
 
-```
+```c
 void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)
 ```
 
@@ -145,7 +145,7 @@ void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)
 
 ### OH_Netstack_IsCleartextPermitted()
 
-```
+```c
 int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 ```
 
@@ -172,7 +172,7 @@ int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 
 ### OH_Netstack_IsCleartextPermittedByHostName()
 
-```
+```c
 int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *isCleartextPermitted)
 ```
 
@@ -200,7 +200,7 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 
 ### OH_Netstack_IsCleartextCfgByComponent
 
-```
+```c
 int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg);
 ```
 

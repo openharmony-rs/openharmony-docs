@@ -193,6 +193,10 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 同步接口，不支持异步回调。
 
+> **说明：**
+> 
+> 在onMemoryLevel回调中释放UI组件，可能会阻塞当前进程的主线程任务，因此不建议在该回调中释放UI组件。
+
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core

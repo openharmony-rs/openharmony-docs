@@ -8,7 +8,7 @@
 
 ## When to Use
 
-For time-consuming operations, you can use [napi_create_async_work](../reference/native-lib/napi.md#napi_create_async_work) to create an asynchronous work object to prevent the ArkTS thread where env exists from being blocked while ensuring the performance and response of your application. You can use asynchronous work objects in the following scenarios:
+For time-consuming operations, you can use [napi_create_async_work](../reference/native-lib/napi.md#napi_create_async_work) to create an asynchronous work object to prevent the ArkTS thread where env exists from being blocked while ensuring the performance and response speed of your application. You can use asynchronous work objects in the following scenarios:
 
 - File operations: You can use asynchronous work objects in complex file operations or when a large file needs to be read to prevent the ArkTS thread where env exists from being blocked.
 
@@ -129,18 +129,18 @@ You can use a callback or a promise to implement asynchronous calls as required.
 
    Description of the interface in the .d.ts file.
 
-    ```ts
-   export const asyncWork: (data: number) => Promise<number>;
-    ```
-    Call APIs from ArkTS.
+     ``` ts
+     export const asyncWork: (data: number) => Promise<number>;
+     ```
+   Call APIs from ArkTS.
 
-    ```ts
-   import { hilog } from '@kit.PerformanceAnalysisKit';
-   import testNapi from 'libentry.so';
-   testNapi.asyncWork(1024).then((result) => {
-       hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
-   });
-   ```
+     ``` ts
+     import { hilog } from '@kit.PerformanceAnalysisKit';
+     import testNapi from 'libentry.so';
+     testNapi.asyncWork(1024).then((result) => {
+         hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
+     });
+     ```
    Result: **result is 1024**
 
 ## Example (Callback)
@@ -266,5 +266,6 @@ You can use a callback or a promise to implement asynchronous calls as required.
 ## NOTE
 - When the **napi_cancel_async_work** API is called, **napi_ok** is returned regardless of whether the underlying UV fails. If the task fails to be canceled due to the underlying UV, the corresponding error value is transferred to **status** in the complete callback. You need to perform the corresponding operation based on the value of **status**.
 - It is recommended that the asynchronous work item of Node-API (**napi_async_work**) be used only once. After **napi_queue_async_work** is called, you should release it through **napi_delete_async_work** during or after the execution of the **complete** callback. The same **napi_async_work** can be released only once. Repeated release attempts will cause undefined behavior.
+
 The **execute_cb** of **napi_async_work** runs in an independent work thread, which is obtained from the uv thread pool. Different worker threads do not affect each other.
 - **napi_async_work** only ensures that **complete_cb** is executed after **execute_cb**. **execute_cb** of different **napi_async_work** runs on their respective worker threads. Therefore, their execution sequence cannot be ensured. If tasks need to be executed in sequence, you are advised to use the **napi_threadsafe_function** APIs. For details, see [Thread Safety Development Using Node-API](use-napi-thread-safety.md).

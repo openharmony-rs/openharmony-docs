@@ -501,7 +501,7 @@ media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGene
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
-    console.error(`Failed to creat AVImageGenerator, error message:${error.message}`);
+    console.error(`Failed to create AVImageGenerator, error message:${error.message}`);
   }
 });
 ```
@@ -539,10 +539,10 @@ media.createAVImageGenerator().then((generator: media.AVImageGenerator) => {
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
-    console.error('Failed to creat AVImageGenerator');
+    console.error('Failed to create AVImageGenerator');
   }
 }).catch((error: BusinessError) => {
-  console.error(`Failed to creat AVImageGenerator, error message:${error.message}`);
+  console.error(`Failed to create AVImageGenerator, error message:${error.message}`);
 });
 ```
 

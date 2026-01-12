@@ -46,7 +46,7 @@
 
 ### OH_NativeBundle_GetBundleName()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_GetBundleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** bundleName)
 ```
 
@@ -72,7 +72,7 @@ BundleManager_ErrorCode OH_NativeBundle_GetBundleName(OH_NativeBundle_AbilityRes
 
 ### OH_NativeBundle_GetModuleName()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_GetModuleName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** moduleName)
 ```
 
@@ -98,7 +98,7 @@ BundleManager_ErrorCode OH_NativeBundle_GetModuleName(OH_NativeBundle_AbilityRes
 
 ### OH_NativeBundle_GetAbilityName()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_GetAbilityName(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** abilityName)
 ```
 
@@ -124,7 +124,7 @@ BundleManager_ErrorCode OH_NativeBundle_GetAbilityName(OH_NativeBundle_AbilityRe
 
 ### OH_NativeBundle_GetDrawableDescriptor()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, ArkUI_DrawableDescriptor** drawableIcon)
 ```
 
@@ -150,7 +150,7 @@ BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_Ab
 
 ### OH_NativeBundle_GetLabel()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_GetLabel(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, char** label)
 ```
 
@@ -176,7 +176,7 @@ BundleManager_ErrorCode OH_NativeBundle_GetLabel(OH_NativeBundle_AbilityResource
 
 ### OH_NativeBundle_GetAppIndex()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_GetAppIndex(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, int* appIndex)
 ```
 
@@ -202,7 +202,7 @@ BundleManager_ErrorCode OH_NativeBundle_GetAppIndex(OH_NativeBundle_AbilityResou
 
 ### OH_NativeBundle_CheckDefaultApp()
 
-```
+```c
 BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, bool* isDefault)
 ```
 
@@ -228,7 +228,7 @@ BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityR
 
 ### OH_AbilityResourceInfo_Destroy()
 
-```
+```c
 BundleManager_ErrorCode OH_AbilityResourceInfo_Destroy(OH_NativeBundle_AbilityResourceInfo* abilityResourceInfo, size_t count)
 ```
 
@@ -254,7 +254,7 @@ BundleManager_ErrorCode OH_AbilityResourceInfo_Destroy(OH_NativeBundle_AbilityRe
 
 ### OH_NativeBundle_GetSize()
 
-```
+```c
 int OH_NativeBundle_GetSize()
 ```
 

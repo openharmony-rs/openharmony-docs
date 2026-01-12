@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_VideoProcessing OH_VideoProcessing
+```
+
 ## 概述
 
 定义视频处理对象。

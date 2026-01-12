@@ -26,10 +26,10 @@ The specified bundle name is not found.
 **处理步骤**<br/>
 1. 检查bundleName拼写是否正确。
 2. 可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看应用是否安装。查看输出的打印信息，应用未安装时，该命令执行会报错。
-```
-# 需要将com.xxx.demo替换为实际查询的bundleName
-hdc shell bm dump -n com.xxx.demo
-```
+    ```shell
+    # 需要将com.xxx.demo替换为实际查询的bundleName
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700002 指定的moduleName不存在
 
@@ -46,10 +46,10 @@ The specified module name is not found.
 **处理步骤**<br/>
 1. 检查moduleName拼写是否正确。
 2. 可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看对应的模块是否安装。查看输出的打印信息中hapModuleNames字段对应的列表是否存在该moduleName，不存在则说明应用未安装该模块。
-```
-# 需要将com.xxx.demo替换为实际查询的bundleName
-hdc shell bm dump -n com.xxx.demo
-```
+    ```shell
+    # 需要将com.xxx.demo替换为实际查询的bundleName
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700003 指定的abilityName不存在
 
@@ -62,14 +62,16 @@ The specified ability name is not found.
 **可能原因**<br/>
 1. 输入的abilityName有误。
 2. 系统中对应的应用不存在该abilityName对应的ability。
+3. 调用[bundleManager.getProfileByAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability)、[bundleManager.getProfileByExtensionAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyextensionability) 等通过abilityName、moduleName组合查询的接口时，对应的应用没有安装moduleName对应的模块，对应模块下的ability也不存在。
 
 **处理步骤**<br/>
 1. 检查abilityName拼写是否正确。
 2. 可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看对应的应用是否存在这个abilityName。查看输出的打印信息中hapModuleInfos字段对应的abilityInfos下是否包含name等于该abilityName，不包含则说明该abilityName不存在。
-```
-# 需要将com.xxx.demo替换为实际查询的bundleName
-hdc shell bm dump -n com.xxx.demo
-```
+3. 可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看输出的打印信息中hapModuleNames字段对应的列表是否存在对应的moduleName，不存在则说明应用未安装该模块，对应模块下的ability也不存在。
+    ```shell
+    # 需要将com.xxx.demo替换为实际查询的bundleName
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700004 指定的用户不存在
 
@@ -199,10 +201,10 @@ Failed to install the HAPs because they have different configuration information
 调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，多个HAP配置信息不同导致应用安装失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
 
 **可能原因**<br/>
-多个hap包中配置文件中app标签下面的字段信息不一致。
+多个HAP包中配置文件中app标签下面的字段信息或者签名信息不一致。
 
 **处理步骤**<br/>
-确认多个HAP中配置文件app下面的字段是否一致。
+确认多个HAP中配置文件app下面的字段是否一致或者检查工程的[signingConfigs](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section153288223224)配置是否一样。
 
 ## 17700016 系统磁盘空间不足导致应用安装失败
 
@@ -233,14 +235,16 @@ Failed to install the HAP since the version of the HAP to install is too early.
 确认新安装的应用版本号是否不低于已安装的同应用版本号。
 
 1. 已安装应用版本号查询，依赖[hdc工具](../../dfx/hdc.md#环境准备)。执行命令行后会输出已安装应用的版本号versionCode，如果输出多个versionCode，选择大于0的。如果该命令无打印值输出，表示应用未安装。
-```
-# 需要将com.xxx.demo替换为查询的bundleName
-hdc shell "bm dump -n com.xxx.demo |grep versionCode"
-```
+    ```shell
+    # 需要将com.xxx.demo替换为查询的bundleName
+    hdc shell "bm dump -n com.xxx.demo |grep versionCode"
+    ```
 
 2. 新安装的应用查看版本，HAP或者HSP用DevEco Studio打开，查看里面module.json文件中的versionCode字段配置。
 
-![示例图](figures/hap_verisonCode.PNG)
+    ![示例图](figures/hap_verisonCode.PNG)
+
+3. 对于已安装的签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用，当新安装的版本低于当前版本时，支持降级安装，具体参数配置可参考[InstallParam](js-apis-installer-sys.md#installparam)中parameters描述。
 
 ## 17700018 安装失败，依赖的模块不存在
 
@@ -285,7 +289,7 @@ The specified uid is invalid.
 
 **处理步骤**<br/>
 检查系统中是否存在对应的应用uid值。可以使用[查询应用信息命令（dump）](../../tools/bm-tool.md#查询应用信息命令dump)查看已安装应用的uid。执行命令行后会输出对应已安装应用的uid，如果输出多个uid，选择大于0的。如果该命令无打印值输出，表示应用未安装。
-```
+```shell
 # 需要将com.xxx.demo替换为实际查询的bundleName
 hdc shell "bm dump -n com.xxx.demo |grep uid"
 ```
@@ -331,17 +335,13 @@ Failed to get the profile because the specified profile is not found in the HAP.
 
 **可能原因**<br/>
 1. 输入的metadata name在配置文件中不存在。
-2. 配置文件的内容不是json格式。
-<!--Del-->
-3. 查询的配置文件类型不存在。
-<!--DelEnd-->
+2. 配置文件的内容不是json格式。<!--Del-->
+3. 查询的配置文件类型不存在。<!--DelEnd-->
 
 **处理步骤**<br/>
 1. 确认要查询的ability或者extensionAbility中的metadata name是否存在。
-2. 确认指定查询的profile文件的内容是否为json格式。
-<!--Del-->
-3. 确认应用中是否存在与查询的profileType类型相符的配置文件。
-<!--DelEnd-->
+2. 确认指定查询的profile文件的内容是否为json格式。<!--Del-->
+3. 确认应用中是否存在与查询的profileType类型相符的配置文件。<!--DelEnd-->
 <!--Del-->
 ## 17700025 输入的type无效
 
@@ -1204,7 +1204,7 @@ Failed to install the plugin because the plugin id fails to be parsed.
 
 **处理步骤**<br/>
 参考如下格式，重新配置插件[profile文件](../../security/app-provision-structure.md)中的"app-services-capabilities"字段。
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
@@ -1226,7 +1226,7 @@ Failed to install the plugin because the plugin id fails to be verified.
 
 **处理步骤**<br/>
 重新配置应用或者插件[profile文件](../../security/app-provision-structure.md)中的pluginDistributionIDs。配置格式如下：
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
@@ -1272,10 +1272,12 @@ Bundle manager service exception.
 包管理服务异常。
 
 **可能原因**<br/>
-场景一： 
+场景一：
+
 系统出现未知的异常，导致包管理服务已停止或者异常退出。
 
 场景二：
+
 系统抛出未捕获的错误码，例如IPC失败、文件拷贝失败等。
 
 **处理步骤**<br/>
@@ -1283,7 +1285,7 @@ Bundle manager service exception.
 
 2. 重复上述步骤3到5次后依旧请求失败，请查询设备的/data/log/faultlog/faultlogger/目录下是否存在包含foundation字样的crash文件。
 
-    ```
+    ```shell
     hdc shell
     cd /data/log/faultlog/faultlogger/
     ls -ls
@@ -1291,7 +1293,7 @@ Bundle manager service exception.
 
 3. 导出crash文件和日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
 
-    ```
+    ```shell
     hdc file recv /data/log/faultlog/faultlogger/
     hdc file recv /data/log/hilog/
     ```
@@ -1432,4 +1434,42 @@ Invalid fileTypes.
 
 **处理步骤**<br/>
 请检查文件类型数组是否错误，阅读参数规格约束，按照可能原因进行排查。
+
+## 18100001 ShortcutInfo列表中bundleName和appIndex不一一对应
+**错误信息**<br/>
+A combination of bundleName and appIndex in the shutcutInfo list is different from the others.
+
+**错误描述**<br/>
+shortcutInfo列表中，存在bundleName和appIndex的组合与其他不一致。
+
+**可能原因**<br/>
+shortcutInfo列表中，存在bundleName和appIndex的组合与其他不一致。
+
+例如在调用[shortcutManager.addDynamicShortcutInfos](../apis-ability-kit/js-apis-shortcutManager-sys.md#shortcutmanageradddynamicshortcutinfos23)接口时传入了如下列表:
+```ts
+const bundleName = "com.example.dynamic";
+const bundleName1 = "com.example.dynamic1";
+let moduleName = 'entry';
+const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
+  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+    // 校验失败，因为bundleName和appIndex与其他shortcutInfo不一样
+  { id: "3", bundleName: bundleName1, moduleName: moduleName, appIndex: 0, sourceType: 2 }
+]
+```
+或者：
+```ts
+const bundleName = "com.example.dynamic";
+let moduleName = 'entry';
+const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
+  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  // 校验失败，因为bundleName和appIndex与其他shortcutInfo不一样
+  { id: "3", bundleName: bundleName, moduleName: moduleName, appIndex: 1, sourceType: 2 }
+]
+```
+
+**处理步骤**<br/>
+请检查shortcutInfo列表中，是否有不同的bundleName和appInndex组合。
+
 <!--DelEnd-->

@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Custom component built-in APIs are APIs predefined on the base class of custom components in the ArkUI framework. You can call these APIs on the instance of a custom component to obtain information, such as the UI context, about the instance.
 
@@ -142,7 +142,7 @@ struct MyComponent {
 
 queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undefined
 
-Queries the information about the nearest **NavDestination** component in the navigation stack for a custom component.
+Queries the information of the nearest **NavDestination** component (a navigation page or subpage of the **Navigation** component) associated with this custom component. The search direction is controlled by **isInner**: **true** for inward search and **false** for outward search.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 

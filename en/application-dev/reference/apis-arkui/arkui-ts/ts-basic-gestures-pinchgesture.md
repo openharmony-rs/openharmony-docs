@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **PinchGesture** is used to trigger a pinch gesture, which requires two to five fingers with a minimum 5 vp distance between the fingers.
 
@@ -31,7 +31,7 @@ Sets the parameters for the pinch gesture. Inherits from [GestureInterface\<T>](
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number; distance?: number } | No| Parameters for the pinch gesture.<br> - **fingers**: minimum number of fingers to trigger a pinch. The value ranges from 2 to 5.<br>Default value: **2**<br>Value range: [2, 5]. Values outside this range are automatically adjusted to the default value.<br>While more fingers than the minimum number can be pressed to trigger the gesture, only the first fingers of the minimum number participate in gesture calculation.<br> - **distance**: minimum recognition distance, in vp.<br>Default value: **5**<br>**NOTE**<br>Value range: [0, +∞). If the value is less than or equal to 0, it will be converted to the default value.|
+| value | { fingers?: number; distance?: number } | No| Parameters for the pinch gesture.<br> - **fingers**: minimum number of fingers to trigger a pinch. The value ranges from 2 to 5.<br>Default value: **2**<br>Value range: [2, 5]. Values outside this range are automatically adjusted to the default value.<br>While more fingers than the minimum number can be pressed to trigger the gesture, only the first fingers of the minimum number participate in gesture calculation.<br> - **distance**: minimum recognition distance, in vp. This distance refers to the difference between the current average distance from the multiple finger positions to their center point and the average distance when the fingers first made contact. If this difference meets or exceeds the minimum recognition distance, the pinch gesture is recognized.<br>Default value: **5**<br>**NOTE**<br>Value range: [0, +∞). If the value is less than or equal to 0, it will be converted to the default value.|
 
 ### PinchGesture<sup>15+</sup>
 
@@ -60,7 +60,7 @@ Sets the parameters for the pinch gesture. Compared with [PinchGesture](#pinchge
 
 onActionStart(event: (event: GestureEvent) => void)
 
-Triggered when the pinch gesture is recognized.
+Triggered after the pinch gesture is recognized.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -124,7 +124,7 @@ Triggered when a touch cancellation event occurs after successful pinch gesture 
 
 onActionCancel(event: Callback\<GestureEvent\>)
 
-Callback invoked when a touch cancellation event occurs after successful pinch gesture recognition. Compared with [onActionCancel](#onactioncancel), this callback returns gesture event information.
+Triggered when a touch cancellation event occurs after successful pinch gesture recognition. Compared with [onActionCancel](#onactioncancel), this callback returns gesture event information.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 

@@ -6,8 +6,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-```
-typedef struct {...} OH_NativeBuffer_Planes
+```c
+typedef struct OH_NativeBuffer_Planes {...} OH_NativeBuffer_Planes
 ```
 ## 概述
 

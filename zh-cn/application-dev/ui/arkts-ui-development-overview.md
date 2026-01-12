@@ -53,6 +53,7 @@
   - 语言编译器和运行时的优化：统一字节码、高效FFI（Foreign Function Interface）、AOT（Ahead Of Time）、引擎极小化、类型优化等。
 
 - 生态容易快速推进
+
   能够借力主流语言生态快速推进，语言相对中立友好，有相应的标准组织可以逐步演进。
 
 
@@ -66,18 +67,23 @@
 
 
 - **声明式UI前端**
+
   提供了UI开发范式的基础语言规范，并提供内置的UI组件、布局和动画，提供了多种状态管理机制，为应用开发者提供一系列接口支持。
 
 - **语言运行时**
+
   选用方舟语言运行时，提供了针对UI范式语法的解析能力、跨语言调用支持的能力和TS语言高性能运行环境。
 
 - **声明式UI后端引擎**
+
   后端引擎提供了兼容不同开发范式的UI渲染管线，提供多种基础组件、布局计算、动效、交互事件，提供了状态管理和绘制能力。
 
 - **渲染引擎**
+
   提供了高效的绘制能力，将渲染管线收集的渲染指令，绘制到屏幕的能力。
 
 - **平台适配层**
+
   提供了对系统平台的抽象接口，具备接入不同系统的能力，如系统渲染管线、生命周期调度等。
 
 
@@ -88,7 +94,7 @@
 | 任务          | 简介                                  | 相关指导                                     |
 | ----------- | ----------------------------------- | ---------------------------------------- |
 | 学习ArkTS     | 介绍了ArkTS的基本语法、状态管理和渲染控制的场景。         | - [基本语法](state-management/arkts-basic-syntax-overview.md)<br>- [状态管理](state-management/arkts-state-management-overview.md)<br>- [渲染控制](rendering-control/arkts-rendering-control-overview.md) |
-| 设置组件导航和页面路由 | 介绍了如何设置组件间的导航以及页面路由。 | -&nbsp;[组件导航（推荐）](arkts-navigation-navigation.md)<br/>-&nbsp;[页面路由](arkts-routing.md) |
+| 设置组件导航和页面路由 | 介绍了如何设置组件间的导航以及页面路由。 | -&nbsp;[组件导航（推荐）](./arkts-navigation-architecture.md)<br/>-&nbsp;[页面路由](arkts-routing.md) |
 | 组件布局   | 介绍了几种常用的布局方式。             | -&nbsp;[常用布局](arkts-layout-development-overview.md) |
 | 列表与网格 | 介绍了几种列表与网格组件的使用方法。 | -&nbsp;[列表与网格](arkts-list-grid-development-overview.md) |
 | 使用文本 | 介绍了输入框、富文本和属性字符串等文本组件的使用方法。                | -&nbsp;[文本显示](arkts-common-components-text-display.md) <br/>- [文本输入](arkts-common-components-text-input.md)<br/>- [富文本](arkts-common-components-richeditor.md)<br/>- [图标小符号](arkts-common-components-symbol.md)<br/>- [属性字符串](arkts-styled-string.md)|

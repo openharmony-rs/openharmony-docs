@@ -1,16 +1,16 @@
 # chart
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 图表组件，用于呈现线形图、柱状图、量规图界面。
 
 > **说明：**
 >
-> 从API Version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -26,7 +26,7 @@
 | type              | string                             | line   | 否   | 设置图表类型（不支持动态修改），可选项有：<br/>-&nbsp;bar：柱状图。<br/>-&nbsp;line：线形图。<br/>-&nbsp;gauge：量规图。<br/>-&nbsp;progress：进度类圆形图表。<br/>-&nbsp;loading：加载类圆形图表。<br/>-&nbsp;rainbow：占比类圆形图表。 |
 | options           | ChartOptions                       | -      | 否   | 图表参数设置，用于设置x轴、y轴的最小值、最大值、刻度数、是否显示，线条宽度、是否平滑等。（不支持动态修改）,量规图不生效。 |
 | datasets          | Array\<ChartDataset>               | -      | 否   | 数据集合，用于设置多条数据集及其背景色，量规图不生效。       |
-| segments          | DataSegment \| Array\<DataSegment> |        | 否   | 进度类、加载类和占比类圆形图表使用的数据结构。<br/>DataSegment针对进度类和加载类圆形图表使用，Array\<DataSegment>针对占比类图标使用，DataSegment最多9个。 |
+| segments          | DataSegment \| Array\<DataSegment> | -      | 否   | 进度类、加载类和占比类圆形图表使用的数据结构。<br/>DataSegment针对进度类和加载类圆形图表使用，Array\<DataSegment>针对占比类图标使用，DataSegment最多9个。 |
 | effects           | boolean                            | true   | 否   | 是否开启占比类、进度类圆形图表特效。<br/>默认值：true，表示开启占比类、进度类圆形图表特效。                         |
 | animationduration | number                             | 3000   | 否   | 设置占比类圆形图表展开动画时长，单位为ms。                   |
 
@@ -157,7 +157,7 @@
 ## 示例
 
 1. 线形图
-
+   
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -167,8 +167,7 @@
      </stack>
    </div>
    ```
-
-
+   
    ```css
    /* xxx.css */
    .container {
@@ -188,8 +187,7 @@
      height: 600px;
    }
    ```
-
-
+   
    ```json
    // xxx.json
    {
@@ -256,12 +254,11 @@
      }
    }
    ```
-   **4*4卡片**
-
-![zh-cn_image_0000001185652902](figures/zh-cn_image_0000001185652902.png)
+   
+   ![zh-cn_image_0000001185652902](figures/zh-cn_image_0000001185652902.png)
 
 2. 柱状图
-
+   
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -271,8 +268,7 @@
      </stack>
    </div>
    ```
-
-
+   
    ```css
    /* xxx.css */
    .container {
@@ -292,8 +288,7 @@
      height: 400px;
    }
    ```
-
-
+   
    ```json
    {
      "data": {
@@ -327,13 +322,11 @@
      }
    }
    ```
-   **4*4卡片**
-
-![barchart](figures/barchart.PNG)
+    
+   ![barchart](figures/barchart.PNG)
 
 3. 量规图
-
-
+   
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -342,8 +335,7 @@
      </div>
    </div>
    ```
-
-
+   
    ```css
    /* xxx.css */
    .container {
@@ -360,6 +352,5 @@
      weights: 4, 2, 1;
    }
    ```
-   **4*4卡片**
-
-![gauge](figures/gauge.PNG)
+   
+   ![gauge](figures/gauge.PNG)

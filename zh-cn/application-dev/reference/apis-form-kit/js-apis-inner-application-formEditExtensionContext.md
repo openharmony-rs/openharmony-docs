@@ -25,7 +25,7 @@ FormEditExtensionContext提供允许访问特定于FormEditExtensionAbility资�
 
 startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>
 
-拉起需要被编辑的卡片提供方页面。
+拉起需要被编辑的卡片提供方页面。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -37,10 +37,11 @@ startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis
   | ------ | ------ | ---- | ------------------------------------- |
   | want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | 是   | 第三方应用需要被桌面拉起的编辑页面信息。|
 
-**返回值：**  
-  | 类型 | 说明    | 
+**返回值：**
+
+  | 类型 | 说明    |
   | ------ | ------ |
-  | Promise<[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>  |  Promise对象，返回AbilityResult。  | 
+  | Promise<[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>  |  Promise对象，返回AbilityResult。  |
 
 **错误码：**
 
@@ -57,11 +58,13 @@ startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis
 
 ```ts
 import { FormEditExtensionAbility } from '@kit.FormKit'
-import { Want,UIExtensionContentSession } from '@kit.AbilityKit';
+import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
 
 const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
+
 export default class ExampleFormEditAbility extends FormEditExtensionAbility {
   abilityName: string = 'FormEditSecPageAbility'
+
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     try {
       this.context.startSecondPage({
@@ -80,4 +83,64 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
   }
 }
 
+```
+
+### startUIAbility<sup>23+<sup>
+
+startUIAbility(want: Want): Promise&lt;void&gt;
+
+拉起卡片所属应用的UIAbility。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+  | 参数名 | 类型    | 必填 | 说明                                   |
+  | ------ | ------ | ---- | ------------------------------------- |
+  | want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md#want)  | 是   | 应用自身UIAbility的ability信息。|
+
+**返回值：**
+
+  | 类型 | 说明    |
+  | ------ | ------ |
+  | Promise&lt;void&gt;   |  Promise对象，返回void。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 16500050 | An IPC connection error happened.                            |
+| 16500100 | Failed to obtain the configuration information.                        |
+| 16000130 | The target UIAbility does not belong to the caller.                       |
+| 16501014 | The form edit page is not in the foreground. The current operation is not supported. |
+| 16000121 | The target component type is not a UIAbility.                       |
+
+**示例：**
+
+```ts
+import { FormEditExtensionAbility } from '@kit.FormKit'
+import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
+
+const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
+
+export default class ExampleFormEditAbility extends FormEditExtensionAbility {
+  abilityName: string = 'FormEditSecPageAbility'
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    try {
+      this.context.startUIAbility({
+        abilityName: 'EntryAbility1',
+      }).then(() => {
+        console.info(TAG, `startUIAbility success`);
+      });
+    } catch (e) {
+      console.error(TAG, `startUIAbility failed:${e}`);
+      return
+    }
+  }
+}
 ```

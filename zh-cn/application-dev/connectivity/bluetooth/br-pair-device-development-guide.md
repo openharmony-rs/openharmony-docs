@@ -53,7 +53,7 @@ try {
 
 蓝牙设备的实际MAC地址属于用户的隐私信息，在发现设备过程中，蓝牙子系统会给每个蓝牙外设分配一个虚拟MAC地址，并保存该虚拟MAC地址与外设实际MAC地址的映射关系。
 
-若开发者不知道目标设备的[地址类型](../../reference/apis-connectivity-kit/js-apis-bluetooth-common.md#bluetoothaddresstype)。，推荐使用API version 20及以前的配对方式发起配对，详情请见[connection.pairDevice](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionpairdevice)。
+若开发者不知道目标设备的[地址类型](../../reference/apis-connectivity-kit/js-apis-bluetooth-common.md#bluetoothaddresstype)，推荐使用API version 20及以前的配对方式发起配对，详情请见[connection.pairDevice](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionpairdevice)。
 
 - 此配对方式不需要关注目标设备的MAC地址类型。
 

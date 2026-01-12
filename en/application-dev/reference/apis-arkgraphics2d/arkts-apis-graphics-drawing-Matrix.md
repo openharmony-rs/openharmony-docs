@@ -7,16 +7,6 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-> **NOTE**
->
-> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->
-> - The initial APIs of this class are supported since API version 12.
->
-> - This module uses the physical pixel unit, px.
->
-> - The module operates under a single-threaded model. The caller needs to manage thread safety and context state transitions.
-
 Implements a matrix.
 
 A 3 x 3 matrix is shown as below.
@@ -27,6 +17,17 @@ Elements in the matrix from left to right and from top to bottom respectively re
 If (x<sub>1</sub>, y<sub>1</sub>) is the source coordinate point, (x<sub>2</sub>, y<sub>2</sub>) is the coordinate point obtained by transforming the source coordinate point using the matrix, then the relationship between the two coordinate points is as follows:
 
 ![matrix_xy](figures/matrix_xy.PNG)
+
+
+> **NOTE**
+>
+> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The initial APIs of this class are supported since API version 12.
+>
+> - This module uses the physical pixel unit, px.
+>
+> - The module operates under a single-threaded model. The caller needs to manage thread safety and context state transitions.
 
 ## Modules to Import
 

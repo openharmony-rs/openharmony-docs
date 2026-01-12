@@ -4,22 +4,21 @@
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-**FolderStack** extends the Stack container, adding the <!--RP1-->foldable phone hover<!--RP1End--> capability. Child components specified in the **upperItems** array of [FolderStackOptions](#folderstackoptions18) automatically avoid the screen crease area and reposition to the upper display.
+**FolderStack** extends the [Stack](ts-container-stack.md) container, adding the <!--RP1-->foldable phone hover<!--RP1End--> capability. Child components specified in the **upperItems** array of [FolderStackOptions](#folderstackoptions18) automatically avoid the screen crease area and reposition to the upper display.
 
 >  **NOTE**
 >
 >  This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  The hover capability is designed for <!--RP2-->dual-fold devices<!--RP2End--> and only works on dual-fold devices.
+>  The hover capability is designed for and only works on <!--RP2-->dual-fold devices<!--RP2End-->.
 >
 >  When the component's parent uses [if/else conditional rendering](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), the foldable hover feature is disabled.
 
 ## Child Components
 
 Multiple child components are supported.
-
 
 ## APIs
 
@@ -51,7 +50,7 @@ FolderStack(options?: FolderStackOptions)
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| upperItems<sup>11+</sup> |    Array<string\>  | No| Yes | Configuration of the **FolderStack** component.<br>**upperItems**: array of IDs of child components that will be moved to the upper half screen in the hover state. On hover, child components with IDs in this array automatically shift away from the folding screen's crease area and move to the upper half screen, while other components are stacked in the lower half screen.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| upperItems<sup>11+</sup> |    Array<string\>  | No| Yes | Array of IDs of child components that will be moved to the upper half screen in the hover state. On hover, child components with IDs in this array automatically shift away from the crease area and move to the upper half screen, while other components are stacked in the lower half screen.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## Attributes
 
@@ -66,6 +65,10 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 alignContent(value: Alignment)
 
 Sets the alignment of child components in the container. When both this attribute and the [align](ts-universal-attributes-location.md#align) attribute are set, whichever is set last takes effect.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -85,6 +88,10 @@ enableAnimation(value: boolean)
 
 Sets whether to enable the default animation.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -102,6 +109,10 @@ Sets whether to enable the default animation.
 autoHalfFold(value: boolean)
 
 Sets whether to enable auto rotation. This attribute is effective only when auto rotation is disabled in device system settings.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -123,7 +134,11 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 onFolderStateChange(callback: OnFoldStatusChangeCallback)
 
-Called when the folding state changes. This API takes effect only in landscape mode.
+Triggered when the fold state of the device changes. This API takes effect only in landscape mode.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -135,14 +150,17 @@ Called when the folding state changes. This API takes effect only in landscape m
 
 | Name    | Type                                           | Mandatory| Description                |
 | ---------- | ----------------------------------------------- | ---- | -------------------- |
-| callback | [OnFoldStatusChangeCallback](#onfoldstatuschangecallback18) | Yes  | Current fold state of the device.|
-
+| callback | [OnFoldStatusChangeCallback](#onfoldstatuschangecallback18) | Yes  | Callback invoked when the fold state of the device changes.|
 
 ### onHoverStatusChange<sup>12+</sup>
 
 onHoverStatusChange(handler: OnHoverStatusChangeCallback)
 
-Invoked when the hover status changes.
+Triggered when the hover state of the device changes.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -154,13 +172,13 @@ Invoked when the hover status changes.
 
 | Name    | Type                                           | Mandatory| Description                |
 | ---------- | ----------------------------------------------- | ---- | -------------------- |
-| handler | [OnHoverStatusChangeCallback](#onhoverstatuschangecallback18) | Yes  | Callback invoked when the hover status changes.|
+| handler | [OnHoverStatusChangeCallback](#onhoverstatuschangecallback18) | Yes  | Callback invoked when the hover state of the device changes.|
 
 ## OnHoverStatusChangeCallback<sup>18+</sup>
 
 type OnHoverStatusChangeCallback = (param: HoverEventParam) => void
 
-Callback invoked when the hover status changes.
+Defines the current allback invoked when the hover state of the device changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -172,7 +190,7 @@ Callback invoked when the hover status changes.
 
 | Name    | Type                                           | Mandatory| Description                |
 | ---------- | ----------------------------------------------- | ---- | -------------------- |
-| param | [HoverEventParam](#hovereventparam12) | Yes  | Callback invoked when the hover status changes.|
+| param | [HoverEventParam](#hovereventparam12) | Yes  | Parameters related to the hover state of the device, including the fold state, hover state, application orientation, and window mode enumeration of the device.|
 
 ## OnFoldStatusChangeCallback<sup>18+</sup>
 
@@ -222,7 +240,7 @@ Called when the folding state changes. This API takes effect only in landscape m
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | foldStatus       | [FoldStatus](ts-appendix-enums.md#foldstatus11)             | No| No  | Current fold state of the device.|
-| isHoverMode      | boolean                                                     | No| No  | Whether hover mode is enabled. **true**: Hover mode is enabled. **false**: Hover mode is disabled. |
+| isHoverMode      | boolean                                                     | No| No  | Whether hover mode is enabled. **true**: Hover mode is enabled. **false**: Hover mode is disabled.|
 | appRotation      | [AppRotation](ts-appendix-enums.md#approtation12)           | No| No  | Current orientation.   |
 | windowStatusType | [WindowStatusType](#windowstatustype12) | No| No  | Window mode.   |
 
@@ -252,9 +270,6 @@ This example implements the foldable device hover capability.
 @Entry
 @Component
 struct Index {
-  @State len_wid: number = 480
-  @State w: string = "40%"
-
   build() {
     Column() {
       // Set upperItems to IDs of the child components to be moved to the upper half screen in the hover state. Other components are stacked in the lower half screen.

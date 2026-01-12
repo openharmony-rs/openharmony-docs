@@ -10,7 +10,7 @@
 >
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## WebStorageOrigin
 
@@ -178,6 +178,36 @@ WebViewController与Web组件的绑定状态。
 | similarity | number | 否   | 否   | 首屏相似度，根据历史加载首屏内容计算相似度，范围为0~1.0，1.0表示完全一致，数值越接近1，相似度越高。该值存在滞后性，本地加载的相似性将在下次加载时才可反映。建议当相似度较低时，应用不启用无白屏加载插帧方案。 |
 | loadingTime | number | 否   | 否   | 根据历史加载首屏耗时预测本次加载耗时，单位ms，取值范围需大于0。 |
 
+## BlanklessFrameInterpolationInfo<sup>23+</sup>
+
+白屏插帧状态信息，作为[BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23)中的回调入参使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称        | 类型   | 只读 | 可选 |说明                 |
+| ----------- | ------ | -----|------|------------------- |
+| key | string | 否   | 否   | 唯一标识插帧页面的key值。与[setBlanklessLoadingWithParams](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithparams23)的key值相同。 |
+| state | [BlanklessFrameInterpolationState](./arkts-apis-webview-e.md#blanklessframeinterpolationstate-23) | 否   | 否   | 当前插帧状态。 |
+| timestamp | number | 否   | 否   | 插帧成功、失败或移除的时间点，UTC时间，单位ms。 |
+| reason | string | 否   | 否   | 插帧失败的原因。 |
+
+## BlanklessLoadingParam<sup>23+</sup>
+
+白屏插帧加载参数。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称        | 类型   | 只读 | 可选 |说明                 |
+| ----------- | ------ | -----|------|------------------- |
+| enable | boolean | 否   | 否   | 是否启用白屏插帧。<br>true：启用，false：不启用。 |
+| duration | number | 否   | 是   | 插帧持续时间。<br>取值范围：[200, 2000] ∪ {0}，其中0表示不指定持续时间，由系统自动设置合适的持续时间。<br>单位：ms。 |
+| expirationTime | number | 否   | 是   | 历史帧失效时间，UTC时间。<br>用T表示当前UTC时间，同时已知30天为2592000000ms，取值范围：(T, T + 2592000000] ∪ {0}，其中0表示不指定失效时间，采用系统默认失效时间（7天）。<br>单位：ms。 |
+| callback | Callback<[BlanklessFrameInterpolationInfo](./arkts-apis-webview-i.md#blanklessframeinterpolationinfo23)> | 否   | 是   | 插帧成功、失败或移除后执行的回调。<br>只有在enable为true时生效。可选，不设置则不进行任何操作。 |
+
 ## HistoryItem
 
 页面历史记录项。
@@ -193,8 +223,7 @@ WebViewController与Web组件的绑定状态。
 
 ## MediaInfo<sup>12+<sup>
 
-[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的一个参数。
-包含了网页中媒体的信息。应用可以根据这些信息来创建接管网页媒体播放的播放器。
+[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的一个参数。包含了网页中媒体的信息。应用可以根据这些信息来创建接管网页媒体播放的播放器。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -224,3 +253,21 @@ WebViewController与Web组件的绑定状态。
 | y  | number   | 否   | 否   | 矩形区域左上角y坐标。    |
 | width  | number   | 否   | 否   | 矩形的宽度。 <br>单位：px   |
 | height | number   | 否   | 否   | 矩形的高度。 <br>单位：px   |
+
+## WebHttpCookie<sup>23+</sup>
+
+cookie的相关字段。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | --- | ---- | ---- | ---- |
+| samesitePolicy | [WebHttpCookieSameSitePolicy](./arkts-apis-webview-e.md#webhttpcookiesamesitepolicy23) | 是 | 否 | cookie的同站策略。 |
+| expiresDate | string | 是 | 否 | cookie的过期时间。格式为GMT标准时间。 |
+| name | string | 是 | 否 | cookie的名称。 |
+| isSessionCookie | boolean | 是 | 否 | 标记该cookie是否是session cookie。<br>true表示是session cookie，false表示不是session cookie。 |
+| value | string | 是 | 否 | cookie的值。 |
+| path | string | 是 | 否 | cookie的路径。 |
+| isHttpOnly | boolean | 是 | 否 | 标记该cookie是否只能通过http请求访问。<br>true表示仅能通过http访问，不能通过javascript访问，false表示可以通过javascript访问。 |
+| isSecure | boolean | 是 | 否 | 标记该cookie是否只能通过https发送。<br>true表示仅能通过https发送，不能通过http发送，false表示可以通过http发送。 |
+| domain | string | 是 | 否 | 指定哪些域名可以访问该cookie。 |

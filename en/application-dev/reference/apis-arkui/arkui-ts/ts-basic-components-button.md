@@ -77,13 +77,13 @@ Describes the button style.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                     | Type                                         | Read Only| Optional| Description                                                      |
+| Name                     | Type                                         | Read-Only| Optional| Description                                                      |
 | ------------------------- | --------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | type                      | [ButtonType](#buttontype)             | No  | Yes | Button display style.<br>Default value: **ButtonType.ROUNDED_RECTANGLE**.<br>API version 18 and later: The default value is **ButtonType.ROUNDED_RECTANGLE**. Versions earlier than API version 18: The default value is **ButtonType.Capsule**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | stateEffect               | boolean                                       | No  | Yes | Whether to enable the pressed state effect when the button is clicked.<br>**true**: Enable the pressed state effect. **false**: Disable the pressed state effect.<br>Default value: **true**.<br>**NOTE**<br>When the pressed state effect is enabled and a custom pressed state style is configured, the resulting color displayed after pressing is a composite blend of the original background color and the newly defined pressed state color.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| buttonStyle<sup>11+</sup> | [ButtonStyleMode](#buttonstylemode11) | No  | Yes | Style and importance of the button.<br>Default value: **ButtonStyleMode.EMPHASIZED**<br>**NOTE**<br>The button primacy is as follows, from high to low: emphasized button, normal button, text button.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| buttonStyle<sup>11+</sup> | [ButtonStyleMode](#buttonstylemode11) | No  | Yes | Style and importance of the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [fontColor](#fontcolor), and [role](#role12) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.<br>Default value: **ButtonStyleMode.EMPHASIZED**<br>**NOTE**<br>The button primacy is as follows, from high to low: emphasized button, normal button, text button.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | controlSize<sup>11+</sup> | [ControlSize](#controlsize11)         | No  | Yes | Button size.<br>Default value: **ControlSize.NORMAL**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| role<sup>12+</sup> | [ButtonRole](#buttonrole12)         | No  | Yes | Role of the button.<br>Default value: **ButtonRole.NORMAL**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| role<sup>12+</sup> | [ButtonRole](#buttonrole12)         | No  | Yes | Role of the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [fontColor](#fontcolor), and [buttonStyle](#buttonstyle11) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.<br>Default value: **ButtonRole.NORMAL**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## Attributes
 
@@ -145,7 +145,7 @@ Sets the font color for the button.
 
 ### fontWeight
 
-fontWeight(value: number | FontWeight | string)
+fontWeight(value: number&nbsp;|&nbsp;FontWeight&nbsp;|&nbsp;string)
 
 Sets the font weight for the button.
 
@@ -159,7 +159,7 @@ Sets the font weight for the button.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string | Yes  | Font weight of the button. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a thicker font.<br>Default value: **500**<br>For the string type, only strings that represent a number, for example, **'400'**, and the following enumerated values of **FontWeight** are supported: **'bold'**, **'bolder'**, **'lighter'**, **'regular'**, and **'medium'**.<br>If the value is abnormal or invalid, the font weight defaults to 400.|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | Yes  | Font weight of the button. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a thicker font.<br>Default value: **500**<br>For the string type, only strings that represent a number, for example, **'400'**, and the following enumerated values of **FontWeight** are supported: **'bold'**, **'bolder'**, **'lighter'**, **'regular'**, and **'medium'**.<br>If the value is abnormal or invalid, the font weight defaults to 400.|
 
 ### fontStyle<sup>8+</sup>
 
@@ -217,7 +217,7 @@ Sets the font family.
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string \| [Resource](ts-types.md#resource) | Yes  | Font family. The 'HarmonyOS Sans' font and [registered custom fonts](../js-apis-font.md) are supported.|
+| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Font family. The 'HarmonyOS Sans' font and [registered custom fonts](../js-apis-font.md) are supported.|
 
 ### labelStyle<sup>10+</sup>
 
@@ -239,7 +239,7 @@ Sets the label style for the button.
 
 buttonStyle(value: ButtonStyleMode)
 
-Sets the style and primacy for the button.
+Sets the style and primacy for the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [fontColor](#fontcolor), and [role](#role12) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
 
 >**NOTE**
 >
@@ -283,7 +283,7 @@ Sets the size for the button.
 
 role(value: ButtonRole)
 
-Sets the role of the button.
+Sets the role of the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [fontColor](#fontcolor), and [buttonStyle](#buttonstyle11) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -351,12 +351,12 @@ Enumerates the button types.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Description              |
-| ------- | ------- |
-| Normal | Normal button, with no rounded corners by default.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Capsule | Capsule-type button (the round corner is half of the height by default).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Circle  | Circular button.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
-| ROUNDED_RECTANGLE<sup>15+</sup> | Rounded rectangle button (default value: when **controlSize** is **NORMAL**, the corner radius is 20 vp; when controlSize is **SMALL**, the corner radius is 14 vp).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 15.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| Name     | Value    | Description              |
+| ------- | ------- | ------- |
+| Normal | 0 | Normal button, with no rounded corners by default.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Capsule | 1 | Capsule-type button (the round corner is half of the height by default).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Circle  | 2 | Circular button.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
+| ROUNDED_RECTANGLE<sup>15+</sup> | 8 | Rounded rectangle button (default value: when **controlSize** is **NORMAL**, the corner radius is 20 vp; when controlSize is **SMALL**, the corner radius is 14 vp).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 15.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 
 >  **NOTE**
 >  - The corner radius of the rounded rectangle button is set using the universal attribute [borderRadius](ts-universal-attributes-border.md#borderradius).
@@ -369,18 +369,19 @@ Enumerates the button types.
 
 ## LabelStyle<sup>10+</sup>
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+Label text and font style of the button.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                | Type                                                        | Read Only| Optional| Description                                                        |
+| Name                | Type                                                        | Read-Only| Optional| Description                                                        |
 | -------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | No  | Yes  | Display mode when the label text is too long. Text is clipped at the transition between words. To clip text in the middle of a word, add zero-width spaces between characters.<br>Default value: **TextOverflow.Ellipsis**|
-| maxLines             | number                                                       | No  | Yes  | Maximum number of lines in the label text. If this attribute is specified, the text will not exceed the specified number of lines. If there is extra text, you can use **overflow** to specify how it is displayed.<br>Default value: **1**<br>**NOTE**<br>If this parameter is set to a value less than or equal to 0, the default value is used.|
-| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No  | Yes  | Minimum font size of the label text. For the setting to take effect, this attribute must be used together with **maxFontSize**, **maxLines**, or layout constraint settings.<br>**NOTE**<br>If the value of **minFontSize** is less than or equal to 0, the adaptive font size does not take effect.|
-| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No  | Yes  | Maximum font size of the label text. For the setting to take effect, this attribute must be used together with **minFontSize**, **maxLines**, or layout constraint settings.|
-| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | No  | Yes  | How the adaptive height is determined for the label text.<br>Default value: **TextHeightAdaptivePolicy.MAX_LINES_FIRST**.|
-| font                 | [Font](ts-types.md#font)                                     | No  | Yes  | Font of the label text.<br>Default value: See [Font](ts-types.md#font).|
+| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | No  | Yes  | Display mode when the label text is too long. Text is clipped at the transition between words. To clip text in the middle of a word, add zero-width spaces between characters.<br>Default value: **TextOverflow.Ellipsis**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| maxLines             | number                                                       | No  | Yes  | Maximum number of lines in the label text. If this attribute is specified, the text will not exceed the specified number of lines. If there is extra text, you can use **overflow** to specify how it is displayed.<br>Default value: **1**<br>**NOTE**<br>If this parameter is set to a value less than or equal to 0, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No  | Yes  | Minimum font size of the label text. For the setting to take effect, this attribute must be used together with **maxFontSize**, **maxLines**, or layout constraint settings.<br>**NOTE**<br>If the value of **minFontSize** is less than or equal to 0, the adaptive font size does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No  | Yes  | Maximum font size of the label text. For the setting to take effect, this attribute must be used together with **minFontSize**, **maxLines**, or layout constraint settings.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | No  | Yes  | How the adaptive height is determined for the label text.<br>Default value: **TextHeightAdaptivePolicy.MAX_LINES_FIRST**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| font                 | [Font](ts-types.md#font)                                     | No  | Yes  | Font of the label text.<br>Default value:<br> {<br>size:'16.0fp',<br> weight:FontWeight.Medium,<br> style:FontStyle.Normal,<br>  family:'HarmonyOS Sans'<br>} <br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| textAlign<sup>23+</sup> | [TextAlign](ts-appendix-enums.md#textalign)                  | No  | Yes  | Horizontal alignment of the label text. This attribute does not take effect when the **Text** component of the child node is used to set the label. The actual text alignment mode is determined by the **textAlign** attribute of the **Text** component of the child node.<br> The default value is **TextAlign.Center** for wearables and **TextAlign.Start** for other devices.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## ButtonStyleMode<sup>11+</sup>
 
@@ -436,7 +437,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type   | Read Only | Optional| Description             |
+| Name | Type   | Read-Only | Optional| Description             |
 | ------ | ------ | ---------------- | ---------------- | ---------------- |
 | label | string | No| No| Text label of the button.<br>Note: If the text is longer than the width of the button, it is truncated.|
 | pressed | boolean | No| No| Whether the button is pressed.<br>**true**: pressed; **false**: not pressed.<br>Default value: **false**.<br>**NOTE**<br>This setting applies to the original button size, not to any new component constructed using the builder.|
@@ -773,3 +774,25 @@ struct ButtonExample {
 }
 ```
 ![roundedrectbutton](figures/roundedrectbutton.jpeg)
+
+### Example 8 (Setting the Horizontal Alignment Mode of the Label Text)
+This example shows how to set the text alignment mode by configuring **textAlign** of [LabelStyle](#labelstyle10).
+The **textAlign** API is supported since API version 23.
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(){
+      Button('helloWorld helloWorld helloWorld helloWorld helloWorld helloWorld')
+        .width(200)
+        .labelStyle({
+          textAlign: TextAlign.Center
+        })
+    }
+    .width('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+![buttontextalign](figures/buttontextalign.jpeg)

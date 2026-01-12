@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_InquiryRequest {...} ScsiPeripheral_InquiryRequest
+```
+
 ## Overview
 
 Defines the request structure of the **inquiry** command.

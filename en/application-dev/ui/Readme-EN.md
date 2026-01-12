@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy; @s10021109; @yangfan229-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-- [Introduction to ArkUI](arkui-overview.md)
+- [About This Kit](arkui-overview.md)
 - UI Development (ArkTS-based Declarative Development Paradigm)<!--arkts-ui-development-->
   - [UI Development (ArkTS-based Declarative Development Paradigm) Overview](arkts-ui-development-overview.md)
   - Basic Syntax of UI Paradigms<!--arkts-ui-paradigm-basic-syntax-->
@@ -62,11 +62,11 @@
         - [\@Param Decorator: Inputting External Parameters to Components](state-management/arkts-new-param.md)
         - [\@Once: Implementing Initialization Once](state-management/arkts-new-once.md)
         - [\@Event Decorator: Standardizing Component Output](state-management/arkts-new-event.md)
-        - [\@Provider and \@Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner](state-management/arkts-new-Provider-and-Consumer.md)
+        - [\@Provider and \@Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner](state-management/arkts-new-provider-and-consumer.md)
       - Data Object State Management<!--arkts-v2-manage-data-object-state-->
         - [\@ObservedV2 and \@Trace Decorators: Observing Class Property Changes](state-management/arkts-new-observedV2-and-trace.md)
         - [\@Monitor Decorator: Listening for Value Changes of the State Variables](state-management/arkts-new-monitor.md)
-        - [\@Computed Decorator: Declaring Computed Properties](state-management/arkts-new-Computed.md)
+        - [\@Computed Decorator: Declaring Computed Properties](state-management/arkts-new-computed.md)
         - [\@Type Decorator: Marking the Types of the Class Property](state-management/arkts-new-type.md)
       - Application State Management<!--arkts-v2-manage-application-state-->
         - [AppStorageV2: Storing Application-wide UI State](state-management/arkts-new-appstoragev2.md)
@@ -160,7 +160,7 @@
        - [Global Popup Independent of UI Components (openPopup)](arkts-popup-and-menu-components-uicontext-popup.md)
      - Binding Modal Pages<!--arkts-bind-modal-->
         - [Modal Page Overview](arkts-modal-overview.md)
-        - [Binding a Semi-Modal Page (bindSheet)](arkts-sheet-page.md)
+        - [Binding a Modal Sheet (bindSheet)](arkts-sheet-page.md)
         - [Binding a Full-Modal Page (bindContentCover)](arkts-contentcover-page.md)
      - [Using Toasts (Toast)](arkts-create-toast.md)
      - [Managing Overlays (OverlayManager)](arkts-create-overlaymanager.md)

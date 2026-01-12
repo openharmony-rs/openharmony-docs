@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_CoastingAxisEvent ArkUI_CoastingAxisEvent
+```
+
 ## Overview
 
 Defines the coasting axis event.

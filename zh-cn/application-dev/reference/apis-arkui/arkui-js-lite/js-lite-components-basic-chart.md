@@ -1,9 +1,9 @@
 # chart
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 图表组件，用于呈现线形图、柱状图界面。
@@ -66,7 +66,7 @@
 | headPoint   | PointStyle     | 否    | 线最前端位置白点的样式和大小。      |
 | topPoint    | PointStyle     | 否    | 最高点的样式和大小。           |
 | bottomPoint | PointStyle     | 否    | 最低点的样式和大小。           |
-| loop        | ChartLoop      | 否    | 设置屏幕显示满时，是否需要重头开始绘制。 |
+| loop        | ChartLoop      | 否    | 设置屏幕显示满时，是否需要从头开始绘制。 |
 
   **表5** ChartLineStyle
 
@@ -81,7 +81,7 @@
 | ----------- | -------------- | -------- | ---- | ---------------------------------- |
 | shape       | string         | circle   | 否    | 高亮点的形状。可选值为：<br/>-&nbsp;circle：圆形。 |
 | size        | &lt;length&gt; | 5px      | 否    | 高亮点的大小。                            |
-| strokeWidth | &lt;length&gt; | 1px      | 否    | 边框宽度                               |
+| strokeWidth | &lt;length&gt; | 1px      | 否    | 边框宽度。                               |
 | strokeColor | &lt;color&gt;  | \#ff0000 | 否    | 边框颜色。                              |
 | fillColor   | &lt;color&gt;  | \#ff0000 | 否    | 填充颜色。                              |
 | display     | boolean        | true     | 否    | 是否高亮显示。<br/>默认值：true，表示高亮显示。                           |

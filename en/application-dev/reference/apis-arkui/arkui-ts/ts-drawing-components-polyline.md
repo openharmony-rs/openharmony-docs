@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Polyline** component is used to draw a polyline.
 
@@ -145,7 +145,7 @@ Sets the stroke dashes. The [attributeModifier](ts-universal-attributes-attribut
 
 | Name| Type            | Mandatory| Description                     |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Stroke dashes.<br>Default value: [] (empty array)<br>Default unit: vp.<br>The **undefined** and **null** values are treated as the default value.|
+| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the polyline outline. Elements alternate between dash length and gap length.<br>Default value: [] (empty array)<br>Default unit: vp.<br>The **undefined** and **null** values are treated as the default value.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
 
 ### strokeDashOffset
 
@@ -235,7 +235,7 @@ Sets the stroke opacity. This attribute can be dynamically set using [attributeM
 
 | Name| Type                                                        | Mandatory| Description                      |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Stroke opacity. The value range is [0.0, 1.0].<br>Default value: opacity set by the [stroke](#stroke) API.<br>If the given value is less than 0.0, the value is 0.0. If the given value is greater than 1.0, the value is 1.0.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**. |
+| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Stroke opacity. The value range is [0.0, 1.0].<br>Default value: opacityset by the [stroke](#stroke) API.<br>If the given value is less than 0.0, the value is 0.0. If the given value is greater than 1.0, the value is 1.0.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
 
 ### strokeWidth
 

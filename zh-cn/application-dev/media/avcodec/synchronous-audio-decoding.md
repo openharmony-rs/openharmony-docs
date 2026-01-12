@@ -16,7 +16,9 @@
 **适用场景**
 
 通常推荐使用异步模式，详细内容请参考[音频解码](audio-decoding.md)。若需要主动请求buffer去送帧，则可以使用同步模式。
+
 将音视频文件解码为PCM码流，通常需要以下步骤：[媒体数据解析](audio-video-demuxer.md) -> 音频解码。
+
 本指南描述音频解码过程：输入音频帧和解码出PCM码流。
 
 ## 开发指导
@@ -395,14 +397,14 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 9. （可选）调用OH_AudioCodec_Flush()刷新解码器。
 
-    调用OH_AudioCodec_Flush()后，解码器仍处于运行态，但会清空当前队列，释放已解码的数据。刷新前获取到的输入输出buffer都无法接续使用。
+   调用OH_AudioCodec_Flush()后，解码器仍处于运行态，但会清空当前队列，释放已解码的数据。刷新前获取到的输入/输出buffer都无法继续使用。
 
-    此时需要调用OH_AudioCodec_Start()重新开始解码。
+   此时需要调用OH_AudioCodec_Start()重新开始解码。
 
-    使用情况：
-    * 之前输入的数据不再使用的场景，例如在解封装seek之后，调用刷新。
-    * 在文件EOS之后，需要调用刷新。
-    * 在执行过程中遇到可继续执行的错误时（即OH_AudioCodec_IsValid 为true）调用。
+   使用情况：
+   * 之前输入的数据不再使用的场景，例如在解封装seek之后，调用刷新。
+   * 在解码输出buffer属性为AVCODEC_BUFFER_FLAGS_EOS后，若想重新使用相同配置进行解码时，需要调用刷新。
+   * 在执行过程中遇到可继续执行的错误时（即OH_AudioCodec_IsValid()为true）可以调用刷新，然后调用OH_AudioCodec_Start()重新开始解码。
 
     ```c++
     // 刷新解码器audioDec_。
@@ -419,7 +421,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 10. （可选）调用OH_AudioCodec_Reset()重置解码器。
 
-    调用OH_AudioCodec_Reset()后，解码器回到初始化的状态，需要先调用OH_AudioCodec_Configure()重新配置，再调用OH_AudioCodec_Start()重新开始解码。
+    调用OH_AudioCodec_Reset()后，解码器回到初始化状态，重置前获取到的输入/输出buffer都无法继续使用，需先调用OH_AudioCodec_Configure()重新配置，再调用OH_AudioCodec_Start()重新开始解码。启动后重新获取输入/输出buffer。
 
     ```c++
     // 重置解码器audioDec_。
@@ -436,7 +438,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 11. 调用OH_AudioCodec_Stop()停止解码器。
 
-    停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入输出buffer都无法接续使用，需要在启动后重新获取输入输出buffer。
+    停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入/输出buffer都无法继续使用，需要在启动后重新获取输入/输出buffer。
 
     ```c++
     // 终止解码器audioDec_。

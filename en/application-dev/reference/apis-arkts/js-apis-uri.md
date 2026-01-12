@@ -49,14 +49,11 @@ Constructs a URI object, and provides methods for determining whether this URI i
 
 Naming format:
 
-A standard URI mainly consists of three parts, as follows:
-[scheme:]scheme-specific-part[#fragment]
+A standard URI mainly consists of **[scheme:]scheme-specific-part[#fragment]**.
 
-Breaking down the URI format further, it can be divided into:
-[scheme:][//authority][path][?query][#fragment]
+An elaborated URI consists of **[scheme:][//authority][path][?query][#fragment]**.
 
-Further refining the URI format, it can be detailed as:
-[scheme:][//[user-info@]host[:port]][path][?query][#fragment]
+A further refined URI consists of **[scheme:][//[user-info@]host[:port]][path][?query][#fragment]**.
 
 - scheme: scheme name, which is separated from scheme-specific-part by a colon (:). The URI that contains the scheme component is an absolute URI, and the URI that does not contain the scheme component is a relative URI. Set this part as required. Example values: **http**, **https**, **ftp**, and **datashare**.
 - scheme-specific-part: specific part of the URI decoding scheme. It is located between [scheme:] and [#fragment] and consists of [//][authority][path][?query]. The URI that starts with a slash (/) is a hierarchical URI, and the URI that does not start with a slash (/) is an opaque URI. Set this part as required.
@@ -398,7 +395,7 @@ The query component follows the question mark (?) and consists of key-value pair
 
 | Type  | Description                         |
 | ------ | ----------------------------- |
-| string | First value obtained. If no value is found, a null object is returned.|
+| string | Value of the first URI query parameter after decoding. If no value is found, a null object is returned.|
 
 **Error codes**
 
@@ -547,7 +544,7 @@ Obtains all non-repeated keys in the query component of this URI. The query comp
 
 | Type       | Description                               |
 | ----------- | ----------------------------------- |
-| string[] | Non-repeated keys in the query component.|
+| string[] | A set of all non-repeated parameter names after decoding in the query component of this URI.|
 
 **Example**
 
@@ -601,7 +598,7 @@ console.info(JSON.stringify(uriInstance.getQueryValues("abc"))); // []
 
 getBooleanQueryValue(key:string,defaultValue:boolean): boolean
 
-Searches for the first value associated with the given key in the query string and converts it to a boolean value.
+Queries the URI query string for the specified key name and returns the corresponding Boolean value.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -680,7 +677,7 @@ Obtains the last segment of this URI. A path includes multiple segments, separat
 
 | Type| Description                         |
 | ---- | ----------------------------- |
-| string  | Last segment of the URI.|
+| string  | The last segment of this URI. If the URI is empty, a null object is returned.|
 
 **Example**
 
@@ -693,7 +690,7 @@ console.info(uriInstance.getLastSegment()); // image.jpg
 
 getSegment(): string[]
 
-Obtains all segments of this URI.
+Obtains all decoded segments in this URI.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -703,7 +700,7 @@ Obtains all segments of this URI.
 
 | Type    | Description                       |
 | -------- | --------------------------- |
-| string[] | All segments of this URI.|
+| string[] | All decoded segments in this URI, each of which does not contain a slash (/) before or after the segment.|
 
 **Example**
 
@@ -727,14 +724,14 @@ Creates a URI based on the provided scheme, scheme-specific-part, and fragment c
 | Name  | Type  | Mandatory| Description                           |
 | -------- | ------ | ---- | ------------------------------- |
 | scheme   | string | Yes  | Scheme of the URI. This parameter must comply with the URI standard.|
-| ssp      | string | Yes  | Scheme-specific-part of the URI.|
-| fragment | string | Yes  | Fragment component of the URI, that is, the content following the number sign (#).|
+| ssp      | string | Yes  | Scheme-specific part of the URI, that is, all content between the protocol separator ":" and the fragment separator "#". This part will be encoded.|
+| fragment | string | Yes  | Fragment component of the URI, that is, the content following the number sign (#). If the fragment is not defined, the fragment is empty. This part will also be encoded.|
 
 **Return value**
 
 | Type| Description                                             |
 | ---- | ------------------------------------------------- |
-| [URI](#uri)  | URI object obtained.|
+| [URI](#uri)  | URI object created based on the given scheme, scheme-specific-part, and fragment components.|
 
 **Error codes**
 

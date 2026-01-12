@@ -1,5 +1,11 @@
 # 语言编译运行时常见问题
 
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## 从rawfile中获取json格式的字符串后，转换成对应的object对象后，再去调用实例方法时直接崩溃(API 9)
 
@@ -22,12 +28,12 @@
 **问题场景**
 
 场景：napi_call_function调用ArkTs函数异常时，系统行为是pending exception而不是Crash。
+
 后果：导致pending时，如果开发者未作安全校验，则会在下一次使用napi方法时出错，且出错行为无法预期，这种情况下应该如何处理？
 
 **解决方案**
 
-考虑ArkTS侧调用一个native方法，在native方法中使用了napi_call_function，如果产生异常系统就jscrash，那么开发者在ArkTS侧try..catch就会失效。
-调用napi_call_function，如果有异常就需要及时返回。
+考虑ArkTS侧调用一个native方法，在native方法中使用了napi_call_function，如果产生异常系统就jscrash，那么开发者在ArkTS侧try..catch就会失效。调用napi_call_function，如果有异常就需要及时返回。
 
 ## 除了napi_call_function会有pending exception，是否还有其他异常场景？(API 10)
 

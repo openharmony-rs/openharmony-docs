@@ -558,9 +558,9 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 
 滚动组件滑动时触发。
 
-从API version 11开始使用。
-
-从API version 12开始废弃不再使用，Scroll组件的onScroll事件在布局之前触发，建议使用[onWillScroll](#onwillscroll12)替代；List、Grid和WaterFlow组件的onScroll事件在布局之后触发，建议使用[onDidScroll](#ondidscroll12)替代。
+> **说明：**
+>
+> 从API version 11开始支持，从API version 12开始废弃，List、Grid和WaterFlow组件的onScroll事件在布局之后触发，建议使用[onDidScroll](#ondidscroll12)替代；Scroll组件的onScroll事件在布局之前触发，建议使用[onWillScroll](#onwillscroll12)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -747,6 +747,18 @@ onDidStopFling(handler: VoidCallback): T
 | ---------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
 | fadingEdgeLength | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | 设置边缘渐隐长度。 |
 
+## EditModeOptions<sup>23+</sup>对象说明
+
+List/Grid组件编辑模式选项属性参数对象。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称           | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
+| enableMultiSelectionAnimation | boolean | 否   | 是 | 是否启用多选聚拢动画。设置true时启用聚拢动画，设置为false时关闭聚拢动画。<br>只有GridItem或ListItem上设置了[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)且responseType设置为[ResponseType](ts-appendix-enums.md#responsetype8).LongPress、[preview](ts-universal-attributes-menu.md#contextmenuoptions10)参数设置为MenuPreviewMode.IMAGE或CustomBuilder时会显示多选聚拢动画。<br>如果GridItem或ListItem上设置了[拖拽事件](ts-universal-events-drag-drop.md)，是否聚拢以[dragPreviewOptions](ts-universal-attributes-drag-drop.md#dragpreviewoptions11)设置为准。<br>默认值：false |
+
 ## EffectEdge<sup>18+</sup>枚举说明
 
 表示当前边缘效果要生效的边缘。
@@ -821,6 +833,29 @@ type OnScrollCallback = (scrollOffset: number, scrollState: ScrollState) => void
 | scrollOffset | number | 是 | 相对于上一帧的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滑动状态。 |
 
+## OnItemDragStartCallback<sup>23+</sup>
+
+type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: number) => CustomBuilder
+
+开始拖拽列表或网格元素时触发的回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名    | 类型                                                      | 必填 | 说明                   |
+| --------- | --------------------------------------------------------- | ---- | ---------------------- |
+| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。         |
+| itemIndex | number                                                    | 是   | 被拖拽列表元素索引值。 |
+
+**返回值：** 
+
+| 类型                          | 说明                                  |
+| ----------------------------- | ------------------------------------ |
+| [CustomBuilder](ts-types.md#custombuilder8) |  返回CustomBuilder用于构建被拖拽元素的拖拽图。返回void表示不能拖拽。|
+
 ## ScrollResult<sup>12+</sup>对象说明
 
 [OnWillScrollCallback](#onwillscrollcallback12)返回值对象。
@@ -837,7 +872,7 @@ type OnScrollCallback = (scrollOffset: number, scrollState: ScrollState) => void
 
 维护List组件或ListItemGroup组件的子组件在主轴方向的大小信息，仅支持一对一绑定到List组件或ListItemGroup组件。
 
-**说明：**
+> **说明：**
 >
 > - 提供的主轴方向大小信息必须与子组件实际在主轴方向的大小一致，子组件在主轴方向大小变化或者增删子组件时都必须通过ChildrenMainSize对象方法通知List组件或ListItemGroup组件。
 

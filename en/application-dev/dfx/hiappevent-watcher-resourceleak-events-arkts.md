@@ -29,7 +29,7 @@ This topic describes how to use the ArkTS APIs provided by HiAppEvent to subscri
 | API| Description|
 | -------- | -------- |
 | addWatcher(watcher: Watcher): AppEventPackageHolder | Adds a watcher to listen for application events.|
-| removeWatcher(watcher: Watcher): void | Removes a watcher to unsubscribe from application events.
+| removeWatcher(watcher: Watcher): void | Removes a watcher to unsubscribe from application events.|
 ## How to Develop
 
 The following example describes how to subscribe to the memory leak event.
@@ -99,44 +99,211 @@ The following example describes how to subscribe to the memory leak event.
 
    The sample code is as follows:
 
-   ```ts
-   import { hidebug } from '@kit.PerformanceAnalysisKit';
+   <!-- @[PssLeakEventTS_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
    
-   @Entry
-   @Component
-   struct Index {
-     @State leakedArray: string[][] = [];
-   
-     build() {
-       Column() {
-         Row() {
-           Column() {
-             Button("pss leak")
-               .onClick(() => {
-                 hidebug.setAppResourceLimit("pss_memory", 1024, true);
-                 for (let i = 0; i < 20 * 1024; i++) {
-                   this.leakedArray.push(new Array(1).fill("leak"));
-                 }
-               })
-             Button("js leak")
-               .onClick(() => {
-                 for (let i = 0; i < 10000; i++) {
-                   this.leakedArray.push(new Array(500000).fill(1));
-                 }
-               })
-           }
-         }
-         .height('100%')
-         .width('100%')
+   ``` TypeScript
+   Button('pss leak')
+       .type(ButtonType.Capsule)
+       .margin({
+         top: 20
+       })
+       .backgroundColor('#0D9FFB')
+       .width('80%')
+       .height('5%')
+       .onClick(() => {
+         // Set a simple resource leak scenario.
+         hilog.info(0x0000, 'testTag', 'click pss leak button');
+         testNapi.leakMB(3072);
+       })
+   Button('js leak')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       for (let i = 0; i < 10000; i++) {
+         this.leakedArray.push(new Array(500000).fill(1));
        }
-     }
+     })
+   ```
+
+2. Add the PSS leak-related content.
+
+   Edit the **napi_init.cpp** file.
+   
+   - Add the following header files:
+
+   <!-- @[Pss_Leak_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include <iostream>
+   #include <fstream>
+   #include <sstream>
+   #include <thread>
+   ```
+
+   - Define the PSS leak-related methods.
+
+   <!-- @[Pss_Leak](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // Read the PSS field in /proc/self/smaps_rollup to calculate the PSS of the current process (unit: KB).
+   static int GetCurrentProcessPss()
+   {
+       std::ifstream smapsFile("/proc/self/smaps_rollup");
+       if (!smapsFile.is_open()) {
+           std::cerr << "Failed to open /proc/self/smaps_rollup" << std::endl;
+           return 0;
+       }
+       std::string line;
+       int totalPss = 0;
+       while (std::getline(smapsFile, line)) {
+           if (line.find("Pss:") == 0) {
+               std::istringstream iss(line);
+               std::string label;
+               int pss;
+               iss >> label >>pss;
+               totalPss += pss;
+           }
+       }
+       smapsFile.close();
+       std::cout << "Current pss: " << totalPss << " KB\r";
+       std::cout.flush();
+       return totalPss;
+   }
+   
+   // Read the number of FDs of the current process.
+   static int GetCurrentFd()
+   {
+       std::ifstream fdFile("/proc/self/fd_num");
+       if (!fdFile.is_open()) {
+           std::cerr << "Failed to open /proc/self/fd_num" << std::endl;
+           return 0;
+       }
+       std::string line;
+       int totalPss = 0;
+       std::getline(fdFile, line);
+       fdFile.close();
+       std::cout << "Current fd: " << line << std::endl;
+       std::cout.flush();
+       return std::stoi(line);
+   }
+   
+   // Allocate memory of the specified size and write data (using 'a') to the memory to increase the native memory.
+   static bool InjectNativeLeakMallocWithSize(int size, char *p)
+   {
+       const size_t maxSafe = 1073741824;
+       if (size < 0 || size > maxSafe) {
+           printf("InjectNativeLeakMallocWithSize invalid size\n");
+           return false;
+       }
+       p = (char *) malloc(size + 1);
+       if (!p) {
+           printf("InjectNativeLeakMallocWithSize malloc failed\n");
+           return false;
+       }
+       void* err = memset(p, 'a', size);
+       if (err == nullptr) {
+           printf("InjectNativeLeakMallocWithSize memset failed\n");
+           return false;
+       }
+       return true;
+   }
+   
+   // Apply for or release memory cyclically so that the PSS of the process keeps approaching the target.
+   static void InjectNativeLeakMallocUntil(int target)
+   {
+       constexpr int leakSizePerTime = 5000000;
+       std::vector<char *> mems;
+       int curPss = GetCurrentProcessPss();
+       while (curPss != 0) {
+           char *p = nullptr;
+           if (curPss < target) {
+               if (!InjectNativeLeakMallocWithSize(leakSizePerTime, p)) {
+                   printf("InjectNativeLeakMallocUntil target = %d failed\n", target);
+               }
+               mems.push_back(p);
+               std::cout << "Inject size: " << leakSizePerTime << ", currentSize: " << mems.size() << std::endl;
+           } else {
+               if (mems.size() > 0) {
+                   char *dst = mems[0];
+                   mems.erase(mems.begin());
+                   free(dst);
+               }
+               std::cout << "Free size: " << leakSizePerTime << ", currentSize: " << mems.size() << std::endl;
+           }
+           curPss = GetCurrentProcessPss();
+       }
+       std::cout << std::endl;
+       printf("InjectNativeLeakMallocUntil target = %d success\n", target);
+   }
+   
+   // Start the InjectNativeLeakMallocUntil thread executed in the background to make the native memory usage close to leakSize.
+   static void StartNativeLeak(int leakSize)
+   {
+       std::cout << "Start inject malloc until" << leakSize << "KB" << std::endl;
+       std::thread t1(InjectNativeLeakMallocUntil, leakSize);
+       t1.detach();
+       std::cout << "Inject finished." << std::endl;
+   }
+   
+   // N-API export method.
+   static napi_value LeakMB(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1];
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+       if (argc < 1) {
+           napi_throw_type_error(env, nullptr, "Expected 1 argument");
+           return nullptr;
+       }
+       double x = 0;
+       if (napi_get_value_double(env, args[0], &x) != napi_ok) {
+           napi_throw_type_error(env, nullptr, "Argument must be a number");
+           return nullptr;
+       }
+       const size_t kilobyte = 1024;
+       StartNativeLeak(static_cast<size_t>(x * kilobyte));
+       napi_value rtn;
+       napi_get_undefined(env, &rtn);
+       return rtn;
    }
    ```
 
-2. Click the **Run** button in DevEco Studio to run the project, click the **pss leak** button, and then a PSS memory leak event will be reported after 15 to 30 minutes.
+   - Perform the initialization.
+
+   <!-- @[Pss_Leak_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           // ...
+           { "leakMB", nullptr, LeakMB, nullptr, nullptr, nullptr, napi_default, nullptr}
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   ```
+	
+   Edit the **Index.d.ts** file.
+
+   - Add the following type declaration:
+
+   <!-- @[Pss_Leak_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
+   export const leakMB: (size: number) => void;
+   ```
+
+3. Click the **Run** button in DevEco Studio to run the project, click the **pss leak** button, and then a PSS memory leak event will be reported after 15 to 30 minutes.
+
    For the same application, the resource leak event can be reported at most once within 24 hours. If the memory leak needs to be reported again within a shorter time, restart the device.
 
-3. After a PSS memory leak event is reported, the system calls **onReceive()**. You can view the following event information in the **Log** window.
+4. After a PSS memory leak event is reported, the system calls **onReceive()**. You can view the following event information in the **Log** window.
 
    ```text
    HiAppEvent onReceive: domain=OS
@@ -146,10 +313,11 @@ The following example describes how to subscribe to the memory leak event.
 
    As shown in the preceding information, **eventInfo** contains the [params](hiappevent-watcher-resourceleak-events.md#params) field of the resource leak event. You can determine the current leak type based on the **resource_type** field in **eventInfo**.
 
-4. Enable **System resource leak log** in **Developer options**. (You need to restart the device to enable or disable this functionality.) Click the **Run** button in DevEco Studio to run the project. Click **js leak** and wait for 3 to 5 seconds. The application will exit unexpectedly. After the application restarts, the system reports a JS memory leak event.
+5. Enable **System resource leak log** in **Developer options**. (You need to restart the device to enable or disable this functionality.) Click the **Run** button in DevEco Studio to run the project. Click **js leak** and wait for 3 to 5 seconds. The application will exit unexpectedly. After the application restarts, the system reports a JS memory leak event.
+
    For the same application, the JS memory leak event can be reported at most once within 24 hours. If the memory leak needs to be reported again within a shorter time, restart the device.
 
-5. After the JS memory leak event is reported, the system calls the **onReceive** function of the application. You can view the following event information in the **Log** window.
+6. After the JS memory leak event is reported, the system calls the **onReceive** function of the application. You can view the following event information in the **Log** window.
 
    ```text
    HiAppEvent onReceive: domain=OS
@@ -169,7 +337,7 @@ Since API 14, you can change the log file name extension to **.rawheap** and imp
 
 You can select either of the following methods:
 
-   Method 1: Configure the following environment variables in the **AppScope/app.json5** file of your application:
+   Method 1: Configure the following environment variables in the **AppScope/app.json5** file:
 
    ```text
    "appEnvironments": [

@@ -6,7 +6,7 @@
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
-- [Introduction to ArkData](data-mgmt-overview.md)
+- [About This Kit](data-mgmt-overview.md)
 - Unified Data Definition<!--uniform-data-definition-->
   - [Unified Data Definition Overview](unified-data-definition-overview.md)
   - [UTDs (ArkTS)](uniform-data-type-descriptors.md)
@@ -29,6 +29,8 @@
   - [Cross-Device Sync of KV Stores (ArkTS)](data-sync-of-kv-store.md)
   - [Cross-Device Sync of RDB Stores (ArkTS)](data-sync-of-rdb-store.md)
   - [Cross-Device Sync of Distributed Data Objects (ArkTS)](data-sync-of-distributed-data-object.md)
+<!--RP1-->
+<!--RP1End-->
 - Data Reliability and Security<!--data-reliability-security-->
   - [Data Reliability and Security Overview](data-reliability-security-overview.md)
   - [Database Backup and Restore (ArkTS)](data-backup-and-restore.md)
@@ -52,3 +54,4 @@
 - [Application Data Vectorization (ArkTS)](aip-data-intelligence-embedding.md)
 - [SQLite Debugging Tool](sqlite-database-debug-tool.md)
 - [ArkData Glossary](data-terminology.md)
+- [ArkData FAQs](data-faq.md)

@@ -565,7 +565,7 @@ Starts scanning. This API uses a promise to return the result.
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | scannerId | string | Yes| Scanner ID.|
-| batchMode | boolean | Yes| Whether to use the batch processing mode.|
+| batchMode | boolean | Yes| Whether to use the batch processing mode. The value **true** indicates that the batch processing mode is used, and **false** indicates the opposite.|
 
 **Return value**
 | **Type**| **Description**|

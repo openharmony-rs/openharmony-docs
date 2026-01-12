@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回的SSL客户端证书请求事件用户处理功能对象。示例代码参考[onClientAuthenticationRequest事件](./arkts-basic-components-web-events.md#onclientauthenticationrequest9)。
+Web组件返回的SSL客户端证书请求事件的处理对象。示例代码参考[onClientAuthenticationRequest事件](./arkts-basic-components-web-events.md#onclientauthenticationrequest9)。
 
 > **说明：**
 >
@@ -14,7 +14,7 @@ Web组件返回的SSL客户端证书请求事件用户处理功能对象。示�
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## constructor<sup>9+</sup>
 
@@ -84,6 +84,14 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| strin
 | ------- | ------ | ---- | ------- |
 | identity | string | 是    | 用于识别凭据的唯一标识值。 |
 | credentialTypeOrCertChainFile | [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) \| string | 是 | 类型为[CredentialType](./arkts-basic-components-web-e.md#credentialtype22)时，代表凭据类型；类型为string时，表示证书链文件路径。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息                   |
+| -------- | ------------------------- |
+|  801     | Capability not supported. |
 
 ## cancel<sup>9+</sup>
 

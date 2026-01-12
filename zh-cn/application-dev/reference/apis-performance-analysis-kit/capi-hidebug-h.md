@@ -49,12 +49,14 @@
 | [HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug_GraphicsMemorySummary *summary)](#oh_hidebug_getgraphicsmemorysummary) | - | 获取应用显存占用的详细数据。 |
 | [typedef void (\*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks)](#oh_hidebug_threadlitesamplingcallback) | OH_HiDebug_ThreadLiteSamplingCallback | 轻量级Perf采样栈内容的回调函数定义。注意：采样数据仅在该回调函数执行期间有效，若需在函数外使用，务必对采样栈内容进行深拷贝。 |
 | [HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)](#oh_hidebug_requestthreadlitesampling) | - | 对指定的数个线程进行Perf采样，并在调用结束后返回采样栈内容。注意：调用该函数后会阻塞当前线程，直至采样过程完全结束。系统对该接口的调用次数有严格限制，频繁调用超出限额后，将返回[HIDEBUG_RESOURCE_UNAVAILABLE](capi-hidebug-type-h.md#hidebug_errorcode)错误码。 |
+| [uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)](#oh_hidebug_setcrashobj) | - | 将维测信息添加到崩溃日志中，与[OH_HiDebug_ResetCrashObj](capi-hidebug-h.md#oh_hidebug_resetcrashobj)配对使用。若程序在OH_HiDebug_SetCrashObj与OH_HiDebug_ResetCrashObj之间发生崩溃，会将OH_HiDebug_SetCrashObj设置的维测信息添加到记录本次崩溃的日志中。 |
+| [void OH_HiDebug_ResetCrashObj(uint64_t crashObj)](#oh_hidebug_resetcrashobj) | - | 将维测信息对象还原到使用OH_HiDebug_SetCrashObj之前的状态。 |
 
 ## 函数说明
 
 ### OH_HiDebug_GetSystemCpuUsage()
 
-```
+```c
 double OH_HiDebug_GetSystemCpuUsage()
 ```
 
@@ -72,7 +74,7 @@ double OH_HiDebug_GetSystemCpuUsage()
 
 ### OH_HiDebug_GetAppCpuUsage()
 
-```
+```c
 double OH_HiDebug_GetAppCpuUsage()
 ```
 
@@ -90,7 +92,7 @@ double OH_HiDebug_GetAppCpuUsage()
 
 ### OH_HiDebug_GetAppThreadCpuUsage()
 
-```
+```c
 HiDebug_ThreadCpuUsagePtr OH_HiDebug_GetAppThreadCpuUsage()
 ```
 
@@ -108,7 +110,7 @@ HiDebug_ThreadCpuUsagePtr OH_HiDebug_GetAppThreadCpuUsage()
 
 ### OH_HiDebug_FreeThreadCpuUsage()
 
-```
+```c
 void OH_HiDebug_FreeThreadCpuUsage(HiDebug_ThreadCpuUsagePtr *threadCpuUsage)
 ```
 
@@ -118,7 +120,6 @@ void OH_HiDebug_FreeThreadCpuUsage(HiDebug_ThreadCpuUsagePtr *threadCpuUsage)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -127,7 +128,7 @@ void OH_HiDebug_FreeThreadCpuUsage(HiDebug_ThreadCpuUsagePtr *threadCpuUsage)
 
 ### OH_HiDebug_GetSystemMemInfo()
 
-```
+```c
 void OH_HiDebug_GetSystemMemInfo(HiDebug_SystemMemInfo *systemMemInfo)
 ```
 
@@ -137,7 +138,6 @@ void OH_HiDebug_GetSystemMemInfo(HiDebug_SystemMemInfo *systemMemInfo)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -146,7 +146,7 @@ void OH_HiDebug_GetSystemMemInfo(HiDebug_SystemMemInfo *systemMemInfo)
 
 ### OH_HiDebug_GetAppNativeMemInfo()
 
-```
+```c
 void OH_HiDebug_GetAppNativeMemInfo(HiDebug_NativeMemInfo *nativeMemInfo)
 ```
 
@@ -156,7 +156,6 @@ void OH_HiDebug_GetAppNativeMemInfo(HiDebug_NativeMemInfo *nativeMemInfo)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -165,7 +164,7 @@ void OH_HiDebug_GetAppNativeMemInfo(HiDebug_NativeMemInfo *nativeMemInfo)
 
 ### OH_HiDebug_GetAppNativeMemInfoWithCache()
 
-```
+```c
 void OH_HiDebug_GetAppNativeMemInfoWithCache(HiDebug_NativeMemInfo *nativeMemInfo, bool forceRefresh)
 ```
 
@@ -174,7 +173,6 @@ void OH_HiDebug_GetAppNativeMemInfoWithCache(HiDebug_NativeMemInfo *nativeMemInf
 获取应用程序进程的内存信息，该接口存在缓存机制以提高接口性能。缓存值的有效期为5分钟。注意：由于该接口需要读取/proc/{pid}/smaps_rollup节点信息，耗时较长，建议不要在主线程中直接调用。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -185,7 +183,7 @@ void OH_HiDebug_GetAppNativeMemInfoWithCache(HiDebug_NativeMemInfo *nativeMemInf
 
 ### OH_HiDebug_GetAppMemoryLimit()
 
-```
+```c
 void OH_HiDebug_GetAppMemoryLimit(HiDebug_MemoryLimit *memoryLimit)
 ```
 
@@ -195,7 +193,6 @@ void OH_HiDebug_GetAppMemoryLimit(HiDebug_MemoryLimit *memoryLimit)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -204,7 +201,7 @@ void OH_HiDebug_GetAppMemoryLimit(HiDebug_MemoryLimit *memoryLimit)
 
 ### OH_HiDebug_StartAppTraceCapture()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64_t tags, uint32_t limitSize, char* fileName, uint32_t length)
 ```
 
@@ -213,7 +210,6 @@ HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64
 启动应用trace采集。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -233,7 +229,7 @@ HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64
 
 ### OH_HiDebug_StopAppTraceCapture()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()
 ```
 
@@ -251,7 +247,7 @@ HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()
 
 ### OH_HiDebug_GetGraphicsMemory()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)
 ```
 
@@ -260,7 +256,6 @@ HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)
 获取应用GPU显存大小。注意：由于该接口涉及多次跨进程通信，其耗时可能超过1秒，建议不要在主线程中直接调用该接口。
 
 **起始版本：** 14
-
 
 **参数：**
 
@@ -276,7 +271,7 @@ HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)
 
 ### OH_HiDebug_BacktraceFromFp()
 
-```
+```c
 int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, void** pcArray, int size)
 ```
 
@@ -285,7 +280,6 @@ int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, v
 根据给定的fp地址进行栈回溯，该函数异步信号安全。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -304,7 +298,7 @@ int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, v
 
 ### OH_HiDebug_SymbolicAddressCallback()
 
-```
+```c
 typedef void (*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame)
 ```
 
@@ -314,18 +308,17 @@ typedef void (*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const Hi
 
 **起始版本：** 20
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| void* pc | 传入[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口的需要解析的pc地址。 |
-|  void* arg | 传入[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口的arg值。 |
-| [ const HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)* frame | 由传入[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口的pc地址解析后的得到栈信息[HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)指针，该指针指向内容仅在该函数作用域内有效。 |
+| void\* pc | 传入[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口的需要解析的pc地址。 |
+| void\* arg | 传入[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口的arg值。 |
+| [const HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)\* frame | 由传入[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口的pc地址解析后的得到栈信息[HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)指针，该指针指向内容仅在该函数作用域内有效。 |
 
 ### OH_HiDebug_SymbolicAddress()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, void* pc, void* arg, OH_HiDebug_SymbolicAddressCallback callback)
 ```
 
@@ -334,7 +327,6 @@ HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, vo
 通过给定的pc地址获取详细的符号信息，该函数非异步信号安全。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -353,7 +345,7 @@ HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, vo
 
 ### OH_HiDebug_CreateBacktraceObject()
 
-```
+```c
 HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)
 ```
 
@@ -371,7 +363,7 @@ HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)
 
 ### OH_HiDebug_DestroyBacktraceObject()
 
-```
+```c
 void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)
 ```
 
@@ -381,7 +373,6 @@ void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)
 
 **起始版本：** 20
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -390,7 +381,7 @@ void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)
 
 ### OH_HiDebug_SetMallocDispatchTable()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatch *dispatchTable)
 ```
 
@@ -399,7 +390,6 @@ HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatc
 设置基础库C库MallocDispatch表，用于替换开发者自定义的内存操作函数（例如：malloc/free/calloc/realloc/mmap/munmap)。MallocDispatch表是基础库C库中封装malloc/calloc/realloc/free等内存操作函数的结构体。HiDebug_MallocDispatch只是MallocDispatch结构体的一部分。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -415,7 +405,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatc
 
 ### OH_HiDebug_GetDefaultMallocDispatchTable()
 
-```
+```c
 HiDebug_MallocDispatch* OH_HiDebug_GetDefaultMallocDispatchTable(void)
 ```
 
@@ -433,7 +423,7 @@ HiDebug_MallocDispatch* OH_HiDebug_GetDefaultMallocDispatchTable(void)
 
 ### OH_HiDebug_RestoreMallocDispatchTable()
 
-```
+```c
 void OH_HiDebug_RestoreMallocDispatchTable(void)
 ```
 
@@ -445,7 +435,7 @@ void OH_HiDebug_RestoreMallocDispatchTable(void)
 
 ### OH_HiDebug_GetGraphicsMemorySummary()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug_GraphicsMemorySummary *summary)
 ```
 
@@ -454,7 +444,6 @@ HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug
 获取应用显存占用的详细数据。
 
 **起始版本：** 21
-
 
 **参数：**
 
@@ -471,7 +460,7 @@ HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug
 
 ### OH_HiDebug_ThreadLiteSamplingCallback()
 
-```
+```c
 typedef void (*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks)
 ```
 
@@ -485,11 +474,11 @@ typedef void (*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* stacks | 采样得到的调用栈内容。 |
+| const char\* stacks | 采样得到的调用栈内容。 |
 
 ### OH_HiDebug_RequestThreadLiteSampling()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)
 ```
 
@@ -510,6 +499,49 @@ HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerCon
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br> HIDEBUG_SUCCESSS：采样成功完成。<br>HIDEBUG_INVALID_ARGUMENT：无效参数。<br>         HIDEBUG_NOT_SUPPORTED：当前设备不支持Perf采样。<br>         HIDEBUG_UNDER_SAMPLING：已有采样任务正在执行中。<br>         HIDEBUG_RESOURCE_UNAVAILABLE：采样资源不足或已达调用上限。 |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br> HIDEBUG_SUCCESS：采样成功完成。<br>HIDEBUG_INVALID_ARGUMENT：无效参数。<br>         HIDEBUG_NOT_SUPPORTED：当前设备不支持Perf采样。<br>         HIDEBUG_UNDER_SAMPLING：已有采样任务正在执行中。<br>         HIDEBUG_RESOURCE_UNAVAILABLE：采样资源不足或已达调用上限。 |
+
+### OH_HiDebug_SetCrashObj()
+
+```c
+uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)
+```
+
+**描述**
+
+将维测信息添加到崩溃日志中，与[OH_HiDebug_ResetCrashObj](capi-hidebug-h.md#oh_hidebug_resetcrashobj)配对使用。若程序在OH_HiDebug_SetCrashObj与OH_HiDebug_ResetCrashObj之间发生崩溃，会将OH_HiDebug_SetCrashObj设置的维测信息添加到记录本次崩溃的日志中。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [HiDebug_CrashObjType](capi-hidebug-type-h.md#hidebug_crashobjtype) type | 维测信息的数据类型[HiDebug_CrashObjType](capi-hidebug-type-h.md#hidebug_crashobjtype)。 |
+| void* addr | 维测信息的地址，崩溃时该地址必须保持有效。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| uint64_t | 上次设置的维测信息的对象，如果上次没有设置则为0。 |
+
+### OH_HiDebug_ResetCrashObj()
+
+```c
+void OH_HiDebug_ResetCrashObj(uint64_t crashObj)
+```
+
+**描述**
+
+将维测信息对象还原到使用OH_HiDebug_SetCrashObj之前的状态。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| uint64_t crashObj | 函数OH_HiDebug_SetCrashObj的返回值。 |
 
 

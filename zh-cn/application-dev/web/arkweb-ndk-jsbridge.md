@@ -7,6 +7,7 @@
 <!--Adviser: @HelloShuo-->
 
 本指导适用于ArkWeb应用侧与前端网页通信场景，开发者可根据应用架构选择使用ArkWeb Native接口完成业务通信机制（以下简称Native JSBridge）。
+
 针对JSBridge进行性能优化可参考[JSBridge优化解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-web-develop-optimization#section58781855115017)
 
 ## 适用的应用架构
@@ -44,22 +45,24 @@
 
 * ArkTS侧
 
-  <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->
+  <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->    
   
   ``` TypeScript
+  // 自定义webTag，在WebviewController创建时作为入参传入，建立controller与webTag的映射关系
   webTag: string = 'ArkWeb1';
   controller: webview.WebviewController = new webview.WebviewController(this.webTag);
-  @State testObjtest: testObj = new testObj();
-  
+  // ...
+  // 在aboutToAppear方法中，通过Node-API接口将webTag传入C++侧，C++侧使用webTag作为ArkWeb组件的唯一标识
   aboutToAppear() {
     console.info('aboutToAppear');
     //初始化web Native Development Kit
     testNapi.nativeWebInit(this.webTag);
+  }
   ```
 
 * C++侧
 
-  <!-- @[parse_and_store_webtags](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->
+  <!-- @[parse_and_store_webtags](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->    
   
   ``` C++
   // 解析存储webTag
@@ -81,8 +84,8 @@
   
       // 将webTag保存在实例对象中
       jsbridge_object_ptr = std::make_shared<JSBridgeObject>(webTagValue);
-      if (jsbridge_object_ptr)
-          jsbridge_object_ptr->Init();
+      // ...
+  }
   ```
 
 ### 使用Native接口获取API结构体
@@ -807,7 +810,7 @@
 
 ### 使用Native接口获取API结构体
 
-ArkWeb Native侧得先获取API结构体，才能调用结构体里的Native API。ArkWeb Native侧API通过函数[OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)获取，根据入参type不同，可分别获取[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)、[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)函数指针结构体。其中，[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)对应ArkTS侧[web_webview.WebviewController API](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md)，[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)对应ArkTS侧[ArkWeb组件API](../reference/apis-arkweb/arkts-basic-components-web.md)。
+ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native API。ArkWeb Native侧API通过函数[OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)获取，根据入参type不同，可分别获取[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)、[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)函数指针结构体。其中，[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)对应ArkTS侧[web_webview.WebviewController API](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md)，[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)对应ArkTS侧[ArkWeb组件API](../reference/apis-arkweb/arkts-basic-components-web.md)。
 
   ```c++
   static ArkWeb_ControllerAPI *controller = nullptr;

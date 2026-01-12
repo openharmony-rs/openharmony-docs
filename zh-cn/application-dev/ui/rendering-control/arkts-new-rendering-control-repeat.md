@@ -8,15 +8,19 @@
 
 > **说明：**
 > 
-> Repeat从API version 12开始支持。
+> - Repeat从API version 12开始支持。
 > 
-> 本文档仅为开发指南。组件接口规范见[Repeat API参数说明](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)。
+> - 本文档仅为开发指南。组件接口规范见[Repeat API参数说明](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)。
+> 
+> - 由于不同设备屏幕宽高不同，本指南内的示例的实际效果和截图有偏差。
 
 ## 概述
 
-Repeat基于数组类型数据来进行循环渲染，一般与容器组件配合使用。
+Repeat基于数组类型数据来进行循环渲染，一般与滚动容器组件配合使用。
 
-Repeat根据容器组件的**有效加载范围**（屏幕可视区域+预加载区域）加载子组件。当容器滑动/数组改变时，Repeat会根据父容器组件的布局过程重新计算有效加载范围，并管理列表子组件节点的创建与销毁。Repeat通过组件节点更新/复用从而优化性能表现，详细描述见[节点更新/复用能力说明](#节点更新复用能力说明)。
+Repeat根据容器组件的**显示区域和预加载区域**加载子组件。当容器滑动/数组改变时，Repeat会根据父容器组件的布局过程重新计算显示区域和预加载区域范围，并管理列表子组件节点的创建与销毁。Repeat通过组件节点更新/复用从而优化性能表现，详细描述见[节点更新/复用能力说明](#节点更新复用能力说明)。
+
+本文档依次介绍了Repeat的[基础特性](#基础特性)、[高级特性](#高级特性)、[常见使用场景](#常见使用场景)和[常见问题](#常见问题)，开发者可以按需阅读。在[子组件生成规则](#子组件生成规则)小节中，给出了简单的示例，可以帮助开发者快速上手Repeat的使用。
 
 > **说明：**
 > 
@@ -24,27 +28,32 @@ Repeat根据容器组件的**有效加载范围**（屏幕可视区域+预加载
 > - Repeat直接监听状态变量的变化，而LazyForEach需要开发者实现[IDataSource](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#idatasource)接口，手动管理子组件内容/索引的修改。
 > - Repeat还增强了节点复用能力，提高了长列表滑动和数据更新的渲染性能。
 > - Repeat增加了渲染模板（template）的能力，在同一个数组中，根据开发者自定义的模板类型（template type）渲染不同的子组件。
+>
+> 相较于LazyForEach，Repeat用法更加简单，渲染性能更好，建议开发者优先使用Repeat。
 
 ## 使用限制
 
 - Repeat必须在滚动类容器组件内使用，仅有[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)以及[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)组件支持Repeat懒加载场景。<br/>
 循环渲染只允许创建一个子组件，子组件应当是允许包含在容器组件中的子组件。例如：Repeat与[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)组件配合使用时，子组件必须为[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)组件。
-- Repeat不支持V1装饰器，混用V1装饰器会导致渲染异常。
+- Repeat[懒加载模式](#懒加载能力说明)不支持与[状态管理（V1）](../state-management/arkts-state-management-overview.md#状态管理v1)配合使用，否则会导致渲染异常。
 - Repeat当前不支持动画效果。
 - 滚动容器组件内只能包含一个Repeat。以List为例，不建议同时包含ListItem、ForEach、LazyForEach，不建议同时包含多个Repeat。
-- 当Repeat与自定义组件或[@Builder](../state-management/arkts-builder.md)函数混用时，必须将RepeatItem类型整体进行传参，组件才能监听到数据变化。详见[Repeat与@Builder混用](#repeat与builder混用)。
+- 当Repeat与自定义组件或[@Builder](../state-management/arkts-builder.md)函数混用时，必须将RepeatItem类型整体进行传参，组件才能监听到数据变化。详见[与@Builder混用时状态变量未刷新](#与builder混用时状态变量未刷新)。
+- Repeat子组件复用时不会触发[aboutToRecycle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)、[aboutToReuse](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期。
 
-> **注意：**
+> **说明：**
 >
 > Repeat功能依赖数组属性的动态修改。如果数组对象被密封（sealed）或冻结（frozen），将导致Repeat部分功能失效，因为密封操作会禁止对象扩展属性并锁定现有属性的配置。
 >
-> 常见触发场景：<br>1）可观察数据的转换：使用[makeObserved](../../reference/apis-arkui/js-apis-StateManagement.md#makeobserved)将普通数组（如[collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)）转换为可观察数据时，某些实现会自动密封数组。<br>2）主动对象保护：显式调用`Object.seal()`或`Object.freeze()`防止数组被修改。
+> 常见触发场景：<br>1）可观察数据的转换：使用[makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)将普通数组（如[collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)）转换为可观察数据时，某些实现会自动密封数组。<br>2）主动对象保护：显式调用`Object.seal()`或`Object.freeze()`防止数组被修改。
 
-## 循环渲染能力说明
+## 基础特性
 
-Repeat子组件由`.each()`和`.template()`属性定义，只允许包含一个子组件。当页面首次渲染时，Repeat根据当前的有效加载范围（屏幕可视区域+预加载区域）按需创建子组件。如下图所示：
+### 子组件生成规则
 
-![Repeat-Render](figures/Repeat-Render.png)
+Repeat通过[.each()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#each)和[.template()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#template)属性定义子组件生成规则。每个子组件必须有且仅有一个根节点。当Repeat仅包含一种类型的子组件时，可使用`.each()`属性定义子组件的生成规则。当Repeat包含多种类型的子组件时，可使用`.template()`属性分别定义不同类型子组件的生成规则。
+
+**单一类型子组件**
 
 `.each()`适用于只需要循环渲染一种子组件的场景。下列示例代码使用Repeat组件进行简单的循环渲染。
 
@@ -86,12 +95,17 @@ struct RepeatExample {
 
 ![Repeat-Example-With-Each](figures/Repeat-Example-With-Each.png) 
 
-Repeat提供渲染模板（template）能力，可以在同一个数据源中渲染多种子组件。每个数据项会根据`.templateId()`得到template type，从而渲染type对应的`.template()`中的子组件。
+**多种类型子组件**
 
-- `.each()`等价于template type为空字符串的`.template()`。
-- 当多个template type相同时（包括template type为空字符串），Repeat仅生效最新定义的`.each()`或`.template()`。
-- 如果`.templateId()`缺省，或`templateId()`计算得到的template type不存在，则template type取默认值空字符串。
-- 只有相同template type的节点可以互相复用。
+Repeat提供渲染模板（template）能力，可以在同一个数据源中渲染多种子组件。每个数据项会根据[.templateId()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#templateid)得到template type，从而渲染type对应的`.template()`中的子组件。
+
+> **说明:**
+>
+> - `.template()`需要在[懒加载模式](#懒加载能力说明)下使用。
+> - `.each()`等价于template type为空字符串的`.template()`。
+> - 当多个template type相同时（包括template type为空字符串），Repeat仅生效最新定义的`.each()`或`.template()`。
+> - 如果`.templateId()`缺省，或`templateId()`计算得到的template type不存在，则template type取默认值空字符串。
+> - 只有相同template type的节点可以互相复用。
 
 下列示例代码中使用Repeat组件进行循环渲染，并使用了多个渲染模板。
 
@@ -147,70 +161,21 @@ struct RepeatExampleWithTemplates {
 
 ![Repeat-Example-With-Templates](figures/Repeat-Example-With-Templates.png)
 
-## 节点更新/复用能力说明
+### 键值生成规则
 
-> **说明：**
-> 
-> Repeat子组件的节点操作分为四种：节点创建、节点更新、节点复用、节点销毁。其中，节点更新和节点复用的区别为：
-> 
-> - 节点更新：节点不销毁，状态变量驱动节点属性更新。
-> - 节点复用：旧节点不销毁，存储在空闲节点缓存池；需要创建新节点时，直接从缓存池中获取可复用的旧节点，并做相应的节点属性更新。
-
-当**滚动容器组件滑动/数组改变**时，Repeat将失效的子组件节点（离开有效加载范围）加入空闲节点缓存池中，即断开组件节点与页面组件树的连接但不销毁节点。在需要生成新的组件时，对缓存池里的组件节点进行复用。
-
-Repeat组件默认开启节点复用功能。从API version 18开始，可以通过配置`reusable`字段选择是否启用复用功能。为了提高渲染性能，建议开发者保持节点复用。代码示例见[VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)。
-
-从API version 18开始，Repeat支持L2缓存自定义组件冻结。详细描述见[缓存池自定义组件冻结](../state-management/arkts-custom-components-freezeV2.md#repeat)。
-
-下面通过典型的[滑动场景](#滑动场景)和[数据更新场景](#数据更新场景)示例来展示Repeat子组件的渲染逻辑。
-
-定义长度为20的数组，数组前5项的template type为`aa`，渲染浅蓝色组件，其余项为`bb`，渲染橙色组件。`aa`缓存池容量为3，`bb`缓存池容量为4。容器组件的预加载区域大小为2。为了便于理解，在`aa`和`bb`缓存池中分别加入一个和两个空闲节点。
-
-首次渲染，列表的节点状态如下图所示（template type在图中简写为ttype）。
-
-![Repeat-Reuse-1](figures/repeat-reuse-1.png)
-
-### 滑动场景
-
-将屏幕向下滑动一个节点的距离，Repeat会复用缓存池中的节点。
-
-1）index=10的节点进入有效加载范围，计算出其template type为`bb`。由于`bb`缓存池非空，Repeat会从`bb`缓存池中取出一个空闲节点进行复用，更新其节点属性（数据item和索引index），该子组件中涉及数据item和索引index的其他孙子组件会根据状态管理V2的规则做同步更新。<br/>
-2）index=0的节点滑出了有效加载范围。当UI主线程空闲时，会检查`aa`缓存池是否已满，此时`aa`缓存池未满，将该节点加入到对应的缓存池中。<br/>
-3）其余节点仍在有效加载范围，均只更新索引index。如果对应template type的缓存池已满，Repeat会在UI主线程空闲时销毁掉多余的节点。
-
-![Repeat-Reuse-2](figures/repeat-reuse-2.png)
-
-### 数据更新场景
-
-在上一小节的基础上做如下的数组更新操作，删除index=4的节点，修改节点数据`07`为`new`。
-
-1）删除index=4的节点后，节点`05`前移。根据template type的计算规则，新的`05`节点的template type变为`aa`，直接复用旧的`04`节点，更新数据item和索引index，并且将旧的`05`节点加入`bb`缓存池。<br/>
-2）后面的列表节点前移，新进入有效加载区域的节点`11`会复用`bb`缓存池中的空闲节点，其他节点均只更新索引index。<br/>
-3）对于节点数据从`07`变为`new`的情况，页面监听到数据源变化将会触发重新渲染。Repeat数据更新触发重新渲染的逻辑是比较当前索引处节点数据item是否变化，以此判断是否进行UI刷新，仅改变键值不改变item的情况不会触发刷新。
-
-![Repeat-Reuse-3](figures/repeat-reuse-3.png)
-
-### 节点复用情况查看
-
-查看节点是否为复用可以使用[DevEco Testing](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/deveco-testing)工具进行查看，进入DevEco Testing工具后，选择实用工具，界面如下：
-![DevecoTesting_main](figures/DevecoTesting_main.png)
-在实用工具中选择UIViewer，该工具可以获取设备快照、控件树信息及控件节点属性，在右侧的控件树中选择Repeat子节点，右下方的节点属性会显示节点ID等信息，可以通过节点ID是否相同，判断组件复用或者新建的情况。
-
-## 键值生成函数
-
-Repeat的`.key()`属性为每个子组件生成一个键值。Repeat通过键值识别数组增加、删除哪些数据以及哪些数据改变了位置（索引）。
-
-> **注意:**
->
-> 键值（key）与索引（index）的区别：键值是数据项的唯一标识符，Repeat根据键值是否发生变化判断数据项是否更新；索引只标识数据项在数组中的位置。
+Repeat的[.key()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#key)属性为每个子组件生成一个键值。Repeat通过键值识别数组增加、删除哪些数据以及哪些数据改变了位置（索引）。
 
 当`.key()`缺省时，Repeat会生成新的随机键值。当发现有重复key时，Repeat会在已有键值的基础上递归生成新的键值，直到没有重复键值。
+
+> **说明:**
+>
+> - 键值（key）与索引（index）的区别：键值是数据项的唯一标识符，Repeat根据键值是否发生变化判断数据项是否更新；索引只标识数据项在数组中的位置。
+> - 在[懒加载模式](#懒加载能力说明)下，Repeat也会通过状态管理机制监听数据本身的变化，从而实现高效的更新。
 
 键值生成函数`.key()`的使用限制：
 
 - 即使数组发生变化，开发者也必须保证键值key唯一。
 - 每次执行`.key()`函数时，使用相同的数据项作为输入，输出必须是一致的。
-为了实现性能最优，建议开发者自定义键值时，键值的生成应与index无关。因为当前item的键值发生变化后，该item就会被销毁，并重新创建新的item来显示当前view。如果定义的键值与index相关，那么与当前item无关的变更（如前面的数据项增加或删除）可能会触发item的销毁和节点创建，造成不必要的刷新。
 - 允许在`.key()`中使用index，但不建议开发者这样做。因为在数据项移动时索引index发生变化的同时key值也会改变，导致Repeat认为数据发生变化，从而触发子组件重新渲染，降低性能表现。
 - 推荐将简单类型数组转换为类对象数组，并添加一个`readonly id`属性，在构造函数中初始化唯一值。
 
@@ -257,11 +222,182 @@ struct Index {
 
 在上述示例代码中，使用`.key()`定义键值生成函数，各子组件的键值为item元素的str属性值。
 
-## 数据精准懒加载
+### 懒加载能力说明
+
+Repeat加载子节点具有懒加载和全量加载两种模式。开发者可通过设置[.virtualScroll()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscroll)属性选择合适的加载模式。对于长列表场景，懒加载模式支持按需加载子组件，建议开发者优先使用懒加载模式。
+
+**懒加载模式**
+
+使用Repeat的`.virtualScroll()`属性，即可使能懒加载能力。在懒加载模式下，Repeat根据当前的容器组件显示区域和预加载区域范围，按需加载子组件。如下图所示：
+
+![Repeat-Render](figures/Repeat-Render.png)
+
+> **说明：**
+>
+> - 懒加载模式需要和滚动容器组件[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)或[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)配合使用。
+> - 懒加载模式需要和[状态管理（V2）](../state-management/arkts-state-management-overview.md#状态管理v2)配合使用。
+> - 键值变化或数据变化均会触发页面刷新。
+
+**全量加载模式**
+
+当关闭Repeat的`.virtualScroll()`属性时（即省略该属性），Repeat在初始化页面时加载列表中的所有子组件，适合**短数据列表/组件全部加载**的场景。对于**长数据列表（数据长度大于30）**，如果关闭懒加载，Repeat会一次性加载全量子组件，此操作耗时长，不建议使用。
+
+> **说明：**
+>
+> - 渲染模板特性（template）不可用。
+> - 不受滚动容器组件的限制，可以在任意场景使用。
+> - 支持与[状态管理（V1）](../state-management/arkts-state-management-overview.md#状态管理v1)配合使用。
+> - 页面刷新取决于键值变化：如果更新前后键值相同，即使数据改变，页面也不会刷新。
+
+### 节点更新/复用能力说明
+
+Repeat具有节点复用能力。Repeat子组件从组件树中移除时，会被存入缓存池中。后续创建新子组件时，会优先复用池中的节点。懒加载模式和全量加载模式下的复用流程细节存在差异，下文中将分别进行说明。
+
+Repeat组件默认开启节点复用功能。从API version 18开始，在懒加载模式下，可以通过配置`reusable`字段选择是否启用复用功能。为了提高渲染性能，建议开发者保持节点复用。代码示例见[VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)。
+
+从API version 18开始，Repeat支持懒加载模式下[缓存池自定义组件冻结](../state-management/arkts-custom-components-freezeV2.md#repeat)。
+
+> **说明：**
+> 
+> Repeat子组件的节点操作分为四种：节点创建、节点更新、节点复用、节点销毁。其中，节点更新和节点复用的区别为：
+> 
+> - 节点更新：节点不销毁，状态变量驱动节点属性更新。
+> - 节点复用：旧节点不销毁，存储在空闲节点缓存池；需要创建新节点时，直接从缓存池中获取可复用的旧节点，并做相应的节点属性更新。
+>
+> Repeat节点复用时，不会触发子组件的[aboutToRecycle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)和[aboutToReuse](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期。
+
+**懒加载模式下的节点更新/复用**
+
+在懒加载模式下，当**滚动容器组件滑动/数组改变**时，Repeat将失效的子组件节点（离开容器组件的显示区域和预加载区域）加入空闲节点缓存池中，即断开组件节点与页面组件树的连接但不销毁节点。在需要生成新的组件时，对缓存池里的组件节点进行复用。
+
+下面通过**首次渲染**后典型的**滑动场景**和**数据更新场景**示例来展示Repeat子组件的渲染逻辑。
+
+1. 首次渲染。
+
+   定义长度为20的数组，数组前5项的template type为`aa`，渲染浅蓝色组件，其余项为`bb`，渲染橙色组件。`aa`缓存池容量为3，`bb`缓存池容量为4。容器组件的预加载区域大小为2。为了便于理解，在`aa`和`bb`缓存池中分别加入一个和两个空闲节点。
+
+   首次渲染时列表的节点状态如下图所示（template type在图中简写为ttype）。
+
+   ![Repeat-Reuse-1](figures/repeat-reuse-1.png)
+
+2. 滑动场景。
+
+   将列表向下滑动一个节点的距离，Repeat会复用缓存池中的节点。
+
+   1）index=10的节点进入预加载区域，计算出其template type为`bb`。由于`bb`缓存池非空，Repeat会从`bb`缓存池中取出一个空闲节点进行复用，更新其节点属性（数据item和索引index），该子组件中涉及数据item和索引index的其他孙子组件会根据[状态管理（V2）](../state-management/arkts-state-management-overview.md#状态管理v2)的规则做同步更新。<br/>
+   2）index=0的节点滑出了预加载区域。当UI主线程空闲时，会检查`aa`缓存池是否已满，此时`aa`缓存池未满，将该节点加入到对应的缓存池中。<br/>
+   3）其余节点仍在容器显示区域和预加载区域范围，均只更新索引index。如果对应template type的缓存池已满，Repeat会在UI主线程空闲时销毁掉多余的节点。
+
+   ![Repeat-Reuse-2](figures/repeat-reuse-2.png)
+
+3. 数据更新场景。
+
+   在上一小节的基础上做如下的数组更新操作，删除index=4的节点，修改节点数据`07`为`new`。
+
+   1）删除index=4的节点后，节点`05`前移。根据template type的计算规则，新的`05`节点的template type变为`aa`，直接复用旧的`04`节点，更新数据item和索引index，并且将旧的`05`节点加入`bb`缓存池。<br/>
+   2）后面的列表节点前移，新进入预加载区域的节点`11`会复用`bb`缓存池中的空闲节点，其他节点均只更新索引index。<br/>
+   3）对于节点数据从`07`变为`new`的情况，页面监听到数据源变化将会触发重新渲染。Repeat数据更新触发重新渲染的逻辑是比较当前索引处节点数据item是否变化，以此判断是否进行UI刷新，仅改变键值不改变item的情况不会触发刷新。
+
+   ![Repeat-Reuse-3](figures/repeat-reuse-3.png)
+
+**全量加载模式下的节点更新/复用**
+
+在全量加载模式下，页面首次渲染时，Repeat子组件全部创建。数组发生改变后，Repeat对子组件节点的处理分为以下几个步骤：
+
+首先，遍历旧数组键值。如果新数组中没有该键值，将其加入键值集合deletedKeys。
+
+其次，遍历新数组键值。依次判断以下条件，进行符合条件的操作：
+
+1. 若在旧数组中能找到相同键值，直接使用对应的子组件节点，并更新索引index。
+2. 若deletedKeys非空，按照先进后出的顺序，更新该集合中的键值所对应的节点。
+3. 若deletedKeys为空，则表示没有可以更新的节点，需要创建新节点。
+
+最后，如果新数组键值遍历结束后，deletedKeys非空，则销毁集合中的键值所对应的节点。
+
+![Repeat-NonVS-FuncGen](figures/Repeat-NonVS-FuncGen.png)
+
+以下图中的数组变化为例，图中的`item_X`表示数据项的键值key。
+
+![Repeat-NonVS-Example](figures/Repeat-NonVS-Example.png)
+
+根据上述判断逻辑：`item_0`没有变化，`item_1`和`item_2`只更新了索引，`item_n1`和`item_n2`分别由`item_4`和`item_3`进行节点更新获得，`item_n3`为新创建的节点。
+
+> **说明：**
+> 
+> Repeat全量加载模式与[ForEach](./arkts-rendering-control-foreach.md)组件的区别：
+> - 针对特定数组更新场景的渲染性能进行了优化。
+> - 将子组件的内容/索引管理职责转移至框架层面。
+
+**示例：**
+
+以下示例演示了全量加载模式下的节点更新。
+
+<!-- @[repeat_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/NodeUpdateMechanism.ets) -->
+
+``` TypeScript
+@Entry
+@ComponentV2
+struct NodeUpdateMechanism {
+  @Local simpleList: Array<string> = ['one', 'two', 'three'];
+
+  build() {
+    Row() {
+      Column() {
+        Text('Click to change the value of the third array item')
+          .fontSize(24)
+          .fontColor(Color.Red)
+          .onClick(() => {
+            this.simpleList[2] = 'new three';
+          })
+
+        Repeat<string>(this.simpleList)
+          .each((obj: RepeatItem<string>)=>{
+            ChildItem({ item: obj.item })
+              .margin({top: 20})
+          })
+          .key((item: string) => item)
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+    .backgroundColor(0xF1F3F5)
+  }
+}
+
+@ComponentV2
+struct ChildItem {
+  @Param @Require item: string;
+
+  build() {
+    Text(this.item)
+      .fontSize(30)
+  }
+}
+```
+
+![ForEach-Non-Initial-Render-Case-Effect](figures/ForEach-Non-Initial-Render-Case-Effect.gif)
+
+点击红色字体，第三个数据项发生变化（直接使用旧的组件节点，仅刷新数据）。
+
+**节点复用情况查看**
+
+查看节点是否为复用可以使用[DevEco Testing](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/deveco-testing)工具进行查看，进入DevEco Testing工具后，选择实用工具，界面如下：
+
+![DevecoTesting_main](figures/DevecoTesting_main.png)
+
+在实用工具中选择UIViewer，该工具可以获取设备快照、控件树信息及控件节点属性，在右侧的控件树中选择Repeat子节点，右下方的节点属性会显示节点ID等信息，可以通过节点ID是否相同，判断组件复用或者新建的情况。
+
+## 高级特性
+
+除循环渲染、懒加载、组件复用等能力外，Repeat还提供了数据精准懒加载、拖拽排序、数据前插保持等高级特性，开发者可按需使用。
+
+### 数据精准懒加载
 
 当数据源总长度较长，或数据项加载耗时较长时，可使用Repeat数据精准懒加载特性，避免在初始化时加载所有数据。Repeat数据精准懒加载特性从API version 19开始支持。
 
-开发者可以设置`.virtualScroll()`的`totalCount`属性值或`onTotalCount`自定义方法用于计算期望的数据源长度，设置`onLazyLoading`属性实现数据精准懒加载，实现在节点首次渲染时加载对应的数据。详细说明和注意事项见[VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)。
+开发者可以设置`.virtualScroll()`的`totalCount`属性值或`onTotalCount`自定义方法用于计算期望加载的数据项总数，设置`onLazyLoading`属性实现数据精准懒加载，实现在节点首次渲染时加载对应的数据。详细说明和注意事项见[VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)。
 
 **示例1**
 
@@ -359,7 +495,7 @@ struct RepeatLazyLoadingSync {
 
 使用数据懒加载，并配合设置`onTotalCount: () => { return this.arr.length + 1; }`，可实现数据无限懒加载。
 
-> **注意：** 
+> **说明：** 
 >
 > - 此场景下，开发者需要提供首屏显示所需的初始数据，并建议设置父容器组件`cachedCount > 0`，否则将会导致渲染异常。
 > - 若与Swiper-Loop模式同时使用，停留在`index = 0`处时，将导致onLazyLoading方法被持续触发，建议避免与Swiper-Loop模式同时使用。
@@ -409,12 +545,11 @@ struct RepeatLazyLoadingInfinite {
 
 ![Repeat-Lazyloading-3](figures/repeat-lazyloading-demo3.gif)
 
+### 拖拽排序
 
-## 拖拽排序
+当Repeat在[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)组件下使用，并且设置了[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)事件，Repeat每次迭代都生成一个[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)时，可以使能拖拽排序。Repeat拖拽排序特性从API version 19开始支持。
 
-当Repeat在List组件下使用，并且设置了[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)事件，Repeat每次迭代都生成一个ListItem时，可以使能拖拽排序。Repeat拖拽排序特性从API version 19开始支持。
-
-> **注意：**
+> **说明：**
 >
 > - 拖拽排序离手后，如果数据位置发生变化，则会触发onMove事件，上报数据移动原始索引号和目标索引号。<br/>在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。数据源修改前后，要保持每个数据的键值不变，只是顺序发生变化，才能保证落位动画正常执行。
 > - 拖拽排序过程中，在离手之前，不允许修改数据源。
@@ -472,11 +607,11 @@ struct RepeatVirtualScrollOnMove {
 
 ![Repeat-Drag-Sort](figures/repeat-drag-sort.gif)
 
-## 前插保持
+### 数据前插保持
 
-前插保持，即在显示区域之前插入或删除数据后，保持显示区域的子组件位置不变。
+数据前插保持，即在列表显示区域之前插入或删除数据后，保持显示区域子组件的滚动位置不变。
 
-从API version 20开始，仅当父容器组件为List且[maintainVisibleContentPosition](../../reference/apis-arkui/arkui-ts/ts-container-list.md#maintainvisiblecontentposition12)属性设置为true后，在List显示区域之前插入或删除数据时保持List显示区域子组件位置不变。
+从API version 20开始，仅当父容器组件为[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)且[maintainVisibleContentPosition](../../reference/apis-arkui/arkui-ts/ts-container-list.md#maintainvisiblecontentposition12)属性设置为true后，在List显示区域之前插入或删除数据时保持List显示区域子组件位置不变。
 
 **示例代码**
 
@@ -550,7 +685,7 @@ struct PreInsertDemo {
 
 ### 数据展示&操作
 
-下面的代码示例展示了Repeat修改数组的常见操作，包括**插入数据、修改数据、删除数据、交换数据**。点击下拉框选择索引index值，点击相应的按钮即可操作数据项，依次点击两个数据项可以进行交换。
+下面的代码示例展示了Repeat修改数组的常见操作，包括**插入数据、修改数据、删除数据、交换数据**。点击下拉框选择索引index值，点击相应的按钮即可操作数据项，依次点击两个不同的数据项可以进行交换。
 
 
 <!-- @[repeat_scroll_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatVirtualScroll2T.ets) -->
@@ -693,7 +828,7 @@ struct RepeatVirtualScroll {
 }
 ```
 
-该示例代码展示了100项自定义类`RepeatClazz`的`message`字符串属性，List组件的cachedCount属性设为2，模板'odd'和'even'的空闲节点缓存池大小分别设为3和1。运行后界面如下图所示：
+该示例代码展示了100项自定义类`RepeatClazz`的`message`字符串属性，[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)组件的[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount)属性设为2，模板'odd'和'even'的空闲节点缓存池大小分别设为3和1。运行后界面如下图所示：
 
 ![Repeat-VirtualScroll-2T-Demo](figures/Repeat-VirtualScroll-2T-Demo.gif)
 
@@ -773,7 +908,7 @@ struct NestedRepeat {
 
 **与List组合使用**
 
-在List容器组件中使用Repeat，示例代码如下：
+在[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)容器组件中使用Repeat，示例代码如下：
 
 <!-- @[repeat_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/DemoList.ets) -->
 
@@ -878,7 +1013,7 @@ struct DemoList {
 
 **与Grid组合使用**
 
-在Grid容器组件中使用Repeat，示例如下：
+在[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)容器组件中使用Repeat，示例如下：
 
 <!-- @[repeat_grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/DemoGrid.ets) -->
 
@@ -1012,7 +1147,7 @@ struct DemoGrid {
 
 **与Swiper组合使用**
 
-在Swiper容器组件中使用Repeat，示例如下：
+在[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)容器组件中使用Repeat，示例如下：
 
 <!-- @[repeat_swiper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/DemoSwiper.ets) -->
 
@@ -1089,102 +1224,13 @@ struct DemoSwiper {
 
 ![Repeat-Demo-Swiper](figures/Repeat-Demo-Swiper.gif)
 
-## 关闭懒加载
-
-当关闭Repeat的`.virtualScroll()`属性时（即省略该属性），Repeat在初始化页面时加载列表中的所有子组件，适合**短数据列表/组件全部加载**的场景。对于**长数据列表（数据长度大于30）**，如果关闭懒加载，Repeat会一次性加载全量子组件，此操作耗时长，不建议使用。
-
-> **注意：**
->
-> - 渲染模板特性（template）不可用。
-> - 不受滚动容器组件的限制，可以在任意场景使用。
-> - 支持与V1装饰器混用。
-> - 页面刷新取决于键值变化：如果键值相同，即使数据改变，页面也不会刷新。详见[节点更新能力说明](#节点更新能力说明)。
-
-### 节点更新能力说明
-
-（关闭懒加载后）页面首次渲染时，Repeat子组件全部创建。数组发生改变后，Repeat对子组件节点的处理分为以下几个步骤：
-
-首先，遍历旧数组键值。如果新数组中没有该键值，将其加入键值集合deletedKeys。
-
-其次，遍历新数组键值。依次判断以下条件，进行符合条件的操作：
-
-1. 若在旧数组中能找到相同键值，直接使用对应的子组件节点，并更新索引index。
-2. 若deletedKeys非空，按照先进后出的顺序，更新该集合中的键值所对应的节点。
-3. 若deletedKeys为空，则表示没有可以更新的节点，需要创建新节点。
-
-最后，如果新数组键值遍历结束后，deletedKeys非空，则销毁集合中的键值所对应的节点。
-
-![Repeat-NonVS-FuncGen](figures/Repeat-NonVS-FuncGen.png)
-
-以下图中的数组变化为例，图中的`item_X`表示数据项的键值key。
-
-![Repeat-NonVS-Example](figures/Repeat-NonVS-Example.png)
-
-根据上述判断逻辑：`item_0`没有变化，`item_1`和`item_2`只更新了索引，`item_n1`和`item_n2`分别由`item_4`和`item_3`进行节点更新获得，`item_n3`为新创建的节点。
-
-> **说明：**
-> 
-> Repeat关闭懒加载场景与[ForEach](./arkts-rendering-control-foreach.md)组件的区别：
-> - 针对特定数组更新场景的渲染性能进行了优化
-> - 将子组件的内容/索引管理职责转移至框架层面
-
-### 示例
-
-<!-- @[repeat_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/NodeUpdateMechanism.ets) -->
-
-``` TypeScript
-@Entry
-@ComponentV2
-struct NodeUpdateMechanism {
-  @Local simpleList: Array<string> = ['one', 'two', 'three'];
-
-  build() {
-    Row() {
-      Column() {
-        Text('Click to change the value of the third array item')
-          .fontSize(24)
-          .fontColor(Color.Red)
-          .onClick(() => {
-            this.simpleList[2] = 'new three';
-          })
-
-        Repeat<string>(this.simpleList)
-          .each((obj: RepeatItem<string>)=>{
-            ChildItem({ item: obj.item })
-              .margin({top: 20})
-          })
-          .key((item: string) => item)
-      }
-      .justifyContent(FlexAlign.Center)
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
-    .backgroundColor(0xF1F3F5)
-  }
-}
-
-@ComponentV2
-struct ChildItem {
-  @Param @Require item: string;
-
-  build() {
-    Text(this.item)
-      .fontSize(30)
-  }
-}
-```
-
-![ForEach-Non-Initial-Render-Case-Effect](figures/ForEach-Non-Initial-Render-Case-Effect.gif)
-
-点击红色字体，第三个数据项发生变化（直接使用旧的组件节点，仅刷新数据）。
-
 ## 常见问题
 
-### 屏幕外的列表数据发生变化时，保证滚动条位置不变
+### 显示区域外增删数据时保持滚动位置不变
 
-以下示例中，屏幕外的数据源变化将影响屏幕中List列表Scroller停留的位置：
-在List组件中声明Repeat组件，实现key值生成逻辑和each逻辑（如下示例代码），点击按钮“insert”，在屏幕显示的第一个元素前面插入一个元素，屏幕出现向下滚动。
+下面的场景示例中，滚动列表显示区域外的增删数据操作将影响[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)列表滚动条停留的位置：
+
+在List组件中声明Repeat组件，实现key值生成逻辑和each逻辑（如下示例代码），点击按钮“insert”，在屏幕显示的第一个元素前面插入一个元素，列表显示区域数据向下滚动。
 
 <!-- @[repeat_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatTemplateSingle.ets) -->
 
@@ -1250,9 +1296,14 @@ struct RepeatTemplateSingle {
 ![repeat-case1-wrong](figures/repeat-case1-wrong.gif)
 
 以下为修正后的示例：
-在一些场景中，我们不希望屏幕外的数据源变化影响屏幕中List列表Scroller停留的位置，可以通过List组件的[onScrollIndex](../arkts-layout-development-create-list.md#响应滚动位置)事件对列表滚动动作进行监听，当列表发生滚动时，获取列表滚动位置。使用Scroller组件的[scrollToIndex](../../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrolltoindex)特性，滑动到指定index位置，实现屏幕外的数据源增加/删除数据时，Scroller停留的位置不变的效果。
+
+在部分场景中，我们不希望显示区域外的数据源增删操作或高度变化影响屏幕中[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)列表Scroller停留的位置，可以通过List组件的[onScrollIndex](../../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex)事件对列表滚动动作进行监听，当列表发生滚动时，获取列表滚动位置。使用Scroller组件的[scrollToIndex](../../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrolltoindex)特性，滑动到指定index位置，实现屏幕外的数据源增加/删除数据时，Scroller停留的位置不变的效果。
 
 示例代码仅对增加数据的情况进行展示。
+
+> **说明：**
+> 
+> Repeat从API version 20开始支持[数据前插保持](#数据前插保持)，该功能特性可通过简单配置List组件的属性实现相同的效果。
 
 <!-- @[repeat_single_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatTemplateSingle1.ets) -->
 
@@ -1332,7 +1383,11 @@ struct RepeatSingle {
 
 totalCount > array.length时，在父组件容器滚动过程中，应用需要保证列表即将滑动到数据源末尾时请求后续数据，开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动的过程中会出现滚动效果异常。
 
-上述规范可以通过实现父组件List/Grid的[onScrollIndex](../arkts-layout-development-create-list.md#响应滚动位置)属性的回调函数完成。示例代码如下：
+上述规范可以通过实现父组件[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)/[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)的[onScrollIndex](../../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex)属性的回调函数完成。示例代码如下：
+
+> **说明：**
+> 
+> Repeat从API version 19开始支持[数据精准懒加载](#数据精准懒加载)，该功能特性可通过配置onLazyLoading回调函数动态加载对应区域内的数据。
 
 <!-- @[repeat_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/EntryCompSucc.ets) -->
 
@@ -1423,13 +1478,13 @@ struct EntryCompSucc {
 
 ![repeat-case2-succ](figures/repeat-case2-succ.gif)
 
-### Repeat与@Builder混用
+### 与@Builder混用时状态变量未刷新
 
-当Repeat与@Builder混用时，如果只传递`RepeatItem.item`或`RepeatItem.index`，参数值的改变不会引起@Builder函数内的UI刷新。推荐使用[按引用传递](../state-management/arkts-builder.md#按引用传递参数)，即将RepeatItem类型整体进行传参，组件才能监听到数据变化。除此之外，从API version 20开始，开发者可以通过使用[UIUtils.makeBinding()](../../reference/apis-arkui/js-apis-StateManagement.md#makebinding20)函数、[Binding类](../../reference/apis-arkui/js-apis-StateManagement.md#bindingt20)和[MutableBinding类](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20)实现@Builder函数中状态变量的刷新。
+当Repeat与[@Builder](../state-management/arkts-builder.md)混用时，如果只传递`RepeatItem.item`或`RepeatItem.index`，参数值的改变不会引起@Builder函数内的UI刷新。推荐使用[按引用传递](../state-management/arkts-builder.md#按引用传递参数)，即将RepeatItem类型整体进行传参，组件才能监听到数据变化。除此之外，从API version 20开始，开发者可以通过使用[UIUtils.makeBinding()](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)函数、[Binding类](../../reference/apis-arkui/js-apis-stateManagement.md#bindingt20)和[MutableBinding类](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)实现@Builder函数中状态变量的刷新。
 
 示例代码如下：
 
-```ts
+``` ts
 import { UIUtils, Binding } from '@kit.ArkUI';
 
 @Entry
@@ -1494,6 +1549,6 @@ struct RepeatBuilderPage {
 
 ![Repeat-Builder](figures/Repeat-Builder.png)
 
-### Repeat子组件声明expandSafeArea属性时，子组件无法扩展到全屏
+### expandSafeArea属性失效
 
 在API version 18之前，Repeat子组件声明expandSafeArea属性，子组件无法扩展至全屏；从API version 18开始，子组件声明expandSafeArea属性可正常扩展至全屏展示。

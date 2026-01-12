@@ -1,9 +1,9 @@
 # ohprint.h
-<!--Kit: Basic Services Kit-->	
-<!--Subsystem: Print-->	
-<!--Owner: @guoshengbang-->	
-<!--Designer: @Q-haosu-->	
-<!--Tester: @Q-haosu-->	
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Print-->
+<!--Owner: @guoshengbang-->
+<!--Designer: @Q-haosu-->
+<!--Tester: @Q-haosu-->
 <!--Adviser: @fang-jinxu-->
 
 ## Overview
@@ -26,11 +26,11 @@ Declares APIs for discovering and connecting to printers, printing files, and qu
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [Print_Margin](capi-oh-print-print-margin.md) | Print_Margin | Defines the page margin.|
-| [Print_PageSize](capi-oh-print-print-pagesize.md) | Print_PageSize | Defines the page size.|
-| [Print_Range](capi-oh-print-print-range.md) | Print_Range | Defines the range to print.|
-| [Print_PrintAttributes](capi-oh-print-print-printattributes.md) | Print_PrintAttributes | Defines the print attributes.|
-| [Print_PrintDocCallback](capi-oh-print-print-printdoccallback.md) | Print_PrintDocCallback | Defines the print job callback struct.|
+| [Print_Margin](capi-oh-print-print-margin.md) | Print_Margin | Defines a struct for the page margin.|
+| [Print_PageSize](capi-oh-print-print-pagesize.md) | Print_PageSize | Defines a struct for the page size.|
+| [Print_Range](capi-oh-print-print-range.md) | Print_Range | Defines a struct for the range to print.|
+| [Print_PrintAttributes](capi-oh-print-print-printattributes.md) | Print_PrintAttributes | Defines a struct for the print attributes.|
+| [Print_PrintDocCallback](capi-oh-print-print-printdoccallback.md) | Print_PrintDocCallback | Defines a struct for the print job callback.|
 
 ### Enums
 
@@ -52,7 +52,7 @@ Declares APIs for discovering and connecting to printers, printing files, and qu
 
 ### Print_ErrorCode
 
-```
+```c
 enum Print_ErrorCode
 ```
 
@@ -78,7 +78,7 @@ Enumerates the error codes.
 
 ### Print_JobDocAdapterState
 
-```
+```c
 enum Print_JobDocAdapterState
 ```
 
@@ -103,7 +103,7 @@ Enumerates the print job states.
 
 ### Print_WriteResultCallback()
 
-```
+```c
 typedef void(*Print_WriteResultCallback)(const char *jobId, uint32_t code)
 ```
 
@@ -122,7 +122,7 @@ Defines a callback used to return the file write-back result.
 
 ### Print_OnStartLayoutWrite()
 
-```
+```c
 typedef void(*Print_OnStartLayoutWrite)(const char *jobId, uint32_t fd, const Print_PrintAttributes *oldAttrs, const Print_PrintAttributes *newAttrs, Print_WriteResultCallback writeCallback)
 ```
 
@@ -144,7 +144,7 @@ Defines a callback to be invoked when the file write-back starts.
 
 ### Print_OnJobStateChanged()
 
-```
+```c
 typedef void(*Print_OnJobStateChanged)(const char *jobId, uint32_t state)
 ```
 
@@ -163,7 +163,7 @@ Defines a callback to be invoked when the print job state changes.
 
 ### OH_Print_StartPrintByNative()
 
-```
+```c
 Print_ErrorCode OH_Print_StartPrintByNative(const char *printJobName, Print_PrintDocCallback printDocCallback, void *context)
 ```
 

@@ -10,15 +10,17 @@
 
 >  **说明：**
 >
->  从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  如果组件的尺寸通过百分比进行设置， 在计算组件尺寸的百分比大小时，参考最近设置了固定大小的祖先节点的尺寸。
+> - 如果组件的尺寸通过百分比进行设置， 在计算组件尺寸的百分比大小时，参考最近设置了固定大小的祖先节点的尺寸。
+>
+> - 从API version 10开始，尺寸设置内部分属性支持使用calc计算特性，具体支持属性请参考对应的属性说明。calc计算特性是一种动态计算长度值的函数，常用于灵活设置布局尺寸（如宽度、高度、边距等）。它允许通过数学表达式组合不同单位和数值，实现动态响应式设计。注意，在使用calc时，运算符与数值之间需要使用空格隔开。具体使用场景可见[示例1](#示例1设置组件的宽高和边距)。
 
 ## width
 
 width(value: Length): T
 
-设置组件自身的宽度，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会画出父组件的范围。
+设置组件自身的宽度，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会超出父组件的范围。
 
 从API version 10开始，该接口支持calc计算特性。
 
@@ -50,7 +52,7 @@ width(value: Length): T
 
 height(value: Length): T
 
-设置组件自身的高度，缺省时使用元素自身内容需要的高度。若子组件的高大于父组件的高，则会画出父组件的范围。
+设置组件自身的高度，缺省时使用元素自身内容需要的高度。若子组件的高大于父组件的高，则会超出父组件的范围。
 
 从API version 10开始，该接口支持calc计算特性。
 
@@ -80,7 +82,7 @@ height(value: Length): T
 
 width(widthValue: Length | LayoutPolicy): T
 
-设置组件自身的宽度或水平方向布局策略，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会画出父组件的范围。
+设置组件自身的宽度或水平方向布局策略，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会超出父组件的范围。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -104,7 +106,7 @@ width(widthValue: Length | LayoutPolicy): T
 
 height(heightValue: Length | LayoutPolicy): T
 
-设置组件自身的高度或垂直方向布局策略，缺省时使用元素自身内容需要的高度。若子组件的高大于父组件的高，则会画出父组件的范围。
+设置组件自身的高度或垂直方向布局策略，缺省时使用元素自身内容需要的高度。若子组件的高大于父组件的高，则会超出父组件的范围。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -252,7 +254,7 @@ layoutWeight(value: number | string): T
 
 | 参数名   | 类型                         | 必填      | 说明                                       |
 | ----- | -------------------------- | ------- | ---------------------------------------- |
-| value | number&nbsp;\|&nbsp;string | &nbsp;是 | 父容器尺寸确定时，不设置layoutWeight属性或者layoutWeight属性生效值为0的元素优先占位，这些元素占位后在主轴留下的空间称为主轴剩余空间。设置了layoutWeight属性且layoutWeight属性生效值大于0的子元素会从主轴剩余空间中按照各自所设置的权重占比分配尺寸，分配时会忽略元素本身的尺寸设置。<br/>默认值：0<br/>**说明：** <br/>仅在[Row](./ts-container-row.md)/[Column](./ts-container-column.md)/[Flex](./ts-container-flex.md)布局中生效。<br/>可选值为大于等于0的数字，或者可以转换为数字的字符串。<br/>如果容器中有子元素设置了layoutWeight属性，且设置的属性值大于0，则所有子元素不会再基于flexShrink和flexGrow布局。 |
+| value | number&nbsp;\|&nbsp;string | &nbsp;是 | 父容器尺寸确定时，不设置layoutWeight属性或者layoutWeight属性生效值为0的元素优先占位，这些元素占位后在主轴留下的空间称为主轴剩余空间。设置了layoutWeight属性且layoutWeight属性生效值大于0的子元素会从主轴剩余空间中按照各自所设置的权重占比分配尺寸，分配时会忽略元素本身的尺寸设置。<br/>默认值：0<br/>**说明：** <br/>仅在[Row](./ts-container-row.md)/[Column](./ts-container-column.md)/[Flex](./ts-container-flex.md)布局中生效。<br/>可选值为大于等于0的数字，或者可以转换为数字的字符串。<br/>如果容器中有子元素设置了layoutWeight属性，且设置的属性值大于0，则所有子元素不会再基于[flexShrink](./ts-universal-attributes-flex-layout.md#flexshrink)和[flexGrow](./ts-universal-attributes-flex-layout.md#flexgrow)布局。 |
 
 **返回值：**
 
@@ -458,7 +460,7 @@ struct SizeExample {
 
 ![size](figures/size-rtl.png)
 
-### 示例3（设置安全区）
+### 示例3（设置组件级安全区）
 
 对容器设置组件级安全区。
 

@@ -3,7 +3,7 @@
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @wanghuan2025-->
 <!--Designer: @Maplestory91-->
-<!--Tester: @yufeifei-->
+<!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
 ## Overview
@@ -26,7 +26,7 @@ ArkCompiler runtime captures process exceptions. The fault log generation proces
 
 ## Constraints
 
-If an exception is thrown in an asynchronous function, no JS crash will occur. You can observe the exception through [ErrorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror).
+If an exception is thrown in an asynchronous function, no JS crash will occur. You can observe the exception through [ErrorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror). For details about the sample code, see [Exception Handling in Async Functions](../arkts-utils/arkts-runtime-faq.md#exception-handling-in-async-functions).
 
 
 ## Obtaining Logs
@@ -57,11 +57,15 @@ The fault log file name format is **jscrash-Process name-Process UID-Millisecond
 |---|---|---|---|---|
 | Device info | Device information.| 8 | Yes| - |
 | Build info | Version information.| 8 | Yes| - |
+| DeviceDebuggable | Whether the system version of the device can be debugged, which is irrelevant to **Developer options**.| 23 | Yes| - |
 | Fingerprint | Fault feature, which is a hash value for faults of the same type.| 8 | Yes| - |
 | Timestamp | Timestamp.| 8 | Yes| - |
 | Module name | Bundle name or Process name.| 8 | Yes| - |
+| ReleaseType | Application version type. The value **release** indicates that the application is a [release-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916), and the value **debug** indicates that the application is a [debug-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916).| 23 | Yes| - |
+| CpuAbi | ABI type.| 23 | Yes| - |
 | Version | HAP version.| 8 | Yes| - |
-| Version Code | Version code.| 8 | Yes| - |
+| VersionCode | Version code.| 8 | Yes| - |
+| IsSystemApp | Whether the application is a system application.| 23 | Yes| - |
 | Pid | ID of the faulty process.| 8 | Yes| - |
 | Uid | User ID.| 8 | Yes| - |
 | Process life time | Lifetime of the faulty process.| 22 | Yes| - |
@@ -80,11 +84,15 @@ Example of the JS crash log specifications:
 ```text
 Device info:XXX <- Device information
 Build info:XXX-XXXX X.X.X.XX(XXXXXXXX) <- Build information
+DeviceDebuggable:No <- Whether the system version of the device can be debugged.
 Fingerprint:ed1811f3f5ae13c7262b51aab73ddd01df95b2c64466a204e0d70e6461cf1697 <- Fault features
 Timestamp:XXXX-XX-XX XX:XX:XX.XXX <- Timestamp
 Module name:com.example.myapplication <- Bundle name/Process name
+ReleaseType:release <- Application version type.
+CpuAbi:arm64-v8a <- ABI type.
 Version:1.0.0 <- HAP version
 VersionCode:1000000 <- Version code
+IsSystemApp:No <- Whether the application is a system application.
 Pid:579 <- Faulty process ID
 Uid:0 <- User ID
 Process life time:1s  <- Process life time
@@ -123,7 +131,7 @@ HybridStack: <- Cross-language call stack between C++ and JS
 
 HiLog:
  ^
- Add 1000 lines of HiLog logs related to the exception to the generated crash log file.
+ HiLog logs generated before the fault occurs are added to the generated crash log file. A maximum of 1000 lines are supported.
 
 ```
 ### Log Specifications for Asynchronous Thread Stack Tracing Faults
@@ -179,7 +187,7 @@ Since API version 20, the **Page switch history** field is used to record the pa
 
 > **NOTE**
 >
-> The child page's name is available only when it is navigated to through **Navigation**. The page name is defined in the [system routing table](../ui/arkts-navigation-navigation.md#system-routing-table).
+> The child page's name is available only when it is navigated to through **Navigation**.
 >
 > When the application switches between the foreground and background, the corresponding page URL is empty, but **enters foreground** and **leaves foreground** are displayed as special page names.
 >
@@ -238,7 +246,7 @@ at \<Execution method name> (\<Module name|Dependent module name|Version number|
 The following is an example:
 
 
-```
+```text
 at onPageShow (entry|har1|1.0.0|src/main/ets/pages/Index.ts:7:13)
 ```
 
@@ -270,7 +278,7 @@ at \<Execution method name> \<Dependent module name> (\<Source code path>:\<Line
 The following is an example:
 
 
-```
+```text
 at onPageShow har1 (har1/src/main/ets/pages/Index.ets:7:13)
 ```
 

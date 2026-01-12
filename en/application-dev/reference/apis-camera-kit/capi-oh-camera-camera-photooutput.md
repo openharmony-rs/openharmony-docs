@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_PhotoOutput Camera_PhotoOutput
+```
+
 ## Overview
 
 The struct describes the photo output object.

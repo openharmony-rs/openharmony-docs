@@ -23,11 +23,11 @@ Task timeout detection includes main thread timeout detection and task execution
 
 1. Triggering process:
 
-   When the main thread experiences a timeout between 150 ms and 450 ms, it triggers a call stack sampling and generates a stack file in .txt format. When the timeout exceeds 450 ms, it triggers a trace sampling and generates a stack file in .trace format.
+   When the main thread experiences a timeout between 150 ms and 450 ms, it triggers a call stack sampling and generates a stack file in .txt format. When the timeout exceeds 450 ms, it triggers a trace sampling and generates a stack file in .trace format. Stack sampling and trace sampling are mutually exclusive. Only one of them can be triggered.
 
-   150 ms < Main thread processing time < 450 ms: stack sampling is triggered by main thread timeout. For the processes with the same PID, the call stack sampling for a main thread timeout event can be triggered only once. If **Developer Options** is enabled, call stack sampling can be triggered once an hour. No timeout check is performed within 10s after the application starts.
+   150 ms < Main thread processing time < 450 ms: only stack sampling is triggered by the main thread timeout event. For the processes with the same PID, the call stack sampling for a main thread timeout event can be triggered only once. If **Developer Options** is enabled, call stack sampling can be triggered once an hour. No timeout check is performed within 10s after the application starts.
 
-   Main thread processing time > 450 ms: trace sampling is triggered by main thread timeout. For the processes with the same PID, the trace sampling for a main thread timeout event can be triggered only once in a day. 
+   Main thread processing time > 450 ms: only trace sampling is triggered by the main thread timeout event. For the processes with the same PID, the trace sampling for a main thread timeout event can be triggered only once in a day. 
 
    Main thread processing time = 450 ms: no sampling is triggered.
 
@@ -40,6 +40,7 @@ Task timeout detection includes main thread timeout detection and task execution
    > When **Developer Options** is disabled, DevEco Studio may be unavailable. Therefore, you are advised to install the application before disabling **Developer Options**.
 
 2. Stack capture time:
+
    When the main thread timeout event occurs, the main thread checker starts to check whether the timeout event occurs again every 150 ms (1 ≤ number of check times ≤ 2). There are three cases:
 
    (1) If a timeout event is detected during the first check, the main thread checker starts stack sampling every 150 ms for 10 times. The stack sampling data is collected and an event is reported at the next interval. Then the check ends.
@@ -68,13 +69,14 @@ Task timeout detection includes main thread timeout detection and task execution
 
 Main thread jank event logs are stored in the application sandbox directory. You can obtain the logs in any of the following ways:
 
-**Subscribing to the Main Thread Jank Event using HiAppEvent APIs**
+**Subscribing to Main Thread Jank Events using HiAppEvent APIs**
 
 HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the main thread timeout event by referring to [Subscribing to Main Thread Jank Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md) or [Subscribing to Main Thread Jank Events (C/C++)](hiappevent-watcher-mainthreadjank-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-mainthreadjank-events.md#event-fields) field in the event.
 
 ### Log Specifications
 
 1. Log aging:
+
    Generally, the size of a stack file is 7 KB to 10 KB, and the size of a trace file is 1 MB to 5 MB. The **watchdog** directory in the application sandbox can store a maximum of 10 MB data. If the total file size exceeds 10 MB, the directory aging mechanism is automatically triggered to delete a maximum of 100 files based on the file name sequence. The path to **watchdog** is **/data/storage/el2/log/watchdog/**.
 
 2. Sampling stack specifications
@@ -155,7 +157,7 @@ The following figure shows the detection principles.
 
 You can obtain task execution timeout logs in any of the following ways:
 
-**Subscribing to the Task Execution Timeout Event using HiAppEvent APIs**
+**Subscribing to Task Execution Timeout Events using HiAppEvent APIs**
 
 HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the task execution timeout event by referring to [Subscribing to Task Execution Timeout Events (ArkTS)](hiappevent-watcher-apphicollie-events-arkts.md) or [Subscribing to Task Execution Timeout Events (C/C++)](hiappevent-watcher-apphicollie-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-apphicollie-events.md#event-fields) field in the event.
 

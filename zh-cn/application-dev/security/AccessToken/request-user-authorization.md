@@ -14,6 +14,7 @@
 1. 在配置文件中，声明应用需要请求的权限。
 
 2. 将应用中需要申请权限的目标对象与对应权限关联，确保用户明确哪些操作需授予应用指定权限。
+
    以上两步请参考章节[声明权限](declare-permissions.md)完成。
 
 3. 运行应用时，用户触发访问目标对象时应调用接口，精准触发动态授权弹框。接口内部会检查当前用户是否已授权所需权限，若未授权，将拉起动态授权弹框请求用户授权。
@@ -31,6 +32,7 @@
 - 系统权限弹窗不可被遮挡。
 
   系统权限弹窗不可被其他组件或控件遮挡，弹窗信息需完整展示，便于用户识别并完成授权。
+  
   如果系统权限弹窗与其他组件/控件同时在相同位置展示，系统权限弹窗将默认覆盖其他组件/控件。
 
 - 每次执行需要目标权限的操作时，应用都必须检查自己是否已经具有该权限。
@@ -141,6 +143,7 @@
        for (let i = 0; i < length; i++) {
          if (grantStatus[i] === 0) {
            // 用户授权，可以继续访问目标操作。
+           console.info(`${permissions[i]} is granted by user.`);
          } else {
            // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限。
            return;
@@ -153,15 +156,15 @@
    }
    
    export default class SecondAbility extends UIAbility {
-   // ···
+     // ...
      onWindowStageCreate(windowStage: window.WindowStage): void {
-       // ···
+       // ...
        windowStage.loadContent('secondpages/Index', (err) => {
          reqPermissionsFromUser(permissions, this.context);
-       // ···
+         // ...
        });
      }
-   // ···
+     // ...
    }
    ```
 
@@ -185,6 +188,7 @@
        for (let i = 0; i < length; i++) {
          if (grantStatus[i] === 0) {
            // 用户授权，可以继续访问目标操作
+           console.info(`${permissions[i]} is granted by user.`);
          } else {
            // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限
            return;
@@ -205,7 +209,7 @@
      }
    
      build() {
-       // ···
+       // ...
      }
    }
    ```

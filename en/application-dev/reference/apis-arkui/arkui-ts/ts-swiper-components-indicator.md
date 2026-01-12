@@ -3,8 +3,8 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Tester: @Giacinta-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Indicator** component provides two types of navigation indicators: dot indicators and digit indicators.
 
@@ -24,6 +24,8 @@ Conversely, if an **Indicator** is bound to multiple **Swiper** components, only
 Not supported
 
 ## APIs
+
+### IndicatorComponent
 
 IndicatorComponent(controller?: IndicatorComponentController)
 
@@ -65,7 +67,7 @@ Sets the style of the navigation indicator.
 
 > **NOTE**
 >
-> When **indicatorStyle** is set to **DotIndicator**, [maxDisplayCount](ts-container-swiper.md#maxdisplaycount12) does not take effect.
+> The **maxDisplayCount** property has no effect when the **DotIndicator** type (configured in **indicatorStyle**) is not bound to a **Swiper** component.
 
 ### count
 
@@ -231,8 +233,8 @@ Navigates to the specified indicator.
 ## Example
 
 ### Example 1: Using a Dot Indicator with a Swiper Component
-This example shows how to bind a dot-style **Indicator** component to a **Swiper** component using **IndicatorComponentController**.
-```
+This example binds the same [IndicatorComponentController](#indicatorcomponentcontroller) object to both the [Indicator](ts-container-swiper.md#indicator) API of the [Swiper](ts-container-swiper.md) component and the [IndicatorComponent](#indicatorcomponent) constructor, enabling interaction between the dot indicator and the **Swiper** component.
+```ts
 @Entry
 @Component
 struct DotIndicatorDemo {
@@ -294,9 +296,9 @@ struct DotIndicatorDemo {
 
 ### Example 2: Using a Digit Indicator with a Swiper Component
 
-This example shows how to bind a digit-style **Indicator** component to a **Swiper** component using **IndicatorComponentController**.
+This example binds the same [IndicatorComponentController](#indicatorcomponentcontroller) object to both the [Indicator](ts-container-swiper.md#indicator) API of the [Swiper](ts-container-swiper.md) component and the [IndicatorComponent](#indicatorcomponent) constructor, enabling interaction between the digit indicator and the **Swiper** component.
 
-```
+```ts
 @Entry
 @Component
 struct DigitIndicatorDemo {

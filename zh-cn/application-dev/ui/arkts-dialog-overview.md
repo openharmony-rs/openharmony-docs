@@ -54,25 +54,25 @@
 
 > **说明：** 
 >
-> 当前模态弹窗通过设置指定属性变成非模态，例如AlertDialog，可以设置[isModal](../reference//apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)为false变成非模态，其他弹窗详见API说明。
+> 当前模态弹窗通过设置指定属性变成非模态，例如AlertDialog，可以设置[AlertDialogParam](../reference//apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)中的isModal属性值为false变成非模态，其他弹窗详见API说明。
 >
 > 不建议在非前台状态下，调用弹窗显示接口。
 >
 > 系统弹窗由系统弹出，出于安全考虑，不支持自定义样式。
 >
-> 系统弹窗出现时，调用非系统弹窗的显示接口（例如：promptAction的openCustomDialog、CustomDialogController的open等），禁止该类弹窗显示。
+> 系统弹窗出现时，调用非系统弹窗的显示接口（例如：[promptAction](../reference/apis-arkui/js-apis-promptAction.md)的[openCustomDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated)、[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)的[open](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open)等），禁止该类弹窗显示。
 
 ## 使用场景
 
 开发者可根据实际应用场景选择合适的弹窗进行页面开发。
 
-弹窗名称 | 应用场景 |
+|弹窗名称 | 应用场景 |
 | --- | --- |
 | [弹出框（Dialog）](arkts-base-dialog-overview.md) | 当需要展示用户当前需要或必须关注的信息内容或操作时，例如二次退出应用等，应优先考虑使用此弹出框。 |
 | [菜单（Menu/openMenu）](arkts-menu-overview.md)  | 当需要给用户提供可执行的操作时，例如长按图标展示操作选项等，应优先考虑使用此弹窗。 |
 | [气泡提示（Popup/openPopup）](arkts-popup-overview.md)  | 当需要给用户提供提示时，例如点击一个问号图标弹出一段帮助提示等，应优先考虑使用此弹窗。 |
 | [绑定模态页面（bindContentCover/bindSheet）](arkts-modal-overview.md)  | 当需要新的界面覆盖在旧的界面上，且旧的界面不消失的一种转场方式时，例如缩略图片点击后查看大图等，应优先考虑使用此弹窗。 |
-|  [即时反馈（Toast）](arkts-create-toast.md)  | 当需要在一个小的窗口中提供用户当前操作的简单反馈时，例如提示文件保存成功等，应用优先考虑使用此弹窗。 |
+|  [即时反馈（Toast）](arkts-create-toast.md)  | 当需要在一个小的窗口中提供用户当前操作的简单反馈时，例如提示文件保存成功等，应优先考虑使用此弹窗。 |
 |  [设置浮层（OverlayManager）](arkts-create-overlaymanager.md)  | 当需要完全自定义内容、行为、样式时，可以使用浮层将UI展示在页面之上，例如音乐/语音播放悬浮球/胶囊等，应优先考虑使用此弹窗。 |
 
 ## 规格约束

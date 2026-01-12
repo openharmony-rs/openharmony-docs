@@ -878,6 +878,8 @@ struct Index {
 系统中提供了颜色计算的API，可以通过计算的方式，将两个颜色合并为一个，省去Stack层的布局节点，并且可以少绘制一个组件，减少重复绘制的情况发生。
 
 ```
+import { ColorMetrics } from '@kit.ArkUI';
+
 @Component
 struct ColorMeasure {
   @Prop isSelected: boolean = false;
@@ -897,8 +899,8 @@ struct ColorMeasure {
     try {
       sourceColor = ColorMetrics.resourceColor(baseColor).blendColor(ColorMetrics.resourceColor(addColor));
     } catch (error) {
-      console.error("getBlendColor failed, code = " + (error as BusinessError).code + ", message = " +
-      (error as BusinessError).message);
+      console.error("getBlendColor failed, code = " + (error as BusinessError<void>).code + ", message = " +
+      (error as BusinessError<void>).message);
       sourceColor = ColorMetrics.resourceColor(addColor);
     }
     return sourceColor;

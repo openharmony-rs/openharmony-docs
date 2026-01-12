@@ -29,7 +29,6 @@ With **OverlayManager**, you can add a specified node ([addComponentContent](../
 
 ``` TypeScript
 import { ComponentContent, OverlayManager } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG: string = '[Sample_dialogproject]';
@@ -60,8 +59,6 @@ export struct OverlayManagerComponent {
   @State message: string = 'ComponentContent';
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  private manager = this.context.resourceManager;
   @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
   @StorageLink('componentContentIndex') componentContentIndex: number = 0;
   @StorageLink('arrayIndex') arrayIndex: number = 0;
@@ -70,18 +67,15 @@ export struct OverlayManagerComponent {
   build() {
     // ···
       Column({ space: 10 }) {
-        // The value in the 'OverlayManager_button_increase' resource file is 'Increment componentContentIndex: '.
-        Button(this.manager.getStringByNameSync('OverlayManager_button_increase') + this.componentContentIndex)
+        Button('Increment componentContentIndex:' + this.componentContentIndex)
           .onClick(() => {
             ++this.componentContentIndex;
           })
-        // The value in the 'OverlayManager_button_decrease' resource file is 'Decrement componentContentIndex: '.
-        Button(this.manager.getStringByNameSync('OverlayManager_button_decrease') + this.componentContentIndex)
+        Button('Decrement componentContentIndex:' + this.componentContentIndex)
           .onClick(() => {
             --this.componentContentIndex;
           })
-        // The value in the 'OverlayManager_button_add' resource file is 'Add ComponentContent'.
-        Button(this.manager.getStringByNameSync('OverlayManager_button_add') + this.contentArray.length)
+        Button('Add ComponentContent:' + this.contentArray.length)
           .onClick(() => {
             let componentContent = new ComponentContent(
               this.uiContext, wrapBuilder<[Params]>(builderText),
@@ -90,18 +84,15 @@ export struct OverlayManagerComponent {
             this.contentArray.push(componentContent);
             this.overlayNode.addComponentContent(componentContent, this.componentContentIndex);
           })
-        // The value in the 'OverlayManager_button_increaseIndex' resource file is 'Increment arrayIndex: '.
-        Button(this.manager.getStringByNameSync('OverlayManager_button_increaseIndex') + this.arrayIndex)
+        Button('Increment arrayIndex:' + this.arrayIndex)
           .onClick(() => {
             ++this.arrayIndex;
           })
-        // The value in the 'OverlayManager_button_decreaseIndex' resource file is 'Decrement arrayIndex: '.
-        Button(this.manager.getStringByNameSync('OverlayManager_button_decreaseIndex') + this.arrayIndex)
+        Button('Decrement arrayIndex:' + this.arrayIndex)
           .onClick(() => {
             --this.arrayIndex;
           })
-        // The value in the 'OverlayManager_button_delete' resource file is 'Delete ComponentContent'.
-        Button(this.manager.getStringByNameSync('OverlayManager_button_delete') + this.arrayIndex)
+        Button('Delete ComponentContent:' + this.arrayIndex)
           .onClick(() => {
             if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
               let componentContent = this.contentArray.splice(this.arrayIndex, 1);
@@ -110,8 +101,7 @@ export struct OverlayManagerComponent {
               hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
-        // The value in the 'OverlayManager_button_show' resource file is 'Show ComponentContent'.
-        Button(this.manager.getStringByNameSync('OverlayManager_button_show') + this.arrayIndex)
+        Button('Show ComponentContent:' + this.arrayIndex)
           .onClick(() => {
             if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
               let componentContent = this.contentArray[this.arrayIndex];
@@ -120,8 +110,7 @@ export struct OverlayManagerComponent {
               hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
-        // The value in the 'OverlayManager_button_hide' resource file is 'Hide ComponentContent'.
-        Button(this.manager.getStringByNameSync('OverlayManager_button_hide') + this.arrayIndex)
+        Button('Hide ComponentContent:' + this.arrayIndex)
           .onClick(() => {
             if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
               let componentContent = this.contentArray[this.arrayIndex];
@@ -130,19 +119,16 @@ export struct OverlayManagerComponent {
               hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
-        // The value in the 'app.string.OverlayManager_button_showAll' resource file is 'Show All ComponentContent'.
-        Button($r('app.string.OverlayManager_button_showAll'))
+        Button('Show All ComponentContent')
           .onClick(() => {
             this.overlayNode.showAllComponentContents();
           })
-        // The value in the 'app.string.OverlayManager_button_hideAll' resource file is 'Hide All ComponentContent'.
-        Button($r('app.string.OverlayManager_button_hideAll'))
+        Button('Hide All ComponentContent')
           .onClick(() => {
             this.overlayNode.hideAllComponentContents();
           })
 
-        // The value in the 'app.string.OverlayManager_button_jump' resource file is 'Go'.
-        Button($r('app.string.OverlayManager_button_jump'))
+        Button('Go')
           .onClick(() => {
             this.getUIContext().getRouter().pushUrl({
               url: 'pages/Second'
@@ -199,7 +185,6 @@ function builderOverlay(params: Params) {
 @Entry
 @Component
 export struct OverlayManagerAlertDialog {
-  @State message: string = 'ComponentContent';
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
   private overlayContent:ComponentContent<Params>[] = [];
@@ -221,13 +206,13 @@ export struct OverlayManagerAlertDialog {
   }
 
   build() {
-    // ···
+    // ...
       Column() {
 
       }
       .width('100%')
       .height('100%')
-    // ···
+    // ...
   }
 }
 ```
@@ -239,7 +224,10 @@ Since API version 18, you can use the **getOverlayManager** API in **UIContext**
 
 ``` TypeScript
 import { ComponentContent, LevelOrder, OverlayManager } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[Sample_dialogproject]';
+const DOMAIN: number = 0xFF00;
 
 class Params {
   public text: string = '';
@@ -288,8 +276,6 @@ function builderNormalText(params: Params) {
 export struct OverlayManagerWithOrder {
   private ctx: UIContext = this.getUIContext();
   private overlayManager: OverlayManager = this.ctx.getOverlayManager();
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  private manager = this.context.resourceManager;
   @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
   @StorageLink('componentContentIndex') componentContentIndex: number = 0;
   @StorageLink('arrayIndex') arrayIndex: number = 0;
@@ -299,33 +285,30 @@ export struct OverlayManagerWithOrder {
     // ···
       Row() {
         Column({ space: 5 }) {
-          // The value in the 'app.string.Demo_topDialogButton' resource file is 'Open Top-Level Dialog Box'.
-          Button($r('app.string.Demo_topDialogButton'))
+          Button('Open Top-Level Dialog Box')
             .onClick(() => {
               let componentContent = new ComponentContent(
                 this.ctx, wrapBuilder<[Params]>(builderTopText),
-                // The value in the 'Demo_topDialog' resource file is ''I am a top-level dialog box'.
-                new Params(this.manager.getStringByNameSync('Demo_topDialog'), this.componentOffset)
+                new Params('I am a top-level dialog box', this.componentOffset)
               );
               this.contentArray.push(componentContent);
               this.overlayManager.addComponentContentWithOrder(componentContent, LevelOrder.clamp(100000));
             })
-          // The value in the 'app.string.Demo_normalDialogButton' resource file is 'Open Normal Dialog Box'.
-          Button($r('app.string.Demo_normalDialogButton'))
+          Button('Open Normal Dialog Box')
             .onClick(() => {
               let componentContent = new ComponentContent(
                 this.ctx, wrapBuilder<[Params]>(builderNormalText),
-                // The value in the 'Demo_normalDialog' resource file is 'I am a normal dialog box'.
-                new Params(this.manager.getStringByNameSync('Demo_normalDialog'), this.componentOffset)
+                new Params('I am a normal dialog box', this.componentOffset)
               );
               this.contentArray.push(componentContent);
               this.overlayManager.addComponentContentWithOrder(componentContent, LevelOrder.clamp(0));
             })
-          // The value in the 'app.string.Demo_removeDialogButton' resource file is 'Remove Dialog Box'.
-          Button($r('app.string.Demo_removeDialogButton')).onClick(() => {
+          Button('Remove Dialog Box').onClick(() => {
             if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
               let componentContent = this.contentArray.splice(this.arrayIndex, 1);
               this.overlayManager.removeComponentContent(componentContent.pop());
+            } else {
+              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
             }
           })
         }.width('100%')
@@ -334,4 +317,4 @@ export struct OverlayManagerWithOrder {
   }
 }
 ```
-
+![overlayManager-demo3](figures/overlaymanager-demo_3.gif)

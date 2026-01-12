@@ -14,6 +14,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -34,7 +36,7 @@
 
 ### OH_Drawing_SurfaceCreateFromGpuContext()
 
-```
+```c
 OH_Drawing_Surface* OH_Drawing_SurfaceCreateFromGpuContext(OH_Drawing_GpuContext* gpuContext, bool flag, OH_Drawing_Image_Info imageInfo)
 ```
 
@@ -63,7 +65,7 @@ OH_Drawing_Surface* OH_Drawing_SurfaceCreateFromGpuContext(OH_Drawing_GpuContext
 
 ### OH_Drawing_SurfaceCreateOnScreen()
 
-```
+```c
 OH_Drawing_Surface* OH_Drawing_SurfaceCreateOnScreen(OH_Drawing_GpuContext* gpuContext, OH_Drawing_Image_Info imageInfo, void* window)
 ```
 
@@ -92,7 +94,7 @@ OH_Drawing_Surface* OH_Drawing_SurfaceCreateOnScreen(OH_Drawing_GpuContext* gpuC
 
 ### OH_Drawing_SurfaceGetCanvas()
 
-```
+```c
 OH_Drawing_Canvas* OH_Drawing_SurfaceGetCanvas(OH_Drawing_Surface* surface)
 ```
 
@@ -119,7 +121,7 @@ OH_Drawing_Canvas* OH_Drawing_SurfaceGetCanvas(OH_Drawing_Surface* surface)
 
 ### OH_Drawing_SurfaceFlush()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_SurfaceFlush(OH_Drawing_Surface* surface)
 ```
 
@@ -146,7 +148,7 @@ OH_Drawing_ErrorCode OH_Drawing_SurfaceFlush(OH_Drawing_Surface* surface)
 
 ### OH_Drawing_SurfaceDestroy()
 
-```
+```c
 void OH_Drawing_SurfaceDestroy(OH_Drawing_Surface* surface)
 ```
 

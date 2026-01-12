@@ -50,7 +50,7 @@ The file declares the APIs related to the application-level context.
 
 ### OH_AbilityRuntime_ApplicationContextGetCacheDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCacheDir(char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -76,7 +76,7 @@ Obtains the application-level cache directory of the application.
 
 ### OH_AbilityRuntime_ApplicationContextGetAreaMode()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetAreaMode(AbilityRuntime_AreaMode* areaMode)
 ```
 
@@ -100,7 +100,7 @@ Obtains the application-level file data encryption level of the application.
 
 ### OH_AbilityRuntime_ApplicationContextGetBundleName()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleName(char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -126,7 +126,7 @@ Obtains the bundle name of the application.
 
 ### OH_AbilityRuntime_ApplicationContextGetTempDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetTempDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -152,7 +152,7 @@ Obtains the application-level temporary file directory of the application.
 
 ### OH_AbilityRuntime_ApplicationContextGetFilesDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetFilesDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -178,7 +178,7 @@ Obtains the application-level common file directory of the application.
 
 ### OH_AbilityRuntime_ApplicationContextGetDatabaseDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDatabaseDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -204,7 +204,7 @@ Obtains the application-level database file directory of the application.
 
 ### OH_AbilityRuntime_ApplicationContextGetPreferencesDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetPreferencesDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -230,7 +230,7 @@ Obtains the application-level preferences file directory of the application.
 
 ### OH_AbilityRuntime_ApplicationContextGetBundleCodeDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleCodeDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -256,7 +256,7 @@ Obtains the application-level installation file directory of the application.
 
 ### OH_AbilityRuntime_ApplicationContextGetDistributedFilesDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDistributedFilesDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -282,7 +282,7 @@ Obtains the application-level distributed file directory of the application.
 
 ### OH_AbilityRuntime_ApplicationContextGetCloudFileDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCloudFileDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -308,7 +308,7 @@ Obtains the application-level cloud file directory of the application.
 
 ### OH_AbilityRuntime_ApplicationContextGetLogFileDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLogFileDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -334,7 +334,7 @@ Obtains the application-level log file directory of the application.
 
 ### OH_AbilityRuntime_ApplicationContextGetResourceDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(const char* moduleName, char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -361,7 +361,7 @@ Obtains the application-level resource directory of the application.
 
 ### OH_AbilityRuntime_StartSelfUIAbility()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbility(AbilityBase_Want *want)
 ```
 
@@ -414,7 +414,7 @@ void startSelfUIAbilityTest()
 
 ### OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(AbilityBase_Want *want,AbilityRuntime_StartOptions *options)
 ```
 
@@ -481,7 +481,7 @@ void demo()
 
 ### OH_AbilityRuntime_ApplicationContextGetVersionCode()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetVersionCode(int64_t* versionCode)
 ```
 
@@ -505,7 +505,7 @@ Obtains the application version code.
 
 ### OH_AbilityRuntime_StartSelfUIAbilityWithPidResult()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(AbilityBase_Want *want, AbilityRuntime_StartOptions *options, int32_t *targetPid)
 ```
 
@@ -514,6 +514,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(Abili
 Starts the UIAbility of the current application using **StartOptions** and obtains the process ID of the target UIAbility.
 
 This function cannot be called on the main thread of an application, but can be called on the main thread of a [child process](capi-childprocess.md) created by the application.
+
 If it is called on the main thread of the application, error code **ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED** is returned.
 
 **Required permissions**: ohos.permission.NDK_START_SELF_UI_ABILITY
@@ -577,7 +578,7 @@ void demo()
 
 ### OH_AbilityRuntime_ApplicationContextGetLaunchParameter
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(
     char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
@@ -626,7 +627,7 @@ static napi_value GetLaunchParameter(napi_env env, napi_callback_info info)
 
 ### OH_AbilityRuntime_ApplicationContextGetLatestParameter
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(
     char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```

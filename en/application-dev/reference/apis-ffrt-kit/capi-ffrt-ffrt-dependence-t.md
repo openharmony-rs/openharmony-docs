@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} ffrt_dependence_t
+```
+
 ## Overview
 
 The **ffrt_dependence_t** struct describes dependency data.

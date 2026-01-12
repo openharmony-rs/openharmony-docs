@@ -136,7 +136,7 @@ Canvas(this.context)
 
 在Canvas组件生命周期接口onReady()调用之后，开发者可以直接使用canvas组件进行绘制。或者可以脱离Canvas组件和onReady()生命周期，单独定义Path2d对象构造理想的路径，并在onReady()调用之后使用Canvas组件进行绘制。
 
-- 通过CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象直接调用相关API进行绘制。
+- 通过CanvasRenderingContext2D对象直接调用相关API进行绘制。
 
 
 <!-- @[contextCallApi_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentDrawingMethod.ets) -->
@@ -183,10 +183,11 @@ Canvas(this.context2)
 OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供了大量的属性和方法，可以用来绘制文本、图形，处理像素等，是Canvas组件的核心。常用接口有[fill](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#fill)（对封闭路径进行填充）、[clip](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#clip)（设置当前路径为剪切路径）、[stroke](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#stroke)（进行边框绘制操作）等等，同时提供了[fillStyle](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#fillstyle)（指定绘制的填充色）、[globalAlpha](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#globalalpha)（设置透明度）与[strokeStyle](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#strokestyle)（设置描边的颜色）等属性修改绘制内容的样式。将通过以下几个方面简单介绍画布组件常见使用方法：
 
 - 绘制基础形状。
+
   可以通过[arc](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#arc)（绘制弧线路径）、 [ellipse](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#ellipse)（绘制一个椭圆）、[rect](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#rect)（创建矩形路径）等接口绘制基础形状。
 
 
-<!-- @[CanvasComponentBasicShapes_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentBasicShapes.ets) -->
+  <!-- @[CanvasComponentBasicShapes_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentBasicShapes.ets) -->
 
 ``` TypeScript
 Canvas(this.context)
@@ -289,7 +290,7 @@ struct CanvasComponentTextBorder {
 
 - 使用自定义字体绘制文本。
 
-  从API version 20开始，可以通过[getGlobalInstance](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getglobalinstance)获取应用全局字体管理器的实例，然后使用[loadfontsync](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口从设置的路径中加载自定义字体并通过[font](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#font)（设置文本绘制中的字体样式）接口设置文本绘制中的字体样式，接着通过[fillText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#filltext)（绘制填充类文本）、[strokeText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#stroketext)（绘制描边类文本）等接口进行文本绘制。
+  从API version 20开始，可以通过[getGlobalInstance](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getglobalinstance)获取应用全局字体管理器的实例，然后使用[loadFontSync](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口从设置的路径中加载自定义字体并通过[font](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#font)（设置文本绘制中的字体样式）接口设置文本绘制中的字体样式，接着通过[fillText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#filltext)（绘制填充类文本）、[strokeText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#stroketext)（绘制描边类文本）等接口进行文本绘制。
 
 
 <!-- @[canvasComponentCustomFontsDrawText_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentCustomFontsDrawText.ets) -->
@@ -450,7 +451,7 @@ struct CanvasContentUpdate {
 
 - 从API version 13开始，使用[setOnVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-uicommonevent.md#setonvisibleareaapproximatechange)接口监听Canvas组件可见性。
 
-   ```ts
+  ```ts
   import { ColorMetrics } from '@kit.ArkUI';
 
   @Entry
@@ -495,7 +496,7 @@ struct CanvasContentUpdate {
                 if (this.timerId == -2) {
                   this.timerId = setInterval(() => {
                     this.drawRandomCircle()
-                  }, 50)
+                  }, 500)
                 }
               }
             })
@@ -505,7 +506,7 @@ struct CanvasContentUpdate {
             if (this.timerId < 0) {
               this.timerId = setInterval(() => {
                 this.drawRandomCircle()
-              }, 50)
+              }, 500)
             }
           })
       }
@@ -514,11 +515,11 @@ struct CanvasContentUpdate {
     }
   }
   ```
-![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
+  ![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
 
 - 从API version 17开始，使用[onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17)接口监听Canvas组件可见性。
 
-   ```ts
+  ```ts
   import { ColorMetrics } from '@kit.ArkUI';
 
   @Entry
@@ -561,7 +562,7 @@ struct CanvasContentUpdate {
                   if (this.timerId == -2) {
                     this.timerId = setInterval(() => {
                       this.drawRandomCircle()
-                    }, 50)
+                    }, 500)
                   }
                 }
               })
@@ -570,7 +571,7 @@ struct CanvasContentUpdate {
             if (this.timerId < 0) {
               this.timerId = setInterval(() => {
                 this.drawRandomCircle()
-              }, 50)
+              }, 500)
             }
           })
       }
@@ -579,7 +580,7 @@ struct CanvasContentUpdate {
     }
   }
   ```
-![canvas_onVisibleAreaApproximateChange](figures/Canvas_onVisibleAreaApproximateChange.gif)
+  ![canvas_onVisibleAreaApproximateChange](figures/Canvas_onVisibleAreaApproximateChange.gif)
 
 ## 场景示例
 

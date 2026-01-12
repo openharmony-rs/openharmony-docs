@@ -31,7 +31,6 @@ HiTraceMeter提供系统性能打点接口。开发者在关键代码位置调�
 >
 > [用户态trace格式](hitracemeter-view.md#用户态trace格式说明)使用竖线 | 作为分隔符，所以通过HiTraceMeter接口传递的字符串类型参数应避免包含该字符，防止trace解析异常。
 
-
 ### 接口分类
 
 HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片跟踪和整数跟踪。HiTraceMeter接口实现均为同步，同步和异步针对的是被跟踪的业务。同步业务使用同步时间片跟踪接口，异步业务使用异步时间片跟踪接口。HiTraceMeter打点接口可与[HiTraceChain](hitracechain-guidelines-arkts.md)一起使用，进行跨设备、跨进程或跨线程的打点关联与分析。
@@ -40,15 +39,21 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
 ### 接口使用场景
 
 - 同步时间片跟踪接口
+
   用于顺序执行的打点场景，需按序成对使用startSyncTrace()接口和finishSyncTrace()接口，否则会导致trace文件在smartperf等可视化工具上显示异常。
 
 - 异步时间片跟踪接口
-  在异步操作执行前调用startAsyncTrace()接口进行开始打点，在异步操作完成后调用finishAsyncTrace()接口进行结束打点。  
-  解析trace时，通过name和taskId参数识别不同的异步跟踪。这两个接口必须按序成对使用，并传入相同的name和taskId。  
-  不同的异步流程中应使用不同的name和taskId，但在异步跟踪流程不会同时发生的情况下，可以使用相同的name和taskId。  
+
+  在异步操作执行前调用startAsyncTrace()接口进行开始打点，在异步操作完成后调用finishAsyncTrace()接口进行结束打点。 
+
+  解析trace时，通过name和taskId参数识别不同的异步跟踪。这两个接口必须按序成对使用，并传入相同的name和taskId。 
+
+  不同的异步流程中应使用不同的name和taskId，但在异步跟踪流程不会同时发生的情况下，可以使用相同的name和taskId。 
+   
   调用错误会导致trace文件在smartperf等可视化工具上显示异常。
 
 - 整数跟踪接口
+
   用于跟踪整数变量。整数值变动时调用traceByValue()接口，可在smartperf的泳道图中观察变动情况。由于从开始采集到首次打点存在时间差，这段时间的数值无法查看。
 
 
@@ -94,76 +99,76 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
 
 2. 编辑“entry &gt; src &gt; main &gt; ets &gt; pages &gt; Index.ets”文件，在文本点击事件处理业务中使用HiTraceMeter性能跟踪打点接口，完整的示例代码如下。
 
-   <!-- @[hitracemeter_arkts_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { hiTraceMeter, hilog } from '@kit.PerformanceAnalysisKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            this.message = (this.message == 'Hello HiTrace') ? 'Hello World' : 'Hello HiTrace';
-            const COMMERCIAL = hiTraceMeter.HiTraceOutputLevel.COMMERCIAL;
-
-            let traceCount = 0;
-            // 第一个异步跟踪任务开始
-            hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1001, 'categoryTest', 'key=value');
-            // 开始计数任务
-            traceCount++;
-            hiTraceMeter.traceByValue(COMMERCIAL, 'myTestCountTrace', traceCount);
-            // 业务流程
-            hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1001');
-
-            // 第二个异步跟踪任务开始，同时第一个跟踪的同名任务还没结束，出现了并行执行，对应接口的taskId需要不同
-            hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1002, 'categoryTest', 'key=value');
-            // 开始计数任务
-            traceCount++;
-            hiTraceMeter.traceByValue(COMMERCIAL, 'myTestCountTrace', traceCount);
-            // 业务流程
-            hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1002');
-
-            // 结束taskId为1001的异步跟踪任务
-            hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1001);
-            // 结束taskId为1002的异步跟踪任务
-            hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1002);
-
-            // 开始同步跟踪任务
-            hiTraceMeter.startSyncTrace(COMMERCIAL, 'myTestSyncTrace', 'key=value');
-            // 业务流程
-            hilog.info(0x0000, 'testTrace', 'myTraceTest running, synchronizing trace');
-            // 结束同步跟踪任务
-            hiTraceMeter.finishSyncTrace(COMMERCIAL);
-
-            // 若通过HiTraceMeter性能打点接口传递的参数的生成过程比较复杂，此时可以通过isTraceEnabled判断当前是否开启应用trace捕获，
-            // 在未开启应用trace捕获时，避免该部分性能损耗
-            if (hiTraceMeter.isTraceEnabled()) {
-              let customArgs = 'key0=value0';
-              for (let index = 1; index < 10; index++) {
-                customArgs += `,key${index}=value${index}`
-              }
-              hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1003, 'categoryTest', customArgs);
-              hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1003');
-              hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1003);
-            } else {
-              hilog.info(0x0000, 'testTrace', 'myTraceTest running, trace is not enabled');
-            }
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+   <!-- @[hitracemeter_arkts_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->   
+   
+   ``` TypeScript
+   import { hiTraceMeter, hilog } from '@kit.PerformanceAnalysisKit';
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+   
+     build() {
+       Row() {
+         Column() {
+           Text(this.message)
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+             .onClick(() => {
+               this.message = (this.message == 'Hello HiTrace') ? 'Hello World' : 'Hello HiTrace';
+               const COMMERCIAL = hiTraceMeter.HiTraceOutputLevel.COMMERCIAL;
+   
+               let traceCount = 0;
+               // 第一个异步跟踪任务开始
+               hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1001, 'categoryTest', 'key=value');
+               // 开始计数任务
+               traceCount++;
+               hiTraceMeter.traceByValue(COMMERCIAL, 'myTestCountTrace', traceCount);
+               // 业务流程
+               hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1001');
+   
+               // 第二个异步跟踪任务开始，同时第一个跟踪的同名任务还没结束，出现了并行执行，对应接口的taskId需要不同
+               hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1002, 'categoryTest', 'key=value');
+               // 开始计数任务
+               traceCount++;
+               hiTraceMeter.traceByValue(COMMERCIAL, 'myTestCountTrace', traceCount);
+               // 业务流程
+               hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1002');
+   
+               // 结束taskId为1001的异步跟踪任务
+               hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1001);
+               // 结束taskId为1002的异步跟踪任务
+               hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1002);
+   
+               // 开始同步跟踪任务
+               hiTraceMeter.startSyncTrace(COMMERCIAL, 'myTestSyncTrace', 'key=value');
+               // 业务流程
+               hilog.info(0x0000, 'testTrace', 'myTraceTest running, synchronizing trace');
+               // 结束同步跟踪任务
+               hiTraceMeter.finishSyncTrace(COMMERCIAL);
+   
+               // 若通过HiTraceMeter性能打点接口传递的参数的生成过程比较复杂，此时可以通过isTraceEnabled判断当前是否开启应用trace捕获，
+               // 在未开启应用trace捕获时，避免该部分性能损耗
+               if (hiTraceMeter.isTraceEnabled()) {
+                 let customArgs = 'key0=value0';
+                 for (let index = 1; index < 10; index++) {
+                   customArgs += `,key${index}=value${index}`
+                 }
+                 hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1003, 'categoryTest', customArgs);
+                 hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1003');
+                 hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1003);
+               } else {
+                 hilog.info(0x0000, 'testTrace', 'myTraceTest running, trace is not enabled');
+               }
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
 
 
 ### 步骤二：采集trace信息并查看

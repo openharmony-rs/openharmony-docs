@@ -103,3 +103,5 @@ Capability not supported. Failed to call the API due to limited device capabilit
 **处理步骤**
 
 应避免在该设备上使用此API，或在代码中通过判断来规避异常场景下应用在不同设备上运行所产生的影响。
+
+<!--RP1--><!--RP1End-->

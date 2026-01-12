@@ -18,8 +18,10 @@ The **NotificationFlags** module implements a **NotificationFlags** instance.
 
 | Name            | Type                   | Read Only| Optional| Description                                        |
 | ---------------- | ---------------------- | ---- | -----|-------------------------------------------- |
-| soundEnabled     | [NotificationFlagStatus](#notificationflagstatus11) | Yes | Yes| Settings of the sound alert for the notification.   |
-| vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | Yes | Yes| Settings of the vibration for the notification.|
+| soundEnabled     | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of sound for the notification. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.   |
+| vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of vibration for the notification. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.|
+| bannerEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of banner for the notification. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.|
+| lockScreenEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of screen lock for the notification. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.|
 
 
 ## NotificationFlagStatus<sup>11+</sup>

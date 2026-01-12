@@ -32,7 +32,7 @@
 
 ### AVSession_ErrCode
 
-```
+```c
 enum AVSession_ErrCode
 ```
 

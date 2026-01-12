@@ -1,4 +1,10 @@
 # graphic_error_code.h
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Flix-fangyang; @BruceXu; @ding-panyun-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -26,7 +32,7 @@
 
 ### OHNativeErrorCode
 
-```
+```c
 enum OHNativeErrorCode
 ```
 

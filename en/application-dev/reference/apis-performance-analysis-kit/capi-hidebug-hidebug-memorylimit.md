@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiDebug_MemoryLimit {...} HiDebug_MemoryLimit
+```
+
 ## Overview
 
 Defines the struct for the memory limit of the application process.

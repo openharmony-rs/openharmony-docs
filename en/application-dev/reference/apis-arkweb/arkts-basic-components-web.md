@@ -6,13 +6,15 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-The **Web** component can be used to display web pages. It can be used with the [@ohos.web.webview](arkts-apis-webview.md) module, which provides APIs for web control.
+This module provides **Web** components with web page display capabilities. For details about web control capabilities, see [Module Description](arkts-apis-webview.md).
+
+<!--RP1--><!--RP1End-->
 
 > **NOTE**
 >
 > - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 This module provides the following common functionalities related to web page display:
 

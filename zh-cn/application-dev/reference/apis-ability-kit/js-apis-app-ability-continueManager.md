@@ -11,6 +11,8 @@ continueManager提供了应用跨端迁移的管理能力，如获取应用跨�
 > **说明：**
 > 
 > 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -27,6 +29,8 @@ on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;Continu
 > **说明：**
 >
 > 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -48,7 +52,7 @@ on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;Continu
 
 **示例**：
 
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want, continueManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -81,7 +85,7 @@ export default class MigrationAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ## continueManager.off
 
@@ -92,6 +96,8 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 > **说明：**
 >
 > 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -113,7 +119,7 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 
 **示例**：
 
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want, continueManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -146,7 +152,7 @@ export default class MigrationAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ## ContinueResultInfo
 
@@ -156,8 +162,8 @@ export default class MigrationAbility extends UIAbility {
 
 | 名称 | 类型                                                                            | 只读 | 可选 | 说明       |
 | -------- |-------------------------------------------------------------------------------|----|----|----------|
-| resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | 否  | 否  | 操作结果状态码。 |
-| resultInfo | string                                                                        | 否  | 是  | 操作结果的说明。 |
+| resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | 否  | 否  | 操作结果状态码。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| resultInfo | string                                                                        | 否  | 是  | 操作结果的说明。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## ContinueStateCode
 
@@ -167,6 +173,6 @@ export default class MigrationAbility extends UIAbility {
 
 | 名称 | 值  | 说明    | 
 | -------- |----|-------|
-| SUCCESS  | 0  | 操作成功。 | 
-| SYSTEM_ERROR | 其它 | 操作失败。 | 
+| SUCCESS  | 0  | 操作成功。<br>**模型约束**：此接口仅可在Stage模型下使用。 | 
+| SYSTEM_ERROR | 1 | 操作失败。<br>**模型约束**：此接口仅可在Stage模型下使用。 | 
 

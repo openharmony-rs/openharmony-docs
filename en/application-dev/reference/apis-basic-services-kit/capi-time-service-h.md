@@ -1,9 +1,9 @@
 # time_service.h
-<!--Kit: Basic Services Kit-->	
-<!--Subsystem: Time-->	
-<!--Owner: @huaxin05-->	
-<!--Designer: @hu-kai45-->	
-<!--Tester: @murphy1984-->	
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Time-->
+<!--Owner: @huaxin05-->
+<!--Designer: @hu-kai45-->
+<!--Tester: @murphy1984-->
 <!--Adviser: @fang-jinxu-->
 
 ## Overview
@@ -36,7 +36,7 @@ Declares the APIs for obtaining the time and time zone.
 
 ### TimeService_ErrCode
 
-```
+```c
 enum TimeService_ErrCode
 ```
 
@@ -57,7 +57,7 @@ Enumerates the error codes.
 
 ### OH_TimeService_GetTimeZone()
 
-```
+```c
 TimeService_ErrCode OH_TimeService_GetTimeZone(char *timeZone, uint32_t len)
 ```
 

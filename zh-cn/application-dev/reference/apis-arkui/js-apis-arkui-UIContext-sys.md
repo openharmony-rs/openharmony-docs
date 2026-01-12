@@ -63,85 +63,6 @@ struct Index {
 ```
 ![api-switch-overview](../apis-arkui/figures/dynamicDinning.gif)
 
-### animateToImmediately<sup>12+</sup>
-
-animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
-
-animateToImmediately接口允许用户通过UIContext对象，获取显式立即动画的能力。同时加载多个属性动画的情况下，使用该接口可以立即执行闭包代码中状态变化导致的过渡动效。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名   | 类型                                       | 必填   | 说明                                    |
-| ----- | ---------------------------------------- | ---- | ------------------------------------- |
-| param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam对象说明) | 是    | 设置动画效果相关参数。                           |
-| processor | Callback&lt;void&gt;                              | 是    | 指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
-
-**示例：**
-
-该示例实现了通过UIContext对象获取显式立即动画的能力，调用animateToImmediately接口实现参数定义的动画效果。
-
-```ts
-// xxx.ets
-@Entry
-@Component
-struct AnimateToImmediatelyExample {
-  @State widthSize: number = 250
-  @State heightSize: number = 100
-  @State opacitySize: number = 0
-  private flag: boolean = true
-  uiContext: UIContext | null | undefined = this.getUIContext();
-
-  build() {
-    Column() {
-      Column()
-        .width(this.widthSize)
-        .height(this.heightSize)
-        .backgroundColor(Color.Green)
-        .opacity(this.opacitySize)
-      Button('change size')
-        .margin(30)
-        .onClick(() => {
-          if (this.flag) {
-            this.uiContext?.animateToImmediately({
-              delay: 0,
-              duration: 1000
-            }, () => {
-              this.opacitySize = 1
-            })
-            this.uiContext?.animateTo({
-              delay: 1000,
-              duration: 1000
-            }, () => {
-              this.widthSize = 150
-              this.heightSize = 60
-            })
-          } else {
-            this.uiContext?.animateToImmediately({
-              delay: 0,
-              duration: 1000
-            }, () => {
-              this.widthSize = 250
-              this.heightSize = 100
-            })
-            this.uiContext?.animateTo({
-              delay: 1000,
-              duration: 1000
-            }, () => {
-              this.opacitySize = 0
-            })
-          }
-          this.flag = !this.flag
-        })
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-![animateToImmediately](figures/animateToImmediately.gif)
-
 ### freezeUINode<sup>18+</sup>
 
 freezeUINode(id: string, isFrozen: boolean): void
@@ -524,12 +445,13 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码和[接口调用异常错误码](errorcode-internal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------- |
-| 202     | The caller is not a system application. |
+| 202    | The caller is not a system application. |
 | 100001 | Invalid ID detected. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 **示例：** 
 
@@ -580,3 +502,47 @@ struct SnapshotExample {
 ```
 
 ![zh-cn_image_getWithRange](figures/zh-cn_image_getWithRange.gif)
+
+### recycleInvisibleImageMemory<sup>23+</sup>
+
+recycleInvisibleImageMemory(enabled: boolean): void
+
+设置不可见Image组件的内存回收开关（[组件可见性](../../../application-dev/ui/arkts-manage-components-visibility.md)是指组件在屏幕上的显示状态）。开启后，当Image组件不参与渲染时，其内部持有的图像内存资源将在系统空闲时（如应用退后台）主动回收，以降低应用系统内存占用；当组件重新参与渲染时，将按需重新加载相关图像资源。
+
+该接口主要用于内存敏感场景下的优化，适用于图片数量较多、页面频繁切换前后台或组件可见性变化较为明显的场景。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。 
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明 |
+| -------- | ------- | ---- | ---- |
+| enabled  | boolean | 是   | 是否开启不可见Image组件的内存回收能力。<br/>true表示开启内存回收，Image组件在不可见时将主动释放图像内存资源；<br/>false表示关闭内存回收，Image组件在不可见时仍保留图像内存资源。<br/>默认值为false，传入`undefined`时将恢复为默认值。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct ImageRecycleSample {
+  build() {
+    Column({ space: 12 }) {
+      Button('Enable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(true)
+        })
+
+      Button('Disable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(false)
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```

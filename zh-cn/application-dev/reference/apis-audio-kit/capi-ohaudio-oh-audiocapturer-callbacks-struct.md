@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callbacks
 ```
 
@@ -14,7 +14,7 @@ typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callback
 
 声明输入音频流的回调函数指针。
 
-为了避免不可预期的行为，在设置音频回调函数时，请确保该结构体的每一个成员变量都被自定义的回调方法或空指针初始化。可参考[使用OHAudio开发音频录制功能](../../media/audio/using-ohaudio-for-recording.md)。
+为了避免不可预期的行为，在设置音频回调函数时，请确保该结构体的每一个成员变量都被自定义的回调方法或空指针初始化。可参考[推荐使用OHAudio开发音频录制功能(C/C++)](../../media/audio/using-ohaudio-for-recording.md)。
 
 **起始版本：** 10
 
@@ -48,7 +48,7 @@ typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callback
 
 ### OH_AudioCapturer_OnReadData()
 
-```
+```c
 int32_t (*OH_AudioCapturer_OnReadData)(OH_AudioCapturer* capturer,void* userData,void* buffer,int32_t length)
 ```
 
@@ -70,12 +70,12 @@ int32_t (*OH_AudioCapturer_OnReadData)(OH_AudioCapturer* capturer,void* userData
 | -- | -- |
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | 指向[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)创建的音频流实例。 |
 | void* userData | 指向应用自定义的数据存储区域。     |
-| void* buffer | 指向播放数据存储区域，用于应用填充播放数据。      |
+| void* buffer | 指向录制数据存储区域，用于应用读取录制数据。      |
 | int32_t length | buffer的长度。     |
 
 ### OH_AudioCapturer_OnStreamEvent()
 
-```
+```c
 int32_t (*OH_AudioCapturer_OnStreamEvent)(OH_AudioCapturer* capturer,void* userData,OH_AudioStream_Event event)
 ```
 
@@ -99,7 +99,7 @@ int32_t (*OH_AudioCapturer_OnStreamEvent)(OH_AudioCapturer* capturer,void* userD
 
 ### OH_AudioCapturer_OnInterruptEvent()
 
-```
+```c
 int32_t (*OH_AudioCapturer_OnInterruptEvent)(OH_AudioCapturer* capturer,void* userData,OH_AudioInterrupt_ForceType type,OH_AudioInterrupt_Hint hint)
 ```
 
@@ -125,7 +125,7 @@ int32_t (*OH_AudioCapturer_OnInterruptEvent)(OH_AudioCapturer* capturer,void* us
 
 ### OH_AudioCapturer_OnError()
 
-```
+```c
 int32_t (*OH_AudioCapturer_OnError)(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_Result error)
 ```
 

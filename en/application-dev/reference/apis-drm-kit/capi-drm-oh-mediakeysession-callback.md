@@ -1,4 +1,14 @@
 # OH_MediaKeySession_Callback
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qin_wei_jie-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_MediaKeySession_Callback {...} OH_MediaKeySession_Callback
+```
 
 ## Overview
 

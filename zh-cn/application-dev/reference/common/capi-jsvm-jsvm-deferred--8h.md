@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct JSVM_Deferred__* JSVM_Deferred
+```
+
 ## 概述
 
 表示Promise延迟对象。

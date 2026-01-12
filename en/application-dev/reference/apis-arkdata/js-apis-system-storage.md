@@ -8,7 +8,9 @@
 
 >  **NOTE**
 >
->  - The APIs of this module are no longer maintained since API version 6, and you are advised to use [@ohos.data.storage](js-apis-data-storage.md). From API version 9, you are advised to use [@ohos.data.preferences](js-apis-data-preferences.md).
+>  - Module maintenance policy:
+>    - For lite wearables, this module is constantly maintained and available.
+>    - For other device types, this module is no longer maintained since API version 6, and you can use the [@ohos.data.storage](js-apis-data-storage.md) module instead. From API version 9, you are advised to use the [@ohos.data.preferences](js-apis-data-preferences.md) module.
 >
 >  - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >  

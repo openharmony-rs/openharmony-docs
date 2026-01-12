@@ -7,7 +7,7 @@
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct ArkUI_WaterFlowSectionOption ArkUI_WaterFlowSectionOption
 ```
 

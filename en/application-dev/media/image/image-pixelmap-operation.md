@@ -26,11 +26,11 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-PixelMa
    import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    // Obtain the total number of bytes of this PixelMap object.
-   let pixelBytesNumber : number = pixelMap.getPixelBytesNumber();
+   let pixelBytesNumber: number = pixelMap.getPixelBytesNumber();
    // Obtain the number of bytes per row of this PixelMap object.
-   let rowBytes : number = pixelMap.getBytesNumberPerRow();
+   let rowBytes: number = pixelMap.getBytesNumberPerRow();
    // Obtain the pixel density of this PixelMap object. Pixel density refers to the number of pixels per inch of an image. A larger value of the pixel density indicates a finer image.
-   let density : number = pixelMap.getDensity();
+   let density: number = pixelMap.getDensity();
    ```
 
 3. Read and modify the pixel data of the target area, and write the modified data back to the original image.

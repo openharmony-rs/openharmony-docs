@@ -13,13 +13,13 @@
 >
 > 本模块首批接口从 API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。<br>
 > 如下模块不支持在VpnExtensionAbility引用，可能会导致程序异常退出。<br>
-> - @ohos.contact(联系人)<br>
-> - @ohos.geolocation、@ohos.geoLocationManager(位置服务)<br>
-> - @ohos.multimedia.audio(音频管理)<br>
-> - @ohos.multimedia.camera(相机管理)<br>
-> - @ohos.telephony.call(拨打电话)<br>
-> - @ohos.telephony.sim(SIM卡管理)<br>
-> - @ohos.telephony.sms(短信服务)<br>
+> - [@ohos.contact(联系人)](../apis-contacts-kit/js-apis-contact.md)<br>
+> - [@ohos.geolocation](../apis-location-kit/js-apis-geolocation.md)、[@ohos.geoLocationManager(位置服务)](../apis-location-kit/js-apis-geoLocationManager.md)<br>
+> - [@ohos.multimedia.audio(音频管理)](../apis-audio-kit/arkts-apis-audio.md)<br>
+> - [@ohos.multimedia.camera(相机管理)](../apis-camera-kit/arkts-apis-camera.md)<br>
+> - [@ohos.telephony.call(拨打电话)](../apis-telephony-kit/js-apis-call.md)<br>
+> - [@ohos.telephony.sim(SIM卡管理)](../apis-telephony-kit/js-apis-sim.md)<br>
+> - [@ohos.telephony.sms(短信服务)](../apis-telephony-kit/js-apis-sms.md)<br>
 
 ## 导入模块
 
@@ -27,7 +27,7 @@
 import { vpnExtension } from '@kit.NetworkKit';
 ```
 
-## LinkAddress<sup>11+</sup>
+## LinkAddress
 type LinkAddress = connection.LinkAddress
 
 获取网络链接信息。
@@ -38,7 +38,7 @@ type LinkAddress = connection.LinkAddress
 | ------ | ------------------------------------------------------------ |
 | [connection.LinkAddress](./js-apis-net-connection.md#linkaddress) | 网络链路信息。 |
 
-## RouteInfo<sup>11+</sup>
+## RouteInfo
 type RouteInfo = connection.RouteInfo
 
 获取网络路由信息。
@@ -49,7 +49,7 @@ type RouteInfo = connection.RouteInfo
 | ------ | ------------------------------------------------------------ |
 | [connection.RouteInfo](./js-apis-net-connection.md#routeinfo) | 网络路由信息。 |
 
-## VpnExtensionContext<sup>11+</sup>
+## VpnExtensionContext
 type VpnExtensionContext = _VpnExtensionContext
 
 VPN扩展的上下文。它允许访问serviceExtension特定资源。
@@ -101,8 +101,9 @@ startVpnExtensionAbility(want: Want): Promise\<void>
 Stage 模型示例：
 
 ```ts
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let want: Want = {
   deviceId: "",
@@ -119,13 +120,18 @@ struct Index {
     Row() {
       Column() {
         Text(this.message)
-          .fontSize(50)
+          .fontSize(40)
           .fontWeight(FontWeight.Bold).onClick(() => {
-          console.info("btn click") })
+          console.info("btn click")
+        })
         Button('Start Extension').onClick(() => {
-          vpnExtension.startVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
-        }.width('100%')
+          vpnExtension.startVpnExtensionAbility(want).then(() => {
+            console.info('startVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('startVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
+      }.width('100%')
     }.height('100%')
   }
 }
@@ -171,8 +177,9 @@ stopVpnExtensionAbility(want: Want): Promise\<void>
 Stage 模型示例：
 
 ```ts
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let want: Want = {
   deviceId: "",
@@ -191,16 +198,25 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold).onClick(() => {
-          console.info("btn click") })
+          console.info("btn click")
+        })
         Button('Start Extension').onClick(() => {
-          vpnExtension.startVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
+          vpnExtension.startVpnExtensionAbility(want).then(() => {
+            console.info('startVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('startVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
         Button('Stop Extension').onClick(() => {
           console.info("btn end")
-          vpnExtension.stopVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
+          vpnExtension.stopVpnExtensionAbility(want).then(() => {
+            console.info('stopVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('stopVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
 
-        }.width('100%')
+      }.width('100%')
     }.height('100%')
   }
 }

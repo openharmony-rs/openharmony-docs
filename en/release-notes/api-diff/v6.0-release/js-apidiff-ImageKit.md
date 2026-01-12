@@ -1,0 +1,34 @@
+| Change Type | Old Version | New Version | d.ts File |
+| ---- | ------ | ------ | -------- |
+|New API |NA|Class name: global;<br>API declaration: declare namespace videoProcessingEngine<br>DIfferences: declare namespace videoProcessingEngine|api/@ohos.multimedia.videoProcessingEngine.d.ts|
+|New API |NA|Class name: videoProcessingEngine;<br>API declaration: enum QualityLevel<br>DIfferences: enum QualityLevel|api/@ohos.multimedia.videoProcessingEngine.d.ts|
+|New API |NA|Class name: QualityLevel;<br>API declaration: NONE = 0<br>DIfferences: NONE = 0|api/@ohos.multimedia.videoProcessingEngine.d.ts|
+|New API |NA|Class name: QualityLevel;<br>API declaration: LOW = 1<br>DIfferences: LOW = 1|api/@ohos.multimedia.videoProcessingEngine.d.ts|
+|New API |NA|Class name: QualityLevel;<br>API declaration: MEDIUM = 2<br>DIfferences: MEDIUM = 2|api/@ohos.multimedia.videoProcessingEngine.d.ts|
+|New API |NA|Class name: QualityLevel;<br>API declaration: HIGH = 3<br>DIfferences: HIGH = 3|api/@ohos.multimedia.videoProcessingEngine.d.ts|
+|New API |NA|Class name: videoProcessingEngine;<br>API declaration: interface ImageProcessor<br>DIfferences: interface ImageProcessor|api/@ohos.multimedia.videoProcessingEngine.d.ts|
+|New API |NA|Class name: ImageProcessor;<br>API declaration: enhanceDetail(sourceImage: image.PixelMap, width: number, height: number, level?: QualityLevel): Promise\<image.PixelMap>;<br>DIfferences: enhanceDetail(sourceImage: image.PixelMap, width: number, height: number, level?: QualityLevel): Promise\<image.PixelMap>;|api/@ohos.multimedia.videoProcessingEngine.d.ts|
+|New API |NA|Class name: ImageProcessor;<br>API declaration: enhanceDetail(sourceImage: image.PixelMap, scale: number, level?: QualityLevel): Promise\<image.PixelMap>;<br>DIfferences: enhanceDetail(sourceImage: image.PixelMap, scale: number, level?: QualityLevel): Promise\<image.PixelMap>;|api/@ohos.multimedia.videoProcessingEngine.d.ts|
+|New API |NA|Class name: ImageProcessor;<br>API declaration: enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number, level?: QualityLevel): image.PixelMap;<br>DIfferences: enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number, level?: QualityLevel): image.PixelMap;|api/@ohos.multimedia.videoProcessingEngine.d.ts|
+|New API |NA|Class name: ImageProcessor;<br>API declaration: enhanceDetailSync(sourceImage: image.PixelMap, scale: number, level?: QualityLevel): image.PixelMap;<br>DIfferences: enhanceDetailSync(sourceImage: image.PixelMap, scale: number, level?: QualityLevel): image.PixelMap;|api/@ohos.multimedia.videoProcessingEngine.d.ts|
+|New API |NA|Class name: videoProcessingEngine;<br>API declaration: function initializeEnvironment(): Promise\<void>;<br>DIfferences: function initializeEnvironment(): Promise\<void>;|api/@ohos.multimedia.videoProcessingEngine.d.ts|
+|New API |NA|Class name: videoProcessingEngine;<br>API declaration: function deinitializeEnvironment(): Promise\<void>;<br>DIfferences: function deinitializeEnvironment(): Promise\<void>;|api/@ohos.multimedia.videoProcessingEngine.d.ts|
+|New API |NA|Class name: videoProcessingEngine;<br>API declaration: function create(): ImageProcessor;<br>DIfferences: function create(): ImageProcessor;|api/@ohos.multimedia.videoProcessingEngine.d.ts|
+|New API |NA|Class name: PixelMapFormat;<br>API declaration: ARGB_8888 = 1<br>DIfferences: ARGB_8888 = 1|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: PixelMapFormat;<br>API declaration: ASTC_4x4 = 102<br>DIfferences: ASTC_4x4 = 102|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: image;<br>API declaration: enum CropAndScaleStrategy<br>DIfferences: enum CropAndScaleStrategy|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: CropAndScaleStrategy;<br>API declaration: SCALE_FIRST = 1<br>DIfferences: SCALE_FIRST = 1|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: CropAndScaleStrategy;<br>API declaration: CROP_FIRST = 2<br>DIfferences: CROP_FIRST = 2|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: image;<br>API declaration: interface PackingOptionsForSequence<br>DIfferences: interface PackingOptionsForSequence|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: PackingOptionsForSequence;<br>API declaration: frameCount: number;<br>DIfferences: frameCount: number;|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: PackingOptionsForSequence;<br>API declaration: delayTimeList: Array\<number>;<br>DIfferences: delayTimeList: Array\<number>;|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: PackingOptionsForSequence;<br>API declaration: disposalTypes?: Array\<number>;<br>DIfferences: disposalTypes?: Array\<number>;|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: PackingOptionsForSequence;<br>API declaration: loopCount?: number;<br>DIfferences: loopCount?: number;|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: DecodingOptions;<br>API declaration: cropAndScaleStrategy?: CropAndScaleStrategy;<br>DIfferences: cropAndScaleStrategy?: CropAndScaleStrategy;|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: PixelMap;<br>API declaration: createScaledPixelMap(x: number, y: number, level?: AntiAliasingLevel): Promise\<PixelMap>;<br>DIfferences: createScaledPixelMap(x: number, y: number, level?: AntiAliasingLevel): Promise\<PixelMap>;|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: PixelMap;<br>API declaration: createScaledPixelMapSync(x: number, y: number, level?: AntiAliasingLevel): PixelMap;<br>DIfferences: createScaledPixelMapSync(x: number, y: number, level?: AntiAliasingLevel): PixelMap;|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: PixelMap;<br>API declaration: cloneSync(): PixelMap;<br>DIfferences: cloneSync(): PixelMap;|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: PixelMap;<br>API declaration: clone(): Promise\<PixelMap>;<br>DIfferences: clone(): Promise\<PixelMap>;|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: ImagePacker;<br>API declaration: packToDataFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, options: PackingOptionsForSequence): Promise\<ArrayBuffer>;<br>DIfferences: packToDataFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, options: PackingOptionsForSequence): Promise\<ArrayBuffer>;|api/@ohos.multimedia.image.d.ts|
+|New API |NA|Class name: ImagePacker;<br>API declaration: packToFileFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, fd: number, options: PackingOptionsForSequence): Promise\<void>;<br>DIfferences: packToFileFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, fd: number, options: PackingOptionsForSequence): Promise\<void>;|api/@ohos.multimedia.image.d.ts|
+|New Kit|Class name: global;<br>API declaration: <br>DIfferences: NA|Class name: global;<br>API declaration: api\@ohos.multimedia.videoProcessingEngine.d.ts<br>DIfferences: ImageKit|api/@ohos.multimedia.videoProcessingEngine.d.ts|

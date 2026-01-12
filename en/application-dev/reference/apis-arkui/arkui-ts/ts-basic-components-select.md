@@ -4,7 +4,7 @@
 <!--Owner: @zhanghaibo0-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Select** component provides a drop-down menu that allows users to select among multiple options.
 
@@ -174,6 +174,10 @@ menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration>)
 
 Creates a content modifier for the drop-down menu. After **menuItemContentModifier** is applied, the drop-down menu content will be completely customized by the developer, and the **Select** component's attributes, including the divider, option color, and drop-down menu font color, will not take effect.
 
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -189,6 +193,10 @@ Creates a content modifier for the drop-down menu. After **menuItemContentModifi
 menuItemContentModifier(modifier: Optional\<ContentModifier\<MenuItemConfiguration>>)
 
 Creates a content modifier for the drop-down menu. Compared with [menuItemContentModifier](#menuitemcontentmodifier12)<sup>12+</sup>, this API supports the **undefined** type for **modifier** parameter. After **menuItemContentModifier** is applied, the drop-down menu content will be completely customized by the developer, and the **Select** component's attributes, including the divider, option color, and drop-down menu font color, will not take effect.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -552,7 +560,7 @@ Sets the alignment between the text and arrow of an option. Compared with [arrow
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| position | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ArrowPosition](#arrowposition10) >| Yes  | Alignment between the text and arrow of an option.<br>If **position** is set to **undefined**, the default value **ArrowPosition.END** is used.|
+| position | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ArrowPosition](#arrowposition10)> | Yes  | Alignment between the text and arrow of an option.<br>If **position** is set to **undefined**, the default value **ArrowPosition.END** is used.|
 
 ### menuAlign<sup>10+</sup>
 
@@ -674,6 +682,10 @@ menuBackgroundColor(value: ResourceColor)
 
 Sets the background color of the drop-down menu.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -705,6 +717,10 @@ Sets the background color of the drop-down menu. Compared with [menuBackgroundCo
 menuBackgroundBlurStyle(value: BlurStyle)
 
 Sets the background blur style of the drop-down menu.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -786,6 +802,10 @@ textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribut
 
 Creates a text modifier to customize the text style of the **Select** button. After **textModifier** is applied, the text style of the **Select** button will be completely customized by the developer.
 
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -801,6 +821,10 @@ Creates a text modifier to customize the text style of the **Select** button. Af
 arrowModifier(modifier: Optional\<SymbolGlyphModifier>)
 
 Creates an arrow modifier to customize the drop-down arrow icon style of the **Select** button. After **arrowModifier** is applied, the drop-down arrow icon style of the **Select** button will be completely customized by the developer.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -820,6 +844,10 @@ Creates an option text modifier to customize the text style of unselected option
 
 If both [optionFont](#optionfont) and **Font** of **optionTextModifier** are set, [optionFont](#optionfont) takes precedence. Any unspecified attributes in **optionFont** will use default values.
 
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -837,6 +865,10 @@ selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attri
 Creates a selected-option text modifier to customize the text style of selected options in the drop-down menu. After **selectedOptionTextModifier** is applied, the selected-option text style will be completely customized by the developer.
 
 If both [selectedOptionFont](#selectedoptionfont) and **Font** of **selectedOptionTextModifier** are set, [selectedOptionFont](#selectedoptionfont) takes precedence. If **selectedOptionFont** is not set, [optionFont](#optionfont) settings are applied. Any unspecified attributes in **selectedOptionFont** or **optionFont** will use default values.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -940,7 +972,7 @@ Defines the outline of the drop-down menu.
 
 onSelect(callback: (index: number, value: string) => void)
 
-Invoked when a drop-down menu option is selected.
+Triggered when a drop-down menu option is selected.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -957,7 +989,7 @@ Invoked when a drop-down menu option is selected.
 
 onSelect(callback: Optional\<OnSelectCallback> )
 
-Invoked when a drop-down menu option is selected. Compared with [onSelect](#onselect), this API supports the **undefined** type for the **callback** parameter.
+Triggered when a drop-down menu option is selected. Compared with [onSelect](#onselect), this API supports the **undefined** type for the **callback** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -988,7 +1020,7 @@ Defines the callback invoked when a drop-down menu option is selected.
 
 ##  Example 1: Creating a Drop-down Menu
 
-This example demonstrates how to create a drop-down menu by configuring **SelectOptions**.
+This example demonstrates how to create a drop-down menu by configuring [SelectOption](#selectoption) and how to implement menu avoidance using the [avoidance](#avoidance19) attribute, available since API version 19.
 
 ```ts
 // xxx.ets
@@ -1036,7 +1068,7 @@ struct SelectExample {
 
 
 ##  Example 2: Setting the Symbol Icon
-This example implements a drop-down menu, each option of which uses a symbol as its image.
+This example demonstrates how to create a drop-down menu with symbol icons in the **Select** component and implement menu avoidance using the [avoidance](#avoidance19) attribute, available since API version 19.
 
 ```ts
 // xxx.ets
@@ -1162,7 +1194,7 @@ struct SelectExample {
 ![](figures/SelectBuilderSymbol.png)
 
 ##  Example 4: Using the Divider Style
-This example demonstrates how to configure a drop-down list box with a custom divider style by setting **divider** with **DividerOptions**.
+This example uses **DividerOptions** to create a divider-style drop-down menu and implements menu avoidance using the [avoidance](#avoidance19) attribute, available since API version 19.
 
 ```ts
 // xxx.ets
@@ -1211,7 +1243,7 @@ struct SelectExample {
 ![](figures/SelectCustomDivider.png)
 
 ##  Example 5: Using the No-Divider Style
-This example demonstrates how to create a drop-down menu with no divider by setting **divider** to **null**.
+This example sets the **divider** attribute to **null** to remove dividers, and implements menu avoidance using the [avoidance](#avoidance19) attribute, available since API version 19.
 
 ```ts
 // xxx.ets
@@ -1255,7 +1287,8 @@ struct SelectExample {
 ![](figures/SelectHideDivider.png)
 
 ##  Example 6: Setting the Text and Arrow Styles of the Select Component
-This example shows how to set the text and arrow styles of the **Select** component using **textModifier** and **arrowModifier**.
+
+This example illustrates how to configure the text and arrow styles of the **Select** component using the [textModifier](#textmodifier20) and [arrowModifier](#arrowmodifier20) attributes, available since API version 20.
 
 ```ts
 import { TextModifier, SymbolGlyphModifier } from "@kit.ArkUI";
@@ -1321,7 +1354,8 @@ struct SelectExample {
 ![](figures/SelectModifier.png)
 
 ##  Example 7: Setting the Text Styles of Selected and Unselected Drop-Down Menu Options
-This example shows how to set the text styles of both selected and unselected drop-down menu options using **optionTextModifier** and **selectedOptionTextModifier**.
+
+This example demonstrates how to use the [optionTextModifier](#optiontextmodifier20) and [selectedOptionTextModifier](#selectedoptiontextmodifier20) attributes to set text styles for unselected and selected drop-down menu options, available since API version 20.
 
 ```ts
 import { TextModifier } from "@kit.ArkUI";
@@ -1391,7 +1425,7 @@ struct SelectExample {
 
 ## Example 8: Setting the Divider Mode
 
-This example demonstrates how to set the divider mode using the **mode** property of **dividerStyle**.
+This example shows how to set the divider mode by configuring the **mode** property of [DividerStyleOptions](ts-types.md#dividerstyleoptions12), supported since API version 19.
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI'
@@ -1419,7 +1453,7 @@ struct Index {
 
 ## Example 9: Setting the Outline Style of the Drop-Down Menu
 
-This example shows how to set the outline style of the drop-down menu using the **width** and **color** properties of **menuOutline**.
+This example shows how to set the outline style of the drop-down menu using the **width** and **color** properties of **menuOutline**, supported since API version 20.
 
 ```ts
 // xxx.ets

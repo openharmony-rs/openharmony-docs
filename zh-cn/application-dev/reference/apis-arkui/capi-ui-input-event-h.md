@@ -30,6 +30,9 @@
 | -- | -- | -- |
 | [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) | ArkUI_UIInputEvent | UI输入事件定义。 |
 | [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md) | ArkUI_CoastingAxisEvent | 定义惯性滚动轴事件。  |
+| [ArkUI_TouchTestInfoItem](capi-arkui-nativemodule-arkui-touchtestinfoitem.md) | ArkUI_TouchTestInfoItem | 定义触摸测试信息项。  |
+| [ArkUI_TouchTestInfoItem*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md) | ArkUI_TouchTestInfoItemHandle | 定义触摸测试信息项句柄。  |
+| [ArkUI_TouchTestInfoItemHandle*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md) | ArkUI_TouchTestInfoItemHandleArray | 定义触摸测试信息项句柄数组。  |
 
 ### 枚举
 
@@ -125,8 +128,8 @@
 | [float OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionX(const ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_geteventtargetglobalpositionx) | 获取事件命中的组件的全局X坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | [float OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionY(const ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_geteventtargetglobalpositiony) | 获取事件命中的组件的全局Y坐标。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | [int64_t OH_ArkUI_PointerEvent_GetPressedTimeByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getpressedtimebyindex) | 获取指定触点的按下时间。仅对触摸事件有效。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| [float OH_ArkUI_MouseEvent_GetRawDeltaX(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getrawdeltax) | 获取X轴相对于前一个上报的鼠标事件的鼠标指针位置的偏移量。当鼠标指针位于屏幕边缘时，该值可能小于两次上报的X坐标的差。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| [float OH_ArkUI_MouseEvent_GetRawDeltaY(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getrawdeltay) | 获取相对于前一个上报的鼠标事件的鼠标指针位置的Y轴偏移量。当鼠标指针位于屏幕边缘时，该值可能小于两次上报的Y坐标的差。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| [float OH_ArkUI_MouseEvent_GetRawDeltaX(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getrawdeltax) | 获取鼠标设备在二维平面X轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| [float OH_ArkUI_MouseEvent_GetRawDeltaY(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getrawdeltay) | 获取鼠标设备在二维平面Y轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | [int32_t OH_ArkUI_MouseEvent_GetPressedButtons(const ArkUI_UIInputEvent* event, int32_t* pressedButtons, int32_t* length)](#oh_arkui_mouseevent_getpressedbuttons) | 从鼠标事件中获取按下的按键。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [int32_t OH_ArkUI_UIInputEvent_GetTargetDisplayId(const ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_gettargetdisplayid) | 获取发生UI输入事件的屏幕ID。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | [bool OH_ArkUI_HoverEvent_IsHovered(const ArkUI_UIInputEvent* event)](#oh_arkui_hoverevent_ishovered) | 获取鼠标是否悬浮在当前组件上                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -138,19 +141,30 @@
 | [int32_t OH_ArkUI_PointerEvent_SetClonedEventChangedFingerId(const ArkUI_UIInputEvent* event, int32_t fingerId)](#oh_arkui_pointerevent_setclonedeventchangedfingerid) | 设置当前带有指向性的克隆输入事件的触摸点ID。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | [int32_t OH_ArkUI_PointerEvent_SetClonedEventFingerIdByIndex(const ArkUI_UIInputEvent* event, int32_t fingerId, int32_t pointerIndex)](#oh_arkui_pointerevent_setclonedeventfingeridbyindex) | 设置带有指向性的克隆输入事件特定接触点的触摸点ID。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | [int32_t OH_ArkUI_PointerEvent_PostClonedEvent(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_postclonedevent) | 转发克隆事件到特定节点。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| [ArkUI_ErrorCode OH_ArkUI_UIInputEvent_GetLatestStatus()](#oh_arkui_uiinputevent_getlateststatus) | 调用该方法获取最近一次UIInput相关方法的执行情况。通常情况下不需要使用该方法，仅在返回值结果不确定是否异常时使用。以下是一个使用示例（对于返回的float类型，0.0并不代表错误，因此可以进一步使用OH_ArkUI_UIInputEvent_GetLatestStatus方法来确认是否发生异常）。float x = OH_ArkUI_PointerEvent_GetX(event);if (ARKUI_ERROR_CODE_NO_ERROR != OH_Arkui_UIInputEvent_GetlatestStatus()) {// errorreturn;}系统将在每次执行UIInput相关函数时主动清空上一次函数调用的状态，以确保每次通过该接口获取的均为最近一次的状态。                                                                                                                                                                                                                              |
+| [ArkUI_ErrorCode OH_ArkUI_UIInputEvent_GetLatestStatus()](#oh_arkui_uiinputevent_getlateststatus) | 调用该方法获取最近一次UIInput相关方法的执行情况。通常情况下不需要使用该方法，仅在返回值结果不确定是否异常时使用。以下是一个使用示例（对于返回的float类型，0.0并不代表错误，因此可以进一步使用OH_ArkUI_UIInputEvent_GetLatestStatus方法来确认是否发生异常）。float x = OH_ArkUI_PointerEvent_GetX(event);if (ARKUI_ERROR_CODE_NO_ERROR != OH_ArkUI_UIInputEvent_GetlatestStatus()) {// errorreturn;}系统将在每次执行UIInput相关函数时主动清空上一次函数调用的状态，以确保每次通过该接口获取的均为最近一次的状态。                                                                                                                                                                                                                              |
 | [ArkUI_CoastingAxisEvent OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_getcoastingaxisevent) | 获取惯性滚动轴事件的指针。  |
 | [int64_t OH_ArkUI_CoastingAxisEvent_GetEventTime(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_geteventtime) | 获取惯性滚动轴事件发生的时间。  |
 | [ArkUI_CoastingAxisEventPhase OH_ArkUI_CoastingAxisEvent_GetPhase(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getphase) | 获取惯性滚动轴事件发生时的滚动阶段。  |
 | [float OH_ArkUI_CoastingAxisEvent_GetDeltaY(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getdeltay) | 获取惯性滚动轴事件垂直方向的增量值。单位为px，表示为单次滚动增量，非滚动总量。数值的正负代表方向，双指从上往下滑动时为负数，双指从下往上滑动时为正数。  |
 | [float OH_ArkUI_CoastingAxisEvent_GetDeltaX(ArkUI_CoastingAxisEvent event)](#oh_arkui_coastingaxisevent_getdeltax) | 获取惯性滚动轴事件水平方向的增量值。单位为px，表示为单次滚动增量，非滚动总量。数值的正负代表方向，双指从左往右滑动时为负数，双指从右往左滑动时为正数。  |
 | [int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent event, bool propagation)](#oh_arkui_coastingaxisevent_setpropagation) | 设置惯性滚动轴事件是否启用冒泡，默认禁止冒泡。|
+| [ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_GetTouchTestInfoList(ArkUI_TouchTestInfo* info, ArkUI_TouchTestInfoItemArray* array, int32_t* size)](#oh_arkui_touchtestinfo_gettouchtestinfolist) | 获取触摸测试信息中的触摸测试信息项数组。 |
+| [float OH_ArkUI_TouchTestInfoItem_GetX(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_getx) | 从触摸测试信息项中获取相对于子组件左上角的X坐标，单位为px。 |
+| [float OH_ArkUI_TouchTestInfoItem_GetY(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_gety) | 从触摸测试信息项中获取相对于子组件左上角的Y坐标，单位为px。 |
+| [float OH_ArkUI_TouchTestInfoItem_GetWindowX(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_getwindowx) | 从触摸测试信息项中获取相对于当前应用窗口左上角的X坐标，单位为px。 |
+| [float OH_ArkUI_TouchTestInfoItem_GetWindowY(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_getwindowy) | 从触摸测试信息项中获取相对于当前应用窗口左上角的Y坐标，单位为px。 |
+| [float OH_ArkUI_TouchTestInfoItem_GetXRelativeToParent(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_getxrelativetoparent) | 从触摸测试信息项中获取相对于父组件左上角的X坐标，单位为px。 |
+| [float OH_ArkUI_TouchTestInfoItem_GetYRelativeToParent(const ArkUI_TouchTestInfoItem* info)](#oh_arkui_touchtestinfoitem_getyrelativetoparent) | 从触摸测试信息项中获取相对于父组件左上角的Y坐标，单位为px。 |
+| [ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildRect(const ArkUI_TouchTestInfoItem* info, ArkUI_Rect* childRect)](#oh_arkui_touchtestinfoitem_getchildrect) | 从触摸测试信息项中获取子组件的帧矩形信息。 |
+| [ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildId(const ArkUI_TouchTestInfoItem* info, char* buffer, int32_t bufferSize)](#oh_arkui_touchtestinfoitem_getchildid) | 从触摸测试信息项中获取子组件的ID。 |
+| [ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultStrategy(ArkUI_TouchTestInfo* info, ArkUI_TouchTestStrategy strategy)](#oh_arkui_touchtestinfo_settouchresultstrategy) | 设置触摸测试策略，即组件及其子组件在命中测试过程中的行为方式。 |
+| [ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultId(ArkUI_TouchTestInfo* info, const char* id)](#oh_arkui_touchtestinfo_settouchresultid) | 设置命中测试过程中需要作用的子组件ID。 |
 
 ## 枚举类型说明
 
 ### ArkUI_UIInputEvent_Type
 
-```
+```c
 enum ArkUI_UIInputEvent_Type
 ```
 
@@ -171,7 +185,7 @@ UI输入事件类型定义。
 
 ### anonymous1
 
-```
+```c
 enum anonymous1
 ```
 
@@ -191,7 +205,7 @@ enum anonymous1
 
 ### anonymous2
 
-```
+```c
 enum anonymous2
 ```
 
@@ -213,7 +227,7 @@ enum anonymous2
 
 ### anonymous3
 
-```
+```c
 enum anonymous3
 ```
 
@@ -226,7 +240,7 @@ enum anonymous3
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_INPUT_EVENT_SOURCE_TYPE_UNKNOWN = 0 | 不支持的来源类型。 |
+| UI_INPUT_EVENT_SOURCE_TYPE_UNKNOWN = 0 | 未知输入源。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_MOUSE = 1 | 鼠标。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_TOUCH_SCREEN = 2 | 触摸屏。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_KEY = 4 | 按键。<br>**起始版本：** 22 |
@@ -234,7 +248,7 @@ enum anonymous3
 
 ### HitTestMode
 
-```
+```c
 enum HitTestMode
 ```
 
@@ -248,15 +262,15 @@ enum HitTestMode
 | 枚举项 | 描述 |
 | -- | -- |
 | HTM_DEFAULT = 0 | 默认触摸测试效果。自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。 |
-| HTM_BLOCK | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。 |
-| HTM_TRANSPARENT | 自身和子节点都响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。 |
-| HTM_NONE | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。 |
-| HTM_BLOCK_HIERARCHY | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br>**起始版本：** 20 |
-| HTM_BLOCK_DESCENDANTS | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br>**起始版本：** 20 |
+| HTM_BLOCK = 1 | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。 |
+| HTM_TRANSPARENT = 2 | 自身和子节点都响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。 |
+| HTM_NONE = 3 | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。 |
+| HTM_BLOCK_HIERARCHY = 4 | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br>**起始版本：** 20 |
+| HTM_BLOCK_DESCENDANTS = 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br>**起始版本：** 20 |
 
 ### anonymous4
 
-```
+```c
 enum anonymous4
 ```
 
@@ -277,7 +291,7 @@ enum anonymous4
 
 ### anonymous5
 
-```
+```c
 enum anonymous5
 ```
 
@@ -299,7 +313,7 @@ enum anonymous5
 
 ### ArkUI_ModifierKeyName
 
-```
+```c
 enum ArkUI_ModifierKeyName
 ```
 
@@ -319,7 +333,7 @@ enum ArkUI_ModifierKeyName
 
 ### anonymous6
 
-```
+```c
 enum anonymous6
 ```
 
@@ -340,10 +354,21 @@ enum anonymous6
 | UI_FOCUS_AXIS_EVENT_ABS_BRAKE = 5 | 游戏手柄BRAKE轴。 |
 | UI_FOCUS_AXIS_EVENT_ABS_HAT0X = 6 | 游戏手柄HAT0X轴。 |
 | UI_FOCUS_AXIS_EVENT_ABS_HAT0Y = 7 | 游戏手柄HAT0Y轴。 |
+| UI_FOCUS_AXIS_EVENT_ABS_RX = 8 | 游戏手柄RX轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_RY = 9 | 游戏手柄RY轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_THROTTLE = 10 | 游戏手柄THROTTLE轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_RUDDER = 11 | 游戏手柄RUDDER轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_WHEEL = 12 | 游戏手柄WHEEL轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_HAT1X = 13 | 游戏手柄HAT1X轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_HAT1Y = 14 | 游戏手柄HAT1Y轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_HAT2X = 15 | 游戏手柄HAT2X轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_HAT2Y = 16 | 游戏手柄HAT2Y轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_HAT3X = 17 | 游戏手柄HAT3X轴。<br>**起始版本：** 23 |
+| UI_FOCUS_AXIS_EVENT_ABS_HAT3Y = 18 | 游戏手柄HAT3Y轴。<br>**起始版本：** 23 |
 
 ### ArkUI_InteractionHand
 
-```
+```c
 enum ArkUI_InteractionHand
 ```
 
@@ -362,7 +387,7 @@ enum ArkUI_InteractionHand
 
 ### anonymous7
 
-```
+```c
 enum anonymous7
 ```
 
@@ -383,7 +408,7 @@ enum anonymous7
 
 ### anonymous8
 
-```
+```c
 enum anonymous8
 ```
 
@@ -402,7 +427,7 @@ enum anonymous8
 
 ### ArkUI_CoastingAxisEventPhase
 
-```
+```c
 enum ArkUI_CoastingAxisEventPhase
 ```
 
@@ -420,11 +445,30 @@ enum ArkUI_CoastingAxisEventPhase
 | ARKUI_COASTING_AXIS_EVENT_PHASE_UPDATE = 2 | 惯性滚动轴事件更新，此阶段可以获取惯性轴值增量来处理滚动偏移。  |
 | ARKUI_COASTING_AXIS_EVENT_PHASE_END = 3 | 惯性滚动轴事件结束，此值在惯性被刹停（惯性滚动阶段用户重新触摸触控板或通过鼠标及触屏与组件产生交互等）或惯性衰减至自然停止时发送，到达此阶段时，应立即停止惯性滚动效果。  |
 
+### ArkUI_TouchTestStrategy
+
+```c
+enum ArkUI_TouchTestStrategy
+```
+
+**描述：**
+
+
+定义触摸测试策略。
+
+**起始版本：** 22
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_TOUCH_TEST_STRATEGY_DEFAULT = 0 | 自定义分发不产生影响，系统按当前节点命中状态分发事件。  |
+| ARKUI_TOUCH_TEST_STRATEGY_FORWARD_COMPETITION = 1 | 应用指定分发事件到某个子节点，其他兄弟节点是否分发事件交由系统决定。  |
+| ARKUI_TOUCH_TEST_STRATEGY_FORWARD = 2 | 应用指定分发事件到某个子节点，系统不再分发事件到其他兄弟节点。  |
+
 ## 函数说明
 
 ### OH_ArkUI_UIInputEvent_GetType()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetType(const ArkUI_UIInputEvent* event)
 ```
 
@@ -450,7 +494,7 @@ int32_t OH_ArkUI_UIInputEvent_GetType(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_UIInputEvent_GetAction()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetAction(const ArkUI_UIInputEvent* event)
 ```
 
@@ -476,14 +520,14 @@ int32_t OH_ArkUI_UIInputEvent_GetAction(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_UIInputEvent_GetSourceType()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetSourceType(const ArkUI_UIInputEvent* event)
 ```
 
 **描述：**
 
 
-获取UI输入事件的触发源类型。输入源为产生输入事件的真实物理设备，如触摸屏，鼠标等，由UI_INPUT_EVENT_SOURCE_TYPE_XXX定义，而输入工具为操作输入源设备来产生事件的工具，如手指、触控笔。在某些情况下两者可能容易发生混淆，比如当用户在操作鼠标时，鼠标既是输入源，也是输入工具。对于按键事件，并不支持获取输入源类型，返回unkown。
+获取UI输入事件的触发源类型。输入源为产生输入事件的真实物理设备，如触摸屏，鼠标等，由UI_INPUT_EVENT_SOURCE_TYPE_XXX定义，而输入工具为操作输入源设备来产生事件的工具，如手指、触控笔。在某些情况下两者可能容易发生混淆，比如当用户在操作鼠标时，鼠标既是输入源，也是输入工具。对于按键事件，并不支持获取输入源类型，返回unknown。
 
 **起始版本：** 12
 
@@ -502,14 +546,14 @@ int32_t OH_ArkUI_UIInputEvent_GetSourceType(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_UIInputEvent_GetToolType()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetToolType(const ArkUI_UIInputEvent* event)
 ```
 
 **描述：**
 
 
-获取UI输入事件的工具类型。输入工具为操作输入源设备来产生事件的操作方，如手指、触控笔，他们自身不真实产生事件，但可以驱动输入源设备不断产生事件。返回的类型由UI_INPUT_EVENT_TOOL_TYPE_XXX枚举值定义。对于按键事件，并不支持获取输入工具类型，返回unkown。
+获取UI输入事件的工具类型。输入工具为操作输入源设备来产生事件的操作方，如手指、触控笔，他们自身不真实产生事件，但可以驱动输入源设备不断产生事件。返回的类型由UI_INPUT_EVENT_TOOL_TYPE_XXX枚举值定义。对于按键事件，并不支持获取输入工具类型，返回unknown。
 
 **起始版本：** 12
 
@@ -528,7 +572,7 @@ int32_t OH_ArkUI_UIInputEvent_GetToolType(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_UIInputEvent_GetEventTime()
 
-```
+```c
 int64_t OH_ArkUI_UIInputEvent_GetEventTime(const ArkUI_UIInputEvent* event)
 ```
 
@@ -554,7 +598,7 @@ int64_t OH_ArkUI_UIInputEvent_GetEventTime(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetPointerCount()
 
-```
+```c
 uint32_t OH_ArkUI_PointerEvent_GetPointerCount(const ArkUI_UIInputEvent* event)
 ```
 
@@ -580,7 +624,7 @@ uint32_t OH_ArkUI_PointerEvent_GetPointerCount(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetPointerId()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_GetPointerId(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -607,7 +651,7 @@ int32_t OH_ArkUI_PointerEvent_GetPointerId(const ArkUI_UIInputEvent* event, uint
 
 ### OH_ArkUI_PointerEvent_GetChangedPointerId()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_GetChangedPointerId(const ArkUI_UIInputEvent* event, uint32_t* pointerIndex)
 ```
 
@@ -634,7 +678,7 @@ int32_t OH_ArkUI_PointerEvent_GetChangedPointerId(const ArkUI_UIInputEvent* even
 
 ### OH_ArkUI_PointerEvent_GetX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetX(const ArkUI_UIInputEvent* event)
 ```
 
@@ -660,7 +704,7 @@ float OH_ArkUI_PointerEvent_GetX(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetXByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -687,7 +731,7 @@ float OH_ArkUI_PointerEvent_GetXByIndex(const ArkUI_UIInputEvent* event, uint32_
 
 ### OH_ArkUI_PointerEvent_GetY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)
 ```
 
@@ -713,7 +757,7 @@ float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetYByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -740,7 +784,7 @@ float OH_ArkUI_PointerEvent_GetYByIndex(const ArkUI_UIInputEvent* event, uint32_
 
 ### OH_ArkUI_PointerEvent_GetWindowX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetWindowX(const ArkUI_UIInputEvent* event)
 ```
 
@@ -766,7 +810,7 @@ float OH_ArkUI_PointerEvent_GetWindowX(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetWindowXByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetWindowXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -793,7 +837,7 @@ float OH_ArkUI_PointerEvent_GetWindowXByIndex(const ArkUI_UIInputEvent* event, u
 
 ### OH_ArkUI_PointerEvent_GetWindowY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetWindowY(const ArkUI_UIInputEvent* event)
 ```
 
@@ -819,7 +863,7 @@ float OH_ArkUI_PointerEvent_GetWindowY(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetWindowYByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetWindowYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -846,7 +890,7 @@ float OH_ArkUI_PointerEvent_GetWindowYByIndex(const ArkUI_UIInputEvent* event, u
 
 ### OH_ArkUI_PointerEvent_GetDisplayX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetDisplayX(const ArkUI_UIInputEvent* event)
 ```
 
@@ -872,7 +916,7 @@ float OH_ArkUI_PointerEvent_GetDisplayX(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetDisplayXByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetDisplayXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -899,7 +943,7 @@ float OH_ArkUI_PointerEvent_GetDisplayXByIndex(const ArkUI_UIInputEvent* event, 
 
 ### OH_ArkUI_PointerEvent_GetDisplayY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetDisplayY(const ArkUI_UIInputEvent* event)
 ```
 
@@ -925,7 +969,7 @@ float OH_ArkUI_PointerEvent_GetDisplayY(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetDisplayYByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetDisplayYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -952,7 +996,7 @@ float OH_ArkUI_PointerEvent_GetDisplayYByIndex(const ArkUI_UIInputEvent* event, 
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetGlobalDisplayX(const ArkUI_UIInputEvent* event)
 ```
 
@@ -978,7 +1022,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayX(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -1005,7 +1049,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex(const ArkUI_UIInputEvent* e
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetGlobalDisplayY(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1031,7 +1075,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayY(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -1058,7 +1102,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex(const ArkUI_UIInputEvent* e
 
 ### OH_ArkUI_PointerEvent_GetPressure()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetPressure(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -1085,7 +1129,7 @@ float OH_ArkUI_PointerEvent_GetPressure(const ArkUI_UIInputEvent* event, uint32_
 
 ### OH_ArkUI_PointerEvent_GetTiltX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -1112,7 +1156,7 @@ float OH_ArkUI_PointerEvent_GetTiltX(const ArkUI_UIInputEvent* event, uint32_t p
 
 ### OH_ArkUI_PointerEvent_GetTiltY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -1139,7 +1183,7 @@ float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t p
 
 ### OH_ArkUI_PointerEvent_GetRollAngle()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_GetRollAngle(const ArkUI_UIInputEvent* event, double* rollAngle)
 ```
 
@@ -1166,7 +1210,7 @@ int32_t OH_ArkUI_PointerEvent_GetRollAngle(const ArkUI_UIInputEvent* event, doub
 
 ### OH_ArkUI_PointerEvent_GetTouchAreaWidth()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetTouchAreaWidth(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -1193,7 +1237,7 @@ float OH_ArkUI_PointerEvent_GetTouchAreaWidth(const ArkUI_UIInputEvent* event, u
 
 ### OH_ArkUI_PointerEvent_GetTouchAreaHeight()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetTouchAreaHeight(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -1220,7 +1264,7 @@ float OH_ArkUI_PointerEvent_GetTouchAreaHeight(const ArkUI_UIInputEvent* event, 
 
 ### OH_ArkUI_PointerEvent_GetInteractionHand()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_GetInteractionHand(const ArkUI_UIInputEvent *event, ArkUI_InteractionHand *hand)
 ```
 
@@ -1247,7 +1291,7 @@ int32_t OH_ArkUI_PointerEvent_GetInteractionHand(const ArkUI_UIInputEvent *event
 
 ### OH_ArkUI_PointerEvent_GetInteractionHandByIndex()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_GetInteractionHandByIndex(const ArkUI_UIInputEvent *event, int32_t pointerIndex, ArkUI_InteractionHand *hand)
 ```
 
@@ -1275,7 +1319,7 @@ int32_t OH_ArkUI_PointerEvent_GetInteractionHandByIndex(const ArkUI_UIInputEvent
 
 ### OH_ArkUI_PointerEvent_GetHistorySize()
 
-```
+```c
 uint32_t OH_ArkUI_PointerEvent_GetHistorySize(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1301,7 +1345,7 @@ uint32_t OH_ArkUI_PointerEvent_GetHistorySize(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_GetHistoryEventTime()
 
-```
+```c
 int64_t OH_ArkUI_PointerEvent_GetHistoryEventTime(const ArkUI_UIInputEvent* event, uint32_t historyIndex)
 ```
 
@@ -1328,7 +1372,7 @@ int64_t OH_ArkUI_PointerEvent_GetHistoryEventTime(const ArkUI_UIInputEvent* even
 
 ### OH_ArkUI_PointerEvent_GetHistoryPointerCount()
 
-```
+```c
 uint32_t OH_ArkUI_PointerEvent_GetHistoryPointerCount(const ArkUI_UIInputEvent* event, uint32_t historyIndex)
 ```
 
@@ -1355,7 +1399,7 @@ uint32_t OH_ArkUI_PointerEvent_GetHistoryPointerCount(const ArkUI_UIInputEvent* 
 
 ### OH_ArkUI_PointerEvent_GetHistoryPointerId()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_GetHistoryPointerId(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1383,7 +1427,7 @@ int32_t OH_ArkUI_PointerEvent_GetHistoryPointerId(const ArkUI_UIInputEvent* even
 
 ### OH_ArkUI_PointerEvent_GetHistoryX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1411,7 +1455,7 @@ float OH_ArkUI_PointerEvent_GetHistoryX(const ArkUI_UIInputEvent* event, uint32_
 
 ### OH_ArkUI_PointerEvent_GetHistoryY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1439,7 +1483,7 @@ float OH_ArkUI_PointerEvent_GetHistoryY(const ArkUI_UIInputEvent* event, uint32_
 
 ### OH_ArkUI_PointerEvent_GetHistoryWindowX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryWindowX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1467,7 +1511,7 @@ float OH_ArkUI_PointerEvent_GetHistoryWindowX(const ArkUI_UIInputEvent* event, u
 
 ### OH_ArkUI_PointerEvent_GetHistoryWindowY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryWindowY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1495,7 +1539,7 @@ float OH_ArkUI_PointerEvent_GetHistoryWindowY(const ArkUI_UIInputEvent* event, u
 
 ### OH_ArkUI_PointerEvent_GetHistoryDisplayX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryDisplayX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1523,7 +1567,7 @@ float OH_ArkUI_PointerEvent_GetHistoryDisplayX(const ArkUI_UIInputEvent* event, 
 
 ### OH_ArkUI_PointerEvent_GetHistoryDisplayY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryDisplayY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1551,7 +1595,7 @@ float OH_ArkUI_PointerEvent_GetHistoryDisplayY(const ArkUI_UIInputEvent* event, 
 
 ### OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1579,7 +1623,7 @@ float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX(const ArkUI_UIInputEvent* e
 
 ### OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1607,7 +1651,7 @@ float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY(const ArkUI_UIInputEvent* e
 
 ### OH_ArkUI_PointerEvent_GetHistoryPressure()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryPressure(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1635,7 +1679,7 @@ float OH_ArkUI_PointerEvent_GetHistoryPressure(const ArkUI_UIInputEvent* event, 
 
 ### OH_ArkUI_PointerEvent_GetHistoryTiltX()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1663,7 +1707,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uin
 
 ### OH_ArkUI_PointerEvent_GetHistoryTiltY()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1691,7 +1735,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTiltY(const ArkUI_UIInputEvent* event, uin
 
 ### OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1719,7 +1763,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth(const ArkUI_UIInputEvent* e
 
 ### OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight()
 
-```
+```c
 float OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)
 ```
 
@@ -1747,7 +1791,7 @@ float OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight(const ArkUI_UIInputEvent* 
 
 ### OH_ArkUI_AxisEvent_GetVerticalAxisValue()
 
-```
+```c
 double OH_ArkUI_AxisEvent_GetVerticalAxisValue(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1773,7 +1817,7 @@ double OH_ArkUI_AxisEvent_GetVerticalAxisValue(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_AxisEvent_GetHorizontalAxisValue()
 
-```
+```c
 double OH_ArkUI_AxisEvent_GetHorizontalAxisValue(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1799,7 +1843,7 @@ double OH_ArkUI_AxisEvent_GetHorizontalAxisValue(const ArkUI_UIInputEvent* event
 
 ### OH_ArkUI_AxisEvent_GetPinchAxisScaleValue()
 
-```
+```c
 double OH_ArkUI_AxisEvent_GetPinchAxisScaleValue(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1825,7 +1869,7 @@ double OH_ArkUI_AxisEvent_GetPinchAxisScaleValue(const ArkUI_UIInputEvent* event
 
 ### OH_ArkUI_AxisEvent_GetAxisAction()
 
-```
+```c
 int32_t OH_ArkUI_AxisEvent_GetAxisAction(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1851,7 +1895,7 @@ int32_t OH_ArkUI_AxisEvent_GetAxisAction(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_AxisEvent_HasAxis()
 
-```
+```c
 int32_t OH_ArkUI_AxisEvent_HasAxis(const ArkUI_UIInputEvent* event, int32_t axis)
 ```
 
@@ -1878,7 +1922,7 @@ int32_t OH_ArkUI_AxisEvent_HasAxis(const ArkUI_UIInputEvent* event, int32_t axis
 
 ### OH_ArkUI_PointerEvent_SetInterceptHitTestMode()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_SetInterceptHitTestMode(const ArkUI_UIInputEvent* event, HitTestMode mode)
 ```
 
@@ -1905,7 +1949,7 @@ int32_t OH_ArkUI_PointerEvent_SetInterceptHitTestMode(const ArkUI_UIInputEvent* 
 
 ### OH_ArkUI_MouseEvent_GetMouseButton()
 
-```
+```c
 int32_t OH_ArkUI_MouseEvent_GetMouseButton(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1931,7 +1975,7 @@ int32_t OH_ArkUI_MouseEvent_GetMouseButton(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_MouseEvent_GetMouseAction()
 
-```
+```c
 int32_t OH_ArkUI_MouseEvent_GetMouseAction(const ArkUI_UIInputEvent* event)
 ```
 
@@ -1957,7 +2001,7 @@ int32_t OH_ArkUI_MouseEvent_GetMouseAction(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_SetStopPropagation()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_SetStopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)
 ```
 
@@ -1984,7 +2028,7 @@ int32_t OH_ArkUI_PointerEvent_SetStopPropagation(const ArkUI_UIInputEvent* event
 
 ### OH_ArkUI_UIInputEvent_GetDeviceId()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetDeviceId(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2010,7 +2054,7 @@ int32_t OH_ArkUI_UIInputEvent_GetDeviceId(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_UIInputEvent_GetPressedKeys()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetPressedKeys(const ArkUI_UIInputEvent* event, int32_t* pressedKeyCodes, int32_t* length)
 ```
 
@@ -2038,7 +2082,7 @@ int32_t OH_ArkUI_UIInputEvent_GetPressedKeys(const ArkUI_UIInputEvent* event, in
 
 ### OH_ArkUI_FocusAxisEvent_GetAxisValue()
 
-```
+```c
 double OH_ArkUI_FocusAxisEvent_GetAxisValue(const ArkUI_UIInputEvent* event, int32_t axis)
 ```
 
@@ -2065,7 +2109,7 @@ double OH_ArkUI_FocusAxisEvent_GetAxisValue(const ArkUI_UIInputEvent* event, int
 
 ### OH_ArkUI_FocusAxisEvent_SetStopPropagation()
 
-```
+```c
 int32_t OH_ArkUI_FocusAxisEvent_SetStopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)
 ```
 
@@ -2092,7 +2136,7 @@ int32_t OH_ArkUI_FocusAxisEvent_SetStopPropagation(const ArkUI_UIInputEvent* eve
 
 ### OH_ArkUI_UIInputEvent_GetModifierKeyStates()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetModifierKeyStates(const ArkUI_UIInputEvent* event, uint64_t* keys)
 ```
 
@@ -2119,7 +2163,7 @@ int32_t OH_ArkUI_UIInputEvent_GetModifierKeyStates(const ArkUI_UIInputEvent* eve
 
 ### OH_ArkUI_AxisEvent_SetPropagation()
 
-```
+```c
 int32_t OH_ArkUI_AxisEvent_SetPropagation(const ArkUI_UIInputEvent* event, bool propagation)
 ```
 
@@ -2146,7 +2190,7 @@ int32_t OH_ArkUI_AxisEvent_SetPropagation(const ArkUI_UIInputEvent* event, bool 
 
 ### OH_ArkUI_AxisEvent_GetScrollStep()
 
-```
+```c
 int32_t OH_ArkUI_AxisEvent_GetScrollStep(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2172,7 +2216,7 @@ int32_t OH_ArkUI_AxisEvent_GetScrollStep(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetWidth()
 
-```
+```c
 float OH_ArkUI_UIInputEvent_GetEventTargetWidth(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2198,7 +2242,7 @@ float OH_ArkUI_UIInputEvent_GetEventTargetWidth(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetHeight()
 
-```
+```c
 float OH_ArkUI_UIInputEvent_GetEventTargetHeight(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2224,7 +2268,7 @@ float OH_ArkUI_UIInputEvent_GetEventTargetHeight(const ArkUI_UIInputEvent* event
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetPositionX()
 
-```
+```c
 float OH_ArkUI_UIInputEvent_GetEventTargetPositionX(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2250,7 +2294,7 @@ float OH_ArkUI_UIInputEvent_GetEventTargetPositionX(const ArkUI_UIInputEvent* ev
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetPositionY()
 
-```
+```c
 float OH_ArkUI_UIInputEvent_GetEventTargetPositionY(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2276,7 +2320,7 @@ float OH_ArkUI_UIInputEvent_GetEventTargetPositionY(const ArkUI_UIInputEvent* ev
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionX()
 
-```
+```c
 float OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionX(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2302,7 +2346,7 @@ float OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionX(const ArkUI_UIInputEve
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionY()
 
-```
+```c
 float OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionY(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2328,7 +2372,7 @@ float OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionY(const ArkUI_UIInputEve
 
 ### OH_ArkUI_PointerEvent_GetPressedTimeByIndex()
 
-```
+```c
 int64_t OH_ArkUI_PointerEvent_GetPressedTimeByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
 ```
 
@@ -2355,14 +2399,14 @@ int64_t OH_ArkUI_PointerEvent_GetPressedTimeByIndex(const ArkUI_UIInputEvent* ev
 
 ### OH_ArkUI_MouseEvent_GetRawDeltaX()
 
-```
+```c
 float OH_ArkUI_MouseEvent_GetRawDeltaX(const ArkUI_UIInputEvent* event)
 ```
 
 **描述：**
 
 
-获取X轴相对于前一个上报的鼠标事件的鼠标指针位置的偏移量。当鼠标指针位于屏幕边缘时，该值可能小于两次上报的X坐标的差。
+获取鼠标设备在二维平面X轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。
 
 **起始版本：** 15
 
@@ -2377,18 +2421,18 @@ float OH_ArkUI_MouseEvent_GetRawDeltaX(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回相对于前一个上报的鼠标事件的鼠标指针位置的X轴偏移量，单位为px；如果发生任何参数错误，则返回0.0f。 |
+| float | 返回鼠标设备在二维平面X轴的移动增量，使用物理世界中鼠标移动的距离单位进行表示；如果发生任何参数错误，则返回0.0f。 |
 
 ### OH_ArkUI_MouseEvent_GetRawDeltaY()
 
-```
+```c
 float OH_ArkUI_MouseEvent_GetRawDeltaY(const ArkUI_UIInputEvent* event)
 ```
 
 **描述：**
 
 
-获取相对于前一个上报的鼠标事件的鼠标指针位置的Y轴偏移量。当鼠标指针位于屏幕边缘时，该值可能小于两次上报的Y坐标的差。
+获取鼠标设备在二维平面Y轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。
 
 **起始版本：** 15
 
@@ -2403,11 +2447,11 @@ float OH_ArkUI_MouseEvent_GetRawDeltaY(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回相对于前一个上报的鼠标事件的鼠标指针位置的Y轴偏移量，单位为px；如果发生任何参数错误，则返回0.0f。 |
+| float | 返回鼠标设备在二维平面Y轴的移动增量，使用物理世界中鼠标移动的距离单位进行表示；如果发生任何参数错误，则返回0.0f。 |
 
 ### OH_ArkUI_MouseEvent_GetPressedButtons()
 
-```
+```c
 int32_t OH_ArkUI_MouseEvent_GetPressedButtons(const ArkUI_UIInputEvent* event, int32_t* pressedButtons, int32_t* length)
 ```
 
@@ -2435,7 +2479,7 @@ int32_t OH_ArkUI_MouseEvent_GetPressedButtons(const ArkUI_UIInputEvent* event, i
 
 ### OH_ArkUI_UIInputEvent_GetTargetDisplayId()
 
-```
+```c
 int32_t OH_ArkUI_UIInputEvent_GetTargetDisplayId(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2461,7 +2505,7 @@ int32_t OH_ArkUI_UIInputEvent_GetTargetDisplayId(const ArkUI_UIInputEvent* event
 
 ### OH_ArkUI_HoverEvent_IsHovered()
 
-```
+```c
 bool OH_ArkUI_HoverEvent_IsHovered(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2487,7 +2531,7 @@ bool OH_ArkUI_HoverEvent_IsHovered(const ArkUI_UIInputEvent* event)
 
 ### OH_ArkUI_PointerEvent_CreateClonedEvent()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_CreateClonedEvent(const ArkUI_UIInputEvent* event, ArkUI_UIInputEvent** clonedEvent)
 ```
 
@@ -2514,7 +2558,7 @@ int32_t OH_ArkUI_PointerEvent_CreateClonedEvent(const ArkUI_UIInputEvent* event,
 
 ### OH_ArkUI_PointerEvent_DestroyClonedEvent()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_DestroyClonedEvent(const ArkUI_UIInputEvent* event)
 ```
 
@@ -2540,7 +2584,7 @@ int32_t OH_ArkUI_PointerEvent_DestroyClonedEvent(const ArkUI_UIInputEvent* event
 
 ### OH_ArkUI_PointerEvent_SetClonedEventLocalPosition()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_SetClonedEventLocalPosition(const ArkUI_UIInputEvent* event, float x, float y)
 ```
 
@@ -2568,7 +2612,7 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventLocalPosition(const ArkUI_UIInputEve
 
 ### OH_ArkUI_PointerEvent_SetClonedEventLocalPositionByIndex()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_SetClonedEventLocalPositionByIndex(const ArkUI_UIInputEvent* event, float x, float y, int32_t pointerIndex)
 ```
 
@@ -2597,7 +2641,7 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventLocalPositionByIndex(const ArkUI_UII
 
 ### OH_ArkUI_PointerEvent_SetClonedEventActionType()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_SetClonedEventActionType(const ArkUI_UIInputEvent* event, int32_t actionType)
 ```
 
@@ -2624,7 +2668,7 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventActionType(const ArkUI_UIInputEvent*
 
 ### OH_ArkUI_PointerEvent_SetClonedEventChangedFingerId()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_SetClonedEventChangedFingerId(const ArkUI_UIInputEvent* event, int32_t fingerId)
 ```
 
@@ -2651,7 +2695,7 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventChangedFingerId(const ArkUI_UIInputE
 
 ### OH_ArkUI_PointerEvent_SetClonedEventFingerIdByIndex()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_SetClonedEventFingerIdByIndex(const ArkUI_UIInputEvent* event, int32_t fingerId, int32_t pointerIndex)
 ```
 
@@ -2679,7 +2723,7 @@ int32_t OH_ArkUI_PointerEvent_SetClonedEventFingerIdByIndex(const ArkUI_UIInputE
 
 ### OH_ArkUI_PointerEvent_PostClonedEvent()
 
-```
+```c
 int32_t OH_ArkUI_PointerEvent_PostClonedEvent(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)
 ```
 
@@ -2706,14 +2750,14 @@ int32_t OH_ArkUI_PointerEvent_PostClonedEvent(ArkUI_NodeHandle node, const ArkUI
 
 ### OH_ArkUI_UIInputEvent_GetLatestStatus()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_UIInputEvent_GetLatestStatus()
 ```
 
 **描述：**
 
 
-调用该方法获取最近一次UIInput相关方法的执行情况。通常情况下不需要使用该方法，仅在返回值结果不确定是否异常时使用。以下是一个使用示例（对于返回的float类型，0.0并不代表错误，因此可以进一步使用OH_ArkUI_UIInputEvent_GetLatestStatus方法来确认是否发生异常）。float x = OH_ArkUI_PointerEvent_GetX(event);if (ARKUI_ERROR_CODE_NO_ERROR != OH_Arkui_UIInputEvent_GetlatestStatus()) {// errorreturn;}系统将在每次执行UIInput相关函数时主动清空上一次函数调用的状态，以确保每次通过该接口获取的均为最近一次的状态。
+调用该方法获取最近一次UIInput相关方法的执行情况。通常情况下不需要使用该方法，仅在返回值结果不确定是否异常时使用。以下是一个使用示例（对于返回的float类型，0.0并不代表错误，因此可以进一步使用OH_ArkUI_UIInputEvent_GetLatestStatus方法来确认是否发生异常）。float x = OH_ArkUI_PointerEvent_GetX(event);if (ARKUI_ERROR_CODE_NO_ERROR != OH_ArkUI_UIInputEvent_GetlatestStatus()) {// errorreturn;}系统将在每次执行UIInput相关函数时主动清空上一次函数调用的状态，以确保每次通过该接口获取的均为最近一次的状态。
 
 **起始版本：** 20
 
@@ -2725,7 +2769,7 @@ ArkUI_ErrorCode OH_ArkUI_UIInputEvent_GetLatestStatus()
 
 ### OH_ArkUI_UIInputEvent_GetCoastingAxisEvent()
 
-```
+```c
 ArkUI_CoastingAxisEvent* OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInputEvent* event)
 ```
 **描述：**
@@ -2755,7 +2799,7 @@ ArkUI_CoastingAxisEvent* OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInpu
 
 ### OH_ArkUI_CoastingAxisEvent_GetEventTime()
 
-```
+```c
 int64_t OH_ArkUI_CoastingAxisEvent_GetEventTime(ArkUI_CoastingAxisEvent* event)
 ```
 **描述：**
@@ -2778,7 +2822,7 @@ int64_t OH_ArkUI_CoastingAxisEvent_GetEventTime(ArkUI_CoastingAxisEvent* event)
 
 ### OH_ArkUI_CoastingAxisEvent_GetPhase()
 
-```
+```c
 ArkUI_CoastingAxisEventPhase OH_ArkUI_CoastingAxisEvent_GetPhase(ArkUI_CoastingAxisEvent* event)
 ```
 **描述：**
@@ -2801,7 +2845,7 @@ ArkUI_CoastingAxisEventPhase OH_ArkUI_CoastingAxisEvent_GetPhase(ArkUI_CoastingA
 
 ### OH_ArkUI_CoastingAxisEvent_GetDeltaY
 
-```
+```c
 float OH_ArkUI_CoastingAxisEvent_GetDeltaY(ArkUI_CoastingAxisEvent* event)
 ```
 **描述：**
@@ -2824,7 +2868,7 @@ float OH_ArkUI_CoastingAxisEvent_GetDeltaY(ArkUI_CoastingAxisEvent* event)
 
 ### OH_ArkUI_CoastingAxisEvent_GetDeltaX
 
-```
+```c
 float OH_ArkUI_CoastingAxisEvent_GetDeltaX(ArkUI_CoastingAxisEvent* event)
 ```
 **描述：**
@@ -2847,7 +2891,7 @@ float OH_ArkUI_CoastingAxisEvent_GetDeltaX(ArkUI_CoastingAxisEvent* event)
 
 ### OH_ArkUI_CoastingAxisEvent_SetPropagation()
 
-```
+```c
 int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent* event, bool propagation)
 ```
 **描述：**
@@ -2868,3 +2912,268 @@ int32_t OH_ArkUI_CoastingAxisEvent_SetPropagation(ArkUI_CoastingAxisEvent* event
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         |
+
+### OH_ArkUI_TouchTestInfo_GetTouchTestInfoList
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_GetTouchTestInfoList(ArkUI_TouchTestInfo* info,
+    ArkUI_TouchTestInfoItemArray* array, int32_t* size);
+```
+**描述：**
+
+获取触摸测试信息项数组。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TouchTestInfo](./capi-arkui-nativemodule-arkui-touchtestinfo.md)* info | 指向触摸测试信息的指针。 |
+| [ArkUI_TouchTestInfoItemArray](./capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)* array | 指向触摸测试信息项数组的指针。 |
+| int32_t* size | 触摸测试信息项数组的大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果代码。<br>         如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>         |
+
+### OH_ArkUI_TouchTestInfoItem_GetX
+
+```c
+float OH_ArkUI_TouchTestInfoItem_GetX(const ArkUI_TouchTestInfoItem* info);
+```
+**描述：**
+
+从触摸测试信息项中获取相对于子组件左上角的X坐标，单位为px。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 相对于子组件左上角的X坐标，单位为px。若参数错误，返回0.0f。|
+
+### OH_ArkUI_TouchTestInfoItem_GetY
+
+```c
+float OH_ArkUI_TouchTestInfoItem_GetY(const ArkUI_TouchTestInfoItem* info);
+```
+**描述：**
+
+从触摸测试信息项中获取相对于子组件左上角的Y坐标，单位为px。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 相对于子组件左上角的Y坐标，单位为px。若参数错误，返回0.0f。|
+
+### OH_ArkUI_TouchTestInfoItem_GetWindowX
+
+```c
+float OH_ArkUI_TouchTestInfoItem_GetWindowX(const ArkUI_TouchTestInfoItem* info);
+```
+**描述：**
+
+从触摸测试信息项中获取相对于当前应用窗口左上角的X坐标，单位为px。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 相对于当前应用窗口左上角的X坐标，单位为px。若参数错误，返回0.0f。|
+
+### OH_ArkUI_TouchTestInfoItem_GetWindowY
+
+```c
+float OH_ArkUI_TouchTestInfoItem_GetWindowY(const ArkUI_TouchTestInfoItem* info);
+```
+**描述：**
+
+从触摸测试信息项中获取相对于当前应用窗口左上角的Y坐标，单位为px。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 相对于当前应用窗口左上角的Y坐标，单位为px。若参数错误，返回0.0f。|
+
+
+### OH_ArkUI_TouchTestInfoItem_GetXRelativeToParent
+
+```c
+float OH_ArkUI_TouchTestInfoItem_GetXRelativeToParent(const ArkUI_TouchTestInfoItem* info);
+```
+**描述：**
+
+从触摸测试信息项中获取相对于父组件左上角的X坐标，单位为px。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 相对于父组件左上角的X坐标，单位为px。若参数错误，返回0.0f。|
+
+### OH_ArkUI_TouchTestInfoItem_GetYRelativeToParent
+
+```c
+float OH_ArkUI_TouchTestInfoItem_GetYRelativeToParent(const ArkUI_TouchTestInfoItem* info);
+```
+**描述：**
+
+从触摸测试信息项中获取相对于父组件左上角的Y坐标，单位为px。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| float | 相对于父组件左上角的Y坐标，单位为px。若参数错误，返回0.0f。|
+
+### OH_ArkUI_TouchTestInfoItem_GetChildRect
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildRect(const ArkUI_TouchTestInfoItem* info, ArkUI_Rect* childRect);
+```
+**描述：**
+
+从触摸测试信息项中获取子组件的帧矩形信息。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+| [ArkUI_Rect](./capi-arkui-nativemodule-arkui-rect.md)* childRect | 指向子组件帧矩形的指针，用于存储获取到的帧矩形信息。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果代码。<br>如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>      |
+
+### OH_ArkUI_TouchTestInfoItem_GetChildId
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildId(const ArkUI_TouchTestInfoItem* info, char* buffer,
+    int32_t bufferSize);
+```
+**描述：**
+
+从触摸测试信息项中获取子组件的ID。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_TouchTestInfoItem](./capi-arkui-nativemodule-arkui-touchtestinfoitem.md)* info | 指向触摸测试信息项的指针。 |
+| char* buffer | 存储结果的缓冲区。 |
+| int32_t bufferSize | 缓冲区的大小。 |
+
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果代码。<br>如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>如果缓冲区空间不足，则返回[ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_TouchTestInfo_SetTouchResultStrategy
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultStrategy(ArkUI_TouchTestInfo* info, ArkUI_TouchTestStrategy strategy);
+```
+**描述：**
+
+设置触摸测试策略，即组件及其子组件在命中测试过程中的行为方式。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TouchTestInfo](./capi-arkui-nativemodule-arkui-touchtestinfo.md)* info | 指向触摸测试信息的指针。 |
+| [ArkUI_TouchTestStrategy](#arkui_touchteststrategy) strategy | 触摸测试策略，定义组件及子组件在命中测试中的行为规则。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果代码。<br>如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_TouchTestInfo_SetTouchResultId
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultId(ArkUI_TouchTestInfo* info, const char* id);
+```
+**描述：**
+
+设置命中测试过程中需要作用的子组件ID。
+
+**起始版本：** 22
+
+**参数:**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_TouchTestInfo](./capi-arkui-nativemodule-arkui-touchtestinfo.md)* info | 指向触摸测试信息的指针。 |
+| const char* id | 子组件的ID，指定命中测试中需要作用的目标子组件。 |
+
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果代码。<br>如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。|

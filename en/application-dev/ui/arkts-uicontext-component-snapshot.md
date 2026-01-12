@@ -1,10 +1,10 @@
 # Using Component Snapshot (ComponentSnapshot)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 ## Overview
 Component snapshot is the capability to generate a pixel map ([PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md)) from the rendering result of a component node tree within an application. It supports two approaches:
 
@@ -19,7 +19,7 @@ Component snapshot is the capability to generate a pixel map ([PixelMap](../refe
 ### Taking a Snapshot of a Component Attached to the UI Tree
 To take a snapshot of a component that is already attached to the UI tree, use [get](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#get12-1) or [getSync](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#getsync12). Pass the component ID (configured in advance using the **.id** universal attribute) to specify the component root node. The system only traverses components attached to the tree when searching for the component to take a snapshot; it does not search cached or off-screen components. The system uses the first found result, so the application must ensure the uniqueness of component IDs.
 
-If you know the ID of the component with [getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12), you can also use [getWithUniqueId](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#getwithuniqueid15) or [getSyncWithUniqueId](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#getsyncwithuniqueid15) to take a snapshot of the component directly, bypassing the component search process.
+Starting from API version 15, if you already know the ID of the component (obtained via [getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)), you can also use [getWithUniqueId](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#getwithuniqueid15) or [getSyncWithUniqueId](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#getsyncwithuniqueid15) to take a snapshot of the component directly, skipping the component search process.
 
 The snapshot captures only the most recent frame. If you trigger a component update and immediately take a snapshot, the updated content will not be captured; the snapshot will return the previous frame's content.
 
@@ -29,7 +29,7 @@ The snapshot captures only the most recent frame. If you trigger a component upd
 
 
 ### Taking a Snapshot of an Offline Component
-Offline components are components that are encapsulated using **Builder** or **ComponentContent** but have not yet been attached to the tree. To take snapshots of them, use [createFromBuilder](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1) and [createFromComponent](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfromcomponent18).
+Offline components are components that are encapsulated using Builder or ComponentContent but have not yet been attached to the tree. To take snapshots of them, use [createFromBuilder](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1) or, starting from API version 18, [createFromComponent](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfromcomponent18).
 
 Since offline components do not participate in actual rendering, taking snapshots of them takes longer because the system must first perform offline construction, layout, and resource loading. Snapshots taken before these operations complete may return unexpected results. Therefore, it is usually necessary to set a sufficient delay to ensure the system completes these operations. For image resources, set the [syncLoad](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#syncload8) attribute of the **Image** component to **true** to force synchronous loading. This ensures images are loaded, downloaded, and decoded during offline component construction, allowing the image pixels to be correctly displayed during the snapshot process.
 
@@ -45,38 +45,46 @@ You can use scrollable container APIs to simulate user swiping for page-by-page 
 
 To simulate scrolling and listen for the component's scroll offset, you need to add a scroll controller and scroll listener to the scrollable container (**List** component in this example).
 
-```ts
+<!-- @[scroll_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/ScrollSnapshot.ets) -->
+
+``` TypeScript
 // src/main/ets/view/ScrollSnapshot.ets
 @Component
 export struct ScrollSnapshot {
   private scroller: Scroller = new Scroller();
-  private listComponentWidth: number = 0;
-  private listComponentHeight: number = 0;
+  private listComponentWidth: number = 0; // Component width. The default value is 0.
+  private listComponentHeight: number = 0; // Component height. The default value is 0.
   // Current offset of the List component
   private curYOffset: number = 0;
   // Scroll distance per step
   private scrollHeight: number = 0;
 
-
-  // ...
+// ···
   build() {
-    // ...
-    Stack() {
-      // ...
-      // 1.1 Bind the scroll controller and configure a unique component ID using .id.
-      List({
-        scroller: this.scroller
-      })// ...
-        .id(LIST_ID)
+    // ···
+        Stack() {
+        // ···
+          // 1.1 Bind the scroll controller and configure a unique component ID using .id.
+          List({ space: 12, scroller: this.scroller }) {
+              LazyForEach(this.dataSource, (item: number) => {
+              ListItem() {
+                NewsItem({ index: item })
+              }
+            }, (item: number) => item.toString())
+          }
+        // ···
+          .id(LIST_ID)
           // 1.2 Obtain the scroll offset through a callback.
-        .onDidScroll(() => {
-          this.curYOffset = this.scroller.currentOffset().yOffset;
-        })
-        .onAreaChange((oldValue, newValue) => {
-          // 1.3 Obtain the width and height of the component.
-          this.listComponentWidth = newValue.width as number;
-          this.listComponentHeight = newValue.height as number;
-        })
+          .onDidScroll(() => {
+            this.curYOffset = this.scroller.currentOffset().yOffset;
+          })
+          .onAreaChange((oldValue, newValue) => {
+            // 1.3 Obtain the width and height of the component.
+            this.listComponentWidth = newValue.width as number;
+            this.listComponentHeight = newValue.height as number;
+            this.scrollHeight = this.listComponentHeight;
+          })
+        // ···
     }
   }
 }
@@ -86,18 +94,22 @@ export struct ScrollSnapshot {
 
 Implement a recursive method to scroll and snapshot in a loop, combined with animation effects during scrolling.
 
-```ts
-  /**
-   * Recursively scroll, take snapshots, and merge all snapshots when scrolling ends.
-   */
-  async scrollSnapAndMerge() {
+<!-- @[scroll_snapand_merge](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/ScrollSnapshot.ets) -->
+
+``` TypeScript
+/**
+ * Recursively scroll, take snapshots, and merge all snapshots when scrolling ends.
+ */
+async scrollSnapAndMerge() {
+  try {
     // Record the scroll offset.
     this.scrollYOffsets.push(this.curYOffset - this.yOffsetBefore);
     // Call the component snapshot API to obtain the List component's snapshot.
     const pixelMap = await this.getUIContext().getComponentSnapshot().get(LIST_ID);
     // Obtain the pixel bytes of the pixel map and save them in an array.
     let area: image.PositionArea =
-      await this.getSnapshotArea(pixelMap, this.scrollYOffsets, this.listComponentWidth, this.listComponentHeight)
+      await ImageUtils.getSnapshotArea(pixelMap, this.scrollYOffsets, this.listComponentWidth,
+        this.listComponentHeight)
     this.areaArray.push(area);
 
     // Check whether scrolling has reached the end and if the user has forced a stop.
@@ -109,11 +121,19 @@ Implement a recursive method to scroll and snapshot in a loop, combined with ani
     } else {
       // When scrolling ends, call mergeImage to stitch all saved pixel map data and return the long snapshot pixel map object.
       this.mergedImage =
-        await this.mergeImage(this.areaArray, this.scrollYOffsets[this.scrollYOffsets.length - 1],
+        await ImageUtils.mergeImage(this.areaArray, this.scrollYOffsets[this.scrollYOffsets.length - 1],
           this.listComponentWidth, this.listComponentHeight);
     }
+  } catch (err) {
+    let error = err as BusinessError;
+    Logger.error(TAG, `scrollSnapAndMerge err, errCode: ${error.code}, error mesage: ${error.message}`);
   }
+}
+```
 
+<!-- @[scroll_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/common/CommonUtils.ets) -->
+
+``` TypeScript
 // src/main/ets/common/CommonUtils.ets
 static scrollAnimation(scroller: Scroller, duration: number, scrollHeight: number): void {
   scroller.scrollTo({
@@ -132,21 +152,22 @@ static scrollAnimation(scroller: Scroller, duration: number, scrollHeight: numbe
 
 Call **image.createPixelMapSync()** to create a long snapshot **longPixelMap** and iterate through the previously saved image fragment data (**this.areaArray**). Construct an **image.PositionArea** object **area**, and call **longPixelMap.writePixelsSync(area)** to write these fragments into the correct positions one by one, thereby stitching them into a complete long snapshot.
 
-```ts
-async mergeImage(areaArray: image.PositionArea[], lastOffsetY: number, listWidth: number,
+<!-- @[merge_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/common/ImageUtils.ets) -->
+
+``` TypeScript
+static async mergeImage(areaArray: image.PositionArea[], lastOffsetY: number, listWidth: number,
   listHeight: number): Promise<PixelMap> {
   // Create a long snapshot pixel map object.
   let opts: image.InitializationOptions = {
     editable: true,
     pixelFormat: 4,
     size: {
-      width: this.getUIContext().vp2px(listWidth),
-      height: this.getUIContext().vp2px(lastOffsetY + listHeight)
+      width: uiContext?.vp2px(listWidth) || 0,
+      height: uiContext?.vp2px(lastOffsetY + listHeight) || 0
     }
   };
   let longPixelMap = image.createPixelMapSync(opts);
   let imgPosition: number = 0;
-
 
   for (let i = 0; i < areaArray.length; i++) {
     let readArea = areaArray[i];
@@ -164,7 +185,12 @@ async mergeImage(areaArray: image.PositionArea[], lastOffsetY: number, listWidth
       }
     }
     imgPosition += readArea.region.size.height;
-    longPixelMap.writePixelsSync(area);
+    try {
+      longPixelMap.writePixelsSync(area);
+    } catch (err) {
+      let error = err as BusinessError;
+      Logger.error(TAG, `writePixelsSync err, code: ${error.code}, mesage: ${error.message}`);
+    }
   }
   return longPixelMap;
 }
@@ -174,40 +200,53 @@ async mergeImage(areaArray: image.PositionArea[], lastOffsetY: number, listWidth
 
 Use the **SaveButton** security component to save the snapshot.
 
-```ts
+<!-- @[save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/SnapshotPreview.ets) -->
+
+``` TypeScript
 // src/main/ets/view/SnapshotPreview.ets
 SaveButton({
   icon: SaveIconStyle.FULL_FILLED,
   text: SaveDescription.SAVE_IMAGE,
   buttonType: ButtonType.Capsule
 })
+  // ···
   .onClick((event, result) => {
     this.saveSnapshot(result);
   })
+```
 
+<!-- @[save_snapshot1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/SnapshotPreview.ets) -->
+
+``` TypeScript
 async saveSnapshot(result: SaveButtonOnClickResult): Promise<void> {
-  if (result === SaveButtonOnClickResult.SUCCESS) {
-    const helper = photoAccessHelper.getPhotoAccessHelper(this.context);
-    const uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'png');
-    const file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-    const imagePackerApi: image.ImagePacker = image.createImagePacker();
-    const packOpts: image.PackingOption = {
-      format: 'image/png',
-      quality: 100,
-    };
-    imagePackerApi.packing(this.mergedImage, packOpts).then((data) => {
-      fileIo.writeSync(file.fd, data);
-      fileIo.closeSync(file.fd);
-      Logger.info(TAG, `Succeeded in packToFile`);
-      promptAction.showToast({
-        message: $r('app.string.save_album_success'),
-        duration: 1800
-      })
-    }).catch((error: BusinessError) => {
-      Logger.error(TAG, `Failed to packToFile. Error code is ${error.code}, message is ${error.message}`);
-    });
+  try {
+    if (result === SaveButtonOnClickResult.SUCCESS) {
+      const helper = photoAccessHelper.getPhotoAccessHelper(this.context);
+      const uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'png');
+      const file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+      const imagePackerApi: image.ImagePacker = image.createImagePacker();
+      const packOpts: image.PackingOption = {
+        format: 'image/png',
+        quality: 100,
+      };
+      imagePackerApi.packToData(this.mergedImage, packOpts).then((data) => {
+        fileIo.writeSync(file.fd, data);
+        fileIo.closeSync(file.fd);
+        Logger.info(TAG, `Succeeded in packToFile`);
+        this.getUIContext().getPromptAction().showToast({
+          // Replace $r('app.string.save_album_success') with the resource file you use.
+          message: $r('app.string.save_album_success'),
+          duration: 1800
+        })
+      }).catch((error: BusinessError) => {
+        Logger.error(TAG, `Failed to packToFile. Error code is ${error.code}, message is ${error.message}`);
+      });
+    }
+  // ···
+  } catch (err) {
+    let error = err as BusinessError;
+    Logger.error(TAG, `saveSnapshot err, errCode: ${error.code}, error mesage: ${error.message}`);
   }
-  // ...
 }
 ```
 
@@ -215,30 +254,34 @@ async saveSnapshot(result: SaveButtonOnClickResult): Promise<void> {
 
 When the **PixelMap** object is no longer in use, assign it to **undefined** in a timely manner, as in **this.mergedImage = undefined;**.
 
-```ts
-  closeSnapPopup(): void {
-    // Close the popup.
-    this.isShowPreview = false;
-    // Release the pixel map object.
-    this.mergedImage = undefined;
-    // Reset related parameters.
-    this.snapPopupWidth = 100;
-    this.snapPopupHeight = 200;
-    this.snapPopupPosition =
-      PopupUtils.calcPopupCenter(this.screenWidth, this.screenHeight, this.snapPopupWidth, this.snapPopupHeight);
-    this.isLargePreview = false;
-  }
+<!-- @[close_and_clean_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/SnapshotPreview.ets) -->
+
+``` TypeScript
+closeSnapPopup(): void {
+  // Close the popup.
+  this.isShowPreview = false;
+  // Release the pixel map object.
+  this.mergedImage = undefined;
+  // Reset related parameters.
+  this.snapPopupWidth = 100;
+  this.snapPopupHeight = 200;
+  this.snapPopupPosition =
+    PopupUtils.calcPopupCenter(this.screenWidth, this.screenHeight, this.snapPopupWidth, this.snapPopupHeight);
+  this.isLargePreview = false;
+}
 ```
 
 ### Encapsulating a Global Screenshot API
-As mentioned earlier, snapshot APIs must be used where the UI context is clear. However, applications sometimes need to encapsulate a unified global snapshot API for different modules. For example, in the following example, the component built by **awardBuilder** has a fixed structure. **GlobalStaticSnapshot** provides a global method **getAwardSnapshot** that meets the needs of different modules to take snapshots of components in the same fixed mode, achieving the encapsulation of a global snapshot API.
+As mentioned earlier, snapshot APIs must be used where the UI context is clear. However, applications sometimes need to encapsulate a unified global snapshot API for different modules. For example, in the following example, the component built by **awardBuilder** has a fixed structure. **GlobalStaticSnapshot** provides a global method **getAwardSnapshot** that meets the needs of different modules to take snapshots of components in the same fixed mode, achieving the encapsulation of a global snapshot API. This functionality is supported since API version 18.
 
-```ts
+<!-- @[global_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/GlobalScreenshot.ets) -->
+
+``` TypeScript
 import { image } from '@kit.ImageKit';
 import { ComponentContent } from '@kit.ArkUI';
 
 export class Params {
-  text: string | undefined | null = "";
+  public text: string | undefined | null = '';
 
   constructor(text: string | undefined | null) {
     this.text = text;
@@ -261,16 +304,16 @@ export class GlobalStaticSnapshot {
   /**
    * A static method to obtain a snapshot of a fixed object.
    */
-  static getAwardSnapshot(uiContext: UIContext, textParam: Params): image.PixelMap | undefined {
+  static async getAwardSnapshot(uiContext: UIContext, textParam: Params): Promise<image.PixelMap | undefined> {
     let resultPixmap: image.PixelMap | undefined = undefined
     let contentNode = new ComponentContent(uiContext, wrapBuilder(awardBuilder), textParam);
-    uiContext.getComponentSnapshot()
+    await uiContext.getComponentSnapshot()
       .createFromComponent(contentNode, 320, true, { scale: 1, waitUntilRenderFinished: true })
       .then((pixmap: image.PixelMap) => {
-        resultPixmap = pixmap
+        resultPixmap = pixmap;
       })
       .catch((err: Error) => {
-        console.error("error: " + err)
+        console.error('error: ' + err);
       })
     return resultPixmap;
   }

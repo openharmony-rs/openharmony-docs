@@ -6,7 +6,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct OH_NativeVSync OH_NativeVSync
 ```
 

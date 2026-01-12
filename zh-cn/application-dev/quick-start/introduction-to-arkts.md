@@ -145,6 +145,7 @@ let s3 = `The result is ${a}`;
 **`void`类型**
 
 `void`类型用于指定函数没有返回值。
+
 此类型只有一个值，同样是`void`。由于`void`是引用类型，因此它可以用于泛型类型参数。
 
 ```typescript
@@ -156,16 +157,21 @@ let instance: Class<void>;
 
 **`Object`类型**
 
-`Object`类型是所有引用类型的基类型。任何值，包括基本类型的值，都可以直接被赋给`Object`类型的变量（基本类型值会被自动装箱）。`Object`类型用于表示除基本类型外的类型。
+`Object`类型是所有引用类型的基类型。任何值，包括基本类型的值，都可以直接被赋给`Object`类型的变量（基本类型值会被自动装箱）。
+
+`object`类型用于表示除基本类型外的类型。
+
 ```typescript
 let o1: Object = 'Alice';
 let o2: Object = ['a', 'b'];
 let o3: Object = 1;
+let o4: object = [1, 2, 3];
 ```
 
 **`array`类型**
 
 `array`类型，即数组，是由可赋值给数组声明中指定的元素类型的数据组成的对象。
+
 数组可由数组复合字面量赋值。数组复合字面量是用方括号括起来的零个或多个表达式列表，每个表达式为数组中的一个元素。数组的长度由数组中元素的个数确定。数组中第一个元素的索引为0。
 
 以下示例将创建包含三个元素的数组：
@@ -177,6 +183,7 @@ let names: string[] = ['Alice', 'Bob', 'Carol'];
 **`enum`类型**
 
 `enum`类型，即枚举类型，是预先定义的一组命名值的值类型，其中命名值又称为枚举常量。
+
 使用枚举常量时必须以枚举类型名称为前缀。
 
 ```typescript
@@ -347,6 +354,7 @@ obj instanceof className
 ```
 
 返回值类型为`boolean`。
+
 如果`obj`是`className`类或其子类的实例，则返回值为`true`；否则，返回值为`false`。
 
 示例：
@@ -368,9 +376,10 @@ if (bird instanceof Animal) {
 
 ### 语句
 
-**`If`语句**
+**`if`语句**
 
 `if`语句用于需要根据逻辑条件执行不同语句的场景。当逻辑条件为真时，执行对应的一组语句，否则执行另一组语句（如果有的话）。
+
 `else`部分也可以包含`if`语句。
 
 `if`语句如下所示：
@@ -399,7 +408,7 @@ if (s2.length != 0) {
 }
 ```
 
-**`Switch`语句**
+**`switch`语句**
 
 使用`switch`语句执行与`switch`表达式值匹配的代码块。
 
@@ -462,7 +471,7 @@ let message = Math.random() > 0.5 ? 'Valid' : 'Failed';
     console.info(undefined ? 'true' : 'false'); // false
 ```
 
-**`For`语句**
+**`for`语句**
 
 `for`语句会被重复执行，直到循环退出语句值为`false`。
 
@@ -476,10 +485,14 @@ for ([init]; [condition]; [update]) {
 
 `for`语句的执行流程如下：
 
-1、 执行`init`表达式（如有）。此表达式通常初始化一个或多个循环计数器。  
-2、 计算`condition`。如果它为真值（转换后为`true`的值），则执行循环主体的语句。如果它为假值（转换后为`false`的值），则`for`循环终止。  
+1、 执行`init`表达式（如有）。此表达式通常初始化一个或多个循环计数器。
+
+2、 计算`condition`。如果它为真值（转换后为`true`的值），则执行循环主体的语句。如果它为假值（转换后为`false`的值），则`for`循环终止。
+
 3、 执行循环主体的语句。
-4、 如果有`update`表达式，则执行该表达式。  
+
+4、 如果有`update`表达式，则执行该表达式。
+
 5、 返回步骤2。
 
 示例：
@@ -491,7 +504,7 @@ for (let i = 0; i < 10; i += 2) {
 }
 ```
 
-**`For-of`语句**
+**`for-of`语句**
 
 使用`for-of`语句可遍历数组、Set、Map、字符串等可迭代的类型。示例如下：
 
@@ -509,7 +522,7 @@ for (let ch of 'a string object') {
 }
 ```
 
-**`While`语句**
+**`while`语句**
 
 只要`condition`为真值（转换后为`true`的值），`while`语句就会执行`statements`语句。示例如下：
 
@@ -530,7 +543,7 @@ while (n < 3) {
 }
 ```
 
-**`Do-while`语句**
+**`do-while`语句**
 
 如果`condition`的值为真值（转换后为`true`的值），那么`statements`语句会重复执行。示例如下：
 
@@ -549,7 +562,7 @@ do {
 } while (i < 10)
 ```
 
-**`Break`语句**
+**`break`语句**
 
 使用`break`语句可以终止循环语句或`switch`。
 
@@ -580,7 +593,7 @@ label: while (true) {
 }
 ```
 
-**`Continue`语句**
+**`continue`语句**
 
 `continue`语句会停止当前循环迭代的执行，并将控制传递给下一次迭代。
 
@@ -596,7 +609,7 @@ for (let x = 0; x < 100; x++) {
 }
 ```
 
-**`Throw`和`Try`语句**
+**`throw`和`try`语句**
 
 `throw`语句用于抛出异常或错误：
 
@@ -706,9 +719,9 @@ multiply(2);  // 返回2*2
 multiply(2, 3); // 返回2*3
 ```
 
-### Rest参数
+### rest参数
 
-函数的最后一个参数可以是rest参数，格式为`...restArgs`。rest参数允许函数接收一个由剩余实参组成的数组，类型为任意指定类型，用于处理不定数量的参数输入。
+函数的最后一个参数可以是rest参数，格式为`...restName: Type[]`。rest参数允许函数接收一个不定长数组，用于处理不定数量的参数输入。
 
 ```typescript
 function sum(...numbers: number[]): number {
@@ -846,7 +859,7 @@ foo(123);     //  OK，使用第一个定义
 foo('aa'); // OK，使用第二个定义
 ```
 
-不允许重载函数有相同的名字和参数列表，否则将导致编译错误。
+不允许重载函数有相同的参数列表，否则将导致编译错误。
 
 ## 类
 
@@ -938,8 +951,7 @@ Person.numberOfPersons;
 
 **字段初始化**
 
-为了减少运行时错误并提升执行性能，
-ArkTS要求所有字段在声明时或构造函数中显式初始化，与标准TS的`strictPropertyInitialization`模式相同。
+为了减少运行时错误并提升执行性能，ArkTS要求所有字段在声明时或构造函数中显式初始化，与标准TS的`strictPropertyInitialization`模式相同。
 
 以下代码在ArkTS中不合法。
 
@@ -1136,7 +1148,7 @@ class MyDate implements DateInterface {
 
 **父类访问**
 
-关键字`super`可用于访问父类的实例字段、实例方法和构造函数。在实现子类功能时，可以通过该关键字从父类中获取所需接口：
+关键字`super`可用于访问父类的方法和构造函数。在实现子类功能时，可以通过该关键字从父类中获取所需接口：
 
 ```typescript
 class RectangleSize {
@@ -1161,7 +1173,6 @@ class FilledRectangle extends RectangleSize {
 
   draw() {
     super.draw(); // 父类方法的调用
-    // super.height -可在此处使用
     /* 填充矩形 */
   }
 }
@@ -1760,11 +1771,13 @@ class Person {
 }
 ```
 
-**说明**：`getSpouseNick`的返回类型必须为`string | null | undefined`，因为该方法在某些情况下会返回`null`或`undefined`。
-
-可选链可以任意长，可以包含任意数量的`?.`运算符。
-
-在以下示例中，如果`Person`实例的`spouse`属性不为空，并且`spouse`的`nick`属性也不为空时，输出`spouse.nick`。否则，输出`undefined`。
+> **说明**：
+>
+>`getSpouseNick`的返回类型必须为`string | null | undefined`，因为该方法在某些情况下会返回`null`或`undefined`。
+>
+> 可选链可以任意长，可以包含任意数量的`?.`运算符。
+>
+> 在以下示例中，如果`Person`实例的`spouse`属性不为空，并且`spouse`的`nick`属性也不为空时，输出`spouse.nick`。否则，输出`undefined`。
 
 ```typescript
 class Person {
@@ -1858,8 +1871,11 @@ X // 编译时错误：'X'不可见
 ```
 
 **动态导入**
+
 在应用开发的有些场景中，如果希望根据条件导入模块或者按需导入模块，可以使用动态导入代替静态导入。
+
 import()语法被称为动态导入（dynamic import），是一种类似函数的表达式，用于动态导入模块。调用这种方式，会返回一个promise。
+
 如下例所示，import(modulePath)可以加载模块并返回一个promise，该promise resolve为一个包含其所有导出的模块对象。该表达式可以在代码中的任意位置调用。
 
 ```typescript
@@ -1956,6 +1972,7 @@ function foo(arg1: number) {
 ## 注解
 
 注解（Annotation）是一种语言特性，它通过添加元数据来改变应用声明的语义。
+
 注解的声明和使用如下所示：
 
 **示例：**
@@ -1984,6 +2001,7 @@ ClassAuthor({authorName: "Bob"}) // 编译错误：注解需要'@'为前缀
 @ ClassAuthor({authorName: "Bob"}) // 编译错误：符号`@`和名称之间不允许有空格和行分隔符
 ```
 如果在使用位置无法访问注解名称，则会发生编译错误。
+
 注解声明可以导出并在其他文件中使用。
 
 多个注解可以应用于同一个声明（注解间的先后顺序不影响使用）。
@@ -2221,6 +2239,7 @@ class X {
 
 **.d.ets文件中的注解**
 注解可以出现在.d.ets文件中。
+
 可以在.d.ets文件中用环境声明（ambient declaration）来声明注解。
 ```typescript
 ambientAnnotationDeclaration:
@@ -2260,6 +2279,7 @@ class C {
 
 **编译器自动生成的.d.ets文件**<br>
 当编译器根据ets代码自动生成.d.ets文件时，存在以下2种情况。
+
 1. 当注解定义被导出时，源代码中的注解定义会在.d.ets文件中保留。
    ```typescript
    // a.ets

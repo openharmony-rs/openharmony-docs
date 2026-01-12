@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct OH_AudioRenderer_Callbacks_Struct {...} OH_AudioRenderer_Callbacks
 ```
 
@@ -51,7 +51,7 @@ Use the following callback types for substitute:
 
 ### OH_AudioRenderer_OnWriteData()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnWriteData)(OH_AudioRenderer* renderer, void* userData, void* buffer, int32_t length)
 ```
 
@@ -80,7 +80,7 @@ Once the callback function finishes its execution, the audio service queues the 
 
 ### OH_AudioRenderer_OnStreamEvent()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnStreamEvent)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Event event)
 ```
 
@@ -106,7 +106,7 @@ Defines a function pointer to the callback function used to process audio playba
 
 ### OH_AudioRenderer_OnInterruptEvent()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnInterruptEvent)(OH_AudioRenderer* renderer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint)
 ```
 
@@ -131,7 +131,7 @@ Defines a function pointer to the callback function used to process audio playba
 
 ### OH_AudioRenderer_OnError()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnError)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Result error)
 ```
 

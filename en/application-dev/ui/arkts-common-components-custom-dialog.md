@@ -1,4 +1,4 @@
-# Basic Custom Dialog Box (CustomDialog) (Not Recommended)
+# Basic Custom Dialog Box (CustomDialog)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
@@ -9,7 +9,7 @@ A custom dialog box is a dialog box you customize by using APIs of the **CustomD
 
 > **NOTE**
 > 
-> In ArkUI, dialog boxes do not close automatically when you switch pages unless you manually call **close**. To enable a dialog box to be dismissed during page navigation, consider using the [navigation page displayed in dialog mode](arkts-navigation-navigation.md#page-display-mode) or [page-level dialog box](arkts-embedded-dialog.md).
+> In ArkUI, dialog boxes do not close automatically when you switch pages unless you manually call **close**. To enable a dialog box to be dismissed during page navigation, consider using the [navigation page displayed in dialog mode](./arkts-navigation-navdestination.md#page-display-mode) or [page-level dialog box](arkts-embedded-dialog.md).
 
 By default, dialog boxes are modal and include a mask. Interactions with underlying components are blocked (click and gesture events are not transmitted). You can configure dialog box modality by setting the **isModal** property in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions). For details, see [Types of Popup Windows](arkts-dialog-overview.md#types-of-popup-windows).
 
@@ -30,50 +30,64 @@ Since API version 19, the custom dialog box provides lifecycle callbacks to noti
 
 1. Use the \@CustomDialog decorator to create a custom dialog box. You can define the content of the dialog box within the decorator. Note that **CustomDialogController** must be defined in @Component.
    
-   ```ts
+   <!-- @[create_custom_dialog_new_customDialog_controller_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
+   
+   ``` TypeScript
    @CustomDialog
    struct CustomDialogExample {
-     controller: CustomDialogController
+     controller?: CustomDialogController;
    
      build() {
        Column() {
-         Text('I am content')
+         // The value in the $r('app.string.i_am_content') resource file is 'I am content.'
+         Text($r('app.string.i_am_content'))
            .fontSize(20)
        }.height(60).justifyContent(FlexAlign.Center)
      }
    }
    ```
-2. Create a builder that is bound to the decorator.
    
-   ```ts
-    @Entry
-    @Component
-    struct CustomDialogUser {
-      dialogController: CustomDialogController = new CustomDialogController({
-        builder: CustomDialogExample(),
-      })
-    }
-   ```
-3. Click the component bound to the **onClick** event to display the dialog box.
+
+
+2. Create a constructor and associate it with the decorator.
+   <!-- @[create_custom_dialog_new_customDialog_controller_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
    
-   ```ts
+   ``` TypeScript
    @Entry
    @Component
-   struct CustomDialogUser {
+   export struct CreateCustomDialogNew {
      dialogController: CustomDialogController = new CustomDialogController({
        builder: CustomDialogExample(),
      })
+   // ···
+   }
+   ```
    
+
+3. Click the component bound to the **onClick** event to display the dialog box.
+   
+   <!-- @[create_custom_dialog_new_customDialog_controller_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   export struct CreateCustomDialogNew {
+     dialogController: CustomDialogController = new CustomDialogController({
+       builder: CustomDialogExample(),
+     })
      build() {
-       Column() {
-         Button('click me')
-           .onClick(() => {
-             this.dialogController.open();
-           })
-       }.width('100%').margin({ top: 5 })
+       NavDestination() {
+         Column() {
+           Button('click me')
+             .onClick(() => {
+               this.dialogController.open();
+             })
+         }.width('100%').margin({ top: 5 })
+       }
      }
    }
    ```
+   
    
    ![en-us_image_0000001562700493](figures/en-us_image_0000001562700493.png)
 
@@ -82,30 +96,32 @@ Since API version 19, the custom dialog box provides lifecycle callbacks to noti
 Custom dialog boxes support data interactions to complete various operations.
 
 1. Add buttons and data functions to the \@CustomDialog decorator.
+   <!-- @[dialog_interaction_use_constructor_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseConstructor.ets) -->
    
-   ```ts
+   ``` TypeScript
    @CustomDialog
    struct CustomDialogExample {
      cancel: () => void = () => {
      }
      confirm: () => void = () => {
      }
-     controller: CustomDialogController;
+     controller?: CustomDialogController;
    
      build() {
        Column() {
-         Text('I am content').fontSize(20).margin({ top: 10, bottom: 10 })
+         // The value in the $r('app.string.i_am_content') resource file is 'I am content.'
+         Text($r('app.string.i_am_content')).fontSize(20).margin({ top: 10, bottom: 10 })
          Flex({ justifyContent: FlexAlign.SpaceAround }) {
            Button('Cancel')
              .onClick(() => {
-               this.controller.close();
+               this.controller?.close();
                if (this.cancel) {
                  this.cancel();
                }
              }).backgroundColor(0xffffff).fontColor(Color.Black)
            Button('Obtain')
              .onClick(() => {
-               this.controller.close();
+               this.controller?.close();
                if (this.confirm) {
                  this.confirm();
                }
@@ -115,12 +131,16 @@ Custom dialog boxes support data interactions to complete various operations.
      }
    }
    ```
-2. Receive the page in the builder and create corresponding function operations.
    
-   ```ts
+   
+   
+2. Receive the page in the builder and create corresponding function operations.
+   <!-- @[dialog_interaction_use_constructor_user](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseConstructor.ets) -->
+   
+   ``` TypeScript
    @Entry
    @Component
-   struct CustomDialogUser {
+   export struct DialogInteractionUseConstructor {
      dialogController: CustomDialogController = new CustomDialogController({
        builder: CustomDialogExample({
          cancel: ()=> { this.onCancel() },
@@ -129,149 +149,162 @@ Custom dialog boxes support data interactions to complete various operations.
      });
    
      onCancel() {
-       console.info('Callback when the first button is clicked');
+       hilog.info(DOMAIN, 'testTag', 'Callback when the first button is clicked');
      }
    
      onAccept() {
-       console.info('Callback when the second button is clicked');
+       hilog.info(DOMAIN, 'testTag', 'Callback when the second button is clicked');
      }
    
      build() {
        Column() {
-         Button('click me')
-           .onClick(() => {
-             this.dialogController.open();
-           })
-       }.width('100%').margin({ top: 5 })
-     }
-   }
-   ```
-   
-   ![en-us_image_0000001511421320](figures/en-us_image_0000001511421320.png)
-   
-   3. Use dialog box buttons to implement navigation and obtain parameters from the target page.
-   
-   ```ts
-   // Index.ets
-   @CustomDialog
-   struct CustomDialogExample {
-     @Link textValue: string;
-     controller?: CustomDialogController;
-     cancel: () => void = () => {
-     }
-     confirm: () => void = () => {
-     }
-   
-     build() {
-       Column({ space: 20 }) {
-         if (this.textValue != '') {
-           Text(`Content of the second page: ${this.textValue}`)
-             .fontSize(20)
-         } else {
-           Text('Obtain the content of the second page?')
-             .fontSize(20)
-         }
-         Flex({ justifyContent: FlexAlign.SpaceAround }) {
-           Button('Cancel')
+         NavDestination() {
+           Button('click me')
              .onClick(() => {
-               if (this.controller != undefined) {
-                 this.controller.close();
-                 this.cancel();
-               }
-             }).backgroundColor(0xffffff).fontColor(Color.Black)
-           Button('Obtain')
-             .onClick(() => {
-               if (this.controller != undefined && this.textValue != '') {
-                 this.controller.close();
-               } else if (this.controller != undefined) {
-                 this.getUIContext().getRouter().pushUrl({
-                   url: 'pages/Index2'
-                 });
-                 this.controller.close();
-               }
-             }).backgroundColor(0xffffff).fontColor(Color.Red)
-         }.margin({ bottom: 10 })
-       }.borderRadius(10).padding({ top: 20 })
-     }
-   }
-   
-   @Entry
-   @Component
-   struct CustomDialogUser {
-     @State textValue: string = '';
-     dialogController: CustomDialogController | null = new CustomDialogController({
-       builder: CustomDialogExample({
-         cancel: () => {
-           this.onCancel()
-         },
-         confirm: () => {
-           this.onAccept()
-         },
-         textValue: this.textValue
-       })
-     });
-   
-     // Set dialogController to null when the custom component is about to be destroyed.
-     aboutToDisappear() {
-       this.dialogController = null; // Set dialogController to null.
-     }
-   
-     onPageShow() {
-       const params = this.getUIContext().getRouter().getParams() as Record<string, string>; // Obtain the passed parameter object.
-       if (params) {
-         this.dialogController?.open();
-         this.textValue = params.info as string; // Obtain the value of the id attribute.
+               this.dialogController.open();
+             })
+         }.width('100%').margin({ top: 5 })
        }
      }
-   
-     onCancel() {
-       console.info('Callback when the first button is clicked');
-     }
-   
-     onAccept() {
-       console.info('Callback when the second button is clicked');
-     }
-   
-     exitApp() {
-       console.info('Click the callback in the blank area');
-     }
-   
-     build() {
-       Column() {
-         Button('Click Me')
-           .onClick(() => {
-             if (this.dialogController != null) {
-               this.dialogController.open();
-             }
-           }).backgroundColor(0x317aff)
-       }.width('100%').margin({ top: 5 })
-     }
    }
    ```
-   
-   ```ts
-   // Index2.ets
-   @Entry
-   @Component
-   struct Index2 {
-     @State message: string =' Back';
 
-     build() {
-       Column() {
-         Button(this.message)
-           .type(ButtonType.Capsule)
-           .onClick(() => {
-              this.getUIContext().getRouter().back({
-                url: 'pages/Index',
-                params: {
-                info: 'Hello World'
-              }
-           });
-         })
-       }.width('100%').height('100%').margin({ top: 20 })
-     }
-   }
-   ```
+   ![en-us_image_0000001511421320](figures/en-us_image_0000001511421320.png)
+
+
+3. Use dialog box buttons to implement navigation and obtain parameters from the target page.
+    <!-- @[dialog_interaction_use_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseButton.ets) -->
+    
+    ``` TypeScript
+    @CustomDialog
+    struct CustomDialogExample {
+      @Link textValue: string;
+      controller?: CustomDialogController;
+      cancel: () => void = () => {
+      }
+      confirm: () => void = () => {
+      }
+    
+      build() {
+        Column({ space: 20 }) {
+          if (this.textValue !== '') {
+            // The value in the $r('app.string.the_second_page_is') resource file is 'Content of the second page.'
+            Text($r('app.string.the_second_page_is')+`: ${this.textValue}`)
+              .fontSize(20)
+          } else {
+            // The value in the $r('app.string.whether_to_get_the_second_page') resource file is 'Obtain the content of the second page?'
+            Text($r('app.string.whether_to_get_the_second_page'))
+              .fontSize(20)
+          }
+          Flex({ justifyContent: FlexAlign.SpaceAround }) {
+            Button('Cancel')
+              .onClick(() => {
+                if (this.controller !== undefined) {
+                  this.controller.close();
+                  this.cancel();
+                }
+              }).backgroundColor(0xffffff).fontColor(Color.Black)
+            Button('Obtain')
+              .onClick(() => {
+                if (this.controller !== undefined && this.textValue !== '') {
+                  this.controller.close();
+                } else if (this.controller !== undefined) {
+                  this.getUIContext().getRouter().pushUrl({
+                    url: 'pages/Index2'
+                  });
+                  this.controller.close();
+                }
+              }).backgroundColor(0xffffff).fontColor(Color.Red)
+          }.margin({ bottom: 10 })
+        }.borderRadius(10).padding({ top: 20 })
+      }
+    }
+    
+    @Entry
+    @Component
+    export struct DialogInteractionUseButton {
+      @State textValue: string = '';
+      dialogController: CustomDialogController | null = new CustomDialogController({
+        builder: CustomDialogExample({
+          cancel: () => {
+            this.onCancel()
+          },
+          confirm: () => {
+            this.onAccept()
+          },
+          textValue: this.textValue
+        })
+      });
+    
+      // Set dialogController to null when the custom component is about to be destroyed.
+      aboutToDisappear() {
+        this.dialogController = null; // Set dialogController to null.
+      }
+    
+      onPageShow() {
+        const params = this.getUIContext().getRouter().getParams() as Record<string, string>; // Obtain the passed parameter object.
+        if (params) {
+          this.dialogController?.open();
+          this.textValue = params.info as string; // Obtain the value of the id attribute.
+        }
+      }
+    
+      onCancel() {
+        hilog.info(DOMAIN, 'testTag', 'testTag', 'Callback when the first button is clicked');
+      }
+    
+      onAccept() {
+        hilog.info(DOMAIN, 'testTag', 'testTag', 'Callback when the second button is clicked');
+      }
+    
+      exitApp() {
+        hilog.info(DOMAIN, 'testTag', 'testTag', 'Click the callback in the blank area');
+      }
+    
+      build() {
+        Column() {
+          NavDestination() {
+            Button('click me')
+              .onClick(() => {
+                if (this.dialogController !== null) {
+                  this.dialogController.open();
+                }
+              }).backgroundColor(0x317aff)
+          }.width('100%').margin({ top: 5 })
+        }
+      }
+    }
+    ```
+    
+
+    <!-- @[index_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/IndexNew.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct IndexNew {
+      // The value in the $r('app.string.click_and_return') resource file is 'Touch to go back.'
+      @State message: string = $r('app.string.click_and_return');
+    
+      build() {
+        NavDestination() {
+          Column() {
+            Button(this.message)
+              .type(ButtonType.Capsule)
+              .onClick(() => {
+                this.getUIContext().getRouter().back({
+                  url: 'pages/Index',
+                  params: {
+                    info: 'Hello World'
+                  }
+                });
+              })
+          }.width('100%').height('100%').margin({ top: 20 })
+        }
+      }
+    }
+    ```
+    
    
    ![DialogRouter](figures/DialogRouter.gif)
 
@@ -279,21 +312,25 @@ Custom dialog boxes support data interactions to complete various operations.
 
 You can define the custom dialog box animation, including its duration and speed, through **openAnimation**.
 
-```ts
+<!-- @[dialog_animation_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogAnimationNew.ets) -->
+
+``` TypeScript
 @CustomDialog
 struct CustomDialogExample {
   controller?: CustomDialogController;
 
   build() {
-    Column() {
-      Text('Whether to change a text?').fontSize(16).margin({ bottom: 10 })
+    NavDestination() {
+      Column() {
+        Text('Whether to change a text?').fontSize(16).margin({ bottom: 10 })
+      }
     }
   }
 }
 
 @Entry
 @Component
-struct CustomDialogUser {
+export struct DialogAnimationNew {
   @State textValue: string = '';
   @State inputValue: string = 'click me';
   dialogController: CustomDialogController | null = new CustomDialogController({
@@ -304,7 +341,7 @@ struct CustomDialogUser {
       delay: 500,
       playMode: PlayMode.Alternate,
       onFinish: () => {
-        console.info('play end')
+        hilog.info(DOMAIN, 'testTag', 'play end')
       }
     },
     autoCancel: true,
@@ -322,39 +359,44 @@ struct CustomDialogUser {
   }
 
   build() {
-    Column() {
-      Button(this.inputValue)
-        .onClick(() => {
-          if (this.dialogController != null) {
-            this.dialogController.open();
-          }
-        }).backgroundColor(0x317aff)
-    }.width('100%').margin({ top: 5 })
+    NavDestination() {
+      Column() {
+        Button(this.inputValue)
+          .onClick(() => {
+            if (this.dialogController !== null) {
+              this.dialogController.open();
+            }
+          }).backgroundColor(0x317aff)
+      }.width('100%').margin({ top: 5 })
+    }
   }
 }
 ```
+
 
 ![openAnimator](figures/openAnimator.gif)
 
 ## Customizing the Dialog Box Style
 
 Control the dialog box appearance by defining width, height, background color, and shadow.
+<!-- @[dialog_style_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogStyleNew.ets) -->
 
-```ts
+``` TypeScript
 @CustomDialog
 struct CustomDialogExample {
   controller?: CustomDialogController;
 
   build() {
     Column() {
-      Text('I am content').fontSize(16).margin({ bottom: 10 })
+      // The value in the $r('app.string.i_am_content') resource file is 'I am content.'
+      Text($r('app.string.i_am_content')).fontSize(16).margin({ bottom: 10 })
     }
   }
 }
 
 @Entry
 @Component
-struct CustomDialogUser {
+export struct DialogStyleNew {
   @State textValue: string = '';
   @State inputValue: string = 'click me';
   dialogController: CustomDialogController | null = new CustomDialogController({
@@ -369,9 +411,14 @@ struct CustomDialogUser {
     width: '80%',
     height: '100px',
     borderWidth: 1,
-    borderStyle: BorderStyle.Dashed,// borderStyle must be used with borderWidth in pairs.
-    borderColor: Color.Blue,// borderColor must be used with borderWidth in pairs.
-    shadow: ({ radius: 20, color: Color.Grey, offsetX: 50, offsetY: 0}),
+    borderStyle: BorderStyle.Dashed, // borderStyle must be used with borderWidth in pairs.
+    borderColor: Color.Blue, // borderColor must be used with borderWidth in pairs.
+    shadow: ({
+      radius: 20,
+      color: Color.Grey,
+      offsetX: 50,
+      offsetY: 0
+    }),
   });
 
   // Set dialogController to null when the custom component is about to be destroyed.
@@ -380,48 +427,52 @@ struct CustomDialogUser {
   }
 
   build() {
-    Column() {
-      Button(this.inputValue)
-        .onClick(() => {
-          if (this.dialogController != null) {
-            this.dialogController.open();
-          }
-        }).backgroundColor(0x317aff)
-    }.width('100%').margin({ top: 5 })
+    NavDestination() {
+      Column() {
+        Button(this.inputValue)
+          .onClick(() => {
+            if (this.dialogController !== null) {
+              this.dialogController.open();
+            }
+          }).backgroundColor(0x317aff)
+      }.width('100%').margin({ top: 5 })
+    }
   }
 }
 ```
+
 
 ![custom_style](figures/custom_style.gif)
 
 ## Nesting a Custom Dialog Box
 
 To nest a dialog box (dialog 2) inside another dialog box (dialog 1), it is recommended that you define dialog 2 within the parent component of dialog 1 so that you can then open dialog 2 through the callback sent from the parent component to dialog 1.
+<!-- @[nest_dialog_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/NestDialogNew.ets) -->
 
-```ts
+``` TypeScript
 @CustomDialog
 struct CustomDialogExampleTwo {
   controllerTwo?: CustomDialogController;
-  @State message: string = "I'm the second dialog box.";
+  @State message: string = 'I am the second dialog box.';
   @State showIf: boolean = false;
 
   build() {
     Column() {
       if (this.showIf) {
-        Text("Text")
+        Text('Text')
           .fontSize(30)
           .height(100)
       }
       Text(this.message)
         .fontSize(30)
         .height(100)
-      Button("Create Text")
+      Button('Create Text')
         .onClick(() => {
           this.showIf = true;
         })
       Button('Close Second Dialog Box')
         .onClick(() => {
-          if (this.controllerTwo != undefined) {
+          if (this.controllerTwo !== undefined) {
             this.controllerTwo.close();
           }
         })
@@ -432,8 +483,8 @@ struct CustomDialogExampleTwo {
 
 @CustomDialog
 struct CustomDialogExample {
-  openSecondBox?: () => void
-  controller?: CustomDialogController
+  openSecondBox?: () => void;
+  controller?: CustomDialogController;
 
   build() {
     Column() {
@@ -449,12 +500,12 @@ struct CustomDialogExample {
 
 @Entry
 @Component
-struct CustomDialogUser {
+export struct NestDialogNew {
   @State inputValue: string = 'Click Me';
   dialogController: CustomDialogController | null = new CustomDialogController({
     builder: CustomDialogExample({
       openSecondBox: () => {
-        if (this.dialogControllerTwo != null) {
+        if (this.dialogControllerTwo !== null) {
           this.dialogControllerTwo.open()
         }
       }
@@ -478,29 +529,32 @@ struct CustomDialogUser {
   }
 
   onCancel() {
-    console.info('Callback when the first button is clicked');
+    hilog.info(DOMAIN, 'testTag', 'Callback when the first button is clicked');
   }
 
   onAccept() {
-    console.info('Callback when the second button is clicked');
+    hilog.info(DOMAIN, 'testTag', 'Callback when the second button is clicked');
   }
 
   exitApp() {
-    console.info('Click the callback in the blank area');
+    hilog.info(DOMAIN, 'testTag', 'Click the callback in the blank area');
   }
 
   build() {
-    Column() {
-      Button(this.inputValue)
-        .onClick(() => {
-          if (this.dialogController != null) {
-            this.dialogController.open();
-          }
-        }).backgroundColor(0x317aff)
-    }.width('100%').margin({ top: 5 })
+    NavDestination() {
+      Column() {
+        Button(this.inputValue)
+          .onClick(() => {
+            if (this.dialogController !== null) {
+              this.dialogController.open();
+            }
+          }).backgroundColor(0x317aff)
+      }.width('100%').margin({ top: 5 })
+    }
   }
 }
 ```
+
 
 ![nested_dialog](figures/nested_dialog.gif)
 
@@ -509,8 +563,10 @@ Note: Defining dialog 2 within dialog 1 is not recommended, as components cannot
 ## Implementing Physical Back Button Interception
 
 When the **onWillDismiss** callback in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) is registered, the dialog box will not be dismissed immediately after the user touches the mask or the Back button, presses the Esc key, or swipes left or right on the screen. The callback provides the dismissal reason via **reason** in [DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12), allowing conditional dismissal.
+ 
+<!-- @[dialog_with_physical_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogWithPhysicalBack.ets) -->
 
-```ts
+``` TypeScript
 @CustomDialog
 struct CustomDialogExample {
   cancel: () => void = () => {
@@ -530,7 +586,7 @@ struct CustomDialogExample {
       Row() {
         Button('Cancel')
           .onClick(() => {
-            if (this.controller != undefined) {
+            if (this.controller !== undefined) {
               this.controller.close();
             }
           })
@@ -538,7 +594,7 @@ struct CustomDialogExample {
           .fontColor(Color.Black)
         Button('Obtain')
           .onClick(() => {
-            if (this.controller != undefined) {
+            if (this.controller !== undefined) {
               this.controller.close();
             }
           })
@@ -554,7 +610,7 @@ struct CustomDialogExample {
 
 @Entry
 @Component
-struct InterceptCustomDialog {
+export struct DialogWithPhysicalBack {
   dialogController: CustomDialogController = new CustomDialogController({
     builder: CustomDialogExample({
       cancel: () => {
@@ -565,16 +621,16 @@ struct InterceptCustomDialog {
       }
     }),
     onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-      console.info('dialog onWillDismiss reason: ' + dismissDialogAction.reason);
+      hilog.info(DOMAIN, 'testTag', 'dialog onWillDismiss reason: ' + dismissDialogAction.reason);
       // 1. PRESS_BACK: touching the Back button, swiping left or right on the screen, or pressing the Esc key.
       // 2. TOUCH_OUTSIDE: touching the mask.
       // 3. CLOSE_BUTTON: touching the Close button.
       if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
         // Proactively close the dialog box after handling the service logic.
-        // dismissDialogAction.dismiss();
+        dismissDialogAction.dismiss();
       }
       if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
-        // dismissDialogAction.dismiss();
+        dismissDialogAction.dismiss();
       }
     },
     alignment: DialogAlignment.Bottom,
@@ -582,24 +638,27 @@ struct InterceptCustomDialog {
   })
 
   onCancel() {
-    console.info('Callback when the first button is clicked');
+    hilog.info(DOMAIN, 'testTag', 'Callback when the first button is clicked');
   }
 
   onAccept() {
-    console.info('Callback when the second button is clicked');
+    hilog.info(DOMAIN, 'testTag', 'Callback when the second button is clicked');
   }
 
   build() {
-    Column() {
-      Button('click me')
-        .onClick(() => {
-          this.dialogController.open();
-        })
+    NavDestination() {
+      Column() {
+        Button('click me')
+          .onClick(() => {
+            this.dialogController.open();
+          })
+      }
+      .width('100%')
     }
-    .width('100%')
   }
 }
 ```
+
 
 ![onWillDismiss_dialog](figures/onWillDismiss_dialog.gif)
 
@@ -607,10 +666,12 @@ struct InterceptCustomDialog {
 
 To maintain dialog box independence, dialog boxes automatically avoid surrounding elements like status bars, navigation bars, and keyboards. When the soft keyboard appears, dialog boxes maintain a default 16 vp distance. Since API version 15, use **keyboardAvoidMode** and **keyboardAvoidDistance** in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) to configure keyboard avoidance behavior.
 Note that the value of **keyboardAvoidMode** should be set to **KeyboardAvoidMode.DEFAULT**.
+  
+<!-- @[dialog_avoid_soft_key_board](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogAvoidSoftKeyboard.ets) -->
 
-```ts
+``` TypeScript
 // xxx.ets
-import { LengthMetrics } from '@kit.ArkUI'
+import { LengthMetrics } from '@kit.ArkUI';
 
 @CustomDialog
 struct CustomDialogExample {
@@ -629,7 +690,7 @@ struct CustomDialogExample {
 
 @Entry
 @Component
-struct Index {
+export struct DialogAvoidSoftKeyboard {
   dialogController: CustomDialogController | null = new CustomDialogController({
     builder: CustomDialogExample({
     }),
@@ -645,22 +706,26 @@ struct Index {
   })
 
   build() {
-    Row() {
-      Row({ space: 20 }) {
-        Text('Open dialog box')
-          .fontSize(30)
-          .onClick(() => {
-            if (this.dialogController != null) {
-              this.dialogController.open();
-            }
-          })
+    NavDestination() {
+      Row() {
+        Row({ space: 20 }) {
+          // The value in the $r('app.string.open_windows') resource file is 'Open.'
+          Text($r('app.string.open_windows'))
+            .fontSize(30)
+            .onClick(() => {
+              if (this.dialogController !== null) {
+                this.dialogController.open();
+              }
+            })
+        }
+        .width('100%')
       }
-      .width('100%')
+      .height('100%')
     }
-    .height('100%')
   }
 }
 ```
+
 
 
 
@@ -671,40 +736,45 @@ The **getState** API, available since API version 20, obtains the current dialog
 
 The following example uses [getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18) and [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller) to obtain the dialog box status.
 
-```ts
+<!-- @[get_dialog_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/GetDialogStatus.ets) -->
+
+``` TypeScript
 // xxx.ets
 @CustomDialog
 struct CustomDialogExample {
-  controller?: CustomDialogController
+  controller?: CustomDialogController;
 
   build() {
     Column() {
-      Button('Check Status: Custom Component Controller')
+      // The value in the $r('app.string.search_by_dialog') resource file is 'Check Status: Custom Component Controller.'
+      Button($r('app.string.search_by_dialog'))
         .onClick(() => {
-          if (this.getDialogController() != undefined) {
-            console.info('state:' + this.getDialogController().getState())
+          if (this.getDialogController() !== undefined) {
+            hilog.info(DOMAIN, 'testTag', 'state:' + this.getDialogController().getState())
           } else {
-            console.info('state: no exist')
+            hilog.info(DOMAIN, 'testTag', 'state: no exist')
           }
         }).margin(20)
-      Button('Check Status: CustomDialogController')
+      // The value in the $r('app.string.search_by_dialog_controller') resource file is 'Check Status: CustomDialogController.'
+      Button($r('app.string.search_by_dialog_controller'))
         .onClick(() => {
-          console.info('state:' + this.controller?.getState())
+          hilog.info(DOMAIN, 'testTag', 'state:' + this.controller?.getState())
         }).margin(20)
-      Button('Close Dialog Box')
+      // The value in the $r('app.string.close_widows') resource file is 'Close Dialog Box.'
+      Button($r('app.string.close_widows'))
         .onClick(() => {
-          if (this.getDialogController() != undefined) {
+          if (this.getDialogController() !== undefined) {
             this.getDialogController().close()
           }
         }).margin(20)
-      
+
     }
   }
 }
 
 @Entry
 @Component
-struct CustomDialogUser {
+export struct GetDialogStatus {
   dialogController: CustomDialogController | null = new CustomDialogController({
     builder: CustomDialogExample({
     }),
@@ -712,16 +782,19 @@ struct CustomDialogUser {
   })
 
   build() {
-    Column() {
-      Button('click me')
-        .onClick(() => {
-          if (this.dialogController != null) {
-            this.dialogController.open()
-          }
-        })
-    }.width('100%').margin({ top: 5 })
+    NavDestination() {
+      Column() {
+        Button('click me')
+          .onClick(() => {
+            if (this.dialogController !== null) {
+              this.dialogController.open()
+            }
+          })
+      }.width('100%').margin({ top: 5 })
+    }
   }
 }
 ```
 
 
+<!--no_check-->

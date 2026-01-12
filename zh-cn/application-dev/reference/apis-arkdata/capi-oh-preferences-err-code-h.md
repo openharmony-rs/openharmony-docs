@@ -32,7 +32,7 @@
 
 ### OH_Preferences_ErrCode
 
-```
+```c
 enum OH_Preferences_ErrCode
 ```
 

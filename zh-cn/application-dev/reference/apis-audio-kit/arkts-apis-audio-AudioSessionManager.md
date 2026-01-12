@@ -6,14 +6,14 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+音频会话管理。
+
+在使用AudioSessionManager的接口之前，需先通过[getSessionManager](arkts-apis-audio-AudioManager.md#getsessionmanager12)获取AudioSessionManager实例。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
-
-音频会话管理。
-
-在使用AudioSessionManager的接口之前，需先通过[getSessionManager](arkts-apis-audio-AudioManager.md#getsessionmanager12)获取AudioSessionManager实例。
 
 ## 导入模块
 
@@ -148,7 +148,8 @@ on(type: 'audioSessionDeactivated', callback: Callback\<AudioSessionDeactivatedE
 **示例：**
 
 ```ts
-audioSessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
+audioSessionManager.on('audioSessionDeactivated',
+  (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
   console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
 });
 ```
@@ -632,8 +633,7 @@ try {
 
 getSelectedMediaInputDevice(): AudioDeviceDescriptor
 
-获得通过[selectMediaInputDevice](#selectmediainputdevice21)设置的媒体输入设备。
-如果没有设置，返回一个deviceType属性为INVALID的设备。
+获得通过[selectMediaInputDevice](#selectmediainputdevice21)设置的媒体输入设备。如果没有设置，返回一个deviceType属性为INVALID的设备。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -852,4 +852,26 @@ let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.C
 audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
 
 audioSessionManager.off('currentInputDeviceChanged', currentInputDeviceChangedCallback);
+```
+
+## isOtherMediaPlaying<sup>23+</sup>
+
+isOtherMediaPlaying(): boolean
+
+检查是否有其他应用正在播放媒体类型（MUSIC、MOVIE、AUDIOBOOK、GAME）的音频，已激活媒体类型的音频会话也将会被检查。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**返回值：**
+
+| 类型                                              | 说明                                    |
+| ------------------------------------------------- |---------------------------------------|
+| boolean | 是否有其他应用正在播放媒体类型的音频。true表示有，false表示没有。 |
+
+**示例：**
+
+```ts
+let isExistence = audioSessionManager.isOtherMediaPlaying();
 ```

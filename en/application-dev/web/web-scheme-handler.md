@@ -10,7 +10,7 @@ The application can use [onInterceptRequest](../reference/apis-arkweb/arkts-basi
 
 > **NOTE**
 >
-> You cannot obtain post data using the **onInterceptRequest** API. To obtain post data, use the SchemeHandler mechanism to intercept network requests.
+> - You cannot obtain post data using the **onInterceptRequest** API. To obtain post data, use the SchemeHandler mechanism to intercept network requests.
 
 ## Intercepting Network Requests (by onInterceptRequest)
 
@@ -27,11 +27,15 @@ ArkWeb allows you to use SchemeHandler to intercept HTTP(s) and custom protocol 
 When the web kernel sends a scheme request, the callback of SchemeHandler set for the scheme is triggered. SchemeHandler contains two callbacks: one for the request start and the other for the request end. The application needs to notify the web kernel whether to intercept the request in the callback for the request start, and clear related resources after the request ends to avoid memory leaks.
 
 Callbacks for the request start: 
+
 NDK: [ArkWeb_OnRequestStart](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststart) 
+
 ArkTS: [onRequestStart](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststart12) 
 
 Callbacks for the request end: 
+
 NDK: [ArkWeb_OnRequestStop](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop) 
+
 ArkTS: [onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststop12) 
 
 > **NOTE**
@@ -77,36 +81,38 @@ The creation of a **Web** component triggers the initialization of the web kerne
 
 In the NDK, you can call **testNapi.registerCustomSchemes** on the ETS side to register a custom scheme, and then call [initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) to initialize the web kernel. The sample code is as follows:
 
-  ```ts
-    export default class EntryAbility extends UIAbility {
-        onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-            // Register the scheme configuration.
-            testNapi.registerCustomSchemes();
-            // Initialize the Web Engine, which will initialize the Browser process and create a BrowserContext. 
-            webview.WebviewController.initializeWebEngine();
-            // Create and set ArkWeb_SchemeHandler.
-            testNapi.setSchemeHandler();
-        }
-        ...
-    };
-  ```
+<!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // Register the configuration of the third-party protocol.
+    testNapi.registerCustomSchemes();
+    // Initialize the Web Engine, which will initialize the Browser process and create a BrowserContext. 
+    webview.WebviewController.initializeWebEngine();
+    // Set SchemeHandler.
+    testNapi.setSchemeHandler();
+  }
+```
 
 C++ implementation of **testNapi.registerCustomSchemes**:
 
-  ```c++
-    // Register the custom scheme with the Web component and specify that this scheme should follow the standard scheme rules, allowing cross-origin requests from this scheme.
-    OH_ArkWeb_RegisterCustomSchemes("custom", ARKWEB_SCHEME_OPTION_STANDARD | ARKWEB_SCHEME_OPTION_CORS_ENABLED);
-    // Register the custom-local scheme with the Web component and specify that this scheme should follow the same rules as the file scheme.
-    OH_ArkWeb_RegisterCustomSchemes("custom-local", ARKWEB_SCHEME_OPTION_LOCAL);
-    // Register custom-csp-bypassing with the Web component and specify that this scheme should follow the standard scheme rules, allowing it to bypass CSP checks.
-    OH_ArkWeb_RegisterCustomSchemes("custom-csp-bypassing", ARKWEB_SCHEME_OPTION_CSP_BYPASSING | ARKWEB_SCHEME_OPTION_STANDARD);
-    // Register custom-isolated with the Web component and specify that requests for this scheme must be initiated from web pages loaded with the same scheme. 
-    OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED);
-  ```
+<!-- @[register_set_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
+// Register the custom scheme with the Web component and specify that this scheme should follow the standard scheme rules, allowing cross-origin requests from this scheme.
+OH_ArkWeb_RegisterCustomSchemes("custom", ARKWEB_SCHEME_OPTION_STANDARD | ARKWEB_SCHEME_OPTION_CORS_ENABLED);
+// Register the custom-local scheme with the Web component and specify that this scheme should follow the same rules as the file scheme.
+OH_ArkWeb_RegisterCustomSchemes("custom-local", ARKWEB_SCHEME_OPTION_LOCAL);
+// Register custom-csp-bypassing with the Web component and specify that this scheme should follow the standard scheme rules, allowing it to bypass CSP checks.
+OH_ArkWeb_RegisterCustomSchemes("custom-csp-bypassing", ARKWEB_SCHEME_OPTION_CSP_BYPASSING | ARKWEB_SCHEME_OPTION_STANDARD);
+// Register custom-isolated with the Web component and specify that requests for this scheme must be initiated from web pages loaded with the same scheme. 
+OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED);
+```
 
 In ArkTS, you can register a custom scheme using **customizeSchemes**. The sample code is as follows:
 
- ``` ts
+  ``` ts
     // xxx.ets
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -196,6 +202,7 @@ In ArkTS, obtain information about intercepted requests:
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
+    return true;
   })
   ```
 
@@ -204,12 +211,14 @@ In ArkTS, obtain information about intercepted requests:
 The network interception provides custom response information for intercepted requests in stream mode in the worker thread. You can also use a specific network error code to end the current intercepted request.
 
 Error codes: 
+
 NDK: [arkweb_net_error_list.h](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md) 
+
 ArkTS: [@ohos.web.netErrorList(The List of ArkWeb Network Protocol Stack Errors)](../reference/apis-arkweb/arkts-apis-netErrorList.md) 
 
 > **NOTE**
 >
-> ArkWeb does not support custom error codes. Use the error codes provided by ArkWeb to end requests.
+> - ArkWeb does not support custom error codes. Use the error codes provided by ArkWeb to end requests.
 
 In the NDK, provide custom responses for intercepted requests.
 
@@ -270,8 +279,9 @@ In ArkTS, provide custom response information for intercepted requests.
     } catch (error) {
       console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
-  })
-  ```
+    return true;
+   })
+   ```
 
 Before calling [OH_ArkWebResourceHandler_DidFailWithError](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror) or [didFail(code: WebNetErrorList)](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail12) to end the current request, you must return a response header to the web kernel through [OH_ArkWebResourceHandler_DidReceiveResponse](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) or [didReceiveResponse](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12). Otherwise, the request cannot be ended.
 
@@ -289,6 +299,7 @@ ArkTS sample code:
   this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
     // Call didFail(WebNetErrorList.ERR_CONNECTION_FAILED, true) to automatically construct a network request error ERR_CONNECTION_FAILED.
     resourceHandler.didFail(WebNetErrorList.ERR_CONNECTION_FAILED, true);
+    return true;
   })
   ```
 

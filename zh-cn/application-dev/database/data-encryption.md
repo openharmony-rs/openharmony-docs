@@ -124,29 +124,32 @@
 
 关系型数据库，通过[StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)中encrypt属性来设置是否加密。encrypt参数为true时表示加密；为false时表示不加密；默认值为false。
 
-当encrypt为true时，支持开发者通过ArkTs API中的可选属性cryptoParam设置自定义的加密/解密密钥和算法等参数。
+当encrypt为true时，支持开发者通过ArkTS API中的可选属性cryptoParam设置自定义的加密/解密密钥和算法等参数。
 
 针对cryptoParam的配置与否，有如下两种场景：
 
 场景1：不配置cryptoParam属性，此时会使用默认的加密配置进行数据库的加密/解密。
 
 
-<!-- @[encryption_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
+<!-- @[encryption_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit'
+import { UIContext } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 ```
 
 
 
-<!-- @[defaultConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
+<!-- @[defaultConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
-let context = getContext();
 
+/* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
+const context = new UIContext().getHostContext() as common.UIAbilityContext;
 try {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: 'RdbTest.db',
@@ -165,11 +168,10 @@ try {
 
 场景2：配置cryptoParam属性，此时会使用开发者自定义的密钥和算法参数进行数据库的加密/解密。
 
-<!-- @[customizedConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
+<!-- @[customizedConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
-let context = getContext();
 // 初始化需要使用的密钥，示例中使用硬编码密钥仅用于演示目的， 实际应用中应使用安全的密钥管理服务
 let key = new Uint8Array(32);
 for (let i = 0; i < 32; i++) {
@@ -192,6 +194,9 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
   encrypt: true,
   cryptoParam: CRYPTO_PARAM
 }
+
+/* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
+const context = new UIContext().getHostContext() as common.UIAbilityContext;
 try {
   store = await relationalStore.getRdbStore(context, STORE_CONFIG);
   if (store == null) {

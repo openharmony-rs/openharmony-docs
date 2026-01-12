@@ -32,7 +32,7 @@
 
 ### OH_Rdb_ErrCode
 
-```
+```c
 enum OH_Rdb_ErrCode
 ```
 

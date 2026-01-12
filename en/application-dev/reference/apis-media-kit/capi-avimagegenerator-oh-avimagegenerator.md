@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVImageGenerator OH_AVImageGenerator
+```
+
 ## Overview
 
 The OH_AVImageGenerator struct describes the type used for generating video frames at specified timestamps.

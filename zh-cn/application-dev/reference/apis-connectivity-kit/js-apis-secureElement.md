@@ -13,7 +13,7 @@
 
 | 类型    | 说明                                           |
 | ------- | ---------------------------------------------- |
-| Reader  | 此类的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例。 |
+| Reader  | 此类的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例，其中SIM2从API version 22开始支持。 |
 | Session | 此类的实例表示在某个SE Reader实例上创建连接会话。 |
 | Channel | 此类的实例表示在某个Session实例上创建通道，可能为基础通道或逻辑通道。   |
 
@@ -205,11 +205,12 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let seService: omapi.SEService;
 function seStateOnCb(data: omapi.ServiceState) {
-    console.log("omapi.on ServiceState: ", data);
+    hilog.info(0x0000, 'testTag', 'omapi.on ServiceState: %{public}s', JSON.stringify(data));
 }
 
 function seStateOffCb(data: omapi.ServiceState) {
-    console.log("omapi.off ServiceState: ", data);
+    hilog.info(0x0000, 'testTag', 'omapi.off ServiceState: %{public}s', JSON.stringify(data));
+
 }
 
 function secureElementDemo() {
@@ -227,14 +228,14 @@ function secureElementDemo() {
         omapi.on('stateChanged', seStateOnCb);
     } catch (error) {
         if (error as BusinessError) {
-            console.error(`omapi on error catch Code: ${(error as BusinessError).code}, ` + `message: ${(error as BusinessError).message}`);
+            hilog.error(0x0000, 'testTag', 'omapi on error %{public}s', JSON.stringify(error));
         }
     }
     try{
         omapi.off('stateChanged', seStateOffCb);
     } catch (error) {
         if (error as BusinessError) {
-            console.error(`omapi off error catch Code: ${(error as BusinessError).code}, ` + `message: ${(error as BusinessError).message}`);
+            hilog.error(0x0000, 'testTag', 'omapi off error %{public}s', JSON.stringify(error));
         }
     }
 }
@@ -417,7 +418,7 @@ try {
 ```
 ## Reader
 
-Reader的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例。通过[SEService.getReaders](#seservicegetreaders)获取Reader实例。
+Reader的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例，其中SIM2从API version 22开始支持。通过[SEService.getReaders](#seservicegetreaders)获取Reader实例。
 
 ### Reader.getName
 

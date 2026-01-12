@@ -7,6 +7,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+画刷对象，描述所绘制图形的填充信息。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -14,8 +16,6 @@
 > - 本模块使用屏幕物理像素单位px。
 >
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
-
-画刷对象，描述所绘制图形的填充信息。
 
 ## 导入模块
 
@@ -382,7 +382,7 @@ let alpha = brush.getAlpha();
 
 ## setColorFilter
 
-setColorFilter(filter: ColorFilter) : void
+setColorFilter(filter: ColorFilter | null) : void
 
 给画刷添加额外的颜色滤波器。
 
@@ -392,7 +392,7 @@ setColorFilter(filter: ColorFilter) : void
 
 | 参数名 | 类型                        | 必填 | 说明         |
 | ------ | --------------------------- | ---- | ------------ |
-| filter | [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 是   | 颜色滤波器。null表示清空颜色滤波器。 |
+| filter | [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| null | 是   | 颜色滤波器。null表示清空颜色滤波器。 |
 
 **错误码：**
 
@@ -414,7 +414,7 @@ brush.setColorFilter(colorFilter);
 
 ## setMaskFilter<sup>12+</sup>
 
-setMaskFilter(filter: MaskFilter): void
+setMaskFilter(filter: MaskFilter | null): void
 
 给画刷添加额外的蒙版滤镜。
 
@@ -424,7 +424,7 @@ setMaskFilter(filter: MaskFilter): void
 
 | 参数名 | 类型                       | 必填 | 说明      |
 | ------ | ------------------------- | ---- | --------- |
-| filter | [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) | 是   | 蒙版滤镜。null表示清空蒙版滤镜。 |
+| filter | [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) \| null | 是   | 蒙版滤镜。null表示清空蒙版滤镜。 |
 
 **错误码：**
 
@@ -452,7 +452,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## setShaderEffect<sup>12+</sup>
 
-setShaderEffect(shaderEffect: ShaderEffect): void
+setShaderEffect(shaderEffect: ShaderEffect | null): void
 
 设置画刷着色器效果。
 
@@ -462,7 +462,7 @@ setShaderEffect(shaderEffect: ShaderEffect): void
 
 | 参数名  | 类型                       | 必填 | 说明         |
 | ------- | ------------------------- | ---- | ------------ |
-| shaderEffect  | [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 是   | 着色器对象。null表示清空着色器效果。 |
+| shaderEffect  | [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| null | 是   | 着色器对象。null表示清空着色器效果。 |
 
 **错误码：**
 
@@ -484,7 +484,7 @@ brush.setShaderEffect(shaderEffect);
 
 ## setShadowLayer<sup>12+</sup>
 
-setShadowLayer(shadowLayer: ShadowLayer): void
+setShadowLayer(shadowLayer: ShadowLayer | null): void
 
 设置画刷阴影层效果。当前仅在绘制文字时生效。
 
@@ -494,7 +494,7 @@ setShadowLayer(shadowLayer: ShadowLayer): void
 
 | 参数名  | 类型                       | 必填 | 说明      |
 | ------- | ------------------------- | ---- | --------- |
-| shadowLayer  | [ShadowLayer](arkts-apis-graphics-drawing-ShadowLayer.md) | 是   | 阴影层对象。null表示清空阴影层效果。 |
+| shadowLayer  | [ShadowLayer](arkts-apis-graphics-drawing-ShadowLayer.md) \| null | 是   | 阴影层对象。null表示清空阴影层效果。 |
 
 **错误码：**
 

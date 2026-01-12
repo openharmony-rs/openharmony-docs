@@ -1,4 +1,10 @@
 # Universal Styles
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu; @yihao-lin; @weixin_52725220-->
+<!--Designer: @lanshouren; @piggyguy; @weixin_52725220-->
+<!--Tester: @liuli0427; @songyanhong; @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -77,12 +83,12 @@ You can set universal styles for components in the **style** attribute or **.css
 
 ```html
 <div class="container" onswipe="touchMove">
-	<text style="margin: 10px; box-sizing: content-box; width: 300px;height: 300px; border-color: blue; border-width: 20px;">
-		contentBox
-	</text>
-	<text style="margin: 10px; box-sizing: border-box; width: 300px;height: 300px;border-color: blue; border-width: 20px;">
-		borderBox
-	</text>
+    <text style="margin: 10px; box-sizing: content-box; width: 300px;height: 300px; border-color: blue; border-width: 20px;">
+        contentBox
+    </text>
+    <text style="margin: 10px; box-sizing: border-box; width: 300px;height: 300px;border-color: blue; border-width: 20px;">
+        borderBox
+    </text>
 </div>
 ```
 

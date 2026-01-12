@@ -15,6 +15,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -33,7 +35,7 @@
 
 ### OH_Drawing_ColorSpaceCreateSrgb()
 
-```
+```c
 OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgb(void)
 ```
 
@@ -53,7 +55,7 @@ OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgb(void)
 
 ### OH_Drawing_ColorSpaceCreateSrgbLinear()
 
-```
+```c
 OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgbLinear(void)
 ```
 
@@ -73,7 +75,7 @@ OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgbLinear(void)
 
 ### OH_Drawing_ColorSpaceDestroy()
 
-```
+```c
 void OH_Drawing_ColorSpaceDestroy(OH_Drawing_ColorSpace* colorSpace)
 ```
 

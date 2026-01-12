@@ -45,8 +45,7 @@ console.info('power is active: ' + isActive);
 
 rebootDevice(reason: string): void
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用power.reboot替代。替代接口能力仅对系统应用开放。
-
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护<!--Del-->。建议使用[power.reboot](js-apis-power-sys.md#powerreboot9)替代<!--DelEnd-->，替代接口能力仅对系统应用开放。
 重启设备。
 
 **需要权限：** ohos.permission.REBOOT,该权限仅系统应用可申请。
@@ -124,7 +123,7 @@ try {
 
 isScreenOn(callback: AsyncCallback&lt;boolean&gt;): void
 
-> **说明：**<br>从API version 9开始不再维护，建议使用[power.isActive](#powerisactive9)替代。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[power.isActive](#powerisactive9)替代。
 
 检测当前设备的亮灭屏状态。使用callback异步回调。
 
@@ -152,7 +151,7 @@ power.isScreenOn((err: Error, data: boolean) => {
 
 isScreenOn(): Promise&lt;boolean&gt;
 
-> **说明：**<br>从API version 9开始不再维护，建议使用[power.isActive](#powerisactive9)替代。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[power.isActive](#powerisactive9)替代。
 
 检测当前设备的亮灭屏状态。使用Promise异步回调。
 

@@ -78,6 +78,7 @@
 ## 开发指导
 
 详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md)。
+
 如下为视频编码调用关系图：
 
 - 虚线表示可选。
@@ -275,7 +276,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
         bool ret = OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_WIDTH, &width) &&
                    OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_HEIGHT, &height);
         if (!ret) {
-         	// 异常处理。
+            // 异常处理。
         }
     }
     ```
@@ -476,10 +477,12 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     <!--RP8End-->
 
 10. 写入编码图像。
+
     在之前的第6步中，开发者已经对OH_VideoEncoder_GetSurface接口返回的OHNativeWindow*类型变量进行配置。因为编码所需的数据，由配置的surface进行持续地输入，所以开发者无需对OnNeedInputBuffer回调函数进行处理，也无需使用OH_VideoEncoder_PushInputBuffer接口输入数据。
     <!--RP13--><!--RP13End-->
 
 11. （可选）调用OH_VideoEncoder_PushInputParameter()通知编码器随帧参数配置输入完成。
+
     在之前的第4步中，开发者已经注册随帧通路回调。
 
     以下示例中：
@@ -602,7 +605,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 16. （可选）调用OH_VideoEncoder_Stop()停止编码器。
 
-    调用OH_VideoEncoder_Stop接口后，编码器保留了编码实例，释放输入输出buffer。开发者可以直接调用OH_VideoEncoder_Start接口继续编码，输入的第一个buffer需要携带参数集，从IDR帧开始送入。
+    调用OH_VideoEncoder_Stop接口后，编码器保留了编码实例，释放输入输出buffer。开发者可以直接调用OH_VideoEncoder_Start接口继续编码。
 
     ```c++
     std::unique_lock<std::shared_mutex> lock(codecMutex);
@@ -725,7 +728,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
             bool ret = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_STRIDE, &widthStride) &&
                        OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_SLICE_HEIGHT, &heightStride);
             if (!ret) {
-             	// 异常处理。
+                // 异常处理。
             }
             isFirstFrame = false;
         }
@@ -874,6 +877,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     OH_AVCodecBufferAttr info;
     info.size = frameSize;
     info.offset = 0;
+    // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
     info.pts = 0;
     OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &info);
     if (setBufferRet != AV_ERR_OK) {
@@ -973,18 +977,19 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```
 
     硬件编码在处理buffer数据时（推送数据前），需要开发者拷贝宽、高对齐后的图像数据到输入回调的AVbuffer中。
+
     一般需要获取数据的宽、高、跨距、像素格式来保证编码输入数据被正确的处理。
 
     具体实现请参考：[Buffer模式](#buffer模式)的步骤3-调用OH_VideoEncoder_RegisterCallback接口设置回调函数来获取数据的宽、高、跨距、像素格式。
 
 9. 通知编码器结束。
 
+    在编码过程中，当最后一帧数据被送入编码输入队列时，需要设置bufferInfo的flag标识为AVCODEC_BUFFER_FLAGS_EOS，通知编码器输入结束。
+
     以下示例中，bufferInfo的成员变量：
     - index：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识；
     - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针;
     - isValid：bufferInfo中存储的buffer实例是否有效。
-
-    与“步骤-8. 写入编码图像”一样，使用同一个接口OH_VideoEncoder_PushInputBuffer，通知编码器输入结束，需要将flag标识成AVCODEC_BUFFER_FLAGS_EOS。
 
     ```c++
     std::shared_ptr<CodecBufferInfo> bufferInfo = inQueue.Dequeue();
@@ -992,9 +997,12 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     if (bufferInfo == nullptr || !bufferInfo->isValid) {
         // 异常处理。
     }
+    // 写入最后一帧图像数据，参考"步骤-8. 写入编码图像"。
+    // 配置buffer info信息，设置AVCODEC_BUFFER_FLAGS_EOS标识。
     OH_AVCodecBufferAttr info;
-    info.size = 0;
+    info.size = frameSize;
     info.offset = 0;
+    // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
     info.pts = 0;
     info.flags = AVCODEC_BUFFER_FLAGS_EOS;
     OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &info);
@@ -1008,6 +1016,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```
 
 10. 调用OH_VideoEncoder_FreeOutputBuffer()释放编码帧。
+
     与Surface模式相同，此处不再赘述。
 
     ```c++

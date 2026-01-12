@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Canvas** component can be used to customize drawings.
 
@@ -22,7 +22,7 @@ Not supported
 
 Canvas(context?: CanvasRenderingContext2D | DrawingRenderingContext)
 
-When you create a canvas component, the maximum size of the canvas component cannot exceed 10000 px x 10000 px. If the canvas component exceeds the maximum size, the canvas component cannot be created.
+Creates a **Canvas** component. The maximum allowed size cannot exceed 10000 px × 10000 px. If the size exceeds this limit, the **Canvas** component will fail to be created.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -40,7 +40,7 @@ When you create a canvas component, the maximum size of the canvas component can
 
 Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptions: ImageAIOptions)
 
-Creates a canvas component. You can set the CanvasRenderingContext2D or DrawingRenderingContext object and AI analysis options.
+Creates a **Canvas** component. You can specify a **CanvasRenderingContext2D** or **DrawingRenderingContext** object, along with AI image analysis options.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -59,9 +59,13 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 ### enableAnalyzer<sup>12+</sup>
 
-Sets whether to enable the AI analyzer, which supports subject recognition, text recognition, and object lookup. Dynamic attribute setting using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) is supported.
+Sets whether to enable the AI image analyzer, which supports subject recognition, text recognition, and object lookup. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 For the settings to take effect, this attribute must be used together with [StartImageAnalyzer](ts-canvasrenderingcontext2d.md#startimageanalyzer12) and [StopImageAnalyzer](ts-canvasrenderingcontext2d.md#stopimageanalyzer12) of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).
 This attribute cannot be used together with the [overlay](ts-universal-attributes-overlay.md#overlay) attribute. If they are set at the same time, the **CustomBuilder** attribute in **overlay** has no effect. This feature depends on device capabilities.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -71,7 +75,7 @@ This attribute cannot be used together with the [overlay](ts-universal-attribute
 
 | Name| Type   | Mandatory| Description|
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enable  | boolean | Yes  | Whether to enable the AI analyzer. The value **true** means to enable the AI analyzer.<br>The **null** and **undefined** values are handled as the default value.<br>Default value: **false**|
+| enable  | boolean | Yes  | Whether to enable the AI image analyzer for subject recognition, text recognition, and object lookup within the component content.<br>**true**: Enable the AI image analyzer. **false**: Disable the AI analyzer.<br>The **null** and **undefined** values are handled as the default value.<br>Default value: **false**|
 
 ## Events
 
@@ -95,7 +99,7 @@ When this event is triggered, the canvas is cleared. The width and height of the
 
 | Name| Type   | Mandatory| Description|
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| event  | [VoidCallback](ts-types.md#voidcallback12) | Yes  | Callback event triggered when the **Canvas** component is initialized or when its size changes.|
+| event  | [VoidCallback](ts-types.md#voidcallback12) | Yes  | Triggered when the **Canvas** component is initialized or when its size changes.|
 
 ## Example
 

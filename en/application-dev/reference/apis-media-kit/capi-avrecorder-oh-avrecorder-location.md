@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVRecorder_Location {...} OH_AVRecorder_Location
+```
+
 ## Overview
 
 The struct describes the geographical location information about a media asset.

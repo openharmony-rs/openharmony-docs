@@ -23,7 +23,9 @@
 import { DataShareExtensionAbility } from '@kit.ArkData';
 ```
 
-## 属性
+## DataShareExtensionAbility
+
+### 属性
 
 **系统能力**：SystemCapability.DistributedDataManager.DataShare.Provider
 
@@ -31,7 +33,7 @@ import { DataShareExtensionAbility } from '@kit.ArkData';
 | -------- | -------- | -------- | -------- | -------- |
 | context<sup>10+</sup> | [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)  | 是 | 否 |表示数据共享扩展能力上下文。 |
 
-## onCreate
+### onCreate
 
 onCreate?(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
@@ -78,17 +80,9 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## UpdateOperation<sup>12+</sup>
 
-批量更新操作的参数结构。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Provider
-
-| 名称            | 类型                                                         | 必填 | 说明           |
-| --------------- | ------------------------------------------------------------ | ---- | -------------- |
-| UpdateOperation | [dataShare.UpdateOperation](js-apis-data-dataShare-sys.md#updateoperation12) | 是   | 要更新的数据。 |
-
-## insert
+### insert
 
 insert?(uri: string, valueBucket: ValuesBucket, callback: AsyncCallback&lt;number&gt;): void
 
@@ -128,7 +122,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## update
+### update
 
 update?(uri: string, predicates: dataSharePredicates.DataSharePredicates, valueBucket: ValuesBucket, callback: AsyncCallback&lt;number&gt;): void
 
@@ -167,7 +161,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## batchUpdate<sup>12+</sup>
+### batchUpdate<sup>12+</sup>
 
 batchUpdate?( operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt; , callback:  AsyncCallback&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt;): void
 
@@ -216,7 +210,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## delete
+### delete
 
 delete?(uri: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;number&gt;): void
 
@@ -254,7 +248,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## query
+### query
 
 query?(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;Object&gt;): void
 
@@ -296,7 +290,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## batchInsert
+### batchInsert
 
 batchInsert?(uri: string, valueBuckets: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;number&gt;): void
 
@@ -335,7 +329,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## normalizeUri
+### normalizeUri
 
 normalizeUri?(uri: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -371,7 +365,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## denormalizeUri
+### denormalizeUri
 
 denormalizeUri?(uri: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -406,3 +400,12 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
   }
 };
 ```
+## UpdateOperation<sup>12+</sup>
+
+批量更新操作的参数结构。
+
+**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Provider
+
+| 名称            | 类型                                                         | 必填 | 说明           |
+| --------------- | ------------------------------------------------------------ | ---- | -------------- |
+| UpdateOperation | [dataShare.UpdateOperation](js-apis-data-dataShare-sys.md#updateoperation12) | 是   | 要更新的数据。 |

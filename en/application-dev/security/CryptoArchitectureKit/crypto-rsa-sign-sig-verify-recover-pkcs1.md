@@ -34,7 +34,9 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
+
   async function signMessagePromise(priKey: cryptoFramework.PriKey) {
     let signAlg = "RSA1024|PKCS1|NoHash|OnlySign";
     let signer = cryptoFramework.createSign(signAlg);
@@ -42,6 +44,7 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
     let signData = await signer.sign(input1);
     return signData;
   }
+
   async function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
     let verifyAlg = "RSA1024|PKCS1|NoHash|Recover";
     let verifier = cryptoFramework.createVerify(verifyAlg);
@@ -49,6 +52,7 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
     let rawSignData = await verifier.recover(signMessageBlob);
     return rawSignData;
   }
+
   async function main() {
     let keyGenAlg = "RSA1024";
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
@@ -68,7 +72,9 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
+
   function signMessagePromise(priKey: cryptoFramework.PriKey) {
     let signAlg = "RSA1024|PKCS1|NoHash|OnlySign";
     let signer = cryptoFramework.createSign(signAlg);
@@ -76,6 +82,7 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
     let signData = signer.signSync(input1);
     return signData;
   }
+
   function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
     let verifyAlg = "RSA1024|PKCS1|NoHash|Recover";
     let verifier = cryptoFramework.createVerify(verifyAlg);
@@ -83,6 +90,7 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
     let rawSignData = verifier.recoverSync(signMessageBlob);
     return rawSignData;
   }
+
   function main() {
     let keyGenAlg = "RSA1024";
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);

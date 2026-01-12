@@ -148,6 +148,6 @@
 
 [内核子系统](../../readme/内核子系统.md)
 
-[drivers\_liteos](https://gitee.com/openharmony/drivers_liteos/blob/master/README_zh.md)
+[drivers\_liteos](https://gitcode.com/openharmony/drivers_liteos/blob/master/README_zh.md)
 
-[**kernel\_liteos\_a**](https://gitee.com/openharmony/kernel_liteos_a/blob/master/README_zh.md)
+[**kernel\_liteos\_a**](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/README_zh.md)

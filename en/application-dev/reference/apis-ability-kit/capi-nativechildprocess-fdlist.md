@@ -7,6 +7,10 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
+```c
+typedef struct NativeChildProcess_FdList {...} NativeChildProcess_FdList
+```
+
 ## Overview
 
 The struct describes a list of file descriptors passed to the child process. The list can contain a maximum of 16 entries.

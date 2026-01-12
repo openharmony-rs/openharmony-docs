@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 An **ImageBitmap** object stores pixel data rendered on a canvas. Since API version 11, when an application creates a [worker thread](../../../arkts-utils/worker-introduction.md), it can use **postMessage** to transfer the **ImageBitmap** instance to the worker thread for drawing, and use **onmessage** to receive the drawing results sent by the worker thread for display. 
 
@@ -50,7 +50,7 @@ Creates an **ImageBitmap** object using a **PixelMap** object.
 
 constructor(src: string, unit: LengthMetricsUnit)
 
-Creates an **ImageBitmap** object using an **ImageSrc** object.
+Creates an **ImageBitmap** object using an **ImageSrc** object. The unit mode of the Path2D object can be configured using **unit**.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -69,7 +69,7 @@ Creates an **ImageBitmap** object using an **ImageSrc** object.
 
 constructor(data: PixelMap, unit: LengthMetricsUnit)
 
-Creates an **ImageBitmap** object using a **PixelMap** object.
+Creates an **ImageBitmap** object using a **PixelMap** object. The unit mode of the Path2D object can be configured using **unit**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -102,7 +102,7 @@ Releases all graphics resources associated with this **ImageBitmap** object and 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type| Read Only| Optional| Description|
+| Name    | Type| Read-Only| Optional| Description|
 | ------ | ------ | ----- | -------- | --------------------------- |
 | width | number | Yes| No| Pixel width of the **ImageBitmap** object.<br>Default unit: vp|
 | height | number | Yes| No| Pixel height of the **ImageBitmap** object.<br>Default unit: vp|

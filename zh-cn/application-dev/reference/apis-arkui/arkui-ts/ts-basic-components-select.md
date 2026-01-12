@@ -53,6 +53,7 @@ selected(value: number | Resource)
 设置下拉菜单初始选项的索引，第一项的索引为0。当不设置selected属性或设置为异常值时，默认选中值为-1，菜单项不选中；当设置为undefined、null时，选中第一项。
 
 从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+
 从API version 18开始，该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -90,6 +91,7 @@ value(value: ResourceStr)
 设置下拉按钮的文本内容。选中菜单项后，按钮文本将自动更新为选中的菜单项文本。
 
 从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+
 从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -254,7 +256,7 @@ font(value: Font)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Font](ts-types.md#font) | 是   | 下拉按钮本身的文本样式。<br/>API Version 11及以前默认值：<br/>{<br/>size:&nbsp;`$r('sys.float.ohos_id_text_size_button1')`,<br/>weight:&nbsp;FontWeight.Medium<br/>} <br/>API Version 12以后，如果设置controlSize的值为：controlSize.SMALL，size默认值是`$r('sys.float.ohos_id_text_size_button2')`，否则为`$r('sys.float.ohos_id_text_size_button1')`。 |
+| value  | [Font](ts-types.md#font) | 是   | 下拉按钮本身的文本样式。<br/>API version 11及以前默认值：<br/>{<br/>size:&nbsp;`$r('sys.float.ohos_id_text_size_button1')`,<br/>weight:&nbsp;FontWeight.Medium<br/>} <br/>API version 12以后，如果设置controlSize的值为：controlSize.SMALL，size默认值是`$r('sys.float.ohos_id_text_size_button2')`，否则为`$r('sys.float.ohos_id_text_size_button1')`。 |
 
 ### font<sup>18+</sup>
 
@@ -884,7 +886,7 @@ selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attri
 
 showInSubWindow(showInSubWindow:Optional\<boolean>)
 
-设置Select的Menu是否显示在子窗中。
+设置下拉菜单是否显示在子窗中。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -894,7 +896,43 @@ showInSubWindow(showInSubWindow:Optional\<boolean>)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| showInSubWindow  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 设置Select的Menu是否显示在子窗中。<br>true代表Select的Menu显示在子窗中，仅对2in1设备生效。<br>false代表Select的Menu不显示在子窗中。<br>默认值：2in1设备为true，其他设备为false。 |
+| showInSubWindow  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 设置下拉菜单是否显示在子窗中。<br>true代表下拉菜单显示在子窗中，仅对2in1设备生效。<br>false代表下拉菜单不显示在子窗中。<br>默认值：2in1设备为true，其他设备为false。 |
+
+### keyboardAvoidMode<sup>23+</sup>
+
+keyboardAvoidMode(mode:Optional\<MenuKeyboardAvoidMode>)
+
+设置下拉菜单是否避让软键盘。未通过该接口设置时，默认不避让软键盘。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[MenuKeyboardAvoidMode](ts-universal-attributes-menu.md#menukeyboardavoidmode23枚举说明)> | 是 | 设置下拉菜单是否避让软键盘。取值为undefined时，按照MenuKeyboardAvoidMode.NONE处理，不避让软键盘。 |
+
+### minKeyboardAvoidDistance<sup>23+</sup>
+
+minKeyboardAvoidDistance(distance:Optional\<LengthMetrics>)
+
+设置Select的菜单避让软键盘的最小距离。未通过该接口设置，最小距离默认为8vp。仅当[keyboardAvoidMode](#keyboardavoidmode23)设置为避让软键盘时生效。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| distance | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是 | 设置下拉菜单避让软键盘的最小距离。设置为负数、undefined时，按照8vp处理。 |
 
 ## ArrowPosition<sup>10+</sup>枚举说明
 
@@ -1018,7 +1056,8 @@ type OnSelectCallback = (index: number, selectStr: string) => void
 | index  | number | 是   | 选中项的索引，索引值从0开始。 |
 | selectStr | string | 是   | 选中项的值。   |
 
-##  示例1（设置下拉菜单）
+## 示例
+### 示例1（设置下拉菜单）
 
 该示例通过配置[SelectOption](#selectoption对象说明)实现下拉菜单，并从API version 19开始通过设置[avoidance](#avoidance19)属性实现菜单的避让方式。
 
@@ -1067,7 +1106,7 @@ struct SelectExample {
 
 
 
-##  示例2（设置symbol类型图标）
+### 示例2（设置symbol类型图标）
 该示例实现了一个下拉菜单中图片为Symbol的Select组件，并从API version 19开始通过设置[avoidance](#avoidance19)属性实现菜单的避让方式。
 
 ```ts
@@ -1120,7 +1159,7 @@ struct SelectExample {
 
 ![](figures/SelectSymbol.png)
 
-##  示例3（自定义下拉菜单）
+### 示例3（自定义下拉菜单）
 该示例实现了一个自定义下拉菜选项的Select组件。自定义下拉菜单选项样式为“文本 + Symbol图片 + 空白间隔 + 文本 + 绘制三角形”，点击菜单选项后Select组件显示菜单选项的文本内容。
 
 ```ts
@@ -1193,7 +1232,7 @@ struct SelectExample {
 ```
 ![](figures/SelectBuilderSymbol.png)
 
-##  示例4（设置分割线样式）
+### 示例4（设置分割线样式）
 该示例通过配置divider的DividerOptions类型实现分割线样式的下拉菜单，并从API version 19开始通过设置[avoidance](#avoidance19)属性实现菜单的避让方式。
 
 ```ts
@@ -1242,7 +1281,7 @@ struct SelectExample {
 ```
 ![](figures/SelectCustomDivider.png)
 
-##  示例5（设置无分割线样式）
+### 示例5（设置无分割线样式）
 该示例通过配置divider为null实现无分割线样式的下拉菜单，并从API version 19开始通过设置[avoidance](#avoidance19)属性实现菜单的避让方式。
 
 ```ts
@@ -1286,7 +1325,7 @@ struct SelectExample {
 ```
 ![](figures/SelectHideDivider.png)
 
-##  示例6（设置Select中文本和箭头样式）
+### 示例6（设置Select中文本和箭头样式）
 
 从API version 20开始，该示例通过[textModifier](#textmodifier20)和[arrowModifier](#arrowmodifier20)属性设置文本以及箭头样式。
 
@@ -1353,7 +1392,7 @@ struct SelectExample {
 ```
 ![](figures/SelectModifier.png)
 
-##  示例7（设置Select下拉菜单选中和非选中项文本样式）
+### 示例7（设置Select下拉菜单选中和非选中项文本样式）
 
 从API version 20开始，该示例通过[optionTextModifier](#optiontextmodifier20)和[selectedOptionTextModifier](#selectedoptiontextmodifier20)属性设置下拉菜单选中和非选中项文本样式。
 
@@ -1423,7 +1462,7 @@ struct SelectExample {
 ```
 ![](figures/SelectOptionModifier.png)
 
-## 示例8（设置分割线模式）
+### 示例8（设置分割线模式）
 
 从API version 19开始，该示例通过配置[DividerStyleOptions](ts-types.md#dividerstyleoptions12)的mode属性设置分割线模式。
 
@@ -1451,7 +1490,7 @@ struct Index {
 
 ![dividerStyleMode](figures/SelectdividerStyleMode.png)
 
-## 示例9（设置Select下拉菜单外描边样式）
+### 示例9（设置Select下拉菜单外描边样式）
 
 从API version 20开始该示例通过配置menuOutline的width和color属性设置下拉菜单外描边样式。
 
@@ -1500,3 +1539,60 @@ struct SelectExample {
 ```
 
 ![select-menu-outline](figures/selectMenuOutline.png)
+
+### 示例10（设置Select的弹出菜单避让软键盘）
+
+该示例通过调用[keyboardAvoidMode](#keyboardavoidmode23)和[minKeyboardAvoidDistance](#minkeyboardavoiddistance23)接口，实现下拉菜单避让软键盘并自定义避让软键盘的最小距离。
+
+从API version 23开始，新增keyboardAvoidMode、minKeyboardAvoidDistance接口。
+
+``` ts
+import { inputMethod } from '@kit.IMEKit';
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private inputController: inputMethod.InputMethodController = inputMethod.getController();
+
+  build() {
+    RelativeContainer() {
+      Select([{ value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' }])
+        .value('Click Show Options')
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center },
+        })
+        .keyboardAvoidMode(MenuKeyboardAvoidMode.TRANSLATE_AND_RESIZE)
+        .minKeyboardAvoidDistance(LengthMetrics.vp(20))
+        .onClick(() => {
+          setTimeout(() => {
+            this.attachAndListener()
+          }, 2000)
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+
+  async attachAndListener() {
+    focusControl.requestFocus('Index')
+    try {
+      await this.inputController.attach(true, {
+        inputAttribute: {
+          textInputType: inputMethod.TextInputType.TEXT,
+          enterKeyType: inputMethod.EnterKeyType.SEARCH
+        }
+      })
+    } catch (err) {
+      console.error('Fail to attach')
+    }
+  }
+}
+```
+
+![select-menu-keyboard-avoid](figures/selectKeyboardAvoid.gif)

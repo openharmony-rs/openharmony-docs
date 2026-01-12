@@ -39,6 +39,8 @@ The [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-abili
 > The **EmbeddedComponent** can be used only in the UIAbility, and the EmbeddedUIExtensionAbility to start must belong to the same application as the UIAbility.<!--Del-->
 > 
 > The EmbeddedUIExtensionAbility supports the multiton pattern and inherits the process model of the UIExtensionAbility. For details about the multiton pattern and process configuration of the UIExtensionAbility, see [UIExtensionAbility](uiextensionability-sys.md).<!--DelEnd-->
+>
+> The EmbeddedUIExtensionAbility supports application clones. The EmbeddedUIExtensionAbility to start and the UIAbility belong to the same application clone.
 
 The EmbeddedUIExtensionAbility provides related capabilities through the [UIExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md) and [UIExtensionContentSession](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md). In this document, the started EmbeddedUIExtensionAbility is called the provider, and the EmbeddedComponent that starts the EmbeddedUIExtensionAbility is called the client.
 
@@ -151,7 +153,7 @@ To implement a provider, create an [EmbeddedUIExtensionAbility](../reference/api
 ## Developing the EmbeddedUIExtensionAbility Client
 
 You can load the [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md) in the application through the [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md) on the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) page. Two fields are added to [want](../reference/apis-ability-kit/js-apis-app-ability-want.md).parameters for the EmbeddedUIExtensionAbility: **ohos.extension.processMode.hostSpecified** and **ohos.extension.processMode.hostInstance**.
-- **ohos.extension.processMode.hostSpecified** specifies the name of the process in which the EmbeddedUIExtensionAbility that is not started for the first time runs. If this field is not configured, the EmbeddedUIExtensionAbility runs in the same process as the [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md). Example configuration: "ohos.extension.processMode.hostSpecified": "com.ohos.inentexecutedemo:share." 
+- **ohos.extension.processMode.hostSpecified** specifies the name of the process in which the EmbeddedUIExtensionAbility that is not started for the first time runs. If this field is not configured, the EmbeddedUIExtensionAbility runs in the same process as the [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md). Example configuration: "ohos.extension.processMode.hostSpecified": "com.ohos.inentexecutedemo:embeddedUI"
 - **ohos.extension.processMode.hostInstance** specifies whether to start the EmbeddedUIExtensionAbility as an independent process. If **false** is passed in, the EmbeddedUIExtensionAbility is started based on the UIExtensionAbility process model. If **true** is passed in, a process is created, regardless of the process model configured for the UIExtensionAbility. Example configuration: "ohos.extension.processMode.hostInstance": "true".
 
 If both fields are configured, **ohos.extension.processMode.hostSpecified** takes precedence, meaning that the EmbeddedUIExtensionAbility runs in the specified process.

@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @zhuangzhuang-->
 <!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 本模块是为系统文件管理应用提供获取三方网盘注册的同步根信息的能力。
 
@@ -56,9 +56,10 @@ SyncFolderAccessor的构造函数，用于获取SyncFolderAccessor类的实例�
         Button('constructor')
         .onClick(async() => {
             try {
-              let SyncFolderAccessor: cloudDiskManager.SyncFolderAccessor = new cloudDiskManager.SyncFolderAccessor();
-            } catch (error) {
-              console.error(`register failed. Code: ${error.code}, message: ${error.message}`);
+              let syncFolderAccessor: cloudDiskManager.SyncFolderAccessor = new cloudDiskManager.SyncFolderAccessor();
+            } catch (err) {
+                let error: BusinessError = err as BusinessError;
+                console.error(`SyncFolderAccessor constructor failed. Code: ${error.code}, message: ${error.message}`);
             }
         });
       }
@@ -71,7 +72,7 @@ SyncFolderAccessor的构造函数，用于获取SyncFolderAccessor类的实例�
 
 getAllSyncFolders(): Promise&lt;Array&lt;SyncFolder&gt;&gt;
 
-注册同步根信息。使用Promise异步回调。
+获取所有注册的同步根信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -105,27 +106,31 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const TAG: string = '[cloudDiskManager]';
 
 try {
-    console.log(TAG + `getAllRoots start`);
-    let syncFolerAccess: cloudDiskManager.SyncFolderAccessor = new cloudDiskManager.SyncFolderAccessor();
-    let syncInfoList: Array<string> = [];
-    syncFolerAccess.getAllSyncFolders().then((syncFolderExts) => {
-        if (syncFolderExts) {
-            console.info(TAG + `getAllRoots success`);
-            this.syncExtList = syncFolderExts;
-            syncInfoList.push('syncFolderExts length: ' + syncFolderExts.length);
-            this.firstLevelTitle = 'query syncfolder info';
-            this.secondLevelTitle = 'result';
-            this.getSyncRootRet = JSON.stringify(syncInfoList);
-            this.dialogControllerConfirm.open();
+    console.info(TAG + `getAllSyncFolders start`);
+    let syncFolderAccessor: cloudDiskManager.SyncFolderAccessor = new cloudDiskManager.SyncFolderAccessor();
+    syncFolderAccessor.getAllSyncFolders().then((syncFolders) => {
+        if (syncFolders) {
+            console.info(TAG + `getAllSyncFolders success, length: ${syncFolders.length}`);
+            for (let i = 0; i < syncFolders.length; ++i) {
+                console.info(TAG + `syncFolders[${i}].path: ${syncFolders[i].path}`);
+                console.info(TAG + `syncFolders[${i}].bundleName: ${syncFolders[i].bundleName}`);
+                console.info(TAG + `syncFolders[${i}].state: ${syncFolders[i].state}`);
+                if (syncFolders[i].displayNameResId) {
+                    console.info(TAG + `syncFolders[${i}].displayNameResId: ${syncFolders[i].displayNameResId}`);
+                }
+                if (syncFolders[i].customAlias) {
+                    console.info(TAG + `syncFolders[${i}].customAlias: ${syncFolders[i].customAlias}`);
+                }
+            }
         } else {
-            console.info(TAG + `getAllRoots failed`);
+            console.info(TAG + `getAllSyncFolders failed`);
         }
     }).catch((e: BusinessError<object>) => {
-        console.error(TAG + `then catch err, err is: ${e.code}, message: ${e.message}`);
+        console.error(TAG + `getAllSyncFolders then catch err, code: ${e.code}, message: ${e.message}`);
     })
 } catch (err) {
     let error: BusinessError = err as BusinessError;
-    console.error(TAG + `getLocalCapabilities failed. Code: ${error.code}, message: ${error.message}`);
+    console.error(TAG + `getAllSyncFolders failed. code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -140,10 +145,10 @@ try {
 | 名称      | 类型   | 只读 | 可选 | 说明      |
 | --------- | ------ | ---- | ---- | ---------------------------- |
 | path | string | 否   | 否   | 同步根对应的URI。     |
-| bundleNme   | string | 否   | 否   | 同步根对应的包名。   |
+| bundleName   | string | 否   | 否   | 同步根对应的包名。   |
 | state   | [SyncFolderState](#syncfolderstate) | 否   | 否   | 同步根对应的状态信息。   |
-| displayNameResId   | number | 否   | 是   | 资源ID，可以映射到文管列表显示的别名。默认值为0。   |
-| customAlias   | string | 否   | 是   | 在文管列表显示的别名。默认值为空串。   |
+| displayNameResId   | number | 否   | 是   | 资源ID，可以映射到文管列表显示的别名。默认值为undefined。   |
+| customAlias   | string | 否   | 是   | 在文管列表显示的别名。默认值为undefined。   |
 
 ## SyncFolderState
 

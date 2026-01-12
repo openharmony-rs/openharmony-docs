@@ -31,7 +31,6 @@ The performance tracing APIs are provided by the **HiTraceMeter** module. For de
 >
 > The vertical bar (|) is used as the separator in [user-mode trace format](hitracemeter-view.md#user-mode-trace-format). Therefore, the string parameters passed by the HiTraceMeter APIs must exclude this character to avoid trace parsing exceptions.
 
-
 ### API Types
 
 HiTraceMeter APIs are classified into three types: synchronous timeslice tracing APIs, asynchronous timeslice tracing APIs, and integer tracing APIs. HiTraceMeter APIs are synchronous. The synchronous and asynchronous modes describe the traced services. The synchronous timeslice tracing APIs are used for synchronous services, and the asynchronous timeslice tracing APIs are used for asynchronous services. HiTraceMeter APIs can be used with [HiTraceChain](hitracechain-guidelines-arkts.md) to associate and analyze logging across devices, processes, or threads.
@@ -40,15 +39,21 @@ HiTraceMeter APIs are classified into three types: synchronous timeslice tracing
 ### Use Scenarios
 
 - Synchronous timeslice tracing APIs:
+
   The **startSyncTrace()** and **finishSyncTrace()** APIs must be used sequentially for logging during sequential execution. If they are not called in the correct order, the trace file will appear abnormal in visualization tools such as SmartPerf.
 
 - Asynchronous timeslice tracing APIs:
-  The **startAsyncTrace()** API is called to start logging before an asynchronous operation is performed, and the **finishAsyncTrace()** API is called to end logging after the asynchronous operation is performed. 
-  During trace parsing, different asynchronous traces are identified by the **name** and **taskId** parameters. These two APIs must be used in sequence as a pair, with the same **name** and **taskId** passed. 
-  Different **name** and **taskId** values must be used for different asynchronous processes. However, the same **name** and **taskId** values can be used if asynchronous processes do not occur at the same time. 
+
+  The **startAsyncTrace()** API is called to start logging before an asynchronous operation is performed, and the **finishAsyncTrace()** API is called to end logging after the asynchronous operation is performed.
+
+  During trace parsing, different asynchronous traces are identified by the **name** and **taskId** parameters. These two APIs must be used in sequence as a pair, with the same **name** and **taskId** passed.
+
+  Different **name** and **taskId** values must be used for different asynchronous processes. However, the same **name** and **taskId** values can be used if asynchronous processes do not occur at the same time.
+   
   If the API is called incorrectly, the trace file will appear abnormal in visualization tools such as SmartPerf.
 
 - Integer tracing APIs:
+
   The APIs are used to trace integer variables. The **traceByValue()** API is called when integer values change. You can view the change in the lane diagram of SmartPerf. The values during the interval between the start of data collection and the first logging cannot be viewed.
 
 
@@ -94,76 +99,76 @@ The following is an example of an ArkTS application that uses the HiTraceMeter A
 
 2. In the **entry/src/main/ets/pages/index.ets** file, use the HiTraceMeter API in the processing service of the text click event. The sample code is as follows:
 
-   <!-- @[hitracemeter_arkts_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { hiTraceMeter, hilog } from '@kit.PerformanceAnalysisKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            this.message = (this.message == 'Hello HiTrace') ? 'Hello World' : 'Hello HiTrace';
-            const COMMERCIAL = hiTraceMeter.HiTraceOutputLevel.COMMERCIAL;
-
-            let traceCount = 0;
-            // Start the first asynchronous tracing task.
-            hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1001, 'categoryTest', 'key=value');
-            // Start counting the task.
-            traceCount++;
-            hiTraceMeter.traceByValue(COMMERCIAL, 'myTestCountTrace', traceCount);
-            // Keep the service process running.
-            hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1001');
-
-            // Start the second asynchronous tracing task with the same name while the first task is still running. The tasks are running concurrently and therefore their taskId must be different.
-            hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1002, 'categoryTest', 'key=value');
-            // Start counting the task.
-            traceCount++;
-            hiTraceMeter.traceByValue(COMMERCIAL, 'myTestCountTrace', traceCount);
-            // Keep the service process running.
-            hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1002');
-
-            // Stop the asynchronous tracing task whose taskId is 1001.
-            hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1001);
-            // Stop the asynchronous tracing task whose taskId is 1002.
-            hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1002);
-
-            // Start a synchronous tracing task.
-            hiTraceMeter.startSyncTrace(COMMERCIAL, 'myTestSyncTrace', 'key=value');
-            // Keep the service process running.
-            hilog.info(0x0000, 'testTrace', 'myTraceTest running, synchronizing trace');
-            // Stop the synchronous tracing task.
-            hiTraceMeter.finishSyncTrace(COMMERCIAL);
-
-            // If the process of generating the parameters passed by the HiTraceMeter API is complex, you can use isTraceEnabled to determine whether trace capture is enabled.
-            // Avoid performance loss when application trace capture is not enabled.
-            if (hiTraceMeter.isTraceEnabled()) {
-              let customArgs = 'key0=value0';
-              for (let index = 1; index < 10; index++) {
-                customArgs += `,key${index}=value${index}`
-              }
-              hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1003, 'categoryTest', customArgs);
-              hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1003');
-              hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1003);
-            } else {
-              hilog.info(0x0000, 'testTrace', 'myTraceTest running, trace is not enabled');
-            }
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+   <!-- @[hitracemeter_arkts_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->   
+   
+   ``` TypeScript
+   import { hiTraceMeter, hilog } from '@kit.PerformanceAnalysisKit';
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+   
+     build() {
+       Row() {
+         Column() {
+           Text(this.message)
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+             .onClick(() => {
+               this.message = (this.message == 'Hello HiTrace') ? 'Hello World' : 'Hello HiTrace';
+               const COMMERCIAL = hiTraceMeter.HiTraceOutputLevel.COMMERCIAL;
+   
+               let traceCount = 0;
+               // Start the first asynchronous tracing task.
+               hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1001, 'categoryTest', 'key=value');
+               // Start counting the task.
+               traceCount++;
+               hiTraceMeter.traceByValue(COMMERCIAL, 'myTestCountTrace', traceCount);
+               // Keep the service process running.
+               hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1001');
+   
+               // Start the second asynchronous tracing task with the same name while the first task is still running. The tasks are running concurrently and therefore their taskId must be different.
+               hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1002, 'categoryTest', 'key=value');
+               // Start counting the task.
+               traceCount++;
+               hiTraceMeter.traceByValue(COMMERCIAL, 'myTestCountTrace', traceCount);
+               // Keep the service process running.
+               hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1002');
+   
+               // Stop the asynchronous tracing task whose taskId is 1001.
+               hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1001);
+               // Stop the asynchronous tracing task whose taskId is 1002.
+               hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1002);
+   
+               // Start a synchronous tracing task.
+               hiTraceMeter.startSyncTrace(COMMERCIAL, 'myTestSyncTrace', 'key=value');
+               // Keep the service process running.
+               hilog.info(0x0000, 'testTrace', 'myTraceTest running, synchronizing trace');
+               // Stop the synchronous tracing task.
+               hiTraceMeter.finishSyncTrace(COMMERCIAL);
+   
+               // If the process of generating the parameters passed by the HiTraceMeter API is complex, you can use isTraceEnabled to determine whether trace capture is enabled.
+               // Avoid performance loss when application trace capture is not enabled.
+               if (hiTraceMeter.isTraceEnabled()) {
+                 let customArgs = 'key0=value0';
+                 for (let index = 1; index < 10; index++) {
+                   customArgs += `,key${index}=value${index}`
+                 }
+                 hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1003, 'categoryTest', customArgs);
+                 hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1003');
+                 hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1003);
+               } else {
+                 hilog.info(0x0000, 'testTrace', 'myTraceTest running, trace is not enabled');
+               }
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
 
 
 ### Step 2: Collecting and Viewing Trace Information

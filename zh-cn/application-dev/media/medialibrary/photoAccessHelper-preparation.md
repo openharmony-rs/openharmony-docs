@@ -18,7 +18,9 @@
 2. 通过getUIContext().getHostContext()获取应用上下文。
 3. 获取相册管理模块实例。
 
-```ts
+<!-- @[photo_access_helper_preperation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
 
@@ -31,7 +33,7 @@ struct Index {
 
   build() {
     Row() {
-      Button("example").onClick(async () => {
+      Button('example').onClick(async () => {
         let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
         let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
       }).width('100%')
@@ -56,9 +58,9 @@ struct Index {
 **开发步骤**
 <!--RP1-->
 1. 上述权限均为受控权限，申请前需要额外申请ACL白名单，请参考[声明ACL权限](../../security/AccessToken/declare-permissions-in-acl.md)。 
-<!--RP1End-->
 2. [在配置文件module.json5中声明权限](../../security/AccessToken/declare-permissions.md)。
 3. [向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+<!--RP1End-->
 
 > **说明：**
 >

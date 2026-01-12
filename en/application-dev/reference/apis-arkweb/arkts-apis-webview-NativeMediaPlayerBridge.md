@@ -6,8 +6,8 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
- 
- 
+  
+
 Implements a **CreateNativeMediaPlayerCallback** object to control the player created by the application for taking over the web page media playback. This object is a return value type of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback.
 
 > **NOTE**
@@ -16,9 +16,9 @@ Implements a **CreateNativeMediaPlayerCallback** object to control the player cr
 >
 > - The initial APIs of this interface are supported since API version 12.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
-## updateRect<sup>12+<sup>
+## updateRect<sup>12+</sup>
 
 updateRect(x: number, y: number, width: number, height: number): void
 
@@ -39,7 +39,7 @@ Updates the surface position information.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## play<sup>12+<sup>
+## play<sup>12+</sup>
 
 play(): void
 
@@ -51,7 +51,7 @@ Plays this video.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## pause<sup>12+<sup>
+## pause<sup>12+</sup>
 
 pause(): void
 
@@ -63,7 +63,7 @@ Pauses playback.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## seek<sup>12+<sup>
+## seek<sup>12+</sup>
 
 seek(targetTime: number): void
 
@@ -81,7 +81,7 @@ Seeks to a specific time point in the media.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## setVolume<sup>12+<sup>
+## setVolume<sup>12+</sup>
 
 setVolume(volume: number): void
 
@@ -99,7 +99,7 @@ Sets the playback volume.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## setMuted<sup>12+<sup>
+## setMuted<sup>12+</sup>
 
 setMuted(muted: boolean): void
 
@@ -117,7 +117,7 @@ Sets the muted status.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## setPlaybackRate<sup>12+<sup>
+## setPlaybackRate<sup>12+</sup>
 
 setPlaybackRate(playbackRate: number): void
 
@@ -135,7 +135,7 @@ Sets the playback rate.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## release<sup>12+<sup>
+## release<sup>12+</sup>
 
 release(): void
 
@@ -147,7 +147,7 @@ Releases this player.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## enterFullscreen<sup>12+<sup>
+## enterFullscreen<sup>12+</sup>
 
 enterFullscreen(): void
 
@@ -159,7 +159,7 @@ Enables the player to enter full screen mode.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## exitFullscreen<sup>12+<sup>
+## exitFullscreen<sup>12+</sup>
 
 exitFullscreen(): void
 
@@ -171,7 +171,7 @@ Enables the player to exit full screen mode.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## resumePlayer<sup>12+<sup>
+## resumePlayer<sup>12+</sup>
 
 resumePlayer?(): void
 
@@ -183,7 +183,7 @@ Resumes the player and its status information.
 
 For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12).
 
-## suspendPlayer<sup>12+<sup>
+## suspendPlayer<sup>12+</sup>
 
 suspendPlayer?(type: SuspendType): void
 

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_OutputCapability {...} Camera_OutputCapability
+```
+
 ## Overview
 
 The struct describes the camera output capability.

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_PhotoNative OH_PhotoNative
+```
+
 ## Overview
 
 The struct describes the photo object, which is a full-quality image object.

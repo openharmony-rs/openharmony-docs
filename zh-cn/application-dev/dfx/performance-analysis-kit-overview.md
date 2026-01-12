@@ -47,11 +47,11 @@ Performance Analysis Kit承载着HarmonyOS DFX子系统面向应用开发者提�
 
 ## 亮点/特征
 
-**便捷的构建APM系统**
+**便捷地构建APM系统**
 
 - 提供接口（[HiDebug](hidebug-guidelines.md)、[HiAppEvent](hiappevent-intro.md)、[HiLog](hilog-guidelines-arkts.md)），可用于自建端侧APM（Application Performance Management，应用性能管理平台）SDK，与厂商自研APM对接。
 
-- 基于[HiAppEvent自定义事件](event-subscription-overview.md#应用事件)，订阅系统事件，快捷记录和收集运营和运维所需事件。
+- 基于[HiAppEvent系统事件](event-subscription-overview.md#系统事件)和[HiAppEvent应用事件](event-subscription-overview.md#应用事件)，订阅应用运行过程中所触发的事件（如崩溃、应用冻屏），快捷地记录、收集运维和运营所需的事件信息。
 
 **强大的故障检测与异常处理机制**
 

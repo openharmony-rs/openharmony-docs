@@ -64,7 +64,7 @@
 
 ###  PFN_vkCreateSurfaceOHOS()
 
-```
+```c
 typedef VkResult (VKAPI_PTR *PFN_vkCreateSurfaceOHOS)(VkInstance instance, const VkSurfaceCreateInfoOHOS* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)
 ```
 
@@ -94,7 +94,7 @@ typedef VkResult (VKAPI_PTR *PFN_vkCreateSurfaceOHOS)(VkInstance instance, const
 
 ### vkCreateSurfaceOHOS()
 
-```
+```c
 VKAPI_ATTR VkResult VKAPI_CALL vkCreateSurfaceOHOS(VkInstance instance, const VkSurfaceCreateInfoOHOS* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)
 ```
 
@@ -124,7 +124,7 @@ VKAPI_ATTR VkResult VKAPI_CALL vkCreateSurfaceOHOS(VkInstance instance, const Vk
 
 ### PFN_vkGetNativeBufferPropertiesOHOS()
 
-```
+```c
 typedef VkResult (VKAPI_PTR *PFN_vkGetNativeBufferPropertiesOHOS)(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)
 ```
 
@@ -153,7 +153,7 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetNativeBufferPropertiesOHOS)(VkDevice devic
 
 ### PFN_vkGetMemoryNativeBufferOHOS()
 
-```
+```c
 typedef VkResult (VKAPI_PTR *PFN_vkGetMemoryNativeBufferOHOS)(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)
 ```
 
@@ -182,7 +182,7 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetMemoryNativeBufferOHOS)(VkDevice device, c
 
 ### vkGetNativeBufferPropertiesOHOS()
 
-```
+```c
 VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeBufferPropertiesOHOS(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)
 ```
 
@@ -211,7 +211,7 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeBufferPropertiesOHOS(VkDevice device, 
 
 ### vkGetMemoryNativeBufferOHOS()
 
-```
+```c
 VKAPI_ATTR VkResult VKAPI_CALL vkGetMemoryNativeBufferOHOS(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)
 ```
 
@@ -240,17 +240,19 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetMemoryNativeBufferOHOS(VkDevice device, cons
 
 ### vkGetSwapchainGrallocUsageOHOS()
 
-```
+```c
 VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)
 ```
 
 **描述**
 
-根据给定的Vulkan设备、图像格式和图像使用标志, 返回适当的Gralloc(内存分配器)使用标志。
+根据给定的Vulkan设备、图像格式和图像使用标志, 返回适当的Gralloc(内存分配器)使用标志。应用开发者无需使用该接口。
 
 **系统能力：** SystemCapability.Graphic.Vulkan
 
 **起始版本：** 10
+
+**废弃版本：** 23
 
 
 **参数：**
@@ -270,17 +272,19 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, V
 
 ### vkAcquireImageOHOS()
 
-```
+```c
 VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)
 ```
 
 **描述**
 
-用于获取交换链图像的所有权, 并将外部信号的Fence导入到VkSemaphore对象和VkFence对象中。
+用于获取交换链图像的所有权, 并将外部信号的Fence导入到VkSemaphore对象和VkFence对象中。应用开发者无需使用该接口。
 
 **系统能力：** SystemCapability.Graphic.Vulkan
 
 **起始版本：** 10
+
+**废弃版本：** 23
 
 
 **参数：**
@@ -301,17 +305,19 @@ VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image
 
 ### vkQueueSignalReleaseImageOHOS()
 
-```
+```c
 VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)
 ```
 
 **描述**
 
-当前图像使用完毕后，通过该函数向系统硬件缓冲区发出释放信号, 以便其他组件可以访问该图像。
+当前图像使用完毕后，通过该函数向系统硬件缓冲区发出释放信号, 以便其他组件可以访问该图像。应用开发者无需使用该接口。
 
 **系统能力：** SystemCapability.Graphic.Vulkan
 
 **起始版本：** 10
+
+**废弃版本：** 23
 
 
 **参数：**

@@ -43,6 +43,7 @@
    ```
 
 2. 使用画刷设置基础绘制效果，例如设置填充颜色、开启抗锯齿效果等。
+
    可使用setColor()接口设置填充颜色。
 
    <!-- @[arkts_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->

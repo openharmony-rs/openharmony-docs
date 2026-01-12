@@ -21,14 +21,18 @@ When an application is backgrounded or closed, the system can still send schedul
 
 > **NOTE**
 >
-> When the reminder time arrives, the notification center displays the relevant reminder. The reminder remains active and unexpired unless the user touches the CLOSE button, at which point the reminder becomes expired.
+> - When the reminder time arrives, the notification center displays the relevant reminder. The reminder remains active and unexpired unless the user touches the CLOSE button, at which point the reminder becomes expired.
 >
-> For a recurring reminder (for example, a daily reminder), the reminder is always valid regardless of whether the user touches the CLOSE button.
+> - For a recurring reminder (for example, a daily reminder), the reminder is always valid regardless of whether the user touches the CLOSE button.
 
 - **Redirection limit**: The application that is redirected to upon a click on the notification must be the application that requested the agent-powered reminder.
 
 ## Relationship with Other Kits
 - When the preset time arrives, notifications created by Notification Kit will be displayed in the notification center. For details about notification styles, see [Notification Style](../notification/notification-overview.md#notification-style).
+
+## Emulator Support
+
+This capability is supported by the Emulator since API version 20.
 
 ## Available APIs
 
@@ -71,123 +75,103 @@ Declare the ohos.permission.PUBLISH_AGENT_REMINDER permission. For details, see 
 
    - Timer
      
-      ```ts
-      let targetReminderAgent: reminderAgentManager.ReminderRequestTimer = {
-        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER,   // The reminder type is timer.
-        triggerTimeInSeconds: 10,
-        actionButton: [ // Set the button type and title displayed for the reminder in the notification panel.
-          {
-            title: 'close',
-            type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
-          }
-        ],
-        wantAgent: {     // Information about the target UIAbility that is displayed after the reminder notification is touched.
-          pkgName: 'com.example.myapplication',
+      <!-- [timer_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
+      
+      ``` TypeScript
+      let timer: reminderAgent.ReminderRequestTimer = {
+        reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,  // The reminder type is timer.
+        ringDuration: Constant.REMINDER_DURATION,
+        title: context.resourceManager.getStringSync($r('app.string.timer').id),  // Reminder title. The value in the "app.string.timer" resource file is "timer".
+        content: context.resourceManager.getStringSync($r('app.string.countdown_close').id),  // Reminder content. The value in the "app.string.countdown_close" resource file is "timer ended".
+        wantAgent: {  // // Information about the target UIAbility that is displayed after the reminder notification is touched.
+          pkgName: 'com.example.reminderagentmanager',
           abilityName: 'EntryAbility'
         },
-        title: 'this is title', // Reminder title.
-        content: 'this is content', // Reminder content.
-        expiredContent: 'this reminder has expired', // Content to be displayed after the reminder expires.
         notificationId: 100, // Notification ID used by the reminder. If there are reminders with the same notification ID, the later one will overwrite the earlier one.
-        slotType: notificationManager.SlotType.SOCIAL_COMMUNICATION // Type of the slot used by the reminder.
-      }
+        slotType: notificationManager.SlotType.CONTENT_INFORMATION,  // Type of the slot used by the reminder.
+        triggerTimeInSeconds: this.countdownTime
+      };
       ```
 
    - Calendar
      
-      ```ts
-      let targetReminderAgent: reminderAgentManager.ReminderRequestCalendar = {
-        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_CALENDAR, // The reminder type is calendar.
-        dateTime: {   // Reminder time.
-          year: 2023,
-          month: 1,
-          day: 1,
-          hour: 11,
-          minute: 14,
-          second: 30
+      <!-- [calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+      
+      ``` TypeScript
+      let calendar: reminderAgent.ReminderRequestCalendar = {
+        reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,  // The reminder type is calendar.
+        dateTime: {  // Reminder time.
+          year: date.getFullYear(),
+          month: date.getUTCMonth() + 1,
+          day: date.getDate(),
+          hour: date.getHours(),
+          minute: date.getMinutes(),
         },
-        repeatMonths: [1], // Month in which the reminder repeats.
-        repeatDays: [1], // Date on which the reminder repeats.
-        actionButton: [ // Set the button type and title displayed for the reminder in the notification panel.
-          {
-            title: 'close',
-            type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
-          },
-          {
-            title: 'snooze',
-            type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE
-          },
-        ],
-        wantAgent: { // Information about the target UIAbility that is displayed after the reminder notification is touched.
-          pkgName: 'com.example.myapplication',
-          abilityName: 'EntryAbility'
-        },
-        ringDuration: 5, // Ringing duration, in seconds.
-        snoozeTimes: 2, // Number of reminder snooze times.
-        timeInterval: 5*60, // Reminder snooze interval, in seconds.
-        title: 'this is title', // Reminder title.
-        content: 'this is content', // Reminder content.
-        expiredContent: 'this reminder has expired', // Content to be displayed after the reminder expires.
-        snoozeContent: 'remind later', // Content to be displayed when the reminder is snoozed.
-        notificationId: 100, // Notification ID used by the reminder. If there are reminders with the same notification ID, the later one will overwrite the earlier one.
-        slotType: notificationManager.SlotType.SOCIAL_COMMUNICATION // Type of the slot used by the reminder.
+        actionButton:  // Set the button type and title displayed for the reminder in the notification panel.
+        [{
+          title: context.resourceManager.getStringSync($r('app.string.calendar_close').id),  // The value in the "app.string.calendar_close" resource file is "disable calendar reminder".
+          type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
+        }],
+        // Information about the target UIAbility that is displayed after the reminder notification is touched.
+        wantAgent: { pkgName: 'com.example.reminderagentmanager', abilityName: 'EntryAbility' },
+        ringDuration: Constant.REMINDER_DURATION,  // Ringing duration, in seconds.
+        title: context.resourceManager.getStringSync($r('app.string.calendar').id),  // Reminder title. The value in the "app.string.calendar" resource file is "calendar".
+        content: context.resourceManager.getStringSync($r('app.string.calendar_reach').id),  // Reminder content. The value in the "app.string.calendar_reach" resource file is "calendar reminder time is up".
+        slotType: notificationManager.SlotType.CONTENT_INFORMATION  // Type of the slot used by the reminder.
       }
       ```
 
    - Alarm
    
-      ```ts
-      let targetReminderAgent: reminderAgentManager.ReminderRequestAlarm = {
-        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_ALARM, // The reminder type is alarm.
-        hour: 23, // Hour portion of the reminder time.
-        minute: 9, // Minute portion of the reminder time.
-        daysOfWeek: [2], // Days of a week when the reminder repeats.
-        actionButton: [ // Set the button type and title displayed for the reminder in the notification panel.
+      <!-- [alarm_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets) -->
+      
+      ``` TypeScript
+      let alarm: reminderAgent.ReminderRequestAlarm = {
+        reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,  // The reminder type is alarm.
+        hour: time.hour,  // Hour portion of the reminder time.
+        minute: time.minute,  // Minute portion of the reminder time.
+        actionButton:  // Set the button type and title displayed for the reminder in the notification panel.
+        [
           {
-            title: 'close',
-            type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
+            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_close').id),  // The value in the "app.string.alarm_clock_close" resource file is "disable alarm clock".
+            type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
           },
           {
-            title: 'snooze',
-            type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE
-          },
+            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_postpone').id),  // The value in the "app.string.alarm_clock_postpone" resource file is "postpone alarm clock".
+            type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE
+          }
         ],
-        wantAgent: { // Information about the target UIAbility that is displayed after the reminder notification is touched.
-          pkgName: 'com.example.myapplication',
+        slotType: notificationManager.SlotType.CONTENT_INFORMATION,  // Type of the slot used by the reminder.
+        ringDuration: Constant.REMINDER_DURATION,  // Ringing duration, in seconds.
+        wantAgent: {  // Information about the target UIAbility that is displayed after the reminder notification is touched.
+          pkgName: 'com.example.reminderagentmanager',
           abilityName: 'EntryAbility'
         },
-        ringDuration: 5, // Ringing duration, in seconds.
-        snoozeTimes: 2, // Number of reminder snooze times.
-        timeInterval: 5*60, // Reminder snooze interval, in seconds.
-        title: 'this is title', // Reminder title.
-        content: 'this is content', // Reminder content.
-        expiredContent: 'this reminder has expired', // Content to be displayed after the reminder expires.
-        snoozeContent: 'remind later', // Content to be displayed when the reminder is snoozed.
-        notificationId: 99, // Notification ID used by the reminder. If there are reminders with the same notification ID, the later one will overwrite the earlier one.
-        slotType: notificationManager.SlotType.SOCIAL_COMMUNICATION // Type of the slot used by the reminder.
+        title: context.resourceManager.getStringSync($r('app.string.alarm_clock').id),  // Reminder title. The value in the "app.string.alarm_clock" resource file is "alarm clock".
+        content: context.resourceManager.getStringSync($r('app.string.alarm_clock_reach').id),  // Reminder content. The value in the "app.string.alarm_clock_reach" resource file is "alarm time is up".
+        snoozeTimes: 0,  // Number of reminder snooze times.
+        timeInterval: 0,  // Reminder snooze interval, in seconds.
+        daysOfWeek: []  // Days of a week when the reminder repeats.
       }
       ```
 
 3. Publish the reminder. After the reminder is published, your application can use the agent-powered reminder feature.
    
-   ```ts
-    reminderAgentManager.publishReminder(targetReminderAgent).then((res: number) => {
-      console.info('Succeeded in publishing reminder. ');
-      let reminderId: number = res; // ID of the published reminder.
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to publish reminder. Code: ${err.code}, message: ${err.message}`);
-    })
+   <!-- [publish_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+   
+   ``` TypeScript
+   let reminderId: number = await reminderAgent.publishReminder(
+     this.calendarReminders[index].reminderRequestCalendar!);
+   Logger.info(TAG, `publish reminder result: id is ${reminderId}`);
+   this.calendarReminders[index].reminderId = reminderId;  // Save the ID of the published reminder.
    ```
 
 4. Delete the reminder as required.
    
-   ```ts
-    let reminderId: number = 1;
-    // The reminder ID is obtained from the callback after the reminder is published.
-    reminderAgentManager.cancelReminder(reminderId).then(() => {
-      console.info('Succeeded in canceling reminder.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to cancel reminder. Code: ${err.code}, message: ${err.message}`);
-    });
+   <!-- [cancel_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+   
+   ``` TypeScript
+   Logger.info(TAG, `cancel reminder id is ${this.calendarReminders[index].reminderId}`)
+   await reminderAgent.cancelReminder(this.calendarReminders[index].reminderId);
    ```
 

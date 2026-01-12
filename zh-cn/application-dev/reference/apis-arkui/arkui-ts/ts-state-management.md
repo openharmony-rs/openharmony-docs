@@ -319,6 +319,7 @@ let res1: boolean = AppStorage.set('PropB', 47) // false
 static setOrCreate&lt;T&gt;(propName: string, newValue: T): void
 
 如果propName已经在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，并且newValue和propName对应属性的值不同，则设置propName对应属性的值为newValue，否则状态变量不会通知UI刷新propName对应属性的值。
+
 如果propName不存在，则创建propName属性，值为newValue。setOrCreate只可以创建单个AppStorage的键值对，如果想创建多个AppStorage键值对，可以多次调用此方法。从API version 12开始，newValue可以为null或undefined。
 
 > **说明：**
@@ -467,7 +468,7 @@ static Link(propName: string): any
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[link](#link10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[link](#link10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -499,7 +500,7 @@ static SetAndLink&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstrac
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[setAndLink](#setandlink10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[setAndLink](#setandlink10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -532,7 +533,7 @@ static Prop(propName: string): any
 > **说明：**
 >
 > Prop仅支持简单类型。
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[prop](#prop10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[prop](#prop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -564,7 +565,7 @@ static SetAndProp&lt;S&gt;(propName: string, defaultValue: S): SubscribedAbstrac
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[setAndProp](#setandprop10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[setAndProp](#setandprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -595,7 +596,7 @@ static Has(propName: string): boolean
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[has](#has10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[has](#has10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -624,7 +625,7 @@ static Get&lt;T&gt;(propName: string): T | undefined
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[get](#get10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[get](#get10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -654,7 +655,7 @@ static Set&lt;T&gt;(propName: string, newValue: T): boolean
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[set](#set10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[set](#set10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -688,7 +689,7 @@ newValue不能为null或undefined。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[setOrCreate](#setorcreate10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[setOrCreate](#setorcreate10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -716,7 +717,7 @@ static Delete(propName: string): boolean
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[delete](#delete10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[delete](#delete10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -750,7 +751,7 @@ static Keys(): IterableIterator&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[keys](#keys10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[keys](#keys10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -775,7 +776,7 @@ static staticClear(): boolean
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[clear](#clear10)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[clear](#clear10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -801,7 +802,7 @@ static Clear(): boolean
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，推荐使用[clear](#clear10)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[clear](#clear10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -857,7 +858,7 @@ static Size(): number
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[size](#size10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[size](#size10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1038,6 +1039,7 @@ let res1: boolean = storage.set('PropB', 47); // false
 setOrCreate&lt;T&gt;(propName: string, newValue: T): boolean
 
 如果propName已经在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中存在，并且newValue和propName对应属性的值不同，则设置propName对应属性的值为newValue，否则状态变量不会通知UI刷新propName对应属性的值。
+
 如果propName不存在，则创建propName属性，值为newValue。setOrCreate只可以创建单个LocalStorage的键值对，如果想创建多个LocalStorage键值对，可以多次调用此方法。从API version 12开始，newValue可以为null或undefined。
 
 > **说明：** 
@@ -1431,7 +1433,7 @@ static GetShared(): LocalStorage
 
 > **说明：** 
 > 
-> 从API version 10开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -1792,7 +1794,7 @@ static PersistProp&lt;T&gt;(key: string, defaultValue: T): void
 
 > **说明：**
 >
-> 从API version 10开始废弃，推荐使用[persistProp](#persistprop10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[persistProp](#persistprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1821,7 +1823,7 @@ static DeleteProp(key: string): void
 
 > **说明：**
 >
-> 从API version 10开始废弃，推荐使用[deleteProp](#deleteprop10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[deleteProp](#deleteprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1845,7 +1847,7 @@ static PersistProps(properties: {key: string; defaultValue: any;}[]): void
 
 > **说明：**
 >
-> 从API version 10开始废弃，推荐使用[persistProps](#persistprops10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[persistProps](#persistprops10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1869,7 +1871,7 @@ static Keys(): Array&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 10开始废弃，推荐使用[keys](#keys10-1)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[keys](#keys10-1)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1996,7 +1998,7 @@ static EnvProp&lt;S&gt;(key: string, value: S): boolean
 
 > **说明：**
 >
-> 从API version 10开始废弃，推荐使用[envProp](#envprop10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[envProp](#envprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2029,7 +2031,7 @@ static EnvProps(props: {key: string; defaultValue: any;}[]): void
 
 > **说明：**
 >
-> 从API version 10开始废弃，推荐使用[envProps](#envprops10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[envProps](#envprops10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2056,7 +2058,7 @@ static Keys(): Array&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 10开始废弃，推荐使用[keys](#keys10-2)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[keys](#keys10-2)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -294,8 +294,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | The application does not have permission to call the interface. |
+| 202      | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 | 18500009 | The application has an ongoing quick fix task. |
@@ -346,8 +346,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | The application does not have permission to call the interface. |
+| 202      | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 | 18500009 | The application has an ongoing quick fix task. |

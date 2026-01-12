@@ -48,7 +48,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 >
 > 2. 为了使isShow参数值与半模态界面的状态同步，建议使用[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定isShow参数。从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 >
-> 3. 在半模态单挡位向上拖拽或是多挡位上滑换挡情况下，内容在拖拽结束或换挡结束后更新显示区域。
+> 3. 在半模态单档位向上拖拽或是多档位上滑换档情况下，内容在拖拽结束或换挡结束后更新显示区域。
 >
 > 4. 半模态是一个严格和宿主节点绑定在一起的弹窗。若是想实现类似“页面显示的瞬间就弹出半模态”的效果，请确认宿主节点是否已挂载上树。若宿主节点还没上树就将isShow置为true，半模态将不生效。建议使用[onAppear](ts-universal-events-show-hide.md#onappear)函数，确保在宿主节点挂载后再显示半模态。
 > 尤其是 [SheetMode](#sheetmode12枚举说明) = EMBEDDED 时，除宿主节点外，还需确保对应的页面节点成功挂载。
@@ -65,7 +65,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 | 名称              | 类型                                       | 只读 | 可选   | 说明              |
 | --------------- | --------------------------- | ------------- | ---- | --------------- |
-| height          | [SheetSize](#sheetsize枚举说明)&nbsp;\|&nbsp;[Length](ts-types.md#length) | 否 | 是   | 半模态高度，默认是LARGE。<br/>**说明：**<br/>API version 14开始，底部弹窗横屏时，无状态栏则最大高度为距离屏幕顶部8vp，有状态栏则最大高度为距离状态栏8vp。<br/>底部弹窗时，当设置detents时，该属性设置无效。<br/>底部弹窗竖屏时，最大高度为距离状态栏8vp。<br />居中弹窗和跟手弹窗设置类型为SheetSize.LARGE和SheetSize.MEDIUM无效，显示默认高度560vp。居中弹窗和跟手弹窗最小高度为320vp，最大高度为窗口短边的90%。当使用Length设置的高度和使用SheetSize.FIT_CONTENT自适应的高度大于最大高度，则显示最大高度，小于最小高度，则显示最小高度。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| height          | [SheetSize](#sheetsize枚举说明)&nbsp;\|&nbsp;[Length](ts-types.md#length) | 否 | 是   | 半模态高度，默认是LARGE。<br/>**说明：**<br/>1. API version 14开始，底部弹窗横屏时，无状态栏则最大高度为距离屏幕顶部8vp，有状态栏则最大高度为距离状态栏8vp。<br/>2. 底部弹窗时，当设置detents时，该属性设置无效。<br />3. 底部弹窗竖屏时，最大高度为距离状态栏8vp。<br />4. 居中弹窗和跟手弹窗设置类型为SheetSize.LARGE和SheetSize.MEDIUM无效，显示默认高度560vp。<br/>5. 居中弹窗和跟手弹窗最小高度为320vp，最大高度为窗口短边的90%。<br/>6. 居中弹窗和跟手弹窗当使用Length设置的高度时，高度大于最大高度，则显示最大高度，小于最小高度，则显示最小高度。<br/>7. 如果半模态使用SheetSize.FIT_CONTENT自适应模式，且类型设置为居中弹窗或跟手弹窗，API version 22及之前版本，高度大于最大高度时显示最大高度，高度小于最小高度时显示最小高度。从API version 23开始，高度大于最大高度时显示最大高度，高度小于最小高度时按照实际自适应高度生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | detents<sup>11+</sup> | [([SheetSize](#sheetsize枚举说明) \| [Length](ts-types.md#length)), ( [SheetSize](#sheetsize枚举说明) \| [Length](ts-types.md#length))?, ([SheetSize](#sheetsize枚举说明) \| [Length](ts-types.md#length))?] | 否 | 是 | 半模态页面的切换高度档位。<br/>**说明：**<br/>从API version 12开始，底部弹窗横屏时该属性设置生效。<br/>底部弹窗竖屏生效，元组中第一个高度为初始高度。<br />面板可跟手滑动切换档位，松手后是否滑动至目标档位有两个判断条件：速度和距离。速度超过阈值，则执行滑动至与手速方向一致的目标档位；速度小于阈值，则引入距离判断条件，当位移距离>当前位置与目标位置的1/2，滑动至与手速方向一致的目标档位，位移距离当前位置与目标位置的1/2，返回至当前档位。速度阈值：1000，距离阈值：50%。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | preferType<sup>11+</sup> | [SheetType](#sheettype11枚举说明) | 否 | 是 | 半模态页面的样式。<br/>**说明：**<br/>半模态在不同窗口所支持的显示类型：<br/>1. 宽度 < 600vp：底部、全屏。默认底部样式。<br/>2. 600vp <= 宽度 < 840vp：底部、居中、跟手、侧边、全屏。默认居中样式。<br/>3. 宽度 >= 840vp：底部、居中、跟手、侧边、全屏。默认跟手样式。<br/>4. API version 20开始，窗口宽度大于600vp时，preferType支持设置为SheetType.SIDE。<br/>5. API version 20开始，preferType支持设置为SheetType.CONTENT_COVER，支持设置为全屏模态样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | showClose<sup>11+</sup> | boolean \| [Resource](ts-types.md#resource) | 否 | 是 | 是否显示关闭图标。<br/> 2in1设备默认无按钮底板。<br/> 默认值：true。<br/> true：显示关闭图标。<br/> false：不显示关闭图标。<br/>**说明：**<br/>Resource需要为boolean类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -100,6 +100,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | showInSubWindow<sup>19+</sup> | boolean                                  | 否 | 是    | 半模态是否在独立子窗中显示。<br>默认值：false<br>**说明：** <br>1. 若属性值为true，半模态可以在独立子窗口中展示，并且可以超过应用窗口范围。<br>2. 若属性值为false，半模态只能在应用窗口范围内展示。<br>3. 不建议在showInSubWindow为true的弹窗嵌套显示另一个showInSubWindow为true的弹窗，半模态可能会影响其他组件行为。<br>4. 不建议在showInSubWindow为true的弹窗中使用CalendarPicker、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog等picker组件，半模态会影响上述组件行为。<br>5. 半模态显示期间该属性不支持动态切换。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | enableFloatingDragBar<sup>20+</sup>              | boolean | 否 | 是   | 控制条是否悬浮显示，true为悬浮显示，false为不悬浮显示。<br />默认值：false <br /> **说明：** <br>悬浮效果只在控制条显示的场景生效，且控制条不占位。<br /> title传入[CustomBuilder](ts-types.md#custombuilder8)时enableFloatingDragBar始终为false。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | modalTransition<sup>20+</sup> | [ModalTransition](#modaltransition) | 否 | 是 | bindSheet全屏模态样式的系统转场方式。<br/>默认值：ModalTransition.DEFAULT<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| radiusRenderStrategy<sup>23+</sup> |  [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否 | 是  |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST <br/>**说明**: 当半模态设置模糊时，可通过设置为OFFSCREEN离屏模式解决半模态顶部或顶部圆角区域内显示效果异常问题。popup样式不支持设置组件绘制圆角模式。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SheetSize枚举说明
 
@@ -111,7 +112,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | ------------------------- | ---- | -------------------------------- |
 | MEDIUM                    | 0    | 指定半模态高度为半模态所在窗口的60%。<br />在TV设备上半模态高度为半模态所在窗口的50%。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | LARGE                     | 1    | 指定半模态高度几乎为半模态所在窗口的高度。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| FIT_CONTENT<sup>11+</sup> | 2    | 指定半模态高度为适应内容的高度。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**说明：**<br />FIT_CONTENT是半模态容器高度去适应孩子builder根节点的布局。此场景下builder根节点的高度不能使用百分比，两者不能相互依赖彼此的布局。 |
+| FIT_CONTENT<sup>11+</sup> | 2    | 指定半模态高度为适应内容的高度。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**说明：**<br />1. FIT_CONTENT是半模态容器高度去适应孩子builder根节点的布局。此场景下builder根节点的高度不能使用百分比，两者不能相互依赖彼此的布局。<br />2. 如果半模态使用SheetSize.FIT_CONTENT自适应模式，且类型设置为居中弹窗或跟手弹窗，API version 22及之前版本，高度大于最大高度，则显示最大高度，高度小于最小高度，则显示最小高度。<br />API version 23开始，高度大于最大高度，则显示最大高度，高度小于最小高度，按照实际自适应高度生效。<br />其中居中弹窗和跟手弹窗最小高度为320vp，最大高度为窗口短边的90%。 |
 
 ## HoverModeAreaType<sup>14+</sup>
 
@@ -172,7 +173,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 1. 侧边样式默认转场方向为从右向左，退出则是原地向右退出；镜像场景默认转场则是从左向右，退出则是原地向左退出。不支持自定义转场。
 
-2. 无多挡位能力，不支持detents和detentSelection接口。同样也不支持控制条相关能力接口，如dragBar接口。
+2. 无多档位能力，不支持detents和detentSelection接口。同样也不支持控制条相关能力接口，如dragBar接口。
 
 3. 底部弹窗样式可以在转场结束后向上滑动交互，但侧边弹窗样式不支持在转场结束后往左滑动交互，只支持往右滑动关闭。镜像场景则能力相反。
 
@@ -191,15 +192,15 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | 名称             | 说明              |
 | --------------- |  --------------- |
 | height          | 高度只支持全屏高度。 |
-| detents | 无挡位能力。| 
+| detents | 无档位能力。| 
 | dragBar         | 不支持DragBar。  |
-| onDetentsDidChange | 无挡位能力。|
+| onDetentsDidChange | 无档位能力。|
 | uiContext | 不支持指定显示层级。|
 | mode | 不支持指定显示层级。 |
-| scrollSizeMode | 无挡位能力。  |
+| scrollSizeMode | 无档位能力。  |
 | enableHoverMode  | 无悬停态避让能力。|
 | hoverModeArea    | 无悬停态避让能力。|
-| detentSelection | 无挡位能力。 |
+| detentSelection | 无档位能力。 |
 | placement | 只支持气泡样式。 |
 | placementOnTarget | 只支持气泡样式。|
 | showInSubWindow | 不支持指定显示层级。 |
@@ -230,18 +231,18 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | --------------- |  --------------- |
 | height          | 高度只支持全屏高度。 |
 | width           | 宽度只支持全屏宽度。 |
-| detents | 无挡位能力。|
+| detents | 无档位能力。|
 | dragBar         | 不支持拖动条。  |
-| onDetentsDidChange | 无挡位能力。|
+| onDetentsDidChange | 无档位能力。|
 | showClose          | 不支持显示关闭按钮。 |
 | title          | 不支持显示标题栏。 |
 | uiContext | 不支持指定显示层级。|
 | mode | 不支持指定显示层级。 |
-| scrollSizeMode | 无挡位能力。  |
+| scrollSizeMode | 无档位能力。  |
 | keyboardAvoidMode | 无避让软键盘能力，需自定义避让。 |
 | enableHoverMode  | 无悬停态避让能力。|
 | hoverModeArea    | 无悬停态避让能力。|
-| detentSelection | 无挡位能力。 |
+| detentSelection | 无档位能力。 |
 | showInSubWindow | 不支持指定显示层级。 |
 | radius         | 不支持圆角。  |
 | borderWidth         | 不支持边框宽度。  |
@@ -427,9 +428,10 @@ struct SheetTransitionExample {
 ### 示例2（设置三个不同高度的档位）
 
 使用bindSheet的detents属性设置三个不同高度的档位。
-1、dragBar拖拽条只在多个档位高度时生效；
-2、区别于height属性在不同时刻设置不同档位的能力，多档位能力有手势切换档位高度的效果，且更适合固定高度区间的场景；
-3、若高度范围不确定，且可能存在大于3个不同高度的场景，不建议使用detents属性。
+
+1. dragBar拖拽条只在多个档位高度时生效；
+2. 区别于height属性在不同时刻设置不同档位的能力，多档位能力有手势切换档位高度的效果，且更适合固定高度区间的场景；
+3. 若高度范围不确定，且可能存在大于3个不同高度的场景，不建议使用detents属性。
 
 ```ts
 // xxx.ets
@@ -591,6 +593,7 @@ struct bindSheetExample {
 ### 示例5（设置内容区刷新时机）
 
 ScrollSizeMode.CONTINUOUS 持续更新内容适合detents多档位切换场景。
+
 建议在builder内减少UI加载耗时的操作，滑动时内容实时刷新对性能要求较高。
 
 ```ts

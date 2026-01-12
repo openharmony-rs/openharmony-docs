@@ -23,23 +23,26 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 无障碍事件信息。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 
 | 名称                            | 类型                                       | 只读   | 可选   | 说明                                       |
 | ----------------------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | eventType                     | [AccessibilityEventType](./js-apis-accessibility-sys.md#accessibilityeventtype) | 否    | 否    | 无障碍事件类型。                                 |
-| target                        | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityelement12) | 否    | 是    | 发生事件的目标组件。                               |
+| target                        | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityelement) | 否    | 是    | 发生事件的目标组件。                               |
 | timeStamp                     | number                                   | 否    | 是    | 事件时间戳，单位是毫秒。默认值为0。                       |
 | extraInfo                     | string                                   | 否    | 是    | 针对TextArea、TextInput、SearchField、RichEdit组件， 组件文本内容有新增或删除时，新增或删除的文本内容。 |
 
 
 ## AccessibilityExtensionAbility.onAccessibilityConnect
 
-onAccessibilityConnect(): void;
+onAccessibilityConnect(): void
 
 连接无障碍服务成功后的回调函数。
+
 用户启用AccessibilityExtensionAbility时，系统服务完成连接后回调该接口，在该方法中完成初始化业务逻辑操作。 该方法可以选择性重写。 无障碍服务通过该回调，通知Ability已成功连接。
 
 **系统接口**：此接口为系统接口。
@@ -64,16 +67,17 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityConnect(): void {
-    console.log('AxExtensionAbility onAccessibilityConnect');
+    console.info('AxExtensionAbility onAccessibilityConnect');
   }
 }
 ```
 
 ## AccessibilityExtensionAbility.onAccessibilityDisconnect
 
-onAccessibilityDisconnect(): void;
+onAccessibilityDisconnect(): void
 
 断开无障碍服务成功后的回调函数。
+
 用户停用AccessibilityExtensionAbility时，系统服务完成断开连接后回调该接口，在该方法中执行资源回收和退出业务操作。该方法可以选择性重写。
 
 **系统接口**：此接口为系统接口。
@@ -98,7 +102,7 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityDisconnect(): void {
-    console.log('AxExtensionAbility onAccessibilityDisconnect');
+    console.info('AxExtensionAbility onAccessibilityDisconnect');
   }
 }
 ```
@@ -137,9 +141,9 @@ import { AccessibilityExtensionAbility, AccessibilityEventInfo, AccessibilityEve
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityEventInfo(event: AccessibilityEventInfo): void {
-    console.log('AxExtensionAbility onAccessibilityEventInfo');
+    console.info('AxExtensionAbility onAccessibilityEventInfo');
     if (event.eventType === AccessibilityEventType.TYPE_CLICK) {
-      console.log('AxExtensionAbility onAccessibilityEventInfo: click');
+      console.info('AxExtensionAbility onAccessibilityEventInfo: click');
     }
   }
 }
@@ -185,9 +189,9 @@ import { KeyEvent, KeyCode } from '@kit.InputKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean {
-    console.log('AxExtensionAbility onAccessibilityKeyEvent');
+    console.info('AxExtensionAbility onAccessibilityKeyEvent');
     if (keyEvent.key.code === KeyCode.KEYCODE_VOLUME_UP) {
-      console.log('AxExtensionAbility onAccessibilityKeyEvent: intercept 16');
+      console.info('AxExtensionAbility onAccessibilityKeyEvent: intercept 16');
       return true;
     }
     return false;

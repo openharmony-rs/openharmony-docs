@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -53,37 +53,39 @@ This example demonstrates the basic usage of the **EmbeddedComponent** and Embed
 
 The host page is the parent page of the **EmbeddedComponent**, embedding and displaying the UI from the EmbeddedUIExtensionAbility. Below is a complete implementation:
 
-```ts
+<!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets) -->
+
+``` TypeScript
 import { Want } from '@kit.AbilityKit';
 
-@Entry
 @Component
-struct Index {
-  @State message: string = 'Message: '
+export struct Embedded {
+  @State message: string = 'Message: ';
   private want: Want = {
-    bundleName: "com.example.embeddeddemo",
-    abilityName: "ExampleEmbeddedAbility",
-  }
-
+    bundleName: 'com.samples.uiextensionandaccessibility',
+    abilityName: 'ExampleEmbeddedAbility',
+  };
   build() {
-    Row() {
-      Column() {
-        Text(this.message).fontSize(30)
-        EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
-          .width('100%')
-          .height('90%')
-          .onTerminated((info) => {
-            // Triggered when the terminateSelfWithResult button is clicked on the extension page.
-            this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
-          })
-          .onError((error) => {
-            // Triggered on failure or exception.
-            this.message = 'Error: code = ' + error.code;
-          })
+    // ...
+      Row() {
+        Column() {
+          Text(this.message).fontSize(30)
+          EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
+            .width('100%')
+            .height('90%')
+            .onTerminated((info) => {
+              // onTerminated is triggered when the terminateSelfWithResult button is clicked on the extension page.
+              this.message = `Termination: code = ${info.code} , want = ${JSON.stringify(info.want)}`;
+            })
+            .onError((error) => {
+              // onError is triggered on failure or exception.
+              this.message = `Error: code = ${error.code}`;
+            })
+        }
+        .width('100%')
       }
-      .width('100%')
-    }
-    .height('100%')
+      .height('100%')
+      // ...
   }
 }
 ```
@@ -112,40 +114,43 @@ Key considerations for implementing the host page:
 
 The provider application implements embedded UI extension abilities. Below is an example lifecycle implementation:
 
-```ts
+<!-- @[exampleEmbeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/extensionability/ExampleEmbeddedAbility.ets) -->
+
+``` TypeScript
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG: string = '[ExampleEmbeddedAbility]'
 
 export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
   onCreate() {
-    console.info(TAG, `onCreate`);
+    hilog.info(0x0000, TAG, '%{public}s', `onCreate`);
   }
 
   onForeground() {
-    console.info(TAG, `onForeground`);
+    hilog.info(0x0000, TAG, '%{public}s',  `onForeground`);
   }
 
   onBackground() {
-    console.info(TAG, `onBackground`);
+    hilog.info(0x0000, TAG, '%{public}s', `onBackground`);
   }
 
   onDestroy() {
-    console.info(TAG, `onDestroy`);
+    hilog.info(0x0000, TAG, '%{public}s', `onDestroy`);
   }
 
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+    hilog.info(0x0000, TAG , '%{public}s', `onSessionCreate, want: ${JSON.stringify(want)}`);
     let param: Record<string, UIExtensionContentSession> = {
       'session': session
     };
     let storage: LocalStorage = new LocalStorage(param);
-    // Load the pages/extension.ets content.
-    session.loadContent('pages/extension', storage);
+    // Load the Extension.ets content.
+    session.loadContent('pages/EmbeddedComponent/Extension', storage);
   }
 
   onSessionDestroy(session: UIExtensionContentSession) {
-    console.info(TAG, `onSessionDestroy`);
+    hilog.info(0x0000, TAG , '%{public}s',  `onSessionDestroy`);
   }
 }
 ```
@@ -176,28 +181,31 @@ Key implementation details:
 
 The following is an implementation of the entry component of the provider application, which demonstrates how to use **UIExtensionContentSession** and how to exit the embedded page and return the result through a button click event. This code file needs to be declared in the **main_pages.json** configuration file.
 
-```ts
+<!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Extension.ets) -->
+
+``` TypeScript
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 
-@Entry
+let storage = LocalStorage.getShared();
+
+@Entry(storage)
 @Component
 struct Extension {
   @State message: string = 'EmbeddedUIExtensionAbility Index';
-  private localStorage: LocalStorage|undefined = this.getUIContext().getSharedLocalStorage();
-  private session: UIExtensionContentSession | undefined = this.localStorage?.get<UIExtensionContentSession>('session');
+  private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
 
   build() {
     Column() {
       Text(this.message)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
-      Button("terminateSelfWithResult").fontSize(20).onClick(() => {
+      Button('terminateSelfWithResult').fontSize(20).onClick(() => {
         // Call terminateSelfWithResult to exit when the button is clicked.
         this.session?.terminateSelfWithResult({
           resultCode: 1,
           want: {
-            bundleName: "com.example.embeddeddemo",
-            abilityName: "ExampleEmbeddedAbility",
+            bundleName: 'com.samples.uiextensionandaccessibility',
+            abilityName: 'ExampleEmbeddedAbility',
           }
         });
       })
@@ -234,12 +242,14 @@ Key considerations for implementing the entry page:
 
   Add the ExampleEmbeddedAbility configuration under the **extensionAbilities** tag in the **module.json5** file:
 
-```json
+<!-- @[exampleEmbeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "name": "ExampleEmbeddedAbility",
-  "srcEntry": "./ets/extensionAbility/ExampleEmbeddedAbility.ets",
+  "srcEntry": "./ets/extensionability/ExampleEmbeddedAbility.ets",
   "type": "embeddedUI"
-}
+},
 ```
 
 **Expected Results**

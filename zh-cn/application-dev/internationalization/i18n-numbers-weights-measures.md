@@ -46,21 +46,26 @@ unitConvert接口可以将原始单位转换为目标单位，并根据区域ID�
 **开发实例**
 
 1. 导入模块。
-   ```ts
+
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NumberMeasurementFormatting.ets) -->
+   
+   ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
    ```
-   <!-- [import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NumberMeasurementFormatting.ets) -->
 
 2. 单位转换。
-   ```ts
+
+   <!-- @[measurement_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NumberMeasurementFormatting.ets) -->
+   
+   ``` TypeScript
    // 设置要转换的单位和目标单位
    let fromUnit: i18n.UnitInfo = {unit: 'cup', measureSystem: 'US'};
    let toUnit: i18n.UnitInfo = {unit: 'liter', measureSystem: 'SI'};
-
+   
    // 以en-US区域ID转换度量衡
    let simplifyConvertedUnit = i18n.I18NUtil.unitConvert(fromUnit, toUnit, 1000, 'en-US'); // simplifyConvertedUnit = '236.588 L'
-
+   
    // 显示完整的度量衡
    let convertedUnit = i18n.I18NUtil.unitConvert(fromUnit, toUnit, 1000, 'en-US', 'long'); // convertedUnit = '236.588 liters'
    ```
-   <!-- [measurement_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NumberMeasurementFormatting.ets) -->
+   

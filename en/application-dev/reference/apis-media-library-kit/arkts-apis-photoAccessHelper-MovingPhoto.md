@@ -6,14 +6,12 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+MovingPhoto provides APIs for managing a moving photo instance.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 12.
-
-MovingPhoto provides APIs for managing a moving photo instance.
-
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
 

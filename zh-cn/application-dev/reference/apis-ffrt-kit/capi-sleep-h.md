@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -34,7 +34,7 @@
 
 ### ffrt_usleep()
 
-```
+```c
 FFRT_C_API int ffrt_usleep(uint64_t usec)
 ```
 
@@ -59,7 +59,7 @@ FFRT_C_API int ffrt_usleep(uint64_t usec)
 
 ### ffrt_yield()
 
-```
+```c
 FFRT_C_API void ffrt_yield(void)
 ```
 

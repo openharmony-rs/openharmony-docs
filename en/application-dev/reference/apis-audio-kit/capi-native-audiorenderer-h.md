@@ -64,12 +64,13 @@ The file declares the functions related to an audio renderer.
 | [typedef void (\*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_FastStatus status)](#oh_audiorenderer_onfaststatuschange) | OH_AudioRenderer_OnFastStatusChange | Defines a callback function for low-latency status changes during audio playback.|
 | [OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* renderer, float loudnessGain)](#oh_audiorenderer_setloudnessgain) | - | Sets the loudness of audio playback. The default loudness value is 0.0 dB. The audio stream playback type must be one of the following: Music: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC<br> Movies or videos: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC<br> Audiobooks (including books, crosstalk, and storytelling), listening to news, podcasts, and others: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK<br> The latency mode of the audio stream must be [OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL.<br> Loudness settings are not supported for high-definition audio channels.<br> Due to the buffer between the audio framework and hardware, there may be a delay in the actual effect of loudness adjustment. The delay duration depends on the buffer length.<br> You are advised to set the loudness before starting playback of different audio streams to achieve the optimal balance effect.|
 | [OH_AudioStream_Result OH_AudioRenderer_GetLoudnessGain(OH_AudioRenderer* renderer, float* loudnessGain)](#oh_audiorenderer_getloudnessgain) | - | Obtains the loudness of audio playback.|
+| [typedef int32_t (\*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallbackadvanced) | OH_AudioRenderer_OnWriteDataCallbackAdvanced | Defines a function pointer to the callback used to write audio data. Unlike **OH_AudioRenderer_OnWriteDataCallback**, this function allows the application to fill data of the length ranging [0, audioDataSize].<br> Here, **audioDataSize** refers to the length of the callback buffer. The caller notifies the system of the length of the data written through the return value.<br> If the return value is 0, the callback thread sleeps for a period of time.<br> Otherwise, the system may immediately initiate the next callback.|
 
 ## Function Description
 
 ### OH_AudioRenderer_Release()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer)
 ```
 
@@ -94,7 +95,7 @@ Releases an audio renderer.
 
 ### OH_AudioRenderer_Start()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer)
 ```
 
@@ -119,7 +120,7 @@ Starts an audio renderer.
 
 ### OH_AudioRenderer_Pause()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer)
 ```
 
@@ -144,7 +145,7 @@ Pauses an audio renderer.
 
 ### OH_AudioRenderer_Stop()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer)
 ```
 
@@ -169,7 +170,7 @@ Stops an audio renderer.
 
 ### OH_AudioRenderer_Flush()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer)
 ```
 
@@ -194,7 +195,7 @@ Clears audio data in the buffer.
 
 ### OH_AudioRenderer_GetCurrentState()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetCurrentState(OH_AudioRenderer* renderer,OH_AudioStream_State* state)
 ```
 
@@ -220,7 +221,7 @@ Obtains the state of an audio renderer.
 
 ### OH_AudioRenderer_GetSamplingRate()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetSamplingRate(OH_AudioRenderer* renderer, int32_t* rate)
 ```
 
@@ -246,7 +247,7 @@ Obtains the sampling rate of an audio renderer.
 
 ### OH_AudioRenderer_GetStreamId()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetStreamId(OH_AudioRenderer* renderer, uint32_t* streamId)
 ```
 
@@ -272,7 +273,7 @@ Obtains the stream ID of an audio renderer.
 
 ### OH_AudioRenderer_GetChannelCount()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetChannelCount(OH_AudioRenderer* renderer, int32_t* channelCount)
 ```
 
@@ -298,7 +299,7 @@ Obtains the number of channels for an audio renderer.
 
 ### OH_AudioRenderer_GetSampleFormat()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetSampleFormat(OH_AudioRenderer* renderer,OH_AudioStream_SampleFormat* sampleFormat)
 ```
 
@@ -324,7 +325,7 @@ Obtains the sampling format of an audio renderer.
 
 ### OH_AudioRenderer_GetLatencyMode()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer* renderer,OH_AudioStream_LatencyMode* latencyMode)
 ```
 
@@ -350,7 +351,7 @@ Obtains the latency mode of an audio renderer.
 
 ### OH_AudioRenderer_GetRendererInfo()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* renderer,OH_AudioStream_Usage* usage)
 ```
 
@@ -376,7 +377,7 @@ Obtains the usage type of an audio renderer.
 
 ### OH_AudioRenderer_GetEncodingType()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* renderer,OH_AudioStream_EncodingType* encodingType)
 ```
 
@@ -402,7 +403,7 @@ Obtains the encoding type of an audio renderer.
 
 ### OH_AudioRenderer_GetFramesWritten()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* renderer, int64_t* frames)
 ```
 
@@ -428,7 +429,7 @@ Obtains the number of frames that have been written since the stream was created
 
 ### OH_AudioRenderer_GetTimestamp()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, clockid_t clockId,int64_t* framePosition, int64_t* timestamp)
 ```
 
@@ -462,7 +463,7 @@ This function is used to implement audio and video synchronization. It is recomm
 
 ### OH_AudioRenderer_GetAudioTimestampInfo()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* renderer,int64_t* framePosition, int64_t* timestamp)
 ```
 
@@ -495,7 +496,7 @@ Additionally, changes in the audio stream route, such as switching devices or ou
 
 ### OH_AudioRenderer_GetFrameSizeInCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* renderer, int32_t* frameSize)
 ```
 
@@ -521,7 +522,7 @@ Obtains the frame size in the callback. The frame size is the fixed length of th
 
 ### OH_AudioRenderer_GetSpeed()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, float* speed)
 ```
 
@@ -547,7 +548,7 @@ Obtains the rate of an audio renderer.
 
 ### OH_AudioRenderer_SetSpeed()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, float speed)
 ```
 
@@ -573,7 +574,7 @@ Sets the rate for an audio renderer.
 
 ### OH_AudioRenderer_SetMarkPosition()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetMarkPosition(OH_AudioRenderer* renderer, uint32_t samplePos,OH_AudioRenderer_OnMarkReachedCallback callback, void* userData)
 ```
 
@@ -601,7 +602,7 @@ Sets the mark position for an audio renderer. When this function is called, the 
 
 ### OH_AudioRenderer_CancelMark()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_CancelMark(OH_AudioRenderer* renderer)
 ```
 
@@ -626,7 +627,7 @@ Cancels the mark set by [OH_AudioRenderer_SetMarkPosition](#oh_audiorenderer_set
 
 ### OH_AudioRenderer_SetVolume()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetVolume(OH_AudioRenderer* renderer, float volume)
 ```
 
@@ -652,7 +653,7 @@ Sets the volume for an audio renderer.
 
 ### OH_AudioRenderer_SetVolumeWithRamp()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetVolumeWithRamp(OH_AudioRenderer* renderer, float volume, int32_t durationMs)
 ```
 
@@ -679,7 +680,7 @@ Sets the volume with a ramp within the specified duration for an audio renderer.
 
 ### OH_AudioRenderer_GetVolume()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, float* volume)
 ```
 
@@ -705,7 +706,7 @@ Obtains the volume of an audio renderer.
 
 ### OH_AudioRenderer_GetUnderflowCount()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetUnderflowCount(OH_AudioRenderer* renderer, uint32_t* count)
 ```
 
@@ -731,7 +732,7 @@ Obtains the number of underloaded audio streams of an audio renderer.
 
 ### OH_AudioRenderer_GetChannelLayout()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetChannelLayout(OH_AudioRenderer* renderer,OH_AudioChannelLayout* channelLayout)
 ```
 
@@ -757,7 +758,7 @@ Obtains the channel layout of an audio renderer.
 
 ### OH_AudioRenderer_GetEffectMode()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetEffectMode(OH_AudioRenderer* renderer,OH_AudioStream_AudioEffectMode* effectMode)
 ```
 
@@ -783,7 +784,7 @@ Obtains the effect mode of an audio renderer.
 
 ### OH_AudioRenderer_SetEffectMode()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetEffectMode(OH_AudioRenderer* renderer,OH_AudioStream_AudioEffectMode effectMode)
 ```
 
@@ -809,7 +810,7 @@ Sets the effect mode for an audio renderer.
 
 ### OH_AudioRenderer_GetRendererPrivacy()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetRendererPrivacy(OH_AudioRenderer* renderer,OH_AudioStream_PrivacyType* privacy)
 ```
 
@@ -835,7 +836,7 @@ Checks whether the audio stream being played can be recorded by other applicatio
 
 ### OH_AudioRenderer_SetSilentModeAndMixWithOthers()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetSilentModeAndMixWithOthers(OH_AudioRenderer* renderer, bool on)
 ```
 
@@ -863,7 +864,7 @@ If the silent mode in concurrent playback is enabled, the system mutes the audio
 
 ### OH_AudioRenderer_GetSilentModeAndMixWithOthers()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetSilentModeAndMixWithOthers(OH_AudioRenderer* renderer, bool* on)
 ```
 
@@ -889,7 +890,7 @@ Checks whether the silent mode in concurrent playback is enabled for an audio re
 
 ### OH_AudioRenderer_SetDefaultOutputDevice()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* renderer, OH_AudioDevice_Type deviceType)
 ```
 
@@ -919,7 +920,7 @@ This function can be called at any time after an AudioRenderer instance is creat
 
 ### OH_AudioRenderer_OnInterruptCallback()
 
-```
+```c
 typedef void (*OH_AudioRenderer_OnInterruptCallback)(OH_AudioRenderer* renderer, void* userData,OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint)
 ```
 
@@ -941,7 +942,7 @@ Defines the callback for interruption events of an audio renderer.
 
 ### OH_AudioRenderer_OnErrorCallback()
 
-```
+```c
 typedef void (*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, void* userData,OH_AudioStream_Result error)
 ```
 
@@ -962,7 +963,7 @@ Defines the callback for error events of an audio renderer.
 
 ### OH_AudioRenderer_GetFastStatus()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetFastStatus(OH_AudioRenderer* renderer,OH_AudioStream_FastStatus* status)
 ```
 
@@ -988,7 +989,7 @@ Obtains the running status of an audio renderer to determine whether it is runni
 
 ### OH_AudioRenderer_OnFastStatusChange()
 
-```
+```c
 typedef void (*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer,void* userData,OH_AudioStream_FastStatus status)
 ```
 
@@ -1009,7 +1010,7 @@ Defines a callback function for low-latency status changes during audio playback
 
 ### OH_AudioRenderer_SetLoudnessGain()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* renderer, float loudnessGain)
 ```
 
@@ -1049,7 +1050,7 @@ You are advised to set the loudness before starting playback of different audio 
 
 ### OH_AudioRenderer_GetLoudnessGain()
 
-```
+```c
 OH_AudioStream_Result OH_AudioRenderer_GetLoudnessGain(OH_AudioRenderer* renderer, float* loudnessGain)
 ```
 
@@ -1072,3 +1073,30 @@ Obtains the loudness of audio playback.
 | Type| Description|
 | -- | -- |
 | [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | **AUDIOSTREAM_SUCCESS**: The function is executed successfully.<br>         **AUDIOSTREAM_ERROR_INVALID_PARAM**:<br>                                                 1. The **renderer** parameter is nullptr.<br>                                                 2. The **loudnessGain** parameter is nullptr.|
+
+### OH_AudioRenderer_OnWriteDataCallbackAdvanced()
+
+```c
+typedef int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)
+```
+
+**Description**
+
+Defines a function pointer to the callback used to write audio data. Unlike **OH_AudioRenderer_OnWriteDataCallback**, this function allows the application to fill data of the length ranging [0, audioDataSize].<br> Here, **audioDataSize** refers to the length of the callback buffer. The caller notifies the system of the length of the data written through the return value.<br> If the return value is 0, the callback thread sleeps for a period of time.<br> Otherwise, the system may immediately initiate the next callback.
+
+**Since**: 20
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to the instance for which the callback occurs.|
+|  void* userData | Pointer to the application data passed through the callbacks.|
+|  void* audioData | Pointer to the audio data to be filled by the application.|
+|  int32_t audioDataSize | Length of the audio data, in bytes.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Actual length of valid audio data filled by the application. The return value must be in the range of [0, audioDataSize].<br> If the return value is less than 0, the system adjusts it to 0. If the return value is greater than **audioDataSize**, the system adjusts it to **audioDataSize**.<br> Note that the return value must be an integer multiple of the size of a single sampling point.<br> For example, for audio data in stereo s16 format, it must be an integer multiple of 4 (2 * 16 / 8).<br> Failure to do so may result in playback noise.|

@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 Provides APIs for obtaining component snapshots, including snapshots of components that have been loaded and snapshots of components that have not been loaded yet.
 
 > **NOTE**
@@ -41,7 +41,7 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Snapshot Error Codes](errorcode-snapshot.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -64,6 +64,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(150).height(150).border({ color: Color.Black, width: 2 }).margin(5)
+        // Replace $r('app.media.img') with the image resource file you use.
         Image($r('app.media.img'))
           .autoResize(true)
           .width(150)
@@ -89,6 +90,8 @@ struct SnapshotExample {
   }
 }
 ```
+
+![Getscreent](figures/Getscreent.gif)
 
 ## get<sup>12+</sup>
 
@@ -119,7 +122,7 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Snapshot Error Codes](errorcode-snapshot.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -142,6 +145,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(150).height(150).border({ color: Color.Black, width: 2 }).margin(5)
+        // Replace $r('app.media.icon') with the image resource file you use.
         Image($r('app.media.icon'))
           .autoResize(true)
           .width(150)
@@ -197,7 +201,7 @@ Captures a snapshot of an offscreen-rendered component created from a [CustomBui
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Snapshot Error Codes](errorcode-snapshot.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -282,7 +286,7 @@ Captures a snapshot of an offscreen-rendered component created from a [CustomBui
 | Name | Type                                                | Mandatory| Description                                                   |
 | ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------- |
 | builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | Yes  | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001.|
-| delay   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When pixel map resources are used or when **syncload** to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used.|
+| delay   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When PixelMap resources are used or when [syncload](arkui-ts/ts-basic-components-image.md#syncload8) is set to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used.|
 | checkImageStatus  | boolean | No   | Whether to verify the image decoding status before taking a snapshot. If the value is **true**, the system checks whether all **Image** components have been decoded before taking the snapshot. If the check is not completed, the system aborts the snapshot and returns an exception.<br>Default value: **false**.|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)           | No   | Custom settings of the snapshot.|
 
@@ -294,7 +298,7 @@ Captures a snapshot of an offscreen-rendered component created from a [CustomBui
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Snapshot Error Codes](errorcode-snapshot.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -387,7 +391,7 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Snapshot Error Codes](errorcode-snapshot.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message               |
 | ------ | ------------------- |
@@ -399,7 +403,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { image } from '@kit.ImageKit';
-import { UIContext } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -409,11 +412,12 @@ struct SnapshotExample {
   build() {
     Column() {
       Row() {
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image(this.pixmap).width(150).height(150).border({ color: Color.Black, width: 2 }).margin(5)
+        // Replace $r('app.media.img') with the image resource file you use.
         Image($r('app.media.img'))
           .autoResize(true)
-          .width(200)
-          .height(200)
+          .width(150)
+          .height(150)
           .margin(5)
           .id("root")
       }
@@ -465,7 +469,7 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Snapshot Error Codes](errorcode-snapshot.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -488,6 +492,7 @@ class MyNodeController extends NodeController {
     this.node.commonAttribute.width('100%').height('100%');
 
     let image = typeNode.createNode(uiContext, 'Image');
+    // Replace $r('app.media.img') with the image resource file you use.
     image.initialize($r('app.media.img')).width('100%').height('100%').autoResize(true);
     this.imageNode = image;
 
@@ -563,7 +568,7 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Snapshot Error Codes](errorcode-snapshot.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message               |
 | ------ | ------------------- |
@@ -577,16 +582,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { UIContext } from '@kit.ArkUI';
-
+// Create a FrameNode node that contains an Image component.
 class MyNodeController extends NodeController {
   public node: FrameNode | null = null;
   public imageNode: FrameNode | null = null;
-
+  // Build a custom node, create the root node FrameNode, add a child node Image, and configure the Image resource and style.
   makeNode(uiContext: UIContext): FrameNode | null {
     this.node = new FrameNode(uiContext);
     this.node.commonAttribute.width('100%').height('100%');
 
     let image = typeNode.createNode(uiContext, 'Image');
+    // Replace $r('app.media.img') with the image resource file you use.
     image.initialize($r('app.media.img')).width('100%').height('100%').autoResize(true);
     this.imageNode = image;
 
@@ -611,6 +617,7 @@ struct SnapshotExample {
       Button("UniqueId getSync snapshot")
         .onClick(() => {
           try {
+            // Generate a component snapshot synchronously by node ID, with the zoom ratio of 2. The snapshot is generated after the rendering is complete.
             this.pixmap = this.getUIContext()
               .getComponentSnapshot()
               .getSyncWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
@@ -654,7 +661,7 @@ Captures a snapshot of the provided component content. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Snapshot Error Codes](errorcode-snapshot.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |

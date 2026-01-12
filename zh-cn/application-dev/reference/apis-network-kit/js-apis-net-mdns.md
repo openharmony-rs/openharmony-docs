@@ -47,6 +47,7 @@ addLocalService(context: Context, serviceInfo: LocalServiceInfo, callback: Async
 | 2100003 | System internal error. |
 | 2204003 | Callback duplicated. |
 | 2204008 | Failed to delete the service instance. |
+| 2204009 | Failed to send packet. |
 | 2204010 | Failed to send the message. |
 
 **示例：**
@@ -116,6 +117,7 @@ addLocalService(context: Context, serviceInfo: LocalServiceInfo): Promise\<Local
 | 2100003 | System internal error. |
 | 2204003 | Callback duplicated. |
 | 2204008 | Failed to delete the service instance. |
+| 2204009 | Failed to send packet. |
 | 2204010 | Failed to send the message. |
 
 

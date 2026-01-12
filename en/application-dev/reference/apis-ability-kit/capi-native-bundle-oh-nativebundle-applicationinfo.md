@@ -6,6 +6,10 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} OH_NativeBundle_ApplicationInfo
+```
+
 ## Overview
 
 The struct describes the application information, including the bundle name and fingerprint information.

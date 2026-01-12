@@ -1,8 +1,18 @@
 # AbilityBase_Want
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct AbilityBase_Want AbilityBase_Want
+```
 
 ## Overview
 
-Declares Want objects.
+Declares a Want structure.
 
 **Since**: 20
 

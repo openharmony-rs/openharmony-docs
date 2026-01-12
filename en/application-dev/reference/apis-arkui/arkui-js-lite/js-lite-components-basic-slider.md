@@ -1,6 +1,13 @@
 # slider
 
-The **\<Slider>** component is used to quickly adjust settings, such as the volume and brightness.
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+
+The **\<slider>** component is used to quickly adjust settings, such as the volume and brightness.
 
 > **NOTE**
 >
@@ -61,6 +68,12 @@ Not supported
 | display                            | string                                   | flex     | No   | How and whether to display the box containing an element. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
 | [left\|top]                        | &lt;length&gt; \| &lt;percentage&gt;<sup>6+</sup> | -        | No   | Edge of the element.<br>- **left**: left edge position of the element. This attribute defines the offset between the left edge of the margin area of a positioned element and left edge of its containing block.<br>- **top**: top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element.|
 
+## Methods
+
+| Name| Parameter| Description|
+| -------- | -------- | -------- |
+|rotation | { focus: boolean } | Specifies whether to request focus for crown rotation. **focus: true**: acquires focus, allowing users to scroll options by rotating the crown (only works for single-column pickers). **focus: false**: releases focus.|
+
 ## Example
 
 ```html
@@ -69,7 +82,8 @@ Not supported
     <text>slider start value is {{startValue}}</text>
     <text>slider current value is {{currentValue}}</text>
     <text>slider end value is {{endValue}}</text>
-    <slider min="0" max="100" value="{{value}}" onchange="setValue" style="margin-top: 10%; width: 80%;height: 1%"></slider>
+    <slider min="0" max="100" value="{{value}}" ref="sliderObj"
+            onchange="setValue" style="margin-top: 10%; width: 80%;height: 1%"></slider>
 </div>
 ```
 
@@ -92,6 +106,9 @@ export default {
         startValue: 0,
         currentValue: 0,
         endValue: 100,
+    },
+    onShow() {
+        this.$refs.sliderObj.rotation({focus: true});
     },
     setValue(e) {
         this.currentValue = e.value;

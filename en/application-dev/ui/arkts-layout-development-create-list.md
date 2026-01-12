@@ -11,7 +11,7 @@
 
 A list is a container that displays a collection of items. If the list items go beyond the screen, the list can scroll to reveal the content off the screen. The list is applicable for presenting similar data types or data type sets, such as images and text. Some common lists seen in applications are the contacts list, playlist, and shopping list.
 
-You can use lists to easily and efficiently display structured, scrollable information. Specifically, you can provide a single view of rows or columns by arranging the [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) or [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) child components linearly in a vertical or horizontal direction in the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component, or use [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) to iterate over a group of rows or columns, or mix any number of single views and **ForEach** structures to build a list. The **List** component supports the generation of child components in various [rendering](../ui/rendering-control/arkts-rendering-control-overview.md) modes, including conditional rendering, iterative rendering, and lazy data loading.
+You can use lists to easily and efficiently display structured, scrollable information. Specifically, you can provide a single view of rows or columns by arranging the [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) or [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) child components linearly in a vertical or horizontal direction in the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component, or use [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) to iterate over a group of rows or columns, or mix any number of single views and **ForEach** structures to build a list. The **List** component supports the generation of child components in various [rendering](../ui/rendering-control/arkts-rendering-control-overview.md) modes, including [conditional rendering](../ui/rendering-control/arkts-rendering-control-ifelse.md), rendering of repeated content, and [lazy data loading](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 
 On devices with circular screens, the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component is recommended. For details, see [Creating an Arc List (ArcList)](./arkts-layout-development-create-arclist.md).
 
@@ -92,9 +92,13 @@ By default, the main axis of the **List** component runs in the vertical directi
 To create a horizontal scrolling list, set the **listDirection** attribute to **Axis.Horizontal**. The default value of **listDirection** is **Axis.Vertical**.
 
 
-```ts
-List() {
-  // ...
+<!-- @[build_a_horizontal_scrolling_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
+
+``` TypeScript
+List(
+  // ···
+) {
+  // ···
 }
 .listDirection(Axis.Horizontal)
 ```
@@ -102,14 +106,18 @@ List() {
 
 ### Setting the Cross Axis Layout
 
-The cross axis layout of the **List** component can be set using the **lanes** and **alignListItem** attributes. The **lanes** attribute controls the number of list items along the cross axis, and the **alignListItem** attribute controls the alignment mode of child components along the cross axis.
+The cross axis layout of the **List** component can be set using the [lanes](../reference/apis-arkui/arkui-ts/ts-container-list.md#lanes9) and [alignListItem](../reference/apis-arkui/arkui-ts/ts-container-list.md#alignlistitem9) attributes. The **lanes** attribute controls the number of list items along the cross axis, and the **alignListItem** attribute controls the alignment mode of child components along the cross axis.
 
 The **lanes** attribute of the **List** component is usually used to adaptively construct lists with different numbers of rows or columns for devices of different sizes, enabling one-time development for multi-device deployment. Its value type is number or [LengthConstrain](../reference/apis-arkui/arkui-ts/ts-types.md#lengthconstrain). If you are building a two-column vertical list shown on the right in Figure 2, set the **lanes** attribute to **2**. The default value of **lanes** is **1**.
 
 
-```ts
-List() {
-  // ...
+<!-- @[lanes_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
+
+``` TypeScript
+List(
+  // ···
+) {
+  // ···
 }
 .lanes(2)
 ```
@@ -117,16 +125,22 @@ List() {
 If set to a value of the LengthConstrain type, the **lanes** attribute determines the number of rows or columns based on the LengthConstrain settings and the size of the **List** component.
 
 
-```ts
+<!-- @[egLanes_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct EgLanes {
+export struct ListLayout {
   @State egLanes: LengthConstrain = { minLength: 200, maxLength: 300 };
   build() {
-    List() {
-      // ...
-    }
-    .lanes(this.egLanes)
+    // ···
+          List(
+            // ···
+          ) {
+            // ···
+          }
+          .lanes(this.egLanes)
+        // ···
   }
 }
 ```
@@ -140,20 +154,21 @@ For example, if the **lanes** attribute is set to **{ minLength: 200, maxLength:
 With regard to a vertical list, when the **alignListItem** attribute is set to **ListItemAlign.Center**, list items are center-aligned horizontally; when the **alignListItem** attribute is at its default value **ListItemAlign.Start**, list items are aligned toward the start edge of the cross axis in the list.
 
 
-```ts
-List() {
-  // ...
+<!-- @[build_list_with_align_horizontally_in_the_center](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
+
+``` TypeScript
+List(
+  // ···
+) {
+  // ···
 }
+// ···
 .alignListItem(ListItemAlign.Center)
 ```
 
 ## ListItem Lifecycle Management
 ### Creating ListItem Components with ForEach
-When a **List** component is created, all **ListItem** components are created immediately, but their behavior varies by area:
-
-- Visible area: **ListItem** components are laid out during the first frame.
-- Preload area: **ListItem** components are laid out during idle time.
-- Outside the preload area: Only the **ListItem** container is created; its child components are not created.
+When a **List** component is created, all **ListItem** components are created immediately, but their behavior varies by area:<br> Visible area: **ListItem** components are laid out during the first frame.<br>Preload area: **ListItem** components are laid out during idle time.<br> Outside the preload area: Only the **ListItem** containers are created; their child components are not created.
 
 During scrolling, the **ListItem** components entering the preload and visible areas create their child components and complete layout, and the **ListItem** components leaving these areas are not destroyed.
 
@@ -161,11 +176,7 @@ During scrolling, the **ListItem** components entering the preload and visible a
 ![](./figures/list_foreach.png)
 
 ### Creating ListItem Components with LazyForEach
-When a **List** component is created:
-
-- Visible area: **ListItem** components are created and laid out immediately.
-- Preload area: **ListItem** components are created and laid out during idle time but not mounted to the component tree.
-- Outside the preload area: No **ListItem** components are created.
+When a **List** component is created:<br>Visible area: **ListItem** components are created and laid out immediately. Preload area: **ListItem** components are created and laid out during idle time but not mounted to the component tree. Outside the preload area: No **ListItem** components are created.
 
 During scrolling, the **ListItem** components entering the preload and visible areas are created and laid out. If they contain @Reusable decorated custom components, these components are reused from the cache pool when possible. **ListItem** components leaving the preload and visible areas are destroyed. If they contain @Reusable decorated custom components, these components are recycled into the cache pool.
 
@@ -175,11 +186,7 @@ During scrolling, the **ListItem** components entering the preload and visible a
 ### Creating ListItem Components with Repeat
 **With virtualScroll Enabled**
 
-When a **List** component is created:
-
-- Visible area: **ListItem** components are created and laid out immediately.
-- Preload area: **ListItem** components are created and laid out during idle time, and then mounted to the component tree.
-- Outside the preload area: No **ListItem** components are created.
+When a **List** component is created and **Repeat** is used with [virtualScroll](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscroll) enabled to generate **ListItem** components: <br>Visible area: **ListItem** components are created and laid out immediately. Preload area: **ListItem** components are created and laid out during idle time of the rendering thread, and then mounted to the component tree. Outside the preload area: No **ListItem** components are created.
 
 During scrolling, for **ListItem** components entering the preload and visible areas, the system first attempts to reuse components from cache pool. If no components are unavailable in the cache pool, the system creates **ListItem** components and lays them out. **ListItem** components leaving the preload and visible areas are recycled into the cache pool.
 
@@ -188,11 +195,7 @@ During scrolling, for **ListItem** components entering the preload and visible a
 
 **With virtualScroll Disabled**
 
-When a **List** component is created, all **ListItem** components are created immediately, but their behavior varies by area:
-
-- Visible area: **ListItem** components are laid out during the first frame.
-- Preload area: **ListItem** components are laid out during idle time.
-- Outside the preload area: No layout is performed.
+When a **List** component is created, all **ListItem** components are created immediately, but their behavior varies by area:<br> Visible area: **ListItem** components are laid out during the first frame.<br>Preload area: **ListItem** components are laid out during idle time.<br> Outside the preload area: No layout is performed.
 
 During scrolling, the **ListItem** components in the preload and visible areas are laid out; the **ListItem** components leaving these areas are not destroyed.
 
@@ -208,26 +211,36 @@ The list displays a collection of items horizontally or vertically and can scrol
 
 ![en-us_image_0000001563060761](figures/en-us_image_0000001563060761.png)
 
-```ts
+<!-- @[list_statically_creates_the_contents_of_list_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DataInList.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct CityList {
+export struct DataInList {
   build() {
-    List() {
-      ListItem() {
-        Text('Beijing').fontSize(24)
-      }
+    // ···
+          List() {
+            ListItem() {
+              // The value in the app.string.city_beijing resource file is 'Beijing'.
+              Text($r('app.string.city_beijing'))
+                .fontSize(24)
+            }
 
-      ListItem() {
-        Text('Hangzhou').fontSize(24)
-      }
+            ListItem() {
+              // The value in the app.string.city_hangzhou resource file is 'Hangzhou'.
+              Text($r('app.string.city_hangzhou'))
+                .fontSize(24)
+            }
 
-      ListItem() {
-        Text('Shanghai').fontSize(24)
-      }
-    }
-    .backgroundColor('#FFF1F3F5')
-    .alignListItem(ListItemAlign.Center)
+            ListItem() {
+              // The value in the app.string.city_shanghai resource file is 'Shanghai'.
+              Text($r('app.string.city_shanghai'))
+                .fontSize(24)
+            }
+          }
+          .backgroundColor('#FFF1F3F5')
+          .alignListItem(ListItemAlign.Center)
+        // ···
   }
 }
 ```
@@ -241,7 +254,9 @@ Each **ListItem** component can contain only one root child component. Therefore
 As shown above, as a list item, each contact has a profile picture and a name. To present it, you can encapsulate **Image** and **Text** components into a **Row** container.
 
 
-```ts
+<!-- @[encapsulate_the_image_and_text_into_a_row](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DataInList.ets) -->
+
+``` TypeScript
 List() {
   ListItem() {
     Row() {
@@ -251,7 +266,8 @@ List() {
         .height(40)
         .margin(10)
 
-      Text('Tom')
+      The value in the // app.string.peopleOne resource file is 'Tom'.
+      Text($r('app.string.peopleOne'))
         .fontSize(20)
     }
   }
@@ -264,13 +280,13 @@ List() {
         .height(40)
         .margin(10)
 
-      Text('Tracy')
+      // The value in the app.string.peopleTwo resource file is 'Tracy'.
+      Text($r('app.string.peopleTwo'))
         .fontSize(20)
     }
   }
 }
 ```
-
 
 ## Iterating List Content
 
@@ -279,15 +295,17 @@ Compared with a static list, a dynamic list is more common in applications. For 
 ArkTS provides component loop rendering capabilities using [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md). For example, when creating a contacts list, you can store the contact name and profile picture data in a **Contact** class structure to the **contacts** array, and nest **ListItem** components in **ForEach**, thereby reducing repeated code needed for tiling similar **ListItem** components.
 
 
-```ts
+<!-- @[use_foreach_to_replace_similar_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListIteration.ets) -->
+
+``` TypeScript
 import { util } from '@kit.ArkTS';
 
 class Contact {
-  key: string = util.generateRandomUUID(true);
-  name: string;
-  icon: Resource;
+  public key: string = util.generateRandomUUID(true);
+  public name: ResourceStr;
+  public icon: Resource;
 
-  constructor(name: string, icon: Resource) {
+  constructor(name: ResourceStr, icon: Resource) {
     this.name = name;
     this.icon = icon;
   }
@@ -295,29 +313,34 @@ class Contact {
 
 @Entry
 @Component
-struct SimpleContacts {
-  private contacts: Array<object> = [
-    new Contact('Tom', $r("app.media.iconA")),
-    new Contact('Tracy', $r("app.media.iconB")),
+export struct ListIteration {
+  private contacts: Array<Contact> = [
+
+    // The value in the app.string.peopleOne resource file is 'Tom', and app.media.iconA is a custom resource.
+    new Contact($r('app.string.peopleOne'), $r('app.media.iconA')),
+    // The value in the app.string.peopleTwo resource file is 'Tracy', and app.media.iconB is a custom resource.
+    new Contact($r('app.string.peopleTwo'), $r('app.media.iconB'))
   ];
 
   build() {
-    List() {
-      ForEach(this.contacts, (item: Contact) => {
-        ListItem() {
-          Row() {
-            Image(item.icon)
-              .width(40)
-              .height(40)
-              .margin(10)
-            Text(item.name).fontSize(20)
+    // ...
+          List() {
+            ForEach(this.contacts, (item: Contact) => {
+              ListItem() {
+                Row() {
+                  Image(item.icon)
+                    .width(40)
+                    .height(40)
+                    .margin(10)
+                  Text(item.name).fontSize(20)
+                }
+                .width('100%')
+                .justifyContent(FlexAlign.Start)
+              }
+            }, (item: Contact) => JSON.stringify(item))
           }
           .width('100%')
-          .justifyContent(FlexAlign.Start)
-        }
-      }, (item: Contact) => JSON.stringify(item))
-    }
-    .width('100%')
+          // ...
   }
 }
 ```
@@ -330,15 +353,16 @@ In the **List** component, **ForEach** can be used to render **ListItemGroup** i
 
 ### Setting the Spacing
 
-When initializing a list, you can use the **space** parameter to add spacing between list items. In the following example, a 10 vp spacing is added between list items along the main axis:
+When initializing the **List** component, use the **space** parameter of [ListOptions](../reference/apis-arkui/arkui-ts/ts-container-list.md#listoptions18) to configure spacing between list items. In the following example, a 10 vp spacing is added between list items along the main axis:
 
 
-```ts
+<!-- @[set_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+
+``` TypeScript
 List({ space: 10 }) {
-  // ...
+  // ···
 }
 ```
-
 
 ### Adding Dividers
 
@@ -348,19 +372,19 @@ A divider separates UI items to make them easier to identify. In the following f
 
 ![en-us_image_0000001511580960](figures/en-us_image_0000001511580960.png)
 
-To add dividers between list items, you can use the **divider** attribute together with the following style attributes:
+To add dividers between list items, use the [divider](../reference/apis-arkui/arkui-ts/ts-container-list.md#divider) attribute together with the following style attributes:<br> **strokeWidth** and **color**: stroke width and color of the diver, respectively.
 
-- **strokeWidth** and **color**: stroke width and color of the diver, respectively.
-
-- **startMargin** and **endMargin**: distance between the divider and the start edge and end edge of the list, respectively.
+**startMargin** and **endMargin**: distance between the divider and the start edge and end edge of the list, respectively.
 
 
-```ts
+<!-- @[set_the_divider](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+
+``` TypeScript
 class DividerTmp {
-  strokeWidth: Length = 1;
-  startMargin: Length = 60;
-  endMargin: Length = 10;
-  color: ResourceColor = '#ffe9f0f0';
+  public strokeWidth: Length = 1;
+  public startMargin: Length = 60;
+  public endMargin: Length = 10;
+  public color: ResourceColor = '#ffe9f0f0';
 
   constructor(strokeWidth: Length, startMargin: Length, endMargin: Length, color: ResourceColor) {
     this.strokeWidth = strokeWidth;
@@ -369,15 +393,23 @@ class DividerTmp {
     this.color = color;
   }
 }
+
 @Entry
 @Component
-struct EgDivider {
+export struct CustomListStyle {
   @State egDivider: DividerTmp = new DividerTmp(1, 60, 10, '#ffe9f0f0');
+
+// ···
+
   build() {
-    List() {
-      // ...
-    }
-    .divider(this.egDivider)
+    // ···
+          List(
+            // ···
+          ) {
+            // ···
+          }
+          .divider(this.egDivider)
+        // ···
   }
 }
 ```
@@ -404,10 +436,15 @@ When the total height (width) of list items exceeds the screen height (width), t
 When using the **List** component, you can use the **scrollBar** attribute to control the display of the list scrollbar. The value type of **scrollBar** is [BarState](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#barstate). When the value is **BarState.Auto**, the scrollbar is displayed as required: It is displayed when the scrollbar area is touched and becomes thicker when being dragged; it automatically disappears after 2 seconds of inactivity.
 
 The default value of the **scrollBar attribute** is **BarState.Off** in API version 9 and earlier versions and **BarState.Auto** since API version 10.
-```ts
-List() {
-  // ...
+<!-- @[add_a_scrollbar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+
+``` TypeScript
+List(
+  // ···
+) {
+  // ···
 }
+// ···
 .scrollBar(BarState.Auto)
 ```
 
@@ -417,24 +454,30 @@ To add an external scrollbar to a [List](../reference/apis-arkui/arkui-ts/ts-con
 
 1. Create a [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) object named **listScroller**.
 
-   ```ts
+   <!-- @[external_scroll_ctrl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+   
+   ``` TypeScript
    private listScroller: Scroller = new Scroller();
    ```
 
 2. Bind the **listScroller** object to the **List** component using the [scroller](../reference/apis-arkui/arkui-ts/ts-container-list.md#listoptions18) parameter.
 
-   ```ts
+   <!-- @[external_scroll_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+   
+   ``` TypeScript
    // Use listScroller to initialize the scroller parameter to bind it with the List component.
    List({ scroller: this.listScroller }) {
-   // ...
+   // ···
    }
    ```
 
 3. Bind the **listScroller** object to the **ScrollBar** component using the [scroller](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md#scrollbaroptions) parameter.
 
-   ```ts
+   <!-- @[external_scroll_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+   
+   ``` TypeScript
    // Use listScroller to initialize the scroller parameter to bind it with the ScrollBar component.
-   ScrollBar({ scroller: this.listScroller })
+   ScrollBar({ scroller: this.listScroller})
    ```
 
   **Figure 15** External scrollbar of the List component
@@ -458,12 +501,14 @@ You can use **ListItemGroup** to group items in the **List** component to build 
 A **List** component allows one or more **ListItemGroup** child components. By default, the width of **ListItemGroup** is equal to that of **List**. When initializing **ListItemGroup**, you can use the **header** parameter to set its header.
 
 
-```ts
+<!-- @[set_the_head_component_of_the_list_grouping_by_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/GroupedList.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct ContactsList {
-  
-  @Builder itemHead(text: string) {
+export struct GroupedList {
+  @Builder
+  itemHead(text: string) {
     // Header of the list group, corresponding to the group A and B locations.
     Text(text)
       .fontSize(20)
@@ -473,15 +518,21 @@ struct ContactsList {
   }
 
   build() {
-    List() {
-      ListItemGroup({ header: this.itemHead('A') }) {
-        // Render the repeated list items of group A.
-      }
+    // ···
+          List(
+            // ···
+          ) {
+            ListItemGroup({ header: this.itemHead('A') }) {
+              // Render the repeated list items of group A.
+            // ···
+            }
 
-      ListItemGroup({ header: this.itemHead('B') }) {
-        // Render the repeated list items of group B.
-      }
-    }
+            ListItemGroup({ header: this.itemHead('B') }) {
+              // Render the repeated list items of group B.
+            // ···
+            }
+          }
+        // ···
   }
 }
 ```
@@ -498,28 +549,31 @@ Sticky headers not only signify the representation and usage of data in the resp
 
 ![en-us_image_0000001511740552](figures/en-us_image_0000001511740552.gif)
 
-You can set a sticky header or footer for a **ListItemGroup** component by setting the **sticky** attribute of its parent **List** component.
+You can set a sticky header or footer for a **ListItemGroup** component by setting the [sticky](../reference/apis-arkui/arkui-ts/ts-container-list.md#sticky9) attribute of its parent **List** component.
 
 Setting the **sticky** attribute to **StickyStyle.Header** implements a sticky header. To implement a sticky footer, use the **footer** parameter to initialize the footer of **ListItemGroup** and set the **sticky** attribute to **StickyStyle.Footer**.
 
 
-```ts
+<!-- @[add_sticky_titles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/StickyHeaderList.ets) -->
+
+``` TypeScript
 import { util } from '@kit.ArkTS';
 
 class Contact {
-  key: string = util.generateRandomUUID(true);
-  name: string;
-  icon: Resource;
+  public key: string = util.generateRandomUUID(true);
+  public name: string | Resource;
+  public icon: Resource;
 
-  constructor(name: string, icon: Resource) {
+  constructor(name: string | Resource, icon: Resource) {
     this.name = name;
     this.icon = icon;
   }
 }
-export class ContactsGroup {
-  title: string = '';
-  contacts: Array<object> | null = null;
-  key: string = "";
+
+class ContactsGroup {
+  public title: string = '';
+  public contacts: Array<object> | null = null;
+  public key: string = '';
 }
 
 export class ContactsGroupDataSource implements IDataSource {
@@ -548,8 +602,11 @@ export let contactsGroups: object[] = [
   {
     title: 'A',
     contacts: [
-      new Contact('Alice', $r('app.media.iconA')),
-      new Contact('Ann', $r('app.media.iconB')),
+      // The value in the app.string.contacts_A_one resource file is 'Alice', and app.media.iconA is a custom resource.
+      new Contact($r('app.string.contacts_A_one'), $r('app.media.iconA')),
+      // The value in the app.string.contacts_A_two resource file is 'Ann', and app.media.iconB is a custom resource.
+      new Contact($r('app.string.contacts_A_two'), $r('app.media.iconB')),
+      // app.media.iconC is a custom resource.
       new Contact('Angela', $r('app.media.iconC')),
     ],
     key: util.generateRandomUUID(true)
@@ -557,20 +614,22 @@ export let contactsGroups: object[] = [
   {
     title: 'B',
     contacts: [
-      new Contact('Ben', $r('app.media.iconD')),
-      new Contact('Bryan', $r('app.media.iconE')),
+      // The value in the app.string.contacts_B_one resource file is 'Ben', and app.media.iconD is a custom resource.
+      new Contact($r('app.string.contacts_B_one'), $r('app.media.iconD')),
+      // The value in the app.string.contacts_B_three resource file is 'Bryan', and app.media.iconE is a custom resource.
+      new Contact($r('app.string.contacts_B_three'), $r('app.media.iconE'))
     ],
     key: util.generateRandomUUID(true)
-  } as ContactsGroup,
-  // ...
-]
+  } as ContactsGroup
+];
 export let contactsGroupsDataSource: ContactsGroupDataSource = new ContactsGroupDataSource(contactsGroups);
 
 @Entry
 @Component
-struct ContactsList {
+export struct StickyHeaderList {
   // Define the contactsGroups array.
-  @Builder itemHead(text: string) {
+  @Builder
+  itemHead(text: string) {
     // Header of the list group, corresponding to the group A and B locations.
     Text(text)
       .fontSize(20)
@@ -578,22 +637,26 @@ struct ContactsList {
       .width('100%')
       .padding(5)
   }
+
   build() {
-    List() {
-      // Lazy-load the ListItemGroup components. contactsGroups is the data set of contacts and titles of multiple groups.
-      LazyForEach(contactsGroupsDataSource, (itemGroup: ContactsGroup) => {
-        ListItemGroup({ header: this.itemHead(itemGroup.title) }) {
-          // Lazy-load ListItem components.
-          if (itemGroup.contacts) {
-            LazyForEach(new ContactsGroupDataSource(itemGroup.contacts), (item: Contact) => {
-              ListItem() {
-                // ...
+    // ···
+          List() {
+            // Lazy-load the ListItemGroup components. contactsGroups is the data set of contacts and titles of multiple groups.
+            LazyForEach(contactsGroupsDataSource, (itemGroup: ContactsGroup) => {
+              ListItemGroup({ header: this.itemHead(itemGroup.title) }) {
+                // Render ListItem components cyclically.
+                if (itemGroup.contacts) {
+                  LazyForEach(new ContactsGroupDataSource(itemGroup.contacts), (item: Contact) => {
+                    ListItem() {
+                    // ···
+                    }
+                  }, (item: Contact) => JSON.stringify(item))
+                }
               }
-            }, (item: Contact) => JSON.stringify(item))
+            }, (itemGroup: ContactsGroup) => JSON.stringify(itemGroup))
           }
-        }
-      }, (itemGroup: ContactsGroup) => JSON.stringify(itemGroup))
-    }.sticky(StickyStyle.Header)  // Set a sticky header.
+          .sticky(StickyStyle.Header) // Set a sticky title.
+        // ···
   }
 }
 ```
@@ -611,24 +674,28 @@ When the **List** component is initialized, you can use the **scroller** paramet
 
 To start with, create a **Scroller** object **listScroller**.
 
-
-```ts
-private listScroller: Scroller = new Scroller();
-```
+   <!-- @[create_private_list_scroller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ControlledScrollPositionList.ets) -->
+   
+   ``` TypeScript
+   private listScroller: Scroller = new Scroller();
+   ```
 
 Then, use **listScroller** to initialize the **scroller** parameter to bind it with the **List** component. Set **scrollToIndex** to **0**, meaning to return to the top of the list.
 
 
-```ts
+<!-- @[control_scrolling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ControlledScrollPositionList.ets) -->
+
+``` TypeScript
 Stack({ alignContent: Alignment.Bottom }) {
   // Use listScroller to initialize the scroller parameter to bind it with the List component.
   List({ space: 20, scroller: this.listScroller }) {
-    // ...
+  // ···
   }
 
   Button() {
-    // ...
+  // ···
   }
+  // ···
   .onClick(() => {
     // Specify where e to jump when the specific button is clicked, which is the top of the list in this example.
     this.listScroller.scrollToIndex(0);
@@ -647,34 +714,47 @@ Another common example is a scrolling list working with a multi-level index bar,
 
 ![en-us_image_0000001563060769](figures/en-us_image_0000001563060769.gif)
 
-As shown above, when the contacts list scrolls from group A to B, the alphabetical index bar on the right also changes from A to B. This scenario can be implemented by listening for the **onScrollIndex** event of the **List** component. The alphabet index bar is implemented using the [AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md) component.
+As shown above, when the contacts list scrolls from group A to B, the alphabetical index bar on the right also changes from A to B. This behavior can be implemented by listening for the [onScrollIndex](../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex) event of the **List** component. The alphabetical index bar is implemented using the [AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md) component.
 
 When the list scrolls, the **selectedIndex** value of the letter to highlight in the alphabet index bar is recalculated based on the **firstIndex** value of the item to which the list has scrolled. In the **AlphabetIndexer** component, the index of the highlighted item is set through the **selected** attribute. When the value of **selectedIndex** changes, the **AlphabetIndexer** component is re-rendered to highlight the corresponding letter.
 
 
-```ts
+<!-- @[respond_to_scroll_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ResponsiveScrollPositionList.ets) -->
+
+``` TypeScript
 const alphabets = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
   'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+// ···
+
 @Entry
 @Component
-struct ContactsList {
+export struct ResponsiveScrollPositionList {
   @State selectedIndex: number = 0;
   private listScroller: Scroller = new Scroller();
+// ···
 
   build() {
-    Stack({ alignContent: Alignment.End }) {
-      List({ scroller: this.listScroller }) {}
-      .onScrollIndex((firstIndex: number) => {
-        // Recalculate the value of this.selectedIndex in the alphabetical index bar based on the index of the item to which the list has scrolled.
-      })
+    // ···
+          Stack({ alignContent: Alignment.End }) {
+            // Use the List component to handle scroll position changes.
+            // Use listScroller to initialize the scroller parameter to bind it with the List component.
+            List({ scroller: this.listScroller }) {
+            // ···
+            }
+            .onScrollIndex((firstIndex: number) => {
+              // Recalculate the value of this.selectedIndex in the alphabetical index bar based on the index of the item to which the list has scrolled.
+            // ···
+            })
 
-      // AlphabetIndexer component
-      AlphabetIndexer({ arrayValue: alphabets, selected: 0 })
-        .selected(this.selectedIndex)
-        .onSelect((index: number) => {
-          this.listScroller.scrollToIndex(index);
-        })
-    }
+            // AlphabetIndexer component
+            AlphabetIndexer({ arrayValue: alphabets, selected: 0 })
+              .selected(this.selectedIndex)
+              .onSelect((index: number) => {
+                this.listScroller.scrollToIndex(index);
+              })
+          }
+        // ···
   }
 }
 ```
@@ -698,39 +778,47 @@ In the example of the message list, the **end** parameter is set to a custom del
 
 1. Build the component that appears from the end edge when the list item is swiped left.
 
-    ```ts
-    @Builder itemEnd(index: number) {
-      // Build the component that appears from the end edge when the list item is swiped left.
-      Button({ type: ButtonType.Circle }) {
-        Image($r('app.media.ic_public_delete_filled'))
-          .width(20)
-          .height(20)
-      }
-      .onClick(() => {
-        // this.messages is the list data source, which can be constructed as required. A specified data item can be deleted from the data source upon click.
-        this.messages.splice(index, 1);
-      })
-    }
-    ```
+   <!-- @[build_the_tail_slide_out_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SwipeableListItem.ets) -->
+   
+   ``` TypeScript
+   @Builder
+   itemEnd(index: number) {
+     // Build the component that appears from the end edge when the list item is swiped left.
+     Button({ type: ButtonType.Circle }) {
+       Image($r('sys.media.ohos_ic_bottomsheet_close'))
+         .width(40)
+         .height(40)
+     }
+     // ···
+     .onClick(() => {
+       // this.messages is the list data source, which can be constructed as required. A specified data item can be deleted from the data source upon click.
+       this.arr.splice(index, 1);
+     })
+   }
+   ```
 
 2. Binds the **swipeAction** attribute to a list item that can be swiped left.
 
-    ```ts
-    // When constructing a list, use ForEach to render list items based on the data source this.messages.
-    ListItem() {
-      // ...
-    }
-    .swipeAction({
-      end: {
-        // index is the index of the list item.
-        builder: () => { this.itemEnd(index) },
-      }
-    }) // Set the swipe action.
-    ```
+   <!-- @[bind_the_swipeAction_property_to_left_swipe_list_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SwipeableListItem.ets) -->
+   
+   ``` TypeScript
+   // When constructing a list, use ForEach to render list items based on the data source this.messages.
+   ListItem() {
+     // ···
+   }.swipeAction({
+     end: {
+       // index is the index of the list item.
+       builder: () => {
+         // ···
+         this.itemEnd(this.index);
+       },
+     }
+   }) // Set the swipe action.
+   ```
 
 ## Adding a Badge to a List Item
 
-A badge is an intuitive, unobtrusive visual indicator to draw attention and convey a specific message. For example, a badge can be displayed in the upper right corner of the contact's profile picture to indicate that there is a new message from that contact, as shown in the following figure.
+A badge is an intuitive, unobtrusive visual indicator to draw attention and convey a specific message. For example, a badge can be displayed in the upper right corner of the message list to indicate that there are new messages, as shown in the following figure.
 
   **Figure 21** Adding a badge to a list item 
 
@@ -738,20 +826,22 @@ A badge is an intuitive, unobtrusive visual indicator to draw attention and conv
 
 To add a badge, use the [Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md) component in **ListItem**. The **Badge** component is a container that can be attached to another component for tagging.
 
-In this example, when implementing the **Image** component for presenting the profile picture of a list item, add it to **Badge** as a child component.
+In a message list, if you want to display a badge in the upper right corner of a message, wrap the corresponding component inside the **Badge** component within the list item.
 
 In the **Badge** component, the **count** and **position** parameters are used to set the number of notifications and the position to display the badge, respectively. You can also use the **style** parameter to spruce up the badge.
 
 
-```ts
+<!-- @[add_tags_to_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/TaggedListItems.ets) -->
+
+``` TypeScript
 ListItem() {
+  // Add a badge to the upper right corner of the message item.
   Badge({
     count: 1,
     position: BadgePosition.RightTop,
     style: { badgeSize: 16, badgeColor: '#FA2A2D' }
   }) {
-    // The Image component implements the contact profile picture.
-    // ...
+  // ···
   }
 }
 ```
@@ -798,14 +888,16 @@ The process of implementing the addition feature is as follows:
 
 1. Define the list item data structure. In this example, a to-do data structure is defined.
 
-   ```ts
+   <!-- @[define_the_data_to_be_done](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ToDo.ets) -->
+   
+   ``` TypeScript
    //ToDo.ets
    import { util } from '@kit.ArkTS';
-
+   
    export class ToDo {
-     key: string = util.generateRandomUUID(true);
-     name: string;
-
+     public key: string = util.generateRandomUUID(true);
+     public name: string;
+   
      constructor(name: string) {
        this.name = name;
      }
@@ -814,99 +906,127 @@ The process of implementing the addition feature is as follows:
 
 2. Build the overall list layout and list items.
 
-   ```ts
-   //ToDoListItem.ets
+   <!-- @[build_the_overall_list_layout_and_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ToDoListItem.ets) -->
+   
+   ``` TypeScript
    import { ToDo } from './ToDo';
-
+   
    @Component
    export struct ToDoListItem {
      @Link isEditMode: boolean;
      @Link selectedItems: ToDo[];
-     private toDoItem: ToDo = new ToDo("");
-
+     private toDoItem: ToDo = new ToDo('');
+   
      build() {
-      Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-        // ...
-      }
-      .width('100%')
-      .height(80)
-      // .padding(): Set this parameter based on the use case.
-      .borderRadius(24)
-      // .linearGradient(): Set this parameter based on the use case.
-      .gesture(
-        GestureGroup(GestureMode.Exclusive,
-        LongPressGesture()
-          .onAction(() => {
-            // ...
-          })
-        )
-      )
+       Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
+       // ···
+       }
+       // ···
+       .width('100%')
+       .height(80)
+       // .padding(): Set this parameter based on the use case.
+       .borderRadius(24)
+       // .linearGradient(): Set this parameter based on the use case.
+       .gesture(
+         GestureGroup(GestureMode.Exclusive,
+           LongPressGesture()
+             .onAction(() => {
+             })
+         )
+       )
      }
    }
    ```
 
 3. Initialize the to-do list data and available items, and build the list layout and list items.
 
-   ```ts
-   //ToDoList.ets
+   <!-- @[build_list_layouts_and_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/AddListItem.ets) -->
+   
+   ``` TypeScript
    import { ToDo } from './ToDo';
    import { ToDoListItem } from './ToDoListItem';
    
    @Entry
    @Component
-   struct ToDoList {
+   export struct AddListItem {
      @State toDoData: ToDo[] = [];
      @Watch('onEditModeChange') @State isEditMode: boolean = false;
      @State selectedItems: ToDo[] = [];
-    private availableThings: string[] = ['Reading', 'Fitness', 'Travel', 'Music', 'Movie', 'Singing'];
+     private availableThings: string [] = [];
+   
+     aboutToAppear(): void {
+       const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+       const reading = context.resourceManager.getStringByNameSync('Reading')
+       this.availableThings.push(reading)
+       const exercise = context.resourceManager.getStringByNameSync('Exercise')
+       this.availableThings.push(exercise)
+       const travel = context.resourceManager.getStringByNameSync('Travel')
+       this.availableThings.push(travel)
+       const listening = context.resourceManager.getStringByNameSync('Listening_Music')
+       this.availableThings.push(listening)
+       const watching = context.resourceManager.getStringByNameSync('Watching_Films')
+       this.availableThings.push(watching)
+       const singing = context.resourceManager.getStringByNameSync('Singing')
+       this.availableThings.push(singing)
+     }
    
      onEditModeChange() {
        if (!this.isEditMode) {
          this.selectedItems = [];
        }
-    }
+     }
    
      build() {
-       Column() {
-         Row() {
-           if (this.isEditMode) {
-             Text('X')
-               .fontSize(20)
-               .onClick(() => {
-                 this.isEditMode = false;
-               })
-               .margin({ left: 20, right: 20 })
-           } else {
-             Text('To-Do')
-               .fontSize(36)
-               .margin({ left: 40 })
-             Blank()
-             Text('+') // Provide an entry for adding a list item, that is, add a click event for the add button.
-               .onClick(() => {
-                 this.getUIContext().showTextPickerDialog({
-                   range: this.availableThings,
-                   onAccept: (value: TextPickerResult) => {
-                     let arr = Array.isArray(value.index) ? value.index : [value.index];
-                     for (let i = 0; i < arr.length; i++) {
-                       this.toDoData.push(new ToDo(this.availableThings[arr[i]])); // Add to-do list items (available items).
-                     }
-                   },
-                 })
-               })
-           }
-           List({ space: 10 }) {
-             ForEach(this.toDoData, (toDoItem: ToDo) => {
-               ListItem() {
-                 // Place each item of toDoData into the list item in the form of model.
-                 ToDoListItem({
-                   isEditMode: this.isEditMode,
-                   toDoItem: toDoItem,
-                   selectedItems: this.selectedItems })
+       // ···
+         Column(
+           // ···
+         ) {
+           // ···
+               Row() {
+                 if (this.isEditMode) {
+                   Text('X')
+                     .fontSize(20)
+                     .onClick(() => {
+                       this.isEditMode = false;
+                     })
+                     .margin({ left: 20, right: 20 })
+                 } else {
+                   // The value in the app.string.TodoItem resource file is 'To-Do'.
+                   Text($r('app.string.TodoItem'))
+                     .fontSize(36)
+                     .margin({ left: 40 })
+                   Blank()
+                   Text('+')// Provide an entry for adding a list item, that is, add a click event for the add button.
+                   // ···
+                     .onClick(() => {
+                       this.getUIContext().showTextPickerDialog({
+                         range: this.availableThings,
+                         onAccept: (value: TextPickerResult) => {
+                           let arr = Array.isArray(value.index) ? value.index : [value.index];
+                           for (let i = 0; i < arr.length; i++) {
+                             this.toDoData.push(new ToDo(this.availableThings[arr[i]])); // Add to-do list items (available items).
+                           }
+                         },
+                       })
+                     })
+                 }
+               // ···
+   
+               List({ space: 10 }) {
+                 ForEach(this.toDoData, (toDoItem: ToDo) => {
+                   ListItem() {
+                     // Place each item of toDoData into the list item in the form of model.
+                     ToDoListItem({
+                       isEditMode: this.isEditMode,
+                       toDoItem: toDoItem,
+                       selectedItems: this.selectedItems
+                     })
+                   }
+                 }, (toDoItem: ToDo) => toDoItem.name.toString())
                }
-             }, (toDoItem: ToDo) => toDoItem.key.toString())
+             }
            }
-         }
-       }
+           // ···
      }
    }
    ```
@@ -925,97 +1045,115 @@ The process of implementing the deletion feature is as follows:
 1. Generally, the deletion feature is available only after the list enters the editing mode. Therefore, the entry to the editing mode needs to be provided.
    In this example, by listening for the long press event of a list item, the list enters the editing mode when the user long presses a list item.
 
-    ```ts
-    // Structure reference
-    export class ToDo {
-      key: string = util.generateRandomUUID(true);
-      name: string;
-      toDoData: ToDo[] = [];
-
-      constructor(name: string) {
-        this.name = name;
-      }
-    }
-    ```
-    ```ts
-    // Implementation reference
-    Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-      // ...
-    }
-    .gesture(
-    GestureGroup(GestureMode.Exclusive,
-      LongPressGesture()
-        .onAction(() => {
-          if (!this.isEditMode) {
-            this.isEditMode = true; // Enter the editing mode.
-          }
-        })
-      )
-    )
-    ```
+   <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
    
-2. Respond to the user's selection and record the list items to be deleted.
-   In this to-do list example, the list items are selected or unselected according to the user's selection.
-
-    ```ts
-   // Structure reference
+   ``` TypeScript
    import { util } from '@kit.ArkTS';
-
+   
+   // Structure reference
    export class ToDo {
-     key: string = util.generateRandomUUID(true);
-     name: string;
-     toDoData: ToDo[] = [];
-
+     public key: string = util.generateRandomUUID(true);
+     public name: string;
+     public toDoData: ToDo[] = [];
+   
      constructor(name: string) {
        this.name = name;
      }
    }
-    ```
-    ```ts
-    // Implementation reference
-    if (this.isEditMode) {
-      Checkbox()
-        .onChange((isSelected) => {
-          if (isSelected) {
-            this.selectedItems.push(toDoList.toDoItem); // When an item is selected, it is added to the selectedItems array. Make adjustment based on actual scenarios.
-          } else {
-            let index = this.selectedItems.indexOf(toDoList.toDoItem);
-            if (index !== -1) {
-              this.selectedItems.splice(index, 1); // When an item is deselected, it is deleted from the selectedItems array.
-            }
-          }
-        })
-    }
-    ```
+   ```
+
+   Refer to the code snippet below:
+   <!-- @[enter_edit_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
    
+   ``` TypeScript
+   Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
+   // ···
+   }
+   // ···
+   .gesture(
+     GestureGroup(GestureMode.Exclusive,
+       LongPressGesture()
+         .onAction(() => {
+           if (!this.isEditMode) {
+             this.isEditMode = true; // Enter the editing mode.
+           }
+         })
+     )
+   )
+   ```
+
+2. Respond to the user's selection and record the list items to be deleted.
+   In this to-do list example, the list items are selected or unselected according to the user's selection.
+
+   <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+   
+   ``` TypeScript
+   import { util } from '@kit.ArkTS';
+   
+   // Structure reference
+   export class ToDo {
+     public key: string = util.generateRandomUUID(true);
+     public name: string;
+     public toDoData: ToDo[] = [];
+   
+     constructor(name: string) {
+       this.name = name;
+     }
+   }
+   ```
+
+   Refer to the code snippet below:
+   <!-- @[is_edit_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+   
+   ``` TypeScript
+   if (this.isEditMode) {
+     Checkbox()
+       .onChange((isSelected) => {
+         if (isSelected) {
+           this.selectedItems.push(new ToDo(this.toDoItem.name)); // When an item is selected, it is added to the selectedItems array. Make adjustment based on actual scenarios.
+         } else {
+           let index = this.selectedItems.indexOf(new ToDo(this.toDoItem.name));
+           if (index !== -1) {
+             this.selectedItems.splice(index, 1); // When an item is deselected, it is deleted from the selectedItems array.
+           }
+         }
+       })
+   }
+   ```
+
 3. Respond to the user's clicking the delete button and delete the corresponding items from the list.
 
-    ```ts
-    // Structure reference
-    import { util } from '@kit.ArkTS';
+   <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+   
+   ``` TypeScript
+   import { util } from '@kit.ArkTS';
+   
+   // Structure reference
+   export class ToDo {
+     public key: string = util.generateRandomUUID(true);
+     public name: string;
+     public toDoData: ToDo[] = [];
+   
+     constructor(name: string) {
+       this.name = name;
+     }
+   }
+   ```
 
-    export class ToDo {
-      key: string = util.generateRandomUUID(true);
-      name: string;
-      toDoData: ToDo[] = [];
-
-      constructor(name: string) {
-        this.name = name;
-      }
-    }
-    ```
-    ```ts
-    // Implementation reference
-    Button('Delete')
-      .onClick(() => {
-        // this.toDoData is the to-do list item, which can be constructed based on service requirements. After an item is clicked, the corresponding data is removed.
-        let leftData = this.toDoData.filter((item) => {
-          return !this.selectedItems.find((selectedItem) => selectedItem == item);
-        })
-        this.toDoData = leftData;
-        this.isEditMode = false;
-      })
-    ```
+   Refer to the code snippet below:
+   <!-- @[implement_deletion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+   
+   ``` TypeScript
+   // The value in the app.string.delete resource file is 'Delete'.
+   Button($r('app.string.delete'))
+   // ···
+     .onClick(() => {
+       // this.toDoData is the to-do list item, which can be constructed based on service requirements. After an item is clicked, the corresponding data is removed.
+       this.toDoData = this.toDoData.filter(toDoItem =>
+       !this.selectedItems.some(selectedItem => selectedItem.name === toDoItem.name));
+       this.isEditMode = false;
+     })
+   ```
 
 
 ## Handling a Long List
@@ -1024,12 +1162,16 @@ While [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) is s
 
 For details about the implementation, see the example in [LazyForEach: Lazy Data Loading](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 
-When the list is rendered in lazy loading mode, to improve the list scrolling experience and minimize white blocks during list scrolling, you can use the **cachedCount** parameter of the **List** component to set the number of cached list items. With lazy loading, only content outside the visible area up to the **cachedCount** limit will be preloaded, whereas non-lazy loading will load all content. For both lazy and non-lazy loading, only the items within the visible area plus the **cachedCount**-specified number of items outside the visible area are laid out.
+When the list is rendered in lazy loading mode, to improve the list scrolling experience and minimize white blocks during list scrolling, you can use the **cachedCount** parameter of the **List** component to set the number of cached list items. With lazy loading, only content outside the visible area up to the [cachedCount](../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount) limit will be preloaded, whereas non-lazy loading will load all content. For both lazy and non-lazy loading, only the items within the visible area plus the **cachedCount**-specified number of items outside the visible area are laid out.
 
 
-```ts
-List() {
-  // ...
+<!-- @[implement_cached_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+
+``` TypeScript
+List(
+// ···
+) {
+// ···
 }.cachedCount(3)
 ```
 
@@ -1058,168 +1200,189 @@ The process of implementing the collapsing and expanding effect of list items is
 
 1. Define the list item data structure.
 
-    ```ts
-    import { curves } from '@kit.ArkUI';
-
-    interface ItemInfo {
-      index: number,
-      name: string,
-      label: ResourceStr,
-      type?: string,
-    }
-
-    interface ItemGroupInfo extends ItemInfo {
-      children: ItemInfo[]
-    }
-    ```
+   <!-- @[data_structures_head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CollapseAndExpand.ets) -->
+   
+   ``` TypeScript
+   import { curves } from '@kit.ArkUI';
+   
+   interface ItemInfo {
+     index: number,
+     name: ResourceStr,
+     label: ResourceStr,
+     type?: string,
+   }
+   
+   interface ItemGroupInfo extends ItemInfo {
+     children: ItemInfo[]
+   }
+   ```
 
 2. Construct a list structure.
 
-    ```ts
-    @State routes: ItemGroupInfo[] = [
-      {
-        index: 0,
-        name: 'basicInfo',
-        label: 'Basic personal information',
-        children: [
-          {
-            index: 0,
-            name: 'Nickname',
-            label: 'xxxx',
-            type: 'Text'
-          },
-          {
-            index: 1,
-            name: 'Profile picture',
-            label: $r('sys.media.ohos_user_auth_icon_face'),
-            type: 'Image'
-          },
-          {
-            index: 2,
-            name: 'Age',
-            label: 'xxxx',
-            type: 'Text'
-          },
-          {
-            index: 3,
-            name: 'Birthday',
-            label: 'xxxxxxxxx',
-            type: 'Text'
-          },
-          {
-            index: 4,
-            name: 'Gender',
-            label: 'xxxxxxxx',
-            type: 'Text'
-          },
-        ]
-      },
-      {
-        index: 1,
-        name: 'equipInfo',
-        label: 'Device information',
-        children: []
-      },
-      {
-        index: 2,
-        name: 'appInfo',
-        label: 'App usage',
-        children: []
-      },
-      {
-        index: 3,
-        name: 'uploadInfo',
-        label: 'Data you actively upload',
-        children: []
-      },
-      {
-        index: 4,
-        name: 'tradeInfo',
-        label: 'Transactions & assets',
-        children: []
-      },
-      {
-        index: 5,
-        name: 'otherInfo',
-        label: 'Other materials',
-        children: []
-      },
-    ];
-    @State expandedItems: boolean[] = Array(this.routes.length).fill(false);
-    @State selection: string | null = null;
-    build() {
-      Column() {
-        // ...
+   <!-- @[list_item_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CollapseAndExpand.ets) -->
+   
+   ``` TypeScript
+     @State routes: ItemGroupInfo[] = [
+       {
+         index: 0,
+         name: 'basicInfo',
+         // The value in the app.string.Personal_Basic_Information resource file is 'Basic personal information'.
+         label: $r('app.string.Personal_Basic_Information'),
+         children: [
+           {
+             index: 0,
+             // The value in the app.string.nick_name resource file is 'Nickname'.
+             name: $r('app.string.nick_name'),
+             label: 'xxxx',
+             type: 'Text'
+           },
+           {
+             index: 1,
+             // The value in the app.string app.string.avatar resource file is 'Profile picture'.
+             name: $r('app.string.avatar'),
+             label: $r('sys.media.ohos_user_auth_icon_face'),
+             type: 'Image'
+           },
+           {
+             index: 2,
+             // The value in the app.string app.string.age resource file is 'Age'.
+             name: $r('app.string.age'),
+             label: 'xxxx',
+             type: 'Text'
+           },
+           {
+             index: 3,
+             // The value in the app.string.birthday resource file is 'Gender'.
+             name: $r('app.string.birthday'),
+             label: 'xxxxxxxxx',
+             type: 'Text'
+           },
+           {
+             index: 4,
+             // The value in the app.string.gender resource file is "
+             name: $r('app.string.gender'),
+             label: 'xxxxxxxx',
+             type: 'Text'
+           },
+         ]
+       },
+       {
+         index: 1,
+         name: 'equipInfo',
+         // The value in the app.string.Device_Information resource file is "Device information".
+         label: $r('app.string.Device_Information'),
+         children: []
+       },
+       {
+         index: 2,
+         name: 'appInfo',
+         // The value in the app.string.Application_usage_information resource file is 'App usage'.
+         label: $r('app.string.Application_usage_information'),
+         children: []
+       },
+       {
+         index: 3,
+         name: 'uploadInfo',
+         // The value in the app.string.data_you_voluntarily_uploaded resource file is 'Data you actively upload'.
+         label: $r('app.string.data_you_voluntarily_uploaded'),
+         children: []
+       },
+       {
+         index: 4,
+         name: 'tradeInfo',
+         // The value in the app.string.Trading_and_asset_information resource file is 'Transactions & assets'.
+         label: $r('app.string.Trading_and_asset_information'),
+         children: []
+       },
+       {
+         index: 5,
+         name: 'otherInfo',
+         // The value in the app.string.Other_materials resource file is 'Other materials'.
+         label: $r('app.string.Other_materials'),
+         children: []
+       },
+     ];
+     @State expandedItems: boolean[] = Array(this.routes.length).fill(false);
+     @State selection: string | null = null;
+   
+     // ...
+   
+     build() {
+       // ...
+             Column() {
+               List({ space: 10 }) {
+                 ForEach(this.routes, (itemGroup: ItemGroupInfo) => {
+                   ListItemGroup({
+                     header: this.ListItemGroupHeader(itemGroup),
+                     style: ListItemGroupStyle.CARD,
+                   }) {
+                     if (this.expandedItems[itemGroup.index] && itemGroup.children) {
+                       ForEach(itemGroup.children, (item: ItemInfo) => {
+                         ListItem({ style: ListItemStyle.CARD }) {
+                           Row() {
+                             Text(item.name)
+                             Blank()
+                             if (item.type === 'Image') {
+                               Image(item.label)
+                                 .height(20)
+                                 .width(20)
+                             } else {
+                               Text(item.label)
+                             }
+                             Image($r('sys.media.ohos_ic_public_arrow_right'))
+                               .fillColor($r('sys.color.ohos_id_color_fourth'))
+                               .height(30)
+                               .width(30)
+                           }
+                           .width('100%')
+                         }
+                         .width('100%')
+                         .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
+                       })
+                     }
+                   }.clip(true)
+                 })
+               }
+               .width('100%')
+             }
+             .width('100%')
+             .height('100%')
+             .justifyContent(FlexAlign.Start)
+             .backgroundColor($r('sys.color.ohos_id_color_sub_background'))
+             // ...
+     }
+   }
+   ```
 
-        List({ space: 10 }) {
-          ForEach(this.routes, (itemGroup: ItemGroupInfo) => {
-            ListItemGroup({
-              header: this.ListItemGroupHeader(itemGroup),
-              style: ListItemGroupStyle.CARD,
-            }) {
-              if (this.expandedItems[itemGroup.index] && itemGroup.children) {
-                ForEach(itemGroup.children, (item: ItemInfo) => {
-                  ListItem({ style: ListItemStyle.CARD }) {
-                    Row() {
-                      Text(item.name)
-                      Blank()
-                      if (item.type === 'Image') {
-                        Image(item.label)
-                          .height(20)
-                          .width(20)
-                      } else {
-                        Text(item.label)
-                      }
-                      Image($r('sys.media.ohos_ic_public_arrow_right'))
-                        .fillColor($r('sys.color.ohos_id_color_fourth'))
-                        .height(30)
-                        .width(30)
-                    }
-                    .width("100%")
-                  }
-                  .width("100%")
-                  .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
-                })
-              }
-            }.clip(true)
-          })
-        }
-        .width("100%")
-      }
-      .width('100%')
-      .height('100%')
-      .justifyContent(FlexAlign.Start)
-      .backgroundColor($r('sys.color.ohos_id_color_sub_background'))
-    }
-    ```
+3. Control list item expansion by changing the state of **ListItem** components, and implement expand/collapse animations through [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md#animation) and [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto).
 
-3. Control whether each list item is expanded by changing the state of **ListItem**, and achieve the animation effects during the expanding and collapsing process through **animation** and **animateTo**.
-
-    ```ts
-    @Builder
-    ListItemGroupHeader(itemGroup: ItemGroupInfo) {
-      Row() {
-        Text(itemGroup.label)
-        Blank()
-        Image($r('sys.media.ohos_ic_public_arrow_down'))
-          .fillColor($r('sys.color.ohos_id_color_fourth'))
-          .height(30)
-          .width(30)
-          .rotate({ angle: !!itemGroup.children.length ? (this.expandedItems[itemGroup.index] ? 0 : 180) : 180 })
-          .animation({ curve: curves.interpolatingSpring(0, 1, 228, 22) })
-      }
-      .width("100%")
-      .padding(10)
-      .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
-      .onClick(() => {
-        if (itemGroup.children.length) {
-          this.getUIContext()?.animateTo({ curve: curves.interpolatingSpring(0, 1, 528, 39) }, () => {
-            this.expandedItems[itemGroup.index] = !this.expandedItems[itemGroup.index];
-          })
-        }
-      })
-    }
-    ```
+   <!-- @[list_item_data_group_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CollapseAndExpand.ets) -->
+   
+   ``` TypeScript
+   @Builder
+   ListItemGroupHeader(itemGroup: ItemGroupInfo) {
+     Row() {
+       Text(itemGroup.label)
+       Blank()
+       Image($r('sys.media.ohos_ic_public_arrow_down'))
+         .fillColor($r('sys.color.ohos_id_color_fourth'))
+         .height(30)
+         .width(30)
+         .rotate({ angle: !!itemGroup.children.length ? (this.expandedItems[itemGroup.index] ? 180 : 0) : 180 })
+         .animation({ curve: curves.interpolatingSpring(0, 1, 228, 22) })
+     }
+     .width('100%')
+     .padding(10)
+     .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
+     .onClick(() => {
+       if (itemGroup.children.length) {
+         this.getUIContext()?.animateTo({ curve: curves.interpolatingSpring(0, 1, 528, 39) }, () => {
+           this.expandedItems[itemGroup.index] = !this.expandedItems[itemGroup.index];
+         })
+       }
+     })
+   }
+   ```
 
 ## Switching the Layout Direction
 
@@ -1231,113 +1394,148 @@ In certain scenarios, you may want a list to automatically scroll upward when ne
 
 1. Define the list item data structure.
 
-    ```ts
-    interface Message {
-      id: number
-      content: string
-      sender: string
-    }
-    ```
+   <!-- @[listitem_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
+   
+   ``` TypeScript
+   interface Message {
+     id: number
+     content: ResourceStr
+     sender: ResourceStr
+   }
+   ```
 
-2. Construct a list structure and set **stackFromEnd** to **true**. In this way, the list content automatically scrolls upward to reveal newly inserted data items.
+2. Construct a list structure and set [stackFromEnd](../reference/apis-arkui/arkui-ts/ts-container-list.md#stackfromend19) to **true**. This configuration causes the list to automatically scroll upward when new items are inserted at the bottom.
 
-    ```ts
-    @State messages: Message[] = [
-        { id: 1, content: 'Welcome to the live stream!', sender: 'System' },
-        { id: 2, content: 'Hello everyone!', sender: 'Host' }
-    ];
-    build() {
-      Column() {
-        List({ space: 10 }) {
-          ForEach(this.messages, (item: Message) => {
-            ListItem() {
-              this.MessageItem(item)
-            }
-          }, (item: Message) => item.id.toString())
-        }
-        .stackFromEnd(true)
-        .layoutWeight(1)
-        .alignListItem(ListItemAlign.Center)
-        // ...
-      }
-      .width('100%')
-      .height('100%')
-    }
-    ```
+   <!-- @[construct_list_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
+   
+   ``` TypeScript
+   @State messages: Message[] = [];
+   
+   aboutToAppear(): void {
+     const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+     // The value in the app.string.welcome_live_room resource file is 'Welcome to the live stream'.
+     const welcomeLiveRoom = context.resourceManager.getStringByNameSync('welcome_live_room');
+     // The value in the app.string.system resource file is 'System'.
+     const system = context.resourceManager.getStringByNameSync('system');
+     // The value in the app.string.hello_everyone resource file is 'Hello everyone!'
+     const helloEveryone = context.resourceManager.getStringByNameSync('hello_everyone');
+     // The value in the app.string.anchors resource file is 'Host'.
+     const anchors = context.resourceManager.getStringByNameSync('anchors');
+     this.messages = [
+       { id: 1, content: welcomeLiveRoom, sender: system },
+       { id: 2, content: helloEveryone, sender: anchors }
+     ];
+   }
+   
+   build() {
+     // ···
+           Column() {
+             // Chat message area.
+             List({ space: 10 }) {
+               ForEach(this.messages, (item: Message) => {
+                 ListItem() {
+                   this.MessageItem(item)
+                 }
+               }, (item: Message) => item.id.toString())
+             }
+             .stackFromEnd(true)
+             .layoutWeight(1) // Occupy the remaining space.
+             .alignListItem(ListItemAlign.Center)
+   
+             // ···
+           }
+           .width('100%')
+           .height('100%')
+         // ···
+   }
+   ```
 
 ## Handling Swipe Release Events
 
 Since API version 20, scrollable components ([Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), and [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)) support swipe release event callbacks. These callbacks are triggered when the user lifts their finger from the screen, reporting the instantaneous swipe velocity. You can use the callbacks to implement custom scroll positioning effects, such as snap scrolling for short news items and free scrolling for long articles.
 
+  **Figure 26** Custom scroll positioning effects
+
 
 
 1. Define the news item data structure.
 
-    ```ts
-    // Structure reference
-    class news {
-      public id: string;
-      public title: string;
-      public content: string;
-      public type: string;
-
-      constructor(id: string, title: string, content: string, type: string) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.type = type;
-      }
-    }
-    ```
+   <!-- @[class_news_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+   
+   ``` TypeScript
+   class News {
+     public id: string;
+     public title: ResourceStr;
+     public content: ResourceStr;
+     public type: string;
+   
+     constructor(id: string, title: ResourceStr, content: ResourceStr, type: string) {
+       this.id = id;
+       this.title = title;
+       this.content = content;
+       this.type = type;
+     }
+   }
+   ```
 
 2. Construct news data, using **type** to distinguish between news item types.
 
-    ```ts
-    // Implementation reference
-    @State newsData: Array<news> = [
-      new news('1', 'Headline 1', 'Short news content for quick browsing', 'short'),
-      new news('2', 'Headline 2', 'Another brief news item', 'short'),
-      new news('3', 'Headline 3', 'Long-form article with detailed content. '.repeat(20), 'long'),
-      new news('4', 'Headline 4', 'Quick news update', 'short'),
-      new news('5', 'Headline 5', 'In-depth analysis piece.', 'long')
-    ];
-    ```
+   <!-- @[news_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+   
+   ``` TypeScript
+   @State newsData: Array<News> = [
+     // The value in the app.string.new_title resource file is 'Headline'.
+     // The value in the app.string.new_short resource file is 'Short news content for quick browsing.'
+     new News('1', $r('app.string.new_title'), $r('app.string.new_short'), 'short'),
+     new News('2', $r('app.string.new_title'), $r('app.string.new_short'), 'short'),
+     // The value in the app.string.new_long resource file is 'Another brief news item.'
+     new News('3', $r('app.string.new_title'), $r('app.string.new_long'), 'long'),
+     new News('4', $r('app.string.new_title'), $r('app.string.new_short'), 'short'),
+     new News('5', $r('app.string.new_title'), $r('app.string.new_long'), 'long'),
+   ];
+   ```
 
 3. Implement the swipe release event handling (**onWillStopDragging**) and news processing logic:
    - The **onWillStopDragging** callback reports the instantaneous swipe velocity when the user lifts their finger, with direction detection (positive value for upward swipes, negative for downward swipes).
 
-     ```ts
-     // Implementation reference
-     onWillStopDragging((velocity: number) => {
+     <!-- @[scroll_index_scroller_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+     
+     ``` TypeScript
+     .onWillStopDragging((velocity: number) => {
        if (velocity < 0) {
          // Handle downward swipes.
        } else {
          // Handle upward swipes.
        }
+     // ···
      })
      ```
 
-   - The current item's position information is obtained through the **getItemRect** API.
+   - The current item's position information is obtained through the [getItemRect](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#getitemrect11) API.
 
-     ```ts
-     // Implementation reference
+     <!-- @[scroller_list_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+     
+     ``` TypeScript
      let rect = this.scrollerForList.getItemRect(this.currentIndex);
      ```
-     
+
    - For short news items, the list directly snaps to adjacent items.
+
+     <!-- @[scroll_to_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
      
-     ```ts
-     // Implementation reference
+     ``` TypeScript
      if (velocity > 10) {
-       this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.START);
+       this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.START)
      } else if (velocity < -10) {
-       this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START);
+       this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START)
      }
      ```
 
    - For long news articles, the system calculates the remaining visible area to determine the optimal scroll end point.
    
-     ```ts
+     <!-- @[scroller_for_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+     
+     ``` TypeScript
      let rect = this.scrollerForList.getItemRect(this.currentIndex);
      if (velocity < -30) {
        if (rect) {

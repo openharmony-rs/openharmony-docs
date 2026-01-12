@@ -25,7 +25,7 @@ import { netFirewall } from '@kit.NetworkKit';
 
 getNetFirewallPolicy(userId: number): Promise\<NetFirewallPolicy>
 
-Obtains a firewall policy.
+Obtains a firewall policy. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_NET_FIREWALL
 
@@ -75,7 +75,7 @@ netFirewall.getNetFirewallPolicy(100).then((result: netFirewall.NetFirewallPolic
 
 updateNetFirewallRule(rule: NetFirewallRule): Promise\<void>
 
-Updates a firewall rule.
+Updates a firewall rule. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 
@@ -132,7 +132,7 @@ let ipRuleUpd: netFirewall.NetFirewallRule = {
       family: 1,
       type: 1,
       address: "10.10.1.1",
-      mask: 24
+      mask: 32
     },{
       family: 1,
       type: 2,
@@ -152,7 +152,7 @@ netFirewall.updateNetFirewallRule(ipRuleUpd).then(() => {
 
 removeNetFirewallRule(userId: number, ruleId: number): Promise\<void>
 
-Removes a firewall rule.
+Removes a firewall rule. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 
@@ -202,7 +202,7 @@ netFirewall.removeNetFirewallRule(100, 1).then(() => {
 
 getNetFirewallRules(userId: number, requestParam: RequestParam): Promise\<FirewallRulePage>
 
-Obtains firewall rules by user ID. You need to specify the pagination query parameter when calling this API.
+Obtains firewall rules by user ID. You need to specify the pagination query parameter when calling this API. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_NET_FIREWALL
 
@@ -213,7 +213,7 @@ Obtains firewall rules by user ID. You need to specify the pagination query para
 | Name         | Type                         | Mandatory| Description                                        |
 | --------------- | ----------------------------- | ---- | -------------------------------------------- |
 | userId          | number                        | Yes  | Existing user ID.    |
-| requestParam    | [RequestParam](#requestparam) | Yes  | Pagination query parameter.                              |
+| requestParam    | [RequestParam](#requestparam) | Yes  | Pagination query parameter. The **orderField** field can be sorted only by firewall rule name.                              |
 
 **Return value**
 
@@ -257,7 +257,7 @@ netFirewall.getNetFirewallRules(100, ruleParam).then((result: netFirewall.Firewa
 
 getNetFirewallRule(userId: number, ruleId: number): Promise\<NetFirewallRule>
 
-Obtains a firewall rule based on the specified user ID and rule ID.
+Obtains a firewall rule based on the specified user ID and rule ID. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_NET_FIREWALL
 
@@ -307,7 +307,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
-Sets a firewall policy.
+Sets a firewall policy. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 
@@ -361,7 +361,24 @@ netFirewall.setNetFirewallPolicy(100, policy).then(() => {
 
 addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
-Adds a firewall rule.
+Adds a firewall rule. This API uses a promise to return the result.
+
+> **Description**
+> 
+> 1. The following describes the priorities of firewall rules. ([setNetFirePolicy](#netfirewallsetnetfirewallpolicy) and [addNetFirewallRule](#netfirewalladdnetfirewallrule) can be called in any sequence.)<br>
+> (1) Call [setNetFirePolicy](#netfirewallsetnetfirewallpolicy) to set the default policy to **DENY** and call [addNetFirewallRule](#netfirewalladdnetfirewallrule) to add an explicit rule. The priorities of the rules are as follows:<br>
+>    &emsp;&nbsp;◦  Explicit denying rule<br>
+>    &emsp;&nbsp;◦  Explicit allowing rule<br>
+>    &emsp;&nbsp;◦  Default denying policy<br>
+> (2) Call [setNetFirePolicy](#netfirewallsetnetfirewallpolicy) to set the default policy to **ALLOW** and call [addNetFirewallRule](#netfirewalladdnetfirewallrule) to add an explicit rule. The priorities of the rules are as follows:<br>
+>    &emsp;&nbsp;◦  Explicit allowing rule<br>
+>    &emsp;&nbsp;◦  Explicit denying rule<br>
+>    &emsp;&nbsp;◦  Default allowing policy<br>
+> 2. Supplementary description of rule types:<br>
+>(1) When the input parameter **rule.type** of **addNetFirewallRule** is set to RULE_IP:<br>
+>    &emsp;&nbsp;◦  If **rule.action** is set to **RULE_ALLOW** and **rule.localIps** and **rule.remoteIps** are not configured, the rule takes effect as full IP range access is allowed.<br>
+>    &emsp;&nbsp;◦  If **rule.action** is set to **RULE_DENY** and **rule.localIps** and **rule.remoteIps** are not configured, the rule takes effect as full IP range blocking.<br>
+>(2) If **rule.type** of **adNetFirewallRule** is set to **RULE_DOMAIN** and **rule.domains** is not configured, the rule does not take effect.<br>
 
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 
@@ -375,7 +392,7 @@ Adds a firewall rule.
 
 **Return value**
 
-| Type                     | Description                    	                                  |
+| Type                                           | Description                                    |
 | ------------------------- | ----------------------------------------------------------- |
 | Promise\<number>          | Promise used to return the result, which is the firewall rule ID automatically generated by the system.|
 
@@ -417,7 +434,7 @@ let ipRule: netFirewall.NetFirewallRule = {
       family: 1,
       type: 1,
       address: "10.10.1.1",
-      mask: 24
+      mask: 32
     },{
       family: 1,
       type: 2,
@@ -429,7 +446,7 @@ let ipRule: netFirewall.NetFirewallRule = {
       family: 1,
       type: 1,
       address: "20.10.1.1",
-      mask: 24
+      mask: 32
     },{
       family: 1,
       type: 2,
@@ -525,7 +542,7 @@ Defines a firewall rule.
 | protocol    | number                                                      | No| Yes|Protocol. The value **6** indicates TCP and value **17** indicates UDP. This parameter is valid only when **ruleType** is set to **RULE_IP**. |
 | localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No| Yes|List of local ports. This parameter is valid when **ruleType** is set to **RULE_IP**. A maximum of 10 local ports are supported.  |
 | remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No|Yes|List of remote ports. This parameter is valid when **ruleType** is set to **RULE_IP**. A maximum of 10 remote ports are supported.  |
-| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | No|Yes|List of domain names. This parameter is valid only when **ruleType** is set to **RULE_DOMAIN**.        |
+| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | No|Yes|List of domain names. This parameter is valid only when **ruleType** is set to **RULE_DOMAIN**. Currently, domain names cannot contain Chinese characters.        |
 | dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | No|Yes|List of DNS server names. This parameter is valid only when **ruleType** is set to **RULE_DNS**.                 |
 
 ## RequestParam
@@ -606,6 +623,9 @@ Enumerates firewall rule types.
 ## NetFirewallOrderField
 
 Enumerates firewall rule sorting types.
+> **Description**
+> 
+> [getNetFirewallRules](#netfirewallgetnetfirewallrules) supports only the **ORDER_BY_RULE_NAME** field.<br>
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
@@ -636,8 +656,8 @@ Enumerates firewall rule sorting orders.
 | family      | number | No| Yes|**1**: The IP address family is **IPv4**.<br>**2**: The IP address family is **IPv6**.<br>The default value is **IPv4**. Other values are not supported currently.     |
 | address     | string | No| Yes|IP address. This parameter is mandatory and valid only when type is set to **1**.                  |
 | mask        | number | No|Yes|IPv4: subnet mask.<br>IPv6: address prefix.<br>This parameter is mandatory and valid only when type is set to **1**.      |
-| startIp     | string | No|Yes|Start IP address. This parameter is mandatory and valid only when type is set to **2**.                        |
-| endIp       | string | No|Yes|End IP address. This parameter is mandatory and valid only when type is set to **2**.                       |
+| startIp     | string | No|Yes|Start IP address. This parameter is mandatory and valid only when type is set to **2**. The value ranges from 0.0.0.1 to 255.255.255.254. Otherwise, this parameter will be ignored.                        |
+| endIp       | string | No|Yes|End IP address. This parameter is mandatory and valid only when type is set to **2**. The value ranges from 0.0.0.1 to 255.255.255.254. Otherwise, this parameter will be ignored.                       |
 
 ## NetFirewallPortParams
 

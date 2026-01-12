@@ -327,8 +327,8 @@ startAbilityForResult(want: Want, callback: AsyncCallback&lt;AbilityResult&gt;):
 启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用callback异步回调。仅支持在主线程调用。
 
 UIAbility被启动后，有如下情况：
- - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。	
- - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。	
+ - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。
+ - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。
  - 如果被启动的UIAbility是[单实例模式](../../application-models/uiability-launch-type.md#singleton启动模式)，且这个UIAbility被不同应用多次调用该接口启动，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
 
 > **说明：**
@@ -421,8 +421,8 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用callback异步回调。仅支持在主线程调用。
 
 UIAbility被启动后，有如下情况：
- - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。	
- - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。	
+ - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。
+ - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。
  - 如果被启动的UIAbility是[单实例模式](../../application-models/uiability-launch-type.md#singleton启动模式)，且这个UIAbility被不同应用多次调用该接口启动，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
 
 > **说明：**
@@ -518,8 +518,8 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityRes
 启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用Promise异步回调。仅支持在主线程调用。
 
 UIAbility被启动后，有如下情况：
- - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。	
- - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。	
+ - 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。
+ - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。
  - 如果被启动的UIAbility是[单实例模式](../../application-models/uiability-launch-type.md#singleton启动模式)，且这个UIAbility被不同应用多次调用该接口启动，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
 
 > **说明：**
@@ -1140,7 +1140,7 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 
 > **说明：**
 >
-> - 跨设备场景下，调用方与目标方必须为同一应用，且具备ohos.permission.DISTRIBUTED_DATASYNC权限，才能启动成功。
+> - 跨设备场景下，调用方与目标方必须为同一应用。
 >
 > - 同设备场景下，调用方与目标方必须为不同应用，且具备ohos.permission.ABILITY_BACKGROUND_COMMUNICATION权限（该权限仅系统应用可申请），才能启动成功。
 >
@@ -1150,7 +1150,9 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 
 > **说明：**
 >
-> API version 11之前的版本，该接口需要申请权限ohos.permission.ABILITY_BACKGROUND_COMMUNICATION（该权限仅系统应用可申请）。从API version 11开始，该接口需要申请的权限变更为ohos.permission.DISTRIBUTED_DATASYNC权限。
+> - API version 10及之前版本，需申请ohos.permission.ABILITY_BACKGROUND_COMMUNICATION（该权限仅系统应用可用）。
+>
+> - API version 11开始，仅需申请ohos.permission.DISTRIBUTED_DATASYNC（该权限仅当执行应用间建链操作时由软总线实施权限校验，在应用拉起阶段不做校验）。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1183,7 +1185,7 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
 | 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.Sending restart message to system service failed. 3.System service failed to communicate with dependency module. 4.Non-system applications are only allowed to call this interface across devices, not on the current device. |
 | 16000071 | App clone is not supported. |
 | 16000072 | App clone or multi-instance is not supported. |
 | 16000073 | The app clone index is invalid. |
@@ -1754,8 +1756,7 @@ export default class EntryAbility extends UIAbility {
 
 ### startAbilityByType<sup>11+</sup>
 
-startAbilityByType(type: string, wantParam: Record<string, Object>,
-    abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>) : void
+startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>) : void
 
 通过type隐式启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。使用callback异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
 
@@ -1813,8 +1814,7 @@ export default class EntryAbility extends UIAbility {
 
 ### startAbilityByType<sup>11+</sup>
 
-startAbilityByType(type: string, wantParam: Record<string, Object>,
-    abilityStartCallback: AbilityStartCallback) : Promise\<void>
+startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback) : Promise\<void>
 
 通过type隐式启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。使用Promise异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
 
@@ -2235,6 +2235,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。
 
 如果希望获取被拉起方终止后的结果，可以设置callback参数，此参数的使用可参照[startAbilityForResult](#startabilityforresult)接口。
+
 传入的参数不合法时，如未设置必选参数或link字符串不是标准格式的URL，接口会直接抛出异常。参数校验通过，拉起目标方时出现的错误通过promise返回错误信息。
 
 > **说明：**
@@ -2281,6 +2282,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 | 16000019 | No matching ability is found. |
 | 16200001 | The caller has been released. |
 | 16000053 | The ability is not on the top of the UI. |
+| 16000136 | The UIAbility is prohibited from launching itself via App Linking. |
 
 **示例：**
 
@@ -2820,7 +2822,7 @@ struct UIServiceExtensionAbility {
 
 ### setAbilityInstanceInfo<sup>15+<sup>
 
-setAbilityInstanceInfo(label: string, icon: image.PixelMap) : Promise&lt;void&gt;
+setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise&lt;void&gt;
 
 设置当前UIAbility实例的图标和标签信息。图标与标签信息可在任务中心和快捷栏的界面中显示。使用Promise异步回调。
 
@@ -2897,7 +2899,7 @@ export default class EntryAbility extends UIAbility {
 
 ### revokeDelegator<sup>17+</sup>
 
-revokeDelegator() : Promise&lt;void&gt;
+revokeDelegator(): Promise&lt;void&gt;
 
 如果Module下首个UIAbility启动时期望重定向到另一个UIAbility，该重定向的UIAbility被称为“DelegatorAbility”。DelegatorAbility的设置详见当前接口示例的步骤1。
 
@@ -3478,6 +3480,11 @@ restartApp(want: Want): Promise\<void>
 > **说明：**
 >
 > 通过该接口重启进程时，不会触发进程中Ability的onDestroy生命周期回调。
+>
+> 在原子化服务调用本接口成功后的3秒内，再次调用本接口、[restartSelfAtomicService()](js-apis-app-ability-abilityManager.md#abilitymanagerrestartselfatomicservice20)或[ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12)接口中的任一接口，系统将返回错误码16000064。
+>
+> 在应用调用本接口成功后的3秒内，若再次调用本接口或[ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12)接口中的任一接口，系统将返回错误码16000064。
+
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -3550,7 +3557,7 @@ struct Index {
 }
 ```
 
-### setMissionWindowIcon<sup>22+<sup>
+### setMissionWindowIcon<sup>22+</sup>
 
 setMissionWindowIcon(windowIcon: image.PixelMap): Promise\<void>
 
@@ -3581,7 +3588,7 @@ setMissionWindowIcon(windowIcon: image.PixelMap): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 801 | Capability not supported. |
-| 16000050 | Internal error. Internal error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module.|
+| 16000050 | Internal error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module.|
 | 16000135 | The main window of this ability not exist. |
 
 **示例：**

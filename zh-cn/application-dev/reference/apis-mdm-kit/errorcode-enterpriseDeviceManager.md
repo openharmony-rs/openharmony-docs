@@ -274,7 +274,47 @@ The enterprise management policy has been successfully set, but the function has
 **处理步骤**
 
 重启设备，重启后管控生效。在外置存储管控场景下，重启后禁用外置存储生效，不会主动加载外置存储。
-   
+
+## 9200014 启动组件失败
+
+**错误信息**
+
+Failed to start the ability.
+
+**错误描述**
+
+启动组件失败时，会产生此错误码。
+
+**可能原因**
+
+1. 当设置了禁止运行应用名单（例如调用[addDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync)接口），且应用在禁止运行应用名单中时，启动组件会失败。
+2. 当设置了允许运行应用名单（例如调用[addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21)接口），且应用不在允许运行应用名单中时，启动组件会失败。
+
+**处理步骤**
+
+1. 将应用从禁止运行名单中移除，例如调用[removeDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanagerremovedisallowedrunningbundlessync)接口。
+2. 将应用添加到允许运行名单，例如调用[addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21)接口。
+
+## 9200015 组件不存在
+
+**错误信息**
+
+The ability does not exist.
+
+**错误描述**
+
+当组件不存在，启动该组件时，会产生此错误码。
+
+**可能原因**
+
+1. 传入了不存在bundleName和abilityName。
+2. 传入的Ability对外不可见。
+
+**处理步骤**
+
+1. 检查want中的bundleName和abilityName是否正确。
+2. 检查传入的Ability对外是否可见。
+
 ## 9201001 管理证书失败
 
 **错误信息**

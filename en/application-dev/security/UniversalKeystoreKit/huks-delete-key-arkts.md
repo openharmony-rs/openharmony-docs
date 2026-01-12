@@ -9,6 +9,8 @@
 
 To ensure data security, delete the key that is no longer required.
 
+The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
+
 ## How to Develop
 
 For example, delete a 256-bit HKDF key.
@@ -19,84 +21,112 @@ For example, delete a 256-bit HKDF key.
 
 3. Use [deleteKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksdeletekeyitem9) to delete the key.
 
-```ts
+<!-- @[key_deletions_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyDeletion/entry/src/main/ets/pages/KeyDeletion.ets) -->
+
+``` TypeScript
 /*
  * Delete a 256-bit HKDF key. This example uses promise-based APIs.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
 
-/* 1. Set the key alias. */
 let keyAlias = 'test_Key';
-/* 2. Initialize the key property set. */
-let generateProperties: huks.HuksParam[] = [{
+
+let generateProperties: huks.HuksParam[] = [
+  {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_DH
-  }, {
+  },
+  {
     tag: huks.HuksTag.HUKS_TAG_PURPOSE,
     value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE
-  }, {
+  },
+  {
     tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
     value: huks.HuksKeySize.HUKS_DH_KEY_SIZE_2048
   }
 ];
+
 let generateHuksOptions: huks.HuksOptions = {
   properties: generateProperties,
   inData: new Uint8Array([])
 }
+
+/* 1. Generate a key. */
+function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
+  return new Promise<void>((resolve, reject) => {
+    try {
+      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      });
+    } catch (error) {
+      throw (error as Error);
+    }
+  });
+}
+
+async function generateKey(keyAlias: string, huksOptions: huks.HuksOptions): Promise<void> {
+  console.info(`enter promise generateKeyItem`);
+  try {
+    await generateKeyItem(keyAlias, huksOptions);
+    console.info(`promise: generateKeyItem success`);
+  } catch (error) {
+    console.error(`promise: generateKeyItem failed, ${JSON.stringify(error)}`);
+  }
+}
+
+/* 2. Delete the key. */
 let deleteHuksOptions: huks.HuksOptions = {
   properties: []
 }
 
-/* 3. Generate a key. */
-async function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): Promise<boolean> {
-  console.info(`enter promise generateKeyItem`);
-  let ret: boolean = false;
-  try {
-    await huks.generateKeyItem(keyAlias, huksOptions)
-      .then(() => {
-        console.info(`promise: generateKeyItem success`);
-        ret = true;
-      }).catch((error: BusinessError) => {
-        console.error(`promise: generateKeyItem failed, errCode : ${error.code}, errMsg : ${error.message}`);
+function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
+  return new Promise<void>((resolve, reject) => {
+    try {
+      huks.deleteKeyItem(keyAlias, huksOptions, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
       });
-  } catch (error) {
-    console.error(`promise: generateKeyItem input arg invalid`);
-  }
-  return ret;
+    } catch (error) {
+      throw (error as Error);
+    }
+  });
 }
 
-/*4. Delete a key.*/
-async function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): Promise<boolean> {
+async function deleteKey(keyAlias: string, huksOptions: huks.HuksOptions): Promise<void> {
   console.info(`enter promise deleteKeyItem`);
-  let ret: boolean = false;
   try {
-    await huks.deleteKeyItem(keyAlias, huksOptions)
-      .then(() => {
-        console.info(`promise: deleteKeyItem success`);
-        ret = true;
-      }).catch((error: BusinessError) => {
-        console.error(`promise: deleteKeyItem failed, errCode : ${error.code}, errMsg : ${error.message}`);
-      })
+    await deleteKeyItem(keyAlias, huksOptions);
+    console.info(`promise: deleteKeyItem success`);
   } catch (error) {
-    console.error(`promise: deleteKeyItem input arg invalid`);
+    console.error(`promise: deleteKeyItem failed, ${JSON.stringify(error)}`);
   }
-  return ret;
 }
 
-async function testDelete() {
-  let retGen = await generateKeyItem(keyAlias, generateHuksOptions);
-  if (retGen == false) {
-    console.error(`generateKeyItem failed`);
-    return;
-  }
+async function executeKeyLifecycle(): Promise<string> {
+  try {
+    /* 1. Generate a key. */
+    console.log('start generateKey...');
+    await generateKey(keyAlias, generateHuksOptions);
+    console.log('end generateKey...');
 
-  let retDel = await deleteKeyItem(keyAlias, deleteHuksOptions);
-  if (retDel == false) {
-    console.error(`deleteKeyItem failed`);
-    return;
-  }
+    /* 2. Delete the key. */
+    console.log('start deleteKey...');
+    await deleteKey(keyAlias, deleteHuksOptions);
+    console.log('end deleteKey...');
 
-  console.info(`deleteKeyItem test success`);
+    console.info('Key lifecycle completed successfully');
+    return 'Success';
+  } catch (error) {
+    console.error(`Key lifecycle failed: ${JSON.stringify(error)}`);
+    return 'Failed';
+  }
 }
 ```
+<!--no_check-->

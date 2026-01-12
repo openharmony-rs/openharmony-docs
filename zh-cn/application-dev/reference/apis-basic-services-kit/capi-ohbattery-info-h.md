@@ -11,6 +11,8 @@
 
 声明电池API以获取当前电池容量和电源类型的信息，定义电池相应常见事件。
 
+**引用文件：** <BasicServicesKit/ohbattery_info.h>
+
 **库：** libohbattery_info.so
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -46,7 +48,7 @@
 
 ### BatteryInfo_BatteryPluggedType
 
-```
+```c
 enum BatteryInfo_BatteryPluggedType
 ```
 
@@ -69,7 +71,7 @@ enum BatteryInfo_BatteryPluggedType
 
 ### OH_BatteryInfo_GetCapacity()
 
-```
+```c
 int32_t OH_BatteryInfo_GetCapacity()
 ```
 
@@ -89,7 +91,7 @@ int32_t OH_BatteryInfo_GetCapacity()
 
 ### OH_BatteryInfo_GetPluggedType()
 
-```
+```c
 BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()
 ```
 

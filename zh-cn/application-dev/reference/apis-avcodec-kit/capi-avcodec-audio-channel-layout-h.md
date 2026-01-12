@@ -36,7 +36,7 @@
 
 ### AudioChannelSet
 
-```
+```c
 enum AudioChannelSet : uint64_t
 ```
 
@@ -107,7 +107,7 @@ enum AudioChannelSet : uint64_t
 
 ### AudioChannelLayout
 
-```
+```c
 enum AudioChannelLayout : uint64_t
 ```
 

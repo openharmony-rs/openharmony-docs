@@ -6,7 +6,7 @@
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct {...} ArkUI_ContextCallback
 ```
 
@@ -26,7 +26,7 @@ typedef struct {...} ArkUI_ContextCallback
 
 | 名称 | 描述 |
 | -- | -- |
-| void* userData | 自定义类型。 |
+| void* userData | 自定义类型，开发者自定义类型的数据，在回调时作为参数传入。 |
 
 
 ### 成员函数
@@ -39,7 +39,7 @@ typedef struct {...} ArkUI_ContextCallback
 
 ### callback()
 
-```
+```c
 void (*callback)(void* userData)
 ```
 

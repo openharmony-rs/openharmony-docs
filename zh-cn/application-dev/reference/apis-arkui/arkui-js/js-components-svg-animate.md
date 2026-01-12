@@ -34,7 +34,7 @@
 | fill | &lt;freeze&nbsp;\|&nbsp;remove&gt; | remove | 否 | 设置动画结束时的状态。 |
 | calcMode | &lt;discrete&nbsp;\|&nbsp;linear&nbsp;\|&nbsp;paced&nbsp;\|&nbsp;spline&gt; | linear | 否 | 设置动画的插值模式。<br/>discrete：阶跃，from值直接跳转到to的值；<br/>linear：线性；<br/>paced：线性，设置此项后keyTimes和keyPoints值无效；<br/>spline：自定义贝塞尔曲线，spline点定义在keyTimes属性中，每个时间间隔控制点由keySplines定义。 |
 | keyTimes | string | - | 否 | 设置关键帧动画的开始时间，值为0~1之间的数值用分号隔开，比如0;0.3;0.8;1。keyTimes、keySplines、values组合设置关键帧动画。keyTimes和values的个数保持一致。keySplines个数为keyTimes个数减一。 |
-| keySplines | string | - | 否 | 与keyTimes相关联的一组贝塞尔控制点。定义每个关键帧的贝塞尔曲线，曲线之间用分号隔开。曲线内的两个控制掉格式为x1&nbsp;y1&nbsp;x2&nbsp;y2。比如0.5&nbsp;0&nbsp;0.5&nbsp;1;&nbsp;0.5&nbsp;0&nbsp;0.5&nbsp;1;0.5&nbsp;0&nbsp;0.5&nbsp;1 |
+| keySplines | string | - | 否 | 与keyTimes相关联的一组贝塞尔控制点。定义每个关键帧的贝塞尔曲线，曲线之间用分号隔开。曲线内的两个控制点格式为x1&nbsp;y1&nbsp;x2&nbsp;y2。比如0.5&nbsp;0&nbsp;0.5&nbsp;1;&nbsp;0.5&nbsp;0&nbsp;0.5&nbsp;1;0.5&nbsp;0&nbsp;0.5&nbsp;1 |
 | by | number | - | 否 | 在动画中对某一指定属性，添加相对偏移值，from默认为原属性值。 |
 | from | string | - | 否 | 设置需要进行动画的属性的开始值。<br/>如果已经设置了values属性，则from失效。 |
 | to | string | - | 否 | 设置需要进行动画的属性的结束值。<br/>如果已经设置了values属性，则to都失效。 |

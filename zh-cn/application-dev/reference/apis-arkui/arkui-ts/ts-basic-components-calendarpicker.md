@@ -184,7 +184,7 @@ onChange(callback: Optional\<Callback\<Date>>)
 
 | 名称      | 类型       | 只读 | 可选        | 说明                            |
 | ----------- | ---------- | ------| --------------------------------- | --------------------------------- |
-| hintRadius | number \| [Resource](ts-types.md#resource) | 否   | 是    | 描述日期选中态底板样式。<br />取值范围：[0.0, 16.0]<br />单位：vp<br/>默认值：16.0，即底板样式为圆形。<br />**说明：**<br />当hintRadius为0.0时表示底板样式为直角矩形；当hintRadius为(0.0, 16.0)时，底板样式为圆角矩形；当hintRadius为负数或大于16.0时，恢复成默认值16.0。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| hintRadius | number \| [Resource](ts-types.md#resource) | 否   | 是    | 描述日期选中态底板样式。<br />取值范围：[0.0, 16.0]<br />单位：vp<br/>默认值：16.0，即底板样式为圆形。<br />**说明：**<br />当hintRadius为0.0时表示底板样式为直角矩形；当hintRadius为(0.0, 16.0)时，底板样式为圆角矩形；当hintRadius为负数或大于16.0时，恢复为默认值16.0。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | selected | Date | 否   | 是    | 设置选中项的日期。选中的日期未设置或日期格式不符合规范则为默认值。<br/>默认值：当前系统日期。<br/>取值范围：\[Date('0001-01-01'), Date('5000-12-31')]<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | start<sup>18+</sup> | Date | 否   | 是    | 设置开始日期。<br/>默认值：Date('0001-01-01')<br/>取值范围：\[Date('0001-01-01'), Date('5000-12-31')]<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | end<sup>18+</sup> | Date | 否   | 是    | 设置结束日期。<br/>默认值：Date('5000-12-31')<br/>取值范围：\[Date('0001-01-01'), Date('5000-12-31')]<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -220,7 +220,7 @@ onChange(callback: Optional\<Callback\<Date>>)
 ## 示例
 ### 示例1（设置下拉日历弹窗）
 
-该示例实现了日历选择器组件，提供下拉日历弹窗。
+该示例通过calendarPicker实现了日历选择器组件，提供下拉日历弹窗。
 
 ```ts
 // xxx.ets
@@ -253,6 +253,8 @@ struct CalendarPickerExample {
 
 该示例通过start和end设置日历选择器的开始日期和结束日期。
 
+从API version 18开始，[CalendarOptions](#calendaroptions对象说明)中新增了start、end属性。
+
 ```ts
 // xxx.ets
 @Entry
@@ -278,11 +280,13 @@ struct CalendarPickerExample {
 }
 ```
 
-![CalendarPicker](figures/calendar_picker_start_end.jpg)
+![CalendarPicker](figures/calendar_picker_start_end.png)
 
 ### 示例3（设置日历选择器在系统当前日期时，保持高亮显示和禁用日期区间）
 
-该示例通过[markToday](#marktoday19)设置日历选择器在系统当前日期时，开启保持高亮显示，同时，通过[disabledDateRange](#calendaroptions对象说明)设置日历选择器的禁用日期区间。
+该示例通过markToday设置日历选择器在系统当前日期时，开启保持高亮显示，同时，通过disabledDateRange设置日历选择器的禁用日期区间。
+
+从API version 19开始，新增了[markToday](#marktoday19)接口，[CalendarOptions](#calendaroptions对象说明)中新增了disabledDateRange属性。
 
 ```ts
 // xxx.ets

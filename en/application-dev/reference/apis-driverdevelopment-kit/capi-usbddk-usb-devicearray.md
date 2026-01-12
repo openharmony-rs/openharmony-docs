@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Usb_DeviceArray {...} Usb_DeviceArray
+```
+
 ## Overview
 
 Defines the device ID list, which is used to store the device IDs and device quantity obtained using **OH_Usb_GetDevices**.

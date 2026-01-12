@@ -39,7 +39,7 @@
 
 ### Wifi_ResultCode
 
-```
+```c
 enum Wifi_ResultCode
 ```
 
@@ -56,14 +56,14 @@ enum Wifi_ResultCode
 | WIFI_INVALID_PARAM = 401 | 参数错误。<br> 可能原因：1.输入参数为空指针；2.参数数值超出定义范围。 |
 | WIFI_NOT_SUPPORTED = 801 | 该功能不支持。由于设备能力有限，无法调用该函数。 |
 | WIFI_OPERATION_FAILED = 2501000 | 操作失败。<br> 可能原因：服务内部执行失败。 |
-| WIFI_STA_DISABLED = 2501001 | STA服务未拉起。<br> 可能原因：WiFi未打开。 |
+| WIFI_STA_DISABLED = 2501001 | STA服务未拉起。<br> 可能原因：WiFi未打开。<br>**起始版本：** 21 |
 
 
 ## 函数说明
 
 ### OH_Wifi_IsWifiEnabled()
 
-```
+```c
 Wifi_ResultCode OH_Wifi_IsWifiEnabled(bool *enabled)
 ```
 
@@ -87,7 +87,7 @@ Wifi_ResultCode OH_Wifi_IsWifiEnabled(bool *enabled)
 
 ### OH_Wifi_GetDeviceMacAddress()
 
-```
+```c
 Wifi_ResultCode OH_Wifi_GetDeviceMacAddress(char *macAddr, unsigned int *macAddrLen)
 ```
 

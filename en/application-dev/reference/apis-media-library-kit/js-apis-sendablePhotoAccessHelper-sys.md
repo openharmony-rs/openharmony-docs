@@ -297,7 +297,7 @@ Provides APIs for encapsulating file asset attributes.
 
 requestSource(): Promise&lt;number&gt;
 
-Opens the source file to obtain the file descriptor (FD). This API uses a promise to return the result.
+Opens the source file and returns the FD. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -339,7 +339,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
     };
     let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
     if (fetchResult === undefined) {
-      console.error('requsetSourcePromise fetchResult is undefined');
+      console.error('requestSourcePromise fetchResult is undefined');
       return;
     }
     let photoAsset: sendablePhotoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
@@ -360,6 +360,8 @@ Obtains analysis data. This API uses a promise to return the result.
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.READ\_IMAGEVIDEO
+
+Starting from API version 22, if **analysisType** is set to [ANALYSIS\_DETAIL\_ADDRESS](js-apis-photoAccessHelper-sys.md#analysistype11), the ohos.permission.MEDIA\_LOCATION permission is required. Otherwise, error code [201 Permission Denied](../errorcode-universal.md#201-permission-denied) is reported.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -4,7 +4,7 @@
 <!--Owner: @camlostshi-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Flex** component is a container that uses the flexible box model for layout. It provides an efficient mechanism for arranging and aligning child elements, as well as distributing available space among them.
 
@@ -49,11 +49,11 @@ Describes the layout and alignment of child components within the **Flex** compo
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| direction      | [FlexDirection](ts-appendix-enums.md#flexdirection) | No| Yes    | Direction in which child components are arranged in the **Flex** component, that is, the direction of the main axis.<br>Default value: **FlexDirection.Row**<br>Invalid values are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.           |
-| wrap           | [FlexWrap](ts-appendix-enums.md#flexwrap) | No| Yes    | Whether the **Flex** component has a single line or multiple lines.<br>Default value: **FlexWrap.NoWrap**<br>Invalid values are treated as the default value.<br>**NOTE**<br>When wrapped onto multiple lines, the child elements on the new line are stacked in the direction based on the cross axis direction.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| justifyContent | [FlexAlign](ts-appendix-enums.md#flexalign) | No| Yes    | Alignment mode of the child components in the **Flex** component along the main axis.<br>Default value: **FlexAlign.Start**<br>Invalid values are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                 |
-| alignItems     | [ItemAlign](ts-appendix-enums.md#itemalign) | No| Yes    | Alignment mode of the child components in the **Flex** component along the cross axis.<br>Default value: **ItemAlign.Start**<br>Invalid values are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
-| alignContent   | [FlexAlign](ts-appendix-enums.md#flexalign) | No| Yes    | Alignment mode of the child components in a multi-row **Flex** component along the cross axis. This parameter is valid only when **wrap** is set to **Wrap** or **WrapReverse**.<br>Default value: **FlexAlign.Start**<br>Invalid values are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| direction      | [FlexDirection](ts-appendix-enums.md#flexdirection) | No| Yes    | Direction in which child components are arranged in the **Flex** component, that is, the direction of the main axis.<br>Default value: **FlexDirection.Row**<br>If an invalid value is passed, the default value will be used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.           |
+| wrap           | [FlexWrap](ts-appendix-enums.md#flexwrap) | No| Yes    | Whether the **Flex** component has a single line or multiple lines.<br>Default value: **FlexWrap.NoWrap**<br>If an invalid value is passed, the default value will be used.<br>**NOTE**<br>When wrapped onto multiple lines, the child elements on the new line are stacked in the direction based on the cross axis direction.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| justifyContent | [FlexAlign](ts-appendix-enums.md#flexalign) | No| Yes    | Alignment mode of the child components in the **Flex** component along the main axis.<br>Default value: **FlexAlign.Start**<br>If an invalid value is passed, the default value will be used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                 |
+| alignItems     | [ItemAlign](ts-appendix-enums.md#itemalign) | No| Yes    | Alignment mode of the child components in the **Flex** component along the cross axis.<br>Default value: **ItemAlign.Start**<br>If an invalid value is passed, the default value will be used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
+| alignContent   | [FlexAlign](ts-appendix-enums.md#flexalign) | No| Yes    | Alignment mode of multiple lines when there is extra space along the cross axis. This parameter is valid only when **wrap** is set to **Wrap** or **WrapReverse**.<br>Default value: **FlexAlign.Start**<br>If an invalid value is passed, the default value will be used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
 | space<sup>12+</sup>          | [FlexSpaceOptions<sup>12+</sup>](ts-container-flex.md#flexspaceoptions12) | No| Yes  | Spacing between child components along the main axis or cross axis of the **Flex** component.<br>Default value: **{main: LengthMetrics.px(0), cross: LengthMetrics.px(0)}**<br>Invalid values are treated as the default value.<br>This parameter does not take effect if the value specified is a negative number or percentage, or if **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## FlexSpaceOptions<sup>12+</sup>
@@ -434,13 +434,13 @@ struct Demo {
         Image($r('sys.media.ohos_ic_public_sound'))
           .width(16)
           .height(16)
-      }.width("auto")
+      }.width('auto')
     }
     .backgroundColor(0xAFEEEE)
     .height(36)
     .padding({ left: 16, right: 16 })
     .constraintSize({ maxWidth: 156 })
-    .width("auto")
+    .width('auto')
   }
 }
 
@@ -449,10 +449,10 @@ struct Demo {
 struct Index {
   build() {
     Column({ space: 12 }) {
-      Text("Width does not reach max length").fontSize(11).fontColor(0XCCCCCC).width("50%")
-      Demo({ text: "123" })
-      Text("Width reaches max length").fontSize(11).fontColor(0XCCCCCC).width("50%")
-      Demo({ text: "1234567890-1234567890-1234567890-1234567890" })
+      Text('Width does not reach max length').fontSize(11).fontColor(0XCCCCCC).width('50%')
+      Demo({ text: '123' })
+      Text('Width reaches max length').fontSize(11).fontColor(0XCCCCCC).width('50%')
+      Demo({ text: '1234567890-1234567890-1234567890-1234567890' })
     }
   }
 }

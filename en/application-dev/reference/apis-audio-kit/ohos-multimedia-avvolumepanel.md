@@ -17,6 +17,7 @@ An application cannot directly adjust the system volume. However, it can invoke 
 > - The sample effect is subject to the real device in use. Currently, DevEco Studio Previewer cannot display the actual volume or adjust the volume.
 > - **Device restrictions**
 >   - On wearable devices, the module can be used to adjust the system volume, but no UI is displayed. You need to design the UI by yourself.
+>   - The APIs of this module are not supported on TVs.
 
 ## Modules to Import
 

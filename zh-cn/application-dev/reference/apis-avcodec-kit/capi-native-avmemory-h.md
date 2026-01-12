@@ -42,7 +42,7 @@
 
 ### OH_AVMemory_Create()
 
-```
+```c
 OH_AVMemory *OH_AVMemory_Create(int32_t size)
 ```
 
@@ -73,7 +73,7 @@ OH_AVMemory *OH_AVMemory_Create(int32_t size)
 
 ### OH_AVMemory_GetAddr()
 
-```
+```c
 uint8_t *OH_AVMemory_GetAddr(struct OH_AVMemory *mem)
 ```
 
@@ -104,7 +104,7 @@ uint8_t *OH_AVMemory_GetAddr(struct OH_AVMemory *mem)
 
 ### OH_AVMemory_GetSize()
 
-```
+```c
 int32_t OH_AVMemory_GetSize(struct OH_AVMemory *mem)
 ```
 
@@ -135,7 +135,7 @@ int32_t OH_AVMemory_GetSize(struct OH_AVMemory *mem)
 
 ### OH_AVMemory_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AVMemory_Destroy(struct OH_AVMemory *mem)
 ```
 

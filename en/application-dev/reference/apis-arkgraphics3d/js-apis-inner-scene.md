@@ -16,7 +16,7 @@ The module is the basic module of ArkGraphics 3D and provides common data types 
 ## Modules to Import
 ```ts
 import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastParameters,RenderResourceFactory,
-  SceneResourceFactory, SceneComponent, RenderContext, RenderParameters, Scene } from '@kit.ArkGraphics3D';
+  SceneResourceFactory, SceneComponent, RenderContext, RenderConfiguration, RenderParameters, Scene } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceParameters
@@ -820,6 +820,14 @@ function registerResourcePath(): void {
 }
 ```
 
+## RenderConfiguration<sup>23+</sup>
+Describes the rendering configuration.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+| Name| Type| Read Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| shadowResolution| [Vec2](js-apis-inner-scene-types.md#vec2) | No| Yes| Global shadow map resolution. The default value is **undefined**, indicating that the shadow map resolution is set to 1024 * 1024. The value must be greater than 0 for the parameter to take effect. If the input value is a floating-point number, it will be truncated to an integer; if the input value is less than or equal to 0, the input will be ignored, and the original configuration will be retained.|
+
 ## RenderParameters<sup>15+</sup>
 Describes the rendering parameters.
 
@@ -841,6 +849,7 @@ Describes a scene.
 | environment | [Environment](js-apis-inner-scene-resources.md#environment) | No| No| Environment object.|
 | animations | [Animation](js-apis-inner-scene-resources.md#animation)[] | Yes| No| Animation objects in the 3D scene.|
 | root | [Node](js-apis-inner-scene-nodes.md#node) \| null | Yes| No| Root node in the 3D scene tree.|
+| renderConfiguration<sup>23+</sup> | [RenderConfiguration](#renderconfiguration23)  | Yes| No| Rendering configuration.|
 
 ### load
 static load(uri?: ResourceStr): Promise\<Scene>
@@ -860,6 +869,8 @@ Loads a resource by path. This API uses a promise to return the result.
 | Promise\<[Scene](#scene-1)> | Promise used to return the Scene object created.|
 
 **Example**
+
+Example 1: Load resources via rawfile (a relative path).
 ```ts
 import { Scene } from '@kit.ArkGraphics3D';
 
@@ -867,6 +878,38 @@ function loadModel(): void {
   // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
   let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
   scene.then(async (result: Scene) => {});
+}
+```
+
+Example 2: Load via an absolute path (from /data/storage/el2/base/files in the application sandbox directory).
+```ts
+import { common } from '@kit.AbilityKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { Scene } from '@kit.ArkGraphics3D';
+
+async loadModelFromAbsolutePath(): Promise<void> {
+  // Obtain the application sandbox directory. (Scene.load can read only files written by the application itself, not files written by hdc/adb push.)
+  const uiCtx = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  const appCtx = uiCtx.getApplicationContext();
+  const filesDir = appCtx.filesDir; // /data/storage/el2/base/files
+
+  // Read the model content from rawfile. (In practice, you can replace rawfile with data from other sources.)
+  // Use a .glb file for easier copying and loading. If the file is in.gltf format, copy its .bin file and texture files to the same directory.
+  const src = 'gltf/CubeWithFloor/glTF/AnimatedCube.glb';
+  const load_uri = `${filesDir}/AnimatedCube.glb`;
+
+  // Write the model file to the application sandbox directory to create a file accessible by Scene.load (absolute path).
+  const rawData = await uiCtx.resourceManager.getRawFileContent(src);
+  const file = fileIo.openSync(load_uri, fileIo.OpenMode.CREATE | fileIo.OpenMode.TRUNC | fileIo.OpenMode.WRITE_ONLY);
+  fileIo.writeSync(file.fd, rawData.buffer.slice(rawData.byteOffset, rawData.byteOffset + rawData.byteLength));
+  fileIo.closeSync(file);
+
+  // Load the model using the absolute path.
+  Scene.load(load_uri).then((scene: Scene) => {
+    // Handle the loaded scene.
+  }).catch((error: string) => {
+    console.error('Scene load failed: ' + error);
+  });
 }
 ```
 
@@ -1173,5 +1216,47 @@ function getDefaultRenderContextTest() {
   } else {
     console.error("RenderContext is null");
   }
+}
+```
+
+### cloneNode<sup>23+</sup>
+cloneNode(node: Node, parent: Node, name: string): Node | null
+
+Imports a node by cloning it from another scene.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Parameters**
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | Yes| Source node to clone.|
+| parent | [Node](js-apis-inner-scene-nodes.md#node) | Yes| Parent node under which the clone will be placed in the target scene.|
+| name | string | Yes| Name of the cloned node, which can be customized without specific constraints.|
+
+**Return value**
+| Type| Description|
+| ---- | ---- |
+| [Node](js-apis-inner-scene-nodes.md#node) \| null | Cloned node. If the operation fails, null is returned.|
+
+**Example**
+```ts
+import { Scene, Node } from '@kit.ArkGraphics3D';
+
+function CloneNode() {
+  Scene.load().then(async (result: Scene | undefined) => {
+    if (!result) {
+      return;
+    }
+    // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+    Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
+      .then(async (extScene: Scene) => {
+        let extNode: Node | null = extScene.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube");
+        console.info("test cloneNode");
+        let clone: Node | null = result.cloneNode(extNode, result.root, "scene");
+        if (clone) {
+          clone.position.x = 5;
+        }
+      });
+  });
 }
 ```

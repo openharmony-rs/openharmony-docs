@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **BackupExtensionAbility** module provides extended backup and restore capabilities for applications.
 
@@ -315,8 +315,8 @@ Called to return the progress information. This callback is executed synchronous
     private isPercentage: boolean = true // (Optional) The value true means to display the progress in percentage; the value false or an unimplemented field means to display the progress by the number of items.
 
     getMigrateProgress(): string {
-      this.migrateProgress = `{"progressInfo": [{"name": "${this.name}", "processed": "${this.processed}", "total": "${
-        this.total}", "isPercentage": "${this.isPercentage}"}]}`;
+      this.migrateProgress = `{"progressInfo": [{"name": ${this.name}, "processed": ${this.processed}, "total": ${
+        this.total}, "isPercentage": ${this.isPercentage}}]}`;
       return this.migrateProgress;
     }
 

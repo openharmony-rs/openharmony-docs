@@ -12,11 +12,13 @@
 文件中定义了与矩阵相关的功能函数。
 
 <!--RP1-->
-**相关示例：** [NDKAPIDrawing (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKAPIDrawing)<!--RP1End-->
+**相关示例：** [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
 
 **引用文件：** <native_drawing/drawing_matrix.h>
 
 **库：** libnative_drawing.so
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -62,12 +64,17 @@
 | [bool OH_Drawing_MatrixIsIdentity(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixisidentity) | 判断矩阵是否是单位矩阵。  |
 | [void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixdestroy) | 用于销毁矩阵对象并回收该对象占有的内存。 |
 | [OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing_Matrix* b)](#oh_drawing_matrixpreconcat) | 对矩阵a左乘矩阵b。 |
+| [OH_Drawing_ErrorCode OH_Drawing_MatrixIsAffine(const OH_Drawing_Matrix* matrix, bool* isAffine)](#oh_drawing_matrixisaffine) | 判断当前矩阵是否为仿射矩阵。仿射矩阵是一种包括平移、旋转或缩放等变换的矩阵。 |
+| [OH_Drawing_ErrorCode OH_Drawing_MatrixPreSkew(OH_Drawing_Matrix* matrix, float kx, float ky, float px, float py)](#oh_drawing_matrixpreskew) | 将当前矩阵左乘一个以(px, py)为中心按(kx, ky)倾斜构造的矩阵。 |
+| [OH_Drawing_ErrorCode OH_Drawing_MatrixRectStaysRect(const OH_Drawing_Matrix* matrix, bool* isRectStaysRect)](#oh_drawing_matrixrectstaysrect) | 判断矩形经过当前矩阵映射后是否仍保持矩形形状。当矩阵是单位矩阵或仅包含平移、缩放、旋转90度倍数等仿射变换时满足该条件。 |
+| [OH_Drawing_ErrorCode OH_Drawing_MatrixSetSinCos(OH_Drawing_Matrix* matrix, float sinValue, float cosValue, float px, float py)](#oh_drawing_matrixsetsincos) | 设置矩阵，使其围绕旋转中心 (px, py) 以指定的正弦值和余弦值进行旋转。 |
+| [void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixdestroy) | 用于销毁矩阵对象并回收该对象占有的内存。 |
 
 ## 枚举类型说明
 
 ### OH_Drawing_ScaleToFit
 
-```
+```c
 enum OH_Drawing_ScaleToFit
 ```
 
@@ -89,7 +96,7 @@ enum OH_Drawing_ScaleToFit
 
 ### OH_Drawing_MatrixCreate()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCreate(void)
 ```
 
@@ -109,7 +116,7 @@ OH_Drawing_Matrix* OH_Drawing_MatrixCreate(void)
 
 ### OH_Drawing_MatrixCopy()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCopy(const OH_Drawing_Matrix* matrix)
 ```
 
@@ -136,7 +143,7 @@ OH_Drawing_Matrix* OH_Drawing_MatrixCopy(const OH_Drawing_Matrix* matrix)
 
 ### OH_Drawing_MatrixCreateRotation()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCreateRotation(float deg, float x, float y)
 ```
 
@@ -165,7 +172,7 @@ OH_Drawing_Matrix* OH_Drawing_MatrixCreateRotation(float deg, float x, float y)
 
 ### OH_Drawing_MatrixCreateScale()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCreateScale(float sx, float sy, float px, float py)
 ```
 
@@ -195,7 +202,7 @@ OH_Drawing_Matrix* OH_Drawing_MatrixCreateScale(float sx, float sy, float px, fl
 
 ### OH_Drawing_MatrixCreateTranslation()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCreateTranslation(float dx, float dy)
 ```
 
@@ -223,7 +230,7 @@ OH_Drawing_Matrix* OH_Drawing_MatrixCreateTranslation(float dx, float dy)
 
 ### OH_Drawing_MatrixSetMatrix()
 
-```
+```c
 void OH_Drawing_MatrixSetMatrix(OH_Drawing_Matrix* matrix, float scaleX, float skewX, float transX,float skewY, float scaleY, float transY, float persp0, float persp1, float persp2)
 ```
 
@@ -253,7 +260,7 @@ void OH_Drawing_MatrixSetMatrix(OH_Drawing_Matrix* matrix, float scaleX, float s
 
 ### OH_Drawing_MatrixSetRectToRect()
 
-```
+```c
 bool OH_Drawing_MatrixSetRectToRect(OH_Drawing_Matrix* matrix, const OH_Drawing_Rect* src,const OH_Drawing_Rect* dst, OH_Drawing_ScaleToFit stf)
 ```
 
@@ -283,7 +290,7 @@ bool OH_Drawing_MatrixSetRectToRect(OH_Drawing_Matrix* matrix, const OH_Drawing_
 
 ### OH_Drawing_MatrixPreRotate()
 
-```
+```c
 void OH_Drawing_MatrixPreRotate(OH_Drawing_Matrix* matrix, float degree, float px, float py)
 ```
 
@@ -307,7 +314,7 @@ void OH_Drawing_MatrixPreRotate(OH_Drawing_Matrix* matrix, float degree, float p
 
 ### OH_Drawing_MatrixPreScale()
 
-```
+```c
 void OH_Drawing_MatrixPreScale(OH_Drawing_Matrix* matrix, float sx, float sy, float px, float py)
 ```
 
@@ -334,7 +341,7 @@ void OH_Drawing_MatrixPreScale(OH_Drawing_Matrix* matrix, float sx, float sy, fl
 
 ### OH_Drawing_MatrixPreTranslate()
 
-```
+```c
 void OH_Drawing_MatrixPreTranslate(OH_Drawing_Matrix* matrix, float dx, float dy)
 ```
 
@@ -357,7 +364,7 @@ void OH_Drawing_MatrixPreTranslate(OH_Drawing_Matrix* matrix, float dx, float dy
 
 ### OH_Drawing_MatrixPostRotate()
 
-```
+```c
 void OH_Drawing_MatrixPostRotate(OH_Drawing_Matrix* matrix, float degree, float px, float py)
 ```
 
@@ -381,7 +388,7 @@ void OH_Drawing_MatrixPostRotate(OH_Drawing_Matrix* matrix, float degree, float 
 
 ### OH_Drawing_MatrixPostScale()
 
-```
+```c
 void OH_Drawing_MatrixPostScale(OH_Drawing_Matrix* matrix, float sx, float sy, float px, float py)
 ```
 
@@ -406,7 +413,7 @@ void OH_Drawing_MatrixPostScale(OH_Drawing_Matrix* matrix, float sx, float sy, f
 
 ### OH_Drawing_MatrixPostTranslate()
 
-```
+```c
 void OH_Drawing_MatrixPostTranslate(OH_Drawing_Matrix* matrix, float dx, float dy)
 ```
 
@@ -429,7 +436,7 @@ void OH_Drawing_MatrixPostTranslate(OH_Drawing_Matrix* matrix, float dx, float d
 
 ### OH_Drawing_MatrixReset()
 
-```
+```c
 void OH_Drawing_MatrixReset(OH_Drawing_Matrix* matrix)
 ```
 
@@ -450,7 +457,7 @@ void OH_Drawing_MatrixReset(OH_Drawing_Matrix* matrix)
 
 ### OH_Drawing_MatrixConcat()
 
-```
+```c
 void OH_Drawing_MatrixConcat(OH_Drawing_Matrix* total, const OH_Drawing_Matrix* a,const OH_Drawing_Matrix* b)
 ```
 
@@ -473,7 +480,7 @@ void OH_Drawing_MatrixConcat(OH_Drawing_Matrix* total, const OH_Drawing_Matrix* 
 
 ### OH_Drawing_MatrixGetAll()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_MatrixGetAll(OH_Drawing_Matrix* matrix, float value[9])
 ```
 
@@ -501,7 +508,7 @@ OH_Drawing_ErrorCode OH_Drawing_MatrixGetAll(OH_Drawing_Matrix* matrix, float va
 
 ### OH_Drawing_MatrixGetValue()
 
-```
+```c
 float OH_Drawing_MatrixGetValue(OH_Drawing_Matrix* matrix, int index)
 ```
 
@@ -529,7 +536,7 @@ float OH_Drawing_MatrixGetValue(OH_Drawing_Matrix* matrix, int index)
 
 ### OH_Drawing_MatrixRotate()
 
-```
+```c
 void OH_Drawing_MatrixRotate(OH_Drawing_Matrix* matrix, float degree, float px, float py)
 ```
 
@@ -553,7 +560,7 @@ void OH_Drawing_MatrixRotate(OH_Drawing_Matrix* matrix, float degree, float px, 
 
 ### OH_Drawing_MatrixTranslate()
 
-```
+```c
 void OH_Drawing_MatrixTranslate(OH_Drawing_Matrix* matrix, float dx, float dy)
 ```
 
@@ -576,7 +583,7 @@ void OH_Drawing_MatrixTranslate(OH_Drawing_Matrix* matrix, float dx, float dy)
 
 ### OH_Drawing_MatrixScale()
 
-```
+```c
 void OH_Drawing_MatrixScale(OH_Drawing_Matrix* matrix, float sx, float sy, float px, float py)
 ```
 
@@ -601,7 +608,7 @@ void OH_Drawing_MatrixScale(OH_Drawing_Matrix* matrix, float sx, float sy, float
 
 ### OH_Drawing_MatrixInvert()
 
-```
+```c
 bool OH_Drawing_MatrixInvert(OH_Drawing_Matrix* matrix, OH_Drawing_Matrix* inverse)
 ```
 
@@ -629,7 +636,7 @@ bool OH_Drawing_MatrixInvert(OH_Drawing_Matrix* matrix, OH_Drawing_Matrix* inver
 
 ### OH_Drawing_MatrixSetPolyToPoly()
 
-```
+```c
 bool OH_Drawing_MatrixSetPolyToPoly(OH_Drawing_Matrix* matrix, const OH_Drawing_Point2D* src,const OH_Drawing_Point2D* dst, uint32_t count)
 ```
 
@@ -659,7 +666,7 @@ bool OH_Drawing_MatrixSetPolyToPoly(OH_Drawing_Matrix* matrix, const OH_Drawing_
 
 ### OH_Drawing_MatrixMapPoints()
 
-```
+```c
 void OH_Drawing_MatrixMapPoints(const OH_Drawing_Matrix* matrix, const OH_Drawing_Point2D* src,OH_Drawing_Point2D* dst, int count)
 ```
 
@@ -683,7 +690,7 @@ void OH_Drawing_MatrixMapPoints(const OH_Drawing_Matrix* matrix, const OH_Drawin
 
 ### OH_Drawing_MatrixMapRect()
 
-```
+```c
 bool OH_Drawing_MatrixMapRect(const OH_Drawing_Matrix* matrix, const OH_Drawing_Rect* src, OH_Drawing_Rect* dst)
 ```
 
@@ -712,7 +719,7 @@ bool OH_Drawing_MatrixMapRect(const OH_Drawing_Matrix* matrix, const OH_Drawing_
 
 ### OH_Drawing_MatrixIsEqual()
 
-```
+```c
 bool OH_Drawing_MatrixIsEqual(OH_Drawing_Matrix* matrix, OH_Drawing_Matrix* other)
 ```
 
@@ -740,7 +747,7 @@ bool OH_Drawing_MatrixIsEqual(OH_Drawing_Matrix* matrix, OH_Drawing_Matrix* othe
 
 ### OH_Drawing_MatrixIsIdentity()
 
-```
+```c
 bool OH_Drawing_MatrixIsIdentity(OH_Drawing_Matrix* matrix)
 ```
 
@@ -767,7 +774,7 @@ bool OH_Drawing_MatrixIsIdentity(OH_Drawing_Matrix* matrix)
 
 ### OH_Drawing_MatrixDestroy()
 
-```
+```c
 void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)
 ```
 
@@ -789,15 +796,13 @@ void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)
 
 ### OH_Drawing_MatrixPreConcat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing_Matrix* b)
 ```
 
 **描述**
 
 对矩阵a左乘矩阵b。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 22
 
@@ -813,3 +818,109 @@ OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing
 | 类型 | 说明 |
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回错误码。<br>返回OH_DRAWING_SUCCESS，表示成功执行左乘方法。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示入参异常，rect或other为空。 |
+
+### OH_Drawing_MatrixIsAffine()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_MatrixIsAffine(const OH_Drawing_Matrix* matrix, bool* isAffine)
+```
+
+**描述**
+
+判断当前矩阵是否为仿射矩阵。仿射矩阵是一种包括平移、旋转或缩放等变换的矩阵。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。 |
+| bool* isAffine | 表示当前矩阵是否为仿射矩阵。作为出参使用。true表示当前矩阵是仿射矩阵，false表示当前矩阵不是仿射矩阵。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示matrix或isAffine是空指针。 |
+
+### OH_Drawing_MatrixPreSkew()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_MatrixPreSkew(OH_Drawing_Matrix* matrix, float kx, float ky, float px, float py)
+```
+
+**描述**
+
+将当前矩阵左乘一个以(px, py)为中心按(kx, ky)倾斜构造的矩阵。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。 |
+| float kx | 表示x轴上的倾斜量。 |
+| float ky | 表示y轴上的倾斜量。 |
+| float px | 表示倾斜中心点的x轴坐标。 |
+| float py | 表示倾斜中心点的y轴坐标。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示matrix是空指针。 |
+
+### OH_Drawing_MatrixRectStaysRect()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_MatrixRectStaysRect(const OH_Drawing_Matrix* matrix, bool* isRectStaysRect)
+```
+
+**描述**
+
+判断矩形经过当前矩阵映射后是否仍保持矩形形状。当矩阵是单位矩阵或仅包含平移、缩放、旋转90度倍数等仿射变换时满足该条件。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。 |
+| bool* isRectStaysRect | 表示经过该矩阵映射后的矩形的形状是否仍为矩形。作为出参使用。<br>true表示映射后的矩形形状是矩形，false表示映射后的矩形形状不是矩形。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示matrix或isRectStaysRect是空指针。 |
+
+### OH_Drawing_MatrixSetSinCos()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_MatrixSetSinCos(OH_Drawing_Matrix* matrix, float sinValue, float cosValue, float px, float py)
+```
+
+**描述**
+
+设置矩阵，使其围绕旋转中心 (px, py) 以指定的正弦值和余弦值进行旋转。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。 |
+| float sinValue | 表示旋转角度的正弦值。 |
+| float cosValue | 表示旋转角度的余弦值。 |
+| float px | 表示旋转中心的x轴坐标。 |
+| float py | 表示旋转中心的y轴坐标。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示matrix是空指针。 |

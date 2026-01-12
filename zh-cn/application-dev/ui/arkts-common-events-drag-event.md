@@ -23,7 +23,7 @@
 
 ### ​手势拖拽
 
-在手势长按触发拖拽的场景中，ArkUI在发起拖拽前会校验当前组件是否具备拖拽功能。若为默认支持拖出能力的组件（[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)、[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)、[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)、[Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)），需要判断是否设置了[draggable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#draggable)为true<!--Del-->（对于默认支持拖出能力的组件，可通过[系统资源](../quick-start/resource-categories-and-access.md#系统资源)初始化其[draggable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#draggable)属性的默认值）<!--DelEnd-->。其他组件则需额外确认是否已设置onDragStart回调函数。在满足上述条件后，长按时间达到或超过500ms即可触发拖拽，而长按800ms时，系统开始执行预览图的浮起动效。若与Menu功能结合使用，并通过isShow控制其显示与隐藏，建议避免在用户操作800ms后才控制菜单显示，此举可能引发非预期的行为。
+在手势长按触发拖拽的场景中，ArkUI在发起拖拽前会校验当前组件是否具备拖拽功能。若为默认支持拖出能力的组件（[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)、[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)、[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)、[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)、[Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)），需要判断是否设置了[draggable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#draggable)为true<!--Del-->（对于默认支持拖出能力的组件，可通过[系统资源](../quick-start/resource-categories-and-access.md#系统资源)初始化其[draggable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#draggable)属性的默认值）<!--DelEnd-->。其他组件则需额外确认是否已设置[onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)回调函数。在满足上述条件后，长按时间达到或超过500ms即可触发拖拽，而长按800ms时，系统开始执行预览图的浮起动效。若与Menu功能结合使用，并在[bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11)中通过isShow控制其显示与隐藏，建议避免在用户操作800ms后才控制菜单显示，此举可能引发非预期的行为。
 
 手势拖拽（手指/手写笔）触发拖拽流程：
 
@@ -112,12 +112,12 @@
    <!-- @[module_draggable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
    ``` TypeScript
-   // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
+   // 请将$r('app.media.app_icon')替换为实际资源文件
    Image($r('app.media.app_icon'))
      .width(100)
      .height(100)
      .draggable(true)
-     // ···
+     // ...
      .onDragStart((event) => {
        let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
        // 'resources/base/media/app_icon.png'需要替换为开发者所需的图像资源文件
@@ -175,29 +175,29 @@
    ``` TypeScript
    @Builder
    pixelMapBuilder() {
-    Column() {
-      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
-      Image($r('app.media.startIcon'))
-        .width(120)
-        .height(120)
-        // ···
-    }
+     Column() {
+       // 请将$r('app.media.startIcon')替换为实际资源文件
+       Image($r('app.media.startIcon'))
+         .width(120)
+         .height(120)
+         // ...
+     }
    }
    
-   // ···
+   // ...
    
    // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
    private getComponentSnapshot(): void {
-    this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
-      this.pixelMapBuilder()
-    },
-      (error: Error, pixmap: image.PixelMap) => {
-        if (error) {
-          hilog.error(DOMAIN, TAG, '%{public}s', JSON.stringify(error));
-          return;
-        }
-        this.pixmap = pixmap;
-      })
+     this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
+       this.pixelMapBuilder();
+     },
+       (error: Error, pixmap: image.PixelMap) => {
+         if (error) {
+           hilog.error(DOMAIN, TAG, '%{public}s', JSON.stringify(error));
+           return;
+         }
+         this.pixmap = pixmap;
+       });
    }
    ```
 
@@ -332,9 +332,8 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-
 const DOMAIN = 0x0000;
-const TAG = 'DefaultDragError: '
+const TAG = 'DefaultDragError: ';
 
 @Entry
 @Component
@@ -348,11 +347,11 @@ export struct DefaultDrag {
   @Builder
   pixelMapBuilder() {
     Column() {
-      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+      // 请将$r('app.media.startIcon')替换为实际资源文件
       Image($r('app.media.startIcon'))
         .width(120)
         .height(120)
-        // ···
+        // ...
     }
   }
 
@@ -388,7 +387,7 @@ export struct DefaultDrag {
   // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
   private getComponentSnapshot(): void {
     this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
-      this.pixelMapBuilder()
+      this.pixelMapBuilder();
     },
       (error: Error, pixmap: image.PixelMap) => {
         if (error) {
@@ -396,104 +395,105 @@ export struct DefaultDrag {
           return;
         }
         this.pixmap = pixmap;
-      })
+      });
   }
 
 
   build() {
-    // ···
-    Row() {
-      Column() {
-        Text('start Drag')
-          .fontSize(18)
-          .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
+    // ...
         Row() {
-          // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
-          Image($r('app.media.app_icon'))
-            .width(100)
-            .height(100)
-            .draggable(true)
-            .margin({ left: 15 })
-            .visibility(this.imgState)
-            // 绑定平行手势，可同时触发应用自定义长按手势
-            .parallelGesture(LongPressGesture().onAction(() => {
-              this.getUIContext()
-                .getPromptAction()
-                .showToast({ duration: 100, message: 'Long press gesture trigger' });
-            }))
-            .onDragStart((event) => {
-              let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
-              data.imageUri = 'common/pic/img.png';
-              let unifiedData = new unifiedDataChannel.UnifiedData(data);
-              event.setData(unifiedData);
+          Column() {
+            Text('start Drag')
+              .fontSize(18)
+              .width('100%')
+              .height(40)
+              .margin(10)
+              .backgroundColor('#008888')
+            Row() {
+              // 请将$r('app.media.app_icon')替换为实际资源文件
+              Image($r('app.media.app_icon'))
+                .width(100)
+                .height(100)
+                .draggable(true)
+                .margin({ left: 15 })
+                .visibility(this.imgState)
+                // 绑定平行手势，可同时触发应用自定义长按手势
+                .parallelGesture(LongPressGesture().onAction(() => {
+                  this.getUIContext()
+                    .getPromptAction()
+                    .showToast({ duration: 100, message: 'Long press gesture trigger' });
+                }))
+                .onDragStart((event) => {
+                  let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
+                  // 'resources/base/media/app_icon.png'需要替换为开发者所需的图像资源文件
+                  data.imageUri = 'resources/base/media/app_icon.png';
+                  let unifiedData = new unifiedDataChannel.UnifiedData(data);
+                  event.setData(unifiedData);
 
-              let dragItemInfo: DragItemInfo = {
-                pixelMap: this.pixmap,
-                extraInfo: 'this is extraInfo',
-              };
-              // onDragStart回调函数中返回自定义拖拽背板图
-              return dragItemInfo;
-            })
-            // 提前准备拖拽自定义背板图
-            .onPreDrag((preDragStatus: PreDragStatus) => {
-              if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
-                this.getComponentSnapshot();
-              }
-            })
-            .onDragEnd((event) => {
-              // onDragEnd里取到的result值在接收方onDrop设置
-              if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
-                this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
-              } else if (event.getResult() === DragResult.DRAG_FAILED) {
-                this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
-              }
-            })
-        }
+                  let dragItemInfo: DragItemInfo = {
+                    pixelMap: this.pixmap,
+                    extraInfo: 'this is extraInfo',
+                  };
+                  // onDragStart回调函数中返回自定义拖拽背板图
+                  return dragItemInfo;
+                })
+                // 提前准备拖拽自定义背板图
+                .onPreDrag((preDragStatus: PreDragStatus) => {
+                  if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
+                    this.getComponentSnapshot();
+                  }
+                })
+                .onDragEnd((event) => {
+                  // onDragEnd里取到的result值在接收方onDrop设置
+                  if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+                    this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
+                  } else if (event.getResult() === DragResult.DRAG_FAILED) {
+                    this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
+                  }
+                })
+            }
 
-        Text('Drag Target Area')
-          .fontSize(20)
+            Text('Drag Target Area')
+              .fontSize(20)
+              .width('100%')
+              .height(40)
+              .margin(10)
+              .backgroundColor('#008888')
+            Row() {
+              Image(this.targetImage)
+                .width(this.imageWidth)
+                .height(this.imageHeight)
+                .draggable(true)
+                .margin({ left: 15 })
+                .border({ color: Color.Black, width: 1 })// 控制角标显示类型为MOVE，即不显示角标
+                .onDragMove((event) => {
+                  event.setResult(DragResult.DROP_ENABLED);
+                  event.dragBehavior = DragBehavior.COPY;
+                })
+                .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
+                  uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
+                .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+                .onDrop((dragEvent?: DragEvent) => {
+                  // 获取拖拽数据
+                  this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
+                    let records: unifiedDataChannel.UnifiedRecord[] = event.getData().getRecords();
+                    let rect: Rectangle = event.getPreviewRect();
+                    this.imageWidth = Number(rect.width);
+                    this.imageHeight = Number(rect.height);
+                    this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+                    this.imgState = Visibility.None;
+                    // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
+                    event.setResult(DragResult.DRAG_SUCCESSFUL);
+                  });
+                })
+            }
+          }
           .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
-        Row() {
-          Image(this.targetImage)
-            .width(this.imageWidth)
-            .height(this.imageHeight)
-            .draggable(true)
-            .margin({ left: 15 })
-            .border({ color: Color.Black, width: 1 })// 控制角标显示类型为MOVE，即不显示角标
-            .onDragMove((event) => {
-              event.setResult(DragResult.DROP_ENABLED)
-              event.dragBehavior = DragBehavior.COPY
-            })
-            .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
-              uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
-            .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-            .onDrop((dragEvent?: DragEvent) => {
-              // 获取拖拽数据
-              this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
-                let records: unifiedDataChannel.UnifiedRecord[] = event.getData().getRecords();
-                let rect: Rectangle = event.getPreviewRect();
-                this.imageWidth = Number(rect.width);
-                this.imageHeight = Number(rect.height);
-                this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
-                this.imgState = Visibility.None;
-                // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
-                event.setResult(DragResult.DRAG_SUCCESSFUL);
-              })
-            })
+          .height('100%')
         }
+        .height('100%')
       }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
-  }
-    // ···
+      // ...
 }
 ```
 
@@ -572,23 +572,23 @@ export struct DefaultDrag {
    ``` TypeScript
    @State previewData: DragItemInfo[] = [];
    @State isSelectedGrid: boolean[] = [];
-   // ···
-   .onClick(() => {
-     this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-     if (this.isSelectedGrid[idx]) {
-       // ···
-       let gridItemName = 'grid' + idx;
-       // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
-       this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap) => {
-         this.pixmap = pixmap;
-         this.previewData[idx] = {
-           pixelMap: this.pixmap
-         }
-       })
-     } else {
-       // ···
-     }
-   })
+   // ...
+             .onClick(() => {
+               this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+               if (this.isSelectedGrid[idx]) {
+                 // ...
+                 let gridItemName = 'grid' + idx;
+                 // 选中状态下提前调用componentSnapshot中的get接口获取pixmap
+                 this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap) => {
+                   this.pixmap = pixmap;
+                   this.previewData[idx] = {
+                     pixelMap: this.pixmap
+                   };
+                 });
+               } else {
+                 // ...
+               }
+             })
    ```
 
 3. 多选显示效果。
@@ -600,19 +600,19 @@ export struct DefaultDrag {
     ``` TypeScript
     @Styles
     normalStyles(): void {
-      .opacity(1.0)
+      .opacity(1.0);
     }
     
     @Styles
     selectStyles(): void {
-      .opacity(0.4)
+      .opacity(0.4);
     }
     
-    // ···
-    .stateStyles({
-      normal: this.normalStyles,
-      selected: this.selectStyles
-    })
+    // ...
+              .stateStyles({
+                normal: this.normalStyles,
+                selected: this.selectStyles
+              })
     ```
 
 4. 适配数量角标。
@@ -623,20 +623,20 @@ export struct DefaultDrag {
     
     ``` TypeScript
     @State numberBadge: number = 0;
-    // ···
-    .onClick(() => {
-      this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-      if (this.isSelectedGrid[idx]) {
-        // ···
-        this.numberBadge++;
-        // ···
-      } else {
-        this.numberBadge--;
-        // ···
-      }
-    })
-    // 多选场景右上角数量角标需要应用设置numberBadge参数
-    .dragPreviewOptions({ numberBadge: this.numberBadge })
+    // ...
+              .onClick(() => {
+                this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+                if (this.isSelectedGrid[idx]) {
+                  // ...
+                  this.numberBadge++;
+                  // ...
+                } else {
+                  this.numberBadge--;
+                  // ...
+                }
+              })
+              // 多选场景右上角数量角标需要应用设置numberBadge参数
+              .dragPreviewOptions({ numberBadge: this.numberBadge })
     ```
 
 **完整示例：**
@@ -742,11 +742,12 @@ build() {
 当开发者需要实现自定义落位动效时，可以禁用系统的默认动效。从API version 18开始，ArkUI提供了[executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18)接口，用于自定义落位动效。以下以Image组件为例，详细介绍使用[executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18)接口的基本步骤，以及开发过程中需要注意的事项。
 
 1. 组件拖拽设置。
+
    设置draggable为true，并配置onDragStart、onDragEnd等回调函数。
    <!-- @[drop_image_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
    
    ``` TypeScript
-   // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
+   // 请将$r('app.media.app_icon')替换为实际资源文件
    Image($r('app.media.app_icon'))
      .width(100)
      .height(100)
@@ -756,7 +757,7 @@ build() {
      .onDragStart((event) => {
      })
      .onDragEnd((event) => {
-       // ···
+       // ...
      })
    ```
 
@@ -814,15 +815,14 @@ build() {
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-// ···
-
+// ...
 const DOMAIN = 0x0000;
-const TAG = 'DropAnimationExampleTag'
+const TAG = 'DropAnimationExampleTag';
 
 @Entry
 @Component
 export struct DropAnimationExample {
-  // ···
+  // ...
   @State targetImage: string = '';
   @State imageWidth: number = 100;
   @State imageHeight: number = 100;
@@ -833,14 +833,14 @@ export struct DropAnimationExample {
         this.imageWidth = 200;
         this.imageHeight = 200;
         this.imgState = Visibility.None;
-      })
-    }
+      });
+    };
 
   build() {
-    // ···
+    // ...
       Row() {
         Column() {
-          // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
+          // 请将$r('app.media.app_icon')替换为实际资源文件
           Image($r('app.media.app_icon'))
             .width(100)
             .height(100)
@@ -884,7 +884,7 @@ export struct DropAnimationExample {
             this.imageHeight = Number(rect.height);
             this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
             dragEvent.useCustomDropAnimation = true;
-            dragEvent.executeDropAnimation(this.customDropAnimation)
+            dragEvent.executeDropAnimation(this.customDropAnimation);
           })
           .width(this.imageWidth)
           .height(this.imageHeight)
@@ -893,7 +893,7 @@ export struct DropAnimationExample {
         .margin({ left: '5%' })
       }
       .height('100%')
-    // ···
+      // ...
   }
 }
 ```
@@ -1052,12 +1052,12 @@ struct GridEts {
 
   @Styles
   normalStyles(): void{
-    .opacity(1.0)
+    .opacity(1.0);
   }
 
   @Styles
   selectStyles(): void{
-    .opacity(0.4)
+    .opacity(0.4);
   }
 
   onPageShow(): void {
@@ -1091,7 +1091,7 @@ struct GridEts {
 
   build() {
     Column({ space: 5 }) {
-      // app.string.Select_All资源文件中的value值为'全选'
+      // 请将$r('app.string.Select_All')替换为实际资源文件，在本示例中该资源文件的value值为"全选"
       Button($r('app.string.Select_All'))
         .onClick(() => {
           for (let i = 0; i < this.isSelectedGrid.length; i++) {
@@ -1111,8 +1111,8 @@ struct GridEts {
                 this.pixmap = pixmap;
                 this.previewData[i] = {
                   pixelMap: this.pixmap
-                }
-              })
+                };
+              });
             }
           }
         })
@@ -1153,8 +1153,8 @@ struct GridEts {
                 this.pixmap = pixmap;
                 this.previewData[idx] = {
                   pixelMap: this.pixmap
-                }
-              })
+                };
+              });
             } else {
               this.numberBadge--;
               for (let i = 0; i < this.isSelectedGrid.length; i++) {
@@ -1170,7 +1170,7 @@ struct GridEts {
               }
             }
           })
-          // ···
+          // ...
           .onPreDrag((status: PreDragStatus) => {
             // 1.长按时通知，350ms回调
             if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
@@ -1254,7 +1254,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
 1.触发参数自定义
 
-  onDragSpringLoading接口还提供了一个可选参数configuration供应用自定义静止检测时长以及触发间隔与次数等配置，可以通过此参数来个性化定义Spring   Loading触发条件。但绝大数多情况下，不需要进行修改，使用系统默认配置即可。
+  [onDragSpringLoading](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20)接口还提供了一个可选参数configuration供应用自定义静止检测时长以及触发间隔与次数等配置，可以通过此参数来个性化定义Spring   Loading触发条件。但绝大数多情况下，不需要进行修改，使用系统默认配置即可。
   
   configuration参数必须在检测开始前准备就绪。系统一旦启动Spring Loading检测过程，将不再从该参数读取配置。然而，可以通过回调中传入的context对象中的updateCon  figuration方法动态更新配置。此动态更新仅对当前触发有效，不会影响通过configuration的配置。
   
@@ -1317,15 +1317,15 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   ``` TypeScript
   build() {
     Column() {
-      // ···
+      // ...
         Column() {
-          // app.string.DoubleClick_Text资源文件中的value值为'双击文字选择后拖出: \n     DeviceName'
+          // 请将$r('app.string.DoubleClick_Text')替换为实际资源文件，在本示例中该资源文件的value值为"双击文字选择后拖出: \n     DeviceName"
           Text($r('app.string.DoubleClick_Text'))
             .fontSize(30)
             .copyOption(CopyOptions.InApp) // 开启copyOption之后，文本组件即可支持选择内容进行拖拽
         }.padding({ bottom: 30 })
   
-        // app.string.Search_Device资源文件中的value值为'搜索设备'
+        // 请将$r('app.string.Search_Device')替换为实际资源文件，在本示例中该资源文件的value值为"搜索设备"
         Button($r('app.string.Search_Device'))
           .width('80%')
           .height('80vp')
@@ -1333,10 +1333,10 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
           .bindSheet($$this.isShowSheet, this.SheetBuilder(), {
             detents: [SheetSize.MEDIUM, SheetSize.LARGE, 600],
             preferType: SheetType.BOTTOM,
-            // app.string.Search_Device资源文件中的value值为'搜索设备'
+            // 请将$r('app.string.Search_Device')替换为实际资源文件，在本示例中该资源文件的value值为"搜索设备"
             title: { title: $r('app.string.Search_Device') },
           })
-      // ···
+          // ...
     }.width('100%').height('100%')
     .justifyContent(FlexAlign.Center)
   }
@@ -1353,12 +1353,12 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   SheetBuilder() {
     Column() {
       // 输入框
-      // app.string.Push_Here资源文件中的value值为'拖入此处'
+      // 请将$r('app.string.Push_Here')替换为实际资源文件，在本示例中该资源文件的value值为"拖入此处"
       TextInput({ placeholder: $r('app.string.Push_Here') })
         .width('80%')
         .borderWidth(1)
         .borderColor(Color.Black)
-        // ···
+        // ...
         .onChange((value: string) => {
           if (value.length == 0) {
             this.isSearchDone = false;
@@ -1369,7 +1369,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
         })
       if (this.isSearchDone) {
         Text(this.searchResult).fontSize(20)
-        // ···
+        // ...
       }
     }.width('100%').height('100%')
   }
@@ -1436,14 +1436,14 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 import { dragController } from '@kit.ArkUI';
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 
-// ···
+// ...
 
 @Entry
 @ComponentV2
 export struct SpringLoadingPage {
-  context1 = this.getUIContext().getHostContext()
+  context1 = this.getUIContext().getHostContext();
   @Local isShowSheet: boolean = false;
-  // app.string.Select_Result资源文件中的value值为'搜索结果：\n  设备 1\n  设备 2\n  设备 3\n  ... ...'
+  // 请将$r('app.string.Select_Result')替换为实际资源文件，在本示例中该资源文件的value值为"搜索结果：\n  设备 1\n  设备 2\n  设备 3\n  ... ..."
   private searchResult: string = this.context1?.resourceManager.getStringSync($r('app.string.Select_Result').id)!;
   @Local isSearchDone: boolean = false;
   private reminderColor: Color = Color.Green;
@@ -1454,7 +1454,7 @@ export struct SpringLoadingPage {
   SheetBuilder() {
     Column() {
       // 输入框
-      // app.string.Push_Here资源文件中的value值为'拖入此处'
+      // 请将$r('app.string.Push_Here')替换为实际资源文件，在本示例中该资源文件的value值为"拖入此处"
       TextInput({ placeholder: $r('app.string.Push_Here') })
         .width('80%')
         .borderWidth(1)
@@ -1513,7 +1513,7 @@ export struct SpringLoadingPage {
         // 我们已经在onDragEnter时刷新了提醒色，进入Spring Loading状态时，恢复UI，提醒用户继续保持不动
         this.buttonBackgroundColor = this.normalColor;
       }
-    // ···
+      // ...
       return;
     }
     if (context.state == dragController.DragSpringLoadingState.UPDATE) {
@@ -1523,34 +1523,34 @@ export struct SpringLoadingPage {
       } else {
         this.buttonBackgroundColor = this.normalColor;
       }
-    // ···
+      // ...
       return;
     }
     // 处理Spring Loading结束，触发视图切换
     if (context.state == dragController.DragSpringLoadingState.END) {
       this.isShowSheet = true;
-    // ···
+      // ...
       return;
     }
     // 处理CANCEL状态，复原UI
     if (context.state == dragController.DragSpringLoadingState.CANCEL) {
       this.buttonBackgroundColor = this.normalColor;
-    // ···
+      // ...
       return;
     }
   }
 
   build() {
     Column() {
-    // ···
+      // ...
         Column() {
-          // app.string.DoubleClick_Text资源文件中的value值为'双击文字选择后拖出: \n     DeviceName'
+          // 请将$r('app.string.DoubleClick_Text')替换为实际资源文件，在本示例中该资源文件的value值为"双击文字选择后拖出: \n     DeviceName"
           Text($r('app.string.DoubleClick_Text'))
             .fontSize(30)
             .copyOption(CopyOptions.InApp) // 开启copyOption之后，文本组件即可支持选择内容进行拖拽
         }.padding({ bottom: 30 })
 
-        // app.string.Search_Device资源文件中的value值为'搜索设备'
+        // 请将$r('app.string.Search_Device')替换为实际资源文件，在本示例中该资源文件的value值为"搜索设备"
         Button($r('app.string.Search_Device'))
           .width('80%')
           .height('80vp')
@@ -1558,24 +1558,24 @@ export struct SpringLoadingPage {
           .bindSheet($$this.isShowSheet, this.SheetBuilder(), {
             detents: [SheetSize.MEDIUM, SheetSize.LARGE, 600],
             preferType: SheetType.BOTTOM,
-            // app.string.Search_Device资源文件中的value值为'搜索设备'
+            // 请将$r('app.string.Search_Device')替换为实际资源文件，在本示例中该资源文件的value值为"搜索设备"
             title: { title: $r('app.string.Search_Device') },
           })
           .allowDrop([uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
           .backgroundColor(this.buttonBackgroundColor)
           .onDragEnter(() => {
             // 当用户拖拽进入按钮范围，即提醒用户，此处是可以处理数据的
-            this.buttonBackgroundColor = this.reminderColor
+            this.buttonBackgroundColor = this.reminderColor;
           })
           .onDragLeave(() => {
             // 当用户拖拽离开按钮范围，恢复UI
-            this.buttonBackgroundColor = this.normalColor
+            this.buttonBackgroundColor = this.normalColor;
           })
           .onDragSpringLoading(null)
           .onDragSpringLoading((context: SpringLoadingContext) => {
             this.handleSpringLoading(context);
           })
-        // ···
+        // ...
     }.width('100%').height('100%')
     .justifyContent(FlexAlign.Center)
   }

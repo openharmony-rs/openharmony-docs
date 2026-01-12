@@ -1,4 +1,10 @@
 # qrcode
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xuqinfeng1-->
+<!--Designer: @liyujie43-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @xuqinfeng1-->
 
 >  **NOTE**
 >
@@ -41,6 +47,7 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 >
 >  - If either **width** or **height** is set, the value is used as the length of the QR code. If neither of them is set, the default length 200 px is used.
 >
+<!--RP1--><!--RP1End-->
 
 
 ## Events
@@ -60,13 +67,13 @@ The [universal methods](js-components-common-methods.md) are supported.
   <qrcode value="{{qr_value}}" type="{{qr_type}}"
   style="color: {{qr_col}};background-color: {{qr_bcol}};width: {{qr_size}};height: {{qr_size}};margin-bottom: 70px;"></qrcode>
   <text class="txt">Type</text>
-  <switch showtext="true" checked="true" texton="rect" textoff="circle" onchange="settype"></switch>
+  <switch showtext="true" checked="true" texton="rect" textoff="circle" onchange="setType"></switch>
   <text class="txt">Color</text>
-  <select onchange="setcol">
+  <select onchange="setCol">
     <option for="{{col_list}}" value="{{$item}}">{{$item}}</option>
   </select>
   <text class="txt">Background Color</text>
-  <select onchange="setbcol">
+  <select onchange="setBCol">
     <option for="{{bcol_list}}" value="{{$item}}">{{$item}}</option>
   </select>
 </div>
@@ -102,17 +109,17 @@ export default {
     qr_bcol: '#f0ffff',
     bcol_list: ['#f0ffff','#ffffe0','#d8bfd8']
   },
-  settype(e) {
+  setType(e) {
     if (e.checked) {
       this.qr_type = 'rect'
     } else {
       this.qr_type = 'circle'
     }
   },
-  setcol(e) {
+  setCol(e) {
     this.qr_col = e.newValue
   },
-  setbcol(e) {
+  setBCol(e) {
     this.qr_bcol = e.newValue
   }
 }

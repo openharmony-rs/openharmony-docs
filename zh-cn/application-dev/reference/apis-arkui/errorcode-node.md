@@ -116,12 +116,12 @@ The current item has been disposed.
 
 **可能原因**
 
-开发者在之前的某个地方使用该实例对象调用了dispose接口，例如：item.dispose()。
+开发者在之前的某个地方使用该实例对象调用了[disposeNode](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)接口，例如：item.dispose()。
 
 **处理步骤**
 
-1. 如果还需要使用该实例对象，不能对其执行dispose操作，移除相关代码。
-2. 如果不确定当前实例对象是否还可用，可以调用isDisposed接口进行判断。
+1. 如果还需要使用该实例对象，请勿对其执行dispose操作。
+2. 如果不确定当前实例对象是否可用，可以调用isDisposed接口进行判断。
 
 ## 100027 当前节点已被接纳为附属节点
 
@@ -140,6 +140,24 @@ The current node has been adopted.
 **处理步骤**
 
 将当前节点取消被接纳，再执行当前操作。
+
+## 100028 当前节点不在主节点树上
+
+**错误信息**
+
+The current FrameNode is not on the main tree.
+
+**错误描述**
+
+当前节点不在主节点树上。
+
+**可能原因**
+
+当前节点不在主节点树上。
+
+**处理步骤**
+
+将当前节点挂载到主节点树上，再执行当前操作。
 
 ## 106103 对应的操作不支持ArkTS创建的节点
 

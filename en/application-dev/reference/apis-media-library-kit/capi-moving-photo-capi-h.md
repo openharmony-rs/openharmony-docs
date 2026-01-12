@@ -37,7 +37,7 @@ The file declares the APIs related to moving photos. You can use the APIs to obt
 
 ### OH_MovingPhoto_GetUri()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MovingPhoto_GetUri(OH_MovingPhoto* movingPhoto, const char** uri)
 ```
 
@@ -63,7 +63,7 @@ Obtains the URI of a moving photo.
 
 ### OH_MovingPhoto_RequestContentWithUris()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUris(OH_MovingPhoto* movingPhoto, char* imageUri,char* videoUri)
 ```
 
@@ -92,7 +92,7 @@ Requests the image data and video data of a moving photo and writes them to the 
 
 ### OH_MovingPhoto_RequestContentWithUri()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUri(OH_MovingPhoto* movingPhoto,MediaLibrary_ResourceType resourceType, char* uri)
 ```
 
@@ -121,7 +121,7 @@ Requests the moving photo content of the specified resource type and writes it t
 
 ### OH_MovingPhoto_RequestContentWithBuffer()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithBuffer(OH_MovingPhoto* movingPhoto,MediaLibrary_ResourceType resourceType, const uint8_t** buffer, uint32_t* size)
 ```
 
@@ -151,7 +151,7 @@ Requests the moving photo content of the specified resource type and returns it 
 
 ### OH_MovingPhoto_Release()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MovingPhoto_Release(OH_MovingPhoto* movingPhoto)
 ```
 

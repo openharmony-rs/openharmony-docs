@@ -94,7 +94,7 @@ Obtains the remaining time of a transient task. This API uses an asynchronous ca
 
 | Name      | Type                         | Mandatory  | Description                                      |
 | --------- | --------------------------- | ---- | ---------------------------------------- |
-| requestId | number                      | Yes   | Request ID of the transient task. It is obtained by calling the [requestSuspendDelay](#backgroundtaskmanagerrequestsuspenddelay) API when applying for a transient task. |
+| requestId | number                      | Yes   | Request ID of the transient task. It is obtained by calling the [requestSuspendDelay](#backgroundtaskmanagerrequestsuspenddelay) API. |
 | callback  | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the remaining time of the transient task, in milliseconds.|
 
 **Error codes**
@@ -892,7 +892,7 @@ Subscribes to continuous task cancellation events. This API uses an asynchronous
 
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
-| type   | string                            | Yes   | Cancels a continuous task. The value is fixed at **'continuousTaskCancel'**.|
+| type   | string                            | Yes   | Event type. The value is fixed at **'continuousTaskCancel'**, indicating that a continuous task is canceled.|
 | callback   | Callback\<[ContinuousTaskCancelInfo](#continuoustaskcancelinfo15)>       | Yes   | Callback used to return information such as the reason for canceling a continuous task.|
 
 **Error codes**
@@ -1314,7 +1314,7 @@ import { wantAgent, WantAgent } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   notificationId: number = 0; // Save the notification ID.
-  continuousTaskId: number | undefined = -1; // ID of the continuous task.
+  continuousTaskId: number | undefined = -1; // Continuous task ID.
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
       // Add the bundleName and abilityName of the application to be started. Replace them with the actual ones.
@@ -1324,7 +1324,7 @@ export default class EntryAbility extends UIAbility {
           abilityName: "EntryAbility"
         }
       ],
-      // Set the action type after the notification is tapped.
+      // Set the operation type after the notification is tapped.
       actionType: wantAgent.OperationType.START_ABILITY,
       // Custom request code, which is used to identify the operation to execute.
       requestCode: 0,
@@ -1375,7 +1375,7 @@ Cancels a continuous task with the specified ID. This API uses a promise to retu
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.|
-| continuousTaskId   | number | Yes   | ID of a continuous task.<br>**Note**: You can obtain the ID of the current continuous task through the return value of the [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) API, or obtain information about all continuous tasks through the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API. |
+| continuousTaskId   | number | Yes   | Continuous task ID.<br>**Note**: You can obtain the ID of the current continuous task through the return value of the [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) API, or obtain information about all continuous tasks through the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API. |
 
 **Return value**
 
@@ -1455,7 +1455,7 @@ Defines the type of a continuous task.
 | BLUETOOTH_INTERACTION   | 5    | Bluetooth-related services.<br>Use scenario: An application moves to the background while transferring files via Bluetooth.                 |
 | MULTI_DEVICE_CONNECTION | 6    | Multi-device connection.<br>Use scenario: distributed service connection and casting.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                |
 | VOIP<sup>13+</sup> | 8    | Audio and video calls.<br>Use scenario: Chat applications (with audio and video services) transition into the background during audio and video calls.<!--Del--><br>**Note**: No notification is displayed if a system application requests or updates a continuous task.<!--DelEnd-->                 |
-| TASK_KEEPING            | 9    | Computing task (for 2-in-1 devices only).<br>Use scenario: antivirus software.<br>**Note**: Starting from API version 21, this capability is available for PCs/2-in-1 devices, and non-PCs/2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). In API version 20 and earlier versions, this task type is limited to PCs/2-in-1 devices only.       |
+| TASK_KEEPING            | 9    | Computing tasks.<br>Use scenario: antivirus software.<br>**Note**: Starting from API version 21, this capability is available for PCs/2-in-1 devices, and non-PCs/2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). In API version 20 and earlier versions, this task type is limited to PCs/2-in-1 devices only.       |
 
 ## ContinuousTaskNotification<sup>12+</sup>
 
@@ -1576,11 +1576,13 @@ Describes the continuous task information.
 | [backgroundModes](#backgroundmode) | string[] | No   | No   | Type of the continuous task.              |
 | [backgroundSubModes](#backgroundsubmode16) | string[] | No   | No   | Subtype of a continuous task.             |
 | notificationId | number   | No   | No   | Notification ID.               |
-| continuousTaskId | number   | No   | No   | ID of a continuous task.             |
+| continuousTaskId | number   | No   | No   | Continuous task ID.             |
 | abilityId | number   | No   | No   | UIAbility ID.        |
 | wantAgentBundleName | string   | No   | No   |  Bundle name configured in [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md). **WantAgent** is a notification parameter used to specify the target page when a continuous task notification is tapped.       |
 | wantAgentAbilityName | string   | No   | No   |  Ability name configured in [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md). **WantAgent** is a notification parameter used to specify the target page when a continuous task notification is tapped.|
 | suspendState | boolean   | No   | No   | Whether the requested continuous task is suspended. The value **true** indicates that the task is suspended, and the value **false** indicates that the task is activated.|
+| bundleName<sup>23+</sup> | string   | No   | Yes   | Application bundle name.         |
+| appIndex<sup>23+</sup>   | number   | No   | Yes   | Index of an application clone.              |
 
 ## ContinuousTaskRequest<sup>21+</sup>
 
@@ -1603,7 +1605,7 @@ Specifies details of the continuous task being requested or updated. It is typic
 | backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | No   | No   | Subtype of a continuous task.<br>**Note**: The main type must match the subtype.|
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | No   | No   | Notification parameters, which are used to specify the target page that is redirected to when a continuous task notification is clicked.|
 | combinedTaskNotification | boolean   | No   | Yes   | Whether to combine notifications. The value **true** means to combine notifications, and the value **false** (default) means the opposite.<br>**Note**: This property does not take effect in [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) API. If notifications need to be combined for an existing task, request the task again and set the value to **true**.|
-| continuousTaskId | number   | No   | Yes   | Continuous task ID. The default value is **-1**.<br>**Note**: If **combinedTaskNotification** is set to **true**, this property is mandatory and the ID must exist.<br>This property is mandatory and the ID must exist if it is used as the input parameter of the [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) API.<br>You can call the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API to view information about all continuous tasks.  |
+| continuousTaskId | number   | No   | Yes   | Continuous task ID. The default value is **-1**.<br>**Note**: If **combinedTaskNotification** is set to true, this property is mandatory and the corresponding ID must exist.<br>Additionally, this property is mandatory (with the corresponding ID required) when used as an input parameter for the [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) API.<br>You can call the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API to view information about all continuous tasks.  |
 
 ### isModeSupported<sup>21+</sup>
 
@@ -1654,18 +1656,23 @@ export default class EntryAbility extends UIAbility {
 
 ### requestAuthFromUser<sup>22+</sup>
 
-requestAuthFromUser(callback: Callback&lt;UserAuthResult&gt;): void
+requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;): void
 
 Requests user authorization to run tasks continuously in the background. This API uses an asynchronous callback to return the result. If the API call is successful, a banner notification with a sound is sent. This API applies only to continuous tasks of the [MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21) type.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+**Device behavior differences**: This API can be properly called on smartphones, tablets, and PCs/2-in-1 devices. If it is called on other devices, error code 9800005 is returned.
+
 **Parameters**
 
 | Name     | Type                                                 | Mandatory  | Description          |
 | -------- |-----------------------------------------------------| ---- |--------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes   | Application context.|
 | callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | Yes   | Callback used to return the user authorization result.|
 
 **Error codes**
@@ -1675,6 +1682,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
+| 9800004 | System service operation failed. |
 | 9800005 | Continuous task verification failed. |
 
 **Example**
@@ -1684,7 +1692,7 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function callbackAuth(authResult: backgroundTaskManager.UserAuthResult) {
-    console.info("Operation requestAuthFromUser success. auth result: " + JSON.stringify(authResult));
+    console.info('Operation requestAuthFromUser success. auth result: ' + JSON.stringify(authResult));
 }
 
 export default class EntryAbility extends UIAbility {
@@ -1695,7 +1703,8 @@ export default class EntryAbility extends UIAbility {
     let subModeList: Array<number> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION];
     continuousTaskRequest.backgroundTaskSubmodes = subModeList;
     try {
-      continuousTaskRequest.requestAuthFromUser(callbackAuth);
+      continuousTaskRequest.requestAuthFromUser(this.context, callbackAuth);
+      console.info('Operation requestAuthFromUser succeeded.');
     } catch (error) {
       console.error(`Operation requestAuthFromUser failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
@@ -1705,13 +1714,23 @@ export default class EntryAbility extends UIAbility {
 
 ### checkSpecialScenarioAuth<sup>22+</sup>
 
-checkSpecialScenarioAuth(): Promise&lt;UserAuthResult&gt;
+checkSpecialScenarioAuth(context: Context): Promise&lt;UserAuthResult&gt;
 
 Checks whether the user has authorized tasks to run continuously in the background. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**Device behavior differences**: This API can be properly called on smartphones, tablets, and PCs/2-in-1 devices. If it is called on other devices, error code 9800005 is returned.
+
+**Parameters**
+
+| Name     | Type                                                 | Mandatory  | Description          |
+| -------- |-----------------------------------------------------| ---- |--------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes   | Application context.|
 
 **Return value**
 
@@ -1726,6 +1745,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
+| 9800004 | System service operation failed. |
 | 9800005 | Continuous task verification failed. |
 
 **Example**
@@ -1738,8 +1758,8 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     try {
       let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
-      continuousTaskRequest.checkSpecialScenarioAuth().then((res: backgroundTaskManager.UserAuthResult) => {
-        console.info("Operation checkSpecialScenarioAuth succeeded. data: " + JSON.stringify(res));
+      continuousTaskRequest.checkSpecialScenarioAuth(this.context).then((res: backgroundTaskManager.UserAuthResult) => {
+        console.info('Operation checkSpecialScenarioAuth succeeded. data: ' + JSON.stringify(res));
       }).catch((error: BusinessError) => {
         console.error(`Operation checkSpecialScenarioAuth failed. code is ${error.code} message is ${error.message}`);
       });
@@ -1758,7 +1778,7 @@ Main type of a continuous task. It is usually used together with the subtype [Ba
 
 | Name                    | Value | Description                   |
 | ------------------------ | ---- | --------------------- |
-| MODE_DATA_TRANSFER              | 1         | Data transfer.<br>Example: Upload and download in non-hosting mode, for example, uploading or downloading data in the background of a browser.<br>**NOTE**<br>1. During data transfer, the application needs to update the progress. If the progress is not updated for more than 10 minutes, the continuous task of the **DATA_TRANSFER** type will be canceled.<br>2. The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12).                |
+| MODE_DATA_TRANSFER              | 1         | Data transfer.<br>Use scenario: upload and download in non-hosting mode, for example, uploading or downloading data in the background of a browser.<br>**NOTE**<br>1. During data transfer, the application needs to update the progress. If the progress is not updated for more than 10 minutes, the continuous task of the **DATA_TRANSFER** type will be canceled.<br>2. The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12).                |
 | MODE_AUDIO_PLAYBACK             | 2         | Audio and video playback.<br>Use scenario: audio/video playback in the background and audio/video casting.<br>**Note**: If a continuous task of the **MODE_AUDIO_PLAYBACK** type is requested or updated without connecting to AVSession, a notification will appear in the notification panel once the task is successfully requested or updated. Once AVSession is connected, notifications will be sent by AVSession instead of the background task module.             |
 | MODE_AUDIO_RECORDING            | 3         | Audio recording.<br>Use scenario: recording and screen capture in the background.<!--Del--><br>**Note**: No notification is displayed if a system application requests or updates a continuous task.<!--DelEnd-->                 |
 | MODE_LOCATION                   | 4         | Positioning and navigation.                 |
@@ -1767,11 +1787,11 @@ Main type of a continuous task. It is usually used together with the subtype [Ba
 | MODE_VOIP                       | 8         | Audio and video calls.<br>Use scenario: Chat applications (with audio and video services) transition into the background during audio and video calls. <!--Del--><br>**Note**: No notification is displayed if a system application requests or updates a continuous task.<!--DelEnd-->            |
 | MODE_TASK_KEEPING               | 9         | Computing tasks.<br>Use scenario: antivirus software.<br>**Note**: This capability is available only to PCs/2-in-1 devices, or non-PCs/2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system).|
 | MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | Multimedia services.<br>Use scenarios: audio/video playback, recording, and audio/video calls. The scenario must match that of the subtype. You can select this task type or the corresponding main type for preceding scenarios. For example, you can request a continuous task of the **MODE_AUDIO_PLAYBACK** or **MODE_AV_PLAYBACK_AND_RECORD** type for audio/video playback.           |
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | Special scenarios.<br>Use scenarios: An application exports media files in the background or uses a third-party component to cast content in the background. The scenario must match that of the subtype.<br>**NOTE**<br>1. If an application needs to run in the background for a long time, it can request user authorization through the [requestAuthFromUser](#requestauthfromuser22) API and check the authorization result via [checkSpecialScenarioAuth](#checkspecialscenarioauth22).<br>2. This capability is available only to applications that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system).<br>3. This task type must be used independently and notifications cannot be combined. Specifically, when you request or update a continuous task, it must be of the **MODE_SPECIAL_SCENARIO_PROCESSING** type. Otherwise, an error is returned.|
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | Special scenarios (available only for smartphones, tablets, PCs/2-in-1 devices).<br>Use scenarios: An application exports media files in the background or uses a third-party component to cast content in the background. The scenario must match that of the subtype.<br>**NOTE**<br>1. If an application needs to run in the background for a long time, it can request user authorization through the [requestAuthFromUser](#requestauthfromuser22) API and check the authorization result via [checkSpecialScenarioAuth](#checkspecialscenarioauth22).<br>2. This capability is available only to applications that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system).<br>3. This task type must be used independently and notifications cannot be combined. Specifically, when you request or update a continuous task, it must be of the **MODE_SPECIAL_SCENARIO_PROCESSING** type. Otherwise, an error is returned.|
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
-Subtype of a continuous task. It is usually used together with the main type [BackgroundTaskMode](#backgroundtaskmode21). For details, see the mapping table. The two types are newly added in API version 21 for requesting and updating continuous tasks.
+Defines the subtype of a continuous task. It is usually used together with the main type [BackgroundTaskMode](#backgroundtaskmode21). For details, see the mapping table. The two types are newly added in API version 21 for requesting and updating continuous tasks.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -1787,6 +1807,7 @@ Subtype of a continuous task. It is usually used together with the main type [Ba
 | SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  | 8    | Call. It is of the normal text notification type.           |
 | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup>  | 9 | Media processing. For example, an application exports media files in the background. It is of the normal text notification type.   |
 | SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  | 10 | Video casting. For example, an application uses a third-party casting component to cast a video in the background, and the notification type is common text notification. |
+| SUBMODE_WORK_OUT_NORMAL_NOTIFICATION<sup>23+</sup>  | 11 | Exercise. For example, an application has an indoor running scenario in the background, and the notification type is common text notification.<br>**Model restriction**: This API can be used only in the stage model.|
 
 Mapping table of main types and subtypes of continuous tasks
 
@@ -1801,7 +1822,7 @@ Mapping table of main types and subtypes of continuous tasks
 | MODE_VOIP                         | SUBMODE_NORMAL_NOTIFICATION         |
 | MODE_TASK_KEEPING                 | SUBMODE_NORMAL_NOTIFICATION         |
 | MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>  | SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup><br>SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup><br>SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup><br>SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup><br>SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  |
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup>  | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup> <br>SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  |
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup>  | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup> <br>SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  <br>SUBMODE_WORK_OUT_NORMAL_NOTIFICATION<sup>23+</sup> |
 
 ## UserAuthResult<sup>22+</sup>
 
@@ -1814,5 +1835,5 @@ Represents the user authorization result.
 | NOT_SUPPORTED | 0 | The authorization is not supported. For example, if the main type of the requested continuous task is not **MODE_SPECIAL_SCENARIO_PROCESSING**, continuous task running in the background is not supported.|
 | NOT_DETERMINED | 1 | No user operation.|
 | DENIED  | 2 | The authorization is denied.   |
-| GRANTED_ONCE | 3 | The authorization is granted this time. |
-| GRANTED_ALWAYS | 4 | The authorization is granted always. |
+| GRANTED_ONCE | 3 | The authorization is granted this time.<br>**Note:** The authorization record will be cleared when the application exits. |
+| GRANTED_ALWAYS | 4 | The authorization is granted always.<br>**NOTE**<br>When the following common events are received, the related authorization records will be cleared:<br>[COMMON_EVENT_PACKAGE_ADDED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_added), [COMMON_EVENT_PACKAGE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_removed), [COMMON_EVENT_BUNDLE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_removed), [COMMON_EVENT_PACKAGE_FULLY_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_fully_removed), [COMMON_EVENT_PACKAGE_CHANGED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_changed). |

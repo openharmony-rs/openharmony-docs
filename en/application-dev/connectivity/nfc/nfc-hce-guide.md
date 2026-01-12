@@ -8,14 +8,16 @@
 <!--Adviser: @zhang_yixin13-->
 
 ## Introduction
-Near Field Communication (NFC) is a short-range, high-frequency radio technology that operates at a frequency of 13.56 MHz, with a typical communication range of within 10 centimeters. Host Card Emulation (HCE) provides card emulation that does not depend on a secure element. It allows an application to emulate a card and communicate with an NFC card reader through the NFC service.
+Near Field Communication (NFC) is a short-range, high-frequency radio technology that operates at a frequency of 13.56 MHz, with a typical communication range of within 10 centimeters. Host Card Emulation (HCE) provides card emulation that does not depend on a secure element. It allows an application to emulate a card and communicate with an NFC card reader to complete NFC card swiping. Off Host Card Emulation (OFFHOST) is supported since API version 22. It simulates a card using a separate chip (called as the secure element or SE) on the device. Some SIM cards of wireless carriers contain SEs.
 
 ## When to Use
-An application emulates a card and communicates with an NFC card reader through the NFC service. The device can communicate with an NFC card reader by using a started application (foreground mode) or without starting an application (background mode).
+An application emulates a card and communicates with an NFC card reader to complete NFC card swiping. The device can communicate with an NFC card reader by using a started application (foreground mode) or without starting an application (background mode).
 - HCE foreground card swiping<br>
 In the foreground mode, the user has to start a specific application that communicates with the NFC card reader. Specifically, the user starts the application, opens the application page, and taps the device on the NFC card reader. In this case, the transaction data is distributed only to the foreground application. When the application switches to the background or exits, the foreground priority is also suspended.
 - HCE background card swiping<br>
 The user taps the device on an NFC card reader without starting any HCE application. Then, the device selects an HCE application based on the Applet ID (AID, which complies with ISO/IEC 7816-4) provided by the NFC card reader, and completes the card swiping transaction. If multiple HCE applications are matched, an application selector will be displayed, listing all the available applications. In this case, the user needs to open the desired HCE application and tap the device on the NFC card reader again to trigger the card swiping transaction.
+
+The SE emulates an NFC card and communicates with an NFC card reader to complete the NFC card swiping. The card to be emulated is configured in the SE through the application. When the device taps the NFC card reader, data is not processed by the device CPU, but is directly sent to the SE to complete the card swiping.
 
 ## Constraints
 1. For security reasons, regardless of whether the HCE application performs card swiping in the foreground or background, the device does not support HCE card swiping operations when it is in the screen-off state.<br>
@@ -40,13 +42,13 @@ The following table describes the APIs for implementing HCE.
 
 ### Selecting Foreground or Background Card Swiping
 HCE application developers can choose to implement either foreground or background card swiping based on service requirements. These two methods differ in their code implementation.
-- HCE Foreground Card Swiping<br>
+- HCE foreground card swiping<br>
 1. In the **module.json5** configuration file, there is no need to statically declare the Applet ID (AID, which complies with ISO/IEC 7816-4) selected by the NFC card reader. Instead, dynamically register an AID by using [start](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#start9).
-2. When the card swiping page of the HCE application exits,  explicitly called [stop](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#stop9) to release the dynamically registered AID.
-- HCE Background Card Swiping<br>
+2. When the card swiping page of the HCE application exits, explicitly called [stop](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#stop9) to release the dynamically registered AID.
+- HCE background card swiping<br>
 1. In the **module.json5** configuration file, statically declare the AID selected by the NFC card reader. Based on service requirements, specify whether the declared AID belongs to the **Payment** type or the **Other** type.
-2. If the **Payment** type is selected, the HCE application will appear in the default payment app list on the NFC settings page. Users can only use background card swiping after selecting this HCE application as the default payment app. Since a default payment app is designated, there will be no conflicts between multiple HCE applications of the **Payment** type.
-3. If the **Other** type is selected, the HCE application will not appear in the default payment app list on the NFC settings page. However, conflicts may arise if multiple HCE applications declare the same AID of the **Other** type.
+2. If the **Payment** type is selected, the HCE application will appear in the NFC default payment application list on the system settings page. Users can only use background card swiping after selecting this HCE application as the default payment app. Since a default payment app is designated, there will be no conflicts between multiple HCE applications of the **Payment** type.
+3. If the **Other** type is selected, the HCE application will not appear in the NFC default payment app list on the system settings page. However, conflicts may arise if multiple HCE applications declare the same AID of the **Other** type.
 4. When implementing HCE background card swiping, you do not need to call the **start** and **stop** APIs.
 
 > **NOTE**
@@ -84,7 +86,7 @@ HCE application developers can choose to implement either foreground or backgrou
             "actions": [
               "ohos.want.action.home",
 
-              // The **actions** field must contain ohos.nfc.cardemulation.action.HOST_APDU_SERVICE.
+              // The **actions** field must contain "ohos.nfc.cardemulation.action.HOST_APDU_SERVICE".
               "ohos.nfc.cardemulation.action.HOST_APDU_SERVICE"
             ]
           }
@@ -158,7 +160,7 @@ export default class EntryAbility extends UIAbility {
     if (hceElementName != undefined) {
       try {
         // Enable the foreground HCE application to preferentially process NFC card swiping.
-        let aidList = ["A0000000031010," "A0000000031011"]; // Set the AID list correctly.
+        let aidList = ["A0000000031010", "A0000000031011"]; // Set the AID list correctly.
         hceService.start(hceElementName, aidList);
 
         // Subscribe to the HCE APDU receiving events.
@@ -172,7 +174,7 @@ export default class EntryAbility extends UIAbility {
   onBackground() {
     // Switch the application to the background.
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
-    // When exiting the NFC tag page of the application, call the tag module API to exit the foreground mode.
+    // Switch the application to the foreground and stop HCE.
     if (hceElementName != undefined) {
       try {
         hceService.stop(hceElementName);
@@ -184,7 +186,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### HCE Background Card Swiping
+### HCE background card swiping
 1. Declare the permission required for NFC card emulation, HCE action, and AIDs for application matching in the **module.json5** file.
 2. Import modules.
 3. Check whether the device supports the NFC and HCE capabilities.
@@ -211,7 +213,7 @@ export default class EntryAbility extends UIAbility {
             "actions": [
               "ohos.want.action.home",
 
-              // The **actions** field must contain ohos.nfc.cardemulation.action.HOST_APDU_SERVICE.
+              // The **actions** field must contain "ohos.nfc.cardemulation.action.HOST_APDU_SERVICE".
               "ohos.nfc.cardemulation.action.HOST_APDU_SERVICE"
             ]
           }
@@ -299,4 +301,53 @@ export default class EntryAbility extends UIAbility {
     hceService.off('hceCmd', hceCommandCb);
   }
 }
+```
+
+### OFFHOST Card Swipping
+1. Declare the OFFHOST action, AIDs for application matching, and SEs in the **module.json5** file.
+2. Set the OFFHOST application as the default payment application.
+
+> **NOTE**
+>
+> - OFFHOST is supported since API version 22.
+> - Only the AID of the **Payment** type is supported.
+> - Only the SIM card can be used as the SE.
+
+```ts
+"abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ts",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home",
+
+              // The **actions** field must contain "ohos.nfc.cardemulation.action.OFF_HOST_APDU_SERVICE".
+              "ohos.nfc.cardemulation.action.OFF_HOST_APDU_SERVICE"
+            ]
+          }
+        ]
+        // Define at least one AID of the Payment type based on service requirements.
+        "metadata": [
+          {
+            "name": "payment-aid",
+            "value": "A0000000031010" // Define the AID of the Payment type. The AID must be correct.
+          },
+           {
+             "name": "secureElement",
+             "value": "SIM" //Define secureElement.
+            },
+        ]
+      }
+    ]
 ```

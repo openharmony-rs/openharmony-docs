@@ -36,7 +36,7 @@ The file declares the APIs for parsing audio and video media data.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo* mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | Defines a pointer to the callback function for **DRM_MediaKeySystemInfo**. No demuxer instance is returned. This callback function applies to the scenario where a single demuxer instance is used.<br> You need to call [OH_AVDemuxer_SetMediaKeySystemInfoCallback](#oh_avdemuxer_setmediakeysysteminfocallback) to set the callback function as a callback.|
+| [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo* mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | Defines a pointer to the callback function for DRM_MediaKeySystemInfo. No demuxer instance is returned. This callback function applies to the scenario where a single demuxer instance is used.<br> You need to call [OH_AVDemuxer_SetMediaKeySystemInfoCallback](#oh_avdemuxer_setmediakeysysteminfocallback) to set the callback function as a callback.|
 | [typedef void (\*Demuxer_MediaKeySystemInfoCallback)(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#demuxer_mediakeysysteminfocallback) | Demuxer_MediaKeySystemInfoCallback | Defines a pointer to the callback function for **DRM_MediaKeySystemInfo**. A demuxer instance is returned. This callback function applies to the scenario where multiple demuxer instances are used.<br> You need to call [OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback](#oh_avdemuxer_setdemuxermediakeysysteminfocallback) to set the callback function as a callback. This callback function is recommended.|
 | [OH_AVDemuxer *OH_AVDemuxer_CreateWithSource(OH_AVSource *source)](#oh_avdemuxer_createwithsource) | - | Creates an OH_AVDemuxer instance based on a source instance.<br> For details about how to create, destroy, and use a source instance, see [OH_AVSource](capi-avsource.md).|
 | [OH_AVErrCode OH_AVDemuxer_Destroy(OH_AVDemuxer *demuxer)](#oh_avdemuxer_destroy) | - | Destroys an OH_AVDemuxer instance and clears internal resources. An instance can be destroyed only once.<br> The destroyed instance cannot be used until it is re-created. You are advised to set the pointer to NULL after the instance is destroyed.|
@@ -53,7 +53,7 @@ The file declares the APIs for parsing audio and video media data.
 
 ### DRM_MediaKeySystemInfoCallback()
 
-```
+```c
 typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo* mediaKeySystemInfo)
 ```
 
@@ -73,7 +73,7 @@ You need to call [OH_AVDemuxer_SetMediaKeySystemInfoCallback](#oh_avdemuxer_setm
 
 ### Demuxer_MediaKeySystemInfoCallback()
 
-```
+```c
 typedef void (*Demuxer_MediaKeySystemInfoCallback)(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo)
 ```
 
@@ -89,7 +89,7 @@ You need to call [OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback](#oh_avdemux
 
 ### OH_AVDemuxer_CreateWithSource()
 
-```
+```c
 OH_AVDemuxer *OH_AVDemuxer_CreateWithSource(OH_AVSource *source)
 ```
 
@@ -118,7 +118,7 @@ For details about how to create, destroy, and use a source instance, see [OH_AVS
 
 ### OH_AVDemuxer_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_Destroy(OH_AVDemuxer *demuxer)
 ```
 
@@ -147,7 +147,7 @@ The destroyed instance cannot be used until it is re-created. You are advised to
 
 ### OH_AVDemuxer_SelectTrackByID()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_SelectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackIndex)
 ```
 
@@ -179,7 +179,7 @@ When [OH_AVDemuxer_ReadSample](#oh_avdemuxer_readsample) is called, only the dat
 
 ### OH_AVDemuxer_UnselectTrackByID()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_UnselectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackIndex)
 ```
 
@@ -211,7 +211,7 @@ If the same track is deselected multiple times, **AV_ERR_OK** is returned and th
 
 ### OH_AVDemuxer_ReadSample()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_ReadSample(OH_AVDemuxer *demuxer, uint32_t trackIndex, OH_AVMemory *sample, OH_AVCodecBufferAttr *info)
 ```
 
@@ -247,7 +247,7 @@ You must select a track before reading the sample. After this API is called, the
 
 ### OH_AVDemuxer_ReadSampleBuffer()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_ReadSampleBuffer(OH_AVDemuxer *demuxer, uint32_t trackIndex, OH_AVBuffer *sample)
 ```
 
@@ -278,7 +278,7 @@ You can use [OH_AVDemuxer_SelectTrackByID](#oh_avdemuxer_selecttrackbyid) to sel
 
 ### OH_AVDemuxer_SeekToTime()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_SeekToTime(OH_AVDemuxer *demuxer, int64_t millisecond, OH_AVSeekMode mode)
 ```
 
@@ -307,7 +307,7 @@ Seeks to the specified time for all the selected tracks based on a seek mode.
 
 ### OH_AVDemuxer_SetMediaKeySystemInfoCallback()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_SetMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfoCallback callback)
 ```
 
@@ -339,7 +339,7 @@ Sets a callback for obtaining the media key system information.
 
 ### OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, Demuxer_MediaKeySystemInfoCallback callback)
 ```
 
@@ -367,7 +367,7 @@ Sets a callback for obtaining the media key system information.
 
 ### OH_AVDemuxer_GetMediaKeySystemInfo()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_GetMediaKeySystemInfo(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo)
 ```
 

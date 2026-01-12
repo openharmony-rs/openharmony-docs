@@ -1,12 +1,16 @@
 # OffscreenCanvas
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
 >  The APIs of this component are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
-
 **OffscreenCanvas** defines a canvas object that can be rendered off the screen.
-
 
 ## Attributes
 
@@ -101,7 +105,7 @@ export default {
     // ... some drawing for the canvas using the offscreenCanvasCtx ...
 
     var dataURL = offscreen.toDataURL();
-    console.log(dataURL); //data:image/png;base64,xxxxxx
+    console.info(dataURL); //data:image/png;base64,xxxxxx
 
     var bitmap = offscreen.transferToImageBitmap();
     canvas.transferFromImageBitmap(bitmap);

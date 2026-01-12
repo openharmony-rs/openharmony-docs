@@ -8,7 +8,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 ## Configuration<sup>9+</sup>
 
@@ -18,17 +20,17 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                          |
 | ---------- | -------------------------- | -- | -- |-----------------------------------------------------------------------------|
-| name       | string                     | 否 | 否 | 窗口名字。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                                               |
+| name       | string                     | 否 | 否 | 窗口名称。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                                               |
 | windowType | [WindowType](arkts-apis-window-e.md#windowtype7) | 否 | 否 | 窗口类型。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                        |
 | ctx        | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否 | 是 | 当前应用上下文信息。不设置，则默认为空。<br>FA模型下不需要使用该参数，即可创建子窗口，使用该参数时会报错。<br>Stage模型必须使用该参数，用于创建悬浮窗、模态窗或系统窗口。 <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| displayId  | number                     | 否 | 是 | 当前物理屏幕id。不设置，则默认为-1，该参数应为整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core     |
-| parentId   | number                     | 否 | 是 | 父窗口id。不设置，则默认为-1，该参数应为整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                                               |
+| displayId  | number                     | 否 | 是 | 当前屏幕ID。不设置，则默认为-1，跟随父窗口，该参数应为整数。<br>设置后对屏幕ID进行校验，小于0或屏幕ID不存在时，返回401错误码。<br>扩展屏、异源虚拟屏场景下，全局悬浮窗可通过设置屏幕ID显示在指定屏幕上。<br>模态窗、系统窗设置屏幕ID无效，默认跟随父窗口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core     |
+| parentId   | number                     | 否 | 是 | 父窗口ID。不设置，则默认为-1，默认父窗为当前应用上下文对应主窗，该参数应为整数。<br>FA模型下，对传入父窗口ID进行校验，小于0或父窗口ID不存在时，返回1300009错误码。<br>Stage模型下，该参数设置无效。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                                               |
 | decorEnabled<sup>12+</sup> | boolean | 否 | 是 | 是否显示窗口装饰，仅在windowType为TYPE_DIALOG时生效。true表示显示，false表示不显示。此参数默认值为false。<br>**系统能力：** SystemCapability.Window.SessionManager |
 | title<sup>12+</sup> | string| 否 | 是 | `decorEnabled`属性设置为true时，窗口的标题内容。标题显示区域最右端不超过系统三键区域最左端，超过部分以省略号表示。不设置，则默认为空字符串。 <br>**系统能力：** SystemCapability.Window.SessionManager |
 
 ## SystemBarProperties
 
-状态栏<!--Del-->、三键导航栏的<!--DelEnd-->属性。在设置窗口级状态栏<!--Del-->、三键导航栏<!--DelEnd-->属性时使用。
+状态栏<!--Del-->、三键导航栏的<!--DelEnd-->属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -40,8 +42,8 @@
 | navigationBarColor                     | string   |  否  |  是   | 三键导航栏背景颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`'#00FF00'`或`'#FF00FF00'`。默认值：`'#66000000'`。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | isNavigationBarLightIcon<sup>7+</sup>  | boolean  |  否  |  是   | 三键导航栏图标是否为高亮状态。true表示高亮；false表示不高亮。默认值：false。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | navigationBarContentColor<sup>8+</sup> | string   |  否  |  是   | 三键导航栏文字颜色。当设置此属性后，`isNavigationBarLightIcon`属性设置无效。默认值：`'#E5FFFFFF'`。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| enableStatusBarAnimation<sup>12+</sup> | boolean  |  否  |  是   | 是否使能状态栏属性变化时动画效果。true表示变化时使能动画效果；false表示没有使能动画效果。默认值：false。 <br> **系统能力：** SystemCapability.Window.SessionManager|
-| enableNavigationBarAnimation<sup>12+</sup> | boolean   |  否  |  是   | 是否使能三键导航栏属性变化时动画效果。true表示变化时使能动画效果；false表示没有使能动画效果。默认值：false。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.Window.SessionManager|
+| enableStatusBarAnimation<sup>12+</sup> | boolean  |  否  |  是   | 是否启用状态栏属性变化时的动画效果。true表示启用；false表示不启用。默认值：false。 <br> **系统能力：** SystemCapability.Window.SessionManager|
+| enableNavigationBarAnimation<sup>12+</sup> | boolean   |  否  |  是   | 是否启用三键导航栏属性变化时的动画效果。true表示启用；false表示不启用。默认值：false。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.Window.SessionManager|
 
 ## StatusBarProperty<sup>18+</sup>
 
@@ -93,6 +95,19 @@
 | width  | number   | 否   | 否   | 矩形区域的宽度，单位为px，该参数应为整数。 |
 | height | number   | 否   | 否   | 矩形区域的高度，单位为px，该参数应为整数。 |
 
+## RectInVP<sup>23+</sup>
+
+窗口矩形区域，单位为vp。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型 | 只读 | 可选 | 说明               |
+| ------ | -------- | ---- | ---- | ------------------ |
+| left   | number   | 否   | 否   | 矩形区域的左边界值，单位为vp。 |
+| top    | number   | 否   | 否   | 矩形区域的上边界值，单位为vp。 |
+| width  | number   | 否   | 否   | 矩形区域的宽度，单位为vp。 |
+| height | number   | 否   | 否   | 矩形区域的高度，单位为vp。 |
+
 ## AvoidArea<sup>7+</sup>
 
 窗口内容的避让区域。
@@ -119,9 +134,49 @@
 >
 >  ![avoidArea](figures/avoidArea.png)
 
+## UIEnvAvoidAreaVP<sup>23+</sup>
+
+以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时需关注。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称       | 类型      | 只读 | 可选 | 说明               |
+| ---------- | ------------- | ---- | ---- | ------------------ |
+| visible    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 |
+| leftRect   | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区，单位为vp。 |
+| topRect    | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区，单位为vp。 |
+| rightRect  | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区，单位为vp。 |
+| bottomRect | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区，单位为vp。 |
+
+## UIEnvWindowAvoidAreaInfoPX<sup>23+</sup>
+
+窗口不同类型避让区域信息组成的[环境变量](../../ui/arkts-env-system-property.md)数据类型，每种类型避让区域单位为px。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称       | 类型      | 只读 | 可选 | 说明               |
+| ---------- | ------------- | ---- | ---- | ------------------ |
+| statusBar            | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM类型的避让区域，单位为px。 |
+| cutout               | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_CUTOUT类型的避让区域，单位为px。 |
+| keyboard             | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD类型的避让区域，单位为px。 |
+| navigationIndicator  | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_NAVIGATION_INDICATOR类型的避让区域，单位为px。 |
+
+## UIEnvWindowAvoidAreaInfoVP<sup>23+</sup>
+
+窗口不同类型避让区域信息组成的[环境变量](../../ui/arkts-env-system-property.md)数据类型，每种类型避让区域单位为vp。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称       | 类型      | 只读 | 可选 | 说明               |
+| ---------- | ------------- | ---- | ---- | ------------------ |
+| statusBar            | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM类型的避让区域，单位为vp。 |
+| cutout               | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_CUTOUT类型的避让区域，单位为vp。 |
+| keyboard             | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD类型的避让区域，单位为vp。 |
+| navigationIndicator  | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_NAVIGATION_INDICATOR类型的避让区域，单位为vp。 |
+
 ## Size<sup>7+</sup>
 
-窗口大小。
+窗口大小，单位为px。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -131,6 +186,17 @@
 | ------ | -------- | ---- | ---- | ---------- |
 | width  | number   | 否   | 否   | 窗口宽度，单位为px，该参数应为整数。 |
 | height | number   | 否   | 否   | 窗口高度，单位为px，该参数应为整数。 |
+
+## SizeInVP<sup>23+</sup>
+
+窗口大小，单位为vp。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型 | 只读 | 可选 | 说明       |
+| ------ | -------- | ---- | ---- | ---------- |
+| width  | number   | 否   | 否   | 窗口宽度，单位为vp，该参数为浮点数。 |
+| height | number   | 否   | 否   | 窗口高度，单位为vp，该参数为浮点数。 |
 
 ## Position<sup>20+</sup>
 
@@ -182,11 +248,11 @@
 | isLayoutFullScreen<sup>7+</sup>       | boolean                   | 否   | 否   | 对于子窗，如果设置了[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)，返回值为true。<br/>对于主窗，如果设置了[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)且处于全屏模式，返回值为true。<br/>其他情况下均返回false<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | focusable<sup>7+</sup>                | boolean                   | 否   | 否   | 窗口是否可获焦。true表示可获焦；false表示不可获焦。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | touchable<sup>7+</sup>                | boolean                   | 否   | 否   | 窗口是否可触摸。true表示可触摸；false表示不可触摸。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| brightness                            | number                    | 否   | 否   | 窗口亮度。该参数为浮点数，可设置的亮度范围为[0.0, 1.0]，其取1.0时表示最大亮度值。如果窗口没有设置亮度值，表示亮度跟随系统，此时获取到的亮度值为-1。可通过[setWindowBrightness()](arkts-apis-window-Window.md#setwindowbrightness9)设置窗口的亮度值。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| dimBehindValue<sup>(deprecated)</sup> | number                    | 否   | 否   | 下层窗口的暗度值。该参数为浮点数，取值范围为[0.0, 1.0]，其取1.0表示最暗。<br>- **说明：** 从API version 9开始废弃，当前无可替代接口。<br>- 从API version 7开始支持。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
+| brightness                            | number                    | 否   | 否   | 窗口亮度。通过[setWindowBrightness()](arkts-apis-window-Window.md#setwindowbrightness9)设置窗口的亮度值。该参数为浮点数，可设置的亮度范围为[0.0, 1.0]或-1.0，其取值1.0时表示最大亮度，取值-1.0时，表示亮度跟随系统。如果窗口没有设置亮度值，表示亮度跟随系统，此时获取到的亮度值为-1.0。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
+| dimBehindValue<sup>(deprecated)</sup> | number                    | 否   | 否   | 下层窗口的暗度值。该参数为浮点数，取值范围为[0.0, 1.0]，其取1.0表示最暗。<br>**说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | isKeepScreenOn                        | boolean                   | 否   | 否   | 屏幕是否常亮。true表示常亮；false表示不常亮。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | isPrivacyMode<sup>7+</sup>            | boolean                   | 否   | 否   | 窗口是否为隐私模式。true表示窗口为隐私模式；false表示窗口为非隐私模式。可通过[setWindowPrivacyMode()](arkts-apis-window-Window.md#setwindowprivacymode9)设置窗口的隐私模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| isRoundCorner<sup>(deprecated)</sup>  | boolean                   | 否   | 否   | 窗口是否为圆角。true表示窗口为圆角；false表示窗口为非圆角。<br>- **说明：** 从API version 9开始废弃，当前无可替代接口。<br/>- 从API version 7开始支持。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
+| isRoundCorner<sup>(deprecated)</sup>  | boolean                   | 否   | 否   | 窗口是否为圆角。true表示窗口为圆角；false表示窗口为非圆角。<br>**说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | isTransparent<sup>7+</sup>            | boolean                   | 否   | 否   | 窗口背景是否透明。true表示透明；false表示不透明。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | id<sup>9+</sup>                       | number                    | 否   | 否   | 窗口ID，该参数为整数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | displayId<sup>12+</sup>               | number                    | 否   | 是   | 窗口所在屏幕ID，默认返回主屏幕ID，该参数为整数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
@@ -210,7 +276,7 @@
 
 ## WindowLimits<sup>11+</sup>
 
-窗口尺寸限制参数。应用可以通过[getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11)获得当前的窗口尺寸限制。
+窗口尺寸限制参数。应用可以通过[getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11)获得当前的窗口尺寸限制（单位为px）；从API version 22开始，还可以通过[getWindowLimitsVP](arkts-apis-window-Window.md#getwindowlimitsvp22)获取（单位为vp）。
 
 窗口存在默认系统大小限制，应用可以通过[setWindowLimits](arkts-apis-window-Window.md#setwindowlimits11)设置窗口尺寸限制，或在应用[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中配置该属性。
 
@@ -218,16 +284,14 @@
 
 最终生效结果由默认系统限制和应用设置的数据取交集得到。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                                         |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | 否   | 是   | 窗口的最大宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最大宽度。  |
-| maxHeight | number | 否   | 是   | 窗口的最大高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最大高度。  |
-| minWidth  | number | 否   | 是   | 窗口的最小宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最小宽度。  |
-| minHeight | number | 否   | 是   | 窗口的最小高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最小高度。  |
+| maxWidth  | number | 否   | 是   | 窗口的最大宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| maxHeight | number | 否   | 是   | 窗口的最大高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| minWidth  | number | 否   | 是   | 窗口的最小宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| minHeight | number | 否   | 是   | 窗口的最小高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。|
 
 ## TitleButtonRect<sup>11+</sup>
@@ -335,7 +399,7 @@
 | abilityName | string   | 否   | 否   | Ability的名称。               |
 | windowId | number | 否   | 否   | 窗口ID。   |
 | windowStatusType | [WindowStatusType](arkts-apis-window-e.md#windowstatustype11) | 否   | 否   | 窗口模式枚举。   |
-| isFocused | boolean | 否   | 是   | 窗口是否获焦。true表示窗口获焦；false表示窗口未获焦。   |
+| isFocused | boolean | 否   | 是   | 窗口是否获焦。true表示窗口获焦；false表示窗口未获焦。返回值与[isFocused()](arkts-apis-window-Window.md#isfocused12)接口一致。   |
 | globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 是   | 全局坐标系下的窗口尺寸。扩展屏场景下以主屏左上角为坐标原点，虚拟屏场景下以虚拟屏左上角为坐标原点。默认值：[0, 0, 0, 0]。|
 
 ## TransitionAnimation<sup>20+</sup>
@@ -349,7 +413,7 @@
 | 名称    | 类型                                              | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | config  | [WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20) |  否  |  否   | 本次转场动画配置。                                           |
-| opacity | number                                            |  否  |  是   | 不透明度，转场动画作用的窗口属性，值为0时窗口完全透明。当动画类型为WindowTransitionType.DESTROY时，代表动画终点的不透明度。取值范围0~1，在动画结束时恢复为1。 |
+| opacity | number                                            |  否  |  是   | 不透明度，转场动画作用的窗口属性，值为0时窗口完全透明，默认值为1.0。当动画类型为WindowTransitionType.DESTROY时，代表动画终点的不透明度。取值范围0~1.0，在动画结束时恢复为1.0。 |
 
 ## StartAnimationParams<sup>20+</sup>
 

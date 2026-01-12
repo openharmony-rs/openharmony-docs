@@ -8,7 +8,9 @@
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
 ## SpecificSystemBar<sup>11+</sup>
 
@@ -69,3 +71,27 @@ When the curve type is **CUBIC_BEZIER**, **WindowAnimationCurveParam** must be s
 - x2: horizontal coordinate of the second point of the Bezier curve. It is of the number type, mandatory, with a range of [0, 1]. Values less than 0 are treated as 0, and values greater than 1 are treated as 1.
 
 - y2: vertical coordinate of the second point of the Bezier curve. It is of the number type, mandatory, with a range of (-∞, +∞).
+
+## RotationChangeCallback<sup>19+</sup>
+
+type RotationChangeCallback<T, U> = (info: T) => U
+
+Describes a generic callback function for rotation event notifications.
+
+In this callback function, the parameter type is [RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19), and the return value type is [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void.
+
+**Atomic service API**: This API can be used in atomic services since API version 19.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | -------------------------- |
+| info | T    | Yes  | Parameter of type [RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19) passed by the system when the callback function is called.|
+
+**Return value**
+
+| Type| Description|
+| -------------------------------- | ------------------------------------ |
+| U | Value of type [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void.| |

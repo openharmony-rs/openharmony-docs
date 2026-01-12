@@ -32,7 +32,7 @@ Defines types related to data values.
 
 ### Rdb_ConflictResolution
 
-```
+```c
 enum Rdb_ConflictResolution
 ```
 

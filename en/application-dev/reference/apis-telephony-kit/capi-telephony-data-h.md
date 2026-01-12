@@ -34,7 +34,7 @@ Defines C APIs for cellular data module.
 
 ### OH_Telephony_GetDefaultCellularDataSlotId()
 
-```
+```c
 int32_t OH_Telephony_GetDefaultCellularDataSlotId(void)
 ```
 

@@ -15,6 +15,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -38,7 +40,7 @@
 
 ### OH_Drawing_BlurType
 
-```
+```c
 enum OH_Drawing_BlurType
 ```
 
@@ -60,7 +62,7 @@ enum OH_Drawing_BlurType
 
 ### OH_Drawing_MaskFilterCreateBlur()
 
-```
+```c
 OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurType, float sigma, bool respectCTM)
 ```
 
@@ -89,7 +91,7 @@ OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurT
 
 ### OH_Drawing_MaskFilterDestroy()
 
-```
+```c
 void OH_Drawing_MaskFilterDestroy(OH_Drawing_MaskFilter* maskFilter)
 ```
 

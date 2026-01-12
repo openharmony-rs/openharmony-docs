@@ -17,18 +17,23 @@
 
 ## 开发指导
 
+  以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC)。
+
 ### 简介
 
-为使用低时延模式，开发者需要参考[使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)进行音频开发。
+为使用低时延模式，开发者需要参考[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)进行音频开发。
 
 当前OHAudio支持两种模式：普通模式（AUDIOSTREAM_LATENCY_MODE_NORMAL）和低时延模式（AUDIOSTREAM_LATENCY_MODE_FAST）。
 
 ### 设置低时延模式
 
-开发者通过调用[OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode)，设置[OH_AudioStream_LatencyMode()](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)来决定音频流使用的模式。
+开发者通过调用[OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode)，设置[OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)来决定音频流使用的模式。
 
 设置低时延模式开发示例：
-```cpp
+
+<!-- @[latencyMode_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
+``` C++
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
 OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ```
@@ -61,24 +66,28 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ### 数据回调线程
 音频录制的音频数据需要通过回调接口读入。开发者要实现回调接口，使用[OH_AudioStreamBuilder_SetCapturerReadDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerreaddatacallback)设置回调函数，在设置音频回调函数时，回调函数[OH_AudioCapturer_OnReadDataCallback](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_onreaddatacallback)（从API version 12开始支持）用于读取音频数据。
 
-开发音频录制功能的示例代码请参考：[使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)。
+开发音频录制功能的示例代码请参考：[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)。
 
 设置数据回调函数示例：
-```cpp
-// 自定义读入数据函数。
-static OH_AudioData_Callback_Result MyOnReadData(
+
+<!-- @[SetCapturerReadDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
+``` C++
+int32_t MyOnReadData_Legacy(
     OH_AudioCapturer* capturer,
     void* userData,
     void* buffer,
     int32_t length)
 {
     // 从buffer中取出length长度的录音数据。
-    return AUDIO_DATA_CALLBACK_RESULT_VALID0;
+    return 0;
 }
-// 配置读入音频数据回调函数。
-OH_AudioCapturer_OnReadDataCallback readDataCb = MyOnReadData;
-OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, readDataCb, nullptr);
+// ...
+    // 配置读入音频数据回调函数。
+    OH_AudioCapturer_OnReadDataCallback readDataCb = MyOnReadData_NewAPI;
+    OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, readDataCb, nullptr);
 ```
+
 - 为避免音频卡顿，禁止在回调方法OH_AudioCapturer_OnReadData中执行耗时操作。
 - 为保证OH_AudioCapturer_OnReadData与流状态控制逻辑独立正常运行，禁止在OH_AudioCapturer_OnReadData回调方法中调用音频流控制接口。
   
@@ -90,4 +99,7 @@ OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, readDataCb, nullptr);
     | OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer) | 释放缓存数据。 |
     | OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer) | 释放录制实例。 |
 
+    > **注意：**
+    >
+    > 音频流控制接口执行会有耗时（例如OH_AudioCapturer_Stop接口单次执行普遍超过50ms），应避免在主线程中直接调用，以免造成界面显示卡顿。
 

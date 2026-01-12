@@ -10,6 +10,8 @@
 
 Declares the error codes of the ArkWeb NDK APIs.
 
+**File to include**: <web/arkweb_error_code.h>
+
 **Library**: libohweb.so
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -31,7 +33,7 @@ Declares the error codes of the ArkWeb NDK APIs.
 
 ### ArkWeb_ErrorCode
 
-```
+```c
 enum ArkWeb_ErrorCode
 ```
 
@@ -58,7 +60,7 @@ Enumerates the error codes of ArkWeb NDK APIs.
 
 ### ArkWeb_BlanklessErrorCode
 
-```
+```c
 enum ArkWeb_BlanklessErrorCode
 ```
 

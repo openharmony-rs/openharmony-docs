@@ -93,6 +93,8 @@
 | LIVE_VIEW_INCREMENTAL_UPDATE | 1  | 增量更新 |
 | LIVE_VIEW_END                | 2  | 结束     |
 | LIVE_VIEW_FULL_UPDATE        | 3  | 全量更新 |
+| LIVE_VIEW_PENDING_CREATE<sup>23+</sup>     | 4  | 条件触发创建<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| LIVE_VIEW_PENDING_END<sup>23+</sup>        | 6  | 条件触发结束<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## NotificationIconButton<sup>18+</sup>
 
@@ -112,6 +114,8 @@
 ## IconType<sup>18+</sup>
 
 type IconType = Resource | image.PixelMap
+
+描述图标的类型。
 
 **系统能力**：SystemCapability.Notification.Notification
 

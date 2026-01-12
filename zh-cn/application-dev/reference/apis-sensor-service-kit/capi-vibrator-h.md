@@ -34,7 +34,7 @@
 
 ### OH_Vibrator_PlayVibration()
 
-```
+```c
 int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute)
 ```
 
@@ -61,7 +61,7 @@ int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute
 
 ### OH_Vibrator_PlayVibrationCustom()
 
-```
+```c
 int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription, Vibrator_Attribute vibrateAttribute)
 ```
 
@@ -88,7 +88,7 @@ int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription
 
 ### OH_Vibrator_Cancel()
 
-```
+```c
 int32_t OH_Vibrator_Cancel()
 ```
 

@@ -1,4 +1,4 @@
-# @ohos.reminderAgent (reminderAgent)
+# @ohos.reminderAgent (Agent-powered Reminder)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: Resourceschedule-->
@@ -13,9 +13,9 @@ You can use the APIs to create scheduled reminders for countdown timers, calenda
 
 > **NOTE**
 >
-> This module is deprecated since API version 9. You are advised to use [@ohos.reminderAgentManager](js-apis-reminderAgentManager.md) instead.
+> - This module is deprecated since API version 9. You are advised to use [@ohos.reminderAgentManager](js-apis-reminderAgentManager.md) instead.
 >
-> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
 ## Modules to Import

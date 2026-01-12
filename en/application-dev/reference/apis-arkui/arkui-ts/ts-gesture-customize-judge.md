@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can use the custom gesture judgment APIs to specify whether to respond to specific gestures when they are being recognized.
 
@@ -47,14 +47,14 @@ Basic event type.
 | target   | [EventTarget](ts-universal-events-click.md#eventtarget8) | No| No| Object that triggers the gesture event.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | timestamp| number | No| No| Timestamp of the event. It is the interval between the time when the event is triggered and the time when the system starts.<br>Unit: ns<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | source   | [SourceType](ts-gesture-settings.md#sourcetype8) | No| No| Type of the event input device.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| pressure<sup>9+</sup> | number | No| No| Press pressure.<br>Default value: **0**<br>Value range: [0, 1], typical value 0.913168, where higher values indicate greater pressure.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| pressure<sup>9+</sup> | number | No| No| Press pressure.<br>Default value: **0**<br>Value range: [0, 1], typical value 0.913168, where higher values indicate greater pressure. On some devices, the return value may be greater than 1 due to different hardware parameter configurations.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
 | tiltX<sup>9+</sup> | number | No| No| Angle between the projection of the stylus on the device plane and the x-axis.<br>Default value: **0**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | tiltY<sup>9+</sup> | number | No| No|Angle between the projection of the stylus on the device plane and the y-axis.<br>Default value: **0**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | rollAngle<sup>17+</sup> | number | No| Yes| Angle between the stylus and the device's surface.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 17.<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
 | sourceTool<sup>9+</sup> | [SourceTool](ts-gesture-settings.md#sourcetool9) | No| No| Event input source type.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| axisHorizontal<sup>12+</sup> | number | No| Yes| Horizontal axis value.<br>Default value: **0**<br>**NOTE**<br>Currently, this event can be obtained only when the pan gesture is triggered by scrolling the mouse wheel or sliding two fingers on the touchpad, or the pinch gesture is triggered by pressing Ctrl and scrolling the mouse wheel.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| axisVertical<sup>12+</sup> | number | No| Yes| Vertical axis value.<br>Default value: **0**<br>**NOTE**<br>Currently, this event can be obtained only when the pan gesture is triggered by scrolling the mouse wheel or sliding two fingers on the touchpad, or the pinch gesture is triggered by pressing Ctrl and scrolling the mouse wheel.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| axisPinch<sup>21+</sup> | number | No| Yes|  Two-finger zoom ratio.<br>Default value: **0**<br>**NOTE**<br>This event can be obtained only when the pinch gesture is triggered by zooming in or out with two fingers on the touchpad or in the axis event.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 21.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| axisHorizontal<sup>12+</sup> | number | No| Yes| Horizontal axis value.<br>Default value: **0**<br>**NOTE**<br>This value is available only when the pan gesture is triggered by mouse wheel scrolling or two-finger touchpad sliding, or when the pinch gesture is triggered by Ctrl + mouse wheel scrolling.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| axisVertical<sup>12+</sup> | number | No| Yes| Vertical axis value.<br>Default value: **0**<br>**NOTE**<br>This value is available only when the pan gesture is triggered by mouse wheel scrolling or two-finger touchpad sliding, or when the pinch gesture is triggered by Ctrl + mouse wheel scrolling.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| axisPinch<sup>21+</sup> | number | No| Yes|  Two-finger pinch scaling ratio.<br>Default value: **0**<br>**NOTE**<br>This value is available only when a pinch gesture is triggered by a two-finger scaling operation on a touchpad or during axis events.<br>In other scenarios, the default value is returned. The scaling ratio represents the ratio of the current two-finger distance to the initial two-finger distance when first pressed during a pinch gesture.<br>Value range: [0, +∞).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 21.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | deviceId<sup>12+</sup> | number | No| Yes| ID of the input device that triggers the event.<br>Default value: **0**<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | targetDisplayId<sup>15+</sup> | number | No| Yes| ID of the screen where the event occurs.<br>Default value: **0**<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 
@@ -82,7 +82,7 @@ Obtains the pressed status of modifier keys. For details about the error message
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Pressed status of modifier keys. If all modifier keys are pressed, true is returned. Otherwise, false is returned.|
+| boolean | Pressed status of modifier keys. Returns **true** if all modifier keys are pressed; returns **false** otherwise.|
 
 **Error codes**
 
@@ -96,7 +96,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 
 ### Example 1: Implementing Custom Gesture Judgment
 
-This example demonstrates how to implement custom judgment for long press, swipe, and pan gestures using **onGestureJudgeBegin**.
+This example demonstrates how to implement custom judgment for long press, swipe, and pan gestures using [onGestureJudgeBegin](#ongesturejudgebegin). Starting from API version 21, **axisPinch** property of [BaseEvent](#baseevent8) can be used to obtain the two-finger pinch scale ratio.
 
 ```ts
 // xxx.ets
@@ -147,27 +147,39 @@ struct Index {
           this.message = 'pan1'
         })
     )
+    .gesture(
+      PinchGesture()
+        .tag("pinch1")// Tag for the pinch gesture.
+        .onActionStart(() => {
+          this.message = 'pinch1'
+        })
+    )
     .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
       // If the gesture type is a long press gesture, convert the event to a long press gesture event.
       if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
         let longPressEvent = event as LongPressGestureEvent;
-        console.info("repeat " + longPressEvent.repeat)
+        console.info(`repeat ${longPressEvent.repeat}`)
       }
       // If the gesture type is a swipe gesture, convert the event to a swipe event.
       if (gestureInfo.type == GestureControl.GestureType.SWIPE_GESTURE) {
         let swipeEvent = event as SwipeGestureEvent;
-        console.info("angle " + swipeEvent.angle)
+        console.info(`angle ${swipeEvent.angle}`)
       }
       // If the gesture type is a swipe gesture, convert the event to a swipe gesture event.
       if (gestureInfo.type == GestureControl.GestureType.PAN_GESTURE) {
         let panEvent = event as PanGestureEvent;
-        console.info("velocity " + panEvent.velocity)
+        console.info(`velocity ${panEvent.velocity}`)
+      }
+      // If the gesture type is a pinch gesture, convert the event to a pinch event.
+      if (gestureInfo.type == GestureControl.GestureType.PINCH_GESTURE) {
+        let pinchEvent = event as PinchGestureEvent;
+        console.info(`axisPinch ${pinchEvent.axisPinch}`)
       }
       // Custom criteria
       if (gestureInfo.type == GestureControl.GestureType.DRAG) {
         // If GestureJudgeResult.REJECT is returned, the pan gesture recognition fails.
         return GestureJudgeResult.REJECT;
-      } else if (gestureInfo.tag == 'longPress1' && event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
+      } else if (gestureInfo.tag === 'longPress1' && event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
         // If GestureJudgeResult.CONTINUE is returned, the system recognition result is retained.
         return GestureJudgeResult.CONTINUE;
       }
@@ -195,7 +207,10 @@ struct Index {
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
-        Text("The upper red area is bound to the long press gesture, and the lower blue area is bound to a drag gesture. If a pan is performed after a long press in the upper red area, the area only responds to the long press. In the same case, the lower blue area only responds to the drag.").width('100%').fontSize(20).fontColor('0xffdd00')
+        Text("The upper red area is bound to the long press gesture, and the lower blue area is bound to a drag gesture. If a pan is performed after a long press in the upper red area, the area only responds to the long press. In the same case, the lower blue area only responds to the drag.")
+          .width('100%')
+          .fontSize(20)
+          .fontColor('0xffdd00')
           .backgroundColor(0xeeddaa00)
         Stack({ alignContent: Alignment.Center }) {
           Column() {
@@ -203,14 +218,15 @@ struct Index {
             Stack().width('200vp').height('100vp').backgroundColor(Color.Red)
             Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
           }.width('200vp').height('200vp')
-          // The lower half area of the stack is an image area bound to the pan gesture.
+
+          // The lower part of the Stack component is the image area bound to the pan gesture.
           Image($r('sys.media.ohos_app_icon'))
             .draggable(true)
-            .onDragStart(()=>{
+            .onDragStart(() => {
               this.promptAction.showToast({ message: "When the blue area is dragged, the image responds." })
             })
             .width('200vp').height('200vp')
-          // The upper half area of the stack is a floating area bound to the long press gesture.
+          // The upper part of the Stack component is the floating area bound to the long press gesture.
           Stack() {
           }
           .width('200vp')
@@ -219,11 +235,12 @@ struct Index {
           .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
             // Check whether the tag of gestureInfo has a value.
             if (gestureInfo.tag) {
-              console.info("gestureInfo tag" + gestureInfo.tag.toString())
+              console.info(`gestureInfo tag ${gestureInfo.tag.toString()}`)
             }
-            console.info("gestureInfo Type " + gestureInfo.type.toString() + " isSystemGesture " + gestureInfo.isSystemGesture);
-            console.info("pressure " + event.pressure + " fingerList.length " + event.fingerList.length
-            + " timeStamp " + event.timestamp + " sourceType " + event.source.toString() + " titleX " + event.tiltX + " titleY " + event.tiltY + " rollAngle " + event.rollAngle + " sourcePool " + event.sourceTool.toString());
+            console.info(`gestureInfo Type ${gestureInfo.type.toString()}`);
+            console.info(`isSystemGesture ${gestureInfo.isSystemGesture}`);
+            console.info(`zqs pressure ${event.pressure}\nfingerList.length ${event.fingerList.length}\ntimeStamp ${event.timestamp}\nsourceType ${event.source.toString()}\n` +
+              `titleX ${event.tiltX}\ntitleY ${event.tiltY}\nrollAngle ${event.rollAngle}\nsourcePool ${event.sourceTool.toString()}`);
             // If the gesture is a long press gesture, check whether the touch position is in the upper half area.
             if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
               if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
@@ -237,7 +254,7 @@ struct Index {
           .gesture(GestureGroup(GestureMode.Parallel,
             LongPressGesture()
               .onAction((event: GestureEvent) => {
-                this.promptAction.showToast({ message: "When long pressed, the red area responds." })
+                this.promptAction.showToast({ message: "Long-press the upper red area. The red area responds." })
               })
               .tag("tap111")
           ))
@@ -320,7 +337,7 @@ struct GestureDetectorExample {
             this.fingerDetails = event.fingerInfos.map(finger =>
             `ID: ${finger.id}: (${finger.localX.toFixed(1)}, ${finger.localY.toFixed(1)})`
             ).join('\n')
-            console.info('Touch point data: ', JSON.stringify(event.fingerInfos))
+            console.info(`Touch point data: ${JSON.stringify(event.fingerInfos)}`)
           }
           if (this.fingerCount > 2) {
             return GestureJudgeResult.REJECT

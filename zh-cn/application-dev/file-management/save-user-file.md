@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 在从网络下载文件到本地或将已有用户文件另存为新的文件路径等场景下，需要使用FilePicker提供的保存用户文件的能力。需关注以下关键点：
 
@@ -45,7 +45,7 @@
    documentSaveOptions.newFileNames = ["DocumentViewPicker01.txt"];
    //指定保存的文件或者目录的URI（可选）。
    documentSaveOptions.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
-   // 保存文件类型['后缀类型描述|后缀类型'],选择所有文件：'所有文件(*.*)|.*'（可选） ，如果选择项存在多个后缀（做大限制100个过滤后缀），默认选择第一个。如果不传该参数，默认无过滤后缀。
+   // 保存文件类型['后缀类型描述|后缀类型'],选择所有文件：'所有文件(*.*)|.*'（可选） ，如果选择项存在多个后缀（最多限制100个过滤后缀），默认选择第一个。如果不传该参数，默认无过滤后缀。
    documentSaveOptions.fileSuffixChoices = ['文档|.txt', '.pdf']; 
    ```
 
@@ -53,18 +53,18 @@
 
    <!--@[save_file_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
-``` TypeScript
-      let uris: string[] = [];
-      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      const documentViewPicker = new picker.DocumentViewPicker(context);
-      documentViewPicker.save(documentSaveOptions).then((documentSaveResult: string[]) => {
-        uris = documentSaveResult;
-        console.info('documentViewPicker.save to file succeed and uris are:' + uris);
-		// ···
-      }).catch((err: BusinessError) => {
-        console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
-      });
-```
+   ``` TypeScript
+   let uris: string[] = [];
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   const documentViewPicker = new picker.DocumentViewPicker(context);
+   documentViewPicker.save(documentSaveOptions).then((documentSaveResult: string[]) => {
+     uris = documentSaveResult;
+     console.info('documentViewPicker.save to file succeed and uris are:' + uris);
+     // ···
+   }).catch((err: BusinessError) => {
+     console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
+   });
+   ```
 
 
    > **注意**：
@@ -118,18 +118,18 @@
 
    <!--@[audio_save_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
-``` TypeScript
-      let uris: string[] = [];
-      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      const audioViewPicker = new picker.AudioViewPicker(context);
-      audioViewPicker.save(audioSaveOptions).then((audioSelectResult: string[]) => {
-        uris = audioSelectResult;
-        console.info('audioViewPicker.save to file succeed and uri is:' + uris);
-		// ···
-      }).catch((err: BusinessError) => {
-        console.error(`Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
-      });
-```
+   ``` TypeScript
+   let uris: string[] = [];
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   const audioViewPicker = new picker.AudioViewPicker(context);
+   audioViewPicker.save(audioSaveOptions).then((audioSelectResult: string[]) => {
+     uris = audioSelectResult;
+     console.info('audioViewPicker.save to file succeed and uri is:' + uris);
+     // ···
+   }).catch((err: BusinessError) => {
+     console.error(`Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
+   });
+   ```
 
 
    > **注意**：
@@ -145,11 +145,11 @@
 
    ```ts
    if (uris.length > 0) {
-   	let uri: string = uris[0];
-  	 //这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
-   	let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
-   	console.info('file fd: ' + file.fd);
-    }
+      let uri: string = uris[0];
+      //这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
+      let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+      console.info('file fd: ' + file.fd);
+   }
    ```
 
 5. 通过（fd）使用[基础文件API的fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。

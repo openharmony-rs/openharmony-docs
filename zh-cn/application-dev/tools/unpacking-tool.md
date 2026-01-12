@@ -251,7 +251,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | defPermissionsGroups | List\<DefPermissionsGroups> | 标识HAP包DefPermissionsGroups 信息。  | NA                             |
 | distro               | Distro结构体                 | 标识HAP包的distro信息。               | NA                      |
 | reqCapabilities      | List\<String>               | 标识HAP包reqCapabilities信息。        | NA                           |
-| deviceType           | List\<String>               | 标识HAP可以运行在哪类设备上。   对应stage模型中的deviceTypes。       |
+| deviceType           | List\<String>               | 标识HAP可以运行在哪类设备上。   对应stage模型中的deviceTypes。       |  NA |
 | metaData             | MetaData结构体（见下述metaData）| 标识HAP的自定义元信息。                | NA           |
 | dependencies         | List\<DependencyItem>       | 标识HAP包DependencyItem信息。         | NA                   |
 | isJs                 | boolean                     | 标识该应用是否是js应用。true表示是js应用，false表示不是js应用。              | FA模型特有。            |
@@ -497,8 +497,8 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | ---------- | ------------- | -------------------------------------- | ------------------------------------------------ |
 | name       | String        | 当前静态公共事件对应的类名。             | Stage模型从staticSubscriber类型的Extension中获取。 |
 | permission | String        | 标识实现该静态公共事件需要申请的权限。   | Stage模型从staticSubscriber类型的Extension中获取。 |
-| data       | List\<String> | 当前静态公共时间需要携带的额外数据数组。 | Stage模型从staticSubscriber类型的Extension中获取。 |
-| type       | List\<String> | 配置当前静态公共时间的类别数组。         | Stage模型从staticSubscriber类型的Extension中获取。 |
+| data       | List\<String> | 当前静态公共事件需要携带的额外数据数组。 | Stage模型从staticSubscriber类型的Extension中获取。 |
+| type       | List\<String> | 配置当前静态公共事件的类别数组。         | Stage模型从staticSubscriber类型的Extension中获取。 |
 | events     | List\<String> | 标识能够接收的意图的event值的集合。      | Stage模型从staticSubscriber类型的Extension中获取。 |
 
 ### DependencyItem结构体信息
@@ -567,7 +567,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | 字段        | 类型    | 描述                         | 备注 |
 |-------------|---------|------------------------------| ---- |
 | name        | String  | 标识DefPermissionGroup的名称。 | NA   |
-| order       | String  | 标识DefPermissionGrou的顺序。  | NA   |
+| order       | String  | 标识DefPermissionGroup的顺序。  | NA   |
 | icon        | String  | 标识DefPermissionGroup的图标。 | NA   |
 | label       | String  | 标识DefPermissionGroup的标签。 | NA   |
 | description | String  | 标识DefPermissionGroup的描述。 | NA   |

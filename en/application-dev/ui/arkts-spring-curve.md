@@ -56,8 +56,11 @@ The following shows a complete example and effect of spring curves. For details 
 
 
 
-```ts
+<!-- @[spring_curve](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/springCurve/template1/SpringCurve.ets) -->
+
+``` TypeScript
 import { curves } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 
 class Spring {
   public title: string;
@@ -74,10 +77,10 @@ class Spring {
 // Spring component
 @Component
 struct Motion {
-  @Prop dRotate: number = 0
-  private title: string = ""
-  private subTitle: string = ""
-  private iCurve: ICurve | undefined = undefined
+  @Prop dRotate: number = 0;
+  private title: string = '';
+  private subTitle: string = '';
+  private iCurve: ICurve | undefined = undefined;
 
   build() {
     Column() {
@@ -112,13 +115,19 @@ struct Motion {
 @Entry
 @Component
 export struct SpringCurve {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State dRotate: number = 0;
   private springs: Spring[] = [
-    new Spring('springMotion', 'Cycle: 1, damping: 0.25', curves.springMotion(1, 0.25)),
-    new Spring('responsive' + '\n' + 'SpringMotion', 'Responsive spring curve', curves.responsiveSpringMotion(1, 0.25)),
-    new Spring('interpolating' + '\n' + 'Spring', 'Initial velocity: 10; quality: 1; stiffness: 228; damping: 30',
+    new Spring('springMotion', this.context.resourceManager.getStringByNameSync('springCurve_text1'),
+      curves.springMotion(1, 0.25)),
+    new Spring('responsive' + '\n' + 'SpringMotion',
+      this.context.resourceManager.getStringByNameSync('springCurve_text2'),
+      curves.responsiveSpringMotion(1, 0.25)),
+    new Spring('interpolating' + '\n' + 'Spring',
+      this.context.resourceManager.getStringByNameSync('springCurve_text3'),
       curves.interpolatingSpring(10, 1, 228, 30)),
-    new Spring('springCurve', 'Initial velocity: 10; quality: 1; stiffness: 228; damping: 30', curves.springCurve(10, 1, 228, 30))
+    new Spring('springCurve', this.context.resourceManager.getStringByNameSync('springCurve_text1'),
+      curves.springCurve(10, 1, 228, 30))
   ];
 
   build() {

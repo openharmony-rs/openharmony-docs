@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides APIs for initiating drag actions. When receiving a gesture event, such as a touch or long-press event, an application can initiate a drag action and carry drag information therein.
 
@@ -561,7 +561,7 @@ struct NormalEts {
 
 enableDropDisallowedBadge(enabled: boolean): void
 
-Specifies whether to enable the display of a disallowed badge when dragged content is incompatible with a component's configured [allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop) types. Generally, when a component can receive or process dragged data, or when the component returns DragBehavior.COPY to declare data processing in copy mode to the system, the dragged object displays the plus sign and data number badge. If DragBehavior.MOVE is returned to indicate that the data is to be cut, the dragged object displays only the badge with the data number. With the display enabled, the system automatically shows a disallowed badge during drag operations when the dragged data types have no intersection with the target component's allowed drop types. This API currently does not support [UIExtension](../apis-arkui/js-apis-arkui-uiExtension.md).
+Specifies whether to enable the display of a disallowed badge when dragged content is incompatible with a component's configured [allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop) types. When a component can accept or process dragged data or returns **DragBehavior.COPY** to indicate copy mode processing, the drag preview shows a plus icon with data count badge. When the component returns **DragBehavior.MOVE** to indicate cut mode processing, only the data count badge appears. When this feature is enabled, the system automatically displays a disallowed badge during drag operations if the dragged data types are incompatible with the target component's allowed drop types. This API currently does not support [UIExtension](../apis-arkui/js-apis-arkui-uiExtension.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

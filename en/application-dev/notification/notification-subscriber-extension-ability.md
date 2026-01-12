@@ -13,7 +13,7 @@
 
 ### Prerequisites
 - The user has connected the wearable to the smartphone through the corresponding application.
-- In the semi-modal dialog box started by the [OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings) API of the wearable application, the user has turned on the **Allow access to notifications on this device** button and allowed the wearable to access notifications from specified applications on the smartphone.
+- In the semi-modal dialog box started by the [OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings) API of the wearable application, the user has turned on the **Allow access to notifications on this device** switch and allowed the wearable to access notifications from specified applications on the smartphone.
 ### When to Use
 <!--Del-->
 - Ecosystem requirement: Support third-party wearables to receive system notifications.
@@ -25,7 +25,7 @@
 1. This sample is only supported on smartphones and tablets with standard systems.
 2. This sample uses the stage model and SDK 6.0.2.54 (API version 22).
 3. This sample can be compiled and run only in DevEco Studio 6.0.0 beta5 (build version: 6.0.0.848, built on September 12, 2025).
-4. Your third-party wearable application should request the [ohos.permission.SUBSCRIBE_NOTIFICATION](../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission (system_core level). A high-level permission signature is also required.
+4. The third-party wearable application should request the [ohos.permission.SUBSCRIBE_NOTIFICATION](../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission (system_basic level). A high-level permission signature is also required.
 
 ### Working Principles
 <img src="figures/notification_subscription_extension_ability.png" width="70%">

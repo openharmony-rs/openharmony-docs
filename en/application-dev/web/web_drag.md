@@ -41,65 +41,61 @@ In most cases, the drag functionality implemented in HTML5 can meet the requirem
 The **onDrop** method on ArkTS is executed earlier than the event processing method ( **droppable.addEventListener('drop')** in the HTML example) in HTML. If page redirection is performed in the **onDrop** method, the **drop** method in HTML5 cannot be executed correctly, and the unexpected result is generated. Therefore, a bidirectional communication mechanism must be established to notify ArkTS to execute the corresponding service logic after the **drop** method in HTML5 is executed.
 
 <!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) -->
-  
-  ``` TypeScript
-  import { webview } from '@kit.ArkWeb'
-  import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-  import hilog from '@ohos.hilog';
-  const TAG = '[Sample_WebDragInteraction]';
-  const DOMAIN = 0xF811;
-  const BUNDLE = 'WebDragInteraction_';
-  
-  @Entry
-  @Component
-  struct DragDrop {
-    private controller: webview.WebviewController = new webview.WebviewController()
-    @State ports: Array<webview.WebMessagePort> = []
-    @State dragData: Array<unifiedDataChannel.UnifiedRecord> = []
-  
-    build() {
-      Column() {
-        Web({
-          src: $rawfile('drag.html'),
-          controller: this.controller,
-        }).onPageEnd((event) => {
-          //Register the message port.
-          this.ports = this.controller.createWebMessagePorts();
-          this.ports[1].onMessageEvent((result: webview.WebMessage) => {
-            //Process the data received from HTML. You can record logs to confirm the message. The message format can be customized as long as it can be uniquely identified.
-            hilog.info(DOMAIN, TAG, BUNDLE, 'ETS receive Message: typeof (result) = ' + typeof (result) + ';' + result);
-            // Process the message after the message is received in result. You can perform time-consuming tasks.
-          });
-          hilog.info(DOMAIN, TAG, BUNDLE, 'ETS postMessage set h5port ');
-          //After the message port is registered, the front end sends a registration completion message to complete bidirectional port binding.
-          this.controller.postMessage('__init_port__', [this.ports[0]], '*');
-        })// Implement simple logic in onDrop, for example, temporarily storing some key data.
-          .onDrop((dragEvent: DragEvent) => {
-            hilog.info(DOMAIN, TAG, BUNDLE, 'ETS onDrop!')
-            let data: UnifiedData = dragEvent.getData();
-            if(!data) {
-              return false;
-            }
-            let uriArr: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
-            if (!uriArr || uriArr.length <= 0) {
-              return false;
-            }
-            // Traverse records to obtain data for temporary storage or use other methods to temporarily store data.
-            for (let i = 0; i < uriArr.length; ++i) {
-              if (uriArr[i].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-                let plainText = uriArr[i] as unifiedDataChannel.PlainText;
-                if (plainText.textContent) {
-                  hilog.info(DOMAIN, TAG, BUNDLE, 'plainText.textContent: ', plainText.textContent);
-                }
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb'
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+
+@Entry
+@Component
+struct DragDrop {
+  private controller: webview.WebviewController = new webview.WebviewController()
+  @State ports: Array<webview.WebMessagePort> = []
+  @State dragData: Array<unifiedDataChannel.UnifiedRecord> = []
+
+  build() {
+    Column() {
+      Web({
+        src: $rawfile('drag.html'),
+        controller: this.controller,
+      }).onPageEnd((event) => {
+        //Register the message port.
+        this.ports = this.controller.createWebMessagePorts();
+        this.ports[1].onMessageEvent((result: webview.WebMessage) => {
+          //Process the data received from HTML. You can record logs to confirm the message. The message format can be customized as long as it can be uniquely identified.
+          console.info('ETS receive Message: typeof (result) = ' + typeof (result) + ';' + result);
+          // Process the message after the message is received in result. You can perform time-consuming tasks.
+        });
+        console.info('ETS postMessage set h5port ');
+        //After the message port is registered, the front end sends a registration completion message to complete bidirectional port binding.
+        this.controller.postMessage('__init_port__', [this.ports[0]], '*');
+      })// Implement simple logic in onDrop, for example, temporarily storing some key data.
+        .onDrop((dragEvent: DragEvent) => {
+          console.info('ETS onDrop!')
+          let data: UnifiedData = dragEvent.getData();
+          if(!data) {
+            return false;
+          }
+          let uriArr: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
+          if (!uriArr || uriArr.length <= 0) {
+            return false;
+          }
+          // Traverse records to obtain data for temporary storage or use other methods to temporarily store data.
+          for (let i = 0; i < uriArr.length; ++i) {
+            if (uriArr[i].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
+              let plainText = uriArr[i] as unifiedDataChannel.PlainText;
+              if (plainText.textContent) {
+                console.info('plainText.textContent: ', plainText.textContent);
               }
             }
-            return true
-          })
-      }
-  
+          }
+          return true
+        })
     }
+
   }
-  ```
+}
+```
 
 HTML example:
 

@@ -2,17 +2,17 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct OH_NativeXComponent_KeyEvent OH_NativeXComponent_KeyEvent
 ```
 
 ## 概述
 
-提供封装的OH_NativeXComponent_KeyEvent实例。
+提供封装按键事件信息的OH_NativeXComponent_KeyEvent实例。
 
 **起始版本：** 10
 

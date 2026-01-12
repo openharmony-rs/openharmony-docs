@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-- [Introduction to ArkWeb](web-component-overview.md)
+- [About This Kit](web-component-overview.md)
 - [ArkWeb Process](web_component_process.md)
 - [Lifecycle of Web Components](web-event-sequence.md)
 - Setting Basic Attributes and Events<!--web-set-attributes-events-->
@@ -36,7 +36,7 @@
   - [Interacting with Applications Using Gestures](web-gesture.md)
   - [Zooming Web Pages](web-scale-zoom.md)
   - [Displaying Web Page Dialog Boxes](web-dialog.md)
-  - [Implementing the Drag Functionality](web_drag.md)
+  - [Implementing the Drag Functionality](web_drag.md)<!--RP2--><!--RP2End-->
 - Managing Cyber Security and Privacy for the Web Component<!--web-manage-cyber-security-privacy-->
   - [Resolving Cross-Origin Resource Access](web-cross-origin.md)
   - [Intelligent Tracking Prevention](web-intelligent-tracking-prevention.md)
@@ -72,4 +72,4 @@
 - Web Debugging<!--web-debugging-->
   - [Debugging Frontend Pages by Using DevTools](web-debugging-with-devtools.md)
   - [Using Crashpad to Collect Web Component Crash Information](web-crashpad.md)
-  - [Troubleshooting White Screen Issues on Web Pages](web-white-screen.md)
+  - [Troubleshooting White Screen Issues on Web Pages](web-white-screen.md)<!--RP1--><!--RP1End-->

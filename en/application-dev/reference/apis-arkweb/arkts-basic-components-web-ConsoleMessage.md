@@ -14,9 +14,9 @@ Implements the **ConsoleMessage** object. For details about the sample code, see
 >
 > - The initial APIs of this class are supported since API version 8.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
-## constructor
+## constructor<sup>(deprecated)</sup>
 
 constructor(message: string, sourceId: string, lineNumber: number, messageLevel: MessageLevel)
 
@@ -100,3 +100,17 @@ Obtains the path and name of the web page source file.
 | Type    | Description           |
 | ------ | ------------- |
 | string | Path and name of the web page source file.|
+
+## getSource<sup>23+</sup>
+
+getSource(): ConsoleMessageSource
+
+Obtains the log source of this console message.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type    | Description           |
+| ------ | ------------- |
+| [ConsoleMessageSource](./arkts-basic-components-web-e.md#consolemessagesource23) | Log source of the console message.|
