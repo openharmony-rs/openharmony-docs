@@ -58,7 +58,7 @@ try {
 ```
 import common from '@ohos.app.ability.common';
 const context = getContext(this) as common.UIAbilityContext
-console.log(`bundleName: ${context.abilityInfo.bundleName}`)
+console.info(`bundleName: ${context.abilityInfo.bundleName}`)
 ```
 
 **参考链接**
