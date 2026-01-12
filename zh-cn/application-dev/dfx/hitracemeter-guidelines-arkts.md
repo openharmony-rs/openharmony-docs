@@ -49,7 +49,7 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
   解析trace时，通过name和taskId参数识别不同的异步跟踪。这两个接口必须按序成对使用，并传入相同的name和taskId。 
 
   不同的异步流程中应使用不同的name和taskId，但在异步跟踪流程不会同时发生的情况下，可以使用相同的name和taskId。 
-   
+
   调用错误会导致trace文件在smartperf等可视化工具上显示异常。
 
 - 整数跟踪接口
@@ -99,7 +99,7 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
 
 2. 编辑“entry &gt; src &gt; main &gt; ets &gt; pages &gt; Index.ets”文件，在文本点击事件处理业务中使用HiTraceMeter性能跟踪打点接口，完整的示例代码如下。
 
-   <!-- @[hitracemeter_arkts_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->   
+   <!-- @[hitracemeter_arkts_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { hiTraceMeter, hilog } from '@kit.PerformanceAnalysisKit';
