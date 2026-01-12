@@ -118,12 +118,14 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   import { Want, common } from '@kit.AbilityKit';
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { PromptAction  } from '@kit.ArkUI';
+  import { JSON } from '@kit.ArkTS';
   
   let proxy: rpc.IRemoteObject | undefined;
   let connectId: number | undefined;
   
   // 死亡通知
-  class MyDeathRecipient implements rpc.DeathRecipient{
+  class MyDeathRecipient implements rpc.DeathRecipient {
     onRemoteDied() {
       hilog.info(0x0000, 'testTag', 'IPCClient: server is died');
     }
@@ -236,11 +238,12 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   
   ``` TypeScript
   import { BusinessError } from '@kit.BasicServicesKit';
-  import rpc from '@ohos.rpc';
-  import hilog from '@ohos.hilog';
+  import { rpc } from '@kit.IPCKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   import { abilityAccessCtrl, PermissionRequestResult, common, Want} from '@kit.AbilityKit';
   import { JSON } from '@kit.ArkTS';
+  import { PromptAction  } from '@kit.ArkUI';
   
   let proxy: rpc.IRemoteObject | undefined
   let connectId: number | undefined
