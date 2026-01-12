@@ -20,9 +20,7 @@ import { continueManager } from '@kit.AbilityKit';
 
 ## continueManager.on
 
-ArkTS-Dyn：on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
-
-ArkTS-Sta：onPrepareContinue(context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
+on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
 
 在应用快速拉起时，注册回调函数以获取快速拉起结果。使用callback异步回调。
 
@@ -30,11 +28,13 @@ ArkTS-Sta：onPrepareContinue(context: Context, callback: AsyncCallback&lt;Conti
 >
 > 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onPrepareContinue](#continueManageronPrepareContinue23)。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -53,8 +53,6 @@ ArkTS-Sta：onPrepareContinue(context: Context, callback: AsyncCallback&lt;Conti
 | 16300501 | the system ability work abnormally. |
 
 **示例**：
-
-ArkTS-Dyn示例：
 
 ```ts
 import { AbilityConstant, UIAbility, Want, continueManager } from '@kit.AbilityKit';
@@ -91,7 +89,40 @@ export default class MigrationAbility extends UIAbility {
 }
 ```
 
-ArkTS-Sta示例：
+## continueManager.onPrepareContinue<sup>23+</sup>
+
+onPrepareContinue(context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
+
+在应用快速拉起时，注册回调函数以获取快速拉起结果。使用callback异步回调。
+
+> **说明：**
+>
+> 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('prepareContinue')](#continueManageron)。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+| 参数名 | 类型                                                                                              | 必填 | 说明                                       |
+  | -------- |-------------------------------------------------------------------------------------------------| -------- |------------------------------------------|
+| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)                                                                                         | 是 | Ability的Context。                         |
+| callback | AsyncCallback&lt;[ContinueResultInfo](js-apis-app-ability-continueManager.md#continueresultinfo)&gt; | 是 | 回调函数。当快速拉起结果获取成功，err为undefined，ContinueResultInfo为获取到的快速启动结果。否则为错误对象。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 16300501 | the system ability work abnormally. |
+
+**示例**：
 
 ```ts
 import { BusinessError } from '@ohos.base';
@@ -131,9 +162,7 @@ export default class MigrationAbility extends UIAbility {
 
 ## continueManager.off
 
-ArkTS-Dyn：off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;ContinueResultInfo&gt;): void
-
-ArkTS-Sta：offPrepareContinue(context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
+off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;ContinueResultInfo&gt;): void
 
 在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。
 
@@ -141,11 +170,13 @@ ArkTS-Sta：offPrepareContinue(context: Context, callback: AsyncCallback&lt;Cont
 >
 > 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offPrepareContinue](#continueManageroffPrepareContinue23)。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -164,8 +195,6 @@ ArkTS-Sta：offPrepareContinue(context: Context, callback: AsyncCallback&lt;Cont
 | 16300501 | the system ability work abnormally. |
 
 **示例**：
-
-ArkTS-Dyn示例：
 
 ```ts
 import { AbilityConstant, UIAbility, Want, continueManager } from '@kit.AbilityKit';
@@ -202,7 +231,40 @@ export default class MigrationAbility extends UIAbility {
 }
 ```
 
-ArkTS-Sta示例：
+## continueManager.offPrepareContinue<sup>23+</sup>
+
+offPrepareContinue(context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
+
+在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。
+
+> **说明：**
+>
+> 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('prepareContinue')](#continueManageroff)。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+| 参数名 | 类型                                 | 必填 | 说明                                   |
+  | -------- |------------------------------------| -------- |--------------------------------------|
+| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)                            | 是 | Ability的Context。                     |
+| callback | AsyncCallback&lt;[ContinueResultInfo](js-apis-app-ability-continueManager.md#continueresultinfo)&gt; | 否 | 回调函数。当回调函数注销成功，err为undefined，ContinueResultInfo为获回调函数注销结果。否则为错误对象。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
+
+| 错误码ID    | 错误信息 |
+|----------| -------------------------------- |
+| 16300501 | the system ability work abnormally. |
+
+**示例**：
 
 ```ts
 import { BusinessError } from '@ohos.base';
