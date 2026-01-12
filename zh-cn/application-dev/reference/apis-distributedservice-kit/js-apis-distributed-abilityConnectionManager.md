@@ -730,11 +730,13 @@ on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callba
 
 注册connect事件的回调监听。使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onConnect](#abilityConnectionManageronConnect23)。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -754,8 +756,6 @@ on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callba
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -764,10 +764,38 @@ let sessionId = 100;
 abilityConnectionManager.on("connect", sessionId,(callbackInfo) => {
   hilog.info(0x0000, 'testTag', 'session connect, sessionId is', callbackInfo.sessionId);
 });
-
 ```
 
-ArkTS-Sta示例：
+## abilityConnectionManager.onConnect<sup>23+</sup>
+
+onConnect(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
+
+注册connect事件的回调监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('connect')](#abilityConnectionManageronConnect)。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| sessionId | int  | 是    | 创建的协同会话ID。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 注册的回调函数。    |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**示例：**
 
 ```ts
 import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
@@ -785,11 +813,13 @@ off(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Call
 
 取消connect事件的回调监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offConnect](#abilityConnectionManageroffConnect23)。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -809,7 +839,6 @@ off(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Call
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
@@ -817,7 +846,37 @@ let sessionId = 100;
 abilityConnectionManager.off("connect", sessionId);
 ```
 
-ArkTS-Sta示例：
+## abilityConnectionManager.offConnect<sup>23+</sup>
+
+offConnect(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt;): void
+
+取消connect事件的回调监听。
+  
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('connect')](#abilityConnectionManageroffconnect)。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| sessionId | int  | 是    | 创建的协同会话ID。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 注册的回调函数。    |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**示例：**
+
 ```ts
 import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
 
@@ -830,12 +889,14 @@ abilityConnectionManager.offConnect(sessionId,(callbackInfo) => {});
 on(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
 注册disconnect事件的回调监听。
+  
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onDisconnect](#abilityConnectionManageronDisconnect23)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -855,8 +916,6 @@ on(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Cal
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -866,8 +925,37 @@ abilityConnectionManager.on("disconnect", sessionId,(callbackInfo) => {
   hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
 });
 ```
+  
+## abilityConnectionManager.onDisconnect<sup>23+</sup>
 
-ArkTS-Sta示例：
+onDisconnect(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
+
+注册disconnect事件的回调监听。
+  
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('disconnect')](#abilityConnectionManageronDisconnect)。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| sessionId | int  | 是    | 创建的协同会话ID。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 注册的回调函数。    |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**示例：**
 
 ```ts
 import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
@@ -885,11 +973,13 @@ off(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;C
 
 取消disconnect事件的回调监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offDisconnect](#abilityConnectionManageroffDisconnect23)。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -909,18 +999,44 @@ off(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;C
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let sessionId = 100;
 abilityConnectionManager.off("disconnect", sessionId);
-
 ```
 
-ArkTS-Sta示例：
+## abilityConnectionManager.offDisconnect<sup>23+</sup>
+
+offDisconnect(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt;): void
+
+取消disconnect事件的回调监听。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('disconnect')](#abilityConnectionManageroffDisconnect)。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| sessionId | int  | 是    | 创建的协同会话ID。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 注册的回调函数。    |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**示例：**
 
 ```ts
 import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
@@ -936,11 +1052,13 @@ on(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp
 
 注册receiveMessage事件的回调监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveMessage](#abilityConnectionManageronReceiveMessage23)。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -960,8 +1078,6 @@ on(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -973,7 +1089,36 @@ abilityConnectionManager.on("receiveMessage", sessionId,(callbackInfo) => {
 
 ```
 
-ArkTS-Sta示例：
+## abilityConnectionManager.onReceiveMessage<sup>23+</sup>
+
+onReceiveMessage(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
+
+注册receiveMessage事件的回调监听。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('receiveMessage')](#abilityConnectionManageronreceiveMessage)。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| sessionId | int  | 是    | 创建的协同会话ID。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 注册的回调函数。    |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**示例：**
 
 ```ts
 import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
@@ -991,11 +1136,13 @@ off(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nb
 
 取消receiveMessage事件的回调监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveMessage](#abilityConnectionManageroffReceiveMessage23)。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1015,18 +1162,44 @@ off(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nb
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let sessionId = 100;
 abilityConnectionManager.off("receiveMessage", sessionId);
-
 ```
 
-ArkTS-Sta示例：
+## abilityConnectionManager.offReceiveMessage<sup>23+</sup>
+
+offReceiveMessage(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt; ): void
+
+取消receiveMessage事件的回调监听。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('receiveMessage')](#abilityConnectionManageroffreceiveMessage)。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| sessionId | int  | 是    | 创建的协同会话ID。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 注册的回调函数。    |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**示例：**
 
 ```ts
 import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
@@ -1044,11 +1217,13 @@ on(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Ca
 
 注册receiveData事件的回调监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveData](#abilityConnectionManageronReceiveData23)。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1068,8 +1243,6 @@ on(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Ca
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1078,14 +1251,40 @@ let sessionId = 100;
 abilityConnectionManager.on("receiveData", sessionId,(callbackInfo) => {
   hilog.info(0x0000, 'testTag', 'receiveData, sessionId is', callbackInfo.sessionId);
 });
-
 ```
 
-ArkTS-Sta示例：
+## abilityConnectionManager.onReceiveData<sup>23+</sup>
+
+onReceiveData(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
+
+注册receiveData事件的回调监听。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('receiveData')](#abilityConnectionManageronreceiveData)。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| sessionId | int  | 是    | 创建的协同会话ID。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 注册的回调函数。    |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**示例：**
 
 ```ts
-
-
 import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
 import hilog from '@ohos.hilog';
 
@@ -1101,11 +1300,13 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
 
 取消receiveData事件的回调监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveData](#abilityConnectionManageroffReceiveData23)。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1125,17 +1326,44 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let sessionId = 100;
 abilityConnectionManager.off("receiveData", sessionId);
-
 ```
-ArkTS-Sta示例：
+
+## abilityConnectionManager.offReceiveData<sup>23+</sup>
+
+offReceiveData(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt;): void
+
+取消receiveData事件的回调监听。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('receiveData')](#abilityConnectionManageroffreceiveData)。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| sessionId | int  | 是    | 创建的协同会话ID。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 注册的回调函数。    |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**示例：**
 
 ```ts
 import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
