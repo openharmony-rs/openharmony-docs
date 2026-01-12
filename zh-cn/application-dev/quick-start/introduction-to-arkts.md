@@ -1760,11 +1760,13 @@ class Person {
 }
 ```
 
-**说明**：`getSpouseNick`的返回类型必须为`string | null | undefined`，因为该方法在某些情况下会返回`null`或`undefined`。
-
-可选链可以任意长，可以包含任意数量的`?.`运算符。
-
-在以下示例中，如果`Person`实例的`spouse`属性不为空，并且`spouse`的`nick`属性也不为空时，输出`spouse.nick`。否则，输出`undefined`。
+> **说明**：
+>
+>`getSpouseNick`的返回类型必须为`string | null | undefined`，因为该方法在某些情况下会返回`null`或`undefined`。
+>
+> 可选链可以任意长，可以包含任意数量的`?.`运算符。
+>
+> 在以下示例中，如果`Person`实例的`spouse`属性不为空，并且`spouse`的`nick`属性也不为空时，输出`spouse.nick`。否则，输出`undefined`。
 
 ```typescript
 class Person {
@@ -2048,7 +2050,7 @@ import {X} from './a';
 注解不支持类型Typescript中的合并，否则会出现编译报错。
 ```typescript
 namespace ns {
-  @interface MataInfo { // 编译错误：注解必须定义在顶层作用域
+  @interface MetaInfo { // 编译错误：注解必须定义在顶层作用域
     // ...
   }
 }

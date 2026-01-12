@@ -750,7 +750,7 @@ static napi_value AboutSerialize(napi_env env, napi_callback_info info)
     napi_valuetype valuetype;
     napi_typeof(env, number, &valuetype);
     if (valuetype != napi_number) {
-        napi_throw_error(env, nullptr, "Node-API Wrong type of argment. Expects a number.");
+        napi_throw_error(env, nullptr, "Node-API Wrong type of argument. Expects a number.");
         return nullptr;
     }
     // 调用napi_delete_serialization_data方法删除序列化数据
