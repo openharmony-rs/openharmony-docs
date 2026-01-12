@@ -47,3 +47,39 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 <!-- @[generate_hmac_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormat/entry/src/main/cpp/types/project/hmac.cpp) -->
 
+``` C++
+#include "CryptoArchitectureKit/crypto_common.h"
+#include "CryptoArchitectureKit/crypto_sym_key.h"
+#include <cstring>
+#include "file.h"
+
+OH_Crypto_ErrCode testConvertHmacKey()
+{
+    const char *algName = "HMAC";
+    OH_CryptoSymKeyGenerator *ctx = nullptr;
+    OH_CryptoSymKey *convertKeyCtx = nullptr;
+    Crypto_DataBlob out = {.data = nullptr, .len = 0};
+    OH_Crypto_ErrCode ret;
+
+    char *arr = const_cast<char *>("12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh");
+    Crypto_DataBlob convertBlob = {.data = (uint8_t *)(arr), .len = strlen(arr)};
+    ret = OH_CryptoSymKeyGenerator_Create(algName, &ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    ret = OH_CryptoSymKeyGenerator_Convert(ctx, &convertBlob, &convertKeyCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoSymKeyGenerator_Destroy(ctx);
+        return ret;
+    }
+    ret = OH_CryptoSymKey_GetKeyData(convertKeyCtx, &out);
+    OH_CryptoSymKeyGenerator_Destroy(ctx);
+    OH_CryptoSymKey_Destroy(convertKeyCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    OH_Crypto_FreeDataBlob(&out);
+    return ret;
+}
+```
+
