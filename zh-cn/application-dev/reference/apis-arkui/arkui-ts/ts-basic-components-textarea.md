@@ -472,11 +472,11 @@ ArkTS-Sta: barState(value: BarState | undefined)
 
 ### maxLines<sup>10+</sup>
 
-ArkTS-Dyn: maxLines(value: number)
-
-ArkTS-Sta: maxLines(value: int | undefined)
+maxLines(value: number)
 
 配置textOverflow一起使用时，maxLines为可显示行数，超出截断；未配置textOverflow时，内联模式获焦状态下内容超出maxLines时，文本可滚动显示，内联模式非获焦状态下不生效maxLines，非内联模式按行截断。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -484,13 +484,42 @@ ArkTS-Sta: maxLines(value: int | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**参数：** 
+
+| 参数名 | 类型                                      | 必填 | 说明                                                         |
+| ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | number | 是   | 内联输入风格编辑态时文本可显示的最大行数。<br/>默认值：3，非内联模式下，默认值为+∞，不限制最大行数。 <br/>取值范围：(0, +∞) |
+
+### maxLines<sup>23+</sup>
+
+maxLines(value: int | undefined, options?: MaxLinesOptions)
+
+> **说明：**
+>
+> 配置textOverflow时：
+>
+>     maxLines为文本可显示的最大行数，超出部分直接截断。
+>
+> 未配置textOverflow时：
+>
+>     内联模式（获焦状态）：内容超出maxLines时，文本支持滚动显示；
+>
+>     内联模式（非获焦状态）：maxLines不生效；
+>
+>     非内联模式：文本按maxLines指定的行数截断。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 内联输入风格编辑态时文本可显示的最大行数。<br/>默认值：3，非内联模式下，默认值为+∞，不限制最大行数。 <br/>取值范围：(0, +∞) |
+| value  | int \| undefined | 是   | 内联输入风格编辑态时文本可显示的最大行数。<br>值为undefined时，保持值为3的效果。非内联模式下，不限制最大行数 <br/>取值范围：(0, +∞) |
+|options | [MaxLinesOptions](ts-text-common.md#maxlinesoptions20对象说明) |  否  | 文本超长时显示效果。 |
 
 ### maxLines<sup>20+</sup>
 
@@ -511,7 +540,9 @@ maxLines(lines: number, options: MaxLinesOptions)
 
 ### minLines<sup>20+</sup>
 
-minLines(lines: Optional\<number>)
+ArkTS-Dyn: minLines(lines: Optional\<number>)
+
+ArkTS-Sta: minLines(lines: int | undefined)
 
 设置节点显示的最小行数，若传入值小于1，则自动取值为1。如果节点设置了[constraintSize](ts-universal-attributes-size.md#constraintsize)，那么组件最后显示高度会在[constraintSize](ts-universal-attributes-size.md#constraintsize)约束内。
 
@@ -519,17 +550,21 @@ minLines(lines: Optional\<number>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| lines  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<number> | 是   | 节点最小行数。 |
+| lines  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<number><br/>ArkTS-Sta: int \| undefined | 是   | 节点最小行数。<br/>值为undefined时，最小行数无限制。 |
 
 ### customKeyboard<sup>10+</sup>
 
-ArkTS-Dyn: customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
+ArkTS-Dyn: customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: KeyboardOptions)
 
-ArkTS-Sta: customKeyboard(value: CustomBuilder | undefined, options?: KeyboardOptions | undefined)
+ArkTS-Sta: customKeyboard(value: CustomBuilder | ComponentContentBase | undefined, options?: KeyboardOptions)
 
 设置自定义键盘。
 
@@ -547,20 +582,26 @@ ArkTS-Sta: customKeyboard(value: CustomBuilder | undefined, options?: KeyboardOp
 
 当设置自定义键盘时，可以通过绑定[onKeyPrelme](ts-universal-events-key.md#onkeypreime12)事件规避物理键盘的输入。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名                | 类型                                        | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 自定义键盘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| options<sup>12+</sup> | ArkTS-Dyn: [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)<br/>ArkTS-Sta: [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12) \| undefined       | 否   | 设置自定义键盘是否支持避让功能。                             |
+| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContentBase](../js-apis-arkui-ComponentContent-static.md#componentcontentbase) \| undefined | 是   | 自定义键盘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>值为undefined时，不设置自定义键盘。|
+| options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)   | 否   | 设置自定义键盘是否支持避让功能。                             |
 
 ### type<sup>11+</sup>
 
@@ -627,6 +668,30 @@ ArkTS-Sta: enableAutoFill(value: boolean | undefined)
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否启用自动填充。<br/>true表示启用，false表示不启用。<br/>默认值：true |
+
+### enableSelectedDataDetector<sup>22+</sup>
+
+enableSelectedDataDetector(enable: boolean | undefined)
+
+设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
+
+当enableSelectedDataDetector设置为true时，默认识别所有类型的实体。
+
+需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。<br>值为undefined时，开启识别。 |
 
 ### contentType<sup>12+</sup>
 
@@ -983,11 +1048,13 @@ ArkTS-Sta: lineSpacing(value: LengthMetrics | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 文本的行间距。默认值：0 |
+| value  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 文本的行间距。 <br/>值为undefined时，与值为0的效果一致。|
 
 ### lineSpacing<sup>20+</sup>
 
-lineSpacing(value: LengthMetrics, options?: LineSpacingOptions)
+ArkTS-Dyn: lineSpacing(value: LengthMetrics, options?: LineSpacingOptions)
+
+ArkTS-Sta: lineSpacing(value: LengthMetrics | undefined, options?: LineSpacingOptions)
 
 设置文本的行间距。当不配置LineSpacingOptions时，首行上方和尾行下方默认会有行间距。
 
@@ -995,11 +1062,15 @@ lineSpacing(value: LengthMetrics, options?: LineSpacingOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 文本的行间距。设置值不大于0时，取默认值0。 |
+| value  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 文本的行间距。设置值不大于0时，取默认值0。<br/>值为undefined时，效果与传入0一致。 |
 | options  | [LineSpacingOptions](ts-text-common.md#linespacingoptions20对象说明) | 否   | 设置行间距配置项。<br/>默认值：{&nbsp;onlyBetweenLines:&nbsp;false&nbsp;} |
 
 ### lineBreakStrategy<sup>12+</sup>
@@ -1165,7 +1236,7 @@ ArkTS-Sta: strokeWidth(width: LengthMetrics | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1187,7 +1258,7 @@ ArkTS-Sta: strokeColor(color: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1309,7 +1380,9 @@ EllipsisMode.START和EllipsisMode.CENTER仅在maxLines设置为1生效。
 
 ### enableAutoSpacing<sup>20+</sup>
 
-enableAutoSpacing(enabled: Optional\<boolean>)
+ArkTS-Dyn: enableAutoSpacing(enabled: Optional\<boolean>)
+
+ArkTS-Sta: enableAutoSpacing(enabled: boolean | undefined)
 
 设置是否开启中文与西文的自动间距。
 
@@ -1317,11 +1390,35 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启中文与西文的自动间距。<br/>true表示开启自动间距；false表示不开启自动间距。<br/>值为undefined时，不开启自动间距。 |
+
+### scrollBarColor<sup>22+</sup>
+
+scrollBarColor(thumbColor: ColorMetrics | undefined)
+
+设置滚动条的颜色。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                               |
+| ------ | ------- | ---- | ---------------------------------- |
+| thumbColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&nbsp;\|&nbsp;undefined | 是 | 滚动条的颜色。<br/>值为undefined时，默认为'#66182431'，显示为灰色。|
 
 ### compressLeadingPunctuation<sup>23+</sup>
 
@@ -1731,6 +1828,33 @@ onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
 | callback  | ArkTS-Dyn: Callback\<[EditableTextChangeValue](ts-text-common.md#editabletextchangevalue15), boolean><br/>ArkTS-Sta: Callback\<[EditableTextChangeValue](ts-text-common.md#editabletextchangevalue15), boolean> \| undefined | 是   | 在文本内容将要发生变化时的回调。<br/>返回true时，表示正常修改。返回false时，表示拦截此次触发。 |
 
+### onWillAttachIME<sup>22+</sup>
+
+onWillAttachIME(callback: Callback\<IMEClient> | undefined)
+
+在输入框将要绑定输入法前触发该回调。使用callback异步回调。
+
+<!--Del-->
+在输入框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20)设置键盘的样式。<!--DelEnd-->
+
+从API version 22开始，调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法可以设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
+
+IMEClient仅在onWillAttachIME执行期间有效，不可进行异步调用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明               |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| callback  | Callback\<[IMEClient](ts-text-common.md#imeclient20对象说明)> \| undefined | 是   | 在输入框将要绑定输入法前触发该回调。<br/>值为undefined时，该回调不触发。 |
+
 ## TextAreaController<sup>8+</sup>
 
 TextArea组件的控制器继承自[TextContentControllerBase](ts-types.md#textcontentcontrollerbase10)。
@@ -1811,13 +1935,13 @@ stopEditing(): void
 
 | 名称   | 值  | 说明 |
 | ------ | ----- | ------ |
-| NORMAL   | 0 | 基本输入模式。<br/>支持输入数字、字母、下划线、空格、特殊字符。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| NUMBER   | 2 | 纯数字输入模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PHONE_NUMBER | 3 | 电话号码输入模式。<br/>支持输入数字、空格、+ 、-、*、#、(、)，长度不限。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| EMAIL    | 5 | 邮箱地址输入模式。<br/>支持数字，字母，下划线、小数点、!、#、$、%、&、'、*、+、-、/、=、?、^、`、\{、\|、\}、~，以及@字符（只能存在一个@字符）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| NUMBER_DECIMAL<sup>12+</sup>  | 12 | 带小数点的数字输入模式。<br/>支持数字，小数点（只能存在一个小数点）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| URL<sup>12+</sup>  | 13 | 带URL的输入模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| NORMAL   | 0 | 基本输入模式。<br/>支持输入数字、字母、下划线、空格、特殊字符。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| NUMBER   | 2 | 纯数字输入模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| PHONE_NUMBER | 3 | 电话号码输入模式。<br/>支持输入数字、空格、+ 、-、*、#、(、)，长度不限。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| EMAIL    | 5 | 邮箱地址输入模式。<br/>支持数字，字母，下划线、小数点、!、#、$、%、&、'、*、+、-、/、=、?、^、`、\{、\|、\}、~，以及@字符（只能存在一个@字符）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| NUMBER_DECIMAL<sup>12+</sup>  | 12 | 带小数点的数字输入模式。<br/>支持数字，小数点（只能存在一个小数点）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| URL<sup>12+</sup>  | 13 | 带URL的输入模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## TextAreaSubmitCallback<sup>14+</sup>
 
@@ -1933,48 +2057,167 @@ struct TextAreaExample {
 
 ### 示例3（设置自定义键盘）
 
-该示例通过customKeyboard属性实现了自定义键盘的功能。
+该示例通过[customKeyboard](#customkeyboard10)（从API version 10开始）属性分别将value中的入参类型设置为[CustomBuilder](ts-types.md#custombuilder8)和[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)，实现了自定义键盘的功能。
+
+从API version 22开始，[customKeyboard](#customkeyboard10)属性新增了入参类型[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+class BuilderParams {
+  inputValue: string;
+  controller: TextAreaController;
+
+  constructor(inputValue: string, controller: TextAreaController) {
+    this.inputValue = inputValue;
+    this.controller = controller;
+  }
+}
+@Builder
+function CustomKeyboardBuilder(builderParams: BuilderParams) {
+  Column() {
+    Row() {
+      Button('x').onClick(() => {
+        // 关闭自定义键盘
+        builderParams.controller.stopEditing();
+      }).margin(10)
+    }
+
+    Grid() {
+      ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+        GridItem() {
+          Button(item + "")
+            .width(110).onClick(() => {
+            builderParams.inputValue += item;
+          })
+        }
+      })
+    }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+  }.backgroundColor(Color.Gray)
+}
 @Entry
 @Component
 struct TextAreaExample {
   controller: TextAreaController = new TextAreaController();
   @State inputValue: string = "";
+  @State componentContent ?: ComponentContent<BuilderParams> = undefined;
+  @State builderParam: BuilderParams = new BuilderParams(this.inputValue, this.controller);
+  @State supportAvoidance: boolean = true;
 
-  // 自定义键盘组件
-  @Builder CustomKeyboardBuilder() {
-    Column() {
-      Button('x').onClick(() => {
-        // 关闭自定义键盘
-        this.controller.stopEditing();
-      })
-      Grid() {
-        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
-          GridItem() {
-            Button(item + "")
-              .width(110).onClick(() => {
-              this.inputValue += item;
-            })
-          }
-        })
-      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
-    }.backgroundColor(Color.Gray)
+  aboutToAppear(): void {
+    // 创建ComponentContent
+    this.componentContent = new ComponentContent(this.getUIContext(), wrapBuilder(CustomKeyboardBuilder), this.builderParam);
   }
-
-  build() {
+  build(){
     Column() {
-      TextArea({ controller: this.controller, text: this.inputValue })
-        // 绑定自定义键盘
-        .customKeyboard(this.CustomKeyboardBuilder()).margin(10).border({ width: 1 })
-        .height(200)
+      Text('Builder').margin(10).border({ width: 1 })
+      TextArea({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+        .customKeyboard(this.componentContent, { supportAvoidance: this.supportAvoidance })
+        .margin(10).border({ width: 1 }).height('48vp')
+
+      Text('ComponentContent').margin(10).border({ width: 1 })
+      TextArea({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+        .customKeyboard(CustomKeyboardBuilder(this.builderParam), { supportAvoidance: this.supportAvoidance })
+        .margin(10).border({ width: 1 }).height('48vp')
     }
   }
 }
 ```
 
 ![customKeyboard](figures/textAreaCustomKeyboard.png)
+
+ArkTS-Sta示例:
+
+```ts
+// xxx.ets
+import { Entry, Column, Row, Component, Button, TextArea, Color, KeyboardOptions, Grid, ForEach, GridItem,
+  Builder, CustomBuilder, TextAreaController, Scroll, State,  } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  controller: TextAreaController = new TextAreaController();
+  controller2: TextAreaController = new TextAreaController();
+  @State areaValue: string = '';
+  @State areaValue2: string = '';
+  @State str: string = '否';
+  // 自定义键盘组件
+  @Builder CustomKeyboardBuilder() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // 关闭自定义键盘
+          this.controller.stopEditing();
+        })
+        Button('delete').onClick(() => {
+          this.areaValue = this.areaValue.slice(0, -1);
+        }).margin(10)
+      }
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: Int | string, index: Int) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.areaValue += item
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor(Color.Gray).height(300)
+  }
+
+  @Builder CustomKeyboardBuilder2() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // 关闭自定义键盘
+          this.controller2.stopEditing();
+        })
+        Button('delete').onClick(() => {
+          this.areaValue2 = this.areaValue2.slice(0, -1);
+        }).margin(10)
+      }
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: Int | string, index: Int) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.areaValue2 += item
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor(Color.Blue).height(300)
+  }
+
+  build() {
+    Scroll() {
+      Column() {
+        TextArea({
+          placeholder: 'TextArea1 bind CustomKeyboardBuilder',
+          controller: this.controller,
+          text: this.areaValue
+        })// 绑定自定义键盘
+          .customKeyboard(this.CustomKeyboardBuilder as CustomBuilder, { supportAvoidance: true } as KeyboardOptions)
+          .margin(10)
+          .border({ width: 1 })
+        TextArea({
+          placeholder: 'TextArea2 bind CustomKeyboardBuilder2',
+          controller: this.controller2,
+          text: this.areaValue2
+        })// 绑定自定义键盘
+          .customKeyboard(this.CustomKeyboardBuilder2 as CustomBuilder, { supportAvoidance: true } as KeyboardOptions)
+          .margin(10)
+          .border({ width: 1 })
+      }
+    }
+  }
+}
+```
+
+![customKeyboard](figures/textAreaCustomKeyboard2.gif)
 
 ### 示例4（设置输入法回车键类型）
 
@@ -2252,11 +2495,50 @@ struct TextAreaExample {
 
 ### 示例10（设置文本行间距）
 
-该示例通过lineSpacing属性展示了文本在不同行间距下的展示效果。
+该示例通过[lineSpacing](#linespacing12)属性展示了文本在不同行间距下的展示效果，同时，配置[LineSpacingOptions](ts-text-common.md#linespacingoptions20对象说明)中的onlyBetweenLines属性，可以设置文本的行间距，是否仅在行与行之间生效。
 
+从API version 20开始，[LineSpacingOptions](ts-text-common.md#linespacingoptions20对象说明)新增onlyBetweenLines属性。
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextAreaExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
+      Text('TextArea lineSpacing.').fontSize(9).fontColor(0xCCCCCC)
+      TextArea({ text: 'This is the TextArea with no lineSpacing set.' })
+        .fontSize(12)
+      TextArea({ text: 'This is the TextArea with lineSpacing set to 20_px.' })
+        .fontSize(12)
+        .lineSpacing(LengthMetrics.px(20))
+      TextArea({ text: 'This is the TextArea with lineSpacing set to 20_vp.' })
+        .fontSize(12)
+        .lineSpacing(LengthMetrics.vp(20))
+      TextArea({ text: 'This is the TextArea with lineSpacing set to 20_fp.' })
+        .fontSize(12)
+        .lineSpacing(LengthMetrics.fp(20))
+      TextArea({ text: 'This is the TextArea with lineSpacing set to 20_lpx.' })
+        .fontSize(12)
+        .lineSpacing(LengthMetrics.lpx(20))
+      TextArea({ text: 'This is the TextArea with lineSpacing set to 100%.' })
+        .fontSize(12)
+        .lineSpacing(LengthMetrics.percent(1))
+      TextArea({ text: 'The line spacing of this TextArea is set to 20_px, and the spacing is effective only between the lines.' })
+        .fontSize(12)
+        .lineSpacing(LengthMetrics.px(20), { onlyBetweenLines: true })
+    }.height(600).width(350).padding({ left: 35, right: 35, top: 35 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, TextArea, Flex, FlexDirection, ItemAlign, FlexAlign, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -2797,11 +3079,54 @@ struct TextAreaExample {
 
 ### 示例19（设置文本描边）
 
-该示例通过strokeWidth和strokeColor属性设置文本的描边宽度及颜色。
+该示例通过[strokeWidth](#strokewidth20)和[strokeColor](#strokecolor20)属性设置文本的描边宽度及颜色。
 
+从API version 20开始，新增[strokeWidth](#strokewidth20)和[strokeColor](#strokecolor20)属性。
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextAreaExample {
+  build() {
+    Row() {
+      Column() {
+        Text('stroke feature').fontSize(9).fontColor(0xCCCCCC)
+
+        TextArea({ text: 'Text without stroke' })
+          .width('100%')
+          .height(60)
+          .borderWidth(1)
+          .fontSize(40)
+        TextArea({ text: 'Text with stroke' })
+          .width('100%')
+          .height(60)
+          .borderWidth(1)
+          .fontSize(40)
+          .strokeWidth(LengthMetrics.px(-3.0))
+          .strokeColor(Color.Red)
+        TextArea({ text: 'Text with stroke' })
+          .width('100%')
+          .height(60)
+          .borderWidth(1)
+          .fontSize(40)
+          .strokeWidth(LengthMetrics.px(3.0))
+          .strokeColor(Color.Red)
+      }.height('90%')
+    }
+    .width('90%')
+    .margin(10)
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, TextArea, Row, LengthMetrics, Color } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -2842,10 +3167,36 @@ struct TextAreaExample {
 
 ### 示例20（设置中西文自动间距）
 
-该示例通过enableAutoSpacing属性设置中西文自动间距。
+该示例通过[enableAutoSpacing](#enableautospacing20)属性设置中西文自动间距。
 
+从API version 20开始，新增[enableAutoSpacing](#enableautospacing20)属性。
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  build() {
+    Row() {
+      Column() {
+        Text('开启中西文自动间距').margin(5)
+        TextArea({text: '中西文Auto Spacing自动间距'})
+          .enableAutoSpacing(true)
+        Text('关闭中西文自动间距').margin(5)
+        TextArea({text: '中西文Auto Spacing自动间距'})
+          .enableAutoSpacing(false)
+      }.height('100%')
+    }
+    .width('60%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, TextArea, Row } from '@kit.ArkUI';
 @Entry
 @Component
 struct TextAreaExample {
@@ -2869,8 +3220,11 @@ struct TextAreaExample {
 
 ### 示例21（设置最大行数）
 
-该示例通过maxLines属性设置显示最大行数，超出最大行数后可滚动。
+该示例通过[maxLines](#maxlines20)属性设置显示最大行数，超出最大行数后可滚动。
 
+从API version 20开始，新增[maxLines](#maxlines20)属性。
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
@@ -2894,14 +3248,69 @@ struct TextAreaExample {
 }
 
 ```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, TextArea, Row, Margin, TextOverflow, MaxLinesMode } from '@kit.ArkUI';
+@Entry
+@Component
+struct TextAreaExample {
+  build() {
+    Row() {
+      Column() {
+        TextArea({ text: '1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20' })
+          .fontSize(50)
+          .width('50%')
+          .borderWidth(1)
+          .margin(100)
+          .textOverflow(TextOverflow.Clip)
+          .maxLines(3, { overflowMode: MaxLinesMode.SCROLL })
+      }.height('90%')
+    }
+    .width('90%')
+    .margin(10)
+  }
+}
+
+```
+
 ![TextAreaMaxLines](figures/TextAreaMaxLines.gif)
 
 ### 示例22（设置最小行数）
 
-该示例通过minLines属性设置显示的最小行数。
+该示例通过[minLines](#minlines20)属性设置显示的最小行数。
 
+从API version 20开始，新增[minLines](#minlines20)属性。
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        TextArea({ text: this.message })
+          .width('95%')
+          .fontSize(20)
+          .margin(10)
+          .minLines(3)
+      }
+    }
+    .width('90%')
+    .margin(10)
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, TextArea, Row, Margin, State } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
@@ -3227,3 +3636,122 @@ struct TextAreaExample {
 ```
 
 ![textAreaTextDirection](figures/textAreaTextDirection.PNG)
+
+### 示例28（设置滚动条颜色）
+该示例通过[scrollBarColor](#scrollbarcolor22)属性设置滚动条颜色。
+
+从API version 22开始，新增[scrollBarColor](#scrollbarcolor22)属性。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { ColorMetrics } from '@kit.ArkUI';
+@Entry
+@Component
+struct Index {
+  controller: TextAreaController = new TextAreaController();
+  build() {
+      Column() {
+        TextArea({
+          text: "Hello World TextArea",
+          placeholder: 'Type to text area...',
+          controller: this.controller
+        })
+          .width(336)
+          .height(56)
+          .margin({bottom:5})
+          .fontSize(16)
+          .fontColor('#182431')
+          .backgroundColor('#FFFFFF')
+          .barState(BarState.On)
+          .scrollBarColor(undefined)
+        TextArea({
+          text: "Hello World TextArea",
+          placeholder: 'Type to text area...',
+          controller: this.controller
+        })
+          .width(336)
+          .height(56)
+          .margin({bottom:5})
+          .fontSize(16)
+          .fontColor('#182431')
+          .backgroundColor('#FFFFFF')
+          .barState(BarState.On)
+          .scrollBarColor(ColorMetrics.resourceColor(Color.Orange))
+        TextArea({
+          text: "Hello World TextArea",
+          placeholder: 'Type to text area...',
+          controller: this.controller
+        })
+          .width(336)
+          .height(56)
+          .margin({bottom:5})
+          .fontSize(16)
+          .fontColor('#182431')
+          .backgroundColor('#FFFFFF')
+          .barState(BarState.On)
+          .scrollBarColor(ColorMetrics.rgba(255, 100, 255))
+      }
+      .backgroundColor(Color.Blue).width('100%').height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, TextArea, Row, Margin, TextAreaController, Color, ColorMetrics, BarState } from '@kit.ArkUI';
+@Entry
+@Component
+struct Index {
+  controller: TextAreaController = new TextAreaController();
+  build() {
+    Column() {
+      TextArea({
+        text: 'Hello World TextArea',
+        placeholder: 'Type to text area...',
+        controller: this.controller
+      })
+        .width(336)
+        .height(56)
+        .margin({bottom:5} as Margin)
+        .fontSize(16)
+        .fontColor('#182431')
+        .backgroundColor('#FFFFFF')
+        .barState(BarState.On)
+        .scrollBarColor(undefined)
+      TextArea({
+        text: 'Hello World TextArea',
+        placeholder: 'Type to text area...',
+        controller: this.controller
+      })
+        .width(336)
+        .height(56)
+        .margin({bottom:5} as Margin)
+        .fontSize(16)
+        .fontColor('#182431')
+        .backgroundColor('#FFFFFF')
+        .barState(BarState.On)
+        .scrollBarColor(ColorMetrics.resourceColor(Color.Orange))
+      TextArea({
+        text: 'Hello World TextArea',
+        placeholder: 'Type to text area...',
+        controller: this.controller
+      })
+        .width(336)
+        .height(56)
+        .margin({bottom:5} as Margin)
+        .fontSize(16)
+        .fontColor('#182431')
+        .backgroundColor('#FFFFFF')
+        .barState(BarState.On)
+        .scrollBarColor(ColorMetrics.rgba(255, 100, 255))
+    }
+    .backgroundColor(Color.Blue).width('100%').height('100%')
+  }
+}
+```
+
+![scrollBarColor](figures/textAreaScrollBarColor.jpg)

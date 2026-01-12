@@ -121,6 +121,30 @@ ArkTS-Sta: colorFilter(filter: ColorFilter | DrawingColorFilter | undefined)
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | filter  | ArkTS-Dyn: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12)<br/>ArkTS-Sta: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12) \| undefined | 是   | 1. 给图像设置颜色滤镜效果，入参为一个的4x5的RGBA转换矩阵。<br/>矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵为：<br/>![image-matrix-1](figures/image_matrix_1.png)<br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>2. 支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，svg类型的图源只对stroke属性生效。|
 
+### supportSvg2<sup>22+</sup>
+
+ArkTS-Dyn: supportSvg2(enable: Optional\<boolean>)
+
+ArkTS-Sta: supportSvg2(enable: boolean | undefined)
+
+开启或关闭[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)，开启后相关SVG图片显示效果会有变化。未通过该接口设置时，默认保持原有SVG解析能力。
+
+ImageSpan组件创建后，不支持动态修改该属性的值。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                     | 必填 | 说明                                                         |
+| ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| enable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>值为undefined时，保持原有SVG解析能力。|
+
 ## 事件
 
 通用事件仅支持[点击事件](ts-universal-attributes-click.md)。还支持以下事件：
@@ -422,3 +446,88 @@ struct SpanExample {
 ```
 
 ![imagespan](figures/image_span_alt.gif)
+
+### 示例6（开启或关闭SVG标签解析能力增强功能）
+
+该示例通过设置[supportSvg2](#supportsvg222)接口，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md#svg易用性提升)的SVG易用性提升能力生效，从而提升SVG的易用性。
+
+从API version 22开始，新增[supportSvg2](#supportsvg222)接口。
+
+ArkTS-Dyn示例：
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('属性字符串不支持SVG2')
+        // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+        Text() {
+          ImageSpan($r("app.media.ice"))
+            .width(50)
+            .height(50)
+            .colorFilter(drawing.ColorFilter.createBlendModeColorFilter(
+              drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN))
+        }
+        Text('属性字符串支持SVG2')
+        // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+        Text() {
+          ImageSpan($r("app.media.ice"))
+            .width(50)
+            .height(50)
+            .supportSvg2(true)
+            .colorFilter(drawing.ColorFilter.createBlendModeColorFilter(
+              drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN))
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Column, Row, Component, Text, Button, ImageSpan, $r, Color } from '@kit.ArkUI';
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('属性字符串不支持SVG2')
+        // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+        Text() {
+          ImageSpan($r("app.media.ice"))
+            .width(50)
+            .height(50)
+            .colorFilter(drawing.ColorFilter.createBlendModeColorFilter(
+              drawing.Tool.makeColorFromResourceColor(Color.Blue) as common2D.Color, drawing.BlendMode.SRC_IN))
+        }
+        Text('属性字符串支持SVG2')
+        // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+        Text() {
+          ImageSpan($r("app.media.ice"))
+            .width(50)
+            .height(50)
+            .supportSvg2(true)
+            .colorFilter(drawing.ColorFilter.createBlendModeColorFilter(
+              drawing.Tool.makeColorFromResourceColor(Color.Blue) as common2D.Color, drawing.BlendMode.SRC_IN))
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![styledString_17](figures/styledString_17.png)
+

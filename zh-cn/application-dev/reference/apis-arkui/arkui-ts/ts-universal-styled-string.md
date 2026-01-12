@@ -887,6 +887,8 @@ ShadowOptions对象中不支持fill字段。
 | objectFit  | [ImageFit](ts-appendix-enums.md#imagefit) |  是  |  是  | 获取属性字符串的图片缩放类型。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | layoutStyle  | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) |  是  |  是  | 获取属性字符串的图片布局。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  是  |  是  | 获取属性字符串的图片颜色滤镜效果。**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| supportSvg2<sup>22+</sup>  | boolean |  是  |  是  | 获取属性字符串是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
+| sizeInVp<sup>21+</sup>   | [SizeOptions](ts-types.md#sizeoptions) |  是  |  是  | 获取属性字符串的图片尺寸。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br/>返回number类型值的单位为`vp`。<br/>当ImageAttachment尺寸设置为负数值或undefined时，返回为undefined。<br/>**ArkTS-Dyn起始版本：** 21<br/>**ArkTS-Sta起始版本：** 23<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### constructor
 
@@ -992,6 +994,7 @@ ResourceStr类型图片设置项。
 | layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) | 否   | 设置图片布局。 |
 | colorFilter  | [ColorFilterType](#colorfiltertype15) |  否  | 设置属性字符串的图片颜色滤镜效果。 |
 | syncLoad  | boolean |  否  | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br/>默认值：false |
+| supportSvg2<sup>22+</sup>  | boolean |  否  | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## CustomSpan
 
@@ -1108,6 +1111,7 @@ invalidate(): void
 | leadingMargin   | number \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11) | 是    | 是   | 获取属性字符串文本段落的缩进。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
 | paragraphSpacing<sup>19+</sup>  | number | 是    | 是   | 获取属性字符串文本段落的段落间距。单位VP。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 22 |
 | textVerticalAlign<sup>20+</sup>  | [TextVerticalAlign](ts-text-common.md#textverticalalign20) | 是    | 是   | 获取属性字符串文本段落在垂直方向的对齐方式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 22 |
+| leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 是    | 是   | 获取属性字符串文本段落的自定义缩进信息。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
 | textDirection<sup>23+</sup>  | [TextDirection](ts-text-common.md#textdirection22) |  是  |  是  | 获取文本方向。 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 >  **说明：**
@@ -1146,6 +1150,7 @@ constructor(value?: ParagraphStyleInterface)
 | leadingMargin   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11) | 否    | 设置文本段落的缩进。不支持百分比。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
 | paragraphSpacing<sup>19+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 设置文本段落的段落间距。<br/>段落间距默认大小为0。不支持百分比。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 22 |
 | textVerticalAlign<sup>20+</sup>   | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  否  | 设置文本段落在垂直方向的对齐方式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 22 |
+| leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 否  | 是    | 设置文本段落的自定义缩进。不支持百分比。<br/>默认值：0<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
 | textDirection<sup>23+</sup>  | [TextDirection](ts-text-common.md#textdirection22) |  否  | 设置文本方向。<br/>默认值：TextDirection.DEFAULT<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## UserDataSpan
@@ -1157,6 +1162,74 @@ constructor(value?: ParagraphStyleInterface)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## LeadingMarginSpan<sup>22+</sup>
+
+文本段落的自定义缩进，仅提供基类，具体实现由开发者定义。
+
+### onDraw<sup>22+</sup>
+
+abstract onDraw(context: DrawContext, drawInfo: LeadingMarginSpanDrawInfo): void
+
+绘制自定义图案。段落中的每一行文本都会触发一次onDraw。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                              | 必填 | 说明                                                         |
+| ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
+| context | [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 是   | 图形绘制上下文。<br/>DrawContext的canvas方法获取的是组件的画布，绘制时不会超出组件的范围。 |
+| drawInfo | [LeadingMarginSpanDrawInfo](#leadingmarginspandrawinfo22对象说明) | 是   | 自定义绘制信息。 |
+
+### getLeadingMargin<sup>22+</sup>
+
+abstract getLeadingMargin(): LengthMetrics
+
+返回文本段落的缩进距离。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型              |       说明       |
+| ------- | --------------------------------- | 
+| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 文本段落的缩进。不支持百分比。<br/>默认值：0<br/> |
+
+## LeadingMarginSpanDrawInfo<sup>22+</sup>对象说明
+
+自定义绘制信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称  | 类型                              | 只读 | 可选 | 说明   |
+| ------- | --------------------------------- | ---- | ---- |--------------------------------- |
+| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否  | 否 | 当前行相对于组件的水平偏移。direction为RTL时，返回当前行右侧与组件右边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
+| top | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否  | 否  | 行顶与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
+| bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否  | 否  | 行底与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
+| baseline | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否  | 否  | 当前行的基线与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
+| direction | [TextDirection](ts-text-common.md#textdirection22) |  否  | 否  | 文本内容的方向。 |
+| start | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否  | 否  | 当前行的起始索引。<br/>取值范围：大于等于0。 |
+| end | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否  | 否  | 当前行的结束索引。<br/>取值范围：大于等于0。 |
+| first | boolean |  否  | 否  | 当前行是否是段落的首行。<br/>true：首行；false：非首行。 |
 
 ## StyledStringKey枚举说明
 
@@ -2655,3 +2728,138 @@ struct Index {
 ```
 
 ![](figures/styledString_14.png)
+
+### 示例15（是否开启SVG标签解析能力增强功能）
+该示例通过给[ResourceImageAttachmentOptions](#resourceimageattachmentoptions15)设置supportSvg2属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md#svg易用性提升)的SVG易用性提升能力生效，从而提升SVG的易用性。
+
+ArkTS-Dyn示例：
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+import { LengthMetrics } from '@kit.ArkUI';
+@Entry
+@Component
+struct styled_string_process_demo {
+  controller: TextController = new TextController();
+  controller1: TextController = new TextController();
+  imageAttachment: ImageAttachment = new ImageAttachment({
+    // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+    resourceValue: $r("app.media.ice"),
+    size: { width: 50, height: 50 },
+    layoutStyle: { borderRadius: LengthMetrics.vp(10) },
+    verticalAlign: ImageSpanAlignment.BASELINE,
+    objectFit: ImageFit.Contain,
+    syncLoad: true,
+    supportSvg2: true,
+    colorFilter: drawing.ColorFilter.createBlendModeColorFilter(
+      drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN)
+  })
+  imageAttachment1: ImageAttachment = new ImageAttachment({
+    // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+    resourceValue: $r("app.media.ice"),
+    size: { width: 50, height: 50 },
+    layoutStyle: { borderRadius: LengthMetrics.vp(10) },
+    verticalAlign: ImageSpanAlignment.BASELINE,
+    objectFit: ImageFit.Contain,
+    syncLoad: true,
+    supportSvg2: false,
+    colorFilter: drawing.ColorFilter.createBlendModeColorFilter(
+      drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN)
+  })
+  scroller: Scroller = new Scroller();
+  mutableStr: MutableStyledString = new MutableStyledString('');
+  mutableStr1: MutableStyledString = new MutableStyledString('');
+  aboutToAppear() {
+    this.mutableStr = new MutableStyledString(this.imageAttachment);
+    this.controller.setStyledString(this.mutableStr);
+    this.mutableStr1 = new MutableStyledString(this.imageAttachment1);
+    this.controller1.setStyledString(this.mutableStr1);
+  }
+
+  build() {
+    Column() {
+      Scroll(this.scroller) {
+        Column() {
+          Text('属性字符串不支持svg2')
+          Text(undefined, { controller: this.controller1 })
+            .draggable(true)
+            .fontSize(30)
+          Text('属性字符串支持svg2')
+          Text(undefined, { controller: this.controller })
+            .draggable(true)
+            .fontSize(30)
+        }.width('100%')
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Column, Row, Component, Text, Scroll, LengthMetrics, TextController, ImageAttachment, $r, ImageSpanAlignment, ImageFit, Color, Scroller, MutableStyledString } from '@kit.ArkUI';
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct styled_string_process_demo {
+  controller: TextController = new TextController();
+  controller1: TextController = new TextController();
+  imageAttachment: ImageAttachment = new ImageAttachment({
+    // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+    resourceValue: $r("app.media.ice"),
+    size: { width: 50, height: 50 },
+    layoutStyle: { borderRadius: LengthMetrics.vp(10) },
+    verticalAlign: ImageSpanAlignment.BASELINE,
+    objectFit: ImageFit.Contain,
+    syncLoad: true,
+    supportSvg2: true,
+    colorFilter: drawing.ColorFilter.createBlendModeColorFilter(
+      drawing.Tool.makeColorFromResourceColor(Color.Blue) as common2D.Color, drawing.BlendMode.SRC_IN)
+  })
+  imageAttachment1: ImageAttachment = new ImageAttachment({
+    // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+    resourceValue: $r("app.media.ice"),
+    size: { width: 50, height: 50 },
+    layoutStyle: { borderRadius: LengthMetrics.vp(10) },
+    verticalAlign: ImageSpanAlignment.BASELINE,
+    objectFit: ImageFit.Contain,
+    syncLoad: true,
+    supportSvg2: false,
+    colorFilter: drawing.ColorFilter.createBlendModeColorFilter(
+      drawing.Tool.makeColorFromResourceColor(Color.Blue) as common2D.Color, drawing.BlendMode.SRC_IN)
+  })
+  scroller: Scroller = new Scroller();
+  mutableStr: MutableStyledString = new MutableStyledString('');
+  mutableStr1: MutableStyledString = new MutableStyledString('');
+  aboutToAppear() {
+    this.mutableStr = new MutableStyledString(this.imageAttachment);
+    this.controller.setStyledString(this.mutableStr);
+    this.mutableStr1 = new MutableStyledString(this.imageAttachment1);
+    this.controller1.setStyledString(this.mutableStr1);
+  }
+
+  build() {
+    Column() {
+      Scroll(this.scroller) {
+        Column() {
+          Text('属性字符串不支持svg2')
+          Text(undefined, { controller: this.controller1 })
+            .draggable(true)
+            .fontSize(30)
+          Text('属性字符串支持svg2')
+          Text(undefined, { controller: this.controller })
+            .draggable(true)
+            .fontSize(30)
+        }.width('100%')
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+![styledString_17](figures/styledString_17.png)
+
