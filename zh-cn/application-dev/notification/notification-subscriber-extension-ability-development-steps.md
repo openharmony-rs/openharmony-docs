@@ -147,7 +147,7 @@
        const arrayBuffer = uint8Array.buffer;
    
        socket.sppWrite(this.clientNumber, arrayBuffer);
-       hilog.info(DOMAIN, 'testTag', `sending success size：${arrayBuffer.byteLength} bytes, data: ${jsonStr}`);
+       hilog.info(DOMAIN, 'testTag', `sending success size: ${arrayBuffer.byteLength} bytes, data: ${jsonStr}`);
      }
    
      public sendNotificationData(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
@@ -234,7 +234,7 @@
        }
      }
    
-     // Called back when notifications is cancelled.
+     // Called back when notifications are cancelled.
      onCancelMessages(hashCodes: Array<string>): void {
        hilog.info(DOMAIN, 'testTag', `on cancel message ${JSON.stringify(hashCodes)}`)
        notificationExtensionSubscription.getSubscribeInfo()
