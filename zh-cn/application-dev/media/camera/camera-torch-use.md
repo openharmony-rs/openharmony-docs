@@ -65,7 +65,7 @@
     function setTorchModeSupported(cameraManager: camera.CameraManager, torchMode: camera.TorchMode) : void {
       cameraManager.setTorchMode(torchMode);
       let isTorchMode = cameraManager.getTorchMode();
-      console.info(`Returned with the torch mode supportd mode: ${isTorchMode}`);
+      console.info(`Returned with the torch mode supported mode: ${isTorchMode}`);
     }
     ```
 
