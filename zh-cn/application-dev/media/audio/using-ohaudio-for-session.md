@@ -156,10 +156,10 @@ int32_t MyAudioSessionDeactivatedCallback(OH_AudioSession_DeactivatedEvent event
     switch (event.reason) {
         case DEACTIVATED_LOWER_PRIORITY:
           // 应用焦点被抢占。
-          return 0;
+            return 0;
         case DEACTIVATED_TIMEOUT:
           // 超时。
-          return 0;
+            return 0;
     }
 }
 
@@ -197,7 +197,8 @@ OH_AudioSessionManager *audioSessionManager;
 ``` C++
 // AUDIO_SESSION_SCENE_MEDIA 仅为示例，实际使用时请根据具体情况进行修改。
 OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
-// CONCURRENCY_MIX_WITH_OTHERS 仅为示例，实际使用时请根据具体情况进行修改。
+// ...
+// CONCURRENCY_MIX_WITH_OTHERS 是示例，实际使用时请根据情况修改
 OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
     
 // 设置音频并发模式并激活音频会话。
@@ -239,6 +240,12 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
         case AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
           // 此分支表示系统已将音频音量恢复正常。
             break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
+          // 此分支表示其他应用开始播放非混音音频，系统可自行决定是否静音。
+            break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION:
+          // 此分支表示其他应用的非混音音频播放结束，系统可自行决定是否取消静音。
+            break;
         default:
             break;
     }
@@ -249,6 +256,8 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
     // ...
     // AUDIO_SESSION_SCENE_MEDIA 仅为示例，实际使用时请根据具体情况进行修改。
     OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
+    // 启用混音播放下静音建议。
+    OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers(audioSessionManager, true);
     // CONCURRENCY_MIX_WITH_OTHERS 是示例，实际使用时请根据情况修改
     OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
     
