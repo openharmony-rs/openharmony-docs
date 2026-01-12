@@ -123,7 +123,7 @@ async scrollSnapAndMerge() {
     }
   } catch (err) {
     let error = err as BusinessError;
-    Logger.error(TAG, `scrollSnapAndMerge err, errCode: ${error.code}, error mesage: ${error.message}`);
+    Logger.error(TAG, `scrollSnapAndMerge err, errCode: ${error.code}, error message: ${error.message}`);
   }
 }
 ```
