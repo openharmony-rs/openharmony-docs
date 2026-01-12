@@ -610,7 +610,7 @@ export class Calc {
   }
   public instanceAdd(a: number, b: number): number {
     let c = a + b;
-    console.log("DynamicImport I'm harLibrary in instanseAdd, %d + %d = %d", a, b, c);
+    console.log("DynamicImport I'm harLibrary in instanceAdd, %d + %d = %d", a, b, c);
     return c;
   }
 }

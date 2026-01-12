@@ -366,8 +366,8 @@ static group(...arguments: Object[]): void
 **示例：**
 
 ```js
-console.info("outter");
-// outter
+console.info("outer");
+// outer
 console.group();
 console.info("level 1");
 //   level 1
@@ -396,8 +396,8 @@ static groupCollapsed(...arguments: Object[]): void
 **示例：**
 
 ```js
-console.groupCollapsed("outter");
-// outter
+console.groupCollapsed("outer");
+// outer
 console.groupCollapsed();
 console.info("level 1");
 //   level 1
@@ -420,14 +420,14 @@ static groupEnd(): void
 **示例：**
 
 ```js
-console.info("outter");
-// outter
+console.info("outer");
+// outer
 console.group();
 console.info("level 1");
 //   level 1
 console.groupEnd();
-console.info("outter");
-// outter
+console.info("outer");
+// outer
 ```
 
 ## console.table<sup>10+</sup>
