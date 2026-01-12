@@ -281,6 +281,34 @@
 
 7. 当数据未完成同步，或未触发数据同步时，可使用RdbStore的[remoteQuery](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#remotequery-1)方法查询组网内指定设备上分布式表中的数据。
    <!--@[data_remote_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   
+   ``` TypeScript
+   // 查询组网内指定设备上分布式表中的数据
+   if (store) {
+     // 查询组网内的设备列表
+     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.rdbDataSync');
+     const deviceList = deviceManager.getAvailableDeviceListSync();
+     const devices: string[] = [];
+     deviceList.forEach(item => {
+       if (item.networkId) {
+         devices.push(item.networkId);
+       }
+     });
+     if (devices.length === 0) {
+       hilog.error(DOMAIN, 'rdbDataSync', 'no device to query data');
+       return;
+     }
+     // 构造用于查询分布式表的谓词对象
+     const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+     try {
+       // 查询组网内设备上的分布式表
+       const resultSet = await store.remoteQuery(devices[0], 'EMPLOYEE', predicates, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
+       hilog.info(DOMAIN, 'rdbDataSync', `ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+     } catch (e) {
+       hilog.error(DOMAIN, 'rdbDataSync', 'Remote query failed, code: ' + e.code + ', message: ' + e.message);
+     }
+   }
+   ```
 
 ## 使用单版本表模式进行数据同步
 
