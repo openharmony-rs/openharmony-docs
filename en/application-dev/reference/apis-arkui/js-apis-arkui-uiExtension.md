@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-The **uiExtension** module provides APIs for the EmbeddedUIExtensionAbility (or UIExtensionAbility) to obtain the host application window information or the information about the corresponding **EmbeddedComponent**<!--Del--> (or **UIExtensionComponent**)<!--DelEnd--> component.
+The **uiExtension** module provides APIs for the [EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md) (or [UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#uiextensionability)) to obtain the host application window information or the information about the corresponding [EmbeddedComponent](./arkui-ts/ts-container-embedded-component.md)<!--Del--> (or [UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md))<!--DelEnd--> component.
 
 > **NOTE**
 >
@@ -221,7 +221,7 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 | Name  | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
 | type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (EmbeddedComponent or UIExtensionComponent). If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, all subscriptions to the specified event are canceled.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
@@ -263,7 +263,7 @@ Subscribes to position and size change events of the component (**EmbeddedCompon
 | Name  | Type                          | Mandatory| Description                                                    |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | Yes  | Event type. The value is fixed at **'rectChange'**, indicating the rectangle change event for the component (**EmbeddedComponent** or **UIExtensionComponent**).|
-| reasons  | number                         | Yes  | Reason why the position and size of the component (**EmbeddedComponent** or **UIExtensionComponent**) change. For details about the values, see [RectChangeReason](#rectchangereason14).
+| reasons  | number                         | Yes  | Reason why the position and size of the component (**EmbeddedComponent** or **UIExtensionComponent**) change. For details about the values, see [RectChangeReason](#rectchangereason14).|
 | callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions14)> | Yes| Callback used to return the current rectangle change values and the reason for the change of the component (**EmbeddedComponent** or **UIExtensionComponent**).|
 
 **Error codes**
@@ -548,7 +548,7 @@ Provides the values and reasons returned when the rectangle (position and size) 
 
 ## Example
 
-This example shows how to use all the available APIs in the EmbeddedUIExtensionAbility. The bundle name of the sample application is **com.example.embeddeddemo**, and the EmbeddedUIExtensionAbility to start is **ExampleEmbeddedAbility**.
+This example shows how to use all the available APIs in the [EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md). The bundle name of the sample application is **com.example.embeddeddemo**, and the EmbeddedUIExtensionAbility to start is **ExampleEmbeddedAbility**.
 
 - The EntryAbility (UIAbility) of the sample application loads the **pages/Index.ets** file, whose content is as follows:
 

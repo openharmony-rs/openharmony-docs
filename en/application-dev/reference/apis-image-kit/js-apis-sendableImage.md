@@ -255,7 +255,7 @@ async function Demo() {
 
 convertFromPixelMap(pixelmap: image.PixelMap): PixelMap
 
-Creates a PixelMap object under **sendableImage** from a PixelMap object under **image**. This API returns the result synchronously. The APIs of the PixelMap object under **image** cannot be called anymore.
+Creates a PixelMap object under **sendableImage** from a PixelMap object under **image**. This API returns the result synchronously. None of the methods of the original PixelMap can be called any longer.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -300,7 +300,7 @@ async function Demo() {
 
 convertToPixelMap(pixelmap: PixelMap): image.PixelMap
 
-Creates a PixelMap object under **image** from a PixelMap object under **sendableImage**. This API returns the result synchronously. The APIs of the PixelMap object under **sendableImage** cannot be called anymore.
+Creates a PixelMap object under **image** from a PixelMap object under **sendableImage**. This API returns the result synchronously. None of the methods of the original PixelMap can be called any longer.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -1786,6 +1786,7 @@ async function Demo(pixelMap: sendableImage.PixelMap) {
 ## Size
 
 Describes the size of an image.
+
 It inherits from [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -1802,6 +1803,7 @@ It inherits from [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)
 ## Region
 
 Describes the region information.
+
 It inherits from [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.

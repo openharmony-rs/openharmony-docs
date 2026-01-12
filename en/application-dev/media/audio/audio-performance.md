@@ -29,7 +29,7 @@ The system cannot directly perceive the specific use case for the audio function
 
 Latency refers to the time it takes for audio data to be processed and transmitted within the system. In playback scenarios, it is the time from when the system receives the data until the data is output by the hardware. In recording scenarios, it is the time from when the hardware microphone captures the data until the application receives the captured data.
 
-To support low-latency audio scenarios, the system provides a dedicated low-latency audio channel. You need to explicitly set this through API parameters. For details, see [Audio Latency Management](audio-latency.md).
+To support low-latency audio scenarios, the system provides a dedicated low-latency audio channel. You need to explicitly set it through API parameters. For details, please refer to [Low-Latency Audio Playback (C/C++)](audio-fast-playback.md) and [Low-Latency Audio Recording (C/C++)](audio-fast-recording.md).
 
 Note that low latency typically uses smaller data buffers and requires higher performance for data processing. You need to optimize the performance of audio data production as much as possible to ensure that data is available for processing in a very short time when the system requests it, avoiding buffer underruns that cause noise. Additionally, to minimize latency, the system simplifies data processing at various phases, which may result in some differences in audio quality when compared with other channels. Therefore, you should decide whether to enable low-latency mode based on the actual functional scenarios of your applications. Scenarios such as game sound effects, karaoke in-ear monitoring, short notification sounds, and instrument simulation are more suitable for low-latency channels.
 
@@ -59,8 +59,9 @@ The following sections provide specific methods for obtaining performance logs a
 
 **Using DevEco Profiler**
 
-DevEco Profiler is a scenario-based tuning tool that helps you analyze performance issues more efficiently. It is integrated into DevEco Studio
-and can be used directly during application development. For details about how to use the tool, see [Performance Profiling](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-description).
+DevEco Profiler is a scenario-based tuning tool that helps you analyze performance issues more efficiently. Integrated into DevEco Studio, it can be used directly during application development.
+
+For details about how to use the tool, see [Performance Profiling](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-description).
 
 DevEco Profiler is primarily used for analyzing and optimizing the runtime process of applications. The guide provides detailed steps for analysis, which will not be repeated here.
 

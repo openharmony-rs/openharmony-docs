@@ -1,4 +1,4 @@
-# Using AudioRenderer for Audio Playback
+# Using AudioRenderer for Audio Playback (ArkTs)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -123,6 +123,8 @@ During application development, you are advised to use [on('stateChange')](../..
 
      > **NOTE**
      > 
+     > - You should avoid registering callbacks on the main thread, as this may cause delayed callback responses and freezes due to blocking by other service processes. You are advised to use an independent asynchronous thread pool to handle callbacks.
+ 	   >
      > - Ensure that the callback's data buffer is completely filled to the necessary length to prevent issues such as audio noise and playback stuttering.
      > 
      > - If the amount of data is insufficient to fill the data buffer, you are advised to temporarily halt data writing (without pausing the audio stream), block the callback function, and wait until enough data accumulates before resuming writing, thereby ensuring that the buffer is fully filled. If you need to call AudioRenderer APIs after the callback function is blocked, unblock the callback function first.

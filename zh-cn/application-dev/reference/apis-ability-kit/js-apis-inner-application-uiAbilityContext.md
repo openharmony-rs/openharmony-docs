@@ -1140,7 +1140,7 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 
 > **说明：**
 >
-> - 跨设备场景下，调用方与目标方必须为同一应用，且具备ohos.permission.DISTRIBUTED_DATASYNC权限，才能启动成功。
+> - 跨设备场景下，调用方与目标方必须为同一应用。
 >
 > - 同设备场景下，调用方与目标方必须为不同应用，且具备ohos.permission.ABILITY_BACKGROUND_COMMUNICATION权限（该权限仅系统应用可申请），才能启动成功。
 >

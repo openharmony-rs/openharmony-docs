@@ -29,8 +29,7 @@ The following describes the relationship between the system volume, application 
 
 - Hierarchy: The system volume is global, whereas the application volume and audio stream volume are local.
 
-  The adjustment range for the application volume and audio stream volume is limited by the system volume. For example, if the system media volume is set to 50% and the application volume is set to 100%, the final output volume of the application can only reach 50%.
-
+  The adjustment range for the application volume and audio stream volume is limited by the system volume. For example, if the system media volume is set to 50% and the application volume is set to 100%, the final output volume of the application can only reach 50%.<br>
   The audio stream volume provides more precise control over the application volume. Third-party applications that have set an application volume can further fine-tune the volume of specific audio streams using the audio stream volume.
 - Synergy: The final output volume of an application is determined collectively by the system volume, application volume, and audio stream volume. For example, if the system media volume is set to 50%, the application volume is set to 50%, and the application sets the audio stream volume for media audio to 100%, the final output volume of that audio stream will be 25%.
 
@@ -86,9 +85,7 @@ You can set an event to listen for system volume changes.
 import { audio } from '@kit.AudioKit';
 
 audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC, (streamVolumeEvent: audio.StreamVolumeEvent) => {
-  console.info(`StreamUsagem: ${streamVolumeEvent.streamUsage} `);
-  console.info(`Volume level: ${streamVolumeEvent.volume} `);
-  console.info(`Whether to updateUI: ${streamVolumeEvent.updateUi} `);
+  console.info(`Succeeded in using on function. StreamVolumeEvent: ${JSON.stringify(streamVolumeEvent)}`);
 });
 ```
 
@@ -120,19 +117,17 @@ let audioVolumeManager = audioManager.getVolumeManager();
 
 // Set the volume (ranging from 0 to 100) for the application.
 audioVolumeManager.setAppVolumePercentage(20).then(() => {
-  console.info(`set app volume success.`);
+  console.info('Succeeded in setting app volume percentage.');
 });
 
 // Query the application volume.
 audioVolumeManager.getAppVolumePercentage().then((value: number) => {
-  console.info(`app volume is ${value}.`);
+  console.info(`Succeeded in getting app volume percentage, app volume is ${value}.`);
 });
 
 // Subscribe to the application volume change event. For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let appVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
-  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
-  console.info(`Volume level: ${volumeEvent.volume} `);
-  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+  console.info(`Succeeded in using on or off function. VolumeEvent: ${JSON.stringify(volumeEvent)}`);
 };
 audioVolumeManager.on('appVolumeChange', appVolumeChangeCallback);
 audioVolumeManager.off('appVolumeChange', appVolumeChangeCallback);
@@ -151,29 +146,27 @@ let audioVolumeManager = audioManager.getVolumeManager();
 // Set the volume (ranging from 0 to 100) for an application.
 let volume: number = 20;    // Volume to set.
 audioVolumeManager.setAppVolumePercentageForUid(uid, volume).then(() => {
-  console.info(`set app volume success.`);
+  console.info('Succeeded in setting app volume percentage for uid.');
 });
 
 // Obtain the volume (ranging from 0 to 100) of an application.
 audioVolumeManager.getAppVolumePercentageForUid(uid).then((value: number) => {
-  console.info(`app volume is ${value}.`);
+  console.info(`Succeeded in getting app volume percentage for uid, app volume is ${value}.`);
 });
 
 // Check whether the application volume is muted.
 audioVolumeManager.isAppVolumeMutedForUid(uid, true).then((value: boolean) => {
-  console.info(`app muted state is ${value}.`);
+  console.info(`Succeeded in using isAppVolumeMutedForUid function, app muted state is ${value}.`);
 });
 
 // Set the application mute state.
 audioVolumeManager.setAppVolumeMutedForUid(uid, true).then(() => {
-  console.info(`set app mute state success.`);
+  console.info('Succeeded in setting app volume muted for uid.');
 });
 
 // Subscribe to the application volume change event. For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let appVolumeChangeForUidCallback = (volumeEvent: audio.VolumeEvent) => {
-  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
-  console.info(`Volume level: ${volumeEvent.volume} `);
-  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+  console.info(`Succeeded in using on or off function. VolumeEvent: ${JSON.stringify(volumeEvent)}`);
 };
 audioVolumeManager.on('appVolumeChangeForUid', uid, appVolumeChangeForUidCallback);
 audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
@@ -198,18 +191,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Set the volume for the audio stream.
 audioRenderer.setVolume(0.5).then(() => {  // The volume range is [0.0-1.0].
-  console.info('Invoke setVolume succeeded.');
+  console.info('Succeeded in setting volume.');
 }).catch((err: BusinessError) => {
-  console.error(`Invoke setVolume failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to set volume. Code: ${err.code}, message: ${err.message}`);
 });
 
 // Obtain the volume of the audio stream.
 try {
   let value: number = audioRenderer.getVolume();
-  console.info(`Indicate that the volume is obtained ${value}.`);
+  console.info(`Succeeded in getting volume, volume is ${value}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to obtain the volume, error ${error}.`);
+  console.error(`Failed to get volume. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -223,7 +216,7 @@ import { audio } from '@kit.AudioKit';
 
 // Subscribe to the active stream change event. For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let activeVolumeTypeChangeCallback = (volumeType: audio.AudioVolumeType) => {
-  console.info(`VolumeType of stream: ${volumeType} `);
+  console.info(`Succeeded in using on or off function. AudioVolumeType: ${JSON.stringify(volumeType)}`);
 };
 audioVolumeManager.on('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
 audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
