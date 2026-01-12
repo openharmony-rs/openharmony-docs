@@ -579,7 +579,7 @@ struct TextExample {
 
       Blank(50)
 
-      Button ("Add Input")
+      Button("Add Input")
         .onClick(() => {
           this.fullText += "I am TextArea";
         })

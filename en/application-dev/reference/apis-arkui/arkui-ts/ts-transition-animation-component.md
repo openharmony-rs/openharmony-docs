@@ -10,7 +10,7 @@ You can configure the component transition animations through the **transition**
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>  This feature is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
 >  There are two ways to trigger a component's transition:
 >  1. When a component is inserted or removed (for example, when there are changes in **if** conditions, or when components are added or removed in a **ForEach** loop), the transition effects of all newly inserted/removed components are triggered recursively.
@@ -72,6 +72,8 @@ Transition effects for when the component is inserted to show and removed to hid
 
 ## TransitionEdge<sup>10+</sup>
 
+Enumerates the transition edge types.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -80,10 +82,10 @@ Transition effects for when the component is inserted to show and removed to hid
 
 | Name    | Value| Description    |
 | ------ | ------ | ------ |
-| TOP    | - | Top edge of the window.|
-| BOTTOM | - | Bottom edge of the window.|
-| START  | - | Start edge of the window, which is the left edge for left-to-right scripts and the right edge for right-to-left scripts.|
-| END    | - | End edge of the window, which is the right edge for left-to-right scripts and the left edge for right-to-left scripts.|
+| TOP    | 0 | Top edge of the window.|
+| BOTTOM | 1 | Bottom edge of the window.|
+| START  | 2 | Start edge of the window, which is the left edge for left-to-right scripts and the right edge for right-to-left scripts.|
+| END    | 3 | End edge of the window, which is the right edge for left-to-right scripts and the left edge for right-to-left scripts.|
 
 ## TransitionEffect<sup>10+</sup>
 
@@ -101,7 +103,7 @@ Defines the transition effect by using the provided APIs, as listed below.
 | -------- | ---------- | -------- | -------- | -------- |
 | IDENTITY | [TransitionEffect](#transitioneffect10)\<"identity"> | Yes| No| Disables the transition effect.|
 | OPACITY | [TransitionEffect](#transitioneffect10)\<"opacity"> | Yes| No| Applies a transition effect with the opacity changing from 0 to 1 when the component appears and from 1 to 0 when the component disappears. This is equivalent to **TransitionEffect.opacity(0)**.|
-| SLIDE | [TransitionEffect](#transitioneffect10)\<"asymmetric", { appear: [TransitionEffect](#transitioneffect10)\<"move", [TransitionEdge](#transitionedge10)>; disappear: [TransitionEffect](#transitioneffect10)\<"move", [TransitionEdge](#transitionedge10)>; }> | Yes| No| This is equivalent to **TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))**. Applies a transition effect of sliding in from the start edge when the component appears and sliding out from the end edge when the component disappears. This means sliding in from the left edge and sliding out from the right edge for left-to-right scripts, and sliding in from the right edge and sliding out from the left edge for right-to-left scripts.|
+| SLIDE | [TransitionEffect](#transitioneffect10)\<"asymmetric", { appear: [TransitionEffect](#transitioneffect10)\<"move", [TransitionEdge](#transitionedge10)>; disappear: [TransitionEffect](#transitioneffect10)\<"move", [TransitionEdge](#transitionedge10)>; }> | Yes| No| Applies a transition effect of sliding in from the start edge when the component appears and sliding out from the end edge when the component disappears. This means sliding in from the left edge and sliding out from the right edge for left-to-right scripts, and sliding in from the right edge and sliding out from the left edge for right-to-left scripts. This is equivalent to **TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))**. |
 | SLIDE_SWITCH | [TransitionEffect](#transitioneffect10)\<"slideSwitch"> | Yes| No| Applies a transition effect of sliding in from the right with first scaling down and then scaling up when the component appears and sliding out from the left with first scaling down and then scaling up when the component disappears. This transition effect comes with its own animation parameters, which can also be overridden. The default animation duration is 600 milliseconds, with a specified animation curve of cubicBezierCurve(0.24, 0.0, 0.50, 1.0) and a minimum scale factor of 0.8.|
 
 >  **NOTE**
@@ -353,7 +355,9 @@ Represents the type of callback for the end of a component's transition animatio
 
 Defines the transition effect by setting parameters in the struct.
 
-This API is deprecated since API version 10. You are advised to use [TransitionEffect](#transitioneffect10) instead.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [TransitionEffect](#transitioneffect10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -374,7 +378,7 @@ This API is deprecated since API version 10. You are advised to use [TransitionE
 
 ### Example 1: Using the Same TransitionEffect Configuration for Image Appearance and Disappearance
 
-This example demonstrates how to use the same **TransitionEffect** configuration to implement both the appearance and disappearance of an image, where the appearance and disappearance are inverse processes.
+This example demonstrates how to use the same [TransitionEffect](#transitioneffect10) object to implement image appearance and disappearance. The appearance and disappearance are the reverse processes of each other.
 ```ts
 // xxx.ets
 @Entry
@@ -414,7 +418,7 @@ Below you can see the example in action.<br>
 
 ### Example 2: Using Different TransitionEffect Configurations for Image Appearance and Disappearance
 
-This example demonstrates how to use different **TransitionEffect** configurations to implement the appearance and disappearance of an image.
+This example demonstrates how to use different [TransitionEffect](#transitioneffect10) configurations to implement the appearance and disappearance of an image.
 ```ts
 // xxx.ets
 @Entry
@@ -474,7 +478,7 @@ Below you can see the example in action.<br>
 
 ### Example 3: Setting transition on Parent and Child Components
 
-This example demonstrates how to configure **transition** on both parent and child components to implement the appearance and disappearance of images.
+This example demonstrates how to configure [transition](#transition) on both parent and child components to implement the appearance and disappearance of images.
 ```ts
 // xxx.ets
 @Entry

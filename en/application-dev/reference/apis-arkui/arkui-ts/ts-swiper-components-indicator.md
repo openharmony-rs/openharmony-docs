@@ -67,7 +67,7 @@ Sets the style of the navigation indicator.
 
 > **NOTE**
 >
-> When **indicatorStyle** is set to **DotIndicator**, [maxDisplayCount](ts-container-swiper.md#maxdisplaycount12) does not take effect.
+> The **maxDisplayCount** property has no effect when the **DotIndicator** type (configured in **indicatorStyle**) is not bound to a **Swiper** component.
 
 ### count
 
