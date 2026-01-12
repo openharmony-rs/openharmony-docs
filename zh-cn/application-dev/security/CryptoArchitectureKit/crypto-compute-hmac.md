@@ -60,6 +60,36 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
 
 <!-- @[message_authentication_code_calculation_hmac_one_time_incoming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSegmentation/Async.ets) -->
 
+``` TypeScript
+
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+async function genSymKeyByData(symKeyData: Uint8Array) {
+  let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
+  let aesGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+  let symKey = await aesGenerator.convertKey(symKeyBlob);
+  console.info('convertKey success');
+  return symKey;
+}
+
+async function doHmac() {
+  // 把字符串按utf-8解码为Uint8Array，使用固定的128位的密钥，即16字节
+  let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
+  let key = await genSymKeyByData(keyData);
+  let macAlgName = 'SHA256'; // 摘要算法名
+  let message = 'hmacTestMessgae'; // 待进行HMAC的数据
+  let mac = cryptoFramework.createMac(macAlgName);
+  await mac.init(key);
+  // 数据量较少时，可以只做一次update，将数据全部传入，接口未对入参长度做限制
+  await mac.update({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
+  let macResult = await mac.doFinal();
+  console.info('HMAC result:' + macResult.data);
+  let macLen = mac.getMacLength();
+  console.info('HMAC len:' + macLen);
+}
+```
+
 
 - 使用同步方式分段传入数据，获取消息认证码计算结果。
 
