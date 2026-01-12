@@ -82,3 +82,42 @@ OH_Crypto_ErrCode randomGenerateAsymKey()
 
 <!-- @[generate_sm2_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/sm2.cpp) -->
 
+``` C++
+#include "CryptoArchitectureKit/crypto_common.h"
+#include "CryptoArchitectureKit/crypto_asym_key.h"
+#include "file.h"
+
+OH_Crypto_ErrCode randomGenerateRSA()
+{
+    OH_CryptoAsymKeyGenerator *ctx = nullptr;
+    OH_CryptoKeyPair *dupKeyPair = nullptr;
+    OH_Crypto_ErrCode ret;
+
+    ret = OH_CryptoAsymKeyGenerator_Create("SM2_256", &ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoAsymKeyGenerator_Destroy(ctx);
+        return ret;
+    }
+
+    ret = OH_CryptoAsymKeyGenerator_Generate(ctx, &dupKeyPair);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoAsymKeyGenerator_Destroy(ctx);
+        OH_CryptoKeyPair_Destroy(dupKeyPair);
+        return ret;
+    }
+
+    OH_CryptoPubKey *pubKey = OH_CryptoKeyPair_GetPubKey(dupKeyPair);
+    Crypto_DataBlob retBlob = { .data = nullptr, .len = 0 };
+    ret = OH_CryptoPubKey_Encode(pubKey, CRYPTO_DER, nullptr, &retBlob);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoAsymKeyGenerator_Destroy(ctx);
+        OH_CryptoKeyPair_Destroy(dupKeyPair);
+        return ret;
+    }
+
+    OH_CryptoAsymKeyGenerator_Destroy(ctx);
+    OH_CryptoKeyPair_Destroy(dupKeyPair);
+    return ret;
+}
+```
+
