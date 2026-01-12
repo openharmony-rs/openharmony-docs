@@ -77,7 +77,7 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
         - deviceSyncFields：指定端端同步列，array[string]，其中字段必须在fields中，且必须在数据库表中，否则不会同步；若使用单版本表模式跨端同步，该字段为必填字段，否则设置分布式表失败。
         - fields：数据库表字段详细信息，array[field]。
             - columnName：字段名，string，必填字段。
-            - type：字段类型，string，必填字段，可选参数范围为：["Text", "Interger", "Long", "Float", "Double", "Blob" ]，["Asset"]与["Assets"]数据类型跨端同步不支持。
+            - type：字段类型，string，必填字段，可选参数范围为：["Text", "Integer", "Long", "Float", "Double", "Blob" ]。
             - primaryKey：在使用单版本表模式跨端同步时，该字段表示是否为指定解冲突列，与表中是否为主键无关，bool。若是自增表，该字段为必填字段。其中：true表示为解冲突列，默认为false。
             - autoIncrement：是否自增属性，必须与表结构中对应，bool。RDB近端同步不支持同步自增主键。其中：true表示自增主键，默认为false。
             - notNull：是否非空，bool，非必填字段。其中：true表示非空字段，默认为false。        
@@ -85,6 +85,118 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
 ## schema约束
 
 - 不支持解冲突列变化。
+  | 旧版本 |新版本 |
+  |---|--|
+  |``` Json
+      {
+        "dbSchema": [
+          {
+            "version": 0,
+            "bundleName": "com.example.rdbDataSync",
+            "dbName": "RdbTest",
+            "tables": [
+              {
+                "tableName": "EMPLOYEE",
+                "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
+                "fields": [
+                  {
+                    "columnName": "ID",
+                    "type": "Integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoIncrement": true
+                  },
+                  {
+                    "columnName": "NAME",
+                    "type": "Text",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "autoIncrement": false
+                  },
+                  {
+                    "columnName": "AGE",
+                    "type": "Integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoIncrement": false
+                  },
+                  {
+                    "columnName": "SALARY",
+                    "type": "Float",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoIncrement": false
+                  },
+                  {
+                    "columnName": "CODES",
+                    "type": "Blob",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoIncrement": false
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+      ```
+    |
+    ``` Json
+      {
+        "dbSchema": [
+          {
+            "version": 0,
+            "bundleName": "com.example.rdbDataSync",
+            "dbName": "RdbTest",
+            "tables": [
+              {
+                "tableName": "EMPLOYEE",
+                "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
+                "fields": [
+                  {
+                    "columnName": "ID",
+                    "type": "Integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoIncrement": true
+                  },
+                  {
+                    "columnName": "NAME",
+                    "type": "Text",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "autoIncrement": false
+                  },
+                  {
+                    "columnName": "AGE",
+                    "type": "Integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoIncrement": false
+                  },
+                  {
+                    "columnName": "SALARY",
+                    "type": "Float",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoIncrement": false
+                  },
+                  {
+                    "columnName": "CODES",
+                    "type": "Blob",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoIncrement": false
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+      ```
+      |
   - 错误示例：schema版本升级后，指定解冲突列由"NAME"改为"AGE"。
     - 旧版本schema：
       ``` Json
@@ -831,7 +943,7 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
 
 - 主键为非自增，主键必须同步，且解冲突列必须为主键。
   - 错误示例："NAME"为非自增主键，但是指定"AGE"为解冲突列。
-    - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (NAME TEXT NOT NULL PRIMARY KEY, AGE INTEGER UNIQUE, SALARY REAL, CODES BLOB)'。
+    - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (NAME TEXT NOT NULL PRIMARY KEY, AGE INTEGER NOT NULL UNIQUE, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
       {
