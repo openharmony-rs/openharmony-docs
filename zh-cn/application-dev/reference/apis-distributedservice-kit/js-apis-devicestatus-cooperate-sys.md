@@ -1392,7 +1392,7 @@ try {
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[CooperateMessage](#cooperatemessage11)替代
+> 从API version 10开始不再维护。建议使用[CooperateState](#cooperatestate11)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
