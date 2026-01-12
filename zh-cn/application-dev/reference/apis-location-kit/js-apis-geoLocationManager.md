@@ -1073,7 +1073,7 @@ on(type: 'satelliteStatusChange', callback: Callback&lt;SatelliteStatusInfo&gt;)
       // 表示卫星的ID为 ${satelliteId} 的卫星的方位角
       let azimuth: number = azimuths[i];
       // 表示卫星的ID为 ${satelliteId} 的卫星的载波频率
-      let carrierFrequencie: number = carrierFrequencies[i];
+      let carrierFrequency: number = carrierFrequencies[i];
       if (satelliteConstellations != undefined) {
         // 表示卫星的ID为 ${satelliteId} 的卫星的星座类型
         let satelliteConstellation: geoLocationManager.SatelliteConstellationCategory = satelliteConstellations[i];
