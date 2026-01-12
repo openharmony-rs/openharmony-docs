@@ -70,3 +70,33 @@ OH_Crypto_ErrCode testGenerateSymKey()
 
 <!-- @[generate_sm4_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKey/entry/src/main/cpp/types/project/sm4.cpp) -->
 
+``` C++
+#include "CryptoArchitectureKit/crypto_common.h"
+#include "CryptoArchitectureKit/crypto_sym_key.h"
+#include "file.h"
+
+OH_Crypto_ErrCode testGenerateSM4Key()
+{
+    OH_CryptoSymKeyGenerator *ctx = nullptr;
+    OH_CryptoSymKey *keyCtx = nullptr;
+    Crypto_DataBlob out = {.data = nullptr, .len = 0};
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    ret = OH_CryptoSymKeyGenerator_Generate(ctx, &keyCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoSymKeyGenerator_Destroy(ctx);
+        return ret;
+    }
+    ret = OH_CryptoSymKey_GetKeyData(keyCtx, &out);
+    OH_CryptoSymKeyGenerator_Destroy(ctx);
+    OH_CryptoSymKey_Destroy(keyCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    OH_Crypto_FreeDataBlob(&out);
+    return ret;
+}
+```
+
