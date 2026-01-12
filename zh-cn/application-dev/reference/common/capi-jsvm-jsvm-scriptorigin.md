@@ -26,5 +26,3 @@
 | const char* resourceName | 源文件名。 |
 | size_t resourceLineOffset | 这段代码在源文件中的起始行号。 |
 | size_t resourceColumnOffset | 这段代码在源文件中的起始列号。 |
-
-
