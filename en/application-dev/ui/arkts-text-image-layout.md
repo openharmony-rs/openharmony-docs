@@ -206,7 +206,7 @@ struct styled_string_demo {
           .backgroundColor('#FFFFFF')
           .borderRadius(5)
           .width(210)
-        // Replace $r('app.string.textImageMixedLayout_content') with the actual resource file. In this example, the value in the resource file is "Click to view product details."
+        // Replace $r('app.string.textImageMixedLayout_content') with the actual resource file. In this example, the value in the resource file is "View product details."
         Button($r('app.string.textImageMixedLayout_content'))
           .onClick(() => {
             if (this.imagePixelMap !== undefined) {

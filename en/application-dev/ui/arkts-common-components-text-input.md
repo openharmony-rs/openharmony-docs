@@ -74,7 +74,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
     .searchButton($r('app.string.Creat_TextInput_Content'))
   ```
 
-  ![zh-ch_image_ui_arkts-common-components-text-input_search_default](figures/zh-ch_image_ui_arkts-common-components-text-input_search_default.png)
+  ![en-us_image_ui_arkts-common-components-text-input_search_default](figures/en-us_image_ui_arkts-common-components-text-input_search_default.png)
 
 ## Setting the Input Box Type
 
