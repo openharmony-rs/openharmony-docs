@@ -112,7 +112,7 @@ void Print2(HiTraceId id)
     // 为当前线程设置带spanId的HiTraceId
     OH_HiTrace_SetId(&id);
     OH_LOG_INFO(LogType::LOG_APP, "Print2");
-    // 结束当前线程分布式跟踪，功能同OH_HiTrace_EndChain()
+    // 结束当前线程的分布式跟踪，功能同OH_HiTrace_EndChain()
     OH_HiTrace_ClearId();
     OH_LOG_INFO(LogType::LOG_APP, "Print2, HiTraceChain end");
 }
@@ -127,7 +127,7 @@ void Print1(HiTraceId id)
     OH_HiTrace_SetId(&id);
     OH_LOG_INFO(LogType::LOG_APP, "Print1");
     std::thread(Print2, OH_HiTrace_GetId()).detach();
-    // 结束当前线程分布式跟踪
+    // 结束当前线程的分布式跟踪
     OH_HiTrace_EndChain();
     OH_LOG_INFO(LogType::LOG_APP, "Print1, HiTraceChain end");
 }
