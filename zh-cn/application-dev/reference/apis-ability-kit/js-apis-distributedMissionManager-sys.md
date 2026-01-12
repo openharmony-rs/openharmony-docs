@@ -92,6 +92,49 @@ try {
   console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+import { BusinessError } from '@ohos.base';
+// 实现回调函数
+function NotifyMissionsChanged(deviceId: string): void {
+  console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
+}
+function NotifySnapshot(deviceId: string, missionId: int): void {
+  console.info('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
+  console.info('NotifySnapshot missionId ' + JSON.stringify(missionId));
+}
+function NotifyNetDisconnect(deviceId: string, state: int): void {
+  console.info('NotifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
+  console.info('NotifyNetDisconnect state ' + JSON.stringify(state));
+}
+
+let deviceId: distributedMissionManager.MissionDeviceInfo = { deviceId: "" }
+
+let parm:distributedMissionManager.MissionCallback = {
+  notifyMissionsChanged: NotifyMissionsChanged,
+  notifySnapshot: NotifySnapshot,
+  notifyNetDisconnect: NotifyNetDisconnect
+}
+try {
+  // 调用registerMissionListener接口
+  distributedMissionManager.registerMissionListener(
+    deviceId,
+    parm,
+    (error: BusinessError|null,data:string[]|undefined) => {
+      if (error) {
+        console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+        return;
+      }
+      console.info('registerMissionListener finished');
+    });
+} catch (error) {
+  console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+}
+```
+
 ## distributedMissionManager.registerMissionListener
 
 registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback): Promise&lt;void&gt;
@@ -171,7 +214,6 @@ ArkTS-Sta示例：
 ```ts
 import distributedMissionManager from '@ohos.distributedMissionManager';
 import { BusinessError } from '@ohos.base';
-// 实现回调函数
 function NotifyMissionsChanged(deviceId: string): void {
   console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
 }
@@ -191,20 +233,15 @@ let parm:distributedMissionManager.MissionCallback = {
   notifySnapshot: NotifySnapshot,
   notifyNetDisconnect: NotifyNetDisconnect
 }
-
-
 try {
   // 调用registerMissionListener接口
   distributedMissionManager.registerMissionListener(
     deviceId,
-    parm,
-    (error: BusinessError|null,data:string[]|undefined) => {
-      if (error) {
-        console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
-        return;
-      }
-      console.info('registerMissionListener finished');
-    });
+    parm).then(() => {
+    console.info('registerMissionListener finished. ');
+  }).catch((error: BusinessError) :void=> {
+    console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+  })
 } catch (error) {
   console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
 }
