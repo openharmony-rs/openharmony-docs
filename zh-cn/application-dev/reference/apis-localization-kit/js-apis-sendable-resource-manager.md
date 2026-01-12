@@ -52,7 +52,7 @@ resourceToSendableResource(resource: Resource): SendableResource
 | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [
@@ -107,7 +107,7 @@ sendableResourceToResource(resource: SendableResource): Resource
 | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [
