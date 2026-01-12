@@ -27,6 +27,36 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 3. 调用[OH_CryptoSymKey_GetKeyData](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkey_getkeydata)，获取密钥对象的二进制数据。
 <!-- @[generate_aes_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKey/entry/src/main/cpp/types/project/aes.cpp) -->
 
+``` C++
+#include "CryptoArchitectureKit/crypto_common.h"
+#include "CryptoArchitectureKit/crypto_sym_key.h"
+#include "file.h"
+
+OH_Crypto_ErrCode testGenerateSymKey()
+{
+    OH_CryptoSymKeyGenerator *ctx = nullptr;
+    OH_CryptoSymKey *keyCtx = nullptr;
+    Crypto_DataBlob out = {.data = nullptr, .len = 0};
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("AES256", &ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    ret = OH_CryptoSymKeyGenerator_Generate(ctx, &keyCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoSymKeyGenerator_Destroy(ctx);
+        return ret;
+    }
+    ret = OH_CryptoSymKey_GetKeyData(keyCtx, &out);
+    OH_CryptoSymKeyGenerator_Destroy(ctx);
+    OH_CryptoSymKey_Destroy(keyCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    OH_Crypto_FreeDataBlob(&out);
+    return ret;
+}
+```
+
 
 ## 随机生成SM4密钥
 
