@@ -87,3 +87,20 @@ function kdfPromise() {
 - 通过同步方式返回结果：
 <!-- @[use_pbkdf2_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/ets/pages/Sync.ets) -->
 
+``` TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function kdfSync() {
+  let spec: cryptoFramework.PBKDF2Spec = {
+    algName: 'PBKDF2',
+    password: '123456',
+    salt: new Uint8Array(16),
+    iterations: 10000,
+    keySize: 32
+  };
+  let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+  let secret = kdf.generateSecretSync(spec);
+  console.info('[Sync]key derivation output is ' + secret.data);
+}
+```
+
