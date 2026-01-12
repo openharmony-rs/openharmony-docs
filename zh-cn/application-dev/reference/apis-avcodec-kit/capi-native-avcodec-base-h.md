@@ -608,7 +608,7 @@ enum OH_BitsPerSample
 | 枚举项 | 描述 |
 | -- | -- |
 | SAMPLE_U8 = 0 | 8位无符号整数采样。 |
-| SAMPLE_S16LE = 1 | 16位有符号整数交样。 |
+| SAMPLE_S16LE = 1 | 16位有符号整数采样。 |
 | SAMPLE_S24LE = 2 | 24位有符号整数采样。 |
 | SAMPLE_S32LE = 3 | 32位有符号整数采样。 |
 | SAMPLE_F32LE = 4 | 32位浮点采样。 |
