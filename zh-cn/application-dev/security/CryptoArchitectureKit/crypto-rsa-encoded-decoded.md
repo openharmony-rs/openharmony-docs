@@ -30,6 +30,23 @@
 
 <!-- @[prikey_encoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyEncoding.ets) -->
 
+``` TypeScript
+
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function prikeyEncoding() {
+  let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  let keyPair = rsaGenerator.generateKeyPairSync();
+  let options : cryptoFramework.KeyEncodingConfig = {
+      password: '123456',
+      cipherName: 'AES-128-CBC'
+  }
+  let priPemKey = keyPair.priKey;
+  let priString = priPemKey.getEncodedPem('PKCS1', options);
+  console.info('[sync]TestPriKeyPkcs1Encoded priString output is ' + priString);
+}
+```
+
 
 - 解码示例：
 
