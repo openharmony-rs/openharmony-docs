@@ -268,7 +268,8 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 ### schema约束与示意
 
 - 不支持解冲突列变化。
-  - 错误示例：schema版本升级后，指定解冲突列由"NAME"改为"AGE"。
+  
+  错误示例：schema版本升级后，指定解冲突列由"NAME"改为"AGE"。
     - 旧版本schema：
       ``` Json
       {
@@ -339,9 +340,9 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
       ```
 
 - 解冲突列只能有一个。
-  - 错误示例：schema中指定字段"NAME"和"AGE"两个解冲突列。
-    - schema：
-      ``` Json
+  
+  错误示例：schema中指定字段"NAME"和"AGE"两个解冲突列。schema示例如下：
+
       {
         "dbSchema": [
           {
@@ -373,10 +374,10 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
           }
         ]
       }
-      ```
 
 - 同步列必须存在表中。
-  - 错误示例：schema指定字段"NAMe"，与表中字段"NAME"大小写不一致。
+  
+  错误示例：schema指定字段"NAMe"，与表中字段"NAME"大小写不一致。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)'
     - schema：
       ``` Json
@@ -416,7 +417,8 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 - 同步列变化时，存量数据会重新同步。若schema中有新增指定同步列，已有指定同步列以及新增指定列数据会重新触发同步。
 
 - schema有变化时，version需要增加。
-  - 错误示例：schema中新增同步字段"AGE"，但是version未增加。
+  
+  错误示例：schema中新增同步字段"AGE"，但是version未增加。
     - 旧版本schema：
       ``` Json
       {
@@ -487,7 +489,8 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
       ```
 
 - 单版本表模式下，表中所有UNIQUE列必须同步。
-  - 错误示例："AGE"为UNIQUE列，但是未指定该字段同步
+  
+  错误示例："AGE"为UNIQUE列，但是未指定该字段同步
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER UNIQUE, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -525,7 +528,8 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
       ```
 
 - 自增表下，不支持指定非主键列解冲突又同步主键。
-  - 错误示例：自增表下，指定"NAME"为解冲突列，但是又同步字段"ID"。
+  
+  错误示例：自增表下，指定"NAME"为解冲突列，但是又同步字段"ID"。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -563,7 +567,8 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
       ```
 
 - schema版本升级时，指定同步列只能新增不能减少。
-  - 错误示例：schema版本由0升级为1，指定同步列"AGE"被删除。
+  
+  错误示例：schema版本由0升级为1，指定同步列"AGE"被删除。
     - 旧版本schema：
       ``` Json
       {
@@ -634,9 +639,9 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
       ```
 
 - 同步列不能为空，deviceSyncFields长度至少为1，若schema中未配置字段deviceSyncFields，默认为空。
-  - 错误示例：schema中没有配置deviceSyncFields，设置单版本模式分布式表失败。
-    - schema：
-      ``` Json
+  
+  错误示例：schema中没有配置deviceSyncFields，设置单版本模式分布式表失败。schema示例如下：
+
       {
         "dbSchema": [
           {
@@ -667,10 +672,10 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
           }
         ]
       }
-      ```
 
 - 表中not null字段必须有默认值，否则要指定同步。
-  - 错误示例：字段"AGE"为not null值，没有默认值，同步schema中没有指定"AGE"同步。
+  
+  错误示例：字段"AGE"为not null值，没有默认值，同步schema中没有指定"AGE"同步。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER NOT NULL, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -708,7 +713,8 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
       ```
 
 - 无主键表不支持指定列同步，不支持配置单版本表模式。
-  - 错误示例："EMPLOYEE"是无主键表，设置单版本模式分布式表时会失败。
+  
+  错误示例："EMPLOYEE"是无主键表，设置单版本模式分布式表时会失败。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -746,7 +752,8 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
       ```
 
 - 主键为非自增，主键必须同步，且解冲突列必须为主键。
-  - 错误示例："NAME"为非自增主键，但是指定"AGE"为解冲突列。
+  
+  错误示例："NAME"为非自增主键，但是指定"AGE"为解冲突列。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (NAME TEXT NOT NULL PRIMARY KEY, AGE INTEGER NOT NULL UNIQUE, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -784,7 +791,8 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
       ```
 
 - 配置解冲突列必须为UNIQUE属性，且为类似uuid等全局唯一字段。
-  - 错误示例：指定解冲突列"NAME"没有UNIQUE属性。
+  
+  错误示例：指定解冲突列"NAME"没有UNIQUE属性。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -822,7 +830,8 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
       ```
 
 - deviceSyncFields中字段必须在fields中，否则该字段将不会同步。
-  - 错误示例：字段"AGE"未出现在fields中，该字段将不会同步。
+  
+  错误示例：字段"AGE"未出现在fields中，该字段将不会同步。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -853,7 +862,8 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
       ```
 
 - 必须同步uuid等全局唯一的主键，自增主键不允许同步，若主键为自增，必须配置一个非主键列解冲突。
-  - 错误示例：schema中指定了"ID"同步，该字段为自增主键。
+  
+  错误示例：schema中指定了"ID"同步，该字段为自增主键。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -891,7 +901,8 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
       ```
 
 - 指定解冲突列中的值不能出现null值。若指定解冲突列存量数据有null值，设置分布式表会失败；若指定解冲突列增量数据为null值，写入会失败。
-  - 错误示例：若先执行写入语句，执行设置分布式表语句会失败；若先执行设置分布式表语句，执行写入语句会失败。
+  
+  错误示例：若先执行写入语句，执行设置分布式表语句会失败；若先执行设置分布式表语句，执行写入语句会失败。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'。
     - 写入语句：
       ``` TypeScript
