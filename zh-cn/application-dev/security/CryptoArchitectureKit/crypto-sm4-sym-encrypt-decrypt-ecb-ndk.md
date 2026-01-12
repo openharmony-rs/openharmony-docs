@@ -50,3 +50,76 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 <!-- @[crypt_decrypt_sm4_ecb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4/entry/src/main/cpp/types/project/sm4_ecb_encryption_decryption.cpp) -->
 
+``` C++
+#include "CryptoArchitectureKit/crypto_common.h"
+#include "CryptoArchitectureKit/crypto_sym_cipher.h"
+#include <cstring>
+// ...
+
+OH_Crypto_ErrCode doTestSm4Ecb()
+{
+    OH_CryptoSymKeyGenerator *genCtx = nullptr;
+    OH_CryptoSymCipher *encCtx = nullptr;
+    OH_CryptoSymCipher *decCtx = nullptr;
+    OH_CryptoSymKey *keyCtx = nullptr;
+    OH_CryptoSymCipherParams *params = nullptr;
+    char *plainText = const_cast<char *>("this is test!");
+    Crypto_DataBlob input = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
+    Crypto_DataBlob outUpdate = {.data = nullptr, .len = 0};
+    Crypto_DataBlob decUpdate = {.data = nullptr, .len = 0};
+
+    // 随机生成对称密钥
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &genCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymKeyGenerator_Generate(genCtx, &keyCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    // 创建参数
+    ret = OH_CryptoSymCipherParams_Create(&params);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+
+    // 加密操作
+    ret = OH_CryptoSymCipher_Create("SM4_128|ECB|PKCS7", &encCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Init(encCtx, CRYPTO_ENCRYPT_MODE, keyCtx, params);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Final(encCtx, &input, &outUpdate);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+
+    // 解密操作
+    ret = OH_CryptoSymCipher_Create("SM4_128|ECB|PKCS7", &decCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Init(decCtx, CRYPTO_DECRYPT_MODE, keyCtx, params);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Final(decCtx, &outUpdate, &decUpdate);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    // 释放资源
+end:
+    OH_CryptoSymCipherParams_Destroy(params);
+    OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
+    OH_CryptoSymKeyGenerator_Destroy(genCtx);
+    OH_CryptoSymKey_Destroy(keyCtx);
+    OH_Crypto_FreeDataBlob(&outUpdate);
+    OH_Crypto_FreeDataBlob(&decUpdate);
+    return ret;
+}
+```
+
