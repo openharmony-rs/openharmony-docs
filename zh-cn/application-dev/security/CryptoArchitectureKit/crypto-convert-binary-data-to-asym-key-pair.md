@@ -77,6 +77,32 @@
 
 <!-- @[pkcs8_convert_ecc_pri_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/pkcs8ecc/PKCS8ECC.ets) -->
 
+``` TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function main() {
+  // 创建一个AsyKeyGenerator实例
+  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+  // 使用密钥生成器随机生成非对称密钥对
+  let keyGenPromise = eccGenerator.generateKeyPair();
+  keyGenPromise.then(keyPair => {
+    let pubKey = keyPair.pubKey;
+    let priKey = keyPair.priKey;
+    // 获取非对称密钥对ECC的二进制数据
+    let pubBlob = pubKey.getEncoded();
+    let skBlob = priKey.getEncodedDer('PKCS8');
+    let generator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    generator.convertKey(pubBlob, skBlob, (error, data) => {
+      if (error) {
+        console.error(`convertKey failed, ${error.code}, ${error.message}`);
+        return;
+      }
+      console.info('convertKey success');
+    });
+  });
+}
+```
+
 
 ## 指定二进制数据转换SM2密钥对
 
