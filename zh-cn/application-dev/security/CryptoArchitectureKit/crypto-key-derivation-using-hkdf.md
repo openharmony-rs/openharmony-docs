@@ -96,3 +96,24 @@ function kdfPromise() {
 - 通过同步方式返回结果：
 
 <!-- @[use_hkdf_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Sync.ets) -->
+
+``` TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function kdfSync() {
+  let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+  let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
+  let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
+  let spec: cryptoFramework.HKDFSpec = {
+    algName: 'HKDF',
+    key: keyData,
+    salt: saltData,
+    info: infoData,
+    keySize: 32
+  };
+  let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+  let secret = kdf.generateSecretSync(spec);
+  console.info('[Sync]key derivation output is ' + secret.data);
+}
+```

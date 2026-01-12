@@ -37,7 +37,7 @@
 
 - 异步方法示例：
 
-<!-- @[rsa_segmentation_encrypt_decrypt_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_segmentation/RSASegmentationAsync.ets) -->
+  <!-- @[rsa_segmentation_encrypt_decrypt_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_segmentation/RSASegmentationAsync.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -109,7 +109,7 @@ async function rsaEncryptLongMessage() {
 
 - 同步方法示例：
 
-<!-- @[rsa_segmentation_encrypt_decrypt_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_segmentation/RSASegmentationSync.ets) -->
+  <!-- @[rsa_segmentation_encrypt_decrypt_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_segmentation/RSASegmentationSync.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

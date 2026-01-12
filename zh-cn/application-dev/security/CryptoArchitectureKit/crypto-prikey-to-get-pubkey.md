@@ -33,7 +33,7 @@
 
 - 以异步方式生成RSA密钥对为例（调用方法[getPubKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getpubkey23)）：
 
-<!-- @[prikey_get_pubkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubkeyAsync.ets) -->
+  <!-- @[prikey_get_pubkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubkeyAsync.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -106,7 +106,7 @@ async function prikeyGetPubKeyAsync() {
 
 - 以同步方式生成RSA密钥对为例（调用方法[getPubKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getpubkeysync23)）：
 
-<!-- @[prikey_get_pubkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubKeySync.ets) -->
+  <!-- @[prikey_get_pubkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubKeySync.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
