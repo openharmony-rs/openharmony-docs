@@ -185,6 +185,53 @@
    2. 通过谓词的[inDevices](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md#indevices)方法指定推送的目标设备。
   
    <!--@[data_sync_push](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   
+   ``` TypeScript
+   // 同步当前设备数据变化至组网内其他设备
+   if (store) {
+     // 当前设备分布式数据表中插入新数据
+     const ret = store.insertSync('EMPLOYEE', {
+       name: 'sync_me',
+       age: 18,
+       salary: 666
+     });
+     hilog.info(DOMAIN, 'rdbDataSync', 'Insert to distributed table EMPLOYEE, result: ' + ret);
+     // 查询组网内的设备列表
+     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.rdbDataSync');
+     const deviceList = deviceManager.getAvailableDeviceListSync();
+     const syncTarget: string[] = [];
+     deviceList.forEach(item => {
+       if (item.networkId) {
+         syncTarget.push(item.networkId);
+       }
+     });
+     if (syncTarget.length === 0) {
+       hilog.error(DOMAIN, 'rdbDataSync', 'no device to sync');
+     } else {
+       // 构造用于同步分布式表的谓词对象
+       const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+       // 指定要同步的设备列表
+       predicates.inDevices(syncTarget);
+       try {
+         // 调用同步数据的接口推送当前设备数据变化至组网内其他设备
+         const result = await store.sync(relationalStore.SyncMode.SYNC_MODE_PUSH, predicates);
+         hilog.info(DOMAIN, 'rdbDataSync', 'Push data success.');
+         // 获取同步结果
+         for (let i = 0; i < result.length; i++) {
+           const deviceId = result[i][0];
+           const syncResult = result[i][1];
+           if (syncResult === 0) {
+             hilog.info(DOMAIN, 'rdbDataSync', `device:${deviceId} sync success`);
+           } else {
+             hilog.error(DOMAIN, 'rdbDataSync', `device:${deviceId} sync failed, status:${syncResult}`);
+           }
+         }
+       } catch (e) {
+         hilog.error(DOMAIN, 'rdbDataSync', 'Push data failed, code: ' + e.code + ', message: ' + e.message);
+       }
+     }
+   }
+   ```
 
 6. 拉取组网内其他设备的数据变化。
    1. 当前设备可调用RdbStore的[sync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#sync-1)接口传入[SYNC_MODE_PULL](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#syncmode)参数拉取组网内其他设备的数据变化。
