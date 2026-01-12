@@ -24,7 +24,7 @@ import { Action, Key, KeyEvent } from '@kit.InputKit';
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称   | 值  | 说明     |
 | ------ | ------- | -------- |
@@ -42,7 +42,7 @@ import { Action, Key, KeyEvent } from '@kit.InputKit';
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型 | 只读 | 可选 | 说明           |
 | ----------- | -------- | ---- | ---- | -------------- |
@@ -60,7 +60,7 @@ import { Action, Key, KeyEvent } from '@kit.InputKit';
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型 | 只读 | 可选 | 说明                           |
 | ----------- | -------- | ---- | ---- | ------------------------------ |

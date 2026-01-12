@@ -24,7 +24,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -112,7 +112,7 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -199,7 +199,7 @@ setPointerVisibleSync(visible: boolean): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -276,7 +276,7 @@ isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -362,7 +362,7 @@ isPointerVisible(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -432,7 +432,7 @@ isPointerVisibleSync(): boolean
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -504,7 +504,7 @@ ArkTS-Sta: getPointerStyle(windowId: int, callback: AsyncCallback&lt;PointerStyl
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -600,7 +600,7 @@ ArkTS-Sta: getPointerStyle(windowId: int): Promise&lt;PointerStyle&gt;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -701,7 +701,7 @@ ArkTS-Sta: getPointerStyleSync(windowId: int): PointerStyle
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -790,7 +790,7 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: 
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -888,7 +888,7 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise&l
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -990,7 +990,7 @@ ArkTS-Sta: setPointerStyleSync(windowId: int, pointerStyle: PointerStyle): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1080,7 +1080,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                               | 值    | 说明     |
 | -------------------------------- | ---- | ------ |
@@ -1095,7 +1095,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                               | 值    | 说明     |
 | -------------------------------- | ---- | ------ |
@@ -1113,7 +1113,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                               | 值    | 说明     |图示 |
 | -------------------------------- | ---- | ------ |------ |
@@ -1175,7 +1175,7 @@ ArkTS-Sta: setCustomCursor(windowId: int, pixelMap: image.PixelMap, focusX?: int
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1305,7 +1305,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：15
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称     | 类型     | 只读     | 可选     | 说明     |
 | -------- | ------- | -------- | -------- | ------- |
@@ -1444,7 +1444,7 @@ ArkTS-Sta: setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?:
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 

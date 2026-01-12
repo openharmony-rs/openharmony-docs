@@ -29,7 +29,7 @@ ArkTS-Sta: transmitInfrared(infraredFrequency: long, pattern: Array&lt;long&gt;)
 
 **ArkTS-Dyn起始版本**：15
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -108,7 +108,7 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 **ArkTS-Dyn起始版本**：15
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -183,7 +183,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：15
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                               | 类型 | 必填   | 说明  |
 | -------------------------------- | ---- | ------ | ------ |

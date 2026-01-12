@@ -109,7 +109,7 @@ injectEvent(keyEvent: KeyEventInfo): void
 
 **ArkTS-Dyn起始版本**：22
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -171,7 +171,7 @@ injectKeyEvent(keyEvent: KeyEventData): void
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -285,7 +285,7 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -459,7 +459,7 @@ injectTouchEvent(touchEvent: TouchEventData): void
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -629,7 +629,7 @@ permitInjection(result: boolean): void
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -707,13 +707,13 @@ struct Index {
 
 **ArkTS-Dyn起始版本**: 8
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | isPressed       | boolean | 否    |  否 | 按键是否按下。<br>true表示按键按下，false表示按键抬起。   |
-| keyCode         | ArkTS-Dyn: number<br>ArkTS-Dyn: int| 否    |  否 | 按键键码值。当前仅支持返回键/KEYCODE_BACK键。 |
-| keyDownDuration | ArkTS-Dyn: number<br>ArkTS-Dyn: int| 否    |  否 | 按键按下持续时间，单位为微秒（μs）。           |
+| keyCode         | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否    |  否 | 按键键码值。当前仅支持返回键/KEYCODE_BACK键。 |
+| keyDownDuration | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否    |  否 | 按键按下持续时间，单位为微秒（μs）。           |
 | isIntercepted   | boolean | 否    |  否 | 按键是否可以被拦截。<br>true表示可以被拦截，false表示不可被拦截。 |
 
 ## KeyEventData<sup>11+</sup>
@@ -724,7 +724,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**: 11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型   | 必填   | 说明      |
 | --------- | ------ | ---- |  ------- |
@@ -738,7 +738,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**: 11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
@@ -752,7 +752,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**: 11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
@@ -766,7 +766,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型   | 必填   | 说明      |
 | --------- | ------ | ---- |  ------- |
