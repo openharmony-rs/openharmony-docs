@@ -238,6 +238,46 @@
    2. 通过谓词的[inDevices](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md#indevices)方法指定拉取的目标设备。
    
    <!--@[data_sync_pull](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   
+   ``` TypeScript
+   // 拉取组网内其他设备的数据变化
+   if (store) {
+     // 查询组网内的设备列表
+     const deviceManager = distributedDeviceManager.createDeviceManager('com.example.rdbDataSync');
+     const deviceList = deviceManager.getAvailableDeviceListSync();
+     const syncTarget: string[] = [];
+     deviceList.forEach(item => {
+       if (item.networkId) {
+         syncTarget.push(item.networkId);
+       }
+     });
+     if (syncTarget.length === 0) {
+       hilog.error(DOMAIN, 'rdbDataSync', 'no device to pull data');
+     } else {
+       // 构造用于同步分布式表的谓词对象
+       const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+       // 指定要同步的设备列表
+       predicates.inDevices(syncTarget);
+       try {
+         // 调用同步数据的接口拉取其他设备数据变化至当前设备
+         const result = await store.sync(relationalStore.SyncMode.SYNC_MODE_PULL, predicates);
+         hilog.info(DOMAIN, 'rdbDataSync', 'Pull data success.');
+         // 获取同步结果
+         for (let i = 0; i < result.length; i++) {
+           const deviceId = result[i][0];
+           const syncResult = result[i][1];
+           if (syncResult === 0) {
+             hilog.info(DOMAIN, 'rdbDataSync', `device:${deviceId} sync success`);
+           } else {
+             hilog.error(DOMAIN, 'rdbDataSync', `device:${deviceId} sync failed, status:${syncResult}`);
+           }
+         }
+       } catch (e) {
+         hilog.error(DOMAIN, 'rdbDataSync', 'Pull data failed, code: ' + e.code + ', message: ' + e.message);
+       }
+     }
+   }
+   ```
 
 7. 当数据未完成同步，或未触发数据同步时，可使用RdbStore的[remoteQuery](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#remotequery-1)方法查询组网内指定设备上分布式表中的数据。
    <!--@[data_remote_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
