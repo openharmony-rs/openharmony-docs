@@ -1414,7 +1414,7 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 是    | 事件回调。 |
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | 是    | 事件回调。 |
 
 **错误码**：
 
@@ -1449,7 +1449,7 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 否    | 事件回调。 |
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | 否    | 事件回调。 |
 
 **错误码**：
 
@@ -1773,7 +1773,7 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 是    | 事件回调。 |
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | 是    | 事件回调。 |
 
 **错误码**：
 
@@ -1810,7 +1810,7 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 否    | 事件回调。 |
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | 否    | 事件回调。 |
 
 **错误码**：
 
