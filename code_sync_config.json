@@ -9522,6 +9522,11 @@
 						"end_line":47,
 						"name":"setDefaultDistributedTables",
 						"start_line":24
+					},
+					{
+						"end_line":96,
+						"name":"setSingleDistributedTables",
+						"start_line":26
 					}
 				]
 			}
