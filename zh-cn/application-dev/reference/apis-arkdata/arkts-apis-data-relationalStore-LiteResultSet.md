@@ -97,9 +97,9 @@ if (store != undefined) {
 
 ## getColumnIndex<sup>23+</sup>
 
-ArkTS-Dyn: (columnName: string): number
+ArkTS-Dyn: getColumnIndex(columnName: string): number
 
-ArkTS-Sta: (columnName: string): int
+ArkTS-Sta: getColumnIndex(columnName: string): int
 
 根据指定的列名获取列索引。
 
