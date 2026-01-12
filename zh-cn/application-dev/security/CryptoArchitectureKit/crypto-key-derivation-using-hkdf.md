@@ -65,6 +65,33 @@ async function kdfAwait() {
 - 通过Promise返回结果：
 <!-- @[use_hkdf_for_key_derivation_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Promise.ets) -->
 
+``` TypeScript
+
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { buffer } from '@kit.ArkTS';
+
+function kdfPromise() {
+  let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+  let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
+  let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
+  let spec: cryptoFramework.HKDFSpec = {
+    algName: 'HKDF',
+    key: keyData,
+    salt: saltData,
+    info: infoData,
+    keySize: 32
+  };
+  let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+  let kdfPromise = kdf.generateSecret(spec);
+  kdfPromise.then((secret) => {
+    console.info('key derivation output is ' + secret.data);
+  }).catch((error: BusinessError) => {
+    console.error('key derivation error.');
+  });
+}
+```
+
 
 - 通过同步方式返回结果：
 
