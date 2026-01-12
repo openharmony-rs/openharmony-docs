@@ -73,25 +73,24 @@
 
    <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
-    ``` TypeScript
-   let textConfig:intelligence.ModelConfig = {
-     version:intelligence.ModelVersion.BASIC_MODEL,
-     isNpuAvailable:false,
-     cachePath:"/data"
+   ``` TypeScript
+   let textConfig: intelligence.ModelConfig = {
+     version: intelligence.ModelVersion.BASIC_MODEL,
+     isNpuAvailable: false,
+     cachePath: "/data"
    }
-   let textEmbedding:intelligence.TextEmbedding;
+   let textEmbedding: intelligence.TextEmbedding;
    ```
    <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
-    ``` TypeScript
-   intelligence.getTextEmbeddingModel(textConfig)
-     .then((data:intelligence.TextEmbedding) => {
-       console.info('Succeeded in getting TextModel');
-       textEmbedding = data;
+   ``` TypeScript
+   textEmbedding.loadModel()
+     .then(() => {
+       console.info('Succeeded in loading Model');
        // ...
      })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get TextModel and code is ' + err.code);
+     .catch((err: BusinessError) => {
+       console.error('Failed to load Model and code is ' + err.code);
        // ...
      })
    ```
@@ -102,13 +101,19 @@
    <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   textEmbedding.loadModel()
-     .then(() => {
-       console.info('Succeeded in loading Model');
+   let splitConfig:intelligence.SplitConfig = {
+     size: 10,
+     overlapRatio: 0.1
+   }
+   let splitText = 'text';
+   
+   intelligence.splitText(splitText, splitConfig)
+     .then((data: Array<string>) => {
+       console.info('Succeeded in splitting Text');
        // ...
      })
-     .catch((err:BusinessError) => {
-       console.error('Failed to load Model and code is ' + err.code);
+     .catch((err: BusinessError) => {
+       console.error('Failed to split Text and code is ' + err.code);
        // ...
      })
    ```
@@ -119,19 +124,25 @@
    <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   let splitConfig:intelligence.SplitConfig = {
-     size:10,
-     overlapRatio:0.1
-   }
-   let splitText = 'text';
-   
-   intelligence.splitText(splitText, splitConfig)
-     .then((data:Array<string>) => {
-       console.info('Succeeded in splitting Text');
+   let text = 'text';
+   textEmbedding.getEmbedding(text)
+     .then((data: Array<number>) => {
+       console.info('Succeeded in getting Embedding');
        // ...
      })
-     .catch((err:BusinessError) => {
-       console.error('Failed to split Text and code is ' + err.code);
+     .catch((err: BusinessError) => {
+       console.error('Failed to get Embedding and code is ' + err.code);
+       // ...
+     })
+   
+   let batchTexts = ['text1','text2'];
+   textEmbedding.getEmbedding(batchTexts)
+     .then((data: Array<Array<number>>) => {
+       console.info('Succeeded in getting Embedding');
+       // ...
+     })
+     .catch((err: BusinessError) => {
+       console.error('Failed to get Embedding and code is ' + err.code);
        // ...
      })
    ```
@@ -141,26 +152,14 @@
 
    <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
-    ``` TypeScript
-   let text = 'text';
-   textEmbedding.getEmbedding(text)
-     .then((data:Array<number>) => {
-       console.info('Succeeded in getting Embedding');
+   ``` TypeScript
+   textEmbedding.releaseModel()
+     .then(() => {
+       console.info('Succeeded in releasing Model');
        // ...
      })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get Embedding and code is ' + err.code);
-       // ...
-     })
-   
-   let batchTexts = ['text1','text2'];
-   textEmbedding.getEmbedding(batchTexts)
-     .then((data:Array<Array<number>>) => {
-       console.info('Succeeded in getting Embedding');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get Embedding and code is ' + err.code);
+     .catch((err: BusinessError) => {
+       console.error('Failed to release Model and code is ' + err.code);
        // ...
      })
    ```
@@ -176,7 +175,7 @@
        console.info('Succeeded in releasing Model');
        // ...
      })
-     .catch((err:BusinessError) => {
+     .catch((err: BusinessError) => {
        console.error('Failed to release Model and code is ' + err.code);
        // ...
      })
@@ -199,23 +198,23 @@
    <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   let imageConfig:intelligence.ModelConfig = {
-     version:intelligence.ModelVersion.BASIC_MODEL,
-     isNpuAvailable:false,
-     cachePath:"/data"
+   let imageConfig: intelligence.ModelConfig = {
+     version: intelligence.ModelVersion.BASIC_MODEL,
+     isNpuAvailable: false,
+     cachePath: "/data"
    }
-   let imageEmbedding:intelligence.ImageEmbedding;
+   let imageEmbedding: intelligence.ImageEmbedding;
    ```
    <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    intelligence.getImageEmbeddingModel(imageConfig)
-     .then((data:intelligence.ImageEmbedding) => {
+     .then((data: intelligence.ImageEmbedding) => {
        console.info('Succeeded in getting ImageModel');
        imageEmbedding = data;
        // ...
      })
-     .catch((err:BusinessError) => {
+     .catch((err: BusinessError) => {
        console.error('Failed to get ImageModel and code is ' + err.code);
        // ...
      })
@@ -225,36 +224,36 @@
    调用loadModel方法，加载图像嵌入模型。示例代码如下所示：
 
     <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   imageEmbedding.loadModel()
-     .then(() => {
-       console.info('Succeeded in loading Model');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to load Model and code is ' + err.code);
-       // ...
-     })
-   ```
+    
+    ``` TypeScript
+    imageEmbedding.loadModel()
+      .then(() => {
+        console.info('Succeeded in loading Model');
+        // ...
+      })
+      .catch((err: BusinessError) => {
+        console.error('Failed to load Model and code is ' + err.code);
+        // ...
+      })
+    ```
 
 4. 获取给定图像的嵌入向量。
    调用getEmbedding方法，获取给定图像的嵌入向量。示例代码如下所示：
 
     <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
-   imageEmbedding.getEmbedding(image)
-     .then((data:Array<number>) => {
-       console.info('Succeeded in getting Embedding');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get Embedding and code is ' + err.code);
-       // ...
-     })
-   ```
+    
+    ``` TypeScript
+    let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
+    imageEmbedding.getEmbedding(image)
+      .then((data: Array<number>) => {
+        console.info('Succeeded in getting Embedding');
+        // ...
+      })
+      .catch((err: BusinessError) => {
+        console.error('Failed to get Embedding and code is ' + err.code);
+        // ...
+      })
+    ```
 
 5. 释放图像嵌入模型。
    调用releaseModel方法，释放图像嵌入模型。示例代码如下所示：
@@ -267,7 +266,7 @@
        console.info('Succeeded in releasing Model');
        // ...
      })
-     .catch((err:BusinessError) => {
+     .catch((err: BusinessError) => {
        console.error('Failed to release Model and code is ' + err.code);
        // ...
      })
