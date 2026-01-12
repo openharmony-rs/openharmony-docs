@@ -68,7 +68,7 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@ohos.base';
 try {
-  cooperate.prepareCooperate((error: error:  BusinessError<void>|null, info: undefined) => {
+  cooperate.prepareCooperate((error: BusinessError<void>|null, info: undefined) => {
     if (error) {
       console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
       return;
@@ -112,12 +112,29 @@ prepareCooperate(): Promise&lt;void&gt;;
 
 **示例**：
 
+ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@ohos.base';
 try {	
   cooperate.prepareCooperate().then(() => {	
     console.info(`Keyboard mouse crossing prepareCooperate success.`);	
   }, (error: BusinessError) => {
+    console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });	
+} catch (error) {	
+  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@ohos.base';
+try {	
+  cooperate.prepareCooperate().then(() => {	
+    console.info(`Keyboard mouse crossing prepareCooperate success.`);	
+  }, (error: BusinessError):void => {
     console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
   });	
 } catch (error) {	
@@ -220,6 +237,8 @@ unprepareCooperate(): Promise&lt;void&gt;;
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts	
 import { BusinessError } from '@ohos.base';	
 try {	
@@ -230,6 +249,21 @@ try {
   });
 } catch (error) {	
   console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);	
+}
+```
+
+ArkTS-Sta示例:
+
+```ts	
+import { BusinessError } from '@ohos.base';	
+try {
+  cooperate.unprepareCooperate().then(() => {
+    console.info(`Keyboard mouse crossing unprepareCooperate success.`);
+  }, (error: BusinessError) :void => {
+    console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -375,8 +409,10 @@ import { BusinessError } from '@ohos.base';
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
- cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {
+  cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {
     console.info(`Start Keyboard mouse crossing success.`);
+  }, (error: BusinessError):void => {
+    console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
   });
 } catch (error) {
   console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -509,6 +545,8 @@ import { BusinessError } from '@ohos.base';
 try {
   cooperate.deactivateCooperate(false).then(() => {
     console.info(`Stop Keyboard mouse crossing success.`);
+  }, (error: BusinessError) :void=> {
+    console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
   });
 } catch (error) {
   console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -646,6 +684,8 @@ let deviceDescriptor = "networkId";
 try {
   cooperate.getCooperateSwitchState(deviceDescriptor).then((data: boolean) => {
     console.info(`Get the status success, data: ${JSON.stringify(data)}`);
+  }, (error: BusinessError) :void=> {
+    console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
   });
 } catch (error) {
   console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -803,7 +843,6 @@ onCooperateMessage(callback: Callback&lt;CooperateMessage&gt;): void
 ```ts
 function callback(msg: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
-  return false;
 }
 try {
   cooperate.onCooperateMessage(callback);
@@ -850,11 +889,9 @@ offCooperateMessage(callback?: Callback&lt;CooperateMessage&gt;): void
 // 取消注册单个回调函数
 function callbackOn(msgOn: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msgOn)}`);
-  return false;
 }
 function callbackOff(msgOff: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msgOff)}`);
-  return false;
 }
 try {
   cooperate.onCooperateMessage(callbackOn);
@@ -1069,11 +1106,9 @@ offCooperateMouseEvent(networkId: string, callback?: Callback&lt;MouseLocation&g
 // 取消注册单个回调函数
 function callbackOn(data: cooperate.MouseLocation) {
   console.info('Register mouse location listener');
-  return false;
 }
 function callbackOff(data: cooperate.MouseLocation) {
   console.info('Unregister mouse location listener');
-  return false;
 }
 try {
   let networkId: string = 'Default';
@@ -1100,11 +1135,9 @@ try {
 
 ## cooperate.activateCooperateWithOptions<sup>20+</sup>
 
-ArkTS-Dyn: activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number,
-    cooperateOptions?: CooperateOptions ): Promise&lt;void&gt;
+ArkTS-Dyn: activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number, cooperateOptions?: CooperateOptions ): Promise&lt;void&gt;
 
-ArkTS-Sta: activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: int,
-    cooperateOptions?: CooperateOptions ): Promise&lt;void&gt;
+ArkTS-Sta: activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: int, cooperateOptions?: CooperateOptions ): Promise&lt;void&gt;
 
 启动键鼠穿越，使用选项开始屏幕跳转。
 
@@ -1167,11 +1200,13 @@ import { BusinessError } from '@ohos.base';
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
-    cooperate.activateCooperateWithOptions(targetNetworkId, inputDeviceId).then(() => {
-        console.info(`activateCooperateWithOptions success.`);
-    });
-} catch (error) {
+  cooperate.activateCooperateWithOptions(targetNetworkId, inputDeviceId).then(() => {
+    console.info(`activateCooperateWithOptions success.`);
+  }, (error: BusinessError) :void=> {
     console.error(`activateCooperateWithOptions, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`activateCooperateWithOptions, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
