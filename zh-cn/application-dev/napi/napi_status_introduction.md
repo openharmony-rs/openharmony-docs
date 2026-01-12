@@ -441,7 +441,7 @@
 | napi_acquire_threadsafe_function | 指示线程安全函数可以开始使用。 | napi_generic_failure | threadsafe_function正在关闭/已关闭 | 请勿在napi_release_threadsafe_function关闭了func后再调用本接口 |
 | napi_release_threadsafe_function | 指示线程安全函数将停止使用。 | napi_invalid_arg | 入参func为nullptr | 确保入参正确 |
 | napi_release_threadsafe_function | 指示线程安全函数将停止使用。 | napi_generic_failure | threadsafe_function正在关闭/已关闭 | 请勿在napi_release_threadsafe_function关闭了func后再调用本接口 |
-| napi_release_threadsafe_function | 指示线程安全函数将停止使用。 | napi_generic_failure | 调用本接口时，占用threadsafe_function的线程数是0 | release次数需要与initial_thread_count和aquire匹配 |
+| napi_release_threadsafe_function | 指示线程安全函数将停止使用。 | napi_generic_failure | 调用本接口时，占用threadsafe_function的线程数是0 | release次数需要与initial_thread_count和acquire匹配 |
 | napi_release_threadsafe_function | 指示线程安全函数将停止使用。 | napi_generic_failure | uv_async_send失败 | NA |
 | napi_release_threadsafe_function | 指示线程安全函数将停止使用。 | napi_generic_failure | 入参env已销毁 | 确保入参正确 |
 | napi_ref_threadsafe_function | 指示在主线程上运行的事件循环在线程安全函数被销毁之前不应退出。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
