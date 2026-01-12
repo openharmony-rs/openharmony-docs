@@ -36682,5 +36682,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/ndk-embed-render-components.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp",
+				"functions":[
+					{
+						"end_line":706,
+						"name":"Create_RootNode",
+						"start_line":641
+					},
+					{
+						"end_line":729,
+						"name":"Adopt_Node",
+						"start_line":711
+					},
+					{
+						"end_line":744,
+						"name":"Remove_Adopt_Node",
+						"start_line":732
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/ets/pages/GetNode.ets",
+				"functions":[
+					{
+						"end_line":130,
+						"name":"Create_Node",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
