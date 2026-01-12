@@ -28,6 +28,47 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 <!-- @[generate_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/rsa.cpp) -->
 
+``` C++
+#include "CryptoArchitectureKit/crypto_common.h"
+#include "CryptoArchitectureKit/crypto_asym_key.h"
+#include "file.h"
+
+OH_Crypto_ErrCode randomGenerateAsymKey()
+{
+    OH_CryptoAsymKeyGenerator *ctx = nullptr;
+    OH_CryptoKeyPair *keyPair = nullptr;
+    OH_Crypto_ErrCode ret;
+
+    ret = OH_CryptoAsymKeyGenerator_Create("RSA1024|PRIMES_2", &ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoAsymKeyGenerator_Destroy(ctx);
+        return ret;
+    }
+    
+    ret = OH_CryptoAsymKeyGenerator_Generate(ctx, &keyPair);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoAsymKeyGenerator_Destroy(ctx);
+        OH_CryptoKeyPair_Destroy(keyPair);
+        return ret;
+    }
+
+    OH_CryptoPubKey *pubKey = OH_CryptoKeyPair_GetPubKey(keyPair);
+    Crypto_DataBlob retBlob = {.data = nullptr, .len = 0};
+    ret = OH_CryptoPubKey_Encode(pubKey, CRYPTO_PEM, "PKCS1", &retBlob);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoAsymKeyGenerator_Destroy(ctx);
+        OH_CryptoKeyPair_Destroy(keyPair);
+        return ret;
+    }
+
+    OH_Crypto_FreeDataBlob(&retBlob);
+
+    OH_CryptoAsymKeyGenerator_Destroy(ctx);
+    OH_CryptoKeyPair_Destroy(keyPair);
+    return ret;
+}
+```
+
 
 ## 随机生成SM2密钥对
 
