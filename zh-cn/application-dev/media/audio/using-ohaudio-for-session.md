@@ -62,7 +62,7 @@ OH_AudioSessionManager *audioSessionManager;
 <!-- @[cactive_sessionmanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
 ``` C++
-// CONCURRENCY_MIX_WITH_OTHERS 是示例，实际使用时请根据情况修改
+// CONCURRENCY_MIX_WITH_OTHERS 是示例，实际使用时请根据情况修改。
 OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
     
 // 设置音频并发模式并激活音频会话。
@@ -198,7 +198,7 @@ OH_AudioSessionManager *audioSessionManager;
 // AUDIO_SESSION_SCENE_MEDIA 仅为示例，实际使用时请根据具体情况进行修改。
 OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
 // ...
-// CONCURRENCY_MIX_WITH_OTHERS 是示例，实际使用时请根据情况修改
+// CONCURRENCY_MIX_WITH_OTHERS 是示例，实际使用时请根据情况修改。
 OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
     
 // 设置音频并发模式并激活音频会话。
@@ -258,7 +258,7 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
     OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
     // 启用混音播放下静音建议。
     OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers(audioSessionManager, true);
-    // CONCURRENCY_MIX_WITH_OTHERS 是示例，实际使用时请根据情况修改
+    // CONCURRENCY_MIX_WITH_OTHERS 是示例，实际使用时请根据情况修改。
     OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
     
     // 设置音频并发模式并激活音频会话。
