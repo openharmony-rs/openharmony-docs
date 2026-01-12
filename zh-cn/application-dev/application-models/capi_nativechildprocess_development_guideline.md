@@ -305,7 +305,7 @@ libchild_process.so
 
     调用API启动Native子进程，返回值为NCP_NO_ERROR代表成功启动native子进程。
 
-    <!-- @[main_process_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/MainProcessFunc.cpp) -->
+    <!-- @[main_process_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/MainProcessFunc.cpp) -->  
     
     ``` C++
     #include <AbilityKit/native_child_process.h>
@@ -356,7 +356,7 @@ libchild_process.so
         }
     
         // 其他逻辑
-    // ···
+    // ...
     
         // 释放NativeChildProcess_Args中的内存空间防止内存泄漏
     }
