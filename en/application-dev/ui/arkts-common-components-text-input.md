@@ -360,7 +360,7 @@ When text is selected within a text box, a context menu appears with options suc
 <!-- @[select_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
 ``` TypeScript
-// Replace $r('app.string.show_selected_menu') with the actual resource file. In this example, the value in the resource file is "This is text used to demonstrate the selection menu."
+// Replace $r('app.string.show_selected_menu') with the actual resource file. In this example, the value in the resource file is "This is text used to show the selection menu."
 TextInput({ text: $r('app.string.show_selected_menu') })
 ```
 
@@ -371,7 +371,7 @@ TextInput({ text: $r('app.string.show_selected_menu') })
 <!-- @[select_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
 ``` TypeScript
-// Replace $r('app.string.show_selected_menu') with the actual resource file. In this example, the value in the resource file is "This is text used to demonstrate the selection menu."
+// Replace $r('app.string.show_selected_menu') with the actual resource file. In this example, the value in the resource file is "This is text used to show the selection menu."
 TextArea({ text: $r('app.string.show_selected_menu') })
 ```
 
