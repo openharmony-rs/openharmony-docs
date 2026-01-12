@@ -19,7 +19,7 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.data.distributedKVStore (分布式键值数据库)](js-apis-distributedKVStore.md)。
 
 ## 导入模块
@@ -45,6 +45,10 @@ putBatch(value: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;void&gt;):
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -106,6 +110,10 @@ putBatch(value: Array&lt;ValuesBucket&gt;): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名 | 类型                                                     | 必填 | 说明               |
@@ -148,12 +156,143 @@ try {
   let people: Array<ValuesBucket> = new Array(bucket1, bucket2, bucket3);
   kvStore.putBatch(people).then(() => {
     console.info(`Succeeded in putting patch`);
-  }).catch((err: BusinessError) => {
+  }).catch((err: BusinessError): void  => {
     console.error(`Failed to do putBatch error.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
   let error = e as BusinessError;
   console.error(`Failed to do putBatch error.code is ${error.code},message is ${error.message}`);
+}
+```
+
+### putValuesBuckets
+
+putValuesBuckets(value: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;void&gt;): void
+
+将值写入SingleKVStore数据库，使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                     | 必填 | 说明               |
+| -------- | ------------------------------------------------------------ | ---- | ------------------ |
+| value    | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt; | 是   | 表示要插入的数据。 |
+| callback | AsyncCallback&lt;void&gt;                                     | 是   | 回调函数。         |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
+
+| **错误码ID** | **错误信息**                             |
+| ------------ | ---------------------------------------- |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 15100003     | Database corrupted.                      |
+| 15100005     | Database or result set already closed.   |
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                 |
+| ------------ | -------------------------------------------- |
+| 14800047     | The WAL file size exceeds the default limit. |
+
+**示例：**
+
+```ts
+import { BusinessError } from "@ohos.base"
+import { ValuesBucket } from '@kit.ArkData';
+
+try {
+  let kvStore: distributedKVStore.SingleKVStore;
+  let bucket1: ValuesBucket = {"key":"name", "value": "LiSi"};
+  let bucket2: ValuesBucket = {"key":"age", "value": 20};
+  let bucket3: ValuesBucket = {"key":"deposits", "value": 12.34};
+  let people: Array<ValuesBucket> = [bucket1, bucket2, bucket3];
+  kvStore.putValuesBuckets(people, (err: BusinessError | null) => {
+    if (err != undefined) {
+      console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in putting batch');
+  })
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to do putValuesBuckets error.code is ${error.code},message is ${error.message}`);
+}
+```
+
+### putValuesBuckets
+
+putValuesBuckets(value: Array&lt;ValuesBucket&gt;): Promise&lt;void&gt;
+
+将valuesbucket类型的值写入SingleKVStore数据库，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                     | 必填 | 说明               |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| value  | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt; | 是   | 表示要插入的数据。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
+
+| **错误码ID** | **错误信息**                             |
+| ------------ | ---------------------------------------- |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 15100003     | Database corrupted.                      |
+| 15100005     | Database or result set already closed.   |
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                 |
+| ------------ | -------------------------------------------- |
+| 14800047     | The WAL file size exceeds the default limit. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { ValuesBucket } from '@kit.ArkData';
+
+try {
+  let kvStore: distributedKVStore.SingleKVStore;
+  let bucket1: ValuesBucket = {"key":"name", "value": "LiSi"};
+  let bucket2: ValuesBucket = {"key":"age", "value": 20};
+  let bucket3: ValuesBucket = {"key":"deposits", "value": 12.34};
+  let people: Array<ValuesBucket> = [bucket1, bucket2, bucket3];
+  kvStore.putValuesBuckets(people).then(() => {
+    console.info(`Succeeded in putting patch`);
+  }).catch((err: BusinessError) :void => {
+    console.error(`Failed to do putValuesBuckets error.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to do putValuesBuckets error.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -168,6 +307,10 @@ delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallb
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -194,6 +337,8 @@ delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallb
 | 14800047     | The WAL file size exceeds the default limit. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -225,6 +370,40 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  let kvStore: distributedKVStore.SingleKVStore;
+  let arr = ["name"];
+  predicates.inKeys(arr);
+  kvStore.put("name", "bob", (err:BusinessError | null) => {
+    if (err != undefined) {
+      console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info("Succeeded in putting");
+    if (kvStore != null) {
+      kvStore.delete(predicates, (err:BusinessError | null) => {
+        if (err == undefined) {
+          console.info('Succeeded in deleting');
+        } else {
+          console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+        }
+      });
+    }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### delete
 
 delete(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;void&gt;
@@ -236,6 +415,10 @@ delete(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -268,6 +451,8 @@ delete(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -294,6 +479,36 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  let kvStore: distributedKVStore.SingleKVStore;
+  let arr = ["name"];
+  predicates.inKeys(arr);
+  kvStore.put("name", "bob").then(() => {
+    console.info(`Succeeded in putting data`);
+    if (kvStore != null) {
+      kvStore.delete(predicates).then(() => {
+        console.info('Succeeded in deleting');
+      }).catch((err: BusinessError) :void=> {
+        console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err) => {
+    console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getResultSet
 
 getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;KVStoreResultSet&gt;): void
@@ -305,6 +520,10 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -326,6 +545,8 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -358,6 +579,43 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let kvStore: distributedKVStore.SingleKVStore;
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  predicates.prefixKey("batch_test_string_key");
+  kvStore.getResultSet(predicates, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined) => {
+    if (err != undefined) {
+      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in getting result set');
+    if (result != undefined) {
+      resultSet = result;
+    }
+    if (kvStore != null) {
+      kvStore.closeResultSet(resultSet, (err: BusinessError | null) => {
+        if (err != undefined) {
+          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in closing result set');
+      });
+    }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getResultSet
 
 getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KVStoreResultSet&gt;
@@ -369,6 +627,10 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -396,6 +658,8 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -415,6 +679,37 @@ try {
       });
     }
   }).catch((err: BusinessError) => {
+    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+  });
+
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  predicates.prefixKey("batch_test_string_key");
+  kvStore.getResultSet(predicates).then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('Succeeded in getting result set');
+    resultSet = result;
+    if (kvStore != null) {
+      kvStore.closeResultSet(resultSet).then(() => {
+        console.info('Succeeded in closing result set');
+      }).catch((err: BusinessError):void => {
+        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err: BusinessError) :void=> {
     console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
   });
 
@@ -446,6 +741,10 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
@@ -466,6 +765,8 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -498,6 +799,43 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  let kvStore: distributedKVStore.SingleKVStore;
+  predicates.prefixKey("batch_test_string_key");
+  kvStore.getResultSet(predicates, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined) => {
+    if (err != undefined) {
+      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in getting result set');
+    if (result != undefined) {
+      resultSet = result;
+    }
+    if (kvStore != null) {
+      kvStore.closeResultSet(resultSet, (err: BusinessError | null) => {
+        if (err != undefined) {
+          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in closing result set');
+      })
+    }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getResultSet
 
 getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KVStoreResultSet&gt;
@@ -509,6 +847,10 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -535,6 +877,8 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -563,6 +907,36 @@ try {
 }
 ```
 
+ArkTS-Sta示例
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  predicates.prefixKey("batch_test_string_key");
+  kvStore.getResultSet(predicates).then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('Succeeded in getting result set');
+    resultSet = result;
+    if (kvStore != null) {
+      kvStore.closeResultSet(resultSet).then(() => {
+        console.info('Succeeded in closing result set');
+      }).catch((err: BusinessError) :void=> {
+        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err: BusinessError) :void=> {
+    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getResultSet
 
 getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;KVStoreResultSet&gt;): void
@@ -578,6 +952,10 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -600,6 +978,8 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -632,6 +1012,43 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  let kvStore: distributedKVStore.DeviceKVStore;
+  predicates.prefixKey("batch_test_string_key");
+  kvStore.getResultSet('localDeviceId', predicates, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined) => {
+    if (err != undefined) {
+      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in getting result set');
+    if (result != undefined) {
+      resultSet = result;
+    }
+    if (kvStore != null) {
+      kvStore.closeResultSet(resultSet, (err: BusinessError | null) => {
+        if (err != undefined) {
+          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in closing result set');
+      })
+    }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getResultSet
 
 getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KVStoreResultSet&gt;
@@ -647,6 +1064,10 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -675,6 +1096,8 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -694,6 +1117,36 @@ try {
       });
     }
   }).catch((err: BusinessError) => {
+    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  predicates.prefixKey("batch_test_string_key");
+  kvStore.getResultSet('localDeviceId', predicates).then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('Succeeded in getting result set');
+    resultSet = result;
+    if (kvStore != null) {
+      kvStore.closeResultSet(resultSet).then(() => {
+        console.info('Succeeded in closing result set');
+      }).catch((err: BusinessError):void => {
+        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err: BusinessError):void => {
     console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
