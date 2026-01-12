@@ -122,9 +122,7 @@ void CreateShareEglContext()
 
 Use OpenGL APIs to draw a custom animation.
 
-To implement a custom animation, code the logic of the service party so that the service party can identify animation trigger events, obtain the start and end of the animation based on the service requirements,
-
-and calculate the content of each frame to draw based on the time axis and animation curve. After that, you can draw the content by calling the OpenGL APIs.
+To implement a custom animation, code the logic of the service party so that the service party can identify animation trigger events, obtain the start and end of the animation based on the service requirements, and calculate the content of each frame to draw based on the time axis and animation curve. After that, you can draw the content by calling the OpenGL APIs.
 
 **References** 
 
