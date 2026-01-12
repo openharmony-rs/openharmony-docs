@@ -38,6 +38,41 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 <!-- @[message_digest_sha3_single_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/sha3/singleTime.cpp) -->
 
+``` C++
+
+#include "CryptoArchitectureKit/crypto_common.h"
+#include "CryptoArchitectureKit/crypto_digest.h"
+#include <cstring>
+
+OH_Crypto_ErrCode doTestSha3Md()
+{
+    OH_Crypto_ErrCode ret;
+    OH_CryptoDigest *ctx = nullptr;
+    char *testData = const_cast<char *>("0123456789");
+    Crypto_DataBlob in = {.data = (uint8_t *)(testData), .len = strlen(testData)};
+    Crypto_DataBlob out = {.data = nullptr, .len = 0};
+    int mdLen = 0;
+    ret = OH_CryptoDigest_Create("SHA3-256", &ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    do {
+        ret = OH_CryptoDigest_Update(ctx, &in);
+        if (ret != CRYPTO_SUCCESS) {
+            break;
+        }
+        ret = OH_CryptoDigest_Final(ctx, &out);
+        if (ret != CRYPTO_SUCCESS) {
+            break;
+        }
+        mdLen = OH_CryptoDigest_GetLength(ctx);
+    } while (0);
+    OH_Crypto_FreeDataBlob(&out);
+    OH_DigestCrypto_Destroy(ctx);
+    return ret;
+}
+```
+
 
 ### 分段摘要算法
 
