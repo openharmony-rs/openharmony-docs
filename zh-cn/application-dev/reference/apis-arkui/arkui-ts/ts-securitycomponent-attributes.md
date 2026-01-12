@@ -992,7 +992,7 @@ struct Index {
 }
 ```
 
-![SaveButton_alignRules_1.png](figures/SaveButton_alignRules_1.png)
+![SaveBotton_alignRules_1.png](figures/SaveBotton_alignRules_1.png)
 
 ### 示例3
 
