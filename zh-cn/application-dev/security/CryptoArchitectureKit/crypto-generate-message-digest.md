@@ -33,6 +33,23 @@
 
 <!-- @[message_digest_sha256_single_time_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/singleTime/SingleTimeAsync.ets) -->
 
+``` TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+async function doMd() {
+  let mdAlgName = 'SHA256'; // 摘要算法名
+  let message = 'mdTestMessgae'; // 待摘要的数据
+  let md = cryptoFramework.createMd(mdAlgName);
+  // 数据量较少时，可以只做一次update，将数据全部传入，接口未对入参长度做限制
+  await md.update({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
+  let mdResult = await md.digest();
+  console.info('Md result:' + mdResult.data);
+  let mdLen = md.getMdLength();
+  console.info('md len: ' + mdLen);
+}
+```
+
 
 - 以使用同步方式单次传入数据，获取摘要计算结果为例：
 
