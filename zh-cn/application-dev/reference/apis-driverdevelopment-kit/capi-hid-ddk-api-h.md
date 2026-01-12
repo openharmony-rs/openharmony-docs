@@ -366,7 +366,7 @@ int32_t OH_Hid_GetRawInfo(Hid_DeviceHandle *dev, Hid_RawDevInfo *rawDevInfo)
 | 参数项                                                         | 描述 |
 |-------------------------------------------------------------| -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev                                       | 设备操作句柄。 |
-| [Hid_RawDevInfo](capi-hidddk-hid-rawdevinfo.md) *rawDevInfo | 设备原始信息，包含供应商ID、产品ID和总线类型。 |
+| [Hid_RawDevInfo](capi-hidddk-hid-rawdevinfo.md) *rawDevInfo | 设备原始信息，包含厂商ID、产品ID和总线类型。 |
 
 **返回：**
 
