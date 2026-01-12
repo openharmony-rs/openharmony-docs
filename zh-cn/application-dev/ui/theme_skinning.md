@@ -38,126 +38,126 @@
   示例代码中，[onWillApplyTheme](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12)回调函数用于使自定义组件获取当前生效的Theme对象。
 
   <!-- @[display_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme1/Theme1.ets) -->
-    
-    ``` TypeScript
-    // Index.ets
-    import { Theme, ThemeControl } from '@kit.ArkUI';
-    import { gAppTheme } from './AppTheme';
-    
-    //在页面build前执行ThemeControl
-    ThemeControl.setDefaultTheme(gAppTheme);
-    
-    @Entry
-    @Component
-    struct DisplayPage {
-      @State menuItemColor: ResourceColor = $r('sys.color.background_primary');
-    
-      onWillApplyTheme(theme: Theme) {
-        this.menuItemColor = theme.colors.backgroundPrimary;
-      }
-    
-      build() {
-        Column() {
-          List({ space: 10 }) {
-            ListItem() {
-              Column({ space: '5vp' }) {
-                Text('Color mode')
-                  .margin({ top: '5vp', left: '14fp' })
-                  .width('100%')
-                Row() {
-                  Column() {
-                    Text('Light')
-                      .fontSize('16fp')
-                      .textAlign(TextAlign.Start)
-                      .alignSelf(ItemAlign.Center)
-                    Radio({ group: 'light or dark', value: 'light' })
-                      .checked(true)
-                  }
-                  .width('50%')
-    
-                  Column() {
-                    Text('Dark')
-                      .fontSize('16fp')
-                      .textAlign(TextAlign.Start)
-                      .alignSelf(ItemAlign.Center)
-                    Radio({ group: 'light or dark', value: 'dark' })
-                  }
-                  .width('50%')
-                }
-              }
-              .width('100%')
-              .height('90vp')
-              .borderRadius('10vp')
-              .backgroundColor(this.menuItemColor)
-            }
-    
-            ListItem() {
-              Column() {
-                Text('Brightness')
-                  .width('100%')
-                  .margin({ top: '5vp', left: '14fp' })
-                Slider({ value: 40, max: 100 })
-              }
-              .width('100%')
-              .height('70vp')
-              .borderRadius('10vp')
-              .backgroundColor(this.menuItemColor)
-            }
-    
-            ListItem() {
-              Column() {
-                Row() {
-                  Column({ space: '5vp' }) {
-                    Text('Touch sensitivity')
-                      .fontSize('16fp')
-                      .textAlign(TextAlign.Start)
-                      .width('100%')
-                    Text('Increase the touch sensitivity of your screen' +
-                      ' for use with screen protectors')
-                      .fontSize('12fp')
-                      .fontColor(Color.Blue)
-                      .textAlign(TextAlign.Start)
-                      .width('100%')
-                  }
-                  .alignSelf(ItemAlign.Center)
-                  .margin({ left: '14fp' })
-                  .width('75%')
-    
-                  Toggle({ type: ToggleType.Switch, isOn: true })
-                    .margin({ right: '14fp' })
-                    .alignSelf(ItemAlign.Center)
-                }
+  
+  ``` TypeScript
+  // Index.ets
+  import { Theme, ThemeControl } from '@kit.ArkUI';
+  import { gAppTheme } from './AppTheme';
+  
+  //在页面build前执行ThemeControl
+  ThemeControl.setDefaultTheme(gAppTheme);
+  
+  @Entry
+  @Component
+  struct DisplayPage {
+    @State menuItemColor: ResourceColor = $r('sys.color.background_primary');
+  
+    onWillApplyTheme(theme: Theme) {
+      this.menuItemColor = theme.colors.backgroundPrimary;
+    }
+  
+    build() {
+      Column() {
+        List({ space: 10 }) {
+          ListItem() {
+            Column({ space: '5vp' }) {
+              Text('Color mode')
+                .margin({ top: '5vp', left: '14fp' })
                 .width('100%')
-                .height('80vp')
+              Row() {
+                Column() {
+                  Text('Light')
+                    .fontSize('16fp')
+                    .textAlign(TextAlign.Start)
+                    .alignSelf(ItemAlign.Center)
+                  Radio({ group: 'light or dark', value: 'light' })
+                    .checked(true)
+                }
+                .width('50%')
+  
+                Column() {
+                  Text('Dark')
+                    .fontSize('16fp')
+                    .textAlign(TextAlign.Start)
+                    .alignSelf(ItemAlign.Center)
+                  Radio({ group: 'light or dark', value: 'dark' })
+                }
+                .width('50%')
+              }
+            }
+            .width('100%')
+            .height('90vp')
+            .borderRadius('10vp')
+            .backgroundColor(this.menuItemColor)
+          }
+  
+          ListItem() {
+            Column() {
+              Text('Brightness')
+                .width('100%')
+                .margin({ top: '5vp', left: '14fp' })
+              Slider({ value: 40, max: 100 })
+            }
+            .width('100%')
+            .height('70vp')
+            .borderRadius('10vp')
+            .backgroundColor(this.menuItemColor)
+          }
+  
+          ListItem() {
+            Column() {
+              Row() {
+                Column({ space: '5vp' }) {
+                  Text('Touch sensitivity')
+                    .fontSize('16fp')
+                    .textAlign(TextAlign.Start)
+                    .width('100%')
+                  Text('Increase the touch sensitivity of your screen' +
+                    ' for use with screen protectors')
+                    .fontSize('12fp')
+                    .fontColor(Color.Blue)
+                    .textAlign(TextAlign.Start)
+                    .width('100%')
+                }
+                .alignSelf(ItemAlign.Center)
+                .margin({ left: '14fp' })
+                .width('75%')
+  
+                Toggle({ type: ToggleType.Switch, isOn: true })
+                  .margin({ right: '14fp' })
+                  .alignSelf(ItemAlign.Center)
               }
               .width('100%')
-              .borderRadius('10vp')
-              .backgroundColor(this.menuItemColor)
+              .height('80vp')
             }
-            ListItem() {
-              Column() {
-                Text('Warning')
-                  .width('100%')
-                  .margin({ top: '5vp', left: '14fp' })
-                Button('Text')
-                  .type(ButtonType.Capsule)
-                  .role(ButtonRole.ERROR)
-                  .width('40%')
-              }
-              .width('100%')
-              .height('70vp')
-              .borderRadius('10vp')
-              .backgroundColor(this.menuItemColor)
+            .width('100%')
+            .borderRadius('10vp')
+            .backgroundColor(this.menuItemColor)
+          }
+          ListItem() {
+            Column() {
+              Text('Warning')
+                .width('100%')
+                .margin({ top: '5vp', left: '14fp' })
+              Button('Text')
+                .type(ButtonType.Capsule)
+                .role(ButtonRole.ERROR)
+                .width('40%')
             }
+            .width('100%')
+            .height('70vp')
+            .borderRadius('10vp')
+            .backgroundColor(this.menuItemColor)
           }
         }
-        .padding('10vp')
-        .backgroundColor('#dcdcdc')
-        .width('100%')
-        .height('100%')
       }
+      .padding('10vp')
+      .backgroundColor('#dcdcdc')
+      .width('100%')
+      .height('100%')
     }
-    ```
+  }
+  ```
 
 - 若在UIAbility中设置应用内组件自定义主题色，需在onWindowStageCreate()方法的windowStage.[loadContent](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)的完成时回调中调用[ThemeControl](../reference/apis-arkui/js-apis-arkui-theme.md#themecontrol).[setDefaultTheme](../reference/apis-arkui/js-apis-arkui-theme.md#setdefaulttheme)，设置应用内组件的自定义主题色。
 
