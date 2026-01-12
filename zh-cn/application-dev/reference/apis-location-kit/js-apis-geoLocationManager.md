@@ -2445,7 +2445,7 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
     // 设备驻留在地理围栏内的时间，该参数为可选
     loiterTimeMs: 10000,
     // 围栏回调要拉起的ability名称，该参数为可选
-    fenceExtensionAbilityName: "MyFenceExtensionAbility",
+    fenceExtensionAbilityName: "FenceExtensionAbility",
     // 用于监听围栏事件的callback
     geofenceTransitionCallback: (err: BusinessError, transition: geoLocationManager.GeofenceTransition) => {
       if (err) {
