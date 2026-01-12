@@ -48,7 +48,7 @@ The file declares the APIs for image decoding.
 | [Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t *height)](#oh_imagesourceinfo_getheight) | Obtains the image height.|
 | [Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bool *isHdr)](#oh_imagesourceinfo_getdynamicrange) | Obtains the dynamic range of an image.|
 | [Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimeType)](#oh_imagesourceinfo_getmimetype) | Obtains the MIME type of an image.|
-| [Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)](#oh_imagesourceinfo_release) | Releases the pointer to an OH_ImageSource_Info object.|
+| [Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)](#oh_imagesourceinfo_release) | Releases the pointer to an OH_ImageSource_Info object. After this API is called, all attributes related to the OH_ImageSource_Info structure are released. Therefore, before calling this API, ensure that the relevant attributes are no longer needed or that a deep copy of these attributes has been completed.|
 | [Image_ErrorCode OH_DecodingOptions_Create(OH_DecodingOptions **options)](#oh_decodingoptions_create) | Creates the pointer to an OH_DecodingOptions object.|
 | [Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options, int32_t *pixelFormat)](#oh_decodingoptions_getpixelformat) | Obtains the pixel format.|
 | [Image_ErrorCode OH_DecodingOptions_SetPixelFormat(OH_DecodingOptions *options, int32_t pixelFormat)](#oh_decodingoptions_setpixelformat) | Sets the pixel format.|
@@ -263,6 +263,12 @@ Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_
 
 Obtains the MIME type of an image.
 
+> **NOTE**
+>
+> - The **data** [member variable of the mimeType structure](./capi-image-nativemodule-image-string.md#member-variables) is a pointer of type char *, which points to the address of the mimeType held internally by the info structure. Releasing info will cause the memory corresponding to this address to be released as well.
+> - You can make a deep copy of **mimeType.data**, or release info only after mimeType has been used completely to avoid garbled characters.
+> - **mimeType.data** is not terminated with **'\0'** and needs to be used in conjunction with **mimeType.size**.
+
 **Since**: 20
 
 
@@ -287,7 +293,7 @@ Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)
 
 **Description**
 
-Releases the pointer to an OH_ImageSource_Info object.
+Releases the pointer to an OH_ImageSource_Info object. After this API is called, all attributes related to the OH_ImageSource_Info structure are released. Therefore, before calling this API, ensure that the relevant attributes are no longer needed or that a deep copy of these attributes has been completed.
 
 **Since**: 12
 
@@ -321,7 +327,7 @@ Creates the pointer to an OH_DecodingOptions object.
 
 | Name| Description|
 | -- | -- |
-| [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) **options | Double pointer to the created OH_DecodingOptions.|
+| [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) **options | Double pointer to OH_DecodingOptions.|
 
 **Returns**
 
@@ -347,7 +353,7 @@ Obtains the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to OH_DecodingOptions.|
-| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, see [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format).|
+| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, please refer to [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format).|
 
 **Returns**
 
@@ -373,7 +379,7 @@ Sets the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to OH_DecodingOptions.|
-| int32_t pixelFormat | Pixel format. For details about the available options, see [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format).|
+| int32_t pixelFormat | Pixel format. For details about the available options, please refer to [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format).|
 
 **Returns**
 
@@ -399,7 +405,7 @@ Obtains the index of an image.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to OH_DecodingOptions.|
-| uint32_t *index | Pointer to the index of the image to decode.|
+| uint32_t *index | Pointer to the index of the image.|
 
 **Returns**
 
@@ -425,7 +431,7 @@ Sets the index for an image.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to OH_DecodingOptions.|
-| uint32_t index | Index of the image to decode.|
+| uint32_t index | Index of the image.|
 
 **Returns**
 
@@ -607,7 +613,7 @@ Obtains the desired dynamic range configured during decoding.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to OH_DecodingOptions.|
-| int32_t *desiredDynamicRange | Pointer to the desired dynamic range. For details about the available options, see [IMAGE_DYNAMIC_RANGE](#image_dynamic_range).|
+| int32_t *desiredDynamicRange | Pointer to the desired dynamic range. For details about the available options, please refer to [IMAGE_DYNAMIC_RANGE](#image_dynamic_range).|
 
 **Returns**
 
@@ -633,7 +639,7 @@ Sets the desired dynamic range during decoding.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to OH_DecodingOptions.|
-| int32_t desiredDynamicRange | Desired dynamic range. For details about the available options, see [IMAGE_DYNAMIC_RANGE](#image_dynamic_range).|
+| int32_t desiredDynamicRange | Desired dynamic range. For details about the available options, please refer to [IMAGE_DYNAMIC_RANGE](#image_dynamic_range).|
 
 **Returns**
 
@@ -711,7 +717,7 @@ Sets the cropping and scaling strategy used during decoding.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to OH_DecodingOptions.|
-| int32_t cropAndScaleStrategy | Cropping and scaling strategies when **desiredSize** and **desiredRegion** are both specified.|
+| int32_t cropAndScaleStrategy | Cropping and scaling strategy that is executed when **desiredSize** and **desiredRegion** are both specified.|
 
 **Returns**
 
@@ -1321,7 +1327,7 @@ Creates the pointer to an OH_DecodingOptionsForPicture object.
 
 | Name| Description|
 | -- | -- |
-| [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) **options | Double pointer to OH_DecodingOptionsForPicture.|
+| [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) **options | Double pointer to the created OH_DecodingOptionsForPicture.|
 
 **Returns**
 
@@ -1373,7 +1379,7 @@ Sets desired auxiliary pictures in the decoding options.
 
 | Name| Description|
 | -- | -- |
-| [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) *options | Pointer to OH_DecodingOptionsForPicture.|
+| [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) *options | Double pointer to the created OH_DecodingOptionsForPicture.|
 | [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) *desiredAuxiliaryPictures | Pointer to the desired auxiliary pictures.|
 | size_t length | Length of the desired auxiliary pictures.|
 

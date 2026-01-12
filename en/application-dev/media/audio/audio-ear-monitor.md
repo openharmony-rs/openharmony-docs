@@ -14,7 +14,7 @@ This feature is commonly used in karaoke applications, where the recorded vocals
 
 - You can use the playback and recording capabilities provided by OHAudio to implement audio monitoring. The audio data captured during recording is used as the input for playback.
 
-  For details, see [Using OHAudio for Audio Playback](using-ohaudio-for-playback.md) and [Using OHAudio for Audio Recording](using-ohaudio-for-recording.md).
+  For details, please refer to [(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md) and [(Recommended) Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md).
 
 - Currently, audio monitoring is only supported through wired headphones, where audio is both captured and played back.
 
@@ -236,7 +236,6 @@ OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
 The following uses recording as an example. You can use the following APIs to control the start, pause, stop, and release of audio streams.
 
 > **NOTE**
->
 > When implementing audio monitoring, you need to control both the recording and playback streams to ensure their synchronization.
 
 | API                                                    | Description        |
