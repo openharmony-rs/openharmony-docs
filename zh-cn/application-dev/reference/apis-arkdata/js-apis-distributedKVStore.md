@@ -280,7 +280,7 @@ schema.skip = 0;
 | 名称     | 类型    | 只读 | 可选 | 说明                                                         |
 | -------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | nullable | boolean | 否   | 否   | 表示数据库字段是否可以为空。true表示此节点数据可以为空，false表示此节点数据不能为空。<br/>模型约束：此接口仅可在Stage模型下使用。 |
-| default  | string  | 否   | 否   | 表示FieldNode的默认值。default需传入type对应类型可解析的字符串字面量，确保内容类型与type字段类型一致。<br/>模型约束：此接口仅可在Stage模型下使用。|
+| default  | string  | 否   | 否   | 表示FieldNode的默认值。default需传入type对应类型可解析的字符串字面量，确保内容类型与type字段类型一致。|
 | type     | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否   | 否   | 表示指定节点对应的数据类型，取值为[ValueType](#valuetype)对应的枚举值。暂不支持BYTE_ARRAY，使用此类型会导致[getKVStore](#getkvstore)失败。<br/>模型约束：此接口仅可在Stage模型下使用。 |
 
 ### constructor
