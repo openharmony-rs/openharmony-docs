@@ -71,7 +71,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
 
 
   <!-- @[create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
-  
+
   ``` TypeScript
   // Replace $r('app.string.TextSpan_textContent_text') with the actual resource file. In this example, the value in the resource file is "I am Text."
   Text($r('app.string.TextSpan_textContent_text')) {
@@ -90,7 +90,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
 
 
   <!-- @[create_span_with_lines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
-  
+
   ``` TypeScript
   Text() {
     // Replace $r('app.string.TextSpan_textContent_span_one') with the actual resource file. In this example, the value in the resource file is "I am Span1."
@@ -137,7 +137,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
 
 
   <!-- @[textspan_onhover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpanOnHover.ets) -->
-  
+
   ``` TypeScript
   // xxx.ets
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -736,7 +736,7 @@ The following examples demonstrate usage of common APIs.
 You can bind the **Text** component to the [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick), [onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch), or other universal events to respond to user operations.
 
   <!-- @[General_Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/GeneralEvents.ets) -->
-  
+
   ``` TypeScript
   // xxx.ets
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1092,7 +1092,7 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
 Since API version 20, the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#properties-1) callback is triggered before the menu is displayed when the text selection range changes. You can configure menu data within this callback.
 
   <!-- @[Prepare_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/PrepareMenu.ets) -->
-  
+
   ``` TypeScript
   // Replace $r('app.media.xxx') with the actual resource file.
   // xxx.ets
@@ -1172,7 +1172,7 @@ Since API version 20, the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-te
     }
   }
   ```
-  
+
 
 ![text_on_prepare_menu](figures/text_on_prepare_menu.gif)
 
@@ -1206,7 +1206,6 @@ The **Text** component enables AI menu display through the [enableDataDetector](
     })
   ```
   
-
 - Use [dataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#datadetectorconfig11) to customize entity recognition styles. For details, see [TextDataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11).
 - Use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12) to adjust the menu position. For implementation details, see [Example 12: Setting Custom Menu Extensions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#example-12-setting-custom-menu-extensions).
 <!--RP2--><!--RP2End-->
@@ -1216,7 +1215,7 @@ The **Text** component enables AI menu display through the [enableDataDetector](
 This example demonstrates how to implement a hot search list using the **maxLines**, **textOverflow**, **textAlign**, and **constraintSize** attributes.
 
   <!-- @[the_text_fact_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets) -->
-  
+
   ``` TypeScript
   import { ComponentCard } from '../../common/Card';
   
@@ -1320,7 +1319,8 @@ This example demonstrates how to implement a hot search list using the **maxLine
     }
   }
   ```
-  
+
 
 ![en-us_image_0000001562820805](figures/en-us_image_0000001562820805.png)
 <!--RP1--><!--RP1End-->
+<!--no_check-->
