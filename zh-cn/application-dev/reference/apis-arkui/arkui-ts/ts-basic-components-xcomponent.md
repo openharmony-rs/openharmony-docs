@@ -77,7 +77,7 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 12开始废弃，建议使用[XComponent(options: XComponentOptions)](#xcomponent12)替代。
+> 从API version 8开始支持，从API version 12开始废弃，建议使用[XComponent(value: {id: string, type: XComponentType, libraryname?: string, controller?: XComponentController})](#xcomponent10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
