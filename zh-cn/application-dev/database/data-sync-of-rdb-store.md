@@ -111,6 +111,25 @@
 
 3. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，默认采用多设备协同表模式进行数据存储和管理。
    <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   
+   ``` TypeScript
+   let context = getContext();
+   let store: relationalStore.RdbStore | undefined = undefined;
+   // ...
+     const STORE_CONFIG: relationalStore.StoreConfig = {
+       name: 'RdbTest.db', // 数据库文件名
+       securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
+     };
+     // 打开数据库并设置分布式表
+     relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+       store = rdbStore;
+       await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
+       // 将已创建的表设置分布式表。
+       await store.setDistributedTables(['EMPLOYEE']);
+     }).catch((err: BusinessError) => {
+       hilog.error(DOMAIN, 'rdbDataSync', `Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+     });
+   ```
 
 4. 订阅组网内其他设备的数据变化消息。
    1. 调用[on('dataChange')](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#ondatachange)接口监听其他设备的数据变化，当数据变化同步至当前设备时，将执行订阅的回调方法，入参为数据发生变化的设备ID列表。
