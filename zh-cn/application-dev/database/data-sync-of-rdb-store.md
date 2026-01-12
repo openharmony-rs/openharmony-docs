@@ -340,37 +340,39 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
   
   错误示例：schema中指定字段"NAME"和"AGE"两个解冲突列。schema示例如下：
 
-      {
-        "dbSchema": [
-          {
-            "version": 0,
-            "bundleName": "com.example.rdbDataSync",
-            "dbName": "RdbTest",
-            "tables": [
-              {
-                "tableName": "EMPLOYEE",
-                "deviceSyncFields": ["NAME", "AGE"],
-                "fields": [
-                  {
-                    "columnName": "NAME",
-                    "type": "Text",
-                    "primaryKey": true,
-                    "notNull": true,
-                    "autoIncrement": false
-                  },
-                  {
-                    "columnName": "AGE",
-                    "type": "Integer",
-                    "primaryKey": true,
-                    "notNull": false,
-                    "autoIncrement": false
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
+   ``` Json
+   {
+     "dbSchema": [
+       {
+         "version": 0,
+         "bundleName": "com.example.rdbDataSync",
+         "dbName": "RdbTest",
+         "tables": [
+           {
+             "tableName": "EMPLOYEE",
+             "deviceSyncFields": ["NAME", "AGE"],
+             "fields": [
+               {
+                 "columnName": "NAME",
+                 "type": "Text",
+                 "primaryKey": true,
+                 "notNull": true,
+                 "autoIncrement": false
+               },
+               {
+                 "columnName": "AGE",
+                 "type": "Integer",
+                 "primaryKey": true,
+                 "notNull": false,
+                 "autoIncrement": false
+               }
+             ]
+           }
+         ]
+       }
+     ]
+   }
+   ```
 
 - 同步列必须存在表中。
   
@@ -639,36 +641,38 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
   
   错误示例：schema中没有配置deviceSyncFields，设置单版本模式分布式表失败。schema示例如下：
 
-      {
-        "dbSchema": [
-          {
-            "version": 0,
-            "bundleName": "com.example.rdbDataSync",
-            "dbName": "RdbTest",
-            "tables": [
-              {
-                "tableName": "EMPLOYEE",
-                "fields": [
-                  {
-                    "columnName": "NAME",
-                    "type": "Text",
-                    "primaryKey": true,
-                    "notNull": true,
-                    "autoIncrement": false
-                  },
-                  {
-                    "columnName": "AGE",
-                    "type": "Integer",
-                    "primaryKey": false,
-                    "notNull": false,
-                    "autoIncrement": false
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
+   ``` Json
+   {
+     "dbSchema": [
+       {
+         "version": 0,
+         "bundleName": "com.example.rdbDataSync",
+         "dbName": "RdbTest",
+         "tables": [
+           {
+             "tableName": "EMPLOYEE",
+             "fields": [
+               {
+                 "columnName": "NAME",
+                 "type": "Text",
+                 "primaryKey": true,
+                 "notNull": true,
+                 "autoIncrement": false
+               },
+               {
+                 "columnName": "AGE",
+                 "type": "Integer",
+                 "primaryKey": false,
+                 "notNull": false,
+                 "autoIncrement": false
+               }
+             ]
+           }
+         ]
+       }
+     ]
+   }
+   ```
 
 - 表中not null字段必须有默认值，否则要指定同步。
   
