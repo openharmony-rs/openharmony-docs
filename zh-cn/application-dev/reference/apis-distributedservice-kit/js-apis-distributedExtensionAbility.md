@@ -27,6 +27,10 @@ import { DistributedExtensionAbility} from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型                          | 只读 | 可选 | 说明                                                       |
 | ------- | ----------------------------- | ---- | ---- | ---------------------------------------------------------- |
 | context | DistributedExtensionContext | 否   | 否   | DistributedExtension的上下文环境，继承自ExtensionContext。 |
