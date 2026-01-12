@@ -66,7 +66,7 @@
       - Data Object State Management<!--arkts-v2-manage-data-object-state-->
         - [\@ObservedV2 and \@Trace Decorators: Observing Class Property Changes](state-management/arkts-new-observedV2-and-trace.md)
         - [\@Monitor Decorator: Listening for Value Changes of the State Variables](state-management/arkts-new-monitor.md)
-        - [\@Computed Decorator: Declaring Computed Properties](state-management/arkts-new-Computed.md)
+        - [\@Computed Decorator: Declaring Computed Properties](state-management/arkts-new-computed.md)
         - [\@Type Decorator: Marking the Types of the Class Property](state-management/arkts-new-type.md)
       - Application State Management<!--arkts-v2-manage-application-state-->
         - [AppStorageV2: Storing Application-wide UI State](state-management/arkts-new-appstoragev2.md)

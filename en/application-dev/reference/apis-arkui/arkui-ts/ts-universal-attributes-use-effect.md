@@ -27,7 +27,7 @@ Specifies whether to combine the drawing of special effects, such as background 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | boolean | Yes| Whether the component inherits the special effect settings of the **EffectComponent** component.<br>The value **true** means the component inherits the special effect settings of the **EffectComponent** component, and false means the opposite.<br>Default value: **false**|
+| value | boolean | Yes| Whether the component inherits the special effect settings of the **EffectComponent** component.<br>The value **true** means the component inherits the special effect settings of the **EffectComponent** component, and **false** means the opposite.<br>Default value: **false**|
 
 **Return value**
 
