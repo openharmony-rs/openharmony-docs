@@ -46,6 +46,7 @@
 | AVERR_SUPER_RESOLUTION_UNSUPPORTED<sup>18+</sup> | 5410003 | 表示不支持超分。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
 | AVERR_SUPER_RESOLUTION_NOT_ENABLED<sup>18+</sup> | 5410004 | 表示未使能超分。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
 | AVERR_PARAMETER_OUT_OF_RANGE<sup>20+</sup> | 5400108 | 表示参数超过取值范围。 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
+| AVERR_IO_CLEARTEXT_NOT_PERMITTED<sup>23+</sup> | 5411012 | 表示不允许HTTP明文访问。 <br> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。        |
 
 ## MediaType<sup>8+</sup>
 
