@@ -257,9 +257,9 @@ Timestamp:2017-08-06 21:52:51.000 <- 故障发生时间戳
 Pid:10208 <- 进程号
 Uid:0     <- 用户ID
 HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，故障线程无HiTraceId不打印)
-Process name:./crasher_cpp <- 进程名称
-Process life time:1s  <- 进程存活时间
-Process Memory(kB): 11902(Rss)     <- 进程占用内存
+Process name:./crasher_cpp <- 故障进程名
+Process life time:1s  <- 故障进程存活时间
+Process Memory(kB): 11902(Rss)     <- 故障进程内存占用
 Device Memory(kB): Total 1935820, Free 516244, Available 1205608 <- 整机内存状态（非必选）
 Reason:Signal:SIGSEGV(SI_TKILL)@0x000027e0 from:10208:0 <- 故障原因，详见信号值说明
 Fault thread info:           <- 故障线程信息
@@ -465,9 +465,9 @@ Timestamp:2024-05-06 20:10:51.000  <- 故障发生时间戳
 Pid:9623   <- 进程号
 Uid:0         <- 用户ID
 HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，故障线程无HiTraceId不打印)
-Process name:./crasher_cpp         <- 进程名称
-Process life time:1s               <- 进程存活时间
-Process Memory(kB): 11902(Rss)     <- 进程占用内存
+Process name:./crasher_cpp         <- 故障进程名
+Process life time:1s               <- 故障进程存活时间
+Process Memory(kB): 11902(Rss)     <- 故障进程内存占用
 Device Memory(kB): Total 1935820, Free 516244, Available 1205608 <- 整机内存状态（非必选）
 Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x00000004  probably caused by NULL pointer dereference   <- 故障原因和空指针提示
 Fault thread info:
@@ -524,9 +524,9 @@ Timestamp:2024-05-06 20:18:24.000      <- 故障发生时间戳
 Pid:9838                               <- 进程号
 Uid:0                                  <- 用户ID
 HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，故障线程无HiTraceId不打印)
-Process name:./crasher_cpp             <- 进程名称
-Process life time:2s                   <- 进程存活时间
-Process Memory(kB): 11902(Rss)     <- 进程占用内存
+Process name:./crasher_cpp             <- 故障进程名
+Process life time:2s                   <- 故障进程存活时间
+Process Memory(kB): 11902(Rss)     <- 故障进程内存占用
 Device Memory(kB): Total 1935820, Free 516244, Available 1205608 <- 整机内存状态（非必选）
 Reason:Signal:SIGSEGV(SEGV_ACCERR)@0xf76b7ffc  current thread stack low address = 0xf76b8000, probably caused by stack-buffer-overflow    <- 故障原因和栈溢出提示
 Tid:10343, Name:crasher_cpp
@@ -554,9 +554,9 @@ Timestamp:2024-05-06 20:27:23.2035266415  <- 故障发生时间戳
 Pid:10026                                 <- 进程号
 Uid:0                                     <- 用户ID
 HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，故障线程无HiTraceId不打印)
-Process name:./crasher_cpp                <- 进程名称
-Process life time:1s                      <- 进程存活时间
-Process Memory(kB): 11902(Rss)            <- 进程占用内存
+Process name:./crasher_cpp                <- 故障进程名
+Process life time:1s                      <- 故障进程存活时间
+Process Memory(kB): 11902(Rss)            <- 故障进程内存占用
 Device Memory(kB): Total 1935820, Free 516244, Available 1205608 <- 整机内存状态（非必选）
 Reason:Signal:SIGSEGV(SEGV_MAPERR)@0000000000  probably caused by NULL pointer dereference      <- 故障原因
 LastFatalMessage:Failed to unwind stack, try to get unreliable call stack from #02 by reparsing thread stack <- #00和#01一般认为是可信的，从#02开始尝试从线程栈内存里解析不可靠的调用栈
@@ -601,9 +601,9 @@ Timestamp:2024-05-06 20:28:24.000           <- 故障发生时间戳
 Pid:9838                                    <- 进程号
 Uid:0                                       <- 用户ID
 HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，故障线程无HiTraceId不打印)
-Process name:./crasher_cpp                  <- 进程名称
-Process life time:2s                        <- 进程存活时间
-Process Memory(kB): 11902(Rss)            <- 进程占用内存
+Process name:./crasher_cpp                  <- 故障进程名
+Process life time:2s                        <- 故障进程存活时间
+Process Memory(kB): 11902(Rss)            <- 故障进程内存占用
 Device Memory(kB): Total 1935820, Free 516244, Available 1205608 <- 整机内存状态（非必选）
 Reason:Signal:SIGSEGV(SI_TKILL)@0x000000000004750  from:18256:0  <- 故障原因
 Fault thread info:
