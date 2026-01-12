@@ -1408,7 +1408,7 @@ getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| extraEvent | string | 是 | 远端分布式事件类型。可获取的事件类型来自于[setExtras](arkts-apis-avsession-AVSession.md#setExtras10)。<br>对Wearable设备类型，额外提供以下预设的事件类型：<br>'AUDIO_GET_VOLUME'：获取远端设备音量。<br>'AUDIO_GET_AVAILABLE_DEVICES'：获取远端所有可连接设备。<br>'AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO'：获取远端实际发声设备。|
+| extraEvent | string | 是 | 远端分布式事件类型。可获取的事件类型来自于[setExtras](arkts-apis-avsession-AVSession.md#setextras10)。<br>对Wearable设备类型，额外提供以下预设的事件类型：<br>'AUDIO_GET_VOLUME'：获取远端设备音量。<br>'AUDIO_GET_AVAILABLE_DEVICES'：获取远端所有可连接设备。<br>'AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO'：获取远端实际发声设备。|
 
 **返回值：**
 
