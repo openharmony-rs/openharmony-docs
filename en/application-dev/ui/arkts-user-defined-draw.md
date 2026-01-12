@@ -83,6 +83,7 @@ The following scenarios are based on the project configuration described in [Int
     OH_Drawing_CanvasDrawPath(canvas, path);
     ```
     
+
 **Complete content drawing example**:
 <!-- @[drawing_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/Drawing.h) -->
 
@@ -345,9 +346,9 @@ The following example creates a custom drawing component capable of rendering cu
     
     // Declare global environment variables.
     static napi_env g_env = nullptr;
-    // ···
+    // ...
     namespace NativeModule {
-    // ···
+    // ...
     napi_value CreateNativeRoot(napi_env env, napi_callback_info info)
     {
         size_t argc = 1;
@@ -371,7 +372,7 @@ The following example creates a custom drawing component capable of rendering cu
         // Keep the native-side object in the management class to maintain its lifecycle.
         NativeEntry::GetInstance()->SetContentHandle(contentHandle);
         g_env = env;
-            // ···
+            // ...
         return nullptr;
     }
     
@@ -384,4 +385,5 @@ The following example creates a custom drawing component capable of rendering cu
     } // namespace NativeModule
     ```
     
+
 ![customDrawLayer](figures/capiDrawLayer.jpg)

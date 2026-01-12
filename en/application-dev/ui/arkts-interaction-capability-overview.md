@@ -40,7 +40,7 @@ For pointer events, the system ensures that components participating in the resp
 
 A gesture is an interaction pattern recognized when a series of basic events meet specific characteristics. Example: A click is detected when a press and release occur within a short timeframe.
 
-ArkUI built-in components (for example, buttons and lists) automatically recognize and handle common gestures. Applications can bind multiple gestures to a component, either implicitly (through default bindings) or explicitly. When a press occurs, all gestures registered on the hit component participate in recognition. They continue receiving input until one gesture is successfully recognized, after which only that gesture continues to process subsequent events.
+ArkUI system components (for example, buttons and lists) automatically recognize and handle common gestures. Applications can bind multiple gestures to a component, either implicitly (through default bindings) or explicitly. When a press occurs, all gestures registered on the hit component participate in recognition. They continue receiving input until one gesture is successfully recognized, after which only that gesture continues to process subsequent events.
 
 Use exclusive gestures if two gestures must not both succeed. Use parallel gestures if gestures should coexist without conflict. For details, see [Combined Gestures](arkts-gesture-events-combined-gestures.md).
 

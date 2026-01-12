@@ -88,7 +88,7 @@ The following examples demonstrate how to use **viewPort**:
     build() {
       Column() {
         // Draw a circle whose width and height are both 75.
-        // Replace $r('app.string.OriginalSizeCircle') with the resource file you use.
+        // Replace $r('app.string.OriginalSizeCircle') with the actual resource file. In this example, the value in the resource file is "Original-size Circle component."
         Text($r('app.string.OriginalSizeCircle')).margin({ top: 20 })
         Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
   
@@ -97,7 +97,7 @@ The following examples demonstrate how to use **viewPort**:
             // Create a Shape component with a 150 x 150 size and yellow background. Set the viewport to 75 x 75.
             // Fill the viewport with a blue rectangle and draw a 75-diameter circle in the viewport.
             // After the drawing is complete, the viewport is scaled up to match the component size.
-            // Replace $r('app.string.EnlargedCircle') with the resource file you use.
+            // Replace $r('app.string.EnlargedCircle') with the actual resource file. In this example, the value in the resource file is "Enlarged Circle component within the shape."
             Text($r('app.string.EnlargedCircle'))
             Shape() {
               Rect().width('100%').height('100%').fill('rgb(39, 135, 217)')
@@ -113,7 +113,7 @@ The following examples demonstrate how to use **viewPort**:
             // Create a Shape component with a 150 x 150 size and yellow background. Set the viewport to 300 x 300.
             // Fill the viewport with a green rectangle and draw a 75-diameter circle in the viewport.
             // After the drawing is complete, the viewport is scaled down to match the component size.
-            // Replace $r('app.string.ShrunkCircle') with the resource file you use.
+            // Replace $r('app.string.ShrunkCircle') with the actual resource file. In this example, the value in the resource file is "Reduced Circle component within the shape."
             Text($r('app.string.ShrunkCircle'))
             Shape() {
               Rect().width('100%').height('100%').fill('rgb(213, 213, 213)')
@@ -275,7 +275,10 @@ You can customize the component style by setting various style attributes.
   ![strokeLineJoin](figures/strokeLineJoin.jpg)
 
 - Use [strokeMiterLimit](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokemiterlimit) to set the maximum ratio between the miter length and stroke width.
-  The miter length represents the distance from the outer corner point to the inner corner point, while the stroke width is defined by the [strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth) attribute. **strokeMiterLimit** requires values greater than or equal to 1 and takes effect when[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin) is set to **LineJoinStyle.Miter**.
+
+  The miter length represents the distance from the outer corner point to the inner corner point, while the stroke width is defined by the [strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth) attribute.
+  
+  **strokeMiterLimit** requires values greater than or equal to 1 and takes effect when[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin) is set to **LineJoinStyle.Miter**.
 
   <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) -->
   
@@ -508,7 +511,7 @@ You can customize the component style by setting various style attributes.
   > The example uses the **commands** parameter to define the path. For detailed syntax rules of this parameter, see [SVG Path Syntax](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg-path-syntax).
 
   <!-- @[shape_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ShapeExample.ets) -->
-  
+
   ``` TypeScript
   @Entry
   @Component
@@ -545,7 +548,7 @@ You can customize the component style by setting various style attributes.
   > This example uses the **strokeDashArray** attribute to create a red dashed ring by specifying the pattern of dashes and gaps along the border. For details about **strokeDashArray**, see [strokeDashArray](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#strokedasharray). 
 
   <!-- [circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
-  
+
   ``` TypeScript
   @Entry
   @Component
@@ -562,7 +565,7 @@ You can customize the component style by setting various style attributes.
           .strokeWidth(3)
           .stroke(Color.Red)
           .strokeDashArray([1, 2])
-      // ···
+        // ...
       }.width('100%')
     }
   }
@@ -578,14 +581,14 @@ You can customize the component style by setting various style attributes.
 
 
   <!-- [circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
-  
+
   ``` TypeScript
   @Entry
   @Component
   struct CircleExample {
     build() {
       Column({ space: 10 }) {
-      // ···
+        // ...
         // Draw a circle whose diameter is 150.
         Circle()
           .width(150)

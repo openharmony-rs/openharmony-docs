@@ -94,6 +94,8 @@
     - [ContentSlot: Enabling Hybrid Development](rendering-control/arkts-rendering-control-contentslot.md)
   - Setting Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
     - [Component Navigation and Page Routing Overview](arkts-navigation-introduction.md)
+  - Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
+    - [Component Navigation and Page Routing Overview](arkts-navigation-introduction.md)
     - [Component Navigation (Navigation) (Recommended)](arkts-navigation-navigation.md)
     - [Page Routing (@ohos.router) (Not Recommended)](arkts-routing.md)
     - [Transition from Router to Navigation](arkts-router-to-navigation.md)
@@ -120,6 +122,7 @@
     - [Symbol Glyph (SymbolGlyph/SymbolSpan)](arkts-common-components-symbol.md)
     - [Styled String (StyledString/MutableStyledString)](arkts-styled-string.md)
     - [Text and Image Layout](arkts-text-image-layout.md)
+    - [Soft Keyboard Management](arkts-manage-keyboard.md)
   - Media Display<!--arkts-media-display-->
     - [Image Display (Image)](arkts-graphics-display.md)
     - [Video Playback (Video)](arkts-common-components-video-player.md)
@@ -353,5 +356,8 @@
   - [UI Profiling](ui-inspector-profiler.md)
   - [High-Performance UI Development](ui-performance-overview.md)
   - UI Development FAQs<!--ui-development-faq-->
+    - [FAQs About Custom Nodes](arkts-user-defined-node-faq.md)
+    - [FAQs About Buttons and Selection Components](arkts-select-component-faq.md)
+    - [FAQs About Text Components](arkts-text-faq.md)
 - [Window Manager](../windowmanager/Readme-EN.md)<!--window-manager-->
 - [Display Management](../displaymanager/Readme-EN.md)<!--display-manager-->
