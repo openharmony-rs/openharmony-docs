@@ -133,7 +133,7 @@ The implementation procedure is as follows. For details, see the <!--RP1-->[dyna
 
 ### Static Import
 
-Static import is straightforward to implement. However, using static imports for routing navigation creates dependency coupling between modules and increases the initial page loading time. Whenever possible, use either [dynamic imports](#dynamic import) or the [system routing table](#system-routing-table) instead.
+Static import is straightforward to implement. However, using static imports for routing navigation creates dependency coupling between modules and increases the initial page loading time. Whenever possible, use either [dynamic imports](#dynamic-import) or the [system routing table](#system-routing-table) instead.
 
 The implementation procedure is as follows:
 
@@ -278,7 +278,7 @@ The following example shows how to implement cross-package redirection between s
    Configure the routing table in the [module.json5](../quick-start/module-configuration-file.md) file of each module.
 
     <!-- @[moduleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/module.json5) -->
-    
+   
     ``` JSON5
     {
       "module": {
@@ -294,7 +294,7 @@ The following example shows how to implement cross-package redirection between s
    Take **HapPageA** in the HAP package as an example:
 
     <!-- @[CrossPackagePageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/HapPageA.ets) -->
-    
+   
     ``` TypeScript
     // For reference only. Create pages and modules based on your needs.
     import { ControlPanel } from './Common';
@@ -323,7 +323,7 @@ The following example shows how to implement cross-package redirection between s
    **Common** is a control panel component extracted for easy demonstration of page redirection. The following is an example:
 
     <!-- @[CrossPackageCommon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/Common.ets) -->
-    
+   
     ``` TypeScript
     @Component
     export struct ControlPanel {

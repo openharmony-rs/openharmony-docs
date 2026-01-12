@@ -426,7 +426,7 @@ struct Index {
     .width('100%')
   }
 }
-``` 
+```
 ![moveToDemo](figures/moveToDemo.gif)
 
 ## Setting Universal Attributes and Event Callbacks
@@ -1276,7 +1276,7 @@ To disassociate the current **FrameNode** object from the entity FrameNode, call
 
 > **NOTE**
 >
-> After the **dispose** API is called, the **FrameNode** object no longer corresponds to any actual FrameNode. In this case, any attempt to call the following APIs will result in a [JS crash](../ui/arkts-stability-guide.md#jscrash) in the application: **getMeasuredSize**, **getLayoutPosition**, **getUserConfigBorderWidth**, **getUserConfigPadding**, **getUserConfigMargin**, **getUserConfigSize**.
+> After the **dispose** API is called, the **FrameNode** object no longer corresponds to any actual FrameNode. In this case, any attempt to call the following APIs will result in a [JS crash](../ui/arkts-stability-guide.md#javascript-crash-jscrash) in the application: **getMeasuredSize**, **getLayoutPosition**, **getUserConfigBorderWidth**, **getUserConfigPadding**, **getUserConfigMargin**, **getUserConfigSize**.
 >
 > To check whether the current **FrameNode** object corresponds to an entity FrameNode, you can use [getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12) API. A **UniqueId** value greater than 0 indicates that the object is associated with an entity FrameNode.
 
@@ -2204,7 +2204,7 @@ struct ListNodeTest {
     .width("100%")
   }
 }
- ```
+```
  ![invalidateAttributes](./figures/invalidateAttributes.png)
 
  ## Checking Whether a Node Is in Render State
@@ -2275,5 +2275,5 @@ struct Index {
     .width('100%')
   }
 }
- ```
+```
  ![isInRenderState](./figures/isInRenderState.png)

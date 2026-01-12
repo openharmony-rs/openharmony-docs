@@ -14,7 +14,7 @@
 
 - Standard mode
 
-  By default, subpages in the **NavDestination** component are in standard mode, which corresponds to the [NavDestinationMode.STANDARD](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationmode) value of the [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#mode11) attribute. Only one standard **NavDestination** page can be displayed in **Navigation**.
+  By default, subpages in the **NavDestination** component are in standard mode, which corresponds to the [NavDestinationMode.STANDARD](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationmode11) value of the [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#mode11) attribute. Only one standard **NavDestination** page can be displayed in **Navigation**.
 
 - Dialog mode
   

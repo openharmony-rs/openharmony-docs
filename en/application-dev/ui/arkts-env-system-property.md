@@ -961,3 +961,4 @@ struct Comp {
 The following figure shows the running effect.
 
 ![gif](./figures/env_switch_instance2.gif)
+<!--no_check-->
