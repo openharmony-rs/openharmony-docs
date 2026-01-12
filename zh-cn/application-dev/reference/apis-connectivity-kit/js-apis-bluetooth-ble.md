@@ -4188,7 +4188,7 @@ let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:X
 try {
     gattClient.on('serviceChange', ServiceChangedEvent);
 } catch (err) {
-    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
 ```
 
@@ -4233,7 +4233,7 @@ let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:X
 try {
     gattClient.off('serviceChange', ServiceChangedEvent);
 } catch (err) {
-    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
 ```
 
@@ -4283,7 +4283,7 @@ try {
 
 updateConnectionParam(param: ConnectionParam): Promise&lt;void&gt;
 
-向对端设备发起连接参数更新请求，调用成功后可以切换与对端数据传输速度。
+向对端设备发起连接参数更新请求，调用成功后可以切换与对端数据传输速度。使用Promise异步回调。
 - 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 - 不调用该接口时，默认连接参数类型为[ble.ConnectionParam.BALANCED](#connectionparam22)。
 
