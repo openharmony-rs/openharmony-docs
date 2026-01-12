@@ -16,7 +16,10 @@ HUKS provides comprehensive access control capabilities to ensure authorized acc
 - The usage of keys is strictly restricted. For example, the AES keys can be used only for encryption and decryption, and the RSA keys can be used only for signing and signature verification.
 
 > **NOTE**
+>
 > <!--RP3-->The mini-system devices<!--RP3End--> do not support the access control of keys based on user identity authentication.
+
+The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
 ## Application Scenarios and Development Process
 
@@ -124,3 +127,4 @@ For simplicity, in the following table we refer to:
 | FACE  \|  FINGERPRINT          | ALWAYS_VALID           | The facial or fingerprint authentication is supported. The key is permanently valid.   |
 | PIN  \|  FACE  \|  FINGERPRINT | ALWAYS_VALID           | The PIN, facial, or fingerprint authentication is supported. The key is permanently valid.   |
 <!--RP2--><!--RP2End-->
+<!--no_check-->

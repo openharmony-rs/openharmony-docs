@@ -766,9 +766,9 @@ export default class MyAbility extends UIAbility {
         return;
       }
       console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
+      let applicationContext = this.context.getApplicationContext();
+      applicationContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
     });
-    let applicationContext = this.context.getApplicationContext();
-    applicationContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
   }
 }
 ```
@@ -1287,6 +1287,8 @@ getAllWindowStages(): Promise\<Array\<window.WindowStage>>
 获取应用当前进程内的所有WindowStage对象。使用Promise异步回调。仅支持主线程调用。
 
 该接口主要用于包含多个UIAbility的应用进行多窗口管理，例如管理多个WindowStage的状态、同一应用的多个窗口间的状态或数据同步等。
+
+ **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

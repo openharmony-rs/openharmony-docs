@@ -36,7 +36,7 @@ The **transient_task_api.h** file declares the APIs for requesting, querying, an
 
 ### OH_BackgroundTaskManager_RequestSuspendDelay()
 
-```
+```c
 int32_t OH_BackgroundTaskManager_RequestSuspendDelay(const char* reason,TransientTask_Callback callback, TransientTask_DelaySuspendInfo *info)
 ```
 
@@ -65,7 +65,7 @@ Requests a transient task.
 
 ### OH_BackgroundTaskManager_GetRemainingDelayTime()
 
-```
+```c
 int32_t OH_BackgroundTaskManager_GetRemainingDelayTime(int32_t requestId, int32_t *delayTime)
 ```
 
@@ -93,7 +93,7 @@ Obtains the remaining time of a transient task.
 
 ### OH_BackgroundTaskManager_CancelSuspendDelay()
 
-```
+```c
 int32_t OH_BackgroundTaskManager_CancelSuspendDelay(int32_t requestId)
 ```
 
@@ -120,7 +120,7 @@ Cancels a transient task.
 
 ### OH_BackgroundTaskManager_GetTransientTaskInfo()
 
-```
+```c
 int32_t OH_BackgroundTaskManager_GetTransientTaskInfo(TransientTask_TransientTaskInfo  *transientTaskInfo)
 ```
 

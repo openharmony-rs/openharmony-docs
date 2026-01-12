@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 该模块为应用提供备份/恢复数据的能力。
 
@@ -102,6 +102,7 @@ import { backup } from '@kit.CoreFileKit';
 ## File
 
 一个文件对象。
+
 继承[FileMeta](#filemeta)和[FileData](#filedata)。
 
 > **说明：**
@@ -113,6 +114,7 @@ import { backup } from '@kit.CoreFileKit';
 ## File<sup>12+</sup>
 
 一个文件对象。
+
 继承[FileMeta](#filemeta)和[FileData](#filedata)和[FileManifestData](#filemanifestdata12)。
 
 > **说明：**
@@ -120,6 +122,22 @@ import { backup } from '@kit.CoreFileKit';
 > file.backup.File与@ohos.file.fs中的提供的[File](js-apis-file-fs.md#file)是带有不同的涵义，前者是继承[FileMeta](#filemeta)和[FileData](#filedata)的对象而后者只有一个文件描述符的对象。请注意区分，不要混淆。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+## FileSystemRequestConfig<sup>23+</sup>
+
+配置系统执行碎片清理所需的参数。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.backup
+
+| 名称        | 类型   | 只读 | 可选 | 说明                                                   |
+| ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
+| triggerType | number |  否  |  否  | 制定碎片清理的触发类型，当前仅支持触发类型0，表示执行器件碎片清理功能。|
+| writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，最多可清理出目标大小的可用存储单元。单位：MB，取值范围：0-2097152MB。|
+| waitTime    | number |  否  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时。单位：秒，取值范围：0-180秒。|
 
 ## GeneralCallbacks
 
@@ -342,7 +360,7 @@ onResultReport (bundleName: string, result: string)
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
-**返回值：**
+**参数：**
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -384,7 +402,7 @@ onProcess (bundleName: string, process: string)
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
-**返回值：**
+**参数：**
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -418,6 +436,63 @@ onProcess (bundleName: string, process: string)
     console.info('onProcess processInfo : ' + process);
   }
   ```
+
+## backup.fileSystemServiceRequest<sup>23+</sup>
+
+fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;number&gt;
+
+整理存储器件碎片化空间，改善用户卡顿体验。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.BACKUP
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**参数**：
+| 参数名   | 类型                                       | 必填 | 说明                                               |
+| -------- | ------------------------------------------ | ---- | -------------------------------------------------- |
+|  config  | [FileSystemRequestConfig](#filesystemrequestconfig23)| 是 | 系统执行碎片清理所需参数。 |
+
+**返回值：**
+
+| 类型                | 说明                    |
+| ------------------- | ----------------------- |
+| Promise&lt;number&gt;  | Promise对象。返回执行碎片清理操作时产生的错误码。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 13900020 | Invalid argument.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { backup } from '@kit.CoreFileKit';
+
+async function testFunction(size: number) {
+  try {
+    const result = await backup.fileSystemServiceRequest({
+      triggerType: 0,
+      writeSize: size,
+      waitTime: 180
+    });
+
+    return result;
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`fileSystemServiceRequest err:` + err);
+  }
+}
+```
 
 ## backup.getBackupVersion<sup>18+</sup>
 
@@ -703,7 +778,7 @@ getBackupInfo(bundleToBackup: string): string
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **示例：**
 
@@ -756,7 +831,7 @@ updateTimer(bundleName: string, timeout: number): boolean
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **示例：**
 
@@ -814,7 +889,7 @@ updateSendRate(bundleName: string, sendRate: number): boolean
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **示例：**
 
@@ -1044,7 +1119,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
         fs.closeSync(fileData.fd);
@@ -1097,7 +1172,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-用于获取应用待备份数据量，在appendBundles之前调用。以异步callback方式（generalCallbacks中的onBackupSizeReport）每隔固定时间（每隔5秒返回一次，如果5秒内获取完则立即返回）返回一次扫描结果，直到datalist中所有的应用数据量全部返回。
+用于获取应用待备份数据量，在appendBundles之前调用。以异步callback方式（generalCallbacks中的onBackupSizeReport）每隔固定时间（每隔5秒返回一次，如果5秒内获取完则立即返回）返回一次扫描结果，直到dataList中所有的应用数据量全部返回。
 
 **系统接口**：此接口为系统接口。
 
@@ -2029,7 +2104,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
         fs.closeSync(fileData.fd);
@@ -3351,7 +3426,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
         fs.closeSync(fileData.fd);
@@ -3404,7 +3479,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-用于获取应用待备份数据量，在appendBundles之前调用。以异步callback方式（generalCallbacks中的onBackupSizeReport）每隔固定时间（每隔5秒返回一次，如果5秒内获取完则立即返回）返回一次扫描结果，直到datalist中所有的应用数据量全部返回。
+用于获取应用待备份数据量，在appendBundles之前调用。以异步callback方式（generalCallbacks中的onBackupSizeReport）每隔固定时间（每隔5秒返回一次，如果5秒内获取完则立即返回）返回一次扫描结果，直到dataList中所有的应用数据量全部返回。
 
 **系统接口**：此接口为系统接口。
 
@@ -3582,7 +3657,6 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;): Promise&lt;v
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
@@ -3684,7 +3758,6 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;, infos: string
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 

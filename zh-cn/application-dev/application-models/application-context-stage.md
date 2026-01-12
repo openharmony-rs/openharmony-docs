@@ -92,11 +92,11 @@ struct CreateModuleContext {
 
   build() {
     Column() {
-    // ···
+      // ...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            // ···
+            // ...
           }
           .onClick(() => {
             let moduleName2: string = 'entry';
@@ -105,7 +105,7 @@ struct CreateModuleContext {
                 hilog.info(DOMAIN, TAG, `CreateModuleContext success, data: ${JSON.stringify(data)}`);
                 if (data !== null) {
                   this.getUIContext().getPromptAction().showToast({
-                    // $r('app.string.success_message')需要替换为开发者所需的资源文件
+                    // 请将$r('app.string.success_message')替换为实际资源文件，在本示例中该资源文件的value值为"成功获取Context"
                     message: $r('app.string.success_message')
                   });
                 }
@@ -115,11 +115,11 @@ struct CreateModuleContext {
               });
           })
         }
-        // ···
+        // ...
       }
-    // ···
+      // ...
     }
-    // ···
+    // ...
   }
 }
 ```

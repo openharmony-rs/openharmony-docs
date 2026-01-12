@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-To convert unobservable data into observable data, use the [makeObserved](../../reference/apis-arkui/js-apis-StateManagement.md#makeobserved) API.
+To convert unobservable data into observable data, use the [makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved) API.
 
 
 **makeObserved** is designed for scenarios where \@Trace cannot be applied. Before reading this topic, it is recommended to familiarize yourself with [\@Trace](./arkts-new-observedV2-and-trace.md).
@@ -515,7 +515,7 @@ struct Index {
 ```
 
 ### Using makeObserved with V2 Decorators
-**makeObserved** can be used with V2 decorators. [@Monitor](./arkts-new-monitor.md) and [@Computed](./arkts-new-Computed.md) cannot be defined within a class because makeObserved returns a class instance decorated with @Observed or ObservedV2. Therefore, @Monitor or @Computed must be defined within custom components.
+**makeObserved** can be used with V2 decorators. [@Monitor](./arkts-new-monitor.md) and [@Computed](./arkts-new-computed.md) cannot be defined within a class because makeObserved returns a class instance decorated with @Observed or ObservedV2. Therefore, @Monitor or @Computed must be defined within custom components.
 
 Example:
 ```ts

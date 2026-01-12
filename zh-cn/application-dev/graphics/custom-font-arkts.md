@@ -31,7 +31,9 @@
 
 1. 导入依赖的相关模块。
 
-   ```ts
+   <!-- @[arkts_custom_font_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
    import { UIContext } from '@kit.ArkUI'
    import { text } from '@kit.ArkGraphics2D'
@@ -39,25 +41,32 @@
 
 2. 注册自定义字体。有以下两种方式：
 
-   ```ts
-   // 注册自定义字体
-   let fontCollection = text.FontCollection.getGlobalInstance()
-   // 方式一：/system/fonts/myFontFile.ttf文件仅为示例路径，应用根据自身实际填写文件路径
-   fontCollection.loadFontSync('myFamilyName0', 'file:///system/fonts/myFontFile.ttf')
+   <!-- @[arkts_custom_font_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
+   ``` TypeScript
+   // 注册自定义字体
+   // 方式一：/system/fonts/NotoSansMalayalamUI-SemiBold.ttf文件仅为示例路径，应用根据自身实际填写文件路径
+   fontCollection.loadFontSync(familyName, 'file:///system/fonts/NotoSansMalayalamUI-SemiBold.ttf')
    // 方式二：确保已经将自定义字体myFontFile.ttf文件放在本应用工程的entry/src/main/resources/rawfile目录
-   fontCollection.loadFontSync('myFamilyName1',$rawfile('myFontFile.ttf'))
+   // fontCollection.loadFontSync(familyName, $rawfile('myFontFile.ttf'))
    ```
 
 3. 使用自定义字体。
 
-   ```ts
-   // 填写注册自定义字体时传入的字体家族名
-   let myFontFamily: Array<string> = ["myFamilyName0"]
+   <!-- @[arkts_custom_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 使用自定义字体
+   let myFontFamily: Array<string> = [familyName] // 如果已经注册自定义字体，填入自定义字体的字体家族名
    // 设置文本样式
    let myTextStyle: text.TextStyle = {
-     color: { alpha: 255, red: 255, green: 0, blue: 0 },
-     fontSize: 100,
+     color: {
+       alpha: 255,
+       red: 255,
+       green: 0,
+       blue: 0
+     },
+     fontSize: 30,
      // 在文本样式中加入可使用的自定义字体
      fontFamilies: myFontFamily
    };
@@ -65,16 +74,24 @@
 
 4. 创建段落样式，并使用字体管理器实例构造段落生成器ParagraphBuilder实例。
 
-   ```ts
+   <!-- @[arkts_custom_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 创建一个段落样式对象，以设置排版风格
-   let myParagraphStyle: text.ParagraphStyle = {textStyle: myTextStyle}
+   let myParagraphStyle: text.ParagraphStyle = {
+     textStyle: myTextStyle,
+     align: 3,
+     wordBreak: text.WordBreak.NORMAL
+   };
    // 创建一个段落生成器
-   let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection)
    ```
 
 5. 生成段落。
 
-   ```ts
+   <!-- @[arkts_custom_font_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 在段落生成器中设置文本样式
    paragraphBuilder.pushStyle(myTextStyle);
    // 在段落生成器中设置文本内容
@@ -85,181 +102,14 @@
 
 6. 如果需要释放自定义字体，可以使用unloadFontSync接口。
 
-   ```ts
+   <!-- @[arkts_custom_font_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 注销自定义字体
    fontCollection.unloadFontSync(familyName)
    // 注销之后需要刷新使用该fontCollection的节点
    newNode.invalidate()
    ```
-
-## 完整示例
-
-这里以使用自定义注册字体方式一为例绘制“Custom font test”文本，并提供如下完整示例。
-
-请保证自定义字体文件已放置到设备正确的路径下。
-
-<!-- @[arkts_custom_font](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/CustomFont/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// Index.ets
-import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-import { UIContext } from '@kit.ArkUI'
-import { text } from '@kit.ArkGraphics2D'
-
-// 获取全局字体集实例
-let fontCollection = text.FontCollection.getGlobalInstance() //获取Arkui全局FC
-const familyName = "myFamilyName"
-
-// 创建一个自定义的渲染节点类，用于绘制文本
-class MyRenderNode extends RenderNode {
-  async draw(context: DrawContext) {
-    // 创建画布canvas对象
-    const canvas = context.canvas
-    // 使用自定义字体
-    let myFontFamily: Array<string> = [familyName] // 如果已经注册自定义字体，填入自定义字体的字体家族名
-    // 设置文本样式
-    let myTextStyle: text.TextStyle = {
-      color: {
-        alpha: 255,
-        red: 255,
-        green: 0,
-        blue: 0
-      },
-      fontSize: 30,
-      // 在文本样式中加入可使用的自定义字体
-      fontFamilies: myFontFamily
-    };
-    // 创建一个段落样式对象，以设置排版风格
-    let myParagraphStyle: text.ParagraphStyle = {
-      textStyle: myTextStyle,
-      align: 3,
-      wordBreak: text.WordBreak.NORMAL
-    };
-    // 创建一个段落生成器
-    let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection)
-    // 在段落生成器中设置文本样式
-    ParagraphGraphBuilder.pushStyle(myTextStyle);
-    // 在段落生成器中设置文本内容
-    ParagraphGraphBuilder.addText("Custom font test");
-    // 通过段落生成器生成段落
-    let paragraph = ParagraphGraphBuilder.build();
-    // 设置段落宽度为1000px
-    paragraph.layoutSync(1000);
-    paragraph.paint(canvas, 0, 400);
-  }
-}
-
-// 创建并初始化渲染节点实例
-const newNode = new MyRenderNode();
-// 设置渲染节点的位置和尺寸
-newNode.frame = {
-  x: 0,
-  y: 0,
-  width: 400,
-  height: 600
-};
-
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext)
-    if (this.rootNode == null) {
-      return this.rootNode
-    }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.frame = {
-        x: 0,
-        y: 0,
-        width: 300,
-        height: 50
-      }
-      renderNode.pivot = { x: 0, y: 0 }
-    }
-    return this.rootNode
-  }
-
-  addNode(node: RenderNode): void {
-    if (this.rootNode == null) {
-      return
-    }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.appendChild(node)
-    }
-  }
-
-  clearNodes(): void {
-    if (this.rootNode == null) {
-      return
-    }
-    const renderNode = this.rootNode.getRenderNode()
-    if (renderNode != null) {
-      renderNode.clearChildren()
-    }
-  }
-}
-
-@Entry
-@Component
-struct RenderTest {
-  private myNodeController: MyNodeController = new MyNodeController()
-
-  build() {
-    Column() {
-      Row() {
-        // 如果使用getGlobalInstance的fontCollection注册字体，使用对应family name的组件会自动刷新
-        Text("Text Component")
-          .fontFamily(familyName)
-        NodeContainer(this.myNodeController)
-          .height('100%')
-          .onAppear(() => {
-            this.myNodeController.clearNodes()
-            this.myNodeController.addNode(newNode)
-          })
-      }
-      .height('90%')
-      .backgroundColor(Color.White)
-
-      Row() {
-        Button($r('app.string.Button_load_font'))
-          .fontSize('16fp')
-          .fontWeight(500)
-          .margin({ bottom: 24, right: 12 })
-          .onClick(() => {
-            // 注册自定义字体
-            fontCollection.loadFontSync(familyName, 'file:///system/fonts/NotoSansMalayalamUI-SemiBold.ttf')
-            // 注册之后需要刷新使用该fontCollection的节点
-            newNode.invalidate()
-          })
-          .width('30%')
-          .height(40)
-          .shadow(ShadowStyle.OUTER_DEFAULT_LG)
-        Button($r('app.string.Button_unload_font'))
-          .fontSize('16fp')
-          .fontWeight(500)
-          .margin({ bottom: 24, right: 12 })
-          .onClick(() => {
-            // 注销自定义字体
-            fontCollection.unloadFontSync(familyName)
-            // 注销之后需要刷新使用该fontCollection的节点
-            newNode.invalidate()
-          })
-          .width('30%')
-          .height(40)
-          .shadow(ShadowStyle.OUTER_DEFAULT_LG)
-      }
-      .width('100%')
-      .justifyContent(FlexAlign.Center) // 设置当前Row容器内子元素在主轴上居中对齐
-      .shadow(ShadowStyle.OUTER_DEFAULT_SM) // 设置Row容器外阴影效果
-      .alignItems(VerticalAlign.Bottom) // 设置当前Row容器内子元素在交叉轴（垂直方向）上的对齐方式为底部对齐
-      .layoutWeight(1) // 设置当前Row在父容器Column中的布局权重为1
-    }
-  }
-}
-```
 
 ## 效果展示
 

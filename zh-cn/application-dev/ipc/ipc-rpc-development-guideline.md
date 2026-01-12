@@ -402,6 +402,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
 <!--Del-->
 FA模型使用[connectAbility](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityconnectability7)接口连接Ability。
+
 IPC通信结束后，使用[disconnectAbility](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilitydisconnectability7)接口断开连接，此处的connectId是在连接服务时保存的。
 
 <!--code_no_check_fa-->

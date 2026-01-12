@@ -371,7 +371,7 @@ The following describes how to subscribe to the freeze event triggered by a butt
      })
    ```
 
-10. In DevEco Studio, click the **Run** button to run the project. Then, click the **testHiCollieTimerNdk** button to trigger a task execution timeout event.
+10. In DevEco Studio, click the **Run** button to run the project. Then, click the **TestHiCollieTimerNdk** button to trigger a task execution timeout event.
 
 ### Verifying the Subscription
 

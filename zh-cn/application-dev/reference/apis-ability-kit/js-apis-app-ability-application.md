@@ -140,7 +140,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## application.getApplicationContextInstance<sup>22+</sup>
+## application.getApplicationContextInstance<sup>23+</sup>
 
 getApplicationContextInstance(): ApplicationContext
 
@@ -148,7 +148,7 @@ getApplicationContextInstance(): ApplicationContext
 
 重复调用该接口，将获取同一个ApplicationContext实例。
 
-**原子化服务API**：从API version 22开始，该接口支持在元服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在元服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

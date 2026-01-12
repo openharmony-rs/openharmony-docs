@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -60,8 +60,8 @@ Provide a surface-type **\<xcomponent>** to support camera preview and other cap
 ```html
 <!-- xxx.hml -->
 <div style="height: 500px; width: 500px; flex-direction: column; justify-content: center; align-items: center;">
-	<text id = 'camera' class = 'title'>camera_display</text>
-	<xcomponent id = 'xcomponent' type = 'surface' onload = 'onload' ondestroy = 'ondestroy'></xcomponent>
+    <text id = 'camera' class = 'title'>camera_display</text>
+    <xcomponent id = 'xcomponent' type = 'surface' onload = 'onload' ondestroy = 'ondestroy'></xcomponent>
 </div>
 ```
 

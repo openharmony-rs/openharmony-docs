@@ -16,7 +16,7 @@
 
 > **说明：**
 >
-> 从API Version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > media属性值默认为设备的真实尺寸大小、物理像素和真实的屏幕分辨率。请勿与以720px为基准的项目配置宽度px混淆。
 
@@ -48,14 +48,14 @@
 通过\@import方式引入媒体查询，具体使用方法如下：
 
 
-```
+```js
 @import url [media-type] [and|not|only] [(media-feature)];
 ```
 
 例如：
 
 
-```
+```js
 @import '../common/style.css' screen and (min-width: 600) and (max-width: 1200);
 ```
 

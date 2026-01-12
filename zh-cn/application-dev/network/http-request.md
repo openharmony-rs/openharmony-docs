@@ -322,10 +322,358 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
      httpRequest.destroy();
    }
    ```
+## 通过HTTP发起WebDAV请求
 
+从API version 23开始，HTTP请求支持WebDAV协议的文件访问，WebDAV是基于HTTP协议的扩展，支持对远程服务器上的文件进行创建、读取、更新、删除、移动、复制(MKCOL、GET、PUT、DELETE、MOVE、COPY)等操作。
+
+完整示例代码见：[Http_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case)
+
+<!-- @[HTTP_webDav](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/WebDav.ets) -->
+
+``` TypeScript
+import { http } from '@kit.NetworkKit';
+import { ComponentId } from '../common/CommonConstant';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  proppatchXml = `example_proppatchXml`; // 修改资源Xml
+  lockXml: string = `example_lockXml`; // 加锁Xml
+  lockToken: string = '';
+
+  build() {
+    Column({ space: 5 }) {
+      Button($r('app.string.HTTP_WEBDAV_PUT'))
+        .id(ComponentId.HTTP_WEBDAV_PUT)
+        .onClick(async () => {
+          let httpRequest = http.createHttp();
+          let file = 'example';
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              expectDataType: http.HttpDataType.STRING,
+              extraData: file, // 上传文件内容
+              header: { 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': file.length.toString() },
+              customMethod: 'PUT' // WebDav协议PUT请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_GET'))
+        .id(ComponentId.HTTP_WEBDAV_GET)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              expectDataType: http.HttpDataType.STRING,
+              customMethod: 'GET' // WebDav协议GET请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result.toString());
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_MKCOL'))
+        .id(ComponentId.HTTP_WEBDAV_MKCOL)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example/',
+            {
+              expectDataType: http.HttpDataType.STRING,
+              customMethod: 'MKCOL' // WebDav协议MKCOL请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_DELETE'))
+        .id(ComponentId.HTTP_WEBDAV_DELETE)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example/',
+            {
+              expectDataType: http.HttpDataType.STRING,
+              header: { 'Content-Type': 'text/xml' },
+              customMethod: 'DELETE' // WebDav协议DELETE请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_COPY'))
+        .id(ComponentId.HTTP_WEBDAV_COPY)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              expectDataType: http.HttpDataType.STRING,
+              header: { 'Destination': 'EXAMPLE_URL' + 'new_example.txt' },
+              customMethod: 'COPY' // WebDav协议COPY请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_MOVE'))
+        .id(ComponentId.HTTP_WEBDAV_MOVE)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              expectDataType: http.HttpDataType.STRING,
+              header: { 'Destination': 'EXAMPLE_URL' + 'reNameText.txt' },
+              customMethod: 'MOVE' // WebDav协议MOVE请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_PROPPATCH'))
+        .id(ComponentId.HTTP_WEBDAV_PROPPATCH)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              extraData: this.proppatchXml,
+              expectDataType: http.HttpDataType.STRING,
+              header: { 'Content-Type': 'application/xml; charset=utf-8', 'Depth': 'infinity' },
+              customMethod: 'PROPPATCH' // WebDav协议PROPPATCH请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_PROPFIND'))
+        .id(ComponentId.HTTP_WEBDAV_PROPFIND)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              expectDataType: http.HttpDataType.STRING,
+              header: {
+                'Content-Type': 'text/xml',
+                'Depth': '0'
+              },
+              customMethod: 'PROPFIND' // WebDav协议PROPFIND请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_LOCK'))
+        .id(ComponentId.HTTP_WEBDAV_LOCK)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              extraData: this.lockXml,
+              expectDataType: http.HttpDataType.STRING,
+              header: {
+                'Content-Type': 'application/xml',
+                'Depth': '0',
+              },
+              customMethod: 'LOCK' // WebDav协议LOCK请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                let lockTokenRegex = /<D:href>(urn:uuid:[a-fA-F0-9\-]+)<\/D:href>/;
+                let statusMatch: RegExpMatchArray | null = (data.result as string).match(lockTokenRegex);
+                if (statusMatch) {
+                  this.lockToken = statusMatch[1];
+                }
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                hilog.info(0x0000, 'testTag', 'lockToken:' + this.lockToken);
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_UNLOCK'))
+        .id(ComponentId.HTTP_WEBDAV_UNLOCK)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              header: {
+                'Content-Length': '0',
+                'Lock-Token': this.lockToken, // 加锁时返回密钥
+                'Depth': '0'
+              },
+              customMethod: 'UNLOCK' // WebDav协议UNLOCK请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_UNKNOWN'))
+        .id(ComponentId.HTTP_WEBDAV_UNKNOWN)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL',
+            {
+              customMethod: 'UNKNOWN' // 非WebDav协议请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
 ## 配置证书校验
 
 当应用使用HTTPS协议时，涉及证书相关配置。面向互联网用户提供服务的应用仅需信任系统预置的CA证书。当前HTTP模块已默认信任系统预置的CA证书，无需特别设置。如果应用需要锁定证书，只信任开发者特别指定的证书，或者需要跳过证书校验，可以参考以下说明进行配置。
+
+### TLS客户端证书验证流程
+
+   在TLS握手过程中，客户端验证服务端证书以确保连接可信。服务端证书通常包括域名证书和中间CA证书。
+
+ **证书链组成**
+ 
+   证书链采用层级信任结构：`服务端证书 ← 中间CA证书 ← 根CA证书`。其中←表示签发与信任关系，证书链必须完整追溯到可信根证书。
+
+**验证流程**
+
+   客户端接收证书链后执行三级验证：
+
+1. 证书链完整性验证
+   - 从服务端证书开始逐级验证数字签名，确保每一级证书均由上一级有效签发，以形成完整的信任链条。
+
+2. 根证书可信性验证
+   - 在证书存储库中查找根证书是否存在。
+   - 存储库来源包括：
+     - 系统预置证书。
+     - 应用信任证书。
+     - 本次请求指定的CA证书。
+   - 可通过相关API(请参考下方：**配置参考**)指定应用级和请求级信任证书。
+
+3. 证书内容有效性验证
+   - 证书有效期检查。
+   - 域名匹配验证：主题备用名称(Subject Alternative Name, SAN)、通用名称(Common Name, CN)与访问域名一致。
+   - 证书吊销状态检查：证书吊销列表(Certificate Revocation List, CRL)、在线证书状态协议(Online Certificate Status Protocol, OCSP)。
+
+ 验证结果
+ 
+   - 验证成功：继续TLS握手建立安全连接。
+   - 验证失败：终止连接并提示错误信息。
+
+此流程确保只有持有有效且可信证书的服务端才能建立安全连接。
+
+ **配置参考**
+ 
+1. 配置应用信任证书（具体配置方法可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)）。
+2. 配置请求级CA证书：
+   - 通过[httprequestoptions](../reference/apis-network-kit/js-apis-http.md#httprequestoptions)的caPath和caData字段配置HTTPS请求CA证书。
+   - 通过[websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)的caPath字段配置WebSocket请求CA证书。
+   - 通过[tlssecureoptions](../reference/apis-network-kit/js-apis-socket.md#tlssecureoptions9)的ca字段指定TLS请求CA证书。
+3. 配置跳过证书校验：
+   - HTTPS：通过[remoteValidation](../reference/apis-network-kit/js-apis-http.md#remotevalidation18) = 'skip' 配置。
+   - WebSocket：通过[websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)的skipServerCertVerification = false 配置。
+   - TLSSocket：通过[tlsconnectoptions](../reference/apis-network-kit/js-apis-socket.md#tlsconnectoptions9)的skipRemoteValidation = false 配置。
+
+ **调试参考**
+ 
+   - 通过API校验指定证书是否可信：可参考[networkSecurity.certVerification](../reference/apis-network-kit/js-apis-networkSecurity.md#networksecuritycertverification)。
+   - 通过openssl命令校验域名服务器证书链是否被系统信任：`hdc shell openssl s_client -connect 主机名:端口 -CApath /etc/security/certificates -brief`。若出现`Verification: OK`说明证书链可信。将`-trace -showcerts`替换为`-brief`可以打印详细的TLS握手信息。
+
 
 ### 证书锁定
 
@@ -335,7 +683,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
 如果不知道服务器域名的证书，可以通过以下方式访问该域名获取证书，注意把`www.example.com`改成想要获取域名证书的域名，`www.example.com.pem`改成想保存的证书文件名：
 
-```
+```ts
 openssl s_client -servername www.example.com -connect www.example.com:443 \
     < /dev/null | sed -n "/-----BEGIN/,/-----END/p" > www.example.com.pem
 ```
@@ -360,7 +708,7 @@ openssl s_client -servername www.example.com -connect www.example.com:443 \
 
 域名证书的公钥哈希值可以用如下的命令计算。假设域名证书是通过上面的OpenSSL命令获得的，并保存在`www.example.com.pem`文件。#开头的行是注释，可以不用输入：
 
-```
+```ts
 # 从证书中提取出公钥
 openssl x509 -in www.example.com.pem -pubkey -noout > www.example.com.pubkey.pem
 # 将pem格式的公钥转换成der格式
@@ -404,7 +752,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 预置证书公钥哈希值的配置例子如下：
 
-```
+```json
 {
   "network-security-config": {
     "domain-config": [
@@ -432,7 +780,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 证书锁定的配置例子如下:
 
-```
+```json
 {
   "network-security-config": {
     "domain-config": [
@@ -479,9 +827,9 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 ### 配置不信任用户安装的CA证书
 
-系统默认信任系统预置的CA证书和用户安装的CA证书，可配置不信任用户安装的CA证书提升安全性。配置不信任用安装的CA证书可以在src/main/resources/base/profile/network_config.json进行配置，更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)。
+系统默认信任系统预置的CA证书和用户安装的CA证书，可配置不信任用户安装的CA证书提升安全性。配置不信任用户安装的CA证书可以在src/main/resources/base/profile/network_config.json进行配置，更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)。
 
-```
+```json
 {
   "network-security-config": {
     ... ...
@@ -498,7 +846,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 > 配置优先级规则：组件配置（component-config）> 域名配置（domain-config）> 基础配置（base-config），优先级高的配置会覆盖优先级低的规则。
 
 
-```
+```json
 // src/main/resources/base/profile/network_config.json
 {
   "network-security-config": {
@@ -592,19 +940,11 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     <!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
-    enum InterceptorType {
-      INITIAL_REQUEST = 'INITIAL_REQUEST',
-      REDIRECTION = 'REDIRECTION',
-      CACHE_CHECKED = 'READ_CACHE',
-      NETWORK_CONNECT = 'CONNECT_NETWORK',
-      FINAL_RESPONSE = 'FINAL_RESPONSE'
-    }
-    
     class InitialHttpInterceptor implements http.HttpInterceptor {
-      interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+      interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
       result: boolean = false;
     
-      constructor(interceptorType: InterceptorType, result: boolean) {
+      constructor(interceptorType: http.InterceptorType, result: boolean) {
         this.interceptorType = interceptorType;
         this.result = result;
       }
@@ -630,10 +970,10 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     }
     
     class NetworkHttpInterceptor implements http.HttpInterceptor {
-      interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+      interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
       result: boolean = false;
     
-      constructor(interceptorType: InterceptorType, result: boolean) {
+      constructor(interceptorType: http.InterceptorType, result: boolean) {
         this.interceptorType = interceptorType;
         this.result = result;
       }
@@ -659,10 +999,10 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     }
     
     class FinalHttpInterceptor implements http.HttpInterceptor {
-      interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+      interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
       result: boolean = false;
     
-      constructor(interceptorType: InterceptorType, result: boolean) {
+      constructor(interceptorType: http.InterceptorType, result: boolean) {
         this.interceptorType = interceptorType;
         this.result = result;
       }
@@ -695,9 +1035,9 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     ``` TypeScript
     // 创建所需要的拦截器对象,将拦截器对象加入拦截器链中
     chain.addChain([
-      new InitialHttpInterceptor(InterceptorType.INITIAL_REQUEST, true),
-      new NetworkHttpInterceptor(InterceptorType.NETWORK_CONNECT, true),
-      new FinalHttpInterceptor(InterceptorType.FINAL_RESPONSE, true)
+      new InitialHttpInterceptor(http.InterceptorType.INITIAL_REQUEST, true),
+      new NetworkHttpInterceptor(http.InterceptorType.NETWORK_CONNECT, true),
+      new FinalHttpInterceptor(http.InterceptorType.FINAL_RESPONSE, true)
     ]);
     ```
 

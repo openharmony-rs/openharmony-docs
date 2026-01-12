@@ -6,7 +6,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-If you want to implement native services such as frame rate control in an independent thread, you can use DisplaySoloist. The scenarios include game and UI framework connection.
+To develop a native service that controls the frame rate in an independent thread, you use **DisplaySoloist** to implement the services, such as gaming and self-drawing UI framework interconnection.
 A **DisplaySoloist** instance can exclusively occupy a thread or share a thread with others.
 
 ## Available APIs
@@ -102,7 +102,7 @@ libnative_display_soloist.so
    
 3. Obtain the native **XComponent** at the C++ layer. You are advised to save the **XComponent** in a singleton. This step must be performed during napi_init.
 
-    Create a **PluginManger** singleton to manage the native **XComponent**.
+    Create a **PluginManager** singleton to manage the native **XComponent**.
     ```c++
     class PluginManager {
     public:
@@ -208,7 +208,7 @@ libnative_display_soloist.so
    }
    ```
 
-   Call the **DisplaySoloist** APIs to configure the frame rate and register the callback function for each frame. If the input parameter useExclusiveThread is set to true when OH_DisplaySoloist_Create is called to create a DisplaySoloist instance, OH_DisplaySoloist_FrameCallback is executed in exclusive thread mode. Otherwise, OH_DisplaySoloist_FrameCallback is executed in shared thread mode.
+   Call the **DisplaySoloist** APIs to configure the frame rate and register the callback function for each frame. If the input parameter **useExclusiveThread** is set to **true** when **OH_DisplaySoloist_Create** is called to create a **DisplaySoloist** instance, **OH_DisplaySoloist_FrameCallback** is executed in exclusive thread mode. Otherwise, **OH_DisplaySoloist_FrameCallback** is executed in shared thread mode.
 
    > **NOTE**
    >
@@ -366,5 +366,5 @@ libnative_display_soloist.so
 
 The following sample is provided to help you better understand how to develop the frame rate feature:
 
-- [DisplaySoloist Hierarchical Control (API 14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/DisplaySoloist)
+- [DisplaySoloist Hierarchical Control (API Version 14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/DisplaySoloist)
 <!--RP1End-->

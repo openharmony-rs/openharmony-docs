@@ -41,6 +41,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
   3. 获取动画并注册回调。
 
      从scene.animations[0]获取动画资源，启用并注册onStarted()、onFinished()回调，用于监听动画播放状态或触发逻辑。
+
      ArkGraphics 3D提供以下动画回调接口：
       - onStarted()：动画开始播放时触发，start与restart操作均会调用。
       - onFinished()：动画播放完成或执行finish操作时触发。
@@ -85,6 +86,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
   5. 构建界面与动画控制。
 
      通过Component3D渲染3D场景，并在界面中添加按钮以控制动画播放状态。
+     
      ArkGraphics 3D提供的动画状态控制操作主要包含如下几种：
       - 开始（start）：基于当前进度开始播放一个动画。
       - 停止（stop）：停止播放一个动画，并将动画的进度设置到未开始状态。

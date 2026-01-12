@@ -2804,7 +2804,7 @@ struct SelectionMenu {
 >
 > Icons in bold and italics are not preset in the system. The sample code uses the default icons. You need to replace the icons in **iconArr** with the desired icons.
 
-![selectionMenu](figures/richEditorSelectionMenu.png)
+
 
 ### Example 4: Updating the Image Style
 This example demonstrates how to update the image style using the [updateSpanStyle](#updatespanstyle) API.
@@ -5877,7 +5877,7 @@ struct AutoSpacing {
     Column() {
       Column() {
         Row({ space: 2 }) {
-          Button ("Insert Chinese and Spanish content").onClick (() ==> {
+          Button("Insert Chinese and Spanish content").onClick (() ==> {
             this.controller.addTextSpan("Add text span",
               {
                 style:

@@ -26,9 +26,11 @@ UIUtils.getTarget(value) === value
 当开发者将修改`success`的箭头函数放在`query`中时，已完成`TestModel`对象初始化和代理封装。通过`this.viewModel.query()`调用`query`时，`query`函数中的`this`指向`viewModel`代理对象，对代理对象成员属性`isSuccess`的更改能够被观测到，因此触发`query`事件可以被状态管理观测到变化。
 
 【反例】
-<!-- @[state_problem_this_unable_observe_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObserveOpposite.ets) -->
+<!-- @[state_problem_this_unable_observe_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObserveOpposite.ets) --> 
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
 @Entry
 @Component
 struct Index {
@@ -55,7 +57,7 @@ export class TestModel {
   constructor() {
     this.model = new Model(() => {
       this.isSuccess = true;
-      hilog.info(DOMAIN, 'testTag', '%{public}s', `this.isSuccess: ${this.isSuccess}`);
+      hilog.info(0xFF00, 'testTag', '%{public}s', `this.isSuccess: ${this.isSuccess}`);
     })
   }
 
@@ -80,7 +82,7 @@ export class Model {
 上述示例代码中，状态变量的修改在构造函数内。界面刚开始时显示“failed”，点击后日志打印“this.isSuccess: true”，表明修改成功，但界面仍然显示“failed”，这说明UI未刷新。
 
 【正例】
-<!-- @[state_problem_this_unable_observe_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObservePositive.ets) -->
+<!-- @[state_problem_this_unable_observe_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObservePositive.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -135,7 +137,7 @@ export class Model {
 在箭头函数中改变状态变量不会触发UI刷新，这是因为箭头函数体内的`this`对象是定义该函数时所在的作用域指向的对象，而不是调用时所在的作用域指向的对象。所以在该场景下，`changeCoverUrl`的`this`指向`PlayDetailViewModel`，而不是状态变量本身。
 
 【反例】
-<!-- @[play_detail_opposite_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailViewModel.ets) -->
+<!-- @[play_detail_opposite_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailViewModel.ets) --> 
 
 ``` TypeScript
 export default class PlayDetailViewModel {
@@ -146,7 +148,7 @@ export default class PlayDetailViewModel {
 }
 ```
 
-<!-- @[state_problem_arrow_function_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailPage.ets) -->
+<!-- @[state_problem_arrow_function_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailPage.ets) -->  
 
 ``` TypeScript
 import PlayDetailViewModel from './PlayDetailViewModel';
@@ -158,7 +160,10 @@ struct PlayDetailPage {
 
   build() {
     Stack() {
-      Text(this.vm.coverUrl).width(100).height(100).backgroundColor(this.vm.coverUrl)
+      Text(this.vm.coverUrl)
+        .width(100)
+        .height(100)
+        .backgroundColor(this.vm.coverUrl)
       Row() {
         Button('Change Color')
           .onClick(() => {
@@ -177,7 +182,7 @@ struct PlayDetailPage {
 
 【正例】
 
-<!-- @[play_detail_positive_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailViewModel.ets) -->
+<!-- @[play_detail_positive_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailViewModel.ets) --> 
 
 ``` TypeScript
 export default class PlayDetailViewModel {
@@ -200,7 +205,10 @@ struct PlayDetailPage {
 
   build() {
     Stack() {
-      Text(this.vm.coverUrl).width(100).height(100).backgroundColor(this.vm.coverUrl)
+      Text(this.vm.coverUrl)
+        .width(100)
+        .height(100)
+        .backgroundColor(this.vm.coverUrl)
       Row() {
         Button('Change Color')
           .onClick(() => {
@@ -220,14 +228,15 @@ struct PlayDetailPage {
 
 ### 使用简单属性数组导致冗余刷新
 
-在开发过程中，我们经常会需要设置多个组件的同一种属性，比如Text组件的内容、组件的宽度、高度等样式信息等。将这些属性保存在一个数组中，配合ForEach进行使用是一种简单且方便的方法。但这种使用方式会导致属性元素的冗余刷新，修改数组中一个属性元素，数组中所有元素绑定的组件都会被刷新。
+在开发过程中，我们经常会需要设置多个组件的同一种属性，比如Text组件的内容、组件的宽度、高度等样式信息等。将这些属性保存在一个数组中，配合[ForEach](../rendering-control/arkts-rendering-control-foreach.md)进行使用是一种简单且方便的方法。但这种使用方式会导致属性元素的冗余刷新，修改数组中一个属性元素，数组中所有元素绑定的组件都会被刷新。
 
 【反例】
 
-<!-- @[TextComponent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArray.ets) -->
+<!-- @[TextComponent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArray.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
@@ -321,10 +330,11 @@ struct Index {
 
 【正例】
 
-<!-- @[Information_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayUpdate.ets) -->
+<!-- @[Information_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayUpdate.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
@@ -395,7 +405,7 @@ struct Page {
     this.items.push('Head');
     this.items.push('List');
     for (let i = 0; i < 20; i++) {
-      this.infoList.push(new Info());
+      this.infoList.push(new Info()); // 使用对象数组代替了原有的多个属性数组
     }
   }
 
@@ -445,7 +455,7 @@ struct Page {
 
 【反例】
 
-<!-- @[StateArrayBig_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayBig.ets) -->
+<!-- @[StateArrayBig_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayBig.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -475,6 +485,7 @@ class UiStyle {
 @Component
 struct SpecialImage {
   @ObjectLink uiStyle: UiStyle;
+
   private isRenderSpecialImage(): number { // 显示组件是否渲染的函数
     hilog.info(DOMAIN_NUMBER, TAG, 'SpecialImage is rendered');
     return 1;
@@ -623,7 +634,7 @@ struct Page {
 
 ![properly-use-state-management-to-develope-3](figures/properly-use-state-management-to-develope-3.gif)
 
-优化前点击move按钮的脏节点更新耗时如下图：
+优化前点击move按钮的脏节点更新[耗时](../ui-inspector-profiler.md#trace调试能力)如下图：
 
 ![img](figures/properly-use-state-management-to-develope-11.PNG)
 
@@ -635,7 +646,7 @@ struct Page {
 
 【正例】
 
-<!-- @[StateArrayPrecise_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayPrecise.ets) -->
+<!-- @[StateArrayPrecise_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayPrecise.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -891,10 +902,11 @@ struct Page {
 
 使用[@Track](./arkts-track.md)装饰器则无需做属性拆分，也能达到同样控制组件更新范围的作用。
 
-<!-- @[StateArrayTrack_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayTrack.ets) -->
+<!-- @[StateArrayTrack_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayTrack.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
@@ -920,6 +932,7 @@ class UiStyle {
 @Component
 struct SpecialImage {
   @ObjectLink uiStyle: UiStyle;
+
   private isRenderSpecialImage(): number { // 显示组件是否渲染的函数
     hilog.info(DOMAIN_NUMBER, TAG, 'SpecialImage is rendered');
     return 1;
@@ -1070,16 +1083,18 @@ struct Page {
 
 【反例】
 
-<!-- @[StateArrayObserve_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayObserved.ets) -->
+<!-- @[StateArrayObserve_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayObserved.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
 @Observed
 class Child {
   public count: number;
+
   constructor(count: number) {
     this.count = count;
   }
@@ -1227,7 +1242,7 @@ struct Page {
 
 代码中对数据源childList重新赋值时，是通过Ancestor对象的方法loadData。
 
-<!-- @[StateArrayLoadDate_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLoadDate.ets) -->
+<!-- @[StateArrayLoadDate_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLoadDate.ets) --> 
 
 ``` TypeScript
 public loadData() {
@@ -1241,7 +1256,7 @@ public loadData() {
 
 有些开发者会注意到，在Page中初始化定义childList的时候，也是以这样一种方法去进行初始化的。
 
-<!-- @[StateArrayInit_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayInit.ets) -->
+<!-- @[StateArrayInit_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayInit.ets) --> 
 
 ``` TypeScript
 @State childList: ChildList = [new Child(1), new Child(2), new Child(3), new Child(4), new Child(5)];
@@ -1255,10 +1270,11 @@ public loadData() {
 
 【正例】
 
-<!-- @[StateArrayNo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayNo.ets) -->
+<!-- @[StateArrayNo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayNo.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
@@ -1397,6 +1413,7 @@ struct CompAncestor {
 struct Page {
   @State childList: ChildList = [new Child(1), new Child(2), new Child(3), new Child(4), new Child(5)];
   @State ancestor: Ancestor = new Ancestor(this.childList);
+
   build() {
     Column() {
       CompAncestor({ ancestor: this.ancestor })
@@ -1413,7 +1430,7 @@ struct Page {
 
 核心的修改点是将原本Child[]类型的tempList修改为具有被观测能力的ChildList类。
 
-<!-- @[StateArrayNo2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayNo2.ets) -->
+<!-- @[StateArrayNo2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayNo2.ets) --> 
 
 ``` TypeScript
 public loadData() {

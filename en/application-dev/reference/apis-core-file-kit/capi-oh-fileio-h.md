@@ -5,7 +5,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -39,7 +39,7 @@ Defines the native APIs used to obtain the location of a file.
 
 ### FileIO_FileLocation
 
-```
+```c
 enum FileIO_FileLocation
 ```
 
@@ -60,7 +60,7 @@ Enumerates the file locations.
 
 ### OH_FileIO_GetFileLocation()
 
-```
+```c
 FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)
 ```
 

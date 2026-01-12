@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbConfigDescriptor {...} __attribute__((packed)) UsbConfigDescriptor
+```
+
 ## Overview
 
 Defines standard configuration descriptors, which correspond to **Standard Configuration Descriptor** in the USB protocol.

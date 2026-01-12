@@ -386,7 +386,7 @@ struct Index {
 
 ## TouchEventReceiver
 
-(touchEvent: TouchEvent): Boolean
+type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 
 触屏输入事件的回调函数。
 
@@ -410,7 +410,6 @@ struct Index {
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -421,7 +420,7 @@ struct Index {
         .onClick(() => {
           try {
             inputMonitor.on('touch', touchEvent => {
-              if (touchEvent.touches.length == 3) { // 当前有三个手指按下
+              if (touchEvent.touches.length === 3) { // 当前有三个手指按下
                 return true;
               }
               return false;
@@ -466,7 +465,6 @@ on(type: 'pinch', receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gesturee
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1314,7 +1312,7 @@ on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGesture
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1369,7 +1367,7 @@ off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestu
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1397,7 +1395,7 @@ struct Index {
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1454,7 +1452,7 @@ on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGesture
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1509,7 +1507,7 @@ off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestu
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1537,7 +1535,7 @@ struct Index {
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1719,7 +1717,7 @@ queryTouchEvents(count: number): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;Array&lt;[TouchEvent](js-apis-touchevent-sys.md#touchevent)&gt;&gt; | Promise对象，返回查询到的触屏输入事件。包含以下有效信息：<br/>- actionTime：触屏输入事件发生的时间，表示从1970.1.1 00:00:00 GMT逝去的微秒数。<br/>- [SourceType](js-apis-touchevent.md#sourcetype)：触摸来源的设备类型。<br/>- [isInject](js-apis-touchevent-sys.md#touchevent)：表示该触屏输入事件是否为注入事件。<br/>- pressure：压力值，取值范围是[0.0, 1.0]，0.0表示不支持。<br/>- tiltX：相对YZ平面的角度，取值的范围[-90, 90]，其中正值是向右倾斜。<br/>- tiltY：相对XZ平面的角度，取值的范围[-90, 90]，其中正值是向下倾斜。<br/>- screenX：相对于屏幕左上角的X轴坐标，取值范围[0.0, 屏幕宽度]，向右递增。仅限指定应用获取。<br/>- screenY：相对于屏幕左上角的Y轴坐标，取值范围[0.0, 屏幕高度]，向下递增。仅限指定应用获取。 |
+| Promise&lt;Array&lt;[TouchEvent](js-apis-touchevent-sys.md#touchevent)&gt;&gt; | Promise对象，返回查询到的触屏输入事件。包含以下有效信息，其余均为无效信息：<br/>- actionTime：触屏输入事件发生的时间，表示从1970.1.1 00:00:00 GMT逝去的微秒数。<br/>- [SourceType](js-apis-touchevent.md#sourcetype)：触摸来源的设备类型。<br/>- [isInject](js-apis-touchevent-sys.md#touchevent)：表示该触屏输入事件是否为注入事件。<br/>- pressure：压力值，取值范围是[0.0, 1.0]，0.0表示不支持。<br/>- tiltX：相对YZ平面的角度，取值的范围[-90, 90]，其中正值是向右倾斜。<br/>- tiltY：相对XZ平面的角度，取值的范围[-90, 90]，其中正值是向下倾斜。<br/>从API version 23开始，可以额外获取以下有效信息：<br/>- [Action](js-apis-touchevent.md#action)：触屏输入事件类型。<br/>- screenX：相对于屏幕左上角的X轴坐标，单位为像素，取值范围[0, 屏幕宽度]，向右递增。仅限指定应用获取。<br/>- screenY：相对于屏幕左上角的Y轴坐标，单位为像素，取值范围[0, 屏幕高度]，向下递增。仅限指定应用获取。 |
 
 **错误码**：
 
@@ -1748,5 +1746,145 @@ try {
   const code = (error as BusinessError).code;
   const message = (error as BusinessError).message;
   console.error(`queryTouchEvents failed, error code: ${code}, message: ${message}.`);
+}
+```
+
+## inputMonitor.on('fingerprint')<sup>12+</sup>
+
+on(type: 'fingerprint', receiver: Callback&lt;FingerprintEvent&gt;): void
+
+监听指纹手势输入事件。使用callback异步回调。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**参数：**
+
+| 参数名   | 类型                                                        | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| type     | string                                                      | 是   | 输入事件类型，取唯一值'fingerprint'。 |
+| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt;    | 是   | 用于接收上报数据的回调函数。         |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputMonitor.on('fingerprint', (FingerprintEvent) => {
+              console.info(`Monitor on success ${JSON.stringify(FingerprintEvent)}`);
+              return false;
+            });
+          } catch (error) {
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.off('fingerprint')<sup>12+</sup>
+
+off(type: 'fingerprint', receiver?: Callback&lt;FingerprintEvent&gt;): void
+
+取消监听指纹手势输入事件。使用callback异步回调。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 输入事件类型，取值'fingerprint'。                    |
+| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import { FingerprintEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (fingerprintEvent: FingerprintEvent) => {
+            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            return false;
+          };
+          try {
+            inputMonitor.on('fingerprint', callback);
+            inputMonitor.off("fingerprint", callback);
+            console.info(`Monitor off success`);
+          } catch (error) {
+            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import { FingerprintEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (fingerprintEvent: FingerprintEvent) => {
+            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            return false;
+          };
+          try {
+            inputMonitor.on('fingerprint', callback);
+            inputMonitor.off("fingerprint");
+            console.info(`Monitor off success`);
+          } catch (error) {
+            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```

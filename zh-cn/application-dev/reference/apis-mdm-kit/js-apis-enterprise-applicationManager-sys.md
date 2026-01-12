@@ -334,7 +334,6 @@ removeDisallowedRunningBundles(admin: Want, appIds: Array\<string>, userId?: num
 
 **系统接口：** 此接口为系统接口。
 
-
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |

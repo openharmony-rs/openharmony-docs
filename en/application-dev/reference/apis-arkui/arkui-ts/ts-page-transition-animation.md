@@ -330,7 +330,7 @@ struct Page1 {
 
 ![pageTransition1](figures/pageTransition1.gif)
 
-Method 2: Configure the entrance animation of sliding in from the left and the exit animation of translating with opacity change.
+Customization method 2: The entrance animation of the current page is configured to slide in from the left, and the exit animation is configured to translate with opacity change.
 
 ```ts
 // Index.ets 
@@ -392,7 +392,7 @@ struct Page1 {
 
 ### Example 2: Setting Translation Effects for Entrance and Exit
 
-Method 1: Configure the various translation effects provided, with the system language layout mode set to right-to-left (RTL).
+Customization method 1: Configure the various entrance and exit translation effects provided, with the system language layout mode set to right-to-left (RTL).
 
 ```ts
 // Index.ets
@@ -477,7 +477,7 @@ struct Page1 {
 
 ![pageTransition1](figures/pageRTL.gif)
 
-Method 2: Use the system's default entrance and exit effects, with the system language layout mode set to right-to-left (RTL).
+Customization method 2: Use the system's default entrance and exit effects, with the system language layout mode set to right-to-left (RTL).
 
 ```ts
 // Index.ets

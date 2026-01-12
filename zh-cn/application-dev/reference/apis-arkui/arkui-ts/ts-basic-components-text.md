@@ -169,8 +169,7 @@ baselineOffset(value: number | ResourceStr)
 
 ### bindSelectionMenu<sup>11+</sup>
 
-bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: TextResponseType,
-    options?: SelectionMenuOptions)
+bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: TextResponseType, options?: SelectionMenuOptions)
 
 设置自定义选择菜单。
 
@@ -393,26 +392,24 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 
 enableDataDetector(enable: boolean)
 
-设置是否进行文本特殊实体识别。
+设置是否进行文本特殊实体识别。当enableDataDetector设置为true时，识别特殊实体。
 
-该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
+所识别实体的样式如下，即字体颜色改为蓝色、并添加蓝色下划线。
 
-当enableDataDetector设置为true，同时不设置[dataDetectorConfig](#datadetectorconfig11)属性时，默认识别所有类型的实体，所识别实体的样式如下，即字体颜色改为蓝色、并添加蓝色下划线。
-
-```ts
-color: '#ff007dff'
-decoration:{
-  type: TextDecorationType.Underline,
-  color: '#ff007dff',
-  style: TextDecorationStyle.SOLID
-}
+``` ts	
+color: '#ff007dff'	
+decoration:{	
+  type: TextDecorationType.Underline,	
+  color: '#ff007dff',	
+  style: TextDecorationStyle.SOLID	
+}	
 ```
 
-触摸点击和鼠标右键点击实体，会根据实体类型弹出对应的实体操作菜单，鼠标左键点击实体会直接响应菜单的第一个选项。
-
-当overflow设置为TextOverflow.MARQUEE时，该功能不会生效。
-
-当copyOption设置为CopyOptions.None时，点击实体弹出的菜单不包含选择文本、复制、翻译、分享和搜索功能。当copyOption不为CopyOptions.None，且textSelectable设置为TextSelectableMode.UNSELECTABLE时，仍然具有实体复制功能，但不包含选择文本功能。
+> **说明：**
+>
+> - 设备底层需要具备文本识别能力，该接口才能生效。
+> 
+> - 当[textOverflow](#textoverflow)设置为TextOverflow.MARQUEE时，不进行文本特殊实体识别。
 <!--RP2--><!--RP2End-->
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -462,6 +459,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
 
 当enableSelectedDataDetector设置为true时，默认识别所有类型的实体。
+
 需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -551,7 +549,7 @@ fontFamily(value: string | Resource)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 字体族。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。|
+| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 字体族。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。|
 
 ### fontFeature<sup>12+</sup>
 
@@ -596,6 +594,7 @@ fontFeature属性列表：
 ![alt text](figures/arkts-fontfeature.png)
 
 设置fontFeature属性，fontFeature是OpenType字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。
+
 更多fontFeature能力介绍可参考[font-feature-settings property](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop)和[OpenType Features](https://sparanoid.com/lab/opentype-features/)。
 
 ### fontSize
@@ -1042,7 +1041,7 @@ minLines(minLines: Optional\<number>)
 
 includeFontPadding(include: Optional\<boolean>)
 
-设置是否在首行和尾行增加间距以避免文字截断。
+设置是否在首行和尾行增加间距以避免文字截断。不通过该接口设置，默认不增加间距。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1058,7 +1057,7 @@ includeFontPadding(include: Optional\<boolean>)
 
 fallbackLineSpacing(enabled: Optional\<boolean>)
 
-针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。
+针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。不通过该接口设置，默认行高不基于文字实际高度自适应。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1100,7 +1099,13 @@ optimizeTrailingSpace(optimize: Optional\<boolean>)
 
 compressLeadingPunctuation(enabled: Optional\<boolean>)
 
-设置是否启用行首标点符号压缩功能。
+设置是否开启行首标点符号压缩。
+
+> **说明：**
+>
+> - 行首标点符号默认不压缩。
+>
+> - 支持压缩的标点符号，请参考[ParagraphStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)的行首压缩的标点范围。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1108,9 +1113,9 @@ compressLeadingPunctuation(enabled: Optional\<boolean>)
 
 **参数：**
 
-| 参数名           | 类型             | 必填 | 说明                                            |
-| ---------------- | ------- | ---- | ----------------------------------------------- |
-| enabled         | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用。|
+| 参数名 | 类型    | 必填 | 说明                               |
+| ------ | ------- | ---- | ---------------------------------- |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩。 |
 
 ### privacySensitive<sup>12+</sup>
 
@@ -1260,6 +1265,22 @@ textContentAlign(textContentAlign: Optional\<TextContentAlign>)
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | textContentAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21)> | 是   | 文本段落在垂直方向的对齐方式。<br/>默认(undefined和异常值情况下)和align属性设置为Center效果一致。|
+
+### textDirection<sup>23+</sup>
+
+textDirection(direction: TextDirection | undefined)
+
+指定文本排版方向，未通过该接口设置时，默认文本排版方向遵循组件布局方向。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                        | 必填 | 说明                                                       |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| direction  | [TextDirection](ts-text-common.md#textdirection22) \| undefined | 是   | 文本排版方向。<br/>设置为undefined时，按照TextDirection.DEFAULT处理，表现为文本排版方向遵循组件布局方向。 |
 
 ### textIndent<sup>10+</sup>
 
@@ -1637,7 +1658,7 @@ Marquee初始化参数。
 |--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
 | start              | boolean                                         | 否  | 否 | 控制跑马灯进入播放状态。<br/>true表示播放，false表示不播放。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | step               | number                                          | 否  | 是 | 滚动动画文本滚动步长。<br/>默认值：4.0vp <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                         |
-| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 两轮跑马灯之间的间距。<br/>默认值：48.0vp <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 两轮跑马灯之间的间距。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br/>默认值：48.0vp <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | loop               | number                                          | 否  | 是 | 设置重复滚动的次数，小于等于零时无限循环。<br/>默认值：-1  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                          |
 | fromStart          | boolean                                         | 否  | 是 | 设置文本从头开始滚动或反向滚动。<br/>true表示从头开始滚动，false表示反向滚动。<br/>默认值：true <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | delay              | number                                          | 否  | 是 | 设置每次滚动的时间间隔。<br/>默认值：0 <br/>单位：毫秒  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。   |
@@ -2792,13 +2813,14 @@ struct TextExample14 {
 
 从API version 20开始，该示例通过[contentTransition](#contenttransition20)属性展示了数字翻牌效果。
 
-```ts
+``` ts
 // xxx.ets
 @Entry
 @Component
 struct TextNumberTransition {
   @State number: number = 98;
-  @State numberTransition: NumericTextTransition = new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
+  @State numberTransition: NumericTextTransition =
+    new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
 
   build() {
     Column() {
@@ -2806,12 +2828,13 @@ struct TextNumberTransition {
         .borderWidth(1)
         .fontSize(40)
         .contentTransition(this.numberTransition)
-      Button("chang number")
+      Button("change number")
         .onClick(() => {
           this.number++;
         })
         .margin(10)
     }
+    .justifyContent(FlexAlign.Center)
     .height('100%')
     .width('100%')
   }
@@ -3075,3 +3098,45 @@ struct TextTest {
 ```
 
 ![selectedDragPreviewStyle](figures/textSelectedDragPreviewStyle.png)
+
+### 示例26（设置文本排版方向）
+
+该示例通过[textDirection](#textdirection23)接口设置文本排版方向。
+
+从API version 23开始，新增textDirection接口。
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct TextExample {
+  @State text: string = 'Text文本排版方向示例';
+
+  build() {
+    Column({ space: 3 }) {
+      Text('Text文本排版方向DEFAULT')
+        .fontSize(12).width('90%').margin(5)
+      Text(this.text)
+        .width('95%')
+        .borderWidth(1)
+      Text('Text文本排版方向RTL')
+        .fontSize(12).width('90%').margin(5)
+      Text(this.text)
+        .width('95%')
+        .borderWidth(1)
+        .textDirection(TextDirection.RTL)
+      Text('Text文本排版方向RTL，文本水平方向对齐方式LEFT')
+        .fontSize(12).width('90%').margin(5)
+      Text(this.text)
+        .width('95%')
+        .borderWidth(1)
+        .textDirection(TextDirection.RTL)
+        .textAlign(TextAlign.LEFT)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![textTextDirection](figures/textTextDirection.PNG)

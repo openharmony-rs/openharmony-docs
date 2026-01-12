@@ -125,7 +125,7 @@ plugin_configs字段介绍：
 | [xpower plugin](#xpower-plugin插件) | 获取进程能耗使用情况的数据。 | - |
 | [memory plugin](#memory-plugin插件) | 获取进程内存占用情况，主要是获取进程smaps节点的数据。 | - |
 | [diskio plugin](#diskio-plugin插件) | 获取进程磁盘空间占用情况。 | - |
-| network profiler | 通过进程内打点，获取进程HTTP请求的详细信息。 | 采集的进程仅支持[使用调试证书签名的应用](#使用调试证书签名的应用)。|
+| [network profiler](#network-profiler插件) | 通过进程内打点，获取进程HTTP/HTTPS请求的详细信息。 | 采集的进程仅支持[使用调试证书签名的应用](#使用调试证书签名的应用)。|
 | [network plugin](#network-plugin插件) | 获取进程网络流量统计信息。 | - |
 | [hisysevent plugin](#hisysevent-plugin插件) | 通过hisysevent命令，获取hisysevent的事件记录数据。 | - |
 | [hidump plugin](#hidump-plugin插件) | 通过SP_daemon命令获取相关数据。 | - |
@@ -166,7 +166,8 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | -------- | -------- | -------- | -------- |
 | fp_unwind | bool | true表示使用fp回栈方式进行回栈；<br/>false表示使用dwarf回栈方式进行回栈。 | fp回栈是利用了x29寄存器保存的fp指针，函数的fp指针始终指向父函数（调用方）的fp指针，调优服务根据这一特点进行回栈，根据ip计算相对PC，然后查找maps对应区间来进行符号化。<br/>由于现在编译期越来越优化，出现寄存器重用或者编译禁用fp，会导致fp方式回不出相应的栈；混合栈情况下，fp不会记录多重混合，于是便需要dwarf回栈方式做更精确的回栈。<br/>dwarf回栈是根据pc寄存器在map表中查找对应的map信息，由于dwarf是逐级解析调用栈，所以其性能会比fp有劣化。<br/>注意：fp回栈暂不支持调优非aarch64架构的设备。 | 
 | statistics_interval | int | 统计间隔，表示将一个统计周期内的栈进行汇总，单位：s。 | 为实现长时间轻量化采集，提供统计模式抓栈。如果更关注调优时的性能，只需要知道每个调用栈出现的次数和总大小，不需要知道每一次具体时间，可以使用统计模式。 | 
-| startup_mode | bool | 是否抓取进程启动阶段内存。默认不抓取启动阶段内存。 | 记录进程从被appspawn拉起到调优结束这个期间内堆内存分配的信息。如果抓的是一个sa服务，需要在sa对应的cfg文件中找到拉起sa的进程名（如sa_main），将之加到此参数。 | 
+| process_name | string | 需要进行内存调优的进程名 | 和/proc/节点下的进程名一致。 | 
+| startup_mode | bool | 是否抓取进程启动阶段内存。默认不抓取启动阶段内存。 | 记录进程孵化启动到调优结束这个期间内堆内存分配的信息。 | 
 | js_stack_report | int | 是否开启跨语言回栈。<br/>0：不抓取js栈。<br/>1：开启抓取js栈。 | 为方舟环境提供跨语言回栈功能。 | 
 | malloc_free_matching_interval | int | 匹配间隔，单位：s，指在相应时间间隔内，将malloc和free进行匹配。匹配到的就不进行落盘。 | 在匹配间隔内，分配并释放了的调用栈不被记录，减少了抓栈服务进程的开销。此参数设置的值大于0时，就不能将statistics_interval参数设置为true。 | 
 | offline_symbolization | bool | 是否开启离线符号化。<br/>true：使用离线符号化。<br/>false：使用在线符号化。 | 使用离线符号化时，根据IP匹配符号的操作在网页端（smartperf）完成，优化了native daemon的性能，减少了调优时的进程卡顿。但离线符号化会将符号表写入trace文件，导致文件大小比在线符号化时更大。 |
@@ -355,6 +356,7 @@ CONFIG
 ![memory_001](figures/memory_001.png)
 
 通过DevEco Studio 的工具获得内存的数据：
+
 ![zh-cn_image_0000002357083514](figures/zh-cn_image_0000002357083514.png)
 
 通过DevEco-&gt;profiler-&gt;Allocation工具，选择Memory泳道，可以使用profiler的memory plugin功能。上图展示了框选时间段的进程smaps内存信息。
@@ -557,7 +559,7 @@ CONFIG
 
 ### network plugin插件
  
-获取网络上行下载相关的数据。
+获取网络上行下载相关的数据。统计网络管理模块提供的网络流量、连接状态等。
 
 **参数介绍**
 
@@ -613,6 +615,28 @@ CONFIG
 
 ![network_001.png](figures/network_001.png)
 
+### network profiler插件
+ 
+获取进程的网络请求信息，会把每次HTTP请求当作一个数据点记录下来。
+
+**参数介绍**
+
+| 参数名字 | 类型 | 参数含义 | 必选 | 详细介绍 | 
+| -------- | -------- | -------- | -------- | -------- |
+| pid | int32 | 进程ID。 | 否 | 获取指定进程的网络数据。可以传入多个参数。参数缺省时，则抓取整机的网络数据。 |
+| startup_process_name | string | 启动的进程名。 | 否 | 如果需要抓取指定进程启动的网络数据，则需要指定此参数。 |
+| restart_process_name | string | 重启的进程名。 | 否 | 如果需要抓取指定进程重启的网络数据，则需要指定此参数。 |
+| clock_id | int | 时间时钟类型 | 是 | 1：BOOTTIME，系统启动后单调递增时间（含NTP调整）。<br /> 2：REALTIME，可调整的系统实时时间。<br />3：REALTIME_COARSE，低精度实时时间。<br />4：MONOTONIC，无NTP调整的单调递增时间。<br />5：MONOTONIC_COARSE，低精度单调递增时间。<br />6：MONOTONIC_RAW，硬件原始单调递增时间。 |
+| smb_pages | int | 共享内存页数 | 是 | hiprofiler_plugins进程和被调优进程建立的共享内存大小，建议值为16384个页大小，即：16384*4096=67108864字节（64M）。 |
+| flush_interval | int |  磁盘写入间隔 | 否 | 每`flush_interval`次网络请求触发一次磁盘写入，优化IO效率。<br />默认值为1。 |
+| block | bool | 阻塞模式开关 | 否 | true：共享内存满时阻塞采集，可能影响性能。<br /> false：共享内存满时丢弃超出部分的数据。<br />默认值为false。 |
+
+
+**结果分析**
+
+smartperf工具暂时不支持该插件的trace数据解析，若需分析network数据，请使用DevEco Studio的Profiler工具下的NetWork功能。可参考：
+
+[网络诊断：NetWork分析](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-profiler-network)
 
 ## 常用命令
 
@@ -783,6 +807,7 @@ hidumper抓取的是进程维度内存使用情况，hiprofiler抓取到的是�
 **可能原因&amp;解决方法**
 
 可以通过hiprofiler_cmd命令中config参数配置来进行调整。
+
 hiprofiler_cmd命令中config参数的调整方法如下：
  - 适当减小max_stack_depth和max_js_stack_depth参数的值，减少回栈深度，减少调用栈信息的采集。
  - 适当增大smb_pages参数的值，增大调优数据传输的共享内存大小。默认值为16384个页大小，即：16384*4096=67108864字节（64M）。可以调整到128M。

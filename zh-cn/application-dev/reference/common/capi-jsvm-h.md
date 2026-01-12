@@ -685,7 +685,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScript(JSVM_Env env,JSVM_Value script,con
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_CANNOT_RUN_JS](capi-jsvm-types-h.md#jsvm_status) 不能执行JS。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
 
 ### OH_JSVM_CompileScriptWithOrigin()
 
@@ -717,7 +717,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOrigin(JSVM_Env env,JSVM_Value 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。<br>         [JSVM_CANNOT_RUN_JS](capi-jsvm-types-h.md#jsvm_status) 不能执行JS。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
 
 ### OH_JSVM_CompileScriptWithOptions()
 

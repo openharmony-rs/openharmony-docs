@@ -80,7 +80,7 @@ export default {
 > When setting the value range of a common selector, you must use the data binding mode.
 
 
-## Setting the Time Format
+## Setting the Time Display Format
 
 Set the **hours** attribute to specify the time format used by the time picker. Available values include **12** and **24**, indicating the 12-hour format and 24-hour format, respectively.
 

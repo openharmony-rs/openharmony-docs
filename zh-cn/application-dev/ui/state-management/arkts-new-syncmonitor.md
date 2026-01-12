@@ -57,7 +57,7 @@
 
 [addMonitor和clearMonitor](./arkts-new-addMonitor-clearMonitor.md)API允许在应用程序执行期间动态添加和清除监听器。当isSynchronous设置为true，addMonitor类似于\@SyncMonitor, 当设置为false，addMonitor类似于\@Monitor功能。
 
-\@Monitor和\@SyncMonitor分别是\@ComponentV2和\@ObservedV2类的成员函数装饰器，属于V2状态管理的一部分。\@Watch是\@Component中使用的变量装饰器，属于V1状态管理的一部分。
+\@Monitor和\@SyncMonitor分别是\@ComponentV2和\@ObservedV2类的成员函数装饰器，属于V2状态管理的一部分。\@Watch是\[@Component](./arkts-create-custom-components.md#component)中使用的变量装饰器，属于V1状态管理的一部分。
 
 \@Monitor装饰的函数会异步执行，在事件处理程序执行结束后执行。\@SyncMonitor和\@Watch函数在观察到的状态变量改变后，回调函数会立即同步执行。
 
@@ -88,8 +88,11 @@ struct CompV2 {
 }
 ```
 其中，ClassA是指复杂对象类型。下面的例子使用\@SyncMonitor和\@Monitor来跟踪sum属性的变化。
+
 代码计算数组元素的和，在循环中计算sum时，sum的值依次变为0, 1, 3, 6。
+
 \@Monitor只调用一次，before值为0，now值为6。
+
 \@SyncMonitor将调用其回调3次，分别对应从0到1、1到3和3到6的变化。
 
 ```typescript
@@ -406,9 +409,9 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 
 \@SyncMonitor还有一些通用的监听能力。
 
-- \@SyncMonitor支持对数组中的项进行监听，包括多维数组，对象数组。\@SyncMonitor可以观察由数组函数执行引起的变化。当\@SyncMonitor观察整个数组时，只能检测到整个数组的值变化。可以通过监听数组的长度变化来判断数组是否有插入、删除等变化。目前，只能使用点符号 (.) 来观察嵌套属性和数组项。
+- \@SyncMonitor支持对数组项进行监听，包括多维数组，对象数组。\@SyncMonitor可以观察由数组函数执行引起的变化。当\@SyncMonitor观察整个数组时，只能检测到整个数组的值变化。可以通过监听数组的长度变化来判断数组是否有插入、删除等变化。目前，只能使用点符号 (.) 来观察嵌套属性和数组项。
 
-- \@SyncMonitor可以观察由调用内置类型`Map``Date`和`Set`的API引起的变化，例如，如果调用`set`、`add`、`delete`修改数据集合，则将执行监听函数。`Map`和`Set`中对应key的变化，不会执行监听函数，框架会打印错误日志。
+- \@SyncMonitor可以观察由调用内置类型`Map`，`Date`和`Set`的API引起的变化，例如，如果调用`set`、`add`、`delete`修改数据集合，则将执行监听函数。`Map`和`Set`中对应key的变化，不会执行监听函数，框架会打印错误日志。
 
   
   ``` TypeScript
@@ -577,7 +580,8 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
   ```
 
 - 在一次事件中多次改变被\@SyncMonitor监听的属性，\@SyncMonitor回调将在该属性每次改变时被调用。
-\@SyncMonitor与\@Monitor行为不一样，\@Monitor只被调用一次并以最后一次修改为准。
+
+  \@SyncMonitor与\@Monitor行为不一样，\@Monitor只被调用一次并以最后一次修改为准。
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -628,13 +632,13 @@ count change from 2 to 3
 count change from 999 to 1000
 ```
 
-点击**change count to 0 then to 1000**后，**onCountChange**也被触发1001次：
+只点击**change count to 0 then to 1000**后，**onCountChange**被触发1001次：
 ```typescript
 count change from 0 to 999
 count change from 999 to 998
 ...
 count change from 1 to 0
-count change from 1 to 1000
+count change from 0 to 1000
 ```
 与\@Monitor的区别：在上面的例子中将@SyncMonitor('count')替换为@Monitor('count')。按下任一按钮，@Monitor装饰的监听函数仅执行一次。
 
@@ -666,7 +670,7 @@ struct DocSampleArrayMultiPath {
       Button('Change array with array functions')
         .onClick(() => {
           hilog.info(0xFF00, 'testTag', 'splice execute ...');
-          // changes arr from [ 0, 1, 2, 3, 4, 5 ] to [ 1, 100, 101, 102, 5]
+          // changes arr from [ 0, 1, 2, 3, 4, 5 ] to [ 0, 100, 101, 102, 5]
           this.arr.splice(1, 4, 100, 101, 102);
           hilog.info(0xFF00, 'testTag', 'shift execute ...');
           // changes arr from [ 1, 100, 101, 102, 5] to [ 100, 101, 102, 5]
@@ -742,7 +746,9 @@ class ClassA {
   }
 }
 ```
+
 点击按钮#1或#2（更新被监听对象`cls`的属性）时，`m.dirty`的值将相同，包含`m.dirty==['cls.*']`。框架无法准确告知是哪个属性触发了监听函数的执行。
+
 对于按钮#3（给`cls`属性赋予新对象），框架会将`cls`传递给脏属性数组，即`m.dirty==['cls.*']`。
 
 ```typescript
@@ -926,16 +932,18 @@ export struct DocSampleNestedClass {
 第二次按下同一个按钮`#6 Class0 toggle number <=> new Class0`时，框架将再次调用监听函数并通知它对象已从`undefined`更改为`Person`类的实例。
 
 \@Monitor和\@SyncMonitor对路径变为不可用的处理方式存在差异。
+
 \@SyncMonitor在两种情况下都会触发执行 - 当路径变为不可用时和当路径再次变为可用时。
+
 \@Monitor只触发一种情况的执行 - 仅当路径再次变为可用时。当路径上的对象被赋值为undefined时，\@Monitor装饰的回调函数将不会触发执行。
 
 如果在示例应用程序中有`@Monitor('class0.class1.person')`，那么当路径变为不可用时，\@Monitor将无法监听这个变化。当以`this.class0 = 500`的方式更改值时，\@Monitor装饰的回调函数不会被触发。当再次为`Class0`赋值时，即执行`this.class0 = new Class0`，\@Monitor装饰的回调函数将被触发。
 
 ### 模糊监听数组项的变化
 
-嵌套被观察对象属性更改时，监听函数会执行
-观察包含被观察数组的数组更改时的监听执行，监听两个路径
+嵌套的被观察对象的属性更改时，会执行监听函数。
 
+观察数组及数组项更改时，也会执行监听函数。
 
 在以下例子中，有两个\@SyncMonitor监听的路径分别为：`topArray.1.*`和`topArray.*`。
 
@@ -987,7 +995,7 @@ struct DocSampleArrayOfArrays {
         .fontSize(30)
 
       // 因为脏的路径中包含'topArray.1'，会触发路径为'topArray.1.*'的@SyncMonitor的回调
-      // 因为脏的路径中包含'topArray'，会触发路径为'topArray.1.*'的@SyncMonitor的回调
+      // 因为脏的路径中包含'topArray'，会触发路径为'topArray.*'的@SyncMonitor的回调
       Button('topArray = new TopArray')
         .onClick(() => {
           this.topArray = this.makeNewTopArray();
@@ -1107,7 +1115,7 @@ struct DocSampleArrayOfArrays {
     @Trace public age: number = 25;
     @Trace public position: string = 'North';
   
-    @SyncMonitor('name', 'age') // Monitor 1
+    @SyncMonitor('name', 'age') // SyncMonitor 1
     onNameAgeChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         hilog.info(0xFF00, 'testTag', '%{public}s',
@@ -1115,7 +1123,7 @@ struct DocSampleArrayOfArrays {
       });
     }
   
-    @SyncMonitor('name', 'position') // Monitor 2
+    @SyncMonitor('name', 'position') // SyncMonitor 2
     onNamePositionChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         hilog.info(0xFF00, 'testTag', '%{public}s',
@@ -1124,7 +1132,7 @@ struct DocSampleArrayOfArrays {
     }
   
     // 重复监听name、position，仅最后定义的生效
-    @SyncMonitor('name', 'position') // Monitor3
+    @SyncMonitor('name', 'position') // SyncMonitor 3
     onNamePositionChangeDuplicate(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         hilog.info(0xFF00, 'testTag', '%{public}s',
@@ -1149,45 +1157,47 @@ struct DocSampleArrayOfArrays {
   }
   ```
 
-- \@SyncMonitor的参数需要为监听属性名的字符串，仅可以使用字符串字面量、const常量、enum枚举值作为参数。如果使用变量作为参数，仅会监听\@SyncMonitor初始化时，变量值所对应的属性。当更改变量时，\@SyncMonitor无法实时改变监听的属性，即\@SyncMonitor监听的目标属性从初始化时便已经确定，无法动态更改。不建议开发者使用变量作为\@SyncMonitor的参数进行初始化。
+- \@SyncMonitor的参数需要为监听属性名的字符串，仅可以使用字符串字面量，不支持const常量、enum枚举值及变量作为参数。如果使用const常量、enum枚举值及变量作为参数，会编译报错，如下提供用例展示@SyncMonitor正常使用场景。
 
   ```TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
-  const t2: string = 't2'; // const常量
+  const propB: string = 'propB'; // const常量
   
   enum ENUM {
-    T3 = 't3' // enum枚举值
+    propC = 'PropC' // enum枚举值
   };
-  let t4: string = 't4'; // 变量
+  let propD: string = 'propD'; // 变量
   
   @ObservedV2
   class Info {
-    @Trace public t1: number = 0;
-    @Trace public t2: number = 0;
-    @Trace public t3: number = 0;
-    @Trace public t4: number = 0;
-    @Trace public t5: number = 0;
+    @Trace public propA: number = 0;
+    @Trace public propB: number = 0;
+    @Trace public propC: number = 0;
+    @Trace public propD: number = 0;
   
-    // 字符串字面量
-    @SyncMonitor('t1')
-    onT1Change(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s', `t1 change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    // @SyncMonitor仅支持字符串字面量
+    @SyncMonitor('propA')
+    onPropAChange(monitor: IMonitor) {
+      hilog.info(0xFF00, 'testTag', '%{public}s', `propA change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
     }
   
-    @SyncMonitor(t2)
-    onT2Change(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s', `t2 change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    // @SyncMonitor入参类型为const常量，编译会报错，提示`Only constant expressions are supported as parameters in '@SyncMonitor'. Variables are not allowed.`
+    @SyncMonitor(propB)
+    onPropBChange(monitor: IMonitor) {
+      hilog.info(0xFF00, 'testTag', '%{public}s', `propB change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
     }
-  
-    @SyncMonitor(ENUM.T3)
-    onT3Change(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s', `t3 change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    
+    // @SyncMonitor入参类型为enum枚举值，编译会报错，提示`Only constant expressions are supported as parameters in '@SyncMonitor'. Variables are not allowed.`
+    @SyncMonitor(ENUM.propC)
+    onPropCChange(monitor: IMonitor) {
+      hilog.info(0xFF00, 'testTag', '%{public}s', `propC change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
     }
-  
-    @SyncMonitor(t4)
-    onT4Change(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s', `t4 change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    
+    // @SyncMonitor入参类型为变量，编译会报错，提示`Only constant expressions are supported as parameters in '@SyncMonitor'. Variables are not allowed.`
+    @SyncMonitor(propD)
+    onPropDChange(monitor: IMonitor) {
+      hilog.info(0xFF00, 'testTag', '%{public}s', `propD change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
     }
   }
   
@@ -1198,33 +1208,9 @@ struct DocSampleArrayOfArrays {
   
     build() {
       Column() {
-        Button('Change t1')
+        Button('Change propA')
           .onClick(() => {
-            this.info.t1++; // 能够触发onT1Change方法
-          })
-        Button('Change t2')
-          .onClick(() => {
-            this.info.t2++; // 能够触发onT2Change方法
-          })
-        Button('Change t3')
-          .onClick(() => {
-            this.info.t3++; // 能够触发onT3Change方法
-          })
-        Button('Change t4')
-          .onClick(() => {
-            this.info.t4++; // 能够触发onT4Change方法
-          })
-        Button('Change var t4 to t5')
-          .onClick(() => {
-            t4 = 't5'; // 更改变量值为't5'
-          })
-        Button('Change t5')
-          .onClick(() => {
-            this.info.t5++; // onT4Change仍监听t4，不会触发
-          })
-        Button('Change t4 again')
-          .onClick(() => {
-            this.info.t4++; // 能够触发onT4Change方法
+            this.info.propA++; // 能够触发onPropAChange方法
           })
       }
     }
@@ -1634,7 +1620,7 @@ class Info {
   public name: string = 'John';
   @Trace public age: number = 24;
 
-  // 只运行监听状态变量age，监听非状态变量name，会编译报错
+  // 只运行监听状态变量age，监听非状态变量name，会编译告警，提示`Cannot observe non-existent variables or non-state variables, except in wildcard-based monitoring scenarios.`
   @SyncMonitor('age', 'name')
   onPropertyChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {

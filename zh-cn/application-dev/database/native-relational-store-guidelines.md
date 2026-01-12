@@ -463,8 +463,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     ```
 5. 使用事务对象进行插入、删除或更新数据操作。
 
-   调用OH_RdbTransOption_SetType方法，配置要创建的事务类型，
-   支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
+   调用OH_RdbTransOption_SetType方法，配置要创建的事务类型，支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
 
    调用OH_Rdb_CreateTransaction方法创建事务对象，使用该事务对象执行相应事务操作。
 
@@ -643,6 +642,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 6. 附加数据库。
    
     调用OH_Rdb_Attach将一个数据库文件附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据。
+    
     此API不支持附加加密数据库。
 
     调用attach接口后，数据库切换为非WAL模式，性能会存在一定的劣化。切换模式需要确保所有的OH_Cursor都已经销毁，所有的写操作已经结束，否则会报错14800015。

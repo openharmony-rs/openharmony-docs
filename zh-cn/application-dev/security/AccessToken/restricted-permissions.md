@@ -590,6 +590,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 允许扩展外设驱动访问SCSI DDK接口开发SCSI Peripheral扩展外设驱动。
 
 支持以下类型的外设扩展驱动开发：
+
 外设以USB总线接入主机，且满足：
 
 1. 外设InterfaceClass为Mass Storage(0x08)、InterfaceSubClass为SCSI透明命令集(0x06)。
@@ -901,7 +902,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **支持设备**：PC/2in1
 
-**起始版本**：22
+**起始版本**：23
 
 ## ohos.permission.GET_IP_MAC_INFO
 
@@ -964,3 +965,45 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **起始版本**：20
 
 **变更信息**：在API 20-21，该权限面向系统应用开放；从API 22开始，面向普通应用开放。
+
+## ohos.permission.CRYPTO_EXTENSION_REGISTER
+
+允许应用注册和注销crypto扩展。
+
+<!--RP62--><!--RP62End-->
+
+**权限级别**：system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: PC/2in1
+
+**起始版本**: 22
+
+## ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
+
+允许应用获取和管理当前设备正在播放的媒体资源。
+
+<!--RP63--><!--RP63End-->
+
+**权限级别**：system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: Phone | PC/2in1 | Tablet | TV | Car
+
+**起始版本**: 23
+
+## ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+允许应用管理通话状态。如获取来电号码、接听、拒接、挂断等.
+
+<!--RP64--><!--RP64End-->
+
+**权限级别**: system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: Phone | PC/2in1 | Tablet
+
+**起始版本**: 23

@@ -119,7 +119,7 @@ Defines the context environment for the [ExtensionAbility](../apis-ability-kit/j
 
 type FormExtensionContext = _FormExtensionContext.default
 
-Defines the context environment for the [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md). It inherits from Context.
+Defines the context environment for the [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md). It inherits from [ExtensionContext](./js-apis-inner-application-extensionContext.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -311,6 +311,38 @@ Defines the context environment for the [AppServiceExtensionAbility](js-apis-app
 | --- | --- |
 | [_AppServiceExtensionContext.default](js-apis-inner-application-appServiceExtensionContext.md) | Default context of the AppServiceExtensionAbility.|
 
+## FormEditExtensionContext<sup>22+</sup>
+
+type FormEditExtensionContext = _FormEditExtensionContext.default
+
+Defines the context environment for the [FormEditExtensionAbility](../apis-form-kit/js-apis-app-form-formEditExtensionAbility.md). It inherits from [UIExtensionContext](./js-apis-inner-application-uiExtensionContext.md).
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Ability.Form
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Type| Description|
+| --- | --- |
+| [_FormEditExtensionContext.default](../apis-form-kit/js-apis-inner-application-formEditExtensionContext.md) | Default context of the FormEditExtensionAbility.|
+
+## LiveFormExtensionContext<sup>22+</sup>
+
+type LiveFormExtensionContext = _LiveFormExtensionContext.default
+
+Defines the context environment for the [LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md). It inherits from [ExtensionContext](./js-apis-inner-application-extensionContext.md).
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Ability.Form
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Type| Description|
+| --- | --- |
+| [_LiveFormExtensionContext.default](../apis-form-kit/js-apis-application-LiveFormExtensionContext.md) | Default context of the LiveFormExtensionAbility.|
+
 **Example**
 
 ```ts
@@ -335,4 +367,6 @@ let photoEditorExtensionContext: common.PhotoEditorExtensionContext;
 let uiServiceProxy : common.UIServiceProxy;
 let uiServiceExtensionConnectCallback : common.UIServiceExtensionConnectCallback;
 let appServiceExtensionContext : common.AppServiceExtensionContext;
+let formEditExtensionContext : common.FormEditExtensionContext;
+let liveFormExtensionContext : common.LiveFormExtensionContext;
 ```

@@ -495,7 +495,7 @@ int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, v
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
-**起始版本：** 22
+**起始版本：** 23
 
 **参数：**
 

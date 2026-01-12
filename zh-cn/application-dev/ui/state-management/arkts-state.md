@@ -138,7 +138,7 @@
 
 1. \@State装饰的变量必须初始化，否则编译期会报错。
 
-    ```ts	
+    ```ts
     // 错误写法，编译报错
     @State count: number;
     
@@ -147,7 +147,8 @@
     ```
 
 2. \@State不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
-从API version 23开始，添加对\@State装饰Function类型变量的校验，编译期会报错。
+
+   从API version 23开始，添加对\@State装饰Function类型变量的校验，编译期会报错。
 
 ## 使用场景
 

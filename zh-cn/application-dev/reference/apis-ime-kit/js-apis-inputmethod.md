@@ -577,7 +577,7 @@ getInputMethodController(): InputMethodController
 
 > **说明：** 
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[getController()](#inputmethodgetcontroller9)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[getController](#inputmethodgetcontroller9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -601,7 +601,7 @@ getInputMethodSetting(): InputMethodSetting
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getSetting()](#inputmethodgetsetting9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getSetting](#inputmethodgetsetting9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -660,9 +660,9 @@ import { Callback } from '@kit.BasicServicesKit';
 let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
   (reason: inputMethod.AttachFailureReason): void => {
     console.info(`Attachment failed with reason: ${reason}.`);
-	if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
-	  console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
-	}
+  if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+  }
   };
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
 ```
@@ -689,9 +689,9 @@ import { Callback } from '@kit.BasicServicesKit';
 let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
   (reason: inputMethod.AttachFailureReason): void => {
     console.info(`Attachment failed with reason: ${reason}.`);
-	if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
-	  console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
-	}
+  if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+  }
   };
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
 inputMethod.offAttachmentDidFail(attachmentDidFailCallback);
@@ -862,6 +862,7 @@ Enter键的功能类型。
 | top  | number | 否 | 否 | 输入法窗口左上顶点的纵坐标，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。|
 | width  | number | 否 | 否 | 输入法窗口的宽度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。|
 | height  | number | 否 | 否 | 输入法窗口的高度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。|
+| displayId<sup>23+</sup> | number | 否 | 是 | 输入法软键盘窗口所在的屏幕ID。<br>**模型约束：** 该参数仅可在Stage模型下使用。|
 
 ## EnabledState<sup>15+</sup>
 
@@ -993,6 +994,19 @@ type SetPreviewTextCallback = (text: string, range: Range) => void
 | CALLER_NOT_FOCUSED    | 0 |表示调用者非焦点窗口所属应用导致的失败。 |
 | IME_ABNORMAL  | 1 |表示输入法应用异常导致的失败。 |
 | SERVICE_ABNORMAL  | 2 |表示输入法框架服务异常导致的失败。 |
+
+## AttachOptions<sup>23+</sup>
+
+绑定输入法的附加选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | 否 | 是 |请求键盘输入的原因。|
+| showKeyboard | boolean | 否 | 是 | 绑定输入法成功后，是否拉起输入法键盘。<br>- true表示拉起。<br>- false表示不拉起。|
 
 ## InputMethodController
 
@@ -1154,6 +1168,63 @@ let textConfig: inputMethod.TextConfig = { inputAttribute: inputAttribute };
 let requestKeyboardReason: inputMethod.RequestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
 
 inputMethod.getController().attach(true, textConfig, requestKeyboardReason).then(() => {
+  console.info('Succeeded in attaching inputMethod.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### attachWithUIContext<sup>23+</sup>
+
+attachWithUIContext(uiContext: UIContext, textConfig: TextConfig, attachOptions?: AttachOptions): Promise&lt;void&gt;
+
+自绘控件绑定输入法。使用promise异步回调。
+
+> **说明：**
+>
+> 需要先调用此接口，完成自绘控件与输入法的绑定，才能使用以下功能：显示/隐藏键盘、更新光标信息、更改编辑框选中范围、保存配置信息、监听处理由输入法应用发送的信息或命令等。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+|  参数名  |    类型  |   必填   |   说明   |
+| -------- | -------- | -------- | -------- |
+| uiContext | [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md) | 是 | UIContext实例对象。|
+| textConfig | [TextConfig](#textconfig10) | 是 | 编辑框的配置信息。|
+| attachOptions | [AttachOptions](#attachoptions23) | 否 | 绑定附加选项。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 12800003 | input method client error. Possible causes:1.the edit box is not focused. 2.no edit box is bound to current input method application.3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIContext } from '@kit.ArkUI';
+
+let uiContext: UIContext | undefined = UIContext.getCallingScopeUIContext();
+let inputAttribute: inputMethod.InputAttribute = {
+  textInputType: inputMethod.TextInputType.TEXT,
+  enterKeyType: inputMethod.EnterKeyType.GO
+}
+let textConfig: inputMethod.TextConfig = { inputAttribute: inputAttribute };
+let attachOptions: inputMethod.AttachOptions = { showKeyboard: true };
+inputMethod.getController().attachWithUIContext(uiContext, textConfig, attachOptions).then(() => {
   console.info('Succeeded in attaching inputMethod.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
@@ -2220,7 +2291,7 @@ stopInput(callback: AsyncCallback&lt;boolean&gt;): void
 > 
 > 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用该接口结束输入会话。
 > 
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession()](#stopinputsession9)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession](#stopinputsession9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2258,7 +2329,7 @@ stopInput(): Promise&lt;boolean&gt;
 > 
 > 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用该接口结束输入会话。
 > 
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession()](#stopinputsession9)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession](#stopinputsession9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3688,7 +3759,7 @@ showOptionalInputMethods(callback: AsyncCallback&lt;boolean&gt;): void
 显示输入法选择对话框。使用callback异步回调。
 > **说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃，建议使用[inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3732,7 +3803,7 @@ showOptionalInputMethods(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃，建议使用[inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3836,7 +3907,7 @@ displayOptionalInputMethod(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3868,7 +3939,7 @@ displayOptionalInputMethod(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

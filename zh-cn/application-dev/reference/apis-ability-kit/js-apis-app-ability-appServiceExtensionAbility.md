@@ -26,18 +26,23 @@ AppServiceExtensionAbility提供了[onCreate()](#oncreate)、[onRequest()](#onre
 ![AppServiceExtensionAbility-lifecycle](figures/AppServiceExtensionAbility-lifecycle.png)
 
 - **onCreate**
+
   在AppServiceExtensionAbility实例创建时，系统会触发该回调。
 
 - **onDestroy**
+
   在AppServiceExtensionAbility实例销毁时，系统会触发该回调。
 
 - **onRequest**
+
   调用方使用[startAppServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20)拉起AppServiceExtensionAbility实例时，系统会触发该回调。
 
 - **onConnect**
+
   调用方使用[connectAppServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)连接AppServiceExtensionAbility实例时，系统会触发该回调。
 
 - **onDisconnect**
+
   当所有连接方断开与AppServiceExtensionAbility实例的连接时，系统会触发该回调。
 
 ## 导入模块

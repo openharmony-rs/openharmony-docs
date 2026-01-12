@@ -36,6 +36,8 @@
 | [JSVM_TypeTag](capi-jsvm-jsvm-typetag.md)                                                         | JSVM_TypeTag                            | 类型标记，存储为两个无符号64位整数的128位值。作为一个UUID，通过它，JavaScript对象可以是"tagged"，以确保它们的类型保持不变。                                                                                                                                                                                                                                                                                                                                                 |
 | [JSVM_PropertyHandlerConfigurationStruct](capi-jsvm-jsvm-propertyhandlerconfigurationstruct.md)   | JSVM_PropertyHandlerConfigurationStruct | 当执行对象的getter、setter、deleter和enumerator操作时，该结构体中对应的函数回调将会触发。                                                                                                                                                                                                                                                                                                                                                                 |
 | [JSVM_ScriptOrigin](capi-jsvm-jsvm-scriptorigin.md)                                               | JSVM_ScriptOrigin                       | 某段JavaScript代码的原始信息，如sourceMap路径、源文件名、源文件中的起始行/列号等。                                                                                                                                                                                                                                                                                                                                                                         |
+| [JSVM_CompileOptions](capi-jsvm-jsvm-compileoptions.md)                                               | JSVM_CompileOptions                       | 对应JSVM的编译选项，包含内容和ID。                                                                                                                                                                                                                                                                                                                                                                         |
+| [JSVM_CodeCache](capi-jsvm-jsvm-codecache.md)                                               | JSVM_CodeCache                       | 对应JSVM代码缓存的地址与大小。                                                                                                                                                                                                                                                                                                                                                                         |
 | [JSVM_PropertyHandler](capi-jsvm-jsvm-propertyhandler.md)                                         | JSVM_PropertyHandler                    | 包含将class作为函数进行调用时所触发的回调函数的函数指针和访问实例对象属性时触发的回调函数的函数指针集。                                                                                                                                                                                                                                                                                                                                                                      |
 | [JSVM_DefineClassOptions](capi-jsvm-jsvm-defineclassoptions.md)                                   | JSVM_DefineClassOptions                 | 定义Class的选项。                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | [JSVM_VM__*](capi-jsvm-jsvm-vm--8h.md)                                                            | JSVM_VM                                 | 表示JavaScript虚拟机实例。                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -67,6 +69,8 @@
 | [JSVM_KeyFilter](#jsvm_keyfilter) | JSVM_KeyFilter | 属性过滤器，可以通过使用or来构造一个复合过滤器。 |
 | [JSVM_KeyConversion](#jsvm_keyconversion) | JSVM_KeyConversion | 键转换选项。 |
 | [JSVM_MemoryPressureLevel](#jsvm_memorypressurelevel) | JSVM_MemoryPressureLevel | 内存压力水平。 |
+| [JSVM_CompileMode](#jsvm_compilemode) | JSVM_CompileMode | JSVM编译模式。 |
+| [JSVM_CompileOptionId](#jsvm_compileoptionid) | JSVM_CompileOptionId | JSVM编译选项ID。 |
 | [JSVM_RegExpFlags](#jsvm_regexpflags) | JSVM_RegExpFlags | 正则表达式标志位。它们可以用来启用一组标志。 |
 | [JSVM_InitializedFlag](#jsvm_initializedflag) | JSVM_InitializedFlag | 初始化方式的标志位。 |
 | [JSVM_WasmOptLevel](#jsvm_wasmoptlevel) | JSVM_WasmOptLevel | WebAssembly 函数优化等级。 |
@@ -290,6 +294,45 @@ enum JSVM_MemoryPressureLevel
 | JSVM_MEMORY_PRESSURE_LEVEL_MODERATE | 中等压力。 |
 | JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL | 临界压力。 |
 
+### JSVM_CompileMode
+
+```c
+enum JSVM_CompileMode
+```
+
+**描述**
+
+当 id 为 JSVM_COMPILE_MODE 时，content 类型的每个值代表一种编译模式。
+
+**起始版本：** 12
+| 枚举项 | 描述 |
+| -- | -- |
+| JSVM_COMPILE_MODE_DEFAULT | 默认编译模式。 |
+| JSVM_COMPILE_MODE_CONSUME_CODE_CACHE | 使用代码缓存的模式。 |
+| JSVM_COMPILE_MODE_EAGER_COMPILE | 激进编译模式。 |
+| JSVM_COMPILE_MODE_PRODUCE_COMPILE_PROFILE | 生成编译依赖的模式。 |
+| JSVM_COMPILE_MODE_CONSUME_COMPILE_PROFILE | 使用编译依赖的模式。 |
+
+### JSVM_CompileOptionId
+
+```c
+enum JSVM_CompileOptionId
+```
+
+**描述**
+
+JSVM_CompileOptions 中的 id 对应类型，每个值有对应的 content 类型。JSVM_COMPILE_ENABLE_SOURCE_MAP 的类型为 bool，当 JSVM_ScriptOrigin 中的 sourceMapUrl 不为空时生效。
+
+**起始版本：** 12
+
+| 枚举项 | 描述 |
+| -- | -- |
+| JSVM_COMPILE_MODE | JSVM编译模式。 |
+| JSVM_COMPILE_CODE_CACHE | JSVM代码缓存。 |
+| JSVM_COMPILE_SCRIPT_ORIGIN | JSVM脚本来源。 |
+| JSVM_COMPILE_COMPILE_PROFILE | JSVM编译依赖。 |
+| JSVM_COMPILE_ENABLE_SOURCE_MAP | JSVM的 Source Map 的使能情况。 |
+
 ### JSVM_RegExpFlags
 
 ```c
@@ -401,7 +444,7 @@ JSVM 内部 Trace 事件的类别。
 | JSVM_TRACE_COMPILE | 采集编译相关的接口调用, 例如后台编译。 |
 | JSVM_TRACE_EXECUTE | 采集与运行状态相关的接口调用, 例如中断与微任务。 |
 | JSVM_TRACE_RUNTIME | 采集外部函数调用相关信息。 |
-| JSVM_TRACE_STACK_TRACE | 采集 JSVM 中回栈相关信息。 |
+| JSVM_TRACE_STACK_TRACE | 采集 JSVM 中堆栈相关信息。 |
 | JSVM_TRACE_WASM | 采集主要的 WASM 相关接口调用, 例如编译与实例化 WASM 模块。 |
 | JSVM_TRACE_WASM_DETAILED | 采集更多更细节的 WASM 相关接口调用，例如后台编译、跳板编译。 |
 
@@ -571,7 +614,7 @@ ASCII输出流回调的函数指针类型。参数data是指输出的数据指�
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回true表示流可以继续接受数据，返回false将中止流。 |
+| bool | 返回true表示流可以继续接收数据，返回false将中止流。 |
 
 ### JSVM_HandlerForGC()
 

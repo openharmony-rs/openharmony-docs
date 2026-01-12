@@ -17,6 +17,7 @@
 
    - algName：指定算法'PBKDF2'。
    - password：用于生成派生密钥的原始密码。
+   
       如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型。同时需要确保该字符串为utf-8编码，否则派生结果会有差异。
    - salt：盐值。
    - iterations：重复运算的次数，需要为正整数。

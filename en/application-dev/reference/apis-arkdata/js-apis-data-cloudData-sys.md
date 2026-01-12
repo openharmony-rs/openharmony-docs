@@ -45,6 +45,7 @@ Enumerates the operations for clearing the downloaded cloud data locally.
 | --------- | ---------------------------- |
 | CLEAR_CLOUD_INFO | Clear the cloud identifier of the data downloaded from the cloud and retain the data locally.|
 | CLEAR_CLOUD_DATA_AND_INFO |Clear the data downloaded from the cloud, excluding the cloud data that has been modified locally.  |
+| CLEAR_CLOUD_NONE<sup>23+</sup> |Does not clear any data.  |
 
 ## ExtraData<sup>11+</sup>
 
@@ -117,6 +118,40 @@ Represents information about the last device-cloud sync.
 | finishTime | Date                                                         | No  | No  | End time of the last device-cloud sync.|
 | code       | [relationalStore.ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10) | No| No| Result of the last device-cloud sync.|
 | syncStatus<sup>18+</sup> | [SyncStatus](#syncstatus18) | No| Yes| Status of the last device-cloud sync. The default value is **cloudData.SyncStatus.RUNNING**.|
+
+## DBSwitchInfo<sup>23+</sup>
+
+Defines the switch information of a device-cloud synergy database.
+
+| Name      | Type           | Read-Only| Optional| Description                      |
+| ---------- | -------------- | ---- | ---- | -------------------------- |
+| enable     | boolean           | No  | No  | Whether to enable device-cloud synergy for the database. The value **true** indicates that device-cloud synergy is enabled, and the value **false** indicates the opposite.|
+| tableInfo  | Record<string, boolean> | No  | Yes  | Device-cloud synergy configuration of a table. The key is the table name, and the value is the switch status of the table. The value **true** indicates that device-cloud synergy is enabled for the table, and the value **false** indicates the opposite. If this parameter is not set, the device-cloud synergy is enabled for the database by default.|
+
+## SwitchConfig<sup>23+</sup>
+
+Defines the switch configuration of a device-cloud synergy database.
+
+| Name      | Type           | Read-Only| Optional| Description                      |
+| ---------- | -------------- | ---- | ---- | -------------------------- |
+| dbInfo     | Record<string, [DBSwitchInfo](#dbswitchinfo23)>    | No  | No  | Switch configuration information of a database. The key is the database name, and the value is the configuration information of the database.  |
+
+## DBActionInfo<sup>23+</sup>
+
+Defines the clearance information of a device-cloud synergy database.
+
+| Name      | Type           | Read-Only| Optional| Description                      |
+| ---------- | -------------- | ---- | ---- | -------------------------- |
+| action     | [ClearAction](#clearaction)           | No  | No  | Default data clearance mode of the database.|
+| tableInfo  | Record<string, [ClearAction](#clearaction)> | No  | Yes  | Information about the table whose data is to be cleared and the clearance rules. The key is the table name, and the value is the clearance mode of the table. If this parameter is not set, the data clearance mode of database is used by default.  |
+
+## ClearConfig<sup>23+</sup>
+
+Defines the clearance configuration of a device-cloud synergy database.
+
+| Name      | Type           | Read-Only| Optional| Description                      |
+| ---------- | -------------- | ---- | ---- | -------------------------- |
+| dbInfo     | Record<string, [DBActionInfo](#dbactioninfo23)>    | No  | No  | Information about the database whose data is to be cleared and the clearance rules. The key is the database name, and the value is the clearance configuration of the database.  |
 
 ## Config
 
@@ -419,6 +454,73 @@ let account: string = 'test_id';
 let bundleName: string = 'test_bundleName';
 try {
   cloudData.Config.changeAppCloudSwitch(account, bundleName, true).then(() => {
+    console.info('Succeeded in changing App cloud switch');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to change App cloud switch. Code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### changeAppCloudSwitch<sup>23+</sup>
+
+static changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, config?: SwitchConfig): Promise&lt;void&gt;
+
+Changes the device-cloud synergy setting for an application. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.CLOUDDATA_CONFIG
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
+
+**Parameters**
+
+| Name   | Type                           | Mandatory| Description                        |
+| --------- | ------------------------------- | ---- | ---------------------------- |
+| accountId | string                          | Yes  | ID of the cloud account.|
+| bundleName| string                         | Yes  | Bundle name of the application.|
+| status    | boolean                        | Yes  | New device-cloud synergy setting. The value **true** means to enable device-cloud synergy; the value **false** means the opposite.|
+| config    | [SwitchConfig](#switchconfig23)   | No  | Switch configuration of a device-cloud synergy database. Device-cloud synergy priority: application > database > table. If this parameter is not set, the application-level device-cloud synergy is used by default.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                            |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 801      | Capability not supported.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let account: string = 'test_id';
+let bundleName: string = 'test_bundleName';
+let config: cloudData.SwitchConfig = {
+  dbInfo: {
+    'test_storeName1': {
+      enable: true,
+      tableInfo: {
+        'test_tableName1': true,
+        'test_tableName2': false
+      }
+    }
+  }
+}
+try {
+  cloudData.Config.changeAppCloudSwitch(account, bundleName, true, config).then(() => {
     console.info('Succeeded in changing App cloud switch');
   }).catch((err: BusinessError) => {
     console.error(`Failed to change App cloud switch. Code is ${err.code}, message is ${err.message}`);
@@ -1001,6 +1103,78 @@ let appActions: dataType = {
 };
 try {
   cloudData.Config.clear(account, appActions).then(() => {
+    console.info('Succeeding in clearing cloud data');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### clear<sup>23+</sup>
+
+static clear(accountId: string, appActions: Record<string, ClearAction>, config?: Record<string, ClearConfig>): Promise&lt;void&gt;
+
+Clears the cloud data locally. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.CLOUDDATA_CONFIG
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
+
+**Parameters**
+
+| Name    | Type                                               | Mandatory| Description                            |
+| ---------- | --------------------------------------------------- | ---- | -------------------------------- |
+| accountId  | string                                              | Yes  | ID of the cloud account.            |
+| appActions | Record<string, [ClearAction](#clearaction)>         | Yes  | Information about the application whose data is to be cleared and the operation to perform.|
+| config | Record<string, [ClearConfig](#clearconfig23)>         | No  | Clearance information of a device-cloud synergy database. The key is the application name, and the value is the database clearance rules of the application. Clearance priority: table > database > application. If this parameter is not set, the application-level data clearance mode is used by default.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                            |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 801      | Capability not supported.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let account: string = "test_id";
+let appActions: Record<string, cloudData.ClearAction> = {
+  'test_bundleName1': cloudData.ClearAction.CLEAR_CLOUD_INFO,
+  'test_bundleName2': cloudData.ClearAction.CLEAR_CLOUD_DATA_AND_INFO,
+  'test_bundleName3': cloudData.ClearAction.CLEAR_CLOUD_NONE,
+};
+let config: Record<stringm, cloudData.ClearConfig> = {
+  'test_bundleName': {
+    dbInfo: {
+      'test_storeName': {
+        action: cloudData.ClearAction.CLEAR_CLOUD_INFO,
+        tableInfo: {
+          'test_tableName1': cloudData.ClearAction.CLEAR_CLOUD_INFO,
+          'test_tableName2': cloudData.ClearAction.CLEAR_CLOUD_DATA_AND_INFO,
+        }
+      }
+    }
+  }
+}
+try {
+  cloudData.Config.clear(account, appActions, config).then(() => {
     console.info('Succeeding in clearing cloud data');
   }).catch((err: BusinessError) => {
     console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);

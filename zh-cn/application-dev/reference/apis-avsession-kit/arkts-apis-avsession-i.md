@@ -222,7 +222,7 @@
 
 ## AVCastPickerOptions<sup>14+</sup>
 
-拉起的投播半模态窗口相关属性。
+拉起的投播组件包含的配置属性。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -231,6 +231,8 @@
 | 名称            | 类型                      | 只读 | 可选 | 说明               |
 | --------------- |-------------------------| ---- |  ---- |---------------------------------------------------------------------|
 | sessionType         | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)  | 否 | 是  | 会话类型，默认值为audio。<br>当前仅支持audio、video会话类型。如果传入voice_call、video_call，将按照传入默认值audio处理。            |
+| pickerStyle<sup>22+</sup>   |[AVCastPickerStyle](js-apis-avCastPickerParam.md#avcastpickerstyle12) | 否 | 是  | 设置组件样式。|
+| menuPosition<sup>22+</sup>  |[MenuPosition](#menuposition-22) | 否 | 是  | 当pickerStyle设置为STYLE_MENU时，可以设置弹出菜单的位置。|
 
 ## AudioCapabilities<sup>20+</sup>
 
@@ -256,3 +258,82 @@
 | callerModuleName | string                                               | 否  | 是  | 调用方应用模块名。 |
 | callerDeviceId   | string                                               | 否  | 是  | 调用方设备ID。  |
 | callerType       | [CallerType](arkts-apis-avsession-e.md#callertype22) | 否  | 是  | 调用方来源。    |
+
+## MenuPosition <sup>22+</sup>
+
+定义可弹出菜单的组件的位置。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+| 名称   | 类型 | 只读 | 可选 | 说明              |
+| -------| -----| ---- | ---- | ------------------|
+|x  | number  |  否  |  否  | 组件在X轴上的位置坐标。单位为vp。|
+|y  | number  |  否  |  否  | 组件在y轴上的位置坐标。单位为vp。|
+|width | number  |  否  |  否  | 组件宽度。单位为vp。 |
+|height | number  |  否  |  否  | 组件高度。单位为vp。|
+
+## AVSessionDescriptor <sup>23+</sup>
+
+会话的相关描述信息。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+| 名称          | 类型              | 只读 | 可选 | 说明  |
+| --------------| ---------------- | ---------------- | ---------------- |------|
+| sessionId    | string    | 否 | 否  | 会话ID。      |
+| type         | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)   | 否 | 否 | 会话类型。    |
+| sessionTag   | string             | 否 | 否 | 会话的自定义名称。    |
+| elementName  | [ElementName](../apis-ability-kit/js-apis-bundle-ElementName.md)  | 否 | 否 | 会话所属应用的信息（包含bundleName、abilityName等）。 |
+| isActive     | boolean             | 否 | 否 | 会话是否被激活。<br>true：已被激活。 <br>false：没有被激活。                                      |
+| isTopSession | boolean             | 否 | 否 | 会话是否为最新的会话。 <br>true：是最新的会话。<br>false：不是最新的会话。                |
+
+## isDesktopLyricSupported<sup>23+</sup>
+
+isDesktopLyricSupported(): Promise\<boolean>
+
+设备是否支持桌面歌词功能。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型                       | 说明                               |
+|----------------------------|-----------------------------------|
+| Promise\<boolean> | Promise对象。返回true表示设备支持桌面歌词功能；返回false表示设备不支持桌面歌词功能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID   | 错误信息                                             |
+|---------|--------------------------------------------------------|
+| 6600101 | Session service exception.                             |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+
+avSession.isDesktopLyricSupported().then((isSupported: boolean) => {
+  console.info(`isDesktopLyricSupported : SUCCESS : isSupported : ${isSupported}`);
+}).catch((err: BusinessError) => {
+  console.error(`isDesktopLyricSupported BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## DesktopLyricState<sup>23+</sup>
+
+桌面歌词状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+| 名称      | 类型   | 只读 | 可选 | 说明         |
+| :-------- | :----- | :--- |:--- | :----------- |
+| isLocked  | boolean | 否 | 否   | 桌面歌词位置是否锁定。true表示已锁定，false表示未锁定。若已锁定，桌面显示歌词后，固定当前位置，不可被拖拽。  |

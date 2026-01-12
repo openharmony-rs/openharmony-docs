@@ -152,6 +152,7 @@ function setinputs(): void {
 | SHADER | 1 | 材质由着色器定义。 |
 | METALLIC_ROUGHNESS<sup>20+</sup> | 2 | 采用基于物理渲染（PBR）的金属-粗糙度模型，通过金属度与粗糙度参数，模拟更真实的材质光照效果。 |
 | UNLIT<sup>23+</sup> | 3 | 不受光照影响的材质。|
+| OCCLUSION<sup>23+</sup> | 4 | 遮挡材质，能够遮挡场景中的其他物体但不会遮挡环境。|
 
 ## CullMode<sup>20+</sup>
 用于设置基于物理渲染（PBR）材质的剔除模式枚举。通过控制剔除物体的正面或背面几何面片，提升渲染性能和视觉效果。
@@ -255,6 +256,12 @@ function setinputs(): void {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | baseColor | [MaterialProperty](#materialproperty20) | 否 | 否 | 基础颜色属性，用于表达材质的基础颜色信息。|
+
+## OcclusionMaterial<sup>23+</sup>
+
+遮挡材质，能够遮挡场景中的其他物体但不会遮挡环境，继承自[Material](#material)。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## SamplerFilter<sup>20+</sup>
 采样器过滤模式枚举，定义纹理采样时的插值方法，用于控制纹理在缩放或变形时如何计算最终像素的颜色值。
@@ -594,7 +601,9 @@ function finish(): void {
 
 ## Effect<sup>21+</sup>
 
-特效类型，继承自[SceneResource](#sceneresource-1)。
+特效类型，继承自[SceneResource](#sceneresource-1)。由[createEffect](js-apis-inner-scene.md#createeffect21)接口获得。
+
+### 属性
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -602,3 +611,80 @@ function finish(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | enabled | boolean | 否 | 否 | 特效打开状态。true表示开启特效，false表示关闭特效。 |
 | effectId | string  | 是 | 否 | 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，用于特效的创建，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'。 |
+
+### getPropertyValue<sup>23+</sup>
+getPropertyValue(propertyName: string): Object | null | undefined
+
+获取特定特效属性的值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为：<br>-'exposure':该属性表示图像的曝光度。<br>-'vibrance': 该属性表示图像的自然饱和度。 |
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| Object \| null \| undefined | 特效属性值，如果获取失败则返回null。 |
+
+**示例：**
+``` ts
+import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
+  
+function getEffectProperty() {
+  let scene: Promise<Scene> = Scene.load();
+  scene.then(async (result: Scene | undefined) => {
+    if (!result) {
+      return;
+    }
+    let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+    // 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'
+    let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"};
+    let effect: Effect = await sceneFactory.createEffect(params);
+    effect.getPropertyValue('exposure');
+  });
+}
+```
+
+### setPropertyValue<sup>23+</sup>
+setPropertyValue(propertyName: string, value: Object | undefined): boolean
+
+设置特定特效属性的值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为：<br>-'exposure':该属性表示图像的曝光度。<br>-'vibrance': 该属性表示图像的自然饱和度。 |
+| value | Object \| undefined | 是 | 要设置的特效属性值。<br>-'exposure'：value实际类型为number，推荐取值范围[-5, 5]。取值越大，图像越亮。<br>-'vibrance'：value实际类型为number，推荐取值范围 [-1, 1]。取值越大，图像颜色越鲜艳。 |
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 返回设置特效属性值操作是否成功。true表示设置成功，false表示设置失败。 |
+
+**示例：**
+``` ts
+import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
+ 	 
+function setEffectProperty() {
+  let scene: Promise<Scene> = Scene.load();
+  scene.then(async (result: Scene | undefined) => {
+    if (!result) {
+      return;
+    }
+    let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+    // 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'
+    let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"};
+    let effect: Effect = await sceneFactory.createEffect(params);
+    effect.setPropertyValue('exposure', 1);
+  });
+}
+```

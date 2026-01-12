@@ -13,7 +13,7 @@ On the widget page, you can trigger a message event via the [postCardAction](../
 > This topic describes development for dynamic widgets. For static widgets, see [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md).
 
 - On the widget page, register the **onClick** event callback of the button and call the **postCardAction** API in the callback to trigger the message event to start the FormExtensionAbility. Use [LocalStorageProp](../ui/state-management/arkts-localstorage.md#localstorageprop) to decorate the widget data to be updated.
-    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) -->
+    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
@@ -22,7 +22,7 @@ On the widget page, you can trigger a message event via the [postCardAction](../
     @Entry(storageUpdateByMsg)
     @Component
     struct UpdateByMessageCard {
-      // Create two Text components to be updated. The initial content of the first Text is 'Title default' and that of the second Text is 'Description default'. For details about the resource file definition, see step 4.
+      // Replace $r('app.string.default_title') and $r('app.string.DescriptionDefault') with the resource files you use.
       @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
       @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
     
@@ -86,16 +86,17 @@ On the widget page, you can trigger a message event via the [postCardAction](../
 
 - Call the [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) API to update the widget in the **onFormEvent** callback of the FormExtensionAbility.
   
-    <!-- @[update_form_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
+    <!-- @[update_form_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/entryformability/EntryFormAbility.ts
     const TAG: string = 'EntryFormAbility';
     const DOMAIN_NUMBER: number = 0xFF00;
     
     export default class EntryFormAbility extends FormExtensionAbility {
-    // ···
+      // ...
       onFormEvent(formId: string, message: string): void {
-        // Called when the message event of the postCardAction API of the widget provider is triggered.
+        // If the widget supports event triggering, override this method and implement the trigger.
         hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
         class FormDataClass {
           title: string = 'Title Update.'; // It matches the widget layout.
@@ -111,7 +112,7 @@ On the widget page, you can trigger a message event via the [postCardAction](../
         });
       }
     
-    // ···
+      // ...
     }
     ```
   

@@ -1,5 +1,12 @@
 # IPC Kit<!--ipc-api-->
 
+<!--Kit: IPC Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @xdx19211@luodonghui0157-->
+<!--Designer: @zhaopeng_gitee-->
+<!--Tester: @maxiaorong-->
+<!--Adviser: @zhang_yixin13-->
+
 - ArkTS APIs<!--ipc-arkts-->
   - [@ohos.rpc (RPC)](js-apis-rpc.md)
 - C APIs<!--ipc-c-->
@@ -16,6 +23,7 @@
     - [ipc_error_code.h](capi-ipc-error-code-h.md)
     - [ipc_kit.h](capi-ipc-kit-h.md)
   - Structs<!--ipc-struct-->
+    - [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)
     - [OH_IPC_MessageOption](capi-ohipcremoteobject-oh-ipc-messageoption.md)
     - [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md)
     - [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md)

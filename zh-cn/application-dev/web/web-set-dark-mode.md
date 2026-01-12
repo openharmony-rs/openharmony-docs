@@ -185,17 +185,17 @@ Web组件发生旋转或大小改变等事件时，Web网页尺寸改变，变�
 Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)设置。未设置背景色时，Web组件默认背景色为白色。仅当强制深色模式下，默认背景色变为黑色。未开启强制深色模式时，可通过以下方法进行适配。
 
 - 应用侧设置[WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)和[WebDarkMode.Off](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)控制深色模式开启和关闭时，背景色跟随深色模式开启和关闭状态改变。
-
-  ```ts
-  // xxx.ets
+  <!-- @[set_web_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_three.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     @State isDark: boolean = false;
-
+  
     build() {
       Column() {
         Web({ src: $rawfile('darkModePage.html'), controller: this.controller })
@@ -207,20 +207,21 @@ Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/
   ```
 
 - 应用侧设置[WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)跟随系统深色模式时，监听系统设置，背景色跟随系统改变。
-
-  ```ts
-  // EntryAbility.ets
+  <!-- @[set_web_darkmode_auto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  import { AbilityConstant, ConfigurationConstant, UIAbility, Want, Configuration } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
   export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-      // 将当前colorMode放在AppStorage中
+      // 将当前colorMode放在AppStorage中。
       AppStorage.setOrCreate<ConfigurationConstant.ColorMode>('currentColorMode', this.context.config.colorMode);
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     }
-
     // ...
-
     onConfigurationUpdate(newConfig: Configuration): void {
-      // 动态更新深浅色状态
+      // 动态更新深浅色状态。
       const currentColorMode: ConfigurationConstant.ColorMode | undefined = AppStorage.get('currentColorMode');
       if (currentColorMode !== newConfig.colorMode) {
         AppStorage.setOrCreate<ConfigurationConstant.ColorMode>('currentColorMode', newConfig.colorMode);
@@ -228,12 +229,13 @@ Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/
     }
   }
   ```
-
-  ```ts
-  // xxx.ets
+  <!-- -->
+  <!-- @[set_web_darkmode_auto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_Four.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { ConfigurationConstant } from '@kit.AbilityKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -241,7 +243,7 @@ Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/
     @State bgColor: Color = Color.White;
     @StorageProp('currentColorMode') @Watch('onCurrentColorModeChange')
     currentColorMode: ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET;
-
+  
     build() {
       Column() {
         Web({ src: $rawfile('darkModePage.html'), controller: this.controller })
@@ -249,9 +251,9 @@ Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/
           .backgroundColor(this.bgColor)
       }
     }
-
+    
     onCurrentColorModeChange(): void {
-      // 根据系统设置切换背景色
+      // 根据系统设置切换背景色。
       if (this.currentColorMode === ConfigurationConstant.ColorMode.COLOR_MODE_DARK) {
         this.bgColor = Color.Black;
       } else {
@@ -260,7 +262,6 @@ Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/
     }
   }
   ```
-
 
 ## 常见问题
 

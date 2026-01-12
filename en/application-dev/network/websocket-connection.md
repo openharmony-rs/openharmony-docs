@@ -25,218 +25,218 @@ On the WebSocket server (available only for smart TVs): Use WebSocket to establi
 
 1. Import the **webSocket** and **BusinessError** modules.
 
-<!-- @[WebSocket_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { webSocket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[WebSocket_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { webSocket } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 2. Create a WebSocket connection. A **WebSocket** object is returned.
 
-<!-- @[WebSocket_creat_websocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-let defaultIpAddress = 'wss://echo.websocket.org'; // WebSocket address
-let ws: webSocket.WebSocket = webSocket.createWebSocket();
-```
+   <!-- @[WebSocket_creat_websocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let defaultIpAddress = 'wss://echo.websocket.org'; // WebSocket address
+   let ws: webSocket.WebSocket = webSocket.createWebSocket();
+   ```
 
 3. (Optional) Subscribe to the **open**, **message**, **close**, and **error** events of the **WebSocket** object. When receiving the on('open') event, the client can use the send() API to communicate with the server. When receiving the `bye` message (the actual message name may differ) from the server, the client proactively disconnects from the server.
 
-<!-- @[websocket_open_message_close_error_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-ws.on('open', (err: BusinessError, value: Object) => {
-  hilog.info(0x0000, 'testTag', 'on open, status:' + JSON.stringify(value));
-  // When receiving the on('open') event, the client can use the send() API to communicate with the server.
-// ···
-});
-
-ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
-// ···
-  hilog.info(0x0000, 'testTag', 'on message, message:' + value);
-  // When receiving the `bye` message (the actual message name may differ) from the server, the client proactively disconnects from the server.
-  if (value === 'bye') {
-    ws!.close((err: BusinessError) => {
-      if (!err) {
-        // ···
-        hilog.info(0x0000, 'testTag', `WebSocket closed successfully`);
-      } else {
-        // ···
-        hilog.error(0x0000, 'testTag', `WebSocket closing failed: ` + JSON.stringify(err));
-      }
-    });
-  }
-})
-
-ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
- hilog.info(0x0000, 'testTag', 'on close, code is ' + value.code + ', reason is ' + value.reason);
-// ···
-});
-
-ws.on('error', (err: BusinessError) => {
-// ···
-  hilog.error(0x0000, 'testTag', 'WebSocket error: ' + JSON.stringify(err));
-});
-```
+   <!-- @[websocket_open_message_close_error_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   ws.on('open', (err: BusinessError, value: Object) => {
+     hilog.info(0x0000, 'testTag', 'on open, status:' + JSON.stringify(value));
+     // When receiving the on('open') event, the client can use the send() API to communicate with the server.
+     // ...
+   });
+   
+   ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
+     // ...
+     hilog.info(0x0000, 'testTag', 'on message, message:' + value);
+     // When receiving the `bye` message (the actual message name may differ) from the server, the client proactively disconnects from the server.
+     if (value === 'bye') {
+       ws!.close((err: BusinessError) => {
+         if (!err) {
+           // ...
+           hilog.info(0x0000, 'testTag', `WebSocket closed successfully`);
+         } else {
+           // ...
+           hilog.error(0x0000, 'testTag', `WebSocket closing failed: ` + JSON.stringify(err));
+         }
+       });
+     }
+   })
+   
+   ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
+    hilog.info(0x0000, 'testTag', 'on close, code is ' + value.code + ', reason is ' + value.reason);
+     // ...
+   });
+   
+   ws.on('error', (err: BusinessError) => {
+     // ...
+     hilog.error(0x0000, 'testTag', 'WebSocket error: ' + JSON.stringify(err));
+   });
+   ```
 
 4. Establish a WebSocket connection to a given URL.
 
-<!-- @[webSocket_case_object_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-ws.connect(defaultIpAddress, (err: BusinessError, value: boolean) => {
-  if (!err) {
-    hilog.info(0x0000, 'testTag', 'Connected successfully');
-  } else {
-    // ···
-    hilog.error(0x0000, 'testTag', `WebSocket connection failed: ` + JSON.stringify(err));
-  }
-});
-```
+   <!-- @[webSocket_case_object_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   ws.connect(defaultIpAddress, (err: BusinessError, value: boolean) => {
+     if (!err) {
+       hilog.info(0x0000, 'testTag', 'Connected successfully');
+     } else {
+       // ...
+       hilog.error(0x0000, 'testTag', `WebSocket connection failed: ` + JSON.stringify(err));
+     }
+   });
+   ```
 
 5. After receiving the **on('open')** callback event, use the **send()** method to send data to the server.
 
-<!-- @[webSocket_case_send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-ws.send('Hello, server!', (err: BusinessError, value: boolean) => {
-  if (!err) {
-    // ···
-    hilog.info(0x0000, 'testTag', 'Message sent successfully');
-  } else {
-    // ···
-    hilog.error(0x0000, 'testTag', `Message sending failed: ` + JSON.stringify(err));
-  }
-});
-```
+   <!-- @[webSocket_case_send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   ws.send('Hello, server!', (err: BusinessError, value: boolean) => {
+     if (!err) {
+       // ...
+       hilog.info(0x0000, 'testTag', 'Message sent successfully');
+     } else {
+       // ...
+       hilog.error(0x0000, 'testTag', `Message sending failed: ` + JSON.stringify(err));
+     }
+   });
+   ```
 
 ## Server Development Procedure
 
 1. Import the **webSocket** and **BusinessError** modules.
 
-    <!-- @[WebSocket_server_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
-        
-    ``` TypeScript
-    import { webSocket } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    ```
+   <!-- @[WebSocket_server_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { webSocket } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. Create a **WebSocketServer** object.
 
-    <!-- @[WebSocket_server_creat_websocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
-        
-    ``` TypeScript
-    let localServer: webSocket.WebSocketServer;
-    localServer = webSocket.createWebSocketServer();
-    ```
+   <!-- @[WebSocket_server_creat_websocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let localServer: webSocket.WebSocketServer;
+   localServer = webSocket.createWebSocketServer();
+   ```
 
 3. Subscribe to the **connect**, **message**, **close**, and **error** (optional) events of the **WebSocketServer** object. When receiving the on('connect') event, the server can use the **send()** API to communicate with the client. When receiving the `bye` message (the actual message name may differ) from the client, the server proactively disconnects from the client.
 
-    <!-- @[websocket_server_open_message_close_error_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
-      
-    ``` TypeScript
-    localServer.on('connect', async (connection: webSocket.WebSocketConnection) => {
-      hilog.info(0x0000, 'testTag', `New client connected! Client ip: ${connection.clientIP}, Client port: ${connection.clientPort}`);
-      // Use send() to send data to the client when the on('connect') event is received.
-      localServer.send("Hello, I'm server!", connection).then((success: boolean) => {
-        if (success) {
-          hilog.info(0x0000, 'testTag', 'message send successfully');
-        } else {
-          hilog.error(0x0000, 'testTag', 'message send failed');
-        }
-      }).catch((error: BusinessError) => {
-        hilog.error(0x0000, 'testTag', `message send failed, Code: ${error.code}, message: ${error.message}`);
-      });
-    });
-    
-    localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
-      try {
-        hilog.info(0x0000, 'testTag', `on message received, client: ${message.clientConnection}, data: ${message.data}`);
-        // When receiving the bye message (the actual message name may differ) from the client, the server proactively disconnects from the client.
-        if (message.data === 'bye') {
-          localServer.close(message.clientConnection).then((success: boolean) => {
-            if (success) {
-              hilog.info(0x0000, 'testTag', 'close client successfully');
-            } else {
-              hilog.error(0x0000, 'testTag', 'close client failed');
-            }
-          });
-        }
-      } catch (error) {
-        hilog.error(0x0000, 'testTag', `on messageReceive failed. Code: ${error.code}, message: ${error.message}`);
-      }
-    });
-    
-    localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
-      hilog.info(0x0000, 'testTag', `client close, client: ${clientConnection}, closeReason: Code: ${closeReason.code}, reason: ${closeReason.reason}`);
-    });
-    
-    localServer.on('error', (error: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `error. Code: ${error.code}, message: ${error.message}`);
-    });
-    ```
+   <!-- @[websocket_server_open_message_close_error_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   localServer.on('connect', async (connection: webSocket.WebSocketConnection) => {
+     hilog.info(0x0000, 'testTag', `New client connected! Client ip: ${connection.clientIP}, Client port: ${connection.clientPort}`);
+     // Use send() to send data to the client when the on('connect') event is received.
+     localServer.send("Hello, I'm server!", connection).then((success: boolean) => {
+       if (success) {
+         hilog.info(0x0000, 'testTag', 'message send successfully');
+       } else {
+         hilog.error(0x0000, 'testTag', 'message send failed');
+       }
+     }).catch((error: BusinessError) => {
+       hilog.error(0x0000, 'testTag', `message send failed, Code: ${error.code}, message: ${error.message}`);
+     });
+   });
+   
+   localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
+     try {
+       hilog.info(0x0000, 'testTag', `on message received, client: ${message.clientConnection}, data: ${message.data}`);
+       // When receiving the bye message (the actual message name may differ) from the client, the server proactively disconnects from the client.
+       if (message.data === 'bye') {
+         localServer.close(message.clientConnection).then((success: boolean) => {
+           if (success) {
+             hilog.info(0x0000, 'testTag', 'close client successfully');
+           } else {
+             hilog.error(0x0000, 'testTag', 'close client failed');
+           }
+         });
+       }
+     } catch (error) {
+       hilog.error(0x0000, 'testTag', `on messageReceive failed. Code: ${error.code}, message: ${error.message}`);
+     }
+   });
+   
+   localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
+     hilog.info(0x0000, 'testTag', `client close, client: ${clientConnection}, closeReason: Code: ${closeReason.code}, reason: ${closeReason.reason}`);
+   });
+   
+   localServer.on('error', (error: BusinessError) => {
+     hilog.error(0x0000, 'testTag', `error. Code: ${error.code}, message: ${error.message}`);
+   });
+   ```
 
 4. Configure **config** parameters for starting the WebSocket server.
 
-    <!-- @[websocket_server_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
-        
-    ``` TypeScript
-    let config: webSocket.WebSocketServerConfig = {
-      // Configure the listening port.
-      serverPort: 8080,
-      maxConcurrentClientsNumber: 10,
-      maxConnectionsForOneClient: 10,
-    }
-    localServer.start(config).then((success: boolean) => {
-      if (success) {
-        hilog.info(0x0000, 'testTag', 'WebSocket server started successfully');
-      } else {
-        hilog.error(0x0000, 'testTag', 'Failed to start WebSocket server');
-      }
-    }).catch((error: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `Failed to start. Code: ${error.code}, message: ${error.message}`);
-    });
-    ```
+   <!-- @[websocket_server_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let config: webSocket.WebSocketServerConfig = {
+     // Configure the listening port.
+     serverPort: 8080,
+     maxConcurrentClientsNumber: 10,
+     maxConnectionsForOneClient: 10,
+   }
+   localServer.start(config).then((success: boolean) => {
+     if (success) {
+       hilog.info(0x0000, 'testTag', 'WebSocket server started successfully');
+     } else {
+       hilog.error(0x0000, 'testTag', 'Failed to start WebSocket server');
+     }
+   }).catch((error: BusinessError) => {
+     hilog.error(0x0000, 'testTag', `Failed to start. Code: ${error.code}, message: ${error.message}`);
+   });
+   ```
 
 5. (Optional) Enable listening for the connection status of all clients.
 
-    <!-- @[WebSocket_server_connections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
-        
-    ``` TypeScript
-    let connections: webSocket.WebSocketConnection[] = [];
-    
-    // ···
-      try {
-        connections = await localServer.listAllConnections();
-        if (connections.length === 0) {
-          hilog.info(0x0000, 'testTag', 'client list is empty');
-        // ···
-        } else {
-          hilog.info(0x0000, 'testTag', `client list cnt: ${connections.length}, client connections list is: ${connections}`);
-        }
-      } catch (error) {
-        hilog.error(0x0000, 'testTag', `Failed to listAllConnections. Code: ${error.code}, message: ${error.message}`);
-        // ···
-      }
-    ```
+   <!-- @[WebSocket_server_connections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let connections: webSocket.WebSocketConnection[] = [];
+   
+   // ...
+     try {
+       connections = await localServer.listAllConnections();
+       if (connections.length === 0) {
+         hilog.info(0x0000, 'testTag', 'client list is empty');
+         // ...
+       } else {
+         hilog.info(0x0000, 'testTag', `client list cnt: ${connections.length}, client connections list is: ${connections}`);
+       }
+     } catch (error) {
+       hilog.error(0x0000, 'testTag', `Failed to listAllConnections. Code: ${error.code}, message: ${error.message}`);
+       // ...
+     }
+   ```
 
 6. Call **stop()** to stop the WebSocket server if it is no longer needed.
 
-    <!-- @[WebSocket_server_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
-        
-    ``` TypeScript
-    localServer.stop().then((success: boolean) => {
-      if (success) {
-        hilog.info(0x0000, 'testTag', 'server stop service successfully');
-        // ···
-      } else {
-        hilog.error(0x0000, 'testTag', 'server stop service failed');
-        // ···
-      }
-    });
-    ```
+   <!-- @[WebSocket_server_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   localServer.stop().then((success: boolean) => {
+     if (success) {
+       hilog.info(0x0000, 'testTag', 'server stop service successfully');
+       // ...
+     } else {
+       hilog.error(0x0000, 'testTag', 'server stop service failed');
+       // ...
+     }
+   });
+   ```
 
 ## Samples
 

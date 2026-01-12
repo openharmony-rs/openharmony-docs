@@ -13,7 +13,7 @@
 
 1. [打开资源](huks-open-close-resource-ndk.md)。
 
-2. 构造参数，必传 [HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-type-h.md#oh_huks_externalcryptotag)和[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-type-h.md#oh_huks_externalcryptotag)。
+2. 构造参数，必传[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)和[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)。
 
 3. 调用接口[authUkeyPin](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto-sys.md#huksexternalcryptoauthukeypin)验证PIN码。
 
@@ -35,7 +35,7 @@ let uid: number = 3511
 async function authUkeyPin(): Promise<void> {
   try {
     /* 1.假设已打开的资源如下 */
-    const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\", \"userid\":100, \"index\":{\"key\":\"testKey\"}}";
+    const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\", \"index\":{\"key\":\"testKey\"}}";
 
     /* 2.构造参数 */
     const pin = "123456";

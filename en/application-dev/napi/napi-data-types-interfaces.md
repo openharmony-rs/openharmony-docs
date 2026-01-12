@@ -93,6 +93,7 @@ napi_release_threadsafe_function(napi_threadsafe_function func,
 - If the **mode** value is **napi_tsfn_release**, the number of threads held by the thread-safe function is reduced by one. When the number of threads is reduced to 0, the thread-safe function is destroyed.
 
 - If the value is **napi_tsfn_abort**, this thread-safe function is disabled and cannot be called.
+
   If **napi_tsfn_abort** is set, calling this thread-safe function using **napi_call_threadsafe_function** may cause a UAF issue. When **napi_tsfn_abort** is set, the thread-safe function is disabled and cannot be called. If **napi_call_threadsafe_function** is called, the system may return **napi_closing**, indicating that the thread-safe function is being disabled, and the data passed to the thread-safe function is not put into the queue. This means that the data may not be correctly processed. If the memory to which data points has been freed (for example, the thread-safe function resources have been freed), but the caller still tries to access or use data, a Use-After-Free (UAF) issue may occur.
 
 ### napi_threadsafe_function_call_mode
@@ -575,6 +576,7 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_create_strong_sendable_reference | Creates a Sendable strong reference to a Sendable ArkTS object.|
 | napi_delete_strong_sendable_reference | Deletes a Sendable strong reference.|
 | napi_get_strong_sendable_reference_value | Obtains the ArkTS object value associated with a Sendable strong reference.|
+| napi_throw_business_error | Throws an ArkTS error with the text information, where the code property of the error object is of the number type.|
  
 **napi_queue_async_work_with_qos**
 
@@ -870,6 +872,14 @@ napi_status napi_delete_strong_sendable_reference(napi_env env, napi_sendable_re
 napi_status napi_get_strong_sendable_reference_value(napi_env env,
                                                      napi_sendable_ref ref,
                                                      napi_value* result);
+```
+
+**napi_throw_business_error**
+
+```c
+napi_status napi_throw_business_error(napi_env env,
+                                      int32_t errorCode,
+                                      const char* msg);
 ```
 
 ### Other Utilities

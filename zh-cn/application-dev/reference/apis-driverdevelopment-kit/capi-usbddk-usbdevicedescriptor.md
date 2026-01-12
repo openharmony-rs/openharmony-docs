@@ -30,8 +30,8 @@ typedef struct UsbDeviceDescriptor {...} __attribute__((aligned(8))) UsbDeviceDe
 | uint8_t bDescriptorType | 描述符类型。 |
 | uint16_t bcdUSB | USB协议发布号。 |
 | uint8_t bDeviceClass | 由USB标准化组织（USB-IF）分配的设备类代码。 |
-| uint8_t bDeviceSubClass | 由USB标准化组织（USB-IF）分配的子类代码，其值由{@link bDeviceClass}的值限定。 |
-| uint8_t bDeviceProtocol | 由USB标准化组织（USB-IF）分配的协议代码，其值由{@link bDeviceClass}和{@link bDeviceSubClass}的值限定。 |
+| uint8_t bDeviceSubClass | 由USB标准化组织（USB-IF）分配的子类代码，其值由bDeviceClass的值限定。 |
+| uint8_t bDeviceProtocol | 由USB标准化组织（USB-IF）分配的协议代码，其值由bDeviceClass和bDeviceSubClass的值限定。 |
 | uint8_t bMaxPacketSize0 | 端点零的最大包大小，只有8，16，32，64是合法的。 |
 | uint16_t idVendor | 由USB标准化组织（USB-IF）分配的厂商编号。 |
 | uint16_t idProduct | 由厂商分配的产品编号。 |

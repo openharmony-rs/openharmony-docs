@@ -9,12 +9,15 @@
 ## Introduction
 
 JSVM-API provides APIs for handling JSVM exceptions. You can use these APIs to register callbacks with a JSVM. When an exception occurs on the JSVM, the registered callback will be triggered.
+
 With these APIs, you can customize the handling of critical errors in the JS engine, streamlining error and exception handling during runtime.
 
 ## Basic Concepts
 
 JSVM-API provides APIs for handling the following errors: <br>Out-of-memory (OOM) error: You can use JSVM-API to register an OOM handler with a JSVM. When the JSVM encounters insufficient memory, the system will throw an OOM error and call the registered OOM error handler to perform cleanup or logging operations.
+
 Fatal error: You can use JSVM-API to register a fatal error handler with a JSVM. When the JSVM encounters a fatal error, for example, an unrecoverable error while running JS code, the system will throw a fatal error and call the registered handler to output additional log information or report the error to prevent application crash.
+
 Promise rejection without a catch handler: You can use JSVM-API to register a promise rejection handler with a JSVM. When a promise in JS is rejected without being caught by a catch handler, the system will throw a Promise Reject error and call the registered handler to handle the promise rejection.
 
 ## Available APIs

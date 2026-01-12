@@ -321,7 +321,7 @@ cpp部分代码
 
 static constexpr int INT_ARG_100 = 100;
 
-//这里直接抛出一个带有errorMessage的错误
+// 这里直接抛出一个带有errorMessage的错误
 static napi_value NapiThrowBusinessError(napi_env env, napi_callback_info info)
 {
     napi_status status = napi_throw_business_error(env, INT_ARG_100, "error message");
@@ -351,7 +351,7 @@ try {
   testNapi.napiThrowBusinessError();
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_throw_business_error error code: %{public}d , message: %{public}s', error.code, error.message);
-  console.info(typeof error.code); //"number"
+  console.info(typeof error.code); // "number"
 }
 ```
 <!-- [ark_napi_throw_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->

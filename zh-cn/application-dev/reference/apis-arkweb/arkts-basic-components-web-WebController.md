@@ -16,7 +16,7 @@
 >
 > - 本Class首批接口从API version 8开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## 创建对象
 
@@ -33,7 +33,7 @@ WebController的构造函数。
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。并且不再提供新的接口作为替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[constructor<sup>11+</sup>](./arkts-apis-webview-WebviewController.md#constructor11)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -45,7 +45,7 @@ getCookieManager(): WebCookie
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getCookie](./arkts-apis-webview-WebCookieManager.md#getcookiedeprecated)代替。
+> 从API version 9开始支持，从API version 9开始废弃，建议使用[getCookie](./arkts-apis-webview-WebCookieManager.md#getcookiedeprecated)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

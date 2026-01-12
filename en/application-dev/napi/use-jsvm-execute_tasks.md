@@ -26,7 +26,9 @@ This topic describes how to start a task queue on a VM, check whether there are 
 ## Example
 
 If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ code involved in related APIs.
+
 **Permission requirements**: To run the Wasm bytecode, the application must have the JIT permission. For details about how to apply for the permission, see [Requesting the JIT Permission](jsvm-apply-jit-profile.md).
+
 **Running restrictions**: In the current JSVM version, all functional modules of WebAssembly are disabled in Secure Shield mode. You need to evaluate application compatibility based on the restrictions. For details, see [JSVM-API Secure Shield Mode](jsvm-secure-shield-mode.md).
 ### OH_JSVM_PumpMessageLoop & OH_JSVM_PerformMicrotaskCheckpoint
 
@@ -141,7 +143,7 @@ static int32_t TestJSVM() {
 ```
 <!-- @[oh_jsvm_pump_message_loop_and_perform_microtask_checkpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/pumpmessageloop/src/main/cpp/hello.cpp) -->
 Expected result:
-```
+```txt
 JSVM API TEST: Called with instance [object Object]
 JSVM API TEST: Called Finally
 ```
@@ -240,7 +242,7 @@ static int32_t TestJSVM() {
 ```
 
 Expected result:
-```
+```txt
 Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask : 1
 Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: 0
 Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: 1

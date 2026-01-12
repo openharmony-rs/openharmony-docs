@@ -30,7 +30,7 @@ Define a callback function with the same name in the struct to handle the watche
 **Description**<br>
 This error code is reported when @BuilderParam decorated variables are initialized using methods other than those decorated by @Builder.
 
-**Possible Causes**<br>
+**Possible Cause**<br>
 The @BuilderParam decorated variable is being initialized using a regular function or variable of another type.
 
 **Solution**<br>
@@ -610,7 +610,7 @@ Make sure decorators such as @Extend have exactly one parameter.
 
 ## 10903329 Resource Name Verification Exception
 **Error Message**<br>
-Unknown resouce name \'xxx\'.
+Unknown resource name \'xxx\'.
 
 **Description**<br>
 This error code is reported when the resource name fails verification.

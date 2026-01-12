@@ -1,6 +1,13 @@
 # Binary Sign Tool
+<!--Kit: Ability Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @xia-bubai-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 Binary Sign Tool is used to sign code of binary files on OpenHarmony PCs/2-in-1 devices. It supports code signing of standard ELF files or printing of signed ELF certificate information using commands.
+
 You can find the tool in **toolchains/lib** of the OpenHarmony SDK library downloaded locally. The file name is **binary-sign-tool**.
 
 ## Environment

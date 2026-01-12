@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_Request {...} ScsiPeripheral_Request
+```
+
 ## Overview
 
 Defines the request structure.

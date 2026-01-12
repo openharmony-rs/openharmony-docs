@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## 导入模块
 
@@ -4911,7 +4911,7 @@ static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHead
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
@@ -10011,6 +10011,86 @@ struct WebComponent {
 }
 ```
 
+## setBlanklessLoadingWithParams<sup>23+</sup>
+
+setBlanklessLoadingWithParams(key: string, param: BlanklessLoadingParam): WebBlanklessErrorCode
+
+设置白屏插帧的配置参数，本接口必须与[getBlanklessInfoWithKey](#getblanklessinfowithkey20)接口配套使用。相比于[setBlanklessLoadingWithKey](#setblanklessloadingwithkey20)，本接口支持白屏插帧更多的参数设置，包括插帧持续时间，缓存数据有效时间，插帧完成后的自定义回调。
+
+> **说明：**
+>
+> - 需在触发页面加载的接口之后调用，其他约束同[getBlanklessInfoWithKey](#getblanklessinfowithkey20)。
+> - 页面加载必须在调用本接口的组件中进行。
+> - 当相似度较低时，系统将判定为跳变过大，启用插帧会失败。
+> - 请在module.json5中添加权限: ohos.permission.INTERNET和ohos.permission.GET_NETWORK_INFO，具体权限的添加方法请参考[在配置文件中声明权限](../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                      |
+| -------- | ------- | ---- | -------------------------------------- |
+| key | string | 是 | 唯一标识本页面的key值。必须与getBlanklessInfoWithKey接口的key值相同。<br>合法取值范围：非空，长度不超过2048个字符。<br>非法值设置行为：返回错误码WebBlanklessErrorCode，方案不生效。 |
+| param | [BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23) | 是 | 白屏插帧加载的各项参数设置。 |
+
+**返回值：**
+
+| 类型                 | 说明                      |
+| -------------------- | ------------------------- |
+| [WebBlanklessErrorCode](./arkts-apis-webview-e.md#webblanklesserrorcode20) | 返回接口调用结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+|  801     | Capability not supported. |
+
+**示例：**
+
+```ts
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+       .javaScriptAccess(true)
+       .onLoadIntercept((event) => {
+            try {
+              let info = this.controller.getBlanklessInfoWithKey('https://www.example.com/page1');
+              if (info.errCode == webview.WebBlanklessErrorCode.SUCCESS) {
+                let data = new Date(2026, 5, 10, 0, 0, 0, 0);
+                let param: webview.BlanklessLoadingParam = {
+                  enable: info.similarity > 0.4 && info.similarity < 2000,
+                  duration: info.loadingTime,
+                  expirationTime: data.getTime(),
+                  callback: (info: webview.BlanklessFrameInterpolationInfo)=>{
+                    // 数据监控
+                  },
+                };
+                this.controller.setBlanklessLoadingWithParams('http://www.example.com/page1', param);
+              } else {
+                console.info('getBlankless info err');
+              }
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},
+                Message: ${(error as BusinessError).message}`);
+            }
+            return false;
+        })
+    }
+  }
+}
+```
+
 ## clearBlanklessLoadingCache<sup>20+</sup>
 
 static clearBlanklessLoadingCache(keys?: Array\<string\>): void
@@ -10157,7 +10237,7 @@ export default class EntryAbility extends UIAbility {
 
 ## setScrollbarMode<sup>23+</sup>
 
-setScrollbarMode(scrollbarMode: ScrollbarMode): void
+static setScrollbarMode(scrollbarMode: ScrollbarMode): void
 
 在Web页面场景，设置全局滚动条模式。不显式调用时，默认为[ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR ](./arkts-apis-webview-e.md#scrollbarmode23)（非常驻滚动条）。
 

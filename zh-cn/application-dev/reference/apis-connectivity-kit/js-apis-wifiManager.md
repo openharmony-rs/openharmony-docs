@@ -439,7 +439,7 @@ WLAN热点信息。
 | infoElems | Array&lt;[WifiInfoElem](#wifiinfoelem)&gt; | 否 | 否 | 信息元素。 |
 | timestamp | number | 否 | 否 | 时间戳。 |
 | supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 |
-| isHiLinkNetwork<sup>20+</sup> | boolean | 否 | 否| 热点是否支持hiLink，true表示支持，&nbsp;false表示不支持。 |
+| isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hiLink，true表示支持，&nbsp;false表示不支持。 |
 
 ## DeviceAddressType<sup>10+</sup>
 
@@ -461,7 +461,6 @@ WLAN设备地址（MAC/BSSID）类型。是标识WLAN设备或接入点的唯一
 表示加密类型的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
-
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -589,12 +588,24 @@ WLAN配置信息。
 
 WAPI身份验证协议配置。
 
+WAPI(Wireless LAN Authentication and Privacy Infrastructure) 身份验证协议配置。
+当用户通过WAPI身份验证协议连接无线网时，可通过以下方式配置参数或者证书进行连接。
+- 方式一:通过配置证书进行连接。WifiDeviceConfig中关键字段的配置如下:
+  - preSharedKey无需传参;
+  - securityType设置为WIFI_SEC_TYPE_WAPI_CERT;
+  - 在wapiConfig中：
+    - wapiAsCert传递AS证书的文本内容。
+    - wapiUserCert传递用户证书的文本内容。
+ - 方式二:通过配置preSharedKey进行链接。WifiDeviceConfig中关键字段的配置如下:
+   - preSharedKey传参为路由器上设置的密码;
+   - securityType设置为WIFI_SEC_TYPE_WAPI_PSK。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | wapiPskType | [WapiPskType](#wapipsktype12)| 否 | 否 | 加密类型。 |
-| wapiAsCert | string | 否 | 否 | As证书。 |
+| wapiAsCert | string | 否 | 否 | AS证书(Authentication Server Certificate，认证服务器证书)。 |
 | wapiUserCert | string | 否 | 否 | 用户证书。 |
 
 ## WapiPskType<sup>12+</sup>
@@ -1313,7 +1324,7 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
-当macType是1 - 设备MAC地址时，获取 macAddress 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（该权限仅系统应用可申请），无该权限时，macAddress 返回随机MAC地址。
+当macType是1 - 设备MAC地址时，获取 macAddress 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress 返回随机MAC地址。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1345,7 +1356,7 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
 > **说明：**
-> - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（该权限仅系统应用可申请），无该权限时，macAddress返回为空。
+> - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress返回为空。
 > - 如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的bssid为真实BSSID地址，否则为随机设备地址。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -1389,7 +1400,7 @@ getLinkedInfoSync(): WifiLinkedInfo;
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
 > **说明：**
-> - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（该权限仅系统应用可申请），无该权限时，macAddress返回为空。
+> - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress返回为空。
 > - 如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的bssid为真实BSSID地址，否则为随机设备地址。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -1430,9 +1441,9 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| bssid | string | 否 | 否 | 热点的BSSID。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| rssi | number | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ssid | string | 否 | 否 | 热点的SSID（Service Set Identifier，服务集标识符），用于获取当前设备已连接的Wi-Fi热点的公开名称（即无线网络的名称），编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| bssid | string | 否 | 否 | 热点的BSSID（Basic Service Set Identifier，基本服务集标识符）即无线网络的MAC地址。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| rssi | number | 否 | 否 | 热点的信号强度(dBm)。<br>RSSI（Received Signal Strength Indicator，接收信号强度指示），其标准取值范围为-127dBm至0dBm。在正常使用场景下，常见有效范围为-100dBm（弱信号）至-30dBm（强信号），接近0dBm表示信号极强。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | band | number | 否 | 否 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 |
 | linkSpeed | number | 否 | 否 | WLAN接入点的上行速度，单位Mbps。 |
 | rxLinkSpeed<sup>10+</sup> | number | 否 | 否 | WLAN接入点的下行速度，单位Mbps。 |
@@ -1952,7 +1963,7 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
-获取 groupOwnerAddr 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（该权限仅系统应用可申请），无该权限时，groupOwnerAddr 返回全零地址。
+获取 groupOwnerAddr 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，groupOwnerAddr 返回全零地址。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -1981,7 +1992,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
-获取 groupOwnerAddr 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（该权限仅系统应用可申请），无该权限时，groupOwnerAddr 返回全零地址。
+获取 groupOwnerAddr 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，groupOwnerAddr 返回全零地址。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -2355,6 +2366,7 @@ createGroup(config: WifiP2PConfig): void
 | passphrase | string | 否 | 否 | 群组密钥。 |
 | groupName | string | 否 | 否 | 群组名称。 |
 | goBand | [GroupOwnerBand](#groupownerband) | 否 | 否 | 群组带宽。 |
+| goFreq<sup>23+</sup> | number | 否 | 否 | 群组频率，若群组带宽和群组频率同时添加的情况下，当频率合法时（频率在2400MHz-2500MHz或者4900MHz-5900MHz范围内认为合法），以频率为准，否则以带宽为准。 |
 
 
 ## GroupOwnerBand
@@ -2606,7 +2618,7 @@ getMultiLinkedInfo(): &nbsp;Array&lt;WifiLinkedInfo&gt;
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 > **说明：**
-> - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（该权限仅系统应用可申请），无该权限时，macAddress返回为空。
+> - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress返回为空。
 > - 如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的bssid为真实BSSID地址，否则为随机设备地址。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -3335,7 +3347,7 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-| 201<sup>10+</sup> | Permission denied.                 |
+| 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |

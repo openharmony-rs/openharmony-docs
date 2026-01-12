@@ -1,7 +1,7 @@
 # Drag Event Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -18,7 +18,7 @@ Data not found.
 
 **Description**
 
-This error code is reported when no data is obtained after an application calls the **GetData()** API of **DragEvent**.
+This error code is reported when no data has been obtained using the [getData](./arkui-ts/ts-universal-events-drag-drop.md#getdata10) API of **DragEvent**.
 
 **Possible Causes**
 
@@ -36,7 +36,7 @@ Data error.
 
 **Description**
 
-This error code is reported when incorrect data is obtained after an application calls the **GetData()** API of **DragEvent**.
+This error code is reported when the data obtained via the [getData](./arkui-ts/ts-universal-events-drag-drop.md#getdata10) API of **DragEvent** is incorrect.
 
 **Possible Causes**
 
@@ -54,7 +54,7 @@ Operation not allowed for current phase.
 
 **Description**
 
-This error code is reported when the **startDataLoading()** API of **DragEvent** is called outside the **onDrop** phase.
+This error code is reported when you call an API that is only supported during the [onDrop](./arkui-ts/ts-universal-events-drag-drop.md#ondrop) phase outside of that phase.
 
 **Possible Causes**
 
@@ -62,7 +62,7 @@ The operation is not allowed in the current phase.
 
 **Solution**
 
-N/A
+Call the corresponding API in the [onDrop](./arkui-ts/ts-universal-events-drag-drop.md#ondrop) phase.
 
 ## 190004 Operation Failed
 
@@ -72,12 +72,12 @@ Operation failed.
 
 **Description**
 
-This error code is reported when an operation fails during the current phase.
+This error code is reported if the [cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15) API is called when data has not been loaded or loading is complete.
 
 **Possible Causes**
 
-Invalid or incorrect parameters are passed to the API.
+The API is called at a wrong time.
 
 **Solution**
 
-N/A
+Call the [cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15) API during data loading.

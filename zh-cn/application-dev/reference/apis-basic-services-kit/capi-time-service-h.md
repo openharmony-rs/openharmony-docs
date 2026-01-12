@@ -1,9 +1,9 @@
 # time_service.h
-<!--Kit: Basic Services Kit-->	
-<!--Subsystem: Time-->	
-<!--Owner: @huaxin05-->	
-<!--Designer: @hu-kai45-->	
-<!--Tester: @murphy1984-->	
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Time-->
+<!--Owner: @huaxin05-->
+<!--Designer: @hu-kai45-->
+<!--Tester: @murphy1984-->
 <!--Adviser: @fang-jinxu-->
 
 ## 概述

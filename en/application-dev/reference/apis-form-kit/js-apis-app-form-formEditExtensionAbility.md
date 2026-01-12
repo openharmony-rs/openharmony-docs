@@ -5,7 +5,6 @@
 <!--Designer: @xueyulong-->
 <!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
-
 The **FormEditExtensionAbility** module, inherited from [UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md), provides the widget editing function.
 
 > **NOTE**

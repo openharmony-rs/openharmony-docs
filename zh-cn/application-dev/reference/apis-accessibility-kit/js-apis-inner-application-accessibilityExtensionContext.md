@@ -33,6 +33,8 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 节点元素具备的属性名称及属性值类型信息。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
@@ -798,6 +800,8 @@ axContext.injectGestureSync(gesturePath);
 
 无障碍节点元素, 在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement() ](#accessibilityextensioncontextgetfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement() ](#accessibilityextensioncontextgetwindowrootelementdeprecated)获取AccessibilityElement实例。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### attributeNames<sup>(deprecated)</sup>
@@ -919,10 +923,9 @@ rootElement.attributeValue(attributeName).then((data: string) => {
 
 ### attributeValue<sup>(deprecated)</sup>
 
-attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T, 
-    callback: AsyncCallback\<ElementAttributeValues[T]>): void;
+attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T, callback: AsyncCallback\<ElementAttributeValues[T]>): void
 
-根据属性名称获取属性值，使用callback异步回调。
+根据属性名称获取属性值。使用callback异步回调。
 
 > **说明：**
 >

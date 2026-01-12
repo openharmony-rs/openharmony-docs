@@ -34,6 +34,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
 - Example: Generate an RSA public key based on key parameters (using callback-based APIs).
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
   // Generate an RSA public key parameter (RsaPubKeySpec).
   function genRsaPubKeySpec(nIn: bigint, eIn: bigint): cryptoFramework.RSAPubKeySpec {
     let rsaCommSpec: cryptoFramework.RSACommonParamsSpec = {
@@ -49,14 +50,18 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
     };
     return rsaPubKeySpec;
   }
+
   // Construct an RSA public key specification object based on the key parameter.
   function genRsa2048PubKeySpec() {
-    let nIn = BigInt('0x9260d0750ae117eee55c3f3deaba74917521a262ee76007cdf8a56755ad73a1598a1408410a01434c3f5bc54a88b57fa19fc4328daea0750a4c44e88cff3b2382621b80f670464433e4336e6d003e8cd65bff211da144b88291c2259a00a72b711c116ef7686e8fee34e4d933c868187bdc26f7be071493c86f7a5941c3510806ad67b0f94d88f5cf5c02a092821d8626e8932b65c5bd8c92049c210932b7afa7ac59c0e886ae5c1edb00d8ce2c57633db26bd6639bff73cee82be9275c402b4cf2a4388da8cf8c64eefe1c5a0f5ab8057c39fa5c0589c3e253f0960332300f94bea44877b588e1edbde97cf2360727a09b775262d7ee552b3319b9266f05a25');
+    let nIn =
+      BigInt('0x9260d0750ae117eee55c3f3deaba74917521a262ee76007cdf8a56755ad73a1598a1408410a01434c3f5bc54a88b57fa19fc4328daea0750a4c44e88cff3b2382621b80f670464433e4336e6d003e8cd65bff211da144b88291c2259a00a72b711c116ef7686e8fee34e4d933c868187bdc26f7be071493c86f7a5941c3510806ad67b0f94d88f5cf5c02a092821d8626e8932b65c5bd8c92049c210932b7afa7ac59c0e886ae5c1edb00d8ce2c57633db26bd6639bff73cee82be9275c402b4cf2a4388da8cf8c64eefe1c5a0f5ab8057c39fa5c0589c3e253f0960332300f94bea44877b588e1edbde97cf2360727a09b775262d7ee552b3319b9266f05a25');
     let eIn = BigInt('0x010001');
     return genRsaPubKeySpec(nIn, eIn);
   }
+
   // Compare the RSA public key specifications with the expected value.
-  function compareRsaPubKeyBySpec(rsaKeySpec: cryptoFramework.RSAPubKeySpec, n: bigint | string | number, e: bigint | string | number) {
+  function compareRsaPubKeyBySpec(rsaKeySpec: cryptoFramework.RSAPubKeySpec, n: bigint | string | number,
+    e: bigint | string | number) {
     if (typeof n === 'string' || typeof e === 'string') {
       console.error('type is string');
       return false;
@@ -73,6 +78,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
     }
     return true;
   }
+
   // Generate an RSA public key based on the RSA public key specifications, obtain the key specifications, and compare it with the expected value.
   function rsaUsePubKeySpecGetCallback() {
     let rsaPubKeySpec = genRsa2048PubKeySpec();
@@ -96,6 +102,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
 - Synchronously return the result ([generatePubKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatepubkeysync12)):
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
   // Generate an RSA public key parameter (RsaPubKeySpec).
   function genRsaPubKeySpec(nIn: bigint, eIn: bigint): cryptoFramework.RSAPubKeySpec {
     let rsaCommSpec: cryptoFramework.RSACommonParamsSpec = {
@@ -111,14 +118,18 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
     };
     return rsaPubKeySpec;
   }
+
   // Construct an RSA public key specification object based on the key parameter.
   function genRsa2048PubKeySpec() {
-    let nIn = BigInt('0x9260d0750ae117eee55c3f3deaba74917521a262ee76007cdf8a56755ad73a1598a1408410a01434c3f5bc54a88b57fa19fc4328daea0750a4c44e88cff3b2382621b80f670464433e4336e6d003e8cd65bff211da144b88291c2259a00a72b711c116ef7686e8fee34e4d933c868187bdc26f7be071493c86f7a5941c3510806ad67b0f94d88f5cf5c02a092821d8626e8932b65c5bd8c92049c210932b7afa7ac59c0e886ae5c1edb00d8ce2c57633db26bd6639bff73cee82be9275c402b4cf2a4388da8cf8c64eefe1c5a0f5ab8057c39fa5c0589c3e253f0960332300f94bea44877b588e1edbde97cf2360727a09b775262d7ee552b3319b9266f05a25');
+    let nIn =
+      BigInt('0x9260d0750ae117eee55c3f3deaba74917521a262ee76007cdf8a56755ad73a1598a1408410a01434c3f5bc54a88b57fa19fc4328daea0750a4c44e88cff3b2382621b80f670464433e4336e6d003e8cd65bff211da144b88291c2259a00a72b711c116ef7686e8fee34e4d933c868187bdc26f7be071493c86f7a5941c3510806ad67b0f94d88f5cf5c02a092821d8626e8932b65c5bd8c92049c210932b7afa7ac59c0e886ae5c1edb00d8ce2c57633db26bd6639bff73cee82be9275c402b4cf2a4388da8cf8c64eefe1c5a0f5ab8057c39fa5c0589c3e253f0960332300f94bea44877b588e1edbde97cf2360727a09b775262d7ee552b3319b9266f05a25');
     let eIn = BigInt('0x010001');
     return genRsaPubKeySpec(nIn, eIn);
   }
+
   // Compare the RSA public key specifications with the expected value.
-  function compareRsaPubKeyBySpec(rsaKeySpec: cryptoFramework.RSAPubKeySpec, n: bigint | string | number, e: bigint | string | number) {
+  function compareRsaPubKeyBySpec(rsaKeySpec: cryptoFramework.RSAPubKeySpec, n: bigint | string | number,
+    e: bigint | string | number) {
     if (typeof n === 'string' || typeof e === 'string') {
       console.error('type is string');
       return false;
@@ -135,6 +146,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
     }
     return true;
   }
+
   // Generate an RSA public key based on the RSA public key specifications, obtain the key specifications, and compare it with the expected value.
   function rsaUsePubKeySpecGetSync() {
     let rsaPubKeySpec = genRsa2048PubKeySpec();
@@ -193,6 +205,7 @@ For details about the algorithm specifications, see [ECC](crypto-asym-key-genera
     console.info('. Hexadecimal: ' + bnValue.toString(16));
     console.info('. Length (bits): ' + bnValue.toString(2).length);
   }
+
   // Construct the EccCommonSpec struct, which defines the common parameters of the ECC public and private keys.
   function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
     let fieldFp: cryptoFramework.ECFieldFp = {
@@ -215,6 +228,7 @@ For details about the algorithm specifications, see [ECC](crypto-asym-key-genera
     }
     return eccCommonSpec;
   }
+
   // Print the ECC key specifications.
   function showEccSpecDetailInfo(key: cryptoFramework.PubKey | cryptoFramework.PriKey, keyType: string) {
     console.info('show detail of ' + keyType + ':');
@@ -254,6 +268,7 @@ For details about the algorithm specifications, see [ECC](crypto-asym-key-genera
       console.error(`getAsyKeySpec failed, ${e.code}, ${e.message}`);
     }
   }
+
   // Generate an ECC key pair based on the EccCommonSpec instance and obtain the key specifications.
   function testEccUseCommKeySpecGet() {
     try {
@@ -295,6 +310,7 @@ For details about the algorithm specifications, see [ECC](crypto-asym-key-genera
     console.info('. Hexadecimal: ' + bnValue.toString(16));
     console.info('. Length (bits): ' + bnValue.toString(2).length);
   }
+
   // Construct the EccCommonSpec struct, which defines the common parameters of the ECC public and private keys.
   function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
     let fieldFp: cryptoFramework.ECFieldFp = {
@@ -317,6 +333,7 @@ For details about the algorithm specifications, see [ECC](crypto-asym-key-genera
     }
     return eccCommonSpec;
   }
+
   // Print the ECC key specifications.
   function showEccSpecDetailInfo(key: cryptoFramework.PubKey | cryptoFramework.PriKey, keyType: string) {
     console.info('show detail of ' + keyType + ':');
@@ -354,6 +371,7 @@ For details about the algorithm specifications, see [ECC](crypto-asym-key-genera
       console.error(`getAsyKeySpec failed, ${e.code}, ${e.message}`);
     }
   }
+
   // Generate an ECC key pair based on the EccCommonSpec instance and obtain the key specifications.
   function testEccUseCommKeySpecGetSync() {
     try {
@@ -436,6 +454,7 @@ For details about the algorithm specifications, see [SM2](crypto-asym-key-genera
     };
     return sm2KeyPairSpec;
   }
+
   function sm2TestSync() {
     let sm2KeyPairSpec = genSM2KeyPairSpec();
     let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(sm2KeyPairSpec);

@@ -228,6 +228,8 @@
 
 ## Color
 
+颜色类型。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -340,21 +342,21 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                  | 说明                                       |
-| ------------------- | ---------------------------------------- |
-| Linear              | 表示动画在整个过程中速度保持一致。                        |
-| Ease                | 表示动画以低速开始，然后加快，在结束前减速，CubicBezier(0.25, 0.1, 0.25, 1.0)。 |
-| EaseIn              | 表示动画以低速开始，CubicBezier(0.42, 0.0, 1.0, 1.0)。 |
-| EaseOut             | 表示动画以低速结束，CubicBezier(0.0, 0.0, 0.58, 1.0)。 |
-| EaseInOut           | 表示动画以低速开始和结束，CubicBezier(0.42, 0.0, 0.58, 1.0)。 |
-| FastOutSlowIn       | 标准曲线，CubicBezier(0.4, 0.0, 0.2, 1.0)。   |
-| LinearOutSlowIn     | 减速曲线，CubicBezier(0.0, 0.0, 0.2, 1.0)。   |
-| FastOutLinearIn     | 加速曲线，CubicBezier(0.4, 0.0, 1.0, 1.0)。   |
-| ExtremeDeceleration | 急缓曲线，CubicBezier(0.0, 0.0, 0.0, 1.0)。   |
-| Sharp               | 锐利曲线，CubicBezier(0.33, 0.0, 0.67, 1.0)。 |
-| Rhythm              | 节奏曲线，CubicBezier(0.7, 0.0, 0.2, 1.0)。   |
-| Smooth              | 平滑曲线，CubicBezier(0.4, 0.0, 0.4, 1.0)。   |
-| Friction            | 阻尼曲线，CubicBezier(0.2, 0.0, 0.2, 1.0)。    |
+| 名称                  | 值 | 说明                                       |
+| ------------------- | ------- | --------------------------------- |
+| Linear              | 0 | 表示动画在整个过程中速度保持一致。                        |
+| Ease                | 1 | 表示动画以低速开始，然后加快，在结束前减速，CubicBezier(0.25, 0.1, 0.25, 1.0)。 |
+| EaseIn              | 2 | 表示动画以低速开始，CubicBezier(0.42, 0.0, 1.0, 1.0)。 |
+| EaseOut             | 3 | 表示动画以低速结束，CubicBezier(0.0, 0.0, 0.58, 1.0)。 |
+| EaseInOut           | 4 | 表示动画以低速开始和结束，CubicBezier(0.42, 0.0, 0.58, 1.0)。 |
+| FastOutSlowIn       | 5 | 标准曲线，CubicBezier(0.4, 0.0, 0.2, 1.0)。   |
+| LinearOutSlowIn     | 6 | 减速曲线，CubicBezier(0.0, 0.0, 0.2, 1.0)。   |
+| FastOutLinearIn     | 7 | 加速曲线，CubicBezier(0.4, 0.0, 1.0, 1.0)。   |
+| ExtremeDeceleration | 8 | 急缓曲线，CubicBezier(0.0, 0.0, 0.0, 1.0)。   |
+| Sharp               | 9 | 锐利曲线，CubicBezier(0.33, 0.0, 0.67, 1.0)。 |
+| Rhythm              | 10 | 节奏曲线，CubicBezier(0.7, 0.0, 0.2, 1.0)。   |
+| Smooth              | 11 | 平滑曲线，CubicBezier(0.4, 0.0, 0.4, 1.0)。   |
+| Friction            | 12 | 阻尼曲线，CubicBezier(0.2, 0.0, 0.2, 1.0)。    |
 
 ## DialogButtonStyle<sup>10+</sup>
 
@@ -573,10 +575,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明       |
-| ------ | -------- |
-| Normal | 标准的字体样式。 |
-| Italic | 斜体的字体样式。 |
+| 名称     |值| 说明       |
+| ------ |-| -------- |
+| Normal |0| 标准的字体样式。 |
+| Italic |1| 斜体的字体样式。 |
 
 ## FontWeight
 
@@ -652,6 +654,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | WRAP_WITH_ARROW | 1    | 交叉轴方向键允许换行。<br/>不规则单元格场景下，交叉轴方向键走焦时优先走到同一行的可获焦item。 |
 
 ## GradientDirection
+
+线性渐变的方向。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -953,10 +957,12 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 | 名称      |  值  | 说明      |
 | ------- | ----- |  ------- |
-| Press   |   -   | 鼠标按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Release |   -   | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Move    |   -   | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| Hover   |   -   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| Press   |   1   | 鼠标按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Release |   2   | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Move    |   3   | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| Hover   |   4   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| ENTER_WINDOW<sup>23+</sup>   |   4   | 鼠标进入窗口。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。   |
+| LEAVE_WINDOW<sup>23+</sup>   |   5   | 鼠标离开窗口。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。   |
 | CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。通常在以下场景触发：<br/>1. 组件失去焦点：当前持有焦点的组件因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。<br/>2. 事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。<br/>3. 异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## ModifierKey<sup>10+</sup>
@@ -1018,6 +1024,8 @@ type Nullable\<T> = T | undefined
 
 ## ObscuredReasons<sup>10+</sup>
 
+设置组件内容的遮罩类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1041,18 +1049,20 @@ type Nullable\<T> = T | undefined
 
 ## PlayMode
 
+动画播放模式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称               | 说明                                       |
-| ---------------- | ---------------------------------------- |
-| Normal           | 动画正向播放。                                 |
-| Reverse          | 动画反向播放。                                  |
-| Alternate        | 动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。 |
-| AlternateReverse | 动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
+| 名称               | 值 | 说明                                       |
+| ---------------- | ----- | ----------------------------------- |
+| Normal           | 0 | 动画正向播放。                                 |
+| Reverse          | 1 | 动画反向播放。                                  |
+| Alternate        | 2 | 动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。 |
+| AlternateReverse | 3 | 动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
 
 ## Placement<sup>8+</sup>
 
@@ -1068,10 +1078,10 @@ type Nullable\<T> = T | undefined
 | Right                    | 气泡提示位于组件右侧，与组件右侧中心对齐。                   |
 | Top                      | 气泡提示位于组件上侧，与组件上侧中心对齐。                   |
 | Bottom                   | 气泡提示位于组件下侧，与组件下侧中心对齐。                   |
-| TopLeft                  | 气泡提示位于组件上侧，从API Version 9开始，与组件左侧边缘对齐。 |
-| TopRight                 | 气泡提示位于组件上侧，从API Version 9开始，与组件右侧边缘对齐。 |
-| BottomLeft               | 气泡提示位于组件下侧，从API Version 9开始，与组件左侧边缘对齐。 |
-| BottomRight              | 气泡提示位于组件下侧，从API Version 9开始，与组件右侧边缘对齐。 |
+| TopLeft                  | 气泡提示位于组件上侧，从API version 9开始，与组件左侧边缘对齐。 |
+| TopRight                 | 气泡提示位于组件上侧，从API version 9开始，与组件右侧边缘对齐。 |
+| BottomLeft               | 气泡提示位于组件下侧，从API version 9开始，与组件左侧边缘对齐。 |
+| BottomRight              | 气泡提示位于组件下侧，从API version 9开始，与组件右侧边缘对齐。 |
 | LeftTop<sup>9+</sup>     | 气泡提示位于组件左侧，与组件上侧边缘对齐。                   |
 | LeftBottom<sup>9+</sup>  | 气泡提示位于组件左侧，与组件下侧边缘对齐。                   |
 | RightTop<sup>9+</sup>    | 气泡提示位于组件右侧，与组件上侧边缘对齐。                   |
@@ -1225,8 +1235,8 @@ type Nullable\<T> = T | undefined
 
 | 名称                                 | 值 | 说明                                       |
 | ---------------------------------- | --- | ---------------------------------------- |
-| FAST | 0 | 在线绘制模式，当前节点和它的子节点都会被裁切圆角后直接绘制到主画布上。<br/> **说明**：使用在线绘制模式，在部分场景下可能会有显示效果异常，例如：圆角组件内叠加模糊效果后背景色会有相互影响，导致出现渐变叠加的效果，具体表现可参考[示例3（设置离屏圆角）](./ts-universal-attributes-border.md#示例3设置离屏圆角)。|
-| OFFSCREEN | 1 | 离屏绘制模式，当前节点和子节点会先绘制到离屏画布上，随后进行一次圆角裁切并绘制到主画布上。<br/> **说明**：<br/>1. 离屏绘制模式效果更好，可以解决在线绘制模式显示效果异常的问题，但会带来额外的性能损失。<br/>2. 离屏绘制模式仅针对需要多层组件切圆角的场景使用，单组件需设置[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性、[背景色](./ts-universal-attributes-background.md)或[前景色](./ts-universal-attributes-foreground-color.md)时才可使能离屏绘制模式。  |
+| FAST | 0 | 在线绘制模式，组件进行圆角内容绘制时，绘制内容被裁剪成圆角，直接绘制到主画布上。<br/> **说明**：使用在线绘制模式，在部分场景下可能会有显示效果异常，例如：圆角组件内叠加模糊效果后背景色会有相互影响，导致出现渐变叠加的效果，具体表现可参考[示例3（设置离屏圆角）](./ts-universal-attributes-border.md#示例3设置离屏圆角)。|
+| OFFSCREEN | 1 | 离屏绘制模式，组件进行圆角内容绘制时，绘制内容先不带圆角绘制到离屏画布上，随后对离屏画布上的内容进行一次圆角裁切并绘制到主画布上。<br/> **说明**：<br/>1. 离屏绘制模式相比在线绘制模式会带来额外的性能损失。<br/>2. 离屏绘制模式是指将内容绘制到主画布之前，先在一个额外的画布上完成绘制工作，然后将绘制结果绘制到主画布上。<br/>3. 离屏绘制模式仅针对需要多层组件切圆角的场景使用，单组件需设置[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性、[背景色](./ts-universal-attributes-background.md)或[前景色](./ts-universal-attributes-foreground-color.md)时才可使能离屏绘制模式。  |
 
 ## ScrollSource<sup>12+</sup>
 
@@ -1248,6 +1258,8 @@ type Nullable\<T> = T | undefined
 | SCROLLER_ANIMATION  |  7  | Scroller的带动效方法。 |
 
 ## SharedTransitionEffectType
+
+动画类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1290,17 +1302,19 @@ type Nullable\<T> = T | undefined
 
 ## TransitionType
 
+指定该转场样式生效的场景。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                             |
-| ------ | ------------------------------ |
-| All    | 指定当前的Transition动效在组件的所有变化场景中生效。 |
-| Insert | 指定当前的Transition动效在组件的插入显示场景中生效。 |
-| Delete | 指定当前的Transition动效在组件的删除隐藏场景中生效。 |
+| 名称     | 值 | 说明                             |
+| ------ | ----- | ------------------------- |
+| All    | 0 | 指定当前的Transition动效在组件的所有变化场景中生效。 |
+| Insert | 1 | 指定当前的Transition动效在组件的插入显示场景中生效。 |
+| Delete | 2 | 指定当前的Transition动效在组件的删除隐藏场景中生效。 |
 
 ## TextAlign
 

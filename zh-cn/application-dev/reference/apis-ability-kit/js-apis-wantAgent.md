@@ -134,7 +134,7 @@ wantAgent.getWantAgent({
     requestCode: 0,
     wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 }).then((data: _WantAgent) => {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
 });
 ```
 
@@ -166,9 +166,9 @@ let wantAgentObj: _WantAgent;
 
 //getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
-    	wantAgentObj = data;
+        wantAgentObj = data;
     } else {
         console.error('getWantAgent failed, error: ' + JSON.stringify(err));
         return;
@@ -267,7 +267,7 @@ wantAgent.getWantAgent({
     requestCode: 0,
     wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 }).then((data: _WantAgent) => {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     wantAgentObj = data;
     if (wantAgentObj) {
         wantAgent.getBundleName(wantAgentObj).then((data) => {
@@ -307,9 +307,9 @@ let wantAgentObj: _WantAgent;
 
 //getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
-    	wantAgentObj = data;
+        wantAgentObj = data;
     } else {
         console.error('getWantAgent failed, error: ' + JSON.stringify(err));
         return;
@@ -408,7 +408,7 @@ wantAgent.getWantAgent({
     requestCode: 0,
     wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 }).then((data) => {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     wantAgentObj = data;
     if (wantAgentObj) {
         wantAgent.getUid(wantAgentObj).then((data) => {
@@ -447,9 +447,9 @@ let wantAgentObj: _WantAgent;
 
 //getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
-    	wantAgentObj = data;
+        wantAgentObj = data;
     } else {
         console.error('getWantAgent failed, error: ' + JSON.stringify(err));
         return;
@@ -549,7 +549,7 @@ wantAgent.getWantAgent({
     requestCode: 0,
     wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 }).then((data) => {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     wantAgentObj = data;
     if (wantAgentObj) {        
         wantAgent.cancel(wantAgentObj).then((data) => {
@@ -590,9 +590,9 @@ let wantAgentObj: _WantAgent;
 
 //getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
-    	wantAgentObj = data;
+        wantAgentObj = data;
     } else {
         console.error('getWantAgent failed, error: ' + JSON.stringify(err));
         return;
@@ -666,9 +666,9 @@ let wantAgentObj2: _WantAgent;
 
 //getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
-    	wantAgentObj1 = data;
+        wantAgentObj1 = data;
         wantAgentObj2 = data;
     } else {
         console.error('getWantAgent failed, error: ' + JSON.stringify(err));
@@ -770,7 +770,7 @@ wantAgent.getWantAgent({
     requestCode: 0,
     wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 }).then((data) => {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     wantAgentObj1 = data;
     wantAgentObj2 = data;
     if (data) {
@@ -790,7 +790,7 @@ wantAgent.getWantAgent({
 | 名称                | 值             | 说明                                                         |
 | ------------------- | -------------- | ------------------------------------------------------------ |
 | ONE_TIME_FLAG       | 0 | WantAgent仅能使用一次。                                      |
-| NO_BUILD_FLAG       | 1 | 如果说明WantAgent对象不存在，则不创建它，直接返回null。      |
+| NO_BUILD_FLAG       | 1 | 如果指定WantAgent对象不存在，则不创建它，直接返回null。      |
 | CANCEL_PRESENT_FLAG | 2 | 在生成一个新的WantAgent对象前取消已存在的一个WantAgent对象。 |
 | UPDATE_PRESENT_FLAG | 3 | 使用新的WantAgent的额外数据替换已存在的WantAgent中的额外数据。 |
 | CONSTANT_FLAG       | 4 | WantAgent是不可变的。                                        |

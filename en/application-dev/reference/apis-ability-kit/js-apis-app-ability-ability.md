@@ -70,6 +70,10 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 Called when the available memory of the entire device changes to a specified level. You can override this callback to respond to changes in the memory level, for example, releasing cached data.
 
+> **NOTE**
+> 
+> Releasing UI components in the **onMemoryLevel** callback may block the main thread tasks of the current process. Therefore, you are advised not to release UI components in this callback.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore

@@ -1,9 +1,9 @@
 # qrcode Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **&lt;qrcode&gt;** component is used to generate and display a QR code. For details, see [qrcode](../reference/apis-arkui/arkui-js/js-components-basic-qrcode.md).

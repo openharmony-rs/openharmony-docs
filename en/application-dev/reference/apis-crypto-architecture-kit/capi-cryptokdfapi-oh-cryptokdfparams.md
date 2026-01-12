@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoKdfParams OH_CryptoKdfParams
+```
+
 ## Overview
 
 Defines a struct for key derivation function (KDF) parameters.

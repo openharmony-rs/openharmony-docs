@@ -68,10 +68,10 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId] 
 | -h | 帮助信息。 |
 | -p | 可选参数，指定待安装的HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。从API version 22开始，支持指定待安装的APP路径，也可指定只存在一个APP的文件夹路径。 |
 | -r | 可选参数，覆盖安装一个HAP/HSP。默认缺省，缺省时表示覆盖安装。 |
-| -s | 安装应用间HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。指定目录的时候，每个路径目录下只能存在一个HSP。 |
+| -s | 安装应用间HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。指定目录的时候，每个路径目录下只能存在一个HSP。<br>**说明：**<br> 应用间HSP不对三方应用开放，三方无法安装应用间HSP。 |
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为180s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
 | -u | 可选参数，指定[用户](#userid)，默认在当前活跃用户下安装应用。仅支持在当前活跃用户或0用户下安装。<br>**说明：**<br> 如果当前活跃用户是100，使用命令`bm install -p /data/local/tmp/ohos.app.hap -u 102`安装时，只会在当前活跃用户100下安装应用。 |
-| -d | 可选参数，允许应用降级安装，即设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。仅支持三方应用降级安装。从API version 23开始支持。 |
+| -d | 可选参数，允许应用降级安装，即设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。仅支持签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用降级安装。从API version 23开始支持。 |
 
 
 示例：
@@ -611,7 +611,7 @@ HAP/HSP包没有签名。
 
 方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
-方法三. 如果安装APP时报这个错误码，需要在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)里配置appWithSignedPkg为true，保证APP里的HAP/HSP有签名。
+方法三. 如果安装APP时报这个错误码，需要在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)里配置[packOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215)的appWithSignedPkg属性为true，保证APP里的HAP/HSP有签名。
 
 ### 9568321 签名文件解析失败
 **错误信息**
@@ -1589,6 +1589,12 @@ error: install version downgrade.
 **处理步骤**
 
 1. 卸载已安装的应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），重新安装新应用。
+2. 对于已安装的证书分发类型为app_gallery或者签名证书类型为debug的三方应用，当新安装的版本低于当前版本时，支持降级安装，可以使用`-d`命令实现降级安装。
+
+    ``` bash
+    hdc shell bm install -p /data/example.hap -d
+    ```
+
 
 ### 9568264 安装检验签名一致性失败
 **错误信息**
@@ -2906,7 +2912,7 @@ error: Check pluginDistributionID between plugin and host application failed.
 }
 ``` 
 
-### 9568433 应用缺少ohos.permission.SUPPORT_PLUGIN权限
+### 9568433 应用缺少ohos.permission.kernel.SUPPORT_PLUGIN权限
 **错误信息**
 
 error: Failed to install the plugin because host application check permission failed.
@@ -2917,7 +2923,7 @@ error: Failed to install the plugin because host application check permission fa
 
 **可能原因**
 
-应用缺少ohos.permission.SUPPORT_PLUGIN权限。
+应用缺少ohos.permission.kernel.SUPPORT_PLUGIN权限。
 
 **处理步骤**
 

@@ -41,6 +41,8 @@ Provides DialogAbility information, including the bundle name, module name, and 
 | visible<sup>12+</sup> | boolean | No| No| Whether the ability is visible. **true** if visible, **false** otherwise.|
 | appIndex<sup>12+</sup> | number | No| No| Index of the application clone.|
 | multiAppMode<sup>12+</sup> | [MultiAppMode](./js-apis-bundleManager-applicationInfo.md#multiappmode12) | No| No| Multi-app mode.|
+| codePath<sup>23+</sup> | string | No| Yes| Installation directory of the application.|
+| installSource<sup>23+</sup> | string | No| Yes| Installation source of the application. The options are as follows:<br> - **pre-installed**: pre-installed application installed during the first boot.<br> - **ota**: pre-installed application added during system upgrade.<br> - **recovery**: pre-installed application manually restored by the user after uninstallation.<br> - **bundleName**: installation by the application corresponding to this bundle name. **bundleName** represents a variable, subject to the actual value.<br> - **unknown**: unknown application installation source.|
 
 ## DialogSessionInfo
 

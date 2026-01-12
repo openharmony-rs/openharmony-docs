@@ -7,7 +7,9 @@
 <!--Adviser: @w_Machine_cc-->
 
 应用可以在布局中嵌入PhotoPicker组件，通过此组件，应用无需申请权限，即可实现媒体文件选择功能。在用户选择媒体文件后，应用即可访问用户选中的图片或视频文件。仅包含读权限。
+
 需要注意的是PhotoPickerComponent不能嵌套使用，且不建议在PhotoPickerComponent上覆盖设置了overlay属性的组件，将导致PhotoPickerComponent无法接受手势事件。
+
 应用嵌入组件后，用户可直接在PhotoPicker组件中选择图片或视频文件。
 
 > **说明：**
@@ -21,8 +23,9 @@ import {
   PhotoPickerComponent, PickerController, PickerOptions,
   DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType,
   MaxCountType, PhotoBrowserRange, PhotoBrowserUIElement,
-  ItemsDeletedCallback, ExceedMaxSelectedCallback, CurrentAlbumDeletedCallback
-} from '@ohos.file.PhotoPickerComponent';
+  ItemsDeletedCallback, ExceedMaxSelectedCallback, CurrentAlbumDeletedCallback, SingleLineConfig,
+    BadgeConfig, PreselectedInfo, SaveMode, BadgeType, VideoPlayerState, ItemDisplayRatio
+} from '@kit.MediaLibraryKit';
 ```
 
 ## 属性
@@ -31,21 +34,7 @@ import {
 
 ## PhotoPickerComponent
 
-PhotoPickerComponent({
-  pickerOptions?: PickerOptions,
-  onSelect?: (uri: string) => void,
-  onDeselect?: (uri: string) => void,
-  onItemClicked?: (itemInfo: ItemInfo, clickType: ClickType) => boolean,
-  onEnterPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) => boolean,
-  onExitPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) => boolean,
-  onPickerControllerReady?: () => void,
-  onPhotoBrowserChanged?: (browserItemInfo: BaseItemInfo) => boolean,
-  onSelectedItemsDeleted?: ItemsDeletedCallback,
-  onExceedMaxSelected?: ExceedMaxSelectedCallback,
-  onCurrentAlbumDeleted?: CurrentAlbumDeletedCallback,
-  onVideoPlayStateChanged?: videoPlayStateChangedCallback,
-  pickerController: PickerController
-})
+PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) => void, onDeselect?: (uri: string) => void, onItemClicked?: (itemInfo: ItemInfo, clickType: ClickType) => boolean, onEnterPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) => boolean, onExitPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) => boolean, onPickerControllerReady?: () => void, onPhotoBrowserChanged?: (browserItemInfo: BaseItemInfo) => boolean, onSelectedItemsDeleted?: ItemsDeletedCallback, onExceedMaxSelected?: ExceedMaxSelectedCallback, onCurrentAlbumDeleted?: CurrentAlbumDeletedCallback, onVideoPlayStateChanged?: videoPlayStateChangedCallback, pickerController: PickerController })
 
 应用可以在布局中嵌入PhotoPickerComponent组件，通过此组件，应用无需申请权限，即可访问公共目录中的图片或视频文件。
 
@@ -390,6 +379,36 @@ updatePickerOptions(updateConfig: UpdatablePickerConfigs): Promise\<void>
 | ------ | ------------------------ |
 | Promise\<void> | Promise对象，无返回结果。 |
 
+### saveTrustedPhotoAssetsEx<sup>23+</sup>
+
+saveTrustedPhotoAssetsEx(trustedUris: Array\<string>,settings?: Array\<photoAccessHelper.CreationSetting>, saveMode?: SaveMode): Promise\<Array\<string>>
+
+应用可通过该接口保存对应URI列表中的文件。使用Promise异步回调。
+
+> **说明：**
+>
+> 此接口通常与[replacePhotoPickerPreview](#replacephotopickerpreview15)接口结合使用，以保存替换显示成功后的应用沙箱图片或视频newUris到图库。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数**：
+
+| 参数名        | 类型                                                                                                   | 必填  | 说明                |
+|-------------- |-------------------------------------------------------------------------------------------------------| ----- |-------------------|
+| trustedUris   | Array&lt;string&gt;                                                                                   | 是 | 需要保存到图库的应用沙箱图片或视频URI。<br>trustedUris一般来自[replacePhotoPickerPreview](#replacephotopickerpreview15)替换显示成功后的应用沙箱图片或视频newUri。 |
+| settings       | Array&lt;[photoAccessHelper.CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)&gt;| 否 | 需要保存的文件对应的配置参数。|
+| saveMode      | [SaveMode](#savemode15)                                                                               | 否 | 图片或视频的保存模式。               |
+
+**返回值**：
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| Promise\<Array\<string>> | Promise对象，返回保存后新生成的媒体库文件对应的URI。 |
+
 ## BaseItemInfo
 
 图片、视频相关信息。
@@ -408,7 +427,7 @@ updatePickerOptions(updateConfig: UpdatablePickerConfigs): Promise\<void>
 | dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否 | 是   | 媒体文件动态范围模型，包括HDR和SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。|
 | orientation<sup>21+</sup>   | number             | 否 | 是   | 图片/视频方向信息。<br>1.“TOP-left”，图像未旋转。<br>2.“TOP-right”，镜像水平翻转。<br>3.“Bottom-right”，图像旋转180°。<br>4.“Bottom-left”，镜像垂直翻转。<br>5.“Left-top”，先镜像水平翻转，再顺时针旋转270°。<br>6.“Right-top”，顺时针旋转90°。<br>7.“Right-bottom”，先镜像水平翻转，再顺时针旋转90°。<br>8.“Left-bottom”，顺时针旋转270°。<br>携带镜像信息的图片无论旋转与否其宽高属性都与原图保持一致，无镜像信息的图片其宽高属性会更新为旋转后的结果。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。|
 | movingPhotoBadgeState<sup>22+</sup> | [photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | 否 | 是   | 动态照片的状态。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| VideoMode<sup>22+</sup> | [photoAccessHelper.VideoMode](arkts-apis-photoAccessHelper-e.md#videomode22) | 否 | 是   | 视频文件的log模式。 <br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
+| videoMode<sup>22+</sup> | [photoAccessHelper.VideoMode](arkts-apis-photoAccessHelper-e.md#videomode22) | 否 | 是   | 视频文件的log模式。 <br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
 ## ItemInfo
 
 继承自[BaseItemInfo](#baseiteminfo)，增加私有参数itemType。
@@ -735,10 +754,10 @@ import {
   ExceedMaxSelectedCallback,
   CurrentAlbumDeletedCallback,
   videoPlayStateChangedCallback,
-  VideoPlayerState
-} from '@ohos.file.PhotoPickerComponent';
+  VideoPlayerState,
+  photoAccessHelper
+} from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
-import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
 
 @Entry

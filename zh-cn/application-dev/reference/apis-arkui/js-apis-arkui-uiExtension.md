@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-用于EmbeddedUIExtensionAbility（或UIExtensionAbility）中获取宿主应用的窗口信息或对应的EmbeddedComponent<!--Del-->（或UIExtensionComponent）<!--DelEnd-->组件的信息。
+用于[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)（或[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#uiextensionability)）中获取宿主应用的窗口信息或对应的[EmbeddedComponent](./arkui-ts/ts-container-embedded-component.md)<!--Del-->（或[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)）<!--DelEnd-->组件的信息。
 
 > **说明**
 >
@@ -15,7 +15,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { uiExtension } from '@kit.ArkUI';
 ```
 
@@ -263,7 +263,7 @@ on(type: 'rectChange', reasons: number, callback: Callback&lt;RectChangeOptions&
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'rectChange'，即组件（EmbeddedComponent或UIExtensionComponent）矩形变化事件。 |
-| reasons  | number                         | 是   | 触发组件（EmbeddedComponent或UIExtensionComponent）位置及尺寸变化的原因，具体取值可参考[RectChangeReason](#rectchangereason14)枚举值。
+| reasons  | number                         | 是   | 触发组件（EmbeddedComponent或UIExtensionComponent）位置及尺寸变化的原因，具体取值可参考[RectChangeReason](#rectchangereason14)枚举值。|
 | callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions14)> | 是 | 回调函数。返回当前组件（EmbeddedComponent或UIExtensionComponent）矩形变化值及变化原因。 |
 
 **错误码：**
@@ -388,6 +388,86 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     };
     // 创建子窗口
     extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
+      .then((subWindow: window.Window) => {
+        subWindow.setUIContent('pages/Index', (err, data) =>{
+          if (err && err.code != 0) {
+            return;
+          }
+          subWindow?.resize(300, 300, (err, data)=>{
+            if (err && err.code != 0) {
+              return;
+            }
+            subWindow?.moveWindowTo(100, 100, (err, data)=>{
+              if (err && err.code != 0) {
+                return;
+              }
+              subWindow?.showWindow((err, data) => {
+                if (err && err.code == 0) {
+                  console.info(`The subwindow has been shown!`);
+                } else {
+                  console.error(`Failed to show the subwindow!`);
+                }
+              });
+            });
+          });
+        });
+      }).catch((error: BusinessError) => {
+        console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
+      })
+  }
+}
+```
+
+### createSubWindowWithOptions<sup>23+</sup>
+
+createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
+
+创建该WindowProxy实例下的子窗口，可通过设置followCreatorLifecycle，决定子窗是否跟随组件（EmbeddedComponent或UIExtensionComponent）的生命周期，使用Promise异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| name   | string | 是   | 子窗口的名字。 |
+| subWindowConfig | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 是   | 子窗口参数。  |
+| followCreatorLifecycle | boolean | 是   | 子窗生命周期是否跟组件（EmbeddedComponent或UIExtensionComponent）保持同步。true表示该组件隐藏时，子窗隐藏，该组件显示时子窗显示，false表示子窗的显隐不跟随该组件变化。|
+
+**返回值：**
+
+| 类型                             | 说明                                             |
+| -------------------------------- | ------------------------------------------------ |
+| Promise&lt;[window.Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前WindowProxy下创建的子窗口对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+
+**示例：**
+
+```ts
+// ExtensionProvider.ts
+import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends EmbeddedUIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionWindow = session.getUIExtensionWindowProxy();
+    const subWindowConfig: window.SubWindowOptions = {
+      title: 'This is a subwindow',
+      decorEnabled: true
+    };
+    // 创建子窗口
+    extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowConfig, true)
       .then((subWindow: window.Window) => {
         subWindow.setUIContent('pages/Index', (err, data) =>{
           if (err && err.code != 0) {
@@ -548,7 +628,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ## 完整示例
 
-本示例展示文档中所有API在EmbeddedUIExtensionAbility中的基础使用方式，示例应用的`bundleName`为"com.example.embeddeddemo", 被拉起的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。
+本示例展示文档中所有API在[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)中的基础使用方式，示例应用的`bundleName`为"com.example.embeddeddemo"，被拉起的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。
 
 - 示例应用中的EntryAbility(UIAbility)加载首页文件：`pages/Index.ets`，其中内容如下：
 

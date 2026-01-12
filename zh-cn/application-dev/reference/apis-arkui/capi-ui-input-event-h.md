@@ -30,6 +30,9 @@
 | -- | -- | -- |
 | [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) | ArkUI_UIInputEvent | UI输入事件定义。 |
 | [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md) | ArkUI_CoastingAxisEvent | 定义惯性滚动轴事件。  |
+| [ArkUI_TouchTestInfoItem](capi-arkui-nativemodule-arkui-touchtestinfoitem.md) | ArkUI_TouchTestInfoItem | 定义触摸测试信息项。  |
+| [ArkUI_TouchTestInfoItem*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md) | ArkUI_TouchTestInfoItemHandle | 定义触摸测试信息项句柄。  |
+| [ArkUI_TouchTestInfoItemHandle*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md) | ArkUI_TouchTestInfoItemHandleArray | 定义触摸测试信息项句柄数组。  |
 
 ### 枚举
 
@@ -237,7 +240,7 @@ enum anonymous3
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_INPUT_EVENT_SOURCE_TYPE_UNKNOWN = 0 | 不支持的来源类型。 |
+| UI_INPUT_EVENT_SOURCE_TYPE_UNKNOWN = 0 | 未知输入源。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_MOUSE = 1 | 鼠标。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_TOUCH_SCREEN = 2 | 触摸屏。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_KEY = 4 | 按键。<br>**起始版本：** 22 |
@@ -453,7 +456,7 @@ enum ArkUI_TouchTestStrategy
 
 定义触摸测试策略。
 
-**起始版本：** 23
+**起始版本：** 22
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -524,7 +527,7 @@ int32_t OH_ArkUI_UIInputEvent_GetSourceType(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-获取UI输入事件的触发源类型。输入源为产生输入事件的真实物理设备，如触摸屏，鼠标等，由UI_INPUT_EVENT_SOURCE_TYPE_XXX定义，而输入工具为操作输入源设备来产生事件的工具，如手指、触控笔。在某些情况下两者可能容易发生混淆，比如当用户在操作鼠标时，鼠标既是输入源，也是输入工具。对于按键事件，并不支持获取输入源类型，返回unkown。
+获取UI输入事件的触发源类型。输入源为产生输入事件的真实物理设备，如触摸屏，鼠标等，由UI_INPUT_EVENT_SOURCE_TYPE_XXX定义，而输入工具为操作输入源设备来产生事件的工具，如手指、触控笔。在某些情况下两者可能容易发生混淆，比如当用户在操作鼠标时，鼠标既是输入源，也是输入工具。对于按键事件，并不支持获取输入源类型，返回unknown。
 
 **起始版本：** 12
 
@@ -550,7 +553,7 @@ int32_t OH_ArkUI_UIInputEvent_GetToolType(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-获取UI输入事件的工具类型。输入工具为操作输入源设备来产生事件的操作方，如手指、触控笔，他们自身不真实产生事件，但可以驱动输入源设备不断产生事件。返回的类型由UI_INPUT_EVENT_TOOL_TYPE_XXX枚举值定义。对于按键事件，并不支持获取输入工具类型，返回unkown。
+获取UI输入事件的工具类型。输入工具为操作输入源设备来产生事件的操作方，如手指、触控笔，他们自身不真实产生事件，但可以驱动输入源设备不断产生事件。返回的类型由UI_INPUT_EVENT_TOOL_TYPE_XXX枚举值定义。对于按键事件，并不支持获取输入工具类型，返回unknown。
 
 **起始版本：** 12
 
@@ -2920,7 +2923,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_GetTouchTestInfoList(ArkUI_TouchTestInfo*
 
 获取触摸测试信息项数组。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -2945,7 +2948,7 @@ float OH_ArkUI_TouchTestInfoItem_GetX(const ArkUI_TouchTestInfoItem* info);
 
 从触摸测试信息项中获取相对于子组件左上角的X坐标，单位为px。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -2968,7 +2971,7 @@ float OH_ArkUI_TouchTestInfoItem_GetY(const ArkUI_TouchTestInfoItem* info);
 
 从触摸测试信息项中获取相对于子组件左上角的Y坐标，单位为px。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -2991,7 +2994,7 @@ float OH_ArkUI_TouchTestInfoItem_GetWindowX(const ArkUI_TouchTestInfoItem* info)
 
 从触摸测试信息项中获取相对于当前应用窗口左上角的X坐标，单位为px。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -3014,7 +3017,7 @@ float OH_ArkUI_TouchTestInfoItem_GetWindowY(const ArkUI_TouchTestInfoItem* info)
 
 从触摸测试信息项中获取相对于当前应用窗口左上角的Y坐标，单位为px。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -3038,7 +3041,7 @@ float OH_ArkUI_TouchTestInfoItem_GetXRelativeToParent(const ArkUI_TouchTestInfoI
 
 从触摸测试信息项中获取相对于父组件左上角的X坐标，单位为px。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -3061,7 +3064,7 @@ float OH_ArkUI_TouchTestInfoItem_GetYRelativeToParent(const ArkUI_TouchTestInfoI
 
 从触摸测试信息项中获取相对于父组件左上角的Y坐标，单位为px。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -3084,7 +3087,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildRect(const ArkUI_TouchTestInf
 
 从触摸测试信息项中获取子组件的帧矩形信息。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -3109,7 +3112,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildId(const ArkUI_TouchTestInfoI
 
 从触摸测试信息项中获取子组件的ID。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -3135,7 +3138,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultStrategy(ArkUI_TouchTestInf
 
 设置触摸测试策略，即组件及其子组件在命中测试过程中的行为方式。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -3159,7 +3162,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultId(ArkUI_TouchTestInfo* inf
 
 设置命中测试过程中需要作用的子组件ID。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 

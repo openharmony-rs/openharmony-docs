@@ -53,7 +53,7 @@ The packing process is as follows:
 
 ### OH_ImagePacker_Create()
 
-```
+```c
 int32_t OH_ImagePacker_Create(napi_env env, napi_value *res)
 ```
 
@@ -79,7 +79,7 @@ Obtains an ImagePacker object at the JavaScript native layer.
 
 ### OH_ImagePacker_InitNative()
 
-```
+```c
 ImagePacker_Native* OH_ImagePacker_InitNative(napi_env env, napi_value packer)
 ```
 
@@ -109,7 +109,7 @@ Converts an ImagePacker object at the JavaScript native layer into an ImagePacke
 
 ### OH_ImagePacker_PackToData()
 
-```
+```c
 int32_t OH_ImagePacker_PackToData(ImagePacker_Native* native, napi_value source,ImagePacker_Opts* opts, uint8_t* outData, size_t* size)
 ```
 
@@ -142,7 +142,7 @@ Packs a PixelMap object or an ImagePacker object at the JavaScript native layer 
 
 ### OH_ImagePacker_PackToFile()
 
-```
+```c
 int32_t OH_ImagePacker_PackToFile(ImagePacker_Native* native, napi_value source,ImagePacker_Opts* opts, int fd)
 ```
 
@@ -174,7 +174,7 @@ Packs a PixelMap object or an ImagePacker object at the JavaScript native layer 
 
 ### OH_ImagePacker_Release()
 
-```
+```c
 int32_t OH_ImagePacker_Release(ImagePacker_Native* native)
 ```
 

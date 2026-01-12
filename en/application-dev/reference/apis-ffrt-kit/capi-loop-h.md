@@ -46,7 +46,7 @@ The **loop.h** file declares the loop APIs in C.
 
 ### ffrt_loop_create()
 
-```
+```c
 FFRT_C_API ffrt_loop_t ffrt_loop_create(ffrt_queue_t queue)
 ```
 
@@ -71,7 +71,7 @@ Creates a loop.
 
 ### ffrt_loop_destroy()
 
-```
+```c
 FFRT_C_API int ffrt_loop_destroy(ffrt_loop_t loop)
 ```
 
@@ -96,7 +96,7 @@ Destroys a loop.
 
 ### ffrt_loop_run()
 
-```
+```c
 FFRT_C_API int ffrt_loop_run(ffrt_loop_t loop)
 ```
 
@@ -121,7 +121,7 @@ Runs a loop.
 
 ### ffrt_loop_stop()
 
-```
+```c
 FFRT_C_API void ffrt_loop_stop(ffrt_loop_t loop)
 ```
 
@@ -140,13 +140,14 @@ Stops a loop.
 
 ### ffrt_loop_epoll_ctl()
 
-```
+```c
 FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t events, void *data, ffrt_poller_cb cb)
 ```
 
 **Description**
 
 Manages listening events on a loop.
+
 You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **Since**: 12
@@ -171,13 +172,14 @@ You are not advised to call the `exit` function in `cb`. Otherwise, undefined be
 
 ### ffrt_loop_timer_start()
 
-```
+```c
 FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout, void* data, ffrt_timer_cb cb, bool repeat)
 ```
 
 **Description**
 
 Starts the timer on a loop.
+
 You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **Since**: 12
@@ -201,7 +203,7 @@ You are not advised to call the `exit` function in `cb`. Otherwise, undefined be
 
 ### ffrt_loop_timer_stop()
 
-```
+```c
 FFRT_C_API int ffrt_loop_timer_stop(ffrt_loop_t loop, ffrt_timer_t handle)
 ```
 

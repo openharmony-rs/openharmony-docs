@@ -50,7 +50,7 @@ ForEach(this.arr, (item: Type1) => {...}, (item: Type2) => item.toString()) // T
 // Correct usage.
 arr: Array<Type1 | Type2> = [];
 
-ForEach(this.arr, (item: Type1 | Type2) => {...}, (item: Type1 | Type2) => item.toString()) // The item type is consistent with the data item type.
+ForEach(this.arr, (item: Type1 | Type2) => {...}, (item: Type1 | Type2) => item.toString()) // The type of item matches the type of the array elements.
 ```
 
 ## Attributes

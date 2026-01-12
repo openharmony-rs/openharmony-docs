@@ -1,4 +1,4 @@
-# Performing Asset Operations in Specified User Space (for System Applications Only)
+# Performing Asset Operations in Specified User Space (for System Applications Only) (ArkTS)
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->

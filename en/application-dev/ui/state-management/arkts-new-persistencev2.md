@@ -12,7 +12,7 @@ To enhance the state management framework's capability of persistently storing U
 
 **PersistenceV2** provides the state variable persistence capability. You can bind the same key through **connect** or **globalConnect** to implement the persistence capability during state variable change and application cold start.
 
-Before reading this topic, you are advised to read [\@ComponentV2](./arkts-new-componentV2.md), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and API reference of [PersistentV2](../../reference/apis-arkui/js-apis-StateManagement.md#persistencev2).
+Before reading this topic, you are advised to read [\@ComponentV2](./arkts-new-componentV2.md), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and API reference of [PersistentV2](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2).
 
 >**NOTE**
 >
@@ -49,7 +49,7 @@ For a [\@ObservedV2](./arkts-new-observedV2-and-trace.md) object associated with
 - save: Persisting Stored Data Manually
 - **notifyOnError**: Callback for Responding to a Serialization or Deserialization Failure When data is stored to disks, the data needs to be serialized. If a key fails to be serialized, the error is unpredictable. As a result, this API can be called to capture exceptions.
 
-For details about the preceding APIs, see [State Management API Guide](../../reference/apis-arkui/js-apis-StateManagement.md).
+For details about the preceding APIs, see [State Management API Guide](../../reference/apis-arkui/js-apis-stateManagement.md).
 
 ## Constraints
 

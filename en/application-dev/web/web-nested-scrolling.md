@@ -144,7 +144,7 @@ HTML file to be loaded:
     ```
 2. Disable the gestures of the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component.
     ```ts
-	  .enableScrollInteraction(false)
+    .enableScrollInteraction(false)
     ```
 3. Check whether the **List** and **Scroll** components scroll to the boundary.
 	
@@ -170,15 +170,15 @@ HTML file to be loaded:
 	Bind the **Scroll** component to the [onScrollFrameBegin](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#onscrollframebegin9) event and set the remaining scrolling offset to **0**. Then the **Scroll** component does not scroll, and the inertial scrolling animation does not stop.
 6. Distribute the scrolling offset to the **List** component.
     ```ts
-	  this.listScroller.scrollBy(0, offset)
+    this.listScroller.scrollBy(0, offset)
     ```
 7. Distribute the scrolling offset to the **Web** component.
     ```ts
-	  this.webController.scrollBy(0, offset)
+    this.webController.scrollBy(0, offset)
     ```
 8. Set [bypassVsyncCondition](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bypassvsynccondition20) of the **Web** component to **WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET** to accelerate the drawing of the first scrolling frame.
     ```ts
-	  .bypassVsyncCondition(WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET)
+    .bypassVsyncCondition(WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET)
     ```
 
 **Complete Code**

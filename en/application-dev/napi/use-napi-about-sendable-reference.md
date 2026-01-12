@@ -60,13 +60,13 @@ You can use the **napi_create_strong_sendable_reference** API to create a Sendab
       // ...
       
       // Simulate the caller to obtain the shared object in napi_sendable_ref on another ArkTS thread.
-      std::thread t1([](){
+      std::thread t1([]() {
          napi_env newEnv = nullptr;
          ASSERT_CHECK_CALL(napi_create_ark_runtime(&newEnv));
          napi_handle_scope scope = nullptr;
          ASSERT_CHECK_CALL(napi_open_handle_scope(newEnv, &scope));
          if (!sRef) {
-               std::abort();
+            std::abort();
          }
          napi_value sObj = nullptr;
          ASSERT_CHECK_CALL(napi_get_strong_sendable_reference_value(newEnv, sRef, &sObj));
@@ -84,10 +84,9 @@ You can use the **napi_create_strong_sendable_reference** API to create a Sendab
          ASSERT_CHECK_CALL(napi_set_named_property(newEnv, sObj, "num", newNum));
          ASSERT_CHECK_CALL(napi_close_handle_scope(newEnv, scope));
          ASSERT_CHECK_CALL(napi_destroy_ark_runtime(&newEnv));
-         
       });
       t1.join();
-      
+
       napi_value str = nullptr;
       ASSERT_CHECK_CALL(napi_create_string_utf8(env, "success", NAPI_AUTO_LENGTH, &str));
       return str;
@@ -97,7 +96,7 @@ You can use the **napi_create_strong_sendable_reference** API to create a Sendab
    {
       // The service logic of the caller in the worker/taskpool thread is omitted here.
       // ...
-      
+
       // Simulate the caller to obtain the shared object in napi_sendable_ref on another worker/taskpool thread.
       if (!sRef) {
          napi_value undefined = nullptr;
@@ -106,14 +105,14 @@ You can use the **napi_create_strong_sendable_reference** API to create a Sendab
       }
       napi_value sObj = nullptr;
       ASSERT_CHECK_CALL(napi_get_strong_sendable_reference_value(env, sRef, &sObj));
-      
+
       // Verify the sObj content.
       napi_value numValue = nullptr;
       ASSERT_CHECK_CALL(napi_get_named_property(env, sObj, "num", &numValue));
       int32_t num = 0;
       ASSERT_CHECK_CALL(napi_get_value_int32(env, numValue, &num));
       ASSERT_EQ(num, 1111);
-      
+
       return sObj;
    }
 
@@ -124,7 +123,7 @@ You can use the **napi_create_strong_sendable_reference** API to create a Sendab
          ASSERT_CHECK_CALL(napi_get_undefined(env, &undefined));
          return undefined;
       }
-      
+
       // You can also verify and delete the reference in the ArkTS thread. In this example, the main thread is used.
       // Verify the sObj content.
       napi_value sObj = nullptr;
@@ -134,10 +133,10 @@ You can use the **napi_create_strong_sendable_reference** API to create a Sendab
       int32_t num = 0;
       ASSERT_CHECK_CALL(napi_get_value_int32(env, numValue, &num));
       ASSERT_EQ(num, 2222);
-      
+
       ASSERT_CHECK_CALL(napi_delete_strong_sendable_reference(env, sRef));
       sRef = nullptr;
-      
+
       // Delete SendableRef.
       napi_value str = nullptr;
       ASSERT_CHECK_CALL(napi_create_string_utf8(env, "success", NAPI_AUTO_LENGTH, &str));
@@ -212,8 +211,10 @@ You can use the **napi_create_strong_sendable_reference** API to create a Sendab
 
    async function concurrentFunc() {
       let sObj = new SendableClass();
-      hilog.info(DOMAIN, 'testTag', 'Test CreateSendableRef result = %{public}s', testNapi.createSendableRef(sObj));
-      const task: taskpool.Task = new taskpool.Task(TaskpoolFunc, 'Please check sendable ref value in taskpool thread');
+      hilog.info(DOMAIN, 'testTag', 'Test CreateSendableRef result = %{public}s',
+         testNapi.createSendableRef(sObj));
+      const task: taskpool.Task = new taskpool.Task(TaskpoolFunc,
+         'Please check sendable ref value in taskpool thread');
       await taskpool.execute(task);
       let ret: string = testNapi.checkAndDeleteSendableRef();
       return ret;
@@ -222,52 +223,52 @@ You can use the **napi_create_strong_sendable_reference** API to create a Sendab
    @Entry
    @Component
    struct Index {
-   @State message: string = 'Hello World';
-   @State TestMsg1: string = 'TestInArkRuntime';
-   @State TestMsg2: string = 'TestInWorker';
-   @State TestMsg3: string = 'TestInTaskpool';
+      @State TestMsg1: string = 'TestInArkRuntime';
+      @State TestMsg2: string = 'TestInWorker';
+      @State TestMsg3: string = 'TestInTaskpool';
 
-   build() {
-      Row() {
-         Column() {
-         Button(this.TestMsg1)
-            .fontSize($r('app.float.page_text_font_size'))
-            .fontWeight(FontWeight.Bold)
-            .onClick(() => {
-               let sObj = new SendableClass();
-               hilog.info(DOMAIN, 'testTag', 'Test CreateSendableRef result = %{public}s', testNapi.createSendableRef(sObj));
-               hilog.info(DOMAIN, 'testTag', 'Test GetAndModifySendableRefValue result = %{public}s',
-               testNapi.getAndModifySendableRefValueInArkRuntime());
-               this.TestMsg1 = testNapi.checkAndDeleteSendableRef();
-            })
-         Button(this.TestMsg2)
-            .fontSize($r('app.float.page_text_font_size'))
-            .fontWeight(FontWeight.Bold)
-            .onClick(() => {
-               let sObj = new SendableClass();
-               hilog.info(DOMAIN, 'testTag', 'Test CreateSendableRef result = %{public}s',
-               testNapi.createSendableRef(sObj));
-               const worker1: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
-               worker1.onmessage = (e: MessageEvents) => {
-               let data: string = e.data;
-               hilog.info(DOMAIN, 'testTag', data);
-               this.TestMsg2 = testNapi.checkAndDeleteSendableRef();
-               }
-               worker1.postMessage('Please check sendable ref value in worker thread');
-            })
-         Button(this.TestMsg3)
-            .fontSize($r('app.float.page_text_font_size'))
-            .fontWeight(FontWeight.Bold)
-            .onClick(() => {
-               concurrentFunc().then((ret)=>{
-               this.TestMsg3 = ret;
-               });
-            })
+      build() {
+         Row() {
+            Column() {
+               Button(this.TestMsg1)
+                  .fontSize($r('app.float.page_text_font_size'))
+                  .fontWeight(FontWeight.Bold)
+                  .onClick(() => {
+                     let sObj = new SendableClass();
+                     hilog.info(DOMAIN, 'testTag', 'Test CreateSendableRef result = %{public}s',
+                        testNapi.createSendableRef(sObj));
+                     hilog.info(DOMAIN, 'testTag', 'Test GetAndModifySendableRefValue result = %{public}s',
+                        testNapi.getAndModifySendableRefValueInArkRuntime());
+                     this.TestMsg1 = testNapi.checkAndDeleteSendableRef();
+                  })
+               Button(this.TestMsg2)
+                  .fontSize($r('app.float.page_text_font_size'))
+                  .fontWeight(FontWeight.Bold)
+                  .onClick(() => {
+                     let sObj = new SendableClass();
+                     hilog.info(DOMAIN, 'testTag', 'Test CreateSendableRef result = %{public}s',
+                     testNapi.createSendableRef(sObj));
+                     const worker1: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
+                     worker1.onmessage = (e: MessageEvents) => {
+                        let data: string = e.data;
+                        hilog.info(DOMAIN, 'testTag', data);
+                        this.TestMsg2 = testNapi.checkAndDeleteSendableRef();
+                     }
+                     worker1.postMessage('Please check sendable ref value in worker thread');
+                  })
+               Button(this.TestMsg3)
+                  .fontSize($r('app.float.page_text_font_size'))
+                  .fontWeight(FontWeight.Bold)
+                  .onClick(() => {
+                     concurrentFunc().then((ret) => {
+                        this.TestMsg3 = ret;
+                     });
+                  })
+            }
+            .width('100%')
          }
-         .width('100%')
+         .height('100%')
       }
-      .height('100%')
-   }
    }
    ```
    ```ts

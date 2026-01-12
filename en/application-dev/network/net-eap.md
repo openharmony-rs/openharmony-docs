@@ -19,6 +19,7 @@ To implement extensible authentication, the clients should be able to:
 
 1. Encapsulate private data into EAP protocol packets based on the data structure agreed upon by the client and authentication server.
 2. During the authentication, perform custom actions such as security check scanning on the local host, and send an authentication response after the custom action is complete.
+
    The OS is required to provide a mechanism for third-party clients to participate in 802.1X authentication.
 
 
@@ -47,15 +48,15 @@ The following describes the development procedure specific to each application s
 
 1. Import the **eap** namespace from **@kit.NetworkKit**.
 
-<!-- @[eap_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
-
-``` TypeScript
-import { eap } from '@kit.NetworkKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[eap_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
+   
+   ``` TypeScript
+   import { eap } from '@kit.NetworkKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 2. Call [regCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapregcustomeaphandler) to register the EAP packet types to listen for.
-During 802.1X authentication, the system will encapsulate the eligible EAP packets into the callback function (for example, the **eapData** function in the sample code) for enterprise applications to retrieve. After the packets are encapsulated into the callback function,
-the 802.1X authentication process will be blocked so that the enterprise applications can retrieve the complete packet content.
+
+   During 802.1X authentication, the system will encapsulate the eligible EAP packets into the callback function (for example, the **eapData** function in the sample code) for enterprise applications to retrieve. After the EAP packets are transferred to the callback function, block the 802.1X authentication process so that the enterprise applications can retrieve the complete packet content.
 
     (1) If the packets of the registered packet type (that is, eapCode=1) are sent from the server to the client, they include the custom content added by the server. Determine whether to continue the subsequent steps based on the custom content, and call [replyCustomEapData](../reference/apis-network-kit/js-apis-net-eap.md#eapreplycustomeapdata) to send the packets to the system.
 
@@ -65,130 +66,132 @@ the 802.1X authentication process will be blocked so that the enterprise applica
 
     The following uses the packet type (that is, eapCode=1 and eapType=25) sent by the server to the client as an example. If other packet types need to be registered, change the value of **eapCode** and then call the [regCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapregcustomeaphandler) API.
 
- <!-- @[eap_case_reply_custom_eapData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
- 
- ``` TypeScript
- let netType = 1;
- let eapCode= 1; // eap request
- let eapType= 25; // EAP_PEAP
- let result = 1;
- 
- let eapData = (eapData:eap.EapData):void => {
-   hilog.info(0x0000, 'testTag', 'rsp result',JSON.stringify(eapData));
-   const newBuffer = new Uint8Array(eapData.bufferLen);
-   newBuffer.set(eapData.eapBuffer, 0);
-   let eapData2: eap.EapData = {
-     msgId: eapData.msgId,
-     eapBuffer: newBuffer,
-     bufferLen: newBuffer.length
-   }
-   try{
-     eap.replyCustomEapData(result, eapData2);
-     hilog.info(0x0000, 'testTag', 'replyCustomEapData success');
-   } catch (err) {
-     hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ' , errMessage: ' + err.message);
-   }
- }
- function serverReplyCustomEapData() {
-   try{
-     eap.regCustomEapHandler(netType, eapCode, eapType, eapData);
-     hilog.info(0x0000, 'testTag', 'regCustomEapHandler success');
-     // ...
-   } catch (err) {
-     hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + 'errMessage: ' + err.message);
-     // ...
-   }
- }
- ```
+    <!-- @[eap_case_reply_custom_eapData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
+    
+    ``` TypeScript
+    let netType = 1;
+    let eapCode= 1; // eap request
+    let eapType= 25; // EAP_PEAP
+    let result = 1;
+    
+    let eapData = (eapData:eap.EapData):void => {
+      hilog.info(0x0000, 'testTag', 'rsp result',JSON.stringify(eapData));
+      const newBuffer = new Uint8Array(eapData.bufferLen);
+      newBuffer.set(eapData.eapBuffer, 0);
+      let eapData2: eap.EapData = {
+        msgId: eapData.msgId,
+        eapBuffer: newBuffer,
+        bufferLen: newBuffer.length
+      }
+      try{
+        eap.replyCustomEapData(result, eapData2);
+        hilog.info(0x0000, 'testTag', 'replyCustomEapData success');
+      } catch (err) {
+        hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ' , errMessage: ' + err.message);
+      }
+    }
+    function serverReplyCustomEapData() {
+      try{
+        eap.regCustomEapHandler(netType, eapCode, eapType, eapData);
+        hilog.info(0x0000, 'testTag', 'regCustomEapHandler success');
+        // ...
+      } catch (err) {
+        hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + 'errMessage: ' + err.message);
+        // ...
+      }
+    }
+    ```
 3. To cancel the custom authentication, call [unregCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapunregcustomeaphandler).
 
-<!-- @[eap_case_unreg_custom_eapHandler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
-
-``` TypeScript
-let netType = 1;
-let eapCode= 1; // eap request
-let eapType= 25; // EAP_PEAP
-let result = 1;
-
-let eapData = (eapData:eap.EapData):void => {
-  hilog.info(0x0000, 'testTag', 'rsp result',JSON.stringify(eapData));
-  const newBuffer = new Uint8Array(eapData.bufferLen);
-  newBuffer.set(eapData.eapBuffer, 0);
-  let eapData2: eap.EapData = {
-    msgId: eapData.msgId,
-    eapBuffer: newBuffer,
-    bufferLen: newBuffer.length
-  }
-  // ...
-}
-// ...
-  try {
-    eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
-    hilog.info(0x0000, 'testTag', 'unregCustomEapHandler success');
-    // ...
-  } catch (err) {
-    hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
-    // ...
-  }
-```
+   <!-- @[eap_case_unreg_custom_eapHandler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
+   
+   ``` TypeScript
+   let netType = 1;
+   let eapCode= 1; // eap request
+   let eapType= 25; // EAP_PEAP
+   let result = 1;
+   
+   let eapData = (eapData:eap.EapData):void => {
+     hilog.info(0x0000, 'testTag', 'rsp result',JSON.stringify(eapData));
+     const newBuffer = new Uint8Array(eapData.bufferLen);
+     newBuffer.set(eapData.eapBuffer, 0);
+     let eapData2: eap.EapData = {
+       msgId: eapData.msgId,
+       eapBuffer: newBuffer,
+       bufferLen: newBuffer.length
+     }
+     // ...
+   }
+   // ...
+     try {
+       eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
+       hilog.info(0x0000, 'testTag', 'unregCustomEapHandler success');
+       // ...
+     } catch (err) {
+       hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
+       // ...
+     }
+   ```
 ## Initiating 802.1X Authentication on the eth Network Port
 
 1. Use a network cable to connect the device to the **eth** network port.
 2. Import the **eap** namespace from **@kit.NetworkKit**.
 
-<!-- @[eap_case_eth_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
-
-``` TypeScript
-import { eap } from '@kit.NetworkKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[eap_case_eth_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
+   
+   ``` TypeScript
+   import { eap } from '@kit.NetworkKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 3. If authentication is required for the network management applications, call [startEthEap](../reference/apis-network-kit/js-apis-net-eap.md#eapstartetheap) to initiate the 802.1X authentication process.
 
-<!-- @[eap_case_start_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
-
-``` TypeScript
-const netId: number = 100;
-// ···
-  let profile: eap.EthEapProfile = {
-    eapMethod: eap.EapMethod.EAP_TTLS,
-    phase2Method: eap.Phase2Method.PHASE2_AKA_PRIME,
-    identity: 'identity',
-    anonymousIdentity: 'anonymousIdentity',
-    password: 'password',
-    caCertAliases: 'caCertAliases',
-    caPath: 'caPath',
-    clientCertAliases: 'clientCertAliases',
-    certEntry: new Uint8Array([5,6,7,8,9,10]),
-    certPassword: 'certPassword',
-    altSubjectMatch: 'altSubjectMatch',
-    domainSuffixMatch: 'domainSuffixMatch',
-    realm: 'realm',
-    plmn: 'plmn',
-    eapSubId: 1
-  };
-
-  try {
-    eap.startEthEap(netId, profile);
-    hilog.info(0x0000, 'testTag', 'startEthEap success');
-    // ···
-  } catch (err) {
-    // ···
-    hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
-  }
-```
+   <!-- @[eap_case_start_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
+   
+   ``` TypeScript
+   const netId: number = 100;
+   // ...
+     let profile: eap.EthEapProfile = {
+       eapMethod: eap.EapMethod.EAP_TTLS,
+       phase2Method: eap.Phase2Method.PHASE2_AKA_PRIME,
+       identity: 'identity',
+       anonymousIdentity: 'anonymousIdentity',
+       password: 'password',
+       caCertAliases: 'caCertAliases',
+       caPath: 'caPath',
+       clientCertAliases: 'clientCertAliases',
+       certEntry: new Uint8Array([5,6,7,8,9,10]),
+       certPassword: 'certPassword',
+       altSubjectMatch: 'altSubjectMatch',
+       domainSuffixMatch: 'domainSuffixMatch',
+       realm: 'realm',
+       plmn: 'plmn',
+       eapSubId: 1
+     };
+   
+     try {
+       eap.startEthEap(netId, profile);
+       hilog.info(0x0000, 'testTag', 'startEthEap success');
+       // ...
+     } catch (err) {
+       // ...
+       hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
+     }
+   ```
 
 4. If authentication is not required for the network management applications, call [logOffEthEap](../reference/apis-network-kit/js-apis-net-eap.md#eaplogoffetheap) to initiate the 802.1X deauthentication process.
 
-<!-- @[eap_case_log_off_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
-
-``` TypeScript
-  try{
-    eap.logOffEthEap(netId);
-    hilog.error(0x0000, 'testTag', 'logOffEthEap success');
-    // ···
-  } catch (err) {
-    // ···
-    hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
-  }
-```
+   <!-- @[eap_case_log_off_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
+   
+   ``` TypeScript
+   const netId: number = 100;
+   // ...
+     try{
+       eap.logOffEthEap(netId);
+       hilog.error(0x0000, 'testTag', 'logOffEthEap success');
+       // ...
+     } catch (err) {
+       // ...
+       hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
+     }
+   ```

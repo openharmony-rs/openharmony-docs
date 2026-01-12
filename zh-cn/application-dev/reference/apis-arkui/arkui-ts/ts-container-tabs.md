@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 通过页签进行内容视图切换的容器组件，每个页签对应一个内容视图。
@@ -453,7 +453,7 @@ pageFlipMode(mode: Optional\<PageFlipMode>)
 
 cachedMaxCount(count: number, mode: TabsCacheMode)
 
-设置子组件的最大缓存个数和缓存模式。设置该属性后，不会对缓存范围内的子组件进行预加载，仅对缓存范围外的子组件进行释放。
+设置子组件的最大缓存个数及缓存模式。未设置该属性时默认缓存所有子组件且缓存后不会释放。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -463,7 +463,7 @@ cachedMaxCount(count: number, mode: TabsCacheMode)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| count  | number                                                      | 是   | 子组件的最大缓存个数。默认所有子组件加载后都不再释放。<br/>取值范围：[0, +∞)。|
+| count  | number                                                      | 是   | 子组件的最大缓存个数。超出范围时自动释放不再需要的子组件。<br/>取值范围：[0, +∞)。|
 | mode   | [TabsCacheMode](#tabscachemode19枚举说明)                   | 是   | 子组件的缓存模式。<br/>默认值：TabsCacheMode.CACHE_BOTH_SIDE   |
 
 ## DividerStyle<sup>10+</sup>对象说明

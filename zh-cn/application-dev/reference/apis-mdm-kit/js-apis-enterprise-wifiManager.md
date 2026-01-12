@@ -91,6 +91,7 @@ setWifiProfileSync(admin: Want, profile: WifiProfile): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -115,7 +116,6 @@ setWifiProfileSync(admin: Want, profile: WifiProfile): void
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   //需根据实际情况进行替换
@@ -154,6 +154,7 @@ addAllowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -209,6 +210,7 @@ removeAllowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -322,6 +324,7 @@ addDisallowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -377,6 +380,7 @@ removeDisallowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -640,7 +644,7 @@ turnOnWifi(admin: Want, isForce: boolean): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-
+**冲突规则：** 任意MDM应用​通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了Wi-Fi，则无法通过本接口直接打开Wi-Fi开关。
 
 **参数：**
 
@@ -694,7 +698,7 @@ turnOffWifi(admin: Want): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-
+**冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了Wi-Fi，则无法通过本接口直接关闭Wi-Fi开关。
 
 **参数：**
 

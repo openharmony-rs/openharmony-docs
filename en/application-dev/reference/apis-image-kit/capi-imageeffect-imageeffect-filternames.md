@@ -47,7 +47,7 @@ The struct describes the filter name information.
 
 ### OH_EffectFilterInfo_Create()
 
-```
+```c
 OH_EffectFilterInfo *OH_EffectFilterInfo_Create()
 ```
 
@@ -67,7 +67,7 @@ Creates an OH_EffectFilterInfo instance. The instance must be released by callin
 
 ### OH_EffectFilterInfo_SetFilterName()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_SetFilterName(OH_EffectFilterInfo *info, const char *name)
 ```
 
@@ -94,7 +94,7 @@ Sets a filter name.
 
 ### OH_EffectFilterInfo_GetFilterName()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_GetFilterName(OH_EffectFilterInfo *info, char **name)
 ```
 
@@ -121,7 +121,7 @@ Obtains a filter name.
 
 ### OH_EffectFilterInfo_SetSupportedBufferTypes()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedBufferTypes(OH_EffectFilterInfo *info, uint32_t size,ImageEffect_BufferType *bufferTypeArray)
 ```
 
@@ -149,7 +149,7 @@ Sets the buffer types supported by a filter.
 
 ### OH_EffectFilterInfo_GetSupportedBufferTypes()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedBufferTypes(OH_EffectFilterInfo *info, uint32_t *size,ImageEffect_BufferType **bufferTypeArray)
 ```
 
@@ -177,7 +177,7 @@ Obtains the buffer types supported by a filter.
 
 ### OH_EffectFilterInfo_SetSupportedFormats()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedFormats(OH_EffectFilterInfo *info, uint32_t size,ImageEffect_Format *formatArray)
 ```
 
@@ -205,7 +205,7 @@ Sets the pixel formats supported by a filter.
 
 ### OH_EffectFilterInfo_GetSupportedFormats()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedFormats(OH_EffectFilterInfo *info, uint32_t *size,ImageEffect_Format **formatArray)
 ```
 
@@ -233,7 +233,7 @@ Obtains the pixel formats supported by a filter.
 
 ### OH_EffectFilterInfo_Release()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_Release(OH_EffectFilterInfo *info)
 ```
 

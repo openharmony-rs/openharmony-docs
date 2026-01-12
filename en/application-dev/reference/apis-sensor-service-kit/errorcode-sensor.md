@@ -14,7 +14,7 @@
 
 **Error Message**
 
-Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception.
+Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception.
 
 **Description**
 
@@ -45,4 +45,4 @@ The device does not support the sensor because the underlying components are not
 
 **Solution**
 
-1. Adapt the underlying components to the sensor.
+Adapt the underlying components to the sensor.

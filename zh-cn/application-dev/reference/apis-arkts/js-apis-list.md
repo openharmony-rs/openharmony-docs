@@ -465,8 +465,7 @@ console.info("result:", result);  // result: true
 
 ### replaceAllElements
 
-replaceAllElements(callbackFn: (value: T, index?: number, list?: List&lt;T&gt;) => T,
-thisArg?: Object): void
+replaceAllElements(callbackFn: (value: T, index?: number, list?: List&lt;T&gt;) => T, thisArg?: Object): void
 
 遍历List中的元素，并用回调函数返回的新值替换原List中的元素。
 
@@ -519,8 +518,7 @@ console.info("result:", list.get(2));  // result: 10
 
 ### forEach
 
-forEach(callbackFn: (value: T, index?: number, List?: List&lt;T&gt;) => void,
-thisArg?: Object): void
+forEach(callbackFn: (value: T, index?: number, List?: List&lt;T&gt;) => void, thisArg?: Object): void
 
 在遍历List实例对象中每一个元素的过程中，对每个元素执行回调函数。
 

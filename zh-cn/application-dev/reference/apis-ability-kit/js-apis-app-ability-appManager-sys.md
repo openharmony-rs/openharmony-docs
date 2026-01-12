@@ -685,7 +685,7 @@ killProcessWithAccount(bundleName: string, accountId: number, clearPageStack: bo
 | ------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | If the input parameter is not valid parameter. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -880,7 +880,7 @@ try {
 
 ## appManager.clearUpApplicationData
 
-clearUpApplicationData(bundleName: string, callback: AsyncCallback\<void>)
+clearUpApplicationData(bundleName: string, callback: AsyncCallback\<void>): void
 
 通过Bundle名称清除应用数据。使用callback异步回调。
 

@@ -572,6 +572,7 @@ JSVM API OH_JSVM_IsExceptionPending: SUCCESS
 ### OH_JSVM_GetLastErrorInfo
 
 Call **OH_JSVM_GetLastErrorInfo** to obtain the last error information (the return value is not **JSVM_OK**), including the error code, error message, and stack information. This API can also be used for suspended JS errors.
+
 Note that the errors triggered by APIs such as **OH_JSVM_ThrowError** will not be captured by the APIs unless the return value is not **JSVM_OK**.
 
 CPP code:

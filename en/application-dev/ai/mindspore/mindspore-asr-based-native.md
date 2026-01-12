@@ -380,7 +380,7 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
 
    <!-- @[napi_asr_GetMSOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
-   ```
+   ```c++
    BinBuffer GetMSOutput(OH_AI_TensorHandle output)
    {
        float *outputData = reinterpret_cast<float *>(OH_AI_TensorGetMutableData(output));
@@ -858,3 +858,5 @@ After you tap the **Play Audio** button on the device screen, the sample audio f
 The following sample is provided to help you better understand how to develop speech recognition applications using MindSpore Lite:
 
 - [MindSpore Lite ASR Application Development Based on Native APIs (C/C++) (API 14)] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR)
+
+<!--RP1--><!--RP1End-->

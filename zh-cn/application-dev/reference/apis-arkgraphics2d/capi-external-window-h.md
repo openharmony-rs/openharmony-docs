@@ -16,6 +16,8 @@
 
 **库：** libnative_window.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 **相关模块：** [NativeWindow](capi-nativewindow.md)
@@ -96,32 +98,34 @@ enum NativeWindowOperation
 
 OH_NativeWindow_NativeWindowHandleOpt函数中的操作码。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SET_BUFFER_GEOMETRY | 设置本地窗口缓冲区几何图形，函数中的可变参数是[输入] int32_t width，[输入] int32_t height。 |
-| GET_BUFFER_GEOMETRY | 获取本地窗口缓冲区几何图形，函数中的可变参数是[输出] int32_t height，[输出] int32_t width。 |
-| GET_FORMAT | 获取本地窗口缓冲区格式，函数中的可变参数是[输出] int32_tformat，取值具体可见[OH_NativeBuffer_Format](capi-buffer-common-h.md#oh_nativebuffer_format)枚举值。 |
+| SET_BUFFER_GEOMETRY | 设置本地窗口缓冲区几何图形，函数中的可变参数是[输入] int32_t width，[输入] int32_t height。<br/>**说明：** 设置与获取的宽高顺序不一致，请使用时注意。 |
+| GET_BUFFER_GEOMETRY | 获取本地窗口缓冲区几何图形，函数中的可变参数是[输出] int32_t *height，[输出] int32_t *width。<br/>**说明：** 获取与设置的宽高顺序不一致，请使用时注意。 |
+| GET_FORMAT | 获取本地窗口缓冲区格式，函数中的可变参数是[输出] int32_t *format，取值具体可见[OH_NativeBuffer_Format](capi-buffer-common-h.md#oh_nativebuffer_format)枚举值。 |
 | SET_FORMAT | 设置本地窗口缓冲区格式，函数中的可变参数是[输入] int32_t format，取值具体可见[OH_NativeBuffer_Format](capi-buffer-common-h.md#oh_nativebuffer_format)枚举值。 |
-| GET_USAGE | 获取本地窗口读写方式，函数中的可变参数是[输出] uint64_tusage，取值具体可见[OH_NativeBuffer_Usage](capi-native-buffer-h.md#oh_nativebuffer_usage)枚举值。 |
+| GET_USAGE | 获取本地窗口读写方式，函数中的可变参数是[输出] uint64_t *usage，取值具体可见[OH_NativeBuffer_Usage](capi-native-buffer-h.md#oh_nativebuffer_usage)枚举值。 |
 | SET_USAGE | 设置本地窗口缓冲区读写方式，函数中的可变参数是[输入] uint64_t usage，取值具体可见[OH_NativeBuffer_Usage](capi-native-buffer-h.md#oh_nativebuffer_usage)枚举值。 |
 | SET_STRIDE | 设置本地窗口缓冲区步幅，函数中的可变参数是[输入] int32_t stride。<br/>**废弃版本：** 16 |
 | GET_STRIDE | 获取本地窗口缓冲区步幅，函数中的可变参数是[输出] int32_t *stride。<br/>**废弃版本：** 16<br/>**替代方案：** 使用[OH_NativeWindow_GetBufferHandleFromNative](#oh_nativewindow_getbufferhandlefromnative)接口获取BufferHandle实例，从[BufferHandle](capi-nativewindow-bufferhandle.md)实例中获取stride值。 |
 | SET_SWAP_INTERVAL | 设置本地窗口缓冲区交换间隔，函数中的可变参数是[输入] int32_t interval。 |
-| GET_SWAP_INTERVAL | 获取本地窗口缓冲区交换间隔，函数中的可变参数是[输出] int32_tinterval。 |
+| GET_SWAP_INTERVAL | 获取本地窗口缓冲区交换间隔，函数中的可变参数是[输出] int32_t *interval。 |
 | SET_TIMEOUT | 设置请求本地窗口请求缓冲区的超时等待时间，未手动设置时默认值为3000毫秒，函数中的可变参数是[输入] int32_t timeout, 单位为毫秒。 |
-| GET_TIMEOUT | 获取请求本地窗口请求缓冲区的超时等待时间，未手动设置时默认值为3000毫秒，函数中的可变参数是[输出] int32_t timeout，单位为毫秒。 |
+| GET_TIMEOUT | 获取请求本地窗口请求缓冲区的超时等待时间，未手动设置时默认值为3000毫秒，函数中的可变参数是[输出] int32_t *timeout，单位为毫秒。 |
 | SET_COLOR_GAMUT | 设置本地窗口缓冲区色彩空间，函数中的可变参数是[输入] int32_t colorGamut，取值具体可见[OH_NativeBuffer_ColorGamut](capi-native-buffer-h.md#oh_nativebuffer_colorgamut)枚举值。 |
-| GET_COLOR_GAMUT | 获取本地窗口缓冲区色彩空间，函数中的可变参数是[输出] int32_tcolorGamut，取值具体可见[OH_NativeBuffer_ColorGamut](capi-native-buffer-h.md#oh_nativebuffer_colorgamut)枚举值。 |
+| GET_COLOR_GAMUT | 获取本地窗口缓冲区色彩空间，函数中的可变参数是[输出] int32_t *colorGamut，取值具体可见[OH_NativeBuffer_ColorGamut](capi-native-buffer-h.md#oh_nativebuffer_colorgamut)枚举值。 |
 | SET_TRANSFORM | 设置本地窗口缓冲区变换，函数中的可变参数是[输入] int32_t transform，取值具体可见[OH_NativeBuffer_TransformType](capi-buffer-common-h.md#oh_nativebuffer_transformtype)枚举值。 |
-| GET_TRANSFORM | 获取本地窗口缓冲区变换，函数中的可变参数是[输出] int32_t transform，取值具体可见[OH_NativeBuffer_TransformType](capi-buffer-common-h.md#oh_nativebuffer_transformtype)枚举值。 |
+| GET_TRANSFORM | 获取本地窗口缓冲区变换，函数中的可变参数是[输出] int32_t *transform，取值具体可见[OH_NativeBuffer_TransformType](capi-buffer-common-h.md#oh_nativebuffer_transformtype)枚举值。 |
 | SET_UI_TIMESTAMP | 设置本地窗口缓冲区UI时间戳，函数中的可变参数是[输入] uint64_t uiTimestamp。 |
 | GET_BUFFERQUEUE_SIZE | 获取内存队列大小，函数中的可变参数是[输出] int32_t \*size。<br/>**起始版本：** 12 |
 | SET_SOURCE_TYPE | 设置本地窗口内容来源，函数中的可变参数是[输入] int32_t sourceType，取值具体可见[OHSurfaceSource](#ohsurfacesource)枚举值。<br/>**起始版本：** 12 |
 | GET_SOURCE_TYPE | 获取本地窗口内容来源，函数中的可变参数是[输出] int32_t *sourceType，取值具体可见[OHSurfaceSource](#ohsurfacesource)枚举值。<br/>**起始版本：** 12 |
 | SET_APP_FRAMEWORK_TYPE | 设置本地窗口应用框架名称，函数中的可变参数是[输入] char* frameworkType，最大支持64字节。<br/>**起始版本：** 12 |
-| GET_APP_FRAMEWORK_TYPE | 获取本地窗口应用框架名称，函数中的可变参数是[输出] char* frameworkType。<br/>**起始版本：** 12 |
+| GET_APP_FRAMEWORK_TYPE | 获取本地窗口应用框架名称，函数中的可变参数是[输出] char** frameworkType。<br/>**起始版本：** 12 |
 | SET_HDR_WHITE_POINT_BRIGHTNESS | 设置HDR白点亮度，函数中的可变参数是[输入] float brightness。取值范围为[0.0f, 1.0f]。<br/>**起始版本：** 12 |
 | SET_SDR_WHITE_POINT_BRIGHTNESS | 设置SDR白点亮度，函数中的可变参数是[输入] float brightness。取值范围为[0.0f, 1.0f]。<br/>**起始版本：** 12 |
 | SET_DESIRED_PRESENT_TIMESTAMP = 24 | 设置本地窗口缓冲区期望上屏时间的时间戳。<br/> 当且仅当RenderService为本地窗口的消费者时，该时间戳生效<br/>本操作执行后需要配合调用[OH_NativeWindow_NativeWindowFlushBuffer](#oh_nativewindow_nativewindowflushbuffer)生效。<br/>生产者下一次放入队列的buffer，达到该期望上屏时间后，才会被RenderService消费并上屏。<br/>如果buffer队列中存在多个生产者放入的buffer，都设置了desiredPresentTimestamp并已达到期望上屏时间，则较早入队的buffer将被消费者丢弃回队列。<br/>如果期望上屏时间大于消费者提供的时间 1 秒以上，则该期望上屏时间戳将被忽略。<br/> 函数中的可变参数是[输入] int64_t desiredPresentTimestamp，取值范围大于0，应由std::chrono::steady_clock标准库时钟生成，且单位为纳秒。<br/>**起始版本：** 13 |
@@ -135,6 +139,8 @@ enum OHScalingMode
 **描述**
 
 缩放模式Scaling Mode。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 9
 
@@ -159,6 +165,8 @@ enum OHScalingModeV2
 
 渲染缩放模式枚举。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -178,6 +186,8 @@ enum OHHDRMetadataKey
 **描述**
 
 枚举HDR元数据关键字。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 9
 
@@ -207,6 +217,8 @@ enum OHSurfaceSource
 ```
 
 **描述**
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 本地窗口内容来源类型枚举。
 

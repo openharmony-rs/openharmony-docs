@@ -551,7 +551,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
    }
    ```
 
-2. 新建`Attribute_util .h`用于设置组件属性。
+2. 新建`Attribute_util.h`用于设置组件属性。
 
    <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/Attribute_util.h) -->
    
@@ -566,7 +566,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
    public:
        ArkUI_NativeNodeAPI_1 *api_;
        ArkUI_NodeHandle node_;
-       AttributeUtil(ArkUI_NodeHandle node, ArkUI_NativeNodeAPI_1 *api) 
+       AttributeUtil(ArkUI_NodeHandle node, ArkUI_NativeNodeAPI_1 *api)
        {
            this->node_ = node;
            api_ = api;
@@ -987,7 +987,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
    OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(childNode, &index1);
    ArkUI_NodeHandle child = nullptr;
    auto result = OH_ArkUI_NodeUtils_GetChildWithExpandMode(childNode, 3, &child, 0);
-   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "Manager", 
+   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "Manager",
        "firstChildIndex - lastChildIndex == %{d -- %{public}d, -- getResult = %{public}d",
        index, index1, result);
    ```

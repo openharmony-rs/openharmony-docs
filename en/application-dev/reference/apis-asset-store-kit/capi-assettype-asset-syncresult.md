@@ -7,6 +7,10 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct {...} Asset_SyncResult
+```
+
 ## Overview
 
 Represents the sync result of an asset.

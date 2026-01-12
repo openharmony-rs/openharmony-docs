@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbDdkInterface {...} UsbDdkInterface
+```
+
 ## Overview
 
 Defines a USB DDK API, which is a collection of alternate settings for a particular USB interface.

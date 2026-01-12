@@ -128,6 +128,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | MEDIA_SUFFIX<sup>18+</sup>  | 'media_suffix'            | 文件的后缀名。                               |
 | OWNER_ALBUM_ID<sup>22+</sup>  | 'owner_album_id' | 照片所属的相册id。 |
 | ASPECT_RATIO<sup>22+</sup>  | 'aspect_ratio'            | 图片和视频的宽高比。<br/> ​**模型约束**：此接口仅可在Stage模型下使用。|
+| CHANGE_TIME<sup>23+</sup>  | 'change_time' | 照片的更改时间。 |
 
 ## AlbumKeys
 
@@ -140,6 +141,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | URI           | 'uri'                 | 相册uri。                                                   |
 | ALBUM_NAME    | 'album_name'          | 相册名字。                                                   |
 | ALBUM_LPATH<sup>22+</sup>          | 'lpath'                 | 相册的虚拟路径。<br>支持的相册及对应的lpath值：<br>- 相机应用相册：'/DCIM/Camera' <br>- 截图应用相册：'/Pictures/Screenshots' <br>- 屏幕录制应用相册：'/Pictures/Screenrecords' <br>- 用户创建的相册：'/Pictures/Users/{用户自定义相册名称}'                     |
+| CHANGE_TIME<sup>23+</sup>          | 'change_time'                 | 相册的更改时间。                                                   |
 
 ## ResourceType<sup>11+</sup>
 

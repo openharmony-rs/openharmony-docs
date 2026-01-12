@@ -192,7 +192,7 @@ In incognito mode, you can use the following APIs for geolocation information, c
   ```
 
   HTML file to be loaded:
-   ```html
+  ```html
   <!-- index.html -->
   <!DOCTYPE html>
   <html>

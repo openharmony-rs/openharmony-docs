@@ -10,6 +10,9 @@
 本文档提供了系统定义的公共事件清单。
 公共事件类型定义在[ohos.commonEventManager模块的Support枚举](../js-apis-commonEventManager.md#support)中。
 
+> **说明：**
+>
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## Ability Kit
@@ -875,6 +878,19 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 **取值：** "usual.event.bluetooth.remotedevice.PAIR_STATE_CHANGE"
 
 
+### COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_CHANGE<sup>23+</sup>
+
+表示蓝牙扫描模式变化的公共事件的操作。
+
+当蓝牙扫描模式变化时，将会触发事件通知服务发布该系统公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**取值：** "usual.event.bluetooth.host.SCAN_MODE_CHANGE"
+
+
 ### COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED
 
 指示设备NFC状态已更改的公共事件的操作。
@@ -1277,7 +1293,7 @@ AppGallery Kit面向应用发布如下系统公共事件。
 ## Multimodalinput Kit
 Multimodalinput Kit面向应用发布如下系统公共事件。
 
-### COMMON_EVENT_TABLET_MODE_CHANGED<sup>22+<sup>
+### COMMON_EVENT_TABLET_MODE_CHANGED<sup>23+<sup>
 
 表示可感知支架开合的设备，例如具有支架的平板电脑，
 其支架开合状态变化时，将会触发事件通知服务发布该系统公共事件。
@@ -1286,7 +1302,7 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 
 **取值：** "usual.event.TABLET_MODE_CHANGED "
 
-### COMMON_EVENT_LID_STATE_CHANGED<sup>22+<sup>
+### COMMON_EVENT_LID_STATE_CHANGED<sup>23+<sup>
 
 表示可感知开合盖子的设备，例如具有开合盖子的笔记本电脑，
 其开合盖状态变化时，将会触发事件通知服务发布该系统公共事件。

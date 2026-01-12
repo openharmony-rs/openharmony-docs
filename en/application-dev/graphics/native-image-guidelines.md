@@ -1,4 +1,4 @@
-# Native Image Development (C/C++)
+# NativeImage Development (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
@@ -7,11 +7,11 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-NativeImage is a module that **binds surfaces to OpenGL external textures**. It indicates the consumer of a graphics queue. You can use the `NativeImage` API to receive and use `Buffer` and associate `Buffer` with the bound OpenGL external texture.
+The NativeImage module is used for associating a surface with an OpenGL external texture. It functions as the consumer of a graphics queue. You can use the APIs of this module to obtain and use a buffer, and output the buffer content to the associated OpenGL external texture.
 
-NativeImage is commonly used in the following scenarios:
+The following scenario is common for NativeImage development:
 
-* Use the native image APIs to create an **OH_NativeImage** instance as the consumer and obtain the corresponding **OHNativeWindow** instance (functioning as the producer). Use the native window APIs to fill in and flush the buffer, and then use the native image APIs to update the buffer content to an OpenGL ES texture.<br> The native image module must be used together with the native window, native buffer, EGL, and GLES3 modules.
+* Use the NativeImage APIs to create an **OH_NativeImage** instance as the consumer and obtain the corresponding **OHNativeWindow** instance (functioning as the producer). Use the native window APIs to fill in and flush the buffer, and then use the NativeImage APIs to update the buffer content to an OpenGL ES texture. The NativeImage module must be used together with the native window, native buffer, EGL, and GLES3 modules.
 
 ## Available APIs
 
@@ -30,7 +30,7 @@ For details about the APIs, see [native_image](../reference/apis-arkgraphics2d/c
 
 ## How to Develop
 
-The following steps describe how to use the native Image APIs to create an **OH_NativeImage** instance as the consumer and update the data to a OpenGL external texture.
+The following steps describe how to use the NativeImage APIs to create an **OH_NativeImage** instance as the consumer and update the data to a OpenGL external texture.
 
 **Adding Dynamic Link Libraries**
 
@@ -61,7 +61,7 @@ libnative_buffer.so
 
 1. Initialize the EGL environment.
 
-    The following is an example of the code for initializing the EGL environment. For details about how to use the XComponent module, see [XComponent Development Guidelines](../ui/napi-xcomponent-guidelines.md).
+    Refer to the code snippet below. For details about how to use the XComponent, see [XComponent Development](../ui/napi-xcomponent-guidelines.md).
     <!-- @[init_egl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/image_render.cpp) -->
 
     ``` C++
@@ -293,7 +293,7 @@ libnative_buffer.so
             time += ANIMATION_SPEED_INCREMENT;
             double offset = (sin(time) + MAX_INTENSITY) / INTENSITY_MULTIPLIER;
 
-            // Arrow parameters
+            // Arrow parameters.
             const int arrowSize = std::min(width, height) / ARROW_SIZE_DIVISOR;
             const int arrowX = width / ARROW_SIZE_DIVISOR;
             const int arrowY = height / ARROW_SIZE_DIVISOR;
@@ -341,7 +341,7 @@ libnative_buffer.so
         <!-- @[flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
 
         ``` C++
-            // Set the refresh area.
+            // Set the refresh region.
             Region region{nullptr, 0};
             // Submit the buffer to the consumer.
             result = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow_, buffer, NO_FENCE, region);
@@ -407,7 +407,7 @@ libnative_buffer.so
 
 ## Samples
 
-The following samples are provided to help you better understand how to use the native image module for development:
+The following samples are provided to help you better understand how to use the NativeImage module for development:
 
 - [Native Window (API11)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeWindow)
 - [Smooth Gradient Animation Effect Based on NdkNativeImage (API 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)

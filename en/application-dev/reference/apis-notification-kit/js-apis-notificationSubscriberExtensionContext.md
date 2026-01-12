@@ -16,7 +16,7 @@ The **NotificationSubscriberExtensionContext** module provides the context for t
 ## Modules to Import
 
 ```ts
-import NotificationSubscriberExtensionContext from '@kit.NotificationKit';
+import { NotificationSubscriberExtensionContext } from '@kit.NotificationKit';
 ```
 
 ## NotificationSubscriberExtensionContext

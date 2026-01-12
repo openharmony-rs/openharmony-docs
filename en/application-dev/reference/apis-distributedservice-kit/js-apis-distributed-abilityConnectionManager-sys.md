@@ -24,7 +24,7 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
 on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;CollaborateEventInfo&gt;):&nbsp;void
 
-Registers a listener for the **collaborateEvent** events.
+Registers a listener for the collaborateEvent events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -36,7 +36,7 @@ Registers a listener for the **collaborateEvent** events.
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **collaborateEvent**. This event is triggered when `collaborateEvent()` is called.  |
 | sessionId | number  | Yes   | Collaboration session ID.   |
-| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | Yes   | Registered callback.   |
+| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | Yes   | Registered callback function, which returns collaboration event information.   |
 
 **Error codes**
 
@@ -44,8 +44,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
 
@@ -84,7 +84,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
 
@@ -122,7 +122,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
 
@@ -158,7 +158,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
 
@@ -199,9 +199,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
 
@@ -271,8 +270,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 32300001      | Only one stream can be created for the current session.|
 | 32300003      | Bitrate not supported.|
 | 32300004      | Color space not supported.|
@@ -300,7 +299,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## abilityConnectionManager.setSurfaceId
 
-setSurfaceId(sessionId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
+setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
 
 Sets the binding relationship between transport streams and surfaces.
 
@@ -312,7 +311,7 @@ Sets the binding relationship between transport streams and surfaces.
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | Yes   | Collaboration session ID.|
+| streamId | number | Yes   | Collaboration session ID.|
 | surfaceId | string | Yes   | Unique surface ID.|
 | param | [SurfaceParam](#surfaceparam) | Yes   | Surface configuration.|
 
@@ -322,8 +321,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
 
@@ -373,8 +372,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
 
@@ -417,8 +416,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
 
@@ -461,8 +460,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
 
@@ -497,8 +496,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 32300002      | The stream at the receive end is not started. |
 
 **Example**
@@ -534,8 +533,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
 

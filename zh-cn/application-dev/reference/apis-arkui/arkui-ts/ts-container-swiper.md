@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
  滑块视图容器，提供子组件滑动轮播显示的能力。 
@@ -12,7 +12,7 @@
 >
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - Swiper组件内包含了[PanGesture](ts-basic-gestures-pangesture.md)拖动手势事件，用于滑动轮播子组件。[disableSwipe](#disableswipe8)属性设为true会取消内部的PanGesture事件监听。
+> - Swiper组件通过内置的[PanGesture](ts-basic-gestures-pangesture.md)拖动手势实现滑动轮播效果，将[disableSwipe](#disableswipe8)属性设为true时，会禁用该手势监听，从而阻止滑动操作。
 >
 > - Swiper中复用[NodeContainer](./ts-basic-components-nodecontainer.md)时，禁止递归流程中子节点更新父节点状态变量。
 
@@ -202,7 +202,7 @@ loop(value: boolean)
 
 effectMode(value: EdgeEffect)
 
-设置边缘滑动效果，[loop](#loop) = false时生效。调用[SwiperController.changeIndex()](#changeindex12)、[SwiperController.showNext()](#shownext)和[SwiperController.showPrevious()](#showprevious)接口跳转至首尾页时不生效回弹。
+设置边缘滑动效果，[loop](#loop)为false或Swiper视窗内一屏显示所有子节点时生效。调用[SwiperController.changeIndex()](#changeindex12)、[SwiperController.showNext()](#shownext)和[SwiperController.showPrevious()](#showprevious)接口跳转至首尾页时不生效回弹。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -432,6 +432,7 @@ displayCount(value: number | string | SwiperAutoFill | ItemFillPolicy, swipeByGr
 使用number类型时，子元素主轴宽度会基于Swiper主轴宽度适应。子组件按照主轴均分Swiper宽度（减去displayCount-1个itemSpace）的方式进行主轴拉伸（收缩）布局，设置为小于等于0的值时，按默认值1显示。<br/>
 使用string类型时，根据子元素的主轴宽度线性布局，不再适应Swiper主轴宽度。此时value值仅支持设置为'auto'，设置[customContentTransition](#customcontenttransition12)和[onContentDidScroll](#oncontentdidscroll12)事件不生效。<br/>
 使用SwiperAutoFill类型时，子元素主轴宽度会基于Swiper主轴宽度适应。通过设置一个子组件最小宽度值minSize，会根据Swiper当前宽度和minSize值自动计算并更改一页内元素显示个数。当minSize为空或者小于等于0时，Swiper显示1列。
+
 使用ItemFillPolicy类型时，子元素主轴宽度会基于Swiper主轴宽度适应。将根据Swiper组件宽度对应断点类型确定显示个数。例如，设置断点类型为ItemFillPolicy.BREAKPOINT_DEFAULT时，在组件宽度相当于sm及更小断点区间时显示1列，相当于md断点区间时显示2列，相当于lg及更大断点区间时显示3列。
 
 参数说明参考[displayCount](#displaycount8)。
@@ -571,7 +572,7 @@ indicatorInteractive(value: boolean)
 
 pageFlipMode(mode: Optional\<PageFlipMode>)
 
-设置鼠标滚轮翻页模式。
+设置鼠标滚轮翻页模式。未通过该接口设置时，默认为连续翻页模式，取值为PageFlipMode.CONTINUOUS。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -583,7 +584,7 @@ pageFlipMode(mode: Optional\<PageFlipMode>)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode  | Optional\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>默认值：PageFlipMode.CONTINUOUS |
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>取undefined时，按取值为PageFlipMode.CONTINUOUS处理。 |
 
 ### maintainVisibleContentPosition<sup>20+</sup>
 
@@ -591,7 +592,7 @@ maintainVisibleContentPosition(enabled: boolean)
 
 设置显示区域上方或前方插入或删除数据时是否保持可见内容位置不变。适用于使用单一[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)作为Swiper子节点的情况，通过LazyForEach的[onDateAdd](ts-rendering-control-lazyforeach.md#ondataadd8)、[onDataDelete](ts-rendering-control-lazyforeach.md#ondatadelete8)等接口修改数据源。其他场景下，显示区域上方或前方插入或删除数据，可见内容位置会变化。
 
-在[displayCount](#displaycount8)属性的swipeByGroup参数设置为true，生效按组翻页时，一次在显示区域上方或前方插入或删除和一组节点数量倍数的数据量时才能保持可见内容位置不变，否则可见内容位置可能会随每组数据重新分组改变。
+在[displayCount](#displaycount8)属性的swipeByGroup参数设置为true，即按组翻页生效时，一次在显示区域上方或前方插入或删除数据，且插入或删除的是一组节点数量倍数的数据量时，才能保持可见内容位置不变，否则可见内容位置可能会随每组数据重新分组改变。
 
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
@@ -604,6 +605,24 @@ maintainVisibleContentPosition(enabled: boolean)
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | enabled  | boolean | 是   | 设置显示区域上方或前方插入或删除数据时是否要保持可见内容位置不变。<br/>默认值：false，显示区域上方或前方插入或删除数据时可见内容位置会跟随变化。 true：显示区域上方或前方插入或删除数据时可见内容位置不变。如果改变数据源是在动画过程中，由于目标索引变化会导致动画停止。 |
+
+### indicatorStyle<sup>(deprecated)</sup>
+
+indicatorStyle(value?: IndicatorStyle)
+
+设置导航点样式。
+
+> **说明：** 
+>
+> 从API version 8开始支持，从API version 10开始废弃，无替代接口。可以使用[Indicator](#indicator10)、[DigitIndicator](#digitindicator10)和[DotIndicator](#dotindicator10)设置导航点样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                | 必填 | 说明         |
+| ------ | --------------------------------------------------- | ---- | ------------ |
+| value  | [IndicatorStyle](#indicatorstyledeprecated对象说明) | 否   | 导航点样式。 |
 
 
 ## SwiperDisplayMode枚举说明
@@ -741,7 +760,7 @@ finishAnimation(callback?: VoidCallback)
 
 preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
-控制Swiper预加载指定子节点。调用该接口后会一次性加载所有指定的子节点，因此为了性能考虑，建议分批加载子节点。
+控制Swiper预加载指定子节点。调用该接口后会一次性加载所有指定的子节点，因此为了性能考虑，建议分批加载子节点。使用Promise异步回调。
 
 如果SwiperController对象未绑定任何Swiper组件，直接调用该接口，会抛出JS异常，并返回错误码100004。因此使用该接口时，建议通过try-catch捕获异常。
 
@@ -761,13 +780,13 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
 | 参数名   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
-| indices | Optional\<Array\<number>> | 是 | 需预加载的子节点的下标数组。|
+| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<Array\<number>> | 是 | 需预加载的子节点的下标数组。|
 
 **返回值：**
 
 | 类型                                                         | 说明                     |
 | ------------------------------------------------------------ | ------------------------ |
-| Promise\<void> | 预加载完成后触发的回调。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -796,7 +815,7 @@ Swiper组件翻页至指定页面的动效模式。
 
 ## Indicator<sup>10+</sup>
 
-设置导航点距离Swiper组件距离。由于导航点有默认交互区域，交互区域高度为32vp，所以无法让显示部分完全贴底。
+设置导航点距离Swiper组件距离。由于导航点有默认交互区域，交互区域高度为32vp，所以无法让显示部分完全贴底。若想实现完全贴底，可以使用[IndicatorComponent](ts-swiper-components-indicator.md#indicatorcomponent)组件，更灵活地调整位置。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -1174,7 +1193,7 @@ Swiper组件圆点导航指示器的颜色。
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 设置Swiper组件圆点导航指示器的颜色。<br/>默认值：'\#182431'（10%透明度） |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 设置Swiper组件圆点导航指示器的颜色。<br/>默认值：'#1A182431'，浅灰色。 |
 
 **返回值：** 
 
@@ -1198,7 +1217,7 @@ selectedColor(value: ResourceColor): DotIndicator
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 设置选中Swiper组件圆点导航指示器的颜色。<br/>默认值：'\#007DFF' |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 设置选中Swiper组件圆点导航指示器的颜色。<br/>默认值：'\#007DFF'，蓝色。 |
 
 **返回值：** 
 
@@ -1244,7 +1263,7 @@ space(space: LengthMetrics): DotIndicator
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| space  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 是   | 设置圆点导航点间距，不支持设置百分比。<br/>默认值：8<br/>单位：vp |
+| space  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 是   | 设置圆点导航点间距，不支持设置百分比。<br/>默认值：8<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 **返回值：** 
 
@@ -1821,23 +1840,6 @@ finishTransition(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### indicatorStyle<sup>(deprecated)</sup>
-
-indicatorStyle(value?: IndicatorStyle)
-
-设置导航点样式。
-
->**说明：** 
->
-> 从API version 8开始支持，从API version 10开始废弃，无替代接口。可以使用[Indicator](#indicator10)、[DigitIndicator](#digitindicator10)和[DotIndicator](#dotindicator10)设置导航点样式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                                                | 必填 | 说明         |
-| ------ | --------------------------------------------------- | ---- | ------------ |
-| value  | [IndicatorStyle](#indicatorstyledeprecated对象说明) | 否   | 导航点样式。 |
 
 ## IndicatorStyle<sup>(deprecated)</sup>对象说明
 
@@ -1856,9 +1858,9 @@ indicatorStyle(value?: IndicatorStyle)
 | right         | [Length](ts-types.md#length)               | 否   | 是   | 设置导航点右侧相对于Swiper的位置。<br/>未设置left和right时，进行自适应大小布局，按照指示器本身大小和Swiper的大小在主轴方向上进行居中对齐<br/>设置为0时：按照0位置布局计算<br/>优先级：低于left属性<br/>取值范围：[0,Swiper宽度-导航点区域宽度]，超出该范围时，取最近的边界值。                 |
 | bottom        | [Length](ts-types.md#length)               | 否   | 是   | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致<br/>设置为0时：按照0位置布局计算<br/>优先级：低于top属性<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。                 |
 | size          | [Length](ts-types.md#length)               | 否   | 是   | 设置导航点的直径，不支持设置百分比。<br/>默认值：6vp |
-| mask          | boolean                                    | 否   | 是   | 设置是否显示导航点蒙层样式。<br/>设置为true时显示导航点蒙层样式，为false时不显示。                         |
-| color         | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 设置导航点的颜色。                                   |
-| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 设置选中的导航点的颜色。                             |
+| mask          | boolean                                    | 否   | 是   | 设置是否显示导航点蒙层样式。<br/>true：显示导航点蒙层样式，false：不显示导航点蒙层样式。<br/>默认值：false                         |
+| color         | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 设置导航点的颜色。<br/>默认值：'#1A182431'，浅灰色。                                   |
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 设置选中的导航点的颜色。<br/>默认值：'\#007DFF'，蓝色。                            |
 
 ## 示例
 
@@ -1978,14 +1980,17 @@ struct SwiperExample {
       Row({ space: 5 }) {
         Button('FAST 0')
           .onClick(() => {
+            // 控制器：跳转到索引0，使用快速动画模式
             this.swiperController.changeIndex(0, SwiperAnimationMode.FAST_ANIMATION);
           })
         Button('FAST 3')
           .onClick(() => {
+            // 控制器：跳转到索引3，使用快速动画模式
             this.swiperController.changeIndex(3, SwiperAnimationMode.FAST_ANIMATION);
           })
         Button('FAST ' + 9)
           .onClick(() => {
+            // 控制器：跳转到索引9，使用快速动画模式
             this.swiperController.changeIndex(9, SwiperAnimationMode.FAST_ANIMATION);
           })
       }.margin(5)
@@ -2137,7 +2142,7 @@ struct SwiperExample {
             .fontSize(30)
         }, (item: string) => item)
       }
-      .displayCount(3, true)
+      .displayCount(3, true) // 开启按组翻页：每页显示3个轮播项，且翻页时整组切换
       .autoPlay(true)
       .interval(4000)
       .loop(true)
@@ -2378,7 +2383,7 @@ struct Index {
           .selectedItemHeight(8)
           .color(Color.Gray)
           .selectedColor(Color.Blue)
-          .maxDisplayCount(9))
+          .maxDisplayCount(9)) // 设置导航点最大显示数量为9个
       .displayArrow({ // 设置导航点箭头样式
         showBackground: true,
         isSidebarMiddle: true,
@@ -2572,9 +2577,12 @@ struct TabsSwiperExample {
         }, (item: string) => item)
       }
       .loop(false)
+      // 选中/切换轮播项时触发
       .onSelected((index: number) => {
         console.info("onSelected:" + index);
+        // 同步选中索引到currentIndex（更新页签选中态）
         this.currentIndex = index;
+        // 控制Tabs切换到对应索引页签
         this.tabsController.changeIndex(index);
       })
     }
@@ -2644,6 +2652,10 @@ struct SwiperExample {
         this.currentIndex = index;
       })
       .onContentWillScroll((result: SwiperContentWillScrollResult) => {
+        // result.comingIndex：即将要滑动到的目标索引
+        // 拦截逻辑：
+        // 1. 若目标索引 > 当前索引：返回false，拦截该滑动行为
+        // 2. 若目标索引 < 当前索引：返回true，允许该滑动行为
         if (result.comingIndex > this.currentIndex) {
           return false;
         }
@@ -2735,8 +2747,8 @@ struct SwiperExample {
           }, (item: string) => item)
         }
         .indicator(new DotIndicator()
-          .space(this.space)
-          .bottom(LengthMetrics.vp(0), this.ignoreSize)
+          .space(this.space) // 控制导航点之间的间距
+          .bottom(LengthMetrics.vp(0), this.ignoreSize) // 控制导航点与Swiper底部的间距
           .itemWidth(15)
           .itemHeight(15)
           .selectedItemWidth(15)
@@ -2824,7 +2836,7 @@ struct SwiperExample {
         }, (item: string) => item)
       }
       .width('100%')
-      .displayCount({fillType:PresetFillType.BREAKPOINT_SM1MD2LG3})
+      .displayCount({fillType:PresetFillType.BREAKPOINT_SM1MD2LG3}) // 按断点设置视窗内元素显示个数
     }
   }
 }

@@ -19,10 +19,13 @@
 
 >  **说明：**
 >
->  子组件类型：系统组件和自定义组件，支持渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)）。
->  自定义组件宽高默认为0，需要给其设置宽高，否则标记组件将不显示。
->  
->  不影响子组件布局，即不会主动规避子组件内容。
+> - 子组件类型：系统组件和自定义组件，支持渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)）。
+>
+> - 自定义组件宽高默认为0，需要给其设置宽高，否则标记组件将不显示。
+>
+> - 当存在多个子组件时，只有最后一个子组件会在界面上显示，但其余子组件的状态更新仍会使Badge及其子组件重新布局渲染。
+>
+> - 不影响子组件布局，即不会主动规避子组件内容。
 
 
 ## 接口

@@ -44,6 +44,8 @@
     - [LowPowerAudioSink](capi-lowpoweraudiosink.md)
     - [LowPowerVideoSink](capi-lowpowervideosink.md)
     - [VideoProcessing](capi-videoprocessing.md)
+    - [AVMediaSource](capi-avmedia-source.md)
+    - [AVMediaBase](capi-avmediabase.md)
   - 头文件<!--media-headerfile-->
     - [avimage_generator.h](capi-avimage-generator-h.md)
     - [avimage_generator_base.h](capi-avimage-generator-base-h.md)
@@ -65,6 +67,9 @@
     - [lowpower_video_sink_base.h](capi-lowpower-video-sink-base-h.md)
     - [video_processing.h](capi-video-processing-h.md)
     - [video_processing_types.h](capi-video-processing-types-h.md)
+    - [avmedia_base.h](capi-avmedia-base-h.md)
+    - [avmedia_source.h](capi-avmedia-source-h.md)
+    - [avmetakeys.h](capi-avmetakeys-h.md)
   - 结构体<!--media-struct-->
     - [OH_AVImageGenerator](capi-avimagegenerator-oh-avimagegenerator.md)
     - [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)
@@ -109,5 +114,13 @@
     - [NativeWindow](capi-videoprocessing-nativewindow.md)
     - [OH_AVFormat](capi-videoprocessing-oh-avformat.md)
     - [VideoProcessing_Callback](capi-videoprocessing-videoprocessing-callback.md)
+    - [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)
+    - [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md)
+    - [OH_AVHttpHeader](capi-avmedia-source-oh-avhttpheader.md)
+    - [OH_AVMediaSourceLoadingRequest](capi-avmedia-source-oh-avmediasourceloadingrequest.md)
+    - [OH_AVMediaSourceLoader](capi-avmedia-source-oh-avmediasourceloader.md)
+    - [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md)
+    - [OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md)
+    - [OH_AVMetadataExtractor_FrameInfo](capi-avmetadataextractor-oh-avmetadataextractor-frameinfo.md)
 - 错误码<!--media-arkts-errcode-->
   - [Media错误码](errorcode-media.md)

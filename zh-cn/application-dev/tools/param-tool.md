@@ -1,4 +1,10 @@
 # param工具
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
+<!--Designer: @liveery-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 param是为开发人员提供用于操作系统参数的工具，该工具只支持标准系统。
 
@@ -35,7 +41,9 @@ param是为开发人员提供用于操作系统参数的工具，该工具只支
   ```
   **示例**<br>
   ![ls-integrity](figures/param-ls-integrity.png)
+
   ![ls-part](figures/param-ls-part.png)
+  
   ![ls](figures/param-ls.png)
 
 ## 获取系统参数的值

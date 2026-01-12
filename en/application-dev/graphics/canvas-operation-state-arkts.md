@@ -9,9 +9,9 @@
 
 ## Overview
 
-After creating or obtaining a canvas, you can perform graphics operations and status processing based on the canvas. Canvas operations are optional. You can perform canvas operations as required. You need to perform canvas operations before drawing. Only in this way, the canvas operations take effect.
+After creating or obtaining a canvas, you can perform graphics operations and status processing based on the canvas. Canvas operations are optional. You need to perform canvas operations before subsequent drawing. Otherwise, the canvas operations do not take effect.
 
-The common canvas operations are as follows:
+Common canvas operations are as follows:
 
 - Clipping
 
@@ -24,7 +24,7 @@ For details about more canvas operations and API parameters, see [drawing.Canvas
 
 ## Clipping
 
-Clipping is a common operation in graphics processing. It is used to restrict the drawing area on the canvas. The effect is achieved only after the clipping operation is performed before drawing.
+Clipping is a common operation in graphics processing. It is performed on the canvas and can be used to restrict the drawing region. The corresponding effect is displayed only after the clipping operation is performed before drawing.
 
 The following clipping operations are supported:
 
@@ -34,12 +34,12 @@ The following clipping operations are supported:
 
 - Clipping a custom path
 
-- Clipping an area
+- Clipping a region
 
 
 ### Available APIs
 
-The following table lists the APIs commonly used for clipping. For details about the APIs and parameters, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
+The following table lists the APIs for clipping. For details, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
 
 
 | API| Description|
@@ -52,59 +52,59 @@ The following table lists the APIs commonly used for clipping. For details about
 
 ### How to Develop
 
-The following uses the rectangle clipping on the canvas as an example to describe the example and effect. The logic of other clipping operations is similar. You only need to call the corresponding API and ensure that the data type to be clipped is correct. For details about the usage and parameters, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
+The following uses the rectangle clipping on the canvas as an example. The logic of other clipping operations is similar. You only need to call the corresponding API and ensure that the data type to be clipped is correct. For details about the usage and parameters, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
 
-Use the clipRect() API to clip a rectangle. There are three input parameters:
+Use the **clipRect()** API to clip a rectangle. There are three input parameters:
 
 
-- rect indicates the rectangle to be clipped.
+- **rect**: rectangle region to be clipped.
 
-- clipOp indicates the clipping mode, including INTERSECT and DIFFERENCE. For details, see [ClipOp](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#clipop12).
+- **clipOp**: clipping mode, including **INTERSECT** and **DIFFERENCE**. For details, see [ClipOp](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#clipop12).
 
-- doAntiAlias indicates whether to enable anti-aliasing. If the value is true, the anti-aliasing function is enabled. When a graphic is drawn, the edge pixels of the graphic are blurred in a semi-transparent manner. If the value is false, the anti-aliasing function is disabled.
+- **doAntiAlias**: whether to enable anti-aliasing. If the value is **true**, the anti-aliasing function is enabled, which makes the edge pixels of a graph semi-transparent and blurred. If the value is **false**, the anti-aliasing function is disabled.
 
 
 <!-- @[arkts_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 ``` TypeScript
-// Create a brush.
+// Create a brush object.
 let brush = new drawing.Brush();
 // Set the color to blue.
 brush.setColor(0xFF, 0x00,  0x00, 0xFF);
-// Set the brush filling effect.
+// Set the brush fill effect.
 canvas.attachBrush(brush);
 // Create a rectangle object.
 let rect: common2D.Rect = { left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 };
-// Clip the rectangle.
+// Clip the rectangle region.
 canvas.clipRect(rect);
 // Draw a circle.
 canvas.drawCircle(VALUE_300, VALUE_300, VALUE_300);
-// Remove the filling effect.
+// Remove the fill effect.
 canvas.detachBrush();
 ```
 
 
-| Original image| Image after cropping|
+| Original Image| Clipped Image|
 | -------- | -------- |
 | ![Screenshot_20250120154655737](figures/Screenshot_20250120154655737.jpg) | ![Screenshot_20250118152812670](figures/Screenshot_20250118152812670.jpg) |
 
 
 ## Matrix Transformation
 
-Matrix transformation is a common canvas operation. It is a coordinate system transformation used to change the shape of a graphic.
+Matrix transformation is a common canvas operation. It is a coordinate system conversion used to change graphics.
 
-The following matrix transformations are supported:
+The following matrix transformation operations are supported:
 
 - Translation
 
 - Scaling
 
-- Rotate
+- Rotation
 
 
 ### Available APIs
 
-The following table lists the APIs commonly used for matrix transformation. For details about the APIs and parameters, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
+The following table lists the APIs for matrix transformation. For details, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md).
 
 | API| Description|
 | -------- | -------- |
@@ -116,94 +116,94 @@ The following table lists the APIs commonly used for matrix transformation. For 
 
 ### Translation
 
-Use the translate() API to translate the canvas. The API accepts two parameters, which are the translation amounts in the horizontal and vertical directions, respectively. The unit is px.
+Use the **translate()** API to translate the canvas. The API takes two parameters, which are the translation amount in the horizontal and vertical directions, respectively. The unit is px.
 
-A simple example and a schematic diagram are as follows:
+The following shows the sample code and effect:
 
 
 <!-- @[arkts_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 ``` TypeScript
-// Create a brush.
+// Create a brush object.
 let brush = new drawing.Brush();
 // Set the color to red.
 brush.setColor(0xFF, 0xFF, 0x00, 0x00);
-// Set the brush filling effect.
+// Set the brush fill effect.
 canvas.attachBrush(brush);
-// Translate the canvas.
+// Perform the translation operation.
 canvas.translate(VALUE_300, VALUE_300);
 // Draw a rectangle.
 canvas.drawRect({ left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 });
-// Remove the filling effect.
+// Remove the fill effect.
 canvas.detachBrush();
 ```
 
 
-| Original image| Rotated image|
+| Original Image| Translated Image|
 | -------- | -------- |
 | ![Screenshot_20241129145853573](figures/Screenshot_20241129145853573.jpg) | ![Screenshot_20241129145920436](figures/Screenshot_20241129145920436.jpg) |
 
 
-### Rotate
+### Rotation
 
-Use the rotate() API to rotate the canvas. The API accepts three parameters, which are the rotation angle, x-coordinate of the rotation center, and y-coordinate of the rotation center.
+Use the **rotate()** API to rotate the canvas. The API takes three parameters: rotation angle, and X and Y coordinates of the rotation center.
 
 
-The following is a simple example and a diagram:
+The following shows the sample code and effect:
 
 
 
 <!-- @[arkts_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 ``` TypeScript
-// Create a brush.
+// Create a brush object.
 let brush = new drawing.Brush();
 // Set the color to red.
 brush.setColor(0xFF, 0xFF, 0x00, 0x00);
-// Set the brush filling effect.
+// Set the brush fill effect.
 canvas.attachBrush(brush);
-// Rotate the canvas clockwise by 45 degrees.
+// Rotate the image clockwise by 45 degrees.
 canvas.rotate(45, VALUE_200, VALUE_200);
 // Draw a rectangle.
 canvas.drawRect({ left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 });
-// Remove the filling effect.
+// Remove the fill effect.
 canvas.detachBrush();
 ```
 
 
-| Original image| Rotated image|
+| Original Image| Rotated Image|
 | -------- | -------- |
 | ![Screenshot_20241129145853573](figures/Screenshot_20241129145853573.jpg) | ![Screenshot_20241129150512529](figures/Screenshot_20241129150512529.jpg) |
 
 
 ### Scaling
 
-Use the scale() API to scale the canvas. The API accepts two parameters, which are the scaling factors along the x-axis and y-axis, respectively.
+Use the **scale()** API to scale the canvas. The API takes two parameters, which are the scaling factors along the X axis and Y axis, respectively.
 
 
-The following is a simple example and a schematic diagram:
+The following shows the sample code and effect:
 
 
 
 <!-- @[arkts_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 ``` TypeScript
-// Create a brush.
+// Create a brush object.
 let brush = new drawing.Brush();
 // Set the color to red.
 brush.setColor({ alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00 });
-// Set the brush filling effect.
+// Set the brush fill effect.
 canvas.attachBrush(brush);
-// Perform the zoom-in operation.
+// Perform the scale-up operation.
 canvas.scale(2, 2);
 // Draw a rectangle.
 canvas.drawRect({ left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 });
-// Remove the filling effect.
+// Remove the fill effect.
 canvas.detachBrush();
 ```
 
 
-| Original image| Image after scaling|
+| Original Image| Scaled up Image|
 | -------- | -------- |
 | ![Screenshot_20241129145853573](figures/Screenshot_20241129145853573.jpg) | ![Screenshot_20241129151044798](figures/Screenshot_20241129151044798.jpg) |
 
@@ -211,7 +211,7 @@ canvas.detachBrush();
 ## Saving and Restoring the Canvas Status
 
 
-The save operation is used to save the current canvas status to the top of the stack. The restore operation is used to restore the canvas status saved at the top of the stack. Once the restore operation is performed, a series of operations such as translation, scaling, and cropping between the save and restore operations are cleared.
+The saving operation is used to save the current canvas status to the top of the stack. The restoration operation is used to restore the canvas status saved at the top of the stack. Once the restoration operation is performed, a series of operations such as translation, scaling, and clipping between the saving and restoration operations are cleared.
 
 
 ### Available APIs
@@ -224,30 +224,30 @@ The following table lists the APIs used for saving and restoring the canvas stat
 | restore(): void | Restores the canvas status (canvas matrix) saved on the top of the stack.|
 | restoreToCount(count: number): void | Restores to a given number of canvas statuses (canvas matrices).|
 
-The following is a simple example and diagram:
+The following shows the sample code and effect:
 
 
 
 <!-- @[arkts_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 ``` TypeScript
-// Create a pen.
+// Create a pen object.
 let pen = new drawing.Pen();
 // Set the color to red.
 pen.setColor({ alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00 });
 // Set the stroke width to 20 px.
 pen.setStrokeWidth(20);
-// Set the stroke effect of the paint brush.
+// Set the stroke effect of the pen.
 canvas.attachPen(pen);
-// Save the current canvas status. Currently, there is no zoom-in or zoom-out operation. The original status is saved.
+// Save the current canvas status. Currently, no scale-up operation is performed. The original status is saved.
 canvas.save();
-// Zoom in on the x-axis and y-axis by two times.
+// Scale up the image along the X axis and Y axis by two times.
 canvas.scale(2, 2);
-// Draw a circle. Because the zoom-in operation has been performed, a large circle is drawn.
+// Draw a circle. Because the scale-up operation has been performed, a large circle is drawn.
 canvas.drawCircle(VALUE_300, VALUE_300, VALUE_200);
-// Restore the canvas status to the original status without zoom-in or zoom-out.
+// Restore the canvas to the original status.
 canvas.restore();
-// Draw a circle. Because the canvas status has been restored to the original status without zoom-in or zoom-out, a small circle is drawn.
+// Draw a circle. Because the original state is restored, a small circle is drawn.
 canvas.drawCircle(VALUE_300, VALUE_300, VALUE_200);
 // Remove the stroke effect.
 canvas.detachPen();
@@ -258,7 +258,7 @@ canvas.detachPen();
 <!--RP1-->
 ## Samples
 
-The following samples are available for you to develop Drawing (ArkTS) applications:
+The following samples are provided to help you better understand how to use the **Drawing** APIs (ArkTS) for development:
 
 - [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->

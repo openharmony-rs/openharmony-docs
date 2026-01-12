@@ -53,7 +53,7 @@
    ``` TypeScript
    import { sensor } from '@kit.SensorServiceKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import hilog from '@ohos.hilog';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
 4. 定义常量。

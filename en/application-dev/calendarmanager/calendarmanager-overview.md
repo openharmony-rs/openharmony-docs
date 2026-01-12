@@ -1,4 +1,4 @@
-# Introduction to Calendar Kit
+# About This Kit
 
 Calendar Kit provides calendar and event management capabilities, which usually refer to APIs that can be used to access and operate calendar data. These APIs allow you to integrate time-related event services (such as travel, catering, sports, and entertainment) in other applications with the system calendar to implement functions such as event management, creation, and query.
 

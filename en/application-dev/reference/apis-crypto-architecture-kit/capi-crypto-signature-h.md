@@ -68,7 +68,7 @@ Defines APIs for signature verification.
 
 ### CryptoSignature_ParamType
 
-```
+```c
 enum CryptoSignature_ParamType
 ```
 
@@ -92,7 +92,7 @@ Enumerates the types of signature verification parameters.
 
 ### OH_CryptoVerify_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify **verify)
 ```
 
@@ -118,7 +118,7 @@ Creates a **Verify** instance for signature verification.
 
 ### OH_CryptoVerify_Init()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pubKey)
 ```
 
@@ -151,7 +151,7 @@ Initializes a **Verify** instance by using the public key.
 
 ### OH_CryptoVerify_Update()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *in)
 ```
 
@@ -184,7 +184,7 @@ Updates the data to be verified.
 
 ### OH_CryptoVerify_Final()
 
-```
+```c
 bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_DataBlob *signData)
 ```
 
@@ -207,7 +207,7 @@ Verifies the signature of the data.
 
 | Type| Description|
 | -- | -- |
-| bool | Whether the signature verification is successful.|
+| bool | **true** if the signature verification is successful; **false** otherwise.|
 
 **Reference**
 
@@ -218,7 +218,7 @@ Verifies the signature of the data.
 
 ### OH_CryptoVerify_Recover()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob *signData,Crypto_DataBlob *rawSignData)
 ```
 
@@ -245,7 +245,7 @@ Restores the raw signature data.
 
 ### OH_CryptoVerify_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)
 ```
 
@@ -270,7 +270,7 @@ Obtains the signature verification algorithm.
 
 ### OH_CryptoVerify_SetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type,Crypto_DataBlob *value)
 ```
 
@@ -297,7 +297,7 @@ Sets a signature verification parameter.
 
 ### OH_CryptoVerify_GetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type,Crypto_DataBlob *value)
 ```
 
@@ -324,7 +324,7 @@ Obtains a signature verification parameter.
 
 ### OH_CryptoVerify_Destroy()
 
-```
+```c
 void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)
 ```
 
@@ -343,7 +343,7 @@ Destroys a **Verify** instance.
 
 ### OH_CryptoSign_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sign)
 ```
 
@@ -369,7 +369,7 @@ Creates a signature instance based on the given algorithm name.
 
 ### OH_CryptoSign_Init()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privKey)
 ```
 
@@ -402,7 +402,7 @@ Initializes a signature instance.
 
 ### OH_CryptoSign_Update()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob *in)
 ```
 
@@ -435,7 +435,7 @@ Updates the data to be signed.
 
 ### OH_CryptoSign_Final()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)
 ```
 
@@ -469,7 +469,7 @@ Finalizes the signing operation.
 
 ### OH_CryptoSign_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)
 ```
 
@@ -494,7 +494,7 @@ Obtains the algorithm name of a signature instance.
 
 ### OH_CryptoSign_SetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type,const Crypto_DataBlob *value)
 ```
 
@@ -521,7 +521,7 @@ Sets parameters for a signature instance.
 
 ### OH_CryptoSign_GetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)
 ```
 
@@ -548,7 +548,7 @@ Obtains the specified parameter from a signature instance.
 
 ### OH_CryptoSign_Destroy()
 
-```
+```c
 void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)
 ```
 
@@ -567,7 +567,7 @@ Destroys a signature instance.
 
 ### OH_CryptoEccSignatureSpec_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature,OH_CryptoEccSignatureSpec **spec)
 ```
 
@@ -593,7 +593,7 @@ Creates ECC signing specifications.
 
 ### OH_CryptoEccSignatureSpec_GetRAndS()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r,Crypto_DataBlob *s)
 ```
 
@@ -620,7 +620,7 @@ Obtains the **r** and **s** values of an ECC signature.
 
 ### OH_CryptoEccSignatureSpec_SetRAndS()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r,Crypto_DataBlob *s)
 ```
 
@@ -647,7 +647,7 @@ Sets the **r** and **s** values of an ECC signature.
 
 ### OH_CryptoEccSignatureSpec_Encode()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *out)
 ```
 
@@ -673,7 +673,7 @@ Encodes ECC signing specifications into a signature in DER format.
 
 ### OH_CryptoEccSignatureSpec_Destroy()
 
-```
+```c
 void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)
 ```
 

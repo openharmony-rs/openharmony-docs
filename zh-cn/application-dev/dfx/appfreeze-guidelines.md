@@ -17,7 +17,7 @@
 
 ## 检测原理
 
-目前应用冻屏检测从以下三个维度检测，了解其原理有助于应用开发者定位和分析AppFreeze故障。
+目前应用冻屏检测从以下维度检测，了解其原理有助于应用开发者定位和分析AppFreeze故障。
 
 > **注意：**
 >
@@ -88,7 +88,7 @@ Build info:ALN-AL00 6.0.0.328(C00E1R4P3DEVDUlog)
 DeviceDebuggable:No
 Fingerprint:e18a33c12e1361173ec9ac1c93f2bd0c2daa88f03c7f76b228cca14bdc6a21b1
 Module name:com.samples.freezedebug
-ReleaseType:Release
+ReleaseType:release
 CpuAbi:arm64-v8a
 Version:1.0.0
 VersionCode:1000000
@@ -131,8 +131,8 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 
 | 字段 | 说明 |
 | -------- | -------- |
-| DeviceDebuggable | 设备是否可调试。<br>**说明**：从API 23开始支持。 |
-| ReleaseType | 标识应用打包时使用的SDK的发布类型。仅在应用进程提供，具体说明详见[ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的releaseType。<br>**说明**：从API 23开始支持。 |
+| DeviceDebuggable | 设备的系统版本是否可调试，和开发者选项无关。<br>**说明**：从API 23开始支持。 |
+| ReleaseType | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API 23开始支持。 |
 | CpuAbi | 二进制接口类型。<br>**说明**：从API 23开始支持。 |
 | IsSystemApp | 应用是否为系统应用。<br>**说明**：从API 23开始支持。 |
 | Reason | 应用无响应原因，与应用无响应检测能力点对应。 |
@@ -280,7 +280,7 @@ state=S, utime=0, stime=0, priority=0, nice=-20, clk=100
 >
 > 在整机高负载情况（如CPU高负载）下，采用低开销方式获取调用栈时，可能损失函数名信息。
 >
-> 从API version 21开始，出现'Failed to dump normal stacktrace'字样时，系统采取轻量化的frame pointer回溯模式。栈回溯可能中断在非使能frame pointer的库（在GCC编译使用 -fomit-frame-pointer 选项时，编译产物会非使能frame pointer），以及受轻量化的限制，单个线程的回栈层数不会超过50层。
+> 从API version 21开始，出现'Failed to dump normal stacktrace'字样时，系统采取轻量化的frame pointer回溯模式。栈回溯可能中断在非使能frame pointer的库（在GCC编译使用 -fomit-frame-pointer 选项时，编译产物不使能frame pointer），以及受轻量化的限制，单个线程的回栈层数不会超过50层。
 
 从API version 23开始，在线程号下新增线程状态等信息，用于判断是否是系统卡顿导致的问题。其中，state表示当前线程的运行状态，priority和nice表示当前线程的调度优先级，stime和utime表示当前线程运行的时间。对比3S和6S的堆栈运行时间没有发生改变，说明进程未被调度。通过分析业务代码无阻塞调用后，可判断为系统调度问题。线程状态信息在故障日志中具体格式如下：
 

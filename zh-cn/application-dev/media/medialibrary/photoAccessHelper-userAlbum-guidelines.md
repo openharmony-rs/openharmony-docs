@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-photoAccessHelper提供用户相册相关的接口，支持创建和删除相册，以及添加和删除相册中的图片和视频资源。
+photoAccessHelper提供用户相册相关的接口，支持查询和重命名相册，以及添加和删除相册中的图片和视频资源。
 
 > **说明：**
 >
@@ -14,6 +14,7 @@ photoAccessHelper提供用户相册相关的接口，支持创建和删除相册
 > 文档中使用到photoAccessHelper的地方默认为使用[开发准备](photoAccessHelper-preparation.md)中获取的对象，如未添加此段代码报photoAccessHelper未定义的错误请自行添加。
 
 为了保证应用的运行效率，大部分photoAccessHelper的接口调用都是异步的。以下异步调用的API示例均采用Promise函数，更多方式可以查阅[API参考](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)。
+
 如无特别说明，文档中涉及的待获取资源均视为已预置，并且数据库中存在相应数据。如果按照示例代码执行后获取资源为空，请确认文件是否已预置，以及数据库中是否存在该文件的数据。
 
 <!--Del-->
@@ -75,26 +76,34 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 2. 调用PhotoAccessHelper.getAlbums接口获取用户相册资源。
 3. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个用户相册。
 
-```ts
+<!-- @[get_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/getuseralbumability/GetUserAlbumAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
   let albumName: photoAccessHelper.AlbumKeys = photoAccessHelper.AlbumKeys.ALBUM_NAME;
-  predicates.equalTo(albumName, 'albumName');
+  predicates.equalTo(albumName, 'test');
   let fetchOptions: photoAccessHelper.FetchOptions = {
     fetchColumns: [],
     predicates: predicates
   };
 
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, 
+        photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
     let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
     console.info('getAlbums successfully, albumName: ' + album.albumName);
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error('getAlbums failed with err: ' + err);
+    // ...
   }
 }
 ```
@@ -129,31 +138,40 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 4. 调用MediaAlbumChangeRequest.setAlbumName接口设置新的相册名。
 5. 调用PhotoAccessHelper.applyChanges接口将修改的相册属性更新到数据库中完成修改。
 
-```ts
+<!-- @[rename_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/renameuseralbumability/RenameUserAlbumAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
   let albumName: photoAccessHelper.AlbumKeys = photoAccessHelper.AlbumKeys.ALBUM_NAME;
-  predicates.equalTo(albumName, 'albumName');
+  predicates.equalTo(albumName, 'test');
   let fetchOptions: photoAccessHelper.FetchOptions = {
     fetchColumns: [],
     predicates: predicates
   };
 
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, 
+        photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
     let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
     console.info('getAlbums successfully, albumName: ' + album.albumName);
-    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = 
+      new photoAccessHelper.MediaAlbumChangeRequest(album);
     let newAlbumName: string = 'newAlbumName';
     albumChangeRequest.setAlbumName(newAlbumName);
     await phAccessHelper.applyChanges(albumChangeRequest);
     console.info('setAlbumName successfully, new albumName: ' + album.albumName);
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error('setAlbumName failed with err: ' + err);
+    // ...
   }
 }
 ```
@@ -180,14 +198,17 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 7. 调用MediaAlbumChangeRequest.addAssets接口往用户相册中添加图片。
 8. 调用PhotoAccessHelper.applyChanges接口提交相册变更请求。
 
-```ts
+<!-- @[add_media_to_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/addmediatouseralbumability/AddMediaToUserAlbumAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let albumPredicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
   let albumName: photoAccessHelper.AlbumKeys = photoAccessHelper.AlbumKeys.ALBUM_NAME;
-  albumPredicates.equalTo(albumName, 'albumName');
+  albumPredicates.equalTo(albumName, 'test');
   let albumFetchOptions: photoAccessHelper.FetchOptions = {
     fetchColumns: [],
     predicates: albumPredicates
@@ -200,20 +221,26 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
 
   try {
-    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, 
+        photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     console.info('getAlbums successfully, albumName: ' + album.albumName);
-    let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(photoFetchOptions);
+    let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(photoFetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await photoFetchResult.getFirstObject();
     console.info('getAssets successfully, albumName: ' + photoAsset.displayName);
-    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = 
+      new photoAccessHelper.MediaAlbumChangeRequest(album);
     albumChangeRequest.addAssets([photoAsset]);
     await phAccessHelper.applyChanges(albumChangeRequest);
     console.info('succeed to add ' + photoAsset.displayName + ' to ' + album.albumName);
     albumFetchResult.close();
     photoFetchResult.close();
+    return true;
   } catch (err) {
     console.error('addAssets failed with err: ' + err);
+    return false;
   }
 }
 ```
@@ -238,14 +265,18 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 5. 调用Album.getAssets接口获取用户相册中的图片资源。
 6. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一张图片。
 
-```ts
+<!-- @[get_media_from_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/getmediafromuseralbumability/GetMediaFromUserAlbumAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let albumPredicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
   let albumName: photoAccessHelper.AlbumKeys = photoAccessHelper.AlbumKeys.ALBUM_NAME;
-  albumPredicates.equalTo(albumName, 'albumName');
+  albumPredicates.equalTo(albumName, 'test');
   let albumFetchOptions: photoAccessHelper.FetchOptions = {
     fetchColumns: [],
     predicates: albumPredicates
@@ -258,7 +289,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
 
   try {
-    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, 
+        photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     console.info('getAlbums successfully, albumName: ' + album.albumName);
     let photoFetchResult = await album.getAssets(photoFetchOptions);
@@ -266,8 +299,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('album getAssets successfully, albumName: ' + photoAsset.displayName);
     albumFetchResult.close();
     photoFetchResult.close();
+    // ...
   } catch (err) {
     console.error('album getAssets failed with err: ' + err);
+    // ...
   }
 }
 ```
@@ -296,14 +331,18 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 7. 调用MediaAlbumChangeRequest.removeAssets接口从用户相册中移除图片。
 8. 调用PhotoAccessHelper.applyChanges接口提交相册变更请求。
 
-```ts
+<!-- @[remove_media_from_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/removemediafromuseralbumability/RemoveMediaFromUserAlbumAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let albumPredicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
   let albumName: photoAccessHelper.AlbumKeys = photoAccessHelper.AlbumKeys.ALBUM_NAME;
-  albumPredicates.equalTo(albumName, 'albumName');
+  albumPredicates.equalTo(albumName, 'test');
   let albumFetchOptions: photoAccessHelper.FetchOptions = {
     fetchColumns: [],
     predicates: albumPredicates
@@ -316,12 +355,14 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
 
   try {
-    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, 
+        photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     if (album === undefined) {
       console.error('album is undefined');
       albumFetchResult.close();
-      return;
+      return false;
     }
     console.info('getAlbums successfully, albumName: ' + album.albumName);
     let photoFetchResult = await album.getAssets(photoFetchOptions);
@@ -329,17 +370,20 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     if (photoAsset === undefined) {
       console.error('photoAsset is undefined');
       photoFetchResult.close();
-      return;
+      return false;
     }
     console.info('album getAssets successfully, albumName: ' + photoAsset.displayName);
-    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = 
+      new photoAccessHelper.MediaAlbumChangeRequest(album);
     albumChangeRequest.removeAssets([photoAsset]);
     await phAccessHelper.applyChanges(albumChangeRequest);
     console.info('succeed to remove ' + photoAsset.displayName + ' from ' + album.albumName);
     albumFetchResult.close();
     photoFetchResult.close();
+    // ...
   } catch (err) {
     console.error('removeAssets failed with err: ' + err);
+    // ...
   }
 }
 ```

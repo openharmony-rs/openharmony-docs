@@ -8,9 +8,10 @@
 
 ## 应用运行过程中出现高概率闪退怎么进行定位解决
 
-- 具体问题：在使用Node-API开发过程中，应用运行过程中出现高概率闪退，出现cppcrash栈，栈顶为系统库libark_jsruntime.so，崩溃栈前几帧也有libace_napi.z.so，怎么进行定位解决？  
+- 具体问题：在使用Node-API开发过程中，应用运行过程中出现高概率闪退，出现cpp crash栈，栈顶为系统库libark_jsruntime.so，崩溃栈前几帧也有libace_napi.z.so，怎么进行定位解决？  
 
-复现概率高，每次崩溃栈略有区别，但是共性都是：崩溃栈顶是系统库的libark_jsruntime.so或者libace_napi.z.so    
+复现概率高，每次崩溃栈略有区别，但是共性都是：崩溃栈顶是系统库的libark_jsruntime.so或者libace_napi.z.so。    
+
 - 崩溃信息如下：  
 ```sh
 Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x00000136 probably caus
@@ -29,13 +30,13 @@ Tid:15894, Name:e.myapplication
 - 以下定位问题的思路，可作为参考：   
 1. 排查是否存在多线程安全问题（概率较大）。   
 
-DevEco Studio中提供了相关开关，开启开关后，重新编译打包并运行，看看崩溃栈是不是符合下面这个文档的描述，如果是，那就是在使用Node-API时，存在多线程安全问题。 
+   DevEco Studio中提供了相关开关，开启开关后，重新编译打包并运行，看看崩溃栈是不是符合下面这个文档的描述，如果是，那就是在使用Node-API时，存在多线程安全问题。 
 
-[常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)  
+   [常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)  
 
-DevEco Studio开关：   
+   DevEco Studio开关：   
 
-![DevEco Studio多线程开关](figures/zh_cn_image_20-25-06-40-15-09.png)   
+   ![DevEco Studio多线程开关](figures/zh_cn_image_20-25-06-40-15-09.png)   
 2. 使用Node-API接口时入参非法导致。   
 - 这种情况一般是崩溃栈上的so会很浅，so调用了某个具体的Node-API接口，比如调用了napi_call_function之类的接口，然后Node-API又调到了libark_jsruntime的so，然后直接崩溃在libark_jsruntime里面。  
 
@@ -53,13 +54,14 @@ a. 排查有没有napi_value未初始化，还没赋值成功，直接作为非�
 
 b. 排查有没有在这个易错API列表里面找到相应的篇章。
 
-  可参考文档：  
+  可参考文档：
+  
+  [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。
 
-  [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)
 
 ## 线程池中并发调用ArkTS方法如何处理线程安全问题
 
-- 现有个场景，ArkTS中有个类方法，对这个方法创建了napi_ref引用，现想在C++线程池中并发的调用ArkTS方法，有以下几个问题：  
+- 现有个场景，ArkTS中有个类方法，对这个方法创建了napi_ref引用，现想在C++线程池中并发地调用ArkTS方法，有以下几个问题：  
 1. 可以在C++创建的线程池中调用napi_ref缓存的ArkTS类方法吗？  
 2. 回调到ArkTS要怎么确保线程安全？  
 
@@ -82,9 +84,10 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 - 排查建议：  
 1. 确认是否napi_value出了scope还在使用，导致use-after-scope问题。  
 
-可参考文档：  
+   可参考文档：
 
-[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)
+   [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。
+
 2. 保存时建议使用napi_ref，而不是直接保存napi_value。
 
 ## 是否存在获取最新napi_env的方法
@@ -99,21 +102,23 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 - 参考方案：  
 1. 关于保存napi_env：  
 
-   Node-API没有提供直接获取napi_env的能力，只能通过逐层函数调用传递。一般不推荐保存napi_env，有两个原因：
-
+   Node-API没有提供直接获取napi_env的能力，只能通过逐层函数调用传递。一般不推荐保存napi_env，有两个原因：  
+   
    其一，napi_env退出时候如果没有被使用方感知到，很容易出现use-after-free问题；  
-
-   其二，napi_env和ArkTS线程是强绑定的，如果napi_env放在其它ArkTS线程使用，就会有多线程安全问题。 
-
+   
+   其二，napi_env和ArkTS线程是强绑定的，如果napi_env放在其它ArkTS线程使用，就会有多线程安全问题。  
+   
    可参考文档：
-
-   [napi_env禁止缓存的原因是什么](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-73)  
+   
+   [napi_env禁止缓存的原因是什么](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-73) 。 
 
 2. 该问题的关键在于：  
 
    如果要强行保存env，必须感知env是否退出，可以使用napi_add_env_cleanup_hook的回调进行感知。同时，在开发过程中打开多线程检测开关，避免出现多线程安全问题。
 
-   可参考[常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)   
+   可参考文档：
+   
+   [常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)。   
 
 3. 对于崩溃问题本身，该崩溃可能发生在调用napi_call_function时，入参 func 有问题，即非法入参，开发者可排查napi_value是否被缓存。这种情况可能是napi_value被缓存后，napi_value超出napi_handle_scope作用域导致失效。 
 
@@ -269,4 +274,4 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 3. 在native方法中创建的所有scope必须在该方法返回之前被关闭。  
 
 相关参考资料链接：
-[使用Node-API接口进行生命周期相关开发](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-life-cycle#napi_open_handle_scopenapi_close_handle_scope)
+[使用Node-API接口进行生命周期相关开发](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-life-cycle#napi_open_handle_scopenapi_close_handle_scope)。

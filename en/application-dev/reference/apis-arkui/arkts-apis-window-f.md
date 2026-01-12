@@ -8,7 +8,9 @@
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
 ## Modules to Import
 
@@ -48,7 +50,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities. |
-| 1300001 | Repeated operation. |
+| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation. |
 | 1300006 | This window context is abnormal. |
@@ -124,7 +126,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities. |
-| 1300001 | Repeated operation. |
+| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation. |
 | 1300006 | This window context is abnormal. |
@@ -187,7 +189,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **Example**
 
@@ -490,7 +492,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                     |
 | ------- | --------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Failed to convert parameter to sourceWindowId; 3. Failed to convert parameter to targetWindowId; 4. Invalid sourceWindowId or targetWindowId. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal.                |
 | 1300003 | This window manager service works abnormally. |
@@ -637,9 +639,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message|
 |----------| ------------------------------ |
-| 401      | Parameter error. Possible cause: Incorrect parameter types. |
+| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -698,7 +700,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |----------| ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -739,9 +741,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.VISIBLE_WINDOW_INFO permission. |
 | 801     | Capability not supported. Function getVisibleWindowInfo can not work correctly due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **Example**
 
@@ -800,8 +802,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID   | Error Message|
 |----------| ------------------------------ |
 | 801      | Capability not supported. function getGlobalWindowMode can not work correctly due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. The parameter format is incorrect. |
 
 **Example**
 ```ts
@@ -916,8 +918,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported.function setStartWindowBackgroundColor can not to work correctly due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
+| 1300016 | Parameter error. Possible cause: Parameter exceeds the allowed length. |
 
 **Example**
 

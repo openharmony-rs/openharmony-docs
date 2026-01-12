@@ -111,8 +111,8 @@ You can use the union of the strings listed in the following table.
 | 'stop'           | Stop the playback. No parameter is required.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | 'playNext'       | Play the next media asset. No parameter is required.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | 'playPrevious'   | Play the previous media asset. No parameter is required.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| 'fastForward'    | Fast-forward. No parameter is required.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| 'rewind'         | Rewind. No parameter is required.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| 'fastForward'    | Fast-forward. For details about the corresponding parameters, see [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| 'rewind'         | Rewind. For details about the corresponding parameters, see [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | 'seek'           | Seek to a playback position. The corresponding parameter is of the number type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | 'setSpeed'       | Set the playback speed. The corresponding parameter is of the number type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | 'setLoopMode'    | Set the loop mode. The corresponding parameter is [LoopMode](arkts-apis-avsession-e.md#loopmode10).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -123,3 +123,26 @@ You can use the union of the strings listed in the following table.
 |'answer' <sup>11+</sup>        | Answer a call. No parameter is required.<br>**Atomic service API**: This API can be used in atomic services since API version 12.     |
 | 'hangUp' <sup>11+</sup>         | The call is disconnecting. No parameter is required.<br>**Atomic service API**: This API can be used in atomic services since API version 12.     |
 |'toggleCallMute' <sup>11+</sup>  | Set the mute status for a call. No parameter is required.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+
+## NoParamCallback<sup>22+</sup>
+
+type NoParamCallback = () => void
+
+Defines a callback function type that takes no parameters.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
+## TwoParamCallback<sup>22+</sup>
+
+type TwoParamCallback\<T, G> = (data1: T, data2: G) => void
+
+Defines a callback type that takes two parameters.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
+**Parameters**
+
+| Name  | Type| Mandatory| Description  |
+|-------|----| ---- |------|
+| data1 | T  | Yes  | Parameter 1.|
+| data2 | G  | Yes  | Parameter 2.|

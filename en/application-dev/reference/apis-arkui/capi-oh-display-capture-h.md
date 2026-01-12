@@ -32,7 +32,7 @@ The file declares the capability to take screenshots.
 
 ### OH_NativeDisplayManager_CaptureScreenPixelmap()
 
-```
+```c
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uint32_t displayId,OH_PixelmapNative **pixelMap)
 ```
 

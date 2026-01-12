@@ -14,7 +14,7 @@ POST、PUT请求的数据体，支持BYTES、FILE、BLOB、CHUNKED类型的数�
 >
 > - 本Class首批接口从API version 12开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## 导入模块
 

@@ -58,20 +58,20 @@
 
     ```javascript
     this.screenCapture.on('stateChange', async (infoType: media.AVScreenCaptureStateCode) => {
-    	switch (infoType) {
+      switch (infoType) {
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STARTED:
-              	console.info("录屏成功开始后会收到的回调");
-              	break;
+                console.info("录屏成功开始后会收到的回调");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_CANCELED:
                 this.screenCapture?.release();
                 this.screenCapture = undefined;
-              	console.info("不允许使用录屏功能");
-              	break;
+                console.info("不允许使用录屏功能");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STOPPED_BY_USER:
                 this.screenCapture?.release();
                 this.screenCapture = undefined;
-              	console.info("通过录屏胶囊结束录屏，底层录制会停止");
-              	break;
+                console.info("通过录屏胶囊结束录屏，底层录制会停止");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_INTERRUPTED_BY_OTHER:
                 console.info("录屏因其他中断而停止，底层录制会停止");
                 break;
@@ -98,7 +98,7 @@
                 console.info("用户账号切换，底层录制会停止");
                 break;
             default:
-              	break;
+                break;
         }
     })
     this.screenCapture.on('error', (err) => {

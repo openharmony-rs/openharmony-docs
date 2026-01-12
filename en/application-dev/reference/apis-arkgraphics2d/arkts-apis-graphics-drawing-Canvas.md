@@ -6,6 +6,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+A carrier that carries the drawn content and drawing status.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -13,8 +15,6 @@
 > - This module uses the physical pixel unit, px.
 >
 > - This module operates under a single-threaded model. The caller needs to manage thread safety and context state transitions.
-
-A carrier that carries the drawn content and drawing status.
 
 > **NOTE**
 >
@@ -799,6 +799,66 @@ class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
     canvas.drawColor(0xff000a0a, drawing.BlendMode.CLEAR);
+  }
+}
+```
+
+## drawVertices<sup>23+</sup>
+
+drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array\<common2D.Point\>, texs: Array\<common2D.Point\> \| null, colors: Array\<number\> \| null, indexCount: number, indices: Array\<number\> \| null, mode: BlendMode): void
+
+Draws a triangle mesh described by the vertex array.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Parameters**
+
+| Name     | Type           | Mandatory| Description                           |
+| ----------- | -------------  | ---- | ------------------------------- |
+| vertexMode   | [VertexMode](arkts-apis-graphics-drawing-e.md#vertexmode23) | Yes  | Connection mode of the vertex to be drawn.|
+| vertexCount   | number         | Yes  | Number of elements in the vertex array. The value is an integer greater than or equal to 3.|
+| positions  | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12)        | Yes  | Array that holds the position of every vertex. The array cannot be null and its length must be equal to the value of **vertexCount**.|
+| texs    | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12) \| null  | Yes  | Array of texture space coordinates corresponding to the vertices. This array can be null, which indicates that the texture space is invalid. If not null, the length of the array must be equal to the value of **vertexCount**.|
+| colors      | Array\<number> \| null | Yes  | Array of colors corresponding to the vertices, which is used for interpolation in triangles. This array can be null, which indicates that the color effect is the default color set by the user. If not null, the length of the array must be equal to the value of **vertexCount**.|
+| indexCount  | number         | Yes  | Number of indices. The value can be **0** or a value greater than or equal to 3. If the value is not **0**, the value must be an integer greater than or equal to 3.|
+| indices  | Array\<number> \| null         | Yes  | Array of vertex indices. The value can be null. In this case, the value of **indexCount** is ignored (an integer greater than or equal to 3 or equal to 0). If not null, the value length must be the same as that of **indexCount**.|
+| mode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | Yes  | Color blend mode.|
+
+**Error codes**
+
+For details about the following error code, see [Drawing and Display Error Codes](errorcode-drawing.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**Example**
+
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext): void {
+    const canvas = context.canvas;
+    let pointsArray = new Array<common2D.Point>();
+    const point1: common2D.Point = { x: 100.0, y: 100.0 };
+    const point2: common2D.Point = { x: 200.0, y: 100.0 };
+    const point3: common2D.Point = { x: 150.0, y: 200.0 };
+    pointsArray.push(point1);
+    pointsArray.push(point2);
+    pointsArray.push(point3);
+    let texsArray = new Array<common2D.Point>();
+    const texs1: common2D.Point = { x: 0.0, y: 0.0 };
+    const texs2: common2D.Point = { x: 1.0, y: 0.0 };
+    const texs3: common2D.Point = { x: 0.5, y: 1.0 };
+    texsArray.push(texs1);
+    texsArray.push(texs2);
+    texsArray.push(texs3);
+    const colors = [0xFFFF0000, 0xFF00FF00, 0xFF0000FF];
+    const indices = [0, 1, 2];
+    canvas.drawVertices(drawing.VertexMode.TRIANGLESSTRIP_VERTEXMODE, 3, pointsArray, texsArray, colors, 3, indices,drawing.BlendMode.SRC);
   }
 }
 ```

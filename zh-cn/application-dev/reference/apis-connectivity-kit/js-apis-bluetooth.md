@@ -22,7 +22,7 @@ import bluetooth from '@ohos.bluetooth';
 ```
 
 
-## bluetooth.enableBluetooth<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.enableBluetooth<sup>(deprecated)</sup>
 
 enableBluetooth(): boolean
 
@@ -48,7 +48,7 @@ let enable : boolean = bluetooth.enableBluetooth();
 ```
 
 
-## bluetooth.disableBluetooth<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.disableBluetooth<sup>(deprecated)</sup>
 
 disableBluetooth(): boolean
 
@@ -74,7 +74,7 @@ let disable : boolean = bluetooth.disableBluetooth();
 ```
 
 
-## bluetooth.getLocalName<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getLocalName<sup>(deprecated)</sup>
 
 getLocalName(): string
 
@@ -152,7 +152,7 @@ let connectionState : bluetooth.ProfileConnectionState = bluetooth.getBtConnecti
 ```
 
 
-## bluetooth.setLocalName<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.setLocalName<sup>(deprecated)</sup>
 
 setLocalName(name: string): boolean
 
@@ -217,7 +217,7 @@ let result : boolean = bluetooth.pairDevice("XX:XX:XX:XX:XX:XX");
 ```
 
 
-## bluetooth.getProfileConnState<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getProfileConnState<sup>(deprecated)</sup>
 
 getProfileConnState(profileId: ProfileId): ProfileConnectionState
 
@@ -249,7 +249,7 @@ let result : bluetooth.ProfileConnectionState = bluetooth.getProfileConnState(bl
 ```
 
 
-## bluetooth.getRemoteDeviceName<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getRemoteDeviceName<sup>(deprecated)</sup>
 
 getRemoteDeviceName(deviceId: string): string
 
@@ -281,7 +281,7 @@ let remoteDeviceName : string = bluetooth.getRemoteDeviceName("XX:XX:XX:XX:XX:XX
 ```
 
 
-## bluetooth.getRemoteDeviceClass<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getRemoteDeviceClass<sup>(deprecated)</sup>
 
 getRemoteDeviceClass(deviceId: string): DeviceClass
 
@@ -313,7 +313,7 @@ let remoteDeviceClass : bluetooth.DeviceClass = bluetooth.getRemoteDeviceClass("
 ```
 
 
-## bluetooth.getPairedDevices<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getPairedDevices<sup>(deprecated)</sup>
 
 getPairedDevices(): Array&lt;string&gt;
 
@@ -374,7 +374,7 @@ let result : boolean = bluetooth.setBluetoothScanMode(bluetooth.ScanMode
 ```
 
 
-## bluetooth.getBluetoothScanMode<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getBluetoothScanMode<sup>(deprecated)</sup>
 
 getBluetoothScanMode(): ScanMode
 
@@ -400,7 +400,7 @@ let scanMode : bluetooth.ScanMode = bluetooth.getBluetoothScanMode();
 ```
 
 
-## bluetooth.startBluetoothDiscovery<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.startBluetoothDiscovery<sup>(deprecated)</sup>
 
 startBluetoothDiscovery(): boolean
 
@@ -431,7 +431,7 @@ let result : boolean = bluetooth.startBluetoothDiscovery();
 ```
 
 
-## bluetooth.stopBluetoothDiscovery<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.stopBluetoothDiscovery<sup>(deprecated)</sup>
 
 stopBluetoothDiscovery(): boolean
 
@@ -457,7 +457,7 @@ let result : boolean = bluetooth.stopBluetoothDiscovery();
 ```
 
 
-## bluetooth.setDevicePairingConfirmation<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.setDevicePairingConfirmation<sup>(deprecated)</sup>
 
 setDevicePairingConfirmation(device: string, accept: boolean): boolean
 
@@ -495,7 +495,7 @@ bluetooth.on("pinRequired", onReceivePinRequiredEvent);
 ```
 
 
-## bluetooth.on('bluetoothDeviceFind')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.on('bluetoothDeviceFind')<sup>(deprecated)</sup>
 
 on(type: 'bluetoothDeviceFind', callback: Callback&lt;Array&lt;string&gt;&gt;): void
 
@@ -529,7 +529,7 @@ bluetooth.on('bluetoothDeviceFind', onReceiveEvent);
 ```
 
 
-## bluetooth.off('bluetoothDeviceFind')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('bluetoothDeviceFind')<sup>(deprecated)</sup>
 
 off(type: 'bluetoothDeviceFind', callback?: Callback&lt;Array&lt;string&gt;&gt;): void
 
@@ -564,7 +564,7 @@ bluetooth.off('bluetoothDeviceFind', onReceiveEvent);
 ```
 
 
-## bluetooth.on('pinRequired')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.on('pinRequired')<sup>(deprecated)</sup>
 
 on(type: 'pinRequired', callback: Callback&lt;PinRequiredParam&gt;): void
 
@@ -598,7 +598,7 @@ bluetooth.on('pinRequired', onReceiveEvent);
 ```
 
 
-## bluetooth.off('pinRequired')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('pinRequired')<sup>(deprecated)</sup>
 
 off(type: 'pinRequired', callback?: Callback&lt;PinRequiredParam&gt;): void
 
@@ -667,7 +667,7 @@ bluetooth.on('bondStateChange', onReceiveEvent);
 ```
 
 
-## bluetooth.off('bondStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('bondStateChange')<sup>(deprecated)</sup>
 
 off(type: 'bondStateChange', callback?: Callback&lt;BondStateParam&gt;): void
 
@@ -702,7 +702,7 @@ bluetooth.off('bondStateChange', onReceiveEvent);
 ```
 
 
-## bluetooth.on('stateChange')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.on('stateChange')<sup>(deprecated)</sup>
 
 on(type: 'stateChange', callback: Callback&lt;BluetoothState&gt;): void
 
@@ -736,7 +736,7 @@ bluetooth.on('stateChange', onReceiveEvent);
 ```
 
 
-## bluetooth.off('stateChange')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('stateChange')<sup>(deprecated)</sup>
 
 off(type: 'stateChange', callback?: Callback&lt;BluetoothState&gt;): void
 
@@ -771,7 +771,7 @@ bluetooth.off('stateChange', onReceiveEvent);
 ```
 
 
-## bluetooth.sppListen<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppListen<sup>(deprecated)</sup>
 
 sppListen(name: string, option: SppOption, callback: AsyncCallback&lt;number&gt;): void
 
@@ -810,7 +810,7 @@ bluetooth.sppListen('server1', sppOption, serverSocket);
 ```
 
 
-## bluetooth.sppAccept<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppAccept<sup>(deprecated)</sup>
 
 sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
 
@@ -892,7 +892,7 @@ bluetooth.sppConnect('XX:XX:XX:XX:XX:XX', sppOption, clientSocket);
 ```
 
 
-## bluetooth.sppCloseServerSocket<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppCloseServerSocket<sup>(deprecated)</sup>
 
 sppCloseServerSocket(socket: number): void
 
@@ -925,7 +925,7 @@ bluetooth.sppCloseServerSocket(serverNumber);
 ```
 
 
-## bluetooth.sppCloseClientSocket<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppCloseClientSocket<sup>(deprecated)</sup>
 
 sppCloseClientSocket(socket: number): void
 
@@ -959,7 +959,7 @@ bluetooth.sppCloseClientSocket(clientNumber);
 ```
 
 
-## bluetooth.sppWrite<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppWrite<sup>(deprecated)</sup>
 
 sppWrite(clientSocket: number, data: ArrayBuffer): boolean
 
@@ -1008,7 +1008,7 @@ if (ret) {
 ```
 
 
-## bluetooth.on('sppRead')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.on('sppRead')<sup>(deprecated)</sup>
 
 on(type: 'sppRead', clientSocket: number, callback: Callback&lt;ArrayBuffer&gt;): void
 
@@ -1052,7 +1052,7 @@ bluetooth.on('sppRead', clientNumber, dataRead);
 ```
 
 
-## bluetooth.off('sppRead')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('sppRead')<sup>(deprecated)</sup>
 
 off(type: 'sppRead', clientSocket: number, callback?: Callback&lt;ArrayBuffer&gt;): void
 
@@ -1092,7 +1092,7 @@ bluetooth.off('sppRead', clientNumber);
 ```
 
 
-## bluetooth.getProfile<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getProfile<sup>(deprecated)</sup>
 
 getProfile(profileId: ProfileId): A2dpSourceProfile | HandsFreeAudioGatewayProfile
 
@@ -1350,7 +1350,7 @@ bluetooth.BLE.off('BLEDeviceFind', onReceiveEvent);
 profile基类。
 
 
-### getConnectionDevices<sup>8+</sup><sup>(deprecated)</sup>
+### getConnectionDevices<sup>(deprecated)</sup>
 
 getConnectionDevices(): Array&lt;string&gt;
 
@@ -1376,7 +1376,7 @@ let a2dpSrc : bluetooth.A2dpSourceProfile = bluetooth.getProfile(bluetooth.Profi
 let retArray : Array<string> = a2dpSrc.getConnectionDevices();
 ```
 
-### getDeviceState<sup>8+</sup><sup>(deprecated)</sup>
+### getDeviceState<sup>(deprecated)</sup>
 
 getDeviceState(device: string): ProfileConnectionState
 
@@ -1413,7 +1413,7 @@ let ret : bluetooth.ProfileConnectionState = a2dpSrc.getDeviceState('XX:XX:XX:XX
 使用A2dpSourceProfile方法之前需要创建该类的实例进行操作，通过getProfile()方法构造此实例。
 
 
-### connect<sup>8+</sup><sup>(deprecated)</sup>
+### connect<sup>(deprecated)</sup>
 
 connect(device: string): boolean
 
@@ -1446,7 +1446,7 @@ let ret : boolean = a2dpSrc.connect('XX:XX:XX:XX:XX:XX');
 ```
 
 
-### disconnect<sup>8+</sup><sup>(deprecated)</sup>
+### disconnect<sup>(deprecated)</sup>
 
 disconnect(device: string): boolean
 
@@ -1479,7 +1479,7 @@ let ret : boolean = a2dpSrc.disconnect('XX:XX:XX:XX:XX:XX');
 ```
 
 
-### on('connectionStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+### on('connectionStateChange')<sup>(deprecated)</sup>
 
 on(type: 'connectionStateChange', callback: Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt;): void
 
@@ -1512,7 +1512,7 @@ a2dpSrc.on('connectionStateChange', onReceiveEvent);
 ```
 
 
-### off('connectionStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+### off('connectionStateChange')<sup>(deprecated)</sup>
 
 off(type: 'connectionStateChange', callback?: Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt;): void
 
@@ -1546,7 +1546,7 @@ a2dpSrc.off('connectionStateChange', onReceiveEvent);
 ```
 
 
-### getPlayingState<sup>8+</sup><sup>(deprecated)</sup>
+### getPlayingState<sup>(deprecated)</sup>
 
 getPlayingState(device: string): PlayingState
 
@@ -1582,14 +1582,14 @@ let state : bluetooth.PlayingState = a2dpSrc.getPlayingState('XX:XX:XX:XX:XX:XX'
 使用HandsFreeAudioGatewayProfile方法之前需要创建该类的实例进行操作，通过getProfile()方法构造此实例。
 
 
-### connect<sup>8+</sup><sup>(deprecated)</sup>
+### connect<sup>(deprecated)</sup>
 
 connect(device: string): boolean
 
 连接设备的HFP服务。
 
 > **说明：**<br/>
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[bluetoothManager.HandsFreeAudioGatewayProfile.connect](js-apis-bluetoothManager.md#connect)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[bluetoothManager.HandsFreeAudioGatewayProfile.connect](js-apis-bluetoothManager.md#connectdeprecated-1)替代。
 
 **需要权限**：ohos.permission.DISCOVER_BLUETOOTH
 
@@ -1616,7 +1616,7 @@ let ret : boolean = hfpAg.connect('XX:XX:XX:XX:XX:XX');
 ```
 
 
-### disconnect<sup>8+</sup><sup>(deprecated)</sup>
+### disconnect<sup>(deprecated)</sup>
 
 disconnect(device: string): boolean
 
@@ -1650,7 +1650,7 @@ let ret : boolean = hfpAg.disconnect('XX:XX:XX:XX:XX:XX');
 ```
 
 
-### on('connectionStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+### on('connectionStateChange')<sup>(deprecated)</sup>
 
 on(type: 'connectionStateChange', callback: Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt;): void
 
@@ -1684,7 +1684,7 @@ hfpAg.on('connectionStateChange', onReceiveEvent);
 ```
 
 
-### off('connectionStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+### off('connectionStateChange')<sup>(deprecated)</sup>
 
 off(type: 'connectionStateChange', callback?: Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt;): void
 

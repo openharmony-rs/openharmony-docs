@@ -3,14 +3,14 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 导航组件，默认提供点击响应处理，不需要开发者自定义点击事件逻辑。
 
 > **说明：**
 >
-> 从API version 13 开始，该组件不再维护，推荐使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)配合navDestination属性进行页面路由。
+> 从API version 13开始，该组件不再维护，推荐使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)配合navDestination属性进行页面路由。
 >
 > 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -28,19 +28,27 @@
 
 ## 接口
 
-### NavRouter
+### NavRouter<sup>(deprecated)</sup>
 
 NavRouter()
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 13开始废弃，建议使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)和[navDestination](ts-basic-components-navigation.md#navdestination10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### NavRouter<sup>10+</sup>
+### NavRouter<sup>(deprecated)</sup>
 
 NavRouter(value: RouteInfo)
 
 提供路由信息，指定点击NavRouter时，要跳转的NavDestination页面。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API version 13开始废弃，建议使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)和[navDestination](ts-basic-components-navigation.md#navdestination10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -50,17 +58,21 @@ NavRouter(value: RouteInfo)
 
 | 参数名     | 类型                                | 必填   | 说明          |
 | ------- | ----------------------------------- | ---- | ------------- |
-| value   | [RouteInfo](#routeinfo10对象说明) | 是    | 路由信息。 |
+| value   | [RouteInfo](#routeinfodeprecated对象说明) | 是    | 路由信息。 |
 
 ## 属性
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
 
-### mode<sup>10+</sup>
+### mode<sup>(deprecated)</sup>
 
 mode(mode: NavRouteMode)
 
 设置指定点击NavRouter跳转到NavDestination页面时，使用的路由模式。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API version 13开始废弃，无替代接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -70,9 +82,13 @@ mode(mode: NavRouteMode)
 
 | 参数名                           | 类型                                     | 必填                                   | 说明                                       |
 | ----------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| mode                  | [NavRouteMode](#navroutemode10枚举说明)                                  | 是                                 | 指定点击NavRouter跳转到NavDestination页面时，使用的路由模式。<br/>默认值：NavRouteMode.PUSH_WITH_RECREATE |
+| mode                  | [NavRouteMode](#navroutemodedeprecated枚举说明)                                  | 是                                 | 指定点击NavRouter跳转到NavDestination页面时，使用的路由模式。<br/>默认值：NavRouteMode.PUSH_WITH_RECREATE |
 
-## RouteInfo<sup>10+</sup>对象说明
+## RouteInfo<sup>(deprecated)</sup>对象说明
+
+> **说明：**
+>
+> 从API version 10开始支持，从API version 13开始废弃，建议使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)和[navDestination](ts-basic-components-navigation.md#navdestination10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -83,7 +99,11 @@ mode(mode: NavRouteMode)
 | name             | string            | 否   | 否   | 点击NavRouter跳转到的NavDestination页面的名称。 |
 | param             | unknown            | 否   | 是   | 点击NavRouter跳转到NavDestination页面时，传递的参数。 |
 
-## NavRouteMode<sup>10+</sup>枚举说明
+## NavRouteMode<sup>(deprecated)</sup>枚举说明
+
+> **说明：**
+>
+> 从API version 10开始支持，从API version 13开始废弃，建议使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)和[navDestination](ts-basic-components-navigation.md#navdestination10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -97,11 +117,15 @@ mode(mode: NavRouteMode)
 
 ## 事件
 
-### onStateChange
+### onStateChange<sup>(deprecated)</sup>
 
 onStateChange(callback: (isActivated: boolean) => void)
 
 组件激活状态切换时触发该回调。开发者点击激活NavRouter，加载对应的NavDestination子组件时，回调onStateChange(true)。NavRouter对应的NavDestination子组件不再显示时，回调onStateChange(false)。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 13开始废弃，无替代接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

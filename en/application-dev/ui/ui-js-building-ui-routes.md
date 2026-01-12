@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-An application generally consists of more than one page. For example, a music application may come with a music list page and a playback page. You need to link these pages through the page router to implement redirection as required. For example, in a music application, a user taps a song on a music list page to jump to the playback page of the song.
+An application generally consists of more than one page. For example, a music application may come with a music list page and a playback page. You need to link these pages through the page router to implement redirection as required.
 
 
 The page router finds the target page based on the page URI. The following describes how to implement redirection between two pages:
@@ -21,7 +21,7 @@ The page router finds the target page based on the page URI. The following descr
 
 ## Building the Page Layout
 
-The **index** and **detail** pages each contains a **Text** component that specifies the current page, and a **Button** component that implements the switching between two pages. Example code in **.hml** files is as follows:
+The **index** and **detail** pages each contains a **\<text>** component that specifies the current page, and a **\<button>** component that implements the switching between two pages. Example code in **.hml** files is as follows:
 
 ```html
 <!-- index.hml -->
@@ -42,7 +42,7 @@ The **index** and **detail** pages each contains a **Text** component that speci
 
 ## Setting Page Styles
 
-Set styles for the **index** and **detail** pages. Center the **Text** and **Button** components and space the two components with 50 pixels. The CSS code for the two pages is as follows:
+Set styles for the **index** and **detail** pages. Center the **\<text>** and **\<button>** components and space the two components with 50 pixels. The CSS code for the two pages is as follows:
 
 ```css
 /* index.css */
@@ -64,7 +64,7 @@ Set styles for the **index** and **detail** pages. Center the **Text** and **But
 
 ## Implementing Redirection
 
-To make the **launch** method of the **Button** component take effect, the redirection logic needs to be implemented in the **.js** file of the page. Call **router.push()** to add the page URI to the route stack, that is, to jump to the page specified by the URI. You need to import the **router** module before calling the **router** method. The sample code is as follows:
+To make the **launch** method of the **\<button>** component take effect, the redirection logic needs to be implemented in the **.js** file of the page. Call **router.push()** to add the page URI to the route stack, that is, to jump to the page specified by the URI. You need to import the **router** module before calling the **router** method. The sample code is as follows:
 
 ```js
 // index.js

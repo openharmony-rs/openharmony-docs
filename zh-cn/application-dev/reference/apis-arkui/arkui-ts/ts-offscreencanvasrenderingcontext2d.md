@@ -59,39 +59,24 @@ constructor(width: number, height: number, settings?: RenderingContextSettings, 
 | settings | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | 否    | 用来配置OffscreenCanvasRenderingContext2D对象的参数，见RenderingContextSettings接口描述。<br>异常值undefined按[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)的默认值处理。<br>默认值：null |
 | unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT|
 
-## 属性
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| [fillStyle](#fillstyle) | string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | 否 | 否 | 指定绘制的填充色，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>-&nbsp;类型为string时，表示设置填充区域的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置填充区域的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值NaN和Infinity按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [lineWidth](#linewidth)                  | number                                   | 否 | 否 | 设置绘制线条的宽度，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>默认值：1(px)<br/>默认单位：vp<br/>lineWidth取值不支持0和负数，0、负数和NaN按默认值处理，Infinity会导致和lineWidth属性相关的接口无法绘制。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [strokeStyle](#strokestyle)              | string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | 否 | 否 | 设置线条的颜色，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>-&nbsp;类型为string时，表示设置线条使用的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置线条使用的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值NaN和Infinity按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [lineCap](#linecap) | [CanvasLineCap](ts-canvasrenderingcontext2d.md#canvaslinecap类型说明) | 否 | 否 | 指定线端点的样式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>可选值为：<br/>-&nbsp;'butt'：线条两端为平行线，不额外扩展。<br/>-&nbsp;'round'：在线条两端延伸半个圆，直径等于线宽。<br/>-&nbsp;'square'：在线条两端延伸一个矩形，宽度等于线宽的一半，高度等于线宽。<br/>默认值：'butt'<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [lineJoin](#linejoin) | [CanvasLineJoin](ts-canvasrenderingcontext2d.md#canvaslinejoin类型说明) | 否 | 否 | 指定线段间相交的交点样式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>可选值为：<br/>-&nbsp;'round'：在线段相连处绘制一个扇形，扇形的圆角半径是线段的宽度。<br/>-&nbsp;'bevel'：在线段相连处使用三角形为底填充，&nbsp;每个部分矩形拐角独立。<br/>-&nbsp;'miter'：在相连部分的外边缘处进行延伸，使其相交于一点，形成一个菱形区域，该属性可以通过设置miterLimit属性展现效果。<br/>默认值：'miter'<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [miterLimit](#miterlimit) | number | 否 | 否 | 设置斜接面限制值，该值指定了线条相交处内角和外角的距离，仅当设置了lineJoin为miter才生效，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>默认值：10px<br/>单位：px。 <br/>miterLimit取值不支持0和负数，0、负数和NaN按默认值处理，Infinity会导致和miterLimit属性相关的接口无法绘制。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [font](#font) | string | 否 | 否 | 设置文本绘制中的字体样式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>语法：ctx.font&nbsp;=&nbsp;'font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family'<br/>-&nbsp;font-style(可选)，用于指定字体样式，支持如下几种样式：'normal','italic'。<br/>-&nbsp;font-weight(可选)，用于指定字体的粗细，支持如下几种类型：'normal',&nbsp;'bold',&nbsp;'bolder',&nbsp;'lighter',&nbsp;100,&nbsp;200,&nbsp;300,&nbsp;400,&nbsp;500,&nbsp;600,&nbsp;700,&nbsp;800,&nbsp;900。<br/>-&nbsp;font-size(可选)，指定字号和行高，单位支持px、vp。使用时需要添加单位。<br/>-&nbsp;font-family(可选)，指定字体系列，支持如下几种类型：'sans-serif',&nbsp;'serif',&nbsp;'monospace'。API version 20及以后支持注册过的自定义字体（只能在主线程使用，不支持在worker线程中使用；DevEco Studio的预览器不支持显示自定义字体），具体使用方法参考自定义字体[font](#font)示例。<br/>默认值：'normal normal 14px sans-serif'<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [textAlign](#textalign) | [CanvasTextAlign](ts-canvasrenderingcontext2d.md#canvastextalign类型说明) | 否 | 否 | 设置文本绘制中的文本对齐方式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>可选值为：<br/>-&nbsp;'left'：文本左对齐。<br/>-&nbsp;'right'：文本右对齐。<br/>-&nbsp;'center'：文本居中对齐。<br/>-&nbsp;'start'：文本对齐界线开始的地方。<br/>-&nbsp;'end'：文本对齐界线结束的地方。<br/> **说明：**<br/>&nbsp;ltr布局模式下'start'和'left'一致，rtl布局模式下'start'和'right'一致。<br/>默认值：'left'<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [textBaseline](#textbaseline)            | [CanvasTextBaseline](ts-canvasrenderingcontext2d.md#canvastextbaseline类型说明) | 否 | 否 | 设置文本绘制中的水平对齐方式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>可选值为：<br/>-&nbsp;'alphabetic'：文本基线是标准的字母基线。<br/>-&nbsp;'top'：文本基线在文本块的顶部。<br/>-&nbsp;'hanging'：文本基线是悬挂基线。<br/>-&nbsp;'middle'：文本基线在文本块的中间。<br/>-&nbsp;'ideographic'：文字基线是表意字基线；如果字符本身超出了alphabetic基线，那么ideographic基线位置在字符本身的底部。<br/>-&nbsp;'bottom'：文本基线在文本块的底部。&nbsp;与ideographic基线的区别在于ideographic基线不需要考虑下行字母。<br/>默认值：'alphabetic'<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [globalAlpha](#globalalpha) | number | 否 | 否 | 设置透明度，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>范围为[0.0, 1.0]，0.0为完全透明，1.0为完全不透明。若给定值小于0.0，则取值0.0；若给定值大于1.0，则取值1.0。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制。API version 18及以后，设置NaN或Infinity时当前接口不生效，其他传入有效参数的绘制方法正常绘制。<br/>默认值：1.0<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [lineDashOffset](#linedashoffset) | number | 否 | 否 | 设置画布的虚线偏移量，精度为float，，仅当设置setLineDash时属性才生效，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>默认值：0.0<br/>单位：vp。<br/>异常值NaN和Infinity按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [globalCompositeOperation](#globalcompositeoperation) | string | 否 | 否 | 设置合成操作的方式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>类型字段可选值有'source-over'，'source-atop'，'source-in'，'source-out'，'destination-over'，'destination-atop'，'destination-in'，'destination-out'，'lighter'，'copy'，'xor'。<br/>-&nbsp;默认值：'source-over'<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [shadowBlur](#shadowblur)                | number | 否 | 否 | 设置绘制阴影时的模糊级别，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>值越大越模糊，精度为float，取值范围≥0。   <br/>默认值：0.0<br/>单位：px。<br/>shadowBlur取值不支持负数，负数、NaN和Infinity按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [shadowColor](#shadowcolor)              | string | 否 | 否 | 设置绘制阴影时的阴影颜色，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>默认值：透明黑色<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [shadowOffsetX](#shadowoffsetx)          | number | 否 | 否 | 设置绘制阴影时和原有对象的水平偏移值，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>默认值：0.0<br/>默认单位：vp<br/>异常值NaN和Infinity按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [shadowOffsetY](#shadowoffsety)          | number | 否 | 否 | 设置绘制阴影时和原有对象的垂直偏移值，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>默认值：0.0<br/>默认单位：vp<br/>异常值NaN和Infinity按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [imageSmoothingEnabled](#imagesmoothingenabled) | boolean | 否 | 否 | 用于设置绘制图片时是否进行图像平滑度调整，true为启用，false为不启用，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>默认值：true<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [imageSmoothingQuality](#imagesmoothingquality) | [ImageSmoothingQuality](ts-canvasrenderingcontext2d.md#imagesmoothingquality类型说明) | 否 | 否 | imageSmoothingEnabled为true时，用于设置图像平滑度，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>可选值为：<br/>- 'low'：低画质<br/>- 'medium'：中画质<br/>- 'high'：高画质。<br/>默认值："low"<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [direction](#direction)                  | [CanvasDirection](ts-canvasrenderingcontext2d.md#canvasdirection类型说明) | 否 | 否 | 用于设置绘制文字时使用的文字方向，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>可选值为：<br/>- 'inherit'：继承canvas组件通用属性已设定的文本方向，若canvas组件未设置direction属性，则跟随系统文字方向。<br/>- 'ltr'：从左往右。<br/>- 'rtl'：从右往左。<br/>默认值："inherit"<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [filter](#filter)                        | string | 否 | 否 | 用于设置图像的滤镜，可以组合任意数量的滤镜，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>支持的滤镜效果如下：<br/>- 'none': 无滤镜效果。<br/>- 'blur(\<length>)'：给图像设置高斯模糊，取值范围≥0，支持单位px、vp、rem，默认值：blur(0px)。<br/>- 'brightness([\<number>\|\<percentage>])'：给图片应用一种线性乘法，使其看起来更亮或更暗，支持数字和百分比参数，取值范围≥0，默认值：brightness(1)。<br/>- 'contrast([\<number>\|\<percentage>])'：调整图像的对比度，支持数字和百分比参数，取值范围≥0，默认值：contrast(1)。<br/>- 'grayscale([\<number>\|\<percentage>])'：将图像转换为灰度图像，支持数字和百分比参数，取值范围[0, 1]，默认值：grayscale(0)。<br/>- 'hue-rotate(\<angle>)'：给图像应用色相旋转，取值范围0deg-360deg，默认值：hue-rotate(0deg)。<br/>- 'invert([\<number>\|\<percentage>])'：反转输入图像，支持数字和百分比参数，取值范围[0, 1]，默认值：invert(0)。<br/>- 'opacity([\<number>\|\<percentage>])'：转化图像的透明程度，支持数字和百分比参数，取值范围[0, 1]，默认值：opacity(1)。<br/>- 'saturate([\<number>\|\<percentage>])'：转换图像饱和度，支持数字和百分比参数，取值范围≥0，默认值：saturate(1)。<br/>- 'sepia([\<number>\|\<percentage>])'：将图像转换为深褐色，支持数字和百分比参数，取值范围[0, 1]，默认值：sepia(0)。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| [letterSpacing<sup>18+</sup>](#letterspacing18)                  | string&nbsp;\| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 否 | 用于指定绘制文本时字母之间的间距，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。<br/>当使用LengthMetrics时：<br/>字间距按照指定的单位设置；<br/>不支持FP、PERCENT和LPX（按无效值处理）；<br/>支持负数和小数，设为小数时字间距不四舍五入。<br/>当使用string时：<br/>不支持设置百分比（按无效值处理）；<br/>支持负数和小数，设为小数时字间距不四舍五入；<br/>若letterSpacing的赋值未指定单位（例如：letterSpacing='10'），且未指定LengthMetricsUnit时，默认单位设置为vp；<br/>指定LengthMetricsUnit为px时，默认单位设置为px；<br/>当letterSpacing的赋值指定单位时（例如：letterSpacing='10vp'），字间距按照指定的单位设置。<br/>默认值：0（输入无效值时，字间距设为默认值）<br/>注：推荐使用LengthMetrics，性能更好。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+## 属性            
 
 > **说明：**
 > fillStyle、shadowColor与 strokeStyle 中string类型格式为 'rgb(255, 255, 255)'，'rgba(255, 255, 255, 1.0)'，'\#FFFFFF'。
 
-
 ### fillStyle
+
+指定绘制的填充色，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | 否 | 否 | <br/>-&nbsp;类型为string时，表示设置填充区域的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置填充区域的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值NaN和Infinity按默认值处理。<br/> |
 
 ```ts
 // xxx.ets
@@ -160,6 +145,18 @@ struct FillStyleExample {
 
 ### lineWidth
 
+设置绘制线条的宽度，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | 否 | 否 | 默认值：1（px）<br/>默认单位：vp<br/>lineWidth取值不支持0和负数，0、负数和NaN按默认值处理，Infinity会导致和lineWidth属性相关的接口无法绘制。 |
+
 ```ts
 // xxx.ets
 @Entry
@@ -194,6 +191,18 @@ struct LineWidthExample {
 
 
 ### strokeStyle
+
+设置线条的颜色，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | 否 | 否 | <br/>-&nbsp;类型为string时，表示设置线条使用的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置线条使用的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值NaN和Infinity按默认值处理。<br/> |
 
 ```ts
 // xxx.ets
@@ -264,6 +273,18 @@ struct StrokeStyleExample {
 
 ### lineCap
 
+指定线端点的样式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| [CanvasLineCap](ts-canvasrenderingcontext2d.md#canvaslinecap类型说明) | 否 | 否 | 默认值：'butt' |
+
 ```ts
 // xxx.ets
 @Entry
@@ -302,6 +323,18 @@ struct LineCapExample {
 
 
 ### lineJoin
+
+指定线段间相交的交点样式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| [CanvasLineJoin](ts-canvasrenderingcontext2d.md#canvaslinejoin类型说明) | 否 | 否 | 默认值：'miter' |
 
 ```ts
 // xxx.ets
@@ -343,6 +376,18 @@ struct LineJoinExample {
 
 ### miterLimit
 
+设置斜接面限制值，该值指定了线条相交处内角和外角的距离，仅当设置了lineJoin为miter才生效，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | 否 | 否 | 默认值：10px<br/>单位：px。 <br/>miterLimit取值不支持0和负数，0、负数和NaN按默认值处理，Infinity会导致和miterLimit属性相关的接口无法绘制。 |
+
 ```ts
 // xxx.ets
 @Entry
@@ -382,6 +427,20 @@ struct MiterLimit {
 
 
 ### font
+
+设置文本绘制中的字体样式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。API version 20及以后支持注册过的自定义字体（只能在主线程使用，不支持在worker线程中使用；DevEco Studio的预览器不支持显示自定义字体）。
+
+语法：ctx.font&nbsp;=&nbsp;'font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family'<br/>-&nbsp;font-style(可选)，用于指定字体样式，支持如下几种样式：'normal','italic'。<br/>-&nbsp;font-weight(可选)，用于指定字体的粗细，支持如下几种类型：'normal',&nbsp;'bold',&nbsp;'bolder',&nbsp;'lighter',&nbsp;100,&nbsp;200,&nbsp;300,&nbsp;400,&nbsp;500,&nbsp;600,&nbsp;700,&nbsp;800,&nbsp;900。<br/>-&nbsp;font-size(可选)，指定字号和行高，单位支持px、vp。使用时需要添加单位。<br/>-&nbsp;font-family(可选)，指定字体系列，支持如下几种类型：'sans-serif',&nbsp;'serif',&nbsp;'monospace'。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| string | 否 | 否 | 默认值：'normal normal 14px sans-serif' |
 
 > **说明：**
 >
@@ -430,6 +489,18 @@ struct FontDemo {
 ![font](figures/offCanvasFont.jpeg)
 
 ### textAlign
+
+设置文本绘制中的文本对齐方式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| [CanvasTextAlign](ts-canvasrenderingcontext2d.md#canvastextalign类型说明) | 否 | 否 | ltr布局模式下'start'和'left'一致，rtl布局模式下'start'和'right'一致。<br/>默认值：'left' |
 
 ```ts
 // xxx.ets
@@ -485,6 +556,18 @@ struct CanvasExample {
 
 ### textBaseline
 
+设置文本绘制中的水平对齐方式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| [CanvasTextBaseline](ts-canvasrenderingcontext2d.md#canvastextbaseline类型说明) | 否 | 否 | 默认值：'alphabetic' |
+
 ```ts
 // xxx.ets
 @Entry
@@ -539,6 +622,18 @@ struct TextBaseline {
 
 ### globalAlpha
 
+设置透明度，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | 否 | 否 | 范围为[0.0, 1.0]，0.0为完全透明，1.0为完全不透明。若给定值小于0.0，则取值0.0；若给定值大于1.0，则取值1.0。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制。API version 18及以后，设置NaN或Infinity时当前接口不生效，其他传入有效参数的绘制方法正常绘制。<br/>默认值：1.0 |
+
 ```ts
 // xxx.ets
 @Entry
@@ -577,6 +672,18 @@ struct GlobalAlpha {
 
 ### lineDashOffset
 
+设置画布的虚线偏移量，精度为float，仅当设置setLineDash时属性才生效，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | 否 | 否 | 默认值：0.0<br/>单位：vp<br/>异常值NaN和Infinity按默认值处理。 |
+
 ```ts
 // xxx.ets
 @Entry
@@ -614,6 +721,18 @@ struct LineDashOffset {
 
 ### globalCompositeOperation
 
+设置合成操作的方式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| string | 否 | 否 | 类型字段可选值有'source-over'，'source-atop'，'source-in'，'source-out'，'destination-over'，'destination-atop'，'destination-in'，'destination-out'，'lighter'，'copy'，'xor'。<br/>默认值：'source-over' |
+
 | 名称               | 描述                       |
 | ---------------- | ------------------------ |
 | source-over      | 在现有绘制内容上显示新绘制内容，属于默认值。   |
@@ -628,38 +747,161 @@ struct LineDashOffset {
 | copy             | 显示新绘制内容而忽略现有绘制内容。        |
 | xor              | 使用异或操作对新绘制内容与现有绘制内容进行融合。 |
 
-```ts
+``` ts
 // xxx.ets
 @Entry
 @Component
 struct GlobalCompositeOperation {
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
-  
+  private context1: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context2: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context3: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context4: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context5: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context6: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Canvas(this.context)
-        .width('100%')
-        .height('100%')
-        .backgroundColor('#ffff00')
-        .onReady(() =>{
-          let offContext = this.offCanvas.getContext("2d", this.settings)
-          offContext.fillStyle = 'rgb(255,0,0)'
-          offContext.fillRect(20, 20, 50, 50)
-          // 设置globalCompositeOperation属性为source-over
-          offContext.globalCompositeOperation = 'source-over'
-          offContext.fillStyle = 'rgb(0,0,255)'
-          offContext.fillRect(50, 50, 50, 50)
-          offContext.fillStyle = 'rgb(255,0,0)'
-          offContext.fillRect(120, 20, 50, 50)
-          // 设置globalCompositeOperation属性为destination-over
-          offContext.globalCompositeOperation = 'destination-over'
-          offContext.fillStyle = 'rgb(0,0,255)'
-          offContext.fillRect(150, 50, 50, 50)
-          let image = this.offCanvas.transferToImageBitmap()
-          this.context.transferFromImageBitmap(image)
-      })
+    Column() {
+      Row() {
+        // 1. source-over：新图形覆盖在原有图形上方（默认行为）
+        Canvas(this.context1)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx1 = this.context1;
+            let offContext = new OffscreenCanvasRenderingContext2D(ctx1.width, ctx1.height, this.settings);
+            offContext.fillStyle = 'rgb(39,135,217)';
+            offContext.fillRect(25, 25, 75, 75); // 原有图形
+            offContext.globalCompositeOperation = 'source-over'; // 默认值，可省略
+            offContext.fillStyle = 'rgb(23,169,141)';
+            offContext.fillRect(75, 75, 75, 75); // 新图形覆盖
+            let image = offContext.transferToImageBitmap();
+            this.context1.transferFromImageBitmap(image);
+          })
+        // 2. destination-out：新图形擦除原有图形（橡皮擦核心逻辑）
+        Canvas(this.context2)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx2 = this.context2;
+            let offContext = new OffscreenCanvasRenderingContext2D(ctx2.width, ctx2.height, this.settings);
+            // 先绘制背景
+            offContext.fillStyle = 'rgb(39,135,217)';
+            offContext.fillRect(0, 0, ctx2.width, ctx2.height);
+            // 设置合成模式为擦除
+            offContext.globalCompositeOperation = 'destination-out';
+            // 绘制圆形作为橡皮擦
+            offContext.beginPath();
+            offContext.arc(ctx2.width / 2, ctx2.height / 2, 60, 0, Math.PI * 2);
+            offContext.fill(); // 擦除圆形区域的背景
+            let image = offContext.transferToImageBitmap();
+            this.context2.transferFromImageBitmap(image);
+          })
+      }
+      .height('30%')
+
+      Row() {
+        // 3. source-in：仅保留新图形与原有图形重叠的部分（裁剪或蒙版）
+        Canvas(this.context3)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx3 = this.context3;
+            let offContext = new OffscreenCanvasRenderingContext2D(ctx3.width, ctx3.height, this.settings);
+            // 先绘制原有图形（圆形蒙版）
+            offContext.beginPath();
+            offContext.arc(ctx3.width / 2, ctx3.height / 2, 80, 0, Math.PI * 2);
+            offContext.fillStyle = '#fff';
+            offContext.fill();
+            // 设置合成模式
+            offContext.globalCompositeOperation = 'source-in';
+            // 绘制新图形（渐变矩形）
+            const gradient = offContext.createLinearGradient(0, 0, ctx3.width, ctx3.height);
+            gradient.addColorStop(0, 'rgb(23,169,141)');
+            gradient.addColorStop(1, 'rgb(39,135,217)');
+            offContext.fillStyle = gradient;
+            offContext.fillRect(0, 0, 200, 200); // 仅圆形区域显示渐变
+            let image = offContext.transferToImageBitmap();
+            this.context3.transferFromImageBitmap(image);
+          })
+        // 4. lighter：新图形与原有图形叠加（亮度相加，滤色效果）
+        Canvas(this.context4)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx4 = this.context4;
+            let offContext = new OffscreenCanvasRenderingContext2D(ctx4.width, ctx4.height, this.settings);
+            // 原有图形（半透明红色圆）
+            offContext.beginPath();
+            offContext.arc(70, 100, 50, 0, Math.PI * 2);
+            offContext.fillStyle = 'rgba(234, 67, 53, 0.7)';
+            offContext.fill();
+            // 设置合成模式
+            offContext.globalCompositeOperation = 'lighter';
+            // 新图形（半透明蓝色圆）
+            offContext.beginPath();
+            offContext.arc(110, 100, 50, 0, Math.PI * 2);
+            offContext.fillStyle = 'rgba(66, 133, 244, 0.7)';
+            offContext.fill(); // 重叠区域变成紫色（亮度叠加）
+            let image = offContext.transferToImageBitmap();
+            this.context4.transferFromImageBitmap(image);
+          })
+      }
+      .height('30%')
+
+      Row() {
+        // 5. destination-atop：保留原有图形与新图形重叠的部分，移除其他区域
+        Canvas(this.context5)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx5 = this.context5;
+            let offContext = new OffscreenCanvasRenderingContext2D(ctx5.width, ctx5.height, this.settings);
+            // 原有图形（绿色矩形）
+            offContext.fillStyle = 'rgb(23,169,141)';
+            offContext.fillRect(0, 0, ctx5.width, ctx5.height);
+            // 设置合成模式
+            offContext.globalCompositeOperation = 'destination-atop';
+            // 新图形（小圆形）
+            offContext.beginPath();
+            offContext.arc(ctx5.width / 2, ctx5.height / 2, 60, 0, Math.PI * 2);
+            offContext.fillStyle = '#000';
+            offContext.fill(); // 仅矩形与圆形重叠的部分保留
+            let image = offContext.transferToImageBitmap();
+            this.context5.transferFromImageBitmap(image);
+          })
+        // 6. 文字蒙版（“source-in”的高级用法）
+        Canvas(this.context6)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx6 = this.context6;
+            let offContext = new OffscreenCanvasRenderingContext2D(ctx6.width, ctx6.height, this.settings);
+            // 先绘制文字（作为蒙版）
+            offContext.font = 'bold 40vp';
+            offContext.textAlign = 'center';
+            offContext.textBaseline = 'middle';
+            offContext.fillText('CANVAS', ctx6.width / 2, ctx6.height / 2);
+            // 设置合成模式
+            offContext.globalCompositeOperation = 'source-in';
+            // 绘制渐变背景（仅文字区域显示）
+            let textGradient = offContext.createLinearGradient(50, 0, 300, 100);
+            textGradient.addColorStop(0.0, 'rgb(39,135,217)');
+            textGradient.addColorStop(0.5, 'rgb(255,238,240)');
+            textGradient.addColorStop(1.0, 'rgb(23,169,141)');
+            offContext.fillStyle = textGradient;
+            offContext.fillRect(0, 0, 200, 200); // 渐变仅填充文字区域
+            let image = offContext.transferToImageBitmap();
+            this.context6.transferFromImageBitmap(image);
+          })
+      }
+      .height('30%')
     }
     .width('100%')
     .height('100%')
@@ -671,6 +913,18 @@ struct GlobalCompositeOperation {
 
 
 ### shadowBlur
+
+设置绘制阴影时的模糊级别，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | 否 | 否 | 值越大越模糊，精度为float，取值范围≥0。<br/>默认值：0.0<br/>单位：px<br/>shadowBlur取值不支持负数，负数、NaN和Infinity按默认值处理。 |
 
 ```ts
 // xxx.ets
@@ -709,6 +963,18 @@ struct ShadowBlur {
 
 ### shadowColor
 
+设置绘制阴影时的阴影颜色，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| string | 否 | 否 | 颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>默认值：透明黑色 |
+
 ```ts
 // xxx.ets
 @Entry
@@ -745,6 +1011,18 @@ struct ShadowColor {
 
 
 ### shadowOffsetX
+
+设置绘制阴影时和原有对象的水平偏移值，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | 否 | 否 | 默认值：0.0<br/>默认单位：vp<br/>异常值NaN和Infinity按默认值处理。 |
 
 ```ts
 // xxx.ets
@@ -784,6 +1062,18 @@ struct ShadowOffsetX {
 
 ### shadowOffsetY
 
+设置绘制阴影时和原有对象的垂直偏移值，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | 否 | 否 | 默认值：0.0<br/>默认单位：vp<br/>异常值NaN和Infinity按默认值处理。 |
+
 ```ts
 // xxx.ets
 @Entry
@@ -822,6 +1112,18 @@ struct ShadowOffsetY {
 
 ### imageSmoothingEnabled
 
+用于设置绘制图片时是否进行图像平滑度调整，true为启用，false为不启用，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| boolean | 否 | 否 | 默认值：true |
+
 ```ts
 // xxx.ets
 @Entry
@@ -858,6 +1160,18 @@ struct ImageSmoothingEnabled {
 
 
 ### imageSmoothingQuality
+
+imageSmoothingEnabled为true时，用于设置图像平滑度，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| [ImageSmoothingQuality](ts-canvasrenderingcontext2d.md#imagesmoothingquality类型说明) | 否 | 否 | 默认值："low" |
 
 ```ts
   // xxx.ets
@@ -900,6 +1214,18 @@ justifyContent: FlexAlign.Center }) {
 
 ### direction
 
+用于设置绘制文字时使用的文字方向，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| [CanvasDirection](ts-canvasrenderingcontext2d.md#canvasdirection类型说明) | 否 | 否 | 默认值："inherit" |
+
 ```ts
   // xxx.ets
   @Entry
@@ -941,6 +1267,18 @@ justifyContent: FlexAlign.Center }) {
 ![directionDemo](figures/directionDemo.jpeg)
 
 ### filter
+
+用于设置图像的滤镜，可以组合任意数量的滤镜，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| string | 否 | 否 | 支持的滤镜效果如下：<br/>- 'none': 无滤镜效果。<br/>- 'blur(\<length>)'：给图像设置高斯模糊，取值范围≥0，支持单位px、vp、rem，默认值：blur(0px)。<br/>- 'brightness([\<number>\|\<percentage>])'：给图片应用一种线性乘法，使其看起来更亮或更暗，支持数字和百分比参数，取值范围≥0，默认值：brightness(1)。<br/>- 'contrast([\<number>\|\<percentage>])'：调整图像的对比度，支持数字和百分比参数，取值范围≥0，默认值：contrast(1)。<br/>- 'grayscale([\<number>\|\<percentage>])'：将图像转换为灰度图像，支持数字和百分比参数，取值范围[0, 1]，默认值：grayscale(0)。<br/>- 'hue-rotate(\<angle>)'：给图像应用色相旋转，取值范围0deg-360deg，默认值：hue-rotate(0deg)。<br/>- 'invert([\<number>\|\<percentage>])'：反转输入图像，支持数字和百分比参数，取值范围[0, 1]，默认值：invert(0)。<br/>- 'opacity([\<number>\|\<percentage>])'：转化图像的透明程度，支持数字和百分比参数，取值范围[0, 1]，默认值：opacity(1)。<br/>- 'saturate([\<number>\|\<percentage>])'：转换图像饱和度，支持数字和百分比参数，取值范围≥0，默认值：saturate(1)。<br/>- 'sepia([\<number>\|\<percentage>])'：将图像转换为深褐色，支持数字和百分比参数，取值范围[0, 1]，默认值：sepia(0)。|
 
 ```ts
   // xxx.ets
@@ -1008,6 +1346,16 @@ justifyContent: FlexAlign.Center }) {
 ![filterDemo](figures/filterDemo.jpeg)
 
 ### letterSpacing<sup>18+</sup>
+
+用于指定绘制文本时字母之间的间距，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| string&nbsp;\| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 否 | 当使用LengthMetrics时：<br/>字间距按照指定的单位设置；<br/>不支持FP、PERCENT和LPX（按无效值处理）；<br/>支持负数和小数，设为小数时字间距不四舍五入。<br/>当使用string时：<br/>不支持设置百分比（按无效值处理）；<br/>支持负数和小数，设为小数时字间距不四舍五入；<br/>若letterSpacing的赋值未指定单位（例如：letterSpacing='10'），且未指定LengthMetricsUnit时，默认单位设置为vp；<br/>指定LengthMetricsUnit为px时，默认单位设置为px；<br/>当letterSpacing的赋值指定单位时（例如：letterSpacing='10vp'），字间距按照指定的单位设置。<br/>默认值：0（输入无效值时，字间距设为默认值）<br/>注：推荐使用LengthMetrics，性能更好。 |
 
 ```ts
   // xxx.ets
@@ -1790,40 +2138,61 @@ bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number,
 | x    | number | 是  | 路径结束时的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 | y    | number | 是  | 路径结束时的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 
- **示例：**
+**示例：**
 
-  ```ts
-  // xxx.ets
-  @Entry
-  @Component
-  struct BezierCurveTo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true);
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+``` ts
+// xxx.ets
+import { Point } from '@kit.TestKit';
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() =>{
-            let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.beginPath()
-            offContext.moveTo(10, 10)
-            offContext.bezierCurveTo(20, 100, 200, 100, 200, 20)
-            offContext.stroke()
-            let image = this.offCanvas.transferToImageBitmap()
-            this.context.transferFromImageBitmap(image)
-          })
-      }
-      .width('100%')
-      .height('100%')
+@Entry
+@Component
+struct BezierCurveTo {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+  private start: Point = { x: 50, y: 50 };
+  private end: Point = { x: 250, y: 100 };
+  private cp1: Point = { x: 200, y: 30 };
+  private cp2: Point = { x: 130, y: 80 };
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          let offContext = this.offCanvas.getContext("2d", this.settings)
+          // 三次贝塞尔曲线
+          offContext.beginPath();
+          offContext.moveTo(this.start.x, this.start.y);
+          offContext.bezierCurveTo(this.cp1.x, this.cp1.y, this.cp2.x, this.cp2.y, this.end.x, this.end.y);
+          offContext.stroke();
+
+          // 起点和终点
+          offContext.fillStyle = 'rgb(39,135,217)';
+          offContext.beginPath();
+          offContext.arc(this.start.x, this.start.y, 5, 0, 2 * Math.PI); // 起点
+          offContext.arc(this.end.x, this.end.y, 5, 0, 2 * Math.PI); // 终点
+          offContext.fill();
+
+          // 控制点
+          offContext.fillStyle = 'rgb(23,169,141)';
+          offContext.beginPath();
+          offContext.arc(this.cp1.x, this.cp1.y, 5, 0, 2 * Math.PI); // 控制点一
+          offContext.arc(this.cp2.x, this.cp2.y, 5, 0, 2 * Math.PI); // 控制点二
+          offContext.fill();
+          let image = this.offCanvas.transferToImageBitmap();
+          this.context.transferFromImageBitmap(image);
+        })
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+```
 
-  ![zh-cn_image_0000001238952403](figures/zh-cn_image_0000001238952403.png)
+![zh-cn_image_0000001238952403](figures/zh-cn_image_0000001238952403.png)
 
 
 ### quadraticCurveTo
@@ -1847,41 +2216,60 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 | x    | number | 是   | 路径结束时的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 | y    | number | 是   | 路径结束时的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 
- **示例：**
+**示例：**
 
-  ```ts
-  // xxx.ets
-  @Entry
-  @Component
-  struct QuadraticCurveTo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true);
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+``` ts
+// xxx.ets
+import { Point } from '@kit.TestKit';
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('rgb(213,213,213)')
-          .onReady(() => {
-            let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.beginPath()
-            offContext.moveTo(20, 20)
-            offContext.quadraticCurveTo(100, 100, 200, 20)
-            offContext.stroke()
-            let image = this.offCanvas.transferToImageBitmap()
-            this.context.transferFromImageBitmap(image)
+@Entry
+@Component
+struct QuadraticCurveTo {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+  private start: Point = { x: 50, y: 20 };
+  private end: Point = { x: 50, y: 100 };
+  private cp: Point = { x: 230, y: 30 };
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          let offContext = this.offCanvas.getContext("2d", this.settings);
+          // 二次贝塞尔曲线
+          offContext.beginPath();
+          offContext.moveTo(this.start.x, this.start.y);
+          offContext.quadraticCurveTo(this.cp.x, this.cp.y, this.end.x, this.end.y);
+          offContext.stroke();
+
+          // 起始点和结束点
+          offContext.fillStyle = 'rgb(39,135,217)';
+          offContext.beginPath();
+          offContext.arc(this.start.x, this.start.y, 5, 0, 2 * Math.PI); // 起始点
+          offContext.arc(this.end.x, this.end.y, 5, 0, 2 * Math.PI); // 结束点
+          offContext.fill();
+
+          // 控制点
+          offContext.fillStyle = 'rgb(23,169,141)';
+          offContext.beginPath();
+          offContext.arc(this.cp.x, this.cp.y, 5, 0, 2 * Math.PI);
+          offContext.fill();
+
+          let image = this.offCanvas.transferToImageBitmap();
+          this.context.transferFromImageBitmap(image);
         })
-      }
-      .width('100%')
-      .height('100%')
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+```
 
-  ![quadraticCurveTo](figures/quadraticCurveTo.jpg)
-
+![zh-cn_image_0000001193872494](figures/zh-cn_image_0000001193872494.png)
 
 ### arc
 

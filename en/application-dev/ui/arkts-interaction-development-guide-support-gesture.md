@@ -49,6 +49,7 @@ Pan A and Pan B are defined with different threshold conditions. Pan B is on a c
 ![Scenario 3](figures/gesture-senario-03.png)
 
 The gesture that matches the actual user operation is triggered.
+
 Example: If the user lifts their finger before the pan gesture threshold is met, a tap gesture is recognized instead.
 
 

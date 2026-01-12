@@ -58,7 +58,7 @@ export struct FocusActiveExample {
         })
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -127,7 +127,7 @@ export struct FocusTransferExample {
             Button('Button 1')
               .margin(20)
               .onClick(() => {
-                // app.string.Focus_Event资源文件中的value值为'获焦信息'
+                // 请将$r('app.string.Focus_Event')替换为实际资源文件，在本示例中该资源文件的value值为"获焦信息"
                 this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + '：\n';
                 this.getUIContext().getFocusController().requestFocus('Row 2');
               })
@@ -139,21 +139,24 @@ export struct FocusTransferExample {
             Button('Button 2')
               .margin(20)
               .onFocus(() => {
-                // app.string.Get_Focus资源文件中的value值为'获得焦点'
+                // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
                 this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
               })
             Button('button 3')
               .margin(20)
               .onFocus(() => {
+                // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
                 this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
               })
           }
           .id('Row 2')
           .onFocus(() => {
+            // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
             this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
           })
         }
         .onFocus(() => {
+          // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
           this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
         })
 
@@ -171,7 +174,7 @@ export struct FocusTransferExample {
       .height('100%')
       .padding(20)
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -191,24 +194,32 @@ export struct FocusTransferExample {
 
 
 - 按键走焦
-1. 前提：当前应用需处于焦点激活态。
-2. 范围限制：按键走焦仅在当前获得焦点的层级页面内进行，具体参见“层级页面”中的“走焦范围限制”部分。
-3. 按键类型：
-Tab键：遵循Z字型遍历逻辑，完成当前范围内所有叶子节点的遍历，到达当前范围内的最后一个组件后，继续按下Tab键，焦点将循环至范围内的第一个可获焦组件，实现循环走焦。
-Shift+Tab键：与Tab键具有相反的焦点转移效果。
-方向键（上、下、左、右）：遵循十字型移动策略，在单层容器中，焦点的转移由该容器的特定走焦算法决定。若算法判定下一个焦点应落在某个容器组件上，系统将采用中心点距离优先的算法来进一步确定容器内的目标子节点。
-4. 走焦算法：每个可获焦的容器组件都有其特定的走焦算法，用于定义焦点转移的规则。
-5. 子组件优先：当子组件处理按键走焦事件，父组件将不再介入。
+
+  1. 前提：当前应用需处于焦点激活态。
+  2. 范围限制：按键走焦仅在当前获得焦点的层级页面内进行，具体参见“层级页面”中的“走焦范围限制”部分。
+  3. 按键类型：
+
+     Tab键：遵循Z字型遍历逻辑，完成当前范围内所有叶子节点的遍历，到达当前范围内的最后一个组件后，继续按下Tab键，焦点将循环至范围内的第一个可获焦组件，实现循环走焦。
+
+     Shift+Tab键：与Tab键具有相反的焦点转移效果。
+
+     方向键（上、下、左、右）：遵循十字型移动策略，在单层容器中，焦点的转移由该容器的特定走焦算法决定。若算法判定下一个焦点应落在某个容器组件上，系统将采用中心点距离优先的算法来进一步确定容器内的目标子节点。
+  4. 走焦算法：每个可获焦的容器组件都有其特定的走焦算法，用于定义焦点转移的规则。
+  5. 子组件优先：当子组件处理按键走焦事件，父组件将不再介入。
 
 - requestFocus
-详见[主动获焦失焦](#主动获焦失焦)，可以主动将焦点转移到指定组件上。
-不可跨窗口或跨ArkUI实例申请焦点，但可以跨层级页面申请焦点。
+
+  详见[主动获焦失焦](#主动获焦失焦)，可以主动将焦点转移到指定组件上。
+
+  不可跨窗口或跨ArkUI实例申请焦点，但可以跨层级页面申请焦点。
 
 - clearFocus
-详见[clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)，会清除当前层级页面中的焦点，最终焦点停留在根容器上。
+
+  详见[clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)，会清除当前层级页面中的焦点，最终焦点停留在根容器上。
 
 - focusOnTouch
-详见[focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9)，使绑定组件具备点击后获得焦点的能力。若组件本身不可获焦，则此功能无效。若绑定的是容器组件，点击后优先将焦点转移给上一次获焦的子组件，否则转移给第一个可获焦的子组件。
+
+  详见[focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9)，使绑定组件具备点击后获得焦点的能力。若组件本身不可获焦，则此功能无效。若绑定的是容器组件，点击后优先将焦点转移给上一次获焦的子组件，否则转移给第一个可获焦的子组件。
 
 
 **被动走焦**
@@ -276,7 +287,7 @@ export struct FocusLinerExample {
         }
       }
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -327,14 +338,15 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
          }.width('100%').margin({ top: 5 })
        }.width('100%')
      }
-     // ···
+     // ...
    }
  }
  ```
 
 > **说明：**
 >
-> - 这种投影聚焦算法计算的聚焦顺序与组件布局和大小密切相关，建议在组件排列非常规整的场景下使用。如果组件大小不一且存在横向或纵向的交叠关系，则可能会导致聚焦顺序与开发者预期不符。
+> - 这种投影走焦算法计算的走焦顺序与组件布局和大小密切相关，建议在组件排列非常规整的场景下使用。如果组件大小不一且存在横向或纵向的交叠关系，则可能会导致走焦顺序与开发者预期不符。
+>
 > - 如果开发者希望有明确的走焦顺序，建议使用Column/Row等顺序走焦的容器实现。
 
 Flex多行组件布局，组件大小一致，走焦正常。
@@ -365,7 +377,7 @@ export struct ProjectAreaFocusFlexExample {
       }.width('100%').margin({ top: 5 })
     }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -453,7 +465,7 @@ export struct OnFocusBlur {
           })
       }.width('100%').margin({ top: 20 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -528,7 +540,7 @@ export struct FocusAndBlurExample {
         }.width('100%').margin({ top: 5 })
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -560,6 +572,7 @@ focusable(value: boolean)
 设置容器组件可获焦：
 
 获焦的主要目的是为了响应用户交互，如果组件不具备交互能力，则其也不会具有可获焦能力。容器组件通常不具备交互能力，因此如果一个容器组件（如Stack、Column）作为叶子节点，即使通过.focusable(true)也无法使其具备可获焦能力。需要注意的是通过动态方式创建的[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点也受限于这个规则。
+
 如果想让作为叶子节点的容器组件可获焦，可通过以下任一方式实现：
 
 - 在其内添加一个具备获焦能力的叶子节点组件(如button)。
@@ -604,7 +617,7 @@ focusOnTouch(value: boolean)
    build() {
      NavDestination() {
        Column({ space: 12 }) {
-         // app.string.Focus_Focusable_text资源文件中的value值为'当某组件处于获焦状态'
+         // 请将$r('app.string.Focus_Focusable_text')替换为实际资源文件，在本示例中该资源文件的value值为"当某组件处于获焦状态"
          Text($r('app.string.Focus_Focusable_text'))
            .fontSize(14)
            .fontColor('#666')
@@ -681,7 +694,7 @@ focusOnTouch(value: boolean)
        .height('100%')
        .padding({ left: 12, right: 12 })
      }
-     // ···
+     // ...
    }
  }
  ```
@@ -728,7 +741,7 @@ export struct ScopeFocusExample {
     NavDestination() {
       Column() {
         Column({ space: 5 }) {
-          // app.string.Container_Coking资源文件中的value值为'容器获焦'
+          // 请将$r('app.string.Container_Coking')替换为实际资源文件，在本示例中该资源文件的value值为"容器获焦"
           Text($r('app.string.Container_Coking')).textAlign(TextAlign.Center)
         }
         .justifyContent(FlexAlign.Center)
@@ -798,7 +811,7 @@ export struct TabStopExample {
         }.tabStop(true)
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -879,7 +892,7 @@ export struct DefaultFocus {
           })
       }.width('100%').margin({ top: 20 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -985,7 +998,7 @@ export struct RequestFocusExample {
       .alignItems(HorizontalAlign.Center)
       .width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1098,7 +1111,7 @@ export struct RequestFocusExample {
           .width('100%')
           .height('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1166,7 +1179,7 @@ nextFocus(nextStep: Optional<FocusMovement>): T
           }
         }.width('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1224,7 +1237,7 @@ tabIndex自定义组件Tab键走焦顺序。
             .margin(5).tabIndex(2)
         }.width('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1260,7 +1273,7 @@ export struct TabIndexFocusExample {
         }.tabIndex(2)
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1419,7 +1432,7 @@ export struct FocusScopePriority {
       .height('100%')
       .padding({ left: 12, right: 12 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1495,7 +1508,7 @@ export struct FocusScopeIdExample {
         TextInput()
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1538,7 +1551,7 @@ export struct FocusScopeIdExample {
            Button(this.name)
              .fontSize(30)
              .onClick(() => {
-               this.count++
+               this.count++;
                if (this.count % 2 === 0) {
                  this.name = 'count is even number';
                } else {
@@ -1547,7 +1560,7 @@ export struct FocusScopeIdExample {
              }).height(60)
          }.height('100%').width('100%').justifyContent(FlexAlign.Center)
        }
-       // ···
+       // ...
      }
    }
    ```

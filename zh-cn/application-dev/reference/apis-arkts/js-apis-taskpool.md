@@ -1738,7 +1738,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }
@@ -1787,7 +1787,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }
@@ -1889,7 +1889,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }
@@ -1981,7 +1981,9 @@ type CallbackFunctionWithError = (e: Error) => void
 ## LongTask<sup>12+</sup>
 
 表示长时任务。LongTask继承自[Task](#task)。
+
 长时任务不设置执行时间上限，长时间运行不会触发超时异常，但不支持将同一任务多次执行或者将该任务加入任务组（TaskGroup）。
+
 执行长时任务的线程会持续存在，直到任务完成并调用[terminateTask](#taskpoolterminatetask12)后，该线程在空闲时被回收。
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -2004,6 +2006,7 @@ let task: taskpool.LongTask = new taskpool.LongTask(printArgs, "this is my first
 ## GenericsTask<sup>13+</sup>
 
 表示泛型任务。GenericsTask继承自[Task](#task)。
+
 相比创建Task，创建GenericsTask可以在编译阶段校验并发函数的传参和返回值类型。其余行为与Task相同。
 
 **系统能力：** SystemCapability.Utils.Lang

@@ -72,6 +72,8 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 ## TransitionEdge<sup>10+</sup>
 
+转场边缘类型。
+
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -498,7 +500,7 @@ struct TransitionEffectExample3 {
           this.flag = !this.flag;
         })
       if (this.flag) {
-        // 改flag条件时，会触发id为"column1"、"image1"、"image2"的transition动画。
+        // 当flag条件改变时，会触发id为"column1"、"image1"、"image2"的transition动画。
         // id为"column1"的组件是这棵新出现/消失的子树的根节点。
         Column() {
           Row() {

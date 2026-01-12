@@ -38,7 +38,7 @@ Provides BASE DDK types and declares the macros, enums, and data structures requ
 
 ### DDK_RetCode
 
-```
+```c
 enum DDK_RetCode
 ```
 

@@ -42,10 +42,14 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 ### 设置参考边界
 
 设置当前组件的哪个边界对齐到锚点。容器内子组件的参考边界区分水平方向和垂直方向。
+
 * 在水平方向上，可以按照起始（left）、居中（middle）或尾端（right）的组件边界与锚点对齐。当设置三个边界时，仅起始（left）和居中（middle）的边界设置生效。
-![relative-layout-alignrules01](figures/relative-layout-alignrules01.png)
+
+  ![relative-layout-alignrules01](figures/relative-layout-alignrules01.png)
+
 * 在垂直方向上，可以设置组件边界与锚点对齐，具体包括顶部（top）、居中（center）和底部（bottom）。当设置三个边界时，仅顶部（top）和居中（center）生效。
-![relative-layout-alignrules02](figures/relative-layout-alignrules02.png)
+
+  ![relative-layout-alignrules02](figures/relative-layout-alignrules02.png)
 
 ### 设置锚点
 

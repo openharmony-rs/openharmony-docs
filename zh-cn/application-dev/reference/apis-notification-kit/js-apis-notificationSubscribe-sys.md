@@ -573,7 +573,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let hashCode: string = 'hashCode';
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCode, reason).then(() => {
-	console.info("remove success");
+  console.info("remove success");
 }).catch((err: BusinessError) => {
   console.error(`remove fail: ${JSON.stringify(err)}`);
 });
@@ -823,7 +823,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 不指定应用时，删除所有通知
 notificationSubscribe.removeAll().then(() => {
-	console.info("removeAll success");
+  console.info("removeAll success");
 }).catch((err: BusinessError) => {
   console.error(`removeAll fail: ${JSON.stringify(err)}`);
 });
@@ -924,7 +924,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: number = 1;
 notificationSubscribe.removeAll(userId).then(() => {
-	console.info("removeAll success");
+  console.info("removeAll success");
 }).catch((err: BusinessError) => {
   console.error(`removeAll fail: ${JSON.stringify(err)}`);
 });
@@ -980,7 +980,7 @@ let operationInfo: notificationSubscribe.OperationInfo = {
   buttonIndex: 1,
 };
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
-	console.info("distributeOperation success");
+  console.info("distributeOperation success");
 }).catch((err: BusinessError) => {
   console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
 });
