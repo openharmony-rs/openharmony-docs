@@ -95,6 +95,26 @@ function generateAsyKeySync() {
 
 <!-- @[generate_sm2_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPairArkTS/entry/src/main/ets/pages/sm2/Promise.ets) -->
 
+``` TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function generateSM2Key() {
+  // 创建一个AsyKeyGenerator实例
+  let sm2Generator = cryptoFramework.createAsyKeyGenerator('SM2_256');
+  // 使用密钥生成器随机生成非对称密钥对
+  let keyGenPromise = sm2Generator.generateKeyPair();
+  keyGenPromise.then(keyPair => {
+    let pubKey = keyPair.pubKey;
+    let priKey = keyPair.priKey;
+    // 获取非对称密钥对的二进制数据
+    let pkBlob = pubKey.getEncoded();
+    let skBlob = priKey.getEncoded();
+    console.info('pk bin data' + pkBlob.data);
+    console.info('sk bin data' + skBlob.data);
+  });
+}
+```
+
 
 - 同步返回结果（调用方法[generateKeyPairSync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypairsync12)）：
 
