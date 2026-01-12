@@ -10,11 +10,10 @@
 
 ## 导入模块
 
-
-```js
-import brightness, { BrightnessModeResponse, BrightnessResponse } from '@system.brightness';
+ArkTS-Dyn示例：
+```ts
+import {brightness}, { BrightnessModeResponse, BrightnessResponse } from '@kit.BasicServicesKit';
 ```
-
 
 ## brightness.getValue<sup>(deprecated)</sup>
 
@@ -24,6 +23,10 @@ getValue(options?: GetBrightnessOptions): void
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 3
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -32,7 +35,7 @@ getValue(options?: GetBrightnessOptions): void
 
 **示例：**
 
-  ```js
+  ```ts
   brightness.getValue({
       success: (data: BrightnessResponse) => {
         console.log('success get brightness value:' + data.value);
@@ -52,6 +55,10 @@ setValue(options?: SetBrightnessOptions): void
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 3
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -60,7 +67,7 @@ setValue(options?: SetBrightnessOptions): void
 
 **示例：**
 
-  ```js
+  ```ts
   brightness.setValue({
       value: 100,
       success: () => {
@@ -81,6 +88,10 @@ getMode(options?: GetBrightnessModeOptions): void
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 3
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -89,7 +100,7 @@ getMode(options?: GetBrightnessModeOptions): void
 
 **示例：**
 
-  ```js
+  ```ts
   brightness.getMode({
       success: (data: BrightnessModeResponse) => {
         console.log('success get mode:' + data.mode);
@@ -109,6 +120,10 @@ setMode(options?: SetBrightnessModeOptions): void
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 3
+
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -116,7 +131,7 @@ setMode(options?: SetBrightnessModeOptions): void
 
 **示例：**
 
-  ```js
+  ```ts
   brightness.setMode({
       mode: 1,
       success: () => {
@@ -139,6 +154,10 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 3
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -147,7 +166,7 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
 **示例：**
 
-  ```js
+  ```ts
   brightness.setKeepScreenOn({
       keepScreenOn: true,
       success: () => {
@@ -164,6 +183,10 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 3
+
 | 名称     | 类型                                                      | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | success  | (data: [BrightnessResponse](#brightnessresponsedeprecated)) => void | 否   | 接口调用成功的回调函数。data为[BrightnessResponse](#brightnessresponsedeprecated)类型的返回值。 |
@@ -175,6 +198,10 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 设置屏幕亮度的参数对象。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 3
 
 | 名称     | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -199,6 +226,10 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 3
+
 | 名称     | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | success  | (data: [BrightnessModeResponse](#brightnessmoderesponsedeprecated)) => void | 否   | 接口调用成功的回调函数。data为[BrightnessModeResponse](#brightnessmoderesponsedeprecated)类型的返回值。 |
@@ -210,6 +241,10 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 设置屏幕亮度模式的参数对象。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 3
 
 | 名称     | 类型                                 | 必填 | 说明                                                   |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------ |
@@ -224,6 +259,10 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 3
+
 | 名称 | 类型 | 可读 | 可写 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | mode | number | 是 | 否 | 0表示手动调节屏幕亮度模式，1表示自动调节屏幕亮度模式。 |
@@ -233,6 +272,10 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 设置屏幕常亮的参数对象。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 3
 
 | 名称         | 类型                                 | 必填 | 说明                                                   |
 | ------------ | ------------------------------------ | ---- | ------------------------------------------------------ |

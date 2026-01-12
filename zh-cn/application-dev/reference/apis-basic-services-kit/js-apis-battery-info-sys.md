@@ -4,27 +4,38 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.batteryInfo (电量信息)](js-apis-battery-info.md)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.batteryInfo (电量信息)](js-apis-battery-info.md)。
 
 
 ## 导入模块
 
-```js
+ArkTS-Dyn示例：
+```ts
 import {batteryInfo} from '@kit.BasicServicesKit';
+```
+
+ArkTS-Sta示例：
+```ts
+import batteryInfo from '@ohos.batteryInfo';
 ```
 
 ## batteryInfo.setBatteryConfig<sup>11+</sup>
 
-ArkTS1.1: setBatteryConfig(sceneName: string, sceneValue: string): number  
-ArkTS1.2: setBatteryConfig(sceneName: string, sceneValue: string): int
+ArkTS-Dyn: setBatteryConfig(sceneName: string, sceneValue: string): number  
+ArkTS-Sta: setBatteryConfig(sceneName: string, sceneValue: string): int
 
 按场景名称设置电池配置。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
+
+**ArkTS-Dyn起始版本:** 11
+
+**ArkTS-Sta起始版本:** 23
 
 **参数**：
 
@@ -37,7 +48,7 @@ ArkTS1.2: setBatteryConfig(sceneName: string, sceneValue: string): int
 
 | 类型   | 说明                                                       |
 | ------ | ---------------------------------------------------------- |
-| ArkTS1.1: number<br>ArkTS1.2: int | 返回设置充电结果。返回0表示设置成功，返回非0表示设置失败。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回设置充电结果。返回0表示设置成功，返回非0表示设置失败。 |
 
 **错误码：**
 
@@ -52,7 +63,6 @@ ArkTS1.2: setBatteryConfig(sceneName: string, sceneValue: string): int
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
   try {
     let sceneName = 'xxx';
     let sceneValue = '0';
@@ -74,6 +84,10 @@ getBatteryConfig(sceneName: string): string
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
+
+**ArkTS-Dyn起始版本:** 11
+
+**ArkTS-Sta起始版本:** 23
 
 **参数**：
 
@@ -100,7 +114,6 @@ getBatteryConfig(sceneName: string): string
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
   try {
     let sceneName = 'xxx';
     let result = batteryInfo.getBatteryConfig(sceneName);
@@ -121,6 +134,10 @@ isBatteryConfigSupported(sceneName: string): boolean
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
+
+**ArkTS-Dyn起始版本:** 11
+
+**ArkTS-Sta起始版本:** 23
 
 **参数**：
 
@@ -147,7 +164,6 @@ isBatteryConfigSupported(sceneName: string): boolean
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
   try {
     let sceneName = 'xxx';
     let result = batteryInfo.isBatteryConfigSupported(sceneName);
@@ -159,24 +175,24 @@ isBatteryConfigSupported(sceneName: string): boolean
 
   ```
 
-## 属性
+## 常量
 
 描述电池信息。
 
 **系统能力**：SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本**：该接口仅适用于ArkTS1.1。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-| 名称      | 类型        | 只读 | 可选 |  说明     |
-| --------------- | ------------------- | ---- | ---- | ---------------------|
-| estimatedRemainingChargeTime<sup>9+</sup> | number                                         | 是   | 否   | 表示当前设备充满电的预估时间，单位毫秒。此接口为系统接口。          |
-| totalEnergy<sup>9+</sup>                  | number                                         | 是   | 否   | 表示当前设备电池的总容量，单位毫安时。此接口为系统接口。   |
-| remainingEnergy<sup>9+</sup>              | number                                         | 是   | 否   | 表示当前设备电池的剩余容量，单位毫安时。此接口为系统接口。 |
+**ArkTS-Dyn起始版本:** 9
+
+| 名称      | 类型        | 只读 |  说明     |
+| --------------- | ------------------- | ---- | ---------------------|
+| estimatedRemainingChargeTime<sup>9+</sup> | number                                         | 是   | 表示当前设备充满电的预估时间，单位毫秒。此接口为系统接口。         |
+| totalEnergy<sup>9+</sup>                  | number                                         | 是   | 表示当前设备电池的总容量，单位毫安时。此接口为系统接口。   |
+| remainingEnergy<sup>9+</sup>              | number                                         | 是   | 表示当前设备电池的剩余容量，单位毫安时。此接口为系统接口。 |
 
 **示例**：
   ```ts
-  import {batteryInfo} from '@kit.BasicServicesKit';
-
   let estimatedRemainingChargeTimeInfo: number = batteryInfo.estimatedRemainingChargeTime;
   console.info("The estimatedRemainingChargeTimeInfo is: " + estimatedRemainingChargeTimeInfo);
 
@@ -197,7 +213,9 @@ estimatedRemainingChargeTime(): long
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值**：
 
@@ -208,8 +226,7 @@ estimatedRemainingChargeTime(): long
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
-
+  // ArkTS-Sta实例
   let result = batteryInfo.estimatedRemainingChargeTime();
   console.info("The result is: " + result);
   ```
@@ -224,7 +241,9 @@ totalEnergy(): int
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值**：
 
@@ -235,8 +254,7 @@ totalEnergy(): int
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
-
+  // ArkTS-Sta实例
   let result = batteryInfo.totalEnergy();
   console.info("The result is: " + result);
   ```
@@ -251,7 +269,9 @@ remainingEnergy(): int
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值**：
 
@@ -262,8 +282,7 @@ remainingEnergy(): int
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
-
+  // ArkTS-Sta实例
   let result = batteryInfo.remainingEnergy();
   console.info("The result is: " + result);
   ```

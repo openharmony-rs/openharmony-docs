@@ -8,12 +8,10 @@
 
 
 ## 导入模块
-
-
-```js
+ArkTS-Dyn示例：
+```ts
 import {Battery, BatteryResponse } from '@kit.BasicServicesKit';
 ```
-
 
 ## Battery.getStatus<sup>(deprecated)</sup>
 
@@ -23,6 +21,10 @@ getStatus(options?: GetStatusOptions): void;
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 3
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -31,7 +33,7 @@ getStatus(options?: GetStatusOptions): void;
 
 **示例：**
 
-```js
+```ts
 Battery.getStatus({
     success: (data: BatteryResponse) => {
         console.log('success get battery level:' + data.level);
@@ -48,6 +50,10 @@ Battery.getStatus({
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 3
+
 | 参数名   | 类型                                                | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | success  | (data: [BatteryResponse](#batteryresponsedeprecated)) => void | 否   | 接口调用成功的回调函数，data为[BatteryResponse](#batteryresponsedeprecated)类型的返回值。 |
@@ -59,6 +65,10 @@ Battery.getStatus({
 包含充电状态及剩余电量的对象。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 3
 
 | 参数名 | 类型 | 可读 | 可写 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |

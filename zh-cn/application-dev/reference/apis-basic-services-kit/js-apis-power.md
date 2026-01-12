@@ -4,12 +4,19 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
-```js
+ArkTS-Dyn示例：
+```ts
 import {power} from '@kit.BasicServicesKit';
+```
+
+ArkTS-Sta示例：
+```ts
+import power from '@ohos.power';
 ```
 
 ## power.isActive<sup>9+</sup>
@@ -22,6 +29,10 @@ isActive(): boolean
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
+**ArkTS-Dyn起始版本:** 9
+
+**ArkTS-Sta起始版本:** 23
+
 **返回值：**
 
 | 类型                | 说明                                   |
@@ -30,9 +41,7 @@ isActive(): boolean
 
 **示例：**
 
-```js
-import power from '@ohos.power'
-
+```ts
 let isActive = power.isActive();
 console.info('power is active: ' + isActive);
 ```
@@ -49,6 +58,9 @@ rebootDevice(reason: string): void
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 7
 
 **参数：**
 
@@ -58,7 +70,7 @@ rebootDevice(reason: string): void
 
 **示例：**
 
-```js
+```ts
 power.rebootDevice('reboot_test');
 ```
 
@@ -70,6 +82,10 @@ getPowerMode(): DevicePowerMode
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
+**ArkTS-Dyn起始版本:** 9
+
+**ArkTS-Sta起始版本:** 23
+
 **返回值：**
 
 | 类型                                 | 说明       |
@@ -78,9 +94,7 @@ getPowerMode(): DevicePowerMode
 
 **示例：**
 
-```js
-import power from '@ohos.power'
-
+```ts
 let mode = power.getPowerMode();
 console.info('power mode: ' + mode);
 ```
@@ -92,6 +106,10 @@ isStandby(): boolean
 检测当前设备是否进入待机低功耗续航模式。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**ArkTS-Dyn起始版本:** 10
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值：**
 
@@ -109,8 +127,7 @@ isStandby(): boolean
 
 **示例：**
 
-```js
-import power from '@ohos.power'
+```ts
 try {
     let isStandby = power.isStandby();
     console.info('device is in standby: ' + isStandby);
@@ -129,6 +146,10 @@ isScreenOn(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 7
+
 **参数：**
 
 | 参数名   | 类型                         | 必填 | 说明                                                         |
@@ -137,7 +158,7 @@ isScreenOn(callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：**
 
-```js
+```ts
 power.isScreenOn((err: Error, data: boolean) => {
     if (typeof err === 'undefined') {
         console.info('screen on status is ' + data);
@@ -157,6 +178,10 @@ isScreenOn(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本:** 7
+
 **返回值：**
 | 类型                   | 说明                                               |
 | ---------------------- | -------------------------------------------------- |
@@ -164,7 +189,7 @@ isScreenOn(): Promise&lt;boolean&gt;
 
 **示例：**
 
-```js
+```ts
 power.isScreenOn()
 .then((data: boolean) => {
     console.info('screen on status is ' + data);
@@ -182,7 +207,23 @@ power.isScreenOn()
 
 | 名称                    | 值   | 说明                   |
 | ----------------------- | ---- | ---------------------- |
-| MODE_NORMAL             | 600  | 表示标准模式，默认值。 |
-| MODE_POWER_SAVE         | 601  | 表示省电模式。         |
-| MODE_PERFORMANCE        | 602  | 表示性能模式。         |
-| MODE_EXTREME_POWER_SAVE | 603  | 表示超级省电模式。     |
+| MODE_NORMAL             | 600  | 表示标准模式，默认值。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23 |
+| MODE_POWER_SAVE         | 601  | 表示省电模式。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23         |
+| MODE_PERFORMANCE        | 602  | 表示性能模式。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23        |
+| MODE_EXTREME_POWER_SAVE | 603  | 表示超级省电模式。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23     |
+| MODE_CUSTOM_POWER_SAVE20+ | 650 | 表示自定义省电模式。<br/>ArkTS-Dyn起始版本: 20<br/>ArkTS-Sta起始版本: 23   |
+
+## PowerKeyFilteringStrategy<sup>21+</sup>
+
+表示电源键过滤策略。
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**ArkTS-Dyn起始版本:** 21
+
+**ArkTS-Sta起始版本:** 23
+
+| 名称                    | 值   | 说明                   |
+| ----------------------- | ---- | ---------------------- |
+| DISABLE_LONG_PRESS_FILTERING | 0  | 表示不使能电源键过滤策略，默认值。 |
+| LONG_PRESS_FILTERING_ONCE | 1  | 表示仅过滤当前电源键长按事件，下一次不过滤。 |
