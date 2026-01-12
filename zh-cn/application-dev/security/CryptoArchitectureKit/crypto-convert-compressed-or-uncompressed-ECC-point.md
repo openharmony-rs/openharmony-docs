@@ -21,6 +21,23 @@ ECC的算法规格请查看[非对称密钥生成和转换规格：ECC](crypto-a
 
 <!-- @[convert_ecc_uncompressed_pub_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/SpecifyUncompressedPublicKey.ets) -->
 
+``` TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function eccPubUncompressedToCompressed() {
+  let pkData =
+    new Uint8Array([48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2, 8, 1, 1, 7, 3, 66, 0, 4,
+      143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40,
+      217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98,
+      178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
+  let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
+  let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+  let keyPair = await generator.convertKey(pubKeyBlob, null);
+  let returnBlob = keyPair.pubKey.getEncodedDer('X509|COMPRESSED');
+  console.info('returnBlob data：' + returnBlob.data);
+}
+```
+
 
 ## 指定压缩点数据获取密钥对象
 
