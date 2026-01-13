@@ -2688,9 +2688,9 @@ onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
         .allowWindowOpenMethod(true)
         .onWindowNewExt((event) => {
           //以event.navigationPolicy请求的方式打开新窗口
-          console.info ("navigationAction: ", event.navigationPolicy)
+          console.log("navigationAction: ", event.navigationPolicy)
           //以event.windowFeatures中的大小及位置信息创建新窗口
-          console.info ("windowFeatures: ", JSON.stringify(event.windowFeatures))
+          console.log("windowFeatures: ", JSON.stringify(event.windowFeatures))
           if (this.dialogController) {
             this.dialogController.close();
           }
