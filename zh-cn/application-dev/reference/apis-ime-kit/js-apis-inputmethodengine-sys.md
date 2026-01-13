@@ -42,13 +42,13 @@ on(type: 'sizeUpdate', callback: SizeUpdateCallback): void
 >
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。输入法通过[adjustPanelRect](./js-apis-inputmethodengine.md#adjustpanelrect15)等接口对面板大小进行调节时，系统会根据一定规则校验计算出最终的数值（例如：超出屏幕等场景）。输入法应用可通过该回调获取的真实面板大小，完成最终的面板布局刷新。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onSizeUpdate](#onSizeUpdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSizeUpdate](#onSizeUpdate23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 14
+**ArkTS-Dyn起始版本：** 14
 
 **系统接口：** 此接口为系统接口。
 
@@ -66,10 +66,10 @@ import { window } from '@kit.ArkUI';
 
 try {
   panel.on('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
-    console.info(`panel size changed, windowSize: ${JSON.stringify(windowSize)}, keyboardArea: ${JSON.stringify(keyboardArea)}`);
+    console.info(`panel size changed, windowSize: ${windowSize}, keyboardArea: ${keyboardArea}`);
   });
 } catch(err) {
-  console.error(`Failed to subscribe sizeUpdate: ${JSON.stringify(err)}`);
+  console.error(`Failed to subscribe sizeUpdate: ${err.message}`);
 }
 ```
 
@@ -83,13 +83,13 @@ off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
 >
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。输入法通过[adjustPanelRect](./js-apis-inputmethodengine.md#adjustpanelrect15)等接口对面板大小进行调节时，系统会根据一定规则校验计算出最终的数值（例如：超出屏幕等场景）。输入法应用可通过该回调获取的真实面板大小，完成最终的面板布局刷新。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offSizeUpdate](#offSizeUpdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSizeUpdate](#offSizeUpdate23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 14
+**ArkTS-Dyn起始版本：** 14
 
 **系统接口：** 此接口为系统接口。
 
@@ -110,7 +110,7 @@ try {
     console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
   });
 } catch(err) {
-    console.error(`Failed to subscribe sizeUpdate: ${JSON.stringify(err)}`);
+  console.error(`Failed to subscribe sizeUpdate: ${err.message}`);
 }
 ```
 
@@ -118,15 +118,15 @@ try {
 
 onSizeUpdate(callback: SizeUpdateCallback): void
 
-订阅面板尺寸更新（sizeUpdate）事件，当输入法面板尺寸发生变更时触发该事件，并执行指定的回调函数。
+订阅面板尺寸更新（sizeUpdate）事件，当输入法面板尺寸发生变更时触发该事件，并执行指定的回调函数, 使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('sizeUpdate')](#onsizeUpdate14)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('sizeUpdate')](#onsizeUpdate14)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -141,7 +141,7 @@ import { window } from '@kit.ArkUI';
 
 try {
   panel.onSizeUpdate((windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
-    console.info(`panel size changed, windowSize: ${JSON.stringify(windowSize)}, keyboardArea: ${JSON.stringify(keyboardArea)}`);
+    console.info(`panel size changed, windowSize: ${windowSize}, keyboardArea: ${keyboardArea}`);
   });
 } catch(err) {
   console.error(`Failed to subscribe sizeUpdate, code: ${err.code}, message: ${err.message}`);
@@ -152,15 +152,15 @@ try {
 
 offSizeUpdate(callback?: SizeUpdateCallback): void
 
-取消订阅面板尺寸更新（sizeUpdate）事件，停止监听输入法面板尺寸的变更动作。
+取消订阅面板尺寸更新（sizeUpdate）事件，停止监听输入法面板尺寸的变更动作, 使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('sizeUpdate')](#offsizeUpdate14)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('sizeUpdate')](#offsizeUpdate14)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -178,7 +178,7 @@ try {
     console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
   });
 } catch(err) {
-    console.error(`Failed to subscribe sizeUpdate, code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to subscribe sizeUpdate, code: ${err.code}, message: ${err.message}`);
 }
 ```
 
