@@ -667,6 +667,8 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { distributedMissionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
