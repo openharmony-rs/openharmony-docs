@@ -248,7 +248,7 @@
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-                const RESULT_CODE: number = 1001; //FuncAbilityA返回的结果
+                const RESULT_CODE: number = 1001; // FuncAbilityA返回的结果
                 let abilityResult: common.AbilityResult = {
                   resultCode: RESULT_CODE,
                   want: {
