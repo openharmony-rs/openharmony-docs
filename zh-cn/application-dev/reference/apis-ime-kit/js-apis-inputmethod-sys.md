@@ -213,7 +213,7 @@ on(type: 'imeHide', callback: (info: Array\<InputWindowInfo>) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onImeHide](#onImeHide23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onimehide](#onimehide23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -256,7 +256,7 @@ onImeHide(callback: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('imeHide')](#onimeHide10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('imehide')](#onimehide10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -300,7 +300,7 @@ off(type: 'imeShow', callback?: (info: Array\<InputWindowInfo>) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offImeShow](#offImeShow23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offimeshow](#offimeshow23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -333,7 +333,7 @@ offImeShow(callback?: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('imeShow')](#offimeShow10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('imeshow')](#offimeshow10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -364,7 +364,7 @@ off(type: 'imeHide', callback?: (info: Array\<InputWindowInfo>) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offImeHide](#offImeHide23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offimehide](#offimehide23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -397,7 +397,7 @@ offImeHide(callback?: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('imeHide')](#offimeHide10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('imehide')](#offimehide10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

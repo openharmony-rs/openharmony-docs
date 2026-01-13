@@ -6,7 +6,7 @@
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> - 本模块首批接口从API version 6开始支持（ArkTS-Dyn）、API version 23开始支持（ArkTS-Sta）。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -33,10 +33,6 @@ import { inputMethod } from '@kit.IMEKit';
 输入法应用属性。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -887,10 +883,6 @@ let inputMethodSetting = inputMethod.getInputMethodSetting();
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
 | NONE | -1 |NONE。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
@@ -915,10 +907,6 @@ let inputMethodSetting = inputMethod.getInputMethodSetting();
 Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
@@ -1002,10 +990,6 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | textInputType<sup>10+</sup>  | [TextInputType](#textinputtype10) | 否 | 否 | 文本输入类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
@@ -1018,10 +1002,6 @@ Enter键的功能类型。
 编辑框的配置信息。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
