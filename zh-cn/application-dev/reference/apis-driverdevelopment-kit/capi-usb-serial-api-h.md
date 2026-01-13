@@ -103,7 +103,7 @@ int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_D
 |----------------------------------|--------------------------------------------|
 | uint64_t deviceId                | 设备ID，代表要操作的设备。                             |
 | uint8_t interfaceIndex           | 接口索引，对应USB协议中的[bInterfaceNumber](capi-usbddk-usbinterfacedescriptor.md)。 |
-| [UsbSerial_Device](capi-serialddk-usbserial-device.md) **dev | 设备句柄。                                      |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) **dev | 设备句柄。                                      |
 
 **返回：**
 
@@ -130,7 +130,7 @@ int32_t OH_UsbSerial_Close(UsbSerial_Device *dev)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [UsbSerial_Device](capi-serialddk-usbserial-device.md) *dev | 设备句柄。 |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
 
 **返回：**
 
@@ -157,7 +157,7 @@ int32_t OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferS
 
 | 参数项 | 描述 |
 | -- | -- |
-| [UsbSerial_Device](capi-serialddk-usbserial-device.md) *dev | 设备句柄。 |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
 | uint8_t *buff | 保存从USB串口设备读取数据的缓冲区。 |
 | uint32_t bufferSize | 缓冲区的大小。 |
 | uint32_t *bytesRead | 实际读取的字节数，如果设置了阻塞模式，则实际读取到的数据等于bufferSize后才会返回，<br>                  详见[OH_UsbSerial_SetTimeout](capi-usb-serial-api-h.md#oh_usbserial_settimeout)。 |
@@ -187,7 +187,7 @@ int32_t OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t buffer
 
 | 参数项 | 描述 |
 | -- | -- |
-| [UsbSerial_Device](capi-serialddk-usbserial-device.md) *dev | 设备句柄。 |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
 | uint8_t *buff | 写入USB串口设备数据的缓冲区。 |
 | uint32_t bufferSize | 缓冲区的大小。 |
 | uint32_t *bytesWritten | 实际写入的字节数。 |
@@ -217,7 +217,7 @@ int32_t OH_UsbSerial_SetBaudRate(UsbSerial_Device *dev, uint32_t baudRate)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [UsbSerial_Device](capi-serialddk-usbserial-device.md) *dev | 设备句柄。 |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
 | uint32_t baudRate | USB串口设备的波特率。 |
 
 **返回：**
@@ -245,7 +245,7 @@ int32_t OH_UsbSerial_SetParams(UsbSerial_Device *dev, UsbSerial_Params *params)
 
 | 参数项                                                                     | 描述 |
 |-------------------------------------------------------------------------| -- |
-| [UsbSerial_Device](capi-serialddk-usbserial-device.md) *dev | 设备句柄。 |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
 | [UsbSerial_Params](capi-serialddk-usbserial-params.md) *params                                            | 待设置的USB串口设备参数，详见[UsbSerial_Params](capi-serialddk-usbserial-params.md)。 |
 
 **返回：**
@@ -273,7 +273,7 @@ int32_t OH_UsbSerial_SetTimeout(UsbSerial_Device *dev, int timeout)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [UsbSerial_Device](capi-serialddk-usbserial-device.md) *dev | 设备句柄。 |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
 | int timeout | 读取USB串口设备的超时时间，其取值范围为：- (0, 25500]：以毫秒为单位的时间值，将其四舍五入为最接近的100毫秒后，作为实际的超时时间。例如，输入12321，实际生效的超时时间为12300。- 0：表示立即返回数据，不等待。- -1：表示以阻塞方式读取数据，即读取数据时，只有读到指定长度的数据后才返回，详见[OH_UsbSerial_Read](capi-usb-serial-api-h.md#oh_usbserial_read)。 |
 
 **返回：**
@@ -301,7 +301,7 @@ int32_t OH_UsbSerial_SetFlowControl(UsbSerial_Device *dev, UsbSerial_FlowControl
 
 | 参数项                                                                                   | 描述 |
 |---------------------------------------------------------------------------------------| -- |
-| [UsbSerial_Device](capi-serialddk-usbserial-device.md) *dev               | 设备句柄。 |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev               | 设备句柄。 |
 | [UsbSerial_FlowControl](capi-usb-serial-types-h.md#usbserial_flowcontrol) flowControl | 流控方式，详见[UsbSerial_FlowControl](capi-usb-serial-types-h.md#usbserial_flowcontrol)。 |
 
 **返回：**
@@ -329,7 +329,7 @@ int32_t OH_UsbSerial_Flush(UsbSerial_Device *dev)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [UsbSerial_Device](capi-serialddk-usbserial-device.md) *dev | 设备句柄。 |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
 
 **返回：**
 
@@ -356,7 +356,7 @@ int32_t OH_UsbSerial_FlushInput(UsbSerial_Device *dev)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [UsbSerial_Device](capi-serialddk-usbserial-device.md) *dev | 设备句柄。 |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
 
 **返回：**
 
@@ -383,7 +383,7 @@ int32_t OH_UsbSerial_FlushOutput(UsbSerial_Device *dev)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [UsbSerial_Device](capi-serialddk-usbserial-device.md) *dev | 设备句柄。 |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
 
 **返回：**
 
