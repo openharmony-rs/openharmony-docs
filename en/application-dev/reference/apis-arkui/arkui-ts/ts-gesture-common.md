@@ -132,7 +132,7 @@ Represents a touch gesture recognizer.
 
 getEventTargetInfo(): EventTargetInfo
 
-Obtains the information about the component corresponding to this touch gesture recognizer.
+Obtains the information about the component corresponding to this gesture recognizer.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -142,13 +142,13 @@ Obtains the information about the component corresponding to this touch gesture 
 
 | Type    | Description       |
 | ------ | --------- |
-| [EventTargetInfo](#eventtargetinfo12) | Information about the component corresponding to the current touch gesture recognizer.|
+| [EventTargetInfo](#eventtargetinfo12) | Information about the component corresponding to the current gesture recognizer.|
 
 ### cancelTouch<sup>20+</sup>
 
 cancelTouch(): void
 
-Sends a touch cancellation event to this touch gesture recognizer.
+Sends a touch cancellation event to this gesture recognizer.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -314,7 +314,7 @@ Checks whether the preset gesture detects the number of fingers on the screen.
 
 | Type    | Description       |
 | ------ | --------- |
-| boolean | Whether the preset gesture detects the number of fingers on the screen. Returns **true** if the gesture event is bound and the number of fingers on the touch screen is detected; **false** otherwise.|
+| boolean | Whether the preset gesture will detect the number of fingers on the screen. **true** if the gesture event is bound and detects the number of fingers; **false** otherwise.|
 
 ### preventBegin<sup>20+</sup>
 

@@ -6,12 +6,9 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-> **说明：**
->
-> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本Interface首批接口从API version 9开始支持。
-
 播放管理类，用于管理和播放媒体资源。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9)构建一个AVPlayer实例。
+
+在使用AVPlayer实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。[on('stateChange')](#onstatechange9)：监听播放状态机AVPlayerState切换。[on('error')](#onerror9)：监听错误事件。
 
 应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则在一定情况下可能导致系统终止应用。
 
@@ -19,10 +16,8 @@ Audio/Video播放demo可参考：[音频播放开发指导](../../media/media/us
 
 > **说明：**
 >
-> 在使用AVPlayer实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。
->
-> - [on('stateChange')](#onstatechange9)：监听播放状态机AVPlayerState切换。
-> - [on('error')](#onerror9)：监听错误事件。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本Interface首批接口从API version 9开始支持。
 
 ## 导入模块
 
@@ -1381,7 +1376,7 @@ isSeekContinuousSupported() : boolean
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| boolean | 媒体源是否支持以SEEK_CONTINUOUS模式进行seek。 |
+| boolean | 媒体源是否支持以SEEK_CONTINUOUS模式进行seek。true表示支持，false表示不支持。 |
 
 **示例：**
 

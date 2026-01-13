@@ -82,7 +82,7 @@ Called when the started EmbeddedUIExtensionAbility is terminated by calling **te
 
 onError(callback: ErrorCallback)
 
-Called when an error occurs during the running of the started EmbeddedUIExtensionAbility. You can obtain the error information (code, name, and message) from the callback parameters and handle the error. For details about service error codes, see [UIExtension Error Codes](../errorcode-uiextension.md).
+Called when an error occurs during the running of the started EmbeddedUIExtensionAbility. Through the **code**, **name**, and **message** in the callback parameters, error information can be obtained and handled. For details about the error codes, see [UIExtension Error Codes](../errorcode-uiextension.md).
 
 > **NOTE**
 >

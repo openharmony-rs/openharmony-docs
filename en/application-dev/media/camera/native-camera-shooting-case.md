@@ -283,7 +283,7 @@ After obtaining the output stream capabilities supported by the camera, create a
         // Create a photo output stream.
         ret = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager, photoProfile, &photoOutput);
 
-        // Listen for the one-time photo capture callback.
+        // Listen for the callback of one-time photo capture.
         ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
 
         // Create a session.

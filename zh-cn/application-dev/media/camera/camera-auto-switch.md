@@ -36,7 +36,7 @@ struct Index {
   }
 
   async loadXComponent() {
-    //初始化XComponent。
+    // 初始化XComponent。
   }
 
   build() {
@@ -324,7 +324,7 @@ struct Index {
       return;
     }
 
-    //创建会话。
+    // 创建会话。
     try {
       this.mPhotoSession = this.mCameraManager.createSession(camera.SceneMode.NORMAL_PHOTO) as camera.PhotoSession;
     } catch (error) {

@@ -267,6 +267,7 @@
 5. \@Provide与\@Consume不支持装饰Function类型的变量，框架会抛出运行时错误。
 
 6. 从API version 20开始，支持跨BuilderNode配对\@Provide/\@Consume。在BuilderNode上树时，\@Consume通过key匹配找到最近的\@Provide，两者类型需要一致，如果不一致，则会抛出运行时错误。
+
    需要注意类型不相等判断，包括类实例的判断，比如：
 ```ts
 class A {}

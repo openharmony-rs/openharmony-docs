@@ -89,6 +89,7 @@ When memory is allocated using DMA_ALLOC, the stride must meet the hardware alig
 
 - The stride value must be an integer multiple of the number of bytes required by the hardware platform.
 - If the stride does not meet the alignment requirements, the system automatically pads the data.
+
 The stride value can be obtained by calling [getImageInfo()](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#getimageinfo-1).
 
 1. Call [getImageInfo()](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#getimageinfo-1) to obtain an ImageInfo object.

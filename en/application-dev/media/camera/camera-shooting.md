@@ -42,13 +42,13 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
    }
    ```
 
-3. Set the callback for the **'photoAvailable'** event and save the photo buffer as an image.
+3. Set up the callback for [on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11) and save the captured buffer as an image.
 
     For details about how to obtain the context, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
     To view the saved images and videos in Gallery, you must save them to the media library. For details, see [Saving Media Assets](../medialibrary/photoAccessHelper-savebutton.md).
 
-    Specifically, when [photoOutput.on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11) is called and a buffer is obtained, the buffer must be stored in the security component to the media library.
+    When the buffer is received via the [photoOutput.on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11) callback, it must be saved to the media library within a secure control.
    ```ts
    function setPhotoOutputCb(photoOutput: camera.PhotoOutput) {
    // After the callback is set, call capture() of photoOutput to transfer the photo buffer back to the callback.

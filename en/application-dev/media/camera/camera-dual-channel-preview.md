@@ -12,7 +12,7 @@ Dual-channel preview means that an application can use two preview streams at th
 
 The camera application controls the camera device to implement basic operations such as image display (preview), photo saving (photo capture), and video recording. The camera model is developed on the surface model, meaning that an application transfers data through the surface. Specifically, it obtains the photo stream data through the surface of an ImageReceiver object and the preview stream data through the surface of an **XComponent**.
 
-To implement dual-channel preview (there are two preview streams instead of one preview stream plus one photo stream), you must create a previewOutput object through the surface of an ImageReceiver object. Other processes are the same as those of the photo stream and preview stream.
+To implement dual-channel preview, you can first refer to [Photo Capture](camera-shooting.md), change the photo stream to another preview stream, create an additional **previewOutput** using the **surface** of **ImageReceiver**, and follow the same process as [Photo Capture](camera-shooting.md) for the remaining steps.
 
 Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
 
@@ -66,7 +66,7 @@ The figure below shows the recommended API calling process of the dual-channel p
     }
     ```
 3. Obtain the image or PixelMap formats of the preview stream received by ImageReceiver. For details about the image format, see the **format** parameter in [Image](../../reference/apis-image-kit/arkts-apis-image-Image.md). For details about the [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) format, see [PixelMapFormat](../../reference/apis-image-kit/arkts-apis-image-e.md#pixelmapformat7).
-
+    
     ```ts
     // Mappings between image formats and PixelMap formats.
     let formatToPixelMapFormatMap = new Map<number, image.PixelMapFormat>([
@@ -91,6 +91,7 @@ The figure below shows the recommended API calling process of the dual-channel p
     > - When you create a [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) instance using the [createPixelMap](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmap8) API, the properties such as **Size** and **srcPixelFormat** must match **Size** and **Format** configured in preview output stream's preview profile. For details about the image pixel format of ImageReceiver, see [PixelMapFormat](../../reference/apis-image-kit/arkts-apis-image-e.md#pixelmapformat7). For details about the output format the preview profile, see [CameraFormat](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraformat).
     > - Due to the variability across different devices, you must obtain the preview profiles supported by the current device by calling [getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11) before creating a preview output stream. Then based on actual service requirements, select a suitable preview profile that meets the required [CameraFormat](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraformat) and [Size](../../reference/apis-camera-kit/arkts-apis-camera-i.md#size).
     > - The actual format of the preview stream image data received by ImageReceiver is determined by the **format** parameter in the preview profile that you select based on service requirements when creating the preview output stream. For details, see [Enabling a Preview Stream to Obtain Data](camera-dual-channel-preview.md#enabling-a-preview-stream-to-obtain-data).
+
 
     ```ts
     function onImageArrival(receiver: image.ImageReceiver): void {
@@ -194,6 +195,8 @@ The figure below shows the recommended API calling process of the dual-channel p
 
     Method 3: Pass **imgComponent.byteBuffer** and **stride** to the API that supports stride.
 
+
+
 ### Second Preview Stream Used for Image Display
 
 To obtain the surface ID of the second preview stream, you must first create an **XComponent** for displaying the preview stream. For details about how to obtain the surface ID, see [getXComponentSurfaceId](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9). The **XComponent** capability is provided by the UI. For details, see [XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md).
@@ -206,13 +209,13 @@ struct example {
   imageWidth: number = 1920;
   imageHeight: number = 1080;
   private uiContext: UIContext = this.getUIContext();
+  private mXComponentOptions: XComponentOptions = {
+    type: XComponentType.SURFACE,
+    controller: this.xComponentCtl
+  }
 
   build() {
-    XComponent({
-      id: 'componentId',
-      type: XComponentType.SURFACE,
-      controller: this.xComponentCtl
-    })
+    XComponent(this.mXComponentOptions)
       .onLoad(async () => {
         console.info('onLoad is called');
         this.surfaceId = this.xComponentCtl.getXComponentSurfaceId(); // Obtain the surface ID of the component.
@@ -224,6 +227,8 @@ struct example {
   }
 }
 ```
+
+
 
 ### Enabling a Preview Stream to Obtain Data
 
@@ -254,6 +259,8 @@ function createDualPreviewOutput(cameraManager: camera.CameraManager, previewPro
   }
 }
 ```
+
+ 
 
 ## Complete Sample Code
 
@@ -287,6 +294,10 @@ struct Index {
   private cameraPermission: Permissions = 'ohos.permission.CAMERA'; // For details about how to request permissions, see the instructions provided at the beginning of this topic.
   @State isShow: boolean = false;
   private cameraResources: CameraResources = {};
+  private mXComponentOptions: XComponentOptions = {
+    type: XComponentType.SURFACE,
+    controller: this.xComponentCtl
+  }
 
   async requestPermissionsFn(): Promise<void> {
     let atManager = abilityAccessCtrl.createAtManager();
@@ -436,11 +447,7 @@ struct Index {
   build() {
     Column() {
       if (this.isShow) {
-        XComponent({
-          id: 'componentId',
-          type: XComponentType.SURFACE,
-          controller: this.xComponentCtl
-        })
+        XComponent(this.mXComponentOptions)
           .onLoad(async () => {
             console.info('onLoad is called');
             this.xComponentSurfaceId = this.xComponentCtl.getXComponentSurfaceId(); // Obtain the surface ID of the component.

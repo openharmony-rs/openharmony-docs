@@ -24,7 +24,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
 
 To view the saved images and videos in Gallery, you must save them to the media library. For details, see [Saving Media Assets](../medialibrary/photoAccessHelper-savebutton.md).
 
-Specifically, when [photoOutput.on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11) is called and a buffer is obtained, the buffer must be stored in the security component to the media library.
+When the buffer is received via the [photoOutput.on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11) callback, it must be saved to the media library within a secure control.
 ```ts
 import { camera } from '@kit.CameraKit';
 import { image } from '@kit.ImageKit';

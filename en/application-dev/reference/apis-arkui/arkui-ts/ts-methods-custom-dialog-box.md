@@ -194,9 +194,10 @@ This example demonstrates how to open one or more custom dialog boxes within ano
 @CustomDialog
 struct CustomDialogExampleTwo {
   controllerTwo?: CustomDialogController;
+
   build() {
     Column() {
-      Text('I'm the second dialog box')
+      Text(`I'm the second dialog box`)
         .fontSize(30)
         .height(100)
       Button('Close Second Dialog Box')
@@ -209,6 +210,7 @@ struct CustomDialogExampleTwo {
     }
   }
 }
+
 @CustomDialog
 @Component
 struct CustomDialogExample {
@@ -217,7 +219,7 @@ struct CustomDialogExample {
   dialogControllerTwo: CustomDialogController | null = new CustomDialogController({
     builder: CustomDialogExampleTwo(),
     alignment: DialogAlignment.Bottom,
-    onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {
+    onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
       console.info(`reason= ${dismissDialogAction.reason}`);
       console.info('dialog onWillDismiss');
       if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
@@ -227,7 +229,8 @@ struct CustomDialogExample {
         dismissDialogAction.dismiss();
       }
     },
-    offset: { dx: 0, dy: -25 } })
+    offset: { dx: 0, dy: -25 }
+  })
   controller?: CustomDialogController;
   // You can pass in multiple other controllers in the CustomDialog to open one or more other CustomDialogs in the CustomDialog. In this case, you must place the controller pointing to the self behind all controllers.
   cancel: () => void = () => {
@@ -269,9 +272,11 @@ struct CustomDialogExample {
         })
         .margin(20)
     }.borderRadius(10)
+
     // When using the border or cornerRadius attribute, use it together with the borderRadius attribute.
   }
 }
+
 @Entry
 @Component
 struct CustomDialogUser {
@@ -279,14 +284,18 @@ struct CustomDialogUser {
   @State inputValue: string = 'click me'
   dialogController: CustomDialogController | null = new CustomDialogController({
     builder: CustomDialogExample({
-      cancel: ()=> { this.onCancel(); },
-      confirm: ()=> { this.onAccept(); },
+      cancel: () => {
+        this.onCancel();
+      },
+      confirm: () => {
+        this.onAccept();
+      },
       textValue: this.textValue,
       inputValue: this.inputValue
     }),
     cancel: this.exitApp,
     autoCancel: true,
-    onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {
+    onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
       console.info(`reason= ${dismissDialogAction.reason}`);
       console.info('dialog onWillDismiss');
       if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
@@ -319,6 +328,7 @@ struct CustomDialogUser {
   exitApp() {
     console.info('Click the callback in the blank area');
   }
+
   build() {
     Column() {
       Button(this.inputValue)

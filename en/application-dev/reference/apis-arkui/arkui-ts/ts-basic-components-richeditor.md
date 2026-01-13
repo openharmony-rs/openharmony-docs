@@ -5877,7 +5877,7 @@ struct AutoSpacing {
     Column() {
       Column() {
         Row({ space: 2 }) {
-          Button ("Insert Chinese and Spanish content").onClick (() ==> {
+          Button("Insert Chinese and Spanish content").onClick (() ==> {
             this.controller.addTextSpan("Add text span",
               {
                 style:

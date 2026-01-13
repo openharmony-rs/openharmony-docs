@@ -151,7 +151,7 @@ Commits the modification on the file metadata to the database. This API uses an 
 
 | Name     | Type                       | Mandatory  | Description   |
 | -------- | ------------------------- | ---- | ----- |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback that returns no value.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the file metadata is modified successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -216,7 +216,7 @@ Commits the modification on the file metadata to the database. This API uses a p
 
 | Type                 | Description        |
 | ------------------- | ---------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; |Promise that returns no value.|
 
 **Error codes**
 
@@ -272,7 +272,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
-Closes a file. This API uses an asynchronous callback to return the result.
+Closes the current document This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -285,7 +285,7 @@ Closes a file. This API uses an asynchronous callback to return the result.
 | Name     | Type                       | Mandatory  | Description   |
 | -------- | ------------------------- | ---- | ----- |
 | fd       | number                    | Yes   | FD of the file to close.|
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback that returns no value.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the current file is closed successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -333,7 +333,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 close(fd: number): Promise&lt;void&gt;
 
-Closes a file. This API uses a promise to return the result.
+Closes the current document This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -394,7 +394,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-Obtains the thumbnail of this file. This API uses an asynchronous callback to return the result.
+Obtains the thumbnail of a file. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
@@ -406,7 +406,7 @@ Obtains the thumbnail of this file. This API uses an asynchronous callback to re
 
 | Name     | Type                                 | Mandatory  | Description              |
 | -------- | ----------------------------------- | ---- | ---------------- |
-| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback used to return the PixelMap of the thumbnail.|
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback used to return the result. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -465,7 +465,7 @@ Obtains the file thumbnail of the given size. This API uses an asynchronous call
 | Name     | Type                                 | Mandatory  | Description              |
 | -------- | ----------------------------------- | ---- | ---------------- |
 | size     | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | Yes   | Size of the thumbnail.           |
-| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback used to return the PixelMap of the thumbnail.|
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback used to return the result. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -640,7 +640,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
-Opens this file in read-only mode. This API uses an asynchronous callback to return the result.
+Opens the current file in read-only mode. This API uses an asynchronous callback to return the result.
 
 The returned FD must be closed when it is not required.
 
@@ -656,7 +656,7 @@ The returned FD must be closed when it is not required.
 
 | Name     | Type                         | Mandatory  | Description                                 |
 | -------- | --------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the file descriptor (FD) of the file opened.                           |
+| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the current file is opened successfully, **err** is **undefined**, and **data** is the file descriptor. Otherwise, **err** is an error object.|
 
 **Error codes**
 

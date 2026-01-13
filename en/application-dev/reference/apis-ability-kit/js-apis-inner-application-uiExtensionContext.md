@@ -1098,6 +1098,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;AbilityResult&gt;
 
 Opens an atomic service in an independent window and returns the result. This API uses a promise to return the result.
+
 The following situations may be possible for a started atomic service:
  - Normally, you can call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the atomic service. The result is returned to the caller.
  - If an exception occurs, for example, the atomic service is killed, an error message, in which **resultCode** is **-1**, is returned to the caller.
@@ -1181,11 +1182,12 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 Starts a UIAbility by using App Linking or Deep Linking. This API uses a promise to return the result.
 
 A URL in the standard format is passed in to the **link** field to start the target UIAbility based on the implicit Want matching rules. The target UIAbility must have the following filter characteristics to process links of App Linking:
-- The **actions** field contains **ohos.want.action.viewData**.
-- The **entities** field contains **entity.system.browsable**.
-- The **uris** field contains elements whose **scheme** is **https** and **domainVerify** is **true**.
+- The **actions** field must contain **ohos.want.action.viewData**.
+- The **entities** field must contain **entity.system.browsable**.
+- The **uris** field must contain elements whose **scheme** is **https** and **domainVerify** is **true**.
 
 If you want to obtain the result after the started UIAbility is terminated, set the **callback** parameter. For details about how to use this parameter, see [startAbilityForResult](#startabilityforresult).
+
 If an input parameter is invalid, for example, a mandatory parameter is not set or the URL set in **link** is not in the standard format, an exception is thrown. If the parameter verification is successful but an error occurs when starting the target UIAbility, the error information is returned through promise.
 
 > **NOTE**

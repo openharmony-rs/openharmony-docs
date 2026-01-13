@@ -207,8 +207,8 @@ ChipSymbolGlyphOptions定义前缀图标和后缀图标的属性。
 
 | 名称   | 类型       | 只读 | 可选 | 说明               |
 | ------ | ---------- | ---- | ------------------ | ------------------ |
-| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否  | 是  | 非激活时图标设定。<br>默认值：不显示前缀图标或后缀图标<br>值为undefined时，按默认值处理。 |
-| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否  | 是  | 激活时图标设定。<br>默认值：不显示前缀图标或后缀图标<br>值为undefined时，按默认值处理。 |
+| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否  | 是  | 非激活时图标设定。<br>默认值：不显示前缀图标或后缀图标<br>值为undefined时，按默认值处理。 |
+| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否  | 是  | 激活时图标设定。<br>默认值：不显示前缀图标或后缀图标<br>值为undefined时，按默认值处理。 |
 
 > **说明：**
 >

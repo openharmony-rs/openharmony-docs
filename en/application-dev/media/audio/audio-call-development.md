@@ -14,8 +14,8 @@ The sample code below demonstrates the basic process of using the AudioRenderer 
 
 ## Using AudioRenderer to Play the Peer Voice
 
-This process is similar to the process of [using AudioRenderer to develop audio playback](using-audiorenderer-for-playback.md). The key differences lie in the **audioRendererInfo** parameter and audio data source. In the **audioRendererInfo** parameter used for audio streams, **usage** must be set to **STREAM_USAGE_VOICE_COMMUNICATION**.
-  
+  This process is similar to the process of [using AudioRenderer to develop audio playback (ArkTs)](using-audiorenderer-for-playback.md). The key differences lie in the **audioRendererInfo** parameter and audio data source. In the **audioRendererInfo** parameter used for audio streams, **usage** must be set to **STREAM_USAGE_VOICE_COMMUNICATION**.
+
 ```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -262,9 +262,9 @@ struct Index {
 
 ## Using AudioCapturer to Record the Local Voice
 
-This process is similar to the process of [using AudioCapturer to develop audio recording](using-audiocapturer-for-recording.md). The key differences lie in the **audioCapturerInfo** parameter and audio data stream direction. In the **audioCapturerInfo** parameter used for audio streams, **source** must be set to **SOURCE_TYPE_VOICE_COMMUNICATION**.
+  This process is similar to the process of [using AudioCapturer to develop audio recording (ArkTs)](using-audiocapturer-for-recording.md). The key differences lie in the **audioCapturerInfo** parameter and audio data stream direction. In the **audioCapturerInfo** parameter used for audio streams, **source** must be set to **SOURCE_TYPE_VOICE_COMMUNICATION**.
 
-You must request the ohos.permission.MICROPHONE permission for all recording tasks. For details, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
+  You must request the ohos.permission.MICROPHONE permission for all recording tasks. For details, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -314,7 +314,7 @@ async function initArguments(context: common.UIAbilityContext) {
   };
 }
 
-// Create an AudioRenderer instance, and set the events to listen for.
+// Create an AudioCapturer instance, and set the events to listen for.
 async function init() {
   audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => { // Create an AudioCapturer instance.
     if (err) {

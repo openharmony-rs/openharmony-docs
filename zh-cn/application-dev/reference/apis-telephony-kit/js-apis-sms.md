@@ -455,7 +455,7 @@ promise.then((data: number) => {
 | ------------------------ | --------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | hasReplyPath             | boolean                                 |  否  |  否  | 收到的短信是否包含“TP-Reply-Path”，默认为false。<br/>-true：是<br/>-false：否<br/>“TP-Reply-Path”：设备根据发送SMS消息的短消息中心进行回复。  |
 | isReplaceMessage         | boolean                                 |  否  |  否  | 收到的短信是否为“替换短信”，默认为false。<br/>-true：是<br/>-false：否<br/>“替换短信”有关详细信息，参见 [“3GPP TS 23.040 9.2.3.9”](https://www.3gpp.org/ftp/specs/archive/23_series/23.040)。 |
-| isSmsStatusReportMessage | boolean                                 |  否  |  否  | 当前消息是否为“短信状态报告”，默认为false。<br/>-true：是<br/>-false：否<br/>“短信状态报告”是一种特定格式的短信，被用来从Service Center到Mobile Station传送状态报告。|
+| isSmsStatusReportMessage | boolean                                 |  否  |  否  | 当前消息是否为“短信状态报告”，默认为false。<br/>-true：是<br/>-false：否<br/>“短信状态报告”是一种特定格式的短信，被用来从Service Center到Mobile Station传输状态报告。|
 | messageClass             | [ShortMessageClass](#shortmessageclass) |  否  |  否  | 短信类型。                                                   |
 | pdu                      | Array&lt;number&gt;                     |  否  |  否  | SMS消息中的协议数据单元 (PDU)。                            |
 | protocolId               | number                                  |  否  |  否  | 发送短信时使用的协议标识。                                   |

@@ -16,9 +16,9 @@ The RecentPhotoComponent embedded in the UI of an application allows the applica
 
 ```ts
 import {
-  RecentPhotoComponent, RecentPhotoOptions, RecentPhotoCheckResultCallback,
+  RecentPhotoComponent, RecentPhotoOptions, RecentPhotoCheckResultCallback, RecentPhotoInfo, RecentPhotoCheckInfoCallback,
   RecentPhotoClickCallback, PhotoSource, RecentPhotoInfo, RecentPhotoCheckInfoCallback,
-} from '@ohos.file.RecentPhotoComponent';
+} from '@kit.MediaLibraryKit';
 ```
 
 ## Properties
@@ -27,14 +27,9 @@ The [universal properties](../apis-arkui/arkui-ts/ts-component-general-attribute
 
 ## RecentPhotoComponent
 
-RecentPhotoComponent({
-  recentPhotoOptions?: RecentPhotoOptions,
-  onRecentPhotoCheckResult?: RecentPhotoCheckResultCallback,
-  onRecentPhotoClick: RecentPhotoClickCallback,
-  onRecentPhotoCheckInfo?: RecentPhotoCheckInfoCallback,
-})
+RecentPhotoComponent({ recentPhotoOptions?: RecentPhotoOptions, onRecentPhotoCheckResult?: RecentPhotoCheckResultCallback, onRecentPhotoClick: RecentPhotoClickCallback, onRecentPhotoCheckInfo?: RecentPhotoCheckInfoCallback, })
 
-Allows the application  to access the recent image or video in the user directory without the media access permission.
+**RecentPhotoComponent** allows an application to access the latest image or video file in the public directory according to configuration items without applying for media access permissions.
 
 **Decorator**: @Component
 
@@ -57,7 +52,7 @@ Represents the configuration of the recent image or video.
 
 | Name                   | Type                                                                                     | Read-Only| Optional | Description  |
 |-------------------------|-----------------------------------------------------------------------------------------|-------|-------|--------|
-| period                  | number                                                                                  | No| Yes   | Time period for the recent image or video, in seconds. The longest duration you can set is 1 day (86400s).<br>If the value is less than or equal to 0, greater than 86400, or not set, the most recent photos over the longest period of up to one day is displayed by default. If there is no image or video in the specified period, the component is not displayed.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| period                  | number                                                                                  | No| Yes   | Time period for displaying the latest image sorted by creation time, in seconds. The longest duration you can set is 1 day (86400s).<br>If the value is less than or equal to 0, greater than 86400, or not set, the most recent photos over the longest period of up to one day is displayed by default. If there is no image or video in the specified period, the component is not displayed.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | No   | Yes| Types of the file displayed. The default value is **PhotoViewMIMETypes.IMAGE_VIDEO_TYPE**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                        |
 | photoSource             | [PhotoSource](#photosource)                                                             | No   | Yes| Source of the recent image or video, for example, image or video taken by the camera or screenshot. By default, the source is not restricted.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                              |
 | isAutoRefreshSupported<sup>20+</sup>  | boolean                                                                                 | No   | Yes| Whether the **RecentPhotoComponent** automatically refreshes when there are changes (including additions, deletions, or modifications) to the recent images or videos that meet the requirements.<br>If the component's originally displayed image or video is deleted and there are no other images or videos that meet the requirements, a placeholder is displayed and the component does not automatically close.<br>The default value is **false**, indicating that the component does not automatically refresh. If this parameter is set to **true**, all images are displayed, and the **period** parameter is invalid.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
@@ -150,14 +145,16 @@ Enumerates the sources of the image or video data.
 ```ts
 // xxx.ets
 import {
-  photoAccessHelper
+  photoAccessHelper,
+   RecentPhotoComponent, 
+   RecentPhotoOptions, 
+   PhotoSource, 
+   RecentPhotoInfo, 
+   RecentPhotoCheckResultCallback, 
+   RecentPhotoClickCallback, 
+   RecentPhotoCheckInfoCallback,
+   BaseItemInfo
 } from '@kit.MediaLibraryKit';
-import {
-  RecentPhotoComponent, RecentPhotoOptions, PhotoSource, RecentPhotoInfo, RecentPhotoCheckResultCallback, RecentPhotoClickCallback, RecentPhotoCheckInfoCallback
-} from '@ohos.file.RecentPhotoComponent';
-import {
-  BaseItemInfo
-} from '@ohos.file.PhotoPickerComponent';
 
 @Entry
 @Component

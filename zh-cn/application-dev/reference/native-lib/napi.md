@@ -50,7 +50,7 @@ libace_napi.z.so
 |FUNC|napi_is_exception_pending|判断是否出现了异常。|10|
 |FUNC|napi_fatal_error|引发致命错误以立即终止进程。|10|
 |FUNC|napi_open_handle_scope|创建一个上下文环境使用。|10|
-|FUNC|napi_close_handle_scope|关闭传入的上下文环境，关闭后，全部在其中声明的引用都将被关闭。|10|
+|FUNC|napi_close_handle_scope|关闭传入的上下文环境，关闭后，所有在其中声明的引用都将被关闭。|10|
 |FUNC|napi_open_escapable_handle_scope|创建出一个可逃逸的handle scope，可将范围内声明的值返回到父作用域。|10|
 |FUNC|napi_close_escapable_handle_scope|关闭传入的可逃逸的handle scope。|10|
 |FUNC|napi_escape_handle|提升传入的js object的生命周期到其父作用域。|10|
@@ -230,7 +230,7 @@ libace_napi.z.so
 
 - 当code类型不匹配时，OpenHarmony接口返回napi_invalid_arg，标准库接口返回napi_string_expected。
 
-- OpenHarmony的导出接口允许code属性设置失败，标准库接口会判断设置执行情况，若设置失败，返回napi_genetic_failure。
+- OpenHarmony的导出接口允许code属性设置失败，标准库接口会判断设置执行情况，若设置失败，返回napi_generic_failure。
 
 - OpenHarmony中创建的错误类型为Error，标准库创建的错误类型为TypeError。
 
@@ -244,7 +244,7 @@ libace_napi.z.so
 
 - 当code类型不匹配时，OpenHarmony接口返回napi_invalid_arg，标准库接口返回napi_string_expected。
 
-- OpenHarmony的导出接口允许code属性设置失败，标准库接口会判断设置执行情况，若设置失败，返回napi_genetic_failure。
+- OpenHarmony的导出接口允许code属性设置失败，标准库接口会判断设置执行情况，若设置失败，返回napi_generic_failure。
 
 - OpenHarmony中创建的错误类型为Error，标准库创建的错误类型为RangeError。
 
@@ -1466,7 +1466,7 @@ napi_status napi_wrap_enhance(napi_env env,
 
 - napi_invalid_arg：参数env、js_object或native_object为空时返回。
 
-- napi_object_expected：参数js_object不是ArkTs对象或函数时返回。
+- napi_object_expected：参数js_object不是ArkTS对象或函数时返回。
 
 - napi_pending_exception：如果有未捕获的异常或执行过程中发生异常时返回。
 
@@ -1813,6 +1813,7 @@ napi_status napi_create_strong_sendable_reference(napi_env env,
 1. 只能为[Sendable对象](../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)创建`napi_sendable_ref`。
 2. `napi_sendable_ref`可跨ArkTS线程使用，在多线程操作时，调用者需自己保证释放时机，防止出现释放后使用的问题。
 3. 同一进程内，同时存活的`napi_sendable_ref`最大数量为51200个。
+4. 调用者需要保证传入的`env`参数是当前调用接口的ArkTS线程环境对象，避免将其他ArkTS线程的`env`作为参数传入导致出现[多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)。
 
 **参数：**
 
@@ -1836,6 +1837,7 @@ napi_status napi_delete_strong_sendable_reference(napi_env env, napi_sendable_re
 
 删除Sendable强引用。使用该接口需要注意以下几点：
 1. 不可将`napi_ref`、`napi_strong_ref`等其他引用强转成`napi_sendable_ref`作为本接口入参。`napi_delete_strong_sendable_reference`接口仅允许接收由`napi_create_strong_sendable_reference`创建的`napi_sendable_ref`。
+2. 调用者需要保证传入的`env`参数是当前调用接口的ArkTS线程环境对象，避免将其他ArkTS线程的`env`作为参数传入导致出现[多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)。
 
 **参数：**
 
@@ -1859,6 +1861,7 @@ napi_status napi_get_strong_sendable_reference_value(napi_env env,
 
 根据Sendable强引用获取其关联的ArkTS对象值。使用该接口需要注意以下几点：
 1. 不可将`napi_ref`、`napi_strong_ref`等其他引用强转成`napi_sendable_ref`作为本接口入参。`napi_get_strong_sendable_reference_value`接口仅允许接收由`napi_create_strong_sendable_reference`创建的`napi_sendable_ref`。
+2. 调用者需要保证传入的`env`参数是当前调用接口的ArkTS线程环境对象，避免将其他ArkTS线程的`env`作为参数传入导致出现[多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)。
 
 **参数：**
 

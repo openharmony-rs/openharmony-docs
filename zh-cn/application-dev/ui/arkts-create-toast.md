@@ -62,11 +62,9 @@ export struct DefaultAndTopToastExample {
     // ···
       Column({ space: 10 }) {
         TextInput()
-        Button() {
-          Text('Toast of the DEFAULT type')
-            .fontSize(20)
-            .fontWeight(FontWeight.Bold)
-        }
+        Button('Toast of the DEFAULT type')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
         .height('100')
         .width('100%')
         .onClick(() => {
@@ -79,11 +77,9 @@ export struct DefaultAndTopToastExample {
         })
 
         Blank().height(200);
-        Button() {
-          Text('Toast of the TOPMOST type')
-            .fontSize(20)
-            .fontWeight(FontWeight.Bold)
-        }
+        Button('Toast of the TOPMOST type')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
         .height('100')
         .width('100%')
         .onClick(() => {
@@ -99,6 +95,8 @@ export struct DefaultAndTopToastExample {
   }
 }
 ```
+
+![defaultToast](figures/defaultToast.gif)
 
 ## 创建即时反馈
 

@@ -13,12 +13,12 @@ You can use the APIs of this module to configure the concerned information, obta
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The current page contains only the system APIs of the current module. For details about other public APIs, see [AccessibilityExtensionContext](js-apis-inner-application-accessibilityExtensionContext.md).
 
 ## How to Use
 
-Before using the **AccessibilityExtensionContext** module, you must define a child class that inherits from **AccessibilityExtensionAbility**.
+Before using **AccessibilityExtensionContext**, you need to obtain an **AccessibilityExtensionContext** instance through an **AccessibilityExtensionAbility** child class instance.
 
 ```ts
 import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
@@ -32,8 +32,9 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 ## Parameter<sup>20+</sup>
 
-Sets the parameter for a specific operation when the accessibility node element executes this operation.
-For details, see [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction).
+Sets the parameter for a specific operation when the accessibility node element executes this operation. For details, see [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction).
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -42,7 +43,7 @@ For details, see [AccessibilityAction](./js-apis-accessibility-sys.md#accessibil
 | setText             | string | No  |Yes|Text content of the component.                |
 | selectTextBegin     | string | No | Yes|Start coordinate of the selected text in the component, for example, **'2'**.       |
 | selectTextEnd       | string | No  | Yes|End coordinate of the selected text in the component, for example, **'8'**.     |
-| selectTextInForWard | bool   | No   | Yes|Whether to select the text within the component forward, for example, **true**.     |
+| selectTextInForWard | boolean   | No   | Yes|Whether to forward select the text within the component. The value **true** indicates to forward select the text, and the value **false** indicates the opposite.     |
 | offset              | string | No  | Yes|Cursor offset, for example, **'1'**.   |
 | spanId              | string | No  |Yes|ID of the hyperlink wrapped by the span tag.               |
 | scrollType          | string | No  | Yes|Scroll type of the component. The options are **'fullScreen'** and **'halfScreen'**.|
@@ -54,8 +55,9 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 
 ## AccessibilityGrid<sup>20+</sup>
 
-Defines accessibility grid information.
-For details, see [AccessibilityElement.currentItem](#accessibilityelement12).
+Defines accessibility grid information. For details, see [AccessibilityElement.currentItem](#accessibilityelement).
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -67,8 +69,9 @@ For details, see [AccessibilityElement.currentItem](#accessibilityelement12).
 
 ## AccessibilitySpan<sup>20+</sup>
 
-Defines the information about the hyperlink wrapped by the span tag.
-For details, see [AccessibilityElement.spans](#accessibilityelement12).
+Defines the information about the hyperlink wrapped by the span tag. For details, see [AccessibilityElement.spans](#accessibilityelement).
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -83,9 +86,11 @@ For details, see [AccessibilityElement.spans](#accessibilityelement12).
 
 ## startAbility<sup>12+</sup>
 
-startAbility(want: Want): Promise\<void>;
+startAbility(want: Want): Promise\<void>
 
 Starts the foreground page. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -107,31 +112,65 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message                                    |
 | ------- | ---------------------------------------- |
-| 201 | Permission denied. Interface caller does not have permission. |
+| 201 | The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```ts
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
 
-let want: Want = {
-  bundleName: 'com.huawei.hmos.photos',
-  abilityName: 'com.huawei.hmos.photos.MainAbility'
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let want: Want = {
+      bundleName: 'com.huawei.hmos.photos',
+      abilityName: 'com.huawei.hmos.photos.MainAbility'
+    }
+
+    this.context.startAbility(want).then(() => {
+      console.info(`startAbility Succeeded enable ability`);
+    }).catch((err: BusinessError) => {
+      console.error(`startAbility failed to enable ability, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
 }
-
-axContext.startAbility(want).then(() => {
-  console.info(`startAbility Succeeded enable ability`);
-}).catch((err: BusinessError) => {
-  console.error(`startAbility failed to enable ability, Code is ${err.code}, message is ${err.message}`);
-});
 ```
 
 ## AccessibilityExtensionContext.getElements<sup>18+</sup>
 
-getElements(windowId: number, elementId?: number): Promise<Array&lt;AccessibilityElement&gt;>;
+getElements(windowId: number, elementId?: number): Promise<Array&lt;AccessibilityElement&gt;>
 
 Obtains node elements in batches. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -160,24 +199,57 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
+import {
+  AccessibilityElement,
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let windowId: number = 10;
-let elementId: number = 10;
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
 
-axContext.getElements(windowId, elementId).then((data:AccessibilityElement[]) => {
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
-});
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let windowId: number = 10;
+    let elementId: number = 10;
+
+    this.context.getElements(windowId, elementId).then((data:AccessibilityElement[]) => {
+      console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
 ```
 
 ## AccessibilityExtensionContext.getDefaultFocusedElementIds<sup>18+</sup>
 
-getDefaultFocusedElementIds(windowId: number): Promise<Array&lt;number&gt;>;
+getDefaultFocusedElementIds(windowId: number): Promise<Array&lt;number&gt;>
 
 Obtains the custom default focuses of an application. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -205,16 +277,46 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let windowId: number = 10;
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
 
-axContext.getDefaultFocusedElementIds(windowId).then((data: number[]) => {
-  console.info(`Succeeded in get default focus, ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to get default focus, Code is ${err.code}, message is ${err.message}`);
-});
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let windowId: number = 10;
+
+    this.context.getDefaultFocusedElementIds(windowId).then((data: number[]) => {
+      console.info(`Succeeded in get default focus, ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to get default focus, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
 ```
 
 ## AccessibilityExtensionContext.holdRunningLockSync<sup>20+</sup>
@@ -224,6 +326,8 @@ holdRunningLockSync(): void
 Holds the running lock. After the lock is held, the screen will not turn off automatically.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -239,13 +343,42 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.holdRunningLockSync();
-} catch (err) {
-  console.error(`Failed to hold RunningLock, Code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.holdRunningLockSync();
+    } catch (err) {
+      console.error(`Failed to hold RunningLock, Code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -257,6 +390,8 @@ Releases the running lock. After the lock is released, the screen will automatic
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 **Error codes**
@@ -271,13 +406,42 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.unholdRunningLockSync();
-} catch (err) {
-  console.error(`Failed to unhold RunningLock, code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.unholdRunningLockSync();
+    } catch (err) {
+      console.error(`Failed to hold RunningLock, Code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -290,6 +454,8 @@ Subscribes to the pre-disconnection event of the accessibility extension service
 Used together with [notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20); otherwise, the accessibility extension service is automatically disconnected 30 seconds later by default.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -312,15 +478,44 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.on('preDisconnect', () => {
-    console.info(`To do something before accessibilityExtension disconnect.`);
-  });
-} catch (err) {
-  console.error(`Failed to register, code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.on('preDisconnect', () => {
+        console.info(`To do something before accessibilityExtension disconnect.`);
+      });
+    } catch (err) {
+      console.error(`Failed to register, code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -331,6 +526,8 @@ off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 Unsubscribes from the pre-disconnection event of the accessibility extension service. This API is not called until the accessibility extension service is disconnected. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -353,15 +550,44 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.off('preDisconnect', () => {
-    console.info(`To do something before accessibilityExtension disconnect.`);
-  });
-} catch (err) {
-  console.error(`Failed to unRegister, code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.off('preDisconnect', () => {
+        console.info(`To do something before accessibilityExtension disconnect.`);
+      });
+    } catch (err) {
+      console.error(`Failed to unRegister, code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -374,6 +600,8 @@ Notifies the accessibility service that the accessibility extension service can 
 This API must be used together with the [on('preDisconnect')](#accessibilityextensioncontextonpredisconnect20) API. If the **on('preDisconnect')** API is not called, this API does not take effect.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -389,13 +617,42 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  axContext.notifyDisconnect();
-} catch (err) {
-  console.error(`Failed to notify accessibility, code is ${err.code}, message is ${err.message}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.notifyDisconnect();
+    } catch (err) {
+      console.error(`Failed to notify accessibility, code is ${err.code}, message is ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -407,12 +664,14 @@ Obtains the element that is currently focused. This API uses a promise to return
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 **Return value**
 | Type                                | Description                   |
 | ----------------------------------- | ---------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)>| Promise used to return the result.|
+| Promise\<[AccessibilityElement](#accessibilityelement)>| Promise used to return the result.|
 
 **Error codes**
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
@@ -427,23 +686,56 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
+import {
+  AccessibilityElement,
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
-  console.info(`Succeeded in get accessibility focused element, ${element.bundleName}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to get accessibility focused element, Code is ${err.code}, message is ${err.message}`);
-});
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    this.context.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
+      console.info(`Succeeded in get accessibility focused element, ${element.bundleName}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to get accessibility focused element, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
 ```
 
 ## getRootInActiveWindow<sup>20+</sup>
 
-getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#accessibilityelement12)>;
+getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#accessibilityelement)>;
 
 Obtains the root element of an active window. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -455,7 +747,7 @@ Obtains the root element of an active window. This API uses a promise to return 
 **Return value**
 | Type                                | Description                   |
 | ----------------------------------- | ---------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)>| Promise used to return the result.|
+| Promise\<[AccessibilityElement](#accessibilityelement)>| Promise used to return the result.|
 
 **Error codes**
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
@@ -469,25 +761,58 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
+import {
+  AccessibilityElement,
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let windowId: number = 0;
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
 
-axContext.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
-  console.info(`Succeeded in get root inactive window element, ${element.bundleName}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to get root inactive window element, Code is ${err.code}, message is ${err.message}`);
-});
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let windowId: number = 0;
+
+    this.context.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
+      console.info(`Succeeded in get root inactive window element, ${element.bundleName}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to get root inactive window element, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
 ```
 
 ## getAccessibilityWindowsSync<sup>20+</sup>
 
-getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#accessibilityelement12)>
+getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#accessibilityelement)>
 
 Obtains the accessibility windows.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -500,7 +825,7 @@ Obtains the accessibility windows.
 
 | Type                                | Description                   |
 | ----------------------------------- | ---------------------- |
-| Array\<[AccessibilityElement](#accessibilityelement12)> | List of windows.|
+| Array\<[AccessibilityElement](#accessibilityelement)> | List of windows.|
 
 **Error codes**
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
@@ -513,25 +838,56 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-try {
-  let displayId: number = 0;
-  let windowList = context?.getAccessibilityWindowsSync(displayId);
-  if (windowList) {
-    for (let window of windowList) {
-      console.info(`getAccessibilityWindowsSync: windowId: ${window.windowId}`);
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      let displayId: number = 0;
+      let windowList = this.context.getAccessibilityWindowsSync(displayId);
+      if (windowList) {
+        for (let window of windowList) {
+          console.info(`getAccessibilityWindowsSync: windowId: ${window.windowId}`);
+        }
+      }
+    } catch (err) {
+      console.error(`[FAILED] getAccessibilityWindowsSync: ${err.code} ${err.message}`)
     }
   }
-} catch (err) {
-  console.error(`[FAILED] getAccessibilityWindowsSync: ${err.code} ${err.message}`)
 }
 ```
 
-## AccessibilityElement<sup>12+</sup>
+## AccessibilityElement
 
 Defines the accessibility node element. Before calling the APIs of **AccessibilityElement**, you should call [AccessibilityExtensionContext.getAccessibilityFocusedElement()](#getaccessibilityfocusedelement20) or [AccessibilityExtensionContext.getRootInActiveWindow()](#getrootinactivewindow20) to obtain an **AccessibilityElement** instance.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -541,10 +897,10 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
 | accessibilityFocused<sup>20+</sup> | boolean | No| Yes| Whether the element is focused for accessibility purposes. The value **true** indicates that the element is focused, and **false** indicates the opposite.<br>Default value: **false**.|
 | bundleName<sup>20+</sup> | string                                                             | No | Yes | Bundle name.|
-| checkable<sup>20+</sup> | boolean | No| Yes| Whether the element can be checked. The value **true** indicates that the element can be checked, and **false** indicates the opposite.<br>Default value: **false**.|
+| checkable<sup>20+</sup> | boolean | No| Yes| Whether the element is checkable. The value **true** indicates that the element is checkable, and **false** indicates the opposite.<br>Default value: **false**.|
 | checked<sup>20+</sup> | boolean | No| Yes| Whether the element is checked. The value **true** indicates that the element is checked, and **false** indicates the opposite.<br>Default value: **false**.|
 | clickable<sup>20+</sup> | boolean | No| Yes| Whether the element is clickable. The value **true** indicates that the element is clickable, and **false** indicates the opposite.<br>Default value: **false**.|
-| componentId<sup>20+</sup> | number | No| Yes| ID of the component to which the element belongs.<br>Default value: **1**.|
+| componentId<sup>20+</sup> | number | No| Yes| ID of the component to which the element belongs.<br>Default value: **-1**.|
 | componentType<sup>20+</sup> | string                                                             | No | Yes | Type of the component to which the element belongs.|
 | contents<sup>20+</sup> | Array&lt;string&gt;                                                | No | Yes | Content displayed in the element.|
 | currentIndex<sup>20+</sup> | number                                                             | No | Yes | Index of the current item.<br>Default value: **0**.|
@@ -552,7 +908,7 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 | editable<sup>20+</sup> | boolean | No| Yes| Whether the element is editable. The value **true** indicates that the element is editable, and **false** indicates the opposite.<br>Default value: **false**.|
 | endIndex<sup>20+</sup> | number                                                             | No | Yes | Index of the last list item displayed on the screen.<br>Default value: **0**.|
 | error<sup>20+</sup> | string                                                             | No | Yes | Error status of the element.|
-| focusable<sup>20+</sup> | boolean | No| Yes| Whether the element can be focused. The value **true** indicates that the element can be focused, and **false** indicates the opposite.<br>Default value: **false**.|
+| focusable<sup>20+</sup> | boolean | No| Yes| Whether the element is focusable. The value **true** indicates that the element is focusable, and **false** indicates the opposite.<br>Default value: **false**.|
 | hintText<sup>20+</sup> | string                                                             | No | Yes | Hint text.|
 | inputType<sup>20+</sup> | number                                                             | No | Yes | Type of the input text.<br>Default value: **0**.|
 | inspectorKey<sup>20+</sup> | string                                                             | No | Yes | Inspector key.|
@@ -566,7 +922,7 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 | lastContent<sup>20+</sup> | string                                                             | No | Yes | Last item.|
 | layer<sup>20+</sup> | number                                                             | No | Yes | Display layer of the element.|
 | longClickable<sup>20+</sup> | boolean | No| Yes| Whether the element can be long-pressed. The value **true** indicates that the element can be long-pressed, and **false** indicates the opposite.<br>Default value: **false**.|
-| pageId<sup>20+</sup> | number | No| Yes| Page ID.<br>Default value: **1**.|
+| pageId<sup>20+</sup> | number | No| Yes| Page ID.<br>Default value: **-1**.|
 | pluralLineSupported<sup>20+</sup> | boolean | No| Yes| Whether the element supports multiple lines of text. The value **true** indicates that the element supports multiple lines of text, and **false** indicates the opposite.<br>Default value: **false**.|
 | rect<sup>20+</sup>                 | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#rect)                                                      | No | Yes | Rectangular area for the element.|
 | resourceName<sup>20+</sup>         | string                                                             | No | Yes | Resource name of the element.|
@@ -582,14 +938,14 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 | valueMax<sup>20+</sup>             | number                                                             | No | Yes | Maximum value.<br>Default value: **0**.|
 | valueMin<sup>20+</sup>             | number                                                             | No | Yes | Minimum value.<br>Default value: **0**.|
 | valueNow<sup>20+</sup>             | number                                                             | No | Yes | Current value.<br>Default value: **0**.|
-| windowId<sup>20+</sup>             | number                                                             | No | Yes | Window ID.<br>Default value: **1**.|
+| windowId<sup>20+</sup>             | number                                                             | No | Yes | Window ID.<br>Default value: **-1**.|
 | offset<sup>20+</sup>             | number              | No | Yes | Pixel offset of the content area from the top of a scrollable component (such as **List** and **Grid**).<br>Default value: **0**.|
 | textType<sup>20+</sup>             | string                                                             | No | Yes | Accessibility text type of an element, which is configured by the **accessibilityTextHint** attribute of the component.|
 | accessibilityText<sup>20+</sup> | string                                                  | No | Yes | Accessibility text information of an element.|
 | hotArea<sup>20+</sup>             | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#rect)                                                              | No | Yes | Hot area of an element.|
 | customComponentType<sup>20+</sup>             | string                                                             | No | Yes | Custom component type.|
-| accessibilityNextFocusId<sup>20+</sup>             | number                | No | Yes | ID of the next component to obtain the focus.<br>Default value: **1**.|
-| accessibilityPreviousFocusId<sup>20+</sup>             | number                | No | Yes | ID of the previous component to obtain the focus.<br>Default value: **1**.|
+| accessibilityNextFocusId<sup>20+</sup>             | number                | No | Yes | ID of the next component to obtain the focus.<br>Default value: **-1**.|
+| accessibilityPreviousFocusId<sup>20+</sup>             | number                | No | Yes | ID of the previous component to obtain the focus.<br>Default value: **-1**.|
 | extraInfo<sup>20+</sup>             | string     | No | Yes | Additional information about an element. The value is a JSON string.|
 | accessibilityScrollable<sup>20+</sup>             | boolean                 | No | Yes | Whether the element can be scrolled for accessibility purposes. This attribute has a higher priority than **scrollable**.<br>The value **true** indicates that the element is scrollable, and **false** indicates the opposite.<br>Default value: **true**.|
 | supportedActionNames<sup>20+</sup> | Array&lt;string&gt;                                                | No | Yes | Supported action names.|
@@ -606,31 +962,63 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 
 **Example**
 ```ts
-import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import {
+  AccessibilityElement,
+  AccessibilityEvent, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
 
-let windowId: number = 10;
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
 
-axContext.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
-  console.info("AccessibilityElement.checkable: " + element.checkable)
-  console.info("AccessibilityElement.checked: " + element.checked)
-  console.info("AccessibilityElement.clickable: " + element.clickable)
-  console.info("AccessibilityElement.componentId: " + element.componentId)
-  console.info("AccessibilityElement.componentType: " + element.componentType)
-  console.info("AccessibilityElement.contents: " + element.contents)
-  console.info("AccessibilityElement.currentIndex: " + element.currentIndex)
-  console.info("AccessibilityElement.description: " + element.description)
-  // ....
-}).catch((err) => {
-  console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
-})
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext) {
+    this.context = context;
+  }
+
+  onStop() {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEvent): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    let windowId: number = 10;
+
+    this.context.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
+      console.info("AccessibilityElement.checkable: " + element.checkable)
+      console.info("AccessibilityElement.checked: " + element.checked)
+      console.info("AccessibilityElement.clickable: " + element.clickable)
+      console.info("AccessibilityElement.componentId: " + element.componentId)
+      console.info("AccessibilityElement.componentType: " + element.componentType)
+      console.info("AccessibilityElement.contents: " + element.contents)
+      console.info("AccessibilityElement.currentIndex: " + element.currentIndex)
+      console.info("AccessibilityElement.description: " + element.description)
+      // ....
+    }).catch((err: BusinessError) => {
+      console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
+    })
+  }
+}
 ```
 
 ### enableScreenCurtain<sup>12+</sup>
 
-enableScreenCurtain(isEnable: boolean): void;
+enableScreenCurtain(isEnable: boolean): void
 
 Enables or disables the screen curtain.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -684,7 +1072,7 @@ export default class AccessibilityManager {
       console.error('context is not available!');
       return;
     }
-    this.context.getWindowRootElement().then((rootElement: AccessibilityElement) => {
+    this.context.getRootInActiveWindow().then((rootElement: AccessibilityElement) => {
       console.info(`Succeeded in get root element of the window, ${JSON.stringify(rootElement)}`);
       rootElement.enableScreenCurtain(true);
       console.info(`Succeeded in enableScreenCurtain`);
@@ -695,11 +1083,13 @@ export default class AccessibilityManager {
 }
 ```
 
-### findElement('elementId')<sup>12+</sup>
+### findElement('elementId')
 
-findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement>;
+findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement>
 
-Queries the node elements in the current active window based on the **elementId**. This API uses a promise to return the result.
+Finds the node element of the current active window based on the element ID. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -727,6 +1117,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // elementId is 10.
@@ -740,11 +1131,13 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
 });
 ```
 
-### findElement('textType')<sup>12+</sup>
+### findElement('textType')
 
-findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>;
+findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>
 
-Queries all node elements based on the **accessibilityTextHint** text type configured for a node. This API uses a promise to return the result.
+Finds all node elements based on the **accessibilityTextHint** text type configured for a node. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -772,6 +1165,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // The content of condition must be the same as the type value in the accessibilityTextHint attribute of the target component.
@@ -787,9 +1181,11 @@ rootElement.findElement('textType', condition).then((data: AccessibilityElement[
 
 ### getCursorPosition<sup>12+</sup>
 
-getCursorPosition(): Promise\<number>;
+getCursorPosition(): Promise\<number>
 
 Obtains the cursor position in the **Text** component. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -814,9 +1210,11 @@ rootElement.getCursorPosition().then((data: number) => {
 
 ### getCursorPosition<sup>12+</sup>
 
-getCursorPosition(callback: AsyncCallback\<number>): void;
+getCursorPosition(callback: AsyncCallback\<number>): void
 
 Obtains the cursor position in the **Text** component. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -844,11 +1242,13 @@ rootElement.getCursorPosition((err: BusinessError, data: number) => {
 
 ### executeAction<sup>20+</sup>
 
-executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<void>;
+executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<void>
 
 Executes a specific action based on the specified action type and input parameters. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -856,7 +1256,7 @@ Executes a specific action based on the specified action type and input paramete
 
 | Name        | Type                                    | Mandatory  | Description                                                      |
 | ----------- | ---------------------------------------- | ---- |----------------------------------------------------------|
-| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| Yes   | Executable action for the accessibility node. |
+| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| Yes   | Executable action for the accessibility node.|
 | parameters | [Parameter](#parameter20) | No   | Parameters set for the action. This parameter is left empty by default.                           |
 
 **Return value**
@@ -878,8 +1278,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 ```ts
 // Example of an action without parameters:
-import { BusinessError } from '@kit.BasicServicesKit';
-import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
+import { AccessibilityAction } from '@kit.AccessibilityKit';
 
 // rootElement is an instance of AccessibilityElement.
 // An action that does not require any parameter setting is an action without parameters, as specified in the action description.
@@ -895,7 +1294,6 @@ try {
 
 ```ts
 // Example of an action with parameters:
-import { BusinessError } from '@kit.BasicServicesKit'; 
 import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
 try {
@@ -914,7 +1312,6 @@ try {
 
 ```ts
 // Example of an action with parameters:
-import { BusinessError } from '@kit.BasicServicesKit';
 import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
 try {
@@ -931,11 +1328,13 @@ try {
 
 ### getParent<sup>20+</sup>
 
-getParent(): Promise\<AccessibilityElement>;
+getParent(): Promise\<AccessibilityElement>
 
 Obtains the parent element of an accessibility node. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -943,7 +1342,7 @@ Obtains the parent element of an accessibility node. This API uses a promise to 
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
+| Promise\<[AccessibilityElement](#accessibilityelement)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -958,27 +1357,28 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
   console.info(`element parent id: ${element.parentId}`);
   element.getParent().then((parent: AccessibilityElement) => {
     console.info(`parent element's parent id: ${parent.parentId}`);
-  }).catch((err) => {
+  }).catch((err: BusinessError) => {
     console.error(`getParent failed, code: ${err.code}, message: ${err.message}`);
   })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
 ### getChildren<sup>20+</sup>
 
-getChildren(): Promise\<Array\<AccessibilityElement>>;
+getChildren(): Promise\<Array\<AccessibilityElement>>
 
 Obtains the child elements of an element. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -986,7 +1386,7 @@ Obtains the child elements of an element. This API uses a promise to return the 
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise used to return the result.|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement)>> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1001,27 +1401,28 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
   console.info(`element childrenIds: ${element.childrenIds}`);
   element.getChildren().then((children: AccessibilityElement[]) => {
     console.info(`children element's size: ${children.length}`);
-  }).catch((err) => {
+  }).catch((err: BusinessError) => {
     console.error(`getChildren failed, code: ${err.code}, message: ${err.message}`);
   })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
 ### getRoot<sup>20+</sup>
 
-getRoot(): Promise\<AccessibilityElement>;
+getRoot(): Promise\<AccessibilityElement>
 
 Obtains the root element of an active window. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1029,7 +1430,7 @@ Obtains the root element of an active window. This API uses a promise to return 
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
+| Promise\<[AccessibilityElement](#accessibilityelement)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1044,14 +1445,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let windows: AccessibilityWindow[] = axContext.getAccessibilityWindowsSync()
 for (let window of windows) {
   console.info(`window id: ${window.windowId}`);
   window.getRoot().then((root: AccessibilityElement) => {
     console.info(`root element's componentId: ${root.componentId}`);
-  }).catch((err) => {
+  }).catch((err: BusinessError) => {
     console.error(`getRoot failed, code: ${err.code}, message: ${err.message}`);
   })
 }
@@ -1059,11 +1459,13 @@ for (let window of windows) {
 
 ### findElementByContent<sup>20+</sup>
 
-findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>;
+findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>
 
 Finds elements based on the content. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1077,7 +1479,7 @@ Finds elements based on the content. This API uses a promise to return the resul
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise used to return the result.|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement)>> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1102,28 +1504,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let windowId: number = 10;
 
 axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
     root.findElementByContent('connect').then((elements: AccessibilityElement[]) => {
         console.info("findElementByContent size=" + elements.length)
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
         console.error(`findElementByContent failed, code: ${err.code}, message: ${err.message}`);
     })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
 ### findElementByFocusDirection<sup>20+</sup>
 
-findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityElement>;
+findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityElement>
 
 Finds elements based on the focus direction. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1131,13 +1534,13 @@ Finds elements based on the focus direction. This API uses a promise to return t
 
 | Name| Type| Mandatory| Description|
 | -------- | ---- | -------- | ------------------------------------------------------------ |
-| condition | FocusDirection | Yes| Focus direction.|
+| condition | [FocusDirection](js-apis-inner-application-accessibilityExtensionContext.md#focusdirection) | Yes| Focus direction.|
 
 **Return value**
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
+| Promise\<[AccessibilityElement](#accessibilityelement)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1167,26 +1570,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
     focus.findElementByFocusDirection('up').then((element: AccessibilityElement) => {
         console.info("findElementByFocusDirection UP componentId: " + element.componentId);
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
         console.error(`findElementByFocusDirection UP failed, code: ${err.code}, message: ${err.message}`);
     })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
 ### findElementsByAccessibilityHintText<sup>20+</sup>
 
-findElementsByAccessibilityHintText(condition: string): Promise\<Array\<AccessibilityElement>>;
+findElementsByAccessibilityHintText(condition: string): Promise\<Array\<AccessibilityElement>>
 
 Finds elements based on the hint text. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1200,7 +1604,7 @@ Finds elements based on the hint text. This API uses a promise to return the res
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise used to return the result.|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement)>> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1230,28 +1634,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let windowId: number = 10;
 
 axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
     root.findElementsByAccessibilityHintText('location').then((elements: AccessibilityElement[]) => {
         console.info("findElementsByAccessibilityHintText size=" + elements.length)
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
         console.error(`findElementsByAccessibilityHintText failed, code: ${err.code}, message: ${err.message}`);
     })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getRootInActiveWindow failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
 
 ### findElementById<sup>20+</sup>
 
-findElementById(condition: number): Promise\<AccessibilityElement>;
+findElementById(condition: number): Promise\<AccessibilityElement>
 
 Finds elements based on element ID. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1265,7 +1670,7 @@ Finds elements based on element ID. This API uses a promise to return the result
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
+| Promise\<[AccessibilityElement](#accessibilityelement)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1295,15 +1700,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
     focus.findElementById(0).then((element: AccessibilityElement) => {
         console.info("findElementById componentId: " + element.componentId);
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
         console.error(`findElementById failed, code: ${err.code}, message: ${err.message}`);
     })
-}).catch((err) => {
+}).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```

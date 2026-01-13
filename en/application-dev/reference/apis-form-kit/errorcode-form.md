@@ -250,7 +250,7 @@ The specified widget dimension is not configured, or the transferred widget dime
 
 Check whether the input widget dimension is in the [FormDimension](js-apis-app-form-formInfo.md#formdimension) and [supportDimensions](../../form/arkts-ui-widget-configuration.md#fields-in-configuration-file) configuration list.
 
-## 2293761 Internal Service Error
+## 16501013 Operation Not Supported
 
 **Error Message**
 

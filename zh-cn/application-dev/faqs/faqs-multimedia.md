@@ -147,12 +147,12 @@ context.startAbility(want);
    ```ts
    let context = getContext(this) as common.UIAbilityContext;
    let atManager = abilityAccessCtrl.createAtManager();
-   let permissions: Array<string> = ['ohos.permission.READ_MEDIA','ohos.permission.WRITE_MEDIA']
+   let permissions: Array<Permissions> = ['ohos.permission.READ_MEDIA','ohos.permission.WRITE_MEDIA']
    atManager.requestPermissionsFromUser(context, permissions)
    .then((data) => {
-       console.log("Succeed to request permission from user with data: " + JSON.stringify(data))
-   }).catch((error) => {
-       console.log("Failed to request permission from user with error: " + JSON.stringify(error))
+       console.info("Succeed to request permission from user with data: " + JSON.stringify(data))
+   }).catch((error: BusinessError) => {
+       console.error("Failed to request permission from user with error: " + error.code + " " + error.message)
    })
    ```
 
@@ -167,8 +167,8 @@ cameraManager通过设置状态回调返回相机状态。
 
 ```ts
 cameraManager.on('cameraStatus', (cameraStatusInfo) => {
-  console.log(`camera : ${cameraStatusInfo.camera.cameraId}`);
-  console.log(`status: ${cameraStatusInfo.status}`);
+  console.info(`camera : ${cameraStatusInfo.camera.cameraId}`);
+  console.info(`status: ${cameraStatusInfo.status}`);
 })
 ```
 
@@ -229,7 +229,7 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 
 **解决措施**
 
-支持通过OHAudio C API接口AudioCapturer使用系统低时延采集，具体实现参考：[使用OHAudio开发音频录制功能(C/C++)](../media/audio/using-ohaudio-for-recording.md)。
+支持通过OHAudio C API接口AudioCapturer使用系统低时延采集，具体实现参考：[推荐使用OHAudio开发音频录制功能(C/C++)](../media/audio/using-ohaudio-for-recording.md)。
 
 **参考资料**
 

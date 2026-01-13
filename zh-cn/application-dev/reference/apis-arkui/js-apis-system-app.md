@@ -26,7 +26,7 @@ static getInfo(): AppResponse
 
 获取当前应用配置文件中声明的信息。在Stage模型下接口返回值为null。
 
-从API Version9开始，推荐使用[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)。
+从API version9开始，推荐使用[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -56,7 +56,7 @@ static terminate(): void
 
 退出当前Ability。在Stage模型下接口功能不生效。
 
-从API Version 7开始，推荐使用[`@ohos.ability.featureAbility`](../apis-ability-kit/js-apis-ability-featureAbility.md)。
+从API version 7开始，推荐使用[`@ohos.ability.featureAbility`](../apis-ability-kit/js-apis-ability-featureAbility.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -208,7 +208,7 @@ static screenOnVisible(options?: ScreenOnVisibleOptions):&nbsp;void
 
 定义屏幕唤醒时是否保持应用可见。
 
-该接口从API Version 8 开始废弃。
+该接口从API version 8 开始废弃。
 
 **系统能力：**  以下各项对应的系统能力均为SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,7 +222,7 @@ static requestFullWindow(options?: RequestFullWindowOptions): void
 
 请求应用以全窗口运行，FA在某些场景下（如半模态FA）会以非全窗口运行，调用该接口会从非全窗口切换为全窗口运行，如果已经以全窗口运行则该接口调用无效。
 
-从API Version 7开始，推荐使用[`@ohos.window`](arkts-apis-window.md)。
+从API version 7开始，推荐使用[`@ohos.window`](arkts-apis-window.md)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -156,6 +156,10 @@ wifi.getScanInfos().then(result => {
 
 Represents WLAN hotspot information.
 
+> **NOTE**
+>
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [WifiScanInfo](js-apis-wifiManager.md#wifiscaninfo) instead.
+
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 
