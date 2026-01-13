@@ -214,7 +214,7 @@ export default class MyAbility extends UIAbility {
 
       // 页面展示
       build() {
-        //...
+        // ...
       }
     }
     ```
@@ -248,7 +248,7 @@ export default class MyAbility extends UIAbility {
 
       // 页面展示
       build() {
-        //...
+        // ...
       }
     }
     ```
