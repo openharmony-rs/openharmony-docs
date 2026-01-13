@@ -28,7 +28,7 @@ You need to understand the Node-API lifecycle mechanism. The references are as f
 [Performing Lifecycle Management Using Node-API](use-napi-life-cycle.md) 
 
 Common causes of memory leaks during Node-API development: 
-1. **napi_value** is not managed by **napi_handle_scope**. As a result, the ArkTS object held by **napi_value** cannot be released. This problem often occurs when **uv_queue_work** is used. To solve this problem, add the **napi_open_handle_scope** and **napi_close_handle_scope** APIs.
+1. **napi_value** is not managed by **napi_handle_scope**. As a result, the ArkTS object held by **napi_value** cannot be released. This problem often occurs in [direct use of uv_queue_work](napi-guidelines.md#asynchronous-tasks). To solve this problem, add the **napi_open_handle_scope** and **napi_close_handle_scope** APIs.
 
    You can analyze the snapshot to locate the cause of the leak. If the **distance** of the leaked ArkTS object is **1**, the object may be held by native (**napi_value** is a pointer to the native owner), and **napi_value** is not within the range of **napi_handle_scope**.  
 
@@ -40,11 +40,11 @@ Common causes of memory leaks during Node-API development:
 
 ## What should I do if memory leaks when napi_threadsafe_function is used
 
-When **napi_threadsafe_function** (**tsfn** for short) is used, **napi_acquire_threadsafe_function** is often called to change the reference count of **tsfn** to ensure that **tsfn** is not released unexpectedly. When all the **tsfn** calls are complete, **napi_release_threadsafe_function** should be called in **napi_tsfn_release** mode in a timely manner to ensure that the reference count returns to the value before **napi_acquire_threadsafe_function** is called. **tsfn** can be correctly released only when the reference count is **0**.
+When **napi_threadsafe_function** (tsfn for short) is used, **napi_acquire_threadsafe_function** is often called to change the reference count of tsfn to ensure that tsfn is not released unexpectedly. When all the tsfn calls are complete, **napi_release_threadsafe_function** should be called in **napi_tsfn_release** mode in a timely manner to ensure that the reference count returns to the value before **napi_acquire_threadsafe_function** is called. tsfn can be correctly released only when the reference count is **0**.
 
-When **env** is about to exit but the reference count of **tsfn** is not 0, **napi_release_threadsafe_function** should be called in **napi_tsfn_abort** mode to ensure that **tsfn** is not held or used by **env** after **env** is released. If **env** continues to hold **tsfn** after exiting, the application may crash.
+When **env** is about to exit but the reference count of tsfn is not 0, **napi_release_threadsafe_function** should be called in **napi_tsfn_abort** mode to ensure that tsfn is not held or used by **env** after **env** is released. If **env** continues to hold tsfn after exiting, the application may crash.
 
-The following code shows how to register **env_cleanup** to ensure that **tsfn** is no longer held by **env** after **env** exits.
+The following code shows how to register **env_cleanup** to ensure that tsfn is no longer held by **env** after **env** exits.
 
 ```cpp
 //napi_init.cpp
