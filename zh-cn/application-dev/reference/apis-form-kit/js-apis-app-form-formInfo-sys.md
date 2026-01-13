@@ -356,7 +356,7 @@ let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
 
 ## PublishFormCrossBundleControlCallback<sup>23+</sup>
 
-type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo): boolean
+type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo)=> boolean
 
 跨应用加卡管控回调。
 
