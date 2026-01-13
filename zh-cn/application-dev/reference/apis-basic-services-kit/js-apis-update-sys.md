@@ -1865,7 +1865,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 | 名称                | 类型                              | 只读 | 可选 | 说明     |
 | ----------------- | --------------------------------- | ---- | ---- | ------ |
-| isExistNewVersion | boolean                              | 否 | 否 | 是否有新版本。<br>ture表示有新版本，false表示没有新版本。|
+| isExistNewVersion | boolean                              | 否 | 否 | 是否有新版本。<br>true表示有新版本，false表示没有新版本。|
 | newVersionInfo    | [NewVersionInfo](#newversioninfo) | 否 | 否 | 新版本数据。  |
 
 ## NewVersionInfo
@@ -1981,7 +1981,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 | 名称                | 类型 | 只读 | 可选 | 说明       |
 | ----------------- | ---- | ---- |---- | -------- |
-| isAllowAutoResume | boolean | 否 | 否 | 是否允许自动恢复。<br>ture表示允许自动恢复，false表示不允许。 |
+| isAllowAutoResume | boolean | 否 | 否 | 是否允许自动恢复。<br>true表示允许自动恢复，false表示不允许。 |
 
 ## UpgradeOptions
 
@@ -2011,8 +2011,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 | 名称                  | 类型                                    | 只读 | 可选 | 说明      |
 | ------------------- | --------------------------------------- | ---- | ---- | ------- |
-| downloadStrategy    | boolean                        | 否 | 否 | 自动下载策略。 <br>ture表示可自动下载，false表示不可自动下载。 |
-| autoUpgradeStrategy | boolean                        | 否 | 否 | 自动升级策略。 <br>ture表示可自动升级，false表示不可自动升级。 |
+| downloadStrategy    | boolean                        | 否 | 否 | 自动下载策略。 <br>true表示可自动下载，false表示不可自动下载。 |
+| autoUpgradeStrategy | boolean                        | 否 | 否 | 自动升级策略。 <br>true表示可自动升级，false表示不可自动升级。 |
 | autoUpgradePeriods  | Array\<[UpgradePeriod](#upgradeperiod)> | 否 | 否  | 自动升级时间段。 |
 
 ## UpgradePeriod
@@ -2034,7 +2034,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 | 名称        | 类型                  | 只读 | 可选 | 说明 |
 | --------- | --------------------- | ---- | ------ |------ |
-| existTask |  boolean                  | 否 | 否 | 是否存在任务。<br>ture表示存在，false表示不存在。 |
+| existTask |  boolean                  | 否 | 否 | 是否存在任务。<br>true表示存在，false表示不存在。 |
 | taskBody  | [TaskBody](#taskbody) | 否 | 否 | 任务数据。   |
 
 ## EventInfo
