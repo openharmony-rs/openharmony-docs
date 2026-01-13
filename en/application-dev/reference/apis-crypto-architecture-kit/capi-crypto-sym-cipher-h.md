@@ -157,7 +157,7 @@ Creates a symmetric encryption/decryption instance based on the given algorithm 
 
 | Name| Description|
 | -- | -- |
-| const char *algoName | Pointer to the algorithm used to generate a cipher instance.<br> For example, **AES128\GCM\PKCS7**.| |.|
+| const char *algoName | Pointer to the algorithm used to generate a cipher instance.<br> For example, **AES128\|GCM\|PKCS7**.| | |
 | [OH_CryptoSymCipher](capi-cryptosymcipherapi-oh-cryptosymcipher.md) **ctx | Pointer to the symmetric cipher instance created.|
 
 **Returns**
