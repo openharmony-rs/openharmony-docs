@@ -192,8 +192,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 'use static'
-import {OnPageEndEvent, OnPermissionRequestEvent, OnPageVisibleEvent, Web, Entry, Text, TextInput, TextAttribute, Column, Component, Button, ButtonAttribute } from '@kit.ArkUI'
-import { State } from '@ohos.arkui.stateManagement'
+import {OnPageEndEvent, OnPermissionRequestEvent, OnPageVisibleEvent, Web, Entry, Text, TextInput, TextAttribute, Column, Component, Button, ButtonAttribute, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -495,8 +494,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 'use static'
-import {OnPageEndEvent, OnPermissionRequestEvent, OnPageVisibleEvent, Web, Entry, Text, TextInput, TextAttribute, Column, Component, Button, ButtonAttribute} from '@kit.ArkUI'
-import { State } from '@ohos.arkui.stateManagement'
+import { OnPageEndEvent, OnPermissionRequestEvent, OnPageVisibleEvent, Web, Entry, Text, TextInput, TextAttribute, Column, Component, Button, ButtonAttribute, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 

@@ -131,9 +131,8 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 'use static'
-import { OnPageEndEvent,OnErrorReceiveEvent,Web,Entry,Text,TextAttribute,Column,Component,Button,ButtonAttribute,ArrayBuffer } from '@kit.ArkUI' 
-import { State } from '@ohos.arkui.stateManagement' 
-import hilog from '@ohos.hilog'
+import { OnPageEndEvent,OnErrorReceiveEvent,Web,Entry,Text,TextAttribute,Column,Component,Button,ButtonAttribute,ArrayBuffer, State } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
 import { buffer } from '@kit.ArkTS';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';

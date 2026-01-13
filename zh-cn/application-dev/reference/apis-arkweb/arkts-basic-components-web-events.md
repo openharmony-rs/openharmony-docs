@@ -8681,9 +8681,9 @@ ArkTS-Sta示例：
   import { UIContext } from "@kit.ArkUI";
   import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { PermissionRequestResult, common } from '@kit.AbilityKit';
-  import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-  import { CameraCaptureStateChangeInfo } from '@ohos.arkui.component'
+  import { PermissionRequestResult, common, abilityAccessCtrl } from '@kit.AbilityKit';
+  import { CameraCaptureStateChangeInfo } from '@kit.ArkUI';
+
   @Entry
   @Component
   struct WebComponent {
@@ -8920,9 +8920,9 @@ ArkTS-Sta示例：
   import { UIContext } from "@kit.ArkUI";
   import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { PermissionRequestResult, common } from '@kit.AbilityKit';
-  import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-  import { MicrophoneCaptureStateChangeInfo } from '@ohos.arkui.component'
+  import { PermissionRequestResult, common, abilityAccessCtrl } from '@kit.AbilityKit';
+  import { MicrophoneCaptureStateChangeInfo } from '@kit.ArkUI';
+
   @Entry
   @Component
   struct WebComponent {

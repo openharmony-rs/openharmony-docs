@@ -238,9 +238,9 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 'use static'
-import { Entry, Column, Component, Web } from '@ohos.arkui.component';
+import { Entry, Column, Component, Web } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { WebNetErrorList } from '@ohos.web.netErrorList';
 
 @Entry
