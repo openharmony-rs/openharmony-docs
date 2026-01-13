@@ -185,8 +185,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
-   import { Local, IMonitor, Monitor, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { Button, Column, ComponentV2, Entry, Text, Local, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Inner {
@@ -194,7 +193,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    }
    @ObservedV2
    class Outer {
-     inner: Inner = new Inner();
+     @Trace inner: Inner = new Inner();
      @Monitor(['inner.num'])
      onChange(monitor: IMonitor) {
        console.info(`inner.num change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
@@ -220,8 +219,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry } from '@ohos.arkui.component';
-   import { IMonitor, Monitor, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { Button, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Base {
@@ -237,6 +235,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    }
    @ObservedV2
    class Derived extends Base {
+     @Trace age: int = 0;
      // 继承类监听name属性
      @Monitor(['name'])
      onDerivedNameChange(monitor: IMonitor) {
