@@ -37,3 +37,51 @@
 - 同步方法示例：
 
 <!-- @[ecb_encrypt_decrypt_aes_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ecb_encryption_decryption/aes_ecb_encryption_decryption_synchronous.ets) -->
+
+``` TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+// 加密消息
+function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
+  let cipher = cryptoFramework.createCipher('AES128|ECB|PKCS7');
+  cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, null);
+  let cipherData = cipher.doFinalSync(plainText);
+  return cipherData;
+}
+
+// 解密消息
+function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
+  let decoder = cryptoFramework.createCipher('AES128|ECB|PKCS7');
+  decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, null);
+  let decryptData = decoder.doFinalSync(cipherText);
+  return decryptData;
+}
+
+function genSymKeyByData(symKeyData: Uint8Array) {
+  let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
+  let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+  let symKey = aesGenerator.convertKeySync(symKeyBlob);
+  console.info('convertKeySync success');
+  return symKey;
+}
+
+function main() {
+  try {
+    let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
+    let symKey = genSymKeyByData(keyData);
+    let message = 'This is a test';
+    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+    let encryptText = encryptMessage(symKey, plainText);
+    let decryptText = decryptMessage(symKey, encryptText);
+    if (plainText.data.toString() === decryptText.data.toString()) {
+      console.info('decrypt ok');
+      console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+    } else {
+      console.error('decrypt failed');
+    }
+  } catch (error) {
+    console.error(`AES ECB “${error}“, error code: ${error.code}`);
+  }
+}
+```
