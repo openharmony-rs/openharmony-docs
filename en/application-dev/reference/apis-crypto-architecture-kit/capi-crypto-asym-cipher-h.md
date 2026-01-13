@@ -90,7 +90,7 @@ Creates an asymmetric encryption instance based on the given algorithm name.<br>
 
 | Name| Description|
 | -- | -- |
-| const char *algoName | Pointer to the algorithm used to generate an encryption instance.<br>For example, **RSA\PKCS1_OAEP\SHA384\MGF1_SHA384** or **SM2\SM3**.| | |MGF1_SHA384", "SM2\|.|
+| const char *algoName | Pointer to the algorithm used to generate an encryption instance.<br>For example, **RSA\|PKCS1_OAEP\|SHA384\|MGF1_SHA384** or **SM2\|SM3**.| | | | |
 | [OH_CryptoAsymCipher](capi-cryptoasymcipherapi-oh-cryptoasymcipher.md) **ctx | Pointer to the asymmetric encryption context.|
 
 **Returns**

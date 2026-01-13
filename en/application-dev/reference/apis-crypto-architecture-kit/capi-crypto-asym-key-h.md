@@ -200,7 +200,7 @@ Creates an asymmetric key generator instance based on the specified algorithm.<b
 
 | Name| Description|
 | -- | -- |
-| const char *algoName | Pointer the algorithm used to create a generator.<br> For example, **RSA1024\PRIMES_2**.|.|
+| const char *algoName | Pointer the algorithm used to create a generator.<br> For example, **RSA1024\|PRIMES_2**.| |
 | [OH_CryptoAsymKeyGenerator](capi-cryptoasymkeyapi-oh-cryptoasymkeygenerator.md) **ctx | Pointer to the asymmetric key generator context created.|
 
 **Returns**
@@ -691,7 +691,7 @@ Sets the common parameter specifications for asymmetric key specifications.
 | Name| Description|
 | -- | -- |
 | [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md) *spec | Pointer to the asymmetric key specifications.|
-| [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md) *commonParamsSpec | Common parameter specifications.|
+| [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md) *commonParamsSpec | Pointer to the common parameter specifications.|
 
 **Returns**
 
@@ -828,7 +828,7 @@ Creates an EC point.<br> Note: The created resource must be destroyed by calling
 | Name| Description|
 | -- | -- |
 | const char *curveName | Pointer to the curve name.|
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *ecKeyData | Pointer to the EC point data, in **04 \|\| x \|\| y**, **02 \|\| x**, or **03 \|\| x** format.| |  | | .| | .| | . If **ecKeyData** is **NULL**, an empty EC point specification is created.|
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *ecKeyData | Pointer to the EC point data, in **04 \|\| x \|\| y**, **02 \|\| x**, or **03 \|\| x** format.| |  | |  | |  | | If **ecKeyData** is **NULL**, an empty EC point specification is created.|
 | [OH_CryptoEcPoint](capi-cryptoasymkeyapi-oh-cryptoecpoint.md) **point | Pointer to the EC point.|
 
 **Returns**
