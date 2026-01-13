@@ -22,7 +22,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -113,7 +113,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -167,7 +167,7 @@ hasRight(deviceName: string): boolean
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -214,7 +214,7 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -261,7 +261,7 @@ removeRight(deviceName: string): boolean
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -314,7 +314,7 @@ ArkTS-Sta: claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boo
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -368,7 +368,7 @@ ArkTS-Sta: releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -425,7 +425,7 @@ ArkTS-Sta: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): int
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -482,7 +482,7 @@ ArkTS-Sta: setInterface(pipe: USBDevicePipe, iface: USBInterface): int
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -537,7 +537,7 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -592,7 +592,7 @@ ArkTS-Sta: getFileDescriptor(pipe: USBDevicePipe): int
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -715,7 +715,7 @@ ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceReques
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -796,7 +796,7 @@ ArkTS-Sta: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -872,7 +872,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -959,7 +959,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1051,7 +1051,7 @@ ArkTS-Sta: closePipe(pipe: USBDevicePipe): int
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1100,7 +1100,7 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1151,7 +1151,7 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1202,7 +1202,7 @@ cancelAccessoryRight(accessory: USBAccessory): void
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1246,7 +1246,7 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1287,7 +1287,7 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1345,7 +1345,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1394,7 +1394,7 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1447,7 +1447,7 @@ try {
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称            | 类型                                        | 只读  | 可选  |说明            |
 | ------------- | ------------------------------------------- | ---- | ---- |------------- |
@@ -1468,7 +1468,7 @@ try {
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称               | 类型                                     | 只读  | 可选            |说明                    |
 | ---------------- | ---------------------------------------- | ---- | ------------- |--------------------- |
@@ -1488,7 +1488,7 @@ USB配置，一个[USBDevice](#usbdevice)中可以含有多个配置。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称             | 类型                                             | 只读  | 可选  |说明              |
 | -------------- | ------------------------------------------------ | ---- | --------------- |--------------- |
@@ -1508,7 +1508,7 @@ USB设备信息。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称               | 类型                                 | 只读  | 可选         |说明         |
 | ---------------- | ------------------------------------ | ---- | ---------- |---------- |
@@ -1534,7 +1534,7 @@ USB设备消息传输通道，用于确定设备。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称         | 类型   | 只读  | 可选    |说明    |
 | ---------- | ------ | ---- | ----- |----- |
@@ -1568,7 +1568,7 @@ USB设备消息传输通道，用于确定设备。
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 
 | 名称      | 类型                                            | 只读 | 可选               |说明               |
@@ -1588,7 +1588,7 @@ USB设备消息传输通道，用于确定设备。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                         | 值   | 说明   |
 | ---------------------------- | ---- | ------ |
@@ -1605,7 +1605,7 @@ USB设备消息传输通道，用于确定设备。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                      | 值   | 说明   |
 | ------------------------- | ---- | ------ |
@@ -1621,7 +1621,7 @@ USB设备消息传输通道，用于确定设备。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                        | 值   | 说明                     |
 | --------------------------- | ---- | ------------------------ |
@@ -1636,7 +1636,7 @@ USB配件信息。
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称         | 类型   | 只读 | 可选 | 说明             |
 | ------------ | ------ | ---- | ---- | ---------------- |
@@ -1654,7 +1654,7 @@ USB配件句柄。
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型   | 只读 | 可选 | 说明                                      |
 | ----------- | ------ | ---- | ---- | ----------------------------------------- |
@@ -1668,7 +1668,7 @@ USB配件句柄。
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称         | 类型   | 只读  | 可选    |说明    |
 | ---------- | ------ | ---- | ----- |----- |
@@ -1691,7 +1691,7 @@ USB传输标志。
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                         | 值   | 说明   |
 | ---------------------------- | ---- | ------ |
@@ -1708,7 +1708,7 @@ Usb传输类型。
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                         | 值   | 说明   |
 | ---------------------------- | ---- | ------ |
@@ -1724,7 +1724,7 @@ Usb异步传输回调。
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型 | 只读 | 可选   | 说明    |
 | ---------- | ------ | ---- | ----- | ------ |
@@ -1740,7 +1740,7 @@ Usb异步传输回调。
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                         | 值   | 说明   |
 | ---------------------------- | ---- | ------ |
@@ -1760,7 +1760,7 @@ Usb异步传输回调。
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称         | 类型 | 只读  | 可选 | 说明    |
 | ---------- | ------ | ----| ----- | ------ |

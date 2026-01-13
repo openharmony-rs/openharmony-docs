@@ -25,7 +25,7 @@ ArkTS-Sta: queryDeviceInfo(deviceId?: long): Array&lt;Readonly&lt;DeviceInfo&gt;
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **需要权限**：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
@@ -79,7 +79,7 @@ queryDriverInfo(driverUid?: string): Array&lt;Readonly&lt;DriverInfo&gt;&gt;
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **需要权限**：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
@@ -134,7 +134,7 @@ try {
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称              | 类型      | 必填  | 说明          |
 |-----------------|---------|-----|-------------|
@@ -152,7 +152,7 @@ USB设备详细信息，继承自[DeviceInfo](#deviceinfo)。
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称                | 类型                                                                 | 必填  | 说明               |
 |-------------------|--------------------------------------------------------------------|-----|------------------|
@@ -170,7 +170,7 @@ USB设备接口描述符。
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称               | 类型     | 必填  | 说明     |
 |------------------|--------|-----|--------|
@@ -189,7 +189,7 @@ USB设备接口描述符。
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称            | 类型                                                 | 必填  | 说明             |
 |---------------|----------------------------------------------------|-----|----------------|
@@ -210,7 +210,7 @@ USB设备驱动详细信息，继承自[DriverInfo](#driverinfo)。
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称            | 类型                  | 必填  | 说明                      |
 |---------------|---------------------|-----|-------------------------|

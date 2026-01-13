@@ -363,7 +363,7 @@ usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；ad
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -430,7 +430,7 @@ ArkTS-Sta: getFunctionsFromString(funcs: string): int
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -478,7 +478,7 @@ ArkTS-Sta: getStringFromFunctions(funcs: int): string
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -527,7 +527,7 @@ setDeviceFunctions(funcs: int): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -582,7 +582,7 @@ ArkTS-Sta: getDeviceFunctions(): int
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -623,7 +623,7 @@ getPortList(): Array\<USBPort\>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -667,7 +667,7 @@ ArkTS-Sta: getPortSupportModes(portId: int): PortModeType
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -715,7 +715,7 @@ ArkTS-Sta: setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: Dat
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -773,7 +773,7 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -824,7 +824,7 @@ USB设备端口。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -842,7 +842,7 @@ USB设备端口角色信息。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -861,7 +861,7 @@ USB设备侧功能。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -886,7 +886,7 @@ USB端口模式类型。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -906,7 +906,7 @@ USB端口模式类型。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -924,7 +924,7 @@ USB端口模式类型。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **系统能力：** SystemCapability.USB.USBManager
 
