@@ -35365,9 +35365,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets",
 				"functions":[
 					{
-						"end_line":269,
+						"end_line":387,
 						"name":"view_AudioCapturerState",
-						"start_line":266
+						"start_line":384
 					},
 					{
 						"end_line":291,
@@ -35555,32 +35555,32 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets",
 				"functions":[
 					{
-						"end_line":123,
+						"end_line":241,
 						"name":"create_AudioCapturer",
 						"start_line":16
 					},
 					{
-						"end_line":114,
+						"end_line":232,
 						"name":"listen_AudioCapturer",
 						"start_line":19
 					},
 					{
-						"end_line":168,
+						"end_line":286,
 						"name":"start_AudioCapturer",
 						"start_line":20
 					},
 					{
-						"end_line":213,
+						"end_line":331,
 						"name":"stop_AudioCapturer",
 						"start_line":21
 					},
 					{
-						"end_line":259,
+						"end_line":377,
 						"name":"release_AudioCapturer",
 						"start_line":22
 					},
 					{
-						"end_line":295,
+						"end_line":415,
 						"name":"all_audioCapturer",
 						"start_line":15
 					}
@@ -35595,17 +35595,17 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets",
 				"functions":[
 					{
-						"end_line":92,
+						"end_line":117,
 						"name":"get_haptic",
 						"start_line":16
 					},
 					{
-						"end_line":99,
+						"end_line":89,
 						"name":"set_hapticparam",
-						"start_line":93
+						"start_line":83
 					},
 					{
-						"end_line":117,
+						"end_line":107,
 						"name":"create_haptic",
 						"start_line":24
 					},
