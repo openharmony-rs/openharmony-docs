@@ -815,7 +815,6 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
       .copyOption(CopyOptions.InApp)
     ```
 
-    ![Text_select_menu](figures/Text_select_menu.jpg)
 
   - Use the [bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11) attribute to bind a custom selection menu to the **Text** component.
 
@@ -1032,7 +1031,6 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
   }
   ```
 
-  ![text_disable_system_service_menuItems](figures/text_disable_system_service_menuItems.jpg)
 
 - Since API version 20, use [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) to disable specified system service menu items in the text selection menu.
 
@@ -1084,8 +1082,6 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
   }
   ```
   
-
-  ![text_disable_menuItems](figures/text_disable_menuItems.jpg)
 
 ### Customizing the Default Menu Refresh Behavior
 

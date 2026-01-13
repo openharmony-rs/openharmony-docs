@@ -16,13 +16,13 @@ In multi-device development scenarios, you can use the \@Env decorator to listen
 
 ## Overview
 \@Env is a decorator for environment variables in the reactive system. It provides the following functionalities:
-- Reads the environment variable information based on the input parameter. Currently, only [SystemProperties.BREAK_POINT](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties) is available to obtain breakpoint value information corresponding to different width and height thresholds for [windows](../reference/apis-arkui/arkts-apis-window-Window.md). For details, see [Supported Parameters](#supported-parameters).
+- Reads the environment variable information based on the input parameter. Currently, only **SystemProperties.BREAK_POINT** is available to obtain breakpoint value information corresponding to different width and height thresholds for [windows](../reference/apis-arkui/arkts-apis-window-Window.md). For details, see [Supported Parameters](#supported-parameters).
 - When the system environment variable changes, the \@Env decorator notifies the update of the decorated variable and triggers the update of the associated component to synchronize the UI content.
 - The variable decorated by \@Env cannot be initialized by developers. \@Env returns an observable environment variable class (decorated by [\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md) and [\@Trace](./state-management/arkts-new-observedV2-and-trace.md)) instance to you. If you want to listen for the change of an environment variable, you can use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md). For details, see [Using \@Env in \@ComponentV2](#using-env-in-componentv2).
 
 ## Supported Parameters
 
-For details about the parameters supported by @Env, see [SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties).
+For details about the parameters supported by @Env, see SystemProperties.
 
 ## @Env and Environment Capability Comparison
 @Env and [Environment](./state-management/arkts-environment.md) are related to system environment variables, but their capabilities are different. For details, see the following table.
