@@ -210,7 +210,7 @@
       <!--Del-->
       - [半模态转场 (系统接口)](arkui-ts/ts-universal-attributes-sheet-transition-sys.md)
       <!--DelEnd-->
-    - 动态属性与自定义<!--attibute-modifier-property-->
+    - 动态属性与自定义<!--attribute-modifier-property-->
       - [动态属性设置](arkui-ts/ts-universal-attributes-attribute-modifier.md)
       - [动态手势设置](arkui-ts/ts-universal-attributes-gesture-modifier.md)
       - [自定义绘制](arkui-ts/ts-universal-attributes-draw-modifier.md)
