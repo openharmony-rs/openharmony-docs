@@ -382,7 +382,7 @@ enum Camera_MetadataObjectType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FACE_DETECTION = 0 | metadata对象类型，用于人脸检测。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION ](capi-camera-h.md#Camera_MetadataObjectType)。 |
+| FACE_DETECTION = 0 | metadata对象类型，用于人脸检测。 |
 
 ### Camera_TorchMode
 
