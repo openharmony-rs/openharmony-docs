@@ -1,4 +1,4 @@
-# UsbSerial_DeviceHandle
+# UsbSerial_Device
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @lixinsheng2-->
