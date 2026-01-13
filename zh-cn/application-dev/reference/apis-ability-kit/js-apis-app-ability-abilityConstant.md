@@ -4,8 +4,10 @@ AbilityConstant提供Ability相关的枚举，包括应用启动原因[LaunchRea
 
 > **说明：**
 > 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
+>
 > - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
@@ -22,6 +24,10 @@ import { AbilityConstant } from '@kit.AbilityKit';
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
+
 | 名称 | 类型 | 值 | 说明 |
 | ---- | -----| ---- | ---------------------------------------------------------- |
 | REASON_MESSAGE_DESKTOP_SHORTCUT<sup>20+</sup>  | string | "ReasonMessage_DesktopShortcut" | 通过桌面快捷方式启动。开发者如果从[LaunchParam](#launchparam)的launchReasonMessage属性中获取到该字符串，表示UIAbility是通过点击桌面快捷方式启动的。|
@@ -34,11 +40,11 @@ import { AbilityConstant } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| launchReason | [LaunchReason](#launchreason)| 否 | 否 | 枚举类型，表示应用启动原因（如故障恢复拉起、意图调用拉起、原子化服务分享拉起等），详见[LaunchReason](#launchreason)。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| launchReasonMessage<sup>18+</sup> | string | 否 | 是 | 表示应用启动的详细原因。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
-| lastExitReason | [LastExitReason](#lastexitreason) | 否 | 否 | 枚举类型，表示应用上次退出原因。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| lastExitMessage<sup>12+</sup> | string | 否 | 否 | 表示最后退出详细原因。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
-| lastExitDetailInfo<sup>18+</sup> | [LastExitDetailInfo](#lastexitdetailinfo18) | 否 | 是 | 表示应用上次退出的关键运行时状态（含进程ID、退出时间戳、RSS内存值等）。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
+| launchReason | [LaunchReason](#launchreason)| 否 | 否 | 枚举类型，表示应用启动原因（如故障恢复拉起、意图调用拉起、原子化服务分享拉起等），详见[LaunchReason](#launchreason)。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| launchReasonMessage<sup>18+</sup> | string | 否 | 是 | 表示应用启动的详细原因。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| lastExitReason | [LastExitReason](#lastexitreason) | 否 | 否 | 枚举类型，表示应用上次退出原因。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| lastExitMessage<sup>12+</sup> | string | 否 | 否 | 表示最后退出详细原因。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| lastExitDetailInfo<sup>18+</sup> | [LastExitDetailInfo](#lastexitdetailinfo18) | 否 | 是 | 表示应用上次退出的关键运行时状态（含进程ID、退出时间戳、RSS内存值等）。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
 
 ## LaunchReason
 
@@ -48,15 +54,16 @@ import { AbilityConstant } from '@kit.AbilityKit';
 
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
-| UNKNOWN          | 0    | 未知原因。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| START_ABILITY          | 1    | 通过[startAbility](js-apis-inner-application-uiAbilityContext.md#startability)接口启动Ability。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| CALL | 2    | 通过[startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动Ability。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| CONTINUATION           | 3    | 跨端迁移启动Ability。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| APP_RECOVERY           | 4    | 设置应用恢复后，应用故障时自动恢复启动Ability。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| SHARE<sup>10+</sup>           | 5    | 通过原子化服务分享启动Ability。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| AUTO_STARTUP<sup>11+</sup>           | 8    | 通过设置开机自启动来启动Ability。 |
-| INSIGHT_INTENT<sup>11+</sup>           | 9    | 通过洞察意图来启动Ability。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| PREPARE_CONTINUATION<sup>12+</sup>           | 10    | 跨端迁移提前启动Ability。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。|
+| UNKNOWN          | 0    | 未知原因。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| START_ABILITY          | 1    | 通过[startAbility](js-apis-inner-application-uiAbilityContext.md#startability)接口启动Ability。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| CALL | 2    | 通过[startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动Ability。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| CONTINUATION           | 3    | 跨端迁移启动Ability。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| APP_RECOVERY           | 4    | 设置应用恢复后，应用故障时自动恢复启动Ability。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| SHARE<sup>10+</sup>           | 5    | 通过原子化服务分享启动Ability。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| AUTO_STARTUP<sup>11+</sup>           | 8    | 通过设置开机自启动来启动Ability。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| INSIGHT_INTENT<sup>11+</sup>           | 9    | 通过洞察意图来启动Ability。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| PREPARE_CONTINUATION<sup>12+</sup>           | 10    | 跨端迁移提前启动Ability。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| PRELOAD<sup>20+</sup> | 11 | 通过预加载方式启动。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
 **示例：**
 
@@ -66,7 +73,7 @@ import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     if (launchParam.launchReason === AbilityConstant.LaunchReason.START_ABILITY) {
-      console.log('The ability has been started by the way of startAbility.');
+      console.info('The ability has been started by the way of startAbility.');
     }
   }
 }
@@ -80,17 +87,17 @@ Ability上次退出原因，该类型为枚举，可配合UIAbility的[onCreate(
 
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
-| UNKNOWN          | 0    | 未知原因。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| ABILITY_NOT_RESPONDING<sup>(deprecated)</sup> | 1    | Ability未响应。<br>**说明:** 从API version 9开始支持，从API version 10开始废弃，请使用APP_FREEZE替代。|
-| NORMAL | 2    | 用户主动关闭，应用程序正常退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**说明**：如果调用[process.exit()](../apis-arkts/js-apis-process.md#processexitdeprecated)、kill命令等非Ability Kit提供的能力退出应用进程，也会返回NORMAL。 |
-| CPP_CRASH<sup>10+</sup>  | 3    | 本机异常信号，导致应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| JS_ERROR<sup>10+</sup>  | 4    | 当应用存在JS语法错误并未被开发者捕获时，触发JS_ERROR故障，导致应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| APP_FREEZE<sup>10+</sup>  | 5    | 由于watchdog检测出应用Freeze故障，导致应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| PERFORMANCE_CONTROL<sup>10+</sup>  | 6    | 由于系统性能问题（如设备内存不足），导致应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**说明**：该接口即将废弃，建议使用RESOURCE_CONTROL替代。 |
-| RESOURCE_CONTROL<sup>10+</sup>  | 7    | 系统资源使用不当，导致应用程序退出。具体错误原因可以通过[LaunchParam.lastExitMessage](#launchparam)获取，可能原因如下: <br> - CPU Highload，CPU高负载。<br> - CPU_EXT Highload，快速CPU负载检测。<br> - IO Manage Control，I/O管控。<br> - App Memory Deterioration，应用内存超限劣化。<br> - Temperature Control，温度管控。<br> - Memory Pressure，整机低内存触发按优先级由低到高查杀。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
-| UPGRADE<sup>10+</sup>  | 8    | 应用程序因升级而退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| USER_REQUEST<sup>18+</sup>  | 9    | 应用程序因多任务中心请求而退出，例如用户在多任务管理界面执行上划、一键清理等操作。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
-| SIGNAL<sup>18+</sup>  | 10    | 应用程序因收到系统kill指令信号而退出。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
+| UNKNOWN          | 0    | 未知原因。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| ABILITY_NOT_RESPONDING<sup>(deprecated)</sup> | 1    | Ability未响应。<br>**说明:** 从API version 9开始支持，从API version 10开始废弃，请使用APP_FREEZE替代。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 9 |
+| NORMAL | 2    | 用户主动关闭，应用程序正常退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**说明**：如果调用[process.exit()](../apis-arkts/js-apis-process.md#processexitdeprecated)、kill命令等非Ability Kit提供的能力退出应用进程，也会返回NORMAL。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| CPP_CRASH<sup>10+</sup>  | 3    | 本机异常信号，导致应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| JS_ERROR<sup>10+</sup>  | 4    | 当应用存在JS语法错误并未被开发者捕获时，触发JS_ERROR故障，导致应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| APP_FREEZE<sup>10+</sup>  | 5    | 由于watchdog检测出应用Freeze故障，导致应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| PERFORMANCE_CONTROL<sup>10+</sup>  | 6    | 由于系统性能问题（如设备内存不足），导致应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**说明**：该接口即将废弃，建议使用RESOURCE_CONTROL替代。<br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| RESOURCE_CONTROL<sup>10+</sup>  | 7    | 系统资源使用不当，导致应用程序退出。具体错误原因可以通过[LaunchParam.lastExitMessage](#launchparam)获取，可能原因如下: <br> - CPU Highload，CPU高负载。<br> - CPU_EXT Highload，快速CPU负载检测。<br> - IO Manage Control，I/O管控。<br> - App Memory Deterioration，应用内存超限劣化。<br> - Temperature Control，温度管控。<br> - Memory Pressure，整机低内存触发按优先级由低到高查杀。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| UPGRADE<sup>10+</sup>  | 8    | 应用程序因升级而退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| USER_REQUEST<sup>18+</sup>  | 9    | 应用程序因多任务中心请求而退出，例如用户在多任务管理界面执行上划、一键清理等操作。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| SIGNAL<sup>18+</sup>  | 10    | 应用程序因收到系统kill指令信号而退出。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 
 **示例：**
 
@@ -100,10 +107,10 @@ import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     if (launchParam.lastExitReason === AbilityConstant.LastExitReason.APP_FREEZE) {
-      console.log('The ability has exit last because the ability was not responding.');
+      console.info('The ability has exit last because the ability was not responding.');
     }
     if (launchParam.lastExitReason === AbilityConstant.LastExitReason.RESOURCE_CONTROL) {
-      console.log('The ability has exit last because the rss control，the lastExitReason is '+  launchParam.lastExitReason + ', the lastExitMessage is ' + launchParam.lastExitMessage);
+      console.info('The ability has exit last because the rss control，the lastExitReason is '+  launchParam.lastExitReason + ', the lastExitMessage is ' + launchParam.lastExitMessage);
     }
   }
 }
@@ -119,15 +126,15 @@ export default class MyAbility extends UIAbility {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| pid | number | 否 | 否 | Ability上次退出所在进程的进程号。 |
-| processName | string | 否 | 否 | Ability上次退出所在进程的名称。 |
-| uid | number | 否 | 否 | Ability上次退出所在应用的UID。 |
-| exitSubReason | number | 否 | 否 | Ability上次退出的子原因。 |
-| exitMsg | string | 否 | 否 | Ability上次退出时所在进程被kill的描述信息。 |
-| rss | number | 否 | 否 | Ability上次退出时所在进程的rss值。 |
-| pss | number | 否 | 否 | Ability上次退出时所在进程的pss值。 |
-| timestamp | number | 否 | 否 | Ability上次退出时的时间戳。 |
-| processState<sup>20+</sup> | [appManager.ProcessState](js-apis-app-ability-appManager.md#processstate10) | 否 | 是 | Ability上次退出时的进程状态。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| pid | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | Ability上次退出所在进程的进程号。<br>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| processName | string | 否 | 否 | Ability上次退出所在进程的名称。<br>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| uid | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | Ability上次退出所在应用的UID。<br>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| exitSubReason | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | Ability上次退出的子原因。<br>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| exitMsg | string | 否 | 否 | Ability上次退出时所在进程被kill的描述信息。<br>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| rss | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | Ability上次退出时所在进程的rss值。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| pss | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | Ability上次退出时所在进程的pss值。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| timestamp | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | Ability上次退出时的时间戳。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| processState<sup>20+</sup> | [appManager.ProcessState](js-apis-app-ability-appManager.md#processstate10) | 否 | 是 | Ability上次退出时的进程状态。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 **示例**:
 
@@ -136,16 +143,18 @@ import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    if (launchParam.lastExitDetailInfo) {
-      console.log('pid: ' + launchParam.lastExitDetailInfo.pid +
-        '\n processName: ' + launchParam.lastExitDetailInfo.processName +
-        '\n uid: ' + launchParam.lastExitDetailInfo.uid +
-        '\n exitSubReason: ' + launchParam.lastExitDetailInfo.exitSubReason +
-        '\n exitMsg: ' + launchParam.lastExitDetailInfo.exitMsg +
-        '\n rss: ' + launchParam.lastExitDetailInfo.rss +
-        '\n pss: ' + launchParam.lastExitDetailInfo.pss +
-        '\n timestamp: ' + launchParam.lastExitDetailInfo.timestamp +
-        '\n processState: ' + launchParam.lastExitDetailInfo.processState
+    const detailInfo = launchParam?.lastExitDetailInfo;
+
+    if (detailInfo) {
+      console.info(
+        'pid: ' + detailInfo.pid +
+          '\n processName: ' + detailInfo.processName +
+          '\n uid: ' + detailInfo.uid +
+          '\n exitSubReason: ' + detailInfo.exitSubReason +
+          '\n exitMsg: ' + detailInfo.exitMsg +
+          '\n rss: ' + detailInfo.rss +
+          '\n pss: ' + detailInfo.pss +
+          '\n timestamp: ' + detailInfo.timestamp
       );
     }
   }
@@ -159,6 +168,10 @@ Ability迁移结果，该类型为枚举，可配合UIAbility的[onContinue()](j
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
@@ -186,6 +199,10 @@ export default class MyAbility extends UIAbility {
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                         | 值 | 说明                |
 | ---                         | --- | ---           |
 | MEMORY_LEVEL_MODERATE       | 0   | 内存占用适中。 |
@@ -207,7 +224,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onMemoryLevel(level: AbilityConstant.MemoryLevel) {
     if (level === AbilityConstant.MemoryLevel.MEMORY_LEVEL_CRITICAL) {
-      console.log('The memory of device is critical, please release some memory.');
+      console.info('The memory of device is critical, please release some memory.');
     }
   }
 }
@@ -218,6 +235,10 @@ export default class MyAbility extends UIAbility {
 启动Ability时的窗口模式，类型为枚举。可配合[startAbility](js-apis-inner-application-uiAbilityContext.md#startability)使用，指定启动Ability的窗口模式。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                        | 值 | 说明                 |
 | ---                         | --- | ---                  |
@@ -243,8 +264,9 @@ let option: StartOptions = {
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     this.context.startAbility(want, option).then(() => {
-      console.log('Succeed to start ability.');
-    }).catch((error: BusinessError) => {
+      console.info('Succeed to start ability.');
+    }).catch((err: Error) => {
+      let error = err as BusinessError;
       console.error(`Failed to start ability with error: ${JSON.stringify(error)}`);
     });
   }
@@ -258,6 +280,10 @@ export default class MyAbility extends UIAbility {
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
@@ -288,6 +314,10 @@ export default class MyAbility extends UIAbility {
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
 | CONTINUATION           | 0    | 应用迁移场景。 |
@@ -301,7 +331,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>) {
     if (reason === AbilityConstant.StateType.CONTINUATION) {
-      console.log('Save the ability data when the ability continuation.');
+      console.info('Save the ability data when the ability continuation.');
     }
     return AbilityConstant.OnSaveResult.ALL_AGREE;
   }
@@ -315,6 +345,10 @@ export default class MyAbility extends UIAbility {
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值       | 说明                                                         |
 | ------------- | --------- | ------------------------------------------------------------ |
@@ -342,6 +376,10 @@ export default class MyAbility extends UIAbility {
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 值   | 说明       |
 | -------- | ---- | ---------- |
 | ACCEPT   | 0    | 接受协同。 |
@@ -366,6 +404,10 @@ export default class MyAbility extends UIAbility {
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ------------- | --------- | ----------- |
