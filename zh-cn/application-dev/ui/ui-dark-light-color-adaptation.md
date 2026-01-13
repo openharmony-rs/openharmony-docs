@@ -433,7 +433,7 @@ onCreate(): void {
 > **说明：**
 >
 > - 反色能力需在[优化深浅色模式切换开销](#优化深浅色模式切换开销)使用的前提下使用。
-> - 跨进程场景如果想使用反色能力，由使用方和提供方协商。使用方和提供方分别指的是[uiExtension的宿主](../reference/apis-arkui/js-apis-arkui-uiExtension.md)和内容提供方[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
+> - 跨进程场景如果想使用反色能力，由使用方和提供方双方适配使用。使用方和提供方分别指的是[uiExtension的宿主](../reference/apis-arkui/js-apis-arkui-uiExtension.md)和内容提供方[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
 
 1. 使用反色能力。
 
