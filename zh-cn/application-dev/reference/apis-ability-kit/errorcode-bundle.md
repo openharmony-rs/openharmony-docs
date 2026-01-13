@@ -242,7 +242,7 @@ Failed to install the HAP since the version of the HAP to install is too early.
 
 2. 新安装的应用查看版本，HAP或者HSP用DevEco Studio打开，查看里面module.json文件中的versionCode字段配置。
 
-    ![示例图](figures/hap_verisonCode.PNG)
+    ![示例图](figures/hap_versionCode.PNG)
 
 ## 17700018 安装失败，依赖的模块不存在
 
