@@ -310,6 +310,8 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**设备行为差异：** 当该接口在无听筒的设备上设置默认发声设备为听筒时，将继续从扬声器发声。
+
 **参数：**
 
 | 参数名     | 类型             | 必填   | 说明                                                      |
