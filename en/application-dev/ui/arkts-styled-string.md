@@ -20,7 +20,7 @@ Styled strings provide a variety of style objects that cover various common text
   > Since API version 15, styled string content can be displayed upon page load when **setStyledString** is called in **aboutToAppear**.
 
   <!-- @[createStyledString_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/CreateApply.ets) -->
-  
+
   ``` TypeScript
   @Entry
   @Component
@@ -224,8 +224,6 @@ Styled strings offer multiple style objects, such as [TextStyle](../reference/ap
   }
   ```
 
-  ![StyledString_Decoration](figures/styled_string_decoration.jpg)
-
 - Creating and applying a **Text BaselineOffsetStyle** object
 
   <!-- @[styledStringBaselineOffsetStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringBaselineOffsetStyle.ets) -->
@@ -357,7 +355,7 @@ You can set the paragraph style using [ParagraphStyle](../reference/apis-arkui/a
 The following example shows how to create and apply a paragraph style. The style is applied to the start, end or any position within a paragraph; it does not apply to non-paragraph areas.
 
   <!-- @[styledStringParagraphStyleOne_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringParagraphStyleOne.ets) -->
-  
+
   ``` TypeScript
   import { LengthMetrics} from '@kit.ArkUI';
   
@@ -422,8 +420,6 @@ The following example shows how to create and apply a paragraph style. The style
     }
   }
   ```
-
-  ![styled_string_paragraph1](figures/styled_string_paragraph1.png)
 
   In addition to presetting styles when creating a styled string, you can also clear the original styles and replace them with new ones later using the [replaceStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#replacestyle) API. After the replacement, you need to proactively trigger an update to the bound styled string on the attached text component's controller.
 
@@ -512,7 +508,6 @@ The following example shows how to create and apply a paragraph style. The style
   }
   ```
 
-  ![styled_string_paragraph2](figures/styled_string_paragraph2.gif)
 
 ## Converting a Styled String into a Paragraph
 
@@ -730,8 +725,6 @@ You can use [getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measure
   }
   ```
 
-  ![StyledString_GetParagraphs](figures/StyledString_GetParagraphs.png)
-
 
 ## Using Images
 
@@ -744,7 +737,7 @@ The following example shows how to attach images and text to the same **MutableS
 > In the [constructor](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#constructor) of styled strings, when input parameters are of ImageAttachment or CustomSpan type, the **styles** parameter does not take effect. To apply styles, use methods such as [setStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#setstyle) and [insertStyledString](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#insertstyledstring).
 
   <!-- @[styledStringImageAttachment_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringImageAttachment.ets) -->
-  
+
   ``` TypeScript
   // xxx.ets
   import { image } from '@kit.ImageKit';
@@ -1084,7 +1077,6 @@ In addition to initializing styled strings with initial style objects, you can a
   }
   ```
 
-  ![styled_string_event](figures/styled_string_event.gif)
 
 ## Format Conversion
 
@@ -1257,7 +1249,6 @@ export struct StyledStringHtml {
   }
   ```
 
-  ![styled_string_html_2](figures/styled_string_html_2.gif)
 
 ## Example
 

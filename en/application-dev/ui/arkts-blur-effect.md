@@ -119,9 +119,6 @@ struct Index {
 ```
 
 
-![en-us_image_0000001599813588](figures/en-us_image_0000001599813588.gif)
-
-
 ## Applying Background Blur with backgroundBlurStyle
 
 <!-- @[animationBlur_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template3/BackDropBlurStyleDemo.ets) --> 

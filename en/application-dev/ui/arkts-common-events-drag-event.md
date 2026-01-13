@@ -1207,8 +1207,6 @@ struct GridEts {
 }
 ```
 
-![patchDataProcess](figures/patchDataProcess.gif)
-
 
 ## Spring Loading (Hover Detection) Support
 Spring loading, also known as drag hover detection or spring-loaded navigation, is an enhanced drag and drop capability that allows users to automatically trigger view transitions by hovering over targets during drag operations. This feature significantly improves operational efficiency and is recommended for implementation in all page transition scenarios.
@@ -1582,7 +1580,5 @@ export struct SpringLoadingPage {
 }
 ```
 
-
-![drag spring loading sample gif](figures/spring-loading-record.gif)
 
 <!--RP1--><!--RP1End-->

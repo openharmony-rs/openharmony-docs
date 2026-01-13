@@ -194,8 +194,6 @@ export struct CustomDialogComponentWithTransition {
 }
 ```
 
- ![UIContextPromptAction](figures/UIContextPromptActionDialogMask.gif)
-
 ## Setting the Distance Between the Dialog Box and the Soft Keyboard
 
 To maintain dialog box independence, dialog boxes automatically avoid surrounding elements like status bars, navigation bars, and keyboards. When the soft keyboard appears, dialog boxes maintain a default 16 vp distance. Since API version 15, you can use **keyboardAvoidMode** and **keyboardAvoidDistance** in [BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) to configure keyboard avoidance behavior.
@@ -253,7 +251,6 @@ export struct CustomDialogWithKeyboardAvoidDistance {
 }
 ```
 
- ![UIContextPromptAction](figures/UIContextPromptActionCustomDialog.gif)
 
 
 ## Sample Code

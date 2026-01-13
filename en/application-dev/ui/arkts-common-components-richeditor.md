@@ -401,7 +401,6 @@ options: RichEditorOptions = { controller: this.controller };
         .maxLength(7)
 ```
 
-![max Length](figures/RichEditor_maxLength.gif)
 
 ## Adding Event Callbacks
 
@@ -522,7 +521,6 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
           .height(70)
 ```
 
-![alt text](figures/richeditor_image_aboutToIMEInput4.gif)
 
 ### Adding a Callback Triggered Before Paste Completion
 
@@ -781,7 +779,6 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
           .height(70)
 ```
 
-![alt text](figures/richeditor_image_onSelectionChange.gif)
 
 ### Setting the Text Selection Range
 
@@ -922,7 +919,6 @@ struct PrepareMenu {
 }
 ```
 
-![alt text](figures/richeditor_on_prepare_menu.gif)
 
 ### Disabling System Service Menu Items
 
@@ -979,8 +975,6 @@ export struct DisableSystemServiceMenu {
 }
 ```
 
-![RichEditor_disable_system_service_menuItems](figures/RichEditor_disable_system_service_menuItems.gif)
-
 Use [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) to hide specified system-provided service menu items from the text selection menu.
 
 This API allows you to precisely disable only the system menu items you specify, while preserving other system menu functions needed by your application. This makes the menu better suited to your actual interaction design.
@@ -1034,7 +1028,6 @@ export struct DisableMenuItem {
 }
 ```
 
-  ![alt text](figures/richEditor_disable_menuItems.gif)
 
 ### Setting the Custom Context Menu on Text Selection
 
@@ -1151,7 +1144,6 @@ options: RichEditorOptions = { controller: this.controller };
         .maxLines(2)
 ```
 
-![max lines](figures/RichEditor_maxLines.gif)
 
 ## Setting the Style
 
@@ -1353,6 +1345,5 @@ options: RichEditorOptions = { controller: this.controller };
           .enableAutoSpacing(this.enableAutoSpace)
 ```
 
-![RichEditor_enable_auto_spacing](figures/RichEditor_enable_auto_spacinge.gif)
 
 <!--RP1--><!--RP1End-->

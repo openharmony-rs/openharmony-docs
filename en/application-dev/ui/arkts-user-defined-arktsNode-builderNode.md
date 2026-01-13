@@ -64,7 +64,7 @@ Create offline nodes and component trees, and use them in conjunction with Frame
 The root node of the BuilderNode is directly used as the return value of [makeNode](../reference/apis-arkui/js-apis-arkui-nodeController.md#makenode) of [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md).
 
   <!-- @[Main_FrameNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/FrameNode.ets) --> 
-  
+
   ``` TypeScript
   import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
   
@@ -128,7 +128,7 @@ When combining a BuilderNode with a RenderNode, note the following:
 If you mount the RenderNode from the BuilderNode under another RenderNode, you must explicitly specify [selfIdeaSize](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions) as the layout constraint for the BuilderNode. This approach to mounting nodes is not recommended.
 
   <!-- @[Main_RenderNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RenderNode.ets) -->
-  
+
   ``` TypeScript
   import { NodeController, BuilderNode, FrameNode, UIContext, RenderNode } from '@kit.ArkUI';
   
@@ -213,7 +213,7 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
  
 
   <!-- @[Main_WrappedBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/WrappedBuilder.ets) -->
-  
+
   ``` TypeScript
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
   
@@ -305,7 +305,7 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
     }
   }
   ```
-  
+
   ![en-us_image_update_BuilderNode](figures/en-us_image_update_BuilderNode.gif)
 
 ## Canceling the Reference to the Entity Node
@@ -327,7 +327,7 @@ Use the [postTouchEvent](../reference/apis-arkui/js-apis-arkui-builderNode.md#po
 The following example forwards a touch event from one **Column** component to another in the BuilderNode, so that when the lower **Column** component is touched, the upper **Column** component also receives the same touch event. The API returns **true** if the button's event is successfully recognized.
 
   <!-- @[Main_PostTouchEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/PostTouchEvent.ets) -->
-  
+
   ``` TypeScript
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -414,7 +414,7 @@ In the following example, touch events are bound to both the **Column** and **Ro
 ![BuilderNode_BuilderProxyNode_1](figures/BuilderNode_BuilderProxyNode_1.png)
 
   <!-- @[Main_BuilderProxyNode01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/BuilderProxyNode01.ets) -->
-  
+
   ``` TypeScript
   import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -498,7 +498,7 @@ In the preceding scenario, to enable touch event propagation, wrap the syntax no
 ![BuilderNode_BuilderProxyNode_2](figures/BuilderNode_BuilderProxyNode_2.png)
 
   <!-- @[Main_BuilderProxyNode02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/BuilderProxyNode02.ets) -->
-  
+
   ``` TypeScript
   import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -585,7 +585,7 @@ Alternatively, for custom components, you can directly set attributes. In this c
 ![BuilderNode_BuilderProxyNode_3](figures/BuilderNode_BuilderProxyNode_3.png)
 
   <!-- @[Main_BuilderProxyNode03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/BuilderProxyNode03.ets) -->
-  
+
   ``` TypeScript
   import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -674,7 +674,7 @@ In the following example, the custom component **ReusableChildComponent** can pa
 
 
   <!-- @[Main_ReusablePage01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/ReusablePage01.ets) -->
-  
+
   ``` TypeScript
   import { FrameNode, NodeController, BuilderNode, UIContext } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -864,7 +864,7 @@ In the following example, when **ReusableChildComponent** serves as a direct chi
 ![BuilderNode-Reusable](figures/BuilderNode-Reusable.png)
 
   <!-- @[Main_ReusablePage02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/ReusablePage02.ets) -->
-  
+
   ``` TypeScript
   import { FrameNode, NodeController, BuilderNode, UIContext } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -965,7 +965,7 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
 > The **updateConfiguration** API is designed to inform objects of the need to update, with the updates reflecting changes in the application's current system environment.
 
   <!-- @[Main_EnvironmentCallbackPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/EnvironmentCallbackPage.ets) -->
-  
+
   ``` TypeScript
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
   import { AbilityConstant, Configuration, EnvironmentCallback } from '@kit.AbilityKit';
@@ -1108,7 +1108,7 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
 With use of [routing](../reference/apis-arkui/arkts-apis-uicontext-router.md) APIs such as [router.replaceUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#replaceurl), [router.back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back), [router.clear](../reference/apis-arkui/arkts-apis-uicontext-router.md#clear), and [router.replaceNamedRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#replacenamedroute) to navigate between pages, issues may arise when you reuse a cached BuilderNode from a page that is about to be destroyed. Specifically, the reused BuilderNode might not update its data correctly, or newly created nodes might not display as expected. For example, when you use [router.replaceNamedRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#replacenamedroute), consider the following scenario: When the **router replace** button is clicked, the page switches to PageTwo, and the flag **isShowText** is set to **false**.
 
   <!-- @[Main_RouterPage3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage3.ets) -->
-  
+
   ``` TypeScript
   // ets/pages/RouterPage3.ets
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -1200,7 +1200,7 @@ With use of [routing](../reference/apis-arkui/arkts-apis-uicontext-router.md) AP
 The implementation of **PageTwo** is as follows:
 
   <!-- @[Main_RouterPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage2.ets) -->
-  
+
   ``` TypeScript
   // ets/pages/RouterPage2.ets
   // This page contains a button to navigate back to the home page, where the original text disappears.
@@ -1231,7 +1231,7 @@ In versions earlier than API version 16, you need to manually remove the Builder
 Since API version 16, the BuilderNode automatically refreshes its content when reused in a new page. This means you no longer need to remove the BuilderNode from the cache when the page is destroyed.
 
   <!-- @[Main_RouterPage3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage3.ets) -->
-  
+
   ``` TypeScript
   // ets/pages/RouterPage3.ets
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -1326,7 +1326,7 @@ Since API version 16, the BuilderNode automatically refreshes its content when r
 Since API version 12, custom components can receive [LocalStorage](../ui/state-management/arkts-localstorage.md) instances. You can use LocalStorage related decorators such as [@LocalStorageProp](../ui/state-management/arkts-localstorage.md#localstorageprop) and [@LocalStorageLink](../ui/state-management/arkts-localstorage.md#localstoragelink) by [passing LocalStorage instances](../ui/state-management/arkts-localstorage.md#providing-a-custom-component-with-access-to-a-localstorage-instance).
 
   <!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/LocalStoragePage.ets) -->
-  
+
   ``` TypeScript
   import { BuilderNode, NodeController, UIContext } from '@kit.ArkUI';
   
@@ -1409,7 +1409,7 @@ All frontend nodes are bound to corresponding backend entity nodes. After **disp
 Since API version 20, you can use the [isDisposed](../reference/apis-arkui/js-apis-arkui-builderNode.md#isdisposed20) API to check whether a **BuilderNode** object has released its reference to backend entity nodes. This enables validation before node operations to prevent potential risks.
 
   <!-- @[Main_IsDisposedPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/IsDisposedPage.ets) -->
-  
+
   ``` TypeScript
   import { NodeController, FrameNode, BuilderNode } from '@kit.ArkUI';
   
@@ -1513,7 +1513,7 @@ The BuilderNode has its freeze policy updated only during the tree operations li
 Starting from API version 20, in state management V1, if a BuilderNode is configured to inherit the freeze policy of its parent custom component (by setting **inheritFreezeOptions** to **true**), and the parent component has freezing enabled (**freezeWhenInactive** set to **true**), the BuilderNode freezes when inactive. Upon becoming active again, it thaws and updates with cached data. The following is an example:
 
   <!-- @[Main_InheritFreezeOptionsPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/InheritFreezeOptionsPage.ets) -->
-  
+
   ``` TypeScript
   import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1706,7 +1706,6 @@ Starting from API version 20, in state management V1, if a BuilderNode is config
   }
   ```
 
-![inheritFreezeOptions](figures/builderNode_inheritFreezeOptions.gif)
 
 ### Common BuilderNode Freezing Scenarios (State Management V2)
 
@@ -1946,7 +1945,6 @@ struct buildNodeChild {
 }
 ```
 
-![inheritFreezeOptions](figures/V2tabFree.gif)
 
 In the preceding example:
 
@@ -2143,7 +2141,6 @@ struct TextBuilder {
 }
 ```
 
-![inheritFreezeOptions](figures/V2Navination.gif)
 
 In the preceding example:
 

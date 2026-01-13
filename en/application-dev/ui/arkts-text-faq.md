@@ -64,7 +64,6 @@ The sample code is as follows:
   }
   ```
 
-![](figures/text_faq_Word_Break.gif)
 
 ### How Do I Implement Text Expansion at the End of the Line?
 
@@ -126,7 +125,6 @@ The sample code is as follows:
   }
   ```
 
-![](figures/EllipsisDemo2.gif)
 
 ### How Do I Add Custom Tags Before and After Text?
 
@@ -455,7 +453,6 @@ Solution 1 truncates content. To display all text, place the **Text** component 
   }
   ```
 
-![](figures/text_too_long_scroll.gif)
 
 ### How Do I Trigger a Custom Menu via selection and Set Its Font Size?
 
@@ -524,7 +521,6 @@ struct TextExample8 {
 }
 ```
 
-![](figures/selectionAndBindMenuAndFont.gif)
 
 ### How do I Disable the Long Press Gesture on Text?
 
@@ -630,4 +626,3 @@ export struct CursorPersistsWhenTextInputIsCoveredExample {
 }
 ```
 
-![textInput_faq_show_handle](figures/textInput_faq_show_handle.gif)

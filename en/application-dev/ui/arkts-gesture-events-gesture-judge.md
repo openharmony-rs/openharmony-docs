@@ -432,7 +432,7 @@ Since API version 20, you can use the [onTouchTestDone](../reference/apis-arkui/
 Disabling by gesture type:
 
    <!-- @[disable_gesturetype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
-   
+
    ``` TypeScript
    .onTouchTestDone((event, recognizers) => {
      for (let i = 0; i < recognizers.length; i++) {
@@ -450,7 +450,7 @@ Disabling by associated component:
 Components must be pre-configured with a component ID through the universal attribute [id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id).
 
    <!-- @[component_disabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
-   
+
    ``` TypeScript
    .onTouchTestDone((event, recognizers) => {
      for (let i = 0; i < recognizers.length; i++) {
@@ -466,7 +466,7 @@ Components must be pre-configured with a component ID through the universal attr
 Disabling system built-in gestures:
 
    <!-- @[builtIn_gestureDisable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
-   
+
    ``` TypeScript
    .onTouchTestDone((event, recognizers) => {
      for (let i = 0; i < recognizers.length; i++) {
@@ -745,4 +745,3 @@ struct Index {
 }
 ```
 
-![Gesure20251119002](figures/Gesure20251119002.gif)

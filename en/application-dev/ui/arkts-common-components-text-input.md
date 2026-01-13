@@ -425,7 +425,6 @@ struct DisableSystemServiceMenuItem {
 }
 ```
 
-![TextInput_disable_system_service_menu_items](figures/TextInput_disable_system_service_menu_items.gif)
 
 Since API version 20, use [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) to disable specified system service menu items in the text selection menu.
 
@@ -473,7 +472,6 @@ struct DisableMenuItem {
 }
 ```
 
-![Text_input_disable_menu_items](figures/Text_input_disable_menu_items.gif)
 
 ## Autofill
 
@@ -726,5 +724,3 @@ struct TextExample {
   }
 }
 ```
-
-![textinputkeyboardavoid](figures/textareaHeight.gif)

@@ -27,7 +27,6 @@ To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicont
    });
  ```
 
- ![openMenu](figures/openMenu.gif)
 
 ### Creating a ComponentContent Instance
 
@@ -138,7 +137,6 @@ this.getUIContext().getPromptAction()
   });
 ```
 
-   ![openMenu](figures/openMenu.gif)
 
 ## Closing the Menu
 
@@ -157,7 +155,6 @@ this.getUIContext().getPromptAction()
   });
 ```
 
-![openMenu](figures/openMenu.gif)
 
 > **NOTE**
 >

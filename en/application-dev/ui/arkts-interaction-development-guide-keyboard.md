@@ -209,8 +209,6 @@ struct PreImeEventExample {
 }
 ```
 
-![en-us_image_00012427222](figures/en-us_image_00012427222.gif)
-
 This example demonstrates how to use **onKeyEventDispatch** to distribute key events to child components, which handle the events using **onKeyEvent**.
 
 <!-- @[key_distribute_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets) -->   

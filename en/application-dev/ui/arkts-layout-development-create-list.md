@@ -1474,9 +1474,6 @@ In certain scenarios, you may want a list to automatically scroll upward when ne
 
 Since API version 20, scrollable components ([Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), and [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)) support swipe release event callbacks. These callbacks are triggered when the user lifts their finger from the screen, reporting the instantaneous swipe velocity. You can use the callbacks to implement custom scroll positioning effects, such as snap scrolling for short news items and free scrolling for long articles.
 
-  **Figure 26** Custom scroll positioning effects
-
-![onWillStopDragging](figures/onWillStopDragging.gif)
 
 1. Define the news item data structure.
 
@@ -1586,23 +1583,11 @@ Since API version 20, scrollable components ([Grid](../reference/apis-arkui/arku
 
 The edge effect refers to the visual and interactive feedback when users scroll beyond the boundaries of a scrollable component. The **List** component supports three edge effect types via the [edgeEffect](../reference/apis-arkui/arkui-ts/ts-container-list.md#edgeeffect) attribute: spring (bounce effect), shadow, and none. For details, see [EdgeEffect](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect).
 
-When the **List** content area occupies at least one full screen, the default edge effect is spring, as shown below.
+When the **List** content area occupies at least one full screen, the default edge effect is spring.
 
-  **Figure 27** Spring edge effect
-
-![edge_effect_spring](figures/edge_effect_spring.gif)
-
-If **.edgeEffect(EdgeEffect.None)** is used, the List component displays no edge effect, as shown below.
-
-  **Figure 28** No edge effect
-
-![edge_effect_none](figures/edge_effect_none.gif)
+If **.edgeEffect(EdgeEffect.None)** is used, the List component displays no edge effect.
 
 Since API version 18, **List** supports configuring edge effects for individual sides. For example, **.edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true, effectEdge: EffectEdge.START })** applies the spring effect only to the start edge.
-
-  **Figure 29** Single-side edge effect
-
-![edge_effect_spring_start](figures/edge_effect_spring_start.gif)
 
 Note: By default, the **List** component can produce a bounce effect only when there is more than one screen of content. To produce a bounce effect when there is less than one screen of content, configure **.edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true })**.
 
