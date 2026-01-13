@@ -5137,6 +5137,8 @@ tonePlayer.release().then(() => {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**设备行为差异：** 当本模块接口在TV设备上使用时，将不会产生效果。
+
 ### setAsrAecMode<sup>12+</sup>
 
 setAsrAecMode(mode: AsrAecMode): boolean
