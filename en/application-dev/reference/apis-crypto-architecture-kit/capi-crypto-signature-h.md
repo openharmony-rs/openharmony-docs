@@ -41,34 +41,34 @@ Defines APIs for signature verification.
 
 | Name| Description|
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify **verify)](#oh_cryptoverify_create) | Creates a **Verify** instance for signature verification.|
+| [OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify **verify)](#oh_cryptoverify_create) | Creates a **Verify** instance for signature verification.<br> Note: The created resource must be destroyed by calling [OH_CryptoVerify_Destroy](capi-crypto-signature-h.md#oh_cryptoverify_destroy).|
 | [OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pubKey)](#oh_cryptoverify_init) | Initializes a **Verify** instance by using the public key.|
 | [OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *in)](#oh_cryptoverify_update) | Updates the data to be verified.|
 | [bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_DataBlob *signData)](#oh_cryptoverify_final) | Verifies the signature of the data.|
-| [OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob *signData, Crypto_DataBlob *rawSignData)](#oh_cryptoverify_recover) | Restores the raw signature data.|
+| [OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob *signData, Crypto_DataBlob *rawSignData)](#oh_cryptoverify_recover) | Restores the raw signature data.<br> Note: After the use is complete, the memory for storing the **rawSignData** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)](#oh_cryptoverify_getalgoname) | Obtains the signature verification algorithm.|
 | [OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)](#oh_cryptoverify_setparam) | Sets a signature verification parameter.|
-| [OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)](#oh_cryptoverify_getparam) | Obtains a signature verification parameter.|
+| [OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)](#oh_cryptoverify_getparam) | Obtains a signature verification parameter.<br> Note: After the use is complete, the memory for storing the **value** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)](#oh_cryptoverify_destroy) | Destroys a **Verify** instance.|
-| [OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sign)](#oh_cryptosign_create) | Creates a signature instance based on the given algorithm name.|
+| [OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sign)](#oh_cryptosign_create) | Creates a signature instance based on the given algorithm name.<br> Note: The created resource must be destroyed by calling [OH_CryptoSign_Destroy](capi-crypto-signature-h.md#oh_cryptosign_destroy).|
 | [OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privKey)](#oh_cryptosign_init) | Initializes a signature instance.|
 | [OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob *in)](#oh_cryptosign_update) | Updates the data to be signed.|
-| [OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)](#oh_cryptosign_final) | Finalizes the signing operation.|
+| [OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)](#oh_cryptosign_final) | Finalizes the signing operation.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)](#oh_cryptosign_getalgoname) | Obtains the algorithm name of a signature instance.|
 | [OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, const Crypto_DataBlob *value)](#oh_cryptosign_setparam) | Sets parameters for a signature instance.|
-| [OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)](#oh_cryptosign_getparam) | Obtains the specified parameter from a signature instance.|
+| [OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)](#oh_cryptosign_getparam) | Obtains the specified parameter from a signature instance.<br> Note: After the use is complete, the memory for storing the **value** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)](#oh_cryptosign_destroy) | Destroys a signature instance.|
-| [OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature, OH_CryptoEccSignatureSpec **spec)](#oh_cryptoeccsignaturespec_create) | Creates ECC signing specifications.|
-| [OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)](#oh_cryptoeccsignaturespec_getrands) | Obtains the **r** and **s** values of an ECC signature.|
+| [OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature, OH_CryptoEccSignatureSpec **spec)](#oh_cryptoeccsignaturespec_create) | Creates ECC signing specifications.<br> Note: The created resource must be destroyed by calling [OH_CryptoEccSignatureSpec_Destroy](capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_destroy).|
+| [OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)](#oh_cryptoeccsignaturespec_getrands) | Obtains the **r** and **s** values of an ECC signature.<br> Note: After the use is complete, the memory for storing the **r** and **s** parameters must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)](#oh_cryptoeccsignaturespec_setrands) | Sets the **r** and **s** values of an ECC signature.|
-| [OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *out)](#oh_cryptoeccsignaturespec_encode) | Encodes ECC signing specifications into a signature in DER format.|
+| [OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *out)](#oh_cryptoeccsignaturespec_encode) | Encodes ECC signing specifications into a signature in DER format.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)](#oh_cryptoeccsignaturespec_destroy) | Destroys ECC signing specifications.|
 
 ## Enum Description
 
 ### CryptoSignature_ParamType
 
-```
+```c
 enum CryptoSignature_ParamType
 ```
 
@@ -92,22 +92,21 @@ Enumerates the types of signature verification parameters.
 
 ### OH_CryptoVerify_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify **verify)
 ```
 
 **Description**
 
-Creates a **Verify** instance for signature verification.
+Creates a **Verify** instance for signature verification.<br> Note: The created resource must be destroyed by calling [OH_CryptoVerify_Destroy](capi-crypto-signature-h.md#oh_cryptoverify_destroy).
 
 **Since**: 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| const char *algoName | Pointer to the algorithm used to generate the **Verify** instance.<br> For example, **'RSA1024\|PKCS1\|SHA256'**.| | |
+| const char *algoName | Pointer to the algorithm used to generate the **Verify** instance.<br> For example, **RSA1024\|PKCS1\|SHA256**.| | |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) **verify | Pointer to the **Verify** instance created.|
 
 **Returns**
@@ -118,7 +117,7 @@ Creates a **Verify** instance for signature verification.
 
 ### OH_CryptoVerify_Init()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pubKey)
 ```
 
@@ -127,7 +126,6 @@ OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pu
 Initializes a **Verify** instance by using the public key.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -144,14 +142,14 @@ Initializes a **Verify** instance by using the public key.
 
 **Reference**
 
-[OH_CryptoVerify_Update](#oh_cryptoverify_update)
+[OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update)
 
-[OH_CryptoVerify_Final](#oh_cryptoverify_final)
+[OH_CryptoVerify_Final](capi-crypto-signature-h.md#oh_cryptoverify_final)
 
 
 ### OH_CryptoVerify_Update()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *in)
 ```
 
@@ -160,7 +158,6 @@ OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *
 Updates the data to be verified.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -177,14 +174,14 @@ Updates the data to be verified.
 
 **Reference**
 
-[OH_CryptoVerify_Init](#oh_cryptoverify_init)
+[OH_CryptoVerify_Init](capi-crypto-signature-h.md#oh_cryptoverify_init)
 
-[OH_CryptoVerify_Final](#oh_cryptoverify_final)
+[OH_CryptoVerify_Final](capi-crypto-signature-h.md#oh_cryptoverify_final)
 
 
 ### OH_CryptoVerify_Final()
 
-```
+```c
 bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_DataBlob *signData)
 ```
 
@@ -193,7 +190,6 @@ bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_Dat
 Verifies the signature of the data.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -207,27 +203,26 @@ Verifies the signature of the data.
 
 | Type| Description|
 | -- | -- |
-| bool | Whether the signature verification is successful.|
+| bool | **true** if the signature verification is successful; **false** otherwise.|
 
 **Reference**
 
-[OH_CryptoVerify_Init](#oh_cryptoverify_init)
+[OH_CryptoVerify_Init](capi-crypto-signature-h.md#oh_cryptoverify_init)
 
-[OH_CryptoVerify_Update](#oh_cryptoverify_update)
+[OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update)
 
 
 ### OH_CryptoVerify_Recover()
 
-```
-OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob *signData,Crypto_DataBlob *rawSignData)
+```c
+OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob *signData, Crypto_DataBlob *rawSignData)
 ```
 
 **Description**
 
-Restores the raw signature data.
+Restores the raw signature data.<br> Note: After the use is complete, the memory for storing the **rawSignData** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -245,7 +240,7 @@ Restores the raw signature data.
 
 ### OH_CryptoVerify_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)
 ```
 
@@ -254,7 +249,6 @@ const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)
 Obtains the signature verification algorithm.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -270,8 +264,8 @@ Obtains the signature verification algorithm.
 
 ### OH_CryptoVerify_SetParam()
 
-```
-OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type,Crypto_DataBlob *value)
+```c
+OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)
 ```
 
 **Description**
@@ -280,13 +274,12 @@ Sets a signature verification parameter.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | Pointer to the **Verify** instance.|
-| [CryptoSignature_ParamType](#cryptosignature_paramtype) type | Name of the signature verification parameter to set.|
+| [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | Name of the signature verification parameter to set.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | Pointer to the value of the signature verification parameter to set.|
 
 **Returns**
@@ -297,23 +290,22 @@ Sets a signature verification parameter.
 
 ### OH_CryptoVerify_GetParam()
 
-```
-OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type,Crypto_DataBlob *value)
+```c
+OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)
 ```
 
 **Description**
 
-Obtains a signature verification parameter.
+Obtains a signature verification parameter.<br> Note: After the use is complete, the memory for storing the **value** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | Pointer to the **Verify** instance.|
-| [CryptoSignature_ParamType](#cryptosignature_paramtype) type | Name of the signature verification parameter to obtain.|
+| [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | Name of the signature verification parameter to obtain.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | Pointer to the parameter value obtained.|
 
 **Returns**
@@ -324,7 +316,7 @@ Obtains a signature verification parameter.
 
 ### OH_CryptoVerify_Destroy()
 
-```
+```c
 void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)
 ```
 
@@ -334,7 +326,6 @@ Destroys a **Verify** instance.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -343,22 +334,21 @@ Destroys a **Verify** instance.
 
 ### OH_CryptoSign_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sign)
 ```
 
 **Description**
 
-Creates a signature instance based on the given algorithm name.
+Creates a signature instance based on the given algorithm name.<br> Note: The created resource must be destroyed by calling [OH_CryptoSign_Destroy](capi-crypto-signature-h.md#oh_cryptosign_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| const char *algoName | Pointer to the algorithm used to generate the signature instance.<br> For example, **'RSA\|PKCS1\|SHA384'**, **'ECC\|SHA84'**| | | |
+| const char *algoName | Pointer to the algorithm used to generate the signature instance.<br> For example, **RSA\|PKCS1\|SHA384** or **ECC\|SHA384**.| | | |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) **sign | Pointer to the signature instance.|
 
 **Returns**
@@ -369,7 +359,7 @@ Creates a signature instance based on the given algorithm name.
 
 ### OH_CryptoSign_Init()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privKey)
 ```
 
@@ -378,7 +368,6 @@ OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privK
 Initializes a signature instance.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -395,14 +384,14 @@ Initializes a signature instance.
 
 **Reference**
 
-[OH_CryptoSign_Update](#oh_cryptosign_update)
+[OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update)
 
-[OH_CryptoSign_Final](#oh_cryptosign_final)
+[OH_CryptoSign_Final](capi-crypto-signature-h.md#oh_cryptosign_final)
 
 
 ### OH_CryptoSign_Update()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob *in)
 ```
 
@@ -411,7 +400,6 @@ OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob
 Updates the data to be signed.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -428,23 +416,22 @@ Updates the data to be signed.
 
 **Reference**
 
-[OH_CryptoSign_Init](#oh_cryptosign_init)
+[OH_CryptoSign_Init](capi-crypto-signature-h.md#oh_cryptosign_init)
 
-[OH_CryptoSign_Final](#oh_cryptosign_final)
+[OH_CryptoSign_Final](capi-crypto-signature-h.md#oh_cryptosign_final)
 
 
 ### OH_CryptoSign_Final()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)
 ```
 
 **Description**
 
-Finalizes the signing operation.
+Finalizes the signing operation.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -462,14 +449,14 @@ Finalizes the signing operation.
 
 **Reference**
 
-[OH_CryptoSign_Init](#oh_cryptosign_init)
+[OH_CryptoSign_Init](capi-crypto-signature-h.md#oh_cryptosign_init)
 
-[OH_CryptoSign_Update](#oh_cryptosign_update)
+[OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update)
 
 
 ### OH_CryptoSign_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)
 ```
 
@@ -478,7 +465,6 @@ const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)
 Obtains the algorithm name of a signature instance.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -494,8 +480,8 @@ Obtains the algorithm name of a signature instance.
 
 ### OH_CryptoSign_SetParam()
 
-```
-OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type,const Crypto_DataBlob *value)
+```c
+OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, const Crypto_DataBlob *value)
 ```
 
 **Description**
@@ -504,13 +490,12 @@ Sets parameters for a signature instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | Pointer to the signature instance.|
-| [CryptoSignature_ParamType](#cryptosignature_paramtype) type | Pointer to the signature parameter type.|
+| [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | Pointer to the signature parameter type.|
 | [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | Pointer to the input data.|
 
 **Returns**
@@ -521,23 +506,22 @@ Sets parameters for a signature instance.
 
 ### OH_CryptoSign_GetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)
 ```
 
 **Description**
 
-Obtains the specified parameter from a signature instance.
+Obtains the specified parameter from a signature instance.<br> Note: After the use is complete, the memory for storing the **value** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | Pointer to the signature instance.|
-| [CryptoSignature_ParamType](#cryptosignature_paramtype) type | Pointer to the signature parameter type.|
+| [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | Pointer to the signature parameter type.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | Pointer to the output data.|
 
 **Returns**
@@ -548,7 +532,7 @@ Obtains the specified parameter from a signature instance.
 
 ### OH_CryptoSign_Destroy()
 
-```
+```c
 void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)
 ```
 
@@ -558,7 +542,6 @@ Destroys a signature instance.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -567,16 +550,15 @@ Destroys a signature instance.
 
 ### OH_CryptoEccSignatureSpec_Create()
 
-```
-OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature,OH_CryptoEccSignatureSpec **spec)
+```c
+OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature, OH_CryptoEccSignatureSpec **spec)
 ```
 
 **Description**
 
-Creates ECC signing specifications.
+Creates ECC signing specifications.<br> Note: The created resource must be destroyed by calling [OH_CryptoEccSignatureSpec_Destroy](capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -593,16 +575,15 @@ Creates ECC signing specifications.
 
 ### OH_CryptoEccSignatureSpec_GetRAndS()
 
-```
-OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r,Crypto_DataBlob *s)
+```c
+OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)
 ```
 
 **Description**
 
-Obtains the **r** and **s** values of an ECC signature.
+Obtains the **r** and **s** values of an ECC signature.<br> Note: After the use is complete, the memory for storing the **r** and **s** parameters must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -620,8 +601,8 @@ Obtains the **r** and **s** values of an ECC signature.
 
 ### OH_CryptoEccSignatureSpec_SetRAndS()
 
-```
-OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r,Crypto_DataBlob *s)
+```c
+OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)
 ```
 
 **Description**
@@ -629,7 +610,6 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *
 Sets the **r** and **s** values of an ECC signature.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -647,16 +627,15 @@ Sets the **r** and **s** values of an ECC signature.
 
 ### OH_CryptoEccSignatureSpec_Encode()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *out)
 ```
 
 **Description**
 
-Encodes ECC signing specifications into a signature in DER format.
+Encodes ECC signing specifications into a signature in DER format.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -673,7 +652,7 @@ Encodes ECC signing specifications into a signature in DER format.
 
 ### OH_CryptoEccSignatureSpec_Destroy()
 
-```
+```c
 void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)
 ```
 
@@ -682,7 +661,6 @@ void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)
 Destroys ECC signing specifications.
 
 **Since**: 20
-
 
 **Parameters**
 
