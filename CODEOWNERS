@@ -800,7 +800,7 @@ zh-cn/application-dev/napi/neural-network-runtime-guidelines.md @ge-yafang @prin
 
 [开发-NDK]
 zh-cn/application-dev/napi/  @fang-jinxu
-zh-cn/application-dev/napi/rawfile-guidelines.md @Brilliantry_Rui @Buda-Liu @budda-wang @lpw_work
+zh-cn/application-dev/napi/rawfile-guidelines.md @ningningW @lliule21 @lpw_work @budda-wang
 zh-cn/application-dev/napi/usb-ddk-guidelines.md @Kevin-Lau @liuhonggang123
 
 
@@ -2271,24 +2271,43 @@ zh-cn/application-dev/reference/apis-input-kit/ @zhang_yixin13   @hanruofei @Lyu
 zh-cn/application-dev/reference/apis-ipc-kit/js-apis-rpc.md @xdx1921 @zhang_yixin13 @zhaopeng_gitee @Lyuxin
 
 [API参考-Localization Kit]
-zh-cn/application-dev/reference/apis-localization-kit  @ningningW  @lpw_work 
+zh-cn/application-dev/reference/apis-localization-kit  @ningningW  
 zh-cn/application-dev/reference/apis-localization-kit/js-apis-i18n.md  @ningningW @yliupy  @sunyaozu @lpw_work 
 zh-cn/application-dev/reference/apis-localization-kit/js-apis-intl.md  @ningningW @yliupy  @sunyaozu @lpw_work 
 zh-cn/application-dev/reference/apis-localization-kit/js-apis-i18n-sys.md  @ningningW @yliupy  @sunyaozu @lpw_work 
 zh-cn/application-dev/reference/apis-localization-kit/errorcode-i18n.md  @ningningW @yliupy @sunyaozu @lpw_work 
+zh-cn/application-dev/reference/apis-localization-kit/capi-timezone-h.md  @ningningW @yliupy @sunyaozu @lpw_work
+zh-cn/application-dev/reference/apis-localization-kit/capi-errorcode-h.md  @ningningW @yliupy @sunyaozu @lpw_work
+zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-datetimerule.md  @ningningW @yliupy @sunyaozu @lpw_work
+zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-initialtimezonerule.md  @ningningW @yliupy @sunyaozu @lpw_work
+zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-timearraytimezonerule.md  @ningningW @yliupy @sunyaozu @lpw_work
+zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-annualtimezonerule.md  @ningningW @yliupy @sunyaozu @lpw_work
+zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-timezonerules.md  @ningningW @yliupy @sunyaozu @lpw_work
+zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-timezonerulequery.md  @ningningW @yliupy @sunyaozu @lpw_work
 
-zh-cn/application-dev/reference/apis-localization-kit/js-apis-resource-manager.md   @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/js-apis-sendable-resource-manager.md  @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/rawfile.md   @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/resourcemanager.md   @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/raw__dir_8h.md   @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/raw__file__manager_8h.md  @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/raw__file_8h.md   @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/ohresmgr_8h.md  @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/resmgr__common_8h.md  @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/_raw_file_descriptor.md   @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/_raw_file_descriptor64.md   @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/errorcode-resource-manager.md   @ningningW @budda-wang @lpw_work 
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-resource-manager.md  @ningningW @lliule21 @lpw_work @budda-wang 
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-sendable-resource-manager.md  @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-rawFileDescriptor.md @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-resource.md  @ningningW @lliule21 @lpw_work @budda-wangk
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-sendableResource.md  @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile.md   @ningningW @lliule21 @lpw_work @budda-wang 
+zh-cn/application-dev/reference/apis-localization-kit/capi-resourcemanager.md   @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-ohresmgr-h.md @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-raw-dir-h.md  @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-raw-file-h.md  @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-raw-file-manager-h.md @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-resmgr-common-h.md  @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawdir.md   @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfiledescriptor.md   @ningningW @lliule21 @lpw_work @budda-wang 
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfiledescriptor64.md   @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfile.md   @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfile64.md   @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-nativeresourcemanager.md   @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-resourcemanager-resourcemanager-configuration.md   @ningningW @lliule21 @lpw_work @budda-wang
+
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-font-manager-sys.md  @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/errorcode-font-manager.md @ningningW @lliule21 @lpw_work @budda-wang
+
 
 [API参考-Location Kit]
 zh-cn/application-dev/reference/apis-location-kit/ @cheng_guohong @RayShih @cheng_guohong  
@@ -2422,7 +2441,7 @@ zh-cn/application-dev/tools/unpacking-tool.md @Brilliantry_Rui @jsjzju @lixueqin
 zh-cn/application-dev/tools/app-check-tool.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
 zh-cn/application-dev/tools/cem-tool.md @fang-jinxu @dongqingran @wulong158 @wanghong1997
 zh-cn/application-dev/tools/anm-tool.md @fang-jinxu @dongqingran @wulong158 @wanghong1997
-zh-cn/application-dev/tools/restool.md  @Brilliantry_Rui @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/tools/restool.md   @ningningW @lliule21 @lpw_work @budda-wang
 zh-cn/application-dev/tools/rawheap-translator.md @wanghuan2025 @wanghuan2025 @kir175 @zsw_zhushiwei @foryourself
 zh-cn/application-dev/tools/toybox.md @yan-mingzhen @liveery @liuhaonan2 @foryourself
 zh-cn/application-dev/tools/command-line-tools-overview.md @foryourself @lingminghw @RayShih @foryourself
