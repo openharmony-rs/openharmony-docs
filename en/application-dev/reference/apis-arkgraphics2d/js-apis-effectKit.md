@@ -719,7 +719,7 @@ function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.blur(radius);
       }
       // Process the image based on the added effect flag and return the processed image data.
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -808,7 +808,7 @@ function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.blur(radius, effectKit.TileMode.DECAL);
       }
       // Process the image based on the added effect flag and return the processed image data.
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -885,7 +885,7 @@ function ImageInvert(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.invert();
       }
       // Process the image based on the added effect flag and return the processed image data.
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -982,7 +982,7 @@ function ImageColorFilter(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.setColorMatrix(colorMatrix);
       }
       // Process the image based on the added effect flag and return the processed image data.
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -1069,7 +1069,7 @@ function ImageBrightness(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.brightness(bright);
       }
       // Process the image based on the added effect flag and return the processed image data.
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -1150,7 +1150,7 @@ function ImageGrayscale(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.grayscale();
       }
       // Process the image based on the added effect flag and return the processed image data.
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
