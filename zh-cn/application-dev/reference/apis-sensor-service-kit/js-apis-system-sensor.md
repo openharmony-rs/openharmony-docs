@@ -37,8 +37,6 @@ import { Sensor } from '@kit.SensorServiceKit';
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.ACCELEROMETER，该权限为系统权限
 
 **参数**：
@@ -79,8 +77,6 @@ unsubscribeAccelerometer(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.ACCELEROMETER，该权限为系统权限
 
 **示例**：
@@ -98,8 +94,6 @@ Sensor.unsubscribeAccelerometer();
 除Lite Wearable外，从API Version8开始，推荐使用[sensor.on()](js-apis-sensor.md#orientationdeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
-
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
 **参数**：
 
@@ -135,8 +129,6 @@ unsubscribeCompass(): void
 除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#orientationdeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
-
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
 **示例**：
 
@@ -264,8 +256,6 @@ Sensor.unsubscribeLight();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
 **参数**：
@@ -303,8 +293,6 @@ unsubscribeStepCounter(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
 **示例**：
@@ -323,8 +311,6 @@ subscribeBarometer(options: SubscribeBarometerOptions): void
 除Lite Wearable外，从API Version8开始，推荐使用[sensor.on()](js-apis-sensor.md#barometerdeprecated-1)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
-
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
 **参数**：
 
@@ -362,8 +348,6 @@ unsubscribeBarometer(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
-
 **示例**：
 
 ```ts
@@ -380,8 +364,6 @@ Sensor.unsubscribeBarometer();
 除Lite Wearable外，从API Version8开始，推荐使用[sensor.on()](js-apis-sensor.md#heart_ratedeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
-
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.READ_HEALTH_DATA
 
@@ -421,8 +403,6 @@ unsubscribeHeartRate(): void
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.READ_HEALTH_DATA
 
 **示例**：
@@ -440,8 +420,6 @@ Sensor.unsubscribeHeartRate();
 除Lite Wearable外，从API Version8开始，推荐使用[sensor.on()](js-apis-sensor.md#wear_detectiondeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
-
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
 **参数**：
 
@@ -477,8 +455,6 @@ unsubscribeOnBodyState(): void
 除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#wear_detectiondeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
-
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
 **示例**：
 
@@ -588,8 +564,6 @@ Sensor.unsubscribeDeviceOrientation();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.GYROSCOPE，该权限为系统权限
 
 **参数**：
@@ -629,8 +603,6 @@ unsubscribeGyroscope(): void
 除Lite Wearable外，从API Version8开始，推荐使用[sensor.off()](js-apis-sensor.md#gyroscopedeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
-
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.GYROSCOPE，该权限为系统权限
 
@@ -695,6 +667,8 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
+
 | 名称    | 类型                                    | 必填 | 说明                               |
 | ------- | --------------------------------------- | ---- | ---------------------------------- |
 | success | [ProximityResponse](#proximityresponse) | 是   | 距离感应数据改变后调用的回调函数。 |
@@ -706,6 +680,8 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
+
 | 名称     | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
 | distance | number | 是   | 可见物体相对于设备显示屏的接近或远离状态。 |
@@ -715,6 +691,8 @@ Sensor.unsubscribeGyroscope();
 当环境光传感器数据发生变化时调用。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
 | 名称    | 类型                            | 必填 | 说明                           |
 | ------- | ------------------------------- | ---- | ------------------------------ |
@@ -726,6 +704,8 @@ Sensor.unsubscribeGyroscope();
 光线感应数据改变后的回调函数。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
 | 名称      | 类型   | 必填 | 说明                  |
 | --------- | ------ | ---- | --------------------- |
@@ -841,6 +821,8 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
+**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
+
 | 名称     | 类型                                                     | 必填 | 说明                                                         |
 | -------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | interval | string                                                   | 是   | 频率参数，设备方向传感器的回调函数执行频率。<br/>默认为normal，可选值有：<br/>-&nbsp;game：极高的回调频率，20ms/次，适用于游戏。<br/>-&nbsp;ui：较高的回调频率，60ms/次，适用于UI更新。<br/>-&nbsp;normal：普通的回调频率，200ms/次，低功耗。 |
@@ -852,6 +834,8 @@ Sensor.unsubscribeGyroscope();
 感应到设备方向传感器数据变化后的回调函数。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
+
+**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
 | 名称  | 类型   | 必填 | 说明                                                         |
 | ----- | ------ | ---- | ------------------------------------------------------------ |
