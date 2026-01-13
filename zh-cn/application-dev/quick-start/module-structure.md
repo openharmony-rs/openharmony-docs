@@ -243,9 +243,6 @@ metadata对象示例：
 ```json
 {
   "module":{
-
-    // ...
-
     "abilities": [{
       "icon": "$media:icon",
       "label": "Login",
@@ -255,9 +252,6 @@ metadata对象示例：
         "uris": []
       }]
     }],
-
-    // ...
-
   }
 }
 ```
