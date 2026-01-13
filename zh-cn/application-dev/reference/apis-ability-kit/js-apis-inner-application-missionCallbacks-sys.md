@@ -46,6 +46,8 @@ ArkTS-Sta: notifyMissionsChanged: NotifyMissionsChangedCallback;
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { distributedMissionManager } from '@kit.AbilityKit';
 
@@ -121,6 +123,9 @@ ArkTS-Sta: notifySnapshot: NotifySnapshotCallback
 | mission |  number | 是 | 通知快照变化，任务ID。 |
 
 **示例：**
+
+ArkTS-Dyn示例:
+
 ```ts
 import { distributedMissionManager } from '@kit.AbilityKit';
 
@@ -194,6 +199,31 @@ notifyNetDisconnect(deviceId: string, state: number): void
 | state |  number | 是 | 通知断开连接，返回网络状态。0：连接断开（固定值）。 |
 
 **示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+import { distributedMissionManager } from '@kit.AbilityKit';
+
+distributedMissionManager.registerMissionListener(
+  {
+    deviceId: '123456'
+  },
+  {
+    notifyMissionsChanged: (deviceId: string) => {
+      console.log(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
+    },
+    notifySnapshot: (deviceId: string, mission: number) => {
+      console.log(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
+      console.log(`notifySnapshot mission: ${JSON.stringify(mission)}`);
+    },
+    notifyNetDisconnect: (deviceId: string, state: number) => {
+      console.log(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
+      console.log(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
+    }
+  }
+);
+```
 
 ArkTS-Sta示例：
 
