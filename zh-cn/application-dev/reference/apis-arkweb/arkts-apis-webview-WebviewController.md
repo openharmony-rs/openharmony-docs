@@ -9407,7 +9407,7 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
 | webDebuggingAccess | boolean | 是   | 设置是否启用网页调试功能。<br/>true表示开启网页调试功能，false表示关闭网页调试功能。 |
-| port               | number  | 是   | 指定devtools服务的tcp端口号。如果没有指定port，那么该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess)接口。<br/>取值范围: (1024, 65535]<br/>如果port的值在区间[0, 1024]内，则会抛出BusinessError异常，错误码为17100023。 |
+| port               | number  | 是   | 指定DevTools服务的tcp端口号。如果没有指定port，那么该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess)接口。<br/>取值范围: (1024, 65535]<br/>如果port的值在区间[0, 1024]内，则会抛出BusinessError异常，错误码为17100023。 |
 
 
 **错误码：**
