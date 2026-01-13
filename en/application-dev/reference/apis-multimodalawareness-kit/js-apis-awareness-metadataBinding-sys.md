@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.metadataBinding (Metadata Binding)
+# @ohos.multimodalAwareness.metadataBinding (Metadata Binding) (System API)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: Msdp-->
 <!--Owner: @codexu62-->
@@ -124,7 +124,7 @@ Transfers metadata to the application or service that calls the encoding API. Th
 
 **System API**: This is a system API.
 
-**Parameters** 
+**Parameters**
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
@@ -136,7 +136,7 @@ Transfers metadata to the application or service that calls the encoding API. Th
 | ---------------------------- | ---------- |
 | Promise&lt;string&gt; | Promise used to return the application link information of the current page.|
 
-**Error codes** 
+**Error codes**
 
 For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md) and [Universal Error Codes](../errorcode-universal.md).
 

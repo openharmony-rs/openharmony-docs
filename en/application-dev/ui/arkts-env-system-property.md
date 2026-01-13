@@ -6,7 +6,7 @@
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
-In multi-device development scenarios, you can use the [\@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md) decorator to listen for changes of system environment variables and determine the scenario based on the system environment variables, reducing the adaptation logic and repeated development between different devices.
+In multi-device development scenarios, you can use the \@Env decorator to listen for changes of system environment variables and determine the scenario based on the system environment variables, reducing the adaptation logic and repeated development between different devices.
 
 >**NOTE**
 >

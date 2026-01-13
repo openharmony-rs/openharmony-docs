@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## How do I obtain the frame data of a camera when using the XComponent to display the preview output stream of the camera? (API version 9)
 
@@ -18,7 +18,7 @@ Create a dual-channel preview to obtain the frame data.
 
 1. Use the XComponent to create a preview stream.
 
-   ```
+   ```ts
    // Obtain a PreviewOutput instance.
    const surfaceId = globalThis.mxXComponentController.getXComponentSurfaceId();
    this.mPreviewOutput = await Camera.createPreviewOutput(surfaceId);
@@ -26,7 +26,7 @@ Create a dual-channel preview to obtain the frame data.
 
 2. Use imageReceiver to listen for image information.
 
-   ```
+   ```ts
    // Add dual-channel preview.
    const fullWidth = this.mFullScreenSize.width;
    const fullHeight = this.mFullScreenSize.height;
@@ -43,7 +43,7 @@ Create a dual-channel preview to obtain the frame data.
 
 1. Use the \@ohos.multimedia.camera module to obtain the physical camera information.
 
-   ```
+   ```ts
    let cameraManager = await camera.getCameraManager(context);
    let camerasInfo = await cameraManager.getSupportedCameras();
    let cameraDevice = camerasInfo[0];
@@ -51,14 +51,14 @@ Create a dual-channel preview to obtain the frame data.
 
 2. Create and start the input stream channel of the physical camera.
 
-   ```
+   ```ts
    let cameraInput = await cameraManager.createCameraInput(cameraDevice);
    await this.cameraInput.open();
    ```
 
 3. Obtain the output formats supported by the camera, and create a preview output channel based on the surface ID provided by the XComponent.
 
-   ```
+   ```ts
    let outputCapability = await this.cameraManager.getSupportedOutputCapability(cameraDevice);
    let previewProfile = outputCapability.previewProfiles[0];
    let previewOutput = await cameraManager.createPreviewOutput(previewProfile, previewId);
@@ -66,7 +66,7 @@ Create a dual-channel preview to obtain the frame data.
 
 4. Create a camera session, add the camera input stream and preview output stream to the session, and start the session. The preview image is displayed on the XComponent.
 
-   ```
+   ```ts
    let captureSession = await cameraManager.createCaptureSession();
    await captureSession.beginConfig();
    await captureSession.addInput(cameraInput);
@@ -102,7 +102,7 @@ A maximum of 13 media player instances can be created.
 
 **Solution**
 
-```
+```ts
 let want = {
   bundleName: 'com.ohos.photos',
   abilityName: 'com.ohos.photos.MainAbility',
@@ -125,7 +125,7 @@ Applicable to: stage model
 
    Example:
 
-   ```
+   ```ts
    {
      "module" : {
        "requestPermissions":[
@@ -144,15 +144,15 @@ Applicable to: stage model
 
 2. Call **requestPermissionsFromUser** to request the permissions from end users in the form of a dialog box. This operation is required because the grant mode of both permissions is **user_grant**.
 
-   ```
+   ```ts
    let context = getContext(this) as common.UIAbilityContext;
    let atManager = abilityAccessCtrl.createAtManager();
-   let permissions: Array<string> = ['ohos.permission.READ_MEDIA','ohos.permission.WRITE_MEDIA']
+   let permissions: Array<Permissions> = ['ohos.permission.READ_MEDIA','ohos.permission.WRITE_MEDIA']
    atManager.requestPermissionsFromUser(context, permissions)
    .then((data) => {
-       console.log("Succeed to request permission from user with data: " + JSON.stringify(data))
-   }).catch((error) => {
-       console.log("Failed to request permission from user with error: " + JSON.stringify(error))
+       console.info("Succeed to request permission from user with data: " + JSON.stringify(data))
+   }).catch((error: BusinessError) => {
+       console.error("Failed to request permission from user with error: " + error.code + " " + error.message)
    })
    ```
 
@@ -165,10 +165,10 @@ Applicable to: stage model
 
 The **cameraManager** class provides a listener to subscribe to the camera status.
 
-```
+```ts
 cameraManager.on('cameraStatus', (cameraStatusInfo) => {
-  console.log(`camera : ${cameraStatusInfo.camera.cameraId}`);
-  console.log(`status: ${cameraStatusInfo.status}`);
+  console.info(`camera : ${cameraStatusInfo.camera.cameraId}`);
+  console.info(`status: ${cameraStatusInfo.status}`);
 })
 ```
 
@@ -184,12 +184,9 @@ Enumerates the camera statuses.
 
 **CAMERA_STATUS_UNAVAILABLE** (3): The camera is unavailable.
 
-**References**
-
-[CameraStatus](../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#oncamerastatus)
+**References**<br>[CameraStatus](../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#oncamerastatus)
 
 ## Does SoundPool support audio in WMV format? Which formats are supported? (API version 10)
-
 **Solution**
 
 Currently, WMV is not supported. The supported formats are AAC, MPEG (MP3), FLAC, and Vorbis.
@@ -246,8 +243,8 @@ Currently, the AVPlayer supports HTTP, HTTPS, and HLS for real-time video stream
 
 **References**
 
-- [Media Kit](../media/media/media-kit-intro.md)
-- [AVPlayer](../media/media/using-avplayer-for-playback.md)
+1.[Media Kit](../media/media/media-kit-intro.md)
+2.[AVPlayer](../media/media/using-avplayer-for-playback.md)
 
 ## How do I enable the AVPlayer to play in the background? (API version 10)
 
@@ -257,8 +254,8 @@ To continue background playback, the application must request a continuous task 
 
 **References**
 
-- [Continuous Task](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/ContinuousTask)
-- [Accessing AVSession](../media/avsession/avsession-access-scene.md)
+1. [Continuous Task](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/ContinuousTask)
+2. [Accessing AVSession](../media/avsession/avsession-access-scene.md)
 
 ## Why can't a third-party application create albums? (API version 10)
 
@@ -279,9 +276,10 @@ What is the relationship between the **quality** parameter in the image compress
 **Solution**
 
 The **quality** parameter affects the target image size for a lossy compression image format (such as JPEG), but not for a lossless compression image format (such as PNG).
+
 For lossy compression images, the target image size depends on the original image size, compression quality, and image content. Therefore, the current system does not support the setting of the target image size. If an application wants to specify the size, you can adjust the **quality** parameter based on the compression result, or scale the pixel map to a smaller size and then compress the pixel map.
 
 **References**
 
-- [scale](../reference/apis-image-kit/arkts-apis-image-PixelMap.md#scale9)
-- [packing](../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packing13)
+1.[scale](../reference/apis-image-kit/arkts-apis-image-PixelMap.md#scale9)
+2.[packing](../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packing13)

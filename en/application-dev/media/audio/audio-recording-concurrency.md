@@ -1,4 +1,4 @@
-# Shared Audio Input
+# Recording Concurrency Strategy Description
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->

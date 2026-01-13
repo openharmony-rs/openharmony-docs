@@ -164,7 +164,7 @@ Enumerates the image pixel formats.
 | PIXEL_FORMAT_NV12 = 9 | NV12 format.|
 | PIXEL_FORMAT_RGBA_1010102 = 10 | RGBA_1010102 format.|
 | PIXEL_FORMAT_YCBCR_P010 = 11 | YCBCR_P010 format.|
-| PIXEL_FORMAT_YCRCB_P010 =12 | YCRCB_P010 format.|
+| PIXEL_FORMAT_YCRCB_P010 = 12 | YCRCB_P010 format.|
 
 ### OH_PixelmapNative_AntiAliasingLevel
 
@@ -1226,7 +1226,7 @@ Creates a PixelMap that has been resized based on the specified scale factors of
 | Name| Description|
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *srcPixelmap | Pointer to the source PixelMap, which is an OH_PixelmapNative object.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **dstPixelmap | Double pointer to the destination PixelMap, which is an OH_PixelmapNative struct.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **dstPixelmap | Double pointer to the destination PixelMap, which is an OH_PixelmapNative object.|
 | float scaleX | Scale ratio of the width.|
 | float scaleY | Scale ratio of the height.|
 
@@ -1253,7 +1253,7 @@ Creates a PixelMap that has been resized based on the specified anti-aliasing le
 | Name| Description|
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *srcPixelmap | Pointer to the source PixelMap, which is an OH_PixelmapNative object.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **dstPixelmap | Double pointer to the destination PixelMap, which is an OH_PixelmapNative struct.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **dstPixelmap | Double pointer to the destination PixelMap, which is an OH_PixelmapNative object.|
 | float scaleX | Scale ratio of the width.|
 | float scaleY | Scale ratio of the height.|
 | [OH_PixelmapNative_AntiAliasingLevel](#oh_pixelmapnative_antialiasinglevel) level | Anti-aliasing level.|
@@ -1509,7 +1509,7 @@ Converts pixel data of a PixelMap from premultiplied alpha to non-premultiplied 
 | Name| Description|
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* srcpixelmap | Pointer to the source PixelMap, which is an OH_PixelmapNative object.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* dstpixelmap | Pointer to the destination PixelMap, which is an OH_PixelmapNative struct.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* dstpixelmap | Pointer to the destination PixelMap, which is an OH_PixelmapNative object.|
 | const bool isPremul | Conversion mode. The value **true** means a conversion from premultiplied alpha to non-premultiplied alpha, and **false** means a conversion from non-premultiplied alpha to premultiplied alpha.|
 
 **Returns**
@@ -1603,7 +1603,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer
 
 **Description**
 
-Creates a PixelMap based on a NativeBuffer. If the CPU access permission is not configured for the NativeBuffer, the PixelMap cannot be created.<br> The supported pixel formats are RGBA_8888, NV21, NV12, YCBCR_P010, and YCRCB_P010.
+Creates a PixelMap from a NativeBuffer. If the CPU access permission is not configured for the NativeBuffer, the PixelMap cannot be created.<br> The supported pixel formats are RGBA_8888, NV21, NV12, YCBCR_P010, and YCRCB_P010.
 
 **Since**: 22
 
@@ -1663,7 +1663,7 @@ Obtains the metadata.
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | Pointer to an OH_PixelmapNative object.|
 | [OH_Pixelmap_HdrMetadataKey](#oh_pixelmap_hdrmetadatakey) key | HDR metadata key.|
-| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) **value | Double pointer to the value of the metadata.|
+| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) **value | Double pointer to the value of the metadata key.|
 
 **Returns**
 
@@ -1689,7 +1689,7 @@ Sets the metadata.
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | Pointer to an OH_PixelmapNative object.|
 | [OH_Pixelmap_HdrMetadataKey](#oh_pixelmap_hdrmetadatakey) key | HDR metadata key.|
-| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) *value | Pointer to the value of the metadata.|
+| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) *value | Pointer to the value of the metadata key.|
 
 **Returns**
 

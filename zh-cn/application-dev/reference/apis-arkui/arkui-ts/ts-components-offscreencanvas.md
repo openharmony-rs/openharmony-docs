@@ -293,7 +293,7 @@ struct OffscreenCanvasExamplePage {
 >
 > 已经通过postMessage传OffscreenCanvas对象到某一线程，不允许再将该对象通过postMessage传给其他线程，否则抛出异常。
 >
-> DevEco Studio的预览器不支持显示在worker线程中绘制的内容。
+> DevEco Studio的预览器不支持显示在Worker线程中绘制的内容。
 
 **示例：**
 

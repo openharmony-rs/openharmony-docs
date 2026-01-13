@@ -36,7 +36,7 @@ enable(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 参数名    | 类型      | 必填  | 说明    |
 | -------- | ------------------------- | ---- | --------------------------- |
 | enable   | boolean                   | 是   | 键鼠穿越使能状态。 |
-| callback | AsyncCallback&lt;void&gt;  | 是  |回调函数，异步返回键鼠穿越开启、关闭结果。   |
+| callback | AsyncCallback&lt;void&gt;  | 是  | 回调函数，异步返回键鼠穿越开启、关闭结果。   |
 
 **错误码**：
 
@@ -461,7 +461,7 @@ struct Index {
 }
 ```
 
-## on('cooperation')
+## inputDeviceCooperate.on('cooperation')
 
 on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, eventMsg: EventMsg }>): void
 
@@ -512,7 +512,7 @@ struct Index {
 }
 ```
 
-## off('cooperation')
+## inputDeviceCooperate.off('cooperation')
 
 off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 

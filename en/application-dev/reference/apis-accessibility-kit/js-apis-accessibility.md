@@ -84,29 +84,29 @@ Target actions supported by the application. The target actions for which parame
 
 | Type                     | Description                |
 | ----------------------- |--------------------|
-| 'click'                   | Clicking.           |
-| 'longClick'               | Long pressing.           |
-| 'scrollForward'           | Scrolling forward.|
-| 'scrollBackward'          | Scrolling backward.|
-| 'focus'                   | Obtaining the focus.|
-| 'clearFocus'              | Clearing focus.|
-| 'clearSelection'          | Clearing selection. Not supported yet.|
-| 'accessibilityFocus'      | Obtaining the accessibility focus.      |
-| 'clearAccessibilityFocus'      | Clearing the accessibility focus.      |
-| 'cut'                     | Cutting.  |
-| 'copy'                    | Copying.  |
-| 'paste'                   | Pasting.  |
-| 'select'                  | Selecting.  |
-| 'setText'                 | Setting text. You need to set the **setText** parameter.|
+| 'click'                   | Click.           |
+| 'longClick'               | Long press.           |
+| 'scrollForward'           | Scroll forward.|
+| 'scrollBackward'          | Scroll backward.|
+| 'focus'                   | Obtain a focus.|
+| 'clearFocus'              | Clear a focus.|
+| 'clearSelection'          | Clear selection. Not supported yet.|
+| 'accessibilityFocus'      | Obtain an accessibility focus.      |
+| 'clearAccessibilityFocus'      | Clear an accessibility focus.      |
+| 'cut'                     | Cut.  |
+| 'copy'                    | Copy.  |
+| 'paste'                   | Paste.  |
+| 'select'                  | Select.  |
+| 'setText'                 | Set text. You need to set the **setText** parameter.|
 | 'delete'                  | Delete. Not supported yet.  |
-| 'setSelection'            | Selecting. You need to set the **selectTextBegin**, **selectTextEnd** and **selectTextInForWard** parameters.  |
+| 'setSelection'            | Select. You need to set the **selectTextBegin**, **selectTextEnd** and **selectTextInForWard** parameters.  |
 | 'common'            | Common actions used in auto-focusing and auto-broadcasting.  |
-| 'home'                | Returning to the home screen.  |
-| 'back'                | Returning to the previous screen.  |
-| 'recentTask'          | Opening a recent task.  |
-| 'notificationCenter'      | Opening the notification bar.  |
-| 'controlCenter'       | Opening the control center.  |
-| 'setCursorPosition'     | Setting cursor location. You need to set the **offset** parameter.  |
+| 'home'                | Return to the home screen.  |
+| 'back'                | Return to the previous screen.  |
+| 'recentTask'          | Open a recent task.  |
+| 'notificationCenter'      | Open the notification bar.  |
+| 'controlCenter'       | Open the control center.  |
+| 'setCursorPosition'     | Set cursor location. You need to set the **offset** parameter.  |
 
 ## Capability
 
@@ -192,11 +192,11 @@ Implements configuration management for captions. Before calling any API of **Ca
 
 on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void;
 
-Subscribes to the enabling state changes of captions configuration. This API uses an asynchronous callback to return the result.
+Subscribes to the state changes of captions configuration. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related features are no longer available in the system.
+> This API is supported since API version 8 and deprecated since API version 12. Related features are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -248,7 +248,7 @@ Subscribes to captions style changes. This API uses an asynchronous callback to 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related features are no longer available in the system.
+> This API is supported since API version 8 and deprecated since API version 12. Related features are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -296,11 +296,11 @@ struct Index {
 
 off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void;
 
-Unsubscribes from the enabling state changes of captions configuration. This API uses an asynchronous callback to return the result.
+Unsubscribes from the state changes of captions configuration. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related features are no longer available in the system.
+> This API is supported since API version 8 and deprecated since API version 12. Related features are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -357,7 +357,7 @@ Unsubscribes from the captions style changes. This API uses an asynchronous call
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related features are no longer available in the system.
+> This API is supported since API version 8 and deprecated since API version 12. Related features are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -493,7 +493,7 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 'announceForAccessibility' | 'requestFocusForAccessibilityNotInterrupt' |
 'announceForAccessibilityNotInterrupt' | 'scrolling'
 
-Enumerates accessibility event types.
+Accessibility event types.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -512,9 +512,9 @@ Enumerates accessibility event types.
 | 'scroll'                  | Event of the scroll view.   |
 | 'requestFocusForAccessibility'     | Event of the auto-focusing.|
 | 'announceForAccessibility'         | Event of the auto-broadcasting.|
-| 'requestFocusForAccessibilityNotInterrupt'     | Event of the auto-focusing without interruption.<br>This event is supported since API version 18.|
-| 'announceForAccessibilityNotInterrupt'         | Event of the auto-broadcasting without interruption.<br>This event is supported since API version 18.|
-| 'scrolling'                  | Event indicating that an item is scrolled out of the screen in the scrolling view.<br>This event is supported since API version 18.|
+| 'requestFocusForAccessibilityNotInterrupt'<sup>18+</sup> | Event of the auto-focusing without interruption.|
+| 'announceForAccessibilityNotInterrupt'<sup>18+</sup>  | Event of the auto-broadcasting without interruption.|
+| 'scrolling'<sup>18+</sup>   | Event indicating that an item is scrolled out of the screen in the scrolling view.|
 
 ## TextMoveUnit
 
@@ -536,7 +536,7 @@ Enumerates the movement units for traversing the node text.
 
 type WindowUpdateType = 'add' | 'remove' | 'bounds' | 'active' | 'focus'
 
-Enumerates window update types.
+Window update type.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -556,8 +556,7 @@ Obtains the accessibility application list. This API uses a promise to return th
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9.
-> You are advised to use [accessibility.getAccessibilityExtensionList()](#accessibilitygetaccessibilityextensionlist9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [accessibility.getAccessibilityExtensionList](#accessibilitygetaccessibilityextensionlist9) instead.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -598,8 +597,7 @@ Obtains the accessibility application list. This API uses an asynchronous callba
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9.
-> You are advised to use [accessibility.getAccessibilityExtensionList()](#accessibilitygetaccessibilityextensionlist9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [accessibility.getAccessibilityExtensionList](#accessibilitygetaccessibilityextensionlist9-1) instead.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -878,7 +876,7 @@ Obtains a **CaptionsManager** instance.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related features are no longer available in the system.
+> This API is supported since API version 8 and deprecated since API version 12. Related features are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -900,7 +898,7 @@ let captionsManager = accessibility.getCaptionsManager();
 
 on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 
-Subscribes to the enabling state changes of the accessibility application. This API uses an asynchronous callback to return the result. To obtain information about accessibility applications in the system, use [accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12).
+Subscribes to the state changes of the accessibility application. This API uses an asynchronous callback to return the result. To obtain information about accessibility applications in the system, use [accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12).
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -939,7 +937,7 @@ accessibility.on('accessibilityStateChange', (data: boolean) => {
 
 on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 
-Subscribes to the enabling state changes of the touch guide mode. This API uses an asynchronous callback to return the result. To obtain information about accessibility applications in the system, use [accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12).
+Subscribes to the state changes in touch guide mode. This API uses an asynchronous callback to return the result. To obtain information about accessibility applications in the system, use [accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12).
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Vision
 
@@ -975,7 +973,7 @@ accessibility.on('touchGuideStateChange', (data: boolean) => {
 
 on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 
-Subscribes to the enabling state changes of the screen reader. This API uses an asynchronous callback to return the result.
+Subscribes to the state changes of the screen reader. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1055,7 +1053,7 @@ struct Index {
 
 off(type: 'accessibilityStateChange', callback?: Callback&lt;boolean&gt;): void
 
-Unsubscribes from the enabling state changes of the accessibility application. This API uses an asynchronous callback to return the result.
+Unsubscribes from the state changes of the accessibility application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1088,7 +1086,7 @@ accessibility.off('accessibilityStateChange', (data: boolean) => {
 
 off(type: 'touchGuideStateChange', callback?: Callback&lt;boolean&gt;): void
 
-Unsubscribes from the enabling state changes of the touch guide mode. This API uses an asynchronous callback to return the result.
+Unsubscribes from the state changes in touch guide mode. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1121,7 +1119,7 @@ accessibility.off('touchGuideStateChange', (data: boolean) => {
 
 off(type: 'screenReaderStateChange', callback?: Callback&lt;boolean&gt;): void
 
-Unsubscribes from the enabling state changes of the screen reader. This API uses an asynchronous callback to return the result.
+Unsubscribes from the state changes of the screen reader. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1205,13 +1203,11 @@ struct Index {
 
 isOpenAccessibility(): Promise&lt;boolean&gt;
 
-Checks whether this accessibility application is enabled. This API uses a promise to return the result.
+Checks whether an accessibility application is enabled. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10.
->
-> You are advised to use [accessibility.isOpenAccessibilitySync](#accessibilityisopenaccessibilitysync10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [accessibility.isOpenAccessibilitySync](#accessibilityisopenaccessibilitysync10) instead.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1219,7 +1215,7 @@ Checks whether this accessibility application is enabled. This API uses a promis
 
 | Type                    | Description                                      |
 | ---------------------- | ---------------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. Returns **true** if this accessibility application is enabled; returns **false** otherwise.|
+| Promise&lt;boolean&gt; | Promise used to return the result. Returns **true** if the accessibility application is enabled; returns **false** otherwise.|
 
 **Example**
 
@@ -1242,9 +1238,7 @@ Checks whether an accessibility application is enabled. This API uses an asynchr
 
 > **NOTE**
 >
-> This API is deprecated since API version 10.
->
-> You are advised to use [accessibility.isOpenAccessibilitySync](#accessibilityisopenaccessibilitysync10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [accessibility.isOpenAccessibilitySync](#accessibilityisopenaccessibilitysync10) instead.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1305,9 +1299,7 @@ Checks whether touch guide mode is enabled. This API uses a promise to return th
 
 > **NOTE**
 >
-> This API is deprecated since API version 10.
->
-> You are advised to use [accessibility.isOpenTouchGuideSync](#accessibilityisopentouchguidesync10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [accessibility.isOpenTouchGuideSync](#accessibilityisopentouchguidesync10) instead.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Vision
 
@@ -1338,9 +1330,7 @@ Checks whether touch guide mode is enabled. This API uses an asynchronous callba
 
 > **NOTE**
 >
-> This API is deprecated since API version 10.
->
-> You are advised to use [accessibility.isOpenTouchGuideSync](#accessibilityisopentouchguidesync10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [accessibility.isOpenTouchGuideSync](#accessibilityisopentouchguidesync10) instead.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Vision
 
@@ -1379,7 +1369,7 @@ Checks whether touch guide mode is enabled.
 
 | Type   | Description                                 |
 | ------- | ------------------------------------- |
-| boolean | Whether the touch guide mode is enabled. Returns **true** if the touch guide mode is enabled; returns **false** otherwise.|
+| boolean | Whether the touch guide mode is enabled. Returns **true** if touch guide mode is enabled; returns **false** otherwise.|
 
 **Example**
 
@@ -1419,8 +1409,7 @@ Sends an accessibility event. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9.
-> You are advised to use [accessibility.sendAccessibilityEvent()](#accessibilitysendaccessibilityevent9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [accessibility.sendAccessibilityEvent](#accessibilitysendaccessibilityevent9) instead.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1463,8 +1452,7 @@ Sends an accessibility event. This API uses an asynchronous callback to return t
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9.
-> You are advised to use [accessibility.sendAccessibilityEvent()](#accessibilitysendaccessibilityevent9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [accessibility.sendAccessibilityEvent](#accessibilitysendaccessibilityevent9-1) instead.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 

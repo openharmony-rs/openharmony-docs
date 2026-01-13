@@ -121,14 +121,28 @@ import { MyDataSource } from './MyDataSource'
 @Entry
 @Component
 struct LazyVGridLayoutSample1 {
-  private arr:MyDataSource<number> = new MyDataSource<number>();
+  private arr1:MyDataSource<number> = new MyDataSource<number>();
+  private arr2:MyDataSource<number> = new MyDataSource<number>();
   build() {
     Column() {
       WaterFlow() {
         LazyVGridLayout() {
-          LazyForEach(this.arr, (item:number)=>{
+          LazyForEach(this.arr1, (item:number)=>{
             Text('item' + item.toString())
               .height(64)
+              .width('100%')
+              .borderRadius(5)
+              .backgroundColor(Color.White)
+              .textAlign(TextAlign.Center)
+          })
+        }
+        .columnsTemplate('1fr')
+        .rowsGap(LengthMetrics.vp(10))
+
+        LazyVGridLayout() {
+          LazyForEach(this.arr2, (item:number)=>{
+            Text('item' + item.toString())
+              .height(128)
               .width('100%')
               .borderRadius(5)
               .backgroundColor(Color.White)
@@ -139,14 +153,18 @@ struct LazyVGridLayoutSample1 {
         .rowsGap(LengthMetrics.vp(10))
         .columnsGap(LengthMetrics.vp(10))
       }.padding(10)
+      .rowsGap(10)
     }
     .width('100%').height('100%')
     .backgroundColor('#DCDCDC')
   }
 
   aboutToAppear(): void {
+    for (let i = 0; i < 6; i++) {
+      this.arr1.pushData(i);
+    }
     for (let i = 0; i < 100; i++) {
-      this.arr.pushData(i);
+      this.arr2.pushData(i);
     }
   }
 }
@@ -243,4 +261,4 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 }
 ```
 
-![](figures/zh-cn_image_lazyvgridlayout1.png)
+![](figures/zh-cn_image_lazyvgridlayout1.gif)

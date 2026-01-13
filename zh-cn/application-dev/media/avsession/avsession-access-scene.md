@@ -84,7 +84,7 @@ struct Index {
 
 ### 通用元数据
 
-应用可以通过setAVMetadata把会话的一些元数据信息设置给系统，从而在播控中心界面进行展示，包括不限制：当前媒体的ID（assetId），上一首媒体的ID（previousAssetId），下一首媒体的ID（nextAssetId），标题（title），专辑作者（author），专辑名称（album），词作者（writer），媒体时长（duration）等。
+应用可以通过setAVMetadata把会话的一些元数据信息设置给系统，从而在播控中心界面进行展示，包括但不限于：当前媒体的ID（assetId），上一首媒体的ID（previousAssetId），下一首媒体的ID（nextAssetId），标题（title），专辑作者（author），专辑名称（album），词作者（writer），媒体时长（duration）等。
 
 ```ts
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';

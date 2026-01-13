@@ -78,13 +78,13 @@ struct Index {
 
 getAssets(options: photoAccessHelper.FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
-Obtains media assets. This API uses a promise to return the result.
+Obtains image and video assets. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-If the caller does not have the ohos.permission.READ_IMAGEVIDEO permission, use Picker to access the file and then call this API based on the URI obtained by Picker. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+For applications that have not applied for the ohos.permission.READ_IMAGEVIDEO permission, this API can be invoked via Picker to query the image or video resource corresponding to the specified URI. For details, please refer to [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 
@@ -143,7 +143,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 getBurstAssets(burstKey: string, options: photoAccessHelper.FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
-Obtains burst assets. This API uses a promise to return the result.
+Obtains resources of burst photos. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -218,7 +218,7 @@ createAsset(photoType: PhotoType, extension: string, options?: photoAccessHelper
 
 Creates an image or video asset with the specified file type, file name extension, and options. This API uses a promise to return the result.
 
-If the caller does not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component. For details, see [Creating a Media Asset Using a Security Component](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component. For details, please refer to [Creating a Media Asset Using a Security Component](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -348,7 +348,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 getAlbums(options: photoAccessHelper.FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 
-Obtains albums. This API uses a promise to return the result.
+Obtains albums based on the specified options. This API uses a promise to return the result.
 
 Before the operation, ensure that the albums to obtain exist.
 
@@ -415,8 +415,9 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 release(): Promise&lt;void&gt;
 
-Releases this PhotoAccessHelper instance. This API uses a promise to return the result.
-Call this API when the APIs of the PhotoAccessHelper instance are no longer used.
+Releases the **PhotoAccessHelper** instance.
+Call this method when the APIs of the **PhotoAccessHelper** instance are no longer used.
+This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -945,6 +946,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 getNextObject(): Promise&lt;T&gt;
 
 Obtains the next asset in the result set. This API uses a promise to return the result.
+
 Before using this API, you must use [isAfterLast()](#isafterlast) to check whether the current position is the end of the result set.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core

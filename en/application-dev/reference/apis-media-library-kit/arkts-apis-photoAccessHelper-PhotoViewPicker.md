@@ -1,14 +1,10 @@
 # Class (PhotoViewPicker)
 
 PhotoViewPicker provides APIs for the user to select images and videos. Before using the APIs of PhotoViewPicker, you need to create a PhotoViewPicker instance.
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-
-
-
-
 
 ## Modules to Import
 
@@ -20,7 +16,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 select(option?: PhotoSelectOptions) : Promise&lt;PhotoSelectResult&gt;
 
-Starts a **photoPicker** page for the user to select one or more images or videos. This API uses a promise to return the result. You can pass in **PhotoSelectOptions** to specify the media file type and the maximum number of files to select.
+Starts a **photoPicker** page for the user to select one or more images or videos. This API uses a promise to return the result. You can pass in **PhotoSelectOptions** to specify the type and maximum number of the files to select.
 
 > **NOTE**
 >

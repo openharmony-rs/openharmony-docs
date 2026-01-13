@@ -93,7 +93,7 @@ The following lists the input/output devices selected for the typical audio stre
 
 - For an Alarm stream, the default output device is a speaker. If a Bluetooth headset is connected before an ALARM stream is played, the audio is output from both the speaker and Bluetooth headset.
 
-If the default input/output devices do not meet service requirements, you can call related APIs to change the devices. When [using AudioRenderer to develop audio playback](using-audiorenderer-for-playback.md), you can call [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12) to set the default sound device.
+If the default input/output devices do not meet service requirements, you can call related APIs to change the devices. When [using AudioRenderer to develop audio playback (ArkTs)](using-audiorenderer-for-playback.md), you can call [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12) to set the default sound device.
 
 ## Setting the Audio Stream Type
 
@@ -101,17 +101,17 @@ The application can implement audio playback or recording by using a plurality o
 
 Common methods for setting the audio playback stream type are as follows:
 
-- **[Using AudioRenderer for Audio Playback](using-audiorenderer-for-playback.md)**
+- **[Using AudioRenderer for Audio Playback (ArkTs)](using-audiorenderer-for-playback.md):**
 
    Pass [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage) in [createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8) to specify the stream type.
 
    The **options** parameter in **createAudioRenderer** is of the **AudioRendererOptions** type and contains the **AudioRendererInfo** struct, in which **AudioRendererInfo.usage** specifies the stream type.
 
-- **[Using OHAudio for Audio Playback](using-ohaudio-for-playback.md)**
+- **[(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md):**
   
   Pass [OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage) in [OH_AudioStreamBuilder_SetRendererInfo](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererinfo) to specify the stream type.
 
-- **[Using AVPlayer for Audio Playback (ArkTS)](../media/using-avplayer-for-playback.md)**
+- **[Using AVPlayer to Play Audio (ArkTS)](../media/using-avplayer-for-playback.md):**
   
   Set the **audioRendererInfo** [property](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#properties) of the AVPlayer. **AVPlayer.audioRendererInfo** is of the **audio.AudioRendererInfo** type. You can use **AudioRendererInfo.usage** to specify [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage).
 
@@ -120,27 +120,27 @@ Common methods for setting the audio playback stream type are as follows:
   >
   > If the application does not set this property, the AVPlayer performs default processing. If the media source contains videos, the default value of **usage** is **STREAM_USAGE_MOVIE**. Otherwise, the default value of **usage** is **STREAM_USAGE_MUSIC**.
 
-- **[Using AVPlayer for Audio Playback (C/C++)](../media/using-ndk-avplayer-for-playback.md)**
+- **[Using AVPlayer to Play Audio (C/C++)](../media/using-ndk-avplayer-for-playback.md):**
   
   Pass [OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage) in [OH_AVPlayer_SetAudioRendererInfo](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiorendererinfo) to specify the stream type.
 
-- **[Using SoundPool for Audio Playback](../media/using-soundpool-for-playback.md)**
+- **[Using SoundPool to Play Short Sounds (ArkTS)](../media/using-soundpool-for-playback.md):**
   
   Pass [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage) in [createSoundPool](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreatesoundpool10) to specify the stream type.
 
 Common methods for setting the audio recording stream type are as follows:
 
-- **[Using AudioCapturer for Audio Recording](using-audiocapturer-for-recording.md)**
+- **[Using AudioCapturer for Audio Recording (ArkTs)](using-audiocapturer-for-recording.md):**
   
   Pass [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) in [createAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiocapturer8) to specify the stream type.
 
    The **options** parameter in **createAudioCapturer** is of the **AudioCapturerOptions** type and contains **AudioCapturerInfo**, in which **AudioCapturerInfo.source** specifies the source type.
 
-- **[Using OHAudio for Audio Recording](using-ohaudio-for-recording.md)**
+- **[(Recommended) Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md):**
   
   Pass [OH_AudioStream_SourceType](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) in [OH_AudioStreamBuilder_SetCapturerInfo](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerinfo) to specify the stream type.
 
-- **[Using AVRecorder for Audio Recording](../media/using-avrecorder-for-recording.md)**
+- **[Using AVRecorder to Record Audio (ArkTS)](../media/using-avrecorder-for-recording.md):**
   
   Pass [AudioSourceType](../../reference/apis-media-kit/arkts-apis-media-e.md#audiosourcetype9) in [AVRecorder.prepare](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#prepare9-1) to specify the stream type.
 

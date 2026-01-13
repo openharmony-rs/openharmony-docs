@@ -19,7 +19,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 ## Creating an XComponent
-Use two [XComponents](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) to present the folded and unfolded states, respectively. This prevents the previous camera feed from lingering on the screen if the camera is not properly closed during fold state transition.
+   Use two [XComponents](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) to present the folded and unfolded states, respectively. This prevents the previous camera feed from lingering on the screen if the camera is not properly closed during fold state transition.
 
    ```ts
     @Entry

@@ -71,7 +71,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
      }
      let previewOutput: camera.PreviewOutput | undefined = undefined;
      try {
-       // Choose the preview profile from previewProfilesArray that matches the aspect ratio set in Step 2. Selecting the first item in the array is for illustrative purposes only.
+       // Choose the preview profile from previewProfilesArray that matches the aspect ratio set in Step 2. Selecting the first item in the array here is for API usage example only.
        previewOutput = cameraManager.createPreviewOutput(previewProfilesArray[0], surfaceId);
      } catch (error) {
        let err = error as BusinessError;
