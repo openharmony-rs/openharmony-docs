@@ -1800,7 +1800,9 @@ setDragKeyFramePolicy(keyFramePolicy: KeyFramePolicy): Promise&lt;KeyFramePolicy
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备可正常调用，在其他设备中返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
