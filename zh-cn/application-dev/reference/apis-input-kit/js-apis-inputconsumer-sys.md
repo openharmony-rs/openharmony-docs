@@ -75,7 +75,7 @@ struct Index {
 }
 ```
 
-## inputConsumer.onKey<sup>22+</sup>
+## inputConsumer.onKey<sup>23+</sup>
 
 onKey(callback: Callback&lt;KeyOptions&gt;): void
 
@@ -87,7 +87,7 @@ onKey(callback: Callback&lt;KeyOptions&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputconsumeron)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：** 
 
@@ -215,7 +215,7 @@ struct Index {
 }
 ```
 
-## inputConsumer.offKey<sup>22+</sup>
+## inputConsumer.offKey<sup>23+</sup>
 
 offKey(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
@@ -227,7 +227,7 @@ offKey(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputconsumeroff)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：** 
 
@@ -289,7 +289,7 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：** 
 
@@ -364,7 +364,7 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：** 
 
@@ -441,11 +441,11 @@ struct Index {
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | -------- | ---- | ---- | ------- |
-| preKeys    | ArkTS-Dyn: Array\<number> <br/>ArkTS-Sta: Array\<int>  | 否    | 否 | 前置按键集合，数量范围[0, 4]，前置按键无顺序要求。<br>如组合按键Ctrl+Alt+A中，Ctrl+Alt称为前置按键。 <br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：22|
-| finalKey             | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否    |  否 | 最终按键，此项必填，最终按键触发上报回调函数。<br>如组合按键Ctrl+Alt+A中，A称为最终按键按键。<br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：22 |
-| isFinalKeyDown       | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean| 否    |  否 | 最终按键状态。<br>ture表示按键按下，false表示按键抬起。<br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：22 |
-| finalKeyDownDuration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否    |  否 | 最终按键保持按下持续时间，单位：μs。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。 <br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：22  |
-| isRepeat<sup>18+</sup> | ArkTS-Dyn: boolean  <br/>ArkTS-Sta: boolean | 否      | 否      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 <br>**ArkTS-Dyn起始版本**: 18 <br>**ArkTS-Sta起始版本**：22|
+| preKeys    | ArkTS-Dyn: Array\<number> <br/>ArkTS-Sta: Array\<int>  | 否    | 否 | 前置按键集合，数量范围[0, 4]，前置按键无顺序要求。<br>如组合按键Ctrl+Alt+A中，Ctrl+Alt称为前置按键。 <br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：23|
+| finalKey             | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否    |  否 | 最终按键，此项必填，最终按键触发上报回调函数。<br>如组合按键Ctrl+Alt+A中，A称为最终按键按键。<br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：23 |
+| isFinalKeyDown       | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean| 否    |  否 | 最终按键状态。<br>ture表示按键按下，false表示按键抬起。<br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：23 |
+| finalKeyDownDuration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否    |  否 | 最终按键保持按下持续时间，单位：μs。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。 <br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：23  |
+| isRepeat<sup>18+</sup> | ArkTS-Dyn: boolean  <br/>ArkTS-Sta: boolean | 否      | 否      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 <br>**ArkTS-Dyn起始版本**: 18 <br>**ArkTS-Sta起始版本**：23|
 
 ## shieldMode<sup>11+</sup>
 
@@ -455,7 +455,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                        | 值 | 说明           |
 | ------------------------------ | ----------- | ---------------- |

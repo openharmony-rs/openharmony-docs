@@ -26,7 +26,7 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ------- | ------- | ------- |
@@ -42,7 +42,7 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 **ArkTS-Dyn起始版本**：16
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ------- | ------- | ------- |
@@ -60,7 +60,7 @@ getAllSystemHotkeys(): Promise&lt;Array&lt;HotkeyOptions&gt;&gt;
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -187,7 +187,7 @@ struct Index {
 }
 ```
 
-## inputConsumer.onHotkeyChange<sup>22+</sup>
+## inputConsumer.onHotkeyChange<sup>23+</sup>
 
 onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions&gt;): void
 
@@ -199,7 +199,7 @@ onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputconsumeronhotkeychange)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -316,7 +316,7 @@ struct Index {
 }
 ```
 
-## inputConsumer.offHotkeyChange<sup>22+</sup>
+## inputConsumer.offHotkeyChange<sup>23+</sup>
 
 offHotkeyChange(hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptions&gt;): void
 
@@ -328,7 +328,7 @@ offHotkeyChange(hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptio
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputconsumeroffhotkeychange)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -448,7 +448,7 @@ struct Index {
 }
 ```
 
-## inputConsumer.onKeyPressed<sup>22+</sup>
+## inputConsumer.onKeyPressed<sup>23+</sup>
 
 onKeyPressed(options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): void
 
@@ -462,7 +462,7 @@ onKeyPressed(options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): voi
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputconsumeronkeypressed16)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -570,7 +570,7 @@ struct Index {
 }
 ```
 
-## inputConsumer.offKeyPressed<sup>22+</sup>
+## inputConsumer.offKeyPressed<sup>23+</sup>
 
 offKeyPressed(callback?: Callback&lt;KeyEvent&gt;): void
 
@@ -582,7 +582,7 @@ offKeyPressed(callback?: Callback&lt;KeyEvent&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputconsumeroffkeypressed16)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 

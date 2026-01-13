@@ -1237,9 +1237,10 @@ ArkTS-Sta: getRows(maxCount: int, position?: int): Promise<Array\<ValuesBucket>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // 以查到100条数据为例
-async function proccessRows(resultSet: relationalStore.ResultSet) {
+async function processRows(resultSet: relationalStore.ResultSet) {
   // 示例1：仅指定maxCount
   if (resultSet != undefined) {
     let rows: Array<relationalStore.ValuesBucket>;
@@ -1263,6 +1264,33 @@ async function proccessRows(resultSet: relationalStore.ResultSet) {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+// 以查到100条数据为例
+// 示例1：仅指定maxCount
+if (resultSet != undefined) {
+  let rows: Array<relationalStore.ValuesBucket>;
+  let maxCount = 50;
+  // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
+  // getRows会自动移动结果集当前行到上次getRows获取结束位置的下一行，无需使用goToFirstRow、goToNextRow等接口移动
+  while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount)).length != 0) {
+    console.info(JSON.stringify(rows[0]));
+  }
+}
+
+// 示例2：指定maxCount和起始的position
+if (resultSet != undefined) {
+  let rows: Array<relationalStore.ValuesBucket>;
+  let maxCount = 50;
+  let position = 50;
+  while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount, position)).length != 0) {
+    console.info(JSON.stringify(rows[0]));
+    position += rows.length;
+  }
+}
+```
+
 
 ## getCurrentRowData<sup>23+</sup>
 
@@ -1317,9 +1345,9 @@ try {
 
 ## getRowsData<sup>23+</sup>
 
-ArkTS-Dyn: getRowsData(maxCount: number, position?: number): Promise<Array\<RowsData>>
+ArkTS-Dyn: getRowsData(maxCount: number, position?: number): Promise\<RowsData>
 
-ArkTS-Sta: getRowsData(maxCount: int, position?: int): Promise<Array\<RowsData>>
+ArkTS-Sta: getRowsData(maxCount: int, position?: int): Promise\<RowsData>
 
 从指定位置position开始，最多获取maxCount行数据。使用Promise异步回调。禁止与[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)的其他接口并发调用，否则获取的数据可能非预期。
 
@@ -1363,6 +1391,7 @@ ArkTS-Sta: getRowsData(maxCount: int, position?: int): Promise<Array\<RowsData>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 try {
   // 联表查询EMPLOYEE1和EMPLOYEE2，并获取多行包含重名列名的值。store为获取到的RdbStore实例。
@@ -1389,6 +1418,46 @@ try {
     let rowsData: relationalStore.RowsData;
     let maxCount: number = 50;
     let position: number = 50;
+    while ((rowsData = await resultSet.getRowsData(maxCount, position)).length != 0) {
+      rowsData.forEach((rowData, index) => {
+        // 第position + index + 1行的查询结果
+        console.info(`${position + index + 1}：${rowData}`);
+      });
+      position += rowsData.length;
+    }
+  }
+} catch (err) {
+  console.error(`Failed to get rows data: code:${err.code}, message:${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+try {
+  // 联表查询EMPLOYEE1和EMPLOYEE2，并获取多行包含重名列名的值。store为获取到的RdbStore实例。
+  let resultSet: relationalStore.ResultSet = await store.querySql("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+  // 以查到50条数据为例
+  // 示例1：仅指定maxCount
+  if (resultSet != undefined) {
+    let rowsData: relationalStore.RowsData;
+    // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
+    // getRowsData会自动移动结果集当前行到上次getRowsData获取结束位置的下一行，无需使用goToFirstRow、goToNextRow等接口移动
+    let maxCount = 50;
+    let rowCount = 0;
+    while ((rowsData = await resultSet.getRowsData(maxCount)).length != 0) {
+      rowsData.forEach((rowData, index) => {
+        // 第rowCount + index + 1行的查询结果
+        console.info(`${rowCount + index + 1}：${rowData}`);
+      });
+      rowCount += rowsData.length;
+    }
+  }
+
+  // 示例2：指定maxCount和起始的position
+  if (resultSet != undefined) {
+    let rowsData: relationalStore.RowsData;
+    let maxCount = 50;
+    let position = 50;
     while ((rowsData = await resultSet.getRowsData(maxCount, position)).length != 0) {
       rowsData.forEach((rowData, index) => {
         // 第position + index + 1行的查询结果

@@ -77,7 +77,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onTouch<sup>22+</sup>
+## inputMonitor.onTouch<sup>23+</sup>
 
 onTouch(type: 'touch', receiver: TouchEventReceiver): void
 
@@ -91,7 +91,7 @@ onTouch(type: 'touch', receiver: TouchEventReceiver): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitorontouch)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -196,7 +196,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onMouse<sup>22+</sup>
+## inputMonitor.onMouse<sup>23+</sup>
 
 onMouse(receiver: Callback&lt;MouseEvent&gt;): void
 
@@ -210,7 +210,7 @@ onMouse(receiver: Callback&lt;MouseEvent&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[onMouse](#inputmonitoronmouse9)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：** 
 
@@ -340,7 +340,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onMouse<sup>22+</sup>
+## inputMonitor.onMouse<sup>23+</sup>
 
 onMouse(rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
 
@@ -354,7 +354,7 @@ onMouse(rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronmouse11)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：** 
 
@@ -499,7 +499,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.offTouch<sup>22+</sup>
+## inputMonitor.offTouch<sup>23+</sup>
 
 offTouch(receiver?: TouchEventReceiver): void
 
@@ -513,7 +513,7 @@ offTouch(receiver?: TouchEventReceiver): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitorofftouch)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -660,7 +660,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.offMouse<sup>22+</sup>
+## inputMonitor.offMouse<sup>23+</sup>
 
 offMouse(receiver?: Callback&lt;MouseEvent&gt;): void
 
@@ -674,7 +674,7 @@ offMouse(receiver?: Callback&lt;MouseEvent&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffmouse9)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -739,7 +739,7 @@ type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -873,7 +873,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onPinch<sup>22+</sup>
+## inputMonitor.onPinch<sup>23+</sup>
 
 onPinch(receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
 
@@ -887,7 +887,7 @@ onPinch(receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pi
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronpinch10)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1025,7 +1025,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.offPinch'<sup>22+</sup>
+## inputMonitor.offPinch'<sup>23+</sup>
 
 offPinch(receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
 
@@ -1039,7 +1039,7 @@ offPinch(receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffpinch10)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1151,7 +1151,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onThreeFingersSwipe<sup>22+</sup>
+## inputMonitor.onThreeFingersSwipe<sup>23+</sup>
 
 onThreeFingersSwipe(receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
 
@@ -1165,7 +1165,7 @@ onThreeFingersSwipe(receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodal
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronthreefingersswipe10)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1304,7 +1304,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.offThreeFingersSwipe<sup>22+</sup>
+## inputMonitor.offThreeFingersSwipe<sup>23+</sup>
 
 offThreeFingersSwipe(receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
 
@@ -1318,7 +1318,7 @@ offThreeFingersSwipe(receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimod
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffthreefingersswipe10)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1430,7 +1430,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onFourFingersSwipe<sup>22+</sup>
+## inputMonitor.onFourFingersSwipe<sup>23+</sup>
 
 onFourFingersSwipe(receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
 
@@ -1444,7 +1444,7 @@ onFourFingersSwipe(receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalin
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronfourfingersswipe10)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1583,7 +1583,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.offFourFingersSwipe<sup>22+</sup>
+## inputMonitor.offFourFingersSwipe<sup>23+</sup>
 
 offFourFingersSwipe(receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
 
@@ -1597,7 +1597,7 @@ offFourFingersSwipe(receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodal
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitorofffourfingersswipe10)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1711,7 +1711,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onRotate<sup>22+</sup>
+## inputMonitor.onRotate<sup>23+</sup>
 
 onRotate(fingers: int, receiver: Callback&lt;Rotate&gt;): void
 
@@ -1725,7 +1725,7 @@ onRotate(fingers: int, receiver: Callback&lt;Rotate&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronrotate11)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1865,7 +1865,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.offRotate<sup>22+</sup>
+## inputMonitor.offRotate<sup>23+</sup>
 
 offRotate(fingers: int, receiver?: Callback&lt;Rotate&gt;): void
 
@@ -1879,7 +1879,7 @@ offRotate(fingers: int, receiver?: Callback&lt;Rotate&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffrotate11)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2019,7 +2019,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onPinch<sup>22+</sup>
+## inputMonitor.onPinch<sup>23+</sup>
 
 onPinch(fingers: int, receiver: Callback&lt;Pinch&gt;): void
 
@@ -2033,7 +2033,7 @@ onPinch(fingers: int, receiver: Callback&lt;Pinch&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronpinch11)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2173,7 +2173,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.offPinch<sup>22+</sup>
+## inputMonitor.offPinch<sup>23+</sup>
 
 offPinch(fingers: int, receiver?: Callback&lt;Pinch&gt;): void
 
@@ -2187,7 +2187,7 @@ offPinch(fingers: int, receiver?: Callback&lt;Pinch&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffpinch11)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2325,7 +2325,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onThreeFingersTap<sup>22+</sup>
+## inputMonitor.onThreeFingersTap<sup>23+</sup>
 
 onThreeFingersTap(receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
 
@@ -2339,7 +2339,7 @@ onThreeFingersTap(receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinpu
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronthreefingerstap11)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2478,7 +2478,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.offThreeFingersTap<sup>22+</sup>
+## inputMonitor.offThreeFingersTap<sup>23+</sup>
 
 offThreeFingersTap(receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
 
@@ -2492,7 +2492,7 @@ offThreeFingersTap(receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalin
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffthreefingerstap11)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2606,7 +2606,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onTouchscreenSwipe<sup>22+</sup>
+## inputMonitor.onTouchscreenSwipe<sup>23+</sup>
 
 onTouchscreenSwipe(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): void
 
@@ -2620,7 +2620,7 @@ onTouchscreenSwipe(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitorontouchscreenswipe18)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2760,7 +2760,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.offTouchscreenSwipe<sup>22+</sup>
+## inputMonitor.offTouchscreenSwipe<sup>23+</sup>
 
 offTouchscreenSwipe(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;): void
 
@@ -2774,7 +2774,7 @@ offTouchscreenSwipe(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitorofftouchscreenswipe18)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2891,7 +2891,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onTouchscreenPinch<sup>22+</sup>
+## inputMonitor.onTouchscreenPinch<sup>23+</sup>
 
 onTouchscreenPinch(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): void
 
@@ -2905,7 +2905,7 @@ onTouchscreenPinch(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitorontouchscreenpinch18)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3045,7 +3045,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.offTouchscreenPinch<sup>22+</sup>
+## inputMonitor.offTouchscreenPinch<sup>23+</sup>
 
 offTouchscreenPinch(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;): void
 
@@ -3059,7 +3059,7 @@ offTouchscreenPinch(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitorofftouchscreenpinch18)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3176,7 +3176,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onKeyPressed<sup>22+</sup>
+## inputMonitor.onKeyPressed<sup>23+</sup>
 
 onKeyPressed(keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEvent&gt;): void
 
@@ -3190,7 +3190,7 @@ onKeyPressed(keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEvent&gt;): vo
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronkeypressed15)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3327,7 +3327,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.offKeyPressed<sup>22+</sup>
+## inputMonitor.offKeyPressed<sup>23+</sup>
 
 offKeyPressed(receiver?: Callback&lt;KeyEvent&gt;): void
 
@@ -3341,7 +3341,7 @@ offKeyPressed(receiver?: Callback&lt;KeyEvent&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffkeypressed15)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3409,7 +3409,7 @@ ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
