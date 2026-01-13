@@ -35,7 +35,7 @@
 
 - 异步方法示例：
 
-<!-- @[use_the_sm2_key_pair_to_sign_and_verify_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_signature_verification/sm2_signature_verification_asynchronous.ets) -->
+  <!-- @[use_the_sm2_key_pair_to_sign_and_verify_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_signature_verification/sm2_signature_verification_asynchronous.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -81,7 +81,7 @@ async function main() {
 
 - 同步方法示例：
 
-<!-- @[use_the_sm2_key_pair_to_sign_and_verify_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_signature_verification/sm2_signature_verification_synchronous.ets) -->
+  <!-- @[use_the_sm2_key_pair_to_sign_and_verify_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_signature_verification/sm2_signature_verification_synchronous.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
