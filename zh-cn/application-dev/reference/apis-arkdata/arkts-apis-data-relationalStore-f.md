@@ -670,11 +670,11 @@ getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolut
 
 获取用于插入数据的SQL语句，此为同步接口。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -701,10 +701,26 @@ getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolut
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const bucket: relationalStore.ValuesBucket = {
   name: "Logitech",
   age: 18,
+  sex: "man",
+  desc: "asserter"
+};
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getInsertSqlInfo(
+  "USER",
+  bucket,
+  relationalStore.ConflictResolution.ON_CONFLICT_NONE
+);
+```
+
+ArkTS-Sta示例：
+```ts
+const bucket: relationalStore.ValuesBucket = {
+  name: "Logitech",
+  age: 18 as long,
   sex: "man",
   desc: "asserter"
 };
@@ -721,11 +737,11 @@ getUpdateSqlInfo(predicates: RdbPredicates, values: ValuesBucket, conflict?: Con
 
 获取用于更新数据的SQL语句，此为同步接口。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -752,10 +768,27 @@ getUpdateSqlInfo(predicates: RdbPredicates, values: ValuesBucket, conflict?: Con
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const bucket: relationalStore.ValuesBucket = {
   name: "Logitech",
   age: 18,
+  sex: "man",
+  desc: "asserter"
+};
+const predicates = new relationalStore.RdbPredicates("users");
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getUpdateSqlInfo(
+  predicates,
+  bucket,
+  relationalStore.ConflictResolution.ON_CONFLICT_NONE
+);
+```
+
+ArkTS-Sta示例：
+```ts
+const bucket: relationalStore.ValuesBucket = {
+  name: "Logitech",
+  age: 18 as long,
   sex: "man",
   desc: "asserter"
 };
@@ -773,11 +806,11 @@ getDeleteSqlInfo(predicates: RdbPredicates): SqlInfo
 
 获取用于删除数据的SQL语句，此为同步接口。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -802,10 +835,19 @@ getDeleteSqlInfo(predicates: RdbPredicates): SqlInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const predicates = new relationalStore.RdbPredicates("users");
 predicates.equalTo("tableName", "a");
 predicates.notEqualTo("age", 18);
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getDeleteSqlInfo(predicates);
+```
+
+ArkTS-Sta示例：
+```ts
+const predicates = new relationalStore.RdbPredicates("users");
+predicates.equalTo("tableName", "a");
+predicates.notEqualTo("age", 18 as long);
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getDeleteSqlInfo(predicates);
 ```
 
@@ -815,11 +857,11 @@ getQuerySqlInfo(predicates: RdbPredicates, columns?: Array\<string>): SqlInfo
 
 获取用于查询数据的SQL语句，此为同步接口。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -845,9 +887,18 @@ getQuerySqlInfo(predicates: RdbPredicates, columns?: Array\<string>): SqlInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const predicates = new relationalStore.RdbPredicates("users");
 predicates.notEqualTo("age", 18);
+predicates.equalTo("name", "zhangsan");
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getQuerySqlInfo(predicates);
+```
+
+ArkTS-Sta示例：
+```ts
+const predicates = new relationalStore.RdbPredicates("users");
+predicates.notEqualTo("age", 18 as long);
 predicates.equalTo("name", "zhangsan");
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getQuerySqlInfo(predicates);
 ```
