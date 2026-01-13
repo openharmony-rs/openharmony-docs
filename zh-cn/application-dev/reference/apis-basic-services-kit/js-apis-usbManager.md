@@ -38,6 +38,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
 | 801      | Capability not supported.  |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.<br>**ArkTs模式**：该错误码仅适用于ArkTs-Sta |
 
 **示例：**
 
