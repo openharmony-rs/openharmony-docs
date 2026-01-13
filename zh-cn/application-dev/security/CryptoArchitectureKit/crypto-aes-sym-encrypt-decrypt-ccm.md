@@ -45,6 +45,73 @@
 - 异步方法示例：
 <!-- @[ccm_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ccm_encryption_decryption/aes_ccm_encryption_decryption_asynchronous.ets) -->
 
+``` TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function genCcmParamsSpec() {
+  let rand: cryptoFramework.Random = cryptoFramework.createRandom();
+  let ivBlob: cryptoFramework.DataBlob = rand.generateRandomSync(7);
+  let aadBlob: cryptoFramework.DataBlob = rand.generateRandomSync(8);
+  let arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 12 bytes
+  let dataTag = new Uint8Array(arr);
+  let tagBlob: cryptoFramework.DataBlob = {
+    data: dataTag
+  };
+  // CCM的authTag在加密时从doFinal结果中获取，在解密时填入init函数的params参数中
+  let ccmParamsSpec: cryptoFramework.CcmParamsSpec = {
+    iv: ivBlob,
+    aad: aadBlob,
+    authTag: tagBlob,
+    algName: 'CcmParamsSpec'
+  };
+  return ccmParamsSpec;
+}
+
+let ccmParams = genCcmParamsSpec();
+
+// 加密消息
+async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
+  let cipher = cryptoFramework.createCipher('AES128|CCM');
+  await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, ccmParams);
+  let encryptUpdate = await cipher.update(plainText);
+  // ccm模式加密doFinal时传入空，获得tag数据，并更新至ccmParams对象中。
+  ccmParams.authTag = await cipher.doFinal(null);
+  return encryptUpdate;
+}
+
+// 解密消息
+async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
+  let decoder = cryptoFramework.createCipher('AES128|CCM');
+  await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, ccmParams);
+  let decryptUpdate = await decoder.doFinal(cipherText);
+  return decryptUpdate;
+}
+
+async function genSymKeyByData(symKeyData: Uint8Array) {
+  let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
+  let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+  let symKey = await aesGenerator.convertKey(symKeyBlob);
+  console.info('convertKey success');
+  return symKey;
+}
+
+async function main() {
+  let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
+  let symKey = await genSymKeyByData(keyData);
+  let message = 'This is a test';
+  let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+  let encryptText = await encryptMessagePromise(symKey, plainText);
+  let decryptText = await decryptMessagePromise(symKey, encryptText);
+  if (plainText.data.toString() === decryptText.data.toString()) {
+    console.info('decrypt ok');
+    console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+  } else {
+    console.error('decrypt failed');
+  }
+}
+```
+
 
 - 同步方法示例：
 <!-- @[ccm_encrypt_decrypt_aes_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ccm_encryption_decryption/aes_ccm_encryption_decryption_synchronous.ets) -->
