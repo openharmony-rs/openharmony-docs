@@ -2555,7 +2555,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
       });
     }
     catch (e) {
-      log(`exception occured, errCode ${JSON.stringify(e.code)}`);
+      log(`exception occurred, errCode ${JSON.stringify(e.code)}`);
     }
   }
 
@@ -2640,7 +2640,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
     } catch (e) {
       let code = (e as BusinessError).code;
       let msg = (e as BusinessError).message;
-      log(`exception occured, errCode: ${code}, errMsg: ${msg}.`);
+      log(`exception occurred, errCode: ${code}, errMsg: ${msg}.`);
     }
   }
 
