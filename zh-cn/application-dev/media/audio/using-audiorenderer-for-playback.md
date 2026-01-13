@@ -100,13 +100,27 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      }
      // ...
        let bufferSize: number = 0;
-       let file = await context.resourceManager.getRawFd('32_xiyouji.pcm');
+       let file = await context.resourceManager.getRawFd('S16LE_2_48000.pcm');
        writeDataCallback = (buffer: ArrayBuffer) => {
          let options: Options = {
            offset: bufferSize,
            length: buffer.byteLength
          };
-         // ...
+     
+         try {
+           let bufferLength = fs.readSync(file.fd, buffer, options);
+           bufferSize += buffer.byteLength;
+           // 系统会判定buffer有效，正常播放
+           // ...
+           return audio.AudioDataCallbackResult.VALID;
+         } catch (error) {
+           console.error('Error reading file:', error);
+           // 系统会判定buffer无效，不播放
+           // ...
+           return audio.AudioDataCallbackResult.INVALID;
+         }
+       };
+       // ...
              audioRenderer.on('writeData', writeDataCallback);
      ```
 
@@ -125,26 +139,25 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
 
      <!-- @[init_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-     ``` TypeScript	
-     import { audio } from '@kit.AudioKit';
-     import { BusinessError } from '@kit.BasicServicesKit';	
-     import { fileIo as fs } from '@kit.CoreFileKit';	
-     import { common } from '@kit.AbilityKit';	
-     // ...	
-     class Options {	
-       public offset?: number;	
-       public length?: number;	
-     }	
-     // ...	
-       let bufferSize: number = 0;	
-       let file = await context.resourceManager.getRawFd('32_xiyouji.pcm');	
-       writeDataCallback = (buffer: ArrayBuffer) => {	
-         let options: Options = {	
-           offset: bufferSize,	
-           length: buffer.byteLength	
-         };	
-         // ...	
+     
+     ``` TypeScript
+     import { BusinessError } from '@kit.BasicServicesKit';
+     import { fileIo as fs } from '@kit.CoreFileKit';
+     import { common } from '@kit.AbilityKit';
+     // ...
+     class Options {
+       public offset?: number;
+       public length?: number;
+     }
+     // ...
+       let bufferSize: number = 0;
+       let file = await context.resourceManager.getRawFd('S16LE_2_48000.pcm');
+       writeDataCallback = (buffer: ArrayBuffer) => {
+         let options: Options = {
+           offset: bufferSize,
+           length: buffer.byteLength
+         };
+         // ...
              audioRenderer.on('writeData', writeDataCallback);
      ```
 
@@ -266,7 +279,7 @@ let writeDataCallback: audio.AudioRendererWriteDataCallback;
 
 async function initArguments(context: common.UIAbilityContext) {
   let bufferSize: number = 0;
-  let file = await context.resourceManager.getRawFd('32_xiyouji.pcm');
+  let file = await context.resourceManager.getRawFd('S16LE_2_48000.pcm');
   writeDataCallback = (buffer: ArrayBuffer) => {
     let options: Options = {
       offset: bufferSize,
@@ -276,7 +289,7 @@ async function initArguments(context: common.UIAbilityContext) {
     try {
       let bufferLength = fs.readSync(file.fd, buffer, options);
       bufferSize += buffer.byteLength;
-      // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充，否则会导致播放出现杂音。
+      // 系统会判定buffer有效，正常播放
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {

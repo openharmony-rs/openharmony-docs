@@ -79,15 +79,17 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    import { BusinessError } from '@kit.BasicServicesKit';
    import { fileIo as fs } from '@kit.CoreFileKit';
    import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
+   
    // ...
    class Options {
      public offset?: number;
      public length?: number;
    }
+   
    // ...
      let bufferSize: number = 0;
      let path = context.cacheDir;
-     let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+     let filePath = path + '/S16LE_2_48000.pcm';
      file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
      readDataCallback = (buffer: ArrayBuffer) => {
        let options: Options = {
@@ -167,12 +169,15 @@ import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
+
 const TAG = 'AudioCapturerDemo';
+
 class Options {
   public offset?: number;
   public length?: number;
 }
 
+let audioRenderer: audio.AudioRenderer | undefined = undefined;
 let audioCapturer: audio.AudioCapturer | undefined = undefined;
 let audioStreamInfo: audio.AudioStreamInfo = {
   samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
@@ -188,15 +193,25 @@ let audioCapturerOptions: audio.AudioCapturerOptions = {
   streamInfo: audioStreamInfo,
   capturerInfo: audioCapturerInfo
 };
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
+};
+
 let file: fs.File;
 let readDataCallback: Callback<ArrayBuffer>;
+let writeDataCallback: audio.AudioRendererWriteDataCallback;
 
 // ...
 
 async function initArguments(context: common.UIAbilityContext): Promise<void> {
   let bufferSize: number = 0;
   let path = context.cacheDir;
-  let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+  let filePath = path + '/S16LE_2_48000.pcm';
   file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   readDataCallback = (buffer: ArrayBuffer) => {
     let options: Options = {
@@ -206,6 +221,110 @@ async function initArguments(context: common.UIAbilityContext): Promise<void> {
     fs.writeSync(file.fd, buffer, options);
     bufferSize += buffer.byteLength;
   };
+}
+
+async function initRender(context: common.UIAbilityContext) {
+  let bufferSize: number = 0;
+  let path = context.cacheDir;
+  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
+  let filePath = path + '/S16LE_2_48000.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+  writeDataCallback = (buffer: ArrayBuffer) => {
+    let options: Options = {
+      offset: bufferSize,
+      length: buffer.byteLength
+    };
+
+    try {
+      let bufferLength = fs.readSync(file.fd, buffer, options);
+      bufferSize += buffer.byteLength;
+      // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充，否则会导致播放出现杂音。
+      if (bufferLength < buffer.byteLength) {
+        let view = new DataView(buffer);
+        for (let i = bufferLength; i < buffer.byteLength; i++) {
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
+          view.setUint8(i, 0);
+        }
+      }
+      // API version 11不支持返回回调结果，从API version 12开始支持返回回调结果。
+      // 如果开发者不希望播放某段buffer，返回audio.AudioDataCallbackResult.INVALID即可。
+      return audio.AudioDataCallbackResult.VALID;
+    } catch (error) {
+      console.error('Error reading file:', error);
+      // API version 11不支持返回回调结果，从API version 12开始支持返回回调结果。
+      return audio.AudioDataCallbackResult.INVALID;
+    }
+  };
+  audio.createAudioRenderer(audioRendererOptions, (err, renderer) => { // 创建AudioRenderer实例。
+    if (!err) {
+      console.info(`${TAG}: creating AudioRenderer success`);
+      audioRenderer = renderer;
+      if (audioRenderer !== undefined) {
+        audioRenderer.on('writeData', writeDataCallback);
+      }
+    } else {
+      console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
+    }
+  });
+}
+
+// 开始一次音频渲染。
+async function startRender(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  if (audioRenderer !== undefined) {
+    let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
+    if (stateGroup.indexOf(audioRenderer.state.valueOf()) === -1) { // 当且仅当状态为prepared、paused和stopped之一时才能启动渲染。
+      console.error(TAG + 'start failed');
+      return;
+    }
+    // 启动渲染。
+    audioRenderer.start((err: BusinessError) => {
+      if (err) {
+        console.error('Renderer start failed.');
+      } else {
+        console.info('Renderer start success.');
+      }
+    });
+  }
+}
+
+// 停止渲染。
+async function stopRender(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  if (audioRenderer !== undefined) {
+    // 只有渲染器状态为running或paused的时候才可以停止。
+    if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
+      audioRenderer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
+      console.info('Renderer is not running or paused.');
+      return;
+    }
+    // 停止渲染。
+    audioRenderer.stop((err: BusinessError) => {
+      if (err) {
+        console.error('Renderer stop failed.');
+      } else {
+        console.info('Renderer stop success.');
+      }
+    });
+  }
+}
+
+// 销毁实例，释放资源。
+async function releaseRender(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  if (audioRenderer !== undefined) {
+    // 渲染器状态不是released状态，才能release。
+    if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
+      console.info('Renderer already released');
+      return;
+    }
+    // 释放资源。
+    audioRenderer.release((err: BusinessError) => {
+      if (err) {
+        console.error('Renderer release failed.');
+      } else {
+        fs.closeSync(file);
+        console.info('Renderer release success.');
+      }
+    });
+  }
 }
 
 // 初始化,创建实例,设置监听事件。
@@ -230,8 +349,8 @@ async function init(updateCallback?: (msg: string, isError: boolean) => void, st
 // 开始一次音频采集。
 async function start(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
   if (audioCapturer !== undefined) {
-    let stateGroup = [audio.AudioState.STATE_PREPARED,
-      audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
+    let stateGroup = [audio.AudioState.STATE_PREPARED
+      , audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     // 当且仅当状态为STATE_PREPARED、STATE_PAUSED和STATE_STOPPED之一时才能启动采集。
     if (stateGroup.indexOf(audioCapturer.state.valueOf()) === -1) {
       console.error(`${TAG}: start failed`);
