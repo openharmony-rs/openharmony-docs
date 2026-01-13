@@ -3250,7 +3250,7 @@ function getSupportedPortraitEffects(portraitPhotoSession: camera.PortraitPhotoS
 
 ## Portrait<sup>11+</sup>
 
-Portrait 继承自 [PortraitQuery](#portraitquery12)
+Portrait继承自[PortraitQuery](#portraitquery12)。
 
 人像类，用于设置人像参数。
 
