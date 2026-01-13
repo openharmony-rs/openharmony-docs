@@ -136,7 +136,7 @@ import { backup } from '@kit.CoreFileKit';
 | 名称        | 类型   | 只读 | 可选 | 说明                                                   |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
 | triggerType | number |  否  |  否  | 制定碎片清理的触发类型，当前仅支持触发类型0，表示执行器件碎片清理功能。|
-| writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，最多可清理出目标大小的可用存储单元。单位：MB，取值范围：0-2097152MB。|
+| writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，预期可清理出目标大小的可用存储单元。单位：MB，取值范围：0-2097152MB。|
 | waitTime    | number |  否  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时。单位：秒，取值范围：0-180秒。|
 
 ## GeneralCallbacks
@@ -485,7 +485,6 @@ async function testFunction(size: number) {
       writeSize: size,
       waitTime: 180
     });
-
     return result;
   } catch (error) {
     let err: BusinessError = error as BusinessError;
