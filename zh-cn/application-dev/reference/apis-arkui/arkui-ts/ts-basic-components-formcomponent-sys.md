@@ -4,7 +4,7 @@
 
 >  **说明：**
 >
-> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -44,17 +44,19 @@ FormComponent (value: FormInfo)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
-| --------- | ------------------------------- | ---- |-------|
-| id        | ArkTS-Dyn: number \| string <br> ArkTS-Sta: long \| string                  | 是   | 卡片标识（新建卡片填0）。<br/>**说明：**<br>不同使用方不可使用相同id。<br/>同一使用方使用相同id时，显示后添加的卡片。<br/>**ArkTs-Dyn起始版本：** 12 <br/>**ArkTs-Sta起始版本：** 22|
-| name      | string                          | 是   | 卡片名称。<br/>**ArkTs-Dyn起始版本：** 12 <br/>**ArkTs-Sta起始版本：** 22                                                             |
-| bundle    | string                          | 是   | 目标卡片包名。<br/>**ArkTs-Dyn起始版本：** 12 <br/>**ArkTs-Sta起始版本：** 22                                                         |
-| ability   | string                          | 是   | 目标卡片Ability名称。<br/>**ArkTs-Dyn起始版本：** 12 <br/>**ArkTs-Sta起始版本：** 22                                                  |
-| module    | string                          | 是   | 卡片模块名称。<br/>**ArkTs-Dyn起始版本：** 12 <br/>**ArkTs-Sta起始版本：** 22                                                         |
-| dimension | [FormDimension](#formdimension对象说明) | 否   | 卡片尺寸，支持2 * 2，4 * 4，2 * 4等类型卡片。<br/>默认值：Dimension_2_2。<br/>**ArkTs-Dyn起始版本：** 12 <br/>**ArkTs-Sta起始版本：** 22|
-| temporary | boolean                         | 否   | 卡片是否为临时卡片，true表示是临时卡片，false表示不是临时卡片。<br/>默认值：false。 <br/>**ArkTs-Dyn起始版本：** 12 <br/>**ArkTs-Sta起始版本：** 22|
-| renderingMode | [FormRenderingMode](#formrenderingmode11对象说明) | 否   | 卡片渲染模式。取值如下，默认值为 FULL_COLOR。<br>- FULL_COLOR：代表全色模式，卡片框架不会对卡片效果做出修改，保持和卡片开发者设置的效果不变。<br>- SINGLE_COLOR：代表单色模式，卡片框架会把卡片背景设为透明，开发者需按最佳实践设置卡片风格。<br>**说明：**<br/>如果系统不支持统一渲染模式，卡片框架在单色模式下也不会把卡片背景设为透明。<br/>**ArkTs-Dyn起始版本：** 12 <br/>**ArkTs-Sta起始版本：** 22|
-| exemptAppLock<sup>20+</sup> |boolean        | 否   | 卡片是否豁免应用锁，true表示卡片所属应用添加应用锁时，不受应用锁管控，不显示应用锁蒙层；false表示卡片所属应用添加应用锁时，受应用锁管控，正常展示应用锁蒙层。<br/>默认值：false。<br/>**ArkTs-Dyn起始版本：** 20 <br/>**ArkTs-Sta起始版本：** 22 |
+| 名称  | 类型                        | 只读                      | 可选 | 说明                                                              |
+| --------- | ------------------------------- | ---- |-------|-------|
+| id        | ArkTS-Dyn: number \| string <br> ArkTS-Sta: long \| string                  | 否                 | 否  | 卡片标识（新建卡片填0）。<br/>**说明：**<br>不同使用方不可使用相同id。<br/>同一使用方使用相同id时，显示后添加的卡片。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
+| name      | string                          | 否                         | 否  | 卡片名称。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23                                                             |
+| bundle    | string                          | 否                         | 否  | 目标卡片包名。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23                                                         |
+| ability   | string                          | 否                         | 否  | 目标卡片Ability名称。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23                                                  |
+| module    | string                          | 否                         | 否  | 卡片模块名称。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23                                                         |
+| dimension | [FormDimension](#formdimension对象说明) | 否 | 是   | 卡片尺寸，支持2 * 2，4 * 4，2 * 4等类型卡片。<br/>默认值：Dimension_2_2。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
+| temporary | boolean                         | 否                        | 是  | 卡片是否为临时卡片，true表示是临时卡片，false表示不是临时卡片。<br/>默认值：false。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
+| renderingMode | [FormRenderingMode](#formrenderingmode11对象说明) | 否 | 是  | 卡片渲染模式。取值如下，默认值为 FULL_COLOR。<br>- FULL_COLOR：代表全色模式，卡片框架不会对卡片效果做出修改，保持和卡片开发者设置的效果不变。<br>- SINGLE_COLOR：代表单色模式，卡片框架会把卡片背景设为透明，开发者需按最佳实践设置卡片风格。<br>**说明：**<br/>如果系统不支持统一渲染模式，卡片框架在单色模式下也不会把卡片背景设为透明。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
+| want |[Want](../../apis-ability-kit/js-apis-app-ability-want.md) |否 | 是 | Want文本内容。<br>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| shape |[FormShape](../../apis-form-kit/js-apis-app-form-formInfo.md#formshape12) |否 | 是 | 卡片的形状。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| exemptAppLock<sup>20+</sup> |boolean |否 | 是 | 卡片是否豁免应用锁，true表示卡片所属应用添加应用锁时，不受应用锁管控，不显示应用锁蒙层；false表示卡片所属应用添加应用锁时，受应用锁管控，正常展示应用锁蒙层。<br/>默认值：false。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## FormCallbackInfo<sup>12+</sup>对象说明
 
@@ -64,9 +66,9 @@ FormComponent (value: FormInfo)
 
 | 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
 | --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
-| id        | ArkTS-Dyn: number <br> ArkTS-Sta: long                | 是   | 卡片标识。<br/>**说明：**<br>如果获取到的id为-1，说明id大于等于2^53，需要使用idString获取。<br/>**ArkTs-Dyn起始版本：** 12 <br/>**ArkTs-Sta起始版本：** 22 |
-| idString      | string            | 是           | 卡片标识（string类型）。<br/>**ArkTs-Dyn起始版本：** 12 <br/>**ArkTs-Sta起始版本：** 22                             |
-| isLocked<sup>18+</sup>  |boolean  | 是           | 标识卡片是否为[管控状态](../../apis-form-kit/js-apis-app-form-formHost-sys.md#updateformlockedstate18)，true表示管控状态，false表示非管控状态。<br/>**ArkTs-Dyn起始版本：** 18 <br/>**ArkTs-Sta起始版本：** 22     |
+| id        | ArkTS-Dyn: number <br> ArkTS-Sta: long                | 是   | 卡片标识。<br/>**说明：**<br>如果获取到的id为-1，说明id大于等于2^53，需要使用idString获取。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| idString      | string            | 是           | 卡片标识（string类型）。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23                             |
+| isLocked<sup>18+</sup>  |boolean  | 是           | 标识卡片是否为[管控状态](../../apis-form-kit/js-apis-app-form-formHost-sys.md#updateformlockedstate18)，true表示管控状态，false表示非管控状态。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23     |
 
 ## FormSize<sup>18+</sup>对象说明
 
@@ -91,14 +93,14 @@ FormComponent (value: FormInfo)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
 | --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
 | errcode        | ArkTS-Dyn: number <br> ArkTS-Sta: int                 | 是   | [错误码](../../apis-form-kit/errorcode-form.md)。                                        |
 | msg      | string            | 是           | 错误信息。                             |
 
-## RouterCallbackInfo<sup>22+</sup>对象说明
+## RouterCallbackInfo<sup>23+</sup>对象说明
 
 卡片跳转信息。
 
@@ -106,7 +108,7 @@ FormComponent (value: FormInfo)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
 | --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
@@ -122,15 +124,15 @@ FormComponent (value: FormInfo)
 
 | 名称                       | 描述     |
 | -------------------------- | -------- |
-| Dimension_1_2              | 1*2 卡片 <br/>**ArkTs-Dyn起始版本：** 7 <br/>**ArkTs-Sta起始版本：** 22|
-| Dimension_2_2              | 2*2 卡片 <br/>**ArkTs-Dyn起始版本：** 7 <br/>**ArkTs-Sta起始版本：** 22|
-| Dimension_2_4              | 2*4 卡片 <br/>**ArkTs-Dyn起始版本：** 7 <br/>**ArkTs-Sta起始版本：** 22|
-| Dimension_4_4              | 4*4 卡片 <br/>**ArkTs-Dyn起始版本：** 7 <br/>**ArkTs-Sta起始版本：** 22|
+| Dimension_1_2              | 1*2 卡片 <br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
+| Dimension_2_2              | 2*2 卡片 <br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
+| Dimension_2_4              | 2*4 卡片 <br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
+| Dimension_4_4              | 4*4 卡片 <br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
 | Dimension_2_1<sup>(deprecated)</sup> | 2*1 卡片 <br>**说明:** 该字段从API version 9开始支持，从API version 20开始废弃。|
-| Dimension_1_1<sup>11+</sup> | 1*1 卡片 <br/>**ArkTs-Dyn起始版本：** 11 <br/>**ArkTs-Sta起始版本：** 22|
-| Dimension_6_4<sup>12+</sup> | 6*4 卡片 <br/>**ArkTs-Dyn起始版本：** 12 <br/>**ArkTs-Sta起始版本：** 22|
-| Dimension_2_3<sup>18+</sup> | 2*3 卡片为穿戴设备使用 <br/>**ArkTs-Dyn起始版本：** 18 <br/>**ArkTs-Sta起始版本：** 22|
-| Dimension_3_3<sup>18+</sup> | 3*3 卡片为穿戴设备使用 <br/>**ArkTs-Dyn起始版本：** 18 <br/>**ArkTs-Sta起始版本：** 22|
+| Dimension_1_1<sup>11+</sup> | 1*1 卡片 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23|
+| Dimension_6_4<sup>12+</sup> | 6*4 卡片 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
+| Dimension_2_3<sup>18+</sup> | 2*3 卡片为穿戴设备使用 <br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23|
+| Dimension_3_3<sup>18+</sup> | 3*3 卡片为穿戴设备使用 <br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23|
 
 ## FormRenderingMode<sup>11+</sup>对象说明
 
@@ -138,7 +140,7 @@ FormComponent (value: FormInfo)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                       | 描述     |
 | -------------------------- | -------- |
@@ -179,7 +181,7 @@ moduleName(value: string)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -199,7 +201,7 @@ dimension(value: FormDimension)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -219,7 +221,7 @@ allowUpdate(value: boolean)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -239,7 +241,7 @@ visibility(value: Visibility)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -261,7 +263,7 @@ onAcquired(callback: Callback\<FormCallbackInfo\>);
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -281,7 +283,7 @@ onError(callback: Callback\<ErrorInformation\>)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -302,13 +304,13 @@ ArkTS-Sta: onRouter(callback: Callback\<RouterCallbackInfo\>)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名  | 类型 | 必填 | 说明                                                         |
 |------| - | ---- | ------------------------------------------------------------ |
-| callback | ArkTS-Dyn: Callback\<object\> <br> ArkTS-Sta: Callback<[RouterCallbackInfo](#routercallbackinfo22对象说明)>  | 是   | ArkTS-Dyn: 获得[routerEvent](../js-service-widget-ui/js-service-widget-syntax-hml.md#事件绑定)对象。 <br> ArkTS-Sta: 获得RouterCallbackInfo对象|
+| callback | ArkTS-Dyn: Callback\<object\> <br> ArkTS-Sta: Callback<[RouterCallbackInfo](#routercallbackinfo23对象说明)> | 是   | ArkTS-Dyn: 获得[routerEvent](../js-service-widget-ui/js-service-widget-syntax-hml.md#事件绑定)对象。 <br> ArkTS-Sta: 获得RouterCallbackInfo对象|
 
 ### onUninstall
 
@@ -322,7 +324,7 @@ onUninstall(callback:&nbsp;Callback\<FormCallbackInfo\>)&nbsp;
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -342,7 +344,7 @@ onLoad(callback: VoidCallback)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -362,7 +364,7 @@ onUpdate(callback:&nbsp;Callback\<FormCallbackInfo\>)&nbsp;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

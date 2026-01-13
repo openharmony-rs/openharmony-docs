@@ -32,7 +32,7 @@ deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -88,7 +88,7 @@ deleteForm(formId: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -148,7 +148,7 @@ releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -202,7 +202,7 @@ releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -257,7 +257,7 @@ releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -317,7 +317,7 @@ requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -371,7 +371,7 @@ requestForm(formId: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -430,7 +430,7 @@ requestFormWithParams(formId: string, wantParams?: Record<string, Object>): Prom
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -493,7 +493,7 @@ castToNormalForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -547,7 +547,7 @@ castToNormalForm(formId: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -606,7 +606,7 @@ notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -658,7 +658,7 @@ notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -715,7 +715,7 @@ notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -767,7 +767,7 @@ notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -824,7 +824,7 @@ enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -877,7 +877,7 @@ enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -935,7 +935,7 @@ disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -989,7 +989,7 @@ disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1046,7 +1046,7 @@ isSystemReady(callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1090,7 +1090,7 @@ isSystemReady(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1228,7 +1228,7 @@ getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.Fo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1282,7 +1282,7 @@ getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1337,7 +1337,7 @@ getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formI
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1395,7 +1395,7 @@ getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.Form
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1459,7 +1459,7 @@ ArkTS-Sta: deleteInvalidForms(formIds: Array\<string>, callback: AsyncCallback\<
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1537,7 +1537,7 @@ ArkTS-Sta: deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1584,7 +1584,7 @@ try {
 }
 ```
 
-ArkTS-Dyn示例：
+ArkTS-Sta示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -1613,7 +1613,7 @@ acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&g
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1678,7 +1678,7 @@ acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1748,7 +1748,7 @@ on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1790,7 +1790,7 @@ off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1830,7 +1830,7 @@ notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: A
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1884,7 +1884,7 @@ notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1943,7 +1943,7 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, c
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1997,7 +1997,7 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): 
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2055,7 +2055,7 @@ shareForm(formId: string, deviceId: string, callback: AsyncCallback&lt;void&gt;)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2110,7 +2110,7 @@ shareForm(formId: string, deviceId: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2170,7 +2170,7 @@ notifyFormsPrivacyProtected(formIds: Array\<string>, isProtected: boolean, callb
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2223,7 +2223,7 @@ notifyFormsPrivacyProtected(formIds: Array\<string\>, isProtected: boolean): Pro
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2281,7 +2281,7 @@ acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2337,7 +2337,7 @@ acquireFormData(formId: string): Promise\<Record\<string, Object>>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2403,7 +2403,7 @@ setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;, callba
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2499,7 +2499,7 @@ setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promi
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2596,7 +2596,7 @@ clearRouterProxy(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2649,7 +2649,7 @@ clearRouterProxy(formIds:Array&lt;string&gt;): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2708,7 +2708,7 @@ setFormsRecyclable(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2762,7 +2762,7 @@ setFormsRecyclable(formIds:Array&lt;string&gt;): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2820,7 +2820,7 @@ recoverForms(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): 
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2873,7 +2873,7 @@ recoverForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2932,7 +2932,7 @@ recycleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2991,7 +2991,7 @@ updateFormLocation(formId: string, location: formInfo.FormLocation): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3043,7 +3043,7 @@ setPublishFormResult(formId: string, result: formInfo.PublishFormResult): void;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3081,7 +3081,7 @@ try {
 }
 ```
 
-## updateFormLockedState<sup>22+</sup>
+## updateFormLockedState<sup>23+</sup>
 
 updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
@@ -3097,7 +3097,7 @@ updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3189,7 +3189,7 @@ try {
 }
 ```
 
-## formHost.onFormOverflow<sup>22+</sup>
+## formHost.onFormOverflow<sup>23+</sup>
 
 onFormOverflow(callback: Callback\<formInfo.OverflowRequest\>): void
 
@@ -3201,7 +3201,7 @@ onFormOverflow(callback: Callback\<formInfo.OverflowRequest\>): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3222,15 +3222,11 @@ onFormOverflow(callback: Callback\<formInfo.OverflowRequest\>): void
 ```ts
 'use static'
 
-import formHost from '@ohos.app.form.formHost';
-import formInfo from '@ohos.app.form.formInfo';
-import { BusinessError } from '@ohos.base';
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let callback = (data: formInfo.OverflowRequest) => {
-  console.info( 'testTag', `onFormOverflow OverflowRequest, data: ${JSON.stringify(data)}`);
   console.info( 'testTag', `onFormOverflow OverflowRequest, data.formId: ${data.formId}`);
-  console.info( 'testTag', `onFormOverflow OverflowRequest, data.isOverflow: ${data.isOverflow}`);
-  console.info( 'testTag', `onFormOverflow OverflowRequest, data.overflowInfo: ${data.overflowInfo}`);
 }
 try {
   formHost.onFormOverflow(callback);
@@ -3284,7 +3280,7 @@ try {
 }   
 ```
 
-## formHost.offFormOverflow<sup>22+</sup>
+## formHost.offFormOverflow<sup>23+</sup>
 
 offFormOverflow(callback?: Callback\<formInfo.OverflowRequest\>): void
 
@@ -3296,7 +3292,7 @@ offFormOverflow(callback?: Callback\<formInfo.OverflowRequest\>): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3317,15 +3313,11 @@ offFormOverflow(callback?: Callback\<formInfo.OverflowRequest\>): void
 ```ts
 'use static'
 
-import formHost from '@ohos.app.form.formHost';
-import formInfo from '@ohos.app.form.formInfo';
-import { BusinessError } from '@ohos.base';
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let callback = (data: formInfo.OverflowRequest) => {
-  console.info( 'testTag', `offFormOverflow OverflowRequest, data: ${JSON.stringify(data)}`);
   console.info( 'testTag', `offFormOverflow OverflowRequest, data.formId: ${data.formId}`);
-  console.info( 'testTag', `offFormOverflow OverflowRequest, data.isOverflow: ${data.isOverflow}`);
-  console.info( 'testTag', `offFormOverflow OverflowRequest, data.overflowInfo: ${data.overflowInfo}`);
 }
 try {
   formHost.offFormOverflow(callback);
@@ -3379,7 +3371,7 @@ try {
 }
 ```
 
-## formHost.onChangeSceneAnimationState<sup>22+</sup>
+## formHost.onChangeSceneAnimationState<sup>23+</sup>
 
 onChangeSceneAnimationState(callback: Callback\<formInfo.ChangeSceneAnimationStateRequest\>): void
 
@@ -3393,7 +3385,7 @@ onChangeSceneAnimationState(callback: Callback\<formInfo.ChangeSceneAnimationSta
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3414,14 +3406,11 @@ onChangeSceneAnimationState(callback: Callback\<formInfo.ChangeSceneAnimationSta
 ```ts
 'use static'
 
-import formHost from '@ohos.app.form.formHost';
-import formInfo from '@ohos.app.form.formInfo';
-import { BusinessError } from '@ohos.base';
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let callback = (data: formInfo.ChangeSceneAnimationStateRequest) => {
-  console.info( 'testTag', `onChangeSceneAnimationState ChangeSceneAnimationStateRequest, data: ${JSON.stringify(data)}`);
   console.info( 'testTag', `onChangeSceneAnimationState ChangeSceneAnimationStateRequest, data.formId: ${data.formId}`);
-  console.info( 'testTag', `onChangeSceneAnimationState ChangeSceneAnimationStateRequest, data.state: ${data.state}`);
 }
 try {
   formHost.onChangeSceneAnimationState(callback);
@@ -3475,7 +3464,7 @@ try {
 }
 ```
 
-## formHost.offChangeSceneAnimationState<sup>22+</sup>
+## formHost.offChangeSceneAnimationState<sup>23+</sup>
 
 offChangeSceneAnimationState(callback?: Callback\<formInfo.ChangeSceneAnimationStateRequest\>): void
 
@@ -3487,7 +3476,7 @@ offChangeSceneAnimationState(callback?: Callback\<formInfo.ChangeSceneAnimationS
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3508,14 +3497,11 @@ offChangeSceneAnimationState(callback?: Callback\<formInfo.ChangeSceneAnimationS
 ```ts
 'use static'
 
-import formHost from '@ohos.app.form.formHost';
-import formInfo from '@ohos.app.form.formInfo';
-import { BusinessError } from '@ohos.base';
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let callback = (data: formInfo.ChangeSceneAnimationStateRequest) => {
-  console.info( 'testTag', `offChangeSceneAnimationState ChangeSceneAnimationStateRequest, data: ${JSON.stringify(data)}`);
   console.info( 'testTag', `offChangeSceneAnimationState ChangeSceneAnimationStateRequest, data.formId: ${data.formId}`);
-  console.info( 'testTag', `offChangeSceneAnimationState ChangeSceneAnimationStateRequest, data.state: ${data.state}`);
 }
 try {
   formHost.offChangeSceneAnimationState(callback);
@@ -3574,7 +3560,7 @@ try {
 }
 ```
 
-## formHost.onGetFormRect<sup>22+</sup>
+## formHost.onGetFormRect<sup>23+</sup>
 
 onGetFormRect(callback: formInfo.GetFormRectInfoCallback): void
 
@@ -3586,7 +3572,7 @@ onGetFormRect(callback: formInfo.GetFormRectInfoCallback): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3607,19 +3593,18 @@ onGetFormRect(callback: formInfo.GetFormRectInfoCallback): void
 ```ts
 'use static'
 
-import formHost from '@ohos.app.form.formHost';
-import formInfo from '@ohos.app.form.formInfo';
-import { BusinessError } from '@ohos.base';
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let callGetFormRect: formInfo.GetFormRectInfoCallback = (formId: string): Promise<formInfo.Rect> => {
   console.info('testTag', 'testTag', `cbGetFormRect a new form`);
-  return new Promise<formInfo.Rect>((resolve: (rect: formInfo.Rect) => void, reject: (rect: formInfo.Rect) => void): void => {
+  return new Promise<formInfo.Rect>((resolve: (rect: formInfo.Rect) => void, reject: (err: Error) => void): void => {
     console.info('testTag', 'testTag', `cbGetFormRect Promise called`);
-    let rect1:formInfo.Rect= {
-      left:1.0,
-      top:1.2,
-      width:1.3,
-      height:1.4
+    let rect1: formInfo.Rect = {
+      left: 1.0,
+      top: 1.2,
+      width: 1.3,
+      height: 1.4
     };
     resolve(rect1);
   });
@@ -3677,7 +3662,7 @@ try {
 }
 ```
 
-## formHost.offGetFormRect<sup>22+</sup>
+## formHost.offGetFormRect<sup>23+</sup>
 
 offGetFormRect(callback?: formInfo.GetFormRectInfoCallback): void
 
@@ -3689,7 +3674,7 @@ offGetFormRect(callback?: formInfo.GetFormRectInfoCallback): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3710,13 +3695,12 @@ offGetFormRect(callback?: formInfo.GetFormRectInfoCallback): void
 ```ts
 'use static'
 
-import formHost from '@ohos.app.form.formHost';
-import formInfo from '@ohos.app.form.formInfo';
-import { BusinessError } from '@ohos.base';
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let callGetFormRect: formInfo.GetFormRectInfoCallback = (formId: string): Promise<formInfo.Rect> => {
   console.info(`cbGetFormRect a new form`);
-  return new Promise<formInfo.Rect>((resolve: (rect: formInfo.Rect) => void, reject: (rect: formInfo.Rect) => void): void => {
+  return new Promise<formInfo.Rect>((resolve: (rect: formInfo.Rect) => void, reject: (err: Error) => void): void => {
     console.info(`cbGetFormRect Promise called`);
     let rect1: formInfo.Rect = {
       left: 1.0,
@@ -3746,9 +3730,9 @@ updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: fo
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3831,7 +3815,7 @@ try {
 }
 ```
 
-## formHost.onGetLiveFormStatus<sup>22+</sup>
+## formHost.onGetLiveFormStatus<sup>23+</sup>
 
 onGetLiveFormStatus(callback: formInfo.GetLiveFormStatusCallback): void
 
@@ -3843,7 +3827,7 @@ onGetLiveFormStatus(callback: formInfo.GetLiveFormStatusCallback): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3864,8 +3848,8 @@ onGetLiveFormStatus(callback: formInfo.GetLiveFormStatusCallback): void
 ```ts
 'use static'
 
-import formHost from '@ohos.app.form.formHost';
-import { BusinessError } from '@ohos.base';
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.onGetLiveFormStatus((): Record<string, string> => {
@@ -3922,7 +3906,7 @@ try {
 }
 ```
 
-## formHost.offGetLiveFormStatus<sup>22+</sup>
+## formHost.offGetLiveFormStatus<sup>23+</sup>
 
 offGetLiveFormStatus(callback?: formInfo.GetLiveFormStatusCallback): void
 
@@ -3934,7 +3918,7 @@ offGetLiveFormStatus(callback?: formInfo.GetLiveFormStatusCallback): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3955,7 +3939,7 @@ offGetLiveFormStatus(callback?: formInfo.GetLiveFormStatusCallback): void
 ```ts
 'use static'
 
-import formHost from '@ohos.app.form.formHost';
+import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
