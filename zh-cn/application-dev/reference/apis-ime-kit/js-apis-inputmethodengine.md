@@ -2,11 +2,6 @@
 
 本模块面向输入法应用（包括系统输入法应用、三方输入法应用），为输入法应用提供能力，包括：创建软键盘窗口、插入/删除字符、选中文本、监听物理键盘按键事件等。
 
-> **说明：**
->
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
 ## 导入模块
 
 ```ts
@@ -459,7 +454,7 @@ on(type: 'inputStart', callback: (kbController: KeyboardController, inputClient:
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onInputStart](#onInputStart23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onInputStart](#oninputstart23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -494,7 +489,7 @@ off(type: 'inputStart', callback?: (kbController: KeyboardController, inputClien
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offInputStart](#offInputStart23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offInputStart](#offinputstart23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -554,7 +549,7 @@ off(type: 'inputStop', callback: () => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offInputStop](#offInputStop23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offInputStop](#offinputstop23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -587,7 +582,7 @@ on(type: 'setCallingWindow', callback: (wid: number) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSetCallingWindow](#onSetCallingWindow23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSetCallingWindow](#onsetcallingwindow23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -620,7 +615,7 @@ off(type: 'setCallingWindow', callback: (wid:number) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSetCallingWindow](#offSetCallingWindow23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSetCallingWindow](#offsetcallingwindow23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -653,7 +648,7 @@ on(type: 'keyboardShow'|'keyboardHide', callback: () => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardShow](#onKeyboardShow23),[onKeyboardHide](#onKeyboardHide23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardShow](#onkeyboardshow23),[onKeyboardHide](#onkeyboardhide23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -689,7 +684,7 @@ off(type: 'keyboardShow'|'keyboardHide', callback?: () => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardShow](#offKeyboardShow23),[offKeyboardHide](#offKeyboardHide23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardShow](#offkeyboardshow23),[offKeyboardHide](#offkeyboardhide23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -725,7 +720,7 @@ on(type: 'setSubtype', callback: (inputMethodSubtype: InputMethodSubtype) => voi
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSetSubtype](#onSetSubtype23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSetSubtype](#onsetsubtype23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -760,7 +755,7 @@ off(type: 'setSubtype', callback?: (inputMethodSubtype: InputMethodSubtype) => v
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSetSubtype](#offSetSubtype23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSetSubtype](#offsetsubtype23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -793,7 +788,7 @@ on(type: 'securityModeChange', callback: Callback< SecurityMode>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSecurityModeChange](#onSecurityModeChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSecurityModeChange](#onsecuritymodechange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -826,7 +821,7 @@ off(type: 'securityModeChange', callback?: Callback< SecurityMode>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSecurityModeChange](#offSecurityModeChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSecurityModeChange](#offsecuritymodechange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -862,7 +857,7 @@ on(type: 'privateCommand', callback: Callback<Record<string, CommandDataType>>):
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onPrivateCommand](#onPrivateCommand23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPrivateCommand](#onprivatecommand23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -910,7 +905,7 @@ off(type: 'privateCommand', callback?: Callback<Record<string, CommandDataType>>
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offPrivateCommand](#offPrivateCommand23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPrivateCommand](#offprivatecommand23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -958,7 +953,7 @@ on(type: 'callingDisplayDidChange', callback: Callback\<number>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onCallingDisplayDidChange](#onCallingDisplayDidChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCallingDisplayDidChange](#oncallingdisplaydidchange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1004,7 +999,7 @@ off(type: 'callingDisplayDidChange', callback?: Callback\<number>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offCallingDisplayDidChange](#offCallingDisplayDidChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCallingDisplayDidChange](#offcallingdisplaydidchange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1041,7 +1036,7 @@ on(type: 'discardTypingText', callback: Callback\<void>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onDiscardTypingText](#onDiscardTypingText23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDiscardTypingText](#ondiscardtypingtext23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1078,7 +1073,7 @@ off(type: 'discardTypingText', callback?: Callback\<void>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offDiscardTypingText](#offDiscardTypingText23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDiscardTypingText](#offdiscardtypingtext23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1377,7 +1372,7 @@ onInputStart(callback: IMAInputStartCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('inputStart')](#oninputStart9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('inputStart')](#oninputstart9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1411,7 +1406,7 @@ offInputStart(callback?: IMAInputStartCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('inputStart')](#offinputStart9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('inputStart')](#offinputstart9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1444,7 +1439,7 @@ onInputStop(callback: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('inputStop')](#oninputStop9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('inputStop')](#oninputstop9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1476,7 +1471,7 @@ offInputStop(callback: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('inputStop')](#offinputStop9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('inputStop')](#offinputstop9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1508,7 +1503,7 @@ onSetCallingWindow(callback: Callback&lt;int&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('setCallingWindow')](#onsetCallingWindow9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('setCallingWindow')](#onsetcallingwindow9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1540,7 +1535,7 @@ offSetCallingWindow(callback: Callback&lt;int&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('setCallingWindow')](#offsetCallingWindow9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('setCallingWindow')](#offsetcallingwindow9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1572,7 +1567,7 @@ onKeyboardShow(callback:Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyboardShow'|'keyboardHide')](#onkeyboardShowkeyboardHide9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyboardShow'|'keyboardHide')](#onkeyboardshowkeyboardhide9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1608,7 +1603,7 @@ offKeyboardShow(callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyboardShow'|'keyboardHide')](#offkeyboardShowkeyboardHide9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyboardShow'|'keyboardHide')](#offkeyboardshowkeyboardhide9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1644,7 +1639,7 @@ onKeyboardHide(callback: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyboardShow'|'keyboardHide')](#onkeyboardShowkeyboardHide9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyboardShow'|'keyboardHide')](#onkeyboardshowkeyboardhide9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1679,7 +1674,7 @@ offKeyboardHide(callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyboardShow'|'keyboardHide')](#offkeyboardShowkeyboardHide9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyboardShow'|'keyboardHide')](#offkeyboardshowkeyboardhide9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1714,7 +1709,7 @@ onSetSubtype(callback: Callback&lt;InputMethodSubtype&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('setSubtype')](#onsetSubtype9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('setSubtype')](#onsetsubtype9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1748,7 +1743,7 @@ offSetSubtype(callback?: Callback&lt;InputMethodSubtype&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('setSubtype')](#offsetSubtype9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('setSubtype')](#offsetsubtype9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1782,7 +1777,7 @@ onSecurityModeChange(callback: Callback&lt;SecurityMode&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('securityModeChange')](#onsecurityModeChange11)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('securityModeChange')](#onsecuritymodechange11)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1814,7 +1809,7 @@ offSecurityModeChange(callback?: Callback&lt;SecurityMode&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('securityModeChange')](#offsecurityModeChange11)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('securityModeChange')](#offsecuritymodechange11)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1849,7 +1844,7 @@ onPrivateCommand(callback: Callback&lt;Record&lt;string, CommandDataType&gt;&gt;
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('privateCommand')](#onprivateCommand12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('privateCommand')](#onprivatecommand12)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1896,7 +1891,7 @@ offPrivateCommand(callback?: Callback&lt;Record&lt;string, CommandDataType&gt;&g
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('privateCommand')](#offprivateCommand12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('privateCommand')](#offprivatecommand12)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1943,7 +1938,7 @@ onCallingDisplayDidChange(callback: Callback&lt;int&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('callingDisplayDidChange')](#oncallingDisplayDidChange18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('callingDisplayDidChange')](#oncallingdisplaydidchange18)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1988,7 +1983,7 @@ offCallingDisplayDidChange(callback?: Callback&lt;int&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('callingDisplayDidChange')](#offcallingDisplayDidChange18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('callingDisplayDidChange')](#offcallingdisplaydidchange18)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2024,7 +2019,7 @@ onDiscardTypingText(callback: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('discardTypingText')](#ondiscardTypingText20)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('discardTypingText')](#ondiscardtypingtext20)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2060,7 +2055,7 @@ offDiscardTypingText(callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('discardTypingText')](#offdiscardTypingText20)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('discardTypingText')](#offdiscardtypingtext20)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2100,7 +2095,7 @@ on(type: 'keyDown'|'keyUp', callback: (event: KeyEvent) => boolean): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyDown](#onkeyDown23)，[onKeyUp](#onkeyUp23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyDown](#onkeydown23)，[onKeyUp](#onkeyup23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2140,7 +2135,7 @@ off(type: 'keyDown'|'keyUp', callback?: (event: KeyEvent) => boolean): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyDown](#offkeyDown23)，[offKeyUp](#offkeyUp23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyDown](#offkeydown23)，[offKeyUp](#offkeyup23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2178,7 +2173,7 @@ on(type: 'keyEvent', callback: (event: InputKeyEvent) => boolean): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyEvent](#onKeyEvent23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyEvent](#onkeyevent23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2217,7 +2212,7 @@ off(type: 'keyEvent', callback?: (event: InputKeyEvent) => boolean): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyEvent](#offKeyEvent23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyEvent](#offkeyevent23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2254,7 +2249,7 @@ on(type: 'cursorContextChange', callback: (x: number, y:number, height:number) =
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onCursorContextChange](#onCursorContextChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCursorContextChange](#oncursorcontextchange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2289,7 +2284,7 @@ off(type: 'cursorContextChange', callback?: (x: number, y: number, height: numbe
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offCursorContextChange](#offCursorContextChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCursorContextChange](#offcursorcontextchange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2322,7 +2317,7 @@ on(type: 'selectionChange', callback: (oldBegin: number, oldEnd: number, newBegi
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSelectionChange](#onSelectionChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSelectionChange](#onselectionchange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2359,7 +2354,7 @@ off(type: 'selectionChange', callback?: (oldBegin: number, oldEnd: number, newBe
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSelectionChange](#offSelectionChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSelectionChange](#offselectionchange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2394,7 +2389,7 @@ on(type: 'textChange', callback: (text: string) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onTextChange](#onTextChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTextChange](#ontextchange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2427,7 +2422,7 @@ off(type: 'textChange', callback?: (text: string) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offTextChange](#offTextChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTextChange](#offtextchange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2460,7 +2455,7 @@ on(type: 'editorAttributeChanged', callback: (attr: EditorAttribute) => void): v
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onEditorAttributeChanged](#onEditorAttributeChanged23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onEditorAttributeChanged](#oneditorattributechanged23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2493,7 +2488,7 @@ off(type: 'editorAttributeChanged', callback?: (attr: EditorAttribute) => void):
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offEditorAttributeChanged](#offEditorAttributeChanged23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offEditorAttributeChanged](#offeditorattributechanged23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2520,7 +2515,7 @@ onKeyDown(callback: KeyEventCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyDown'|'keyUp')](#onkeyDownkeyup)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyDown'|'keyUp')](#onkeydownkeyup)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2563,7 +2558,7 @@ offKeyDown(callback?: KeyEventCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyDown'|'keyUp')](#offkeyDownkeyup)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyDown'|'keyUp')](#offkeydownkeyup)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2603,7 +2598,7 @@ onKeyUp(callback: KeyEventCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyDown'|'keyUp')](#onkeyDownkeyup)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyDown'|'keyUp')](#onkeydownkeyup)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2645,7 +2640,7 @@ offKeyUp(callback?: KeyEventCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyDown'|'keyUp')](#offkeyDownkeyup)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyDown'|'keyUp')](#offkeydownkeyup)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2685,7 +2680,7 @@ onKeyEvent(callback: InputKeyEventCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyEvent')](#onkeyEvent10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyEvent')](#onkeyevent10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2726,7 +2721,7 @@ offKeyEvent(callback?: InputKeyEventCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyEvent')](#offkeyEvent10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyEvent')](#offkeyevent10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2765,7 +2760,7 @@ onCursorContextChange(callback: CursorContextChangeCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('CursorcontextChange')](#cursorContextChange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('CursorcontextChange')](#cursorcontextchange)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2800,7 +2795,7 @@ offCursorContextChange(callback?: CursorContextChangeCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('cursorcontextChange')](#offcursorContextChange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('cursorcontextChange')](#offcursorcontextchange)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2835,7 +2830,7 @@ onSelectionChange(callback: SelectionChangeCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('selectionChange')](#onselectionChange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('selectionChange')](#onselectionchange)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2874,7 +2869,7 @@ offSelectionChange(callback?: SelectionChangeCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('selectionChange')](#offselectionChange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('selectionChange')](#offselectionchange)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2909,7 +2904,7 @@ onTextChange(callback: Callback&lt;string&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('textChange')](#ontextChange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('textChange')](#ontextchange)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2944,7 +2939,7 @@ offTextChange(callback?: Callback&lt;string&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('textChange')](#offtextChange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('textChange')](#offtextchange)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2979,7 +2974,7 @@ onEditorAttributeChanged(callback: Callback&lt;EditorAttribute&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('editorAttributeChanged')](#oneditorAttributeChanged10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('editorAttributeChanged')](#oneditorattributechanged10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3014,7 +3009,7 @@ offEditorAttributeChanged(callback?: Callback&lt;EditorAttribute&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('editorAttributeChanged')](#offeditorAttributeChanged10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('editorAttributeChanged')](#offeditorattributechanged10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3875,7 +3870,7 @@ on(type: 'hide', callback: () => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onHide](#onHide23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onHide](#onhide23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3915,7 +3910,7 @@ on(type: 'sizeChange', callback: SizeChangeCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSizeChange](#onSizeChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSizeChange](#onsizechange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3995,7 +3990,7 @@ off(type: 'hide', callback?: () => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offHide](#offHide23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offHide](#offhide23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4041,7 +4036,7 @@ off(type: 'sizeChange', callback?: SizeChangeCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSizeChange](#offSizeChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSizeChange](#offsizechange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4444,7 +4439,7 @@ onSizeChange(callback: SizeChangeCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('sizeChange')](#onsizeChange12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('sizeChange')](#onsizechange12)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4484,7 +4479,7 @@ offSizeChange(callback?: SizeChangeCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('sizeChange')](#offsizeChange12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('sizeChange')](#offsizechange12)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -7337,7 +7332,7 @@ on(type: 'attachOptionsDidChange', callback: Callback\<AttachOptions>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onAttachOptionsDidChange](#onAttachOptionsDidChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAttachOptionsDidChange](#onattachoptionsdidchange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -7385,7 +7380,7 @@ off(type: 'attachOptionsDidChange', callback?: Callback\<AttachOptions>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAttachOptionsDidChange](#offAttachOptionsDidChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAttachOptionsDidChange](#offattachoptionsdidchange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -7425,7 +7420,7 @@ onAttachOptionsDidChange(callback: Callback&lt;AttachOptions&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('attachOptionsDidChange')](#onattachOptionsDidChange19)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('attachOptionsDidChange')](#onattachoptionsdidchange19)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -7463,7 +7458,7 @@ offAttachOptionsDidChange(callback?: Callback&lt;AttachOptions&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[off('attachOptionsDidChange')](#offattachOptionsDidChange19)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[off('attachOptionsDidChange')](#offattachoptionsdidchange19)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
