@@ -87,7 +87,7 @@ import { display } from '@kit.ArkUI';
 | FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 23 | 表示双折轴设备折轴一和折轴二的折叠状态均为半折叠。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 
 >**说明：**<br>
-> 只有一个折轴的产品包含FOLD_STATUS_EXPANDED、FOLD_STATUS_FOLDED、FOLD_STATUS_HALF_FOLDED三种折叠状态。
+> 只有一个折轴的产品包含FOLD_STATUS_EXPANDED、FOLD_STATUS_FOLDED、FOLD_STATUS_HALF_FOLDED三种折叠状态。<br>
 > 具有两个折轴的产品包含上表除FOLD_STATUS_UNKNOWN以外的九种折叠状态。<br>
 > FOLD_STATUS_UNKNOWN是一种不可用的折叠状态。
 
@@ -1203,7 +1203,7 @@ on(type: 'foldDisplayModeChange', callback: Callback&lt;FoldDisplayMode&gt;): vo
 import { Callback } from '@kit.BasicServicesKit';
 
 /**
- * 注册监听的callback参数要采用对象传递.
+ * 注册监听的callback参数要采用对象传递。
  * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
 */
 let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
