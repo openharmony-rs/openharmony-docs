@@ -2233,7 +2233,11 @@ httpRequest.request("EXAMPLE_URL", {
 ```
 ## PathPreference<sup>23+</sup>
 
-HTTP请求指定物理网卡的类型枚举。
+HTTP请求指定特定网络的类型枚举。
+
+> **说明：**
+>
+> 推荐在一键登录、冗余并发等场景下使用
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
