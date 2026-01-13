@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-More often than not, you may need to display images in your application, for example, icons in buttons, online images, and local images. This is where the **Image** component comes in handy. The **Image** component supports a wide range of image formats, including PNG, JPEG, BMP, SVG, WEBP, GIF, and HEIF, but does not support APNG and SVGA. For details, see [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md).
+More often than not, you may need to display images in your application, for example, icons in buttons, online images, and local images. This is where the **Image** component comes in handy. The **Image** component supports a wide range of image formats, including PNG, JPEG, BMP, SVG, WEBP, GIF, TIFF, and HEIF, but does not support APNG and SVGA. For details, see [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md).
 
 
 To use the **Image** component, call the following API:
@@ -18,7 +18,7 @@ Image(src: PixelMap | ResourceStr | DrawableDescriptor)
 
 This API obtains a local or online image from the data source specified by **src**. For details about how to load the data source, see [Loading Image Resources](#loading-image-resources).
 
-For details about how to resolve white block issues during image loading, see [Solution to White Image Blocks](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-image-white-lump-solution).
+For details about how to resolve white block issues during image loading, see [Solution to White Image Blocks](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-image-white-lump-solution). For details about how to address slow image loading, see [Optimizing Preset Image Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-texture-compression-improve-performance).
 
 
 ## Loading Image Resources
@@ -52,7 +52,13 @@ Archived data sources can be classified into local resources, network resources,
 
   Currently, the **Image** component supports only simple network images.
 
-  If a network image has been loaded before, the **Image** component can obtain it from the cache, instead of having to request it from the Internet again. For details about the image cache, see [setImageCacheCount](../reference/apis-arkui/js-apis-system-app.md#setimagecachecount7), [setImageRawDataCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagerawdatacachesize7), and [setImageFileCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagefilecachesize7). Note that these cache APIs have limited flexibility and are not recommended for future development. For complex scenarios, you are advised to use [ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife) instead.
+  When the **Image** component loads a network image for the first time, it needs to request network resources. If this component is not loaded for the first time, it directly reads the image from the cache by default.
+  
+  For more image cache settings, see [setImageCacheCount](../reference/apis-arkui/js-apis-system-app.md#setimagecachecount7), [setImageRawDataCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagerawdatacachesize7), and [setImageFileCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagefilecachesize7). The three image cache APIs are used to support simple and common scenarios. They will not evolve in the future, and have certain limitations in flexibility and scalability. For example:
+  - They cannot obtain the current cache usage. The **Image** component does not support querying the real-time status of the disk cache, including the total file size and file quantity.
+  - The cache policy cannot be customized, and the cache status cannot be observed. You cannot obtain runtime metrics such as the cache hit ratio and eviction count through APIs, so it is difficult to implement dynamic optimization based on the actual cache effect.
+
+  For complex scenarios, you are advised to use [ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife), which provides more flexible and scalable cache policies and comprehensive lifecycle management capabilities.
 
   Network images must comply with the RFC 9113 standard. Otherwise, the loading will fail. For images larger than 10 MB or bulk downloads, use the [HTTP](../network/http-request.md) API for pre-downloading to improve loading performance and simplify data management.
 
@@ -80,7 +86,7 @@ Archived data sources can be classified into local resources, network resources,
   <!-- @[resource_icon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
   ``` TypeScript
-  // Replace $r('app.media.icon') with the resource file you use.
+  // Replace $r('app.media.icon') with the actual resource file.
   Image($r('app.media.icon'))
   ```
 
@@ -111,7 +117,7 @@ Archived data sources can be classified into local resources, network resources,
       import { hilog } from '@kit.PerformanceAnalysisKit';
       const DOMAIN = 0x0001;
       const TAG = 'Sample_imagecomponent';
-    
+      
       @Entry
       @Component
       struct MediaLibraryFile {
@@ -138,7 +144,7 @@ Archived data sources can be classified into local resources, network resources,
             hilog.info(DOMAIN, TAG,`PhotoViewPicker failed with. Code: ${code}, message: ${message}`);
           };
         };
-    
+      
         // Call the preceding function in aboutToAppear to obtain the image URL set and store the URLs in imgDatas.
         async aboutToAppear() {
           this.getAllImg();
@@ -181,7 +187,7 @@ A pixel map is a pixel image obtained after image decoding. For details, see [In
 
 
   <!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->    
-  
+
   ``` TypeScript
   import { http } from '@kit.NetworkKit';
   import { image } from '@kit.ImageKit';
@@ -238,7 +244,7 @@ DrawableDescriptor is an advanced image abstraction mechanism in ArkUI that enca
 The following example demonstrates image display and animation implementation using DrawableDescriptor:
 
   <!-- @[drawable_descriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DrawableDescriptor.ets) -->    
-  
+
   ``` TypeScript
   import {
     DrawableDescriptor,
@@ -270,27 +276,27 @@ The following example demonstrates image display and animation implementation us
         return;
       };
       // Create standard DrawableDescriptor object.
-      // Replace $r('app.media.landscape') with the resource file you use.
+      // Replace $r('app.media.landscape') with the actual resource file.
       let pixmapDescResult = resManager.getDrawableDescriptor($r('app.media.landscape').id);
       if (pixmapDescResult) {
         this.pixmapDesc = pixmapDescResult as DrawableDescriptor;
       };
       // Create a PixelMapDrawableDescriptor object.
-      // Replace $r('app.media.landscape') with the resource file you use.
+      // Replace $r('app.media.landscape') with the actual resource file.
       const pixelMap = await this.getPixmapFromMedia($r('app.media.landscape'));
       this.pixelMapDesc = new PixelMapDrawableDescriptor(pixelMap);
       // Create a layered icon.
-      // Replace $r('app.media.foreground') with the resource file you use.
+      // Replace $r('app.media.foreground') with the actual resource file.
       const foreground = await this.getDrawableDescriptor($r('app.media.foreground'));
-      // Replace $r('app.media.landscape') with the resource file you use.
+      // Replace $r('app.media.landscape') with the actual resource file.
       const background = await this.getDrawableDescriptor($r('app.media.landscape'));
       this.layeredDesc = new LayeredDrawableDescriptor(foreground, background);
       // Create an animated image sequence (requires loading of multiple images).
-      // Replace $r('app.media.sky') with the resource file you use.
+      // Replace $r('app.media.sky') with the actual resource file.
       const frame1 = await this.getPixmapFromMedia($r('app.media.sky'));
-      // Replace $r('app.media.landscape') with the resource file you use.
+      // Replace $r('app.media.landscape') with the actual resource file.
       const frame2 = await this.getPixmapFromMedia($r('app.media.landscape'));
-      // Replace $r('app.media.clouds') with the resource file you use.
+      // Replace $r('app.media.clouds') with the actual resource file.
       const frame3 = await this.getPixmapFromMedia($r('app.media.clouds'));
       if (frame1 && frame2 && frame3) {
         this.animatedDesc = new AnimatedDrawableDescriptor([frame1, frame2, frame3], this.animationOptions);
@@ -369,9 +375,9 @@ You can use the **fillColor** attribute to change the fill color of an SVG image
 
 
   <!-- @[svg_fillColor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
-  
+
   ``` TypeScript
-  // Replace $r('app.media.cloud') with the resource file you use.
+  // Replace $r('app.media.cloud') with the actual resource file.
   Image($r('app.media.cloud'))
     .width(50)
     .fillColor(Color.Blue)
@@ -392,7 +398,7 @@ When using the **Image** component to load an SVG file that references any local
 Example for setting the SVG image path in the **Image** component:
 
   <!-- @[local_svg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
-  
+
   ``` TypeScript
   // Replace 'images/icon.svg' with the resource file you use.
   Image('/images/icon.svg')
@@ -420,7 +426,7 @@ You can use the [objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components
 
 
   <!-- @[image_objectfit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageZoomType.ets) -->   
-  
+
   ``` TypeScript
   @Entry
   @Component
@@ -431,7 +437,7 @@ You can use the [objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components
       Scroll(this.scroller) {
         Row() {
           Column() {
-            // Replace $r('app.media.img_2') with the resource file you use.
+            // Replace $r('app.media.img_2') with the actual resource file.
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
@@ -442,7 +448,7 @@ You can use the [objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components
               .margin({bottom:25,left:10})
               // The overlay API does not support the dark mode.
               .overlay('Contain', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-            // Replace $r('app.media.img_2') with the resource file you use.
+            // Replace $r('app.media.img_2') with the actual resource file.
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
@@ -453,7 +459,7 @@ You can use the [objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components
               .margin({bottom:25,left:10})
               // The overlay API does not support the dark mode.
               .overlay('Cover', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-            // Replace $r('app.media.img_2') with the resource file you use.
+            // Replace $r('app.media.img_2') with the actual resource file.
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
@@ -467,7 +473,7 @@ You can use the [objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components
           }
   
           Column() {
-            // Replace $r('app.media.img_2') with the resource file you use.
+            // Replace $r('app.media.img_2') with the actual resource file.
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
@@ -478,7 +484,7 @@ You can use the [objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components
               .margin({bottom:25,left:10})
               // The overlay API does not support the dark mode.
               .overlay('Fill', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-            // Replace $r('app.media.img_2') with the resource file you use.
+            // Replace $r('app.media.img_2') with the actual resource file.
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
@@ -489,7 +495,7 @@ You can use the [objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components
               .margin({bottom:25,left:10})
               // The overlay API does not support the dark mode.
               .overlay('ScaleDown', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-            // Replace $r('app.media.img_2') with the resource file you use.
+            // Replace $r('app.media.img_2') with the actual resource file.
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
@@ -516,7 +522,7 @@ An image of low resolution may suffer quality loss with aliasing when scaled up.
 
 
   <!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/ImageInterpolation.ets) -->    
-  
+
   ``` TypeScript
   @Entry
   @Component
@@ -524,7 +530,7 @@ An image of low resolution may suffer quality loss with aliasing when scaled up.
     build() {
       Column() {
         Row() {
-          // Replace $r('app.media.grass') with the resource file you use.
+          // Replace $r('app.media.grass') with the actual resource file.
           Image($r('app.media.grass'))
             .width('40%')
             // Use interpolation to conduct image interpolation and improve image quality.
@@ -533,7 +539,7 @@ An image of low resolution may suffer quality loss with aliasing when scaled up.
             // The overlay API does not support the dark mode.
             .overlay('Interpolation.None', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             .margin(10)
-          // Replace $r('app.media.grass') with the resource file you use.
+          // Replace $r('app.media.grass') with the actual resource file.
           Image($r('app.media.grass'))
             .width('40%')
             // Use interpolation to conduct image interpolation and improve image quality.
@@ -546,7 +552,7 @@ An image of low resolution may suffer quality loss with aliasing when scaled up.
         .justifyContent(FlexAlign.Center)
   
         Row() {
-          // Replace $r('app.media.grass') with the resource file you use.
+          // Replace $r('app.media.grass') with the actual resource file.
           Image($r('app.media.grass'))
             .width('40%')
             // Use interpolation to conduct image interpolation and improve image quality.
@@ -555,7 +561,7 @@ An image of low resolution may suffer quality loss with aliasing when scaled up.
             // The overlay API does not support the dark mode.
             .overlay('Interpolation.Medium', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             .margin(10)
-          // Replace $r('app.media.grass') with the resource file you use.
+          // Replace $r('app.media.grass') with the actual resource file.
           Image($r('app.media.grass'))
             .width('40%')
             // Use interpolation to conduct image interpolation and improve image quality.
@@ -581,7 +587,7 @@ You can use the **objectRepeat** attribute to set the repeat pattern of an image
 
 
   <!-- @[image_repetitionstyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRepetitionStyle.ets) -->    
-  
+
   ``` TypeScript
   @Entry
   @Component
@@ -589,7 +595,7 @@ You can use the **objectRepeat** attribute to set the repeat pattern of an image
     build() {
       Column({ space: 10 }) {
         Column({ space: 25 }) {
-          // Replace $r('app.media.ic_public_favor_filled_1') with the resource file you use.
+          // Replace $r('app.media.ic_public_favor_filled_1') with the actual resource file.
           Image($r('app.media.ic_public_favor_filled_1'))
             .width(160)
             .height(160)
@@ -600,7 +606,7 @@ You can use the **objectRepeat** attribute to set the repeat pattern of an image
             .objectFit(ImageFit.ScaleDown)
             // The overlay API does not support the dark mode.
             .overlay('ImageRepeat.XY', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-          // Replace $r('app.media.ic_public_favor_filled_1') with the resource file you use.
+          // Replace $r('app.media.ic_public_favor_filled_1') with the actual resource file.
           Image($r('app.media.ic_public_favor_filled_1'))
             .width(160)
             .height(160)
@@ -611,7 +617,7 @@ You can use the **objectRepeat** attribute to set the repeat pattern of an image
             .objectFit(ImageFit.ScaleDown)
             // The overlay API does not support the dark mode.
             .overlay('ImageRepeat.Y', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-          // Replace $r('app.media.ic_public_favor_filled_1') with the resource file you use.
+          // Replace $r('app.media.ic_public_favor_filled_1') with the actual resource file.
           Image($r('app.media.ic_public_favor_filled_1'))
             .width(160)
             .height(160)
@@ -637,7 +643,7 @@ You can use the **renderMode** attribute to set the rendering mode of an image.
 
 
   <!-- @[image_renderingmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRenderingMode.ets) -->    
-  
+
   ``` TypeScript
   @Entry
   @Component
@@ -645,7 +651,7 @@ You can use the **renderMode** attribute to set the rendering mode of an image.
     build() {
       Column({ space: 10 }) {
         Row({ space: 50 }) {
-          // Replace $r('app.media.example') with the resource file you use.
+          // Replace $r('app.media.example') with the actual resource file.
           Image($r('app.media.example'))
             // Use the renderMode attribute to set the rendering mode of an image.
             .renderMode(ImageRenderMode.Original)
@@ -654,7 +660,7 @@ You can use the **renderMode** attribute to set the rendering mode of an image.
             .border({ width: 1 })
             // The overlay API does not support the dark mode.
             .overlay('Original', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-          // Replace $r('app.media.example') with the resource file you use.
+          // Replace $r('app.media.example') with the actual resource file.
           Image($r('app.media.example'))
             // Use the renderMode attribute to set the rendering mode of an image.
             .renderMode(ImageRenderMode.Template)
@@ -680,7 +686,7 @@ In this example, the source image size is 1280 x 960, and the decoding sizes are
 
 
   <!-- @[image_decodingsize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageDecodingSize.ets) -->    
-  
+
   ``` TypeScript
   @Entry
   @Component
@@ -688,7 +694,7 @@ In this example, the source image size is 1280 x 960, and the decoding sizes are
     build() {
       Column() {
         Row({ space: 50 }) {
-          // Replace $r('app.media.example') with the resource file you use.
+          // Replace $r('app.media.example') with the actual resource file.
           Image($r('app.media.example'))
           // Use the sourceSize attribute to set the image decoding size. By setting the decoding size to lower than the source size, you can decrease the image resolution.
             .sourceSize({
@@ -701,7 +707,7 @@ In this example, the source image size is 1280 x 960, and the decoding sizes are
             .border({ width: 1 })
             // The overlay API does not support the dark mode.
             .overlay('width:40 height:40', { align: Alignment.Bottom, offset: { x: 0, y: 40 } })
-          // Replace $r('app.media.example') with the resource file you use.
+          // Replace $r('app.media.example') with the actual resource file.
           Image($r('app.media.example'))
           // Use the sourceSize attribute to set the image decoding size. By setting the decoding size to lower than the source size, you can decrease the image resolution.
             .sourceSize({
@@ -730,7 +736,7 @@ You can use the **colorFilter** attribute to add a filter to an image.
 
 
   <!-- @[image_filtereffect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/AddFilterEffectsToImages.ets) -->    
-  
+
   ``` TypeScript
   @Entry
   @Component
@@ -738,11 +744,11 @@ You can use the **colorFilter** attribute to add a filter to an image.
     build() {
       Column() {
         Row() {
-          // Replace $r('app.media.example') with the resource file you use.
+          // Replace $r('app.media.example') with the actual resource file.
           Image($r('app.media.example'))
             .width('40%')
             .margin(10)
-          // Replace $r('app.media.example') with the resource file you use.
+          // Replace $r('app.media.example') with the actual resource file.
           Image($r('app.media.example'))
             .width('40%')
             // Use the colorFilter attribute to add a filter to an image.
@@ -768,9 +774,9 @@ Generally, the image loading process is performed asynchronously to avoid blocki
 
 
   <!-- @[synchronous_imageloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
-  
+
   ``` TypeScript
-  // Replace $r('app.media.icon') with the resource file you use.
+  // Replace $r('app.media.icon') with the actual resource file.
   Image($r('app.media.icon'))
     .syncLoad(true)
   ```
@@ -782,7 +788,7 @@ By binding the **onComplete** event to the **Image** component, you can obtain n
 
 
   <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->    
-  
+
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   const DOMAIN = 0x0001;
@@ -799,7 +805,7 @@ By binding the **onComplete** event to the **Image** component, you can obtain n
     build() {
       Column() {
         Row() {
-          // Replace $r('app.media.ic_img_2') with the resource file you use.
+          // Replace $r('app.media.ic_img_2') with the actual resource file.
           Image($r('app.media.ic_img_2'))
             .width(200)
             .height(150)

@@ -1,4 +1,10 @@
 # loadNativeModule (Synchronously and Dynamically Loading a System Library)
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @yao_dashuai-->
+<!--Designer: @yao_dashuai-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 This module provides the capability of synchronously and dynamically loading a system library.
 
@@ -50,7 +56,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Scenario           | Example          | 
 | :------------- | :----------------------------- | 
 | System library module       | Load **@ohos.** or **@system.**.       | 
-| Native module in an application| Load **libNativeLibrary.so**.|
+| Native module in an application | Load **libNativeLibrary.so**.|
 
 **Example 1**: Loading a System Library Module to a HAP
 

@@ -56,7 +56,10 @@ import { PromptAction  } from '@kit.ArkUI';
 import { JSON } from '@kit.ArkTS';
 
 let proxy: rpc.IRemoteObject | undefined;
-let connectId: number | undefined;
+let connectId : number | undefined;
+
+// 定义返回值，决定弹窗的呈现
+let isDisconnect = false;
 
 // 死亡通知
 class MyDeathRecipient implements rpc.DeathRecipient {
@@ -162,6 +165,9 @@ let connectId: number | undefined
 let dmInstance: distributedDeviceManager.DeviceManager
 let deviceList: Array<distributedDeviceManager.DeviceBasicInfo> | undefined;
 let deviceId: string| undefined;
+
+// 定义返回值，决定弹窗的呈现
+let isDisconnect = false;
 
 // 死亡通知
 class MyDeathRecipient implements rpc.DeathRecipient{

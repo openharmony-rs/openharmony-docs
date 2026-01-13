@@ -56,7 +56,8 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   <!-- @[create_text_area_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
   
   ``` TypeScript
-  // The value in the 'app.string.CreatTextInput_textContent' resource file is "I am TextArea. I am TextArea. I am TextArea. I am TextArea."
+  /* Replace $r('app.string.CreatTextInput_textContent') with the actual resource file. In this example, the value in the resource file is
+   "I am TextArea I am TextArea I am TextArea I am TextArea." */
   TextArea({ text: $r('app.string.CreatTextInput_textContent') })
     .width(300)
   ```
@@ -69,7 +70,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   
   ``` TypeScript
   Search()
-    // The value in the 'app.string.Creat_TextInput_Content' resource file is "Search."
+    // Replace $r('app.string.Creat_TextInput_Content') with the actual resource file. In this example, the value in the resource file is "Search."
     .searchButton($r('app.string.Creat_TextInput_Content'))
   ```
 
@@ -205,7 +206,7 @@ TextArea()
   <!-- @[custom_text_input_with_place_holder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
   
   ``` TypeScript
-  // The value in the 'app.string.i_am_placeholder' resource file is 'I am placeholder text.'
+  // Replace $r('app.string.i_am_placeholder') with the actual resource file. In this example, the value in the resource file is "I am placeholder text."
   TextInput({ placeholder: $r('app.string.i_am_placeholder') })
   ```
 
@@ -217,10 +218,10 @@ TextArea()
   <!-- @[custom_text_input_with_place_holder_and_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
   
   ``` TypeScript
-  // The value in the 'app.string.i_am_placeholder' resource file is 'I am placeholder text.'
-  // The value in the 'app.string.i_am_current_text_content' resource file is 'I am current text input.'
   TextInput({
+    // Replace $r('app.string.i_am_placeholder') with the actual resource file. In this example, the value in the resource file is "I am placeholder text."
     placeholder: $r('app.string.i_am_placeholder'),
+    // Replace $r('app.string.i_am_current_text_content') with the actual resource file. In this example, the value in the resource file is "I am current text input."
     text: $r('app.string.i_am_current_text_content')
   })
   ```
@@ -232,10 +233,10 @@ TextArea()
   <!-- @[custom_text_input_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
   
   ``` TypeScript
-  // The value in the 'app.string.i_am_placeholder' resource file is 'I am placeholder text.'
-  // The value in the 'app.string.i_am_current_text_content' resource file is 'I am current text input.'
   TextInput({
+    // Replace $r('app.string.i_am_placeholder') with the actual resource file. In this example, the value in the resource file is "I am placeholder text."
     placeholder: $r('app.string.i_am_placeholder'),
+    // Replace $r('app.string.i_am_current_text_content') with the actual resource file. In this example, the value in the resource file is "I am current text input."
     text: $r('app.string.i_am_current_text_content')
   })
     .backgroundColor(Color.Pink)
@@ -359,22 +360,22 @@ When text is selected within a text box, a context menu appears with options suc
 <!-- @[select_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
 ``` TypeScript
-// The value in the 'app.string.show_selected_menu' resource file is "This is text used to demonstrate the selection menu."
+// Replace $r('app.string.show_selected_menu') with the actual resource file. In this example, the value in the resource file is "This is text used to show the selection menu."
 TextInput({ text: $r('app.string.show_selected_menu') })
 ```
 
-
+![TextInput_select_menu](figures/TexInput_select_menu.jpg)
 
 **TextArea**:
 
 <!-- @[select_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
 ``` TypeScript
-// The value in the 'app.string.show_selected_menu' resource file is "This is text used to demonstrate the selection menu."
+// Replace $r('app.string.show_selected_menu') with the actual resource file. In this example, the value in the resource file is "This is text used to show the selection menu."
 TextArea({ text: $r('app.string.show_selected_menu') })
 ```
 
-
+![TextArea_select_menu](figures/TextArea_select_menu.jpg)
 
 ## Disabling System Service Menu Items
 
@@ -401,7 +402,7 @@ struct DisableSystemServiceMenuItem {
   build() {
     Row() {
       Column() {
-        // The value in the 'app.string.ProhibitSelectMenu_content' resource file is "This is a TextInput. Long press to display the text selection menu."
+        // Replace $r('app.string.ProhibitSelectMenu_content') with the actual resource file. In this example, the value in the resource file is "This is a TextInput. Long press to display the text selection menu."
         TextInput({ text: $r('app.string.ProhibitSelectMenu_content') })
           .height(60)
           .fontStyle(FontStyle.Italic)
@@ -449,7 +450,7 @@ struct DisableMenuItem {
   build() {
     Row() {
       Column() {
-        // The value in the 'app.string.ProhibitSelectMenu_content' resource file is "This is a TextInput. Long press to display the text selection menu."
+        // Replace $r('app.string.ProhibitSelectMenu_content') with the actual resource file. In this example, the value in the resource file is "This is a TextInput. Long press to display the text selection menu."
         TextInput({ text: $r('app.string.ProhibitSelectMenu_content') })
           .height(60)
           .fontStyle(FontStyle.Italic)
@@ -482,7 +483,7 @@ For details about the supported types, see [ContentType](../reference/apis-arkui
 <!-- @[auto_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
 
 ``` TypeScript
-// The value in the 'app.string.Auto_Fill_PlaceHolder' resource file is "Enter your email address..."
+// Replace $r('app.string.Auto_Fill_PlaceHolder') with the actual resource file. In this example, the value in the resource file is "Enter your email address..."
 TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
   .width('95%')
   .height(40)
@@ -501,7 +502,7 @@ TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
   <!-- @[set_omission_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets) -->
   
   ``` TypeScript
-  // The value in the 'app.string.Set_Omission_Property_textContent' resource file is "This is a text used to display the ellipsis mode."
+  // Replace $r('app.string.Set_Omission_Property_textContent') with the actual resource file. In this example, the value in the resource file is "This is a text used to display the ellipsis mode."
   TextInput({ text: $r('app.string.Set_Omission_Property_textContent') })
     .textOverflow(TextOverflow.Ellipsis)
     .ellipsisMode(EllipsisMode.END)

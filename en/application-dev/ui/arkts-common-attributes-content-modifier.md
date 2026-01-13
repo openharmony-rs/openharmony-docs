@@ -37,6 +37,8 @@ The following example shows how to use **ContentModifier** to replace the defaul
    Column({ space: 10 }) {
      Text() {
        Span(config.name)
+       // Replace $r('app.string.checked_context') with the actual resource file. In this example, the value in the resource file is "selected."
+       // Replace $r('app.string.unchecked_context') with the actual resource file. In this example, the value in the resource file is "unselected."
        Span(config.selected ? $r('app.string.checked_context') : $r('app.string.unchecked_context'))
      }
      Shape() {
@@ -87,6 +89,7 @@ The following example shows how to use **ContentModifier** to replace the defaul
      Row() {
        Column() {
          // Check boxes for selection and deselection
+         // Replace $r('app.string.checkbox_status') with the actual resource file. In this example, the value in the resource file is "Check box status."
          Checkbox({ name: this.resmg?.getStringSync($r('app.string.checkbox_status').id), group: 'checkboxGroup' })
            .select(true)
            .contentModifier(new MyCheckboxStyle(Color.Red))
