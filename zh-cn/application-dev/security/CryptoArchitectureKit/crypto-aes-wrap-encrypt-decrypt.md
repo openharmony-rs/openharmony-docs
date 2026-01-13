@@ -34,68 +34,68 @@
 - 异步方法示例：
 
   <!-- @[encrypt_decrypt_aes_wrap_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesWrap/entry/src/main/ets/pages/aeswrap/AesWrapEncryptionDecryptionAsync.ets) -->
-
-``` TypeScript
-
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { buffer } from '@kit.ArkTS';
-
-function generateRandom(len: number) {
-  let rand = cryptoFramework.createRandom();
-  let generateRandSync = rand.generateRandomSync(len);
-  return generateRandSync;
-}
-
-function genIvParamsSpec() {
-  let ivBlob = generateRandom(8);
-  let ivParamsSpec: cryptoFramework.IvParamsSpec = {
-    algName: 'IvParamsSpec',
-    iv: ivBlob
-  };
-  return ivParamsSpec;
-}
-let iv = genIvParamsSpec();
-// 加密消息。
-async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
-  let cipher = cryptoFramework.createCipher('AES128-WRAP');
-  await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, iv);
-  let cipherData = await cipher.doFinal(plainText);
-  return cipherData;
-}
-// 解密消息。
-async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
-  let decoder = cryptoFramework.createCipher('AES128-WRAP');
-  await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, iv);
-  let decryptData = await decoder.doFinal(cipherText);
-  return decryptData;
-}
-
-async function genSymKeyByData(symKeyData: Uint8Array) {
-  let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
-  let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let symKey = await aesGenerator.convertKey(symKeyBlob);
-  console.info('convertKey success');
-  return symKey;
-}
-
-async function aesWrapTest() {
-  try {
-    let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
-    let symKey = await genSymKeyByData(keyData);
-    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(keyData)};
-    let encryptText = await encryptMessagePromise(symKey, plainText);
-    let decryptText = await decryptMessagePromise(symKey, encryptText);
-    if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
-      console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
-    } else {
-      console.error('decrypt failed');
-    }
-  } catch (error) {
-    console.error(`AES Wrap "${error}", error code: ${error.code}`);
+  
+  ``` TypeScript
+  
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
+  
+  function generateRandom(len: number) {
+    let rand = cryptoFramework.createRandom();
+    let generateRandSync = rand.generateRandomSync(len);
+    return generateRandSync;
   }
-}
-```
+  
+  function genIvParamsSpec() {
+    let ivBlob = generateRandom(8);
+    let ivParamsSpec: cryptoFramework.IvParamsSpec = {
+      algName: 'IvParamsSpec',
+      iv: ivBlob
+    };
+    return ivParamsSpec;
+  }
+  let iv = genIvParamsSpec();
+  // 加密消息。
+  async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
+    let cipher = cryptoFramework.createCipher('AES128-WRAP');
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, iv);
+    let cipherData = await cipher.doFinal(plainText);
+    return cipherData;
+  }
+  // 解密消息。
+  async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
+    let decoder = cryptoFramework.createCipher('AES128-WRAP');
+    await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, iv);
+    let decryptData = await decoder.doFinal(cipherText);
+    return decryptData;
+  }
+  
+  async function genSymKeyByData(symKeyData: Uint8Array) {
+    let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
+    let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let symKey = await aesGenerator.convertKey(symKeyBlob);
+    console.info('convertKey success');
+    return symKey;
+  }
+  
+  async function aesWrapTest() {
+    try {
+      let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
+      let symKey = await genSymKeyByData(keyData);
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(keyData)};
+      let encryptText = await encryptMessagePromise(symKey, plainText);
+      let decryptText = await decryptMessagePromise(symKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed');
+      }
+    } catch (error) {
+      console.error(`AES Wrap "${error}", error code: ${error.code}`);
+    }
+  }
+  ```
 
 
 - 同步方法示例：
