@@ -16,7 +16,7 @@ Low-power functionality is currently supported for external speakers, wired head
 
 ## Development Guidelines
 
-The low-power audio renderer provides the same APIs as the regular audio renderer. However, you should pay attention to the application data cycle and playback progress. For details about how to use the audio renderer, see [Using AudioRenderer for Audio Playback](using-audiorenderer-for-playback.md) and [Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md).
+The low-power audio renderer provides the same APIs as the regular audio renderer. However, you should pay attention to the application data cycle and playback progress. For details about how to use the audio renderer, see [Using AudioRenderer for Audio Playback (ArkTs)](using-audiorenderer-for-playback.md) and [(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md).
 
 **Data cycle diagram**
 

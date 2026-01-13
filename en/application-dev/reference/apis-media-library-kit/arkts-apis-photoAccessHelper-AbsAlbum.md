@@ -28,7 +28,6 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | albumUri | string | Yes   | No   | URI of the album.  |
 | count | number | Yes   | No   |  Number of files in the album.|
 | coverUri | string | Yes   | No   | URI of the cover file of the album.|
-| lpath<sup>22+</sup> | string | Yes   | Yes   | Virtual path of the album.|
 
 ## getAssets
 
@@ -45,7 +44,7 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | Yes  | Retrieval options.|
-| callback | AsyncCallback&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt;&gt; | Yes  | Callback used to return the image and video assets obtained.|
+| callback | AsyncCallback&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt;&gt; | Yes  | Callback used to return the result. If files from the album are obtained successfully, **err** is **undefined**, and **data** is the result set of the obtained image and video data ([FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)). Otherwise, **err** is an error object.|
 
 **Error codes**
 

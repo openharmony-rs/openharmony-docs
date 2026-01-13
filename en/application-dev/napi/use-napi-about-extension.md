@@ -156,7 +156,7 @@ static napi_value CreateObjectWithProperties(napi_env env, napi_callback_info in
     napi_value argv[1] = {nullptr};
     // Obtain the parameters of the call.
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
-    // Declare a desc array in napi_property_descriptor. The desc array contains a property named "name", whose value is the first input parameter argv[0].
+    // Declare a napi_property_descriptor array desc. The desc array contains a property named "name", whose value is the first input parameter argv[0].
     napi_property_descriptor desc[] = {
         {"name", nullptr, nullptr, nullptr, nullptr, argv[0], napi_default_jsproperty, nullptr}};
     napi_value object = nullptr;
@@ -508,7 +508,7 @@ private:
     std::mutex numberSetMutex_{};
 };
 
-void FinializerCallback(napi_env env, void *data, void *hint)
+void FinalizerCallback(napi_env env, void *data, void *hint)
 {
     return;
 }
@@ -532,7 +532,7 @@ napi_value AttachCallback(napi_env env, void* value, void* hint)
         {"clear", nullptr, Object::Clear, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, object, sizeof(desc) / sizeof(desc[0]), desc);
     // Bind the ArkTS object named object to the lifecycle of the native object named value.
-    napi_status status = napi_wrap(env, object, value, FinializerCallback, nullptr, nullptr);
+    napi_status status = napi_wrap(env, object, value, FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
         OH_LOG_INFO(LOG_APP, "Node-API attachCallback is failed.");
     }
@@ -552,7 +552,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"clear", nullptr, Object::Clear, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     auto object = Object::GetInstance();
-    napi_status status = napi_wrap(env, exports, reinterpret_cast<void*>(object), FinializerCallback, nullptr, nullptr);
+    napi_status status = napi_wrap(env, exports, reinterpret_cast<void*>(object), FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
         OH_LOG_INFO(LOG_APP, "Node-API napi_wrap is failed.");
     }
@@ -668,7 +668,7 @@ test01();
 
 **NOTE**
 
-Call **napi_coerce_to_native_binding_object** to add the **detach()** and **attach()** callbacks and native object information to ArkTs object A, and then pass object A across threads. To pass object A across threads, you need to serialize and deserialize it by calling the **napi_serialize** and **napi_deserialize** APIs. As shown in the following figure, in thread 1, "data" is obtained after object A is serialized, and the <b class="+ topic/ph hi-d/b " id="b2766527164114">detach()</b> callback is invoked in the serialization process. Then, "data" is passed to thread 2 and deserialized in thread 2. The **attach()** callback is invoked to obtain the ArkTS object A. The **detach()** and **attach()** callback are used to notify that serialization and deserialization are complete.
+Call **napi_coerce_to_native_binding_object** to add the **detach()** and **attach()** callbacks and native object information to ArkTs object A, and then pass object A across threads. To pass object A across threads, you need to serialize and deserialize it by calling the **napi_serialize** and **napi_deserialize** APIs. As shown in the following figure, in thread 1, "data" is obtained after object A is serialized, and the **detach()** callback is invoked in the serialization process. Then, "data" is passed to thread 2 and deserialized in thread 2. The **attach()** callback is invoked to obtain the ArkTS object A. The **detach()** and **attach()** callback are used to notify that serialization and deserialization are complete.
 
 ![napi_coerce_to_native_binding_object](figures/napi_coerce_to_native_binding_object.png)
 
@@ -750,7 +750,7 @@ static napi_value AboutSerialize(napi_env env, napi_callback_info info)
     napi_valuetype valuetype;
     napi_typeof(env, number, &valuetype);
     if (valuetype != napi_number) {
-        napi_throw_error(env, nullptr, "Node-API Wrong type of argment. Expects a number.");
+        napi_throw_error(env, nullptr, "Node-API Wrong type of argument. Expects a number.");
         return nullptr;
     }
     // Call napi_delete_serialization_data to delete the serialized data.

@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+FetchResult provides APIs to manage the file retrieval result.
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-FetchResult provides APIs to manage the file retrieval result.
 
 ## Modules to Import
 
@@ -170,7 +170,7 @@ Obtains the first file asset in the result set. This API uses an asynchronous ca
 
 | Name  | Type                                         | Mandatory| Description                                       |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------- |
-| callback | AsyncCallback&lt;T&gt; | Yes  | Callback used to return the first file asset obtained.|
+| callback | AsyncCallback&lt;T&gt; | Yes  | Callback used to return the result. If the first file asset in the result set is successfully obtained, **err** is **undefined**, and **data** is the specific search result. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -256,6 +256,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 getNextObject(callback: AsyncCallback&lt;T&gt;): void
 
 Obtains the next file asset in the result set. This API uses an asynchronous callback to return the result.
+
 Before using this API, you must use [isAfterLast()](#isafterlast) to check whether the current position is the end of the result set.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
@@ -266,7 +267,7 @@ Before using this API, you must use [isAfterLast()](#isafterlast) to check wheth
 
 | Name   | Type                                         | Mandatory| Description                                     |
 | --------- | --------------------------------------------- | ---- | ----------------------------------------- |
-| callback | AsyncCallback&lt;T&gt; | Yes  | Callback used to return the next file asset obtained.|
+| callback | AsyncCallback&lt;T&gt; | Yes  | Callback used to return the result. If the next file asset in the result set is successfully obtained, **err** is **undefined**, and **data** is the specific search result. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -310,6 +311,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 getNextObject(): Promise&lt;T&gt;
 
 Obtains the next file asset in the result set. This API uses a promise to return the result.
+
 Before using this API, you must use [isAfterLast()](#isafterlast) to check whether the current position is the end of the result set.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
@@ -368,7 +370,7 @@ Obtains the last file asset in the result set. This API uses an asynchronous cal
 
 | Name  | Type                                         | Mandatory| Description                       |
 | -------- | --------------------------------------------- | ---- | --------------------------- |
-| callback | AsyncCallback&lt;T&gt; | Yes  | Callback used to return the last file asset obtained.|
+| callback | AsyncCallback&lt;T&gt; | Yes  | Callback used to return the result. If the last file asset in the result set is successfully obtained, **err** is **undefined**, and **data** is the specific search result. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -464,7 +466,7 @@ Obtains a file asset with the specified index in the result set. This API uses a
 | Name      | Type                                      | Mandatory  | Description                |
 | -------- | ---------------------------------------- | ---- | ------------------ |
 | index    | number                                   | Yes   | Index of the file asset to obtain. The value starts from **0**.    |
-| callback | AsyncCallback&lt;T&gt; | Yes   | Callback used to return the file asset obtained.|
+| callback | AsyncCallback&lt;T&gt; | Yes   | Callback used to return the result. If the file asset with the specified index in the result set is successfully obtained, **err** is **undefined**, and **data** is the specific search result. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -569,7 +571,7 @@ Obtains all the file assets in the result set. This API uses an asynchronous cal
 
 | Name  | Type                                         | Mandatory| Description                                       |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;T&gt;&gt; | Yes  | Callback used to return an array of all file assets in the result set.|
+| callback | AsyncCallback&lt;Array&lt;T&gt;&gt; | Yes  | Callback used to return the result. If all file assets in the result set are successfully obtained, **err** is **undefined**, and **data** is the specific search result. Otherwise, **err** is an error object.|
 
 **Error codes**
 

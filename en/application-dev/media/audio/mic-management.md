@@ -1,4 +1,4 @@
-# Microphone Management
+# Managing Microphone Mute Status
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
