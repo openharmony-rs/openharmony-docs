@@ -11,12 +11,9 @@
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> - 考虑到数据向量化处理的计算量和资源占用较大，当前仅支持在2in1设备上使用。
-
+> 考虑到数据向量化处理的计算量和资源占用较大，当前仅支持在2in1设备上使用。
 
 
 ## 导入模块
@@ -34,10 +31,6 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -59,56 +52,28 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let textConfig:intelligence.ModelConfig = {
-  version:intelligence.ModelVersion.BASIC_MODEL,
-  isNpuAvailable:false,
-  cachePath:"/data"
-}
-let textEmbedding:intelligence.TextEmbedding;
-
-intelligence.getTextEmbeddingModel(textConfig)
-  .then((data:intelligence.TextEmbedding) => {
-    console.info("Succeeded in getting TextModel");
-    textEmbedding = data;
-  })
-  .catch((err:BusinessError) => {
-    console.error("Failed to get TextModel and code is " + err.code);
-  })
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let textConfig:intelligence.ModelConfig = {
-  version:intelligence.ModelVersion.BASIC_MODEL,
-  isNpuAvailable:false,
-  cachePath:"/data"
+let textConfig: intelligence.ModelConfig = {
+  version: intelligence.ModelVersion.BASIC_MODEL,
+  isNpuAvailable: false,
+  cachePath: "/data"
 }
 let textEmbedding: intelligence.TextEmbedding;
-try {
-    const data = await intelligence.getTextEmbeddingModel(textConfig);
+
+intelligence.getTextEmbeddingModel(textConfig)
+  .then((data: intelligence.TextEmbedding) => {
     console.info("Succeeded in getting TextModel");
     textEmbedding = data;
-}catch (err) {
-    if ((err as BusinessError).code === 481) {
-        console.error("Failed to get TextModel Parameter error: " + (err as BusinessError).message);
-    } else if ((err as BusinessError).code === 801) {
-        console.error("Failed to get TextModel Capability not supported: " + (err as BusinessError).message);
-    }else if ((err as BusinessError).code === 31300000) {
-        console.error("Failed to get TextModel Inner error: "+ (err as BusinessError).message);
-    }
-}
+  })
+  .catch((err: BusinessError) => {
+    console.error("Failed to get TextModel and code is " + err.code);
+  })
 ```
 
 ## intelligence.getImageEmbeddingModel
@@ -120,10 +85,6 @@ getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt;
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -145,57 +106,28 @@ getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt;
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let imageConfig:intelligence.ModelConfig = {
-    version:intelligence.ModelVersion.BASIC_MODEL,
-    isNpuAvailable:false,
-    cachePath:"/data"
+let imageConfig: intelligence.ModelConfig = {
+  version: intelligence.ModelVersion.BASIC_MODEL,
+  isNpuAvailable: false,
+  cachePath: "/data"
 }
-let imageEmbedding:intelligence.ImageEmbedding;
+let imageEmbedding: intelligence.ImageEmbedding;
 
 intelligence.getImageEmbeddingModel(imageConfig)
-  .then((data:intelligence.ImageEmbedding) => {
+  .then((data: intelligence.ImageEmbedding) => {
     console.info("Succeeded in getting ImageModel");
     imageEmbedding = data;
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to get ImageModel and code is " + err.code);
   })
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let imageConfig:intelligence.ModelConfig = {
-    version:intelligence.ModelVersion.BASIC_MODEL,
-    isNpuAvailable:false,
-    cachePath:"/data"
-}
-let imageEmbedding:intelligence.ImageEmbedding;
-
-try {
-    const data = await intelligence.getImageEmbeddingModel(imageConfig);
-    console.info("Succeeded in getting TextModel");
-    imageEmbedding = data;
-}catch (err) {
-    if ((err as BusinessError).code === 481) {
-        console.error("Failed to get ImageModel Parameter error: " + (err as BusinessError).message);
-    } else if ((err as BusinessError).code === 801) {
-        console.error("Failed to get ImageModel Capability not supported: " + (err as BusinessError).message);
-    }else if ((err as BusinessError).code === 31300000) {
-        console.error("Failed to get ImageModel Inner error: "+ (err as BusinessError).message);
-    }
-}
 ```
 
 ## intelligence.splitText
@@ -207,10 +139,6 @@ splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -233,53 +161,26 @@ splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let splitConfig:intelligence.SplitConfig = {
-  size:10,
-  overlapRatio:0.1
+let splitConfig: intelligence.SplitConfig = {
+  size: 10,
+  overlapRatio: 0.1
 }
 let splitText = 'text';
 
 intelligence.splitText(splitText, splitConfig)
-  .then((data:Array<string>) => {
+  .then((data: Array<string>) => {
     console.info("Succeeded in splitting Text");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to split Text and code is " + err.code);
   })
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let splitConfig:intelligence.SplitConfig = {
-  size:10,
-  overlapRatio:0.1
-}
-let splitText = 'text';
-
-try {
-    const data: Array<string> = await intelligence.splitText(splitText, splitConfig);
-    console.info("Succeeded in splitting Text"); 
-} catch (err) {
-    if ((err as BusinessError).code === 481) {
-        console.error("Failed to split Text Parameter error: " + (err as BusinessError).message);
-    } else if ((err as BusinessError).code === 801) {
-        console.error("Failed to split Text Capability not supported: " + (err as BusinessError).message);
-    }else if ((err as BusinessError).code === 31300000) {
-        console.error("Failed to split Text Inner error: "+ (err as BusinessError).message);
-    }
-}
 ```
 
 ## ModelConfig
@@ -287,10 +188,6 @@ try {
 管理嵌入模型的配置信息。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型              | 只读 | 可选| 说明                                                         |
 | ---------- | --------------------- | ----| ---- | ------------------------------------------------------------ |
@@ -304,10 +201,6 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称       | 值                   | 说明                   |
 | ---------- | ---------- | ---------------------- |
 | BASIC_MODEL     | 0     | 基本嵌入模型版本。   |
@@ -320,10 +213,6 @@ type Image = string
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
 | 类型                         | 说明                  |
 | ---------------------------- | --------------------- |
 | string | 图片的URI地址。长度上限为512个字符。 |
@@ -334,14 +223,10 @@ type Image = string
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称     | 类型              | 只读 | 可选 | 说明                                                         |
 | ---------- | --------------------- | ---- | ----| ------------------------------------------------------------ |
-| size    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否  |分块的最大大小，取值为非负整数。 |
-| overlapRatio | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  | 否   | 相邻分块之间的重叠比率。范围为[0,1]，0表示重叠比率最低，1表示重叠比率最高。 |
+| size    |       number     | 否   | 否  |分块的最大大小，取值为非负整数。 |
+| overlapRatio | number                | 否  | 否   | 相邻分块之间的重叠比率。范围为[0,1]，0表示重叠比率最低，1表示重叠比率最高。 |
 
 
 ## TextEmbedding
@@ -362,10 +247,6 @@ loadModel(): Promise&lt;void&gt;
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
 **返回值：**
 
 | 类型                          | 说明                                 |
@@ -379,11 +260,9 @@ loadModel(): Promise&lt;void&gt;
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -392,23 +271,9 @@ textEmbedding.loadModel()
   .then(() => {
     console.info("Succeeded in loading Model");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to load Model and code is " + err.code);
   })
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    await textEmbedding.loadModel();
-    console.info("Succeeded in loading Model");
-} catch (err) {
-    const error = err as BusinessError;
-    console.error("Failed to load Model and code is " + error.code);
-}
 ```
 
 ### releaseModel
@@ -421,10 +286,6 @@ releaseModel(): Promise&lt;void&gt;
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
 **返回值：**
 
 | 类型                          | 说明                                 |
@@ -438,11 +299,9 @@ releaseModel(): Promise&lt;void&gt;
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -451,32 +310,14 @@ textEmbedding.releaseModel()
   .then(() => {
     console.info("Succeeded in releasing Model");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to release Model and code is " + err.code);
   })
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    await textEmbedding.releaseModel();
-    console.info("Succeeded in loading Model");
-} catch (err) {
-
-    const error = err as BusinessError;
-
-    console.error("Failed to load Model and code is " + error.code);
-}
-```
-
 ### getEmbedding
 
-ArkTS-Dyn: getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
-
-ArkTS-Sta: getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt;
+getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 
 获取给定文本的嵌入向量。使用Promise异步回调。
 
@@ -485,10 +326,6 @@ ArkTS-Sta: getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt;
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -500,7 +337,7 @@ ArkTS-Sta: getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt;
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| ArkTS-Dyn：Promise&lt;Array&lt;number&gt;&gt; <br/>ArkTS-Sta：Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
 
 **错误码：**
 
@@ -510,11 +347,9 @@ ArkTS-Sta: getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt;
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -522,35 +357,17 @@ import { BusinessError } from '@kit.BasicServicesKit';
 textEmbedding.loadModel();
 let text = 'text';
 textEmbedding.getEmbedding(text)
-  .then((data:Array<number>) => {
+  .then((data: Array<number>) => {
     console.info("Succeeded in getting Embedding");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to get Embedding and code is " + err.code);
   })
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    await textEmbedding.loadModel();
-    let text = 'text';
-    const data: Array<double> = await textEmbedding.getEmbedding(text);
-    console.info("Succeeded in getting Embedding");
-} catch (err) {
-    const error = err as BusinessError;
-    console.error("Failed to get Embedding and code is " + error.code);
-}
-```
-
 ### getEmbedding
 
-ArkTS-Dyn: getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;
-
-ArkTS-Sta: getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;double&gt;&gt;&gt;
+getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;
 
 获取给定批次文本的嵌入向量。使用Promise异步回调。
 
@@ -559,10 +376,6 @@ ArkTS-Sta: getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Ar
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -574,7 +387,7 @@ ArkTS-Sta: getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Ar
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br/>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
+| Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
 
 **错误码：**
 
@@ -584,41 +397,22 @@ ArkTS-Sta: getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Ar
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 textEmbedding.loadModel();
-let batchTexts = ['text1','text2'];
+let batchTexts = ['text1', 'text2'];
 textEmbedding.getEmbedding(batchTexts)
-  .then((data:Array<Array<number>>) => {
+  .then((data: Array<Array<number>>) => {
     console.info("Succeeded in getting Embedding");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to get Embedding and code is " + err.code);
   })
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    await textEmbedding.loadModel();
-    let batchTexts = ['text1','text2'];
-    const data: Array<Array<number>> = await textEmbedding.getEmbedding(batchTexts);
-
-    console.info("Succeeded in getting Embedding");
-} catch (err) {
-    const error = err as BusinessError;
-    console.error("Failed to get Embedding and code is " + error.code);
-}
 ```
 
 ## ImageEmbedding
@@ -639,10 +433,6 @@ loadModel(): Promise&lt;void&gt;
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
 **返回值：**
 
 | 类型                          | 说明                                 |
@@ -656,11 +446,9 @@ loadModel(): Promise&lt;void&gt;
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -669,23 +457,9 @@ imageEmbedding.loadModel()
   .then(() => {
     console.info("Succeeded in loading Model");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to load Model and code is " + err.code);
   })
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    await imageEmbedding.loadModel();
-    console.info("Succeeded in loading Model"); 
-  } catch (err) {
-    const error = err as BusinessError;
-    console.error("Failed to load Model and code is " + error.code);
-  }
 ```
 
 ### releaseModel
@@ -698,10 +472,6 @@ releaseModel(): Promise&lt;void&gt;
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
 **返回值：**
 
 | 类型                          | 说明                                 |
@@ -715,11 +485,9 @@ releaseModel(): Promise&lt;void&gt;
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -728,31 +496,14 @@ imageEmbedding.releaseModel()
   .then(() => {
     console.info("Succeeded in releasing Model");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to release Model and code is " + err.code);
   })
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-    await imageEmbedding.releaseModel();
-    console.info("Succeeded in releasing Model"); 
-  } catch (err) {
-    const error = err as BusinessError;
-    console.error("Failed to load Model and code is " + error.code);
-  }
-
-```
-
 ### getEmbedding
 
-ArkTS-Dyn: getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
-
-ArkTS-Sta: getEmbedding(image: Image): Promise&lt;Array&lt;double &gt;&gt;
+getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
 
 获取给定图像的嵌入向量。使用Promise异步回调。
 
@@ -761,10 +512,6 @@ ArkTS-Sta: getEmbedding(image: Image): Promise&lt;Array&lt;double &gt;&gt;
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -776,7 +523,7 @@ ArkTS-Sta: getEmbedding(image: Image): Promise&lt;Array&lt;double &gt;&gt;
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br/>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
 
 **错误码：**
 
@@ -786,11 +533,9 @@ ArkTS-Sta: getEmbedding(image: Image): Promise&lt;Array&lt;double &gt;&gt;
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801          | Capability not supported. |
-| 31300000     | Inner error. |                                                                                                                                    |
+| 31300000     | Inner error. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -798,27 +543,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 imageEmbedding.loadModel();
 let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
 imageEmbedding.getEmbedding(image)
-  .then((data:Array<number>) => {
+  .then((data: Array<number>) => {
     console.info("Succeeded in getting Embedding");
   })
-  .catch((err:BusinessError) => {
+  .catch((err: BusinessError) => {
     console.error("Failed to get Embedding and code is " + err.code);
   })
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let imageEmbedding:intelligence.ImageEmbedding;
-try {
-    await imageEmbedding.loadModel();
-    let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
-    const data: Array<double> = await imageEmbedding.getEmbedding(image);
-    console.info("Succeeded in getting Embedding");
-} catch (err) {
-    const error = err as BusinessError;
-    console.error("Failed to get Embedding and code is " + error.code);
-}
 ```
