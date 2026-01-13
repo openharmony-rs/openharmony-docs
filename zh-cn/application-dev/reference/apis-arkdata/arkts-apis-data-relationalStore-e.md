@@ -36,7 +36,7 @@
 | ---- | ---- | ---- |
 | AES_256_GCM |  0    | 数据库使用AES_256_GCM加密。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23     |
 | AES_256_CBC |  1    | 数据库使用AES_256_CBC加密。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23     |
-| PLAIN_TEXT<sup>22+</sup> | 2 | 数据库不进行加密。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 22 |
+| PLAIN_TEXT<sup>22+</sup> | 2 | 数据库不进行加密。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23 |
 
 ## HmacAlgo<sup>14+</sup>
 

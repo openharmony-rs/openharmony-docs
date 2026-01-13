@@ -7522,11 +7522,13 @@ on(event: 'statistics', observer: Callback&lt;SqlExecutionInfo&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let sqlExecutionInfo = (sqlExecutionInfo: relationalStore.SqlExecutionInfo) => {
-  console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
-  console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
-  console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
-  console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
-  console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  if (sqlExecutionInfo.sql.length > 0) {
+    console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
+    console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
+    console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
+    console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
+    console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  }
 };
 
 try {
@@ -7596,11 +7598,13 @@ onStatistics(observer: Callback&lt;SqlExecutionInfo&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let sqlExecutionInfo = (sqlExecutionInfo: relationalStore.SqlExecutionInfo) => {
-  console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
-  console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
-  console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
-  console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
-  console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  if (sqlExecutionInfo.sql.length > 0) {
+    console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
+    console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
+    console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
+    console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
+    console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  }
 };
 
 try {
@@ -7637,7 +7641,13 @@ on(event: 'sqliteErrorOccurred', observer: Callback&lt;ExceptionMessage&gt;): vo
 
 记录执行SQL语句时的异常日志。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSqliteErrorOccurred<sup>23+</sup>](#onsqliteerroroccurred23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -7684,11 +7694,76 @@ try {
     'salary': 100.5,
     'codes': value,
   };
-  await store.executeSql(CREATE_TABLE_TEST);
   if (store != undefined) {
-    (store as relationalStore.RdbStore).insert('test', valueBucket);
+    await (store as relationalStore.RdbStore).executeSql(CREATE_TABLE_TEST);
+    await (store as relationalStore.RdbStore).insert('test', valueBucket);
   }
 } catch (err) {
+  console.error(`Insert fail, code:${err.code}, message: ${err.message}`);
+}
+```
+
+## onSqliteErrorOccurred<sup>23+</sup>
+
+onSqliteErrorOccurred(observer: Callback&lt;ExceptionMessage&gt;): void
+
+记录执行SQL语句时的异常日志。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('sqliteErrorOccurred')<sup>20+</sup>](#onsqliteerroroccurred20)。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                              | 必填 | 说明                                |
+| ------------ |---------------------------------| ---- |-----------------------------------|
+| observer     | Callback&lt;[ExceptionMessage](arkts-apis-data-relationalStore-i.md#exceptionmessage20)&gt; | 是   | 回调函数。用于返回SQL执行时出现的异常信息。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**    |
+|-----------|--------|
+| 801       | Capability not supported.  |
+| 14800014  | The RdbStore or ResultSet is already closed.     |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  if (store != undefined) {
+    store.onSqliteErrorOccurred(exceptionMessage => {
+      let sqliteCode = exceptionMessage.code;
+      let sqliteMessage = exceptionMessage.message;
+      let errSQL = exceptionMessage.sql;
+      console.error(`error log is ${sqliteCode}, errMessage is ${sqliteMessage}, errSQL is ${errSQL}`);
+    })
+  }
+} catch (err: BusinessError) {
+  console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
+}
+const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+  "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL)";
+try {
+  let value = new Uint8Array([1, 2, 3, 4, 5]);
+  const valueBucket: relationalStore.ValuesBucket = {
+    'name': "Lisa",
+    'age': 18 as long,
+    'salary': 100.5,
+    'codes': value,
+  };
+  if (store != undefined) {
+    await store.executeSql(CREATE_TABLE_TEST);
+    await store.insert('test', valueBucket);
+  }
+} catch (err: BusinessError) {
   console.error(`Insert fail, code:${err.code}, message: ${err.message}`);
 }
 ```
@@ -7699,7 +7774,13 @@ on(event: 'perfStat', observer: Callback&lt;SqlExecutionInfo&gt;): void
 
 订阅SQL统计信息。使用[createTransaction](#createtransaction14)创建的事务进行相关操作（[Transaction](arkts-apis-data-relationalStore-Transaction.md)），只会在事务结束（COMMIT/ROLLBACK）时通知一次统计信息。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPerfStat<sup>23+</sup>](#onperfstat23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -7723,11 +7804,13 @@ on(event: 'perfStat', observer: Callback&lt;SqlExecutionInfo&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let sqlExecutionInfo = (sqlExecutionInfo: relationalStore.SqlExecutionInfo) => {
-  console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
-  console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
-  console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
-  console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
-  console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  if (sqlExecutionInfo.sql.length > 0) {
+    console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
+    console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
+    console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
+    console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
+    console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  }
 };
 
 try {
@@ -7757,6 +7840,79 @@ try {
     console.info(`Insert success, rowId is: ${rowId}`);
   }
 } catch (err) {
+  console.error(`insert fail, code:${err.code}, message: ${err.message}`);
+}
+```
+
+## onPerfStat<sup>23+</sup>
+
+onPerfStat(observer: Callback&lt;SqlExecutionInfo&gt;): void
+
+订阅SQL统计信息。使用[createTransaction](#createtransaction14)创建的事务进行相关操作（[Transaction](arkts-apis-data-relationalStore-Transaction.md)），只会在事务结束（COMMIT/ROLLBACK）时通知一次统计信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('perfStat')<sup>20+</sup>](#onperfstat20)。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                              | 必填 | 说明                                |
+| ------------ |---------------------------------| ---- |-----------------------------------|
+| observer     | Callback&lt;[SqlExecutionInfo](arkts-apis-data-relationalStore-i.md#sqlexecutioninfo12)&gt; | 是   | 回调函数。用于返回数据库执行SQL的时间。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**    |
+|-----------|--------|
+| 801       | Capability not supported.  |
+| 14800014  | The RdbStore or ResultSet is already closed.     |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let sqlExecutionInfo = (sqlExecutionInfo: relationalStore.SqlExecutionInfo) => {
+  if (sqlExecutionInfo.sql.length > 0) {
+    console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
+    console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
+    console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
+    console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
+    console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  }
+};
+
+try {
+  if (store != undefined) {
+    store.onPerfStat(sqlExecutionInfo);
+  }
+} catch (err: BusinessError) {
+  console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
+}
+
+try {
+  let value1 = "Lisa";
+  let value2 = 18 as long;
+  let value3 = 100.5;
+  let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+
+  const valueBucket: relationalStore.ValuesBucket = {
+    'NAME': value1,
+    'AGE': value2,
+    'SALARY': value3,
+    'CODES': value4
+  };
+  if (store != undefined) {
+    const rowId = await store.insert('EMPLOYEE', valueBucket);
+    console.info(`Insert success, rowId is: ${rowId}`);
+  }
+} catch (err: BusinessError) {
   console.error(`insert fail, code:${err.code}, message: ${err.message}`);
 }
 ```
@@ -8257,7 +8413,13 @@ off(event: 'sqliteErrorOccurred', observer?: Callback&lt;ExceptionMessage&gt;): 
 
 停止记录SQL执行过程中的异常日志。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSqliteErrorOccurred<sup>23+</sup>](#offsqliteerroroccurred23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -8291,13 +8453,62 @@ try {
 }
 ```
 
+## offSqliteErrorOccurred<sup>23+</sup>
+
+offSqliteErrorOccurred(observer?: Callback&lt;ExceptionMessage&gt;): void
+
+停止记录SQL执行过程中的异常日志。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('sqliteErrorOccurred')<sup>20+</sup>](#offsqliteerroroccurred20)。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                              | 必填 | 说明                                |
+| ------------ |---------------------------------| ---- |-----------------------------------|
+| observer     | Callback&lt;[ExceptionMessage](arkts-apis-data-relationalStore-i.md#exceptionmessage20)&gt; | 否   | 回调函数。该参数存在，则取消指定Callback监听回调，否则取消该event事件的所有监听回调。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**    |
+|-----------|--------|
+| 801       | Capability not supported.  |
+| 14800014  | The RdbStore or ResultSet is already closed.     |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  if (store != undefined) {
+    store.offSqliteErrorOccurred();
+  }
+} catch (err: BusinessError) {
+  console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## off('perfStat')<sup>20+</sup>
 
 off(event: 'perfStat', observer?: Callback&lt;SqlExecutionInfo&gt;): void
 
 取消订阅SQL统计信息。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPerfStat<sup>23+</sup>](#offperfstat23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -8327,6 +8538,48 @@ try {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
   console.error(`Unregister observer failed, code is ${code}, message is ${message}`);
+}
+```
+
+## offPerfStat<sup>23+</sup>
+
+offPerfStat(observer?: Callback&lt;SqlExecutionInfo&gt;): void
+
+取消订阅SQL统计信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('perfStat')<sup>20+</sup>](#offperfstat20)。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                              | 必填 | 说明                                |
+| ------------ |---------------------------------| ---- |-----------------------------------|
+| observer     | Callback&lt;[SqlExecutionInfo](arkts-apis-data-relationalStore-i.md#sqlexecutioninfo12)&gt; | 否   | 回调函数，表示订阅时的回调函数。该参数存在，则取消指定Callback监听回调，否则取消该event事件的所有监听回调。  |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**    |
+|-----------|--------|
+| 801       | Capability not supported.  |
+| 14800014  | The RdbStore or ResultSet is already closed.     |
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  if (store != undefined) {
+    store.offPerfStat();
+  }
+} catch (err: BusinessError) {
+  console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -9282,6 +9535,10 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型                                                               | 必填 | 说明                                       |
@@ -9317,6 +9574,7 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 
 示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
 
+ArkTS-Dyn示例：
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9403,6 +9661,78 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 示例1：使用默认的加密参数
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    const STORE_CONFIG1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true
+    };
+    let store = await relationalStore.getRdbStore(this.context, STORE_CONFIG1);
+    let cryptoParam1: relationalStore.CryptoParam = {
+      encryptionKey: new Uint8Array()
+    };
+    if (store != undefined) {
+      try {
+        store.rekey(cryptoParam1);
+        console.info('rekey is successful');
+      } catch (err: BusinessError) {
+        console.error(`rekey is failed, code is ${err.code}, message is ${err.message}`);
+      }
+    }
+  }
+}
+```
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 示例2：使用自定义的加密参数
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    let cryptoParam: relationalStore.CryptoParam = {
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+
+    const STORE_CONFIG2: relationalStore.StoreConfig = {
+      name: 'rdbstore2.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true,
+      cryptoParam: cryptoParam
+    };
+
+    let store = await relationalStore.getRdbStore(this.context, STORE_CONFIG2);
+    let cryptoParam2: relationalStore.CryptoParam = {
+      encryptionKey: new Uint8Array([6, 5, 4, 3, 2, 1]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+
+    if (store != undefined) {
+      try {
+        store.rekey(cryptoParam2);
+        console.info('rekey is successful');
+      } catch (err: BusinessError) {
+        console.error(`rekey is failed, code is ${err.code}, message is ${err.message}`);
+      }
+    }
+  }
+}
+```
+
 ## setLocale<sup>20+</sup>
 
 setLocale(locale: string) : Promise\<void>
@@ -9412,6 +9742,10 @@ setLocale(locale: string) : Promise\<void>
 该值符合ISO 639标准，但是仅支持ICU中的部分语言，对于不支持的语言，设置自定义排序的语言时会报错14800001。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9440,6 +9774,7 @@ setLocale(locale: string) : Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 try {
   if (store != undefined) {
@@ -9453,6 +9788,24 @@ try {
     });
   }
 } catch (err) {
+  console.error(`SetLocale failed, code: ${err.code}, message: ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+try {
+  if (store != undefined) {
+    await store.setLocale("zh");
+    store.querySql("SELECT * FROM EMPLOYEE ORDER BY NAME COLLATE LOCALES", (err: BusinessError | null, resultSet: relationalStore.ResultSet | undefined) => {
+      if (err) {
+        console.error(`Query failed, code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info(`ResultSet rowCount ${resultSet!.rowCount}`);
+    });
+  }
+} catch (err: BusinessError) {
   console.error(`SetLocale failed, code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -9480,6 +9833,10 @@ rekeyEx(cryptoParam: CryptoParam): Promise\<void>
 > 如果有加密参数变更，不建议getRdbStore时使用AllowedRebuild参数，防止因为传入的错误加密参数导致数据库发生重建。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

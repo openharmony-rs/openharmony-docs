@@ -1455,11 +1455,11 @@ having(conditions:string, args?: Array\<ValueType>): RdbPredicates
 
 筛选符合条件的分组数据。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
