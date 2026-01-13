@@ -3,10 +3,14 @@
 当AutoFillExtensionAbility触发回调函数时，提供给开发者的页面数据和回调接口。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块接口均为系统接口。
-> 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口均为系统接口。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -22,16 +26,20 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称        | 类型                 | 必填 | 说明                                                         |
 | ----------- | -------------------- | ---- | ------------------------------------------------------------ |
-| type        | [AutoFillType](js-apis-inner-application-autoFillType-sys.md)       | 是   | 自动填充类型。          |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | 是   | 页面数据。              |
-| customData<sup>13+</sup>    | [CustomData](js-apis-inner-application-customData-sys.md)               | 是   | 自定义数据。             |
-| isPopup<sup>12+</sup>    | boolean               | 是   | 自动填充服务是否拉起popup窗口。<br>true：当前拉起popup窗口。<br>false：当前拉起模态窗。              |
+| type        | [AutoFillType](js-apis-inner-application-autoFillType-sys.md)       | 是   | 自动填充类型。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | 是   | 页面数据。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| customData<sup>13+</sup>    | [CustomData](js-apis-inner-application-customData-sys.md)               | 是   | 自定义数据。<br>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23 |
+| isPopup<sup>12+</sup>    | boolean               | 是   | 自动填充服务是否拉起popup窗口。<br>true：当前拉起popup窗口。<br>false：当前拉起模态窗。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## SaveRequest
 
 自动保存请求信息。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型                 | 必填 | 说明                                                         |
 | ----------- | -------------------- | ---- | ------------------------------------------------------------ |
@@ -43,6 +51,10 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 类型                 | 必填 | 说明                                                         |
 | ----------- | -------------------- | ---- | ------------------------------------------------------------ |
 | viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | 是   | 页面数据。              |
@@ -52,6 +64,10 @@ import { autoFillManager } from '@kit.AbilityKit';
 自动填充响应。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型                 | 必填 | 说明                                                         |
 | ----------- | -------------------- | ---- | ------------------------------------------------------------ |
@@ -68,6 +84,10 @@ onSuccess(response: FillResponse): void
 通知自动填充请求已成功完成。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -86,6 +106,8 @@ onSuccess(response: FillResponse): void
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // MyAutoFillExtensionAbility.ts
@@ -160,6 +182,91 @@ struct AutoFillPage {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// MyAutoFillExtensionAbility.ts
+import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { LocalStorage } from '@kit.ArkUI';
+
+class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
+  onFillRequest(session: UIExtensionContentSession,
+    request: autoFillManager.FillRequest,
+    callback: autoFillManager.FillRequestCallback) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
+    try {
+      let storageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData> = {
+        'fillCallback': callback,
+        'message': 'AutoFill Page',
+        'viewData': request.viewData,
+      }
+      let storage_fill = new LocalStorage(storageData);
+      if (session) {
+        session.loadContent('pages/AutoFillPage', storage_fill);
+      } else {
+        hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
+      }
+    } catch (err) {
+      hilog.error(0x0000, 'testTag', '%{public}s', 'failed to load content');
+    }
+  }
+}
+```
+
+```ts
+// AutoFillPage.ets
+import { autoFillManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Entry, Column, Text, Row, Component, Button, FontWeight, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AutoFillPage {
+  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  fillCallback: autoFillManager.FillRequestCallback | undefined =
+    this.storage?.get<autoFillManager.FillRequestCallback>('fillCallback');
+  viewData: autoFillManager.ViewData | undefined = this.storage?.get<autoFillManager.ViewData>('viewData');
+
+  build() {
+    Row() {
+      Column() {
+        Text('AutoFill Page')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+
+      Button('onSuccess')
+        .onClick(() => {
+          this.clickFun();
+        })
+        .width('100%')
+    }
+    .height('100%')
+  }
+
+  private clickFun(): void {
+    let data: autoFillManager.ViewData = {
+      pageNodeInfos: [
+        { value: 'user1' },
+        { value: 'user1 password' },
+        { value: 'user1 generate new passwor' }
+      ]
+    };
+    hilog.info(0x0000, 'testTag', 'autofill success with viewData: %{public}s', JSON.stringify(data));
+    if (this.viewData) {
+      try {
+        this.fillCallback?.onSuccess({ viewData: data });
+      } catch (error) {
+        console.error(`catch error, code: ${(error as BusinessError).code},
+                  message: ${(error as BusinessError).message}`);
+      }
+    }
+  }
+}
+```
+
 ### FillRequestCallback.onFailure
 
 onFailure(): void
@@ -167,6 +274,10 @@ onFailure(): void
 通知自动填充请求已失败。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -178,6 +289,8 @@ onFailure(): void
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // MyAutoFillExtensionAbility.ts
@@ -246,13 +359,88 @@ struct AutoFillPage {
 }
 ```
 
-### FillRequestCallback.onCancel<sup>11+</sup>
+ArkTS-Sta示例：
+
+```ts
+// MyAutoFillExtensionAbility.ts
+import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { LocalStorage } from '@kit.ArkUI';
+
+class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
+  onFillRequest(session: UIExtensionContentSession,
+    request: autoFillManager.FillRequest,
+    callback: autoFillManager.FillRequestCallback) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
+    try {
+      let storageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData> = {
+        'fillCallback': callback,
+        'message': 'AutoFill Page',
+        'viewData': request.viewData,
+      }
+      let storage_fill = new LocalStorage(storageData);
+      if (session) {
+        session.loadContent('pages/AutoFill Page', storage_fill);
+      } else {
+        hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
+      }
+    } catch (err) {
+      hilog.error(0x0000, 'testTag', '%{public}s', 'failed to load content');
+    }
+  }
+}
+```
+
+```ts
+// AutoFillPage.ets
+import { autoFillManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Entry, Column, Text, Row, Component, Button, FontWeight } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AutoFillPage {
+  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  fillCallback: autoFillManager.FillRequestCallback | undefined =
+    this.storage?.get<autoFillManager.FillRequestCallback>('fillCallback');
+
+  build() {
+    Row() {
+      Column() {
+        Text('AutoFill Page')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+
+      Button('onFailure')
+        .onClick(() => {
+          hilog.info(0x0000, 'testTag', 'autofill failure');
+          try {
+            this.fillCallback?.onFailure();
+          } catch (error) {
+            console.error(`catch error, code: ${(error as BusinessError).code},
+              message: ${(error as BusinessError).message}`);
+          }
+        })
+        .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### FillRequestCallback.onCancel
 
 onCancel(fillContent?: string): void
 
 通知自动填充已被取消。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -271,6 +459,8 @@ onCancel(fillContent?: string): void
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // MyAutoFillExtensionAbility.ts
@@ -339,6 +529,77 @@ struct AutoFillPage {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// MyAutoFillExtensionAbility.ts
+import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { LocalStorage } from '@kit.ArkUI';
+
+class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
+  onFillRequest(session: UIExtensionContentSession,
+    request: autoFillManager.FillRequest,
+    callback: autoFillManager.FillRequestCallback) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
+    try {
+      let storageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData> = {
+        'fillCallback': callback,
+        'message': 'AutoFill Page',
+        'viewData': request.viewData,
+      }
+      let storage_fill = new LocalStorage(storageData);
+      if (session) {
+        session.loadContent('pages/AutoFillPage', storage_fill);
+      } else {
+        hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
+      }
+    } catch (err) {
+      hilog.error(0x0000, 'testTag', '%{public}s', 'failed to load content');
+    }
+  }
+}
+```
+
+```ts
+// AutoFillPage.ets
+import { autoFillManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Entry, Column, Text, Button, Row, Component, FontWeight } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AutoFillPage {
+  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  fillCallback: autoFillManager.FillRequestCallback | undefined =
+    this.storage?.get<autoFillManager.FillRequestCallback>('fillCallback');
+
+  build() {
+    Row() {
+      Column() {
+        Text('Hello World')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+
+      Button('onCancel')
+        .onClick(() => {
+          hilog.info(0x0000, 'testTag', 'autofill cancel');
+          try {
+            this.fillCallback?.onCancel();
+          } catch (error) {
+            console.error(`catch error, code: ${(error as BusinessError).code},
+                message: ${(error as BusinessError).message}`);
+          }
+        })
+        .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### FillRequestCallback.setAutoFillPopupConfig<sup>12+</sup>
 
 setAutoFillPopupConfig(autoFillPopupConfig: AutoFillPopupConfig ): void
@@ -346,6 +607,10 @@ setAutoFillPopupConfig(autoFillPopupConfig: AutoFillPopupConfig ): void
 动态调整气泡弹窗的尺寸和位置。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -365,8 +630,9 @@ setAutoFillPopupConfig(autoFillPopupConfig: AutoFillPopupConfig ): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-// MyAutoFillExtensionAbility.ts
 // MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -402,7 +668,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
 
     if (fillCallback) {
       try {
-        hilog.info(0x0000, 'testTag', 'pageNodeInfos.value: ' + JSON.stringify(request.viewData.pageNodeInfos[0].value));
+        hilog.info(0x0000, 'testTag', `pageNodeInfos.value: ${ JSON.stringify(request.viewData.pageNodeInfos[0].value)}`);
         fillCallback.setAutoFillPopupConfig({
           popupSize: {
             width: 400 + request.viewData.pageNodeInfos[0].value.length * 10,
@@ -440,11 +706,117 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
       });
       session.loadContent('pages/SelectorList', storage_fill);
     } catch (err) {
-      hilog.error(0x0000, 'testTag', '%{public}s', 'autofill failed to load content: ' + JSON.stringify(err));
+      hilog.error(0x0000, 'testTag', '%{public}s', `autofill failed to load content: ${JSON.stringify(err)}`);
     }
   }
 
   onSaveRequest(session: UIExtensionContentSession, request: autoFillManager.SaveRequest, callback: autoFillManager.SaveRequestCallback) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onSaveRequest');
+    try {
+      let localStorageData: Record<string, string | autoFillManager.SaveRequestCallback> = {
+        'message': 'AutoFill Page',
+        'saveCallback': callback
+      };
+      let storage_save = new LocalStorage(localStorageData);
+      if (session) {
+        session.loadContent('pages/SavePage', storage_save);
+      } else {
+        hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
+      }
+    } catch (err) {
+      hilog.error(0x0000, 'testTag', '%{public}s', 'failed to load content');
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// MyAutoFillExtensionAbility.ts
+import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { LocalStorage } from '@kit.ArkUI';
+
+export default class AutoFillAbility extends AutoFillExtensionAbility {
+  storage: LocalStorage = new LocalStorage();
+
+  onCreate(): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onCreate');
+  }
+
+  onDestroy(): Promise<void> | undefined {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onDestroy');
+    return undefined;
+  }
+
+  onSessionDestroy(session: UIExtensionContentSession) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onSessionDestroy');
+    hilog.info(0x0000, 'testTag', 'session content: %{public}s', JSON.stringify(session));
+  }
+
+  onForeground(): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onForeground');
+  }
+
+  onBackground(): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onBackground');
+  }
+
+  onUpdateRequest(request: autoFillManager.UpdateRequest): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onUpdateRequest');
+    console.info(`get fill request viewData: ${JSON.stringify(request.viewData)}.`);
+    let fillCallback = this.storage.get<autoFillManager.FillRequestCallback>('fillCallback');
+
+    if (fillCallback) {
+      try {
+        hilog.info(0x0000, 'testTag',
+          `pageNodeInfos.value: ${JSON.stringify(request.viewData.pageNodeInfos[0].value)}`);
+        fillCallback.setAutoFillPopupConfig({
+          popupSize: {
+            width: 400 + request.viewData.pageNodeInfos[0].value.length * 10,
+            height: 200 + request.viewData.pageNodeInfos[0].value.length * 10
+          },
+          placement: autoFillManager.PopupPlacement.TOP
+        });
+      } catch (err) {
+        hilog.info(0x0000, 'testTag', `autoFillPopupConfig err: ${JSON.stringify(err)}`);
+      }
+    }
+  }
+
+  onFillRequest(session: UIExtensionContentSession, request: autoFillManager.FillRequest,
+    callback: autoFillManager.FillRequestCallback) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
+    hilog.info(0x0000, 'testTag', 'Fill RequestCallback: %{public}s ', JSON.stringify(callback));
+    console.info(`testTag. Get fill request viewData: ${JSON.stringify(request.viewData)}.`);
+    console.info(`testTag. Get fill request type: ${JSON.stringify(request.type)}.`);
+
+    try {
+      let localStorageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData | autoFillManager.AutoFillType> =
+        {
+          'message': 'AutoFill Page',
+          'fillCallback': callback,
+          'viewData': request.viewData,
+          'autoFillType': request.type
+        }
+      let storage_fill = new LocalStorage(localStorageData);
+      console.info(`testTag. Session: ${JSON.stringify(session)}.`);
+      let size: autoFillManager.PopupSize = {
+        width: 400,
+        height: 200
+      };
+      callback.setAutoFillPopupConfig({
+        popupSize: size
+      });
+      session.loadContent('pages/SelectorList', storage_fill);
+    } catch (err) {
+      hilog.error(0x0000, 'testTag', '%{public}s', `autofill failed to load content: ${JSON.stringify(err)}`);
+    }
+  }
+
+  onSaveRequest(session: UIExtensionContentSession, request: autoFillManager.SaveRequest,
+    callback: autoFillManager.SaveRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onSaveRequest');
     try {
       let localStorageData: Record<string, string | autoFillManager.SaveRequestCallback> = {
@@ -476,6 +848,10 @@ onSuccess(): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
@@ -486,6 +862,8 @@ onSuccess(): void
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // MyAutoFillExtensionAbility.ts
@@ -553,6 +931,77 @@ struct SavePage {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// MyAutoFillExtensionAbility.ts
+import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { LocalStorage } from '@kit.ArkUI';
+
+class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
+  onSaveRequest(session: UIExtensionContentSession,
+    request: autoFillManager.SaveRequest,
+    callback: autoFillManager.SaveRequestCallback) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'onSaveRequest');
+    try {
+      let storageData: Record<string, string | autoFillManager.SaveRequestCallback | autoFillManager.ViewData> = {
+        'message': 'AutoFill Page',
+        'saveCallback': callback,
+        'viewData': request.viewData
+      };
+      let storage_save = new LocalStorage(storageData);
+      if (session) {
+        session.loadContent('pages/SavePage', storage_save);
+      } else {
+        hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
+      }
+    } catch (err) {
+      hilog.error(0x0000, 'testTag', '%{public}s', 'failed to load content');
+    }
+  }
+}
+```
+
+```ts
+// SavePage.ets
+import { autoFillManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Entry, Column, Text, Button, Row, Component, FontWeight, LocalStorage } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SavePage {
+  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  saveCallback: autoFillManager.SaveRequestCallback | undefined =
+    this.storage?.get<autoFillManager.SaveRequestCallback>('saveCallback');
+
+  build() {
+    Row() {
+      Column() {
+        Text('SavePage')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+
+      Button('onSuccess')
+        .onClick(() => {
+          hilog.info(0x0000, 'testTag', 'autosave success');
+          try {
+            this.saveCallback?.onSuccess();
+          } catch (error) {
+            console.error(`catch error, code: ${(error as BusinessError).code},
+                message: ${(error as BusinessError).message}`);
+          }
+        })
+        .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### SaveRequestCallback.onFailure
 
 onFailure(): void
@@ -560,6 +1009,10 @@ onFailure(): void
 通知保存请求处理失败。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -571,6 +1024,8 @@ onFailure(): void
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // MyAutoFillExtensionAbility.ts
@@ -614,6 +1069,77 @@ struct SavePage {
   saveCallback: autoFillManager.SaveRequestCallback | undefined =
     this.storage?.get<autoFillManager.SaveRequestCallback>('saveCallback');
   
+  build() {
+    Row() {
+      Column() {
+        Text('Save Page')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+
+      Button('onFailure')
+        .onClick(() => {
+          hilog.error(0x0000, 'testTag', 'autofill onFailure');
+          try {
+            this.saveCallback?.onFailure();
+          } catch (error) {
+            console.error(`catch error, code: ${(error as BusinessError).code},
+              message: ${(error as BusinessError).message}`);
+          }
+        })
+        .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// MyAutoFillExtensionAbility.ts
+import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { LocalStorage } from '@kit.ArkUI';
+
+class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
+  onSaveRequest(session: UIExtensionContentSession,
+    request: autoFillManager.SaveRequest,
+    callback: autoFillManager.SaveRequestCallback) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'onSaveRequest');
+    try {
+      let storageData: Record<string, string | autoFillManager.SaveRequestCallback | autoFillManager.ViewData> = {
+        'message': 'AutoFill Page',
+        'saveCallback': callback,
+        'viewData': request.viewData
+      }
+      let storage_save = new LocalStorage(storageData);
+      if (session) {
+        session.loadContent('pages/SavePage', storage_save);
+      } else {
+        hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
+      }
+    } catch (err) {
+      hilog.error(0x0000, 'testTag', '%{public}s', 'failed to load content');
+    }
+  }
+}
+```
+
+```ts
+// SavePage.ets
+import { autoFillManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Entry, Column, Text, Button, Row, Component, FontWeight, LocalStorage } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SavePage {
+  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  saveCallback: autoFillManager.SaveRequestCallback | undefined =
+    this.storage?.get<autoFillManager.SaveRequestCallback>('saveCallback');
+
   build() {
     Row() {
       Column() {
