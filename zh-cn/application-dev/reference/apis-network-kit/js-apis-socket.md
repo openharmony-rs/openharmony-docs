@@ -4803,7 +4803,7 @@ client.connect(connectOpt).then(() => {
 client.getSocketFd().then((data: number) => {
   console.info("fd: " + data);
 }).catch((err: Object) => {
-  console.error("getSocketFd faile: " + JSON.stringify(err));
+  console.error("getSocketFd failed: " + JSON.stringify(err));
 })
 ```
 
