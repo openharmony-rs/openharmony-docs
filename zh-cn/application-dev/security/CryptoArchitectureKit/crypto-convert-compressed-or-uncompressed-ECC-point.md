@@ -19,17 +19,25 @@ ECC的算法规格请查看[非对称密钥生成和转换规格：ECC](crypto-a
 
 2. 调用[ECCKeyUtil.getEncodedPoint](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpoint12)，获取压缩点数据。
 
-```ts
+<!-- @[convert_ecc_uncompressed_pub_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/SpecifyUncompressedPublicKey.ets) -->
+
+``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-function eccPointUncompressedToCompressed() {
-  let pkData = new Uint8Array([4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
-  let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
-  console.info('convertPoint success');
-  let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'COMPRESSED');
-  console.info('returnData: ' + returnData); // (因为y为偶数，所以压缩点数据的前缀是02)returnData: 2,143,39,57,249,145,50,63,222,35,70,178,121,202,154,21,146,129,75,76,63,8,195,157,111,40,217,215,148,120,224,205,82
+async function eccPubUncompressedToCompressed() {
+  let pkData =
+    new Uint8Array([48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2, 8, 1, 1, 7, 3, 66, 0, 4,
+      143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40,
+      217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98,
+      178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
+  let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
+  let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+  let keyPair = await generator.convertKey(pubKeyBlob, null);
+  let returnBlob = keyPair.pubKey.getEncodedDer('X509|COMPRESSED');
+  console.info('returnBlob data：' + returnBlob.data);
 }
 ```
+
 
 ## 指定压缩点数据获取密钥对象
 
@@ -41,16 +49,20 @@ function eccPointUncompressedToCompressed() {
 6. 调用[ECCKeyUtil.getEncodedPoint](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpoint12)，得到非压缩点数据。
 7. 调用[PubKey.getAsyKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getasykeyspec10)，获取ECC算法中公钥pk的x坐标。
 
-```ts
+<!-- @[specify_ecc_uncompressed_point_get_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/GetKeyObject.ets) -->
+
+``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 async function eccPointCompressedToPoint() {
-  let pkData = new Uint8Array([2, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82]);
+  let pkData =
+    new Uint8Array([2, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195,
+      157, 111, 40, 217, 215, 148, 120, 224, 205, 82]);
   let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
   console.info('convertPoint success');
   let eccCommonParamsSpec = cryptoFramework.ECCKeyUtil.genECCCommonParamsSpec('NID_brainpoolP256r1');
   let eccPubKeySpec: cryptoFramework.ECCPubKeySpec = {
-    algName: "ECC",
+    algName: 'ECC',
     specType: cryptoFramework.AsyKeySpecType.PUBLIC_KEY_SPEC,
     params: eccCommonParamsSpec,
     pk: returnPoint
@@ -58,9 +70,14 @@ async function eccPointCompressedToPoint() {
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(eccPubKeySpec);
   let pubKey = await generatorBySpec.generatePubKey();
   let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
-  console.info('returnData: ' + returnData); // 4,143,39,57,249,145,50,63,222,35,70,178,121,202,154,21,146,129,75,76,63,8,195,157,111,40,217,215,148,120,224,205,82,83,92,185,21,211,184,5,19,114,33,86,85,228,123,242,206,200,98,178,184,130,35,232,45,5,202,189,11,46,163,156,152
+  console.info('returnData: ' +
+    returnData); // 4,143,39,57,249,145,50,63,222,35,70,178,121,202,154,21,146,129,75,76,63,8,195,157,111,
+  // 40,217,215,148,120,224,205,82,83,92,185,21,211,184,5,19,114,33,86,85,228,123,242,206,200,98,178,184,
+  // 130,35,232,45,5,202,189,11,46,163,156,152
   let eccPkX = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
-  console.info('returnPoint x data: ' + returnPoint.x); // 64750044510792891439269945828433327517677381559622384455951527515863444933970
-  console.info('ECC_PK_X_BN: ' + eccPkX); // 64750044510792891439269945828433327517677381559622384455951527515863444933970
+  console.info('returnPoint x data: ' +
+  returnPoint.x); // 64750044510792891439269945828433327517677381559622384455951527515863444933970
+  console.info('ECC_PK_X_BN：' +
+    eccPkX); // 64750044510792891439269945828433327517677381559622384455951527515863444933970
 }
 ```
