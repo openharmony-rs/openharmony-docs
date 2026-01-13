@@ -16,12 +16,7 @@ In multi-device development scenarios, you can use the [\@Env](../reference/apis
 
 ## Overview
 \@Env is a decorator for environment variables in the reactive system. It provides the following functionalities:
-- Reads the environment variable information based on the input parameter. For details, see [Supported Parameters](#supported-parameters). Currently, the following environment variables are supported:
-  - [SystemProperties.BREAK_POINT](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): Obtains the breakpoint value information corresponding to different width and height thresholds of the window.
-  - [SystemProperties.WINDOW_SIZE<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): Obtains the size information of the window, in vp.
-  - [SystemProperties.WINDOW_SIZE_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): Obtains the size of a window, in px.
-  - [SystemProperties.WINDOW_AVOID_AREA<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): Obtains the avoid area information of a window, in vp.
-  - [SystemProperties.WINDOW_AVOID_AREA_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): Obtains the avoid area information of a window, in px.
+- Reads the environment variable information based on the input parameter. Currently, only [SystemProperties.BREAK_POINT](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties) is available to obtain breakpoint value information corresponding to different width and height thresholds for [windows](../reference/apis-arkui/arkts-apis-window-Window.md). For details, see [Supported Parameters](#supported-parameters).
 - When the system environment variable changes, the \@Env decorator notifies the update of the decorated variable and triggers the update of the associated component to synchronize the UI content.
 - The variable decorated by \@Env cannot be initialized by developers. \@Env returns an observable environment variable class (decorated by [\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md) and [\@Trace](./state-management/arkts-new-observedV2-and-trace.md)) instance to you. If you want to listen for the change of an environment variable, you can use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md). For details, see [Using \@Env in \@ComponentV2](#using-env-in-componentv2).
 
@@ -35,7 +30,7 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
 | Capability| \@Env |Environment|
 | ------------------ | ------------------ | ------------------ |
 |Supported since|API version 22|API version 7|
-|Supported parameters|Enum values of [SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)| **languageCode** and so on. For details, see [Environment Built-in Parameters](./state-management/arkts-environment.md#environment-built-in-parameters).|
+|Supported parameters|**SystemProperties.BREAK_POINT**| **languageCode** and so on. For details, see [Environment Built-in Parameters](./state-management/arkts-environment.md#environment-built-in-parameters).|
 |Usage|\@Env is a decorator that can be declared in @Component or @ComponentV2 to obtain the environment variable information of the corresponding parameters.|Obtain the environment variables of the current application through APIs such as [envProp](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10) and save them to [AppStorage](./state-management/arkts-appstorage.md). You can access the values of system environment variables through AppStorage APIs. For details, see [Accessing Environment Parameters from the UI](./state-management/arkts-environment.md#accessing-environment-parameters-from-the-ui).|
 |Responsive capability supported|Yes. When the system environment variable changes, the environment variable decorated by \@Env is notified of the change and the component associated with \@Env is notified to refresh.|No. When the system environment variable changes, **Environment** is not notified of the change.|
 
@@ -79,7 +74,7 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
   }
   ```
 
-- \@Env supports the enum values of [SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties). If an unsupported parameter is used, an error is reported during compilation.
+- \@Env supports only the **SystemProperties.BREAK_POINT** parameter. If an unsupported parameter is used, an error is reported during compilation.
     ```ts
     import { uiObserver } from '@kit.ArkUI';
 
@@ -94,12 +89,7 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
       }
     }
     ```
-- When \@Env uses different key values, the decorated variable types must correspond to each other. Otherwise, an error is reported during compilation.
-  - When \@Env uses **SystemProperties.BREAK_POINT**, the decorated variable type must be **uiObserver.WindowSizeLayoutBreakpointInfo**.
-  - When \@Env uses **SystemProperties.WINDOW_SIZE**, the decorated variable type must be **window.SizeInVP**.
-  - When \@Env uses **SystemProperties.WINDOW_SIZE_PX**, the decorated variable type must be **window.Size**.
-  - When \@Env uses **SystemProperties.WINDOW_AVOID_AREA**, the decorated variable type must be **window.UIEnvWindowAvoidAreaInfoVP**.
-  - When \@Env uses **SystemProperties.WINDOW_AVOID_AREA_PX**, the decorated variable type must be **window.UIEnvWindowAvoidAreaInfoPX**.
+- @Env decorated variables must be of type **uiObserver.WindowSizeLayoutBreakpointInfo**. Currently, @Env only supports the **SystemProperties.BREAK_POINT** parameter, so its type must be **uiObserver.WindowSizeLayoutBreakpointInfo**. Otherwise, a compile-time error will occur.
   ```ts
   import { uiObserver } from '@kit.ArkUI';
 
@@ -107,7 +97,7 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
   @Component
   struct Index {
     @Env(SystemProperties.BREAK_POINT) breakpoint1: uiObserver.WindowSizeLayoutBreakpointInfo; // Correct syntax.
-    @Env(SystemProperties.BREAK_POINT) breakpoint2: string; // Incorrect syntax. When @Env uses SystemProperties.BREAK_POINT, only the WindowSizeLayoutBreakpointInfo type can be decorated.
+    @Env(SystemProperties.BREAK_POINT) breakpoint2: string; // Incorrect syntax. @Env supports only the WindowSizeLayoutBreakpointInfo type.
 
     build() {
     }
@@ -194,7 +184,7 @@ The following figure shows the flowchart.
 
 ![image](./figures/env-flow.png)
 
-Based on the preceding process, the following example uses **SystemProperties.BREAK_POINT** as an example to describe the use of @Env. The following figure shows the initialization of each component.
+Based on the preceding process, the following figure shows the initialization of @Env in each component.
 
 ![image](./figures/env-flow2.png)
 
@@ -281,8 +271,6 @@ struct GrandChild2 {
 
 In the following example:
 - Declare \@Env in \@ComponentV2 to obtain the breakpoint information of the layout of the window where the current \@ComponentV2 component is created, and use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md) to listen for the change of the **this.breakpoint** attribute.
-- Declare \@Env in \@ComponentV2 to obtain the size of the window where the current \@ComponentV2 component is created, in vp, and use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md) to listen for the change of the **this.sizeInVP** attribute.
-- Declare \@Env in \@ComponentV2 to obtain the size of the window where the current \@ComponentV2 component is created, in px, and use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md) to listen for the change of the **this.sizeInPX** attribute.
 - Pass the variables decorated by \@Env to the variables decorated by [\@Param](./state-management/arkts-new-param.md) in **CompV2** and the common variables in **Comp**.
 - Click **Button('Landscape')** and **Button('Portrait')** to switch between landscape and portrait modes. The **Index**, **CompV2**, and **Comp** associated components are refreshed, and the **orientationChange** listener callback is triggered.
 
@@ -294,8 +282,6 @@ import { common } from '@kit.AbilityKit';
 @ComponentV2
 struct Index {
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Env(SystemProperties.WINDOW_SIZE) sizeInVP: window.SizeInVP;
-  @Env(SystemProperties.WINDOW_SIZE_PX) sizeInPX: window.Size;
 
   private changeOrientation(isLandscape: boolean) {
     const context = this.getUIContext()?.getHostContext() as common.UIAbilityContext;
@@ -313,18 +299,12 @@ struct Index {
   aboutToAppear(): void {
     // The object returned by @Env is actually the object decorated by @ObservedV2 (its attributes are decorated by @Trace). Therefore, the change of its attributes can be listened through addMonitor.
     UIUtils.addMonitor(this.breakpoint, ['widthBreakpoint', 'heightBreakpoint'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInVP, ['width', 'height'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInPX, ['width', 'height'], this.orientationChange);
   }
 
   build() {
     Column() {
       Text(`Index breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Index breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Index sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Index sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Index sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Index sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
 
       Button('Landscape').onClick(() => {
         this.changeOrientation(true);
@@ -334,8 +314,8 @@ struct Index {
         this.changeOrientation(false);
       })
 
-      CompV2({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
-      Comp({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
+      CompV2({ breakpoint: this.breakpoint })
+      Comp({ breakpoint: this.breakpoint })
     }
   }
 }
@@ -343,17 +323,11 @@ struct Index {
 @ComponentV2
 struct CompV2 {
   @Require @Param breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require @Param sizeInVP: window.SizeInVP;
-  @Require @Param sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`CompV2 breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`CompV2 breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`CompV2 sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`CompV2 sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`CompV2 sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`CompV2 sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -361,17 +335,11 @@ struct CompV2 {
 @Component
 struct Comp {
   @Require breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require sizeInVP: window.SizeInVP;
-  @Require sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`Comp breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Comp breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Comp sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Comp sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Comp sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Comp sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -389,8 +357,6 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct Index {
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Env(SystemProperties.WINDOW_SIZE) sizeInVP: window.SizeInVP;
-  @Env(SystemProperties.WINDOW_SIZE_PX) sizeInPX: window.Size;
 
   private changeOrientation(isLandscape: boolean) {
     const context = this.getUIContext()?.getHostContext() as common.UIAbilityContext;
@@ -408,18 +374,12 @@ struct Index {
   aboutToAppear(): void {
     // The object returned by @Env is actually the object decorated by @ObservedV2 (its attributes are decorated by @Trace). Therefore, the change of its attributes can be listened through addMonitor.
     UIUtils.addMonitor(this.breakpoint, ['widthBreakpoint', 'heightBreakpoint'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInVP, ['width', 'height'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInPX, ['width', 'height'], this.orientationChange);
   }
 
   build() {
     Column() {
       Text(`Index breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Index breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Index sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Index sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Index sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Index sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
 
       Button('Landscape').onClick(() => {
         this.changeOrientation(true);
@@ -429,8 +389,8 @@ struct Index {
         this.changeOrientation(false);
       })
 
-      CompV2({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
-      Comp({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
+      CompV2({ breakpoint: this.breakpoint })
+      Comp({ breakpoint: this.breakpoint })
     }
   }
 }
@@ -438,17 +398,11 @@ struct Index {
 @ComponentV2
 struct CompV2 {
   @Require @Param breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require @Param sizeInVP: window.SizeInVP;
-  @Require @Param sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`CompV2 breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`CompV2 breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`CompV2 sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`CompV2 sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`CompV2 sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`CompV2 sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -456,17 +410,11 @@ struct CompV2 {
 @Component
 struct Comp {
   @Require breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require sizeInVP: window.SizeInVP;
-  @Require sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`Comp breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Comp breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Comp sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Comp sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Comp sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Comp sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -961,4 +909,3 @@ struct Comp {
 The following figure shows the running effect.
 
 ![gif](./figures/env_switch_instance2.gif)
-<!--no_check-->
