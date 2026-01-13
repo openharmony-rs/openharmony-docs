@@ -4,11 +4,13 @@ StartOptions可以作为[startAbility()](js-apis-inner-application-uiAbilityCont
 
 > **说明：**
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.StartOptions (StartOptions)](js-apis-app-ability-startOptions.md)。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.StartOptions (StartOptions)](js-apis-app-ability-startOptions.md)。
 
 ## 导入模块
 
@@ -24,16 +26,15 @@ import { StartOptions } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| windowFocused<sup>12+</sup> | boolean | 否 | 是 | 窗口是否获焦。默认是true，表示窗口获焦。<br>**约束：**<br>1.该功能仅在2in1和tablet设备上生效。<br>2.仅在[UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1)中生效。 |
+| windowFocused<sup>12+</sup> | boolean | 否 | 是 | 窗口是否获焦。默认是true，表示窗口获焦。<br>**约束：**<br>1.该功能仅在2in1和tablet设备上生效。<br>2.仅在[UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1)中生效。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 **示例：**
 
   ```ts
   import { UIAbility, Want, StartOptions } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   export default class EntryAbility extends UIAbility {
-
     onForeground() {
       let want: Want = {
         deviceId: '',
@@ -43,12 +44,12 @@ import { StartOptions } from '@kit.AbilityKit';
       let options: StartOptions = {
         displayId: 0
       };
-
+  
       try {
-        this.context.startAbility(want, options, (err: BusinessError) => {
-          if (err.code) {
+        this.context.startAbility(want, options, (err: BusinessError | null) => {
+          if (err) {
             // 处理业务逻辑错误
-            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            console.error(`startAbility failed: ${JSON.stringify(err)}`);
             return;
           }
           // 执行正常业务
