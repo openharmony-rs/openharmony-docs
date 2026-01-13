@@ -489,7 +489,7 @@ getTopProportionColors(colorCount: number): Array<Color | null>
 
 | 类型                                     | 说明                                            |
 | :--------------------------------------- | :---------------------------------------------- |
-| Map<Color \| null, number \| null> | 图像占比前`colorCount`的颜色值与对应比例的字典，比例的取值范围为[0,1]。<br>- 当实际读取的特征色个数小于`colorCount`时，字典大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`Map()`。 |
+ | Array<[Color](#color) \| null> | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。<br>- 当实际读取的特征色个数小于`colorCount`时，数组大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`[null]`。 |
 
 **示例：**
 
