@@ -269,8 +269,8 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 **示例：**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
-import {common2D} from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+
 @Entry
 @Component
 struct BezierWarpExample {
@@ -282,7 +282,7 @@ struct BezierWarpExample {
 
   build() {
     Column() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
         .foregroundFilter(uiEffect.createFilter().bezierWarp(this.valueBezier))
     }
   }
@@ -557,11 +557,9 @@ maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], 
 **示例：**
 
 ```ts
-import {image} from '@kit.ImageKit'
-import {common2D, uiEffect} from '@kit.ArkGraphics2D'
-
-const context = getContext(this)
-const resourceMgr =context.resourceManager
+import { image } from '@kit.ImageKit'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+import { common } from '@kit.AbilityKit'
 
 @Entry
 @Component
@@ -572,7 +570,8 @@ struct MaskDispersion {
   @State fillColor: uiEffect.Color = { red: 0, green: 0, blue: 0, alpha: 0 }
 
   onPageShow(): void {
-    resourceMgr.getMediaContent($r("app.media.mask_alpha")).then(val => {
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext
+    context.resourceManager.getMediaByName("mask_alpha").then(val => {
       let buffer = val.buffer.slice(0, val.buffer.byteLength)
       let imageSource = image.createImageSource(buffer);
       imageSource.createPixelMap().then(pixelmap => {
@@ -967,7 +966,7 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 **示例：**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
+import { uiEffect } from '@kit.ArkGraphics2D'
 // values: [[1.0, 0.5], [1.0, 1.0]] => color0: 1.0; color1: 1.0; position0: 0.5; position1: 1.0
 let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[1.0, 0.5], [1.0, 1.0]]);
 @Entry
@@ -975,7 +974,7 @@ let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[
 struct RadialGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')
