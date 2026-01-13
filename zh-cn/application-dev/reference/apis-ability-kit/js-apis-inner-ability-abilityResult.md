@@ -6,7 +6,9 @@ FA模型下，可以通过[startAbilityForResult](js-apis-ability-featureAbility
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -26,7 +28,11 @@ import ability from '@ohos.ability.ability';
 
 **系统能力**：SystemCapability.Ability.AbilityBase
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        |  类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| resultCode  | number               | 否   | 否   | 目标方的Ability被拉起并退出后，目标方返回给拉起方的结果码。<br/>-&nbsp;正常情况下，返回目标方传递的结果码。<br/>-&nbsp;异常情况下，返回-1。                                |
+| resultCode  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 目标方的Ability被拉起并退出后，目标方返回给拉起方的结果码。<br/>-&nbsp;正常情况下，返回目标方传递的结果码。<br/>-&nbsp;异常情况下，返回-1。                                |
 | want  | [Want](js-apis-app-ability-want.md) | 否   | 是   | 表示Ability被拉起并退出后返回的数据。 |

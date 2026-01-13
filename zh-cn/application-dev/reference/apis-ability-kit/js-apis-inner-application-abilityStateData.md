@@ -3,8 +3,10 @@
 定义Ability状态信息，可以通过[on](js-apis-app-ability-appManager.md#appmanageronapplicationstate14)注册生命周期变化监听后，通过[ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md)的onAbilityStateChanged生命周期回调获取。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -18,18 +20,22 @@ import { appManager } from '@kit.AbilityKit';
 
 | 名称                     | 类型     | 只读 | 可选 | 说明                       |
 | ----------------------- | ---------| ---- | ---- | ------------------------- |
-| pid                     | number   | 否   | 否   | 进程ID。                    |
-| bundleName              | string   | 否   | 否  | 应用Bundle名称。          |
-| abilityName            | string   | 否   | 否   | Ability名称。               |
-| uid                    | number   | 否   | 否   | 用户ID。                  |
-| state                   | number   | 否   | 否   | Ability状态。<br>- Stage模型：UIAbility的状态参见[Ability状态](#ability状态)；ExtensionAbility的状态参见[Extension状态](#extension状态)。<br>- FA模型：参见[Ability状态](#ability状态)。                |
-| moduleName | string   | 否   | 否   | Ability所属的HAP的名称。    |
-| abilityType | number | 否   | 否   | [Ability类型](#ability类型)：页面或服务等。 |
-| isAtomicService | boolean   | 否  | 否  | 判断Ability所属的应用是否是原子化服务。<br>true:Ability所属的应用是原子化服务。<br>false:Ability所属的应用不是原子化服务。     |
-| appCloneIndex          | number   | 否   | 是   | 分身应用索引。                  |
-| callerBundleName<sup>23+</sup> | string | 否 | 是 | Ability创建时的拉起方Bundle名称。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| pid                     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 进程ID。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
+| bundleName              | string   | 否   | 否  | 应用Bundle名称。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| abilityName            | string   | 否   | 否   | Ability名称。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| uid                    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 用户ID。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| state                   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | Ability状态。<br>- Stage模型：UIAbility的状态参见[Ability状态](#ability状态)；ExtensionAbility的状态参见[Extension状态](#extension状态)。<br>- FA模型：参见[Ability状态](#ability状态)。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| moduleName | string   | 否   | 否   | Ability所属的HAP的名称。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| abilityType | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | [Ability类型](#ability类型)：页面或服务等。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| isAtomicService | boolean   | 否  | 否  | 判断Ability所属的应用是否是原子化服务。<br>true:Ability所属的应用是原子化服务。<br>false:Ability所属的应用不是原子化服务。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| appCloneIndex          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 分身应用索引。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| callerBundleName<sup>23+</sup> | string | 否 | 是 | Ability创建时的拉起方Bundle名称。<br/>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 ### Ability状态
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 值   | 状态                       | 说明                   |
 | ---- | -------------------------- | ---------------------- |
@@ -43,6 +49,11 @@ import { appManager } from '@kit.AbilityKit';
 | 8    | ABILITY_STATE_DISCONNECTED | 后台服务客户端断开连接。 |
 
 ### Extension状态
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 值   | 状态    | 说明                  |
 | ---- | -------------------------- | ---------------------- |
 | 0    | EXTENSION_STATE_CREATE     | ExtensionAbility正在创建中。  |
@@ -52,6 +63,10 @@ import { appManager } from '@kit.AbilityKit';
 | 4    | EXTENSION_STATE_TERMINATED  | ExtensionAbility已经销毁。  |
 
 ### Ability类型
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 值   | 状态    | 说明                  |
 | ---- | ------- | --------------------- |
