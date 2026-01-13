@@ -3210,9 +3210,9 @@ function getColorEffect(session: camera.PhotoSessionForSys): camera.ColorEffectT
 | SOFT                  | 2    | 柔和的色彩效果。  |
 | BLACK_WHITE<sup>12+</sup>    | 3    | 黑白色彩效果。  |
 
-## Portrait<sup>11+</sup>
+## PortraitQuery<sup>12+</sup>
 
-人像类，用于设置人像参数。
+人像查询类，用于获取人像参数。
 
 ### getSupportedPortraitEffects
 
@@ -3247,6 +3247,10 @@ function getSupportedPortraitEffects(portraitPhotoSession: camera.PortraitPhotoS
   return portraitEffects;
 }
 ```
+
+## Portrait<sup>11+</sup>
+
+人像类，用于设置人像参数。
 
 ### setPortraitEffect
 
