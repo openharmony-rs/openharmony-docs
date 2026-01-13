@@ -39,7 +39,7 @@ This file declares the functions related to the GPU context in the drawing modul
 
 ### OH_Drawing_GpuContextCreateFromGL()
 
-```
+```c
 OH_Drawing_GpuContext* OH_Drawing_GpuContextCreateFromGL(OH_Drawing_GpuContextOptions gpuContextOptions)
 ```
 
@@ -62,7 +62,7 @@ Creates an **OH_Drawing_GpuContext** object that uses OpenGL as the backend inte
 | -- | -- |
 | [OH_Drawing_GpuContextOptions](capi-drawing-oh-drawing-gpucontextoptions.md) gpuContextOptions | GPU context options, which is [OH_Drawing_GpuContextOptions](capi-drawing-oh-drawing-gpucontextoptions.md).|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
@@ -70,7 +70,7 @@ Creates an **OH_Drawing_GpuContext** object that uses OpenGL as the backend inte
 
 ### OH_Drawing_GpuContextCreate()
 
-```
+```c
 OH_Drawing_GpuContext* OH_Drawing_GpuContextCreate(void)
 ```
 
@@ -90,7 +90,7 @@ Creates an **OH_Drawing_GpuContext** object, for which the backend type depends 
 
 ### OH_Drawing_GpuContextDestroy()
 
-```
+```c
 void OH_Drawing_GpuContextDestroy(OH_Drawing_GpuContext* gpuContext)
 ```
 

@@ -55,7 +55,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 ### How to Develop
 
-1. Add the header files.
+1. Add the required header files.
 
     ```cpp
     #include <multimedia/player_framework/native_avcodec_audiocodec.h>
@@ -123,7 +123,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    > **NOTE**
    >
-   > You are not advised to perform time-consuming operations in the callback.
+   > Do not call the decoder APIs or perform time-consuming operations in the callbacks.
 
     ```cpp
     // Implement the OH_AVCodecOnError callback function.
@@ -463,8 +463,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     You need to call **OH_AudioCodec_Start()** in the following cases:
 
-    * The EOS of the file is reached.
-    * An error with **OH_AudioCodec_IsValid** set to **true** (indicating that the execution can continue) occurs.
+    * To use the same decoder configuration after **AVCODEC_BUFFER_FLAGS_EOS** of the output buffer is set, call **OH_AudioCodec_Flush()** to refresh the decoder.
+    * If a recoverable error occurs during the execution (**OH_AudioCodec_IsValid()** returns **true**), you can call **OH_AudioCodec_Flush()** to refresh the decoder and then call **OH_AudioCodec_Start()** to start decoding again.
 
     ```c++
     // Refresh the decoder.
@@ -481,7 +481,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 12. (Optional) Call **OH_AudioCodec_Reset()** to reset the decoder.
 
-    After **OH_AudioCodec_Reset()** is called, the decoder returns to the initialized state. To continue decoding, you must call **OH_AudioCodec_Configure()** and then **OH_AudioCodec_Start()**.
+    After **OH_AudioCodec_Reset()** is called, the decoder returns to the initialized state. The input and output buffers obtained before the reset cannot be used. You must call **OH_AudioCodec_Configure()** to reconfigure the decoder and then call **OH_AudioCodec_Start()** to start decoding again. Obtain the input and output buffers again after the decoder is started.
 
     ```c++
     // Reset the decoder.
@@ -498,7 +498,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 13. Call **OH_AudioCodec_Stop()** to stop the decoder.
 
-    After the decoder is stopped, you can call **OH_AudioCodec_Start()** to start it again. If you have passed specific data in the previous **OH_AudioCodec_Start()** for the codec, you must pass it again.
+    After the decoder is stopped, you can call **OH_AudioCodec_Start()** to start it again. The input and output buffers obtained before the decoder is stopped cannot be reused. You must obtain them again after the decoder is started.
 
     ```c++
     // Stop the decoder.

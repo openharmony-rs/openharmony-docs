@@ -537,6 +537,8 @@ offDownloadSuccess(url: string, callback?: Callback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
+**参数：**
+
 | 参数名 | 类型     | 必填 | 说明                   |
 |-----|--------|----|----------------------|
 | url | string | 是  | 待注册回调的url，url字符串的最大长度为8192字节。 |

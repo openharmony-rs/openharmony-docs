@@ -30,7 +30,7 @@ import { image } from '@kit.ImageKit';
 
 | 名称             | 类型           | 只读 | 可选 | 说明                                                         |
 | ---------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
-| supportedFormats | Array\<string> | 是   | 否   | 支持的图片格式，包括：png、jpeg、bmp、gif、webp、dng、heic<sup>12+</sup>、wbmp<sup>23+</sup>（不同硬件设备支持情况不同）。 |
+| supportedFormats | Array\<string> | 是   | 否   | 支持的图片格式，包括：png、jpeg、bmp、gif、webp、dng、heic<sup>12+</sup>、wbmp<sup>23+</sup>、heifs<sup>23+</sup>、tiff<sup>23+</sup>。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
 
 ## getImageInfo
 
@@ -468,7 +468,7 @@ modifyImagePropertiesEnhanced(records: Record\<string, string | null\>): Promise
 
 > **说明：**
 >
-> - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[ImageSource](arkts-apis-image-f.md#imagecreateimagesource7)实例或通过传入的uri创建[ImageSource](arkts-apis-image-f.md#imagecreateimagesource)实例。
+> - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource7)实例或通过传入的uri创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource)实例。
 > - 该方法在内存中完成批量数据修改后会一次性写入文件，相比[modifyImageProperties](#modifyimageproperties12)更高效。
 > - 支持修改JPEG、PNG、HEIF和WEBP文件类型的图片属性，图片需要包含Exif信息。
 
@@ -515,6 +515,117 @@ async function ModifyImagePropertiesEnhanced(imageSourceObj : image.ImageSource)
     });
   }).catch((err: BusinessError) => {
     console.error(`Failed to modify the Image Width and Image Height, error.code ${err.code}, error.message ${err.message}`);
+  });
+}
+```
+
+## readImageMetadata<sup>23+</sup>
+
+readImageMetadata(propertyKeys?: string[], index?: number): Promise\<ImageMetadata>
+
+读取图像源的元数据，使用propertyKeys指定元数据字段。使用Promise异步回调。
+
+该接口仅支持JPEG、PNG、HEIF和WEBP（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**参数：**
+
+| 参数名       | 类型     | 必填 | 说明                      |
+| ------------ | -------- | ---- | ------------------------- |
+| propertyKeys | string[] | 否   | 图片属性名的数组。若未指定propertyKeys，则返回所有支持的元数据。        |
+| index        | number   | 否   | 感兴趣的索引，默认值为0。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Promise\<[ImageMetadata](arkts-apis-image-i.md#imagemetadata23)> | Promise对象，返回ImageMetadata对象，其中含有图片属性名对应的metadata对象，通过ImageMetadata中的metadata对象可以获取图片属性值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7700102  | Unsupported MIME type. |
+| 7700202  | Unsupported metadata.  |
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function ReadImageMetadata(imageSourceObj : image.ImageSource) {
+  let propertyKeys = ["ImageWidth", "HwMnoteIsXmageSupported"];
+  await imageSourceObj.readImageMetadata(propertyKeys).then((metaData: image.ImageMetadata) => {
+    if (metaData != undefined && metaData.exifMetadata != undefined &&
+      metaData.makerNoteHuaweiMetadata != undefined) {
+      console.info("ImageWidth: " + metaData.exifMetadata.imageWidth +
+        " HwMnoteIsXmageSupported: " + metaData.makerNoteHuaweiMetadata.isXmageSupported);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`ReadImageMetadata failed error.code is ${error.code}, error.message is ${error.message}`);
+  })
+}
+```
+
+## writeImageMetadata<sup>23+</sup>
+
+writeImageMetadata(imageMetadata: ImageMetadata): Promise\<void>
+
+批量修改图片属性。使用Promise异步回调。
+
+> **说明：**
+>
+> - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource7)实例或通过传入的uri创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource)实例。
+> - 该方法在内存中完成批量数据修改后会一次性写入文件，相比[modifyImageProperties](#modifyimageproperties12)更高效。
+> - 支持修改JPEG、PNG和HEIF文件类型的图片属性，图片需要包含Exif信息。修改属性前，先通过supportedFormats属性查询设备是否支持HEIF格式的Exif读写。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**参数：**
+
+| 参数名        | 类型                                                   | 必填 | 说明             |
+| ------------- | ------------------------------------------------------ | ---- | ---------------- |
+| imageMetadata | [ImageMetadata](arkts-apis-image-i.md#imagemetadata23) | 是   | 图像的元数据集。若imageMetadata中的属性值都为空，则清空所有Exif元数据。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7700102  | Unsupported MIME type. |
+| 7700202  | Unsupported metadata.  |
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function WriteImageMetadata(imageSourceObj : image.ImageSource) {
+  let propertyKeys = ["ImageWidth", "HwMnoteIsXmageSupported"];
+  let metaData = await imageSourceObj.readImageMetadata(propertyKeys);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    metaData.exifMetadata.imageLength = 3072;
+  }
+  await imageSourceObj.writeImageMetadata(metaData).then(() => {
+    console.info(`write image metadata success.`);
+  }).catch((error: BusinessError) => {
+    console.error(`writeImageMetadata failed error.code is ${error.code}, error.message is ${error.message}`);
   });
 }
 ```
@@ -646,7 +757,7 @@ async function CreatePicture(imageSourceObj : image.ImageSource) {
 
 createPictureAtIndex(index: number): Promise\<Picture>
 
-通过指定序号的图片（目前仅支持GIF格式）创建Picture对象。使用Promise异步回调。
+通过指定序号的图片（目前仅支持GIF和HEIF<sup>23+</sup>图像序列格式）创建Picture对象。使用Promise异步回调。
 
 由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](./arkts-apis-image-Picture.md#release13)方法，及时释放内存。
 

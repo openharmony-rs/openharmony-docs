@@ -135,6 +135,8 @@
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**设备行为差异：** 当该接口在无振动器件设备中被设置为振动模式时，将不会产生振动效果。
+
 | 名称                |  值    | 说明       |
 | ------------------- | ------ | ---------- |
 | RINGER_MODE_SILENT  | 0      | 静音模式。 |
@@ -229,6 +231,20 @@
 | --------------------- | ------ | --------- |
 | ENCODING_TYPE_INVALID | -1     | 无效。    |
 | ENCODING_TYPE_RAW     | 0      | PCM编码。 |
+
+## AudioLatencyType<sup>23+</sup>
+
+表示音频时延类型的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| LATENCY_TYPE_ALL | 0 | 计算包含软件和硬件在内的整体音频处理链路时延。 |
+| LATENCY_TYPE_SOFTWARE | 1 | 计算软件侧时延，包含软件音效。 |
+| LATENCY_TYPE_HARDWARE | 2 | 计算硬件侧时延，包含HAL、驱动和硬件。 |
 
 ## AudioChannelLayout<sup>11+</sup>
 

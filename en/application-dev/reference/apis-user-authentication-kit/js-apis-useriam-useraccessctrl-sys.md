@@ -58,7 +58,7 @@ Represents the AuthToken data returned after a successful verification.
 
 verifyAuthToken(authToken: Uint8Array, allowableDuration: number): Promise\<AuthToken>
 
-Verifies an authentication token.
+Verifies an authentication token. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.USE_USER_ACCESS_MANAGER
 

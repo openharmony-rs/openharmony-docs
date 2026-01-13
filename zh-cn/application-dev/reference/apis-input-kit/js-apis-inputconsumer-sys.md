@@ -24,11 +24,11 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
-## inputConsumer.on
+## inputConsumer.on('key')
 
 on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): void
 
-订阅系统快捷键，当满足条件的组合按键输入事件发生时，使用Callback异步方式上报组合按键数据。
+订阅系统快捷键，当满足条件的组合按键输入事件发生时，使用callback异步方式上报组合按键数据。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -84,11 +84,11 @@ struct Index {
 ```
 
 
-## inputConsumer.off
+## inputConsumer.off('key')
 
 off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
-取消订阅系统快捷键。
+取消订阅系统快捷键。使用callback异步回调。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -185,7 +185,7 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 | 参数名         | 类型                         | 必填   | 说明                                       |
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
 | shieldMode       | [ShieldMode](js-apis-inputconsumer-sys.md#shieldmode11)                     | 是    | 系统快捷键屏蔽类型，目前仅支持取值为'FACTORY_MODE'，表示屏蔽所有系统快捷键。                       |
-| isShield | boolean  | 是    | 屏蔽类型生效状态，true代表屏蔽类型生效，flase代表不生效。              |
+| isShield | boolean  | 是    | 屏蔽类型生效状态，true代表屏蔽类型生效，false代表不生效。              |
 
 **错误码**：
 
@@ -242,7 +242,7 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 
 | 类型         |  说明                                       |
 | ---------- |  ---------------------------------------- |
-| boolean                    | 屏蔽类型生效状态，true代表屏蔽类型生效，flase代表不生效。                       |
+| boolean                    | 屏蔽类型生效状态，true代表屏蔽类型生效，false代表不生效。                       |
 
 **错误码**：
 
@@ -301,6 +301,4 @@ struct Index {
 
 | 名称                        | 值 | 说明           |
 | ------------------------------ | ----------- | ---------------- |
-| UNSET_MODE | -1 | 值为-1，表示不屏蔽系统快捷键。 |
 | FACTORY_MODE | 0 | 值为0，表示屏蔽所有系统快捷键。 |
-| OOBE_MODE | 1 | 值为1，表示OOBE阶段屏蔽所有系统快捷键，暂不支持该能力。 |

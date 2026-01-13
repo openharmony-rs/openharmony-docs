@@ -40,7 +40,7 @@ Describes image information.
 | stride<sup>11+</sup> | number | No | No | Number of bytes from one row of pixels in memory to the next row of pixels in memory.stride >= region.size.width*4 <br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
 | pixelFormat<sup>12+</sup> | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | No |  No| Pixel format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
 | alphaType<sup>12+</sup> | [AlphaType](arkts-apis-image-e.md#alphatype9)  | No |  No |Alpha type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
-| mimeType<sup>12+</sup> | string  |  No |   No |Actual image format (MIME type). |
+| mimeType<sup>12+</sup> | string  |  No |   No |Actual image format (MIME type).<br>The supported formats for image decoding and image encoding are different. Do not directly use the actual image format obtained after decoding as the value of **format** in [PackingOption](#packingoption) during image encoding.<br>You can use the **supportedFormats** property of [ImageSource](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#properties) and [ImagePacker](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#properties) to view the supported formats for decoding and encoding. |
 | isHdr<sup>12+</sup> | boolean  |  No | No | Whether the image is an HDR image. The value **true** means an HDR image, and **false** means an SDR image. For [ImageSource](arkts-apis-image-ImageSource.md), this parameter specifies whether the source image is in HDR format. For [PixelMap](arkts-apis-image-PixelMap.md), this parameter specifies whether the decoded PixelMap is in HDR format.|
 
 ## Size
@@ -131,7 +131,7 @@ Describes the image decoding options.
 
 | Name                    | Type                                                   | Read Only| Optional| Description                                                        |
 | ------------------------ | ------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| desiredAuxiliaryPictures | Array\<[AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13)> | No  | No  | Auxiliary picture type. By default, all auxiliary picture types are decoded.|
+| desiredAuxiliaryPictures | Array\<[AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13)> | No  | No  | Auxiliary picture type. If no auxiliary picture type is specified or an empty array is passed, the system decodes all available auxiliary picture types.<br>To exclude all auxiliary picture, you can decode the auxiliary picture to a PixelMap and use the PixelMap to create a Picture that contains only the main picture.|
 
 ## Region<sup>8+</sup>
 

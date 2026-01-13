@@ -48,12 +48,13 @@
 > 本示例使用了router进行页面跳转，建议开发者使用组件导航(Navigation)代替页面路由(router)来实现页面切换。Navigation提供了更多的功能和更灵活的自定义能力。请参考[使用Navigation的组件冻结用例](#navigation)。
 
 当页面1调用router.pushUrl接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。
+
 图示如下：
 
 ![freezeInPage](./figures/freezeInPage.png)
 
 页面1：
-<!-- @[arkts_custom_components_freeze1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Page1.ets) -->    
+<!-- @[arkts_custom_components_freeze1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Page1.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -80,7 +81,11 @@ struct PageOne {
       Button('go to next page').fontSize(30)
         .onClick(() => {
           // 此处传入的url，需要开发者自行替换。
-          this.getUIContext().getRouter().pushUrl({ url: 'View/PageTwo' });
+          this.getUIContext().getRouter().pushUrl({ url: 'View/PageTwo' }, (err: Error) => {
+            if (err) {
+              hilog.error(DOMAIN, TAG, 'pushUrl failed. Cause: %{public}s', JSON.stringify(err));
+            }
+          });
         })
     }
   }
@@ -138,6 +143,7 @@ struct PageTwo {
 需要注意的是：在首次渲染的时候，Tabs只会创建当前正在显示的TabContent，当切换全部的TabContent后，TabContent才会被全部创建。
 
 图示如下：
+
 ![freezeWithTab](./figures/freezewithTabs.png)
 <!-- @[arkts_custom_components_freeze3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/TabContentTest.ets) -->
 
@@ -835,8 +841,11 @@ struct Page {
     
 
 图示如下：
+
 ![freeze](./figures/freezeResuable.png)
+
 可通过trace观察，仅触发了15个`ChildComponent`节点的刷新。
+
 ![freeze](./figures/traceWithFreeze.png)
 
 **LazyForEach、if、组件复用和组件冻结混用场景**
@@ -1240,10 +1249,10 @@ struct PageTwoStack {
 **页面和LazyForEach**
 
 Navigation和TabContent混用时，之所以会解锁TabContent标签的子节点，是因为回到前一个页面时会从父组件开始递归解冻子组件，与此行为类似的还有页面生命周期：OnPageShow。OnPageShow会将当前Page中的根节点设置为active状态，TabContent作为页面的子节点，也会被设置为active状态。在屏幕灭屏和屏幕亮屏时会分别触发页面的生命周期：OnPageHide和OnPageShow，因此页面中使用LazyForEach时，手动灭屏和亮屏也能实现页面路由一样的效果，如以下示例代码：
-<!-- @[arkts_custom_components_freeze10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing1.ets) -->
+<!-- @[arkts_custom_components_freeze10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing1.ets) --> 
 
 ``` TypeScript
-import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0001;
 const TAG = 'FreezeChild';
 

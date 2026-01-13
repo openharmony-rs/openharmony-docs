@@ -33,15 +33,13 @@ The permission request result is obtained through an **atManager** instance.
 For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 <!--code_no_check-->
 ```ts
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
-import { BusinessError } from '@ohos.base';
-import common from '@ohos.app.ability.common';
+import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager = abilityAccessCtrl.createAtManager();
 try {
   let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   atManager.requestPermissionsFromUser(context, ["ohos.permission.CAMERA"]).then((data) => {
-      console.info(`data: ${data}`);
       console.info("data permissions:" + data.permissions);
       console.info("data authResults:" + data.authResults);
       console.info("data dialogShownResults:" + data.dialogShownResults);

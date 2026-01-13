@@ -763,7 +763,7 @@ Adds the permission to applications for accessing USB accessories.
 | Name   | Type        | Mandatory| Description                    |
 | --------- | ------------ | ---- | ------------------------ |
 | tokenId   | number       | Yes  | Token ID of the application.|
-| accessory | USBAccessory | Yes  | USB accessory.               |
+| accessory | [USBAccessory](js-apis-usbManager.md#usbaccessory14) | Yes  | USB accessory.               |
 
 **Error codes**
 

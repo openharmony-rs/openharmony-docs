@@ -10,6 +10,7 @@
 从API version 21开始，可以选择使用硬件熵源生成安全随机数。
 
 随机数主要用于临时会话密钥生成和非对称加密算法密钥生成等场景。在加解密场景中，安全随机数生成器需要具备随机性、不可预测性和不可重现性。
+
 使用更安全的熵源，对随机数而言，就意味着 “结果难以被猜测或复现”，是 “真随机性” 的量化体现。
 <!--Del-->当前硬件熵源随机数的实现依赖HUKS。对于具备安全环境（如TEE、安全芯片）的系统或设备，开启硬件熵源后，将通过HUKS从TEE中获取安全随机数（其熵源为硬件熵源）作为算法库生成随机数的熵源。由于安全环境依赖硬件支持，在开源仓中仅为模拟实现，需OEM厂商适配。<!--DelEnd-->
 
@@ -56,10 +57,13 @@
    指定字节长度范围为1~INT_MAX。
 
 - 通过await返回异步结果：
-  ```ts
-  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  <!-- @[secure_hard_ware_random_number_generation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/ets/pages/Await.ets) -->
 
-  async function doRand() {
+``` TypeScript
+
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function doRand() {
     let rand = cryptoFramework.createRandom();
     rand.enableHardwareEntropy();
     let seed = new Uint8Array([1, 2, 3]);
@@ -68,27 +72,32 @@
     let randOutput = await rand.generateRandom(len);
     console.info('rand output:' + randOutput.data);
   }
-  ```
+```
+
 
 - 同步返回结果：
-  ```ts
-  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+  <!-- @[secure_hard_ware_random_number_generation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/ets/pages/Sync.ets) -->
 
-  function doRandBySync() {
-    let rand = cryptoFramework.createRandom();
-    rand.enableHardwareEntropy();
-    let len = 24; // Generate a 24-byte random number.
-    try {
-      let randData = rand.generateRandomSync(len);
-      if (randData.data.length !== 0) {
-        console.info("[Sync]: rand result: " + randData.data);
-      } else {
-        console.error("[Sync]: get rand result fail!");
-      }
-    } catch (error) {
-      let e: BusinessError = error as BusinessError;
-      console.error(`do rand failed, ${e.code}, ${e.message}`);
+``` TypeScript
+
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function doRandBySync() {
+  let rand = cryptoFramework.createRandom();
+  rand.enableHardwareEntropy();
+  let len = 24; // Generate a 24-byte random number.
+  try {
+    let randData = rand.generateRandomSync(len);
+    if (randData.data.length !== 0) {
+      console.info('[Sync]: rand result: ' + randData.data);
+    } else {
+      console.error('[Sync]: get rand result fail!');
     }
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`do rand failed, ${e.code}, ${e.message}`);
   }
-  ```
+}
+```
+

@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 The **formInfo** module provides types and enums related to the widget information and state.
 
@@ -15,7 +15,7 @@ The **formInfo** module provides types and enums related to the widget informati
 ## Modules to Import
 
 ```ts
-import formInfo from '@ohos.application.formInfo';
+import { formInfo } from '@kit.FormKit';
 ```
 
 ## FormInfo

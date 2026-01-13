@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 仅在Tabs中使用，对应一个切换页签的内容视图。
@@ -1598,6 +1598,7 @@ struct TabContentExample6 {
 ### 示例7（设置子页签/底部页签文本颜色）
 
 本示例通过labelStyle中的unselectedColor和selectedColor改变底部页签以及子页签的文本颜色。
+
 通过iconStyle中的unselectedColor和selectedColor改变底部页签的图标颜色。
 
 ```ts

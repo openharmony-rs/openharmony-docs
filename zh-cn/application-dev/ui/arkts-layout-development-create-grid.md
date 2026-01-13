@@ -270,34 +270,36 @@ Grid() {
 @Entry
 @Component
 export struct ScrollableGrid {
-// ···
+  // ...
   @State services: Array<string> = [
-    // app.string.Live_Streaming资源文件中的value值为‘直播’
+    // 请将$r('app.string.Live_Streaming')替换为实际资源文件，在本示例中该资源文件的value值为"直播"
     this.context!.resourceManager.getStringSync($r('app.string.Live_Streaming').id),
-    // app.string.Imported资源文件中的value值为‘进口’
+    // 请将$r('app.string.Imported')替换为实际资源文件，在本示例中该资源文件的value值为"进口"
     this.context!.resourceManager.getStringSync($r('app.string.Imported').id)
     ];
-// ···
+  // ...
   build() {
-    // ···
+    // ...
 
       Column({ space: 5 }) {
-        // ···
+        // ...
 
           Grid() {
-            ForEach(this.services, (service: string, index) => {
+            ForEach(this.services, (service: string, index: number) => {
               GridItem() {
+                // ...
               }
               .width('25%')
+              // ...
             }, (service: string): string => service)
           }
           .rowsTemplate('1fr 1fr') // 只设置rowsTemplate属性，当内容超出Grid区域时，可水平滚动。
           .rowsGap(15)
 
-        // ···
+          // ...
         }
       }
-    // ···
+      // ...
 }
 ```
 
@@ -325,19 +327,19 @@ private scroller: Scroller = new Scroller();
  ``` TypeScript
  Column({ space: 5 }){
    Grid(this.scroller) {
-   // ···
+     // ...
    }
    .columnsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
-   // ···
+   // ...
    Row({ space: 20 }) {
-     // app.string.Previous_Page资源文件中的value值为‘上一页’
+     // 请将$r('app.string.Previous_Page')替换为实际资源文件，在本示例中该资源文件的value值为"上一页"
      Button($r('app.string.Previous_Page'))
        .onClick(() => {
          this.scroller.scrollPage({
            next: false
          });
        })
-     // app.string.Next_page资源文件中的value值为‘下一页’
+     // 请将$r('app.string.Next_page')替换为实际资源文件，在本示例中该资源文件的value值为"下一页"
      Button($r('app.string.Next_page'))
        .onClick(() => {
          this.scroller.scrollPage({

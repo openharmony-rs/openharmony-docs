@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_Device ScsiPeripheral_Device
+```
+
 ## Overview
 
 Opaque SCSI device structure.

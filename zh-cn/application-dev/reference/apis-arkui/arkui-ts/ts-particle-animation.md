@@ -1688,7 +1688,7 @@ struct ParticleExample {
               scale: {
                 range: [0.2, 1.5], // 初始大小范围
               },
-              opacity	: {
+              opacity : {
                 range: [0.2, 0.8], // 初始透明度范围
               }
             }

@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 A widget can be updated through a proxy – a system application that has data sharing enabled – when the widget provider is not running.
@@ -26,12 +26,10 @@ Compared with the [implementation of the ArkTS widget](arkts-form-overview.md#ho
 Processing flow of the widget provider (indicated by the blue arrows in the figure):
 
 1. The widget provider sets the `dataProxyEnabled` field to `true` in the `form_config.json` file to enable the update-through-proxy feature.
-> **NOTE**
->
-> After the update-through-proxy feature is enabled, the settings for [interval-based update](arkts-ui-widget-passive-refresh.md#interval-based-update) becomes invalid.
-
+    > **NOTE**
+    >
+    > After the update-through-proxy feature is enabled, the settings for [interval-based update](arkts-ui-widget-passive-refresh.md#interval-based-update) becomes invalid.
 2. In the [onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform) callback, the widget provider returns the `key + subscriberId` combination defined by the data provider to the Widget Manager.
-
 3. The Widget Manager parses the subscription information of the widget provider and registers a subscription instance with the data management service.
 
 Processing flow of the widget update proxy (indicated by the red arrows in the figure):

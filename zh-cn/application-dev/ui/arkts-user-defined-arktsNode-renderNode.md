@@ -78,7 +78,7 @@ export struct OperationNodeTree {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Row() {
         NodeContainer(this.myNodeController)
           .width(200)
@@ -97,10 +97,9 @@ export struct OperationNodeTree {
           });
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## 设置和获取渲染相关属性
@@ -398,7 +397,7 @@ export struct CustomDraw {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Column() {
         NodeContainer(this.myNodeController)
           .width('100%');
@@ -411,10 +410,9 @@ export struct CustomDraw {
           });
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## 调整自定义绘制Canvas的变换矩阵
@@ -553,7 +551,7 @@ export struct CustomDrawCanvas {
   myNodeController1: MyNodeController1 = new MyNodeController1();
 
   build() {
-    // ···
+    // ...
       Row() {
         Column() {
           NodeContainer(this.myNodeController)
@@ -568,10 +566,9 @@ export struct CustomDrawCanvas {
         .width('45%');
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ![RenderNode-canvas](./figures/renderNode-canvas.png)
@@ -739,15 +736,14 @@ export struct CustomDrawCanvasNative {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Row() {
         NodeContainer(this.myNodeController);
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## 设置标签
@@ -792,7 +788,7 @@ export struct SetLabel {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Column() {
         NodeContainer(this.myNodeController)
           .width(300)
@@ -800,10 +796,9 @@ export struct SetLabel {
           .backgroundColor(Color.Gray);
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## 查询当前RenderNode是否解除引用
@@ -857,7 +852,7 @@ export struct CheckRanderNodeDisposed {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Column({ space: 4 }) {
         NodeContainer(this.myNodeController);
         Button('RenderNode dispose')
@@ -879,8 +874,7 @@ export struct CheckRanderNodeDisposed {
       .width('100%')
       .height('100%');
 
-    // ···
+      // ...
   }
 }
-
 ```

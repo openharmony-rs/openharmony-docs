@@ -199,7 +199,7 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, options?: BackgroundImage
 
 backgroundImageSize(value: SizeOptions | ImageSize): T
 
-设置组件背景图片的宽度和高度。当未设置backgroundImageSize时，默认组件背景图片宽高效果为ImageSize.Auto。
+设置组件背景图片的宽度和高度。当未设置backgroundImageSize时，默认组件背景图片宽高效果为[ImageSize.Auto](ts-appendix-enums.md#imagesize)。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -576,6 +576,8 @@ backgroundImageResizable(value: ResizableOptions): T
 
 ## BlurStyleActivePolicy<sup>14+</sup>
 
+定义背景模糊激活策略。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
@@ -942,6 +944,7 @@ struct Index {
                 .fontColor('rgba(255,255,255,1)')
             }
           }
+          // blendMode采用离屏渲染，DST_IN模式下仅显示当前组件与下方画布的重叠区域
           .blendMode(BlendMode.DST_IN, BlendApplyType.OFFSCREEN)
           .pixelRound({
             start: PixelRoundCalcPolicy.FORCE_FLOOR ,
@@ -950,7 +953,9 @@ struct Index {
             bottom: PixelRoundCalcPolicy.FORCE_CEIL
           })
         }
+        // blendMode采用离屏渲染，SRC_OVER模式下会将当前组件内容覆盖显示在下方画布之上
         .blendMode(BlendMode.SRC_OVER, BlendApplyType.OFFSCREEN)
+        // backgroundEffect配置组件背景的圆角、饱和度、亮度及动态RGBA颜色
         .backgroundEffect({
           radius: this.rad,
           saturation: this.satVal,

@@ -1364,7 +1364,6 @@ replaceSuperAdmin(oldAdmin: Want, newAdmin: Want, isKeepPolicy: boolean): void
 ```ts
 import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let oldAdmin: Want = {
   // 需根据实际情况进行替换
@@ -1424,7 +1423,6 @@ setAdminRunningMode(admin: Want, mode: RunningMode): void
 ```ts
 import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let admin: Want = {
   // 需根据实际情况进行替换

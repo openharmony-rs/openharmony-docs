@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 用作[Stepper](ts-basic-components-stepper.md)组件的页面子组件。
@@ -85,7 +85,7 @@ status(value?: ItemState)
 >
 >  - StepperItem组件不支持设置通用宽度属性，其宽度默认撑满Stepper父组件。
 >  - StepperItem组件不支持设置通用高度属性，其高度由Stepper父组件高度减去label按钮组件高度。
->  - StepperItem组件不支持设置aspectRadio/constrainSize影响长宽的属性。
+>  - StepperItem组件不支持设置[aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio)/[constraintSize](ts-universal-attributes-size.md#constraintsize)影响长宽的属性。
 ## ItemState枚举说明
 
 步骤导航器nextLabel的显示状态。

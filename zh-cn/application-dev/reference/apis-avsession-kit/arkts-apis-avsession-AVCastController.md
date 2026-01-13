@@ -1689,7 +1689,7 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 	取消对应的监听事件，支持的事件是'castControlGenericError'。 |
+| type     | string   | 是   |  取消对应的监听事件，支持的事件是'castControlGenericError'。 |
 | callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -1843,7 +1843,7 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 	取消对应的监听事件，支持的事件是'castControlParsingError'。 |
+| type     | string   | 是   |  取消对应的监听事件，支持的事件是'castControlParsingError'。 |
 | callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -1915,7 +1915,7 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 	取消对应的监听事件，支持的事件是'castControlDecodingError'。 |
+| type     | string   | 是   |  取消对应的监听事件，支持的事件是'castControlDecodingError'。 |
 | callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**

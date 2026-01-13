@@ -33,6 +33,12 @@
 
 - ResultSet模块通过共享内存实现，用于存储查询数据得到的结果集，并提供了遍历结果集的方法。
 
+## 约束与限制
+
+- 数据共享结果集的上限取决于数据提供方的限制（如最多事实上只允许同时使用32个），推荐数据提供方明确此数值上限，控制资源占用。超出数据提供方限制数量的查询请求需要重试处理。
+- 对于查询完成后返回的数据共享结果集，在使用完成后应及时释放，参见[DataShareResultSet](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close)。
+
+
 ## 实现说明
 
 
@@ -269,7 +275,7 @@
    
    ```ts
    // 作为参数传递的URI，与module.json5中定义的URI的区别是多了一个"/"，是因为作为参数传递的URI中，在第二个与第三个"/"中间，存在一个DeviceID的参数
-   let dseUri = ('datashare:///com.ohos.settingsdata.DataAbility');
+   let dseUri = 'datashare:///com.ohos.settingsdata.DataAbility';
    ```
 
 3. 使用createDataShareHelper()方法传入URI创建DataShareHelper对象。

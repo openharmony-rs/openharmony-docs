@@ -142,6 +142,7 @@
 ## EdgeWidths<sup>9+</sup>
 
 边框宽度类型，用于描述组件边框不同方向的宽度。
+
 引入该对象时，至少传入一个参数。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -160,6 +161,7 @@
 ## LocalizedEdgeWidths<sup>12+</sup>
 
 边框宽度类型，用于描述组件边框不同方向的宽度。
+
 引入该对象时，至少传入一个参数。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -178,6 +180,7 @@
 ## BorderRadiuses<sup>9+</sup>
 
 圆角类型，用于描述组件边框圆角半径。
+
 引用该对象时，至少传入一个参数。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -196,6 +199,7 @@
 ## LocalizedBorderRadiuses<sup>12+</sup>
 
 圆角类型，用于描述组件边框圆角半径。
+
 引用该对象时，至少传入一个参数。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -214,6 +218,7 @@
 ## EdgeColors<sup>9+</sup>
 
 边框颜色，用于描述组件边框四条边的颜色。
+
 引入该对象时，至少传入一个参数。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -232,6 +237,7 @@
 ## LocalizedEdgeColors<sup>12+</sup>
 
 边框颜色，用于描述组件边框四条边的颜色。
+
 引入该对象时，至少传入一个参数。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -250,6 +256,7 @@
 ## EdgeStyles<sup>9+</sup>
 
 边框样式，用于描述组件边框四条边的样式。
+
 引入该对象时，至少传入一个参数。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -876,7 +883,7 @@ type ResponsiveFillType = PresetFillType
 
 ## AccessibilityActionOptions<sup>23+</sup>对象说明
 
-设置组件的无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。
+设置组件的无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。仅[Slider](ts-basic-components-slider.md)组件支持使用。在其他组件使用该接口时，编译环节可正常通过，但接口功能不生效。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 

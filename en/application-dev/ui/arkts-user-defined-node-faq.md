@@ -1,4 +1,4 @@
-# Custom Node FAQs
+# FAQs About Custom Nodes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiang-shouxing-->
@@ -150,7 +150,6 @@ struct NavigationExample {
   }
 }
 
-// PageOne.ets
 @Component
 export struct pageOneTmp {
   @Consume('pageInfos') pageInfos: NavPathStack;
@@ -186,7 +185,6 @@ export struct pageOneTmp {
   }
 }
 
-// PageTwo.ets
 @Component
 export struct pageTwoTmp {
   @Consume('pageInfos') pageInfos: NavPathStack;
@@ -229,7 +227,6 @@ export struct pageTwoTmp {
   }
 }
 
-// PageThree.ets
 @Component
 export struct pageThreeTmp {
   @Consume('pageInfos') pageInfos: NavPathStack;
@@ -271,6 +268,131 @@ export struct pageThreeTmp {
       console.info('pop' + 'return value' + JSON.stringify(popDestinationInfo));
       return true;
     })
+  }
+}
+
+```
+
+## Memory Leak Caused by Circular Reference Between BuilderNode Frontend and Backend
+
+**Symptom**
+
+When [BuilderNode](./arkts-user-defined-arktsNode-builderNode.md) is used to create custom component nodes, a circular reference may form between the frontend (ArkTS UI layer) and the backend (native UI engine layer), preventing the custom node from being destroyed and resulting in a memory leak.
+
+**Possible Causes**
+
+- When custom nodes are created with [BuilderNode](./arkts-user-defined-arktsNode-builderNode.md), the frontend BuilderNode object holds a strong reference to the backend node by default. Meanwhile, the backend node may, through certain paths (such as event callbacks or global caches), retain a reference back to the frontend BuilderNode object. This creates a circular reference between frontend and backend, causing the frontend object to be uncollectable and the backend node to remain unreleased due to the strong reference from the frontend, resulting in a memory leak.
+- The BuilderNode retains the parameter objects passed to its [build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build) function. If those parameter objects also hold a reference to the BuilderNode object itself, a circular reference among frontend objects is formed.
+
+**Solution**
+
+- Step 1: If the parameters passed to the BuilderNode hold a reference to the BuilderNode object, call the [update](../reference/apis-arkui/js-apis-arkui-builderNode.md#update) API to update the parameters and remove that reference when the BuilderNode is no longer needed.
+- Step 2: When a BuilderNode is no longer required, remove it from the component tree and call the [dispose](../reference/apis-arkui/js-apis-arkui-builderNode.md#dispose12) API. This immediately releases the strong reference from the frontend BuilderNode object to the backend node, breaking the circular reference between frontend and backend.
+
+**Example**
+
+The following example demonstrates a scenario where the BuilderNode frontend object is passed as a parameter to a custom component, creating a circular reference between frontend and backend.
+In the code, [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) is the callback triggered when the custom component (**TestComponent**) built inside the BuilderNode is destroyed.
+
+- Without calling **dispose** (clicking the **Destroy** button): Due to the circular reference, the custom component cannot be destroyed, manifested by the [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) callback not being triggered.
+
+- With calling **dispose** (clicking the **Destroy with dispose** button): The [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) callback is successfully triggered.
+
+```ts
+import { FrameNode, NodeController, BuilderNode } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Define the API for passing parameters.
+interface ParamsInterface {
+  builderRootNode: BuilderNode<[ParamsInterface]> | null;
+}
+
+// Custom component
+@Component
+struct TestComponent {
+  builderRootNode: BuilderNode<[ParamsInterface]> | null = null;
+  build() {
+    Column() {
+      Text('This is a BuilderNode.')
+        .fontSize(16)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width('100%')
+    .backgroundColor(Color.Gray)
+  }
+
+  // Triggered when the custom component instance is created.
+  aboutToAppear() {
+    hilog.info(0x0000, 'testTag', 'aboutToAppear');
+  }
+
+  // Triggered when the custom component instance is destroyed.
+  aboutToDisappear() {
+    hilog.info(0x0000, 'testTag', 'aboutToDisappear');
+  }
+}
+
+@Builder
+function buildComponent(params: ParamsInterface) {
+  TestComponent(params)
+}
+
+// Implement a custom UI controller by extending NodeController.
+class MyNodeController extends NodeController {
+  private builderNode: BuilderNode<[ParamsInterface]> | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.builderNode = new BuilderNode(uiContext);
+
+    // Pass the builderNode itself as a parameter to the custom component, creating a circular reference scenario.
+    this.builderNode.build(new WrappedBuilder(buildComponent), {builderRootNode: this.builderNode});
+
+    return this.builderNode.getFrameNode();
+  }
+
+  // Release the builderNode's reference to the backend entity and set it to null.
+  dispose() {
+    if (this.builderNode !== null) {
+      this.builderNode.dispose();
+      this.builderNode = null;
+    }
+  }
+
+  // Clear parameters held by the builderNode object, removing the parameter's reference to the builderNode object.
+  clearParams() {
+    this.builderNode?.update({builderRootNode: null} as ParamsInterface)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State myNodeController: MyNodeController | undefined = new MyNodeController();
+  build() {
+    Column({ space: 4 }) {
+      NodeContainer(this.myNodeController)
+      Button('Destroy')
+        .onClick(() => {
+          this.myNodeController?.clearParams();
+          // Set the NodeController passed to NodeContainer to undefined to detach the BuilderNode from the tree.
+          this.myNodeController = undefined;
+        })
+        .width('100%')
+      Button('Destroy with dispose')
+        .onClick(() => {
+          this.myNodeController?.clearParams();
+          this.myNodeController?.dispose();
+          this.myNodeController = undefined;
+        })
+        .width('100%')
+      Button('Create')
+        .onClick(() => {
+          if (this.myNodeController === undefined) {
+            this.myNodeController = new MyNodeController();
+          }
+        })
+        .width('100%')
+    }
   }
 }
 

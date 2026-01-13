@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 User files are the private [images, videos](../media/medialibrary/photoAccessHelper-overview.md), audio clips, and documents of the user who has logged in to the device.
 
@@ -21,14 +21,18 @@ User files are the private [images, videos](../media/medialibrary/photoAccessHel
 Built-in storage is the internal storage device (space) of a device. The built-in storage device cannot be removed. The following files can be stored in the built-in storage of a device:
 
 - Files of a user: The files belong to the user who has logged in to the device. Different login users on a device can view their own files only.
+
     These user files can be classified into the following types based on file attributes and access habits of users/applications:
   - Image/Video files<br>
+
     The files have attributes, such as the shooting time, location, rotation angle, and file width and height information, and are stored in media file formats. Generally, these files are presented as media files or albums, without the specific storage location in the system.
   
   - Audio files<br>
+
     The files have attributes, such as the album, artist, and duration information, and are stored in media file formats. Generally, audio files are presented by file, album, or artist, without the specific storage location in the system.
   
   - Other files (documents)<br>
+
     The files are stored as common files, including common text files, compressed files, and images, videos and audio clips stored as common files. Generally, these files are presented in a directory tree.
 
 

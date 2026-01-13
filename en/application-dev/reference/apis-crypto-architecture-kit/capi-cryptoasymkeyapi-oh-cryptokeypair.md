@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoKeyPair OH_CryptoKeyPair
+```
+
 ## Overview
 
 Defines a struct for an asymmetric key pair.

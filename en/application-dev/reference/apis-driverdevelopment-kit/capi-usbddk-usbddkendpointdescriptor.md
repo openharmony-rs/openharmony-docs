@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbDdkEndpointDescriptor {...} UsbDdkEndpointDescriptor
+```
+
 ## Overview
 
 Defines endpoint descriptors.

@@ -4222,9 +4222,11 @@ queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
 
 ## contact.queryContactsCount<sup>22+</sup>
 
-queryContactsCount(context: Context): Promise&lt;int&gt;
+queryContactsCount(context: Context): Promise&lt;number&gt;
 
 查询所有联系人的数量。使用Promise异步回调。
+
+**原子化服务API**：从API version 22 开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -4240,7 +4242,16 @@ queryContactsCount(context: Context): Promise&lt;int&gt;
 
 | 类型                  | 说明                                       |
 | --------------------- | ------------------------------------------ |
-| Promise&lt;int&gt; | Promise对象。返回查询到的联系人数量。 |
+| Promise&lt;number&gt; | Promise对象。返回查询到的联系人数量。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ------------------ |
+| 201      | Permission denied. |
+| 16700001      | General error. |
 
 **示例：**
 
@@ -4387,6 +4398,68 @@ promise.then((data) => {
     console.error(`Failed to save to existing Contact via UI. Code: ${err.code}, message: ${err.message}`);
   });
 ``` 
+
+## contact.addContacts<sup>23+</sup>
+
+addContacts(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
+
+批量添加联系人。使用Promise异步回调。
+
+**原子化服务API**：从API version 23 开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.WRITE_CONTACTS
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+**参数：**
+
+| 参数名  | 类型                | 必填 | 说明                                                         |
+| ------- | ------------------- | ---- | ------------------------------------------------------------ |
+| context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| contacts | Array&lt;[Contact]&gt;(#contact) | 是   | 联系人信息数组。                                                 |
+
+**返回值：**
+
+| 类型                  | 说明                              |
+| --------------------- | --------------------------------- |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回批量添加的联系人id数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ------------------ |
+| 201      | Permission denied. |
+| 16700001      | General error. |
+| 16700002      | Invalid Parameter value. |
+
+**示例：**
+
+>**说明：**
+>
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+<!--code_no_check-->
+```js
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const contactInfo1: contact.Contact = {
+  name: { fullName: 'xxx1'},
+  phoneNumbers: [{ phoneNumber: '138xxxxxx' }]
+};
+const contactInfo2: contact.Contact = {
+  name: { fullName: 'xxx2'},
+  phoneNumbers: [{ phoneNumber: '139xxxxxx' }]
+};
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+contact.addContacts(context, [contactInfo1, contactInfo2]).then((data) => {
+  console.info(`Succeeded in addContacts.data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to addContacts. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## ContactSelectionOptions<sup>10+</sup>
 
@@ -4838,22 +4911,20 @@ imAddress.imAddress = "imAddress";
 
 联系人的名字类。
 
-**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称               |   类型   | 只读 | 可选 | 说明                        |
 | ------------------ | -------- | ---- | ---- | --------------------------- |
-| familyName         | string   | 否   | 是   | 联系人的家庭姓名。          |
-| familyNamePhonetic | string   | 否   | 是   | 联系人的家庭姓名拼音。      |
-| fullName           | string   | 否   | 否   | 联系人的全名。              |
-| givenName          | string   | 否   | 是   | 联系人的名称(firstName)。 |
-| givenNamePhonetic  | string   | 否   | 是   | 联系人的名称拼音。          |
-| middleName         | string   | 否   | 是   | 联系人的中间名。            |
-| middleNamePhonetic | string   | 否   | 是   | 联系人的中间名拼音。        |
-| namePrefix         | string   | 否   | 是   | 联系人的姓名前缀。          |
-| nameSuffix         | string   | 否   | 是   | 联系人的姓名后缀。          |
-| hasName<sup>22+</sup>            | boolean  | 否   | 是   | 联系人信息中是否包含姓名。true表示包含，false表示不包含。          |
+| familyName         | string   | 否   | 是   | 联系人的家庭姓名。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。          |
+| familyNamePhonetic | string   | 否   | 是   | 联系人的家庭姓名拼音。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。      |
+| fullName           | string   | 否   | 否   | 联系人的全名。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。              |
+| givenName          | string   | 否   | 是   | 联系人的名称(firstName)。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。 |
+| givenNamePhonetic  | string   | 否   | 是   | 联系人的名称拼音。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。          |
+| middleName         | string   | 否   | 是   | 联系人的中间名。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。            |
+| middleNamePhonetic | string   | 否   | 是   | 联系人的中间名拼音。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。        |
+| namePrefix         | string   | 否   | 是   | 联系人的姓名前缀。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。          |
+| nameSuffix         | string   | 否   | 是   | 联系人的姓名后缀。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。          |
+| hasName<sup>22+</sup>            | boolean  | 否   | 是   | 联系人信息中是否包含姓名。true表示包含，false表示不包含。**原子化服务API**：从API version 22 开始，该接口支持在原子化服务中使用。          |
 
 **对象创建示例：**
 
@@ -5013,14 +5084,12 @@ phoneNumber.phoneNumber = "138xxxxxxxx";
 uri为可访问的联系人头像文件地址，[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)为通过联系人头像资源生成的[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象。<br/>
 >  读取联系人头像资源仅支持uri格式，该格式仅支持以[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)方式打开，无法直接在Image组件内显示，需读取后转换为[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)格式显示。
 
-**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称 |   类型   | 只读 | 可选 | 说明           |
 | ---- | -------- | ---- | ---- | -------------- |
-| uri  | string   | 否   | 否   | uri格式联系人头像。 |
-| photo<sup>22+</sup>  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)   | 否   | 是   | pixelMap格式的联系人头像。 |
+| uri  | string   | 否   | 否   | uri格式联系人头像。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。 |
+| photo<sup>22+</sup>  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)   | 否   | 是   | PixelMap格式的联系人头像。**原子化服务API**：从API version 22 开始，该接口支持在原子化服务中使用。 |
 
 **对象创建示例：**
 

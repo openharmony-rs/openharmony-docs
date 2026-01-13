@@ -10,6 +10,7 @@
 ## Overview
 
 Function Flow Runtime (FFRT) is a task-based and data-driven concurrent programming model that allows you to develop an application by creating tasks and describing their dependencies.
+
 Specifically, FFRT automatically and concurrently schedules and executes tasks of the application based on the task dependency status and available resources, so that you can focus on feature development.
 
 This document provides guidance for you to implement concurrent programming based on the FFRT programming model.

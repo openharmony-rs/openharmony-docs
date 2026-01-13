@@ -52,7 +52,7 @@ Register the **onPortrait** callback using the saved listener, and change the pa
     }
   }
 
-    // ···
+// ···
     this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
     // ···
     });
@@ -97,7 +97,7 @@ When media types are not specified in a media query, the default type **screen**
 
 ### media-logic-operations
 
-You can use logical operators (**and**, **or**, **not**, and **only**) to compose complex media queries. You can also combine them using comma (,). The following table describes the operators.
+You can use logical operators (such as **and**, **or**, **not**, and **only**) to compose complex media queries. You can also combine them using comma (,). The following table describes the operators.
 
   **Table 1** Media logical operators
 
@@ -106,7 +106,7 @@ You can use logical operators (**and**, **or**, **not**, and **only**) to compos
 | and              | The **and** operator is used to combine multiple media features into one media query, in a logical AND operation. The query is valid only when all media features are true. It can also combine media types and media functions. For example, **screen and (device-type: wearable) and (max-height: 600px)** evaluates to **true** when the device type is wearable and the maximum height of the application is 600 pixel units.|
 | or               | The **or** operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true. For example, **screen and (max-height: 1000px) or (round-screen: true)** indicates that the query is valid when the maximum height of the application is 1000 pixel units or the device screen is round.|
 | not              | The **not** operator is used to perform a logical negation for a media query. It must be used in conjunction with **screen**. **true** is returned if the query condition is not met. Otherwise, **false** is returned. For example, **not screen and (min-height: 50px) and (max-height: 600px)** evaluates to **true** when the height of the application is less than 50 pixel units or greater than 600 pixel units.|
-| only             | The **only** operator must be used with **screen** to ensure that the styles are only applied when the media query matches. It has the same effect as using **screen** alone. Example: **only screen and (height &lt;= 50)**.|
+| only             | The **only** operator must be used with **screen** to ensure that the styles are only applied when the media query matches. It has the same effect as using **screen** alone. Example: **only screen and (height &lt;= 50) **.|
 | comma (, ) | The **or** operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true. The effect of a comma operator is equivalent to that of the **or** operator. For example, **screen and (min-height: 1000px), (round-screen: true)** indicates that the query is valid when the minimum height of the application is 1000 pixel units or the device screen is round.|
 
 Media range operators include <=, >=, <, and >. For details, see the following table.
@@ -167,9 +167,7 @@ Stage model:
 <!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// [Start obtain_mediaquery_import]
 import { mediaquery } from '@kit.ArkUI';
-// [End obtain_mediaquery_import]
 import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
@@ -179,40 +177,26 @@ struct MediaQueryExample {
   @State color: string = '#DB7093';
   @State text: string = 'Portrait';
   // The query is valid when the device is in landscape mode.
-  // [Start obtain_mediaquery_listener]
   listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
-  // [End obtain_mediaquery_listener]
 
   // The callback is triggered when the query is valid.
-  // [Start obtain_mediaquery_Portrait]
   onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
     if (mediaQueryResult.matches as boolean) {// If the device is in landscape mode, the page layout is changed accordingly.
-      // [StartExclude obtain_mediaquery_Portrait]
       this.color = '#FFD700';
       this.text = 'Landscape';
-      // [EndExclude obtain_mediaquery_Portrait]
     } else {
-      // [StartExclude obtain_mediaquery_Portrait]
       this.color = '#DB7093';
       this.text = 'Portrait';
-      // [EndExclude obtain_mediaquery_Portrait]
     }
   }
 
-  // [StartExclude obtain_mediaquery_Portrait]
   aboutToAppear() {
     // Bind to the current application instance.
     // Register the callback.
-    // [EndExclude obtain_mediaquery_Portrait]
     this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
-      // [StartExclude obtain_mediaquery_Portrait]
       this.onPortrait(mediaQueryResult);
-      // [EndExclude obtain_mediaquery_Portrait]
     });
-    // [StartExclude obtain_mediaquery_Portrait]
   }
-  // [EndExclude obtain_mediaquery_Portrait]
-  // [End obtain_mediaquery_Portrait]
 
   aboutToDisappear() {
     // Unbind the callback function registered in the listener.

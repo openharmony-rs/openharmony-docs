@@ -11,11 +11,10 @@ Applications designed based on the JS UI framework apply to different countries 
 
 You only need to perform operations in [Defining Resource Files](#defining-resource-files) and [Referencing Resources](#referencing-resources) to use the multi-language capability of this framework. For details about how to obtain the current system language, see [Obtaining the Language](#obtaining-the-language).
 
+
 ## Defining Resource Files
 
-Resource files store application content in multiple languages. This framework uses JSON files to store resource definitions.
-
-Place the resource file of each locale in the i18n directory described in [File Organization](js-framework-file.md). Resource files should be named in _language-script-region_.json format. For example, the resource file for Hong Kong(China) in the traditional script is named zh-Hant-HK. You can omit the region, for example, zh-CN for simplified Chinese, or omit both the script and region, for example, zh for Chinese.  
+Resource files store application content in multiple languages. This framework uses JSON files to store resource definitions. Place the resource file of each locale in the **i18n** directory described in [File Organization](js-framework-file.md). Resource files are named in *language-script-region***.json** format. For example, the resource file for Hong Kong Chinese in the traditional script is named **zh-Hant-HK**. You can omit the region, for example, **zh-CN** for simplified Chinese, or omit both the script and region, for example, **zh** for Chinese.  
 
 ```
 language[-script-region].json
@@ -36,7 +35,6 @@ If there is no resource file of the locale that matches the system language, con
 The format of the resource file content is as follows:
 
 **en-US.json**
-
 ```json
 {
     "strings": {
@@ -57,6 +55,7 @@ Different languages have different matching rules for singular and plural forms.
 
 
 The following example takes **en-US.json** and **ar-AE.json** as examples:
+
 
 **en-US.json**
 
@@ -95,22 +94,21 @@ The following example takes **en-US.json** and **ar-AE.json** as examples:
 Multi-language syntax used on application development pages (including simple formatting and singular-plural formatting) can be used in **.hml** or **.js** files.
 
 - Simple formatting
-  
-Use the **$t** function to reference to resources of different locales. The **$t** function is available for both **.hml** and **.js** files. The system displays content based on a resource file path specified via **$t** and the specified resource file whose locale matches the current system language.
-  
-Table 2 Simple formatting
-  
+  Use the **$t** function to reference to resources of different locales. The **$t** function is available for both **.hml** and **.js** files. The system displays content based on a resource file path specified via **$t** and the specified resource file whose locale matches the current system language.
+
+  Table 2 Simple formatting
+
   | Attribute| Type    | Parameter             | Mandatory| Description                                                  |
   | ---- | -------- | ----------------- | ---- | ------------------------------------------------------ |
-| $t   | Function | See Table 3.| Yes  | Sets the parameters based on the system language, for example, **this.$t('strings.hello')**.|
-  
-Table 3 $t function parameters
-  
+  | $t   | Function | See Table 3.| Yes  | Sets the parameters based on the system language, for example, **this.$t('strings.hello')**.|
+
+  Table 3 $t function parameters
+
   | Parameter  | Type         | Mandatory| Description                                                        |
   | ------ | ------------- | ---- | ------------------------------------------------------------ |
   | path   | string        | Yes  | Path of the language resource key.                                                  |
-| params | Array\|Object | No  | Content used to replace placeholders during runtime. There are two types of placeholders available:<br>- Named placeholder, for example, **{name}**. The actual content must be of the object type, for example, **$t('strings.object', {name:'Hello world'})**.<br> - Digit placeholder, for example, **{0}**. The actual content must be of the array type, for example, **$t('strings.array', [Hello world']**.|
-  
+  | params | Array \| Object | No  | Content used to replace placeholders during runtime. There are two types of placeholders available:<br>- Named placeholder, for example, **{name}**. The actual content must be of the object type, for example, **$t('strings.object', {name:'Hello world'})**.<br> - Digit placeholder, for example, **{0}**. The actual content must be of the array type, for example, **$t('strings.array', ['Hello world']**.|
+
 - Example code for simple formatting
   ```html
   <!-- xxx.hml -->

@@ -1,4 +1,4 @@
-# Introduction to ArkGraphics 3D
+# About This Kit
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->

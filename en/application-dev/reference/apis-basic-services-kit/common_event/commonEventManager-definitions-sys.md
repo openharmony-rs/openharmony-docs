@@ -131,6 +131,7 @@ Indicates that the kiosk mode is disabled. When this mode is off, the common eve
 Indicates that the exemption list for resource usage restrictions has been updated in idle mode.
 
 When the exemption list for resource usage restrictions is updated, the common event service is triggered to publish this event.
+
 Resources include application network access, Timer usage, and WorkScheduler task usage.
 
 System applications can call JavaScript APIs to apply for removing resource usage restrictions.

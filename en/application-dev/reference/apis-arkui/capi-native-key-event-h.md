@@ -54,7 +54,7 @@ Declares the APIs of **NativeKeyEvent**.
 
 ### ArkUI_KeyCode
 
-```
+```c
 enum ArkUI_KeyCode
 ```
 
@@ -216,7 +216,7 @@ Enumerates the key codes for key events.
 
 ### ArkUI_KeyEventType
 
-```
+```c
 enum ArkUI_KeyEventType
 ```
 
@@ -237,7 +237,7 @@ Enumerates the types of key events.
 
 ### ArkUI_KeySourceType
 
-```
+```c
 enum ArkUI_KeySourceType
 ```
 
@@ -257,7 +257,7 @@ Enumerates the types of input devices that trigger key events.
 
 ### ArkUI_KeyIntension
 
-```
+```c
 enum ArkUI_KeyIntension
 ```
 
@@ -301,7 +301,7 @@ Enumerates the intentions corresponding to key events.
 
 ### OH_ArkUI_KeyEvent_GetType()
 
-```
+```c
 ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)
 ```
 
@@ -327,7 +327,7 @@ Obtains the type of the specified key event.
 
 ### OH_ArkUI_KeyEvent_GetKeyCode()
 
-```
+```c
 int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)
 ```
 
@@ -353,7 +353,7 @@ Obtains the key code from the specified key event.
 
 ### OH_ArkUI_KeyEvent_GetKeyText()
 
-```
+```c
 const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)
 ```
 
@@ -379,7 +379,7 @@ Obtains the key value from the specified key event.
 
 ### OH_ArkUI_KeyEvent_GetKeySource()
 
-```
+```c
 ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* event)
 ```
 
@@ -405,7 +405,7 @@ Obtains the type of input device that triggers the specified key event.
 
 ### OH_ArkUI_KeyEvent_StopPropagation()
 
-```
+```c
 void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)
 ```
 
@@ -426,7 +426,7 @@ Stops the specified key event from bubbling upwards or downwards.
 
 ### OH_ArkUI_KeyEvent_GetKeyIntensionCode()
 
-```
+```c
 ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEvent* event)
 ```
 
@@ -452,7 +452,7 @@ Obtains the intention code associated with the specified key event.
 
 ### OH_ArkUI_KeyEvent_GetUnicode()
 
-```
+```c
 uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)
 ```
 
@@ -478,7 +478,7 @@ Obtains the Unicode value of the specified key event. Non-space basic Latin char
 
 ### OH_ArkUI_KeyEvent_SetConsumed()
 
-```
+```c
 void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsumed)
 ```
 
@@ -499,7 +499,7 @@ Sets whether the specified key event is consumed in the key event callback.
 
 ### OH_ArkUI_KeyEvent_Dispatch()
 
-```
+```c
 void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)
 ```
 
@@ -520,7 +520,7 @@ Dispatches the specified key event to a specific node.
 
 ### OH_ArkUI_KeyEvent_IsNumLockOn()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, bool* state)
 ```
 
@@ -547,7 +547,7 @@ Obtains the state of the NumLock key when the specified key event occurs.
 
 ### OH_ArkUI_KeyEvent_IsCapsLockOn()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, bool* state)
 ```
 
@@ -574,7 +574,7 @@ Obtains the state of the CapsLock key when the specified key event occurs.
 
 ### OH_ArkUI_KeyEvent_IsScrollLockOn()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event, bool* state)
 ```
 

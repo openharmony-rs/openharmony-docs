@@ -96,7 +96,7 @@ Row({ space: 35 }) {
 
 ![vertial-arrangement-child-column](figures/vertial-arrangement-child-column.png)
 
-- justifyContent(FlexAlign.Start)：元素在垂直方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
+- justifyContent(FlexAlign.Start，默认值)：元素在垂直方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
 
   <!-- @[ColumnLayoutJustifyContentStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentStart.ets) -->
   
@@ -217,7 +217,7 @@ Row({ space: 35 }) {
 
 ![vertial-arrangement-child-row](figures/vertial-arrangement-child-row.png)
 
-- justifyContent(FlexAlign.Start)：元素在水平方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
+- justifyContent(FlexAlign.Start，默认值)：元素在水平方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
 
   <!-- @[RowLayoutJustifyContentStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentStart.ets) -->
   
@@ -363,7 +363,7 @@ Row({ space: 35 }) {
 
   ![zh-cn_image_0000001511580964](figures/zh-cn_image_0000001511580964.png)
 
-- HorizontalAlign.Center：子元素在水平方向居中对齐。
+- HorizontalAlign.Center（默认值）：子元素在水平方向居中对齐。
 
   <!-- @[RowLayoutHorizontalAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutHorizontalAlignCenter.ets) -->
   
@@ -427,7 +427,7 @@ Row({ space: 35 }) {
 
   ![zh-cn_image_0000001563060765](figures/zh-cn_image_0000001563060765.png)
 
-- VerticalAlign.Center：子元素在垂直方向居中对齐。
+- VerticalAlign.Center（默认值）：子元素在垂直方向居中对齐。
 
   <!-- @[RowLayoutVerticalAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutVerticalAlignCenter.ets) -->
   
@@ -608,7 +608,8 @@ struct BlankExample {
 - [在List中添加滚动条](arkts-layout-development-create-list.md#添加滚动条)：当List子项过多一屏放不下时，可以将每一项子元素放置在不同的组件中，通过滚动条进行拖动展示。可以通过[scrollBar](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrollbar)属性设置滚动条的常驻状态，[edgeEffect](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#edgeeffect)属性设置拖动到内容最末端的回弹效果。
 
 - 使用[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件：在线性布局中，开发者可以进行垂直方向或者水平方向的布局。当一屏无法完全显示时，可以在Column或Row组件的外层包裹一个可滚动的容器组件Scroll来实现可滑动的线性布局。
-    垂直方向布局中使用Scroll组件：
+
+  垂直方向布局中使用Scroll组件：
 
   <!-- @[ScrollVerticalExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ScrollVerticalExample.ets) -->
   

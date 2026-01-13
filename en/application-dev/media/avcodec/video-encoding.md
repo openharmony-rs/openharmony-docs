@@ -276,7 +276,7 @@ The following walks you through how to implement the entire video encoding proce
         bool ret = OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_WIDTH, &width) &&
                    OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_HEIGHT, &height);
         if (!ret) {
-         	// Handle exceptions.
+            // Handle exceptions.
         }
     }
     ```
@@ -726,7 +726,7 @@ The following walks you through how to implement the entire video encoding proce
             bool ret = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_STRIDE, &widthStride) &&
                        OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_SLICE_HEIGHT, &heightStride);
             if (!ret) {
-             	// Handle exceptions.
+                // Handle exceptions.
             }
             isFirstFrame = false;
         }
@@ -784,6 +784,8 @@ The following walks you through how to implement the entire video encoding proce
     ```
 
 5. Call **OH_VideoEncoder_Prepare()** to prepare internal resources for the encoder.
+
+     
 
     ```c++
     OH_AVErrCode ret = OH_VideoEncoder_Prepare(videoEnc);
@@ -873,6 +875,7 @@ The following walks you through how to implement the entire video encoding proce
     OH_AVCodecBufferAttr info;
     info.size = frameSize;
     info.offset = 0;
+    // Unlike the surface mode, in buffer mode, the application must explicitly set pts. Compute it based on the intended display time, for example, frameIndex * 1000000 / frameRate.
     info.pts = 0;
     OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &info);
     if (setBufferRet != AV_ERR_OK) {
@@ -977,12 +980,12 @@ The following walks you through how to implement the entire video encoding proce
 
 9. Notify the encoder of EOS.
 
+    During encoding, once the last frame of data is sent to the input buffer for encoding, set the flag of bufferInfo to **AVCODEC_BUFFER_FLAGS_EOS** to notify the encoder that the input is complete.
+
     In the following example, the member variables of **bufferInfo** are as follows:
     - **index**: parameter passed by the callback function **OnNeedInputBuffer**, which uniquely corresponds to the buffer.
     - **buffer**: parameter passed by the callback function **OnNeedInputBuffer**. You can obtain the pointer to the shared memory address by calling [OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr).
     - **isValid**: whether the buffer instance stored in **bufferInfo** is valid.
-
-    The API **OH_VideoEncoder_PushInputBuffer** is used to notify the encoder of EOS. This API is also used in step 8 to push the stream to the input queue for encoding. Therefore, in the current step, you must pass in the **AVCODEC_BUFFER_FLAGS_EOS** flag.
 
     ```c++
     std::shared_ptr<CodecBufferInfo> bufferInfo = inQueue.Dequeue();
@@ -990,9 +993,12 @@ The following walks you through how to implement the entire video encoding proce
     if (bufferInfo == nullptr || !bufferInfo->isValid) {
         // Handle exceptions.
     }
+    // Write the last frame of image data. For details, see step 8.
+    // Configure the buffer information and set the AVCODEC_BUFFER_FLAGS_EOS flag.
     OH_AVCodecBufferAttr info;
-    info.size = 0;
+    info.size = frameSize;
     info.offset = 0;
+    // Unlike the surface mode, in buffer mode, the application must explicitly set pts. Compute it based on the intended display time, for example, frameIndex * 1000000 / frameRate.
     info.pts = 0;
     info.flags = AVCODEC_BUFFER_FLAGS_EOS;
     OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &info);
@@ -1037,5 +1043,3 @@ The following walks you through how to implement the entire video encoding proce
     ```
 
 The subsequent processes (including refreshing, resetting, stopping, and destroying the encoder) are the same as those in surface mode. For details, see steps 14–17 in [Surface Mode](#surface-mode).
-
-<!--no_check-->

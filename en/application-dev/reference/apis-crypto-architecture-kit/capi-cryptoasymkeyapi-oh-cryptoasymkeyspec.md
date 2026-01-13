@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoAsymKeySpec OH_CryptoAsymKeySpec
+```
+
 ## Overview
 
 Defines a struct for asymmetric key specifications.

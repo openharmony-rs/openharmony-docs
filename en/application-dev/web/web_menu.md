@@ -133,7 +133,7 @@ struct WebComponent {
     Menu() {
       // A component that is used to represent an item in a menu.
       MenuItem({
-        content: 'Copy Image',
+        content: 'Copy image',
       })
         .width(100)
         .height(50)
@@ -169,7 +169,7 @@ struct WebComponent {
           this.showMenu = false;
         })
       MenuItem({
-        content: 'Copy Link',
+        content: 'Copy link',
       })
         .width(100)
         .height(50)
@@ -183,7 +183,7 @@ struct WebComponent {
           this.showMenu = false;
         })
       MenuItem({
-        content: 'Select All',
+        content: 'Select all',
       })
         .width(100)
         .height(50)
@@ -283,12 +283,12 @@ struct WebComponent {
   @Builder
   MenuBuilder() {
     Menu() {
-      MenuItem({content:'Copy',})
+      MenuItem({ content: 'Copy', })
         .onClick(() => {
           this.result?.copy();
           this.result?.closeContextMenu();
         })
-      MenuItem({content:'Select All',})
+      MenuItem({ content: 'Select All', })
         .onClick(() => {
           this.result?.selectAll();
           this.result?.closeContextMenu();
@@ -350,7 +350,7 @@ struct WebComponent {
 
 Since API version 20, the hyperlink menu triggered by long-pressing can be bound. You can bind different custom menus to images and links.
 
-The following example uses **PreviewBuilder** to define the content of the pop-up menu corresponding to the hyperlink, loads the hyperlink content using the **Web** component, and displays the loading progress using [the Progress component](../ui/arkts-common-components-progress-indicator.md).
+In the following example, **PreviewBuilder** defines the content of the menu corresponding to the hyperlink, uses the **Web** component to load the hyperlink content, and uses the [Progress component](../ui/arkts-common-components-progress-indicator.md) to display the loading progress. (Note that the **Web** component in **PreviewBuilder** does not receive events.)
 
 ```ts
 import { webview } from '@kit.ArkWeb';
@@ -415,7 +415,6 @@ struct SelectionMenuLongPress {
         .onPageEnd(()=>{
           this.progressVisible = false;
         })
-        .hitTestBehavior(HitTestMode.None) // Disable the gesture response during web page preview.
     }.width($$.width).height ($$.height) // Set the preview width and height.
   }
 
@@ -991,7 +990,7 @@ struct WebComponent {
         'clearSelection()',
         (error, result) => {
           if (error) {
-            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: $  {(error as BusinessError).message}`);
+            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             return;
           }
           if (result) {
@@ -999,7 +998,7 @@ struct WebComponent {
           }
         });
     } catch (error) {
-      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+      console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
     }
   }
 
@@ -1013,7 +1012,7 @@ struct WebComponent {
               'copySelectedText()',
               (error, result) => {
                 if (error) {
-                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code},    Message: ${(error as BusinessError).message}`);
+                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
                   return;
                 }
                 if (result) {
@@ -1021,7 +1020,7 @@ struct WebComponent {
                 }
               });
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
           this.clearSelection()
         }).backgroundColor(Color.Pink)

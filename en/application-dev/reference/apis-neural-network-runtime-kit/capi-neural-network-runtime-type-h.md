@@ -14,7 +14,7 @@ Defines the structure and enums for NNRt.
 
 **Library**: libneural_network_runtime.so
 
-**System capability**: SystemCapability.Ai.NeuralNetworkRuntime
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
 
@@ -62,7 +62,7 @@ Defines the structure and enums for NNRt.
 
 ### OH_NN_PerformanceMode
 
-```
+```c
 enum OH_NN_PerformanceMode
 ```
 
@@ -82,7 +82,7 @@ Defines the performance modes of the device.
 
 ### OH_NN_Priority
 
-```
+```c
 enum OH_NN_Priority
 ```
 
@@ -101,7 +101,7 @@ Defines the priorities of a model inference task.
 
 ### OH_NN_ReturnCode
 
-```
+```c
 enum OH_NN_ReturnCode
 ```
 
@@ -131,7 +131,7 @@ Defines the error codes for NNRt.
 
 ### OH_NN_FuseType
 
-```
+```c
 enum OH_NN_FuseType
 ```
 
@@ -149,7 +149,7 @@ Defines the activation function types in the fusion operator for NNRt.
 
 ### OH_NN_Format
 
-```
+```c
 enum OH_NN_Format
 ```
 
@@ -168,7 +168,7 @@ Defines the tensor data formats.
 
 ### OH_NN_DeviceType
 
-```
+```c
 enum OH_NN_DeviceType
 ```
 
@@ -187,7 +187,7 @@ Defines the device types supported by NNRt.
 
 ### OH_NN_DataType
 
-```
+```c
 enum OH_NN_DataType
 ```
 
@@ -215,7 +215,7 @@ Defines the data types supported by NNRt.
 
 ### OH_NN_OperationType
 
-```
+```c
 enum OH_NN_OperationType
 ```
 
@@ -338,7 +338,7 @@ Defines the operator types supported by NNRt.
 
 ### OH_NN_TensorType
 
-```
+```c
 enum OH_NN_TensorType
 ```
 
@@ -519,7 +519,7 @@ Defines tensor types.<br>Tensors are usually used to set the input, output, and 
 
 ### NN_OnRunDone()
 
-```
+```c
 typedef void (*NN_OnRunDone)(void *userData, OH_NN_ReturnCode errCode, void *outputTensor[], int32_t outputCount)
 ```
 
@@ -543,7 +543,7 @@ Use the **userData** parameter to specify the asynchronous inference to query. T
 
 ### NN_OnServiceDied()
 
-```
+```c
 typedef void (*NN_OnServiceDied)(void *userData)
 ```
 

@@ -35,7 +35,7 @@ Declares the BASE DDK APIs used by the USB host to access USB devices.
 
 ### OH_DDK_CreateAshmem()
 
-```
+```c
 DDK_RetCode OH_DDK_CreateAshmem(const uint8_t *name, uint32_t size, DDK_Ashmem **ashmem)
 ```
 
@@ -62,7 +62,7 @@ Creates an **Ashmem** object. To prevent resource leakage, call **OH_DDK_Destroy
 
 ### OH_DDK_MapAshmem()
 
-```
+```c
 DDK_RetCode OH_DDK_MapAshmem(DDK_Ashmem *ashmem, const uint8_t ashmemMapType)
 ```
 
@@ -88,7 +88,7 @@ Maps the created **Ashmem** object to the user space. Call **OH_DDK_UnmapAshmem*
 
 ### OH_DDK_UnmapAshmem()
 
-```
+```c
 DDK_RetCode OH_DDK_UnmapAshmem(DDK_Ashmem *ashmem)
 ```
 
@@ -113,7 +113,7 @@ Unmaps an **Ashmem** object.
 
 ### OH_DDK_DestroyAshmem()
 
-```
+```c
 DDK_RetCode OH_DDK_DestroyAshmem(DDK_Ashmem *ashmem)
 ```
 

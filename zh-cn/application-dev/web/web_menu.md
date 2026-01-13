@@ -350,7 +350,7 @@ struct WebComponent {
 
 自API version 20起，支持绑定长按超链接菜单。可以为图片和链接绑定不同的自定义菜单。
 
-以下示例中，PreviewBuilder定义了超链接对应菜单的弹出内容，用Web组件加载了超链接内容，使用[Progress组件](../ui/arkts-common-components-progress-indicator.md)展示了加载进度。
+以下示例中，PreviewBuilder定义了超链接对应菜单的弹出内容，用Web组件加载了超链接内容（需要注意PreviewBuilder中的Web组件不会接收事件），使用[Progress组件](../ui/arkts-common-components-progress-indicator.md)展示了加载进度。
 
 ```ts
 import { webview } from '@kit.ArkWeb';
@@ -415,7 +415,6 @@ struct SelectionMenuLongPress {
         .onPageEnd(()=>{
           this.progressVisible = false;
         })
-        .hitTestBehavior(HitTestMode.None) // 使预览Web不响应手势
     }.width($$.width).height($$.height) // 设置预览宽高
   }
 
@@ -991,7 +990,7 @@ struct WebComponent {
         'clearSelection()',
         (error, result) => {
           if (error) {
-            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: $  {(error as BusinessError).message}`);
+            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             return;
           }
           if (result) {
@@ -999,7 +998,7 @@ struct WebComponent {
           }
         });
     } catch (error) {
-      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+      console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
     }
   }
 
@@ -1013,7 +1012,7 @@ struct WebComponent {
               'copySelectedText()',
               (error, result) => {
                 if (error) {
-                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code},    Message: ${(error as BusinessError).message}`);
+                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
                   return;
                 }
                 if (result) {
@@ -1021,7 +1020,7 @@ struct WebComponent {
                 }
               });
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
           this.clearSelection()
         }).backgroundColor(Color.Pink)

@@ -310,6 +310,8 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**设备行为差异：** 当该接口在无听筒的设备上设置默认发声设备为听筒时，将继续从扬声器发声。
+
 **参数：**
 
 | 参数名     | 类型             | 必填   | 说明                                                      |
@@ -633,8 +635,7 @@ try {
 
 getSelectedMediaInputDevice(): AudioDeviceDescriptor
 
-获得通过[selectMediaInputDevice](#selectmediainputdevice21)设置的媒体输入设备。
-如果没有设置，返回一个deviceType属性为INVALID的设备。
+获得通过[selectMediaInputDevice](#selectmediainputdevice21)设置的媒体输入设备。如果没有设置，返回一个deviceType属性为INVALID的设备。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -853,4 +854,26 @@ let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.C
 audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
 
 audioSessionManager.off('currentInputDeviceChanged', currentInputDeviceChangedCallback);
+```
+
+## isOtherMediaPlaying<sup>23+</sup>
+
+isOtherMediaPlaying(): boolean
+
+检查是否有其他应用正在播放媒体类型（MUSIC、MOVIE、AUDIOBOOK、GAME）的音频，已激活媒体类型的音频会话也将会被检查。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**返回值：**
+
+| 类型                                              | 说明                                    |
+| ------------------------------------------------- |---------------------------------------|
+| boolean | 是否有其他应用正在播放媒体类型的音频。true表示有，false表示没有。 |
+
+**示例：**
+
+```ts
+let isExistence = audioSessionManager.isOtherMediaPlaying();
 ```

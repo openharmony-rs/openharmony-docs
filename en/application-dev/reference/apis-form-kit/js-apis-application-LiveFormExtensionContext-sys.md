@@ -1,9 +1,9 @@
-# LiveFormExtensionContext (for System Applications Only)
+# LiveFormExtensionContext (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 LiveFormExtensionContext, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), is the context of [LiveFormExtensionAbility](./js-apis-app-form-LiveFormExtensionAbility.md).
@@ -15,6 +15,17 @@ LiveFormExtensionContext, inherited from [ExtensionContext](../apis-ability-kit/
 > - This topic describes only system APIs provided by the module. For details about its public APIs, see [LiveFormExtensionContext](./js-apis-application-LiveFormExtensionContext.md).
 >
 > - The APIs of this module can be used only in the stage model.
+
+## Modules to Import
+```ts
+import { common } from '@kit.AbilityKit';
+```
+
+>  **NOTE**
+>
+> - In versions earlier than API version 22, you need to import LiveFormExtensionContext with `import LiveFormExtensionContext from 'application/LiveFormExtensionContext';`. This import mode is marked in red in DevEco Studio, but does not affect compilation and running. You can use LiveFormExtensionContext directly.
+>
+> - In API version 22 and later versions, you can import LiveFormExtensionContext with `import { common } from '@kit.AbilityKit';` and use it in the form of **common.LiveFormExtensionContext**.
 
 ## How to Use
 LiveFormExtensionContext is used to query information about its associated LiveFormExtensionAbility and access resources of the LiveFormExtensionAbility.
@@ -42,10 +53,13 @@ Context of the LiveFormExtensionAbility.
 connectServiceExtensionAbility(want: Want, connection: ConnectOptions): number
 
 Connects the current LiveFormExtensionAbility client to a [ServiceExtensionAbility](../../application-models/serviceextensionability-sys.md) server.
+
 Before calling this API, you must implement the [ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md) API.
+
 Upon successful connection, the LiveFormExtensionAbility can communicate with the ServiceExtensionAbility through the [IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) returned by **ConnectOptions**, allowing access to capabilities exposed by the ServiceExtensionAbility.
 
 ServiceExtensionAbility is a special type of [ExtensionAbility](../../application-models/extensionability-overview.md) provided by the system. It is designed to deliver background services for specific scenarios and does not support developer customization.
+
 ServiceExtensionAbility enables applications to run in the background and provide services. Third-party applications can connect to and communicate with this ExtensionAbility.
 A successful connection via this API will start the ServiceExtensionAbility. For details, see [Component Startup Rules](../../application-models/component-startup-rules.md).
 
@@ -101,18 +115,17 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 import { Want, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
-import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
 
 @Entry
 @Component
 struct MyLiveFormPage {
   private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
-  private liveFormContext: LiveFormExtensionContext | undefined = undefined;
+  private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
 
   aboutToAppear(): void {
     // 2. Obtain LiveFormExtensionContext.
     this.storageForMyLiveFormPage = this.getUIContext().getSharedLocalStorage();
-    this.liveFormContext = this.storageForMyLiveFormPage?.get<LiveFormExtensionContext>('context');
+    this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
     if (!this.liveFormContext) {
         console.info('MyLiveFormPage liveFormContext is empty');
         return;
@@ -213,20 +226,20 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 ```
 ```ts
 // pages/MyLiveFormPage.ets
+import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
-import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
 
 @Entry
 @Component
 struct MyLiveFormPage {
   private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
-  private liveFormContext: LiveFormExtensionContext | undefined = undefined;
+  private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
 
   aboutToAppear(): void {
     // 2. Obtain LiveFormExtensionContext.
     this.storageForMyLiveFormPage = this.getUIContext().getSharedLocalStorage();
-    this.liveFormContext = this.storageForMyLiveFormPage?.get<LiveFormExtensionContext>('context');
+    this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
     if (!this.liveFormContext) {
         console.info('MyLiveFormPage liveFormContext is empty');
         return;

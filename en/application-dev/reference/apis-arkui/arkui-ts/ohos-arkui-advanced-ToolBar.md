@@ -184,6 +184,8 @@ Sets whether to display the pressed state effect.
 
 ## ItemState
 
+Enumerates toolbar item states.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full

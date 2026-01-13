@@ -551,7 +551,7 @@ Since API version 21, use the [OH_ArkUI_NativeModule_InvalidateAttributes](../re
    }
    ```
 
-2. Create **attribute_util.h** for setting component attributes:
+2. Create **Attribute_util.h** for setting component attributes:
 
    <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/Attribute_util.h) -->
    
@@ -566,7 +566,7 @@ Since API version 21, use the [OH_ArkUI_NativeModule_InvalidateAttributes](../re
    public:
        ArkUI_NativeNodeAPI_1 *api_;
        ArkUI_NodeHandle node_;
-       AttributeUtil(ArkUI_NodeHandle node, ArkUI_NativeNodeAPI_1 *api) 
+       AttributeUtil(ArkUI_NodeHandle node, ArkUI_NativeNodeAPI_1 *api)
        {
            this->node_ = node;
            api_ = api;
@@ -987,7 +987,7 @@ Since API version 20: Use [OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand](.
    OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(childNode, &index1);
    ArkUI_NodeHandle child = nullptr;
    auto result = OH_ArkUI_NodeUtils_GetChildWithExpandMode(childNode, 3, &child, 0);
-   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "Manager", 
+   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "Manager",
        "firstChildIndex - lastChildIndex == %{d -- %{public}d, -- getResult = %{public}d",
        index, index1, result);
    ```
@@ -1040,7 +1040,7 @@ Starting from API version 23, you can use [OH_ArkUI_NativeModule_IsInRenderState
    }   
    ```
 
-2. Create **attribute_util.h** for setting component attributes:
+2. Create **Attribute_util.h** for setting component attributes:
 
    ```C++
    #ifndef MYAPPLICATION_ATTRIBUTE_UTIL_H

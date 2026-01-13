@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The backup and restore framework provides a solution for backing up and restoring data of applications and services on a device. You can follow the procedure below to enable an application to trigger data backup or restoration:
 
@@ -36,18 +36,16 @@ The capability file of an application contains the device type, device version, 
 
 Call [backup.getLocalCapabilities()](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#backupgetlocalcapabilities) to obtain the capability file.
 
-<!-- @[get_local_cap_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
+<!-- @[get_local_cap_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->    
 
 ``` TypeScript
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { backup } from '@kit.CoreFileKit';
-import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-// ···
+// ...
 
-// Obtain the context from the component and ensure that the return value of getContext(this) is UIAbilityContext.
-let context = getContext(this) as common.UIAbilityContext;
-let filesDir = context.filesDir;
+// This is only an example. The path can be obtained via getHostContext within the component.
+let filesDir = '/data/storage/el2/base/haps/entry/files';
 
 // Obtain capability files.
 export async function getLocalCapabilities(): Promise<void> {
@@ -56,7 +54,7 @@ export async function getLocalCapabilities(): Promise<void> {
     console.info('getLocalCapabilities success');
     let fpath = filesDir + '/localCapabilities.json';
     fs.copyFileSync(fileData.fd, fpath);
-    // ···
+    // ...
     fs.closeSync(fileData.fd);
   } catch (error) {
     console.error(`getLocalCapabilities failed with err, code is ${error.code}, message is ${error.message}`);
@@ -105,20 +103,18 @@ You can save the file to a local directory as required.
 
 **Example**
 
-  <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
+  <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->    
   
   ``` TypeScript
   import { fileIo as fs } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
-  import { common } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  // ···
+  // ...
   
-  // Obtain the context from the component and ensure that the return value of getContext(this) is UIAbilityContext.
-  let context = getContext(this) as common.UIAbilityContext;
-  let filesDir = context.filesDir;
+  // This is only an example. The path can be obtained via getHostContext within the component.
+  let filesDir = '/data/storage/el2/base/haps/entry/files';
   
-  // ···
+  // ...
   
   // Back up application data.
   // Create a SessionBackup instance for data backup.
@@ -182,7 +178,7 @@ You can save the file to a local directory as required.
     return sessionBackup;
   }
   
-  // ···
+  // ...
   export async function sessionBackup(): Promise<void> {
     gSession = createSessionBackup();
     // Select the application to be backed up based on the capability file obtained by backup.getLocalCapabilities().
@@ -206,20 +202,18 @@ When all the data of the application is ready, the service starts to restore the
 
 **Example**
 
-  <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
+  <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->    
   
   ``` TypeScript
   import { fileIo as fs } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
-  import { common } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  // ···
+  // ...
   
-  // Obtain the context from the component and ensure that the return value of getContext(this) is UIAbilityContext.
-  let context = getContext(this) as common.UIAbilityContext;
-  let filesDir = context.filesDir;
+  // This is only an example. The path can be obtained via getHostContext within the component.
+  let filesDir = '/data/storage/el2/base/haps/entry/files';
   
-  // ···
+  // ...
   // Restore the application data.
   // Create a SessionRestore instance for data restoration.
   let gSessionRestore: backup.SessionRestore;

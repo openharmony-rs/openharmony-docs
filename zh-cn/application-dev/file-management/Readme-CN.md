@@ -5,7 +5,7 @@
 <!--Owner: @wangke25-->
 <!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - [Core File Kit简介](core-file-kit-intro.md)
 - 应用文件<!--app-file-->
@@ -19,9 +19,12 @@
   - [向应用沙箱推送文件（仅对系统应用开放）](send-file-to-app-sandbox-sys.md)
   <!--DelEnd-->
   - [应用文件分享](share-app-file.md)
+  - [应用共享目录配置](share-app-file-configuration.md)
   - 应用数据备份恢复<!--app-file-backup-restore-->
     - [应用数据备份恢复概述](app-file-backup-overview.md)
     - [应用接入数据备份恢复](app-file-backup-extension.md)
+    <!--RP2-->
+    <!--RP2End-->
     <!--Del-->
     - [应用触发数据备份/恢复（仅对系统应用开放）](app-file-backup-sys.md)
     <!--DelEnd-->
@@ -44,6 +47,4 @@
   - [分布式文件系统概述](distributed-fs-overview.md)
   - [设置分布式文件数据等级](set-security-label.md)
   - [跨设备文件访问](file-access-across-devices.md)
-  - [跨设备文件拷贝](file-copy-across-devices.md)
-- 端云文件协同<!--cloud-sync-file-->
-      - [端云文件协同概述](cloud-sync-file-overview.md)
+  - [跨设备文件拷贝](file-copy-across-devices.md)<!--RP1--><!--RP1End-->

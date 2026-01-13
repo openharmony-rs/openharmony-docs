@@ -17,8 +17,9 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
 
    **X963KdfSpec** is a child class of [KdfSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#kdfspec11). You need to specify the following:
 
-   - **algName**: algorithm to used, which is **'X963Kdf'**.
+   - **algName**: algorithm to use, which is **'X963Kdf'**.
    - **key**: original key material.
+
       If the string type is used, pass in the data used for key derivation instead of the string type such as HexString or base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
    - **info**: optional context and application information used to extend the short key. This parameter can be empty.
    - **keySize**: length of the key to derive, in bytes. The value must be a positive integer.
@@ -39,6 +40,7 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
 
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
 
   async function kdfAwait() {
     let keyData = new Uint8Array(buffer.from("012345678901234567890123456789", "utf-8").buffer);
@@ -60,6 +62,7 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { buffer } from '@kit.ArkTS';
 
   function kdfPromise() {
     let keyData = new Uint8Array(buffer.from("012345678901234567890123456789", "utf-8").buffer);
@@ -84,7 +87,7 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
 
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { buffer } from '@kit.ArkTS';
 
   function kdfSync() {
     let keyData = new Uint8Array(buffer.from("012345678901234567890123456789", "utf-8").buffer);

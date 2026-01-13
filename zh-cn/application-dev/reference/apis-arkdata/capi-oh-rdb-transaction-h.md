@@ -439,6 +439,8 @@ int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Dat
 
 执行包含指定参数的SQL语句。
 
+不支持开头包含注释的语句。
+
 **起始版本：** 18
 
 

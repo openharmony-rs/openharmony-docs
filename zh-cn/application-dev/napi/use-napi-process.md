@@ -147,11 +147,11 @@
       napi_value args[1] = {nullptr};
   
       // 获取传入的参数并依次放入参数数组中
-      napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
   
       // 创建一个int，作为ArkTS的入参
       napi_value argv = nullptr;    
-      napi_create_int32(env, 2, &argv );
+      napi_create_int32(env, 2, &argv);
   
       // 调用传入的callback，并将其结果返回
       napi_value result = nullptr;
@@ -220,10 +220,10 @@ struct Index {
 
 ### 多线程限制
 
-每个引擎实例对应一个JS线程，实例上的对象不能跨线程操作，否则会引起应用crash。使用时需要遵循如下原则：
+每个引擎实例对应一个ArkTS线程，实例上的对象不能跨线程操作，否则会引起应用crash。使用时需要遵循如下原则：
 
-- Node-API接口只能在JS线程使用。
-- Native接口入参env与特定JS线程绑定只能在创建时的线程使用。
+- Node-API接口只能在ArkTS线程使用。
+- Native接口入参env与特定ArkTS线程绑定，只能在创建该env的线程使用。
 - 使用Node-API接口创建的数据需在env完全销毁前进行释放，避免内存泄漏。此外，在napi_env销毁后访问/使用这些数据，可能会导致进程崩溃。
 
 

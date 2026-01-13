@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoSymKeyGenerator OH_CryptoSymKeyGenerator
+```
+
 ## Overview
 
 Defines a struct for a symmetric key.

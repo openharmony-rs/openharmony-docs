@@ -35,6 +35,8 @@
 1. 导入依赖，需要导入相机框架、图片、ArkUI相关领域依赖。
 
    ```ts
+   import { camera } from '@kit.CameraKit';
+   import { image } from '@kit.ImageKit';
    import { curves } from '@kit.ArkUI';
    ```
 
@@ -225,7 +227,7 @@
      if (this.curPosition === 0) {
        console.info('showBlurAnim BACK');
        // 直板机后置截图初始内容旋转补偿90°。
-       await shotPixel.rotate(90); //ImageKit提供，用于图片内容旋转。
+       await shotPixel.rotate(90); // ImageKit提供，用于图片内容旋转。
        // 直板机后置截图初始组件旋转补偿0°。
        this.shotImgRotation = { y: 0.5, angle: 0 };
      } else {
@@ -303,7 +305,7 @@
      if (this.curPosition === 1) {
        console.info('rotateFirstAnim BACK');
        // 直板机后置切前置截图初始内容旋转补偿90°。
-       await shotPixel.rotate(90); //ImageKit提供，用于图片内容旋转。
+       await shotPixel.rotate(90); // ImageKit提供，用于图片内容旋转。
        // 直板机后置切前置截图初始组件旋转补偿0°。
        this.shotImgRotation = { y: 0.5, angle: 0 };
      } else {
@@ -387,8 +389,8 @@
    blurFirstAnim() {
      console.info('blurFirstAnim E');
      // 初始化动效参数。
-     this.shotImgBlur = 0; //无模糊。
-     this.shotImgOpacity = 1; //不透明。
+     this.shotImgBlur = 0; // 无模糊。
+     this.shotImgOpacity = 1; // 不透明。
      this.shotImgScale = { x: 1, y: 1 };
      this.getUIContext().animateToImmediately(
        {

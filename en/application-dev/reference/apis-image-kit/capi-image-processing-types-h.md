@@ -54,7 +54,7 @@ The file declares the image processing types.
 
 ### ImageDetailEnhancer_QualityLevel
 
-```
+```c
 enum ImageDetailEnhancer_QualityLevel
 ```
 
@@ -79,7 +79,7 @@ Corresponding key: IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL.
 
 ### ImageProcessing_ErrorCode
 
-```
+```c
 enum ImageProcessing_ErrorCode
 ```
 

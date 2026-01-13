@@ -32,7 +32,7 @@ Sets the media query condition. This API returns the corresponding media query l
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. You are advised to use [matchMediaSync](arkts-apis-uicontext-mediaquery.md#matchmediasync) instead on the obtained [MediaQuery](arkts-apis-uicontext-mediaquery.md) object.
+> - This API is supported since API version 7 and deprecated since API version 18. You are advised to use [matchMediaSync](arkts-apis-uicontext-mediaquery.md#matchmediasync) instead. Before calling this API, you need to obtain the [MediaQuery](arkts-apis-uicontext-mediaquery.md) object using the [getMediaQuery](arkts-apis-uicontext-uicontext.md#getmediaquery) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getMediaQuery](arkts-apis-uicontext-uicontext.md#getmediaquery) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [MediaQuery](arkts-apis-uicontext-mediaquery.md) object associated with the current UI context.
 
@@ -103,7 +103,6 @@ Registers a media query listener. The callback is triggered when the media attri
 
   See the example of [off](#offchange).
 
-
 ### off('change')
 
 off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
@@ -121,7 +120,7 @@ Deregisters a media query listener, so that no callback is triggered when the me
 | Name  | Type                            | Mandatory| Description                                                      |
 | -------- | -------------------------------- | ---- | ---------------------------------------------------------- |
 | type     | string                           | Yes  | Listener type. The value is fixed at **'change'**.                                  |
-| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | No  | Callback to be deregistered. If the default value is used, all callbacks of the handle are deregistered.|
+| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | No  | Callback to unregister. If this parameter is not specified, all callbacks under this handle are unregistered.|
 
 **Example**
 
@@ -139,7 +138,7 @@ function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
   }
 }
 listener.on('change', onPortrait) // Register the media query listener.
-listener.off('change', onPortrait) // Deregister the listener.
+listener.off('change', onPortrait) // Unregister the callback.
   ```
 
 ## MediaQueryResult

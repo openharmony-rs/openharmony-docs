@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 The **inputMethodEngine** module provides management capabilities for system input method applications. With the APIs of this module, input method applications are able to create soft keyboard windows, insert or delete characters, select text, and listen for physical keyboard events.
@@ -153,7 +153,7 @@ Enumerates the fluid light modes of the input method.
 | NONE | 0 | The fluid light mode is not used.|
 | BACKGROUND_FLUID_LIGHT  | 1 | When the background fluid light mode is enabled, the system panel turns transparent. The fluid light effect must be implemented by the host application of the edit box.|
 
-## EditorAttribute
+## EditorAttribute<sup>20+</sup>
 
 Describes the attribute of the edit box.
 
@@ -163,7 +163,7 @@ Describes the attribute of the edit box.
 
 | Name        | Type| Read-Only| Optional| Description              |
 | ------------ | -------- | ---- | ---- | ------------------ |
-| fluidLightMode<sup>20+</sup> | [FluidLightMode](#fluidlightmode20) | Yes| Yes| Fluid light mode. If this attribute is not specified or is set to an invalid value, the fluid light mode is not used by default.<br>This attribute is available only to system applications.|
+| fluidLightMode | [FluidLightMode](#fluidlightmode20) | Yes| Yes| Fluid light mode. If this attribute is not specified or is set to an invalid value, the fluid light mode is not used by default.<br>This attribute is available only to system applications.|
 
 ## ImmersiveEffect<sup>20+</sup>
 

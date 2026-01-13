@@ -12,6 +12,7 @@
   - [@ohos.security.CryptoExtensionAbility (密钥扩展能力)](js-apis-CryptoExtensionAbility.md)
   <!--Del-->
   - [@ohos.security.huks (通用密钥库系统)(系统接口)](js-apis-huks-sys.md)
+  - [@ohos.security.huksExternalCrypto (外部密钥管理)(系统接口)](js-apis-huksExternalCrypto-sys.md)
   <!--DelEnd-->
 - C API<!--universal-keystore-c-->
   - 模块<!--universal-keystore-module-->

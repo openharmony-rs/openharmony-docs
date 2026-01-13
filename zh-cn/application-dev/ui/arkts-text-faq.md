@@ -274,7 +274,7 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
   <!-- @[Displayed_Together](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets) -->
   
   ``` TypeScript
-  // $r('app.media.xxx')需要替换为开发者所需的图像资源文件
+  // 请将$r('app.media.xxx')替换为实际资源文件
   import { common } from '@kit.AbilityKit';
   @Entry
   @Component
@@ -297,7 +297,7 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
   
       while ((match = emojiRegex.exec(input)) !== null) {
         // 添加普通文本
-        if (match.index > lastIndex) {
+        if (match.index >= lastIndex) {
           resultMap.get('text')?.push(input.substring(lastIndex, match.index));
         }
         // 添加匹配到的表情
@@ -317,11 +317,15 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
         switch (emojis[i]) {
           case 'rolling_on_the_floor_laughing':
             emojisImg.push($r('app.media.rolling_on_the_floor_laughing'))
+            break;
           case 'slightly_smiling_face':
             emojisImg.push($r('app.media.slightly_smiling_face'))
+            break;
           case 'grin':
             emojisImg.push($r('app.media.grin'))
+            break;
           default:
+            break;
         }
       }
       return emojisImg
@@ -330,8 +334,8 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
     build() {
       NavDestination() {
         Column() {
-          // 'app.string.Text_emoji'资源文件中的value值为'用户输入带表情的文本，例如：你好[grin]'
           TextInput({
+            // 请将$r('app.string.Text_emoji')替换为实际资源文件，在本示例中该资源文件的value值为"用户输入带表情的文本，例如：你好[grin]"
             placeholder: $r('app.string.Text_emoji')
           })
             .width('80%')
@@ -557,3 +561,73 @@ struct TextExample8 {
 ```
 
 <!--RP4--><!--RP4End-->
+
+## 文本输入（TextInput/TextArea/Search）常见问题
+
+以下内容介绍了使用[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)和[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)组件输入文本时可能遇到的问题。
+
+### TextInput被遮挡时光标仍然不消失
+
+**问题现象**
+
+在Stack中堆叠了多个组件，包含一个输入框（TextInput），当TextInput组件被遮挡时，偶尔会出现带有小圆圈的手柄，显示在其他组件上。
+
+**解决措施**
+
+当TextInput组件处于选中状态并显示操作手柄时，选中区域和操作手柄可能不在同一图层渲染。其中，选中区域与输入框在同一图层，而操作手柄则在更高的图层上。因此，当输入框被其他元素遮挡时，选中区域也会被遮挡，但操作手柄仍然可见。
+
+TextInput被遮挡时，如果通过[TextInputController](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)设置焦点和选中区域会出现上述现象。涉及的选中区域设置接口包括[selectAll](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#selectall11)和[setTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#settextselection10)。建议检查应用代码中以下接口的调用时机，在输入框被遮挡后避免设置选中区域。
+
+| 组件      | 接口              |
+|-----------|-------------------|
+| Search    | [setTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#settextselection12)  |
+| TextArea  | [setTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#settextselection10)  |
+| TextInput | [selectAll](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#selectall11)         |
+| TextInput | [setTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#settextselection10)  |
+
+以下示例展示了一个典型的问题场景，存在一个内容为“TextInput被遮挡不显示”的TextInput组件被隐藏，但点击按钮后，图片上会出现TextInput操作手柄。此时，开发者需要检查应用代码，确保在输入框被遮挡时没有设置选中区域。移除设置输入框选中区域的代码逻辑，即可解决操作手柄出现的问题。
+
+<!--@[Cursor_Persists_When_TextInput_Is_Covered](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/CursorPersistsWhenTextInputIsCovered.ets)-->
+
+``` TypeScript
+@Entry
+@Component
+export struct CursorPersistsWhenTextInputIsCoveredExample {
+  controller: TextInputController = new TextInputController();
+  @State message1: string = 'TextInput被遮挡不显示';
+
+  build() {
+    NavDestination() {
+      Column({ space: 50 }) {
+        Stack() {
+          TextInput({ text: this.message1, controller: this.controller })
+            .copyOption(CopyOptions.LocalDevice)
+            .backgroundColor(Color.Green)
+            .width(200)
+            .id('textInput_1')
+
+          // $r('app.media.foreground')需要替换为开发者所需的图像资源文件。
+          Image($r('app.media.foreground'))
+            .width(200)
+            .height(200)
+            .backgroundColor('rgb(213,213,213)')
+        }
+
+        Button('点击出现手柄')
+          .onClick(() => {
+            this.getUIContext().getFocusController().requestFocus('textInput_1')
+            this.controller.setTextSelection(0, 5, { menuPolicy: MenuPolicy.HIDE })
+          })
+      }
+      .padding('10%')
+      .alignItems(HorizontalAlign.Center)
+      .height('100%')
+      .width('90%')
+    }
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.Cursor_Persists_When_TextInput_Is_Covered'))
+  }
+}
+```
+
+![textInput_faq_show_handle](figures/textInput_faq_show_handle.gif)

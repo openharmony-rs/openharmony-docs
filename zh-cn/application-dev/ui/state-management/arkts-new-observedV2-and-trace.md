@@ -151,7 +151,7 @@ struct Index {
 | \@Trace成员变量装饰器 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ |
 | 装饰器参数            | 无。                                                           |
-| 可装饰的变量          | class中成员属性。属性的类型可以为number、string、boolean、class、[Array](#trace装饰基础类型的数组)、[Date](#trace装饰date类型)、[Map](#trace装饰map类型)、[Set](#trace装饰set类型)等类型。 |
+| 可装饰的变量          | class中成员属性。属性的类型可以为number、string、boolean、class、[Array](#trace装饰基础类型的数组)、[Date](#trace装饰date类型)、[Map](#trace装饰map类型)、[Set](#trace装饰set类型)等类型。\@Trace不支持观察Function类型的数据，修改\@Trace装饰的Function类型的数据，UI不会刷新。 |
 
 ## 观察变化
 
@@ -378,7 +378,7 @@ struct Index {
 
 - 继承自\@ObservedV2的类无法和\@State等V1的装饰器混用，运行时报错。
 
-<!-- @[Inheritance_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/InheritanceMixture.ets) -->   
+<!-- @[Inheritance_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/InheritanceMixture.ets) -->
 
 ``` TypeScript
 // 以@State装饰器为例
@@ -401,7 +401,7 @@ class Message extends Info {
 }
 
 @Entry
-@ComponentV2
+@Component
 struct Index {
   // @State message: Message = new Message();  无法混用，运行时报错
   message: Message = new Message();
@@ -499,6 +499,7 @@ struct Page {
 ### 继承类场景
 
 \@Trace支持在类的继承场景中使用，无论是在基类还是继承类中，只有被\@Trace装饰的属性才具有被观测变化的能力。
+
 以下例子中，声明class GrandFather、Father、Uncle、Son、Cousin，继承关系如下图。
 
 ![arkts-old-state-management](figures/arkts-new-observed-and-track-extend-sample.png)
@@ -589,6 +590,7 @@ struct Index {
 ### \@Trace装饰基础类型的数组
 
 \@Trace装饰数组时，使用支持的API能够观测到变化。支持的API见[观察变化](#观察变化)。
+
 在下面的示例中\@ObservedV2装饰的Arr类中的属性numberArr是\@Trace装饰的数组，当使用数组API操作numberArr时，可以观测到对应的变化。注意使用数组长度进行判断以防越界访问。
 
 <!-- @[Decoration_Foundation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationFoundation.ets) -->
@@ -960,7 +962,7 @@ let isInfoByParse: boolean = parseInfo instanceof Info; // false
 
 class-transformer可以通过如下命令安装。
 
-```
+```text
 ohpm install class-transformer
 ```
 
@@ -988,7 +990,7 @@ let isInfoByTransformed: boolean = transformedInfo instanceof Info; // true
 
 reflect-metadata可以通过如下命令安装。
 
-```
+```text
 ohpm install reflect-metadata@0.2.1
 ```
 

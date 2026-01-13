@@ -272,7 +272,7 @@ The following walks you through how to implement the entire video decoding proce
         bool ret = OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_WIDTH, &width) &&
                    OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &height);
         if (!ret) {
-         	// Handle exceptions.
+            // Handle exceptions.
         }
     }
 
@@ -861,7 +861,7 @@ The following walks you through how to implement the entire video decoding proce
                    OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
                    OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
         if (!ret) {
-         	// Handle exceptions.
+            // Handle exceptions.
         }
     }
     
@@ -894,7 +894,7 @@ The following walks you through how to implement the entire video decoding proce
                        OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
                        OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
             if (!ret) {
-             	// Handle exceptions.
+                // Handle exceptions.
             }
             isFirstFrame = false;
         }
@@ -1238,5 +1238,3 @@ The subsequent processes (including refreshing, resetting, stopping, and destroy
 
 <!--RP5-->
 <!--RP5End-->
-
-<!--no_check-->

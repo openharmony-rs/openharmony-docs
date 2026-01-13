@@ -13,6 +13,8 @@ The module provides basic APIs for manipulating Picture in Picture (PiP). For ex
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - Before API version 20, PiP is supported only on phones and tablets. Starting from API version 20, PiP is supported on phones, PCs/2-in-1 devices, and tablets, while remaining unavailable on other devices.
+>
+> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
 ## Modules to Import
 
@@ -270,7 +272,7 @@ Defines the parameters for creating a PiP controller.
 | context             | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | No | No| Context environment.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
 | componentController | [XComponentController](arkui-ts/ts-basic-components-xcomponent.md#xcomponentcontroller) | No | No| Original [XComponent](arkui-ts/ts-basic-components-xcomponent.md) controller.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
 | navigationId        | string                                                           | No | Yes| Navigation ID of the current page. If no value is passed, the page does not need to be cached.<br>1. When the UIAbility uses [Navigation](arkui-ts/ts-basic-components-navigation.md) to manage pages, set the ID of the **Navigation** component for the PiP controller. This ensures that the original page can be restored from the PiP window.<br>2. When the UIAbility uses [Router](js-apis-router.md) to manage pages, you do not need to set the ID of the **Navigation** component for the PiP controller.<br>3. If the UIAbility has only one page, you do not need to set the navigation ID. The original page can be restored from the PiP window.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| handleId<sup>22+</sup>        | number                                                                     | No | Yes| ID of the page to show when users touch [Full-screen Window](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/pipwindow-overview#section13787164103315) to restore the original screen. This parameter applies only in scenarios where the UIAbility uses [Navigation](arkui-ts/ts-basic-components-navigation.md) to manage pages. It can be set to any subpage ID within the Navigation hierarchy. The default value is **-1**, indicating that the topmost page in the Navigation stack is restored. You are advised to use [getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12) to obtain the page ID. When you use page routing provided by [Navigation](arkui-ts/ts-basic-components-navigation.md), you are advised to use the [system routing table](../../ui/arkts-navigation-navigation.md#system-routing-table). Otherwise, the page ID obtained by calling [getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12) may be incorrect.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| handleId<sup>22+</sup>        | number                                                                     | No | Yes| ID of the page to show when users touch [Full-screen Window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/pipwindow-overview#section13787164103315) to restore the original screen. This parameter applies only in scenarios where the UIAbility uses [Navigation](arkui-ts/ts-basic-components-navigation.md) to manage pages. It can be set to any subpage ID within the Navigation hierarchy. The default value is **-1**, indicating that the topmost page in the Navigation stack is restored. You are advised to use [getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12) to obtain the page ID. When you use page routing provided by [Navigation](arkui-ts/ts-basic-components-navigation.md), you are advised to use the [system routing table](../../ui/arkts-navigation-cross-package.md#system-routing-table). Otherwise, the page ID obtained by calling [getUniqueId()](arkui-ts/ts-custom-component-api.md#getuniqueid12) may be incorrect.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 | templateType        | [PiPTemplateType](#piptemplatetype)                                        | No | Yes| Template type, which is used to distinguish video playback, video call, and video meeting scenarios. If no value is passed, the video playback template is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
 | contentWidth        | number                                                                     | No | Yes| Width of the original content, in px. It is used to determine the aspect ratio of the PiP window. When the PiP controller is created in [typeNode mode](#pipwindowcreate12), the default value is 1920. When the PiP controller is created [not in typeNode mode](#pipwindowcreate), the default value is the width of the [XComponent](arkui-ts/ts-basic-components-xcomponent.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
 | contentHeight       | number                                                           | No | Yes| Height of the original content, in px. It is used to determine the aspect ratio of the PiP window. When the PiP controller is created in [typeNode mode](#pipwindowcreate12), the default value is 1080. When the PiP controller is created [not in typeNode mode](#pipwindowcreate), the default value is the height of the [XComponent](arkui-ts/ts-basic-components-xcomponent.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                            |
@@ -698,7 +700,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                                                                       |
 |-------|-------------------------------------------------------------------------------------------------------------|
-| 401   | Params error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401   | Params error. Possible causes: The PiPController is not created or destroyed. |
 
 **Example**
 
@@ -730,7 +732,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                                                                       |
 |-------|-------------------------------------------------------------------------------------------------------------|
-| 401   | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed |
+| 401   | Params error. Possible causes: The PiPController is not created or destroyed. |
 
 **Example**
 
@@ -808,7 +810,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                                                                       |
 |-------|-------------------------------------------------------------------------------------------------------------|
-| 401   | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed |
+| 401   | Params error. Possible causes: The PiPController is not created or destroyed. |
 
 **Example**
 
@@ -1135,7 +1137,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 401     | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 401     | Params error. Possible causes: Callback is already registered. |
 | 801   | Capability not supported.Failed to call the API due to limited device capabilities.                                                       |
 | 1300014    | PiP internal error.                                    |
 
@@ -1251,3 +1253,5 @@ let callback = (activeStatus: boolean) => {
 }
 this.pipController.off('activeStatusChange', callback);
 ```
+
+<!--no_check-->

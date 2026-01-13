@@ -41,12 +41,13 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnap
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Invalid ID.                                                  |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
 
 **示例：** 
 
@@ -122,12 +123,13 @@ get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.Pixe
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Invalid ID.                                                  |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
 
 **示例：** 
 
@@ -208,6 +210,8 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
+| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
 
 **示例：** 
 
@@ -305,6 +309,8 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
+| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
 
 **示例：** 
 
@@ -395,9 +401,10 @@ getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 **示例：**
 
@@ -469,12 +476,13 @@ getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): 
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Invalid ID.                                                  |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
 
 **示例：**
 
@@ -575,6 +583,7 @@ getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOption
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 **示例：**
 
@@ -582,11 +591,11 @@ getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOption
 import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { UIContext } from '@kit.ArkUI';
-
+// 自定义节点控制器，创建包含Image的FrameNode节点
 class MyNodeController extends NodeController {
   public node: FrameNode | null = null;
   public imageNode: FrameNode | null = null;
-
+  // 构建自定义节点，创建根FrameNode并添加Image子节点，配置Image资源与样式
   makeNode(uiContext: UIContext): FrameNode | null {
     this.node = new FrameNode(uiContext);
     this.node.commonAttribute.width('100%').height('100%');
@@ -617,6 +626,7 @@ struct SnapshotExample {
       Button("UniqueId getSync snapshot")
         .onClick(() => {
           try {
+            // 通过节点唯一ID同步生成组件快照，缩放比例为2倍，等待渲染完成后生成
             this.pixmap = this.getUIContext()
               .getComponentSnapshot()
               .getSyncWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
@@ -667,6 +677,8 @@ createFromComponent\<T extends Object>(content: ComponentContent\<T>, delay?: nu
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
+| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
 
 **示例：** 
 

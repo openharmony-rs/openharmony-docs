@@ -64,5 +64,6 @@ Crypto operation error.
 
 **处理步骤**
 
-1. 检查输入参数的正确性。
-2. 检查三方算法库功能是否正常。
+检查该接口或相关联接口输入参数的正确性。
+
+AES解密失败可参考[AES解密失败返回17630001](../../security/CryptoArchitectureKit/crypto-aes-decryption-error-faq.md)。

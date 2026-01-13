@@ -228,8 +228,7 @@ console.info("result:", result);  // result: 2
 
 ### forEach
 
-forEach(callbackFn: (value: T, index?: number, stack?: Stack&lt;T&gt;) => void,
-thisArg?: Object): void
+forEach(callbackFn: (value: T, index?: number, stack?: Stack&lt;T&gt;) => void, thisArg?: Object): void
 
 在遍历Stack实例对象中每一个元素的过程中，对每个元素执行回调函数。
 

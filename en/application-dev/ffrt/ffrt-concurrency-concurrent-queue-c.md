@@ -16,8 +16,9 @@ The FFRT concurrent queue provides the capability of setting the priority and qu
 
 ## Example: Bank Service System
 
-For example, each customer (common customer or VIP customer) submits a service request to the bank service system. The service request of the VIP customer can be processed first.
-The bank system has two windows for handling service requests submitted by customers. You can use the FFRT paradigm to perform the following modeling:
+For example, each customer (common customer or VIP customer) submits a service request to the bank service system. The service request of the VIP customer can be processed first. The bank system has two windows for handling service requests submitted by customers.
+
+You can use the FFRT paradigm to perform the following modeling:
 
 - **Queuing logic**: concurrent queue.
 - **Service window**: concurrency of the concurrent queue, which also equals the number of FFRT Worker threads.

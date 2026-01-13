@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbControlRequestSetup {...} __attribute__((aligned(8))) UsbControlRequestSetup
+```
+
 ## Overview
 
 Setup data for control transfer. It corresponds to <b>Setup Data</b> in the USB protocol.

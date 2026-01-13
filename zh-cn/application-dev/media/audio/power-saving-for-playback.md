@@ -16,7 +16,7 @@
 
 ## 开发指导
 
-低功耗音频渲染器与普通音频渲染器接口无差异，但需关注应用数据周期与播放进度。音频渲染器使用请参考[使用AudioRenderer开发音频播放功能](using-audiorenderer-for-playback.md)和[使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)。
+低功耗音频渲染器与普通音频渲染器接口无差异，但需关注应用数据周期与播放进度。音频渲染器使用请参考[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)和[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)。
 
 **数据周期示意图**
 

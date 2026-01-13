@@ -31,7 +31,7 @@ For details, see [@ohos.events.emitter (Emitter)](../../reference/apis-basic-ser
 
 To enable Emitter's capabilities mentioned above, perform the following steps:
 
-1. Import the Emitter module.
+1. Import the related modules.
 
    <!-- @[emitter_imp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) --> 
    

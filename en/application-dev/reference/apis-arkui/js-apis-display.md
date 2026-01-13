@@ -86,8 +86,7 @@ Enumerates the fold statuses of a foldable device. For dual-fold axis devices, w
 | FOLD_STATUS_HALF_FOLDED_WITH_SECOND_EXPANDED<sup>15+</sup> | 13 | For dual-fold axis devices, the first fold axis is half-folded, and the second fold axis is fully open.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 23 | For dual-fold axis devices, the first fold axis is half-folded, and the second fold axis is half-folded.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 
->**NOTE**
-
+>**NOTE**<br>
 > Devices with only one fold axis can be in the **FOLD_STATUS_EXPANDED**, **FOLD_STATUS_FOLDED**, or **FOLD_STATUS_HALF_FOLDED** state.
 
 > Devices with two fold axes can be in any of the states provided in the table above, except for **FOLD_STATUS_UNKNOWN**, which indicates an unusable fold status.
@@ -108,10 +107,35 @@ Enumerates the display modes of a foldable device.
 | FOLD_DISPLAY_MODE_SUB | 3 | The secondary screen of the device is displayed.|
 | FOLD_DISPLAY_MODE_COORDINATION | 4 | Both screens of the device are displayed in collaborative mode.|
 
->**NOTE**
+>**NOTE**<br>
 >For foldable devices where both the inner and outer screens can serve as the primary screen — like large or wide-folding models — the inner screen's display mode is **FOLD_DISPLAY_MODE_FULL**, and the outer screen's display mode is **FOLD_DISPLAY_MODE_MAIN**.<br>
 >
 >For foldable devices where the outer screen serves only as an auxiliary display — like small-folding models — the inner screen's display mode is **FOLD_DISPLAY_MODE_MAIN**, and the outer screen's display mode is **FOLD_DISPLAY_MODE_SUB**.
+
+## CornerType<sup>23+</sup>
+
+Enumerates the types of corners on the screen.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| TOP_LEFT | 0 | Top-left corner of the screen.|
+| TOP_RIGHT | 1 | Top-right corner of the screen.|
+| BOTTOM_RIGHT | 2 | Bottom-right corner of the screen.|
+| BOTTOM_LEFT | 3 | Bottom-left corner of the screen.|
+
+## RoundedCorner<sup>23+</sup>
+
+Describes a single rounded corner on the screen.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name  | Type| Read-Only| Optional| Description              |
+| ------ | -------- | ---- | ---- | ------------------ |
+| type  | [CornerType](#cornertype23)   | Yes  | No  |Type of the rounded corner.|
+| position  | [Position](#position20)   | Yes  | No  | Coordinates of the center point of the rounded corner.|
+| radius    | number   | Yes  | No  | Radius of the rounded corner, in px.|
 
 ## FoldCreaseRegion<sup>10+</sup>
 
@@ -196,11 +220,13 @@ Describes the screen brightness information. The information comes from the unde
 | sdrNits                     | number    | Yes | No  | Screen brightness. The value is a floating-point number greater than 0. The default value is **500.0**.|
 
 ## BrightnessCallback<sup>22+</sup>
-Defines the callback function used to listen for screen brightness information.
-
 type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 
+Defines the callback function used to listen for screen brightness information.
+
 **System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
 
 | Name            | Type| Mandatory| Description              |
 | ----------------- | ---- | ---- | ------------------|
@@ -284,7 +310,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ----------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed.|
-| 1400003 | This display manager service works abnormally. |
+| 1400003 | This display manager service works abnormally. Possible causes: Display is null, display id corresponding display does not exist. |
 
 **Example**
 
@@ -412,7 +438,7 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 1400001 | Invalid display or screen. |
+| 1400001 | Invalid display or screen. Possible cause: Display is not created or destroyed. |
 
 **Example**
 
@@ -449,7 +475,7 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 1400001 | Invalid display or screen. |
+| 1400001 | Invalid display or screen. Possible cause: Invalid display id. |
 
 **Example**
 
@@ -853,7 +879,7 @@ Subscribes to events related to screen brightness information changes. If the sc
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                   | Yes  | Event type. The value is fixed at **'brightnessInfoChange'**, indicating that the screen brightness information is changed.|
-| callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt;| Yes  | Callback used to return the display ID (parameter 1) and the corresponding screen brightness information (parameter 2).|
+| callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | Yes  | Callback used to return the display ID (parameter 1) and the corresponding screen brightness information (parameter 2).|
 
 **Error codes**
 
@@ -1307,7 +1333,7 @@ display.destroyVirtualScreen(screenId).then(() => {
 
 setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 
-Sets a surface ID for a virtual screen. This API uses a promise to return the result.
+Sets a surface for a virtual screen. **surfaceId** identifies a surface, the content of which will be shown on this virtual screen. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -1318,7 +1344,7 @@ Sets a surface ID for a virtual screen. This API uses a promise to return the re
 | Name   | Type  | Mandatory| Description         |
 | --------- | ------ | ---- | ------------- |
 | screenId  | number | Yes  | Screen ID, which must match the ID of the virtual screen created by calling the [createVirtualScreen()](#displaycreatevirtualscreen16) API. This parameter only accepts integer values.   |
-| surfaceId | string | Yes  | Surface ID of the virtual screen. The value can be customized. The maximum length for this parameter is 4096 bytes. If it goes beyond that, only the first 4096 bytes are used.|
+| surfaceId | string | Yes  | ID of the surface bound to the virtual screen. You can specify the ID of an existing surface. The maximum length for this parameter is 4096 bytes. If it goes beyond that, only the first 4096 bytes are used.|
 
 **Return value**
 
@@ -1341,15 +1367,39 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+//Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenId: number = 1;
-let surfaceId: string = '2048';
-display.setVirtualScreenSurface(screenId, surfaceId).then(() => {
-  console.info('Succeeded in setting the surface for the virtual screen.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set the surface for the virtual screen. Code:${err.code},message is ${err.message}`);
-});
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  setVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    display.setVirtualScreenSurface(screenId, surfaceId).then(() => {
+      console.info('Succeeded in setting the surface for the virtual screen.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set the surface for the virtual screen. Code:${err.code},message is ${err.message}`);
+    });
+  }
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('setSurface')
+        .onClick((event: ClickEvent) => {
+          this.setVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## display.makeUnique<sup>16+</sup>
@@ -1427,7 +1477,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 | 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
 
@@ -1481,7 +1530,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 | 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
 
@@ -1668,6 +1716,45 @@ Before calling any API in Display, you must use [getAllDisplays()](#displaygetal
 | y<sup>19+</sup> | number | Yes| Yes| Y coordinate of the top-left corner of the screen relative to the origin, which is the top-left corner of the primary screen, measured in px. The value is an integer. The default value is **0**. It is returned only when **DisplaySourceMode** is set to **MAIN** or **EXTEND**.<br>**System capability**: SystemCapability.Window.SessionManager<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                                                   |
 | supportedRefreshRates<sup>20+</sup> | Array&lt;number&gt; | Yes| Yes| All refresh rates supported by the display, sorted in ascending order. The refresh rate is a positive integer, in Hz. The default value is empty.<br>**System capability**: SystemCapability.Window.SessionManager<br>**Atomic service API**: This API can be used in atomic services since API version 20.                                                 |
 
+### getRoundedCorner<sup>23+</sup>
+getRoundedCorner(): Array\<RoundedCorner\>
+
+Obtains the rounded corner information of the display.
+
+The rounded corner information of the display is determined by the product configuration. Only physical screens that have a defined corner-radius value returns rounded corner information; otherwise, an empty array is returned. Virtual displays always return an empty array.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Array<[RoundedCorner](#roundedcorner23)> | Rounded corner information.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
+
+| ID| Error Message|
+| ------- | ----------------------- |
+| 801  | Capability not supported. |
+| 1400001 | Invalid display or screen. |
+| 1400003 | This display manager service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+  let data = displayClass.getRoundedCorner();
+  console.info(`Succeeded in getting rounded corner. Data: ${JSON.stringify(data)}`);
+} catch (error) {
+  console.error(`Failed to getRoundedCorner. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ### getCutoutInfo<sup>9+</sup>
 getCutoutInfo(callback: AsyncCallback&lt;CutoutInfo&gt;): void
@@ -1690,7 +1777,7 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 1400001 | Invalid display or screen. |
+| 1400001 | Invalid display or screen. Possible cause: 1. This display is abnormal. 2. Internal task error. |
 
 **Example**
 
@@ -1752,6 +1839,8 @@ getAvailableArea(): Promise&lt;Rect&gt;
 
 Obtains the available area of the display of the current device. This API uses a promise to return the result.
 
+The available area is the space left for applications after the system UI (such as the status bar and dock bar) is accounted for.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Window.SessionManager
@@ -1771,7 +1860,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ----------------------- |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1400001 | Invalid display or screen. |
+| 1400001 | Invalid display or screen. Possible cause: 1. This display is abnormal. 2. Internal task error. |
 
 **Example**
 

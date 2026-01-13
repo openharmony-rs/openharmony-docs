@@ -280,7 +280,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 createPhotoAsset(displayName: string, albumUri?: string): Promise&lt;FileAsset&gt;
 
-Creates an image or video asset with the specified file name and URI. This API uses a promise to return the result.
+Creates an image or video asset with the specified file name and album URI. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -951,7 +951,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getPhotoAlbums(options: AlbumFetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 
-Obtains image and video albums. This API uses a promise to return the result.
+Obtains albums. This API uses a promise to return the result.
 
 This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md#gethiddenalbums11) to obtain hidden albums.
 
@@ -1054,7 +1054,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getPrivateAlbum(type: PrivateAlbumType): Promise&lt;FetchResult&lt;PrivateAlbum&gt;&gt;
 
-Obtains the system album. This API uses a promise to return the result.
+Obtains the private album. This API uses a promise to return the result.
 
 This API will be deprecated. Use [getAlbums<sup>10+</sup>](#getalbums10) instead.
 
@@ -1278,7 +1278,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 delete(uri: string): Promise&lt;void&gt;
 
-Deletes a media file. This API uses a promise to return the result. The deleted file is moved to the recycle bin.
+Deletes media assets. The deleted assets are moved to the trash. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO, ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.READ_AUDIO, and ohos.permission.WRITE_AUDIO
 
@@ -1371,7 +1371,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getActivePeers(): Promise&lt;Array&lt;PeerInfo&gt;&gt;
 
-Obtains information about online peer devices. This API uses a promise to return the result.
+Obtains the information about online peer devices. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.DistributedCore
 
@@ -1442,7 +1442,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getAllPeers(): Promise&lt;Array&lt;PeerInfo&gt;&gt;
 
-Obtains information about all peer devices. This API uses a promise to return the result.
+Obtains the information about all peer devices. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.DistributedCore
 
@@ -1660,7 +1660,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 release(): Promise&lt;void&gt;
 
-Releases the **UserFileManager** instance. This API uses a promise to return the result.
+Releases this **UserFileManager** instance. This API uses a promise to return the result.
 Call this API when the APIs in the **UserFileManager** instance are no longer used.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
@@ -2120,9 +2120,11 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 open(mode: string, callback: AsyncCallback&lt;number&gt;): void
 
-Opens a file. This API uses an asynchronous callback to return the result.
+Opens this file asset. This API uses an asynchronous callback to return the result.
 
-**NOTE**<br>The write operations are mutually exclusive. After a write operation is complete, you must call **close** to release the resource.
+> **NOTE**
+>
+> The write operations are mutually exclusive. After a write operation is complete, you must call **close** to close the file.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO, ohos.permission.READ_AUDIO, ohos.permission.WRITE_IMAGEVIDEO, or ohos.permission.WRITE_AUDIO
 
@@ -2159,9 +2161,11 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 open(mode: string): Promise&lt;number&gt;
 
-Opens a file. This API uses a promise to return the result.
+Opens this file asset. This API uses a promise to return the result.
 
-**NOTE**<br>The write operations are mutually exclusive. After a write operation is complete, you must call **close** to release the resource.
+> **NOTE**
+>
+> The write operations are mutually exclusive. After a write operation is complete, you must call **close** to close the file.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO, ohos.permission.READ_AUDIO, ohos.permission.WRITE_IMAGEVIDEO, or ohos.permission.WRITE_AUDIO
 
@@ -2253,7 +2257,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 close(fd: number): Promise&lt;void&gt;
 
-Closes a file. This API uses a promise to return the result.
+Closes this file. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -2482,7 +2486,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 favorite(isFavorite: boolean): Promise&lt;void&gt;
 
-Favorites or unfavorites a file. This API uses a promise to return the result.
+Favorites or unfavorites this file asset. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.WRITE_AUDIO
 
@@ -2583,7 +2587,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 setHidden(hiddenState: boolean): Promise&lt;void&gt;
 
-Sets a file to hidden state. This API uses a promise to return the result.
+Sets this file asset to the hidden state. This API uses a promise to return the result.
 
 The private files set to hidden state are located in the private album (in hidden state) and are not open to third-party applications. After obtaining private files from the private album, users can set **hiddenState** to **false** to remove them from the private album.
 
@@ -2644,9 +2648,11 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getExif(): Promise&lt;string&gt;
 
-Obtains a JSON string consisting of the EXIF tags of the JPG image. This API uses a promise to return the result.
+Obtains the EXIF data from a JPG image and returns a JSON string. This API uses a promise to return the result.
 
-**NOTE**<br>This API returns a JSON string consisting of EXIF tags. The complete EXIF information consists of **all_exif** and [ImageVideoKey.USER_COMMENT](#imagevideokey). These two fields must be passed in via **fetchColumns**.
+> **NOTE**
+>
+> This API returns a JSON string that contains EXIF tags. The complete Exif information consists of all_exif and [ImageVideoKey](#imagevideokey).USER_COMMENT. The two fields need to be passed to **fetchColumns**.
 
 **System API**: This is a system API.
 
@@ -2659,6 +2665,14 @@ Obtains a JSON string consisting of the EXIF tags of the JPG image. This API use
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
 | Promise&lt;string&gt; | Promise that returns the EXIF data, in JSON strings.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202   | Called by non-system application.               |
 
 **Supported EXIF tags**
 
@@ -2736,9 +2750,11 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 getExif(callback: AsyncCallback&lt;string&gt;): void
 
-Obtains a JSON string consisting of the EXIF tags of this JPG image. This API uses an asynchronous callback to return the result.
+Obtains the EXIF data from a JPG image and returns a JSON string. This API uses an asynchronous callback to return the result.
 
-**NOTE**<br>This API returns a JSON string consisting of EXIF tags. The complete EXIF information consists of **all_exif** and [ImageVideoKey.USER_COMMENT](#imagevideokey). These two fields must be passed in via **fetchColumns**.
+> **NOTE**
+>
+> This API returns a JSON string that contains EXIF tags. The complete Exif information consists of all_exif and [ImageVideoKey](#imagevideokey).USER_COMMENT. The two fields need to be passed to **fetchColumns**.
 
 **System API**: This is a system API.
 
@@ -2751,6 +2767,14 @@ Obtains a JSON string consisting of the EXIF tags of this JPG image. This API us
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | callback | AsyncCallback&lt;string&gt; | Yes  | Callback that returns the EXIF data, in JSON strings.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202   | Called by non-system application.               |
 
 **Supported EXIF tags**
 
@@ -2840,7 +2864,9 @@ setUserComment(userComment: string): Promise&lt;void&gt;
 
 Sets user comment information of an image or video. This API uses a promise to return the result.
 
-**NOTE**<br>This API can be used to modify the comment information of only images or videos.
+> **NOTE**
+>
+> This API can only be used to set user comment information of an image or video.
 
 **System API**: This is a system API.
 
@@ -2900,7 +2926,9 @@ setUserComment(userComment: string, callback: AsyncCallback&lt;void&gt;): void
 
 Sets user comment information of an image or video. This API uses an asynchronous callback to return the result.
 
-**NOTE**<br>This API can be used to modify the comment information of only images or videos.
+> **NOTE**
+>
+> This API can only be used to set user comment information of an image or video.
 
 **System API**: This is a system API.
 
@@ -3476,11 +3504,11 @@ Provides APIs to manage albums.
 | ------------ | ------ | ---- | ---- | ------- |
 | albumType<sup>10+</sup> | [AlbumType]( #albumtype10) | Yes   | No   | Type of the album to obtain.   |
 | albumSubType<sup>10+</sup> | [AlbumSubType]( #albumsubtype10) | Yes   | No  | Subtype of the album.   |
-| albumName | string | No   | No  | Name of the album.<br>**NOTE**<br>It is writable for user albums but not for system albums.   |
+| albumName | string | No   | No  | Name of the album.<br>**NOTE**<br>The user album is writable, but the system album is not writable.   |
 | albumUri | string | Yes   | No   | URI of the album.  |
 | dateModified  | number | Yes   | No   |  Time when the album was modified.|
 | count | number | Yes   | No   |  Number of files in the album.|
-| coverUri | string | No   | No    | URI of the cover file of the album.<br>**NOTE**<br>It is writable for user albums but not for system albums.|
+| coverUri | string | No   | No    | URI of the cover file of the album.<br>**NOTE**<br>The user album is writable, but the system album is not writable.|
 
 ### getPhotoAssets
 
@@ -4043,7 +4071,9 @@ deletePhotoAssets(assets: Array&lt;FileAsset&gt;, callback: AsyncCallback&lt;voi
 
 Deletes image or video assets from the recycle bin. Before the operation, ensure that the image or video assets exist in the recycle bin. This API uses an asynchronous callback to return the result.
 
-**CAUTION**<br>This operation is irreversible. The file assets deleted cannot be restored. Exercise caution when performing this operation.
+> **NOTE**
+>
+> This operation is irreversible. The assets deleted cannot be restored. Exercise caution when performing this operation.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -4102,7 +4132,9 @@ deletePhotoAssets(assets: Array&lt;FileAsset&gt;): Promise&lt;void&gt;
 
 Deletes image or video assets from the recycle bin. Before the operation, ensure that the image or video assets exist in the recycle bin. This API uses a promise to return the result.
 
-**CAUTION**<br>This operation is irreversible. The file assets deleted cannot be restored. Exercise caution when performing this operation.
+> **NOTE**
+>
+> This operation is irreversible. The assets deleted cannot be restored. Exercise caution when performing this operation.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 

@@ -8,11 +8,11 @@
 
 ## Overview
 
-In versions earlier than API version 21, UI component creation and attribute setting must be performed in the application's UI thread. This means that when integrating NDK APIs, you must submit component creation and attribute setting tasks to the UI thread for execution. This limits both the flexibility of component creation and application performance.
+In versions earlier than API version 22, UI component creation and attribute setting must be performed in the application's UI thread. This means that when integrating NDK APIs, you must submit component creation and attribute setting tasks to the UI thread for execution. This limits both the flexibility of component creation and application performance.
 
 As application functionality grows increasingly complex, numerous components need to be dynamically created on application pages. Executing all these component creation tasks in a single UI thread leads to slow application startup, animation frame drops, and page freezes, directly impacting user experience.
 
-To address these issues, multi-threaded support has been introduced to NDK APIs starting from API version 21. This enhancement provides the following benefits:
+To address these issues, multi-threaded support has been introduced to NDK APIs starting from API version 22. This enhancement provides the following benefits:
 
 - **Simplified calling process**: You no longer need to switch threads or submit component creation tasks through task queues. Instead, you can directly call component creation APIs from any thread, reducing thread context switches and simplifying interaction logic between the UI framework and the application.
 

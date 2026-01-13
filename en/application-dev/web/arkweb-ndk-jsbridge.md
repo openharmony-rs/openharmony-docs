@@ -7,6 +7,7 @@
 <!--Adviser: @HelloShuo-->
 
 This guide applies to the communication between ArkWeb applications and frontend pages. You can use the ArkWeb native APIs to conduct the service communication mechanism (native JSBridge for short) based on the application architecture.
+
 For details about how to optimize the performance of JSBridge, see [JSBridge Optimization Solution](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-web-develop-optimization#section58781855115017).
 
 ## Applicable Application Architecture
@@ -44,22 +45,24 @@ In addition, the [permission](#invoking-application-functions-on-the-frontend-pa
 
 * ArkTS side:
 
-  <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->
+  <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->    
   
   ``` TypeScript
+  // Define a webTag and transfer it as an input parameter when WebviewController is created to establish the mapping between controller and webTag.
   webTag: string = 'ArkWeb1';
   controller: webview.WebviewController = new webview.WebviewController(this.webTag);
-  @State testObjtest: testObj = new testObj();
-  
+  // ...
+  // In the aboutToAppear method, pass webTag to the C++ side through the Node-API. The C++ side uses webTag to uniquely identify the Web component.
   aboutToAppear() {
     console.info('aboutToAppear');
     // Initialize the web Native Development Kit.
     testNapi.nativeWebInit(this.webTag);
+  }
   ```
 
 * C++ Side:
 
-  <!-- @[parse_and_store_webtags](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->
+  <!-- @[parse_and_store_webtags](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->    
   
   ``` C++
   // Parse and store the webTag.
@@ -81,8 +84,8 @@ In addition, the [permission](#invoking-application-functions-on-the-frontend-pa
   
       // Save the webTag in the instance object.
       jsbridge_object_ptr = std::make_shared<JSBridgeObject>(webTagValue);
-      if (jsbridge_object_ptr)
-          jsbridge_object_ptr->Init();
+      // ...
+  }
   ```
 
 ### Obtaining API Struct Using the Native API

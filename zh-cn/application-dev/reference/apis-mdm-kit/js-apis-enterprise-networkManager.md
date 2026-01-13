@@ -261,6 +261,8 @@ setNetworkInterfaceDisabledSync(admin: Want, networkInterface: string, isDisable
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
+
 **参数：**
 
 | 参数名           | 类型                                                    | 必填 | 说明                                              |
@@ -285,7 +287,6 @@ setNetworkInterfaceDisabledSync(admin: Want, networkInterface: string, isDisable
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -313,6 +314,8 @@ setGlobalProxySync(admin: Want, httpProxy: connection.HttpProxy): void
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -375,6 +378,8 @@ setGlobalProxyForAccount(admin: Want, httpProxy: connection.HttpProxy, accountId
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -555,6 +560,8 @@ addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名       | 类型                                                    | 必填 | 说明                 |
@@ -617,6 +624,8 @@ removeFirewallRule(admin: Want, firewallRule?: FirewallRule): void
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -740,12 +749,17 @@ addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 为设备添加域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
 添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的域名解析数据包将会被丢弃或拦截。<br/>
 设备重启，将会清空域名过滤规则。
+> **说明：**
+>
+>为避免DNS缓存导致拦截规则失效，建议系统启动后立即配置域名过滤规则。若已因DNS缓存导致拦截失效，重启系统可清除缓存，恢复拦截功能。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -804,6 +818,8 @@ removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule): void
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -927,6 +943,8 @@ turnOnMobileData(admin: Want, isForce: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了移动数据网络，则无法通过本接口直接开启移动数据网络。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
@@ -949,7 +967,6 @@ turnOnMobileData(admin: Want, isForce: boolean): void
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -976,6 +993,8 @@ turnOffMobileData(admin: Want): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** 任意MDM应用通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了移动数据网络，则无法通过本接口直接关闭移动数据网络。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
@@ -997,7 +1016,6 @@ turnOffMobileData(admin: Want): void
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -1023,6 +1041,8 @@ addApn(admin: Want, apnInfo: Record\<string, string>): void
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -1079,6 +1099,8 @@ deleteApn(admin: Want, apnId: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明           |
@@ -1127,6 +1149,8 @@ updateApn(admin: Want, apnInfo: Record\<string, string>, apnId: string): void
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -1184,6 +1208,8 @@ setPreferredApn(admin: Want, apnId: string): void
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -1349,6 +1375,8 @@ setEthernetConfig(admin: Want, networkInterface: string, config: InterfaceConfig
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 

@@ -83,7 +83,7 @@ Queries the frequency range of IR signals supported by the device.
 
 | Type                 | Description                 |
 | ------------------- | ------------------- |
-| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | Frequency range of IR signals, including multiple groups of maximum and minimum frequencies.|
+| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | Frequency range of IR signals, including multiple groups of maximum and minimum frequencies.<br>When the device does not have an infrared transmitter, it returns a set of maximum and minimum frequencies, both of which are **0** Hz.|
 
 **Error codes**
 
@@ -127,3 +127,51 @@ Defines the frequency range of IR signals.
 | --------- | ------ | ---- | ---- | ------- |
 | max    | number  | No   | No| Maximum frequency, in Hz.|
 | min    | number  | No   | No| Minimum frequency, in Hz.|
+
+## infraredEmitter.hasIrEmitter<sup>23+</sup>
+
+hasIrEmitter(): Promise&lt;boolean&gt;
+
+Checks whether the device has an infrared transmitter.
+
+**Required permissions**: ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
+
+**System capability**: SystemCapability.MultimodalInput.Input.InfraredEmitter
+
+**Return value**
+
+| Type                 | Description                 |
+| ------------------- | ------------------- |
+| Promise&lt;boolean&gt; | If the device has an infrared transmitter, **true** is returned. Otherwise, **false** is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Global Shortcut Key Error Codes](errorcode-inputconsumer.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message         |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 3800001 | Input service exception. |
+
+**Example**
+
+```js
+import { infraredEmitter } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+            infraredEmitter.hasIrEmitter().then((result: boolean) => {
+              console.info(`hasIrEmitter: ${JSON.stringify(result)}`);
+            }).catch((error: BusinessError)=> {
+              console.error(`hasIrEmitter failed: ${JSON.stringify(error)}`);})
+        })
+    }
+  }
+}
+```

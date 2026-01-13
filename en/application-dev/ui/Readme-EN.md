@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy; @s10021109; @yangfan229-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-- [Introduction to ArkUI](arkui-overview.md)
+- [About This Kit](arkui-overview.md)
 - UI Development (ArkTS-based Declarative Development Paradigm)<!--arkts-ui-development-->
   - [UI Development (ArkTS-based Declarative Development Paradigm) Overview](arkts-ui-development-overview.md)
   - Basic Syntax of UI Paradigms<!--arkts-ui-paradigm-basic-syntax-->
@@ -62,11 +62,11 @@
         - [\@Param Decorator: Inputting External Parameters to Components](state-management/arkts-new-param.md)
         - [\@Once: Implementing Initialization Once](state-management/arkts-new-once.md)
         - [\@Event Decorator: Standardizing Component Output](state-management/arkts-new-event.md)
-        - [\@Provider and \@Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner](state-management/arkts-new-Provider-and-Consumer.md)
+        - [\@Provider and \@Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner](state-management/arkts-new-provider-and-consumer.md)
       - Data Object State Management<!--arkts-v2-manage-data-object-state-->
         - [\@ObservedV2 and \@Trace Decorators: Observing Class Property Changes](state-management/arkts-new-observedV2-and-trace.md)
         - [\@Monitor Decorator: Listening for Value Changes of the State Variables](state-management/arkts-new-monitor.md)
-        - [\@Computed Decorator: Declaring Computed Properties](state-management/arkts-new-Computed.md)
+        - [\@Computed Decorator: Declaring Computed Properties](state-management/arkts-new-computed.md)
         - [\@Type Decorator: Marking the Types of the Class Property](state-management/arkts-new-type.md)
       - Application State Management<!--arkts-v2-manage-application-state-->
         - [AppStorageV2: Storing Application-wide UI State](state-management/arkts-new-appstoragev2.md)
@@ -96,9 +96,17 @@
     - [Repeat: Reusing Components for Repeated Content Rendering](rendering-control/arkts-new-rendering-control-repeat.md)
     - [Migrating from LazyForEach to Repeat](rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
     - [ContentSlot: Enabling Hybrid Development](rendering-control/arkts-rendering-control-contentslot.md)
-  - Setting Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
+  - Responsive Environment Variable<!--arkts-env-property-->
+    - [\@Env: Environment Variable](arkts-env-system-property.md)
+  - Navigation and Page Routing<!--arkts-set-navigation-routing-->
     - [Component Navigation and Page Routing Overview](arkts-navigation-introduction.md)
-    - [Component Navigation (Navigation) (Recommended)](arkts-navigation-navigation.md)
+  - Navigation (Recommended)<!--arkts-navigation-navigation-->
+      - [Introduction to Navigation Architecture](./arkts-navigation-architecture.md)
+      - [Subpage](./arkts-navigation-navdestination.md)
+      - [Page Routing](./arkts-navigation-jump.md)
+      - [Transition Animation](./arkts-navigation-animation.md)
+      - [Cross-Package Routing](./arkts-navigation-cross-package.md)
+      - [Split-Column Layout](./arkts-navigation-split-mode.md)
     - [Page Routing (@ohos.router) (Not Recommended)](arkts-routing.md)
     - [Transition from Router to Navigation](arkts-router-to-navigation.md)
   - Component Layouts<!--arkts-layout-development-->
@@ -357,5 +365,7 @@
   - [UI Profiling](ui-inspector-profiler.md)
   - [High-Performance UI Development](ui-performance-overview.md)
   - UI Development FAQs<!--ui-development-faq-->
+    - [FAQs About Navigation Animation](arkts-navigation-animation-faq.md)
+    - [FAQs About Text Components](arkts-text-faq.md)
 - [Window Manager](../windowmanager/Readme-EN.md)<!--window-manager-->
 - [Display Management](../displaymanager/Readme-EN.md)<!--display-manager-->

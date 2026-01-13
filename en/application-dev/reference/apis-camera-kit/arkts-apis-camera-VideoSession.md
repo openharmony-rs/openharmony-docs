@@ -598,3 +598,71 @@ function unregisterMacroStatusChanged(videoSession: camera.VideoSession): void {
   videoSession.off('macroStatusChanged');
 }
 ```
+
+## onIsoInfoChange<sup>22+</sup>
+
+onIsoInfoChange(callback: Callback\<IsoInfo\>): void
+
+Subscribes to sensitivity (ISO) state change events and obtains the latest ISO value through a callback.
+
+**Model restriction**: This API can be used only in the stage model.
+ 
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type                                     | Mandatory| Description                      |
+| -------- | ----------------------------------------- | ---- | ------------------------ |
+| callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\>     | Yes  | Callback function, which is used to obtain the current ISO value of the camera.|
+
+
+**Example**
+
+```ts
+
+function callback(isoInfo: camera.IsoInfo): void {
+  console.info(`Iso : ${isoInfo}`);
+}
+
+function registerIsoInfoChanged(videoSession: camera.VideoSession): void {
+  videoSession.onIsoInfoChange(callback);
+}
+```
+
+## offIsoInfoChange<sup>22+</sup>
+
+offIsoInfoChange(callback?: Callback\<IsoInfo\>): void
+
+Unsubscribes from ISO state change events.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type                                     | Mandatory| Description                      |
+| -------- | ----------------------------------------- | ---- | ------------------------ |
+| callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\>     | No  | Callback used for unsubscription.<br>If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.)<br>Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+
+
+**Example**
+
+```ts
+
+function callback(isoInfo: camera.IsoInfo): void {
+  console.info(`Iso : ${isoInfo}`);
+}
+
+function unregisterIsoInfoChanged(videoSession: camera.VideoSession): void {
+  videoSession.offIsoInfoChange(callback);
+}
+
+function unregisterAllIsoInfoChanged(videoSession: camera.VideoSession): void {
+  videoSession.offIsoInfoChange();
+}
+```

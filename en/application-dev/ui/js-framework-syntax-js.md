@@ -11,7 +11,7 @@ You can use a .js file in the ECMAScript compliant JavaScript language to define
 
 ## Syntax
 
-The ES6 syntax is supported.
+The ECMAScript 6.0 syntax is supported.
 
 - Module declaration
   
@@ -83,11 +83,11 @@ The ES6 syntax is supported.
 - Page objects
   | Name | Type | Description |
   | -------- | -------- | -------- |
-  | data | Object/Function | Data model of the page. If the attribute is of the function type, the return value must be of the object type. The attribute name cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (for, if, show, and tid).<br/>Do not use this attribute and private or public at the same time. |
-  | $refs | Object | DOM elements or child component instances that have registered the ref attribute. For example code, see [Obtaining a DOM element](#obtaining-a-dom-element). |
+  | data     | Object/Function | Data model of the page. If the attribute is of the function type, the return value must be of the object type. The name cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (**for**, **if**, **show**, and **tid**).<br>The **data** field cannot be used together with the **private** or **public** field.|
+  | $refs    | Object          | DOM elements or child component instances that have registered the **ref** attribute. For example code, see [Obtaining a DOM Element](#obtaining-a-dom-element).|
   | private | Object | Data model of the page. Private data attribute can be modified only on the current page. |
-  | public | Object | Data model of the page. Behaviors of public data attributes are the same as those of the data attribute. |
-  | props | Array/Object | Used for communication between components. This attribute can be transferred to components via &lt;tag xxxx='value'&gt;. A props name must be in lowercase and cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (for, if, show, and tid). Currently, props does not support functions. For details, see [props](../reference/apis-arkui/arkui-js/js-components-custom-props.md#props). |
+  | public | Object | Data model of the page. Behaviors of public data attributes are the same as those of the **data** attribute. |
+  | props | Array/Object | Used for communication between components. This attribute can be transferred to components via &lt;tag xxxx='value'&gt;. A **props** name must be in lowercase and cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (**for**, **if**, **show**, and **tid**). Currently, props does not support functions. For details, see [props](../reference/apis-arkui/arkui-js/js-components-custom-props.md#props). |
   | computed | Object | Used for pre-processing an object for reading and setting. The result is cached. The name cannot start with a dollar sign ($) or underscore (_). Do not use reserved words. For details, see [computed](../reference/apis-arkui/arkui-js/js-components-custom-props.md#computed). |
 
 ## Methods

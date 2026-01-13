@@ -41,6 +41,8 @@ import { dialogSession } from '@kit.AbilityKit';
 | visible<sup>12+</sup> | boolean | 否 | 否 | 表示Ability是否可见。true表示Ability可见，false表示Ability不可见。 |
 | appIndex<sup>12+</sup> | number | 否 | 否 | 表示应用的分身索引。 |
 | multiAppMode<sup>12+</sup> | [MultiAppMode](./js-apis-bundleManager-applicationInfo.md#multiappmode12) | 否 | 否 | 表示应用的多开模式。|
+| codePath<sup>23+</sup> | string | 否 | 是 | 表示应用程序的安装目录。|
+| installSource<sup>23+</sup> | string | 否 | 是 | 表示应用程序的安装来源，支持的取值如下：<br/> - pre-installed：表示首次开机时安装的预置应用。<br/> - ota：表示系统升级时新增的预置应用。<br/> - recovery：表示用户卸载后又手动恢复的预置应用。<br/> - bundleName：表示由此包名对应的应用安装。该bundleName代表变量，以实际值为准。<br/> - unknown：表示应用安装来源未知。|
 
 ## DialogSessionInfo
 

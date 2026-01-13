@@ -64,6 +64,7 @@ onMouse(event: (event: MouseEvent) => void): T
 ## 示例
 
 该示例通过按钮设置了鼠标事件，通过鼠标点击按钮可以触发[onMouse](#onmouse)事件，获取鼠标事件相关参数。从API version 15开始，可以获取鼠标事件[MouseEvent](#mouseevent对象说明)的targetDisplayId、rawDeltaX、rawDeltaY、pressedButtons等参数。
+
 鼠标滚轮的处理请参考[轴事件示例](ts-universal-events-axis.md#示例)。
 
 ```ts
@@ -96,8 +97,10 @@ struct MouseEventExample {
       Button('onMouse')
         .width(180).height(80)
         .fontSize(24)
+        // onMouse监听鼠标事件，解析按键、动作、坐标等信息并拼接展示
         .onMouse((event: MouseEvent): void => {
           if (event) {
+            // 判断触发的鼠标按键类型
             switch (event.button) {
               case MouseButton.None:
                 this.mouseBtn = 'None';
@@ -118,6 +121,7 @@ struct MouseEventExample {
                 this.mouseBtn = 'Middle';
                 break;
             }
+            // 判断触发的鼠标动作类型
             switch (event.action) {
               case MouseAction.Hover:
                 this.action = 'Hover';
@@ -132,6 +136,7 @@ struct MouseEventExample {
                 this.action = 'Release';
                 break;
             }
+            // 拼接鼠标事件全量信息并展示
             this.mouseText = 'onMouse:\nButton = ' + this.mouseBtn +
               '\nAction = ' + this.action + '\nXY=(' + event.x + ',' + event.y + ')' +
               '\nwindowXY=(' + event.windowX + ',' + event.windowY + ')' +

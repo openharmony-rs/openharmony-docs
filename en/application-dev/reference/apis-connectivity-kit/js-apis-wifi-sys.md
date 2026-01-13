@@ -1,11 +1,11 @@
 # @ohos.wifi (WLAN) (System API)
 
-<!--Kit: Connectivity Kit-->	
-<!--Subsystem: Communication-->	
-<!--Owner: @qq_43802146-->	
-<!--Designer: @qq_43802146-->	
-<!--Tester: @furryfurry123-->	
-<!--Adviser: @zhang_yixin13-->	
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 The **WLAN** module provides basic wireless local area network (WLAN) functions, peer-to-peer (P2P) functions, and WLAN message notification services. It allows applications to communicate with other devices over WLAN.
 
 > **NOTE**
@@ -45,9 +45,9 @@ Enables WLAN.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.enableWifi();
+    wifi.enableWifi();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -75,9 +75,9 @@ Disables WLAN.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.disableWifi();
+    wifi.disableWifi();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 
 ```
@@ -113,30 +113,30 @@ Adds network configuration. This API uses a promise to return the result.
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 0,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-			ipAddress: "",
-			gateway: "",
-			dnsServers: [],
-			domains: []
-		}
-	}
-	wifi.addDeviceConfig(config).then(result => {
-		console.info("result:" + JSON.stringify(result));
-	});	
+    let config:wifi.WifiDeviceConfig = {
+        ssid : "****",
+        bssid:  "****",
+        preSharedKey: "****",
+        isHiddenSsid: false,
+        securityType: 0,
+        creatorUid: 0,
+        disableReason: 0,
+        netId: 0,
+        randomMacType: 0,
+        randomMacAddr:  "****",
+        ipType: 0,
+        staticIp: {
+            ipAddress: "",
+            gateway: "",
+            dnsServers: [],
+            domains: []
+        }
+    }
+    wifi.addDeviceConfig(config).then(result => {
+        console.info("result:" + JSON.stringify(result));
+    });    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -236,30 +236,30 @@ Adds network configuration. This API uses an asynchronous callback to return the
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 0,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-			ipAddress: "",
-			gateway: "",
-			dnsServers: [],
-			domains: []
-		}
-	}
-	wifi.addDeviceConfig(config,(error,result) => {
-		console.info("result:" + JSON.stringify(result));
-	});	
+    let config:wifi.WifiDeviceConfig = {
+        ssid : "****",
+        bssid:  "****",
+        preSharedKey: "****",
+        isHiddenSsid: false,
+        securityType: 0,
+        creatorUid: 0,
+        disableReason: 0,
+        netId: 0,
+        randomMacType: 0,
+        randomMacAddr:  "****",
+        ipType: 0,
+        staticIp: {
+            ipAddress: "",
+            gateway: "",
+            dnsServers: [],
+            domains: []
+        }
+    }
+    wifi.addDeviceConfig(config,(error,result) => {
+        console.info("result:" + JSON.stringify(result));
+    });    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -294,11 +294,11 @@ Connects to the specified network.
 import wifi from '@ohos.wifi';
 
 try {
-	let networkId = 0;
-	wifi.connectToNetwork(networkId);
+    let networkId = 0;
+    wifi.connectToNetwork(networkId);
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
-}	
+    console.error("failed:" + JSON.stringify(error));
+}    
 ```
 
 ## wifi.connectToDevice
@@ -331,29 +331,29 @@ Connects to the specified network.
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 3,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-		    ipAddress: "",
-			gateway: "",
-			dnsServers: [],
-			domains: []
-		}
-	}
-	wifi.connectToDevice(config);
-			
+    let config:wifi.WifiDeviceConfig = {
+        ssid : "****",
+        bssid:  "****",
+        preSharedKey: "****",
+        isHiddenSsid: false,
+        securityType: 3,
+        creatorUid: 0,
+        disableReason: 0,
+        netId: 0,
+        randomMacType: 0,
+        randomMacAddr:  "****",
+        ipType: 0,
+        staticIp: {
+            ipAddress: "",
+            gateway: "",
+            dnsServers: [],
+            domains: []
+        }
+    }
+    wifi.connectToDevice(config);
+            
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -381,9 +381,9 @@ Disconnects the network.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.disconnect();
+    wifi.disconnect();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -486,10 +486,10 @@ Obtains the device MAC address.
 import wifi from '@ohos.wifi';
 
 try {
-	let ret = wifi.getDeviceMacAddress();
-	console.info("deviceMacAddress:" + JSON.stringify(ret));
+    let ret = wifi.getDeviceMacAddress();
+    console.info("deviceMacAddress:" + JSON.stringify(ret));
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 
 ```
@@ -518,9 +518,9 @@ Re-associates with the network.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.reassociate();
+    wifi.reassociate();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -547,9 +547,9 @@ Reconnects to the network.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.reconnect();
+    wifi.reconnect();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -576,10 +576,10 @@ Obtains network configuration.
 import wifi from '@ohos.wifi';
 
 try {
-	let configs = wifi.getDeviceConfigs();
-	console.info("configs:" + JSON.stringify(configs));
+    let configs = wifi.getDeviceConfigs();
+    console.info("configs:" + JSON.stringify(configs));
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -612,29 +612,29 @@ Updates network configuration.
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 3,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-			ipAddress: "",
-			gateway: "",
-			dnsServers: [],
-			domains: []
-		}
-	}
-	let ret = wifi.updateNetwork(config);
-	console.error("ret:" + ret);		
+    let config:wifi.WifiDeviceConfig = {
+        ssid : "****",
+        bssid:  "****",
+        preSharedKey: "****",
+        isHiddenSsid: false,
+        securityType: 3,
+        creatorUid: 0,
+        disableReason: 0,
+        netId: 0,
+        randomMacType: 0,
+        randomMacAddr:  "****",
+        ipType: 0,
+        staticIp: {
+            ipAddress: "",
+            gateway: "",
+            dnsServers: [],
+            domains: []
+        }
+    }
+    let ret = wifi.updateNetwork(config);
+    console.error("ret:" + ret);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -667,10 +667,10 @@ Disables network configuration.
 import wifi from '@ohos.wifi';
 
 try {
-	let netId = 0;
-	wifi.disableNetwork(netId);		
+    let netId = 0;
+    wifi.disableNetwork(netId);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -697,9 +697,9 @@ Removes the configuration of all networks.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.removeAllNetwork();		
+    wifi.removeAllNetwork();        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -732,10 +732,10 @@ Removes the specified network configuration.
 import wifi from '@ohos.wifi';
 
 try {
-	let id = 0;
-	wifi.removeDevice(id);		
+    let id = 0;
+    wifi.removeDevice(id);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -762,9 +762,9 @@ Enables this hotspot.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.enableHotspot();	
+    wifi.enableHotspot();    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -791,9 +791,9 @@ Disables this hotspot.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.disableHotspot();	
+    wifi.disableHotspot();    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -820,10 +820,10 @@ Checks whether the hotspot supports dual band.
 import wifi from '@ohos.wifi';
 
 try {
-	let ret = wifi.isHotspotDualBandSupported();
-	console.info("result:" + ret);		
+    let ret = wifi.isHotspotDualBandSupported();
+    console.info("result:" + ret);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -850,10 +850,10 @@ Checks whether this hotspot is active.
 import wifi from '@ohos.wifi';
 
 try {
-	let ret = wifi.isHotspotActive();
-	console.info("result:" + ret);		
+    let ret = wifi.isHotspotActive();
+    console.info("result:" + ret);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -886,17 +886,17 @@ Sets hotspot configuration.
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.HotspotConfig = {
-		ssid: "****",
-		securityType: 3,
-		band: 0,
-		preSharedKey: "****",
-		maxConn: 0
-	}
-	let ret = wifi.setHotspotConfig(config);
-	console.info("result:" + ret);		
+    let config:wifi.HotspotConfig = {
+        ssid: "****",
+        securityType: 3,
+        band: 0,
+        preSharedKey: "****",
+        maxConn: 0
+    }
+    let ret = wifi.setHotspotConfig(config);
+    console.info("result:" + ret);        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -940,10 +940,10 @@ Obtains hotspot configuration.
 import wifi from '@ohos.wifi';
 
 try {
-	let config = wifi.getHotspotConfig();
-	console.info("result:" + JSON.stringify(config));		
+    let config = wifi.getHotspotConfig();
+    console.info("result:" + JSON.stringify(config));        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -970,10 +970,10 @@ Obtains information about the connected stations.
 import wifi from '@ohos.wifi';
 
 try {
-	let stations = wifi.getStations();
-	console.info("result:" + JSON.stringify(stations));		
+    let stations = wifi.getStations();
+    console.info("result:" + JSON.stringify(stations));        
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1022,10 +1022,10 @@ Deletes a persistent group.
 import wifi from '@ohos.wifi';
 
 try {
-	let netId = 0;
-	wifi.deletePersistentGroup(netId);	
+    let netId = 0;
+    wifi.deletePersistentGroup(netId);    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1059,10 +1059,10 @@ Sets the device name.
 import wifi from '@ohos.wifi';
 
 try {
-	let name = "****";
-	wifi.setDeviceName(name);	
+    let name = "****";
+    wifi.setDeviceName(name);    
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+    console.error("failed:" + JSON.stringify(error));
 }
 ```
 

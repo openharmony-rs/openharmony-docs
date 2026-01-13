@@ -56,11 +56,11 @@ export struct ScrollSnapshot {
   // 每次滚动距离
   private scrollHeight: number = 0;
 
-// ···
+  // ...
   build() {
-    // ···
+    // ...
         Stack() {
-        // ···
+          // ...
           // 1.1 绑定滚动控制器，并通过`.id`配置组件唯一标识。
           List({ space: 12, scroller: this.scroller }) {
               LazyForEach(this.dataSource, (item: number) => {
@@ -69,7 +69,7 @@ export struct ScrollSnapshot {
               }
             }, (item: number) => item.toString())
           }
-        // ···
+          // ...
           .id(LIST_ID)
           // 1.2 通过回调获取滚动偏移量。
           .onDidScroll(() => {
@@ -81,7 +81,7 @@ export struct ScrollSnapshot {
             this.listComponentHeight = newValue.height as number;
             this.scrollHeight = this.listComponentHeight;
           })
-        // ···
+          // ...
     }
   }
 }
@@ -231,7 +231,7 @@ async saveSnapshot(result: SaveButtonOnClickResult): Promise<void> {
         fileIo.closeSync(file.fd);
         Logger.info(TAG, `Succeeded in packToFile`);
         this.getUIContext().getPromptAction().showToast({
-          // $r('app.string.save_album_success')需要替换为开发者所需的资源文件
+          // 请将$r('app.string.save_album_success')替换为实际资源文件，在本示例中该资源文件的value值为"Saved to album"
           message: $r('app.string.save_album_success'),
           duration: 1800
         })
@@ -239,7 +239,7 @@ async saveSnapshot(result: SaveButtonOnClickResult): Promise<void> {
         Logger.error(TAG, `Failed to packToFile. Error code is ${error.code}, message is ${error.message}`);
       });
     }
-  // ···
+    // ...
   } catch (err) {
     let error = err as BusinessError;
     Logger.error(TAG, `saveSnapshot err, errCode: ${error.code}, error mesage: ${error.message}`);

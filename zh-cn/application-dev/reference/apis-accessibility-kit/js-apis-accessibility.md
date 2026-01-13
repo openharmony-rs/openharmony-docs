@@ -232,7 +232,7 @@ on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关功能。
+> 从API version 8开始支持，从API version 12开始废弃。系统不再开放相关功能。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -284,7 +284,7 @@ on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关功能。
+> 从API version 8开始支持，从API version 12开始废弃。系统不再开放相关功能。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -336,7 +336,7 @@ off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关功能。
+> 从API version 8开始支持，从API version 12开始废弃。系统不再开放相关功能。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -393,7 +393,7 @@ off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关功能。
+> 从API version 8开始支持，从API version 12开始废弃。系统不再开放相关功能。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -617,8 +617,7 @@ getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Promise&lt;A
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。
-> 推荐使用[accessibility.getAccessibilityExtensionList()](#accessibilitygetaccessibilityextensionlist9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[accessibility.getAccessibilityExtensionList](#accessibilitygetaccessibilityextensionlist9)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -659,8 +658,7 @@ getAbilityLists(abilityType: AbilityType, stateType: AbilityState,callback: Asyn
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。
-> 推荐使用[accessibility.getAccessibilityExtensionList()](#accessibilitygetaccessibilityextensionlist9-1)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[accessibility.getAccessibilityExtensionList](#accessibilitygetaccessibilityextensionlist9-1)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -951,7 +949,7 @@ getCaptionsManager(): CaptionsManager
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关功能。
+> 从API version 8开始支持，从API version 12开始废弃。系统不再开放相关功能。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -1140,6 +1138,126 @@ struct Index {
 }
 ```
 
+## accessibility.onAnimationReduceStateChange<sup>23+</sup>
+
+onAnimationReduceStateChange(callback: Callback&lt;boolean&gt;): void
+
+监听减弱动效功能启用状态变化事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                                                         |
+| -------- | ----------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回true表示减弱动效模式已开启；返回false表示减弱动效模式已关闭。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe animationReduce state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    accessibility.onAnimationReduceStateChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## accessibility.onFlashReminderStateChange<sup>23+</sup>
+
+onFlashReminderStateChange(callback: Callback&lt;boolean&gt;): void
+
+监听闪烁提醒功能启用状态变化事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                                                         |
+| -------- | ----------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回true表示闪烁提醒模式已开启；返回false表示闪烁提醒模式已关闭。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe flashReminder state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    accessibility.onFlashReminderStateChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## accessibility.onAudioMonoStateChange<sup>23+</sup>
+
+onAudioMonoStateChange(callback: Callback&lt;boolean&gt;): void
+
+监听单声道音频功能启用状态变化事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                                                         |
+| -------- | ----------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回true表示单声道音频模式已开启；返回false表示单声道音频模式已关闭。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe audioMono state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    accessibility.onAudioMonoStateChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
 ## accessibility.off('accessibilityStateChange')
 
 off(type: 'accessibilityStateChange', callback?: Callback&lt;boolean&gt;): void
@@ -1306,6 +1424,138 @@ struct Index {
 }
 ```
 
+## accessibility.offAnimationReduceStateChange<sup>23+</sup>
+
+offAnimationReduceStateChange(callback?: Callback&lt;boolean&gt;): void
+
+取消监听减弱动效模式变化事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。取消指定callback对象的事件响应。需与[accessibility.onAnimationReduceStateChange](#accessibilityonanimationreducestatechange23)的callback一致。缺省时，表示注销所有已注册事件。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe animationReduce state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    accessibility.onAnimationReduceStateChange(this.callback);
+  }
+
+  aboutToDisappear(): void {
+    accessibility.offAnimationReduceStateChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## accessibility.offFlashReminderStateChange<sup>23+</sup>
+
+offFlashReminderStateChange(callback?: Callback&lt;boolean&gt;): void
+
+取消监听闪烁提醒模式变化事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。取消指定callback对象的事件响应。需与[accessibility.onFlashReminderStateChange](#accessibilityonflashreminderstatechange23)的callback一致。缺省时，表示注销所有已注册事件。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe flashReminder state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    accessibility.onFlashReminderStateChange(this.callback);
+  }
+
+  aboutToDisappear(): void {
+    accessibility.offFlashReminderStateChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## accessibility.offAudioMonoStateChange<sup>23+</sup>
+
+offAudioMonoStateChange(callback?: Callback&lt;boolean&gt;): void
+
+取消监听单声道音频模式变化事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。取消指定callback对象的事件响应。需与[accessibility.onAudioMonoStateChange](#accessibilityonaudiomonostatechange23)的callback一致。缺省时，表示注销所有已注册事件。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe audioMono state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    accessibility.onAudioMonoStateChange(this.callback);
+  }
+
+  aboutToDisappear(): void {
+    accessibility.offAudioMonoStateChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
 ## accessibility.isOpenAccessibility<sup>(deprecated)</sup>
 
 isOpenAccessibility(): Promise&lt;boolean&gt;
@@ -1314,9 +1564,7 @@ isOpenAccessibility(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 10开始废弃。
->
-> 推荐使用[accessibility.isOpenAccessibilitySync](#accessibilityisopenaccessibilitysync10)。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[accessibility.isOpenAccessibilitySync](#accessibilityisopenaccessibilitysync10)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1347,9 +1595,7 @@ isOpenAccessibility(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 10开始废弃。
->
-> 推荐使用[accessibility.isOpenAccessibilitySync](#accessibilityisopenaccessibilitysync10)。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[accessibility.isOpenAccessibilitySync](#accessibilityisopenaccessibilitysync10)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1412,9 +1658,7 @@ isOpenTouchGuide(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 10开始废弃。
->
-> 推荐使用[accessibility.isOpenTouchGuideSync](#accessibilityisopentouchguidesync10)。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[accessibility.isOpenTouchGuideSync](#accessibilityisopentouchguidesync10)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Vision
 
@@ -1445,9 +1689,7 @@ isOpenTouchGuide(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 10开始废弃。
->
-> 推荐使用[accessibility.isOpenTouchGuideSync](#accessibilityisopentouchguidesync10)。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[accessibility.isOpenTouchGuideSync](#accessibilityisopentouchguidesync10)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Vision
 
@@ -1524,6 +1766,234 @@ import { accessibility } from '@kit.AccessibilityKit';
 let status: boolean = accessibility.isScreenReaderOpenSync();
 ```
 
+## accessibility.isAnimationReduceEnabled<sup>23+</sup>
+
+isAnimationReduceEnabled(): Promise&lt;boolean&gt;
+
+判断减弱动效模式是否开启。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**返回值：**
+
+| 类型                   | 说明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示减弱动效模式已开启；返回false表示减弱动效模式已关闭。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    accessibility.isAnimationReduceEnabled().then((data: boolean) => {
+      console.info(`success data:isAnimationReduceEnabled : ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to isAnimationReduceEnabled, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## accessibility.isAnimationReduceEnabledSync<sup>23+</sup>
+
+isAnimationReduceEnabledSync(): boolean
+
+使用同步方法判断减弱动效模式是否开启。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| boolean | 表示是否开启减弱动效模式。返回true表示开启减弱动效模式；返回false表示未开启减弱动效模式。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    let status: boolean = accessibility.isAnimationReduceEnabledSync();
+    console.info(`status: ${JSON.stringify(status)}`);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## accessibility.isFlashReminderEnabled<sup>23+</sup>
+
+isFlashReminderEnabled(): Promise&lt;boolean&gt;
+
+判断闪烁提醒模式是否开启。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**返回值：**
+
+| 类型                   | 说明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示闪烁提醒模式已开启；返回false表示闪烁提醒模式已关闭。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    accessibility.isFlashReminderEnabled().then((data: boolean) => {
+      console.info(`success data:isFlashReminderEnabled : ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to isFlashReminderEnabled, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## accessibility.isFlashReminderEnabledSync<sup>23+</sup>
+
+isFlashReminderEnabledSync(): boolean
+
+使用同步方法判断闪烁提醒模式是否开启。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| boolean | 表示是否开启闪烁提醒模式。true表示开启闪烁提醒模式，false表示未开启闪烁提醒模式。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    let status: boolean = accessibility.isFlashReminderEnabledSync();
+    console.info(`status: ${JSON.stringify(status)}`);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## accessibility.isAudioMonoEnabled<sup>23+</sup>
+
+isAudioMonoEnabled(): Promise&lt;boolean&gt;
+
+判断单声道音频模式是否开启。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**返回值：**
+
+| 类型                   | 说明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示单声道音频模式已开启；返回false表示单声道音频模式已关闭。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    accessibility.isAudioMonoEnabled().then((data: boolean) => {
+      console.info(`success data:isAudioMonoEnabled : ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to isAudioMonoEnabled, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## accessibility.isAudioMonoEnabledSync<sup>23+</sup>
+
+isAudioMonoEnabledSync(): boolean
+
+使用同步方法判断单声道音频模式是否开启。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| boolean | 表示是否开启单声道音频模式。true表示开启单声道音频模式，false表示未开启单声道音频模式。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    let status: boolean = accessibility.isAudioMonoEnabledSync();
+    console.info(`status: ${JSON.stringify(status)}`);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
 ## accessibility.sendEvent<sup>(deprecated)</sup>
 
 sendEvent(event: EventInfo): Promise&lt;void&gt;
@@ -1532,8 +2002,7 @@ sendEvent(event: EventInfo): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。
-> 推荐使用[accessibility.sendAccessibilityEvent()](#accessibilitysendaccessibilityevent9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[accessibility.sendAccessibilityEvent](#accessibilitysendaccessibilityevent9)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1576,8 +2045,7 @@ sendEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。
-> 推荐使用[accessibility.sendAccessibilityEvent()](#accessibilitysendaccessibilityevent9-1)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[accessibility.sendAccessibilityEvent](#accessibilitysendaccessibilityevent9-1)替代。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 

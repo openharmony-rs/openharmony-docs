@@ -32,9 +32,9 @@ typedef struct {...} Print_PrintAttributes
 | uint32_t copyNumber | 打印份数。 |
 | uint32_t duplexMode | 单双面。 |
 | uint32_t colorMode | 彩色。 |
-| bool isSequential | 顺序打印。 |
-| bool isLandscape | 横纵向。 |
-| bool hasOption | 打印选项标识位。 |
+| bool isSequential | 顺序打印。true表示顺序打印，false表示不是顺序打印。 |
+| bool isLandscape | 横纵向。true表示横纵向，false表示不是横纵向。 |
+| bool hasOption | 打印选项标识位。true表示有打印选项标识位，false表示没有打印选项标识位。 |
 | char options[256] | 打印选项。 |
 
 

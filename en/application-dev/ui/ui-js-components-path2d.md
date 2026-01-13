@@ -7,12 +7,12 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-**\<Path2D>** allows you to describe a path through an existing path. This path can be drawn through the **stroke** API of **Canvas**. For details, see [Path2D](../reference/apis-arkui/arkui-js/js-components-canvas-path2d.md).
+A **Path2D** object defines a geometric path using its methods and can be rendered onto a canvas via the [stroke](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#stroke-1) method of the **Canvas**. For details, see [Path2D](../reference/apis-arkui/arkui-js/js-components-canvas-path2d.md).
 
 
 ## Drawing Line Segments
 
-Create a **\<Path2D>** object and use line segments to create different shapes.
+Create a **Path2D** object and use line segments to create different shapes.
 
 ```html
 <!-- xxx.hml --> 

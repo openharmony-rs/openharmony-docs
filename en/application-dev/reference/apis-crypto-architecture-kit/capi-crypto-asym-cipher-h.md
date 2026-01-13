@@ -54,7 +54,7 @@ Defines APIs for encrypting and decrypting asymmetric keys.
 
 ### CryptoSm2CiphertextSpec_item
 
-```
+```c
 enum CryptoSm2CiphertextSpec_item
 ```
 
@@ -76,7 +76,7 @@ Defines the type of SM2 ciphertext specification items.
 
 ### OH_CryptoAsymCipher_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymCipher_Create(const char *algoName, OH_CryptoAsymCipher **ctx)
 ```
 
@@ -102,7 +102,7 @@ Creates an asymmetric encryption instance based on the given algorithm name.
 
 ### OH_CryptoAsymCipher_Init()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymCipher_Init(OH_CryptoAsymCipher *ctx, Crypto_CipherMode mode, OH_CryptoKeyPair *key)
 ```
 
@@ -134,7 +134,7 @@ Initializes asymmetric encryption.
 
 ### OH_CryptoAsymCipher_Final()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Crypto_DataBlob *in,Crypto_DataBlob *out)
 ```
 
@@ -166,7 +166,7 @@ Finalizes asymmetric encryption.
 
 ### OH_CryptoAsymCipher_Destroy()
 
-```
+```c
 void OH_CryptoAsymCipher_Destroy(OH_CryptoAsymCipher *ctx)
 ```
 
@@ -182,7 +182,7 @@ Destroys an asymmetric encryption context.
 
 ### OH_CryptoSm2CiphertextSpec_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Create(Crypto_DataBlob *sm2Ciphertext, OH_CryptoSm2CiphertextSpec **spec)
 ```
 
@@ -208,7 +208,7 @@ Creates SM2 ciphertext specifications.
 
 ### OH_CryptoSm2CiphertextSpec_GetItem()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec *spec,CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *out)
 ```
 
@@ -235,7 +235,7 @@ Obtains a specified item in SM2 ciphertext specifications.
 
 ### OH_CryptoSm2CiphertextSpec_SetItem()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_SetItem(OH_CryptoSm2CiphertextSpec *spec,CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *in)
 ```
 
@@ -262,7 +262,7 @@ Sets a specified item in SM2 ciphertext specifications.
 
 ### OH_CryptoSm2CiphertextSpec_Encode()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Encode(OH_CryptoSm2CiphertextSpec *spec, Crypto_DataBlob *out)
 ```
 
@@ -288,7 +288,7 @@ Encodes SM2 ciphertext specifications into DER ciphertext.
 
 ### OH_CryptoSm2CiphertextSpec_Destroy()
 
-```
+```c
 void OH_CryptoSm2CiphertextSpec_Destroy(OH_CryptoSm2CiphertextSpec *spec)
 ```
 

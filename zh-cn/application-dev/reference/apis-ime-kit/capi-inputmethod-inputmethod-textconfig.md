@@ -12,7 +12,7 @@ typedef struct InputMethod_TextConfig InputMethod_TextConfig
 
 ## 概述
 
-输入框的配置信息。
+文本输入框的输入行为配置结构体，用于输入框向输入法框架传递核心输入规则，输入法框架根据配置适配输入行为。
 
 **起始版本：** 12
 

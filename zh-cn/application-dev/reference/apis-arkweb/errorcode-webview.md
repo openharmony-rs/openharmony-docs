@@ -20,6 +20,10 @@ Init error. The WebviewController must be associated with a Web component.
 
 WebviewController还没有和具体的Web组件关联，无法进行相应的操作。
 
+**可能原因**
+
+WebviewController还没有和具体的Web组件关联。
+
 **处理步骤**
 
 请检查WebviewController对象是否已与Web组件关联，可以通过[onControllerAttached()](./arkts-basic-components-web-events.md#oncontrollerattached10)接口进行检查。<!--RP1--><!--RP1End-->
@@ -34,6 +38,12 @@ URL error. Possible causes: 1. No valid cookie found for the specified URL. 2. T
 **错误描述**
 
 URL错误，可能原因：
+
+1. 未找到指定URL的有效Cookie。
+
+2. 该URL对应的网页无效，或URL长度超过2\*1024\*1024。
+
+**可能原因**
 
 1. 未找到指定URL的有效Cookie。
 
@@ -72,6 +82,10 @@ Function not enabled.
 **错误描述**
 
 功能开关未打开。
+
+**可能原因**
+
+相关功能未设置或开关未打开。
 
 **处理步骤**
 
@@ -384,4 +398,4 @@ The errorCode is either ARKWEB_NET_OK or outside the range of error codes in Web
 
 **处理步骤**
 
-检查使用的错误码是否在[WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist)范围内，或者调用difFail时是否使用了NET_OK错误码。
+检查使用的错误码是否在[WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist)范围内，或者调用didFail时是否使用了NET_OK错误码。

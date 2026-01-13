@@ -25,6 +25,10 @@ getCurrentTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 获取自Unix纪元以来经过的时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getCurrentTime](js-apis-date-time.md#systemdatetimegetcurrenttimedeprecated)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -67,6 +71,10 @@ getCurrentTime(callback: AsyncCallback&lt;number&gt;): void
 
 获取自Unix纪元以来经过的时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getCurrentTime](js-apis-date-time.md#systemdatetimegetcurrenttimedeprecated-1)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -107,6 +115,10 @@ try {
 getCurrentTime(isNano?: boolean): Promise&lt;number&gt;
 
 获取自Unix纪元以来经过的时间，使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getCurrentTime](js-apis-date-time.md#systemdatetimegetcurrenttimedeprecated-2)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -153,6 +165,10 @@ getRealActiveTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 获取自系统启动以来经过的时间，不包括深度睡眠时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getRealActiveTime](js-apis-date-time.md#systemdatetimegetrealactivetimedeprecated)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -195,6 +211,10 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 获取自系统启动以来经过的时间，不包括深度睡眠时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getRealActiveTime](js-apis-date-time.md#systemdatetimegetrealactivetimedeprecated-1)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -235,6 +255,10 @@ try {
 getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 
 获取自系统启动以来经过的时间，不包括深度睡眠时间，使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getRealActiveTime](js-apis-date-time.md#systemdatetimegetrealactivetimedeprecated-2)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -281,6 +305,10 @@ getRealTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 获取自系统启动以来经过的时间，包括深度睡眠时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getRealTime](js-apis-date-time.md#systemdatetimegetrealtimedeprecated)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -323,6 +351,10 @@ getRealTime(callback: AsyncCallback&lt;number&gt;): void
 
 获取自系统启动以来经过的时间，包括深度睡眠时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getRealTime](js-apis-date-time.md#systemdatetimegetrealtimedeprecated-1)替代。。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -363,6 +395,10 @@ try {
 getRealTime(isNano?: boolean): Promise&lt;number&gt;
 
 获取自系统启动以来经过的时间，包括深度睡眠时间，使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getRealTime](js-apis-date-time.md#systemdatetimegetrealtimedeprecated-2)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -409,6 +445,10 @@ getDate(callback: AsyncCallback&lt;Date&gt;): void
 
 获取当前系统日期，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getDate](js-apis-date-time.md#systemdatetimegetdatedeprecated)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -450,6 +490,10 @@ getDate(): Promise&lt;Date&gt;
 
 获取当前系统日期，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[@systemDateTime.getDate](js-apis-date-time.md#systemdatetimegetdatedeprecated-1)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **返回值：**
@@ -488,6 +532,10 @@ try {
 getTimezone(callback: AsyncCallback&lt;string&gt;): void
 
 获取系统时区，使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTimezone](js-apis-date-time.md#systemdatetimegettimezone)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -530,6 +578,10 @@ getTimezone(): Promise&lt;string&gt;
 
 获取系统时区，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTimezone](js-apis-date-time.md#systemdatetimegettimezone-1)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **返回值：**
@@ -568,6 +620,10 @@ try {
 setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
 
 设置系统时间，使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -614,6 +670,10 @@ try {
 setTime(time : number) : Promise&lt;void&gt;
 
 设置系统时间，使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -664,6 +724,10 @@ setDate(date: Date, callback: AsyncCallback&lt;void&gt;): void
 
 设置系统日期，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
+
 **需要权限：** ohos.permission.SET_TIME
 
 **系统能力：** SystemCapability.MiscServices.Time
@@ -708,6 +772,10 @@ try {
 setDate(date: Date): Promise&lt;void&gt;
 
 设置系统日期，使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -757,6 +825,10 @@ setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
 设置系统时区，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
+
 **需要权限：** ohos.permission.SET_TIME_ZONE
 
 **系统能力：** SystemCapability.MiscServices.Time
@@ -800,6 +872,10 @@ try {
 setTimezone(timezone: string): Promise&lt;void&gt;
 
 使用Promise异步回调设置系统时区。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **需要权限：** ohos.permission.SET_TIME_ZONE
 

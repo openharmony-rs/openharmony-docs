@@ -9,29 +9,29 @@
 
 ## Overview
 
-A TextBlob is a set of texts. You can draw a single text or a large text blob.
+A TextBlob is a set of texts. You can draw both a single text and a paragraph by using TextBlobs.
 
-In addition to basic text blob drawing, you can also add various drawing effects to texts. Common text blob drawing scenarios include text stroke (see #Text Stroke) and text gradient (see #Text Gradient). For more effects, see Drawing Effects (drawing-effect-overview.md).
+In addition to the basic TextBlob drawing, you can add various drawing effects to texts. Common TextBlob drawing scenarios include [text stroke](#text-stroke) and [text gradient](#text-gradient). For more effects, see [Overview of Drawing Effects](drawing-effect-overview.md).
 
-This section does not involve text measurement and layout. For details about how to handle text drawing requirements during development, see Text Development Overview (text-overview.md). This document describes the layout policies and usage guide.
+This topic does not involve text measurement and typography. For details about how to handle text drawing requirements, see [Introduction to Text Development](text-overview.md). This topic describes the typography policies and related usage.
 
-## Basic Text Blob Drawing
+## Basic TextBlob Drawing
 
-Use the OH_Drawing_CanvasDrawTextBlob() API to draw a text blob. The API accepts four parameters: canvas object, text blob object, and x and y coordinates of the left end of the text baseline.
+Use the **OH_Drawing_CanvasDrawTextBlob()** API to draw a TextBlob. The API takes four parameters: **Canvas** object, **TextBlob** object, and X and Y coordinates of the left endpoint of the text baseline.
 
-For details about the canvas object, see canvas-get-result-draw-c.md.
+For details about the **Canvas** object, see [Obtaining a Canvas and Displaying Drawing Results (C/C++)](canvas-get-result-draw-c.md).
 
-A text blob object can be created in multiple ways. For details, see [drawing_text_blob.h](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md).
+A **TextBlob** object can be created in multiple ways. For details about how to create a block, see [drawing_text_blob.h](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md).
 
-The following uses OH_Drawing_TextBlobCreateFromString() as an example to describe how to create a text blob. The API accepts three parameters:
+The following uses the **OH_Drawing_TextBlobCreateFromString()** API as an example to create a **TextBlob** object. The API takes three parameters:
 
 - Text string to be displayed.
 
-- Pointer to the OH_Drawing_Font object. OH_Drawing_Font is used to set and obtain various font attributes, such as the font size, text style, font alignment mode, font rendering mode, and font stroke mode. For details about the API, see [draw_font](../reference/apis-arkgraphics2d/capi-drawing-font-h.md).
+- Pointer to the **OH_Drawing_Font** object, which is used to set and obtain various font attributes, such as the font size, text style, font alignment mode, font rendering mode, and font stroke mode. For details about the APIs, see [draw_font](../reference/apis-arkgraphics2d/capi-drawing-font-h.md).
 
 - Text encoding mode.
 
-The following figure shows a simple example.
+The following shows the sample code and effect:
 
 <!-- @[ndk_graphics_draw_base_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -42,12 +42,12 @@ OH_Drawing_Font *font = OH_Drawing_FontCreate();
 OH_Drawing_FontSetTextSize(font, value100_);
 // Text to be drawn.
 const char *str = "Hello world";
-// Create a text block object.
+// Create a TextBlob object.
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
-// Draw the text block.
+// Draw the TextBlob.
 OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
-// Release the text block object.
+// Release the TextBlob object.
 OH_Drawing_TextBlobDestroy(textBlob);
 // Release the font object.
 OH_Drawing_FontDestroy(font);
@@ -57,36 +57,36 @@ OH_Drawing_FontDestroy(font);
 
 ## Text Stroke
 
-You can also use a paint object to draw strokes for text. For details about strokes, please refer to basic-drawing-effect-c.md# Stroke.
+Based on the basic TextBlob drawing, you can also use the brush to implement the text stroke effect. For details, see [Stroke Effect](basic-drawing-effect-c.md#stroke-effect).
 
-The following provides examples for drawing strokes for English and Chinese text.
+The following uses English and Chinese text strokes as examples.
 
 ### English Text Stroke
 
-The following figure shows how to draw strokes for English text.
+The following shows the sample code and effect of English text strokes.
 
 <!-- @[ndk_graphics_draw_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // Create a pen.
 OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
-// Enable anti-aliasing.
+// Set anti-aliasing.
 OH_Drawing_PenSetAntiAlias(pen, true);
 // Set the stroke color.
 OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
 // Set the stroke width to 3.
 OH_Drawing_PenSetWidth(pen, 3);
-// Set the stroke effect of the paint.
+// Set the stroke effect of the pen.
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // Create a font object.
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // Set the font size.
 OH_Drawing_FontSetTextSize(font, value150_);
 const char *str = "Hello world";
-// Create a text block object.
+// Create a TextBlob object.
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
-// Draw the text block.
+// Draw the TextBlob.
 OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // Remove the stroke effect.
 OH_Drawing_CanvasDetachPen(canvas);
@@ -98,11 +98,11 @@ OH_Drawing_PenDestroy(pen);
 
 ![Screenshot_20241225171259621](figures/Screenshot_20241225171259621.jpg)
 
-### Stroke for Chinese Characters
+### Chinese Text Stroke
 
-You need to use the paint to stroke the text, and then call the brush to fill the internal color to remove the impurities and overlapping parts in the middle of the font.
+To achieve the stroke effect for Chinese text, first use a pen to outline the strokes, then apply a brush to fill the inner color and eliminate impurities and overlapping areas in the middle of the font.
 
-The following is an example of outlining Chinese characters:
+The following shows the sample code and effect of Chinese text strokes.
 
 <!-- @[ndk_graphics_draw_chinese_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -113,29 +113,29 @@ OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
 // Set anti-aliasing for the brush.
 OH_Drawing_BrushSetAntiAlias(brush, true);
-// Set the outline color of the brush.
+// Set the stroke color of the brush.
 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF));
 // Set anti-aliasing for the pen.
 OH_Drawing_PenSetAntiAlias(pen, true);
-// Set the outline width to 3.
+// Set the stroke width to 3.
 OH_Drawing_PenSetWidth(pen, 3);
-// Set the outline color of the pen.
+// Set the stroke color of the pen.
 OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
-// Set the outline effect of the pen.
+// Set the stroke effect of the pen.
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // Create a font object.
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // Set the font size.
 OH_Drawing_FontSetTextSize(font, value150_);
-const char *str = "Hello";
-// Create a text block object.
+const char *str = "你好";
+// Create a TextBlob object.
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
-// Draw the text block.
+// Draw the TextBlob.
 OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 // Remove the stroke effect.
 OH_Drawing_CanvasDetachPen(canvas);
-// Set the outline effect of the brush.
+// Set the stroke effect of the brush.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
 
@@ -150,9 +150,9 @@ OH_Drawing_BrushDestroy(brush);
 
 ## Text Gradient
 
-You can create text gradient effects using shaders. For details about shaders, please refer to complex-drawing-effect-c.md# Shader Effects.
+In addition to TextBlob drawing, you can use a shader to implement the gradient effect of text. For more information about shaders, see [Shader Effect](complex-drawing-effect-c.md#shader-effect).
 
-The following is a brief example of adding a linear gradient shader effect to text:
+The following shows the sample code and effect of adding a linear gradient shader to text.
 
 <!-- @[ndk_graphics_draw_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -172,19 +172,19 @@ OH_Drawing_ShaderEffect *colorShaderEffect =
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 // Set the shader effect based on the brush.
 OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
-// Set the brush filling effect.
+// Set the brush fill effect.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // Create a font object.
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
 // Set the font size.
 OH_Drawing_FontSetTextSize(font, value150_);
 const char *str = "Hello world";
-// Create a text block object.
+// Create a TextBlob object.
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
-// Draw the text block.
+// Draw the TextBlob.
 OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
-// Cancel the filling effect.
+// Cancel the fill effect.
 OH_Drawing_CanvasDetachBrush(canvas);
 // Destroy objects.
 OH_Drawing_TextBlobDestroy(textBlob);
@@ -194,11 +194,11 @@ OH_Drawing_BrushDestroy(brush);
 
 ![Screenshot_20241225173900576](figures/Screenshot_20241225173900576.jpg)
 
-## Theme font
+## Theme Font
 
-Theme fonts refer to the fonts that can be used in the **theme application**. They are a special type of custom fonts. For details about text measurement and layout, see Using Theme Fonts (C/C++).
+Theme fonts are specialized custom fonts available for use in theme applications. For details about text measurement and typography, see [Using Theme Fonts (C/C++)](theme-font-c.md).
 
-The sample code and effect of setting the theme font are as follows:
+The following shows the sample code and effect for setting the theme font.
 
 <!-- @[ndk_graphics_draw_theme_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -211,31 +211,31 @@ OH_Drawing_FontSetTextSize(font, value100_);
 OH_Drawing_FontSetThemeFontFollowed(font, true);
 // Text to be drawn.
 const char *str = "Hello World";
-// Create a text block object.
+// Create a TextBlob object.
 OH_Drawing_TextBlob *textBlob =
     OH_Drawing_TextBlobCreateFromString(str, font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
-// Draw the text block.
+// Draw the TextBlob.
 OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, value200_, value800_);
-// Release the text block object.
+// Release the TextBlob object.
 OH_Drawing_TextBlobDestroy(textBlob);
 // Release the font object.
 OH_Drawing_FontDestroy(font);
 ```
 
-| Effect of not using the theme font| Effect of using the theme font (The display effect varies according to the theme font.)|
+| Theme Font Not Followed| Theme Font Followed (For Reference)|
 | -------- | -------- |
 | ![Snapshot_setThemeFontFollowed_sys](figures/Snapshot_setThemeFontFollowed_sys.jpg) | ![Snapshot_setThemeFontFollowed](figures/Snapshot_setThemeFontFollowed.jpg) |
 
-> **Description**
+> **NOTE**
 >
-> You need to override the onConfigurationUpdate function in the application entry file (EntryAbility.ets in the default project) to respond to the theme font switching operation. Ensure that the page can be refreshed and take effect in a timely manner after the switching. For details, see Using Theme Fonts (C/C++) (theme-font-c.md).
+> You need to override the **onConfigurationUpdate** function in the application entry file (**EntryAbility.ets** in the default project) to respond to the theme font switching operation, ensuring that the page can be refreshed and take effect in a timely manner after the switching. For details, see [Using Theme Fonts (C/C++)](theme-font-c.md).
 
-## Single Character Drawing
+## Single-Character Drawing
 
-Single character drawing is a refined control technology for text rendering in graphics rendering. Compared with block drawing, the core advantage of single character drawing is that it can use the font degradation mechanism. When a character cannot be displayed in the current font, the character is automatically degraded to the system font to improve the compatibility with special characters and avoid character loss. In addition, single character drawing supports character-by-character configuration of font features (such as ligatures and alternative glyphs) to meet complex typesetting requirements and enhance user experience. For details about the APIs, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md#oh_drawing_canvasdrawsinglecharacter).
+Single-character drawing is a refined technology for controlling text rendering. Compared with TextBlob drawing, single-character drawing has the following advantages: The font degradation mechanism is used. If a character cannot be displayed in the current font, the system automatically uses the system font to draw the character, improving compatibility with special characters and avoiding character loss. In addition, single-character drawing supports character-by-character configuration of font features (such as ligatures and alternates) to meet complex typography requirements for better user experience. For details about the APIs, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md#oh_drawing_canvasdrawsinglecharacter).
 
 Basic scenario: drawing characters without font features 
-For common text rendering scenarios without font features, you can use OH_Drawing_CanvasDrawSingleCharacter to draw a single character and use OH_Drawing_FontMeasureSingleCharacter to measure the width of a single character. The following is the sample code and effect:
+In common text rendering scenarios where font features are not required, you can use **OH_Drawing_CanvasDrawSingleCharacter** to draw a single character and use **OH_Drawing_FontMeasureSingleCharacter** to measure the width of a single character. The sample code and effect are as follows:
 
 <!-- @[ndk_graphics_draw_single_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -262,8 +262,8 @@ OH_Drawing_FontDestroy(font);
 
 ![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacter.jpg)
 
-Advanced Scenario: Drawing Characters with Font Features 
-In text rendering scenarios that require font features, you can use OH_Drawing_CanvasDrawSingleCharacterWithFeatures to draw a single character and OH_Drawing_FontMeasureSingleCharacterWithFeatures to measure the width of a single character. The sample code and effect are as follows:
+Advanced scenario: drawing characters with font features 
+In text rendering scenarios where font features are required, you can use **OH_Drawing_CanvasDrawSingleCharacterWithFeatures** to draw a single character and use **OH_Drawing_FontMeasureSingleCharacterWithFeatures** to measure the width of a single character. The sample code and effect are as follows:
 
 <!-- @[ndk_graphics_draw_feature_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -280,29 +280,30 @@ float startY = 100;
 int strLen = 5;
 const char* str = "a2+b2";
 for (int i = 0; i < strLen; ++i) {
-    //Draw a single character.
+    // Draw a single character.
     OH_Drawing_CanvasDrawSingleCharacterWithFeatures(canvas, &str[i], font, startX, startY, features);
     float textWidth = 0.f;
-    //Measure the width of a single character.
+    // Measure the width of a single character.
     OH_Drawing_FontMeasureSingleCharacterWithFeatures(font, &str[i], features, &textWidth);
     startX += textWidth;
 }
-//Release the font feature object.
+// Release the font feature object.
 OH_Drawing_FontFeaturesDestroy(features);
-//Release the font object.
+// Release the font object.
 OH_Drawing_FontDestroy(font);
 ```
 
 ![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacterWithFeatures.png)
 
-> **Description**
+> **NOTE**
 >
-> If `OH_Drawing_CanvasDrawSingleCharacterWithFeatures` and `OH_Drawing_FontMeasureSingleCharacter` are used together, or `OH_Drawing_CanvasDrawSingleCharacter` and `OH_Drawing_FontMeasureSingleCharacterWithFeatures` are used together, the font drawing may overlap.
+> If `OH_Drawing_CanvasDrawSingleCharacterWithFeatures` and `OH_Drawing_FontMeasureSingleCharacter` are used together, or `OH_Drawing_CanvasDrawSingleCharacter` and `OH_Drawing_FontMeasureSingleCharacterWithFeatures` are used together, font drawing may overlap.
 
 <!--RP1-->
 ## Samples
 
-The following samples can be used as references for Drawing (C/C++):
+The following samples are provided to help you better understand how to use the **Drawing** APIs (C/C++) for development:
 
 - [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->
+<!--no_check-->

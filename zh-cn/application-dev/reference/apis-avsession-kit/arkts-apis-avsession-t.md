@@ -10,9 +10,15 @@
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
+## 导入模块
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## AVSessionType<sup>10+<sup>
 
-type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call'
+type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call' | 'photo'
 
 当前会话支持的会话类型。
 
@@ -28,6 +34,7 @@ type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call'
 | 'video' | 视频 |
 | 'voice_call'<sup>11+</sup> | 音频通话。 |
 | 'video_call'<sup>12+</sup> | 视频通话。 |
+| 'photo'<sup>22+</sup> |  图片。 |
 
 ## AVCastControlCommandType<sup>10+</sup>
 

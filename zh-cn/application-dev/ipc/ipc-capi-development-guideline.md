@@ -9,6 +9,7 @@
 ## 场景介绍
 
 IPC让运行在不同进程间的Proxy和Stub实现互相通信。IPC CAPI是IPC Kit提供的C语言接口。
+
 IPC CAPI接口不直接提供获取通信代理对象的能力，该功能由[Ability Kit](../application-models/abilitykit-overview.md)提供。
 
 ![图](./figures/_i_p_c_architecture_diagram.png)
@@ -282,7 +283,7 @@ bool IpcProxy::WriteInterfaceToken(OHIPCParcel* data)
 IpcStub::IpcStub()
 {
     ipcStub_ = OH_IPCRemoteStub_Create("NativeChildIPCStubSample",
-        IpcStub::OnRemoteRequest, IpcStub::OnRemoteObjectDestory, this);
+        IpcStub::OnRemoteRequest, IpcStub::OnRemoteObjectDestroy, this);
 }
 
 IpcStub::~IpcStub()
@@ -295,7 +296,7 @@ OHIPCRemoteStub* IpcStub::GetIpcStub()
     return ipcStub_;
 }
 
-void IpcStub::OnRemoteObjectDestory(void *userData)
+void IpcStub::OnRemoteObjectDestroy(void *userData)
 {
 }
 

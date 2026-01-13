@@ -1517,6 +1517,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   ``` TypeScript
   import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { common } from '@kit.AbilityKit';
   
   const PAGE_ONE_INDEX = 1;
   const PAGE_TWO_INDEX = 2;
@@ -1648,7 +1649,8 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
       NavDestination() {
         Column() {
           NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
-          Text('BuilderNode处于冻结')
+          // 请将$r('app.string.text1')替换为实际资源文件，在本示例中该资源文件的value值为"BuilderNode处于冻结"
+          Text($r('app.string.text1'))
             .fontWeight(FontWeight.Bold)
             .margin({ top: 48, bottom: 48 })
           Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
@@ -1687,6 +1689,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
     // 设置冻结策略为不活跃冻结
   struct TextBuilder {
     @Prop @Watch('info') message: number = 0;
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   
     info(): void {
       hilog.info(0xF811, 'testTag', '%{public}s',
@@ -1696,7 +1699,8 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
     build() {
       Row() {
         Column() {
-          Text(`文本更新次数： ${this.message}`)
+          // 请在resources\base\element\string.json文件中配置name为'text2' ，value为非空字符串的资源
+          Text(this.context.resourceManager.getStringByNameSync('text2') + `${this.message}`)
             .fontWeight(FontWeight.Bold)
             .margin({ top: 48, bottom: 48 })
         }

@@ -19,7 +19,7 @@ The module offers two methods for generating XML files:
 
 ## Modules to Import
 
-```
+```ts
 import { xml } from '@kit.ArkTS';
 ```
 

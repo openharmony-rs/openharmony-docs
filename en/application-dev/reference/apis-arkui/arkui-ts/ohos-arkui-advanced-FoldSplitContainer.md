@@ -28,16 +28,7 @@ Not supported
 
 ## FoldSplitContainer
 
-FoldSplitContainer({
-  primary: Callback&lt;void&gt;,
-  secondary: Callback&lt;void&gt;,
-  extra?: Callback&lt;void&gt;,
-  expandedLayoutOptions: ExpandedRegionLayoutOptions,
-  hoverModeLayoutOptions: HoverModeRegionLayoutOptions,
-  foldedLayoutOptions: FoldedRegionLayoutOptions,
-  animationOptions?: AnimateParam | null,
-  onHoverStatusChange?: OnHoverStatusChangeHandler
-})
+FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&gt;, extra?: Callback&lt;void&gt;, expandedLayoutOptions: ExpandedRegionLayoutOptions, hoverModeLayoutOptions: HoverModeRegionLayoutOptions, foldedLayoutOptions: FoldedRegionLayoutOptions, animationOptions?: AnimateParam | null, onHoverStatusChange?: OnHoverStatusChangeHandler})
 
 Creates a **FoldSplitContainer** component to manage regions for two-panel and three-panel arrangements on a foldable device across various states, including the expanded state, the semi-folded state, and the folded state.
 
@@ -679,5 +670,5 @@ struct Index {
 | Folded| Expanded| Semi-folded|
 | ----- | ------ | ------ |
 | ![](figures/foldsplitcontainer-7.png) | ![](figures/foldsplitcontainer-8.png) | ![](figures/foldsplitcontainer-11.png) |
-|                                       | ![](figures/foldsplitcontainer-9.png) | ![](figures/foldsplitcontainer-12.png) |
-|                                       | ![](figures/foldsplitcontainer-10.png) | ![](figures/foldsplitcontainer-13.png) |
+|               -                        | ![](figures/foldsplitcontainer-9.png) | ![](figures/foldsplitcontainer-12.png) |
+|               -                        | ![](figures/foldsplitcontainer-10.png) | ![](figures/foldsplitcontainer-13.png) |

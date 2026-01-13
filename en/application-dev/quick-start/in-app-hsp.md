@@ -152,10 +152,11 @@ export { nativeMulti } from './src/main/ets/utils/nativeTest';
 ### Accessing Resources in an HSP Through $r
 More often than not, you may need to use resources, such as strings and images, in components. For components in an HSP, such resources are typically placed in the HSP package, rather than in the package where the HSP is invoked, for the purpose of complying with the principle of high cohesion and low coupling.
 
-In a project, application resources are referenced in the $r/$rawfile format. You can use **$r**/**$rawfile** to access resources in the **resources** directory of the current module. For example, you can use **$r("app.media.example")** to access the **src/main/resources/base/media/example.png** image stored in the **resources** directory. For details about how to use **$r**/**$rawfile**, see [Resource Categories and Access](./resource-categories-and-access.md).
+In a project, application resources are referenced in the `$r` or `$rawfile` format. You can use `$r` or `$rawfile` to access resources in the **resources** directory of the current module. For example, you can use `$r("app.media.example")` to access the `src/main/resources/base/media/example.png` image stored in the **resources** directory. For details about how to use `$r` and `$rawfile`, see [Resource Categories and Access](./resource-categories-and-access.md).
 
-To avoid reference errors, do not use relative paths. For example,
-if you use **Image("../../resources/base/media/example.png")**, the image actually used will be the one in the directory of the module that invokes the HSP. That is, if the module that invokes the HSP is **entry**, then the image used will be **entry/src/main/resources/base/media/example.png**.
+To avoid reference errors, do not use relative paths. For example:
+
+If you use **Image("../../resources/base/media/example.png")**, the image actually used will be the one in the directory of the module that invokes the HSP. Specifically, if the module that invokes the HSP is **entry**, the system loads the image from **entry/src/main/resources/base/media/example.png**.
 
 
 <!-- @[in_app_hsp_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/pages/Index.ets) -->
@@ -212,6 +213,7 @@ You can reference APIs in an HSP and implement page redirection in the HSP throu
 
 ### Referencing APIs
 To use APIs in the HSP, first configure the dependency on the HSP in the **oh-package.json5** file of the module that needs to call the APIs (called the invoking module). For details, see [Referencing a Shared Package](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-har-import).
+
 You can then call the external APIs of the HSP in the same way as calling the APIs in the HAR. In this example, the external APIs are the following ones exported from **library**:
 
 <!-- @[in_app_hsp_010](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->

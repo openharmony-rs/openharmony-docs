@@ -99,7 +99,7 @@ typedef  Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo
 | 参数项 | 描述 |
 | -- | -- |
 | [DRM_KeysInfo](capi-drm-drm-keysinfo.md) *keysInfo | 密钥信息。 |
-|  bool newKeysAvailable | 新密钥是否可用。 |
+|  bool newKeysAvailable | 新密钥是否可用，true表示可用，false表示不可用。 |
 
 **返回：**
 
@@ -400,7 +400,7 @@ Drm_ErrCode OH_MediaKeySession_RequireSecureDecoderModule(MediaKeySession *media
 | -- | -- |
 | [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | MediaKeySession实例。 |
 | const char *mimeType | 媒体类型，支持的媒体类型取决于DRM解决方案，如：video/avc、video/hev。 |
-| bool *status | 安全解码模块状态。 |
+| bool *status | 安全解码模块状态。true表示需要安全解码模块，false表示不需要安全解码模块。 |
 
 **返回：**
 

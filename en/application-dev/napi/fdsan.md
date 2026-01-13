@@ -127,7 +127,7 @@ Locate **FdEntry** based on the file descriptor and obtain **close_tag**.
 
 | Value                      | Type              | Description                                                        |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `tag` | uint64_t | Owner tag.    |
+| `fd` | int | File descriptor.    |
 
 **Return value**<br>Tag of the file descriptor.
 

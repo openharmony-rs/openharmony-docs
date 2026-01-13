@@ -21,11 +21,11 @@ import { image } from '@kit.ImageKit';
 
 ## getProperties<sup>13+</sup>
 
-getProperties(key: Array\<string>): Promise\<Record\<string, string | null>>
+getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 
 获取图像中属性的值。使用Promise异步回调。
 
-如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)和[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
+如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)和[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)和[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -39,7 +39,7 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string | null>>
 
 | 类型                                     | 说明                                                         |
 | ---------------------------------------- | ------------------------------------------------------------ |
-| Promise\<Record<string, string \| null>> | Promise对象，返回元数据要获取的属性的值，如获取失败则返回错误码。 |
+| Promise\<Record\<string, string \| null>> | Promise对象，返回元数据要获取的属性的值，如获取失败则返回错误码。 |
 
 **错误码：**
 
@@ -80,11 +80,11 @@ async function GetProperties(context: Context) {
 
 ## setProperties<sup>13+</sup>
 
-setProperties(records: Record\<string, string | null>): Promise\<void>
+setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 批量设置图片元数据中的指定属性的值。使用Promise异步回调。
 
-如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)和[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
+如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)和[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)和[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -92,7 +92,7 @@ setProperties(records: Record\<string, string | null>): Promise\<void>
 
 | 参数名  | 类型                           | 必填 | 说明                     |
 | ------- | ------------------------------ | ---- | ------------------------ |
-| records | Record<string, string \| null> | 是   | 要修改的属性和值的数组。 |
+| records | Record\<string, string \| null> | 是   | 要修改的属性和值的数组。 |
 
 **返回值：**
 
@@ -143,11 +143,11 @@ async function SetProperties(context: Context) {
 
 ## getAllProperties<sup>13+</sup>
 
-getAllProperties(): Promise\<Record<string, string | null>>
+getAllProperties(): Promise\<Record\<string, string \| null>>
 
 获取图片中所有元数据的属性和值。使用Promise异步回调。
 
-如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)和[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
+如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)和[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)和[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -155,7 +155,7 @@ getAllProperties(): Promise\<Record<string, string | null>>
 
 | 类型                                     | 说明                                        |
 | ---------------------------------------- | ------------------------------------------- |
-| Promise\<Record<string, string \| null>> | Promise对象，返回元数据拥有的所有属性的值。 |
+| Promise\<Record\<string, string \| null>> | Promise对象，返回元数据拥有的所有属性的值。 |
 
 **示例：**
 

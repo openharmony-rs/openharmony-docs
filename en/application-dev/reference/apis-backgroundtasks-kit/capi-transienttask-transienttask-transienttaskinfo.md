@@ -7,7 +7,7 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct TransientTask_TransientTaskInfo {...} TransientTask_TransientTaskInfo
 ```
 
@@ -34,7 +34,7 @@ A struct that describes all transient task information.
 
 ### TRANSIENT_TASK_MAX_NUM
 
-```
+```c
 #define TRANSIENT_TASK_MAX_NUM 3
 ```
 **Description**

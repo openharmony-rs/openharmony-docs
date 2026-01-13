@@ -40,7 +40,7 @@ Bluetooth is enabled on the client and server devices.
 ### Environment Setup
 
 1. Install DevEco Studio 4.1 or later on the PC.
-2. Update the public-SDK to API version 20 or later.
+2. Update the public-SDK to API version 20 or later<!--Del-->. For details, see OpenHarmony SDK Upgrade Assistant<!--DelEnd-->.
 3. Connect device A and device B to the PC using USB cables.
 4. Enable Bluetooth on device A and device B.
 
@@ -123,7 +123,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
       }
     }
     ```
-5. Save the **Connection** object when the connection is established.
+4. Save the **Connection** object when the connection is established.
     ```ts
     serverAcceptOnCallback = (connection: linkEnhance.Connection): void => {
       console.info(TAG + 'serverOnCallback');
@@ -148,7 +148,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
       }
     }
     ```
-6. Disconnect from the peer end and destroy the **Connection** object.
+5. Disconnect from the peer end and destroy the **Connection** object.
     ```ts
     // Disconnect from the peer end.
     linkEnhanceDisconnect(connection: linkEnhance.Connection) {
@@ -162,7 +162,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
       }
     }
     ```
-7. Stop the server and destroy the **Server** object.
+6. Stop the server and destroy the **Server** object.
     ```ts
     // Stop the server.
     linkEnhanceStop(server: linkEnhance.Server) {
@@ -190,7 +190,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 1. Import the required module.
     ```ts
-    import linkEnhance from '@kit.DistributedServiceKit';
+    import { linkEnhance } from '@kit.DistributedServiceKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
 2. Declare the **ohos.permission.DISTRIBUTED_DATASYNC** permission in the **module.json5** file.
