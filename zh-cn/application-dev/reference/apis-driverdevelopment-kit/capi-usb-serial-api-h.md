@@ -29,7 +29,7 @@
 | [int32_t OH_UsbSerial_Init(void)](#oh_usbserial_init) | 初始化USB Serial DDK。 |
 | [int32_t OH_UsbSerial_Release(void)](#oh_usbserial_release) | 释放USB Serial DDK。 |
 | [int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev)](#oh_usbserial_open) | 通过deviceId和interfaceIndex打开USB串口设备。 |
-| [int32_t OH_UsbSerial_Close(UsbSerial_Device *dev)](#oh_usbserial_close) | 关闭USB串口设备。 |
+| [int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)](#oh_usbserial_close) | 关闭USB串口设备。 |
 | [int32_t OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead)](#oh_usbserial_read) | 从USB串口设备读入数据到缓冲区。 |
 | [int32_t OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten)](#oh_usbserial_write) | 将buff中的数据写入USB串口设备。 |
 | [int32_t OH_UsbSerial_SetBaudRate(UsbSerial_Device *dev, uint32_t baudRate)](#oh_usbserial_setbaudrate) | 设置USB串口设备的波特率。如果USB串口设备的参数为默认值（数据位为8，停止位为1，数据传输无校验），则只需要调用该接口设置波特率。 |
@@ -114,7 +114,7 @@ int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_D
 ### OH_UsbSerial_Close()
 
 ```c
-int32_t OH_UsbSerial_Close(UsbSerial_Device *dev)
+int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)
 ```
 
 **描述**
@@ -130,7 +130,7 @@ int32_t OH_UsbSerial_Close(UsbSerial_Device *dev)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) **dev | 设备句柄。 |
 
 **返回：**
 
