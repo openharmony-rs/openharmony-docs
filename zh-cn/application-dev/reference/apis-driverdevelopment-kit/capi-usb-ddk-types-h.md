@@ -18,7 +18,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [UsbDDK](capi-usbddk.md)
+**相关模块：** [UsbDdk](capi-usbddk.md)
 
 ## 汇总
 
@@ -26,16 +26,16 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [UsbControlRequestSetup](capi-usbddk-usbcontrolrequestsetup.md) | __attribute__((aligned(8))) UsbControlRequestSetup | 控制传输setup包，对应USB协议中的Setup Data。 |
-| [UsbDeviceDescriptor](capi-usbddk-usbdevicedescriptor.md) | __attribute__((aligned(8))) UsbDeviceDescriptor | 标准设备描述符，对应USB协议中Standard Device Descriptor。 |
-| [UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) | __attribute__((packed)) UsbConfigDescriptor | 标准配置描述符，对应USB协议中Standard Configuration Descriptor。 |
-| [UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) | __attribute__((packed)) UsbInterfaceDescriptor | 标准接口描述符，对应USB协议中Standard Interface Descriptor。 |
-| [UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) | __attribute__((packed)) UsbEndpointDescriptor | 标准端点描述符，对应USB协议中Standard Endpoint Descriptor。 |
+| [UsbControlRequestSetup](capi-usbddk-usbcontrolrequestsetup.md) | \_\_attribute\_\_((aligned(8))) UsbControlRequestSetup | 控制传输setup包，对应USB协议中的Setup Data。 |
+| [UsbDeviceDescriptor](capi-usbddk-usbdevicedescriptor.md) | \_\_attribute\_\_((aligned(8))) UsbDeviceDescriptor | 标准设备描述符，对应USB协议中Standard Device Descriptor。 |
+| [UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) | \_\_attribute\_\_((packed)) UsbConfigDescriptor | 标准配置描述符，对应USB协议中Standard Configuration Descriptor。 |
+| [UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) | \_\_attribute\_\_((packed)) UsbInterfaceDescriptor | 标准接口描述符，对应USB协议中Standard Interface Descriptor。 |
+| [UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) | \_\_attribute\_\_((packed)) UsbEndpointDescriptor | 标准端点描述符，对应USB协议中Standard Endpoint Descriptor。 |
 | [UsbDdkEndpointDescriptor](capi-usbddk-usbddkendpointdescriptor.md) | UsbDdkEndpointDescriptor | 端点描述符。 |
 | [UsbDdkInterfaceDescriptor](capi-usbddk-usbddkinterfacedescriptor.md) | UsbDdkInterfaceDescriptor | 接口描述符。 |
 | [UsbDdkInterface](capi-usbddk-usbddkinterface.md) | UsbDdkInterface | USB接口，是特定接口下备用设置的集合。 |
 | [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) | UsbDdkConfigDescriptor | 配置描述符。 |
-| [UsbRequestPipe](capi-usbddk-usbrequestpipe.md) | __attribute__((aligned(8))) UsbRequestPipe | 请求管道。 |
+| [UsbRequestPipe](capi-usbddk-usbrequestpipe.md) | \_\_attribute\_\_((aligned(8))) UsbRequestPipe | 请求管道。 |
 | [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md) | UsbDeviceMemMap | 设备内存映射，通过OH_Usb_CreateDeviceMemMap创建设备内存映射，使用内存映射后的缓冲区，获得更好的性能。 |
 | [Usb_DeviceArray](capi-usbddk-usb-devicearray.md) | Usb_DeviceArray | 设备ID清单，用于存放OH_Usb_GetDevices接口获取到的设备ID列表和设备数量。 |
 
