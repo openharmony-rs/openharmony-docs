@@ -8,6 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 You can use the [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md) component in ArkUI to create a waterfall flow layout, which is commonly used to display image collections, especially in e-commerce and news applications.
+
 ArkUI provides the WaterFlow container component for building a waterfall layout. The WaterFlow component supports conditional rendering, cyclic rendering, and lazy loading to generate subcomponents.
 
 > **NOTE**
@@ -40,7 +41,8 @@ itemFoot() {
   Row() {
     LoadingProgress()
       .color(Color.Blue).height(50).aspectRatio(1).width('20%')
-    Text(`Loading`)
+    // Replace $r('app.string.waterFlow_text1') with the actual resource file. In this example, the value in the resource file is "Loading."
+    Text($r('app.string.waterFlow_text1'))
       .fontSize(20)
       .width('30%')
       .height(50)
@@ -52,7 +54,7 @@ itemFoot() {
 build() {
   NavDestination() {
     Column({ space: 12 }) {
-      // Replace $r('app.string.WaterFlowInfiniteScrolling_title') with the resource file you use.
+      // Replace $r('app.string.WaterFlowInfiniteScrolling_title') with the actual resource file. In this example, the value in the resource file is "Infinite Scrolling (Adding Data When Reaching the End)."
       ComponentCard({ title: $r('app.string.WaterFlowInfiniteScrolling_title') }) {
         WaterFlow({ footer: this.itemFoot(), layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
           LazyForEach(this.dataSource, (item: number) => {
@@ -82,7 +84,7 @@ build() {
     .padding({ left: 12, right: 12 })
   }
   .backgroundColor('#f1f2f3')
-  // Replace $r('app.string.WaterFlowInfiniteScrolling_title') with the resource file you use.
+  // Replace $r('app.string.WaterFlowInfiniteScrolling_title') with the actual resource file. In this example, the value in the resource file is "Infinite Scrolling (Adding Data When Reaching the End)."
   .title($r('app.string.WaterFlowInfiniteScrolling_title'))
 }
 ```
@@ -105,7 +107,7 @@ To enable smooth infinite scrolling, you need to adjust the timing of adding new
 build() {
   NavDestination() {
     Column({ space: 12 }) {
-      // Replace $r('app.string.WaterFlowInfiniteScrollingEarly_title') with the resource file you use.
+      // Replace $r('app.string.WaterFlowInfiniteScrollingEarly_title') with the actual resource file. In this example, the value in the resource file is "Infinite Scrolling (Adding Data in Advance)."
       ComponentCard({ title: $r('app.string.WaterFlowInfiniteScrollingEarly_title') }) {
         WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
           LazyForEach(this.dataSource, (item: number) => {
@@ -137,7 +139,7 @@ build() {
     .padding({ left: 12, right: 12 })
   }
   .backgroundColor('#f1f2f3')
-  // Replace $r('app.string.WaterFlowInfiniteScrollingEarly_title') with the resource file you use.
+  // Replace $r('app.string.WaterFlowInfiniteScrollingEarly_title') with the actual resource file. In this example, the value in the resource file is "Infinite Scrolling (Adding Data in Advance)."
   .title($r('app.string.WaterFlowInfiniteScrollingEarly_title'))
 }
 ```
@@ -177,14 +179,15 @@ export struct WaterFlowDynamicSwitchover {
   // Use a state variable to manage the column count and trigger layout updates.
   @State columns: number = 2;
 
-// ···
+  // ...
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // Replace $r('app.string.WaterFlowDynamicSwitchover_title') with the resource file you use.
+        // Replace $r('app.string.WaterFlowDynamicSwitchover_title') with the actual resource file. In this example, the value in the resource file is "Switch Columns."
         ComponentCard({ title: $r('app.string.WaterFlowDynamicSwitchover_title') }) {
           Column({ space: 2 }) {
-            Button('Switch Columns').fontSize(20).onClick(() => {
+            // Replace $r('app.string.waterFlow_text2') with the actual resource file. In this example, the value in the resource file is "Switching the number of columns."
+            Button($r('app.string.waterFlow_text2')).fontSize(20).onClick(() => {
               if (this.columns === 2) {
                 this.columns = 1;
               } else {
@@ -218,7 +221,7 @@ export struct WaterFlowDynamicSwitchover {
                 }, 1000);
               }
             })
-            // ···
+            // ...
           }
         }
       }
@@ -226,7 +229,7 @@ export struct WaterFlowDynamicSwitchover {
       .height('100%')
     }
     .backgroundColor('#f1f2f3')
-    // Replace $r('app.string.WaterFlowDynamicSwitchover_title') with the resource file you use.
+    // Replace $r('app.string.WaterFlowDynamicSwitchover_title') with the actual resource file. In this example, the value in the resource file is "Switch Columns."
     .title($r('app.string.WaterFlowDynamicSwitchover_title'))
   }
 }
@@ -307,7 +310,7 @@ export struct WaterFlowGroupingMixing {
 
   build() {
     NavDestination() {
-      // Replace $r('app.string.WaterFlowGroupingMixing_title') with the resource file you use.
+      // Replace $r('app.string.WaterFlowGroupingMixing_title') with the actual resource file. In this example, the value in the resource file is "Mixed Section Layout."
       ComponentCard({ title: $r('app.string.WaterFlowGroupingMixing_title') }) {
         WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW, sections: this.sections }) {
           LazyForEach(this.dataSource, (item: number) => {
@@ -350,7 +353,7 @@ export struct WaterFlowGroupingMixing {
         .margin(10)
       }
     }.backgroundColor('#f1f2f3')
-    // Replace $r('app.string.WaterFlowGroupingMixing_title') with the resource file you use.
+    // Replace $r('app.string.WaterFlowGroupingMixing_title') with the actual resource file. In this example, the value in the resource file is "Mixed Section Layout."
     .title($r('app.string.WaterFlowGroupingMixing_title'))
   }
 }
@@ -362,3 +365,4 @@ export struct WaterFlowGroupingMixing {
 >
 >Always update the corresponding **itemCount** when adding or removing data to maintain layout consistency.
 
+<!--RP1--><!--RP1End-->

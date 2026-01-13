@@ -98,7 +98,6 @@ The application crashes with a JS crash stack trace during initialization.
 
 ![SynchedPropertyTwoWayPUCrashLog](figures/SynchedPropertyTwoWayPUCrashLog.png)
 
-
 **Possible Causes**
 
 During initialization, @Link registers itself with the parent component and calls the parent component's **addSubscriber** API. If the type of the data source does not exactly match the type of the @Link variable, or if a constant is used to initialize @Link, this API cannot be called, resulting in an "is not callable" error.

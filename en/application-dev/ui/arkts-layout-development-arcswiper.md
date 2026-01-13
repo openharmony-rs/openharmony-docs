@@ -359,3 +359,4 @@ export struct ArcSwiperSideSlip {
   }
 }
 ```
+![onGestureRecognizerJudgeBegin](figures/arcswiper_onGestureRecognizerJudgeBegin.gif)

@@ -7,7 +7,7 @@
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Supported since API version 18, the **ArcList** component is a specialized list designed for devices with circular screens, capable of efficiently displaying information in a structured, scrollable format. For details, see [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md).
+This component is supported since API version 18. An arc list is a specialized list designed for circular screens. It can efficiently display information in a structured and scrollable form. For details, see [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md).
 
 You can linearly arrange child components, [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md), vertically within the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component. This allows each item in the **ArcList** to have its own view. To build a complex **ArcList**, you can use [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) to iterate over a set of list items or combine any number of individual views with the **ForEach** structure. The [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component supports various [rendering control](../ui/rendering-control/arkts-rendering-control-overview.md) methods, including conditional rendering, loop rendering, and lazy loading, to generate child components.
 
@@ -33,7 +33,7 @@ ArcList({
 
 >**NOTE**
 >
->The child components of the **ArcList** must be **ArcListItem**. **ArcListItem** must be used in conjunction with **ArcList**.
+>The child components of the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) must be [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md). [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md) must be used in conjunction with [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md).
 
 ## Displaying Data in the ArcList Component
 
@@ -50,7 +50,7 @@ export struct ArcListShow {
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // Replace $r('app.string.ArcListShow_title') with the resource file you use.
+        // Replace $r('app.string.ArcListShow_title') with the actual resource file. In this example, the value in the resource file is "Displaying Data in ArcList."
         ComponentCard({ title: $r('app.string.ArcListShow_title') }) {
           ArcList({ initialIndex: 2 }) {
             ArcListItem() {
@@ -152,7 +152,7 @@ export struct ArcListShow {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // Replace $r('app.string.ArcListShow_title') with the resource file you use.
+    // Replace $r('app.string.ArcListShow_title') with the actual resource file. In this example, the value in the resource file is "Displaying Data in ArcList."
     .title($r('app.string.ArcListShow_title'))
   }
 }
@@ -174,13 +174,14 @@ ArkTS provides component loop rendering capabilities using [ForEach](../ui/rende
 import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
 import { util } from '@kit.ArkTS';
 import { ComponentCard } from '../../common/Card';
+import { common } from '@kit.AbilityKit';
 
 class Contact {
   key: string = util.generateRandomUUID(true);
-  name: string;
+  name: ResourceStr;
   icon: Resource;
 
-  constructor(name: string, icon: Resource) {
+  constructor(name: ResourceStr, icon: Resource) {
     this.name = name;
     this.icon = icon;
   }
@@ -189,18 +190,20 @@ class Contact {
 @Entry
 @Component
 export struct ArcListContents {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State private contacts: Array<object> = [
-    new Contact('Alice', $r('app.media.ic_contact')),
-    new Contact('Bob', $r('app.media.ic_contact')),
-    new Contact('Charlie', $r('app.media.ic_contact')),
-    new Contact('Diana', $r('app.media.ic_contact')),
-    new Contact('Eve', $r('app.media.ic_contact'))
+    // Replace $r('app.string.xxx') with the actual resource file.
+    new Contact($r('app.string.name_xiaohong'), $r('app.media.ic_contact')),
+    new Contact($r('app.string.name_xiaolan'), $r('app.media.ic_contact')),
+    new Contact($r('app.string.name_xiaowang'), $r('app.media.ic_contact')),
+    new Contact($r('app.string.name_xiaoli'), $r('app.media.ic_contact')),
+    new Contact($r('app.string.name_xiaoming'), $r('app.media.ic_contact'))
   ];
 
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // Replace $r('app.string.ArcListContents_title') with the resource file you use.
+        // Replace $r('app.string.ArcListContents_title') with the actual resource file. In this example, the value in the resource file is "Iterating ArcList Content."
         ComponentCard({ title: $r('app.string.ArcListContents_title') }) {
           ArcList({ initialIndex: 2 }) {
             ForEach(this.contacts, (item: Contact) => {
@@ -235,7 +238,7 @@ export struct ArcListContents {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // Replace $r('app.string.ArcListContents_title') with the resource file you use.
+    // Replace $r('app.string.ArcListContents_title') with the actual resource file. In this example, the value in the resource file is "Iterating ArcList Content."
     .title($r('app.string.ArcListContents_title'))
   }
 }
@@ -407,8 +410,9 @@ When an index item is selected, the selected item index (**index**) is used to r
 
 ``` TypeScript
 import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 
-// ···
+// ...
 const alphabets: string[] = [
   '#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N',
   'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
@@ -418,26 +422,26 @@ const alphabets: string[] = [
 @Component
 export struct ArcListArcIndexerBar {
 
-// ···
+  // ...
   // Index of the selected item in the index bar
   @State indexerIndex: number = 0;
   // Scroll controller bound to the list
   private arcListScroller: Scroller = new Scroller();
 
-// ···
+  // ...
 
   build() {
-    // ···
+    // ...
           Stack({alignContent: Alignment.End}) {
             ArcList({ initialIndex: 0, header:this.tabBar1, scroller:this.arcListScroller }) {
-            // ···
+              // ...
             }
-            // ···
+            // ...
             .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
               // Recalculate the corresponding index bar position based on the index of the item to which the list has scrolled.
               this.indexerIndex = centerIndex + 1;
             })
-            // ···
+            // ...
             // ArcAlphabetIndexer component
             ArcAlphabetIndexer({ arrayValue: alphabets, selected: this.indexerIndex})
               .selected(this.indexerIndex!!)
@@ -446,9 +450,9 @@ export struct ArcListArcIndexerBar {
                 this.indexerIndex = index
                 this.arcListScroller.scrollToIndex(this.indexerIndex - 1)
               })
-            // ···
+              // ...
           }
-        // ···
+          // ...
   }
 }
 ```
