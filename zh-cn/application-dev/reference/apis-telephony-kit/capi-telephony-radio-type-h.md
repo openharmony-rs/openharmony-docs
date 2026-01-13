@@ -22,13 +22,6 @@
 
 ## 汇总
 
-### 宏定义
-
-| 名称  | 描述 |
-| --  | -- |
-| [TELEPHONY_MAX_OPERATOR_LEN](capi-telephony-radio-type-h.md)  | 定义运营商名称的最大长度。<br>**起始版本：** 13 |
-| [TELEPHONY_MAX_PLMN_NUMERIC_LEN](capi-telephony-radio-type-h.md)  | 定义PLMN的最大长度。<br>**起始版本：** 13  |
-
 ### 结构体
 
 | 名称 | typedef关键字 | 描述 |
@@ -43,6 +36,13 @@
 | [Telephony_RegState](#telephony_regstate) | Telephony_RegState | 设备的网络注册状态类型。 |
 | [Telephony_RadioTechnology](#telephony_radiotechnology) | Telephony_RadioTechnology | 设备的无线接入技术类型。 |
 | [Telephony_NsaState](#telephony_nsastate) | Telephony_NsaState | 设备的NSA网络注册状态类型。 |
+
+### 宏定义
+
+| 名称  | 描述 |
+| --  | -- |
+| [TELEPHONY_MAX_OPERATOR_LEN](capi-telephony-radio-type-h.md)  | 定义运营商名称的最大长度。<br>**起始版本：** 13 |
+| [TELEPHONY_MAX_PLMN_NUMERIC_LEN](capi-telephony-radio-type-h.md)  | 定义PLMN的最大长度。<br>**起始版本：** 13  |
 
 ## 枚举类型说明
 
