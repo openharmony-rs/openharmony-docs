@@ -1485,7 +1485,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-menu.md	
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-menuitem.md	@zhanghaibo0	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-menuitemgroup.md	@zhanghaibo0	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md	@jiangdayuan	@Giacinta	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navrouter.md	@jiangdayuan	@Giacinta	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
@@ -1577,7 +1577,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-scrollable-comm
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-stack-sys.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-stack.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-swiper.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-swiper.md	@jiangdayuan	@Giacinta	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabcontent.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabs.md	@jiangdayuan @Giacinta	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
