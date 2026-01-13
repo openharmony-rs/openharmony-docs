@@ -130,7 +130,7 @@ int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | 设备句柄。 |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) **dev | 设备句柄。 |
 
 **返回：**
 
