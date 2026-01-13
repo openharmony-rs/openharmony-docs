@@ -2169,7 +2169,7 @@ export default class EntryAbility extends UIAbility {
       moduleName: 'entry_test',
       parameters: {
         'bundleName': 'com.example.myapplication',
-        //与com.example.myapplication.UIExtAbility配置的type相同
+        // 与com.example.myapplication.UIExtAbility配置的type相同
         'ability.want.params.uiExtensionType': 'sys/commonUI'
       }
     };
@@ -2242,7 +2242,7 @@ export default class EntryAbility extends UIAbility {
       moduleName: 'entry_test',
       parameters: {
         'bundleName': 'com.example.myapplication',
-        //与com.example.myapplication.UIExtAbility配置的type相同
+        // 与com.example.myapplication.UIExtAbility配置的type相同
         'ability.want.params.uiExtensionType': 'sys/commonUI'
       }
     };
