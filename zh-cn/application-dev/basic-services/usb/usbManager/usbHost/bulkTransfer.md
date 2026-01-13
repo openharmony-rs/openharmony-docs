@@ -77,56 +77,56 @@
      return;
    }
    /*
-   deviceList结构示例
-   [
-     {
-       name: "1-1",
-       serial: "",
-       manufacturerName: "",
-       productName: "",
-       version: "",
-       vendorId: 7531,
-       productId: 2,
-       clazz: 9,
-       subClass: 0,
-       protocol: 1,
-       devAddress: 1,
-       busNum: 1,
-       configs: [
-         {
-           id: 1,
-           attributes: 224,
-           isRemoteWakeup: true,
-           isSelfPowered: true,
-           maxPower: 0,
-           name: "1-1",
-           interfaces: [
-             {
-               id: 0,
-               protocol: 0,
-               clazz: 9,
-               subClass: 0,
-               alternateSetting: 0,
-               name: "1-1",
-               endpoints: [
-                 {
-                   address: 129,
-                   attributes: 3,
-                   interval: 12,
-                   maxPacketSize: 4,
-                   direction: 128,
-                   number: 1,
-                   type: 2, // 决定传输类型。
-                   interfaceId: 0,
-                 }
-               ]
-             }
-           ]
-         }
-       ]
-     }
-   ]
-   */
+     deviceList结构示例
+     [
+       {
+         name: "1-1",
+         serial: "",
+         manufacturerName: "",
+         productName: "",
+         version: "",
+         vendorId: 7531,
+         productId: 2,
+         clazz: 9,
+         subClass: 0,
+         protocol: 1,
+         devAddress: 1,
+         busNum: 1,
+         configs: [
+           {
+             id: 1,
+             attributes: 224,
+             isRemoteWakeup: true,
+             isSelfPowered: true,
+             maxPower: 0,
+             name: "1-1",
+             interfaces: [
+               {
+                 id: 0,
+                 protocol: 0,
+                 clazz: 9,
+                 subClass: 0,
+                 alternateSetting: 0,
+                 name: "1-1",
+                 endpoints: [
+                   {
+                     address: 129,
+                     attributes: 3,
+                     interval: 12,
+                     maxPacketSize: 4,
+                     direction: 128,
+                     number: 1,
+                     type: 2, // 决定传输类型。
+                     interfaceId: 0,
+                   }
+                 ]
+               }
+             ]
+           }
+         ]
+       }
+     ]
+    */
    ```
 
 3. 获取设备操作权限。
@@ -148,9 +148,9 @@
    let pipe : usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
    let interface1 : usbManager.USBInterface = deviceList[0].configs[0].interfaces[0];
    /*
-    打开对应接口，在设备信息（deviceList）中选取对应的interface。
-   interface1为设备配置中的一个接口。
-   */
+     打开对应接口，在设备信息（deviceList）中选取对应的interface。
+     interface1为设备配置中的一个接口。
+    */
    usbManager.claimInterface(pipe, interface1, true);
    ```
 
@@ -165,8 +165,8 @@
    ```ts
    /*
      读取数据，在device信息中选取对应数据接收的endpoint来做数据传输
-   （endpoint.direction == 0x80）；dataUint8Array是要读取的数据，类型为Uint8Array。
-   */
+    （endpoint.direction == 0x80）；dataUint8Array是要读取的数据，类型为Uint8Array。
+    */
    let inEndpoint : usbManager.USBEndpoint = interface1.endpoints[2];
    let outEndpoint : usbManager.USBEndpoint = interface1.endpoints[1];
    let dataUint8Array : Uint8Array = new Uint8Array(1024);
