@@ -120,7 +120,7 @@ The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation
           .width('90%')
           .margin({ top: 12 })
         }
-        // Replace $r('app.string.mainTitle') with the string resource file you use.
+        // Replace $r('app.string.mainTitle') with the actual resource file. In this example, the value in the resource file is "Main Title."
         .title($r('app.string.mainTitle'))
         .mode(NavigationMode.Split)
         .navDestination(this.pageMap)
@@ -166,7 +166,7 @@ The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation
       }.title('NavDestinationTitle1')
       .onBackPressed(() => {
         const popDestinationInfo = this.navPathStack.pop(); // Pop the top element out of the navigation stack.
-        // The value in the $r('app.string.returnValue') resource file is "Return value."
+        // Replace $r('app.string.returnValue') with the string resource file you use. The value in the resource file is "Return value."
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -186,7 +186,7 @@ The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation
       }.title('NavDestinationTitle2')
       .onBackPressed(() => {
         const popDestinationInfo = this.navPathStack.pop(); // Pop the top element out of the navigation stack.
-        // The value in the $r('app.string.returnValue') resource file is "Return value."
+        // Replace $r('app.string.returnValue') with the string resource file you use. The value in the resource file is "Return value."
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -206,7 +206,7 @@ The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation
       }.title('NavDestinationTitle3')
       .onBackPressed(() => {
         const popDestinationInfo = this.navPathStack.pop(); // Pop the top element out of the navigation stack.
-        // The value in the $r('app.string.returnValue') resource file is "Return value."
+        // Replace $r('app.string.returnValue') with the string resource file you use. The value in the resource file is "Return value."
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -820,7 +820,7 @@ To facilitate the decoupling of components from pages, custom components within 
 
 ## Page Transition
 
-The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component provides default transition animations. These animations are activated when operations are performed using the navigation controller, producing different transition effects. Note that for pages in dialog mode, the default transition animations are available only since API version 13. The **Navigation** component also offers advanced features such as disabling the default transitions and implementing custom transitions as well as shared element transitions. The default animation duration is determined by physical curve parameters and varies across different devices.
+The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component provides default transition animations. These animations are activated when operations are performed using the navigation controller, producing different transition effects. (Note that for pages in [dialog](arkts-base-dialog-overview.md) mode, the default transition animations are available only since API version 13.) The **Navigation** component also offers advanced features such as disabling the default transitions and implementing custom transitions as well as shared element transitions. The default animation duration is determined by physical curve parameters and varies across different devices.
 
 ### Disabling Transitions
 
@@ -895,8 +895,8 @@ You can implement shared element transitions between navigation destination page
    // Set id of the source page.
    NavDestination() {
      Column() {
-       // ···
-       // Replace $r('app.media.startIcon') with the resource file you use.
+       // ...
+       // Replace $r('app.media.startIcon') with the actual resource file.
        Image($r('app.media.startIcon'))
          .geometryTransition('sharedId')
          .width(100)
@@ -911,7 +911,7 @@ You can implement shared element transitions between navigation destination page
    // Set id of the destination page.
    NavDestination() {
      Column() {
-       // Replace $r('app.media.startIcon') with the resource file you use.
+       // Replace $r('app.media.startIcon') with the actual resource file.
        Image($r('app.media.startIcon'))
          .geometryTransition('sharedId')
          .width(200)
@@ -928,7 +928,7 @@ You can implement shared element transitions between navigation destination page
    ``` TypeScript
    NavDestination() {
      Column() {
-       // Replace $r('app.string.ToPage') with the string resource file you use.
+       // The value in the $r('app.string.ToPage') resource file is "Go to destination page."
        Button($r('app.string.ToPage'))
          .width('80%')
          .height(40)
@@ -938,7 +938,7 @@ You can implement shared element transitions between navigation destination page
              this.navPathStack.pushPath({ name: 'ToPage' }, false)
            });
          })
-       // ···
+       // ...
      }
    }.title('FromPage')
    ```
@@ -964,7 +964,7 @@ Different routing modes meet different requirements. Usability and scalability s
 
 ### System Routing Table
 
-The system routing table is an implementation of dynamic routing. [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) supports the system routing table for dynamic routing since API version 12. Each service module ([HSP](../quick-start/in-app-hsp.md) or [HAR](../quick-start/har-package.md)) requires an individual **route_map.json** file. When routing is triggered, the application only needs to pass the name of the page that needs to be routed through the routing API provided by **NavPathStack**. The system then automatically completes the dynamic loading of the target module, page component construction, and route redirection. This way, module decoupling is achieved at the development level. The system routing table supports the Emulator but not the Previewer. The main steps are as follows:
+The system routing table is an implementation of dynamic routing. [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) supports the system routing table for dynamic routing since API version 12. Each service module ([HSP](../quick-start/in-app-hsp.md) or [HAR](../quick-start/har-package.md)) requires an individual **router_map.json** file. When routing is triggered, the application only needs to pass the name of the page that needs to be routed through the routing API provided by **NavPathStack**. The system then automatically completes the dynamic loading of the target module, page component construction, and route redirection. This way, module decoupling is achieved at the development level. The system routing table supports the Emulator but not the Previewer. The main steps are as follows:
 
 1. Add routing table configuration to the [module.json5](../quick-start/module-configuration-file.md) file of the target module.
 
@@ -974,13 +974,13 @@ The system routing table is an implementation of dynamic routing. [Navigation](.
     {
       "module": {
         // ···
-        "routerMap": "$profile:route_map",
+        "routerMap": "$profile:router_map",
         // ···
       }
     }
     ```
 
-2. Create the **route_map.json** file in **resources/base/profile** of the project directory. Add the following configuration information:
+2. Create the **router_map.json** file in **resources/base/profile** of the project directory. Add the following configuration information:
    
      ```json
      {
@@ -1006,7 +1006,7 @@ The system routing table is an implementation of dynamic routing. [Navigation](.
    | buildFunction | Name of the entry point function for redirection to the target page, which must be decorated by @Builder.|
    | data | Custom data. You can obtain the value through the **getConfigInRouteMap** API.|
 
-3. On the target page, configure the @Builder decorated entry point function. The function name must be the same as the value of **buildFunction** in the **route_map.json** file. Otherwise, an error is reported at compile time.
+3. On the target page, configure the @Builder decorated entry point function. The function name must be the same as the value of **buildFunction** in the **router_map.json** file. Otherwise, an error is reported at compile time.
 
    <!-- @[SystemRoutingTableOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOne.ets) -->
    
@@ -1131,7 +1131,7 @@ struct NavigationExample {
         .width('90%')
         .margin({ top: 12 })
       }
-      // The value in the $r('app.string.mainTitle') resource file is "Main Title."
+      // Replace $r('app.string.mainTitle') with the string resource file you use.
       .title($r('app.string.mainTitle'))
       .navDestination(this.pageMap)
       .mode(NavigationMode.Split)
@@ -1153,7 +1153,7 @@ export struct pageTwoTmp {
     }.title('NavDestinationTitle2')
     .onBackPressed(() => {
       const popDestinationInfo = this.navPathStack.pop(); // Pop the top element out of the navigation stack.
-      // The value in the $r('app.string.returnValue') resource file is "Return value."
+      // Replace $r('app.string.returnValue') with the string resource file you use.
       hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
         JSON.stringify(popDestinationInfo));
       return true;
@@ -1173,7 +1173,7 @@ export struct pageOneTmp {
     }.title('NavDestinationTitle1')
     .onBackPressed(() => {
       const popDestinationInfo = this.navPathStack.pop(); // Pop the top element out of the navigation stack.
-      // The value in the $r('app.string.returnValue') resource file is "Return value."
+      // Replace $r('app.string.returnValue') with the string resource file you use.
       hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
         JSON.stringify(popDestinationInfo));
       return true;
@@ -1205,7 +1205,7 @@ struct NavigationDemo {
   build() {
     Column() {
       Navigation(this.navPathStack) {
-        // Replace $r('app.string.enterKeyWordsToSearch') with the string resource file you use.
+        // Replace $r('app.string.enterKeyWordsToSearch') with the actual resource file. In this example, the value in the resource file is "Search by keyword."
         TextInput({ placeholder: $r('app.string.enterKeyWordsToSearch') })
           .width('90%')
           .height(40)
@@ -1257,7 +1257,7 @@ struct NavigationDemo {
             }
             .width('100%')
             .onClick(() => {
-              // Replace $r('app.string.detailsPageParameters') with the string resource file you use. The value in the resource file is "Details page parameters."
+              // Replace $r('app.string.detailsPageParameters') with the string resource file you use.
               this.navPathStack.pushPathByName(`${item}`,
                 // Push the navigation destination page specified by name, with the data specified by param, to the navigation stack.
                 this.context!.resourceManager.getStringSync($r('app.string.detailsPageParameters').id));
@@ -1272,7 +1272,7 @@ struct NavigationDemo {
       }
       .width('100%')
       .mode(NavigationMode.Auto)
-      // Replace $r('app.string.settings') with the string resource file you use. The value in the resource file is "Settings."
+      // Replace $r('app.string.settings') with the string resource file you use.
       .title($r('app.string.settings')) // Set the title text.
     }
     .size({ width: '100%', height: '100%' })
@@ -1309,7 +1309,7 @@ export struct PageOne {
   build() {
     NavDestination() {
       Column() {
-        // Replace $r('app.string.settingPage') with the string resource file you use. The value in the resource file is "Settings page."
+        // Replace $r('app.string.settingPage') with the string resource file you use.
         Text(`${this.name}${this.context!.resourceManager.getStringSync($r('app.string.settingPage').id)}`)
           .width('100%')
           .fontSize(20)
@@ -1328,7 +1328,7 @@ export struct PageOne {
           .fontColor(0x666666)
           .textAlign(TextAlign.Center)
           .padding({ top: 45 })
-        // Replace $r('app.string.return') with the string resource file you use. The value in the resource file is "Back."
+        // Replace $r('app.string.stepperIndex_text24') with the string resource file you use.
         Button($r('app.string.return'))
           .width('50%')
           .height(40)
@@ -1418,7 +1418,6 @@ export struct PageTwo {
             }
             .width('100%')
             .onClick(() => {
-              // Replace $r('app.string.pageSettingParam') with the string resource file you use. The value in the resource file is "Parameters."
               this.navPathStack.pushPathByName(`${item}`,
                 this.context!.resourceManager.getStringSync($r('app.string.pageSettingParam').id));
             })
