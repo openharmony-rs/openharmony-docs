@@ -502,8 +502,8 @@ grantUriPermissionByKey(key: string, flag: wantConstant.Flags, targetTokenId: nu
 **示例：**
 
   ```ts
-  // 接口调用方应用包名为com.exmaple.test
-  // ExntryAbility.ets
+  // 接口调用方应用包名为com.example.test
+  // EntryAbility.ets
   import { AbilityConstant, UIAbility, Want, wantConstant, uriPermissionManager } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
