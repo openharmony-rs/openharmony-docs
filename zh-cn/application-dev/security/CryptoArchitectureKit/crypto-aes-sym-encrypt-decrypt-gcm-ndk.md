@@ -61,7 +61,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 - AES GCM模式加解密示例如下：
 
-  <!-- @[gcm_encrypt_decrypt_aes_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAes/entry/src/main/cpp/types/project/aes_gcm_encryption_decryption.cpp) -->
+<!-- @[gcm_encrypt_decrypt_aes_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAes/entry/src/main/cpp/types/project/aes_gcm_encryption_decryption.cpp) -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
