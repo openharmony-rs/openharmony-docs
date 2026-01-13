@@ -1445,9 +1445,8 @@ struct Page_UIServiceExtensionAbility {
 
   build() {
     Column() {
-      //...
       Row() {
-        //...
+        // ...
       }.onClick(() => {
         const context = this.getUIContext().getHostContext() as common.UIExtensionContext;
         const want: Want = {
@@ -1520,9 +1519,8 @@ struct Page_UIServiceExtensionAbility {
 
   build() {
     Column() {
-      //...
       Row() {
-        //...
+        // ...
       }.onClick(() => {
         const context = this.getUIContext().getHostContext() as common.UIExtensionContext;
         // this.uiServiceProxy是连接时保存的proxy对象
