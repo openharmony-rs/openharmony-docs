@@ -3081,9 +3081,9 @@ isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, n
   }
   ```
 
-## geoLocationManager.getActiveFences<sup>23+</sup>
+## geoLocationManager.getActiveGeoFences<sup>23+</sup>
 
-getActiveFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
+getActiveGeoFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
 
 查询当前有效的围栏信息。使用Promise异步回调。
 
@@ -3104,7 +3104,7 @@ getActiveFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
-|801 | Capability not supported. Failed to call ${geoLocationManager.getActiveFences} due to limited device capabilities.          |
+|801 | Capability not supported. Failed to call ${geoLocationManager.getActiveGeoFences} due to limited device capabilities.          |
 
 **示例**
 
@@ -3112,7 +3112,7 @@ getActiveFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
   import { geoLocationManager } from '@kit.LocationKit';
 
   try {
-    geoLocationManager.getActiveFences().then((res) => {
+    geoLocationManager.getActiveGeoFences().then((res) => {
       if (res) {
         console.info("fence num:" + res.size());
         for (const item of res) {
@@ -3121,9 +3121,9 @@ getActiveFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
       }
     })
       .catch((error: BusinessError) => {
-        console.error('promise, getActiveFences: error=' + JSON.stringify(error));
+        console.error('promise, getActiveGeoFences: error=' + JSON.stringify(error));
       });
   } catch (error) {
-    console.error("getActiveFences: errCode" + error.code + ", errMessage" + error.message);
+    console.error("getActiveGeoFences: errCode" + error.code + ", errMessage" + error.message);
   }
   ```
