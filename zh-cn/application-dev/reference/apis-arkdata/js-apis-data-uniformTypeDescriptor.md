@@ -25,6 +25,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 ## UniformDataType
 
 标准化数据类型之间存在归属关系，例如JPEG图片类型归属于IMAGE类型。更多预置数据类型参考[UTD预置列表](../../database/uniform-data-type-list.md)。
+
 下表以枚举形式，列举了常用的标准化数据类型定义。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
@@ -220,13 +221,13 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 
 | 名称    | 类型                    | 只读 | 可选 | 说明                                                       |
 | ------- | ----------------------- | ---- | ---- |----------------------------------------------------------|
-| typeId<sup>11+</sup>     | string | 否   | 否   | 标准化数据类型的ID（即[UTD列表](#uniformdatatype)中对应的枚举值），也可以是自定义UTD。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| belongingToTypes<sup>11+</sup>  | Array\<string>          | 否   | 否   | 标准化数据类型所归属的类型typeId列表。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| description<sup>11+</sup>     | string                  | 否   | 否   | 标准化数据类型的简要说明。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| referenceURL<sup>11+</sup>     | string                  | 否   | 否   | 标准化数据类型的参考链接URL，用于描述类型的详细信息。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| iconFile<sup>11+</sup>     | string                  | 否   | 否   | 标准化数据类型的默认图标文件路径，可能为空字符串（即没有默认图标），应用可以自行决定是否使用该默认图标。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| filenameExtensions<sup>12+</sup>  | Array\<string>          | 否   | 否   | 标准化数据类型所关联的文件名后缀列表。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| mimeTypes<sup>12+</sup>  | Array\<string>          | 否   | 否   | 标准化数据类型所关联的多用途互联网邮件扩展类型列表。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| typeId<sup>11+</sup>     | string | 是   | 否   | 标准化数据类型的ID（即[UTD列表](#uniformdatatype)中对应的枚举值），也可以是自定义UTD。 |
+| belongingToTypes<sup>11+</sup>  | Array\<string>          | 是   | 否   | 标准化数据类型所归属的类型typeId列表。                                   |
+| description<sup>11+</sup>     | string                  | 是   | 否   | 标准化数据类型的简要说明。                                            |
+| referenceURL<sup>11+</sup>     | string                  | 是   | 否   | 标准化数据类型的参考链接URL，用于描述类型的详细信息。                            |
+| iconFile<sup>11+</sup>     | string                  | 是   | 否   | 标准化数据类型的默认图标文件路径，可能为空字符串（即没有默认图标），应用可以自行决定是否使用该默认图标。                                   |
+| filenameExtensions<sup>12+</sup>  | Array\<string>          | 是   | 否   | 标准化数据类型所关联的文件名后缀列表。                                   |
+| mimeTypes<sup>12+</sup>  | Array\<string>          | 是   | 否   | 标准化数据类型所关联的多用途互联网邮件扩展类型列表。                                   |
 
 ### belongsTo<sup>11+</sup> 
 
@@ -859,4 +860,156 @@ try {
     let error: BusinessError = e as BusinessError;
     console.error(`getUniformDataTypesByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
+```
+
+## uniformTypeDescriptor.registerTypeDescriptors<sup>22+</sup>
+
+registerTypeDescriptors(typeDescriptors: Array&lt;TypeDescriptor&gt;): Promise&lt;void&gt;
+
+注册自定义的标准化数据类型描述符。
+
+**需要权限:** ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**ArkTS-Dyn起始版本**：22
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名  | 类型 | 必填  | 说明                    |
+| -----  | ------  | ----  | ----------------------- |
+| typeDescriptors    | Array&lt;TypeDescriptor&gt;  | 是    |要注册的标准化数据类型描述符列表。   |
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，注册自定义的标准化数据类型描述符。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+| ------------ | ------------------------------------------------------------ |
+| 201          | Permission verification failed. The application does not have the permission required to call the API. |
+| 202          | Permission denied, non-system app called system api. |
+| 20400002     | The format of one or more typeDescriptors are invalid.       |
+| 20400003     | The content of one or more typeDescriptors violate rules.       |
+
+**示例：**
+
+```ts
+import { uniformTypeDescriptor } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let variables2: uniformTypeDescriptor.TypeDescriptor[] = [];
+for (let i = 0; i < 50; i++) {
+    variables2.push(new uniformTypeDescriptor.TypeDescriptor());
+}
+variables2.forEach((typeDescriptor, index) => {
+    typeDescriptor.typeId = 'com.example.helloworld.A' + (index + 1)
+    typeDescriptor.belongingToTypes = ['general.image'];
+    typeDescriptor.filenameExtensions = ['.myImage'];
+    typeDescriptor.mimeTypes = ['application/myImage'];
+    typeDescriptor.description = 'myHap defined image type';
+});
+await uniformTypeDescriptor.registerTypeDescriptors(variables2);
+for (let i = 0; i < 50; i++) {
+    let typeObj: uniformTypeDescriptor.TypeDescriptor | null =
+    uniformTypeDescriptor.getTypeDescriptor(variables2[i].typeId);
+    if (typeObj) {
+    let typeId = typeObj.typeId;
+    let belongingToTypes = typeObj.belongingToTypes;
+    let description = typeObj.description;
+    let referenceURL = typeObj.referenceURL;
+    let iconFile = typeObj.iconFile;
+    let filenameExtensions = typeObj.filenameExtensions;
+    let mimeTypes = typeObj.mimeTypes;
+    console.info(`typeId: ${typeId}, belongingToTypes: ${belongingToTypes}, description: ${description}, referenceURL: ${referenceURL},
+        iconFile: ${iconFile}, filenameExtensions: ${filenameExtensions}, mimeTypes: ${mimeTypes}`);
+    console.info('Type descriptors registered successfully.');
+    } else {
+    console.error('com.example.helloworld.A' + (i + 1) + 'does not exist');
+    }
+}
+```
+
+## uniformTypeDescriptor.unregisterTypeDescriptors<sup>22+</sup>
+
+unregisterTypeDescriptors(typeIds: Array&lt;string&gt;): Promise&lt;void&gt;
+
+注销自定义的标准化数据类型描述符。
+
+**需要权限:** ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+**ArkTS-Dyn起始版本**：22
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名  | 类型 | 必填  | 说明                    |
+| -----  | ------  | ----  | ----------------------- |
+| typeIds    | Array&lt;string&gt;  | 是    |要注销的标准化数据类型描述符列表。   |
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，注册自定义的标准化数据类型描述符。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+| ------------ | ------------------------------------------------------------ |
+| 201          | Permission verification failed. The application does not have the permission required to call the API. |
+| 202          | Permission denied, non-system app called system api. |
+| 20400004     | One or more typeIds are invalid or do not exist.     |
+
+**示例：**
+
+```ts
+import { uniformTypeDescriptor } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+for (let i = 0; i < 200; i++) {
+    let typeDescriptor = new uniformTypeDescriptor.TypeDescriptor();
+    typeDescriptor.typeId = 'com.example.helloworld.A' + (i + 1);
+    typeDescriptor.belongingToTypes = ['general.image'];
+    typeDescriptor.filenameExtensions = ['.myImage'];
+    typeDescriptor.mimeTypes = ['application/myImage'];
+    typeDescriptor.description = 'myHap defined image type';
+    await uniformTypeDescriptor.registerTypeDescriptors([typeDescriptor]);
+    let typeObj: uniformTypeDescriptor.TypeDescriptor | null =
+    uniformTypeDescriptor.getTypeDescriptor(typeDescriptor.typeId);
+    if (typeObj) {
+    let typeId = typeObj.typeId;
+    let belongingToTypes = typeObj.belongingToTypes;
+    let description = typeObj.description;
+    let referenceURL = typeObj.referenceURL;
+    let iconFile = typeObj.iconFile;
+    let filenameExtensions = typeObj.filenameExtensions;
+    let mimeTypes = typeObj.mimeTypes;
+    console.info(`typeId: ${typeId}, belongingToTypes: ${belongingToTypes}, description: ${description}, referenceURL: ${referenceURL},
+        iconFile: ${iconFile}, filenameExtensions: ${filenameExtensions}, mimeTypes: ${mimeTypes}`);
+    } else {
+    console.info('type com.example.helloworld.A' + (i + 1) + 'does not exist');
+    }
+    console.info('Type descriptors registered successfully.');
+}
+const variables1: string[] = [];
+for (let i = 1; i <= 200; i++) {
+    variables1.push('com.example.helloworld.A' + i)
+}
+for (let i = 0; i < 200; i++) {
+    await uniformTypeDescriptor.unregisterTypeDescriptors([variables1[i]])
+}
+console.info('Type descriptors unregistered successfully.');
 ```
