@@ -40,29 +40,48 @@ RichEditor是支持图文混排和文本交互式编辑的组件，通常用于�
 <!-- @[richEditor_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) -->
 
 ``` TypeScript
-fontStyle: TextStyle = new TextStyle({
-  fontColor: Color.Pink
-})
-// 定义字体样式对象
+@Entry
+@Component
+export struct CreateRichEditor {
+  // ...
+  fontStyle: TextStyle = new TextStyle({
+    fontColor: Color.Pink
+  })
+  // 定义字体样式对象
+  mutableStyledString: MutableStyledString =
+    // 请将$r('app.string.CreateRichEditor_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"创建使用属性字符串构建的RichEditor组件。"
+    new MutableStyledString(this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.CreateRichEditor_Text_1').id),
+    [{
+      start: 0,
+      length: 5,
+      styledKey: StyledStringKey.FONT,
+      styledValue: this.fontStyle
+    }])
+  // 创建属性字符串
 
-mutableStyledString: MutableStyledString =
-  // 请将$r('app.string.CreateRichEditor_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"创建使用属性字符串构建的RichEditor组件。"
-  new MutableStyledString(resource.resourceToString($r('app.string.CreateRichEditor_Text_1')),
-  [{
-    start: 0,
-    length: 5,
-    styledKey: StyledStringKey.FONT,
-    styledValue: this.fontStyle
-  }])
-// 创建属性字符串
-
-controller: RichEditorStyledStringController = new RichEditorStyledStringController();
-options: RichEditorStyledStringOptions = { controller: this.controller };
-// ...
-        RichEditor(this.options)
-          .onReady(() => {
-            this.controller.setStyledString(this.mutableStyledString);
-          })
+  controller: RichEditorStyledStringController = new RichEditorStyledStringController();
+  options: RichEditorStyledStringOptions = { controller: this.controller };
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+        Column({ space: 3 }) {
+          // ...
+          RichEditor(this.options)
+            .onReady(() => {
+              this.controller.setStyledString(this.mutableStyledString);
+            })
+        }
+        // ...
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.Create_RichEditor_Component_title')替换为实际资源文件，在本示例中该资源文件的value值为"创建RichEditor组件"
+    .title($r('app.string.Create_RichEditor_Component_title'))
+  }
+}
 ```
 
 ![alt text](figures/richeditor_image_stylestringoptions.gif)
@@ -84,18 +103,21 @@ export struct CreateRichEditor {
     NavDestination() {
       Column({ space: 12 }) {
         // ...
+        Column({ space: 3 }) {
+          // ...
           RichEditor(this.optionsNoStyledString)
             .onReady(() => {
               this.controllerNoStyledString.addTextSpan(
                 /* 请将$r('app.string.CreateRichEditor_Text_2')替换为实际资源文件，
                  在本示例中该资源文件的value值为"需创建不使用属性字符串构建的RichEditor组件。" */
-                resource.resourceToString($r('app.string.CreateRichEditor_Text_2')), {
+                $r('app.string.CreateRichEditor_Text_2'), {
                 style: {
                   fontColor: Color.Black,
                   fontSize: 15
                 }
               })
             })
+        }
         // ...
       }
       .width('100%')
@@ -484,42 +506,56 @@ options: RichEditorOptions = { controller: this.controller };
 
 infoShowController: RichEditorController = new RichEditorController();
 infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-// ...
-        // 请将$r('app.string.xxx')替换为开发者所需的资源文件
-        RichEditor(this.options)
-          .onReady(() => {
-            this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_8')), {
-              style: {
-                fontColor: Color.Black,
-                fontSize: 15
-              }
-            })
+
+build() {
+  Column() {
+    // ...
+    Column({ space: 3 }) {
+      // 请将$r('app.string.xxx')替换为开发者所需的资源文件
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_8')), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
           })
-          .aboutToIMEInput((value: RichEditorInsertValue) => {
-            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_9')) +
-            JSON.stringify(value), {
-              style: {
-                fontColor: Color.Gray,
-                fontSize: 10
-              }
-            })
-            return true;
+        })
+        .aboutToIMEInput((value: RichEditorInsertValue) => {
+          this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_9')) +
+          JSON.stringify(value), {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
           })
-          .onDidIMEInput((value: TextRange) => {
-            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_10')) +
-            JSON.stringify(value), {
-              style: {
-                fontColor: Color.Gray,
-                fontSize: 10
-              }
-            })
+          return true;
+        })
+        .onDidIMEInput((value: TextRange) => {
+          this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_10')) +
+          JSON.stringify(value), {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
           })
-          .width(300)
-          .height(50)
-        Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300)
-        RichEditor(this.infoShowOptions)
-          .width(300)
-          .height(70)
+        })
+        .width(300)
+        .height(50)
+      Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300)
+      RichEditor(this.infoShowOptions)
+        .width(300)
+        .height(70)
+
+    }
+    // ...
+  }
+  .alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
 ```
 
 ![alt text](figures/richeditor_image_aboutToIMEInput4.gif)
@@ -580,38 +616,37 @@ struct on_cut_copy_paste {
 
   build() {
     Column() {
-      ComponentCard({
-        // 请将$r('app.string.Add_Event_title_5')替换为实际资源文件，在本示例中该资源文件的value值为"添加完成粘贴前可触发的回调"
-        title: $r('app.string.Add_Event_title_5'),
-        // 请将$r('app.string.Add_Event_title_5_desc')替换为实际资源文件，在本示例中该资源文件的value值为"通过onPaste回调，来添加粘贴前要处理的流程"
-        description: $r('app.string.Add_Event_title_5_desc')
-      }) {
-        Column({ space: 3 }) {
-          RichEditor(this.options)
-            .onReady(() => {
-              // 请将$r('app.string.AddEvent_Text_11')替换为实际资源文件，在本示例中该资源文件的value值为"对此处文本进行复制粘贴操作可触发对应回调。"
-              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_11')),
-                { style: { fontColor: Color.Black, fontSize: 15 } })
-            })
-            .onPaste((event) => {
-              // 请将$r('app.string.AddEvent_Text_12')替换为实际资源文件，在本示例中该资源文件的value值为"触发onPaste回调\n"
-              this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_12')),
-                { style: { fontColor: Color.Gray, fontSize: 10 } })
-              if (event != undefined && event.preventDefault) {
-                event.preventDefault();
-              }
-              this.PopDataFromPasteboard()
-            })
-            .width(300)
-            .height(50);
-          // 请将$r('app.string.AddEvent_Text_4')替换为实际资源文件，在本示例中该资源文件的value值为"查看回调内容："
-          Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300);
-          RichEditor(this.infoShowOptions)
-            .width(300)
-            .height(70);
-        }.width('100%').alignItems(HorizontalAlign.Start);
-      }
-    }
+      // ...
+      Column({ space: 3 }) {
+        RichEditor(this.options)
+          .onReady(() => {
+            // 请将$r('app.string.AddEvent_Text_11')替换为实际资源文件，在本示例中该资源文件的value值为"对此处文本进行复制粘贴操作可触发对应回调。"
+            this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_11')),
+              { style: { fontColor: Color.Black, fontSize: 15 } })
+          })
+          .onPaste((event) => {
+            // 请将$r('app.string.AddEvent_Text_12')替换为实际资源文件，在本示例中该资源文件的value值为"触发onPaste回调\n"
+            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_12')),
+              { style: { fontColor: Color.Gray, fontSize: 10 } })
+            if (event != undefined && event.preventDefault) {
+              event.preventDefault();
+            }
+            this.PopDataFromPasteboard()
+          })
+          .width(300)
+          .height(50);
+        // 请将$r('app.string.AddEvent_Text_4')替换为实际资源文件，在本示例中该资源文件的value值为"查看回调内容："
+        Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300);
+        RichEditor(this.infoShowOptions)
+          .width(300)
+          .height(70);
+      }.width('100%').alignItems(HorizontalAlign.Start);
+      // ...
+    }.alignItems(HorizontalAlign.Start)
+    .backgroundColor('#fff')
+    .borderRadius(12)
+    .padding(12)
+    .width('100%')
   }
 }
 ```
@@ -632,31 +667,43 @@ options: RichEditorOptions = { controller: this.controller };
 
 infoShowController: RichEditorController = new RichEditorController();
 infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-// ...
-        RichEditor(this.options)
-          .onReady(() => {
-            // 请将$r('app.string.AddEvent_Text_13')替换为实际资源文件，在本示例中该资源文件的value值为"对此处文本进行复制粘贴操作可触发对应回调。"
-            this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_13')), {
-              style: {
-                fontColor: Color.Black,
-                fontSize: 15
-              }
-            })
+
+build() {
+  Column() {
+    // ...
+    Column({ space: 3 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          // 请将$r('app.string.AddEvent_Text_13')替换为实际资源文件，在本示例中该资源文件的value值为"对此处文本进行复制粘贴操作可触发对应回调。"
+          this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_13')), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
           })
-          .onCut(() => {
-            // 请将$r('app.string.AddEvent_Text_14')替换为实际资源文件，在本示例中该资源文件的value值为"触发onCut回调\n"
-            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_14')), {
-              style: {
-                fontColor: Color.Gray,
-                fontSize: 10
-              }
-            })
+        })
+        .onCut(() => {
+          // 请将$r('app.string.AddEvent_Text_14')替换为实际资源文件，在本示例中该资源文件的value值为"触发onCut回调\n"
+          this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_14')), {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
           })
-          .width(300)
-          .height(70)
-        RichEditor(this.infoShowOptions)
-          .width(300)
-          .height(70)
+        })
+        .width(300)
+        .height(70)
+      RichEditor(this.infoShowOptions)
+        .width(300)
+        .height(70)
+    }
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
 ```
 
 ### 添加完成复制前可触发的回调
@@ -675,31 +722,43 @@ options: RichEditorOptions = { controller: this.controller };
 
 infoShowController: RichEditorController = new RichEditorController();
 infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-// ...
-        RichEditor(this.options)
-          .onReady(() => {
-            // 请将$r('app.string.AddEvent_Text_15')替换为实际资源文件，在本示例中该资源文件的value值为"对此处文本进行复制粘贴操作可触发对应回调。"
-            this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_15')), {
-              style: {
-                fontColor: Color.Black,
-                fontSize: 15
-              }
-            })
+
+build() {
+  Column() {
+    // ...
+    Column({ space: 3 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          // 请将$r('app.string.AddEvent_Text_15')替换为实际资源文件，在本示例中该资源文件的value值为"对此处文本进行复制粘贴操作可触发对应回调。"
+          this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_15')), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
           })
-          .onCopy(() => {
-            // 请将$r('app.string.AddEvent_Text_16')替换为实际资源文件，在本示例中该资源文件的value值为"触发onCopy回调\n"
-            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_16')), {
-              style: {
-                fontColor: Color.Gray,
-                fontSize: 10
-              }
-            })
+        })
+        .onCopy(() => {
+          // 请将$r('app.string.AddEvent_Text_16')替换为实际资源文件，在本示例中该资源文件的value值为"触发onCopy回调\n"
+          this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_16')), {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
           })
-          .width(300)
-          .height(50)
-        RichEditor(this.infoShowOptions)
-          .width(300)
-          .height(70)
+        })
+        .width(300)
+        .height(50)
+      RichEditor(this.infoShowOptions)
+        .width(300)
+        .height(70)
+    }
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
 ```
 
 ![alt text](figures/richeditor_image_oncut_paste_copy.gif)
