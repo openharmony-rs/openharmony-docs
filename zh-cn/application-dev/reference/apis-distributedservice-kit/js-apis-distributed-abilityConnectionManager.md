@@ -855,23 +855,25 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称                    | 类型       |只读   | 可选   | 说明                 |
 | ----------------- | ------ | ----  | ---- | ------------------ |
-| deviceId          | string | 否   |否    | 对端设备ID。<br>**模型约束**：此接口仅可在Stage模型下使用。     |
-| bundleName        | string | 否   |否    | 对端应用的包名。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| moduleName        | string | 否   |否    | 对端应用的模块名。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| abilityName       | string | 否   |否     | 对端应用的组件名。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| serviceName       | string | 否   |是     | 应用设置的服务名称。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| deviceId          | string | 否   |否    | 对端设备ID。     |
+| bundleName        | string | 否   |否    | 对端应用的包名。 |
+| moduleName        | string | 否   |否    | 对端应用的模块名。 |
+| abilityName       | string | 否   |否     | 对端应用的组件名。 |
+| serviceName       | string | 否   |是     | 应用设置的服务名称。 |
 
 ## ConnectOptions
 
 应用连接时所需的连接选项。
 
+
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称          | 类型    | 只读   | 可选   | 说明          |
 | ----------- | ------- | ---- | ---- | ----------- |
-| needSendData    | boolean  | 否    | 是   | true代表需要传输数据，false代表不需要传输数据。<br>**模型约束**：此接口仅可在Stage模型下使用。     |
-| startOptions | [StartOptionParams](#startoptionparams) | 否    | 是   | 配置应用启动选项。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| parameters | Record&lt;string, string&gt;  | 否    | 是   | 配置连接所需的额外信息。<br>**模型约束**：此接口仅可在Stage模型下使用。    |
+| needSendData    | boolean  | 否    | 是   | true代表需要传输数据，false代表不需要传输数据。     |
+| startOptions | [StartOptionParams](#startoptionparams) | 否    | 是   | 配置应用启动选项。 |
+| parameters | Record&lt;string, string&gt;  | 否    | 是   | 配置连接所需的额外信息。    |
 
 ## ConnectResult
 
@@ -881,9 +883,9 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称       | 类型   | 只读   | 可选   | 说明      |
 | -------- | ------ | ---- | ---- | ------- |
-| isConnected | boolean | 否   | 否 | true表示连接成功，false表示连接失败。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| errorCode | [ConnectErrorCode](#connecterrorcode) | 否   | 是   | 表示连接错误码。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| reason | string | 否   | 是   | 表示拒绝连接的原因。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| isConnected | boolean | 否   | 否 | true表示连接成功，false表示连接失败。 |
+| errorCode | [ConnectErrorCode](#connecterrorcode) | 否   | 是   | 表示连接错误码。 |
+| reason | string | 否   | 是   | 表示拒绝连接的原因。 |
 
 ## EventCallbackInfo
 
@@ -893,10 +895,10 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称       | 类型    | 只读 | 可选 | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| sessionId | number   | 否   | 否   |   表示当前事件对应的协同会话ID。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| reason | [DisconnectReason](#disconnectreason)     | 否   | 是   |   表示断连原因。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| msg | string   | 否   | 是   |   表示接收的消息。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| data  | ArrayBuffer | 否   | 是   |   表示接收的字节流。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| sessionId | number   | 否   | 否   |   表示当前事件对应的协同会话ID。 |
+| reason | [DisconnectReason](#disconnectreason)     | 否   | 是   |   表示断连原因。 |
+| msg | string   | 否   | 是   |   表示接收的消息。 |
+| data  | ArrayBuffer | 否   | 是   |   表示接收的字节流。 |
 
 ## CollaborateEventInfo
 
@@ -906,8 +908,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称       | 类型   | 只读   | 可选   | 说明      |
 | -------- | ------ | ---- | ---- | ------- |
-| eventType | [CollaborateEventType](#collaborateeventtype) | 否   | 否 | 表示协同事件的类型。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| eventMsg | string | 否   | 是   | 表示协同事件的消息内容。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| eventType | [CollaborateEventType](#collaborateeventtype) | 否   | 否 | 表示协同事件的类型。 |
+| eventMsg | string | 否   | 是   | 表示协同事件的消息内容。 |
 
 ## ConnectErrorCode
 
@@ -917,12 +919,12 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称|  值 | 说明 |
 |-------|-------|-------|
-| CONNECTED_SESSION_EXISTS | 0 |表示应用之间存在已连接的会话。<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| PEER_APP_REJECTED | 1 |表示对端应用拒绝了协作请求。<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| LOCAL_WIFI_NOT_OPEN | 2 |表示本端WiFi未开启。<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| PEER_WIFI_NOT_OPEN | 3 |表示对端WiFi未开启。<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| PEER_ABILITY_NO_ONCOLLABORATE | 4 |表示未实现onCollaborate方法。<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| SYSTEM_INTERNAL_ERROR | 5 |表示系统内部错误。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| CONNECTED_SESSION_EXISTS | 0 |表示应用之间存在已连接的会话。|
+| PEER_APP_REJECTED | 1 |表示对端应用拒绝了协作请求。|
+| LOCAL_WIFI_NOT_OPEN | 2 |表示本端WiFi未开启。|
+| PEER_WIFI_NOT_OPEN | 3 |表示对端WiFi未开启。|
+| PEER_ABILITY_NO_ONCOLLABORATE | 4 |表示未实现onCollaborate方法。|
+| SYSTEM_INTERNAL_ERROR | 5 |表示系统内部错误。|
 
 ## StartOptionParams
 
@@ -932,7 +934,7 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称|  值 | 说明 |
 |-------|-------|-------|
-| START_IN_FOREGROUND | 0 |表示将对端应用启动至前台。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| START_IN_FOREGROUND | 0 |表示将对端应用启动至前台。|
 
 ## CollaborateEventType
 
@@ -942,8 +944,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称|  值 | 说明 |
 |-------|-------|-------|
-| SEND_FAILURE | 0 |表示任务发送失败。<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| COLOR_SPACE_CONVERSION_FAILURE | 1 |表示色彩空间转换失败。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| SEND_FAILURE | 0 |表示任务发送失败。|
+| COLOR_SPACE_CONVERSION_FAILURE | 1 |表示色彩空间转换失败。|
 
 ## DisconnectReason
 
@@ -953,9 +955,9 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称|  值 | 说明 |
 |-------|-------|-------|
-| PEER_APP_CLOSE_COLLABORATION | 0 |表示对端应用主动关闭了协作。<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| PEER_APP_EXIT | 1 |表示对端应用退出。<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| NETWORK_DISCONNECTED | 2 |表示网络断开。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| PEER_APP_CLOSE_COLLABORATION | 0 |表示对端应用主动关闭了协作。|
+| PEER_APP_EXIT | 1 |表示对端应用退出。|
+| NETWORK_DISCONNECTED | 2 |表示网络断开。|
 
 ## CollaborationKeys
 
@@ -965,9 +967,9 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称                |                  值             | 说明                   |
 | -------------------| ------------------------------- | ---------------------- |
-| PEER_INFO           | ohos.collaboration.key.peerInfo | 表示对端设备信息的键值。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| CONNECT_OPTIONS     | ohos.collaboration.key.connectOptions | 表示连接选项的键值。<br>**模型约束**：此接口仅可在Stage模型下使用。  |
-| COLLABORATE_TYPE    | ohos.collaboration.key.abilityCollaborateType | 表示协作类型的键值。<br>**模型约束**：此接口仅可在Stage模型下使用。   |
+| PEER_INFO           | ohos.collaboration.key.peerInfo | 表示对端设备信息的键值。 |
+| CONNECT_OPTIONS     | ohos.collaboration.key.connectOptions | 表示连接选项的键值。   |
+| COLLABORATE_TYPE    | ohos.collaboration.key.abilityCollaborateType | 表示协作类型的键值。   |
 
 ## CollaborationValues
 
@@ -977,5 +979,5 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称                                      | 值       | 说明                   |
 | ----------------------------------------- | -------- | ---------------------- |
-| ABILITY_COLLABORATION_TYPE_DEFAULT | ohos.collaboration.value.abilityCollab | 表示默认的协作类型。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| ABILITY_COLLABORATION_TYPE_CONNECT_PROXY  | ohos.collaboration.value.connectProxy | 表示连接代理的协作类型。<br>**模型约束**：此接口仅可在Stage模型下使用。   |
+| ABILITY_COLLABORATION_TYPE_DEFAULT | ohos.collaboration.value.abilityCollab | 表示默认的协作类型。 |
+| ABILITY_COLLABORATION_TYPE_CONNECT_PROXY  | ohos.collaboration.value.connectProxy | 表示连接代理的协作类型。   |
