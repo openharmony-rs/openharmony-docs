@@ -15,7 +15,7 @@
 
 | 接口名称 | 功能描述 | 
 | -------- | -------- |
-| getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthInstance | 获取UserAuthInstance对象，用于执行用户身份认证，并支持使用[统一用户认证控件](#用户身份认证控件介绍)。 | 
+| getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthInstance | 获取UserAuthInstance对象，用于执行用户身份认证，并支持使用[统一用户认证控件](#统一用户认证控件介绍)。 | 
 | on(type: 'result', callback: IAuthCallback): void | 订阅用户身份认证结果。 | 
 | off(type: 'result', callback?: IAuthCallback): void | 取消订阅用户身份认证结果。 | 
 | start(): void | 执行用户认证。 | 
