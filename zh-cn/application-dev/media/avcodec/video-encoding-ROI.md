@@ -358,9 +358,11 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
    >
 
 2. 监听相机元数据回调接口获取人脸位置信息。
+
    同[Surface模式下通过NativeBuffer接口配置ROI](#surface模式下通过nativebuffer接口配置roi)。
 
 3. Native层解析TS层传递的人脸位置信息。
+
    同[Surface模式下通过NativeBuffer接口配置ROI](#surface模式下通过nativebuffer接口配置roi)。
 
 4. 转换成ROI信息格式字符串并保存。
