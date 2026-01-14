@@ -42,8 +42,6 @@ import { ArcListItem } from '@kit.ArkUI';
 
 ## 接口
 
-### ArcListItem
-
 ArcListItem()
 
 创建弧形列表子组件。
