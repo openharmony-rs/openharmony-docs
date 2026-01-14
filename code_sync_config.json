@@ -29047,12 +29047,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":61,
 						"name":"napi_open_close_handle_scope",
 						"start_line":19
 					},
 					{
-						"end_line":88,
+						"end_line":87,
 						"name":"napi_open_close_escapable_handle_scope",
 						"start_line":63
 					},
