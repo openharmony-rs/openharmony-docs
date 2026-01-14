@@ -70,14 +70,14 @@ HiAppEvent模块的应用事件打点函数定义。在执行应用事件打点�
 | [bool OH_HiAppEvent_Configure(const char* name, const char* value)](#oh_hiappevent_configure) | - | 实现应用事件打点的配置功能。应用事件打点配置接口，用于配置事件打点开关、事件文件目录存储配额大小等功能。 |
 | [HiAppEvent_Watcher* OH_HiAppEvent_CreateWatcher(const char* name)](#oh_hiappevent_createwatcher) | - | 创建一个用于监听app事件的监听器。注意：创建的监听器不再使用后必须通过调用OH_HiAppEvent_DestroyWatcher接口进行销毁。 |
 | [void OH_HiAppEvent_DestroyWatcher(HiAppEvent_Watcher* watcher)](#oh_hiappevent_destroywatcher) | - | 销毁已创建的监听器。注意：已创建的监听器不再使用后，需要将其销毁，释放内存，防止内存泄漏，销毁后需将对应指针置空。 |
-| [int OH_HiAppEvent_SetTriggerCondition(HiAppEvent_Watcher* watcher, int row, int size, int timeOut)](#oh_hiappevent_settriggercondition) | - | 用于设置监听器OH_HiAppEvent_OnTrigger回调的触发条件。<br> 分别可以从监视器新接收事件数量、新接收事件大小、onTrigger触发超时时间，设置触发条件。调用方应至少保证从一个方面设置触发条件。 |
+| [int OH_HiAppEvent_SetTriggerCondition(HiAppEvent_Watcher* watcher, int row, int size, int timeOut)](#oh_hiappevent_settriggercondition) | - | 用于设置监听器OH_HiAppEvent_OnTrigger回调的触发条件。<br> 分别可以从监听器新接收事件数量、新接收事件大小、onTrigger触发超时时间，设置触发条件。调用方应至少保证从一个方面设置触发条件。 |
 | [int OH_HiAppEvent_SetAppEventFilter(HiAppEvent_Watcher* watcher, const char* domain, uint8_t eventTypes, const char* const *names, int namesLen)](#oh_hiappevent_setappeventfilter) | - | 用于设置监听器需要监听的事件的类型。该函数可以重复调用，可添加多个过滤规则，而非替换，监听器将收到满足任一过滤规则的事件的通知。 |
-| [int OH_HiAppEvent_SetWatcherOnTrigger(HiAppEvent_Watcher* watcher, OH_HiAppEvent_OnTrigger onTrigger)](#oh_hiappevent_setwatcherontrigger) | - | 用于设置监听器onTrigger回调的接口。<br> 如果未设置OnReceive回调或已将其设置为nullptr，则将保存观察者接收到的应用事件。当保存的应用事件满足onTrigger回调的触发条件时，将调用onTrigger回调。 |
+| [int OH_HiAppEvent_SetWatcherOnTrigger(HiAppEvent_Watcher* watcher, OH_HiAppEvent_OnTrigger onTrigger)](#oh_hiappevent_setwatcherontrigger) | - | 用于设置监听器onTrigger回调的接口。<br> 如果未设置OnReceive回调或已将其设置为nullptr，则将保存监听器接收到的应用事件。当保存的应用事件满足onTrigger回调的触发条件时，将调用onTrigger回调。 |
 | [int OH_HiAppEvent_SetWatcherOnReceive(HiAppEvent_Watcher* watcher, OH_HiAppEvent_OnReceive onReceive)](#oh_hiappevent_setwatcheronreceive) | - | 用于设置监听器onReceive回调函数的接口。当监听器监听到相应事件后，onReceive回调函数将被调用。 |
 | [int OH_HiAppEvent_TakeWatcherData(HiAppEvent_Watcher* watcher, uint32_t eventNum, OH_HiAppEvent_OnTake onTake)](#oh_hiappevent_takewatcherdata) | - | 用于获取监听器收到后保存的事件。 |
 | [int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher* watcher)](#oh_hiappevent_addwatcher) | - | 添加监听器的接口，监听器开始监听系统消息。 |
 | [int OH_HiAppEvent_RemoveWatcher(HiAppEvent_Watcher* watcher)](#oh_hiappevent_removewatcher) | - | 移除监听器的接口，监听器停止监听系统消息。注意：该接口仅仅使监听器停止监听系统消息，并未销毁该监听器，该监听器依然常驻内存，直至调用OH_HiAppEvent_DestroyWatcher接口，内存才会释放。 |
-| [void OH_HiAppEvent_ClearData()](#oh_hiappevent_cleardata) | - | 清除所有监视器保存的所有事件。 |
+| [void OH_HiAppEvent_ClearData()](#oh_hiappevent_cleardata) | - | 清除所有监听器保存的所有事件。 |
 | [HiAppEvent_Processor* OH_HiAppEvent_CreateProcessor(const char* name)](#oh_hiappevent_createprocessor) | - | 创建一个用于处理app事件上报的处理者。注意：创建的处理者不再使用后必须通过调用OH_HiAppEvent_DestroyProcessor接口进行销毁。 |
 | [int OH_HiAppEvent_SetReportRoute(HiAppEvent_Processor* processor, const char* appId, const char* routeInfo)](#oh_hiappevent_setreportroute) | - | 设置处理者事件上报路由的接口。 |
 | [int OH_HiAppEvent_SetReportPolicy(HiAppEvent_Processor* processor, int periodReport, int batchReport, bool onStartReport, bool onBackgroundReport)](#oh_hiappevent_setreportpolicy) | - | 设置处理者事件上报策略的接口。 |
@@ -762,7 +762,7 @@ int OH_HiAppEvent_SetTriggerCondition(HiAppEvent_Watcher* watcher, int row, int 
 
 **描述**
 
-用于设置监听器OH_HiAppEvent_OnTrigger回调的触发条件。<br> 分别可以从监视器新接收事件数量、新接收事件大小、onTrigger触发超时时间，设置触发条件。调用方应至少保证从一个方面设置触发条件。
+用于设置监听器OH_HiAppEvent_OnTrigger回调的触发条件。<br> 分别可以从监听器新接收事件数量、新接收事件大小、onTrigger触发超时时间，设置触发条件。调用方应至少保证从一个方面设置触发条件。
 
 **起始版本：** 12
 
@@ -817,7 +817,7 @@ int OH_HiAppEvent_SetWatcherOnTrigger(HiAppEvent_Watcher* watcher, OH_HiAppEvent
 
 **描述**
 
-用于设置监听器onTrigger回调的接口。<br> 如果未设置OnReceive回调或已将其设置为nullptr，则将保存观察者接收到的应用事件。当保存的应用事件满足onTrigger回调的触发条件时，将调用onTrigger回调。
+用于设置监听器onTrigger回调的接口。<br> 如果未设置OnReceive回调或已将其设置为nullptr，则将保存监听器接收到的应用事件。当保存的应用事件满足onTrigger回调的触发条件时，将调用onTrigger回调。
 
 **起始版本：** 12
 
@@ -941,7 +941,7 @@ void OH_HiAppEvent_ClearData()
 
 **描述**
 
-清除所有监视器保存的所有事件。
+清除所有监听器保存的所有事件。
 
 **起始版本：** 12
 
