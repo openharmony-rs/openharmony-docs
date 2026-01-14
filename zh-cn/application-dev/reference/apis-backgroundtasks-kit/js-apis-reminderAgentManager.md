@@ -870,6 +870,8 @@ subscribeReminderState(callback: Callback\<Array\<ReminderState>>): Promise\<voi
 
 订阅代理提醒状态。使用Promise异步回调。
 
+**需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -936,11 +938,10 @@ unsubscribeReminderState(callback?: Callback\<Array\<ReminderState>>): Promise\<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[reminderAgentManager错误码](errorcode-reminderAgentManager.md)。
+以下错误码的详细介绍请参见[reminderAgentManager错误码](errorcode-reminderAgentManager.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | ---------------------------- |
-| 201      | Permission denied.           |
 | 1700007  | If the input parameter is not valid parameter. |
 
 **示例：**
