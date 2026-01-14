@@ -3440,9 +3440,9 @@
 						"start_line":149
 					},
 					{
-						"end_line":111,
+						"end_line":114,
 						"name":"databaseExceptionErrorCodeThrown",
-						"start_line":83
+						"start_line":86
 					},
 					{
 						"end_line":126,
