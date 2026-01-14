@@ -71,6 +71,7 @@ In the stage model, the main window of an application is created and maintained 
 
    Call **loadContent** to load content to the main window.
    
+
 <!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateMainWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
@@ -438,7 +439,7 @@ struct SubWindow {
 }
 ```
 
-## Experiencing the immersive window feature
+## Experiencing the Immersive Window Feature
 
 To create a better video watching and gaming experience, you can use the immersive window feature to hide the status bar and navigation bar. This feature is available only for the main window of an application. Since API version 10, the immersive window has the same size as the full screen by default; its layout is controlled by the component module; the background color of its status bar and navigation bar is transparent, and the text color is black. When an application window calls **setWindowLayoutFullScreen**, with **true** passed in, an immersive window layout is used. If **false** is passed in, a non-immersive window layout is used.
 
@@ -462,6 +463,7 @@ To create a better video watching and gaming experience, you can use the immersi
 
    Call **loadContent** to load content to the immersive window.
    
+
 <!-- @[set_window_system_bar_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/SetWindowSystemBarEnable/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript

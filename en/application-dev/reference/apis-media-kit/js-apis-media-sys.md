@@ -35,7 +35,7 @@ Enumerates the [media error codes](errorcode-media.md).
 
 createVideoRecorder(callback: AsyncCallback\<VideoRecorder>): void
 
-Creates a video recording instance. Each device supports only one recording instance. This API uses an asynchronous callback to return the result.
+Creates a VideoRecorder instance. Each device supports only one VideoRecorder instance. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -76,7 +76,7 @@ media.createVideoRecorder((error: BusinessError, video: media.VideoRecorder) => 
 
 createVideoRecorder(): Promise\<VideoRecorder>
 
-Creates a video recording instance. Each device supports only one recording instance. This API uses a promise to return the result.
+Creates a VideoRecorder instance. Each device supports only one VideoRecorder instance. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
 
