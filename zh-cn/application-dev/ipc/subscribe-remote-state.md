@@ -95,17 +95,7 @@ function connectAbility(context:common.UIAbilityContext, promptAction: PromptAct
         let message = (err as BusinessError).message;
         hilog.error(0x0000, 'testTag', 'IPCClient: register failed, code is ' + code + ', message is ' + message);
       }
-      // 弹窗显示成功连接服务
-      try {
-        promptAction.showToast({
-          message: 'connectAbility success',
-          duration: 2000
-        });
-      } catch (error) {
-        let message = (error as BusinessError).message;
-        let code = (error as BusinessError).code;
-        hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-      };
+      // ...
     },
 
     onDisconnect: (elementName) => {
@@ -120,33 +110,12 @@ function connectAbility(context:common.UIAbilityContext, promptAction: PromptAct
         hilog.error(0x0000, 'testTag', 'IPCClient: unregister failed, code is ' + code + ', message is ' + message);
       }
       proxy = undefined;
-      isDisconnect = true;
-      // 弹窗显示与服务端断开连接成功
-      try {
-        promptAction.showToast({
-          message: 'disconnectAbility success',
-          duration: 2000
-        });
-      } catch (error) {
-        let message = (error as BusinessError).message;
-        let code = (error as BusinessError).code;
-        hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-      };
+      // ...
     },
 
     onFailed: (code: number) => {
       hilog.info(0x0000, 'testTag', 'IPCClient: onFailed. code is ' + code);
-      // 弹窗显示连接服务失败
-      try {
-        promptAction.showToast({
-          message: 'Connect failed. Please ensure that the service is running in the background.',
-          duration: 2000
-        });
-      } catch (error) {
-        let message = (error as BusinessError).message;
-        let code = (error as BusinessError).code;
-        hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-      };
+      // ...
     },
   }
 
@@ -157,6 +126,21 @@ function connectAbility(context:common.UIAbilityContext, promptAction: PromptAct
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
     hilog.error(0x0000, 'testTag', 'IPCClient: connectAbility failed, code is ' + code + ', message is ' + message);
+  }
+}
+
+// 断开连接
+function disconnectAbility(context: common.UIAbilityContext) {
+  hilog.info(0x00000, 'testTag', 'IPCClient: begin to disconnect Ability. connectId is ' + connectId);
+  if (connectId != undefined) {
+    try {
+      context.disconnectServiceExtensionAbility(connectId);
+      hilog.info(0x00000, 'testTag', 'IPCClient: begin to disconnect Ability end');
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      hilog.error(0x0000, 'testTag', 'IPCClient: disconnect failed, code is ' + code + ', message is ' + message);
+    }
   }
 }
 ```
@@ -234,33 +218,13 @@ function getDeviceId(promptAction: PromptAction) {
     if (deviceList.length !== 0) {
       deviceId = deviceList[0].networkId;
       hilog.info(0x0000, 'testTag', 'RpcClient: networkId is ' + deviceId);
-      // 弹窗显示获取deviceId失败
-      try {
-        promptAction.showToast({
-          message: 'getDeviceId success.',
-          duration: 2000
-        });
-      } catch (error) {
-        let message = (error as BusinessError).message;
-        let code = (error as BusinessError).code;
-        hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-      };
+      // ...
     }
   } catch (err) {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
     hilog.error(0x0000, 'testTag', 'RpcClient: getDeviceId failed, code is  ' + code + ', message is ' + message);
-    // 弹窗显示获取deviceId失败
-    try {
-      promptAction.showToast({
-        message: 'getDeviceId failed. please confirm that multiple devices are allowed to collaborate first.',
-        duration: 2000
-      });
-    } catch (error) {
-      let message = (error as BusinessError).message;
-      let code = (error as BusinessError).code;
-      hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-    };
+    // ...
   }
 }
 
@@ -286,17 +250,7 @@ function connectAbility(context:common.UIAbilityContext, promptAction: PromptAct
         let message = (err as BusinessError).message;
         hilog.error(0x0000, 'testTag', 'RpcClient: register failed, code is ' + code + ', message is ' + message);
       };
-      // 弹窗显示成功连接服务
-      try {
-        promptAction.showToast({
-          message: 'connectAbility success',
-          duration: 2000
-        });
-      } catch (err) {
-        let code = (err as BusinessError).code;
-        let message = (err as BusinessError).message;
-        hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-      };
+      // ...
     },
     onDisconnect: (elementName) => {
       hilog.info(0x0000, 'testTag', 'RpcClient: onDisconnect. elementName is ' + JSON.stringify(elementName));
@@ -310,32 +264,11 @@ function connectAbility(context:common.UIAbilityContext, promptAction: PromptAct
         hilog.error(0x0000, 'testTag', 'RpcClient: unregister failed, code is ' + code + ', message is ' + message);
       }
       proxy = undefined;
-      isDisconnect = true;
-      // 弹窗显示与服务端断开连接成功
-      try {
-        promptAction.showToast({
-          message: 'disconnectAbility success',
-          duration: 2000
-        });
-      } catch (error) {
-        let message = (error as BusinessError).message;
-        let code = (error as BusinessError).code;
-        hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-      };
+      // ...
     },
     onFailed: (code: number) => {
       hilog.info(0x0000, 'testTag', 'RpcClient: onFailed. code is :' + code);
-      // 弹窗显示连接服务失败
-      try {
-        promptAction.showToast({
-          message: 'Connect failed. Please ensure that the service is running in the background.',
-          duration: 2000
-        });
-      } catch (error) {
-        let message = (error as BusinessError).message;
-        let code = (error as BusinessError).code;
-        hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-      };
+      // ...
     },
   }
 
@@ -345,6 +278,20 @@ function connectAbility(context:common.UIAbilityContext, promptAction: PromptAct
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
     hilog.error(0x0000, 'testTag', 'RpcClient: connectService failed, code is ' + code + ', message is ' + message);
+  }
+}
+
+// 断开连接
+function disconnectAbility(context: common.UIAbilityContext) {
+  hilog.info(0x00000, 'testTag', 'RpcClient: begin to disconnect Ability');
+  if (connectId != undefined) {
+    try {
+      context.disconnectServiceExtensionAbility(connectId);
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      hilog.error(0x0000, 'testTag', 'pcClient: disconnectService failed, code is ' + code + ', message is ' + message);
+    }
   }
 }
 ```
