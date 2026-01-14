@@ -327,8 +327,7 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 **示例：**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
-import { common2D } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -341,7 +340,7 @@ struct BezierWarpExample {
 
   build() {
     Column() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
         .foregroundFilter(uiEffect.createFilter().bezierWarp(this.valueBezier))
     }
   }
@@ -620,9 +619,9 @@ maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], 
 **示例：**
 
 ```ts
-import {image} from '@kit.ImageKit'
-import {common2D, uiEffect} from '@kit.ArkGraphics2D'
-import {common} from '@kit.AbilityKit'
+import { image } from '@kit.ImageKit'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+import { common } from '@kit.AbilityKit'
 
 @Entry
 @Component
@@ -1307,7 +1306,7 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 **示例：**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
+import { uiEffect } from '@kit.ArkGraphics2D'
 // values: [[1.0, 0.5], [1.0, 1.0]] => color0: 1.0; color1: 1.0; position0: 0.5; position1: 1.0
 let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[1.0, 0.5], [1.0, 1.0]]);
 @Entry
@@ -1315,7 +1314,7 @@ let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[
 struct RadialGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')
@@ -1368,7 +1367,7 @@ let mask = uiEffect.Mask.createWaveGradientMask({x: 0.5, y: 0.5}, 0.01, 0.5, 0.1
 struct WaveGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')
