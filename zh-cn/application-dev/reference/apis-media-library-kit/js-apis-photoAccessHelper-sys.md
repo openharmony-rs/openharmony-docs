@@ -1757,8 +1757,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('startThumbnailCreationTask test start');
     phAccessHelper.startThumbnailCreationTask(predicates, testCallBack, (err, state) =>{
         if(err) {
-          console.log("error message: "+err?.message)
-          console.log("error code: " +err?.code)
+          console.error("error message: " + err?.message)
+          console.error("error code: " + err?.code)
           return
         }
         console.info(`startThumbnailCreationTask: response state ${state}`);
