@@ -10,7 +10,7 @@ An audio playback application must notice audio stream state changes and perform
 
 ## Reading or Listening for Audio Stream State Changes in the Application
 
-Create an AudioRenderer by referring to [Using AudioRenderer for Audio Playback](using-audiorenderer-for-playback.md) or [audio.createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8). Then obtain the audio stream state changes in either of the following ways:
+Create an AudioRenderer by referring to [Using AudioRenderer for Audio Playback (ArkTs)](using-audiorenderer-for-playback.md) or [audio.createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8). Then obtain the audio stream state changes in either of the following ways.
 
 - Check the [state](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#properties) of the AudioRenderer.
     
@@ -18,7 +18,7 @@ Create an AudioRenderer by referring to [Using AudioRenderer for Audio Playback]
   import { audio } from '@kit.AudioKit';
   
   let audioRendererState: audio.AudioState = audioRenderer.state;
-  console.info(`Current state is: ${audioRendererState }`)
+  console.info(`Current state is: ${audioRendererState}`);
   ```
 
 - Register **stateChange** to listen for state changes of the AudioRenderer.
@@ -27,7 +27,7 @@ Create an AudioRenderer by referring to [Using AudioRenderer for Audio Playback]
   import { audio } from '@kit.AudioKit';
   
   audioRenderer.on('stateChange', (rendererState: audio.AudioState) => {
-    console.info(`State change to: ${rendererState}`)
+    console.info(`Succeeded in using on function, state change to: ${rendererState}`);
   });
   ```
 
@@ -67,25 +67,8 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
    ```ts
    import { audio } from '@kit.AudioKit';
    
-   audioStreamManager.on('audioRendererChange',  (AudioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
-     for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-       let AudioRendererChangeInfo = AudioRendererChangeInfoArray[i];
-       console.info(`## RendererChange on is called for ${i} ##`);
-       console.info(`StreamId for ${i} is: ${AudioRendererChangeInfo.streamId}`);
-       console.info(`Content ${i} is: ${AudioRendererChangeInfo.rendererInfo.content}`);
-       console.info(`Stream ${i} is: ${AudioRendererChangeInfo.rendererInfo.usage}`);
-       console.info(`Flag ${i} is: ${AudioRendererChangeInfo.rendererInfo.rendererFlags}`); 
-       for (let j = 0;j < AudioRendererChangeInfo.deviceDescriptors.length; j++) {
-         console.info(`Id: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].id}`);
-         console.info(`Type: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceType}`);
-         console.info(`Role: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceRole}`);
-         console.info(`Name: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].name}`);
-         console.info(`Address: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].address}`);
-         console.info(`SampleRates: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].sampleRates[0]}`);
-         console.info(`ChannelCount ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelCounts[0]}`);
-         console.info(`ChannelMask: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelMasks}`);
-       }
-     }
+   audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
+     console.info(`Succeeded in using on function. AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}`);
    });
    ```
 
@@ -93,7 +76,7 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
 
    ```ts
    audioStreamManager.off('audioRendererChange');
-   console.info('RendererChange Off is called ');
+   console.info('Succeeded in using off function.');
    ```
 
 4. (Optional) Use [getCurrentAudioRendererInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiorendererinfoarray9) to obtain the information about all audio playback streams. This API can be used to obtain the unique ID of the audio playback stream, audio renderer information, and audio playback device information.
@@ -107,29 +90,10 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
    import { BusinessError } from '@kit.BasicServicesKit';
    
    async function getCurrentAudioRendererInfoArray(): Promise<void> {
-     await audioStreamManager.getCurrentAudioRendererInfoArray().then((AudioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
-       console.info(`getCurrentAudioRendererInfoArray  Get Promise is called `);
-       if (AudioRendererChangeInfoArray != null) {
-         for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-           let AudioRendererChangeInfo = AudioRendererChangeInfoArray[i];
-           console.info(`StreamId for ${i} is: ${AudioRendererChangeInfo.streamId}`);
-           console.info(`Content ${i} is: ${AudioRendererChangeInfo.rendererInfo.content}`);
-           console.info(`Stream ${i} is: ${AudioRendererChangeInfo.rendererInfo.usage}`);
-           console.info(`Flag ${i} is: ${AudioRendererChangeInfo.rendererInfo.rendererFlags}`);  
-           for (let j = 0;j < AudioRendererChangeInfo.deviceDescriptors.length; j++) {
-             console.info(`Id: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].id}`);
-             console.info(`Type: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceType}`);
-             console.info(`Role: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceRole}`);
-             console.info(`Name: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].name}`);
-             console.info(`Address: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].address}`);
-             console.info(`SampleRates: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].sampleRates[0]}`);
-             console.info(`ChannelCount ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelCounts[0]}`);
-             console.info(`ChannelMask: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelMasks}`);
-           }
-         }
-       }
+     await audioStreamManager.getCurrentAudioRendererInfoArray().then((audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
+       console.info(`Succeeded in getting current audio renderer info array. AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}`);
      }).catch((err: BusinessError ) => {
-       console.error(`Invoke getCurrentAudioRendererInfoArray failed, code is ${err.code}, message is ${err.message}`);
+       console.error(`Failed to get current audio renderer info array. Code: ${err.code}, message: ${err.message}`);
      });
    }
    ```

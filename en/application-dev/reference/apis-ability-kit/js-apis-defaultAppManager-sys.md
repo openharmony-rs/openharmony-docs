@@ -95,7 +95,7 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 getDefaultApplication(type: string, userId: number, callback: AsyncCallback\<BundleInfo>) : void
 
-Obtains the default application of a user based on a system-defined application type, a file type that complies with the media type format (either specified by **type** or **subtype**), or a [uniform data type](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md). This API uses an asynchronous callback to return the result.
+Obtains the default application based on a system-defined application type, a file type that complies with the media type format (either specified by **type** or **subtype**), or a [uniform data type](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md). This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_DEFAULT_APPLICATION
 
@@ -270,21 +270,21 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 try {
   let data = defaultAppManager.getDefaultApplicationSync(defaultAppManager.ApplicationType.BROWSER)
   console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   let data = defaultAppManager.getDefaultApplicationSync("image/png")
   console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   let data = defaultAppManager.getDefaultApplicationSync(uniformTypeDescriptor.UniformDataType.AVI)
   console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 ```
@@ -382,7 +382,7 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 setDefaultApplication(type: string, elementName: ElementName, userId: number, callback: AsyncCallback\<void>) : void
 
-Sets the default application for a user based on a system-defined application type, a file type that complies with the media type format (either specified by **type** or **subtype**), or a [uniform data type](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md). This API uses an asynchronous callback to return the result.
+Sets the default application based on a system-defined application type, a file type that complies with the media type format (either specified by **type** or **subtype**), or a [uniform data type](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md). This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -577,46 +577,46 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 
 try {
   defaultAppManager.setDefaultApplicationSync(defaultAppManager.ApplicationType.BROWSER, {
-  bundleName: "com.example.myapplication",
-  moduleName: "module01",
-  abilityName: "EntryAbility"
-});
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  });
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 let userId = 100;
 try {
   defaultAppManager.setDefaultApplicationSync(defaultAppManager.ApplicationType.BROWSER, {
-  bundleName: "com.example.myapplication",
-  moduleName: "module01",
-  abilityName: "EntryAbility"
-}, userId);
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   defaultAppManager.setDefaultApplicationSync("image/png", {
-  bundleName: "com.example.myapplication",
-  moduleName: "module01",
-  abilityName: "EntryAbility"
-}, userId);
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   defaultAppManager.setDefaultApplicationSync(uniformTypeDescriptor.UniformDataType.AVI, {
-  bundleName: "com.example.myapplication",
-  moduleName: "module01",
-  abilityName: "EntryAbility"
-}, userId);
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 ```
@@ -696,7 +696,7 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
 
 resetDefaultApplication(type: string, userId: number, callback: AsyncCallback\<void>) : void
 
-Resets the default application for a user based on a system-defined application type, a file type that complies with the media type format (either specified by **type** or **subtype**), or a [uniform data type](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md). This API uses an asynchronous callback to return the result.
+Resets the default application based on a system-defined application type, a file type that complies with the media type format (either specified by **type** or **subtype**), or a [uniform data type](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md). This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -733,13 +733,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { uniformTypeDescriptor } from '@kit.ArkData';
 
 let userId = 100;
-defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, userId, (err: BusinessError, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful.');
-});
+defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, userId,
+  (err: BusinessError, data) => {
+    if (err) {
+      console.error('Operation failed. Cause: ' + JSON.stringify(err));
+      return;
+    }
+    console.info('Operation successful.');
+  });
 
 defaultAppManager.resetDefaultApplication("image/png", userId, (err: BusinessError, data) => {
   if (err) {
@@ -749,13 +750,14 @@ defaultAppManager.resetDefaultApplication("image/png", userId, (err: BusinessErr
   console.info('Operation successful.');
 });
 
-defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, userId, (err: BusinessError, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful.');
-});
+defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, userId,
+  (err: BusinessError, data) => {
+    if (err) {
+      console.error('Operation failed. Cause: ' + JSON.stringify(err));
+      return;
+    }
+    console.info('Operation successful.');
+  });
 ```
 
 ## defaultAppManager.resetDefaultApplication
@@ -863,21 +865,21 @@ let userId = 100;
 try {
   defaultAppManager.resetDefaultApplicationSync(defaultAppManager.ApplicationType.BROWSER, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   defaultAppManager.resetDefaultApplicationSync("image/png", userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   defaultAppManager.resetDefaultApplicationSync(uniformTypeDescriptor.UniformDataType.AVI, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 ```

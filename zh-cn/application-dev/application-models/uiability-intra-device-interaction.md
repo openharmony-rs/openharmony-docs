@@ -248,7 +248,7 @@
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-                const RESULT_CODE: number = 1001; //FuncAbilityA返回的结果
+                const RESULT_CODE: number = 1001; // FuncAbilityA返回的结果
                 let abilityResult: common.AbilityResult = {
                   resultCode: RESULT_CODE,
                   want: {
@@ -471,7 +471,8 @@ export default class ColdStartAbility extends UIAbility {
 4. 用户点击联系人张三的短信按钮，会重新启动短信应用的UIAbility实例。
 5. 由于短信应用的UIAbility实例已经启动过了，此时会触发该UIAbility的onNewWant()回调，而不会再走[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)等初始化逻辑。
 
-图1 目标UIAbility热启动  
+图1 目标UIAbility热启动
+
 ![](figures/uiability-hot-start.png)
 
 开发步骤如下所示。
@@ -822,6 +823,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
    ```
 
 3. 定义约定的序列化数据。
+
    调用端及被调用端发送接收的数据格式需协商一致，如下示例约定数据由number和string组成。
 
 

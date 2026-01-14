@@ -46,9 +46,9 @@ The file declares the common enums and structs used by the image interface.
 | Name| Description|
 | -- | -- |
 | [Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_PictureMetadata **metadata)](#oh_picturemetadata_create) | Creates the pointer to an OH_PictureMetadata struct.|
-| [Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getproperty) | Obtains a property of metadata based on the key.|
+| [Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getproperty) | Obtains a property of metadata based on the key. The **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.|
 | [Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_setproperty) | Sets a property of metadata based on the key.|
-| [Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getpropertywithnull) | Obtains the metadata value of an OH_PictureMetadata instance. The output **value.data** is terminated with a string terminator.|
+| [Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getpropertywithnull) | Obtains the metadata value of an OH_PictureMetadata instance. The output of **value.data** ends with the string terminator **\0**.|
 | [Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)](#oh_picturemetadata_release) | Releases the pointer to an OH_PictureMetadata struct.|
 | [Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_PictureMetadata **newMetadata)](#oh_picturemetadata_clone) | Clones metadata.|
 
@@ -240,6 +240,7 @@ Enumerates the error codes.
 | IMAGE_UNSUPPORTED_CONVERSION = 7600203 | Unsupported conversion.|
 | IMAGE_INVALID_REGION = 7600204 | Invalid region.|
 | IMAGE_UNSUPPORTED_MEMORY_FORMAT = 7600205 |  The memory format is not supported.<br>**Since**: 13|
+| IMAGE_INVALID_PARAMETER = 7600206 |  Invalid parameter.<br>**Since**: 19|
 | IMAGE_UNSUPPORTED_DATA_FORMAT = 7600207 |  Unsupported data format.<br>**Since**: 22|
 | IMAGE_ALLOC_FAILED = 7600301 | Failed to allocate the memory.|
 | IMAGE_COPY_FAILED = 7600302 | Failed to copy the memory.|
@@ -294,7 +295,7 @@ Enumerates the types of memory allocation for a PixelMap.
 | -- | -- |
 | IMAGE_ALLOCATOR_MODE_AUTO = 0 | The system determines the type of memory to allocate when creating a PixelMap.|
 | IMAGE_ALLOCATOR_MODE_DMA = 1 | Allocates a DMA-type memory buffer.|
-| IMAGE_ALLOCATOR_MODE_DMA = 2 | Uses shared memory to create a PixelMap.|
+| IMAGE_ALLOCATOR_MODE_SHARED_MEMORY = 2 | Uses shared memory to create a PixelMap.|
 
 
 ## Function Description
@@ -316,7 +317,7 @@ Creates the pointer to an OH_PictureMetadata struct.
 | Name| Description|
 | -- | -- |
 | [Image_MetadataType](#image_metadatatype) metadataType | Metadata type.|
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadata | Double pointer to the OH_PictureMetadata struct created.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadata | Double pointer to OH_PictureMetadata.|
 
 **Returns**
 
@@ -332,7 +333,7 @@ Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Ima
 
 **Description**
 
-Obtains a property of metadata based on the key.
+Obtains a property of metadata based on the key. The **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.
 
 **Since**: 13
 
@@ -340,7 +341,7 @@ Obtains a property of metadata based on the key.
 
 | Name| Description|
 | -- | -- |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to an OH_PictureMetadata struct.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to OH_PictureMetadata.|
 | [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the key of the property.|
 | [Image_String](capi-image-nativemodule-image-string.md) *value | Pointer to the value of the property.|
 
@@ -366,7 +367,7 @@ Sets a property of metadata based on the key.
 
 | Name| Description|
 | -- | -- |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to an OH_PictureMetadata struct.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to OH_PictureMetadata.|
 | [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the key of the property.|
 | [Image_String](capi-image-nativemodule-image-string.md) *value | Pointer to the value of the property.|
 
@@ -384,7 +385,7 @@ Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metad
 
 **Description**
 
-Obtains the metadata value of an OH_PictureMetadata instance. The output **value.data** is terminated with a string terminator.
+Obtains the metadata value of an OH_PictureMetadata instance. The output of **value.data** ends with the string terminator **\0**.
 
 **Since**: 19
 
@@ -418,7 +419,7 @@ Releases the pointer to an OH_PictureMetadata struct.
 
 | Name| Description|
 | -- | -- |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to an OH_PictureMetadata struct.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to OH_PictureMetadata.|
 
 **Returns**
 
@@ -442,7 +443,7 @@ Clones metadata.
 
 | Name| Description|
 | -- | -- |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *oldMetadata | Pointer to an OH_PictureMetadata struct.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *oldMetadata | Pointer to OH_PictureMetadata.|
 | [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **newMetadata | Double pointer to the OH_PictureMetadata struct obtained.|
 
 **Returns**

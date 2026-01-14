@@ -241,7 +241,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    const char* mimetype = nullptr;
    uint8_t *codecConfig = nullptr;
    size_t bufferSize = 0;
-   int32_t trackType;
+   int32_t trackType = -1;
    for (uint32_t index = 0; index < (static_cast<uint32_t>(trackCount)); index++) {
       // Obtain the track information. You can call the API to obtain track-level attributes. For details, see Table 2 in Appendix.
       OH_AVFormat *trackFormat = OH_AVSource_GetTrackFormat(source, index);
@@ -249,6 +249,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
          printf("get track format failed");
          return;
       }
+      // Obtain the track type. Unsupported types will not modify the value of trackType.
+      // It is recommended that the initial value of trackType be set to an invalid value (for example, -1) to prevent misuse.
       if (!OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType)) {
          printf("get track type from track format failed");
          return;

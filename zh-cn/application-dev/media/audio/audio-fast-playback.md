@@ -19,7 +19,7 @@
 
 ### 简介
 
-为使用低时延模式，开发者需要参考[使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)进行音频开发。
+为使用低时延模式，开发者需要参考[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)进行音频开发。
 
 当前OHAudio支持两种模式：普通模式（AUDIOSTREAM_LATENCY_MODE_NORMAL）和低时延模式（AUDIOSTREAM_LATENCY_MODE_FAST）。
 
@@ -50,6 +50,10 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 - 开发者通过调用[OH_AudioRenderer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)来获取音频播放流是否正在低时延状态下工作。
 - 在部分特殊场景（如：存在更高优先级流、当前连接设备不支持等）下，开发者可以通过调用[OH_AudioRenderer_OnFastStatusChange()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_onfaststatuschange)来获取低时延状态改变事件。
 
+> **注意：**
+>
+> 低时延模式下，不支持调整播放速度。
+
 
 ### 使用低时延流的场景
 - 游戏、k歌、直播等对时延要求较高的场景，建议使用低时延模式。
@@ -61,7 +65,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ### 数据回调线程
 播放的音频数据需要通过回调接口写入。开发者要实现回调接口，使用[OH_AudioStreamBuilder_SetRendererWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererwritedatacallback)设置写入音频数据的回调函数，在设置音频回调函数时，回调函数[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)（从API version 12开始支持）用于写入音频数据。
 
-开发音频播放功能的示例代码请参考：[使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)。
+开发音频播放功能的示例代码请参考：[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)。
 
 设置数据回调函数示例：
 ```cpp
@@ -90,4 +94,8 @@ OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, writeDataCb, nullptr
     | OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer) | 停止播放。     |
     | OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer) | 释放缓存数据。 |
     | OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer) | 释放播放实例。 |
+
+    > **注意：**
+    >
+    > 音频流控制接口执行会有耗时（例如OH_AudioRenderer_Stop接口需要播完缓存，单次执行普遍超过50ms），应避免在主线程中直接调用，以免造成界面显示卡顿。
 

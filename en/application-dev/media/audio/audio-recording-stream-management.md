@@ -1,4 +1,4 @@
-# Audio Recording Stream Management
+# Querying and Listening for the Recording Status of Other Applications
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -10,7 +10,7 @@ An audio recording application must notice audio stream state changes and perfor
 
 ## Reading or Listening for Audio Stream State Changes in the Application
 
-Create an AudioCapturer by referring to [Using AudioCapturer for Audio Recording](using-audiocapturer-for-recording.md) or [audio.createAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiocapturer8). Then obtain the audio stream state changes in either of the following ways:
+Create an AudioCapturer by referring to [Using AudioCapturer for Audio Recording (ArkTs)](using-audiocapturer-for-recording.md) or [audio.createAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiocapturer8). Then obtain the audio stream state changes in either of the following ways.
 
 - Check the [state](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#properties) of the AudioCapturer.
     
@@ -93,9 +93,7 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
 4. (Optional) Use [getCurrentAudioCapturerInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiocapturerinfoarray9) to obtain the information about all audio recording streams. This API can be used to obtain the unique ID of the audio recording stream, audio capturer information, and audio capturer device information.
 
    > **NOTE**
-   > 
    > Before listening for state changes of all audio streams, the application must [declare the ohos.permission.USE_BLUETOOTH permission](../../security/AccessToken/declare-permissions.md), for the device name and device address (Bluetooth related attributes) to be displayed correctly.
-   > 
    > Starting from API version 20, you can call [isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20) before audio recording starts to determine whether the recording can be successfully started based on the audio source type in the input AudioCapturer information.
 
    ```ts

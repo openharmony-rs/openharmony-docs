@@ -51,7 +51,7 @@ In the following example, when a user clicks the **Open Page in New Window** but
           })
           .onActivateContent(() => {
             // To display the web page to the foreground, the application should perform a tab or window switch.
-            console.log("NewWebViewComp onActivateContent")
+            console.info("NewWebViewComp onActivateContent")
           })
       }
     }
@@ -106,7 +106,7 @@ In the following example, when a user clicks the **Open Page in New Window** but
   <script type="text/javascript">
       function OpenNewWindow()
       {
-          var txt ='Opened window'
+          var txt = 'Opened window';
           let openedWindow = window.open("about:blank", "", "location=no,status=no,scrollbars=no");
           openedWindow.document.write("<p>" + "<br><br>" + txt + "</p>");
           openedWindow.focus();

@@ -89,8 +89,7 @@ customKeyboard(value: CustomBuilder, options?: KeyboardOptions)
 
 ### bindSelectionMenu
 
-bindSelectionMenu(spanType: RichEditorSpanType, content: CustomBuilder, responseType: ResponseType | RichEditorResponseType,
-    options?: SelectionMenuOptions)
+bindSelectionMenu(spanType: RichEditorSpanType, content: CustomBuilder, responseType: ResponseType | RichEditorResponseType, options?: SelectionMenuOptions)
 
 设置自定义选择菜单。自定义菜单超长时，建议内部嵌套[Scroll](./ts-container-scroll.md)组件使用，避免键盘被遮挡。
 
@@ -953,7 +952,9 @@ Span类型信息。
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 否 | 是    | 文本背景样式。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 
 在RichEditorTextStyle中，fontWeight是设置字体粗细的输入参数。
+
 而在RichEditorTextStyleResult中，会将之前设置的字体粗细转换为数字后返回。
+
 转换关系如下：
 
 | RichEditorTextStyle中的fontWeight | RichEditorTextStyleResult中的fontWeight |
@@ -974,8 +975,7 @@ Span类型信息。
 | Bold   | 9 |
 | Bolder   | 11 |
 
-RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转换关系，
-与RichEditorTextStyle和RichEditorTextStyleResult中fontWeight的转换关系一致。
+RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转换关系，与RichEditorTextStyle和RichEditorTextStyleResult中fontWeight的转换关系一致。
 
 ## RichEditorSymbolSpanStyleResult<sup>11+</sup>
 
@@ -4851,7 +4851,7 @@ struct SoftKeyboardEnterTypeExample {
         .enterKeyType(EnterKeyType.Search)
         .onSubmit((enterKey: EnterKeyType, event: SubmitEvent) => {
           console.info("trigger richeditor onsubmit" + enterKey);
-          this.controller.addTextSpan(" type["+ enterKey +"] triggerred")
+          this.controller.addTextSpan(" type["+ enterKey +"] triggered")
           event.keepEditableState()
         })
     }.height("100%").justifyContent(FlexAlign.Center)

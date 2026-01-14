@@ -84,6 +84,8 @@ If an API does not involve context switching, it is irrelevant to the runtime co
 |napi_create_string_latin1 | No|
 |napi_create_string_utf8 | No|
 |napi_create_string_utf16 | No|
+|napi_create_external_string_ascii | No|
+|napi_create_external_string_utf16 | No|
 |napi_create_symbol | No|
 |napi_create_function | Yes|
 |napi_create_error | Yes|
@@ -197,6 +199,12 @@ If an API does not involve context switching, it is irrelevant to the runtime co
 |napi_delete_serialization_data | No|
 |napi_call_threadsafe_function_with_priority | No|
 |napi_wrap_enhance | Yes|
+|napi_open_critical_scope | No|
+|napi_close_critical_scope | No|
+|napi_get_buffer_string_utf16_in_critical_scope | No|
+|napi_create_strong_reference | No|
+|napi_delete_strong_reference | No|
+|napi_get_strong_reference_value | No|
 
 ## Node-APIs That Do Not Support Multi-Runtime Context
 | API| Return Value of Multi-Runtime Context Call|

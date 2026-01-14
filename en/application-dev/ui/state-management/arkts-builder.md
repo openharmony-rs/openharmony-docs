@@ -27,7 +27,7 @@ The main differences between the @Builder decorator and the @Component decorator
 
 ## How to Use
 
-The \@Builder decorator can be used in two ways: as a private custom builder function defined within a custom component (#Private Custom Builder Function) and as a global custom builder function defined globally (#Global Custom Builder Function).
+The \@Builder decorator can be used in two ways: as a [private custom builder function](#private-custom-builder-function) defined within a custom component and as a [global custom builder function](#global-custom-builder-function) defined globally.
 
 ### Private Custom Builder Function
 
@@ -284,7 +284,7 @@ Effect
 
 ![arkts-builder-usage-scenario1](figures/arkts-builder-usage-scenario1.gif)
 
-### Global Custom Builder Function
+### Using a Global Custom Builder Function
 
 Create a global @Builder function and call it within a column using **overBuilder()**. When passing parameters, use the object literal format. Regardless of whether the parameter type is simple or complex, any change in the value will trigger UI refresh.
 

@@ -29,7 +29,7 @@ The system cannot directly perceive the specific use case for the audio function
 
 Latency refers to the time it takes for audio data to be processed and transmitted within the system. In playback scenarios, it is the time from when the system receives the data until the data is output by the hardware. In recording scenarios, it is the time from when the hardware microphone captures the data until the application receives the captured data.
 
-To support low-latency audio scenarios, the system provides a dedicated low-latency audio channel. You need to explicitly set this through API parameters. For details, see [Audio Latency Management](audio-latency.md).
+To support low-latency audio scenarios, the system provides a dedicated low-latency audio channel. You need to explicitly set it through API parameters. For details, please refer to [Low-Latency Audio Playback (C/C++)](audio-fast-playback.md) and [Low-Latency Audio Recording (C/C++)](audio-fast-recording.md).
 
 Note that low latency typically uses smaller data buffers and requires higher performance for data processing. You need to optimize the performance of audio data production as much as possible to ensure that data is available for processing in a very short time when the system requests it, avoiding buffer underruns that cause noise. Additionally, to minimize latency, the system simplifies data processing at various phases, which may result in some differences in audio quality when compared with other channels. Therefore, you should decide whether to enable low-latency mode based on the actual functional scenarios of your applications. Scenarios such as game sound effects, karaoke in-ear monitoring, short notification sounds, and instrument simulation are more suitable for low-latency channels.
 
@@ -59,10 +59,60 @@ The following sections provide specific methods for obtaining performance logs a
 
 **Using DevEco Profiler**
 
-DevEco Profiler is a scenario-based tuning tool that helps you analyze performance issues more efficiently. It is integrated into DevEco Studio
-and can be used directly during application development. For details about how to use the tool, see [Performance Profiling](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-description).
+DevEco Profiler is a scenario-based tuning tool that helps you analyze performance issues more efficiently. Integrated into DevEco Studio, it can be used directly during application development.
+
+For details about how to use the tool, see [Performance Profiling](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-description).
 
 DevEco Profiler is primarily used for analyzing and optimizing the runtime process of applications. The guide provides detailed steps for analysis, which will not be repeated here.
+
+**Using HiSmartPerf**
+
+HiSmartPerf is a standalone performance tuning tool used to collect system, CPU, and GPU performance data during a test period. It presents the data through a visual interface, making it easier for you to analyze the performance of your applications and identify the causes of performance issues, which can then be used as a basis for in-depth performance optimization to make the application run more smoothly.
+
+For details about the HiSmartPerf, see [HiSmartPerf User Guide](https://developer.huawei.com/consumer/en/doc/AppGallery-connect-Guides/smartperf-tool-0000001873208929).
+
+This section describes how to use HiSmartPerf to analyze audio playback scenarios.
+
+1. Enter the CPU trace mode.
+
+   ![CPU trace](figures/his_trace.png)
+
+   Open the HiSmartPerf tool and navigate to the **CPU Trace** page for game performance analysis. Although titled for game performance analysis, the tool is not limited to game scenarios.
+
+2. Configure capture.
+
+   ![Configuration Item](figures/his_con.png)
+
+   The main configuration items include the data file name, buffer capacity, maximum file size, data items, and capture duration. To capture system audio-related data items, select **zaudio**. The capture duration can be adjusted according to the test scenario. Note that the test duration and the number of selected data items will affect the file size and often need to be adjusted simultaneously.
+
+3. Start capture.
+
+   ![Collection process](figures/his_collection.png)
+
+   After the capture is complete, a message is displayed, indicating that the file is sent back. If the file is large, wait patiently.
+
+4. View the trace information.
+
+   ![Trace result](figures/trace_res_all.png)
+
+   View the CPU performance analysis results during the capture period.
+
+5. Locate the audio data processing thread.
+
+   ![Audio data](figures/trace_res_audio.png)
+
+   For audio playback services, you can search for the location where the test application inputs playback data to the system using **OnWriteData**, and further analyze the performance of the data production source.
+
+   ![Resource Allocation](figures/trace_res_explain.png)
+
+    Runnable indicates that the thread is waiting for scheduling. If there are cases where data is not written in time due to prolonged runnable states, including the application's own data production threads, consider integrating the audio workgroup to enhance thread priority and ensure CPU resource allocation.
+
+    ![CPU Usage](figures/trace_cpu_usage.png)
+
+    In CPU Usage, you can view the CPU usage of each task.
+
+    After identifying the cause of the issue from the trace, you can optimize the performance by referring to [Common Performance Issues and Solutions](#common-performance-issues-and-solutions).
+
 
 ## Common Performance Issues and Solutions
 

@@ -34,9 +34,10 @@
 
 ## UI上下文不明确
 
-UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指认UI实例的问题。
+UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确识别UI实例的问题。
 
 当前的系统支持两种[应用模型](../application-models/application-models.md)——FA模型和Stage模型。在FA模型中，每个UI实例拥有独立的ArkTS引擎，全局接口可以通过ArkTS引擎跟踪到对应的UI实例上，因此不存在UI上下文不明确的问题。
+
 在Stage模型中，一个ArkTS引擎中可运行多个ArkUI实例。全局接口通过分析调用链中的上下文信息来确定当前UI上下文，异步接口和非UI接口可能导致UI上下文跟踪失败。
 
 为了保证全局接口的相关功能正常，开发者应当使用UIContext的接口替换全局接口。
@@ -256,7 +257,6 @@ export default class EntryAbility extends UIAbility {
 // ···
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
     // 在窗口销毁时需要移除失效的UIContext
     PixelUtil.removeUIContext();
@@ -606,7 +606,6 @@ export default class EntryAbility extends UIAbility {
 // ···
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
     // 在窗口销毁时需要移除失效的UIContext
     PixelUtil.removeUIContext();

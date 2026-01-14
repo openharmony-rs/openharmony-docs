@@ -17,7 +17,7 @@
 
 支持设备：
 
-从API version 20开始，支持在PC设备上使用OpenGL能力；从API version 22开始，新增支持在部分Tablet设备上使用OpenGL能力，具体Tablets设备是否支持可通过OH_Graphics_QueryGL接口判断。
+从API version 20开始，支持在PC设备上使用OpenGL能力；从API version 22开始，新增支持在部分Tablet设备上使用OpenGL能力，具体Tablet设备是否支持可通过OH_Graphics_QueryGL接口判断。
 
 ## 查询当前设备是否支持OpenGL
 

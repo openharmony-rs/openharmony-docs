@@ -16,7 +16,7 @@ The **Search** component provides an area for users to enter search queries.
 
 ## Child Components
 
-Not supported
+None
 
 ## APIs
 
@@ -312,8 +312,6 @@ type(value: SearchType)
 
 Sets the text box type.
 
-Different **SearchType** values trigger corresponding keyboard types and enforce input restrictions.
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -464,6 +462,7 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 For details about the supported font features, see [Font Feature List](ts-basic-components-text.md#fontfeature12).
 Font features are advanced typographic features, such as ligatures and monospace, for OpenType fonts. They are typically used in custom fonts and require the support of the font itself.
 For more information about the font features, see [Low-level font feature settings control: the font-feature-settings property](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop) and [The Complete CSS Demo for OpenType Features](https://sparanoid.com/lab/opentype-features/).
+
 
 ### selectedBackgroundColor<sup>12+</sup>
 
@@ -656,6 +655,16 @@ enableHapticFeedback(isEnabled: boolean)
 
 Specifies whether to enable haptic feedback.
 
+To enable haptic feedback, you must declare the ohos.permission.VIBRATE permission under **requestPermissions** in the **module.json5** file of the project.
+
+```json
+"requestPermissions": [
+ {
+    "name": "ohos.permission.VIBRATE",
+ }
+]
+```
+
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -665,17 +674,6 @@ Specifies whether to enable haptic feedback.
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
 | isEnabled | boolean | Yes  | Whether to enable haptic feedback.<br>The value **true** means to enable haptic feedback, and **false** means the opposite.<br>Default value: **true**|
-
->  **NOTE**
->
->  To enable haptic feedback, you must declare the ohos.permission.VIBRATE permission under **requestPermissions** in the **module.json5** file of the project.
-> ```json
-> "requestPermissions": [
->  {
->     "name": "ohos.permission.VIBRATE",
->  }
-> ]
-> ```
 
 ### autoCapitalizationMode<sup>20+</sup>
 
@@ -697,7 +695,7 @@ Sets the auto-capitalization text mode. This API provides the capability, but ac
 
 keyboardAppearance(appearance: Optional\<KeyboardAppearance>)
 
-Sets the keyboard appearance for the text box. This setting takes effect only after input method adaptation. For details, see [Immersive Mode of the Input Method Application](../../../inputmethod/inputmethod-immersive-mode-guide.md).
+Sets the keyboard appearance for the text box. If the keyboard style is set to immersive mode, it will blend with the background in a semi-transparent manner. Only the API capabilities are provided; specific implementation is subject to the input method application.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -808,6 +806,8 @@ Sets whether to enable automatic spacing between Chinese and Western characters.
 | INPUT     | The Cancel button is displayed when there is text input.|
 
 ## SearchType<sup>11+</sup>
+
+Sets the search box type.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1089,6 +1089,7 @@ Before the search box is bound to an input method, you can use the [setKeyboardA
 
 Call the [setExtraConfig](ts-text-common.md#setextraconfig22) method of [IMEClient](ts-text-common.md#imeclient20) to set input method extension information. After the input method is bound, it receives this extension information, which can be used to implement custom functionality.
 
+**IMEClient** is only valid during the execution of **onWillAttachIME** and cannot be called asynchronously.
 > **NOTE**
 >
 > This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
@@ -1292,47 +1293,74 @@ struct SearchExample {
 
 ### Example 3: Implementing a Custom Keyboard
 
-This example uses the [customKeyboard](#customkeyboard10) attribute to implement the custom keyboard function.
+This example uses the [customKeyboard](#customkeyboard10) attribute (available from API version 10) to set the input parameter types in the value to [CustomBuilder](ts-types.md#custombuilder8) and [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1), thereby implementing the custom keyboard function. 
+
+Since API version 22, the [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) type is added for the [customKeyboard](#customkeyboard10) attribute.
 
 ```ts
 // xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+class BuilderParams {
+  inputValue: string;
+  controller: SearchController;
+
+  constructor(inputValue: string, controller: SearchController) {
+    this.inputValue = inputValue;
+    this.controller = controller;
+  }
+}
+@Builder
+function CustomKeyboardBuilder(builderParams: BuilderParams) {
+  Column() {
+    Row() {
+      Button('x').onClick(() => {
+        // Disable the custom keyboard.
+        builderParams.controller.stopEditing();
+      }).margin(10)
+    }
+
+    Grid() {
+      ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+        GridItem() {
+          Button(item + "")
+            .width(110).onClick(() => {
+            builderParams.inputValue += item;
+          })
+        }
+      })
+    }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+  }.backgroundColor(Color.Gray)
+}
 @Entry
 @Component
 struct SearchExample {
   controller: SearchController = new SearchController();
   @State inputValue: string = "";
+  @State componentContent ?: ComponentContent<BuilderParams> = undefined;
+  @State builderParam: BuilderParams = new BuilderParams(this.inputValue, this.controller);
+  @State supportAvoidance: boolean = true;
 
-  // Create a custom keyboard component.
-  @Builder CustomKeyboardBuilder() {
-    Column() {
-      Button('x').onClick(() => {
-        // Disable the custom keyboard.
-        this.controller.stopEditing();
-      })
-      Grid() {
-        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
-          GridItem() {
-            Button(item + "")
-              .width(110).onClick(() => {
-              this.inputValue += item;
-            })
-          }
-        })
-      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
-    }.backgroundColor(Color.Gray)
+  aboutToAppear(): void {
+    // Create ComponentContent.
+    this.componentContent = new ComponentContent(this.getUIContext(), wrapBuilder(CustomKeyboardBuilder), this.builderParam);
   }
-
-  build() {
+  build(){
     Column() {
-      Search({ controller: this.controller, value: this.inputValue})
-        // Bind the custom keyboard.
-        .customKeyboard(this.CustomKeyboardBuilder()).margin(10).border({ width: 1 })
+      Text('Builder').margin(10).border({ width: 1 })
+      Search({ controller: this.builderParam.controller, value: this.builderParam.inputValue })
+        .customKeyboard(this.componentContent, { supportAvoidance: this.supportAvoidance })
+        .margin(10).border({ width: 1 }).height('48vp')
+
+      Text('ComponentContent').margin(10).border({ width: 1 })
+      Search({ controller: this.builderParam.controller, value: this.builderParam.inputValue })
+        .customKeyboard(CustomKeyboardBuilder(this.builderParam), { supportAvoidance: this.supportAvoidance })
+        .margin(10).border({ width: 1 }).height('48vp')
     }
   }
 }
 ```
 
-![customKeyboard](figures/searchCustomKeyboard.png)
+![customKeyboard](figures/searchCustomKeyboard-1.gif)
 
 ### Example 4: Setting the Enter Key Type
 
@@ -2053,7 +2081,7 @@ In API version 18 and later versions, you can set the minimum and maximum font s
 
 ```json
 // Enable application font scaling to follow system settings.
-// Create a new directory named profile in the following path: AppScope/resources/base.
+// Create a new directory named profile in AppScope/resources/base.
 // Inside the newly created profile directory, create a file named configuration.json.
 // Add the following code to the configuration.json file:
 {
@@ -2284,5 +2312,4 @@ struct SearchExample {
   }
 }
 ```
-
 <!--no_check-->

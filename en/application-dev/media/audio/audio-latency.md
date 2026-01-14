@@ -16,7 +16,7 @@ You can specify which mode the audio stream should use by calling [OH_AudioStrea
 
 The low-latency mode optimizes the data read/write architecture to achieve lower latency for audio playback and recording.
 
-To use the low-latency mode, you must use OHAudio for audio development. For details, see [Using OHAudio for Audio Playback](using-ohaudio-for-playback.md) and [Using OHAudio for Audio Recording](using-ohaudio-for-recording.md). The following is an example of setting the low-latency mode:
+To use the low-latency mode, you need to use OHAudio for audio development. For details, please refer to [(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md) and [(Recommended) Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md). The following is an example of setting the low-latency mode:
 
 ```cpp
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;

@@ -65,12 +65,10 @@ Defines the parameters for creating a child window or system window.
 
 **System API**: This is a system API.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 | Name| Type| Read-Only| Optional| Description                      |
 | ---------- | --------- | ---- | ---- |-------------- |
-| zIndex<sup>20+</sup>       | number | No| Yes| Z-level of the system window. This parameter is valid only when [WindowType](#windowtype7) is set to **TYPE_DYNAMIC**.|
-| defaultDensityEnabled<sup>20+</sup> | boolean| No| Yes|Whether the window should use the default density of the system. If the default density is used, the window does not re-layout when the system display size changes.<br>If this parameter is set to **true** for a system window, the window uses the default density and is not affected by [setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12) or [setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15) settings for the main window or [setDefaultDensityEnabled()](#setdefaultdensityenabled20) settings for the current window.<br>If this parameter is set to **false**, the window does not use the default density and is affected by those settings.<br>The default value is **false**.|
+| zIndex<sup>20+</sup>       | number | No| Yes| Z-level of the system window. This parameter is valid only when [WindowType](#windowtype7) is set to **TYPE_DYNAMIC**.<br>**System capability**: SystemCapability.Window.SessionManager|
+| defaultDensityEnabled<sup>20+</sup> | boolean| No| Yes|Whether the window should use the default density of the system. If the default density is used, the window does not re-layout when the system display size changes.<br>If this parameter is set to **true** for a system window, the window uses the default density and is not affected by [setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12) or [setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15) settings for the main window or [setDefaultDensityEnabled()](#setdefaultdensityenabled20) settings for the current window.<br>If this parameter is set to **false**, the window does not use the default density and is affected by those settings.<br>The default value is **false**.<br>**System capability**: SystemCapability.Window.SessionManager|
 
 ## WindowMode<sup>7+</sup>
 
@@ -766,9 +764,7 @@ try {
 ## window.setGestureNavigationEnabled<sup>10+</sup>
 setGestureNavigationEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Enables or disables gesture navigation. This API uses an asynchronous callback to return the result.
-
-For security purposes, the system does not interfere with the disabling and enabling of gesture navigation. If an application exits abnormally after it disables gesture navigation and wants to restore gesture navigation, it must implement automatic launch and call this API again to enable gesture navigation.
+Enables or disables gesture navigation. This API uses an asynchronous callback to return the result. For security purposes, the system does not interfere with the disabling and enabling of gesture navigation. If an application exits abnormally after it disables gesture navigation and wants to restore gesture navigation, it must implement automatic launch and call this API again to enable gesture navigation.
 
 **System API**: This is a system API.
 
@@ -814,9 +810,7 @@ try {
 ## window.setGestureNavigationEnabled<sup>10+</sup>
 setGestureNavigationEnabled(enable: boolean): Promise&lt;void&gt;
 
-Enables or disables gesture navigation. This API uses a promise to return the result.
-
-For security purposes, the system does not interfere with the disabling and enabling of gesture navigation. If an application exits abnormally after it disables gesture navigation and wants to restore gesture navigation, it must implement automatic launch and call this API again to enable gesture navigation.
+Enables or disables gesture navigation. This API uses a promise to return the result. For security purposes, the system does not interfere with the disabling and enabling of gesture navigation. If an application exits abnormally after it disables gesture navigation and wants to restore gesture navigation, it must implement automatic launch and call this API again to enable gesture navigation.
 
 **System API**: This is a system API.
 
@@ -1911,7 +1905,7 @@ If you want the window to always be ignored during screen capture, recording, or
 
 | Name       | Type   | Mandatory| Description                |
 | ------------- | ------- | ---- | -------------------- |
-| isSkip | boolean | Yes  | Whether to ignore the window. The default value is **false**. **true** to ignore, **false** otherwise.<br>|
+| isSkip | boolean | Yes  | Whether to ignore the window. The default value is **false**.<br>**true** to ignore, **false** otherwise.<br>|
 
 **Error codes**
 
@@ -2305,9 +2299,7 @@ try {
 setBackdropBlur(radius: number): void
 
 Blurs the background of this window.
-
 The window background refers to the lower-layer area covered by the window, which is the same as the window size.
-
 To make the blur effect visible, you must set the window background transparent by calling [setWindowBackgroundColor](arkts-apis-window-Window.md#setwindowbackgroundcolor9).
 
 **System API**: This is a system API.
@@ -3294,7 +3286,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 
-
 **Example**
 
 ```ts
@@ -4251,7 +4242,7 @@ Provides the context for the transition animation.
 
 | Name                 | Type         | Read-Only| Optional| Description            |
 | --------------------- | ----------------- | ---- | ---- | ---------------- |
-| toWindow<sup>9+</sup> | [Window](arkts-apis-window-Window.md) | No  | No  | Target window to display the animation.|
+| toWindow | [Window](arkts-apis-window-Window.md) | No  | No  | Target window to display the animation.|
 
 ### completeTransition<sup>9+</sup>
 

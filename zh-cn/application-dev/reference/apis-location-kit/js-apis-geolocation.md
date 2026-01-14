@@ -57,7 +57,7 @@ on(type: 'locationChange', request: LocationRequest, callback: Callback&lt;Locat
 开启位置变化订阅，并发起定位请求。使用callback异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.on('locationChange')](js-apis-geoLocationManager.md#geolocationmanageronlocationchange)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.on('locationChange')](js-apis-geoLocationManager.md#geolocationmanageronlocationchange)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -92,7 +92,7 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 关闭位置变化订阅，并删除对应的定位请求。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.off('locationChange')](js-apis-geoLocationManager.md#geolocationmanagerofflocationchange)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.off('locationChange')](js-apis-geoLocationManager.md#geolocationmanagerofflocationchange)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -126,7 +126,7 @@ on(type: 'locationServiceState', callback: Callback&lt;boolean&gt;): void
 订阅位置服务状态变化。使用callback异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.on('locationEnabledChange')](js-apis-geoLocationManager.md#geolocationmanageronlocationenabledchange)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.on('locationEnabledChange')](js-apis-geoLocationManager.md#geolocationmanageronlocationenabledchange)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -158,7 +158,7 @@ off(type: 'locationServiceState', callback?: Callback&lt;boolean&gt;): void
 取消订阅位置服务状态变化。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.off('locationEnabledChange')](js-apis-geoLocationManager.md#geolocationmanagerofflocationenabledchange)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.off('locationEnabledChange')](js-apis-geoLocationManager.md#geolocationmanagerofflocationenabledchange)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -491,7 +491,7 @@ getCurrentLocation(request: CurrentLocationRequest, callback: AsyncCallback&lt;L
 获取当前位置，使用callback异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -530,7 +530,7 @@ getCurrentLocation(callback: AsyncCallback&lt;Location&gt;): void
 获取当前位置，使用callback异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -566,7 +566,7 @@ getCurrentLocation(request?: CurrentLocationRequest): Promise&lt;Location&gt;
 获取当前位置，使用Promise异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation-2)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation-2)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -603,7 +603,7 @@ getLastLocation(callback: AsyncCallback&lt;Location&gt;): void
 获取上一次位置，使用callback异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.getLastLocation](js-apis-geoLocationManager.md#geolocationmanagergetlastlocation)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.getLastLocation](js-apis-geoLocationManager.md#geolocationmanagergetlastlocation)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -638,7 +638,7 @@ getLastLocation(): Promise&lt;Location&gt;
 获取上一次位置，使用Promise异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.getLastLocation](js-apis-geoLocationManager.md#geolocationmanagergetlastlocation)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.getLastLocation](js-apis-geoLocationManager.md#geolocationmanagergetlastlocation)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -668,7 +668,7 @@ isLocationEnabled(callback: AsyncCallback&lt;boolean&gt;): void
 判断位置服务是否已经打开，使用callback异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.isLocationEnabled](js-apis-geoLocationManager.md#geolocationmanagerislocationenabled)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.isLocationEnabled](js-apis-geoLocationManager.md#geolocationmanagerislocationenabled)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -702,7 +702,7 @@ isLocationEnabled(): Promise&lt;boolean&gt;
 判断位置服务是否已经开启，使用Promise异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.isLocationEnabled](js-apis-geoLocationManager.md#geolocationmanagerislocationenabled)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.isLocationEnabled](js-apis-geoLocationManager.md#geolocationmanagerislocationenabled)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -731,7 +731,7 @@ requestEnableLocation(callback: AsyncCallback&lt;boolean&gt;): void
 请求打开位置服务，使用callback异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议由应用本身弹框请求用户跳转到settings开启位置开关，并且在弹框上写清楚会在什么场景下使用位置信息。
+> 从API version 7开始支持，从API version 9开始废弃，建议由应用本身弹框请求用户跳转到settings开启位置开关，并且在弹框上写清楚会在什么场景下使用位置信息。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -765,7 +765,7 @@ requestEnableLocation(): Promise&lt;boolean&gt;
 请求打开位置服务，使用Promise异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议由应用本身弹框请求用户跳转到settings开启位置开关，并且在弹框上写清楚会在什么场景下使用位置信息。
+> 从API version 7开始支持，从API version 9开始废弃，建议由应用本身弹框请求用户跳转到settings开启位置开关，并且在弹框上写清楚会在什么场景下使用位置信息。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -794,7 +794,7 @@ isGeoServiceAvailable(callback: AsyncCallback&lt;boolean&gt;): void
 判断（逆）地理编码服务状态，使用callback异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.isGeocoderAvailable](js-apis-geoLocationManager.md#geolocationmanagerisgeocoderavailable)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.isGeocoderAvailable](js-apis-geoLocationManager.md#geolocationmanagerisgeocoderavailable)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -828,7 +828,7 @@ isGeoServiceAvailable(): Promise&lt;boolean&gt;
 判断（逆）地理编码服务状态，使用Promise异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.isGeocoderAvailable](js-apis-geoLocationManager.md#geolocationmanagerisgeocoderavailable)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.isGeocoderAvailable](js-apis-geoLocationManager.md#geolocationmanagerisgeocoderavailable)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -857,7 +857,7 @@ getAddressesFromLocation(request: ReverseGeoCodeRequest, callback: AsyncCallback
 调用逆地理编码服务，将坐标转换为地理描述，使用callback异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.getAddressesFromLocation](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocation)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.getAddressesFromLocation](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocation)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -893,7 +893,7 @@ getAddressesFromLocation(request: ReverseGeoCodeRequest): Promise&lt;Array&lt;Ge
 调用逆地理编码服务，将坐标转换为地理描述，使用Promise异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.getAddressesFromLocation](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocation-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.getAddressesFromLocation](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocation-1)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -929,7 +929,7 @@ getAddressesFromLocationName(request: GeoCodeRequest, callback: AsyncCallback&lt
 调用地理编码服务，将地理描述转换为具体坐标，使用callback异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.getAddressesFromLocationName](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocationname)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.getAddressesFromLocationName](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocationname)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -965,7 +965,7 @@ getAddressesFromLocationName(request: GeoCodeRequest): Promise&lt;Array&lt;GeoAd
 调用地理编码服务，将地理描述转换为具体坐标，使用Promise异步回调。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.getAddressesFromLocationName](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocationname-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[geoLocationManager.getAddressesFromLocationName](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocationname-1)替代。
 
 **需要权限**：ohos.permission.LOCATION
 

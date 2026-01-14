@@ -1,4 +1,4 @@
-# Introduction to ArkWeb
+# About This Kit
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->

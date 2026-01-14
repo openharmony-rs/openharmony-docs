@@ -83,3 +83,5 @@ Obtains the location of a file.
 | Type| Description|
 | -- | -- |
 | [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).|
+
+

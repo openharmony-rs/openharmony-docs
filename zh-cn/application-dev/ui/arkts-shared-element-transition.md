@@ -44,7 +44,7 @@ class PostData {
   // 请将$r('app.media.flower')替换为实际资源文件
   avatar: Resource = $r('app.media.flower');
   name: string = '';
-  message: string = '';
+  message: ResourceStr = '';
   images: Resource[] = [];
 }
 
@@ -60,8 +60,8 @@ struct Index {
       // 请将$r('app.media.flower')替换为实际资源文件
       avatar: $r('app.media.flower'),
       name: 'Alice',
-      // 请在resources\base\element\string.json文件中配置name为'shareTransition_text1'，value为非空字符串的资源
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text1'),
+      // 请将$r('app.string.shareTransition_text1')替换为实际资源文件，在本示例中该资源文件的value值为"天气晴朗"
+      message: $r('app.string.shareTransition_text1'),
       // 请将$r('app.media.spring')替换为实际资源文件
       // 请将$r('app.media.tall_tree')替换为实际资源文件
       images: [$r('app.media.spring'), $r('app.media.tall_tree')]
@@ -70,8 +70,8 @@ struct Index {
       // 请将$r('app.media.sunset_sky')替换为实际资源文件
       avatar: $r('app.media.sunset_sky'),
       name: 'Bob',
-      // 请在resources\base\element\string.json文件中配置name为'shareTransition_text2'，value为非空字符串的资源
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text2'),
+      // 请将$r('app.string.shareTransition_text2')替换为实际资源文件，在本示例中该资源文件的value值为"你好世界"
+      message: $r('app.string.shareTransition_text2'),
       // 请将$r('app.media.island')替换为实际资源文件
       images: [$r('app.media.island')]
     },
@@ -79,8 +79,8 @@ struct Index {
       // 请将$r('app.media.tall_tree')替换为实际资源文件
       avatar: $r('app.media.tall_tree'),
       name: 'Carl',
-      // 请在resources\base\element\string.json文件中配置name为'shareTransition_text3'，value为非空字符串的资源
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text3'),
+      // 请将$r('app.string.shareTransition_text3')替换为实际资源文件，在本示例中该资源文件的value值为"万物生长"
+      message: $r('app.string.shareTransition_text3'),
       // 请将$r('app.media.flower')替换为实际资源文件
       // 请将$r('app.media.sunset_sky')替换为实际资源文件
       // 请将$r('app.media.spring')替换为实际资源文件
@@ -2018,7 +2018,7 @@ class PostData {
   // 请将$r('app.media.flower')替换为实际资源文件
   avatar: Resource = $r('app.media.flower');
   name: string = '';
-  message: string = '';
+  message: ResourceStr = '';
   images: Resource[] = [];
 }
 
@@ -2036,8 +2036,8 @@ struct Index {
       // 请将$r('app.media.flower')替换为实际资源文件
       avatar: $r('app.media.flower'),
       name: 'Alice',
-      // 请在resources\base\element\string.json文件中配置name为'shareTransition_text1'，value为非空字符串的资源
-      message:this.context.resourceManager.getStringByNameSync('shareTransition_text1'),
+      // 请将$r('app.string.shareTransition_text1')替换为实际资源文件，在本示例中该资源文件的value值为"天气晴朗"
+      message: $r('app.string.shareTransition_text1'),
       // 请将$r('app.media.spring')替换为实际资源文件
       // 请将$r('app.media.tall_tree')替换为实际资源文件
       images: [$r('app.media.spring'), $r('app.media.tall_tree')]
@@ -2046,8 +2046,8 @@ struct Index {
       // 请将$r('app.media.sunset_sky')替换为实际资源文件
       avatar: $r('app.media.sunset_sky'),
       name: 'Bob',
-      // 请在resources\base\element\string.json文件中配置name为'shareTransition_text2'，value为非空字符串的资源
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text2'),
+      // 请将$r('app.string.shareTransition_text2')替换为实际资源文件，在本示例中该资源文件的value值为"你好世界"
+      message: $r('app.string.shareTransition_text2'),
       // 请将$r('app.media.island')替换为实际资源文件
       images: [$r('app.media.island')]
     },
@@ -2055,8 +2055,8 @@ struct Index {
       // 请将$r('app.media.tall_tree')替换为实际资源文件
       avatar: $r('app.media.tall_tree'),
       name: 'Carl',
-      // 请在resources\base\element\string.json文件中配置name为'shareTransition_text3'，value为非空字符串的资源
-      message:this.context.resourceManager.getStringByNameSync('shareTransition_text3'),
+      // 请将$r('app.string.shareTransition_text3')替换为实际资源文件，在本示例中该资源文件的value值为"万物生长"
+      message: $r('app.string.shareTransition_text3'),
       // 请将$r('app.media.flower')替换为实际资源文件
       // 请将$r('app.media.sunset_sky')替换为实际资源文件
       // 请将$r('app.media.spring')替换为实际资源文件

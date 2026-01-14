@@ -128,6 +128,7 @@
      ```
 
 4. 设置解码参数DecodingOptions，解码获取pixelMap图片对象。
+
    配置解码选项参数进行解码：
 
    <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   

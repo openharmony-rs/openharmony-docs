@@ -11,7 +11,7 @@ Before using the camera application for preview, photo capture, video recording,
 You can implement the following functions in the session:
 
 - Configure the camera input and output streams. This is mandatory for photo capture.
-  
+
   Configuring an input stream is to add a device input, which means that the user selects a camera for photo capture. Configuring an output stream is to select a data output mode. For example, to implement photo capture, you must configure both the preview stream and photo stream as the output stream. The data of the preview stream is displayed on the **XComponent**, and that of the photo stream is saved to the Gallery application through the **ImageReceiver** API.
 
 - Perform more operations on the camera device. For example, add the flash and adjust the focal length. For details about the supported configurations and APIs, see [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md).
@@ -59,12 +59,12 @@ After the session configuration is complete, the application must commit the con
 
 4. Configure the session. You can call [addInput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addinput11) and [addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11) in **VideoSession** to add the input and output streams to the session, respectively. The code snippet below uses adding the preview stream **previewOutput** and photo stream **photoOutput** as an example to implement the photo capture and preview mode.
 
-     After the configuration, call [commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11) and [start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11) in **VideoSession** in sequence to commit the configuration and start the session.
+   After the configuration, call [commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11) and [start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11) in **VideoSession** in sequence to commit the configuration and start the session.
 
-     > **NOTE**
-     >
-     > Before calling [addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11) to add a camera output stream, you can call [canAddOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#canaddoutput11) to check whether the camera output stream can be added to the session.
-     > For details about how to create **cameraInput**, **previewOutput**, and **photoOutput**, see [Device Input Management](camera-device-input.md), [Camera Preview](camera-preview.md), and [Photo Capture](camera-shooting.md), respectively.
+   > **NOTE**
+   >
+   > Before calling [addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11) to add a camera output stream, you can call [canAddOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#canaddoutput11) to check whether the camera output stream can be added to the session.
+   > For details about how to create **cameraInput**, **previewOutput**, and **photoOutput**, see [Device Input Management](camera-device-input.md), [Camera Preview](camera-preview.md), and [Photo Capture](camera-shooting.md), respectively.
      
    ```ts
    async function startSession(videoSession: camera.VideoSession, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {

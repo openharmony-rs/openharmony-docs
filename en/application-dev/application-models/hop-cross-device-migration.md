@@ -18,17 +18,11 @@ Cross-device migration supports the following features:
 
 - Checking application compatibility
 
-- Dynamically setting the migration state (**ACTIVE** by default)
+- Dynamically setting the migration state (**ACTIVE** by default) For example, for an editing application, only the text editing page needs to be migrated to the target device. In this case, you can call [setMissionContinueState](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setmissioncontinuestate10) for precise control.
 
-  For example, for an editing application, only the text editing page needs to be migrated to the target device. In this case, you can call [setMissionContinueState](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setmissioncontinuestate10) for precise control.
+- Determining whether to restore the page stack (restored by default) If an application wants to customize the page to be displayed after being migrated to the target device, you can use [SUPPORT_CONTINUE_PAGE_STACK_KEY](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params) for precise control.
 
-- Determining whether to restore the page stack (restored by default)
-
-  If an application wants to customize the page to be displayed after being migrated to the target device, you can use [SUPPORT_CONTINUE_PAGE_STACK_KEY](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params) for precise control.
-
-- Determining whether to exit the application on the source device after a successful migration (application exit by default)
-
-  You can use [SUPPORT_CONTINUE_SOURCE_EXIT_KEY](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params) for precise control.
+- Determining whether to exit the application on the source device after a successful migration (application exit by default) You can use [SUPPORT_CONTINUE_SOURCE_EXIT_KEY](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params) for precise control.
 
   > **NOTE**
   >
@@ -140,10 +134,8 @@ For better user experience, the data to be transmitted via the **wantParam** par
     ![hop-cross-device-migration](figures/hop-cross-device-migration5.png)
 
     > **NOTE**
-    >
-    > When an application is launched as a result of a migration, the [onWindowStageRestore()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagerestore) lifecycle callback function, rather than [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate), is triggered following **onCreate()** or **onNewWant()**. This sequence occurs for both cold and hot starts.
-    >
-    > If you have performed some necessary initialization operations during application launch in **onWindowStageCreate()**, you must perform the same initialization operations in **onWindowStageRestore()** after the migration to avoid application exceptions.
+    > 1. When an application is launched as a result of a migration, the [onWindowStageRestore()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagerestore) lifecycle callback function, rather than [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate), is triggered following **onCreate()** or **onNewWant()**. This sequence occurs for both cold and hot starts.
+    > 2. If you have performed some necessary initialization operations during application launch in **onWindowStageCreate()**, you must perform the same initialization operations in **onWindowStageRestore()** after the migration to avoid application exceptions.
 
     - The **launchReason** parameter in the **onCreate()** or **onNewWant()** callback specifies whether the launch is triggered as a result of a migration (whether the value is **CONTINUATION**).
     - You can obtain the saved data from the [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) parameter.
@@ -193,7 +185,9 @@ For better user experience, the data to be transmitted via the **wantParam** par
 
 ### Dynamically Setting the Migration State
 
-Starting from API version 10, you can dynamically set the migration state. Specifically, you can enable or disable migration as required by calling [setMissionContinueState()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setmissioncontinuestate10). By default, **ACTIVE** is set for an application, indicating that migration is enabled.
+Starting from API version 10, you can dynamically set the migration state. Specifically, you can enable or disable migration as required
+
+by calling [setMissionContinueState()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setmissioncontinuestate10). By default, **ACTIVE** is set for an application, indicating that migration is enabled.
 
 **Time for Setting the Migration State**
 
@@ -296,9 +290,8 @@ To implement special scenarios, for example, where migration is required only fo
 
 > **NOTE**
 >
-> Currently, only the page stack implemented based on the router module can be automatically restored. The page stack implemented using the **Navigation** component cannot be automatically restored.
->
-> If an application uses the **Navigation** component for routing, you can disable default page stack migration by setting [SUPPORT_CONTINUE_PAGE_STACK_KEY](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params) to **false**. In addition, save the page (or page stack) to be migrated in **want**, and manually load the specified page on the target device.
+> 1. Currently, only the page stack implemented based on the router module can be automatically restored. The page stack implemented using the **Navigation** component cannot be automatically restored.
+> 2. If an application uses the **Navigation** component for routing, you can disable default page stack migration by setting [SUPPORT_CONTINUE_PAGE_STACK_KEY](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params) to **false**. In addition, save the page (or page stack) to be migrated in **want**, and manually load the specified page on the target device.
 
 By default, the page stack is restored during the migration of a [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md). Before [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) or [onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant) finishes the execution, call [restoreWindowStage()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#restorewindowstage) to pass in the current window context, which will be used for page stack loading and restoration. The **restoreWindowStage()** API must be executed in a synchronous API. If it is executed during an asynchronous callback, there is a possibility that the page fails to be loaded during application startup.
 
@@ -378,6 +371,7 @@ export default class MigrationAbility extends UIAbility {
 Generally, the same ability is involved during a cross-device migration. However, different ability names may be configured for the same service on different device types, resulting in different abilities. To support migration in this scenario, you can configure the **continueType** flag under **abilities** in the [module.json5](../quick-start/module-configuration-file.md) file for association.
 
 The values of the **continueType** tag of the two abilities must be the same. The following is an example:
+
    > **NOTE**
    >
    > The value of **continueType** must be unique in an application. The value is a string of a maximum of 127 bytes consisting of letters, digits, and underscores (_).
@@ -425,11 +419,10 @@ An application may use different bundle names on different devices. To support m
    > The value of **continueType** must be unique in an application. The value is a string of a maximum of 127 bytes consisting of letters, digits, and underscores (_).
    >
    > The **continueType** tag is a string array. If multiple fields are configured, only the first field takes effect.
-   
 
 An example is as follows:
 
-An application with different bundle names is migrated between device A and device B. The bundle name of the application on device A is com.demo.example1, and that on device B is com.demo.example2.
+   An application with different bundle names is migrated between device A and device B. The bundle name of the application on device A is com.demo.example1, and that on device B is com.demo.example2.
 
 ```JSON
 // In the configuration file for device A, set continueBundleName to the bundle name of the application on device B.
@@ -603,8 +596,9 @@ Two data migration modes are provided. You can select either of them as required
   >
   > Through the configuration of **restoreId**, certain ArkUI components can be restored to a given state on the target device after migration. For details, see [restoreId](../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-restoreId.md).
   >
-  > If distributed data objects need to be migrated, you must perform the following operations (required only in API version 11 and earlier versions):
+  > If distributed data objects need to be migrated, you must
   >
+  > perform the following operations (required only in API version 11 and earlier versions):
   > 1. Declare the ohos.permission.DISTRIBUTED_DATASYNC permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
   >
   > 2. Display a dialog box to ask for authorization from the user when the application is started for the first time. For details, see [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
@@ -667,7 +661,7 @@ If the size of the data to migrate is greater than 100 KB or a file needs to be 
   >
   > Starting from API version 12, it is difficult to obtain the file synchronization completion time when [cross-device file access](../file-management/file-access-across-devices.md) is used to migrate a file. To ensure a higher success rate, you are advised to use distributed data objects to carry assets. File migration implemented through cross-device file access still takes effect.
 
-#### Basic Data Migration
+**Basic Data Migration**
 
 To use a distributed data object, you must save data in the [onContinue()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncontinue) API on the source device and restore data in the [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) or [onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant) API of the target device.
 
@@ -680,11 +674,9 @@ On the source device, save the data to migrate to a distributed [data object](..
 
 > **NOTE**
 >
-> Distributed data objects must be activated before being made persistent. Therefore, the **save()** API must be called after **setSessionId()**.
->
-> For applications that need to exit from the source device after migration, use **await** to wait until the **save()** API finishes execution. This prevents the application from exiting before data is saved. Starting from API version 12, an asynchronous **onContinue()** API is provided for this scenario.
->
-> Currently, the **sessionId** field in **wantParams** is occupied by the system in the migration process. You are advised to define another key in **wantParams** to store the ID to avoid data exceptions.
+> 1. Distributed data objects must be activated before being made persistent. Therefore, the **save()** API must be called after **setSessionId()**.
+> 2. For applications that need to exit from the source device after migration, use **await** to wait until the **save()** API finishes execution. This prevents the application from exiting before data is saved. Starting from API version 12, an asynchronous **onContinue()** API is provided for this scenario.
+> 3. Currently, the **sessionId** field in **wantParams** is occupied by the system in the migration process. You are advised to define another key in **wantParams** to store the ID to avoid data exceptions.
 
 The sample code is as follows:
 
@@ -766,11 +758,9 @@ In [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#o
 
 > **NOTE**
 >
-> The distributed data object of the peer device to be added to the network cannot be a temporary variable. This is because the callback of the **on()** API may be executed after **onCreate()** or **onNewWant()** finishes execution. If the temporary variable is released, a null pointer exception may occur. You can use a class member variable to avoid this problem.
->
-> The attributes of the object used to create the distributed data object on the peer device must be undefined before the distributed data object is activated. Otherwise, the source data will be overwritten after new data is added to the network, and data restoration will fail.
->
-> Before activating the distributed data object, call **on()** to listen for the restore event. This helps prevent data restoration failure caused by event missing.
+> 1. The distributed data object of the peer device to be added to the network cannot be a temporary variable. This is because the callback of the **on()** API may be executed after **onCreate()** or **onNewWant()** finishes execution. If the temporary variable is released, a null pointer exception may occur. You can use a class member variable to avoid this problem.
+> 2. The attributes of the object used to create the distributed data object on the peer device must be undefined before the distributed data object is activated. Otherwise, the source data will be overwritten after new data is added to the network, and data restoration will fail.
+> 3. Before activating the distributed data object, call **on()** to listen for the restore event. This helps prevent data restoration failure caused by event missing.
 
 The sample code is as follows:
 
@@ -833,7 +823,7 @@ export default class MigrationAbility extends UIAbility {
 }
 ```
 
-#### File Migration
+**File Migration**
 
 A file, such as an image or document, must be converted to the [commonType.Asset](../reference/apis-arkdata/js-apis-data-commonType.md#asset) type before being encapsulated into a distributed data objects for migration. The migration implementation is similar to that of a common distributed data object. The following describes only the differences.
 
@@ -960,6 +950,34 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG: string = '[MigrationAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
+// Define a data object.
+class ParentObject {
+  mother: string
+  father: string
+
+  constructor(mother: string, father: string) {
+    this.mother = mother
+    this.father = father
+  }
+}
+
+class SourceObject {
+  name: string | undefined
+  age: number | undefined
+  isVis: boolean | undefined
+  parent: ParentObject | undefined
+  attachment: commonType.Asset | undefined // New asset attribute.
+
+  constructor(name: string | undefined, age: number | undefined, isVis: boolean | undefined,
+              parent: ParentObject | undefined, attachment: commonType.Asset | undefined) {
+    this.name = name
+    this.age = age
+    this.isVis = isVis
+    this.parent = parent
+    this.attachment = attachment;
+  }
+}
+
 export default class MigrationAbility extends UIAbility {
   d_object?: distributedDataObject.DataObject;
 
@@ -994,15 +1012,15 @@ export default class MigrationAbility extends UIAbility {
 
 If you want to synchronize multiple assets, use either of the following methods:
 
-- Method 1: Implement each asset as a root attribute of the distributed data object. This applies to scenarios where the number of assets to migrate is fixed.
-- Method 2: Transfer the asset array as an object. This applies to scenarios where the number of assets to migrate changes dynamically (for example, a user selects a variable number of images). Currently, the asset array cannot be directly transferred as the root attribute.
+1. Method 1: Implement each asset as a root attribute of the distributed data object. This applies to scenarios where the number of assets to migrate is fixed.
+2. Method 2: Transfer the asset array as an object. This applies to scenarios where the number of assets to migrate changes dynamically (for example, a user selects a variable number of images). Currently, the asset array cannot be directly transferred as the root attribute.
 
 To implement method 1, you can add more assets by referring to the method of adding an asset. To implement method 2, refer to the code snippet below:
 
 ```ts
 // Import the modules.
 import { distributedDataObject, commonType } from '@kit.ArkData';
-import { UIAbility } from '@kit.AbilityKit';
+import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
 // Define a data object.
 class SourceObject {
@@ -1074,45 +1092,45 @@ A mission center demo is provided for you to verify the migration capability of 
 >
 > The screenshots in this section are for reference only. The DevEco Studio and SDK versions in use prevail.
 
-**Compiling and Installing the Demo**
+1. Compiling and Installing the Demo
 
-1. [Switch to the full SDK](../faqs/full-sdk-switch-guide.md) to compile and install the mission center.
+    1. [Switch to the full SDK](../faqs/full-sdk-switch-guide.md) to compile and install the mission center.
 
-2. Download the sample code of the [mission center demo](https://gitcode.com/openharmony/ability_dmsfwk/tree/master/services/dtbschedmgr/test/missionCenterDemo/dmsDemo/entry/src/main).
+    2. Download the sample code of the [mission center demo](https://gitcode.com/openharmony/ability_dmsfwk/tree/master/services/dtbschedmgr/test/missionCenterDemo/dmsDemo/entry/src/main).
 
-3. Build the project file.
+    3. Build the project file.
 
-    1. Create an empty project and replace the corresponding folders with the downloaded files.
+        1. Create an empty project and replace the corresponding folders with the downloaded files.
 
-        ![hop-cross-device-migration](figures/hop-cross-device-migration1.png)
+            ![hop-cross-device-migration](figures/hop-cross-device-migration1.png)
 
-    2. Complete the signature, build, and installation.
+        2. Complete the signature, build, and installation.
         ​The default signature permission provided by the automatic signature template of DevEco Studio is normal. The mission center demo requires the ohos.permission.MANAGE_MISSIONS permission, which is at the system_core level. Therefore, you must escalate the permission to the system_core level.
-           1. Change **"apl":"normal"** to **"apl":"system_core"** in the **UnsignedReleasedProfileTemplate.json** file in **openharmony\apiVersion\toolchains\lib**, where apiVersion is a digit, for example, **10**. 
+            1. Change **"apl":"normal"** to **"apl":"system_core"** in the **UnsignedReleasedProfileTemplate.json** file in **openharmony\*apiVersion*\toolchains\lib**, where ***apiVersion*** is a digit, for example, **10**.
 
-           2. Choose **File > Project Structure**.
+            2. Choose **File > Project Structure**.
 
-           ![hop-cross-device-migration](figures/hop-cross-device-migration2.png)
+                ![hop-cross-device-migration](figures/hop-cross-device-migration2.png)
 
-           3. Click **Signing Configs** and click **OK**.
+            3. Click **Signing Configs** and click **OK**.
 
-           ![hop-cross-device-migration](figures/hop-cross-device-migration3.png)
-    
-           4. Connect to the developer board and run the demo.
+                ![hop-cross-device-migration](figures/hop-cross-device-migration3.png)
 
-**Device Networking**
+        3. Connect to the developer board and run the demo.
 
-1. Open the calculators of devices A and B.
-2. Click the arrow in the upper right corner to select device B.
-3. Select a trusted device on device B. The PIN is displayed.
-4. Enter the PIN on device A.
-5. Verify the networking. Enter a number on device A. If the number is displayed on device B, the networking is successful.
+2. Device Networking
 
-**Initiation Migration**
+    1. Open the calculators of devices A and B.
+    2. Click the arrow in the upper right corner to select device B.
+    3. Select a trusted device on device B. The PIN is displayed.
+    4. Enter the PIN on device A.
+    5. Verify the networking. Enter a number on device A. If the number is displayed on device B, the networking is successful.
 
-1. Open your application on device B, and open the mission center demo on device A. The name of device A and the name of device B are displayed on the mission center demo.
-2. Touch the name of device B. The application card list of device B is displayed.
-3. Drag the application card to be connected to the name of device A. The application on device A is started.
+3. Initiation Migration
+
+    1. Open your application on device B, and open the mission center demo on device A. The name of device A and the name of device B are displayed on the mission center demo.
+    2. Touch the name of device B. The application card list of device B is displayed.
+    3. Drag the application card to be connected to the name of device A. The application on device A is started.
 
 ## FAQs
 
@@ -1159,3 +1177,8 @@ export default class MigrationAbility extends UIAbility {
 
 If page stack migration is not disabled for an application, the system migrates and loads the page stack of the application by default. In this case, if you use [loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9) to trigger the loading of a specific page in the [onWindowStageRestore()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagerestore) lifecycle callback function, the loading does not take effect and the page in the page stack is still restored.
 
+## Samples
+
+The following sample is provided to help you better understand how to develop cross-device migration:
+
+[Cross-Device Migration Notepad (ArkTS, Public SDK, API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributedJotNote)

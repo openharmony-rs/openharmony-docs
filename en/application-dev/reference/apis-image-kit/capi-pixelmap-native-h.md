@@ -164,7 +164,7 @@ Enumerates the image pixel formats.
 | PIXEL_FORMAT_NV12 = 9 | NV12 format.|
 | PIXEL_FORMAT_RGBA_1010102 = 10 | RGBA_1010102 format.|
 | PIXEL_FORMAT_YCBCR_P010 = 11 | YCBCR_P010 format.|
-| PIXEL_FORMAT_YCRCB_P010 =12 | YCRCB_P010 format.|
+| PIXEL_FORMAT_YCRCB_P010 = 12 | YCRCB_P010 format.|
 
 ### OH_PixelmapNative_AntiAliasingLevel
 
@@ -367,7 +367,7 @@ Obtains the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, see [PIXEL_FORMAT](#pixel_format).|
+| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, please refer to [PIXEL_FORMAT](#pixel_format).|
 
 **Returns**
 
@@ -392,7 +392,7 @@ Sets the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t pixelFormat | Pixel format. For details about the available options, see [PIXEL_FORMAT](#pixel_format).|
+| int32_t pixelFormat | Pixel format. For details about the available options, please refer to [PIXEL_FORMAT](#pixel_format).|
 
 **Returns**
 
@@ -417,7 +417,7 @@ Obtains the source pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t *srcpixelFormat | Pointer to the pixel format. For details about the available options, see [PIXEL_FORMAT](#pixel_format).|
+| int32_t *srcpixelFormat | Pointer to the pixel format. For details about the available options, please refer to [PIXEL_FORMAT](#pixel_format).|
 
 **Returns**
 
@@ -467,7 +467,7 @@ Obtains the row stride.<br> The stride is the actual memory size occupied by eac
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t *rowStride | Pointer to the stride, in bytes.|
+| int32_t *rowStride | Pointer to the row stride, in bytes.|
 
 **Returns**
 
@@ -492,7 +492,7 @@ Sets the row stride.<br>The stride is the actual memory size occupied by each ro
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t rowStride | Stride, in bytes.|
+| int32_t rowStride | Row stride, in bytes.|
 
 **Returns**
 
@@ -517,7 +517,7 @@ Obtains the alpha type.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t *alphaType | Pointer to the alpha type. For details about the available options, see [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
+| int32_t *alphaType | Pointer to the alpha type. For details about the available options, please refer to [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
 
 **Returns**
 
@@ -542,7 +542,7 @@ Sets the alpha type.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t alphaType | Alpha type. For details about the available options, see [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
+| int32_t alphaType | Alpha type. For details about the available options, please refer to [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
 
 **Returns**
 
@@ -765,7 +765,7 @@ Obtains the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | Pointer to an OH_Pixelmap_ImageInfo struct.|
-| int32_t *pixelFormat | Pointer to the pixel format.|
+| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, please refer to [PIXEL_FORMAT](#pixel_format).|
 
 **Returns**
 
@@ -790,7 +790,7 @@ Obtains the default alpha type from OH_PixelmapImageInfo. To obtain the current 
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | Pointer to an OH_Pixelmap_ImageInfo struct.|
-| int32_t *alphaType | Pointer to the alpha type. For details about the available options, see [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
+| int32_t *alphaType | Pointer to the alpha type. For details about the available options, please refer to [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
 
 **Returns**
 
@@ -815,7 +815,7 @@ Obtains the dynamic range of a PixelMap.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | Pointer to an OH_Pixelmap_ImageInfo struct.|
-| bool *isHdr | Pointer to a Boolean that specifies whether the HDR is used.|
+| bool *isHdr | Indicates whether the image is HDR. The options include **true** (HDR) and **false** (non-HDR).|
 
 **Returns**
 

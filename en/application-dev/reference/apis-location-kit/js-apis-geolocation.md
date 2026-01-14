@@ -8,7 +8,7 @@
 
 The **geolocation** module provides a wide array of location services, including GNSS positioning, network positioning, geocoding, reverse geocoding, and geofencing.
 
-> **NOTE**
+> **NOTE**<br>
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > The APIs provided by this module are no longer maintained since API version 9. You are advised to use [geoLocationManager](js-apis-geoLocationManager.md).
 > This module supports only the WGS-84 coordinate system.
@@ -57,7 +57,7 @@ on(type: 'locationChange', request: LocationRequest, callback: Callback&lt;Locat
 Registers a listener for location changes with a location request initiated. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.on('locationChange')](js-apis-geoLocationManager.md#geolocationmanageronlocationchange).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.on('locationChange')](js-apis-geoLocationManager.md#geolocationmanageronlocationchange) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -92,7 +92,7 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 Unregisters the listener for location changes with the corresponding location request deleted.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.off('locationChange')](js-apis-geoLocationManager.md#geolocationmanagerofflocationchange).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.off('locationChange')](js-apis-geoLocationManager.md#geolocationmanagerofflocationchange) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -126,7 +126,7 @@ on(type: 'locationServiceState', callback: Callback&lt;boolean&gt;): void
 Registers a listener for location service status change events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.on('locationEnabledChange')](js-apis-geoLocationManager.md#geolocationmanageronlocationenabledchange).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.on('locationEnabledChange')](js-apis-geoLocationManager.md#geolocationmanageronlocationenabledchange) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -158,7 +158,7 @@ off(type: 'locationServiceState', callback?: Callback&lt;boolean&gt;): void
 Unregisters the listener for location service status change events.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.off('locationEnabledChange')](js-apis-geoLocationManager.md#geolocationmanagerofflocationenabledchange).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.off('locationEnabledChange')](js-apis-geoLocationManager.md#geolocationmanagerofflocationenabledchange) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -491,7 +491,7 @@ getCurrentLocation(request: CurrentLocationRequest, callback: AsyncCallback&lt;L
 Obtains the current position. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -530,7 +530,7 @@ getCurrentLocation(callback: AsyncCallback&lt;Location&gt;): void
 Obtains the current position. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -566,7 +566,7 @@ getCurrentLocation(request?: CurrentLocationRequest): Promise&lt;Location&gt;
 Obtains the current position. This API uses a promise to return the result.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation-2).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation-2) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -603,7 +603,7 @@ getLastLocation(callback: AsyncCallback&lt;Location&gt;): void
 Obtains the previous location. This API uses an asynchronous callback to return the result. 
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.getLastLocation](js-apis-geoLocationManager.md#geolocationmanagergetlastlocation).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getLastLocation](js-apis-geoLocationManager.md#geolocationmanagergetlastlocation) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -638,7 +638,7 @@ getLastLocation(): Promise&lt;Location&gt;
 Obtains the previous location. This API uses a promise to return the result. 
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.getLastLocation](js-apis-geoLocationManager.md#geolocationmanagergetlastlocation).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getLastLocation](js-apis-geoLocationManager.md#geolocationmanagergetlastlocation) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -668,7 +668,7 @@ isLocationEnabled(callback: AsyncCallback&lt;boolean&gt;): void
 Checks whether the location service is enabled. This API uses an asynchronous callback to return the result. 
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.isLocationEnabled](js-apis-geoLocationManager.md#geolocationmanagerislocationenabled).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.isLocationEnabled](js-apis-geoLocationManager.md#geolocationmanagerislocationenabled) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -702,7 +702,7 @@ isLocationEnabled(): Promise&lt;boolean&gt;
 Checks whether the location service is enabled. This API uses a promise to return the result. 
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.isLocationEnabled](js-apis-geoLocationManager.md#geolocationmanagerislocationenabled).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.isLocationEnabled](js-apis-geoLocationManager.md#geolocationmanagerislocationenabled) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -731,7 +731,7 @@ requestEnableLocation(callback: AsyncCallback&lt;boolean&gt;): void
 Sends a request for enabling the location service. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>
-> This API has been discarded since API version 9. It is recommended that a dialog box be displayed in the application to request the user to go to Settings to enable the location function and specify the scenarios in which the location information will be used in the dialog box.
+> This API is supported since API version 7 and deprecated since API version 9. It is recommended that the application display a dialog box to request the user to go to **Settings** to enable the location function and specify the scenarios in which the location information will be used in the dialog box.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -765,7 +765,7 @@ requestEnableLocation(): Promise&lt;boolean&gt;
 Sends a request for enabling the location service. This API uses a promise to return the result.
 
 > **NOTE**<br>
-> This API has been discarded since API version 9. It is recommended that a dialog box be displayed in the application to request the user to go to Settings to enable the location function and specify the scenarios in which the location information will be used in the dialog box.
+> This API is supported since API version 7 and deprecated since API version 9. It is recommended that the application display a dialog box to request the user to go to **Settings** to enable the location function and specify the scenarios in which the location information will be used in the dialog box.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -794,7 +794,7 @@ isGeoServiceAvailable(callback: AsyncCallback&lt;boolean&gt;): void
 Checks whether the (reverse) geocoding service is available. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.isGeocoderAvailable](js-apis-geoLocationManager.md#geolocationmanagerisgeocoderavailable).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.isGeocoderAvailable](js-apis-geoLocationManager.md#geolocationmanagerisgeocoderavailable) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -828,7 +828,7 @@ isGeoServiceAvailable(): Promise&lt;boolean&gt;
 Checks whether the (reverse) geocoding service is available. This API uses a promise to return the result.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.isGeocoderAvailable](js-apis-geoLocationManager.md#geolocationmanagerisgeocoderavailable).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.isGeocoderAvailable](js-apis-geoLocationManager.md#geolocationmanagerisgeocoderavailable) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -857,7 +857,7 @@ getAddressesFromLocation(request: ReverseGeoCodeRequest, callback: AsyncCallback
 Converts coordinates into geographic descriptions through reverse geocoding. This API uses an asynchronous callback to return the result. 
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.getAddressesFromLocation](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocation).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getAddressesFromLocation](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocation) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -893,7 +893,7 @@ getAddressesFromLocation(request: ReverseGeoCodeRequest): Promise&lt;Array&lt;Ge
 Converts coordinates into geographic descriptions through reverse geocoding. This API uses a promise to return the result. 
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.getAddressesFromLocation](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocation-1).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getAddressesFromLocation](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocation-1) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -929,7 +929,7 @@ getAddressesFromLocationName(request: GeoCodeRequest, callback: AsyncCallback&lt
 Converts geographic descriptions into coordinates through geocoding. This API uses an asynchronous callback to return the result. 
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.getAddressesFromLocationName](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocationname).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getAddressesFromLocationName](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocationname) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -965,7 +965,7 @@ getAddressesFromLocationName(request: GeoCodeRequest): Promise&lt;Array&lt;GeoAd
 Converts geographic descriptions into coordinates through geocoding. This API uses a promise to return the result. 
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager.getAddressesFromLocationName](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocationname-1).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getAddressesFromLocationName](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocationname-1) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 
@@ -1213,13 +1213,13 @@ Defines a reverse geocoding request.
 | -------- | -------- | -------- | -------- | -------- |
 | locale | string | No| Yes| Language used for the location description. **zh** indicates Chinese, and **en** indicates English.|
 | latitude | number | No| No| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**.|
-| longitude | number | No| No| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude . The value ranges from **-180** to **180**.|
+| longitude | number | No| No| Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**.|
 | maxItems | number | No| Yes| Maximum number of location records to be returned. The value must be greater than or equal to **0**. A value smaller than **10** is recommended.|
 
 
 ## GeoCodeRequest<sup>(deprecated)</sup>
 
-Defines a reverse geocoding request.
+Defines a geocoding request.
 
 > **NOTE**<br>
 > This API is deprecated since API version 9. You are advised to use [geoLocationManager.GeoCodeRequest](js-apis-geoLocationManager.md#geocoderequest).
@@ -1253,7 +1253,7 @@ Geocoding address information.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | latitude<sup>7+</sup> | number | No| Yes| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**.|
-| longitude<sup>7+</sup> | number | No| Yes| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude . The value ranges from **-180** to **180**.|
+| longitude<sup>7+</sup> | number | No| Yes| Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**.|
 | locale<sup>7+</sup> | string | No| Yes| Language used for the location description. **zh** indicates Chinese, and **en** indicates English.|
 | placeName<sup>7+</sup> | string | No| Yes| Landmark of the location.|
 | countryCode<sup>7+</sup> | string | No| Yes| Country code.|
@@ -1422,7 +1422,7 @@ Defines location information.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | latitude<sup>7+</sup> | number | No| No| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**.|
-| longitude<sup>7+</sup> | number | No| No| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude . The value ranges from **-180** to **180**.|
+| longitude<sup>7+</sup> | number | No| No| Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**.|
 | altitude<sup>7+</sup> | number | No| No| Location altitude, in meters.|
 | accuracy<sup>7+</sup> | number | No| No| Location accuracy, in meters.|
 | speed<sup>7+</sup> | number | No| No| Speed, in m/s.|

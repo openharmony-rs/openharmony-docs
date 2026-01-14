@@ -120,7 +120,7 @@ Sets the visual effect of the compositing filter.
 
 type Filter = Filter
 
-Represents a Filter object.
+Represents a filter object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -128,13 +128,13 @@ Represents a Filter object.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | Applies a visual effect to a component.|
+| [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | Used to apply the specified visual effect to the target component.|
 
 ## VisualEffect
 
 type VisualEffect = VisualEffect
 
-Represents a VisualEffect object.
+Represents a visual effect configuration object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -142,7 +142,7 @@ Represents a VisualEffect object.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | Applies a visual effect to a component.|
+| [VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | Used to apply the specified visual effect to the target component.|
 
 ## Example
 

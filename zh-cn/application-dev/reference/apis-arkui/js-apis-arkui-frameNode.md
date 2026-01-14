@@ -1362,7 +1362,7 @@ getInspectorInfo(): Object
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
 | Object | 节点的结构信息。 |
 
-以查询[Button](arkui-ts/ts-basic-components-button.md)组件节点为例获取到的Object结果部分值如下所示
+以查询[Button](arkui-ts/ts-basic-components-button.md)组件节点为例获取到的Object结果部分值如下。
 ```json
 {
     "$type": "Button", // 组件类型
@@ -1370,7 +1370,7 @@ getInspectorInfo(): Object
     "type": "build-in", // build-in为系统组件，custom为自定义组件
     "$rect": "[498.00, 468.00],[718.00,598.00]", // 组件框左上角坐标和右下角坐标
     "$debugLine": "", // 组件对应源码的调试信息，包括源码路径和组件所在的行号
-    "$attrs": {
+    "$attrs": { // 组件的属性，不同的组件属性存在差异，具体的组件属性请参考对应的组件文档
         "borderStyle": "BorderStyle.Solid",
         "borderColor": "#FF000000",
         "borderWidth": "0.00vp",
@@ -1386,7 +1386,6 @@ getInspectorInfo(): Object
     }
 }
 ```
-以上返回结果的\$attrs字段会根据不同的组件类型具有不同的属性，具体可以参考<!--RP2-->[getInspectorInfo返回结果$attrs映射表.xlsx](./figures/getInspectorInfo返回结果%24attrs映射表.xlsx)<!--RP2End-->
 
 **示例：**
 
@@ -1598,6 +1597,7 @@ get gestureEvent(): UIGestureEvent
 onDraw?(context: DrawContext): void
 
 FrameNode的自绘制方法，该方法会重写默认绘制方法，在FrameNode进行内容绘制时被调用。
+
 该接口的[DrawContext](./js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../ui/arkts-user-defined-arktsNode-frameNode.md#调整自定义绘制canvas的变换矩阵)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。

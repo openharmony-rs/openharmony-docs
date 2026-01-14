@@ -8,7 +8,7 @@
 
 Metadata is the description and context of image information returned by the camera application. It provides detailed data for the image information, such as the coordinates of a viewfinder frame for identifying a portrait in a photo or video.
 
-Metadata uses a tag (key) to find the corresponding data during the transfer of parameters and configurations, reducing memory copy operations.
+Metadata uses a tag (key) to find the corresponding data (value) during the transfer of parameters and configurations, reducing memory copy operations.
 
 ## How to Develop
 

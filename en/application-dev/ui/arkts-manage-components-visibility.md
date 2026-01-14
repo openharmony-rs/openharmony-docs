@@ -591,3 +591,4 @@ The UI stutters during scrolling, and logs show that visibility callbacks are be
 - Replace the **nodeRenderState** listener with the more efficient **onVisibleAreaApproximateChange** API.
 - Apply the listener to a parent container that stays on screen longer.
 - Remove listeners that are no longer needed by using the **off** API.
+<!--no_check-->

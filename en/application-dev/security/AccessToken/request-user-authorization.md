@@ -60,55 +60,55 @@ The following example steps you through on how to request the location permissio
 
    Call [checkAccessToken()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9) to check whether the user has already granted the permissions that your application requires. If yes, the application can perform subsequent operations. Otherwise, user authorization is required.
 
-   <!-- @[check_permission_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/utils/PermissionUtil.ets) -->
-
-``` TypeScript
-import { abilityAccessCtrl, bundleManager, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function checkPermissionGrant(permission: Permissions): Promise<abilityAccessCtrl.GrantStatus> {
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  let grantStatus: abilityAccessCtrl.GrantStatus = abilityAccessCtrl.GrantStatus.PERMISSION_DENIED;
-
-  // Obtain accessTokenID of the application.
-  let tokenId: number = 0;
-  try {
-    let bundleInfo: bundleManager.BundleInfo =
-      await bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
-    let appInfo: bundleManager.ApplicationInfo = bundleInfo.appInfo;
-    tokenId = appInfo.accessTokenId;
-  } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    console.error(`Failed to get bundle info for self, code: ${err.code}, message: ${err.message}`);
-  }
-
-  // Check whether the user has granted the permission.
-  try {
-    grantStatus = await atManager.checkAccessToken(tokenId, permission);
-  } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    console.error(`Failed to check access token, code: ${err.code}, message: ${err.message}`);
-  }
-
-  return grantStatus;
-}
-
-async function checkPermissions(): Promise<void> {
-  let grantStatus1: boolean = await checkPermissionGrant('ohos.permission.LOCATION') === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED;// Obtain the status of the ohos.permission.LOCATION permission.
-  let grantStatus2: boolean = await checkPermissionGrant('ohos.permission.APPROXIMATELY_LOCATION') === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED;// Obtain the status of the ohos.permission.APPROXIMATELY_LOCATION permission.
-  // The ohos.permission.LOCATION permission must be requested with the ohos.permission.APPROXIMATELY_LOCATION permission together or after the ohos.permission.APPROXIMATELY_LOCATION permission is available.
-  if (grantStatus2 && !grantStatus1) {
-    // Request the ohos.permission.LOCATION permission.
-	// ···
-  } else if (!grantStatus1 && !grantStatus2) {
-    // Request the ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION permissions, or request the ohos.permission.APPROXIMATELY_LOCATION permission.
-	// ···
-  } else {
-    // If the user grants the permission, the application can access the target.
-	// ···
-  }
-}
-```
+   <!-- @[check_permission_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/utils/PermissionUtil.ets) -->    
+   
+   ``` TypeScript
+   import { abilityAccessCtrl, bundleManager, Permissions } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   async function checkPermissionGrant(permission: Permissions): Promise<abilityAccessCtrl.GrantStatus> {
+     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+     let grantStatus: abilityAccessCtrl.GrantStatus = abilityAccessCtrl.GrantStatus.PERMISSION_DENIED;
+   
+     // Obtain accessTokenID of the application.
+     let tokenId: number = 0;
+     try {
+       let bundleInfo: bundleManager.BundleInfo =
+         await bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+       let appInfo: bundleManager.ApplicationInfo = bundleInfo.appInfo;
+       tokenId = appInfo.accessTokenId;
+     } catch (error) {
+       const err: BusinessError = error as BusinessError;
+       console.error(`Failed to get bundle info for self, code: ${err.code}, message: ${err.message}`);
+     }
+   
+     // Check whether the user has granted the permission.
+     try {
+       grantStatus = await atManager.checkAccessToken(tokenId, permission);
+     } catch (error) {
+       const err: BusinessError = error as BusinessError;
+       console.error(`Failed to check access token, code: ${err.code}, message: ${err.message}`);
+     }
+   
+     return grantStatus;
+   }
+   
+   async function checkPermissions(): Promise<void> {
+     let grantStatus1: boolean = await checkPermissionGrant('ohos.permission.LOCATION') === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED;// Obtain the status of the ohos.permission.LOCATION permission.
+     let grantStatus2: boolean = await checkPermissionGrant('ohos.permission.APPROXIMATELY_LOCATION') === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED;// Obtain the status of the ohos.permission.APPROXIMATELY_LOCATION permission.
+     // The ohos.permission.LOCATION permission must be requested with the ohos.permission.APPROXIMATELY_LOCATION permission together or after the ohos.permission.APPROXIMATELY_LOCATION permission is available.
+     if (grantStatus2 && !grantStatus1) {
+       // Request the ohos.permission.LOCATION permission.
+       // ···
+     } else if (!grantStatus1 && !grantStatus2) {
+       // Request the ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION permissions, or request the ohos.permission.APPROXIMATELY_LOCATION permission.
+       // ···
+     } else {
+       // If the user grants the permission, the application can access the target.
+       // ···
+     }
+   }
+   ```
 
 
 3. Request user authorization when your application needs to access location information.
@@ -123,92 +123,94 @@ async function checkPermissions(): Promise<void> {
 
    - Sample code for requesting user authorization using UIAbility
 
-   <!-- @[request_permission_in_UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondability/SecondAbility.ets) -->
-
-``` TypeScript
-import { abilityAccessCtrl, common, Permissions, UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-const permissions: Permissions[] = ['ohos.permission.LOCATION', 'ohos.permission.APPROXIMATELY_LOCATION'];
-
-function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  // Determine whether to display a user authorization dialog box based on the return value of requestPermissionsFromUser.
-  atManager.requestPermissionsFromUser(context, permissions).then((data) => {
-    let grantStatus: number[] = data.authResults;
-    let length: number = grantStatus.length;
-    for (let i = 0; i < length; i++) {
-      if (grantStatus[i] === 0) {
-        // If the user grants the permission, the application can access the target.
-      } else {
-        // If the user denies the permission, display a message indicating that user authorization is required, and direct the user to set the permission in Settings.
-        return;
-      }
-    }
-    // Authorization is successful.
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request permissions from user, code: ${err.code}, message: ${err.message}`);
-  })
-}
-
-export default class SecondAbility extends UIAbility {
-// ···
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-	// ···
-    windowStage.loadContent('secondpages/Index', (err) => {
-      reqPermissionsFromUser(permissions, this.context);
-	// ···
-    });
-  }
-// ···
-}
-```
+   <!-- @[request_permission_in_UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondability/SecondAbility.ets) -->    
+   
+   ``` TypeScript
+   import { abilityAccessCtrl, common, Permissions, UIAbility } from '@kit.AbilityKit';
+   import { window } from '@kit.ArkUI';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   const permissions: Permissions[] = ['ohos.permission.LOCATION', 'ohos.permission.APPROXIMATELY_LOCATION'];
+   
+   function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+     // Determine whether to display a user authorization dialog box based on the return value of requestPermissionsFromUser.
+     atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+       let grantStatus: number[] = data.authResults;
+       let length: number = grantStatus.length;
+       for (let i = 0; i < length; i++) {
+         if (grantStatus[i] === 0) {
+           // If the user grants the permission, the application can access the target.
+           console.info(`${permissions[i]} is granted by user.`);
+         } else {
+           // If the user denies the permission, display a message indicating that user authorization is required, and direct the user to set the permission in Settings.
+           return;
+         }
+       }
+       // Authorization is successful.
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to request permissions from user, code: ${err.code}, message: ${err.message}`);
+     })
+   }
+   
+   export default class SecondAbility extends UIAbility {
+     // ...
+     onWindowStageCreate(windowStage: window.WindowStage): void {
+       // ...
+       windowStage.loadContent('secondpages/Index', (err) => {
+         reqPermissionsFromUser(permissions, this.context);
+         // ...
+       });
+     }
+     // ...
+   }
+   ```
 
 
    - Sample code for requesting user authorization on the UI
 
-   <!-- @[request_permission_in_UI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/reqpermissioninui/pages/Index.ets) -->
-
-``` TypeScript
-import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-const permissions: Permissions[] = ['ohos.permission.LOCATION', 'ohos.permission.APPROXIMATELY_LOCATION'];
-
-function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
-  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  // The return value of requestPermissionsFromUser determines whether to display a dialog box to request user authorization.
-  atManager.requestPermissionsFromUser(context, permissions).then((data) => {
-    let grantStatus: number[] = data.authResults;
-    let length: number = grantStatus.length;
-    for (let i = 0; i < length; i++) {
-      if (grantStatus[i] === 0) {
-        // If the user grants the permission, the application can perform the subsequent operation.
-      } else {
-        // If the user has not granted the permission, display a message indicating that user authorization is required, and direct the user to the Settings page to set the permission.
-        return;
-      }
-    }
-    // The authorization is successful.
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to request permissions from user, code: ${err.code}, message: ${err.message}`);
-  })
-}
-
-@Entry
-@Component
-struct Index {
-  aboutToAppear() {
-    const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    reqPermissionsFromUser(permissions, context);
-  }
-
-  build() {
-	// ···
-  }
-}
-```
+   <!-- @[request_permission_in_UI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/reqpermissioninui/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   const permissions: Permissions[] = ['ohos.permission.LOCATION', 'ohos.permission.APPROXIMATELY_LOCATION'];
+   
+   function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext): void {
+     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+     // The return value of requestPermissionsFromUser determines whether to display a dialog box to request user authorization.
+     atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+       let grantStatus: number[] = data.authResults;
+       let length: number = grantStatus.length;
+       for (let i = 0; i < length; i++) {
+         if (grantStatus[i] === 0) {
+           // If the user grants the permission, the application can perform the subsequent operation.
+           console.info(`${permissions[i]} is granted by user.`);
+         } else {
+           // If the user has not granted the permission, display a message indicating that user authorization is required, and direct the user to the Settings page to set the permission.
+           return;
+         }
+       }
+       // The authorization is successful.
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to request permissions from user, code: ${err.code}, message: ${err.message}`);
+     })
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     aboutToAppear() {
+       const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+       reqPermissionsFromUser(permissions, context);
+     }
+   
+     build() {
+       // ...
+     }
+   }
+   ```
 
 
 4. Perform subsequent operations based on the authorization result.

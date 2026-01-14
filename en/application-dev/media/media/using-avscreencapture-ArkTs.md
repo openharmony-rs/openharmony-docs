@@ -58,20 +58,20 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
 
     ```javascript
     this.screenCapture.on('stateChange', async (infoType: media.AVScreenCaptureStateCode) => {
-    	switch (infoType) {
+      switch (infoType) {
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STARTED:
-              	console.info("Callback invoked when screen capture starts");
-              	break;
+                console.info("Callback invoked when screen capture starts");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_CANCELED:
                 this.screenCapture?.release();
                 this.screenCapture = undefined;
-              	console.info("Screen capture is not allowed.");
-              	break;
+                console.info("Screen capture is not allowed.");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STOPPED_BY_USER:
                 this.screenCapture?.release();
                 this.screenCapture = undefined;
-              	console.info("Touch the button in the screen capture capsule to stop screen capture. Underlying capture will stop.");
-              	break;
+                console.info("Touch the button in the screen capture capsule to stop screen capture. Underlying capture will stop.");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_INTERRUPTED_BY_OTHER:
                 console.info("Screen capture stops due to other interruptions. Underlying capture will stop.");
                 break;
@@ -98,7 +98,7 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
                 console.info("Underlying capture will stop after the user account is changed.");
                 break;
             default:
-              	break;
+                break;
         }
     })
     this.screenCapture.on('error', (err) => {

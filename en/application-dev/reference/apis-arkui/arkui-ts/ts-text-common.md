@@ -330,7 +330,7 @@ Represents the callback triggered when the content in the text box changes.
 | -- | -- | -- | -- |
 | value | string | Yes| Text displayed in the text box.|
 | previewText | [PreviewText](#previewtext12) | No| Information about the preview text, including its start position and text content.|
-| options<sup>15+</sup> | [TextChangeOptions](#textchangeoptions15) | No| Information about the text change, including the selection range before and after the change, the text content before the change, and the preview text information.|
+| options<sup>15+</sup> | [TextChangeOptions](#textchangeoptions15) | No| Information about the text change, including the selection range, the text content on the screen, and the preview text content.|
 
 ## TextDataDetectorType<sup>11+</sup>
 
@@ -418,7 +418,7 @@ Enumerates the appearance modes of the keyboard.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                                                   | Read Only| Optional| Description                                                   |
+| Name   | Type                                                   | Read-Only| Optional| Description                                                   |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | deleteOffset  | number | No  | No| Position of the deleted text.|
 | direction  | [TextDeleteDirection](#textdeletedirection12) | No  | No  | Direction for deleting the text.|
@@ -436,7 +436,7 @@ This configuration is only available for the [Text](ts-basic-components-text.md)
 | onDetectResultUpdate   | Callback\<string> | No| Yes | Callback invoked when text recognition succeeds.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | color<sup>12+</sup>   | [ResourceColor](ts-types.md#resourcecolor) | No| Yes  | Entity color when text recognition succeeds.<br>Default value: **'#ff0a59f7'**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | decoration<sup>12+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| No| Yes  | Style of the entity decoration when text recognition succeeds.<br>Default value:<br>{<br> type: TextDecorationType.Underline,<br> color: same as the entity<br> style: TextDecorationStyle.SOLID <br>}<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| enablePreviewMenu<sup>20+</sup>   | boolean | No| Yes  | Whether to enable the preview menu displayed when long-pressing recognized text. The value **true** means to enable the preview menu, and **false** means the opposite.<br>Default value: **false**.<br>When [copyOptions](ts-basic-components-richeditor.md#copyoptions) is set to **None**, even if **enablePreviewMenu** is set to **true**, long-pressing AI entities will not display the preview menu.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| enablePreviewMenu<sup>20+</sup>   | boolean | No| Yes  | Whether to enable the preview menu displayed when long-pressing recognized text. The value **true** means to enable the preview menu, and **false** means the opposite.<br>Default value: **false**.<br>When [copyOptions](ts-basic-components-richeditor.md#copyoptions) is set to **None**, even if **enablePreviewMenu** is set to **true**, long-pressing AI entities will not display the preview menu.<br>**Device behavior differences**: This parameter is supported on phones, tablets, PCs/2-in-1 devices, and wearables, but does not work on other devices.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## PreviewText<sup>12+</sup>
 
@@ -522,7 +522,7 @@ Enumerates automatic capitalization modes. This only provides API capabilities; 
 | NONE | 0 | Default state; automatic capitalization is disabled.|
 | WORDS | 1 | Automatic capitalization is applied per word: The first character of each word is capitalized, others are lowercase.|
 | SENTENCES | 2 | Automatic capitalization is applied per sentence: The first character of each sentence is capitalized, others are lowercase.|
-| ALL_CHARACTERS | 3 | Automatic capitalization is applied to all characters.|
+| ALL_CHARACTERS | 3 | Automatic capitalization applied to all characters.|
 
 ## TextBaseController<sup>12+</sup>
 
@@ -678,7 +678,7 @@ Obtains the preview text.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [PreviewText](#previewtext12) | Preview text.|.
+| [PreviewText](#previewtext12) | Preview text.|
 
 ## StyledStringController<sup>12+</sup>
 
@@ -799,7 +799,7 @@ Enumerates the rectangle height styles.
 
 | Type                             | Description  |
 | --------------------------------- | --------------------------------- |
-| [RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) | Rectangle height style enum.|
+| [RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) | Rectangle height style.|
 
 ## RectWidthStyle<sup>14+</sup>
 
@@ -813,7 +813,7 @@ Enumerates the rectangle width styles.
 
 | Type                             | Description  |
 | --------------------------------- | --------------------------------- |
-| [RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) | Rectangle width style enum.|
+| [RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) | Rectangle width style.|
 
 ## TextChangeOptions<sup>15+</sup>
 
@@ -983,6 +983,8 @@ A constructor used to create a **ColorShaderStyle** object.
 
 Defines the input method client type bound to an input component.
 
+### Properties
+
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -991,7 +993,21 @@ Defines the input method client type bound to an input component.
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | nodeId  | number | No | No| Unique ID of the current input component. The value must be greater than or equal to 0.|
 
+### setExtraConfig<sup>22+</sup>
 
+setExtraConfig(config: InputMethodExtraConfig): void
+
+Sets the extension information for an input method.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description              |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| config  | [InputMethodExtraConfig](#inputmethodextraconfig22) | Yes  | Extension information of the input method.|
 
 ## MaxLinesOptions<sup>20+</sup>
 
@@ -1144,7 +1160,7 @@ Enumerates the vertical alignment directions of the text content area.
 
 ## TextDirection<sup>22+</sup>
 
-Defines the text direction.
+Enumerates the text directions.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1154,3 +1170,17 @@ Defines the text direction.
 | --------------------- | -------  | ------------------- |
 | LTR                   | 0  | From left to right.|
 | RTL                | 1  | From right to left.|
+
+## InputMethodExtraConfig<sup>22+</sup>
+
+type InputMethodExtraConfig = InputMethodExtraConfig
+
+Represents the extension information of an input method.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type                             | Description  |
+| --------------------------------- | --------------------------------- |
+| [InputMethodExtraConfig](../../apis-ime-kit/js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | Extension information of an input method.|

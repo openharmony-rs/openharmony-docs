@@ -20,7 +20,7 @@ A widget usually appears as a part of the UI of another application (which curre
   
   - Widget Manager: a resident agent that provides widget management features such as periodic widget updates.
   
-   ![formHostMoudle](./figures/widget-host-development-guide-1.png)
+   ![formHostModule](./figures/widget-host-development-guide-1.png)
 
 ## When to Use
 

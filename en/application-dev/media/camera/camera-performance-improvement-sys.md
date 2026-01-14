@@ -192,7 +192,9 @@ function showOrSavePicture(pixelMap: image.PixelMap): void {
 
 Generally, the startup of the camera application is triggered when the user touches the camera icon on the home screen. The home screen senses the touch event and instructs the application manager to start the camera application. This takes a relatively long time. After the camera application is started, the camera startup process starts. A typical camera startup process includes starting the camera device, configuring a data stream, and starting the data stream, which is also time-consuming.
 
-​The prelaunch feature triggers the action of starting the camera device before the camera application is started. In other words, when the user touches the camera icon on the home screen, the system starts the camera device. At this time, the camera application is not started yet. The figure below shows the camera application process before and after the prelaunch feature is introduced.
+​Our camera startup solution moves the action of opening the camera device ahead of the camera application launch. Specifically, when the user clicks the camera icon but before the camera application fully starts, the system triggers the camera device to power on. This shortens the internal camera‑launch workflow within the application and speeds up the overall camera startup.
+
+The figure below shows the camera application process before and after the prelaunch feature is introduced.
 
 ![prelaunch-scene](figures/prelaunch-scene.png)
 

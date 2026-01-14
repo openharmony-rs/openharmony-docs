@@ -86,21 +86,21 @@ enum Sensor_Type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SENSOR_TYPE_ACCELEROMETER = 1 | 加速度传感器。 |
-| SENSOR_TYPE_GYROSCOPE = 2 | 陀螺仪传感器。 |
-| SENSOR_TYPE_AMBIENT_LIGHT = 5 | 环境光传感器。 |
-| SENSOR_TYPE_MAGNETIC_FIELD = 6 | 地磁传感器。 |
-| SENSOR_TYPE_BAROMETER = 8 | 气压传感器。 |
-| SENSOR_TYPE_HALL = 10 | 霍尔传感器。 |
-| SENSOR_TYPE_PROXIMITY = 12 | 接近光传感器。 |
-| SENSOR_TYPE_ORIENTATION = 256 | 方向传感器。 |
-| SENSOR_TYPE_GRAVITY = 257 | 重力传感器。 |
-| SENSOR_TYPE_LINEAR_ACCELERATION = 258 | 线性加速度传感器。 |
-| SENSOR_TYPE_ROTATION_VECTOR = 259 | 旋转矢量传感器。 |
-| SENSOR_TYPE_GAME_ROTATION_VECTOR = 262 | 游戏旋转矢量传感器。 |
-| SENSOR_TYPE_PEDOMETER_DETECTION = 265 | 计步器检测传感器。 |
-| SENSOR_TYPE_PEDOMETER = 266 | 计步器传感器。 |
-| SENSOR_TYPE_HEART_RATE = 278 | 心率传感器。 |
+| SENSOR_TYPE_ACCELEROMETER = 1 | 加速度传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_GYROSCOPE = 2 | 陀螺仪传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_AMBIENT_LIGHT = 5 | 环境光传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_MAGNETIC_FIELD = 6 | 地磁传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_BAROMETER = 8 | 气压传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_HALL = 10 | 霍尔传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_PROXIMITY = 12 | 接近光传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_ORIENTATION = 256 | 方向传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_GRAVITY = 257 | 重力传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_LINEAR_ACCELERATION = 258 | 线性加速度传感器。<br>**起始版本：** 13 |
+| SENSOR_TYPE_ROTATION_VECTOR = 259 | 旋转矢量传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_GAME_ROTATION_VECTOR = 262 | 游戏旋转矢量传感器。<br>**起始版本：** 13 |
+| SENSOR_TYPE_PEDOMETER_DETECTION = 265 | 计步器检测传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_PEDOMETER = 266 | 计步器传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_HEART_RATE = 278 | 心率传感器。<br>**起始版本：** 11 |
 
 ### Sensor_Result
 
@@ -116,10 +116,10 @@ enum Sensor_Result
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SENSOR_SUCCESS = 0 | 操作成功。 |
-| SENSOR_PERMISSION_DENIED = 201 | 权限验证失败。 |
-| SENSOR_PARAMETER_ERROR = 401 | 参数检查失败。例如，没有传入强制参数，或者传入的参数类型不正确。 |
-| SENSOR_SERVICE_EXCEPTION = 14500101 | 传感器服务异常。 |
+| SENSOR_SUCCESS = 0 | 操作成功。<br>**起始版本：** 11 |
+| SENSOR_PERMISSION_DENIED = 201 | 权限验证失败。<br>**起始版本：** 11 |
+| SENSOR_PARAMETER_ERROR = 401 | 参数检查失败。例如，没有传入强制参数，或者传入的参数类型不正确。<br>**起始版本：** 11 |
+| SENSOR_SERVICE_EXCEPTION = 14500101 | 传感器服务异常。<br>**起始版本：** 11 |
 
 ### Sensor_Accuracy
 
@@ -135,10 +135,10 @@ enum Sensor_Accuracy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SENSOR_ACCURACY_UNRELIABLE = 0 | 传感器数据不可靠。有可能传感器不与设备接触而进行测量。 |
-| SENSOR_ACCURACY_LOW = 1 | 传感器数据精度较低。数据在使用前必须根据环境进行校准。 |
-| SENSOR_ACCURACY_MEDIUM = 2 | 传感器数据处于中等精度水平。建议用户在使用前根据实际环境进行数据校准。 |
-| SENSOR_ACCURACY_HIGH = 3 | 传感器数据具有很高的精度。数据可以直接使用。 |
+| SENSOR_ACCURACY_UNRELIABLE = 0 | 传感器数据不可靠。有可能传感器不与设备接触而进行测量。<br>**起始版本：** 11 |
+| SENSOR_ACCURACY_LOW = 1 | 传感器数据精度较低。数据在使用前必须根据环境进行校准。<br>**起始版本：** 11 |
+| SENSOR_ACCURACY_MEDIUM = 2 | 传感器数据处于中等精度水平。建议用户在使用前根据实际环境进行数据校准。<br>**起始版本：** 11 |
+| SENSOR_ACCURACY_HIGH = 3 | 传感器数据具有很高的精度。数据可以直接使用。<br>**起始版本：** 11 |
 
 
 ## 函数说明

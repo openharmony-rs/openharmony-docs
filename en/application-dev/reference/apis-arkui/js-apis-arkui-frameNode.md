@@ -2381,7 +2381,7 @@ Adopts the target node as an affiliated node. The adopted node must not have an 
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| child | [FrameNode](#framenode-1) | Yes  | Specifies the node to be added.|
+| child | [FrameNode](#framenode-1) | Yes  | Node to be adopted.|
 
 **Error codes**
 
@@ -2401,7 +2401,7 @@ See [Example of Adopting a Node as an Affiliate](#example-of-adopting-a-node-as-
 
 removeAdoptedChild(child: FrameNode): void
 
-Removes the target attached node that is being added.
+Removes a previously adopted node.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -2411,7 +2411,7 @@ Removes the target attached node that is being added.
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| child | [FrameNode](#framenode-1) | Yes  | Node that is being added.|
+| child | [FrameNode](#framenode-1) | Yes  | Node to remove.|
 
 **Error codes**
 

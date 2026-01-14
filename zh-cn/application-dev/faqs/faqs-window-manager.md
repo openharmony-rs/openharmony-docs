@@ -176,7 +176,7 @@ try {
 
 **解决措施**
 
-1.Abilty级别配置：在模块配置文件module.json5中将EntryAbility设置为"orientation"。  
+1.Ability级别配置：在模块配置文件module.json5中将EntryAbility设置为"orientation"。  
 2.动态设置：使用window.setPreferredOrientation设置窗口方向。
 
 **代码示例**

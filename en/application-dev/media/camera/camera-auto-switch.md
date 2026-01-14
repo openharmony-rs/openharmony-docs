@@ -8,9 +8,7 @@
 
 This document describes the scenario of automatic front-camera switching on foldable devices. The system selects the appropriate front camera depending on the device's fold state.
 
-For example, foldable device A has three cameras: rear camera B, front camera C, and front camera D. In the unfolded state, [CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras) returns rear camera B and front camera C. In the folded state, it returns rear camera B and front camera D.
-
-Enable the front camera in the current fold state, and call [enableAutoDeviceSwitch](../../reference/apis-camera-kit/arkts-apis-camera-AutoDeviceSwitch.md#enableautodeviceswitch13) to enable automatic camera switching. This ensures that when the fold state changes, the front camera corresponding to that state is automatically selected.
+For example, foldable device A has three cameras: rear camera B, front camera C, and front camera D. In the unfolded state, [CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras) returns rear camera B and front camera C. In the folded state, it returns rear camera B and front camera D. Enable the front camera in the current fold state, and call [enableAutoDeviceSwitch](../../reference/apis-camera-kit/arkts-apis-camera-AutoDeviceSwitch.md#enableautodeviceswitch13) to enable automatic camera switching. This ensures that when the fold state changes, the front camera corresponding to that state is automatically selected.
 
 Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
 
@@ -79,7 +77,6 @@ function enableAutoDeviceSwitch(session: camera.PhotoSession) {
 You can use [enableAutoDeviceSwitch](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md#onautodeviceswitchstatuschange13) to listen for automatic camera switching. A callback is invoked once the switch is complete.
 
 Do not call any session related APIs during the switching process.
-
 ```ts
 function callback(err: BusinessError, autoDeviceSwitchStatus: camera.AutoDeviceSwitchStatus): void {
   if (err !== undefined && err.code !== 0) {

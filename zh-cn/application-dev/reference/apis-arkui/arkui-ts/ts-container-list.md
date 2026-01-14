@@ -36,6 +36,7 @@ List的预加载是指除了加载显示区域可见区域外子组件外，还�
 ## 子组件
 
 仅支持[ListItem](ts-container-listitem.md)、[ListItemGroup](ts-container-listitemgroup.md)子组件和自定义组件。自定义组件在List下使用时，建议使用ListItem或ListItemGroup作为自定组件的顶层组件，不建议给自定义组件设置属性和事件方法。
+
 支持通过渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
 
 > **说明：**
@@ -1758,21 +1759,21 @@ struct ListExample {
       .scrollBar(BarState.On)
       .childrenMainSize(this.listChildrenSize)
       .alignListItem(ListItemAlign.Center)
-      Row(){
+      Row({ space: 18 }) {
         Button() { Text('item size + 50') }.onClick(()=>{
           this.listChildrenSize.childDefaultSize += 50;
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
         Button() { Text('item size - 50') }.onClick(()=>{
           if (this.listChildrenSize.childDefaultSize === 0) {
             return;
           }
           this.listChildrenSize.childDefaultSize -= 50;
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
         Button() { Text('scrollTo (0, 310)') }.onClick(()=>{
           // 310: 跳转到item 1顶部与List顶部平齐的位置。
           // 如果不设置childrenMainSize，item高度不一致时scrollTo会不准确。
           this.scroller.scrollTo({ xOffset: 0, yOffset: 310 })
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
       }.height('20%')
     }
   }
@@ -2422,3 +2423,107 @@ struct Index {
 ```
 
 ![OnItemDrag](figures/listOnItemDrag.gif)
+
+### 示例16（实现ListItemGroup中点击项的居中效果）
+
+该示例使用[scrollToItemInGroup](#scrolltoitemingroup11)接口，实现了点击[ListItemGroup](./ts-container-listitemgroup.md)中的[ListItem](./ts-container-listitem.md)时将其居中的效果。
+
+``` ts
+import { util } from '@kit.ArkTS';
+
+class Contact {
+  key: string = util.generateRandomUUID(true);
+  name: string;
+  icon: Resource;
+
+  constructor(name: string, icon: Resource) {
+    this.name = name;
+    this.icon = icon;
+  }
+}
+
+class ContactsGroup {
+  title: string = '';
+  contacts: Array<object> | null = null;
+  key: string = '';
+}
+
+@Entry
+@Component
+struct ContactsList {
+  private scroller: ListScroller = new ListScroller();
+  private contactsGroups: ContactsGroup[] = [
+    {
+      title: 'A',
+      contacts: [
+        new Contact('艾佳', $r('app.media.icon')),  // $r('app.media.icon')需要替换为开发者所需的图像资源文件
+        new Contact('安安', $r('app.media.icon')),
+        new Contact('Angela', $r('app.media.icon'))
+        // ...
+      ],
+      key: util.generateRandomUUID(true)
+    } as ContactsGroup,
+    {
+      title: 'B',
+      contacts: [
+        new Contact('白叶', $r('app.media.icon')),
+        new Contact('伯明', $r('app.media.icon'))
+        // ...
+      ],
+      key: util.generateRandomUUID(true)
+    } as ContactsGroup,
+    // ...
+  ]
+
+  @Builder
+  itemHead(text: string) {
+    Text(text)
+      .fontSize(20)
+      .backgroundColor('#fff1f3f5')
+      .width('100%')
+      .padding(5)
+  }
+
+  build() {
+    List({ scroller: this.scroller }) {
+      ForEach(this.contactsGroups, (item: ContactsGroup, index: number) => {
+        ListItemGroup({ header: this.itemHead(item.title) }) {
+          ForEach(item.contacts, (contact: Contact, subIndex: number) => {
+            ListItem() {
+              Row() {
+                Image(contact.icon)
+                  .width(40)
+                  .height(40)
+                  .margin(10)
+                Text(contact.name).fontSize(20)
+              }
+              .width('100%')
+              .justifyContent(FlexAlign.Start)
+              .margin(10)
+            }
+            .gesture(
+              TapGesture({ count: 1 })
+                .onAction((event: GestureEvent) => {
+                  if (event) {
+                    const itemRect = this.scroller.getItemRectInGroup(index, subIndex);
+                    console.info('第', index + 1, '个ListItemGroup的第', subIndex + 1, '个ListItem的 x:', itemRect.x,
+                      ' y:', itemRect.y, ' width:', itemRect.width, ' height:', itemRect.height)
+                    this.scroller.scrollToItemInGroup(index, subIndex, true, ScrollAlign.CENTER);
+                  }
+                })
+            )
+          }, (contact: Contact) => JSON.stringify(contact))
+        }
+        .divider({ strokeWidth: 4 })
+        .width('100%')
+      }, (item: ContactsGroup) => JSON.stringify(item))
+    }
+    .onScrollFrameBegin((offset: number, state: ScrollState) => {
+      console.info('List scrollFrameBegin offset: ' + offset + ' state: ' + state.toString());
+      return { offsetRemain: offset };
+    })
+  }
+}
+```
+
+![scrollToItemInGroup](figures/scrollToItemInGroup.gif)

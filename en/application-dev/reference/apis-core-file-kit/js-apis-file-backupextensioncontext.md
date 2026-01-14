@@ -37,7 +37,7 @@ import  { BackupExtensionContext } from '@kit.CoreFileKit';
 **Example**
 
 ```ts
-import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
+import { BackupExtensionAbility } from '@kit.CoreFileKit';
 import { contextConstant } from '@kit.AbilityKit';
 
 export default class MyBackupExtAbility extends BackupExtensionAbility {
@@ -66,3 +66,5 @@ export default class MyBackupExtAbility extends BackupExtensionAbility {
     }
 }
 ```
+
+

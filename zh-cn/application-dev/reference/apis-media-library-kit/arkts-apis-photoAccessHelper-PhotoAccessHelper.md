@@ -751,7 +751,8 @@ applyChanges(mediaChangeRequest: MediaChangeRequest): Promise&lt;void&gt;
 
 release(callback: AsyncCallback&lt;void&gt;): void
 
-释放PhotoAccessHelper实例，使用callback方式返回结果。
+释放PhotoAccessHelper实例。使用callback异步回调。
+ 
 当后续不需要使用PhotoAccessHelper实例中的方法时调用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -793,8 +794,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 release(): Promise&lt;void&gt;
 
-释放PhotoAccessHelper实例，使用Promise方式返回结果。
-当后续不需要使用PhotoAccessHelper 实例中的方法时调用。
+释放PhotoAccessHelper实例。使用Promise异步回调。
+ 
+当后续不需要使用PhotoAccessHelper实例中的方法时调用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -903,7 +905,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Promise&lt;string&gt;
 
-接口提供给应用调用，支持首次调用后拉起保存确认弹框。在用户同意保存后返回已创建并授予保存权限的uri，支持应用使用uri写入图片/视频；
+接口提供给应用调用，支持首次调用后拉起保存确认弹框。在用户同意保存后返回已创建并授予保存权限的uri，支持应用使用uri写入图片/视频。
+
 在用户"同意"后的5min之内，同一个应用再次调用接口，支持无需弹框确认自动返回已授权的uri给应用，支持应用保存图片/视频。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1514,7 +1517,7 @@ getRecentPhotoInfo(options?: RecentPhotoOptions): Promise\<RecentPhotoInfo>
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| options | [RecentPhotoOptions](arkts-apis-photoAccessHelper-class.md#recentphotooptions20) | 否   | 最近图片配置选项参数。若无此参数，则按照时间找到最近图片。<br>该参数在配置的情况下，需与RecentPhotoComponent组件中的options配置相同才可以查到一样的图片，否则可能存在接口能查到最近图片，组件没查到最近图片的情况。 |
+| options | [RecentPhotoOptions](arkts-apis-photoAccessHelper-class.md#recentphotooptions20) | 否   | 最近图片配置选项参数。若无此参数，则取按照创建时间排序的最新一张图片。<br>该参数在配置的情况下，需与RecentPhotoComponent组件中的options配置相同才可以查到一样的图片，否则可能存在接口能查到最近图片，组件没查到最近图片的情况。 |
 
 **返回值：**
 

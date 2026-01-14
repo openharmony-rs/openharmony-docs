@@ -32,11 +32,13 @@ Column() {
   Column().id('ComponentC').onTouch(() => {})
 }.id('ComponentA').onTouch(() => {})
 ```
-组件B和组件C作为组件A的子组件，当触摸到组件B或者组件C时，组件A也会被触摸到。onTouch事件允许多个组件同时触发，
-因此，当触摸组件B时，会触发组件A和组件B的onTouch回调，不会触发组件C的onTouch回调。
+
+组件B和组件C作为组件A的子组件，当触摸到组件B或者组件C时，组件A也会被触摸到。onTouch事件允许多个组件同时触发，因此，当触摸组件B时，会触发组件A和组件B的onTouch回调，不会触发组件C的onTouch回调。
+
 当触摸组件C时，会触发组件A和组件C的onTouch回调，不触发组件B的回调。
 
 特殊的容器组件，如Stack等组件，由于子组件之间存在着堆叠关系，子组件的布局也存在相互遮盖关系。
+
 所以，父子组件之间onTouch事件能够同时触发，兄弟组件之间onTouch事件会存在遮盖关系。
 
 <!-- @[stack_touch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/TouchEvent.ets) -->
@@ -70,7 +72,9 @@ Column() {
   Column().id('ComponentB').gesture(TapGesture({ count: 1 }))
 }.id('ComponentA').gesture(TapGesture({ count: 1 }))
 ```
+
 当父组件和子组件均绑定点击手势时，子组件的优先级高于父组件。
+
 因此，当在B组件上进行点击时，组件B所绑定的TapGesture的回调会被触发，而组件A所绑定的TapGesture的回调不会被触发。
 
 <!-- @[prioritysecond_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/GesturesEvents.ets) -->
@@ -86,7 +90,9 @@ Column()
     )
   )
 ```
+
 当组件A上绑定了由点击和滑动手势组成的互斥手势组时，先达到触发条件的手势触发对应的回调。
+
 若使用者做了一次点击操作，则响应点击对应的回调。若使用者进行了一次滑动操作并且滑动距离达到了阈值，则响应滑动对应的回调。
 
 ## 自定义控制的多层级手势事件
@@ -260,6 +266,7 @@ Stack() {
 当组件C设置[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)为HitTestMode.BLOCK_DESCENDANTS时，点击组件B和组件D的重叠区域时，组件A和组件B的[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件触发，组件C和组件D的[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件无法触发，组件B的点击手势会触发。
 
 针对简单的场景，建议在单个组件上绑定hitTestBehavior。
+
 针对复杂场景，建议在多个组件上绑定不同的hitTestBehavior来控制Touch事件的分发。
 
 ### 绑定手势方法对手势的控制
@@ -278,7 +285,9 @@ Column() {
 .id('ComponentA')
 .gesture(TapGesture({count: 1}))
 ```
+
 当父子组件均正常绑定点击手势时，子组件优先于父组件响应。
+
 此时，单击组件B区域范围，组件B的点击手势会触发，组件A的点击手势不会触发。
 
 如果以带优先级的方式绑定手势，则可使得父组件所绑定手势的响应优先级高于子组件。
@@ -294,7 +303,9 @@ Column() {
 .id('ComponentA')
 .priorityGesture(TapGesture({count: 1}))
 ```
+
 当父组件以.[priorityGesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#prioritygesture)的形式绑定手势时，父组件所绑定的手势优先级高于子组件。
+
 此时，单击组件B区域范围，组件A的点击手势会触发，组件B的点击手势不会触发。
 
 如果需要父子组件所绑定的手势不发生冲突，均可响应，则可以使用并行的方式在父组件绑定手势。
@@ -310,7 +321,9 @@ Column() {
 .id('ComponentA')
 .parallelGesture(TapGesture({count: 1}))
 ```
+
 当父组件以.[parallelGesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#parallelgesture)的形式绑定手势时，父组件和子组件所绑定的手势均可触发。
+
 此时，单击组件B区域范围，组件A和组件B的点击手势均会触发。
 
 ### OverlayManager的事件透传

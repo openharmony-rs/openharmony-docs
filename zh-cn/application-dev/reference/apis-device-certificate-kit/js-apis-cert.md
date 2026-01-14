@@ -345,12 +345,11 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | 名称                                  | 值   | 说明                          |
 | --------------------------------------| -------- | -----------------------------|
 | REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | 优先采用OCSP进行校验，默认采用CRL校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。仅支持从证书CDP扩展中获取第一个CRL分发点地址检查证书吊销状态，或从证书AIA扩展中获取第一个OCSP服务器地址检查证书吊销状态。必须声明ohos.permission.INTERNET权限。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。仅支持通过证书中的CDP扩展中获取首个CRL分发点地址以检查证书吊销状态，或通过AIA扩展获取首个OCSP服务器地址以进行吊销状态验证，且仅支持http协议。必须声明ohos.permission.INTERNET权限。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | 当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | 当ACCESS_NETWORK选项打开时有效，如果在线获取CRL和OCSP响应都由于网络的原因导致无法校验证书状态，则采用本地设置的CRL和OCSP响应进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验失败，则会继续校验中间证书的吊销情况。默认关闭。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
-| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | 如果开启了该能力，则会拿本地吊销列表校验终端实体证书的吊销情况。默认关闭。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
-
+| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验失败，则会继续校验中间证书的吊销情况。默认关闭。<br>**注意**：当前能力与REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT不能同时开启。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
+| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | 如果开启了该能力，则会拿本地吊销列表校验终端实体证书的吊销情况。默认关闭。<br>**注意**：当前能力与REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE不能同时开启。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
 
 ## ValidationPolicyType<sup>12+</sup>
 
@@ -396,10 +395,10 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | 名称         | 类型                                              | 只读 | 可选 |说明                                   |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
 | ocspRequestExtension | Array\<Uint8Array> | 否   | 是   |表示发送OCSP请求的扩展字段。|
-| ocspResponderURI | string | 否   | 是   |表示用于OCSP请求的备选服务器URL地址，支持HTTP/HTTPS，具体配置由与服务器协商决定。 |
+| ocspResponderURI | string | 否   | 是   |表示用于OCSP请求的备选服务器URI地址，支持HTTP/HTTPS，具体配置由与服务器协商决定。 <br>**说明**：当前URI只针对实体证书生效。|
 | ocspResponderCert | [X509Cert](#x509cert)  | 否   | 是   |表示用于OCSP响应的签名校验的签名证书。 |
 | ocspResponses | Uint8Array | 否   | 是   |表示用于OCSP服务器响应的备选数据。 |
-| crlDownloadURI | string | 否   | 是   |表示用于CRL请求的备选下载地址。 |
+| crlDownloadURI | string | 否   | 是   |表示用于CRL请求的备选下载地址。 <br>**说明**：当前URI只针对实体证书生效。|
 | options | Array\<[RevocationCheckOptions](#revocationcheckoptions12)> | 否   | 是   |表示证书吊销状态查询的策略组合。 |
 | ocspDigest | string | 否   | 是   |表示OCSP通信时创建证书ID使用的哈希算法。默认为SHA256，支持可配置MD5、SHA1、SHA224、SHA256、SHA384、SHA512算法。 |
 
@@ -724,7 +723,7 @@ CMS验证的配置。
 
 | 名称                  | 类型                          | 只读 | 可选 |说明                                                   |
 | --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
-| trustCerts        |Array\<[X509Cert](#x509cert)>                        | 否   | 否   |信任证书。   |
+| trustCerts        |Array\<[X509Cert](#x509cert)>                        | 否   | 否   |信任证书。<br> **说明**：需要配置所有签名者的信任证书。   |
 | signerCerts       |Array\<[X509Cert](#x509cert)>                        | 否   | 是   |签名证书。默认为空。         |
 | contentData       |Uint8Array                                           | 否   | 是   |内容数据，如果是detached模式，则需要指定明文数据。attached模式可以不传。   |
 | contentDataFormat | [CmsContentDataFormat](#cmscontentdataformat18)     | 否   | 是   |内容数据的格式。默认为CmsContentDataFormat.BINARY。   |

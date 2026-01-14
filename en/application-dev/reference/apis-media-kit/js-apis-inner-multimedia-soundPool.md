@@ -8,7 +8,7 @@
 
 The module provides APIs for loading, unloading, playing, and stopping playing sounds, setting the volume, and setting the number of loops.
 
-Before using these APIs, you must call [media.createSoundPool](arkts-apis-media-f.md#mediacreatesoundpool10) to create a SoundPool instance.
+Before using these APIs, you must call [media.createSoundPool](arkts-apis-media-f.md#mediacreatesoundpool10) to create a **SoundPool** instance.
 
 > **NOTE**
 >
@@ -78,14 +78,14 @@ Implements a sound pool that provides APIs for loading, unloading, playing, and 
 
 load(uri: string, callback: AsyncCallback\<number>): void
 
-Loads a sound. This API uses an asynchronous callback to obtain the sound ID. The input parameter **uri** is a string starting with fd://, which is generated based on the file descriptor (FD) obtained.
+Loads a sound. This API uses an asynchronous callback to obtain the sound ID. The input parameter uri is a string starting with **fd://**, which is generated based on the file descriptor (FD) obtained.
+
 This API cannot be used to load resources in the **rawfile** directory. Instead, use [load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](#load-2) or [load(fd: number, offset: number, length: number): Promise\<number>](#load-3).
 
 >**NOTE**
 >
-> After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
->
-> Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
+>After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
+>Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -93,7 +93,7 @@ This API cannot be used to load resources in the **rawfile** directory. Instead,
 
 | Name  | Type                                  | Mandatory| Description                                 |
 | -------- | -------------------------------------- | ---- | ------------------------------------- |
-| uri   | string | Yes  | URI of the audio file to load. Generally, the URI starts with fd://.|
+| uri   | string | Yes  | URI of the audio file to load. Generally, the URI starts with **fd://**.|
 | callback | AsyncCallback\<number>                   | Yes  | Callback used to return the sound ID. A valid value must be greater than 0.|
 
 **Error codes**
@@ -141,7 +141,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
           console.info(`Succeeded in loading soundPool` + JSON.stringify(soundId_));
         }
       });
-    }); // '/test_01.mp3' here is only an example. You need to pass in the actual URI.
+    }); // '/test_01.mp3' here is only an example. Replace it with the actual URI.
   }
 });
 ```
@@ -150,13 +150,13 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 load(uri: string): Promise\<number>
 
-Loads a sound. This API uses a promise to obtain the sound ID. The input parameter **uri** is a starting with fd://, which is generated based on the FD obtained.
+Loads a sound. This API uses an asynchronous promise to obtain the sound ID. The input parameter uri is a string starting with **fd://**, which is generated based on the FD obtained.
+
 This API cannot be used to load resources in the **rawfile** directory. Instead, use [load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](#load-2) or [load(fd: number, offset: number, length: number): Promise\<number>](#load-3).
 
 >**NOTE**
 >
-> After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
->
+>After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
 >Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
@@ -165,7 +165,7 @@ This API cannot be used to load resources in the **rawfile** directory. Instead,
 
 | Name| Type                                  | Mandatory| Description                      |
 | ------ | -------------------------------------- | ---- | -------------------------- |
-| uri | string | Yes  | URI of the audio file to load. Generally, the URI starts with fd://.|
+| uri | string | Yes  | URI of the audio file to load. Generally, the URI starts with **fd://**.|
 
 **Return value**
 
@@ -218,7 +218,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       }, (err: BusinessError) => {
         console.error('Failed to load soundPool and catch error is ' + err.message);
       });
-    }); // '/test_01.mp3' here is only an example. You need to pass in the actual URI.
+    }); // '/test_01.mp3' here is only an example. Replace it with the actual URI.
   }
 });
 ```
@@ -227,13 +227,12 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void
 
-Loads a sound. This API uses an asynchronous callback to obtain the sound ID. The input parameter **fd** can be manually input or automatically obtained by reading the embedded resource of the application.
+Loads a sound. This API uses an asynchronous callback to obtain the resource ID. The input parameter can either be passed manually with resource information or automatically acquired by reading the application's built‑in resources.
 
 >**NOTE**
 >
-> After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
->
-> Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
+>After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
+>Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -256,7 +255,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 | 5400103  | I/O error. Return by callback. |
 | 5400105  | Service died. Return by callback.       |
 
-**Example 1:**
+**Example 1**
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
@@ -294,7 +293,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
           console.info('Succeeded in loading soundId:' + soundId_);
         }
       });
-    }); // '/test_01.mp3' here is only an example. You need to pass in the actual URI.
+    }); // '/test_01.mp3' here is only an example. Replace it with the actual URI.
   }
 });
 ```
@@ -340,13 +339,12 @@ function create(context: Context) {
 
 load(fd: number, offset: number, length: number): Promise\<number>
 
-Loads a sound. This API uses a promise to obtain the sound ID. The input parameter **fd** can be manually input or automatically obtained by reading the embedded resource of the application.
+Loads a sound. This API uses an asynchronous promise to obtain the resource ID. The input parameter can either be passed manually with resource information or automatically acquired by reading the application's built‑in resources.
 
 >**NOTE**
 >
-> After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
->
-> Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
+>After the resource handle (in the form of an FD) or path description (in the form of a URI) is transferred to the player, do not use the resource handle or path description in read or write operations, including but not limited to transferring it to multiple players.
+>Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -374,7 +372,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 | 5400103  | I/O error. Return by promise. |
 | 5400105  | Service died. Return by promise. |
 
-**Example 1:**
+**Example 1**
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
@@ -652,7 +650,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 stop(streamID: number, callback: AsyncCallback\<void>): void
 
-Stops playing a sound. This API uses an asynchronous callback to return the result.
+Stops audio playback. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -711,7 +709,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 stop(streamID: number): Promise\<void>
 
-Stops playing a sound. This API uses a promise to return the result.
+Stops audio playback. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -772,7 +770,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void;
 
-Sets the loop mode for an audio stream. This API uses an asynchronous callback to return the result.
+Sets the loop mode. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -833,7 +831,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setLoop(streamID: number, loop: number): Promise\<void>
 
-Sets the loop mode for an audio stream. This API uses a promise to return the result.
+Sets the loop mode. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -1316,7 +1314,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       if (error) {
         console.error(`Failed to unload soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
       } else {
-        console.info('Succceeded in unload soundPool');
+        console.info('Succeeded in unload soundPool');
       }
     })
   }
@@ -1377,7 +1375,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     // Call load() to obtain the sound ID.
 
     soundPool.unload(soundID).then(() => {
-      console.info('Succceeded in unload soundPool');
+      console.info('Succeeded in unload soundPool');
     }, (err: BusinessError) => {
       console.error('Failed to unload soundPool and catch error is ' + err.message);
     });
@@ -1389,7 +1387,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 release(callback: AsyncCallback\<void>): void
 
-Releases this SoundPool instance. This API uses an asynchronous callback to return the result.
+Releases a **SoundPool** instance. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -1442,7 +1440,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 release(): Promise\<void>
 
-Releases this SoundPool instance. This API uses a promise to return the result.
+Releases a **SoundPool** instance. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -1745,7 +1743,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'error', callback: ErrorCallback): void
 
-Subscribes to error events of this SoundPool instance. This event is used only for error prompt.
+Subscribes to error events of a [SoundPool](#soundpool) instance. This event is used only for error prompt.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -1788,7 +1786,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 off(type: 'error'): void
 
-Unsubscribes from error events of this SoundPool instance.
+Unsubscribes from error events of a SoundPool instance.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -1827,7 +1825,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'errorOccurred', callback: Callback\<ErrorInfo>): void
 
-Subscribes to error events of this [SoundPool](#soundpool) instance and returns [ErrorInfo](#errorinfo20) that contains the error code, error stage, resource ID, and audio stream ID.
+Subscribes to error events of a [SoundPool](#soundpool) instance and returns [ErrorInfo](#errorinfo20) that contains the error code, error stage, resource ID, and audio stream ID.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -1873,7 +1871,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
  off(type: 'errorOccurred', callback?: Callback\<ErrorInfo>): void
 
-Unsubscribes from error events of this SoundPool instance.
+Unsubscribes from error events of a SoundPool instance.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 

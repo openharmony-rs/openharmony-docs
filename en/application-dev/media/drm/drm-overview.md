@@ -39,7 +39,6 @@ Before you start, understand the following key concepts:
 
   A DRM solution driver integrated into the system. It implements the DRM HDI interfaces to provide DRM-related functionality.
   
-
 <!--RP1--><!--RP1End-->
 
 - MediaKeySystem
@@ -79,6 +78,7 @@ Before you start, understand the following key concepts:
 DRM plugin management is typically implemented by DRM solution integrators.<!--Del--> For details, see[DRM Solution Development](drm-solution-dev-guide.md).<!--DelEnd-->
 
 The following figure illustrates the workflow for integrating DRM Kit into an application.
+
 ![Drm Development Model](figures/drm-development-model.png)
 
 The workflow includes:

@@ -20,7 +20,9 @@
 1. 在Stage应用中创建DataShareExtensionAbility。
 
 2. 将FA应用中DataAbility的业务代码迁移到新创建的DataShareExtensionAbility中。
+
      DataAbility和DataShareExtensionAbility生命周期对比见下表。
+     
      | FA的DataAbility | Stage的DataShareExtensionAbility | 对比描述 |
    | -------- | -------- | -------- |
    | onInitialized?(info:&nbsp;AbilityInfo):&nbsp;void | onCreate?(want:&nbsp;Want,&nbsp;callback:<br/>AsyncCallback&lt;void&gt;):&nbsp;void | 两者调用时机一致，函数名即入参都不一样，Stage模型下增加了入参want以便开发者在创建时获取参数。 |

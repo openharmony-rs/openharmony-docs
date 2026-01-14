@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @foryourself-->
 
-- [Introduction to ArkTS](arkts-overview.md)
+- [About This Kit](arkts-overview.md)
 - ArkTS Common Library<!--arkts-utils-->
   - [Overview of the ArkTS Common Library](arkts-utils-overview.md)
   - XML Generation, Parsing, and Conversion<!--xml-generation-parsing-conversion-->

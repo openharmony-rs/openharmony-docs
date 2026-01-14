@@ -1,4 +1,4 @@
-# Using OHAudio for Audio Recording (C/C++)
+# (Recommended) Using OHAudio for Audio Recording (C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -118,16 +118,16 @@ The following walks you through how to implement simple recording:
     }
 
     // Configure the callback function for interruption events.
-    OH_AudioCapturer_OnInterruptCallback OnIntereruptCb = MyOnInterruptEvent;
-    OH_AudioStreamBuilder_SetCapturerInterruptCallback(builder, OnIntereruptCb, nullptr);
+    OH_AudioCapturer_OnInterruptCallback onInterruptCb = MyOnInterruptEvent;
+    OH_AudioStreamBuilder_SetCapturerInterruptCallback(builder, onInterruptCb, nullptr);
 
     // Configure the callback function for audio exceptions.
-    OH_AudioCapturer_OnErrorCallback OnErrorCb = MyOnError;
-    OH_AudioStreamBuilder_SetCapturerErrorCallback(builder, OnErrorCb, nullptr);
+    OH_AudioCapturer_OnErrorCallback onErrorCb = MyOnError;
+    OH_AudioStreamBuilder_SetCapturerErrorCallback(builder, onErrorCb, nullptr);
 
     // Configure the callback for audio input streams.
-    OH_AudioCapturer_OnReadDataCallback OnReadDataCb = MyOnReadData;
-    OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, OnReadDataCb, nullptr);
+    OH_AudioCapturer_OnReadDataCallback onReadDataCb = MyOnReadData;
+    OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, onReadDataCb, nullptr);
     ```
 
 4. Create an audio capturer instance.
@@ -148,6 +148,10 @@ The following walks you through how to implement simple recording:
     | OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer) | Stops the audio capturer.    |
     | OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer) | Flushes obtained audio data.|
     | OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer) | Releases the audio capturer instance.|
+
+    > **NOTE**
+    >
+    > The execution of audio stream control APIs is time-consuming (for example, a single execution of **OH_AudioRenderer_Stop** generally takes more than 50 ms). Direct calls to these APIs on the main thread should be avoided to prevent interface display freezes.
 
 6. Destroy the audio stream builder.
 

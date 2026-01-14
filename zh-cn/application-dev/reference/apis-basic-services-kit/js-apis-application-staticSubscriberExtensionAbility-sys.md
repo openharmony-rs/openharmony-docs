@@ -1,4 +1,4 @@
-# @ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility)
+# @ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility)(系统接口)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @michael_woo888-->

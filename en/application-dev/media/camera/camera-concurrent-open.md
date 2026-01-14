@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Starting from API version 18, devices support multi-camera concurrent mode, enabling applications to use both front and rear cameras simultaneously for capturing photos and recording videos.
+The multi-camera concurrent mode has been supported since API version 18, meaning an application can enable the front/rear cameras simultaneously for preview and video recording (the function of capturing photos with front/rear cameras simultaneously is not yet available).
 
 >**NOTE**
 >
@@ -55,9 +55,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
    }
    ```
 
-3. Obtain the corresponding concurrent capability set.
-
-   Call [getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to obtain an array of [CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18) objects, each of which includes the modes and output capabilities supported by the camera under the corresponding concurrency mode. If an empty array is returned, the current device does not support concurrency mode.
+3. Obtain the corresponding concurrent capability set. Call [getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to obtain the [CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18) array, which describes the supported modes and output capabilities of the camera under each concurrent scenario. **The modes and output capabilities you configure must fall within the bounds of this concurrent capability set.** If an empty array is returned, the current device does not support concurrent mode.
 
    ```ts
    function getSupportedOutputCapabilityFn(cameraManager: camera.CameraManager, curCameraDeviceFront: camera.CameraDevice, curCameraDeviceBack: camera.CameraDevice)
@@ -107,7 +105,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
          height: 1080
        }
      };
-     // Check whether the preview profile is supported.
+     // Check whether the preview profile exists. The preview profile must be included in the concurrent capability set obtained from getCameraConcurrentInfos.
      let previewProfiles = cameraOutputCapability.previewProfiles;
      if (previewProfiles.length < 1) {
        return;
@@ -142,7 +140,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
          height: 1080
        }
      };
-     // Check whether the photo profile is supported.
+     // Check whether the photo profile exists. The photo profile must be included in the concurrent capability set obtained from getCameraConcurrentInfos.
      let photoProfiles = cameraOutputCapability.photoProfiles;
      if (photoProfiles.length < 1) {
       return;
@@ -210,7 +208,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
 
    async function getVideoOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability, concurrentInfo: Array<camera.CameraConcurrentInfo>, curCameraDeviceFront: camera.CameraDevice, context: common.Context)
    {
-    // Create a video output stream using the video profile with the format 1003 and size 1920*1080 as an example.
+    // Create a video recording output stream with video profile (format: 1003, size: 1920*1080). The video profile must be included in the concurrent capability set obtained from getCameraConcurrentInfos.
      let videoProfileObj: camera.VideoProfile = {
        format: 1003,
        size: {
@@ -258,9 +256,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
    }
    ```
   
-7. Open the camera.
-
-   Call [open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18) to open the specified camera in multi-camera concurrent mode. Before using this API, check whether the camera supports concurrent capabilities and call [getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to obtain the concurrent capability set in the multi-camera concurrent mode. Do not use [open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18) without querying the concurrency capability set, as this will result in camera opening failure.
+7. Open the camera. Call [open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18) to open the specified camera in multi-camera concurrent mode. Before using this API, check whether the camera supports concurrent capabilities and call [getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to obtain the concurrent capability set in the multi-camera concurrent mode. Do not use [open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18) without querying the concurrency capability set, as this will result in camera opening failure.
 
    ```ts
    async function initCamera(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice) {
@@ -387,7 +383,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
    }
    ```
 
-9. Take a photo using the front or rear camera configured in step 8.
+9. Take a photo using the front or rear camera configured via **photoOutput** in step 8. The function of capturing photos with front/rear cameras simultaneously is not yet available.
 
     ```ts
     async function takePicture(photoOutput: camera.PhotoOutput): Promise<void> {

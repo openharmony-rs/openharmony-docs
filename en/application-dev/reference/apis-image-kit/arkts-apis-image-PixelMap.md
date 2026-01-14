@@ -2508,7 +2508,7 @@ struct Demo {
       taskpool.execute(loadPixelMap, rawFileDescriptor).then(pixelMap => {
         if (pixelMap) {
           this.pixelMap = pixelMap as PixelMap;
-          console.log('Succeeded in creating pixelMap.');
+          console.info('Succeeded in creating pixelMap.');
           // The main thread releases the pixelMap. Because setTransferDetached has been called when the child thread returns pixelMap, the pixelMap can be released immediately.
           this.pixelMap.release();
         } else {

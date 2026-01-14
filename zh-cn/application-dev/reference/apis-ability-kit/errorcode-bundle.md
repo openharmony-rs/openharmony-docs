@@ -201,10 +201,10 @@ Failed to install the HAPs because they have different configuration information
 调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，多个HAP配置信息不同导致应用安装失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
 
 **可能原因**<br/>
-多个hap包中配置文件中app标签下面的字段信息不一致。
+多个HAP包中配置文件中app标签下面的字段信息或者签名信息不一致。
 
 **处理步骤**<br/>
-确认多个HAP中配置文件app下面的字段是否一致。
+确认多个HAP中配置文件app下面的字段是否一致或者检查工程的[signingConfigs](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section153288223224)配置是否一样。
 
 ## 17700016 系统磁盘空间不足导致应用安装失败
 
@@ -242,7 +242,7 @@ Failed to install the HAP since the version of the HAP to install is too early.
 
 2. 新安装的应用查看版本，HAP或者HSP用DevEco Studio打开，查看里面module.json文件中的versionCode字段配置。
 
-    ![示例图](figures/hap_verisonCode.PNG)
+    ![示例图](figures/hap_versionCode.PNG)
 
 ## 17700018 安装失败，依赖的模块不存在
 
@@ -1274,10 +1274,12 @@ Bundle manager service exception.
 包管理服务异常。
 
 **可能原因**<br/>
-场景一： 
+场景一：
+
 系统出现未知的异常，导致包管理服务已停止或者异常退出。
 
 场景二：
+
 系统抛出未捕获的错误码，例如IPC失败、文件拷贝失败等。
 
 **处理步骤**<br/>

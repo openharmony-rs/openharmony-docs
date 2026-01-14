@@ -5,7 +5,7 @@
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
 <!--Adviser: @HelloShuo-->
-- [Introduction to Form Kit](formkit-overview.md)
+- [About This Kit](formkit-overview.md)
 - ArkTS Widget Development (Recommended)<!--arkts-ui-->
   - [ArkTS Widget Overview](arkts-form-overview.md)
   - [Creating an ArkTS Widget](arkts-ui-widget-creation.md)
@@ -19,6 +19,9 @@
       - [Using Canvas in ArkTS Widgets](arkts-ui-widget-page-custom-drawing.md)
       - [Dark and Light Mode Adaptation for ArkTS Widget UI](arkts-ui-widget-dark-light-color-adapt.md)
       - [Using Custom Fonts in ArkTS Widgets](arkts-ui-widget-load-custom-font.md)
+      <!--Del-->
+      - [Glass Material Adaptation for ArkTS Widgets (for System Applications Only)](arkts-ui-widget-visual-effect-sys.md)
+      <!--DelEnd-->
     - ArkTS Widget Update<!--arkts-ui-widget-interaction-->
       - [Overview of ArkTS Widget Update](arkts-ui-widget-interaction-overview.md)
       - [Active Update of ArkTS Widgets](arkts-ui-widget-active-refresh.md)

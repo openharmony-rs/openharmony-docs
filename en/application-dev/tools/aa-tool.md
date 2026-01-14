@@ -515,7 +515,7 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
 
   **Return value**
 
-  "start native process successfully." is returned if this command is executed successfully; "start native process successfully." is returned if this command fails to be executed; "start native process successfully." and the help information are returned if the specified parameter is invalid.
+  "start native process successfully." is returned if this command is executed successfully; "error: failed to start native process." is returned if this command fails to be executed; "error: option requires a value." and the help information are returned if the specified parameter is invalid.
 
   | ID| Error Message|
   | ------- | -------- |

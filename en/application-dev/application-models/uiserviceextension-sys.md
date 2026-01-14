@@ -49,12 +49,12 @@ The UIServiceExtensionAbility provides the following lifecycle callbacks: [onCre
 - **onWindowWillCreate**
 
   This callback is invoked before a window is created. Through this callback, you can pass window parameters to the system. If **config.windowAttribute** is set to **window.ExtensionWindowAttribute.SUB_WINDOW**, a subwindow is created. If it is set to **window.ExtensionWindowAttribute.SYSTEM_WINDOW**, a system window is created.
-
+  
   Currently, both the subwindow and system window can be created for the UIServiceExtensionAbility started by [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) and [UIExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md), but only the system window can be created for the UIServiceExtensionAbility started by [ServiceExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md). In addition, only one window is created for a UIServiceExtensionAbility.
 
 - **onWindowDidCreate**
 
-  This callback is invoked when a window is created. You can operate the window through a [Window](../reference/apis-arkui/arkts-apis-window-Window.md) object. You can use [window.on('windowVisibilityChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowvisibilitychange11) to bind and process window events, such as window showing, hiding, and destruction.
+  This callback is invoked when a window is created. You can operate the window through a [Window](../reference/apis-arkui/arkts-apis-window-Window.md) object. You can use [window.on('windowVisibilityChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowvisibilitychange11) to listen for and handle window events, such as when a window is shown, hidden, or destroyed.
 
 - **onConnect**
 
@@ -81,6 +81,8 @@ Only system applications can implement a UIServiceExtensionAbility. You must mak
 - **Switching to the full SDK**: All the APIs provided by the UIServiceExtensionAbility class are marked as system APIs and hidden by default. Therefore, you must manually obtain the full SDK from the mirror and switch to it in DevEco Studio. For details, see [Switching to Full SDK](../faqs/full-sdk-switch-guide.md).
 
 - **Requesting the AllowAppUsePrivilegeExtension privilege**: Only applications with the **AllowAppUsePrivilegeExtension** privilege can implement a UIServiceExtensionAbility. For details about how to request the privilege, see [Application Privilege Configuration](../../device-dev/subsystems/subsys-app-privilege-config-guide.md).
+
+
 
 ### Creating a UIServiceExtensionAbility
 
@@ -189,7 +191,7 @@ To manually create a UIServiceExtensionAbility in a project in DevEco Studio, pe
 
 An application calls [startUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startuiserviceextensionability14) to start a UIServiceExtensionAbility. The [onRequest()](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md#onrequest) callback is invoked, through which the background service receives the Want object passed by the caller. Once the UIServiceExtensionAbility is started, its lifecycle is independent of the client. In other words, even if the client is destroyed, the background service remains alive. However, the service is destroyed if the window fails to be created or is destroyed. Therefore, the background service must be stopped by calling [terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiserviceExtensionContext-sys.md#uiserviceextensioncontextterminateself) of [UIServiceExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-uiserviceExtensionContext-sys.md) when its work is complete.
 
-Start a new UIServiceExtensionAbility in a system application. For details about how to obtain the context, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
+  Start a new UIServiceExtensionAbility in a system application. For details about how to obtain the context, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
 
 
 ```ts

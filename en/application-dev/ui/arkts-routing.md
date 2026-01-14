@@ -106,7 +106,7 @@ The **Router** module also provides two instance modes: **Standard** and **Singl
     }
   }
   ```
-    
+  
   >**NOTE**
   >
   >In standard (multi-instance) mode, the **router.RouterMode.Standard** parameter can be omitted.
@@ -138,10 +138,10 @@ The **Router** module also provides two instance modes: **Standard** and **Singl
     }
   
     build() {
-      // ···
+      // ...
   }
   ```
-    
+  
 - Scenario 4: There is a search result list page (**SearchResult**) and a search result details page (**SearchDetail**). You want to click a result on the **SearchResult** page to go to the **SearchDetail** page. In addition, if the result has been viewed before, clicking the result displays the existing details page, instead of creating a new one. In this scenario, you can use the **replaceUrl** API and use the **Single** instance mode.
 
   <!-- @[search_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/SearchResult.ets) -->
@@ -169,8 +169,8 @@ The **Router** module also provides two instance modes: **Standard** and **Singl
     }
   
     build() {
-      // ···
-  }
+      // ...
+    }
   ```
   
 
@@ -275,7 +275,7 @@ this.getUIContext().getRouter().back();
   Return to the page through a common route.
 
   <!-- @[back_detail21](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
-  
+
   ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'pages/pageRouter/jumpPage/BackHome'
@@ -300,12 +300,12 @@ this.getUIContext().getRouter().back();
   Return to the page through a common route.
 
   <!-- @[back_detail31](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
-  
+
   ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'pages/pageRouter/jumpPage/BackHome',
     params: {
-      // Replace $r('app.string.pageRouter_jump_text7_fromHome') with the resource file you use.
+      // Replace $r('app.string.pageRouter_jump_text7_fromHome') with the actual resource file. In this example, the value in the resource file is "From the home page."
       info: $r('app.string.pageRouter_jump_text7_fromHome')
     }
   });
@@ -314,12 +314,12 @@ this.getUIContext().getRouter().back();
   Return to the page through a named route.
 
   <!-- @[back_detail32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
-  
+
   ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'myPage', // myPage is the alias of the page to return to.
     params: {
-      // Replace $r('app.string.pageRouter_jump_text7_fromHome') with the resource file you use.
+      // Replace $r('app.string.pageRouter_jump_text7_fromHome') with the actual resource file. In this example, the value in the resource file is "From the home page."
       info: $r('app.string.pageRouter_jump_text7_fromHome')
     }
   });
@@ -501,6 +501,7 @@ onBackClick(): void {
   // Call this.getUIContext().getRouter().showAlertBeforeBackPage to set the information about the confirmation dialog box.
   try {
     this.getUIContext().getRouter().showAlertBeforeBackPage({
+      // Configure the resource whose name is 'pageRouter_dialog_context' and value is a non-empty string in the resources\base\element\string.json file.
       message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string, // Set the content of the confirmation dialog box.
     });
   } catch (err) {
@@ -548,14 +549,17 @@ onBackClick() {
   // Display a custom confirmation dialog box.
   this.getUIContext().getPromptAction().showDialog({
     // "You have not completed payment yet. Are you sure you want to go back?"
-    message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string,
+    // Replace $r('app.string.pageRouter_dialog_context') with the actual resource file. In this example, the value in the resource file is "You have not completed payment yet. Are you sure you want to go back?"
+    message: $r('app.string.pageRouter_dialog_context'),
     buttons: [
       {
-        text: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_canceled') as string,
+        // Replace $r('app.string.pageRouter_dialog_canceled') with the actual resource file. In this example, the value in the resource file is "Cancel."
+        text: $r('app.string.pageRouter_dialog_canceled'),
         color: '#FF0000'
       },
       {
-        text: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_confirmed') as string,
+        // Replace $r('app.string.pageRouter_dialog_confirmed') with the actual resource file. In this example, the value in the resource file is "OK."
+        text: $r('app.string.pageRouter_dialog_confirmed'),
         color: '#0099FF'
       }
     ]
@@ -573,7 +577,7 @@ onBackClick() {
     let message = (err as BusinessError).message;
     let code = (err as BusinessError).code;
     hilog.error(DOMAIN, TAG, `Invoke showDialog failed, code is ${code}, message is ${message}`);
-  })
+  });
 }
 ```
 
@@ -666,4 +670,3 @@ struct Index {
   }
 }
 ```
-

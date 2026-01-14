@@ -35,7 +35,7 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| badgeColor | &lt;color&gt; | 	#fa2a2d | No| Background color of the badge.|
+| badgeColor | &lt;color&gt; | #fa2a2d | No| Background color of the badge.|
 | textColor | &lt;color&gt; | #ffffff | No| Text color of the number badge.|
 | textSize | &lt;length&gt; | 10px | No| Text size of the number badge.|
 | badgeSize | &lt;length&gt; | 6px | No| Size of the dot badge.|
@@ -53,7 +53,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
 
 ## Example
 
-   ```html
+```html
 <!-- xxx.hml -->
 <div class="container">
     <badge class="badge" config="{{ badgeConfig }}" visible="true" count="100" maxcount="99">
@@ -63,9 +63,9 @@ The [universal events](js-service-widget-common-events.md) are supported.
         <text class="text2">example</text>
     </badge>
 </div>
-   ```
+```
 
-   ```css
+```css
 /* xxx.css */
 .container {
     flex-direction: column;
@@ -88,9 +88,9 @@ The [universal events](js-service-widget-common-events.md) are supported.
     background-color: #46b1e3;
     font-size: 19fp;
 }
-   ```
+```
 
-   ```js
+```js
 // xxx.js
 export default {
     data: {
@@ -100,6 +100,6 @@ export default {
         }
     }
 }
-   ```
+```
 
 ![badgeSample](figures/badgeSample.png)

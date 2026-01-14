@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **Zip** module provides APIs for file compression and decompression.
+The Zip module provides APIs for file compression and decompression.
 
 > **NOTE**
 >
@@ -548,7 +548,7 @@ try {
 
 createChecksum(): Promise&lt;Checksum&gt;
 
-Creates a checksum object. This API uses a promise to return the result.
+Creates this checksum object. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -574,7 +574,7 @@ zlib.createChecksum().then((data) => {
 
 createChecksumSync():  Checksum
 
-Creates a checksum object. A checksum object instance is returned upon a success.
+Creates this checksum object. A checksum instance is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -716,7 +716,7 @@ async function demo() {
 
 crc32(crc: number, buf: ArrayBuffer): Promise&lt;number&gt;
 
-Updates the CRC-32 checksum. This API uses a promise to return the result.
+Updates a CRC-32 checksum. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -832,7 +832,7 @@ async function demo() {
 
 crc64(crc: number, buf: ArrayBuffer): Promise&lt;number&gt;
 
-Updates the CRC-64 checksum. This API uses a promise to return the result.
+Updates a CRC-64 checksum. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -945,7 +945,7 @@ checksum.getCrc64Table().then((data) => {
 
 createZip(): Promise&lt;Zip&gt;
 
-Creates this instance of a compressed or decompressed object. This API uses a promise to return the result.
+Creates this **Zip** instance. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -955,7 +955,7 @@ Creates this instance of a compressed or decompressed object. This API uses a pr
 
 | Type                        | Description                                 |
 | ---------------------------- | ------------------------------------- |
-| Promise&lt;[Zip](#zip12)&gt; | Promise used to return the result.  |
+| Promise&lt;[Zip](#zip12)&gt; | Promise used to return the result.|
 
 **Example**
 
@@ -973,7 +973,7 @@ zlib.createZip().then(data => {
 
 createZipSync(): Zip
 
-Creates an instance of a compressed or decompressed object. The instance of the compressed or decompressed object is returned upon a success.
+Creates this **Zip** instance. A **Zip** instance is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -983,7 +983,7 @@ Creates an instance of a compressed or decompressed object. The instance of the 
 
 | Type         | Description                    |
 | ------------- | ------------------------ |
-| [Zip](#zip12) | Instance of the compressed or decompressed object created.|
+| [Zip](#zip12) | The **Zip** instance created.|
 
 **Example**
 
@@ -995,7 +995,7 @@ let zip = zlib.createZipSync();
 
 ## Zip<sup>12+</sup>
 
-Provides APIs to zip or unzip data in Zlib, Deflate, or Gzip format.
+Defines the **Zip** instance. It provides APIs to zip or unzip data in Zlib, Deflate, or Gzip format.
 
 ### getZStream<sup>12+</sup>
 
@@ -1321,7 +1321,7 @@ async function demo() {
 
 compressBound(sourceLen: number): Promise&lt;number&gt;
 
-Calculates the maximum size of the compressed data to be returned.  This API uses a promise to return the result.
+Calculates the maximum size of the compressed data to be returned. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1433,7 +1433,7 @@ async function demo() {
 
 inflateSyncPoint(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-Checks the synchronization point of the current decompression stream. This API uses a promise to return the result.
+Finds the synchronization point of a decompression stream. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2333,7 +2333,7 @@ async function demo() {
 
 inflateCodesUsed(strm: ZStream): Promise&lt;number&gt;
 
-Describes the number of Huffman Trees used in a decompression stream. This API uses a promise to return the result.
+Describes the number of Huffman trees used in a decompression stream. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2828,7 +2828,7 @@ async function demo() {
 
 deflateInit2(strm: ZStream, level: CompressLevel, method: CompressMethod, windowBits: number, memLevel: MemLevel, strategy: CompressStrategy): Promise&lt;ReturnStatus&gt;
 
-Initializes a compression stream with the specified compression level, compression method, window size, memory level, and compression policy. This API uses a promise to return the result.
+Initializes a compression stream with the specified compression level, compression method, window size, memory level, and compression strategy. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3369,7 +3369,7 @@ Fine-tunes the internal compression parameters of **deflate**. This API uses a p
 | ---------- | ------- | ---- | ------------------------------- |
 | strm       | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
 | goodLength | number  | Yes  | Matched length threshold.               |
-| maxLazy    | number  | Yes  | Delay matching policy used when the compression algorithm builds a Huffman tree. The value is an integer ranging from 0 to 4. **1**–**4**: A larger value indicates a lazier algorithm, which performs a slower matching process but generates a better compression result. **0**: Lazy matching is disabled. The algorithm builds a Huffman tree as soon as possible. The compression speed is fast, but the compression ratio is low. |
+| maxLazy    | number  | Yes  | Delay matching strategy used when the compression algorithm builds a Huffman tree. The value is an integer ranging from 0 to 4. **1**–**4**: A larger value indicates a lazier algorithm, which performs a slower matching process but generates a better compression result. **0**: Lazy matching is disabled. The algorithm builds a Huffman tree as soon as possible. The compression speed is fast, but the compression ratio is low. |
 | niceLength | number  | Yes  | Appropriate delay length threshold.             |
 | maxChain   | number  | Yes  | Maximum chain length.                   |
 
@@ -3806,8 +3806,8 @@ Defines options used to compress or decompress a ZIP file.
 
 | Name                                    | Value  | Description                     |
 | ---------------------------------------- | ---- | ------------------------ |
-| PARALLEL_STRATEGY_SEQUENTIAL             | 0    | Serial compression/decompression policy (default).|
-| PARALLEL_STRATEGY_PARALLEL_DECOMPRESSION | 1    | Parallel decompression policy.           |
+| PARALLEL_STRATEGY_SEQUENTIAL             | 0    | Serial compression/decompression strategy (default).|
+| PARALLEL_STRATEGY_PARALLEL_DECOMPRESSION | 1    | Parallel decompression strategy.           |
 
 ## PathSeparatorStrategy<sup>21+</sup>
 
@@ -3957,7 +3957,7 @@ Defines **PathSeparatorStrategy**, a property of [Options](#options), used to sp
 
 createGZip(): Promise&lt;GZip&gt;
 
-Creates a gzip object. This API uses a promise to return the result.
+Creates this **GZip** object. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3983,7 +3983,7 @@ zlib.createGZip().then((data) => {
 
 createGZipSync():  GZip
 
-Creates a gzip object. The gzip object instance is returned upon a success.
+Creates this **GZip** object. A **GZip** instance is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4224,7 +4224,7 @@ struct Index {
 
 gzeof(): Promise&lt;number&gt;
 
-Checks whether the read position (position from which data is read) of the gzip file has reached the end of the file. This API uses a promise to return the result.
+Checks whether the position from which data is read has reached the end of the gzip file. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5469,7 +5469,7 @@ struct Index {
 
 gzputs(str: string): Promise&lt;number&gt;
 
-Compresses the given null-terminated strings and writes them to the file, excluding the terminating null characters. This API uses a promise to return the result.
+Compresses the given null-terminated strings and writes them to the file, excluding the null operator. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5609,7 +5609,7 @@ struct Index {
 
 gzprintf(format: string, ...args: Array&lt;string | number&gt;): Promise&lt;number&gt;
 
-Converts and formats the parameters under the control of the string format and then compresses and writes them into a file, as shown in the **fprintf()**.  This API uses a promise to return the result.
+Converts and formats the parameters under the control of the string format and then compresses and writes them into a file, as shown in the **fprintf()**. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

@@ -36,7 +36,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 ## DataBlob
 
-Represents data of the Binary Large Object (BLOB) type.
+Encapsulates binary data. The core field **data** is of the Uint8Array type.
 
  **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -56,6 +56,10 @@ Encapsulates the parameters used for encryption or decryption. You need to const
 
 It applies to the symmetric block cipher modes that require parameters such as the initialization vector (IV). If the IV is not required (for example, the ECB mode), pass in **null** to [init()](#init-1).
 
+> **NOTE**
+>
+> An initialization vector (IV) is a byte sequence used to introduce randomness or uniqueness in symmetric encryption modes (such as CBC, CTR, OFB, CFB, GCM, CCM, and Poly1305). It ensures that different ciphertexts are generated for the same plaintext under the same key.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Security.CryptoFramework.Cipher
@@ -64,7 +68,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| algName | string | No  | No  | Algorithm for symmetric encryption or decryption. The value can be:<br> - **IvParamsSpec**: applicable to CBC,|CTR,|OFB,|and CFB modes.<br> - **GcmParamsSpec**: applicable to GCM mode.<br> - **CcmParamsSpec**: applicable to CCM mode.|
+| algName | string | No  | No  | Algorithm for symmetric encryption or decryption. The value can be:<br> - **IvParamsSpec**: applicable to CBC,|CTR,|OFB,|and CFB modes.<br> - **GcmParamsSpec**: applicable to the GCM mode.<br> - **CcmParamsSpec**: applicable to the CCM mode.|
 
 > **NOTE**
 >
@@ -94,7 +98,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 Encapsulates the parameters for encryption or decryption using a block cipher mode that requires an IV. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
 
-**GcmParamsSpec** applies to GCM mode.
+**GcmParamsSpec** applies to the GCM mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -118,7 +122,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 Encapsulates the parameters for encryption or decryption using a block cipher mode that requires an IV. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
 
-**CcmParamsSpec** applies to CCM mode.
+**CcmParamsSpec** applies to the CCM mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -128,8 +132,8 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name   | Type                 | Read-Only| Optional| Description                                                        |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv      | [DataBlob](#datablob) | No  | No  | IV, which is of 7 bytes.                             |
-| aad     | [DataBlob](#datablob) | No  | No  | AAD, which is of 8 bytes.                            |
+| iv      | [DataBlob](#datablob) | No  | No  | IV for encryption and decryption. Only 7 bytes are supported. If the length of the input **iv** parameter exceeds 7 bytes, the excess part will be truncated.                             |
+| aad     | [DataBlob](#datablob) | No  | No  | AAD for encryption and decryption. The AAD value contains 1 to 2,048 bytes.                           |
 | authTag | [DataBlob](#datablob) | No  | No  | Authentication tag, which is of 12 bytes.<br>When CCM mode is used for encryption, you need to extract the last 12 bytes from the [DataBlob](#datablob) returned by [doFinal()](#dofinal) or [doFinalSync()](#dofinalsync12) and use them as **authTag** in [CcmParamsSpec](#ccmparamsspec) for [init()](#init-1) or [initSync()](#initsync12).|
 
 > **NOTE**
@@ -201,7 +205,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | ECC_PK_X_BN | 209 | X coordinate of the public key **pk** (a point on the elliptic curve) in the ECC algorithm.|
 | ECC_PK_Y_BN | 210 | Y coordinate of the public key **pk** (a point on the elliptic curve) in the ECC algorithm.|
 | ECC_FIELD_TYPE_STR | 211 | Elliptic curve field type in the ECC algorithm. Currently, only the **Fp** field is supported.|
-| ECC_FIELD_SIZE_NUM | 212 | Size of the field in the ECC algorithm, in bits.<br>**NOTE**: The size of the **Fp** field is the length of the prime **p**, in bits.|
+| ECC_FIELD_SIZE_NUM | 212 | Size of the field in the ECC algorithm, in bits.<br>Note: The size of the **Fp** field is the length of the prime **p**, in bits.|
 | ECC_CURVE_NAME_STR | 213 | Standards for Efficient Cryptography Group (SECG) curve name in the ECC algorithm.|
 | RSA_N_BN | 301 | Modulus **n** in the RSA algorithm.|
 | RSA_SK_BN | 302 | Private key **sk** (private key exponent **d**) in the RSA algorithm.|
@@ -731,7 +735,7 @@ Defines the child class of [KdfSpec](#kdfspec11). It is a parameter for HKDF key
 >
 > **key** is the original key material entered by the user. **info** and **salt** are optional. An empty string can be passed in based on the mode.
 >
-> For example, if the mode is **EXTRACT_AND_EXPAND**, all parameter values must be passed in. If the mode is **EXTRACT_ONLY**, **info** can be empty. When **HKDFspec** is constructed, pass in **null** to **info**.
+> For example, if the mode is **EXTRACT_AND_EXPAND**, all parameter values must be passed in. If the mode is **EXTRACT_ONLY**, **info** can be empty. When **HKDFSpec** is constructed, pass in **null** to **info**.
 >
 > The default mode is **EXTRACT_AND_EXPAND**. The value **HKDF|SHA256|EXTRACT_AND_EXPAND** is equivalent to **HKDF|SHA256**.
 
@@ -769,7 +773,7 @@ Defines the child class of [KdfSpec](#kdfspec11). It is a parameter for X963KDF 
 | ------- | ------ | ---- | ---- | ------------ |
 | key | string \| Uint8Array | No  | No  | Key material.|
 | info | Uint8Array | No  | No  | Additional description.|
-| keySize | int | No  | No  | Length of the derived key, in bytes. The value must be a positive integer.|
+| keySize | number | No  | No  | Length of the derived key, in bytes. The value must be a positive integer.|
 
 > **NOTE**
 >
@@ -882,7 +886,7 @@ Represents the SM2 signature data that contains (r, s).
 
 Provides APIs for key operations. Before performing cryptographic operations (such as encryption and decryption), you need to construct a child class object of **Key** and pass it to [init()](#init-1) of the [Cipher](#cipher) instance.
 
-Keys can be generated by a key generator.
+Keys can be generated by a child class key generator. For details, see the child class description. The child classes include [SymKey](#symkey), [PubKey](#pubkey), and [PriKey](#prikey).
 
 ### Attributes
 
@@ -1122,7 +1126,7 @@ Obtains the key data. This API returns the result synchronously. The key can be 
 
 | Name| Type                 | Mandatory| Description                |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | Yes  | Encoding format of the key data to obtain. The format for a public key can be **'PKCS1'** or **'X509'**.|
+| format  | string | Yes  | Encoding format of the key data to obtain. The format of a public key can be **'PKCS1'** or **'X509'**.|
 
 **Return value**
 
@@ -1542,7 +1546,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 generateSymKey(callback: AsyncCallback\<SymKey>): void
 
-Generates a key randomly. This API uses an asynchronous callback to return the result.
+Generates a random key using this symmetric key generator. This API uses an asynchronous callback to return the result.
 
 This API can be used only after a **symKeyGenerator** instance is created by using [createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator).
 
@@ -1587,7 +1591,7 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
 
 generateSymKey(): Promise\<SymKey>
 
-Generates a key randomly. This API uses a promise to return the result.
+Generates a random key using this symmetric key generator. This API uses a promise to return the result.
 
 This API can be used only after a **symKeyGenerator** instance is created by using [createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator).
 
@@ -1632,7 +1636,7 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
 
 generateSymKeySync(): SymKey
 
-Generates a symmetric key randomly. This API returns the result synchronously.
+Generates a random key using this symmetric key generator. This API returns the result synchronously.
 
 This API can be used only after a **symKeyGenerator** instance is created by using [createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator).
 
@@ -1679,7 +1683,7 @@ function testGenerateSymKeySync() {
 
 convertKey(key: DataBlob, callback: AsyncCallback\<SymKey>): void
 
-Converts data into a symmetric key. This API uses an asynchronous callback to return the result.
+Generates a symmetric key based on specified data. This API uses an asynchronous callback to return the result.
 
 This API can be used only after a **symKeyGenerator** instance is created by using [createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator).
 
@@ -1735,7 +1739,7 @@ function testConvertKey() {
 
 convertKey(key: DataBlob): Promise\<SymKey>
 
-Converts data into a symmetric key. This API uses a promise to return the result.
+Generates a symmetric key based on specified data. This API uses a promise to return the result.
 
 Before using this API, create a symmetric key generator by using [createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator).
 
@@ -1797,7 +1801,7 @@ function testConvertKey() {
 
 convertKeySync(key: DataBlob): SymKey
 
-Converts data into a symmetric key. This API returns the result synchronously.
+Generates a symmetric key based on specified data.
 
 This API can be used only after a **symKeyGenerator** instance is created by using [createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator).
 
@@ -1913,7 +1917,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
-Generates a key pair randomly. This API uses an asynchronous callback to return the result.
+Generates a random key pair using this asymmetric key generator. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1925,7 +1929,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name    | Type                   | Mandatory| Description                          |
 | -------- | ----------------------- | ---- | ------------------------------ |
-| callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the key pair obtained.|
+| callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -1956,7 +1960,7 @@ asyKeyGenerator.generateKeyPair((err, keyPair) => {
 
 generateKeyPair(): Promise\<KeyPair>
 
-Generates an asymmetric key pair randomly. This API uses a promise to return the result.
+Generates a random key pair using this asymmetric key generator. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1968,7 +1972,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
+| Promise\<[KeyPair](#keypair)> | Promise used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -1999,7 +2003,7 @@ keyGenPromise.then(keyPair => {
 
 generateKeyPairSync(): KeyPair
 
-Generates an asymmetric key pair randomly. This API returns the result synchronously.
+Generates a random key pair using this asymmetric key generator. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2043,7 +2047,7 @@ try {
 
 convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCallback\<KeyPair\>): void
 
-Converts data into an asymmetric key. This API uses an asynchronous callback to return the result. For details, see **Key Conversion**.
+Converts data into an asymmetric key pair. This API uses an asynchronous callback to return the result. For details, see **Key Conversion**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2057,7 +2061,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | -------- | ----------- | ---- | ------------------------------ |
 | pubKey   | [DataBlob](#datablob) \| null<sup>10+</sup>    | Yes  | Public key material to convert. If no public key is required, set this parameter to **null**. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.       |
 | priKey   | [DataBlob](#datablob) \| null<sup>10+</sup>   | Yes  | Private key material to convert. If no private key is required, set this parameter to **null**. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.       |
-| callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the key pair obtained.|
+| callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -2092,7 +2096,7 @@ asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
 
 convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise\<KeyPair>
 
-Converts data into an asymmetric key. This API uses a promise to return the result. For details, see **Key Conversion**.
+Converts data into an asymmetric key pair. This API uses a promise to return the result. For details, see **Key Conversion**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2111,7 +2115,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
+| Promise\<[KeyPair](#keypair)> | Promise used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -2208,7 +2212,7 @@ try {
 
 convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 
-Converts data into an asymmetric key. This API uses a promise to return the result.
+Converts data into an asymmetric key pair. This API uses a promise to return the result.
 
 > **NOTE**
 > 1. When **convertPemKey()** is used to convert an external string into an asymmetric key object defined by the Crypto framework, the public key must comply with the ASN.1 syntax, X.509 specifications, and PEM encoding format, and the private key must comply with the ASN.1 syntax, PKCS #8 specifications, and PEM encoding format.
@@ -2224,13 +2228,13 @@ Converts data into an asymmetric key. This API uses a promise to return the resu
 | Name  | Type   | Mandatory| Description            |
 | ------ | -------- | ---- | ---------------- |
 | pubKey | string \| null | Yes | Public key material to convert. If no public key is required, set this parameter to **null**.|
-| priKey | string \| null | Yes | Private key material to convert. If no private key is required, set this parameter to **null**. <br>**NOTE**: **pubKey** and **priKey** cannot be **null** at the same time.|
+| priKey | string \| null | Yes | Private key material to convert. If no private key is required, set this parameter to **null**.<br>Note: The public key and private key materials cannot be both null or empty strings.|
 
 **Return value**
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
+| Promise\<[KeyPair](#keypair)> | Promise used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -2302,14 +2306,14 @@ Converts data into an asymmetric key pair. Encrypted private keys are supported.
 | Name  | Type   | Mandatory| Description            |
 | ------ | -------- | ---- | ---------------- |
 | pubKey | string \| null | Yes | Public key material to convert. If no public key is required, set this parameter to **null**.|
-| priKey | string \| null | Yes | Private key material to convert. If no private key is required, set this parameter to **null**. <br>**NOTE**: **pubKey** and **priKey** cannot be **null** at the same time.|
+| priKey | string \| null | Yes | Private key material to convert. If no private key is required, set this parameter to **null**.<br>Note: The public key and private key materials cannot be both null or empty strings.|
 | password | string | Yes| Password used to decrypt the private key.|
 
 **Return value**
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
+| Promise\<[KeyPair](#keypair)> | Promise used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -2375,7 +2379,7 @@ Converts data into an asymmetric key pair. This API returns the result synchrono
 | Name  | Type   | Mandatory| Description            |
 | ------ | -------- | ---- | ---------------- |
 | pubKey | string \| null| Yes  | Public key material to convert. If no public key is required, set this parameter to **null**.|
-| priKey | string \| null| Yes  | Private key material. If the private key does not need to be converted, you can pass in **null**. <br>**NOTE**: **pubKey** and **priKey** cannot be **null** at the same time.|
+| priKey | string \| null| Yes  | Private key material. If the private key does not need to be converted, set this parameter to **null**.<br>Note: The public key and private key materials cannot be both null or empty strings.|
 
 **Return value**
 
@@ -2453,7 +2457,7 @@ Converts data into an asymmetric key pair. Encrypted private keys are supported.
 | Name  | Type   | Mandatory| Description            |
 | ------ | -------- | ---- | ---------------- |
 | pubKey | string \| null| Yes  | Public key material to convert. If no public key is required, set this parameter to **null**.|
-| priKey | string \| null| Yes  | Private key material. If the private key does not need to be converted, you can pass in **null**. <br>**NOTE**: **pubKey** and **priKey** cannot be **null** at the same time.|
+| priKey | string \| null| Yes  | Private key material. If the private key does not need to be converted, you can pass in **null**. <br>Note: **pubKey** and **priKey** cannot be **null** at the same time.|
 | password | string | Yes| Password used to decrypt the private key.|
 
 **Return value**
@@ -2516,8 +2520,6 @@ createAsyKeyGeneratorBySpec(asyKeySpec: AsyKeySpec): AsyKeyGeneratorBySpec
 
 Obtains an asymmetric key generator instance with the specified key parameters.
 
-For details about the supported specifications, see [Asymmetric Key Generation and Conversion Specifications](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md).
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -2528,7 +2530,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name | Type  | Mandatory| Description                            |
 | ------- | ------ | ---- | -------------------------------- |
-| asyKeySpec | [AsyKeySpec](#asykeyspec10) | Yes  | Key parameters. The **AsyKeyGenerator** generates the public/private key based on the specified parameters.|
+| asyKeySpec | [AsyKeySpec](#asykeyspec10) | Yes  | Key parameters. The **AsyKeyGenerator** generates the public/private key based on the specified parameters.<br>For details about the supported specifications, see [Asymmetric Key Generation and Conversion Specifications](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md).|
 
 **Return value**
 
@@ -2600,7 +2602,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
-Generates an asymmetric key pair. This API uses an asynchronous callback to return the result.
+Generates a key pair using this asymmetric key generator. This API uses an asynchronous callback to return the result.
 
 If a key parameter of the [COMMON_PARAMS_SPEC](#asykeyspectype10) type is used to create the key generator, a key pair will be randomly generated. If a key parameter of the [KEY_PAIR_SPEC](#asykeyspectype10) type is used to create the key generator, you can obtain a key pair that is consistent with the specified key parameters.
 
@@ -2614,7 +2616,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name    | Type                   | Mandatory| Description                          |
 | -------- | ----------------------- | ---- | ------------------------------ |
-| callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the key pair obtained.|
+| callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -2674,7 +2676,7 @@ function testGenerateKeyPair()
 
 generateKeyPair(): Promise\<KeyPair>
 
-Generates an asymmetric key pair. This API uses a promise to return the result.
+Generates a key pair using this asymmetric key generator. This API uses a promise to return the result.
 
 If a key parameter of the [COMMON_PARAMS_SPEC](#asykeyspectype10) type is used to create the key generator, a key pair will be randomly generated. If a key parameter of the [KEY_PAIR_SPEC](#asykeyspectype10) type is used to create the key generator, you can obtain a key pair that is consistent with the specified key parameters.
 
@@ -2688,7 +2690,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
+| Promise\<[KeyPair](#keypair)> | Promise used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -2747,7 +2749,7 @@ function testGenerateKeyPair()
 
 generateKeyPairSync(): KeyPair
 
-Generates a public key using this asymmetric key generator. This API returns the result synchronously.
+Generates a key pair using this asymmetric key generator. This API returns the result synchronously.
 
 If a key parameter of the [COMMON_PARAMS_SPEC](#asykeyspectype10) type is used to create the key generator, a key pair will be randomly generated. If a key parameter of the [KEY_PAIR_SPEC](#asykeyspectype10) type is used to create the key generator, you can obtain a key pair that is consistent with the specified key parameters.
 
@@ -2824,7 +2826,7 @@ function testGenerateKeyPairSync()
 
 generatePriKey(callback: AsyncCallback\<PriKey>): void
 
-Generates an asymmetric key pair. This API uses an asynchronous callback to return the result.
+Generates a private key using this asymmetric key generator. This API uses an asynchronous callback to return the result.
 
 If [PRIVATE_KEY_SPEC](#asykeyspectype10) is used to create a key generator, the key generator generates the specified private key. If [KEY_PAIR_SPEC](#asykeyspectype10) is used to create a key generator, you can obtain the specified private key from the key pair generated.
 
@@ -2838,7 +2840,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name    | Type                   | Mandatory| Description                          |
 | -------- | ----------------------- | ---- | ------------------------------ |
-| callback | AsyncCallback\<[PriKey](#prikey)> | Yes  | Callback used to return the key pair obtained.|
+| callback | AsyncCallback\<[PriKey](#prikey)> | Yes  | Callback used to return the private pair generated.|
 
 **Error codes**
 
@@ -2898,7 +2900,7 @@ function testGeneratePriKey()
 
 generatePriKey(): Promise\<PriKey>
 
-Generates an asymmetric key pair. This API uses a promise to return the result.
+Generates a private key using this asymmetric key generator. This API uses a promise to return the result.
 
 If a key parameter of the [PRIVATE_KEY_SPEC](#asykeyspectype10) type is used to create the key generator, a private key can be obtained. If a key parameter of the [KEY_PAIR_SPEC](#asykeyspectype10) type is used to create the key generator, you can obtain the private key from the key pair generated.
 
@@ -2912,7 +2914,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| Promise\<[PriKey](#prikey)> | Promise used to return the key pair generated.|
+| Promise\<[PriKey](#prikey)> | Promise used to return the private key generated.|
 
 **Error codes**
 
@@ -2972,7 +2974,7 @@ function testGeneratePriKey()
 
 generatePriKeySync(): PriKey
 
-Generates a public key using this asymmetric key generator. This API returns the result synchronously.
+Generates a private key using this asymmetric key generator. This API returns the result synchronously.
 
 If a key parameter of the [PRIVATE_KEY_SPEC](#asykeyspectype10) type is used to create the key generator, a private key can be obtained. If a key parameter of the [KEY_PAIR_SPEC](#asykeyspectype10) type is used to create the key generator, you can obtain the private key from the key pair generated.
 
@@ -2984,7 +2986,7 @@ If a key parameter of the [PRIVATE_KEY_SPEC](#asykeyspectype10) type is used to 
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| [PriKey](#prikey) | Asymmetric key pair generated.|
+| [PriKey](#prikey) | Private key generated.|
 
 **Error codes**
 
@@ -3047,7 +3049,7 @@ function testGeneratePriKeySync()
 
 generatePubKey(callback: AsyncCallback\<PubKey>): void
 
-Generates an asymmetric key pair. This API uses an asynchronous callback to return the result.
+Generates a public key using this asymmetric key generator. This API uses an asynchronous callback to return the result.
 
 If a key parameter of the [PUBLIC_KEY_SPEC](#asykeyspectype10) type is used to create the key generator, the specified public key can be obtained. If a key parameter of the [KEY_PAIR_SPEC](#asykeyspectype10) type is used to create the key generator, you can obtain the specified public key from the key pair generated.
 
@@ -3061,7 +3063,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name    | Type                   | Mandatory| Description                          |
 | -------- | ----------------------- | ---- | ------------------------------ |
-| callback | AsyncCallback\<[PubKey](#pubkey)> | Yes  | Callback used to return the key pair obtained.|
+| callback | AsyncCallback\<[PubKey](#pubkey)> | Yes  | Callback used to return the public key generated.|
 
 **Error codes**
 
@@ -3121,7 +3123,7 @@ function testGeneratePubKey()
 
 generatePubKey(): Promise\<PubKey>
 
-Generates an asymmetric key pair. This API uses a promise to return the result.
+Generates a public key using this asymmetric key generator. This API uses a promise to return the result.
 
 If a key parameter of the [PUBLIC_KEY_SPEC](#asykeyspectype10) type is used to create the key generator, the specified public key can be obtained. If a key parameter of the [KEY_PAIR_SPEC](#asykeyspectype10) type is used to create the key generator, you can obtain the specified public key from the key pair generated.
 
@@ -3135,7 +3137,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| Promise\<[PubKey](#pubkey)> | Promise used to return the key pair generated.|
+| Promise\<[PubKey](#pubkey)> | Promise used to return the public key generated.|
 
 **Error codes**
 
@@ -3207,7 +3209,7 @@ If [PUBLIC_KEY_SPEC](#asykeyspectype10) is used to create a key generator, the k
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| [PubKey](#pubkey) | Asymmetric key pair generated.|
+| [PubKey](#pubkey) | Public key generated.|
 
 **Error codes**
 
@@ -3268,7 +3270,7 @@ function testGeneratePubKeySync()
 
 ## ECCKeyUtil<sup>11+</sup>
 
-Provides APIs for generating common parameters for an asymmetric key pair based on the elliptic curve name.
+Generates common parameters for an asymmetric key pair based on the specified elliptic curve name.
 
 ### genECCCommonParamsSpec<sup>11+</sup>
 
@@ -3497,7 +3499,7 @@ Generates SM2 ciphertext in ASN.1 format.
 | Name| Type  | Mandatory| Description                                            |
 | ------ | ------ | ---- | ------------------------------------------------ |
 | spec   | [SM2CipherTextSpec](#sm2ciphertextspec12) | Yes  | SM2 ciphertext parameters.|
-| mode  | string | No  | Order of the SM2 parameters in the ciphertext. Currently, only C1C3C2 is supported. |
+| mode  | string | No  | Order of the SM2 parameters in the ciphertext. Currently, only C1C3C2 is supported. If this parameter is left empty or is an empty string, the default value is used.|
 
 **Return value**
 
@@ -3549,8 +3551,8 @@ Obtains SM2 ciphertext parameters from the SM2 ciphertext in ASN.1 format.
 
 | Name| Type  | Mandatory| Description                                            |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| cipherText     | [DataBlob](#datablob)                 | Yes  | SM2 ciphertext in ASN.1 format.
-| mode  | string | No  | Order of the SM2 parameters in the ciphertext. Currently, only C1C3C2 is supported. |
+| cipherText     | [DataBlob](#datablob)                 | Yes  | SM2 ciphertext in ASN.1 format.|
+| mode  | string | No  | Order of the SM2 parameters in the ciphertext. Currently, only C1C3C2 is supported. If this parameter is left empty or set to an empty string, the default value is used.|
 
 **Return value**
 
@@ -3588,8 +3590,6 @@ createCipher(transformation: string): Cipher
 
 Creates a [Cipher](#cipher) instance based on the specified algorithm.
 
-For details about the supported specifications, see [Symmetric Key Encryption and Decryption Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md) and [Asymmetric Key Encryption and Decryption Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md).
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Security.CryptoFramework.Cipher
@@ -3600,7 +3600,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name        | Type  | Mandatory| Description                                                        |
 | -------------- | ------ | ---- | ------------------------------------------------------------ |
-| transformation | string | Yes  | Combination of the algorithm name (including the key length), encryption mode, and padding algorithm of the **Cipher** instance to create.|
+| transformation | string | Yes  | Combination of the algorithm name (including the key length), encryption mode, and padding algorithm of the **Cipher** instance to create.<br>For details about the supported specifications, see [Symmetric Key Encryption and Decryption Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md) and [Asymmetric Key Encryption and Decryption Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md).|
 
 > **NOTE**
 >
@@ -3667,7 +3667,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCallback\<void>): void
 
-Initializes a [cipher](#cipher) instance. This API returns the result synchronously. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
+Initializes the [cipher](#cipher) object for encryption and decryption. This API uses an asynchronous callback to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
 
 This API can be used only after a [Cipher](#cipher) instance is created by using [createCipher](#cryptoframeworkcreatecipher).
 
@@ -3695,13 +3695,14 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                            |
 | 17620002 | failed to convert parameters between arkts and c.                                          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
 | 17630001 | crypto operation error.|
 
 ### init
 
 init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise\<void>
 
-Initializes a [cipher](#cipher) instance. This API uses a promise to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
+Initializes the cipher object for encryption and decryption. This API uses a promise to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
 
 This API can be used only after a [Cipher](#cipher) instance is created by using [createCipher](#cryptoframeworkcreatecipher).
 
@@ -3734,6 +3735,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                     |
 | 17620002 | failed to convert parameters between arkts and c.                                    |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
 | 17630001 | crypto operation error.|
 
 ### initSync<sup>12+</sup>
@@ -3765,13 +3767,14 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
 | 17630001 | crypto operation error. |
 
 ### update
 
 update(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
 
-Updates the data to encrypt or decrypt by segment. This API uses an asynchronous callback to return the encrypted or decrypted data.
+Updates the data to encrypt or decrypt by segment. This API uses an asynchronous callback to return the result.
 
 This API can be called only after the [Cipher](#cipher) instance is initialized by using [init()](#init-1).
 
@@ -3793,7 +3796,7 @@ This API can be called only after the [Cipher](#cipher) instance is initialized 
 >
 >    For details about the sample code for passing data in multiple **update()** calls, see [Encryption and Decryption by Segment with an AES Symmetric Key (GCM Mode)](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md).
 > 3. RSA or SM2 asymmetric encryption and decryption do not support **update()**.
-> 4. If CCM is used in symmetric encryption or decryption, **update()** can be called only once. In the encryption process, you can either use **update()** to encrypt data and use **doFinal()** to obtain **authTag** or use **doFinal()** without using **update()**. In the decryption process, you can either use **update()** once or use **doFinal()** to decrypt data and verify the tag.
+> 4. If CCM is used in symmetric encryption or decryption, **update()** can be called only once. In the encryption process, you can either use **update()** to encrypt data and use **doFinal()** to obtain **authTag** or use **doFinal()** without using **update()**. In the decryption process, you can either use **update()** or **doFinal()** once to decrypt data and verify the tag.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3817,13 +3820,14 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                               |
 | 17620002 | failed to convert parameters between arkts and c.                            |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error.                     |
 
 ### update
 
 update(data: DataBlob): Promise\<DataBlob>
 
-Updates the data to encrypt or decrypt by segment. This API uses a promise to return the encrypted or decrypted data.
+Updates the data to encrypt or decrypt by segment. This API uses a promise to return the result.
 
 This API can be called only after the [Cipher](#cipher) instance is initialized by using [init()](#init-1).
 
@@ -3835,7 +3839,7 @@ This API can be called only after the [Cipher](#cipher) instance is initialized 
 >    The amount of the data to be passed in by **update()** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to pass data in multiple **update()** calls rather than processing it all at once.<br>
 >    For details about the sample code for passing data in multiple **update()** calls, see [Encryption and Decryption by Segment with an AES Symmetric Key (GCM Mode)](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md).
 > 3. RSA or SM2 asymmetric encryption and decryption do not support **update()**.
-> 4. If CCM is used in symmetric encryption or decryption, **update()** can be called only once. In the encryption process, you can either use **update()** to encrypt data and use **doFinal()** to obtain **authTag** or use **doFinal()** without using **update()**. In the decryption process, you can either use **update()** once or use **doFinal()** to decrypt data and verify the tag.
+> 4. If CCM is used in symmetric encryption or decryption, **update()** can be called only once. In the encryption process, you can either use **update()** to encrypt data and use **doFinal()** to obtain **authTag** or use **doFinal()** without using **update()**. In the decryption process, you can either use **update()** or **doFinal()** once to decrypt data and verify the tag.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3864,6 +3868,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                |
 | 17620002 | failed to convert parameters between arkts and c.                               |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error.                      |
 
 ### updateSync<sup>12+</sup>
@@ -3901,6 +3906,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error. |
 
 ### doFinal
@@ -3913,7 +3919,7 @@ doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 - For other symmetric encryption and decryption modes and GCM and CCM decryption modes, concatenating the results of **update()** and **doFinal()** throughout the process will yield the complete plaintext or ciphertext.
 
 
- (2) Encrypts or decrypts the input data for RSA or SM2 asymmetric encryption/decryption. This API uses an asynchronous callback to return the result. If a large amount of data needs to be encrypted/decrypted, call **doFinal()** multiple times and concatenate the result of each **doFinal()** to obtain the complete plaintext/ciphertext.
+(2) Encrypts or decrypts the data passed in this time in RSA and SM2 asymmetric encryption or decryption. This API uses an asynchronous callback to return the encrypted or decrypted data. If a large amount of data needs to be encrypted/decrypted, call **doFinal()** multiple times and concatenate the result of each **doFinal()** to obtain the complete plaintext/ciphertext.
 
 > **NOTE**
 >
@@ -3945,6 +3951,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
 | 17620002 | failed to convert parameters between arkts and c.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error. |
 
 **Encryption with AES GCM (example)**
@@ -4003,12 +4010,12 @@ function cipherByCallback() {
 
 doFinal(data: DataBlob | null): Promise\<DataBlob>
 
-(1) Encrypts or decrypts the remaining data (generated by the block cipher mode) and the data passed in by **doFinal()** to finalize the symmetric encryption or decryption. This API uses a promise to return the encrypted or decrypted data.<br>If a small amount of data needs to be encrypted or decrypted, you can use **doFinal()** to pass in data without using **update()**. If all the data has been passed in by **update()**, you can pass in **null** in **data** of **doFinal()**.<br>The output of **doFinal()** varies with the symmetric encryption/decryption mode in use.
+(1) Encrypts or decrypts the remaining data (generated by the block cipher mode) and the data passed in this time to finalize the symmetric encryption or decryption. This API uses a promise to return the encrypted or decrypted data.<br>If a small amount of data needs to be encrypted or decrypted, you can use **doFinal()** to pass in data without using **update()**. If all the data has been passed in by **update()**, you can pass in **null** in **data** of **doFinal()**.<br>The output of **doFinal()** varies with the symmetric encryption/decryption mode in use.
 
 - Symmetric encryption in GCM and CCM mode: The result consists of the ciphertext and **authTag** (the last 16 bytes for GCM and the last 12 bytes for CCM). If **data** in **doFinal** is null, the result of **doFinal** is **authTag**.<br>During decryption, **authTag** must be set in [GcmParamsSpec](#gcmparamsspec) or [CcmParamsSpec](#ccmparamsspec), and the ciphertext must be set in **data**.
 - For other symmetric encryption and decryption modes and GCM and CCM decryption modes, concatenating the results of **update()** and **doFinal()** throughout the process will yield the complete plaintext or ciphertext.
 
-(2) Encrypts or decrypts the input data for RSA or SM2 asymmetric encryption/decryption. This API uses a promise to return the result. If a large amount of data is to be processed, call **doFinal()** multiple times and concatenate the results to obtain the complete plaintext or ciphertext.
+(2) Encrypts or decrypts the data passed in RSA and SM2 asymmetric encryption or decryption. This API uses a promise to return the encrypted or decrypted data. If a large amount of data is to be processed, call **doFinal()** multiple times and concatenate the results to obtain the complete plaintext or ciphertext.
 
 > **NOTE**
 >
@@ -4049,6 +4056,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                |
 | 17620002 | failed to convert parameters between arkts and c.                               |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error.                      |
 
 **Encryption with AES GCM (example)**
@@ -4141,6 +4149,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
 | 17620002 | failed to convert parameters between arkts and c.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error. |
 
 **Encryption with AES GCM (example)**
@@ -4219,6 +4228,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Unsupported itemType.|
 | 17630001 | crypto operation error. |
 
 **Example**
@@ -4265,6 +4275,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Unsupported itemType.|
 | 17630001 | crypto operation error. |
 
 **Example**
@@ -4285,8 +4296,6 @@ createSign(algName: string): Sign
 
 Creates a **Sign** instance.
 
-For details about the supported specifications, see [Signing and Signature Verification Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md).
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Security.CryptoFramework.Signature
@@ -4297,7 +4306,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | Yes  | Signing algorithm to use. Currently, RSA, ECC, DSA, SM2<sup>10+</sup> and Ed25519<sup>11+</sup> are supported. If RSA PKCS1 is used, you must set the digest. If RSA PSS is used, you must set the digest and mask digest. For signing, you can set **OnlySign** to enable the data digest to be used for signing only.|
+| algName | string | Yes  | Signing algorithm to use. Currently, RSA, ECC, DSA, SM2<sup>10+</sup> and Ed25519<sup>11+</sup> are supported. If RSA PKCS1 is used, you must set the digest. If RSA PSS is used, you must set the digest and mask digest. For signing, you can set **OnlySign** to enable the data digest to be used for signing only.<br>For details about the supported specifications, see [Signing and Signature Verification Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md).|
 
 **Return value**
 
@@ -4362,7 +4371,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 init(priKey: PriKey, callback: AsyncCallback\<void>): void
 
-Initializes the **Sign** instance with a private key. This API uses an asynchronous callback to return the result. **init**, **update**, and **sign** must be used together. **init** and **sign** are mandatory, and **update** is optional.
+Initializes the **Sign** object using a private key. This API uses an asynchronous callback to return the result. **init**, **update**, and **sign** must be used together. **init** and **sign** are mandatory, and **update** is optional.
 
 The **Sign** class does not support repeated use of **ini**.
 
@@ -4394,7 +4403,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 init(priKey: PriKey): Promise\<void>
 
-Initializes the **Sign** instance with a private key. This API uses a promise to return the result. **init**, **update**, and **sign** must be used together. **init** and **sign** are mandatory, and **update** is optional.
+Initializes the **Sign** object using a private key. This API uses a promise to return the result. **init**, **update**, and **sign** must be used together. **init** and **sign** are mandatory, and **update** is optional.
 
 The **Sign** class does not support repeated use of **ini**.
 
@@ -4460,7 +4469,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 update(data: DataBlob, callback: AsyncCallback\<void>): void
 
-Updates the data to be signed. This API uses an asynchronous callback to return the result.
+Updates data to be signed. This API uses an asynchronous callback to return the result.
 
 This API can be called only after the [Sign](#sign) instance is initialized by using [init()](#init-2).
 
@@ -4500,7 +4509,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 update(data: DataBlob): Promise\<void>
 
-Updates the data to be signed. This API uses a promise to return the result.
+Updates data to be signed. This API uses a promise to return the result.
 
 Before using this API, you must use [Sign](#sign) to initialize the [init()](#init-3) instance.
 
@@ -4545,7 +4554,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 updateSync(data: DataBlob): void
 
-Updates the data to be signed. This API returns the result synchronously.
+Updates data to be signed. This API returns the result synchronously.
 
 This API can be called only after the [Sign](#sign) instance is initialized by using [initSync()](#initsync12-1).
 
@@ -4588,7 +4597,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 sign(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 
-Signs the data. This API uses an asynchronous callback to return the result.
+Signs data. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4618,7 +4627,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 sign(data: DataBlob | null): Promise\<DataBlob>
 
-Signs the data. This API uses a promise to return the result.
+Signs data. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4779,7 +4788,7 @@ setSignSpec(itemType: SignSpecItem, itemValue: number): void
 
 setSignSpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 
-Sets signing specifications. You can use this API to set signing parameters that cannot be set by **createSign**.
+Sets signing specifications. You can use this API to set signing parameters that cannot be set by [createSign](#cryptoframeworkcreatesign).
 
 
 Currently, only RSA and SM2 are supported. Since API version 11, SM2 signing parameters can be set.
@@ -4874,8 +4883,6 @@ createVerify(algName: string): Verify
 
 Creates a **Verify** instance.
 
-For details about the supported specifications, see [Signing and Signature Verification Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md).
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Security.CryptoFramework.Signature
@@ -4886,7 +4893,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | Yes  | Signing algorithm to use. Currently, RSA, ECC, DSA, SM2<sup>10+</sup> and Ed25519<sup>11+</sup> are supported. If RSA PKCS1 is used, you must set the digest. If RSA PSS is used, you must set the digest and mask digest. When the RSA algorithm is used for signature verification, you can use **Recover** to verify and recover the signed data.|
+| algName | string | Yes  | Signing algorithm to use. Currently, RSA, ECC, DSA, SM2<sup>10+</sup> and Ed25519<sup>11+</sup> are supported. If RSA PKCS1 is used, you must set the digest. If RSA PSS is used, you must set the digest and mask digest. When the RSA algorithm is used for signature verification, you can use **Recover** to verify and recover the signed data.<br>For details about the supported specifications, see [Signing and Signature Verification Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md).|
 
 **Return value**
 
@@ -4918,7 +4925,7 @@ let verifier3 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
 
 ## Verify
 
-Provides APIs for signature verification. Before using any API of the **Verify** class, you must create a **Verify** instance by using [createVerify(algName: string): Verify](#cryptoframeworkcreateverify). Invoke **init()**, **update()**, and **sign()** in this class in sequence to complete the signature verification. For details about the sample code, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md).
+Provides APIs for signature verification. Before using any API of the **Verify** class, you must create a **Verify** instance by using [createVerify(algName: string): Verify](#cryptoframeworkcreateverify). Invoke **init()**, **update()**, and **verify()** in this class in sequence to complete the signature verification. For details about the sample code, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md).
 
 The **Verify** class does not support repeated initialization. When a new key is used for signature verification, you must create a new **Verify** instance and call **init()** for initialization.
 
@@ -4946,7 +4953,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 init(pubKey: PubKey, callback: AsyncCallback\<void>): void
 
-Initializes the **Verify** instance with a public key. This API uses an asynchronous callback to return the result. **init**, **update**, and **verify** must be used together. **init** and **verify** are mandatory, and **update** is optional.
+Initializes the **Verify** object using a public key. This API uses an asynchronous callback to return the result. **init**, **update**, and **verify** must be used together. **init** and **verify** are mandatory, and **update** is optional.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4976,7 +4983,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 init(pubKey: PubKey): Promise\<void>
 
-Initializes the **Verify** instance with a public key. This API uses a promise to return the result. **init**, **update**, and **verify** must be used together. **init** and **verify** are mandatory, and **update** is optional.
+Initializes the **Verify** object using a public key. This API uses a promise to return the result. **init**, **update**, and **verify** must be used together. **init** and **verify** are mandatory, and **update** is optional.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5044,7 +5051,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 update(data: DataBlob, callback: AsyncCallback\<void>): void
 
-Updates the data for signature verification. This API uses an asynchronous callback to return the result.
+Updates the data for signature verifications. This API uses an asynchronous callback to return the result.
 
 This API can be called only after the [Verify](#verify) instance is initialized using [init](#init-4).
 
@@ -5133,7 +5140,7 @@ This API can be called only after the [Verify](#verify) instance is initialized 
 
 > **NOTE**
 >
-> You can call **updateSync** multiple times or do not use **updateSync** (call [verifySync](#verifysync12)after [initSync](#initsync12-2)), depending on the data volume.<br>
+> You can call **updateSync** multiple times or do not use **updateSync** (call [verifySync](#verifysync12) after [initSync](#initsync12-2)), depending on the data volume.<br>
 > The amount of the data to be passed in by **updateSync** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to call **updateSync** multiple times to pass in the data by segment. This prevents too much memory from being requested at a time.<br>
 > For details about the sample code for calling **updateSync** multiple times in signature verification, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md). The operations of other algorithms are similar.<br>
 > If the DSA algorithm is used for signature verification and the digest algorithm is **NoHash**, **updateSync** is not supported. If **updateSync** is called in this case, **ERR_CRYPTO_OPERATION** will be returned.
@@ -5169,7 +5176,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 verify(data: DataBlob | null, signatureData: DataBlob, callback: AsyncCallback\<boolean>): void
 
-Verifies the signature. This API uses an asynchronous callback to return the result.
+Verifies the signature of the data. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5183,7 +5190,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | ------------- | -------------------- | ---- | ---------- |
 | data          | [DataBlob](#datablob) \| null<sup>10+</sup>             | Yes  | Data to pass in. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.|
 | signatureData | [DataBlob](#datablob)              | Yes  | Signature data. |
-| callback      | AsyncCallback\<boolean> | Yes  | Callback used to return the signature verification result.|
+| callback      | AsyncCallback\<boolean> | Yes  | Callback used to return the signature verification result. **true** means that the signature verification is successful; **false** otherwise.|
 
 **Error codes**
 
@@ -5200,7 +5207,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 verify(data: DataBlob | null, signatureData: DataBlob): Promise\<boolean>
 
-Verifies the signature. This API uses a promise to return the result.
+Verifies the signature of the data. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5370,7 +5377,7 @@ function verifyBySync() {
 
 recover(signatureData: DataBlob): Promise\<DataBlob | null>
 
-Recovers the original data from a signature. This API uses a promise to return the result.
+Recovers the original data from a signature. This API returns the result synchronously. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -5581,8 +5588,6 @@ createKeyAgreement(algName: string): KeyAgreement
 
 Creates a **KeyAgreement** instance.
 
-For details about the supported specifications, see [Key Agreement Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md).
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Security.CryptoFramework.KeyAgreement
@@ -5593,7 +5598,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | Yes  | Key agreement algorithm to use. In addition to ECC, X25519 and DH are supported since API version 11.|
+| algName | string | Yes  | Key agreement algorithm to use. In addition to ECC, X25519 and DH are supported since API version 11.<br>For details about the supported specifications, see [Key Agreement Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md).|
 
 **Return value**
 
@@ -5639,7 +5644,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 generateSecret(priKey: PriKey, pubKey: PubKey, callback: AsyncCallback\<DataBlob>): void
 
-Generates a shared secret based on the given private key and public key. This API uses an asynchronous callback to return the shared secret generated.
+Generates a shared secret based on the given private key and public key. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5670,7 +5675,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 generateSecret(priKey: PriKey, pubKey: PubKey): Promise\<DataBlob>
 
-Generates a shared secret based on the given private key and public key. This API uses a promise to return the shared secret generated.
+Generates a shared secret based on the given private key and public key. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5839,7 +5844,7 @@ try {
 
 ## Md
 
-Provides APIs for MD operations. Before using any API of the **Md** class, you must create an **Md** instance by using [createMd](#cryptoframeworkcreatemd).
+Provides APIs for message digest (MD) operations. Before using any API of the **Md** class, you must create an **Md** instance by using [createMd](#cryptoframeworkcreatemd).
 
 ### Attributes
 
@@ -5857,7 +5862,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 update(input: DataBlob, callback: AsyncCallback\<void>): void
 
-Updates the digest status for MD operations. This API uses an asynchronous callback to return the result. **update** must be used with **digest** together. **digest** is mandatory, and **update** is optional.
+Updates the MD status. This API uses an asynchronous callback to return the result. **update** must be used with **digest** together. **digest** is mandatory, and **update** is optional.
 
 > **NOTE**
 >
@@ -5892,7 +5897,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 update(input: DataBlob): Promise\<void>
 
-Updates the MD digest status. This API uses a promise to return the result. **update** must be used with **digest** together. **digest** is mandatory, and **update** is optional.
+Updates the MD status. This API uses a promise to return the result. **update** must be used with **digest** together. **digest** is mandatory, and **update** is optional.
 
 > **NOTE**
 >
@@ -5962,7 +5967,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 digest(callback: AsyncCallback\<DataBlob>): void
 
-Generates an MD. This API uses an asynchronous callback to return the result.
+Generates a message digest (MD). This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -6234,7 +6239,7 @@ try {
 
 ## Mac
 
-Provides APIs for MAC operations. Before using any API of the **Mac** class, you must create a **Mac** instance by using [createMac](#cryptoframeworkcreatemac).
+Provides APIs for message authentication code (MAC) operations. Before using any API of the **Mac** class, you must create a **Mac** instance by using [createMac](#cryptoframeworkcreatemac).
 
 ### Attributes
 
@@ -6252,7 +6257,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 init(key: SymKey, callback: AsyncCallback\<void>): void
 
-Initializes the MAC computation with a symmetric key. This API uses an asynchronous callback to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
+Initializes the MAC computation using a symmetric key. This API uses an asynchronous callback to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
 
   > **NOTE**
   >
@@ -6285,7 +6290,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 init(key: SymKey): Promise\<void>
 
-Initializes the MAC computation with a symmetric key. This API uses a promise to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
+Initializes the MAC computation using a symmetric key. This API uses a promise to return the result. **init**, **update**, and **doFinal** must be used together. **init** and **doFinal** are mandatory, and **update** is optional.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -6319,7 +6324,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 initSync(key: SymKey): void
 
-Initializes the MAC computation with a symmetric key. This API returns the result synchronously. **initSync**, **updateSync**, and **doFinalSync** must be used together. **initSync** and **doFinalSync** are mandatory, and **updateSync** is optional.
+Initializes the MAC computation using a symmetric key. This API returns the result synchronously. **initSync**, **updateSync**, and **doFinalSync** must be used together. **initSync** and **doFinalSync** are mandatory, and **updateSync** is optional.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -6345,7 +6350,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 update(input: DataBlob, callback: AsyncCallback\<void>): void
 
-Updates the MAC status. This API uses a callback to return the result.
+Updates the MAC status. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -6447,7 +6452,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 doFinal(callback: AsyncCallback\<DataBlob>): void
 
-Finishes the MAC computation. This API uses an asynchronous callback to return the result.
+MAC computation result. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -6499,7 +6504,7 @@ function hmacByCallback() {
 
 doFinal(): Promise\<DataBlob>
 
-Finishes the MAC computation. This API uses a promise to return the result.
+MAC computation result. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -6656,8 +6661,6 @@ createRandom(): Random
 
 Creates a **Random** instance for generating random numbers and setting seeds.
 
-For details about the supported specifications, see [Supported Algorithms and Specifications](../../security/CryptoArchitectureKit/crypto-generate-random-number.md#supported-algorithms-and-specifications).
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Security.CryptoFramework.Rand
@@ -6668,7 +6671,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type  | Description                                           |
 | ------ | ----------------------------------------------- |
-| [Random](#random) | Returns the [Random](#random) instance created.|
+| [Random](#random) | Returns the [Random](#random) instance created.<br>For details about the supported specifications, see [Supported Algorithms and Specifications](../../security/CryptoArchitectureKit/crypto-generate-random-number.md#supported-algorithms-and-specifications).|
 
 **Error codes**
 
@@ -6694,7 +6697,7 @@ try {
 
 ## Random
 
-Provides APIs for computing random numbers and setting seeds. Before using any API of the **Random** class, you must create a **Random** instance by using [createRandom](#cryptoframeworkcreaterandom).
+Provides APIs for random number operations. Before using any API of the **Random** class, you must create a **Random** instance by using [createRandom](#cryptoframeworkcreaterandom).
 
 ### Attributes
 
@@ -6955,7 +6958,7 @@ rand.generateRandom(12, (err, randData) => {
 
 createKdf(algName: string): Kdf
 
-Creates a key derivation function instance.<br>For details about the supported specifications, see [Key Derivation Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md).
+Creates a key derivation function instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -6967,7 +6970,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name | Type  | Mandatory| Description                             |
 | ------- | ------ | ---- | --------------------------------- |
-| algName | string | Yes  | Key derivation algorithm (including the hash function for the HMAC). Currently, only PBKDF2 HKDF, and scrypt are supported. For example, **PBKDF2\|SHA256**,|**HKDF\|SHA256**,|and **SCRYPT**.|
+| algName | string | Yes  | Key derivation algorithm (including the hash function for the HMAC). Currently, only PBKDF2, HKDF, and scrypt are supported. For example, **PBKDF2\|SHA256**,|SHA256", "HKDF\|and **SCRYPT**.<br>For details about the supported specifications, see [Key Derivation Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md).|
 
 **Return value**
 
@@ -7036,6 +7039,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **Example**
@@ -7114,6 +7118,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **Example**
@@ -7191,6 +7196,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.  |
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c. |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **Example**

@@ -11,9 +11,9 @@ The [Popup](arkts-popup-and-menu-components-popup.md) API is a great option for 
 ## Displaying a Popup
 
 To display a popup, call the [openPopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openpopup18) API. The following is a basic example:
-   
+
  <!-- @[open_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
- 
+
  ``` TypeScript
  this.promptAction.openPopup(this.contentNode, { id: targetId }, {
    enableArrow: true
@@ -27,27 +27,27 @@ To display a popup, call the [openPopup](../reference/apis-arkui/arkts-apis-uico
  ```
 
 ### Creating a ComponentContent Instance
-   
-   When using **openPopup**, you need to provide a [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md) instance to define the popup content. **wrapBuilder(buildText)** encapsulates the custom component, and **new Params(this.message)** is the input parameter for the custom component. This parameter is optional and can be a basic data type.
-   
+
+Use the **openPopup** API to display a menu and define **ComponentContent** to customize the popup content. For details about the specifications, see [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md).
+
   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
-  
+
   ``` TypeScript
   private contentNode: ComponentContent<Object> =
     new ComponentContent(this.uiContext, wrapBuilder(buildText), this.message);
   ```
-   
-   If your **wrapBuilder** includes other components (such as [Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md) or [Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)), the [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#componentcontent-1) constructor must include four parameters, and the **options** parameter must be **{ nestingBuilderSupported: true }**.
-   
+
+If **wrapBuilder** contains other components (such as [Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md) and [Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)), you need to set [nestingBuilderSupported](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12) to **true** when creating a **ComponentContent**.
+
   <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
-  
+
   ``` TypeScript
   @Builder
   export function buildText(params: Params) {
     Popup({
       // Set the icon for the menu.
       icon: {
-        // Replace $r('app.media.app_icon') with the image resource file you use.
+        // Replace $r('app.media.app_icon') with the actual resource file.
         image: $r('app.media.app_icon'),
         width: 32,
         height: 32,
@@ -93,32 +93,76 @@ To display a popup, call the [openPopup](../reference/apis-arkui/arkts-apis-uico
 
 
 ### Providing Bound Component Information
-   
-   When calling **openPopup**, you must provide the [TargetInfo](../reference/apis-arkui/arkts-apis-uicontext-i.md#targetinfo18) of the bound component. Without a valid target, the popup won't display.
-   
-  <!-- @[frame_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
+
+When calling **openPopup**, you must provide the [TargetInfo](../reference/apis-arkui/arkts-apis-uicontext-i.md#targetinfo18) of the bound component. If no valid target is passed, the popup cannot be displayed.
+
+Currently, there are two ways to set the target node:
+
+- If **id** is a number, you should set it to the component's **UniqueID**, whose uniqueness is guaranteed by the system.
   
-  ``` TypeScript
-  let frameNode: FrameNode | null = this.uiContext.getFrameNodeByUniqueId(this.getUniqueId());
-  let targetId = frameNode?.getChild(0)?.getUniqueId();
-  ```
+   <!-- @[frame_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
+   
+   ``` TypeScript
+   let frameNode: FrameNode | null = this.uiContext.getFrameNodeByUniqueId(this.getUniqueId());
+   let targetId = frameNode?.getChild(0)?.getUniqueId();
+   ```
+   
+- If **id** is a string, you should set it to the component's universal attribute [id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id). If the uniqueness of the ID cannot be ensured due to multiple-team development or reused custom component, you can set the **componentId** attribute to specify the ID range to accurately specify the target node. In this case, the **componentId** attribute can be set to the parent component or the **UniqueID** of the custom component.
+  
+   <!-- @[openPopupWithTargetIdString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopupWithTargetIdString.ets) -->
+   
+   ``` TypeScript
+   build() {
+     NavDestination() {
+       Column() {
+         Row() {
+           Button('button1')
+             .id(this.targetIdString)
+         }
+   
+         Row() {
+           Button('button2')
+             .id(this.targetIdString)
+         }
+   
+         Button('openPopup')
+           .onClick(() => {
+             let frameNode: FrameNode | null = this.uiContext.getFrameNodeByUniqueId(this.getUniqueId());
+             let componentId = frameNode?.getChild(1)?.getChild(0)?.getChild(1)?.getUniqueId();
+             if (componentId == undefined) {
+               this.componentId = 0;
+             } else {
+               this.componentId = componentId;
+             }
+             this.promptActionClass.setPromptAction(this.promptAction);
+             this.promptActionClass.setContentNode(this.contentNode);
+             this.promptActionClass.setOptions(this.options);
+             this.promptActionClass.setIsPartialUpdate(false);
+             this.promptActionClass.setTarget({ id: this.targetIdString, componentId: this.componentId });
+             this.promptActionClass.openPopup();
+           })
+       }
+     }
+   }
+   ```
+   
 
 ### Customizing the Popup Style
-   
-   When calling **openPopup**, you can customize the menu style using [PopupCommonOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18).
-   
+
+When calling **openPopup**, you can customize the menu style using [PopupCommonOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18).
+
   <!-- @[private_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
-  
+
   ``` TypeScript
   private options: PopupCommonOptions = { enableArrow: true };
   ```
 
 ## Updating the Popup Style
 
-To update the popup style, use the [updatePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18) API, supported since API version 18. You can update the style fully or incrementally. However, certain properties, including **showInSubWindow**, **focusable**, **onStateChange**, **onWillDismiss**, and **transition**, cannot be updated.
-   
+To update the popup style, use the [updatePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18) API, supported since API version 18. You can update the style fully or incrementally. However, certain attributes, including **showInSubWindow** of [PopupCommonOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18), **focusable**, **onStateChange**, **onWillDismiss**, and **transition**, cannot be updated.
+
   <!-- @[update_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
-  
+
   ``` TypeScript
   this.promptAction.updatePopup(this.contentNode, {
     enableArrow: false
@@ -130,14 +174,14 @@ To update the popup style, use the [updatePopup](../reference/apis-arkui/arkts-a
       hilog.error(0xFF00, 'popupBuildText', 'updatePopup error: ' + err.code + ' ' + err.message);
     });
   ```
-  
+
 
 ## Closing the Popup
 
 To close the popup, use the [closePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closepopup18) API, supported since API version 18.
-   
+
   <!-- @[close_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
-  
+
   ``` TypeScript
   this.promptAction.closePopup(this.contentNode)
     .then(() => {
@@ -147,7 +191,7 @@ To close the popup, use the [closePopup](../reference/apis-arkui/arkts-apis-uico
       hilog.error(0xFF00, 'popupBuildText', 'closePopup error: ' + err.code + ' ' + err.message);
     });
   ```
-  
+
 
 > **NOTE**
 >
@@ -159,7 +203,7 @@ To close the popup, use the [closePopup](../reference/apis-arkui/arkts-apis-uico
 You can encapsulate a popup using the [HAR](../quick-start/har-package.md) package to provide display, update, and close capabilities.
 
   <!-- @[main_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupMainPage.ets) -->
-  
+
   ``` TypeScript
   import { BusinessError } from '@kit.BasicServicesKit';
   import { ComponentContent, TargetInfo, PromptAction } from '@kit.ArkUI';
@@ -229,10 +273,10 @@ You can encapsulate a popup using the [HAR](../quick-start/har-package.md) packa
     }
   }
   ```
-  
+
 
   <!-- @[open_popup_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
-  
+
   ``` TypeScript
   import { PromptActionClass } from './PopupMainPage';
   import { ComponentContent, PromptAction } from '@kit.ArkUI';
@@ -310,6 +354,6 @@ You can encapsulate a popup using the [HAR](../quick-start/har-package.md) packa
     }
   }
   ```
-  
+
 
 ![image](figures/UIopenPopup.gif)

@@ -792,6 +792,7 @@ scrollTo(options: ScrollOptions)
 scrollEdge(value: Edge, options?: ScrollEdgeOptions)
 
 滚动到容器边缘，不区分滚动轴方向，Edge.Top和Edge.Start表现相同，Edge.Bottom和Edge.End表现相同。
+
 Scroll组件默认有动画，Grid、List、WaterFlow组件默认无动画。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -881,7 +882,7 @@ Grid、List、WaterFlow组件有懒加载机制，组件内容没有加载并布
 
 | 类型  | 说明 |
 | -------- | -------- |
-|  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动总偏移量。<br/>**说明：**<br/>当scroller控制器未绑定容器组件或者容器组件被异常释放时，currentOffset的返回值为空。|
+|  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动总偏移量。<br/>**说明：**<br/>当scroller控制器未绑定容器组件或者容器组件被异常释放时，currentOffset的返回值为undefined。|
 
 ### scrollToIndex
 

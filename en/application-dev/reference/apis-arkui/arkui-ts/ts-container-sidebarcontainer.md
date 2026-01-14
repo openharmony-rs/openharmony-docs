@@ -412,6 +412,7 @@ This example demonstrates how to use the **SideBarContainer** component and impl
 @Entry
 @Component
 struct SideBarContainerExample {
+  // Replace $r("app.media.icon") with the image resource file you use.
   normalIcon: Resource = $r("app.media.icon");
   selectedIcon: Resource = $r("app.media.icon");
   @State arr: number[] = [1, 2, 3];
@@ -444,6 +445,7 @@ struct SideBarContainerExample {
     }
     .controlButton({
       icons: {
+        // Replace $r('app.media.drawer') with the image resource file you use.
         hidden: $r('app.media.drawer'),
         shown: $r('app.media.drawer'),
         switching: $r('app.media.drawer')

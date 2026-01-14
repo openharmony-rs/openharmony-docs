@@ -35,8 +35,7 @@ import { media } from '@kit.MediaKit';
 
 createVideoRecorder(callback: AsyncCallback\<VideoRecorder>): void
 
-创建视频录制实例。使用callback异步回调。
-一台设备只允许创建一个录制实例。
+创建视频录制实例（一台设备只允许创建一个录制实例）。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -77,8 +76,7 @@ media.createVideoRecorder((error: BusinessError, video: media.VideoRecorder) => 
 
 createVideoRecorder(): Promise\<VideoRecorder>
 
-创建视频录制实例。使用Promise异步回调。
-一台设备只允许创建一个录制实例。
+创建视频录制实例（一台设备只允许创建一个录制实例）。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -743,6 +741,7 @@ videoRecorder.prepare(videoConfig).then(() => {
 getInputSurface(callback: AsyncCallback\<string>): void
 
 获得录制需要的surface。使用callback异步回调。
+
 开发者从此surface中获取surfaceBuffer，填入相应的数据。
 
 应当注意，填入的视频数据需要携带时间戳（单位ns），buffersize。时间戳的起始时间请以系统启动时间为基准。
@@ -792,6 +791,7 @@ videoRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 getInputSurface(): Promise\<string>;
 
 获得录制需要的surface。使用Promise异步回调。
+
 开发者从此surface中获取surfaceBuffer，填入相应的数据。
 
 应当注意，填入的视频数据需要携带时间戳（单位ns），buffersize。时间戳的起始时间请以系统启动时间为基准。

@@ -68,7 +68,17 @@ let netConnectionCellular = connection.createNetConnection({
 
 getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 
-异步获取默认激活的数据网络，使用callback方式作为异步方法。可以使用[getNetCapabilities](#connectiongetnetcapabilities)去获取网络类型、拥有能力等信息。
+获取系统默认使用的网络ID，使用callback异步回调。
+
+> **说明：**
+>
+>- 系统默认使用的网络，该网络的capabilities必须具备[NET_CAPABILITY_INTERNET](#netcap)且不是VPN类型的网络。
+>
+>- 该接口的返回由系统决定，与应用是否指定网络无关。
+>
+>- 一般情况下，优先级：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
+>
+>- NetHandle为网络唯一标识，当无网络可用时，返回0，该ID可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -112,7 +122,17 @@ connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
 
 getDefaultNet(): Promise\<NetHandle>
 
-异步获取默认激活的数据网络，使用Promise方式作为异步方法。可以使用[getNetCapabilities](#connectiongetnetcapabilities)去获取网络的类型、拥有的能力等信息。
+获取系统默认使用的网络ID，使用Promise异步回调。
+
+> **说明：**
+>
+>- 系统默认使用的网络，该网络的capabilities必须具备[NET_CAPABILITY_INTERNET](#netcap)且不是VPN类型的网络。
+>
+>- 该接口的返回由系统决定，与应用是否指定网络无关。
+>
+>- 一般情况下，优先级：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
+>
+>- NetHandle为网络唯一标识，当无网络可用时，返回0，该id可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -150,7 +170,17 @@ connection.getDefaultNet().then((data: connection.NetHandle) => {
 
 getDefaultNetSync(): NetHandle
 
-使用同步方法获取默认激活的数据网络。可以使用[getNetCapabilities](#connectiongetnetcapabilities)去获取网络的类型、拥有的能力等信息。
+同步获取系统默认使用的网络ID。
+
+> **说明：**
+>
+>- 系统默认使用的网络，该网络的capabilities必须具备[NET_CAPABILITY_INTERNET](#netcap)且不是VPN类型的网络。
+>
+>- 该接口的返回由系统决定，与应用是否指定网络无关。
+>
+>- 一般情况下，优先级：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
+>
+>- NetHandle为网络唯一标识，当无网络可用时，返回0，该id可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -3035,6 +3065,9 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 ## ConnectionProperties
 
 网络连接信息。
+>**注意：**
+>
+> linkAddresses、routes和dnses可能为空，需要做好空值保护。 
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -3105,7 +3138,7 @@ type HttpRequest = http.HttpRequest
 
 type TCPSocket = socket.TCPSocket
 
-定义一个TCPSocket对象，可以通过[socket.constructTCPSocketInstance](js-apis-socket.md#socketconstructtcpsocketinstance7)创建。
+定义一个TCPSocket对象，可以通过[socket.constructTCPSocketInstance](js-apis-socket.md#socketconstructtcpsocketinstance)创建。
 
 **系统能力**：SystemCapability.Communication.NetStack
 

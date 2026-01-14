@@ -6,16 +6,14 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-The photoAccessHelper module provides APIs for user album management, including creating or deleting a user album, adding images and videos to a user album, and deleting images and videos from a user album.
+**photoAccessHelper** provides APIs for managing user albums, including querying and renaming albums, as well as adding and deleting images and videos within albums.
 
 > **NOTE**
 >
-> Before you get started, obtain a PhotoAccessHelper instance and apply for required permissions. For details, see [Before You Start](photoAccessHelper-preparation.md).
->
-> Unless otherwise specified, the PhotoAccessHelper instance obtained in [Before You Start](photoAccessHelper-preparation.md) is used to call photoAccessHelper APIs. If the code for obtaining the PhotoAccessHelper instance is missing, an error will be reported to indicate that photoAccessHelper is not defined.
+> Before you get started, obtain a **PhotoAccessHelper instance** and apply for required permissions. For details, see [Before You Start](photoAccessHelper-preparation.md).
+> Unless otherwise specified, the **PhotoAccessHelper** instance obtained in [Before You Start](photoAccessHelper-preparation.md) is used to call **photoAccessHelper** APIs. If the code for obtaining the **PhotoAccessHelper** instance is missing, an error will be reported to indicate that **photoAccessHelper** is not defined.
 
-To ensure application running efficiency, most PhotoAccessHelper APIs are asynchronously implemented in callback or promise mode. The following examples use promise-based APIs. For details about the APIs, see [Module Description](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md).
-
+To ensure application running efficiency, most **PhotoAccessHelper** APIs are asynchronously implemented in callback or promise mode. The following examples use promise-based APIs. For details about the APIs, see [Module Description](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md).
 Unless otherwise specified, all the media assets to be obtained in this document exist in the database. If no media asset is obtained when the sample code is executed, check whether the media assets exist in the database.
 
 <!--Del-->
@@ -32,7 +30,7 @@ The album name must meet the following requirements:
 
 **Prerequisites**
 
-- A PhotoAccessHelper instance is obtained.
+- A **PhotoAccessHelper** instance is obtained.
 - The application has the ohos.permission.WRITE_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Create a user album.
@@ -66,7 +64,7 @@ Use [PhotoAccessHelper.getAlbums](../../reference/apis-media-library-kit/arkts-a
 
 **Prerequisites**
 
-- A PhotoAccessHelper instance is obtained.
+- A **PhotoAccessHelper** instance is obtained.
 - The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Obtain the user album **albumName**.
@@ -105,7 +103,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 To rename a user album, modify the **Album.albumName** attribute of the album.
 
-Use [FetchResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md) to obtain the user album to rename, use [MediaAlbumChangeRequest.setAlbumName](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#setalbumname11) to set the new name, and then use [PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) to apply the changes to the database.
+Use [MediaAlbumChangeRequest.setAlbumName](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#setalbumname11) to set the new name, and then use [PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) to apply the changes to the database.
+
+Use [FetchResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md) to obtain the user album to rename.
 
 The new user album names must meet the following requirements:
 

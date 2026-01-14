@@ -89,7 +89,7 @@ List组件交叉轴方向在没有设置尺寸时，其尺寸默认自适应父�
 
 List组件主轴默认是垂直方向，即默认情况下不需要手动设置List方向，就可以构建一个垂直滚动列表。
 
-若是水平滚动列表场景，将List的listDirection属性设置为Axis.Horizontal即可实现。listDirection默认为Axis.Vertical，即主轴默认是垂直方向。
+若是水平滚动列表场景，将List的[listDirection](../reference/apis-arkui/arkui-ts/ts-container-list.md#listdirection)属性设置为Axis.Horizontal即可实现。listDirection默认为Axis.Vertical，即主轴默认是垂直方向。
 
 
 <!-- @[build_a_horizontal_scrolling_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
@@ -639,7 +639,7 @@ export struct StickyHeaderList {
   }
 
   build() {
-    // ···
+    // ...
           List() {
             // 懒加载ListItemGroup，contactsGroups为多个分组联系人contacts和标题title的数据集合
             LazyForEach(contactsGroupsDataSource, (itemGroup: ContactsGroup) => {
@@ -648,7 +648,10 @@ export struct StickyHeaderList {
                 if (itemGroup.contacts) {
                   LazyForEach(new ContactsGroupDataSource(itemGroup.contacts), (item: Contact) => {
                     ListItem() {
-                    // ···
+                      Row() {
+                        Image(item.icon).width(40).height(40).margin(10)
+                        Text(item.name).fontSize(20)
+                      }.width('100%').justifyContent(FlexAlign.Start)
                     }
                   }, (item: Contact) => JSON.stringify(item))
                 }
@@ -656,7 +659,7 @@ export struct StickyHeaderList {
             }, (itemGroup: ContactsGroup) => JSON.stringify(itemGroup))
           }
           .sticky(StickyStyle.Header) // 设置吸顶，实现粘性标题效果
-        // ···
+          // ...
   }
 }
 ```
@@ -1043,6 +1046,7 @@ ListItem() {
 删除列表项功能实现主要流程如下：
 
 1. 列表的删除功能一般进入编辑模式后才可使用，所以需要提供编辑模式的入口。
+
    以待办列表为例，通过监听列表项的长按事件，当用户长按列表项时，进入编辑模式。
 
    <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
@@ -1083,6 +1087,7 @@ ListItem() {
    ```
 
 2. 需要响应用户的选择交互，记录要删除的列表项数据。
+
    在待办列表中，通过勾选框的勾选或取消勾选，响应用户勾选列表项变化，记录所有选择的列表项。
 
    <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
@@ -1409,6 +1414,21 @@ List(
    <!-- @[construct_list_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
    
    ``` TypeScript
+   @Builder
+   MessageItem(message: Message) {
+     Column() {
+       Text(`${message.sender}: ${message.content}`)
+         .fontSize(16)
+         .textAlign(TextAlign.Start)
+         .padding(10)
+         .backgroundColor(message.sender === 'system' ? '#F0F0F0' : '#E6F3FF')
+         .borderRadius(8)
+     }
+     .width('100%')
+     .alignItems(HorizontalAlign.Start)
+     .margin({ bottom: 8 })
+   }
+
    @State messages: Message[] = [];
    
    aboutToAppear(): void {

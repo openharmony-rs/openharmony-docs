@@ -12,11 +12,13 @@ The module provides information about an ability. Unless otherwise specified, th
 > 
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module are deprecated since API version 9. You are advised to use [bundleManager-AbilityInfo](js-apis-bundleManager-abilityInfo.md) instead.
+> The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-AbilityInfo](js-apis-bundleManager-abilityInfo.md) instead.
 
 ## AbilityInfo<sup>(deprecated)<sup>
 
-This API is deprecated since API version 9. You are advised to use [bundleManager-AbilityInfo](js-apis-bundleManager-abilityInfo.md#abilityinfo-1) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [bundleManager-AbilityInfo](js-apis-bundleManager-abilityInfo.md#abilityinfo-1) instead.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework
 

@@ -94,7 +94,7 @@ Row({ space: 35 }) {
 
   **图5** Column容器内子元素在垂直方向上的排列图 
 
-![vertial-arrangement-child-column](figures/vertial-arrangement-child-column.png)
+![vertical-arrangement-child-column](figures/vertical-arrangement-child-column.png)
 
 - justifyContent(FlexAlign.Start，默认值)：元素在垂直方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
 
@@ -215,7 +215,7 @@ Row({ space: 35 }) {
 
   **图6** Row容器内子元素在水平方向上的排列图  
 
-![vertial-arrangement-child-row](figures/vertial-arrangement-child-row.png)
+![vertical-arrangement-child-row](figures/vertical-arrangement-child-row.png)
 
 - justifyContent(FlexAlign.Start，默认值)：元素在水平方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
 
@@ -608,7 +608,8 @@ struct BlankExample {
 - [在List中添加滚动条](arkts-layout-development-create-list.md#添加滚动条)：当List子项过多一屏放不下时，可以将每一项子元素放置在不同的组件中，通过滚动条进行拖动展示。可以通过[scrollBar](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrollbar)属性设置滚动条的常驻状态，[edgeEffect](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#edgeeffect)属性设置拖动到内容最末端的回弹效果。
 
 - 使用[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件：在线性布局中，开发者可以进行垂直方向或者水平方向的布局。当一屏无法完全显示时，可以在Column或Row组件的外层包裹一个可滚动的容器组件Scroll来实现可滑动的线性布局。
-    垂直方向布局中使用Scroll组件：
+
+  垂直方向布局中使用Scroll组件：
 
   <!-- @[ScrollVerticalExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ScrollVerticalExample.ets) -->
   

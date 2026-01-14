@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **Marquee** component is used to display a scrolling piece of text. Text scrolling is activated only when the content width exceeds the component's width.
+The **Marquee** component is used to display a scrolling piece of text. Text scrolling is activated only when the content width is greater than or equal to the component's width.
 
 
 >  **NOTE**
@@ -58,7 +58,7 @@ Describes the initialization options of the **Marquee** component.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| start<sup>8+</sup> | boolean | No| No| Whether to start scrolling.<br>**true**: Start scrolling.<br>**false**: Do not start scrolling.<br>**NOTE**<br>This parameter cannot be used to restart scrolling that has been completed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| start<sup>8+</sup> | boolean | No| No| Whether to start scrolling.<br>**true**: Start scrolling. **false**: Do not start scrolling.<br>**NOTE**<br>This parameter cannot be used to restart scrolling that has been completed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | step<sup>8+</sup> | number | No| Yes| Step length of the scrolling animation text. If the value is greater than the text width of the marquee, the default value is used.<br>Default value: **6**<br>Unit: [vp](ts-pixel-units.md)<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | loop<sup>8+</sup> | number | No| Yes| Number of times the marquee will scroll. If the value is less than or equal to **0**, the marquee will scroll continuously.<br>Default value: **-1**<br>**NOTE**<br>Regardless of the value, the marquee scrolls only once on an ArkTS widget.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | fromStart<sup>8+</sup> | boolean | No| Yes| Whether the text scrolls from the start.<br>**true** to scroll from the start, **false** to scroll in reverse.<br>Default value: **true**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -180,7 +180,7 @@ Sets the scrolling strategy for the marquee after its attributes are updated. (T
 
 onStart(event: () =&gt; void)
 
-Called when the marquee text changes or starts scrolling.
+Triggered when the marquee text changes or starts scrolling.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -192,7 +192,7 @@ Called when the marquee text changes or starts scrolling.
 
 | Name| Type                                 | Mandatory| Description          |
 | ------ | ------------------------------------- | ---- | -------------- |
-| event  |  () =&gt; void | Yes  | Called when the marquee text changes or starts scrolling.|
+| event  |  () =&gt; void | Yes  | Callback invoked when the marquee text changes or starts scrolling.|
 
 ### onBounce
 

@@ -6,7 +6,7 @@
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
 
-The AlbumPickerComponent embedded in the UI of an application allows the application to access the albums in the user directory without any permission.
+The **AlbumPickerComponent** embedded in the UI of an application allows the application to access the albums in the user directory without any permission.
 
 This component must be used together with [PhotoPickerComponent](ohos-file-PhotoPickerComponent.md). When a user selects an album by using the **AlbumPickerComponent**, the **PhotoPickerComponent** is instructed to update the images and videos in the album.
 
@@ -26,14 +26,9 @@ The [universal properties](../apis-arkui/arkui-ts/ts-component-general-attribute
 
 ## AlbumPickerComponent
 
-AlbumPickerComponent({
-  albumPickerOptions?: AlbumPickerOptions,
-  onAlbumClick?: (albumInfo: AlbumInfo) => boolean,
-  onEmptyAreaClick?: EmptyAreaClickCallback,
-  albumPickerController?: AlbumPickerController
-})
+AlbumPickerComponent( {albumPickerOptions?: AlbumPickerOptions, onAlbumClick?: (albumInfo: AlbumInfo) => boolean, onEmptyAreaClick?: EmptyAreaClickCallback, albumPickerController?: AlbumPickerController })
 
-Allows the application to access the albums in the user directory without any permission.
+The AlbumPickerComponent embedded in the UI of an application allows the application to access the albums in the user directory without any permission.
 
 **Decorator**: @Component
 

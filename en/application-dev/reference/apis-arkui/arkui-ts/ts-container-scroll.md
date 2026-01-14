@@ -380,7 +380,7 @@ Triggered at the beginning of each scroll frame. The event parameter provides th
 
 The value of [offsetRemain](#onscrollframebeginhandlerresult18) can be negative.
 
-If the **onScrollFrameBegin** event and [scrollBy](#scrollby9) method are used to implement nested scrolling, set the [EdgeEffect](#edgeeffect) attribute of the scrollable child component to **None**. For example, if a **List** component is nested in the **Scroll** container, [edgeEffect](ts-container-list.md#edgeeffect) of the **List** component must be set to **EdgeEffect.None**.  Otherwise, swiping the **List** triggers its edge bounce animation, which results in failed nested scrolling.
+If the **onScrollFrameBegin** event and [scrollBy](#scrollby9) method are used to implement nested scrolling, set the [EdgeEffect](#edgeeffect) attribute of the scrollable child component to **None**. For example, if a **List** component is nested in the **Scroll** container, [edgeEffect](ts-container-list.md#edgeeffect) of the **List** component must be set to **EdgeEffect.None**. Otherwise, swiping the **List** triggers its edge bounce animation, which results in failed nested scrolling.
 
 This event is triggered when any of the following conditions is met:
 

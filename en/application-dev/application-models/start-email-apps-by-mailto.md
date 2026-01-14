@@ -66,6 +66,10 @@ Hyperlinks on web pages must comply with the mailto protocol. Example:
 ```
 Replace the email address with the actual one, and configure the email content as required.
 
+The display effect is as follows:
+
+![image](figures/mailto-html.gif)
+
 ### Within Applications
 
 Pass the mailto string to the **uri** parameter. In the application, the context can be obtained through **getHostContext()** for a page and through **this.context** for an ability.
@@ -91,6 +95,9 @@ struct Index {
 }
 ```
 
+The display effect is as follows:
+
+![image](figures/mailto-app.gif)
 
 ## Developing a Target Application
 

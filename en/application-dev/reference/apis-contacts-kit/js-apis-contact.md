@@ -77,7 +77,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
 ```
 
-## contact.addContact<sup>(deprecated)7+</sup>
+## contact.addContact<sup>(deprecated)</sup>
 
 addContact(contact: Contact, callback: AsyncCallback&lt;number&gt;): void
 
@@ -184,7 +184,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
 ```
 
-## contact.addContact<sup>(deprecated)7+</sup>
+## contact.addContact<sup>(deprecated)</sup>
 
 addContact(contact: Contact): Promise&lt;number&gt;
 
@@ -283,7 +283,7 @@ Deletes a contact. This API uses an asynchronous callback to return the result.
   });
 ```
 
-## contact.deleteContact<sup>(deprecated)7+</sup>
+## contact.deleteContact<sup>(deprecated)</sup>
 
 deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -383,7 +383,7 @@ Deletes a contact. This API uses a promise to return the result.
   });
   ```
 
-## contact.deleteContact<sup>(deprecated)7+</sup>
+## contact.deleteContact<sup>(deprecated)</sup>
 
 deleteContact(key: string): Promise&lt;void&gt;
 
@@ -488,7 +488,7 @@ Updates a contact. This API uses an asynchronous callback to return the result.
   });
   ```
 
-## contact.updateContact<sup>(deprecated)7+</sup>
+## contact.updateContact<sup>(deprecated)</sup>
 
 updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 
@@ -542,7 +542,7 @@ Updates a contact. This API uses an asynchronous callback to return the result.
 
 updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;): void
 
-Updates a contact. This API uses an asynchronous callback to return the result.
+Updates a contact. (The contact attribute list can be imported.) This API uses an asynchronous callback to return the result.
 
 **Permission required**: ohos.permission.WRITE_CONTACTS
 
@@ -601,11 +601,11 @@ Updates a contact. This API uses an asynchronous callback to return the result.
   });
   ```
 
-## contact.updateContact<sup>(deprecated)7+</sup>
+## contact.updateContact<sup>(deprecated)</sup>
 
 updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;): void
 
-Updates a contact. This API uses an asynchronous callback to return the result.
+Updates a contact. (The contact attribute list can be imported.) This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -656,7 +656,7 @@ Updates a contact. This API uses an asynchronous callback to return the result.
 
 updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 
-Updates a contact. This API uses a promise to return the result.
+Updates a contact. (The contact attribute list can be imported.) This API uses a promise to return the result.
 
 **Permission required**: ohos.permission.WRITE_CONTACTS
 
@@ -719,11 +719,11 @@ Updates a contact. This API uses a promise to return the result.
   });
 ```
 
-## contact.updateContact<sup>(deprecated)7+</sup>
+## contact.updateContact<sup>(deprecated)</sup>
 
 updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 
-Updates a contact. This API uses a promise to return the result.
+Updates a contact. (The contact attribute list can be imported.) This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -823,7 +823,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.isLocalContact<sup>(deprecated)7+</sup>
+## contact.isLocalContact<sup>(deprecated)</sup>
 
 isLocalContact(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
@@ -911,7 +911,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
 ```
 
-## contact.isLocalContact<sup>(deprecated)7+</sup>
+## contact.isLocalContact<sup>(deprecated)</sup>
 
 isLocalContact(id: number): Promise&lt;boolean&gt;
 
@@ -999,7 +999,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
 ```
 
-## contact.isMyCard<sup>(deprecated)7+</sup>
+## contact.isMyCard<sup>(deprecated)</sup>
 
 isMyCard(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
@@ -1087,7 +1087,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
 ```
 
-## contact.isMyCard<sup>(deprecated)7+</sup>
+## contact.isMyCard<sup>(deprecated)</sup>
 
 isMyCard(id: number): Promise&lt;boolean&gt;
 
@@ -1174,7 +1174,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
 ```
 
-## contact.queryMyCard<sup>(deprecated)7+</sup>
+## contact.queryMyCard<sup>(deprecated)</sup>
 
 queryMyCard(callback: AsyncCallback&lt;Contact&gt;): void
 
@@ -1212,7 +1212,7 @@ Queries my card. This API uses an asynchronous callback to return the result.
 
 queryMyCard(context: Context,  attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
-Queries my card. This API uses an asynchronous callback to return the result.
+Queries my card. (The contact attribute list can be imported.) This API uses an asynchronous callback to return the result.
 
 **Permission required**: ohos.permission.READ_CONTACTS
 
@@ -1259,11 +1259,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
 ```
 
-## contact.queryMyCard<sup>(deprecated)7+</sup>
+## contact.queryMyCard<sup>(deprecated)</sup>
 
 queryMyCard(attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
-Queries my card. This API uses an asynchronous callback to return the result.
+Queries my card. (The contact attribute list can be imported.) This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -1300,7 +1300,7 @@ Queries my card. This API uses an asynchronous callback to return the result.
 
 queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
-Queries my card. This API uses a promise to return the result.
+Queries my card. (The contact attribute list can be imported.) This API uses a promise to return the result.
 
 **Permission required**: ohos.permission.READ_CONTACTS
 
@@ -1351,11 +1351,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
 ```
 
-## contact.queryMyCard<sup>(deprecated)7+</sup>
+## contact.queryMyCard<sup>(deprecated)</sup>
 
 queryMyCard(attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
-Queries my card. This API uses a promise to return the result.
+Queries my card. (The contact attribute list can be imported.) This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1392,7 +1392,7 @@ Queries my card. This API uses a promise to return the result.
   });
   ```
 
-## contact.selectContact<sup>(deprecated)7+</sup>
+## contact.selectContact<sup>(deprecated)</sup>
 
 selectContact(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -1424,7 +1424,7 @@ Selects a contact. This API uses an asynchronous callback to return the result.
   });
   ```
 
-## contact.selectContact<sup>(deprecated)7+</sup>
+## contact.selectContact<sup>(deprecated)</sup>
 
 selectContact(): Promise&lt;Array&lt;Contact&gt;&gt;
 
@@ -1527,7 +1527,7 @@ Selects a contact. This API uses a promise to return the result.
 
 selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-Selects a contact. This API uses an asynchronous callback to return the result.
+Selects a contact. (Filter criteria can be transferred during contact selection.) This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1568,7 +1568,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 selectContacts(options: ContactSelectionOptions): Promise&lt;Array&lt;Contact&gt;&gt;
 
-Selects a contact. This API uses a promise to return the result.
+Selects a contact. (Filter criteria can be transferred during contact selection.) This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1656,7 +1656,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string,  callback: AsyncCallback&lt;Contact&gt;): void
 
@@ -1745,7 +1745,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;): void
 
@@ -1837,7 +1837,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string,  attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
@@ -1932,7 +1932,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
 ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
@@ -2036,7 +2036,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
@@ -2131,7 +2131,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2218,7 +2218,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2308,7 +2308,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2401,7 +2401,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2503,7 +2503,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
@@ -2598,7 +2598,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2637,7 +2637,7 @@ Queries a contact based on the specified phone number. This API uses an asynchro
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-Queries a contact based on the specified holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
+Queries a contact based on the specified phone number and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
 
 **Permission required**: ohos.permission.READ_CONTACTS
 
@@ -2687,11 +2687,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-Queries a contact based on the specified holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
+Queries a contact based on the specified phone number and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
 
 > **NOTE**
 >
@@ -2779,7 +2779,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2874,7 +2874,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -2978,7 +2978,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
@@ -3074,7 +3074,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -3163,7 +3163,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -3255,7 +3255,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -3350,7 +3350,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
@@ -3454,7 +3454,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
@@ -3547,7 +3547,7 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
   });
   ```
 
-## contact.queryGroups<sup>(deprecated)7+</sup>
+## contact.queryGroups<sup>(deprecated)</sup>
 
 queryGroups(callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
@@ -3634,7 +3634,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryGroups<sup>(deprecated)7+</sup>
+## contact.queryGroups<sup>(deprecated)</sup>
 
 queryGroups(holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
@@ -3730,7 +3730,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryGroups<sup>(deprecated)7+</sup>
+## contact.queryGroups<sup>(deprecated)</sup>
 
 queryGroups(holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
 
@@ -3821,7 +3821,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryHolders<sup>(deprecated)7+</sup>
+## contact.queryHolders<sup>(deprecated)</sup>
 
 queryHolders(callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
@@ -3907,7 +3907,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryHolders<sup>(deprecated)7+</sup>
+## contact.queryHolders<sup>(deprecated)</sup>
 
 queryHolders(): Promise&lt;Array&lt;Holder&gt;&gt;
 
@@ -3989,7 +3989,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryKey<sup>(deprecated)7+</sup>
+## contact.queryKey<sup>(deprecated)</sup>
 
 queryKey(id: number, callback: AsyncCallback&lt;string&gt;): void
 
@@ -4078,7 +4078,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryKey<sup>(deprecated)7+</sup>
+## contact.queryKey<sup>(deprecated)</sup>
 
 queryKey(id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): void
 
@@ -4176,7 +4176,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   });
   ```
 
-## contact.queryKey<sup>(deprecated)7+</sup>
+## contact.queryKey<sup>(deprecated)</sup>
 
 queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
 
@@ -4222,9 +4222,11 @@ Queries the key of a contact based on the specified contact ID and holder. This 
 
 ## contact.queryContactsCount<sup>22+</sup>
 
-queryContactsCount(context: Context): Promise&lt;int&gt;
+queryContactsCount(context: Context): Promise&lt;number&gt;
 
 Queries the number of all contacts. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **Permission required**: ohos.permission.READ_CONTACTS
 
@@ -4240,7 +4242,16 @@ Queries the number of all contacts. This API uses a promise to return the result
 
 | Type                 | Description                                      |
 | --------------------- | ------------------------------------------ |
-| Promise&lt;int&gt; | Promise used to return the result, which is the number of queried contacts.|
+| Promise&lt;number&gt; | Promise which is the number of queried contacts.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+
+| ID| Error Message          |
+| -------- | ------------------ |
+| 201      | Permission denied. |
+| 16700001      | General error. |
 
 **Example**
 
@@ -4343,7 +4354,7 @@ Opens the **Save to existing** page to save a contact to an existing one. This A
 
 | Type                 | Description                                      |
 | --------------------- | ------------------------------------------ |
-| Promise&lt;number&gt; | Promise used to return the result, which is the ID of the added contact.|
+| Promise&lt;number&gt; | Promise used to return the result, which is the contact ID.|
 
 **Error codes**
 
@@ -4391,8 +4402,6 @@ promise.then((data) => {
 ## ContactSelectionOptions<sup>10+</sup>
 
 Defines the contact selection options.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Applications.Contacts
 
@@ -4512,11 +4521,19 @@ Defines a contact.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name              | Type  | Value  | Description            |
 | ------------------ | ---- | ---- | ---------------- |
 | INVALID_CONTACT_ID | number   | -1   | Default contact ID.|
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 |       Name       |                   Type                 | Read-Only| Optional| Description                                  |
 | ----------------- | --------------------------------------- | ---- | ---- | -------------------------------------- |
@@ -4560,6 +4577,7 @@ let myContact: contact.Contact = {
 ## ContactAttributes
 
 Provides a list of contact attributes, which are generally used as arguments. 
+
 If **null** is passed, all attributes are queried by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -4592,22 +4610,22 @@ Enumerates contact attributes.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
-| Name                 | Description                              |
-| --------------------- | ---------------------------------- |
-| ATTR_CONTACT_EVENT    | Important dates such as birthday and anniversaries of the contact.|
-| ATTR_EMAIL            | Email address of the contact.                |
-| ATTR_GROUP_MEMBERSHIP | Groups of the contact.                    |
-| ATTR_IM               | IM addresses of the contact.            |
-| ATTR_NAME             | Contact name.                    |
-| ATTR_NICKNAME         | Contact nickname.                    |
-| ATTR_NOTE             | Contact notes.                    |
-| ATTR_ORGANIZATION     | Organization of the contact.                |
-| ATTR_PHONE            | Phone number of the contacts.                |
-| ATTR_PORTRAIT         | Contact portrait.                    |
-| ATTR_POSTAL_ADDRESS   | Postal address of the contact.                |
-| ATTR_RELATION         | Relationship with the contact.                    |
-| ATTR_SIP_ADDRESS      | SIP addresses of the contact. |
-| ATTR_WEBSITE          | Website that stores the contact information.                    |
+| Name                 | Value| Description                              |
+| --------------------- | ---- | ---------------------------------- |
+| ATTR_CONTACT_EVENT    | 0 | Important dates such as birthday and anniversaries of the contact.|
+| ATTR_EMAIL            | 1 | Email address of the contact.                |
+| ATTR_GROUP_MEMBERSHIP | 2 | Groups of the contact.                    |
+| ATTR_IM               | 3 | IM addresses of the contact.            |
+| ATTR_NAME             | 4 | Contact name.                    |
+| ATTR_NICKNAME         | 5 | Contact nickname.                    |
+| ATTR_NOTE             | 6 | Contact notes.                    |
+| ATTR_ORGANIZATION     | 7 | Organization of the contact.                |
+| ATTR_PHONE            | 8 | Phone number of the contacts.                |
+| ATTR_PORTRAIT         | 9 | Contact portrait.                    |
+| ATTR_POSTAL_ADDRESS   | 10 | Postal address of the contact.                |
+| ATTR_RELATION         | 11 | Relationship with the contact.                    |
+| ATTR_SIP_ADDRESS      | 12 | SIP addresses of the contact. |
+| ATTR_WEBSITE          | 13 | Website that stores the contact information.                    |
 
 **Example**
 
@@ -4627,6 +4645,10 @@ Defines a contact's email.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name            | Type  | Value  | Description            |
 | ---------------- | ---- | ---- | ---------------- |
 | CUSTOM_LABEL     | number    |  0    |Custom mailbox type.|
@@ -4636,6 +4658,10 @@ Defines a contact's email.
 | INVALID_LABEL_ID | number    | -1   | Invalid mailbox.  |
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 | Name       |   Type  | Read-Only| Optional| Description            |
 | ----------- | -------- | ---- | ---- | ---------------- |
@@ -4697,6 +4723,10 @@ Defines a contact's event.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name             |   Type  |  Value  | Description              |
 | ----------------- | ---- | ---- | ------------------ |
 | CUSTOM_LABEL      | number   | 0    | Custom event.  |
@@ -4706,6 +4736,10 @@ Defines a contact's event.
 | INVALID_LABEL_ID  | number   | -1   | Invalid event.    |
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 |    Name  |   Type  | Read-Only| Optional| Description          |
 | --------- | -------- | ---- | ---- | -------------- |
@@ -4764,6 +4798,10 @@ Enumerates IM addresses.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name            |   Type  | Value  | Description                |
 | ---------------- | ---- | ---- | -------------------- |
 | CUSTOM_LABEL     | number   | -1   | Custom IM|
@@ -4777,6 +4815,10 @@ Enumerates IM addresses.
 | INVALID_LABEL_ID | number   | -2   | Invalid IM|
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 | Name     |   Type  | Read-Only| Optional| Description              |
 | --------- | -------- | ---- | ---- | ------------------ |
@@ -4807,22 +4849,20 @@ imAddress.imAddress = "imAddress";
 
 Defines a contact's name.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 **System capability**: SystemCapability.Applications.ContactsData
 
 | Name              |   Type  | Read-Only| Optional| Description                       |
 | ------------------ | -------- | ---- | ---- | --------------------------- |
-| familyName         | string   | No  | Yes  | Family name.         |
-| familyNamePhonetic | string   | No  | Yes  | Family name in pinyin.     |
-| fullName           | string   | No  | No  | Full name of the contact.             |
-| givenName          | string   | No  | Yes  | Given name of the contact.|
-| givenNamePhonetic  | string   | No  | Yes  | Given name of the contact in pinyin.         |
-| middleName         | string   | No  | Yes  | Middle name of the contact.           |
-| middleNamePhonetic | string   | No  | Yes  | Middle name of the contact in pinyin.       |
-| namePrefix         | string   | No  | Yes  | Prefix of the contact name.         |
-| nameSuffix         | string   | No  | Yes  | Suffix of the contact name.         |
-| hasName<sup>22+</sup>            | boolean  | No  | Yes  | Whether the contact information contains the name. The value **true** indicates that the contact information contains the name, and the value **false** indicates the opposite.         |
+| familyName         | string   | No  | Yes  | Family name. **Atomic service API**: This API can be used in atomic services since API version 11.         |
+| familyNamePhonetic | string   | No  | Yes  | Family name in pinyin. **Atomic service API**: This API can be used in atomic services since API version 11.     |
+| fullName           | string   | No  | No  | Full name of the contact. **Atomic service API**: This API can be used in atomic services since API version 11.             |
+| givenName          | string   | No  | Yes  | Given name of the contact. **Atomic service API**: This API can be used in atomic services since API version 11.|
+| givenNamePhonetic  | string   | No  | Yes  | Given name of the contact in pinyin. **Atomic service API**: This API can be used in atomic services since API version 11.         |
+| middleName         | string   | No  | Yes  | Middle name of the contact. **Atomic service API**: This API can be used in atomic services since API version 11.           |
+| middleNamePhonetic | string   | No  | Yes  | Middle name of the contact in pinyin. **Atomic service API**: This API can be used in atomic services since API version 11.       |
+| namePrefix         | string   | No  | Yes  | Prefix of the contact name. **Atomic service API**: This API can be used in atomic services since API version 11.         |
+| nameSuffix         | string   | No  | Yes  | Suffix of the contact name. **Atomic service API**: This API can be used in atomic services since API version 11.         |
+| hasName<sup>22+</sup>            | boolean  | No  | Yes  | Whether the contact information contains the name. The value **true** indicates that the contact information contains the name, and the value **false** indicates the opposite. **Atomic service API**: This API can be used in atomic services since API version 22.         |
 
 **Example**
 
@@ -4913,6 +4953,10 @@ Defines a contact's phone number.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name            |  Type | Value  | Description                                            |
 | ---------------- | ---- | ---- | ------------------------------------------------ |
 | CUSTOM_LABEL     |  number  | 0    | Custom phone type.                                |
@@ -4939,6 +4983,10 @@ Defines a contact's phone number.
 | INVALID_LABEL_ID |  number  | -1   | Invalid phone type.                                  |
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 | Name       |   Type  | Read-Only| Optional| Description              |
 | ----------- | -------- | ---- | ---- | ------------------ |
@@ -4968,26 +5016,40 @@ phoneNumber.phoneNumber = "138xxxxxxxx";
 
 Defines a contact's portrait.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+> **NOTE**
+>
+>  Since API version 22, contact portraits can be set in URI or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) format. (Currently, contact avatars cannot be set through the [addContactViaUI](#contactaddcontactviaui15) or [saveToExistingContactViaUI](#contactsavetoexistingcontactviaui15) API.)<br>
+URI indicates the address of the contact portrait file that can be accessed, and [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) indicates the [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) object generated based on the contact portrait resource.<br>
+>  Contact portrait resources can be read only in URI format. This format can be opened only in [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen) mode and cannot be directly displayed in the **Image** component. The contact portrait resources need to be read and converted into the [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) format for display.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
 | Name|   Type  | Read-Only| Optional| Description          |
 | ---- | -------- | ---- | ---- | -------------- |
-| uri  | string   | No  | No  | Contact portrait.|
+| uri  | string   | No  | No  | Contact portrait in URI format. **Atomic service API**: This API can be used in atomic services since API version 11.|
+| photo<sup>22+</sup>  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)   | No  | Yes  | Contact portrait in PixelMap format. **Atomic service API**: This API can be used in atomic services since API version 22.|
 
 **Example**
 
   Create contact data in JSON format:
 
 ```js
-let portrait: contact.Portrait = {
-    uri: "uri"
-};
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+async function SetPortraitUri(uri: string) {
+  let portrait: contact.Portrait = {
+    uri: uri
+  };
+}
+
+async function SetPortraitPixelMap(photo: image.PixelMap) {
+  let portrait: contact.Portrait = {
+    uri: "",
+    photo: photo
+  };
+}
 ```
-> **NOTE**
->
->  Since API version 22, the profile picture resource can be read through URI. The resource can be opened only in [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen) mode and cannot be directly displayed in the **Image** component using a URI. You need to read the resource and display it in [PixelMap](../../ui/arkts-graphics-display.md#pixel-map) format.
 
 ## PostalAddress
 
@@ -4999,6 +5061,10 @@ Defines a contact's postal address.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name            |   Type  | Value  | Description                |
 | ---------------- | ---- | ---- | -------------------- |
 | CUSTOM_LABEL     | number   | 0    | Custom postal address type.|
@@ -5008,6 +5074,10 @@ Defines a contact's postal address.
 | INVALID_LABEL_ID | number   | -1   | Invalid address type.      |
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 | Name         |   Type  | Read-Only| Optional| Description                      |
 | ------------- | -------- | ---- | ---- | -------------------------- |
@@ -5051,6 +5121,10 @@ Defines a contact's relationship.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name                     |  Type  | Value  | Description              |
 | ------------------------- | ---- | ---- | ------------------ |
 | CUSTOM_LABEL              | number   | 0    | Custom relationship.  |
@@ -5071,6 +5145,10 @@ Defines a contact's relationship.
 | INVALID_LABEL_ID          | number   | -1   | Invalid relationship.  |
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 | Name        |   Type  | Read-Only| Optional| Description          |
 | ------------ | -------- | ---- | ---- | -------------- |
@@ -5107,6 +5185,10 @@ Defines a contact's SIP address.
 
 ### Constant
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
 | Name            |   Type  | Value  | Description                               |
 | ---------------- | ---- | ---- | ----------------------------------- |
 | CUSTOM_LABEL     | number   | 0    | Custom SIP address.|
@@ -5116,6 +5198,10 @@ Defines a contact's SIP address.
 | INVALID_LABEL_ID | number   | -1   | Invalid SIP address.  |
 
 ### Attributes
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Applications.ContactsData
 
 | Name      |   Type  | Read-Only| Optional| Description                             |
 | ---------- | -------- | ---- | ---- | --------------------------------- |

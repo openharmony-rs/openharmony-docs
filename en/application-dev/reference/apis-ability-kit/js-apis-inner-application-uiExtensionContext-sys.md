@@ -62,11 +62,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 201 | The application does not have permission to call the interface. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist.                   |
 | 16000004 | Cannot start an invisible component.                    |
 | 16000050 | Internal error.                                         |
+| 16000069 | The extension cannot start the third party application. |
+| 16000070 | The extension cannot start the service. |
+| 16000071 | App clone is not supported. |
+| 16000072 | App clone or multi-instance is not supported. |
 | 16000073 | The app clone index is invalid. |
+| 16000076 | The app instance key is invalid. |
+| 16000077 | The number of app instances reaches the limit. |
+| 16000078 | The multi-instance is not supported. |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
+| 16000080 | Creating a new instance is not supported. |
 
 **Example**
 
@@ -415,6 +426,8 @@ Starts a second UIAbility after the first UIAbility instance is created, and dis
 > The second UIAbility supports only [explicit startup](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-explicit-want).
 > 
 > For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+>
+> If the caller is running in the background, the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission is required (available only for system applications).
 
 **System API**: This is a system API.
 

@@ -74,7 +74,7 @@ hdc supports both USB and wireless connections. You can enable or disable debugg
   3. Add the **PATH** information to the end of the file.
 
       ```shell
-      PATH={DevEco Studio}/sdk/default/openharmony/toolchains:$PATH
+      export PATH={DevEco Studio}/sdk/default/openharmony/toolchains:$PATH
       ```
 
       Replace **{DevEco Studio}** with the absolute path of the DevEco Studio installation directory, for example, **/home/DevEco-Studio**.
@@ -412,6 +412,7 @@ $ hdc -s 127.0.0.1:8710 list targets
 **Procedure**
 
 1. Configure the server
+   
    After the server is connected to the corresponding hdc device through USB, run the following commands:
 
    ```shell
@@ -423,6 +424,7 @@ $ hdc -s 127.0.0.1:8710 list targets
    ```
 
 2. Connect to the client
+   
    Ensure that the client can connect to the server IP address, and then run the following command:
 
    ```shell
@@ -563,7 +565,7 @@ hdc shell [-b bundlename] [command]
 
 > **NOTE**
 >
-> If the **[-b bundlename]** parameter is specified, the installed application corresponding to the bundle name must be signed using the debug certificate and started on the device. For details about how to request and use the debug certificate, see [Requesting a Debug Certificate](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-debugcert-0000001914263178).
+> If the **\[-b bundlename\]** parameter is specified, the installed application corresponding to the bundle name must be signed using the debug certificate and started on the device. For details about how to request and use the debug certificate, see [Requesting a Debug Certificate](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-debugcert-0000001914263178).
 
 **Return value**
 
@@ -629,20 +631,24 @@ $ hdc shell -b com.example.myapplication ls data/storage/el2/base/
 
 ### Installing an Application
 
-Installs an application file.
+The [install command](../tools/bm-tool.md#install) of the bm module is integrated into the device, which simplifies the application installation process. You can run the command on the PC to install applications. Run the following commands:
 
 ```shell
-hdc install [-r|-s|-cwd path] src
+hdc install [-cwd path|-r|-s|-w waitingTime|-u userId|-p|-h] src
 ```
 
 **Parameters**
 
 | Name| Description|
 | -------- | -------- |
-| src | Installation package name.|
-| -r | Replaces the existing application (.hap).|
-| -s | Install a shared package (.hsp).|
-| -cwd path | Modifies the working directory.<br>This parameter is used to switch the **src** directory to the specified path during application installation. For example, if the application is **test.hap** and the directory is **/data**, the actual application file installation path is **/data/test.hap**. If **-cwd "/user/"** is used, the actual application file installation path is **/user/test.hap**.|
+| src | Used to specify the path of the application installation package. You can install [HAP](../quick-start/hap-package.md) and inter-application [HSP](../quick-start/in-app-hsp.md). Since API version 22, [APP](../quick-start/application-package-glossary.md#app) can be installed.|
+| -cwd | Modifies the working directory.<br>This parameter is used to switch the **src** directory to the specified path during application installation. For example, when the new application is **test.hap** and the directory is **C:\\**, the actual installation file path is **C:\\test.hap**. If **-cwd "D:\\"** is executed, the actual installation file path is **D:\\test.hap**.|
+| -r | Used to overwrite an existing HAP or HSP file. This parameter is optional. This parameter is not specified by default, indicating that the existing file will be overwritten.|
+| -s | Used to specify the path where the inter-application HSP is to be installed. This parameter is mandatory for installing the application HSP and optional in other scenarios. Each directory can contain only one HSP file.|
+| -w | Used to wait for a specified time before installing a HAP. The minimum waiting time is 180s, and the maximum waiting time is 600s. The default waiting time is 180s. This parameter is optional.|
+| -u | Used to specify the [user](../tools/bm-tool.md#userid). By default, the application is installed for the current active user. This parameter is optional.|
+| -p | Used to specify the path of the HAP or HSP file to be installed. This parameter is optional. If multiple HAPs or HSPs are required, you can specify the folder path of the HAPs or HSPs. Since API version 22, you can specify the path of the APP file to be installed or the folder path of only one APP.|
+| -h | Used to display the help information about the [install command](../tools/bm-tool.md#install) of the bm module. This parameter is optional.|
 
 **Return value**
 
@@ -653,18 +659,53 @@ hdc install [-r|-s|-cwd path] src
 
 **Usage**
 
+> **NOTE**
+>
+> When the **install** command and bm module parameters are executed, the **-w** and **-u** parameters (which require values) must be enclosed in quotes along with their values, such as **"-w 180"** and **"-u 100"**, to prevent parameter parsing errors that could cause command execution to fail.
+
 ```shell
-# For example, install **example.hap**.
-$ hdc install E:\example.hap
+# Install the example.hap file.
+$ hdc install D:\example.hap
+[Info]App install path:D:\example.hap msg:install bundle successfully.
+AppMod finish
+
+# Install the example.app file.
+$ hdc install D:\example.app
+[Info]App install path:D:\example.app msg:install bundle successfully.
+AppMod finish
+
+# Install the example.hap file (-r is supported by the install command of the bm module, which is used for overwrite installation).
+$ hdc install -r D:\example.hap
+[Info]App install path:D:\example.hap msg:install bundle successfully.
+AppMod finish
+
+# Install the example.hsp file (-s is supported by the install command of the bm module, which is mandatory for installing the HSP file).
+$ hdc install -s D:\example.hsp
+[Info]App install path:D:\example.hsp msg:install bundle successfully.
+AppMod finish
+
+# Install the example.hap file (-w is supported by the install command of the bm module, which specifies the waiting time of the bm tool).
+$ hdc "-w 180" install D:\example.hap
+[Info]App install path:D:\example.hap msg:install bundle successfully.
+AppMod finish
+
+# Install the example.hap file (-u is supported by the install command of the bm module, which specifies the user ID).
+$ hdc "-u 100" install D:\example.hap
+[Info]App install path:D:\example.hap msg:install bundle successfully.
+AppMod finish
+
+# Install the application in D:\hap_dir (-p is supported by the install command of the bm module, which specifies the installation path).
+$ hdc -p install D:\hap_dir
+[Info]App install path:D:\hap_dir msg:install bundle successfully.
 AppMod finish
 ```
 
 ### Uninstalling an Application
 
-Run the following commands:
+The [uninstall command](../tools/bm-tool.md#uninstall) is integrated into the bm module on the device, which simplifies the uninstallation process. You can run the command on the PC to uninstall applications. Run the following commands:
 
 ```shell
-hdc uninstall [-k|-s] bundlename
+hdc uninstall [-n|-k|-s|-h] bundlename
 ```
 
 **Parameters**
@@ -672,8 +713,10 @@ hdc uninstall [-k|-s] bundlename
 | Name| Description|
 | -------- | -------- |
 | bundlename | Application installation package.|
-| -k | Used to retain the **/data** and **/cache** directories after the application is uninstalled.|
-| -s | Used to uninstall a shared package.|
+| -n | Used to uninstall an application with a specified bundle name. This parameter is optional.|
+| -k | Used to uninstall an application with or without retaining the application data. This parameter is optional. By default, the application data is deleted along the uninstall.|
+| -s |  Used to uninstall an HSP. This parameter is mandatory only for the HSP uninstallation.|
+| -h | Used to display the help information about the [uninstall command](../tools/bm-tool.md#uninstall) of the bm module. This parameter is optional.|
 
 **Return value**
 
@@ -685,8 +728,24 @@ hdc uninstall [-k|-s] bundlename
 **Usage**
 
 ```shell
-# For example, uninstall **com.example.hello**.
-$ hdc uninstall com.example.hello
+# Uninstall the com.ohos.example file.
+$ hdc uninstall com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# Uninstall the com.ohos.example file (-n is supported by the uninstall command of the bm module, which specifies the bundle name).
+$ hdc uninstall -n com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# Uninstall the com.ohos.example file (-k is supported by the uninstall command of the bm module, which is used to save application data during uninstallation).
+$ hdc uninstall -k com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# Uninstall the com.ohos.example file (-s is supported by the uninstall command of the bm module, which is mandatory during HSP uninstallation).
+$ hdc uninstall -s com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
 AppMod finish
 ```
 
@@ -710,13 +769,13 @@ hdc file send [-a|-sync|-z|-m|-cwd path|-b bundlename] SOURCE DEST
 | Name| Description|
 | -------- | -------- |
 | SOURCE | Path of the file to send.|
-| DEST | Path of the target file.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, "[Fail]Error opening file: ..." is displayed.)<br>Path of the media library file: **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** is the ID of the current user.<br>For details about how to operate the media library through hdc, see [mediatool](../tools/mediatool.md#hdc-commands).|
+| DEST | Path of the target file.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, "\[Fail\]Error opening file: ..." is displayed.)<br>Path of the media library file: **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** is the ID of the current user.<br>For details about how to operate the media library through hdc, see [mediatool](../tools/mediatool.md#hdc-commands).|
 | -a | Used to retain the file modification timestamp.|
 | -sync | Used to transfer only the files whose **mtime** is updated.<br>**mtime** (modified timestamp): timestamp after modification.|
 | -z | Used to compress and transmit files in LZ4 format. This parameter is unavailable.|
 | -m | Used to synchronize the DAC permission, UID, GID, and MAC permission during file transfer.<br>**DAC** (Discretionary Access Control): discretionary access control;<br>**uid** (User identifier): user identifier (or user ID);<br>**gid** (Group identifier): group identifier (or group ID);<br>**MAC** (Mandatory Access Control): mandatory access control (or non-discretionary access control).|
-| -cwd path | Modifies the working directory.<br>This parameter is used to switch the **SOURCE** to a specified path during file transfer. For example, if the file is **test** and the directory is **/data**, the actual file path is **/data/test**. If **-cwd "/user/"** is used, the actual file path is **/user/test**.|
-| -b | Used to specify the bundle name of the debug-type application. This parameter is added in 3.1.0e (If this parameter is used in an earlier version, the message "[Fail]Unknown file option: -b" is displayed). <br>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section48216711204).|
+| -cwd | Modifies the working directory.<br>This parameter is used to switch the **SOURCE** to a specified path during file transfer. For example, if the file is **test** and the directory is **/data**, the actual file path is **/data/test**. If **-cwd "/user/"** is used, the actual file path is **/user/test**.|
+| -b | Used to specify the bundle name of the debug-type application. This parameter is added in 3.1.0e (If this parameter is used in an earlier version, the message "\[Fail\]Unknown file option: -b" is displayed). <br>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section48216711204).|
 | bundlename | Bundle name of the debug-type application.|
 
 **Return value**
@@ -752,12 +811,12 @@ hdc file recv [-a|-sync|-z|-m|-cwd path|-b bundlename] DEST SOURCE
 | Name| Description|
 | -------- | -------- |
 | SOURCE | Destination path on the local device.|
-| DEST | Path of the file to send.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, "[Fail]Error opening file: ..." is displayed.)<br>Path of the media library file: **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** is the ID of the current user.<br>For details about media library operations, see [mediatool](../tools/mediatool.md#hdc-commands).|
+| DEST | Path of the file to send.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, "\[Fail\]Error opening file: ..." is displayed.)<br>Path of the media library file: **/mnt/data/\<uid\>/media_fuse/Photo/** directory and its subdirectories. **\<uid\>** is the ID of the current user.<br>For details about media library operations, see [mediatool](../tools/mediatool.md#hdc-commands).|
 | -a | Used to retain the file modification timestamp.|
 | -sync | Used to transfer only the files whose **mtime** is updated.<br>**mtime** (modified timestamp): timestamp after modification.|
 | -z | Used to compress and transmit files in LZ4 format. This parameter is unavailable.|
 | -m | Used to synchronize the DAC permission, UID, GID, and MAC permission during file transfer.<br>**DAC** (Discretionary Access Control): discretionary access control;<br>**uid** (User identifier): user identifier (or user ID);<br>**gid** (Group identifier): group identifier (or group ID);<br>**MAC** (Mandatory Access Control): mandatory access control (or non-discretionary access control).|
-| -cwd path | Modifies the working directory.<br>This parameter is used to switch the **SOURCE** to a specified path during file transfer. For example, if the initial directory for receiving files is **/data/** but **-cwd "/user/"** is used, the actual directory for receiving files is **/user/**.|
+| -cwd | Modifies the working directory.<br>This parameter is used to switch the **SOURCE** to a specified path during file transfer. For example, if the initial directory for receiving files is **/data/** but **-cwd "/user/"** is used, the actual directory for receiving files is **/user/**.|
 | -b | Used to send files in the data directory of a specified debug-type application process. This parameter is added in version 3.1.0e.<br>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section48216711204).|
 | bundlename | Bundle name of the debug application process.|
 
@@ -791,20 +850,20 @@ FileTransfer finish, Size:xxx, File...
 
 | Command| Description|
 | -------- | -------- |
-| fport ls | Lists all port forwarding tasks.|
-| fport [IP:port] [IP:port] | Sets up a local port forwarding, which forwards data from a local port to a remote port. The port number ranges from 1 to 65535.|
-| rport [IP:port] [IP:port] | Sets up a remote port forwarding, which forwards data from a remote port to a local port. The port number ranges from 1024 to 65535.|
-| fport rm [IP:port] [IP:port] | Deletes a port forwarding task.|
+| fport ls | Displays all port forwarding tasks.|
+| fport localnode remotenode | Sets a local port forwarding, which listens for requests from the local node and forwards the requests to the remote node. The task format is **<Forwarding type>:<Forwarding port>**, for example, **tcp:1234**.|
+| rport remotenode localnode | Sets a remote port forwarding, which listens for requests from the remote node and forwards the requests to the local node. The task format is **<Forwarding type>:<Forwarding port>**, for example, **tcp:1234**.|
+| fport rm taskstr | Deletes a port forwarding task.|
 
 > **NOTE**
 >
 > Port forwarding type supported by the computer: TCP.
 >
-> Port forwarding type supported by the device: TCP, dev, localabstract, localfilesystem, jdwp, ark.
+> Port forwarding type supported by the device: TCP, dev, localabstract, localreserved, localfilesystem, jdwp, ark.
 
 ### Querying the Port Forwarding Task List
 
-Run the following commands:
+Query all local and remote port forwarding tasks.
 
 ```shell
 hdc fport ls
@@ -822,15 +881,16 @@ hdc fport ls
 
 ```shell
 $ hdc fport ls
-[Empty]
+connect-key tcp:2080 tcp:2345 [Reverse]
+connect-key tcp:1234 tcp:1080 [Forward]
 ```
 
 ### Creating a Local Port Forwarding
 
-Set up a local port forwarding, which forwards data from a local port to a remote port.
+Set a local port forwarding, which forwards data from the local node to the remote node.
 
 ```shell
-hdc fport [IP:port] [IP:port]
+hdc fport localnode remotenode
 ```
 
 **Return value**
@@ -849,9 +909,10 @@ hdc fport [IP:port] [IP:port]
 $ hdc fport tcp:1234 tcp:1080
 Forwardport result:OK
 ```
+
 > **NOTE**
 >
-> In the local port forwarding, if the local port uses TCP, the specified port is **port**, and the **-e** parameter is used when the service process is started, the local host listens for the port of the IP address specified by the **-e** parameter. If the **-e** parameter is not used when the server is started, the local host listens for **127.0.0.1:port**.
+> When creating a local port forwarding task, the PC uses the TCP protocol and the specified **port**. By default, **127.0.0.1:port** is listened for. If the **-e** parameter is used to specify the IP address of the host that to be listened when the service process starts, the PC listens for the **IP:port** specified by **-e**.
 
 
 ### Creating a Remote Port Forwarding
@@ -859,7 +920,7 @@ Forwardport result:OK
 Set up a remote port forwarding, which forwards data from a remote port to a local port.
 
 ```shell
-hdc rport [IP:port] [IP:port]
+hdc rport remotenode localnode
 ```
 
 **Return value**
@@ -880,17 +941,21 @@ Forwardport result:OK
 
 ### Deleting a Port Forwarding Task
 
-Delete a specified port forwarding task.
+Delete a specified local port forwarding task or remote port forwarding task.
 
 ```shell
-hdc fport rm [IP:port][IP:port]
+hdc fport rm taskstr
 ```
+
+> **NOTE**
+>
+> **taskstr** specifies the local or remote port forwarding task to be deleted. You are advised to run the **hdc fport ls** command to query the task and then delete it.
 
 **Parameters**
 
 | Parameter| Description|
 | -------- | -------- |
-| IP:port | Port forwarding task, in the format of **tcp:XXXX tcp:XXXX**.|
+| taskstr | Port forwarding task, in the format of **tcp:XXXX tcp:XXXX**.|
 
 **Return value**
 
@@ -1043,7 +1108,7 @@ $ hdc -e 0.0.0.0 -m # Specify the local listening IP address 0.0.0.0 for port fo
 | jpid | Displays the PIDs of started applications on the device.|
 | track-jpid [-a\|-p] | Displays the PIDs and bundle names of started applications on the device in real time. Only applications with the **debug** tag can be debugged. If no parameter is specified, the PIDs of started applications are displayed. If the **-a** parameter is specified, the process tags of debug-type and release-type applications are displayed. If the **-p** parameter is specified, the process tags of debug-type and release-type applications are not displayed.|
 | target boot [-bootloader\|-recovery] | Restarts the target device. You can use the **-bootloader** option to enter the fastboot mode and the **-recovery** option to enter the recovery mode.|
-| target boot [MODE] | Restarts the target device. You can add a parameter to use the corresponding mode. **MODE** is a parameter supported by reboot in the **/bin/begetctl** command. You can run the **hdc shell "/bin/begetctl -h \ grep reboot"** command to check the restart mode.|  |
+| target boot [MODE] | Restarts the target device. You can add a parameter to use the corresponding mode. **MODE** is a parameter supported by reboot in the **/bin/begetctl** command. You can run the `hdc shell "/bin/begetctl -h | grep reboot"` command to check the restart mode.|  |
 | <!--DelRow--> target mount | Mounts the system partition in read/write mode. (This command is supported after the device has required the root permission.)|
 | <!--DelRow--> smode [-r] | Grants the root permission to the hdc background server process on the device. You can use the **-r** parameter to cancel the permission. (This command is supported after the device has required the root permission.)|
 
@@ -1381,7 +1446,7 @@ The collected logs are stored in the following path.
 | OS| Path| Remarks|
 | -------- | -------- | -------- |
 | Windows | %temp%\ | Example: **C:\\Users\Username\AppData\Local\Temp**.<br>Replace *Username* with the actual one.|
-| Linux | /tmp/ |  |
+| Linux | /tmp/ | - |
 | macOS| $TMPDIR/ | You can run the **echo $TMPDIR** command to view the actual path, and **cd $TMPDIR** to go to the corresponding directory.|
 
 The log file types are as follows.
@@ -1391,7 +1456,7 @@ The log file types are as follows.
 | Real-time log| hdc.log | Records server logs in real time.| Each time the hdc server is restarted, the original log is renamed and a new **hdc.log** is recorded.|
 | Temporary historical log| hdc-%Y%m%d-%H%M%S.log | Dumps intermediate files generated during historical log archiving.| For example, if the time is 16:18:57.921 on September 19, 2024, the time format is **20240919-161857921**, and the name of the generated temporary log file is **hdc-20240919-161857921.log**.|
 | Archived historical logs| hdc-%Y%m%d-%H%M%S.log.tgz | Compresses and stores historical logs.| The archive file is a compressed file of the **.tgz** type. You can use a decompression tool to obtain the file. For example, if the temporary name of a historical log file is **hdc-20240919-161857921.log**, the name of the corresponding archived historical log file is **hdc-20240919-161857921.log.tgz**. After the archived historical log file is generated, the corresponding temporary historical log file is automatically deleted.|
-| Temporary real-time log| .hdc.cache.log | Records temporary caches generated by real-time logs.|  |
+| Temporary real-time log| .hdc.cache.log | Records temporary caches generated by real-time logs.| - |
 
 ### Device Logs
 
@@ -1432,7 +1497,7 @@ After the server and daemon are started, they send heartbeat packets to each oth
 
 When the environment variable OHOS_HDC_HEARTBEAT is set to **1** for the server, its heartbeat functionality is disabled. When the device is connected to the PC, the server notifies the daemon that the heartbeat functionality is disabled and does not send heartbeat packets to each other.
 
-When **OHOS_HDC_HEARTBEAT** is set to other values, the heartbeat functionality is enabled.
+When *OHOS_HDC_HEARTBEAT* is set to other values, the heartbeat functionality is enabled.
 
 ### OHOS_HDC_CMD_RECORD
 
@@ -1449,8 +1514,8 @@ The recording log files are stored in the following paths:
 | OS| Path| Remarks|
 | -------- | -------- | -------- |
 | Windows | %temp%\hdc_cmd\ | Example: **C:\\Users\Username\AppData\Local\Temp\hdc_cmd\<br/>** (Replace the user name with the actual one.)|
-| Linux | /tmp/hdc_cmd/ |  |
-| macOS| $TMPDIR/hdc_cmd/ |  |
+| Linux | /tmp/hdc_cmd/ | - |
+| macOS| $TMPDIR/hdc_cmd/ | - |
 
 ### OHOS_HDC_ENCRYPT_CHANNEL
 
@@ -1581,9 +1646,11 @@ The possible causes are as follows:
 Solution:
 
 1. Check the software processes that have the built-in hdc functionality.
+   
    If the software (DevEco Studio or DevEco Testing) that has the built-in hdc functionality is running, stop these software processes and run hdc commands.
 
 2. Check hdc port status.
+   
    For example, if **OHOS_HDC_SERVER_PORT** is set to **8710**, run the following commands to check the port status.
 
    Unix:
@@ -1626,39 +1693,50 @@ Solution: Clear the registry. The procedure is as follows:
 
 4. Refresh the **Device Manager**, remove and reconnect the USB cable to the USB port, or restart the PC.
 
-### What should I do if a non-root user cannot find the device when running the hdc command in Linux?
+### What should I do if a non-root user cannot find the device when running the hdc command on Linux or macOS?
 
 **Symptom**
 
-After a non-root user connects the device to the PC through USB in Linux, the device cannot be found by running the **hdc list targets** command.
+After a non-root user connects the device to the PC through USB on Linux or macOS, the device cannot be found by running the **hdc list targets** command.
 
 **Possible Causes and Solution**
 
 By default, a non-root user does not have the permission to operate USB devices. To enable the permission, perform the following steps:
 
-- To temporarily grant the full operation permission on a USB device, run the following command:
+1. On masOS, stop the hdc service and run the **sudo** command to restart it.
 
-```shell
-sudo chmod -R 777 /dev/bus/usb/
-```
+   ```shell
+   sudo hdc kill
+   sudo hdc start
+   ```
 
-- To permanently change the operation permission on a USB device, do as follows:
-  1. Run the **lsusb** command to obtain the vendorID and productID of the USB device.
-  2. Create an **udev** rule.
-      Edit the **udev** loading rule and replace the default **idVendor** and **idProduct** values of the device with the values obtained in the previous step.
+2. On Linux:
 
-      **MODE="0666"** indicates the permissions of **GROUP** (the user group) for the USB device. Ensure that the login user is in the user group.
+   - To temporarily grant the full operation permission on a USB device, run the following command:
 
-      ```shell
-      $ sudo vim /etc/udev/rules.d/90-myusb.rules
-        SUBSYSTEMS=="usb", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="users", MODE="0666"
-      ```
+   ```shell
+   sudo chmod -R 777 /dev/bus/usb/
+   ```
 
-  3. Restart the computer or reload the **udev** rule.
+   - To permanently change the operation permission on a USB device, do as follows:
 
-      ```shell
-      sudo udevadm control --reload
-      ```
+      - Run the **lsusb** command to obtain the vendorID and productID of the USB device.
+
+      - Create an **udev** rule.
+         Edit the **udev** loading rule and replace the default **idVendor** and **idProduct** values of the device with the values obtained in the previous step.
+
+         **MODE="0666"** indicates the permissions of **GROUP** (the user group) for the USB device. Ensure that the login user is in the user group.
+
+         ```shell
+         $ sudo vim /etc/udev/rules.d/90-myusb.rules
+         SUBSYSTEMS=="usb", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="users", MODE="0666"
+         ```
+
+      - Restart the computer or reload the **udev** rule.
+
+         ```shell
+         sudo udevadm control --reload
+         ```
 
 > **NOTE**
 >
@@ -1722,6 +1800,7 @@ Modify the registry information in the PC as follows:
 1. Press **Win+R** to open the **Run** dialog box, and enter **regedit** to open the registry.
 
 2. Enter the following address in the address bar, and press **Enter**.
+   
    **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography\Protect\Providers\df9d8cd0-1501-11d1-8c7a-00c04fc297eb**;
 
 3. Right-click to create a DWORD (32-bit) value (D), set its name to **ProtectionPolicy** and value to **1** (hexadecimal), and click **OK**.
@@ -2084,6 +2163,7 @@ The **bundlename** specified in the **hdc shell [-b bundlename] [command]** comm
 **Solution**
 
 - Scenario 1: Ensure that the application specified in the command has been installed on the device.
+  
   Run the **hdc shell "bm dump -a | grep bundlename"** command to check whether the application corresponding to the bundle name has been installed on the device. The expected result is **bundlename**.
 
   For example, if the bundle name is **com.example.myapplication**, run the following command:
@@ -2100,6 +2180,7 @@ The **bundlename** specified in the **hdc shell [-b bundlename] [command]** comm
 
 - Scenario 2: Check whether the application specified by the command is a debug-type application.
   1. Run the **hdc shell "bm dump -n bundlename | grep appProvisionType"** command. The expected result is **"appProvisionType": "debug"**.
+      
       For example, run the following command to check the bundle name **com.example.myapplication**:
 
       ```shell
@@ -2116,6 +2197,7 @@ The **bundlename** specified in the **hdc shell [-b bundlename] [command]** comm
 
 - Scenario 3: Ensure that the bundle specified by the command has been started.
   1. After the application starts, the system mounts the corresponding resource directory. You can run the **hdc shell "mount |grep bundle name"** command to query the resource directory mounting status after the application starts.
+      
       For example, to check the bundle name **com.example.myapplication**, run the following command:
 
       ```shell
@@ -2125,7 +2207,9 @@ The **bundlename** specified in the **hdc shell [-b bundlename] [command]** comm
       If the corresponding resource directory has been mounted, mounting information is expected to be returned. (The returned information varies according to the actual mounting status and is not displayed here.)
 
       If the corresponding resource directory is not mounted, no information is returned.
+      
   2. If the corresponding resource directory is not mounted, you can click the application or run the **aa** command to start the application.
+      
       For example, to start the application whose name is **com.example.myapplication** and module name is **EntryAbility**, run the following command:
 
       ```shell

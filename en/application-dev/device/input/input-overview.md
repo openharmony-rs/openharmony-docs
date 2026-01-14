@@ -1,4 +1,4 @@
-# Introduction to Input Kit
+# About This Kit
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->

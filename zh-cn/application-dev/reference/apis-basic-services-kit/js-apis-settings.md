@@ -152,7 +152,7 @@ import { settings } from '@kit.BasicServicesKit';
 
 | 名称                                                    | 类型   | 只读 | 说明                                                                         |
 |-------------------------------------------------------| ------ |----|----------------------------------------------------------------------------|
-| VIBRATE_WHILE_RINGING<sup>(deprecated21)</sup>        | string | 是  | 设备在来电响铃时是否振动。此属性由电话和设置应用程序使用。<br/>该值是布尔类型，仅影响设备因来电而响铃的情况，不影响任何其他应用程序或场景（该常量不支持使用）。 |
+| VIBRATE_WHILE_RINGING<sup>(deprecated21)</sup>        | string | 是  | 设备在来电响铃时是否振动。此属性由电话和设置应用程序使用。<br/>该值仅影响设备因来电而响铃的情况，不影响任何其他应用程序或场景（该常量不支持使用）。 |
 | DEFAULT_ALARM_ALERT<sup>(deprecated21)</sup>          | string | 是  | 系统默认告警的存储区域（该常量不支持使用）。                                                               |
 | DTMF_TONE_TYPE_WHILE_DIALING<sup>(deprecated21)</sup> | string | 是  | 拨号时播放的双音多频（DTMF）音的类型。 <br>- 值为0，表示常规的短音效。<br/>- 值为1，表示长音效（该常量不支持使用）。                 |
 | DTMF_TONE_WHILE_DIALING<sup>(deprecated21)</sup>      | string | 是  | 拨号时是否播放DTMF音。<br>- 值为1，表示播放DTMF音。<br/>- 值为0，表示不播放（该常量不支持使用）。                         |

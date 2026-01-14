@@ -48,7 +48,7 @@ Configure the [module.json5 file](../quick-start/module-configuration-file.md) o
 > By default, the **skills** field contains a skill object, which is used to identify the application entry. Application redirection links should not be configured in this object. Instead, separate skill objects should be used. If there are multiple redirection scenarios, create different skill objects under **skills**. Otherwise, the configuration does not take effect.
 
 
-For example, the configuration below declares that the application is associated with the domain name www.example.com.
+For example, the configuration below declares that the application is associated with the domain name **www.example.com**.
 
 <!-- @[app_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/module.json5) -->
 
@@ -122,12 +122,12 @@ Perform the following operations on the developer website to associate the appli
    **app-identifer** is the unique identifier allocated to an application during application signing. It is also the value of the **app-identifer** field declared in the [HarmonyAppProvision configuration file](../security/app-provision-structure.md).
 
 1. Place the domain name configuration file in a fixed directory on the DNS.
-   
-   The fixed directory is as follows:
 
+   The fixed directory is as follows:
    > https://*your.domain.name*/.well-known/applinking.json
 
    For example, if the domain name is www.example.com, place the **applinking.json** file in the following directory:
+
    `https://www.example.com/.well-known/applinking.json`
 
 
@@ -166,12 +166,12 @@ The caller application passes in the link of the target application through the 
 The **openLink** API provides two methods for starting the target application.
 
   - Method 1: Open the application only in App Linking mode.
-    
-    In this mode, **appLinkingOnly** is set to **true**. If a matching application is found, that application is directly opened. If no application matches, an exception is thrown.
+
+     In this mode, **appLinkingOnly** is set to **true**. If a matching application is found, that application is directly opened. If no application matches, an exception is thrown.
 
   - Method 2: Open the application preferentially in App Linking mode.
 
-    In this mode, **appLinkingOnly** is set to **false** or uses the default value. App Linking is preferentially used to start the target application. If a matching application is found, that application is directly opened. If no application matches, the system attempts to open the application in Deep Linking mode.
+     In this mode, **appLinkingOnly** is set to **false** or uses the default value. App Linking is preferentially used to start the target application. If a matching application is found, that application is directly opened. If no application matches, the system attempts to open the application in Deep Linking mode.
 
 This section describes method 1, in order to check whether the App Linking configuration is correct. The following is an example.
 
@@ -209,6 +209,7 @@ struct Index {
 }
 ```
 
+
 If the target application is started, the App Linking configuration of the target application is correct.
 
 ## FAQs
@@ -234,6 +235,6 @@ If the target application is started, the App Linking configuration of the targe
 5. If a domain name is associated with multiple applications, which application will be started by domain name?
 
    You can configure the **applinking.json** file to associate a domain name with multiple applications. If the **uris** field in the **module.json5** file of each application is set to the same value, the system displays a dialog box for users to select the application to start.
-
+   
    You can also use the **path** field to distinguish the applications to start. For example, use **https://www.example.com/path1** to start target application 1 and use **https://www.example.com/path2** to start target application 2.
-  
+

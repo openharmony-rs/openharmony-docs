@@ -576,7 +576,6 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_create_strong_sendable_reference | Creates a Sendable strong reference to a Sendable ArkTS object.|
 | napi_delete_strong_sendable_reference | Deletes a Sendable strong reference.|
 | napi_get_strong_sendable_reference_value | Obtains the ArkTS object value associated with a Sendable strong reference.|
-| napi_throw_business_error | Throws an ArkTS error with the text information, where the code property of the error object is of the number type.|
  
 **napi_queue_async_work_with_qos**
 
@@ -852,6 +851,28 @@ napi_status napi_delete_strong_reference(napi_env env, napi_strong_ref ref)
 napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, napi_value* result)
 ```
 
+**napi_create_external_string_utf16**
+
+```cpp
+napi_status napi_create_external_string_utf16(napi_env env,
+                                              const char16_t* str,
+                                              size_t length,
+                                              napi_finalize_callback finalize_callback,
+                                              void* finalize_hint,
+                                              napi_value* result);
+```
+
+**napi_create_external_string_ascii**
+
+```cpp
+napi_status napi_create_external_string_ascii(napi_env env,
+                                              const char* str,
+                                              size_t length,
+                                              napi_finalize_callback finalize_callback,
+                                              void* finalize_hint,
+                                              napi_value* result);
+```
+
 **napi_create_strong_sendable_reference**
 
 ```c
@@ -872,14 +893,6 @@ napi_status napi_delete_strong_sendable_reference(napi_env env, napi_sendable_re
 napi_status napi_get_strong_sendable_reference_value(napi_env env,
                                                      napi_sendable_ref ref,
                                                      napi_value* result);
-```
-
-**napi_throw_business_error**
-
-```c
-napi_status napi_throw_business_error(napi_env env,
-                                      int32_t errorCode,
-                                      const char* msg);
 ```
 
 ### Other Utilities

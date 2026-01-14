@@ -4188,7 +4188,7 @@ let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:X
 try {
     gattClient.on('serviceChange', ServiceChangedEvent);
 } catch (err) {
-    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
 ```
 
@@ -4233,7 +4233,7 @@ let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:X
 try {
     gattClient.off('serviceChange', ServiceChangedEvent);
 } catch (err) {
-    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
 ```
 
@@ -4283,7 +4283,7 @@ try {
 
 updateConnectionParam(param: ConnectionParam): Promise&lt;void&gt;
 
-向对端设备发起连接参数更新请求，调用成功后可以切换与对端数据传输速度。
+向对端设备发起连接参数更新请求，调用成功后可以切换与对端数据传输速度。使用Promise异步回调。
 - 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 - 不调用该接口时，默认连接参数类型为[ble.ConnectionParam.BALANCED](#connectionparam22)。
 
@@ -4879,9 +4879,9 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 | ------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
 | deviceId                                 | string      | 否 | 是    | 过滤该BLE设备地址的广播报文。例如："XX:XX:XX:XX:XX:XX"。           |
 | name                                     | string      | 否 | 是    | 过滤该BLE设备名称的广播报文。                                        |
-| serviceUuid                              | string      | 否 | 是    | 过滤包含该服务UUID的广播报文。例如：00001888-0000-1000-8000-00805f9b34fb。 |
+| serviceUuid                              | string      | 否 | 是    | 过滤包含该服务UUID的广播报文，serviceUuid通常在外围设备的广播报文中携带，表示外围设备支持的服务UUID。例如：00001888-0000-1000-8000-00805f9b34fb。 |
 | serviceUuidMask             | string      | 否 | 是     | 搭配serviceUuid过滤器使用，可设置过滤部分服务UUID。例如：FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF。 |
-| serviceSolicitationUuid     | string      | 否 | 是     | 过滤包含该服务请求UUID的广播报文。例如：00001888-0000-1000-8000-00805F9B34FB。 |
+| serviceSolicitationUuid     | string      | 否 | 是     | 过滤包含该服务请求UUID的广播报文，serviceSolicitationUuid通常在中心设备的广播报文中携带，表示中心设备希望搜索到的服务UUID。例如：00001888-0000-1000-8000-00805F9B34FB。 |
 | serviceSolicitationUuidMask | string      | 否 | 是     | 搭配serviceSolicitationUuid过滤器使用，可设置过滤部分服务请求UUID。例如：FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF。 |
 | serviceData                 | ArrayBuffer | 否 | 是     | 过滤包含该服务数据的广播报文。例如：[0x90,0x00,0xF1,0xF2]。 |
 | serviceDataMask             | ArrayBuffer | 否 | 是     | 搭配serviceData过滤器使用，可设置过滤部分服务数据。例如：[0xFF,0xFF,0xFF,0xFF]。 |
