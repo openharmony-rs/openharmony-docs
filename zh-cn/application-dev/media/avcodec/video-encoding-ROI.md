@@ -17,14 +17,14 @@ ROI视频编码（Region Of Interest Video Coding），是基于硬件H.264/H.26
 
 ROI视频编码适用于因网络带宽限制导致码率不能满足视频画质要求，且能明确定义关键画面内容（ROI区域）的场景。比如视频通话、视频直播、安全监控等。
 
-各场景中ROI区域的选择建议：
-- 秀场直播：将主播面部区域设为ROI，优化人脸细节（如肤色、五官轮廓），提升观众沉浸式观看体验；
-- 户外直播：将主播主体/核心拍摄景物（如自然风光、赛事画面核心区域）设为ROI，在移动网络带宽波动时保障核心内容清晰；
-- 电商直播：把商品展示区域（如美妆试色、电子产品细节）设为ROI，清晰呈现商品外观、材质与功能细节，助力商品转化；
-- 网课视频：将课件文字、讲义图表、板书内容区域设为ROI，保证知识点清晰可读，降低视觉疲劳，提升教学效果；
+各场景中ROI区域的选择建议如下：
+- 秀场直播：将主播面部区域设为ROI，优化人脸细节（如肤色、五官轮廓），提升观众沉浸式观看体验。
+- 户外直播：将主播主体/核心拍摄景物（如自然风光、赛事画面核心区域）设为ROI，在移动网络带宽波动时保障核心内容清晰。
+- 电商直播：把商品展示区域（如美妆试色、电子产品细节）设为ROI，清晰呈现商品外观、材质与功能细节，助力商品转化。
+- 网课视频：将课件文字、讲义图表、板书内容区域设为ROI，保证知识点清晰可读，降低视觉疲劳，提升教学效果。
 - 安全监控：将摄像头画面中的人脸、车牌、出入口等关键区域设为ROI，提升抓拍清晰度，便于后续识别分析。
 
-为了支持不同的编码场景，提供三类具体编码场景的ROI编码开发示例, 开发者可基于实际业务场景和技术架构灵活选择。
+为了支持不同的编码场景，提供了三类ROI编码开发示例，开发者可根据实际业务和技术架构选择。
 
 | 不同场景对照点 | 直播/视频通话场景| 录像场景 | 编辑导出/内容发布场景 |
 | :----: |:----:|:----:| :----: |
@@ -46,14 +46,14 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
 
 ## 参数要求说明
 
-支持开发者通过字符串形式下发ROI配置参数，参数需满足"Top,Left-Bottom,Right=DeltaQp"的格式, 所有参数均为整数。
+支持开发者通过字符串形式下发ROI配置参数，参数需满足"Top,Left-Bottom,Right=DeltaQp"格式, 所有参数均为整数。
 
-- ROI是一个矩形区域，Top,Left和Bottom,Right分别定义了ROI的区域在图像中的左上角和右下角的坐标位置，如图一所示。
+- ROI是一个矩形区域，Top，Left和Bottom,Right分别定义了ROI的区域在图像中的左上角和右下角的坐标位置，如图1所示。
 - DeltaQp指定编码量化参数（Quantization Parameter）的差异值，DeltaQp绝对值越大，ROI区域与非ROI区域的编码质量差异越大。DeltaQp为负表示ROI区域编码画质优于非ROI区域。"=DeltaQp"可以省略，省略时使用默认参数（=-3）。
 - 多个ROI参数之间通过";"连接, 多ROI配置如"Top1,Left1-Bottom1,Right1=DeltaQp1;Top2,Left2-Bottom2,Right2=DeltaQp2"。
 - 同一帧最多支持配置6个ROI区域，按照配置顺序，多出的ROI区域将被忽略。总ROI面积不能超过图片面积的1/5。按照配置顺序依次累加，仅生效累加面积在限制之内的ROI区域。
 
-**图一：ROI坐标和最大允许面积占比示意图**
+**图1：ROI坐标和最大允许面积占比示意图**
 
 ![ROI坐标和最大允许面积占比示意图](figures/roi-size-and-coordinate.png)
 
@@ -74,7 +74,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
 **NativeBuffer元数据配置方式独有机制：** 最大支持256Byte长度字符，超出部分会被截断。
 
 **空字符串处理差异：** 
-- NativeBuffer元数据配置方式：不允许配置空字符串，视作未配置ROI参数，当前帧会继承历史帧信息进行ROI编码；
+- NativeBuffer元数据配置方式：不允许配置空字符串，视作未配置ROI参数，当前帧会继承历史帧信息进行ROI编码。
 - 编码输入回调配置方式：允许配置空字符串，但因无法解析出有效ROI信息，编码时按照普通编码方式进行编码。
 
 >**建议：**
@@ -89,9 +89,14 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
 
 系统相机获取视频帧的接口和获取ROI信息的接口是两个独立的回调接口，需要根据视频时间戳和ROI信息时间戳进行数据同步匹配，并在编码前完成相应帧的ROI配置。
 
-在具体业务场景中，相机获取的视频帧会经过一系列的图像处理，如美颜，滤波，增强等前处理，如图二所示，开发者可以根据实际的业务需求进行模块增减。
+>**说明：**
+>
+>ROI信息需与相机视频帧信息严格对齐同步。实际应用中，若两个接口处理不同步，可能导致ROI调用错位；高负载场景下，还可能出现连续两帧ROI时间戳相同的异常。
+当视频帧和ROI信息时间戳不同步或连续两帧ROI时间戳相同时，不影响编码功能正常运行，开发者可结合编码画质评估结果，自主决定是否继续使用。
 
-**图二：NativeBuffer元数据接口配置ROI流程图**
+在具体业务场景中，相机获取的视频帧会经过一系列的图像处理，如美颜，滤波，增强等前处理，如图2所示，开发者可以根据实际的业务需求进行模块增减。
+
+**图2：NativeBuffer元数据接口配置ROI流程图**
 
 ![NativeBuffer元数据接口配置ROI流程图](figures/roi-nativebuffer.png)
 
@@ -108,12 +113,12 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
    ```
    > **说明：**
    >
-   > 上述'recorder'字样仅为示例，此处由开发者根据实际工程目录自定义。
+   > 上述'recorder'字样仅为示例，此处应由开发者根据具体的CMake工程目标名称进行替换。
    >
 
-2. 监听相机元数据回调接口获取人脸Rect。
+2. 监听相机元数据回调接口获取人脸位置信息。
 
-   如何注册相机元数据回调可以参考 [相机元数据状态监听](../camera/camera-metadata.md#状态监听).
+   如何注册相机元数据回调可以参考 [相机元数据状态监听](../camera/camera-metadata.md#状态监听)。
    ```ts
    import { camera } from '@kit.CameraKit'
    import { BusinessError } from '@kit.BasicServicesKit'
@@ -126,7 +131,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
        height: number;
    }
    
-   export function onMetadataObjectsAvailable(metadataOutput: camera.MetadataOutput): void {
+   onMetadataObjectsAvailable(metadataOutput: camera.MetadataOutput): void {
        metadataOutput.on('metadataObjectsAvailable', (err: BusinessError, metadataObjectArr: Array<camera.MetadataObject>) => {
            if (err !== undefined && err.code !== 0) {
                return;
@@ -136,7 +141,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
            let timestampSet = false;
     
            for (const metadataObject of metadataObjectArr) {
-               if (metadataObject.type === 0) { // 人脸类型。
+               if (metadataObject.type === camera.MetadataObjectType.FACE_DETECTION) {
                    if (!timestampSet) {
                        unifiedTimestamp = metadataObject.timestamp;
                        timestampSet = true;
@@ -150,14 +155,14 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
                }
            }
            if (faceBoundingBoxes.length > 0) {
-               // 下发人脸ROI信息到Native层（this.nativeRecorderObj是Native层实例）。
+               // 下发人脸位置信息到Native层（this.nativeRecorderObj是Native层实例）。
                recorder.UpdateFaceRect(this.nativeRecorderObj, unifiedTimestamp, faceBoundingBoxes);
            }
        });
    }
    ```
-   
-3. Native层解析TS层传递的人脸Rect。
+
+3. Native层解析TS层传递的人脸位置信息。
 
    ```c++
    struct FaceRect {
@@ -216,7 +221,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
    }
    ```
 
-4. 对人脸Rect进行坐标转换，转换成ROI信息格式，并保存在map中。
+4. 转换成ROI信息格式字符串并保存。
 
    ```c++
    #include <map>
@@ -227,7 +232,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
    const int width = 1920;   // 视频帧宽度。
    const int height = 1080;  // 视频帧高度。
    const int qpOffset = -6;  // QP偏移参数。
-   std::map<int64_t, std::string> g_roiStrMap;
+   std::map<int64_t, std::string> g_roiStrMap; // 时间戳和ROI信息映射
    std::mutex g_roiMutex;
 
    void Recorder::ConvertToRoi(int64_t timestamp, std::vector<FaceRect>* faceRectVec)
@@ -308,7 +313,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
    OH_VideoEncoder_GetSurface(codec, &nativeWindow);
    ```
 
-   绘制之前获取最新的NativeBuffer，并配置ROI信息。
+   绘制之前获取最新的NativeBuffer，并配置ROI信息。绘制过程可参考[OpenGLES示例](../../../application-dev/reference/native-lib/opengles.md#简单示例)，最终通过`eglSwapBuffers`送绘制好的数据到编码器进行编码。
    ```c++
    int fenceFd = -1;
    OHNativeWindowBuffer *winBuffer = nullptr;
@@ -329,19 +334,17 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
    }
    ```
 
-绘制过程可参考[OpenGLES示例](../../../application-dev/reference/native-lib/opengles.md#简单示例)，最终通过`eglSwapBuffers`送绘制好的数据到编码器进行编码。
-
 ### Surface模式下通过编码输入回调接口配置ROI
 
-在此场景中，视频帧直接送入编码器的输入窗口，如图三所示。相机输出视频帧及其元数据（如果存在）的时间相近。设置编码输入参数的回调后，编码器在接收到视频帧时会触发回调。在回调中，如果获取成功，则该视频帧包含匹配的ROI信息；如果获取超时，则该视频帧不包含匹配的ROI信息。
+在此场景中，视频帧直接送入编码器的输入窗口，如图3所示。相机输出视频帧及其元数据（如果存在）的时间相近。设置编码输入参数的回调后，编码器在接收到视频帧时会触发回调。在回调中，如果获取成功，则该视频帧包含匹配的ROI信息；如果获取超时，则该视频帧不包含匹配的ROI信息。
 
-**图三：编码输入参数回调接口配置ROI流程图**
+**图3：编码输入参数回调接口配置ROI流程图**
 
 ![编码输入参数回调接口配置ROI流程图](figures/roi-input-param-callback.png)
 
 详细开发步骤如下：
 
-1. 在CMakeList.txt中新增链接动态库。
+1. 在CMakeList.txt中链接动态库。
 
    ```txt
    set(BASE_LIBRARY
@@ -351,21 +354,26 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
    ```
    > **说明：**
    >
-   > 上述'recorder'字样仅为示例，此处由开发者根据实际工程目录自定义。
+   > 上述'recorder'字样仅为示例，此处应由开发者根据具体的CMake工程目标名称进行替换。
    >
 
-3. ROI管理结构定义。
+2. 监听相机元数据回调接口获取人脸位置信息。
+   同[Surface模式下通过NativeBuffer接口配置ROI](#surface模式下通过nativebuffer接口配置roi)。
 
-   编码参数回调的设计中未包含视频帧的时间戳字段，为配合后续对齐，需要使用线程安全的先入先出队列管理ROI信息。
+3. Native层解析TS层传递的人脸位置信息。
+   同[Surface模式下通过NativeBuffer接口配置ROI](#surface模式下通过nativebuffer接口配置roi)。
 
+4. 转换成ROI信息格式字符串并保存。
+
+   编码参数回调的设计中未包含视频帧的时间戳字段，为配合后续对齐，需要使用线程安全的先入先出队列管理ROI信息，参考实现如下。
    ```c++
+   // RoiFifoQueue.h
    #include <queue>
    #include <string>
    #include <mutex>
    #include <condition_variable>
    #include <chrono>
 
-   // 线程安全的FIFO ROI队列。
    class RoiFifoQueue {
    public:
        void push(const std::string& roiStr) {
@@ -405,7 +413,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
        ~RoiFifoQueue() {
            stop();
        }
-       };
+   };
    private:
        std::queue<std::string> roiQueue;    // 存储合并后的完整ROI字符串。
        std::mutex mtx;                      // 互斥锁保护队列。
@@ -413,11 +421,11 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
        bool isStopped = false;              // 停止标志（防止析构时死等）。
    ```
 
-4. 通过相机元数据回调获取ROI信息。
+   转换成ROI信息格式并保存在队列中。
 
    ```c++
    #include <sstream>
-   #include <string>
+   #include "RoiFifoQueue.h"
 
    const int width = 1920;   // 视频帧宽度。
    const int height = 1080;  // 视频帧高度。
@@ -450,7 +458,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
    }
    ```
 
-5. 编码输入参数回调。
+5. 在编码输入参数回调中配置ROI信息。
 
    需要包含的头文件。
    ```c++
@@ -472,9 +480,9 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
    {
        (void)codec;
        (void)userData;
-       std::string roiInfo = ";"; // 允许配置为空不生效ROI编码，与另一个通路统一。
+       std::string roiInfo = ""; 
        if (!g_roiStrQueue.pop(roiInfo, ROI_WAIT_TIMEOUT)) {
-           return; // no roi
+           roiInfo = ";"; // 与NativeBuffer通路统一。
        }
        // 找到ROI配置，ROI编码生效；找不到ROI，普通编码生效。
        OH_AVFormat_SetStringValue(parameter, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, roiInfo.c_str());
@@ -486,16 +494,11 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
    OH_VideoEncoder_RegisterParameterCallback(codec, inParaCb, nullptr);
    ```
 
->**说明：**
->
->ROI信息需与相机视频帧信息严格对齐同步。实际应用中，若两个接口处理不同步，可能导致ROI调用错位；高负载场景下，还可能出现连续两帧ROI时间戳相同的异常。
-上述情况不影响编码功能正常运行，开发者可结合编码画质评估结果，自主决定是否继续使用。
-
 ### Buffer模式下配置ROI
 
-在该场景中，视频帧和ROI均由应用提供，并采用buffer模式编码。应用开发者可以参考前文所述的**基于时间戳匹配**或**基于回调时机匹配**两种对齐方式来实现ROI与视频帧的对齐，并在编码输入Buffer回调中完成ROI参数的配置。如图四所示。
+在该场景中，视频帧和ROI均由应用提供，并采用buffer模式编码。应用开发者可以参考前文所述的**基于时间戳匹配**或**基于回调时机匹配**两种对齐方式来实现ROI与视频帧的对齐，并在编码输入Buffer回调中完成ROI参数的配置。如图4所示。
 
-**图四：编码输入Buffer回调接口配置ROI流程图**
+**图4：编码输入Buffer回调接口配置ROI流程图**
 
 ![编码输入Buffer回调接口配置ROI流程图](figures/roi-input-buffer-callback.png)
 
@@ -512,9 +515,9 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
        if (format == nullptr) {
            // 异常处理。
        }
-       std::string roiInfo = ";"; // 允许配置为空不生效ROI编码，建议与另一个通路统一。
+       std::string roiInfo = ""; 
        if (!g_roiStrQueue.pop(roiInfo, ROI_WAIT_TIMEOUT)) {
-           return; // no roi
+           roiInfo = ";"; // 与NativeBuffer通路统一。
        }
        OH_AVFormat_SetStringValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, roiInfo.c_str());
 
