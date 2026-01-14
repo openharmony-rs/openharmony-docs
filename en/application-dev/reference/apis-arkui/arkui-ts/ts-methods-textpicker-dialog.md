@@ -617,7 +617,6 @@ struct TextPickerExample {
 }
 ```
 
-![TextPickerDialog](figures/TextPickerDialog_BackgroundBlurStyleOptions.png)
 
 ### Example 10: Customizing the Background Effect
 
