@@ -17,7 +17,7 @@ Defines the returned data, including a status code and related description.
 
 **Since**: 9
 
-**Related module:** [HuksTypeApi](capi-hukstypeapi.md)
+**Related module**: [HuksTypeApi](capi-hukstypeapi.md)
 
 **Header file**: [native_huks_type.h](capi-native-huks-type-h.md)
 
