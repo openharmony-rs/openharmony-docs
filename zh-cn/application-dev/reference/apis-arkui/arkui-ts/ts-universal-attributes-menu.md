@@ -1231,7 +1231,7 @@ struct Index {
 @Entry
 @Component
 struct Index {
-  @State menuItermList: string[] = ['新建', '历史', '书签', '设置']
+  @State menuItemList: string[] = ['新建', '历史', '书签', '设置']
 
   @Builder
   MenuBuilder(itemList: string[]) {
@@ -1260,7 +1260,7 @@ struct Index {
   build() {
     Column() {
       Text('click for Menu')
-        .bindMenu(this.MenuBuilder(this.menuItermList))
+        .bindMenu(this.MenuBuilder(this.menuItemList))
     }
     .height('100%')
     .width('100%')
