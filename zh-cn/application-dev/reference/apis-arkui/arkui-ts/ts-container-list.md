@@ -2561,19 +2561,42 @@ struct ContactsList {
 
 ![scrollToItemInGroup](figures/scrollToItemInGroup.gif)
 
-### 示例16（设置多选聚拢动画）
+### 示例17（设置多选聚拢动画）
 
 该示例通过打开List多选聚拢动画开关，实现了在ListItem上[长按弹出菜单](ts-universal-attributes-menu.md#bindcontextmenu8)时聚拢显示范围内被选中的ListItem。
 
 从API version 23开始，List组件新增[编辑模式选项](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
 
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+<!--code_no_check-->
 ```ts
 // xxx.ets
+import { ListDataSource } from './ListDataSource';
+
 @Entry
 @Component
 struct ListExample {
-  numbers1: string[] = ['0', '1', '2'];
-  numbers2: string[] = ['0', '1', '2'];
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  @State isSelected: boolean[] = [];
+  selectedCount: number = 0;
+
+  @Styles
+  normalStyles(): void {
+    .opacity(1.0)
+  }
+
+  @Styles
+  selectStyles(): void {
+    .opacity(0.4)
+  }
+
+  onPageShow(): void {
+    let i: number = 0;
+    for (i = 0; i < 10; i++) {
+      this.isSelected.push(false);
+    }
+  }
 
   @Builder
   MenuBuilder() {
@@ -2592,36 +2615,42 @@ struct ListExample {
     }.width(100)
   }
 
-  @Builder
-  MyPreview() {
-    Column() {
-      Image($r('app.media.startIcon'))
-        .width(200)
-        .height(200)
-    }
-  }
-
   build() {
     Column({ space: 5 }) {
-      Text('List')
       List({ space: 10 }) {
-        ForEach(this.numbers1, (day: string) => {
-          ForEach(this.numbers1, (day: string) => {
+        LazyForEach(this.arr, (item: number) => {
             ListItem() {
-              Text(day)
+              Text(item.toString())
                 .fontSize(16)
                 .backgroundColor(Color.White)
                 .width('100%')
                 .height(50)
                 .textAlign(TextAlign.Center)
             }
-            .selected(true)
+            .selected(this.isSelected[item])
+            // 设置多选显示效果
+            .stateStyles({
+              normal: this.normalStyles,
+              selected: this.selectStyles
+            })
             .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
               { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
-          }, (day: string) => day)
-        }, (day: string) => day)
+            .onClick(() => {
+              this.isSelected[item] = !this.isSelected[item];
+              console.info(`item:${item}, this.isSelected[item]:${this.isSelected[item]}`)
+              if (this.isSelected[item]) {
+                ++this.selectedCount;
+              } else {
+                --this.selectedCount;
+              }
+            })
+        }, (item: number) => item.toString())
       }
-      .editModeOptions({ enableGatherSelectedItemsAnimation: true })
+      .editModeOptions({
+        enableGatherSelectedItemsAnimation: true, onGetPreviewBadge: () => {
+          return this.selectedCount;
+        }
+      })
       .width('90%')
       .height(300)
       .scrollBar(BarState.Off)
