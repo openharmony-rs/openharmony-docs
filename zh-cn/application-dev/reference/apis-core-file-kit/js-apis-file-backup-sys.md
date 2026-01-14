@@ -1118,7 +1118,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
         fs.closeSync(fileData.fd);
@@ -1171,7 +1171,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-用于获取应用待备份数据量，在appendBundles之前调用。以异步callback方式（generalCallbacks中的onBackupSizeReport）每隔固定时间（每隔5秒返回一次，如果5秒内获取完则立即返回）返回一次扫描结果，直到datalist中所有的应用数据量全部返回。
+用于获取应用待备份数据量，在appendBundles之前调用。以异步callback方式（generalCallbacks中的onBackupSizeReport）每隔固定时间（每隔5秒返回一次，如果5秒内获取完则立即返回）返回一次扫描结果，直到dataList中所有的应用数据量全部返回。
 
 **系统接口**：此接口为系统接口。
 
@@ -2103,7 +2103,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
         fs.closeSync(fileData.fd);
@@ -3425,7 +3425,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
         fs.closeSync(fileData.fd);
@@ -3478,7 +3478,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-用于获取应用待备份数据量，在appendBundles之前调用。以异步callback方式（generalCallbacks中的onBackupSizeReport）每隔固定时间（每隔5秒返回一次，如果5秒内获取完则立即返回）返回一次扫描结果，直到datalist中所有的应用数据量全部返回。
+用于获取应用待备份数据量，在appendBundles之前调用。以异步callback方式（generalCallbacks中的onBackupSizeReport）每隔固定时间（每隔5秒返回一次，如果5秒内获取完则立即返回）返回一次扫描结果，直到dataList中所有的应用数据量全部返回。
 
 **系统接口**：此接口为系统接口。
 

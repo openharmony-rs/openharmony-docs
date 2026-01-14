@@ -743,7 +743,7 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.openNetworkManagerSettings(context).then((status) => {
-  console.info(`callback:return whether setings is open.`)
+  console.info(`callback:return whether settings is open.`);
 });
 ```
 

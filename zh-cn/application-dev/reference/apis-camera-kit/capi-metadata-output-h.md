@@ -28,7 +28,6 @@
 | -- | -- | -- |
 | [MetadataOutput_Callbacks](capi-oh-camera-metadataoutput-callbacks.md) | MetadataOutput_Callbacks | 元数据输出的回调。 |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md) | Camera_MetadataOutput | 元数据输出对象。<br> 可以使用[OH_CameraManager_CreateMetadataOutput](capi-camera-manager-h.md#oh_cameramanager_createmetadataoutput)方法创建指针。 |
-
 ### 函数
 
 | 名称 | typedef关键字 | 描述 |

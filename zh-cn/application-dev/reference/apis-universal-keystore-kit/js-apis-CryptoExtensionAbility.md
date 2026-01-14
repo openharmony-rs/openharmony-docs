@@ -59,7 +59,7 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 | 名称 | 类型    | 只读 | 可选 | 说明  |
 | ------ | --------- | ---- | ---- | ------ |
 | purpose    | [certificateManager.CertificatePurpose](../apis-device-certificate-kit/js-apis-certManager.md#certificatepurpose22)  | 否   | 否   | 表示证书链对应密钥的使用类型。 |
-| resourceId  | string | 否   | 否   | 资源ID。 |
+| resourceId  | string | 否   | 否   | 资源ID。JSON格式，能够映射到Ukey中的某个资源。 |
 | cert  | Uint8Array | 否   | 否   | 证书。 |
 
 ## HuksCryptoExtensionResult
@@ -113,7 +113,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -152,7 +152,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -194,7 +194,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -234,7 +234,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -274,7 +274,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -312,7 +312,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -351,7 +351,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -391,7 +391,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -431,7 +431,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -472,7 +472,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -512,7 +512,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```

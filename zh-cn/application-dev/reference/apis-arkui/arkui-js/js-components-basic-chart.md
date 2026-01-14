@@ -28,7 +28,7 @@
 | 名称                             | 类型                                       | 默认值  | 必填   | 描述                                       |
 | ------------------------------ | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | type                           | string                                   | line | 否    | 设置图表类型（不支持动态修改），可选项有：<br/>-&nbsp;bar：柱状图。<br/>-&nbsp;line：线形图。<br/>-&nbsp;gauge：量规图。<br/>-&nbsp;progress<sup>5+</sup>：进度类圆形图表。<br/>-&nbsp;loading<sup>5+</sup>：加载类圆形图表。<br/>-&nbsp;rainbow<sup>5+</sup>：占比类圆形图表。 |
-| options                        | ChartOptions                             | -    | 否    | 图表参数设置，柱状图和线形图必须设置参数设置，量规图不生效。可以设置x轴、y轴的最小值、最大值、刻度数、是否显示，线条宽度、是否平滑等。（不支持动态修改） |
+| options                        | ChartOptions                             | -    | 否    | 图表参数设置，柱状图和线形图必须设置参数，量规图不生效。可以设置x轴、y轴的最小值、最大值、刻度数、是否显示，线条宽度、是否平滑等。（不支持动态修改） |
 | datasets                       | Array&lt;ChartDataset&gt;                | -    | 否    | 数据集合，柱状图和线形图必须设置数据集合，量规图不生效。可以设置多条数据集及其背景色。 |
 | segments<sup>5+</sup>          | DataSegment&nbsp;\|&nbsp;Array&lt;DataSegment&gt; | -    | 否    | 进度类、加载类和占比类圆形图表使用的数据结构。<br/>DataSegment针对进度类和加载类圆形图表使用，<br/>Array&lt;DataSegment&gt;针对占比类图标使用，DataSegment最多9个。 |
 | effects<sup>5+</sup>           | boolean                                  | true | 否    | 是否开启占比类、进度类圆形图表特效。<br/>默认值：true，表示开启占比类、进度类圆形图表特效。                       |

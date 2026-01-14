@@ -94,7 +94,7 @@ Row({ space: 35 }) {
 
   **图5** Column容器内子元素在垂直方向上的排列图 
 
-![vertial-arrangement-child-column](figures/vertial-arrangement-child-column.png)
+![vertical-arrangement-child-column](figures/vertical-arrangement-child-column.png)
 
 - justifyContent(FlexAlign.Start，默认值)：元素在垂直方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
 
@@ -215,7 +215,7 @@ Row({ space: 35 }) {
 
   **图6** Row容器内子元素在水平方向上的排列图  
 
-![vertial-arrangement-child-row](figures/vertial-arrangement-child-row.png)
+![vertical-arrangement-child-row](figures/vertical-arrangement-child-row.png)
 
 - justifyContent(FlexAlign.Start，默认值)：元素在水平方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
 

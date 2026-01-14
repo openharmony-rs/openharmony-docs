@@ -825,6 +825,7 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 | defaultFilePathUri<sup>10+</sup>    | string  | 否| 是    | 指定保存的文件或者目录的URI。默认为空。  |
 | fileSuffixChoices<sup>10+</sup>     | Array&lt;string&gt; | 否| 是    | 保存文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为要保存的后缀。没有"\|\"则没有描述，该项整体是一个保存的后缀。默认没有后缀类型。 |
 | pickerMode<sup>12+</sup>     | [DocumentPickerMode](#documentpickermode12) | 否| 是    | 拉起picker的类型, 默认为DEFAULT。当pickerMode设置为DOWNLOAD时，用户配置的参数newFileNames、defaultFilePathUri和fileSuffixChoices将不会生效。 |
+| autoCreateEmptyFile<sup>23+</sup> | boolean | 否 | 是 | 保存文件时，由应用决定是否预置空文件。默认为true，Picker会预置空文件并且返回文件的URI数组。false不预置空文件，只会返回文件的URI数组。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection |
 
 ## AudioSelectOptions
 

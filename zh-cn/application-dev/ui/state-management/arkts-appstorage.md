@@ -478,7 +478,7 @@ struct SetSample {
 }
 ```
 
-### AppStroage在多页面中共享使用
+### AppStorage在多页面中共享使用
 
 在下面示例中，Index和Page页面通过同一个全局AppStorage对象共享linkA数据。在一处修改其值，另一处也能获取到更新后的值。
 

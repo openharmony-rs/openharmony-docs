@@ -2884,13 +2884,12 @@ let formId: string = '12400633174999288';
 let isLocked: boolean = true;
 
 try {
-  formHost.updateFormLockedState(this.formId, this.isLocked).then(() => {
+  formHost.updateFormLockedState(formId, isLocked).then(() => {
     console.info(`formHost updateFormLockedState success`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
-
 ```
 
 ## formHost.on('formOverflow')<sup>20+</sup>

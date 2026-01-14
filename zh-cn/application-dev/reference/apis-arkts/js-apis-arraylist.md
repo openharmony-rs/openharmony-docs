@@ -520,7 +520,7 @@ sort(comparator?: ArrayListComparatorFn\<T\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| comparator | [ArrayListComparatorFn\<T\>](#arraylistcomparatorfnt22) | 否 | 回调函数，默认为升序排序的回调函数。<br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
+| comparator | [ArrayListComparatorFn\<T\>](#arraylistcomparatorfnt23) | 否 | 回调函数，默认为升序排序的回调函数。<br> API version23开始发生兼容性变更，在API version22及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
 
 **错误码：**
 
@@ -929,13 +929,13 @@ while(!temp.done) {
 // value: 4
 ```
 
-### ArrayListComparatorFn\<T\><sup>22+</sup>
+### ArrayListComparatorFn\<T\><sup>23+</sup>
 
 type ArrayListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
 
 ArrayList中sort方法的回调函数。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 

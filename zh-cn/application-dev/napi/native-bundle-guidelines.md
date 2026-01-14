@@ -355,7 +355,7 @@
         // 该接口从API version 21开始支持
         OH_NativeBundle_GetDrawableDescriptor(temp, &rawDrawable);
         if (rawDrawable) {
-            //使用ArkUI_DrawableDescriptor对象绘制图标
+            // 使用ArkUI_DrawableDescriptor对象绘制图标
         }
     }
     

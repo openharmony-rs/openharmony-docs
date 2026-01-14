@@ -29,26 +29,23 @@
 
 以用户点击按钮触发崩溃事件为例，开发步骤如下：
 
-1. 获取示例工程的依赖项jsoncpp。
-
-   参考[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)README中**Amalgamated source**部分，获取jsoncpp.cpp、json.h和json-forwards.h三个文件。
+1. 获取该示例工程依赖的jsoncpp文件，打开链接[HiAppEvent示例工程EventSub](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub)，点击“下载当前目录”，下载EventSub工程文件。
 
 2. 新建Native C++工程，并将上述文件导入到新建工程，目录结构如下。
 
    ```yml
    entry:
+     libs:    //  放置jsoncpp关联三方库的文件夹
      src:
        main:
          cpp:
-           - json:
-               - json.h
-               - json-forwards.h
+           - thirdparty:
+               jsoncpp:    //  放置jsoncpp关联三方库的文件夹
            - types:
                libentry:
                  - index.d.ts
            - CMakeLists.txt
            - napi_init.cpp
-           - jsoncpp.cpp
          ets:
            - entryability:
                - EntryAbility.ets
@@ -56,25 +53,37 @@
                - Index.ets
    ```
 
+   该示例工程中jsoncpp库文件对应的源码来自[三方开源库jsoncpp](https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/1.9.6.tar.gz)。
+
 3. 在"CMakeLists.txt"文件中，添加源文件和动态库。
 
    ```cmake
-   # 新增jsoncpp.cpp(解析订阅事件中的json字符串)源文件
-   add_library(entry SHARED napi_init.cpp jsoncpp.cpp)
+   add_library(entry SHARED napi_init.cpp)
    # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so(日志输出)
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
+   set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
+   set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
+   # 检查是否存在entry/build目录
+   execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${DEST_DIR})
+   # 解压jsoncpp-1.9.6.tar.gz到entry/build，得到jsoncpp头文件的目录
+   execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
+       WORKING_DIRECTORY ${DEST_DIR})
+
+   # 新增三方库依赖libjsoncpp.so(解析订阅事件中的json字符串)
+   target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
+   target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
    ```
 
 4. 在"napi_init.cpp"文件中，导入依赖文件，并定义LOG_TAG。
 
-    <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
     
     ``` C++
     #include "napi/native_api.h"
-    #include "json/json.h"
-    #include "hilog/log.h"
+    // 根据工程中三方库jsoncpp的位置适配引用json.h的路径
+    #include "../../../build/jsoncpp-1.9.6/include/json/json.h"
     #include "hiappevent/hiappevent.h"
-    #include "hiappevent/hiappevent_event.h"
+    #include "hilog/log.h"
     
     #undef LOG_TAG
     #define LOG_TAG "testTag"

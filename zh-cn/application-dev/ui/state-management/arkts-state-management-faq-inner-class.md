@@ -318,7 +318,7 @@ struct Index {
 
 上述代码运行效果如下。
 
-![properly-use-state-management-to-develope-1](figures/properly-use-state-management-to-develope-1.gif)
+![properly-use-state-management-to-develop-1](figures/properly-use-state-management-to-develop-1.gif)
 
 页面内通过ForEach显示了20条信息，当点击某一条信息中age的Text组件时，可以通过日志发现其他的19条信息中age的Text组件也进行了刷新(这体现在日志上，所有的age的Text组件都打出了日志)，但实际上其他19条信息的age的数值并没有改变，也就是说其他19个Text组件并不需要刷新。
 
@@ -441,7 +441,7 @@ struct Page {
 
 上述代码的运行效果如下。
 
-![properly-use-state-management-to-develope-2](figures/properly-use-state-management-to-develope-2.gif)
+![properly-use-state-management-to-develop-2](figures/properly-use-state-management-to-develop-2.gif)
 
 修改后的代码使用对象数组代替了原有的多个属性数组，能够避免数组的“冗余刷新”的情况。这是因为对于数组来说，对象内的变化是无法感知的，数组只能观测数组项层级的变化，例如新增数据项，修改数据项（普通数组是直接修改数据项的值，在对象数组的场景下是整个对象被重新赋值，改变某个数据项对象中的属性不会被观测到）、删除数据项等。这意味着当改变对象内的某个属性时，对于数组来说，对象是没有变化的，也就不会去刷新。在当前状态管理的观测能力中，除了数组嵌套对象的场景外，对象嵌套对象的场景也是无法观测到变化的，这一部分内容将在[使用多属性类对象导致冗余刷新](#使用多属性类对象导致冗余刷新)中讲到。同时修改代码时使用了自定义组件与ForEach的结合，这一部分内容将在[ForEach和对象数组结合使用导致UI不刷新](./arkts-state-management-faq-inner-component.md#foreach和对象数组结合使用导致ui不刷新)讲到。
 
@@ -632,11 +632,11 @@ struct Page {
 
 上述代码的运行效果如下。
 
-![properly-use-state-management-to-develope-3](figures/properly-use-state-management-to-develope-3.gif)
+![properly-use-state-management-to-develop-3](figures/properly-use-state-management-to-develop-3.gif)
 
 优化前点击move按钮的脏节点更新[耗时](../ui-inspector-profiler.md#trace调试能力)如下图：
 
-![img](figures/properly-use-state-management-to-develope-11.PNG)
+![img](figures/properly-use-state-management-to-develop-11.PNG)
 
 在上面的示例中，UiStyle定义了多个属性，并且这些属性分别被多个组件关联。当点击任意一个按钮更改其中的某些属性时，会导致所有这些关联uiStyle的组件进行刷新，虽然它们其实并不需要进行刷新（因为组件的属性都没有改变）。通过定义的一系列isRender函数，可以观察到这些组件的刷新。当点击“move”按钮进行平移动画时，由于translateY的值的多次改变，会导致每一次都存在“冗余刷新”的问题，这对应用的性能有着很大的负面影响。
 
@@ -886,11 +886,11 @@ struct Page {
 
 
 
-上述代码的运行效果如下。![properly-use-state-management-to-develope-4](figures/properly-use-state-management-to-develope-4.gif)
+上述代码的运行效果如下。![properly-use-state-management-to-develop-4](figures/properly-use-state-management-to-develop-4.gif)
 
 优化后点击move按钮的脏节点更新耗时如下图：
 
-![img](figures/properly-use-state-management-to-develope-12.PNG)
+![img](figures/properly-use-state-management-to-develop-12.PNG)
 
 修改后的代码将原来的大类中的十五个属性拆成了八个小类，并且在绑定的组件上也做了相应的适配。属性拆分遵循以下几点原则：
 
@@ -1236,7 +1236,7 @@ struct Page {
 
 上述代码运行效果如下。
 
-![properly-use-state-management-to-develope-5](figures/properly-use-state-management-to-develope-5.gif)
+![properly-use-state-management-to-develop-5](figures/properly-use-state-management-to-develop-5.gif)
 
 上述代码维护了一个ChildList类型的数据源，点击"X"按钮删除一些数据后再点击Recover进行恢复ChildList，发现再次点击"X"按钮进行删除时，UI并没有刷新，同时也没有打印出“CompList ChildList change”的日志。
 
@@ -1426,7 +1426,7 @@ struct Page {
 
 上述代码运行效果如下。
 
-![properly-use-state-management-to-develope-6](figures/properly-use-state-management-to-develope-6.gif)
+![properly-use-state-management-to-develop-6](figures/properly-use-state-management-to-develop-6.gif)
 
 核心的修改点是将原本Child[]类型的tempList修改为具有被观测能力的ChildList类。
 

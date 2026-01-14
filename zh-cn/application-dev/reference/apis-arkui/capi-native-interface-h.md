@@ -93,7 +93,7 @@ void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const
 
 | 类型 | 说明 |
 | -- | -- |
-| void* | 返回native接口抽象指针，在转化为具体类型后进行使用。 |
+| void* | 返回native接口抽象指针，在转换为具体类型后进行使用。 |
 
 ### OH_ArkUI_GetModuleInterface()
 

@@ -486,7 +486,7 @@ export struct Library_Menu {
     ],
     "deliveryWithInstall": true,
     "pages": "$profile:main_pages",
-    "routerMap": "$profile:route_map" //新增配置，指向route_map.json文件
+    "routerMap": "$profile:route_map" // 新增配置，指向route_map.json文件
   }
 }
 ```

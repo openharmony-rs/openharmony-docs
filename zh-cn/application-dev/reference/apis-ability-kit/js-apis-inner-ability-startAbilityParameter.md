@@ -59,7 +59,7 @@ try {
         if (error && error.code !== 0) {
             console.error(`startAbility fail, error: ${JSON.stringify(error)}`);
         } else {
-            console.log(`startAbility success, data: ${JSON.stringify(data)}`);
+            console.info(`startAbility success, data: ${JSON.stringify(data)}`);
         }
     });
 } catch(error) {
