@@ -968,7 +968,7 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 | 名称                |                  值             | 说明                   |
 | -------------------| ------------------------------- | ---------------------- |
 | PEER_INFO           | ohos.collaboration.key.peerInfo | 表示对端设备信息的键值。 |
-| CONNECT_OPTIONS     | ohos.collaboration.key.connectOptions | 表示连接选项的键值。  |
+| CONNECT_OPTIONS     | ohos.collaboration.key.connectOptions | 表示连接选项的键值。   |
 | COLLABORATE_TYPE    | ohos.collaboration.key.abilityCollaborateType | 表示协作类型的键值。   |
 
 ## CollaborationValues
