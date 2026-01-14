@@ -29,7 +29,7 @@
     - [Interface (MacroQuery)](arkts-apis-camera-MacroQuery.md)
     - [Interface (MetadataOutput)](arkts-apis-camera-MetadataOutput.md)
     - [Interface (Photo)](arkts-apis-camera-Photo.md)
-    - [Interface (PhotoEx)](arkts-apis-camera-PhotoEx.md)
+    - [Interface (CapturePhoto)](arkts-apis-camera-CapturePhoto.md)
     - [Interface (PhotoOutput)](arkts-apis-camera-PhotoOutput.md)
     - [Interface (PhotoSession)](arkts-apis-camera-PhotoSession.md)
     - [Interface (PreviewOutput)](arkts-apis-camera-PreviewOutput.md)
