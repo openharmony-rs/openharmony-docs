@@ -1664,7 +1664,7 @@ TLS加密版本及套件配置。
 | ------------------  |---------------------------------|-------- |-------- |---------------|
 | tlsVersionMin       | [TlsVersion](#tlsversion18)     | 否      |否       | TLS最低版本号。     |
 | tlsVersionMax        | [TlsVersion](#tlsversion18)    | 否      |否       | TLS最高版本号。     |
-| cipherSuites        | [CipherSuite](#ciphersuite18)[] | 否      |是       | 声明加密套件类型的数组。如果没有设置，默认携带全部支持的加密套件类型，机密套件类型参考[TlsV13SpecificCipherSuite](#tlsv13specificciphersuite18)、[TlsV12SpecificCipherSuite](#tlsv12specificciphersuite18)、[TlsV10SpecificCipherSuite](#tlsv10specificciphersuite18)。 |
+| cipherSuites        | [CipherSuite](#ciphersuite18)[] | 否      |是       | 声明加密套件类型的数组。如果没有设置，默认携带全部支持的加密套件类型，加密套件类型参考[TlsV13SpecificCipherSuite](#tlsv13specificciphersuite18)、[TlsV12SpecificCipherSuite](#tlsv12specificciphersuite18)、[TlsV10SpecificCipherSuite](#tlsv10specificciphersuite18)。 |
 
 ## TlsVersion<sup>18+</sup>
 
