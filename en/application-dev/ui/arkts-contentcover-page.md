@@ -65,8 +65,8 @@ struct BindContentCoverDemo {
   @Builder
   MyContentCoverBuilder() {
     Column() {
-      // The value in the 'app.string.Text_choose_person' resource file is 'Select passengers.'
       Row() {
+        // Replace $r('app.string.Text_choose_person') with the actual resource file. In this example, the value in the resource file is "Select passengers."
         Text($r('app.string.Text_choose_person'))
           .fontSize(20)
           .fontColor(Color.White)
@@ -77,7 +77,7 @@ struct BindContentCoverDemo {
       .backgroundColor(0x007dfe)
 
       Row() {
-        // The value in the 'app.string.Text_add_person' resource file is '+ Add.'
+        // Replace $r('app.string.Text_add_person') with the actual resource file. In this example, the value in the resource file is "+ Add."
         Text($r('app.string.Text_add_person'))
           .fontSize(16)
           .fontColor(0x333333)
@@ -120,7 +120,7 @@ struct BindContentCoverDemo {
             .alignItems(HorizontalAlign.Start)
 
             Column() {
-              // The value in the 'app.string.Text_edit' resource file is 'Edit.'
+              // Replace $r('app.string.Text_edit') with the actual resource file. In this example, the value in the resource file is "Edit."
               Text($r('app.string.Text_edit'))
                 .fontColor(0x007dfe)
                 .fontSize(16)
@@ -135,7 +135,7 @@ struct BindContentCoverDemo {
       }
       .padding({ top: 20, bottom: 20 })
 
-      // The value in the 'app.string.Text_confirm' resource file is 'OK'.
+      // Replace r('app.string.Text_confirm') with the actual resource file. In this example, the value in the resource file is "OK."
       Text($r('app.string.Text_confirm'))
         .width('90%')
         .height(40)
@@ -156,21 +156,21 @@ struct BindContentCoverDemo {
     Row() {
       Column() {
         Text('00:25')
-        // The value in the 'app.string.Label_origin_station' resource file is 'From.'
+        // Replace $r('app.string.Label_origin_station') with the actual resource file. In this example, the value in the resource file is "Departure."
         Text($r('app.string.Label_origin_station'))
       }
       .width('25%')
 
       Column() {
         Text('G1234')
-        // The value in the 'app.string.Label_start_time' resource file is '8 h 1 min.'
+        // Replace $r('app.string.Label_origin_station') with the actual resource file. In this example, the value in the resource file is "8 h 1 min."
         Text($r('app.string.Label_start_time'))
       }
       .width('25%')
 
       Column() {
         Text('08:26')
-        // The value in the 'app.string.Label_destination_station' resource file is 'To.'
+        // Replace $r('app.string.Label_destination_station') with the actual resource file. In this example, the value in the resource file is "Arrival."
         Text($r('app.string.Label_destination_station'))
       }
       .width('25%')
@@ -192,7 +192,7 @@ struct BindContentCoverDemo {
       .borderRadius(10)
 
       Column() {
-        // The value in the 'app.string.Sheet_choose_person' resource file is 'Select passengers.'
+        // Replace $r('app.string.Sheet_choose_person') with the actual resource file. In this example, the value in the resource file is "+ Select passengers."
         Text($r('app.string.Sheet_choose_person'))
           .fontSize(18)
           .fontColor(Color.Orange)
@@ -218,7 +218,7 @@ struct BindContentCoverDemo {
     Column() {
       Row() {
         this.TripInfo()
-        // The value in the 'app.string.Sheet_tickets_available' resource file is 'Tickets available'.
+        // Replace $r('app.string.Sheet_tickets_available') with the actual resource file. In this example, the value in the resource file is "Tickets available."
         Text($r('app.string.Sheet_tickets_available'))
           .fontColor(Color.Blue)
           .width('25%')
@@ -233,7 +233,7 @@ struct BindContentCoverDemo {
       // Step 1: Define the semi-modal transition effect.
       .bindSheet($$this.isSheetShow, this.MySheetBuilder(), {
         height: SheetSize.MEDIUM,
-        // The value in the 'app.string.Text_confirm_order' resource file is 'Confirm Order.'
+        // Replace $r('app.string.Text_confirm_order') with the actual resource file. In this example, the value in the resource file is "Confirm Order."
         title: {title: $r('app.string.Text_confirm_order')},
       })
     }
@@ -244,4 +244,4 @@ struct BindContentCoverDemo {
 }
 ```
 
-
+![modalTransition](figures/modalTransition.gif)

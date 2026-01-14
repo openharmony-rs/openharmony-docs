@@ -152,7 +152,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
 
-在API version 9-13，针对网络、服务器等数据流异常，接口上报5400103；从API version 14开始，对应错误细化为错误码5411001-5411011。
+在API version 9-13，针对网络、服务器等数据流异常，接口上报5400103；从API version 14开始，对应错误细化为错误码5411001-5411012。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -176,6 +176,7 @@ on(type: 'error', callback: ErrorCallback): void
 | 5411009  | IO SSL connect fail.     |
 | 5411010  | IO SSL server cert untrusted.    |
 | 5411011  | IO unsupported request.      |
+| 5411012  | Http cleartext traffic is not permitted.      |
 
 **示例：**
 

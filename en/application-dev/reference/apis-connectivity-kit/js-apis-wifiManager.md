@@ -1297,7 +1297,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -1443,7 +1443,7 @@ Represents WLAN connection information.
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | No| No| Service set identifier (SSID) of the hotspot, which is used to obtain the public name (name of the wireless network) of the Wi-Fi hotspot connected to the current device. The encoding format is UTF-8.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | bssid | string | No| No| Basic service set identifier (BSSID) of the hotspot, which is the MAC address of the wireless network.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| rssi | number | No| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.<br>The standard value range ranges from –127 dBm to 0 dBm. In normal usage scenarios, the RSSI value ranges from –100 dBm (weak signal) to –30 dBm (strong signal). A value close to 0 dBm indicates an extremely strong signal.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| rssi | number | No| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.<br>Received signal strength indicator (RSSI), in dBm. The standard value range ranges from –127 dBm to 0 dBm. In normal usage scenarios, the RSSI value ranges from –100 dBm (weak signal) to –30 dBm (strong signal). A value close to 0 dBm indicates an extremely strong signal.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | band | number | No| No| Frequency band of the WLAN AP. The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
 | linkSpeed | number | No| No| Uplink speed of the WLAN AP, in Mbps.|
 | rxLinkSpeed<sup>10+</sup> | number | No| No| Downlink speed of the WLAN AP, in Mbps.|
@@ -2697,7 +2697,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -2737,7 +2737,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -2790,7 +2790,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -2820,7 +2820,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -2872,7 +2872,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -2902,7 +2902,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -2945,7 +2945,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -2973,7 +2973,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -3025,7 +3025,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2601000  | Operation failed. |
 
@@ -3053,7 +3053,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2601000  | Operation failed. |
 
@@ -3107,7 +3107,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
@@ -3135,7 +3135,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
@@ -3469,7 +3469,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
@@ -3497,7 +3497,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 

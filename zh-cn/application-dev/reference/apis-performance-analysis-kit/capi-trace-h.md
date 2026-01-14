@@ -51,7 +51,7 @@ HiTraceMeter和HiTraceChain模块接口定义，通过这些接口实现性能�
 | [void OH_HiTrace_SetId(const HiTraceId *id)](#oh_hitrace_setid) | - | 设置跟踪标识。<br> 将给定的HiTraceId设置到当前线程TLS中。若给定的HiTraceId无效，则不执行任何操作。<br> |
 | [void OH_HiTrace_ClearId(void)](#oh_hitrace_clearid) | - | 清除跟踪标识。<br> 将当前线程TLS中的HiTraceId设置为无效。<br> |
 | [HiTraceId OH_HiTrace_CreateSpan(void)](#oh_hitrace_createspan) | - | 创建跟踪分支。<br> 创建一个HiTraceId，使用当前线程TLS中的chainId、spanId初始化HiTraceId的chainId、parentSpanId，并为HiTraceId生成一个新的spanId，返回该HiTraceId。<br> |
-| [void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_Type type, const HiTraceId *id, const char *fmt, ...)](#oh_hitrace_tracepoint) | - | HiTraceMeter跟踪信息埋点。<br> type为客户端发送CS和服务端接收SC时，进行同步HiTraceMeter开始打点；type为客户端接收CC和服务端发送SS时，进行同步HiTraceMeter结束打点；type为通用类型GENERAL时，不会进行HiTraceMeter打点。<br> type为客户端发送CS和客户端接收CC的信息埋点需配套使用；type为服务端接收SC和服务端发送SS的信息埋点需配套使用。否则，HiTraceMeter开始与结束打点无法正常匹配。<br> |
+| [void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_Type type, const HiTraceId *id, const char *fmt, ...)](#oh_hitrace_tracepoint) | - | HiTraceMeter跟踪信息埋点。<br> type为客户端发送HITRACE_TP_CS和服务端接收HITRACE_TP_SR时，进行同步HiTraceMeter开始打点；type为客户端接收HITRACE_TP_CR和服务端发送HITRACE_TP_SS时，进行同步HiTraceMeter结束打点；type为通用类型HITRACE_TP_GENERAL时，不会进行HiTraceMeter打点。<br> type为客户端发送HITRACE_TP_CS和客户端接收HITRACE_TP_CR的信息埋点需配套使用；type为服务端接收HITRACE_TP_SR和服务端发送HITRACE_TP_SS的信息埋点需配套使用。否则，HiTraceMeter开始与结束打点无法正常匹配。<br> |
 | [void OH_HiTrace_InitId(HiTraceId *id)](#oh_hitrace_initid) | - | 初始化HiTraceId。 |
 | [void OH_HiTrace_IdFromBytes(HiTraceId *id, const uint8_t *pIdArray, int len)](#oh_hitrace_idfrombytes) | - | 根据字节数组创建HiTraceId。 |
 | [bool OH_HiTrace_IsIdValid(const HiTraceId *id)](#oh_hitrace_isidvalid) | - | 判断HiTraceId是否有效。 |
@@ -353,7 +353,7 @@ void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_T
 
 **描述**
 
-HiTraceMeter跟踪信息埋点。<br> type为客户端发送CS和服务端接收SC时，进行同步HiTraceMeter开始打点；type为客户端接收CC和服务端发送SS时，进行同步HiTraceMeter结束打点；type为通用类型GENERAL时，不会进行HiTraceMeter打点。<br> type为客户端发送CS和客户端接收CC的信息埋点需配套使用；type为服务端接收SC和服务端发送SS的信息埋点需配套使用。否则，HiTraceMeter开始与结束打点无法正常匹配。
+HiTraceMeter跟踪信息埋点。<br> type为客户端发送HITRACE_TP_CS和服务端接收HITRACE_TP_SR时，进行同步HiTraceMeter开始打点；type为客户端接收HITRACE_TP_CR和服务端发送HITRACE_TP_SS时，进行同步HiTraceMeter结束打点；type为通用类型HITRACE_TP_GENERAL时，不会进行HiTraceMeter打点。<br> type为客户端发送HITRACE_TP_CS和客户端接收HITRACE_TP_CR的信息埋点需配套使用；type为服务端接收HITRACE_TP_SR和服务端发送HITRACE_TP_SS的信息埋点需配套使用。否则，HiTraceMeter开始与结束打点无法正常匹配。
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 

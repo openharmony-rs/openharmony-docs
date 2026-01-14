@@ -37,6 +37,7 @@ Be aware of the component's usage constraints and lifecycle management to maximi
   The **EmbeddedComponent** supports [universal attributes](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), with default and minimum width and height values set to 10 vp.
   
   The following width- and height-related attributes are not supported:
+  
   **constraintSize**, **aspectRatio**, **layoutWeight**, **flexBasis**, **flexGrow**, and **flexShrink**.
 
 - Event handling

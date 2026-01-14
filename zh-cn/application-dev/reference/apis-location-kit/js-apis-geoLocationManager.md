@@ -274,6 +274,7 @@ GNSS地理围栏请求参数。
 | notifications | Array&lt;[NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest)&gt; | 否 | 是 | 表示地理围栏事件发生后弹出的通知对象列表。<br/>monitorTransitionEvents与notifications中的顺序要一一对应，例如monitorTransitionEvents[0]为[GeofenceTransitionEvent](#geofencetransitionevent12).GEOFENCE_TRANSITION_EVENT_ENTER，那notifications[0]中就需要填入用户进入围栏时需要弹出的通知对象。默认值为空数组。 |
 | geofenceTransitionCallback | AsyncCallback&lt;[GeofenceTransition](#geofencetransition12)&gt; | 否 | 否 | 表示用于接收地理围栏事件的回调函数。 |
 | loiterTimeMs<sup>23+</sup> | number | 否 | 是 | 徘徊时间，单位为毫秒，需关注GEOFENCE_TRANSITION_DWELL事件。若设备在多边形围栏内徘徊时间达到该值，则上报GEOFENCE_TRANSITION_DWELL事件。徘徊状态检测周期为10000毫秒。例如：设置15000，将在驻留超过20000毫秒时上报驻留状态；设置5000，将在驻留超过10000毫秒时上报驻留状态。 |
+| fenceExtensionAbilityName<sup>23+</sup> | string | 否 | 是 | FenceExtensionAbility名称，参见[FenceExtensionAbility](js-apis-app-ability-FenceExtensionAbility.md)。后台拉起需要申请后台定位权限，权限申请方式参见[申请位置权限开发指导](../../device/location/location-permission-guidelines.md#开发步骤)。  |
 
 
 ## CountryCode
@@ -2443,6 +2444,8 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
     notifications: notificationRequestList,
     // 设备驻留在地理围栏内的时间，该参数为可选
     loiterTimeMs: 10000,
+    // 围栏回调要拉起的FenceExtensionAbility名称，该参数为可选
+    fenceExtensionAbilityName: "FenceExtensionAbility",
     // 用于监听围栏事件的callback
     geofenceTransitionCallback: (err: BusinessError, transition: geoLocationManager.GeofenceTransition) => {
       if (err) {
@@ -3081,9 +3084,9 @@ isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, n
   }
   ```
 
-## geoLocationManager.getActiveFences<sup>23+</sup>
+## geoLocationManager.getActiveGeoFences<sup>23+</sup>
 
-getActiveFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
+getActiveGeoFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
 
 查询当前有效的围栏信息。使用Promise异步回调。
 
@@ -3104,7 +3107,7 @@ getActiveFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
-|801 | Capability not supported. Failed to call ${geoLocationManager.getActiveFences} due to limited device capabilities.          |
+|801 | Capability not supported. Failed to call ${geoLocationManager.getActiveGeoFences} due to limited device capabilities.          |
 
 **示例**
 
@@ -3112,7 +3115,7 @@ getActiveFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
   import { geoLocationManager } from '@kit.LocationKit';
 
   try {
-    geoLocationManager.getActiveFences().then((res) => {
+    geoLocationManager.getActiveGeoFences().then((res) => {
       if (res) {
         console.info("fence num:" + res.size());
         for (const item of res) {
@@ -3121,9 +3124,9 @@ getActiveFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
       }
     })
       .catch((error: BusinessError) => {
-        console.error('promise, getActiveFences: error=' + JSON.stringify(error));
+        console.error('promise, getActiveGeoFences: error=' + JSON.stringify(error));
       });
   } catch (error) {
-    console.error("getActiveFences: errCode" + error.code + ", errMessage" + error.message);
+    console.error("getActiveGeoFences: errCode" + error.code + ", errMessage" + error.message);
   }
   ```

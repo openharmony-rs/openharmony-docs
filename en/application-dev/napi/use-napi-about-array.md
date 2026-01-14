@@ -26,7 +26,7 @@ The following table describes the APIs for managing ArkTS arrays.
 | API| Description|
 | -------- | -------- |
 | [napi_create_array](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array) | Creates an ArkTS array.|
-| [napi_create_array_with_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array_with_length) | Creates an ArkTS array of the specified length.|
+| [napi_create_array_with_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array_with_length) | Creates an ArkTS array object of the specified length.|
 | [napi_get_array_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_array_length) | Obtains the length of an ArkTS array.|
 | [napi_is_array](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_array) | Checks whether the given **napi_value** is an array.|
 | [napi_set_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_set_element) | Sets an element at the specified index in the given ArkTS array.|
@@ -44,17 +44,28 @@ The following table describes the APIs for managing ArkTS arrays.
 
 If you are just starting out with Node-API, see [Node-API Development Process](use-napi-process.md). The following demonstrates only the C++ and ArkTS code for array management APIs.  
 
+The following header files are required for the C++ code:
+```cpp
+#include "napi/native_api.h"
+```
+The following modules are required for the ArkTS code:
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+```
+
 ### napi_create_array
 
 Call **napi_create_array** to create an ArkTS array.
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_create_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
-static constexpr int INT_NUM_5 = 5; // Array length.
+``` C++
+static constexpr int INT_NUM_5 = 5; // Length of the input parameter index array
 
+// Use napi_create_array to develop arrays.
 static napi_value CreateArray(napi_env env, napi_callback_info info)
 {
     // Create an empty array.
@@ -70,25 +81,29 @@ static napi_value CreateArray(napi_env env, napi_callback_info info)
     return jsArray;
 }
 ```
-<!-- @[napi_create_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+
 
 API declaration:
 
-```ts
-// index.d.ts
-export const createArray: () => number[];
-```
+index.d.ts
+
 <!-- @[napi_create_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const createArray: () => number[]; // Use napi_create_array to develop arrays.
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_array:%{public}s', JSON.stringify(testNapi.createArray()));
-```
 <!-- @[ark_napi_create_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// Use napi_create_array to develop arrays.
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_array:%{public}s',
+  JSON.stringify(testNapi.createArray()));
+```
+
 
 ### napi_create_array_with_length
 
@@ -96,9 +111,10 @@ Call **napi_create_array_with_length** to create an ArkTS array of the specified
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// Use napi_create_array_with_length to develop arrays.
 static napi_value CreateArrayWithLength(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS.
@@ -115,26 +131,29 @@ static napi_value CreateArrayWithLength(napi_env env, napi_callback_info info)
     return jsArray;
 }
 ```
-<!-- @[napi_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+
 
 API declaration:
 
-```ts
-// index.d.ts
-export const createArrayWithLength: (length: number) => void[];
-```
+index.d.ts
+
 <!-- @[napi_create_array_with_length_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const createArrayWithLength: (length: number) => void[]; // Use napi_create_array_with_length to develop arrays.
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// Use napi_create_array_with_length to develop arrays.
 let array = testNapi.createArrayWithLength(6);
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_array_with_length:%{public}d', array.length);
 ```
-<!-- @[ark_napi_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+
 
 ### napi_get_array_length
 
@@ -142,9 +161,10 @@ Call **napi_get_array_length** to obtain the length of an array.
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_get_array_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// Use napi_get_array_length to develop arrays.
 static napi_value GetArrayLength(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS.
@@ -154,9 +174,9 @@ static napi_value GetArrayLength(napi_env env, napi_callback_info info)
     uint32_t length;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // Check whether the parameter is an array.
-    bool is_array;
-    napi_is_array(env, args[0], &is_array);
-    if (!is_array) {
+    bool isArray;
+    napi_is_array(env, args[0], &isArray);
+    if (!isArray) {
         napi_throw_error(env, nullptr, "Argument must be an array");
         return nullptr;
     }
@@ -166,26 +186,30 @@ static napi_value GetArrayLength(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_get_array_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+
 
 API declaration:
 
-```ts
-// index.d.ts
-export const getArrayLength: (arr: Array<any>) => number | undefined;
-```
+index.d.ts
+
 <!-- @[napi_get_array_length_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const getArrayLength: (arr: Array<any>) => number | undefined; // Use napi_get_array_length to develop arrays.
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
-const arr = [0, 1, 2, 3, 4, 5];
-hilog.info(0x0000, 'testTag', 'Test Node-API get_array_length:%{public}d', testNapi.getArrayLength(arr));
-```
 <!-- @[ark_napi_get_array_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// Use napi_get_array_length to develop arrays.
+const arr = [0, 1, 2, 3, 4, 5];
+hilog.info(0x0000, 'testTag', 'Test Node-API get_array_length:%{public}d',
+  testNapi.getArrayLength(arr));
+```
+
 
 ### napi_is_array
 
@@ -193,9 +217,10 @@ Call **napi_is_array** to check whether the given ArkTS value is an array.
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// Use napi_is_array to develop arrays.
 static napi_value IsArray(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS.
@@ -203,9 +228,8 @@ static napi_value IsArray(napi_env env, napi_callback_info info)
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // Call napi_is_array to check whether the input parameter is an array.
-    bool result;
-    napi_status status;
-    status = napi_is_array(env, args[0], &result);
+    bool result = false;
+    napi_status status = napi_is_array(env, args[0], &result);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Node-API napi_is_array fail");
         return nullptr;
@@ -217,31 +241,38 @@ static napi_value IsArray(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const isArray: <T>(data: Array<T> | T) => boolean | undefined;
-```
+index.d.ts
+
 <!-- @[napi_is_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const isArray: <T>(data: Array<T> | T) => boolean | undefined; // Use napi_is_array to develop arrays.
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// Use napi_is_array to develop arrays.
 try {
   let value = new Array<number>(1);
   let data = "123";
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_array: %{public}s', testNapi.isArray<number>(value));
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_array: %{public}s', testNapi.isArray<string>(data));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_array: %{public}s',
+    testNapi.isArray<number>(value));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_array: %{public}s',
+    testNapi.isArray<string>(data));
+  // ...
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_array error: %{public}s', error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+
 
 ### napi_set_element
 
@@ -251,11 +282,12 @@ For the object that uses the index value as the key, you can use **napi_set_elem
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
 static constexpr int INT_ARG_2 = 2; // Input parameter index.
-
+// ...
+// Use napi_set_element to develop arrays.
 static napi_value NapiSetElement(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS.
@@ -282,20 +314,26 @@ static napi_value NapiSetElement(napi_env env, napi_callback_info info)
     return nullptr;
 }
 ```
-<!-- @[napi_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+
 
 API declaration:
 
-```ts
-export const napiSetElement: <T>(arr: Array<T>, index: number, value: T) => void;
-```
+index.d.ts
+
 <!-- @[napi_set_element_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const napiSetElement: <T>(arr: Array<T>, index: number,
+  value: T) => void; // Use napi_set_element to develop arrays.
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// Use napi_set_element to develop arrays.
 try {
   let arr = [10, 20, 30];
   testNapi.napiSetElement<number | string>(arr, 1, 'newElement');
@@ -317,7 +355,7 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_set_element error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+
 
 ### napi_get_element
 
@@ -325,9 +363,10 @@ Call **napi_get_element** to obtain the element at the specified index in an Ark
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// Use napi_get_element ro develop arrays.
 static napi_value NapiGetElement(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS.
@@ -344,39 +383,50 @@ static napi_value NapiGetElement(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+
 
 API declaration:
 
-```ts
-// index.d.ts
-export const napiGetElement: <T>(arr: Array<T>, index: number) => number | string | Object | boolean | undefined;
-```
+index.d.ts
+
 <!-- @[napi_get_element_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const napiGetElement: <T>(arr: Array<T>,
+  index: number) => number | string | Object | boolean | undefined; // Use napi_get_element to develop arrays.
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// Use napi_get_element to develop arrays.
 interface MyObject {
   first: number;
   second: number;
 }
+
 let obj: MyObject = {
   first: 1,
   second: 2
 };
 let arr = [10, 'hello', null, obj];
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[0]: %{public}d', testNapi.napiGetElement<number | string | null | Object>(arr, 0));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[1]: %{public}s', testNapi.napiGetElement<number | string | null | Object>(arr, 1));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[2]: %{public}s', testNapi.napiGetElement<number | string | null | Object>(arr, 2));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[3]: %{public}s', testNapi.napiGetElement<number | string | null | Object>(arr, 3));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[4]: %{public}s', JSON.stringify(testNapi.napiGetElement(arr, 4)));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[null]: %{public}s', testNapi.napiGetElement<number | string | null | Object>(arr, 5));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[0]: %{public}d',
+  testNapi.napiGetElement<number | string | null | Object>(arr, 0));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[1]: %{public}s',
+  testNapi.napiGetElement<number | string | null | Object>(arr, 1));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[2]: %{public}s',
+  testNapi.napiGetElement<number | string | null | Object>(arr, 2));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[3]: %{public}s',
+  testNapi.napiGetElement<number | string | null | Object>(arr, 3));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[4]: %{public}s',
+  JSON.stringify(testNapi.napiGetElement(arr, 4)));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[null]: %{public}s',
+  testNapi.napiGetElement<number | string | null | Object>(arr, 5));
 ```
-<!-- @[ark_napi_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+
 
 ### napi_has_element
 
@@ -384,9 +434,10 @@ Call **napi_has_element** to check whether an ArkTS array has the element at the
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_has_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// Use napi_has_element to develop arrays.
 static napi_value NapiHasElement(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS.
@@ -405,27 +456,30 @@ static napi_value NapiHasElement(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_has_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const napiHasElement: <T>(arr: Array<T>, index: number) => boolean;
-```
+index.d.ts
+
 <!-- @[napi_has_element_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const napiHasElement: <T>(arr: Array<T>, index: number) => boolean; // Use napi_has_element to develop arrays.
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
-let arr = [10, 'hello', null, 'world'];
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element arr[0]: %{public}s', testNapi.napiHasElement<number | string | null>(arr, 0));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element arr[7]: %{public}s', testNapi.napiHasElement<number | string | null>(arr, 7));
-```
 <!-- @[ark_napi_has_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// Use napi_has_element to develop arrays.
+let arr = [10, 'hello', null, 'world'];
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element arr[0]: %{public}s',
+  testNapi.napiHasElement<number | string | null>(arr, 0));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element arr[7]: %{public}s',
+  testNapi.napiHasElement<number | string | null>(arr, 7));
+```
 
 ### napi_delete_element
 
@@ -433,9 +487,10 @@ Call **napi_delete_element** to delete the element at the specified index from a
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// Use napi_delete_element to develop arrays.
 static napi_value NapiDeleteElement(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS.
@@ -454,30 +509,37 @@ static napi_value NapiDeleteElement(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const napiDeleteElement: <T>(arr: Array<T>, index: number) => boolean;
-```
+index.d.ts
+
 <!-- @[napi_delete_element_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const napiDeleteElement: <T>(arr: Array<T>,
+  index: number) => boolean; // Use napi_delete_element to develop arrays.
+```
+
 
 ArkTS code:
 
-```ts
-// Import napiHasElement and napiGetElement.
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+Import **napiHasElement** and **napiGetElement** in the preceding sample code to **index.d.ts**.
 
-let arr = [10, 'hello', null, 'world'];
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element arr[0]: %{public}s', testNapi.napiHasElement<number | string | null>(arr, 0));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_delete_element arr[0]: %{public}s', testNapi.napiDeleteElement<number | string | null>(arr, 0));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element deleted arr[0]: %{public}s', testNapi.napiHasElement<number | string | null>(arr, 0));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[0]: %{public}d', testNapi.napiGetElement<number | string | null>(arr, 0));
-```
 <!-- @[ark_napi_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// Use napi_delete_element to develop arrays.
+let arr = [10, 'hello', null, 'world'];
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element arr[0]: %{public}s',
+  testNapi.napiHasElement<number | string | null>(arr, 0));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_delete_element arr[0]: %{public}s',
+  testNapi.napiDeleteElement<number | string | null>(arr, 0));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element deleted arr[0]: %{public}s',
+  testNapi.napiHasElement<number | string | null>(arr, 0));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[0]: %{public}d',
+  testNapi.napiGetElement<number | string | null>(arr, 0));
+```
 
 ### napi_create_typedarray
 
@@ -485,9 +547,10 @@ Call **napi_create_typedarray** to create an ArkTS **TypedArray** object of the 
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_create_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// Use napi_create_typedarray to develop arrays.
 static napi_value CreateTypedArray(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS.
@@ -502,34 +565,34 @@ static napi_value CreateTypedArray(napi_env env, napi_callback_info info)
     // Determine the type of the array to create based on the type value passed.
     arrayType = static_cast<napi_typedarray_type>(typeNum);
     switch (arrayType) {
-    case napi_int8_array:
-    case napi_uint8_array:
-    case napi_uint8_clamped_array:
-        elementSize = sizeof(int8_t);
-        break;
-    case napi_int16_array:
-    case napi_uint16_array:
-        elementSize = sizeof(int16_t);
-        break;
-    case napi_int32_array:
-    case napi_uint32_array:
-        elementSize = sizeof(int32_t);
-        break;
-    case napi_float32_array:
-        elementSize = sizeof(float);
-        break;
-    case napi_float64_array:
-        elementSize = sizeof(double);
-        break;
-    case napi_bigint64_array:
-    case napi_biguint64_array:
-        elementSize = sizeof(int64_t);
-        break;
-    default:
-    // By default, an array of the napi_int8_array type is created.
-        arrayType = napi_int8_array;
-        elementSize = sizeof(int8_t);
-        break;
+        case napi_int8_array:
+        case napi_uint8_array:
+        case napi_uint8_clamped_array:
+            elementSize = sizeof(int8_t);
+            break;
+        case napi_int16_array:
+        case napi_uint16_array:
+            elementSize = sizeof(int16_t);
+            break;
+        case napi_int32_array:
+        case napi_uint32_array:
+            elementSize = sizeof(int32_t);
+            break;
+        case napi_float32_array:
+            elementSize = sizeof(float);
+            break;
+        case napi_float64_array:
+            elementSize = sizeof(double);
+            break;
+        case napi_bigint64_array:
+        case napi_biguint64_array:
+            elementSize = sizeof(int64_t);
+            break;
+        default:
+        // By default, an array of the napi_int8_array type is created.
+            arrayType = napi_int8_array;
+            elementSize = sizeof(int8_t);
+            break;
     }
     size_t length = 3;
     napi_value arrayBuffer = nullptr;
@@ -542,12 +605,14 @@ static napi_value CreateTypedArray(napi_env env, napi_callback_info info)
     return typedArray;
 }
 ```
-<!-- @[napi_create_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
+index.d.ts
+
+<!-- @[napi_create_typed_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const enum TypedArrayTypes {
   INT8_ARRAY = 0,
   UINT8_ARRAY,
@@ -561,27 +626,29 @@ export const enum TypedArrayTypes {
   BIGINT64_ARRAY,
   BIGUINT64_ARRAY,
 }
-export const createTypedArray: <T>(type: TypedArrayTypes) => T;
+
+export const createTypedArray: <T>(type: TypedArrayTypes) => T; // Use napi_create_typedarray to develop arrays.
 ```
-<!-- @[napi_create_typed_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_create_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// Use napi_create_typedarray to develop arrays.
 // Pass the type of the array to create.
 let typedArray = testNapi.createTypedArray<Int8Array>(testNapi.TypedArrayTypes["INT8_ARRAY"]);
 if (typedArray instanceof Int8Array) {
-    hilog.info(0x0000, 'testTag', ' Node-API napi_create_typedarray: Int8Array');
+  hilog.info(0x0000, 'testTag', ' Node-API napi_create_typedarray: Int8Array');
+  // ...
 }
 let uint8Array = testNapi.createTypedArray<Uint8Array>(testNapi.TypedArrayTypes["UINT8_ARRAY"]);
 if (uint8Array instanceof Uint8Array) {
-    hilog.info(0x0000, 'testTag', ' Node-API napi_create_typedarray: Uint8Array');
+  hilog.info(0x0000, 'testTag', ' Node-API napi_create_typedarray: Uint8Array');
+  // ...
 }
 ```
-<!-- @[ark_napi_create_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
 Modify the module initialization in **use-napi-process.md** as follows:
 
@@ -613,7 +680,6 @@ static napi_value Init(napi_env env, napi_value exports)
 EXTERN_C_END
 
 ```
-<!-- @[change_use_napi_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
 ### napi_is_typedarray
 
@@ -621,9 +687,10 @@ Call **napi_is_typedarray** to check whether the **napi_value** given from ArkTS
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_is_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// Use napi_is_typedarray to develop arrays.
 static napi_value IsTypedarray(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS.
@@ -632,8 +699,7 @@ static napi_value IsTypedarray(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // Call napi_is_typedarray to check whether the input parameter type is TypedArray.
     bool result = false;
-        napi_status status;
-    status = napi_is_typedarray(env, args[0], &result);
+    napi_status status = napi_is_typedarray(env, args[0], &result);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Node-API napi_is_typedarray fail");
         return nullptr;
@@ -645,31 +711,37 @@ static napi_value IsTypedarray(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_is_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const isTypedarray: (data: Object) => boolean | undefined;
-```
+index.d.ts
+
 <!-- @[napi_is_typed_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const isTypedarray: (data: Object) => boolean | undefined; // Use napi_is_typedarray to develop arrays.
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_is_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// Use napi_is_typedarray to develop arrays.
 try {
   let value = new Uint8Array([1, 2, 3, 4]);
   let data = "123";
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_typedarray: %{public}s', testNapi.isTypedarray(value));
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_typedarray: %{public}s', testNapi.isTypedarray(data));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_typedarray: %{public}s',
+    testNapi.isTypedarray(value));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_typedarray: %{public}s',
+    testNapi.isTypedarray(data));
+  // ...
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_typedarray error: %{public}s', error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_is_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_get_typedarray_info
 
@@ -677,9 +749,10 @@ Call **napi_get_typedarray_info** to obtain properties of a **TypedArray** objec
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_get_typed_array_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// Use napi_get_typedarray_info to develop arrays.
 static napi_value GetTypedarrayInfo(napi_env env, napi_callback_info info)
 {
     // Obtain and parse the parameters passed from ArkTS. The first parameter is the TypedArray type of the property to obtain, and the second parameter is the enums of the property type to obtain.
@@ -693,67 +766,71 @@ static napi_value GetTypedarrayInfo(napi_env env, napi_callback_info info)
     enum InfoType { INFO_TYPE = 1, INFO_LENGTH, INFO_ARRAY_BUFFER, INFO_BYTE_OFFSET };
     void *data;
     napi_typedarray_type type;
-    size_t byteOffset, length;
+    size_t byteOffset;
+    size_t length;
     napi_value arraybuffer;
     // Call napi_get_typedarray_info to obtain TypedArray information.
     napi_get_typedarray_info(env, args[0], &type, &length, &data, &arraybuffer, &byteOffset);
     napi_value result = nullptr;
     // Return the property value based on the property name.
     switch (infoTypeParam) {
-    case INFO_TYPE:
-        // If the input parameter is TypedArray data of the int8 type, the value type is napi_int8_array.
-        napi_value int8_type;
-        napi_get_boolean(env, type == napi_int8_array, &int8_type);
-        result = int8_type;
-        break;
-    case INFO_LENGTH:
-        // Byte length of elements in TypedArray.
-        napi_value napiLength;
-        napi_create_int32(env, length, &napiLength);
-        result = napiLength;
-        break;
-    case INFO_BYTE_OFFSET:
-        // Byte offset of the first TypedArray element in the native array.
-        napi_value napiByteOffset;
-        napi_create_int32(env, byteOffset, &napiByteOffset);
-        result = napiByteOffset;
-        break;
-    case INFO_ARRAY_BUFFER:
-        // ArrayBuffer under TypedArray.
-        result = arraybuffer;
-        break;
-    default:
-        napi_throw_error(env, nullptr, "infoType is not the InfoType");
-        break;
+        case INFO_TYPE:
+            // If the input parameter is TypedArray data of the int8 type, the value type is napi_int8_array.
+            napi_value int8_type;
+            napi_get_boolean(env, type == napi_int8_array, &int8_type);
+            result = int8_type;
+            break;
+        case INFO_LENGTH:
+            // Byte length of elements in TypedArray.
+            napi_value napiLength;
+            napi_create_int32(env, length, &napiLength);
+            result = napiLength;
+            break;
+        case INFO_BYTE_OFFSET:
+            // Byte offset of the first TypedArray element in the native array.
+            napi_value napiByteOffset;
+            napi_create_int32(env, byteOffset, &napiByteOffset);
+            result = napiByteOffset;
+            break;
+        case INFO_ARRAY_BUFFER:
+            // ArrayBuffer under TypedArray.
+            result = arraybuffer;
+            break;
+        default:
+            napi_throw_error(env, nullptr, "infoType is not the InfoType");
+            break;
     }
     return result;
 }
 ```
-<!-- @[napi_get_typed_array_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const getTypedarrayInfo: <T>(typeArray: T, infoType: number) => ArrayBuffer | number | boolean;
-```
+index.d.ts
+
 <!-- @[napi_get_typed_array_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const getTypedarrayInfo: <T>(typeArray: T,
+  infoType: number) => ArrayBuffer | number | boolean; // Use napi_get_typedarray_info to develop arrays.
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_get_typed_array_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// Use napi_get_typedarray_info to develop arrays.
 // Pass in the TypedArray type. TypedArray is a class array data view used to describe binary data. It does not have a constructor and can be constructed from its child class.
 // The child classes of TypedArray include Int8Array, Uint8Array, Uint8ClampedArray, Int16Array, and Int32Array. 
 let int8Array = new Int8Array([15, 7]);
 // Define the InfoType enums, which are the properties of TypedArray.
 enum InfoType {
-    TYPE = 1, // Type of the TypedArray.
-    LENGTH = 2, // Length of the input TypedArray.
-    ARRAY_BUFFER = 3, // ArrayBuffer under TypedArray.
-    BYTE_OFFSET = 4 // Offset of the first ArrayBuffer element in the native array.
+  TYPE = 1, // Type of the TypedArray.
+  LENGTH = 2, // Length of the input TypedArray.
+  ARRAY_BUFFER = 3, // ArrayBuffer under TypedArray.
+  BYTE_OFFSET = 4 // Offset of the first ArrayBuffer element in the native array.
 };
 try {
   let arrBuffer = testNapi.getTypedarrayInfo(int8Array, InfoType.ARRAY_BUFFER) as ArrayBuffer;
@@ -767,7 +844,6 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_get_typedarray_info error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_get_typed_array_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_create_dataview
 
@@ -775,9 +851,10 @@ Call **napi_create_dataview** to create a **DataView** object to facilitate acce
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_create_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// Use napi_create_dataview to develop arrays.
 static napi_value CreateDataView(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS.
@@ -811,28 +888,29 @@ static napi_value CreateDataView(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_create_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const createDataView: (arraybuffer:ArrayBuffer) => DataView | undefined;
-```
+index.d.ts
+
 <!-- @[napi_create_data_view_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const createDataView: (arraybuffer:ArrayBuffer) => DataView | undefined; // Use napi_create_dataview to develop arrays.
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_create_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// Use napi_create_dataview to develop arrays.
 const arrayBuffer = new ArrayBuffer(16);
 const dataView = testNapi.createDataView(arrayBuffer) as DataView;
 hilog.info(0x0000, 'testTag', 'Test Node-API dataView: %{public}d', dataView.byteLength);
-hilog.info(0x0000, 'testTag','Test Node-API dataView first data: %{public}d', dataView.getInt8(0));
+hilog.info(0x0000, 'testTag', 'Test Node-API dataView first data: %{public}d', dataView.getInt8(0));
 ```
-<!-- @[ark_napi_create_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_is_dataview
 
@@ -840,9 +918,10 @@ Call **napi_is_dataview** to check whether the **napi_value** given from ArkTS i
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_is_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// Use napi_is_dataview to develop arrays.
 static napi_value IsDataView(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS.
@@ -851,9 +930,8 @@ static napi_value IsDataView(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     // Call napi_is_dataview to check whether the input parameter is a DataView object.
-    bool result;
-    napi_status status;
-    status = napi_is_dataview(env, args[0], &result);
+    bool result = false;
+    napi_status status = napi_is_dataview(env, args[0], &result);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Node-API napi_is_dataview fail");
         return nullptr;
@@ -865,32 +943,37 @@ static napi_value IsDataView(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_is_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const isDataView: (date: DataView | string) => boolean | undefined;
-```
+index.d.ts
+
 <!-- @[napi_is_data_view_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const isDataView: (date: DataView | string) => boolean | undefined; // Use napi_is_dataview to develop arrays.
+```
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_is_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// Use napi_is_dataview to develop arrays.
 try {
   let buffer = new ArrayBuffer(16);
   let dataView = new DataView(buffer);
   let data = "123";
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_dataview: %{public}s', testNapi.isDataView(dataView));
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_dataview: %{public}s', testNapi.isDataView(data));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_dataview: %{public}s',
+    testNapi.isDataView(dataView));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_dataview: %{public}s',
+    testNapi.isDataView(data));
+  // ...
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_dataview error: %{public}s', error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_is_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_get_dataview_info
 
@@ -898,9 +981,10 @@ Call **napi_get_dataview_info** to obtain properties of a **DataView** object.
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_get_data_view_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// Use napi_get_dataview_info to develop arrays.
 static napi_value GetDataViewInfo(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS.
@@ -943,31 +1027,34 @@ static napi_value GetDataViewInfo(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_get_data_view_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const getDataViewInfo: (dataView: DataView, infoType: number) => ArrayBuffer | number;
-```
+index.d.ts
+
 <!-- @[napi_get_data_view_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const getDataViewInfo: (dataView: DataView,
+  infoType: number) => ArrayBuffer | number; // Uses napi_get_dataview_info to develop arrays.
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_get_data_view_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// Use napi_get_dataview_info to develop arrays.
 // Create an ArrayBuffer object.
 let arrayBuffer = new Int8Array([2, 5]).buffer;
 // Use arrayBuffer to create a DataView object.
 let dataView = new DataView(arrayBuffer);
 // Define an enum type.
 enum InfoType {
-    BYTE_LENGTH = 0,
-    ARRAY_BUFFER = 1,
-    BYTE_OFFSET = 2,
+  BYTE_LENGTH = 0,
+  ARRAY_BUFFER = 1,
+  BYTE_OFFSET = 2,
 };
 try {
   // Pass in the parameter of DataView to obtain the number of bytes in DataView.
@@ -983,7 +1070,6 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_get_dataview_info error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_get_data_view_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
 To print logs in the native CPP, add the following information to the **CMakeLists.txt** file and add the header file by using **#include "hilog/log.h"**.
 
