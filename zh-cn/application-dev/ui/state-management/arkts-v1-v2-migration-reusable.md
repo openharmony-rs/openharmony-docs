@@ -28,7 +28,7 @@
 
 **迁移规则**
 
-- [aboutToRecyle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)生命周期无需改动，可保留原实现。
+- [aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)生命周期无需改动，可保留原实现。
 - [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18)生命周期在组件复用V2中进行了优化，去除了参数的同时，在[复用前会自动重置各状态变量](arkts-new-reusableV2.md#复用前的组件内状态变量重置)，无需开发者在aboutToReuse中手动赋值回初始值。
 
 ```ts
