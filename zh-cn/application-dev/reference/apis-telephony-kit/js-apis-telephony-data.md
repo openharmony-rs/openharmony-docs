@@ -654,7 +654,7 @@ setPreferredApn(apnId: number): Promise\<boolean\>
 
 | 类型              | 说明                     |
 | ------ |------------------------|
-| Promise\<boolean\> | Promise对象，返回设置的结果，在未插卡时会返回fasle。 |
+| Promise\<boolean\> | Promise对象，返回设置的结果，在未插卡时会返回false。 |
 
 **错误码：**
 
