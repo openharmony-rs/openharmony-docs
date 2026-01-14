@@ -303,7 +303,7 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
 
 ## TemplateFormDetailInfoCallback<sup>23+</sup>
 
-type TemplateFormDetailInfoCallback =  (info: Array\<TemplateFormDetailInfo>): void
+type TemplateFormDetailInfoCallback =  (info: Array\<TemplateFormDetailInfo>) => void
 
 模板卡真实卡片信息回调。
 
