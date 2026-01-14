@@ -36,7 +36,7 @@
 
 **起始版本**：10
 
-**变更信息**：API 10-14时，其权限级别为system_core，仅面向MDM应用开放；从API 14开始，权限级别变更为system_basic，开发范围变更为企业普通应用。
+**变更信息**：API 10-14时，其权限级别为system_core，仅面向MDM应用开放；从API 14开始，权限级别变更为system_basic，开放范围变更为企业普通应用。
 
 ## ohos.permission.FILE_GUARD_MANAGER
 
@@ -53,7 +53,7 @@
 
 **起始版本**：10
 
-**变更信息**：API 10-14时，其权限级别为system_core，仅面向MDM应用开放；从API 14开始，权限级别变更为system_basic，开发范围变更为企业普通应用。
+**变更信息**：API 10-14时，其权限级别为system_core，仅面向MDM应用开放；从API 14开始，权限级别变更为system_basic，开放范围变更为企业普通应用。
 
 ## ohos.permission.FILE_GUARD_FILE_WRITE
 
