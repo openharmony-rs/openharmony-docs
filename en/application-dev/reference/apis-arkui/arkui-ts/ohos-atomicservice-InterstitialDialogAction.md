@@ -136,8 +136,7 @@ The [universal events](ts-component-general-events.md) are not supported.
 
 ### Example 1
 
-In this example,
-color values are assigned to the title and subtitle using two different parameter types; the close button is set to dark color; the title is set to above the subtitle; and the distance type is set to the distance used when there is no menu bar.
+In this example, color values are assigned to the title and subtitle using two different parameter types; the close button is set to dark color; the title is set above the subtitle; and the distance type is set to the distance used when there is no menu bar.
 
 <!--code_no_check-->
 ```ts
@@ -261,7 +260,7 @@ struct Index {
 
 ### Example 2
 
-In this example, color values are assigned to the title and subtitle using two different parameter types; the close button is set to light color; the title is set to below the subtitle; and the distance type is set to the distance used when there is a menu bar.
+In this example, color values are assigned to the title and subtitle using two different parameter types; the close button is set to light color; the title is set below the subtitle; and the distance type is set to the distance used when there is a menu bar.
 
 <!--code_no_check-->
 ```ts

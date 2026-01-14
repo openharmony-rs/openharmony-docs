@@ -33,14 +33,7 @@ Not supported
 
 ## SubHeaderV2
 
-SubHeaderV2({
-icon?: SubHeaderV2IconType,
-title?: SubHeaderV2Title,
-select?: SubHeaderV2Select,
-operationType?: SubHeaderV2OperationType,
-operationItems?: SubHeaderV2OperationItem[],
-titleBuild?: SubHeaderV2TitleBuilder;
-})
+SubHeaderV2({ icon?: SubHeaderV2IconType, title?: SubHeaderV2Title, select?: SubHeaderV2Select, operationType?: SubHeaderV2OperationType, operationItems?: SubHeaderV2OperationItem[], titleBuild?: SubHeaderV2TitleBuilder; })
 
 The **SubHeader** component represents a subheader that signifies the top of a list or the beginning a subdivision of content and tells the user what the list or subdivision is about.
 
@@ -85,18 +78,17 @@ Defines the title settings for the subheader.
 
 ### Properties
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 | Name| Type| Read-Only| Optional| Description                          |
 | -------- | -------- |---|----|------------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Primary title.<br>When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used simultaneously in [SubHeaderV2](#subheaderv2-1), the **primaryTitle** attribute will not take effect.<br>Default value: **undefined**.<br>Decorator: @Trace                      |
-| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Secondary title.<br>Default value: **undefined**.<br>Decorator: @Trace                      |
-| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No| Yes | Text attributes of the primary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.<br>Decorator: @Trace|
-| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No| Yes | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.<br>Decorator: @Trace|
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Primary title.<br>When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used simultaneously in [SubHeaderV2](#subheaderv2-1), the **primaryTitle** attribute will not take effect.<br>Default value: **undefined**.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.                    |
+| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Secondary title.<br>Default value: **undefined**.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.                    |
+| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No| Yes | Text attributes of the primary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No| Yes | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Customized content to be read in the title.<br>Default value: **undefined**.<br>If the value is **undefined**, the title content displayed by the component is read by default.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ### constructor
 
@@ -120,18 +112,17 @@ A constructor used to create a **SubHeaderV2Title** object.
 
 Defines the options for initializing a **SubHeaderV2Title** object.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 | Name| Type| Read-Only| Optional| Description                         |
 | -------- | -------- |----|----|-----------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  No | Yes | Primary title.<br>Default value: **undefined**.                      |
-| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  No | Yes | Secondary title.<br>Default value: **undefined**.                     |
-| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  |  No | Yes | Text attributes of the primary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.|
-| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  |  No | Yes | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.|
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  No | Yes | Primary title.<br>Default value: **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                   |
+| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  No | Yes | Secondary title.<br>Default value: **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                   |
+| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  |  No | Yes | Text attributes of the primary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  |  No | Yes | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Custom content of the title to be read.<br>Default value: **undefined**.<br>If the value is **undefined**, the title content displayed by the component is read by default.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## SubHeaderV2Select
 
@@ -171,7 +162,7 @@ A constructor used to create a **SubHeaderV2SelectOptions** object.
 
 | Name   | Type                           | Mandatory| Description            |
 | --------- |-------------------------------| ------ | ------------------ |
-| options | [SubHeaderV2SelectOptions](#subheaderv2selectoptions) | Yes  | Configuration options of the drop-down list box.|
+| options | [SubHeaderV2SelectOptions](#subheaderv2selectoptions) | Yes  | Options of the drop-down list box.|
 
 ## SubHeaderV2SelectOptions
 
@@ -283,7 +274,7 @@ A constructor used to create a **SubHeaderV2OperationItem** object.
 
 | Name   | Type                                                                 | Mandatory| Description            |
 | --------- |---------------------------------------------------------------------| ------ | ------------------ |
-| options | [SubHeaderV2OperationItemOptions](#subheaderv2operationitemoptions) | Yes  | Configuration options of the operation item.|
+| options | [SubHeaderV2OperationItemOptions](#subheaderv2operationitemoptions) | Yes  | Options of the drop-down list box.|
 
 ## SubHeaderV2OperationItemAction
 
