@@ -10167,7 +10167,7 @@
 				"functions":[
 					{
 						"end_line":66,
-						"name":"link_arry_type",
+						"name":"link_array_type",
 						"start_line":16
 					}
 				]
@@ -26046,13 +26046,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoSigleSYN.ets",
-				"functions":[
-					{
-						"end_line":52,
-						"name":"localtorage_page_two_sigle_syn",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoWaySYN.ets",
@@ -26190,6 +26184,16 @@
 					{
 						"end_line":45,
 						"name":"localtorage_change_local_set_sample",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoSingleSYN.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"localtorage_page_two_single_syn",
 						"start_line":15
 					}
 				]
