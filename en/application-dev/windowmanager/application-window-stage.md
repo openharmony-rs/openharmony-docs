@@ -80,7 +80,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import hilog from '@ohos.hilog';
 
 const DOMAIN = 0X0000;
-const TAG: string = '[Sample_CreatMainWindow]';
+const TAG : string = '[Sample_CreatMainWindow]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -134,6 +134,7 @@ You can create an application child window, such as a dialog box, and set its pr
 1. Create a child window.
 
    Call **createSubWindow** to create a child window.
+   
    The child window created uses an [immersive layout](../windowmanager/window-terminology.md#immersive-layout) by default.
 
 2. Set the properties of the child window.
@@ -165,7 +166,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import hilog from '@ohos.hilog';
 
 const DOMAIN = 0X0000;
-const TAG: string = '[Sample_CreatSubWindow]';
+const TAG : string = '[Sample_CreatSubWindow]';
 
 let windowStage_: window.WindowStage | null = null;
 let sub_windowClass: window.Window | null = null;
@@ -264,14 +265,14 @@ You can also click a button on a page to create a child window. The code snippet
 
 <!-- @[create_sub_window2_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-``` TypeScript
+``` TypeScript	
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';
 
 const DOMAIN = 0X0000;
-const TAG: string = '[Sample_CreatSubWindow2]';
+const TAG : string = '[Sample_CreatSubWindow2]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -437,7 +438,7 @@ struct SubWindow {
 }
 ```
 
-## Experiencing the Immersive Window Feature
+## Experiencing the immersive window feature
 
 To create a better video watching and gaming experience, you can use the immersive window feature to hide the status bar and navigation bar. This feature is available only for the main window of an application. Since API version 10, the immersive window has the same size as the full screen by default; its layout is controlled by the component module; the background color of its status bar and navigation bar is transparent, and the text color is black. When an application window calls **setWindowLayoutFullScreen**, with **true** passed in, an immersive window layout is used. If **false** is passed in, a non-immersive window layout is used.
 
@@ -568,7 +569,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import hilog from '@ohos.hilog';
 
 const DOMAIN = 0X0000;
-const TAG: string = '[Sample_CreatFloatWindow]';
+const TAG : string = '[Sample_CreatFloatWindow]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -642,11 +643,11 @@ import { window } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';
 
 const DOMAIN = 0X0000;
-const TAG: string = '[Sample_ListenWindowStage]';
+const TAG : string = '[Sample_ListenWindowStage]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    // ...
+    // ···
     try {
       windowStage.on('windowStageEvent', (data) => {
         hilog.info(DOMAIN, TAG, `Succeeded in enabling the listener for window stage event changes. Data: ${JSON.stringify(data)}`);

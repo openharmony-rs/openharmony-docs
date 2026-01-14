@@ -2308,7 +2308,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 
@@ -2555,7 +2555,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found.  |
 | 17700003 | The specified abilityInfo is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 
@@ -2793,7 +2793,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 
@@ -3030,7 +3030,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found.  |
 | 17700003 | The specified abilityName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 
@@ -5709,7 +5709,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | The appIndex is invalid. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 
@@ -6302,7 +6302,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
 | 17700004 | The specified user ID is not found.     |
-| 17700061 | AppIndex not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 
@@ -6364,7 +6364,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
 | 17700004 | The specified user ID is not found.     |
-| 17700061 | AppIndex not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **Example**
 

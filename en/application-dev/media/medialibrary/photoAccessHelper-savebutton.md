@@ -61,9 +61,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-## Creating a Media Asset Using SaveButton
+## Saving Media Assets Using SaveButton
 
-For details about the **SaveButton** component, see [SaveButton](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md).
+For details about the SaveButton, see [SaveButton](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md) in the API reference. Before saving the media assets, you can call [registerChange](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#registerchange) to register a listener for the default URI ([DEFAULT_PHOTO_URI](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#defaultchangeuri)). After the media assets are saved successfully, complete the subsequent services based on the [NOTIFY_ADD](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#notifytype) notification received.
 
 The following walks you through on how to create an image using the **SaveButton** security component.
 
@@ -71,41 +71,78 @@ The following walks you through on how to create an image using the **SaveButton
 
 1. Set the attributes of the security component.
 2. Create a button with the security component.
-3. Use [MediaAssetChangeRequest.createImageAssetRequest](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#createimageassetrequest11) and [PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) to create an image asset.
+3. Call [registerChange](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#registerchange) to register a listener for the default URI ([DEFAULT_PHOTO_URI](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#defaultchangeuri)).
+4. Use [MediaAssetChangeRequest.createImageAssetRequest](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#createimageassetrequest11) and [PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) to create an image asset.
+5. Call [getAsset](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#getasset11) to obtain the saved assets and asset URI. After receiving the [NOTIFY_ADD](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#notifytype) notification, complete the subsequent services.
 
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
+import { dataSharePredicates } from '@kit.ArkData';
 
 @Entry
 @Component
 struct Index {
-    saveButtonOptions: SaveButtonOptions = {
+  uriString: string = '';
+  saveButtonOptions: SaveButtonOptions = {
     icon: SaveIconStyle.FULL_FILLED,
     text: SaveDescription.SAVE_IMAGE,
     buttonType: ButtonType.Capsule
   } // Set properties of SaveButton.
+  onCallback = (changeData: photoAccessHelper.ChangeData) => {
+    for (let i = 0; i < changeData.uris.length; i++) {
+      // After the assets are saved to media library successfully, an asset URI of type NOTIFY_ADD will be detected by the listener.
+      if (changeData.uris[i] === this.uriString && changeData.type === photoAccessHelper.NotifyType.NOTIFY_ADD) {
+        let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        predicates.equalTo(photoAccessHelper.PhotoKeys.URI, changeData.uris[i]);
+        let fetchOptions: photoAccessHelper.FetchOptions = {
+          fetchColumns: [],
+          predicates: predicates
+        };
+
+        let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+        let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+        phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+          if (fetchResult !== undefined) {
+            let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+            if (photoAsset !== undefined) {
+              console.info('getAssets successfully');
+            }
+          }
+          phAccessHelper.unRegisterChange(photoAccessHelper.DefaultChangeUri.DEFAULT_PHOTO_URI);
+        });
+      }
+    }
+  }
 
   build() {
     Row() {
       Column() {
-        SaveButton(this.saveButtonOptions) // Create a button with SaveButton.
+        SaveButton(this.saveButtonOptions)// Create a security component button.
           .onClick(async (event, result: SaveButtonOnClickResult) => {
-             if (result == SaveButtonOnClickResult.SUCCESS) {
+            if (result == SaveButtonOnClickResult.SUCCESS) {
                try {
-                 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-                 let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-                 // Ensure that the asset specified by fileUri exists.
-                 let fileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.jpg';
-                 let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createImageAssetRequest(context, fileUri);
-                 await phAccessHelper.applyChanges(assetChangeRequest);
-                 console.info('createAsset successfully, uri: ' + assetChangeRequest.getAsset().uri);
-               } catch (err) {
-                 console.error(`create asset failed with error: ${err.code}, ${err.message}`);
-               }
-             } else {
-               console.error('SaveButtonOnClickResult create asset failed');
-             }
+                let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+                let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+
+                // Register the default listener.
+ 	              phAccessHelper.registerChange(
+ 	              photoAccessHelper.DefaultChangeUri.DEFAULT_PHOTO_URI, true, this.onCallback);
+
+                // Ensure that the asset specified by fileUri exists.
+                let fileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.jpg';
+                let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+                  photoAccessHelper.MediaAssetChangeRequest.createImageAssetRequest(context, fileUri);
+                await phAccessHelper.applyChanges(assetChangeRequest);
+
+                this.uriString = assetChangeRequest.getAsset().uri;
+                console.info('createAsset successfully, uri: ' + this.uriString);
+              } catch (err) {
+                console.error(`create asset failed with error: ${err.code}, ${err.message}`);
+              }
+            } else {
+              console.error('SaveButtonOnClickResult create asset failed');
+            }
           })
       }
       .width('100%')
