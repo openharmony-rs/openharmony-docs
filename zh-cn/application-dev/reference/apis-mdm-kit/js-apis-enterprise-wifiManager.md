@@ -117,12 +117,12 @@ import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let profile: wifiManager.WifiProfile = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   'ssid': 'name',
   'preSharedKey': 'passwd',
   'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_PSK
@@ -179,13 +179,13 @@ import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
   abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
 };
 try {
   let wifiIds: Array<wifiManager.WifiAccessInfo> = [{
-    //需根据实际情况进行替换
+    // 需根据实际情况进行替换
     ssid: "wifi_name",
     bssid: "68:77:24:77:A6:D8"
   }];
@@ -233,13 +233,13 @@ import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let wifiIds: Array<wifiManager.WifiAccessInfo> = [{
-    //需根据实际情况进行替换
+    // 需根据实际情况进行替换
     ssid: "wifi_name",
     bssid: "68:77:24:77:A6:D8"
   }];
@@ -292,7 +292,7 @@ import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -347,13 +347,13 @@ import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let wifiIds: Array<wifiManager.WifiAccessInfo> = [{
-    //需根据实际情况进行替换
+    // 需根据实际情况进行替换
     ssid: "wifi_name",
     bssid: "68:77:24:77:A6:D8"
   }];
@@ -401,13 +401,13 @@ import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let wifiIds: Array<wifiManager.WifiAccessInfo> = [{
-    //需根据实际情况进行替换
+    // 需根据实际情况进行替换
     ssid: "wifi_name",
     bssid: "68:77:24:77:A6:D8"
   }];
@@ -460,7 +460,7 @@ import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
   abilityName: 'EnterpriseAdminAbility'
 };
