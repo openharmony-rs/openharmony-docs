@@ -142,7 +142,7 @@ restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out 
 
 + 方式二：自定义文件，文件名必须是id_defined.json，文件内容如下：
 
-```json
+```json5
 {
     "record" :
     [

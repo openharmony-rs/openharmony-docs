@@ -135,6 +135,8 @@
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**设备行为差异：** 当该接口在无振动器件设备中被设置为振动模式时，将不会产生振动效果。
+
 | 名称                |  值    | 说明       |
 | ------------------- | ------ | ---------- |
 | RINGER_MODE_SILENT  | 0      | 静音模式。 |

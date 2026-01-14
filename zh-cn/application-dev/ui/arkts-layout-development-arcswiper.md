@@ -153,7 +153,7 @@ ArcSwiper支持滑动手指、点击导航点、旋转表冠和控制控制器�
   }
   ```
 
-  ![controller](figures/arcswiper_controll.gif)
+  ![controller](figures/arcswiper_control.gif)
 
 - 旋转表冠翻页。
 

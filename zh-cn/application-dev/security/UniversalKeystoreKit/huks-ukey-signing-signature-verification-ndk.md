@@ -7,7 +7,11 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-以密钥算法为RSA、摘要算法为SHA384、填充模式为PSS的密钥为例，完成签名、验签。具体的场景介绍及支持的算法规格，请参考[签名/验签支持的算法](huks-ukey-signing-signature-verification-overview.md#规格)。
+以密钥算法为RSA、摘要算法为SHA384、填充模式为PSS的密钥为例，完成签名、验签：
+
+- [密钥算法为RSA、摘要算法为SHA384、填充模式为PSS](#rsasha384pss)
+
+具体的场景介绍及支持的算法规格，请参考[签名/验签介绍及算法规格](huks-ukey-signing-signature-verification-overview.md)。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -42,6 +46,9 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so
 
 6. 调用[OH_Huks_FinishSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_finishsession)结束密钥会话，验证签名。
 
+## 开发案例
+
+### RSA/SHA384/PSS
 ```c++
 #include "huks/native_huks_api.h"
 #include "huks/native_huks_param.h"
@@ -115,22 +122,22 @@ static struct OH_Huks_Param g_verifyParamsTest[] = {
 };
 
 static const uint32_t RSA_COMMON_SIZE = 1024;
-static const char *g_dataToSign = "Hks_RSA_Sign_Verify_Test_0000000000000000000000000000000000000000000000000000000"
+static const char *DATA_TO_SIGN = "Hks_RSA_Sign_Verify_Test_0000000000000000000000000000000000000000000000000000000"
                                   "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
                                   "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
-static const char *keyAlias = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\","
+static const char *KEY_ALIAS = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\","
                               "\"bundleName\":\"com.example.cryptoapplication\",\"index\":{\"key\":\"testKey\"}}";
 
 static napi_value SignVerifyKey(napi_env env, napi_callback_info info) 
 {
-    // 假设g_keyAlias是获取的resourceId
-    struct OH_Huks_Blob g_keyAlias = {
-        (uint32_t)strlen(keyAlias),
-        (uint8_t *)keyAlias
+    // 假设keyAlias是获取的resourceId
+    struct OH_Huks_Blob keyAlias = {
+        (uint32_t)strlen(KEY_ALIAS),
+        (uint8_t *)KEY_ALIAS
     };
     struct OH_Huks_Blob inData = {
-        (uint32_t)strlen(g_dataToSign),
-        (uint8_t *)g_dataToSign
+        (uint32_t)strlen(DATA_TO_SIGN),
+        (uint8_t *)DATA_TO_SIGN
     };
     struct OH_Huks_ParamSet *signParamSet = nullptr;
     struct OH_Huks_ParamSet *verifyParamSet = nullptr;
@@ -149,7 +156,7 @@ static napi_value SignVerifyKey(napi_env env, napi_callback_info info)
         // Init
         uint8_t handleS[sizeof(uint64_t)] = {0};
         struct OH_Huks_Blob handleSign = { (uint32_t)sizeof(uint64_t), handleS };
-        ohResult = OH_Huks_InitSession(&g_keyAlias, signParamSet, &handleSign, nullptr);
+        ohResult = OH_Huks_InitSession(&keyAlias, signParamSet, &handleSign, nullptr);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
@@ -165,7 +172,7 @@ static napi_value SignVerifyKey(napi_env env, napi_callback_info info)
         // Init
         uint8_t handleV[sizeof(uint64_t)] = {0};
         struct OH_Huks_Blob handleVerify = { (uint32_t)sizeof(uint64_t), handleV };
-        ohResult = OH_Huks_InitSession(&g_keyAlias, verifyParamSet, &handleVerify, nullptr);
+        ohResult = OH_Huks_InitSession(&keyAlias, verifyParamSet, &handleVerify, nullptr);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }

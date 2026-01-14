@@ -677,7 +677,7 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 
 2. （可选）如果需要在停止UIAbility时，清理任务中心的相关任务（即不保留最近任务列表中的快照），需要在[module.json5](../../quick-start/module-configuration-file.md)配置文件中将removeMissionAfterTerminate字段取值配置为true。
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -754,7 +754,7 @@ terminateSelf(): Promise&lt;void&gt;
 
 2. （可选）如果需要在停止UIAbility时，清理任务中心的相关任务（即不保留最近任务列表中的快照），需要在[module.json5](../../quick-start/module-configuration-file.md)配置文件中将removeMissionAfterTerminate字段取值配置为true。
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -1140,7 +1140,7 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 
 > **说明：**
 >
-> - 跨设备场景下，调用方与目标方必须为同一应用，且具备ohos.permission.DISTRIBUTED_DATASYNC权限，才能启动成功。
+> - 跨设备场景下，调用方与目标方必须为同一应用。
 >
 > - 同设备场景下，调用方与目标方必须为不同应用，且具备ohos.permission.ABILITY_BACKGROUND_COMMUNICATION权限（该权限仅系统应用可申请），才能启动成功。
 >
@@ -2939,7 +2939,7 @@ revokeDelegator(): Promise&lt;void&gt;
     >
     >  - 当UIAbility是通过[startAbilityByCall](#startabilitybycall)启动时，系统会忽略在[module.json5](../../quick-start/module-configuration-file.md)配置文件标签中配置的abilitySrcEntryDelegator和abilityStageSrcEntryDelegator。
     >  - abilityStageSrcEntryDelegator指定的ModuleName不能与当前ModuleName相同。
-    ```json
+    ```json5
     {
       "module": {
         // ...

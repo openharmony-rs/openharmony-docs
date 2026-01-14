@@ -86,7 +86,7 @@
 
 ## 相机的创建及管理
 
-相机作为3D场景中的重要部分，决定了整个3D场景向2D图片的投影过程，相机的近远平面、Fov角等关键参数也会对整个3D渲染产生重要的影响。开发者可以通过设置相机参数，控制这个渲染过程，得到开发者想要的渲染效果。
+相机作为3D场景中的重要部分，决定了整个3D场景向2D图片的投影过程，相机的近远平面、FoV角等关键参数也会对整个3D渲染产生重要的影响。开发者可以通过设置相机参数，控制这个渲染过程，得到开发者想要的渲染效果。
 
 ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创建、配置与控制相机。
 
@@ -121,7 +121,7 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
 
   3. 创建相机并配置相机参数。
 
-     调用 SceneResourceFactory.createCamera()创建相机，并配置相机的启用状态、位置、视场角（FOV）等参数。相机位置影响场景的观察距离，FOV决定画面透视范围。
+     调用 SceneResourceFactory.createCamera()创建相机，并配置相机的启用状态、位置、视场角（FoV）等参数。相机位置影响场景的观察距离，FoV决定画面透视范围。
 
      <!-- @[cam_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
      
@@ -165,7 +165,7 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
 
   5. 相机交互。
 
-     开发者可通过设置相机的位置、旋转、缩放、FOV等参数，以实现交互式视角控制。以下示例以Z轴控制为例，X/Y轴逻辑与此类似。
+     开发者可通过设置相机的位置、旋转、缩放、FoV等参数，以实现交互式视角控制。以下示例以Z轴控制为例，X/Y轴逻辑与此类似。
 
      <!-- @[cam_ui_sliders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
      
