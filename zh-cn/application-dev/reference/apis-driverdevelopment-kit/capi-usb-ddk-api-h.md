@@ -18,7 +18,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [UsbDDK](capi-usbddk.md)
+**相关模块：** [UsbDdk](capi-usbddk.md)
 
 ## 汇总
 
@@ -31,7 +31,7 @@
 | [int32_t OH_Usb_ReleaseResource(void)](#oh_usb_releaseresource) | 释放DDK。 |
 | [int32_t OH_Usb_GetDeviceDescriptor(uint64_t deviceId, struct UsbDeviceDescriptor *desc)](#oh_usb_getdevicedescriptor) | 获取设备描述符。 |
 | [int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struct UsbDdkConfigDescriptor ** const config)](#oh_usb_getconfigdescriptor) | 获取配置描述符。请在描述符使用完后使用[OH_Usb_FreeConfigDescriptor](capi-usb-ddk-api-h.md#oh_usb_freeconfigdescriptor)释放描述符，否则会造成内存泄露。 |
-| [void OH_Usb_FreeConfigDescriptor(const struct UsbDdkConfigDescriptor * const config)](#oh_usb_freeconfigdescriptor) | 释放配置描述符，请在描述符使用完后释放描述符，否则会造成内存泄露。 |
+| [void OH_Usb_FreeConfigDescriptor(struct UsbDdkConfigDescriptor * const config)](#oh_usb_freeconfigdescriptor) | 释放配置描述符，请在描述符使用完后释放描述符，否则会造成内存泄露。 |
 | [int32_t OH_Usb_ClaimInterface(uint64_t deviceId, uint8_t interfaceIndex, uint64_t *interfaceHandle)](#oh_usb_claiminterface) | 声明接口。 |
 | [int32_t OH_Usb_ReleaseInterface(uint64_t interfaceHandle)](#oh_usb_releaseinterface) | 释放接口。 |
 | [int32_t OH_Usb_SelectInterfaceSetting(uint64_t interfaceHandle, uint8_t settingIndex)](#oh_usb_selectinterfacesetting) | 激活接口的备用设置。 |
@@ -148,7 +148,7 @@ int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struc
 | 参数项                                               | 描述 |
 |---------------------------------------------------| -- |
 | uint64_t deviceId                                 | 设备ID，代表要获取配置描述符的设备。 |
-| uint8_t configIndex                               | 配置id，对应USB协议中的{@link bConfigurationValue}。 |
+| uint8_t configIndex                               | 配置id，对应USB协议中的bConfigurationValue字段。 |
 | struct [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) ** const config | 配置描述符，包含USB协议中定义的标准配置描述符，以及与其关联的接口描述符和端点描述符。 |
 
 **返回：**
@@ -160,7 +160,7 @@ int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struc
 ### OH_Usb_FreeConfigDescriptor()
 
 ```
-void OH_Usb_FreeConfigDescriptor(const struct UsbDdkConfigDescriptor * const config)
+void OH_Usb_FreeConfigDescriptor(struct UsbDdkConfigDescriptor * const config)
 ```
 
 **描述**
@@ -254,7 +254,7 @@ int32_t OH_Usb_SelectInterfaceSetting(uint64_t interfaceHandle, uint8_t settingI
 | 参数项 | 描述 |
 | -- | -- |
 | uint64_t interfaceHandle | 接口操作句柄，代表要操作的接口。 |
-| uint8_t settingIndex | 备用设置索引，对应USB协议中的{@link bAlternateSetting}。 |
+| uint8_t settingIndex | 备用设置索引，对应USB协议中的bAlternateSetting的字段。 |
 
 **返回：**
 
@@ -282,7 +282,7 @@ int32_t OH_Usb_GetCurrentInterfaceSetting(uint64_t interfaceHandle, uint8_t *set
 | 参数项 | 描述 |
 | -- | -- |
 | uint64_t interfaceHandle | 接口操作句柄，代表要操作的接口。 |
-| uint8_t *settingIndex | 备用设置索引，对应USB协议中的{@link bAlternateSetting}。 |
+| uint8_t *settingIndex | 备用设置索引，对应USB协议中的bAlternateSetting字段。 |
 
 **返回：**
 

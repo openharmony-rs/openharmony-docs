@@ -47,7 +47,7 @@
 - [Resource Categories and Access](resource-categories-and-access.md)
 - Learning ArkTS<!--learning-arkts-->
   - [Getting Started with ArkTS](arkts-get-started.md)
-  - [Introduction to ArkTS](introduction-to-arkts.md)
+  - [About This Kit](introduction-to-arkts.md)
   - [ArkTS Coding Style Guide](arkts-coding-style-guide.md)
   - Migration from TypeScript to ArkTS<!--typescript-to-arkts-migration-->
     - [ArkTS Migration Background](arkts-migration-background.md)

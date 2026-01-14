@@ -6,7 +6,7 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-The **deviceInfo** module provides terminal device information query, which cannot be configured by developers.
+The deviceInfo module provides terminal device information query, which cannot be configured by developers.
 
 > **NOTE**
 >

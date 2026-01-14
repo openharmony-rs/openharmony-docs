@@ -552,10 +552,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明       |
-| ------ | -------- |
-| Normal | 标准的字体样式。 |
-| Italic | 斜体的字体样式。 |
+| 名称     |值| 说明       |
+| ------ |-| -------- |
+| Normal |0| 标准的字体样式。 |
+| Italic |1| 斜体的字体样式。 |
 
 ## FontWeight
 
@@ -929,6 +929,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 ## MouseAction<sup>8+</sup>
 
 定义鼠标操作的动作类型。
+
+> **说明：**
+>
+> 作为返回值时，可能会收到已定义的枚举值范围之外的值，开发者无需关注。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

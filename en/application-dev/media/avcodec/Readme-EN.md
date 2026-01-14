@@ -7,7 +7,7 @@
 <!--Tester: @cyakee; @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
-- [Introduction to AVCodec Kit](avcodec-kit-intro.md)
+- [About This Kit](avcodec-kit-intro.md)
 - [AVCodec Supported Formats](avcodec-support-formats.md)
 - Audio and Video Codecs<!--audio-video-codec-->
   - [Obtaining Supported Codecs](obtain-supported-codecs.md)

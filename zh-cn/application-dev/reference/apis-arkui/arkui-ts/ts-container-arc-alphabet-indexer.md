@@ -246,7 +246,11 @@ autoCollapse(enable: Optional&lt;boolean&gt;)
 
 popupBackgroundBlurStyle(style: Optional&lt;BlurStyle&gt;)
 
-设置提示弹窗的背景模糊材质。
+设置提示弹窗的背景模糊材质。未通过该接口设置时，默认为关闭模糊，对应取值为BlurStyle中的NONE。
+
+> **说明：**
+>
+> 当通过popupBackgroundBlurStyle设置弹窗气泡的背景模糊材质时，不建议再通过[popupBackground](#popupbackground)设置背景色。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -256,11 +260,7 @@ popupBackgroundBlurStyle(style: Optional&lt;BlurStyle&gt;)
 
 | 参数名 | 类型                                         | 必填 | 说明                                                         |
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[BlurStyle](ts-universal-attributes-background.md#blurstyle9)&gt; | 是   | 设置提示弹窗的背景模糊材质。<br/>默认值：NONE |
-
->  **说明：**
->
->  当通过popupBackgroundBlurStyle设置弹窗气泡的背景模糊材质时，不建议再通过[popupBackground](#popupbackground)设置背景色。
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[BlurStyle](ts-universal-attributes-background.md#blurstyle9)&gt; | 是   | 设置提示弹窗的背景模糊材质。 |
 
 ## 事件
 

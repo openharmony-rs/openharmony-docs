@@ -351,64 +351,72 @@
 
    获取本应用包资源resourceManager对象的示例如下：
 
-	```js
-	import { util } from '@kit.ArkTS';
-	import { resourceManager } from '@kit.LocalizationKit';
-	import testNapi from 'libentry.so'; // 导入so
-
-	@Entry
-	@Component
-	struct Index {
-	  @State message: string = 'Hello World';
-	  private resMgr = this.getUIContext().getHostContext()?.resourceManager; // 获取本应用包的资源对象
-	  @State rawfileListMsg: string = 'FileList = ';
-	  @State retMsg: string = 'isRawDir = ';
-	  @State rawfileContentMsg: string = 'RawFileContent = ';
-	  @State rawfileDescriptorMsg: string = 'RawFileDescriptor.length = ';
-
-	  build() {
-		Row() {
-		  Column() {
-			Text(this.message)
-			  .id('hello_world')
-			  .fontSize(30)
-			  .fontWeight(FontWeight.Bold)
-			  .onClick(async () => {
-				// 传入资源管理对象，以及访问的rawfile文件夹名称
-				let rawFileList: Array<String> = testNapi.getFileList(this.resMgr, '');
-				this.rawfileListMsg = 'FileList = ' + rawFileList;
-				console.log(this.rawfileListMsg);
-
-				let ret: boolean = testNapi.isRawDir(this.resMgr, 'subrawfile');
-				this.retMsg = 'isRawDir = ' + ret;
-				console.log(this.retMsg);
-
-				// 传入资源管理对象，以及访问的rawfile文件夹名称
-				let rawfileArray: Uint8Array = testNapi.getRawFileContent(this.resMgr, 'rawfile1.txt');
-				// 将Uint8Array转为字符串
-				let textDecoder: util.TextDecoder = new util.TextDecoder();
-				let rawfileContent: string = textDecoder.decodeToString(rawfileArray);
-				this.rawfileContentMsg = 'RawFileContent = ' + rawfileContent;
-				console.log(this.rawfileContentMsg);
-
-				// 传入资源管理对象，以及访问的rawfile文件名称
-				let rawfileDescriptor: resourceManager.RawFileDescriptor =
-				  testNapi.getRawFileDescriptor(this.resMgr, 'rawfile1.txt');
-				this.rawfileDescriptorMsg = 'RawFileDescriptor.length = ' + rawfileDescriptor.length;
-				console.log(this.rawfileDescriptorMsg);
-			  })
-			Text(this.rawfileListMsg).id('get_file_list').fontSize(30);
-			Text(this.retMsg).id('is_raw_dir').fontSize(30);
-			Text(this.rawfileContentMsg).id('get_raw_file_content').fontSize(30);
-			Text(this.rawfileDescriptorMsg).id('get_raw_file_descriptor').fontSize(30);
-		  }
-		  .width('100%')
-		}
-		.height('100%')
-	  }
-	}
-	```
-    <!-- @[native_rawfile_guide_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @[native_rawfile_guide_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    import { util } from '@kit.ArkTS';
+    import { resourceManager } from '@kit.LocalizationKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import testNapi from 'libentry.so'; // 导入so
+    
+    const DOMAIN = 0x0000;
+    const TAG = '[Sample_rawfile]';
+    
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Hello World';
+      private resMgr = this.getUIContext().getHostContext()?.resourceManager; // 获取本应用包的资源对象
+      @State rawfileListMsg: string = 'FileList = ';
+      @State retMsg: string = 'isRawDir = ';
+      @State rawfileContentMsg: string = 'RawFileContent = ';
+      @State rawfileDescriptorMsg: string = 'RawFileDescriptor.length = ';
+    
+      build() {
+        Row() {
+          Column() {
+            Text(this.message)
+              .id('hello_world')
+              .fontSize(30)
+              .fontWeight(FontWeight.Bold)
+              .onClick(async () => {
+                // 传入资源管理对象，以及访问的rawfile文件夹名称
+                let rawFileList: Array<String> = testNapi.getFileList(this.resMgr, '');
+                this.rawfileListMsg = 'FileList = ' + rawFileList;
+                hilog.info(DOMAIN, TAG, this.rawfileListMsg);
+    
+                // 'sub_rawfile'仅作示例，请替换为实际使用的资源
+                let ret: boolean = testNapi.isRawDir(this.resMgr, 'sub_rawfile');
+                this.retMsg = 'isRawDir = ' + ret;
+                hilog.info(DOMAIN, TAG, this.retMsg);
+    
+                // 传入资源管理对象，以及访问的rawfile文件夹名称
+                // 'rawfile1.txt'仅作示例，请替换为实际使用的资源
+                let rawfileArray: Uint8Array = testNapi.getRawFileContent(this.resMgr, 'rawfile1.txt');
+                // 将Uint8Array转为字符串
+                let textDecoder: util.TextDecoder = new util.TextDecoder();
+                let rawfileContent: string = textDecoder.decodeToString(rawfileArray);
+                this.rawfileContentMsg = 'RawFileContent = ' + rawfileContent;
+                hilog.info(DOMAIN, TAG, this.rawfileContentMsg);
+    
+                // 传入资源管理对象，以及访问的rawfile文件名称
+                // 'rawfile1.txt'仅作示例，请替换为实际使用的资源
+                let rawfileDescriptor: resourceManager.RawFileDescriptor =
+                  testNapi.getRawFileDescriptor(this.resMgr, 'rawfile1.txt');
+                this.rawfileDescriptorMsg = 'RawFileDescriptor.length = ' + rawfileDescriptor.length;
+                hilog.info(DOMAIN, TAG, this.rawfileDescriptorMsg);
+              })
+            Text(this.rawfileListMsg).id('get_file_list').fontSize(30);
+            Text(this.retMsg).id('is_raw_dir').fontSize(30);
+            Text(this.rawfileContentMsg).id('get_raw_file_content').fontSize(30);
+            Text(this.rawfileDescriptorMsg).id('get_raw_file_descriptor').fontSize(30);
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
+    ```
 
 ## 相关实例
 

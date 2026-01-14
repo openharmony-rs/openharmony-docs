@@ -12,7 +12,7 @@
 >
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - Swiper组件内包含了[PanGesture](ts-basic-gestures-pangesture.md)拖动手势事件，用于滑动轮播子组件。[disableSwipe](#disableswipe8)属性设为true会取消内部的PanGesture事件监听。
+> - Swiper组件通过内置的[PanGesture](ts-basic-gestures-pangesture.md)拖动手势实现滑动轮播效果，将[disableSwipe](#disableswipe8)属性设为true时，会禁用该手势监听，从而阻止滑动操作。
 >
 > - Swiper中复用[NodeContainer](./ts-basic-components-nodecontainer.md)时，禁止递归流程中子节点更新父节点状态变量。
 
@@ -202,7 +202,7 @@ loop(value: boolean)
 
 effectMode(value: EdgeEffect)
 
-设置边缘滑动效果，[loop](#loop) = false时生效。调用[SwiperController.changeIndex()](#changeindex12)、[SwiperController.showNext()](#shownext)和[SwiperController.showPrevious()](#showprevious)接口跳转至首尾页时不生效回弹。
+设置边缘滑动效果，[loop](#loop)为false或Swiper视窗内一屏显示所有子节点时生效。调用[SwiperController.changeIndex()](#changeindex12)、[SwiperController.showNext()](#shownext)和[SwiperController.showPrevious()](#showprevious)接口跳转至首尾页时不生效回弹。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -545,7 +545,7 @@ indicatorInteractive(value: boolean)
 
 pageFlipMode(mode: Optional\<PageFlipMode>)
 
-设置鼠标滚轮翻页模式。
+设置鼠标滚轮翻页模式。未通过该接口设置时，默认为连续翻页模式，取值为PageFlipMode.CONTINUOUS。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -557,7 +557,7 @@ pageFlipMode(mode: Optional\<PageFlipMode>)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode  | Optional\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>默认值：PageFlipMode.CONTINUOUS |
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>取undefined时，按取值为PageFlipMode.CONTINUOUS处理。 |
 
 ### maintainVisibleContentPosition<sup>20+</sup>
 
@@ -565,7 +565,7 @@ maintainVisibleContentPosition(enabled: boolean)
 
 设置显示区域上方或前方插入或删除数据时是否保持可见内容位置不变。适用于使用单一[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)作为Swiper子节点的情况，通过LazyForEach的[onDateAdd](ts-rendering-control-lazyforeach.md#ondataadd8)、[onDataDelete](ts-rendering-control-lazyforeach.md#ondatadelete8)等接口修改数据源。其他场景下，显示区域上方或前方插入或删除数据，可见内容位置会变化。
 
-在[displayCount](#displaycount8)属性的swipeByGroup参数设置为true，生效按组翻页时，一次在显示区域上方或前方插入或删除和一组节点数量倍数的数据量时才能保持可见内容位置不变，否则可见内容位置可能会随每组数据重新分组改变。
+在[displayCount](#displaycount8)属性的swipeByGroup参数设置为true，即按组翻页生效时，一次在显示区域上方或前方插入或删除数据，且插入或删除的是一组节点数量倍数的数据量时，才能保持可见内容位置不变，否则可见内容位置可能会随每组数据重新分组改变。
 
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
@@ -715,7 +715,7 @@ finishAnimation(callback?: VoidCallback)
 
 preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
-控制Swiper预加载指定子节点。调用该接口后会一次性加载所有指定的子节点，因此为了性能考虑，建议分批加载子节点。
+控制Swiper预加载指定子节点。调用该接口后会一次性加载所有指定的子节点，因此为了性能考虑，建议分批加载子节点。使用Promise异步回调。
 
 如果SwiperController对象未绑定任何Swiper组件，直接调用该接口，会抛出JS异常，并返回错误码100004。因此使用该接口时，建议通过try-catch捕获异常。
 
@@ -735,13 +735,13 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
 | 参数名   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
-| indices | Optional\<Array\<number>> | 是 | 需预加载的子节点的下标数组。|
+| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<Array\<number>> | 是 | 需预加载的子节点的下标数组。|
 
 **返回值：**
 
 | 类型                                                         | 说明                     |
 | ------------------------------------------------------------ | ------------------------ |
-| Promise\<void> | 预加载完成后触发的回调。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -770,7 +770,7 @@ Swiper组件翻页至指定页面的动效模式。
 
 ## Indicator<sup>10+</sup>
 
-设置导航点距离Swiper组件距离。由于导航点有默认交互区域，交互区域高度为32vp，所以无法让显示部分完全贴底。
+设置导航点距离Swiper组件距离。由于导航点有默认交互区域，交互区域高度为32vp，所以无法让显示部分完全贴底。若想实现完全贴底，可以使用[IndicatorComponent](ts-swiper-components-indicator.md#indicatorcomponent)组件，更灵活地调整位置。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -1218,7 +1218,7 @@ space(space: LengthMetrics): DotIndicator
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| space  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 是   | 设置圆点导航点间距，不支持设置百分比。<br/>默认值：8<br/>单位：vp |
+| space  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 是   | 设置圆点导航点间距，不支持设置百分比。<br/>默认值：8<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 **返回值：** 
 
@@ -1952,14 +1952,17 @@ struct SwiperExample {
       Row({ space: 5 }) {
         Button('FAST 0')
           .onClick(() => {
+            // 控制器：跳转到索引0，使用快速动画模式
             this.swiperController.changeIndex(0, SwiperAnimationMode.FAST_ANIMATION);
           })
         Button('FAST 3')
           .onClick(() => {
+            // 控制器：跳转到索引3，使用快速动画模式
             this.swiperController.changeIndex(3, SwiperAnimationMode.FAST_ANIMATION);
           })
         Button('FAST ' + 9)
           .onClick(() => {
+            // 控制器：跳转到索引9，使用快速动画模式
             this.swiperController.changeIndex(9, SwiperAnimationMode.FAST_ANIMATION);
           })
       }.margin(5)
@@ -2111,7 +2114,7 @@ struct SwiperExample {
             .fontSize(30)
         }, (item: string) => item)
       }
-      .displayCount(3, true)
+      .displayCount(3, true) // 开启按组翻页：每页显示3个轮播项，且翻页时整组切换
       .autoPlay(true)
       .interval(4000)
       .loop(true)
@@ -2352,7 +2355,7 @@ struct Index {
           .selectedItemHeight(8)
           .color(Color.Gray)
           .selectedColor(Color.Blue)
-          .maxDisplayCount(9))
+          .maxDisplayCount(9)) // 设置导航点最大显示数量为9个
       .displayArrow({ // 设置导航点箭头样式
         showBackground: true,
         isSidebarMiddle: true,
@@ -2546,9 +2549,12 @@ struct TabsSwiperExample {
         }, (item: string) => item)
       }
       .loop(false)
+      // 选中/切换轮播项时触发
       .onSelected((index: number) => {
         console.info("onSelected:" + index);
+        // 同步选中索引到currentIndex（更新页签选中态）
         this.currentIndex = index;
+        // 控制Tabs切换到对应索引页签
         this.tabsController.changeIndex(index);
       })
     }
@@ -2618,6 +2624,10 @@ struct SwiperExample {
         this.currentIndex = index;
       })
       .onContentWillScroll((result: SwiperContentWillScrollResult) => {
+        // result.comingIndex：即将要滑动到的目标索引
+        // 拦截逻辑：
+        // 1. 若目标索引 > 当前索引：返回false，拦截该滑动行为
+        // 2. 若目标索引 < 当前索引：返回true，允许该滑动行为
         if (result.comingIndex > this.currentIndex) {
           return false;
         }
@@ -2709,8 +2719,8 @@ struct SwiperExample {
           }, (item: string) => item)
         }
         .indicator(new DotIndicator()
-          .space(this.space)
-          .bottom(LengthMetrics.vp(0), this.ignoreSize)
+          .space(this.space) // 控制导航点之间的间距
+          .bottom(LengthMetrics.vp(0), this.ignoreSize) // 控制导航点与Swiper底部的间距
           .itemWidth(15)
           .itemHeight(15)
           .selectedItemWidth(15)

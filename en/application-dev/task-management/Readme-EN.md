@@ -1,5 +1,5 @@
 # Background Tasks Kit<!--background-task-kit-->
-- [Introduction to Background Tasks Kit](background-task-overview.md)
+- [About This Kit](background-task-overview.md)
 - [Transient Task (ArkTS)](transient-task.md)
 - [Transient Task (C/C++)](native-transient-task.md)
 - [Continuous Task (ArkTS)](continuous-task.md)

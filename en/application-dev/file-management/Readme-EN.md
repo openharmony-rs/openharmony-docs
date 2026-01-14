@@ -7,7 +7,7 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
-- [Introduction to Core File Kit](core-file-kit-intro.md)
+- [About This Kit](core-file-kit-intro.md)
 - Application Files<!--app-file-->
   - [Application File Overview](app-file-overview.md)
   - [Application Sandbox](app-sandbox-directory.md)

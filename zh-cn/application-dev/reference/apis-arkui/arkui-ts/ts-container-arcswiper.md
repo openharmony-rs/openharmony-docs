@@ -52,7 +52,7 @@ ArcSwiper(controller?: ArcSwiperController)
 
 ## 属性
 
-除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性，不支持[Menu控制](ts-universal-attributes-menu.md)。 
+除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性。 
 
 ### index
 
@@ -68,7 +68,7 @@ index(index: Optional\<number>)
 
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| index  | Optional\<number> | 是   | 当前在容器中显示的子组件的索引值。<br/>默认值：0 |
+| index  | Optional\<number> | 是   | 当前在容器中显示的子组件的索引值。<br/>当index值为undefined时，按取值为0处理。 |
 
 ### indicator
 
@@ -594,6 +594,8 @@ finishTransition(): void
 
 ## 示例
 
+### 示例1（设置arcSwiper基本属性）
+
 该示例通过设置arcSwiper的基本属性，展示了组件的基本功能。
 
 ```ts
@@ -716,3 +718,72 @@ struct TestNewInterface {
 ```
 
 ![arcSwiper](figures/arcSwiper.gif)
+
+### 示例2（设置ArcSwiper自定义页面切换动画）
+
+该示例通过[customContentTransition](#customcontenttransition)接口，实现了自定义ArcSwiper页面切换动画。
+
+``` ts
+import { Decimal } from '@kit.ArkTS';
+import {
+  CircleShape,
+  ArcSwiper,
+  ArcSwiperAttribute, // ArcSwiper的属性依赖ArcSwiperAttribute对象导入，不建议删除该对象的引入。
+  ArcDotIndicator,
+  ArcDirection,
+  ArcSwiperController
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TestNewInterface {
+  private backgroundColors: Color[] =
+    [Color.Green, Color.Blue, Color.Yellow, Color.Pink, Color.White, Color.Gray, Color.Orange];
+  @State scaleList: number[] = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < this.backgroundColors.length; i++) {
+      this.scaleList.push(1.0);
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        ArcSwiper() {
+          ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
+            Text(index.toString())
+              .width(233)
+              .height(233)
+              .backgroundColor(backgroundColor)
+              .textAlign(TextAlign.Center)
+              .fontSize(30)
+              .scale({ x: this.scaleList[index], y: this.scaleList[index] })
+          })
+        }
+        .clipShape(new CircleShape({ width: 233, height: 233 }))
+        .effectMode(EdgeEffect.None)
+        .onChange((index: number) => {
+          console.info('onChange:' + index.toString());
+        })
+        .customContentTransition({
+          // 页面移除视窗时超时1000ms下渲染树
+          timeout: 1000,
+          // 对视窗内所有页面逐帧回调transition，在回调中修改opacity属性值，实现自定义动画
+          transition: (proxy: SwiperContentTransitionProxy) => {
+            if (proxy.position <= -1 || proxy.position >= 1) {
+              // 页面完全滑出视窗外时，重置属性值
+              this.scaleList[proxy.index] = 1.0;
+            } else {
+              let position: number = Decimal.abs(proxy.position).toNumber();
+              this.scaleList[proxy.index] = 1 - position;
+            }
+          }
+        })
+        .disableTransitionAnimation(false)
+      }.height('100%')
+    }.width('100%')
+  }
+}
+```
+![arcSwiper](figures/arcSwiper1.gif)

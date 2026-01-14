@@ -242,7 +242,7 @@
     import { SelectionModel } from '../models/SelectionModel';
     import { selectionManager, PanelInfo, BusinessError, PanelType, SelectionExtensionContext } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    import Want from '@ohos.app.ability.Want';
+    import { Want } from '@kit.AbilityKit';
 
     @Entry
     @Component
@@ -336,7 +336,7 @@
     <!--code_no_check-->
     ```ts
     import { SelectionModel } from '../models/SelectionModel';
-    import selectionManager from '@ohos.selectionInput.selectionManager';
+    import { selectionManager } from '@kit.BasicServicesKit';
     @Entry
     @Component
     struct MainPanel {

@@ -49,7 +49,7 @@ UDPSocket连接。在调用UDPSocket的方法前，需要先通过[socket.constr
 
 bind(address: NetAddress, callback: AsyncCallback\<void\>): void
 
-绑定IP地址和端口，端口可以由用户指定或由系统随机分配。使用callback方式作为异步方法。
+绑定IP地址和端口，端口可以由用户指定或由系统随机分配。使用callback异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -95,7 +95,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
 
 bind(address: NetAddress): Promise\<void\>
 
-绑定IP地址和端口，端口可以由用户指定或由系统随机分配。使用Promise方式作为异步方法。
+绑定IP地址和端口，端口可以由用户指定或由系统随机分配。使用Promise异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -144,7 +144,7 @@ udp.bind(bindAddr).then(() => {
 
 send(options: UDPSendOptions, callback: AsyncCallback\<void\>): void
 
-通过UDPSocket连接发送数据。使用callback方式作为异步方法。
+通过UDPSocket连接发送数据。使用callback异步回调。
 
 发送数据前，需要先调用[UDPSocket.bind()](#bind)绑定IP地址和端口。该接口为耗时操作，请在Worker线程或taskpool线程调用该接口。
 
@@ -261,7 +261,7 @@ udp.send(sendOptions, (err: BusinessError) => {
 
 send(options: UDPSendOptions): Promise\<void\>
 
-通过UDPSocket连接发送数据。使用Promise方式作为异步方法。
+通过UDPSocket连接发送数据。使用Promise异步回调。
 
 发送数据前，需要先调用[UDPSocket.bind()](#bind)绑定IP地址和端口。该接口为耗时操作，请在Worker线程或taskpool线程调用该接口。
 
@@ -377,7 +377,7 @@ udp.send(sendOptions).then(() => {
 
 close(callback: AsyncCallback\<void\>): void
 
-关闭UDPSocket连接。使用callback方式作为异步方法。
+关闭UDPSocket连接。使用callback异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -417,7 +417,7 @@ udp.close((err: BusinessError) => {
 
 close(): Promise\<void\>
 
-关闭UDPSocket连接。使用Promise方式作为异步方法。
+关闭UDPSocket连接。使用Promise异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -455,7 +455,7 @@ udp.close().then(() => {
 
 getState(callback: AsyncCallback\<SocketStateBase\>): void
 
-获取UDPSocket状态。使用callback方式作为异步方法。
+获取UDPSocket状态。使用callback异步回调。
 
 > **说明：**
 > bind方法调用成功后，才可调用此方法。
@@ -509,7 +509,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
 
 getState(): Promise\<SocketStateBase\>
 
-获取UDPSocket状态。使用Promise方式作为异步方法。
+获取UDPSocket状态。使用Promise异步回调。
 
 > **说明：**
 > bind方法调用成功后，才可调用此方法。
@@ -562,7 +562,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
 
 setExtraOptions(options: UDPExtraOptions, callback: AsyncCallback\<void\>): void
 
-设置UDPSocket连接的其他属性。使用callback方式作为异步方法。
+设置UDPSocket连接的其他属性。使用callback异步回调。
 
 > **说明：**
 > bind方法调用成功后，才可调用此方法。
@@ -626,7 +626,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
 
 setExtraOptions(options: UDPExtraOptions): Promise\<void\>
 
-设置UDPSocket连接的其他属性。使用Promise方式作为异步方法。
+设置UDPSocket连接的其他属性。使用Promise异步回调。
 
 > **说明：**
 > bind方法调用成功后，才可调用此方法。
@@ -693,7 +693,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
 
 getLocalAddress(): Promise\<NetAddress\>
 
-获取UDP连接的本地Socket地址。使用Promise方式作为异步方法。
+获取UDP连接的本地Socket地址。使用Promise异步回调。
 
 > **说明：**
 > bind方法调用成功后，才可调用此方法。
@@ -744,7 +744,7 @@ udp.bind(bindAddr).then(() => {
 
 on(type: 'message', callback: Callback\<SocketMessageInfo\>): void
 
-订阅UDPSocket连接的接收消息事件。使用callback方式作为异步方法。
+订阅UDPSocket连接的接收消息事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -780,7 +780,7 @@ udp.on('message', (value: socket.SocketMessageInfo) => {
 
 off(type: 'message', callback?: Callback\<SocketMessageInfo\>): void
 
-取消订阅UDPSocket连接的接收消息事件。使用callback方式作为异步方法。
+取消订阅UDPSocket连接的接收消息事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -819,7 +819,7 @@ udp.off('message');
 
 on(type: 'listening' | 'close', callback: Callback\<void\>): void
 
-订阅UDPSocket连接的数据包消息事件或关闭事件。使用callback方式作为异步方法。
+订阅UDPSocket连接的数据包消息事件或关闭事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -849,7 +849,7 @@ udp.on('close', () => {
 
 off(type: 'listening' | 'close', callback?: Callback\<void\>): void
 
-取消订阅UDPSocket连接的数据包消息事件或关闭事件。使用callback方式作为异步方法。
+取消订阅UDPSocket连接的数据包消息事件或关闭事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -887,7 +887,7 @@ udp.off('close');
 
 on(type: 'error', callback: ErrorCallback): void
 
-订阅UDPSocket连接的error事件。使用callback方式作为异步方法。
+订阅UDPSocket连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -914,7 +914,7 @@ udp.on('error', (err: BusinessError) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-取消订阅UDPSocket连接的error事件。使用callback方式作为异步方法。
+取消订阅UDPSocket连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -991,7 +991,7 @@ UDPSocket发送参数。
 
 ## UDPExtraOptions
 
-UDPSocket连接的其他属性。继承自[ExtraOptionsBase](#extraoptionsbase7)。
+UDPSocket连接的其他属性。继承自[ExtraOptionsBase](#extraoptionsbase)。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -1069,7 +1069,7 @@ MulticastSocket连接。在调用MulticastSocket的方法前，需要先通过[s
 
 addMembership(multicastAddress: NetAddress, callback: AsyncCallback\<void\>): void
 
-加入多播组。使用callback方法作为异步方法。
+加入多播组。使用callback异步回调。
 
 > **说明：**
 > 多播使用的IP地址属于特定的范围（例如224.0.0.0到239.255.255.255）。
@@ -1121,7 +1121,7 @@ multicast.addMembership(addr, (err: Object) => {
 
 addMembership(multicastAddress: NetAddress): Promise\<void\>
 
-加入多播组。使用Promise方法作为异步方法。
+加入多播组。使用Promise异步回调。
 
 > **说明：**
 > 多播使用的IP地址属于特定的范围（例如224.0.0.0到239.255.255.255）。
@@ -1175,7 +1175,7 @@ multicast.addMembership(addr).then(() => {
 
 dropMembership(multicastAddress: NetAddress, callback: AsyncCallback\<void\>): void
 
-退出多播组。使用callback方法作为异步方法。
+退出多播组。使用callback异步回调。
 
 > **说明：**
 > 多播使用的IP地址属于特定的范围（例如224.0.0.0到239.255.255.255）。
@@ -1226,7 +1226,7 @@ multicast.dropMembership(addr, (err: Object) => {
 
 dropMembership(multicastAddress: NetAddress): Promise\<void\>
 
-退出多播组。使用Promise方法作为异步方法。
+退出多播组。使用Promise异步回调。
 
 > **说明：**
 > 多播使用的IP地址属于特定的范围（例如224.0.0.0到239.255.255.255）。
@@ -1280,7 +1280,7 @@ multicast.dropMembership(addr).then(() => {
 
 setMulticastTTL(ttl: number, callback: AsyncCallback\<void\>): void
 
-设置多播通信时数据包在网络传输过程中路由器最大跳数。使用callback方法作为异步方法。
+设置多播通信时数据包在网络传输过程中路由器最大跳数。使用callback异步回调。
 
 > **说明：**
 > 用于限制数据包在网络中传输时能够经过的最大路由器跳数的字段，TTL (Time to live)。
@@ -1327,7 +1327,7 @@ multicast.setMulticastTTL(ttl, (err: Object) => {
 
 setMulticastTTL(ttl: number): Promise\<void\>
 
-设置多播通信时数据包在网络传输过程中路由器最大跳数。使用Promise方法作为异步方法。
+设置多播通信时数据包在网络传输过程中路由器最大跳数。使用Promise异步回调。
 
 > **说明：**
 > 用于限制数据包在网络中传输时能够经过的最大路由器跳数的字段，TTL (Time to live)。
@@ -1376,7 +1376,7 @@ multicast.setMulticastTTL(8).then(() => {
 
 getMulticastTTL(callback: AsyncCallback\<number\>): void
 
-获取数据包在网络传输过程中路由器最大跳数(TTL)的值。使用callback方法作为异步方法。
+获取数据包在网络传输过程中路由器最大跳数(TTL)的值。使用callback异步回调。
 
 > **说明：**
 > 用于限制数据包在网络中传输时能够经过的最大路由器跳数的字段，TTL (Time to live)。
@@ -1420,7 +1420,7 @@ multicast.getMulticastTTL((err: Object, value: Number) => {
 
 getMulticastTTL(): Promise\<number\>
 
-获取数据包在网络传输过程中路由器最大跳数(TTL)的值。使用Promise方法作为异步方法。
+获取数据包在网络传输过程中路由器最大跳数(TTL)的值。使用Promise异步回调。
 
 > **说明：**
 > 用于限制数据包在网络中传输时能够经过的最大路由器跳数的字段，TTL (Time to live)。
@@ -1462,7 +1462,7 @@ multicast.getMulticastTTL().then((value: Number) => {
 
 setLoopbackMode(flag: boolean, callback: AsyncCallback\<void\>): void
 
-设置多播通信中的环回模式标志位。使用callback方法作为异步方法。
+设置多播通信中的环回模式标志位。使用callback异步回调。
 
 > **说明：**
 > 用于设置环回模式，开启或关闭两种状态，默认为开启状态。
@@ -1596,7 +1596,7 @@ multicast.getLoopbackMode((err: Object, value: Boolean) => {
 
 getLoopbackMode(): Promise\<boolean\>
 
-获取多播通信中的环回模式状态。使用Promise方法作为异步方法。
+获取多播通信中的环回模式状态。使用Promise异步回调。
 
 > **说明：**
 > 用于获取当前环回模式开启或关闭的状态。
@@ -1633,7 +1633,7 @@ multicast.getLoopbackMode().then((value: Boolean) => {
 });
 ```
 
-## socket.constructTCPSocketInstance<sup>7+</sup>
+## socket.constructTCPSocketInstance
 
 constructTCPSocketInstance(): TCPSocket
 
@@ -1656,13 +1656,13 @@ let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 
 ## TCPSocket
 
-TCPSocket连接。在调用TCPSocket的方法前，需要先通过[socket.constructTCPSocketInstance](#socketconstructtcpsocketinstance7)创建TCPSocket对象。
+TCPSocket连接。在调用TCPSocket的方法前，需要先通过[socket.constructTCPSocketInstance](#socketconstructtcpsocketinstance)创建TCPSocket对象。
 
 ### bind
 
 bind(address: NetAddress, callback: AsyncCallback\<void\>): void
 
-绑定IP地址和端口，端口可以指定为0由系统随机分配或由用户指定为其它非0端口。使用callback方法作为异步方法。
+绑定IP地址和端口，端口可以指定为0由系统随机分配或由用户指定为其它非0端口。使用callback异步回调。
 
 > **说明：**
 > bind方法如果因为端口冲突而执行失败，则会由系统随机分配端口号。
@@ -1713,7 +1713,7 @@ tcp.bind(bindAddr, (err: BusinessError) => {
 
 bind(address: NetAddress): Promise\<void\>
 
-绑定IP地址和端口，端口可以指定为0由系统随机分配或由用户指定为其它非0端口。使用Promise方法作为异步方法。
+绑定IP地址和端口，端口可以指定为0由系统随机分配或由用户指定为其它非0端口。使用Promise异步回调。
 
 > **说明：**
 > bind方法如果因为端口冲突而执行失败，则会由系统随机分配端口号。
@@ -1767,7 +1767,7 @@ tcp.bind(bindAddr).then(() => {
 
 connect(options: TCPConnectOptions, callback: AsyncCallback\<void\>): void
 
-连接到指定的IP地址和端口。使用callback方法作为异步方法。
+连接到指定的IP地址和端口。使用callback异步回调。
 
 > **说明：**
 > 在没有执行tcp.bind的情况下，也可以直接调用该接口完成与TCP服务端的连接
@@ -1863,7 +1863,7 @@ tcp.connect(tcpconnectoptions, (err: BusinessError) => {
 
 connect(options: TCPConnectOptions): Promise\<void\>
 
-连接到指定的IP地址和端口。使用promise方法作为异步方法。
+连接到指定的IP地址和端口。使用promise异步回调。
 
 > **说明：**
 > 在没有执行tcp.bind的情况下，也可以直接调用该接口完成与TCP服务端的连接。
@@ -1960,7 +1960,7 @@ tcp.connect(tcpconnectoptions).then(() => {
 
 send(options: TCPSendOptions, callback: AsyncCallback\<void\>): void
 
-通过TCPSocket连接发送数据。使用callback方式作为异步方法。
+通过TCPSocket连接发送数据。使用callback异步回调。
 
 > **说明：**
 > connect方法调用成功后，才可调用此方法。该接口为耗时操作，请在Worker线程或taskpool线程调用该接口。
@@ -2019,7 +2019,7 @@ tcp.connect(tcpconnectoptions, () => {
 
 send(options: TCPSendOptions): Promise\<void\>
 
-通过TCPSocket连接发送数据。使用Promise方式作为异步方法。
+通过TCPSocket连接发送数据。使用Promise异步回调。
 
 > **说明：**
 > connect方法调用成功后，才可调用此方法。该接口为耗时操作，请在Worker线程或taskpool线程调用该接口。
@@ -2081,7 +2081,7 @@ tcp.connect(tcpconnectoptions, () => {
 
 close(callback: AsyncCallback\<void\>): void
 
-关闭TCPSocket连接。使用callback方式作为异步方法。
+关闭TCPSocket连接。使用callback异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -2122,7 +2122,7 @@ tcp.close((err: BusinessError) => {
 
 close(): Promise\<void\>
 
-关闭TCPSocket连接。使用Promise方式作为异步方法。
+关闭TCPSocket连接。使用Promise异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -2161,7 +2161,7 @@ tcp.close().then(() => {
 
 getRemoteAddress(callback: AsyncCallback\<NetAddress\>): void
 
-获取对端Socket地址。使用callback方式作为异步方法。
+获取对端Socket地址。使用callback异步回调。
 
 > **说明：**
 > connect方法调用成功后，才可调用此方法。
@@ -2215,7 +2215,7 @@ tcp.connect(tcpconnectoptions, () => {
 
 getRemoteAddress(): Promise\<NetAddress\>
 
-获取对端Socket地址。使用Promise方式作为异步方法。
+获取对端Socket地址。使用Promise异步回调。
 
 > **说明：**
 > connect方法调用成功后，才可调用此方法。
@@ -2269,7 +2269,7 @@ tcp.connect(tcpconnectoptions).then(() => {
 
 getState(callback: AsyncCallback\<SocketStateBase\>): void
 
-获取TCPSocket状态。使用callback方式作为异步方法。
+获取TCPSocket状态。使用callback异步回调。
 
 > **说明：**
 > bind或connect方法调用成功后，才可调用此方法。
@@ -2323,7 +2323,7 @@ tcp.connect(tcpconnectoptions, () => {
 
 getState(): Promise\<SocketStateBase\>
 
-获取TCPSocket状态。使用Promise方式作为异步方法。
+获取TCPSocket状态。使用Promise异步回调。
 
 > **说明：**
 > bind或connect方法调用成功后，才可调用此方法。
@@ -2377,7 +2377,7 @@ tcp.connect(tcpconnectoptions).then(() => {
 
 getSocketFd(callback: AsyncCallback\<number\>): void
 
-获取TCPSocket的文件描述符。使用callback方式作为异步方法。
+获取TCPSocket的文件描述符。使用callback异步回调。
 
 > **说明：**
 > bind或connect方法调用成功后，才可调用此方法。
@@ -2420,7 +2420,7 @@ tcp.getSocketFd((err: BusinessError, data: number) => {
 
 getSocketFd(): Promise\<number\>
 
-获取TCPSocket的文件描述符。使用Promise方式作为异步方法。
+获取TCPSocket的文件描述符。使用Promise异步回调。
 
 > **说明：**
 > bind或connect方法调用成功后，才可调用此方法。
@@ -2463,7 +2463,7 @@ tcp.getSocketFd().then((data: number) => {
 
 setExtraOptions(options: TCPExtraOptions, callback: AsyncCallback\<void\>): void
 
-设置TCPSocket连接的其他属性。使用callback方式作为异步方法。
+设置TCPSocket连接的其他属性。使用callback异步回调。
 
 > **说明：**
 > bind或connect方法调用成功后，才可调用此方法。
@@ -2535,7 +2535,7 @@ tcp.connect(tcpconnectoptions, () => {
 
 setExtraOptions(options: TCPExtraOptions): Promise\<void\>
 
-设置TCPSocket连接的其他属性。使用Promise方式作为异步方法。
+设置TCPSocket连接的其他属性。使用Promise异步回调。
 
 > **说明：**
 > bind或connect方法调用成功后，才可调用此方法。
@@ -2610,7 +2610,7 @@ tcp.connect(tcpconnectoptions, () => {
 
 getLocalAddress(): Promise\<NetAddress\>
 
-获取TCPSocket的本地Socket地址。使用Promise方式作为异步方法。
+获取TCPSocket的本地Socket地址。使用Promise异步回调。
 
 > **说明：**
 > bind方法调用成功后，才可调用此方法。
@@ -2660,7 +2660,7 @@ tcp.bind(bindAddr).then(() => {
 
 on(type: 'message', callback: Callback<SocketMessageInfo\>): void
 
-订阅TCPSocket连接的接收消息事件。使用callback方式作为异步方法。
+订阅TCPSocket连接的接收消息事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2695,7 +2695,7 @@ tcp.on('message', (value: socket.SocketMessageInfo) => {
 
 off(type: 'message', callback?: Callback<SocketMessageInfo\>): void
 
-取消订阅TCPSocket连接的接收消息事件。使用callback方式作为异步方法。
+取消订阅TCPSocket连接的接收消息事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2734,7 +2734,7 @@ tcp.off('message');
 
 on(type: 'connect' | 'close', callback: Callback\<void\>): void
 
-订阅TCPSocket的连接事件或关闭事件。使用callback方式作为异步方法。
+订阅TCPSocket的连接事件或关闭事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2764,7 +2764,7 @@ tcp.on('close', () => {
 
 off(type: 'connect' | 'close', callback?: Callback\<void\>): void
 
-取消订阅TCPSocket的连接事件或关闭事件。使用callback方式作为异步方法。
+取消订阅TCPSocket的连接事件或关闭事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2802,7 +2802,7 @@ tcp.off('close');
 
 on(type: 'error', callback: ErrorCallback): void
 
-订阅TCPSocket连接的error事件。使用callback方式作为异步方法。
+订阅TCPSocket连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2829,7 +2829,7 @@ tcp.on('error', (err: BusinessError) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-取消订阅TCPSocket连接的error事件。使用callback方式作为异步方法。
+取消订阅TCPSocket连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2881,7 +2881,7 @@ TCPSocket发送请求的参数。
 
 ## TCPExtraOptions
 
-TCPSocket连接的其他属性。继承自[ExtraOptionsBase](#extraoptionsbase7)。
+TCPSocket连接的其他属性。继承自[ExtraOptionsBase](#extraoptionsbase)。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2921,7 +2921,7 @@ TCPSocketServer连接。在调用TCPSocketServer的方法前，需要先通过[s
 
 listen(address: NetAddress, callback: AsyncCallback\<void\>): void
 
-绑定IP地址和端口，端口可以指定或由系统随机分配。监听并接受与此套接字建立的TCPSocket连接。该接口使用多线程并发处理客户端的数据。使用callback方法作为异步方法。
+绑定IP地址和端口，端口可以指定或由系统随机分配。监听并接受与此套接字建立的TCPSocket连接。该接口使用多线程并发处理客户端的数据。使用callback异步回调。
 
 > **说明：**
 > 服务端使用该方法完成bind，listen，accept操作，bind方法失败会由系统随机分配端口号。
@@ -2976,7 +2976,7 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
 
 listen(address: NetAddress): Promise\<void\>
 
-绑定IP地址和端口，端口可以指定或由系统随机分配。监听并接受与此套接字建立的TCPSocket连接。该接口使用多线程并发处理客户端的数据。使用Promise方法作为异步方法。
+绑定IP地址和端口，端口可以指定或由系统随机分配。监听并接受与此套接字建立的TCPSocket连接。该接口使用多线程并发处理客户端的数据。使用Promise异步回调。
 
 > **说明：**
 > 服务端使用该方法完成bind，listen，accept操作，bind方法失败会由系统随机分配端口号。
@@ -3034,7 +3034,7 @@ tcpServer.listen(listenAddr).then(() => {
 
 getState(callback: AsyncCallback\<SocketStateBase\>): void
 
-获取TCPSocketServer状态。使用callback方式作为异步方法。
+获取TCPSocketServer状态。使用callback异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -3092,7 +3092,7 @@ tcpServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
 
 getState(): Promise\<SocketStateBase\>
 
-获取TCPSocketServer状态。使用Promise方式作为异步方法。
+获取TCPSocketServer状态。使用Promise异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -3147,7 +3147,7 @@ tcpServer.getState().then((data: socket.SocketStateBase) => {
 
 setExtraOptions(options: TCPExtraOptions, callback: AsyncCallback\<void\>): void
 
-设置TCPSocketServer连接的其他属性。使用callback方式作为异步方法。
+设置TCPSocketServer连接的其他属性。使用callback异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -3222,7 +3222,7 @@ tcpServer.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
 
 setExtraOptions(options: TCPExtraOptions): Promise\<void\>
 
-设置TCPSocketServer连接的其他属性。使用Promise方式作为异步方法。
+设置TCPSocketServer连接的其他属性。使用Promise异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -3301,7 +3301,7 @@ tcpServer.setExtraOptions(tcpExtraOptions).then(() => {
 
 getLocalAddress(): Promise\<NetAddress\>
 
-获取TCPSocketServer的本地Socket地址。使用Promise方式作为异步方法。
+获取TCPSocketServer的本地Socket地址。使用Promise异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -3351,7 +3351,7 @@ tcpServer.listen(listenAddr).then(() => {
 
 on(type: 'connect', callback: Callback\<TCPSocketConnection\>): void
 
-订阅TCPSocketServer的连接事件。使用callback方式作为异步方法。
+订阅TCPSocketServer的连接事件。使用callback异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -3402,7 +3402,7 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
 
 off(type: 'connect', callback?: Callback\<TCPSocketConnection\>): void
 
-取消订阅TCPSocketServer的连接事件。使用callback方式作为异步方法。
+取消订阅TCPSocketServer的连接事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -3454,7 +3454,7 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
 
 on(type: 'error', callback: ErrorCallback): void
 
-订阅TCPSocketServer连接的error事件。使用callback方式作为异步方法。
+订阅TCPSocketServer连接的error事件。使用callback异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -3505,7 +3505,7 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-取消订阅TCPSocketServer连接的error事件。使用callback方式作为异步方法。
+取消订阅TCPSocketServer连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -3625,7 +3625,7 @@ TCPSocketConnection连接，即TCPSocket客户端与服务端的连接。在调�
 
 send(options: TCPSendOptions, callback: AsyncCallback\<void\>): void
 
-通过TCPSocketConnection连接发送数据。使用callback方式作为异步方法。
+通过TCPSocketConnection连接发送数据。使用callback异步回调。
 
 > **说明：**
 > 与客户端建立连接后，才可调用此方法。
@@ -3672,7 +3672,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 
 send(options: TCPSendOptions): Promise\<void\>
 
-通过TCPSocketConnection连接发送数据。使用Promise方式作为异步方法。
+通过TCPSocketConnection连接发送数据。使用Promise异步回调。
 
 > **说明：**
 > 与客户端建立连接后，才可调用此方法。
@@ -3727,7 +3727,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 
 close(callback: AsyncCallback\<void\>): void
 
-关闭一个与TCPSocket建立的连接。使用callback方式作为异步方法。
+关闭一个与TCPSocket建立的连接。使用callback异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -3772,7 +3772,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 
 close(): Promise\<void\>
 
-关闭一个与TCPSocket建立的连接。使用Promise方式作为异步方法。
+关闭一个与TCPSocket建立的连接。使用Promise异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -3813,7 +3813,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 
 getRemoteAddress(callback: AsyncCallback\<NetAddress\>): void
 
-获取对端Socket地址。使用callback方式作为异步方法。
+获取对端Socket地址。使用callback异步回调。
 
 > **说明：**
 > 与客户端建立连接后，才可调用此方法。
@@ -3861,7 +3861,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 
 getRemoteAddress(): Promise\<NetAddress\>
 
-获取对端Socket地址。使用Promise方式作为异步方法。
+获取对端Socket地址。使用Promise异步回调。
 
 > **说明：**
 > 与客户端建立连接后，才可调用此方法。
@@ -3906,7 +3906,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 
 getLocalAddress(): Promise\<NetAddress\>
 
-获取TCPSocketConnection连接的本地Socket地址。使用Promise方式作为异步方法。
+获取TCPSocketConnection连接的本地Socket地址。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -3969,7 +3969,7 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
 
 on(type: 'message', callback: Callback<SocketMessageInfo\>): void
 
-订阅TCPSocketConnection连接的接收消息事件。使用callback方式作为异步方法。
+订阅TCPSocketConnection连接的接收消息事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -4015,7 +4015,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 
 off(type: 'message', callback?: Callback<SocketMessageInfo\>): void
 
-取消订阅TCPSocketConnection连接的接收消息事件。使用callback方式作为异步方法。
+取消订阅TCPSocketConnection连接的接收消息事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -4064,7 +4064,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 
 on(type: 'close', callback: Callback\<void\>): void
 
-订阅TCPSocketConnection的关闭事件。使用callback方式作为异步方法。
+订阅TCPSocketConnection的关闭事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -4101,7 +4101,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 
 off(type: 'close', callback?: Callback\<void\>): void
 
-取消订阅TCPSocketConnection的关闭事件。使用callback方式作为异步方法。
+取消订阅TCPSocketConnection的关闭事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -4141,7 +4141,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 
 on(type: 'error', callback: ErrorCallback): void
 
-订阅TCPSocketConnection连接的error事件。使用callback方式作为异步方法。
+订阅TCPSocketConnection连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -4178,7 +4178,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-取消订阅TCPSocketConnection连接的error事件。使用callback方式作为异步方法。
+取消订阅TCPSocketConnection连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -4250,7 +4250,7 @@ LocalSocket连接。在调用LocalSocket的方法前，需要先通过[socket.co
 
 bind(address: LocalAddress): Promise\<void\>;
 
-绑定本地套接字文件的路径。使用promise方法作为异步方法。
+绑定本地套接字文件的路径。使用promise异步回调。
 
 > **说明：**
 > bind方法可以使客户端确保有个明确的本地套接字路径，显式的绑定一个本地套接字文件。
@@ -4309,7 +4309,7 @@ client.bind(address).then(() => {
 
 connect(options: LocalConnectOptions): Promise\<void\>
 
-连接到指定的套接字文件。使用promise方法作为异步方法。
+连接到指定的套接字文件。使用promise异步回调。
 
 > **说明：**
 > 在没有执行localsocket.bind的情况下，也可以直接调用该接口完成与LocalSocket服务端的连接。
@@ -4372,7 +4372,7 @@ client.connect(connectOpt).then(() => {
 
 send(options: LocalSendOptions): Promise\<void\>
 
-通过LocalSocket连接发送数据。使用Promise方式作为异步方法。
+通过LocalSocket连接发送数据。使用Promise异步回调。
 
 > **说明：**
 > connect方法调用成功后，才可调用此方法。
@@ -4440,7 +4440,7 @@ client.send(sendOpt).then(() => {
 
 close(): Promise\<void\>
 
-关闭LocalSocket连接。使用Promise方式作为异步方法。
+关闭LocalSocket连接。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -4476,7 +4476,7 @@ client.close().then(() => {
 
 getState(): Promise\<SocketStateBase\>
 
-获取LocalSocket状态。使用Promise方式作为异步方法。
+获取LocalSocket状态。使用Promise异步回调。
 
 > **说明：**
 > bind或connect方法调用成功后，才可调用此方法。
@@ -4526,7 +4526,7 @@ client.connect(connectOpt).then(() => {
 
 getSocketFd(): Promise\<number\>
 
-获取LocalSocket的文件描述符。使用Promise方式作为异步方法。
+获取LocalSocket的文件描述符。使用Promise异步回调。
 
 > **说明：**
 > bind或connect方法调用成功后，才可调用此方法。
@@ -4577,7 +4577,7 @@ client.getSocketFd().then((data: number) => {
 
 setExtraOptions(options: ExtraOptionsBase): Promise\<void\>
 
-设置LocalSocket的套接字属性。使用Promise方式作为异步方法。
+设置LocalSocket的套接字属性。使用Promise异步回调。
 
 > **说明：**
 > bind或connect方法调用成功后，才可调用此方法。
@@ -4588,7 +4588,7 @@ setExtraOptions(options: ExtraOptionsBase): Promise\<void\>
 
 | 参数名  | 类型                                      | 必填 | 说明                                                         |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [ExtraOptionsBase](#extraoptionsbase7) | 是   | LocalSocket连接的其他属性，参考[ExtraOptionsBase](#extraoptionsbase7)。 |
+| options | [ExtraOptionsBase](#extraoptionsbase) | 是   | LocalSocket连接的其他属性，参考[ExtraOptionsBase](#extraoptionsbase)。 |
 
 **返回值：**
 
@@ -4647,7 +4647,7 @@ client.connect(connectOpt).then(() => {
 
 getExtraOptions(): Promise\<ExtraOptionsBase\>;
 
-获取LocalSocket的套接字属性。使用Promise方式作为异步方法。
+获取LocalSocket的套接字属性。使用Promise异步回调。
 
 > **说明：**
 > bind或connect方法调用成功后，才可调用此方法。
@@ -4658,7 +4658,7 @@ getExtraOptions(): Promise\<ExtraOptionsBase\>;
 
 | 类型                         | 说明                                      |
 | :-------------------------- | :---------------------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase7)\> | 以Promise形式返回设置LocalSocket套接字的属性。 |
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | 以Promise形式返回设置LocalSocket套接字的属性。 |
 
 **错误码：**
 
@@ -4705,7 +4705,7 @@ client.connect(connectOpt).then(() => {
 
 getLocalAddress(): Promise\<string\>
 
-获取LocalSocket的本地Socket地址。使用Promise方式作为异步方法。
+获取LocalSocket的本地Socket地址。使用Promise异步回调。
 
 > **说明：**
 > bind方法调用成功后，才可调用此方法。
@@ -4762,7 +4762,7 @@ client.bind(address).then(() => {
 
 on(type: 'message', callback: Callback\<LocalSocketMessageInfo\>): void
 
-订阅LocalSocket连接的接收消息事件。使用callback方式作为异步方法。
+订阅LocalSocket连接的接收消息事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -4802,7 +4802,7 @@ client.on('message', (value: socket.LocalSocketMessageInfo) => {
 
 off(type: 'message', callback?: Callback\<LocalSocketMessageInfo\>): void
 
-取消订阅LocalSocket连接的接收消息事件。使用callback方式作为异步方法。
+取消订阅LocalSocket连接的接收消息事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -4845,7 +4845,7 @@ client.off('message');
 
 on(type: 'connect', callback: Callback\<void\>): void
 
-订阅LocalSocket的连接事件。使用callback方式作为异步方法。
+订阅LocalSocket的连接事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -4879,7 +4879,7 @@ client.on('connect', () => {
 
 off(type: 'connect', callback?: Callback\<void\>): void
 
-取消订阅LocalSocket的连接事件。使用callback方式作为异步方法。
+取消订阅LocalSocket的连接事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -4917,7 +4917,7 @@ client.off('connect');
 
 on(type: 'close', callback: Callback\<void\>): void
 
-订阅LocalSocket的关闭事件。使用callback方式作为异步方法。
+订阅LocalSocket的关闭事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -4952,7 +4952,7 @@ client.on('close', callback);
 
 off(type: 'close', callback?: Callback\<void\>): void
 
-取消订阅LocalSocket的关闭事件。使用callback方式作为异步方法。
+取消订阅LocalSocket的关闭事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -4990,7 +4990,7 @@ client.off('close');
 
 on(type: 'error', callback: ErrorCallback): void
 
-订阅LocalSocket连接的error事件。使用callback方式作为异步方法。
+订阅LocalSocket连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -5024,7 +5024,7 @@ client.on('error', (err: Object) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-取消订阅LocalSocket连接的error事件。使用callback方式作为异步方法。
+取消订阅LocalSocket连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -5102,7 +5102,7 @@ LocalSocket发送请求的参数。
 | data    | string \| ArrayBuffer | 否   | 否   | 需要发送的数据。 |
 | encoding | string   | 否   | 是 | 字符编码。  |
 
-## ExtraOptionsBase<sup>7+</sup>
+## ExtraOptionsBase
 
 Socket套接字的基础属性。
 
@@ -5144,7 +5144,7 @@ LocalSocketServer类。在调用LocalSocketServer的方法前，需要先通过[
 
 listen(address: LocalAddress): Promise\<void\>
 
-绑定本地套接字文件，监听并接受与此套接字建立的LocalSocket连接。该接口使用多线程并发处理客户端的数据。使用Promise方法作为异步方法。
+绑定本地套接字文件，监听并接受与此套接字建立的LocalSocket连接。该接口使用多线程并发处理客户端的数据。使用Promise异步回调。
 
 > **说明：**
 > 服务端使用该方法完成bind，listen，accept操作，传入套接字文件路径，调用此接口后会自动生成本地套接字文件。
@@ -5203,7 +5203,7 @@ server.listen(addr).then(() => {
 
 getState(): Promise\<SocketStateBase\>
 
-获取LocalSocketServer状态。使用Promise方式作为异步方法。
+获取LocalSocketServer状态。使用Promise异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -5250,7 +5250,7 @@ server.getState().then((data: socket.SocketStateBase) => {
 
 setExtraOptions(options: ExtraOptionsBase): Promise\<void\>
 
-设置LocalSocketServer连接的套接字属性。使用Promise方式作为异步方法。
+设置LocalSocketServer连接的套接字属性。使用Promise异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -5261,7 +5261,7 @@ setExtraOptions(options: ExtraOptionsBase): Promise\<void\>
 
 | 参数名  | 类型                                      | 必填 | 说明                            |
 | ------- | --------------------------------------- | ---- | ------------------------------ |
-| options | [ExtraOptionsBase](#extraoptionsbase7) | 是   | LocalSocketServer连接的其他属性。 |
+| options | [ExtraOptionsBase](#extraoptionsbase) | 是   | LocalSocketServer连接的其他属性。 |
 
 **返回值：**
 
@@ -5317,7 +5317,7 @@ server.setExtraOptions(options).then(() => {
 
 getExtraOptions(): Promise\<ExtraOptionsBase\>;
 
-获取LocalSocketServer中连接的套接字的属性。使用Promise方式作为异步方法。
+获取LocalSocketServer中连接的套接字的属性。使用Promise异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -5328,7 +5328,7 @@ getExtraOptions(): Promise\<ExtraOptionsBase\>;
 
 | 类型                         | 说明                        |
 | :-------------------------- | :-------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase7)\> | 以Promise形式返回套接字的属性。 |
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | 以Promise形式返回套接字的属性。 |
 
 **错误码：**
 
@@ -5371,7 +5371,7 @@ server.getExtraOptions().then((options: socket.ExtraOptionsBase) => {
 
 getLocalAddress(): Promise\<string\>
 
-获取LocalSocketServer中本地Socket地址。使用Promise方式作为异步方法。
+获取LocalSocketServer中本地Socket地址。使用Promise异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -5429,7 +5429,7 @@ server.listen(listenAddr).then(() => {
 
 on(type: 'connect', callback: Callback\<LocalSocketConnection\>): void
 
-订阅LocalSocketServer的连接事件。使用callback方式作为异步方法。
+订阅LocalSocketServer的连接事件。使用callback异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -5468,7 +5468,7 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
 
 off(type: 'connect', callback?: Callback\<LocalSocketConnection\>): void
 
-取消订阅LocalSocketServer的连接事件。使用callback方式作为异步方法。
+取消订阅LocalSocketServer的连接事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -5508,7 +5508,7 @@ server.off('connect');
 
 on(type: 'error', callback: ErrorCallback): void
 
-订阅LocalSocketServer连接的error事件。使用callback方式作为异步方法。
+订阅LocalSocketServer连接的error事件。使用callback异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -5545,7 +5545,7 @@ server.on('error', (err: Object) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-取消订阅LocalSocketServer连接的error事件。使用callback方式作为异步方法。
+取消订阅LocalSocketServer连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -5654,7 +5654,7 @@ LocalSocketConnection连接，即LocalSocket客户端与服务端的会话连接
 
 send(options: LocalSendOptions): Promise\<void\>
 
-通过LocalSocketConnection连接对象发送数据。使用Promise方式作为异步方法。
+通过LocalSocketConnection连接对象发送数据。使用Promise异步回调。
 
 > **说明：**
 > 服务端与客户端建立连接后，服务端通过connect事件回调得到LocalSocketConnection连接对象后，才可使用连接对象调用此方法。
@@ -5705,7 +5705,7 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
 
 close(): Promise\<void\>
 
-关闭一个LocalSocket客户端与服务端建立的连接。使用Promise方式作为异步方法。
+关闭一个LocalSocket客户端与服务端建立的连接。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -5742,7 +5742,7 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
 
 getLocalAddress(): Promise\<string\>
 
-获取LocalSocketConnection连接中的本地Socket地址。使用Promise方式作为异步方法。
+获取LocalSocketConnection连接中的本地Socket地址。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -5803,7 +5803,7 @@ server.listen(localAddr).then(() => {
 
 on(type: 'message', callback: Callback\<LocalSocketMessageInfo\>): void
 
-订阅LocalSocketConnection连接的接收消息事件。使用callback方式作为异步方法。
+订阅LocalSocketConnection连接的接收消息事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -5861,7 +5861,7 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
 
 off(type: 'message', callback?: Callback\<LocalSocketMessageInfo\>): void
 
-取消订阅LocalSocketConnection连接的接收消息事件。使用callback方式作为异步方法。
+取消订阅LocalSocketConnection连接的接收消息事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -5907,7 +5907,7 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
 
 on(type: 'close', callback: Callback\<void\>): void
 
-订阅LocalSocketConnection的关闭事件。使用callback方式作为异步方法。
+订阅LocalSocketConnection的关闭事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -5943,7 +5943,7 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
 
 off(type: 'close', callback?: Callback\<void\>): void
 
-取消订阅LocalSocketConnection的关闭事件。使用callback方式作为异步方法。
+取消订阅LocalSocketConnection的关闭事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -5983,7 +5983,7 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
 
 on(type: 'error', callback: ErrorCallback): void
 
-订阅LocalSocketConnection连接的error事件。使用callback方式作为异步方法。
+订阅LocalSocketConnection连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -6019,7 +6019,7 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-取消订阅LocalSocketConnection连接的error事件。使用callback方式作为异步方法。
+取消订阅LocalSocketConnection连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -6153,7 +6153,7 @@ TLSSocket连接。在调用TLSSocket的方法前，需要先通过[socket.constr
 
 bind(address: NetAddress, callback: AsyncCallback\<void\>): void
 
-绑定IP地址和端口。使用callback方法作为异步方法。
+绑定IP地址和端口。使用callback异步回调。
 
 > **说明：**
 > 如果TLSSocket对象是通过TCPSocket对象升级创建的，可以不用执行bind方法。
@@ -6204,7 +6204,7 @@ tls.bind(bindAddr, (err: BusinessError) => {
 
 bind(address: NetAddress): Promise\<void\>
 
-绑定IP地址和端口。使用Promise方法作为异步方法。
+绑定IP地址和端口。使用Promise异步回调。
 
 > **说明：**
 > 如果TLSSocket对象是通过TCPSocket对象升级创建的，可以不用执行bind方法。
@@ -6258,7 +6258,7 @@ tls.bind(bindAddr).then(() => {
 
 getState(callback: AsyncCallback\<SocketStateBase\>): void
 
-在TLSSocket的bind成功之后，获取TLSSocket状态。使用callback方式作为异步方法。
+在TLSSocket的bind成功之后，获取TLSSocket状态。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -6308,7 +6308,7 @@ tls.getState((err: BusinessError, data: socket.SocketStateBase) => {
 
 getState(): Promise\<SocketStateBase\>
 
-在TLSSocket的bind成功之后，获取TLSSocket状态。使用Promise方式作为异步方法。
+在TLSSocket的bind成功之后，获取TLSSocket状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -6356,7 +6356,7 @@ tls.getState().then(() => {
 
 setExtraOptions(options: TCPExtraOptions, callback: AsyncCallback\<void\>): void
 
-在TLSSocket的bind成功之后，设置TCPSocket连接的其他属性。使用callback方式作为异步方法。
+在TLSSocket的bind成功之后，设置TCPSocket连接的其他属性。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -6424,7 +6424,7 @@ tls.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
 
 setExtraOptions(options: TCPExtraOptions): Promise\<void\>
 
-在TLSSocket的bind成功之后，设置TCPSocket连接的其他属性。使用Promise方式作为异步方法。
+在TLSSocket的bind成功之后，设置TCPSocket连接的其他属性。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -6495,7 +6495,7 @@ tls.setExtraOptions(tcpExtraOptions).then(() => {
 
 on(type: 'message', callback: Callback\<SocketMessageInfo\>): void
 
-订阅TLSSocket连接的接收消息事件。使用callback方式作为异步方法。
+订阅TLSSocket连接的接收消息事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -6553,7 +6553,7 @@ tls.bind(bindAddr, (err: BusinessError) => {
 
 off(type: 'message', callback?: Callback\<SocketMessageInfo\>): void
 
-取消订阅TLSSocket连接的接收消息事件。使用callback方式作为异步方法。
+取消订阅TLSSocket连接的接收消息事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -6596,7 +6596,7 @@ tls.off('message', callback);
 
 on(type: 'connect' | 'close', callback: Callback\<void\>): void
 
-订阅TLSSocket的连接事件或关闭事件。使用callback方式作为异步方法。
+订阅TLSSocket的连接事件或关闭事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -6647,7 +6647,7 @@ tls.bind(bindAddr, (err: BusinessError) => {
 
 off(type: 'connect' | 'close', callback?: Callback\<void\>): void
 
-取消订阅TLSSocket的连接事件或关闭事件。使用callback方式作为异步方法。
+取消订阅TLSSocket的连接事件或关闭事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -6690,7 +6690,7 @@ tls.off('close', callback2);
 
 on(type: 'error', callback: ErrorCallback): void
 
-订阅TLSSocket连接的error事件。使用callback方式作为异步方法。
+订阅TLSSocket连接的error事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -6738,7 +6738,7 @@ tls.bind(bindAddr, (err: BusinessError) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-取消订阅TLSSocket连接的error事件。使用callback方式作为异步方法。
+取消订阅TLSSocket连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -6969,7 +6969,7 @@ tlsOneWay.connect(tlsOneWayConnectOptions, (err: BusinessError) => {
 
 connect(options: TLSConnectOptions): Promise\<void\>
 
-在TLSSocket上bind成功之后，进行通信连接，并创建和初始化TLS会话，实现建立连接过程，启动与服务器的TLS/SSL握手，实现数据传输功能，该连接包括两种认证方式，单向认证与双向认证，使用Promise方式作为异步方法。需要注意options入参下secureOptions内的ca在API11及之前的版本为必填项，需填入服务端的ca证书(用于认证校验服务端的数字证书)，证书内容以"-----BEGIN CERTIFICATE-----"开头，以"-----END CERTIFICATE-----"结尾，自API12开始，为非必填项。
+在TLSSocket上bind成功之后，进行通信连接，并创建和初始化TLS会话，实现建立连接过程，启动与服务器的TLS/SSL握手，实现数据传输功能，该连接包括两种认证方式，单向认证与双向认证，使用Promise异步回调。需要注意options入参下secureOptions内的ca在API11及之前的版本为必填项，需填入服务端的ca证书(用于认证校验服务端的数字证书)，证书内容以"-----BEGIN CERTIFICATE-----"开头，以"-----END CERTIFICATE-----"结尾，自API12开始，为非必填项。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7177,7 +7177,7 @@ tlsOneWay.connect(tlsOneWayConnectOptions).then(() => {
 
 getRemoteAddress(callback: AsyncCallback\<NetAddress\>): void
 
-在TLSSocket通信连接成功之后，获取对端Socket地址。使用callback方式作为异步方法。
+在TLSSocket通信连接成功之后，获取对端Socket地址。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7214,7 +7214,7 @@ tls.getRemoteAddress((err: BusinessError, data: socket.NetAddress) => {
 
 getRemoteAddress(): Promise\<NetAddress\>
 
-在TLSSocket通信连接成功之后，获取对端Socket地址。使用Promise方式作为异步方法。
+在TLSSocket通信连接成功之后，获取对端Socket地址。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7249,7 +7249,7 @@ tls.getRemoteAddress().then(() => {
 
 getCertificate(callback: AsyncCallback\<[X509CertRawData](#x509certrawdata9)\>): void
 
-在TLSSocket通信连接成功之后，获取本地的数字证书，该接口只适用于双向认证时，使用callback方式作为异步方法。
+在TLSSocket通信连接成功之后，获取本地的数字证书，该接口只适用于双向认证时，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7287,7 +7287,7 @@ tls.getCertificate((err: BusinessError, data: socket.X509CertRawData) => {
 
 getCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
-在TLSSocket通信连接之后，获取本地的数字证书，该接口只适用于双向认证时，使用Promise方式作为异步方法。
+在TLSSocket通信连接之后，获取本地的数字证书，该接口只适用于双向认证时，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7326,7 +7326,7 @@ tls.getCertificate().then((data: socket.X509CertRawData) => {
 
 getRemoteCertificate(callback: AsyncCallback\<[X509CertRawData](#x509certrawdata9)\>): void
 
-在TLSSocket通信连接成功之后，获取服务端的数字证书，使用callback方式作为异步方法。
+在TLSSocket通信连接成功之后，获取服务端的数字证书，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7366,7 +7366,7 @@ tls.getRemoteCertificate((err: BusinessError, data: socket.X509CertRawData) => {
 
 getRemoteCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
-在TLSSocket通信连接成功之后，获取服务端的数字证书，使用Promise方式作为异步方法。
+在TLSSocket通信连接成功之后，获取服务端的数字证书，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7404,7 +7404,7 @@ tls.getRemoteCertificate().then((data: socket.X509CertRawData) => {
 
 getProtocol(callback: AsyncCallback\<string\>): void
 
-在TLSSocket通信连接成功之后，获取通信的协议版本，使用callback方式作为异步方法。
+在TLSSocket通信连接成功之后，获取通信的协议版本，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7442,7 +7442,7 @@ tls.getProtocol((err: BusinessError, data: string) => {
 
 getProtocol():Promise\<string\>
 
-在TLSSocket通信连接成功之后，获取通信的协议版本，使用Promise方式作为异步方法。
+在TLSSocket通信连接成功之后，获取通信的协议版本，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7478,7 +7478,7 @@ tls.getProtocol().then((data: string) => {
 
 getCipherSuite(callback: AsyncCallback\<Array\<string\>\>): void
 
-在TLSSocket通信连接成功之后，获取通信双方协商后的加密套件，使用callback方式作为异步方法。
+在TLSSocket通信连接成功之后，获取通信双方协商后的加密套件，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7517,7 +7517,7 @@ tls.getCipherSuite((err: BusinessError, data: Array<string>) => {
 
 getCipherSuite(): Promise\<Array\<string\>\>
 
-在TLSSocket通信连接成功之后，获取通信双方协商后的加密套件，使用Promise方式作为异步方法。
+在TLSSocket通信连接成功之后，获取通信双方协商后的加密套件，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7554,7 +7554,7 @@ tls.getCipherSuite().then((data: Array<string>) => {
 
 getSignatureAlgorithms(callback: AsyncCallback\<Array\<string\>\>): void
 
-在TLSSocket通信连接成功之后，获取通信双方协商后签名算法，该接口只适配双向认证模式下，使用callback方式作为异步方法。
+在TLSSocket通信连接成功之后，获取通信双方协商后签名算法，该接口只适配双向认证模式下，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7591,7 +7591,7 @@ tls.getSignatureAlgorithms((err: BusinessError, data: Array<string>) => {
 
 getSignatureAlgorithms(): Promise\<Array\<string\>\>
 
-在TLSSocket通信连接成功之后，获取通信双方协商后的签名算法，该接口只适配双向认证模式下，使用Promise方式作为异步方法。
+在TLSSocket通信连接成功之后，获取通信双方协商后的签名算法，该接口只适配双向认证模式下，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7626,7 +7626,7 @@ tls.getSignatureAlgorithms().then((data: Array<string>) => {
 
 getLocalAddress(): Promise\<NetAddress\>
 
-获取TLSSocket的本地Socket地址。使用Promise方式作为异步方法。
+获取TLSSocket的本地Socket地址。使用Promise异步回调。
 
 > **说明：**
 > 在TLSSocketServer通信连接成功之后，才可调用此方法。
@@ -7705,7 +7705,7 @@ tls.getSocketFd().then((data: number) => {
 
 send(data: string \| ArrayBuffer, callback: AsyncCallback\<void\>): void
 
-在TLSSocket通信连接成功之后，向服务端发送消息，使用callback方式作为异步方法。
+在TLSSocket通信连接成功之后，向服务端发送消息，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7747,7 +7747,7 @@ tls.send("xxxx", (err: BusinessError) => {
 
 send(data: string \| ArrayBuffer): Promise\<void\>
 
-在TLSSocket通信连接成功之后，向服务端发送消息，使用Promise方式作为异步方法。
+在TLSSocket通信连接成功之后，向服务端发送消息，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7792,7 +7792,7 @@ tls.send("xxxx").then(() => {
 
 close(callback: AsyncCallback\<void\>): void
 
-在TLSSocket通信连接成功之后，断开连接，使用callback方式作为异步方法。
+在TLSSocket通信连接成功之后，断开连接，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7832,7 +7832,7 @@ tls.close((err: BusinessError) => {
 
 close(): Promise\<void\>
 
-在TLSSocket通信连接成功之后，断开连接，使用Promise方式作为异步方法。
+在TLSSocket通信连接成功之后，断开连接，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -7952,7 +7952,7 @@ TLSSocketServer连接。在调用TLSSocketServer的方法前，需要先通过[s
 
 listen(options: TLSConnectOptions, callback: AsyncCallback\<void\>): void
 
-绑定IP地址和端口，在TLSSocketServer上bind成功之后，监听客户端的连接，创建和初始化TLS会话，实现建立连接过程，加载证书秘钥并验证，使用callback方式作为异步方法。
+绑定IP地址和端口，在TLSSocketServer上bind成功之后，监听客户端的连接，创建和初始化TLS会话，实现建立连接过程，加载证书秘钥并验证，使用callback异步回调。
 
 >**注意：**
 >
@@ -8022,7 +8022,7 @@ tlsServer.listen(tlsConnectOptions, (err: BusinessError) => {
 
 listen(options: TLSConnectOptions): Promise\<void\>
 
-绑定IP地址和端口，在TLSSocketServer上bind成功之后，监听客户端的连接，并创建和初始化TLS会话，实现建立连接过程，加载证书秘钥并验证，使用Promise方式作为异步方法。
+绑定IP地址和端口，在TLSSocketServer上bind成功之后，监听客户端的连接，并创建和初始化TLS会话，实现建立连接过程，加载证书秘钥并验证，使用Promise异步回调。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -8095,7 +8095,7 @@ tlsServer.listen(tlsConnectOptions).then(() => {
 
 getState(callback: AsyncCallback\<SocketStateBase\>): void
 
-在TLSSocketServer的listen成功之后，获取TLSSocketServer状态。使用callback方式作为异步方法。
+在TLSSocketServer的listen成功之后，获取TLSSocketServer状态。使用callback异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -8160,7 +8160,7 @@ tlsServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
 
 getState(): Promise\<SocketStateBase\>
 
-在TLSSocketServer的listen成功之后，获取TLSSocketServer状态。使用Promise方式作为异步方法。
+在TLSSocketServer的listen成功之后，获取TLSSocketServer状态。使用Promise异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -8222,7 +8222,7 @@ tlsServer.getState().then(() => {
 
 setExtraOptions(options: TCPExtraOptions, callback: AsyncCallback\<void\>): void
 
-在TLSSocketServer的listen成功之后，设置TLSSocketServer连接的其他属性。使用callback方式作为异步方法。
+在TLSSocketServer的listen成功之后，设置TLSSocketServer连接的其他属性。使用callback异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -8304,7 +8304,7 @@ tlsServer.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
 
 setExtraOptions(options: TCPExtraOptions): Promise\<void\>
 
-在TLSSocketServer的listen成功之后，设置TLSSocketServer连接的其他属性，使用Promise方式作为异步方法。
+在TLSSocketServer的listen成功之后，设置TLSSocketServer连接的其他属性，使用Promise异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -8389,7 +8389,7 @@ tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
 
 getCertificate(callback: AsyncCallback\<[X509CertRawData](#x509certrawdata9)\>): void
 
-在TLSSocketServer通信连接成功之后，获取本地的数字证书，使用callback方式作为异步方法。
+在TLSSocketServer通信连接成功之后，获取本地的数字证书，使用callback异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -8458,7 +8458,7 @@ tlsServer.getCertificate((err: BusinessError, data: socket.X509CertRawData) => {
 
 getCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
-在TLSSocketServer通信连接之后，获取本地的数字证书，使用Promise方式作为异步方法。
+在TLSSocketServer通信连接之后，获取本地的数字证书，使用Promise异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -8524,7 +8524,7 @@ tlsServer.getCertificate().then((data: socket.X509CertRawData) => {
 
 getProtocol(callback: AsyncCallback\<string\>): void
 
-在TLSSocketServer通信连接成功之后，获取通信的协议版本，使用callback方式作为异步方法。
+在TLSSocketServer通信连接成功之后，获取通信的协议版本，使用callback异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -8590,7 +8590,7 @@ tlsServer.getProtocol((err: BusinessError, data: string) => {
 
 getProtocol():Promise\<string\>
 
-在TLSSocketServer通信连接成功之后，获取通信的协议版本，使用Promise方式作为异步方法。
+在TLSSocketServer通信连接成功之后，获取通信的协议版本，使用Promise异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -8653,7 +8653,7 @@ tlsServer.getProtocol().then((data: string) => {
 
 getLocalAddress(): Promise\<NetAddress\>
 
-获取TLSSocketServer的本地Socket地址。使用Promise方式作为异步方法。
+获取TLSSocketServer的本地Socket地址。使用Promise异步回调。
 
 > **说明：**
 > 在TLSSocketServer通信连接成功之后，才可调用此方法。
@@ -8692,7 +8692,7 @@ tlsServer.getLocalAddress().then((localAddress: socket.NetAddress) => {
 
 on(type: 'connect', callback: Callback\<TLSSocketConnection\>): void
 
-订阅TLSSocketServer的连接事件。使用callback方式作为异步方法。
+订阅TLSSocketServer的连接事件。使用callback异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -8752,7 +8752,7 @@ tlsServer.listen(tlsConnectOptions).then(() => {
 
 off(type: 'connect', callback?: Callback\<TLSSocketConnection\>): void
 
-取消订阅TLSSocketServer的连接事件。使用callback方式作为异步方法。
+取消订阅TLSSocketServer的连接事件。使用callback异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -8818,7 +8818,7 @@ tlsServer.off('connect');
 
 on(type: 'error', callback: ErrorCallback): void
 
-订阅TLSSocketServer连接的error事件。使用callback方式作为异步方法。
+订阅TLSSocketServer连接的error事件。使用callback异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -8878,7 +8878,7 @@ tlsServer.on('error', (err: BusinessError) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-取消订阅TLSSocketServer连接的error事件。使用callback方式作为异步方法。
+取消订阅TLSSocketServer连接的error事件。使用callback异步回调。
 
 > **说明：**
 > listen方法调用成功后，才可调用此方法。
@@ -9026,7 +9026,7 @@ TLSSocketConnection连接，即TLSSocket客户端与服务端的连接。在调�
 
 send(data: string \| ArrayBuffer, callback: AsyncCallback\<void\>): void
 
-在TLSSocketServer通信连接成功之后，向客户端发送消息，使用callback方式作为异步方法。
+在TLSSocketServer通信连接成功之后，向客户端发送消息，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -9095,7 +9095,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 send(data: string \| ArrayBuffer): Promise\<void\>
 
-在TLSSocketServer通信连接成功之后，向服务端发送消息，使用Promise方式作为异步方法。
+在TLSSocketServer通信连接成功之后，向服务端发送消息，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -9167,7 +9167,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 close(callback: AsyncCallback\<void\>): void
 
-在与TLSSocketServer通信连接成功之后，断开连接，使用callback方式作为异步方法。
+在与TLSSocketServer通信连接成功之后，断开连接，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -9234,7 +9234,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 close(): Promise\<void\>
 
-在与TLSSocketServer通信连接成功之后，断开连接，使用Promise方式作为异步方法。
+在与TLSSocketServer通信连接成功之后，断开连接，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -9297,7 +9297,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getRemoteAddress(callback: AsyncCallback\<NetAddress\>): void
 
-在TLSSocketServer通信连接成功之后，获取对端Socket地址。使用callback方式作为异步方法。
+在TLSSocketServer通信连接成功之后，获取对端Socket地址。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -9361,7 +9361,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getRemoteAddress(): Promise\<NetAddress\>
 
-在TLSSocketServer通信连接成功之后，获取对端Socket地址。使用Promise方式作为异步方法。
+在TLSSocketServer通信连接成功之后，获取对端Socket地址。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -9422,7 +9422,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getRemoteCertificate(callback: AsyncCallback\<[X509CertRawData](#x509certrawdata9)\>): void
 
-在TLSSocketServer通信连接成功之后，获取对端的数字证书，该接口只适用于客户端向服务端发送证书时，使用callback方式作为异步方法。
+在TLSSocketServer通信连接成功之后，获取对端的数字证书，该接口只适用于客户端向服务端发送证书时，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -9489,7 +9489,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getRemoteCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
-在TLSSocketServer通信连接成功之后，获取对端的数字证书，该接口只适用于客户端向服务端发送证书时，使用Promise方式作为异步方法。
+在TLSSocketServer通信连接成功之后，获取对端的数字证书，该接口只适用于客户端向服务端发送证书时，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -9553,7 +9553,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getCipherSuite(callback: AsyncCallback\<Array\<string\>\>): void
 
-在TLSSocketServer通信连接成功之后，获取通信双方协商后的加密套件，使用callback方式作为异步方法。
+在TLSSocketServer通信连接成功之后，获取通信双方协商后的加密套件，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -9619,7 +9619,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getCipherSuite(): Promise\<Array\<string\>\>
 
-在TLSSocketServer通信连接成功之后，获取通信双方协商后的加密套件，使用Promise方式作为异步方法。
+在TLSSocketServer通信连接成功之后，获取通信双方协商后的加密套件，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -9682,7 +9682,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getSignatureAlgorithms(callback: AsyncCallback\<Array\<string\>\>): void
 
-在TLSSocketServer通信连接成功之后，获取通信双方协商后签名算法，使用callback方式作为异步方法。
+在TLSSocketServer通信连接成功之后，获取通信双方协商后签名算法，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -9746,7 +9746,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getSignatureAlgorithms(): Promise\<Array\<string\>\>
 
-在TLSSocketServer通信连接成功之后，获取通信双方协商后的签名算法，使用Promise方式作为异步方法。
+在TLSSocketServer通信连接成功之后，获取通信双方协商后的签名算法，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -9807,7 +9807,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getLocalAddress(): Promise\<NetAddress\>
 
-获取TLSSocketConnection连接的本地Socket地址。使用Promise方式作为异步方法。
+获取TLSSocketConnection连接的本地Socket地址。使用Promise异步回调。
 
 > **说明：**
 > 在TLSSocketServer通信连接成功之后，才可调用此方法。
@@ -9873,7 +9873,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 on(type: 'message', callback: Callback\<SocketMessageInfo\>): void
 
-订阅TLSSocketConnection连接的接收消息事件。使用callback方式作为异步方法。
+订阅TLSSocketConnection连接的接收消息事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -9941,7 +9941,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 off(type: 'message', callback?: Callback\<SocketMessageInfo\>): void
 
-取消订阅TLSSocketConnection连接的接收消息事件。使用callback方式作为异步方法。
+取消订阅TLSSocketConnection连接的接收消息事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -10013,7 +10013,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 on(type: 'close', callback: Callback\<void\>): void
 
-订阅TLSSocketConnection的关闭事件。使用callback方式作为异步方法。
+订阅TLSSocketConnection的关闭事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -10072,7 +10072,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 off(type: 'close', callback?: Callback\<void\>): void
 
-取消订阅TLSSocketConnection的关闭事件。使用callback方式作为异步方法。
+取消订阅TLSSocketConnection的关闭事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -10136,7 +10136,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 on(type: 'error', callback: ErrorCallback): void
 
-订阅TLSSocketConnection连接的error事件。使用callback方式作为异步方法。
+订阅TLSSocketConnection连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -10196,7 +10196,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-取消订阅TLSSocketConnection连接的error事件。使用callback方式作为异步方法。
+取消订阅TLSSocketConnection连接的error事件。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetStack
 

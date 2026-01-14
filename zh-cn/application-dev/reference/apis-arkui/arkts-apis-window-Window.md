@@ -7740,8 +7740,9 @@ getDecorButtonStyle(): DecorButtonStyle
 
 **设备行为差异：**
 
-API version 18之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
-从API version 18开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+在OpenHarmony 5.1.0之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **返回值：**
 
