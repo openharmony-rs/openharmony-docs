@@ -22,8 +22,6 @@ import { notificationExtensionSubscription, NotificationSubscriberExtensionAbili
 
 ## NotificationSubscriberExtensionAbility
 
-### Properties
-
 **System capability**: SystemCapability.Notification.Notification
 
 
@@ -57,7 +55,7 @@ export default class NotificationSubscriberExtAbility extends NotificationSubscr
 
 onReceiveMessage(notificationInfo: NotificationInfo): void
 
-Called when the system receives a notification.
+Called when a notification is received.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -65,7 +63,7 @@ Called when the system receives a notification.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| notificationInfo |  [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | Yes| Ability name, bundle name, and so on.|
+| notificationInfo |  [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | Yes| Notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.|
 
 **Example**:
 
