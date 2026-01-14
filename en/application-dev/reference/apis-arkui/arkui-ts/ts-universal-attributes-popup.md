@@ -78,7 +78,11 @@ Provides the configuration options for the popup.
 | arrowHeight<sup>11+</sup>             | [Dimension](ts-types.md#dimension10)                  | No  | Yes | Arrow height.<br>Default value: **8**.<br>Unit: vp.<br>**NOTE**<br>Percentage values are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                         |
 | popupColor<sup>11+</sup>              | [Color](ts-appendix-enums.md#color) &nbsp;\|&nbsp;string&nbsp;\|&nbsp; [Resource](ts-types.md#resource)&nbsp; \|&nbsp;number | No  | Yes | Color of the popup. To remove the background blur, set **backgroundBlurStyle** to **BlurStyle.NONE**.<br>Default value: [TRANSPARENT](ts-appendix-enums.md#color) plus[COMPONENT_ULTRA_THICK](ts-universal-attributes-background.md#blurstyle9)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | autoCancel<sup>11+</sup>              | boolean                                                      | No  | Yes | Whether the popup is automatically closed when an operation is performed on the page.<br>true: The popup is automatically closed. false: The popup is not automatically closed.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+<<<<<<< HEAD
 | width<sup>11+</sup>                   | [Dimension](ts-types.md#dimension10)                         | No  | Yes | Width of the bubble. If this parameter is not set or the value is invalid, the bubble width is automatically adjusted to adapt to the content width.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+=======
+| width<sup>11+</sup>                   | [Dimension](ts-types.md#dimension10)                         | No  | Yes | 气泡宽度，未设置或者异常值场景下，气泡自适应内容宽度。<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+>>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 | radius<sup>11+</sup>             | [Dimension](ts-types.md#dimension10)                  | No  | Yes | Rounded corner radius of the popup.<br>Default value: **20**<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                         |
 | shadow<sup>11+</sup>             | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10)    | No  | Yes | Popup shadow.<br>Default value: **ShadowStyle.OUTER_DEFAULT_MD**<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
 | backgroundBlurStyle<sup>11+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No| Yes| Background blur style of the popup.<br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -92,7 +96,11 @@ Provides the configuration options for the popup.
 | outlineLinearGradient<sup>20+</sup>| [PopupBorderLinearGradient](#popupborderlineargradient20)  | No  | Yes | Linear gradient color of the stroke outside the Popup component.<br>**NOTE**<br>1. If outlineLinearGradient is not set or is set to null or undefined, the stroke outside the Popup component does not have the linear gradient effect.<br>2. When outlineLinearGradient is set, the default value of direction is GradientDirection.Bottom.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | borderLinearGradient<sup>20+</sup>| [PopupBorderLinearGradient](#popupborderlineargradient20)  | No  | Yes | Linear gradient color of the stroke inside the Popup component.<br>**NOTE**<br>1. If borderLinearGradient is not set or is set to null or undefined, the stroke inside the Popup component does not have the linear gradient effect.<br>2. When borderLinearGradient is set, the default value of direction is GradientDirection.Bottom.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | avoidTarget<sup>20+</sup>          | [AvoidanceMode](ts-basic-components-select.md#avoidancemode19) | No  | Yes | Whether the Popup component covers the pointing component during avoidance.<br>Default value: **AvoidanceMode.COVER_TARGET**<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+<<<<<<< HEAD
 | placementOnTop<sup>(deprecated)</sup> | boolean                                                      | No  | Yes| Whether to display the popup above the component. The default value is **false**. If the value is true, the bubble is displayed above the bound component. If the value is false, the bubble is displayed below the bound component.<br>**NOTE**<br>This parameter is supported since API version 7 and deprecated since API version 10. You are advised to use **placement** instead.|
+=======
+| placementOnTop<sup>(deprecated)</sup> | boolean                                                      | No  | Yes| Whether to display the popup above the component. The default value is **false**.取值为true：气泡显示到绑定组件的上方，取值false：气泡显示到绑定组件的下方。<br>**NOTE**<br>This parameter is supported since API version 7 and deprecated since API version 10. You are advised to use **placement** instead.|
+>>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 ## PopupMessageOptions<sup>10+</sup>
 
@@ -105,7 +113,11 @@ Describes the popup message text style.
 | Name     | Type                                      | Read-Only| Optional| Description                                                        |
 | --------- | ------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | textColor | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Text color of the popup message.                                      |
+<<<<<<< HEAD
 | font      | [Font](ts-types.md#font)                   | No  | Yes  | Font settings of the popup message.<br>**NOTE**<br>1. Setting **family** is not supported.<br>2. The weight attribute in Font does not support the number type.|
+=======
+| font      | [Font](ts-types.md#font)                   | No  | Yes  | Font settings of the popup message.<br>**NOTE**<br>1. Setting **family** is not supported.<br>2. Font中的weight属性不支持传入number类型。 |
+>>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 ## DismissPopupAction<sup>12+</sup>
 
@@ -145,7 +157,11 @@ Provides information for displaying a custom popup.
 | builder                      | [CustomBuilder](ts-types.md#custombuilder8) | No  | No  | Popup builder.<br>**NOTE**<br>1. The **Popup** attribute is a universal attribute. A custom popup does not support display of another popup. The **position** attribute cannot be used for the first-layer container in the builder. If the **position** attribute is used, the popup will not be displayed.<br>2. If a custom component is used in the builder, the **aboutToAppear** and **aboutToDisappear** lifecycle callbacks of the custom component are irrelevant to the visibility of the popup. As such, the lifecycle of the custom component cannot be used to determine whether the popup is displayed or not.<br>3. The builder of this constructor can be defined only in UI components, for example, in the Builder function, method, or [build](ts-custom-component-lifecycle.md#build) method.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                             |
 | placement                    | [Placement](ts-appendix-enums.md#placement8) | No   | Yes  | Preferred position of the popup. If the set position is insufficient for holding the popup, it will be automatically adjusted.<br>Default value: **Placement.Bottom**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | popupColor                   | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;number | No   | Yes  | Color of the popup. To remove the background blur, set **backgroundBlurStyle** to **BlurStyle.NONE**.<br>The default value varies by API version.<br>API version 10: **'#4d4d4d'**<br>API version 11 and later: [TRANSPARENT](ts-appendix-enums.md#color) plus [COMPONENT_ULTRA_THICK](ts-universal-attributes-background.md#blurstyle9)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+<<<<<<< HEAD
 | autoCancel                   | boolean                                  | No   | Yes  | Whether the popup is automatically closed when an operation is performed on the page.<br>true: The popup is automatically closed. false: The popup is not automatically closed.<br>Default value: **true**.<br>**NOTE**<br>To make the bubble disappear when it is clicked, you need to place a layout component in the builder, place the advanced Popup component in the layout component, and then change the state variable show that controls the visibility to false in the onClick event of the layout component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+=======
+| autoCancel                   | boolean                                  | No   | Yes  | Whether the popup is automatically closed when an operation is performed on the page.<br>true: The popup is automatically closed. false: The popup is not automatically closed.<br>Default value: **true**.<br>**NOTE**<br>如果要实现点击气泡内消失需要在builder中先放一个布局组件，然后再将Popup高级组件放在布局组件里面，再在布局组件的onClick事件中修改控制显隐的状态变量show为false。<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+>>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 | onStateChange                | (event:&nbsp;{&nbsp;isVisible:&nbsp;boolean&nbsp;})&nbsp;=&gt;&nbsp;void | No   | Yes  | Callback for popup visibility state changes. The parameter indicates the visibility of the popup. It returns **true** when the popup transitions from closed to open, and **false** when the popup transitions from open to closed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                |
 | enableArrow                  | boolean                                  | No   | Yes  | Whether to display an arrow.<br>true: The arrow is displayed. false: The arrow is not displayed.<br>Since API version 9, if the position set for the popup is not large enough, the arrow will not be displayed. For example, if **placement** is set to **Left**, but the popup height (80 vp) is less than the sum of the arrow width (32 vp) and diameter of popup rounded corner (48 vp), the arrow will not be displayed.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | arrowOffset<sup>9+</sup>     | [Length](ts-types.md#length) | No   | Yes  | Offset of the popup arrow relative to the popup.<br>When the arrow is at the top or bottom of the popup: The value **0** indicates that the arrow is located on the leftmost, and any other value indicates the distance from the arrow to the leftmost; the arrow is centered by default.<br>When the arrow is on the left or right side of the popup: The value indicates the distance from the arrow to the top; the arrow is centered by default.<br>When the popup is displayed on either edge of the screen, it automatically adjusts horizontally. When the value is 0, the arrow always points to the bound component.<br>Unit: vp.<br>**NOTE**<br>1. If **arrowOffset** is not set, the distance between the popup arrow and the four corners must be no less than the corner radius.<br>2. If arrowPointPosition is set, arrowOffset does not take effect.<br>3. Percentage values are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -157,7 +173,11 @@ Provides information for displaying a custom popup.
 | mask<sup>10+</sup>           | boolean&nbsp;\|&nbsp;{ color : [ResourceColor](ts-types.md#resourcecolor) }| No   | Yes  | Whether to apply a mask to the popup. The value **true** means to apply a transparent mask to the popup, **false** means not to apply a mask to the popup, and a color value means to apply a mask in the corresponding color to the popup. Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | targetSpace<sup>10+</sup>    | [Length](ts-types.md#length)             | No   | Yes  | Spacing between the popup and the host node. Percentage values are not supported.<br>Default value: **8**.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                 |
 | offset<sup>10+</sup>         | [Position](ts-types.md#position)                            | No  | Yes | Offset of the popup relative to the display position specified by **placement**.<br>**NOTE**<br>Percentage values are not supported.<br>Default value: **{x:0, y:0}**<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+<<<<<<< HEAD
 | width<sup>11+</sup> | [Dimension](ts-types.md#dimension10) | No| Yes| Bubble width. If this attribute is not set or the value is invalid, the bubble width is automatically adjusted to adapt to the content width.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+=======
+| width<sup>11+</sup> | [Dimension](ts-types.md#dimension10) | No| Yes| 气泡宽度，未设置或者异常值场景下，气泡自适应内容宽度。<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+>>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 | radius<sup>11+</sup>             | [Dimension](ts-types.md#dimension10)                  | No  | Yes | Rounded corner radius of the popup.<br>Default value: **20**<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                         |
 | shadow<sup>11+</sup>             | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10)    | No  | Yes | Popup shadow.<br>Default value: **ShadowStyle.OUTER_DEFAULT_MD**<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
 | backgroundBlurStyle<sup>11+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No| Yes| Background blur style of the popup.<br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -366,7 +386,11 @@ struct PopupExample {
 
 ### Example 2: Setting the Popup Text Style
 
+<<<<<<< HEAD
 In this example, the messageOptions attribute in [PopupOptions](#popupoptions) is configured to display a bubble with a custom text style.
+=======
+该示例通过配置[PopupOptions](#popupoptions类型说明)中的messageOptions属性，实现了弹出自定义文本样式的气泡。
+>>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 ```ts
 // xxx.ets
@@ -413,7 +437,11 @@ struct PopupExample {
 
 ### Example 3: Setting the Popup Style
 
+<<<<<<< HEAD
 This example sets the arrowHeight, arrowWidth, radius, shadow, and popupColor attributes in [PopupOptions](#popupoptions) to implement the style of the bubble arrow and the bubble itself.
+=======
+该示例通过配置[PopupOptions](#popupoptions类型说明)中的arrowHeight、arrowWidth、radius、shadow和popupColor属性，实现了气泡箭头以及气泡本身的样式。
+>>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 ```ts
 // xxx.ets

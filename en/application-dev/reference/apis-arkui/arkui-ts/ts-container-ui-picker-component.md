@@ -61,7 +61,11 @@ Creates a UIPickerComponent container. The selected item is determined by the va
 | -------- | -------- | -------- | -------- |
 | options |  [UIPickerComponentOptions](#uipickercomponentoptions)| No| Parameters for configuring the UIPickerComponent container.|
 
+<<<<<<< HEAD
 ## UIPickerComponentOptions
+=======
+## UIPickerComponentOptions object description
+>>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 Parameters of the UIPickerComponent container.
 

@@ -345,7 +345,7 @@ Enumerates the border corner radius types.
 | [BorderRadiuses](ts-types.md#borderradiuses9)        | An object specifying the corner radius of a component's border.|
 | [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | An object specifying the localized corner radius of a component's border.|
 
-## MenuMaskType<sup>20+</sup>
+## MenuMaskType<sup>20+</sup> Type Description
 
 Sets the overlay style.
 
@@ -358,7 +358,7 @@ Sets the overlay style.
 | color | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes | Sets the overlay color.<br>Default value: $r('sys.color.ohos_id_color_mask_thin')                                      |
 | backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No  | Yes | Sets the blur material of the overlay.<br>Default value: BlurStyle.BACKGROUND_THIN                                      |
 
-## ModalMode<sup>20+</sup>
+## ModalMode<sup>20+</sup> Enum Description
 
 Modal mode of the sub-window menu.
 
@@ -372,7 +372,7 @@ Modal mode of the sub-window menu.
 | NONE  | 1   | Except the menu area, events can be passed in other areas, and lower-level controls can respond to events.|
 | TARGET_WINDOW | 2 | Events cannot be passed between the window of the app where the menu is located and the menu area, but can be passed in other areas.|
 
-## PreviewScaleMode<sup>20+</sup>
+## PreviewScaleMode<sup>20+</sup> Enum Description
 
 Zoom mode of the preview image.
 
@@ -386,7 +386,7 @@ Zoom mode of the preview image.
 | CONSTANT  | 1 | The preview image is not zoomed in or out, and the size remains unchanged. However, the preview image may still be compressed or cropped due to the safe area.|
 | MAINTAIN | 2 | The aspect ratio of the preview image is maintained when the preview image is zoomed in or out.|
 
-## AvailableLayoutArea<sup>20+</sup>
+## AvailableLayoutArea<sup>20+</sup> description
 
 Reference size of the available layout area when the preview image width and height are set to percentages.
 
@@ -398,7 +398,11 @@ Reference size of the available layout area when the preview image width and hei
 | ----- | -  | --------------------------------------|
 | SAFE_AREA  | 0  | The reference size of the available layout area is the window size minus the safe margins on the top, bottom, left, and right.|
 
+<<<<<<< HEAD
 ## MenuKeyboardAvoidMode<sup>23+</sup>
+=======
+## MenuKeyboardAvoidMode<sup>23+</sup> enumeration description
+>>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 Mode in which the menu avoids the soft keyboard.
 

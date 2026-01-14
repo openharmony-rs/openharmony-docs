@@ -12,7 +12,11 @@ In API version 21 and later, when the [supportSvg2](./ts-basic-components-image.
 
 - Advanced affine transformation support: configurable global pivot points, local rotation centers for **rotate** transformations, matrix transformation modes, invalid value detection and handling, affine transformations in clipping paths, and combined transformation scenarios.
 
+<<<<<<< HEAD
 - Extended parsing capabilities: [viewBox](./ts-image-svg2-capabilities.md#configurable-alignment-and-scaling-rules-for-viewbox) attributes allow users to customize alignment and scaling rules; parsing of clipping path units; parsing of gradient units; parsing of mask units and mask content units; parsing of pattern units and pattern content units; parsing of filter units and primitive units.
+=======
+- Extended parsing capabilities: [./ts-image-svg2-capabilities.md#viewbox](alignment and scaling rules are configurable) attributes allow users to customize alignment and scaling rules; parsing of clipping path units; parsing of gradient units; parsing of mask units and mask content units; parsing of pattern units and pattern content units; parsing of filter units and primitive units.
+>>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 - Enhanced display effects: (1) The opacity attribute of the **\<g>** (group) element takes effect for all nested child elements in the group. (2) The following features are enhanced: processing for the **clip-path** rule in **\<g>** tags, tiling effects and offset value processing for pattern elements, and translation and scaling effects for linear and radial gradients; (3) The default behavior for abnormal mask and filter parameters is updated.
 
