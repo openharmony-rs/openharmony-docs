@@ -274,7 +274,7 @@ AuthToken过期。
 
 **错误信息**
 
-Failed to reuse authtication result.
+Failed to reuse authentication result.
 
 **错误描述**
 

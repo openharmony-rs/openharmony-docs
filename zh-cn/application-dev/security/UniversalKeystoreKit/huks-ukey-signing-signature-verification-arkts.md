@@ -11,7 +11,7 @@
 
 - [密钥算法为RSA、摘要算法为SHA256、填充模式为PSS](#rsasha256pss)
 
-具体的场景介绍及支持的算法规格，请参考[签名/验签支持的算法](huks-ukey-signing-signature-verification-overview.md#规格)。
+具体的场景介绍及支持的算法规格，请参考[签名/验签介绍及算法规格](huks-ukey-signing-signature-verification-overview.md)。
 
 ## 开发步骤
 
@@ -49,7 +49,7 @@
  * 密钥算法为RSA，摘要算法为SHA256，填充模式为PSS
  */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let handle: number;
 let plaintext = '123456';
@@ -195,7 +195,14 @@ async function Verify(keyAlias: string, plaintext: string, signature: Uint8Array
 
 async function testSignVerify() {
   // 假设keyAlias是已获取的resourceId
-  let keyAlias = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\",\"bundleName\":\"com.example.cryptoapplication\",\"index\":{\"key\":\"testKey\"}}";
+  let keyAlias = JSON.stringify({
+    providerName: "testProviderName",
+    bundleName: "com.example.cryptoapplication",
+    abilityName: "CryptoExtension",
+    index: {
+      key: "testKey"
+    } as ESObject
+  });
   await Sign(keyAlias, plaintext);
   await Verify(keyAlias, plaintext, signature);
 }

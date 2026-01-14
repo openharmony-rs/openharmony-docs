@@ -98,7 +98,10 @@ import { fileShare } from '@kit.CoreFileKit';
 
 persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-异步方法对所选择的多个文件或目录URI持久化授权，以promise形式返回结果。该接口仅对具有该系统能力的设备开放（此接口不支持媒体类URI及远端URI的持久化）。
+异步方法对所选择的多个文件或目录URI持久化授权，以promise形式返回结果。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+> **说明：**
+>
+> 从API version 22开始，支持媒体类URI的持久化。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -170,7 +173,10 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
-异步方法对所选择的多个文件或目录uri取消持久化授权，以promise形式返回结果。该接口仅对具有该系统能力的设备开放（此接口不支持媒体类URI及远端URI的持久化）。
+异步方法对所选择的多个文件或目录uri取消持久化授权，以promise形式返回结果。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+> **说明：**
+>
+> 从API version 22开始，支持媒体类URI的持久化。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -241,7 +247,10 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
 activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-异步方法使能多个已经永久授权过的文件或目录，以promise形式返回结果。该接口仅对具有该系统能力的设备开放（此接口不支持媒体类URI及远端URI的持久化）。
+异步方法使能多个已经永久授权过的文件或目录，以promise形式返回结果。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+> **说明：**
+>
+> 从API version 22开始，支持媒体类URI的持久化。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -312,7 +321,10 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-异步方法取消使能授权过的多个文件或目录，以promise形式返回结果。该接口仅对具有该系统能力的设备开放（此接口不支持媒体类URI及远端URI的持久化）。
+异步方法取消使能授权过的多个文件或目录，以promise形式返回结果。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+> **说明：**
+>
+> 从API version 22开始，支持媒体类URI的持久化。
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 

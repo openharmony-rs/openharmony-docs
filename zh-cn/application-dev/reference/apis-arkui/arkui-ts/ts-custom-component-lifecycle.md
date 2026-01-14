@@ -490,12 +490,12 @@ ThemeControl.setDefaultTheme(BlueColorsTheme);
 @Component
 struct IndexComponent {
   @State textColor: ResourceColor = $r('sys.color.font_primary');
-  @State columBgColor: ResourceColor = $r('sys.color.background_primary');
+  @State columnBgColor: ResourceColor = $r('sys.color.background_primary');
 
-  // onWillApplyTheme中可获取当前组件上下文的Theme对象。此处在onWillApplyTheme中将状态变量textColor、columBgColor，赋值为当前使用的Theme对象（BlueColorsTheme）中的配色。
+  // onWillApplyTheme中可获取当前组件上下文的Theme对象。此处在onWillApplyTheme中将状态变量textColor、columnBgColor，赋值为当前使用的Theme对象（BlueColorsTheme）中的配色。
   onWillApplyTheme(theme: Theme) {
     this.textColor = theme.colors.fontPrimary;
-    this.columBgColor = theme.colors.backgroundPrimary;
+    this.columnBgColor = theme.colors.backgroundPrimary;
     console.info('IndexComponent onWillApplyTheme');
   }
 
@@ -524,7 +524,7 @@ struct IndexComponent {
       .width('100%')
       .height('25%')
       .borderRadius('10vp')
-      .backgroundColor(this.columBgColor)
+      .backgroundColor(this.columnBgColor)
     }
     .padding('16vp')
     .backgroundColor('#dcdcdc')
@@ -562,12 +562,12 @@ ThemeControl.setDefaultTheme(BlueColorsTheme);
 @ComponentV2
 struct IndexComponent {
   @Local textColor: ResourceColor = $r('sys.color.font_primary');
-  @Local columBgColor: ResourceColor = $r('sys.color.background_primary');
+  @Local columnBgColor: ResourceColor = $r('sys.color.background_primary');
 
-  // onWillApplyTheme中可获取当前组件上下文的Theme对象。此处在onWillApplyTheme中将状态变量textColor、columBgColor，赋值为当前使用的Theme对象（BlueColorsTheme）中的配色。
+  // onWillApplyTheme中可获取当前组件上下文的Theme对象。此处在onWillApplyTheme中将状态变量textColor、columnBgColor，赋值为当前使用的Theme对象（BlueColorsTheme）中的配色。
   onWillApplyTheme(theme: Theme) {
     this.textColor = theme.colors.fontPrimary;
-    this.columBgColor = theme.colors.backgroundPrimary;
+    this.columnBgColor = theme.colors.backgroundPrimary;
     console.info('IndexComponent onWillApplyTheme');
   }
 
@@ -596,7 +596,7 @@ struct IndexComponent {
       .width('100%')
       .height('25%')
       .borderRadius('10vp')
-      .backgroundColor(this.columBgColor)
+      .backgroundColor(this.columnBgColor)
     }
     .padding('16vp')
     .backgroundColor('#dcdcdc')

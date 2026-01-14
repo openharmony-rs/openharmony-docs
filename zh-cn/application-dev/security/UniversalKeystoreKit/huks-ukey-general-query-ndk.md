@@ -63,7 +63,8 @@ OH_Huks_Result InitExternalCryptoParamSet(
 static napi_value GetProperty(napi_env env, napi_callback_info info) 
 {
     /* 1.假设已经打开了resourceId */
-    const char *resourceIdStr = "testResourceId";
+    const char *resourceIdStr = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\","
+                              "\"bundleName\":\"com.example.cryptoapplication\",\"index\":{\"key\":\"testKey\"}}";
     const char *propertyIdStr = "SKF_GetDevInfo"; // 定义在GMT 0016-2023标准中的属性函数名称
     
     struct OH_Huks_Blob resourceId = {

@@ -135,6 +135,8 @@
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**设备行为差异：** 当该接口在无振动器件设备中被设置为振动模式时，将不会产生振动效果。
+
 | 名称                |  值    | 说明       |
 | ------------------- | ------ | ---------- |
 | RINGER_MODE_SILENT  | 0      | 静音模式。 |
@@ -543,7 +545,7 @@
 | 名称                   | 值 | 说明      |
 | :--------------------- |:--|:--------|
 | CONCURRENCY_DEFAULT | 0 | 默认使用系统策略。     |
-| CONCURRENCY_MIX_WITH_OTHERS | 1 | 和其他音频并发。     |
+| CONCURRENCY_MIX_WITH_OTHERS | 1 | 和其他音频并发，即混音。   |
 | CONCURRENCY_DUCK_OTHERS | 2 | 压低其他音频的音量。 |
 | CONCURRENCY_PAUSE_OTHERS | 3 | 暂停其他音频。 |
 
@@ -588,8 +590,10 @@
 | AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE               | 1      | 提示音频会话暂停，暂时失去音频焦点。当焦点再次可用时，会收到 AUDIO_SESSION_STATE_CHANGE_HINT_RESUME 事件。 |
 | AUDIO_SESSION_STATE_CHANGE_HINT_STOP                | 2      | 提示音频会话因焦点被抢占而停止，彻底失去音频焦点。 |
 | AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP                | 3      | 提示音频会话因长时间无业务而被系统停止，导致失去音频焦点。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_DUCK                | 4      | 提示音频会话躲避开始，降低音量播放。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK | 5      | 提示音频会话躲避结束，恢复音量播放。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_DUCK                | 4      | 提示音频会话躲避开始，降低音量播放。<br/>如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)，此时可以选择执行静音操作。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK | 5      | 提示音频会话躲避结束，恢复音量播放。<br/>如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)，此时可取消静音。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION<sup>23+</sup>    | 6      |  静音播放建议。<br/>当其他应用程序开始播放不可混音的音频时，应用程序可以自行决定是否静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。|
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION<sup>23+</sup>  | 7      | 取消静音播放建议。<br/>当其他应用程序不可混音的音频已结束，该应用程序可自行决定是否取消静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AudioDataCallbackResult<sup>12+</sup>
 

@@ -96,7 +96,7 @@ environment(uri: ResourceStr)
 
 customRender(uri: ResourceStr, selfRenderUpdate: boolean)
 
-设置三维场景渲染的渲染管道。管线配置及自渲染属性在控件创建后不支持动态修改。
+设置三维场景渲染的渲染管线。管线配置及自渲染属性在控件创建后不支持动态修改。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
