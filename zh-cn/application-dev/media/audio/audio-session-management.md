@@ -131,10 +131,10 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
   let isActivated = audioSessionManager.isAudioSessionActivated();
   // ...
   audioSessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio
-    .AudioSessionDeactivatedEvent) => {
-      console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
-      if (globalCallbackUpdate) {
-        globalCallbackUpdate(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason}`);
+  .AudioSessionDeactivatedEvent) => {
+    console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+    if (globalCallbackUpdate) {
+      globalCallbackUpdate(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason}`);
     }
   });
   // ...
@@ -221,6 +221,12 @@ let audioSessionStateChangedCallback = (audioSessionStateChangedEvent: audio.Aud
     case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
       // 此分支表示系统已将音频音量恢复正常。
       break;
+    case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
+      // 此分支表示其他应用开始播放非混音音频，系统可自行决定是否静音。
+      break;
+    case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION:
+      // 此分支表示其他应用的非混音音频播放结束，系统可自行决定是否取消静音。
+      break;
     default:
       break;
   }
@@ -257,8 +263,8 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
 
   audioSessionManager.on('audioSessionStateChanged', audioSessionStateChangedCallback);
   audioSessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio
-    .AudioSessionDeactivatedEvent) => {
-      console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+  .AudioSessionDeactivatedEvent) => {
+    console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
     if (globalCallbackUpdate) {
       globalCallbackUpdate(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason}`);
     }
