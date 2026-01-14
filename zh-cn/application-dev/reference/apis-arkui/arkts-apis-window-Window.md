@@ -10376,6 +10376,8 @@ setSubWindowZLevel(zLevel: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备中返回801错误码。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **参数：**
@@ -10443,6 +10445,8 @@ getSubWindowZLevel(): number
 获取当前子窗口层级级别。不支持主窗、系统窗调用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备中返回801错误码。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
