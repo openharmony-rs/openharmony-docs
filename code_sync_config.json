@@ -19169,7 +19169,7 @@
 				"functions":[
 					{
 						"end_line":70,
-						"name":"widget_updt_router_card",
+						"name":"widget_update_router_card",
 						"start_line":16
 					}
 				]
@@ -22893,7 +22893,7 @@
 				"functions":[
 					{
 						"end_line":85,
-						"name":"set_form_next_refreshime",
+						"name":"set_form_next_refreshtime",
 						"start_line":16
 					}
 				]
