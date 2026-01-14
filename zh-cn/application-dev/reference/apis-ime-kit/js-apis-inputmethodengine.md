@@ -359,7 +359,7 @@ try {
     let textInputClient = textClient;
   });
 } catch(err) {
-  console.error(`Failed to inputStart: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to inputStart: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -387,7 +387,7 @@ try {
     console.info('delete inputStart notification.');
   });
 } catch(err) {
-  console.error(`Failed to inputStart: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to inputStart: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -417,7 +417,7 @@ try {
     console.info('inputMethodEngine keyboardHide.');
   });
 } catch(err) {
-  console.error(`Failed to InputMethodEngine: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to InputMethodEngine: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -478,7 +478,7 @@ try {
     let inputClient = client;
   });
 } catch(err) {
-  console.error(`Failed to InputMethodAbility: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to InputMethodAbility: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -538,7 +538,7 @@ try {
     console.info('inputMethodAbility inputStop');
   });
 } catch(err) {
-  console.error(`Failed to inputStop: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to inputStop: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -571,7 +571,7 @@ try {
     console.info('inputMethodAbility delete inputStop notification.');
   });
 } catch(err) {
-  console.error(`Failed to inputStop: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to inputStop: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -604,7 +604,7 @@ try {
     console.info('inputMethodAbility setCallingWindow');
   });
 } catch(err) {
-  console.error(`Failed to setCallingWindow: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to setCallingWindow: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -637,7 +637,7 @@ try {
     console.info('inputMethodAbility delete setCallingWindow notification.');
   });
 } catch(err) {
-  console.error(`Failed to setCallingWindow: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to setCallingWindow: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -673,7 +673,7 @@ try {
     console.info('InputMethodAbility keyboardHide.');
   });
 } catch(err) {
-  console.error(`Failed to keyboard: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to keyboard: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -709,7 +709,7 @@ try {
     console.info('InputMethodAbility delete keyboardHide notification.');
   });
 } catch(err) {
-  console.error(`Failed to keyboard: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to keyboard: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -744,7 +744,7 @@ try {
     console.info('InputMethodAbility setSubtype.');
   });
 } catch(err) {
-  console.error(`Failed to setSubtype: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to setSubtype: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -777,7 +777,7 @@ try {
     console.info('InputMethodAbility delete setSubtype notification.');
   });
 } catch(err) {
-    console.error(`Failed to setSubtype: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to setSubtype: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -810,7 +810,7 @@ try {
     console.info(`InputMethodAbility securityModeChange, security is ${securityMode}`);
   });
 } catch(err) {
-  console.error(`Failed to on securityModeChange: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to on securityModeChange: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -846,7 +846,7 @@ inputMethodAbility.on('securityModeChange', securityChangeCallback);
 try {
   inputMethodAbility.off('securityModeChange', securityChangeCallback);
 } catch(err) {
-  console.error(`Failed to off securityModeChange: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to off securityModeChange: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -1134,7 +1134,7 @@ try {
   let security = inputMethodEngine.getInputMethodAbility().getSecurityMode();
   console.error(`getSecurityMode, securityMode is : ${security}`);
 } catch (err) {
-  console.error(`Failed to getSecurityMode: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getSecurityMode: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -1178,13 +1178,13 @@ try {
   inputMethodEngine.getInputMethodAbility()
     .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
       if (err) {
-        console.error(`Failed to createPanel: code: ${err.code} ,message: ${err.message}}`);
+        console.error(`Failed to createPanel: code: ${err.code} ,message: ${err.message}`);
         return;
       }
       console.info('Succeed in creating panel.');
     })
 } catch (err) {
-  console.error(`Failed to createPanel: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to createPanel: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -1228,7 +1228,7 @@ inputMethodEngine.getInputMethodAbility().createPanel(this.context, panelInfo)
   .then((panel: inputMethodEngine.Panel) => {
     console.info('Succeed in creating panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to create panel: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to create panel: code: ${err.code} ,message: ${err.message}`);
   })
 ```
 
@@ -1273,27 +1273,27 @@ try {
   inputMethodEngine.getInputMethodAbility()
     .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
       if (err) {
-        console.error(`Failed to create panel: code: ${err.code} ,message: ${err.message}}`);
+        console.error(`Failed to create panel: code: ${err.code} ,message: ${err.message}`);
         return;
       }
       inputPanel = panel;
       console.info('Succeed in creating panel.');
     })
 } catch (err) {
-  console.error(`Failed to create panel: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to create panel: code: ${err.code} ,message: ${err.message}`);
 }
 try {
   if (inputPanel) {
     inputMethodEngine.getInputMethodAbility().destroyPanel(inputPanel, (err: BusinessError) => {
       if (err !== undefined) {
-        console.error(`Failed to destroy panel: code: ${err.code} ,message: ${err.message}}`);
+        console.error(`Failed to destroy panel: code: ${err.code} ,message: ${err.message}`);
         return;
       }
       console.info('Succeed in destroying panel.');
     })
   }
 } catch (err) {
-  console.error(`Failed to destroy panel: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to destroy panel: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -1342,14 +1342,14 @@ try {
   inputMethodEngine.getInputMethodAbility()
     .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
       if (err) {
-        console.error(`Failed to create panel: code: ${err.code} ,message: ${err.message}}`);
+        console.error(`Failed to create panel: code: ${err.code} ,message: ${err.message}`);
         return;
       }
       inputPanel = panel;
       console.info('Succeed in creating panel.');
     })
 } catch (err) {
-  console.error(`Failed to create panel: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to create panel: code: ${err.code} ,message: ${err.message}`);
 }
 
 try {
@@ -1357,11 +1357,11 @@ try {
     inputMethodEngine.getInputMethodAbility().destroyPanel(inputPanel).then(() => {
       console.info('Succeed in destroying panel.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to destroy panel: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to destroy panel: code: ${err.code} ,message: ${err.message}`);
     });
   }
 } catch (err) {
-  console.error(`Failed to destroy panel: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to destroy panel: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -2124,7 +2124,7 @@ try {
     return true;
   });
 } catch(err) {
-  console.error(`Failed to KeyboardDelegate: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to KeyboardDelegate: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -2162,7 +2162,7 @@ try {
     return true;
   });
 } catch(err) {
-  console.error(`Failed to keyevent: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to keyevent: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -2201,7 +2201,7 @@ try {
     return true;
   });
 } catch(err) {
-  console.error(`Failed to inputMethodEngine: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to inputMethodEngine: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -2238,7 +2238,7 @@ try {
   });
   inputMethodEngine.getKeyboardDelegate().off('keyEvent');
 } catch(err) {
-  console.error(`Failed to keyEvent: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to keyEvent: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -2273,7 +2273,7 @@ try {
     console.info('inputMethodEngine cursorContextChange height:' + height);
   });
 } catch(err) {
-  console.error(`Failed to cursorContextChange: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to cursorContextChange: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -2307,7 +2307,7 @@ try {
     console.info('delete cursorContextChange notification.');
   });
 } catch(err) {
-  console.error(`Failed to cursorContextChange: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to cursorContextChange: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 ### on('selectionChange')
@@ -2343,7 +2343,7 @@ try {
     console.info('inputMethodEngine beforeEach selectionChange newEnd:' + newEnd);
     });
 } catch(err) {
-  console.error(`Failed to selectionChange: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to selectionChange: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -2377,7 +2377,7 @@ try {
     console.info('delete selectionChange notification.');
     });
 } catch(err) {
-  console.error(`Failed to selectionChange: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to selectionChange: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -2411,7 +2411,7 @@ try {
     console.info('inputMethodEngine textChange. text:' + text);
   });
 } catch(err) {
-  console.error(`Failed to textChange: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to textChange: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -2444,7 +2444,7 @@ try {
     console.info('delete textChange notification. text:' + text);
   });
 } catch(err) {
-  console.error(`Failed to textChange: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to textChange: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -2477,7 +2477,7 @@ try {
   console.info(`Succeeded in receiving attribute of editor, inputPattern = ${attr.inputPattern}, enterKeyType = ${attr.enterKeyType}`);
   });
 } catch(err) {
-  console.error(`Failed to textChange: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to textChange: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3070,13 +3070,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   panel.setUiContent('pages/page2/page2', (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     console.info('Succeeded in setting the content.');
   });
 } catch (err) {
-  console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3121,10 +3121,10 @@ try {
   panel.setUiContent('pages/page2/page2').then(() => {
     console.info('Succeeded in setting the content.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3166,13 +3166,13 @@ storage.setOrCreate('storageSimpleProp',121);
 try {
   panel.setUiContent('pages/page2/page2', storage, (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     console.info('Succeeded in setting the content.');
   });
 } catch (err) {
-  console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3220,10 +3220,10 @@ try {
   panel.setUiContent('pages/page2/page2', storage).then(() => {
     console.info('Succeeded in setting the content.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3272,13 +3272,13 @@ let height:number = 1000;
 try {
   panel.resize(width, height, (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     console.info('Succeeded in changing the panel size.');
   });
 } catch (err) {
-  console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3291,13 +3291,13 @@ let height:long = 1000;
 try {
   panel.resize(width, height, (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     console.info('Succeeded in changing the panel size.');
   });
 } catch (err) {
-  console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3352,10 +3352,10 @@ try {
   panel.resize(width, height).then(() => {
     console.info('Succeeded in changing the panel size.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}`);
 }
 
 ```
@@ -3370,10 +3370,10 @@ try {
   panel.resize(width, height).then(() => {
     console.info('Succeeded in changing the panel size.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to resize panel: code: ${err.code} ,message: ${err.message}`);
 }
 
 ```
@@ -3416,13 +3416,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   panel.moveTo(300, 300, (err: BusinessError) =>{
     if (err) {
-      console.error(`Failed to move panel: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to move panel: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     console.info('Succeeded in moving the panel.');
   });
 } catch (err) {
-  console.error(`Failed to move panel: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to move panel: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3470,10 +3470,10 @@ try {
   panel.moveTo(300, 300).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to move panel: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to move panel: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3508,7 +3508,7 @@ try {
   panel.startMoving();
   console.info('Succeeded in moving the panel.');
 } catch (err) {
-  console.error(`Failed to move panel: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to move panel: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3551,10 +3551,10 @@ try {
   panel.getDisplayId().then((result: number) => {
     console.info('get displayId:' + result);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get displayId: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to get displayId: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to get displayId: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to get displayId: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3583,7 +3583,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 panel.show((err: BusinessError) => {
   if (err) {
-    console.error(`Failed to show panel: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to show panel: code: ${err.code} ,message: ${err.message}`);
     return;
   }
   console.info('Succeeded in showing the panel.');
@@ -3616,7 +3616,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 panel.show().then(() => {
   console.info('Succeeded in showing the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to show panel: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to show panel: code: ${err.code} ,message: ${err.message}`);
 });
 ```
 
@@ -3645,7 +3645,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 panel.hide((err: BusinessError) => {
   if (err) {
-    console.error(`Failed to hide panel: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to hide panel: code: ${err.code} ,message: ${err.message}`);
     return;
   }
   console.info('Succeeded in hiding the panel.');
@@ -3678,7 +3678,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 panel.hide().then(() => {
   console.info('Succeeded in hiding the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to hide panel: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to hide panel: code: ${err.code} ,message: ${err.message}`);
 });
 ```
 
@@ -3723,7 +3723,7 @@ try {
   };
   panel.adjustPanelRect(panelFlag, panelRect);
 } catch(err) {
-  console.error(`Failed to adjustPanelRect: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to adjustPanelRect: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3778,7 +3778,7 @@ try {
   };
   panel.adjustPanelRect(panelFlag, panelRect);
 } catch(err) {
-  console.error(`Failed to adjustPanelRect: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to adjustPanelRect: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3826,7 +3826,7 @@ try {
   let inputRegion: Array<window.Rect> = [{left:300, top:650, width:2000, height:500}];
   panel.updateRegion(inputRegion);
 } catch(err) {
-  console.error(`Failed to updateRegion: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to updateRegion: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3859,7 +3859,7 @@ try {
     console.info('Panel is showing.');
   });
 } catch(err) {
-  console.error(`Failed to show: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to show: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3892,7 +3892,7 @@ try {
     console.info('Panel is hiding.');
   });
 } catch(err) {
-  console.error(`Failed to hide: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to hide: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3933,14 +3933,14 @@ try {
     console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
   });
 } catch(err) {
-  console.error(`Failed to subscribe sizeChange: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to subscribe sizeChange: code: ${err.code} ,message: ${err.message}`);
 }
 try {
   panel.on('sizeChange', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
     console.info(`panel size changed, windowSize: ${windowSize}, keyboardArea: ${keyboardArea}`);
   });
 } catch(err) {
-  console.error(`Failed to subscribe sizeChange: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to subscribe sizeChange: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -3979,7 +3979,7 @@ off(type: 'show', callback?: () => void): void
 try {
   panel.off('show');
 } catch(err) {
-  console.error(`Failed to show: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to show: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -4018,7 +4018,7 @@ off(type: 'hide', callback?: () => void): void
 try {
   panel.off('hide');
 } catch(err) {
-  console.error(`Failed to hide: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to hide: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -4059,7 +4059,7 @@ try {
     console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
   });
 } catch(err) {
-  console.error(`Failed to subscribe sizeChange: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to subscribe sizeChange: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -4096,7 +4096,7 @@ try {
   let panelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
   panel.changeFlag(panelFlag);
 } catch(err) {
-  console.error(`Failed to panelFlag: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to panelFlag: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -4136,7 +4136,7 @@ try {
   let isPrivacyMode = true;
   panel.setPrivacyMode(isPrivacyMode);
 } catch(err) {
-  console.error(`Failed to set privacy mode: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to set privacy mode: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -4174,7 +4174,7 @@ setImmersiveMode(mode: ImmersiveMode): void
 try {
   panel.setImmersiveMode(inputMethodEngine.ImmersiveMode.LIGHT_IMMERSIVE);
 } catch (err) {
-  console.error(`Failed to setImmersiveMode: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to setImmersiveMode: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -4198,7 +4198,7 @@ getImmersiveMode(): ImmersiveMode
 try {
   let mode = panel.getImmersiveMode();
 } catch (err) {
-  console.error(`Failed to getImmersiveMode: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getImmersiveMode: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -4616,7 +4616,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 keyboardController.hideKeyboard((err: BusinessError) => {
   if (err) {
-    console.error(`Failed to hideKeyboard: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to hideKeyboard: code: ${err.code} ,message: ${err.message}`);
     return;
   }
   console.info('Succeeded in hiding keyboard.');
@@ -4653,7 +4653,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 keyboardController.hideKeyboard().then(() => {
   console.info('Succeeded in hiding keyboard.');
 }).catch((err: BusinessError) => {
-  console.info(`Failed to hideKeyboard: code: ${err.code} ,message: ${err.message}}`);
+  console.info(`Failed to hideKeyboard: code: ${err.code} ,message: ${err.message}`);
 });
 ```
 
@@ -4886,11 +4886,11 @@ try {
         }
         inputClient.recvMessage(messageHandler);
       } catch(err) {
-        console.error(`Failed to recvMessage: code: ${err.code} ,message: ${err.message}}`);
+        console.error(`Failed to recvMessage: code: ${err.code} ,message: ${err.message}`);
       }
   });
 } catch(err) {
-  console.error(`Failed to InputMethodAbility: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to InputMethodAbility: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -4933,11 +4933,11 @@ try {
         }
         inputClient.recvMessage(messageHandler);
       } catch(err) {
-        console.error(`Failed to recvMessage: code: ${err.code} ,message: ${err.message}}`);
+        console.error(`Failed to recvMessage: code: ${err.code} ,message: ${err.message}`);
       }
   });
 } catch(err) {
-  console.error(`Failed to InputMethodAbility: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to InputMethodAbility: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -4985,7 +4985,7 @@ let action:number = 1;
 try {
   inputClient.sendKeyFunction(action, (err: BusinessError, result: boolean) => {
     if (err) {
-      console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     if (result) {
@@ -4995,7 +4995,7 @@ try {
     }
   });
 } catch (err) {
-  console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5007,7 +5007,7 @@ let action:long = 1;
 try {
   inputClient.sendKeyFunction(action, (err: BusinessError, result: boolean) => {
     if (err) {
-      console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     if (result) {
@@ -5017,7 +5017,7 @@ try {
     }
   });
 } catch (err) {
-  console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5071,10 +5071,10 @@ try {
       console.error('Failed to sendKeyFunction.');
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5091,10 +5091,10 @@ try {
       console.error('Failed to sendKeyFunction.');
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5139,13 +5139,13 @@ let length:number = 1;
 try {
   inputClient.getForward(length, (err: BusinessError, text: string) => {
     if (err) {
-      console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting forward, text: ' + text);
   });
 } catch (err) {
-  console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5157,13 +5157,13 @@ let length:int = 1;
 try {
   inputClient.getForward(length, (err: BusinessError, text: string) => {
     if (err) {
-      console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting forward, text: ' + text);
   });
 } catch (err) {
-  console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5214,10 +5214,10 @@ try {
   inputClient.getForward(length).then((text: string) => {
     console.info('Succeeded in getting forward, text: ' + text);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5230,10 +5230,10 @@ try {
   inputClient.getForward(length).then((text: string) => {
     console.info('Succeeded in getting forward, text: ' + text);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5281,7 +5281,7 @@ try {
   let text: string = inputClient.getForwardSync(length);
   console.info(`Succeeded in getting forward, text: ${text}`);
 } catch (err) {
-  console.error(`Failed to getForwardSync: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getForwardSync: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5326,13 +5326,13 @@ let length:number = 1;
 try {
   inputClient.getBackward(length, (err: BusinessError, text: string) => {
     if (err) {
-      console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting backward, text: ' + text);
   });
 } catch (err) {
-  console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5344,13 +5344,13 @@ let length:int = 1;
 try {
   inputClient.getBackward(length, (err: BusinessError, text: string) => {
     if (err) {
-      console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting backward, text: ' + text);
   });
 } catch (err) {
-  console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5401,10 +5401,10 @@ try {
   inputClient.getBackward(length).then((text: string) => {
     console.info('Succeeded in getting backward, text: ' + text);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5417,10 +5417,10 @@ try {
   inputClient.getBackward(length).then((text: string) => {
     console.info('Succeeded in getting backward, text: ' + text);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5469,7 +5469,7 @@ try {
   let text: string = inputClient.getBackwardSync(length);
   console.info(`Succeeded in getting backward, text: ${text}`);
 } catch (err) {
-  console.error(`Failed to getBackwardSync: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getBackwardSync: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5480,7 +5480,7 @@ try {
   let text: string = inputClient.getBackwardSync(length);
   console.info(`Succeeded in getting backward, text: ${text}`);
 } catch (err) {
-  console.error(`Failed to getBackwardSync: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getBackwardSync: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5526,7 +5526,7 @@ let length = 1;
 try {
   inputClient.deleteForward(length, (err: BusinessError, result: boolean) => {
     if (err) {
-      console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     if (result) {
@@ -5536,7 +5536,7 @@ try {
     }
   });
 } catch (err) {
-  console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5548,7 +5548,7 @@ let length:int = 1;
 try {
   inputClient.deleteForward(length, (err: BusinessError, result: boolean) => {
     if (err) {
-      console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     if (result) {
@@ -5558,7 +5558,7 @@ try {
     }
   });
 } catch (err) {
-  console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5613,10 +5613,10 @@ try {
       console.error('Failed to delete Forward.');
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5633,10 +5633,10 @@ try {
       console.error('Failed to delete Forward.');
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -5735,7 +5735,7 @@ let length:number = 1;
 try {
   inputClient.deleteBackward(length, (err: BusinessError, result: boolean) => {
     if (err) {
-      console.error(`Failed to deleteBackward: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to deleteBackward: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     if (result) {
@@ -5757,7 +5757,7 @@ let length:number = 1;
 try {
   inputClient.deleteBackward(length, (err: BusinessError, result: boolean) => {
     if (err) {
-      console.error(`Failed to deleteBackward: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to deleteBackward: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     if (result) {
@@ -5820,7 +5820,7 @@ inputClient.deleteBackward(length).then((result: boolean) => {
     console.error('Failed to deleteBackward.');
   }
 }).catch((err: BusinessError) => {
-  console.error(`Failed to deleteBackward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to deleteBackward: code: ${err.code} ,message: ${err.message}`);
 });
 ```
 
@@ -5902,7 +5902,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 inputClient.insertText('test', (err: BusinessError, result: boolean) => {
   if (err) {
-    console.error(`Failed to insertText: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to insertText: code: ${err.code} ,message: ${err.message}`);
     return;
   }
   if (result) {
@@ -5960,10 +5960,10 @@ try {
       console.error('Failed to insertText.');
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to insertText: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to insertText: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to insertText: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to insertText: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6002,7 +6002,7 @@ try {
   inputClient.insertTextSync('test');
   console.info('Succeeded in inserting text.');
 } catch (err) {
-  console.error(`Failed to insertTextSync: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to insertTextSync: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6041,7 +6041,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 inputClient.getEditorAttribute((err: BusinessError, editorAttribute: inputMethodEngine.EditorAttribute) => {
   if (err) {
-    console.error(`Failed to getEditorAttribute: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to getEditorAttribute: code: ${err.code} ,message: ${err.message}`);
     return;
   }
   console.info(`editorAttribute.inputPattern:  ${editorAttribute.inputPattern}`);
@@ -6087,10 +6087,10 @@ try {
     console.info(`editorAttribute.inputPattern:  ${editorAttribute.inputPattern}`);
     console.info(`editorAttribute.enterKeyType:  ${editorAttribute.enterKeyType}`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to getEditorAttribute: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to getEditorAttribute: code: ${err.code} ,message: ${err.message}`);
   });
 } catch(err) {
-  console.error(`Failed to getEditorAttribute: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getEditorAttribute: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6130,7 +6130,7 @@ try {
   console.info(`editorAttribute.inputPattern:  ${editorAttribute.inputPattern}`);
   console.info(`editorAttribute.enterKeyType:  ${editorAttribute.enterKeyType}`);
 } catch (err) {
-  console.error(`Failed to getEditorAttributeSync: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getEditorAttributeSync: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6172,13 +6172,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   inputClient.moveCursor(inputMethodEngine.Direction.CURSOR_UP, (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to moveCursor: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to moveCursor: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     console.info('Succeeded in moving cursor.');
   });
 } catch (err) {
-  console.error(`Failed to moveCursor: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to moveCursor: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6226,10 +6226,10 @@ try {
   inputClient.moveCursor(inputMethodEngine.Direction.CURSOR_UP).then(() => {
     console.info('Succeeded in moving cursor.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to moveCursor: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to moveCursor: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to moveCursor: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to moveCursor: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6269,7 +6269,7 @@ try {
   inputClient.moveCursorSync(inputMethodEngine.Direction.CURSOR_UP);
   console.info('Succeeded in moving cursor.');
 } catch (err) {
-  console.error(`Failed to moveCursorSync: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to moveCursorSync: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6310,13 +6310,13 @@ try {
   let range: inputMethodEngine.Range = { start: 0, end: 1 };
   inputClient.selectByRange(range, (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to selectByRange: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to selectByRange: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     console.info('Succeeded in selecting by range.');
   });
 } catch (err) {
-  console.error(`Failed to selectByRange: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to selectByRange: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6363,10 +6363,10 @@ try {
   inputClient.selectByRange(range).then(() => {
     console.info('Succeeded in selecting by range.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to selectByRange: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to selectByRange: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to selectByRange: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to selectByRange: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6405,7 +6405,7 @@ try {
   inputClient.selectByRangeSync(range);
   console.info('Succeeded in selecting by range.');
 } catch (err) {
-  console.error(`Failed to selectByRangeSync: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to selectByRangeSync: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6446,13 +6446,13 @@ try {
   let movement: inputMethodEngine.Movement = { direction: 1 };
   inputClient.selectByMovement(movement, (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to selectByMovement: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to selectByMovement: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     console.info('Succeeded in selecting by movement.');
   });
 } catch (err) {
-  console.error(`Failed to selectByMovement: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to selectByMovement: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6499,10 +6499,10 @@ try {
   inputClient.selectByMovement(movement).then(() => {
     console.info('Succeeded in selecting by movement.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to selectByMovement: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to selectByMovement: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to selectByMovement: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to selectByMovement: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6537,7 +6537,7 @@ try {
   inputClient.selectByMovementSync(movement);
   console.info('Succeeded in selecting by movement.');
 } catch (err) {
-  console.error(`Failed to selectByMovement: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to selectByMovement: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6579,7 +6579,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 inputClient.getTextIndexAtCursor((err: BusinessError, index: number) => {
   if (err) {
-    console.error(`Failed to getTextIndexAtCursor: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to getTextIndexAtCursor: code: ${err.code} ,message: ${err.message}`);
     return;
   }
   console.info('Succeeded in getTextIndexAtCursor: ' + index);
@@ -6593,7 +6593,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 inputClient.getTextIndexAtCursor((err: BusinessError, index: int) => {
   if (err) {
-    console.error(`Failed to getTextIndexAtCursor: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to getTextIndexAtCursor: code: ${err.code} ,message: ${err.message}`);
     return;
   }
   console.info('Succeeded in getTextIndexAtCursor: ' + index);
@@ -6639,7 +6639,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 inputClient.getTextIndexAtCursor().then((index: number) => {
   console.info('Succeeded in getTextIndexAtCursor: ' + index);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to getTextIndexAtCursor: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getTextIndexAtCursor: code: ${err.code} ,message: ${err.message}`);
 });
 ```
 
@@ -6651,7 +6651,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 inputClient.getTextIndexAtCursor().then((index: int) => {
   console.info('Succeeded in getTextIndexAtCursor: ' + index);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to getTextIndexAtCursor: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getTextIndexAtCursor: code: ${err.code} ,message: ${err.message}`);
 });
 ```
 
@@ -6693,7 +6693,7 @@ try{
   let index: number = inputClient.getTextIndexAtCursorSync();
   console.info(`Succeeded in getTextIndexAtCursorSync, index: ${index}`);
 } catch (err) {
-  console.error(`Failed to getTextIndexAtCursorSync: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getTextIndexAtCursorSync: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6704,7 +6704,7 @@ try{
   let index: int = inputClient.getTextIndexAtCursorSync();
   console.info(`Succeeded in getTextIndexAtCursorSync, index: ${index}`);
 } catch (err) {
-  console.error(`Failed to getTextIndexAtCursorSync: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getTextIndexAtCursorSync: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6749,13 +6749,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY, (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to sendExtendAction: code: ${err.code} ,message: ${err.message}}`);
+      console.error(`Failed to sendExtendAction: code: ${err.code} ,message: ${err.message}`);
       return;
     }
     console.info('Succeeded in sending extend action.');
   });
 } catch(err) {
-  console.error(`Failed to sendExtendAction: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to sendExtendAction: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6806,10 +6806,10 @@ try {
   inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY).then(() => {
     console.info('Succeeded in sending extend action.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to sendExtendAction: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to sendExtendAction: code: ${err.code} ,message: ${err.message}`);
   });
 } catch(err) {
-  console.error(`Failed to sendExtendAction: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to sendExtendAction: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6947,10 +6947,10 @@ try {
     console.info(`windowInfo.rect: ${windowInfo.rect}`);
     console.info('windowInfo.status: ' + windowInfo.status);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to getCallingWindowInfo: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to getCallingWindowInfo: code: ${err.code} ,message: ${err.message}`);
   });
 } catch(err) {
-  console.error(`Failed to getCallingWindowInfo: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getCallingWindowInfo: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -6999,10 +6999,10 @@ try {
   inputClient.setPreviewText('test', range).then(() => {
     console.info('Succeeded in setting preview text.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to setPreviewText: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to setPreviewText: code: ${err.code} ,message: ${err.message}`);
   });
 } catch(err) {
-  console.error(`Failed to setPreviewText: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to setPreviewText: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -7043,7 +7043,7 @@ try {
   inputClient.setPreviewTextSync('test', range);
   console.info('Succeeded in setting preview text with synchronized method.');
 } catch (err) {
-  console.error(`Failed to setPreviewTextSync: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to setPreviewTextSync: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -7087,10 +7087,10 @@ try {
   inputClient.finishTextPreview().then(() => {
     console.info('Succeeded in finishing text preview.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to finishTextPreview: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to finishTextPreview: code: ${err.code} ,message: ${err.message}`);
   });
 } catch(err) {
-  console.error(`Failed to finishTextPreview: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to finishTextPreview: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -7184,7 +7184,7 @@ let msgParam: ArrayBuffer = new ArrayBuffer(128);
 inputClient.sendMessage(msgId, msgParam).then(() => {
   console.info('Succeeded send message.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to send message: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to send message: code: ${err.code} ,message: ${err.message}`);
 });
 ```
 
@@ -7249,11 +7249,11 @@ try {
         }
         inputClient.recvMessage(messageHandler);
       } catch(err) {
-        console.error(`Failed to recvMessage: code: ${err.code} ,message: ${err.message}}`);
+        console.error(`Failed to recvMessage: code: ${err.code} ,message: ${err.message}`);
       }
   });
 } catch(err) {
-  console.error(`Failed to InputMethodAbility: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to InputMethodAbility: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -7321,7 +7321,7 @@ try {
   let attachOptions = inputClient.getAttachOptions();
   console.info(`Succeeded in getting AttachOptions, AttachOptions is ${attachOptions}`);
 } catch (err) {
-  console.error(`Failed to get AttachOptions: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to get AttachOptions: code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -7409,7 +7409,7 @@ try {
   inputClient.off('attachOptionsDidChange', attachOptionsDidChangeCallback);
   console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 } catch(err) {
-  console.error(`Failed to operate on attachOptionsDidChange (subscribe/off): code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to operate on attachOptionsDidChange (subscribe/off): code: ${err.code} ,message: ${err.message}`);
 }
 ```
 
@@ -7777,7 +7777,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let length = 1;
 textInputClient.getForward(length, (err: BusinessError, text: string) => {
   if (err) {
-    console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
     return;
   }
   console.info('Succeeded in getting forward, text: ' + text);
@@ -7821,7 +7821,7 @@ let length = 1;
 textInputClient.getForward(length).then((text: string) => {
   console.info('Succeeded in getting forward, text: ' + text);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
 });
 ```
 
@@ -7856,7 +7856,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let length = 1;
 textInputClient.getBackward(length, (err: BusinessError, text: string) => {
   if (err) {
-    console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
     return;
   }
   console.info('Succeeded in getting borward, text: ' + text);
@@ -7900,7 +7900,7 @@ let length = 1;
 textInputClient.getBackward(length).then((text: string) => {
   console.info('Succeeded in getting backward: ' + text);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
 });
 ```
 
@@ -7935,7 +7935,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let length = 1;
 textInputClient.deleteForward(length, (err: BusinessError, result: boolean) => {
   if (err) {
-    console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}`);
     return;
   }
   if (result) {
@@ -7987,7 +7987,7 @@ textInputClient.deleteForward(length).then((result: boolean) => {
     console.error('Failed to delete forward.');
   }
 }).catch((err: BusinessError) => {
-  console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}`);
 });
 ```
 
@@ -8022,7 +8022,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let length = 1;
 textInputClient.deleteBackward(length, (err: BusinessError, result: boolean) => {
   if (err) {
-    console.error(`Failed to deleteBackward: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to deleteBackward: code: ${err.code} ,message: ${err.message}`);
     return;
   }
   if (result) {
@@ -8074,7 +8074,7 @@ textInputClient.deleteBackward(length).then((result: boolean) => {
     console.error('Failed to deleteBackward.');
   }
 }).catch((err: BusinessError) => {
-  console.error(`Failed to deleteBackward: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to deleteBackward: code: ${err.code} ,message: ${err.message}`);
 });
 ```
 ### sendKeyFunction<sup>(deprecated)</sup>
@@ -8108,7 +8108,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let action = 1;
 textInputClient.sendKeyFunction(action, (err: BusinessError, result: boolean) => {
   if (err) {
-    console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}`);
     return;
   }
   if (result) {
@@ -8160,7 +8160,7 @@ textInputClient.sendKeyFunction(action).then((result: boolean) => {
     console.error('Failed to sendKeyFunction.');
   }
 }).catch((err: BusinessError) => {
-  console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to sendKeyFunction: code: ${err.code} ,message: ${err.message}`);
 });
 ```
 
@@ -8194,7 +8194,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 textInputClient.insertText('test', (err: BusinessError, result: boolean) => {
   if (err) {
-    console.error(`Failed to insertText: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to insertText: code: ${err.code} ,message: ${err.message}`);
     return;
   }
   if (result) {
@@ -8245,7 +8245,7 @@ textInputClient.insertText('test').then((result: boolean) => {
     console.error('Failed to insertText.');
   }
 }).catch((err: BusinessError) => {
-  console.error(`Failed to insertText: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to insertText: code: ${err.code} ,message: ${err.message}`);
 });
 ```
 
@@ -8278,7 +8278,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 textInputClient.getEditorAttribute((err: BusinessError, editorAttribute: inputMethodEngine.EditorAttribute) => {
   if (err) {
-    console.error(`Failed to getEditorAttribute: code: ${err.code} ,message: ${err.message}}`);
+    console.error(`Failed to getEditorAttribute: code: ${err.code} ,message: ${err.message}`);
     return;
   }
   console.info(`editorAttribute.inputPattern: ${editorAttribute.inputPattern}`);
@@ -8317,7 +8317,7 @@ textInputClient.getEditorAttribute().then((editorAttribute: inputMethodEngine.Ed
   console.info('editorAttribute.inputPattern: ' + editorAttribute.inputPattern);
   console.info('editorAttribute.enterKeyType: ' + editorAttribute.enterKeyType);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to getEditorAttribute: code: ${err.code} ,message: ${err.message}}`);
+  console.error(`Failed to getEditorAttribute: code: ${err.code} ,message: ${err.message}`);
 });
 ```
 <!--no_check-->
