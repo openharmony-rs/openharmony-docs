@@ -97,7 +97,7 @@ mediaSource.setMediaResourceLoaderDelegate(resourceLoader);
 
 enableOfflineCache(boolean: enable): void
 
-开启流媒体落盘缓存。
+开启流媒体落盘缓存(默认为不开启)。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
