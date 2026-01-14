@@ -55,6 +55,8 @@ Web媒体策略的配置。
 
 定义Url正则表达式规则。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称          | 类型  | 只读 | 可选 | 说明            |
