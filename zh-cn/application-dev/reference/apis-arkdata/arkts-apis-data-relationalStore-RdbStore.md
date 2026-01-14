@@ -3690,6 +3690,7 @@ if (store != undefined) {
 beginTransaction():void
 
 在开始执行SQL语句之前，开始事务。
+
 此接口不允许嵌套事务，且不支持在多进程或多线程中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -3879,6 +3880,7 @@ if (store != undefined) {
 commit():void
 
 提交已执行的SQL语句，跟[beginTransaction](#begintransaction)配合使用。
+
 此接口不允许嵌套事务，且不支持在多进程或多线程中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -4007,6 +4009,7 @@ if (store != null) {
 rollBack():void
 
 回滚已经执行的SQL语句。
+
 此接口不允许嵌套事务，且不支持在多进程或多线程中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -6326,7 +6329,9 @@ lockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 根据RdbPredicates的指定实例对象从数据库中锁定数据，锁定数据不执行端云同步，使用Promise异步回调。
 
 该接口只支持主键为基本类型的表、不支持共享表、无主键表和复合类型主键表。
+
 该接口不支持依赖关系表之间的锁传递，如果表存在依赖关系，需要根据依赖关系手动调用该接口。
+
 该接口不支持对已删除数据的操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -6393,7 +6398,9 @@ unlockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 根据RdbPredicates的指定实例对象从数据库中解锁数据，使用Promise异步回调。
 
 该接口只支持主键为基本类型的表、不支持共享表、无主键表和复合类型主键表。
+
 该接口不支持依赖关系表之间的锁传递，如果表存在依赖关系，需要根据依赖关系手动调用该接口。
+
 该接口不支持对已删除数据的操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
