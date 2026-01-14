@@ -5403,7 +5403,7 @@
 
 ## ohos.permission.ACCESS_MINI_SYSTEM
  	 
-允许系统应用接入运行态能力框架
+允许系统应用接入运行态能力框架。
 
 **权限级别**：system_basic
 
