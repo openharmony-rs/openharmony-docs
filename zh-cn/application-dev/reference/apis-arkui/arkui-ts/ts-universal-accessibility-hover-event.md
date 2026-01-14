@@ -149,7 +149,9 @@ struct OnAccessibilityHoverEventExample {
 
 ### 示例2 (捕获无法无障碍聚焦的组件的触摸事件)
 
-该示例代码会在无障碍模式下捕获无法无障碍聚焦的组件的触摸事件，并将事件信息显示在组件下方的文本中。
+该示例代码在无障碍模式下通过onAccessibilityHoverTransparent接口捕获无法无障碍聚焦的组件的触摸事件，最后再将事件信息显示在组件下方的文本中。
+
+从API version 20开始，新增了[onAccessibilityHoverTransparent](#onaccessibilityhovertransparent20)入参类型为AccessibilityTransparentCallback的接口。
 
 ```ts
 @Entry
