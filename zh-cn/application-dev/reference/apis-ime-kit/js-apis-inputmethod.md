@@ -6649,7 +6649,7 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodSetting.getInputMethodState().then((status: inputMethod.EnabledState) => {
-  onsole.info(`Succeeded in getInputMethodState, status: ${status}`);
+  console.info(`Succeeded in getInputMethodState, status: ${status}`);
 }).catch((err) => {
   const error = err as BusinessError;
   console.error(`Failed to getInputMethodState, code: ${error.code}, message: ${error.message}`);
