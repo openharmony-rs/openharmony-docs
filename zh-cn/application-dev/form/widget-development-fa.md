@@ -220,7 +220,7 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
   | -------- | -------- | -------- | -------- |
   | name | 表示JS&nbsp;Component的名字。该标签不可缺省，默认值为default。 | 字符串 | 否 |
   | pages | 表示JS&nbsp;Component的页面用于列举JS&nbsp;Component中每个页面的路由信息[页面路径+页面名称]。该标签不可缺省，取值为数组，数组第一个元素代表JS&nbsp;FA首页。 | 数组 | 否 |
-  | [window](./arkts-ui-widget-configuration.md#window标签) | 用于定义与显示窗口相关的配置。 | 对象 | 可缺省，缺省值，缺省值为{<br/> "designWidth": 720,<br/> "autoDesignWidth": true<br/>}。|
+  | [window](./arkts-ui-widget-configuration.md#window标签) | 用于定义与显示窗口相关的配置。 | 对象 | 可缺省，缺省值，缺省值为<br/>{<br/>&nbsp;"designWidth": 720,<br/>&nbsp;"autoDesignWidth": true<br/>}。|
   | type | 表示JS应用的类型。取值范围如下：<br/>normal：标识该JS&nbsp;Component为应用实例。<br/>form：标识该JS&nbsp;Component为卡片实例。 | 字符串 | 可缺省，缺省值为“normal” 。|
   | mode | 定义JS组件的开发模式。 | 对象 | 可缺省，缺省值为空。 |
 
