@@ -791,7 +791,7 @@ zh-cn/application-dev/device/stationary/userStatus-guidelines.md @hu-zhiqiong @z
 
 
 [开发-Network Kit]
-zh-cn/application-dev/network/ @zhang_yixin13 @guo-min_net @tongxilin 
+zh-cn/application-dev/network/ @zhang_yixin13 @guo-min_net @tongxilin @wmyao_mm
 
 
 [开发-Neural NetWork Runtime Kit]
@@ -2355,7 +2355,7 @@ zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-o
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-spatialAwareness-sys.md @hu-zhiqiong @yuxiaoyang @zhaodengqi @codexu62
 
 [API参考-Network Kit]
-zh-cn/application-dev/reference/apis-network-kit/ @zhang_yixin13 @guo-min_net @tongxilin 
+zh-cn/application-dev/reference/apis-network-kit/ @zhang_yixin13 @guo-min_net @tongxilin @wmyao_mm
 
 
 [API参考-Neural NetWork Runtime Kit]
