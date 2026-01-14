@@ -147,7 +147,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 | OPG<sup>12+</sup>                        | 'general.opg'                  | OPG存档文件类型，归属类型为ARCHIVE。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23          |
 | TAZ_ARCHIVE<sup>12+</sup>                        | 'general.taz-archive'                  | TAR压缩文件类型，归属类型为TAR_ARCHIVE。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23          |
 | WEB_ARCHIVE<sup>12+</sup>                        | 'general.web-archive'                  | MHTML网页归档文件类型，归属类型为ARCHIVE。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23          |
-| DISK_IMAGE<sup>11+</sup>                        | 'general.disk-image'                  | 所有可作为卷装载项的文件类型的基类型，归属类型为ARCHIVE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23    |
+| DISK_IMAGE<sup>11+</sup>                        | 'general.disk-image'                  | 所有可作为卷挂载项的文件类型的基类型，归属类型为ARCHIVE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23    |
 | ISO<sup>12+</sup>                        | 'general.iso'                  | 光盘映像文件类型，归属类型为DISK_IMAGE。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23   |
 | TAR_ARCHIVE<sup>11+</sup>                        | 'general.tar-archive'                  | TAR存档文件类型，归属类型为ARCHIVE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23          |
 | ZIP_ARCHIVE<sup>11+</sup>                       | 'general.zip-archive'                 | ZIP存档文件类型，归属类型为ARCHIVE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23           |
