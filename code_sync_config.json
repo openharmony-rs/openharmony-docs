@@ -9216,12 +9216,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets",
 				"functions":[
 					{
-						"end_line":107,
+						"end_line":105,
 						"name":"richEditor_create",
 						"start_line":17
 					},
 					{
-						"end_line":108,
+						"end_line":106,
 						"name":"richEditor_create_span",
 						"start_line":16
 					}
