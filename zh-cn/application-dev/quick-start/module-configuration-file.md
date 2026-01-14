@@ -255,9 +255,9 @@ deviceTypes示例：
     "metadata": [
       // ...
       {
-        "name": "module_metadata",
-        "value": "a test demo for module metadata",
-        "resource": "$profile:shortcuts_config"
+        "name": "pageConfig",
+        "value": "main page config of application",
+        "resource": "$profile:main_pages" // 资源配置，指向profile下面定义的配置文件main_pages.json
       }
     ],
     // ...
