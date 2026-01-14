@@ -42,6 +42,26 @@ The FrameNode cannot be set whether to support cross-language common attribute s
 
 NA
 
+## 100023 参数错误
+
+**错误信息**
+
+Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined.
+
+**错误描述**
+
+当前接口传入的参数错误。
+
+**可能原因**
+
+1. 传入的节点参数的组件类型不正确。
+2. 传入的节点参数为null或undefined。
+3. 传入的控制器参数为null或undefined。
+
+**处理步骤**
+
+调整传入的参数值，或是提前进行判断。
+
 ## 100024 当前节点和目标节点没有共同父节点
 
 **错误信息**

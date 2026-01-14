@@ -293,6 +293,96 @@ ListItem元素被鼠标框选的状态改变时触发回调。
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
 | isSelected | boolean | 是   | 进入鼠标框选范围即被选中返回true，&nbsp;移出鼠标框选范围即未被选中返回false。 |
 
+## ListItemSwipeActionManager<sup>21+</sup>
+
+ListItem划出菜单的管理器。
+
+### expand<sup>21+</sup>
+
+expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
+
+展开指定ListItem的划出菜单。
+
+> **说明：**
+>
+> - 如果List组件cachedCount属性isShow参数设置为true，List显示区域外已预加载完成的ListItem支持展开，否则List显示区域外节点不支持展开。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名     | 类型    | 必填 | 说明                                                         |
+| ---------- | ------- | ---- | ------------------------------------------------------------ |
+| node | [FrameNode](../js-apis-arkui-frameNode.md) | 是   | ListItem节点对象。 |
+| direction | [ListItemSwipeActionDirection](#listitemswipeactiondirection21枚举说明) | 是   | ListItem划出菜单的展开方向。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](../errorcode-node.md)。
+
+| 错误码ID    | 错误信息                                                                                             |
+|----------|--------------------------------------------------------------------------------------------------|
+| 100023   | The component type of the node is incorrect. |
+| 106203   | The node not mounted to component tree. |
+
+### collapse<sup>21+</sup>
+
+collapse(node: FrameNode): void
+
+收起指定ListItem的划出菜单。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名     | 类型    | 必填 | 说明                                                         |
+| ---------- | ------- | ---- | ------------------------------------------------------------ |
+| node | [FrameNode](../js-apis-arkui-frameNode.md) | 是   | ListItem节点对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](../errorcode-node.md)。
+
+| 错误码ID    | 错误信息                                                                                             |
+|----------|--------------------------------------------------------------------------------------------------|
+| 100023   | The component type of the node is incorrect. |
+| 106203   | The node not mounted to component tree. |
+
+## ListItemSwipeActionDirection<sup>21+</sup>枚举说明
+
+ListItem划出菜单的展开方向。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| START |  0  | 当列表方向是垂直方向时，LTR模式下表示ListItem的左边，RTL模式下表示ListItem的右边。当列表是水平方向时，表示ListItem的上边。 |
+| END   |  1  | 当列表方向是垂直方向时，LTR模式下表示ListItem的右边，RTL模式下表示ListItem的左边。当列表是水平方向时，表示ListItem的下边。 |
+
 ## 示例
 
 ### 示例1（创建ListItem）

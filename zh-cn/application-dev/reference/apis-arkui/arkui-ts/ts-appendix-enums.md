@@ -1303,6 +1303,24 @@ type Nullable\<T> = T | undefined
 > - 建议在出现[像素取整常见问题](./ts-universal-attributes-pixelRound.md#常见问题)时，尝试采用PIXEL_ROUND_AFTER_MEASURE模式解决。
 > - 在PIXEL_ROUND_AFTER_MEASURE模式下，组件会在测量大小结束时进行一次取整，即最终大小相比于PIXEL_ROUND_ON_LAYOUT_FINISH模式可能扩大1px。
 
+## PresetFillType<sup>22+</sup>
+
+为不同响应式[断点规格](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)指定列数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称            | 值   | 说明                                                         |
+| --------------- | ---- | ------------------------------------------------------------ |
+| BREAKPOINT_DEFAULT         | 0    | 针对List和Swiper组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对Grid和WaterFlow组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。                                       |
+| BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。 |
+| BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。 |
+
 ## TipsAnchorType<sup>20+</sup>
 
 指定Tips跟随类型。
@@ -1351,6 +1369,12 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 值   | 说明                                                         |
 | --------------- | ---- | ------------------------------------------------------------ |
