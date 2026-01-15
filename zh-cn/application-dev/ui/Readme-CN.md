@@ -340,7 +340,7 @@
       - [在ArkTS-Dyn中使用ArkTS-Sta管理组件拥有的状态](arkts-dyn-interop-sta-statemanagement-v2.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的@ObservedV2和@Trace（类属性变化观测）](arkts-dyn-interop-sta-observedv2.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta管理应用拥有的状态](arkts-dyn-interop-sta-storages-v2.md)
-    - 状态管理V1和V2混合使用的互操作<!--ui-arkts-sta-interop-dyn-state-management-v1-v2-->
+    - [状态管理V1和V2混合使用的互操作](arkts-sta-interop-dyn-statemanagement-v1-v2.md)<!--ui-arkts-sta-interop-dyn-state-management-v1-v2-->
   - 使用NDK接口构建UI<!--arkts-use-ndk-->
     - [NDK接口概述](ndk-build-ui-overview.md)
     - [接入ArkTS页面](ndk-access-the-arkts-page.md)
