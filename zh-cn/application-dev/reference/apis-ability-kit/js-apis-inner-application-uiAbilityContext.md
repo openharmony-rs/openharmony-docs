@@ -1142,7 +1142,7 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 >
 > - 跨设备场景下，调用方与目标方必须为同一应用。
 >
-> - 同设备场景下，要求调用方与目标方为不同应用，且调用方具备ohos.permission.ABILITY_BACKGROUND_COMMUNICATION权限（该权限仅系统应用可申请，因而同设备场景下，该接口仅限系统应用申请权限后使用）。
+> - 同设备场景下，要求调用方与目标方为不同应用，且调用方具备ohos.permission.ABILITY_BACKGROUND_COMMUNICATION权限（该权限仅系统应用可申请）。
 >
 > - 此外如果应用需要在后台调用该接口，需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
@@ -1197,7 +1197,7 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 
 **示例：**
 
-下面代码展示的是，拉起端启动目标到后台，获取caller成功后发消息到对端，然后释放caller对象：
+下面代码展示的是，调用方启动目标方到后台，获取Caller成功后发消息到目标方，然后释放Caller对象。
 
 ```ts
 import { Caller, UIAbility, Want } from '@kit.AbilityKit';
@@ -1243,7 +1243,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-下面代码展示，被拉起端启动后注册监听，销毁时取消监听：
+下面代码展示，目标方启动后注册监听，销毁时取消监听。
 
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1288,7 +1288,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-下面代码展示，调用方启动目标到前台场景：
+下面代码展示，调用方启动目标方到前台场景。
 
 ```ts
 import { Caller, UIAbility, Want } from '@kit.AbilityKit';
