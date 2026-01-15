@@ -5607,7 +5607,7 @@ function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise\<Au
 
 | 参数名  | 类型                                           | 必填 | 说明             |
 | :------ | :--------------------------------------------- | :--- | :--------------- |
-| config | [AudioCapturerMicInConfig](arkts-apis-audio-i.md#audiocapturermicinconfig23) | 是   | 配置音频采集器。 |
+| config | [AudioCapturerMicInConfig](js-apis-audio-sys.md#audiocapturermicinconfig23) | 是   | 配置音频采集器。 |
 
 **返回值：**
 
