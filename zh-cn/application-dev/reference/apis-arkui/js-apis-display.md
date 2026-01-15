@@ -715,7 +715,7 @@ ret = display.isFoldable();
 ## display.getFoldStatus<sup>10+</sup>
 getFoldStatus(): FoldStatus
 
-获取可折叠设备的当前状态（完全展开、折叠、半折叠等）。
+获取可折叠设备当前的折叠状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
