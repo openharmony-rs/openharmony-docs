@@ -18,7 +18,7 @@ API 22开始支持本地证书链吊销状态校验时仅校验终端实体证�
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 调用[cert.createCertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11)创建证书链对象。
+2. 调用[cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11)创建证书链对象。
 
 3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X509证书对象。
 
@@ -209,7 +209,7 @@ async function doTestLeafCertCrlCheck() {
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 调用[cert.createCertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11)创建证书链对象。
+2. 调用[cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11)创建证书链对象。
 
 3. 调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建X509证书对象。
 
