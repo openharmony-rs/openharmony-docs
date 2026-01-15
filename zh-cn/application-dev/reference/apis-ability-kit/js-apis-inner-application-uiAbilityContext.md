@@ -1884,7 +1884,7 @@ showAbility(): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -1984,7 +1984,7 @@ hideAbility(): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -2538,6 +2538,8 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
 **参数：**
 
 | 参数名   | 类型                                     | 必填 | 说明                     |
@@ -2623,6 +2625,8 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 **原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -2828,7 +2832,7 @@ setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise&lt;void&gt;
 
 **系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数**：
 
@@ -3028,7 +3032,7 @@ startAppServiceExtensionAbility(want: Want): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3108,7 +3112,7 @@ stopAppServiceExtensionAbility(want: Want): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3184,7 +3188,7 @@ connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3267,7 +3271,7 @@ disconnectAppServiceExtensionAbility(connection: number): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3337,6 +3341,8 @@ setOnNewWantSkipScenarios(scenarios: number): Promise\<void>
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
