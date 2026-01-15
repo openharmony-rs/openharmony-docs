@@ -53,3 +53,4 @@ In this way, the applications such as the browser can call the APIs provided by 
   In addition, HUKS allows the application to query the Ukey key properties. For details, see [General Query](huks-ukey-general-query-overview.md).
 
   4.2: If the resource has not been authenticated, the application needs to call the certificate management capability to display the PIN authentication dialog box. The user enters the PIN to complete the authentication. After the authentication is complete, the process goes to 4.1. The application calls the unified HUKS APIs to perform the corresponding operations.
+<!--no_check-->
