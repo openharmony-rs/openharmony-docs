@@ -248,7 +248,7 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
 创建协同会话成功并获得会话ID后，设备A上可进行UIAbility的连接。使用Promise异步回调。
 
-模型约束：此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -851,6 +851,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 应用协同信息。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称                    | 类型       |只读   | 可选   | 说明                 |
@@ -879,6 +881,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 连接的结果。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称       | 类型   | 只读   | 可选   | 说明      |
@@ -890,6 +894,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 ## EventCallbackInfo
 
 回调方法的接收信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -904,6 +910,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 协同事件信息。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称       | 类型   | 只读   | 可选   | 说明      |
@@ -914,6 +922,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 ## ConnectErrorCode
 
 连接的错误码。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -930,6 +940,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 启动选项参数的枚举。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称|  值 | 说明 |
@@ -937,6 +949,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 | START_IN_FOREGROUND | 0 |表示将对端应用启动至前台。|
 
 ## CollaborateEventType
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 协同事件类型的枚举。
 
@@ -951,6 +965,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 当前断连原因的枚举。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称|  值 | 说明 |
@@ -963,6 +979,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 应用协作键值的枚举。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称                |                  值             | 说明                   |
@@ -974,6 +992,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 ## CollaborationValues
 
 应用协作相关值的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
