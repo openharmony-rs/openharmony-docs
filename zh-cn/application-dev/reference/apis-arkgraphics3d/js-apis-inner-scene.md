@@ -1243,20 +1243,18 @@ cloneNode(node: Node, parent: Node, name: string): Node | null
 import { Scene, Node } from '@kit.ArkGraphics3D';
 
 function CloneNode() {
-  Scene.load().then(async (result: Scene | undefined) => {
-    if (!result) {
-      return;
-    }
-    // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-    Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
-      .then(async (extScene: Scene) => {
-        let extNode: Node | null = extScene.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube");
-        console.info("test cloneNode");
-        let clone: Node | null = result.cloneNode(extNode, result.root, "scene");
-        if (clone) {
-          clone.position.x = 5;
-        }
-      });
-  });
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"))
+    .then(async (result: Scene) => {
+      let node = result.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube") as Node;
+      let parent = result.root as Node;
+      let name = "cloneNode_";
+      let clone = result.cloneNode(node, parent, name);
+      if (clone) {
+        console.info("cloneNode success");
+      } else {
+        console.error("cloneNode failed");
+      }
+    });
 }
 ```
