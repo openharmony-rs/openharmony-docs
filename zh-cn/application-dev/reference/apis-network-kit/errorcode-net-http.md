@@ -393,7 +393,7 @@ Invalid SSL peer certificate or SSH remote key.
 
 **处理步骤**
 
-检查证书有效性。
+可参考[tls客户端证书验证流程](../../network/http-request.md#tls客户端证书验证流程)，检查证书有效性。
 
 ## 2300061 无法识别或错误的HTTP编码格式
 
