@@ -20,8 +20,29 @@
 
 
 ## 使用示例
+1. CMakeLists.txt配置
+   ``` txt
+   # the minimum version of CMake.
+   cmake_minimum_required(VERSION 3.5.0)
+   project(NodeAPIAsynchronousTask)
 
-1. 定义线程安全函数在Native入口。
+   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+   if(DEFINED PACKAGE_FIND_FILE)
+       include(${PACKAGE_FIND_FILE})
+   endif()
+
+   include_directories(${NATIVERENDER_ROOT_PATH}
+                       ${NATIVERENDER_ROOT_PATH}/include)
+
+   add_library(entry SHARED napi_init.cpp)
+   target_link_libraries(entry PUBLIC libace_napi.z.so)
+
+   add_library(entry1 SHARED callback.cpp)
+   target_link_libraries(entry1 PUBLIC libace_napi.z.so)
+   ```
+
+2. 定义线程安全函数在Native入口。
 
    <!-- @[napi_thread_safety_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
    
@@ -134,7 +155,7 @@
    }
    ```
 
-2. 模块注册。
+3. 模块注册。
    ```c++
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
@@ -160,7 +181,7 @@
    extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
    ```
 
-3. ArkTS侧示例代码
+4. ArkTS侧示例代码
 
    <!-- @[napi_thread_safety_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
    
@@ -193,16 +214,26 @@
 
 ### 基于[Worker](../../application-dev/arkts-utils/worker-introduction.md)实现的C++子线程与ArkTS子线程交互场景
 
-1. 配置worker。
+1. CMakeLists.txt配置
+   ``` txt
+   # the minimum version of CMake.
+   cmake_minimum_required(VERSION 3.5.0)
+   project(NodeAPIAsynchronousTask)
 
-   ``` json5
-   "buildOption": {
-     "sourceOption": {
-       "workers": [
-         "./src/main/ets/worker/worker.ets"
-        ]
-     },
-   }
+   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+   if(DEFINED PACKAGE_FIND_FILE)
+       include(${PACKAGE_FIND_FILE})
+   endif()
+
+   include_directories(${NATIVERENDER_ROOT_PATH}
+                       ${NATIVERENDER_ROOT_PATH}/include)
+
+   add_library(entry SHARED napi_init.cpp)
+   target_link_libraries(entry PUBLIC libace_napi.z.so)
+
+   add_library(entry1 SHARED callback.cpp)
+   target_link_libraries(entry1 PUBLIC libace_napi.z.so)
    ```
 
 2. 在Native入口定义线程安全函数并创建子线程。
@@ -308,7 +339,7 @@
    static napi_value Init(napi_env env, napi_value exports)
    {
        napi_property_descriptor desc[] = {
-           {"startWithCallback", nullptr, StartThread, nullptr, nullptr, nullptr, napi_default, nullptr}
+           {"startWithCallback", nullptr, StartWithCallback, nullptr, nullptr, nullptr, napi_default, nullptr}
        };
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        return exports;
@@ -328,9 +359,20 @@
    extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
    ```
 
-4. Worker线程示例代码。
+4. DevEco Studio支持一键生成Worker，在对应的{moduleName}目录下任意位置，点击鼠标右键 > New > Worker，即可自动生成Worker的模板文件及配置信息。本文以创建 "Worker" 为例。
 
-   <!-- @[napi_call_threadsafe_function_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/worker/worker.ets) -->
+   ``` json5
+   "buildOption": {
+     "sourceOption": {
+       "workers": [
+         "./src/main/ets/workers/Worker.ets"
+        ]
+     },
+   }
+   ```
+5. Worker线程示例代码。
+
+   <!-- @[napi_call_threadsafe_function_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/workers/Worker.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/worker/worker.ets
@@ -349,7 +391,7 @@
    }
    ```
 
-5. ArkTS侧示例代码。
+6. ArkTS侧示例代码。
 
    <!-- @[napi_call_threadsafe_function_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
    
@@ -373,6 +415,14 @@
      console.info('[Main] Received:', msg.data);
      wk.terminate();
    }
+   ```
+
+   ``` txt
+   运行结果：
+   Worker thread received:Start
+   [C++ SubThread] Received from Worker: Hello
+   [Worker] Got from native: Echo of Hello from C++!
+   [Main] Received: Echo of Hello from C++
    ```
 
 ### 基于[Taskpool](../../application-dev/arkts-utils/taskpool-introduction.md)实现的C++子线程与ArkTS子线程交互场景
@@ -408,4 +458,11 @@
    ``` TypeScript
    // index.ets
    testTaskpool();
+   ```
+
+   ``` txt
+   运行结果：
+   Taskpool thread received:Start
+   [C++ SubThread] Received from Worker: Hello
+   [Taskpool] Got from native: Echo of Hello from C++!
    ```
