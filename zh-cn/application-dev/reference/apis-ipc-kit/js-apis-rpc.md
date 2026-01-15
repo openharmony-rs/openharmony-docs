@@ -4060,7 +4060,6 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let data = rpc.MessageParcel.create();
   let result = data.getCapacity();
   hilog.info(0x0000, 'testTag', 'capacity is ' + result);
 } catch (error) {
