@@ -12,7 +12,7 @@ This topic walks you through on how to randomly generate a key with the ECC algo
 > **NOTE**
 > Key aliases must not contain sensitive information, such as personal data.
 
-## Add the dynamic library in the CMake script.
+## Linking the Dynamic Library in the CMake Script
 ```txt
 target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
