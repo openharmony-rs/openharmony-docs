@@ -130,12 +130,12 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
 - 以使用await方式分段传入数据，获取消息认证码计算结果为例。
 
   <!-- @[message_authentication_code_calculation_cmac_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Async.ets) -->
-
+  
   ``` TypeScript
-
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
