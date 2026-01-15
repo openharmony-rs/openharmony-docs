@@ -944,7 +944,7 @@
        "srcEntry": "./ets/InputMethodExtensionAbility/InputMethodService.ets",
        "name": "InputMethodService",
        "label": "$string:MainAbility_label",
-       "description": "$string:extension_ability_descripter",
+       "description": "$string:extension_ability_descriptor",
        "type": "inputMethod",
        "exported": true,
        "metadata": [
