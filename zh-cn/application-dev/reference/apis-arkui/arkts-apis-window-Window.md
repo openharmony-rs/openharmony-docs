@@ -498,9 +498,9 @@ moveWindowToAsync(x: number, y: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. The window type is not supported for this operation.|
 | 1300003 | This window manager service works abnormally. |
-| 1300010 | The operation in the current window status is invalid. |
+| 1300010 | The operation in the current window status is invalid. Possible cause: The window status is not FLOATING. |
 
 **示例：**
 
@@ -560,9 +560,9 @@ moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. The window type is not supported for this operation. |
 | 1300003 | This window manager service works abnormally. |
-| 1300010 | The operation in the current window status is invalid. |
+| 1300010 | The operation in the current window status is invalid. Possible cause: The window status is not FLOATING. |
 
 **示例：**
 
@@ -624,9 +624,9 @@ moveWindowToGlobal(x: number, y: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. The window type is not supported for this operation.|
 | 1300003 | This window manager service works abnormally. |
-| 1300010 | The operation in the current window status is invalid. |
+| 1300010 | The operation in the current window status is invalid. Possible cause: The window status is not FLOATING. |
 
 **示例：**
 
@@ -684,9 +684,9 @@ moveWindowToGlobal(x: number, y: number, moveConfiguration?: MoveConfiguration):
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. The window type is not supported for this operation. |
 | 1300003 | This window manager service works abnormally. |
-| 1300010 | The operation in the current window status is invalid. |
+| 1300010 | The operation in the current window status is invalid. Possible cause: The window status is not FLOATING. |
 
 **示例：**
 
@@ -715,7 +715,7 @@ try {
 
 moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 
-基于全局坐标系（扩展屏场景下，以主屏幕左上角为原点）移动窗口位置，使用Promise异步回调。
+基于[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)移动窗口位置，使用Promise异步回调。
 
 > **说明：**
 >
@@ -745,9 +745,9 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300010 | The operation in the current window status is invalid. |
+| 1300010 | The operation in the current window status is invalid. Possible cause: The window status is not FLOATING. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例：**
@@ -1035,7 +1035,7 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal.  Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300010 | The operation in the current window status is invalid. |
+| 1300010 | The operation in the current window status is invalid. Possible cause: The window status is not FLOATING.|
 
 **示例：**
 
@@ -1369,9 +1369,9 @@ setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only global floating windows, dialog windows, or Window Type as system windows are supported.|
 
 **示例：**
 
@@ -4901,7 +4901,7 @@ try {
 
 on(type: 'rectChangeInGlobalDisplay', callback: Callback&lt;RectChangeOptions&gt;): void
 
-开启全局坐标系（扩展屏场景下，以主屏左上角为原点）下窗口矩形（窗口位置及窗口大小）变化的监听事件。
+开启[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -4940,7 +4940,7 @@ try {
 
 off(type: 'rectChangeInGlobalDisplay', callback?: Callback&lt;RectChangeOptions&gt;): void
 
-关闭全局坐标系（扩展屏场景下，以主屏左上角为原点）下窗口矩形（窗口位置及窗口大小）变化的监听事件。
+关闭[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6912,7 +6912,7 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3.Invalid window type. Only main windows, subwindows, and float windows are supported. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -6959,7 +6959,7 @@ minimize(): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3.Invalid window type. Only main windows, subwindows, and float windows are supported. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -8456,7 +8456,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3. The subWindow has been created and can not be created again. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows, subwindows, and float windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows, subwindows, and floating windows are supported. |
 
 **示例：**
 
@@ -9454,10 +9454,10 @@ setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal.                                                                               |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation.                                                                                |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
 
@@ -10094,9 +10094,9 @@ setFollowParentWindowLayoutEnabled(enabled: boolean): Promise&lt;void&gt;
 | --- | --- |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The subwindow level is more than one. 4. The subwindow is following its parent window's position.|
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and dialog windows are supported. |
 
 **示例：**
 
@@ -10378,6 +10378,8 @@ setSubWindowZLevel(zLevel: number): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备中返回801错误码。
+
 **参数：**
 
 | 参数名       | 类型                          | 必填 | 说明                           |
@@ -10445,6 +10447,8 @@ getSubWindowZLevel(): number
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 

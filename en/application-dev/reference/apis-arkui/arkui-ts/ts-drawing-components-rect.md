@@ -102,7 +102,7 @@ Sets the width of the rounded corner. When only the width is set, the width and 
 
 radiusHeight(value: Length)
 
-Sets the height of the rounded corner. When only the height is set, the width and height are the same. This property can be set dynamically in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).  An invalid value is handled as the default value.
+Sets the height of the rounded corner. When only the height is set, the width and height are the same. This property can be set dynamically in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). An invalid value is handled as the default value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 

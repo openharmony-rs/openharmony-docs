@@ -262,12 +262,12 @@ cookie的相关字段。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | --- | ---- | ---- | ---- |
-| samesitePolicy | [WebHttpCookieSameSitePolicy](./arkts-apis-webview-e.md#webhttpcookiesamesitepolicy23) | 是 | 否 | cookie的同站策略。 |
-| expiresDate | string | 是 | 否 | cookie的过期时间。格式为GMT标准时间。 |
-| name | string | 是 | 否 | cookie的名称。 |
-| isSessionCookie | boolean | 是 | 否 | 标记该cookie是否是session cookie。<br>true表示是session cookie，false表示不是session cookie。 |
-| value | string | 是 | 否 | cookie的值。 |
-| path | string | 是 | 否 | cookie的路径。 |
-| isHttpOnly | boolean | 是 | 否 | 标记该cookie是否只能通过http请求访问。<br>true表示仅能通过http访问，不能通过javascript访问，false表示可以通过javascript访问。 |
-| isSecure | boolean | 是 | 否 | 标记该cookie是否只能通过https发送。<br>true表示仅能通过https发送，不能通过http发送，false表示可以通过http发送。 |
-| domain | string | 是 | 否 | 指定哪些域名可以访问该cookie。 |
+| samesitePolicy | [WebHttpCookieSameSitePolicy](./arkts-apis-webview-e.md#webhttpcookiesamesitepolicy23) | 否 | 否 | cookie的同站策略。 |
+| expiresDate | string | 否 | 否 | cookie的过期时间。时间格式详见[Date](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Reference/Headers/Date)。 |
+| name | string | 否 | 否 | cookie的名称。 |
+| isSessionCookie | boolean | 否 | 否 | 标记该cookie是否是session cookie。<br>true表示是session cookie，false表示不是session cookie。 |
+| value | string | 否 | 否 | cookie的值。 |
+| path | string | 否 | 否 | cookie的路径。 |
+| isHttpOnly | boolean | 否 | 否 | 标记该cookie是否只能通过http请求访问。<br>true表示仅能通过http访问，不能通过javascript访问，false表示可以通过javascript访问。 |
+| isSecure | boolean | 否 | 否 | 标记该cookie是否只能通过https发送。<br>true表示仅能通过https发送，不能通过http发送，false表示可以通过http发送。 |
+| domain | string | 否 | 否 | 指定哪些域名可以访问该cookie。 |

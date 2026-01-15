@@ -1414,7 +1414,7 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 是    | 事件回调。 |
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | 是    | 事件回调。 |
 
 **错误码**：
 
@@ -1449,7 +1449,7 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 否    | 事件回调。 |
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | 否    | 事件回调。 |
 
 **错误码**：
 
@@ -1773,7 +1773,7 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 是    | 事件回调。 |
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | 是    | 事件回调。 |
 
 **错误码**：
 
@@ -1810,7 +1810,7 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 否    | 事件回调。 |
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | 否    | 事件回调。 |
 
 **错误码**：
 
@@ -1865,7 +1865,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 | 名称                | 类型                              | 只读 | 可选 | 说明     |
 | ----------------- | --------------------------------- | ---- | ---- | ------ |
-| isExistNewVersion | boolean                              | 否 | 否 | 是否有新版本。<br>ture表示有新版本，false表示没有新版本。|
+| isExistNewVersion | boolean                              | 否 | 否 | 是否有新版本。<br>true表示有新版本，false表示没有新版本。|
 | newVersionInfo    | [NewVersionInfo](#newversioninfo) | 否 | 否 | 新版本数据。  |
 
 ## NewVersionInfo
@@ -1905,7 +1905,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | size            | number                              | 否 | 否 | 升级包大小，单位为B。    |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | 否 | 否 | 生效模式。     |
 | descriptionInfo | [DescriptionInfo](#descriptioninfo) | 否 | 否 | 版本描述文件信息。 |
-| otaMode<sup>22+</sup> | [OtaMode](#otamode22)                 | 否 | 是 | 升级模式。     |
+| otaMode<sup>20+</sup> | [OtaMode](#otamode20)                 | 否 | 是 | 升级模式。     |
 
 ## DescriptionOptions
 
@@ -1981,7 +1981,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 | 名称                | 类型 | 只读 | 可选 | 说明       |
 | ----------------- | ---- | ---- |---- | -------- |
-| isAllowAutoResume | boolean | 否 | 否 | 是否允许自动恢复。<br>ture表示允许自动恢复，false表示不允许。 |
+| isAllowAutoResume | boolean | 否 | 否 | 是否允许自动恢复。<br>true表示允许自动恢复，false表示不允许。 |
 
 ## UpgradeOptions
 
@@ -2011,8 +2011,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 | 名称                  | 类型                                    | 只读 | 可选 | 说明      |
 | ------------------- | --------------------------------------- | ---- | ---- | ------- |
-| downloadStrategy    | boolean                        | 否 | 否 | 自动下载策略。 <br>ture表示可自动下载，false表示不可自动下载。 |
-| autoUpgradeStrategy | boolean                        | 否 | 否 | 自动升级策略。 <br>ture表示可自动升级，false表示不可自动升级。 |
+| downloadStrategy    | boolean                        | 否 | 否 | 自动下载策略。 <br>true表示可自动下载，false表示不可自动下载。 |
+| autoUpgradeStrategy | boolean                        | 否 | 否 | 自动升级策略。 <br>true表示可自动升级，false表示不可自动升级。 |
 | autoUpgradePeriods  | Array\<[UpgradePeriod](#upgradeperiod)> | 否 | 否  | 自动升级时间段。 |
 
 ## UpgradePeriod
@@ -2034,7 +2034,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 | 名称        | 类型                  | 只读 | 可选 | 说明 |
 | --------- | --------------------- | ---- | ------ |------ |
-| existTask |  boolean                  | 否 | 否 | 是否存在任务。<br>ture表示存在，false表示不存在。 |
+| existTask |  boolean                  | 否 | 否 | 是否存在任务。<br>true表示存在，false表示不存在。 |
 | taskBody  | [TaskBody](#taskbody) | 否 | 否 | 任务数据。   |
 
 ## EventInfo
@@ -2097,7 +2097,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | fileType | [ComponentType](#componenttype) | 否    | 否 | 文件类型。 |
 | filePath | string                          | 否    | 否 | 文件路径。 |
 
-## UpgradeTaskCallback
+## UpgradeTaskCallback<sup>23+</sup>
 
 type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
@@ -2162,7 +2162,7 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 | LIVE          | 2    | 热升级。  |
 | LIVE_AND_COLD | 3    | 融合升级。 |
 
-## OtaMode<sup>22+</sup>
+## OtaMode<sup>20+</sup>
 
 升级模式。
 

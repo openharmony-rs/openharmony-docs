@@ -82,7 +82,7 @@
 | title        | string                  | 否   | 是   | 播放列表媒体标题。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | subtitle     | string                  | 否   | 是   | 播放列表媒体子标题。在使用了cast+协议的音频投播场景下，暂不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | description  | string                  | 否   | 是   | 播放列表媒体描述的文本。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| mediaImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| string  | 否   | 是   | 播放列表媒体图片像素数据。在使用了cast+协议的音频投播场景下，暂不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| mediaImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| string  | 否   | 是   | 设置播放列表媒体图片像素数据。<br>当入参为string类型时：<br>- 只支持使用网络URI设置封面，不支持本地URI。<br>- 其作用与albumCoverUri属性功能相同，且优先级高于albumCoverUri。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | extras       |  Record\<string, Object>    | 否   | 是   | 播放列表媒体额外字段。<br>**说明：**<br>从API version 20开始参数类型变更为Record\<string, Object>，API version 19及之前的版本extras的参数类型为：{[key: string]: Object}，无需适配仍可使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 | mediaUri     | string                  | 否   | 是   | 播放列表媒体URI。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | mediaType     | string                  | 否   | 是   | 播放列表媒体类型。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -288,43 +288,6 @@
 | elementName  | [ElementName](../apis-ability-kit/js-apis-bundle-ElementName.md)  | 否 | 否 | 会话所属应用的信息（包含bundleName、abilityName等）。 |
 | isActive     | boolean             | 否 | 否 | 会话是否被激活。<br>true：已被激活。 <br>false：没有被激活。                                      |
 | isTopSession | boolean             | 否 | 否 | 会话是否为最新的会话。 <br>true：是最新的会话。<br>false：不是最新的会话。                |
-
-## isDesktopLyricSupported<sup>23+</sup>
-
-isDesktopLyricSupported(): Promise\<boolean>
-
-设备是否支持桌面歌词功能。使用Promise异步回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
-
-**返回值：**
-
-| 类型                       | 说明                               |
-|----------------------------|-----------------------------------|
-| Promise\<boolean> | Promise对象。返回true表示设备支持桌面歌词功能；返回false表示设备不支持桌面歌词功能。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
-
-| 错误码ID   | 错误信息                                             |
-|---------|--------------------------------------------------------|
-| 6600101 | Session service exception.                             |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { avSession } from '@kit.AVSessionKit';
-
-avSession.isDesktopLyricSupported().then((isSupported: boolean) => {
-  console.info(`isDesktopLyricSupported : SUCCESS : isSupported : ${isSupported}`);
-}).catch((err: BusinessError) => {
-  console.error(`isDesktopLyricSupported BusinessError: code: ${err.code}, message: ${err.message}`);
-});
-```
 
 ## DesktopLyricState<sup>23+</sup>
 

@@ -33,7 +33,7 @@ A property API (property for short) defines a multitude of properties, such as s
 
   - Custom animatable properties: animatable properties abstracted through the custom property animation mechanism.
 
-- Non-animatable properties: **zIndex** and **focusable**, among others.
+- Non-animatable properties: [zIndex](../reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex), [focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable), and so on.
 
 
 Generally, an animatable property accepts only continuous parameters, which allows for using interpolation to fill in gaps between data points, so as to create a visual illusion of continuity. That said, whether the parameter type of a property can be interpolated is not a key factor that determines whether an animation can be applied to the property. For example, with regard to the [direction](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#direction) property, which sets the horizontal layout of an element, as it is animatable, ArkUI allows you to apply an animation to the transition between its value changes, though its parameter type is enum.

@@ -46,7 +46,7 @@
 
 HarmonyAppProvision配置文件示例如下所示，修改"bundle-info"中的"apl" 字段。
 
-```json
+```json5
 "bundle-info" : {
     // ...
     "apl": "system_basic",

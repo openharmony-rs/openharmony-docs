@@ -41,7 +41,7 @@ this.getUIContext().getPromptAction().openCustomDialog({
 
 ## Displaying a Dialog Box on a Specified Page
 
-To display a dialog box on a specific page, use the **levelUniqueId** parameter. When this parameter is set to specify the target page's node ID, the system automatically locates the corresponding [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) and mounts the dialog box to the [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) node.
+To display the dialog box in a specified page, use the second parameter [levelUniqueId](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11). When this parameter is set to specify the target page's node ID, the system automatically locates the corresponding [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) and mounts the dialog box to the [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) node.
 
 In the following example, a **Text** node is used as a reference node on a specific page. The [getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12) API obtains the node, and the [getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12) API obtains the internal ID of the node, which is then passed as the value of **levelUniqueId**.
 
