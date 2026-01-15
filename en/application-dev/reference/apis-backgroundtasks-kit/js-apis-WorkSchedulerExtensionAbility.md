@@ -29,7 +29,7 @@ type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext
 
 | Type| Description|
 | -------- |  -------- |
-| [_WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)|  Context of the WorkSchedulerExtensionAbility.|
+| [_WorkSchedulerExtensionContext](js-apis-inner-application-WorkSchedulerExtensionContext.md)|  Context of the WorkSchedulerExtensionAbility.|
 
 ## WorkSchedulerExtensionAbility
 
@@ -39,7 +39,7 @@ type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| context<sup>10+</sup> | [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)  | No| No| Context of the WorkSchedulerExtensionAbility. This context inherits from **ExtensionContext**.|
+| context<sup>10+</sup> | [WorkSchedulerExtensionContext](js-apis-inner-application-WorkSchedulerExtensionContext.md)  | No| No| Context of the WorkSchedulerExtensionAbility. This context inherits from **ExtensionContext**.|
 
 ### onWorkStart
 
