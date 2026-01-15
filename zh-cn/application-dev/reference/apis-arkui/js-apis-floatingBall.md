@@ -85,8 +85,6 @@ create(config: FloatingBallConfiguration): Promise&lt;FloatingBallController&gt;
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -102,36 +100,12 @@ try {
   floatingBall.create(config).then((data: floatingBall.FloatingBallController) => {
     floatingBallController = data;
     console.info(`Succeeded in creating floating ball controller. Data: ${data}`);
-  }).catch((err: BusinessError) => {
+  }).catch((err: BusinessError):void => {
     console.error(`Failed to create floating ball controller. Cause:${err.code}, message:${err.message}`);
   });
 } catch(e) {
   console.error(`Failed to create floating ball controller. Cause:${e.code}, message:${e.message}`);
 }
-```
-
-ArkTS-Sta示例：
-
-```ts
-// xxx.ets
-import common from '@ohos.app.ability.common';
-
-let floatingBallController: floatingBall.FloatingBallController | undefined = undefined;
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回的结果是 UIAbilityContext
-let ctx = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let config: floatingBall.FloatingBallConfiguration = {
-  context: ctx,
-};
-try {
-  floatingBall.create(config).then((data: floatingBall.FloatingBallController) => {
-    floatingBallController = data;
-    console.info(`Succeeded in creating floating ball controller. Data: ${data}`);
-  }).catch((err: Error) => {
-    console.error(`Failed to create floating ball controller. Cause:${err.code}, message:${err.message}`);
-  });
-} catch(e: Error) {
-  console.error(`Failed to create floating ball controller. Cause:${e.code}, message:${e.message}`);
-}     
 ```
 
 ## FloatingBallConfiguration
@@ -199,8 +173,6 @@ startFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -213,31 +185,10 @@ let startParams: floatingBall.FloatingBallParams = {
 try {
   floatingBallController.startFloatingBall(startParams).then(() => {
     console.info('Succeeded in starting floating ball.');
-  }).catch((err: BusinessError) => {
+  }).catch((err: BusinessError):void => {
     console.error(`Failed to start floating ball. Cause:${err.code}, message:${err.message}`);
   });
 } catch(e) {
-  console.error(`Failed to start floating ball. Cause:${e.code}, message:${e.message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-// xxx.ets
-
-let startParams: floatingBall.FloatingBallParams = {
-  template: floatingBall.FloatingBallTemplate.EMPHATIC,
-  title: 'title',
-  content: 'content'
-};
-try {
-  floatingBallController.startFloatingBall(startParams).then(() => {
-    console.info('Succeeded in starting floating ball.');
-  }).catch((err: Error) => {
-    console.error(`Failed to start floating ball. Cause:${err.code}, message:${err.message}`);
-  });
-} catch(e: Error) {
   console.error(`Failed to start floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -284,8 +235,6 @@ updateFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -298,31 +247,10 @@ let updateParams: floatingBall.FloatingBallParams = {
 try {
   floatingBallController.updateFloatingBall(updateParams).then(() => {
     console.info('Succeeded in updating floating ball.');
-  }).catch((err: BusinessError) => {
+  }).catch((err: BusinessError):void => {
     console.error(`Failed to update floating ball. Cause:${err.code}, message:${err.message}`);
   });
 } catch(e) {
-  console.error(`Failed to update floating ball. Cause:${e.code}, message:${e.message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-// xxx.ets
-
-let updateParams: floatingBall.FloatingBallParams = {
-  template: floatingBall.FloatingBallTemplate.EMPHATIC,
-  title: 'title2',
-  content: 'content2'
-};
-try {
-  floatingBallController.updateFloatingBall(updateParams).then(() => {
-    console.info('Succeeded in updating floating ball.');
-  }).catch((err: Error) => {
-    console.error(`Failed to update floating ball. Cause:${err.code}, message:${err.message}`);
-  });
-} catch(e: Error) {
   console.error(`Failed to update floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -357,27 +285,13 @@ stopFloatingBall(): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 floatingBallController.stopFloatingBall().then(() => {
   console.info('Succeeded in stopping floating ball.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to stop floating ball. Cause:${err.code}, message:${err.message}`);
-});
-```
-
-ArkTS-Sta示例：
-
-```ts
-// xxx.ets
-
-floatingBallController.stopFloatingBall().then(() => {
-  console.info('Succeeded in stopping floating ball.');
-}).catch((err: Error) => {
+}).catch((err: BusinessError):void => {
   console.error(`Failed to stop floating ball. Cause:${err.code}, message:${err.message}`);
 });
 ```
@@ -783,27 +697,13 @@ getFloatingBallWindowInfo(): Promise&lt;FloatingBallWindowInfo&gt;
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 floatingBallController.getFloatingBallWindowInfo().then((data: floatingBall.FloatingBallWindowInfo) => {
   console.info('Succeeded in getting floating ball window info. Info: ' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get floating ball window info. Cause code: ${err.code}, message: ${err.message}`);
-});
-```
-
-ArkTS-Sta示例：
-
-```ts
-// xxx.ets
-
-floatingBallController.getFloatingBallWindowInfo().then((data: floatingBall.FloatingBallWindowInfo) => {
-  console.info('Succeeded in getting floating ball window info. Info: ' + JSON.stringify(data));
-}).catch((err: Error) => {
+}).catch((err: BusinessError):void => {
   console.error(`Failed to get floating ball window info. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -852,8 +752,6 @@ restoreMainWindow(want: Want): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -866,31 +764,10 @@ let want: Want = {
 try {
   floatingBallController.restoreMainWindow(want).then(() => {
     console.info('Succeeded in restoring floating ball main window.');
-  }).catch((err: BusinessError) => {
+  }).catch((err: BusinessError):void => {
     console.error(`Failed to restore floating ball main window. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch(e) {
-  console.error(`Failed to create floating ball controller. Cause:${e.code}, message:${e.message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-// xxx.ets
-import { Want } from '@kit.AbilityKit';
-
-let want: Want = {
-  bundleName: 'xxx.xxx.xxx',
-  abilityName: 'EntryAbility'
-};
-try {
-  floatingBallController.restoreMainWindow(want).then(() => {
-    console.info('Succeeded in restoring floating ball main window.');
-  }).catch((err: Error) => {
-    console.error(`Failed to restore floating ball main window. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch(e: Error) {
   console.error(`Failed to create floating ball controller. Cause:${e.code}, message:${e.message}`);
 }
 ```
