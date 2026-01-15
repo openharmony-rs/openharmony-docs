@@ -287,6 +287,7 @@
 | [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int* value)](#oh_drawing_gettypographystyleattributeint) | 获取int类型排版样式的属性。 |
 | [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool value)](#oh_drawing_settypographystyleattributebool) | 设置bool类型排版样式的属性。 |
 | [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool* value)](#oh_drawing_gettypographystyleattributebool) | 获取bool类型排版样式的属性。 |
+| [void OH_Drawing_DestroyPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)](#oh_drawing_destroypositionandaffinity) | 释放[OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md)对象持有的内存。 |
 
 ## 枚举类型说明
 
@@ -721,6 +722,8 @@ enum OH_Drawing_TypographyStyleAttributeId
 | TYPOGRAPHY_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 3 | 行高缩放基数样式。具体行高缩放基数样式可见[OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle)。 |
 | TYPOGRAPHY_STYLE_ATTR_I_FONT_WIDTH = 4 | 字宽。 |
 | TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5 | 设置文本排版时是否使能行首标点压缩。<br>**说明：**<br>1. 需要字体文件支持[OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md)中的"ss08"特性，否则无法压缩。<br>2. 在行首标点压缩范围内的标点才在本特性作用范围内。<br>**起始版本：** 23 |
+| TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6 | 设置文本排版时是否使能字体内部的padding。<br>**起始版本：** 23 |
+| TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7 | 设置文本排版时是否使能行间距回退机制。<br>**起始版本：** 23 |
 
 ## 函数说明
 
@@ -6091,3 +6094,21 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeBool(OH_Drawing_Typog
 | 类型 | 说明 |
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+
+### OH_Drawing_DestroyPositionAndAffinity()
+
+```c
+void OH_Drawing_DestroyPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)
+```
+
+**描述**
+
+释放[OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md)对象持有的内存。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md)* positionAndAffinity | 指向[OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md)对象的指针。 |
