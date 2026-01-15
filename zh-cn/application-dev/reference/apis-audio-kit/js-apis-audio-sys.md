@@ -443,13 +443,15 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 音频采集器选项信息，可采集未经任何处理的麦克风输入（mic-in）音频数据。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 | 名称                                | 类型                                                      | 只读 | 可选 | 说明                                                         |
 | ----------------------------------- | --------------------------------------------------------- | ---- |---| ------------------------------------------------------------ |
 | micInStreamInfo                          | [AudioStreamInfo](#audiostreaminfo8)                      | 否 | 否 | 麦克风音频流信息。   |
 | capturerInfo                        | [AudioCapturerInfo](#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。         |
-| ecStreamInfo | [AudioStreamInfo](#audiostreaminfo8) | 否 | 是 | 回声消除音频流信息，若未设置此属性，采集器将仅录制麦克风输入的音频流。。    |
+| ecStreamInfo | [AudioStreamInfo](#audiostreaminfo8) | 否 | 是 | 回声消除音频流信息，若未设置此属性，采集器将仅录制麦克风输入的音频流。    |
 
 ## VolumeAdjustType<sup>10+</sup>
 
@@ -5591,9 +5593,11 @@ function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise\<Au
 
 获取音频采集器。使用Promise异步回调。
 
-**模型约束：** 仅允许使用[SourceType](js-apis-audio-sys.md#sourcetype8)为SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT类型的音源输入，其他类型的音源输入将被系统拒绝。
+仅允许使用[SourceType](js-apis-audio-sys.md#sourcetype8)为SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT类型的音源输入，其他类型的音源输入将被系统拒绝。
 
-**系统接口：** 该接口为系统接口
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 该接口为系统接口。
 
 **需要权限：** ohos.permission.MICROPHONE
 
@@ -5617,11 +5621,11 @@ function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise\<Au
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------|
-|     201 | Permission denied.             |
+|     201 | Permission denied, including background recording.             |
 |     202 | Not system App.                |
 | 6800101 | Parameter verification failed. |
-| 6800104 | Unsupported option.            |
-| 6800301 | Crash or blocking occurs in system process.            |
+| 6800104 | Capturer creation is not supported, may caused by following problems: <br> 1.Source type is unsupported for this capturer, only [SourceType](js-apis-audio-sys.md#sourcetype8)SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT is supported currently. <br> 2.Echo reference signal's config is unsupported, echo reference's sampling rate and format must be the same as MicIn audio data currently.            |
+| 6800301 | Audio system internal error, such as system process crash.            |
 
 **示例：**
 
