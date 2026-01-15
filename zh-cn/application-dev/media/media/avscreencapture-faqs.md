@@ -19,7 +19,7 @@
 
 ## 通话中无法启动录屏报错AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT
 
-如需在通话中开启录屏，可使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置蜂窝通话时是否保持录屏。
+如需在通话中开启录屏，可使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置蜂窝通话时保持录屏。
 
 ## 录屏过程中，点击不允许、在通知栏停止录屏和通话打断录屏后，无法重新开始录屏。
 
