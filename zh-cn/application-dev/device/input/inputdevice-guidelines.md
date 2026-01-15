@@ -87,7 +87,7 @@ struct Index {
                 });
                 if (this.keyBoards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
                   data.type === 'remove') {
-                  // 物理键盘已拔掉
+                  // 物理键盘已拔出
                   this.isPhysicalKeyboardExist = false;
                   this.keyBoards.delete(data.deviceId);
                 }
