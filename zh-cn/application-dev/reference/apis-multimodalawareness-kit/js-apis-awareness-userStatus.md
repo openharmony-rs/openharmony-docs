@@ -20,6 +20,10 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                | 值  | 说明                   |
 | ------------------- | ---- | ---------------------- |
 | OTHERS  | 0    | 表示是成年人操作。 |
@@ -30,6 +34,10 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 表示用户年龄群组分类检测结果。
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型   | 说明                   |
 | ------------------- | ---- | ---------------------- |
