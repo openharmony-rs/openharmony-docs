@@ -968,8 +968,8 @@ type Rect = common2D.Rect
 
 | 名称            | 类型    | 只读 | 可选 | 说明                                                |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| fillColor       | number | 否   | 否   | 遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。<br/> 通过fillColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式与RednerNode本身的颜色混合，生成最终颜色。 |
-| strokeColor     | number | 否   | 否   | 遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 <br/>  通过strokeColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式与RednerNode本身的颜色混合，生成最终颜色。 |
+| fillColor       | number | 否   | 否   | 遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。<br/> 通过fillColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式与RenderNode本身的颜色混合，生成最终颜色。 |
+| strokeColor     | number | 否   | 否   | 遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 <br/>  通过strokeColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式与RenderNode本身的颜色混合，生成最终颜色。 |
 | strokeWidth     | number | 否   | 否   | 遮罩的边框宽度，单位为px。默认值为0。   |
 
 ### constructor<sup>12+</sup>
