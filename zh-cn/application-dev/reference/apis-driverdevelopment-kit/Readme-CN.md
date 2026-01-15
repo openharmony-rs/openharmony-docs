@@ -18,9 +18,9 @@
   - 模块<!--driver-development-module-->
     - [BaseDdk](capi-baseddk.md)
     - [HidDdk](capi-hidddk.md)
-    - [SCSIPeripheralDDK](capi-scsiperipheralddk.md)
-    - [UsbDDK](capi-usbddk.md)
-    - [SerialDdk](capi-serialddk.md)
+    - [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
+    - [UsbDdk](capi-usbddk.md)
+    - [USBSerialDDK](capi-serialddk.md)
   - 头文件<!--driver-development-headerfile-->
     - [ddk_api.h](capi-ddk-api-h.md)
     - [ddk_types.h](capi-ddk-types-h.md)
