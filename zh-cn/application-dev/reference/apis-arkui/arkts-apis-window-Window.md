@@ -15671,6 +15671,8 @@ ArkTS-Sta: setSubWindowZLevel(zLevel: int): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备中返回801错误码。
+
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 22
@@ -15776,6 +15778,8 @@ ArkTS-Sta: getSubWindowZLevel(): int
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 18
 
