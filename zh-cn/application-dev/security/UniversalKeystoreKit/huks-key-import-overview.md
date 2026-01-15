@@ -96,12 +96,11 @@
 - 使用对端导出的SM2公钥，采用NoPadding模式并指定SM3为摘要算法加密本端生成的SM4密钥。
 - 导入加密密钥。
 
-导出密钥接口返回的公钥材料格式按照[X.509格式封装](huks-concepts.md#公钥材料格式)，导入加密密钥接口返回的密钥材料按照**Length<sub>Data</sub>-Data**的格式封装，分别是[(Length<sub>EncSm4</sub>Data<sub>EncSm4</sub>)(Length<sub>EncImpKey</sub>Data<sub>EncImpKey</sub>)]。
+导出密钥接口返回的[公钥材料格式](huks-concepts.md#公钥材料格式)按照X.509格式封装，导入加密密钥接口返回的密钥材料按照**Length<sub>Data</sub>-Data**的格式封装，分别是[(Length<sub>EncSm4</sub>Data<sub>EncSm4</sub>)(Length<sub>EncImpKey</sub>Data<sub>EncImpKey</sub>)]。
 
 > **说明：**
-> 1. 使用数字信封导入密钥需要使用tag，HUKS_TAG_UNWRAP_ALGORITHM_SUITE，该tag值为HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING。
-> 2. 数字信封导入密钥时，如果是导入非对称密钥的密钥对，需要添加[OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA标签](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，并将公钥以DER格式封装填入该标签，且针对非对称密钥仅支持以密钥对形式导入。
-> 3. 仅<!--RP1-->标准设备<!--RP1End-->支持数字信封导入。
+>
+> 仅<!--RP1-->标准设备<!--RP1End-->支持数字信封导入。
 
 ## 支持的算法
 
@@ -159,5 +158,5 @@ HUKS支持导入密钥类型众多，各种不同类型对应的密钥格式不�
 | -------- | -------- | -------- |
 | 对称密钥 | - | 密钥字节数据 |
 | 非对称密钥-密钥对| - | [密钥对材料格式](huks-concepts.md#密钥对材料格式) |
-| 非对称密钥-公钥 | ED25519、X25519 | 密钥字节数据，参考[X25519密钥公钥导入](huks-import-key-in-plaintext-arkts.md#导入x25519密钥公钥)|
+| 非对称密钥-公钥 | ED25519、X25519 | 密钥字节数据，参考[导入X25519密钥公钥](huks-import-key-in-plaintext-arkts.md#导入x25519密钥公钥)|
 | 非对称密钥-公钥 | RSA、ECC、ECDH、DSA、DH、SM2 | X.509规范的DER格式 |
