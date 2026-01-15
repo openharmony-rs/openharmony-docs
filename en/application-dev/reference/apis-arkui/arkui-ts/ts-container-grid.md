@@ -2536,7 +2536,6 @@ struct GridExample {
 }
 ```
 
-![gridScrollWithPanGesture](figures/gridScrollWithPanGesture.gif)
 
 ### Example 16: Customizing the Drag Effect of GridItem
 
@@ -3028,7 +3027,6 @@ struct GridExample {
   }
 }
 ```
-![gridContentSize](figures/gridContentSize.gif)
 
 ### Example 20: Setting the Multi-selection Collapsing Animation
 

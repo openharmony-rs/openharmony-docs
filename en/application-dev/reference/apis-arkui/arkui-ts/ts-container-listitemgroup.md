@@ -493,7 +493,7 @@ struct ListItemGroupExample {
 
 This example shows how to use ListItemGroup in a multi-column layout. You can set the [lanes](./ts-container-list.md#lanes9) attribute of the List component to implement a multi-column layout.
 
-For details about ListDataSource and the complete code, see [Example 1 Setting the Top/Bottom Sticky Mode](#example-1-setting-the-top-bottom-sticky-mode).
+For details about ListDataSource and the complete code, see [Example 1: Setting a Sticky Header and Footer](#example-1-setting-a-sticky-header-and-footer).
 
 <!--code_no_check-->
 ```ts

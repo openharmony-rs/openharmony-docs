@@ -1470,7 +1470,7 @@ onSubmit(callback: OnSubmitCallback)
 
 Triggered when the Enter key on the keyboard is pressed for submission.
 
-On non-TV devices, the input box is blurred and the keyboard is hidden by default when the Enter key is pressed. You can configure whether to hide the keyboard in the OnSubmitCallback callback. For details, see [Example 2 (Setting the Underline)](#example-2-setting-the-underline).
+On non-TV devices, the input box is blurred and the keyboard is hidden by default when the Enter key is pressed. You can configure whether to hide the keyboard in the OnSubmitCallback callback. For details, see [Example 2: Setting Underline](#example-2-setting-the-underlines).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

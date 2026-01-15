@@ -664,7 +664,7 @@ Optional parameter for setting accessibility operations of a component, which is
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| option  | [AccessibilityActionOptions] (ts-types.md#accessibilityactionoptions23 object description)\| undefined | Yes  | Parameter of the accessibility operation, which is used to restrict or modify the sliding behavior in the accessibility operation.<br>The scrollStep parameter in AccessibilityActionOptions is used to set the number of sliding steps in the accessibility operation.<br>When the value is undefined, scrollStep is processed as 1.|
+| option  | [AccessibilityActionOptions](ts-types.md#accessibilityactionoptions23)\| undefined | Yes  | Parameter of the accessibility operation, which is used to restrict or modify the sliding behavior in the accessibility operation.<br>The scrollStep parameter in AccessibilityActionOptions is used to set the number of sliding steps in the accessibility operation.<br>When the value is undefined, scrollStep is processed as 1.|
 
 **Return value**
 

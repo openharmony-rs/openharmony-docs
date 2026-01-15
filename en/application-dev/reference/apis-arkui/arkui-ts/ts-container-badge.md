@@ -163,7 +163,7 @@ The [universal events](ts-component-general-events.md) are supported.
 
 ### Example 1: Setting the Badge Content
 
-This example uses the value parameter of the [BadgeParamWithNumber](#badgeparamwithnumber object description) and the count parameter of the [BadgeParamWithString](#badgeparamwithstring object description) to display different effects when the Badge component receives an empty value, a character, or a number.
+This example uses the value parameter of the [BadgeParamWithNumber](#badgeparamwithnumber) and the count parameter of the [BadgeParamWithString](#badgeparamwithstring) to display different effects when the Badge component receives an empty value, a character, or a number.
 
 ```ts
 // xxx.ets

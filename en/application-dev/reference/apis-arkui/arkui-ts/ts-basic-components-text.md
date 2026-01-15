@@ -1679,7 +1679,7 @@ Enumerates the marquee scrolling modes.
 | DEFAULT  | 0  | The marquee scrolls continuously. Default value.      |
 | ON_FOCUS | 1  | The marquee starts scrolling when it has focus or when the mouse hovers over it.|
 
-## MarqueeUpdatePolicy<sup>23+</sup> enumerations
+## MarqueeUpdatePolicy<sup>23+</sup>
 
 Scrolling strategy of the marquee after its attributes are updated.
 
@@ -2368,7 +2368,7 @@ function MenuStyles() {
 
 ### Example 9: Setting Text Features and Line Spacing
 
-This example demonstrates text feature configuration and line spacing effects using the [fontFeature](#fontfeature12) and [lineSpacing](#linespacing12) APIs, available since API version 12. The **onlyBetweenLines** property in [LineSpacingOptions](ts-text-common.md#linespacingoptions20-object-description) (available since API version 20) controls whether line spacing applies only between lines.
+This example demonstrates text feature configuration and line spacing effects using the [fontFeature](#fontfeature12) and [lineSpacing](#linespacing12) APIs, available since API version 12. The **onlyBetweenLines** property in [LineSpacingOptions](ts-text-common.md#linespacingoptions20) (available since API version 20) controls whether line spacing applies only between lines.
 
 ```ts
 // xxx.ets

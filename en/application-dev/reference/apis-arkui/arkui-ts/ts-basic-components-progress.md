@@ -50,7 +50,7 @@ Defines progress bar options.
 <<<<<<< HEAD
 | type<sup>8+</sup>          | [ProgressType](#progresstype8)   | No  | Yes  | Style of the progress indicator.<br>Default value: **ProgressType.Linear**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>Note: Different types must correspond to different [style](#style8) attribute settings. For details about the mapping, see [ProgressStyleMap](#progressstylemap10).|
 =======
-| type<sup>8+</sup>          | [ProgressType](#progresstype8)   | No  | Yes  | Style of the progress indicator.<br>Default value: **ProgressType.Linear**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>Note: Different types must correspond to different [style](#style8) attribute settings. For details about the mapping, see [ProgressStyleMap](#progressstylemap10 object description).|
+| type<sup>8+</sup>          | [ProgressType](#progresstype8)   | No  | Yes  | Style of the progress indicator.<br>Default value: **ProgressType.Linear**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>Note: Different types must correspond to different [style](#style8) attribute settings. For details about the mapping, see [ProgressStyleMap](#progressstylemap10).|
 >>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 | style<sup>(deprecated)</sup> | [ProgressStyle](#progressstyle) | No  | Yes  | Style of the progress indicator.<br>This parameter is deprecated since API version 8. You are advised to use **type** instead.<br>Default value: **ProgressStyle.Linear**|
 

@@ -438,7 +438,7 @@ Whether to enable haptic feedback.
 
 | Name        | Type                                                 | Mandatory| Description                        |
 |-------------|-----------------------------------------------------|----|----------------------------|
-| value | boolean | Yes | Whether to enable haptic feedback.<br>true: Touch feedback is supported.<br>false: Touch feedback is not supported.<br>Default value: **true**<br>To enable the touch feedback, you need to configure the [requestPermissions](../../../ security/AccessToken/declare-permissions.md#Declaring permissions in the configuration file) field in the module.json5 file of the project to enable the vibration permission. The configuration is as follows:<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
+| value | boolean | Yes | Whether to enable haptic feedback.<br>true: Touch feedback is supported.<br>false: Touch feedback is not supported.<br>Default value: **true**<br>To enable the touch feedback, you need to configure the [requestPermissions](../../../ security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file) field in the module.json5 file of the project to enable the vibration permission. The configuration is as follows:<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
 
 ## IndexerAlign
 
