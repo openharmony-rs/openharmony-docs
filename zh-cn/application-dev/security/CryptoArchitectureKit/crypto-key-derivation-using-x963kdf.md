@@ -39,12 +39,12 @@
 - 通过await返回结果：
 
   <!-- @[use_x963kdf_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/ets/pages/Await.ets) -->
-
+  
   ``` TypeScript
-
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   async function kdfAwait() {
     let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
     let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
