@@ -42,13 +42,13 @@
 - 通过await返回结果：
 
   <!-- @[use_scrypt_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/SCRYPTDerivation/entry/src/main/ets/pages/Await.ets) -->
-
+  
   ``` TypeScript
-
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   async function scryptAwait() {
     try {
       let spec: cryptoFramework.ScryptSpec = {
