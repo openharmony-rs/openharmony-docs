@@ -108,10 +108,10 @@
 
 - 同步返回结果（调用方法[generatePubKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatepubkeysync12)）：
   <!-- @[specify_parameter_generate_rsa_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/rsa/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   // RSA公钥密钥参数生成函数
   function genRsaPubKeySpec(nIn: bigint, eIn: bigint): cryptoFramework.RSAPubKeySpec {
     let rsaCommSpec: cryptoFramework.RSACommonParamsSpec = {
@@ -127,7 +127,7 @@
     };
     return rsaPubKeySpec;
   }
-
+  
   // 根据密钥参数构造RSA公钥规范对象
   function genRsa2048PubKeySpec() {
     let nIn =
@@ -139,7 +139,7 @@
     let eIn = BigInt('0x010001');
     return genRsaPubKeySpec(nIn, eIn);
   }
-
+  
   // 将RSA公钥规格与预期值进行比较
   function compareRsaPubKeyBySpec(rsaKeySpec: cryptoFramework.RSAPubKeySpec, n: bigint | string | number,
     e: bigint | string | number) {
@@ -159,7 +159,7 @@
     }
     return true;
   }
-
+  
   // 根据RSA公钥规格生成RSA公钥，获取密钥规格，并与预期值进行比较
   function rsaUsePubKeySpecGetSync() {
     let rsaPubKeySpec = genRsa2048PubKeySpec();
