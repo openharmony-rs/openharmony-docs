@@ -50,7 +50,7 @@
 | [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) | Camera_ConcurrentInfo | 相机并发能力信息。 |
 | [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md) | Camera_ControlCenterStatusInfo | 控制器效果激活状态信息。 |
 | [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) | Camera_OcclusionDetectionResult | 相机镜头遮挡、脏污检测结果。 |
-| [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | 相机管理器对象。<br> 可以使用{@link OH_Camera_GetCameraManager}方法创建指针。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | 相机管理器对象。<br> 可以使用[OH_Camera_GetCameraManager](#oh_camera_getcameramanager)方法创建指针。 |
 
 ### 枚举
 
