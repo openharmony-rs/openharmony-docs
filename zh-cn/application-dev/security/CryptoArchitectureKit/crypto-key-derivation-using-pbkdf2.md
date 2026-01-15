@@ -86,10 +86,10 @@
 
 - 通过同步方式返回结果：
   <!-- @[use_pbkdf2_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/ets/pages/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function kdfSync() {
     let spec: cryptoFramework.PBKDF2Spec = {
       algName: 'PBKDF2',
