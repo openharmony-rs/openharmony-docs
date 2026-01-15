@@ -259,7 +259,7 @@
         - [数据库加密 (C/C++)](database/native-data-encryption.md)
         - [基于设备分类和数据分级的访问控制 (ArkTS)](database/access-control-by-device-and-data-level.md)
         - [基于设备分类和数据分级的访问控制 (C/C++)](database/native-access-control-by-device-and-data-level.md)
-        - [E类加密数据库的使用 (ArkTS)](database/encrypted_estore_guidelines.md)
+        - [E类加密数据库的使用 (ArkTS)](database/encrypted-estore-guidelines.md)
       - 跨应用数据共享<!--cross-app-data-share-->
         - [跨应用数据共享概述](database/data-share-overview.md)
         - 一对多跨应用数据共享<!--one-to-many-data-share-->
@@ -781,6 +781,7 @@
         - [虚拟屏的创建和使用 (ArkTS) (仅对系统应用开放)](displaymanager/virtualScreen-guideline-sys.md)
         <!--DelEnd-->
         - [屏幕管理开发术语](displaymanager/display-terminology.md)
+      - [ArkUI术语](ui/arkui-glossary.md)
     - ArkWeb（方舟Web）<!--arkweb-->
       - [ArkWeb简介](web/web-component-overview.md)
       - [ArkWeb进程](web/web_component_process.md)
@@ -917,6 +918,7 @@
             - [ArkTS卡片使用自定义字体](form/arkts-ui-widget-load-custom-font.md)
             <!--Del-->
             - [ArkTS卡片玻璃材质适配（仅对系统应用开放）](form/arkts-ui-widget-visual-effect-sys.md)
+            - [ArkTS卡片新材质适配（仅对系统应用开放）](form/arkts-ui-widget-effect-sys.md)
             <!--DelEnd-->
           - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
             - [ArkTS卡片页面刷新概述](form/arkts-ui-widget-interaction-overview.md)
@@ -1513,7 +1515,6 @@
         - 故障检测<!--fault-analysis-->
           - [简介](dfx/fault-detection-overview.md)
           - 崩溃检测<!--crash-detection-->
-            - [崩溃检测概述](dfx/crash-detection-overview.md)
             - [JS Crash（进程崩溃）检测](dfx/jscrash-guidelines.md)
             - [Cpp Crash（进程崩溃）检测](dfx/cppcrash-guidelines.md)
           - [AddrSanitizer（地址越界）检测](dfx/address-sanitizer-guidelines.md)
@@ -1640,25 +1641,22 @@
     - Audio Kit（音频服务）<!--audio-kit-->
       - [Audio Kit简介](media/audio/audio-kit-intro.md)
       - [使用合适的音频类型](media/audio/using-right-streamusage-and-sourcetype.md)
-      - [音频焦点和音频会话介绍](media/audio/audio-playback-concurrency.md)
-      - 音频焦点管理<!--audio-session-->
+      - 音频焦点和音频会话管理<!--audio-session-->
+        - [音频焦点和音频会话介绍](media/audio/audio-playback-concurrency.md)
         - [使用AudioSession管理应用音频焦点(ArkTS)](media/audio/audio-session-management.md)
         - [使用AudioSession管理应用音频焦点(C/C++)](media/audio/using-ohaudio-for-session.md)
       - 音频播放<!--audio-playback-->
         - [音频播放开发概述](media/audio/audio-playback-overview.md)
-        - [使用AudioRenderer开发音频播放功能](media/audio/using-audiorenderer-for-playback.md)
+        - [推荐使用OHAudio开发音频播放功能(C/C++)](media/audio/using-ohaudio-for-playback.md)
+        - [使用AudioRenderer开发音频播放功能(ArkTs)](media/audio/using-audiorenderer-for-playback.md)
         <!--Del-->
         - [使用TonePlayer开发音频播放功能(仅对系统应用开放)](media/audio/using-toneplayer-for-playback-sys.md)
         <!--DelEnd-->
-        - [使用OHAudio开发音频播放功能(C/C++)](media/audio/using-ohaudio-for-playback.md)
         - [低时延音频播放(C/C++)](media/audio/audio-fast-playback.md)
         - [低功耗音频播放](media/audio/power-saving-for-playback.md)
-        - [使用AudioHaptic开发音振协同播放功能](media/audio/using-audiohaptic-for-playback.md)
+        - [使用AudioHaptic开发音振协同播放功能(ArkTs)](media/audio/using-audiohaptic-for-playback.md)
         - [使用SoundPlayer开发系统音效播放功能](media/audio/using-soundplayer-for-playback.md)
         - [播放音量管理](media/audio/volume-management.md)
-        - [提升音频性能体验](media/audio/audio-performance.md)
-        - [音频时延管理](media/audio/audio-latency.md)
-        - [音频工作组管理](media/audio/audio-workgroup.md)
         - [空间音频能力查询和状态订阅](media/audio/public-audio-spatialization-management.md)
         <!--Del-->
         - [空间音频管理(仅对系统应用开放)](media/audio/audio-spatialization-management-sys.md)
@@ -1672,12 +1670,12 @@
         <!--DelEnd-->
       - 音频录制<!--audio-recording-->
         - [音频录制开发概述](media/audio/audio-recording-overview.md)
-        - [使用AudioCapturer开发音频录制功能](media/audio/using-audiocapturer-for-recording.md)
-        - [使用OHAudio开发音频录制功能(C/C++)](media/audio/using-ohaudio-for-recording.md)
+        - [推荐使用OHAudio开发音频录制功能(C/C++)](media/audio/using-ohaudio-for-recording.md)
+        - [使用AudioCapturer开发音频录制功能(ArkTs)](media/audio/using-audiocapturer-for-recording.md)
         - [低时延音频录制(C/C++)](media/audio/audio-fast-recording.md)
-        - [管理麦克风](media/audio/mic-management.md)
-        - [音频录制流管理](media/audio/audio-recording-stream-management.md)
-        - [共享音频输入](media/audio/audio-recording-concurrency.md)
+        - [管理麦克风静音状态](media/audio/mic-management.md)
+        - [查询和监听其他应用录制状态](media/audio/audio-recording-stream-management.md)
+        - [录音并发策略说明](media/audio/audio-recording-concurrency.md)
         - [实现音频耳返](media/audio/audio-ear-monitor.md)
         - [实现音频低时延耳返](media/audio/audio-ear-monitor-loopback.md)
       - 音频设备路由管理<!--audio-device-->
@@ -1689,6 +1687,9 @@
       - 音频通话<!--audio-call-->
         - [音频通话开发概述](media/audio/audio-call-overview.md)
         - [开发音频通话功能](media/audio/audio-call-development.md)
+      - 音频性能调优<!--audio-performance-optimization-->
+        - [提升音频性能体验](media/audio/audio-performance.md)
+        - [音频工作组管理](media/audio/audio-workgroup.md)
       - 音频编创<!--audio-production-creation-->
         - [音频编创开发概述(C/C++)](media/audio/audio-suite.md)
         - [离线编辑(C/C++)](media/audio/audio-suite-manual-rendering.md)
@@ -1980,7 +1981,6 @@
       - [获取设备的位置信息开发指导(ArkTS)](device/location/location-guidelines.md)
       - [地理编码转化与逆地理编码转化开发指导(ArkTS)](device/location/geocode-guidelines.md)
       - [基于设备自身定位的地理围栏开发指导(ArkTS)](device/location/geofence-guidelines.md)
-      - [基于FenceExtensionAbility的云侧地理围栏开发指导](device/location/fenceExtensionAbility.md)
       - [相关实例](device/location/app-samples.md)
     - Notification Kit（用户通知服务）<!--notification-kit-->
       - [Notification Kit简介](notification/notification-overview.md)
@@ -2844,6 +2844,7 @@
           - [@ohos.uiExtensionHost (系统接口)](reference/apis-arkui/js-apis-uiExtensionHost-sys.md)
           - [@ohos.arkui.UIContext (UIContext)(系统接口)](reference/apis-arkui/js-apis-arkui-UIContext-sys.md)
           - [@ohos.promptAction (弹窗)(系统接口)](reference/apis-arkui/js-apis-promptAction-sys.md)
+          - [@ohos.arkui.uiMaterial (系统材质)(系统接口)](reference/apis-arkui/arkts-apis-uimaterial-sys.md)
           <!--DelEnd-->
           - arkui<!--ui-interface-arkui-->
             - [BuilderNode](reference/apis-arkui/js-apis-arkui-builderNode.md)
@@ -2956,6 +2957,7 @@
             <!--Del-->
             - [点光源设置 (系统接口)](reference/apis-arkui/arkui-ts/ts-universal-attributes-point-light-style-sys.md)
             - [图像效果 (系统接口)](reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md)
+            - [融合效果 (系统接口)](reference/apis-arkui/arkui-ts/ts-universal-attributes-use-union-effect-sys.md)
             <!--DelEnd-->
           - 交互属性<!--interaction-property-->
             - [禁用控制](reference/apis-arkui/arkui-ts/ts-universal-attributes-enable.md)
@@ -3062,7 +3064,7 @@
           - [Toggle](reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)
           - [Checkbox](reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md)
           - [CheckboxGroup](reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md)
-          - [Picker](reference/apis-arkui/arkui-ts/ts-container-picker.md)
+          - [UIPickerComponent](reference/apis-arkui/arkui-ts/ts-container-ui-picker-component.md)
           - [CalendarPicker](reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md)
           - [DatePicker](reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md)
           - [TextPicker](reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md)
@@ -3252,6 +3254,10 @@
           - [ToolBarV2](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ToolBarV2.md)
           - [TreeView](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-TreeView.md)
           - [advanced.Counter](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Counter.md)
+          <!--Del-->
+          - [SegmentButton(系统接口)](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton-sys.md)
+          - [SegmentButtonV2(系统接口)](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2-sys.md)
+          <!--DelEnd-->
         - 状态管理与渲染控制<!--state-management-and-rendering-control-->
           - [应用级变量的状态管理](reference/apis-arkui/arkui-ts/ts-state-management.md)
           - [状态管理V1装饰器参数](reference/apis-arkui/arkui-ts/ts-state-management-v1-parameter.md)
@@ -3280,6 +3286,7 @@
           - [RemoteWindow (系统接口)](reference/apis-arkui/arkui-ts/ts-basic-components-remotewindow-sys.md)
           - [PluginComponent (系统接口)](reference/apis-arkui/arkui-ts/ts-basic-components-plugincomponent-sys.md)
           - [UIExtensionComponent (系统接口)](reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)
+          - [UnionEffectContainer (系统接口)](reference/apis-arkui/arkui-ts/ts-container-unioneffectcomponent-sys.md)
         <!--DelEnd-->
         - 已停止维护的组件与接口<!--arkui-declarative-comp-dep-->
           <!--Del-->
@@ -3513,6 +3520,7 @@
           - [ArkUI_DragAndDropInfo](reference/apis-arkui/capi-arkui-nativemodule-arkui-draganddropinfo.md)
           - [ArkUI_DrawableDescriptor](reference/apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptor.md)
           - [ArkUI_DrawableDescriptor_AnimationController](reference/apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)
+          - [OH_PixelmapNative](reference/apis-arkui/capi-arkui-nativemodule-oh-pixelmapnative.md)
           - [OH_PixelmapNative*](reference/apis-arkui/capi-arkui-nativemodule-oh-pixelmapnative8h.md)
           - [ArkUI_ExpectedFrameRateRange](reference/apis-arkui/capi-arkui-nativemodule-arkui-expectedframeraterange.md)
           - [ArkUI_AnimateCompleteCallback](reference/apis-arkui/capi-arkui-nativemodule-arkui-animatecompletecallback.md)
@@ -3591,6 +3599,7 @@
           - [ArkUI_RotationOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-rotationoptions.md)
           - [ArkUI_LayoutConstraint](reference/apis-arkui/capi-arkui-nativemodule-arkui-layoutconstraint.md)
           - [ArkUI_DrawContext](reference/apis-arkui/capi-arkui-nativemodule-arkui-drawcontext.md)
+          - [ArkUI_Node](reference/apis-arkui/capi-arkui-nativemodule-arkui-node-descriptor.md)
           - [ArkUI_Node*](reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)
           - [ArkUI_NativeDialog*](reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog8h.md)
           - [ArkUI_WaterFlowSectionOption](reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md)
@@ -3631,6 +3640,7 @@
           - [ArkUI_TextMarqueeOption](reference/apis-arkui/capi-arkui-nativemodule-arkui-textmarqueeoption.md)
           - [ArkUI_UIInputEvent](reference/apis-arkui/capi-arkui-eventmodule-arkui-uiinputevent.md)
           - [ArkUI_ShowCounterConfig](reference/apis-arkui/capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
+          - [ArkUI_Node*](reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h-descriptor.md)
           - [ArkUI_TextContentBaseController](reference/apis-arkui/capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)
           - [PictureInPicture_PipConfig](reference/apis-arkui/capi-pictureinpicture-pipconfig.md)
           - [WindowManager_Rect](reference/apis-arkui/capi-windowmanager-rect.md)
@@ -3678,6 +3688,9 @@
           - [ArkUI_TextEditMenuOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
           - [ArkUI_TextSelectionMenuOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)
           - [ArkUI_SelectedDragPreviewStyle](reference/apis-arkui/capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)
+          - [ArkUI_PickerIndicatorBackground](reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)
+          - [ArkUI_PickerIndicatorDivider](reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatordivider.md)
+          - [ArkUI_PickerIndicatorStyle](reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)
       - 错误码<!--arkui-arkts-errcode-->
         - UI界面<!--arkui-ui-arkts-errcode-->
           - [接口调用异常错误码](reference/apis-arkui/errorcode-internal.md)
@@ -4689,6 +4702,7 @@
           - 结构体<!--input-struct-->
             - [Input_InterceptorEventCallback](reference/apis-input-kit/capi-input-input-interceptoreventcallback.md)
             - [Input_DeviceListener](reference/apis-input-kit/capi-input-input-devicelistener.md)
+            - [OH_PixelmapNative](reference/apis-input-kit/capi-input-oh-pixelmapnative.md)
             - [Input_KeyState](reference/apis-input-kit/capi-input-input-keystate.md)
             - [Input_KeyEvent](reference/apis-input-kit/capi-input-input-keyevent.md)
             - [Input_MouseEvent](reference/apis-input-kit/capi-input-input-mouseevent.md)
@@ -5080,7 +5094,6 @@
           - [NativeWindow](reference/apis-avcodec-kit/capi-codecbase-nativewindow.md)
           - [OH_AVCodec](reference/apis-avcodec-kit/capi-codecbase-oh-avcodec.md)
           - [OH_AVBuffer](reference/apis-avcodec-kit/capi-core-oh-avbuffer.md)
-          - [OH_NativeBuffer](reference/apis-avcodec-kit/capi-core-oh-nativebuffer.md)
           - [OH_AVCodecBufferAttr](reference/apis-avcodec-kit/capi-core-oh-avcodecbufferattr.md)
           - [OH_AVFormat](reference/apis-avcodec-kit/capi-core-oh-avformat.md)
           - [OH_AVMemory](reference/apis-avcodec-kit/capi-core-oh-avmemory.md)
@@ -5796,6 +5809,8 @@
     - Calendar Kit（日历服务）<!--calendar-api-->
       - ArkTS API<!--calendar-arkts-->
         - [@ohos.calendarManager（日程管理）](reference/apis-calendar-kit/js-apis-calendarManager.md)
+      - 错误码<!--calendar-arkts-errorcode-->
+        - [日历服务错误码](reference/apis-calendar-kit/errorcode-calendarManager.md)
     - Contacts Kit（联系人服务）<!--contacts-api-->
       - ArkTS API<!--contacts-arkts-->
         - [@ohos.contact (联系人)](reference/apis-contacts-kit/js-apis-contact.md)
@@ -5945,6 +5960,8 @@
         - [JSVM_TypeTag](reference/common/capi-jsvm-jsvm-typetag.md)
         - [JSVM_PropertyHandlerConfigurationStruct](reference/common/capi-jsvm-jsvm-propertyhandlerconfigurationstruct.md)
         - [JSVM_ScriptOrigin](reference/common/capi-jsvm-jsvm-scriptorigin.md)
+        - [JSVM_CompileOptions](reference/common/capi-jsvm-jsvm-compileoptions.md) 
+        - [JSVM_CodeCache](reference/common/capi-jsvm-jsvm-codecache.md)
         - [JSVM_PropertyHandler](reference/common/capi-jsvm-jsvm-propertyhandler.md)
         - [JSVM_DefineClassOptions](reference/common/capi-jsvm-jsvm-defineclassoptions.md)
         - [JSVM_VM__*](reference/common/capi-jsvm-jsvm-vm--8h.md)

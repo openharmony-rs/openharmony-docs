@@ -1185,7 +1185,7 @@ Defines the **TagInfo** object, which provides information about the tag technol
 | ----------------------------- | ------------------------------------------------------------- | -------- | -------- | -------------------------------------------------------------------------------------------- |
 | uid<sup>9+</sup>              | number[]                                                      | No      | No      | Tag unique identifier (UID), which consists of hexadecimal numbers ranging from **0x00** to **0xFF**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                    |
 | technology<sup>9+</sup>       | number[]                                                      | No      | No      | Supported tag technologies. Each number is a constant indicating the supported technology.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                    |
-| supportedProfiles             | number[]                                                      | No      | No      | Supported profiles. This parameter is not supported since API version 9. Use [tag.TagInfo#technology](#taginfo) instead.           |
+| supportedProfiles<sup>(deprecated)</sup>             | number[]                                                      | No      | No      | Supported profiles.<br>Note: This parameter is supported since API version 7 and deprecated since API version 9. Use **[tag.TagInfo#technology](#taginfo)** instead.           |
 
 ## NdefRecord<sup>9+</sup>
 Defines an NDEF record. For details, see *NFCForum-TS-NDEF_1.0*.
@@ -1308,7 +1308,7 @@ Enumerates the MIFARE Ultralight tag types.
 
 type NfcATag = _NfcATag
 
-Defines an **NfcATag** object.
+Obtains an **NfcATag** object.
 
 **System capability**: SystemCapability.Communication.NFC.Tag
 
@@ -1316,7 +1316,7 @@ Defines an **NfcATag** object.
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| [_NfcATag](./js-apis-nfctech.md#nfcatag) | Object that implements access to NFC-A (ISO 15693) properties and I/O operations on a tag. |
+| [_NfcATag](./js-apis-nfctech.md#nfcatag) | Object that implements access to NFC-A(ISO 14443-3A) properties and I/O operations on a tag. |
 
 ## NfcBTag<sup>7+</sup>
 
@@ -1344,7 +1344,7 @@ Obtains an **NfcFTag** object.
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| [_NfcFTag](./js-apis-nfctech.md#nfcftag) | Object that implements access to NFC-F (ISO 6319-4) properties and I/O operations on a tag. |
+| [_NfcFTag](./js-apis-nfctech.md#nfcftag) | Object that implements access to NFC-F(JIS 6319-4) properties and I/O operations on a tag. |
 
 ## NfcVTag<sup>7+</sup>
 

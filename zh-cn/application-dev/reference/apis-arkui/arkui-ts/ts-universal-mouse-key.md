@@ -64,6 +64,7 @@ onMouse(event: (event: MouseEvent) => void): T
 ## 示例
 
 该示例通过按钮设置了鼠标事件，通过鼠标点击按钮可以触发[onMouse](#onmouse)事件，获取鼠标事件相关参数。从API version 15开始，可以获取鼠标事件[MouseEvent](#mouseevent对象说明)的targetDisplayId、rawDeltaX、rawDeltaY、pressedButtons等参数。
+
 鼠标滚轮的处理请参考[轴事件示例](ts-universal-events-axis.md#示例)。
 
 ```ts

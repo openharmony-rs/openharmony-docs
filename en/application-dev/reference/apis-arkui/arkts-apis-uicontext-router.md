@@ -1362,11 +1362,15 @@ let router: Router = uiContext.getRouter();
 router.clear();    
 ```
 
-## getLength
+## getLength<sup>(deprecated)</sup>
 
 getLength(): string
 
 Obtains the number of pages in the current stack.
+
+> **NOTE**
+>
+> This API is supported since API version 10 and deprecated since API version 23. You are advised to use [getStackSize](#getstacksize23) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1390,6 +1394,50 @@ let uiContext: UIContext = this.getUIContext();
 let router: Router = uiContext.getRouter();
 let size = router.getLength();        
 console.info('pages stack size = ' + size);    
+```
+
+## getStackSize<sup>23+</sup>
+
+getStackSize(): number
+
+Obtains the number of pages in the current stack.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type    | Description                |
+| ------ | ------------------ |
+| number | Number of pages in the stack. The maximum value is **32**.|
+
+**Example**
+
+```ts
+@Entry
+@Component
+struct Index {
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button() {
+        Text('stack size')
+          .fontSize(25)
+          .fontWeight(FontWeight.Bold)
+      }.type(ButtonType.Capsule)
+      .margin({ top: 20 })
+      .backgroundColor('#ccc')
+      .onClick(() => {
+        console.info(`get stack size: ${this.getUIContext().getRouter().getStackSize()}`)
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## getState

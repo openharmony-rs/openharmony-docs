@@ -1,4 +1,4 @@
-# Common Basic Capability<!--common-basic-api-->
+# Common Basic Capabilities<!--common-basic-api-->
 
 <!--Kit: Common-->
 <!--Subsystem: Common-->

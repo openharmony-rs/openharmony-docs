@@ -140,6 +140,7 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
 activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
 
 在指定逻辑屏激活（前台启动或切换）目标系统账号。使用Promise异步回调。
+
 当前不支持跨逻辑屏激活，即在指定逻辑屏上激活另一个已在逻辑屏前台运行的系统账号。
 
 **系统接口：** 此接口为系统接口。
@@ -2723,6 +2724,7 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback&lt;ExecutorProp
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -2787,6 +2789,7 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -5004,11 +5007,13 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialInfo, i.e. authType or authSubType. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted account. |
+| 12300020 | Device hardware abnormal. |
+| 12300090 | Cross-device capability not supported. |
+| 12300091 | Cross-device communication failed. |
 | 12300101 | The token is invalid. |
 | 12300106 | The authentication type is not supported. |
 | 12300109 | The authentication, enrollment, or update operation is canceled. |

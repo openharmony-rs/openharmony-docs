@@ -1046,7 +1046,7 @@ try {
 
 getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-Obtains the widget information provided by all applications on the device. This API uses an asynchronous callback to return the result.
+Obtains the widget information provided by all applications on the device (excluding template widgets). This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1094,7 +1094,7 @@ try {
 
 getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-Obtains the widget information provided by all applications on the device. This API uses a promise to return the result.
+Obtains the widget information provided by all applications on the device (excluding template widgets). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1139,7 +1139,7 @@ try {
 
 getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-Obtains the widget information provided by a given application on the device. This API uses an asynchronous callback to return the result.
+Obtains the widget information provided by a specified application on the device (excluding template widgets). This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1189,7 +1189,7 @@ try {
 
 getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-Obtains the widget information provided by a given application on the device. This API uses an asynchronous callback to return the result.
+Obtains the widget information provided by a specified application on the device (excluding template widgets). This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1240,7 +1240,7 @@ try {
 
 getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-Obtains the widget information provided by a given application on the device. This API uses a promise to return the result.
+Obtains the widget information provided by a specified application on the device (excluding template widgets). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1294,7 +1294,7 @@ try {
 
 getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-Obtains the widget information provided by a given application on the device. This API uses a promise to return the result.
+Obtains the widget information provided by a specified application on the device (excluding template widgets). This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -2466,7 +2466,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.clearRouterProxy(formIds).then(() => {
-    console.info('formHost clear rourter proxy success');
+    console.info('formHost clear router proxy success');
   }).catch((err: BusinessError) => {
     console.error(`formHost clear router proxy error, code: ${err.code}, message: ${err.message}`);
   });
@@ -2500,7 +2500,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The application is not a system application.                 |
+| 202      | caller is not system app.                 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2555,7 +2555,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The application is not a system application.                 |
+| 202      | caller is not system app.                 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2659,7 +2659,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The application is not a system application.                 |
+| 202      | caller is not system app.                 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2763,7 +2763,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The application is not a system application.                                    |
+| 202      | caller is not system app.                                    |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -3163,7 +3163,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message|
 | -------- | -------- |
 | 201 | Permissions denied. |
-| 202 | Permissions denied.Called by non-system application. |
+| 202 | caller is not system app. |
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501012 | The dimension parameter is incorrect. |
@@ -3179,6 +3179,202 @@ try {
   let newDimension = formInfo.FormDimension.Dimension_1_2;
   let newRect: formInfo.Rect = {left: 1, top: 2, width: 100, height: 100};
   formHost.updateFormSize(formId, newDimension, newRect);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## getAllTemplateFormsInfo<sup>23+</sup>
+
+getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
+
+Obtains the template widget information provided by all applications on the device. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Return value**
+
+| Type                                                                                    | Description                   |
+|:---------------------------------------------------------------------------------------|:----------------------|
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise used to return the information obtained.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+
+| Error Code ID| Error Message|
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**Example**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getAllTemplateFormsInfo().then((data: formInfo.FormInfo[]) => {
+    for (let formInfo of data) {
+      console.info(`getAllTemplateFormsInfo bundleName: ${formInfo.bundleName}, moduleName: ${formInfo.moduleName}, name: ${formInfo.name}`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+
+## getTemplateFormsInfo<sup>23+</sup>
+
+getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
+
+Obtains the template widget information provided by a specified application on the device. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description   |
+| ------ | ------ | ---- | ------- |
+| bundleName | string | Yes| Bundle name of the application.|
+| moduleName | string | No|  Module name. By default, no value is passed.|
+
+**Return value**
+
+| Type                                                                                    | Description                               |
+|:---------------------------------------------------------------------------------------| :---------------------------------- |
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise used to return the information obtained.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+
+| Error Code ID| Error Message|
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**Example**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getTemplateFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
+    for (let formInfo of data) {
+      console.info(`getTemplateFormsInfo bundleName: ${formInfo.bundleName}, moduleName: ${formInfo.moduleName}, name: ${formInfo.name}`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.onTemplateFormDetailInfoChange<sup>23+</sup>
+
+onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback): void
+
+Subscribes to changes in the static configuration information of template widgets. This API uses an asynchronous callback to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description   |
+| ------ | ------ | ---- | ------- |
+| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo.md#forminfo) | Yes  | Callback function used to listen for changes in the static configuration information of template widgets.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+
+| Error Code ID| Error Message|
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | Permissions denied.Called by non-system application. |
+| 16500050 | IPC connection error. |
+
+**Example**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const callback: formInfo.TemplateFormDetailInfoCallback = (info: formInfo.TemplateFormDetailInfo[]) => {
+    for (let templateFormDetailInfo of info) {
+      console.info(`TemplateFormDetailInfoCallback bundleName: ${templateFormDetailInfo.bundleName}, moduleName: ${templateFormDetailInfo.moduleName}, formName: ${templateFormDetailInfo.formName}`);
+    }
+  };
+  formHost.onTemplateFormDetailInfoChange(callback);
+  console.info(`onTemplateFormDetailInfoChange success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+
+## formHost.offTemplateFormDetailInfoChange<sup>23+</sup>
+
+offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallback): void
+
+Unsubscribes from changes in the static configuration information of template widgets. This API uses an asynchronous callback to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description   |
+| ------ | ------ | ---- | ------- |
+| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo.md#forminfo) | No  | Callback function used to listen for changes in the static configuration information of template widgets.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+
+| Error Code ID| Error Message|
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | Permissions denied.Called by non-system application. |
+| 16500050 | IPC connection error. |
+
+**Example**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.offTemplateFormDetailInfoChange();
+  console.info(`offTemplateFormDetailInfoChange success`);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }

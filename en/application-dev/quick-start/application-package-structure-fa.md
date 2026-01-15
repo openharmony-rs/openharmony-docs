@@ -11,7 +11,7 @@ The following figure shows the package structure of an application developed bas
 
 >
 > **NOTE**
-> It is the only application development model supported by API version 8 and earlier. Now, the stage model is recommended for application development.
+> The FA application development model is supported in API version 8 and earlier. Now, the stage model is recommended for application development.
 >
 
 
@@ -30,5 +30,5 @@ The difference between the application package structures in the FA model and st
 
 - The **pack.info** file describes the HAP attributes in the bundle, for example, **bundleName** and **versionCode** of an application and **name**, **type**, and **abilities** of a module. The file is automatically generated when DevEco Studio builds the bundle.
 
-**Figure 1** Application package structure in FA model
+**Figure 1** Application package structure in FA model 
 ![app-pack-fa](figures/app-pack-fa.png)

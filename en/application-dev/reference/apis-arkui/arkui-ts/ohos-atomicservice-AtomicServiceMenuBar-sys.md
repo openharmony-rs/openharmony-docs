@@ -95,7 +95,7 @@ struct Index {
             event();
           })
       }
-      Text (`Expected result: ${text}`)
+      Text(`Expected result: ${text}`)
         .width(300)
         .textAlign(TextAlign.Start)
         .fontSize(12)

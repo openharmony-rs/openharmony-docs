@@ -53,7 +53,7 @@
     - [@ohos.selectionInput.SelectionExtensionAbility (SelectionExtensionAbility) (System API)](js-apis-selectionInput-selectionExtensionAbility-sys.md)
     - [@ohos.selectionInput.SelectionExtensionContext (SelectionExtensionContext) (System API)](js-apis-selectionInput-selectionExtensionContext-sys.md)
     - [@ohos.selectionInput.selectionManager (Word Selection Management) (System API)](js-apis-selectionInput-selectionManager-sys.md)
-    - @ohos.selectionInput.SelectionPanel (Word Selection Panel) (System API) (js-apis-selectionInput-selectionPanel-sys.md)
+    - [@ohos.selectionInput.SelectionPanel (Word Selection Panel) (System API)](js-apis-selectionInput-selectionPanel-sys.md)
     <!--DelEnd-->
   - Process and Thread Communication<!--process-thread-communi-arkts-->
     - [System Common Events](common_event/commonEventManager-definitions.md)

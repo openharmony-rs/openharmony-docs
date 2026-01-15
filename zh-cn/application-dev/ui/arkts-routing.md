@@ -521,6 +521,7 @@ onBackClick(): void {
 其中，this.getUIContext().getRouter().showAlertBeforeBackPage方法接收一个对象作为参数，该对象包含以下属性：
 
 message：string类型，表示询问框的内容。
+
 如果调用成功，则会在目标界面开启页面返回询问框；如果调用失败，则会抛出异常，并通过err.code和err.message获取错误码和错误信息。
 
 当用户点击“返回”按钮时，会弹出确认对话框，询问用户是否确认返回。选择“取消”将停留在当前页目标页面；选择“确认”将触发[back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back)方法，并根据参数决定如何执行跳转。
@@ -552,15 +553,17 @@ onBackClick() {
   // 弹出自定义的询问框
   this.getUIContext().getPromptAction().showDialog({
     // 您还没有完成支付，确定要返回吗？
-    // 请在resources\base\element\string.json文件中配置name为'pageRouter_dialog_xxx'，value为非空字符串的资源
-    message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string,
+    // 请将$r('app.string.pageRouter_dialog_context')替换为实际资源文件，在本示例中该资源文件的value值为"您还没有完成支付，确定要返回吗？"
+    message: $r('app.string.pageRouter_dialog_context'),
     buttons: [
       {
-        text: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_canceled') as string,
+        // 请将$r('app.string.pageRouter_dialog_canceled')替换为实际资源文件，在本示例中该资源文件的value值为"取消"
+        text: $r('app.string.pageRouter_dialog_canceled'),
         color: '#FF0000'
       },
       {
-        text: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_confirmed') as string,
+        // 请将$r('app.string.pageRouter_dialog_confirmed')替换为实际资源文件，在本示例中该资源文件的value值为"确认"
+        text: $r('app.string.pageRouter_dialog_confirmed'),
         color: '#0099FF'
       }
     ]

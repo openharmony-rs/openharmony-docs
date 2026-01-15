@@ -792,6 +792,7 @@ scrollTo(options: ScrollOptions)
 scrollEdge(value: Edge, options?: ScrollEdgeOptions)
 
 滚动到容器边缘，不区分滚动轴方向，Edge.Top和Edge.Start表现相同，Edge.Bottom和Edge.End表现相同。
+
 Scroll组件默认有动画，Grid、List、WaterFlow组件默认无动画。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -829,7 +830,7 @@ fling(velocity: number): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 ### scrollPage<sup>9+</sup>
 
@@ -1022,7 +1023,7 @@ getItemRect(index: number): RectResult
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 ### getItemIndex<sup>14+</sup>
 
 getItemIndex(x: number, y: number): number
@@ -1061,7 +1062,7 @@ getItemIndex(x: number, y: number): number
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   |The controller not bound to component.                              |
+| 100004   |Controller not bound to a component.                              |
 
 ### contentSize<sup>22+</sup>
 

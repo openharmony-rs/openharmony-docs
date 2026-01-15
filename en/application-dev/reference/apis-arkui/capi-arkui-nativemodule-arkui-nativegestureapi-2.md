@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_NativeGestureAPI_2
+```
+
 ## Overview
 
 Defines a collection of gesture APIs.
@@ -35,7 +39,7 @@ Defines a collection of gesture APIs.
 
 ### setGestureInterrupterToNode()
 
-```
+```c
 int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData,ArkUI_GestureInterruptResult (*interrupter)(ArkUI_GestureInterruptInfo* info))
 ```
 

@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 该模块提供空间查询相关的常用功能：包括对内外卡的空间查询、对应用分类数据统计的查询、对应用数据的查询等。
 
@@ -284,7 +284,7 @@ getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | The input parameter is invalid. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
@@ -319,7 +319,7 @@ getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
 
 ## storageStatistics.getBundleStats<sup>9+</sup>
 
-getBundleStats(packageName: string,  callback: AsyncCallback&lt;BundleStats&gt;, index?: number): void
+getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, index?: number): void
 
 异步获取应用存储数据的空间大小（单位为Byte），以callback方式返回。
 
@@ -345,7 +345,7 @@ getBundleStats(packageName: string,  callback: AsyncCallback&lt;BundleStats&gt;,
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | The input parameter is invalid. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |

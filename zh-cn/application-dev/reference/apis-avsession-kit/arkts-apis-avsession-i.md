@@ -82,7 +82,7 @@
 | title        | string                  | 否   | 是   | 播放列表媒体标题。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | subtitle     | string                  | 否   | 是   | 播放列表媒体子标题。在使用了cast+协议的音频投播场景下，暂不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | description  | string                  | 否   | 是   | 播放列表媒体描述的文本。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| mediaImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| string  | 否   | 是   | 播放列表媒体图片像素数据。在使用了cast+协议的音频投播场景下，暂不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| mediaImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| string  | 否   | 是   | 设置播放列表媒体图片像素数据。<br>当入参为string类型时：<br>- 只支持使用网络URI设置封面，不支持本地URI。<br>- 其作用与albumCoverUri属性功能相同，且优先级高于albumCoverUri。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | extras       |  Record\<string, Object>    | 否   | 是   | 播放列表媒体额外字段。<br>**说明：**<br>从API version 20开始参数类型变更为Record\<string, Object>，API version 19及之前的版本extras的参数类型为：{[key: string]: Object}，无需适配仍可使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 | mediaUri     | string                  | 否   | 是   | 播放列表媒体URI。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | mediaType     | string                  | 否   | 是   | 播放列表媒体类型。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -273,3 +273,30 @@
 |y  | number  |  否  |  否  | 组件在y轴上的位置坐标。单位为vp。|
 |width | number  |  否  |  否  | 组件宽度。单位为vp。 |
 |height | number  |  否  |  否  | 组件高度。单位为vp。|
+
+## AVSessionDescriptor <sup>23+</sup>
+
+会话的相关描述信息。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+| 名称          | 类型              | 只读 | 可选 | 说明  |
+| --------------| ---------------- | ---------------- | ---------------- |------|
+| sessionId    | string    | 否 | 否  | 会话ID。      |
+| type         | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)   | 否 | 否 | 会话类型。    |
+| sessionTag   | string             | 否 | 否 | 会话的自定义名称。    |
+| elementName  | [ElementName](../apis-ability-kit/js-apis-bundle-ElementName.md)  | 否 | 否 | 会话所属应用的信息（包含bundleName、abilityName等）。 |
+| isActive     | boolean             | 否 | 否 | 会话是否被激活。<br>true：已被激活。 <br>false：没有被激活。                                      |
+| isTopSession | boolean             | 否 | 否 | 会话是否为最新的会话。 <br>true：是最新的会话。<br>false：不是最新的会话。                |
+
+## DesktopLyricState<sup>23+</sup>
+
+桌面歌词状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+| 名称      | 类型   | 只读 | 可选 | 说明         |
+| :-------- | :----- | :--- |:--- | :----------- |
+| isLocked  | boolean | 否 | 否   | 桌面歌词位置是否锁定。true表示已锁定，false表示未锁定。若已锁定，桌面显示歌词后，固定当前位置，不可被拖拽。  |

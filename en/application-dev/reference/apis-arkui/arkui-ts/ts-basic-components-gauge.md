@@ -20,9 +20,11 @@ This component can contain only one child component.
 
 > **NOTE**
 >
-> You are advised to use the **Text** component to build the current value and auxiliary text.
+> - Supported child component types: built-in and custom components, including https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/ui/rendering-control/arkts-rendering-control-foreach.md but excluding [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md) and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)
 >
-> If the width and height of the child component are in percentage, the reference range is the rectangle that has the outer ring as its inscribed circle.
+> - You are advised to use the **Text** component to build the current value and auxiliary text.
+>
+> - If the width and height of the child component are in percentage, the reference range is the rectangle that has the outer ring as its inscribed circle.
 
 
 ## APIs
@@ -125,9 +127,9 @@ Sets the colors of the gauge.
 
 Since API version 11, this API follows the following rules:
 
-If the data type is ResourceColor, the ring is of the monochrome type.
+If the data type is [ResourceColor](ts-types.md#resourcecolor), the ring is of the monochrome type.
 
-If the data type is LinearGradient, the ring is of the gradient type.
+If the data type is [LinearGradient](ts-basic-components-datapanel.md#lineargradient10), the ring is of the gradient type.
 
 If the data type is Array, the ring is of the gradient type. The first parameter indicates the color value. If it is set to a non-color value, the color of 0xFFE84026 is used. The second parameter indicates the color weight. If it is set to a negative number or a non-numeric value, the color weight is 0.
 
@@ -143,7 +145,7 @@ A ring of the gradient type contains a maximum of nine color segments. If there 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| colors | [ResourceColor<sup>11+</sup>](ts-types.md#resourcecolor) \| [LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10) \| Array&lt;[[ResourceColor<sup>10+</sup>](ts-types.md#resourcecolor) \| [LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10) \, number]&gt; | Yes  | Colors of the gauge. You can set colors for individual segments.<br>Default value in API version 9: **Color.Black**<br>Default value in API version 11:<br>If no color is provided or the array is empty, the ring color will be a gradient consisting of the following colors: 0xFF64BB5C, 0xFFF7CE00, and 0xFFE84026.<br>If a color value is provided but invalid, the ring will be in the color of 0xFFE84026.<br>Colors with a weight of 0 are not displayed in the ring. If all weights are 0, the ring is not displayed.|
+| colors | [ResourceColor<sup>11+</sup>](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\|&nbsp;Array&lt;[[ResourceColor<sup>10+</sup>](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>11+</sup>](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\,&nbsp;number]&gt; | Yes  | Colors of the gauge. You can set colors for individual segments.<br>Default value in API version 9: **Color.Black**<br>Default value in API version 11:<br>If no color is provided or the array is empty, the ring color will be a gradient consisting of the following colors: 0xFF64BB5C, 0xFFF7CE00, and 0xFFE84026.<br>If a color value is provided but invalid, the ring will be in the color of 0xFFE84026.<br>Colors with a weight of 0 are not displayed in the ring. If all weights are 0, the ring is not displayed.|
 
 ### strokeWidth
 
@@ -161,13 +163,15 @@ Sets the stroke width of the gauge.
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| length | [Length](ts-types.md#length) | Yes  | Stroke width of the gauge.<br>Default value: **4**<br>Unit: vp<br>**NOTE**<br>If a value less than 0 is set, the default value is used.<br>If the value exceeds the maximum value, the radius of the gauge, the maximum value is used.<br>The value cannot be in percentage.|
+| length | [Length](ts-types.md#length) | Yes  | Stroke width of the gauge.<br>Default value: **4**<br>Unit: vp<br>**NOTE**<br>A value less than or equal to 0 is handled as the default value.<br>If the value exceeds the maximum value, the radius of the gauge, the maximum value is used.<br>The value cannot be in percentage.|
 
 ### description<sup>11+</sup>
 
 description(value: CustomBuilder)
 
 Sets the description of the gauge.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -185,6 +189,8 @@ trackShadow(value: GaugeShadowOptions)
 
 Sets the shadow style of the gauge.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -193,13 +199,15 @@ Sets the shadow style of the gauge.
 
 | Name| Type                                               | Mandatory| Description                                                        |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [GaugeShadowOptions](#gaugeshadowoptions11) | Yes  | Shadow style.<br>**NOTE**<br>The shadow color is the same as the ring color.<br>If this attribute is set to **null**, the shadow effect is disabled.|
+| value  | [GaugeShadowOptions](#gaugeshadowoptions11) | Yes  | Shadow effect. You can specify the blur radius, and the offset along the X and Y axes.<br>**NOTE**<br>The shadow color is the same as the ring color.<br>If this attribute is set to **null**, the shadow effect is disabled.|
 
 ### indicator<sup>11+</sup>
 
 indicator(value: GaugeIndicatorOptions)
 
 Sets the indicator style of the gauge.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -253,11 +261,15 @@ Creates a content modifier.
 
 Inherits from [MultiShadowOptions](ts-information-display-common.md#multishadowoptions) and has all attributes of **MultiShadowOptions**.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 ## GaugeIndicatorOptions<sup>11+</sup>
 
 Provides gauge indicator options.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -265,7 +277,7 @@ Provides gauge indicator options.
 
 | Name         | Type| Read-Only| Optional| Description|
 | ------------- | ------- | ---- | -------- | -------- |
-| icon | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Image path of the icon.<br>**NOTE**<br>If this parameter is not set, the default style is used, which is a triangle pointer.<br>Icons in SVG format are supported. If icons in other formats are used, the default triangle style indicator is used.|
+| icon | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Image path of the icon.<br>**NOTE**<br>If this parameter is not set, the default style is used, which is a triangle pointer.<br>Only icons in SVG format are supported. If icons in other formats are used, the default triangle style indicator is used.|
 | space | [Dimension](ts-types.md#dimension10) | No| Yes| Distance between the indicator and the outer edge of the ring. The value cannot be in percentage.<br>Default value: **8**<br>Unit: vp<br>**NOTE**<br> For the default triangle style indicator, the distance is the amount of space between the triangle and the outer edge of the ring.<br> If this parameter is set to a value less than 0, the default value will be used.<br>If this parameter is set to a value greater than the ring radius, the default value will be used.|
 
 ## GaugeConfiguration<sup>12+</sup>
@@ -296,11 +308,11 @@ struct Gauge1 {
   descriptionBuilder() {
     Text('Description')
       .maxFontSize('30sp')
-      .minFontSize("10.0vp")
-      .fontColor("#fffa2a2d")
+      .minFontSize('10.0vp')
+      .fontColor('#fffa2a2d')
       .fontWeight(FontWeight.Medium)
       .width('100%')
-      .height("100%")
+      .height('100%')
       .textAlign(TextAlign.Center)
   }
 
@@ -311,16 +323,16 @@ struct Gauge1 {
           Text('50')
             .fontWeight(FontWeight.Medium)
             .width('62%')
-            .fontColor("#ff182431")
-            .maxFontSize("60.0vp")
-            .minFontSize("30.0vp")
+            .fontColor('#ff182431')
+            .maxFontSize('60.0vp')
+            .minFontSize('30.0vp')
             .textAlign(TextAlign.Center)
             .margin({ top: '35%' })
             .textOverflow({ overflow: TextOverflow.Ellipsis })
             .maxLines(1)
           Text('Auxiliary text')
-            .maxFontSize("16.0fp")
-            .minFontSize("10.0vp")
+            .maxFontSize('16.0fp')
+            .minFontSize('10.0vp')
             .fontColor($r('sys.color.ohos_id_color_text_secondary'))
             .fontWeight(FontWeight.Regular)
             .width('67.4%')
@@ -331,15 +343,15 @@ struct Gauge1 {
       .value(50)
       .startAngle(210)
       .endAngle(150)
-      .colors([[new LinearGradient([{ color: "#deb6fb", offset: 0 }, { color: "#ac49f5", offset: 1 }]), 9],
-        [new LinearGradient([{ color: "#bbb7fc", offset: 0 }, { color: "#564af7", offset: 1 }]), 8],
-        [new LinearGradient([{ color: "#f5b5c2", offset: 0 }, { color: "#e64566", offset: 1 }]), 7],
-        [new LinearGradient([{ color: "#f8c5a6", offset: 0 }, { color: "#ed6f21", offset: 1 }]), 6],
-        [new LinearGradient([{ color: "#fceb99", offset: 0 }, { color: "#f7ce00", offset: 1 }]), 5],
-        [new LinearGradient([{ color: "#dbefa5", offset: 0 }, { color: "#a5d61d", offset: 1 }]), 4],
-        [new LinearGradient([{ color: "#c1e4be", offset: 0 }, { color: "#64bb5c", offset: 1 }]), 3],
-        [new LinearGradient([{ color: "#c0ece5", offset: 0 }, { color: "#61cfbe", offset: 1 }]), 2],
-        [new LinearGradient([{ color: "#b5e0f4", offset: 0 }, { color: "#46b1e3", offset: 1 }]), 1]])
+      .colors([[new LinearGradient([{ color: '#deb6fb', offset: 0 }, { color: '#ac49f5', offset: 1 }]), 9],
+        [new LinearGradient([{ color: '#bbb7fc', offset: 0 }, { color: '#564af7', offset: 1 }]), 8],
+        [new LinearGradient([{ color: '#f5b5c2', offset: 0 }, { color: '#e64566', offset: 1 }]), 7],
+        [new LinearGradient([{ color: '#f8c5a6', offset: 0 }, { color: '#ed6f21', offset: 1 }]), 6],
+        [new LinearGradient([{ color: '#fceb99', offset: 0 }, { color: '#f7ce00', offset: 1 }]), 5],
+        [new LinearGradient([{ color: '#dbefa5', offset: 0 }, { color: '#a5d61d', offset: 1 }]), 4],
+        [new LinearGradient([{ color: '#c1e4be', offset: 0 }, { color: '#64bb5c', offset: 1 }]), 3],
+        [new LinearGradient([{ color: '#c0ece5', offset: 0 }, { color: '#61cfbe', offset: 1 }]), 2],
+        [new LinearGradient([{ color: '#b5e0f4', offset: 0 }, { color: '#46b1e3', offset: 1 }]), 1]])
       .width('80%')
       .height('80%')
       .strokeWidth(18)
@@ -372,9 +384,9 @@ struct Gauge2 {
           Text('50')
             .fontWeight(FontWeight.Medium)
             .width('62%')
-            .fontColor("#ff182431")
-            .maxFontSize("60.0vp")
-            .minFontSize("30.0vp")
+            .fontColor('#ff182431')
+            .maxFontSize('60.0vp')
+            .minFontSize('30.0vp')
             .textAlign(TextAlign.Center)
             .margin({ top: '35%' })
             .textOverflow({ overflow: TextOverflow.Ellipsis })
@@ -400,59 +412,59 @@ struct Gauge2 {
 This example illustrates how to configure a custom description area using the [description](#description11) attribute.
 
 ```ts
-@Entry
-@Component
-struct Gauge3 {
-  @Builder
-  descriptionBuilder() {
-    Text('Description')
-      .maxFontSize('30sp')
-      .minFontSize("10.0vp")
-      .fontColor("#fffa2a2d")
-      .fontWeight(FontWeight.Medium)
-      .width('100%')
-      .height("100%")
-      .textAlign(TextAlign.Center)
-  }
-
-  build() {
-    Column() {
+  @Entry
+  @Component
+  struct Gauge3 {
+    @Builder
+    descriptionBuilder() {
+      Text('Description')
+        .maxFontSize('30sp')
+        .minFontSize('10.0vp')
+        .fontColor('#fffa2a2d')
+        .fontWeight(FontWeight.Medium)
+        .width('100%')
+        .height('100%')
+        .textAlign(TextAlign.Center)
+    }
+  
+    build() {
       Column() {
-        Gauge({ value: 50, min: 1, max: 100 }) {
-          Column() {
-            Text('50')
-              .fontWeight(FontWeight.Medium)
-              .width('62%')
-              .fontColor("#ff182431")
-              .maxFontSize("60.0vp")
-              .minFontSize("30.0vp")
-              .textAlign(TextAlign.Center)
-              .margin({ top: '35%' })
-              .textOverflow({ overflow: TextOverflow.Ellipsis })
-              .maxLines(1)
-          }.width('100%').height('100%')
-        }
-        .startAngle(210)
-        .endAngle(150)
-        .colors([[new LinearGradient([{ color: "#deb6fb", offset: 0 }, { color: "#ac49f5", offset: 1 }]), 9],
-          [new LinearGradient([{ color: "#bbb7fc", offset: 0 }, { color: "#564af7", offset: 1 }]), 8],
-          [new LinearGradient([{ color: "#f5b5c2", offset: 0 }, { color: "#e64566", offset: 1 }]), 7],
-          [new LinearGradient([{ color: "#f8c5a6", offset: 0 }, { color: "#ed6f21", offset: 1 }]), 6],
-          [new LinearGradient([{ color: "#fceb99", offset: 0 }, { color: "#f7ce00", offset: 1 }]), 5],
-          [new LinearGradient([{ color: "#dbefa5", offset: 0 }, { color: "#a5d61d", offset: 1 }]), 4],
-          [new LinearGradient([{ color: "#c1e4be", offset: 0 }, { color: "#64bb5c", offset: 1 }]), 3],
-          [new LinearGradient([{ color: "#c0ece5", offset: 0 }, { color: "#61cfbe", offset: 1 }]), 2],
-          [new LinearGradient([{ color: "#b5e0f4", offset: 0 }, { color: "#46b1e3", offset: 1 }]), 1]])
-        .width('80%')
-        .height('80%')
-        .strokeWidth(18)
-        .description(this.descriptionBuilder)
-        .trackShadow({ radius: 7, offsetX: 7, offsetY: 7 })
-        .padding(18)
-      }.margin({ top: 40 }).width('100%').height('100%')
+        Column() {
+          Gauge({ value: 50, min: 1, max: 100 }) {
+            Column() {
+              Text('50')
+                .fontWeight(FontWeight.Medium)
+                .width('62%')
+                .fontColor('#ff182431')
+                .maxFontSize('60.0vp')
+                .minFontSize('30.0vp')
+                .textAlign(TextAlign.Center)
+                .margin({ top: '35%' })
+                .textOverflow({ overflow: TextOverflow.Ellipsis })
+                .maxLines(1)
+            }.width('100%').height('100%')
+          }
+          .startAngle(210)
+          .endAngle(150)
+          .colors([[new LinearGradient([{ color: '#deb6fb', offset: 0 }, { color: '#ac49f5', offset: 1 }]), 9],
+            [new LinearGradient([{ color: '#bbb7fc', offset: 0 }, { color: '#564af7', offset: 1 }]), 8],
+            [new LinearGradient([{ color: '#f5b5c2', offset: 0 }, { color: '#e64566', offset: 1 }]), 7],
+            [new LinearGradient([{ color: '#f8c5a6', offset: 0 }, { color: '#ed6f21', offset: 1 }]), 6],
+            [new LinearGradient([{ color: '#fceb99', offset: 0 }, { color: '#f7ce00', offset: 1 }]), 5],
+            [new LinearGradient([{ color: '#dbefa5', offset: 0 }, { color: '#a5d61d', offset: 1 }]), 4],
+            [new LinearGradient([{ color: '#c1e4be', offset: 0 }, { color: '#64bb5c', offset: 1 }]), 3],
+            [new LinearGradient([{ color: '#c0ece5', offset: 0 }, { color: '#61cfbe', offset: 1 }]), 2],
+            [new LinearGradient([{ color: '#b5e0f4', offset: 0 }, { color: '#46b1e3', offset: 1 }]), 1]])
+          .width('80%')
+          .height('80%')
+          .strokeWidth(18)
+          .description(this.descriptionBuilder)
+          .trackShadow({ radius: 7, offsetX: 7, offsetY: 7 })
+          .padding(18)
+        }.margin({ top: 40 }).width('100%').height('100%')
+      }
     }
   }
-}
 ```
 ![gauge](figures/gauge-image3.png)
 
@@ -469,17 +481,17 @@ struct Gauge4 {
       Gauge({ value: 50, min: 1, max: 100 }) {
         Column() {
           Text('50')
-            .maxFontSize("72.0vp")
-            .minFontSize("10.0vp")
-            .fontColor("#ff182431")
+            .maxFontSize('72.0vp')
+            .minFontSize('10.0vp')
+            .fontColor('#ff182431')
             .width('40%')
             .textAlign(TextAlign.Center)
             .margin({ top: '35%' })
             .textOverflow({ overflow: TextOverflow.Ellipsis })
             .maxLines(1)
           Text('Auxiliary text')
-            .maxFontSize("30.0vp")
-            .minFontSize("18.0vp")
+            .maxFontSize('30.0vp')
+            .minFontSize('18.0vp')
             .fontWeight(FontWeight.Medium)
             .fontColor($r('sys.color.ohos_id_color_text_secondary'))
             .width('62%')
@@ -489,15 +501,15 @@ struct Gauge4 {
       }
       .startAngle(210)
       .endAngle(150)
-      .colors([[new LinearGradient([{ color: "#deb6fb", offset: 0 }, { color: "#ac49f5", offset: 1 }]), 9],
-        [new LinearGradient([{ color: "#bbb7fc", offset: 0 }, { color: "#564af7", offset: 1 }]), 8],
-        [new LinearGradient([{ color: "#f5b5c2", offset: 0 }, { color: "#e64566", offset: 1 }]), 7],
-        [new LinearGradient([{ color: "#f8c5a6", offset: 0 }, { color: "#ed6f21", offset: 1 }]), 6],
-        [new LinearGradient([{ color: "#fceb99", offset: 0 }, { color: "#f7ce00", offset: 1 }]), 5],
-        [new LinearGradient([{ color: "#dbefa5", offset: 0 }, { color: "#a5d61d", offset: 1 }]), 4],
-        [new LinearGradient([{ color: "#c1e4be", offset: 0 }, { color: "#64bb5c", offset: 1 }]), 3],
-        [new LinearGradient([{ color: "#c0ece5", offset: 0 }, { color: "#61cfbe", offset: 1 }]), 2],
-        [new LinearGradient([{ color: "#b5e0f4", offset: 0 }, { color: "#46b1e3", offset: 1 }]), 1]])
+      .colors([[new LinearGradient([{ color: '#deb6fb', offset: 0 }, { color: '#ac49f5', offset: 1 }]), 9],
+        [new LinearGradient([{ color: '#bbb7fc', offset: 0 }, { color: '#564af7', offset: 1 }]), 8],
+        [new LinearGradient([{ color: '#f5b5c2', offset: 0 }, { color: '#e64566', offset: 1 }]), 7],
+        [new LinearGradient([{ color: '#f8c5a6', offset: 0 }, { color: '#ed6f21', offset: 1 }]), 6],
+        [new LinearGradient([{ color: '#fceb99', offset: 0 }, { color: '#f7ce00', offset: 1 }]), 5],
+        [new LinearGradient([{ color: '#dbefa5', offset: 0 }, { color: '#a5d61d', offset: 1 }]), 4],
+        [new LinearGradient([{ color: '#c1e4be', offset: 0 }, { color: '#64bb5c', offset: 1 }]), 3],
+        [new LinearGradient([{ color: '#c0ece5', offset: 0 }, { color: '#61cfbe', offset: 1 }]), 2],
+        [new LinearGradient([{ color: '#b5e0f4', offset: 0 }, { color: '#46b1e3', offset: 1 }]), 1]])
       .width('80%')
       .height('80%')
       .strokeWidth(18)
@@ -512,7 +524,7 @@ struct Gauge4 {
 
 ### Example 5: Setting the Minimum and Maximum Values
 
-This example shows how to set the minimum and maximum values of the gauge by configuring **min** and **max**.
+This example shows how to set the minimum and maximum values of the gauge by configuring **min** and **max** in [GaugeOptions](#gaugeoptions18).
 
 ```ts
 @Entry
@@ -523,10 +535,10 @@ struct Gauge5 {
       Gauge({ value: 50, min: 1, max: 100 }) {
         Column() {
           Text('50')
-            .maxFontSize("80sp")
-            .minFontSize("60.0vp")
+            .maxFontSize('80sp')
+            .minFontSize('60.0vp')
             .fontWeight(FontWeight.Medium)
-            .fontColor("#ff182431")
+            .fontColor('#ff182431')
             .width('40%')
             .height('30%')
             .textAlign(TextAlign.Center)
@@ -537,9 +549,9 @@ struct Gauge5 {
       }
       .startAngle(225)
       .endAngle(135)
-      .colors(new LinearGradient([{ color: "#e84026", offset: 0 },
-        { color: "#f7ce00", offset: 0.6 },
-        { color: "#64bb5c", offset: 1 }]))
+      .colors(new LinearGradient([{ color: '#e84026', offset: 0 },
+        { color: '#f7ce00', offset: 0.6 },
+        { color: '#64bb5c', offset: 1 }]))
       .width('80%')
       .height('80%')
       .strokeWidth(18)
@@ -567,7 +579,7 @@ struct Gauge6 {
             .maxFontSize('60sp')
             .minFontSize('30.0vp')
             .fontWeight(FontWeight.Medium)
-            .fontColor("#ff182431")
+            .fontColor('#ff182431')
             .width('62%')
             .textAlign(TextAlign.Center)
             .margin({ top: '35%' })
@@ -575,7 +587,7 @@ struct Gauge6 {
             .maxLines(1)
           Text('Auxiliary text')
             .maxFontSize('16sp')
-            .minFontSize("10.0vp")
+            .minFontSize('10.0vp')
             .fontColor($r('sys.color.ohos_id_color_text_secondary'))
             .fontWeight(FontWeight.Regular)
             .width('67.4%')
@@ -614,7 +626,7 @@ struct Gauge7 {
             .maxFontSize('60sp')
             .minFontSize('30.0vp')
             .fontWeight(FontWeight.Medium)
-            .fontColor("#ff182431")
+            .fontColor('#ff182431')
             .width('62%')
             .textAlign(TextAlign.Center)
             .margin({ top: '35%' })
@@ -661,9 +673,9 @@ function buildGauge(config: GaugeConfiguration) {
       value: config.value,
       min: config.min,
       max: config.max
-    }).width("50%")
+    }).width('50%')
   }
-  .width("100%")
+  .width('100%')
   .padding(20)
   .margin({ top: 5 })
   .alignItems(HorizontalAlign.Center)
@@ -777,9 +789,9 @@ struct Gauge2 {
 }
 ```
 ```xml
-<svg width="200px" height="200px">
-    <path d="M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z"
-          stroke="black" stroke-width="3" fill="white">
+<svg width='200px' height='200px'>
+    <path d='M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z'
+          stroke='black' stroke-width='3' fill='white'>
     </path>
 </svg>
 ```

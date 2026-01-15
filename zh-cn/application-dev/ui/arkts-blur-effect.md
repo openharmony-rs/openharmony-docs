@@ -124,7 +124,7 @@ struct Index {
 
 ## 使用backgroundBlurStyle为组件添加背景模糊效果
 
-<!-- @[animationBlur_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template3/BackDropBlurStyleDemo.ets) -->
+<!-- @[animationBlur_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template3/BackDropBlurStyleDemo.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -155,6 +155,7 @@ struct BackDropBlurStyleDemo {
             .fontColor(Color.Black)
         }
         .height('100%')
+        .margin({ top: 20 })
         .justifyContent(FlexAlign.Start)
       }
       .width(200)
@@ -190,6 +191,7 @@ struct BackDropBlurStyleDemo {
             .fontColor(Color.Black)
         }
         .height('100%')
+        .margin({ top: 20 })
         .justifyContent(FlexAlign.Start)
       }
       .width(200)

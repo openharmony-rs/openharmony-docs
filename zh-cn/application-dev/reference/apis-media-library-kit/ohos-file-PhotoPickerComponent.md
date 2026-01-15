@@ -7,7 +7,9 @@
 <!--Adviser: @w_Machine_cc-->
 
 应用可以在布局中嵌入PhotoPicker组件，通过此组件，应用无需申请权限，即可实现媒体文件选择功能。在用户选择媒体文件后，应用即可访问用户选中的图片或视频文件。仅包含读权限。
+
 需要注意的是PhotoPickerComponent不能嵌套使用，且不建议在PhotoPickerComponent上覆盖设置了overlay属性的组件，将导致PhotoPickerComponent无法接受手势事件。
+
 应用嵌入组件后，用户可直接在PhotoPicker组件中选择图片或视频文件。
 
 > **说明：**
@@ -32,21 +34,7 @@ import {
 
 ## PhotoPickerComponent
 
-PhotoPickerComponent({
-  pickerOptions?: PickerOptions,
-  onSelect?: (uri: string) => void,
-  onDeselect?: (uri: string) => void,
-  onItemClicked?: (itemInfo: ItemInfo, clickType: ClickType) => boolean,
-  onEnterPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) => boolean,
-  onExitPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) => boolean,
-  onPickerControllerReady?: () => void,
-  onPhotoBrowserChanged?: (browserItemInfo: BaseItemInfo) => boolean,
-  onSelectedItemsDeleted?: ItemsDeletedCallback,
-  onExceedMaxSelected?: ExceedMaxSelectedCallback,
-  onCurrentAlbumDeleted?: CurrentAlbumDeletedCallback,
-  onVideoPlayStateChanged?: videoPlayStateChangedCallback,
-  pickerController: PickerController
-})
+PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) => void, onDeselect?: (uri: string) => void, onItemClicked?: (itemInfo: ItemInfo, clickType: ClickType) => boolean, onEnterPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) => boolean, onExitPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) => boolean, onPickerControllerReady?: () => void, onPhotoBrowserChanged?: (browserItemInfo: BaseItemInfo) => boolean, onSelectedItemsDeleted?: ItemsDeletedCallback, onExceedMaxSelected?: ExceedMaxSelectedCallback, onCurrentAlbumDeleted?: CurrentAlbumDeletedCallback, onVideoPlayStateChanged?: videoPlayStateChangedCallback, pickerController: PickerController })
 
 应用可以在布局中嵌入PhotoPickerComponent组件，通过此组件，应用无需申请权限，即可访问公共目录中的图片或视频文件。
 
@@ -390,6 +378,36 @@ updatePickerOptions(updateConfig: UpdatablePickerConfigs): Promise\<void>
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | Promise\<void> | Promise对象，无返回结果。 |
+
+### saveTrustedPhotoAssetsEx<sup>23+</sup>
+
+saveTrustedPhotoAssetsEx(trustedUris: Array\<string>,settings?: Array\<photoAccessHelper.CreationSetting>, saveMode?: SaveMode): Promise\<Array\<string>>
+
+应用可通过该接口保存对应URI列表中的文件。使用Promise异步回调。
+
+> **说明：**
+>
+> 此接口通常与[replacePhotoPickerPreview](#replacephotopickerpreview15)接口结合使用，以保存替换显示成功后的应用沙箱图片或视频newUris到图库。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数**：
+
+| 参数名        | 类型                                                                                                   | 必填  | 说明                |
+|-------------- |-------------------------------------------------------------------------------------------------------| ----- |-------------------|
+| trustedUris   | Array&lt;string&gt;                                                                                   | 是 | 需要保存到图库的应用沙箱图片或视频URI。<br>trustedUris一般来自[replacePhotoPickerPreview](#replacephotopickerpreview15)替换显示成功后的应用沙箱图片或视频newUri。 |
+| settings       | Array&lt;[photoAccessHelper.CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)&gt;| 否 | 需要保存的文件对应的配置参数。|
+| saveMode      | [SaveMode](#savemode15)                                                                               | 否 | 图片或视频的保存模式。               |
+
+**返回值**：
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| Promise\<Array\<string>> | Promise对象，返回保存后新生成的媒体库文件对应的URI。 |
 
 ## BaseItemInfo
 

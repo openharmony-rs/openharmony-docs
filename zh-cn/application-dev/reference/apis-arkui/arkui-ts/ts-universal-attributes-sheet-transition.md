@@ -48,7 +48,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 >
 > 2. 为了使isShow参数值与半模态界面的状态同步，建议使用[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定isShow参数。从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 >
-> 3. 在半模态单挡位向上拖拽或是多挡位上滑换档情况下，内容在拖拽结束或换挡结束后更新显示区域。
+> 3. 在半模态单档位向上拖拽或是多档位上滑换档情况下，内容在拖拽结束或换挡结束后更新显示区域。
 >
 > 4. 半模态是一个严格和宿主节点绑定在一起的弹窗。若是想实现类似“页面显示的瞬间就弹出半模态”的效果，请确认宿主节点是否已挂载上树。若宿主节点还没上树就将isShow置为true，半模态将不生效。建议使用[onAppear](ts-universal-events-show-hide.md#onappear)函数，确保在宿主节点挂载后再显示半模态。
 > 尤其是 [SheetMode](#sheetmode12枚举说明) = EMBEDDED 时，除宿主节点外，还需确保对应的页面节点成功挂载。
@@ -100,7 +100,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | showInSubWindow<sup>19+</sup> | boolean                                  | 否 | 是    | 半模态是否在独立子窗中显示。<br>默认值：false<br>**说明：** <br>1. 若属性值为true，半模态可以在独立子窗口中展示，并且可以超过应用窗口范围。<br>2. 若属性值为false，半模态只能在应用窗口范围内展示。<br>3. 不建议在showInSubWindow为true的弹窗嵌套显示另一个showInSubWindow为true的弹窗，半模态可能会影响其他组件行为。<br>4. 不建议在showInSubWindow为true的弹窗中使用CalendarPicker、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog等picker组件，半模态会影响上述组件行为。<br>5. 半模态显示期间该属性不支持动态切换。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | enableFloatingDragBar<sup>20+</sup>              | boolean | 否 | 是   | 控制条是否悬浮显示，true为悬浮显示，false为不悬浮显示。<br />默认值：false <br /> **说明：** <br>悬浮效果只在控制条显示的场景生效，且控制条不占位。<br /> title传入[CustomBuilder](ts-types.md#custombuilder8)时enableFloatingDragBar始终为false。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | modalTransition<sup>20+</sup> | [ModalTransition](#modaltransition) | 否 | 是 | bindSheet全屏模态样式的系统转场方式。<br/>默认值：ModalTransition.DEFAULT<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| radiusRenderStrategy<sup>22+</sup> |  [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否 | 是  |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST <br/>**说明**: 当半模态设置模糊时，可通过设置为OFFSCREEN离屏模式解决半模态顶部或顶部圆角区域内显示效果异常问题。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| radiusRenderStrategy<sup>23+</sup> |  [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否 | 是  |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST <br/>**说明**: 当半模态设置模糊时，可通过设置为OFFSCREEN离屏模式解决半模态顶部或顶部圆角区域内显示效果异常问题。popup样式不支持设置组件绘制圆角模式。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SheetSize枚举说明
 
@@ -173,7 +173,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 1. 侧边样式默认转场方向为从右向左，退出则是原地向右退出；镜像场景默认转场则是从左向右，退出则是原地向左退出。不支持自定义转场。
 
-2. 无多挡位能力，不支持detents和detentSelection接口。同样也不支持控制条相关能力接口，如dragBar接口。
+2. 无多档位能力，不支持detents和detentSelection接口。同样也不支持控制条相关能力接口，如dragBar接口。
 
 3. 底部弹窗样式可以在转场结束后向上滑动交互，但侧边弹窗样式不支持在转场结束后往左滑动交互，只支持往右滑动关闭。镜像场景则能力相反。
 
@@ -192,15 +192,15 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | 名称             | 说明              |
 | --------------- |  --------------- |
 | height          | 高度只支持全屏高度。 |
-| detents | 无挡位能力。| 
+| detents | 无档位能力。| 
 | dragBar         | 不支持DragBar。  |
-| onDetentsDidChange | 无挡位能力。|
+| onDetentsDidChange | 无档位能力。|
 | uiContext | 不支持指定显示层级。|
 | mode | 不支持指定显示层级。 |
-| scrollSizeMode | 无挡位能力。  |
+| scrollSizeMode | 无档位能力。  |
 | enableHoverMode  | 无悬停态避让能力。|
 | hoverModeArea    | 无悬停态避让能力。|
-| detentSelection | 无挡位能力。 |
+| detentSelection | 无档位能力。 |
 | placement | 只支持气泡样式。 |
 | placementOnTarget | 只支持气泡样式。|
 | showInSubWindow | 不支持指定显示层级。 |
@@ -231,18 +231,18 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | --------------- |  --------------- |
 | height          | 高度只支持全屏高度。 |
 | width           | 宽度只支持全屏宽度。 |
-| detents | 无挡位能力。|
+| detents | 无档位能力。|
 | dragBar         | 不支持拖动条。  |
-| onDetentsDidChange | 无挡位能力。|
+| onDetentsDidChange | 无档位能力。|
 | showClose          | 不支持显示关闭按钮。 |
 | title          | 不支持显示标题栏。 |
 | uiContext | 不支持指定显示层级。|
 | mode | 不支持指定显示层级。 |
-| scrollSizeMode | 无挡位能力。  |
+| scrollSizeMode | 无档位能力。  |
 | keyboardAvoidMode | 无避让软键盘能力，需自定义避让。 |
 | enableHoverMode  | 无悬停态避让能力。|
 | hoverModeArea    | 无悬停态避让能力。|
-| detentSelection | 无挡位能力。 |
+| detentSelection | 无档位能力。 |
 | showInSubWindow | 不支持指定显示层级。 |
 | radius         | 不支持圆角。  |
 | borderWidth         | 不支持边框宽度。  |
@@ -428,9 +428,10 @@ struct SheetTransitionExample {
 ### 示例2（设置三个不同高度的档位）
 
 使用bindSheet的detents属性设置三个不同高度的档位。
-1、dragBar拖拽条只在多个档位高度时生效；
-2、区别于height属性在不同时刻设置不同档位的能力，多档位能力有手势切换档位高度的效果，且更适合固定高度区间的场景；
-3、若高度范围不确定，且可能存在大于3个不同高度的场景，不建议使用detents属性。
+
+1. dragBar拖拽条只在多个档位高度时生效；
+2. 区别于height属性在不同时刻设置不同档位的能力，多档位能力有手势切换档位高度的效果，且更适合固定高度区间的场景；
+3. 若高度范围不确定，且可能存在大于3个不同高度的场景，不建议使用detents属性。
 
 ```ts
 // xxx.ets
@@ -592,6 +593,7 @@ struct bindSheetExample {
 ### 示例5（设置内容区刷新时机）
 
 ScrollSizeMode.CONTINUOUS 持续更新内容适合detents多档位切换场景。
+
 建议在builder内减少UI加载耗时的操作，滑动时内容实时刷新对性能要求较高。
 
 ```ts

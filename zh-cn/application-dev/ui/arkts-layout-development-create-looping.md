@@ -14,12 +14,12 @@
 
 ## 布局与约束
 
-Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮播显示过程中均以该尺寸生效。如果自身尺寸属性未被设置，则分两种情况：如果设置了prevMargin或者nextMargin属性，则Swiper自身尺寸会跟随其父组件；如果未设置prevMargin或者nextMargin属性，则会自动根据子组件的大小设置自身的尺寸。
+Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮播显示过程中均以该尺寸生效。如果自身尺寸属性未被设置，则分两种情况：如果设置了[prevMargin](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#prevmargin10)或者[nextMargin](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#nextmargin10)属性，则Swiper自身尺寸会跟随其父组件；如果未设置prevMargin或者nextMargin属性，则会自动根据子组件的大小设置自身的尺寸。
 
 
 ## 循环播放
 
-通过loop属性控制是否循环播放，该属性默认值为true。
+通过[loop](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#loop)属性控制是否循环播放，该属性默认值为true。
 
 当loop为true时，在显示第一页或最后一页时，可以继续往前切换到前一页或者往后切换到后一页。如果loop为false，则在第一页或最后一页时，无法继续向前或者向后切换页面。
 
@@ -73,7 +73,7 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
 
 ## 自动轮播
 
-Swiper通过设置autoPlay属性，控制是否自动轮播子组件。该属性默认值为false。
+Swiper通过设置[autoPlay](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#autoplay)属性，控制是否自动轮播子组件。该属性默认值为false。
 
 autoPlay为true时，会自动切换播放子组件，子组件与子组件之间的播放间隔通过interval属性设置。interval属性默认值为3000，单位毫秒。
 
@@ -94,7 +94,7 @@ autoPlay为true时，会自动切换播放子组件，子组件与子组件之�
 
 ## 导航点样式
 
-Swiper提供了默认的导航点样式和导航点箭头样式，导航点默认显示在Swiper下方居中位置，开发者也可以通过indicator属性自定义导航点的位置和样式，导航点箭头默认不显示。
+Swiper提供了默认的导航点样式和导航点箭头样式，导航点默认显示在Swiper下方居中位置，开发者也可以通过[indicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicator)属性自定义导航点的位置和样式，导航点箭头默认不显示。
 
 通过indicator属性，开发者可以设置导航点相对于Swiper组件上下左右四个方位的位置，同时也可以设置每个导航点的尺寸、颜色、蒙层和被选中导航点的颜色。
 
@@ -285,12 +285,12 @@ export struct SwiperPageSwitchMethod {
 }
 ```
 
-![controll](figures/controll.gif)
+![control](figures/control.gif)
 
 
 ## 轮播方向
 
-Swiper支持水平和垂直方向上进行轮播，主要通过vertical属性控制。
+Swiper支持水平和垂直方向上进行轮播，主要通过[vertical](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#vertical)属性控制。
 
 当vertical为true时，表示在垂直方向上进行轮播；为false时，表示在水平方向上进行轮播。vertical默认值为false。
 
@@ -463,7 +463,7 @@ export struct SwiperCustomAnimation {
 
 ## Swiper与Tabs联动
 
-Swiper选中的元素改变时，会通过onSelected回调事件，将元素的索引值index返回。通过调用tabsController.changeIndex(index)方法来实现Tabs页签的切换。
+Swiper选中的元素改变时，会通过[onSelected](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#onselected18)回调事件，将元素的索引值index返回。通过调用[tabsController.changeIndex(index)](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#changeindex)方法来实现Tabs页签的切换。
 
 <!-- @[swiper_tabs_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperAndTabsLinkage.ets) -->
 
@@ -575,7 +575,7 @@ export struct SwiperAndTabsLinkage {
 
 ## 设置圆点导航点间距
 
-针对圆点导航点，可以通过DotIndicator的space属性来设置圆点导航点的间距。
+针对圆点导航点，可以通过DotIndicator的[space](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#space19)属性来设置圆点导航点的间距。
 
 <!-- @[dot_indicator_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIgnoreComponentSize.ets) -->
 
@@ -593,7 +593,7 @@ Swiper(
 
 ## 导航点忽略组件大小
 
-当导航点的bottom设为0之后，导航点的底部与Swiper的底部还会有一定间距。如果希望消除该间距，可通过调用bottom(bottom, ignoreSize)属性来进行设置。将ignoreSize 设置为true，即可忽略导航点组件大小，达到消除该间距的目的。
+当导航点的[bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom)设为0之后，导航点的底部与Swiper的底部还会有一定间距。如果希望消除该间距，可通过调用bottom(bottom, ignoreSize)属性来进行设置。将ignoreSize设置为true，即可忽略导航点组件大小，达到消除该间距的目的。
 
 - 圆点导航点忽略组件大小。
 
@@ -734,7 +734,7 @@ export struct SwiperIgnoreComponentSize {
 }
 ```
 
-![controll](figures/indicator_space.gif)
+![indicator_space](figures/indicator_space.gif)
 
 ## 保持可见内容位置不变
 
@@ -838,7 +838,7 @@ export struct SwiperVisibleContentPosition {
 }
 ```
 
-![controll](figures/maintainVisibleContentPosition_true.gif)
+![maintainVisibleContentPosition_true](figures/maintainVisibleContentPosition_true.gif)
 
 ## 相关实例
 

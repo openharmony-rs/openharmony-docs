@@ -334,7 +334,7 @@ import { formInfo } from '@kit.FormKit';
 
 let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
   (info: Array<formInfo.TemplateFormDetailInfo>): void => {
-    console.info('template form detail info callback sucess.');
+    console.info('template form detail info callback success.');
   };
 ```
 
@@ -356,7 +356,7 @@ let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
 
 ## PublishFormCrossBundleControlCallback<sup>23+</sup>
 
-type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo): boolean
+type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo) => boolean
 
 跨应用加卡管控回调。
 
@@ -378,10 +378,6 @@ type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo):
 | -------- | -------- |
 | boolean | 跨应用加卡管控结果。<br/>-&nbsp;true：表示管控通过。<br/>-&nbsp;false：表示管控未通过。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
 **示例：**
 
 ```ts
@@ -389,7 +385,7 @@ import { formInfo } from '@kit.FormKit';
 
 let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleControlCallback =
   (info: formInfo.PublishFormCrossBundleInfo): boolean => {
-    console.info('publish form cross bundle info callback sucess.');
+    console.info('publish form cross bundle info callback success.');
     return true;
   };
 ```

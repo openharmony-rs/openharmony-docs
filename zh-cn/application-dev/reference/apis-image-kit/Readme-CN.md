@@ -77,6 +77,7 @@
     - [Image_String](capi-image-nativemodule-image-string.md)
     - [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)
     - [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md)
+    - [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) 
     - [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md)
     - [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md)
     - [OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md)
@@ -121,6 +122,7 @@
     - [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)
     - [Image_PositionArea](capi-image-nativemodule-image-positionarea.md)
     - [Image_Scale](capi-image-nativemodule-image-scale.md)
+    - [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md)
 - 错误码<!--image-arkts-errcode-->
   - [Image错误码](errorcode-image.md)
   - [视频处理引擎错误码](errorcode-videoprocessingengine.md)

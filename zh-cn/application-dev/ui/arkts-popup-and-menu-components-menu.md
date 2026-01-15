@@ -12,16 +12,6 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 
 使用[bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11)或bindContextMenu未设置预览图时，菜单弹出无蒙层，此时为非模态。
 
-## 生命周期
-
-| 名称| 类型 | 说明 |
-| --- | --- | --- |
-| aboutToAppear  | () =>  void | 菜单显示动效前的事件回调。 |
-| onAppear | () =>  void | 菜单弹出后的事件回调。 |
-| aboutToDisappear | () =>  void | 菜单退出动效前的事件回调。 |
-| onDisappear  | () =>  void | 菜单消失后的事件回调。 |
-
-
 
 ## 创建默认样式的菜单
 
@@ -303,6 +293,8 @@ export struct SupportAvoidCentralAxisMenuExample {
 }
 ```
 
+<!--RP1--><!--RP1End-->
+
 ## 控制子窗菜单的事件透传
 
 当菜单在子窗口中弹出时，默认情况下，菜单周围的事件会传递至所在窗口。从API version 20开始，开发者可通过[ContextMenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10)的modalMode属性设置子菜单弹出时的模态模式，以控制菜单周围事件是否传递。将modalMode设置为ModalMode.TARGET_WINDOW时，菜单周围的事件将不再传递，菜单下方的控件也不会响应事件。
@@ -351,6 +343,8 @@ export struct EventTransSubWindowMenuExample {
   }
 }
 ```
+
+<!--RP2--><!--RP2End-->
 
 ## 基于绑定组件指定位置弹出菜单
 

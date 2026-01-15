@@ -24,8 +24,6 @@ AppStorage提供了API接口，允许开发者在自定义组件外手动触发A
 
 AppStorage是在应用启动时创建的单例，用于提供应用状态数据的中心存储。这些状态数据在应用级别可访问。AppStorage在应用运行过程中保留其属性。
 
-AppStorage支持应用的[主线程](../../application-models/thread-model-stage.md)内多个[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例间的UI状态数据共享。
-
 AppStorage中的属性通过唯一的字符串类型属性名（key）访问，支持与UI组件同步，并可在应用业务逻辑中被访问。其支持应用的[主线程](../../application-models/thread-model-stage.md)内多个[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例间的UI状态数据共享。
 
 AppStorage中的属性可以被双向同步，并具有不同的功能，比如数据持久化（详见[PersistentStorage](arkts-persiststorage.md)）。这些UI状态是通过业务逻辑实现，与UI解耦，如果希望这些UI状态在UI中使用，需要用到[@StorageProp](#storageprop)和[@StorageLink](#storagelink)。
@@ -480,7 +478,7 @@ struct SetSample {
 }
 ```
 
-### AppStroage在多页面中共享使用
+### AppStorage在多页面中共享使用
 
 在下面示例中，Index和Page页面通过同一个全局AppStorage对象共享linkA数据。在一处修改其值，另一处也能获取到更新后的值。
 
@@ -887,7 +885,7 @@ export struct TapImage {
 
 ### \@StorageProp和AppStorage接口配合使用时，需要注意更新规则
 
-使用setOrCreate/set接口更新key的值时，如果值相同，setOrCreate不会通知\@StorageLink/\@StorageProp更新，但因为\@StorageProp本身有数据副本，更改值不会同步给AppStorage，这会导致开发者误认己通过AppStorage改了值，但实际上未通知\@StorageProp更新值的情况。
+使用setOrCreate/set接口更新key的值时，如果值相同，setOrCreate不会通知\@StorageLink/\@StorageProp更新，但因为\@StorageProp本身有数据副本，更改值不会同步给AppStorage，这会导致开发者误认已通过AppStorage改了值，但实际上未通知\@StorageProp更新值的情况。
 示例如下。
 
 <!-- @[appstorage_page_ten](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTen.ets) -->

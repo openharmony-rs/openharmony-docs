@@ -626,6 +626,7 @@ struct Parent {
 **迁移规则**
 
 V1的\@Provide和\@Consume与V2的\@Provider和\@Consumer定位和作用类似，基本可以实现丝滑替换，但存在以下细微差异，开发者可根据自己代码实现情况参考是否需要调整：
+
 在V1中，\@Provide和\@Consume用于父子组件之间的数据共享，可以通过alias（别名）或属性名匹配，同时\@Consume依赖父组件的\@Provide，API version 20以前不允许本地初始化。V2中，\@Provider和\@Consumer增强了这些特性，使数据共享更加灵活。根据不同的场景，有以下迁移策略：
 
 - V1中\@Provide和\@Consume在没有指定alias的情况下，可以直接使用。V2中\@Provider和\@Consumer是标准装饰器，且参数可选，所以不管有无指定alias后面需要必须跟随“()”。

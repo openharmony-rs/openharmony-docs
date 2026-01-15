@@ -2107,6 +2107,6 @@ OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | 执行成功返回播放器的统计指标信息，否则返回nullptr。<br> 可能的失败原因：传入player指针不合法。 |
+| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | 执行成功返回播放器的统计指标信息（键值详情请参考[统计指标信息](../apis-media-kit/capi-avplayer-base-h.md#变量)），否则返回nullptr。<br> 可能的失败原因：传入player指针不合法。 |
 
 

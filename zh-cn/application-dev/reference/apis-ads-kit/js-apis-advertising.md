@@ -241,7 +241,7 @@ registerWebAdInterface(controller: web_webview.WebviewController, context: commo
 | 错误码ID | 错误信息                                                                             |
 |----------|--------------------------------------------------------------------------------------|
 | 401      | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. |
-| 21800001 | operation javascriptRegister error.                                                  |
+| 21800001 | System internal error.                                                  |
 
 **示例：**
 
@@ -295,7 +295,7 @@ deleteWebAdInterface(controller: web_webview.WebviewController, needRefresh: boo
 | 错误码ID | 错误信息                                                                             |
 |----------|--------------------------------------------------------------------------------------|
 | 401      | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. |
-| 21800001 | operation javascriptRegister error.                                                  |
+| 21800001 | System internal error.                                                  |
 
 **示例：**
 

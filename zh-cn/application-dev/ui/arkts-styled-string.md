@@ -576,12 +576,13 @@
   @Entry
   @Component
   struct Index {
+    // 请在resources\base\element\string.json文件中配置name为'Full_text'，value为非空字符串的资源
     @State fullText: string =
       this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Full_text') as string;
-    @State originalText: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Original_text') as string;
-    @State afterTypesetting: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('After_typesetting') as string;
+    // 请将$r('app.string.Original_text')替换为实际资源文件，在本示例中该资源文件的value值为"原文"
+    @State originalText: ResourceStr = $r('app.string.Original_text');
+    // 请将$r('app.string.After_typesetting')替换为实际资源文件，在本示例中该资源文件的value值为"排版后"
+    @State afterTypesetting: ResourceStr = $r('app.string.After_typesetting');
     str: string =
       'Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.';
     mutableStr2 = new MutableStyledString(this.str, [

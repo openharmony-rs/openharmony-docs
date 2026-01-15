@@ -25,6 +25,7 @@
 **迁移规则**
 
 LocalStorage的目的是实现页面间的状态变量共享。由于V1状态变量和View层耦合，开发者难以自主实现页面间状态变量的共享，因此框架提供了该能力。
+
 状态管理V2将状态变量的观察能力内嵌到数据本身，不再和View层耦合。因此，不再需要类似LocalStorage的能力，可以使用创建\@ObservedV2和\@Trace装饰类的实例，开发者需自行import和export，实现状态变量的页面间共享。
 
 **示例**
@@ -409,6 +410,7 @@ struct Page2 {
 **自定义组件接收LocalStorage实例场景**
 
 为了配合Navigation的场景，LocalStorage支持作为自定义组件的入参，传递给以当前自定义组件为根节点的所有子自定义组件。
+
 对于该场景，V2可以使用创建多个全局\@ObservedV2和\@Trace装饰类的实例进行替代。
 
 V1:
@@ -751,11 +753,12 @@ struct NavigationContentMsgStack {
 ```
 
 ### AppStorage->AppStorageV2
-上一小节中，对于创建全局\@ObserveV2和\@Trace装饰实例的改造不适用于跨Ability的数据共享，可以使用AppStorageV2替代。
+上一小节中，对于创建全局\@ObservedV2和\@Trace装饰实例的改造不适用于跨Ability的数据共享，可以使用AppStorageV2替代。
 
 V1:
 
 AppStorage与应用进程绑定，支持跨[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md)数据共享。
+
 在下面的示例中，使用\@StorageLink，可以使得开发者本地的修改同步回AppStorage中。
 
 <!-- @[Internal_AppStorage_V1_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV1one.ets) -->
@@ -822,6 +825,7 @@ struct Index1 {
 V2:
 
 可以使用AppStorageV2实现跨Ability共享。
+
 如下面示例：
 
 <!-- @[Internal_AppStorage_V2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV2one.ets) -->
@@ -1076,6 +1080,7 @@ struct Index1 {
 
 ### Environment->调用Ability接口直接获取系统环境变量
 V1中，开发者可以通过Environment来获取环境变量，但Environment获取的结果无法直接使用，需要配合AppStorage才能得到对应环境变量的值。
+
 在切换V2的过程中，开发者无需再通过Environment来获取环境变量，可以直接通过[UIAbilityContext的config属性](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1)获取系统环境变量。
 
 V1:
@@ -1472,8 +1477,7 @@ struct ListExample {
 
 V2：
 
-在状态管理V2中，[\@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，而由于ChildrenMainSize定义在框架中，开发者无法使用[\@Trace](./arkts-new-observedV2-and-trace.md)来标注ChildrenMainSize的属性。可以使用[makeObserved](./arkts-new-makeObserved.md)替代。从API version 22开始，可以无需使用makeObserved，直接使用@Local标注的ChildrenMainSize设置List的子组件在主轴方向的大小信息。
-
+在状态管理V2中，[\@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，而由于ChildrenMainSize定义在框架中，开发者无法使用[\@Trace](./arkts-new-observedV2-and-trace.md)来标注ChildrenMainSize的属性。可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
 具体示例如下：
 <!-- @[Internal_Other_Migrations_List_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsListV2.ets) -->
 
@@ -1609,7 +1613,7 @@ struct WaterFlowSample {
 
 V2：
 
-在状态管理V2中，[\@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，由于WaterFlowSections定义在框架中，开发者无法使用[\@Trace](./arkts-new-observedV2-and-trace.md)标注其属性，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。从API version 22开始，可以无需使用makeObserved，直接使用@Local标注的WaterFlowSections设置WaterFlow瀑布流分组信息。
+在状态管理V2中，[\@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，由于WaterFlowSections定义在框架中，开发者无法使用[\@Trace](./arkts-new-observedV2-and-trace.md)标注其属性，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
 
 具体示例如下：
 

@@ -26,7 +26,7 @@ import { inputDevice } from '@kit.InputKit';
 
 setKeyboardRepeatDelay(delay: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置键盘按键的重复时延，使用Callback异步回调。
+设置键盘按键的重复时延，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -141,7 +141,7 @@ struct Index {
 
 getKeyboardRepeatDelay(callback: AsyncCallback&lt;number&gt;): void
 
-获取键盘按键的重复时延，使用Callback异步回调。
+获取键盘按键的重复时延，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -249,7 +249,7 @@ struct Index {
 
 setKeyboardRepeatRate(rate: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置键盘按键的重复速率，使用Callback异步回调。
+设置键盘按键的重复速率，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -364,7 +364,7 @@ struct Index {
 
 getKeyboardRepeatRate(callback: AsyncCallback&lt;number&gt;): void
 
-获取键盘按键的重复速率，使用Callback异步回调。
+获取键盘按键的重复速率，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -502,7 +502,7 @@ setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. The application does not have the permission required to call the API |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900001  | The specified device does not exist.                         |
 
 **示例**：

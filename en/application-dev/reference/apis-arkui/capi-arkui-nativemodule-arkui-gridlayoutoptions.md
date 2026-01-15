@@ -7,6 +7,10 @@
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_GridLayoutOptions ArkUI_GridLayoutOptions
+```
+
 ## Overview
 
 Defines the **Grid** layout options.

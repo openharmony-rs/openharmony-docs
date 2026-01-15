@@ -267,7 +267,7 @@ export struct Child03 {
 	"decoratorInfo": [{
 		"decoratorName": "@State",
 		"stateVariableName": "propUser",
-		"owningComponentOrClassName": "Index",  
+		"owningComponentOrClassName": "V1Prop",  
 		"owningComponentId": 62,
         // 对象关联的组件信息，@State可以收集到自定义组件和系统组件，Child03是Child01的子组件，使用@Prop时，深拷贝的对象发生变更，所以无法收集
 		"dependentInfo": [{
@@ -406,7 +406,7 @@ export struct Child03 {
 	"decoratorInfo": [{
 		"decoratorName": "@State",
 		"stateVariableName": "linkUser",
-		"owningComponentOrClassName": "Index",
+		"owningComponentOrClassName": "V1Link",
 		"owningComponentId": 62,
         // 自定义子组件中使用@Link时，无法被收集到
 		"dependentInfo": []
@@ -1162,7 +1162,7 @@ export struct Child03 {
         // 装饰器装饰的属性名称
 		"stateVariableName": "localStoragePropUser",
         // 装饰器所在的组件名称
-		"owningComponentOrClassName": "Index",
+		"owningComponentOrClassName": "V1LocalStorageProp",
         // 装饰器所在的组件id
 		"owningComponentId": 62,
 		"dependentInfo": []
@@ -1477,7 +1477,7 @@ export struct Child04 {
 	"decoratorInfo": [{
 		"decoratorName": "@State",
 		"stateVariableName": "arr",
-		"owningComponentOrClassName": "Index",
+		"owningComponentOrClassName": "V1BuiltIn",
 		"owningComponentId": 62,
 		"dependentInfo": [{
 			"elementName": "Child01",
@@ -1502,7 +1502,7 @@ export struct Child04 {
 	"decoratorInfo": [{
 		"decoratorName": "@State",
 		"stateVariableName": "map",
-		"owningComponentOrClassName": "Index",
+		"owningComponentOrClassName": "V1BuiltIn",
 		"owningComponentId": 62,
 		"dependentInfo": [{
 			"elementName": "Child02",
@@ -1527,7 +1527,7 @@ export struct Child04 {
 	"decoratorInfo": [{
 		"decoratorName": "@State",
 		"stateVariableName": "set",
-		"owningComponentOrClassName": "Index",
+		"owningComponentOrClassName": "V1BuiltIn",
 		"owningComponentId": 62,
 		"dependentInfo": [{
 			"elementName": "Child03",
@@ -1552,7 +1552,7 @@ export struct Child04 {
 	"decoratorInfo": [{
 		"decoratorName": "@State",
 		"stateVariableName": "date",
-		"owningComponentOrClassName": "Index",
+		"owningComponentOrClassName": "V1BuiltIn",
 		"owningComponentId": 62,
 		"dependentInfo": [{
 			"elementName": "Child04",
@@ -2772,8 +2772,8 @@ export struct Child04 {
 	"decoratorInfo": [{
         // built-in类型decoratorName固定为：ProxyObservedV2
 		"decoratorName": "ProxyObservedV2",
-        // built-in类型没有属性名称
-		"stateVariableName": "",
+        // Array类型按数组下标收集依赖，stateVariableName为下标
+		"stateVariableName": "0",
         // built-in类型的owningComponentOrClassName是数据类型
 		"owningComponentOrClassName": "Array",
         // V2对象默认返回-1
@@ -2782,9 +2782,39 @@ export struct Child04 {
 		"dependentInfo": [{
 			"elementId": 42,
 			"elementName": "ForEach"
-		}, {
+		}]
+	}, {
+		"decoratorName": "ProxyObservedV2",
+        // Array类型按数组下标收集依赖，stateVariableName为下标
+		"stateVariableName": "1",
+		"owningComponentOrClassName": "Array",
+		"owningComponentId": -1,
+		"dependentInfo": [{
+			"elementId": 42,
+			"elementName": "ForEach"
+		}]
+	}, {
+		"decoratorName": "ProxyObservedV2",
+        // Array类型按数组下标收集依赖，stateVariableName为下标
+		"stateVariableName": "2",
+		"owningComponentOrClassName": "Array",
+		"owningComponentId": -1,
+		"dependentInfo": [{
+			"elementId": 42,
+			"elementName": "ForEach"
+		}]
+	}, {
+		"decoratorName": "ProxyObservedV2",
+        // Array类型收集Array的length属性依赖，stateVariableName为___obj_length
+		"stateVariableName": "___obj_length",
+		"owningComponentOrClassName": "Array",
+		"owningComponentId": -1,
+		"dependentInfo": [{
 			"elementId": 29,
 			"elementName": "Child01"
+		}, {
+			"elementId": 42,
+			"elementName": "ForEach"
 		}]
 	}]
 }
@@ -2795,13 +2825,24 @@ export struct Child04 {
 	"reason": "The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace",
 	"decoratorInfo": [{
 		"decoratorName": "ProxyObservedV2",
-		"stateVariableName": "",
+        // Map类型收集Map的size属性依赖，stateVariableName为___obj_length
+		"stateVariableName": "___obj_length",
 		"owningComponentOrClassName": "Map",
 		"owningComponentId": -1,
 		"dependentInfo": [{
 			"elementId": 30,
 			"elementName": "Child02"
 		}, {
+			"elementId": 50,
+			"elementName": "ForEach"
+		}]
+	}, {
+		"decoratorName": "ProxyObservedV2",
+        // Map类型收集Map对象本身的依赖，stateVariableName为___ob_map_set
+		"stateVariableName": "___ob_map_set",
+		"owningComponentOrClassName": "Map",
+		"owningComponentId": -1,
+		"dependentInfo": [{
 			"elementId": 50,
 			"elementName": "ForEach"
 		}]
@@ -2814,13 +2855,24 @@ export struct Child04 {
 	"reason": "The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace",
 	"decoratorInfo": [{
 		"decoratorName": "ProxyObservedV2",
-		"stateVariableName": "",
+        // Set类型收集Set的size属性依赖，stateVariableName为___obj_length
+		"stateVariableName": "___obj_length",
 		"owningComponentOrClassName": "Set",
 		"owningComponentId": -1,
 		"dependentInfo": [{
 			"elementId": 31,
 			"elementName": "Child03"
 		}, {
+			"elementId": 58,
+			"elementName": "ForEach"
+		}]
+	}, {
+		"decoratorName": "ProxyObservedV2",
+        // Set类型收集Set对象本身的依赖，stateVariableName为___ob_map_set
+		"stateVariableName": "___ob_map_set",
+		"owningComponentOrClassName": "Set",
+		"owningComponentId": -1,
+		"dependentInfo": [{
 			"elementId": 58,
 			"elementName": "ForEach"
 		}]
@@ -2833,7 +2885,8 @@ export struct Child04 {
 	"reason": "The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace",
 	"decoratorInfo": [{
 		"decoratorName": "ProxyObservedV2",
-		"stateVariableName": "",
+        // Date类型收集依赖，stateVariableName为__date__
+		"stateVariableName": "__date__",
 		"owningComponentOrClassName": "Date",
 		"owningComponentId": -1,
 		"dependentInfo": [{
@@ -2852,9 +2905,9 @@ export struct Child04 {
 
 ## V1调V2组件使用场景
 
-### enableV2Compatiblity使用场景
+### enableV2Compatibility使用场景
 
-在V1组件中使用[enableV2Compatiblity](./arkts-v1-v2-mixusage.md#enablev2compatibility)方法封装的对象，可在V1和V2组件中收集到对象关联的系统组件，V2无法收集自定义组件，V1根据使用的装饰器收集对象关联的组件。
+在V1组件中使用[enableV2Compatibility](./arkts-v1-v2-mixusage.md#enablev2compatibility)方法封装的对象，可在V1和V2组件中收集到对象关联的系统组件，V2无法收集自定义组件，V1根据使用的装饰器收集对象关联的组件。
 
 代码示例：
 
@@ -2957,13 +3010,13 @@ export struct Child03 {
         // 按照V1的规格收集组件信息
 		"decoratorName": "@State",
 		"stateVariableName": "temp",
-		"owningComponentOrClassName": "Index",
+		"owningComponentOrClassName": "V1AndV2Compatibility",
 		"owningComponentId": 17,
 		"dependentInfo": []
 	}, {
 		"decoratorName": "@State",
 		"stateVariableName": "compatibilityUser",
-		"owningComponentOrClassName": "Index",
+		"owningComponentOrClassName": "V1AndV2Compatibility",
 		"owningComponentId": 17,
 		"dependentInfo": [{
 			"elementName": "Child01",

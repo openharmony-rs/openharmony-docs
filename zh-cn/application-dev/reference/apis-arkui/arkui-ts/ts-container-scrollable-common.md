@@ -747,6 +747,18 @@ onDidStopFling(handler: VoidCallback): T
 | ---------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
 | fadingEdgeLength | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | 设置边缘渐隐长度。 |
 
+## EditModeOptions<sup>23+</sup>对象说明
+
+List/Grid组件编辑模式选项属性参数对象。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称           | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
+| enableMultiSelectionAnimation | boolean | 否   | 是 | 是否启用多选聚拢动画。设置true时启用聚拢动画，设置为false时关闭聚拢动画。<br>只有GridItem或ListItem上设置了[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)且responseType设置为[ResponseType](ts-appendix-enums.md#responsetype8).LongPress、[preview](ts-universal-attributes-menu.md#contextmenuoptions10)参数设置为MenuPreviewMode.IMAGE或CustomBuilder时会显示多选聚拢动画。<br>如果GridItem或ListItem上设置了[拖拽事件](ts-universal-events-drag-drop.md)，是否聚拢以[dragPreviewOptions](ts-universal-attributes-drag-drop.md#dragpreviewoptions11)设置为准。<br>默认值：false |
+
 ## EffectEdge<sup>18+</sup>枚举说明
 
 表示当前边缘效果要生效的边缘。

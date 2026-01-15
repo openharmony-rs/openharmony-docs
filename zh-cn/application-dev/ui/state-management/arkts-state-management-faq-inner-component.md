@@ -204,6 +204,7 @@ struct Index {
 
 1. 先将this.balloon赋值给临时变量。
 2. 再使用临时变量完成原本的调用逻辑。
+
    具体见正例。
 
 【正例】
@@ -310,7 +311,8 @@ struct ConsumerChild {
 }
 ```
 
-以上示例每次点击Button('change to self')，把相同的类实例赋值给一个Class类型的状态变量，会触发刷新并输出`this.dataObj.name change: a`日志。这是因为当再次赋值`list[0]`时，`dataObjFromList`已经是`Proxy`类型，而`list[0]`是`Object`类型，因此判断两者不相等，会触发赋值和刷新。 
+以上示例每次点击Button('change to self')，把相同的类实例赋值给一个Class类型的状态变量，会触发刷新并输出`this.dataObj.name change: a`日志。这是因为当再次赋值`list[0]`时，`dataObjFromList`已经是`Proxy`类型，而`list[0]`是`Object`类型，因此判断两者不相等，会触发赋值和刷新。
+
 为了避免这种不必要的赋值和刷新，可以通过用\@Observed装饰类，或者使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象，提前进行新旧值的判断，如果相同则不执行赋值。
 
 方法一：增加\@Observed
@@ -446,6 +448,7 @@ struct Index {
 ```
 
 以上示例每次点击Button('change to self')，把相同的Array类型常量赋值给一个Array类型的状态变量，都会触发刷新。这是因为当再次赋值`list[0]`时，`dataObjFromList`已经是Proxy类型，而`list[0]`是Array类型。由于类型不相等，会触发赋值和刷新。
+
 为了避免这种不必要的赋值和刷新，可以使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象提前进行新旧值的判断，当两者相同时不执行赋值。
 
 使用UIUtils.getTarget()方法示例。
@@ -1033,7 +1036,7 @@ struct MyComponent {
 
 上述代码运行效果如下。
 
-![properly-use-state-management-to-develope-7](figures/properly-use-state-management-to-develope-7.gif)
+![properly-use-state-management-to-develop-7](figures/properly-use-state-management-to-develop-7.gif)
 
 可以观察到在点击更改message之后，图片“闪烁”了一下，同时输出了组件的onAppear日志，这说明组件进行了重建。这是因为在更改message之后，导致LazyForEach中这一项的key值发生了变化，使得LazyForEach在reloadData的时候将这一项ListItem进行了重建。Text组件仅仅更改显示的内容却发生了重建，而不是更新。而尽管Image组件没有需要重新绘制的内容，但是因为触发LazyForEach的重建，会使得同样位于ListItem下的Image组件重新创建。
 
@@ -1184,7 +1187,7 @@ struct ChildComponent {
 
 上述代码运行效果如下。
 
-![properly-use-state-management-to-develope-8](figures/properly-use-state-management-to-develope-8.gif)
+![properly-use-state-management-to-develop-8](figures/properly-use-state-management-to-develop-8.gif)
 
 可以观察到UI能够正常刷新，图片没有“闪烁”，且没有输出日志信息，说明没有对Text组件和Image组件进行重建。
 
@@ -1253,7 +1256,7 @@ struct Page {
 
 上述代码运行效果如下。
 
-![properly-use-state-management-to-develope-9](figures/properly-use-state-management-to-develope-9.gif)
+![properly-use-state-management-to-develop-9](figures/properly-use-state-management-to-develop-9.gif)
 
 由于ForEach中生成的item是一个常量，因此当点击改变item中的内容时，没有办法观测到UI刷新，尽管日志表明item的值已改变（这体现在打印了“change font size”的日志）。因此，需要使用自定义组件，配合@ObjectLink来实现观测的能力。
 
@@ -1323,7 +1326,7 @@ struct Page {
 
 上述代码的运行效果如下。
 
-![properly-use-state-management-to-develope-10](figures/properly-use-state-management-to-develope-10.gif)
+![properly-use-state-management-to-develop-10](figures/properly-use-state-management-to-develop-10.gif)
 
 使用@ObjectLink接受传入的item后，使得TextComponent组件内的textStyle变量具有了被观测的能力。在父组件更改styleList中的值时，由于@ObjectLink是引用传递，所以会观测到styleList每一个数据项的地址指向的对应item的fontSize的值被改变，因此触发UI的刷新。
 

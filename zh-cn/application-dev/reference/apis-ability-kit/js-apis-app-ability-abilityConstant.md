@@ -188,19 +188,17 @@ export default class MyAbility extends UIAbility {
 
 整机可用内存级别，该类型为枚举，可配合UIAbility的[onMemoryLevel()](js-apis-app-ability-ability.md#abilityonmemorylevel)方法根据level执行不同内存级别的相应操作。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称                         | 值 | 说明                |
 | ---                         | --- | ---           |
-| MEMORY_LEVEL_MODERATE       | 0   | 表示整机可用内存适中。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。| 
-| MEMORY_LEVEL_LOW            | 1   | 表示整机可用内存低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。| 
-| MEMORY_LEVEL_CRITICAL       | 2   | 表示整机可用内极低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。|
-| MEMORY_LEVEL_UI_HIDDEN<sup>23+</sup>      | 3   | 表示应用程序的所有UI界面已不可见，此时应该释放一些资源。该枚举仅对从前台切换到后台的应用生效。|  
-| MEMORY_LEVEL_BACKGROUND_MODERATE<sup>23+</sup>     | 4   | 表示应用刚被使用过，即处于应用使用排序链表（LRU）的前三分之一区间，暂时不会被系统清理。该枚举仅对后台应用生效。|  
-| MEMORY_LEVEL_BACKGROUND_LOW<sup>23+</sup>    | 5   | 表示应用已被用户使用完一段时间，即处于应用使用排序链表（LRU）的中间三分之一区间，存在被系统清理的风险。该枚举仅对后台应用生效。| 
-| MEMORY_LEVEL_BACKGROUND_CRITICAL<sup>23+</sup>    | 6   | 表示应用长期未被使用，即处于应用使用排序链表（LRU）的后三分之一区间，会被系统优先清理。该枚举仅对后台应用生效。|
+| MEMORY_LEVEL_MODERATE       | 0   | 表示整机可用内存适中。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。| 
+| MEMORY_LEVEL_LOW            | 1   | 表示整机可用内存低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。| 
+| MEMORY_LEVEL_CRITICAL       | 2   | 表示整机可用内极低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
+| MEMORY_LEVEL_UI_HIDDEN<sup>23+</sup>      | 3   | 表示应用程序的所有UI界面已不可见，此时应该释放一些资源。该枚举仅对从前台切换到后台的应用生效。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|  
+| MEMORY_LEVEL_BACKGROUND_MODERATE<sup>23+</sup>     | 4   | 表示应用刚被使用过，即处于应用使用排序链表（LRU）的前三分之一区间，暂时不会被系统清理。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|  
+| MEMORY_LEVEL_BACKGROUND_LOW<sup>23+</sup>    | 5   | 表示应用已被用户使用完一段时间，即处于应用使用排序链表（LRU）的中间三分之一区间，存在被系统清理的风险。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。| 
+| MEMORY_LEVEL_BACKGROUND_CRITICAL<sup>23+</sup>    | 6   | 表示应用长期未被使用，即处于应用使用排序链表（LRU）的后三分之一区间，会被系统优先清理。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 
 > **说明：**
 > 

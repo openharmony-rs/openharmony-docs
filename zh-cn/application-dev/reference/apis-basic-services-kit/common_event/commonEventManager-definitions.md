@@ -10,6 +10,9 @@
 本文档提供了系统定义的公共事件清单。
 公共事件类型定义在[ohos.commonEventManager模块的Support枚举](../js-apis-commonEventManager.md#support)中。
 
+> **说明：**
+>
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## Ability Kit
@@ -873,6 +876,19 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 **订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
 
 **取值：** "usual.event.bluetooth.remotedevice.PAIR_STATE_CHANGE"
+
+
+### COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_CHANGE<sup>23+</sup>
+
+表示蓝牙扫描模式变化的公共事件的操作。
+
+当蓝牙扫描模式变化时，将会触发事件通知服务发布该系统公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**取值：** "usual.event.bluetooth.host.SCAN_MODE_CHANGE"
 
 
 ### COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED

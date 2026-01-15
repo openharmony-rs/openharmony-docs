@@ -89,7 +89,7 @@ struct rotation {
 }
 ```
 
-监听窗口旋转的同步事件windowsSizeChange来实现视图的切换。例如可在EntryAbility.ets文件的onWindowStageCreate方法中添加处理逻辑以获取屏幕的显示方向。
+监听窗口旋转的同步事件windowsSizeChange来实现视图的切换。例如可在EntryAbility.ets文件的[onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)方法中添加处理逻辑以获取屏幕的显示方向。
 <!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
@@ -137,7 +137,7 @@ const TAG: string = 'EntryAbility';
 // ···
 ```
 
-需要在项目的 module.json5 文件中的 abilities 列表里添加 "orientation"，指定为 "auto_rotation"。
+需要在项目的module.json5文件中的abilities列表里添加"orientation"，指定为"auto_rotation"。
 ```json
 "orientation": "auto_rotation",
 ```

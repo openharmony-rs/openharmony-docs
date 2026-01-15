@@ -901,7 +901,7 @@ With this permission, the application can load external dynamic link libraries (
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 22
+**Since**: 23
 
 ## ohos.permission.GET_IP_MAC_INFO
 
@@ -978,3 +978,31 @@ Allows an application to register and deregister the crypto extension.
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 22
+
+## ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
+
+Allows an application to obtain and manage the media resources playing on a device.
+
+<!--RP63--><!--RP63End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | cars
+
+**Since**: 23
+
+## ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+Allows an application to manage call status, such as retieving incoming call numbers, answering, rejecting, and ending calls.
+
+<!--RP64--><!--RP64End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 23

@@ -58,7 +58,7 @@ export struct FocusActiveExample {
         })
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -127,7 +127,7 @@ export struct FocusTransferExample {
             Button('Button 1')
               .margin(20)
               .onClick(() => {
-                // The value in the app.string.Focus_Event resource file is 'Focus information.'
+                // Replace $r('app.string.Focus_Event') with the actual resource file. In this example, the value in the resource file is "Focus information."
                 this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + ': \n';
                 this.getUIContext().getFocusController().requestFocus('Row 2');
               })
@@ -139,21 +139,24 @@ export struct FocusTransferExample {
             Button('Button 2')
               .margin(20)
               .onFocus(() => {
-                // The value in the app.string.Get_Focus resource file is 'Focused.'
+                // Replace $r('app.string.Get_Focus') with the actual resource file. In this example, the value in the resource file is "Focused."
                 this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
               })
             Button('button 3')
               .margin(20)
               .onFocus(() => {
+                // Replace $r('app.string.Get_Focus') with the actual resource file. In this example, the value in the resource file is "Focused."
                 this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
               })
           }
           .id('Row 2')
           .onFocus(() => {
+            // Replace $r('app.string.Get_Focus') with the actual resource file. In this example, the value in the resource file is "Focused."
             this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
           })
         }
         .onFocus(() => {
+          // Replace $r('app.string.Get_Focus') with the actual resource file. In this example, the value in the resource file is "Focused."
           this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
         })
 
@@ -171,7 +174,7 @@ export struct FocusTransferExample {
       .height('100%')
       .padding(20)
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -191,24 +194,32 @@ Active focus traversal refers to focus movement initiated by deliberate actions,
 
 
 - Keyboard traversal
-1. Prerequisite: The application is in the focus activation state.
-2. Scope: limited to the currently focused hierarchical page, as detailed in the "Focus limitation" section under "Hierarchical Pages."
-3. Key types:
-**Tab** key: follows a Z-shaped logic to traverse all leaf nodes within the scope, looping back to the first after the last.
-**Shift+Tab**: reverses the direction of the **Tab** key.
-Arrow keys (up, down, left, and right): moves focus in a cross-shaped pattern, with container-specific algorithms determining the next focus in a single-layer container. If the algorithm determines the next focus should be on a container component, the system uses a center-point distance priority algorithm to further identify the target child node within the container.
-4. Traversal algorithm: Each focusable container has a unique algorithm defining how focus moves.
-5. Priority: Child components take precedence in handling keyboard events over parents.
+
+  1. Prerequisite: The application is in the focus activation state.
+  2. Scope: limited to the currently focused hierarchical page, as detailed in the "Focus limitation" section under "Hierarchical Pages."
+  3. Key types:
+
+     **Tab** key: follows a Z-shaped logic to traverse all leaf nodes within the scope, looping back to the first after the last.
+
+     **Shift+Tab**: reverses the direction of the **Tab** key.
+
+     Arrow keys (up, down, left, and right): moves focus in a cross-shaped pattern, with container-specific algorithms determining the next focus in a single-layer container. If the algorithm determines the next focus should be on a container component, the system uses a center-point distance priority algorithm to further identify the target child node within the container.
+  4. Traversal algorithm: Each focusable container has a unique algorithm defining how focus moves.
+  5. Priority: Child components take precedence in handling keyboard events over parents.
 
 - requestFocus
-Moves focus to a specific component, which is allowed across hierarchical pages but not across windows or different ArkUI instances.
-For details, see [Active Focus Acquisition/Loss](#active-focus-acquisitionloss).
+
+  Moves focus to a specific component, which is allowed across hierarchical pages but not across windows or different ArkUI instances.
+
+  For details, see [Active Focus Acquisition/Loss](#active-focus-acquisitionloss).
 
 - clearFocus
-Clears focus within the current hierarchical page, with focus reverting to the root container. For details, see [clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12).
+
+  Clears focus within the current hierarchical page, with focus reverting to the root container. For details, see [clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12).
 
 - focusOnTouch
-Enables a component to gain focus on touch. For details, see [focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9). This API is ineffective on non-focusable components. For container components, focus goes to the last focused child or the first focusable child upon touch.
+
+  Enables a component to gain focus on touch. For details, see [focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9). This API is ineffective on non-focusable components. For container components, focus goes to the last focused child or the first focusable child upon touch.
 
 
 **Passive Focus Traversal**
@@ -276,7 +287,7 @@ export struct FocusLinerExample {
         }
       }
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -327,7 +338,7 @@ The projection-based focus traversal algorithm determines the next focus based o
          }.width('100%').margin({ top: 5 })
        }.width('100%')
      }
-     // ···
+     // ...
    }
  }
  ```
@@ -365,7 +376,7 @@ export struct ProjectAreaFocusFlexExample {
       }.width('100%').margin({ top: 5 })
     }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -453,7 +464,7 @@ export struct OnFocusBlur {
           })
       }.width('100%').margin({ top: 20 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -528,7 +539,7 @@ export struct FocusAndBlurExample {
         }.width('100%').margin({ top: 5 })
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -560,6 +571,7 @@ Components can be classified into the following types based on their focus capab
 Setting a container component as focusable:
 
 The primary purpose of gaining focus is to enable interaction. If a component inherently lacks interactive capabilities, it cannot be made focusable. Container components (such as **Stack** and **Column**) are typically not interactive by themselves. Therefore, even if a container component is a leaf node in the view tree, it cannot be made focusable simply by calling **.focusable(true)**. Note that this same rule applies to [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md) objects created dynamically.
+
 To make a leaf node container focusable, you can use one of these approaches:
 
 - Place a component that natively supports focus, such as a **Button** component, inside the container.
@@ -604,7 +616,7 @@ Sets whether the component is focusable on touch.
    build() {
      NavDestination() {
        Column({ space: 12 }) {
-         // The value in the app.string.Focus_Focusable_text resource file is 'When a component is focused.'
+         // Replace $r('app.string.Focus_Focusable_text') with the actual resource file. In this example, the value in the resource file is "When a component is focused."
          Text($r('app.string.Focus_Focusable_text'))
            .fontSize(14)
            .fontColor('#666')
@@ -681,7 +693,7 @@ Sets whether the component is focusable on touch.
        .height('100%')
        .padding({ left: 12, right: 12 })
      }
-     // ···
+     // ...
    }
  }
  ```
@@ -728,7 +740,7 @@ export struct ScopeFocusExample {
     NavDestination() {
       Column() {
         Column({ space: 5 }) {
-          // The value in the app.string.Container_Coking resource file is 'Container focus'.
+          // Replace $r('app.string.Container_Coking') with the actual resource file. In this example, the value in the resource file is "Container focus".
           Text($r('app.string.Container_Coking')).textAlign(TextAlign.Center)
         }
         .justifyContent(FlexAlign.Center)
@@ -798,7 +810,7 @@ export struct TabStopExample {
         }.tabStop(true)
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -879,7 +891,7 @@ export struct DefaultFocus {
           })
       }.width('100%').margin({ top: 20 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -985,7 +997,7 @@ export struct RequestFocusExample {
       .alignItems(HorizontalAlign.Center)
       .width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1098,7 +1110,7 @@ The preceding example includes two steps:
           .width('100%')
           .height('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1166,7 +1178,7 @@ When a component is configured with **nextFocus**, focus movement strictly follo
           }
         }.width('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1224,7 +1236,7 @@ When components with positive **tabIndex** values are present, only these compon
             .margin(5).tabIndex(2)
         }.width('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1260,7 +1272,7 @@ export struct TabIndexFocusExample {
         }.tabIndex(2)
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1345,7 +1357,7 @@ export struct FocusScopePriority {
                     .width(80)
                     .height(40)
                     .fontColor(Color.White)
-                    .focusScopePriority('ColumnScope1', FocusPriority.PRIOR) // Focuses when Column1 first gains focus.
+                    .focusScopePriority('ColumnScope1', FocusPriority.PRIOR)  // Focus when Column1 first gains focus.
                 }
                 Row({ space: 5 }) {
                   Button()
@@ -1384,7 +1396,7 @@ export struct FocusScopePriority {
                 .width(165)
                 .height(40)
                 .fontColor(Color.White)
-                .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS)  // Focuses when Column2 first gains focus.
+                .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS)  // Focus when Column2 gains focus.
               Row({ space: 5 }) {
                 Button()
                   .width(80)
@@ -1419,7 +1431,7 @@ export struct FocusScopePriority {
       .height('100%')
       .padding({ left: 12, right: 12 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1431,7 +1443,7 @@ export struct FocusScopePriority {
 
 The preceding example includes two steps:
 
-- The **TextInput** component is part of a focus group. When the **Tab** key is pressed, focus quickly moves out of the **TextInput** component to the next focusable element outside the group. Arrow keys can be used to move focus within the **TextInput** component.
+- The **TextInput** component is part of a focus group. When the **Tab** key is pressed, the focus quickly moves out of the **TextInput** component to the next focusable element outside the group. Arrow keys can be used to move focus within the **TextInput** component.
 - The two **Column** components on the left do not have a focus group set. Therefore, focus can only be traversed one by one with the **Tab** key.
 
 
@@ -1495,7 +1507,7 @@ export struct FocusScopeIdExample {
         TextInput()
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1538,7 +1550,7 @@ When a component is in focus and has either an **onClick** or **TapGesture** eve
            Button(this.name)
              .fontSize(30)
              .onClick(() => {
-               this.count++
+               this.count++;
                if (this.count % 2 === 0) {
                  this.name = 'count is even number';
                } else {
@@ -1547,7 +1559,7 @@ When a component is in focus and has either an **onClick** or **TapGesture** eve
              }).height(60)
          }.height('100%').width('100%').justifyContent(FlexAlign.Center)
        }
-       // ···
+       // ...
      }
    }
    ```

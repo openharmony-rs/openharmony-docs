@@ -289,7 +289,7 @@ The **abilities** tag represents the UIAbility configuration of the module, whic
 | startWindowIcon | Index to the icon file of the UIAbility startup page. The value is a string with a maximum of 255 bytes.| String| No|
 | startWindowBackground | Index to the background color resource file of the UIAbility startup page. The value is a string with a maximum of 255 bytes.<br>Example: **$color:red**.| String| No|
 | removeMissionAfterTerminate | Whether to remove the relevant mission from the mission list after the UIAbility is destroyed.<br>- **true**: Remove the relevant mission from the mission list after the UIAbility is destroyed.<br>- **false**: Do not remove the relevant mission from the task mission list after the UIAbility is destroyed.<br>**NOTE**<br>This attribute is invalid in freeform window mode on 2-in-1 devices and tablets, and tasks are removed by default.| Boolean| Yes (initial value: **false**)|
-| allowSelfRedirect | Whether the application can be started with App Linking.<br>- **true**: The application can be started.<br>- **false**: The application cannot be started.<br>**NOTE**<br>This tag is supported since API version 23.| Boolean| Yes (initial value: **true**)|
+| allowSelfRedirect | Whether the application can be redirected to itself through <!--RP16-->[App Linking](../application-models/app-linking-startup.md)<!--RP16End-->.<br>- **true**: Self-redirection is allowed.<br>- **false**: Self-redirection is not allowed.| Boolean| Yes (initial value: **true**)|
 | orientation | Startup direction of the UIAbility component. The enum and startup direction resource index can be configured.<br>The enum values are as follows:<br>- **unspecified**: automatically determined by the system.<br>- **landscape**: landscape mode.<br>- **portrait**: portrait mode.<br>- **follow_recent**: rotation mode following the background window.<br>- **landscape_inverted**: inverted landscape mode.<br>- **portrait_inverted**: inverted portrait mode.<br>- **auto_rotation**: determined by the sensor.<br>- **auto_rotation_landscape**: determined by the sensor in the horizontal direction, including landscape and inverted landscape modes.<br>- **auto_rotation_portrait**: determined by the sensor in the vertical direction, including portrait and inverted portrait modes.<br>- **auto_rotation_restricted**: determined by the sensor when the sensor switch is enabled.<br>- **auto_rotation_landscape_restricted**: determined by the sensor in the horizontal direction, including landscape and inverted landscape modes, when the sensor switch is enabled.<br>- **auto_rotation_portrait_restricted**: determined by the sensor in the vertical direction, including portrait and inverted portrait modes, when the sensor switch is enabled.<br>- **locked**: auto-rotation disabled.<br>- **auto_rotation_unspecified**: auto-rotation controlled by the switch and determined by the system.<br>- **follow_desktop**: following the orientation of the home screen.<br>To configure the startup direction resource index, the value should be a string with a maximum of 255 bytes, for example, **$string:orientation**.<br>**NOTE**<br>- The startup direction resource index is supported since API version 14.| String| Yes (initial value: **"unspecified"**)|
 | supportWindowMode | Window mode supported by the UIAbility. The options are as follows:<br>- **fullscreen**: full-screen mode.<br>- **split**: split-screen mode.<br>- **floating**: floating window mode.<br>When **fullscreen** and **split** are both configured for a [freeform window](../windowmanager/window-terminology.md#freeform-window), the window will be started in floating window mode if the value of [targetAPIVersion](./app-configuration-file.md#tags-in-the-configuration-file) is less than 15, and in full-screen mode if the value is greater than or equal to 15.<br>In addition, you can configure the window mode through **metadata**. For details about the configuration rules and priorities, see [metadata](#metadata).| String array| Yes (initial value:<br>**["fullscreen",&nbsp;"split",&nbsp;"floating"]**)|
 | <!--DelRow-->priority | Priority of the UIAbility component. In the case of [implicit query](../application-models/explicit-implicit-want-mappings.md), UIAbility components with a higher priority are at the higher place of the returned list. The value ranges from 0 to 10. The greater the value, the higher the priority.<br>**NOTE**<br>This configuration does not take effect in third-party applications but in system applications.| Integer| Yes (initial value: **0**)|
@@ -1007,6 +1007,7 @@ Example of the **data** structure:
 ### customData
 
 The **data** tag represents custom data in the routing table.
+
 The **customData** tag is used to configure custom data of any type.
 
 Example of the **customData** structure:
@@ -1118,6 +1119,7 @@ Example of the **fileContextMenu** structure:
 ```
 
 Define the **menu.json** file under **resources/base/profile** in the development view. The file name (**menu.json** in this example) can be customized, but must be consistent with the information specified by the **fileContextMenu** tag. The file describes the items and response behavior of the context menu registered by the application.
+
 The root node of the file is **fileContextMenu**, which is an object array and indicates the number of context menus registered by the current module. (The number must not exceed 5 per module and per application. If the number exceeds 5, only five random menus are parsed.)
 
 **Table 25** fileContextMenu
@@ -1239,7 +1241,7 @@ Example:
 }
 ```
 
-Define the **theme_config.json** configuration file in **resources/base/profile**. The file name is customizable but must either be exactly **theme_config** or start with **theme_config** like **theme_config_1**. The configuration file specifies the system theme used by the current application, corresponding to the information specified by the **systemTheme** tag.
+Define the **theme_config.json** configuration file in **resources/base/profile**. The file's base name can be customized but must be either **theme_config** or a name that starts with **theme_config** (e.g. **theme_config_1**). The configuration file specifies the system theme used by the current application, corresponding to the information specified by the **systemTheme** tag.
 
   **Table 29** theme_config.json
 

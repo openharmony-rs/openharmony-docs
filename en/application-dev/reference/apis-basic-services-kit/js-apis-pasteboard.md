@@ -24,14 +24,14 @@ import { pasteboard } from '@kit.BasicServicesKit';
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
-| Name| Type| Value           | Description                                                                                                                                       |
-| -------- | -------- |--------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| MAX_RECORD_NUM<sup>7+</sup> | number | -            | Maximum number of records in a **PasteData** object. In versions earlier than API version 10, the value is 512, indicating that no more records can be added once the number of records reaches 512.<br>Since API version 10, no limit is placed on the number of records in a **PasteData** object.|
-| MIMETYPE_TEXT_HTML<sup>7+</sup> | string | 'text/html'  | MIME type of the HTML content.                                                                                                                         |
-| MIMETYPE_TEXT_WANT<sup>7+</sup> | string | 'text/want'  | MIME type of the Want content.                                                                                                                         |
-| MIMETYPE_TEXT_PLAIN<sup>7+</sup> | string | 'text/plain' | MIME type of the plain text content.                                                                                                                          |
-| MIMETYPE_TEXT_URI<sup>7+</sup> | string | 'text/uri'   | MIME type of the URI content.                                                                                                                          |
-| MIMETYPE_PIXELMAP<sup>9+</sup> | string | 'pixelMap'   | MIME type of the pixel map.                                                                                                                     |
+| Name| Type| Value| Description          |
+| ---- | ---- |-----|-------------|
+| MAX_RECORD_NUM<sup>7+</sup> | number | - | Maximum number of records in a **PasteData** object. In versions earlier than API version 10, the value is 512, indicating that no more records can be added once the number of records reaches 512.<br>Since API version 10, no limit is placed on the number of records in a **PasteData** object.|
+| MIMETYPE_TEXT_HTML<sup>7+</sup> | string | 'text/html'  | MIME type of the HTML content.|
+| MIMETYPE_TEXT_WANT<sup>7+</sup> | string | 'text/want'  | MIME type of the Want content.|
+| MIMETYPE_TEXT_PLAIN<sup>7+</sup> | string | 'text/plain' | MIME type of the plain text content.|
+| MIMETYPE_TEXT_URI<sup>7+</sup> | string | 'text/uri'   | MIME type of the URI content.|
+| MIMETYPE_PIXELMAP<sup>9+</sup> | string | 'pixelMap'   | MIME type of the pixel map.|
 
 ## ValueType<sup>9+</sup>
 
@@ -479,11 +479,11 @@ Defines the properties of all data records on the pasteboard, including the time
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- |-------------------------------|
-| additions<sup>7+</sup> | {[key:string]:object} | No| No| Additional property data. It does not allow for dynamic adding of properties. Properties can be added only by re-assigning values. This parameter is left empty by default. For details, see the example of **setProperty**.|
-| mimeTypes<sup>7+</sup> | Array&lt;string&gt; | Yes| No| Non-repeating data types of the data records on the pasteboard.|
-| tag<sup>7+</sup> | string | No| No| Custom tag. This parameter is left empty by default.|
-| timestamp<sup>7+</sup> | number | Yes| No| Timestamp when data is written to the pasteboard (unit: ms).|
-| localOnly<sup>7+</sup> | boolean | No| No| Whether the pasteboard content is for local access only. The default value is **false**. The value will be overwritten by the value of the **shareOption** attribute. You are advised to use the [ShareOption](#shareoption9) attribute instead.|
+| additions | {[key:string]:object} | No| No| Additional property data. It does not allow for dynamic adding of properties. Properties can be added only by re-assigning values. This parameter is left empty by default. For details, see the example of **setProperty**.|
+| mimeTypes | Array&lt;string&gt; | Yes| No| Non-repeating data types of the data records on the pasteboard.|
+| tag<sup> | string | No| No| Custom tag. This parameter is left empty by default.|
+| timestamp | number | Yes| No| Timestamp when data is written to the pasteboard (unit: ms).|
+| localOnly | boolean | No| No| Whether the pasteboard content is for local access only. The default value is **false**. The value will be overwritten by the value of the **shareOption** attribute. You are advised to use the [ShareOption](#shareoption9) attribute instead.|
 | shareOption<sup>9+</sup> | [ShareOption](#shareoption9) | No| No| Pasteable ranges of pasteboard data. The default value is **CROSSDEVICE**.|
 
 ## FileConflictOptions<sup>15+</sup>
@@ -628,11 +628,11 @@ Provides **PasteDataRecord** APIs. A **PasteDataRecord** is an abstract definiti
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| htmlText<sup>7+</sup> | string | No| No| HTML content.|
-| want<sup>7+</sup> | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | No| No| Want content.|
-| mimeType<sup>7+</sup> | string | No| No| Default data type.|
-| plainText<sup>7+</sup> | string | No| No| Plain text.|
-| uri<sup>7+</sup> | string | No| No| URI content.|
+| htmlText| string | No| No| HTML content.|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | No| No| Want content.|
+| mimeType | string | No| No| Default data type.|
+| plainText | string | No| No| Plain text.|
+| uri | string | No| No| URI content.|
 | pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No| No| Pixel map.|
 | data<sup>9+</sup> | {[mimeType:&nbsp;string]:&nbsp;ArrayBuffer} | No| No| Content of custom data.|
 

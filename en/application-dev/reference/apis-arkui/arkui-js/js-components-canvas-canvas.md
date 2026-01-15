@@ -7,7 +7,6 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
->
 >  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
 The **\<canvas>** component is used for customizing drawings.
@@ -37,7 +36,7 @@ The [universal styles](js-components-common-styles.md) are supported.
 The [universal events](js-components-common-events.md) are supported.
 
 
-## Methods
+## Method
 
 In addition to the [universal methods](js-components-common-methods.md), the following methods are supported.
 
@@ -52,20 +51,14 @@ Obtains the canvas drawing context. This API cannot be called in **onInit** or *
 
 | Name                 | Type              | Mandatory  | Description                                      |
 | -------------------- | ------------------ | ---- | ---------------------------------------- |
-| type                 | string             | Yes   | Object type. The value is set to **'2d'**, indicating that a 2D drawing object is returned. This object can be used to draw rectangles, texts, and images on the canvas component.|
+| type                 | string             | Yes   | The value is set to **'2d'**, indicating that a 2D drawing object is returned. This object can be used to draw rectangles, texts, and images on the canvas component.|
 | options<sup>6+</sup> | ContextAttrOptions | No   | Whether to enable anti-aliasing. By default, anti-aliasing is disabled.                 |
-
-  **Table 1** ContextAttrOptions
-
-| Name      | Type     | Description                 |
-| --------- | ------- | ------------------- |
-| antialias | boolean | Whether to enable anti-aliasing. The default value is **false**.|
 
 **Return value**
 
 | Type                                      | Description                  |
 | ---------------------------------------- | -------------------- |
-| [CanvasRenderingContext2D](js-components-canvas-canvasrenderingcontext2d.md) | 2D drawing object, which can be used to draw rectangles, images, and texts on the canvas component.|
+| [CanvasRenderingContext2D](js-components-canvas-canvasrenderingcontext2d.md) | 2D drawing object, which can be used to draw rectangles, images, and texts on a canvas component.|
 
 ### toDataURL<sup>6+</sup>
 
@@ -85,6 +78,16 @@ Generates a URL containing image display information.
 | Type    | Description       |
 | ------ | --------- |
 | string | Image URL.|
+
+## ContextAttrOptions<sup>6+</sup>
+
+Option object used to configure the Canvas rendering context attribute.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name     | Type    | Read-Only  | Optional  | Description |
+| -------- | -------- | ------- | ---- | ---------------------------------------- |
+| antialias | boolean | No  |  Yes  | Whether to enable anti-aliasing.<br>The value true indicates that the anti-aliasing feature is enabled, and the value false indicates the opposite.<br>Default value: **false**.|
 
 ## Example
 

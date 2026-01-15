@@ -7,7 +7,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-The **CommonEvent** module provides capabilities to publish, subscribe to, and unsubscribe from common events, as well as obtain and modify the common event result code and result data.
+The CommonEvent module provides capabilities to publish, subscribe to, and unsubscribe from common events, as well as obtain and modify the common event result code and result data.
 
 > **NOTE**
 > The APIs provided by this module are no longer maintained since API version 9. You are advised to use [@ohos.commonEventManager](js-apis-commonEventManager.md).
@@ -74,7 +74,7 @@ commonEvent.publishAsUser("event", userId, publishCB);
 
 publishAsUser(event: string, userId: number, options: CommonEventPublishData, callback: AsyncCallback\<void>): void
 
-Publishes a common event with given attributes to a specific user. This API uses an asynchronous callback to return the result.
+Publishes a common event with given properties to a specific user. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser-1) instead.
@@ -89,7 +89,7 @@ Publishes a common event with given attributes to a specific user. This API uses
 | -------- | ---------------------- | ---- | ---------------------- |
 | event    | string                 | Yes  | Name of the common event to publish. |
 | userId   | number | Yes| User ID.|
-| options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Attributes of the common event to publish.|
+| options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
 | callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. |
 
 **Example**

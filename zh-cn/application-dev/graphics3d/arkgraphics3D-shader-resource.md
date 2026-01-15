@@ -57,8 +57,8 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
 
 ### rasterizationState
 用于表示光栅化过程中的属性配置，具体包括：
-   - enableDepthClamp：用于控制渲染过程中的depth写入时是不是进行clamp，true表示进行clamp，false表示不进行clamp。当前此属性需保持值为false。
-   - enableDepthBias：用于控制渲染过程中的depth写入时是不是进行Bias计算，true表示进行Bias计算，false表示不进行Bias计算。当前此属性需保持值为false。
+   - enableDepthClamp：用于控制渲染过程中的depth写入时是否进行clamp，true表示进行clamp，false表示不进行clamp。当前此属性需保持值为false。
+   - enableDepthBias：用于控制渲染过程中的depth写入时是否进行Bias计算，true表示进行Bias计算，false表示不进行Bias计算。当前此属性需保持值为false。
    - enableRasterizerDiscard：用于控制本次drawCall的fragment阶段是否跳过，true表示跳过，false表示不跳过。
    - polygonMode：用于指定光栅化渲染中的三角形填充方式，可取值及含义见下表。
       | 可取值 | 说明 |

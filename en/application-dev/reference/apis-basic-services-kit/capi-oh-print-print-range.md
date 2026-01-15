@@ -1,9 +1,9 @@
 # Print_Range
-<!--Kit: Basic Services Kit-->  
-<!--Subsystem: Print--> 
-<!--Owner: @guoshengbang--> 
-<!--Designer: @Q-haosu-->   
-<!--Tester: @Q-haosu--> 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Print-->
+<!--Owner: @guoshengbang-->
+<!--Designer: @Q-haosu-->
+<!--Tester: @Q-haosu-->
 <!--Adviser: @fang-jinxu-->
 
 ```c
@@ -12,7 +12,7 @@ typedef struct {...} Print_Range
 
 ## Overview
 
-Defines the range to print.
+Defines a struct for the range to print.
 
 **Since**: 13
 

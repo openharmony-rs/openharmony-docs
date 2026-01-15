@@ -7,7 +7,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-This module provides common event capabilities, including publishing, subscribing to, and unsubscribing from common events.
+This module provides common event capabilities to publish, subscribe to, and unsubscribe from common events.
 
 > **NOTE**
 >
@@ -51,7 +51,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
+| 202      | not system app.                     |
 | 1500003  | The common event sending frequency too high. |
 | 1500006  | Invalid userId. |
 | 1500007  | Failed to send the message to the common event service. |
@@ -85,7 +85,7 @@ try {
 
 publishAsUser(event: string, userId: number, options: CommonEventPublishData, callback: AsyncCallback\<void>): void
 
-Publishes a common event with given attributes to a specific user. This API uses an asynchronous callback to return the result.
+Publishes a common event with given properties to a specific user. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -106,7 +106,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
+| 202      | not system app.                     |
 | 1500003  | The common event sending frequency too high. |
 | 1500006  | Invalid userId. |
 | 1500007  | Failed to send the message to the common event service. |
@@ -166,9 +166,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | The application does not have permission to call the interface.    |  
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |   
+| 201      | The application does not have permission to call the interface.    |
+| 202      | not system app.                     |
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
 | 1500004  | A third-party application cannot send system common events.                |
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
@@ -217,9 +217,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | The application does not have permission to call the interface.    |  
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 201      | The application does not have permission to call the interface.    |
+| 202      | not system app.                     |
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
 | 1500004  | A third-party application cannot send system common events.                |
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
@@ -261,8 +261,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 202      | not system app.                     |
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
 
@@ -310,8 +310,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 202      | not system app.                     |
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
 
@@ -359,8 +359,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                              |
 | -------- | ------------------------------------------------------ |
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 202      | not system app.                     |
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
 | 1500007  | Failed to send the message to the common event service.        |
 | 1500008  | Failed to initialize the common event service. |
 

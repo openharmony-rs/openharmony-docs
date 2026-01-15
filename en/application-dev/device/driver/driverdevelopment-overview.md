@@ -1,4 +1,4 @@
-# Introduction to Driver Development Kit
+# About This Kit
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @lixinsheng2-->

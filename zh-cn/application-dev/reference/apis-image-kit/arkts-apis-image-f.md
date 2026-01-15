@@ -564,6 +564,8 @@ createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled:
 
 通过Surface的ID创建一个预览流画面的PixelMap对象。该Surface可能携带旋转或翻转的变换信息。使用Promise异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **参数：**
@@ -607,6 +609,8 @@ function DemoCreatePixelMapFromSurfaceWithTransformation(surfaceId: string, tran
 createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnabled: boolean): PixelMap
 
 通过Surface的ID创建一个预览流画面的PixelMap对象。该Surface可能携带旋转或翻转的变换信息。同步返回PixelMap结果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1070,7 +1074,7 @@ createImageSource(uri: string): ImageSource
 
 | 参数名 | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
-| uri    | string | 是   | 图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：.jpg .png .gif .bmp .webp .dng .heic<sup>12+</sup>（不同硬件设备支持情况不同） [.svg<sup>10+</sup>](#svg标签说明) .ico<sup>11+</sup>。 |
+| uri    | string | 是   | 图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：.jpg .png .gif .bmp .webp .dng .heic<sup>12+</sup> .wbmp<sup>23+</sup> .heifs<sup>23+</sup> .tiff<sup>23+</sup> [.svg<sup>10+</sup>](#svg标签说明) .ico<sup>11+</sup>。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
 
 **返回值：**
 
@@ -1105,7 +1109,7 @@ createImageSource(uri: string, options: SourceOptions): ImageSource
 
 | 参数名  | 类型                            | 必填 | 说明                                |
 | ------- | ------------------------------- | ---- | ----------------------------------- |
-| uri     | string                          | 是   | 图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：.jpg .png .gif .bmp .webp .dng .heic<sup>12+</sup>（不同硬件设备支持情况不同）[.svg<sup>10+</sup>](#svg标签说明) .ico<sup>11+</sup>。 |
+| uri     | string                          | 是   | 图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：.jpg .png .gif .bmp .webp .dng .heic<sup>12+</sup> .wbmp<sup>23+</sup> .heifs<sup>23+</sup> .tiff<sup>23+</sup> [.svg<sup>10+</sup>](#svg标签说明) .ico<sup>11+</sup>。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
 | options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 是   | 图片属性，包括图片像素密度、像素格式和图片尺寸。|
 
 **返回值：**
@@ -1447,6 +1451,12 @@ async function GetImageSourceSupportedFormats() {
     let formats = image.getImageSourceSupportedFormats();
     console.info('formats:', formats);
 }
+
+async function IsSupportedTiffFormat() {
+    let formats = image.getImageSourceSupportedFormats();
+    return formats.includes("image/tiff");
+}
+
 ```
 
 ## image.createImagePacker
@@ -1631,10 +1641,10 @@ createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined
 
 ```ts
 let options: image.ImageReceiverOptions = {
-  size: {480, 480},
+  size: { width: 480, height: 480 },
   capacity: 3
 }
-let receiver: image.ImageReceiver = image.createImageReceiver(options);
+let receiver: image.ImageReceiver | undefined = image.createImageReceiver(options);
 ```
 
 ## image.createImageCreator<sup>11+</sup>

@@ -12,7 +12,7 @@
 >
 >  - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  - Popup气泡的显示状态在[PopupOptions](#popupoptions类型说明)或[CustomPopupOptions](#custompopupoptions8类型说明)中onStateChange属性的回调中反馈，其显隐与组件的创建或销毁无强对应关系。
+>  - Popup气泡的显示状态在[PopupOptions](#popupoptions类型说明)或[CustomPopupOptions](#custompopupoptions8类型说明)中onStateChange属性的回调中反馈。当绑定Popup气泡的组件被销毁时气泡会消失，但不会通过onStateChange反馈显示状态。
 >
 >  - Popup气泡的最大高度为当前窗口高度 - 上下安全区域高度（状态栏、导航条）- 80vp。
 >
@@ -68,17 +68,17 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 | showInSubWindow<sup>9+</sup>          | boolean                                                      | 否   | 是  | 气泡是否显示在创建的子窗里。<br/>true：气泡会显示在创建的子窗里；false：气泡会显示在对应的主窗中。<br />默认值：false<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
 | mask<sup>10+</sup>                    | boolean&nbsp;\|&nbsp;{ color : [ResourceColor](ts-types.md#resourcecolor) }| 否   | 是  | 设置气泡是否有遮罩层及遮罩颜色。<br/>true：显示透明色遮罩层；false：不显示遮罩层。<br/>Color：显示指定颜色的遮罩层。<br/>默认值：true<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | messageOptions<sup>10+</sup>          | [PopupMessageOptions](#popupmessageoptions10类型说明)        | 否   | 是  | 设置气泡信息文本参数。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                       |
-| targetSpace<sup>10+</sup>             | [Length](ts-types.md#length)                                 | 否   | 是  | 设置Popup与目标的间距。不支持设置百分比。<br/>默认值：8<br/>单位：vp<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                             |
-| placement<sup>10+</sup>               | [Placement](ts-appendix-enums.md#placement8)                 | 否   | 是  | 设置Popup组件相对于目标的显示位置，默认值为Placement.Bottom。<br />如果同时设置了`placementOnTop`和`placement`，则以`placement`的设置为准。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| targetSpace<sup>10+</sup>             | [Length](ts-types.md#length)                                 | 否   | 是  | 设置Popup与宿主节点的间距。不支持设置百分比。<br/>默认值：8<br/>单位：vp<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                             |
+| placement<sup>10+</sup>               | [Placement](ts-appendix-enums.md#placement8)                 | 否   | 是  | 设置Popup组件相对于宿主节点的显示位置，默认值为Placement.Bottom。<br />如果同时设置了`placementOnTop`和`placement`，则以`placement`的设置为准。如果开发者设置的位置上无法完整显示气泡，气泡会自动避让至可以完整显示的位置。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | offset<sup>10+</sup>                  | [Position](ts-types.md#position)                            | 否   | 是  | 设置Popup组件相对于placement设置的显示位置的偏移。<br/>默认值：{ x: 0, y: 0 }<br/>单位：vp<br />**说明：**<br />不支持设置百分比。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | enableArrow<sup>10+</sup>             | boolean                                                      | 否   | 是  | 设置是否显示箭头。<br/>true：显示箭头；false：不显示箭头。<br/>默认值：true<br/>**说明：** <br/>当页面可用空间无法让气泡完全避让时，气泡会覆盖到组件上并且不显示箭头。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | arrowPointPosition<sup>11+</sup>      | [ArrowPointPosition](ts-appendix-enums.md#arrowpointposition11) | 否   | 是  | 气泡箭头相对于父组件显示位置，气泡箭头在垂直和水平方向上有Start、Center、End三个位置点可选。以上所有位置点均位于父组件区域的范围内，不会超出父组件的边界范围。<br/>默认值：ArrowPointPosition.CENTER<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | arrowWidth<sup>11+</sup>             | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置箭头宽度。若所设置的箭头宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。<br/>默认值：16<br/>单位：vp<br/>**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                          |
-| arrowOffset<sup>9+</sup>              | [Length](ts-types.md#length)                                 | 否   | 是  | Popup箭头在气泡处的偏移。<br/>箭头在气泡上下方时，数值为0表示箭头居最左侧，偏移量为箭头至最左侧的距离，默认居中。<br/>箭头在气泡左右侧时，偏移量为箭头至最上侧的距离，默认居中。<br/>显示在屏幕边缘时，气泡会自动左右偏移，数值为0时箭头始终指向绑定组件。<br />**说明：** <br/>1. 没设置arrowOffset的情况下，气泡箭头与四个角的距离不能小于圆角半径。<br/>2. 如果设置了arrowPointPosition属性，arrowOffset属性将不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| arrowOffset<sup>9+</sup>              | [Length](ts-types.md#length)                                 | 否   | 是  | Popup箭头在气泡处的偏移。<br/>箭头在气泡上下方时，数值为0表示箭头居最左侧，偏移量为箭头至最左侧的距离，默认居中。<br/>箭头在气泡左右侧时，偏移量为箭头至最上侧的距离，默认居中。<br/>显示在屏幕边缘时，气泡会自动左右偏移，数值为0时箭头始终指向绑定组件。<br/>单位：vp<br />**说明：** <br/>1. 没设置arrowOffset的情况下，气泡箭头与四个角的距离不能小于圆角半径。<br/>2. 如果设置了arrowPointPosition属性，arrowOffset属性将不生效。<br/>3. 不支持设置百分比。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | arrowHeight<sup>11+</sup>             | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置箭头高度。<br/>默认值：8<br/>单位：vp<br/>**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                          |
 | popupColor<sup>11+</sup>              | [Color](ts-appendix-enums.md#color) &nbsp;\|&nbsp;string&nbsp;\|&nbsp; [Resource](ts-types.md#resource)&nbsp; \|&nbsp;number | 否   | 是  | 气泡的颜色。如需去除模糊背景填充效果，需将backgroundBlurStyle设置为BlurStyle.NONE。<br/>默认值：透明色[TRANSPARENT](ts-appendix-enums.md#color)加模糊背景填充效果[COMPONENT_ULTRA_THICK](ts-universal-attributes-background.md#blurstyle9)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | autoCancel<sup>11+</sup>              | boolean                                                      | 否   | 是  | 页面有操作时，气泡是否自动关闭。<br/>true：自动关闭气泡；false：气泡不会自动关闭。<br/>默认值：true <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| width<sup>11+</sup>                   | [Dimension](ts-types.md#dimension10)                         | 否   | 是  | 气泡宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| width<sup>11+</sup>                   | [Dimension](ts-types.md#dimension10)                         | 否   | 是  | 气泡宽度，未设置或者异常值场景下，气泡自适应内容宽度。<br/>单位：vp<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | radius<sup>11+</sup>             | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置气泡圆角半径。<br/>默认值：20<br/>单位：vp<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                          |
 | shadow<sup>11+</sup>             | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明)    | 否   | 是  | 设置气泡阴影。<br/>默认值：ShadowStyle.OUTER_DEFAULT_MD <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | backgroundBlurStyle<sup>11+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否 | 是 | 设置气泡模糊背景参数。<br />默认值：BlurStyle.COMPONENT_ULTRA_THICK<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -92,7 +92,7 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 | outlineLinearGradient<sup>20+</sup>| [PopupBorderLinearGradient](#popupborderlineargradient20类型说明)  | 否   | 是  | 设置Popup组件外描边线性渐变的颜色。<br />**说明：** <br />1. outlineLinearGradient不设置或者设置为null、undefined时，外描边没有线性渐变效果。<br />2. outlineLinearGradient设置时，direction默认值是：GradientDirection.Bottom。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | borderLinearGradient<sup>20+</sup>| [PopupBorderLinearGradient](#popupborderlineargradient20类型说明)  | 否   | 是  | 设置Popup组件内描边线性渐变的颜色。<br />**说明：** <br />1. borderLinearGradient不设置或者设置为null、undefined时，内描边没有线性渐变效果。<br />2. borderLinearGradient设置时，direction默认值是：GradientDirection.Bottom。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | avoidTarget<sup>20+</sup>          | [AvoidanceMode](ts-basic-components-select.md#avoidancemode19枚举说明) | 否   | 是  | 设置Popup避让时是否覆盖指向组件。<br/>默认值：AvoidanceMode.COVER_TARGET <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| placementOnTop<sup>(deprecated)</sup> | boolean                                                      | 否   | 是 | 是否在组件上方显示，默认值为false。<br />**说明：**<br />从API version 7开始支持，从API version 10开始废弃，建议使用`placement`替代。 |
+| placementOnTop<sup>(deprecated)</sup> | boolean                                                      | 否   | 是 | 是否在组件上方显示，默认值为false。取值为true：气泡显示到绑定组件的上方，取值false：气泡显示到绑定组件的下方。<br />**说明：**<br />从API version 7开始支持，从API version 10开始废弃，建议使用`placement`替代。 |
 
 ## PopupMessageOptions<sup>10+</sup>类型说明
 
@@ -105,7 +105,7 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 | 名称      | 类型                                       | 只读 | 可选 | 说明                                                         |
 | --------- | ------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | textColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 设置气泡信息文本颜色。                                       |
-| font      | [Font](ts-types.md#font)                   | 否   | 是   | 设置气泡信息字体属性。<br/>**说明：** <br/>不支持设置family。 |
+| font      | [Font](ts-types.md#font)                   | 否   | 是   | 设置气泡信息字体属性。<br/>**说明：** <br/>1. 不支持设置family。<br/>2. Font中的weight属性不支持传入number类型。 |
 
 ## DismissPopupAction<sup>12+</sup>类型说明
 
@@ -145,19 +145,19 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 | builder                      | [CustomBuilder](ts-types.md#custombuilder8) | 否   | 否   | 提示气泡内容的构造器。<br />**说明：**<br />1. Popup为通用属性，自定义Popup中不支持再次弹出Popup。对builder下的第一层容器组件不支持使用position属性，如果使用将导致气泡不显示。<br/>2. builder中若使用自定义组件，自定义组件的aboutToAppear和aboutToDisappear生命周期与Popup气泡的显隐无关，不能使用其生命周期判断Popup气泡的显隐。<br/>3. 该构造器的builder仅支持定义在UI组件中，例如可以定义在Builder函数、方法或者[build](ts-custom-component-lifecycle.md#build)方法里。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                              |
 | placement                    | [Placement](ts-appendix-enums.md#placement8) | 否    | 是   | 气泡组件优先显示的位置，当前位置显示不下时，会自动调整位置。<br/>默认值：Placement.Bottom<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | popupColor                   | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;number | 否    | 是   | 气泡的颜色。如需去除模糊背景填充效果，需将backgroundBlurStyle设置为BlurStyle.NONE。<br/>API version 10，默认值：'#4d4d4d'<br />API version 11及以后，默认值：透明色[TRANSPARENT](ts-appendix-enums.md#color)加模糊背景填充效果[COMPONENT_ULTRA_THICK](ts-universal-attributes-background.md#blurstyle9)<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| autoCancel                   | boolean                                  | 否    | 是   | 页面有操作时，气泡是否自动关闭。<br/>true：自动关闭气泡；false：气泡不会自动关闭。<br/>默认值：true<br />**说明：**<br />如果要实现点击气泡内消失需要在builder中先放一个布局组件，然后再将Popup高级组件放在布局组件里面，再在布局组件的onClick事件中修改的传入bindPopup的变量（show:&nbsp;boolean）值。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| autoCancel                   | boolean                                  | 否    | 是   | 页面有操作时，气泡是否自动关闭。<br/>true：自动关闭气泡；false：气泡不会自动关闭。<br/>默认值：true<br />**说明：**<br />如果要实现点击气泡内消失需要在builder中先放一个布局组件，然后再将Popup高级组件放在布局组件里面，再在布局组件的onClick事件中修改控制显隐的状态变量show为false。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | onStateChange                | (event:&nbsp;{&nbsp;isVisible:&nbsp;boolean&nbsp;})&nbsp;=&gt;&nbsp;void | 否    | 是   | 气泡状态变化事件回调，参数为气泡的显示状态。返回true时，表示气泡从关闭到打开，返回false时，表示气泡从打开到关闭。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                 |
 | enableArrow                  | boolean                                  | 否    | 是   | 是否显示箭头。<br/>true：显示箭头；false：不显示箭头。<br/>从API version 9开始，如果箭头所在方位侧的气泡长度不足以显示下箭头，则会默认不显示箭头。比如：placement设置为Left，此时如果气泡高度小于箭头的宽度（32vp）与气泡圆角两倍（48vp）之和（80vp），则实际不会显示箭头。<br/>默认值：true<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| arrowOffset<sup>9+</sup>     | [Length](ts-types.md#length) | 否    | 是   | Popup箭头在气泡处的偏移。<br/>箭头在气泡上下方时，数值为0表示箭头居最左侧，偏移量为箭头至最左侧的距离，默认居中。<br/>箭头在气泡左右侧时，偏移量为箭头至最上侧的距离，默认居中。<br/>显示在屏幕边缘时，气泡会自动左右偏移，数值为0时箭头始终指向绑定组件。<br />**说明：** <br/>1. 没设置arrowOffset的情况下，气泡箭头与四个角的距离不能小于圆角半径。<br/>2. 如果设置了arrowPointPosition属性，arrowOffset属性将不生效。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| arrowOffset<sup>9+</sup>     | [Length](ts-types.md#length) | 否    | 是   | Popup箭头在气泡处的偏移。<br/>箭头在气泡上下方时，数值为0表示箭头居最左侧，偏移量为箭头至最左侧的距离，默认居中。<br/>箭头在气泡左右侧时，偏移量为箭头至最上侧的距离，默认居中。<br/>显示在屏幕边缘时，气泡会自动左右偏移，数值为0时箭头始终指向绑定组件。<br/>单位：vp<br />**说明：** <br/>1. 没设置arrowOffset的情况下，气泡箭头与四个角的距离不能小于圆角半径。<br/>2. 如果设置了arrowPointPosition属性，arrowOffset属性将不生效。<br/>3. 不支持设置百分比。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | arrowPointPosition<sup>11+</sup> | [ArrowPointPosition](ts-appendix-enums.md#arrowpointposition11) | 否 | 是 | 气泡箭头相对于父组件显示位置，气泡箭头在垂直和水平方向上有Start、Center、End三个位置点可选。以上所有位置点均位于父组件区域的范围内，不会超出父组件的边界范围。<br/>默认值：ArrowPointPosition.CENTER<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | arrowWidth<sup>11+</sup>             | [Dimension](ts-types.md#dimension10)                                                      | 否   | 是  | 设置箭头宽度。若所设置的箭头宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。<br/>默认值：16<br/>单位：vp<br />**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                          |
 | arrowHeight<sup>11+</sup>             | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置箭头高度。<br/>默认值：8<br/>单位：vp<br />**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                          |
 | showInSubWindow<sup>9+</sup> | boolean                                  | 否    | 是   | 气泡是否显示在创建的子窗里。<br/>true：气泡会显示在创建的子窗里；false：气泡会显示在对应的主窗中。<br />默认值：false<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                    |
 | maskColor<sup>(deprecated)</sup> |[Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;&nbsp;number  | 否   | 是  | 设置气泡遮罩层颜色。<br />**说明：**<br />从 API version 10 开始废弃，建议使用`mask`替代。 |
 | mask<sup>10+</sup>           | boolean&nbsp;\|&nbsp;{ color : [ResourceColor](ts-types.md#resourcecolor) }| 否    | 是   | 设置气泡是否有遮罩层及遮罩颜色。如果设置为false，则没有遮罩层；如果设置为true，则设置有遮罩层并且颜色为透明色；如果设置为Color，则为遮罩层的颜色。默认值：true<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| targetSpace<sup>10+</sup>    | [Length](ts-types.md#length)             | 否    | 是   | 设置Popup与目标的间距。不支持设置百分比。<br/>默认值：8<br/>单位：vp<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                  |
+| targetSpace<sup>10+</sup>    | [Length](ts-types.md#length)             | 否    | 是   | 设置Popup与宿主节点的间距。不支持设置百分比。<br/>默认值：8<br/>单位：vp<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                  |
 | offset<sup>10+</sup>         | [Position](ts-types.md#position)                            | 否   | 是  | 设置Popup组件相对于placement设置的显示位置的偏移。<br />**说明：**<br />不支持设置百分比。<br/>默认值：{ x: 0, y: 0 }<br/>单位：vp<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| width<sup>11+</sup> | [Dimension](ts-types.md#dimension10) | 否 | 是 | 气泡宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| width<sup>11+</sup> | [Dimension](ts-types.md#dimension10) | 否 | 是 | 气泡宽度，未设置或者异常值场景下，气泡自适应内容宽度。<br/>单位：vp<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | radius<sup>11+</sup>             | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置气泡圆角半径。<br/>默认值：20<br/>单位：vp<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                          |
 | shadow<sup>11+</sup>             | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明)    | 否   | 是  | 设置气泡阴影。<br/>默认值：ShadowStyle.OUTER_DEFAULT_MD <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | backgroundBlurStyle<sup>11+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否 | 是 | 设置气泡模糊背景参数。<br />默认值：BlurStyle.COMPONENT_ULTRA_THICK <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -185,14 +185,14 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 | popupColor                   | [ResourceColor](ts-types.md#resourcecolor) | 否    | 是   | 气泡的颜色。如需去除模糊背景填充效果，需将backgroundBlurStyle设置为BlurStyle.NONE。默认值：透明色[TRANSPARENT](ts-appendix-enums.md#color)加模糊背景填充效果[COMPONENT_ULTRA_THICK](ts-universal-attributes-background.md#blurstyle9)。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | autoCancel                   | boolean                                  | 否    | 是   | 页面有操作时，值为true表示自动关闭气泡，值为false表示气泡不会自动关闭。<br/>默认值：true <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | onStateChange                | [PopupStateChangeCallback](#popupstatechangecallback18) | 否    | 是   | 气泡状态变化事件回调。<br />**说明：**<br />不支持通过[updatePopup](../arkts-apis-uicontext-promptaction.md#updatepopup18)进行更新。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| arrowOffset     | [Length](ts-types.md#length) | 否    | 是   | Popup箭头在气泡处的偏移。<br/>箭头在气泡上下方时，数值为0表示箭头居最左侧，偏移量为箭头至最左侧的距离，默认居中。<br/>箭头在气泡左右侧时，偏移量为箭头至最上侧的距离，默认居中。<br/>显示在屏幕边缘时，气泡会自动左右偏移，数值为0时箭头始终指向绑定组件。<br />**说明：** <br/>1. 没设置arrowOffset的情况下，气泡箭头与四个角的距离不能小于圆角半径。<br/>2. 如果设置了arrowPointPosition属性，arrowOffset属性将不生效。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| arrowOffset     | [Length](ts-types.md#length) | 否    | 是   | Popup箭头在气泡处的偏移。<br/>箭头在气泡上下方时，数值为0表示箭头居最左侧，偏移量为箭头至最左侧的距离，默认居中。<br/>箭头在气泡左右侧时，偏移量为箭头至最上侧的距离，默认居中。<br/>显示在屏幕边缘时，气泡会自动左右偏移，数值为0时箭头始终指向绑定组件。<br/>单位：vp<br />**说明：** <br/>1. 没设置arrowOffset的情况下，气泡箭头与四个角的距离不能小于圆角半径。<br/>2. 如果设置了arrowPointPosition属性，arrowOffset属性将不生效。<br/>3. 不支持设置百分比。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | enableArrow                  | boolean                                  | 否    | 是   | 是否显示箭头。值为true时显示箭头，值为false时不显示箭头。<br/>如果箭头所在方位侧的气泡长度不足以显示下箭头，则会默认不显示箭头。比如：placement设置为Left，此时如果气泡高度小于箭头的宽度（32vp）与气泡圆角两倍（48vp）之和（80vp），则实际不会显示箭头。<br/>默认值：true <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | arrowPointPosition | [ArrowPointPosition](ts-appendix-enums.md#arrowpointposition11) | 否 | 是 | 气泡箭头相对于父组件显示位置，气泡箭头在垂直和水平方向上有Start、Center、End三个位置点可选。以上所有位置点均位于父组件区域的范围内，不会超出父组件的边界范围。<br/>默认值：ArrowPointPosition.CENTER<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | arrowWidth             | [Dimension](ts-types.md#dimension10)                                                      | 否   | 是  | 设置箭头宽度。若所设置的箭头宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。<br/>默认值：16<br/>单位：vp<br />**说明：**<br />不支持设置百分比。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | arrowHeight             | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置箭头高度。<br/>默认值：8<br/>单位：vp<br />**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | showInSubWindow | boolean                                  | 否    | 是   | 取值为true时，气泡会显示在创建的子窗里，取值为false时，气泡会显示在对应的主窗中。<br />默认值：false<br />**说明：**<br />不支持通过[updatePopup](../arkts-apis-uicontext-promptaction.md#updatepopup18)进行更新。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | mask           | boolean&nbsp;\|&nbsp;[PopupMaskType](#popupmasktype18类型说明) | 否    | 是   | 设置气泡是否有遮罩层及遮罩颜色。设置为false时不显示遮罩层，设置为true时显示透明色遮罩层，设置为PopupMaskType时显示指定颜色的遮罩层。默认值：true<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| targetSpace    | [Length](ts-types.md#length)             | 否    | 是   | 设置Popup与目标的间隙。不支持设置百分比。<br/>默认值：8<br/>单位：vp<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| targetSpace    | [Length](ts-types.md#length)             | 否    | 是   | 设置Popup与宿主节点的间隙。不支持设置百分比。<br/>默认值：8<br/>单位：vp<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | offset         | [Position](ts-types.md#position)                            | 否   | 是  | 设置Popup组件相对于placement设置的显示位置的偏移。<br />**说明：**<br />不支持设置百分比。<br/>默认值：{ x: 0, y: 0 }<br/>单位：vp<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | width | [Dimension](ts-types.md#dimension10) | 否 | 是 | 气泡宽度。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | radius             | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置气泡圆角半径。<br/>默认值：20<br/>单位：vp <br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
@@ -431,7 +431,7 @@ struct PopupExample {
         .onClick(() => {
           this.customPopup = !this.customPopup;
         })
-        .bindPopup(this.customPopup, {
+        .bindPopup(this.customPopup!!, {
           message: "this is a popup",
           arrowHeight: 20, // 设置气泡箭头高度
           arrowWidth: 20, // 设置气泡箭头宽度
@@ -443,7 +443,7 @@ struct PopupExample {
         .onClick(() => {
           this.handlePopup = !this.handlePopup;
         })
-        .bindPopup(this.handlePopup, {
+        .bindPopup(this.handlePopup!!, {
           width: 300,
           message: 'This is a popup with PopupOptions',
           arrowPointPosition: ArrowPointPosition.START, // 设置箭头的位置
@@ -649,7 +649,7 @@ struct PopupExample {
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
-        .bindPopup(this.handlePopup, {
+        .bindPopup(this.handlePopup!!, {
           message: 'This is a popup with PopupOptions',
           placement: Placement.Top,
           outlineWidth: 1,
@@ -670,3 +670,35 @@ struct PopupExample {
 ```
 
 ![](figures/popup_06.gif)
+
+### 示例8（为气泡设置避让宿主模式）
+
+该示例通过配置[PopupOptions](#popupoptions类型说明)的avoidTarget属性，实现气泡对其绑定组件的避让。
+
+从API version 20开始，在PopupOptions中新增了avoidTarget属性。
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct PopupExample {
+  @State handlePopup: boolean = false;
+
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      Button('PopupOptions')
+        .onClick(() => {
+          this.handlePopup = !this.handlePopup
+        })
+        .bindPopup(this.handlePopup!!, {
+          message: 'popup message '.repeat(200),
+          placement: Placement.Top,
+          avoidTarget: AvoidanceMode.AVOID_AROUND_TARGET,
+        })
+        .position({ x: 100, y: 150 }) 
+    }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+![](figures/popup_07.gif)

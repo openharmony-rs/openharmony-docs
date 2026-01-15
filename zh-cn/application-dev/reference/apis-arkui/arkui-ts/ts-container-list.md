@@ -36,6 +36,7 @@ List的预加载是指除了加载显示区域可见区域外子组件外，还�
 ## 子组件
 
 仅支持[ListItem](ts-container-listitem.md)、[ListItemGroup](ts-container-listitemgroup.md)子组件和自定义组件。自定义组件在List下使用时，建议使用ListItem或ListItemGroup作为自定组件的顶层组件，不建议给自定义组件设置属性和事件方法。
+
 支持通过渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
 
 > **说明：**
@@ -652,6 +653,22 @@ syncLoad(enable: boolean)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | enable   | boolean | 是   | 是否同步加载List区域内所有子组件。<br/>true表示同步加载，false表示异步加载。默认值：true。<br/>**说明：** <br/>设置为false时，在首次显示、不带动画scrollToIndex跳转场景，若当帧布局耗时超过50ms，会将List区域内尚未布局的子组件延后到下一帧进行布局。 |
 
+### editModeOptions<sup>23+</sup>
+
+editModeOptions(options?: EditModeOptions)
+
+配置编辑模式选项参数。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| options| [EditModeOptions](ts-container-scrollable-common.md#editmodeoptions23对象说明)  | 否   | 编辑模式选项。|
+
 ### editMode<sup>(deprecated)</sup>
 
 editMode(value: boolean)
@@ -674,7 +691,9 @@ editMode(value: boolean)
 
 supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
-设置当前List组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。
+设置当前List组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。未设置时不支持空分支节点。此属性初次赋值后不支持更新，所以赋值后无法在支持空分支、不支持空分支行为之间切换。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1172,7 +1191,7 @@ getItemRectInGroup(index: number, indexInGroup: number): RectResult
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 ### getVisibleListContentInfo<sup>14+</sup>
 
 getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
@@ -1212,7 +1231,7 @@ getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   |The controller not bound to component.|
+| 100004   |Controller not bound to a component.|
 ### scrollToItemInGroup<sup>11+</sup>
 
 scrollToItemInGroup(index: number, indexInGroup: number, smooth?: boolean, align?: ScrollAlign): void
@@ -1239,7 +1258,7 @@ scrollToItemInGroup(index: number, indexInGroup: number, smooth?: boolean, align
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 ### closeAllSwipeActions<sup>11+</sup>
 
@@ -1265,7 +1284,7 @@ closeAllSwipeActions(options?: CloseSwipeActionOptions): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 > **说明：**
 >
@@ -1773,21 +1792,21 @@ struct ListExample {
       .scrollBar(BarState.On)
       .childrenMainSize(this.listChildrenSize)
       .alignListItem(ListItemAlign.Center)
-      Row(){
+      Row({ space: 18 }) {
         Button() { Text('item size + 50') }.onClick(()=>{
           this.listChildrenSize.childDefaultSize += 50;
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
         Button() { Text('item size - 50') }.onClick(()=>{
           if (this.listChildrenSize.childDefaultSize === 0) {
             return;
           }
           this.listChildrenSize.childDefaultSize -= 50;
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
         Button() { Text('scrollTo (0, 310)') }.onClick(()=>{
           // 310: 跳转到item 1顶部与List顶部平齐的位置。
           // 如果不设置childrenMainSize，item高度不一致时scrollTo会不准确。
           this.scroller.scrollTo({ xOffset: 0, yOffset: 310 })
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
       }.height('20%')
     }
   }
@@ -2437,3 +2456,178 @@ struct Index {
 ```
 
 ![OnItemDrag](figures/listOnItemDrag.gif)
+
+### 示例16（实现ListItemGroup中点击项的居中效果）
+
+该示例使用[scrollToItemInGroup](#scrolltoitemingroup11)接口，实现了点击[ListItemGroup](./ts-container-listitemgroup.md)中的[ListItem](./ts-container-listitem.md)时将其居中的效果。
+
+``` ts
+import { util } from '@kit.ArkTS';
+
+class Contact {
+  key: string = util.generateRandomUUID(true);
+  name: string;
+  icon: Resource;
+
+  constructor(name: string, icon: Resource) {
+    this.name = name;
+    this.icon = icon;
+  }
+}
+
+class ContactsGroup {
+  title: string = '';
+  contacts: Array<object> | null = null;
+  key: string = '';
+}
+
+@Entry
+@Component
+struct ContactsList {
+  private scroller: ListScroller = new ListScroller();
+  private contactsGroups: ContactsGroup[] = [
+    {
+      title: 'A',
+      contacts: [
+        new Contact('艾佳', $r('app.media.icon')),  // $r('app.media.icon')需要替换为开发者所需的图像资源文件
+        new Contact('安安', $r('app.media.icon')),
+        new Contact('Angela', $r('app.media.icon'))
+        // ...
+      ],
+      key: util.generateRandomUUID(true)
+    } as ContactsGroup,
+    {
+      title: 'B',
+      contacts: [
+        new Contact('白叶', $r('app.media.icon')),
+        new Contact('伯明', $r('app.media.icon'))
+        // ...
+      ],
+      key: util.generateRandomUUID(true)
+    } as ContactsGroup,
+    // ...
+  ]
+
+  @Builder
+  itemHead(text: string) {
+    Text(text)
+      .fontSize(20)
+      .backgroundColor('#fff1f3f5')
+      .width('100%')
+      .padding(5)
+  }
+
+  build() {
+    List({ scroller: this.scroller }) {
+      ForEach(this.contactsGroups, (item: ContactsGroup, index: number) => {
+        ListItemGroup({ header: this.itemHead(item.title) }) {
+          ForEach(item.contacts, (contact: Contact, subIndex: number) => {
+            ListItem() {
+              Row() {
+                Image(contact.icon)
+                  .width(40)
+                  .height(40)
+                  .margin(10)
+                Text(contact.name).fontSize(20)
+              }
+              .width('100%')
+              .justifyContent(FlexAlign.Start)
+              .margin(10)
+            }
+            .gesture(
+              TapGesture({ count: 1 })
+                .onAction((event: GestureEvent) => {
+                  if (event) {
+                    const itemRect = this.scroller.getItemRectInGroup(index, subIndex);
+                    console.info('第', index + 1, '个ListItemGroup的第', subIndex + 1, '个ListItem的 x:', itemRect.x,
+                      ' y:', itemRect.y, ' width:', itemRect.width, ' height:', itemRect.height)
+                    this.scroller.scrollToItemInGroup(index, subIndex, true, ScrollAlign.CENTER);
+                  }
+                })
+            )
+          }, (contact: Contact) => JSON.stringify(contact))
+        }
+        .divider({ strokeWidth: 4 })
+        .width('100%')
+      }, (item: ContactsGroup) => JSON.stringify(item))
+    }
+    .onScrollFrameBegin((offset: number, state: ScrollState) => {
+      console.info('List scrollFrameBegin offset: ' + offset + ' state: ' + state.toString());
+      return { offsetRemain: offset };
+    })
+  }
+}
+```
+
+![scrollToItemInGroup](figures/scrollToItemInGroup.gif)
+
+### 示例16（设置多选聚拢动画）
+
+该示例通过打开List多选聚拢动画开关，实现了在ListItem上[长按弹出菜单](ts-universal-attributes-menu.md#bindcontextmenu8)时聚拢显示范围内被选中的ListItem。
+
+从API version 23开始，List组件新增[编辑模式选项](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct ListExample {
+  numbers1: string[] = ['0', '1', '2'];
+  numbers2: string[] = ['0', '1', '2'];
+
+  @Builder
+  MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Text('menu item 1')
+        .fontSize(18)
+        .width(120)
+        .height(50)
+        .textAlign(TextAlign.Center)
+      Divider().height(10)
+      Text('menu item 2')
+        .fontSize(18)
+        .width(120)
+        .height(50)
+        .textAlign(TextAlign.Center)
+    }.width(100)
+  }
+
+  @Builder
+  MyPreview() {
+    Column() {
+      Image($r('app.media.startIcon'))
+        .width(200)
+        .height(200)
+    }
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Text('List')
+      List({ space: 10 }) {
+        ForEach(this.numbers1, (day: string) => {
+          ForEach(this.numbers1, (day: string) => {
+            ListItem() {
+              Text(day)
+                .fontSize(16)
+                .backgroundColor(Color.White)
+                .width('100%')
+                .height(50)
+                .textAlign(TextAlign.Center)
+            }
+            .selected(true)
+            .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
+              { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
+          }, (day: string) => day)
+        }, (day: string) => day)
+      }
+      .editModeOptions({ enableGatherSelectedItemsAnimation: true })
+      .width('90%')
+      .height(300)
+      .scrollBar(BarState.Off)
+    }.width('100%').margin({ top: 5 }).backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+![listMultiselectAnimation](figures/listMultiselectAnimation.gif)

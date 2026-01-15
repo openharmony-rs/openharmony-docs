@@ -174,7 +174,7 @@
 | --- | --- | --- |
 | pid | pid | 无。 |
 | uid | uid | 无。 |
-| type | excption字段中的name子字段 | 类型不同，Faultlogger中是故障类型枚举，hiAppEvent中是字符串类型。 |
+| type | exception字段中的name子字段 | 类型不同，Faultlogger中是故障类型枚举，hiAppEvent中是字符串类型。 |
 | timestamp | time | 无。 |
 | module | bundle_name | 无。 |
 | fullLog | external_log | fullLog为故障日志全文。external_log为故障日志文件在应用沙箱中的具体路径(/data/storage/el2/log/)，访问该路径的文件，可以得到故障日志全文。 |

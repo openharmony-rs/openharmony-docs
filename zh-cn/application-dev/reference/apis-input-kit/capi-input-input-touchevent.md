@@ -8,8 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
-struct Input_TouchEvent;
-typedef struct Input_TouchEvent Input_TouchEvent;
+typedef struct Input_TouchEvent Input_TouchEvent
 ```
 
 ## 概述

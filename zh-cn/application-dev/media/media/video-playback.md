@@ -10,7 +10,7 @@
 
 - [AVPlayer](media-kit-intro.md#avplayer)：功能较完善的音视频播放ArkTS/JS API，集成了流媒体和本地资源解析，媒体资源解封装，视频解码和渲染功能，适用于对媒体资源进行端到端播放的场景，可直接播放mp4、mkv等格式的视频文件。
 
-- Video组件：封装了视频播放的基础能力，需要设置数据源以及基础信息即可播放视频，但相对扩展能力较弱。Video组件由ArkUI提供能力，相关指导请参考UI开发文档-[Video组件](../../ui/arkts-common-components-video-player.md)。
+- Video组件：封装了视频播放的基础能力，需要设置数据源及基础信息即可播放视频，但相对扩展能力较弱。Video组件由ArkUI提供能力，相关指导请参考UI开发文档-[Video组件](../../ui/arkts-common-components-video-player.md)。
 
 本开发指导将介绍如何使用AVPlayer开发视频播放功能，以完整播放一个视频作为示例，实现端到端播放原始媒体资源。
 
@@ -129,6 +129,7 @@
     ```
 
 4. 设置窗口：获取并设置属性SurfaceID，用于设置显示画面。
+
    应用需要从XComponent组件获取surfaceID，获取方式请参考[getXComponentSurfaceId](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)。
 
     ```ts

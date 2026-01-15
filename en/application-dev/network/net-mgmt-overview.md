@@ -1,4 +1,4 @@
-# Introduction to Network Kit
+# About This Kit
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->

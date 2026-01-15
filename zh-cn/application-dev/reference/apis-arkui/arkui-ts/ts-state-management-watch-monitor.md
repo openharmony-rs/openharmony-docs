@@ -271,6 +271,20 @@ SyncMonitor: MonitorDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称        | 类型             | 说明                           |
+| ----------- | ---------------- | ------------------------------ |
+| SyncMonitor | [MonitorDecorator](#monitordecorator12) | 属性装饰器，监听状态变量的修改。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[状态管理错误码](../errorcode-stateManagement.md#130001-addmonitorclearmonitor非法路径)。
+
+| 错误码ID | 错误信息             |
+| -------- | -------------------- |
+| 130001   | The path is invalid. |
+
 **示例：**
 
 ```ts

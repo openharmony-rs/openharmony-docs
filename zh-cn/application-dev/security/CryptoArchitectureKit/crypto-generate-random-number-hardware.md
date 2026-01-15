@@ -57,10 +57,13 @@
    指定字节长度范围为1~INT_MAX。
 
 - 通过await返回异步结果：
-  ```ts
-  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  <!-- @[secure_hard_ware_random_number_generation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/ets/pages/Await.ets) -->
 
-  async function doRand() {
+``` TypeScript
+
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function doRand() {
     let rand = cryptoFramework.createRandom();
     rand.enableHardwareEntropy();
     let seed = new Uint8Array([1, 2, 3]);
@@ -69,27 +72,32 @@
     let randOutput = await rand.generateRandom(len);
     console.info('rand output:' + randOutput.data);
   }
-  ```
+```
+
 
 - 同步返回结果：
-  ```ts
-  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+  <!-- @[secure_hard_ware_random_number_generation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/ets/pages/Sync.ets) -->
 
-  function doRandBySync() {
-    let rand = cryptoFramework.createRandom();
-    rand.enableHardwareEntropy();
-    let len = 24; // Generate a 24-byte random number.
-    try {
-      let randData = rand.generateRandomSync(len);
-      if (randData.data.length !== 0) {
-        console.info("[Sync]: rand result: " + randData.data);
-      } else {
-        console.error("[Sync]: get rand result fail!");
-      }
-    } catch (error) {
-      let e: BusinessError = error as BusinessError;
-      console.error(`do rand failed, ${e.code}, ${e.message}`);
+``` TypeScript
+
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function doRandBySync() {
+  let rand = cryptoFramework.createRandom();
+  rand.enableHardwareEntropy();
+  let len = 24; // Generate a 24-byte random number.
+  try {
+    let randData = rand.generateRandomSync(len);
+    if (randData.data.length !== 0) {
+      console.info('[Sync]: rand result: ' + randData.data);
+    } else {
+      console.error('[Sync]: get rand result fail!');
     }
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`do rand failed, ${e.code}, ${e.message}`);
   }
-  ```
+}
+```
+

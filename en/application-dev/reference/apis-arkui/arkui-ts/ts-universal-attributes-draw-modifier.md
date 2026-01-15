@@ -34,7 +34,7 @@ Creates a drawing modifier.
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  |  [DrawModifier](#drawmodifier-1) \| undefined | Yes  | Custom drawing modifier, which defines the logic of custom drawing.<br> Default value: **undefined**<br>**NOTE**<br> A custom modifier applies only to the [FrameNode](../js-apis-arkui-frameNode.md) of the currently bound component, not to its subnodes.|
+| modifier  | &nbsp;[DrawModifier](#drawmodifier-1)&nbsp;\|&nbsp;undefined | Yes  | Custom drawing modifier, which defines the logic of custom drawing.<br> Default value: **undefined**<br>**NOTE**<br> A custom modifier applies only to the [FrameNode](../js-apis-arkui-frameNode.md) of the currently bound component, not to its subnodes.|
 
 **Return value**
 
@@ -44,7 +44,7 @@ Creates a drawing modifier.
 
 ## DrawModifier
 
-Implements a **DrawModifier** instance for using the **drawForeground**, **drawFront**, **drawContent**, and **drawBehind** APIs for custom drawing as well as the [invalidate](#invalidate) API for redrawing. Each **DrawModifier** instance can be set for only one component. Repeated setting is not allowed.
+Implements a **DrawModifier** instance for using the **drawOverlay**, **drawForeground**, **drawFront**, **drawContent**, and **drawBehind** APIs for custom drawing as well as the [invalidate](#invalidate) API for redrawing. Each **DrawModifier** instance can be set for only one component. Repeated setting is not allowed.
 
 The figure below shows the custom drawing layers.
 
@@ -134,6 +134,84 @@ Draws the foreground. Override this method to implement custom drawing operation
 **Example**
 
 See [Example 2: Implementing Custom Foreground Drawing for a Container Through DrawModifier](#example-2-implementing-custom-foreground-drawing-for-a-container-through-drawmodifier).
+
+### drawOverlay<sup>23+</sup>
+
+drawOverlay(drawContext: DrawContext): void
+
+Draws the overlay. Override this method to implement custom overlay drawing on the foreground layer of the component. Unlike [drawForeground](#drawforeground20), **drawOverlay** can implement drawing outside the component boundary.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type                                                  | Mandatory| Description            |
+| ------- | ------------------------------------------------------ | ---- | ---------------- |
+| drawContext | [DrawContext](#drawcontext) | Yes  | Graphics drawing context.|
+
+**Example**
+
+
+```ts
+// test.ets
+import { drawing } from '@kit.ArkGraphics2D';
+
+class MyForegroundDrawModifier extends DrawModifier {
+  public scaleX: number = 3;
+  public scaleY: number = 3;
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+  }
+
+  // Override the drawOverlay method to customize the foreground drawing of overlay.
+  drawOverlay(context: DrawContext): void {
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 50,
+      blue: 100
+    });
+    context.canvas.attachBrush(brush);
+    const halfWidth = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
+    context.canvas.drawRect({
+      left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
+      top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
+      right: this.uiContext.vp2px(halfWidth + 30 * this.scaleX),
+      bottom: this.uiContext.vp2px(halfHeight + 60 * this.scaleY)
+    });
+  }
+}
+
+@Entry
+@Component
+struct DrawModifierExample {
+  // Instantiate the foreground drawing class of the overlay, passing the UIContext instance.
+  private overlayModifier: MyForegroundDrawModifier = new MyForegroundDrawModifier(this.getUIContext());
+
+  build() {
+    Column() {
+      Text('Here is a child node')
+        .fontSize(36)
+        .width('100%')
+        .height('100%')
+        .textAlign(TextAlign.Center)
+    }
+    .margin(50)
+    .width(280)
+    .height(300)
+    .backgroundColor(0x87CEEB)
+    // Apply custom foreground drawing by passing the DrawModifier instance.
+    .drawModifier(this.overlayModifier)
+  }
+}
+```
 
 ### invalidate
 
@@ -319,6 +397,7 @@ struct DrawModifierExample {
         Button('create')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             this.create();
@@ -326,6 +405,7 @@ struct DrawModifierExample {
         Button('play')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             if (this.drawAnimator) {
@@ -335,6 +415,7 @@ struct DrawModifierExample {
         Button('changeModifier')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             this.count += 1;

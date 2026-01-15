@@ -47,6 +47,7 @@
 | [OH_AVMediaSource *OH_AVMediaSource_CreateWithUrl(const char *url, OH_AVHttpHeader *header)](#oh_avmediasource_createwithurl) | - | 通过URL创建媒体源。 |
 | [OH_AVMediaSource *OH_AVMediaSource_CreateWithDataSource(OH_AVDataSource *dataSource)](#oh_avmediasource_createwithdatasource) | - | 通过OH_AVDataSource创建媒体源。 |
 | [OH_AVMediaSource *OH_AVMediaSource_CreateWithFd(int32_t fd, int64_t offset, int64_t size)](#oh_avmediasource_createwithfd) | - | 通过文件描述符（FileDescriptor）创建媒体源。 |
+| [OH_AVErrCode OH_AVMediaSource_Destroy(OH_AVMediaSource *source)](#oh_avmediasource_destroy) | - | 释放media source实例。 |
 | [OH_AVErrCode OH_AVMediaSource_SetMimeType(OH_AVMediaSource *source, const char *mimetype)](#oh_avmediasource_setmimetype) | - | 设置媒体MIME类型以处理扩展媒体源。 |
 | [OH_AVErrCode OH_AVMediaSourceLoadingRequest_GetUrl(OH_AVMediaSourceLoadingRequest *request, const char **url)](#oh_avmediasourceloadingrequest_geturl) | - | 获取请求的URL。 |
 | [OH_AVErrCode OH_AVMediaSourceLoadingRequest_GetHttpHeader(OH_AVMediaSourceLoadingRequest *request, OH_AVHttpHeader **header)](#oh_avmediasourceloadingrequest_gethttpheader) | - | 获取请求的HTTP头部。 |
@@ -284,6 +285,30 @@ OH_AVMediaSource *OH_AVMediaSource_CreateWithFd(int32_t fd, int64_t offset, int6
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AVMediaSource *](capi-avmedia-source-oh-avmediasource.md) | 成功时返回指向OH_AVMediaSource实例的指针，失败时返回空指针。 |
+
+### OH_AVMediaSource_Destroy()
+
+```c
+OH_AVErrCode OH_AVMediaSource_Destroy(OH_AVMediaSource *source)
+```
+
+**描述**
+
+释放media source实例。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md) *source | 指向OH_AVMediaSource实例的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| OH_AVErrCode | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示source为空指针或释放失败。 |
 
 ### OH_AVMediaSource_SetMimeType()
 

@@ -251,9 +251,9 @@ tracepoint(mode: HiTraceCommunicationMode, type: HiTraceTracepointType, id: HiTr
 
 [HiTraceMeter](./js-apis-hitracemeter.md)跟踪信息埋点，同步接口。
 
-当type为客户端发送CS和服务端接收SC时，进行同步HiTraceMeter开始打点；当type为客户端接收CC和服务端发送SS时，进行同步HiTraceMeter结束打点；当type为通用类型GENERAL时，不会进行HiTraceMeter打点。
+当type为客户端发送CS和服务端接收SR时，进行同步HiTraceMeter开始打点；当type为客户端接收CR和服务端发送SS时，进行同步HiTraceMeter结束打点；当type为通用类型GENERAL时，不会进行HiTraceMeter打点。
 
-type为客户端发送CS和客户端接收CC的信息埋点需配套使用；type为服务端接收SC和服务端发送SS的信息埋点需配套使用。否则，HiTraceMeter开始与结束打点无法正常匹配。
+type为客户端发送CS和客户端接收CR的信息埋点需配套使用；type为服务端接收SR和服务端发送SS的信息埋点需配套使用。否则，HiTraceMeter开始与结束打点无法正常匹配。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 

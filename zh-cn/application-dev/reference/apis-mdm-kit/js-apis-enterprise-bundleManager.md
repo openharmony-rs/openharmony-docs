@@ -26,7 +26,7 @@ import { bundleManager } from '@kit.MDMKit';
 
 addAllowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accountId?: number): void
 
-添加应用至应用程序包安装允许名单，添加至允许名单的应用允许在当前/指定用户下安装，其它非允许名单应用不允许安装。
+添加应用至应用程序包安装允许名单，添加至允许名单的应用允许在当前/指定用户下安装，其它非允许名单应用不允许安装。系统应用卸载后重新安装不会受到接口限制；而普通应用在卸载后重新安装时，则会受到接口限制。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -192,7 +192,7 @@ try {
 
 addDisallowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accountId?: number): void
 
-添加应用至应用程序包安装禁止名单，添加至禁止名单的应用不允许在当前/指定用户下安装。
+添加应用至应用程序包安装禁止名单，添加至禁止名单的应用不允许在当前/指定用户下安装。系统应用卸载后重新安装不会受到接口限制；而普通应用在卸载后重新安装时，则会受到接口限制。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -603,7 +603,7 @@ install(admin: Want, hapFilePaths: Array\<string>, installParam?: InstallParam):
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
-| hapFilePaths | Array\<string>                                          | 是   | 待安装应用包路径数组。 |
+| hapFilePaths | Array\<string>                                          | 是   | 待安装应用包路径数组。应用包路径为应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径。 |
 | installParam | [InstallParam](#installparam)                           | 否   | 应用包安装参数。       |
 
 **返回值：**
@@ -969,7 +969,7 @@ installMarketApps(admin: Want, bundleNames: Array\<string>): void
 下载并安装应用市场应用。
 > **说明：**
 >
-> 本接口调用成功后会在桌面上生成应用下载任务，此任务与从应用市场下载所创建任务一致。下载安装结束后，安装结果会通过回调[EnterpriseAdminExtensionAbility.onMarketAppInstallResult](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonmarketappinstallresult22)返回。<!--RP1--><!--RP1End-->
+> 本接口调用成功后会在桌面上生成应用下载任务，此任务与从应用市场下载所创建任务一致。下载安装结束后，安装结果会通过回调[EnterpriseAdminExtensionAbility.onMarketAppInstallResult](./js-apis-EnterpriseAdminExtensionAbility.md#onmarketappinstallresult22)返回。<!--RP1--><!--RP1End-->
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 

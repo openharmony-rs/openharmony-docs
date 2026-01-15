@@ -11,6 +11,7 @@
 Browser extensions can communicate with applications to access services for implementing the application's capabilities. For example, in a password manager, the application stores and encrypts passwords, allowing the browser extension to automatically fill in form fields on web pages.
 
 Since API version 21, you can use the [WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md) component in applications to provide backend services for browser extensions.
+
 The browser extension connects to WebNativeMessagingExtensionAbility through the [WebExtensions runtime API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime). The two parties communicate with each other by calling the I/O API after sharing the pipe file descriptor.
 
 
@@ -85,7 +86,7 @@ Extension configuration format:
   ]
 }
 ```
-The extension configuration is stored in [dataShare](../database/share-config.md#configuration-in-modulejson5). The URI is fixed in the format of **datashardporxy://[Bundle name]/browserNativeMessagingHosts**.
+The extension configuration is stored in [dataShare](../database/share-config.md#configuration-in-modulejson5). The URI is fixed in the format of **datashareproxy://[Bundle name]/browserNativeMessagingHosts**.
 
 ### Lifecycle Management of WebNativeMessagingExtensionAbility
 - [onConnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md#onconnectnative): Triggered when the browser extension calls **runtime.connectNative**. If **WebNativeMessagingExtensionAbility** is not running, calling **runtime.connectNative** will start **WebNativeMessagingExtensionAbility** and trigger this callback.
@@ -146,7 +147,7 @@ Implement the **background.js** file.
 
 1. Use **chrome.runtime.connectNative** for connection.
    ``` ts	
-     var port = null;	
+   var port = null;	
    // Listen for messages from main.js.
    chrome.runtime.onMessage.addListener(	
      function (request, sender, sendResponse) {	
@@ -164,7 +165,7 @@ Implement the **background.js** file.
      port.onMessage.addListener(onNativeMessage); // Listen for whether the native application sends messages.
      port.onDisconnect.addListener(onDisconnected); // Listen for disconnection.
    }	
-   // Triggered when a message is received from the native application.
+    // Triggered when a message is received from the native application.
    async function onNativeMessage(message) {	
      console.info('Received message from the native application: ' + JSON.stringify(message)); // Pong in the example.
    }	
@@ -183,10 +184,10 @@ Implement the **background.js** file.
        bundleName,
        {message: nativeMessage},
        function(response) {
-         // Disconnect the connection after receiving a response from the application.
+       // Disconnect the connection after receiving a response from the application.
        console.info("sendNativeMessage received response from the application:", JSON.stringify (response));
        }
-    )
+     )
    }
    ```
 
@@ -206,61 +207,61 @@ To manually create a WebNativeMessagingExtensionAbility in the DevEco Studio pro
    ```
 3. In the **MyWebNativeMessageExtAbility.ets** file, import the [WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md) module. Customize a class that inherits from WebNativeMessagingExtensionAbility and implement the lifecycle callbacks.
    ```ts
-    import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import {buffer, util} from '@kit.ArkTS';
-    import { fileIo as fs } from '@kit.CoreFileKit';
+   import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import {buffer, util} from '@kit.ArkTS';
+   import { fileIo as fs } from '@kit.CoreFileKit';
 
-    const TAG: string = '[MyWebNativeMessageExtAbility]';
-    const DOMAIN_NUMBER: number = 0xFF00;
+   const TAG: string = '[MyWebNativeMessageExtAbility]';
+   const DOMAIN_NUMBER: number = 0xFF00;
 
-    export default class MyWebNativeMessageExtAbility extends WebNativeMessagingExtensionAbility {
-      // Read the message sent by the extension and reply.
-      async ReadAsync(fdRead:number, fdWrite:number) : Promise<void> {
-        try {
-          // read
-          let arrayBuffer = new ArrayBuffer(1024);
-          let readLen = await fs.read(fdRead, arrayBuffer);
-          if (readLen <= 4) {
-            hilog.error(DOMAIN_NUMBER, TAG, 'read pipe length failed');
-            return;
-          }
-          hilog.info(DOMAIN_NUMBER, TAG, 'read pipe %{public}s', buffer.from(arrayBuffer, 4, readLen - 4).toString());
+   export default class MyWebNativeMessageExtAbility extends WebNativeMessagingExtensionAbility {
+     // Read the message sent by the extension and reply.
+     async ReadAsync(fdRead:number, fdWrite:number) : Promise<void> {
+       try {
+         // read
+         let arrayBuffer = new ArrayBuffer(1024);
+         let readLen = await fs.read(fdRead, arrayBuffer);
+         if (readLen <= 4) {
+           hilog.error(DOMAIN_NUMBER, TAG, 'read pipe length failed');
+           return;
+         }
+         hilog.info(DOMAIN_NUMBER, TAG, 'read pipe %{public}s', buffer.from(arrayBuffer, 4, readLen - 4).toString());
 
-          // write
-          let strResponse : string = "pong";
-          const encoder = new util.TextEncoder("utf-8");
-          const strBytes = encoder.encodeInto(strResponse);
-          let bufferLen = strBytes.length;
-          const lenBytes = new Uint8Array(4);
-          lenBytes[0] = (bufferLen >> 0) & 0xFF;
-          lenBytes[1] = (bufferLen >> 8) & 0xFF;
-          lenBytes[2] = (bufferLen >> 16) & 0xFF;
-          lenBytes[3] = (bufferLen >> 24) & 0xFF;
-          const writeBuffer = new Uint8Array(4 + bufferLen);
-          writeBuffer.set(lenBytes, 4);
-          writeBuffer.set(strBytes, 4);
-          let writeLen = await fs.write(fdWrite, writeBuffer.buffer);
-          hilog.info(DOMAIN_NUMBER, TAG, 'write pipe length %{public}d', writeLen);
-        } catch (err) {
-          hilog.error(DOMAIN_NUMBER, TAG, 'fs io failed, error code: ' + err.code + " message: " + err.code);
-        }
-      }
+         // write
+         let strResponse : string = "pong";
+         const encoder = new util.TextEncoder("utf-8");
+         const strBytes = encoder.encodeInto(strResponse);
+         let bufferLen = strBytes.length;
+         const lenBytes = new Uint8Array(4);
+         lenBytes[0] = (bufferLen >> 0) & 0xFF;
+         lenBytes[1] = (bufferLen >> 8) & 0xFF;
+         lenBytes[2] = (bufferLen >> 16) & 0xFF;
+         lenBytes[3] = (bufferLen >> 24) & 0xFF;
+         const writeBuffer = new Uint8Array(4 + bufferLen);
+         writeBuffer.set(lenBytes, 0);
+         writeBuffer.set(strBytes, 4);
+         let writeLen = await fs.write(fdWrite, writeBuffer.buffer);
+         hilog.info(DOMAIN_NUMBER, TAG, 'write pipe length %{public}d', writeLen);
+       } catch (err) {
+         hilog.error(DOMAIN_NUMBER, TAG, 'fs io failed, error code: ' + err.code + " message: " + err.code);
+       }
+     }
 
-      onConnectNative(info: ConnectionInfo): void {
-        hilog.info(DOMAIN_NUMBER, TAG,
-          `onConnectNative, connectionId ${info.connectionId} caller bundle: ${info.bundleName}, extension origin: ${info.extensionOrigin}, pipe Read: ${info.fdRead}, pipe write ${info.fdWrite}  `);
-        this.ReadAsync(info.fdRead, info.fdWrite)
-      }
+     onConnectNative(info: ConnectionInfo): void {
+       hilog.info(DOMAIN_NUMBER, TAG,
+         `onConnectNative, connectionId ${info.connectionId} caller bundle: ${info.bundleName}, extension origin: ${info.extensionOrigin}, pipe Read: ${info.fdRead}, pipe write ${info.fdWrite}  `);
+       this.ReadAsync(info.fdRead, info.fdWrite)
+     }
 
-      onDisconnectNative(info: ConnectionInfo): void {
-        hilog.info(DOMAIN_NUMBER, TAG, `onDisconnectNative, connectionId: ${info.connectionId}`);
-      }
+     onDisconnectNative(info: ConnectionInfo): void {
+       hilog.info(DOMAIN_NUMBER, TAG, `onDisconnectNative, connectionId: ${info.connectionId}`);
+     }
 
-      onDestroy(): void {
-        hilog.info(DOMAIN_NUMBER, TAG, 'onDestroy');
-      }
-    };
+     onDestroy(): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'onDestroy');
+     }
+   };
    ```
 4. Register the WebNativeMessagingExtensionAbility component in the [module.json5 file](../quick-start/module-configuration-file.md) of the module in the project. Set **type** to **"webNativeMessaging"** and **srcEntry** to the code path of the component.
 
@@ -291,127 +292,127 @@ To manually create a WebNativeMessagingExtensionAbility in the DevEco Studio pro
 
 6. Add the [extension configuration](#storing-the-extension-configuration-of-applications-in-datashare) to **shared_config.json**.
 
-```json
-  {
-    "crossAppSharedConfig": [
-      // ...
-      {
-        // Fixed URI format: datashardporxy://[Bundle name]/browserNativeMessagingHosts. The browser application obtains the value from the URI, that is, the extension configuration.
-        "uri": "datashareproxy://com.example.app/browserNativeMessagingHosts",
-        // Extension configuration. For details about the format, see "Storing the Extension Configuration of Native Applications in dataShare". Be sure to use escape characters.
-        "value": "{\"name\": \"com.example.myapplication\",\"description\": \"Send message to native app.\",\"abilityName\": \"MyWebNativeMessageExtAbility\", \"allowed_origins\":[\"chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/\"]}",
-        "allowList": [
-          // appIdentifier of the application that is allowed to access. Add the appIdentifier of the browser.
-          "1234567890123456789"
-        ]
-      }
-    ]
-  }
-```
+   ```json
+   {
+     "crossAppSharedConfig": [
+       // ...
+       {
+         // Fixed URI format: datashareproxy://[Bundle name]/browserNativeMessagingHosts. The browser application obtains the value from the URI, that is, the extension configuration.
+         "uri": "datashareproxy://com.example.app/browserNativeMessagingHosts",
+         // Extension configuration. For details about the format, see "Storing the Extension Configuration of Native Applications in dataShare". Be sure to use escape characters.
+         "value": "{\"name\": \"com.example.myapplication\",\"description\": \"Send message to native app.\",\"abilityName\": \"MyWebNativeMessageExtAbility\", \"allowed_origins\":[\"chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/\"]}",
+         "allowList": [
+           // appIdentifier of the application that is allowed to access. Add the appIdentifier of the browser.
+           "1234567890123456789"
+         ]
+       }
+     ]
+   }
+   ```
 ### Implementing the WebNativeMessagingExtensionAbility (for Browser Developers)
 The browser implements the extension runtime APIs, starts the WebNativeMessagingExtensionAbility, and establishes and manages NativeMessaging connections. The **ohos.permission.WEB_NATIVE_MESSAGING** permission is required.
 
 1. When receiving a NativeMessaging connection creation request, the browser obtains the extension configuration of the target application through the [get() API](../reference/apis-arkdata/js-apis-data-dataShare.md#get20), reads the name of WebNativeMessagingExtensionAbility and the list of extensions that can be accessed, and checks whether the access is allowed.
-  ```ts
-    import { dataShare } from '@kit.ArkData';
+   ```ts
+   import { dataShare } from '@kit.ArkData';
 
-    interface ExtensionConfig {
-      abilityName:string;
-      allowed_origins:string[];
-    }
-
-    async function getManifestData(bundleName:string, connectExtensionOrigin:string) {
-      try {
-        // Call the dataShare API to obtain the extension configuration.
-        const dsProxyHelper = await dataShare.createDataProxyHandle();
-        const urisToGet = [`datashareproxy://${bundleName}/browserNativeMessagingHosts`];
-        const config : dataShare.DataProxyConfig = {
-          type: dataShare.DataProxyType.SHARED_CONFIG,
-        };
-        const results = await dsProxyHelper.get(urisToGet, config);
-        let foundValid = false;
-        for (let i = 0; i < results.length; i++) {
-          try {
-            const result = results[i];
-            const json = result.value;
-            if (typeof json !== "string") {
-              continue;
-            }
-            let jsonStr:string = json as string;
-            let info:ExtensionConfig = JSON.parse(jsonStr);
-            if (info.abilityName) {
-              console.info('Native message json info is ok');
-              if (!Array.isArray(info.allowed_origins)) {
-                info.allowed_origins = [info.allowed_origins];
-              }
-              if (!info.allowed_origins.includes(connectExtensionOrigin)) {
-                console.error('Origin not allowed, continue searching');
-                continue;
-              }
-              foundValid = true;
-              break;
-            }
-          } catch (error) {
-            console.error('NativeMessage JSON parse error:', error);
-          }
-        }
-        if (!foundValid) {
-          console.error('NativeMessage JSON no valid manifest found');
-        } else {
-          console.info('NativeMessage allowed_origins match ok');
-        }
-      } catch (error) {
-        console.error('Error getting config:', error);
-      }
-    }
+   interface ExtensionConfig {
+     abilityName:string;
+     allowed_origins:string[];
+   }
+ 
+   async function getManifestData(bundleName:string, connectExtensionOrigin:string) {
+     try {
+      // Call the dataShare API to obtain the extension configuration.
+       const dsProxyHelper = await dataShare.createDataProxyHandle();
+       const urisToGet = [`datashareproxy://${bundleName}/browserNativeMessagingHosts`];
+       const config : dataShare.DataProxyConfig = {
+         type: dataShare.DataProxyType.SHARED_CONFIG,
+       };
+       const results = await dsProxyHelper.get(urisToGet, config);
+       let foundValid = false;
+       for (let i = 0; i < results.length; i++) {
+         try {
+           const result = results[i];
+           const json = result.value;
+           if (typeof json !== "string") {
+             continue;
+           }
+           let jsonStr:string = json as string;
+           let info:ExtensionConfig = JSON.parse(jsonStr);
+           if (info.abilityName) {
+             console.info('Native message json info is ok');
+             if (!Array.isArray(info.allowed_origins)) {
+               info.allowed_origins = [info.allowed_origins];
+             }
+             if (!info.allowed_origins.includes(connectExtensionOrigin)) {
+               console.error('Origin not allowed, continue searching');
+               continue;
+             }
+             foundValid = true;
+             break;
+           }
+         } catch (error) {
+           console.error('NativeMessage JSON parse error:', error);
+         }
+       }
+       if (!foundValid) {
+         console.error('NativeMessage JSON no valid manifest found');
+       } else {
+         console.info('NativeMessage allowed_origins match ok');
+       }
+     } catch (error) {
+       console.error('Error getting config:', error);
+     }
+   }
    ```
 2. Call [webNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerconnectnative) to create a NativeMessage. If the WebNativeMessagingExtensionAbility is not running, this API will start the ExtensionAbility and trigger the WebNativeMessagingExtensionAbility.
    ```ts
-    import { UIAbility, Want, common } from '@kit.AbilityKit';
-    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
+   import { UIAbility, Want, common } from '@kit.AbilityKit';
+   import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 
-    class ConnectionCallback implements webNativeMessagingExtensionManager.WebExtensionConnectionCallback {
-      onConnect(connection:webNativeMessagingExtensionManager.ConnectionNativeInfo) {
-        // connected
-        console.error(`onConnect id ${connection.connectionId} is connected`);
-      }
-      onDisconnect(connection:webNativeMessagingExtensionManager.ConnectionNativeInfo) {
-        // disconnect
-        console.error(`onDisconnect id ${connection.connectionId} is connected`);
-      }
-      onFailed(code:webNativeMessagingExtensionManager.NmErrorCode, errMsg:string) {
-        console.error(`onFailed error code is ${code}, errMsg is ${errMsg}`);
-      }
-    }
+   class ConnectionCallback implements webNativeMessagingExtensionManager.WebExtensionConnectionCallback {
+     onConnect(connection:webNativeMessagingExtensionManager.ConnectionNativeInfo) {
+       // connected
+       console.error(`onConnect id ${connection.connectionId} is connected`);
+     }
+     onDisconnect(connection:webNativeMessagingExtensionManager.ConnectionNativeInfo) {
+       // disconnect
+       console.error(`onDisconnect id ${connection.connectionId} is connected`);
+     }
+     onFailed(code:webNativeMessagingExtensionManager.NmErrorCode, errMsg:string) {
+       console.error(`onFailed error code is ${code}, errMsg is ${errMsg}`);
+     }
+   }
 
-    function connectNative(abilityContext: common.UIAbilityContext, bundleName: string, abilityName: string,
-      connectExtensionOrigin: string, readPipe: number, writePipe: number) : void {
-      try {
-        let wantInfo:Want = {
-          bundleName: bundleName,
-          abilityName: abilityName,
-          parameters: {
-            'ohos.arkweb.messageReadPipe': { 'type': 'FD', 'value': readPipe },
-            'ohos.arkweb.messageWritePipe': { 'type': 'FD', 'value': writePipe },
-            'ohos.arkweb.extensionOrigin': connectExtensionOrigin
-          },
-        };
+   function connectNative(abilityContext: common.UIAbilityContext, bundleName: string, abilityName: string,
+     connectExtensionOrigin: string, readPipe: number, writePipe: number) : void {
+     try {
+       let wantInfo:Want = {
+         bundleName: bundleName,
+         abilityName: abilityName,
+         parameters: {
+           'ohos.arkweb.messageReadPipe': { 'type': 'FD', 'value': readPipe },
+           'ohos.arkweb.messageWritePipe': { 'type': 'FD', 'value': writePipe },
+           'ohos.arkweb.extensionOrigin': connectExtensionOrigin
+         },
+       };
 
-        let options : ConnectionCallback = new ConnectionCallback;
-        let connectId = webNativeMessagingExtensionManager.connectNative(abilityContext, wantInfo, options);
-        console.info(`innerWebNativeMessageManager  connectionId : ${connectId}` );
-      } catch (error) {
-        console.info(`inner callback error Message: ${JSON.stringify(error)}`);
-      }
-    }
+       let options : ConnectionCallback = new ConnectionCallback;
+       let connectId = webNativeMessagingExtensionManager.connectNative(abilityContext, wantInfo, options);
+       console.info(`innerWebNativeMessageManager  connectionId : ${connectId}` );
+     } catch (error) {
+       console.info(`inner callback error Message: ${JSON.stringify(error)}`);
+     }
+   }
    ```
 
 3. Call [webNativeMessagingExtensionManager.disconnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerdisconnectnative) to destroy the NativeMessaging connection.
    ```ts
-    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
+   import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 
-    function disconnencNative(connectId: number) : void {
-      console.info(`NativeMessageDisconnect start connectionId is ${connectId}`);
-      webNativeMessagingExtensionManager.disconnectNative(connectId);
-    }
+   function disconnectNative(connectId: number) : void {
+     console.info(`NativeMessageDisconnect start connectionId is ${connectId}`);
+     webNativeMessagingExtensionManager.disconnectNative(connectId);
+   }
    ```

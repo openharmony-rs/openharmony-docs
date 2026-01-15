@@ -743,13 +743,13 @@ getOverlayManagerOptions(): OverlayManagerOptions
 
 完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
 
-## animateToImmediately<sup>22+</sup>
+## animateToImmediately<sup>23+</sup>
 
 animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
 
 通过UIContext对象指定明确的动画主实例上下文，并触发显式动画立即下发。避免由于找不到实例或实例不对，导致的动画不执行或动画结束回调不执行问题。使用callback异步回调。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1276,7 +1276,7 @@ showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButto
 
 >  **说明：**
 >
->  不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的showAlertDialog，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+>  不支持在输入法类型窗口中使用子窗（[showInSubWindow](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) 为true）的showAlertDialog，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1325,6 +1325,7 @@ struct Index {
   }
 }
 ```
+![showAlertDialog](figures/showAlertDialog.gif)
 
 ## showActionSheet
 
@@ -1395,6 +1396,7 @@ struct Index {
   }
 }
 ```
+![showActionSheet](figures/showActionSheet.gif)
 
 ## showDatePickerDialog
 
@@ -2716,7 +2718,7 @@ struct Index {
 
   aboutToAppear() {
     const windowId = this.getUIContext().getWindowId();
-    hilog.info(0x0000, 'testTag', 'current window id: %{public}s', windowId);
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}d', windowId);
   }
 
   build() {

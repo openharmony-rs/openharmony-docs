@@ -231,6 +231,7 @@ enum Camera_Format
 | CAMERA_FORMAT_JPEG = 2000 | JPEG格式。 |
 | CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010 格式。<br>**起始版本：** 12 |
 | CAMERA_FORMAT_YCRCB_P010 = 2002 | YCRCB P010 格式。<br>**起始版本：** 12 |
+| CAMERA_FORMAT_HEIC = 2003 | HEIC格式。<br>**起始版本：** 23 |
 
 ### Camera_FlashMode
 
@@ -459,6 +460,7 @@ enum Camera_PreconfigType
 | PRECONFIG_1080P = 1 | 预配置照片分辨率为1080P。 |
 | PRECONFIG_4K = 2 | 预配置照片分辨率为4K。 |
 | PRECONFIG_HIGH_QUALITY = 3 | 预配置照片为高质量。 |
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br> 从API version 23开始支持。|
 
 ### Camera_PreconfigRatio
 

@@ -677,7 +677,9 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 
 **描述**
 
-查询网络探测结果。
+查询网络探测结果。若出现异常（例如断网），导致发送请求失败，则接口会立即返回，不再进行后续探测。本接口涉及网络操作，避免在主流程调用，否则可能导致UI卡顿。
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -688,8 +690,8 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 
 | 参数项 | 描述 |
 | -- | -- |
-| char *destination | 目的地址。 |
-| int32_t duration | 探测持续时间。单位：秒。 |
+| char *destination | 需要探测的目标域名或者IP地址。对于域名，探测前会进行域名解析，将域名解析为目标IP，之后发起探测。域名解析时间不包含在duration指示的探测持续时间内。 |
+| int32_t duration | 探测持续时间。单位：秒。探测间隔为1秒，因此可通过本字段控制探测次数。 |
 | [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) *probeResultInfo | 丢包率和往返时间（RTT）。 |
 
 **返回：**
@@ -707,6 +709,10 @@ int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *
 **描述**
 
 查询网络跟踪路由。
+
+> **说明：**
+>
+> 应用调用该接口需申请精确位置权限。根据[申请位置权限开发指导](../../device/location/location-permission-guidelines.md)，调用方需同时申请ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION。
 
 **需要权限：** ohos.permission.INTERNET、ohos.permission.LOCATION 和 ohos.permission.ACCESS_NET_TRACE_INFO
 

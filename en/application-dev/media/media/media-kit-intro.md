@@ -1,4 +1,4 @@
-# Introduction to Media Kit
+# About This Kit
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @wang-haizhou6-->

@@ -218,6 +218,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     await phAccessHelper.applyChanges(assetChangeRequest);
     fetchResult.close();
     // ...
+  } catch (err) {
+    console.error(`rename failed with error: ${err.code}, ${err.message}`);
+    // ...
+  }
+}
 ```
 
 ## 将文件放入回收站

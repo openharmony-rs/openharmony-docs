@@ -8,8 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
-struct Input_Hotkey;
-typedef struct Input_Hotkey Input_Hotkey;
+typedef struct Input_Hotkey Input_Hotkey
 ```
 
 ## 概述

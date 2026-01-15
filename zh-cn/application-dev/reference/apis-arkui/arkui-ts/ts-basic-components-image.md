@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Image为图片组件，常用于在应用中显示图片。Image支持加载[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)、[ResourceStr](ts-types.md#resourcestr)和[DrawableDescriptor](#drawabledescriptor10)类型的数据源，支持png、jpg、jpeg、bmp、svg、webp、gif和heif类型的图片格式，不支持apng和svga格式。
+Image为图片组件，常用于在应用中显示图片。Image支持加载[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)、[ResourceStr](ts-types.md#resourcestr)和[DrawableDescriptor](#drawabledescriptor10)类型的数据源，支持png、jpg、jpeg、bmp、svg、webp、gif、tiff和heif类型的图片格式，不支持apng和svga格式。
 
 > **说明：**
 >
@@ -56,7 +56,7 @@ Image加载成功且组件不设置宽高时，其显示大小自适应父组件
 >
 >   1. image/subType用于声明数据内容的类型。Image组件不会强制校验声明的类型与Base64解码后的实际图片格式是否完全一致。在部分场景下，即使声明的类型与真实格式不一致，图片仍可能正常显示。为避免未来行为变化或未知问题，建议始终保持类型与实际图片格式一致。
 >
->   2. Image组件不支持`data:image/*;base64,Base64EncodedData`的通配写法，subType必须显示声明具体的图片类型。
+>   2. Image组件不支持`data:image/*;base64,Base64EncodedData`的通配写法，subType必须显式声明具体的图片类型。
 >
 >   3. Image组件不支持通过Base64字符串形式加载SVG图片。
 
@@ -469,7 +469,7 @@ colorFilter(value: ColorFilter | DrawingColorFilter)
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12) | 是   | 1. 给图像设置颜色滤镜效果，入参为一个的4x5的RGBA转换矩阵。<br/>2. 从API version12开始支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>API version 11及之前，SVG类型图源不支持该属性。<br/>从API version 12开始，该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，SVG类型的图源只有设置了stroke属性（无论是否有值）才会生效。<br/>从API version 21开始，当[supportSvg2](#supportsvg221)属性设置为true时，colorFilter属性对整个SVG图源起作用。|
 
-颜色滤镜通过一个4x5的矩阵来设置图像的颜色滤镜，矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下（其中矩阵值的范围[0, 1]）：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>该属性的具体使用可以参考[示例9](#示例9为图像设置颜色滤镜效果)。
+颜色滤镜通过一个4x5的矩阵来设置图像的颜色滤镜，矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>该属性的具体使用可以参考[示例9](#示例9为图像设置颜色滤镜效果)。
 
 ### draggable<sup>9+</sup>
 
@@ -525,7 +525,7 @@ resizable(value: ResizableOptions)
 
 设置图像拉伸时可调整大小的图像选项。拉伸对拖拽缩略图以及占位图有效。
 
-设置合法的 [ResizableOptions](#resizableoptions11) 时，objectRepeat属性和orientation属性设置不生效。
+设置合法的 [ResizableOptions](#resizableoptions11) 时，objectRepeat属性、antialiased属性和orientation属性设置不生效。
 
 当设置 top +bottom 大于原图的高或者 left + right 大于原图的宽时 [ResizableOptions](#resizableoptions11) 属性设置不生效。
 
@@ -666,6 +666,8 @@ antialiased(isAntialiased: Optional\<boolean>)
 > **说明：**
 >
 > 如果图片设置了背景色属性([backgroundColor](ts-universal-attributes-background.md#backgroundcolor))，图片的抗锯齿属性设置为true不会影响背景色的锯齿效果。
+> 
+> 和[resizable](#resizable11)一起使用时，该属性不生效。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1032,8 +1034,6 @@ type BusinessError\<T = void> = BusinessError\<T>
 type RequestDownloadInfo = DownloadInfo
 
 用于描述网络图片加载失败或异常时的下载信息。该对象包含本次下载任务的资源信息、网络信息以及性能统计信息，可用于定位加载异常的具体原因。
-
-**需要权限：** ohos.permission.GET_NETWORK_INFO
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1493,13 +1493,17 @@ import { drawing, common2D } from '@kit.ArkGraphics2D';
 @Entry
 @Component
 struct ImageExample3 {
+  // 当加载图片为svg格式时
+  // $r('app.media.svg1')需要替换为开发者所需的图像资源文件。
+  private imageOne: Resource = $r('app.media.svg1');
   // $r('app.media.1')需要替换为开发者所需的图像资源文件。
-  private imageOne: Resource = $r('app.media.1');
-  // $r('app.media.2')需要替换为开发者所需的图像资源文件。
-  private imageTwo: Resource = $r('app.media.2');
+  private imageTwo: Resource = $r('app.media.1');
   @State src: Resource = this.imageOne;
   @State src2: Resource = this.imageTwo;
-  private colorFilterMatrix: number[] = [1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0];
+  private colorFilterMatrix: number[] = [1, 0, 0, 0, 0.5,
+                                         0, 1, 0, 0, 0,
+                                         0, 0, 1, 0, 0,
+                                         0, 0, 0, 1, 0];
   private color: common2D.Color = {
     alpha: 255,
     red: 255,
@@ -1529,9 +1533,9 @@ struct ImageExample3 {
           this.drawingColorFilterSecond = new ColorFilter(this.colorFilterMatrix);
         })
 
-      //当加载图片为svg格式时
-      // $r('app.media.test_self')需要替换为开发者所需的图像资源文件。
-      Image($r('app.media.test_self'))
+      // 当加载图片为svg格式时
+      // $r('app.media.svg2')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.svg2'))
         .width(110)
         .height(110)
         .margin(15)

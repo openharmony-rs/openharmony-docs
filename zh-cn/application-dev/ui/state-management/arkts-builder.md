@@ -123,7 +123,7 @@ struct BuilderSample {
 
 从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详细用例见[\@Builder支持状态变量刷新](#builder支持状态变量刷新)。
 
-使用`UIUtils.makeBinding()`包装读取状态变量的回调函数作为参数传入@Builder函数，可以支持@Builder函数中UI组件刷新；`UIUTils.makeBinding()`中额外传入写状态变量的回调函数可以进一步将@Builder内对参数改变，传递到调用Builder函数的组件中。
+使用`UIUtils.makeBinding()`包装读取状态变量的回调函数作为参数传入@Builder函数，可以支持@Builder函数中UI组件刷新；`UIUtils.makeBinding()`中额外传入写状态变量的回调函数可以进一步将@Builder内对参数改变，传递到调用Builder函数的组件中。
 
 <!-- @[by_makebinding_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterMakeBinding.ets) -->
 
@@ -459,6 +459,7 @@ struct ParentSample {
 ### 将@Builder装饰的函数当作CustomBuilder类型使用
 
 当参数类型为[`CustomBuilder`](../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)时，可以传入定义的`@Builder`函数。因为`CustomBuilder`实际上是`Function(() => any)`或`void`类型，而`@Builder`也是`Function`类型。所以通过传入`@Builder`可以实现特定效果。
+
 全局`@Builder`函数当作`CustomBuilder`类型传递时需要绑定this上下文，开发者可以直接调用全局`@Builder`函数，编译工具链会自动生成绑定this上下文的代码。
 
 <!-- @[using_function_decorated_with_builder_as_custom_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AsCustomBuilder.ets) -->

@@ -58,7 +58,7 @@ For details about the APIs, see [@ohos.commonEventManager (Common Event)](../../
      let subscriberCustom: commonEventManager.CommonEventSubscriber | null = null;
      // Subscriber information. Replace the 'event' field with the actual event name.
      let subscribeInfoCustom: commonEventManager.CommonEventSubscribeInfo = {
-       events: ['event'] // Subscribe to a custom common event.
+       events: ['event']  // Subscribe to a custom common event.
      };
      ```
 

@@ -23,7 +23,19 @@
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 ```
 
-## EnterpriseAdminExtensionAbility.onAdminEnabled
+## EnterpriseAdminExtensionAbility
+
+企业设备管理扩展能力组件，是设备管理应用必备组件。当开发者为企业开发设备管理应用时，需继承EnterpriseAdminExtensionAbility，在EnterpriseAdminExtensionAbility实例中实现MDM业务逻辑，EnterpriseAdminExtensionAbility实现了系统管理状态变化通知功能，并定义了管理应用激活、去激活、应用安装、卸载事件等回调接口。
+
+### 属性
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| context<sup>23+</sup> | [EnterpriseAdminExtensionContext](js-apis-application-EnterpriseAdminExtensionContext.md) | 否 | 否 | EnterpriseAdminExtensionAbility的上下文。继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。|
+
+### onAdminEnabled
 
 onAdminEnabled(): void
 
@@ -45,7 +57,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onAdminDisabled
+### onAdminDisabled
 
 onAdminDisabled(): void
 
@@ -67,7 +79,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onBundleAdded
+### onBundleAdded
 
 onBundleAdded(bundleName: string): void
 
@@ -96,7 +108,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onBundleAdded<sup>14+</sup>
+### onBundleAdded<sup>14+</sup>
 
 onBundleAdded(bundleName: string, accountId: number): void
 
@@ -127,7 +139,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onBundleRemoved
+### onBundleRemoved
 
 onBundleRemoved(bundleName: string): void
 
@@ -156,7 +168,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onBundleRemoved<sup>14+</sup>
+### onBundleRemoved<sup>14+</sup>
 
 onBundleRemoved(bundleName: string, accountId: number): void
 
@@ -187,7 +199,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onAppStart
+### onAppStart
 
 onAppStart(bundleName: string): void
 
@@ -216,7 +228,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onAppStop
+### onAppStop
 
 onAppStop(bundleName: string): void
 
@@ -244,7 +256,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 };
 ```
-## EnterpriseAdminExtensionAbility.onSystemUpdate
+### onSystemUpdate
 
 onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo): void
 
@@ -274,7 +286,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onStart
+### onStart
 
 onStart(): void
 
@@ -297,7 +309,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onAccountAdded<sup>18+</sup>
+### onAccountAdded<sup>18+</sup>
 
 onAccountAdded(accountId: number): void
 
@@ -325,7 +337,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onAccountSwitched<sup>18+</sup>
+### onAccountSwitched<sup>18+</sup>
 
 onAccountSwitched(accountId: number): void
 
@@ -353,7 +365,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onAccountRemoved<sup>18+</sup>
+### onAccountRemoved<sup>18+</sup>
 
 onAccountRemoved(accountId: number): void
 
@@ -381,7 +393,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onKioskModeEntering<sup>20+</sup>
+### onKioskModeEntering<sup>20+</sup>
 
 onKioskModeEntering(bundleName: string, accountId: number): void
 
@@ -412,7 +424,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onKioskModeExiting<sup>20+</sup>
+### onKioskModeExiting<sup>20+</sup>
 
 onKioskModeExiting(bundleName: string, accountId: number): void
 
@@ -441,7 +453,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onMarketAppInstallResult<sup>22+</sup>
+### onMarketAppInstallResult<sup>22+</sup>
 
 onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void
 
@@ -470,7 +482,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onDeviceAdminEnabled<sup>23+</sup>
+### onDeviceAdminEnabled<sup>23+</sup>
 
 onDeviceAdminEnabled(bundleName: string): void
 
@@ -497,7 +509,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onDeviceAdminDisabled<sup>23+</sup>
+### onDeviceAdminDisabled<sup>23+</sup>
 
 onDeviceAdminDisabled(bundleName: string): void
 
@@ -566,7 +578,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   * 结果：按下：onKeyEvent event:{"actionTime": 1895101259, "keyCode": 0, "keyAction": 0,
   *	         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 1895101259}]}
   *       抬起：onKeyEvent event:{"actionTime": 1895478977, "keyCode": 0, "keyAction": 1,
-  *         "keyItems": [{"pressed": flase, "keyCode": 0, "downTime": 1895101259}]}
+  *         "keyItems": [{"pressed": false, "keyCode": 0, "downTime": 1895101259}]}
   *
   * 2.用户长按电源键时触发回调（以电源键为例）
   * 2.1 下发按键监听事件
@@ -580,7 +592,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   *         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 14468236859}]}
   *          ......
   *       抬起：onKeyEvent event:{"actionTime": 14471425448, "keyCode": 0, "keyAction": 1,
-  *         "keyItems": [{"pressed": flase, "keyCode": 0, "downTime": 14468236859}]}
+  *         "keyItems": [{"pressed": false, "keyCode": 0, "downTime": 14468236859}]}
   * 
   * 组合键根据下发策略不同，分为下面多种场景：
   * 3.用户按组合键触发回调1（以电源键和音量+键为例）
