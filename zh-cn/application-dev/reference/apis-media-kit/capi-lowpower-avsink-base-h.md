@@ -85,7 +85,7 @@ int32_t OH_AVSamplesBuffer_GetRemainedCapacity(OH_AVSamplesBuffer *samplesBuffer
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_AVSamplesBuffer实例剩余可使用容量，单位为字节。如果sampleBuffer或data poniter为nullptr或无效，则返回-1。 |
+| int32_t | OH_AVSamplesBuffer实例剩余可使用容量，单位为字节。如果sampleBuffer或data pointer为nullptr或无效，则返回-1。 |
 
 ### OH_LowPowerAVSink_GetCapability()
 
