@@ -566,6 +566,53 @@ struct Index {
 }
 ```
 
+### getLifecycle<sup>23+</sup>
+
+static getLifecycle\<T extends BaseCustomComponent\>(customComponent: T): CustomComponentLifecycle
+
+getLifecycle用于获取[自定义组件的生命周期](./arkui-ts/ts-custom-component-new-lifecycle.md)实例。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明     |
+| ------ | ---- | ---- | ------------ |
+| customComponent | T    | 是   | 自定义组件实例。 |
+
+**返回值：**
+
+| 类型 | 说明                                             |
+| ---- | ------------------------------------------------ |
+| [CustomComponentLifecycle](./arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecycle)    | 自定义组件的生命周期实例。 |
+
+**示例：**
+
+```ts
+import { UIUtils, ComponentAppear } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State lifecycleState: number = -1;
+
+  @ComponentAppear
+  myAppear() {
+    // UIUtils.getLifecycle获得自定义组件的生命周期实例，getCurrentState查询自定义组件当前生命周期。
+    // 预期查询到的生命周期为CustomComponentLifecycleState.APPEARED = 1。
+    this.lifecycleState = UIUtils.getLifecycle(this).getCurrentState();
+  }
+
+  build() {
+    Text(`${this.lifecycleState}`)
+  }
+}
+```
+
 ### canBeObserved<sup>23+</sup>
 
 static canBeObserved\<T extends object\>(source: T): ObservedResult
