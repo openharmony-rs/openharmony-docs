@@ -1042,7 +1042,7 @@ observer.off('iccAccountInfoChange');
 ```
 
 
-## observer.onGetSimActiveState<sup>10+</sup>
+## observer.onGetSimActiveState<sup>23+</sup>
 
 onGetSimActiveState\(slotId: number, callback: Callback\<boolean\>\): void
 
@@ -1080,7 +1080,7 @@ observer.onGetSimActiveState(0, (err: BusinessError, data: sim.CardType) => {
 });
 ```
 
-## observer.offGetSimActiveState<sup>10+</sup>
+## observer.offGetSimActiveState<sup>23+</sup>
 
 offGetSimActiveState\(callback: Callback\<boolean\>\): void
 

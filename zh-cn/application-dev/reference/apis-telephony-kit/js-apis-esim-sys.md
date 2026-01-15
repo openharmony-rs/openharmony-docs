@@ -870,11 +870,11 @@ eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_RE
   });
 ```
 
-## eSIM.getSupportedPkids
+## eSIM.getSupportedPkids<sup>20+</sup>
  	 
 getSupportedPkids\(slotId: number\): Promise\<string\>
 
-获取手机支持的Pkid信息
+获取手机支持的Pkid信息。
 
 **系统接口：** 此接口为系统接口。
 
@@ -892,7 +892,7 @@ getSupportedPkids\(slotId: number\): Promise\<string\>
 
 | 类型                  | 说明                                |
 | --------------------- | ---------------------------------- |
-| Promise\<string\> | tlv格式的，手机支持的pkid信息 |
+| Promise\<string\> |Promise对象，返回tlv格式的，手机支持的pkid信息。 |
 
 **错误码：**
 
@@ -923,7 +923,7 @@ try {
 
 getContractInfo\(slotId: number, requestData: ContractRequestData\): Promise\<string\>
 
-获取开通eSIM需要的，加密的eid等信息
+获取开通eSIM需要的，加密的eid等信息。
 
 **系统接口：** 此接口为系统接口。
 
@@ -936,13 +936,13 @@ getContractInfo\(slotId: number, requestData: ContractRequestData\): Promise\<st
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | -------------------------------------- |
 | slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。   |
-| requestData | [ContractRequestData](#ContractRequestData20) | 是   | 用来加密的信息   |
+| requestData | [ContractRequestData](#ContractRequestData20) | 是   | 用来加密的信息。   |
 
 **返回值：**
 
 | 类型                  | 说明                                |
 | --------------------- | ---------------------------------- |
-| Promise\<string\> | tlv格式的，加密信息 |
+| Promise\<string\> | Promise对象，返回tlv格式的，加密信息 |
 
 **错误码：**
 
@@ -1246,7 +1246,7 @@ euicc信息。
 
 ## ContractRequestData<sup>20+</sup>
     
-加密需要的信息
+加密需要的信息。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1254,6 +1254,7 @@ euicc信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----- | ----- |----|----| -----|
-| publicKey | string  | 否  | 否  | 公钥 |
-| nonce           | string  | 否  | 否  | 随机数 |
-| pkid            | string  | 否  | 否  | 选择的pkid |
+| publicKey | string  | 否  | 否  | 公钥。 |
+
+| nonce           | string  | 否  | 否  | 随机数。 |
+| pkid            | string  | 否  | 否  | 选择的pkid。 |
