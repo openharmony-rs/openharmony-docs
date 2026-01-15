@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-From API version 23, HUKS supports the group key function. For details about the HUKS key operations supported by the group key function, see [Group Key Overview](huks-group-key-overview.md). This guide describes Encryption and Decryption Using AES/CBC/PKCS7 (#aescbcpkcs7 encryption and decryption), Asymmetric Key Negotiation Using X25519 (#x25519 asymmetric key negotiation), and Key Derivation Using PBKDF2 (#pbkdf2 key derivation) as examples to show how to use group keys.
+From API version 23, HUKS supports the group key function. For details about the HUKS key operations supported by the group key function, see [Group Key Overview](huks-group-key-overview.md). This guide describes [Encryption and Decryption Using AES/CBC/PKCS7](#encryption-and-decryption-using-aescbcpkcs7), [Asymmetric Key Negotiation Using X25519](#asymmetric-key-agreement-using-x25519), and [Key Derivation Using PBKDF2](#key-derivation-using-pbkdf2) as examples to show how to use group keys.
 
 ## Linking the Dynamic Library in the CMake Script
 ```txt
