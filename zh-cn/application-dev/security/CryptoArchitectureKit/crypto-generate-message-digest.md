@@ -54,11 +54,11 @@
 - 以使用同步方式单次传入数据，获取摘要计算结果为例：
 
   <!-- @[message_digest_sha256_single_time_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/singleTime/SingleTimeSync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function doMdBySync() {
     let mdAlgName = 'SHA256'; // 摘要算法名
     let message = 'mdTestMessgae'; // 待摘要的数据
