@@ -61,6 +61,423 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+### getCallingScopeUIContext<sup>22+</sup>
+
+static getCallingScopeUIContext(): UIContext | undefined
+
+获取当前[调用作用域](../../ui/arkts-global-interface.md#概述)的UIContext，调用作用域不明确时返回undefined。
+
+> **说明：**
+>
+> 返回的UIContext对象可能指向一个已销毁的UI实例，通常在由已销毁的实例抛出异步任务时出现。建议通过[isAvailable](#isavailable20)接口判断其有效性。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+ 	 
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| UIContext \| undefined | 当前[调用作用域](../../ui/arkts-global-interface.md#概述)的UIContext，调用作用域不明确时返回undefined。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+``` ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getCallingScopeUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+ArkTS-Sta示例：
+
+``` ts
+import { Entry, Text, Column, Component, Button, RelativeContainer, FontWeight, AlignRuleOption, VerticalAlign, HorizontalAlign, State, UIContext } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        } as AlignRuleOption)
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getCallingScopeUIContext();
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### getLastFocusedUIContext<sup>22+</sup>
+
+static getLastFocusedUIContext(): UIContext | undefined
+
+获取最近一次切换到获焦状态的UI实例的UIContext。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+ 	 
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| UIContext \| undefined | 返回最近一次切换到获焦状态的UI实例的UIContext。如果最近一次切换到获焦状态的实例已被销毁或无实例曾经处于获焦状态，返回undefined。|
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+``` ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getLastFocusedUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+ArkTS-Sta示例：
+
+``` ts
+import { Entry, Text, Column, Component, Button, RelativeContainer, FontWeight, AlignRuleOption, VerticalAlign, HorizontalAlign, State, UIContext } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        } as AlignRuleOption)
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getLastFocusedUIContext();
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### getLastForegroundUIContext<sup>22+</sup>
+
+static getLastForegroundUIContext(): UIContext | undefined
+
+获取最近一次切换到前台状态的UI实例的UIContext。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+ 	 
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| UIContext \| undefined | 返回最近一次切换到前台状态的UI实例的UIContext。如果最近一次切换到前台状态的UI实例已被销毁或无UI实例曾经处于前台状态，则返回undefined。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+``` ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getLastForegroundUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+ArkTS-Sta示例：
+
+``` ts
+import { Entry, Text, Column, Component, Button, RelativeContainer, FontWeight, AlignRuleOption, VerticalAlign, HorizontalAlign, State, UIContext } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        } as AlignRuleOption)
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getLastForegroundUIContext();
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### getAllUIContexts<sup>22+</sup>
+
+static getAllUIContexts(): UIContext[]
+
+获取所有当前有效的UIContext实例。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+ 	 
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| UIContext[] | 返回所有当前有效UIContext实例的数组。如果没有有效的UIContext实例，则返回空数组。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+``` ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContexts = UIContext.getAllUIContexts();
+          hilog.info(0x00, 'testTag', `There are ${uiContexts.length} UIContext(s)`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+ArkTS-Sta示例：
+
+``` ts
+import { Entry, Text, Column, Component, Button, RelativeContainer, FontWeight, AlignRuleOption, VerticalAlign, HorizontalAlign, State, UIContext } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        } as AlignRuleOption)
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContexts = UIContext.getAllUIContexts();
+          hilog.info(0x00, 'testTag', `There are ${uiContexts.length} UIContext(s)`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### resolveUIContext<sup>22+</sup>
+
+static resolveUIContext(): ResolvedUIContext
+
+使用优先级策略获取带有解析策略的UIContext实例对象。
+
+> **说明：**
+>
+> 按照预定义的优先级顺序解析并返回UIContext实例和UIContext的解析策略。
+>
+> 解析规则按顺序如下：
+> 1. 当前调用作用域中的UIContext。
+> 2. 如果只存在一个UI实例，则返回其UIContext。
+> 3. 如果存在UI实例切换到获焦状态，且最近一次切换到获焦状态的UI实例未销毁，则返回最近一次获焦UI实例的UIContext。
+> 4. 如果存在UI实例切换到前台状态，且最近一次切换到前台状态的UI实例未销毁，则返回最近一次切换到前台状态的UI实例的UIContext。
+> 5. 如果存在多个UI实例，则返回实例唯一标识的ID最大的UIContext。
+> 6. 如果以上条件均不满足，则返回一个无效的UIContext实例。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+ 	 
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+|类型|说明|
+|----|----|
+| [ResolvedUIContext](#resolveduicontext) | 返回带有解析策略的UIContext实例对象。 |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+``` ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('click').onClick(() => {
+        let resolvedUIContext = UIContext.resolveUIContext();
+        hilog.info(0x00, 'testTag', `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}}`);
+      })
+    }
+    .width(UIContext.resolveUIContext().px2vp(100))
+    .height('100%')
+  }
+}
+```
+ArkTS-Sta示例：
+
+``` ts
+import { Entry, Text, Column, Component, Button, RelativeContainer, FontWeight, AlignRuleOption, VerticalAlign, HorizontalAlign, State, UIContext } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        } as AlignRuleOption)
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContexts = UIContext.getAllUIContexts();
+        })
+    }
+    .height('100%')
+    .width(UIContext.resolveUIContext().px2vp(100))
+  }
+}
+```
 
 ### isAvailable<sup>20+</sup>
 
@@ -71,6 +488,10 @@ isAvailable(): boolean
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3876,6 +4297,50 @@ type Context = common.Context
 | ------ | ------------------- |
 | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) |Context的具体类型为当前Ability关联的Context对象。|
 
+## ResolvedUIContext<sup>22+</sup>
+
+ResolvedUIContext实例对象。
+
+> **说明：**
+>
+> - 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - ResolvedUIContext继承自[UIContext](#uicontext)，该类对象包含[UIContext](#uicontext)实例和[UIContext](#uicontext)的解析策略。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+ 	 
+**ArkTS-Sta起始版本：** 23
+
+| 名称       | 类型                                                      | 只读 | 可选 | 说明                                |
+| --------- | --------------------------------------------------------- | ---- | ---- | ---------------------------------- |
+| strategy      | [ResolveStrategy](#resolvestrategy22) | 否   | 否   | [UIContext](#uicontext)的解析策略。             |
+
+## ResolveStrategy<sup>22+</sup>
+
+UIContext对象的解析策略。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+ 	 
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 值   | 说明       |
+| ------ | ---- | ---------- |
+| CALLING_SCOPE | 0 | 获取调用作用域的UIContext。 |
+| LAST_FOCUS | 1 | 获取最近切换到获焦状态的UIContext。 |
+| MAX_INSTANCE_ID  | 2 | 获取实例ID最大的UIContext。 |
+| UNIQUE | 3 | 获取唯一UI实例的UIContext。 |
+| LAST_FOREGROUND | 4| 获取最近切换到前台状态的UIContext。 |
+| UNDEFINED | 5 | 获取未定义调用作用域的UIContext。 |
+
 ## ComponentUtils
 
 以下API需先使用UIContext中的[getComponentUtils()](#getcomponentutils)方法获取到ComponentUtils对象，再通过该对象调用对应方法。
@@ -5612,6 +6077,118 @@ let callback = (event: ClickEvent, frameNode?: FrameNode) => {};
 let observer: UIObserver = this.getUIContext().getUIObserver();
 observer.off('didClick', callback);
 ```
+### onWindowSizeLayoutBreakpointChange<sup>23+</sup>
+
+onWindowSizeLayoutBreakpointChange(callback: Callback<observer.WindowSizeLayoutBreakpointInfo\>): void
+
+注册窗口尺寸布局断点变化的回调函数。该方法用于监听窗口尺寸断点变化，可用于根据窗口尺寸自适应调整UI布局。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+ 	 
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名       | 类型                                                         | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback     | Callback\<observer.[WindowSizeLayoutBreakpointInfo](js-apis-arkui-observer.md#windowsizelayoutbreakpointinfo22)> | 是   | 回调函数。携带WindowSizeLayoutBreakpointinfo，包含窗口宽度和高度所在的布局断点枚举。 |
+
+**示例：**
+
+该示例展示添加和取消监听窗口尺寸布局断点变化的方法。
+
+ArkTS-Sta示例：
+
+``` ts
+import { Entry, Text, Column, Component, Button, WidthBreakpoint, HeightBreakpoint, Margin, Callback } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import window from '@ohos.window';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { common } from '@kit.AbilityKit';
+import uiObserver from '@ohos.arkui.observer';
+
+@Entry
+@Component
+struct Index {
+  private changeOrientation(isLandscape: boolean) {
+    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    window.getLastWindow(context).then((lastWindow) => {
+      lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
+    });
+  }
+
+  @State message: string = '';
+  @State message1: string = '';
+  @State widthBreakpoint: WidthBreakpoint = WidthBreakpoint.WIDTH_SM;
+  @State heightBreakpoint: HeightBreakpoint = HeightBreakpoint.HEIGHT_SM;
+  private winSizeLayoutBreakpointCallback: Callback<uiObserver.WindowSizeLayoutBreakpointInfo> =
+    (info: uiObserver.WindowSizeLayoutBreakpointInfo): void => {
+      this.message1 = '回调已触发';
+      this.widthBreakpoint = info.widthBreakpoint;
+      this.heightBreakpoint = info.heightBreakpoint;
+      this.message = `widthBpt:${info.widthBreakpoint} heightBpt:${info.heightBreakpoint}`;
+    }
+
+  build() {
+    Column() {
+      Text(this.message)
+        .width('20%')
+        .borderWidth(1)
+        .margin({ bottom: 20 } as Margin)
+      Text(this.message1)
+        .width('20%')
+        .borderWidth(1)
+        .margin({ bottom: 20 } as Margin)
+      Button('注册窗口尺寸布局断点变化监听')
+        .onClick(() => {
+          this.getUIContext()
+            .getUIObserver()
+            .onWindowSizeLayoutBreakpointChange(this.winSizeLayoutBreakpointCallback);
+        })
+      Button('解除窗口尺寸布局断点变化监听')
+        .onClick(() => {
+          this.getUIContext()
+            .getUIObserver()
+            .offWindowSizeLayoutBreakpointChange(this.winSizeLayoutBreakpointCallback);
+        })
+      Button('竖屏').onClick(() => {
+        this.changeOrientation(false)
+      })
+      Button('横屏').onClick(() => {
+        this.changeOrientation(true)
+      })
+      Button('clear').onClick(() => {
+        this.message = ''
+        this.message1 = ''
+      })
+    }
+  }
+}
+```
+## offWindowSizeLayoutBreakpointChange<sup>23+</sup>
+
+offWindowSizeLayoutBreakpointChange(callback?: Callback\<observer.WindowSizeLayoutBreakpointInfo>): void
+
+移除之前注册的窗口尺寸布局断点变化回调函数。如果未提供回调函数参数，将移除指定上下文的所有回调函数。使用callback异步回调。
+
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名       | 类型                                           | 必填 | 说明                                                         |
+| ------------ | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback     | Callback\<observer.[WindowSizeLayoutBreakpointInfo](js-apis-arkui-observer.md#windowsizelayoutbreakpointinfo22)>    | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销该[UIContext](#uicontext)下所有窗口尺寸布局断点变化事件监听。 |
+
+**示例：**
+
+参考[onWindowSizeLayoutBreakpointChange](#onwindowsizelayoutbreakpointchange23)接口示例。
 
 ### on('tabContentUpdate')<sup>12+</sup>
 
