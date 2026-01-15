@@ -14,16 +14,18 @@
 > 使用方使用集成态HSP时，需要采用使用方的签名文件对集成态HSP重新签名，且需要优先安装重新签名后的集成态HSP。
 
 ## 使用场景
-集团内部有多个应用，多个应用中都有一个相同的动态共享包。为了节约开发成本并实现代码和资源的共享，多个应用可以共用一个基建HSP（集成态HSP）。
+集团内部有多个应用，多个应用中都有一个相同的动态共享包（应用内HSP）。为了节约开发成本并实现代码和资源的共享，多个应用可以共用一个基建HSP（集成态HSP）。
 
 ## 约束限制
 - 集成态HSP只支持[Stage模型](application-package-structure-stage.md)。
-- 集成态HSP需要API12及以上版本。
+- 从API version 12开始，支持使用集成态HSP。
 - 使用集成态HSP要求使用标准化的OHMUrl格式。需要在工程级的[build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)中，将useNormalizedOHMUrl字段设置为true。
 
 ## 开发使用说明
-1. 创建方-集成态HSP-工程配置：配置工程级的build-profile.json5文件，将useNormalizedOHMUrl字段设置为true。
 
+### 配置集成态HSP
+
+1. 集成态HSP-工程配置：配置工程级的build-profile.json5文件，将useNormalizedOHMUrl字段设置为true。
 
     <!-- @[integrated_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/build-profile.json5) -->
     
@@ -53,7 +55,7 @@
     }
     ```
 
-2. 创建方-集成态HSP-模块配置：修改模块级构建配置文件[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile)，将integratedHsp配置项设置为true，指定构建的HSP模块为集成态HSP。
+2. 集成态HSP-模块配置：修改模块级构建配置文件[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile)，将integratedHsp配置项设置为true，指定构建的HSP模块为集成态HSP。
 
     <!-- @[integrated_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/library/build-profile.json5) -->
     
@@ -76,7 +78,7 @@
     ```
 
 
-3. 创建方-集成态HSP-打包配置（tgz包）。
+3. 集成态HSP-打包配置（tgz包）。
 
     (1) 配置项目签名信息，详情请参见[应用/元服务签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
 
@@ -86,9 +88,11 @@
 
     (3) 选择library目录，执行Build -> Make Module 'library'。
 
-4. 使用方-创建目录并拷贝文件：在entry目录下新建libs目录，将集成态打包产物tgz包拷贝到libs目录下。
+### 使用方集成
 
-5. 使用方-工程依赖配置：在使用方主模块的oh-package.json5配置文件中添加依赖。
+1. 创建目录并拷贝文件：在entry目录下新建libs目录，将集成态打包产物tgz包拷贝到libs目录下。
+
+2. 工程依赖配置：在使用方主模块的oh-package.json5配置文件中添加依赖。
 
     <!-- @[integrated_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/entry/oh-package.json5) -->
     
@@ -98,7 +102,7 @@
     },
     ```
 
-6. 使用方-工程配置：在工程级的build-profile.json5文件中，将useNormalizedOHMUrl字段设置为true。
+3. 工程配置：在工程级的build-profile.json5文件中，将useNormalizedOHMUrl字段设置为true。
 
     <!-- @[integrated_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/build-profile.json5)  -->
     
@@ -128,5 +132,8 @@
     }
     ```
 
-    > **说明：** 
-    > 安装和运行应用前，必须配置项目签名信息，详见[应用/元服务签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
+4. 配置签名。
+
+    安装和运行应用前，必须配置项目签名信息，详见[应用/元服务签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
+
+5. [安装和运行](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-device)。
