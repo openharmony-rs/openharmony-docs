@@ -85,11 +85,11 @@
 
 - 以使用await方式分段传入数据，获取摘要计算结果为例：
   <!-- @[message_digest_sha256_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/segmentation/SegmentationAsync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   async function doLoopMd() {
     let mdAlgName = 'SHA256'; // 摘要算法名
     let md = cryptoFramework.createMd(mdAlgName);
