@@ -21,7 +21,7 @@ The preceding system capability is available since API version 20. From API vers
 
 **Since**: 9
 
-**Related module:** [HuksTypeApi](capi-hukstypeapi.md)
+**Related module**: [HuksTypeApi](capi-hukstypeapi.md)
 
 ## Summary
 

@@ -19,7 +19,7 @@ Defines the structs and enums for external key management extensions.
 
 **Since**: 22
 
-**Related modules**: [HuksExternalCryptoTypeApi](capi-huksexternalcryptotypeapi.md)
+**Related module**: [HuksExternalCryptoTypeApi](capi-huksexternalcryptotypeapi.md)
 
 ## Summary
 

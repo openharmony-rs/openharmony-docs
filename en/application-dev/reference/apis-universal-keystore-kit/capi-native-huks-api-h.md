@@ -21,7 +21,7 @@ The preceding system capability is available since API version 20. From API vers
 
 **Since**: 9
 
-**Related modules:** [HuksKeyApi](capi-hukskeyapi.md)
+**Related module**: [HuksKeyApi](capi-hukskeyapi.md)
 
 ## Summary
 

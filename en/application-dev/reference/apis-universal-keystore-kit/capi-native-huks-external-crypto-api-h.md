@@ -19,7 +19,7 @@ Defines the OpenHarmony Universal KeyStore (HUKS) APIs for external key manageme
 
 **Since**: 22
 
-**Related modules**: [HuksExternalCryptoApi](capi-huksexternalcryptoapi.md)
+**Related module**: [HuksExternalCryptoApi](capi-huksexternalcryptoapi.md)
 
 ## Summary
 
