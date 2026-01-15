@@ -495,8 +495,8 @@ globalConnect的入参泛型，用于定义globalConnect支持的持久化集合
 | ------ | ---- | ---- |---- | ------------ |
 | decoratorName | string  | 否 | 否   | 当对象是V1对象时，值是对象关联的装饰器名称。<br/> 当V1对象使用[@Track](./../../ui/state-management/arkts-track.md)时，值为：'@Track'。<br/> 当V2对象使用[@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md)时，值为：'@Trace'。<br/> 当V2对象使用[makeObserved](#makeobserved)时，值为：'MakeObserved'。<br/> 当V2对象使用[enableV2Compatibility](#enablev2compatibility19)时，值为：'EnableV2Compatible'。 <br/> 当V2对象使用built-in类型数据时，值为：'ProxyObservedV2'。 |
 | stateVariableName | string  | 否 | 否   | 被装饰器装饰的属性名称。 |
-| owningComponentOrClassName | string  | 否 | 否   | V1对象返回被使用的组件名称。V1对象使用[@Track](./../../ui/state-management/arkts-track.md)和V2对象返回对象名称。 |
-| owningComponentId | number  | 否 | 否   | V1对象返回被使用的组件id。**V1对象使用[@Track](./../../ui/state-management/arkts-track.md)和V2对象返回对象无id，返回-1。** |
+| owningComponentOrClassName | string  | 否 | 否   | V1对象返回被使用的组件名称。<br/> V1对象有属性使用[@Track](./../../ui/state-management/arkts-track.md)装饰器时返回对象名称。<br/> V2对象返回对象名称。 |
+| owningComponentId | number  | 否 | 否   | V1对象返回被使用的组件id。<br/> **V1对象有属性使用[@Track](./../../ui/state-management/arkts-track.md)装饰器时和V2对象返回的是对象名称，无组件id，返回-1。** |
 | dependentInfo | Array<[ElementInfo](#elementinfo23)>  | 否 | 否   | 使用该可观察对象的组件信息。若对象没有用在任何UI上，则返回空数组。 |
 
 ## ElementInfo<sup>23+</sup>
