@@ -95,7 +95,7 @@ OH_AudioCaptureInfo innerCapInfo = {
     .audioChannels = 2,
     .audioSource = OH_ALL_PLAYBACK
 };
-// 录屏音频输出规格配置。
+// 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率和audioSampleRate无强关联。
 OH_AudioEncInfo audioEncInfo = {
     .audioBitrate = 48000,
     .audioCodecformat = OH_AAC_LC
