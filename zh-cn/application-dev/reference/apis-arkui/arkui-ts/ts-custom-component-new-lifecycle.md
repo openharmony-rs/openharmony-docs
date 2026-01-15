@@ -387,7 +387,7 @@ struct Child {
 }
 
 export class MyObserver implements CustomComponentLifecycleObserver {
-  // 重写CustomComponentLifecycleObserver中的生命周期事件，CustomComponentLifecycleObserver无法监听父组件的aboutToInit
+  // 重写CustomComponentLifecycleObserver中的生命周期事件。
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToAppear');
   }
@@ -407,7 +407,6 @@ export class MyObserver implements CustomComponentLifecycleObserver {
   aboutToRecycle() {
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToRecycle');
   }
-  // 在父组件的aboutToDelete函数中解除注册监听，则无法监听父组件的aboutToDisappear
   aboutToDisappear() {
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToDisappear');
   }
