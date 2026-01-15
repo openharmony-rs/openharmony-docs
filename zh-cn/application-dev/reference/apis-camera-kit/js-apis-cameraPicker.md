@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -21,6 +22,10 @@ pick(context: Context, mediaTypes: Array\<PickerMediaType\>, pickerProfile: Pick
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -50,7 +55,7 @@ async function demo(context: Context) {
     };
     let pickerResult: picker.PickerResult = await picker.pick(context,
       [picker.PickerMediaType.PHOTO, picker.PickerMediaType.VIDEO], pickerProfile);
-    console.log("the pick pickerResult is:" + JSON.stringify(pickerResult));
+    console.info("the pick pickerResult is:" + JSON.stringify(pickerResult));
   } catch (error) {
     let err = error as BusinessError;
     console.error(`the pick call failed. error code: ${err.code}`);
@@ -66,6 +71,10 @@ async function demo(context: Context) {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称             | 值    | 说明     |
 | ----------------| ----  | ---------|
 | PHOTO           | photo | 拍照模式。  |
@@ -80,11 +89,15 @@ async function demo(context: Context) {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称           | 类型                               | 必填   | 说明         |
 | -------------- | --------------------------------- | ----- | ------------ |
 | cameraPosition       | [camera.CameraPosition](arkts-apis-camera-e.md#cameraposition) | 是    | 相机的位置。   |
 | saveUri        | string                            | 否    | 保存配置信息的uri，默认值请参考[文件uri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。|
-| videoDuration  | number                            | 否    | 录制的最大时长（单位：秒）。|
+| videoDuration  | ArkTS-Dyn: number<br />ArkTS-Sta: int | 否    | 录制的最大时长（单位：秒）。|
 
 
 ## PickerResult
@@ -95,8 +108,12 @@ async function demo(context: Context) {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称           | 类型                                | 必填  | 说明                            |
 | -------------- | ---------------------------------- | ----- | -------------------------------- |
-| resultCode     | number                             | 是    | 处理的结果，成功返回0，失败返回-1。 |
+| resultCode     | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是    | 处理的结果，成功返回0，失败返回-1。 |
 | resultUri      | string                             | 是    | 返回的uri地址。若saveUri为空，resultUri为公共媒体路径。若saveUri不为空且具备写权限，resultUri与saveUri相同。若saveUri不为空且不具备写权限，则无法获取到resultUri。|
 | mediaType      | [PickerMediaType](#pickermediatype)| 是    | 返回的媒体类型。                  |
