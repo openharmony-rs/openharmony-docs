@@ -437,7 +437,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | SOURCE_TYPE_WAKEUP <sup>10+</sup>            | 3 | 语音唤醒音频流录制音频源。<br/>**需要权限：** ohos.permission.MANAGE_INTELLIGENT_VOICE |
 | SOURCE_TYPE_VOICE_CALL<sup>11+</sup>            | 4 | 通话录音的音频源。<br/>**需要权限：** ohos.permission.RECORD_VOICE_CALL |
 | SOURCE_TYPE_VOICE_TRANSCRIPTION<sup>18+</sup>   | 12     | 语音转写音频源。 |
-| SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT<sup>23+</sup>   | 19     | 未处理的语音助手音频源。<br/>**需要权限：** ohos.permission.MICROPHONE |
+| SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT<sup>23+</sup>   | 19     | 未处理的语音助手音频源。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AudioCapturerMicInConfig<sup>23+</sup>
 
@@ -445,13 +445,15 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 | 名称                                | 类型                                                      | 只读 | 可选 | 说明                                                         |
 | ----------------------------------- | --------------------------------------------------------- | ---- |---| ------------------------------------------------------------ |
 | micInStreamInfo                          | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)                      | 否 | 否 | 麦克风音频流信息。   |
 | capturerInfo                        | [AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。         |
-| ecStreamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 否 | 是 | 回声消除音频流信息，若未设置此属性，采集器将仅录制麦克风输入的音频流。    |
+| ecStreamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 否 | 是 | 回声消除音频流信息。<br>若未设置此属性，采集器将仅录制麦克风输入的音频流。    |
 
 ## VolumeAdjustType<sup>10+</sup>
 
@@ -5593,11 +5595,15 @@ function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise\<Au
 
 获取音频采集器。使用Promise异步回调。
 
-仅允许使用[SourceType](js-apis-audio-sys.md#sourcetype8)为SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT类型的音源输入，其他类型的音源输入将被系统拒绝。
+此采集器可用于同时录制麦克风输入（Mic-In）音频数据和回声参考信号，供应用层进行算法处理。
+
+麦克风输入音频数据和回声参考信号会根据应用层设置的配置，被放入同一个缓冲区或多个独立缓冲区中。
+
+仅允许使用[SourceType](js-apis-audio-sys.md#sourcetype8)为SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT类型的音源输入，其他类型的音源输入将被系统拒绝。此外，当应用处于后台运行状态时，不允许创建该采集器实例。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.MICROPHONE
 
@@ -5624,7 +5630,7 @@ function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise\<Au
 |     201 | Permission denied, including background recording.             |
 |     202 | Not system App.                |
 | 6800101 | Parameter verification failed. |
-| 6800104 | Capturer creation is not supported, may caused by following problems: <br> 1.Source type is unsupported for this capturer, only [SourceType](js-apis-audio-sys.md#sourcetype8)SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT is supported currently. <br> 2.Echo reference signal's config is unsupported, echo reference's sampling rate and format must be the same as MicIn audio data currently.            |
+| 6800104 | Capturer creation is not supported, may caused by following problems: <br> 1.Source type is unsupported for this capturer, only [SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT](js-apis-audio-sys.md#sourcetype8) is supported currently. <br> 2.Echo reference signal's config is unsupported, echo reference's sampling rate and format must be the same as MicIn audio data currently.            |
 | 6800301 | Audio system internal error, such as system process crash.            |
 
 **示例：**
