@@ -118,7 +118,7 @@
    @Entry
    @Component
    struct Index {
-     @State dataSize: number = 0;  //用于保存原始数据的大小
+     @State dataSize: number = 0;  // 用于保存原始数据的大小
 
      build() {
        Row() {
@@ -238,7 +238,7 @@
    // 从一个文件中，不断的读入数据，进行压缩，并写入到另一个文件中
    async function deflateFile(src: fs.File, dest: fs.File) {
      let flush = zlib.CompressFlushMode.NO_FLUSH;
-     let strm: zlib.ZStream = {};  //初始化一个压缩流
+     let strm: zlib.ZStream = {};  // 初始化一个压缩流
      const BUFLEN = 4096;
      let inBuf = new ArrayBuffer(BUFLEN);  // 初始化一个输入缓冲区
      let outBuf = new ArrayBuffer(BUFLEN); // 初始化一个输出缓冲区
@@ -290,7 +290,7 @@
    // 从一个文件中，不断的读入已压缩的数据，进行解压，并写入到另一个文件中
    async function inflateFile(src: fs.File, dest: fs.File) {
      let status: zlib.ReturnStatus = zlib.ReturnStatus.OK;
-     let strm: zlib.ZStream = {};  //初始化一个压缩流
+     let strm: zlib.ZStream = {};  // 初始化一个压缩流
      const BUFLEN = 4096;
      let inBuf = new ArrayBuffer(BUFLEN);  // 初始化一个输入缓冲区
      let outBuf = new ArrayBuffer(BUFLEN); // 初始化一个输出缓冲区
@@ -388,7 +388,7 @@
    // 从一个文件中，不断的读入数据，进行压缩，并写入到另一个文件中
    async function deflateGzipFile(src: fs.File, dest: fs.File) {
      let flush = zlib.CompressFlushMode.NO_FLUSH;
-     let strm: zlib.ZStream = {};  //初始化一个压缩流
+     let strm: zlib.ZStream = {};  // 初始化一个压缩流
      const BUFLEN = 4096;
      let inBuf = new ArrayBuffer(BUFLEN);  // 初始化一个输入缓冲区
      let outBuf = new ArrayBuffer(BUFLEN); // 初始化一个输出缓冲区
@@ -443,7 +443,7 @@
    // 从一个文件中，不断的读入已压缩的数据，进行解压，并写入到另一个文件中
    async function inflateGzipFile(src: fs.File, dest: fs.File) {
      let status: zlib.ReturnStatus = zlib.ReturnStatus.OK;
-     let strm: zlib.ZStream = {};  //初始化一个压缩流
+     let strm: zlib.ZStream = {};  // 初始化一个压缩流
      const BUFLEN = 4096;
      let inBuf = new ArrayBuffer(BUFLEN);  // 初始化一个输入缓冲区
      let outBuf = new ArrayBuffer(BUFLEN); // 初始化一个输出缓冲区

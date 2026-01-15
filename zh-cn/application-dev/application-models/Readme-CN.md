@@ -168,6 +168,6 @@
     - [Storage接口切换](storage-switch.md)
 <!--DelEnd-->
 - Native子进程开发指导<!--native-childprocess-development-->
-    - [创建Native子进程](capi_nativechildprocess_development_guideline.md)
+    - [创建Native子进程](capi-nativechildprocess-development-guideline.md)
     - [获取Native子进程退出信息](capi-nativechildprocess-exit-info.md)
 - [Ability Kit术语](ability-terminology.md)
