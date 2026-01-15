@@ -8890,7 +8890,13 @@ off(type: 'sensorStatusChange', callback?: Callback&lt;SensorStatusEvent&gt;): v
 
 取消监听传感器变化。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offSensorStatusChange](#sensoroffsensorstatuschange23)。
+
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数**：
 
@@ -8939,20 +8945,85 @@ try {
 }
 ```
 
+## sensor.offSensorStatusChange<sup>23+<sup>
+
+offSensorStatusChange(callback?: Callback&lt;SensorStatusEvent&gt;): void
+
+取消监听传感器变化。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('sensorStatusChange')](#sensoroffsensorstatuschange19)。
+
+**系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
+| callback | Callback&lt;[SensorStatusEvent](#sensorstatusevent19)&gt; | 否   | sensor.on传入的回调函数，不传则取消所有监听。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+
+**示例**：
+
+```ts
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  const statusChangeCallback = (data: sensor.SensorStatusEvent) => {
+    console.info('sensorStatusChange : ' + JSON.stringify(data));
+  }
+  const statusChangeCallback2 = (data: sensor.SensorStatusEvent) => {
+    console.info('sensorStatusChange2 : ' + JSON.stringify(data));
+  }
+  // 注册两个设备上线消息监听回调
+  sensor.onSensorStatusChange(statusChangeCallback);
+  sensor.onSensorStatusChange(statusChangeCallback2);
+
+  // 3秒后注销第一个监听
+  setTimeout(() => {
+    sensor.offSensorStatusChange(statusChangeCallback);
+  }, 3000);
+  // 5秒后注销所有监听
+  setTimeout(() => {
+    sensor.offSensorStatusChange();
+  }, 5000);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
 ## sensor.getSensorListByDeviceSync<sup>19+</sup> 
 
-getSensorListByDeviceSync(deviceId?: number): Array&lt;Sensor&gt; 
+ArkTS-Dyn: getSensorListByDeviceSync(deviceId?: number): Array&lt;Sensor&gt; 
+
+ArkTS-Sta: getSensorListByDeviceSync(deviceId?: int): Array&lt;Sensor&gt; 
 
 同步获取设备的所有传感器信息。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名          | 类型                                                         | 必填 | 说明     |
 | --------------- | ------------------------------------------------------------ | ---- |--------|
-| deviceId | number                 | 否   | 设备ID，默认为查询本地设备。 |
-
+| deviceId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 设备ID，默认为查询本地设备。 |
 
 **返回值**：
 
@@ -8982,18 +9053,24 @@ try {
 
 ## sensor.getSingleSensorByDeviceSync<sup>19+</sup> 
 
-getSingleSensorByDeviceSync(type: SensorId, deviceId?: number): Array&lt;Sensor&gt;
+ArkTS-Dyn: getSingleSensorByDeviceSync(type: SensorId, deviceId?: number): Array&lt;Sensor&gt;
+
+ArkTS-Sta: getSingleSensorByDeviceSync(type: SensorId, deviceId?: int): Array&lt;Sensor&gt;
 
 同步获取指定设备和类型的传感器信息。
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
 | 参数名          | 类型                                                         | 必填 | 说明       |
 | --------------- | ------------------------------------------------------------ | ---- |----------|
 | type     | [SensorId](#sensorid9) | 是   | 指定传感器类型。 |
-| deviceId | number                 | 否   | 设备ID，默认为查询本地设备。   |
+| deviceId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 设备ID，默认为查询本地设备。   |
 
 
 **返回值**：
@@ -10983,13 +11060,17 @@ try {
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选 | 说明                          |
 |----------------|---------|----|----|-----------------------------|
-| timestamp      | number  | 是  | 否  | 事件发生的时间戳。                   |
-| sensorId       | number  | 是  | 否  | 传感器ID。                      |
-| sensorIndex    | number  | 是  | 否  | 传感器索引。                      |
+| timestamp      | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 是  | 否  | 事件发生的时间戳。                   |
+| sensorId       | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是  | 否  | 传感器ID。                      |
+| sensorIndex    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是  | 否  | 传感器索引。                      |
 | isSensorOnline | boolean | 是  | 否  | 传感器上线或者下线，true为上线，false为下线。 |
-| deviceId       | number  | 是  | 否  | 设备ID。                       |
+| deviceId       | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是  | 否  | 设备ID。                       |
 | deviceName     | string  | 是  | 否  | 设备名称。                       |
 
 ## SensorType<sup>(deprecated)</sup>

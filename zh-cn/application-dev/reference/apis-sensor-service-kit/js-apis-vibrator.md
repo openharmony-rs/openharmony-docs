@@ -1087,7 +1087,13 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 
 注销马达上线或下线事件的回调函数。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offVibratorStateChange](#vibratoroffvibratorstatechange23)。
+
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数**：
 
@@ -1127,6 +1133,57 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
    }
    ```
 
+## vibrator.offVibratorStateChange<sup>23+</sup>
+
+offVibratorStateChange(callback?: Callback&lt;VibratorStatusEvent&gt;): void
+
+注销马达上线或下线事件的回调函数。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off](#vibratoroff19)。
+
+**系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
+| callback | Callback&lt;[VibratorStatusEvent](#vibratorstatusevent19)&gt; | 否   | 回调函数，回调参数数据为VibratorStatusEvent，不填此参数则为注销所有callback |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[振动错误码](errorcode-vibrator.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 14600101 | Device operation failed. |
+
+
+**示例**：
+
+   ```ts
+   import { vibrator } from '@kit.SensorServiceKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+
+   // 回调函数 
+   const vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
+     console.log('vibrator state callback info:', JSON.stringify(data));
+   }
+   // 使用try catch对可能出现的异常进行捕获
+   try {
+     // 取消订阅 vibratorStateChange事件
+     vibrator.offVibratorStateChange('vibratorStateChange', vibratorStateChangeCallback);
+     // 取消订阅所有 vibratorStateChange事件
+     // vibrator.off('vibratorStateChange');
+   } catch (error) {
+     let e: BusinessError = error as BusinessError;
+     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+   }
+   ```
+
 
 ## VibratorStatusEvent<sup>19+</sup>
 
@@ -1134,12 +1191,15 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型      | 只读 | 可选 | 说明                               |
 |------------------|---------|----|----|----------------------------------|
-| timestamp        | number  | 是  | 否  | 报告事件的时间戳。                        |
-| deviceId         | number  | 是  | 否  | 设备的ID。                           |
-| vibratorCount    | number  | 是  | 否  | 设备上的马达的数量。                       |
+| timestamp        | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 是  | 否  | 报告事件的时间戳。                        |
+| deviceId         | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是  | 否  | 设备的ID。                           |
+| vibratorCount    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是  | 否  | 设备上的马达的数量。                       |
 | isVibratorOnline | boolean | 是  | 否  | 指示设备的上线和下线状态，true表示上线，false表示下线。 |
 
 
