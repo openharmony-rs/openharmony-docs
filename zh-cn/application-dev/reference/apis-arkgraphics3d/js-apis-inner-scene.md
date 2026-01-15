@@ -1230,7 +1230,7 @@ cloneNode(node: Node, parent: Node, name: string): Node | null
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被克隆的结点。|
-| parent | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被克隆的结点在当前所在场景中的目标父结点。|
+| parent | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被克隆的结点在当前所在场景中的目标父结点。被克隆的结点node和目标父结点parent需要属于同一个场景scene。|
 | name | string | 是 | 克隆结点的名称，由开发者自定义，无特殊要求。|
 
 **返回值：**
