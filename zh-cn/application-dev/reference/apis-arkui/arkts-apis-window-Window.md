@@ -9597,8 +9597,8 @@ setSeparationTouchEnabled(enabled: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801      | Capability not supported. Function can not work because the current device does not support this ability. |
-| 1300002  | This window state is abnormal.                       |
-| 1300003  | This window manager service works abnormally.        |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003  | This window manager service works abnormally. Possible cause: Internal IPC error. |
 
 **示例：**
 
@@ -9642,7 +9642,7 @@ isSeparationTouchEnabled():boolean
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801      | Capability not supported. Function can not work because the current device does not support this ability. |
-| 1300002  | This window state is abnormal.                       |
+| 1300002  | This window state is abnormal. The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
@@ -9660,7 +9660,7 @@ try {
 
 ## setReceiveDragEventEnabled<sup>23+</sup>
 
-setReceiveDragEventEnabled(enable: boolean): Promise&lt;void&gt;
+setReceiveDragEventEnabled(enabled: boolean): Promise&lt;void&gt;
 
 设置当前窗口是否能接收[拖拽事件](./arkui-ts/ts-universal-events-drag-drop.md#dragevent7)，使用Promise异步回调。
 
@@ -9691,8 +9691,8 @@ setReceiveDragEventEnabled(enable: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801      | Capability not supported. Function can not work because the current device does not support this ability. |
-| 1300002  | This window state is abnormal.                       |
-| 1300003  | This window manager service works abnormally.        |
+| 1300002  | This window state is abnormal. The window is not created or destroyed. |
+| 1300003  | This window manager service works abnormally. Possible cause: Internal IPC error. |
 
 **示例：**
 
@@ -9736,7 +9736,7 @@ isReceiveDragEventEnabled():boolean
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801      | Capability not supported. Function can not work because the current device does not support this ability. |
-| 1300002  | This window state is abnormal.                       |
+| 1300002  | This window state is abnormal. The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
