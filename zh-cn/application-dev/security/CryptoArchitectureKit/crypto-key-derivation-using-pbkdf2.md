@@ -38,10 +38,10 @@
 - 通过await返回结果：
 
   <!-- @[use_pbkdf2_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/ets/pages/Await.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   async function kdfAwait() {
     let spec: cryptoFramework.PBKDF2Spec = {
       algName: 'PBKDF2',
