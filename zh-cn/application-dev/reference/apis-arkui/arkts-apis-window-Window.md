@@ -1135,7 +1135,7 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 在API version 23之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码；从API version 23开始，该接口在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
 
@@ -5749,7 +5749,7 @@ setWindowShadowEnabled(enable: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 在API version 23之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码；从API version 23开始，该接口在2in1和Tablet设备中可正常调用，但Tablet设备中设置的值需要切换到[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)后才会生效，在其他设备中返回801错误码。
+**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，但Tablet设备中设置的值需要切换到[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)后才会生效，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
 
