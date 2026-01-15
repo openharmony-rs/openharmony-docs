@@ -1222,7 +1222,7 @@ function getDefaultRenderContextTest() {
 ### cloneNode<sup>23+</sup>
 cloneNode(node: Node, parent: Node, name: string): Node | null
 
-一般用于从其他场景导入结点。
+用于在当前所在场景中克隆结点，不支持跨场景克隆结点。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -1230,13 +1230,13 @@ cloneNode(node: Node, parent: Node, name: string): Node | null
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被克隆的结点。|
-| parent | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被克隆的结点在新场景中的父结点。|
-| name | string | 是 | 导入结点后的名称，由开发者自定义，无特殊要求。|
+| parent | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被克隆的结点在当前所在场景中的目标父结点。|
+| name | string | 是 | 克隆结点的名称，由开发者自定义，无特殊要求。|
 
 **返回值：**
 | 类型 | 说明 |
 | ---- | ---- |
-| [Node](js-apis-inner-scene-nodes.md#node) \| null | 被克隆的结点。克隆失败则返回null。 |
+| [Node](js-apis-inner-scene-nodes.md#node) \| null | 克隆结点。克隆失败则返回null。 |
 
 **示例：**
 ```ts
