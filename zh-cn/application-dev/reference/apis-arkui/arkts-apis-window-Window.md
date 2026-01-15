@@ -5086,7 +5086,7 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 
 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -5149,7 +5149,7 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 
 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -7682,7 +7682,7 @@ getWindowDecorVisible(): boolean
 
 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。在不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备返回false。
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错，返回false。
 
 **返回值：**
 
@@ -7716,7 +7716,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 
 setWindowTitle(titleName: string): Promise&lt;void&gt;
 
-设置窗口标题，存在标题栏的窗口形态生效，若不存在标题栏则返回1300002错误码，使用Promise异步回调。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+设置窗口标题，使用Promise异步回调。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -7724,9 +7724,9 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 
 **设备行为差异：**
 
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -7781,7 +7781,7 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 
 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -8037,7 +8037,7 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 
 从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -8487,7 +8487,7 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 
 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
