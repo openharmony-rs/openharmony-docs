@@ -463,7 +463,7 @@ This example illustrates a radial gradient originating from the absolute coordin
 
 ### Mask Unit and Mask Content Unit Parsing
 
-The mask unit [maskUnits](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes) and mask content unit [maskContentUnits]((./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes)) can be parsed, added the processing for the scenario where maskContentUnits and maskUnits are set to objectBoundingBox (the border of the applied element is used as the reference coordinate system).
+The mask unit [maskUnits](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes) and mask content unit [maskContentUnits](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes) can be parsed, added the processing for the scenario where maskContentUnits and maskUnits are set to objectBoundingBox (the border of the applied element is used as the reference coordinate system).
 
 >**NOTE**
 >

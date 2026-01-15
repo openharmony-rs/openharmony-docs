@@ -65,7 +65,7 @@ Creates a **Grid** component.
 
 Defines the grid layout options. In this API, **irregularIndexes** and **onGetIrregularSizeByIndex** can be used for grids where either **rowsTemplate** or **columnsTemplate** is set. These properties allow you to specify an index array and set the number of rows and columns to be occupied by a grid item at the specified index. For details about the usage, see [Example 3](#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns). On the other hand, **onGetRectByIndex** can be used for grids where both **rowsTemplate** and **columnsTemplate** are set. It allows you to specify the position and size for the grid item at the specified index. For details about the usage, see [Example 1](#example-1-creating-a-fixed-row-and-column-grid-layout).
 
-To improve the performance of the grid in scenarios such as jump and column quantity change, you are advised to use GridLayoutOptions. Even if the grid does not contain any special cross-row and cross-column nodes, you can use 'Grid(this.scroller, {regularSize: [1, 1]})' to improve the jump performance. For details, see <!--RP1-->[Using GridLayoutOptions to Improve Grid Performance](../../../performance/grid_optimization.md#using-gridlayoutoptions-to-improve-grid-performance)<!--RP1End-->.
+To improve the performance of the grid in scenarios such as jump and column quantity change, you are advised to use GridLayoutOptions. Even if the grid does not contain any special cross-row and cross-column nodes, you can use 'Grid(this.scroller, {regularSize: [1, 1]})' to improve the jump performance.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

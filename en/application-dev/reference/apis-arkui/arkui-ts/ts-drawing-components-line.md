@@ -116,7 +116,7 @@ Sets the color of the fill area. This attribute can be dynamically set using [at
 
 fillOpacity(value: number | string | Resource)
 
-Sets the opacity of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier-1). This attribute has no effect for the **Line** component, which cannot be used to draw a closed shape.
+Sets the opacity of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute has no effect for the **Line** component, which cannot be used to draw a closed shape.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -242,7 +242,7 @@ Sets the maximum value for rendering an acute angle as an oblique angle. This at
 
 strokeOpacity(value: number | string | Resource)
 
-Sets the stroke opacity. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier-1). The value range is [0.0, 1.0]. If the given value is less than 0.0, the value is 0.0. If the given value is greater than 1.0, the value is 1.0.
+Sets the stroke opacity. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value range is [0.0, 1.0]. If the given value is less than 0.0, the value is 0.0. If the given value is greater than 1.0, the value is 1.0.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
