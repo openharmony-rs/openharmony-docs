@@ -1224,7 +1224,7 @@ try {
   kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting resultSet');
     resultSet = result;
-    moved = resultSet.move(2); //若当前位置为0，将读取位置从绝对位置为0的位置移动2行，即移动到绝对位置为2，行数为3的位置
+    moved = resultSet.move(2); // 若当前位置为0，将读取位置从绝对位置为0的位置移动2行，即移动到绝对位置为2，行数为3的位置
     console.info(`Succeeded in moving.moved = ${moved}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to get resultSet.code is ${err.code},message is ${err.message}`);
@@ -2888,7 +2888,7 @@ try {
         console.info(`entries[0]: ${entries[0]}`);
       });
     } else {
-      console.error('KvStore is null'); //后续示例代码与此处保持一致
+      console.error('KvStore is null'); // 后续示例代码与此处保持一致
     }
   });
 } catch (e) {
@@ -4603,7 +4603,7 @@ function putBatchString(len: number, prefix: string) {
     entries.push(entry);
   }
   return entries;
-} //自定义函数，放置在作用域最外侧，防止语法检查报错
+} // 自定义函数，放置在作用域最外侧，防止语法检查报错
 
 try {
   let count = 0;
