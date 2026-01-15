@@ -886,10 +886,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMethodEngine } from '@kit.IMEKit';
 
 let privateCommandCallback = (record: Record<string, inputMethodEngine.CommandDataType>) => {
-  for (let i = 0; i < record.length; i++) {
-    console.info(`private command key: ${i}, value: ${record[i]}`);
-  }
+  record.forEach((key, value) => {
+    console.info(`private command key: ${key}, value: ${value}`);
+  });
 }
+
 try {
   console.info(`regist private command `);
   inputMethodEngine.getInputMethodAbility().on('privateCommand', privateCommandCallback);
@@ -934,9 +935,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMethodEngine } from '@kit.IMEKit';
 
 let privateCommandCallback = (record: Record<string, inputMethodEngine.CommandDataType>) => {
-  for (let i = 0; i < record.length; i++) {
-    console.info(`private command key: ${i}, value: ${record[i]}`);
-  }
+  record.forEach((key, value) => {
+    console.info(`private command key: ${key}, value: ${value}`);
+  });
 }
 try {
   console.info(`regist private command `);
@@ -1388,8 +1389,9 @@ onInputStart(callback: IMAInputStartCallback): void
 **示例：**
 
 ```ts
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
-  inputMethodEngine.getInputMethodAbility()
+  InputMethodAbility!
     .onInputStart((kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
       let keyboardController = kbController;
       let inputClient = client;
@@ -1422,8 +1424,9 @@ offInputStart(callback?: IMAInputStartCallback): void
 **示例：**
 
 ```ts
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
-  inputMethodEngine.getInputMethodAbility()
+  InputMethodAbility!
     .offInputStart((kbController: inputMethodEngine.KeyboardController, textClient: inputMethodEngine.InputClient) => {
     console.info('delete inputStart notification.');
   });
@@ -1455,8 +1458,9 @@ onInputStop(callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
-  inputMethodEngine.getInputMethodAbility().onInputStop(() => {
+  InputMethodAbility!.onInputStop(() => {
     console.info('inputMethodAbility inputStop');
   });
 } catch(err) {
@@ -1487,8 +1491,9 @@ offInputStop(callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
-  inputMethodEngine.getInputMethodAbility().offInputStop(() => {
+  InputMethodAbility!.offInputStop(() => {
     console.info('inputMethodAbility delete inputStop notification.');
   });
 } catch(err) {
@@ -1519,8 +1524,9 @@ onSetCallingWindow(callback: Callback&lt;int&gt;): void
 **示例：**
 
 ```ts
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
-  inputMethodEngine.getInputMethodAbility().onSetCallingWindow((wid: int) => {
+  InputMethodAbility!.onSetCallingWindow((wid: int) => {
   console.info('inputMethodAbility setCallingWindow');
   });
 } catch(err) {
@@ -1551,8 +1557,9 @@ offSetCallingWindow(callback: Callback&lt;int&gt;): void
 **示例：**
 
 ```ts
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
-  inputMethodEngine.getInputMethodAbility().offSetCallingWindow((wid: int) => {
+  InputMethodAbility!.offSetCallingWindow((wid: int) => {
   console.info('inputMethodAbility delete setCallingWindow notification.');
   });
 } catch(err) {
@@ -1584,11 +1591,12 @@ onKeyboardShow(callback:Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
-  inputMethodEngine.getInputMethodAbility().onKeyboardShow(() => {
+  InputMethodAbility!.onKeyboardShow(() => {
     console.info('inputMethodEngine keyboardShow.');
   });
-  inputMethodEngine.getInputMethodAbility().onKeyboardHide(() => {
+  InputMethodAbility!.onKeyboardHide(() => {
     console.info('inputMethodEngine keyboardHide.');
   });
 } catch(err) {
@@ -1620,11 +1628,12 @@ offKeyboardShow(callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
-  inputMethodEngine.getInputMethodAbility().offKeyboardShow(() => {
+  InputMethodAbility!.offKeyboardShow(() => {
     console.info('InputMethodAbility delete keyboardShow notification.');
   });
-  inputMethodEngine.getInputMethodAbility().offKeyboardHide(() => {
+  InputMethodAbility!.offKeyboardHide(() => {
     console.info('InputMethodAbility delete keyboardHide notification.');
   });
 } catch(err) {
@@ -1655,11 +1664,12 @@ onKeyboardHide(callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
-  inputMethodEngine.getInputMethodAbility().onKeyboardShow(() => {
+  InputMethodAbility!.onKeyboardShow(() => {
     console.info('inputMethodEngine keyboardShow.');
   });
-  inputMethodEngine.getInputMethodAbility().onKeyboardHide(() => {
+  InputMethodAbility!.onKeyboardHide(() => {
     console.info('inputMethodEngine keyboardHide.');
   });
 } catch(err) {
@@ -1690,11 +1700,12 @@ offKeyboardHide(callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
-  inputMethodEngine.getInputMethodAbility().offKeyboardShow(() => {
+  InputMethodAbility!.offKeyboardShow(() => {
     console.info('InputMethodAbility delete keyboardShow notification.');
   });
-  inputMethodEngine.getInputMethodAbility().offKeyboardHide(() => {
+  InputMethodAbility!.offKeyboardHide(() => {
     console.info('InputMethodAbility delete keyboardHide notification.');
   });
 } catch(err) {
@@ -1726,9 +1737,9 @@ onSetSubtype(callback: Callback&lt;InputMethodSubtype&gt;): void
 
 ```ts
 import { InputMethodSubtype } from '@kit.IMEKit';
-
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
-  inputMethodEngine.getInputMethodAbility().onSetSubtype((inputMethodSubtype: InputMethodSubtype) => {
+  InputMethodAbility!.onSetSubtype((inputMethodSubtype: InputMethodSubtype) => {
     console.info('InputMethodAbility setSubtype.');
   });
 } catch(err) {
@@ -1760,9 +1771,9 @@ offSetSubtype(callback?: Callback&lt;InputMethodSubtype&gt;): void
 
 ```ts
 import { InputMethodSubtype } from '@kit.IMEKit';
-
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
-  inputMethodEngine.getInputMethodAbility().onSetSubtype((inputMethodSubtype: InputMethodSubtype) => {
+  InputMethodAbility!.onSetSubtype((inputMethodSubtype: InputMethodSubtype) => {
     console.info('InputMethodAbility setSubtype.');
   });
 } catch(err) {
@@ -1793,8 +1804,9 @@ onSecurityModeChange(callback: Callback&lt;SecurityMode&gt;): void
 **示例：**
 
 ```ts
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
-  inputMethodEngine.getInputMethodAbility().onSecurityModeChange((securityMode: inputMethodEngine.SecurityMode) => {
+  InputMethodAbility!.onSecurityModeChange((securityMode: inputMethodEngine.SecurityMode) => {
     console.info(`InputMethodAbility securityModeChange, security is ${securityMode}`);
   });
 } catch(err) {
@@ -1871,14 +1883,17 @@ onPrivateCommand(callback: Callback&lt;Record&lt;string, CommandDataType&gt;&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMethodEngine } from '@kit.IMEKit';
 
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
+
 let privateCommandCallback = (record: Record<string, inputMethodEngine.CommandDataType>) => {
-for (let i = 0; i < record.length; i++) {
-  console.info(`private command key: ${i}, value: ${record[i]}`);
+  record.forEach((key, value) => {
+    console.info(`private command key: ${key}, value: ${value}`);
+  });
 }
-}
+
 try {
   console.info(`regist private command `);
-  inputMethodEngine.getInputMethodAbility().onPrivateCommand(privateCommandCallback);
+  InputMethodAbility!.onPrivateCommand(privateCommandCallback);
 } catch (err) {
   console.error(`regist private command error: ${err.code} ${err.message}`);
 }
@@ -1918,14 +1933,15 @@ offPrivateCommand(callback?: Callback&lt;Record&lt;string, CommandDataType&gt;&g
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMethodEngine } from '@kit.IMEKit';
 
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 let privateCommandCallback = (record: Record<string, inputMethodEngine.CommandDataType>) => {
-  for (let i = 0; i < record.length; i++) {
-    console.info(`private command key: ${i}, value: ${record[i]}`);
-  }
+  record.forEach((key, value) => {
+    console.info(`private command key: ${key}, value: ${value}`);
+  });
 }
 try {
   console.info(`regist private command `);
-  inputMethodEngine.getInputMethodAbility().offPrivateCommand(privateCommandCallback);
+  InputMethodAbility!.offPrivateCommand(privateCommandCallback);
 } catch (err) {
   console.error(`regist private command error: ${err.code} ${err.message}`);
 }
@@ -1965,12 +1981,13 @@ onCallingDisplayDidChange(callback: Callback&lt;int&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMethodEngine } from '@kit.IMEKit';
 
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 let callingDisplayDidChangeCallback = (num: int) => {
   console.info(`display id: ${num}`);
 }
 try {
   console.info(`regist calling display changed`);
-  inputMethodEngine.getInputMethodAbility().onCallingDisplayDidChange(callingDisplayDidChangeCallback);
+  InputMethodAbility!.onCallingDisplayDidChange(callingDisplayDidChangeCallback);
 } catch (err) {
   console.error(`regist calling display changed error: ${err.code} ${err.message}`);
 }
@@ -2002,9 +2019,10 @@ offCallingDisplayDidChange(callback?: Callback&lt;int&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMethodEngine } from '@kit.IMEKit';
 
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
   console.info(`unregist calling display changed `);
-  inputMethodEngine.getInputMethodAbility().offCallingDisplayDidChange((num: int) => {
+  InputMethodAbility!.offCallingDisplayDidChange((num: int) => {
     console.info('InputMethodAbility delete calling display  notification.');
   });
 } catch (err) {
@@ -2038,9 +2056,10 @@ onDiscardTypingText(callback: Callback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import inputMethodEngine from '@ohos.inputMethodEngine';
 
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
   console.info(`discard the typing text`);
-  inputMethodEngine.getInputMethodAbility().onDiscardTypingText(() => {
+  InputMethodAbility!.onDiscardTypingText(() => {
     console.info('InputMethodAbility discard the typing text.');
   });
 } catch (err) {
@@ -2074,9 +2093,10 @@ offDiscardTypingText(callback?: Callback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import inputMethodEngine from '@ohos.inputMethodEngine';
 
+let InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 try {
   console.info(`discard the typing text`);
-  inputMethodEngine.getInputMethodAbility().offDiscardTypingText(() => {
+  InputMethodAbility!.offDiscardTypingText(() => {
     console.info('InputMethodAbility discard the typing text.');
   });
 } catch (err) {
@@ -2194,8 +2214,8 @@ import type { KeyEvent } from '@kit.InputKit';
 
 try {
   inputMethodEngine.getKeyboardDelegate().on('keyEvent', (keyEvent: KeyEvent) => {
-    console.info('inputMethodEngine keyEvent.action:' + keyEvent.action);
-    console.info('inputMethodEngine keyEvent.key.code:' + keyEvent.key.code);
+    console.info(`inputMethodEngine keyEvent.action: ${keyEvent.action}`);
+    console.info(`inputMethodEngine keyEvent.key.code: ${keyEvent.key.code}`);
     console.info(`inputMethodEngine keyEvent.ctrlKey: ${keyEvent.ctrlKey}`);
     console.info(`inputMethodEngine keyEvent.unicodeChar: ${keyEvent.unicodeChar}`);
     return true;
@@ -2268,9 +2288,9 @@ on(type: 'cursorContextChange', callback: (x: number, y:number, height:number) =
 ```ts
 try {
   inputMethodEngine.getKeyboardDelegate().on('cursorContextChange', (x: number, y: number, height: number) => {
-    console.info('inputMethodEngine cursorContextChange x:' + x);
-    console.info('inputMethodEngine cursorContextChange y:' + y);
-    console.info('inputMethodEngine cursorContextChange height:' + height);
+    console.info(`inputMethodEngine cursorContextChange x: ${x}`);
+    console.info(`inputMethodEngine cursorContextChange y: ${y}`);
+    console.info(`inputMethodEngine cursorContextChange height: ${height}`);
   });
 } catch(err) {
   console.error(`Failed to cursorContextChange: code: ${err.code} ,message: ${err.message}`);
@@ -2337,10 +2357,10 @@ on(type: 'selectionChange', callback: (oldBegin: number, oldEnd: number, newBegi
 try {
   inputMethodEngine.getKeyboardDelegate()
     .on('selectionChange', (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => {
-    console.info('inputMethodEngine beforeEach selectionChange oldBegin:' + oldBegin);
-    console.info('inputMethodEngine beforeEach selectionChange oldEnd:' + oldEnd);
-    console.info('inputMethodEngine beforeEach selectionChange newBegin:' + newBegin);
-    console.info('inputMethodEngine beforeEach selectionChange newEnd:' + newEnd);
+    console.info(`inputMethodEngine beforeEach selectionChange oldBegin: ${oldBegin}`);
+    console.info(`inputMethodEngine beforeEach selectionChange oldEnd: ${oldEnd}`);
+    console.info(`inputMethodEngine beforeEach selectionChange newBegin:' ${newBegin}`);
+    console.info(`inputMethodEngine beforeEach selectionChange newEnd: ${newEnd}`);
     });
 } catch(err) {
   console.error(`Failed to selectionChange: code: ${err.code} ,message: ${err.message}`);
@@ -2408,7 +2428,7 @@ on(type: 'textChange', callback: (text: string) => void): void
 ```ts
 try {
   inputMethodEngine.getKeyboardDelegate().on('textChange', (text: string) => {
-    console.info('inputMethodEngine textChange. text:' + text);
+    console.info(`inputMethodEngine textChange. text:' ${text}`);
   });
 } catch(err) {
   console.error(`Failed to textChange: code: ${err.code} ,message: ${err.message}`);
@@ -2441,7 +2461,7 @@ off(type: 'textChange', callback?: (text: string) => void): void
 ```ts
 try {
   inputMethodEngine.getKeyboardDelegate().off('textChange', (text: string) => {
-    console.info('delete textChange notification. text:' + text);
+    console.info(`delete textChange notification. text:' ${text}`);
   });
 } catch(err) {
   console.error(`Failed to textChange: code: ${err.code} ,message: ${err.message}`);
@@ -2531,22 +2551,23 @@ onKeyDown(callback: KeyEventCallback): void
 **示例：**
 
 ```ts
+let KeyboardDelegate = inputMethodEngine.getKeyboardDelegate()
 let inputMethodEngineDelegate = inputMethodEngine.getKeyboardDelegate();
 if (inputMethodEngineDelegate) {
   try {
-    inputMethodEngineDelegate.onKeyUp((keyEvent: inputMethodEngine.KeyEvent) => {
+    inputMethodEngineDelegate!.onKeyUp((keyEvent: inputMethodEngine.KeyEvent) => {
       console.info(`inputMethodEngine keyCode.(keyDown): ${keyEvent.keyCode}`);
       console.info(`inputMethodEngine keyAction.(keyDown): ${keyEvent.keyAction}`);
       return true;
     });
-    inputMethodEngineDelegate.onKeyDown((keyEvent: inputMethodEngine.KeyEvent) => {
+    inputMethodEngineDelegate!.onKeyDown((keyEvent: inputMethodEngine.KeyEvent) => {
       console.info(`inputMethodEngine keyCode.(keyDown): ${keyEvent.keyCode}`);
       console.info(`inputMethodEngine keyAction.(keyDown): ${keyEvent.keyAction}`);
       return true;
     });
   } catch(err) {
     const error = err as Error;
-    console.error(`Failed to KeyboardDelegate:  ${error.code} ${error.message}`);
+    console.error(`Failed to KeyboardDelegate:  ${err.code} ${err.message}`);
   }
 }
 ```
@@ -2577,16 +2598,16 @@ offKeyDown(callback?: KeyEventCallback): void
 let inputMethodEngineDelegate = inputMethodEngine.getKeyboardDelegate();
 if (inputMethodEngineDelegate) {
   try {
-    inputMethodEngineDelegate.offKeyUp((keyEvent: inputMethodEngine.KeyEvent) => {
+    inputMethodEngineDelegate!.offKeyUp((keyEvent: inputMethodEngine.KeyEvent) => {
       console.info('delete keyUp notification.');
       return true;
     });
-    inputMethodEngineDelegate.offKeyDown((keyEvent: inputMethodEngine.KeyEvent) => {
+    inputMethodEngineDelegate!.offKeyDown((keyEvent: inputMethodEngine.KeyEvent) => {
       console.info('delete keyDown notification.');
       return true;
     });
   } catch(err:BusinessError) {
-    console.error(`Failed to keyevent: ${error.code} ${error.message}`);
+    console.error(`Failed to keyevent: ${err.code} ${err.message}`);
   }
 }
 ```
@@ -2617,18 +2638,18 @@ onKeyUp(callback: KeyEventCallback): void
 let inputMethodEngineDelegate = inputMethodEngine.getKeyboardDelegate();
 if (inputMethodEngineDelegate) {
   try {
-    inputMethodEngineDelegate.onKeyUp((keyEvent: inputMethodEngine.KeyEvent) => {
+    inputMethodEngineDelegate!.onKeyUp((keyEvent: inputMethodEngine.KeyEvent) => {
       console.info(`inputMethodEngine keyCode.(keyDown): ${keyEvent.keyCode}`);
       console.info(`inputMethodEngine keyAction.(keyDown): ${keyEvent.keyAction}`);
       return true;
     });
-    inputMethodEngineDelegate.onKeyDown((keyEvent: inputMethodEngine.KeyEvent) => {
+    inputMethodEngineDelegate!.onKeyDown((keyEvent: inputMethodEngine.KeyEvent) => {
       console.info(`inputMethodEngine keyCode.(keyDown): ${keyEvent.keyCode}`);
       console.info(`inputMethodEngine keyAction.(keyDown): ${keyEvent.keyAction}`);
       return true;
     });
   } catch (err:BusinessError) {
-    console.error(`Failed to KeyboardDelegate:  ${error.code} ${error.message}`);
+    console.error(`Failed to KeyboardDelegate:  ${err.code} ${err.message}`);
   }
 }
 ```
@@ -2659,16 +2680,16 @@ offKeyUp(callback?: KeyEventCallback): void
 let inputMethodEngineDelegate = inputMethodEngine.getKeyboardDelegate();
 if (inputMethodEngineDelegate) {
   try {
-    inputMethodEngineDelegate.offKeyUp((keyEvent: inputMethodEngine.KeyEvent) => {
+    inputMethodEngineDelegate!.offKeyUp((keyEvent: inputMethodEngine.KeyEvent) => {
       console.info('delete keyUp notification.');
       return true;
     });
-    inputMethodEngineDelegate.offKeyDown((keyEvent: inputMethodEngine.KeyEvent) => {
+    inputMethodEngineDelegate!.offKeyDown((keyEvent: inputMethodEngine.KeyEvent) => {
       console.info('delete keyDown notification.');
       return true;
     });
   } catch (err:BusinessError) {
-    console.error(`Failed to keyevent: ${error.code} ${error.message}`);
+    console.error(`Failed to keyevent: ${err.code} ${err.message}`);
   }
 }
 ```
@@ -2701,15 +2722,15 @@ import type { KeyEvent } from '@kit.InputKit';
 let inputMethodEngineDelegate = inputMethodEngine.getKeyboardDelegate();
 if (inputMethodEngineDelegate) {
   try {
-    inputMethodEngineDelegate.onKeyEvent((keyEvent: KeyEvent) => {
-      console.info('inputMethodEngine keyEvent.action: ' + keyEvent.action);
-      console.info('inputMethodEngine keyEvent.key.code: ' + keyEvent.key.code);
+    inputMethodEngineDelegate!.onKeyEvent((keyEvent: KeyEvent) => {
+      console.info(`inputMethodEngine keyEvent.action: ${keyEvent.action}`);
+      console.info(`inputMethodEngine keyEvent.key.code: ${keyEvent.key.code}`);
       console.info(`inputMethodEngine keyEvent.ctrlKey: ${keyEvent.ctrlKey}`);
       console.info(`inputMethodEngine keyEvent.unicodeChar: ${keyEvent.unicodeChar}`);
       return true;
     });
   } catch (err:BusinessError) {
-    console.error(`Failed to inputMethodEngine: ${error.code} ${error.message}`);
+    console.error(`Failed to inputMethodEngine: ${err.code} ${err.message}`);
   }
 }
 ```
@@ -2742,13 +2763,13 @@ import type { KeyEvent } from '@kit.InputKit';
 let inputMethodEngineDelegate = inputMethodEngine.getKeyboardDelegate();
 if (inputMethodEngineDelegate) {
   try {
-    inputMethodEngineDelegate.offKeyEvent((keyEvent: KeyEvent) => {
+    inputMethodEngineDelegate!.offKeyEvent((keyEvent: KeyEvent) => {
       console.info('This is a callback function which will be deregistered.');
       return true;
     });
-    inputMethodEngineDelegate.offKeyEvent();
+    inputMethodEngineDelegate!.offKeyEvent();
   } catch (err:BusinessError) {
-    console.error(`Failed to keyEvent: ${error.code} ${error.message}`);
+    console.error(`Failed to keyEvent: ${err.code} ${err.message}`);
   }
 }
 ```
@@ -2779,11 +2800,11 @@ onCursorContextChange(callback: CursorContextChangeCallback): void
 let inputMethodEngineDelegate = inputMethodEngine.getKeyboardDelegate();
 if (inputMethodEngineDelegate) {
   try {
-    inputMethodEngineDelegate.onCursorContextChange((x: double, y: double, height: double) => {
+    inputMethodEngineDelegate!.onCursorContextChange((x: double, y: double, height: double) => {
       console.info(`inputMethodEngine cursorContextChange x:${x}, y:${y}, height:${height}`);
     });
   } catch (err:BusinessError) {
-    console.error(`Failed to cursorContextChange: ${error.code} ${error.message}`);
+    console.error(`Failed to cursorContextChange: ${err.code} ${err.message}`);
   }
 }
 ```
@@ -2814,11 +2835,11 @@ offCursorContextChange(callback?: CursorContextChangeCallback): void
 let inputMethodEngineDelegate = inputMethodEngine.getKeyboardDelegate();
 if (inputMethodEngineDelegate) {
   try {
-    inputMethodEngineDelegate.offCursorContextChange((x: double, y: double, height: double) => {
+    inputMethodEngineDelegate!.offCursorContextChange((x: double, y: double, height: double) => {
       console.info('delete cursorContextChange notification.');
     });
   } catch (err:BusinessError) {
-    console.error(`Failed to cursorContextChange: ${error.code} ${error.message}`);
+    console.error(`Failed to cursorContextChange: ${err.code} ${err.message}`);
   }
 }
 ```
@@ -2849,15 +2870,15 @@ onSelectionChange(callback: SelectionChangeCallback): void
 let inputMethodEngineDelegate = inputMethodEngine.getKeyboardDelegate();
 if (inputMethodEngineDelegate) {
   try {
-    inputMethodEngineDelegate
+    inputMethodEngineDelegate!
       .onSelectionChange((oldBegin: int, oldEnd: int, newBegin: int, newEnd: int) => {
-      console.info('inputMethodEngine beforeEach selectionChange oldBegin: ' + oldBegin);
-      console.info('inputMethodEngine beforeEach selectionChange oldEnd: ' + oldEnd);
-      console.info('inputMethodEngine beforeEach selectionChange newBegin: ' + newBegin);
-      console.info('inputMethodEngine beforeEach selectionChange newEnd: ' + newEnd);
-    });
+        console.info(`inputMethodEngine beforeEach selectionChange oldBegin: ${oldBegin}`);
+        console.info(`inputMethodEngine beforeEach selectionChange oldEnd: ${oldEnd}`);
+        console.info(`inputMethodEngine beforeEach selectionChange newBegin: ${newBegin}`);
+        console.info(`inputMethodEngine beforeEach selectionChange newEnd: ${newEnd}`);
+      });
   } catch (err:BusinessError) {
-    console.error(`Failed to selectionChange: ${error.code} ${error.message}`);
+    console.error(`Failed to selectionChange: ${err.code} ${err.message}`);
   }
 }
 ```
@@ -2888,11 +2909,11 @@ offSelectionChange(callback?: SelectionChangeCallback): void
 let inputMethodEngineDelegate = inputMethodEngine.getKeyboardDelegate();
 if (inputMethodEngineDelegate) {
   try {
-    inputMethodEngineDelegate.offSelectionChange((oldBegin: int, oldEnd: int, newBegin: int, newEnd: int) => {
+    inputMethodEngineDelegate!.offSelectionChange((oldBegin: int, oldEnd: int, newBegin: int, newEnd: int) => {
       console.info('delete selectionChange notification.');
     });
   } catch (err:BusinessError) {
-    console.error(`Failed to selectionChange: ${error.code} ${error.message}`);
+    console.error(`Failed to selectionChange: ${err.code} ${err.message}`);
   }
 }
 ```
@@ -2923,11 +2944,11 @@ onTextChange(callback: Callback&lt;string&gt;): void
 let inputMethodEngineDelegate = inputMethodEngine.getKeyboardDelegate();
 if (inputMethodEngineDelegate) {
   try {
-    inputMethodEngineDelegate.onTextChange((text: string) => {
-      console.info('inputMethodEngine textChange. text: ' + text);
+    inputMethodEngineDelegate!.onTextChange((text: string) => {
+      console.info(`inputMethodEngine textChange. text: ' ${text}`);
     });
   } catch (err:BusinessError) {
-    console.error(`Failed to textChange: ${error.code} ${error.message}`);
+    console.error(`Failed to textChange: ${err.code} ${err.message}`);
   }
 }
 ```
@@ -2958,11 +2979,11 @@ offTextChange(callback?: Callback&lt;string&gt;): void
 let inputMethodEngineDelegate = inputMethodEngine.getKeyboardDelegate();
 if (inputMethodEngineDelegate) {
   try {
-    inputMethodEngineDelegate.offTextChange((text: string) => {
-      console.info('delete textChange notification. text: ' + text);
+    inputMethodEngineDelegate!.offTextChange((text: string) => {
+      console.info(`delete textChange notification. text: ${text}`);
     });
   } catch (err:BusinessError) {
-    console.error(`Failed to textChange: ${error.code} ${error.message}`);
+    console.error(`Failed to textChange: ${err.code} ${err.message}`);
   }
 }
 ```
@@ -2993,11 +3014,11 @@ onEditorAttributeChanged(callback: Callback&lt;EditorAttribute&gt;): void
 let inputMethodEngineDelegate = inputMethodEngine.getKeyboardDelegate();
 if (inputMethodEngineDelegate) {
   try {
-    inputMethodEngineDelegate.onEditorAttributeChanged((attr: inputMethodEngine.EditorAttribute) => {
+    inputMethodEngineDelegate!.onEditorAttributeChanged((attr: inputMethodEngine.EditorAttribute) => {
       console.info(`Succeeded in receiving attribute of editor, inputPattern = ${attr.inputPattern}, enterKeyType = ${attr.enterKeyType}`);
     });
   } catch (err:BusinessError) {
-    console.error(`Failed to textChange: ${error.code} ${error.message}`);
+    console.error(`Failed to textChange: ${err.code} ${err.message}`);
   }
 }
 ```
@@ -3027,7 +3048,7 @@ offEditorAttributeChanged(callback?: Callback&lt;EditorAttribute&gt;): void
 ```ts
 let inputMethodEngineDelegate = inputMethodEngine.getKeyboardDelegate();
 if (inputMethodEngineDelegate) {
-  inputMethodEngineDelegate.offEditorAttributeChanged();
+  inputMethodEngineDelegate!.offEditorAttributeChanged();
 }
 ```
 
@@ -3120,7 +3141,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   panel.setUiContent('pages/page2/page2').then(() => {
     console.info('Succeeded in setting the content.');
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`Failed to setUiContent: code: ${err.code} ,message: ${err.message}`);
   });
 } catch (err) {
@@ -4301,7 +4322,7 @@ try {
   this.panel.setKeepScreenOn(isKeepScreenOn).then(() => {
     console.info(`setKeepScreenOn success.`);
   }).catch((error: BusinessError) => {
-    console.error(`setKeepScreenOn failed, code: ${error.code}, message: ${error.message}`);
+    console.error(`setKeepScreenOn failed, code: ${err.code}, message: ${err.message}`);
   })
 } catch (err) {
   console.error(`setKeepScreenOn failed, code: ${err.code}, message: ${err.message}`);
@@ -4393,12 +4414,13 @@ onHide(callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
+let panel: inputMethodEngine.Panel | null = null;
 try {
-  panel.onHide(() => {
-    console.info('Panel is hiding.');
+  panel!.onShow(() => {
+    console.info('Panel is showing.');
   });
 } catch(err) {
-  console.error(`Failed to hide, code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to show, code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -5142,7 +5164,7 @@ try {
       console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
       return;
     }
-    console.info('Succeeded in getting forward, text: ' + text);
+    console.info(`Succeeded in getting forward, text: ${text}`);
   });
 } catch (err) {
   console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
@@ -5160,7 +5182,7 @@ try {
       console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
       return;
     }
-    console.info('Succeeded in getting forward, text: ' + text);
+    console.info(`Succeeded in getting forward, text: ${text}`);
   });
 } catch (err) {
   console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
@@ -5212,7 +5234,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let length:number = 1;
 try {
   inputClient.getForward(length).then((text: string) => {
-    console.info('Succeeded in getting forward, text: ' + text);
+    console.info(`Succeeded in getting forward, text: ${text}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
   });
@@ -5228,7 +5250,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let length:int = 1;
 try {
   inputClient.getForward(length).then((text: string) => {
-    console.info('Succeeded in getting forward, text: ' + text);
+    console.info(`Succeeded in getting forward, text: ${text}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
   });
@@ -5329,7 +5351,7 @@ try {
       console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
       return;
     }
-    console.info('Succeeded in getting backward, text: ' + text);
+    console.info(`Succeeded in getting backward, text: ${text}`);
   });
 } catch (err) {
   console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
@@ -5347,7 +5369,7 @@ try {
       console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
       return;
     }
-    console.info('Succeeded in getting backward, text: ' + text);
+    console.info(`Succeeded in getting backward, text: ${text}`);
   });
 } catch (err) {
   console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
@@ -5399,7 +5421,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let length:number = 1;
 try {
   inputClient.getBackward(length).then((text: string) => {
-    console.info('Succeeded in getting backward, text: ' + text);
+    console.info(`Succeeded in getting backward, text: ${text}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
   });
@@ -5415,7 +5437,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let length:int = 1;
 try {
   inputClient.getBackward(length).then((text: string) => {
-    console.info('Succeeded in getting backward, text: ' + text);
+    console.info(`Succeeded in getting backward, text: ${text}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
   });
@@ -5679,7 +5701,7 @@ try {
   inputClient.deleteForwardSync(length);
   console.info('Succeeded in deleting forward.');
 } catch (err) {
-  console.error('deleteForwardSync err: ' + code: ${err.code}, message: ${err.message});
+  console.error(`deleteForwardSync err: ' code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -5690,7 +5712,7 @@ try {
   inputClient.deleteForwardSync(length);
   console.info('Succeeded in deleting forward.');
 } catch (err) {
-  console.error('deleteForwardSync err: ' + code: ${err.code}, message: ${err.message});
+  console.error(`deleteForwardSync err: code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -5745,7 +5767,7 @@ try {
     }
   });
 } catch (err) {
-  console.error('deleteBackward err: ' + code: ${err.code}, message: ${err.message});
+  console.error(`deleteBackward err: code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -5767,7 +5789,7 @@ try {
     }
   });
 } catch (err) {
-  console.error('deleteBackward err: ' + code: ${err.code}, message: ${err.message});
+  console.error(`deleteBackward err: code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -5862,7 +5884,7 @@ try {
   inputClient.deleteBackwardSync(length);
   console.info('Succeeded in deleting backward.');
 } catch (err) {
-  console.error('deleteBackwardSync err: ' + code: ${err.code}, message: ${err.message});
+  console.error(`deleteBackwardSync err: code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -6582,7 +6604,7 @@ inputClient.getTextIndexAtCursor((err: BusinessError, index: number) => {
     console.error(`Failed to getTextIndexAtCursor: code: ${err.code} ,message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in getTextIndexAtCursor: ' + index);
+  console.info(`Succeeded in getTextIndexAtCursor: ${index}`);
 });
 ```
 
@@ -6596,7 +6618,7 @@ inputClient.getTextIndexAtCursor((err: BusinessError, index: int) => {
     console.error(`Failed to getTextIndexAtCursor: code: ${err.code} ,message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in getTextIndexAtCursor: ' + index);
+  console.info(`Succeeded in getTextIndexAtCursor: ${index}`);
 });
 ```
 
@@ -6637,7 +6659,7 @@ ArkTs-Dyn示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 inputClient.getTextIndexAtCursor().then((index: number) => {
-  console.info('Succeeded in getTextIndexAtCursor: ' + index);
+  console.info(`Succeeded in getTextIndexAtCursor: ${index}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to getTextIndexAtCursor: code: ${err.code} ,message: ${err.message}`);
 });
@@ -6649,7 +6671,7 @@ ArkTs-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 inputClient.getTextIndexAtCursor().then((index: int) => {
-  console.info('Succeeded in getTextIndexAtCursor: ' + index);
+  console.info(`Succeeded in getTextIndexAtCursor: ${index}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to getTextIndexAtCursor: code: ${err.code} ,message: ${err.message}`);
 });
@@ -6945,7 +6967,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   inputClient.getCallingWindowInfo().then((windowInfo: inputMethodEngine.WindowInfo) => {
     console.info(`windowInfo.rect: ${windowInfo.rect}`);
-    console.info('windowInfo.status: ' + windowInfo.status);
+    console.info(`windowInfo.status: ${windowInfo.status}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to getCallingWindowInfo: code: ${err.code} ,message: ${err.message}`);
   });
@@ -7436,6 +7458,10 @@ onAttachOptionsDidChange(callback: Callback&lt;AttachOptions&gt;): void
 **示例：**
 
 ```ts
+let attachOptionsDidChangeCallback = (attachOptions: inputMethodEngine.AttachOptions) => {
+  console.info(`AttachOptionsDidChangeCallback1: attachOptionsDidChange event triggered`);
+};
+
 try {
   inputMethodEngine.getInputMethodAbility()
     .onInputStart((kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
@@ -7474,6 +7500,10 @@ offAttachOptionsDidChange(callback?: Callback&lt;AttachOptions&gt;): void
 **示例：**
 
 ```ts
+let attachOptionsDidChangeCallback = (attachOptions: inputMethodEngine.AttachOptions) => {
+  console.info(`AttachOptionsDidChangeCallback1: attachOptionsDidChange event triggered`);
+};
+
 try {
   inputMethodEngine.getInputMethodAbility()
     .onInputStart((kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
@@ -7780,7 +7810,7 @@ textInputClient.getForward(length, (err: BusinessError, text: string) => {
     console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in getting forward, text: ' + text);
+  console.info(`Succeeded in getting forward, text: ' ${text}`);
 });
 ```
 
@@ -7819,7 +7849,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let length = 1;
 textInputClient.getForward(length).then((text: string) => {
-  console.info('Succeeded in getting forward, text: ' + text);
+  console.info(`Succeeded in getting forward, text: ${text}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
 });
@@ -7859,7 +7889,7 @@ textInputClient.getBackward(length, (err: BusinessError, text: string) => {
     console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in getting borward, text: ' + text);
+  console.info(`Succeeded in getting borward, text: ${text}`);
 });
 ```
 
@@ -7898,7 +7928,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let length = 1;
 textInputClient.getBackward(length).then((text: string) => {
-  console.info('Succeeded in getting backward: ' + text);
+  console.info(`Succeeded in getting backward: ${text}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
 });
@@ -8314,8 +8344,8 @@ getEditorAttribute(): Promise&lt;EditorAttribute&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 textInputClient.getEditorAttribute().then((editorAttribute: inputMethodEngine.EditorAttribute) => {
-  console.info('editorAttribute.inputPattern: ' + editorAttribute.inputPattern);
-  console.info('editorAttribute.enterKeyType: ' + editorAttribute.enterKeyType);
+  console.info(`editorAttribute.inputPattern:  ${editorAttribute.inputPattern}`);
+  console.info(`editorAttribute.enterKeyType:  ${editorAttribute.enterKeyType}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to getEditorAttribute: code: ${err.code} ,message: ${err.message}`);
 });
