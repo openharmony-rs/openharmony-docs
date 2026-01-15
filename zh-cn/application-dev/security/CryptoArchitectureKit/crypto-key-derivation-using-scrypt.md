@@ -41,78 +41,47 @@
 
 - 通过await返回结果：
 
-<!-- @[use_scrypt_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/SCRYPTDerivation/entry/src/main/ets/pages/Await.ets) -->
+  <!-- @[use_scrypt_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/SCRYPTDerivation/entry/src/main/ets/pages/Await.ets) -->
 
-``` TypeScript
+  ``` TypeScript
 
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { buffer } from '@kit.ArkTS';
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { buffer } from '@kit.ArkTS';
 
-async function scryptAwait() {
-  try {
-    let spec: cryptoFramework.ScryptSpec = {
-      algName: 'SCRYPT',
-      salt: new Uint8Array(16),
-      passphrase: 'password',
-      n:1024,
-      p:16,
-      r:8,
-      maxMemory:1024 * 16 * 8 * 10, //n * p * r * 10
-      keySize: 64
-    };
-    let kdf = cryptoFramework.createKdf('SCRYPT');
-    let secret = await kdf.generateSecret(spec);
-    console.info('key derivation output is ' + secret.data);
-  } catch(error) {
-    let e: BusinessError = error as BusinessError;
-    console.error('key derivation failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+  async function scryptAwait() {
+    try {
+      let spec: cryptoFramework.ScryptSpec = {
+        algName: 'SCRYPT',
+        salt: new Uint8Array(16),
+        passphrase: 'password',
+        n:1024,
+        p:16,
+        r:8,
+        maxMemory:1024 * 16 * 8 * 10, //n * p * r * 10
+        keySize: 64
+      };
+      let kdf = cryptoFramework.createKdf('SCRYPT');
+      let secret = await kdf.generateSecret(spec);
+      console.info('key derivation output is ' + secret.data);
+    } catch(error) {
+      let e: BusinessError = error as BusinessError;
+      console.error('key derivation failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    }
   }
-}
-```
+  ```
 
 
 - 通过Promise返回结果：
-<!-- @[use_scrypt_for_key_derivation_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/SCRYPTDerivation/entry/src/main/ets/pages/Promise.ets) -->
+  <!-- @[use_scrypt_for_key_derivation_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/SCRYPTDerivation/entry/src/main/ets/pages/Promise.ets) -->
 
-``` TypeScript
+  ``` TypeScript
 
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { buffer } from '@kit.ArkTS';
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { buffer } from '@kit.ArkTS';
 
-function scryptPromise() {
-  let spec: cryptoFramework.ScryptSpec = {
-    algName: 'SCRYPT',
-    passphrase: '123456',
-    salt: new Uint8Array(16),
-    n:1024,
-    p:16,
-    r:8,
-    maxMemory:1024 * 16 * 8 * 10, //n * p * r * 10
-    keySize: 64
-  };
-  let kdf = cryptoFramework.createKdf('SCRYPT');
-  let kdfPromise = kdf.generateSecret(spec);
-  kdfPromise.then((secret) => {
-    console.info('key derivation output is ' + secret.data);
-  }).catch((error: BusinessError) => {
-    console.error('key derivation error.');
-  });
-}
-```
-
-
-- 通过同步方式返回结果：
-<!-- @[use_scrypt_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/SCRYPTDerivation/entry/src/main/ets/pages/Sync.ets) -->
-
-``` TypeScript
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { buffer } from '@kit.ArkTS';
-
-function kdfSync() {
-  try {
+  function scryptPromise() {
     let spec: cryptoFramework.ScryptSpec = {
       algName: 'SCRYPT',
       passphrase: '123456',
@@ -124,12 +93,43 @@ function kdfSync() {
       keySize: 64
     };
     let kdf = cryptoFramework.createKdf('SCRYPT');
-    let secret = kdf.generateSecretSync(spec);
-    console.info('[Sync]key derivation output is ' + secret.data);
-  } catch(error) {
-    let e: BusinessError = error as BusinessError;
-    console.error('key derivation failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    let kdfPromise = kdf.generateSecret(spec);
+    kdfPromise.then((secret) => {
+      console.info('key derivation output is ' + secret.data);
+    }).catch((error: BusinessError) => {
+      console.error('key derivation error.');
+    });
   }
-}
-```
+  ```
+
+
+- 通过同步方式返回结果：
+  <!-- @[use_scrypt_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/SCRYPTDerivation/entry/src/main/ets/pages/Sync.ets) -->
+
+  ``` TypeScript
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { buffer } from '@kit.ArkTS';
+
+  function kdfSync() {
+    try {
+      let spec: cryptoFramework.ScryptSpec = {
+        algName: 'SCRYPT',
+        passphrase: '123456',
+        salt: new Uint8Array(16),
+        n:1024,
+        p:16,
+        r:8,
+        maxMemory:1024 * 16 * 8 * 10, //n * p * r * 10
+        keySize: 64
+      };
+      let kdf = cryptoFramework.createKdf('SCRYPT');
+      let secret = kdf.generateSecretSync(spec);
+      console.info('[Sync]key derivation output is ' + secret.data);
+    } catch(error) {
+      let e: BusinessError = error as BusinessError;
+      console.error('key derivation failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    }
+  }
+  ```
 
