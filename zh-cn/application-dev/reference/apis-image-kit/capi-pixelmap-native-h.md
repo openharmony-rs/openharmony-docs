@@ -1914,7 +1914,7 @@ Image_ErrorCode OH_PixelmapNative_IsReleased(OH_PixelmapNative *pixelmap, bool *
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被检测的PixelMap。 |
-| bool *released | 获取的PixelMap释放状态。true表示已被释放，false表示未被释放。 |
+| bool *released | 获取的PixelMap的释放状态。true表示已被释放，false表示未被释放。 |
 
 **返回：**
 
