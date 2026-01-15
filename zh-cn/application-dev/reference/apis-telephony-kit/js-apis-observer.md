@@ -1037,7 +1037,7 @@ let callback: () => void = () => {
 }
 observer.on('iccAccountInfoChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
-observer.off('iccAccountInfoChange', callback); 
+observer.off('iccAccountInfoChange', callback);
 observer.off('iccAccountInfoChange');
 ```
 
