@@ -46,7 +46,7 @@ import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
 
 > **说明：**
 >
->目前仅用于SOFT_KEYBOARD的类型的面板。
+>目前仅用于SOFT_KEYBOARD类型的面板。
 
 **系统能力**：SystemCapability.MiscServices.InputMethodFramework
 
