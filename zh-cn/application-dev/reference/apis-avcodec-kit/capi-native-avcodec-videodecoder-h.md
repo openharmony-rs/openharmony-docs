@@ -577,7 +577,7 @@ OH_AVErrCode OH_VideoDecoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 <br>         AV_ERR_DRM_DECRYPT_FAILED：受 DRM 保护的视频缓冲区解密失败，建议查看日志。|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 <br>         AV_ERR_DRM_DECRYPT_FAILED：受DRM保护的视频缓冲区解密失败，建议查看日志。|
 
 ### OH_VideoDecoder_RenderOutputBuffer()
 
