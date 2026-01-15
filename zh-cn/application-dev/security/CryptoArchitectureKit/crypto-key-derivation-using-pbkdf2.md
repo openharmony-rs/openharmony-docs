@@ -60,11 +60,11 @@
 - 通过Promise返回结果：
 
   <!-- @[use_pbkdf2_for_key_derivation_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/ets/pages/Promise.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   function kdfPromise() {
     let spec: cryptoFramework.PBKDF2Spec = {
       algName: 'PBKDF2',
