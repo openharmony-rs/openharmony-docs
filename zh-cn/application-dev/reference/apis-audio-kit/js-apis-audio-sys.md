@@ -449,9 +449,9 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 | 名称                                | 类型                                                      | 只读 | 可选 | 说明                                                         |
 | ----------------------------------- | --------------------------------------------------------- | ---- |---| ------------------------------------------------------------ |
-| micInStreamInfo                          | [AudioStreamInfo](#audiostreaminfo8)                      | 否 | 否 | 麦克风音频流信息。   |
-| capturerInfo                        | [AudioCapturerInfo](#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。         |
-| ecStreamInfo | [AudioStreamInfo](#audiostreaminfo8) | 否 | 是 | 回声消除音频流信息，若未设置此属性，采集器将仅录制麦克风输入的音频流。    |
+| micInStreamInfo                          | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)                      | 否 | 否 | 麦克风音频流信息。   |
+| capturerInfo                        | [AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。         |
+| ecStreamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 否 | 是 | 回声消除音频流信息，若未设置此属性，采集器将仅录制麦克风输入的音频流。    |
 
 ## VolumeAdjustType<sup>10+</sup>
 
