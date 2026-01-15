@@ -690,6 +690,7 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 防火墙规则DNS信息。
 
  > **说明**
+ >
  >  当[addNetFirewallRule](#netfirewalladdnetfirewallrule)的入参rule.type配置为RULE_DNS时，该字段不能为空。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
