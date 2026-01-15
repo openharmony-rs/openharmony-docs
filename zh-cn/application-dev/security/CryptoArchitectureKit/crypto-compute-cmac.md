@@ -74,11 +74,11 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
 - 以使用同步方式一次性传入数据，获取消息认证码计算结果为例：
 
   <!-- @[message_authentication_code_calculated_as_fragmented_hmac_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
@@ -86,7 +86,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
     console.info('[Sync]convertKey success');
     return symKey;
   }
-
+  
   function doLoopHmacBySync() {
     // 把字符串按utf-8解码为Uint8Array，使用固定的128位的密钥，即16字节
     let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
