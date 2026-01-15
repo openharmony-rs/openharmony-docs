@@ -144,7 +144,7 @@ build() {
     ```
 2. 如何禁止[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件的手势。
     ```ts
-	  .enableScrollInteraction(false)
+    .enableScrollInteraction(false)
     ```
 3. 如何检测List组件、Scroll组件是否滚动到边界。
 	
@@ -162,7 +162,7 @@ build() {
 	
 	(4) 获取Web组件自身高度：webController.[getPageHeight()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight);
 	
-	(5) 获取Web组件窗口高度：webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window. innerHeight');
+	(5) 获取Web组件窗口高度：webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window.innerHeight');
 	
 	(6) 获取Web组件的滚动偏移量：webController.[getPageOffset()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageoffset20);
 5. 如何让Scroll组件不滚动。
@@ -178,7 +178,7 @@ build() {
     ```
 8. 设置Web组件[bypassVsyncCondition](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bypassvsynccondition20)为WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET，加快Web组件首帧滚动绘制。
     ```ts
-	  .bypassVsyncCondition(WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET)
+    .bypassVsyncCondition(WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET)
     ```
 
 **完整代码**
