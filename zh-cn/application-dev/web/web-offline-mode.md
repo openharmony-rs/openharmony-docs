@@ -296,6 +296,28 @@ struct Index1 {
 
 <!--  -->
 <!-- @[nodeContainer_bind_controller_show_dynamic_pages](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/index2.ets) -->  
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct index2 {
+  webviewController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Row() {
+      Column() {
+        Web({src: 'https://www.example.com', controller: this.webviewController})
+          .width('100%')
+          .height('100%')
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 <!--  -->
 
 ## 预渲染Web页面
