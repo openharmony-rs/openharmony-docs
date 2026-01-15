@@ -1222,7 +1222,7 @@ function getDefaultRenderContextTest() {
 ### cloneNode<sup>23+</sup>
 cloneNode(node: Node, parent: Node, name: string): Node | null
 
-用于在当前所在场景中克隆结点，不支持跨场景克隆结点。
+在当前所在场景中克隆结点，不支持跨场景克隆结点。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -1236,7 +1236,7 @@ cloneNode(node: Node, parent: Node, name: string): Node | null
 **返回值：**
 | 类型 | 说明 |
 | ---- | ---- |
-| [Node](js-apis-inner-scene-nodes.md#node) \| null | 克隆结点。克隆失败则返回null。 |
+| [Node](js-apis-inner-scene-nodes.md#node) \| null | 返回克隆结点。克隆失败则返回null。 |
 
 **示例：**
 ```ts
