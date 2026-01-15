@@ -391,7 +391,9 @@ type Resource = _Resource
 >
 > - 资源文件在工程的resources目录中定义，通过resName、resId、Resource对象等可以获取对应的字符串、字符串数组、颜色等资源值，resName为资源名称，resId可通过`$r(资源地址).id`的方式获取，例如`$r('app.string.test').id`。
 >
-> - 单HAP包获取自身资源、跨HAP/HSP包获取资源，由于入参为Resource的接口相比于入参为resName、resId的接口耗时更长，因此更推荐使用参数为resName或resId的接口。跨HAP/HSP包获取资源，**需要先使用[createModuleContext](../apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12)创建对应module的context**，再调用参数为resName或resId的接口。具体请参考[资源访问](../../quick-start/resource-categories-and-access.md#资源访问)。
+> - 单HAP包获取自身资源、跨HAP/HSP包获取资源，由于入参为Resource的接口相比于入参为resName、resId的接口耗时更长，因此更推荐使用参数为resName或resId的接口。跨HAP/HSP包获取资源，**需要先使用[createModuleContext](../apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12)创建对应module的context**，再调用参数为resName或resId的接口。更多请参考[资源访问](../../quick-start/resource-categories-and-access.md#资源访问)。
+>
+> - 在API version 22及之前版本，中间码HAR、字节码HAR通过资源ID相关接口访问资源时，因ID无效会抛出异常；从API version 23开始，中间码HAR、字节码HAR通过资源ID相关接口可以正常访问资源，更多请参考[资源访问](../../quick-start/resource-categories-and-access.md#资源访问)。
 >
 > - 示例代码中test文件的具体内容请参考[附录](#附录)。
 
