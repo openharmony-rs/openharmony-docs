@@ -18,6 +18,27 @@
 
 <!-- @[sm2_sign_data_rs_to_der](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_data_format_convertion/sm2_sign_data_rs_to_der.ets) -->
 
+``` TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testSm2SignDataRsToDer() {
+  try {
+    let spec: cryptoFramework.EccSignatureSpec = {
+      r: BigInt('97726608965854271693043443511967021777934035174185659091642456228829830775155'),
+      s: BigInt('23084224202834231287427338597254751764391338275617140205467537273296855150376'),
+    };
+
+    let data = cryptoFramework.SignatureUtils.genEccSignature(spec);
+    console.info('genEccSignature success');
+    console.info('data is ' + data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`ecc error, ${e.code}, ${e.message}`);
+  }
+}
+```
+
 **指定DER格式，转换为（r、s）格式**
 1. 指定DER格式的SM2密文参数。
 
