@@ -105,12 +105,12 @@
 
 - 通过同步方式返回结果：
   <!-- @[use_scrypt_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/SCRYPTDerivation/entry/src/main/ets/pages/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function kdfSync() {
     try {
       let spec: cryptoFramework.ScryptSpec = {
