@@ -870,7 +870,7 @@ struct Index {
       this.data.pushData(i.toString());
     }
 
-    for (let i = 30; i < 80; i++) { // 循环80次
+    for (let i = 30; i < 80; i++) { // 循环50次
       this.data02.pushData(i.toString());
     }
   }
@@ -879,13 +879,13 @@ struct Index {
     Column() {
       Row() {
         Button('clear').onClick(() => {
-          for (let i = 1; i < 50; i++) { // 循环50次
+          for (let i = 1; i <= 50; i++) { // 循环50次
             this.dataSource.pop();
           }
         }).height(40)
 
         Button('update').onClick(() => {
-          for (let i = 1; i < 50; i++) { // 循环50次
+          for (let i = 1; i <= 50; i++) { // 循环50次
             let obj = new ListItemObject();
             obj.id = i;
             obj.uuid = Math.random().toString();
