@@ -950,9 +950,9 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 ## CollaborateEventType
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
 协同事件类型的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
