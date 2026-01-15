@@ -98,7 +98,7 @@
 | [void OH_Drawing_TextStyleGetBackgroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* backgroundBrush)](#oh_drawing_textstylegetbackgroundbrush) | 返回设置的背景色画刷。 |
 | [void OH_Drawing_SetTextStyleBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)](#oh_drawing_settextstylebackgroundpen) | 设置指定文本样式中的背景色画笔。 |
 | [void OH_Drawing_TextStyleGetBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)](#oh_drawing_textstylegetbackgroundpen) | 返回设置的背景色画笔。 |
-| [OH_Drawing_TypographyCreate* OH_Drawing_CreateTypographyHandler(OH_Drawing_TypographyStyle* style,OH_Drawing_FontCollection* fontCollection)](#oh_drawing_createtypographyhandler) | 创建指向OH_Drawing_TypographyCreate对象的指针。不再需要[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)时，请使用[OH_Drawing_DestroyTypographyHandler](capi-drawing-text-typography-h.md#oh_drawing_destroytypographyhandler)接口释放该对象的指针。 |
+| [OH_Drawing_TypographyCreate* OH_Drawing_CreateTypographyHandler(OH_Drawing_TypographyStyle* style,OH_Drawing_FontCollection* fontCollection)](#oh_drawing_createtypographyhandler) | 创建指向OH_Drawing_TypographyCreate对象的指针。不再需要[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)时，请使用[OH_Drawing_DestroyTypographyHandler](capi-drawing-text-typography-h.md#oh_drawing_destroytypographyhandler)接口释放该对象的指针。建议优先使用[OH_Drawing_CreateSharedFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createsharedfontcollection)函数创建[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)对象。 |
 | [void OH_Drawing_DestroyTypographyHandler(OH_Drawing_TypographyCreate* handler)](#oh_drawing_destroytypographyhandler) | 释放被OH_Drawing_TypographyCreate对象占据的内存。 |
 | [void OH_Drawing_TypographyHandlerPushTextStyle(OH_Drawing_TypographyCreate* handler, OH_Drawing_TextStyle* style)](#oh_drawing_typographyhandlerpushtextstyle) | 将指定文本样式压入文本样式栈，后续添加的文本总是会使用栈顶的文本样式。 |
 | [void OH_Drawing_TypographyHandlerAddText(OH_Drawing_TypographyCreate* handler, const char* text)](#oh_drawing_typographyhandleraddtext) | 设置文本内容。 |
@@ -1378,7 +1378,7 @@ OH_Drawing_TypographyCreate* OH_Drawing_CreateTypographyHandler(OH_Drawing_Typog
 
 **描述**
 
-创建指向OH_Drawing_TypographyCreate对象的指针。不再需要[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)时，请使用[OH_Drawing_DestroyTypographyHandler](capi-drawing-text-typography-h.md#oh_drawing_destroytypographyhandler)接口释放该对象的指针。
+创建指向OH_Drawing_TypographyCreate对象的指针。不再需要[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)时，请使用[OH_Drawing_DestroyTypographyHandler](capi-drawing-text-typography-h.md#oh_drawing_destroytypographyhandler)接口释放该对象的指针。建议优先使用[OH_Drawing_CreateSharedFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createsharedfontcollection)函数创建[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)对象。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
