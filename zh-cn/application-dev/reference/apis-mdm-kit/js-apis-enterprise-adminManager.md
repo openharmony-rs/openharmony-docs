@@ -422,7 +422,7 @@ startAdminProvision(admin: Want, type: AdminType, context: common.Context, param
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | type  | [AdminType](#admintype15)             | 是    | 激活的设备管理应用类型，仅支持ADMIN_TYPE_BYOD类型。  |
 | context  | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是 | 管理应用的上下文信息。 |
-| parameters  | Record\<string, string> | 是 | 自定义参数信息，其中Key值必须包含："activateId"，可以包含"customizedInfo"、"localDeactivationPolicy"。<br/>- activatedId：项目激活ID。<br/>- customizedInfo：企业自定义信息。<br/>- localDeactivationPolicy：从API version 22开始支持，本地延迟取消激活时间（单位：小时）<!--RP1--><!--RP1End-->。 |
+| parameters  | Record\<string, string> | 是 | 自定义参数信息，其中Key值必须包含："activateId"，可以包含"customizedInfo"、"localDeactivationPolicy"。<br/>- activateId：项目激活ID。<br/>- customizedInfo：企业自定义信息。<br/>- localDeactivationPolicy：从API version 22开始支持，本地延迟取消激活时间（单位：小时）<!--RP1--><!--RP1End-->。 |
 
 **错误码**：
 
