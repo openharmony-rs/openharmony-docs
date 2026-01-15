@@ -226,7 +226,7 @@ export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResul
     } catch (error) {
       let code = (error as BusinessError).code;
       let msg = (error as BusinessError).message;
-      console.error(`testTag: setReturnModeForUIAbilityForeground faild，error code: ${code}, error msg: ${msg}.`);
+      console.error(`testTag: setReturnModeForUIAbilityForeground failed，error code: ${code}, error msg: ${msg}.`);
     }
 
     try {

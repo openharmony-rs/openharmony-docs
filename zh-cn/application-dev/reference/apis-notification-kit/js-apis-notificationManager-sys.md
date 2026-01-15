@@ -6559,3 +6559,83 @@ type NotificationIconButton = _NotificationIconButton
 | 类型 | 说明 |
 | --- | --- |
 | [_NotificationIconButton](js-apis-inner-notification-notificationContent-sys.md#notificationiconbutton18) | 系统通知按钮。 |
+
+## TriggerType <sup>23+</sup>
+
+type TriggerType = _TriggerType
+
+触发条件的事件类型的枚举。
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_TriggerType](js-apis-inner-notification-notificationRequest-sys.md#triggertype23) | 地理围栏触发类型。 |
+
+## Trigger <sup>23+</sup>
+
+type Trigger = _Trigger
+
+触发条件的具体信息。
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_Trigger](js-apis-inner-notification-notificationRequest-sys.md#trigger23) | 条件类型。 |
+
+## Geofence <sup>23+</sup>
+
+type Geofence = _Geofence
+
+地理围栏的配置信息。
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_Geofence](js-apis-inner-notification-notificationRequest-sys.md#geofence23) | 地理围栏中心点经度条件类型。 |
+
+## CoordinateSystemType <sup>23+</sup>
+
+type CoordinateSystemType = _CoordinateSystemType
+
+表示地理围栏坐标系类型的枚举。
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_CoordinateSystemType](js-apis-inner-notification-notificationRequest-sys.md#coordinatesystemtype23) | 地理围栏坐标系类型。 |
+
+## MonitorEvent <sup>23+</sup>
+
+type MonitorEvent = _MonitorEvent
+
+表示地理围栏的监控事件类型的枚举。
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_MonitorEvent](js-apis-inner-notification-notificationRequest-sys.md#monitorevent23) | 地理围栏的监控事件类型。 |

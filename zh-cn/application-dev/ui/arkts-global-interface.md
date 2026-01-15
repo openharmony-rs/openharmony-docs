@@ -34,7 +34,7 @@
 
 ## UI上下文不明确
 
-UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指认UI实例的问题。
+UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确识别UI实例的问题。
 
 当前的系统支持两种[应用模型](../application-models/application-models.md)——FA模型和Stage模型。在FA模型中，每个UI实例拥有独立的ArkTS引擎，全局接口可以通过ArkTS引擎跟踪到对应的UI实例上，因此不存在UI上下文不明确的问题。
 
@@ -635,7 +635,7 @@ const DOMAIN = 0x0000;
 struct Index {
   build() {
     RelativeContainer() {
-      Text('Caculate 20vp to px')
+      Text('Calculate 20vp to px')
         .fontWeight(FontWeight.Bold)
         .alignRules({
           center: { anchor: '__container__', align: VerticalAlign.Center },

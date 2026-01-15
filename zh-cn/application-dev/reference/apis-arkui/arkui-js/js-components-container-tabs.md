@@ -108,7 +108,7 @@ tab页签容器。
 // xxx.js
 export default {
   change: function(e) {
-    console.log("Tab index: " + e.index);
+    console.info("Tab index: " + e.index);
   },
 }
 ```

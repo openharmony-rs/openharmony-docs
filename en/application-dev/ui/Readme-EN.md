@@ -98,7 +98,7 @@
     - [ContentSlot: Enabling Hybrid Development](rendering-control/arkts-rendering-control-contentslot.md)
   - Responsive Environment Variable<!--arkts-env-property-->
     - [\@Env: Environment Variable](arkts-env-system-property.md)
-  - Navigation and Page Routing<!--arkts-set-navigation-routing-->
+  - Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
     - [Component Navigation and Page Routing Overview](arkts-navigation-introduction.md)
   - Navigation (Recommended)<!--arkts-navigation-navigation-->
       - [Introduction to Navigation Architecture](./arkts-navigation-architecture.md)
@@ -118,6 +118,8 @@
       - [Relative Layout (RelativeContainer)](arkts-layout-development-relative-layout.md)
       - [Responsive Grid Layout (GridRow/GridCol)](arkts-layout-development-grid-layout.md)
       - [Using Tabs (Tabs)](arkts-navigation-tabs.md)
+    <!--RP1-->
+    <!--RP1End-->
   - Lists and Grids<!--arkts-list-and-grid-->
     - [List and Grid Overview](arkts-list-grid-development-overview.md)
     - [Creating a List (List)](arkts-layout-development-create-list.md)
@@ -184,6 +186,7 @@
       - [Handling Mouse Input Events](arkts-interaction-development-guide-mouse.md)
       - [Handling Touchpad Input Events](arkts-interaction-development-guide-touchpad.md)
       - [Handling Keyboard Input Events](arkts-interaction-development-guide-keyboard.md)
+      - [Handling Gamepad Input Events](arkts-interaction-development-guide-gamepad.md)
       - [Handling Crown Events](arkts-common-events-crown-event.md)
     - [Implementing Gesture Responses](arkts-interaction-development-guide-support-gesture.md)
       - [Gesture Binding](arkts-gesture-events-binding.md)

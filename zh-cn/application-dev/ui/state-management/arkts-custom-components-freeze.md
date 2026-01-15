@@ -842,7 +842,7 @@ struct Page {
 
 图示如下：
 
-![freeze](./figures/freezeResuable.png)
+![freeze](./figures/freezeReusable.png)
 
 可通过trace观察，仅触发了15个`ChildComponent`节点的刷新。
 

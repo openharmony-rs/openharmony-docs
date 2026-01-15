@@ -357,23 +357,23 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
     
         napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     
-        // 获取NodeContent
+        // 获取NodeContent。
         ArkUI_NodeContentHandle contentHandle;
         OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+        NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+    
         // 创建自定义容器和自定义绘制组件。
         auto node = std::make_shared<ArkUICustomContainerNode>();
-        // 浅灰色
-        node->SetBackgroundColor(0xFFD5D5D5);
+        node->SetBackgroundColor(0xFFD5D5D5); // 浅灰色。
         auto customNode = std::make_shared<ArkUICustomNode>();
-        // 深灰色
-        customNode->SetBackgroundColor(0xFF707070);
+        customNode->SetBackgroundColor(0xFF707070); // 深灰色。
         customNode->SetWidth(SIZE_150);
         customNode->SetHeight(SIZE_150);
         node->AddChild(customNode);
+    
         // 保持Native侧对象到管理类中，维护生命周期。
-        NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+        NativeEntry::GetInstance()->SetRootNode(node);
         g_env = env;
-            // ...
         return nullptr;
     }
     

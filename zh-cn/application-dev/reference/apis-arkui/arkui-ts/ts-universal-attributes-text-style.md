@@ -225,8 +225,8 @@ scrollToVisible(range?: TextRange): void
 | 名称   | 类型    |     只读    |     可选    |     说明    |
 | -------- | ------- | ----------- | ----------- | ----------- |
 | index | number | 否 | 否 | 光标所在位置的索引值。    |
-| x     | number | 否 | 否 | 光标相对输入框的x坐标位值，单位px。 |
-| y     | number | 否 | 否 | 光标相对输入框的y坐标位值，单位px。 |
+| x     | number | 否 | 否 | 光标相对输入框的x坐标值，单位px。 |
+| y     | number | 否 | 否 | 光标相对输入框的y坐标值，单位px。 |
 
 ## TextDecorationOptions<sup>12+</sup>对象说明
 
