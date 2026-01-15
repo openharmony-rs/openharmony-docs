@@ -1042,6 +1042,82 @@ observer.off('iccAccountInfoChange');
 ```
 
 
+## observer.onGetSimActiveState<sup>10+</sup>
+
+onGetSimActiveState\(slotId: number, callback: Callback\<boolean\>\): void
+
+SIM卡激活状态时间变化事件，使用callback方式作为方法。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**参数：**
+
+|     名称            |         类型      | 只读 | 可选 | 说明                                    |
+| ------------------- | ------------------| ---- | ---- | --------------------------------------- |
+| slotId              | number            | 否   | 否   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
+|callback  | Callback&lt;boolean&gt;|否|否| 以callback形式返回结果。br/>- true：激活。<br/>- false：未激活。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied                         |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+observer.onGetSimActiveState(0, (err: BusinessError, data: sim.CardType) => {
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+});
+```
+
+## observer.offGetSimActiveState<sup>10+</sup>
+
+offGetSimActiveState\(callback: Callback\<boolean\>\): void
+
+取消sim卡激活状态变化的监听，使用callback方式作为异步方法。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**参数：**
+
+|     名称            |         类型      | 只读 | 可选 | 说明                                    |
+| ------------------- | ------------------| ---- | ---- | --------------------------------------- |
+
+|callback  | Callback&lt;boolean&gt;|否|否| 以callback形式返回结果。br/>- true：激活。<br/>- false：未激活。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied                         |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+observer.offGetSimActiveState((err: BusinessError, data: sim.CardType) => {
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+});
+```
+
 ## LockReason<sup>8+</sup>
 
 SIM卡锁类型。
