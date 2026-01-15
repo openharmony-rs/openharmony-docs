@@ -98,11 +98,7 @@ Sets the end point of a line (relative coordinate). The [attributeModifier](ts-u
 
 fill(value: ResourceColor)
 
-<<<<<<< HEAD
 Sets the color of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute has no effect for the **Line** component, which cannot be used to draw a closed shape.
-=======
-Sets the color of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier-1). This attribute has no effect for the **Line** component, which cannot be used to draw a closed shape.
->>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -138,11 +134,7 @@ Sets the opacity of the fill area. This attribute can be dynamically set using [
 
 stroke(value: ResourceColor)
 
-<<<<<<< HEAD
 Sets the stroke color. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default stroke opacity is **0**, meaning no border is displayed.
-=======
-Sets the stroke color. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier-1). If this attribute is not set, the default stroke opacity is **0**, meaning no border is displayed.
->>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -160,11 +152,7 @@ Sets the stroke color. This attribute can be dynamically set using [attributeMod
 
 strokeDashArray(value: Array&lt;any&gt;)
 
-<<<<<<< HEAD
 Sets the stroke dashes. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). Line segments may overlap when they intersect. The value must be greater than or equal to 0. Invalid values are treated as the default value.
-=======
-Sets the stroke dashes. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier-1). Line segments may overlap when they intersect. The value must be greater than or equal to 0. Invalid values are treated as the default value.
->>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -182,11 +170,7 @@ Sets the stroke dashes. This attribute can be dynamically set using [attributeMo
 
 strokeDashOffset(value: number | string)
 
-<<<<<<< HEAD
 Sets the offset of the start point for drawing the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
-=======
-Sets the offset of the start point for drawing the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier-1).
->>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -222,11 +206,7 @@ Sets the offset of the end point for drawing the stroke. This attribute can be d
 
 strokeLineJoin(value: LineJoinStyle)
 
-<<<<<<< HEAD
 Sets the join style of the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute has no effect for the **Line** component, which does not support corners.
-=======
-Sets the join style of the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier-1). This attribute has no effect for the **Line** component, which does not support corners.
->>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -280,11 +260,7 @@ Sets the stroke opacity. This attribute can be dynamically set using [attributeM
 
 strokeWidth(value: Length)
 
-<<<<<<< HEAD
 Sets the stroke width. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If of the string type, this parameter cannot be set in percentage. A percentage is processed as 1px.
-=======
-Sets the stroke width. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier-1). If of the string type, this parameter cannot be set in percentage. A percentage is processed as 1px.
->>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 

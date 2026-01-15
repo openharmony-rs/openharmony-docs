@@ -550,7 +550,7 @@ The **ModalTransition** type is used to set the transition type for a full-scree
 | DEFAULT | Slide-up and slide-down animation for the modal. |
 | ALPHA   | Opacity gradient animation for the modal.|
 
-## OutlineOptions<sup>11+</sup> object description
+## OutlineOptions<sup>11+</sup>
 
 Outer outline options.
 

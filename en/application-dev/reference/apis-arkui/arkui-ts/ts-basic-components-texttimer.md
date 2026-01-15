@@ -555,8 +555,3 @@ struct demo {
 }
 ```
 
-<<<<<<< HEAD
-
-=======
-![](figures/text_timer_example_font_setting.png)
->>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3

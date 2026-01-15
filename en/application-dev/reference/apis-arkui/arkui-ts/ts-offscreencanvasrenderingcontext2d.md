@@ -423,7 +423,7 @@ struct MiterLimit {
 }
 ```
 
-![zh-cn_image_0000001238952397](figures/zh-cn_image_0000001238952397.png)
+![en-us_image_0000001238952397](figures/en-us_image_0000001238952397.png)
 
 
 ### font
@@ -1503,7 +1503,7 @@ Draws an outlined rectangle on the canvas.
   }
   ```
 
-  ![zh-cn_image_0000001194352436](figures/zh-cn_image_0000001194352436.png)
+  ![en-us_image_0000001194352436](figures/en-us_image_0000001194352436.png)
 
 
 ### clearRect
@@ -1559,7 +1559,7 @@ Clears the content in a rectangle on the canvas.
   }
   ```
 
-  ![zh-cn_image_0000001238952377](figures/zh-cn_image_0000001238952377.png)
+  ![en-us_image_0000001238952377](figures/en-us_image_0000001238952377.png)
 
 
 ### fillText
@@ -1614,7 +1614,7 @@ Draws filled text on the canvas.
   }
   ```
 
-  ![zh-cn_image_0000001194032458](figures/zh-cn_image_0000001194032458.png)
+  ![en-us_image_0000001194032458](figures/en-us_image_0000001194032458.png)
 
 
 ### strokeText

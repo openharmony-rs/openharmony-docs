@@ -126,7 +126,7 @@ Number of columns in the current grid layout. If this parameter is not set, one 
 
 When the value is of the string type, refer to [columnsTemplate(value: string)](#columnstemplate) for the usage.
 
-When the value is of the **ItemFillPolicy** type, the number of columns is determined based on the [breakpoint type](../../../ ui/arkts-layout-development-grid-layout.md#breakpoints) corresponding to the width of the **Grid** component.
+When the value is of the **ItemFillPolicy** type, the number of columns is determined based on the [breakpoint type](../../../ui/arkts-layout-development-grid-layout.md#breakpoints) corresponding to the width of the **Grid** component.
 
 For example, the ItemFillPolicy.BREAKPOINT_DEFAULT component displays two columns when the breakpoint is sm or smaller, three columns when the breakpoint is md, and five columns when the breakpoint is lg or larger. Each column is 1fr.
 
@@ -1005,7 +1005,7 @@ Callback type of the event indicating that the items in the visible area of the 
 
 ### Example 1: Creating a Fixed Row and Column Grid Layout
 
-You can use the onGetRectByIndex function in the [GridLayoutOptions](#gridlayoutoptions10 description) to specify the position and size of a GridItem.
+You can use the onGetRectByIndex function in the [GridLayoutOptions](#gridlayoutoptions10) to specify the position and size of a GridItem.
 
 ```ts
 // xxx.ets
@@ -3103,3 +3103,4 @@ struct GridExample {
 ```
 
 ![gridMultiselectAnimation](figures/gridMultiselectAnimation.gif)
+<!--no_check-->

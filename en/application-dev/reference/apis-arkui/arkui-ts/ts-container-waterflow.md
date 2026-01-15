@@ -426,11 +426,7 @@ Sets whether to support the scrolling gesture.
 
 nestedScroll(value: NestedScrollOptions)
 
-<<<<<<< HEAD
 Sets the nested scrolling mode in the forward and backward directions to implement scrolling association with the parent component. For details, see [Example 3: Implementing Nested Scrolling (Method 2)](ts-container-scroll.md#example-3-implementing-nested-scrolling-method-2).
-=======
-Sets the nested scrolling mode in the forward and backward directions to implement scrolling association with the parent component. For details, see [Method 2 for implementing nested scrolling](ts-container-scroll.md#Example 3 Method 2 for implementing nested scrolling).
->>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -600,11 +596,7 @@ This event is triggered when either of the preceding indexes changes.
 | first  | number | Yes  | Index of the first item of the component.<br>Value range: [0, total number of child nodes - 1].|
 | last   | number | Yes  | Index of the last item of the component.<br>Value range: [0, total number of child nodes - 1].|
 
-<<<<<<< HEAD
 The last parameter can be used to determine whether to continue to load data. For details, see the processing logic of adding data in advance when the bottom is about to be touched in [Example 3: Using WaterFlowSections](#example-3-using-waterflowsections).
-=======
-The last parameter can be used to determine whether to continue to load data. For details, see the processing logic of adding data in advance when the bottom is about to be touched in [Example 3: Using Groups](#Example 3: Using Groups).
->>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 When the WaterFlow list is empty, the return values of the onScrollIndex event vary according to the WaterFlowOptions parameter. For details, see the following table.
 
