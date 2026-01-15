@@ -21,7 +21,7 @@ Before using a group key, you need to configure the group information in the **a
 
 1. Set a key alias. For details about the naming rules, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
-2. Initialize the key attribute set. Add the group key tag [HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag). [HUKS_TAG_KEY_OVERRIDE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) is recommended to prevent the key from being overwritten.
+2. Initialize the key property set. Add the group key tag [HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag). [HUKS_TAG_KEY_OVERRIDE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) is recommended to prevent the key from being overwritten.
 
 3. Call [generateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9) to generate a key. For details, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
@@ -348,7 +348,7 @@ function Uint8ArrayToString(fileData: Uint8Array) {
 }
 
 /*
- * Set a key alias and encapsulate the key attribute set.
+ * Set a key alias and encapsulate the key property set.
  */
 let srcKeyAliasFirst = "AgreeX25519KeyFirstAlias";
 let srcKeyAliasSecond = "AgreeX25519KeySecondAlias";
@@ -579,7 +579,7 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
 **Key derivation**
 
-1. Obtain the key alias, specify the attribute parameter **HuksOptions**, and add the parameter [HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) to derive a group key.
+1. Obtain the key alias, specify the property parameter **HuksOptions**, and add the parameter [HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) to derive a group key.
 
 2. Call [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) to initialize a key session and obtain the session handle.
 
@@ -620,7 +620,7 @@ function Uint8ArrayToString(fileData: Uint8Array) {
 }
 
 /*
- * Set a key alias and encapsulate the key attribute set.
+ * Set a key alias and encapsulate the key property set.
  */
 let srcKeyAlias = "pbkdf2Key";
 let salt = "mySalt";

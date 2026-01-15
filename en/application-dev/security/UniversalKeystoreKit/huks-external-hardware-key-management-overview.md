@@ -50,6 +50,6 @@ In this way, the applications such as the browser can call the APIs provided by 
   - Open and close handle resources: [Resource Management Overview and Specifications](huks-resource-management-overview.md)
   - Verify the authenticity of the message content and the message sender: [Signing and Signature Verification Overview and Algorithm Specifications](huks-ukey-signing-signature-verification-overview.md)
   
-  In addition, HUKS allows the application to query the Ukey key attributes. For details, see [General Query](huks-ukey-general-query-overview.md).
+  In addition, HUKS allows the application to query the Ukey key properties. For details, see [General Query](huks-ukey-general-query-overview.md).
 
   4.2: If the resource has not been authenticated, the application needs to call the certificate management capability to display the PIN authentication dialog box. The user enters the PIN to complete the authentication. After the authentication is complete, the process goes to 4.1. The application calls the unified HUKS APIs to perform the corresponding operations.

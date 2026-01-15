@@ -26,7 +26,7 @@ Before using a group key, you need to configure the group information in the **a
 
 1. Set a key alias. For details about the naming rules, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
-2. Initialize the key attribute set. Add the group key tags [OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag) and [OH_HUKS_TAG_KEY_OVERRIDE](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag) to prevent the key from being overwritten.
+2. Initialize the key property set. Add the group key tags [OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag) and [OH_HUKS_TAG_KEY_OVERRIDE](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag) to prevent the key from being overwritten.
 
 3. Call [OH_Huks_GenerateKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_generatekeyitem) to generate a key. For details, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
@@ -656,7 +656,7 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
 **Key derivation**
 
-1. Obtain the key alias, specify the attribute parameter **HuksOptions**, and add the [OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag) parameter to derive a group key.
+1. Obtain the key alias, specify the property parameter **HuksOptions**, and add the [OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag) parameter to derive a group key.
 
 2. Call [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset) to set algorithm parameters. Add the group key tag [OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag).
 

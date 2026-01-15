@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-From API version 22, **huksExternalCrypto** provides the general query API. This API can be used to obtain general attribute information from a UKey device. For details about the scenarios, see [General Query Overview and Specifications](huks-ukey-general-query-overview.md).
+From API version 22, **huksExternalCrypto** provides the general query API. This API can be used to obtain general property information from a UKey device. For details about the scenarios, see [General Query Overview and Specifications](huks-ukey-general-query-overview.md).
 
 ## Linking the Dynamic Library in the CMake Script
 ```txt
@@ -16,7 +16,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so
 
 ## How to Develop
 
-**Obtaining attributes**
+**Obtaining properties**
 
 1. Construct **resourceId** and **propertyId**, and call [OH_Huks_OpenResource](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_openresource) to open the resource.
 
@@ -26,7 +26,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so
 
 4. Call [OH_Huks_BuildExternalCryptoParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_buildexternalcryptoparamset) to build the parameter set.
 
-5. Call [OH_Huks_GetProperty](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_getproperty) to obtain the attribute information.
+5. Call [OH_Huks_GetProperty](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_getproperty) to obtain the property information.
 
 6. Call [OH_Huks_GetExternalCryptoParam](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_getexternalcryptoparam) to extract the result from the output parameter set.
 
@@ -65,7 +65,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
     /* 1. Assume that the resource specified by resourceId has been opened. */
     const char *resourceIdStr = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\","
                               "\"bundleName\":\"com.example.cryptoapplication\",\"index\":{\"key\":\"testKey\"}}";
-    const char *propertyIdStr = "SKF_GetDevInfo"; // Name of the attribute function defined in the GMT 0016-2023 standard
+    const char *propertyIdStr = "SKF_GetDevInfo"; // Name of the property function defined in the GMT 0016-2023 standard
     
     struct OH_Huks_Blob resourceId = {
         (uint32_t)strlen(resourceIdStr),
@@ -90,15 +90,15 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
             break;
         }
         
-        /* 4. Call OH_Huks_GetProperty to obtain the attributes. */
+        /* 4. Call OH_Huks_GetProperty to obtain the properties. */
         ohResult = OH_Huks_GetProperty(&resourceId, &propertyId, paramSetIn, &paramSetOut);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
         
         /* 5. Extract the result from the output parameter set.
-         * The output parameter set is allocated internally by the function, and the found attribute data is stored in OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA TAG.
-         * The following shows how to iterate over the returned params and safely extract the returned attribute string (example).
+         * The output parameter set is allocated internally by the function, and the found property data is stored in OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA TAG.
+         * The following shows how to iterate over the returned params and safely extract the returned property string (example).
          */
         if (paramSetOut != nullptr && paramSetOut->paramsCnt > 0) {
             for (uint32_t i = 0; i < paramSetOut->paramsCnt; i++) {

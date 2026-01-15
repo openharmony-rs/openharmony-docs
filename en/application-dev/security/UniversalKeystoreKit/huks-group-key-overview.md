@@ -30,6 +30,6 @@ When a group ID is specified for multiple HAP applications in the configuration,
 | [Key deletion](huks-delete-key-arkts.md)| 23+ | A group key can be deleted.|
 | [Key attestation](huks-key-attestation-overview.md)| 23+ | The validity of a group key can be attested.|
 | [Checking whether a key exists](huks-check-key-arkts.md)| 23+ | You can check whether a group key exists.|
-| [Key attribute obtaining](huks-obtain-key-properties-arkts.md)| 23+ | You can query the attributes of a group key. You can obtain **DeveloperID** and **GroupID**.|
+| [Key property obtaining](huks-obtain-key-properties-arkts.md)| 23+ | You can query the properties of a group key. You can obtain **DeveloperID** and **GroupID**.|
 | [Key export](huks-export-key-arkts.md)| 23+ | A group key can be exported.|
 | [Querying key aliases](huks-list-aliases-arkts.md)| 23+ | The alias set of a group key can be queried.|
