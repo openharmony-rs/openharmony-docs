@@ -52,8 +52,8 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 当密钥废弃不用时，设备A、B均需要删除密钥，具体请参考[密钥删除](huks-delete-key-ndk.md)。
  
- ## 开发案例
- 下面分别以X25519、DH和ECDH密钥为例，进行协商。  
+## 开发案例
+下面分别以X25519、DH和ECDH密钥为例，进行协商。  
 
 ### X25519非对称密钥协商用例
 准备X25519密钥协商材料：
