@@ -95,7 +95,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确识�
 > 2. 该方法只能通过this调用，不能通过new关键字创建的自定义组件对象调用。
 > 3. 通过在[自定义声明式节点 (BuilderNode)](./arkts-user-defined-arktsNode-builderNode.md)中创建的自定义节点获取的UIContext与创建BuilderNode的UIContext指向同一个UI实例。
 
-使用全局接口：
+使用全局接口，该接口已经废弃，推荐使用下方的UIContext接口替换：
 <!--deprecated_code_no_check-->
 
 ```ts
@@ -980,7 +980,7 @@ export class PixelUtils {
 
 在单Ability场景中，建议直接获取Ability的context属性。
 
-使用全局接口：
+使用全局接口，该接口已经废弃，推荐使用下方的UIContext接口替换：
 
 <!--deprecated_code_no_check-->
 
@@ -1110,7 +1110,7 @@ hilog.info(DOMAIN, 'testTag', `The context is ${context}`);
 
 LocalStorage是页面级的UI状态存储，通过@Entry装饰器接收的参数可以在页面内共享同一个LocalStorage实例。使用全局接口时，开发者使用[getShared](../reference/apis-arkui/arkui-ts/ts-state-management.md#getshareddeprecated)向@Entry装饰器传递LocalStorage对象。使用UIContext接口后，无法直接获取UIContext对象，可以将[EntryOptions](../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entryoptions10)的useSharedStorage参数设置为true，以使用共享的LocalStorage实例对象。
 
-使用全局接口：
+使用全局接口，该接口已经废弃，推荐使用下方的UIContext接口替换：
 
 <!--deprecated_code_no_check-->
 
