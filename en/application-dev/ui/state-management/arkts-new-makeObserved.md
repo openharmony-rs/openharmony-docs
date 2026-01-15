@@ -515,7 +515,7 @@ struct Index {
 ```
 
 ### Using makeObserved with V2 Decorators
-**makeObserved** can be used with V2 decorators. [@Monitor](./arkts-new-monitor.md) and [@Computed](./arkts-new-Computed.md) cannot be defined within a class because makeObserved returns a class instance decorated with @Observed or ObservedV2. Therefore, @Monitor or @Computed must be defined within custom components.
+**makeObserved** can be used with V2 decorators. [@Monitor](./arkts-new-monitor.md) and [@Computed](./arkts-new-computed.md) cannot be defined within a class because makeObserved returns a class instance decorated with @Observed or ObservedV2. Therefore, @Monitor or @Computed must be defined within custom components.
 
 Example:
 ```ts

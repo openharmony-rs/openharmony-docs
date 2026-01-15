@@ -10,7 +10,7 @@ A shared element transition is a transition animation applied to a component tha
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> This feature is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## sharedTransition
 

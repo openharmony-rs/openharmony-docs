@@ -310,6 +310,8 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**设备行为差异：** 当该接口在无听筒的设备上设置默认发声设备为听筒时，将继续从扬声器发声。
+
 **参数：**
 
 | 参数名     | 类型             | 必填   | 说明                                                      |
@@ -852,6 +854,45 @@ let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.C
 audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
 
 audioSessionManager.off('currentInputDeviceChanged', currentInputDeviceChangedCallback);
+```
+
+## enableMuteSuggestionWhenMixWithOthers<sup>23+</sup>
+
+enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
+
+启用混音播放下接收静音播放建议通知功能。
+
+通常，当使用混音模式时，如果其他应用同时播放音频，会和其他应用进行混音播放。但在某些场景下（如游戏或广播），应用自身会通过静音自身的音频以给用户提供更好的体验。
+
+如果启用此功能，当订阅音频会话状态更改事件后静音建议和取消静音建议提示将通过[AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20)回调发送。收到静音建议表示其他应用程序开始播放音频，且播放的音频和本应用的音频不能混音。
+
+此功能仅支持已设置[AudioSessionScene](./arkts-apis-audio-e.md#audiosessionscene20)并激活模式模式为CONCURRENCY_MIX_WITH_OTHERS的音频会话使用。并且仅在激活音频会话期间生效一次，每次激活音频会话前都必须重新启用。
+
+详细说明请参考[启用混音播放下静音建议通知](../../media/audio/audio-session-management.md#启用混音播放下静音建议通知)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**参数：**
+
+| 参数名   | 类型               | 必填 | 说明      |
+| -------- | ----------------- | ---- | --------- |
+| enable   | boolean           | 是   | 是否启用混音播放下接收静音播放建议通知功能。true表示启用，false表示不启用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ---------------------------------------------|
+| 6800103 | Function is called without setting [AudioSessionScene](./arkts-apis-audio-e.md#audiosessionscene20) or called after audio session activation.|
+| 6800301 | Audio client call audio service error, system internal error. |
+
+**示例：**
+
+```ts
+audio.getAudioManager().getSessionManager().enableMuteSuggestionWhenMixWithOthers(true);
 ```
 
 ## isOtherMediaPlaying<sup>23+</sup>

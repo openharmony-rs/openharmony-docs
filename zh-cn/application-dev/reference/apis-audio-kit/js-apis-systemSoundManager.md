@@ -30,7 +30,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 | ---- | ------ | ------- |
 | PHOTO_SHUTTER | 0 | 拍照音效。 |
 | VIDEO_RECORDING_BEGIN | 1 | 视频录制开始音效。 |
-| SVIDEO_RECORDING_END | 2 | 视频录制结束音效。 |
+| VIDEO_RECORDING_END | 2 | 视频录制结束音效。 |
 
 ## systemSoundManager.createSystemSoundPlayer
 
@@ -55,6 +55,7 @@ createSystemSoundPlayer(): Promise&lt;SystemSoundPlayer | null&gt;
 | 5400101  | No memory. Return by promise. |
 
 **示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 

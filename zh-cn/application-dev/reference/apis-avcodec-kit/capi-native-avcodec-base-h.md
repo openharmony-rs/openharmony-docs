@@ -48,6 +48,9 @@
 | [OH_MPEG4Profile](#oh_mpeg4profile) | OH_MPEG4Profile | MPEG4档次。 |
 | [OH_H263Profile](#oh_h263profile) | OH_H263Profile | H.263档次。 |
 | [OH_VC1Profile](#oh_vc1profile) | OH_VC1Profile | VC-1档次。 |
+| [OH_AV1Profile](#oh_av1profile) | OH_AV1Profile | AV1档次。 |
+| [OH_VP9Profile](#oh_vp9profile) | OH_VP9Profile | VP9档次。 |
+| [OH_WVC1Profile](#oh_wvc1profile) | OH_WVC1Profile | WVC1档次。 |
 | [OH_WMV3Profile](#oh_wmv3profile) | OH_WMV3Profile | WMV3档次。 |
 | [OH_AVOutputFormat](#oh_avoutputformat) | OH_AVOutputFormat | 封装器支持的输出文件格式。 |
 | [OH_AVSeekMode](#oh_avseekmode) | OH_AVSeekMode | 跳转模式。 |
@@ -63,6 +66,9 @@
 | [OH_MPEG4Level](#oh_mpeg4level) | OH_MPEG4Level | MPEG4级别。 |
 | [OH_H263Level](#oh_h263level) | OH_H263Level | H.263级别。 |
 | [OH_VC1Level](#oh_vc1level) | OH_VC1Level | VC-1级别。 |
+| [OH_AV1Level](#oh_av1level) | OH_AV1Level | AV1级别。 |
+| [OH_VP9Level](#oh_vp9level) | OH_VP9Level | VP9级别。 |
+| [OH_WVC1Level](#oh_wvc1level) | OH_WVC1Level | WVC1级别。 |
 | [OH_WMV3Level](#oh_wmv3level) | OH_WMV3Level | WMV3级别。 |
 | [OH_TemporalGopReferenceMode](#oh_temporalgopreferencemode) | OH_TemporalGopReferenceMode | 时域图片组参考模式。 |
 | [OH_BitrateMode](#oh_bitratemode) | OH_BitrateMode | 编码器的比特率模式。 |
@@ -95,6 +101,15 @@
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MPEG2 | 视频MPEG2编解码器的MIME类型。<br>**起始版本：** 17<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_H263 | H.263视频编解码器的MIME类型。<br>**起始版本：** 17<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_VC1 | VC-1视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_AV1 | AV1视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_VP9 | VP9视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_VP8 | VP8视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_RV30 | RV30视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_RV40 | RV40视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_WVC1 | WVC1视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_DVVIDEO | DVVIDEO视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO | RAWVIDEO视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_MPEG1 | MPEG1视频编解码器的MIME类型。<br>**起始版本：** 23 |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1 | MSVIDEO1（Microsoft Video 1）视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_WMV3 | WMV3视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MJPEG | MJPEG（Motion JPEG）视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -435,6 +450,59 @@ VC-1档次。
 | VC1_PROFILE_MAIN = 1 | 主档次。 |
 | VC1_PROFILE_ADVANCED = 2 | 高级档次。 |
 
+### OH_AV1Profile
+
+```c
+enum OH_AV1Profile
+```
+
+**描述**
+
+AV1档次。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| AV1_PROFILE_MAIN = 0 | 主档次。 |
+| AV1_PROFILE_HIGH = 1 | 高级档次。 |
+| AV1_PROFILE_PROFESSIONAL = 2 | 专业档次。 |
+
+### OH_VP9Profile
+
+```c
+enum OH_VP9Profile
+```
+
+**描述**
+
+VP9档次。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| VP9_PROFILE_0 = 0 | 0档次。 |
+| VP9_PROFILE_1 = 1 | 1档次。 |
+| VP9_PROFILE_2 = 2 | 2档次。 |
+| VP9_PROFILE_3 = 3 | 3档次。 |
+
+### OH_WVC1Profile
+
+```c
+enum OH_WVC1Profile
+```
+
+**描述**
+
+WVC1档次。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| WVC1_PROFILE_ADVANCED = 0 | 高级档次。 |
+
 ### OH_WMV3Profile
 
 ```c
@@ -540,7 +608,7 @@ enum OH_BitsPerSample
 | 枚举项 | 描述 |
 | -- | -- |
 | SAMPLE_U8 = 0 | 8位无符号整数采样。 |
-| SAMPLE_S16LE = 1 | 16位有符号整数交样。 |
+| SAMPLE_S16LE = 1 | 16位有符号整数采样。 |
 | SAMPLE_S24LE = 2 | 24位有符号整数采样。 |
 | SAMPLE_S32LE = 3 | 32位有符号整数采样。 |
 | SAMPLE_F32LE = 4 | 32位浮点采样。 |
@@ -840,6 +908,94 @@ VC-1级别。
 | VC1_LEVEL_LOW = 5 | 低级别。 |
 | VC1_LEVEL_MEDIUM = 6 | 中级别。 |
 | VC1_LEVEL_HIGH = 7 |  高级别。 |
+
+### OH_AV1Level
+
+```c
+enum OH_AV1Level
+```
+
+**描述**
+
+AV1级别。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| AV1_LEVEL_20 = 0 | 2.0级别。 |
+| AV1_LEVEL_21 = 1 | 2.1级别。 |
+| AV1_LEVEL_22 = 2 | 2.2级别。 |
+| AV1_LEVEL_23 = 3 | 2.3级别。 |
+| AV1_LEVEL_30 = 4 | 3.0级别。 |
+| AV1_LEVEL_31 = 5 | 3.1级别。 |
+| AV1_LEVEL_32 = 6 | 3.2级别。 |
+| AV1_LEVEL_33 = 7 | 3.3级别。 |
+| AV1_LEVEL_40 = 8 | 4.0级别。 |
+| AV1_LEVEL_41 = 9 | 4.1级别。 |
+| AV1_LEVEL_42 = 10 | 4.2级别。 |
+| AV1_LEVEL_43 = 11 | 4.3级别。 |
+| AV1_LEVEL_50 = 12 | 5.0级别。 |
+| AV1_LEVEL_51 = 13 | 5.1级别。 |
+| AV1_LEVEL_52 = 14 | 5.2级别。 |
+| AV1_LEVEL_53 = 15 | 5.3级别。 |
+| AV1_LEVEL_60 = 16 | 6.0级别。 |
+| AV1_LEVEL_61 = 17 | 6.1级别。 |
+| AV1_LEVEL_62 = 18 | 6.2级别。 |
+| AV1_LEVEL_63 = 19 | 6.3级别。 |
+| AV1_LEVEL_70 = 20 | 7.0级别。 |
+| AV1_LEVEL_71 = 21 | 7.1级别。 |
+| AV1_LEVEL_72 = 22 | 7.2级别。 |
+| AV1_LEVEL_73 = 23 | 7.3级别。 |
+
+### OH_VP9Level
+
+```c
+enum OH_VP9Level
+```
+
+**描述**
+
+VP9级别。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| VP9_LEVEL_1 = 0 | 1级别。 |
+| VP9_LEVEL_11 = 1 | 1.1级别。 |
+| VP9_LEVEL_2 = 2 | 2级别。 |
+| VP9_LEVEL_21 = 3 | 2.1级别。 |
+| VP9_LEVEL_3 = 4 | 3级别。 |
+| VP9_LEVEL_31 = 5 | 3.1级别。 |
+| VP9_LEVEL_4 = 6 | 4级别。 |
+| VP9_LEVEL_41 = 7 | 4.1级别。 |
+| VP9_LEVEL_5 = 8 | 5级别。 |
+| VP9_LEVEL_51 = 9 | 5.1级别。 |
+| VP9_LEVEL_52 = 10 | 5.2级别。 |
+| VP9_LEVEL_6 = 11 | 6级别。 |
+| VP9_LEVEL_61 = 12 | 6.1级别。 |
+| VP9_LEVEL_62 = 13 | 6.2级别。 |
+
+### OH_WVC1Level
+
+```c
+enum OH_WVC1Level
+```
+
+**描述**
+
+WVC1级别。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| WVC1_LEVEL_L0 = 0 | L0级别。 |
+| WVC1_LEVEL_L0 = 1 | L1级别。 |
+| WVC1_LEVEL_L0 = 2 | L2级别。 |
+| WVC1_LEVEL_L0 = 3 | L3级别。 |
+| WVC1_LEVEL_L0 = 4 | L4级别。 |
 
 ### OH_WMV3Level
 

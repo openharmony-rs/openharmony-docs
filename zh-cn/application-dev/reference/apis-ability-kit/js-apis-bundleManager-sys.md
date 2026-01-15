@@ -2322,7 +2322,7 @@ setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean):
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -2569,7 +2569,7 @@ setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boolean): Prom
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found.  |
 | 17700003 | The specified abilityInfo is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -2807,7 +2807,7 @@ isApplicationEnabled(bundleName: string, appIndex: number): Promise\<boolean>
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -3044,7 +3044,7 @@ isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise\<boolean>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found.  |
 | 17700003 | The specified abilityName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -5794,7 +5794,7 @@ getSandboxDataDir(bundleName: string, appIndex: number): string
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | The appIndex is invalid. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -6387,7 +6387,7 @@ recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): P
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
 | 17700004 | The specified user ID is not found.     |
-| 17700061 | AppIndex not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -6449,7 +6449,7 @@ removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Pr
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
 | 17700004 | The specified user ID is not found.     |
-| 17700061 | AppIndex not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 

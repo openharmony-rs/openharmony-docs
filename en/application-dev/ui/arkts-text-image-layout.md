@@ -16,13 +16,13 @@ Configure the [textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-comp
 
 ``` TypeScript
 Text() {
-  // Replace $r('app.media.hot_sale') with the resource file you use.
+  // Replace $r('app.media.hot_sale') with the actual resource file.
   ImageSpan($r('app.media.hot_sale'))
     .width(50)
     .height(30)
     .borderRadius(5)
     .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)
-  // The value in the 'app.string.surprise_price' resource file is "Surprise Price ¥1299."
+  // Replace $r('app.string.surprise_price') with the actual resource file. In this example, the value in the resource file is "Surprise Price ¥1299."
   Span($r('app.string.surprise_price'))
     .fontSize(25)
     .fontColor(Color.Red)
@@ -37,6 +37,7 @@ Text() {
 ```
 
 
+![span_imagespan_composition](figures/span_imagespan_composition.png)
 
 ## Using Styled Strings for Text and Image Layout
 
@@ -102,7 +103,7 @@ struct styled_string_demo {
   boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
   // Create a paragraph style object paragraphStyledString1.
   paragraphStyledString1: MutableStyledString =
-    // The value in the 'app.string.print_photo' resource file is "\nHigh-quality photo printing, HD printing in 3/4/5/6-inch sizes with free shipping and lamination, quality guaranteed,".
+    // Replace $r('app.string.print_photo') with the actual resource file. In this example, the value in the resource file is "\nHigh-quality photo printing, HD printing in 3/4/5/6-inch sizes with free shipping and lamination, quality guaranteed,".
     new MutableStyledString(resourceGetString.resourceToString($r('app.string.print_photo')), [
       {
         start: 0,
@@ -117,7 +118,7 @@ struct styled_string_demo {
         styledValue: this.lineHeightStyle1
       }
     ]);
-  // The value in the 'app.string.limited_time_discount' resource file is "\nLimited-time direct discount of ¥5.15, limited quantity with free gift."
+  // Replace $r('app.string.limited_time_discount') with the actual resource file. In this example, the value in the resource file is "\nCYN5.15 off Limited offer."
   paragraphStyledString2: MutableStyledString = new MutableStyledString(resourceGetString.resourceToString($r('app.string.limited_time_discount')), [
     {
       start: 0,
@@ -150,7 +151,7 @@ struct styled_string_demo {
       styledValue: new TextStyle({ fontColor: Color.Grey, fontSize: LengthMetrics.vp(14) })
     }
   ]);
-  // The value in the 'app.string.sales_volume' resource file is "\n¥22.50, Sales Volume 4 Million+."
+  // Replace $r('app.string.sales_volume') with the actual resource file. In this example, the value in the resource file is "\n¥22.50, Sales Volume 4 Million+."
   paragraphStyledString3: MutableStyledString = new MutableStyledString(resourceGetString.resourceToString($r('app.string.sales_volume')), [
     {
       start: 0,
@@ -205,7 +206,7 @@ struct styled_string_demo {
           .backgroundColor('#FFFFFF')
           .borderRadius(5)
           .width(210)
-        // The value in the 'app.string.textImageMixedLayout_content' resource file is "Click to view product details."
+        // Replace $r('app.string.textImageMixedLayout_content') with the actual resource file. In this example, the value in the resource file is "View product details."
         Button($r('app.string.textImageMixedLayout_content'))
           .onClick(() => {
             if (this.imagePixelMap !== undefined) {
@@ -233,4 +234,4 @@ struct styled_string_demo {
 }
 ```
 
-
+![styledstring_composition](./figures/styledstring_composition.png)

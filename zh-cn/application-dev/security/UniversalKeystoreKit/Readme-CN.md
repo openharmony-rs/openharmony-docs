@@ -55,7 +55,7 @@
   - 密钥证明<!--huks-key-attestation-->
     - [密钥证明介绍及算法规格](huks-key-attestation-overview.md)
     - [匿名密钥证明(ArkTS)](huks-key-anon-attestation-arkts.md)
-    - [匿名密钥证明(C/C++)](huks-key-anon-attestation-ndk.md)
+    - [匿名密钥证明(C/C++)](huks-key-anon-attestation-ndk.md)<!--RP3--><!--RP3End-->
     <!--Del-->
     - [非匿名密钥证明(仅对系统应用开放)(ArkTS)](huks-key-attestation-arkts-sys.md)
     - [非匿名密钥证明(仅对系统应用开放)(C/C++)](huks-key-attestation-ndk-sys.md)

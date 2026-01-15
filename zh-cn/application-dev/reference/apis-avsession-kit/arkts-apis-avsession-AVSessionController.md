@@ -1282,7 +1282,7 @@ getExtras(): Promise\<Record\<string, Object>>
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-| Promise\<Record\<string, Object>>  | Promise对象，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>API version 20开始发生兼容变更，在API version 19及之前的版本其返回值类型为：Promise\<{[key: string]: Object}>。 |
+| Promise\<Record\<string, Object>>  | Promise对象，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>API version 23开始发生兼容变更，在API version 22及之前的版本其返回值类型为：Promise\<{[key: string]: Object}>。 |
 
 **错误码：**
 
@@ -1356,7 +1356,7 @@ getExtras(callback: AsyncCallback\<Record\<string, Object>>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| callback | AsyncCallback\<Record\<string, Object>> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：AsyncCallback\<{[key: string]: Object}>。 |
+| callback | AsyncCallback\<Record\<string, Object>> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>在API version 23参数类型变更为AsyncCallback\<Record\<string, Object>>，在API version 22及之前的版本callback的参数类型为：AsyncCallback\<{[key: string]: Object}>，无需适配仍可使用。 |
 
 **错误码：**
 
@@ -1402,7 +1402,7 @@ if (controller !== undefined) {
 
 getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>
 
-根据远端分布式事件类型，获取远端分布式媒体提供方设置的自定义媒体数据包。结果通过Promise异步回调方式返回。
+根据远端分布式事件类型，获取远端分布式媒体提供方设置的自定义媒体数据包。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1410,7 +1410,7 @@ getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| extraEvent | string | 是 | 远端分布式事件类型。<br>当前支持的事件类型包括：<br>'AUDIO_GET_VOLUME'：获取远端设备音量，<br>'AUDIO_GET_AVAILABLE_DEVICES'：获取远端所有可连接设备，<br>'AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO'：获取远端实际发声设备。 |
+| extraEvent | string | 是 |  远端分布式事件类型。可获取的事件类型来自于[setExtras](arkts-apis-avsession-AVSession.md#setextras10)。<br>对Wearable设备类型，额外提供以下预设的事件类型：<br>'AUDIO_GET_VOLUME'：获取远端设备音量。<br>'AUDIO_GET_AVAILABLE_DEVICES'：获取远端所有可连接设备。<br>'AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO'：获取远端实际发声设备。 |
 
 **返回值：**
 
@@ -2236,7 +2236,7 @@ avsessionController.on('playbackStateChange', ['state', 'speed', 'loopMode'], (p
 
 ## off('playbackStateChange')<sup>10+</sup>
 
-off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void)
+off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): void
 
 取消播放状态变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 

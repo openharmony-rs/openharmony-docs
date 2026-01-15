@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-在使用相机过程中，当遇到相机模式切换、前后置镜头切换等场景时，会不可避免地出现预览流替换。为优化用户体验，可合理使用动效过渡。本文主要介绍如何使用预览流截图，并通过ArkUI提供的[animateToImmediately](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animatetoimmediately22)接口触发显式动画功能，实现下方三种核心场景动效。
+在使用相机过程中，当遇到相机模式切换、前后置镜头切换等场景时，会不可避免地出现预览流替换。为优化用户体验，可合理使用动效过渡。本文主要介绍如何使用预览流截图，并通过ArkUI提供的[animateToImmediately](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animatetoimmediately23)接口触发显式动画功能，实现下方三种核心场景动效。
 
 - 模式切换动效，使用预览流截图做模糊动效过渡。
   
@@ -227,7 +227,7 @@
      if (this.curPosition === 0) {
        console.info('showBlurAnim BACK');
        // 直板机后置截图初始内容旋转补偿90°。
-       await shotPixel.rotate(90); //ImageKit提供，用于图片内容旋转。
+       await shotPixel.rotate(90); // ImageKit提供，用于图片内容旋转。
        // 直板机后置截图初始组件旋转补偿0°。
        this.shotImgRotation = { y: 0.5, angle: 0 };
      } else {
@@ -305,7 +305,7 @@
      if (this.curPosition === 1) {
        console.info('rotateFirstAnim BACK');
        // 直板机后置切前置截图初始内容旋转补偿90°。
-       await shotPixel.rotate(90); //ImageKit提供，用于图片内容旋转。
+       await shotPixel.rotate(90); // ImageKit提供，用于图片内容旋转。
        // 直板机后置切前置截图初始组件旋转补偿0°。
        this.shotImgRotation = { y: 0.5, angle: 0 };
      } else {
@@ -389,8 +389,8 @@
    blurFirstAnim() {
      console.info('blurFirstAnim E');
      // 初始化动效参数。
-     this.shotImgBlur = 0; //无模糊。
-     this.shotImgOpacity = 1; //不透明。
+     this.shotImgBlur = 0; // 无模糊。
+     this.shotImgOpacity = 1; // 不透明。
      this.shotImgScale = { x: 1, y: 1 };
      this.getUIContext().animateToImmediately(
        {

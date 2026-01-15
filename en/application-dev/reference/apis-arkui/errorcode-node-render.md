@@ -126,12 +126,11 @@ The RenderNode is obtained from a FrameNode, and its corresponding FrameNode is 
 
 **Description**
 
-This error code is reported when the RenderNode is obtained from a FrameNode and its corresponding FrameNode has been unadopted or disposed.
-Adoption: establishes a parent-child-like relationship where the parent node provides lifecycle callbacks to the child without actually adding it as a regular child node. The adopted node does not receive events from the parent or respond to events like normal child nodes.
+This error code is reported when the RenderNode is obtained from a FrameNode and its corresponding FrameNode has been unadopted or destroyed.
 
 **Possible Causes**
 
-The FrameNode from which the RenderNode is obtained has been unadopted or disposed, making all operations except release invalid.
+The FrameNode from which the RenderNode is obtained has been unadopted or destroyed.
 
 **Solution**
 
@@ -146,7 +145,6 @@ The node is not adopted.
 **Description**
 
 This error code is reported when an attempt is made to obtain a RenderNode from a node that is not in the adopted state.
-Adoption: establishes a parent-child-like relationship where the parent node provides lifecycle callbacks to the child without actually adding it as a regular child node. The adopted node does not receive events from the parent or respond to events like normal child nodes.
 
 **Possible Causes**
 
@@ -154,4 +152,5 @@ The node is not adopted, making its RenderNode inaccessible.
 
 **Solution**
 
-Use the **adoptChild** API to have the node adopted by another node before obtaining its RenderNode.
+Use the [OH_ArkUI_NativeModule_AdoptChild](./capi-native-node-h.md#oh_arkui_nativemodule_adoptchild) API to have the node adopted by another node before obtaining its RenderNode.
+<!--no_check-->

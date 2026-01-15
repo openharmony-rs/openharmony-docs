@@ -992,3 +992,31 @@ Allows an application to obtain and manage the media resources playing on a devi
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | cars
 
 **Since**: 23
+
+## ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+Allows an application to manage call status, such as retieving incoming call numbers, answering, rejecting, and ending calls.
+
+<!--RP64--><!--RP64End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 23
+
+## ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME
+
+Allows an application to customize the BLE advertiser name.
+
+<!--RP65--><!--RP65End-->
+
+**Permission level**：system_basic
+
+**Authorization mode**：system_grant
+
+**Supported devices**：General
+
+**Since**：23

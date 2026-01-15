@@ -53,7 +53,7 @@
     - [HMAC Overview and Algorithm Specifications](huks-hmac-overview.md)
     - Development<!--huks-hmac-dev-->
       - [HMAC(ArkTS)](huks-hmac-arkts.md)
-      - [HMAC(C/C++)](huks-hmac-ndk.md)
+      - [HMAC(C/C++)](huks-hmac-ndk.md)<!--RP1--><!--RP1End-->
 - Key Deletion <!--huks-delete-key-->
   - [Deleting a Key (ArkTS)](huks-delete-key-arkts.md)
   - [Deleting a Key (C/C++)](huks-delete-key-ndk.md)
