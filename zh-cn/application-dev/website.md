@@ -259,7 +259,7 @@
         - [数据库加密 (C/C++)](database/native-data-encryption.md)
         - [基于设备分类和数据分级的访问控制 (ArkTS)](database/access-control-by-device-and-data-level.md)
         - [基于设备分类和数据分级的访问控制 (C/C++)](database/native-access-control-by-device-and-data-level.md)
-        - [E类加密数据库的使用 (ArkTS)](database/encrypted_estore_guidelines.md)
+        - [E类加密数据库的使用 (ArkTS)](database/encrypted-estore-guidelines.md)
       - 跨应用数据共享<!--cross-app-data-share-->
         - [跨应用数据共享概述](database/data-share-overview.md)
         - 一对多跨应用数据共享<!--one-to-many-data-share-->
@@ -3570,6 +3570,7 @@
           - [ArkUI_RotationOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-rotationoptions.md)
           - [ArkUI_LayoutConstraint](reference/apis-arkui/capi-arkui-nativemodule-arkui-layoutconstraint.md)
           - [ArkUI_DrawContext](reference/apis-arkui/capi-arkui-nativemodule-arkui-drawcontext.md)
+          - [ArkUI_Node](reference/apis-arkui/capi-arkui-nativemodule-arkui-node-descriptor.md)
           - [ArkUI_Node*](reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)
           - [ArkUI_NativeDialog*](reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog8h.md)
           - [ArkUI_WaterFlowSectionOption](reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md)
@@ -5049,7 +5050,6 @@
           - [NativeWindow](reference/apis-avcodec-kit/capi-codecbase-nativewindow.md)
           - [OH_AVCodec](reference/apis-avcodec-kit/capi-codecbase-oh-avcodec.md)
           - [OH_AVBuffer](reference/apis-avcodec-kit/capi-core-oh-avbuffer.md)
-          - [OH_NativeBuffer](reference/apis-avcodec-kit/capi-core-oh-nativebuffer.md)
           - [OH_AVCodecBufferAttr](reference/apis-avcodec-kit/capi-core-oh-avcodecbufferattr.md)
           - [OH_AVFormat](reference/apis-avcodec-kit/capi-core-oh-avformat.md)
           - [OH_AVMemory](reference/apis-avcodec-kit/capi-core-oh-avmemory.md)
