@@ -119,13 +119,13 @@ httpRequest.request(// 填写HTTP请求的URL地址，可以带参数也可以�
       console.info('cookies:' + JSON.stringify(data.cookies)); // 自API version 8开始支持cookie。
       // 取消订阅HTTP响应头事件。
       httpRequest.off('headersReceive');
-      // 当该请求使用完毕时，开发者务必调用destroy方法主动销毁该JavaScript Object。
+      // 当该请求使用完毕时，开发者务必调用destroy方法释放资源，避免出现内存泄漏。
       httpRequest.destroy();
     } else {
       console.error('error:' + JSON.stringify(err));
       // 取消订阅HTTP响应头事件。
       httpRequest.off('headersReceive');
-      // 当该请求使用完毕时，开发者务必调用destroy方法主动销毁该JavaScript Object。
+      // 当该请求使用完毕时，开发者务必调用destroy方法释放资源，避免出现内存泄漏。
       httpRequest.destroy();
     }
   });
@@ -143,7 +143,7 @@ createHttp(): HttpRequest
 创建一个HTTP请求，里面包括发起请求、中断请求、订阅/取消订阅HTTP Response Header事件。当发起多个HTTP请求时，需为每个HTTP请求创建对应HttpRequest对象。每一个HttpRequest对象对应一个HTTP请求。
 
 > **说明：**
-> 当该请求使用完毕时，需调用destroy方法主动销毁HttpRequest对象，否则会出现资源泄露问题。
+> 当该请求使用完毕时，需调用destroy方法释放资源，否则会出现内存泄露问题。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -471,7 +471,7 @@ promise.then((data:http.HttpResponse) => {
 
 destroy(): void
 
-中断请求任务。
+终止HTTP请求任务，同时释放系统资源。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1423,7 +1423,7 @@ httpRequest.request("EXAMPLE_URL", (err: BusinessError, data: http.HttpResponse)
     httpRequest.destroy();
   } else {
     console.error('error:' + JSON.stringify(err));
-    // 当该请求使用完毕时，开发者务必调用destroy方法主动销毁该JavaScript Object。
+    // 当该请求使用完毕时，开发者务必调用destroy方法主动释放资源，避免出现内存泄漏。
     httpRequest.destroy();
   }
 });
