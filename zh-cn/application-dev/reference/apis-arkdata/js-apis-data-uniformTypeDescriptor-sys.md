@@ -91,13 +91,13 @@ unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
-**ArkTS-Dyn起始版本**：22
-
-**ArkTS-Sta起始版本**：23
-
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：22
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
