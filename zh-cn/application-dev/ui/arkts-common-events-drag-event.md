@@ -522,11 +522,11 @@ export struct DefaultDrag {
            .opacity(1.0)
            .id('grid' + idx)
        }
-       // ···
+       // ...
        .onDragStart(() => {
        })
        .selectable(true)
-       // ···
+       // ...
      }, (idx: string) => idx)
    }
    ```
@@ -546,10 +546,10 @@ export struct DefaultDrag {
    
    ``` TypeScript
    .selected(this.isSelectedGrid[idx])
-   // ···
+   // ...
    .onClick(() => {
      this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-     // ···
+     // ...
    })
    ```
 
@@ -573,6 +573,21 @@ export struct DefaultDrag {
    @State previewData: DragItemInfo[] = [];
    @State isSelectedGrid: boolean[] = [];
    // ...
+   build() {
+     NavDestination() {
+       Column({ space: 5 }) {
+         // ...
+         Grid() {
+           // ...
+             GridItem() {
+               Column()
+                 .backgroundColor(Color.Blue)
+                 .width(50)
+                 .height(50)
+                 .opacity(1.0)
+                 .id('grid' + idx)
+             }
+             // ...
              .onClick(() => {
                this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
                if (this.isSelectedGrid[idx]) {
@@ -589,6 +604,13 @@ export struct DefaultDrag {
                  // ...
                }
              })
+             // ...
+         }
+         // ...
+       }.width('100%').margin({ top: 5 }).height('100%')
+     }
+     // ...
+   }
    ```
 
 3. 多选显示效果。
@@ -609,10 +631,32 @@ export struct DefaultDrag {
     }
     
     // ...
+    build() {
+      NavDestination() {
+        Column({ space: 5 }) {
+          // ...
+          Grid() {
+            // ...
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              // ...
               .stateStyles({
                 normal: this.normalStyles,
                 selected: this.selectStyles
               })
+              // ...
+          }
+          // ...
+        }.width('100%').margin({ top: 5 }).height('100%')
+      }
+      // ...
+    }
     ```
 
 4. 适配数量角标。
@@ -624,6 +668,21 @@ export struct DefaultDrag {
     ``` TypeScript
     @State numberBadge: number = 0;
     // ...
+    build() {
+      NavDestination() {
+        Column({ space: 5 }) {
+          // ...
+          Grid() {
+            // ...
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              // ...
               .onClick(() => {
                 this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
                 if (this.isSelectedGrid[idx]) {
@@ -637,6 +696,13 @@ export struct DefaultDrag {
               })
               // 多选场景右上角数量角标需要应用设置numberBadge参数
               .dragPreviewOptions({ numberBadge: this.numberBadge })
+              // ...
+          }
+          // ...
+        }.width('100%').margin({ top: 5 }).height('100%')
+      }
+      // ...
+    }
     ```
 
 **完整示例：**
