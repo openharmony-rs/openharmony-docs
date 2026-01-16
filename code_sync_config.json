@@ -20383,9 +20383,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets",
 				"functions":[
 					{
-						"end_line":225,
+						"end_line":247,
 						"name":"grid_start",
-						"start_line":110
+						"start_line":118
 					},
 					{
 						"end_line":248,
@@ -20393,34 +20393,34 @@
 						"start_line":245
 					},
 					{
-						"end_line":193,
+						"end_line":210,
 						"name":"grid_isSelected_start",
-						"start_line":133
+						"start_line":150
 					},
 					{
-						"end_line":126,
+						"end_line":143,
 						"name":"dragPreview_Start",
-						"start_line":121
+						"start_line":135
 					},
 					{
-						"end_line":192,
+						"end_line":302,
 						"name":"grid_previewData_start",
 						"start_line":29
 					},
 					{
-						"end_line":142,
+						"end_line":303,
 						"name":"grid_styles_start",
 						"start_line":41
 					},
 					{
-						"end_line":196,
+						"end_line":304,
 						"name":"grid_numberBadge_start",
 						"start_line":33
 					},
 					{
-						"end_line":261,
+						"end_line":285,
 						"name":"gridExample_start",
-						"start_line":233
+						"start_line":255
 					}
 				]
 			},
