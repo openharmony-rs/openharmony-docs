@@ -8398,7 +8398,7 @@ ArkTS-Sta: sendMessageRequest(code: int, data: MessageSequence, reply: MessageSe
 
   | 参数名  | 类型                                 | 必填 | 说明                                                                                   |
   | ------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
-  | code    | ArkTS-Dyn: number<br>ArkTS-Sta: int                               | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | code    | ArkTS-Dyn: number<br>ArkTS-Sta: int                               | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
   | data    | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                            |
   | reply   | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                                    |
   | options | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
@@ -8456,13 +8456,13 @@ ArkTS-Sta: sendMessageRequest(code: int, data: MessageSequence, reply: MessageSe
 
 **参数：**
 
-  | 参数名   | 类型                                 | 必填 | 说明                                                                                   |
-  | -------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
-  | code     | number                               | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
-  | data     | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                            |
-  | reply    | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                                    |
-  | options  | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
-  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 接收发送结果的回调。                                                                   |
+  | 参数名   | 类型                                 | 必填 | 说明                                                                  |
+  | -------- | ------------------------------------ | ---- | ------------------------------------------------------------------- |
+  | code     | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | data     | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                 |
+  | reply    | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                   |
+  | options  | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                   |
+  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 接收发送结果的回调。                              |
 
 **错误码：**
 
@@ -8488,7 +8488,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| code     | number                                                       | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+| code     | number                                                       | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
 | data     | [MessageParcel](#messageparceldeprecated)                    | 是   | 保存待发送数据的MessageParcel对象。                    |
 | reply    | [MessageParcel](#messageparceldeprecated)                    | 是   | 接收应答数据的MessageParcel对象。                            |
 | options  | [MessageOption](#messageoption)                              | 是   | 本次请求的同异步模式，默认同步调用。                         |
@@ -8776,7 +8776,7 @@ ArkTS-Sta: sendMessageRequest(code: int, data: MessageSequence, reply: MessageSe
 
   | 参数名  | 类型                                 | 必填 | 说明                                                                                   |
   | ------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
-  | code    | ArkTS-Dyn: number<br>ArkTS-Sta: int                               | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | code    | ArkTS-Dyn: number<br>ArkTS-Sta: int                               | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
   | data    | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                            |
   | reply   | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                                    |
   | options | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
@@ -9015,7 +9015,7 @@ ArkTS-Sta: sendMessageRequest(code: int, data: MessageSequence, reply: MessageSe
 
   | 参数名   | 类型                                 | 必填 | 说明                                                                                   |
   | -------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
-  | code     | ArkTS-Dyn: number<br>ArkTS-Sta: int                               | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | code     | ArkTS-Dyn: number<br>ArkTS-Sta: int                               | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
   | data     | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                            |
   | reply    | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                                    |
   | options  | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
@@ -9223,6 +9223,7 @@ ArkTS-Dyn: registerDeathRecipient(recipient: DeathRecipient, flags: number): voi
 ArkTS-Sta: registerDeathRecipient(recipient: DeathRecipient, flags: int): void
 
 注册用于接收远程对象死亡通知的回调。
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -11684,7 +11685,7 @@ modifyLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 | 参数名         | 类型                            | 必填 | 说明                                  |
 | -------------- | ------------------------------- | ---- | ------------------------------------- |
 | localInterface | [IRemoteBroker](#iremotebroker) | 是   | 将与描述符绑定的IRemoteBroker对象。   |
-| descriptor     | string                          | 是   | 用于与IRemoteBroker对象绑定的描述符，其长度应小于40960字节。。 |
+| descriptor     | string                          | 是   | 用于与IRemoteBroker对象绑定的描述符，其长度应小于40960字节。 |
 
 **错误码：**
 
