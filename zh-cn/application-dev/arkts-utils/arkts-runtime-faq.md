@@ -243,6 +243,8 @@ let res = str.replace(/^/, "abc");
 1. 使用[errorManager.on()](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)捕获到Async函数产生的unhandledrejection事件，再通过编写errorManager.on()注册的回调函数，来进行异常处理操作。
 
    ```ts
+   import { errorManager } from '@kit.AbilityKit';
+
    errorManager.on("unhandledRejection", (a:ESObject, b:Promise<ESObject>) => {
       console.info("Async test", a);
    })
