@@ -108,7 +108,7 @@ libusb_ndk.z.so
     OH_Usb_GetConfigDescriptor(deviceId, 1, &config);
     // Find the interfaceIndex required for communication based on the configuration descriptor.
     uint8_t interfaceIndex = 0;
-    // Declare a interface.
+    // Declare an API.
     uint64_t interfaceHandle = 0;
     OH_Usb_ClaimInterface(deviceId, interfaceIndex, &interfaceHandle);
     // Release the configuration descriptor.
