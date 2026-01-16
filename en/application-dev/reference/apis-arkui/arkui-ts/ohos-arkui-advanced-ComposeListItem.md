@@ -28,6 +28,7 @@ import { ComposeListItem } from "@kit.ArkUI";
 Not supported
 
 ## Attributes
+
 The [universal attributes](ts-component-general-attributes.md) are not supported.
 
 

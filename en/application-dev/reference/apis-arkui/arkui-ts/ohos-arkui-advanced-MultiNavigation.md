@@ -489,7 +489,7 @@ Obtains the parameter information of the navigation destination page specified b
 
 | Type       | Description                        |
 | --------- | -------------------------- |
-| Object \| undefined | **Object**: parameter information of the matching navigation destination page.<br>**undefined**: returned when an invalid index is provided. |
+| Object&nbsp;\|&nbsp;undefined | **Object**: parameter information of the matching navigation destination page.<br>**undefined**: returned when an invalid index is provided. |
 
 ### getParamByName
 

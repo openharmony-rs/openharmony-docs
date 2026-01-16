@@ -337,6 +337,7 @@ struct FatherControlChild {
 ### Example 2: Blocking Inner Container Gestures in Nested Scrolling
 
 This example demonstrates how to set the **exposeInnerGesture** parameter to **true** to enable a first-level **Tabs** container to intercept the swipe gestures of a nested second-level **Tabs** container, thereby triggering the swipe gestures of the built-in **Swiper** component of first-level **Tabs** container.
+
 You can define variables to record the index of the inner **Tabs** container and use this index to determine when to trigger the callback to block the swipe gestures of the outer **Tabs** container when the inner **Tabs** container reaches its boundaries.
 
 ```ts
@@ -385,7 +386,7 @@ struct Index {
             }.tabBar(new SubTabBarStyle('pink'))
           }
           .onAnimationStart((index: number, targetIndex: number) => {
-            console.info('ets onGestureRecognizerJudgeBegin child:' + targetIndex)
+            console.info(`ets onGestureRecognizerJudgeBegin child: ${targetIndex}`)
             this.innerSelectedIndex = targetIndex
           })
           .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
@@ -439,67 +440,71 @@ struct Index {
 
   build() {
     Column() {
-      Row({ space: 20 }) {
-        Text(this.message)
-          .width(400)
-          .height(80)
-          .fontSize(23)
-      }.margin(25)
-    }
-    .margin(50)
-    .width(400)
-    .height(200)
-    .borderWidth(2)
-    .gesture(TapGesture())
-    .gesture(LongPressGesture())
-    .gesture(PanGesture({ direction: PanDirection.Vertical }))
-    .gesture(PinchGesture())
-    .gesture(RotationGesture())
-    .gesture(SwipeGesture({ direction: SwipeDirection.Horizontal }))
-    // Bind a custom gesture recognizer judgment callback to the component.
-    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
-      others: Array<GestureRecognizer>) => {
-      if (current) {
-        // Check whether the gesture is a pan gesture.
-        if (current.getType() == GestureControl.GestureType.PAN_GESTURE) {
-          let target = current as PanRecognizer;
-          this.message = 'PanGesture\ndistance:' + target.getPanGestureOptions().getDistance() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
-        }
-        // Check whether the gesture is a long press gesture.
-        if (current.getType() == GestureControl.GestureType.LONG_PRESS_GESTURE) {
-          let target = current as LongPressRecognizer;
-          this.message = 'LongPressGesture\nfingers:' + target.getFingerCount() + '\nisFingerCountLimited:' +
-          target.isFingerCountLimit() + '\nrepeat:' + target.isRepeat() + '\nduration:' + target.getDuration();
-        }
-        // Check whether the gesture is a pinch gesture.
-        if (current.getType() == GestureControl.GestureType.PINCH_GESTURE) {
-          let target = current as PinchRecognizer;
-          this.message = 'PinchGesture\ndistance:' + target.getDistance() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
-        }
-        // Check whether the gesture is a tap gesture.
-        if (current.getType() == GestureControl.GestureType.TAP_GESTURE) {
-          let target = current as TapRecognizer;
-          this.message = 'TapGesture\ncount:' + target.getTapCount() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
-        }
-        // Check whether the gesture is a rotation gesture.
-        if (current.getType() == GestureControl.GestureType.ROTATION_GESTURE) {
-          let target = current as RotationRecognizer;
-          this.message = 'RotationGesture\nangle:' + target.getAngle() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
-        }
-        // Check whether the gesture is a swipe gesture.
-        if (current.getType() == GestureControl.GestureType.SWIPE_GESTURE) {
-          let target = current as SwipeRecognizer;
-          this.message = 'SwipeGesture\ndirection:' + target.getDirection() + '\nfingers:' +
-          target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit() + '\nspeed:' +
-          target.getVelocityThreshold();
-        }
+      Column() {
+        Row({ space: 20 }) {
+          Text(this.message)
+            .width('100%')
+            .height(80)
+            .fontSize(23)
+        }.margin(25)
       }
-      return GestureJudgeResult.CONTINUE;
-    })
+      .margin(25)
+      .padding(20)
+      .width('90%')
+      .height(250)
+      .borderWidth(2)
+      .gesture(TapGesture())
+      .gesture(LongPressGesture())
+      .gesture(PanGesture({ direction: PanDirection.Vertical }))
+      .gesture(PinchGesture())
+      .gesture(RotationGesture())
+      .gesture(SwipeGesture({ direction: SwipeDirection.Horizontal }))
+      // Bind a custom gesture recognizer judgment callback to the component.
+      .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+        others: Array<GestureRecognizer>) => {
+        if (current) {
+          // Check whether the gesture is a pan gesture.
+          if (current.getType() === GestureControl.GestureType.PAN_GESTURE) {
+            let target = current as PanRecognizer;
+            this.message = 'PanGesture\ndistance:' + target.getPanGestureOptions().getDistance() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
+          }
+          // Check whether the gesture is a long press gesture.
+          if (current.getType() === GestureControl.GestureType.LONG_PRESS_GESTURE) {
+            let target = current as LongPressRecognizer;
+            this.message = 'LongPressGesture\nfingers:' + target.getFingerCount() + '\nisFingerCountLimited:' +
+            target.isFingerCountLimit() + '\nrepeat:' + target.isRepeat() + '\nduration:' + target.getDuration();
+          }
+          // Check whether the gesture is a pinch gesture.
+          if (current.getType() === GestureControl.GestureType.PINCH_GESTURE) {
+            let target = current as PinchRecognizer;
+            this.message = 'PinchGesture\ndistance:' + target.getDistance() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
+          }
+          // Check whether the gesture is a tap gesture.
+          if (current.getType() === GestureControl.GestureType.TAP_GESTURE) {
+            let target = current as TapRecognizer;
+            this.message = 'TapGesture\ncount:' + target.getTapCount() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
+          }
+          // Check whether the gesture is a rotation gesture.
+          if (current.getType() === GestureControl.GestureType.ROTATION_GESTURE) {
+            let target = current as RotationRecognizer;
+            this.message = 'RotationGesture\nangle:' + target.getAngle() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
+          }
+          // Check whether the gesture is a swipe gesture.
+          if (current.getType() === GestureControl.GestureType.SWIPE_GESTURE) {
+            let target = current as SwipeRecognizer;
+            this.message = 'SwipeGesture\ndirection:' + target.getDirection() + '\nfingers:' +
+            target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit() + '\nspeed:' +
+            target.getVelocityThreshold();
+          }
+        }
+        return GestureJudgeResult.CONTINUE;
+      })
+    }
+    .padding(15)
   }
 }
 ```
@@ -510,8 +515,8 @@ struct Index {
 
 This example demonstrates how to use **onGestureRecognizerJudgeBegin** to implement gesture judgment. When the parent container's gesture is successfully triggered, it calls **cancelTouch()** to forcibly cancel touch events on child components, enabling precise switching between parent and child gesture control.
 
- ```ts
- // xxx.ets
+```ts
+// xxx.ets
 @Entry
 @Component
 struct FatherControlChild {
@@ -521,7 +526,6 @@ struct FatherControlChild {
   private childRecognizer: GestureRecognizer = new GestureRecognizer();
   private currentRecognizer: GestureRecognizer = new GestureRecognizer();
   private lastOffset: number = 0;
-
   @State outerState: string = "IDLE";
   @State innerState: string = "IDLE";
   @State willCancel: boolean = false;
@@ -677,6 +681,7 @@ struct FatherControlChild {
             this.lastOffset = event.offsetY
           })
       )
+
       Column() { // Display the outer layer status.
         Text(`outer: ${this.outerState}`)
           .fontSize(24)
@@ -693,7 +698,7 @@ struct FatherControlChild {
       .width('90%')
       .backgroundColor(Color.White)
       .border({ width: 1, color: Color.Gray })
-      .position({ x: '5%', y: '80%'})
+      .position({ x: '5%', y: '80%' })
       .padding(20)
     }
     .width('100%')
@@ -706,7 +711,7 @@ struct FatherControlChild {
 
  ### Example 5: Customizing Gesture Recognizer Participation in Gesture Processing
 
-This example demonstrates how to use [onTouchTestDone](#ontouchtestdone20) to exclude a gesture recognizer from subsequent gesture processing, available from API version 20. When the callback is triggered, [preventBegin](./ts-gesture-common.md#preventbegin20) is called to prevent the recognizer from participating in further processing.
+This example demonstrates how to use [onTouchTestDone](#ontouchtestdone20) to exclude a gesture recognizer from subsequent gesture processing, available from API version 20. When the callback is triggered, [preventBegin](./ts-gesture-common.md#preventbegin20) is called to prevent the recognizer from participating in further processing. Tapping the overlapping area of Tap2 and Tap1, if **preventBegin** is not called, triggers the gesture corresponding to Tap2. If **preventBegin** is called to block Tap2, the gesture corresponding to Tap1 is triggered.
 
 ```ts
 // xxx.ets
@@ -762,10 +767,10 @@ struct TouchTestDoneExample {
       }))
       // Use onTouchTestDone to customize gesture recognizer participation by calling preventBegin().
       .onTouchTestDone((event, recognizers) => {
-        console.info('event is ' + JSON.stringify(event));
+        console.info(`event is ${JSON.stringify(event)}`);
         for (let i = 0; i < recognizers.length; i++) {
           let recognizer = recognizers[i];
-          console.info('type is ' + JSON.stringify(recognizer.getType()))
+          console.info(`type is ${JSON.stringify(recognizer.getType())}`)
           // Block specific gesture recognizers based on the tag value.
           if (recognizer.getTag() == this.tagList[this.tagId]) {
             recognizer.preventBegin();
@@ -784,12 +789,9 @@ struct TouchTestDoneExample {
         })
       Text('Current prevent gesture tag: ' + this.tagList[this.tagId])
         .margin(5)
-
     }
     .width('100%')
     .height('100%')
-
-    // Demo behavior: When the overlapping area of Tap2 and Tap1 is tapped: Without preventBegin: The Tap2 gesture is triggered; with preventBegin blocking Tap2: The Tap1 gesture is triggered.
   }
 }
 ```
