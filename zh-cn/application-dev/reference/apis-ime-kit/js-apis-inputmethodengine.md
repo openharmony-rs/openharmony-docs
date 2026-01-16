@@ -1053,7 +1053,7 @@ getSecurityMode(): SecurityMode
 
 ```ts
 let security = inputMethodEngine.getInputMethodAbility().getSecurityMode();
-console.error(`getSecurityMode, securityMode is : ${security}`);
+console.error(`getSecurityMode, securityMode is: ${security}`);
 ```
 
 ### createPanel<sup>10+</sup>
@@ -3089,8 +3089,8 @@ ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let width :number = 500
-let height :number = 1000
+let width: number = 500
+let height: number = 1000
 panel.resize(width, height).then(() => {
   console.info('Succeeded in changing the panel size.');
 }).catch((err: BusinessError) => {
@@ -3102,8 +3102,8 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let width :long = 500
-let height :long = 1000
+let width: long = 500
+let height: long = 1000
 
 panel.resize(width, height).then(() => {
   console.info('Succeeded in changing the panel size.');
@@ -3908,7 +3908,7 @@ setImmersiveEffect(effect: ImmersiveEffect): void
 **示例：**
 
 ```ts
-let effect : inputMethodEngine.ImmersiveEffect = {
+let effect: inputMethodEngine.ImmersiveEffect = {
   gradientHeight: 100,
   gradientMode: inputMethodEngine.GradientMode.LINEAR_GRADIENT
 }
