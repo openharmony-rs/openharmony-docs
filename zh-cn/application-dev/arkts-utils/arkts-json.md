@@ -235,3 +235,25 @@ import { JSON } from '@kit.ArkTS';
 在JSON序列化中，浮点数处理存在一个特殊行为：当小数部分为零时，为保持数值的简洁表示，序列化结果会自动省略小数部分。这可能导致精度信息丢失，影响需要精确表示浮点数的场景（如金融金额、科学计量）。以下示例提供解决该场景的方法：
 
 <!-- @[float_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingFloatingPointNumbers.ets) -->
+
+``` TypeScript
+import { JSON } from '@kit.ArkTS';
+// ...
+  // 序列化小数部分不为零的浮点数，可以正常序列化。
+  let floatNumber1 = 10.12345;
+  console.info(JSON.stringify(floatNumber1)); // 10.12345
+
+  // 序列化小数部分为零的浮点数，为保持数值的简洁表示，会丢失小数部分的精度。
+  let floatNumber2 = 10.00;
+  console.info(JSON.stringify(floatNumber2)); // 10
+
+  // 以下是防止浮点数精度丢失的方法：
+  let result = JSON.stringify(floatNumber2, (key: string, value: Object): Object => {
+    if (typeof value === 'number') {
+      // 按照业务场景需要，定制所需的固定精度。
+      return value.toFixed(2);
+    }
+    return value;
+  });
+  console.info(result); // "10.00"
+```
