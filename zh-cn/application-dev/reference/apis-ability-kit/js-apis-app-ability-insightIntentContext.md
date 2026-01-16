@@ -286,7 +286,7 @@ setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
         'insightId': this.context.instanceId,
       };
       let storage: LocalStorage = new LocalStorage(localStorageData);
-      pageLoader.loadContent('pages/UiabilityIndex', storage, (err, data) => {
+      pageLoader.loadContent('pages/UIAbilityIndex', storage, (err, data) => {
         if (err.code) {
           hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         } else {
@@ -355,7 +355,7 @@ setReturnModeForUIExtensionAbility(returnMode: insightIntent.ReturnMode): void
         };
         let storage: LocalStorage = new LocalStorage(localStorageData);
         storage.setOrCreate('session', pageLoader);
-        pageLoader.loadContent('pages/UiextensionPage', storage);
+        pageLoader.loadContent('pages/UIExtensionPage', storage);
       } catch (err) {
         let code = (err as BusinessError).code;
         let msg = (err as BusinessError).message;

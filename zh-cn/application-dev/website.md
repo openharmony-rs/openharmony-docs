@@ -27,7 +27,7 @@
         - [HSP](quick-start/in-app-hsp.md)
       - 应用程序包安装卸载与更新<!--application-package-install-->
         - [应用安装卸载与更新开发指导](quick-start/application-package-install-uninstall.md)
-        - [应用安装与更新一致性校验](quick-start/multi_module_installation_update_consistency_verification.md)
+        - [应用安装与更新一致性校验](quick-start/install-and-update-consistency-verification.md)
     - 应用配置文件（Stage模型）<!--application-configuration-file-stage-->
       - [应用配置文件概述（Stage模型）](quick-start/application-configuration-file-overview-stage.md)
       - [app.json5配置文件](quick-start/app-configuration-file.md)
@@ -46,7 +46,7 @@
       - [HSP转HAR指导](quick-start/hsp-to-har.md)
       - [HAP转HAR指导](quick-start/hap-to-har.md)
       - [集成态HSP](quick-start/integrated-hsp.md)
-    - [应用程序包常见问题](quick-start/common_problem_of_application.md)
+    - [应用程序包常见问题](quick-start/common-problem-of-application.md)
     - [应用程序包术语](quick-start/application-package-glossary.md)
   - [资源分类与访问](quick-start/resource-categories-and-access.md)
   - 学习ArkTS语言<!--learning-arkts-->
@@ -112,9 +112,7 @@
             - [拉起指定应用概述](application-models/app-startup-overview.md)
             - [（可选）使用canOpenLink判断应用是否可访问](application-models/canopenlink.md)
             - [使用Deep Linking实现应用间跳转](application-models/deep-linking-startup.md)
-            <!--Del-->
             - [使用App Linking实现应用间跳转](application-models/app-linking-startup.md)
-            <!--DelEnd-->
             - [显式Want跳转切换应用链接跳转适配指导](application-models/uiability-startup-adjust.md)
             - [应用链接说明](application-models/app-uri-config.md)
           - 拉起指定类型的应用<!--specified-type-app-redirection-->
@@ -259,7 +257,7 @@
         - [数据库加密 (C/C++)](database/native-data-encryption.md)
         - [基于设备分类和数据分级的访问控制 (ArkTS)](database/access-control-by-device-and-data-level.md)
         - [基于设备分类和数据分级的访问控制 (C/C++)](database/native-access-control-by-device-and-data-level.md)
-        - [E类加密数据库的使用 (ArkTS)](database/encrypted_estore_guidelines.md)
+        - [E类加密数据库的使用 (ArkTS)](database/encrypted-estore-guidelines.md)
       - 跨应用数据共享<!--cross-app-data-share-->
         - [跨应用数据共享概述](database/data-share-overview.md)
         - 一对多跨应用数据共享<!--one-to-many-data-share-->
@@ -2465,10 +2463,10 @@
             - [BundleResourceInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md)
             - [BusinessAbilityInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-businessAbilityInfo-sys.md)
             - [dispatchInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-dispatchInfo-sys.md)
-            - [LauncherAbilityResourceInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)
+            - [LauncherAbilityResourceInfo (系统接口)](reference/apis-ability-kit/js-apis-LauncherAbilityResourceInfo-sys.md)
             - [permissionDef (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-permissionDef-sys.md)
             - [PluginBundleInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-pluginBundleInfo-sys.md)
-            - [recoverableApplicationInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-recoverableApplicationInfo-sys.md)
+            - [recoverableApplicationInfo (系统接口)](reference/apis-ability-kit/js-apis-recoverableApplicationInfo-sys.md)
             - [remoteAbilityInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-remoteAbilityInfo-sys.md)
             - [SharedBundleInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-sharedBundleInfo-sys.md)
             <!--DelEnd-->
@@ -3064,7 +3062,7 @@
           - [Toggle](reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)
           - [Checkbox](reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md)
           - [CheckboxGroup](reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md)
-          - [Picker](reference/apis-arkui/arkui-ts/ts-container-picker.md)
+          - [UIPickerComponent](reference/apis-arkui/arkui-ts/ts-container-ui-picker-component.md)
           - [CalendarPicker](reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md)
           - [DatePicker](reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md)
           - [TextPicker](reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md)
@@ -3598,6 +3596,7 @@
           - [ArkUI_RotationOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-rotationoptions.md)
           - [ArkUI_LayoutConstraint](reference/apis-arkui/capi-arkui-nativemodule-arkui-layoutconstraint.md)
           - [ArkUI_DrawContext](reference/apis-arkui/capi-arkui-nativemodule-arkui-drawcontext.md)
+          - [ArkUI_Node](reference/apis-arkui/capi-arkui-nativemodule-arkui-node-descriptor.md)
           - [ArkUI_Node*](reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)
           - [ArkUI_NativeDialog*](reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog8h.md)
           - [ArkUI_WaterFlowSectionOption](reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md)
@@ -5091,7 +5090,6 @@
           - [NativeWindow](reference/apis-avcodec-kit/capi-codecbase-nativewindow.md)
           - [OH_AVCodec](reference/apis-avcodec-kit/capi-codecbase-oh-avcodec.md)
           - [OH_AVBuffer](reference/apis-avcodec-kit/capi-core-oh-avbuffer.md)
-          - [OH_NativeBuffer](reference/apis-avcodec-kit/capi-core-oh-nativebuffer.md)
           - [OH_AVCodecBufferAttr](reference/apis-avcodec-kit/capi-core-oh-avcodecbufferattr.md)
           - [OH_AVFormat](reference/apis-avcodec-kit/capi-core-oh-avformat.md)
           - [OH_AVMemory](reference/apis-avcodec-kit/capi-core-oh-avmemory.md)

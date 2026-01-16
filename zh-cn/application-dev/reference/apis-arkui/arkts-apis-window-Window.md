@@ -715,7 +715,7 @@ try {
 
 moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 
-基于全局坐标系（扩展屏场景下，以主屏幕左上角为原点）移动窗口位置，使用Promise异步回调。
+基于[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)移动窗口位置，使用Promise异步回调。
 
 > **说明：**
 >
@@ -1135,7 +1135,7 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
 
@@ -4901,7 +4901,7 @@ try {
 
 on(type: 'rectChangeInGlobalDisplay', callback: Callback&lt;RectChangeOptions&gt;): void
 
-开启全局坐标系（扩展屏场景下，以主屏左上角为原点）下窗口矩形（窗口位置及窗口大小）变化的监听事件。
+开启[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -4940,7 +4940,7 @@ try {
 
 off(type: 'rectChangeInGlobalDisplay', callback?: Callback&lt;RectChangeOptions&gt;): void
 
-关闭全局坐标系（扩展屏场景下，以主屏左上角为原点）下窗口矩形（窗口位置及窗口大小）变化的监听事件。
+关闭[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -5083,7 +5083,11 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：**
+
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -5142,7 +5146,11 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：**
+
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -5749,7 +5757,7 @@ setWindowShadowEnabled(enable: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下生效，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
 
@@ -6912,7 +6920,7 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3.Invalid window type. Only main windows, subwindows, and float windows are supported. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -6959,7 +6967,7 @@ minimize(): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3.Invalid window type. Only main windows, subwindows, and float windows are supported. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -7308,6 +7316,149 @@ export default class EntryAbility extends UIAbility {
     } catch (exception) {
       console.error(`Failed to restore the window. Cause code: ${exception.code}, message: ${exception.message}`);
     }
+  }
+}
+```
+
+## restoreMainWindow<sup>23+</sup>
+
+restoreMainWindow(wantParameters?: Record<string, Object>): Promise&lt;void&gt;
+
+将当前窗口的主窗口恢复到前台显示，如果主窗口已处于前台，则会抬升主窗层级。此接口仅适用于类型为[TYPE_FLOAT](./arkts-apis-window-e.md#windowtype7)的窗口，并且需在窗口触发过[DOWN](./arkui-ts/ts-appendix-enums.md#touchtype)事件后才能调用。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备上可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ------------------------- | -- | ------------------------ |
+| wantParameters | Record&lt;string, Object&gt; | 否 | 拉起窗口时会给主窗传递的自定义参数，主窗会在触发[onNewWant](../apis-ability-kit/js-apis-app-ability-abilityLifecycleCallback.md#onnewwant12)回调时收到。默认值为空，代表不向主窗传入任何自定义参数。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+| ------------ | ------------------------------------------------------------ |
+| 801          | Capability not supported. Failed to call the API due to limited device capabilities.            |
+| 1300002      | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error.   |
+| 1300003      | This window manager service works abnormally.      |
+| 1300004      | Unauthorized operation. Possible cause: 1. The window is not float window. 2. The window is not at foreground or has never been clicked. 3. The window cannot find main window.   |
+| 1300007      | Restore parent main window failed. Possible cause: 1. The main window is at PAUSED lifecycle state. 2. The main window is in background during recent. |
+
+**示例：**
+
+<!--no-check-->
+```ts
+// Float.ets
+import { window } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { JSON } from '@kit.ArkTS';
+
+@Entry
+@Component
+struct Float {
+  build() {
+    Button('CreateFloatWindow').onClick(() => {
+      this.createFloatWindow();
+    })
+  }
+
+  private createFloatWindow() {
+    let windowClass: window.Window | undefined = undefined;
+    let config: window.Configuration = {
+      name: 'testFloatWindow',
+      title: 'floatWindow',
+      windowType: window.WindowType.TYPE_FLOAT,
+      ctx: this.getUIContext()?.getHostContext(),
+      decorEnabled: true,
+    };
+    try {
+      window.createWindow(config, (err: BusinessError, data) => {
+        const errCode: number = err.code;
+        if (errCode) {
+          console.error(`failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        windowClass = data;
+        console.info(`succedded in creating the window. Data: ${JSON.stringify(data)}`);
+        windowClass.resize(500, 1600).then(() => {
+          console.info('Succeeded in changing the window size.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
+        });
+        windowClass.setUIContent("pages/FloatWindowInfo").then(() => {
+          console.info('Succeeded in loading the content.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        });
+        windowClass.showWindow().then(() => {
+          console.info("showWindow success");
+        }).catch((err: BusinessError) => {
+          console.error(`showWindow err: ${JSON.stringify(err)}`);
+        });
+        windowClass.moveWindowToAsync(20, 200).then(() => {
+          console.info('Succeeded in moving the window.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      });
+    } catch (exception) {
+      console.error(`failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+<!--no-check-->
+```ts
+// FloatWindowInfo.ets
+import { window } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct FloatWindowInfo {
+  @State subWindow: window.Window | undefined = undefined;
+  @State windowId: number = -1;
+  async aboutToAppear(): Promise<void> {
+    this.subWindow = window.findWindow('testFloatWindow');
+    this.windowId = this.subWindow?.getWindowProperties()?.id;
+  }
+
+  build() {
+    Column() {
+      Text('Hello')
+    }
+    .width('100%')
+    .height('100%')
+    .onTouch((event: TouchEvent) => {
+      // 保证有Down事件产生，实际调用时机可由开发者决定
+      if (event.type === TouchType.Down) {
+        let param: Record<string, Object> = {
+          "info": "helloworld",
+        };
+        try {
+          let promise = this.subWindow?.restoreMainWindow(param);
+          promise?.then(() => {
+            console.info('Succeeded in restoring the main window.');
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to restore the main window. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        } catch (exception) {
+          console.error(`Failed to restore the main window. Cause code: ${exception.code}, message: ${exception.message}`);
+        }
+      }
+    })
   }
 }
 ```
@@ -7668,7 +7819,11 @@ getWindowDecorVisible(): boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 
+
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错，返回false。
 
 **返回值：**
 
@@ -7702,13 +7857,17 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 
 setWindowTitle(titleName: string): Promise&lt;void&gt;
 
-设置窗口标题，存在标题栏的窗口形态生效，若不存在标题栏则返回1300002错误码，使用Promise异步回调。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+设置窗口标题，使用Promise异步回调。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
+**设备行为差异：**
+
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -7759,7 +7918,11 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：**
+
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -8011,9 +8174,11 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 
 **设备行为差异：**
 
-API version 18之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+在OpenHarmony 5.1.0之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
-从API version 18开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -8078,6 +8243,8 @@ getDecorButtonStyle(): DecorButtonStyle
 在OpenHarmony 5.1.0之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
 从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。
 
 **返回值：**
 
@@ -8313,7 +8480,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3. The subWindow has been created and can not be created again. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows, subwindows, and float windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows, subwindows, and floating windows are supported. |
 
 **示例：**
 
@@ -8457,7 +8624,11 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：**
+
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -9454,8 +9625,8 @@ setSeparationTouchEnabled(enabled: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801      | Capability not supported. Function can not work because the current device does not support this ability. |
-| 1300002  | This window state is abnormal.                       |
-| 1300003  | This window manager service works abnormally.        |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003  | This window manager service works abnormally. Possible cause: Internal IPC error. |
 
 **示例：**
 
@@ -9499,7 +9670,7 @@ isSeparationTouchEnabled():boolean
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801      | Capability not supported. Function can not work because the current device does not support this ability. |
-| 1300002  | This window state is abnormal.                       |
+| 1300002  | This window state is abnormal. The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
@@ -9517,7 +9688,7 @@ try {
 
 ## setReceiveDragEventEnabled<sup>23+</sup>
 
-setReceiveDragEventEnabled(enable: boolean): Promise&lt;void&gt;
+setReceiveDragEventEnabled(enabled: boolean): Promise&lt;void&gt;
 
 设置当前窗口是否能接收[拖拽事件](./arkui-ts/ts-universal-events-drag-drop.md#dragevent7)，使用Promise异步回调。
 
@@ -9548,8 +9719,8 @@ setReceiveDragEventEnabled(enable: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801      | Capability not supported. Function can not work because the current device does not support this ability. |
-| 1300002  | This window state is abnormal.                       |
-| 1300003  | This window manager service works abnormally.        |
+| 1300002  | This window state is abnormal. The window is not created or destroyed. |
+| 1300003  | This window manager service works abnormally. Possible cause: Internal IPC error. |
 
 **示例：**
 
@@ -9593,7 +9764,7 @@ isReceiveDragEventEnabled():boolean
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801      | Capability not supported. Function can not work because the current device does not support this ability. |
-| 1300002  | This window state is abnormal.                       |
+| 1300002  | This window state is abnormal. The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
@@ -10235,6 +10406,8 @@ setSubWindowZLevel(zLevel: number): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备中返回801错误码。
+
 **参数：**
 
 | 参数名       | 类型                          | 必填 | 说明                           |
@@ -10302,6 +10475,8 @@ getSubWindowZLevel(): number
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 

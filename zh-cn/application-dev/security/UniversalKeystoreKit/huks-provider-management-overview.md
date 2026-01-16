@@ -13,6 +13,7 @@ HUKS 提供外部密钥管理扩展能力（简称Provider）注册和注销接�
 > 1. Provider名称建议包含厂商信息，全局唯一。
 > 2. Provider名称长度最大为128字节。
 > 3. Provider注册和注销有权限管控，需申请[ohos.permission.CRYPTO_EXTENSION_REGISTER](../AccessToken/restricted-permissions.md#ohospermissioncrypto_extension_register)权限。
+> 4. 一个Provider可以关联到多个Ability。一般来说，Provider是厂商驱动名称，Ability是厂商针对其名下的各个业务定制扩展能力的名称，也可以由厂商自行决定Provider和Ability的名称。
 
 **支持功能规格：**
 

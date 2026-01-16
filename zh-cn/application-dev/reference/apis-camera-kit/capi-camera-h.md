@@ -49,6 +49,7 @@
 | [Camera_AutoDeviceSwitchStatusInfo](capi-oh-camera-camera-autodeviceswitchstatusinfo.md) | Camera_AutoDeviceSwitchStatusInfo | 自动设备切换状态信息。 |
 | [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) | Camera_ConcurrentInfo | 相机并发能力信息。 |
 | [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md) | Camera_ControlCenterStatusInfo | 控制器效果激活状态信息。 |
+| [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) | Camera_OcclusionDetectionResult | 相机镜头遮挡、脏污检测结果。 |
 | [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | 相机管理器对象。<br> 可以使用[OH_Camera_GetCameraManager](#oh_camera_getcameramanager)方法创建指针。 |
 
 ### 枚举
@@ -382,7 +383,9 @@ enum Camera_MetadataObjectType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FACE_DETECTION = 0 | metadata对象类型，用于人脸检测。 |
+| FACE_DETECTION = 0 | 元数据的对象类型，用于人脸检测。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION](capi-camera-h.md#camera_metadataobjecttype)。 |
+| CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION = 0 | 元数据的对象类型，用于人脸检测。<br>**起始版本：** 23 |
+| CAMERA_METADATA_OBJECT_TYPE_HUMAN_BODY = 1 | 元数据的对象类型，用于人体检测。<br>**起始版本：** 23 |
 
 ### Camera_TorchMode
 
@@ -460,6 +463,7 @@ enum Camera_PreconfigType
 | PRECONFIG_1080P = 1 | 预配置照片分辨率为1080P。 |
 | PRECONFIG_4K = 2 | 预配置照片分辨率为4K。 |
 | PRECONFIG_HIGH_QUALITY = 3 | 预配置照片为高质量。 |
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br> 从API version 23开始支持。 |
 
 ### Camera_PreconfigRatio
 
