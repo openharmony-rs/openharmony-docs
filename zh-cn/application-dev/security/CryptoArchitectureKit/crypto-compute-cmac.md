@@ -35,80 +35,80 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
 
   <!-- @[message_authentication_code_calculated_as_fragmented_hmac_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Async.ets) -->
 
-``` TypeScript
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { buffer } from '@kit.ArkTS';
+  ``` TypeScript
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
 
-async function genSymKeyByData(symKeyData: Uint8Array) {
-  let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
-  let aesGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
-  let symKey = await aesGenerator.convertKey(symKeyBlob);
-  console.info('convertKey success');
-  return symKey;
-}
-
-async function doLoopHmac() {
-  // 把字符串按utf-8解码为Uint8Array，使用固定的128位的密钥，即16字节
-  let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
-  let key = await genSymKeyByData(keyData);
-  let macAlgName = 'SHA256'; // 摘要算法名
-  let mac = cryptoFramework.createMac(macAlgName);
-  // 假设信息总共43字节，根据utf-8解码后，也是43字节
-  let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
-  let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
-  let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
-  await mac.init(key);
-  for (let i = 0; i < messageData.length; i += updateLength) {
-    let updateMessage = messageData.subarray(i, i + updateLength);
-    let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-    await mac.update(updateMessageBlob);
+  async function genSymKeyByData(symKeyData: Uint8Array) {
+    let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
+    let aesGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+    let symKey = await aesGenerator.convertKey(symKeyBlob);
+    console.info('convertKey success');
+    return symKey;
   }
-  let macOutput = await mac.doFinal();
-  console.info('HMAC result: ' + macOutput.data);
-  let macLen = mac.getMacLength();
-  console.info('HMAC len:' + macLen);
-}
-```
+
+  async function doLoopHmac() {
+    // 把字符串按utf-8解码为Uint8Array，使用固定的128位的密钥，即16字节
+    let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
+    let key = await genSymKeyByData(keyData);
+    let macAlgName = 'SHA256'; // 摘要算法名
+    let mac = cryptoFramework.createMac(macAlgName);
+    // 假设信息总共43字节，根据utf-8解码后，也是43字节
+    let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
+    let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
+    let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
+    await mac.init(key);
+    for (let i = 0; i < messageData.length; i += updateLength) {
+      let updateMessage = messageData.subarray(i, i + updateLength);
+      let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
+      await mac.update(updateMessageBlob);
+    }
+    let macOutput = await mac.doFinal();
+    console.info('HMAC result: ' + macOutput.data);
+    let macLen = mac.getMacLength();
+    console.info('HMAC len:' + macLen);
+  }
+  ```
 
 
 - 以使用同步方式一次性传入数据，获取消息认证码计算结果为例：
 
-<!-- @[message_authentication_code_calculated_as_fragmented_hmac_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Sync.ets) -->
-
-``` TypeScript
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { buffer } from '@kit.ArkTS';
-
-function genSymKeyByData(symKeyData: Uint8Array) {
-  let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
-  let aesGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
-  let symKey = aesGenerator.convertKeySync(symKeyBlob);
-  console.info('[Sync]convertKey success');
-  return symKey;
-}
-
-function doLoopHmacBySync() {
-  // 把字符串按utf-8解码为Uint8Array，使用固定的128位的密钥，即16字节
-  let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
-  let key = genSymKeyByData(keyData);
-  let macAlgName = 'SHA256'; // 摘要算法名
-  let mac = cryptoFramework.createMac(macAlgName);
-  // 假设信息总共43字节，根据utf-8解码后，也是43字节
-  let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
-  let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
-  let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
-  mac.initSync(key);
-  for (let i = 0; i < messageData.length; i += updateLength) {
-    let updateMessage = messageData.subarray(i, i + updateLength);
-    let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-    mac.updateSync(updateMessageBlob);
+  <!-- @[message_authentication_code_calculated_as_fragmented_hmac_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Sync.ets) -->
+  
+  ``` TypeScript
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
+  
+  function genSymKeyByData(symKeyData: Uint8Array) {
+    let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
+    let aesGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+    let symKey = aesGenerator.convertKeySync(symKeyBlob);
+    console.info('[Sync]convertKey success');
+    return symKey;
   }
-  let macOutput = mac.doFinalSync();
-  console.info('[Sync]HMAC result: ' + macOutput.data);
-  let macLen = mac.getMacLength();
-  console.info('HMAC len:' + macLen);
-}
-```
+  
+  function doLoopHmacBySync() {
+    // 把字符串按utf-8解码为Uint8Array，使用固定的128位的密钥，即16字节
+    let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
+    let key = genSymKeyByData(keyData);
+    let macAlgName = 'SHA256'; // 摘要算法名
+    let mac = cryptoFramework.createMac(macAlgName);
+    // 假设信息总共43字节，根据utf-8解码后，也是43字节
+    let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
+    let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
+    let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
+    mac.initSync(key);
+    for (let i = 0; i < messageData.length; i += updateLength) {
+      let updateMessage = messageData.subarray(i, i + updateLength);
+      let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
+      mac.updateSync(updateMessageBlob);
+    }
+    let macOutput = mac.doFinalSync();
+    console.info('[Sync]HMAC result: ' + macOutput.data);
+    let macLen = mac.getMacLength();
+    console.info('HMAC len:' + macLen);
+  }
+  ```
 
 
 ### 分段CMAC
@@ -129,85 +129,85 @@ function doLoopHmacBySync() {
 
 - 以使用await方式分段传入数据，获取消息认证码计算结果为例。
 
-<!-- @[message_authentication_code_calculation_cmac_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Async.ets) -->
-
-``` TypeScript
-
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { buffer } from '@kit.ArkTS';
-
-async function genSymKeyByData(symKeyData: Uint8Array) {
-  let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
-  let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let symKey = await aesGenerator.convertKey(symKeyBlob);
-  console.info('convertKey success');
-  return symKey;
-}
-async function doLoopCmac() {
-  // 把字符串按utf-8解码为Uint8Array，使用固定的128位的密钥，即16字节。
-  let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
-  let key = await genSymKeyByData(keyData);
-  let spec: cryptoFramework.CmacSpec = {
-    algName: 'CMAC',
-    cipherName: 'AES128',
-  };
-  let mac = cryptoFramework.createMac(spec);
-  // 假设消息共43字节，根据UTF-8解码后，仍是43字节。
-  let messageText = 'aaaaa......bbbbb......ccccc......ddddd......eee';
-  let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
-  let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无具体要求。
-  await mac.init(key);
-  for (let i = 0; i < messageData.length; i += updateLength) {
-    let updateMessage = messageData.subarray(i, i + updateLength);
-    let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-    await mac.update(updateMessageBlob);
+  <!-- @[message_authentication_code_calculation_cmac_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Async.ets) -->
+  
+  ``` TypeScript
+  
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
+  
+  async function genSymKeyByData(symKeyData: Uint8Array) {
+    let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
+    let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let symKey = await aesGenerator.convertKey(symKeyBlob);
+    console.info('convertKey success');
+    return symKey;
   }
-  let macOutput = await mac.doFinal();
-  console.info('CMAC result: ' + macOutput.data);
-  let macLen = mac.getMacLength();
-  console.info('CMAC len:' + macLen);
-}
-```
+  async function doLoopCmac() {
+    // 把字符串按utf-8解码为Uint8Array，使用固定的128位的密钥，即16字节。
+    let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
+    let key = await genSymKeyByData(keyData);
+    let spec: cryptoFramework.CmacSpec = {
+      algName: 'CMAC',
+      cipherName: 'AES128',
+    };
+    let mac = cryptoFramework.createMac(spec);
+    // 假设消息共43字节，根据UTF-8解码后，仍是43字节。
+    let messageText = 'aaaaa......bbbbb......ccccc......ddddd......eee';
+    let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
+    let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无具体要求。
+    await mac.init(key);
+    for (let i = 0; i < messageData.length; i += updateLength) {
+      let updateMessage = messageData.subarray(i, i + updateLength);
+      let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
+      await mac.update(updateMessageBlob);
+    }
+    let macOutput = await mac.doFinal();
+    console.info('CMAC result: ' + macOutput.data);
+    let macLen = mac.getMacLength();
+    console.info('CMAC len:' + macLen);
+  }
+  ```
 
 
 - 以使用同步方式分段传入数据，获取消息认证码计算结果为例。
 
-<!-- @[message_authentication_code_calculation_cmac_segmentation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Sync.ets) -->
-
-``` TypeScript
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { buffer } from '@kit.ArkTS';
-
-function genSymKeyByData(symKeyData: Uint8Array) {
-  let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
-  let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let symKey = aesGenerator.convertKeySync(symKeyBlob);
-  console.info('[Sync]convertKey success');
-  return symKey;
-}
-function doLoopCmacBySync() {
-  // 把字符串按utf-8解码为Uint8Array，使用固定的128位的密钥，即16字节。
-  let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
-  let key = genSymKeyByData(keyData);
-  let spec: cryptoFramework.CmacSpec = {
-    algName: 'CMAC',
-    cipherName: 'AES128',
-  };
-  let mac = cryptoFramework.createMac(spec);
-  // 假设信息共43字节，utf-8解码后仍为43字节。
-  let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
-  let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
-  let updateLength = 20; // 假设以20字节为单位进行分段update，实际没有具体要求。
-  mac.initSync(key);
-  for (let i = 0; i < messageData.length; i += updateLength) {
-    let updateMessage = messageData.subarray(i, i + updateLength);
-    let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-    mac.updateSync(updateMessageBlob);
+  <!-- @[message_authentication_code_calculation_cmac_segmentation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Sync.ets) -->
+  
+  ``` TypeScript
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
+  
+  function genSymKeyByData(symKeyData: Uint8Array) {
+    let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
+    let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let symKey = aesGenerator.convertKeySync(symKeyBlob);
+    console.info('[Sync]convertKey success');
+    return symKey;
   }
-  let macOutput = mac.doFinalSync();
-  console.info('[Sync]CMAC result: ' + macOutput.data);
-  let macLen = mac.getMacLength();
-  console.info('CMAC len:' + macLen);
-}
-```
+  function doLoopCmacBySync() {
+    // 把字符串按utf-8解码为Uint8Array，使用固定的128位的密钥，即16字节。
+    let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
+    let key = genSymKeyByData(keyData);
+    let spec: cryptoFramework.CmacSpec = {
+      algName: 'CMAC',
+      cipherName: 'AES128',
+    };
+    let mac = cryptoFramework.createMac(spec);
+    // 假设信息共43字节，utf-8解码后仍为43字节。
+    let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
+    let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
+    let updateLength = 20; // 假设以20字节为单位进行分段update，实际没有具体要求。
+    mac.initSync(key);
+    for (let i = 0; i < messageData.length; i += updateLength) {
+      let updateMessage = messageData.subarray(i, i + updateLength);
+      let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
+      mac.updateSync(updateMessageBlob);
+    }
+    let macOutput = mac.doFinalSync();
+    console.info('[Sync]CMAC result: ' + macOutput.data);
+    let macLen = mac.getMacLength();
+    console.info('CMAC len:' + macLen);
+  }
+  ```
 
