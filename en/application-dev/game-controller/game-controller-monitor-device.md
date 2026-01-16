@@ -13,7 +13,7 @@ Game Controller Kit allows you to monitor controller online/offline events and q
 
 ## Service Flow
 
-![zh-cn_image_0000002227937601](figures/zh-cn_image_0000002227937601.png)
+![en_image_0000002227937601](figures/en_image_0000002227937601.png)
 
 1. A player starts a game.
 
