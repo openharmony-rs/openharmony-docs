@@ -635,7 +635,7 @@ createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnab
 | ------- | --------------------------------------------|
 | 7600104 | Failed to get the data from Surface. |
 | 7600201 | Unsupported operation, e.g. on cross-platform. |
-| 7600206 | Invalid parameter |
+| 7600206 | Invalid parameter. |
 | 7600305 | Failed to create the PixelMap. |
 
 **示例：**
