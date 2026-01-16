@@ -52,13 +52,13 @@
 3. 获取资源文件中hostName值并赋值。
 
    <!-- @[Dns_GetSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
-
-    ``` TypeScript
-    aboutToAppear() {
-        this.hostName =
-          (this.getUIContext().getHostContext() as Context).resourceManager.getStringSync($r('app.string.hostName').id);
-    }
-    ```
+   
+   ``` TypeScript
+   aboutToAppear() {
+     this.hostName =
+       (this.getUIContext().getHostContext() as Context).resourceManager.getStringSync($r('app.string.hostName').id);
+   }
+   ```
 
 4. 创建网络地址解析函数，将域名转换为IP地址，isChange为是否将域名转码为ASCII编码的标识。
 
