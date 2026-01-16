@@ -6,7 +6,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
-- ArkTS APIs<!--driver-development-arkts-->
+- ArkTS API<!--driver-development-arkts-->
   - [@ohos.app.ability.DriverExtensionAbility (Driver Extension Ability)](js-apis-app-ability-driverExtensionAbility.md)
   - [@ohos.driver.deviceManager (Peripheral Management)](js-apis-driver-deviceManager.md)
   <!--Del-->
@@ -14,7 +14,7 @@
   <!--DelEnd-->
   - application<!--driver-development-arkts-application-->
     - [DriverExtensionContext](js-apis-inner-application-driverExtensionContext.md)
-- C APIs<!--driver-development-c-->
+- C API<!--driver-development-c-->
   - Modules<!--driver-development-module-->
     - [BaseDdk](capi-baseddk.md)
     - [HidDdk](capi-hidddk.md)
@@ -70,6 +70,6 @@
     - [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md)
     - [Usb_DeviceArray](capi-usbddk-usb-devicearray.md)
     - [UsbSerial_Params](capi-serialddk-usbserial-params.md)
-    - [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md)
+    - [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md)
 - Error Codes<!--driver-development-errcode-->
   - [Driver Error Codes](errorcode-deviceManager.md)
