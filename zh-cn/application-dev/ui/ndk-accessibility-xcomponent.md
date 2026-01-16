@@ -24,7 +24,7 @@
 
 以下示例提供了对接无障碍能力的实现方法，仅包含主要步骤，完整示例请参考[AccessibilityCapiSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCapi)。对接完成后，在开启无障碍功能时，可使XComponent中的三方框架绘制组件接入，实现无障碍交互。
 
-1. 按照自定义渲染（XComponent）的[使用OH_ArkUI_SurfaceHolder管理Surface生命周期](napi-xcomponent-guidelines.md#使用oh_arkui_surfaceholder管理surface生命周期)场景创建前置工程。
+1. 按照自定义渲染（XComponent）的[使用OH_ArkUI_SurfaceHolder管理Surface生命周期](napi-xcomponent-guidelines.md#管理xcomponent持有surface的生命周期)场景创建前置工程。
 
 2. 获得无障碍接入provider并注册回调函数（以多实例场景为例）。
 
