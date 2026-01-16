@@ -844,6 +844,7 @@ getRunningFormInfosByFilter(formProviderFilter: formInfo.FormProviderFilter, cal
 **示例：**
 
 ```ts
+import { formInfo, formObserver } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let formInstanceFilter: formInfo.FormProviderFilter = {
