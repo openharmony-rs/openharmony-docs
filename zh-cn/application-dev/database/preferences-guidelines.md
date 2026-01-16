@@ -78,7 +78,7 @@ libohpreferences.so
 // 数据变更回调函数
 void DataChangeObserverCallback(void *context, const OH_PreferencesPair *pairs, uint32_t count) {
     for (uint32_t i = 0; i < count; i++) {
-        // 获取索引i对应的PreferenceValue
+        // 获取索引i对应的PreferencesValue
         const OH_PreferencesValue *pValue = OH_PreferencesPair_GetPreferencesValue(pairs, i);
         // 获取PreferencesValue的数据类型
         Preference_ValueType type = OH_PreferencesValue_GetValueType(pValue);
