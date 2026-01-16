@@ -138,6 +138,13 @@ const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../work
 2. 在HAR中创建Worker线程文件相关内容。
 
    <!-- @[create_har_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/har/src/main/ets/workers/worker.ets) -->
+   
+   ``` TypeScript
+   workerPort.onmessage = (e: MessageEvents) => {
+     console.info('worker thread receive message: ', e.data);
+     workerPort.postMessage('worker thread post message to main thread');
+   }
+   ```
 
 3. 在entry模块的oh-package.json5文件中配置HAR包的依赖。
 
