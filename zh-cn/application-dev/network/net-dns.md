@@ -42,12 +42,12 @@
 2. 初始化数据成员。
 
    <!-- @[Dns_GetAddress_Ascii_Data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
-
-    ``` TypeScript
-    @State hostVal: string = '';     // 转码之后的主机名
-    @State ipResult: string = '';    // 获取的IP地址结果
-    private hostName: string = '';   // 初始主机名
-    ```
+   
+   ``` TypeScript
+   @State hostVal: string = '';     // 转码之后的主机名
+   @State ipResult: string = '';    // 获取的IP地址结果
+   private hostName: string = '';   // 初始主机名
+   ```
 
 3. 获取资源文件中hostName值并赋值。
 
