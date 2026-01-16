@@ -1006,3 +1006,17 @@ Allows an application to manage call status, such as retieving incoming call num
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 23
+
+## ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME
+
+Allows an application to customize the BLE advertiser name.
+
+<!--RP65--><!--RP65End-->
+
+**Permission level**：system_basic
+
+**Authorization mode**：system_grant
+
+**Supported devices**：General
+
+**Since**：23

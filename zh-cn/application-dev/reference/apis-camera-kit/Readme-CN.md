@@ -104,5 +104,6 @@
     - [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)
     - [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)
     - [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)
+    - [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md)
 - 错误码<!--camera-arkts-errcode-->
   - [Camera错误码](errorcode-camera.md)

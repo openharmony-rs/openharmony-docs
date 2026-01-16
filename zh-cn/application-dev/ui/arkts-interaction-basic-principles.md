@@ -143,7 +143,7 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
 
    上面的代码可以将按钮切分成了3部分，中间40%的区域不响应点击，而两侧的剩下部分可响应。
 
-   ![response region](figures/interaction-basic-respose-region-01.png)
+   ![response region](figures/interaction-basic-response-region-01.png)
 
 2. 触摸测试控制
 

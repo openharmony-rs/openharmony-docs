@@ -1195,6 +1195,17 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyShort(OH_ImageSourceNative 
 
 以短整型类型获取图像属性的值。
 
+> **说明：**
+>
+> 读取DNG格式图片时，该接口对部分key有特殊处理。以下字段的字符串取值请参考[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量的值：
+> - NewSubfileType、ImageWidth、ImageLength、DefaultCropSize、Orientation、Compression、PhotometricInterpretation、PlanarConfiguration、RowsPerStrip、StripOffsets、StripByteCounts、SamplesPerPixel、BitsPerSample、YCbCrCoefficients、YCbCrSubSampling、YCbCrPositioning、ReferenceBlackWhite、XResolution、YResolution、ResolutionUnit字段：返回主图相关的字段值。
+> - ImageUniqueID字段：根据规范进行校验，不符合规范时会返回空字符串。
+> - ExifVersion、FlashpixVersion、ColorSpace字段：当图片中不存在该标签时，返回错误码。
+> - DNGVersion字段：当版本号小于1.0.0.0时，统一返回1.0.0.0。
+> - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
+> - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
+> - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
+
 **起始版本：** 23
 
 **参数：**
@@ -1221,6 +1232,17 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyLong(OH_ImageSourceNative *
 
 以长整型类型获取图像属性的值。
 
+> **说明：**
+>
+> 读取DNG格式图片时，该接口对部分key有特殊处理。以下字段的字符串取值请参考[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量的值：
+> - NewSubfileType、ImageWidth、ImageLength、DefaultCropSize、Orientation、Compression、PhotometricInterpretation、PlanarConfiguration、RowsPerStrip、StripOffsets、StripByteCounts、SamplesPerPixel、BitsPerSample、YCbCrCoefficients、YCbCrSubSampling、YCbCrPositioning、ReferenceBlackWhite、XResolution、YResolution、ResolutionUnit字段：返回主图相关的字段值。
+> - ImageUniqueID字段：根据规范进行校验，不符合规范时会返回空字符串。
+> - ExifVersion、FlashpixVersion、ColorSpace字段：当图片中不存在该标签时，返回错误码。
+> - DNGVersion字段：当版本号小于1.0.0.0时，统一返回1.0.0.0。
+> - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
+> - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
+> - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
+
 **起始版本：** 23
 
 **参数：**
@@ -1246,6 +1268,17 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyDouble(OH_ImageSourceNative
 **描述**
 
 以浮点型类型获取图像属性的值。
+
+> **说明：**
+>
+> 读取DNG格式图片时，该接口对部分key有特殊处理。以下字段的字符串取值请参考[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量的值：
+> - NewSubfileType、ImageWidth、ImageLength、DefaultCropSize、Orientation、Compression、PhotometricInterpretation、PlanarConfiguration、RowsPerStrip、StripOffsets、StripByteCounts、SamplesPerPixel、BitsPerSample、YCbCrCoefficients、YCbCrSubSampling、YCbCrPositioning、ReferenceBlackWhite、XResolution、YResolution、ResolutionUnit字段：返回主图相关的字段值。
+> - ImageUniqueID字段：根据规范进行校验，不符合规范时会返回空字符串。
+> - ExifVersion、FlashpixVersion、ColorSpace字段：当图片中不存在该标签时，返回错误码。
+> - DNGVersion字段：当版本号小于1.0.0.0时，统一返回1.0.0.0。
+> - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
+> - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
+> - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
 
 **起始版本：** 23
 
@@ -1299,6 +1332,17 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyString(OH_ImageSourceNative
 
 以字符串类型获取图像属性的值。
 
+> **说明：**
+>
+> 读取DNG格式图片时，该接口对部分key有特殊处理。以下字段的字符串取值请参考[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量的值：
+> - NewSubfileType、ImageWidth、ImageLength、DefaultCropSize、Orientation、Compression、PhotometricInterpretation、PlanarConfiguration、RowsPerStrip、StripOffsets、StripByteCounts、SamplesPerPixel、BitsPerSample、YCbCrCoefficients、YCbCrSubSampling、YCbCrPositioning、ReferenceBlackWhite、XResolution、YResolution、ResolutionUnit字段：返回主图相关的字段值。
+> - ImageUniqueID字段：根据规范进行校验，不符合规范时会返回空字符串。
+> - ExifVersion、FlashpixVersion、ColorSpace字段：当图片中不存在该标签时，返回错误码。
+> - DNGVersion字段：当版本号小于1.0.0.0时，统一返回1.0.0.0。
+> - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
+> - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
+> - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
+
 **起始版本：** 23
 
 **参数：**
@@ -1325,6 +1369,17 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyIntArray(OH_ImageSourceNati
 **描述**
 
 以整型数组类型获取图像属性的值。
+
+> **说明：**
+>
+> 读取DNG格式图片时，该接口对部分key有特殊处理。以下字段的字符串取值请参考[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量的值：
+> - NewSubfileType、ImageWidth、ImageLength、DefaultCropSize、Orientation、Compression、PhotometricInterpretation、PlanarConfiguration、RowsPerStrip、StripOffsets、StripByteCounts、SamplesPerPixel、BitsPerSample、YCbCrCoefficients、YCbCrSubSampling、YCbCrPositioning、ReferenceBlackWhite、XResolution、YResolution、ResolutionUnit字段：返回主图相关的字段值。
+> - ImageUniqueID字段：根据规范进行校验，不符合规范时会返回空字符串。
+> - ExifVersion、FlashpixVersion、ColorSpace字段：当图片中不存在该标签时，返回错误码。
+> - DNGVersion字段：当版本号小于1.0.0.0时，统一返回1.0.0.0。
+> - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
+> - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
+> - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
 
 **起始版本：** 23
 
@@ -1353,6 +1408,17 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyDoubleArray(OH_ImageSourceN
 
 以浮点型数组类型获取图像属性的值。
 
+> **说明：**
+>
+> 读取DNG格式图片时，该接口对部分key有特殊处理。以下字段的字符串取值请参考[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量的值：
+> - NewSubfileType、ImageWidth、ImageLength、DefaultCropSize、Orientation、Compression、PhotometricInterpretation、PlanarConfiguration、RowsPerStrip、StripOffsets、StripByteCounts、SamplesPerPixel、BitsPerSample、YCbCrCoefficients、YCbCrSubSampling、YCbCrPositioning、ReferenceBlackWhite、XResolution、YResolution、ResolutionUnit字段：返回主图相关的字段值。
+> - ImageUniqueID字段：根据规范进行校验，不符合规范时会返回空字符串。
+> - ExifVersion、FlashpixVersion、ColorSpace字段：当图片中不存在该标签时，返回错误码。
+> - DNGVersion字段：当版本号小于1.0.0.0时，统一返回1.0.0.0。
+> - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
+> - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
+> - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
+
 **起始版本：** 23
 
 **参数：**
@@ -1379,6 +1445,17 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyBlob(OH_ImageSourceNative *
 **描述**
 
 以二进制对象类型获取图像属性的值。
+
+> **说明：**
+>
+> 读取DNG格式图片时，该接口对部分key有特殊处理。以下字段的字符串取值请参考[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量的值：
+> - NewSubfileType、ImageWidth、ImageLength、DefaultCropSize、Orientation、Compression、PhotometricInterpretation、PlanarConfiguration、RowsPerStrip、StripOffsets、StripByteCounts、SamplesPerPixel、BitsPerSample、YCbCrCoefficients、YCbCrSubSampling、YCbCrPositioning、ReferenceBlackWhite、XResolution、YResolution、ResolutionUnit字段：返回主图相关的字段值。
+> - ImageUniqueID字段：根据规范进行校验，不符合规范时会返回空字符串。
+> - ExifVersion、FlashpixVersion、ColorSpace字段：当图片中不存在该标签时，返回错误码。
+> - DNGVersion字段：当版本号小于1.0.0.0时，统一返回1.0.0.0。
+> - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
+> - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
+> - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
 
 **起始版本：** 23
 

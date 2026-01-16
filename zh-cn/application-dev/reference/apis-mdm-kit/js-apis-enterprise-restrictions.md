@@ -59,7 +59,7 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 |inactiveUserFreeze<sup>14+</sup>|非活跃用户运行能力。禁用后，非UIAbility进程一般不会被冻结，UIAbility申请短时任务、长时任务、延迟任务或能效资源等后台运行任务也不会被冻结。当前仅支持PC/2in1设备使用。企业空间场景下，系统切换到企业空间用户，个人空间用户属于非活跃用户。|
 |camera<sup>14+</sup>|设备相机能力。|
 |mtpClient<sup>18+</sup>|MTP客户端能力(包含读取和写入)，当前仅支持PC/2in1设备使用。MTP（MediaTransferProtocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14)设置了某用户禁用MTP客户端写入能力时，再通过本接口禁用MTP客户端能力，会报策略冲突。|
-|mtpServer<sup>18+</sup>|MTP服务端能力。|
+|mtpServer<sup>18+</sup>|MTP服务端能力，当前仅支持Phone、Tablet设备使用。|
 |sambaClient<sup>20+</sup>|samba客户端能力，当前仅支持PC/2in1设备使用。samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。|
 |sambaServer<sup>20+</sup>|samba服务端能力，当前仅支持PC/2in1设备使用。|
 |backupAndRestore<sup>20+</sup>|备份和恢复能力，禁用后设备的"设置--系统--备份和恢复"、"设置--云空间"置灰，当前仅支持手机、平板使用。如果要完全禁用设备的备份和恢复能力，建议同时调用[applicationManager.addDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync)接口禁止具备备份和恢复能力的应用运行，如备份和恢复、手机助手、云空间应用。|
@@ -147,7 +147,7 @@ getDisallowedPolicy(admin: Want \| null, feature: string): boolean
 |inactiveUserFreeze<sup>14+</sup>|非活跃用户运行能力。禁用后，非UIAbility进程一般不会被冻结，UIAbility申请短时任务、长时任务、延迟任务或能效资源等后台运行任务也不会被冻结。当前仅支持PC/2in1设备使用。企业空间场景下，系统切换到企业空间用户，个人空间用户属于非活跃用户。|
 |camera<sup>14+</sup>|设备相机能力。|
 |mtpClient<sup>18+</sup>|MTP客户端能力（包含读取和写入），当前仅支持PC/2in1设备使用。MTP（MediaTransferProtocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。|
-|mtpServer<sup>18+</sup>|MTP服务端能力。|
+|mtpServer<sup>18+</sup>|MTP服务端能力，当前仅支持Phone、Tablet设备使用。|
 |sambaClient<sup>20+</sup>|samba客户端能力，当前仅支持PC/2in1设备使用。samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Messages Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。|
 |sambaServer<sup>20+</sup>|samba服务端能力，当前仅支持PC/2in1设备使用。|
 |backupAndRestore<sup>20+</sup>|备份和恢复能力，禁用后设备的"设置--系统--备份和恢复"、"设置--云空间"置灰，当前仅支持手机、平板使用。|
@@ -629,6 +629,7 @@ setUserRestrictionForAccount(admin: Want, settingsItem: string, accountId: int, 
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -688,6 +689,7 @@ getUserRestrictedForAccount(admin: Want | null, settingsItem: string, accountId:
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 

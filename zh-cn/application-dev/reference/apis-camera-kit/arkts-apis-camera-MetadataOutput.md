@@ -283,3 +283,83 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
   metadataOutput.off('error');
 }
 ```
+
+## addMetadataObjectTypes<sup>23</sup> 
+
+addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
+
+新增需要上报的检测对象类型。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名                  | 类型                                               | 必填 | 说明                          |
+| -------------------- | -------------------------------------------------- | --- | ---------------------------- |
+| types  | Array\<MetadataObjectType\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400101                |  Parameter missing or parameter type incorrect.        |
+| 7400103                |  Session not config.                                   |
+| 7400201                |  Camera service fatal error.                           |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+  try {
+    metadataOutput.addMetadataObjectTypes(types);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`addMetadataObjectTypes error. error code: ${err.code}`);
+  }
+}
+```
+
+## removeMetadataObjectTypes<sup>23</sup> 
+
+removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
+
+删除需要上报的检测对象类型。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名                  | 类型                                               | 必填 | 说明                          |
+| -------------------- | -------------------------------------------------- | --- | ---------------------------- |
+| types  | Array\<MetadataObjectType\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400101                |  Parameter missing or parameter type incorrect.                                   |
+| 7400103                |  Session not config.                                   |
+| 7400201                |  Camera service fatal error.                           |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+  try {
+    metadataOutput.removeMetadataObjectTypes(types);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`removeMetadataObjectTypes error. error code: ${err.code}`);
+  }
+}
+```

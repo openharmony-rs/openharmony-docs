@@ -368,8 +368,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 | -------------- | ---------------------- | ------------------------------ |
 | width          | [Length](#length)      | 目标元素的宽度。<br/>单位：vp |
 | height         | [Length](#length)      | 目标元素的高度。<br/>单位：vp |
-| position       | [Position](#position) | 目标元素左上角相对父元素左上角的位置。            |
-| globalPosition | [Position](#position) | 目标元素左上角相对页面左上角的位置。             |
+| position       | [Position](#position) | 目标元素左上角在以父元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的位置。            |
+| globalPosition | [Position](#position) | 目标元素左上角在当前窗口坐标系中的位置。             |
 
 ## Position
 

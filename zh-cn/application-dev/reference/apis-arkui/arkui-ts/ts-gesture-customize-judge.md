@@ -240,7 +240,7 @@ struct Index {
             console.info(`gestureInfo Type ${gestureInfo.type.toString()}`);
             console.info(`isSystemGesture ${gestureInfo.isSystemGesture}`);
             console.info(`zqs pressure ${event.pressure}\nfingerList.length ${event.fingerList.length}\ntimeStamp ${event.timestamp}\nsourceType ${event.source.toString()}\n` +
-              `titleX ${event.tiltX}\ntitleY ${event.tiltY}\nrollAngle ${event.rollAngle}\nsourcePool ${event.sourceTool.toString()}`);
+              `tiltX ${event.tiltX}\ntiltY ${event.tiltY}\nrollAngle ${event.rollAngle}\nsourcePool ${event.sourceTool.toString()}`);
             // 如果是长按类型手势，判断点击的位置是否在上半区
             if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
               if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {

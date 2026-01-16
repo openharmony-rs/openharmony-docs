@@ -33,7 +33,6 @@
 
 2. 在resources\base下新增profile文件夹，在profile下新增一个main_pages.json文件，并配置如下内容。
     ```json
-    // MyApplication\library\src\main\resources\base\profile\main_pages.json
     {
       "src": [
         "pages/PageIndex"

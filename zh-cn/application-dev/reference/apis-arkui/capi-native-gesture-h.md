@@ -122,9 +122,9 @@
 
 | 名称 |  描述 |
 | -- | -- |
-| [NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting) | 从API version 20开始，新增手势绑定、手势移除以及自定义手势判断的示例。 |
-| [NdkGestureNestScroll](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureNestScroll) | 从API version 20开始，新增手势接口实现嵌套滚动的示例。 |
-| [NdkGestureBlocking](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureBlocking) | 从API version 20开始，新增手势拦截的示例。 |
+| <!--RP1-->[NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting)<!--RP1End--> | 从API version 20开始，新增手势绑定、手势移除以及自定义手势判断的示例。 |
+| <!--RP2-->[NdkGestureNestScroll](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureNestScroll)<!--RP2End--> | 从API version 20开始，新增手势接口实现嵌套滚动的示例。 |
+| <!--RP3-->[NdkGestureBlocking](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureBlocking)<!--RP3End--> | 从API version 20开始，新增手势拦截的示例。 |
 
 ## 枚举类型说明
 

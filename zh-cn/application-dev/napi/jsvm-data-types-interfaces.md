@@ -1499,7 +1499,7 @@ static JSVM_Value CallFunction(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_ValueType valuetype;
     JSVM_CALL(OH_JSVM_Typeof(env, args[0], &valuetype));
     if (valuetype != JSVM_ValueType::JSVM_FUNCTION) {
-        OH_LOG_ERROR(LOG_APP, "Wrong type of argment. Expects a function.");
+        OH_LOG_ERROR(LOG_APP, "Wrong type of argument. Expects a function.");
         return nullptr;
     }
 
@@ -2002,9 +2002,9 @@ static napi_value TestDefineClassWithProperty(napi_env env1, napi_callback_info 
     OH_JSVM_DeleteProperty(env, instanceValue, jsIndex, &result1);
 
     // 3. 作为函数的回调
-    JSVM_Value gloablObj = nullptr;
-    OH_JSVM_GetGlobal(env, &gloablObj);
-    OH_JSVM_SetNamedProperty(env, gloablObj, "myTestInstance", instanceValue);
+    JSVM_Value globalObj = nullptr;
+    OH_JSVM_GetGlobal(env, &globalObj);
+    OH_JSVM_SetNamedProperty(env, globalObj, "myTestInstance", instanceValue);
     OH_LOG_INFO(LOG_APP, "set property on global object");
     std::string innerSourcecodestr = R"(
     {

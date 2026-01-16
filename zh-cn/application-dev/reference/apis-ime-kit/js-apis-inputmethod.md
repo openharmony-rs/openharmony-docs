@@ -811,7 +811,7 @@ Enter键的功能类型。
 | inputAttribute  | [InputAttribute](#inputattribute10) | 否 | 否 | 编辑框属性。|
 | cursorInfo  | [CursorInfo](#cursorinfo10) | 否 | 是 | 光标信息。|
 | selection  | [Range](#range10) | 否 | 是 | 文本选中的范围。|
-| windowId  | number | 否 | 是 | 编辑框所在的窗口Id，该参数应为整数。<br>推荐使用[getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| windowId  | number | 否 | 是 | 编辑框所在的窗口Id，该参数应为整数。<br>推荐使用[getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
 | newEditBox<sup>20+</sup> | boolean | 否 | 是 | 表示是否为新编辑框。true表示新编辑框，false表示非新编辑框。 |
 | capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 否 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。|
 

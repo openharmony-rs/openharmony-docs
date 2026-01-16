@@ -421,6 +421,7 @@ The specified bundle is invalid.
 检查包信息是否正确。
 <!--DelEnd-->
 
+<!--Del-->
 ## 1600023 app NotificationSubscriberExtensionAbility未实现
 
 **错误信息**
@@ -438,6 +439,7 @@ The application does not implement the NotificationSubscriberExtensionAbility.
 **处理步骤**
 
 应用需创建NotificationSubscriberExtensionAbility，具体配置方法参考[ExtensionAbility组件](../../application-models/extensionability-overview.md)中的[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)。
+<!--DelEnd-->
 
 <!--Del-->
 ## 1600024 未配置自定义铃声

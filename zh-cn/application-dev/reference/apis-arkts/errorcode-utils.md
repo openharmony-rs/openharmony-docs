@@ -184,7 +184,7 @@ The {methodName} method cannot be bound.
 
 **错误描述**
 
-调用语言容器类的方法时，传入的this.object不是容器类的实例语言，容器类的方法不支持bind。
+调用语言容器类的方法时，传入的this.object不是容器类的实例，容器类的方法不支持bind。
 
 **可能原因**
 
