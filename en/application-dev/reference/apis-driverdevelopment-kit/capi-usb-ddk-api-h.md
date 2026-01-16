@@ -148,7 +148,7 @@ Obtains the configuration descriptor. To avoid memory leakage, use [OH_Usb_FreeC
 | Name                                              | Description|
 |---------------------------------------------------| -- |
 | uint64_t deviceId                                 | Device ID.|
-| uint8_t configIndex                               | Configuration index, which corresponds to the **bConfigurationValue** field in the USB configuration descriptor.|
+| uint8_t configIndex                               | Configuration index, which corresponds to the **bConfigurationValue** field of the configuration descriptor in the USB protocol.|
 | struct [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) ** const config | Configuration descriptor, which includes the standard configuration descriptor defined in the USB protocol and the associated interface descriptor and endpoint descriptor.|
 
 **Returns**
