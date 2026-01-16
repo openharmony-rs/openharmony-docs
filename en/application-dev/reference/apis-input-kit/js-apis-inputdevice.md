@@ -1117,7 +1117,7 @@ Provides information about an input device.
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| id                   | number                                 | No| No| Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
+| id                   | number                                 | No| No| Unique ID of the input device. If a physical device is repeatedly reinstalled, its ID may change.|
 | name                 | string                                 | No| No| Name of the input device.                                            |
 | sources              | Array&lt;[SourceType](#sourcetype9)&gt; | No| No| Input sources supported by the input device, including the keyboard, mouse, touchscreen, trackball, touchpad, and joystick.|
 | axisRanges           | Array&lt;[AxisRange](#axisrange)&gt;  | No| No| Axis information of the input device.                                          |
