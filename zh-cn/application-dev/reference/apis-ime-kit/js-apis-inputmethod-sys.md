@@ -93,7 +93,7 @@ let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMet
 
 inputMethod.switchInputMethod(currentIme.name).then(() => {
   console.info('Succeeded in switching inputmethod.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
 })
 
@@ -101,7 +101,7 @@ let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSub
 
 inputMethod.switchInputMethod(currentIme.name, currentImeSubType.id).then(() => {
   console.info('Succeeded in switching inputmethod.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -584,7 +584,7 @@ let currentIme = inputMethod.getCurrentInputMethod();
 
 inputMethodSetting.enableInputMethod(currentIme.name, currentIme.id, inputMethod.EnabledState.BASIC_MODE).then(() => {
   console.info('Succeeded in enable inputmethod.');
-}).catch((err: BusinessError):void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to enableInputMethod. Code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -663,7 +663,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let displayId: long = 20;
 inputMethod.getController().showSoftKeyboard(displayId).then(() => {
   console.info('Succeeded in showing softKeyboard.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to show softKeyboard, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -738,7 +738,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let displayId: long = 30;
 inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
   console.info('Succeeded in hiding softKeyboard.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to hide softKeyboard, code: ${err.code}, message: ${err.message}`);
 });
 ```

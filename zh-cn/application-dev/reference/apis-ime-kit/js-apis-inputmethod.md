@@ -262,7 +262,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let currentIme = inputMethod.getCurrentInputMethod();
 
-inputMethod.switchInputMethod(currentIme, (err: BusinessError|null, result: boolean|undefined) => {
+inputMethod.switchInputMethod(currentIme, (err: BusinessError | null, result: boolean | undefined) => {
   if (err) {
     console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
     return;
@@ -353,7 +353,7 @@ inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
   } else {
     console.error('Failed to switchInputMethod.');
   }
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -383,7 +383,7 @@ getCurrentInputMethod(): InputMethodProperty
 **示例：**
 
 ```ts
-let currentIme = inputMethod.getCurrentInputMethod();
+let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
 ```
 
 ## inputMethod.switchCurrentInputMethodSubtype<sup>9+</sup>
@@ -472,7 +472,7 @@ inputMethod.switchCurrentInputMethodSubtype({
   icon: "",
   iconId: 0,
   extra: extra
-}, (err: BusinessError|null, result: boolean|undefined) => {
+}, (err: BusinessError | null, result: boolean | undefined) => {
   if (err) {
     console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
     return;
@@ -582,7 +582,7 @@ inputMethod.switchCurrentInputMethodSubtype({
   } else {
     console.error('Failed to switchCurrentInputMethodSubtype.');
   }
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to switchCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -612,7 +612,7 @@ getCurrentInputMethodSubtype(): InputMethodSubtype
 **示例：**
 
 ```ts
-let currentImeSubType = inputMethod.getCurrentInputMethodSubtype();
+let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
 ```
 
 ## inputMethod.switchCurrentInputMethodAndSubtype<sup>9+</sup>
@@ -684,7 +684,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let currentIme = inputMethod.getCurrentInputMethod();
 let imSubType = inputMethod.getCurrentInputMethodSubtype();
 
-inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: BusinessError|null, result: boolean|undefined) => {
+inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: BusinessError | null, result: boolean | undefined) => {
   if (err) {
     console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${err.code}, message: ${err.message}`);
     return;
@@ -780,7 +780,7 @@ inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType).then((resu
   } else {
     console.error('Failed to switchCurrentInputMethodAndSubtype.');
   }
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -866,8 +866,8 @@ setSimpleKeyboardEnabled(enable: boolean): void
 **示例：**
 
 ```ts
-  let enable: boolean = false;
-  inputMethod.setSimpleKeyboardEnabled(enable);
+let enable: boolean = false;
+inputMethod.setSimpleKeyboardEnabled(enable);
 ```
 
 ## inputMethod.onAttachmentDidFail<sup>22+</sup>
@@ -1525,7 +1525,7 @@ let textConfig: inputMethod.TextConfig = {
 };
 inputMethodController.attach(true, textConfig).then(() => {
   console.info('Succeeded in attaching inputMethod.');
-}).catch((err: BusinessError):void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -1611,7 +1611,7 @@ let textConfig: inputMethod.TextConfig = {
 let requestKeyboardReason: inputMethod.RequestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
 inputMethodController.attach(true, textConfig, requestKeyboardReason).then(() => {
   console.info('Succeeded in attaching inputMethod.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -1694,7 +1694,7 @@ let textConfig: inputMethod.TextConfig = { inputAttribute: inputAttribute };
 let attachOptions: inputMethod.AttachOptions = { showKeyboard: true };
 inputMethod.getController().attachWithUIContext(uiContext, textConfig, attachOptions).then(() => {
     console.info('Succeeded in attaching inputMethod.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
     console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1754,7 +1754,7 @@ import { inputMethod } from '@kit.IMEKit';
 
 inputMethod.getController().discardTypingText().then(() => {
   console.info('Succeeded discardTypingText.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to discardTypingText errCode:${err.code}, errMsg:${err.message}`);
 });
 ```
@@ -1874,7 +1874,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodController.showTextInput().then(() => {
   console.info('Succeeded in showing text input.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to showTextInput, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1941,7 +1941,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let requestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
 inputMethodController.showTextInput(requestKeyboardReason).then(() => {
   console.info('Succeeded in showing text input.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to showTextInput, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -2065,7 +2065,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodController.hideTextInput().then(() => {
   console.info('Succeeded in hiding inputMethod.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to hideTextInput, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -2175,7 +2175,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodController.detach().then(() => {
   console.info('Succeeded in detaching inputMethod.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to detach, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -2320,7 +2320,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let windowId: int = 2000;
 inputMethodController.setCallingWindow(windowId).then(() => {
   console.info('Succeeded in setting callingWindow.');
-}).catch((err: BusinessError):void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to setCallingWindow, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -2453,7 +2453,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let cursorInfo: inputMethod.CursorInfo = { left: 0, top: 0, width: 600, height: 800 };
 inputMethodController.updateCursor(cursorInfo).then(() => {
   console.info('Succeeded in updating cursorInfo.');
-}).catch((err: BusinessError):void => {
+}).catch((err: BusinessError): void => {
   console.error(`Failed to updateCursor, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -2590,7 +2590,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodController.changeSelection('test', 0, 5).then(() => {
   console.info('Succeeded in changing selection.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to changeSelection, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -2723,7 +2723,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let inputAttribute: inputMethod.InputAttribute = { textInputType: inputMethod.TextInputType.TEXT, enterKeyType: inputMethod.EnterKeyType.NONE };
 inputMethodController.updateAttribute(inputAttribute).then(() => {
   console.info('Succeeded in updating attribute.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to updateAttribute, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -2864,7 +2864,7 @@ inputMethodController.stopInputSession().then((result: boolean) => {
   } else {
     console.error('Failed to stopInputSession.');
   }
-  }).catch((err: BusinessError) :void=> {
+  }).catch((err: BusinessError): void=> {
   console.error(`Failed to stopInputSession, code: ${error.code}, message: ${error.message}`);
 })
 ```
@@ -2988,7 +2988,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodController.showSoftKeyboard().then(() => {
   console.info('Succeeded in showing softKeyboard.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to showSoftKeyboard, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -3112,7 +3112,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodController.hideSoftKeyboard().then(() => {
   console.info('Succeeded in hiding softKeyboard.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to hideSoftKeyboard, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -3186,7 +3186,7 @@ let msgId: string = "testMsgId";
 let msgParam: ArrayBuffer = new ArrayBuffer(128);
 inputMethodController.sendMessage(msgId, msgParam).then(() => {
   console.info('Succeeded send message.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to sendMessage, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -5841,7 +5841,7 @@ let inputMethodProperty: inputMethod.InputMethodProperty = {
 let inputMethodSetting = inputMethod.getSetting();
 inputMethodSetting.listInputMethodSubtype(inputMethodProperty).then((data: Array<InputMethodSubtype>) => {
   console.info('Succeeded in listing inputMethodSubtype.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to listInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -5968,7 +5968,7 @@ let inputMethodSetting = inputMethod.getSetting();
 
 inputMethodSetting.listCurrentInputMethodSubtype().then((data: Array<InputMethodSubtype>) => {
   console.info('Succeeded in listing currentInputMethodSubtype.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to listCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -6108,7 +6108,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodSetting.getInputMethods(true).then((data: Array<inputMethod.InputMethodProperty>) => {
   console.info('Succeeded in getting inputMethods.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to getInputMethods, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -6156,7 +6156,7 @@ getInputMethodsSync(enable: boolean): Array&lt;InputMethodProperty&gt;
 **示例：**
 
 ```ts
-let imeProp = inputMethodSetting.getInputMethodsSync(true);
+let imeProp: Array<inputMethod.InputMethodProperty> = inputMethodSetting.getInputMethodsSync(true);
 ```
 
 ### getAllInputMethods<sup>11+</sup>
@@ -6269,7 +6269,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodSetting.getAllInputMethods().then((data: Array<inputMethod.InputMethodProperty>) => {
   console.info('Succeeded in getting all inputMethods.');
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to getAllInputMethods, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -6304,7 +6304,7 @@ getAllInputMethodsSync(): Array&lt;InputMethodProperty&gt;
 **示例：**
 
 ```ts
-let imeProp = inputMethodSetting.getAllInputMethodsSync();
+let imeProp: Array<inputMethod.InputMethodProperty> = inputMethodSetting.getAllInputMethodsSync();
 ```
 
 ### showOptionalInputMethods<sup>(deprecated)</sup>
@@ -6584,7 +6584,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodSetting.getInputMethodState().then((status: inputMethod.EnabledState) => {
   console.info(`Succeeded in getInputMethodState, status: ${status}`);
-}).catch((err: BusinessError) :void=> {
+}).catch((err: BusinessError): void=> {
   console.error(`Failed to getInputMethodState, code: ${err.code}, message: ${err.message}`);
 })
 ```
