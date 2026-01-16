@@ -102,10 +102,10 @@
 6. 将中文域名转换为对应ASCII编码后获取对应IP。
 
    <!-- @[Change_Handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
-
-    ``` TypeScript
-    this.getAddressName(true);
-    ```
+   
+   ``` TypeScript
+   this.getAddressName(true);
+   ```
 
 7. 将转换后的ASCII编码转成原中文域名。
 
