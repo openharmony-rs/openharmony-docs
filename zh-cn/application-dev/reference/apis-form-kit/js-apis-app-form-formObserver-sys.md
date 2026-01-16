@@ -51,7 +51,7 @@ import { formObserver } from '@kit.FormKit';
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, formId: ${data.formId}`);
 }
 
 formObserver.on('formAdd', callback);
@@ -92,7 +92,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, formId: ${data.formId}`);
 }
 
 formObserver.on('formAdd', bundleName, callback);
@@ -100,7 +100,7 @@ formObserver.on('formAdd', bundleName, callback);
 
 ## off('formAdd')
 
- off(type: "formAdd", hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
+off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void;
 
 取消订阅卡片新增事件。使用callback异步回调，返回当前新增卡片的信息。
 
@@ -133,11 +133,10 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, formId: ${data.formId}`);
 }
 
 formObserver.off('formAdd', bundleName, callback);
-
 ```
 > **说明：**
 >
@@ -177,7 +176,7 @@ formObserver.off('formAdd', bundleName, callback);
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info(`form deleted, data: ${JSON.stringify(data)}`);
+  console.info(`form deleted, formId: ${data.formId}`);
 }
 
 formObserver.on('formRemove', callback);
@@ -218,7 +217,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info(`form deleted, data: ${JSON.stringify(data)}`);
+  console.info(`form deleted, formId: ${data.formId}`);
 }
 
 formObserver.on('formRemove', bundleName, callback);
@@ -259,7 +258,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, formId: ${data.formId}`);
 }
 
 formObserver.off('formRemove', bundleName, callback);
@@ -304,11 +303,12 @@ formObserver.off('formRemove', bundleName, callback);
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.info(`form change visibility, data: ${JSON.stringify(data)}`);
+  data.forEach(data => {
+    console.info(`form change visibility, formId: ${data.formId}`);
+  });
 }
 
 formObserver.on('notifyVisible', callback);
-
 ```
 
 ## on('notifyVisible')
@@ -349,7 +349,9 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.info(`form change visibility, data: ${JSON.stringify(data)}`);
+  data.forEach(data => {
+    console.info(`form change visibility, formId: ${data.formId}`);
+  });
 }
 
 formObserver.on('notifyVisible', bundleName, callback);
@@ -390,7 +392,9 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.info(`form change visibility, data: ${JSON.stringify(data)}`);
+  data.forEach(data => {
+    console.info(`form change visibility, formId: ${data.formId}`);
+  });
 }
 
 formObserver.off('notifyVisible', bundleName, callback);
@@ -436,7 +440,9 @@ formObserver.off('notifyVisible', bundleName, callback);
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.info(`form change invisibility, data: ${JSON.stringify(data)}`);
+  data.forEach(data => {
+    console.info(`form change invisibility, formId: ${data.formId}`);
+  });
 }
 
 formObserver.on('notifyInvisible', callback);
@@ -480,7 +486,9 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.info(`form change invisibility, data: ${JSON.stringify(data)}`);
+  data.forEach(data => {
+    console.info(`form change invisibility, formId: ${data.formId}`);
+  });
 }
 
 formObserver.on('notifyInvisible', bundleName, callback);
@@ -521,7 +529,9 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.info(`form change invisibility, data: ${JSON.stringify(data)}`);
+  data.forEach(data => {
+    console.info(`form change invisibility, formId: ${data.formId}`);
+  });
 }
 
 formObserver.off('notifyInvisible', bundleName, callback);
@@ -574,10 +584,12 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+      data.forEach(data => {
+        console.info(`formObserver getRunningFormInfos, formId: ${data.formId}`);
+      });
     }
   }, 'com.example.ohos.formjsdemo');
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -623,10 +635,12 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+      data.forEach(data => {
+        console.info(`formObserver getRunningFormInfos, formId: ${data.formId}`);
+      });
     }
   }, true, 'com.example.ohos.formjsdemo');
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -677,7 +691,7 @@ try {
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -729,7 +743,7 @@ try {
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -784,11 +798,13 @@ let formInstanceFilter: formInfo.FormProviderFilter = {
 }
 try {
   formObserver.getRunningFormInfosByFilter(formInstanceFilter).then((data: formInfo.RunningFormInfo[]) => {
-    console.info('formObserver getRunningFormInfosByFilter success, data:' + JSON.stringify(data));
+    data.forEach(data => {
+      console.info(`formObserver getRunningFormInfosByFilter success, formId: ${data.formId}`);
+    });
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -838,14 +854,17 @@ let formInstanceFilter: formInfo.FormProviderFilter = {
   moduleName: "entry"
 }
 try {
-  formObserver.getRunningFormInfosByFilter(formInstanceFilter,(error: BusinessError, data: formInfo.RunningFormInfo[]) => {
-    if (error) {
-      console.error(`error, code: ${error.code}, message: ${error.message}`);
-    } else {
-      console.info(`formObserver getRunningFormInfosByFilter, data: ${JSON.stringify(data)}`);
-    }
-  });
-} catch(error) {
+  formObserver.getRunningFormInfosByFilter(formInstanceFilter,
+    (error: BusinessError, data: formInfo.RunningFormInfo[]) => {
+      if (error) {
+        console.error(`error, code: ${error.code}, message: ${error.message}`);
+      } else {
+        data.forEach(data => {
+          console.info(`formObserver getRunningFormInfosByFilter success, formId: ${data.formId}`);
+        });
+      }
+    });
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -896,11 +915,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formObserver.getRunningFormInfoById(formId).then((data: formInfo.RunningFormInfo) => {
-    console.info('formObserver getRunningFormInfoById success, data:' + JSON.stringify(data));
+    console.info(`formObserver getRunningFormInfoById success, formId: ${data.formId}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -952,11 +971,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formObserver.getRunningFormInfoById(formId, true).then((data: formInfo.RunningFormInfo) => {
-    console.info('formObserver getRunningFormInfoById success, data:' + JSON.stringify(data));
+    console.info(`formObserver getRunningFormInfoById success, formId: ${data.formId}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -1001,14 +1020,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let formId: string = '12400633174999288';
 try {
-  formObserver.getRunningFormInfoById(formId,(error: BusinessError, data: formInfo.RunningFormInfo) => {
+  formObserver.getRunningFormInfoById(formId, (error: BusinessError, data: formInfo.RunningFormInfo) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formObserver getRunningFormInfoById, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfoById, formId: ${data.formId}`);
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -1058,10 +1077,10 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formObserver getRunningFormInfoById, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfoById, formId: ${data.formId}`);
     }
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
