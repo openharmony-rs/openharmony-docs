@@ -34838,7 +34838,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/removemediafromuseralbumability/RemoveMediaFromUserAlbumAbility.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":80,
 						"name":"remove_media_from_user_album",
 						"start_line":25
 					}
