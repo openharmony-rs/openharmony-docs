@@ -200,6 +200,14 @@ import { JSON } from '@kit.ArkTS';
 
 <!-- @[bigInt_object_method1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingBigIntObjects.ets) -->
 
+``` TypeScript
+import { JSON } from '@kit.ArkTS';
+// ...
+  let bigIntObject = BigInt(112233445566778899n)
+
+  console.info(JSON.stringify(bigIntObject)); // 112233445566778899
+```
+
 方式2：使用自定义转换函数，需预处理BigInt对象进行序列化操作。
 
 <!-- @[bigInt_object_method2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingBigIntObjects.ets) -->
