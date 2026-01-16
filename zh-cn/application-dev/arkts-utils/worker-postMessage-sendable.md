@@ -31,6 +31,84 @@
 2. 创建两个Worker文件，DevEco Studio支持一键生成Worker，在对应的{moduleName}目录下任意位置，单击鼠标右键 &gt; New &gt; Worker，即可自动生成Worker的模板文件及配置信息。本文以创建“ParentWorker”（父Worker）和“ChildWorker”（子Worker）为例。父Worker负责分发克隆任务并判断任务全部完成后关闭子Worker与父Worker；子Worker负责接收任务并执行数据克隆操作，并在任务完成后通知父Worker。
   
    <!-- @[parent_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/ParentWorker.ets) -->
+   
+   ``` TypeScript
+   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker, collections, ArkTSUtils } from '@kit.ArkTS'
+   import { CopyEntry } from '../managers/CopyEntry'
+   
+   const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+   
+   // 计算worker1的任务数量
+   let count1 = 0;
+   // 计算worker2的任务数量
+   let count2 = 0;
+   // 计算总任务数量
+   let sum = 0;
+   // 异步锁
+   const asyncLock = new ArkTSUtils.locks.AsyncLock();
+   // 创建子Worker
+   const copyWorker1 = new worker.ThreadWorker('entry/ets/pages/ChildWorker');
+   const copyWorker2 = new worker.ThreadWorker('entry/ets/pages/ChildWorker');
+   
+   workerPort.onmessage = (e : MessageEvents) => {
+     let array = e.data as collections.Array<CopyEntry>;
+     sum = array.length;
+     for (let i = 0; i < array.length; i++) {
+       let entry = array[i];
+       if (entry.type === 'copy1') {
+         count1++;
+         // 如果是copy1类型，则将数据传递给 copyWorker1
+         copyWorker1.postMessageWithSharedSendable(entry);
+       } else if (entry.type === 'copy2') {
+         count2++;
+         // 如果是copy2类型，则将数据传递给 copyWorker2
+         copyWorker2.postMessageWithSharedSendable(entry);
+       }
+     }
+   }
+   
+   copyWorker1.onmessage = async (e : MessageEvents) => {
+     console.info('copyWorker1 onmessage:' + e.data);
+     await asyncLock.lockAsync(() => {
+       count1--;
+       if (count1 == 0) {
+         // 如果copyWorker1的任务全部完成，则关闭copyWorker1
+         console.info('copyWorker1 close');
+         copyWorker1.terminate();
+       }
+       sum--;
+       if (sum == 0) {
+         // 如果所有任务全部完成，则关闭父Worker
+         workerPort.close();
+       }
+     })
+   }
+   
+   copyWorker2.onmessage = async (e : MessageEvents) => {
+     console.info('copyWorker2 onmessage:' + e.data);
+     await asyncLock.lockAsync(() => {
+       count2--;
+       sum--;
+       if (count2 == 0) {
+         // 如果copyWorker2的任务全部完成，则关闭copyWorker2
+         console.info('copyWorker2 close')
+         copyWorker2.terminate();
+       }
+       if (sum == 0) {
+         // 如果所有任务全部完成，则关闭父Worker
+         workerPort.close();
+       }
+     })
+   }
+   
+   workerPort.onmessageerror = (e : MessageEvents) => {
+     console.error('onmessageerror:' + e.data);
+   }
+   
+   workerPort.onerror = (e : ErrorEvent) => {
+     console.error('onerror:' + e.message);
+   }
+   ```
 
    <!-- @[child_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/ChildWorker.ets) -->   
 
