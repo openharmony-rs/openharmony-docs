@@ -1994,11 +1994,11 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
+| 12000018 | the group id specified by the access group tag is invalid. |
 | 12000020 | the provider operation failed. |
 | 12000021 | the Ukey PIN is locked. |
 | 12000023 | the Ukey PIN not authenticated. |
 | 12000024 | the provider or Ukey is busy. |
-| 12000018 | the group id specified by the access group tag is invalid. |
 
 ## huks.updateSession<sup>9+</sup>
 
@@ -2089,11 +2089,11 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
+| 12000018 | the group id specified by the access group tag is invalid. |
 | 12000020 | the provider operation failed. |
 | 12000021 | the Ukey PIN is locked. |
 | 12000023 | the Ukey PIN not authenticated. |
 | 12000024 | the provider or Ukey is busy. |
-| 12000018 | the group id specified by the access group tag is invalid. |
 
 ## huks.finishSession<sup>9+</sup>
 
@@ -2136,11 +2136,11 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000017 | The key with same alias is already exist. |
+| 12000018 | the group id specified by the access group tag is invalid. |
 | 12000020 | the provider operation failed. |
 | 12000021 | the Ukey PIN is locked. |
 | 12000023 | the Ukey PIN not authenticated. |
 | 12000024 | the provider or Ukey is busy. |
-| 12000018 | the group id specified by the access group tag is invalid. |
 
 ## huks.finishSession<sup>9+</sup>
 
@@ -2233,11 +2233,11 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000017 | The key with same alias is already exist. |
+| 12000018 | the group id specified by the access group tag is invalid. |
 | 12000020 | the provider operation failed. |
 | 12000021 | the Ukey PIN is locked. |
 | 12000023 | the Ukey PIN not authenticated. |
 | 12000024 | the provider or Ukey is busy. |
-| 12000018 | the group id specified by the access group tag is invalid. |
 
 ## huks.abortSession<sup>9+</sup>
 
@@ -2269,10 +2269,10 @@ abortSession终止密钥操作。使用callback异步回调。
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine or Ukey driver. |
 | 12000012 | Device environment or input parameter abnormal. |
+| 12000018 | the group id specified by the access group tag is invalid. |
 | 12000014 | memory is insufficient. |
 | 12000020 | the provider operation failed. |
 | 12000024 | the provider or Ukey is busy. |
-| 12000018 | the group id specified by the access group tag is invalid. |
 
 **示例：**
 
@@ -2374,10 +2374,10 @@ abortSession终止密钥操作。使用Promise异步回调。
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine or Ukey driver. |
 | 12000012 | Device environment or input parameter abnormal. |
+| 12000018 | the group id specified by the access group tag is invalid. |
 | 12000014 | memory is insufficient. |
 | 12000020 | the provider operation failed. |
 | 12000024 | the provider or Ukey is busy. |
-| 12000018 | the group id specified by the access group tag is invalid. |
 
 **示例：**
 
