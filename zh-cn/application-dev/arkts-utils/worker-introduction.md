@@ -149,6 +149,20 @@ const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../work
 3. 在entry模块的oh-package.json5文件中配置HAR包的依赖。
 
    <!-- @[config_har_dependency](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/oh-package.json5) -->
+   
+   ``` JSON5
+   {
+     "name": "entry",
+     "version": "1.0.0",
+     "description": "Please describe the basic information.",
+     "main": "",
+     "author": "",
+     "license": "",
+     "dependencies": {
+       "har": "file:../har"
+     }
+   }
+   ```
 
 4. 在entry模块中加载HAR包中的Worker线程文件。
 
