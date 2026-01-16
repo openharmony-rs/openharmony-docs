@@ -18,7 +18,7 @@ Declares the USB Serial DDK APIs used by the host to access the serial port devi
 
 **Since**: 18
 
-**Related module**: [SerialDdk](capi-serialddk.md)
+**Related module**: [USBSerialDDK](capi-serialddk.md)
 
 ## Summary
 
@@ -28,17 +28,17 @@ Declares the USB Serial DDK APIs used by the host to access the serial port devi
 | -- | -- |
 | [int32_t OH_UsbSerial_Init(void)](#oh_usbserial_init) | Initializes the USB Serial DDK.|
 | [int32_t OH_UsbSerial_Release(void)](#oh_usbserial_release) | Releases the USB Serial DDK.|
-| [int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_DeviceHandle **dev)](#oh_usbserial_open) | Enables the USB serial port device based on the specified **deviceId** and **interfaceIndex**.|
-| [int32_t OH_UsbSerial_Close(UsbSerial_DeviceHandle *dev)](#oh_usbserial_close) | Disables the USB serial port device.|
-| [int32_t OH_UsbSerial_Read(UsbSerial_DeviceHandle *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead)](#oh_usbserial_read) | Reads data from the USB serial port device to the buffer.|
-| [int32_t OH_UsbSerial_Write(UsbSerial_DeviceHandle *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten)](#oh_usbserial_write) | Writes the data in the buffer to the USB serial port device.|
-| [int32_t OH_UsbSerial_SetBaudRate(UsbSerial_DeviceHandle *dev, uint32_t baudRate)](#oh_usbserial_setbaudrate) | Sets the baud rate for a USB serial port device. If the parameters of the USB serial port device are set to the default values (the data bit is **8**, the stop bit is **1**, and parity is disabled for data transfer), you only need to call this API to set the baud rate.|
-| [int32_t OH_UsbSerial_SetParams(UsbSerial_DeviceHandle *dev, UsbSerial_Params *params)](#oh_usbserial_setparams) | Sets the parameters of the USB serial port device. If the parameters of the USB serial port device are not set to the default values (the data bit is **8**, the stop bit is **1**, and parity is disabled for data transfer), you only need to call this API to set the related parameters.|
-| [int32_t OH_UsbSerial_SetTimeout(UsbSerial_DeviceHandle *dev, int timeout)](#oh_usbserial_settimeout) | Sets the timeout interval (ms) for reading data reported by a USB serial port device. If this function is not called, the timeout value is **0** by default, indicating that data is returned immediately regardless of whether data is read. If you need to wait for a certain period of time or data must be read, call this API to set the timeout interval.|
-| [int32_t OH_UsbSerial_SetFlowControl(UsbSerial_DeviceHandle *dev, UsbSerial_FlowControl flowControl)](#oh_usbserial_setflowcontrol) | Sets flow control parameters. Flow control is used to manage the data transfer rate during communication with the USB serial port device to ensure that the sender does not send data that exceeds the processing capability of the receiver.<br> If flow control is required, call this API to set flow control parameters. If this API is not called, flow control is not performed by default.|
-| [int32_t OH_UsbSerial_Flush(UsbSerial_DeviceHandle *dev)](#oh_usbserial_flush) | Clears the input and output buffers after the write operation is complete. If a large amount of data is to be transmitted to the USB serial port device, the data may be buffered in the kernel for transmission. If the application closes the file descriptor or exits before the data is completely sent out, some data may be lost.<br> If the data is not sent out, some data may be lost. You can call this API to ensure that all data is sent before subsequent operations are performed.|
-| [int32_t OH_UsbSerial_FlushInput(UsbSerial_DeviceHandle *dev)](#oh_usbserial_flushinput) | Refreshes the input buffer. The data in the buffer is cleared immediately. During the communication with the USB serial port device, especially in the debugging phase, disordered data packets or other exceptions may occur.<br> You can call this API to clear these exceptions to restore the communication.|
-| [int32_t OH_UsbSerial_FlushOutput(UsbSerial_DeviceHandle *dev)](#oh_usbserial_flushoutput) | Refreshes the output buffer. The data in the buffer is cleared immediately. During the communication with the USB serial port device, especially in the debugging phase, disordered data packets or other exceptions may occur.<br> You can call this API to clear these exceptions to restore the communication.|
+| [int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev)](#oh_usbserial_open) | Enables the USB serial port device based on the specified **deviceId** and **interfaceIndex**.|
+| [int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)](#oh_usbserial_close) | Disables the USB serial port device.|
+| [int32_t OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead)](#oh_usbserial_read) | Reads data from the USB serial port device to the buffer.|
+| [int32_t OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten)](#oh_usbserial_write) | Writes the data in the buffer to the USB serial port device.|
+| [int32_t OH_UsbSerial_SetBaudRate(UsbSerial_Device *dev, uint32_t baudRate)](#oh_usbserial_setbaudrate) | Sets the baud rate for a USB serial port device. If the parameters of the USB serial port device are set to the default values (the data bit is **8**, the stop bit is **1**, and parity is disabled for data transfer), you only need to call this API to set the baud rate.|
+| [int32_t OH_UsbSerial_SetParams(UsbSerial_Device *dev, UsbSerial_Params *params)](#oh_usbserial_setparams) | Sets the parameters of the USB serial port device. If the parameters of the USB serial port device are not set to the default values (the data bit is **8**, the stop bit is **1**, and parity is disabled for data transfer), you only need to call this API to set the related parameters.|
+| [int32_t OH_UsbSerial_SetTimeout(UsbSerial_Device *dev, int timeout)](#oh_usbserial_settimeout) | Sets the timeout interval (ms) for reading data reported by a USB serial port device. If this function is not called, the timeout value is **0** by default, indicating that data is returned immediately regardless of whether data is read. If you need to wait for a certain period of time or data must be read, call this API to set the timeout interval.|
+| [int32_t OH_UsbSerial_SetFlowControl(UsbSerial_Device *dev, UsbSerial_FlowControl flowControl)](#oh_usbserial_setflowcontrol) | Sets flow control parameters. Flow control is used to manage the data transfer rate during communication with the USB serial port device to ensure that the sender does not send data that exceeds the processing capability of the receiver.<br> If flow control is required, call this API to set flow control parameters. If this API is not called, flow control is not performed by default.|
+| [int32_t OH_UsbSerial_Flush(UsbSerial_Device *dev)](#oh_usbserial_flush) | Clears the input and output buffers after the write operation is complete. If a large amount of data is to be transmitted to the USB serial port device, the data may be buffered in the kernel for transmission. If the application closes the file descriptor or exits before the data is completely sent out, some data may be lost.<br> If the data is not sent out, some data may be lost. You can call this API to ensure that all data is sent before subsequent operations are performed.|
+| [int32_t OH_UsbSerial_FlushInput(UsbSerial_Device *dev)](#oh_usbserial_flushinput) | Refreshes the input buffer. The data in the buffer is cleared immediately. During the communication with the USB serial port device, especially in the debugging phase, disordered data packets or other exceptions may occur.<br> You can call this API to clear these exceptions to restore the communication.|
+| [int32_t OH_UsbSerial_FlushOutput(UsbSerial_Device *dev)](#oh_usbserial_flushoutput) | Refreshes the output buffer. The data in the buffer is cleared immediately. During the communication with the USB serial port device, especially in the debugging phase, disordered data packets or other exceptions may occur.<br> You can call this API to clear these exceptions to restore the communication.|
 
 ## Function Description
 
@@ -85,7 +85,7 @@ Releases the USB Serial DDK.
 ### OH_UsbSerial_Open()
 
 ```c
-int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_DeviceHandle **dev)
+int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev)
 ```
 
 **Description**
@@ -103,7 +103,7 @@ Enables the USB serial port device based on the specified **deviceId** and **int
 |----------------------------------|--------------------------------------------|
 | uint64_t deviceId                | Device ID.                            |
 | uint8_t interfaceIndex           | Interface index, which corresponds to [bInterfaceNumber](capi-usbddk-usbinterfacedescriptor.md) in the USB protocol.|
-| [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md) **dev | Device handle.                                     |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) **dev | Device handle.                                     |
 
 **Returns**
 
@@ -114,7 +114,7 @@ Enables the USB serial port device based on the specified **deviceId** and **int
 ### OH_UsbSerial_Close()
 
 ```c
-int32_t OH_UsbSerial_Close(UsbSerial_DeviceHandle *dev)
+int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)
 ```
 
 **Description**
@@ -130,7 +130,7 @@ Disables the USB serial port device.
 
 | Name| Description|
 | -- | -- |
-| [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) **dev | Device handle.|
 
 **Returns**
 
@@ -141,7 +141,7 @@ Disables the USB serial port device.
 ### OH_UsbSerial_Read()
 
 ```c
-int32_t OH_UsbSerial_Read(UsbSerial_DeviceHandle *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead)
+int32_t OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead)
 ```
 
 **Description**
@@ -157,7 +157,7 @@ Reads data from the USB serial port device to the buffer.
 
 | Name| Description|
 | -- | -- |
-| [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
 | uint8_t *buff | Buffer for storing the data read from the USB serial port device.|
 | uint32_t bufferSize | Buffer size.|
 | uint32_t *bytesRead | Number of bytes that are actually read. If the block mode is set, the number of bytes that are actually read is returned only when it is equal to the value of **bufferSize**.<br>                  For details, see [OH_UsbSerial_SetTimeout](capi-usb-serial-api-h.md#oh_usbserial_settimeout).|
@@ -171,7 +171,7 @@ Reads data from the USB serial port device to the buffer.
 ### OH_UsbSerial_Write()
 
 ```c
-int32_t OH_UsbSerial_Write(UsbSerial_DeviceHandle *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten)
+int32_t OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten)
 ```
 
 **Description**
@@ -187,7 +187,7 @@ Writes the data in the buffer to the USB serial port device.
 
 | Name| Description|
 | -- | -- |
-| [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
 | uint8_t *buff | Buffer to which the data of the USB serial port device is written.|
 | uint32_t bufferSize | Buffer size.|
 | uint32_t *bytesWritten | Number of bytes that are actually written.|
@@ -201,7 +201,7 @@ Writes the data in the buffer to the USB serial port device.
 ### OH_UsbSerial_SetBaudRate()
 
 ```c
-int32_t OH_UsbSerial_SetBaudRate(UsbSerial_DeviceHandle *dev, uint32_t baudRate)
+int32_t OH_UsbSerial_SetBaudRate(UsbSerial_Device *dev, uint32_t baudRate)
 ```
 
 **Description**
@@ -217,7 +217,7 @@ Sets the baud rate for a USB serial port device. If the parameters of the USB se
 
 | Name| Description|
 | -- | -- |
-| [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
 | uint32_t baudRate | Baud rate of the USB serial port device.|
 
 **Returns**
@@ -229,7 +229,7 @@ Sets the baud rate for a USB serial port device. If the parameters of the USB se
 ### OH_UsbSerial_SetParams()
 
 ```c
-int32_t OH_UsbSerial_SetParams(UsbSerial_DeviceHandle *dev, UsbSerial_Params *params)
+int32_t OH_UsbSerial_SetParams(UsbSerial_Device *dev, UsbSerial_Params *params)
 ```
 
 **Description**
@@ -245,7 +245,7 @@ Sets the parameters of the USB serial port device. If the parameters of the USB 
 
 | Name                                                                    | Description|
 |-------------------------------------------------------------------------| -- |
-| [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
 | [UsbSerial_Params](capi-serialddk-usbserial-params.md) *params                                            | USB serial port device parameters. For details, see [UsbSerial_Params](capi-serialddk-usbserial-params.md).|
 
 **Returns**
@@ -257,7 +257,7 @@ Sets the parameters of the USB serial port device. If the parameters of the USB 
 ### OH_UsbSerial_SetTimeout()
 
 ```c
-int32_t OH_UsbSerial_SetTimeout(UsbSerial_DeviceHandle *dev, int timeout)
+int32_t OH_UsbSerial_SetTimeout(UsbSerial_Device *dev, int timeout)
 ```
 
 **Description**
@@ -273,7 +273,7 @@ Sets the timeout interval (ms) for reading data reported by a USB serial port de
 
 | Name| Description|
 | -- | -- |
-| [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
 | int timeout | Timeout interval for reading data from a USB serial port device, in milliseconds. The value range is - (0, 25500]. The value is rounded off to the nearest 100 milliseconds as the actual timeout interval. For example, if the value is set to **12321**, the effective timeout interval is **12300**. - **0**: Data is returned immediately. - **-1**: Data is read in block mode. That is, data is returned only after data of the specified length is read. For details, see [OH_UsbSerial_Read](capi-usb-serial-api-h.md#oh_usbserial_read).|
 
 **Returns**
@@ -285,7 +285,7 @@ Sets the timeout interval (ms) for reading data reported by a USB serial port de
 ### OH_UsbSerial_SetFlowControl()
 
 ```c
-int32_t OH_UsbSerial_SetFlowControl(UsbSerial_DeviceHandle *dev, UsbSerial_FlowControl flowControl)
+int32_t OH_UsbSerial_SetFlowControl(UsbSerial_Device *dev, UsbSerial_FlowControl flowControl)
 ```
 
 **Description**
@@ -301,7 +301,7 @@ Sets flow control parameters. Flow control is used to manage the data transfer r
 
 | Name                                                                                  | Description|
 |---------------------------------------------------------------------------------------| -- |
-| [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md) *dev               | Device handle.|
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev               | Device handle.|
 | [UsbSerial_FlowControl](capi-usb-serial-types-h.md#usbserial_flowcontrol) flowControl | Flow control mode. For details, see [UsbSerial_FlowControl](capi-usb-serial-types-h.md#usbserial_flowcontrol).|
 
 **Returns**
@@ -313,7 +313,7 @@ Sets flow control parameters. Flow control is used to manage the data transfer r
 ### OH_UsbSerial_Flush()
 
 ```c
-int32_t OH_UsbSerial_Flush(UsbSerial_DeviceHandle *dev)
+int32_t OH_UsbSerial_Flush(UsbSerial_Device *dev)
 ```
 
 **Description**
@@ -329,7 +329,7 @@ Clears the input and output buffers after the write operation is complete. If a 
 
 | Name| Description|
 | -- | -- |
-| [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
 
 **Returns**
 
@@ -340,7 +340,7 @@ Clears the input and output buffers after the write operation is complete. If a 
 ### OH_UsbSerial_FlushInput()
 
 ```c
-int32_t OH_UsbSerial_FlushInput(UsbSerial_DeviceHandle *dev)
+int32_t OH_UsbSerial_FlushInput(UsbSerial_Device *dev)
 ```
 
 **Description**
@@ -356,7 +356,7 @@ Refreshes the input buffer. The data in the buffer is cleared immediately. Durin
 
 | Name| Description|
 | -- | -- |
-| [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
 
 **Returns**
 
@@ -367,7 +367,7 @@ Refreshes the input buffer. The data in the buffer is cleared immediately. Durin
 ### OH_UsbSerial_FlushOutput()
 
 ```c
-int32_t OH_UsbSerial_FlushOutput(UsbSerial_DeviceHandle *dev)
+int32_t OH_UsbSerial_FlushOutput(UsbSerial_Device *dev)
 ```
 
 **Description**
@@ -383,7 +383,7 @@ Refreshes the output buffer. The data in the buffer is cleared immediately. Duri
 
 | Name| Description|
 | -- | -- |
-| [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
 
 **Returns**
 
