@@ -212,6 +212,24 @@ import { JSON } from '@kit.ArkTS';
 
 <!-- @[bigInt_object_method2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingBigIntObjects.ets) -->
 
+``` TypeScript
+import { JSON } from '@kit.ArkTS';
+// ...
+  let bigIntObject = BigInt(112233445566778899n)
+
+  // 错误序列化用法：自定义函数中直接返回BigInt对象
+  // 错误案例：JSON.stringify(bigIntObject, (key: string, value: Object): Object =>{ return value; });
+
+  // 正确序列化用法：自定义函数中将BigInt对象预处理为string对象
+  let result: string = JSON.stringify(bigIntObject, (key: string, value: Object): Object => {
+    if (typeof value === 'bigint') {
+      return value.toString();
+    }
+    return value;
+  });
+  console.info('result:', result); // result: "112233445566778899"
+```
+
 ### 序列化浮点数number场景
 
 在JSON序列化中，浮点数处理存在一个特殊行为：当小数部分为零时，为保持数值的简洁表示，序列化结果会自动省略小数部分。这可能导致精度信息丢失，影响需要精确表示浮点数的场景（如金融金额、科学计量）。以下示例提供解决该场景的方法：
