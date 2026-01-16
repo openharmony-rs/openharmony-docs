@@ -507,7 +507,7 @@ struct SnapshotExample {
 
 recycleInvisibleImageMemory(enabled: boolean): void
 
-Sets the memory reclamation switch for invisible **Image** components. ([Component visibility](../../../ application-dev/ui/arkts-manage-components-visibility.md) refers to the display status of a component on the screen.) After this feature is enabled, the image memory resources held by the **Image** component will be automatically reclaimed when the system is idle (for example, when the application is running in the background) if the component is not involved in rendering. This reduces the memory usage of the application. When the component is involved in rendering again, the related image resources will be reloaded as required.
+Sets the memory reclamation switch for invisible **Image** components. ([Component visibility](../../../application-dev/ui/arkts-manage-components-visibility.md) refers to the display status of a component on the screen.) After this feature is enabled, the image memory resources held by the **Image** component will be automatically reclaimed when the system is idle (for example, when the application is running in the background) if the component is not involved in rendering. This reduces the memory usage of the application. When the component is involved in rendering again, the related image resources will be reloaded as required.
 
 This API is mainly used for optimization in memory-sensitive scenarios, such as scenarios where there are a large number of images, pages are frequently switched between the foreground and background, or the component visibility changes significantly.
 

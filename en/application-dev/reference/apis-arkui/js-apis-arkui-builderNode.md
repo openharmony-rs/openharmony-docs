@@ -4558,7 +4558,7 @@ struct MyComponent {
 
 The functionality demonstrated in this example is supported starting from API version 22.
 
-This example shows the end-to-end process for intercepting touch events in a custom component and transforming touch point coordinates. In the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) callback, traverse the **changedTouches** and **touches** arrays of [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent object description), add the component offset to the X and Y coordinates of each touch point, call [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the coordinates to pixels, and update **windowX**/**windowY** and **displayX**/**displayY**. Finally, the converted touch event is dispatched to the child node for handling through **rootNode.**[postInputEvent](#postinputevent20).
+This example shows the end-to-end process for intercepting touch events in a custom component and transforming touch point coordinates. In the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) callback, traverse the **changedTouches** and **touches** arrays of [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent), add the component offset to the X and Y coordinates of each touch point, call [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the coordinates to pixels, and update **windowX**/**windowY** and **displayX**/**displayY**. Finally, the converted touch event is dispatched to the child node for handling through **rootNode.**[postInputEvent](#postinputevent20).
 
 ```ts
 import { NodeController, ReactiveBuilderNode, FrameNode, UIContext, PromptAction, InputEventType } from '@kit.ArkUI';

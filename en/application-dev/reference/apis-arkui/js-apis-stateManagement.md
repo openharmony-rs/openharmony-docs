@@ -249,8 +249,7 @@ const p3: Sample = PersistenceV2.globalConnect({
   type: ConnectOptionsCollections\<T, S\> | ConnectOptions\<T\>
   ): T | undefined
 
-Stores key-value pair data on the application disk. Supports the persistence of the following collection types: [Array, Map, Set, Date, collections.Array, collections.Map, collections.Set](../../ui/state-management/arkts-new-persistencev2.md#collection-types-supported-by-globalconnect). Note that when persisting data of the Array<ClassA> type, you need to call [makeObserved](#makeobserved) to make the returned object observed. Multi-level nested sets are not supported. For example, `Array<Array<ClassA>>` persistence is not supported.
-
+Stores key-value pair data on the application disk. Supports the persistence of the following collection types: [Array, Map, Set, Date, collections.Array, collections.Map, collections.Set](../../ui/state-management/arkts-new-persistencev2.md#collection-types-supported-by-globalconnect). Note that when persisting data of the Array\<ClassA> type, you need to call [makeObserved](#makeobserved) to make the returned object observed. Multi-level nested sets are not supported. For example, **Array<Array\<ClassA>>** persistence is not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -265,7 +264,7 @@ Stores key-value pair data on the application disk. Supports the persistence of 
 | type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18)|  Yes  | Passed **globalConnect** parameters. For details, see the description of **ConnectOptions** and **ConnectOptionsCollections**. If **defaultSubCreator** is provided in **ConnectOptionsCollections**, **defaultCreator** must be provided. The collection item type S must be the same as the return type of **defaultSubCreator**.|
 
 When you use **defaultSubCreator** in **globalConnect**, you must provide **defaultCreator**. The return type of the **defaultSubCreator** function must be the same as the collection item type returned by **defaultCreator**.
-When **globalConnect** persists data of the **Array<ClassA>** type, you need to use the **defaultSubCreator** option to instruct the state management framework to create an instance of **ClassA**. The following is an example of using **globalConnect** to persist data of the **Array<ClassA>** type:
+When **globalConnect** persists data of the **Array\<ClassA>** type, you need to use the **defaultSubCreator** option to instruct the state management framework to create an instance of **ClassA**. The following is an example of using **globalConnect** to persist data of the **Array\<ClassA>** type:
 
 ```typescript
 class ClassA {
@@ -415,7 +414,7 @@ Defines the parameter type for **globalConnect**.
 
 ## ConnectOptionsCollections<sup>23+</sup>
 
-Defines the parameter type for [globalConnect](#globalconnect23) API. ConnectOptionsCollections is inherited from [ConnectOptions](#connectoptions18). You can use the **ConnectOptionsCollections** input parameter to persist container data (such as **Array<S>**).
+Defines the parameter type for [globalConnect](#globalconnect23) API. ConnectOptionsCollections is inherited from [ConnectOptions](#connectoptions18). You can use the **ConnectOptionsCollections** input parameter to persist container data (such as **Array\<S>**).
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -426,9 +425,9 @@ Defines the parameter type for [globalConnect](#globalconnect23) API. ConnectOpt
 |Parameter  |Type   |Read-Only  |Optional   |Description     |
 |--------|------------|------------|-----------|--------------|
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |No  |Yes  |Persists container data. **defaultSubCreator** should be provided together with **defaultCreator**; otherwise, the container data cannot be persisted. The collection item type **S** must be the same as the return type of **defaultSubCreator**.|
-|defaultSubCreator   | [StorageDefaultCreator\<S\>](#storagedefaultcreatort)   |No  |Yes  |Persists container data. If the return value of **defaultSubCreator** is **undefined** or **null**, the persistence fails. When a user-defined class collection (such as **Array<ClassA>**) is persisted, the generic type **T** in **defaultCreator** is **Array<ClassA>**, and **S** in **defaultSubCreator** is **ClassA**.|
+|defaultSubCreator   | [StorageDefaultCreator\<S\>](#storagedefaultcreatort)   |No  |Yes  |Persists container data. If the return value of **defaultSubCreator** is **undefined** or **null**, the persistence fails. When a user-defined class collection (such as **Array\<ClassA>**) is persisted, the generic type **T** in **defaultCreator** is **Array\<ClassA>**, and **S** in **defaultSubCreator** is **ClassA**.|
 
-The following shows the examples of **StorageDefaultCreator<T>** and **StorageDefaultCreator<S>**:
+The following shows the examples of **StorageDefaultCreator\<T>** and **StorageDefaultCreator\<S>**:
 
 **Example**
 ```typescript
@@ -502,7 +501,7 @@ Defines the decorator and component information associated with the observable o
 
 | Parameter| Type| Read-Only | Optional| Description    |
 | ------ | ---- | ---- |---- | ------------ |
-| decoratorName | string  | No| No  | Decorator name.<br>For a V1 object, the value is the name of the decorator associated with the object.<br> If the V1 object uses [@Track](./../../ ui/state-management/arkts-track.md), the value is **'@Track'**.<br> If the V2 object uses [@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md), the value is **'@Trace'**.<br> If the V2 object uses [makeObserved](#makeobserved), the value is **'MakeObserved'**.<br> If the V2 object uses [enableV2Compatibility](#enablev2compatibility19), the value is **'EnableV2Compatible'**.<br> If the V2 object uses built-in data, the value is **'ProxyObservedV2'**.|
+| decoratorName | string  | No| No  | Decorator name.<br>For a V1 object, the value is the name of the decorator associated with the object.<br> If the V1 object uses [@Track](./../../ui/state-management/arkts-track.md), the value is **'@Track'**.<br> If the V2 object uses [@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md), the value is **'@Trace'**.<br> If the V2 object uses [makeObserved](#makeobserved), the value is **'MakeObserved'**.<br> If the V2 object uses [enableV2Compatibility](#enablev2compatibility19), the value is **'EnableV2Compatible'**.<br> If the V2 object uses built-in data, the value is **'ProxyObservedV2'**.|
 | stateVariableName | string  | No| No  | Name of the attribute decorated by the decorator.|
 | owningComponentOrClassName | string  | No| No  | Component name.<br>A component name is returned by the V1 object.<br> An object name is returned by the V1 object using [@Track](./../../ui/state-management/arkts-track.md) or V2 object.|
 | owningComponentId | number  | No| No  | Component ID.<br>A component ID is returned by the V1 object.<br> **-1** is returned by the V1 object using [@Track](./../../ui/state-management/arkts-track.md) or V2 object.|
@@ -1995,3 +1994,4 @@ struct CompV2 {
   }
 }
 ```
+<!--no_check-->
