@@ -437,8 +437,8 @@ import { TextMenuController } from '@kit.ArkUI';
 @Component
 struct DisableMenuItem {
   aboutToAppear(): void {
-    // 禁用搜索和翻译
-    TextMenuController.disableMenuItems([TextMenuItemId.SEARCH, TextMenuItemId.TRANSLATE])
+    // 禁用搜索，翻译和AI帮写
+    TextMenuController.disableMenuItems([TextMenuItemId.SEARCH, TextMenuItemId.TRANSLATE, TextMenuItemId.AI_WRITER])
   }
 
   aboutToDisappear(): void {
@@ -472,7 +472,7 @@ struct DisableMenuItem {
 }
 ```
 
-![Text_input_disable_menu_items](figures/Text_input_disable_menu_items.gif)
+![Text_input_disable_menu_items](figures/Text_input_disable_menu_items.png)
 
 ## 自动填充
 

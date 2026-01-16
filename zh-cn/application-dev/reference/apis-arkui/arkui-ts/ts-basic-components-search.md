@@ -2148,7 +2148,7 @@ struct SearchExample {
 }
 ```
 
-![searchSetTextSelection](figures/searchSetTextSelection.gif)
+![searchSetTextSelection](figures/searchSetTextSelection.png)
 
 ### 示例18（设置文本滚动事件）
 

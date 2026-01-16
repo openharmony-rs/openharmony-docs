@@ -3175,7 +3175,7 @@ struct TextInputExample {
 }
 ```
 
-![textInputSetTextSelection](figures/textInputSetTextSelection.gif)
+![textInputSetTextSelection](figures/textInputSetTextSelection.png)
 
 ### 示例20（设置文本描边）
 
