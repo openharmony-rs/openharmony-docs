@@ -6080,7 +6080,6 @@ struct Demo32 {
   }
 }
 ```
-<!--RP2--><!--RP2End-->
 
 ### 示例33（设置监听输入法绑定事件）
 从API version 22开始，该示例通过[onWillAttachIME](#onwillattachime22)事件监听输入法绑定事件。
