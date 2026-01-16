@@ -524,6 +524,31 @@ bool OH_Pasteboard_HasData(OH_Pasteboard* pasteboard)
 | -- | -- |
 | bool | 返回剪贴板中是否有数据。返回true表示剪贴板中有数据，返回false表示剪贴板中没有数据。 |
 
+### OH_Pasteboard_HasRemoteData()
+
+```c
+bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)
+```
+
+**描述：**
+
+判断是否有远端复制数据。
+
+**起始版本：** 24
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 返回是否有远端复制数据。返回true表示有远端复制数据，返回false表示没有远端复制数据。 |
+
 ### OH_Pasteboard_GetData()
 
 ```c
