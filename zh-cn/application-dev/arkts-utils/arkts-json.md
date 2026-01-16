@@ -170,6 +170,28 @@ interface TestStr {
 
 <!-- @[containing_bigInt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingBigInts.ets) -->
 
+``` TypeScript
+import { JSON } from '@kit.ArkTS';
+// ...
+  let numberText = '{"number": 10, "largeNumber": 112233445566778899}';
+
+  let numberObj1 = JSON.parse(numberText) as Object;
+  console.info((numberObj1 as object)?.['largeNumber']);    // 112233445566778900
+
+  // 使用PARSE_AS_BIGINT的BigInt模式进行解析，避免出现大整数解析错误。
+  let options: JSON.ParseOptions = {
+    bigIntMode: JSON.BigIntMode.PARSE_AS_BIGINT,
+  }
+
+  let numberObj2 = JSON.parse(numberText, null, options) as Object;
+
+  console.info(typeof (numberObj2 as object)?.['number']);   // number
+  console.info((numberObj2 as object)?.['number']);    // 10
+
+  console.info(typeof (numberObj2 as object)?.['largeNumber']);    // bigint
+  console.info((numberObj2 as object)?.['largeNumber']);    // 112233445566778899
+```
+
 ### 序列化BigInt对象场景
 
 为弥补原生JSON无法序列化BigInt对象的缺陷，本库提供以下两种JSON序列化方式：
