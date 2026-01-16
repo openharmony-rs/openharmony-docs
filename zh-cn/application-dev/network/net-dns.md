@@ -110,10 +110,10 @@
 7. 将转换后的ASCII编码转成原中文域名。
 
    <!-- @[Change_Unicode_Handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
-
-    ``` TypeScript
-    this.hostVal = connection.getDnsUnicode(this.hostVal);
-    ```
+   
+   ``` TypeScript
+   this.hostVal = connection.getDnsUnicode(this.hostVal);
+   ```
 
 ## DNS接口支持配置获取的IP地址类型
 
