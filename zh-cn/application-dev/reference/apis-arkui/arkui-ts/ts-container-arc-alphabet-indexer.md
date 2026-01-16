@@ -4,6 +4,9 @@
 
 >  **说明：**
 >
+>	 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。	 
+>
 >  该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
@@ -50,6 +53,10 @@ color(color: Optional&lt;ColorMetrics&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                                |
@@ -65,6 +72,10 @@ selectedColor(color: Optional&lt;ColorMetrics&gt;)
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -82,6 +93,10 @@ popupColor(color: Optional&lt;ColorMetrics&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                                        |
@@ -98,6 +113,10 @@ selectedBackgroundColor(color: Optional&lt;ColorMetrics&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
@@ -113,6 +132,10 @@ popupBackground(color: Optional&lt;ColorMetrics&gt;)
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -134,6 +157,10 @@ usePopup(enabled: Optional&lt;boolean&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                   |
@@ -149,6 +176,10 @@ selectedFont(font: Optional&lt;Font&gt;)
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -166,6 +197,10 @@ popupFont(font: Optional&lt;Font&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
@@ -181,6 +216,10 @@ font(font: Optional&lt;Font&gt;)
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -198,6 +237,10 @@ itemSize(size: Optional&lt;LengthMetrics&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
@@ -213,6 +256,10 @@ selected(index: Optional&lt;number&gt;)
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -230,6 +277,10 @@ autoCollapse(enable: Optional&lt;boolean&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                       |
@@ -245,6 +296,10 @@ popupBackgroundBlurStyle(style: Optional&lt;BlurStyle&gt;)
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -269,6 +324,10 @@ onSelect(handler: Optional&lt;OnSelectCallback&gt;)
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
