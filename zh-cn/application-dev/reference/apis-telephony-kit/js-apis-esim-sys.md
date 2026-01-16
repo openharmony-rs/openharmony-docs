@@ -919,7 +919,7 @@ try {
 }
 ```
 
-## eSIM.getContractInfo
+## eSIM.getContractInfo<sup>20+</sup>
 
 getContractInfo\(slotId: number, requestData: ContractRequestData\): Promise\<string\>
 
