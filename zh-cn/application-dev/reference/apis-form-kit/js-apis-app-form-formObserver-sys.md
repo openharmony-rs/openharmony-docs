@@ -915,9 +915,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formObserver.getRunningFormInfoById(formId).then((data: formInfo.RunningFormInfo) => {
-    data.forEach(data => {
-      console.info(`formObserver getRunningFormInfoById success, formId: ${data.formId}`);
-    });
+    console.info(`formObserver getRunningFormInfoById success, formId: ${data.formId}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
