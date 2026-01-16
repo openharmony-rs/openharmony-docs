@@ -167,6 +167,40 @@ const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../work
 4. 在entry模块中加载HAR包中的Worker线程文件。
 
    <!-- @[load_har_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/crosshar.ets) -->
+   
+   ``` TypeScript
+   import { worker } from '@kit.ArkTS';
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+   
+     build() {
+       RelativeContainer() {
+         Text(this.message)
+           .id('HelloWorld')
+           .fontSize(50)
+           .fontWeight(FontWeight.Bold)
+           .alignRules({
+             center: { anchor: '__container__', align: VerticalAlign.Center },
+             middle: { anchor: '__container__', align: HorizontalAlign.Center }
+           })
+           .onClick(() => {
+             // 通过@标识路径加载形式，加载har中Worker线程文件
+             let workerInstance = new worker.ThreadWorker('@har/ets/workers/worker.ets');
+             workerInstance.onmessage = () => {
+               console.info('main thread onmessage');
+             };
+             workerInstance.postMessage('hello world');
+             this.message = 'success';
+           })
+       }
+       .height('100%')
+       .width('100%')
+     }
+   }
+   ```
 
 
 ### FA模型下的文件路径规则
