@@ -10,7 +10,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。  
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
 > 本模块接口为系统接口。
 
 ## 导入模块
@@ -21,11 +22,17 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 ## MissionCallback.notifyMissionsChanged
 
-notifyMissionsChanged(deviceId: string): void
+ArkTS-Dyn: notifyMissionsChanged(deviceId: string): void
+
+ArkTS-Sta: notifyMissionsChanged: NotifyMissionsChangedCallback;
 
 注册任务监听的callback，通知任务变化。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **系统接口**：此接口为系统接口。
 
@@ -39,6 +46,8 @@ notifyMissionsChanged(deviceId: string): void
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { distributedMissionManager } from '@kit.AbilityKit';
 
@@ -62,13 +71,45 @@ distributedMissionManager.registerMissionListener(
 );
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+
+function notifyMissionsChanged(deviceId: string)  {
+  console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
+}
+function notifySnapshot(deviceId: string, mission: int)  {
+  console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
+  console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
+}
+function notifyNetDisconnect(deviceId: string, state: int)  {
+  console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
+  console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
+}
+
+let deviceId: distributedMissionManager.MissionDeviceInfo = { deviceId: "123456" }
+let parm:distributedMissionManager.MissionCallback = {
+  notifyMissionsChanged: notifyMissionsChanged,
+  notifySnapshot: notifySnapshot,
+  notifyNetDisconnect: notifyNetDisconnect
+}
+distributedMissionManager.registerMissionListener(deviceId, parm);
+```
+
 ## MissionCallback.notifySnapshot
 
-notifySnapshot(deviceId: string, mission: number): void
+ArkTS-Dyn: notifySnapshot(deviceId: string, mission: number): void
+
+ArkTS-Sta: notifySnapshot: NotifySnapshotCallback
 
 注册任务监听的callback，通知快照变化。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **系统接口**：此接口为系统接口。
 
@@ -82,6 +123,9 @@ notifySnapshot(deviceId: string, mission: number): void
 | mission |  number | 是 | 通知快照变化，任务ID。 |
 
 **示例：**
+
+ArkTS-Dyn示例:
+
 ```ts
 import { distributedMissionManager } from '@kit.AbilityKit';
 
@@ -105,6 +149,32 @@ distributedMissionManager.registerMissionListener(
 );
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+
+function notifyMissionsChanged(deviceId: string)  {
+  console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
+}
+function notifySnapshot(deviceId: string, mission: int)  {
+  console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
+  console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
+}
+function notifyNetDisconnect(deviceId: string, state: int)  {
+  console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
+  console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
+}
+
+let deviceId: distributedMissionManager.MissionDeviceInfo = { deviceId: "123456" }
+let parm:distributedMissionManager.MissionCallback = {
+  notifyMissionsChanged: notifyMissionsChanged,
+  notifySnapshot: notifySnapshot,
+  notifyNetDisconnect: notifyNetDisconnect
+}
+distributedMissionManager.registerMissionListener(deviceId, parm);
+```
+
 ## MissionCallback.notifyNetDisconnect
 
 notifyNetDisconnect(deviceId: string, state: number): void
@@ -112,6 +182,10 @@ notifyNetDisconnect(deviceId: string, state: number): void
 注册任务监听的callback，通知断开连接。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **系统接口**：此接口为系统接口。
 
@@ -126,6 +200,8 @@ notifyNetDisconnect(deviceId: string, state: number): void
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { distributedMissionManager } from '@kit.AbilityKit';
 
@@ -135,16 +211,42 @@ distributedMissionManager.registerMissionListener(
   },
   {
     notifyMissionsChanged: (deviceId: string) => {
-      console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
+      console.log(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
     notifySnapshot: (deviceId: string, mission: number) => {
-      console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
-      console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
+      console.log(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
+      console.log(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
     notifyNetDisconnect: (deviceId: string, state: number) => {
-      console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
-      console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
+      console.log(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
+      console.log(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
     }
   }
 );
+```
+
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+
+function notifyMissionsChanged(deviceId: string)  {
+  console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
+}
+function notifySnapshot(deviceId: string, mission: int)  {
+  console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
+  console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
+}
+function notifyNetDisconnect(deviceId: string, state: int)  {
+  console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
+  console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
+}
+
+let deviceId: distributedMissionManager.MissionDeviceInfo = { deviceId: "123456" }
+let parm:distributedMissionManager.MissionCallback = {
+  notifyMissionsChanged: notifyMissionsChanged,
+  notifySnapshot: notifySnapshot,
+  notifyNetDisconnect: notifyNetDisconnect
+}
+distributedMissionManager.registerMissionListener(deviceId, parm);
 ```
