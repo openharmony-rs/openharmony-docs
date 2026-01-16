@@ -23,7 +23,7 @@ import { eSIM } from '@kit.TelephonyKit';
 
 getEid\(slotId: number\): Promise\<string\>
 
-获取指定卡槽标识eUICC硬件的Embedded SIM识别码。
+获取指定卡槽标识eUICC硬件的EID(Embedded SIM识别码)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -41,7 +41,7 @@ getEid\(slotId: number\): Promise\<string\>
 
 | 类型                  | 说明                                |
 | --------------------- | ---------------------------------- |
-| Promise\<string\> | 返回指定卡槽标识eUICC硬件的Embedded SIM识别码。 |
+| Promise\<string\> | 返回指定卡槽标识eUICC硬件的EID(Embedded SIM识别码)。 |
 
 **错误码：**
 
@@ -892,7 +892,7 @@ getSupportedPkids\(slotId: number\): Promise\<string\>
 
 | 类型                  | 说明                                |
 | --------------------- | ---------------------------------- |
-| Promise\<string\> |Promise对象，返回tlv(Tag-Length-Value)格式的，手机支持的公钥id信息。 |
+| Promise\<string\> |Promise对象，返回TLV(Tag-Length-Value)格式的，手机支持的公钥id信息。 |
 
 **错误码：**
 
@@ -1124,7 +1124,7 @@ euicc信息。
 | RESULT_SOLVABLE_ERRORS                                   | -2  | 用户必须解决可解决的错误。        |
 | RESULT_MUST_DISABLE_PROFILE                              | -1  | 必须禁用活动配置文件才能执行操作。 |
 | RESULT_OK                                                | 0   | 成功。 |
-| RESULT_GET_EID_FAILED                                    | 201 | 获取Embedded SIM识别码失败。 |
+| RESULT_GET_EID_FAILED                                    | 201 | 获取EID(Embedded SIM识别码)失败。 |
 | RESULT_ACTIVATION_CODE_CHANGED                           | 203 | 最终用户确认后，激活码将被更改。   |
 | RESULT_ACTIVATION_CODE_INVALID                           | 204 | 激活码无效。  |
 | RESULT_SMDP_ADDRESS_INVALID                              | 205 | SM-DP+服务器地址非法。 |

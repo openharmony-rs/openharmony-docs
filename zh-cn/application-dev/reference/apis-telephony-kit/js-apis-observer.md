@@ -1092,7 +1092,6 @@ offGetSimActiveState\(callback: Callback\<boolean\>\): void
 
 |     名称            |         类型      | 只读 | 可选 | 说明                                    |
 | ------------------- | ------------------| ---- | ---- | --------------------------------------- |
-
 |callback  | Callback&lt;boolean&gt;|否|否| 以callback形式返回结果。br/>- true：激活。<br/>- false：未激活。|
 
 **错误码：**
