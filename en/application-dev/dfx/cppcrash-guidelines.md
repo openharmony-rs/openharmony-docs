@@ -14,7 +14,7 @@ After a process crashes, the system detects the crash, captures crash informatio
 
 - **Signal**
 
-  A mechanism for inter-process communication in POSIX-compliant operating systems. It provides asynchronous notifications that interrupt the target process's normal control flow.
+  A mechanism for inter-process communication in POSIX-compliant operating systems.
 
 - **Signal handler**
 
