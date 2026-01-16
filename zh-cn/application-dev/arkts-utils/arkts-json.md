@@ -136,6 +136,34 @@ interface TestStr {
 
 <!-- @[json_nesting_method2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) -->
 
+``` TypeScript
+import { JSON } from '@kit.ArkTS';
+
+interface Info {
+  name: string;
+  age: number;
+}
+
+interface TestObj {
+  info: Info;
+}
+
+interface TestStr {
+  info: string;
+}
+// ...
+  /*
+   * 将原始JSON字符串`{"info": "{"name": "zhangsan", "age": 18}"}`进行双重转义，
+   * 修改为`{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`。
+   * */
+  let jsonStr = `{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`;
+  let obj2 = JSON.parse(jsonStr) as TestStr;
+  console.info(JSON.stringify(obj2));    // {"info":"{\"name\": \"zhangsan\", \"age\": 18}"}
+  // 获取JSON字符串中的name信息
+  let obj3 = JSON.parse(obj2.info) as Info;
+  console.info(obj3.name); // zhangsan
+```
+
 ### 解析包含大整数的JSON字符串场景
 
 当JSON字符串中存在小于-(2^53-1)或大于(2^53-1)的整数时，解析后数据会出现精度丢失或不正确的情况。该解析场景需要指定BigIntMode，将大整数解析为BigInt。
