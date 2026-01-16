@@ -43,85 +43,85 @@
 
 1. 导入机械体设备管理模块。
    <!-- @[import_mechanicManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
-
-    ```ts
-    import { mechanicManager } from '@kit.MechanicKit';
-    ```
+   
+   ``` TypeScript
+   import { mechanicManager } from '@kit.MechanicKit';
+   ```
 
 2. 获取已连接的机械体列表。
    <!-- @[get_mechDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
-
-    ```ts
-    let savedMechanicIds: number[] = [];
    
-    try {
-    const devices = mechanicManager.getAttachedMechDevices();
-    console.info('Connected devices:', devices);
+   ``` TypeScript
+   let savedMechanicIds: number[] = [];
    
-    devices.forEach(device => {
-        console.info(`Device ID: ${device.mechId}`);
-        console.info(`Device Name: ${device.mechName}`);
-        console.info(`Device Type: ${device.mechDeviceType}`);
-        
-    //保存设备类型为GIMBAL_DEVICE的设备的MechId
-        if (device.mechDeviceType === mechanicManager.MechDeviceType.GIMBAL_DEVICE) {
-        savedMechanicIds.push(device.mechId);
-        console.info(`GIMBAL_TYPE device saved ID: ${device.mechId}`);
-        } else {
-        console.info(`Skip non-gimbal devices: ${device.mechId}`);
-        }
-    });
+   try {
+     const devices = mechanicManager.getAttachedMechDevices();
+     console.info('Connected devices:', devices);
    
-    console.info('List of saved gimbal device IDs:', savedMechanicIds);
-    } catch (err) {
-    console.error('Error getting attached devices:', err);
-    }
-    ```
+     devices.forEach(device => {
+       console.info(`Device ID: ${device.mechId}`);
+       console.info(`Device Name: ${device.mechName}`);
+       console.info(`Device Type: ${device.mechDeviceType}`);
+   
+       //保存设备类型为GIMBAL_DEVICE的设备的MechId
+       if (device.mechDeviceType === mechanicManager.MechDeviceType.GIMBAL_DEVICE) {
+         savedMechanicIds.push(device.mechId);
+         console.info(`GIMBAL_TYPE device saved ID: ${device.mechId}`);
+       } else {
+         console.info(`Skip non-gimbal devices: ${device.mechId}`);
+       }
+     });
+   
+     console.info('List of saved gimbal device IDs:', savedMechanicIds);
+   } catch (err) {
+     console.error('Error getting attached devices:', err);
+   }
+   ```
 
 3. 监听设备的连接状态变化，以便及时响应。
    <!-- @[on_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
-
-    ```ts
-    const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
-    if (info.state === mechanicManager.AttachState.ATTACHED) {
-        console.info('Device attached:', info.mechInfo);
-        // 执行设备连接的相关操作
-        handleDeviceAttached(info.mechInfo);
-    } else if (info.state === mechanicManager.AttachState.DETACHED) {
-        console.info('Device detached:', info.mechInfo);
-        // 执行设备断开的相关操作
-        handleDeviceDetached(info.mechInfo);
-    }
-    };
    
-    // 注册监听
-    mechanicManager.on('attachStateChange', attachStateChangeCallback);
-    ```
+   ``` TypeScript
+   const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
+     if (info.state === mechanicManager.AttachState.ATTACHED) {
+       console.info('Device attached:', info.mechInfo);
+       // 执行设备连接的相关操作
+       handleDeviceAttached(info.mechInfo);
+     } else if (info.state === mechanicManager.AttachState.DETACHED) {
+       console.info('Device detached:', info.mechInfo);
+       // 执行设备断开的相关操作
+       handleDeviceDetached(info.mechInfo);
+     }
+   };
+   
+   // 注册监听
+   mechanicManager.on('attachStateChange', attachStateChangeCallback);
+   ```
 
 4. 处理设备的连接与断开的事件。
    <!-- @[handle_device_attached_detached](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
    
-    ```ts
-    function handleDeviceAttached(mechInfo: mechanicManager.MechInfo) {
-    console.info(`New device is connected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
-    savedMechanicIds.push(mechInfo.mechId);
-    // To do sth.
-    }
+   ``` TypeScript
+   function handleDeviceAttached(mechInfo: mechanicManager.MechInfo) {
+     console.info(`New device is connected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
+     savedMechanicIds.push(mechInfo.mechId);
+     // To do sth.
+   }
    
-    function handleDeviceDetached(mechInfo: mechanicManager.MechInfo) {
-    console.info(`Device disconnected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
-    savedMechanicIds.filter(id => id !== mechInfo.mechId);
-    // To do sth.
-    }
-    ```
+   function handleDeviceDetached(mechInfo: mechanicManager.MechInfo) {
+     console.info(`Device disconnected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
+     savedMechanicIds.filter(id => id !== mechInfo.mechId);
+     // To do sth.
+   }
+   ```
    
 5. 取消连接状态的监听。
    <!-- @[off_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
    
-    ```ts
-    // 取消连接状态的监听
-    mechanicManager.off('attachStateChange', attachStateChangeCallback);
-    ```
+   ``` TypeScript
+   // 取消连接状态的监听
+   mechanicManager.off('attachStateChange', attachStateChangeCallback);
+   ```
 
 ### 控制设备目标跟踪拍摄
 
@@ -130,98 +130,99 @@
 1. 启用摄像头的目标拍摄功能。
    <!-- @[set_cameraTracking_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
    
-    ```ts
-    try {
-    //检查前判断savedMechIds不为空
-    // 检查跟踪状态
-    const isEnabled = mechanicManager.getCameraTrackingEnabled();
+   ``` TypeScript
+   try {
+     //检查前判断savedMechIds不为空
+     // 检查跟踪状态
+     const isEnabled = mechanicManager.getCameraTrackingEnabled();
    
-    if (isEnabled == false) {
-        // 开启摄像头跟踪
-        mechanicManager.setCameraTrackingEnabled(true);
-        console.info('Camera tracking enabled');
-    }
+     if (isEnabled === false) {
+       // 开启摄像头跟踪
+       mechanicManager.setCameraTrackingEnabled(true);
+       console.info('Camera tracking enabled');
+     }
    
-    console.info('Is tracking currently enabled:', isEnabled);
-    } catch (err) {
-    console.error('Failed to enable camera tracking:', err);
-    }
-    ```
+     console.info('Is tracking currently enabled:', isEnabled);
+   } catch (err) {
+     console.error('Failed to enable camera tracking:', err);
+   }
+   ```
    
 2. 监听相机跟踪状态的变化。
    <!-- @[on_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
    
-    ```ts
-    const trackingStateCallback = (eventInfo : mechanicManager.TrackingEventInfo) => {
-    switch (eventInfo.event) {
-        case mechanicManager.TrackingEvent.CAMERA_TRACKING_USER_ENABLED:
-        console.info('The user has enabled camera tracking');
-        handleTrackingEnabled();
-        break;
-        case mechanicManager.TrackingEvent.CAMERA_TRACKING_USER_DISABLED:
-        console.info('The user has disabled camera tracking');
-        handleTrackingDisabled();
-        break;
-        case mechanicManager.TrackingEvent.CAMERA_TRACKING_LAYOUT_CHANGED:
-        console.info('Tracking layout has changed');
-        handleLayoutChanged();
-        break;
-    }
-    };
+   ``` TypeScript
+   const trackingStateCallback = (eventInfo : mechanicManager.TrackingEventInfo) => {
+     switch (eventInfo.event) {
+       case mechanicManager.TrackingEvent.CAMERA_TRACKING_USER_ENABLED:
+         console.info('The user has enabled camera tracking');
+         handleTrackingEnabled();
+         break;
+       case mechanicManager.TrackingEvent.CAMERA_TRACKING_USER_DISABLED:
+         console.info('The user has disabled camera tracking');
+         handleTrackingDisabled();
+         break;
+       case mechanicManager.TrackingEvent.CAMERA_TRACKING_LAYOUT_CHANGED:
+         console.info('Tracking layout has changed');
+         handleLayoutChanged();
+         break;
+     }
+   };
    
-    // 注册跟踪状态监听
-    mechanicManager.on('trackingStateChange', trackingStateCallback);
-    ```
+   // 注册跟踪状态监听
+   mechanicManager.on('trackingStateChange', trackingStateCallback);
+   ```
    
 3. 处理跟踪状态变化事件。
    <!-- @[handle_tracking_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
    
-    ```ts
-    function handleTrackingEnabled() {
-    console.info('Handling camera tracking enable events');
-    // 可以在此处更新UI状态
-    updateTrackingUI(true);
-    }
+   ``` TypeScript
+   function handleTrackingEnabled() {
+     console.info('Handling camera tracking enable events');
+     // 可以在此处更新UI状态
+     updateTrackingUI(true);
+   }
    
-    function handleTrackingDisabled() {
-    console.info('Handling camera tracking disabled events');
-    // 可以在此处更新UI状态
-    updateTrackingUI(false);
-    }
+   function handleTrackingDisabled() {
+     console.info('Handling camera tracking disabled events');
+     // 可以在此处更新UI状态
+     updateTrackingUI(false);
+   }
    
-    function handleLayoutChanged() {
-    try {
-        const newLayout = mechanicManager.getCameraTrackingLayout();
-        console.info('New Tracking Layout:', newLayout);
-        // 根据新布局更新UI
-        updateLayoutUI(newLayout);
-    } catch (err) {
-        console.error('Failed to get new layout:', err);
-    }
-    }
+   function handleLayoutChanged() {
+     try {
+       const newLayout = mechanicManager.getCameraTrackingLayout();
+       console.info('New Tracking Layout:', newLayout);
+       // 根据新布局更新UI
+       updateLayoutUI(newLayout);
+     } catch (err) {
+       console.error('Failed to get new layout:', err);
+     }
+   }
    
-    function updateTrackingUI(enabled: boolean) {
-    // 更新UI显示跟踪状态
-    // To do sth.
-    console.info('Update tracking UI status:', enabled);
-    }
+   function updateTrackingUI(enabled: boolean) {
+     // 更新UI显示跟踪状态
+     // To do sth.
+     console.info('Update tracking UI status:', enabled);
+   }
    
-    function updateLayoutUI(layout : mechanicManager.CameraTrackingLayout) {
-    // 更新UI显示布局状态
-    // To do sth.
-    console.info('Update layout UI:', layout);
-    }
-    ```
+   function updateLayoutUI(layout : mechanicManager.CameraTrackingLayout) {
+     // 更新UI显示布局状态
+     // To do sth.
+     console.info('Update layout UI:', layout);
+   }
+   ```
    
 4. 取消跟踪状态变化的监听。
    <!-- @[off_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
-    ```ts
-    // 取消跟踪状态监听
-    mechanicManager.off('trackingStateChange', trackingStateCallback);
-    
-    // 或者取消所有跟踪状态监听
-    mechanicManager.off('trackingStateChange');
-    ```
+   
+   ``` TypeScript
+   // 取消跟踪状态监听
+   mechanicManager.off('trackingStateChange', trackingStateCallback);
+   
+   // 或者取消所有跟踪状态监听
+   mechanicManager.off('trackingStateChange');
+   ```
 
 ### 调试验证
 
