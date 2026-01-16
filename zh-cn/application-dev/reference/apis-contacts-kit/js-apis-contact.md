@@ -4416,7 +4416,7 @@ addContacts(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&
 | 参数名  | 类型                | 必填 | 说明                                                         |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
 | context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| contacts | Array&lt;[Contact]&gt;(#contact) | 是   | 联系人信息数组。                                                 |
+| contacts | Array&lt;[Contact](#contact)&gt; | 是   | 联系人信息数组。                                                 |
 
 **返回值：**
 
