@@ -213,6 +213,150 @@ type ItemClickedNotifyCallback = (itemInfo: ItemInfo, clickType: ClickType) => v
 | itemInfo    | [ItemInfo](#iteminfo) | 是    | 被点击的宫格类型。包括缩略图宫格和相机宫格。 |
 | clickType  | [ClickType](#clicktype) | 是 | 点击操作的类型。 |
 
+## 示例
+
+```ts
+import {
+    ClickResult,
+    ClickType,
+    DataType,
+    ItemInfo,
+    ItemClickedNotifyCallback,
+    PhotoPickerComponent,
+    PickerController,
+    PickerOptions
+} from '@ohos.file.PhotoPickerComponent';
+import router from '@ohos.router';
+import hilog from '@ohos.hilog';
+import { AlbumInfo, AlbumPickerComponent } from '@ohos.file.AlbumPickerComponent';
+
+
+const DOMAIN = 0x0000;
+const TAG: string = 'clickedNotifyDemo';
+
+interface Checks {
+    isOnClicked: boolean;
+    isOnClickedNotify: boolean;
+}
+
+export interface ClickResultEx {
+    uri: string,
+    isSelected: boolean,
+}
+
+@Entry
+@Component
+struct PickerPage {
+@State pickerController: PickerController = new PickerController();
+private pickerOptions: PickerOptions = new PickerOptions();
+@State currentUri: string = '';
+@State currentState: number = 0;
+@State clickedUris: Map<string, ClickResultEx> = new Map();
+private isOnClicked: boolean = false;
+private isOnClickedNotify: boolean = false;
+
+    onClicked: (itemInfo: ItemInfo, clickType: ClickType) => boolean = (itemInfo: ItemInfo, clickType: ClickType) => {
+        return true;
+    };
+    onClickedNotify: ItemClickedNotifyCallback = (itemInfo: ItemInfo, clickType: ClickType) => {
+        if (!itemInfo.uri) {
+            return;
+        }
+
+        let clickResult = this.clickedUris.get(itemInfo.uri);
+        if (!clickResult) {
+            clickResult = {
+                uri: itemInfo.uri,
+                isSelected: true,
+            };
+        } else {
+            clickResult.isSelected = true;
+        }
+        this.clickedUris.set(itemInfo.uri, clickResult);
+    };
+
+    aboutToAppear(): void {
+        let params = router.getParams() as Checks;
+
+        this.pickerOptions.isSlidingSelectionSupported = true;
+        this.pickerOptions.isSearchSupported = false;
+        this.isOnClicked = params.isOnClicked;
+        this.isOnClickedNotify = params.isOnClickedNotify;
+        this.pickerOptions.maxPhotoSelectNumber = 500;
+    }
+
+    getClickedUris(): ClickResult[] {
+        let uris: ClickResultEx[] = [];
+        this.clickedUris.forEach((uri, index) => {
+            uris.push(uri)
+        })
+        return uris;
+    }
+
+    build() {
+        Column() {
+            Row() {
+                PhotoPickerComponent({
+                    pickerOptions: this.pickerOptions,
+                    pickerController: this.pickerController,
+                    onItemClicked: this.isOnClicked ? this.onClicked : undefined,
+                    onItemClickedNotify: this.isOnClickedNotify ? this.onClickedNotify : undefined,
+                    onSelect: (uri: string) => {},
+                    onDeselect: (uri: string) => {}
+                })
+            }.height('50%')
+
+            Row() {
+                Column() {
+                    Text('Selected assets')
+                    ForEach(this.getClickedUris(), (uri: ClickResult) => {
+                        Row() {
+                            Checkbox({ name: "OnClick" })
+                                .select(uri.isSelected)
+                                .onChange((checked: boolean) => {
+                                    let clickResult = this.clickedUris.get(uri.uri);
+                                    if (!clickResult) {
+                                        clickResult = {
+                                            uri: uri.uri,
+                                            isSelected: checked
+                                        };
+                                    } else {
+                                        clickResult.isSelected = checked;
+                                    }
+                                    if (uri.uri !== 'abnormal') {
+                                        this.clickedUris.set(uri.uri, clickResult);
+                                    }
+                                }).margin({ right: 5 })
+                            Text(uri.uri.slice(-30)).margin({right: 5}).width(150)
+                            Button('Delete').onClick(() => {
+                                this.clickedUris.delete(uri.uri);
+                            })
+                            Button('Abnormal').onClick(() => {
+                                let clickResult = this.clickedUris.get(uri.uri);
+                                if (clickResult) {
+                                    let oldClickUri = clickResult.uri;
+                                    clickResult.uri = 'abnormal'
+                                    this.clickedUris.set(oldClickUri, clickResult)
+                                }
+                            })
+                        }.width('100%')
+                    })
+                }
+            }.height('20%')
+
+            Row() {
+                Button('Set ClickResult')
+                    .onClick(() => {
+                        this.pickerController.addData(DataType.SET_ITEM_CLICK_RESULT, this.getClickedUris())
+                    })
+            }.height('10%')
+        }
+    .height('100%')
+            .width('100%')
+    }
+}
+```
+
 ## ScrollStopAtEndCallback<sup>23+</sup>
 
 type ScrollStopAtEndCallback = () => void
