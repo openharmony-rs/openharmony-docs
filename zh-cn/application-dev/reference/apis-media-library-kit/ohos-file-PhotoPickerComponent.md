@@ -819,10 +819,10 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 | isSlidingSupported<sup>23+</sup>         | boolean                         | 否   | 是 | 是否屏蔽PhotoPickerComponent的滚动。true表示不屏蔽滚动事件，响应用户滚动。false表示屏蔽滚动事件，不响应用户滚动。<br>默认为true。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | 否   | 是 | Picker宫格页滑动到边缘处的滑动效果。<br>默认为[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | 否   | 是 | 仅显示与指定bundle name对应的相册内容。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
+| autoPlayScenes<sup>23+</sup>      | Array\<[photoAccessHelper.AutoPlayScene](./arkts-apis-photoAccessHelper-class.md#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|	 
 | backgroundOpacity<sup>24+</sup>         | double                         | 否   | 是 | 支持配置picker背景透明度。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
-| autoPlayScenes<sup>23+</sup>      | Array\<[photoAccessHelper.AutoPlayScene](./arkts-apis-photoAccessHelper-class.md#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
- ## PickerError<sup>23+</sup>
+## PickerError<sup>23+</sup>
 
 使用PhotoPickerComponent组件发生错误时返回的错误的接口名称、错误码和错误描述。
 
@@ -832,10 +832,10 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称 | 类型   | 只读 | 可选 | 说明   |
-| ---- | ------------------------------------------------ | ---- | ---- | ------ |
-| functionName | string | 否   | 否 |产生错误的接口名称。 |
-| errorCode | number | 否   | 否 | 错误码。 |
+| 名称 | 类型   | 只读 | 可选 | 说明   | 
+ | ---- | ------------------------------------------------ | ---- | ---- | ------ | 
+| functionName | string | 否   | 否 |产生错误的接口名称。 | 
+| errorCode | number | 否   | 否 | 错误码。 | 
 | message | string | 否   | 否 | 接口返回的具体错误描述信息。 |
 
 ## DataType
