@@ -1819,7 +1819,7 @@ Rdb_TableDetails *OH_Rdb_GetTableDetails(Rdb_ProgressDetails *progress, int32_t 
 
 | 参数项 | 描述                                                         |
 | -- |------------------------------------------------------------|
-| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) *progress | 表示指向[OH_ProgressDetails](capi-rdb-rdb-progressdetails.md)实例的指针。                           |
+| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) *progress | 表示指向[Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md)实例的指针。                           |
 | int32_t version | 表示当前[Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md)的版本。 |
 
 **返回：**
