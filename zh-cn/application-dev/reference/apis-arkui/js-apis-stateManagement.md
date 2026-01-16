@@ -51,8 +51,8 @@ static&nbsp;connect\<T extends object\>( </br >
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ---------------------- |
 | type | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是   | 指定的类型，若未指定key，则使用type的name作为key。 |
-| keyOrDefaultCreator | string&nbsp;\|&nbsp;[StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 否   | 指定的key，或者是获取默认值的构造器。 |
-| defaultCreator | StorageDefaultCreator\<T\> | 否   | 获取默认值的构造器。 |
+| keyOrDefaultCreator | string&nbsp;\|&nbsp;[StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 否   | 指定的key，或者是获取默认值的构造器。默认值为undefined。 |
+| defaultCreator | StorageDefaultCreator\<T\> | 否   | 获取默认值的构造器。默认值为undefined。 |
 
 >**说明：**
 >
@@ -162,7 +162,7 @@ const keys: Array<string> = AppStorageV2.keys();
 
 static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefined
 
-将键值对数据储存在应用磁盘中。如果给定的key已经存在于[PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md)中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。如果globalConnect的是\@ObservedV2对象，该对象\@Trace属性的变化，会触发整个关联对象的自动刷新；非\@Trace属性变化则不会，如有必要，可调用PersistenceV2.save接口手动存储。
+将键值对数据储存在应用磁盘中。如果给定的key已经存在于[PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md)中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。如果globalConnect的是[\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)对象，该对象[\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)属性的变化，会触发整个关联对象的自动刷新；非\@Trace属性变化则不会，如有必要，可调用[PersistenceV2.save](#save)接口手动存储。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -205,7 +205,7 @@ static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefin
 
 <!--code_no_check-->
 ```ts
-import { PersistenceV2, Type, ConnectOptions } from '@kit.ArkUI';
+import { PersistenceV2, Type } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
 @ObservedV2
@@ -889,7 +889,7 @@ struct Child {
 ### makeBinding<sup>20+</sup>
 static makeBinding\<T\>(getter: GetterCallback\<T\>): Binding\<T\>
 
-创建只读的单向数据绑定实例，用于构建\@Builder函数中参数类型为`Binding`的对应实参。
+创建只读的单向数据绑定实例，用于构建[\@Builder](../../ui/state-management/arkts-builder.md)函数中参数类型为`Binding`的对应实参。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1037,7 +1037,7 @@ static addMonitor(target: object, path: string | string[], monitorCallback: Moni
 | target | object | 是   | 目标对象，仅支持[\@ComponentV2](../../ui/state-management/arkts-create-custom-components.md#componentv2)和[\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)实例。</br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
 | path | string \| string[]    | 是   | 添加监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定多个监听的变量路径。</br>仅支持string和string数组，对于不支持的类型，会抛出运行时错误，错误码见表格。 |
 | monitorCallback | [MonitorCallback](#monitorcallback20)   | 是   | 给对应的状态变量注册的监听函数，即path路径对应的状态变量改变时，会回调对应的函数。</br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
-| options | [MonitorOptions](#monitoroptions20)   | 否   | 监听函数的配置项，具体可见[MonitorOptions](#monitoroptions20)。 |
+| options | [MonitorOptions](#monitoroptions20)   | 否   | 监听函数的配置项，具体可见[MonitorOptions](#monitoroptions20)。默认为异步回调。 |
 
 
 **错误码：**
@@ -1723,7 +1723,7 @@ type GetterCallback\<T\> = () => T
 **示例：**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { Binding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num1: Binding<number>) {
@@ -1775,7 +1775,7 @@ type SetterCallback\<T\> = (newValue: T) => void
 **示例：**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { MutableBinding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num2: MutableBinding<number>) {
@@ -1833,7 +1833,7 @@ get value(): T
 **示例：**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { Binding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num1: Binding<number>) {
@@ -1904,7 +1904,7 @@ get value(): T
 **示例：**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { MutableBinding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num2: MutableBinding<number>) {
