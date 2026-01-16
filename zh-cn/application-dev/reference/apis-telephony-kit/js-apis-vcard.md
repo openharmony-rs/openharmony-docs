@@ -5,7 +5,6 @@ VCard是电子名片的文件格式标准,它可包含的信息有：姓名、�
 >**说明：**
 >
 >-本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。<br />
->
 
 ## 导入模块
 
@@ -27,10 +26,10 @@ importVCard\(context: Context, filePath: string, accountId: number, callback: As
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| context   | Context                      | 是   | 应用上下文。 |
+| context   | [](../apis-ability-kit/js-apis-inner-application-context.md)   | 是   | 应用上下文。 |
 | filePath   | string                      | 是   | vcf文件地址。 |
 | accountId | number | 是                  | 联系人账户ID。|
-| callback | AsyncCallback&lt;void&gt; | 是   |回调函数，返回导入成功或失败的状态码。                             |
+| callback | AsyncCallback&lt;void&gt; | 是   |回调函数，返回导入成功或失败的状态码。   |
 
 **错误码：**
 
@@ -57,14 +56,14 @@ class EntryAbility extends UIAbility {
         let filePath: string = "/data/storage/vcf/contacts.vcf";
         let accountId: number = 0;
         vcard.importVCard(this.context, filePath, accountId, (err: BusinessError) => {
-            console.log(`callback: err->${JSON.stringify(err)}`);
+            console.error(`callback: err->${JSON.stringify(err)}`);
         });
     }
 }
 
 ```
 
-## vcard.importVCard<sup>11+</sup>
+## vcard.importVCard
 
 importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<void\>
 
@@ -78,7 +77,7 @@ importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| context   | Context                      | 是   | 应用上下文。 |
+| context   | [](../apis-ability-kit/js-apis-inner-application-context.md)      | 是   | 应用上下文。 |
 | filePath   | string                      | 是   | vcf文件地址。 |
 | accountId   | number                      | 是   | 联系人账户ID。 |
 **错误码：**
@@ -106,15 +105,15 @@ class EntryAbility extends UIAbility {
         let filePath: string = "/data/storage/vcf/contacts.vcf";
         let accountId: number = 0;
         vcard.importVCard(this.context, filePath, accountId).then(() => {
-            console.log(`importVCard success.`);
+            console.info(`importVCard success.`);
         }).catch((err: BusinessError) => {
-            console.log(`importVCard failed, promise: err->${JSON.stringify(err)}`);
+            console.error(`importVCard failed, promise: err->${JSON.stringify(err)}`);
         });
     }
 }
 ```
 
-## vcard.importVCard<sup>11+</sup>
+## vcard.importVCard
 importVCard\(context: Context, filePath: string, callback: AsyncCallback\<void\>\): void
 
 将VCard文件导入联系人数据库。使用Promise异步回调。
@@ -127,7 +126,7 @@ importVCard\(context: Context, filePath: string, callback: AsyncCallback\<void\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| context   | Context                      | 是   | 应用上下文。|
+| context   | [](../apis-ability-kit/js-apis-inner-application-context.md)  | 是   | 应用上下文。|
 | filePath | string | 是   | vcf文件地址 。|
 | callback | AsyncCallback&lt;void&gt; | 是   |回调函数，返回导入成功或失败的状态码。 |
 
@@ -156,14 +155,14 @@ class EntryAbility extends UIAbility {
     onWindowStageCreate(windowStage: window.WindowStage) {
         let filePath: string = "/data/storage/vcf/contacts.vcf";
         vcard.importVCard(this.context, filePath, (err: BusinessError) => {
-            console.log(`callback: err->${JSON.stringify(err)}`);
+            console.error(`callback: err->${JSON.stringify(err)}`);
         });
     }
 }
 
 ```
 
-## vcard.exportVCard<sup>11+</sup>
+## vcard.exportVCard
 
 exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options: VCardBuliderOptions, callback: AsyncCallback\<string\>\): void
 
@@ -177,8 +176,8 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| context   | Context                      | 是   | 应用上下文。 |
-| predicates   | dataSharePredicates.DataSharePredicates | 是   | 查询语句。 |
+| context   | [](../apis-ability-kit/js-apis-inner-application-context.md)                    | 是   | 应用上下文。 |
+| predicates| [](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md)| 是   | 查询语句。 |
 |  options  | [VCardBuilderOptions](#vcardbuilderoptions11) | 否   | VCard版本与编码类型。|
 | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。生成的vcf文件地址。                             |
 
@@ -212,14 +211,14 @@ class EntryAbility extends UIAbility {
             charset: "UTF-8"
         };
         vcard.exportVCard(this.context, predicates, options, (err: BusinessError, data: string) => {
-            console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+            console.error(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
         });
     }
 }
 
 ```
 
-## vcard.exportVCard<sup>11+</sup>
+## vcard.exportVCard
 
 exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options?: VCardBuilderOptions\): Promise\<string\>
 
@@ -233,8 +232,8 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| context   | Context                      | 是   | 应用上下文。 |
-| predicates   | dataSharePredicates.DataSharePredicates | 是   | 查询语句。 |
+| context   | [](../apis-ability-kit/js-apis-inner-application-context.md)               | 是   | 应用上下文。 |
+| predicates | [](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | 是   | 查询语句。 |
 | options   | [VCardBuilderOptions](#vcardbuilderoptions11) | 是   | VCard版本与编码类型。 |  
 
 **错误码：**
@@ -267,15 +266,15 @@ class EntryAbility extends UIAbility {
             charset: "UTF-8"
         };
         vcard.exportVCard(this.context, predicates, options).then(() => {
-            console.log(`exportVCard success.`);
+            console.info(`exportVCard success.`);
         }).catch((err: BusinessError) => {
-            console.log(`exportVCard failed, promise: err->${JSON.stringify(err)}`);
+            console.error(`exportVCard failed, promise: err->${JSON.stringify(err)}`);
         });
     }
 }
 ```
 
-## vcard.exportVCard<sup>11+</sup>
+## vcard.exportVCard
 
 exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback\<string\>\): void
 
@@ -289,8 +288,8 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| context   | Context                      | 是   | 应用上下文。 |
-| predicates   | dataSharePredicates.DataSharePredicates | 是   | 查询语句。 |
+| context      | [](../apis-ability-kit/js-apis-inner-application-context.md)     | 是   | 应用上下文。 |
+| predicates   | [](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | 是   | 查询语句。 |
 
 **错误码：**
 
@@ -319,7 +318,7 @@ class EntryAbility extends UIAbility {
         predicates.equalTo("NAME", "Rose");
 
         vcard.exportVCard(this.context, predicates, (err: BusinessError, data: string) => {
-            console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+            console.error(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
         });
     }
 }
