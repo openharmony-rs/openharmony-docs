@@ -869,7 +869,13 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/module.json5",
-				"functions":[]
+				"functions":[
+					{
+						"end_line":53,
+						"name":"input_case_entry_module_extensionAbilities",
+						"start_line":36
+					}
+				]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardController.ets",
@@ -942,17 +948,17 @@
 				"functions":[
 					{
 						"end_line":495,
-						"name":"input_case_input_KeyboardControler358",
+						"name":"input_case_input_KeyboardController358",
 						"start_line":348
 					},
 					{
 						"end_line":574,
-						"name":"input_case_input_KeyboardControler507",
+						"name":"input_case_input_KeyboardController507",
 						"start_line":497
 					},
 					{
 						"end_line":716,
-						"name":"input_case_input_KeyboardControler587",
+						"name":"input_case_input_KeyboardController587",
 						"start_line":576
 					}
 				]
