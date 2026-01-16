@@ -89,19 +89,19 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let currentIme = inputMethod.getCurrentInputMethod();
+let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
 
 inputMethod.switchInputMethod(currentIme.name).then(() => {
   console.info('Succeeded in switching inputmethod.');
-}).catch((err) => {
+}).catch((err: BusinessError) :void=> {
   console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
 })
 
-let currentImeSubType = inputMethod.getCurrentInputMethodSubtype();
+let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
 
 inputMethod.switchInputMethod(currentIme.name, currentImeSubType.id).then(() => {
   console.info('Succeeded in switching inputmethod.');
-}).catch((err) => {
+}).catch((err: BusinessError) :void=> {
   console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
 })
 ```
@@ -438,7 +438,7 @@ let info: PanelInfo = {
   type: PanelType.SOFT_KEYBOARD,
   flag: PanelFlag.FLAG_FIXED
 }
-let result = inputMethodSetting.isPanelShown(info);
+let result: boolean = inputMethodSetting.isPanelShown(info);
 console.info('Succeeded in querying isPanelShown, result: ' + result);
 ```
 
@@ -446,7 +446,7 @@ console.info('Succeeded in querying isPanelShown, result: ' + result);
 
 ArkTS-Dyn: isPanelShown(panelInfo: PanelInfo, displayId: number): boolean
 
-ArkTS-Sta: isPanelShown(panelInfo: PanelInfo, displayId: long): boolean;
+ArkTS-Sta: isPanelShown(panelInfo: PanelInfo, displayId: long): boolean
 
 查询指定类型的输入法面板在指定屏幕上是否处于显示状态。
 
@@ -584,7 +584,7 @@ let currentIme = inputMethod.getCurrentInputMethod();
 
 inputMethodSetting.enableInputMethod(currentIme.name, currentIme.id, inputMethod.EnabledState.BASIC_MODE).then(() => {
   console.info('Succeeded in enable inputmethod.');
-}).catch((err) => {
+}).catch((err: BusinessError):void => {
   console.error(`Failed to enableInputMethod. Code: ${err.code}, message: ${err.message}`);
 })
 ```
