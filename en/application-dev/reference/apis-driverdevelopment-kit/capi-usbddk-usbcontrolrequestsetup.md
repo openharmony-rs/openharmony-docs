@@ -16,7 +16,7 @@ Setup data for control transfer. It corresponds to <b>Setup Data</b> in the USB 
 
 **Since**: 10
 
-**Related module**: [UsbDDK](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-usbddk.md)
 
 **Header file:** [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 
