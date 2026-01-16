@@ -10,7 +10,7 @@
 
 当设备需要获取传感器数据时，可以使用sensor模块，例如：通过订阅方向传感器数据感知用户设备当前的朝向，通过订阅计步传感器数据统计用户的步数等。
 
-详细的接口介绍请参考[Sensor接口](../../reference/apis-sensor-service-kit/capi-sensor.md)。
+详细的接口介绍请参考[Sensor](../../reference/apis-sensor-service-kit/capi-sensor.md)。
 
 ## 函数说明
 
