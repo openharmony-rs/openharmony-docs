@@ -163,37 +163,37 @@
 5. 使用指定的网络连接（NetHandle），并按给定的IP类型解析主机名。
 
    <!-- @[Get_NetHandle_Ip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/DNS.ets) -->
-
-    ``` TypeScript
-    let netSpecifier: connection.NetSpecifier = {
-      netCapabilities: {
-        // 假设当前默认网络是WiFi，需要创建蜂窝网络连接，可指定网络类型为蜂窝网。
-        bearerTypes: [connection.NetBearType.BEARER_CELLULAR],
-        // 指定网络能力为Internet。
-        networkCap: [connection.NetCap.NET_CAPABILITY_INTERNET]
-      },
-    };
-
-    // 指定超时时间为10s(默认值为0)。
-    let timeout = 10 * 1000;
-
-    // 创建NetConnection对象。
-    let conn = connection.createNetConnection(netSpecifier, timeout);
-    // 订阅事件，如果当前指定网络可用，通过on_netAvailable通知用户。
-    conn.on('netAvailable', ((handle: connection.NetHandle) => {
-      let options: connection.QueryOptions = {
-        family: connection.FamilyType.FAMILY_TYPE_IPV4
-      }
-      // 当指定网络可用时，使用该网络连接解析主机名，并仅获取IPv4类型的地址
-      handle.getAddressesByNameWithOptions(this.hostName, options).then((data: connection.NetAddress[]) => {
-        hilog.info(0x0000, 'testTag', `Succeeded to get data: ${JSON.stringify(data)}`);
-      })
-    }));
-    // 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户。
-    conn.on('netUnavailable', ((data: void) => {
-      hilog.info(0x0000, 'testTag', `net is unavailable, data is ${JSON.stringify(data)}`);
-    }));
-    ```
+   
+   ``` TypeScript
+   let netSpecifier: connection.NetSpecifier = {
+     netCapabilities: {
+       // 假设当前默认网络是WiFi，需要创建蜂窝网络连接，可指定网络类型为蜂窝网。
+       bearerTypes: [connection.NetBearType.BEARER_CELLULAR],
+       // 指定网络能力为Internet。
+       networkCap: [connection.NetCap.NET_CAPABILITY_INTERNET]
+     },
+   };
+   
+   // 指定超时时间为10s(默认值为0)。
+   let timeout = 10 * 1000;
+   
+   // 创建NetConnection对象。
+   let conn = connection.createNetConnection(netSpecifier, timeout);
+   // 订阅事件，如果当前指定网络可用，通过on_netAvailable通知用户。
+   conn.on('netAvailable', ((handle: connection.NetHandle) => {
+     let options: connection.QueryOptions = {
+       family: connection.FamilyType.FAMILY_TYPE_IPV4
+     }
+     // 当指定网络可用时，使用该网络连接解析主机名，并仅获取IPv4类型的地址
+     handle.getAddressesByNameWithOptions(this.hostName, options).then((data: connection.NetAddress[]) => {
+       hilog.info(0x0000, 'testTag', `Succeeded to get data: ${JSON.stringify(data)}`);
+     })
+   }));
+   // 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户。
+   conn.on('netUnavailable', ((data: void) => {
+     hilog.info(0x0000, 'testTag', `net is unavailable, data is ${JSON.stringify(data)}`);
+   }));
+   ```
 
 ## 相关实例
 
