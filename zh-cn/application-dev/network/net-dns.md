@@ -123,11 +123,11 @@
 1. 导入所需文件。
 
    <!-- @[Get_Ip_Address_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/DNS.ets) -->
-
-    ``` TypeScript
-    import { connection } from '@kit.NetworkKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    ```
+   
+   ``` TypeScript
+   import { connection } from '@kit.NetworkKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. 初始化数据成员。
 
