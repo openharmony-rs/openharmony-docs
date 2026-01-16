@@ -91,20 +91,18 @@
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
-   import { BusinessError } from '@ohos.base';
+   import { BusinessError } from '@kit.BasicServicesKit';
    import { socket } from '@kit.ConnectivityKit'
-   import extensionSubscription from '@ohos.notificationExtensionSubscription';
-   import util from '@ohos.util'; // 导入OpenHarmony的util模块
+   import util from '@kit.ArkTS'; 
    
    const DOMAIN = 0x0000;
    class TransferInfo {
      public type: string = ''
-     public info: extensionSubscription.NotificationInfo | undefined
+     public info: notificationExtensionSubscription.NotificationInfo | undefined
      public cancelHashCodes: Array<string> | undefined
    }
    
    class SppClientManager {
-     // 定义客户端的socket id
      private clientNumber: number = -1;
      private peerDevice: string = '';
    
@@ -116,11 +114,9 @@
        return this.clientNumber !== -1;
      }
    
-     // 发起连接
      public async startConnect(): Promise<boolean> {
-       // 配置连接参数
        let option: socket.SppOptions = {
-         uuid: '00009999-0000-1000-8000-00805F9B34FB', // 需要连接的服务端UUID服务，确保服务端支持
+         uuid: '00009999-0000-1000-8000-00805F9B34FB', 
          secure: false,
          type: socket.SppType.SPP_RFCOMM
        };
@@ -147,14 +143,12 @@
        hilog.info(DOMAIN, 'testTag', `prepare sending data to client ${this.clientNumber}`);
        const textEncoder = new util.TextEncoder();
        const uint8Array = textEncoder.encodeInto(jsonStr);
-       const arrayBuffer = uint8Array.buffer; // 最终要传输的ArrayBuffer
+       const arrayBuffer = uint8Array.buffer;
    
-       // 步骤3：通过sppWrite发送数据
        socket.sppWrite(this.clientNumber, arrayBuffer);
        hilog.info(DOMAIN, 'testTag', `sending success size：${arrayBuffer.byteLength} bytes, data: ${jsonStr}`);
      }
    
-     // 发送数据
      public sendNotificationData(notificationInfo: extensionSubscription.NotificationInfo) {
        let info: TransferInfo = {
          type: 'publish',
@@ -173,7 +167,6 @@
          info: undefined
        };
    
-       // 步骤1：将NotificationInfo序列化为JSON字符串
        let jsonStr = JSON.stringify(info);
        this.sendData(jsonStr);
      }
@@ -183,17 +176,14 @@
        hilog.info(DOMAIN, 'testTag', `client data: ${JSON.stringify(data)}`);
      };
    
-     // 断开连接
      public stopConnect() {
        hilog.info(DOMAIN, 'testTag', `closeSppClient ${this.clientNumber}`);
        try {
-         // 取消接收数据订阅
          socket.off('sppRead', this.clientNumber, this.read);
        } catch (err) {
          hilog.error(DOMAIN, 'testTag', `off sppRead errCode: ${err.code}, errMessage: ${err.message}`);
        }
        try {
-         // 从client端断开连接
          socket.sppCloseClientSocket(this.clientNumber);
          this.clientNumber = -1;
        } catch (err) {
