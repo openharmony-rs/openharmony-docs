@@ -88,6 +88,7 @@ ArkTS-Sta示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import InputMethodSubtype from '@kit.IMEKit';
 
 let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
 
