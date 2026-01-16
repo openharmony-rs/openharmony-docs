@@ -7,7 +7,7 @@
 
 ## 使用限制
 
-- 在ArkTS-Dyn中，不能对ArkTS-Sta的自定义组件设置通用样式；
+- 在ArkTS-Dyn中，不能对ArkTS-Sta的自定义组件设置通用样式，否则会导致编译错误；
 
 ```TypeScript
 // entry/src/main/ets/pages/Index.ets
@@ -19,7 +19,7 @@ struct Index {
 
   build() {
     Column() {
-      // 不支持对ArkTS-Sta自定义组件设置通用样式
+      // 不支持对ArkTS-Sta自定义组件设置通用样式，如下代码将产生编译报错
       MainPage({ message: 'Hello World!' })
         .width(100)
 
