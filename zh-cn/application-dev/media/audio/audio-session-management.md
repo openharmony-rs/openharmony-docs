@@ -38,7 +38,7 @@ let strategy: audio.AudioSessionStrategy = {
   concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
 };
 
-// 激活AudioSession，即抢占焦点
+// 激活AudioSession，即抢占焦点。
 audioSessionManager.activateAudioSession(strategy).then(() => {
   console.info('Succeeded in doing activateAudioSession.');
   // ...
@@ -66,7 +66,7 @@ let isActivated = audioSessionManager.isAudioSessionActivated();
 
 ``` TypeScript
 async function deactiveSession(){
-  // 结束AudioSession，即释放焦点
+  // 结束AudioSession，即释放焦点。
   audioSessionManager.deactivateAudioSession().then(() => {
     console.info('Succeeded in doing deactivateAudioSession.');
     // ...
@@ -116,7 +116,7 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
     concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
   };
 
-  // 激活AudioSession，即抢占焦点
+  // 激活AudioSession，即抢占焦点。
   audioSessionManager.activateAudioSession(strategy).then(() => {
     console.info('Succeeded in doing activateAudioSession.');
     if (globalLogUpdate) {
@@ -138,7 +138,7 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
     }
   });
   // ...
-  // 结束AudioSession，即释放焦点
+  // 结束AudioSession，即释放焦点。
   audioSessionManager.deactivateAudioSession().then(() => {
     console.info('Succeeded in doing deactivateAudioSession.');
     if (globalLogUpdate) {
@@ -166,7 +166,7 @@ let strategy: audio.AudioSessionStrategy = {
   concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
 };
 
-// 激活AudioSession，即抢占焦点
+// 激活AudioSession，即抢占焦点。
 audioSessionManager.activateAudioSession(strategy).then(() => {
   console.info('Succeeded in doing activateAudioSession.');
   if (globalLogUpdate) {
@@ -198,7 +198,7 @@ let strategy: audio.AudioSessionStrategy = {
   concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
 };
 
-// 激活AudioSession，即抢占焦点
+// 激活AudioSession，即抢占焦点。
 audioSessionManager.activateAudioSession(strategy).then(() => {
   console.info('Succeeded in doing activateAudioSession.');
   // ...
@@ -270,7 +270,7 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
     concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
   };
 
-  // 激活AudioSession，即抢占焦点
+  // 激活AudioSession，即抢占焦点。
   audioSessionManager.activateAudioSession(strategy).then(() => {
     console.info('Succeeded in doing activateAudioSession.');
     if (globalLogUpdate) {
@@ -300,7 +300,7 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
 }
 // 根据实际业务，可以启动多个AudioRenderer等音频播放。
 // ...
-  // 结束AudioSession，即释放焦点
+  // 结束AudioSession，即释放焦点。
   audioSessionManager.deactivateAudioSession().then(() => {
     console.info('Succeeded in doing deactivateAudioSession.');
     // ...
