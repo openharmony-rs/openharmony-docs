@@ -22,7 +22,7 @@ FormExtensionContext模块提供FormExtensionAbility具有的接口和能力。
 import { common } from '@kit.AbilityKit';
 ```
 
-## FormExtensionContext.startAbility<sup>12+</sup>
+## FormExtensionContext.startAbility
 
 startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
