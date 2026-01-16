@@ -2014,6 +2014,31 @@ systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
 });
 ```
 
+### hasRemoteData<sup>9+</sup>
+
+hasRemoteData(): boolean
+
+判断是否有远端复制数据。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+systemPasteboard.hasData((err: BusinessError, data: boolean) => {
+    if (err) {
+        console.error(`Failed to check the PasteData. Cause: ${err.message}`);
+        return;
+    }
+    console.info(`Succeeded in checking the PasteData. Data: ${data}`);
+});
+```
+
 ### hasData<sup>9+</sup>
 
 hasData(callback:  AsyncCallback&lt;boolean&gt;): void
