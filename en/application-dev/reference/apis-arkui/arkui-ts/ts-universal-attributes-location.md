@@ -296,6 +296,7 @@ Sets the alignment rule for child components in the **Stack** container. This AP
 chainMode(direction: Axis, style: ChainStyle): T
 
 Sets the parameters of the chain in which the component is the head. This parameter has effect only when the parent container is [RelativeContainer](ts-container-relativecontainer.md). The chain head is the first component in the chain that satisfies the chain formation rules. In a horizontal layout, it starts from the left (or from the right in a mirrored language layout). In a vertical layout, it starts from the top.
+
 For details, see [RelativeContainer Example 7](ts-container-relativecontainer.md#example-7-creating-chains).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.

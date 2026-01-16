@@ -165,7 +165,7 @@ Positive values shift the text upwards, while negative values shift it downwards
 
 | Name| Type                      | Mandatory| Description                            |
 | ------ | -------------------------- | ---- | -------------------------------- |
-| value  | number \| [ResourceStr](ts-types.md#resourcestr) | Yes  | Offset of the text baseline.<br>Default value: **0**<br>The Resource type is supported since API version 20.|
+| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Offset of the text baseline.<br>Default value: **0**<br>The Resource type is supported since API version 20.|
 
 ### bindSelectionMenu<sup>11+</sup>
 
@@ -306,7 +306,7 @@ Sets the color, type, and style of the text decoration.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) | Yes  | Style of the text decoration.<br>Default value:<br>{<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID <br>}<br>**NOTE**<br>The **style** parameter cannot be used in widgets.|
+| value  | [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) | Yes  | Style of the text decoration.<br>Default value:<br>{<br>&nbsp;type:&nbsp;TextDecorationType.None,<br>&nbsp;color:&nbsp;Color.Black,<br>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br>}<br>**NOTE**<br>The **style** parameter cannot be used in widgets.|
 
 ### draggable<sup>9+</sup>
 
@@ -549,7 +549,7 @@ Sets the font family.
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string \| [Resource](ts-types.md#resource) | Yes  | Font family. Default font: **'HarmonyOS Sans'**<br>To specify multiple fonts, separate them with commas (,), and fonts are applied in priority order. Example: **'Arial, HarmonyOS Sans'**.|
+| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Font family. Default font: **'HarmonyOS Sans'**<br>To specify multiple fonts, separate them with commas (,), and fonts are applied in priority order. Example: **'Arial, HarmonyOS Sans'**.|
 
 ### fontFeature<sup>12+</sup>
 
@@ -613,7 +613,7 @@ Sets the text size.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Font size. If **fontSize** is of the number type, the unit fp is used. This parameter cannot be set in percentage.<br>Default value: **16fp**.<br>Default value on wearable devices: **15fp**.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Font size. If **fontSize** is of the number type, the unit fp is used. This parameter cannot be set in percentage.<br>Default value: **16fp**.<br>Default value on wearable devices: **15fp**.|
 
 ### fontStyle
 
@@ -649,7 +649,7 @@ Sets the font weight. If the value is too large, the text may be clipped dependi
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| [ResourceStr](ts-types.md#resourcestr) | Yes  | Font weight. For the number type, the value range is [100, 900], at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>Default value: **FontWeight.Normal**.<br>Default value on wearable devices: **FontWeight.Regular**.<br>The Resource type is supported since API version 20.|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Font weight. For the number type, the value range is [100, 900], at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>Default value: **FontWeight.Normal**.<br>Default value on wearable devices: **FontWeight.Regular**.<br>The Resource type is supported since API version 20.|
 
 ### fontWeight<sup>12+</sup>
 
@@ -669,7 +669,7 @@ It is only effective for the **Text** component, not for its child components.<!
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| weight | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| [ResourceStr](ts-types.md#resourcestr) | Yes | Font weight. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>The Resource type is supported since API version 20.|
+| weight | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes | Font weight. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>The Resource type is supported since API version 20.|
 | options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12) | No | Font settings.<br>If enableVariableFontWeight is set to false, variable font weight adjustment is disabled. If weight is set to an integer multiple of 100 within the range of [100, 900], the font weight is the value of weight. If weight is set to a non-multiple of 100, the default value 400 is used.<br>If enableVariableFontWeight is set to true, variable font weight adjustment is enabled. If weight is set to any integer within the range of [100, 900], the font weight is the value of weight.|
 
 ### halfLeading<sup>12+</sup>
@@ -734,7 +734,7 @@ This setting applies to every character, including those at line endings.
 
 | Name| Type                      | Mandatory| Description          |
 | ------ | -------------------------- | ---- | -------------- |
-| value  | number \| [ResourceStr](ts-types.md#resourcestr) | Yes  | Letter spacing.<br>Default value: **0**<br>Unit: [fp](ts-pixel-units.md)<br>The Resource type is supported since API version 20.|
+| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Letter spacing.<br>Default value: **0**<br>Unit: [fp](ts-pixel-units.md)<br>The Resource type is supported since API version 20.|
 
 ### lineBreakStrategy<sup>12+</sup>
 
@@ -774,7 +774,7 @@ If the value is less than or equal to **0**, the line height is unrestricted and
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Text line height.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Text line height.|
 
 ### lineHeightMultiple<sup>22+</sup>
 
@@ -798,7 +798,7 @@ Sets the line height to the product of the input parameter (value) and the font 
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | number \| undefined | Yes  | Multiple of the line height.<br>The value cannot be less than 0.<br>If the value is less than or equal to 0, the value 0 is used. If the value is 0, the default line height is used. A decimal value is supported.|
+| value  | number&nbsp;\|&nbsp;undefined | Yes  | Multiple of the line height.<br>The value cannot be less than 0.<br>If the value is less than or equal to 0, the value 0 is used. If the value is 0, the default line height is used. A decimal value is supported.|
 
 ### lineSpacing<sup>12+</sup>
 
@@ -893,7 +893,7 @@ Since API version 18, adaptive font sizing is supported on child components and 
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Maximum font size.<br>Unit: [fp](ts-pixel-units.md)|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Maximum font size.<br>Unit: [fp](ts-pixel-units.md)|
 
 ### maxLineHeight<sup>22+</sup>
 
@@ -913,7 +913,7 @@ If maxLineHeight is less than minLineHeight, maxLineHeight takes effect based on
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | Yes  | Maximum line height of the text. The value cannot be a percentage.<br>If the value is less than or equal to 0, the value is processed as 0. If the value is 0, the maximum line height is not limited.|
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | Yes  | Maximum line height of the text. The value cannot be a percentage.<br>If the value is less than or equal to 0, the value is processed as 0. If the value is 0, the maximum line height is not limited.|
 
 ### selectedDragPreviewStyle<sup>23+</sup>
 
@@ -993,7 +993,7 @@ Since API version 18, adaptive font sizing is supported on child components and 
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Minimum font size.<br>Unit: [fp](ts-pixel-units.md)|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Minimum font size.<br>Unit: [fp](ts-pixel-units.md)|
 
 ### minLineHeight<sup>22+</sup>
 
@@ -1011,7 +1011,7 @@ Sets the minimum line height of the text. If the value is less than or equal to 
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | Yes  | Minimum line height of the text. The value cannot be a percentage.<br>If the value is less than or equal to 0, the value 0 is used.|
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | Yes  | Minimum line height of the text. The value cannot be a percentage.<br>If the value is less than or equal to 0, the value 0 is used.|
 
 ### minLines<sup>22+</sup>
 
@@ -1382,7 +1382,7 @@ Since API version 11, this API supports input parameters in an array to implemen
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions) \|  Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&gt;<sup>11+</sup> | Yes  | Text shadow.|
+| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&gt;<sup>11+</sup> | Yes  | Text shadow.|
 
 ### textVerticalAlign<sup>20+</sup>
 
@@ -1488,7 +1488,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 ### onCopy<sup>11+</sup>
 
-onCopy(callback:(value: string) =&gt; void)
+onCopy(callback:(value:&nbsp;string)&nbsp;=&gt;&nbsp;void)
 
 Called when data is copied to the pasteboard, which is displayed when the text box is long pressed. Currently, only text can be copied.
 
@@ -1618,7 +1618,7 @@ Obtains the **LayoutManager** object.
 
 ### setTextSelection<sup>23+</sup>
 
-setTextSelection(selectionStart: number | undefined, selectionEnd: number | undefined, options?: SelectionOptions): void
+setTextSelection(selectionStart:&nbsp;number | undefined, selectionEnd:&nbsp;number | undefined, options?:&nbsp;SelectionOptions): void
 
 Sets the text selection area, which will be highlighted.
 
@@ -1680,6 +1680,7 @@ Enumerates the marquee scrolling modes.
 | ON_FOCUS | 1  | The marquee starts scrolling when it has focus or when the mouse hovers over it.|
 
 ## MarqueeUpdatePolicy<sup>23+</sup>
+
 Scrolling strategy of the marquee after its attributes are updated.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
@@ -2665,10 +2666,10 @@ struct TextExample {
     Row() {
       Column() {
         Text('Automatic spacing: Enabled').margin(5)
-        Text('中文Text')
+        Text('Automatic Spacing Between Chinese and Western Characters')
           .enableAutoSpacing(true)
         Text('Automatic spacing: Disabled').margin(5)
-        Text('中文Text')
+        Text('Automatic Spacing Between Chinese and Western Characters')
           .enableAutoSpacing(false)
       }.height('100%')
     }
@@ -2975,7 +2976,7 @@ struct Index {
 }
 ```
 
-
+![textSetTextSelection](figures/textSetTextSelection.gif)
 
 ### Example 23: Setting Leading Punctuation Compression
 
@@ -2990,7 +2991,7 @@ The **compressLeadingPunctuation** API is supported since API version 23.
 struct Index {
   build() {
     Column(){
-      Text("[Leading punctuation compression] enabled"")
+      Text("[Leading punctuation compression] enabled")
         .compressLeadingPunctuation(true)
         .margin(5)
         .border({ width: 1 })
@@ -3137,5 +3138,5 @@ struct TextExample {
   }
 }
 ```
-<!--no_check-->
+
 
