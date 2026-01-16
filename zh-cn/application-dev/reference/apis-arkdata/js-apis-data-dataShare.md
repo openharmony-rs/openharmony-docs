@@ -26,6 +26,10 @@ createDataProxyHandle(): Promise&lt;DataProxyHandle&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                               | 说明                                   |
@@ -78,6 +82,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                                                         | 只读 | 可选 | 说明           |
 | ---------- | ----------------------------------------------------------- | ----| ---- | -------------- |
 | uri        | string                                                      | 否 | 否  | 共享配置的全局唯一标识。固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复。字符串长度不超过256个字节。 |
@@ -90,6 +98,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                                                         | 只读 | 可选 | 说明           |
 | ---------- | ----------------------------------------------------------- | ----| ---- | -------------- |
 | type       | [ChangeType](#changetype20)                                | 否 | 否    | 通知变更的类型。 |
@@ -101,6 +113,10 @@ export default class EntryAbility extends UIAbility {
 配置共享批量操作返回值的状态码枚举。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值                                                          | 说明           |
 | ---------- | ----------------------------------------------------------| -------------- |
@@ -115,6 +131,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                                                         | 只读 | 可选 | 说明           |
 | ---------- | ----------------------------------------------------------- | ---- | ---- | -------------- |
 | uri        | string                                                      | 否 | 否   | 被操作的URI。固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
@@ -125,6 +145,10 @@ export default class EntryAbility extends UIAbility {
 配置共享批量获取操作结果的数据结构。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型                                                         | 只读 | 可选 | 说明           |
 | ---------- | ----------------------------------------------------------- | ---- | ---- | -------------- |
@@ -139,6 +163,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 值                                                         | 说明           |
 | ---------- | ---------------------------------------------------------| -------------- |
 | SHARED_CONFIG  | 0                                                   | 表示应用之间的共享配置。 |
@@ -148,6 +176,10 @@ export default class EntryAbility extends UIAbility {
 数据代理操作配置的数据结构。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型                                                          | 只读 | 可选 | 说明           |
 | ---------- | ----------------------------------------------------------- | ---- | ---- | -------------- |
@@ -166,7 +198,13 @@ on(event: 'dataChange', uris: string[], config: DataProxyConfig, callback: Async
 
 触发通知：配置发布方调用[publish](#publish20)、[delete](#delete20)接口发布、删除配置时会自动触发通知。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDataChange](#ondatachange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -215,13 +253,81 @@ results.forEach((result) => {
 });
 ```
 
+### onDataChange<sup>23+</sup>
+
+onDataChange(uris: string[], config: DataProxyConfig, callback: Callback&lt;DataProxyChangeInfo[]&gt;): DataProxyResult[]
+
+订阅指定URI对应共享配置变更事件。若订阅者已注册变更通知，当配置发布方修改配置时，订阅者将会接收到callback通知，通知携带数据变更类型、变化的URI、变更的共享配置内容。使用callback异步回调。该功能不允许跨用户订阅通知，不允许订阅未发布的配置。订阅成功后若权限被收回，则后续不再通知订阅者。
+
+触发通知：配置发布方调用[publish](#publish20)、[delete](#delete20)接口发布、删除配置时会自动触发通知。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('dataChange')](#ondatachange20)。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                        | 必填 | 说明                    |
+| -------- | ----------------------------- | ---- | ------------------------ |
+| uris     | string\[]             | 是   | 表示要订阅的共享配置对应的URI数组，数组最大长度为32。URI固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
+| config      | [DataProxyConfig](#dataproxyconfig20)               | 是   | 表示数据代理操作的配置。 |
+| callback | Callback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | 是   | 回调函数。当配置发布方修改配置时会回调该函数。|
+
+**返回值：**
+
+| 类型             | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| [DataProxyResult](#dataproxyresult20)\[] | 批量操作的结果数组。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[数据共享错误码](errorcode-datashare.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | -------------------- |
+| 15700000 | Inner error. Possible causes: The service is not ready or is being restarted abnormally.|
+| 15700014 | The parameter format is incorrect or the value range is invalid.|
+
+**示例：**
+
+```ts
+const urisToWatch: string[] =
+  ['datashareproxy://com.example.app1/config1', 'datashareproxy://com.example.app1/config2',];
+const config: dataShare.DataProxyConfig = {
+  type: dataShare.DataProxyType.SHARED_CONFIG,
+};
+const callback = (err: BusinessError<void>, changes: dataShare.DataProxyChangeInfo[]): void => {
+  if (err) {
+    console.error('err:', err);
+  } else {
+    changes.forEach((change) => {
+      console.info(`Change Type: ${change.type}, URI: ${change.uri}, Value: ${change.value}`);
+    });
+  }
+};
+const results: dataShare.DataProxyResult[] = dataProxyHandle.onDataChange(urisToWatch, config, callback);
+results.forEach((result) => {
+  console.info(`URI: ${result.uri}, Result: ${result.result}`);
+});
+```
+
 ### off('dataChange')<sup>20+</sup>
 
 off(event: 'dataChange', uris: string[], config: DataProxyConfig, callback?: AsyncCallback&lt;DataProxyChangeInfo[]&gt;): DataProxyResult[]
 
 取消订阅指定URI对应代理数据变更事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDataChange](#offdatachange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -270,6 +376,66 @@ results.forEach((result) => {
 });
 ```
 
+### offDataChange<sup>23+</sup>
+
+offDataChange(uris: string[], config: DataProxyConfig, callback?: Callback&lt;DataProxyChangeInfo[]&gt;): DataProxyResult[]
+
+取消订阅指定URI对应代理数据变更事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('dataChange')](#offdatachange20)。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                        | 必填 | 说明                    |
+| -------- | ----------------------------- | ---- | ------------------------ |
+| uris     | string\[]             | 是   | 表示要取消订阅的共享配置对应的URI数组，数组最大长度为32。URI固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
+| config      | [DataProxyConfig](#dataproxyconfig20)               | 是   | 表示数据代理操作的配置。 |
+| callback | Callback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | 否   | 回调函数。表示指定取消订阅的callback通知，如果为空、undefined或null，则取消订阅这些URI下所有的通知事件。|
+
+**返回值：**
+
+| 类型             | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| [DataProxyResult](#dataproxyresult20)\[] | 批量操作的结果数组。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[数据共享错误码](errorcode-datashare.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | -------------------- |
+| 15700000 | Inner error. Possible causes: The service is not ready or is being restarted abnormally.|
+| 15700014 | The parameter format is incorrect or the value range is invalid.|
+
+**示例：**
+
+```ts
+const urisToUnWatch: string[] =
+  ['datashareproxy://com.example.app1/config1', 'datashareproxy://com.example.app1/config2',];
+const config: dataShare.DataProxyConfig = {
+  type: dataShare.DataProxyType.SHARED_CONFIG,
+};
+const callback = (err: BusinessError<void>, changes: dataShare.DataProxyChangeInfo[]): void => {
+  if (err) {
+    console.error('err:', err);
+  } else {
+    changes.forEach((change) => {
+      console.info(`Change Type: ${change.type}, URI: ${change.uri}, Value: ${change.value}`);
+    });
+  }
+};
+const results: dataShare.DataProxyResult[] = dataProxyHandle.offDataChange(, urisToUnWatch, config, callback);
+results.forEach((result) => {
+  console.info(`URI: ${result.uri}, Result: ${result.result}`);
+});
+```
+
 ### publish<sup>20+</sup>
 
 publish(data: ProxyData[], config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt;
@@ -277,6 +443,10 @@ publish(data: ProxyData[], config: DataProxyConfig): Promise&lt;DataProxyResult[
 发布共享配置项。发布后，发布者和允许列表中指定的应用可以访问该共享配置项。如果要发布的URI已经存在，则更新对应的共享配置项。如果发布的配置项中存在任一URI的长度超出上限或者格式校验失败，则当前发布操作失败。只有发布者才允许更新共享配置项，每个应用支持最多32个共享配置。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -332,6 +502,10 @@ delete(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                        | 必填 | 说明                    |
@@ -378,6 +552,10 @@ get(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyGetResult[]&gt
 根据URI获取指定的共享配置项。只有发布者和允许列表中指定的应用可以访问该共享配置项。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
