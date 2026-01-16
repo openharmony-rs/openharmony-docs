@@ -98,7 +98,7 @@ import { fileShare } from '@kit.CoreFileKit';
 
 persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-异步方法对所选择的多个文件或目录URI持久化授权，以promise形式返回结果。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
+异步方法对所选择的多个文件或目录URI持久化授权，使用Promise异步回调。该接口仅对具有该系统能力的设备开放（此接口不支持远端URI的持久化）。
 > **说明：**
 >
 > 从API version 22开始，支持媒体类URI的持久化。
