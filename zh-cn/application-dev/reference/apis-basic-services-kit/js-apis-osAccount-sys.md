@@ -8973,7 +8973,7 @@ try {
   console.info('Subscribe to the credential changes successfully');
 } catch (e) {
   const err = e as BusinessError;
-  console.error(`Failed to subscribe to the credetial changes, code is ${err.code}, message is ${err.message}`)
+  console.error(`Failed to subscribe to the credential changes, code is ${err.code}, message is ${err.message}`)
 }
 ```
 
@@ -9030,7 +9030,7 @@ try {
   console.info('Subscribe to the credential changes successfully');
 } catch (e) {
   const err = e as BusinessError;
-  console.error(`Failed to subscribe to the credetial changes, code is ${err.code}, message is ${err.message}`)
+  console.error(`Failed to subscribe to the credential changes, code is ${err.code}, message is ${err.message}`)
 }
 
 try {
@@ -9038,7 +9038,7 @@ try {
   console.info('Unsubscribe from the credential changes successfully');
 } catch (e) {
   const err = e as BusinessError;
-  console.error(`Failed to unsubscribe from the credetial changes, code is ${err.code}, message is ${err.message}`)
+  console.error(`Failed to unsubscribe from the credential changes, code is ${err.code}, message is ${err.message}`)
 }
 ```
 
