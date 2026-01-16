@@ -105,6 +105,33 @@ JSON字符串中的嵌套引号会破坏其结构，将导致解析失败。
 
 <!-- @[json_nesting_method1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) -->
 
+``` TypeScript
+import { JSON } from '@kit.ArkTS';
+
+interface Info {
+  name: string;
+  age: number;
+}
+
+interface TestObj {
+  info: Info;
+}
+
+interface TestStr {
+  info: string;
+}
+// ...
+  /*
+   * 将原始JSON字符串`{"info": "{"name": "zhangsan", "age": 18}"}`
+   * 修改为`{"info": {"name": "zhangsan", "age": 18}}`。
+   * */
+  let jsonStr = `{"info": {"name": "zhangsan", "age": 18}}`;
+  let obj1  = JSON.parse(jsonStr) as TestObj;
+  console.info(JSON.stringify(obj1));    //{"info":{"name":"zhangsan","age":18}}
+  // 获取JSON字符串中的name信息
+  console.info(obj1.info.name); // zhangsan
+```
+
 方式2：将JSON字符串中嵌套的引号进行双重转义，恢复JSON的正常结构。
 
 <!-- @[json_nesting_method2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) -->
