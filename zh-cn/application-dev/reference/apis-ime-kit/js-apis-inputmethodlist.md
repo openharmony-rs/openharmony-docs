@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 该组件从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
@@ -29,6 +30,10 @@ InputMethodListDialog({controller: CustomDialogController, patternOptions?: Patt
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 名称 | 参数类型 | 必填 | 装饰器类型 | 说明 |
@@ -40,15 +45,23 @@ InputMethodListDialog({controller: CustomDialogController, patternOptions?: Patt
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| defaultSelected | number | 否 | 是 | 非必填。默认选择的模式。 |
+| defaultSelected | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 非必填。默认选择的模式。 |
 | patterns   | Array<[Pattern](#pattern)> | 否 | 否 | 必填。模式选项的资源。 |
 | action | function | 否 | 否 | 必填。模式选项改变时的回调。 |
 
 ## Pattern
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -60,6 +73,8 @@ InputMethodListDialog({controller: CustomDialogController, patternOptions?: Patt
 不支持[通用事件](../apis-arkui/arkui-ts/ts-component-general-events.md)
 
 ##  示例
+
+ArkTS-Dyn示例:
 
 ```ts
 import { Pattern, PatternOptions } from '@kit.IMEKit';
@@ -85,6 +100,58 @@ struct settingsItem {
         selectedIcon: $r('app.media.hand_icon_selected2'),
       }],
     action:(index: number)=>{
+      console.info(`pattern is changed, current is ${index}`);
+      this.defaultPattern = index;
+    }
+  };
+  private listController: CustomDialogController = new CustomDialogController({
+    builder: InputMethodListDialog({ patternOptions: this.oneHandAction }),
+    customStyle: true,
+    maskColor: '#00000000'
+  });
+
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column,
+        alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Text("输入法切换列表").fontSize(20)
+      }
+    }
+    .width("13%")
+    .id('bindInputMethod')
+    .onClick((event?: ClickEvent) => {
+      this.listController.open();
+    })
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Pattern, PatternOptions } from '@kit.IMEKit';
+
+@Entry
+// 设置组件
+@Component
+struct settingsItem {
+  @State defaultPattern: int = 1;
+  private oneHandAction: PatternOptions = {
+    defaultSelected: this.defaultPattern,
+    patterns: [
+      {
+        icon: $r('app.media.hand_icon'),
+        selectedIcon: $r('app.media.hand_icon_selected')
+      },
+      {
+        icon: $r('app.media.hand_icon1'),
+        selectedIcon: $r('app.media.hand_icon_selected1')
+      },
+      {
+        icon: $r('app.media.hand_icon2'),
+        selectedIcon: $r('app.media.hand_icon_selected2'),
+      }],
+    action:(index: int)=>{
       console.info(`pattern is changed, current is ${index}`);
       this.defaultPattern = index;
     }
