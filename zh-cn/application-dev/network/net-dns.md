@@ -94,10 +94,10 @@
 5. 获取中文域名地址对应的IP。由于未经过ASCII编码，因此预期结果为获取IP失败。
 
    <!-- @[UnChange_Handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
-
-    ``` TypeScript
-    this.getAddressName(false);
-    ```
+   
+   ``` TypeScript
+   this.getAddressName(false);
+   ```
 
 6. 将中文域名转换为对应ASCII编码后获取对应IP。
 
