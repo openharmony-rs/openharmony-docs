@@ -242,7 +242,7 @@ Ensure that the version of the bundle to install is not earlier than the version
 
 2. To query the version of a newly installed application, use DevEco Studio to open the HAP or HSP file and check the value of **versionCode** in the **module.json** file.
 
-    ![Example](figures/hap_verisonCode.PNG)
+    ![Example](figures/hap_versionCode.PNG)
 
 ## 17700018 Bundle Installation Failure Because the Dependent Module Does Not Exist
 
@@ -1070,7 +1070,7 @@ The source paths are invalid.
 3. None of the paths can be resolved to the intended location.
 
 **Solution**<br>
-Pass in a valid path that does not include the special sequence **../**.
+Pass a valid path that does not include the special sequence **../**.
 
 ## 17700081 Invalid Destination Path
 
@@ -1086,7 +1086,7 @@ The destination path is invalid.
 3. The destination path cannot be resolved to the intended location.
 
 **Solution**<br>
-Pass in a valid path that does not include the special sequence **../**.
+Pass a valid path that does not include the special sequence **../**.
 
 ## 17700082 User Authentication Failed
 

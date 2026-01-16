@@ -78,6 +78,7 @@ The following figure shows the interaction between states.
 ## How to Develop
 
 Read the [API reference](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md).
+
 The figure below shows the call relationship of video encoding.
 
 - The dotted line indicates an optional operation.
@@ -478,10 +479,12 @@ The following walks you through how to implement the entire video encoding proce
     <!--RP8End-->
 
 10. Write the image to encode.
+
     In step 6, you have configured the **OHNativeWindow*** variable type returned by **OH_VideoEncoder_GetSurface**. The data required for encoding is continuously input by the surface. Therefore, you do not need to process the **OnNeedInputBuffer** callback function or use **OH_VideoEncoder_PushInputBuffer** to input data.
     <!--RP13--><!--RP13End-->
 
 11. (Optional) Call **OH_VideoEncoder_PushInputParameter()** to notify the encoder that the frame-specific parameter configuration is complete.
+
     In step 4, you have registered the frame-specific parameter callback function.
 
     In the code snippet below, the following variables are used:
@@ -976,6 +979,7 @@ The following walks you through how to implement the entire video encoding proce
     ```
 
     When processing buffer data (before pushing data) during hardware encoding, you must copy the image data after width and height alignment to the input callback AVBuffer.
+
     Generally, copy the image width, height, stride, and pixel format to ensure correct processing of the data to encode.
 
     For details, see step 3 in [Buffer Mode](#buffer-mode).
@@ -1014,6 +1018,7 @@ The following walks you through how to implement the entire video encoding proce
     ```
 
 10. Call **OH_VideoEncoder_FreeOutputBuffer()** to release encoded frames.
+
     The procedure is the same as that in surface mode and is not described here.
 
     ```c++

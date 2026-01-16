@@ -1,4 +1,4 @@
-# Allocating Memory for Image Decoding (C/C++)
+# Optimizing Memory for Image Decoding (C/C++)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->

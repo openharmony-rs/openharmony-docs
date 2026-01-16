@@ -677,7 +677,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 2. (Optional) To remove the mission from the task center (that is, not to retain the snapshot in the recent tasks list) when terminating the UIAbility, set the **removeMissionAfterTerminate** field to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file.
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -754,7 +754,7 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
 
 2. (Optional) To remove the mission from the task center (that is, not to retain the snapshot in the recent tasks list) when terminating the UIAbility, set the **removeMissionAfterTerminate** field to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file.
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -1140,7 +1140,7 @@ This API cannot be used to start the UIAbility with the launch type set to [spec
 
 > **NOTE**
 >
-> - For a successful launch in cross-device scenarios, the caller and target must be the same application and have the ohos.permission.DISTRIBUTED_DATASYNC permission.
+> - In cross-device scenarios, the caller and the target must belong to the same application.
 >
 > - For a successful launch in the same device scenario, the caller and target must be different applications and have the ohos.permission.ABILITY_BACKGROUND_COMMUNICATION permission (available only for system applications).
 >
@@ -2938,7 +2938,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     >
     >  - If the UIAbility is started by calling [startAbilityByCall](#startabilitybycall), the system ignores **abilitySrcEntryDelegator** and **abilityStageSrcEntryDelegator** configured in the [module.json5](../../quick-start/module-configuration-file.md) file.
     >  - The module name specified by **abilityStageSrcEntryDelegator** must be different from the current module name.
-    ```json
+    ```json5
     {
       "module": {
         // ...

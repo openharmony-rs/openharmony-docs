@@ -39,6 +39,7 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 ```
 
 Import the **avtranscoder.h** and **avtranscoder_base.h** header files to use the transcoding APIs.
+
 Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the API reference.
 
 1. Call **OH_AVTranscoder_Create()** to create a transcoding instance.
