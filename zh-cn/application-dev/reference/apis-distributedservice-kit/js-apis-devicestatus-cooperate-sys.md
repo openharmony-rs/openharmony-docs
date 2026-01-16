@@ -26,7 +26,7 @@ prepareCooperate(callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -42,7 +42,7 @@ prepareCooperate(callback: AsyncCallback&lt;void&gt;): void
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed.[dynamiconly] |
 
 **示例:**
 
@@ -92,7 +92,7 @@ prepareCooperate(): Promise&lt;void&gt;;
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -108,7 +108,7 @@ prepareCooperate(): Promise&lt;void&gt;;
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed.[dynamiconly] |
 
 **示例**：
 
@@ -154,7 +154,7 @@ unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
@@ -168,7 +168,7 @@ unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed.[dynamiconly] |
 
 **示例：**
 
@@ -218,7 +218,7 @@ unprepareCooperate(): Promise&lt;void&gt;;
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -282,7 +282,7 @@ ArkTS-Sta: activateCooperate(targetNetworkId: string, inputDeviceId: int, callba
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -357,7 +357,7 @@ ArkTS-Sta: activateCooperate(targetNetworkId: string, inputDeviceId: int): Promi
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -431,7 +431,7 @@ deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): 
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -448,7 +448,7 @@ deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): 
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed.[dynamiconly] |
 
 **示例:**
 
@@ -498,7 +498,7 @@ deactivateCooperate(isUnchained: boolean): Promise&lt;void&gt;;
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -565,7 +565,7 @@ getCooperateSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -634,7 +634,7 @@ getCooperateSwitchState(networkId: string): Promise&lt;boolean&gt;;
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -806,7 +806,7 @@ try {
 }
 ```
 
-## onCooperateMessage<sup>22+</sup>
+## onCooperateMessage<sup>23+</sup>
 
 onCooperateMessage(callback: Callback&lt;CooperateMessage&gt;): void
 
@@ -820,7 +820,7 @@ onCooperateMessage(callback: Callback&lt;CooperateMessage&gt;): void
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -836,7 +836,6 @@ onCooperateMessage(callback: Callback&lt;CooperateMessage&gt;): void
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **示例**：
 
@@ -851,7 +850,7 @@ try {
 }
 ```
 
-## offCooperateMessage<sup>22+</sup>
+## offCooperateMessage<sup>23+</sup>
 
 offCooperateMessage(callback?: Callback&lt;CooperateMessage&gt;): void
 
@@ -865,7 +864,7 @@ offCooperateMessage(callback?: Callback&lt;CooperateMessage&gt;): void
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -881,7 +880,6 @@ offCooperateMessage(callback?: Callback&lt;CooperateMessage&gt;): void
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **示例**：
 
@@ -1019,7 +1017,7 @@ try {
 }
 ```
 
-## onCooperateMouseEvent<sup>22+</sup>
+## onCooperateMouseEvent<sup>23+</sup>
 
 onCooperateMouseEvent(networkId: string, callback: Callback&lt;MouseLocation&gt;): void
 
@@ -1033,7 +1031,7 @@ onCooperateMouseEvent(networkId: string, callback: Callback&lt;MouseLocation&gt;
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1067,7 +1065,7 @@ try {
 }
 ```
 
-## offCooperateMouseEvent<sup>22+</sup>
+## offCooperateMouseEvent<sup>23+</sup>
 
 offCooperateMouseEvent(networkId: string, callback?: Callback&lt;MouseLocation&gt;): void
 
@@ -1081,7 +1079,7 @@ offCooperateMouseEvent(networkId: string, callback?: Callback&lt;MouseLocation&g
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1147,7 +1145,7 @@ ArkTS-Sta: activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: 
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1218,7 +1216,7 @@ try {
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称      | 类型           | 可读 | 可写 | 说明                     |
 | --------- | -------------- | ---- | ---- | ------------------------ |
@@ -1233,7 +1231,7 @@ try {
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称           | 类型            | 可读 | 可写 | 说明                           |
 | ---------      | -------------- | ---- | ---- | ------------------------       |
@@ -1250,7 +1248,7 @@ try {
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                           | 类型    | 可读 | 可写 | 说明                   |
 | ------------------------------ | ------ | ---- | ---- | ---------------------- |
@@ -1273,7 +1271,7 @@ try {
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称           | 类型           | 可读 | 可写 | 说明                     |
 | ---------     | -------------- | ---- | ---- | ------------------------ |
@@ -1290,7 +1288,7 @@ try {
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称      | 类型           | 只读 | 可选 | 说明                     |
 | --------- | -------------- | ---- | ---- | ------------------------ |
