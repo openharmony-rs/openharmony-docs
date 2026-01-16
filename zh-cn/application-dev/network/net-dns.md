@@ -140,12 +140,12 @@
 3. 使用当前默认网络解析主机名以获取所有IP地址。
 
    <!-- @[Get_All_Ip_Address](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/DNS.ets) -->
-
-    ``` TypeScript
-    connection.getAddressesByName(this.hostName).then((data: connection.NetAddress[]) => {
-        hilog.info(0x0000, 'testTag', `Succeeded to get data: ${JSON.stringify(data)}`);
-    })
-    ```
+   
+   ``` TypeScript
+   connection.getAddressesByName(this.hostName).then((data: connection.NetAddress[]) => {
+     hilog.info(0x0000, 'testTag', `Succeeded to get data: ${JSON.stringify(data)}`);
+   })
+   ```
 
 4. 使用当前默认网络，指定IP类型解析主机名以获取指定IP地址。
 
