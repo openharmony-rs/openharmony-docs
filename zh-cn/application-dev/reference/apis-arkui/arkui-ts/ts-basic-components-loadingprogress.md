@@ -119,9 +119,9 @@ contentModifier(modifier: ContentModifier\<LoadingProgressConfiguration>)
 
 | 名称                     | 值 | 说明                                     |
 | ---------------------- | - | ---------------------------------------- |
-| Default       | - | 默认加载样式。API version 8及以后不支持设置。            |
-| Circular      | - | 环形加载样式。API version 8及以后不支持设置。            |
-| Orbital       | - | 彗星形加载样式。API version 8及以后默认为彗星形样式。         |
+| Default       | 1 | 默认加载样式。API version 8及以后不支持设置。            |
+| Circular      | 2 | 环形加载样式。API version 8及以后不支持设置。            |
+| Orbital       | 3 | 彗星形加载样式。API version 8及以后默认为彗星形样式。         |
 
 ## 示例
 
