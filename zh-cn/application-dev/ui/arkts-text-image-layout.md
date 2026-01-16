@@ -118,7 +118,7 @@ struct styled_string_demo {
         styledValue: this.lineHeightStyle1
       }
     ]);
-  // 请将$r('app.string.limited_time_discount')替换为实际资源文件，在本示例中该资源文件的value值为"\n限时直降5.15元 限量增送"
+  // 请将$r('app.string.limited_time_discount')替换为实际资源文件，在本示例中该资源文件的value值为"\n限时直降5.15元 限量赠送"
   paragraphStyledString2: MutableStyledString = new MutableStyledString(resourceGetString.resourceToString($r('app.string.limited_time_discount')), [
     {
       start: 0,

@@ -43,7 +43,7 @@ Popup(options: PopupOptions): void
 
 ## PopupOptions
 
-PopupOptions定义Popup的具体式样参数。
+PopupOptions定义Popup的具体样式参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
