@@ -62,7 +62,7 @@
 
 4. 创建网络地址解析函数，将域名转换为IP地址，isChange为是否将域名转码为ASCII编码的标识。
 
-   <!-- @[Dns_GetAddress_Ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
+   <!-- @[Dns_GetAddress_Ascii_Fun](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
 
     ``` TypeScript
     getAddressName(isChange: boolean) {
