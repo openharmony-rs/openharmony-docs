@@ -91,6 +91,7 @@
     - [@ohos.wallpaper (壁纸)(系统接口)](js-apis-wallpaper-sys.md)
     - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility)(系统接口)](js-apis-WallpaperExtensionAbility-sys.md)
     - [@ohos.systemTimer (系统定时器)(系统接口)](js-apis-system-timer-sys.md)
+    - [@ohos.intelligentScene (情景模式)](js-apis-intelligentScene.md)
     <!--DelEnd-->
   - 已停止维护的接口<!--basic-services-arkts-dep-->
     - [系统公共事件定义](common_event/commonEvent-definitions.md)
