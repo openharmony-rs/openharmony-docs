@@ -942,7 +942,7 @@ getContractInfo\(slotId: number, requestData: ContractRequestData\): Promise\<st
 
 | 类型                  | 说明                                |
 | --------------------- | ---------------------------------- |
-| Promise\<string\> | Promise对象，返回tlv格式的，加密信息 |
+| Promise\<string\> | Promise对象，返回tlv格式的，加密信息。 |
 
 **错误码：**
 
