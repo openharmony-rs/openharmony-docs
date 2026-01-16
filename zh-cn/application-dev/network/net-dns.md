@@ -150,15 +150,15 @@
 4. 使用当前默认网络，指定IP类型解析主机名以获取指定IP地址。
 
    <!-- @[Get_Ip_Address_With_Options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/DNS.ets) -->
-
-    ``` TypeScript
-      let options: connection.QueryOptions = {
-        family: connection.FamilyType.FAMILY_TYPE_IPV4
-      };
-      connection.getAddressesByNameWithOptions(this.hostName, options).then((data: connection.NetAddress[]) => {
-        hilog.info(0x0000, 'testTag', `Succeeded to get data: ${JSON.stringify(data)}`);
-      });
-    ```
+   
+   ``` TypeScript
+   let options: connection.QueryOptions = {
+     family: connection.FamilyType.FAMILY_TYPE_IPV4
+   };
+   connection.getAddressesByNameWithOptions(this.hostName, options).then((data: connection.NetAddress[]) => {
+     hilog.info(0x0000, 'testTag', `Succeeded to get data: ${JSON.stringify(data)}`);
+   });
+   ```
 
 5. 使用指定的网络连接（NetHandle），并按给定的IP类型解析主机名。
 
