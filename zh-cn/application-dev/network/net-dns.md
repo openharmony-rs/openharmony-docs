@@ -63,33 +63,33 @@
 4. 创建网络地址解析函数，将域名转换为IP地址，isChange为是否将域名转码为ASCII编码的标识。
 
    <!-- @[Dns_GetAddress_Ascii_Fun](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
-
-    ``` TypeScript
-    getAddressName(isChange: boolean) {
-      this.ipResult = '';
-      connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-        if (netHandle.netId === 0) {
-          // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
-          return;
-        }
-        if (isChange) {
-          this.hostVal = connection.getDnsAscii(this.hostName);
-        } else {
-          this.hostVal = '';
-        }
-        netHandle.getAddressByName(isChange ? this.hostVal : this.hostName,
-          (error: BusinessError, data: connection.NetAddress) => {
-            if (error) {
-              this.ipResult = `Failed to get address. Code:${error.code}, message:${error.message}`;
-              hilog.error(0x0000, 'testTag', `Failed to get address. Code:${error.code}, message:${error.message}`);
-              return;
-            }
-            this.ipResult = JSON.stringify(data);
-            hilog.info(0x0000, 'testTag', `Succeeded to get data: ${JSON.stringify(data)}`);
-          });
-      });
-    }
-    ```
+   
+   ``` TypeScript
+   getAddressName(isChange: boolean) {
+     this.ipResult = '';
+     connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+       if (netHandle.netId === 0) {
+         // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
+         return;
+       }
+       if (isChange) {
+         this.hostVal = connection.getDnsAscii(this.hostName);
+       } else {
+         this.hostVal = '';
+       }
+       netHandle.getAddressByName(isChange ? this.hostVal : this.hostName,
+         (error: BusinessError, data: connection.NetAddress) => {
+           if (error) {
+             this.ipResult = `Failed to get address. Code:${error.code}, message:${error.message}`;
+             hilog.error(0x0000, 'testTag', `Failed to get address. Code:${error.code}, message:${error.message}`);
+             return;
+           }
+           this.ipResult = JSON.stringify(data);
+           hilog.info(0x0000, 'testTag', `Succeeded to get data: ${JSON.stringify(data)}`);
+         });
+     });
+   }
+   ```
 
 5. 获取中文域名地址对应的IP。由于未经过ASCII编码，因此预期结果为获取IP失败。
 
