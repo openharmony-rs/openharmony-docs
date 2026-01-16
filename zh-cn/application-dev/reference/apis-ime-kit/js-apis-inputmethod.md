@@ -126,11 +126,8 @@ getDefaultInputMethod(): InputMethodProperty
 
 ```ts
 import inputMethod from '@ohos.inputMethod';
-try {
-  let defaultIme = inputMethod.getDefaultInputMethod();
-} catch(err) {
-  console.error(`Failed to getDefaultInputMethod: ${JSON.stringify(err)}`);
-}
+
+let defaultIme = inputMethod.getDefaultInputMethod();
 ```
 
 ## inputMethod.getSystemInputMethodConfigAbility<sup>11+</sup>
@@ -163,11 +160,8 @@ getSystemInputMethodConfigAbility(): ElementName
 
 ```ts
 import inputMethod from '@ohos.inputMethod';
-try {
-  let inputMethodConfig = inputMethod.getSystemInputMethodConfigAbility();
-} catch(err) {
-  console.error(`Failed to get getSystemInputMethodConfigAbility: ${JSON.stringify(err)}`);
-}
+
+let inputMethodConfig = inputMethod.getSystemInputMethodConfigAbility();
 ```
 
 ## inputMethod.getSetting<sup>9+</sup>
@@ -267,22 +261,18 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let currentIme = inputMethod.getCurrentInputMethod();
-try{
-  inputMethod.switchInputMethod(currentIme, (err: BusinessError|null, result: boolean|undefined) => {
-    if (err) {
-      console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    if (result) {
-      console.info('Succeeded in switching inputmethod.');
-    } else {
-      console.error('Failed to switchInputMethod.');
-    }
-  });
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
-}
+
+inputMethod.switchInputMethod(currentIme, (err: BusinessError|null, result: boolean|undefined) => {
+  if (err) {
+    console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  if (result) {
+    console.info('Succeeded in switching inputmethod.');
+  } else {
+    console.error('Failed to switchInputMethod.');
+  }
+});
 ```
 
 > **说明：**
@@ -356,21 +346,17 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let currentIme = inputMethod.getCurrentInputMethod();
-try {
-  inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
-    if (result) {
-      console.info('Succeeded in switching inputmethod.');
-    } else {
-      console.error('Failed to switchInputMethod.');
-    }
-  }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
-  })
-} catch (error) {
-  const err = error as BusinessError;
-  console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
-}
+
+inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
+  if (result) {
+    console.info('Succeeded in switching inputmethod.');
+  } else {
+    console.error('Failed to switchInputMethod.');
+  }
+}).catch((err) => {
+  const error = err as BusinessError;
+  console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
+})
 ```
 
 > **说明：**
@@ -476,33 +462,28 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let extra: Record<string, string> = {};
-  inputMethod.switchCurrentInputMethodSubtype({
-    id: "ServiceExtAbility",
-    label: "",
-    name: "com.example.kikakeyboard",
-    mode: "upper",
-    locale: "",
-    language: "",
-    icon: "",
-    iconId: 0,
-    extra: extra
-  }, (err: BusinessError|null, result: boolean|undefined) => {
-    if (err) {
-      console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    if (result) {
-      console.info('Succeeded in switching currentInputMethodSubtype.');
-    } else {
-      console.error('Failed to switchCurrentInputMethodSubtype');
-    }
-  });
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to switchCurrentInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
-}
+let extra: Record<string, string> = {};
+inputMethod.switchCurrentInputMethodSubtype({
+  id: "ServiceExtAbility",
+  label: "",
+  name: "com.example.kikakeyboard",
+  mode: "upper",
+  locale: "",
+  language: "",
+  icon: "",
+  iconId: 0,
+  extra: extra
+}, (err: BusinessError|null, result: boolean|undefined) => {
+  if (err) {
+    console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  if (result) {
+    console.info('Succeeded in switching currentInputMethodSubtype.');
+  } else {
+    console.error('Failed to switchCurrentInputMethodSubtype');
+  }
+});
 ```
 
 > **说明：**
@@ -585,31 +566,26 @@ try {
 ArkTS-Sta示例:
 
 ```ts
-try {
-  let extra: Record<string, string> = {};
-  inputMethod.switchCurrentInputMethodSubtype({
-    id: "ServiceExtAbility",
-    label: "",
-    name: "com.example.kikakeyboard",
-    mode: "upper",
-    locale: "",
-    language: "",
-    icon: "",
-    iconId: 0,
-    extra: extra
-  }).then((result: boolean) => {
-    if (result) {
-      console.info('Succeeded in switching currentInputMethodSubtype.');
-    } else {
-      console.error('Failed to switchCurrentInputMethodSubtype.');
-    }
-  }).catch((error) => {
-    console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
-  })
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to switchCurrentInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
-}
+let extra: Record<string, string> = {};
+inputMethod.switchCurrentInputMethodSubtype({
+  id: "ServiceExtAbility",
+  label: "",
+  name: "com.example.kikakeyboard",
+  mode: "upper",
+  locale: "",
+  language: "",
+  icon: "",
+  iconId: 0,
+  extra: extra
+}).then((result: boolean) => {
+  if (result) {
+    console.info('Succeeded in switching currentInputMethodSubtype.');
+  } else {
+    console.error('Failed to switchCurrentInputMethodSubtype.');
+  }
+}).catch((error) => {
+  console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
+})
 ```
 
 > **说明：**
@@ -708,22 +684,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let currentIme = inputMethod.getCurrentInputMethod();
 let imSubType = inputMethod.getCurrentInputMethodSubtype();
-try {
-  inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: BusinessError|null, result: boolean|undefined) => {
-    if (err) {
-      console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    if (result) {
-      console.info('Succeeded in switching currentInputMethodAndSubtype.');
-    } else {
-      console.error('Failed to switchCurrentInputMethodAndSubtype.');
-    }
-  });
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${error.code}, message: ${error.message}`);
-}
+
+inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: BusinessError|null, result: boolean|undefined) => {
+  if (err) {
+    console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  if (result) {
+    console.info('Succeeded in switching currentInputMethodAndSubtype.');
+  } else {
+    console.error('Failed to switchCurrentInputMethodAndSubtype.');
+  }
+});.
+
 ```
 
 > **说明：**
@@ -801,20 +774,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let currentIme = inputMethod.getCurrentInputMethod();
 let imSubType = inputMethod.getCurrentInputMethodSubtype();
-try {
-  inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType).then((result: boolean) => {
-    if (result) {
-      console.info('Succeeded in switching currentInputMethodAndSubtype.');
-    } else {
-      console.error('Failed to switchCurrentInputMethodAndSubtype.');
-    }
-  }).catch((error) => {
-    console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${error.code}, message: ${error.message}`);
-  })  
-} catch(err) {
-  const error = err as BusinessError;
+
+inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType).then((result: boolean) => {
+  if (result) {
+    console.info('Succeeded in switching currentInputMethodAndSubtype.');
+  } else {
+    console.error('Failed to switchCurrentInputMethodAndSubtype.');
+  }
+}).catch((error) => {
   console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${error.code}, message: ${error.message}`);
-}
+})
 ```
 
 > **说明：**
@@ -875,6 +844,98 @@ getInputMethodSetting(): InputMethodSetting
 
 ```ts
 let inputMethodSetting = inputMethod.getInputMethodSetting();
+```
+
+## inputMethod.setSimpleKeyboardEnabled<sup>20+</sup>
+
+setSimpleKeyboardEnabled(enable: boolean): void
+
+编辑框应用设置简单键盘标志。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| enable | boolean | 是 | 简单键盘是否使能标志，true标识简单键盘使能，false标识简单键盘去使能。<br/> 原生编辑框组件在下一次点击获焦时生效；自绘控件在下一次调用[attach](#attach10)绑定输入法时生效。 |
+
+**示例：**
+
+```ts
+  let enable: boolean = false;
+  inputMethod.setSimpleKeyboardEnabled(enable);
+```
+
+## inputMethod.onAttachmentDidFail<sup>22+</sup>
+
+onAttachmentDidFail(callback: Callback&lt;AttachFailureReason&gt;): void
+
+订阅绑定失败事件。使用callback异步回调。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[AttachFailureReason](#attachfailurereason22)&gt; | 是 | 回调函数，返回绑定失败的原因，仅当注册者进程触发的绑定失败时，调用该回调函数。|
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
+  (reason: inputMethod.AttachFailureReason): void => {
+    console.info(`Attachment failed with reason: ${reason}.`);
+  if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+  }
+  };
+inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
+```
+
+## inputMethod.offAttachmentDidFail<sup>22+</sup>
+
+offAttachmentDidFail(callback?:  Callback&lt;AttachFailureReason&gt;): void
+
+取消订阅绑定失败事件。使用callback异步回调。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[AttachFailureReason](#attachfailurereason22)&gt; | 否 | 取消订阅的回调函数，需要与订阅接口传入的保持一致。参数不填写时，取消订阅该事件的所有回调函数。|
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
+  (reason: inputMethod.AttachFailureReason): void => {
+    console.info(`Attachment failed with reason: ${reason}.`);
+  if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+  }
+  };
+inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
+inputMethod.offAttachmentDidFail(attachmentDidFailCallback);
 ```
 
 ## TextInputType<sup>10+</sup>
@@ -1070,11 +1131,12 @@ Enter键的功能类型。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| name  | string | 否 | 否 | 输入法窗口的名称。|
-| left  |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 输入法窗口左上顶点的横坐标，单位为px。|
-| top  |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 输入法窗口左上顶点的纵坐标，单位为px。|
-| width  |  ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | 输入法窗口的宽度，单位为px。|
-| height  |  ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | 输入法窗口的高度，单位为px。|
+| name  | string | 否 | 否 | 输入法窗口的名称。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| left  |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 输入法窗口左上顶点的横坐标，单位为px。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| top  |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 输入法窗口左上顶点的纵坐标，单位为px。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| width  |  ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | 输入法窗口的宽度，单位为px。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| height  |  ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | 输入法窗口的高度，单位为px。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| displayId<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 是 | 输入法软键盘窗口所在的屏幕ID。<br>**模型约束：** 该参数仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## EnabledState<sup>15+</sup>
 
@@ -1092,13 +1154,13 @@ Enter键的功能类型。
 | BASIC_MODE  | 1 |基础模式。 |
 | FULL_EXPERIENCE_MODE  | 2 |完整体验模式。 |
 
-## RequestKeyboardReason<sup>15+</sup>
+## RequestKeyboardReason<sup>23+</sup>
 
 请求键盘输入原因。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 15
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1158,20 +1220,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputMethodController = inputMethod.getController();
 
-try {
-  let messageHandler: inputMethod.MessageHandler = {
-    onTerminated: (): void => {
-      console.info("OnTerminated.");
-    },
-    onMessage: (msgId: string, msgParam?: ArrayBuffer): void => {
-      console.info("recv message.");
-    }
-  };
-  inputMethodController.recvMessage(messageHandler);
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to MessageHandler, code: ${error.code}, message: ${error.message}`);
-}
+let messageHandler: inputMethod.MessageHandler = {
+  onTerminated: (): void => {
+    console.info("OnTerminated.");
+  },
+  onMessage: (msgId: string, msgParam?: ArrayBuffer): void => {
+    console.info("recv message.");
+  }
+};
+inputMethodController.recvMessage(messageHandler);
 ```
 
 ### onMessage<sup>15+</sup>
@@ -1345,25 +1402,53 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let textConfig: inputMethod.TextConfig = {
-    inputAttribute: {
-      textInputType: inputMethod.TextInputType.TEXT,
-      enterKeyType: inputMethod.EnterKeyType.NONE
-    }
-  };
-  inputMethodController.attach(true, textConfig, (err?: BusinessError) => {
-    if (err) {
-      console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in attaching the inputMethod.');
-  });
-} catch(error) {
-  const err = error as BusinessError;
-  console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
-}
+let textConfig: inputMethod.TextConfig = {
+  inputAttribute: {
+    textInputType: inputMethod.TextInputType.TEXT,
+    enterKeyType: inputMethod.EnterKeyType.NONE
+  }
+};
+inputMethodController.attach(true, textConfig, (err?: BusinessError) => {
+  if (err) {
+    console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in attaching the inputMethod.');
+});
 ```
+
+## AttachFailureReason<sup>22+</sup>
+
+枚举，绑定失败的原因。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 值 |说明 |
+| -------- | -------- |-------- |
+| CALLER_NOT_FOCUSED    | 0 |表示调用者非焦点窗口所属应用导致的失败。 |
+| IME_ABNORMAL  | 1 |表示输入法应用异常导致的失败。 |
+| SERVICE_ABNORMAL  | 2 |表示输入法框架服务异常导致的失败。 |
+
+## AttachOptions<sup>23+</sup>
+
+绑定输入法的附加选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason23) | 否 | 是 |请求键盘输入的原因。|
+| showKeyboard | boolean | 否 | 是 | 绑定输入法成功后，是否拉起输入法键盘。<br>- true表示拉起。<br>- false表示不拉起。|
 
 ### attach<sup>10+</sup>
 
@@ -1433,23 +1518,18 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let textConfig: inputMethod.TextConfig = {
-    inputAttribute: {
-      textInputType: inputMethod.TextInputType.TEXT,
-      enterKeyType: inputMethod.EnterKeyType.NONE
-    }
-  };
-  inputMethodController.attach(true, textConfig).then(() => {
-    console.info('Succeeded in attaching inputMethod.');
-  }).catch((error) => {
-    const err = error as BusinessError;
-    console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
-  })
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to attach, code: ${error.code}, message: ${error.message}`);
-}
+let textConfig: inputMethod.TextConfig = {
+  inputAttribute: {
+    textInputType: inputMethod.TextInputType.TEXT,
+    enterKeyType: inputMethod.EnterKeyType.NONE
+  }
+};
+inputMethodController.attach(true, textConfig).then(() => {
+  console.info('Succeeded in attaching inputMethod.');
+}).catch((error) => {
+  const err = error as BusinessError;
+  console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
+})
 ```
 
 ### attach<sup>15+</sup>
@@ -1524,24 +1604,102 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let textConfig: inputMethod.TextConfig = {
-    inputAttribute: {
-      textInputType: inputMethod.TextInputType.TEXT,
-      enterKeyType: inputMethod.EnterKeyType.NONE
-    }
-  };
-  let requestKeyboardReason: inputMethod.RequestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
-  inputMethodController.attach(true, textConfig, requestKeyboardReason).then(() => {
-    console.info('Succeeded in attaching inputMethod.');
-  }).catch((error) => {
-    const err = error as BusinessError;
-    console.error(`Failed to attaching, code: ${err.code}, message: ${err.message}`);
-  })
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to attaching, code: ${error.code}, message: ${error.message}`);
+let textConfig: inputMethod.TextConfig = {
+  inputAttribute: {
+    textInputType: inputMethod.TextInputType.TEXT,
+    enterKeyType: inputMethod.EnterKeyType.NONE
+  }
+};
+let requestKeyboardReason: inputMethod.RequestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
+inputMethodController.attach(true, textConfig, requestKeyboardReason).then(() => {
+  console.info('Succeeded in attaching inputMethod.');
+}).catch((error) => {
+  const err = error as BusinessError;
+  console.error(`Failed to attaching, code: ${err.code}, message: ${err.message}`);
+})
+```
+
+### attachWithUIContext<sup>23+</sup>
+
+attachWithUIContext(uiContext: UIContext, textConfig: TextConfig, attachOptions?: AttachOptions): Promise&lt;void&gt;
+
+自绘控件绑定输入法。使用promise异步回调。
+
+> **说明：**
+>
+> 需要先调用此接口，完成自绘控件与输入法的绑定，才能使用以下功能：显示/隐藏键盘、更新光标信息、更改编辑框选中范围、保存配置信息、监听处理由输入法应用发送的信息或命令等。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+|  参数名  |    类型  |   必填   |   说明   |
+| -------- | -------- | -------- | -------- |
+| uiContext | [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md) | 是 | UIContext实例对象。|
+| textConfig | [TextConfig](#textconfig10) | 是 | 编辑框的配置信息。|
+| attachOptions | [AttachOptions](#attachoptions23) | 否 | 绑定附加选项。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 12800003 | input method client error. Possible causes:1.the edit box is not focused. 2.no edit box is bound to current input method application.3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIContext } from '@kit.ArkUI';
+
+let uiContext: UIContext | undefined = UIContext.getCallingScopeUIContext();
+let inputAttribute: inputMethod.InputAttribute = {
+  textInputType: inputMethod.TextInputType.TEXT,
+  enterKeyType: inputMethod.EnterKeyType.GO
 }
+let textConfig: inputMethod.TextConfig = { inputAttribute: inputAttribute };
+let attachOptions: inputMethod.AttachOptions = { showKeyboard: true };
+inputMethod.getController().attachWithUIContext(uiContext, textConfig, attachOptions).then(() => {
+  console.info('Succeeded in attaching inputMethod.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIContext } from '@kit.ArkUI';
+
+let uiContext: UIContext = UIContext.getCallingScopeUIContext()!;
+let inputAttribute: inputMethod.InputAttribute = {
+    textInputType: inputMethod.TextInputType.TEXT,
+    enterKeyType: inputMethod.EnterKeyType.GO
+}
+let textConfig: inputMethod.TextConfig = { inputAttribute: inputAttribute };
+let attachOptions: inputMethod.AttachOptions = { showKeyboard: true };
+inputMethod.getController().attachWithUIContext(uiContext, textConfig, attachOptions).then(() => {
+    console.info('Succeeded in attaching inputMethod.');
+}).catch((err: BusinessError) :void=> {
+    console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### discardTypingText<sup>20+</sup>
@@ -2092,19 +2250,15 @@ ArkTS-Sta示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-try {
-  let windowId: int = 2000;
-  inputMethodController.setCallingWindow(windowId, (err?: BusinessError) => {
-    if (err) {
-      console.error(`Failed to setCallingWindow, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in setting callingWindow.');
-  });
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to setCallingWindow, code: ${error.code}, message: ${error.message}`);
-}
+
+let windowId: int = 2000;
+inputMethodController.setCallingWindow(windowId, (err?: BusinessError) => {
+  if (err) {
+    console.error(`Failed to setCallingWindow, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in setting callingWindow.');
+});
 ```
 
 ### setCallingWindow<sup>10+</sup>
@@ -2172,18 +2326,13 @@ ArkTs-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let windowId: int = 2000;
-  inputMethodController.setCallingWindow(windowId).then(() => {
-    console.info('Succeeded in setting callingWindow.');
-  }).catch((error) => {
-    const err = error as BusinessError;
-    console.error(`Failed to setCallingWindow, code: ${err.code}, message: ${err.message}`);
-  })
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to setCallingWindow, code: ${error.code}, message: ${error.message}`);
-}
+let windowId: int = 2000;
+inputMethodController.setCallingWindow(windowId).then(() => {
+  console.info('Succeeded in setting callingWindow.');
+}).catch((error) => {
+  const err = error as BusinessError;
+  console.error(`Failed to setCallingWindow, code: ${err.code}, message: ${err.message}`);
+})
 ```
 
 ### updateCursor<sup>10+</sup>
@@ -2242,19 +2391,14 @@ ArkTs-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let cursorInfo: inputMethod.CursorInfo = { left: 0, top: 0, width: 600, height: 800 };
-  inputMethodController.updateCursor(cursorInfo, (err?: BusinessError) => {
-    if (err) {
-      console.error(`Failed to updateCursor, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in updating cursorInfo.');
-  });
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to updateCursor, code: ${error.code}, message: ${error.message}`);
-}
+let cursorInfo: inputMethod.CursorInfo = { left: 0, top: 0, width: 600, height: 800 };
+inputMethodController.updateCursor(cursorInfo, (err?: BusinessError) => {
+  if (err) {
+    console.error(`Failed to updateCursor, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in updating cursorInfo.');
+});
 ```
 
 ### updateCursor<sup>10+</sup>
@@ -2316,18 +2460,13 @@ ArkTs-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let cursorInfo: inputMethod.CursorInfo = { left: 0, top: 0, width: 600, height: 800 };
-  inputMethodController.updateCursor(cursorInfo).then(() => {
-    console.info('Succeeded in updating cursorInfo.');
-  }).catch((error) => {
-    const err = error as BusinessError;
-    console.error(`Failed to detach, code: ${err.code}, message: ${err.message}`);
-  })
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to detach, code: ${error.code}, message: ${error.message}`);
-}
+let cursorInfo: inputMethod.CursorInfo = { left: 0, top: 0, width: 600, height: 800 };
+inputMethodController.updateCursor(cursorInfo).then(() => {
+  console.info('Succeeded in updating cursorInfo.');
+}).catch((error) => {
+  const err = error as BusinessError;
+  console.error(`Failed to detach, code: ${err.code}, message: ${err.message}`);
+})
 ```
 
 ### changeSelection<sup>10+</sup>
@@ -2389,18 +2528,13 @@ ArkTs-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodController.changeSelection('text', 0, 5, (err?: BusinessError) => {
-    if (err) {
-      console.error(`Failed to changeSelection, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in changing selection.');
-  });
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to changeSelection, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.changeSelection('text', 0, 5, (err?: BusinessError) => {
+  if (err) {
+    console.error(`Failed to changeSelection, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in changing selection.');
+});
 ```
 
 ### changeSelection<sup>10+</sup>
@@ -2465,17 +2599,12 @@ ArkTs-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodController.changeSelection('test', 0, 5).then(() => {
-    console.info('Succeeded in changing selection.');
-  }).catch((error) => {
-    const err = error as BusinessError;
-    console.error(`Failed to changeSelection, code: ${err.code}, message: ${err.message}`);
-  })
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to changeSelection, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.changeSelection('test', 0, 5).then(() => {
+  console.info('Succeeded in changing selection.');
+}).catch((error) => {
+  const err = error as BusinessError;
+  console.error(`Failed to changeSelection, code: ${err.code}, message: ${err.message}`);
+})
 ```
 
 ### updateAttribute<sup>10+</sup>
@@ -2534,19 +2663,14 @@ ArkTs-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let inputAttribute: inputMethod.InputAttribute = { textInputType: inputMethod.TextInputType.TEXT, enterKeyType: inputMethod.EnterKeyType.NONE };
-  inputMethodController.updateAttribute(inputAttribute, (err?: BusinessError) => {
-    if (err) {
-      console.error(`Failed to updateAttribute, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in updating attribute.');
-  });
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to updateAttribute, code: ${error.code}, message: ${error.message}`);
-}
+let inputAttribute: inputMethod.InputAttribute = { textInputType: inputMethod.TextInputType.TEXT, enterKeyType: inputMethod.EnterKeyType.NONE };
+inputMethodController.updateAttribute(inputAttribute, (err?: BusinessError) => {
+  if (err) {
+    console.error(`Failed to updateAttribute, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in updating attribute.');
+});
 ```
 
 ### updateAttribute<sup>10+</sup>
@@ -2608,17 +2732,12 @@ ArkTs-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let inputAttribute: inputMethod.InputAttribute = { textInputType: inputMethod.TextInputType.TEXT, enterKeyType: inputMethod.EnterKeyType.NONE };
-  inputMethodController.updateAttribute(inputAttribute).then(() => {
-    console.info('Succeeded in updating attribute.');
-  }).catch((error) => {
-    console.error(`Failed to updateAttribute, code: ${error.code}, message: ${error.message}`);
-  })
-} catch(err) {
-  const error = err as BusinessError;
+let inputAttribute: inputMethod.InputAttribute = { textInputType: inputMethod.TextInputType.TEXT, enterKeyType: inputMethod.EnterKeyType.NONE };
+inputMethodController.updateAttribute(inputAttribute).then(() => {
+  console.info('Succeeded in updating attribute.');
+}).catch((error) => {
   console.error(`Failed to updateAttribute, code: ${error.code}, message: ${error.message}`);
-}
+})
 ```
 
 ### stopInputSession<sup>9+</sup>
@@ -2681,22 +2800,17 @@ ArkTs-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodController.stopInputSession((err: BusinessError|null, result: boolean|undefined) => {
-    if (err) {
-      console.error(`Failed to stopInputSession, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    if (result) {
-      console.info('Succeeded in stopping inputSession.');
-    } else {
-      console.error('Failed to stopInputSession.');
-    }
-  });
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to stopInputSession, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.stopInputSession((err: BusinessError|null, result: boolean|undefined) => {
+  if (err) {
+    console.error(`Failed to stopInputSession, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  if (result) {
+    console.info('Succeeded in stopping inputSession.');
+  } else {
+    console.error('Failed to stopInputSession.');
+  }
+});
 ```
 
 ### stopInputSession<sup>9+</sup>
@@ -2757,21 +2871,16 @@ ArkTs-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodController.stopInputSession().then((result: boolean) => {
-    if (result) {
-      console.info('Succeeded in stopping inputSession.');
-    } else {
-      console.error('Failed to stopInputSession.');
-    }
-  }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to stopInputSession, code: ${error.code}, message: ${error.message}`);
-  })
-} catch(err) {
+inputMethodController.stopInputSession().then((result: boolean) => {
+  if (result) {
+    console.info('Succeeded in stopping inputSession.');
+  } else {
+    console.error('Failed to stopInputSession.');
+  }
+}).catch((err) => {
   const error = err as BusinessError;
   console.error(`Failed to stopInputSession, code: ${error.code}, message: ${error.message}`);
-}
+})
 ```
 
 ### showSoftKeyboard<sup>9+</sup>
@@ -3346,15 +3455,10 @@ function callback2(text: string) {
   console.info(`Succeeded in getting callback2 data: ${text}`);
 }
 
-try {
-  inputMethodController.onInsertText(callback1);
-  inputMethodController.onInsertText(callback2);
-  inputMethodController.offInsertText(callback1);
-  inputMethodController.offInsertText();
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to onInsertText, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onInsertText(callback1);
+inputMethodController.onInsertText(callback2);
+inputMethodController.offInsertText(callback1);
+inputMethodController.offInsertText();
 ```
 
 ### off('insertText')<sup>10+</sup>
@@ -3492,14 +3596,9 @@ onDeleteLeft(callback: Callback&lt;int&gt;): void
 **示例：**
 
 ```ts
-try {
-  inputMethodController.onDeleteLeft((length: int) => {
-    console.info(`Succeeded in subscribing deleteLeft, length: ${length}`);
-  });
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to onDeleteLeft, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onDeleteLeft((length: int) => {
+  console.info(`Succeeded in subscribing deleteLeft, length: ${length}`);
+});
 ```
 
 ### off('deleteLeft')<sup>10+</sup>
@@ -3638,14 +3737,9 @@ onDeleteRight(callback: Callback&lt;int&gt;): void
 **示例：**
 
 ```ts
-try {
-  inputMethodController.onDeleteRight((length: int) => {
-    console.info(`Succeeded in subscribing deleteRight, length: ${length}`);
-  });
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to onDeleteRight, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onDeleteRight((length: int) => {
+  console.info(`Succeeded in subscribing deleteRight, length: ${length}`);
+});
 ```
 
 ### off('deleteRight')<sup>10+</sup>
@@ -3783,14 +3877,9 @@ onSendKeyboardStatus(callback: Callback&lt;KeyboardStatus&gt;): void
 **示例：**
 
 ```ts
-try {
-  inputMethodController.onSendKeyboardStatus((keyboardStatus: inputMethod.KeyboardStatus) => {
-    console.info(`Succeeded in subscribing sendKeyboardStatus, keyboardStatus: ${keyboardStatus}`);
-  });
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to onSendKeyboardStatus, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onSendKeyboardStatus((keyboardStatus: inputMethod.KeyboardStatus) => {
+  console.info(`Succeeded in subscribing sendKeyboardStatus, keyboardStatus: ${keyboardStatus}`);
+});
 ```
 
 ### off('sendKeyboardStatus')<sup>10+</sup>
@@ -3928,14 +4017,9 @@ onSendFunctionKey(callback: Callback&lt;FunctionKey&gt;): void
 **示例：**
 
 ```ts
-try {
-  inputMethodController.onSendFunctionKey((functionKey: inputMethod.FunctionKey) => {
-    console.info(`Succeeded in subscribing sendFunctionKey, functionKey.enterKeyType: ${functionKey.enterKeyType}`);
-  });
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to onSendFunctionKey, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onSendFunctionKey((functionKey: inputMethod.FunctionKey) => {
+  console.info(`Succeeded in subscribing sendFunctionKey, functionKey.enterKeyType: ${functionKey.enterKeyType}`);
+});
 ```
 
 ### off('sendFunctionKey')<sup>10+</sup>
@@ -4073,14 +4157,9 @@ onMoveCursor(callback: Callback&lt;Direction&gt;): void
 **示例：**
 
 ```ts
-try {
-  inputMethodController.onMoveCursor((direction: inputMethod.Direction) => {
-    console.info(`Succeeded in subscribing moveCursor, direction: ${direction}`);
-  });
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to onMoveCursor, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onMoveCursor((direction: inputMethod.Direction) => {
+  console.info(`Succeeded in subscribing moveCursor, direction: ${direction}`);
+});
 ```
 
 ### off('moveCursor')<sup>10+</sup>
@@ -4218,14 +4297,9 @@ onHandleExtendAction(callback: Callback&lt;ExtendAction&gt;): void
 **示例：**
 
 ```ts
-try {
-  inputMethodController.onHandleExtendAction((action: inputMethod.ExtendAction) => {
-    console.info(`Succeeded in subscribing handleExtendAction, action: ${action}`);
-  });
-} catch (err) {
-  const error = err as BusinessError; 
-  console.error(`Failed to onHandleExtendAction, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onHandleExtendAction((action: inputMethod.ExtendAction) => {
+  console.info(`Succeeded in subscribing handleExtendAction, action: ${action}`);
+});
 ```
 
 ### off('handleExtendAction')<sup>10+</sup>
@@ -4286,16 +4360,11 @@ offHandleExtendAction(callback?: Callback&lt;ExtendAction&gt;): void
 **示例：**
 
 ```ts
-try {
-  let onHandleExtendActionCallback = (action: inputMethod.ExtendAction) => {
-    console.info(`Succeeded in subscribing handleExtendAction, action: ${action}`);
-  };
-  inputMethodController.offHandleExtendAction(onHandleExtendActionCallback);
-  inputMethodController.offHandleExtendAction();
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to offHandleExtendAction, code: ${error.code}, message: ${error.message}`);
-}
+let onHandleExtendActionCallback = (action: inputMethod.ExtendAction) => {
+  console.info(`Succeeded in subscribing handleExtendAction, action: ${action}`);
+};
+inputMethodController.offHandleExtendAction(onHandleExtendActionCallback);
+inputMethodController.offHandleExtendAction();
 ```
 
 ### on('selectByRange')<sup>10+</sup>
@@ -4370,14 +4439,9 @@ onSelectByRange(callback: Callback&lt;Range&gt;): void
 **示例：**
 
 ```ts
-try {
-  inputMethodController.onSelectByRange((range: inputMethod.Range) => {
-    console.info(`Succeeded in subscribing selectByRange: start: ${range.start} , end: ${range.end}`);
-  });
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to onSelectByRange, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onSelectByRange((range: inputMethod.Range) => {
+  console.info(`Succeeded in subscribing selectByRange: start: ${range.start} , end: ${range.end}`);
+});
 ```
 
 ### off('selectByRange')<sup>10+</sup>
@@ -4438,16 +4502,11 @@ offSelectByRange(callback?: Callback&lt;Range&gt;): void
 **示例：**
 
 ```ts
-try {
-  let onSelectByRangeCallback = (range: inputMethod.Range) => {
-    console.info(`Succeeded in subscribing selectByRange, start: ${range.start} , end: ${range.end}`);
-  };
-  inputMethodController.offSelectByRange(onSelectByRangeCallback);
-  inputMethodController.offSelectByRange();
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to offSelectByRange, code: ${error.code}, message: ${error.message}`);
-}
+let onSelectByRangeCallback = (range: inputMethod.Range) => {
+  console.info(`Succeeded in subscribing selectByRange, start: ${range.start} , end: ${range.end}`);
+};
+inputMethodController.offSelectByRange(onSelectByRangeCallback);
+inputMethodController.offSelectByRange();
 ```
 
 ### on('selectByMovement')<sup>10+</sup>
@@ -4522,14 +4581,9 @@ onSelectByMovement(callback: Callback&lt;Movement&gt;): void
 **示例：**
 
 ```ts
-try {
-  inputMethodController.onSelectByMovement((movement: inputMethod.Movement) => {
-    console.info('Succeeded in subscribing selectByMovement: direction: ' + movement.direction);
-  });
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to onSelectByMovement, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onSelectByMovement((movement: inputMethod.Movement) => {
+  console.info('Succeeded in subscribing selectByMovement: direction: ' + movement.direction);
+});
 ```
 
 ### off('selectByMovement')<sup>10+</sup>
@@ -4590,16 +4644,11 @@ offSelectByMovement(callback?: Callback&lt;Movement&gt;): void
 **示例：**
 
 ```ts
-try {
-  let onSelectByMovementCallback = (movement: inputMethod.Movement) => {
-    console.info(`Succeeded in subscribing selectByMovement, movement.direction: ${movement.direction}`);
-  };
-  inputMethodController.offSelectByMovement(onSelectByMovementCallback);
-  inputMethodController.offSelectByMovement();
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to offSelectByMovement, code: ${error.code}, message: ${error.message}`);
-}
+let onSelectByMovementCallback = (movement: inputMethod.Movement) => {
+  console.info(`Succeeded in subscribing selectByMovement, movement.direction: ${movement.direction}`);
+};
+inputMethodController.offSelectByMovement(onSelectByMovementCallback);
+inputMethodController.offSelectByMovement();
 ```
 
 ### on('getLeftTextOfCursor')<sup>10+</sup>
@@ -4678,16 +4727,11 @@ onGetLeftTextOfCursor(callback: GetTextCallback): void
 **示例：**
 
 ```ts
-try {
-  inputMethodController.onGetLeftTextOfCursor((length: int) => {
-    console.info(`Succeeded in subscribing getLeftTextOfCursor, length: ${length}`);
-    let text:string = "";
-    return text;
-  });
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to onGetLeftTextOfCursor, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onGetLeftTextOfCursor((length: int) => {
+  console.info(`Succeeded in subscribing getLeftTextOfCursor, length: ${length}`);
+  let text:string = "";
+  return text;
+});
 ```
 
 ### off('getLeftTextOfCursor')<sup>10+</sup>
@@ -4750,18 +4794,13 @@ offGetLeftTextOfCursor(callback?: GetTextCallback): void
 **示例：**
 
 ```ts
-try {
-  let getLeftTextOfCursorCallback = (length: int) => {
-    console.info(`Succeeded in unsubscribing getLeftTextOfCursor, length: ${length}`);
-    let text:string = "";
-    return text;
-  };
-  inputMethodController.offGetLeftTextOfCursor(getLeftTextOfCursorCallback);
-  inputMethodController.offGetLeftTextOfCursor();
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to offGetLeftTextOfCursor, code: ${error.code}, message: ${error.message}`);
-}
+let getLeftTextOfCursorCallback = (length: int) => {
+  console.info(`Succeeded in unsubscribing getLeftTextOfCursor, length: ${length}`);
+  let text:string = "";
+  return text;
+};
+inputMethodController.offGetLeftTextOfCursor(getLeftTextOfCursorCallback);
+inputMethodController.offGetLeftTextOfCursor();
 ```
 
 ### on('getRightTextOfCursor')<sup>10+</sup>
@@ -4840,16 +4879,11 @@ onGetRightTextOfCursor(callback: GetTextCallback): void
 **示例：**
 
 ```ts
-try {
-  inputMethodController.onGetRightTextOfCursor( (length: int) => {
-    console.info(`Succeeded in subscribing getRightTextOfCursor, length: ${length}`);
-    let text:string = "";
-    return text;
-  });
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to onGetRightTextOfCursor, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onGetRightTextOfCursor( (length: int) => {
+  console.info(`Succeeded in subscribing getRightTextOfCursor, length: ${length}`);
+  let text:string = "";
+  return text;
+});
 ```
 
 ### off('getRightTextOfCursor')<sup>10+</sup>
@@ -4912,18 +4946,13 @@ offGetRightTextOfCursor(callback?: GetTextCallback): void
 **示例：**
 
 ```ts
-try {
-  let getRightTextOfCursorCallback = (length: int) => {
-    console.info(`Succeeded in unsubscribing getRightTextOfCursor, length: ${length}`);
-    let text:string = "";
-    return text;
-  };
-  inputMethodController.offGetRightTextOfCursor(getRightTextOfCursorCallback);
-  inputMethodController.offGetRightTextOfCursor();
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to offGetRightTextOfCursor, code: ${error.code}, message: ${error.message}`);
-}
+let getRightTextOfCursorCallback = (length: int) => {
+  console.info(`Succeeded in unsubscribing getRightTextOfCursor, length: ${length}`);
+  let text:string = "";
+  return text;
+};
+inputMethodController.offGetRightTextOfCursor(getRightTextOfCursorCallback);
+inputMethodController.offGetRightTextOfCursor();
 ```
 
 ### on('getTextIndexAtCursor')<sup>10+</sup>
@@ -5002,16 +5031,11 @@ onGetTextIndexAtCursor(callback: GetTextIndexAtCursorCallback): void
 **示例：**
 
 ```ts
-try {
-  inputMethodController.onGetTextIndexAtCursor(():int => {
-    console.info(`Succeeded in subscribing getTextIndexAtCursor.`);
-    let index:int = 0;
-    return index;
-  });
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to onGetTextIndexAtCursor, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onGetTextIndexAtCursor(():int => {
+  console.info(`Succeeded in subscribing getTextIndexAtCursor.`);
+  let index:int = 0;
+  return index;
+});
 ```
 
 ### off('getTextIndexAtCursor')<sup>10+</sup>
@@ -5075,18 +5099,14 @@ offGetTextIndexAtCursor(callback?:GetTextIndexAtCursorCallback): void
 
 ```ts
 let inputMethodController = inputMethod.getController();
-try {
-  let getTextIndexAtCursorCallback = () => {
-    console.info(`Succeeded in unsubscribing getTextIndexAtCursor.`);
-    let index:int = 0;
-    return index;
-  };
-  inputMethodController.offGetTextIndexAtCursor(getTextIndexAtCursorCallback);
-  inputMethodController.offGetTextIndexAtCursor();
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to offGetTextIndexAtCursor, code: ${error.code}, message: ${error.message}`);
-}
+
+let getTextIndexAtCursorCallback = () => {
+  console.info(`Succeeded in unsubscribing getTextIndexAtCursor.`);
+  let index:int = 0;
+  return index;
+};
+inputMethodController.offGetTextIndexAtCursor(getTextIndexAtCursorCallback);
+inputMethodController.offGetTextIndexAtCursor();
 ```
 
 ### on('setPreviewText')<sup>17+</sup>
@@ -5194,21 +5214,16 @@ let setPreviewTextCallback2: inputMethod.SetPreviewTextCallback = (text: string,
   console.info(`setPreviewTextCallback2: Received text - ${text}, Received range - start: ${range.start}, end: ${range.end}`);
 };
 
-try {
-  inputMethodController.onSetPreviewText(setPreviewTextCallback1);
-  console.info(`SetPreviewTextCallback1 subscribed to setPreviewText`);
-  inputMethodController.onSetPreviewText(setPreviewTextCallback2);
-  console.info(`SetPreviewTextCallback2 subscribed to setPreviewText`);
-  // 仅取消setPreviewText的callback1的回调。
-  inputMethodController.offSetPreviewText(setPreviewTextCallback1);
-  console.info(`SetPreviewTextCallback1 unsubscribed from setPreviewText`);
-  // 取消setPreviewText的所有回调。
-  inputMethodController.offSetPreviewText();
-  console.info(`All callbacks unsubscribed from setPreviewText`);
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to onSetPreviewText, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onSetPreviewText(setPreviewTextCallback1);
+console.info(`SetPreviewTextCallback1 subscribed to setPreviewText`);
+inputMethodController.onSetPreviewText(setPreviewTextCallback2);
+console.info(`SetPreviewTextCallback2 subscribed to setPreviewText`);
+// 仅取消setPreviewText的callback1的回调。
+inputMethodController.offSetPreviewText(setPreviewTextCallback1);
+console.info(`SetPreviewTextCallback1 unsubscribed from setPreviewText`);
+// 取消setPreviewText的所有回调。
+inputMethodController.offSetPreviewText();
+console.info(`All callbacks unsubscribed from setPreviewText`);
 ```
 
 ### off('setPreviewText')<sup>17+</sup>
@@ -5293,21 +5308,16 @@ let setPreviewTextCallback2: inputMethod.SetPreviewTextCallback = (text: string,
   console.info(`setPreviewTextCallback2: Received text - ${text}, Received range - start: ${range.start}, end: ${range.end}`);
 };
 
-try {
-  inputMethodController.onSetPreviewText(setPreviewTextCallback1);
-  console.info(`SetPreviewTextCallback1 subscribed to setPreviewText`);
-  inputMethodController.onSetPreviewText(setPreviewTextCallback2);
-  console.info(`SetPreviewTextCallback2 subscribed to setPreviewText`);
-  // 仅取消setPreviewText的callback1的回调。
-  inputMethodController.offSetPreviewText(setPreviewTextCallback1);
-  console.info(`SetPreviewTextCallback1 unsubscribed from setPreviewText`);
-  // 取消setPreviewText的所有回调。
-  inputMethodController.offSetPreviewText();
-  console.info(`All callbacks unsubscribed from setPreviewText`);
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to offSetPreviewText, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onSetPreviewText(setPreviewTextCallback1);
+console.info(`SetPreviewTextCallback1 subscribed to setPreviewText`);
+inputMethodController.onSetPreviewText(setPreviewTextCallback2);
+console.info(`SetPreviewTextCallback2 subscribed to setPreviewText`);
+// 仅取消setPreviewText的callback1的回调。
+inputMethodController.offSetPreviewText(setPreviewTextCallback1);
+console.info(`SetPreviewTextCallback1 unsubscribed from setPreviewText`);
+// 取消setPreviewText的所有回调。
+inputMethodController.offSetPreviewText();
+console.info(`All callbacks unsubscribed from setPreviewText`);
 ```
 
 ### on('finishTextPreview')<sup>17+</sup>
@@ -5413,21 +5423,16 @@ let finishTextPreviewCallback2 = () => {
   console.info(`FinishTextPreviewCallback2: finishTextPreview event triggered`);
 };
 
-try {
-  inputMethodController.onFinishTextPreview(finishTextPreviewCallback1);
-  console.info(`FinishTextPreviewCallback1 subscribed to finishTextPreview`);
-  inputMethodController.onFinishTextPreview(finishTextPreviewCallback2);
-  console.info(`FinishTextPreviewCallback2 subscribed to finishTextPreview`);
-  // 仅取消finishTextPreview的callback1的回调。
-  inputMethodController.offFinishTextPreview(finishTextPreviewCallback1);
-  console.info(`FinishTextPreviewCallback1 unsubscribed from finishTextPreview`);
-  // 取消finishTextPreview的所有回调。
-  inputMethodController.offFinishTextPreview();
-  console.info(`All callbacks unsubscribed from finishTextPreview`);
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to onFinishTextPreview, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onFinishTextPreview(finishTextPreviewCallback1);
+console.info(`FinishTextPreviewCallback1 subscribed to finishTextPreview`);
+inputMethodController.onFinishTextPreview(finishTextPreviewCallback2);
+console.info(`FinishTextPreviewCallback2 subscribed to finishTextPreview`);
+// 仅取消finishTextPreview的callback1的回调。
+inputMethodController.offFinishTextPreview(finishTextPreviewCallback1);
+console.info(`FinishTextPreviewCallback1 unsubscribed from finishTextPreview`);
+// 取消finishTextPreview的所有回调。
+inputMethodController.offFinishTextPreview();
+console.info(`All callbacks unsubscribed from finishTextPreview`);
 ```
 
 ### off('finishTextPreview')<sup>17+</sup>
@@ -5509,21 +5514,16 @@ let finishTextPreviewCallback2 = () => {
   console.info(`FinishTextPreviewCallback2: finishTextPreview event triggered`);
 };
 
-try {
-  inputMethodController.onFinishTextPreview(finishTextPreviewCallback1);
-  console.info(`FinishTextPreviewCallback1 subscribed to finishTextPreview`);
-  inputMethodController.onFinishTextPreview(finishTextPreviewCallback2);
-  console.info(`FinishTextPreviewCallback2 subscribed to finishTextPreview`);
-  // 仅取消finishTextPreview的callback1的回调。
-  inputMethodController.offFinishTextPreview(finishTextPreviewCallback1);
-  console.info(`FinishTextPreviewCallback1 unsubscribed from finishTextPreview`);
-  // 取消finishTextPreview的所有回调
-  inputMethodController.offFinishTextPreview();
-  console.info(`All callbacks unsubscribed from finishTextPreview`);
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to offFinishTextPreview, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodController.onFinishTextPreview(finishTextPreviewCallback1);
+console.info(`FinishTextPreviewCallback1 subscribed to finishTextPreview`);
+inputMethodController.onFinishTextPreview(finishTextPreviewCallback2);
+console.info(`FinishTextPreviewCallback2 subscribed to finishTextPreview`);
+// 仅取消finishTextPreview的callback1的回调。
+inputMethodController.offFinishTextPreview(finishTextPreviewCallback1);
+console.info(`FinishTextPreviewCallback1 unsubscribed from finishTextPreview`);
+// 取消finishTextPreview的所有回调
+inputMethodController.offFinishTextPreview();
+console.info(`All callbacks unsubscribed from finishTextPreview`);
 ```
 
 ## ImeChangeCallback<sup>23+</sup>
@@ -5649,14 +5649,10 @@ onImeChange(callback: ImeChangeCallback): void
 
 ```ts
 import { InputMethodSubtype } from '@kit.IMEKit';
-try { 
-  inputMethodSetting.onImeChange((inputMethodProperty: inputMethod.InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => {
-    console.info('Succeeded in subscribing imeChange:', 'inputMethodProperty:', inputMethodProperty, 'inputMethodSubtype:', inputMethodSubtype);
-  });
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to onImeChange, code: ${error.code}, message: ${error.message}`);
-}
+
+inputMethodSetting.onImeChange((inputMethodProperty: inputMethod.InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => {
+  console.info('Succeeded in subscribing imeChange:', 'inputMethodProperty:', inputMethodProperty, 'inputMethodSubtype:', inputMethodSubtype);
+});
 ```
 
 ### off('imeChange')<sup>9+</sup>
@@ -5780,18 +5776,13 @@ let inputMethodProperty: inputMethod.InputMethodProperty = {
   id: 'propertyId',
 }
 let inputMethodSetting = inputMethod.getSetting();
-try {
-  inputMethodSetting.listInputMethodSubtype(inputMethodProperty, (err?: BusinessError, data?: Array<InputMethodSubtype>) => {
-    if (err) {
-      console.error(`Failed to showSoftKeyboard, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in listing inputMethodSubtype.');
-  });
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to listInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodSetting.listInputMethodSubtype(inputMethodProperty, (err?: BusinessError, data?: Array<InputMethodSubtype>) => {
+  if (err) {
+    console.error(`Failed to showSoftKeyboard, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in listing inputMethodSubtype.');
+});
 ```
 
 ### listInputMethodSubtype<sup>9+</sup>
@@ -5865,17 +5856,12 @@ let inputMethodProperty: inputMethod.InputMethodProperty = {
   id: 'propertyId',
 }
 let inputMethodSetting = inputMethod.getSetting();
-try {
-  inputMethodSetting.listInputMethodSubtype(inputMethodProperty).then((data: Array<InputMethodSubtype>) => {
-    console.info('Succeeded in listing inputMethodSubtype.');
-  }).catch((error) => {
-    const err = error as BusinessError;
-    console.error(`Failed to listInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
-  })
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to listInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodSetting.listInputMethodSubtype(inputMethodProperty).then((data: Array<InputMethodSubtype>) => {
+  console.info('Succeeded in listing inputMethodSubtype.');
+}).catch((error) => {
+  const err = error as BusinessError;
+  console.error(`Failed to listInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
+})
 ```
 
 ### listCurrentInputMethodSubtype<sup>9+</sup>
@@ -5934,18 +5920,13 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputMethodSetting = inputMethod.getSetting();
-try {
-  inputMethodSetting.listCurrentInputMethodSubtype((err?: BusinessError, data?: Array<InputMethodSubtype>) => {
-    if (err) {
-      console.error(`Failed to listCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in listing currentInputMethodSubtype.');
-  });
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to listCurrentInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodSetting.listCurrentInputMethodSubtype((err?: BusinessError, data?: Array<InputMethodSubtype>) => {
+  if (err) {
+    console.error(`Failed to listCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in listing currentInputMethodSubtype.');
+});
 ```
 
 ### listCurrentInputMethodSubtype<sup>9+</sup>
@@ -6002,17 +5983,13 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputMethodSetting = inputMethod.getSetting();
-try {
-  inputMethodSetting.listCurrentInputMethodSubtype().then((data: Array<InputMethodSubtype>) => {
-    console.info('Succeeded in listing currentInputMethodSubtype.');
-  }).catch((error) => {
-    const err = error as BusinessError;
-    console.error(`Failed to listCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
-  })
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to listCurrentInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
-}
+
+inputMethodSetting.listCurrentInputMethodSubtype().then((data: Array<InputMethodSubtype>) => {
+  console.info('Succeeded in listing currentInputMethodSubtype.');
+}).catch((error) => {
+  const err = error as BusinessError;
+  console.error(`Failed to listCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
+})
 ```
 
 ### getInputMethods<sup>9+</sup>
@@ -6075,18 +6052,13 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodSetting.getInputMethods(true, (err?: BusinessError, data?: Array<inputMethod.InputMethodProperty>) => {
-    if (err) {
-      console.error(`Failed to getInputMethods, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in getting inputMethods.');
-  });
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to getInputMethods, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodSetting.getInputMethods(true, (err?: BusinessError, data?: Array<inputMethod.InputMethodProperty>) => {
+  if (err) {
+    console.error(`Failed to getInputMethods, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in getting inputMethods.');
+});
 ```
 
 ### getInputMethods<sup>9+</sup>
@@ -6152,17 +6124,13 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodSetting.getInputMethods(true).then((data: Array<inputMethod.InputMethodProperty>) => {
-    console.info('Succeeded in getting inputMethods.');
-  }).catch((error) => {
-    const err = error as BusinessError;
-    console.error(`Failed to getInputMethods, code: ${err.code}, message: ${err.message}`);
-  })
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to getInputMethods, code: ${error.code}, message: ${error.message}`);
-}
+
+inputMethodSetting.getInputMethods(true).then((data: Array<inputMethod.InputMethodProperty>) => {
+  console.info('Succeeded in getting inputMethods.');
+}).catch((error) => {
+  const err = error as BusinessError;
+  console.error(`Failed to getInputMethods, code: ${err.code}, message: ${err.message}`);
+})
 ```
 
 ### getInputMethodsSync<sup>11+</sup>
@@ -6208,11 +6176,7 @@ getInputMethodsSync(enable: boolean): Array&lt;InputMethodProperty&gt;
 **示例：**
 
 ```ts
-try {
-  let imeProp = inputMethodSetting.getInputMethodsSync(true);
-} catch(err) {
-  console.error(`Failed to getInputMethods: ${JSON.stringify(err)}`);
-}
+let imeProp = inputMethodSetting.getInputMethodsSync(true);
 ```
 
 ### getAllInputMethods<sup>11+</sup>
@@ -6268,18 +6232,13 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  inputMethodSetting.getAllInputMethods((err?: BusinessError, data?: Array<inputMethod.InputMethodProperty>) => {
-    if (err) {
-      console.error(`Failed to getAllInputMethods, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in getting all inputMethods.');
-  });
-} catch (err) {
-  const error = err as BusinessError;
-  console.error(`Failed to getAllInputMethods, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodSetting.getAllInputMethods((err?: BusinessError, data?: Array<inputMethod.InputMethodProperty>) => {
+  if (err) {
+    console.error(`Failed to getAllInputMethods, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in getting all inputMethods.');
+});
 ```
 
 ### getAllInputMethods<sup>11+</sup>
@@ -6366,11 +6325,7 @@ getAllInputMethodsSync(): Array&lt;InputMethodProperty&gt;
 **示例：**
 
 ```ts
-try {
-  let imeProp = inputMethodSetting.getAllInputMethodsSync();
-} catch(err) {
-  console.error(`Failed to getAllInputMethodsSync: ${JSON.stringify(err)}`);
-}
+let imeProp = inputMethodSetting.getAllInputMethodsSync();
 ```
 
 ### showOptionalInputMethods<sup>(deprecated)</sup>

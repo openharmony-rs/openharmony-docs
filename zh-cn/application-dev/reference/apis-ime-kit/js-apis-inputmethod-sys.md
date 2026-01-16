@@ -90,27 +90,20 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let currentIme = inputMethod.getCurrentInputMethod();
-try {
-  inputMethod.switchInputMethod(currentIme.name).then(() => {
-    console.info('Succeeded in switching inputmethod.');
-  }).catch((err) => {
-    console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
-  })
-} catch (error) {
-  const err = error as BusinessError;
+
+inputMethod.switchInputMethod(currentIme.name).then(() => {
+  console.info('Succeeded in switching inputmethod.');
+}).catch((err) => {
   console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
-}
+})
+
 let currentImeSubType = inputMethod.getCurrentInputMethodSubtype();
-try {
-  inputMethod.switchInputMethod(currentIme.name, currentImeSubType.id).then(() => {
-    console.info('Succeeded in switching inputmethod.');
-  }).catch((err) => {
-    console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
-  })
-} catch (error) {
-  const err = error as BusinessError;
+
+inputMethod.switchInputMethod(currentIme.name, currentImeSubType.id).then(() => {
+  console.info('Succeeded in switching inputmethod.');
+}).catch((err) => {
   console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
-}
+})
 ```
 
 ## InputMethodSetting<sup>8+</sup>
@@ -193,14 +186,9 @@ onImeShow(callback: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void
 **示例：**
 
 ```ts
-try {
-  inputMethodSetting.onImeShow((info: Array<inputMethod.InputWindowInfo>) => {
-    console.info('Succeeded in subscribing imeShow event.');
-  });
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to unsubscribing imeShow, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodSetting.onImeShow((info: Array<inputMethod.InputWindowInfo>) => {
+  console.info('Succeeded in subscribing imeShow event.');
+});
 ```
 
 ### on('imeHide')<sup>10+</sup>
@@ -280,14 +268,9 @@ onImeHide(callback: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void
 **示例：**
 
 ```ts
-try {
-  inputMethodSetting.onImeHide((info: Array<inputMethod.InputWindowInfo>) => {
-    console.info('Succeeded in subscribing imeHide event.');
-  });
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to unsubscribing imeHide, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodSetting.onImeHide((info: Array<inputMethod.InputWindowInfo>) => {
+  console.info('Succeeded in subscribing imeHide event.');
+});
 ```
 
 ### off('imeShow')<sup>10+</sup>
@@ -346,12 +329,7 @@ offImeShow(callback?: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void
 **示例：**
 
 ```ts
-try {
-  inputMethodSetting.offImeShow();
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to unsubscribing imeShow, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodSetting.offImeShow();
 ```
 
 ### off('imeHide')<sup>10+</sup>
@@ -412,12 +390,7 @@ offImeHide(callback?: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;): void
 **示例：**
 
 ```ts
-try {
-  inputMethodSetting.offImeHide();
-} catch(err) {
-  const error = err as BusinessError;
-  console.error(`Failed to unsubscribing imeHide, code: ${error.code}, message: ${error.message}`);
-}
+inputMethodSetting.offImeHide();
 ```
 
 ### isPanelShown<sup>11+</sup>
@@ -465,12 +438,80 @@ let info: PanelInfo = {
   type: PanelType.SOFT_KEYBOARD,
   flag: PanelFlag.FLAG_FIXED
 }
-try {
-  let result = inputMethodSetting.isPanelShown(info);
-  console.info('Succeeded in querying isPanelShown, result: ' + result);
-} catch (err) {
-  console.error(`Failed to query isPanelShown: ${JSON.stringify(err)}`);
+let result = inputMethodSetting.isPanelShown(info);
+console.info('Succeeded in querying isPanelShown, result: ' + result);
+```
+
+### isPanelShown<sup>23+</sup>
+
+ArkTS-Dyn: isPanelShown(panelInfo: PanelInfo, displayId: number): boolean
+
+ArkTS-Sta: isPanelShown(panelInfo: PanelInfo, displayId: long): boolean;
+
+查询指定类型的输入法面板在指定屏幕上是否处于显示状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                                                  | 必填 | 说明               |
+| --------- | ----------------------------------------------------- | ---- | ------------------ |
+| panelInfo | [PanelInfo](./js-apis-inputmethod-panel.md#panelinfo) |  是  | 输入法面板的属性。 |
+| displayId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是 | 屏幕ID。|
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| boolean | 面板显隐状态查询结果。<br/>- true表示被查询的输入法面板处于显示状态。<br/>- false表示被查询的输入法面板处于隐藏状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 202      | not system application.  |
+| 12800008 | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
+
+let displayId: number = 10;
+let info: PanelInfo = {
+  type: PanelType.SOFT_KEYBOARD,
+  flag: PanelFlag.FLAG_FIXED
 }
+
+let result: boolean = inputMethod.getSetting().isPanelShown(info, displayId);
+console.info('Succeeded in querying isPanelShown, result: ' + result);
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
+
+let displayId: long = 10;
+let info: PanelInfo = {
+  type: PanelType.SOFT_KEYBOARD,
+  flag: PanelFlag.FLAG_FIXED
+}
+
+let result: boolean = inputMethod.getSetting().isPanelShown(info, displayId);
+console.info('Succeeded in querying isPanelShown, result: ' + result);
 ```
 
 ### enableInputMethod<sup>20+</sup>
@@ -540,14 +581,164 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let currentIme = inputMethod.getCurrentInputMethod();
-try {
-  inputMethodSetting.enableInputMethod(currentIme.name, currentIme.id, inputMethod.EnabledState.BASIC_MODE).then(() => {
-    console.info('Succeeded in enable inputmethod.');
-  }).catch((err) => {
-    console.error(`Failed to enableInputMethod. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (error) {
-  const err = error as BusinessError;
-  console.error(`Failed to enableInputMethod, code: ${err.code}, message: ${err.message}`);
-}
+
+inputMethodSetting.enableInputMethod(currentIme.name, currentIme.id, inputMethod.EnabledState.BASIC_MODE).then(() => {
+  console.info('Succeeded in enable inputmethod.');
+}).catch((err) => {
+  console.error(`Failed to enableInputMethod. Code: ${err.code}, message: ${err.message}`);
+})
+```
+
+## InputMethodController
+
+下列API示例中都需使用[getController](./js-apis-inputmethod.md#inputmethodgetcontroller9)获取到InputMethodController实例，再通过实例调用对应方法。
+
+### showSoftKeyboard<sup>23+</sup>
+
+ArkTS-Dyn: showSoftKeyboard(displayId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: showSoftKeyboard(displayId: long): Promise&lt;void&gt;
+
+在指定屏幕上显示输入法软键盘。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用显示当前输入法的软键盘。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.CONNECT_IME_ABILITY，仅系统应用可用。
+
+**系统能力：**  SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| displayId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 屏幕ID。|
+
+**返回值：**
+
+| 类型           | 说明                     |
+| -------------- | ----------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201      | permissions check fails.  |
+| 202      | not system application.  |
+| 12800003 | input method client error. Possible causes:1.the edit box is not focused. 2.no edit box is bound to current input method application.3.ipc failed due to the large amount of data transferred or other reasons.|
+| 12800008 | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayId: number = 20;
+inputMethod.getController().showSoftKeyboard(displayId).then(() => {
+  console.info('Succeeded in showing softKeyboard.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to show softKeyboard, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayId: long = 20;
+inputMethod.getController().showSoftKeyboard(displayId).then(() => {
+  console.info('Succeeded in showing softKeyboard.');
+}).catch((err: BusinessError) :void=> {
+  console.error(`Failed to show softKeyboard, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### hideSoftKeyboard<sup>23+</sup>
+
+ArkTS-Dyn: hideSoftKeyboard(displayId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: hideSoftKeyboard(displayId: long): Promise&lt;void&gt;
+
+隐藏指定屏幕上的输入法软键盘。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用隐藏当前输入法的软键盘。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.CONNECT_IME_ABILITY，仅系统应用可用。
+
+**系统能力：**  SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| displayId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 屏幕ID。|
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201      | permissions check fails.  |
+| 202      | not system application.  |
+| 12800003 | input method client error. Possible causes:1.the edit box is not focused. 2.no edit box is bound to current input method application.3.ipc failed due to the large amount of data transferred or other reasons.|
+| 12800008 | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayId: number = 30;
+inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
+  console.info('Succeeded in hiding softKeyboard.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to hide softKeyboard, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayId: long = 30;
+inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
+  console.info('Succeeded in hiding softKeyboard.');
+}).catch((err: BusinessError) :void=> {
+  console.error(`Failed to hide softKeyboard, code: ${err.code}, message: ${err.message}`);
+});
 ```
