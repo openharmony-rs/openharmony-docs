@@ -64,13 +64,9 @@ on(type: 'sizeUpdate', callback: SizeUpdateCallback): void
 ```ts
 import { window } from '@kit.ArkUI';
 
-try {
-  panel.on('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
-    console.info(`panel size changed, windowSize: ${windowSize}, keyboardArea: ${keyboardArea}`);
-  });
-} catch(err) {
-  console.error(`Failed to subscribe sizeUpdate: ${err.message}`);
-}
+panel.on('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+  console.info(`panel size changed, windowSize: ${windowSize}, keyboardArea: ${keyboardArea}`);
+});
 ```
 
 ### off('sizeUpdate')<sup>14+</sup>
@@ -105,13 +101,9 @@ off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
 ```ts
 import { window } from '@kit.ArkUI';
 
-try {
-  panel.off('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
-    console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
-  });
-} catch(err) {
-  console.error(`Failed to subscribe sizeUpdate: ${err.message}`);
-}
+panel.off('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+  console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
+});
 ```
 
 ### onSizeUpdate<sup>23+</sup>
@@ -139,13 +131,10 @@ onSizeUpdate(callback: SizeUpdateCallback): void
 ```ts
 import { window } from '@kit.ArkUI';
 
-try {
-  panel.onSizeUpdate((windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
-    console.info(`panel size changed, windowSize: ${windowSize}, keyboardArea: ${keyboardArea}`);
-  });
-} catch(err) {
-  console.error(`Failed to subscribe sizeUpdate, code: ${err.code}, message: ${err.message}`);
-}
+panel.onSizeUpdate((windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+  console.info(`panel size changed, windowSize: ${windowSize}, keyboardArea: ${keyboardArea}`);
+});
+
 ```
 
 ### offSizeUpdate<sup>23+</sup>
@@ -173,13 +162,9 @@ offSizeUpdate(callback?: SizeUpdateCallback): void
 ```ts
 import { window } from '@kit.ArkUI';
 
-try {
-  panel.offSizeUpdate((windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
-    console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
-  });
-} catch(err) {
-  console.error(`Failed to subscribe sizeUpdate, code: ${err.code}, message: ${err.message}`);
-}
+panel.offSizeUpdate((windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+  console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
+});
 ```
 
 ## FluidLightMode<sup>20+</sup>
