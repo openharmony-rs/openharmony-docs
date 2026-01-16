@@ -69,7 +69,6 @@
 | 55 | ENOANO |No anode |
 | 56 | EBADRQC | Invalid request code |
 | 57 | EBADSLT | Invalid slot |
-| EDEADLK| EDEADLOCK | |
 | 59 | EBFONT |Bad font file format |
 | 60 | ENOSTR |Device not a stream |
 | 61 | ENODATA | No data available |
