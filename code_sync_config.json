@@ -37009,6 +37009,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesWrap/entry/src/main/ets/pages/aeswrap/AesWrapEncryptionDecryptionSync.ets",
+				"functions":[
+					{
+						"end_line":77,
+						"name":"encrypt_decrypt_aes_wrap_sync",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -37789,6 +37799,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/ecc/Sync.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"bin_convert_ecc_keypair_sync",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -38197,6 +38217,16 @@
 						"end_line":49,
 						"name":"use_ecdh_for_key_negotiation_sync",
 						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/ECDH/EDCHAsync.ets",
+				"functions":[
+					{
+						"end_line":47,
+						"name":"use_ecdh_for_key_negotiation_async",
+						"start_line":15
 					}
 				]
 			}
@@ -39067,6 +39097,71 @@
 						"end_line":93,
 						"name":"sync_symmetry_encrypt_decrypt_sm4_gcm",
 						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-pkcs1-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/rsa/PKCS1_RSA.cpp",
+				"functions":[
+					{
+						"end_line":118,
+						"name":"rsa_pkcs1_encrypt_decrypt",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-sign-data-format-conversion-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/sm2_signature_format_conversion_der.cpp",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"sm2_signature_format_conversion_der",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/sm2_der_convert_r_s.cpp",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"sm2_der_convert_r_s",
+						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm2-sign-data-format-conversion.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_data_format_convertion/sm2_sign_data_rs_to_der.ets",
+				"functions":[
+					{
+						"end_line":34,
+						"name":"sm2_sign_data_rs_to_der",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_data_format_convertion/sm2_sign_data_der_to_rs.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"sm2_sign_data_der_to_rs",
+						"start_line":15
 					}
 				]
 			}
