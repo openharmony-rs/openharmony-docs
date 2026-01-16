@@ -504,45 +504,45 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
 
 ![编码输入Buffer回调接口配置ROI流程图](figures/roi-input-buffer-callback.png)
 
-准备步骤同[Surface模式下通过编码输入回调接口配置ROI](#surface模式下通过编码输入回调接口配置roi)，仅说明配置差异。
+准备步骤同[Surface模式下通过编码输入回调接口配置ROI](#surface模式下通过编码输入回调接口配置roi)步骤1-4，此处仅说明配置差异。
 
-1. 在编码输入Buffer回调中配置ROI信息。
+在编码输入Buffer回调中配置ROI信息。
 
-   ```c++
-   static void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
-   {
-       (void)codec;
-       (void)userData;
-       auto format = std::shared_ptr<OH_AVFormat>(OH_AVBuffer_GetParameter(buffer), OH_AVFormat_Destroy);
-       if (format == nullptr) {
-           // 异常处理。
-       }
-       std::string roiInfo = ""; 
-       if (!g_roiStrQueue.pop(roiInfo, ROI_WAIT_TIMEOUT)) {
-           roiInfo = ";"; // 与NativeBuffer通路统一。
-       }
-       OH_AVFormat_SetStringValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, roiInfo.c_str());
+```c++
+static void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+{
+    (void)codec;
+    (void)userData;
+    auto format = std::shared_ptr<OH_AVFormat>(OH_AVBuffer_GetParameter(buffer), OH_AVFormat_Destroy);
+    if (format == nullptr) {
+        // 异常处理。
+    }
+    std::string roiInfo = ""; 
+    if (!g_roiStrQueue.pop(roiInfo, ROI_WAIT_TIMEOUT)) {
+        roiInfo = ";"; // 与NativeBuffer通路统一。
+    }
+    OH_AVFormat_SetStringValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, roiInfo.c_str());
 
-       // 此处还需做视频帧填充，此处忽略。
-       // 通知编码器buffer输入完成。
-       OH_VideoEncoder_PushInputBuffer(codec, index);
-   }
+    // 此处还需做视频帧填充，此处忽略。
+    // 通知编码器buffer输入完成。
+    OH_VideoEncoder_PushInputBuffer(codec, index);
+}
 
-   static void OnStreamChanged(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
-   {
-       // 此处仅作定义，实现忽略。
-   }
+static void OnStreamChanged(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
+{
+    // 此处仅作定义，实现忽略。
+}
 
-   static void OnError(OH_AVCodec *codec, int32_t errorCode, void *userData)
-   {
-       // 此处仅作定义，实现忽略。
-   }
+static void OnError(OH_AVCodec *codec, int32_t errorCode, void *userData)
+{
+    // 此处仅作定义，实现忽略。
+}
 
-   static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
-   {
-       // 此处仅作定义，实现忽略。
-   }
+static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+{
+    // 此处仅作定义，实现忽略。
+}
 
-   OH_AVCodecCallback cb = {&OnError, &OnStreamChanged, &OnNeedInputBuffer, &OnNewOutputBuffer};
-   OH_AVErrCode ret = OH_VideoEncoder_RegisterCallback(videoEnc, cb, nullptr);
-   ```
+OH_AVCodecCallback cb = {&OnError, &OnStreamChanged, &OnNeedInputBuffer, &OnNewOutputBuffer};
+OH_AVErrCode ret = OH_VideoEncoder_RegisterCallback(videoEnc, cb, nullptr);
+```
