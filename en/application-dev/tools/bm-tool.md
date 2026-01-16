@@ -1600,7 +1600,7 @@ The signature consistency verification fails during installation.
 
 **Possible Causes**
 
-The [appIdentifier](./../quick-start/common-problem-of-application.md#what-is-appidentifier) is inconsistent, causing the installation failure.
+The **appIdentifier** is inconsistent, causing the installation failure.
 
 **Solution**
 
