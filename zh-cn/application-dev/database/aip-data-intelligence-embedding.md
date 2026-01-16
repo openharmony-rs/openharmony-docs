@@ -75,27 +75,11 @@
    <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
     ``` TypeScript
-   let textConfig:intelligence.ModelConfig = {
-     version:intelligence.ModelVersion.BASIC_MODEL,
-     isNpuAvailable:false,
-     cachePath:"/data"
-   }
-   let textEmbedding:intelligence.TextEmbedding;
-   ```
+    ```
    <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
     ``` TypeScript
-   intelligence.getTextEmbeddingModel(textConfig)
-     .then((data:intelligence.TextEmbedding) => {
-       console.info('Succeeded in getting TextModel');
-       textEmbedding = data;
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get TextModel and code is ' + err.code);
-       // ...
-     })
-   ```
+    ```
 
 3. 加载文本嵌入模型。
 
@@ -146,28 +130,7 @@
    <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
     ``` TypeScript
-   let text = 'text';
-   textEmbedding.getEmbedding(text)
-     .then((data:Array<number>) => {
-       console.info('Succeeded in getting Embedding');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get Embedding and code is ' + err.code);
-       // ...
-     })
-   
-   let batchTexts = ['text1','text2'];
-   textEmbedding.getEmbedding(batchTexts)
-     .then((data:Array<Array<number>>) => {
-       console.info('Succeeded in getting Embedding');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get Embedding and code is ' + err.code);
-       // ...
-     })
-   ```
+    ```
 
 6. 释放文本嵌入模型。
 
