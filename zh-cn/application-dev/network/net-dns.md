@@ -132,10 +132,10 @@
 2. 初始化数据成员。
 
    <!-- @[Dns_Data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/DNS.ets) -->
-
-    ``` TypeScript
-    @State hostName: string = 'www.example.com';
-    ```
+   
+   ``` TypeScript
+   @State hostName: string = 'www.example.com';
+   ```
 
 3. 使用当前默认网络解析主机名以获取所有IP地址。
 
