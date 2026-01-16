@@ -14,6 +14,25 @@
 
    <!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
    
+   ``` JSON5
+   "extensionAbilities": [
+     {
+       "srcEntry": "./ets/InputMethodExtensionAbility/InputMethodService.ets",
+       "name": "InputMethodService",
+       "label": "$string:MainAbility_label",
+       "description": "$string:extension_ability_descriptor",
+       "type": "inputMethod",
+       "exported": true,
+       "metadata": [
+         {
+           "name": "ohos.extension.input_method",
+           "resource": "$profile:input_method_config"
+         }
+       ]
+     }
+   ],
+   ```
+   
 2. 子类型配置文件`input_method_config.json`需要放在应用资源目录的profile文件夹中，格式如下，字段释义参照[InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype)；开发者需要严格按照配置文件格式及字段进行子类型信息配置，locale字段的配置参照[i18n-locale-culture](.././internationalization/i18n-locale-culture.md#实现原理)。
 
    ``` JSON5
