@@ -479,7 +479,21 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
 ```ts
 JS异常：TypeError: Cannot add property in prevent extensions
 ```
-
+   <!-- @[define_sendableTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->    
+   
+   ``` TypeScript
+   // sendable.ets，与Index.ets在同级目录下。
+   @Sendable
+   export class TestClass {
+     public name: string = 'test';
+     setName(name: string) {
+       this.name = name;
+     }
+     getName(): string {
+       return this.name;
+     }
+   }
+   ```
 **问题原因与解决方案**
 
 由于Sendable类的布局固定，不允许增删属性，对Sendable对象新增属性时会抛出上述JS异常。应用需要基于JS异常栈定位到对应的ts文件代码行，排查相应的业务逻辑。
