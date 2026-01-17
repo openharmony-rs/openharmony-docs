@@ -182,6 +182,13 @@ foo(c);
     循环依赖示例:
     
     <!-- @[import_v](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/bar.ets) -->  
+    
+    ``` TypeScript
+    // bar.ets
+    import {v} from './foo'; // bar.ets依赖foo.ets
+    export let u = 0;
+    console.info(`v: ${v}`);
+    ```
 
     <!-- @[import_u](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/foo.ets) -->  
 
