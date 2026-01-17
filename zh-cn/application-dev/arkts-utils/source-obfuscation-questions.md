@@ -120,18 +120,7 @@ jsonProperty
 
 示例代码如下：
 
-```ts
-// 混淆前
-// export.ts
-export namespace NS {
-  export function foo() {}
-}
-
-// import.ts
-import { NS } from './export';
-
-NS.foo();
-```
+<!-- @[ns_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
 
 ```ts
 // 混淆后
@@ -174,25 +163,9 @@ foo
 
 示例代码如下：
 
-```ts
-// 混淆前
-// utils.ts
-export function addNum(a: number, b: number): number {
-  return a + b;
-}
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/utils.ts) -->  
 
-// main.ts
-async function loadAndUseAdd() {
-  try {
-    const mathUtils = await import('./utils');
-    const result = mathUtils.addNum(2, 3);
-  } catch (error) {
-    console.error('Failure reason:', error);
-  }
-}
-
-loadAndUseAdd();
-```
+<!-- @[add_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
 
 ```ts
 // 混淆后
@@ -242,18 +215,9 @@ addNum
 
 示例代码如下：
 
-```ts
-// src/main/cpp/types/libentry/Index.d.ts
-export const addNum: (a: number, b: number) => number;
-```
+<!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
-```ts
-// example.ets
-// 混淆前
-import testNapi from 'libentry.so';
-
-testNapi.addNum();
-```
+<!-- @[call_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
 
 ```ts
 // example.ets
@@ -289,16 +253,9 @@ addNum
 
 示例代码如下：
 
-```ts
-// 混淆前
-// hsp模块
-export function addNum() {}
+<!-- @[export_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/sharedlibrary/src/main/ets/pages/Index.ets) -->  
 
-// entry模块
-import { addNum } from 'hsp';
-
-addNum();
-```
+<!-- @[call_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
 
 ```ts
 // 混淆后
@@ -347,18 +304,7 @@ addNum
 
 示例代码如下：
 
-```ts
-// 混淆前
-import { Want } from '@kit.AbilityKit';
-
-let petalMapWant: Want = {
-  bundleName: 'com.example.myapplication',
-  uri: 'maps://',
-  parameters: {
-    linkSource: 'com.other.app'
-  }
-}
-```
+<!-- @[call_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
 
 ```ts
 // 混淆后
@@ -402,26 +348,9 @@ linkSource
 
 示例代码如下：
 
-```ts
-// 混淆前
-// file1.ts
-export interface MyInfo {
-  age: number;
-  address: {
-    city1: string;
-  }
-}
+<!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->  
 
-// file2.ts
-import { MyInfo } from './file1';
-
-const person: MyInfo = {
-  age: 20,
-  address: {
-    city1: "shanghai"
-  }
-}
-```
+<!-- @[call_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
 
 ```ts
 // 混淆后
@@ -452,16 +381,7 @@ const person: MyInfo = {
 
 方案一：使用`interface`定义该属性的类型，并使用`export`进行导出，这样该属性将被自动加入到属性白名单中。示例如下：
 
-```ts
-// file1.ts
-export interface AddressType {
-  city1: string;
-}
-export interface MyInfo {
-  age: number;
-  address: AddressType;
-}
-```
+<!-- @[export_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/file2.ts) -->  
 
 方案二：使用`-keep-property-name`选项，将未直接导出的类型内的属性配置到属性白名单中。示例如下：
 
