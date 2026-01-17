@@ -356,6 +356,18 @@ testInstanceof();
 
 <!-- @[define_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->  
 
+``` TypeScript
+// pages/Sendable.ets
+'use shared'
+@Sendable
+export class A {
+  public name: string = 'name';
+  printName(): string {
+    return this.name;
+  }
+}
+```
+
 <!-- @[define_workers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/workers/Worker.ets) -->  
 
 ## 使用Sendable特性抛JS异常排查指导
