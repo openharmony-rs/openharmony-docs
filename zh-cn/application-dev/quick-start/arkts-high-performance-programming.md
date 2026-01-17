@@ -140,6 +140,12 @@ function add(left?: number, right?: number): number | undefined {
 根据业务需求，将函数参数声明为必选参数。考虑使用默认参数。
 <!-- @[avoid_optional_parameters_batter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+function addWithParams(left: number = 0, right: number = 0): number {
+  return left + right;
+}
+```
+
 ## 数组
 
 ### 数值数组推荐使用TypedArray
