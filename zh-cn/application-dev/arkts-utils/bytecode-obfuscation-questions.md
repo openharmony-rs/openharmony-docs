@@ -330,17 +330,17 @@ parameters的类型为Record<string, Object>，在开启属性混淆后，parame
 
 <!-- @[import_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
 
-```ts
-// 混淆后
-import type Want from "@ohos:app.ability.Want";
-
-let petalMapWant: Want = {
+``` TypeScript
+// 混淆前。
+import { Want } from '@kit.AbilityKit';
+// ...
+  let petalMapWant: Want = {
     bundleName: 'com.example.myapplication',
     uri: 'maps://',
     parameters: {
-        i: 'com.other.app'
+      linkSource: 'com.other.app'
     }
-};
+  }
 ```
 
 **问题原因**：
