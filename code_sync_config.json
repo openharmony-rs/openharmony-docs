@@ -9500,7 +9500,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets",
 				"functions":[
 					{
-						"end_line":22,
+						"end_line":24,
 						"name":"sync_import",
 						"start_line":16
 					},
@@ -9525,14 +9525,14 @@
 						"start_line":168
 					},
 					{
-						"end_line":47,
+						"end_line":49,
 						"name":"setDefaultDistributedTables",
-						"start_line":24
+						"start_line":26
 					},
 					{
-						"end_line":96,
+						"end_line":98,
 						"name":"setSingleDistributedTables",
-						"start_line":26
+						"start_line":28
 					}
 				]
 			}
