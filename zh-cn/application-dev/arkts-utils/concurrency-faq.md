@@ -251,6 +251,14 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
 3. 应用执行TaskPool任务时，抛出返回结果序列化失败异常，排查代码发现Concurrent函数返回结果是不支持的序列化类型。
 
    <!-- @[define_printArgs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/utils.ets) -->     
+   
+   ``` TypeScript
+   // utils.ets
+   @Concurrent
+   export function printArgs(args: number) {
+     return args;
+   }
+   ```
 
    <!-- @[unsupport_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ExecuteFailedTask.ets) -->   
 
