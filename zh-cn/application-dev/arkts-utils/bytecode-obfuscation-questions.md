@@ -134,6 +134,30 @@ this.__messageStr = new ObservedPropertySimplePU('Hello World', this, "messageSt
 
 <!-- @[import_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample.ets) -->
 
+``` TypeScript
+// Sample.ets
+import { Type } from '@kit.ArkUI';
+
+// 数据中心。
+@ObservedV2
+class SampleChild {
+  @Trace public p123: number = 0;
+  public p2: number = 10;
+}
+
+@ObservedV2
+export class Sample {
+  // 对于复杂对象需要@Type修饰，确保序列化成功。
+  @Type(SampleChild)
+  @Trace public f123: SampleChild = new SampleChild();
+}
+
+@ObservedV2
+class Info {
+  @Trace public sample: Sample = new Sample();
+}
+```
+
 字节码文件：
 
 ```abc
