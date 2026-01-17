@@ -156,6 +156,15 @@ function addWithParams(left: number = 0, right: number = 0): number {
 
 <!-- @[use_typearray_poor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+const arr1 = new Array<number>(1, 2, 3);
+const arr2 = new Array<number>(4, 5, 6);
+let res = new Array<number>(3);
+for (let i = 0; i < 3; i++) {
+  res[i] = arr1[i] + arr2[i];
+}
+```
+
 优化后的代码示例：
 
 <!-- @[use_typearray_batter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
