@@ -277,6 +277,17 @@ let num = 10; // 编译器自动推断num为number类型。
 
 <!-- @[optional_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+interface Person {
+  name: string;
+  age?: number;  // age 是可选属性。
+}
+
+const person: Person = {
+  name: 'Alice',
+};
+```
+
 ### 联合类型
 
 联合类型这种类型组合能力为复杂场景提供了更强的表达力，是ArkTS类型系统的重要创新点。
