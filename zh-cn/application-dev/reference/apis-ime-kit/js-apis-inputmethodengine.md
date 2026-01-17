@@ -3432,7 +3432,7 @@ adjustPanelRect(flag: PanelFlag, rect: PanelRect): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 
-let panelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
 let panelRect:inputMethodEngine.PanelRect = {
   landscapeRect:{left:100, top:100, width:400, height:400},
   portraitRect:{left:200, top:200, width:300, height:300}
@@ -3481,7 +3481,7 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let panelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
 let panelRect: inputMethodEngine.EnhancedPanelRect = {
   landscapeAvoidY: 650,
   landscapeInputRegion: [{left:300, top:650, width:2000, height:500}],
@@ -4879,7 +4879,7 @@ ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let length:number = 1;
+let length: number = 1;
 inputClient.getForward(length, (err: BusinessError, text: string) => {
   if (err) {
     console.error(`Failed to getForward: code: ${err.code} ,message: ${err.message}`);
@@ -4945,7 +4945,7 @@ ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let length:number = 1;
+let length: number = 1;
 inputClient.getForward(length).then((text: string) => {
   console.info(`Succeeded in getting forward, text: ${text}`);
 }).catch((err: BusinessError) => {
@@ -4957,7 +4957,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let length:int = 1;
+let length: int = 1;
 inputClient.getForward(length).then((text: string) => {
   console.info(`Succeeded in getting forward, text: ${text}`);
 }).catch((err: BusinessError) => {
@@ -5003,8 +5003,19 @@ ArkTS-Sta: getForwardSync(length:int): string
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
-let length = 1;
+let length: number = 1;
+
+let text: string = inputClient.getForwardSync(length);
+console.info(`Succeeded in getting forward, text: ${text}`);
+```
+
+ArkTS-Sta示例:
+
+```ts
+let length: int = 1;
 
 let text: string = inputClient.getForwardSync(length);
 console.info(`Succeeded in getting forward, text: ${text}`);
@@ -5047,7 +5058,7 @@ ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let length:number = 1;
+let length: number = 1;
 inputClient.getBackward(length, (err: BusinessError, text: string) => {
   if (err) {
     console.error(`Failed to getBackward: code: ${err.code} ,message: ${err.message}`);
@@ -5061,7 +5072,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let length:int = 1;
+let length: int = 1;
 
 inputClient.getBackward(length, (err: BusinessError, text: string) => {
   if (err) {
@@ -5114,7 +5125,7 @@ ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let length:number = 1;
+let length: number = 1;
 
 inputClient.getBackward(length).then((text: string) => {
   console.info(`Succeeded in getting backward, text: ${text}`);
@@ -5127,7 +5138,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let length:int = 1;
+let length: int = 1;
 
 inputClient.getBackward(length).then((text: string) => {
   console.info(`Succeeded in getting backward, text: ${text}`);
@@ -5176,7 +5187,7 @@ ArkTS-Sta: getBackwardSync(length:int): string
 
 ArkTS-Dyn示例:
 ```ts
-let length:number = 1;
+let length: number = 1;
 
 let text: string = inputClient.getBackwardSync(length);
 console.info(`Succeeded in getting backward, text: ${text}`);
@@ -5184,7 +5195,7 @@ console.info(`Succeeded in getting backward, text: ${text}`);
 
 ArkTS-Sta示例：
 ```ts
-let length:int = 1;
+let length: int = 1;
 
 let text: string = inputClient.getBackwardSync(length);
 console.info(`Succeeded in getting backward, text: ${text}`);
@@ -5302,7 +5313,7 @@ ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let length:number = 1;
+let length: number = 1;
 inputClient.deleteForward(length).then((result: boolean) => {
   if (result) {
     console.info('Succeeded in deleting forward.');
@@ -5318,7 +5329,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let length:int = 1;
+let length: int = 1;
 inputClient.deleteForward(length).then((result: boolean) => {
   if (result) {
     console.info('Succeeded in deleting forward.');
@@ -5363,16 +5374,18 @@ ArkTS-Sta: deleteForwardSync(length:int): void
 **示例：**
 
 ArkTS-Dyn示例:
+
 ```ts
-let length:number = 1;
+let length: number = 1;
 
 inputClient.deleteForwardSync(length);
 console.info('Succeeded in deleting forward.');
 ```
 
 ArkTS-Sta示例：
+
 ```ts
-let length:int = 1;
+let length: int = 1;
 
 inputClient.deleteForwardSync(length);
 console.info('Succeeded in deleting forward.');
@@ -5415,7 +5428,7 @@ ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let length:number = 1;
+let length: number = 1;
 inputClient.deleteBackward(length, (err: BusinessError, result: boolean) => {
   if (err) {
     console.error(`Failed to deleteBackward: code: ${err.code} ,message: ${err.message}`);
@@ -5433,8 +5446,8 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@ohos.base';
 
-let length:number = 1;
-inputClient.deleteBackward(length, (err: BusinessError, result: boolean) => {
+let length: int = 1;
+inputClient.deleteBackward(length, (err: BusinessError | null, result: boolean | undefined) => {
   if (err) {
     console.error(`Failed to deleteBackward: code: ${err.code} ,message: ${err.message}`);
     return;
