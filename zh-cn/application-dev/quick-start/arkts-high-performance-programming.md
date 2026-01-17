@@ -52,6 +52,22 @@ doubleNum = 1;  // 该变量在声明时为浮点型数据，建议后续不要�
 
 <!-- @[constant_in_loop_poor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+class Time {
+  static start: number = 0;
+  static info: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+}
+
+function getNum(num: number): number {
+  let total: number = 348;
+  for (let index: number = 0x8000; index > 0x8; index >>= 1) {
+    // 此处会多次对Time的info及start进行查找，并且每次查找出来的值是相同的。
+    total += ((Time.info[num - Time.start] & index) !== 0) ? 1 : 0;
+  }
+  return total;
+}
+```
+
 优化后的代码如下，可以将`Time.info[num - Time.start]`提取为常量，这样可以显著减少属性访问次数，提升性能。
 
 <!-- @[constant_in_loop_batter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
