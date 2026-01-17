@@ -297,3 +297,11 @@ ArkTS支持联合类型（`|`）。联合类型表示一个值可以是多种类
 **ArkTS示例：**
 
 <!-- @[unite_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 联合类型示例。
+
+let value: string | number;
+value = 'hello';
+value = 123;
+```
