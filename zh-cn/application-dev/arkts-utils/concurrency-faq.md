@@ -332,6 +332,28 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
 
 <!-- @[test_instanceof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/TestInstancof.ets) -->   
 
+``` TypeScript
+// pages/index.ets
+import { worker, ErrorEvent } from '@kit.ArkTS'
+import { A } from './Sendable'
+const workerInstance = new worker.ThreadWorker('../workers/Worker.ets');
+function testInstanceof() {
+  let a = new A();
+  if (a instanceof A) {
+    // 打印test instanceof in main thread success
+    console.info('test instanceof in main thread success');
+  } else {
+    console.info('test instanceof in main thread failed');
+  }
+  workerInstance.postMessageWithSharedSendable(a);
+  workerInstance.onerror = (err: ErrorEvent) => {
+    console.error('worker err :' + err.message)
+  }
+}
+
+testInstanceof();
+```
+
 <!-- @[define_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->  
 
 <!-- @[define_workers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/workers/Worker.ets) -->  
