@@ -93,6 +93,50 @@
    1. 如果在执行TaskPool任务过程中发生JS异常，TaskPool会捕获该JS异常并通过taskpool.execute().catch((e:Error)=>{})将异常信息返回，应用需要查看异常信息并修复。
 
    <!-- @[catch_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
+   import { taskpool } from '@kit.ArkTS';
+   
+   @Concurrent
+   function createTask(a: number, b:number): number {
+     let sum = a + b;
+     return sum;
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string | ResourceStr = $r('app.string.Button_label');
+   
+     build() {
+       Row() {
+         Column() {
+           Text(this.message)
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+             .onClick(() => {
+               console.info('test start');
+               // 其他业务逻辑。
+               // ...
+               let task: taskpool.Task = new taskpool.Task(createTask, 1, 2);
+               taskpool.execute(task).then((res: object)=>{
+                 // 任务执行完处理结果。
+                 this.message = '任务执行结果:'+ res;
+                 // ...
+               }).catch((e: Error)=>{
+                 // 任务发生异常后处理异常。
+                 // ...
+               })
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   
+   // 如果test start在控制台打印，但是并未出现Task Allocation: taskId:的日志，则taskpool.execute没有执行，应用需要排查其他业务逻辑。
+   ```
 
    2. 如果.catch分支无异常信息返回，但是应用通过TaskPool任务实现的功能发生问题，应用需要查看TaskPool任务逻辑是否发生阻塞，导致功能异常。
 
