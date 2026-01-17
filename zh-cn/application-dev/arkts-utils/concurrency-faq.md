@@ -451,6 +451,26 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
    **解决方案**： 对属性的赋值使用独立接口。
 
    <!-- @[define_resolveThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeThree.ets) -->  
+   
+   ``` TypeScript
+   // Index.ets
+   import { collections } from '@kit.ArkTS'
+   
+   @Sendable
+   export class CollectionsArray extends collections.Array<string> {
+     public ans: string = 'test';
+     constructor() {
+       super();
+     }
+   
+     set(str: string) {
+       this.ans = str;
+     }
+   }
+   let arr = new CollectionsArray();
+   arr.slice(1)
+   arr.set('success')
+   ```
 
 ### 新增属性异常
 
