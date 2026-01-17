@@ -238,6 +238,14 @@ label_2:
 
 示例代码：
 <!-- @[patch_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function bar(): void {} // 新增语句，编译补丁。
+
+function foo2(): void {
+  bar(); // 新增语句，编译补丁。
+}
+```
 字节码中的相关指令：
 ```assembly
 .function any foo(...) {
