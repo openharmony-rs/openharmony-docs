@@ -204,6 +204,16 @@
 
 示例代码：
 <!-- @[shared_Lexical](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+@Sendable
+class A { }
+
+@Sendable
+class B {
+  u: A = new A()
+}
+```
 字节码中的相关指令：
 ```assembly
 .function any .#~B=#B(any a0, any a1, any a2) {
