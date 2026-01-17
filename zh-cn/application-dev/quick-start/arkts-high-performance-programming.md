@@ -112,6 +112,16 @@ fooWithout();
 
 <!-- @[outside_variable_batter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+let arr_ = [0, 1, 2];
+
+function fooWithArray(array: number[]): number {
+  return array[0] + array[1];
+}
+
+fooWithArray(arr_);
+```
+
 ### 避免使用可选参数
 
 函数的可选参数表示参数可能为`undefined`，在函数内部使用该参数时，需要进行非空值的判断，造成额外的开销。
