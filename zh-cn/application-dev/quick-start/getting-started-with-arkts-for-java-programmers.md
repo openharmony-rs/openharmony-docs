@@ -223,6 +223,35 @@ ArkTS的this指向取决于函数调用时的上下文。
 
 <!-- @[class_this](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+class A {
+  bar: string = 'I am A';
+
+  foo() {
+    console.info(this.bar);
+  }
+}
+
+class B {
+  bar: string = 'I am B';
+
+  callFunction(fn: () => void) {
+    fn();
+  }
+}
+
+function callFunction(fn: () => void) {
+  fn();
+}
+// ...
+  let a: A = new A();
+  let b: B = new B();
+
+  // callFunction(a.foo); // 程序crash。this的上下文发生了变化。
+  // b.callFunction(a.foo); // 程序crash。this的上下文发生了变化。
+  b.callFunction(a.foo.bind(b)) // 输出'I am B'。
+```
+
 ## 类型系统
 
 ArkTS与Java的类型系统也存在差异。
