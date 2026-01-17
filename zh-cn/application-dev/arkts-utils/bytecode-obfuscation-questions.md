@@ -447,7 +447,19 @@ export interface MyInfo {
 // 混淆后，file1.ts的代码被保留
 // file2.ts
 import { MyInfo } from './file1';
+<!-- @[import_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
 
+``` TypeScript
+// file2.ts
+import { MyInfo } from './file1';
+// ...
+  const person: MyInfo = {
+    age: 20,
+    address: {
+      city1: 'shanghai'
+    }
+  }
+```
 const person: MyInfo = {
     age: 20,
     address: {
