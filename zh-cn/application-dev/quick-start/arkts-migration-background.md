@@ -191,6 +191,15 @@ foo(c);
     ```
 
     <!-- @[import_u](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/foo.ets) -->  
+    
+    ``` TypeScript
+    // foo.ets
+    import {u} from './bar'; // foo.ets同时又依赖bar.ets
+    export let v = 0;
+    console.info(`u: ${u}`);
+    
+    //应用加载失败
+    ```
 
 **与标准TS/JS的差异**
 
