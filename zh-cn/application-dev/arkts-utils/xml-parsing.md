@@ -35,54 +35,21 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 1. 引入模块。
 
-   ```ts
-   import { xml, util } from '@kit.ArkTS'; // 需要使用util模块函数对文本编码
-   ```
+   <!-- @[parsingXML_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
 
 2. 对XML文本编码后调用XmlPullParser。
 
    可以基于ArrayBuffer创建XmlPullParser对象，也可以基于DataView创建XmlPullParser对象（两种创建方式返回结果无区别）。
 
-   ```ts
-   let strXml: string =
-   '<?xml version="1.0" encoding="utf-8"?>' +
-     '<note importance="high" logged="true">' +
-     '<title>Play</title>' +
-     '<lens>Work</lens>' +
-     '</note>';
-   let textEncoder: util.TextEncoder = new util.TextEncoder();
-   let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // 对数据进行编码，防止中文字符乱码
-   // 方式1：基于ArrayBuffer构造XmlPullParser对象
-   let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
-   
-   // 方式2：基于DataView构造XmlPullParser对象
-   // let dataView: DataView = new DataView(arrBuffer.buffer as object as ArrayBuffer);
-   // let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(dataView, 'UTF-8');
-   ```
+   <!-- @[parsingXML_xmlPullParser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
 
 3. 自定义回调函数，本例直接打印出标签及标签值。
 
-   ```ts
-   function func(name: string, value: string): boolean {
-     if (name == 'note') {
-       console.info(name);
-     }
-     if (value == 'Play' || value == 'Work') {
-       console.info('    ' + value);
-     }
-     if (name == 'title' || name == 'lens') {
-       console.info('  ' + name);
-     }
-     return true; //true:继续解析 false:停止解析
-   }
-   ```
+   <!-- @[parsingXML_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
 
 4. 设置解析选项，调用parseXml函数。
 
-   ```ts
-   let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func};
-   xmlParser.parseXml(options);
-   ```
+   <!-- @[parsingXML_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
 
    输出结果如下所示： 
 
@@ -104,42 +71,19 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 1. 引入模块。
 
-   ```ts
-   import { xml, util } from '@kit.ArkTS'; // 使用util模块对文本编码
-   ```
+   <!-- @[attribute_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingAttributesAndValues.ets) -->
 
 2. 对XML文本编码后调用XmlPullParser。
 
-   ```ts
-   let strXml: string =
-     '<?xml version="1.0" encoding="utf-8"?>' +
-       '<note importance="high" logged="true">' +
-       '    <title>Play</title>' +
-       '    <title>Happy</title>' +
-       '    <lens>Work</lens>' +
-       '</note>';
-   let textEncoder: util.TextEncoder = new util.TextEncoder();
-   let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // 对数据进行编码，防止中文字符乱码
-   let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
-   ```
+   <!-- @[attribute_xmlPullParser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingAttributesAndValues.ets) -->
 
 3. 自定义回调函数，示例直接打印出属性及属性值。
 
-   ```ts
-   let str: string = '';
-   function func(name: string, value: string): boolean {
-     str += name + ' ' + value + ' ';
-     return true; // true:继续解析 false:停止解析
-   }
-   ```
+   <!-- @[attribute_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingAttributesAndValues.ets) -->
 
 4. 设置解析选项，调用parseXml函数。
 
-   ```ts
-   let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, attributeValueCallbackFunction:func};
-   xmlParser.parseXml(options);
-   console.info(str); // 打印所有属性及其值
-   ```
+   <!-- @[attribute_parseXml](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingAttributesAndValues.ets) -->
  
    输出结果如下所示：
    ```txt
@@ -151,40 +95,19 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 1. 引入模块。
 
-   ```ts
-   import { xml, util } from '@kit.ArkTS'; // 使用util模块函数对文本编码
-   ```
+   <!-- @[eventTypes_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingEventTypesAndElementInformation.ets) -->
 
 2. 对XML文本编码后调用XmlPullParser。
 
-   ```ts
-   let strXml: string =
-     '<?xml version="1.0" encoding="utf-8"?>' +
-     '<note importance="high" logged="true">' +
-     '<title>Play</title>' +
-     '</note>';
-   let textEncoder: util.TextEncoder = new util.TextEncoder();
-   let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // 对数据进行编码，防止中文字符乱码
-   let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
-   ```
+   <!-- @[eventTypes_xmlPullParser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingEventTypesAndElementInformation.ets) -->
 
 3. 自定义回调函数，示例直接打印元素事件类型及元素深度。
 
-   ```ts
-   let str: string = '';
-   function func(name: xml.EventType, value: xml.ParseInfo): boolean {
-     str = name + ' ' + value.getDepth(); // getDepth 获取元素在XML文档中的当前深度
-     console.info(str);
-     return true; // true:继续解析 false:停止解析
-   }
-   ```
+   <!-- @[eventTypes_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingEventTypesAndElementInformation.ets) -->
 
 4. 设置解析选项，调用parseXml函数。
 
-   ```ts
-   let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func};
-   xmlParser.parseXml(options);
-   ```
+   <!-- @[eventTypes_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingEventTypesAndElementInformation.ets) -->
 
    输出结果如下所示：
 
@@ -205,48 +128,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 此处以调用所有解析选项为例，提供解析XML标签、属性和事件类型的开发示例。
 
-
-```ts
-import { xml, util } from '@kit.ArkTS';
-
-let strXml: string =
-  '<?xml version="1.0" encoding="UTF-8"?>' +
-    '<book category="COOKING">' +
-    '<title lang="en">Everyday</title>' +
-    '<author>Giana</author>' +
-    '</book>';
-let textEncoder: util.TextEncoder = new util.TextEncoder();
-let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml);
-let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
-let str: string = '';
-
-function tagFunc(name: string, value: string): boolean {
-  str = name + value;
-  console.info('tag-' + str);
-  return true;
-}
-
-function attFunc(name: string, value: string): boolean {
-  str = name + ' ' + value;
-  console.info('attri-' + str);
-  return true;
-}
-
-function tokenFunc(name: xml.EventType, value: xml.ParseInfo): boolean {
-  str = name + ' ' + value.getDepth();
-  console.info('token-' + str);
-  return true;
-}
-
-let options: xml.ParseOptions = {
-  supportDoctype: true,
-  ignoreNameSpace: true,
-  tagValueCallbackFunction: tagFunc,
-  attributeValueCallbackFunction: attFunc,
-  tokenValueCallbackFunction: tokenFunc
-};
-xmlParser.parseXml(options);
-```
+<!-- @[example_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ExampleScenario.ets) -->
 
 输出结果如下所示：
 
