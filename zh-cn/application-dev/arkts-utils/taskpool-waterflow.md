@@ -14,33 +14,11 @@
 
 1. 定义一个接口，用于子线程查询数据库并将数据返回给UI线程。
 
-    ```ts
-    // Mock.ets
-    import { taskpool } from '@kit.ArkTS';
-    import { fillImg } from './Index';
-
-    @Concurrent
-    function query() {
-      console.info("TaskPoolTest-this is query");
-      let result = new Array<string>(33);
-      for (let i = 0; i < 33; i++) {
-        result[i] = 'Image' + i;
-      }
-      taskpool.Task.sendData(result);
-    }
-
-
-    export function getImgFromDB() {
-      //此处模拟查询数据库，并返回数据
-      let task = new taskpool.Task(query);
-      task.onReceiveData(fillImg);
-      taskpool.execute(task);
-    }
-    ```
-    <!-- @[query_database_return_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/Mock.ets) -->
+    <!-- @[query_database_return_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/Mock.ets) -->    
 
 2. 封装一个瀑布流组件数据源，用于瀑布流组件加载数据。
-
+   <!-- @[encapsulate_waterfall_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/WaterFlowDataSource.ets) -->
+   
     ```ts
     // WaterFlowDataSource.ets
 
@@ -172,9 +150,10 @@
       }
     }
     ```
-    <!-- @[encapsulate_waterfall_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/WaterFlowDataSource.ets) -->
 
 3. 在应用冷启动阶段，调用`getImgFromDB()`接口，将数据查询操作放到子线程中。在`img`接收到子线程返回的数据后，将数据渲染到瀑布流组件。
+
+   <!-- @[receive_child_thread_data_render_waterfall_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/WaterfallRendering.ets) -->  
 
     ```ts
     // Index.ets
@@ -292,4 +271,3 @@
       }
     }
     ```
-    <!-- @[receive_child_thread_data_render_waterfall_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/WaterfallRendering.ets) -->
