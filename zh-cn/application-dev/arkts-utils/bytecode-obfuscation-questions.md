@@ -426,7 +426,18 @@ export interface MyInfo {
 // file2.ts
 import { MyInfo } from './file1';
 
-const person: MyInfo = {
+<!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->
+
+``` TypeScript
+// 混淆前。
+// file1.ts
+export interface MyInfo {
+  age: number;
+  address: {
+    city1: string;
+  }
+}
+```
     age: 20,
     address: {
         city1: "shanghai"
