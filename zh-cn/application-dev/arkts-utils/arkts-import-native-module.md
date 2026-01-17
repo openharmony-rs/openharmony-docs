@@ -109,6 +109,12 @@ export * from 'libentry.so'
 
 <!-- @[namespaceImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NamespaceImportFromExport.ets) -->    
 
+``` TypeScript
+// NamespaceImportFromExport.ets
+import { add } from './NamespaceExport'
+add(2, 3);
+```
+
 > **注意：** 
 > 
 > 不支持Native模块导出和导入同时使用命名空间。
