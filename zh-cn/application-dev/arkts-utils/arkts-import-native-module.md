@@ -56,6 +56,12 @@ export const add: (a: number, b: number) => number;
 
 <!-- @[namespace_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NamespaceImport.ets) -->    
 
+``` TypeScript
+// NamespaceImport.ets
+import * as entry from 'libentry.so'
+entry.add(2, 3);
+```
+
 ## 间接导入
 
 ### 转为具名变量导出再导入
