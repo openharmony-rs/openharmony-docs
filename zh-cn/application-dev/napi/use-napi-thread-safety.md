@@ -367,7 +367,7 @@
    
    ``` TypeScript
    // index.ets
-   const wk = new worker.ThreadWorker('entry/ets/worker/worker.ets');
+   const wk = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
    wk.postMessage('Start');
    wk.onmessage = (msg) => {
      console.info('[Main] Received:', msg.data);
