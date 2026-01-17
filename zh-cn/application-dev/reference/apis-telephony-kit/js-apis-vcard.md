@@ -6,11 +6,11 @@
 <!--Tester: @weitiantian-->
 <!--Adviser: @zhang_yixin13-->
 
-VCard是电子名片的文件格式标准,它可包含的信息有：姓名、地址资讯、电话号码、URL，logo，相片等。VCard模块提供了VCard能力，包括将VCard文件导入联系人数据库和将联系人数据导出为VCard文件等。
+VCard是电子名片的文件格式标准，它可包含的信息有：姓名、地址资讯、电话号码、URL、logo、相片等。VCard模块提供了VCard能力，包括将VCard文件导入联系人数据库和将联系人数据导出为VCard文件等。
 
 >**说明：**
 >
->本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -73,7 +73,7 @@ class EntryAbility extends UIAbility {
 
 importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<void\>
 
-将VCard文件导入联系人数据库。使用callback异步回调。
+将VCard文件导入联系人数据库。使用Promise异步操作。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
@@ -122,7 +122,7 @@ class EntryAbility extends UIAbility {
 ## vcard.importVCard
 importVCard\(context: Context, filePath: string, callback: AsyncCallback\<void\>\): void
 
-将VCard文件导入联系人数据库。使用Promise异步回调。
+将VCard文件导入联系人数据库。使用callb ack异步操作。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
@@ -133,7 +133,7 @@ importVCard\(context: Context, filePath: string, callback: AsyncCallback\<void\>
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
 | Context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)  | 是   | 应用上下文。|
-| filePath | string | 是   | vcf文件地址 。|
+| filePath | string | 是   | vcf文件地址。|
 | callback | AsyncCallback&lt;void&gt; | 是   |回调函数，返回导入成功或失败的状态码。 |
 
 **错误码：**
@@ -151,7 +151,6 @@ importVCard\(context: Context, filePath: string, callback: AsyncCallback\<void\>
 **示例：**
 
 ```ts
-
 import { window } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -228,7 +227,7 @@ class EntryAbility extends UIAbility {
 
 exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options?: VCardBuilderOptions\): Promise\<string\>
 
-将联系人导出为vcf文件。使用callback异步回调。
+将联系人导出为vcf文件。使用Promise异步操作。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
@@ -284,7 +283,7 @@ class EntryAbility extends UIAbility {
 
 exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback\<string\>\): void
 
-将联系人导出为vcf文件。使用Promise异步回调。
+将联系人导出为vcf文件。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
