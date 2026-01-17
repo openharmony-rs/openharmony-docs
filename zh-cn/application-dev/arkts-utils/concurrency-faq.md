@@ -431,6 +431,22 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
 3. 自定义Sendable类继承collections.Array，并重写构造函数。在实例化该类后调用slice函数时，抛出类型不一致异常。原因是调用slice函数时，collections.Array内部会创建新的SendableArray。构造函数的入参是新数组长度，类型为number。由于ans是string类型，而在构造函数中使用number类型的入参对ans赋值，在Sendable类中不允许使用number类型对string类型赋值，因此抛出异常。
 
    <!-- @[define_resolveTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeTwo.ets) -->   
+   
+   ``` TypeScript
+   // Index.ets
+   import { collections } from '@kit.ArkTS'
+   
+   @Sendable
+   export class CollectionsArray extends collections.Array<string> {
+     public ans: string = 'test';
+     constructor(heldValue: string) {
+       super();
+       this.ans = heldValue;
+     }
+   }
+   let arr = new CollectionsArray('test');
+   arr.slice(1);
+   ```
 
    **解决方案**： 对属性的赋值使用独立接口。
 
