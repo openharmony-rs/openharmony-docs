@@ -19,6 +19,10 @@
 
 <!-- @[const_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+const index = 10000; // 该变量在后续过程中未发生改变，建议声明成常量。
+```
+
 ### `number`类型变量避免整型和浮点型混用
 
 针对`number`类型，运行时在优化时会区分整型和浮点型数据。建议避免在初始化后改变数据类型。
