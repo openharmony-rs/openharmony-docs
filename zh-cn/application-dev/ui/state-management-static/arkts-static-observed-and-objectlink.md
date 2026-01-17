@@ -323,6 +323,89 @@ this.parent.child.num = 5;
     }
     ```
 
+    对象创建方式为字面量形式时本应编译报错，但如下示例所示，当且仅当对象为this.xxx结构且创建形式为字面量时，可正常编译通过。
+
+    ```ts
+    'use static'
+    import { Entry, Column, Component, Text, State, ObjectLink, Observed } from '@kit.ArkUI';
+    @Observed
+    class Info {
+      count: number = 99;
+    }
+
+    @Component
+    struct Child {
+      @ObjectLink count: Info;
+
+      build() {
+        Text(`${this.count.count}`)
+      }
+    }
+
+    @Entry
+    @Component
+    struct Parent {
+      @State propInfo: Info = { count: 0 } as Info;
+
+      build() {
+        Column() {
+          // 特例：当且仅当字面量为this.xxx结构时，可正常编译通过
+          Child({ count: this.propInfo })
+        }
+      }
+    }
+    ```
+
+7. \@ObjectLink变量初始化传递时，传递的\@Observed class对象没有通过new而是通过字面量的方式创建，对象创建时用到容器组件Array、Set、Map，则编译时告警提示`The '@Observed' class object must be instantiated with the 'new' keyword; initialization with an object literal is not allowed.`。
+
+    ```ts
+    'use static'
+
+    import { Entry, Column, Component, Text, State, ObjectLink, Observed } from '@kit.ArkUI';
+
+    @Observed
+    class Info {
+      count: number = 99;
+    }
+
+    @Component
+    struct Child {
+      @ObjectLink count: Info;
+
+      build() {
+        Text(`${this.count.count}`)
+      }
+    }
+
+    @Entry
+    @Component
+    struct Parent {
+      @State propInfoArray: Info[] = [{ count: 0 } as Info, new Info()];
+      @State propInfoSet: Set<Info> = new Set<Info>([{ count: 0 }, new Info()]);
+      @State propInfoMap: Map<string, Info> =
+        new Map<string, Info>([
+          ['字面量', { count: 0 }],
+          ['new', new Info()],
+        ]);
+
+      build() {
+        Column() {
+          // 涉及容器组件Array，编译告警
+          Child({ count: this.propInfoArray[0] });
+          Child({ count: this.propInfoArray[1] });
+
+          // 涉及容器组件Set，编译告警
+          Child({ count: Array.from(this.propInfoSet)[0] });
+          Child({ count: Array.from(this.propInfoSet)[1] });
+
+          // 涉及容器组件Map，编译告警
+          Child({ count: this.propInfoMap.get('字面量') });
+          Child({ count: this.propInfoMap.get('new') });
+        }
+      }
+    }
+    ```
+
 ## 使用场景
 
 ### 对象类型
