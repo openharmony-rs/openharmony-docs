@@ -1098,6 +1098,8 @@ onVibratorStateChange(callback: Callback<VibratorStatusEvent>): void
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
