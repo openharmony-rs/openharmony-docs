@@ -84,6 +84,13 @@ export { add };
 
 <!-- @[nameImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameImportFromExport.ets) -->    
 
+``` TypeScript
+// NameImportFromExport.ets
+// 从中间模块导入API
+import { add } from './NameExport';
+const result = add(2, 3);
+```
+
 ### 转为命名空间导出再导入
 
 <!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
