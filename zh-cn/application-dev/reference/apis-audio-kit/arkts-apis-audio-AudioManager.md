@@ -162,6 +162,8 @@ getVolumeManager(): AudioVolumeManager
 
 获取音频音量管理器。
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **返回值：**
