@@ -11,7 +11,7 @@
 在静态语言上下文中使用时，需要导入装饰器：
 
 ```ts
-import { Watch } from '@ohos.arkui.stateManagement';
+import { Watch } from '@kit.ArkUI';
 ```
 
 ## 装饰器说明
@@ -27,7 +27,7 @@ import { Watch } from '@ohos.arkui.stateManagement';
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| (propertyName: string) => void | 该方法是自定义组件的成员方法，propertyName入参为回调该方法的状态变量的变量名。 <br/>在多个状态变量绑定同一个\@Watch的回调方法时，可以通过propertyName进行不同的逻辑处理。 |
+| (propertyName: string) => void | 该方法是自定义组件的成员方法，propertyName为必填项，表示回调该方法的状态变量的变量名。 <br/>在多个状态变量绑定同一个\@Watch的回调方法时，可以通过propertyName进行不同的逻辑处理。 |
 
 ## 观察变化和行为表现
 
@@ -73,7 +73,7 @@ import { Watch } from '@ohos.arkui.stateManagement';
   ```ts
   //错误写法
   @Watch('change') num: number = 10;
-  change(propertyName: string ) {}
+  change(propertyName: string) {}
   
   // 正确写法
   @State @Watch('change') num: number = 10;
@@ -87,8 +87,7 @@ import { Watch } from '@ohos.arkui.stateManagement';
 ```ts
 'use static'
 
-import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
-import { State, Watch, PropRef } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Button, ClickEvent, Text, State, Watch, PropRef } from '@kit.ArkUI';
 
 @Component
 struct TotalView {
@@ -136,9 +135,8 @@ struct CountModifier {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
-import { State, Watch } from '@ohos.arkui.stateManagement';
-import hilog from '@ohos.hilog';
+import { Entry, Component, Column, Button, ClickEvent, Text, State, Watch } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 interface Info {
   name: string;
