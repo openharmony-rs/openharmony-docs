@@ -581,7 +581,15 @@ import { SendableItem } from './Sendable'
 function createTask() {
   let data = new SendableItem();
 }
+<!-- @[define_normalItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ui.ets) -->
 
+``` TypeScript
+// ui.ets
+@Observed
+export class NormalItem {
+  public age: number = 0;
+}
+```
 function executeTask() {
   let task = new taskpool.Task(createTask);
   taskpool.execute(task).then((res) => {
