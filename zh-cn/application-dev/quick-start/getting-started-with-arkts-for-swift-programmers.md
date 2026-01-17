@@ -21,14 +21,7 @@
 
 **ArkTS示例：**
 
-```typescript
-// 类型注解（类似Swift）。
-let age: number = 20; 
-const program: string = 'ArkTS';
-
-// 类型推断（类似Swift的局部变量类型推断）。
-let version = 5.0;
-```
+<!-- @[swift_type_annotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ### 基础数据类型  
 | Swift类型       | ArkTS类型            | 示例代码                          | 核心差异说明                  |  
@@ -61,15 +54,7 @@ Swift和ArkTS在函数方面语法趋同，细节上有差别。
 
 **ArkTS示例：** 函数定义
 
-```typescript
-// 常规函数定义，与Swift类似。
-function add(x: number, y: number): number {
-    return x + y;
-}
-
-// 简洁的箭头函数形式，类似Swift的闭包语法。
-const multiply = (a: number, b: number): number => a * b;
-```
+<!-- @[swift_function_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 差异点：
 
@@ -77,23 +62,10 @@ const multiply = (a: number, b: number): number => a * b;
 
 **ArkTS示例：** ArkTS函数重载
 
-```typescript
-function foo(x: number): void;            /*  第一个函数定义。  */
-function foo(x: string): void;            /*  第二个函数定义。  */
-function foo(x: number | string): void {  /*  函数实现。       */
-}
-
-foo(123);     //  OK，使用第一个定义。
-foo('aa'); // OK，使用第二个定义。
-```
+<!-- @[function_overload_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 2. ArkTS可选参数使用`?`，如`function foo(name?: string)`，而非Swift的默认值语法。
-```typescript
-function foo(name?: string){}  /*  name为可选参数。  */
-
-foo('hello');     //  OK，传入name参数。
-foo();     //  OK，不传name参数。
-```
+<!-- @[optional_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ### 基础类库
 
@@ -113,11 +85,7 @@ ArkTS也有自己的模块和包管理机制，同样通过import语句引入其
 
 **ArkTS示例：**
 
-```
-// 引入ArkTS标准库中的ArkTS容器集。
-
-import { collections } from '@kit.ArkTS';
-```
+<!-- @[import_collections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 由于ArkTS的模块系统更注重模块化开发和代码复用，能够更便捷地管理不同功能模块之间的依赖关系，所以在使用方式上，与Swift的模块管理会有所区别。
 
@@ -137,17 +105,7 @@ ArkTS支持显式命名空间（namespace）和模块化组织。
 
 **ArkTS示例：**
 
-```typescript
-namespace Models {
-    export class User {
-        // 实现细节。
-    }
-    
-    export interface Repository {
-        // 接口定义。
-    }
-}
-```
+<!-- @[namespace_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 相比Swift的模块+内部类组合，ArkTS的命名空间能更直观地实现代码分层。
 
@@ -183,34 +141,7 @@ ArkTS的`this`指向取决于函数调用时的上下文。
 
 **ArkTS示例：**
 
-```typescript
-class A {
-  bar: string = 'I am A';
-
-  foo() {
-    console.info(this.bar);
-  }
-}
-
-class B {
-  bar: string = 'I am B';
-
-  callFunction(fn: () => void) {
-    fn();
-  }
-}
-
-function callFunction(fn: () => void) {
-  fn();
-}
-
-let a: A = new A();
-let b: B = new B();
-
-callFunction(a.foo); // 程序crash。this的上下文发生了变化。
-b.callFunction(a.foo); // 程序crash。this的上下文发生了变化。
-b.callFunction(a.foo.bind(b)) // 输出'I'm B'。
-```
+<!-- @[this_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ## 类型系统
 
@@ -224,24 +155,13 @@ ArkTS具有强大的类型推断能力，编译器能够根据上下文自动推
 
 **ArkTS示例：**
 
-```typescript
-let num = 10; // 编译器自动推断num为number类型。
-```
+<!-- @[auto_type_inference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 同时，ArkTS支持可选类型，通过在类型后面添加问号（`?`）来表示该变量可以为`null`或`undefined`。
 
 **ArkTS示例：**
 
-```typescript
-interface Person {
-  name: string;
-  age?: number;  // age是可选属性。
-}
-
-const person: Person = {
-  name: "Alice",
-};
-```
+<!-- @[optional_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ### 联合类型
 
@@ -251,11 +171,4 @@ ArkTS支持联合类型（`|`）。联合类型表示一个值可以是多种类
 
 **ArkTS示例：**
 
-```typescript
-// 联合类型示例。
-
-let value: string | number;
-value = 'hello';
-value = 123;
-
-```
+<!-- @[union_type_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
