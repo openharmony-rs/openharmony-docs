@@ -39,6 +39,12 @@ export const add: (a: number, b: number) => number;
 
 <!-- @[default_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DefaultImport.ets) -->     
 
+``` TypeScript
+// DefaultImport.ets
+import entry from 'libentry.so'
+entry.add(2, 3);
+```
+
 ### 命名空间导入
 
 <!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
