@@ -43,11 +43,11 @@
 
 1. 导入机械体设备管理模块。
    <!-- @[import_mechanicManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
-   
+
     ```ts
     import { mechanicManager } from '@kit.MechanicKit';
     ```
-   
+
 2. 获取已连接的机械体列表。
    <!-- @[get_mechDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
