@@ -495,7 +495,29 @@ JS异常：TypeError: Cannot add property in prevent extensions
    }
    ```
 **问题原因与解决方案**
-
+   <!-- @[save_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SaveResult.ets) -->    
+   
+   ``` TypeScript
+   // Index.ets
+   import { taskpool } from '@kit.ArkTS'
+   import { BusinessError } from '@kit.BasicServicesKit'
+   import { TestClass } from './Sendable'
+   
+   @Concurrent
+   function createTask(a: number): string {
+     return `test${a}`;
+   }
+   function executeTask() {
+     let testObject: TestClass = new TestClass();
+     let task: taskpool.Task = new taskpool.Task(createTask, 1)
+     taskpool.execute(task).then((res) => {
+       testObject.setName(res as string);
+       console.info('execute task success, name is ' + testObject.getName());
+     }).catch((e: BusinessError) => {
+       console.error('execute task error: ' + e.message);
+     })
+   }
+   ```
 由于Sendable类的布局固定，不允许增删属性，对Sendable对象新增属性时会抛出上述JS异常。应用需要基于JS异常栈定位到对应的ts文件代码行，排查相应的业务逻辑。
 
 **异常场景示例**
