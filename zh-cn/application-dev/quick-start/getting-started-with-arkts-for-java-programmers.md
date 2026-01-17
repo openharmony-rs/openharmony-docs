@@ -23,6 +23,15 @@
 
 <!-- @[variable_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// 类型注解（类似Java）。
+let age: number = 20;
+const program: string = 'ArkTS';
+
+// 类型推断（类似Java的局部变量类型推断）。
+let version = 5.0;
+```
+
 ### 基础数据类型  
 | Java类型       | ArkTS类型            | 示例代码                          | 核心差异说明                  |  
 |----------------|----------------------|-----------------------------------|-------------------------------|  
