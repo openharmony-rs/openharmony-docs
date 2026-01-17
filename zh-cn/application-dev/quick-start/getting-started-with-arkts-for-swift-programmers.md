@@ -65,6 +65,16 @@ Swift和ArkTS在函数方面语法趋同，细节上有差别。
 
 <!-- @[swift_function_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// 常规函数定义，与Swift类似。
+function add(x: number, y: number): number {
+  return x + y;
+}
+// ...
+  // 简洁的箭头函数形式，类似Swift的闭包语法。
+  const multiply = (a: number, b: number): number => a * b;
+```
+
 差异点：
 
 1. ArkTS提供类型声明层面的多态，仅用于类型检查和文档提示，实际只有一个实现函数。
