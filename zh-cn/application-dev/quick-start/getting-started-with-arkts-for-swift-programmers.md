@@ -83,24 +83,8 @@ function add(x: number, y: number): number {
 
 <!-- @[function_overload_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-<!-- @[optional_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-function foo2(name?: string) {}  /*  name为可选参数。  */
-// ...
-  foo2('hello');     //  OK，传入name参数。
-  foo2();     //  OK，不传name参数。
-```
-function foo(x: string): void;            /*  第二个函数定义。  */
-function foo(x: number | string): void {  /*  函数实现。       */
-}
-// ...
-  foo(123);     //  OK，使用第一个定义。
-  foo('aa'); // OK，使用第二个定义。
-```
-
 2. ArkTS可选参数使用`?`，如`function foo(name?: string)`，而非Swift的默认值语法。
+
 <!-- @[optional_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ### 基础类库
@@ -271,3 +255,11 @@ ArkTS支持联合类型（`|`）。联合类型表示一个值可以是多种类
 **ArkTS示例：**
 
 <!-- @[union_type_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 联合类型示例。
+
+let value: string | number;
+value = 'hello';
+value = 123;
+```
