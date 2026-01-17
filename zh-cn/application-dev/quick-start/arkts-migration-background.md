@@ -95,6 +95,15 @@ class Person1 {
 
 <!-- @[def_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+function notify(who: string, what: string) {
+  console.info(`Dear ${who}, a message for you: ${what}`);
+}
+
+// ...
+  notify('Jack', 'You look great today');
+```
+
 在大多数情况下，函数`notify`会接受两个`string`类型的变量作为输入，产生一个新的字符串。但是，如果将一些特殊值作为输入，例如`notify(null, undefined)`，情况会怎么样呢？
 
 程序仍会正常运行，输出预期值：`Dear null, a message for you: undefined`。虽然系统表现一切正常，但值得注意的是，为了保障该场景下程序的正确性，引擎在运行时会持续进行类型检查，其实现机制类似于以下伪代码所示：
