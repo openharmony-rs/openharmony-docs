@@ -131,7 +131,14 @@ import * as add from './test1'
 ```
 
 ## 动态导入
+<!-- @[dynamic_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicImport.ets) -->    
 
+``` TypeScript
+// DynamicImport.ets
+import('libentry.so').then((entry:ESObject) => {
+  entry.default.add(2, 3);
+})
+```
 ### 直接导入
 
 <!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
