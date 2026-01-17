@@ -638,6 +638,17 @@ import { MyInfo } from './file1';
 
 <!-- @[export_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file2.ts) -->
 
+``` TypeScript
+// file1.ts
+export interface AddressType {
+  city1: string
+}
+export interface MyInfo {
+  age: number;
+  address: AddressType;
+}
+```
+
 **方案二**：使用-keep-property-name选项，将未直接导出的类型内的属性配置到属性白名单中。示例如下：
 
 ```ts
