@@ -272,6 +272,10 @@ function foo2(): void {
 
 示例代码：
 <!-- @[function_call_specifications](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function foo3(a: number, b: number): void {}
+```
 字节码中的相关指令：
 ```assembly
 .function any .foo(any a0, any a1, any a2, any a3, any a4) {
