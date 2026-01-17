@@ -208,6 +208,12 @@ let arrUnion: (number | string)[] = [1, 'hello']; // 联合类型数组。
 根据业务需求，将相同类型的数据放在同一数组中。  
 <!-- @[avoid_joint_type_batter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+let arrInt: number[] = [1, 2, 3];
+let arrDouble: number[] = [0.1, 0.2, 0.3];
+let arrString: string[] = ['hello', 'world'];
+```
+
 ## 异常
 
 ### 避免频繁抛出异常
