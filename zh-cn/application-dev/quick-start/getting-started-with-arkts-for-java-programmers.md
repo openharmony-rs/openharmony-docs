@@ -120,6 +120,16 @@ ArkTS提供类型声明层面的多态，仅用于类型检查和文档提示，
 
 <!-- @[function_overloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+function foo(x: number): void;            /* 第一个函数定义 */
+function foo(x: string): void;            /* 第二个函数定义 */
+function foo(x: number | string): void {  /* 函数实现 */
+}
+// ...
+  foo(123);     //  OK，使用第一个定义。
+  foo('aa'); // OK，使用第二个定义。
+```
+
 ### 基础类库
 
 ArkTS基础类库和容器类库增强了语言的基础功能，包括高精度浮点运算、二进制Buffer、XML生成解析转换和多种容器库等能力，协助开发者简化开发工作，提升开发效率。详细介绍可见[ArkTS基础类库概述](../arkts-utils/arkts-utils-overview.md)。
