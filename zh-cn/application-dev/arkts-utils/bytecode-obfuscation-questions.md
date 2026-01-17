@@ -472,6 +472,18 @@ const person: MyInfo = {
 
 <!-- @[import_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
 
+``` TypeScript
+// file2.ts
+import { MyInfo } from './file1';
+// ...
+  const person: MyInfo = {
+    age: 20,
+    address: {
+      city1: 'shanghai'
+    }
+  }
+```
+
 **问题原因**:
 
 -keep选项保留file1.ts文件时，file1.ts中代码不会被混淆。对于导出属性（如address）所属类型内的属性，不会被自动收集在属性白名单中。因此，该类型内的属性在其他文件中被使用时，会被混淆。
