@@ -44,13 +44,15 @@ ArkTS-Sta: accessibilityGroup(value: boolean | undefined): this
 
 ArkTS-Dyn: accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions):T
 
-ArkTS-Sta: accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions: AccessibilityOptions | undefined): this
+ArkTS-Sta: accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions: AccessibilityOptions): this
 
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 
 若组件启用无障碍分组，当组件不包含通用文本属性，同时未设置[无障碍文本](#accessibilitytext)时，将默认拼接其子组件的通用文本属性作为组件的合并文本。若某一子组件没有通用文本属性，则忽略该子组件不进行拼接。
 
 通过accessibilityPreferred启用优先拼接无障碍文本进行朗读后，将优先拼接其子组件的无障碍文本属性作为组件的合并文本。若某一子组件未设置无障碍文本，则继续拼接该子组件的通用文本属性，若该子组件没有通用文本属性，则忽略该子组件不进行拼接。
+
+从API version 23开始，支持通过[AccessibilityOptions](#accessibilityoptions14对象说明)中的stateControllerRoleType、stateControllerId、actionControllerRoleType、actionControllerId将特定子组件的状态与点击事件作为当前聚合组件的无障碍能力。
 
 **卡片能力：** 从API version 14开始，该接口支持在ArkTS卡片中使用。
 
@@ -60,14 +62,14 @@ ArkTS-Sta: accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名               | 类型                                                    | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | isGroup              | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 无障碍分组，设置为true时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容；设置为false表示不启用无障碍分组。<br/>默认值：false |	
-| accessibilityOptions | ArkTS-Dyn: [AccessibilityOptions](#accessibilityoptions14对象说明) <br/>ArkTS-Sta: [AccessibilityOptions](#accessibilityoptions14对象说明) \| undefined| 是   | accessibilityPreferred设置为true时，使应用优先拼接无障碍文本进行朗读；设置为false时，应用进行屏幕朗读时不会优先使用无障碍文本。<br/>默认值：false            |
+| accessibilityOptions | [AccessibilityOptions](#accessibilityoptions14对象说明)| 是   | accessibilityPreferred设置为true时，使应用优先拼接无障碍文本进行朗读；设置为false时，应用进行屏幕朗读时不会优先使用无障碍文本。<br/>stateControllerRoleType和stateControllerId用于指定提供状态信息的子组件。<br/>actionControllerRoleType和actionControllerId用于指定提供点击事件处理的子组件。|
 
 **返回值：**
 
@@ -81,7 +83,11 @@ ArkTS-Sta: accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions
 
 | 名称                   | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| accessibilityPreferred | boolean | 否 | 是   | 若accessibilityPreferred设置为true，则深度遍历每个子节点时优先选择该子节点的无障碍文本accessibilityText。<br/>若无障碍文本为空则选择本身Text文本，最终将拼接完成的文本设置给accessibilityText与Text都为空的父节点。<br/>若accessibilityPreferred设置为false，表示不启用此功能。<br/>默认值：false |
+| accessibilityPreferred | boolean | 否 | 是   | 若accessibilityPreferred设置为true，则深度遍历每个子节点时优先选择该子节点的无障碍文本accessibilityText。<br/>若无障碍文本为空则选择本身Text文本，最终将拼接完成的文本设置给accessibilityText与Text都为空的父节点。<br/>若accessibilityPreferred设置为false，表示不启用此功能。<br/>默认值：false <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| stateControllerRoleType<sup>23+</sup> | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) | 否 | 是   | 指定特定类型的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，会将该特定类型的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| stateControllerId<sup>23+</sup> | string | 否 | 是   | 指定特定[id](ts-universal-attributes-component-id.md#id)的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，会将该特定标识的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>如果与stateControllerRoleType同时配置，则优先匹配id一致的组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| actionControllerRoleType<sup>23+</sup> | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) | 否 | 是   | 指定特定类型的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定类型的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>当前只支持无障碍点击操作。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件。 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
+| actionControllerId<sup>23+</sup> | string | 否 | 是   |  指定特定[id](ts-universal-attributes-component-id.md#id)的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定标识的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>当前只支持无障碍点击操作。<br/>如果与actionControllerRoleType同时配置，则优先匹配id一致的组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件。 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## accessibilityText
 
@@ -1369,6 +1375,88 @@ struct Index {
     }
     .height('100%')
     .width('100%')
+  }
+}
+```
+### 示例8（设置无障碍聚合功能下的子组件状态和操作接管功能）
+ 	 
+该示例主要演示使用accessibilityGroup可选参数AccessibilityOptions中的stateControllerRoleType或者stateControllerId来选择一个特定子组件接管其无障碍状态信息，使用AccessibilityOptions中的actionControllerRoleType或者actionControllerId来选择一个特定子组件接管其无障碍控制操作。
+
+从API version 23开始，[AccessibilityOptions](#accessibilityoptions14对象说明)新增stateControllerRoleType、stateControllerId、actionControllerRoleType、actionControllerId。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isSelected: boolean = false;
+
+  build() {
+    Column({ space: 20 }) {
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center}) {
+        Text('是否开启功能')
+        Toggle({ type: ToggleType.Switch, isOn: false })
+          .selectedColor('#007DFF')
+          .switchPointColor('#FFFFFF')
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+      }
+      .accessibilityGroup(true, {stateControllerRoleType : AccessibilityRoleType.TOGGLER,
+                                actionControllerRoleType : AccessibilityRoleType.TOGGLER})
+      .width('80%')
+      .border({ color : Color.Black, width : 2 })
+
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center}) {
+        Text('是否开启功能')
+        Toggle({ type: ToggleType.Switch, isOn: false })
+          .selectedColor('#007DFF')
+          .switchPointColor('#FFFFFF')
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+          .id('TestToggle')
+      }
+      .accessibilityGroup(true, {stateControllerId : 'TestToggle',
+                                actionControllerId : 'TestToggle'})
+      .width('80%')
+      .border({ color : Color.Black, width : 2 })
+
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Text, Component, Row, Toggle, AccessibilityRoleType, ToggleType } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct Index {
+
+  build() {
+    Row(undefined) {
+      Text('是否开启功能')
+      Toggle({ type: ToggleType.Switch, isOn: false })
+        .selectedColor('#007DFF')
+        .switchPointColor('#FFFFFF')
+        .onChange((isOn: boolean) => {
+          console.info('Component status:' + isOn);
+        })
+      }
+      .accessibilityGroup(true, {stateControllerId : 'TestToggle',
+                                stateControllerRoleType : AccessibilityRoleType.TOGGLER,
+                                actionControllerRoleType : AccessibilityRoleType.TOGGLER,
+                                actionControllerId : 'TestToggle'})
   }
 }
 ```
