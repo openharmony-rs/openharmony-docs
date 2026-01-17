@@ -174,6 +174,19 @@ ArkTS支持显式命名空间（namespace）和模块化组织。
 
 <!-- @[namespace_models](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+namespace Models {
+  export class User {
+    // 实现细节。
+    // ...
+  }
+
+  export interface Repository {
+    // 接口定义。
+  }
+}
+```
+
 相比Java的package+static class组合，ArkTS的命名空间能更直观地实现代码分层。
 
 ### 异步编程模型
