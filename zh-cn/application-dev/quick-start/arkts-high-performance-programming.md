@@ -224,6 +224,27 @@ let arrString: string[] = ['hello', 'world'];
 
 <!-- @[exception_handling_poor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+function div(a: number, b: number): number {
+  if (a <= 0 || b <= 0) {
+    throw new Error('Invalid numbers.');
+  }
+  return a / b;
+}
+
+function sum(num: number): number {
+  let sum = 0;
+  try {
+    for (let t = 1; t < 100; t++) {
+      sum += div(t, num);
+    }
+  } catch (e) {
+    console.info(e.message);
+  }
+  return sum;
+}
+```
+
 优化后的代码示例：
 
 <!-- @[exception_handling_batter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
