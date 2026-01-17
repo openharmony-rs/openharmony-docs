@@ -80,7 +80,7 @@
 
 3. 监听设备的连接状态变化，以便及时响应。
    <!-- @[on_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
-   
+
     ```ts
     const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
     if (info.state === mechanicManager.AttachState.ATTACHED) {
