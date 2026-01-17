@@ -259,6 +259,17 @@ struct Index{
 
 <!-- @[fix_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample1.ets) -->
 
+``` TypeScript
+@CustomDialog
+export default struct TmsDialog {
+  controller?: CustomDialogController
+  dialogController:CustomDialogController|null = null;  // 修改此处的定义声明方式。
+
+  build() {
+  }
+}
+```
+
 示例代码1中，在运行时，是无法正常弹出dialogController的，只需要在定义时改为解决方案中的代码，就可以正常弹出dialogController，同时字节码混淆功能正常；
 
 示例代码2中，由于我们只是使用CustomDialogController，因此不需要@CustomDialog，直接删除@CustomDialog即可，删除后功能正常，字节码混淆功能正常。
