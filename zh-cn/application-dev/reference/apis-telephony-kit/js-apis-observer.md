@@ -1046,7 +1046,7 @@ observer.off('iccAccountInfoChange');
 
 onGetSimActiveState\(slotId: number, callback: Callback\<boolean\>\): void
 
-SIM卡激活状态时间变化事件，使用callback方式作为异步方法。
+SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
