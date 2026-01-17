@@ -15,6 +15,28 @@
 1. 定义一个接口，用于子线程查询数据库并将数据返回给UI线程。
 
     <!-- @[query_database_return_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/Mock.ets) -->    
+    
+    ``` TypeScript
+    import { taskpool } from '@kit.ArkTS';
+    import { fillImg } from './WaterfallRendering';
+    
+    @Concurrent
+    function query() {
+      console.info('TaskPoolTest-this is query');
+      let result = new Array<string>(33);
+      for (let i = 0; i < 33; i++) {
+        result[i] = 'Image' + i;
+      }
+      taskpool.Task.sendData(result);
+    }
+    
+    export function getImgFromDB() {
+      //此处模拟查询数据库，并返回数据
+      let task = new taskpool.Task(query);
+      task.onReceiveData(fillImg);
+      taskpool.execute(task);
+    }
+    ```
 
 2. 封装一个瀑布流组件数据源，用于瀑布流组件加载数据。
    <!-- @[encapsulate_waterfall_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/WaterFlowDataSource.ets) -->
