@@ -29,7 +29,7 @@ on(type: 'touch', receiver: TouchEventReceiver): void
 
 监听全局触屏输入事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -83,7 +83,7 @@ on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 
 监听全局鼠标事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -137,7 +137,7 @@ on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): v
 
 监听鼠标事件，当鼠标移动至指定矩形区域内时，触发回调任务。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -216,7 +216,7 @@ off(type: 'touch', receiver?: TouchEventReceiver): void
 
 取消监听全局触屏输入事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -303,7 +303,7 @@ off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 
 取消监听全局鼠标事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -390,7 +390,7 @@ type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 
 触屏输入事件的回调函数。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -440,7 +440,7 @@ on(type: 'pinch', receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gesturee
 
 监听全局触控板的捏合事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -493,7 +493,7 @@ off(type: 'pinch', receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestur
 
 取消监听全局触控板的捏合事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -580,7 +580,7 @@ on(type: 'threeFingersSwipe', receiver: Callback&lt;[ThreeFingersSwipe](js-apis-
 
 监听全局触控板的三指滑动事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -633,7 +633,7 @@ off(type: 'threeFingersSwipe', receiver?: Callback&lt;[ThreeFingersSwipe](js-api
 
 取消监听全局触控板的三指滑动事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -720,7 +720,7 @@ on(type: 'fourFingersSwipe', receiver: Callback&lt;[FourFingersSwipe](js-apis-mu
 
 监听全局触控板的四指滑动事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -773,7 +773,7 @@ off(type: 'fourFingersSwipe', receiver?: Callback&lt;[FourFingersSwipe](js-apis-
 
 取消监听全局触控板的四指滑动事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -860,7 +860,7 @@ on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void
 
 监听全局触控板的旋转事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -915,7 +915,7 @@ off(type: 'rotate', fingers: number, receiver?: Callback&lt;Rotate&gt;): void
 
 取消监听全局触控板的旋转事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -1003,7 +1003,7 @@ on(type: 'pinch', fingers: number, receiver: Callback&lt;Pinch&gt;): void
 
 监听全局触控板的捏合事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -1058,7 +1058,7 @@ off(type: 'pinch', fingers: number, receiver?: Callback&lt;Pinch&gt;): void
 
 取消监听全局触控板的捏合事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -1146,7 +1146,7 @@ on(type: 'threeFingersTap', receiver: Callback&lt;[ThreeFingersTap](js-apis-mult
 
 监听全局触控板的三指轻点事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -1199,7 +1199,7 @@ off(type: 'threeFingersTap', receiver?: Callback&lt;[ThreeFingersTap](js-apis-mu
 
 取消监听全局触控板的三指轻点事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -1286,7 +1286,7 @@ on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGesture
 
 监听触摸屏滑动手势事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -1341,7 +1341,7 @@ off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestu
 
 取消监听触摸屏滑动手势事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -1426,7 +1426,7 @@ on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGesture
 
 监听触摸屏捏合手势事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -1481,7 +1481,7 @@ off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestu
 
 取消监听触摸屏捏合手势事件。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -1566,7 +1566,7 @@ on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEven
 
 监听指定按键的按下抬起事件，支持监听META_LEFT键、META_RIGHT键、电源键、音量键。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -1621,7 +1621,7 @@ off(type: 'keyPressed', receiver?: Callback&lt;KeyEvent&gt;): void
 
 取消监听按键按下抬起事件。支持取消监听META_LEFT键、META_RIGHT键、电源键、音量键。需和inputMonitor.on('keyPressed')配套使用。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -1703,7 +1703,7 @@ queryTouchEvents(count: number): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 查询最近的触屏输入事件，最多支持查询 100 条事件，使用Promise异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -1755,7 +1755,7 @@ on(type: 'fingerprint', receiver: Callback&lt;FingerprintEvent&gt;): void
 
 监听指纹手势输入事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -1808,7 +1808,7 @@ off(type: 'fingerprint', receiver?: Callback&lt;FingerprintEvent&gt;): void
 
 取消监听指纹手势输入事件。使用callback异步回调。
 
-**需要权限：** ohos.permission.INPUT_MONITORING
+**需要权限：** ohos.permission.INPUT_MONITORING（此权限为受限权限，申请方式请参考[申请受限权限](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/declare-permissions-in-acl)）
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
