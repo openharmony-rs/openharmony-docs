@@ -118,6 +118,15 @@ fooWithout();
 
 <!-- @[avoid_optional_parameters_poor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+function add(left?: number, right?: number): number | undefined {
+  if (left != undefined && right != undefined) {
+    return left + right;
+  }
+  return undefined;
+}
+```
+
 根据业务需求，将函数参数声明为必选参数。考虑使用默认参数。
 <!-- @[avoid_optional_parameters_batter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) --> 
 
