@@ -409,6 +409,21 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
 **解决方案** ： 应用当前模块将其他模块传递的数据使用Sendable类重新封装。
 
    <!-- @[define_resolveOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeOne.ets) -->  
+   
+   ``` TypeScript
+   @Sendable
+   export class B {
+     constructor() {}
+   }
+   
+   @Sendable
+   export class A {
+     constructor(b: B) {
+       this.b = b;
+     }
+     public b: B | undefined = undefined;
+   }
+   ```
 
 2. 应用查看JS异常栈发现运行this.g = g赋值语句时，抛出类型不一致异常。排查代码后发现属性g使用了@State装饰器，导致原对象变为Proxy代理对象，造成定义类型与传入类型不一致。  
 **解决方案**：去掉@State装饰器
