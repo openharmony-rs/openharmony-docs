@@ -229,6 +229,28 @@ Error message: [Class]get different name for method:&entry/src/main/ets/pages/XX
 
 <!-- @[export_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample1.ets) -->
 
+``` TypeScript
+// 代码1。
+@CustomDialog
+export default struct TmsDialog {
+  controller?: CustomDialogController
+  dialogController:CustomDialogController
+
+  build() {
+  }
+}
+
+// 代码2。
+@CustomDialog
+struct Index{
+  controller?: CustomDialogController
+  dialogController?:CustomDialogController
+
+  build() {
+  }
+}
+```
+
 **问题原因**：
 
 在这个示例中，在自定义的对话框中，再弹一个对话框；如上示例中代码1，或在一个UI中定义两个CustomDialogController对象，执行时，ets代码转ts后，会生成两个相同的setController函数，从而导致字节码混淆时报错。
