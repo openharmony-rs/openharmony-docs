@@ -13,6 +13,18 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
 1. 接口声明中自定义Sendable类。
 
    <!-- @[export_myObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/types/libentry/Index.d.ets) -->  
+   
+   ``` TypeScript
+   // Index.d.ets。
+   @Sendable
+   export class MyObject {
+     constructor(arg: number);
+     plusOne(): number;
+   
+     public get value(): number;
+     public set value(newVal: number);
+   }
+   ```
 
 2. 编译配置。
 
