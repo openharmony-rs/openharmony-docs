@@ -804,13 +804,13 @@ export function FieldType(...types: Function[]): PropertyDecorator {
 
 <!-- @[fix_age](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->
 
-```ts
+``` TypeScript
 // file.ts
-// 混淆后
+// 混淆前。
 const person = {
-    myAge: 18
+  myAge: 18
 }
-person["m"] = 20;
+person["myAge"] = 20;
 ```
 
 **解决方案**：
