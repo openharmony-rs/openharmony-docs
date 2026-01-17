@@ -123,6 +123,12 @@ ArkTS也有自己的模块和包管理机制，同样通过import语句引入其
 
 <!-- @[import_collections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// 引入ArkTS标准库中的ArkTS容器集。
+
+import { collections } from '@kit.ArkTS';
+```
+
 由于ArkTS的模块系统更注重模块化开发和代码复用，能够更便捷地管理不同功能模块之间的依赖关系，所以在使用方式上，与Swift的模块管理会有所区别。
 
 ### 类与命名空间特性
