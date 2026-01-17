@@ -169,6 +169,15 @@ for (let i = 0; i < 3; i++) {
 
 <!-- @[use_typearray_batter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+const typedArray1 = Int8Array.from([1, 2, 3]);
+const typedArray2 = Int8Array.from([4, 5, 6]);
+let res1 = new Array<number>(3);
+for (let i = 0; i < 3; i++) {
+  res1[i] = typedArray1[i] + typedArray2[i];
+}
+```
+
 ### 避免使用稀疏数组
 
 运行时在分配超过1024大小的数组或稀疏数组时，会采用hash表来存储元素。在该模式下，访问数组元素速度较慢。代码开发时应避免数组变成稀疏数组。
