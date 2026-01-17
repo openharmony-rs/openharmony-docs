@@ -10,9 +10,11 @@
 
 在音频录制过程中，用户可以将麦克风静音，此时录音过程正常进行，录制生成的数据文件的大小随录制时长递增，但写入文件的数据均为0，即无声数据（空白数据）。
 
+录音不支持音量调节。
+
 ## 开发步骤及注意事项
 
-在AudioVolumeGroupManager中提供了管理麦克风状态的方法，接口的详细说明请参考[API文档](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md)。
+在AudioVolumeGroupManager中提供了管理麦克风状态的方法，接口的详细说明请参考音量API文档[AudioVolumeGroupManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md)。
 
 1. 创建audioVolumeGroupManager对象。
 
