@@ -97,7 +97,7 @@
     // 注册监听
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
     ```
-   
+
 4. 处理设备的连接与断开的事件。
    <!-- @[handle_device_attached_detached](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
    
