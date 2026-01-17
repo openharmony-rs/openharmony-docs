@@ -73,7 +73,7 @@ class EntryAbility extends UIAbility {
 
 importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<void\>
 
-将VCard文件导入联系人数据库。使用Promise异步操作。
+将VCard文件导入联系人数据库。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
@@ -86,6 +86,13 @@ importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<
 | Context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)      | 是   | 应用上下文。 |
 | filePath   | string                      | 是   | vcf文件地址。 |
 | accountId   | number                      | 是   | 联系人账户ID。 |
+
+**返回值：**
+
+| 类型                  | 说明                               |
+| --------------------- | ---------------------------------- |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回重置的结果码。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
@@ -122,7 +129,7 @@ class EntryAbility extends UIAbility {
 ## vcard.importVCard
 importVCard\(context: Context, filePath: string, callback: AsyncCallback\<void\>\): void
 
-将VCard文件导入联系人数据库。使用callb ack异步操作。
+将VCard文件导入联系人数据库。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
@@ -227,7 +234,7 @@ class EntryAbility extends UIAbility {
 
 exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options?: VCardBuilderOptions\): Promise\<string\>
 
-将联系人导出为vcf文件。使用Promise异步操作。
+将联系人导出为vcf文件。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
@@ -240,6 +247,12 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 | Context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)               | 是   | 应用上下文。 |
 | predicates | [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | 是   | 查询语句。 |
 | options   | [VCardBuilderOptions](#vcardbuilderoptions11) | 是   | VCard版本与编码类型。 |  
+
+**返回值：**
+
+| 类型                  | 说明                               |
+| --------------------- | ---------------------------------- |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回重置的结果码。 |
 
 **错误码：**
 
@@ -295,6 +308,7 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 | ------ | ------ | ---- | -------------------------------------- |
 | Context      | [Context](../apis-ability-kit/js-apis-inner-application-context.md)     | 是   | 应用上下文。 |
 | predicates   | [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | 是   | 查询语句。 |
+| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。生成的vcf文件地址。
 
 **错误码：**
 
