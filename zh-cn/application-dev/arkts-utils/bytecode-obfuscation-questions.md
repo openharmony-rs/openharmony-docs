@@ -108,6 +108,16 @@ nameCache.json文件：
 
 <!-- @[export_mainPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+@Component
+export struct MainPage {
+  @State messageStr: string = 'Hello World';
+
+  build() {
+  }
+}
+```
+
 中间文件：
 
 ```abc
