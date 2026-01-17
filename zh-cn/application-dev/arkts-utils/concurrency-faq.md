@@ -370,6 +370,23 @@ export class A {
 
 <!-- @[define_workers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/workers/Worker.ets) -->  
 
+``` TypeScript
+// workers/Worker.ets
+import { A } from '../pages/Sendable'
+import { worker, ThreadWorkerGlobalScope, MessageEvents } from '@kit.ArkTS'
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+workerPort.onmessage = (e: MessageEvents) => {
+  let a : A = e.data as A;
+  if (a instanceof A) {
+    // 打印test instanceof in worker thread success。
+    console.info('test instanceof in worker thread success');
+  } else {
+    console.info('test instanceof in worker thread failed');
+  }
+}
+```
+
 ## 使用Sendable特性抛JS异常排查指导
 
 由于Sendable特性存在固定布局、Sendable无法持有非Sendable等规格限制，开发者在进行Sendable改造时可能触发相关约束，导致抛出相应的JS异常。应用可参考以下内容进行代码排查。
