@@ -75,6 +75,13 @@ export const add: (a: number, b: number) => number;
 
 <!-- @[name_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameExport.ets) -->    
 
+``` TypeScript
+// NameExport.ets
+// 将libentry.so的API封装后导出
+import { add } from 'libentry.so';
+export { add };
+```
+
 <!-- @[nameImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameImportFromExport.ets) -->    
 
 ### 转为命名空间导出再导入
