@@ -200,6 +200,11 @@ result[9999] = 0;
 
 <!-- @[avoid_joint_type_poor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+let arrNum: number[] = [1, 1.1, 2]; // 数值数组中混合使用整型数据和浮点型数据。
+let arrUnion: (number | string)[] = [1, 'hello']; // 联合类型数组。
+```
+
 根据业务需求，将相同类型的数据放在同一数组中。  
 <!-- @[avoid_joint_type_batter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
 
