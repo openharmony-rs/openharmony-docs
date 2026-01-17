@@ -245,7 +245,18 @@ ArkTS具有强大的类型推断能力，编译器能够根据上下文自动推
 let num = 10; // 编译器自动推断num为number类型。
 ```
 
-同时，ArkTS支持可选类型，通过在类型后面添加问号（`?`）来表示该变量可以为`null`或`undefined`。
+<!-- @[optional_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+interface Person {
+  name: string;
+  age?: number;  // age是可选属性。
+}
+
+const person: Person = {
+  name: 'Alice',
+};
+```
 
 **ArkTS示例：**
 
