@@ -44,6 +44,25 @@ ArkTS要求属性显式初始化，代码应如下所示：
 
 <!-- @[def_person](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+class Person {
+  name: string = ''; // undefined
+
+  setName(n: string): void {
+    this.name = n;
+  }
+
+  // 类型为"string"，不可能为"null"或者"undefined"。
+  getName(): string {
+    return this.name;
+  }
+}
+// ...
+  let buddy = new Person()
+  // 假设代码中没有对name的赋值，例如没有调用"buddy.setName('John')"。
+  let len = buddy.getName().length; // 0, 没有运行时异常。
+```
+
 如果`name`可以是`undefined`，其类型应在代码中精确标注。
 
 <!-- @[def_personFix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) -->  
