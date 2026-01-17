@@ -203,34 +203,46 @@
      }
    }
    ```
+   ```json
+   // main_pages.json
 
+   {
+     "src": [
+       "pages/Index",
+       "pages/Book1",
+       "pages/Book2",
+       "pages/Book3",
+       "pages/Book4"
+     ]
+   }
+   ```
 3. 访问书架页面时，自动展示最近访问的图书列表。
 
    <!-- @[get_recentList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/GetRecentList.ets) -->   
    
-   ```ts
-   // Index.ets
-
+   ``` TypeScript
+   // GetRecentList.ets
    import { taskpool } from '@kit.ArkTS';
-   import { lruCache } from './LruCache'
-
+   import { lruCache } from '../utils/LruCache'
+   // ...
+   
    @Concurrent
    async function updateBooks(key: string, value: string) {
-     // 在子线程更新最近访问列表
+     // 在子线程更新最近访问列表。
      await lruCache.put(key, value);
    }
-
+   
    @Entry
    @Component
-   struct Index {
+   struct GetRecentList {
      @State message: string = '书架';
      @State books: string[] = [];
-
+   
      async aboutToAppear () {
-       // 自动获取最近访问的图书列表
+       // 自动获取最近访问的图书列表。
        this.books = await lruCache.keys();
      }
-
+   
      build() {
        Column({ space: 1 }) {
          Text(this.message)
@@ -246,7 +258,7 @@
            .padding(10)
            .fontWeight(FontWeight.Bold)
            .onClick(async () => {
-             // 获取绑定的图书信息
+             // 获取绑定的图书信息。
              let value = await lruCache.get(this.books[3]);
              // 更新最近访问列表
              taskpool.execute(updateBooks, this.books[3], value);
@@ -257,9 +269,9 @@
            .padding(10)
            .fontWeight(FontWeight.Bold)
            .onClick(async () => {
-             // 获取绑定的图书信息
+             // 获取绑定的图书信息。
              let value = await lruCache.get(this.books[2]);
-             // 更新最近访问列表
+             // 更新最近访问列表。
              taskpool.execute(updateBooks, this.books[2], value);
              this.getUIContext().getRouter().pushUrl({ url: 'pages/' + value });
            })
@@ -268,9 +280,9 @@
            .padding(10)
            .fontWeight(FontWeight.Bold)
            .onClick(async () => {
-             // 获取绑定的图书信息
+             // 获取绑定的图书信息。
              let value = await lruCache.get(this.books[1]);
-             // 更新最近访问列表
+             // 更新最近访问列表。
              taskpool.execute(updateBooks, this.books[1], value);
              this.getUIContext().getRouter().pushUrl({ url: 'pages/' + value });
            })
@@ -279,12 +291,13 @@
            .padding(10)
            .fontWeight(FontWeight.Bold)
            .onClick(async () => {
-             // 获取绑定的图书信息
+             // 获取绑定的图书信息。
              let value = await lruCache.get(this.books[0]);
-             // 更新最近访问列表
+             // 更新最近访问列表。
              taskpool.execute(updateBooks, this.books[0], value);
              this.getUIContext().getRouter().pushUrl({ url: 'pages/' + value });
            })
+         // ...
        }
        .height('100%')
        .width('100%')
