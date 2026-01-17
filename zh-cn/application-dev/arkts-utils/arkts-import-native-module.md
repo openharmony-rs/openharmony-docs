@@ -22,6 +22,12 @@ export const add: (a: number, b: number) => number;
 
 <!-- @[name_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameImport.ets) -->     
 
+``` TypeScript
+// NameImport.ets
+import { add } from 'libentry.so'
+add(2, 3);
+```
+
 ### 默认导入
 
 <!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
