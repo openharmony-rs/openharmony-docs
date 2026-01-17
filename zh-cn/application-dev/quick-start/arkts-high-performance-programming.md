@@ -184,6 +184,16 @@ for (let i = 0; i < 3; i++) {
 
 <!-- @[avoid_sparse_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// 直接分配100000大小的数组，运行时会处理成用hash表来存储元素。
+let count = 100000;
+let res: number[] = new Array(count).fill(0);
+
+// 创建数组后，直接在9999处赋值，会变成稀疏数组。
+let result: number[] = [];
+result[9999] = 0;
+```
+
 ### 避免使用联合类型数组
 
 避免使用联合类型数组。避免在数值数组中混合使用整型数据和浮点型数据。
