@@ -67,37 +67,7 @@ ArkTS在保持TypeScript基本语法风格的基础上，进一步强化静态�
 类名通常是名词或名词短语，例如Person、Student、Worker。不应使用动词，也应该避免类似Data、Info这样的模糊词。
 
 **【正例】**
-```
-// 类名
-class User {
-  username: string
-
-  constructor(username: string) {
-    this.username = username;
-  }
-
-  sayHi() {
-    console.info('hi' + this.username);
-  }
-}
-
-// 枚举名
-enum UserType {
-  TEACHER = 0,
-  STUDENT = 1
-};
-
-// 命名空间
-namespace Base64Utils {
-  function encrypt() {
-    // todo encrypt
-  }
-
-  function decrypt() {
-    // todo decrypt
-  }
-};
-```
+<!-- @[Upper_Camel_Case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->   
 
 ### 变量名、方法名、参数名采用lowerCamelCase风格
 
@@ -115,19 +85,7 @@ namespace Base64Utils {
 变量名通常是名词或名词短语，采用小驼峰命名，便于理解。
 
 **【正例】**
-```
-let msg = 'Hello world';
-
-function sendMsg(msg: string) {
-  // todo send message
-}
-
-let userName = 'Zhangsan';
-
-function findUser(userName: string) {
-  // todo find user by user name
-}
-```
+<!-- @[lower_Camel_Case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 常量名、枚举值名采用全部大写，单词间使用下划线隔开
 
@@ -139,14 +97,7 @@ function findUser(userName: string) {
 
 **【正例】**
 
-```
-const MAX_USER_SIZE = 10000;
-
-enum UserType {
-  TEACHER = 0,
-  STUDENT = 1
-};
-```
+<!-- @[Uppercase_Underline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 避免使用否定的布尔变量名，布尔型的局部变量或方法需加上表达是非意义的前缀
 
@@ -158,23 +109,11 @@ enum UserType {
 
 **【反例】**
 
-```
-let isNoError = true;
-let isNotFound = false;
-
-function empty() {}
-function next() {}
-```
+<!-- @[boolean_guide_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-let isError = false;
-let isFound = true;
-
-function isEmpty() {}
-function hasNext() {}
-```
+<!-- @[boolean_guide_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ## 格式
 
@@ -191,42 +130,7 @@ function hasNext() {}
 
 **【正例】**
 
-```
-class DataSource {
-  id: number = 0
-  title: string = ''
-  content: string = ''
-}
-
-const dataSource: DataSource[] = [
-  {
-    id: 1,
-    title: 'Title 1',
-    content: 'Content 1'
-  },
-  {
-    id: 2,
-    title: 'Title 2',
-    content: 'Content 2'
-  }
-
-];
-
-function test(dataSource: DataSource[]) {
-  if (!dataSource.length) {
-    return;
-  }
-
-  for (let data of dataSource) {
-    if (!data || !data.id || !data.title || !data.content) {
-      continue;
-    }
-    // some code
-  }
-
-  // some code
-}
-```
+<!-- @[spaces_indentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 行宽不超过120个字符
 
@@ -250,25 +154,11 @@ function test(dataSource: DataSource[]) {
 
 **【反例】**
 
-```
-let condition = true;
-if (condition) 
-  console.info('success');
-for (let idx = 0; idx < 5; ++idx) 
-  console.info('', idx);
-```
+<!-- @[use_braces_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-let condition = true;
-if (condition) {
-  console.info('success');
-}
-for (let idx = 0; idx < 5; ++idx) {
-  console.info('', idx);
-}
-```
+<!-- @[use_braces_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### `switch`语句的`case`和`default`需缩进一层
 
@@ -280,20 +170,7 @@ for (let idx = 0; idx < 5; ++idx) {
 
 **【正例】**
 
-```
-switch (condition) {
-  case 0: {
-    doSomething();
-    break;
-  }
-  case 1: {
-    doOtherthing();
-    break;
-  }
-  default:
-    break;
-}
-```
+<!-- @[switch_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 表达式换行需保持一致性，运算符放行末
 
@@ -306,13 +183,7 @@ switch (condition) {
 
 **【正例】**
 
-```
-// 假设条件语句超出行宽
-if (userCount > MAX_USER_COUNT ||
-  userCount < MIN_USER_COUNT) {
-  doSomething();
-}
-```
+<!-- @[line_break_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 多个变量定义和赋值语句不允许写在一行
 
@@ -333,12 +204,7 @@ pointX = 10; pointY = 0;
 
 **【正例】**
 
-```
-let maxCount = 10;
-let isCompleted = false;
-let pointX = 0;
-let pointY = 0;
-```
+<!-- @[variable_definitions_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 空格应该突出关键字和重要信息，避免不必要的空格
 
@@ -361,71 +227,27 @@ b)   在模板中，不用加空格，例如：`abc${name}`。
 
 **【反例】**
 
-```
-// if 和左括号 ( 之间没有加空格
-if(isJedi) {
-  fight();
-}
-
-// 函数名fight和左括号 ( 之间加了空格
-function fight (): void {
-  console.info('Swooosh!');
-}
-```
+<!-- @[highlight_keywords_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-// if 和左括号之间加一个空格
-if (isJedi) {
-  fight();
-}
-
-// 函数名fight和左括号 ( 之间不加空格
-function fight(): void {
-  console.info('Swooosh!');
-}
-```
+<!-- @[highlight_keywords_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【反例】**
 
-```
-if (flag) {
-  // ...
-}else {  // else 与其前面的大括号 } 之间没有加空格
-  // ...
-}
-```
+<!-- @[highlight_else_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-if (flag) {
-  // ...
-} else {  // else 与其前面的大括号 } 之间增加空格
-  // ...
-}
-```
+<!-- @[highlight_else_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-function foo() {  // 函数声明时，左大括号 { 之前加个空格
-  // ...
-}
-
-bar('attr', {  // 左大括号前加个空格
-  age: '1 year',
-  sbreed: 'Bernese Mountain Dog',
-});
-```
+<!-- @[highlight_brace_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-const arr = [1, 2, 3];  // 数组初始化中的逗号后面加个空格，逗号前面不加空格
-myFunc(bar, foo, baz);  // 函数的多个参数之间的逗号后加个空格，逗号前面不加空格
-```
+<!-- @[highlight_comma_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 建议字符串使用单引号
 
@@ -437,17 +259,11 @@ myFunc(bar, foo, baz);  // 函数的多个参数之间的逗号后加个空格�
 
 **【反例】**
 
-```
-let message = "world";
-console.info(message);
-```
+<!-- @[single_quotation_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-let message = 'world';
-console.info(message);
-```
+<!-- @[single_quotation_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 对象字面量属性超过4个，需要都换行
 
@@ -459,40 +275,11 @@ console.info(message);
 
 **【反例】**
 
-```
-interface I {
-  name: string
-  age: number
-  value: number
-  sum: number
-  foo: boolean
-  bar: boolean
-}
-
-let obj: I = { name: 'tom', age: 16, value: 1, sum: 2, foo: true, bar: false }
-```
+<!-- @[many_properties_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-interface I {
-  name: string
-  age: number
-  value: number
-  sum: number
-  foo: boolean
-  bar: boolean
-}
-
-let obj: I = {
-  name: 'tom',
-  age: 16,
-  value: 1,
-  sum: 2,
-  foo: true,
-  bar: false
-}
-```
+<!-- @[many_properties_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 把`else`/`catch`放在`if`/`try`代码块关闭括号的同一行
 
@@ -504,47 +291,19 @@ let obj: I = {
 
 **【反例】**
 
-```
-if (isOk) {
-  doThing1();
-  doThing2();
-}
-else {
-  doThing3();
-}
-```
+<!-- @[put_else_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-if (isOk) {
-  doThing1();
-  doThing2();
-} else {
-  doThing3();
-}
-```
+<!-- @[put_else_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【反例】**
 
-```
-try {
-  doSomething();
-}
-catch (err) {
-  // 处理错误
-}
-```
+<!-- @[put_catch_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-try {
-  doSomething();
-} catch (err) {
-  // 处理错误
-}
-```
+<!-- @[put_catch_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 大括号`{`和语句在同一行
 
@@ -556,20 +315,11 @@ try {
 
 **【反例】**
 
-```
-function foo()
-{
-  // ...
-}
-```
+<!-- @[put_brace_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-function foo() {
-  // ...
-}
-```
+<!-- @[put_brace_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
  
 ## 编程实践
 
@@ -583,27 +333,11 @@ ArkTS提供了`private`, `protected`和`public`可访问修饰符。默认情况
 
 **【反例】**
 
-```
-class C {
-  count: number = 0
-
-  getCount(): number {
-    return this.count
-  }
-}
-```
+<!-- @[accessible_modifiers_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-class C {
-  private count: number = 0
-
-  public getCount(): number {
-    return this.count
-  }
-}
-```
+<!-- @[accessible_modifiers_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 不建议省略浮点数小数点前后的0
 
@@ -615,19 +349,11 @@ ArkTS中，浮点值包含一个小数点，不要求小数点之前或之后必
 
 **【反例】**
 
-```
-const num = .5;
-const num = 2.;
-const num = -.7;
-```
+<!-- @[not_omit_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-const num = 0.5;
-const num = 2.0;
-const num = -0.7;
-```
+<!-- @[not_omit_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 判断变量是否为`Number.NaN`时必须使用`Number.isNaN()`方法
 
@@ -641,27 +367,11 @@ const num = -0.7;
 
 **【反例】**
 
-```
-if (foo == Number.NaN) {
-  // ...
-}
-
-if (foo != Number.NaN) {
-  // ...
-}
-```
+<!-- @[check_NaN_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-if (Number.isNaN(foo)) {
-  // ...
-}
-
-if (!Number.isNaN(foo)) {
-  // ...
-}
-```
+<!-- @[check_NaN_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 数组遍历优先使用`Array`对象方法
 
@@ -673,22 +383,11 @@ if (!Number.isNaN(foo)) {
 
 **【反例】**
 
-```
-const numbers = [1, 2, 3, 4, 5];
-// 依赖已有数组来创建新的数组时，通过for遍历，生成一个新数组
-const increasedByOne: number[] = [];
-for (let i = 0; i < numbers.length; i++) {
-  increasedByOne.push(numbers[i] + 1);
-}
-```
+<!-- @[array_methods_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-const numbers = [1, 2, 3, 4, 5];
-// better: 使用map方法是更好的方式
-const increasedByOne: number[] = numbers.map(num => num + 1);
-```
+<!-- @[array_methods_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 不要在控制性条件表达式中执行赋值操作
 
@@ -701,21 +400,11 @@ const increasedByOne: number[] = numbers.map(num => num + 1);
 
 **【反例】**
 
-```
-// 在控制性判断中赋值不易理解
-if (isFoo = false) {
-  // ...
-}
-```
+<!-- @[assignValues_expressions_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-const isFoo = false; // 在上面赋值，if条件判断中直接使用
-if (isFoo) {
-  // ...
-}
-```
+<!-- @[assignValues_expressions_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 在`finally`代码块中，不要使用`return`、`break`、`continue`或抛出异常，避免`finally`块非正常结束
 
@@ -727,35 +416,11 @@ if (isFoo) {
 
 **【反例】**
 
-```
-function foo() {
-  try {
-    // ...
-    return 1;
-  } catch (err) {
-    // ...
-    return 2;
-  } finally {
-    return 3;
- }
-}
-```
+<!-- @[finally_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-function foo() {
-  try {
-    // ...
-    return 1;
-  } catch (err) {
-    // ...
-    return 2;
-  } finally {
-    console.info('XXX!');
-  }
-}
-```
+<!-- @[finally_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 避免使用`ESObject`
 
@@ -767,39 +432,13 @@ function foo() {
 
 **【反例】**
 
-```
-// lib.ets
-export interface I {
-  sum: number
-}
-
-export function getObject(value: number): I {
-  let obj: I = { sum: value };
-  return obj
-}
-
-// app.ets
-import { getObject } from 'lib'
-let obj: ESObject = getObject(123);
-```
+<!-- @[noESObject_lib_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/lib.ets) -->  
+<!-- @[noESObject_app_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-// lib.ets
-export interface I {
-  sum: number
-}
-
-export function getObject(value: number): I {
-  let obj: I = { sum: value };
-  return obj
-}
-
-// app.ets
-import { getObject, I } from 'lib'
-let obj: I = getObject(123);
-```
+<!-- @[noESObject_lib_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/lib.ets) -->  
+<!-- @[noESObject_app_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 使用`T[]`表示数组类型
 
@@ -811,15 +450,8 @@ ArkTS提供了两种数组类型的表示方式：`T[]`和`Array<T>`。建议所
 
 **【反例】**
 
-```
-let x: Array<number> = [1, 2, 3];
-let y: Array<string> = ['a', 'b', 'c'];
-```
+<!-- @[use_T[]_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-```
-// 统一使用T[]语法
-let x: number[] = [1, 2, 3];
-let y: string[] = ['a', 'b', 'c'];
-```
+<!-- @[use_T[]_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
