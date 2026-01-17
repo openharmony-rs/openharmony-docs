@@ -261,6 +261,30 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
    ```
 
    <!-- @[unsupport_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ExecuteFailedTask.ets) -->   
+   
+   ``` TypeScript
+   // index.ets
+   import { taskpool } from '@kit.ArkTS'
+   import { BusinessError } from '@kit.BasicServicesKit'
+   import { printArgs} from './utils'
+   @Concurrent
+   function createTask(a: number, b:number) {
+     let sum = a + b;
+     // task1: 不支持的序列化类型。
+     let task1: taskpool.Task = new taskpool.Task(printArgs, sum);
+     return task1;
+   }
+   
+   function executeTask() {
+     // task
+     let task: taskpool.Task = new taskpool.Task(createTask, 1, 2);
+     taskpool.execute(task).then((res) => {
+     }).catch((e: BusinessError) => {
+       // 打印“返回结果序列化失败”异常信息。
+       console.error('execute task failed ' + e.message);
+     })
+   }
+   ```
 
    **解决方案**：task1在.then中创建执行，Concurrent函数的返回结果设置为可序列化的类型。
 
