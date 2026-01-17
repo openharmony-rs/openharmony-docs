@@ -16,43 +16,8 @@
 
    如果发现没有该维测日志表明taskpool.execute实际未调用，应用需排查taskpool.execute之前的其他业务逻辑是否执行完成。
 
-   ```ts
-   import { taskpool } from '@kit.ArkTS';
-   
-   @Concurrent
-   function createTask(a: number, b:number): number {
-     let sum = a + b;
-     return sum;
-   }
-   
-   @Entry
-   @Component
-   struct Index {
-     @State message: string = 'Hello World';
-   
-     build() {
-       Row() {
-         Column() {
-           Text(this.message)
-             .fontSize(50)
-             .fontWeight(FontWeight.Bold)
-             .onClick(() => {
-               console.info("test start");
-               // 其他业务逻辑
-               // ...
-               let task: taskpool.Task = new taskpool.Task(createTask, 1, 2);
-               taskpool.execute(task);
-               // ...
-             })
-         }
-         .width('100%')
-       }
-       .height('100%')
-     }
-   }
-   
-   // 如果test start在控制台打印，但是并未出现Task Allocation: taskId:的日志，则taskpool.execute没有执行，应用需要排查其他业务逻辑。
-   ```
+   <!-- @[is_execute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/IsExecute.ets) -->  
+
 
 2. **TaskPool任务是否被执行**。
 
@@ -89,47 +54,7 @@
 
    1. 如果在执行TaskPool任务过程中发生JS异常，TaskPool会捕获该JS异常并通过taskpool.execute().catch((e:Error)=>{})将异常信息返回，应用需要查看异常信息并修复。
 
-      ```ts
-      import { taskpool } from '@kit.ArkTS';
-      
-      @Concurrent
-      function createTask(a: number, b:number) {
-        let sum = a + b;
-        return sum;
-      }
-      
-      @Entry
-      @Component
-      struct Index {
-        @State message: string = 'Hello World';
-      
-        build() {
-          Row() {
-            Column() {
-              Text(this.message)
-                .fontSize(50)
-                .fontWeight(FontWeight.Bold)
-                .onClick(() => {
-                  console.info("test start");
-                  // 其他业务逻辑
-                  // ...
-                  let task: taskpool.Task = new taskpool.Task(createTask, 1, 2);
-                  taskpool.execute(task).then((res: object)=>{
-                    // 任务执行完处理结果
-                    // ...
-                  }).catch((e: Error)=>{
-                    // 任务发生异常后处理异常
-                    // ...
-                  })
-                  // ...
-                })
-            }
-            .width('100%')
-          }
-          .height('100%')
-        }
-      }
-      ```
+   <!-- @[catch_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Index.ets) -->  
 
    2. 如果.catch分支无异常信息返回，但是应用通过TaskPool任务实现的功能发生问题，应用需要查看TaskPool任务逻辑是否发生阻塞，导致功能异常。
 
@@ -238,72 +163,20 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
 1. 应用在启动TaskPool任务时，在Concurrent函数中传入线程间通信不支持的对象类型，导致抛出入参序列化失败异常。  
 **解决方案**：应用需要查看[线程间通信对象](../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)排查Concurrent函数入参。
 
-2. 应用在启动TaskPool任务时，抛出入参序列化失败异常，同时Hilog打印错误日志Unsupport serialize object type: Proxy（API version 20及之后版本打印错误日志：Serialize error: Serialize don't support object type: Proxy）。基于错误日志可知应用在Concurrent函数中传入代理对象，排查代码发现入参使用了@State装饰器，导致原对象实际上变为Proxy代理对象，代理对象不属于线程间通信支持的对象类型。  
+2. 应用在启动TaskPool任务时，抛出入参序列化失败异常，同时Hilog打印错误日志Unsupported serialize object type: Proxy（API version 20及之后版本打印错误日志：Serialize error: Serialize don't support object type: Proxy）。基于错误日志可知应用在Concurrent函数中传入代理对象，排查代码发现入参使用了@State装饰器，导致原对象实际上变为Proxy代理对象，代理对象不属于线程间通信支持的对象类型。  
 **解决方案**：TaskPool不支持@State、@Prop等装饰器修饰的复杂类型，具体内容可见[TaskPool注意事项](taskpool-introduction.md#taskpool注意事项)。应用需要去掉@State装饰器。
 
 3. 应用执行TaskPool任务时，抛出返回结果序列化失败异常，排查代码发现Concurrent函数返回结果是不支持的序列化类型。
-   
-   ```ts
-   // utils.ets
-   @Concurrent
-   export function printArgs(args: number) {
-     return args;
-   }
 
-   // index.ets
-   import { taskpool } from '@kit.ArkTS'
-   import { BusinessError } from '@kit.BasicServicesKit'
-   import { printArgs} from './utils'
-   @Concurrent
-   function createTask(a: number, b:number) {
-     let sum = a + b;
-     // task1: 不支持的序列化类型
-     let task1: taskpool.Task = new taskpool.Task(printArgs, sum);
-     return task1;
-   }
+   <!-- @[define_printArgs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/utils.ets) -->     
 
-   function executeTask() {
-     // task
-     let task: taskpool.Task = new taskpool.Task(createTask, 1, 2);
-     taskpool.execute(task).then((res) => {
-     }).catch((e: BusinessError) => {
-       // 打印“返回结果序列化失败”异常信息
-       console.error("execute task failed " + e.message);
-     })
-   }
-   ```
+   <!-- @[unsupport_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ExecuteFailedTask.ets) -->   
 
    **解决方案**：task1在.then中创建执行，Concurrent函数的返回结果设置为可序列化的类型。
 
-   ```ts
-   // utils.ets
-   @Concurrent
-   export function printArgs(args: number) {
-     return args;
-   }
+   <!-- @[define_printArgs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/utils.ets) -->     
 
-   // index.ets
-   import { taskpool } from '@kit.ArkTS'
-   import { BusinessError } from '@kit.BasicServicesKit'
-   import { printArgs} from './utils'
-   @Concurrent
-   function createTask(a: number, b:number) {
-     // 支持的序列化类型
-     let sum = a + b;
-     return sum;
-   }
-
-   function executeTask() {
-     // task
-     let task: taskpool.Task = new taskpool.Task(createTask, 1, 2);
-     taskpool.execute(task).then((res) => {
-       // task1
-       let task1: taskpool.Task = new taskpool.Task(printArgs, res);
-     }).catch((e: BusinessError) => {
-       console.error("execute task failed " + e.message);
-     })
-   }
-   ```
+   <!-- @[support_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ExecuteSupportTask.ets) -->   
 
 ## Sendable类A的实例对象a传递到子线程后，使用a instanceof A判断返回false
 
@@ -311,54 +184,11 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
 
 **代码示例**
 
-```ts
-// pages/index.ets
-import { worker, ErrorEvent } from '@kit.ArkTS'
-import { A } from './sendable'
-const workerInstance = new worker.ThreadWorker('../workers/Worker.ets');
-function testInstanceof() {
-  let a = new A();
-  if (a instanceof A) {
-    // 打印test instanceof in main thread success
-    console.info("test instanceof in main thread success");
-  } else {
-    console.info("test instanceof in main thread failed");
-  }
-  workerInstance.postMessageWithSharedSendable(a);
-  workerInstance.onerror = (err: ErrorEvent) => {
-    console.error("worker err :" + err.message)
-  }
-}
+<!-- @[test_instanceof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/TestInstancof.ets) -->   
 
-testInstanceof()
-```
-```ts
-// pages/sendable.ets
-"use shared"
-@Sendable
-export class A {
-    name: string = "name";
-    printName(): string {
-        return this.name;
-    }
-}
-```
-```ts
-// workers/Worker.ets
-import { A } from '../pages/sendable'
-import { worker, ThreadWorkerGlobalScope, MessageEvents } from '@kit.ArkTS'
+<!-- @[define_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->  
 
-const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
-workerPort.onmessage = (e: MessageEvents) => {
-    let a : A = e.data as A;
-    if (a instanceof A) {
-        // 打印test instanceof in worker thread success
-        console.info("test instanceof in worker thread success");
-    } else {
-        console.info("test instanceof in worker thread failed");
-    }
-}
-```
+<!-- @[define_workers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/workers/Worker.ets) -->  
 
 ## 使用Sendable特性抛JS异常排查指导
 
@@ -381,63 +211,18 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
 1. 应用在向子线程传递Sendable类A的实例对象时，抛出类型不一致异常。基于JS栈定位到问题发生在创建类A的实例对象时，排查后发现应用当前模块与其他模块联调时，其他模块未使用Sendable类B封装数据集。   
 **解决方案** ： 应用当前模块将其他模块传递的数据使用Sendable类重新封装。
 
-   ```ts
-   @Sendable
-   export class B {
-     constructor() {}
-   }
-
-   @Sendable
-   export class A {
-     constructor(b: B) {
-       this.b = b;
-     }
-     public b: B | undefined = undefined;
-   }
-   ```
+   <!-- @[define_resolveOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeOne.ets) -->  
 
 2. 应用查看JS异常栈发现运行this.g = g赋值语句时，抛出类型不一致异常。排查代码后发现属性g使用了@State装饰器，导致原对象变为Proxy代理对象，造成定义类型与传入类型不一致。  
 **解决方案**：去掉@State装饰器
 
 3. 自定义Sendable类继承collections.Array，并重写构造函数。在实例化该类后调用slice函数时，抛出类型不一致异常。原因是调用slice函数时，collections.Array内部会创建新的SendableArray。构造函数的入参是新数组长度，类型为number。由于ans是string类型，而在构造函数中使用number类型的入参对ans赋值，在Sendable类中不允许使用number类型对string类型赋值，因此抛出异常。
 
-   ``` ts
-   // Index.ets: 在Index页面新增以下代码
-   import { collections } from '@kit.ArkTS'
-   
-   @Sendable
-   export class collectionsArray extends collections.Array<string> {
-     ans: string = 'test';
-     constructor(heldValue: string) {
-       super();
-       this.ans = heldValue;
-     }
-   } 
-   let arr = new collectionsArray("test");
-   arr.slice(1) 
-   ```
+   <!-- @[define_resolveTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeTwo.ets) -->   
 
    **解决方案**： 对属性的赋值使用独立接口。
 
-   ``` ts
-   // Index.ets: 在Index页面新增以下代码
-   import { collections } from '@kit.ArkTS'
-   
-   @Sendable
-   export class collectionsArray extends collections.Array<string> {
-     ans: string = 'test';
-     constructor() {
-       super();
-     }
-   
-     set(str: string) {
-       this.ans = str;
-     }
-   } 
-   let arr = new collectionsArray();
-   arr.slice(1) 
-   arr.set("success")
-   ```
+   <!-- @[define_resolveThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeThree.ets) -->  
 
 ### 新增属性异常
 
@@ -484,41 +269,9 @@ TaskPool的任务执行函数Concurrent函数只能使用局部变量和函数�
 
 2. TaskPool任务执行后的结果可以在.then中返回，需要保存的数据如果仅在当前线程使用，可以在.then中将执行结果保存到自定义的数据结构中。
 
-   ```ts
-   // sendable.ets，与Index.ets在同级目录下
-   @Sendable
-   export class testClass {
-     name: string = "test";
-     setName(name: string) {
-       this.name = name;
-     }
-     getName(): string {
-       return this.name;
-     }
-   }   
-   ```   
+   <!-- @[define_sendableTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->    
 
-   ```ts
-   // Index.ets
-   import { taskpool } from '@kit.ArkTS'
-   import { BusinessError } from '@kit.BasicServicesKit'
-   import { testClass } from './sendable'
-   
-   @Concurrent
-   function createTask(a: number): string {
-     return `test${a}`;
-   }
-   function executeTask() {
-     let testObject: testClass = new testClass();
-     let task: taskpool.Task = new taskpool.Task(createTask, 1)
-     taskpool.execute(task).then((res) => {
-       testObject.setName(res as string);
-       console.info('execute task success, name is ' + testObject.getName());
-     }).catch((e: BusinessError) => {
-       console.error('execute task error: ' + e.message);
-     })
-   }
-   ```
+   <!-- @[save_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SaveResult.ets) -->    
 
 ## Sendable类在子线程无法加载
 
@@ -570,41 +323,8 @@ Observed装饰器仅支持在UI线程使用，不能在子线程、Worker、Task
 
 将Observed装饰器修饰的类NormalItem剥离到单独的ets文件后，TaskPool子线程再去加载Sendable类SendableItem，应用运行符合预期。
 
-```ts
-// Index.ets: 在Index页面新增以下代码
-import { taskpool } from '@kit.ArkTS'
-import { BusinessError } from '@kit.BasicServicesKit'
-import { SendableItem } from './sendable'
+<!-- @[initialize_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteItemInitialized.ets) -->   
 
-@Concurrent
-function createTask() {
-  let data = new SendableItem();
-}
+<!-- @[define_sendableThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->   
 
-function executeTask() {
-  let task = new taskpool.Task(createTask);
-  taskpool.execute(task).then((res) => {
-    console.info('execute task success');
-  }).catch((e: BusinessError) => {
-    console.error('execute task error: ' + e.message);
-  })
-}
-
-executeTask();
-```
-
-```ts
-// sendable.ets
-@Sendable
-export class SendableItem {
-  name: string = '';
-}
-```
-
-```ts
-// ui.ets
-@Observed
-export class NormalItem {
-  age: number = 0;
-}
-```
+<!-- @[define_normalItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ui.ets) -->
