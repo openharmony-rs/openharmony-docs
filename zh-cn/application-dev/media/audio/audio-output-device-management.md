@@ -182,7 +182,7 @@ let rendererInfo: audio.AudioRendererInfo = {
 ## 通过AudioSession查询和监听音频输出设备
 应用使用播放器的SDK播放音频流，不持有AudioRenderer对象，因此无法灵活控制播放设备的选择和状态监听。从API version 20开始，AudioSession不仅增加了焦点管理功能，还提供了音频输出设备管理功能，包括设置默认输出设备和监听设备变化。请参考以下文档获取更多信息：
 - ArkTS API：[AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)
-- C API：[OH_AudioSessionManager](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md)
+- C API：[native_audio_session_manager.h](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md)
 
 ### 创建AudioSession实例
 在使用AudioSessionManager管理音频设备前，需要先导入模块并创建实例。
