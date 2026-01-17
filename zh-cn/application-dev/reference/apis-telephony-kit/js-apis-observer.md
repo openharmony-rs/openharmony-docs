@@ -1042,11 +1042,11 @@ observer.off('iccAccountInfoChange');
 ```
 
 
-## observer.onGetSimActiveState<sup>23+</sup>
+## observer.onGetSIMActiveState<sup>10+</sup>
 
-onGetSimActiveState\(slotId: number, callback: Callback\<boolean\>\): void
+onGetSIMActiveState\(slotId: number, callback: Callback\<boolean\>\): void
 
-SIM卡激活状态时间变化事件，使用callback方式作为异步方法。
+SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
@@ -1080,9 +1080,9 @@ observer.onGetSimActiveState(0, (err: BusinessError, data: sim.CardType) => {
 });
 ```
 
-## observer.offGetSIMActiveState<sup>23+</sup>
+## observer.offGetSimActiveState<sup>10+</sup>
 
-offGetSIMActiveState\(callback: Callback\<boolean\>\): void
+offGetSimActiveState\(callback: Callback\<boolean\>\): void
 
 取消sim卡激活状态变化的监听，使用callback方式作为异步方法。
 
@@ -1092,6 +1092,7 @@ offGetSIMActiveState\(callback: Callback\<boolean\>\): void
 
 |     名称            |         类型      | 只读 | 可选 | 说明                                    |
 | ------------------- | ------------------| ---- | ---- | --------------------------------------- |
+
 |callback  | Callback&lt;boolean&gt;|否|否| 以callback形式返回结果。br/>- true：激活。<br/>- false：未激活。|
 
 **错误码：**
