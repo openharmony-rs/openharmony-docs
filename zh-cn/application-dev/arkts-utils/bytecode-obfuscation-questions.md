@@ -714,17 +714,11 @@ i();
 
 <!-- @[import_ns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
 
-```ts
-// 混淆后
-// export.ts
-export namespace i {
-    export function j() {}
-}
-
+``` TypeScript
 // import.ts
-import { i } from './export';
-
-i.foo();
+import { NS } from './export';
+// ...
+  NS.foo();
 ```
 
 namespace中的foo属于export元素，当通过NS.foo调用时被视为属性。由于未开启-enable-property-obfuscation选项，导致foo在使用时未被混淆。
