@@ -288,6 +288,16 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
 2. 在ArkTS中声明接口。
 
    <!-- @[declare_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseTransferable/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
+   
+   ``` TypeScript
+   // Index.d.ts
+   export const getAddress: () => number;
+   export const getSetSize: () => number;
+   export const store: (a: number) => void;
+   export const erase: (a: number) => void;
+   export const clear: () => void;
+   export const setTransferDetached: (b : boolean) => number;
+   ```
 
 3. ArkTS对象调用Native侧实现的各项功能。
 
