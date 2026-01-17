@@ -148,6 +148,12 @@ ArkTS采用更为灵活的语言结构，融合了面向对象编程和函数式
 
 <!-- @[import_package](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// 引入ArkTS标准库中的ArkTS容器集。
+
+import { collections } from '@kit.ArkTS';
+```
+
 由于ArkTS的模块系统更注重模块化开发和代码复用，能够更便捷地管理不同功能模块之间的依赖关系，所以在使用方式上，与Java的包管理会有所区别。
 
 ### 类与命名空间特性
