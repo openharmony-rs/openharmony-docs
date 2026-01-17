@@ -289,6 +289,14 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
    **解决方案**：task1在.then中创建执行，Concurrent函数的返回结果设置为可序列化的类型。
 
    <!-- @[define_printArgs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/utils.ets) -->     
+   
+   ``` TypeScript
+   // utils.ets
+   @Concurrent
+   export function printArgs(args: number) {
+     return args;
+   }
+   ```
 
    <!-- @[support_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ExecuteSupportTask.ets) -->   
 
