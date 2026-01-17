@@ -72,6 +72,24 @@ function getNum(num: number): number {
 
 <!-- @[constant_in_loop_batter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+class TimeBetter {
+  static start: number = 0;
+  static info: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+}
+
+function getNumBetter(num: number): number {
+  let total: number = 348;
+  const info = TimeBetter.info[num - TimeBetter.start];  // 从循环中提取不变量。
+  for (let index: number = 0x8000; index > 0x8; index >>= 1) {
+    if ((info & index) != 0) {
+      total++;
+    }
+  }
+  return total;
+}
+```
+
 ## 函数
 
 ### 建议使用参数传递函数外的变量
