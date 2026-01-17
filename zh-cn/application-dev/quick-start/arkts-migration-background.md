@@ -67,6 +67,25 @@ class Person {
 
 <!-- @[def_personFix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+class Person1 {
+  name?: string; // 可能为undefined。
+
+  setName(n: string): void {
+    this.name = n;
+  }
+
+  getName(): string | undefined { // 返回类型匹配name的类型。
+    return this.name;
+  }
+}
+// ...
+  let buddy = new Person1()
+  // 假设代码中没有对name的赋值，例如没有调用"buddy.setName('John')"。
+
+  let len = buddy.getName()?.length; // 编译成功，没有运行时错误。
+```
+
 ## 程序性能
 
 为了确保程序的正确性，动态类型语言需要在运行时检查对象的类型。例如JavaScript不允许访问`undefined`的属性。检查一个值是否为`undefined`的唯一方法是在运行时进行类型检查。所有JavaScript引擎都会执行以下操作：如果一个值不是`undefined`，则可以访问其属性；如果尝试访问的值是`undefined`，则会抛出异常。虽然现代JavaScript引擎可以优化这类操作，但仍然存在一些无法消除的运行时检查，这会导致程序变慢。由于TypeScript代码总是先被编译成JavaScript代码，因此在TypeScript中也会遇到相同的问题。ArkTS解决了这个问题。通过启用静态类型检查，ArkTS代码将被编译成方舟字节码文件，而不是JavaScript代码。因此，ArkTS运行速度更快，更容易被进一步优化。
