@@ -366,6 +366,25 @@ linkSource
 
 <!-- @[call_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/a.ets) -->
 
+``` TypeScript
+// Call the API。
+// a.ets
+import { PersistenceV2 } from '@kit.ArkUI';
+import { Sample } from './Sample2';
+
+@Entry
+@ComponentV2
+export struct Page {
+  prop: Sample = PersistenceV2.connect(Sample, () => new Sample())!;
+
+  build() {
+    Column() {
+      Text(`Page1 add 1 to prop.p1: ${this.prop.f123.p123}`)
+    }
+  }
+}
+```
+
 混淆后，p123，f123都被正常替换了，但处理Trace，Type装饰器属性时，p123，f123都被识别为字符串，不参与混淆，导致调用失败。
 
 **问题原因**：
