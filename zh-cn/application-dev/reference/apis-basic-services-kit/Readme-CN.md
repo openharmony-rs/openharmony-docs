@@ -177,4 +177,5 @@
   - [设备证明错误码](errorcode-deviceAttest.md)
   - [智能语音错误码](errorcode-intelligentVoice.md)
   - [划词服务错误码](errorcode-selection.md)
+  - [情景模式错误码](errorcode-intelligentScene.md)
   <!--DelEnd-->
