@@ -174,6 +174,16 @@
 
 示例代码：
 <!-- @[lexical_environments_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/index.ts) -->  
+
+``` TypeScript
+// index.ts
+function foo(): void {
+  let a: number = 1;
+  function bar(): number {
+    return a;
+  }
+}
+```
 字节码中的相关指令：
 ```assembly
 .function any .foo(any a0, any a1, any a2) {
