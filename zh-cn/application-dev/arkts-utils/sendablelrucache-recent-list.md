@@ -100,6 +100,39 @@
    ```
 
    <!-- @[define_book2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book2.ets) -->  
+   
+   ``` TypeScript
+   // Book2.ets
+   @Entry
+   @Component
+   struct Index2 {
+     @State message: string = 'Hello World!';
+   
+     build() {
+       RelativeContainer() {
+         Text('第二本书的内容')
+           .id('second book')
+           .fontSize(20)
+           .padding(10)
+           .fontWeight(FontWeight.Bold)
+           .alignRules({
+             center: { anchor: 'container', align: VerticalAlign.Center },
+             middle: { anchor: 'container', align: HorizontalAlign.Center }
+           })
+         Button('返回')
+           .fontSize(20)
+           .padding(10)
+           .fontWeight(FontWeight.Bold)
+           .position({ x: '50%' })
+           .onClick(() => {
+             this.getUIContext().getRouter().pushUrl({ url: 'pages/GetRecentList' });
+           })
+       }
+       .height('100%')
+       .width('100%')
+     }
+   }
+   ```
 
    <!-- @[define_book3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book3.ets) -->  
 
