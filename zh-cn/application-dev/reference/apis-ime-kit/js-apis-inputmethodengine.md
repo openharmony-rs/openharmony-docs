@@ -4705,9 +4705,9 @@ inputMethodEngine.getinputMethodAbility()
 
 ### sendKeyFunction<sup>9+</sup>
 
-ArkTS-Dyn: sendKeyFunction(action:number, callback: AsyncCallback&lt;boolean&gt;): void
+ArkTS-Dyn: sendKeyFunction(action: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-ArkTS-Sta: sendKeyFunction(action:int, callback: AsyncCallback&lt;boolean&gt;): void
+ArkTS-Sta: sendKeyFunction(action: int, callback: AsyncCallback&lt;boolean&gt;): void
 
 发送功能键。使用callback异步回调。
 
@@ -4829,7 +4829,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let action:int = 1;
+let action: int = 1;
 
 inputClient.sendKeyFunction(action).then((result: boolean) => {
   if (result) {
@@ -4844,9 +4844,9 @@ inputClient.sendKeyFunction(action).then((result: boolean) => {
 
 ### getForward<sup>9+</sup>
 
-ArkTS-Dyn: getForward(length:number, callback: AsyncCallback&lt;string&gt;): void
+ArkTS-Dyn: getForward(length: number, callback: AsyncCallback&lt;string&gt;): void
 
-ArkTS-Sta: getForward(length:int, callback: AsyncCallback&lt;string&gt;): void
+ArkTS-Sta: getForward(length: int, callback: AsyncCallback&lt;string&gt;): void
 
 获取光标前固定长度的文本。使用callback异步回调。
 
@@ -4905,9 +4905,9 @@ inputClient.getForward(length, (err: BusinessError, text: string) => {
 
 ### getForward<sup>9+</sup>
 
-ArkTS-Dyn: getForward(length:number): Promise&lt;string&gt;
+ArkTS-Dyn: getForward(length: number): Promise&lt;string&gt;
 
-ArkTS-Sta: getForward(length:int): Promise&lt;string&gt;
+ArkTS-Sta: getForward(length: int): Promise&lt;string&gt;
 
 获取光标前固定长度的文本。使用promise异步回调。
 
@@ -4967,9 +4967,9 @@ inputClient.getForward(length).then((text: string) => {
 
 ### getForwardSync<sup>10+</sup>
 
-ArkTS-Dyn: getForwardSync(length:number): string
+ArkTS-Dyn: getForwardSync(length: number): string
 
-ArkTS-Sta: getForwardSync(length:int): string
+ArkTS-Sta: getForwardSync(length: int): string
 
 获取光标前固定长度的文本。
 
@@ -5023,9 +5023,9 @@ console.info(`Succeeded in getting forward, text: ${text}`);
 
 ### getBackward<sup>9+</sup>
 
-ArkTS-Dyn: getBackward(length:number, callback: AsyncCallback&lt;string&gt;): void
+ArkTS-Dyn: getBackward(length: number, callback: AsyncCallback&lt;string&gt;): void
 
-ArkTS-Sta: getBackward(length:int, callback: AsyncCallback&lt;string&gt;): void
+ArkTS-Sta: getBackward(length: int, callback: AsyncCallback&lt;string&gt;): void
 
 获取光标后固定长度的文本。使用callback异步回调。
 
@@ -5085,9 +5085,9 @@ inputClient.getBackward(length, (err: BusinessError, text: string) => {
 
 ### getBackward<sup>9+</sup>
 
-ArkTS-Dyn: getBackward(length:number): Promise&lt;string&gt;
+ArkTS-Dyn: getBackward(length: number): Promise&lt;string&gt;
 
-ArkTS-Sta: getBackward(length:int): Promise&lt;string&gt;
+ArkTS-Sta: getBackward(length: int): Promise&lt;string&gt;
 
 获取光标后固定长度的文本。使用promise异步回调。
 
@@ -5149,9 +5149,9 @@ inputClient.getBackward(length).then((text: string) => {
 
 ### getBackwardSync<sup>10+</sup>
 
-ArkTS-Dyn: getBackwardSync(length:number): string
+ArkTS-Dyn: getBackwardSync(length: number): string
 
-ArkTS-Sta: getBackwardSync(length:int): string
+ArkTS-Sta: getBackwardSync(length: int): string
 
 获取光标后固定长度的文本。
 
@@ -5203,9 +5203,9 @@ console.info(`Succeeded in getting backward, text: ${text}`);
 
 ### deleteForward<sup>9+</sup>
 
-ArkTS-Dyn: deleteForward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
+ArkTS-Dyn: deleteForward(length: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-ArkTS-Sta: deleteForward(length:int, callback: AsyncCallback&lt;boolean&gt;): void
+ArkTS-Sta: deleteForward(length: int, callback: AsyncCallback&lt;boolean&gt;): void
 
 删除光标前固定长度的文本。使用callback异步回调。
 
@@ -5257,7 +5257,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let length:int = 1;
+let length: int = 1;
 inputClient.deleteForward(length, (err: BusinessError, result: boolean) => {
   if (err) {
     console.error(`Failed to deleteForward: code: ${err.code} ,message: ${err.message}`);
@@ -5273,9 +5273,9 @@ inputClient.deleteForward(length, (err: BusinessError, result: boolean) => {
 
 ### deleteForward<sup>9+</sup>
 
-ArkTS-Dyn: deleteForward(length:number): Promise&lt;boolean&gt;
+ArkTS-Dyn: deleteForward(length: number): Promise&lt;boolean&gt;
 
-ArkTS-Sta: deleteForward(length:int): Promise&lt;boolean&gt;
+ArkTS-Sta: deleteForward(length: int): Promise&lt;boolean&gt;
 
 删除光标前固定长度的文本。使用promise异步回调。
 
@@ -5343,9 +5343,9 @@ inputClient.deleteForward(length).then((result: boolean) => {
 
 ### deleteForwardSync<sup>10+</sup>
 
-ArkTS-Dyn: deleteForwardSync(length:number): void
+ArkTS-Dyn: deleteForwardSync(length: number): void
 
-ArkTS-Sta: deleteForwardSync(length:int): void
+ArkTS-Sta: deleteForwardSync(length: int): void
 
 删除光标前固定长度的文本。
 
@@ -5393,9 +5393,9 @@ console.info('Succeeded in deleting forward.');
 
 ### deleteBackward<sup>9+</sup>
 
-ArkTS-Dyn: deleteBackward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
+ArkTS-Dyn: deleteBackward(length: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-ArkTS-Sta: deleteBackward(length:int, callback: AsyncCallback&lt;boolean&gt;): void
+ArkTS-Sta: deleteBackward(length: int, callback: AsyncCallback&lt;boolean&gt;): void
 
 删除光标后固定长度的文本。使用callback异步回调。
 
@@ -5462,9 +5462,9 @@ inputClient.deleteBackward(length, (err: BusinessError | null, result: boolean |
 
 ### deleteBackward<sup>9+</sup>
 
-ArkTS-Dyn: deleteBackward(length:number): Promise&lt;boolean&gt;
+ArkTS-Dyn: deleteBackward(length: number): Promise&lt;boolean&gt;
 
-ArkTS-Sta: deleteBackward(length:int): Promise&lt;boolean&gt;
+ArkTS-Sta: deleteBackward(length: int): Promise&lt;boolean&gt;
 
 删除光标后固定长度的文本。使用promise异步回调。
 
@@ -5515,9 +5515,9 @@ inputClient.deleteBackward(length).then((result: boolean) => {
 
 ### deleteBackwardSync<sup>10+</sup>
 
-ArkTS-Dyn: deleteBackwardSync(length:number): void
+ArkTS-Dyn: deleteBackwardSync(length: number): void
 
-ArkTS-Sta: deleteBackwardSync(length:int): void
+ArkTS-Sta: deleteBackwardSync(length: int): void
 
 删除光标后固定长度的文本。
 
