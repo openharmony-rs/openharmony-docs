@@ -12,72 +12,41 @@
 在Native模块的index.d.ts文件中导出，并在文件内直接导入。
 
 ### 具名导入
-```ts
-// libentry.so对应的index.d.ts
-export const add: (a: number, b: number) => number;
-```
-```ts
-// test.ets
-import { add } from 'libentry.so'
-add(2, 3);
-```
+
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+<!-- @[name_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameImport.ets) -->     
 
 ### 默认导入
-```ts
-// libentry.so对应的index.d.ts
-export const add: (a: number, b: number) => number;
-```
-```ts
-// test.ets
-import entry from 'libentry.so'
-entry.add(2, 3);
-```
+
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+<!-- @[default_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DefaultImport.ets) -->     
 
 ### 命名空间导入
-```ts
-// libentry.so对应的index.d.ts
-export const add: (a: number, b: number) => number;
-```
-```ts
-// test.ets
-import * as entry from 'libentry.so'
-entry.add(2, 3);
-```
+
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+<!-- @[namespace_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NamespaceImport.ets) -->    
 
 ## 间接导入
 
 ### 转为具名变量导出再导入
-```ts
-// libentry.so对应的index.d.ts
-export const add: (a: number, b: number) => number;
-```
-```ts
-// test1.ets
-// 将libentry.so的API封装后导出
-import { add } from 'libentry.so';
-export { add };
-```
-```ts
-// test2.ets
-// 从中间模块导入API
-import { add } from './test1';
-const result = add(2, 3);
-```
+
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+<!-- @[name_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameExport.ets) -->    
+
+<!-- @[nameImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameImportFromExport.ets) -->    
 
 ### 转为命名空间导出再导入
-```ts
-// libentry.so对应的index.d.ts
-export const add: (a: number, b: number) => number;
-```
-```ts
-// test1.ets
-export * from 'libentry.so'
-```
-```ts
-// test2.ets
-import { add } from './test1'
-add(2, 3);
-```
+
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+<!-- @[namespace_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NamespaceExport.ets) -->    
+
+<!-- @[namespaceImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NamespaceImportFromExport.ets) -->    
+
 > **注意：** 
 > 
 > 不支持Native模块导出和导入同时使用命名空间。
@@ -96,27 +65,17 @@ import * as add from './test1'
 ## 动态导入
 
 ### 直接导入
-```ts
-// libentry.so对应的index.d.ts
-export const add: (a: number, b: number) => number;
-```
-```ts
-// test.ets
-import('libentry.so').then((entry:ESObject) => {
-    entry.default.add(2, 3);
-})
-```
-### 间接导入
-```ts
-// test1.ets
-import entry from 'libentry.so'
-export { entry }
 
-// test2.ets
-import('./test1').then((ns:ESObject) => {
-    ns.entry.add(2, 3);
-})
-```
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+<!-- @[dynamic_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicImport.ets) -->    
+
+### 间接导入
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
+
+<!-- @[dynamic_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicExport.ets) -->    
+
+<!-- @[dynamicImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicImportFromExport.ets) -->  
 
 > **注意：** 
 > 
