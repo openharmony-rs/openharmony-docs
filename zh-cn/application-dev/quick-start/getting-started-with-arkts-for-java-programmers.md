@@ -72,6 +72,16 @@ function add(x: number, y: number): number {
   const multiply = (a: number, b: number): number => a * b;
 ```
 
+``` TypeScript
+// 常规函数定义。
+function add(x: number, y: number): number {
+  return x + y;
+}
+// ...
+  // 简洁的箭头函数形式。
+  const multiply = (a: number, b: number): number => a * b;
+```
+
 ### 函数重载
 
 Java在编译时多态，允许同一类中存在多个同名方法，通过参数列表（数量、类型、顺序）来进行区分。
