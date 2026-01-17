@@ -29,6 +29,14 @@ const index = 10000; // 该变量在后续过程中未发生改变，建议声�
 
 <!-- @[number_int_float](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+let intNum = 1;
+intNum = 1.1;  // 该变量在声明时为整型数据，建议后续不要赋值浮点型数据。
+
+let doubleNum = 1.1;
+doubleNum = 1;  // 该变量在声明时为浮点型数据，建议后续不要赋值整型数据。
+```
+
 ### 数值计算避免溢出
 
 常见的可能导致溢出的数值计算包括如下场景，溢出之后，会导致引擎走入慢速的溢出逻辑分支处理，影响后续的性能。
