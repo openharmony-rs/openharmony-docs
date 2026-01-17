@@ -98,6 +98,16 @@ function getNumBetter(num: number): number {
 
 <!-- @[outside_variable_poor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+let arr = [0, 1, 2];
+
+function fooWithout(): number {
+  return arr[0] + arr[1];
+}
+
+fooWithout();
+```
+
 建议使用参数传递函数外部的变量，以替代使用闭包。
 
 <!-- @[outside_variable_batter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
