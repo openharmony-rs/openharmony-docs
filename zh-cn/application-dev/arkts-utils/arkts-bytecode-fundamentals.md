@@ -59,11 +59,7 @@
 方舟字节码中，存在一个名为累加器（accumulator，也简称作acc）的不可见寄存器。acc是许多指令的默认目标寄存器，也是许多指令的默认参数。acc不占用编码宽度，有助于产生更为紧凑的字节码。<br>
 
 示例代码：
-```ts
-function foo(): number {
-    return 1;
-}
-```
+<!-- @[registers_accumulator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
 字节码中的相关指令：
 ```assembly
 .function any .foo(any a0, any a1, any a2) {
@@ -91,14 +87,7 @@ function foo(): number {
 在[Script](https://262.ecma-international.org/12.0/#sec-ecmascript-language-scripts-and-modules)编译模式下，全局变量是一个存储在全局唯一的映射中的变量，其键值为全局变量的名称，值为全局变量的值。全局变量可通过全局（global）相关的指令进行访问。<br>
 
 示例代码：
-```ts
-let a = 1;
-let b = 1;
-function foo(): void {
-    a += 2;
-    b = 5;
-}
-```
+<!-- @[global_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
 字节码中的相关指令：
 ```assembly
 .function any .foo(any a0, any a1, any a2) {
@@ -135,23 +124,9 @@ function foo(): void {
 > 模块相关的逻辑是编译器的内部实现，随着方舟编译器的后续演进，可能会出现新的涉及模块指令的场景；另一方面，现有的模块命名空间和模块变量指令的相关场景，也可能会随着需求演进和代码重构，不再涉及产生模块相关指令。<br>
 
 示例代码：
-```ts
-//module_foo.ts
-export let a: number = 1;
-export let b: number = 2;
-
-//module_bar.ts
-export let c: number = 4;
-
-//module_index.ts
-import { a, b } from "./module_foo"
-import * as c from "./module_bar"
-
-export let d: number = 3;
-
-a + b + d;
-c;
-```
+<!-- @[namespaces_Variables_foo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/module_foo.ts) -->  
+<!-- @[namespaces_Variables_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/module_bar.ts) -->  
+<!-- @[namespaces_Variables_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/module_index.ts) -->  
 字节码中的相关指令：
 ```assembly
 .function any .func_main_0(any a0, any a1, any a2) {
@@ -198,15 +173,7 @@ c;
 > lexical相关的逻辑是编译器的内部实现。随着方舟编译器的演进，可能会出现新的涉及lexical指令的场景。现有的lexical指令场景也可能会因需求演进和代码重构而不再涉及lexical的相关指令。
 
 示例代码：
-```ts
-// index.ts
-function foo(): void {
-    let a: number = 1;
-    function bar(): number {
-        return a;
-    }
-}
-```
+<!-- @[lexical_environments_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/index.ts) -->  
 字节码中的相关指令：
 ```assembly
 .function any .foo(any a0, any a1, any a2) {
@@ -236,15 +203,7 @@ function foo(): void {
 共享词法环境是一类特殊的词法环境。与一般词法环境的区别在于，共享词法环境中的每个词法变量都是[sendable对象](arkts-sendable.md)。方舟编译器通过共享词法环境实现词法变量在多线程中共享。
 
 示例代码：
-```ets
-@Sendable
-class A { }
-
-@Sendable
-class B {
-    u: A = new A()
-}
-```
+<!-- @[shared_Lexical](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
 字节码中的相关指令：
 ```assembly
 .function any .#~B=#B(any a0, any a1, any a2) {
@@ -278,13 +237,7 @@ label_2:
 方舟编译器支持补丁模式的编译，当源文件发生修改时，经过补丁模式编译，生成一个补丁字节码，配合原字节码，完成功能的更新。方舟编译器在补丁模式下编译时，产生的补丁变量会被存放在一个特殊的补丁词法环境中。方舟字节码中使用补丁词法环境上的槽位编号来引用补丁变量。例如，指令*ldpatchvar 0x1*加载的是槽位号为1的补丁变量。<br>
 
 示例代码：
-```ts
-function bar(): void {} // 新增语句，编译补丁
-
-function foo(): void {
-    bar(); // 新增语句，编译补丁
-}
-```
+<!-- @[patch_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
 字节码中的相关指令：
 ```assembly
 .function any foo(...) {
@@ -310,9 +263,7 @@ function foo(): void {
 对于一个包含了N个形参的方法，该方法所使用的寄存器中的最后N+3个会被用于传递参数。其中，前三个寄存器固定表示函数本身（FunctionObject）、[new.target](https://262.ecma-international.org/12.0/#sec-function-environment-records)（NewTarget）和函数所在的词法环境中的```this```（this），后续的N个寄存器依次对应这N个形参。<br>
 
 示例代码：
-```ts
-function foo(a: number, b: number): void {}
-```
+<!-- @[function_call_specifications](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
 字节码中的相关指令：
 ```assembly
 .function any .foo(any a0, any a1, any a2, any a3, any a4) {
