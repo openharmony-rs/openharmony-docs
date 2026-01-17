@@ -28,11 +28,11 @@ on(type: 'touch', receiver: TouchEventReceiver): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onTouch](#inputmonitorontouch22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTouch](#inputmonitorontouch23)。
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -79,7 +79,7 @@ struct Index {
 
 ## inputMonitor.onTouch<sup>23+</sup>
 
-onTouch(type: 'touch', receiver: TouchEventReceiver): void
+onTouch(receiver: TouchEventReceiver): void
 
 监听全局触屏事件。
 
@@ -87,11 +87,11 @@ onTouch(type: 'touch', receiver: TouchEventReceiver): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitorontouch)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#inputmonitorontouch)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -147,11 +147,11 @@ on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[on](#inputmonitoronmouse22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[on](#inputmonitoronmouse23)。
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：** 
 
@@ -206,11 +206,11 @@ onMouse(receiver: Callback&lt;MouseEvent&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[onMouse](#inputmonitoronmouse9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[onMouse](#inputmonitoronmouse9)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -265,11 +265,11 @@ on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): v
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onMouse](#inputmonitoronmouse22-1)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMouse](#inputmonitoronmouse223)。
 
-**ArkTS-Dyn起始版本**：11
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -340,7 +340,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onMouse<sup>23+</sup>
+## inputMonitor.onMouse2<sup>23+</sup>
 
 onMouse(rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
 
@@ -350,11 +350,11 @@ onMouse(rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronmouse11)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronmouse11)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -417,11 +417,11 @@ off(type: 'touch', receiver?: TouchEventReceiver): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offTouch](#inputmonitorofftouch22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTouch](#inputmonitorofftouch23)。
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -509,11 +509,11 @@ offTouch(receiver?: TouchEventReceiver): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitorofftouch)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#inputmonitorofftouch)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -578,11 +578,11 @@ off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offMouse](#inputmonitoroffmouse22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMouse](#inputmonitoroffmouse23)。
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -670,11 +670,11 @@ offMouse(receiver?: Callback&lt;MouseEvent&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffmouse9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffmouse9)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -737,9 +737,9 @@ type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS-Dyn起始版本**：7
+**ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -815,7 +815,7 @@ struct Index {
 
 ## inputMonitor.on('pinch')<sup>10+</sup>
 
-on(type: 'pinch', receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
+on(type: 'pinch', receiver: Callback&lt;Pinch&gt;): void
 
 监听全局触控板的捏合事件。
 
@@ -823,11 +823,11 @@ on(type: 'pinch', receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gesturee
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onPinch](#inputmonitoronpinch22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPinch](#inputmonitoronpinch23)。
 
-**ArkTS-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -873,9 +873,9 @@ struct Index {
 }
 ```
 
-## inputMonitor.onPinch<sup>23+</sup>
+ ## inputMonitor.onPinch<sup>23+</sup>
 
-onPinch(receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
+onPinch(receiver: Callback&lt;Pinch&gt;): void
 
 监听全局触控板的捏合事件。
 
@@ -883,11 +883,11 @@ onPinch(receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pi
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronpinch10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronpinch10)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -934,7 +934,7 @@ struct Index {
 
 ## inputMonitor.off('pinch')<sup>10+</sup>
 
-off(type: 'pinch', receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
+off(type: 'pinch', receiver?: Callback&lt;Pinch&gt;): void
 
 取消监听全局触控板的捏合事件。
 
@@ -942,11 +942,11 @@ off(type: 'pinch', receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestur
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offPinch](#inputmonitoroffpinch22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPinch](#inputmonitoroffpinch23)。
 
-**ArkTS-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1027,7 +1027,7 @@ struct Index {
 
 ## inputMonitor.offPinch'<sup>23+</sup>
 
-offPinch(receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
+offPinch(receiver?: Callback&lt;Pinch&gt;): void
 
 取消监听全局触控板的捏合事件。
 
@@ -1035,11 +1035,11 @@ offPinch(receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffpinch10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffpinch10)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1094,7 +1094,7 @@ struct Index {
 
 ## inputMonitor.on('threeFingersSwipe')<sup>10+</sup>
 
-on(type: 'threeFingersSwipe', receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
+on(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void
 
 监听全局触控板的三指滑动事件。
 
@@ -1102,11 +1102,11 @@ on(type: 'threeFingersSwipe', receiver: Callback&lt;[ThreeFingersSwipe](js-apis-
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onThreeFingersSwipe](#inputmonitoronthreefingersswipe22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onThreeFingersSwipe](#inputmonitoronthreefingersswipe23)。
 
-**ArkTS-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1153,7 +1153,7 @@ struct Index {
 
 ## inputMonitor.onThreeFingersSwipe<sup>23+</sup>
 
-onThreeFingersSwipe(receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
+onThreeFingersSwipe(receiver: Callback&lt;ThreeFingersSwipe&gt;): void
 
 监听全局触控板的三指滑动事件。
 
@@ -1161,11 +1161,11 @@ onThreeFingersSwipe(receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodal
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronthreefingersswipe10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('threeFingersSwipe')](#inputmonitoronthreefingersswipe10)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1213,7 +1213,7 @@ struct Index {
 
 ## inputMonitor.off('threeFingersSwipe')<sup>10+</sup>
 
-off(type: 'threeFingersSwipe', receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
+off(type: 'threeFingersSwipe', receiver?: Callback&lt;ThreeFingersSwipe&gt;): void
 
 取消监听全局触控板的三指滑动事件。
 
@@ -1221,11 +1221,11 @@ off(type: 'threeFingersSwipe', receiver?: Callback&lt;[ThreeFingersSwipe](js-api
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offThreeFingersSwipe](#inputmonitoroffthreefingersswipe22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offThreeFingersSwipe](#inputmonitoroffthreefingersswipe23)。
 
-**ArkTS-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1306,7 +1306,7 @@ struct Index {
 
 ## inputMonitor.offThreeFingersSwipe<sup>23+</sup>
 
-offThreeFingersSwipe(receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
+offThreeFingersSwipe(receiver?: Callback&lt;ThreeFingersSwipe&gt;): void
 
 取消监听全局触控板的三指滑动事件。
 
@@ -1314,11 +1314,11 @@ offThreeFingersSwipe(receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimod
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffthreefingersswipe10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('threeFingersSwipe')](#inputmonitoroffthreefingersswipe10)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1373,7 +1373,7 @@ struct Index {
 
 ## inputMonitor.on('fourFingersSwipe')<sup>10+</sup>
 
-on(type: 'fourFingersSwipe', receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
+on(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void
 
 监听全局触控板的四指滑动事件。
 
@@ -1381,11 +1381,11 @@ on(type: 'fourFingersSwipe', receiver: Callback&lt;[FourFingersSwipe](js-apis-mu
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onFourFingersSwipe](#inputmonitoronfourfingersswipe22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFourFingersSwipe](#inputmonitoronfourfingersswipe23)。
 
-**ArkTS-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1432,7 +1432,7 @@ struct Index {
 
 ## inputMonitor.onFourFingersSwipe<sup>23+</sup>
 
-onFourFingersSwipe(receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
+onFourFingersSwipe(receiver: Callback&lt;FourFingersSwipe&gt;): void
 
 监听全局触控板的四指滑动事件。
 
@@ -1440,11 +1440,11 @@ onFourFingersSwipe(receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalin
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronfourfingersswipe10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('fourFingersSwipe')](#inputmonitoronfourfingersswipe10)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1492,7 +1492,7 @@ struct Index {
 
 ## inputMonitor.off('fourFingersSwipe')<sup>10+</sup>
 
-off(type: 'fourFingersSwipe', receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
+off(type: 'fourFingersSwipe', receiver?: Callback&lt;FourFingersSwipe&gt;): void
 
 取消监听全局触控板的四指滑动事件。
 
@@ -1500,11 +1500,11 @@ off(type: 'fourFingersSwipe', receiver?: Callback&lt;[FourFingersSwipe](js-apis-
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offFourFingersSwipe](#inputmonitorofffourfingersswipe22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFourFingersSwipe](#inputmonitorofffourfingersswipe23)。
 
-**ArkTS-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1585,7 +1585,7 @@ struct Index {
 
 ## inputMonitor.offFourFingersSwipe<sup>23+</sup>
 
-offFourFingersSwipe(receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
+offFourFingersSwipe(receiver?: Callback&lt;FourFingersSwipe&gt;): void
 
 取消监听全局触控板的四指滑动事件。
 
@@ -1593,11 +1593,11 @@ offFourFingersSwipe(receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodal
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitorofffourfingersswipe10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('fourFingersSwipe')](#inputmonitorofffourfingersswipe10)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1660,11 +1660,11 @@ on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onRotate](#inputmonitoronrotate22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onRotate](#inputmonitoronrotate23)。
 
-**ArkTS-Dyn起始版本**：11
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1721,11 +1721,11 @@ onRotate(fingers: int, receiver: Callback&lt;Rotate&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronrotate11)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronrotate11)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1781,11 +1781,11 @@ off(type: 'rotate', fingers: number, receiver?: Callback&lt;Rotate&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offRotate](#inputmonitoroffrotate22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offRotate](#inputmonitoroffrotate23)。
 
-**ArkTS-Dyn起始版本**：11
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1875,11 +1875,11 @@ offRotate(fingers: int, receiver?: Callback&lt;Rotate&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffrotate11)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('rotate')](#inputmonitoroffrotate11)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1968,11 +1968,11 @@ on(type: 'pinch', fingers: number, receiver: Callback&lt;Pinch&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onPinch](#inputmonitoronpinch22-1)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPinch](#inputmonitoronpinch223)。
 
-**ArkTS-Dyn起始版本**：11
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -2019,7 +2019,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onPinch<sup>23+</sup>
+## inputMonitor.onPinch2<sup>23+</sup>
 
 onPinch(fingers: int, receiver: Callback&lt;Pinch&gt;): void
 
@@ -2029,11 +2029,11 @@ onPinch(fingers: int, receiver: Callback&lt;Pinch&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronpinch11)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('pinch')](#inputmonitoronpinch11)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2089,11 +2089,11 @@ off(type: 'pinch', fingers: number, receiver?: Callback&lt;Pinch&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offPinch](#inputmonitoroffpinch22-1)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPinch](#inputmonitoroffpinch223)。
 
-**ArkTS-Dyn起始版本**：11
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -2173,7 +2173,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.offPinch<sup>23+</sup>
+## inputMonitor.offPinch2<sup>23+</sup>
 
 offPinch(fingers: int, receiver?: Callback&lt;Pinch&gt;): void
 
@@ -2183,11 +2183,11 @@ offPinch(fingers: int, receiver?: Callback&lt;Pinch&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffpinch11)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffpinch11)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2268,7 +2268,7 @@ struct Index {
 
 ## inputMonitor.on('threeFingersTap')<sup>11+</sup>
 
-on(type: 'threeFingersTap', receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
+on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersTap&gt;): void
 
 监听全局触控板的三指轻点事件。
 
@@ -2276,11 +2276,11 @@ on(type: 'threeFingersTap', receiver: Callback&lt;[ThreeFingersTap](js-apis-mult
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onThreeFingersTap](#inputmonitoronthreefingerstap22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onThreeFingersTap](#inputmonitoronthreefingerstap23)。
 
-**ArkTS-Dyn起始版本**：11
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -2327,7 +2327,7 @@ struct Index {
 
 ## inputMonitor.onThreeFingersTap<sup>23+</sup>
 
-onThreeFingersTap(receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
+onThreeFingersTap(receiver: Callback&lt;ThreeFingersTap&gt;): void
 
 监听全局触控板的三指轻点事件。
 
@@ -2335,11 +2335,11 @@ onThreeFingersTap(receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinpu
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronthreefingerstap11)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('threeFingersTap')](#inputmonitoronthreefingerstap11)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2387,7 +2387,7 @@ struct Index {
 
 ## inputMonitor.off('threeFingersTap')<sup>11+</sup>
 
-off(type: 'threeFingersTap', receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
+off(type: 'threeFingersTap', receiver?: Callback&lt;ThreeFingersTap&gt;): void
 
 取消监听全局触控板的三指轻点事件。
 
@@ -2395,11 +2395,11 @@ off(type: 'threeFingersTap', receiver?: Callback&lt;[ThreeFingersTap](js-apis-mu
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offThreeFingersTap](#inputmonitoroffthreefingerstap22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offThreeFingersTap](#inputmonitoroffthreefingerstap23)。
 
-**ArkTS-Dyn起始版本**：11
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -2480,7 +2480,7 @@ struct Index {
 
 ## inputMonitor.offThreeFingersTap<sup>23+</sup>
 
-offThreeFingersTap(receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
+offThreeFingersTap(receiver?: Callback&lt;ThreeFingersTap&gt;): void
 
 取消监听全局触控板的三指轻点事件。
 
@@ -2488,11 +2488,11 @@ offThreeFingersTap(receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalin
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffthreefingerstap11)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffthreefingerstap11)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2555,11 +2555,11 @@ on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGesture
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onTouchscreenSwipe](#inputmonitorontouchscreenpinch22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTouchscreenSwipe](#inputMonitoronTouchscreenSwipe23)。
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -2616,11 +2616,11 @@ onTouchscreenSwipe(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitorontouchscreenswipe18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('touchscreenSwipe')](#inputmonitorontouchscreenswipe18)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2679,11 +2679,11 @@ off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestu
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offTouchscreenSwipe](#inputmonitorofftouchscreenswipe22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTouchscreenSwipe](#inputmonitorofftouchscreenswipe23)。
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -2770,11 +2770,11 @@ offTouchscreenSwipe(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitorofftouchscreenswipe18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('touchscreenSwipe')](#inputmonitorofftouchscreenswipe18)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2840,11 +2840,11 @@ on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGesture
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onTouchscreenPinch](#inputmonitorontouchscreenpinch22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTouchscreenPinch](#inputmonitorontouchscreenpinch23)。
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -2901,11 +2901,11 @@ onTouchscreenPinch(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitorontouchscreenpinch18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('touchscreenPinch')](#inputmonitorontouchscreenpinch18)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2964,11 +2964,11 @@ off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestu
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offTouchscreenPinch](#inputmonitorofftouchscreenpinch22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTouchscreenPinch](#inputmonitorofftouchscreenpinch23)。
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -3055,11 +3055,11 @@ offTouchscreenPinch(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitorofftouchscreenpinch18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('touchscreenPinch')](#inputmonitorofftouchscreenpinch18)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3125,11 +3125,11 @@ on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEven
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onKeyPressed](#inputmonitoronkeypressed22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyPressed](#inputmonitoronkeypressed23)。
 
-**ArkTS-Dyn起始版本**：15
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -3186,11 +3186,11 @@ onKeyPressed(keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEvent&gt;): vo
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronkeypressed15)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyPressed')](#inputmonitoronkeypressed15)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3249,11 +3249,11 @@ off(type: 'keyPressed', receiver?: Callback&lt;KeyEvent&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offKeyPressed](#inputmonitoroffkeypressed22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyPressed](#inputmonitoroffkeypressed23)。
 
-**ArkTS-Dyn起始版本**：15
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -3337,11 +3337,11 @@ offKeyPressed(receiver?: Callback&lt;KeyEvent&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffkeypressed15)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyPressed')](#inputmonitoroffkeypressed15)。
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3407,9 +3407,9 @@ ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3483,3 +3483,608 @@ struct Index {
   }
 }
 ```
+
+## inputMonitor.on('swipeInward')<sup>12+</sup>
+
+on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
+
+监听向内滑动事件。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onSwipeInward](#inputmonitoronswipeinward23)。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名   | 类型                                                        | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| type     | string                                                      | 是   | 输入事件类型，取唯一值'SwipeInward'。 |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent.md#swipeinward)&gt;    | 是   | 用于接收上报数据的回调函数。         |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputMonitor.on('swipelnward', (SwipeInward) => {
+              console.info(`Monitor on success ${JSON.stringify(SwipeInward)}`);
+              return false;
+            });
+          } catch (error) {
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.onSwipeInward<sup>23+</sup>
+
+onSwipeInward(receiver: Callback&lt;SwipeInward&gt; ): void
+
+监听向内滑动事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('swipelnward')](#inputmonitoronswipeinward12)。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                        | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent.md#swipeinward)&gt;     | 是   | 用于接收上报数据的回调函数。         |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputMonitor.onSwipeInward((SwipeInward) => {
+              console.info(`Monitor on success ${JSON.stringify(SwipeInward)}`);
+            });
+          } catch (error) {
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.off('swipeInward')<sup>12+</sup>
+
+off(type: 'swipeInward', receiver?: Callback&lt;SwipeInward&gt;): void
+
+取消监听向内滑动事件。使用callback异步回调。
+
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+
+**相关接口：**该接口对应的ArkTS-Sta接口是[offSwipeInward](#inputMonitoroffSwipeInward23)。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 输入事件类型，取值'swipeInward'。                    |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent.md#swipeinward)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import { SwipeInward } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (swipeInward: SwipeInward) => {
+            console.info(`Monitor on success ${JSON.stringify(swipeInward)}`);
+            return false;
+          };
+          try {
+            inputMonitor.on('swipeInward', callback);
+            inputMonitor.off("swipeInward", callback);
+            console.info(`Monitor off success`);
+          } catch (error) {
+            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import { SwipeInward } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (swipeInward: SwipeInward) => {
+            console.info(`Monitor on success ${JSON.stringify(swipeInward)}`);
+            return false;
+          };
+          try {
+            inputMonitor.on('swipeInward', callback);
+            inputMonitor.off("swipeInward");
+            console.info(`Monitor off success`);
+          } catch (error) {
+            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.offSwipeInward<sup>23+</sup>
+
+offSwipeInward(receiver?: Callback<SwipeInward>): void
+
+取消监听向内滑动事件。使用callback异步回调。
+
+**ArkTS模式:** 该接口仅适用于ArkTS-Sta。
+
+**相关接口:** 该接口对应的ArkTS-Dyn接口是[off('swipeInward')](#inputMonitoroffSwipeInward12)
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent.md#swipeinward)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import  * as gestureEvent from '@ohos.multimodalInput.gestureEvent';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (swipeInward: gestureEvent.SwipeInward) => {
+            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            return false;
+          };
+          try {
+            inputMonitor.onSwipeInward(callback);
+            inputMonitor.offSwipeInward(callback);
+            console.info(`Monitor off success`);
+          } catch (error) {
+            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import { FingerprintEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (swipeInward: gestureEvent.SwipeInward) => {
+            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            return false;
+          };
+          try {
+            inputMonitor.onSwipeInward(callback);
+            inputMonitor.offSwipeInward(callback);
+            console.info(`Monitor off success`);
+          } catch (error) {
+            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.on('fingerprint')<sup>12+</sup>
+
+on(type: 'fingerprint', receiver: Callback&lt;FingerprintEvent&gt;): void
+
+监听指纹手势输入事件。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onFingerprint](#inputmonitoronfingerprint23)。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名   | 类型                                                        | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| type     | string                                                      | 是   | 输入事件类型，取唯一值'fingerprint'。 |
+| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt;    | 是   | 用于接收上报数据的回调函数。         |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputMonitor.on('fingerprint', (FingerprintEvent) => {
+              console.info(`Monitor on success ${JSON.stringify(FingerprintEvent)}`);
+              return false;
+            });
+          } catch (error) {
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.onFingerprint<sup>23+</sup>
+
+onFingerprint(receiver: Callback&lt;FingerprintEvent&gt;): void
+
+监听指纹手势输入事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('fingerprint')](#inputmonitoronfingerprint12)。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                        | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt;    | 是   | 用于接收上报数据的回调函数。         |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputMonitor.onFingerprint((FingerprintEvent) => {
+              console.info(`Monitor on success ${JSON.stringify(FingerprintEvent)}`);
+            });
+          } catch (error) {
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.off('fingerprint')<sup>12+</sup>
+
+off(type: 'fingerprint', receiver?: Callback&lt;FingerprintEvent&gt;): void
+
+取消监听指纹手势输入事件。使用callback异步回调。
+
+**ArkTS模式：**该接口仅适用于ArkTS-Dyn。
+
+**相关接口：**该接口对应的ArkTS-Sta接口是[offFingerprint](#inputMonitoroffFingerprint23)。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 输入事件类型，取值'fingerprint'。                    |
+| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import { FingerprintEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (fingerprintEvent: FingerprintEvent) => {
+            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            return false;
+          };
+          try {
+            inputMonitor.on('fingerprint', callback);
+            inputMonitor.off("fingerprint", callback);
+            console.info(`Monitor off success`);
+          } catch (error) {
+            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+          
+        })
+    }
+  }
+}
+```
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import { FingerprintEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (fingerprintEvent: FingerprintEvent) => {
+            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            return false;
+          };
+          try {
+            inputMonitor.on('fingerprint', callback);
+            inputMonitor.off("fingerprint");
+            console.info(`Monitor off success`);
+          } catch (error) {
+            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.offFingerprint<sup>23+</sup>
+
+offFingerprint(receiver?: Callback&lt;FingerprintEvent&gt;): void
+
+取消监听指纹手势输入事件。使用callback异步回调。
+
+**ArkTS模式:** 该接口仅适用于ArkTS-Sta。
+
+**相关接口:** 该接口对应的ArkTS-Dyn接口是[off('fingerprint')](#inputMonitoroffFingerprint12)
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import  * as shortKey from '@ohos.multimodalInput.shortKey';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (fingerprintEvent: shortKey.FingerprintEvent)=> {
+            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            return;
+          };
+          try {
+            inputMonitor.onFingerprint(callback);
+            inputMonitor.offFingerprint();
+            console.info(`Monitor off success`);
+          } catch (error) {
+            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import  * as shortKey from '@ohos.multimodalInput.shortKey';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (fingerprintEvent: shortKey.FingerprintEvent)=> {
+            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            return;
+          };
+          try {
+            inputMonitor.onFingerprint(callback);
+            inputMonitor.offFingerprint();
+            console.info(`Monitor off success`);
+          } catch (error) {
+            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+
