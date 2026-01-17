@@ -64,6 +64,16 @@ namespace A {
   function foo() { } // foo的函数名为"#&A^1*#foo"，其中"^1" 为重名序号。
 }
 ```
+
+``` TypeScript
+namespace A {
+  function bar() { } // bar的函数名为"#&A*#bar"。
+}
+
+namespace A {
+  function foo() { } // foo的函数名为"#&A^1*#foo"，其中"^1" 为重名序号。
+}
+```
 ### 原函数名
 原函数名代表函数在源代码中的名字，匿名函数的名称为空字符串。同样的，如果源码中相同作用域下出现了同名的函数，重名的名称后面会加上重名序号（包括匿名函数）。
 
