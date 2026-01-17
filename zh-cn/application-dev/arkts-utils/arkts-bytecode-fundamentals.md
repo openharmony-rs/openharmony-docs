@@ -127,6 +127,17 @@
 <!-- @[namespaces_Variables_foo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/module_foo.ts) -->  
 <!-- @[namespaces_Variables_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/module_bar.ts) -->  
 <!-- @[namespaces_Variables_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/module_index.ts) -->  
+
+``` TypeScript
+//module_index.ts
+import { a, b } from "./module_foo"
+import * as c from "./module_bar"
+
+export let d: number = 3;
+
+a + b + d;
+c;
+```
 字节码中的相关指令：
 ```assembly
 .function any .func_main_0(any a0, any a1, any a2) {
