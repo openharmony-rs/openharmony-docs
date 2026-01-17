@@ -750,6 +750,14 @@ declare a2 {
 ```
 <!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->
 
+``` TypeScript
+// file.ts
+// 混淆前。
+declare global {
+  var myAge : string
+}
+```
+
 报错内容为SyntaxError: Unexpected token。
 
 **解决方案**：
