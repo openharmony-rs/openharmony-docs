@@ -243,7 +243,18 @@ pointX = 10; pointY = 0;
 **【级别】建议**
 
 **【描述】**
+<!-- @[highlight_brace_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+function foo() { // 函数声明时，左大括号 { 之前加个空格
+  // ...
+}
+// ...
+  bar('attr', { // 左大括号前加个空格
+    age: '1 year',
+    sbreed: 'Bernese Mountain Dog',
+  });
+```
 空格应该突出关键字和重要信息。总体建议如下：
 1.   `if`, `for`, `while`, `switch`等关键字与左括号`(`之间加空格。
 2.   在函数定义和调用时，函数名称与参数列表的左括号`(`之间不加空格。
