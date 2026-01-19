@@ -37,32 +37,23 @@
    // TaskpoolCancel.ets
    import { taskpool } from '@kit.ArkTS';
    import { SendableTest } from '../utils/Sendable';
-   import { SendableTest } from '../utils/Sendable';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { PromptAction } from '@kit.ArkUI';
    import { PromptAction } from '@kit.ArkUI';
    
    @Concurrent
    function cancel(send: SendableTest) {
      // 在多线程中通过任务ID取消任务。
-     // 在多线程中通过任务ID取消任务。
      taskpool.cancel(send.getTaskId());
-     console.info('cancel task finished');
      console.info('cancel task finished');
    }
    
    @Concurrent
    function delayed() {
      console.info('delayed task finished');
-     console.info('delayed task finished');
    }
    
    @Entry
    @Component
-   struct TaskpoolCancel {
-     @State message: string = 'CancelTaskpool';
-     @State returnMessage: string = 'return...';
-     @State promptAction: PromptAction = this.getUIContext().getPromptAction();
    struct TaskpoolCancel {
      @State message: string = 'CancelTaskpool';
      @State returnMessage: string = 'return...';
@@ -73,14 +64,10 @@
          Column() {
            Button(this.message)
              .fontSize(25)
-           Button(this.message)
-             .fontSize(25)
              .fontWeight(FontWeight.Bold)
              .onClick(async () => {
                let task = new taskpool.Task(delayed);
                taskpool.executeDelayed(2000, task).catch((e: BusinessError) => {
-                 console.error(`taskpool execute error, message is: ${e.message}`);
-                 // taskpool execute error, message is: taskpool:: task has been canceled.
                  console.error(`taskpool execute error, message is: ${e.message}`);
                  // taskpool execute error, message is: taskpool:: task has been canceled.
                });
@@ -88,10 +75,7 @@
                taskpool.execute(cancel, send);
                this.returnMessage = 'Taskpool canceled!';
                this.promptAction.showToast({ message: this.returnMessage });
-               this.returnMessage = 'Taskpool canceled!';
-               this.promptAction.showToast({ message: this.returnMessage });
              })
-           // ...
            // ...
          }
          .width('100%')
