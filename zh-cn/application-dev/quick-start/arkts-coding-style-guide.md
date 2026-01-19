@@ -119,6 +119,22 @@ namespace Base64Utils {
 **【正例】**
 <!-- @[lower_Camel_Case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+let msg = 'Hello world';
+
+function sendMsg(msg: string) {
+  // todo send message
+  // ...
+}
+
+let userName = 'Zhangsan';
+
+function findUser(userName: string) {
+  // todo find user by user name
+  // ...
+}
+```
+
 ### 常量名、枚举值名采用全部大写，单词间使用下划线隔开
 
 **【级别】建议**
