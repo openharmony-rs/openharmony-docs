@@ -2030,13 +2030,12 @@ hasRemoteData(): boolean
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-systemPasteboard.hasData((err: BusinessError, data: boolean) => {
-    if (err) {
-        console.error(`Failed to check the PasteData. Cause: ${err.message}`);
-        return;
-    }
-    console.info(`Succeeded in checking the PasteData. Data: ${data}`);
-});
+try {
+    let result: boolean = systemPasteboard.hasRemoteData();
+    console.info(`Succeeded in checking the remote data. Result: ${result}`);
+} catch (err) {
+    console.error('Failed to check the remote data. Cause:' + err.message);
+};
 ```
 
 ### hasData<sup>9+</sup>
