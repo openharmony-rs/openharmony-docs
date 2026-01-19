@@ -65,6 +65,39 @@
 2. 在Index.ets页面同目录下创建4个图书页面，每个页面显示相应的图书信息，并将每个页面的路径注册到`src/main/resources/base/profile/main_pages.json`文件中。
 
    <!-- @[define_book1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book1.ets) -->     
+   
+   ``` TypeScript
+   // Book1.ets
+   @Entry
+   @Component
+   struct Index1 {
+     @State message: string = 'Hello World!';
+   
+     build() {
+       RelativeContainer() {
+         Text('第一本书的内容')
+           .id('first book')
+           .fontSize(20)
+           .padding(10)
+           .fontWeight(FontWeight.Bold)
+           .alignRules({
+             center: { anchor: 'container', align: VerticalAlign.Center },
+             middle: { anchor: 'container', align: HorizontalAlign.Center }
+           })
+         Button('返回')
+           .fontSize(20)
+           .padding(10)
+           .fontWeight(FontWeight.Bold)
+           .position({ x: '50%' })
+           .onClick(() => {
+             this.getUIContext().getRouter().pushUrl({ url: 'pages/GetRecentList' });
+           })
+       }
+       .height('100%')
+       .width('100%')
+     }
+   }
+   ```
 
    <!-- @[define_book2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book2.ets) -->   
    
