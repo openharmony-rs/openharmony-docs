@@ -98,10 +98,12 @@
       onFormEvent(formId: string, message: string): void {
         // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
         hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+    
         class FormDataClass {
           title: string = 'Title Update.'; // 和卡片布局中对应
           detail: string = 'Description update success.'; // 和卡片布局中对应
         }
+    
         // 请根据业务替换为实际刷新的卡片数据
         let formData = new FormDataClass();
         let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
@@ -114,6 +116,7 @@
     
       // ...
     }
+    
     ```
   
   运行效果如下图所示。
