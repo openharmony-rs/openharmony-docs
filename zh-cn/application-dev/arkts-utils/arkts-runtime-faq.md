@@ -14,6 +14,14 @@
 
 <!-- @[test_wordBoundaryInArkRegex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
 
+``` TypeScript
+let str = '\u2642';
+let res = str.replace(/\b/g, '/');
+console.info('res = ' + res);
+// 期望输出: res = ♂。
+// 实际输出: res = /♂/。
+```
+
 规避方案：暂无。
 > **说明：**
 > 
