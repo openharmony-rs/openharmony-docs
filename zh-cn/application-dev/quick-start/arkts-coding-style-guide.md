@@ -503,6 +503,12 @@ ArkTS中，浮点值包含一个小数点，不要求小数点之前或之后必
 
 <!-- @[not_omit_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+const num4 = 0.5;
+const num5 = 2.0;
+const num6 = -0.7;
+```
+
 ### 判断变量是否为`Number.NaN`时必须使用`Number.isNaN()`方法
 
 **【级别】要求**
