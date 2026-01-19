@@ -221,7 +221,7 @@ Example of loading local page files in the sandbox:
 
 ## Loading HTML Rich Text Data
 
-The **Web** component provides the [loadData()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loaddata) API for you to load HTML rich text data. If you need to display only some page fragments, you can use this feature to quickly load the page. To load a large number of HTML files, set **baseUrl** to **data**.
+The **Web** component provides the [loadData()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loaddata) API for you to load HTML rich text data. If you need to display only some page fragments, you can use this feature to quickly load the page. To load a large number of HTML files, set **baseUrl** to **"data"**.
 <!-- @[devs_load_page_fragments_for_quick_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingHTMLRichTextData.ets) -->
 
 ``` TypeScript

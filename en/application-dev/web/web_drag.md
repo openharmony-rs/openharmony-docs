@@ -38,7 +38,7 @@ In most cases, the drag functionality implemented in HTML5 can meet the requirem
 2. In the **onDrop** method, implement simple logic, for example, temporarily storing some key data.
 3. To implement time-consuming tasks, add the application processing logic to the message receiving method on ArkTS.
 
-The **onDrop** method on ArkTS is executed earlier than the event processing method ( **droppable.addEventListener('drop')** in the HTML example) in HTML. If page redirection is performed in the **onDrop** method, the **drop** method in HTML5 cannot be executed correctly, and the unexpected result is generated. Therefore, a bidirectional communication mechanism must be established to notify ArkTS to execute the corresponding service logic after the **drop** method in HTML5 is executed.
+The **onDrop** method on ArkTS is executed earlier than the event processing method (**droppable.addEventListener('drop')** in the HTML example) in HTML5. If page redirection is performed in the **onDrop** method, the **drop** method in HTML5 cannot be executed correctly, and the unexpected result is generated. Therefore, a bidirectional communication mechanism must be established to notify ArkTS to execute the corresponding service logic after the **drop** method in HTML5 is executed.
 
 <!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) -->
 
@@ -234,6 +234,175 @@ struct Index {
         this.webController.setCustomUserAgent(this.webController.getUserAgent() + customUA)
       })
     }
+  }
+}
+```
+
+### How do I disable the Web component drag functionality?
+By default, the **Web** component supports the drag functionality. If the drag functionality is not required, you can disable it by referring to the following example.
+
+The drag functionality can be disabled in any of the following ways:
+
+1. On the web page side, use W3C, CSS, and JS for interception or disabling.
+2. On the application side, use the **runJavascriptExt** API of the **Web** component to inject JS for interception or disabling.
+
+HTML example 1:
+
+<!-- @[W3cForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/resources/rawfile/w3c-forbid.html) -->
+
+``` HTML
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Using the W3C Common Attributes or Methods</title>
+</head>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .normal {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 40px;
+    }
+    .undraggable {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 40px;
+      -webkit-user-drag: none;
+    }
+
+</style>
+<body>
+
+<h2>Use the W3C common attributes or methods to disable the drag functionality.</h2>
+
+<!--1. Explicitly set the draggable attribute to false to disable the drag functionality of the element.-->
+<!--This setting takes effect only for the entire element node, such as img or div, and does not take effect for the selected text in the node.-->
+<div>Set the draggable attribute to disable the drag functionality.</div>
+<img class="normal" draggable="false" src="./any-pic.png"><br>
+
+<!--2. Reference a style class and set -webkit-user-drag to none to disable the drag functionality.-->
+<!--The effective scope is the same as that of method 1.-->
+<div>Set -webkit-user-drag to disable the drag functionality.</div>
+<img class="undraggable" src="./any-pic.png"><br>
+
+<!--3. Listen for the ondragstart event and set preventDefault to disable the drag functionality.-->
+<!--This setting takes effect for all content.-->
+<!--You can expand the listening range of the listener to disable drag in a larger area. For example, implementing listening on the window can disable drag of the entire Web component.-->
+<!--Because the setting takes effect subsequently, the drag operation is partially executed, impacting the menu function.-->
+<div>Set ondragstart to disable the drag functionality.</div>
+<div ondragstart="dragstartHandler(event)">
+    <img class="normal" src="./any-pic.png">
+    <p>
+        This text is used to verify the drag disabling effect of the ondragstart script on the selected text.
+    </p>
+</div>
+
+<script>
+    function dragstartHandler(event) {
+        console.info('forbid drag when drag start');
+        event.preventDefault();
+    }
+</script>
+
+</body>
+</html>
+```
+
+![w3c-forbid-drag](figures/w3c-forbid-drag.gif)
+
+HTML example 2:
+
+<!-- @[RunJsForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/resources/rawfile/runJs-forbid.html) -->
+
+``` HTML
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Using runJavascriptExt to Inject JS</title>
+</head>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .normal {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 40px;
+    }
+</style>
+<body>
+
+<h2>Use runJavascriptExt to inject JS for disabling the drag functionality.</h2>
+
+<div>
+    <img class="normal" src="./any-pic.png">
+    <p>
+        This text is used to verify the drag disabling effect of the JS injected by runJavascriptExt on the selected text.
+    </p>
+</div>
+
+</body>
+</html>
+```
+
+![runJs-forbid-drag](figures/runJs-forbid-drag.gif)
+
+ETS example:
+
+<!-- @[ForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/ForbidDragPage.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index {
+  webViewController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('w3cDemoPage')
+        .onClick(() => {
+          this.webViewController.loadUrl($rawfile('w3c-forbid.html'));
+        })
+      Button('runJsDemoPage')
+        .onClick(() => {
+          this.webViewController.loadUrl($rawfile('runJs-forbid.html'));
+        })
+      Button('runJsForbidDrag')
+        .onClick(() => {
+          try {
+            // Use runJavaScriptExt to execute the script, which adds a dragstart event listener to disable the drag functionality.
+            this.webViewController.runJavaScriptExt(
+              'window.addEventListener(\'dragstart\', (ev) => {\n' +
+                'ev.preventDefault();\n' +
+                '});',
+              (error, result) => {
+                if (error) {
+                  console.error(`run JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`)
+                  return;
+                }
+              });
+          } catch (resError) {
+            console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
+          }
+        })
+      Web({
+        src: $rawfile('w3c-forbid.html'),
+        controller: this.webViewController
+      })
+        .domStorageAccess(true)
+        .javaScriptAccess(true)
+        .fileAccess(true)
+    }
+    .height('100%')
+    .width('100%')
   }
 }
 ```
