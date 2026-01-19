@@ -34,35 +34,34 @@ Provides APIs for symmetric keys.
 
 | Name| Description|
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_CryptoSymKeyGenerator **ctx)](#oh_cryptosymkeygenerator_create) | Creates a symmetric key generator instance based on the given algorithm name.|
-| [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ctx, OH_CryptoSymKey **keyCtx)](#oh_cryptosymkeygenerator_generate) | Randomly generates a symmetric key.|
-| [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx, const Crypto_DataBlob *keyData, OH_CryptoSymKey **keyCtx)](#oh_cryptosymkeygenerator_convert) | Converts binary data into a symmetric key.|
+| [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_CryptoSymKeyGenerator **ctx)](#oh_cryptosymkeygenerator_create) | Creates a symmetric key generator instance based on the given algorithm name.<br> Note: The created resource must be destroyed by calling [OH_CryptoSymKeyGenerator_Destroy](capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_destroy).|
+| [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ctx, OH_CryptoSymKey **keyCtx)](#oh_cryptosymkeygenerator_generate) | Randomly generates a symmetric key.<br> Note: After the use is complete, the memory for storing the **keyCtx** parameter must be destroyed by calling [OH_CryptoSymKey_Destroy](capi-crypto-sym-key-h.md#oh_cryptosymkey_destroy).|
+| [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx, const Crypto_DataBlob *keyData, OH_CryptoSymKey **keyCtx)](#oh_cryptosymkeygenerator_convert) | Converts binary data into a symmetric key.<br> Note: After the use is complete, the memory for storing the **keyCtx** parameter must be destroyed by calling [OH_CryptoSymKey_Destroy](capi-crypto-sym-key-h.md#oh_cryptosymkey_destroy).|
 | [const char *OH_CryptoSymKeyGenerator_GetAlgoName(OH_CryptoSymKeyGenerator *ctx)](#oh_cryptosymkeygenerator_getalgoname) | Obtains the algorithm of a symmetric key generator instance.|
 | [void OH_CryptoSymKeyGenerator_Destroy(OH_CryptoSymKeyGenerator *ctx)](#oh_cryptosymkeygenerator_destroy) | Destroys a symmetric key generator instance.|
 | [const char *OH_CryptoSymKey_GetAlgoName(OH_CryptoSymKey *keyCtx)](#oh_cryptosymkey_getalgoname) | Obtains the algorithm of a symmetric key.|
-| [OH_Crypto_ErrCode OH_CryptoSymKey_GetKeyData(OH_CryptoSymKey *keyCtx, Crypto_DataBlob *out)](#oh_cryptosymkey_getkeydata) | Obtains symmetric key data from a key instance.|
+| [OH_Crypto_ErrCode OH_CryptoSymKey_GetKeyData(OH_CryptoSymKey *keyCtx, Crypto_DataBlob *out)](#oh_cryptosymkey_getkeydata) | Obtains symmetric key data from a key instance.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [void OH_CryptoSymKey_Destroy(OH_CryptoSymKey *keyCtx)](#oh_cryptosymkey_destroy) | Destroys a symmetric key instance.|
 
 ## Function Description
 
 ### OH_CryptoSymKeyGenerator_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_CryptoSymKeyGenerator **ctx)
 ```
 
 **Description**
 
-Creates a symmetric key generator instance based on the given algorithm name.
+Creates a symmetric key generator instance based on the given algorithm name.<br> Note: The created resource must be destroyed by calling [OH_CryptoSymKeyGenerator_Destroy](capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_destroy).
 
 **Since**: 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| const char *algoName | Pointer the algorithm used to create a generator.<br> For example, **'AES256'**, **'AES128'**, and **'SM4'**.|
+| const char *algoName | Pointer the algorithm used to create a generator.<br> For example, **AES256**, **AES128**, and **SM4**.|
 | [OH_CryptoSymKeyGenerator](capi-cryptosymkeyapi-oh-cryptosymkeygenerator.md) **ctx | Double pointer to the symmetric key generator instance created.|
 
 **Returns**
@@ -73,16 +72,15 @@ Creates a symmetric key generator instance based on the given algorithm name.
 
 ### OH_CryptoSymKeyGenerator_Generate()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ctx, OH_CryptoSymKey **keyCtx)
 ```
 
 **Description**
 
-Randomly generates a symmetric key.
+Randomly generates a symmetric key.<br> Note: After the use is complete, the memory for storing the **keyCtx** parameter must be destroyed by calling [OH_CryptoSymKey_Destroy](capi-crypto-sym-key-h.md#oh_cryptosymkey_destroy).
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -99,16 +97,15 @@ Randomly generates a symmetric key.
 
 ### OH_CryptoSymKeyGenerator_Convert()
 
-```
-OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx,const Crypto_DataBlob *keyData, OH_CryptoSymKey **keyCtx)
+```c
+OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx, const Crypto_DataBlob *keyData, OH_CryptoSymKey **keyCtx)
 ```
 
 **Description**
 
-Converts binary data into a symmetric key.
+Converts binary data into a symmetric key.<br> Note: After the use is complete, the memory for storing the **keyCtx** parameter must be destroyed by calling [OH_CryptoSymKey_Destroy](capi-crypto-sym-key-h.md#oh_cryptosymkey_destroy).
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -126,7 +123,7 @@ Converts binary data into a symmetric key.
 
 ### OH_CryptoSymKeyGenerator_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoSymKeyGenerator_GetAlgoName(OH_CryptoSymKeyGenerator *ctx)
 ```
 
@@ -135,7 +132,6 @@ const char *OH_CryptoSymKeyGenerator_GetAlgoName(OH_CryptoSymKeyGenerator *ctx)
 Obtains the algorithm of a symmetric key generator instance.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -151,7 +147,7 @@ Obtains the algorithm of a symmetric key generator instance.
 
 ### OH_CryptoSymKeyGenerator_Destroy()
 
-```
+```c
 void OH_CryptoSymKeyGenerator_Destroy(OH_CryptoSymKeyGenerator *ctx)
 ```
 
@@ -161,7 +157,6 @@ Destroys a symmetric key generator instance.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -170,7 +165,7 @@ Destroys a symmetric key generator instance.
 
 ### OH_CryptoSymKey_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoSymKey_GetAlgoName(OH_CryptoSymKey *keyCtx)
 ```
 
@@ -179,7 +174,6 @@ const char *OH_CryptoSymKey_GetAlgoName(OH_CryptoSymKey *keyCtx)
 Obtains the algorithm of a symmetric key.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -195,16 +189,15 @@ Obtains the algorithm of a symmetric key.
 
 ### OH_CryptoSymKey_GetKeyData()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSymKey_GetKeyData(OH_CryptoSymKey *keyCtx, Crypto_DataBlob *out)
 ```
 
 **Description**
 
-Obtains symmetric key data from a key instance.
+Obtains symmetric key data from a key instance.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -221,7 +214,7 @@ Obtains symmetric key data from a key instance.
 
 ### OH_CryptoSymKey_Destroy()
 
-```
+```c
 void OH_CryptoSymKey_Destroy(OH_CryptoSymKey *keyCtx)
 ```
 
@@ -230,7 +223,6 @@ void OH_CryptoSymKey_Destroy(OH_CryptoSymKey *keyCtx)
 Destroys a symmetric key instance.
 
 **Since**: 12
-
 
 **Parameters**
 

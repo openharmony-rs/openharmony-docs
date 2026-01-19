@@ -1237,6 +1237,7 @@ Provides the custom drawing information.
 
 ## StyledStringKey
 
+Sets the style key of the styled string.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name    | Value| Description                          |

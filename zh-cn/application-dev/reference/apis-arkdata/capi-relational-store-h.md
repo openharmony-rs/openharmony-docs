@@ -370,7 +370,7 @@ OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) | 返回一个指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)实例的指针。 |
+| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) | 返回一个指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)实例的指针。<br>使用完成后，必须通过[OH_Rdb_DestroyConfig](#oh_rdb_destroyconfig)接口释放内存。 |
 
 **参考：**
 
@@ -1823,7 +1823,7 @@ Rdb_TableDetails *OH_Rdb_GetTableDetails(Rdb_ProgressDetails *progress, int32_t 
 
 | 参数项 | 描述                                                         |
 | -- |------------------------------------------------------------|
-| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) *progress | 表示指向[OH_ProgressDetails](capi-rdb-rdb-progressdetails.md)实例的指针。                           |
+| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) *progress | 指向[Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md)实例的指针。                           |
 | int32_t version | 表示当前[Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md)的版本。 |
 
 **返回：**

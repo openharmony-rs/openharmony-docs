@@ -1140,7 +1140,7 @@ getTypingStyle(): RichEditorTextStyle
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [RichEditorTextStyle](#richeditortextstyle) | 用户预设样式。 |
+| [RichEditorTextStyle](#richeditortextstyle) | 用户预设样式。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### setTypingStyle<sup>11+</sup>
 
@@ -1246,7 +1246,7 @@ getLayoutManager(): LayoutManager
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [LayoutManager](ts-text-common.md#layoutmanager12) | 布局管理器对象。 |
+| [LayoutManager](ts-text-common.md#layoutmanager12) | 布局管理器对象。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### getPreviewText<sup>12+</sup>
 
@@ -1262,7 +1262,7 @@ getPreviewText(): PreviewText
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [PreviewText](ts-text-common.md#previewtext12) | 预上屏信息。 |
+| [PreviewText](ts-text-common.md#previewtext12) | 预上屏信息。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### getCaretRect<sup>18+</sup>
 
@@ -1464,7 +1464,7 @@ getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult | RichEditorT
 
 | 类型                                       | 说明           |
 | ---------------------------------------- | ------------ |
-| Array<[RichEditorImageSpanResult](#richeditorimagespanresult) \| [RichEditorTextSpanResult](#richeditortextspanresult)> | 文本和图片Span信息。 |
+| Array<[RichEditorImageSpanResult](#richeditorimagespanresult) \| [RichEditorTextSpanResult](#richeditortextspanresult)> | 文本和图片Span信息。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### deleteSpans
 
@@ -1502,7 +1502,7 @@ getParagraphs(value?: RichEditorRange): Array\<RichEditorParagraphResult>
 
 | 类型                                       | 说明       |
 | ---------------------------------------- | -------- |
-| Array\<[RichEditorParagraphResult](#richeditorparagraphresult11)> | 选中段落的信息。 |
+| Array\<[RichEditorParagraphResult](#richeditorparagraphresult11)> | 选中段落的信息。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### getSelection<sup>11+</sup>
 
@@ -1518,7 +1518,7 @@ getSelection(): RichEditorSelection
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [RichEditorSelection](#richeditorselection) | 选中内容信息。 |
+| [RichEditorSelection](#richeditorselection) | 选中内容信息。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### fromStyledString<sup>12+</sup>
 
@@ -1605,7 +1605,7 @@ getSelection(): RichEditorRange
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [RichEditorRange](#richeditorrange) | 选中区域范围。 |
+| [RichEditorRange](#richeditorrange) | 选中区域范围。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### setStyledString<sup>12+</sup>
 
@@ -1642,7 +1642,7 @@ getStyledString(): MutableStyledString
 
 | 类型    | 说明                          |
 | ------- | ----------------------------- |
-| [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) | 富文本组件显示的属性字符串 |
+| [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) | 富文本组件显示的属性字符串。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### onContentChanged<sup>12+</sup>
 
@@ -4411,8 +4411,8 @@ struct RichEditorDemo {
         .width("100%")
         .border({ width: 1, radius: 5 })
         .key('RichEditor')
-        .caretColor(this.color)//光标颜色
-        .selectedBackgroundColor(this.color)//选中背景色
+        .caretColor(this.color)// 光标颜色
+        .selectedBackgroundColor(this.color)// 选中背景色
         .margin({ top: 50 })
     }
     .width('100%')
@@ -4851,7 +4851,7 @@ struct SoftKeyboardEnterTypeExample {
         .enterKeyType(EnterKeyType.Search)
         .onSubmit((enterKey: EnterKeyType, event: SubmitEvent) => {
           console.info("trigger richeditor onsubmit" + enterKey);
-          this.controller.addTextSpan(" type["+ enterKey +"] triggerred")
+          this.controller.addTextSpan(" type["+ enterKey +"] triggered")
           event.keepEditableState()
         })
     }.height("100%").justifyContent(FlexAlign.Center)
@@ -5122,11 +5122,11 @@ struct Index {
           })
         }
         Row({space:2}){
-          //将属性字符串转换成span信息
+          // 将属性字符串转换成span信息
           Button("调用fromStyledString").onClick(() => {
             this.controller1.addTextSpan("调用fromStyledString：" +JSON.stringify(this.controller1.fromStyledString(this.mutableStyledString)))
           })
-          //将给定范围的组件内容转换成属性字符串
+          // 将给定范围的组件内容转换成属性字符串
           Button("调用toStyledString").onClick(() => {
             this.controller.setStyledString(this.controller1.toStyledString({start:0,end:13}))
           })
@@ -6080,7 +6080,6 @@ struct Demo32 {
   }
 }
 ```
-<!--RP2--><!--RP2End-->
 
 ### 示例33（设置监听输入法绑定事件）
 从API version 22开始，该示例通过[onWillAttachIME](#onwillattachime22)事件监听输入法绑定事件。

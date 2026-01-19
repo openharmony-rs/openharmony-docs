@@ -74,14 +74,14 @@ Touch **Report** to access the report list. Touch a report to view its details.
 
 ### Collection Prerequisites
 
-- Switching to Shell
+- Switch to shell.
 
   ```shell
   C:\Users\issusser>hdc shell
   $
   ```
 
-- Starting and Viewing the daemon Process
+- Start and view the daemon process.
 
   ```shell
   C:\Users\issusser>hdc shell
@@ -94,7 +94,7 @@ Touch **Report** to access the report list. Touch a report to view its details.
   $
   ```
 
-- Viewing the Help Information
+- View the help information.
 
   ```shell
   $ SP_daemon --help
@@ -532,6 +532,8 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
   >**NOTE**
   >
   >- Screenshots are obtained every 2 seconds.
+  >
+  >-  
   >
   >- When the collection is complete, you can view the screenshots in **data/local/tmp/capture**.
   >
@@ -1005,8 +1007,8 @@ If the collection result is saved in a CSV file, perform the following steps to 
     | ChildsharedClean        | Shared unwritten pages of the child process.     |Unit: KB|
     | sharedDirty             | Shared rewritten pages of the process.     |Unit: KB|
     | ChildsharedDirty        | Shared rewritten pages of the child process.     |Unit: KB|
-    | priviateClean           | Private unwritten pages of the process.     |Unit: KB|
-    | ChildpriviateClean      | Private unwritten pages of the child process.     |Unit: KB|
+    | privateClean           | Private unwritten pages of the process.     |Unit: KB|
+    | ChildprivateClean      | Private unwritten pages of the child process.     |Unit: KB|
     | privateDirty            | Private rewritten pages of the process.     |Unit: KB|
     | ChildprivateDirty       | Private rewritten pages of the child process.     |Unit: KB|
     | swapTotal               | Total swap memory of the process.         |Unit: KB|

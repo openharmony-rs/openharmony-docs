@@ -9,9 +9,7 @@
 
 ## Overview
 
-The file declares the MediaKeySession APIs for DRM operations.
-
-The APIs can be used to generate media key requests, process responses to media key requests, listen for events, obtain content protection levels, check media key status, and remove media keys.
+The file declares the MediaKeySession APIs for DRM operations.  <br> The APIs can be used to generate media key requests, process responses to media key requests, listen for events, obtain content protection levels, check media key status, and remove media keys.
 
 **File to include**: <multimedia/drm_framework/native_mediakeysession.h>
 
@@ -101,7 +99,7 @@ Defines the callback used to listen for media key change events.
 | Name| Description|
 | -- | -- |
 | [DRM_KeysInfo](capi-drm-drm-keysinfo.md) *keysInfo | Pointer to the media key information.|
-|  bool newKeysAvailable | Whether the new keys are available.|
+|  bool newKeysAvailable | Whether the new keys are available. **true** if available, **false** otherwise. |
 
 **Returns**
 
@@ -402,7 +400,7 @@ Checks whether secure decoding is required.
 | -- | -- |
 | [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance.|
 | const char *mimeType | Pointer to the MIME type. The supported MIME types depend on the DRM solution. Example types are video/avc and video/hev.|
-| bool *status | Pointer to the result indicating whether secure decoding is required.|
+| bool *status | Pointer to the result indicating whether secure decoding is required. The value **true** means that secure decoding is required, and the value **false** means the opposite.|
 
 **Returns**
 

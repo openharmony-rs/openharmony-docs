@@ -2308,7 +2308,7 @@ setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean):
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -2555,7 +2555,7 @@ setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boolean): Prom
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found.  |
 | 17700003 | The specified abilityInfo is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -2793,7 +2793,7 @@ isApplicationEnabled(bundleName: string, appIndex: number): Promise\<boolean>
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -3030,7 +3030,7 @@ isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise\<boolean>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found.  |
 | 17700003 | The specified abilityName is not found. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -4712,7 +4712,7 @@ getRecoverableApplicationInfo(callback: AsyncCallback\<Array\<RecoverableApplica
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<Array\<[RecoverableApplicationInfo](js-apis-bundleManager-recoverableApplicationInfo-sys.md)\>\> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的所有可恢复的预置应用信息。 |
+| callback | AsyncCallback\<Array\<[RecoverableApplicationInfo](js-apis-recoverableApplicationInfo-sys.md)\>\> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的所有可恢复的预置应用信息。 |
 
 **错误码：**
 
@@ -4760,7 +4760,7 @@ getRecoverableApplicationInfo(): Promise\<Array\<RecoverableApplicationInfo\>\>
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise\<Array\<[RecoverableApplicationInfo](js-apis-bundleManager-recoverableApplicationInfo-sys.md)\>\> | Promise对象，返回所有可恢复的预置应用信息。 |
+| Promise\<Array\<[RecoverableApplicationInfo](js-apis-recoverableApplicationInfo-sys.md)\>\> | Promise对象，返回所有可恢复的预置应用信息。 |
 
 **错误码：**
 
@@ -5644,7 +5644,7 @@ getAppCloneIdentityBySandboxDataDir(sandboxDataDir: string): AppCloneIdentity
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//主应用
+// 主应用
 let dataDir = 'com.example.myapplication';
 try {
   let res = bundleManager.getAppCloneIdentityBySandboxDataDir(dataDir);
@@ -5654,7 +5654,7 @@ try {
   console.error('getAppCloneIdentityBySandboxDataDir failed. Cause = ' + message);
 }
 
-//分身应用
+// 分身应用
 let cloneDataDir = '+clone-1+com.example.myapplication';
 try {
   let res = bundleManager.getAppCloneIdentityBySandboxDataDir(cloneDataDir);
@@ -5664,7 +5664,7 @@ try {
   console.error('getAppCloneIdentityBySandboxDataDir failed. Cause = ' + message);
 }
 
-//元服务
+// 元服务
 let atomicDataDir = '+auid-20000000+com.example.myapplication';
 try {
   let res = bundleManager.getAppCloneIdentityBySandboxDataDir(atomicDataDir);
@@ -5709,7 +5709,7 @@ getSandboxDataDir(bundleName: string, appIndex: number): string
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
-| 17700061 | The appIndex is invalid. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -6302,7 +6302,7 @@ recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): P
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
 | 17700004 | The specified user ID is not found.     |
-| 17700061 | AppIndex not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -6364,7 +6364,7 @@ removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Pr
 | 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
 | 17700004 | The specified user ID is not found.     |
-| 17700061 | AppIndex not in the valid range. |
+| 17700061 | AppIndex not in valid range. |
 
 **示例：**
 
@@ -6459,7 +6459,7 @@ type RecoverableApplicationInfo = _RecoverableApplicationInfo
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_RecoverableApplicationInfo](js-apis-bundleManager-recoverableApplicationInfo-sys.md#recoverableapplicationinfo) |预置应用被卸载后可以恢复的预置应用信息。 |
+| [_RecoverableApplicationInfo](js-apis-recoverableApplicationInfo-sys.md#recoverableapplicationinfo) |预置应用被卸载后可以恢复的预置应用信息。 |
 
 ## PreinstalledApplicationInfo<sup>12+</sup>
 

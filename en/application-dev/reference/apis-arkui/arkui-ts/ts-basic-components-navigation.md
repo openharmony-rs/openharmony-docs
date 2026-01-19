@@ -723,6 +723,7 @@ Defines the callback of the custom transition animation.
 ## NavPathStack<sup>10+</sup>
 
 A navigation controller that manages all child pages in the **Navigation** component with a stack data structure and provides stack operation methods for controlling page transitions.
+
 Starting from API version 12, **NavPathStack** is inheritable. Objects of a derived class can replace those of the base class. For details, see [Example 10](#example-10-defining-a-derived-class-of-navpathstack).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -1539,7 +1540,7 @@ Creates a **NavPathInfo** object.
 | name  | string  | Yes   | Name of the navigation destination page. The name matches the name in the following route tables:<br>1. Custom route table, which is passed via the [navDestination](#navdestination10) method.<br>2. System route table, which is set by **name** in **routerMap**. For details, please refer to [Example 2: Using NavPathStack APIs](#example-2-using-navpathstack-apis).|
 | param | unknown | Yes   | Detailed parameters for the custom **NavDestination** page. The **unknown** type can be replaced with a user-defined type.|
 | onPop<sup>11+</sup> | Callback\<[PopInfo](#popinfo11)> | No| Callback returned when [pop](#pop11), [popToName](#poptoname11), or [popToIndex](#poptoindex11) is called on the navigation destination page. It is triggered only when the **result** parameter is set in [pop](#pop11), [popToName](#poptoname11), or [popToIndex](#poptoindex11).|
-| isEntry<sup>12+</sup> | boolean | No| Whether the navigation destination page is the entry page.<br>**true**: yes; **false**: no<br>Default value: **false**.<br>The value of this parameter is reviewed or reset under the following conditions:<br>- When a global return event is triggered on the current navigation destination page.<br> - When the application is switched to the background.<br>**NOTE**<br>The navigation destination page serving as an entry does not respond to the in-app global back events; instead, it directly triggers the global back event between applications.|
+| isEntry<sup>12+</sup> | boolean | No| Whether the navigation destination page is the entry page.<br>**true**: yes; **false**: no<br>Default value: **false**<br>The value of this parameter is reviewed or reset under the following conditions:<br>- When a global return event is triggered on the current navigation destination page.<br> - When the application is switched to the background.<br>**NOTE**<br>The navigation destination page serving as an entry does not respond to the in-app global back events; instead, it directly triggers the global back event between applications.|
 
 ### Attributes
 

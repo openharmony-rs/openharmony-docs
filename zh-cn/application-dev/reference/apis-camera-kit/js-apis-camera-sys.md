@@ -591,7 +591,7 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
 | isCameraOccluded                 | boolean              |  是  | 否 |遮挡状态，true为遮挡状态，false为不遮挡状态。        |
 
-## CameraOutputCapability<sup>10+</sup>
+## CameraOutputCapability
 
 相机输出能力项。
 
@@ -2267,7 +2267,7 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | 是  | metadata流类型信息，通过[getSupportedOutputCapability](arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)接口获取。 |
 
 **错误码：**
 
@@ -2308,7 +2308,7 @@ removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | 是  | metadata流类型信息，通过[getSupportedOutputCapability](arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)接口获取。 |
 
 **错误码：**
 
@@ -3210,11 +3210,11 @@ function getColorEffect(session: camera.PhotoSessionForSys): camera.ColorEffectT
 | SOFT                  | 2    | 柔和的色彩效果。  |
 | BLACK_WHITE<sup>12+</sup>    | 3    | 黑白色彩效果。  |
 
-## Portrait<sup>11+</sup>
+## PortraitQuery<sup>12+</sup>
 
-人像类，用于设置人像参数。
+人像查询类，用于获取人像参数。
 
-### getSupportedPortraitEffects<sup>10+</sup>
+### getSupportedPortraitEffects
 
 getSupportedPortraitEffects(): Array\<PortraitEffect\>
 
@@ -3248,11 +3248,17 @@ function getSupportedPortraitEffects(portraitPhotoSession: camera.PortraitPhotoS
 }
 ```
 
+## Portrait<sup>11+</sup>
+
+Portrait继承自[PortraitQuery](#portraitquery12)。
+
+人像类，用于设置人像参数。
+
 ### setPortraitEffect
 
 setPortraitEffect(effect: PortraitEffect): void
 
-设置人像虚化效果。需要先检查设备是否支持人像虚化模式，可以通过[getSupportedPortraitEffects](#getsupportedportraiteffects10)获取当前设备所支持的PortraitEffects。
+设置人像虚化效果。需要先检查设备是否支持人像虚化模式，可以通过[getSupportedPortraitEffects](#getsupportedportraiteffects)获取当前设备所支持的PortraitEffects。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3262,7 +3268,7 @@ setPortraitEffect(effect: PortraitEffect): void
 
 | 参数名         | 类型                        | 必填 | 说明                      |
 | ------------ |----------------------------- | -- | -------------------------- |
-| effect | [PortraitEffect](#portraiteffect)  | 是 | 人像虚化效果，通过[getSupportedPortraitEffects](#getsupportedportraiteffects10)接口获取。   |
+| effect | [PortraitEffect](#portraiteffect)  | 是 | 人像虚化效果，通过[getSupportedPortraitEffects](#getsupportedportraiteffects)接口获取。   |
 
 **错误码：**
 
@@ -3291,7 +3297,7 @@ function setPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession, po
 }
 ```
 
-### getPortraitEffect<sup>10+</sup>
+### getPortraitEffect
 
 getPortraitEffect(): PortraitEffect
 
@@ -4073,7 +4079,7 @@ function callback(focusTrackingInfo: camera.FocusTrackingInfo): void {
                                        height ${focusTrackingInfo.trackingRegion.height}`);
 }
 
-function registerFocusTrakingInfoChanged(session: camera.VideoSessionForSys): void {
+function registerFocusTrackingInfoChanged(session: camera.VideoSessionForSys): void {
   session.on('focusTrackingInfoAvailable', callback);
 }
 ```
@@ -4106,7 +4112,7 @@ off(type: 'focusTrackingInfoAvailable', callback?: Callback\<FocusTrackingInfo\>
 **示例**：
 
 ```ts
-function unregisterFocusTrakingInfoChanged(session: camera.VideoSessionForSys): void {
+function unregisterFocusTrackingInfoChanged(session: camera.VideoSessionForSys): void {
   session.off('focusTrackingInfoAvailable');
 }
 ```

@@ -132,8 +132,8 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name   | Type                 | Read-Only| Optional| Description                                                        |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv      | [DataBlob](#datablob) | No  | No  | IV, which is of 7 bytes.                             |
-| aad     | [DataBlob](#datablob) | No  | No  | AAD, which is of 8 bytes.                            |
+| iv      | [DataBlob](#datablob) | No  | No  | IV for encryption and decryption. Only 7 bytes are supported. If the length of the input **iv** parameter exceeds 7 bytes, the excess part will be truncated.                             |
+| aad     | [DataBlob](#datablob) | No  | No  | AAD for encryption and decryption. The AAD value contains 1 to 2,048 bytes.                           |
 | authTag | [DataBlob](#datablob) | No  | No  | Authentication tag, which is of 12 bytes.<br>When CCM mode is used for encryption, you need to extract the last 12 bytes from the [DataBlob](#datablob) returned by [doFinal()](#dofinal) or [doFinalSync()](#dofinalsync12) and use them as **authTag** in [CcmParamsSpec](#ccmparamsspec) for [init()](#init-1) or [initSync()](#initsync12).|
 
 > **NOTE**
@@ -735,7 +735,7 @@ Defines the child class of [KdfSpec](#kdfspec11). It is a parameter for HKDF key
 >
 > **key** is the original key material entered by the user. **info** and **salt** are optional. An empty string can be passed in based on the mode.
 >
-> For example, if the mode is **EXTRACT_AND_EXPAND**, all parameter values must be passed in. If the mode is **EXTRACT_ONLY**, **info** can be empty. When **HKDFspec** is constructed, pass in **null** to **info**.
+> For example, if the mode is **EXTRACT_AND_EXPAND**, all parameter values must be passed in. If the mode is **EXTRACT_ONLY**, **info** can be empty. When **HKDFSpec** is constructed, pass in **null** to **info**.
 >
 > The default mode is **EXTRACT_AND_EXPAND**. The value **HKDF|SHA256|EXTRACT_AND_EXPAND** is equivalent to **HKDF|SHA256**.
 
@@ -1929,7 +1929,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name    | Type                   | Mandatory| Description                          |
 | -------- | ----------------------- | ---- | ------------------------------ |
-| callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the key pair obtained.|
+| callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -1972,7 +1972,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
+| Promise\<[KeyPair](#keypair)> | Promise used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -2061,7 +2061,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | -------- | ----------- | ---- | ------------------------------ |
 | pubKey   | [DataBlob](#datablob) \| null<sup>10+</sup>    | Yes  | Public key material to convert. If no public key is required, set this parameter to **null**. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.       |
 | priKey   | [DataBlob](#datablob) \| null<sup>10+</sup>   | Yes  | Private key material to convert. If no private key is required, set this parameter to **null**. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.       |
-| callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the key pair obtained.|
+| callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -2115,7 +2115,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
+| Promise\<[KeyPair](#keypair)> | Promise used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -2228,13 +2228,13 @@ Converts data into an asymmetric key pair. This API uses a promise to return the
 | Name  | Type   | Mandatory| Description            |
 | ------ | -------- | ---- | ---------------- |
 | pubKey | string \| null | Yes | Public key material to convert. If no public key is required, set this parameter to **null**.|
-| priKey | string \| null | Yes | Private key material to convert. If no private key is required, set this parameter to **null**. <br>**NOTE**: **pubKey** and **priKey** cannot be **null** at the same time.|
+| priKey | string \| null | Yes | Private key material to convert. If no private key is required, set this parameter to **null**.<br>Note: The public key and private key materials cannot be both null or empty strings.|
 
 **Return value**
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
+| Promise\<[KeyPair](#keypair)> | Promise used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -2306,14 +2306,14 @@ Converts data into an asymmetric key pair. Encrypted private keys are supported.
 | Name  | Type   | Mandatory| Description            |
 | ------ | -------- | ---- | ---------------- |
 | pubKey | string \| null | Yes | Public key material to convert. If no public key is required, set this parameter to **null**.|
-| priKey | string \| null | Yes | Private key material to convert. If no private key is required, set this parameter to **null**. <br>**NOTE**: **pubKey** and **priKey** cannot be **null** at the same time.|
+| priKey | string \| null | Yes | Private key material to convert. If no private key is required, set this parameter to **null**.<br>Note: The public key and private key materials cannot be both null or empty strings.|
 | password | string | Yes| Password used to decrypt the private key.|
 
 **Return value**
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
+| Promise\<[KeyPair](#keypair)> | Promise used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -2379,7 +2379,7 @@ Converts data into an asymmetric key pair. This API returns the result synchrono
 | Name  | Type   | Mandatory| Description            |
 | ------ | -------- | ---- | ---------------- |
 | pubKey | string \| null| Yes  | Public key material to convert. If no public key is required, set this parameter to **null**.|
-| priKey | string \| null| Yes  | Private key material. If the private key does not need to be converted, you can pass in **null**. <br>**NOTE**: **pubKey** and **priKey** cannot be **null** at the same time.|
+| priKey | string \| null| Yes  | Private key material. If the private key does not need to be converted, set this parameter to **null**.<br>Note: The public key and private key materials cannot be both null or empty strings.|
 
 **Return value**
 
@@ -2616,7 +2616,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name    | Type                   | Mandatory| Description                          |
 | -------- | ----------------------- | ---- | ------------------------------ |
-| callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the key pair obtained.|
+| callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -2690,7 +2690,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type             | Description                             |
 | ----------------- | --------------------------------- |
-| Promise\<[KeyPair](#keypair)> | Promise used to return the key pair generated.|
+| Promise\<[KeyPair](#keypair)> | Promise used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -2840,7 +2840,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name    | Type                   | Mandatory| Description                          |
 | -------- | ----------------------- | ---- | ------------------------------ |
-| callback | AsyncCallback\<[PriKey](#prikey)> | Yes  | Callback used to return the private key obtained.|
+| callback | AsyncCallback\<[PriKey](#prikey)> | Yes  | Callback used to return the private pair generated.|
 
 **Error codes**
 
@@ -3063,7 +3063,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name    | Type                   | Mandatory| Description                          |
 | -------- | ----------------------- | ---- | ------------------------------ |
-| callback | AsyncCallback\<[PubKey](#pubkey)> | Yes  | Callback used to return the public key obtained.|
+| callback | AsyncCallback\<[PubKey](#pubkey)> | Yes  | Callback used to return the public key generated.|
 
 **Error codes**
 
@@ -3499,7 +3499,7 @@ Generates SM2 ciphertext in ASN.1 format.
 | Name| Type  | Mandatory| Description                                            |
 | ------ | ------ | ---- | ------------------------------------------------ |
 | spec   | [SM2CipherTextSpec](#sm2ciphertextspec12) | Yes  | SM2 ciphertext parameters.|
-| mode  | string | No  | Order of the SM2 parameters in the ciphertext. Currently, only C1C3C2 is supported. |
+| mode  | string | No  | Order of the SM2 parameters in the ciphertext. Currently, only C1C3C2 is supported. If this parameter is left empty or is an empty string, the default value is used.|
 
 **Return value**
 
@@ -3552,7 +3552,7 @@ Obtains SM2 ciphertext parameters from the SM2 ciphertext in ASN.1 format.
 | Name| Type  | Mandatory| Description                                            |
 | ------ | ------ | ---- | ------------------------------------------------ |
 | cipherText     | [DataBlob](#datablob)                 | Yes  | SM2 ciphertext in ASN.1 format.|
-| mode  | string | No  | Order of the SM2 parameters in the ciphertext. Currently, only C1C3C2 is supported. |
+| mode  | string | No  | Order of the SM2 parameters in the ciphertext. Currently, only C1C3C2 is supported. If this parameter is left empty or set to an empty string, the default value is used.|
 
 **Return value**
 
@@ -5140,7 +5140,7 @@ This API can be called only after the [Verify](#verify) instance is initialized 
 
 > **NOTE**
 >
-> You can call **updateSync** multiple times or do not use **updateSync** (call [verifySync](#verifysync12)after [initSync](#initsync12-2)), depending on the data volume.<br>
+> You can call **updateSync** multiple times or do not use **updateSync** (call [verifySync](#verifysync12) after [initSync](#initsync12-2)), depending on the data volume.<br>
 > The amount of the data to be passed in by **updateSync** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to call **updateSync** multiple times to pass in the data by segment. This prevents too much memory from being requested at a time.<br>
 > For details about the sample code for calling **updateSync** multiple times in signature verification, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md). The operations of other algorithms are similar.<br>
 > If the DSA algorithm is used for signature verification and the digest algorithm is **NoHash**, **updateSync** is not supported. If **updateSync** is called in this case, **ERR_CRYPTO_OPERATION** will be returned.

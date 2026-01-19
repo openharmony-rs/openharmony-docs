@@ -10,8 +10,8 @@
 - [分布式设备管理](devicemanager-guidelines.md)
 - 应用跨设备连接管理<!--abilityconnect-distributed-->
   - [跨设备连接UIAbility开发指南](abilityconnectmanager-guidelines.md)
-  - [跨设备连接UIAbility开发指南（仅对系统应用开放）](abilityconnectmanager-guidelines-sys.md)
   <!--Del-->
+  - [跨设备连接UIAbility开发指南（仅对系统应用开放）](abilityconnectmanager-guidelines-sys.md)
   - [DistributedExtensionAbility开发指南（仅对系统应用开放）](distributedextension-guidelines-sys.md)
   <!--DelEnd-->
   - [增强连接开发指南](linkEnhance_development-guide.md)

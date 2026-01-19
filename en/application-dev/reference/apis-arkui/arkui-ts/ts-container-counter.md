@@ -70,7 +70,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 ### onInc
 
-onInc(event: VoidCallback)
+onInc(event:&nbsp;VoidCallback)
 
 Invoked when the value increases.
 
@@ -88,7 +88,7 @@ Invoked when the value increases.
 
 ### onDec
 
-onDec(event: VoidCallback)
+onDec(event:&nbsp;VoidCallback)
 
 Invoked when the value decreases.
 
@@ -114,20 +114,36 @@ This example shows the basic usage of the **Counter** component. Users can touch
 @Entry
 @Component
 struct CounterExample {
-  @State value: number = 0;
+  @State value1: number = 0;
+  @State value2: number = 0;
 
   build() {
-    Column() {
+    Column({ space: 50 }) {
       Counter() {
-        Text(this.value.toString())
-      }.margin(100)
+        Text(this.value1.toString())
+      }
       .onInc(() => {
-        this.value++;
+        this.value1++;
       })
       .onDec(() => {
-        this.value--;
+        this.value1--;
       })
-    }.width("100%")
+
+      Counter() {
+        Text(this.value2.toString())
+      }
+      .onInc(() => {
+        this.value2++;
+      })
+      .onDec(() => {
+        this.value2--;
+      })
+      .enableInc(true)
+      .enableDec(false)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```

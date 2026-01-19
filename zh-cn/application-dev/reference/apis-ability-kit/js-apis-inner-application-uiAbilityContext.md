@@ -677,7 +677,7 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 
 2. （可选）如果需要在停止UIAbility时，清理任务中心的相关任务（即不保留最近任务列表中的快照），需要在[module.json5](../../quick-start/module-configuration-file.md)配置文件中将removeMissionAfterTerminate字段取值配置为true。
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -754,7 +754,7 @@ terminateSelf(): Promise&lt;void&gt;
 
 2. （可选）如果需要在停止UIAbility时，清理任务中心的相关任务（即不保留最近任务列表中的快照），需要在[module.json5](../../quick-start/module-configuration-file.md)配置文件中将removeMissionAfterTerminate字段取值配置为true。
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -1884,7 +1884,7 @@ showAbility(): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -1984,7 +1984,7 @@ hideAbility(): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -2539,6 +2539,8 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
 **参数：**
 
 | 参数名   | 类型                                     | 必填 | 说明                     |
@@ -2624,6 +2626,8 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 **原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -2829,7 +2833,7 @@ setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise&lt;void&gt;
 
 **系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数**：
 
@@ -2938,7 +2942,7 @@ revokeDelegator(): Promise&lt;void&gt;
     >
     >  - 当UIAbility是通过[startAbilityByCall](#startabilitybycall)启动时，系统会忽略在[module.json5](../../quick-start/module-configuration-file.md)配置文件标签中配置的abilitySrcEntryDelegator和abilityStageSrcEntryDelegator。
     >  - abilityStageSrcEntryDelegator指定的ModuleName不能与当前ModuleName相同。
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -3029,7 +3033,7 @@ startAppServiceExtensionAbility(want: Want): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3109,7 +3113,7 @@ stopAppServiceExtensionAbility(want: Want): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3185,7 +3189,7 @@ connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3268,7 +3272,7 @@ disconnectAppServiceExtensionAbility(connection: number): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3567,6 +3571,8 @@ setMissionWindowIcon(windowIcon: image.PixelMap): Promise\<void>
 > setMissionWindowIcon<!--Del-->、[setMissionIcon](./js-apis-inner-application-uiAbilityContext-sys.md#setmissionicon)<!--DelEnd-->和[setAbilityInstanceInfo](./js-apis-inner-application-uiAbilityContext.md#setabilityinstanceinfo15)之间不存在调用优先级关系。当多个接口被依次调用时，后一次调用的接口所设置的图标信息将覆盖之前调用接口所设置的内容，最终生效的图标以最后一次调用的接口为准。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 

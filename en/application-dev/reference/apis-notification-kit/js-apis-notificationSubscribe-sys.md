@@ -573,7 +573,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let hashCode: string = 'hashCode';
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCode, reason).then(() => {
-	console.info("remove success");
+  console.info("remove success");
 }).catch((err: BusinessError) => {
   console.error(`remove fail: ${JSON.stringify(err)}`);
 });
@@ -823,7 +823,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // If no application is specified, notifications of all applications are deleted.
 notificationSubscribe.removeAll().then(() => {
-	console.info("removeAll success");
+  console.info("removeAll success");
 }).catch((err: BusinessError) => {
   console.error(`removeAll fail: ${JSON.stringify(err)}`);
 });
@@ -924,7 +924,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: number = 1;
 notificationSubscribe.removeAll(userId).then(() => {
-	console.info("removeAll success");
+  console.info("removeAll success");
 }).catch((err: BusinessError) => {
   console.error(`removeAll fail: ${JSON.stringify(err)}`);
 });
@@ -976,9 +976,11 @@ let hashcode: string = 'hashcode';
 let operationInfo: notificationSubscribe.OperationInfo = {
   actionName: "actionName",
   userInput: "userInput",
+  operationType: 1,
+  buttonIndex: 1,
 };
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
-	console.info("distributeOperation success");
+  console.info("distributeOperation success");
 }).catch((err: BusinessError) => {
   console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
 });
@@ -1016,3 +1018,5 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 | ----- | ------ | --- | ---- | -------- |
 | actionName    | string | No| Yes| Operation button displayed in the notification. The value must be the same as that of **title** in [NotificationActionButton](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1).  |
 | userInput | string | No| Yes| User input, used to apply quick reply across devices. The value must be the same as that of **inputKey** in [NotificationUserInput](js-apis-inner-notification-notificationUserInput.md#notificationuserinput-1).|
+| operationType<sup>20+</sup> | number | No| Yes| Operation type.<br> - **0**: The user taps the non-live view.<br> - **1**: The user taps the non-live view button.<br> - **32**: The user taps the live view.<br> - **33**: The user taps the live view auxiliary area.|
+| buttonIndex<sup>20+</sup> | number | No| Yes| Index of the non-live view button or live view auxiliary area that the user taps.|

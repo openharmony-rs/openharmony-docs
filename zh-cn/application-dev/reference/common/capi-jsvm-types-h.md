@@ -293,6 +293,7 @@ enum JSVM_MemoryPressureLevel
 | JSVM_MEMORY_PRESSURE_LEVEL_NONE | 无压力。 |
 | JSVM_MEMORY_PRESSURE_LEVEL_MODERATE | 中等压力。 |
 | JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL | 临界压力。 |
+| JSVM_MEMORY_PRESSURE_LEVEL_LOW_MEMORY | 通知系统内存不足。<br>警告：这对垃圾回收性能有很强的负面影响。<br>建议：使用其他值来影响垃圾回收计划。<br>**起始版本：** 22  |
 
 ### JSVM_CompileMode
 
