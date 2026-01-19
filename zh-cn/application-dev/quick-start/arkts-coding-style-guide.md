@@ -147,6 +147,15 @@ function findUser(userName: string) {
 
 <!-- @[Uppercase_Underline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+enum UserType1 {
+  TEACHER = 0,
+  STUDENT = 1
+};
+
+const MAX_USER_SIZE = 10000;
+```
+
 ### 避免使用否定的布尔变量名，布尔型的局部变量或方法需加上表达是非意义的前缀
 
 **【级别】建议**
