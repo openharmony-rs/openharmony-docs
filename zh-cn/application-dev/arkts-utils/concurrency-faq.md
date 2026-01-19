@@ -520,6 +520,28 @@ TaskPool的任务执行函数Concurrent函数只能使用局部变量和函数�
    <!-- @[define_sendableTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->    
 
    <!-- @[save_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SaveResult.ets) -->    
+   
+   ``` TypeScript
+   // Index.ets
+   import { taskpool } from '@kit.ArkTS'
+   import { BusinessError } from '@kit.BasicServicesKit'
+   import { TestClass } from './Sendable'
+   
+   @Concurrent
+   function createTask(a: number): string {
+     return `test${a}`;
+   }
+   function executeTask() {
+     let testObject: TestClass = new TestClass();
+     let task: taskpool.Task = new taskpool.Task(createTask, 1)
+     taskpool.execute(task).then((res) => {
+       testObject.setName(res as string);
+       console.info('execute task success, name is ' + testObject.getName());
+     }).catch((e: BusinessError) => {
+       console.error('execute task error: ' + e.message);
+     })
+   }
+   ```
 
 ## Sendable类在子线程无法加载
 
