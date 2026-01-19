@@ -77,6 +77,13 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
 3. 调用fastConvertToJSObject函数并打印结果。
 
    <!-- @[xmlChange_console](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
+   let conv: convertxml.ConvertXML = new convertxml.ConvertXML();
+   let result: object = conv.fastConvertToJSObject(xml, options);
+   let strRes: string = JSON.stringify(result); // 将js对象转换为json字符串，用于显式输出
+   console.info(strRes);
+   ```
 
    输出结果如下所示：
 
