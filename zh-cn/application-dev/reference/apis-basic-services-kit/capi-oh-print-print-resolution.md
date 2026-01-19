@@ -1,4 +1,4 @@
-# Print_PageSize
+# Print_Resolution
  <!--Kit: Basic Services Kit-->   
  <!--Subsystem: Print-->  
  <!--Owner: @guoshengbang-->  
@@ -7,27 +7,16 @@
  <!--Adviser: @fang-jinxu-->
 
 ```c
-typedef struct {...} Print_PageSize
+typedef struct {...} Print_Resolution
 ```
 
 ## 概述
 
-表示纸张尺寸信息。
+表示以 dpi 为单位的打印分辨率。
 
 **起始版本：** 12
 
 **相关模块：** [OH_Print](capi-oh-print.md)
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
-
-## 汇总
-
-### 成员变量
-
-| 名称            | 描述       |
-| --------------- | ---------- |
-| char *id        | 纸张 ID。  |
-| char *name      | 纸张名称。 |
-| uint32_t width  | 纸张宽度。 |
-| uint32_t height | 纸张高度。 |
 
