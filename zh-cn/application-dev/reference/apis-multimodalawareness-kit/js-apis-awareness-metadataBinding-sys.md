@@ -8,7 +8,6 @@
 > - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。	
 > - 本模块为系统接口。	
 
-
 ## 导入模块	
 ```ts	
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';	
@@ -20,13 +19,13 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.PixelMap>
 
 在图片中加入信息。
 
-**系统能力**：SystemCapability.MultimodalAwareness.metadataBinding	
+**系统能力：** SystemCapability.MultimodalAwareness.metadataBinding	
 
-**系统API**：此接口为系统接口	
+**系统API：** 此接口为系统接口	
 
-**ArkTS-Dyn起始版本**：18	
+**ArkTS-Dyn起始版本：** 18	
 
-**ArkTS-Sta起始版本**：20	
+**ArkTS-Sta起始版本：** 23
 
 **参数**：	
 
@@ -84,13 +83,13 @@ function decodeImage(encodedImage: image.PixelMap): Promise\<string\>
 
 解析图片中携带的信息。	
 
-**系统能力**：SystemCapability.MultimodalAwareness.metadataBinding	
+**系统能力：** SystemCapability.MultimodalAwareness.metadataBinding	
 
-**系统API**：此接口为系统接口	
+**系统API：** 此接口为系统接口	
 
-**ArkTS-Dyn起始版本**：18	
+**ArkTS-Dyn起始版本：** 18	
 
-**ArkTS-Sta起始版本**：20	
+**ArkTS-Sta起始版本：** 23
 
 **参数**：  	
 
@@ -148,17 +147,17 @@ if (encodeImage) {
 
 ## metadataBinding.notifyMetadataBindingEvent	
 
-notifyMetadataBindingEvent(metadata: string): void;	
+notifyMetadataBindingEvent(metadata: string): void
 
 推送待嵌入的信息给调用编码接口的应用或服务。	
 
-**系统能力**：SystemCapability.MultimodalAwareness.metadataBinding	
+**系统能力：** SystemCapability.MultimodalAwareness.metadataBinding	
 
-**系统API**：此接口为系统接口	
+**系统API：** 此接口为系统接口	
 
-**ArkTS-Dyn起始版本**：18	
+**ArkTS-Dyn起始版本：** 18	
 
-**ArkTS-Sta起始版本**：20	
+**ArkTS-Sta起始版本：** 23
 
 **参数**：  	
 
