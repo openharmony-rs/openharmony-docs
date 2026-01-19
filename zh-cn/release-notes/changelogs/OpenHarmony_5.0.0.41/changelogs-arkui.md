@@ -232,9 +232,9 @@ borderImage中的边框外延距离（outset属性）在无需绘制的区域不
 
 该变更为不兼容变更。
 
-变更前：CanvasRenderingContext2D和OffscreenCanvasRenderingContext2D的globalCompositeOperation属性与fillStyle属性设置的pattern样式在绘制文本时不生效；fillStyle属性设置带透明度颜色并设置globalAlpha属性时，fillText绘制文本的透明度为globalAlpha属性值。
+变更前：CanvasRenderingContext2D和OffscreenCanvasRenderingContext2D的globalCompositeOperation属性在使用fillText或strokeText绘制文本时不生效；fillStyle属性设置的pattern样式在使用fillText绘制文本时不生效；fillStyle属性设置带透明度颜色并设置globalAlpha属性时，使用fillText绘制文本的透明度为globalAlpha属性值。
 
-变更后：CanvasRenderingContext2D和OffscreenCanvasRenderingContext2D的globalCompositeOperation属性与fillStyle属性设置的pattern样式在绘制文本时生效；fillStyle属性设置带透明度颜色并设置globalAlpha属性时，fillText绘制文本的透明度为颜色透明度×globalAlpha。
+变更后：CanvasRenderingContext2D和OffscreenCanvasRenderingContext2D的globalCompositeOperation属性在使用fillText或strokeText绘制文本时生效；fillStyle属性设置的pattern样式在使用fillText绘制文本时生效；fillStyle属性设置带透明度颜色并设置globalAlpha属性时，使用fillText绘制文本的透明度为颜色透明度×globalAlpha。
 
 | 使用场景                                   | 变更前                                   | 变更后                                   |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
