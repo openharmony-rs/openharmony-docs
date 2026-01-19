@@ -491,6 +491,15 @@ ArkTS中，浮点值包含一个小数点，不要求小数点之前或之后必
 **【反例】**
 
 <!-- @[array_methods_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+const numbers = [1, 2, 3, 4, 5];
+// 依赖已有数组来创建新的数组时，通过for遍历，生成一个新数组
+const increasedByOne1: number[] = [];
+for (let i = 0; i < numbers.length; i++) {
+  increasedByOne1.push(numbers[i] + 1);
+}
+```
 <!-- @[finally_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
