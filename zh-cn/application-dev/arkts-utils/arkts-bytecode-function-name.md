@@ -140,6 +140,10 @@ function foo() {}; // 原函数名为"foo"。
  
 1. 如果匿名函数被赋值给一个变量，该变量名即为函数名。例如：
 <!-- @[special_function_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+let a = () => {} // 原函数名为"a"。
+```
 2. 如果匿名函数在对象字面量中定义并且被赋值给了一个字面量属性：
 * 如果属性名中不包含`\`和`.`，则其原函数名即为该属性名。
 <!-- @[special_without_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/test2.ts) -->  
