@@ -234,6 +234,49 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
 4. ArkTS侧在UI主线程中定义Sendable实例对象并传递给TaskPool子线程，子线程处理完数据后返回UI主线程，UI主线程可以继续访问该Sendable实例对象。
 
    <!-- @[load_nativeSendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   // Index.ets
+   import { MyObject } from 'libentry.so';
+   import { taskpool } from '@kit.ArkTS';
+   
+   @Concurrent
+   async function sum(object: MyObject) {
+     object.value = 2000;
+     let num = object.plusOne();
+     console.info('taskpool thread num is ' + num); // 日志输出：taskpool thread num is 2001。
+     return num;
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = '使用Sendable对象进行线程间通信';
+   
+     build() {
+       Row() {
+         Column() {
+           Button(this.message)
+             .fontSize($r('app.float.page_text_font_size'))
+             .fontWeight(FontWeight.Bold)
+             .onClick( async () => {
+               let object : MyObject = new MyObject(0);
+               object.value = 1023;
+               let num = object.plusOne();
+               console.info('host thread num1 is ' + num); // 日志输出：host thread num1 is 1024。
+               let task = new taskpool.Task(sum, object);
+               let result = await taskpool.execute(task);
+               console.info('host thread result is ' + result); // 日志输出：host thread result is 2001。
+               console.info('host thread num2 is ' + object.value); // 日志输出：host thread num2 is 2001。
+               this.message = 'host thread num2 is ' + object.value;
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
 
 5. 修改与Index.d.ets同目录下的配置文件oh-package.json5，配置如下：
 
