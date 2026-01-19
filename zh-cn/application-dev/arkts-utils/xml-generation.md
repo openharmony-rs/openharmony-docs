@@ -87,6 +87,13 @@ XML模块的API接口可以参考[@ohos.xml](../reference/apis-arkts/js-apis-xml
 4. 使用Uint8Array操作ArrayBuffer，并调用TextDecoder对Uint8Array解码后输出。
 
    <!-- @[xmlSerializer_console](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlSerializer.ets) -->
+   
+   ``` TypeScript
+   let uint8Array: Uint8Array = new Uint8Array(arrayBuffer); // 使用Uint8Array读取arrayBuffer的数据
+   let textDecoder: util.TextDecoder = util.TextDecoder.create(); // 调用util模块的TextDecoder类
+   let result: string = textDecoder.decodeToString(uint8Array); // 对uint8Array解码
+   console.info(result);
+   ```
 
    输出结果如下：
 
