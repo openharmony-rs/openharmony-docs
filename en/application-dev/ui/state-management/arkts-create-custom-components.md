@@ -72,7 +72,7 @@ To fully understand the preceding example, a knowledge of the following concepts
 
 - [Rules for Custom Component Parameters](#rules-for-custom-component-parameters)
 
-- [build()](#build)
+- [The build Function](#the-build-function)
 
 - [Universal Style of a Custom Component](#universal-style-of-a-custom-component)
 
@@ -89,7 +89,7 @@ The definition of a custom component must start with the \@Component struct foll
 
 ### \@Component
 
-The \@Component decorator can decorate only the structs declared by the **struct** keyword. When being decorated by \@Component, a struct has the componentization capability. You must implement the **build** function for it to describe the UI. Each struct can be decorated by only one \@Component. \@Component can accept an optional parameter of the Boolean type.
+The \@Component decorator decorates only the structs declared by the **struct** keyword. The decorated **struct** has the componentization capability and needs to implement the build method to describe the UI. One struct can be decorated by only one \@Component. \@Component can accept an optional parameter of the Boolean type.
 
   > **NOTE**
   >
@@ -238,7 +238,7 @@ The @Entry decorator marks a custom component as the entry point of a page. A si
 
 ### \@Reusable
 
-The \@Reusable decorator enables a custom component to be reusable. For details, see [\@Reusable Decorator: Reusing Components](./arkts-reusable.md#use-scenarios).
+The \@Reusable decorator enables a custom component to be reusable. For details, see [\@Reusable Decorator: Reusing Components](./arkts-reusable.md#use-scenario).
 
   > **NOTE**
   >
@@ -280,7 +280,10 @@ struct MyComponent {
   private color: Color = Color.Blue;
 
   build() {
-    // ···
+    Column() {
+      Text(`${this.countDownFrom}`)
+        .backgroundColor(this.color)
+    }
   }
 }
 
@@ -363,7 +366,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   struct ChildComponent {
     build() {
       // Exactly one root component is required, and it is not necessarily a container component.
-      // Replace $r('app.media.startIcon') with the resource file you use.
+      // Replace $r('app.media.startIcon') with the actual resource file.
       Image($r('app.media.startIcon'))
     }
   }
@@ -429,7 +432,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   
     build() {
       Column() {
-        // Prefer: Call an @Builder decorated method.
+        // Prefer: Call a @Builder decorated method.
         this.doSomeRender()
         // Prefer: Pass the return value of a TS method as the parameter.
         Text(this.calcTextValue())
@@ -502,7 +505,8 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   }
   ```
 
-- Directly changing a state variable is not allowed. The following example should be avoided. For details, see [Changing State Variables in build() Is Forbidden](./arkts-state.md#changing-state-variables-in-build-is-forbidden).
+
+- Directly changing a state variable is not allowed. The following example should be avoided.
 
   ```ts
   @Component
@@ -528,16 +532,16 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
     }
   }
   ```
-
+  
   In ArkUI state management, UI re-render is driven by state.
 
-  ![en-us_image_0000001651365257](figures/en-us_image_0000001651365257.png)
+  ![zh-cn_image_0000001651365257](figures/zh-cn_image_0000001651365257.png)
 
   Therefore, do not change any state variable in the **build()** or \@Builder decorated method of a custom component. Otherwise, loop rendering may result. The impact of **Text('${this.count++}')** varies depending on the update mode:
 
   - Full update (API version 8 and earlier): ArkUI may enter an infinite re-rendering loop because each render of the **Text** component modifies the application state, triggering another render cycle. When **this.columnColor** changes, the entire **build** function is executed. As a result, the text bound to Text(`${this.count++}`) also changes. Each time Text(`${this.count++}`) is re-rendered, the **this.count** state variable is updated, initiating another **build** execution and resulting in an infinite loop.
   - Minimal update (API version 9 and later): Changing **this.columnColor** updates only the **Column** component, not the **Text** component. The entire **Text** component is updated only when **this.textColor** changes. During the update, all attribute functions of the component are executed, causing the value of Text(`${this.count++}`) to increment. Currently, UI updates occur at the component level. If any attribute of a component changes, the entire component is updated. Therefore, the update chain follows this pattern: **this.textColor** = **Color.Pink** -> **Text** re-render -> **this.count++** -> **Text** re-render. Note that this implementation causes the **Text** component to render twice during initial rendering, which negatively affects performance.
-
+  
   The behavior of changing the application state in the **build** function may be more covert than that in the preceding example. The following are some examples:
 
   - Changing the state variable within the \@Builder, \@Extend, or \@Styles decorated method
@@ -554,8 +558,9 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
       // ...
     })
     ```
+  
     <!-- @[filter_New_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ForEachFilter.ets) -->
-    
+  
     ``` TypeScript
     // Prefer: Call filter before sort() to return a new array. In this way, sort() does not change this.arr.
     ForEach(this.arr.filter((item, index) => index >= 2).sort(),
@@ -563,7 +568,8 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
         // ...
       });
     ```
-
+  
+  To address this issue, see FAQs [appfreeze Due to State Variable Changes in the build Function](./arkts-state-management-faq-inner-component.md#appfreeze-due-to-state-variable-changes-in-the-build-function)
 
 ## Universal Style of a Custom Component
 
@@ -599,10 +605,10 @@ struct MyComponent {
 
 ## Constraints
 
-### V1 custom components do not support static code blocks.
+### V1 Custom Components Do Not Support Static Code Blocks
 
 Static code blocks are used to initialize static attributes.
-- When you write static code blocks in a custom component decorated with \@Component or \@CustomDialog, the code will not be executed.
+- When you write static code blocks in a custom component decorated with \@Component or \@CustomDialog, the code will not be executed. From API version 22, the verification of static code blocks is added, and a compilation warning is displayed, indicating that the static code block does not take effect.
 
   <!-- @[Static_code_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV1.ets) -->
   
@@ -614,7 +620,7 @@ Static code blocks are used to initialize static attributes.
     static {
       this.a = 'hello world';
     }
-  // ···
+    // ...
   }
   ```
 
