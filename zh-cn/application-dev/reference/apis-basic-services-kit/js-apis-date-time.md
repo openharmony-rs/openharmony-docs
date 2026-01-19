@@ -260,8 +260,8 @@ try {
 }
 ```
 
-## systemDateTime.getRealActiveTime<sup>(deprecated)</sup>
 
+## systemDateTime.getRealActiveTime<sup>(deprecated)</sup>
 getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 
 获取自系统启动以来经过的时间，不包括深度睡眠时间，使用Promise异步回调。
@@ -532,7 +532,7 @@ getDate(callback: AsyncCallback&lt;Date&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[new Date()](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)替代，new Date()返回Date实例对象。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[如何将时间格式的字符串string转换为Date对象](../../faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)中的`new Date()`方法替代，`new Date()`返回`Date`实例对象。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -577,7 +577,7 @@ getDate(): Promise&lt;Date&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[new Date()](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)替代，new Date()返回Date实例对象。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[如何将时间格式的字符串string转换为Date对象](../../faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)中的`new Date()`方法替代，`new Date()`返回`Date`实例对象。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -757,7 +757,7 @@ getAutoTimeStatus(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                    |
 |-------|-------------------------------------------------------------------------------------------------------------|

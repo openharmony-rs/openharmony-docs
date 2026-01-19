@@ -76,6 +76,7 @@ The [universal events](ts-component-general-events.md) are supported.
 
 ## Example
 The **RemoteWindow** component needs to receive the **WindowAnimationTarget** object from the **WindowAnimationController** object set by [windowAnimationManager](../js-apis-windowAnimationManager-sys.md). You can create a **RemoteWindowExample.ets** file as an example to encapsulate the **RemoteWindow** component and the passed **WindowAnimationTarget** object.
+
 The **RemoteWindow** component can be used only in the system home screen application. Therefore, you can place the **RemoteWindowExample** component in the **build** function of the **EntryView.ets** page of the home screen application, compile the application, and push the application installation package to the device.
 
 ```ts

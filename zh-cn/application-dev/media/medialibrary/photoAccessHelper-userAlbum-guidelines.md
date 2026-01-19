@@ -380,10 +380,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('succeed to remove ' + photoAsset.displayName + ' from ' + album.albumName);
     albumFetchResult.close();
     photoFetchResult.close();
-    // ...
+    return true;
   } catch (err) {
     console.error('removeAssets failed with err: ' + err);
-    // ...
+    return false;
   }
 }
 ```

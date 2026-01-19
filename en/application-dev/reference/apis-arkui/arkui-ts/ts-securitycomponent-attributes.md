@@ -269,7 +269,7 @@ Sets the background color of the security component.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [ResourceColor](ts-types.md#resourcecolor) |Yes|Background color of the security component. If the alpha value of the upper 8 bits of the background color of the security component is less than 0x1a (for example, 0x1800ff00), the system will forcibly adjust this alpha value to 0xff.<br>Default value: **$r('sys.color.icon_emphasize')**.|
+| value | [ResourceColor](ts-types.md#resourcecolor) |Yes|Background color of the security component. If the alpha value of the upper eight bits of the background color of the security component is less than 0x1a (for example, 0x1800ff00), the system will forcibly adjust this alpha value to 0xff.<br>Default value: **$r('sys.color.icon_emphasize')**.|
 
 **Return value**
 
@@ -303,7 +303,7 @@ Sets the border style of the security component.
 
 borderWidth(value: Dimension): T
 
-Sets the border width of the security component.
+Sets the border width of a secure control.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -313,7 +313,7 @@ Sets the border width of the security component.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) |Yes|Border width of the security component.<br>By default, the border width is not set.|
+| value | [Dimension](ts-types.md#dimension10) |Yes|Border width of a secure control.<br>By default, the border width is not set.|
 
 **Return value**
 
@@ -325,7 +325,7 @@ Sets the border width of the security component.
 
 borderColor(value: ResourceColor): T
 
-Sets the border color of the security component.
+Sets the border color of a secure control.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -335,7 +335,7 @@ Sets the border color of the security component.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [ResourceColor](ts-types.md#resourcecolor) |Yes|Border color of the security component.<br>By default, the border color is not set.|
+| value | [ResourceColor](ts-types.md#resourcecolor) |Yes|Border color of a secure control.<br>By default, the border color is not set.|
 
 **Return value**
 
@@ -369,7 +369,7 @@ Sets the radius of the rounded border corners of the security component.
 
 borderRadius(radius: Dimension | BorderRadiuses): T
 
-Sets the radius of the border corners for the security component. You can set the radius for each of the four corners individually.
+Sets the border radius of a secure control. The radius of each corner can be set separately.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -401,7 +401,7 @@ Sets the padding of the security component.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) |Yes|Padding of the security component.<br>Default value: 8 vp for the top and bottom paddings and 16 vp for the left and right paddings.|
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) |Yes|Padding of the security component.<br>Default value: 8 vp for the top and bottom paddings and 16 vp for the left and right paddings.<br>Note: This parameter does not support percentage string values. If a percentage string is set, the corresponding padding value is 0.|
 
 **Return value**
 
@@ -445,7 +445,7 @@ Sets the space between the icon and text in the security component.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) |Yes|Space between the icon and text in the security component. Percentage strings are not supported. Since API version 14, if a negative value is assigned, the default value is used instead.<br>Default value: **4vp**.|
+| value | [Dimension](ts-types.md#dimension10) |Yes|Space between the icon and text in the security component.<br>Default value: **4vp**.<br>Note: This parameter does not support percentage string values. If a percentage string is set, the spacing between the icon and text is 0. Since API version 14, negative values are treated as the default value.|
 
 **Return value**
 
@@ -501,7 +501,7 @@ Sets the height of the security component. By default, the security component au
 
 size(value: SizeOptions): T
 
-Sets the size of the security component. By default, the security component automatically adapts its size to the content.
+Sets the width and height. By default, the width and height are automatically adapted based on the element content.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -523,7 +523,7 @@ Sets the size of the security component. By default, the security component auto
 
 constraintSize(value: ConstraintSizeOptions): T
 
-Sets the size constraints of the component during component layout.
+Sets the constraint size. The size range is restricted during component layout.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -533,7 +533,7 @@ Sets the size constraints of the component during component layout.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) |Yes|Size constraints of the component during component layout. **constraintSize** takes precedence over **width** and **height**. For details about the value, see [Impact of constraintSize on width/height](ts-universal-attributes-size.md#constraintsize).<br>Default value:<br>{<br>minWidth: 0,<br>maxWidth: Infinity,<br>minHeight: 0,<br>maxHeight: Infinity<br>}.|
+| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) |Yes|Size constraints of the component during component layout. **constraintSize** takes precedence over **width** and **height**. For details about the value, see [Impact of constraintSize on width/height](ts-universal-attributes-size.md#constraintsize).<br>Default value:<br>{<br>minWidth:&nbsp;0,<br>maxWidth:&nbsp;Infinity,<br>minHeight:&nbsp;0,<br>maxHeight:&nbsp;Infinity<br>}.|
 
 **Return value**
 
@@ -555,7 +555,7 @@ Sets the alignment rules in the relative container. This API is valid only when 
 
 | Name| Type                                       | Mandatory| Description                    |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| alignRule | [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9) | Yes  | Alignment rule in the relative container.|
+| alignRule | [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9)| Yes  | Alignment rule in the relative container.|
 
 **Return value**
 
@@ -634,7 +634,7 @@ Sets the parameters of the chain in which the component is the head. This parame
 
 minFontScale(scale: number | Resource): T
 
-Sets the minimum font scale factor for text.
+Sets the minimum font size reduction ratio of the text.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -644,7 +644,7 @@ Sets the minimum font scale factor for text.
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | Yes  | Minimum font scale factor for text.<br>Value range: [0, 1].<br>**NOTE**<br>If the value is less than 0, it will be handled as 0, meaning no limit on scaling down. If the value is greater than 1, it will be handled as 1, meaning the scaling down will not take effect. Values outside the range are considered invalid and will not take effect by default.|
+| scale  | number \| [Resource](ts-types.md#resource) | Yes  | Minimum font size reduction ratio of the text.<br>Value range: [0, 1].<br>**NOTE**<br>If the value is less than 0, it will be handled as 0, meaning no limit on scaling down. If the value is greater than 1, it will be handled as 1, meaning the scaling down will not take effect. Values outside the range are considered invalid and will not take effect by default.|
 
 **Return value**
 
@@ -656,7 +656,7 @@ Sets the minimum font scale factor for text.
 
 maxFontScale(scale: number | Resource): T
 
-Sets the maximum font scale factor for text.
+Sets the maximum font size increase ratio of the text.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -666,7 +666,7 @@ Sets the maximum font scale factor for text.
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | Yes  | Maximum font scale factor for text.<br>Value range: [1, +∞).<br>**NOTE**<br>A value less than 1 is handled as **1**. Abnormal values are ineffective by default.|
+| scale  | number \| [Resource](ts-types.md#resource) | Yes  | Maximum font size of the text.<br>Value range: [1, +∞).<br>**NOTE**<br>A value less than 1 is handled as **1**. Abnormal values are ineffective by default.|
 
 **Return value**
 
@@ -691,7 +691,7 @@ Sets the minimum font size.
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| minSize  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Minimum font size.|
+| minSize  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Minimum font size.|
 
 **Return value**
 
@@ -705,7 +705,7 @@ maxFontSize(maxSize: number | string | Resource): T
 
 Sets the maximum font size.
 - When used in conjunction with [minFontSize](#minfontsize18) and [maxLines](#maxlines18), or in combination with layout size constraints, this attribute enables font size adaptation. Using this attribute alone will not take effect.
-- When font size adaptation is enabled, the **fontSize** settings do not take effect.
+- When the adaptive font size takes effect, the setting of fontSize does not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -715,7 +715,7 @@ Sets the maximum font size.
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| maxSize  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Maximum font size.|
+| maxSize  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Maximum font size.|
 
 **Return value**
 
@@ -803,6 +803,28 @@ Sets whether the security component is interactive.
 | -------- | -------- |
 | T | Attributes of the security component.|
 
+## focusBox<sup>22+</sup>
+
+focusBox(style: FocusBoxStyle): T
+
+Sets the style of the system focus box for security components.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| style  | [FocusBoxStyle](ts-universal-attributes-focus.md#focusboxstyle12) | Yes  | Style of the system focus box for security components.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Attributes of the security component.|
+
 
 
 ## SecurityComponentLayoutDirection
@@ -850,7 +872,7 @@ The button type affects how the settings for the [borderRadius](ts-securitycompo
 
 ### Example 1
 
-This example shows how to create a **SaveButton** component and set its security component attributes.
+Set the basic attributes of SecurityComponent to generate a control.
 
 ```ts
 @Entry
@@ -859,7 +881,7 @@ struct Index {
   build() {
     Row() {
       Column({ space: 5 }) {
-        // Create a SaveButton component and set its security component attributes.
+        //Generate a control and set its SecurityComponent attribute.
         SaveButton()
           .fontSize(35)
           .fontColor(Color.White)
@@ -902,7 +924,7 @@ struct Index {
 
 ### Example 2
 
-This example demonstrates how to implement a layout using containers and components as anchors.
+Use the container and components in the container as anchors for layout.
 
 ```ts
 @Entry
@@ -970,9 +992,11 @@ struct Index {
 }
 ```
 
-![SaveBotton_alignRules_1.png](figures/SaveBotton_alignRules_1.png)
+![SaveButton_alignRules_1.png](figures/SaveButton_alignRules_1.png)
 
 ### Example 3
+
+The text height of the security control is adaptive.
 
 ```ts
 @Entry
@@ -1099,7 +1123,7 @@ struct Index {
             Column() {
               Column({ space: 10 }) {
                 Row() {
-                  Text('No need to adjust the text automatically')
+                  Text('No need to adjust the text size.')
                 }.width('90%')
 
                 // The text can be completely displayed in the current layout without adjustment.
@@ -1196,10 +1220,10 @@ struct Index {
             Column() {
               Column({ space: 10 }) {
                 Row() {
-                  Text('No need to adjust the layout')
+                  Text('No need to adjust the text size.')
                 }.width('90%')
 
-                //The text can be completely displayed without adjusting the layout. The text does not need to be adjusted adaptively.
+                // The text can be completely displayed in the current layout without adjustment.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1220,7 +1244,7 @@ struct Index {
                   Text('Do not change the layout constraint. Reduce the font size first.')
                 }.width('90%')
 
-                //The text cannot be completely displayed in the current layout. The fontSize is reduced first. After the fontSize is reduced, the text can be displayed in one line.
+                //The text cannot be completely displayed in the current layout. Decrease the font size first. If the text can be displayed in one line after the font size is decreased, the font size is decreased.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1305,6 +1329,71 @@ struct Index {
         }.width('100%')
       }.width('100%').margin({ top: 10, left: 10, right: 10 })
     }
+  }
+}
+```
+
+
+### Example 4
+
+This example demonstrates how to set the style of the system focus box for security components.
+
+```ts
+import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column({ space: 30 }) {
+        Column({ space: 15 }) {
+          Text ('Default secure control with focusBox not set')
+          SaveButton()
+        }
+
+        Column({ space: 15 }) {
+          Text ('Black focus box closely attached to the secure control')
+          SaveButton()
+            .focusBox({
+              margin: new LengthMetrics(0),
+              strokeColor: ColorMetrics.rgba(0, 0, 0),
+            })
+        }
+
+        Column({ space: 15 }) {
+          Text ('Large red focus box')
+          SaveButton()
+            .focusBox({
+              margin: new LengthMetrics(10),
+              strokeColor: ColorMetrics.rgba(255, 0, 0),
+              strokeWidth: LengthMetrics.px(10)
+            })
+        }
+
+        Column({ space: 15 }) {
+          Text ('Rectangular secure control')
+          SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
+            .focusBox({
+              margin: new LengthMetrics(10),
+              strokeColor: ColorMetrics.rgba(255, 0, 0),
+              strokeWidth: LengthMetrics.px(10)
+            })
+        }
+
+        Column({ space: 15 }) {
+          Text ('Circular security control')
+          SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Circle })
+            .focusBox({
+              margin: new LengthMetrics(10),
+              strokeColor: ColorMetrics.rgba(255, 0, 0),
+              strokeWidth: LengthMetrics.px(10)
+            })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
   }
 }
 ```
