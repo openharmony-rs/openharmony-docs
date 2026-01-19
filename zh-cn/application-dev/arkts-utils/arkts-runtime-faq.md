@@ -73,6 +73,14 @@ console.info('u.lastIndex = ' + u.lastIndex);
 
 <!-- @[test_beforeRegexHyphenInCharacterClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
 
+``` TypeScript
+let str = 'a-b';
+let reg = /[+-\s]/;
+console.info('reg.exec(str) = ' + reg.exec(str));
+// 期望输出: reg.exec(str) = -。
+// 实际输出: reg.exec(str) = null。
+```
+
 规避方案：使用转义后的"-"。
 
 <!-- @[test_afterRegexHyphenInCharacterClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
