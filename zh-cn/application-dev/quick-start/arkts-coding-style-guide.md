@@ -188,6 +188,14 @@ namespace Base64Utils {
 
 <!-- @[use_braces_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+let condition = true;
+if (condition)
+  console.info('success');
+for (let idx = 0; idx < 5; ++idx)
+  console.info('', idx);
+```
+
 **【正例】**
 
 <!-- @[use_braces_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
