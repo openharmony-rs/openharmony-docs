@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供应用资源数据查询能力，支持[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)和[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)等信息的查询。
+本模块提供应用资源数据查询能力，支持[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)和[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)等信息的查询。
 
 > **说明：**
 >
@@ -103,7 +103,7 @@ try {
 
 ### bundleResourceManager.getLauncherAbilityResourceInfo
 
-getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag)): Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>
+getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag)): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
 
 以同步方法根据给定的bundleName和resourceFlags获取当前应用的LauncherAbilityResourceInfo。
 
@@ -124,7 +124,7 @@ getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#res
 
 | 类型                                                        | 说明                                  |
 | ----------------------------------------------------------- | ------------------------------------- |
-| Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)> | 返回指定应用的LauncherAbilityResourceInfo。|
+| Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)> | 返回指定应用的LauncherAbilityResourceInfo。|
 
 **错误码：**
 
@@ -265,7 +265,7 @@ try {
 
 ### bundleResourceManager.getAllLauncherAbilityResourceInfo
 
-getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag), callback: AsyncCallback<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>>): void
+getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag), callback: AsyncCallback<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>>): void
 
 根据给定的resourceFlags获取当前所有应用的LauncherAbilityResourceInfo。使用callback异步回调。
 
@@ -280,7 +280,7 @@ getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag), callba
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | resourceFlags | [number](#resourceflag) | 是   | 指定返回的LauncherAbilityResourceInfo所包含的信息。 |
-| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的LauncherAbilityResourceInfo数组；否则为错误对象。 |
+| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的LauncherAbilityResourceInfo数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -317,7 +317,7 @@ try {
 
 ### bundleResourceManager.getAllLauncherAbilityResourceInfo
 
-getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag)): Promise<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>>
+getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag)): Promise<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>>
 
 根据给定的resourceFlags获取当前所有应用的LauncherAbilityResourceInfo。使用Promise异步回调。
 
@@ -337,7 +337,7 @@ getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag)): Promi
 
 | 类型                                                         | 说明                             |
 | ------------------------------------------------------------ | -------------------------------- |
-| Promise\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>> | Promise对象，返回LauncherAbilityResourceInfo数组。 |
+| Promise\<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>> | Promise对象，返回LauncherAbilityResourceInfo数组。 |
 
 **错误码：**
 
@@ -431,7 +431,7 @@ try {
 
 ### bundleResourceManager.getLauncherAbilityResourceInfo<sup>12+</sup>
 
-getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>
+getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
 
 以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用的LauncherAbilityResourceInfo。
 
@@ -453,7 +453,7 @@ getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#res
 
 | 类型                                                        | 说明                                  |
 | ----------------------------------------------------------- | ------------------------------------- |
-| Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)> | 返回指定应用的LauncherAbilityResourceInfo。|
+| Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)> | 返回指定应用的LauncherAbilityResourceInfo。|
 
 **错误码：**
 
@@ -512,7 +512,7 @@ getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundle
 
 | 类型                                                        | 说明                                  |
 | ----------------------------------------------------------- | ------------------------------------- |
-| Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)> | 返回指定应用的扩展组件资源，包含图标和名称等信息。|
+| Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)> | 返回指定应用的扩展组件资源，包含图标和名称等信息。|
 
 **错误码：**
 
@@ -622,7 +622,7 @@ getLauncherAbilityResourceInfoList(optionsList: Array\<BundleOptions>, resourceF
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md#launcherabilityresourceinfo)>> | Promise对象，返回指定应用列表的LauncherAbilityResourceInfo。 |
+| Promise\<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md#launcherabilityresourceinfo)>> | Promise对象，返回指定应用列表的LauncherAbilityResourceInfo。 |
 
 **错误码：**
 
@@ -695,4 +695,4 @@ type LauncherAbilityResourceInfo = _LauncherAbilityResourceInfo
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md#launcherabilityresourceinfo) |应用配置的入口图标和名称信息。 |
+| [_LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md#launcherabilityresourceinfo) |应用配置的入口图标和名称信息。 |

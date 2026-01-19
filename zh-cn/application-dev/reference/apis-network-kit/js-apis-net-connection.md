@@ -1479,6 +1479,80 @@ connection.getAddressesByName("xxxx").then((data: connection.NetAddress[]) => {
 });
 ```
 
+## connection.getAddressesByNameWithOptions<sup>23+</sup>
+
+getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Array\<NetAddress\>\>
+
+使用当前默认网络基于指定IP类型进行DNS解析。使用Promise异步回调。
+
+**需要权限**：ohos.permission.INTERNET
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明               |
+| ------ | ------ | ---- | ------------------ |
+| host   | string | 是   | 需要解析的主机名。 |
+| option | [QueryOptions](#queryoptions23) | 否   | 需要查询的IP类型，默认值为FAMILY_TYPE_ALL。 |
+
+**返回值：**
+
+| 类型                                        | 说明                          |
+| ------------------------------------------- | ----------------------------- |
+| Promise\<Array\<[NetAddress](#netaddress)>> | Promise对象，返回查询到的IP地址。返回值中的port字段固定为0，无需关注。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                        |
+| ------- | -----------------------------  |
+| 201     | Permission denied.             |
+| 2100001 | Invalid parameter value.                |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error.         |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+let option: QueryOptions = {
+  family:connection.FAMILY_TYPE_IPV4
+};
+connection.getAddressesByNameWithOptions("www.example.com", option).then((data: connection.NetAddress[]) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+});
+```
+
+
+## QueryOptions<sup>23+</sup>
+
+需要查询的IP类型。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 参数名 | 类型   | 必填 | 说明               |
+| ------ | ------ | ---- | ------------------ |
+| family   | [FamilyType](#familytype23) | 否   | 需要查询的具体IP地址类型，默认值为FAMILY_TYPE_ALL。 |
+
+## FamilyType<sup>23+</sup>
+
+需要查询的具体IP地址类型。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称  |值         | 说明               |
+| ------ |---------- | ------------------ |
+| FAMILY_TYPE_ALL    | 0   | 查询所有IPv4和IPv6地址。 |
+| FAMILY_TYPE_IPV4   | 1   | 仅查询IPv4地址。       |
+| FAMILY_TYPE_IPV6   | 2   | 仅查询IPv6地址。       |
+
 ## connection.addCustomDnsRule<sup>11+</sup>
 
 addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<void\>): void
@@ -2931,6 +3005,65 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   let host = "www.example.com";
   netHandle.getAddressesByName(host).then((data: connection.NetAddress[]) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
+  });
+});
+```
+
+### getAddressesByNameWithOptions<sup>23+</sup>
+
+getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Array\<NetAddress\>\>
+
+使用当前NetHandle对应的网络基于指定IP类型进行DNS解析。使用Promise异步回调。
+
+**需要权限**：ohos.permission.INTERNET
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明               |
+| ------ | ------ | ---- | ------------------ |
+| host   | string | 是   | 需要解析的主机名。 |
+| QueryOptions | [QueryOptions](#queryoptions23) | 否   | 需要查询的IP类型。 |
+
+**返回值：**
+
+| 类型                                        | 说明                          |
+| ------------------------------------------- | ----------------------------- |
+| Promise\<Array\<[NetAddress](#netaddress)>> | Promise对象，返回查询到的IP地址。返回值中的port字段固定为0，无需关注。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                        |
+| ------- | -----------------------------  |
+| 201     | Permission denied.             |
+| 2100001 | Invalid parameter value.                |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error.         |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    return;
+  }
+  let host = "www.example.com";
+  let option: QueryOptions = {
+      family: connection.FamilyType.FAMILY_TYPE_IPV4
+    };
+  netHandle.getAddressesByNameWithOptions(host, option).then((data: connection.NetAddress[]) => {
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`get ERROR msg: ${JSON.stringify(err)}`)
   });
 });
 ```

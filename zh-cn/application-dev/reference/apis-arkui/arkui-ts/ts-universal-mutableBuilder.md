@@ -6,7 +6,7 @@
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
-使用mutableBuilder封装全局@Builder，实现全局@Builder的动态切换。开发指南见[mutableBuilder: 实现全局@Builder动态更新](../../../ui/state-management/arkts-mutableBuilder.md) 
+使用mutableBuilder封装全局@Builder，实现全局@Builder的动态切换。开发指南见[mutableBuilder：实现全局@Builder动态更新](../../../ui/state-management/arkts-mutableBuilder.md) 
 
 > **说明：**
 >

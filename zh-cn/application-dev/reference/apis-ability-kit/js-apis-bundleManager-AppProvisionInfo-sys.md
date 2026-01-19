@@ -38,7 +38,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | certificate              | string | 是   | 否   | 配置文件中的证书信息。 |
 | apl                      | string | 是   | 否   | 配置文件中的apl字段，为normal、system_basic和system_core其中之一。 |
 | issuer                      | string | 是   | 否   | 配置文件中的发行者名称。 |
-|appIdentifier<sup>11+</sup>| string         | 是   | 否   | 应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)。   |
+|appIdentifier<sup>11+</sup>| string         | 是   | 否   | 应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。   |
 | organization<sup>12+</sup> | string | 是   | 否   | 应用的组织信息。 |
 | bundleName<sup>23+</sup> | string | 是   | 是   | 应用的包名。 |
 
