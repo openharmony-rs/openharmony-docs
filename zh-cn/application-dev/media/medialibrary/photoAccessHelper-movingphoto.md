@@ -15,7 +15,7 @@
 - [使用MovingPhotoView播放动态照片](movingphotoview-guidelines.md)
 - [读取动态照片资源](#读取动态照片资源)
 
-拍摄动态照片的能力由Camera Kit提供，可参考[Camera Kit-动态照片](../camera/camera-moving-photo.md)。
+拍摄动态照片的能力由Camera Kit提供，可参考[动态照片拍摄(ArkTS)](../camera/camera-moving-photo.md)。
 
 ## 保存动态照片资源
 
@@ -23,7 +23,7 @@
 
 使用安全控件保存动态照片资源，无需申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'，允许用户通过点击按钮临时获取存储权限，并将资源直接保存到指定的媒体库路径，使得操作更为便捷。
 
-详情请参考[安全控件的保存控件](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)。
+详情请参考[SaveButton](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)。
 
 **开发步骤**
 
@@ -115,12 +115,12 @@ export struct Scene1 {
 
 - 应用也可以通过传入应用沙箱的[应用文件](../../file-management/app-file-access.md)图片和视频fileUri的方式构造应用本地的动态照片对象。
 
-获取到动态照片对象后，如需播放动态照片请使用[MovingPhotoView组件](movingphotoview-guidelines.md)。
+获取到动态照片对象后，如需播放动态照片请参考[使用MovingPhotoView播放动态照片](movingphotoview-guidelines.md)。
 
 ### 获取媒体库动态照片对象
 
-1. 通过Picker选择动态照片的[媒体文件](../../file-management/user-file-uri-intro.md#媒体文件uri)uri。
-2. 调用[PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1)和[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取uri对应的PhotoAsset资产。
+1. 通过Picker选择动态照片的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。
+2. 调用[PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1)和[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取URI对应的PhotoAsset资产。
 3. 调用[MediaAssetManager.requestMovingPhoto](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetManager.md#requestmovingphoto12)获取PhotoAsset对应的动态照片对象（MovingPhoto）。
 
 <!-- @[Obtaining_Moving_Photo_Sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene2.ets) -->
