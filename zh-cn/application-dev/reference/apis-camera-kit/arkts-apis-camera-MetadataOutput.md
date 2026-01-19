@@ -290,13 +290,15 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 新增需要上报的检测对象类型。
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **参数：**
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<MetadataObjectType\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
 
 **错误码：**
 
@@ -330,13 +332,15 @@ removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 删除需要上报的检测对象类型。
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **参数：**
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<MetadataObjectType\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
 
 **错误码：**
 
