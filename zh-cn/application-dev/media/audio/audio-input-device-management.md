@@ -12,7 +12,9 @@
 
 在使用AudioRoutingManager管理音频设备前，需要先导入模块并创建实例。
 
-```ts
+<!-- @[getRoutingManager_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
+
+``` TypeScript
 import { audio } from '@kit.AudioKit';  // 导入audio模块。
 
 let audioManager = audio.getAudioManager();  // 需要先创建AudioManager实例。
@@ -34,7 +36,9 @@ let audioRoutingManager = audioManager.getRoutingManager();  // 再调用AudioMa
 
 使用getDevices()方法可以获取当前所有输入设备的信息。
 
-```ts
+<!-- @[getDevices_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
+
+``` TypeScript
 import { audio } from '@kit.AudioKit';
 
 audioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG).then((data: audio.AudioDeviceDescriptors) => {
@@ -46,7 +50,9 @@ audioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG).then((data: 
 
 可以设置监听事件来监听设备连接状态的变化，当有设备连接或断开时触发回调：
 
-```ts
+<!-- @[listen_InputStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
+
+``` TypeScript
 import { audio } from '@kit.AudioKit';
 
 // 监听音频设备状态变化。
@@ -62,6 +68,7 @@ audioRoutingManager.off('deviceChange', (deviceChanged: audio.DeviceChangeAction
   console.info('Should be no callback.');
 });
 ```
+
 <!--Del-->
 ## 选择音频输入设备（仅对系统应用开放）
 
@@ -71,7 +78,7 @@ audioRoutingManager.off('deviceChange', (deviceChanged: audio.DeviceChangeAction
 > 
 > 用户可以选择连接一组音频设备（如一对蓝牙耳机），但系统侧只感知为一个设备，该组设备共用一个设备id。
 
-```ts
+``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -97,6 +104,5 @@ async function getRoutingManager() {
       console.error(`Invoke selectInputDevice failed, code is ${err.code}, message is ${err.message}`);
     });
 }
-
 ```
 <!--DelEnd-->

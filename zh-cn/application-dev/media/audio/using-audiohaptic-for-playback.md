@@ -25,23 +25,18 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
    > **说明：**
    >
-   > - 开发者可通过如下两种方式注册资源：
-   >
-   >   方式1：使用[registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource)接口，通过文件URI来注册资源。
-   >
-   >   方式2（推荐）：从API version 20开始，支持使用[registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20)接口，通过文件描述符来注册资源，更便于开发者使用。
-   >
-   > - 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
+   > 开发者可通过如下两种方式注册资源：
+   > - 方式1：使用[registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource)接口，通过文件URI来注册资源。
+   > - 方式2（推荐）：从API version 20开始，支持使用[registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20)接口，通过文件描述符来注册资源，更便于开发者使用。
 
-   ```ts
+   <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+
+   ``` TypeScript
    import { audio, audioHaptic } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
 
    let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.getAudioHapticManager();
-
-   // 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。
-   // 推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 
    // 方法1：使用registerSource接口注册资源。
    let audioUri = 'data/audioTest.wav'; // 此处仅作示例，实际使用时需要将文件替换为应用目标音频资源的Uri。
@@ -84,7 +79,9 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 2. 设置音振播放器参数，各参数作用可以查看[AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager)。
 
-   ```ts
+   <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+
+   ``` TypeScript
    let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
    audioHapticManagerInstance.setAudioLatencyMode(idForFd, latencyMode);
 
@@ -94,7 +91,9 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 3. 创建AudioHapticPlayer实例。
 
-   ```ts
+   <!-- @[create_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+
+   ``` TypeScript
    let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
    let audioHapticPlayer: audioHaptic.AudioHapticPlayer | undefined = undefined;
 
@@ -108,7 +107,9 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 4. 调用start()方法，开启音频播放并同步开启振动。
 
-   ```ts
+   <!-- @[haptic_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+
+   ``` TypeScript
    audioHapticPlayer.start().then(() => {
      console.info(`Promise returned to indicate that start playing successfully.`);
    }).catch((err: BusinessError) => {
@@ -118,7 +119,9 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 5. 调用stop()方法，停止音频播放并同步停止振动。
 
-   ```ts
+   <!-- @[haptic_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+
+   ``` TypeScript
    audioHapticPlayer.stop().then(() => {
      console.info(`Promise returned to indicate that stop playing successfully.`);
    }).catch((err: BusinessError) => {
@@ -128,7 +131,9 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 6. 释放AudioHapticPlayer实例。
 
-   ```ts
+   <!-- @[haptic_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+
+   ``` TypeScript
    audioHapticPlayer.release().then(() => {
      console.info(`Promise returned to indicate that release the audio haptic player successfully.`);
    }).catch((err: BusinessError) => {
@@ -138,8 +143,9 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 7. 将已注册的音频及振动资源移除注册。
 
-   ```ts
-   // 对于不再需要使用的资源，建议应用及时取消注册，避免出现资源泄漏或资源数量超上限等问题。
+   <!-- @[haptic_unregist](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+
+   ``` TypeScript
    audioHapticManagerInstance.unregisterSource(idForFd).then(() => {
      console.info(`Promise returned to indicate that unregister source successfully`);
    }).catch((err: BusinessError) => {
