@@ -19,10 +19,15 @@
    <!-- @[define_SendableClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/utils/LruCache.ets) -->  
    
    ``` TypeScript
+   <!-- @[define_SendableClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/utils/LruCache.ets) -->  
+   
+   ``` TypeScript
    // LruCache.ets
    import { ArkTSUtils } from '@kit.ArkTS';
    
    // 使用use shared标记为共享模块。
+   'use shared'
+   
    'use shared'
    
    // SendableClass实例对象在不同线程间可共享。
@@ -32,12 +37,20 @@
      private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
      private books_: ArkTSUtils.SendableLruCache<string, string> = new ArkTSUtils.SendableLruCache<string, string>(4);
    
+     private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+     private books_: ArkTSUtils.SendableLruCache<string, string> = new ArkTSUtils.SendableLruCache<string, string>(4);
+   
      constructor() {
        this.books_.put('fourth', 'Book4');
        this.books_.put('third', 'Book3');
        this.books_.put('second', 'Book2');
        this.books_.put('first', 'Book1');
+       this.books_.put('fourth', 'Book4');
+       this.books_.put('third', 'Book3');
+       this.books_.put('second', 'Book2');
+       this.books_.put('first', 'Book1');
      }
+   
    
      // 封装put、get、keys方法，加锁操作。
      public async put(key: string, value: string) {
@@ -46,11 +59,13 @@
        })
      }
    
+   
      public async get(key: string): Promise<string | undefined> {
        return this.lock_.lockAsync(() => {
          return this.books_.get(key);
        });
      }
+   
    
      public async keys(): Promise<string[]> {
        return this.lock_.lockAsync(() => {
@@ -58,6 +73,7 @@
        });
      }
    }
+   
    
    export let lruCache = new SendableClass();
    ```
@@ -67,14 +83,19 @@
    <!-- @[define_book1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book1.ets) -->  
    
    ``` TypeScript
+   <!-- @[define_book1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/Book1.ets) -->  
+   
+   ``` TypeScript
    // Book1.ets
    @Entry
    @Component
    struct Index1 {
      @State message: string = 'Hello World!';
    
+   
      build() {
        RelativeContainer() {
+         Text('第一本书的内容')
          Text('第一本书的内容')
            .id('first book')
            .fontSize(20)
@@ -85,11 +106,14 @@
              middle: { anchor: 'container', align: HorizontalAlign.Center }
            })
          Button('返回')
+         Button('返回')
            .fontSize(20)
            .padding(10)
            .fontWeight(FontWeight.Bold)
            .position({ x: '50%' })
+           .position({ x: '50%' })
            .onClick(() => {
+             this.getUIContext().getRouter().pushUrl({ url: 'pages/GetRecentList' });
              this.getUIContext().getRouter().pushUrl({ url: 'pages/GetRecentList' });
            })
        }

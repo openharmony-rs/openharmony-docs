@@ -30,6 +30,7 @@
       taskpool.Task.sendData(result);
     }
     
+    
     export function getImgFromDB() {
       //此处模拟查询数据库，并返回数据
       let task = new taskpool.Task(query);
@@ -39,6 +40,7 @@
     ```
 
 2. 封装一个瀑布流组件数据源，用于瀑布流组件加载数据。
+
    <!-- @[encapsulate_waterfall_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/WaterFlowDataSource.ets) -->
    
    ``` TypeScript

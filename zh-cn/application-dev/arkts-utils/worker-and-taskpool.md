@@ -19,6 +19,9 @@ ArkTS应用开发过程中，可以选择TaskPool或Worker线程进行多任务�
    <!-- @[define_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/workers/Worker.ets) -->  
    
    ``` TypeScript
+   <!-- @[define_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/workers/Worker.ets) -->  
+   
+   ``` TypeScript
    // Worker.ets
    import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
    import { taskpool } from '@kit.ArkTS';
@@ -60,3 +63,4 @@ ArkTS应用开发过程中，可以选择TaskPool或Worker线程进行多任务�
      return total;
    }
    ```
+
