@@ -3036,13 +3036,35 @@ struct GridExample {
 
 从API version 23开始，Grid组件新增[编辑模式选项](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
 
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
 ```ts
 // xxx.ets
+import { GridDataSource } from './GridDataSource';
+
 @Entry
 @Component
 struct GridExample {
-  numbers1: string[] = ['0', '1', '2'];
-  numbers2: string[] = ['0', '1', '2'];
+  numbers: GridDataSource = new GridDataSource(['1', '2', '3', '4', '5', '6', '7', '8', '9']);
+  @State isSelected: boolean[] = [];
+  selectedCount: number = 0;
+
+  @Styles
+  normalStyles(): void {
+    .opacity(1.0)
+  }
+
+  @Styles
+  selectStyles(): void {
+    .opacity(0.4)
+  }
+
+  onPageShow(): void {
+    let i: number = 0;
+    for (i = 0; i < 9; i++) {
+      this.isSelected.push(false);
+    }
+  }
 
   @Builder
   MenuBuilder() {
@@ -3061,37 +3083,43 @@ struct GridExample {
     }.width(100)
   }
 
-  @Builder
-  MyPreview() {
-    Column() {
-      Image($r('app.media.startIcon'))
-        .width(200)
-        .height(200)
-    }
-  }
-
   build() {
     Column({ space: 5 }) {
       Text('Grid')
       Grid() {
-        ForEach(this.numbers1, (day: string) => {
-          ForEach(this.numbers1, (day: string) => {
-            GridItem() {
-              Text(day)
-                .fontSize(16)
-                .backgroundColor(0xF9CF93)
-                .width('100%')
-                .height('100%')
-                .textAlign(TextAlign.Center)
+        LazyForEach(this.numbers, (day: string, index: number) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .selected(this.isSelected[index])
+          // 设置多选显示效果
+          .stateStyles({
+            normal: this.normalStyles,
+            selected: this.selectStyles
+          })
+          .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
+            { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
+          .onClick(() => {
+            this.isSelected[index] = !this.isSelected[index];
+            console.info(`item:${index}, this.isSelected[item]:${this.isSelected[index]}`)
+            if (this.isSelected[index]) {
+              ++this.selectedCount;
+            } else {
+              --this.selectedCount;
             }
-            // 设置GridItem为选中状态
-            .selected(true)
-            .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
-              { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
-          }, (day: string) => day)
+          })
         }, (day: string) => day)
       }
-      .editModeOptions({ enableGatherSelectedItemsAnimation: true })
+      .editModeOptions({
+        enableGatherSelectedItemsAnimation: true, onGetPreviewBadge: () => {
+          return this.selectedCount;
+        }
+      })
       .columnsTemplate('1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr')
       .columnsGap(10)

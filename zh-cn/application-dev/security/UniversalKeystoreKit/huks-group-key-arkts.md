@@ -33,7 +33,7 @@
 
 2. 指定待加密的数据。
 
-3. 指定加密[算法参数配置](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)。需要添加群组密钥标签[HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)。
+3. 使用[HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)设置加密算法参数配置。需要添加群组密钥标签[HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)。
 
 4. 调用[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
 
@@ -45,7 +45,7 @@
 
 2. 指定待解密的密文。
 
-3. 指定解密[算法参数配置](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)。需要添加群组密钥标签[HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)。
+3. 使用[HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)设置解密算法参数配置。需要添加群组密钥标签[HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)。
 
 4. 调用[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
 

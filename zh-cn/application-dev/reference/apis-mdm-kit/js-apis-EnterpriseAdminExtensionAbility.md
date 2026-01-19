@@ -656,3 +656,65 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 };
 ```
+
+## EnterpriseAdminExtensionAbility.onLogCollected<sup>23+</sup>
+
+onLogCollected(result: common.Result): void
+
+通过[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口成功创建日志收集任务后，当日志收集完成时，将触发该回调。回调中包含日志收集结果。
+
+> **说明：**
+> 
+> 日志收集成功时，必须在应用的EnterpriseAdminExtensionAbility中访问沙箱目录（/data/edm/log）获取日志，获取日志方式参考下列示例代码。应用取走日志后，建议调用[systemManager.finishLogCollected](./js-apis-enterprise-systemManager.md#systemmanagerfinishlogcollected23)删除已收集到的日志。
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填   | 说明      |
+| ----- | ----------------------------------- | ---- | ------- |
+| result | [common.Result](./js-apis-enterprise-common.md#result) | 是    | 日志收集结果。 |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { EnterpriseAdminExtensionAbility, common, systemManager } from '@kit.MDMKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  /**
+   * MDM应用调用systemManager.startCollectLog接口启动日志收集任务后，将触发该回调函数，回调携带日志收集结果。
+   * 若result为common.Result.SUCCESS，表示日志收集成功。请取走日志，并调用systemManager.finishLogCollected删除已收集到的日志。
+   * 若result为common.Result.FAIL，表示日志收集失败。
+   */
+  onLogCollected(result: common.Result): void {
+    console.info(`Succeeded in calling onLogCollected callback, result:${result}`);
+    if (result === common.Result.SUCCESS) {
+      let filesDir = '/data/edm/log';
+      // 应用沙箱路径，需根据实际情况进行替换
+      let targetPath = this.context.tempDir;
+      try {
+          let files: string[] = fs.listFileSync(filesDir);
+          // 从/data/edm/log沙箱目录取走日志
+          files.forEach(value => {
+             fs.copyFileSync(filesDir + '/' + value, targetPath + '/' + value);
+          });
+          let wantTemp: Want = {
+              // 需根据实际情况进行替换
+              bundleName: 'com.example.myapplication',
+              abilityName: 'EnterpriseAdminAbility'
+          };
+          systemManager.finishLogCollected(wantTemp);
+      } catch (error) {
+          Logger.info("onLogCollected", "error: " + JSON.stringify(error))
+      }
+    }
+    if (result === common.Result.FAIL) {
+      Logger.error("onLogCollected", "Failed to collect log.")
+    }
+  }
+};
+```

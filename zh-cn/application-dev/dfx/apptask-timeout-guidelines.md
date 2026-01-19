@@ -21,49 +21,48 @@
 
 ### 检测原理
 
-1. 触发流程
+检测主线程处理事件耗时情况，当任务时长超过阈值时，会触发日志采集流程，包含堆栈采集和trace采集两种流程。两种流程触发条件互斥，同一次超时只会触发一种采集流程。
 
-   主线程超时150ms~450ms，触发采样调用栈流程，生成以txt结尾的堆栈文件；主线程超时450ms，触发采集trace流程，生成以trace结尾的堆栈文件。采集堆栈和采集trace互斥，二者只能触发其中一个。
+根据主线程单次事件处理时长，触发不同的采集流程。具体的触发条件、采集日志格式及频率限制如下所示：
 
-   150ms &lt; 主线程处理时长 &lt; 450ms：仅触发主线程超时采样栈。**同一个应用的PID一个生命周期仅会触发一次主线程超时事件采样栈。开发者选项打开，一小时一次。应用启动10s内不进行检测。**
+| 采集流程 | 触发条件 | 采集日志格式 | 前提条件与限制 |
+| -------- | -------- | -------- | -------- |
+| 堆栈采集 | 150ms &lt; 主线程处理时长 &lt; 450ms | 文件名格式：MAIN_THREAD_JANK_秒级时间_进程PID.txt。<br/>例如：MAIN_THREAD_JANK_20240613211739_40986.txt。| - **应用启动10s内不进行检测。** <br/> - **关闭[开发者选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section0736139111917)：应用在一个生命周期内，一天最多触发一次主线程超时事件堆栈采集流程。** <br/> - **启用[开发者选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)：应用在一个生命周期内，一小时最多触发一次主线程超时事件采集堆栈采集流程。** |
+| trace采集 | 主线程处理时长 > 450ms | 文件名格式：MAIN_THREAD_JANK_unix时间戳_进程PID.trace。<br/>例如：MAIN_THREAD_JANK_1762064185461_40986.trace。| - 触发trace采集的前提：**开发者使用[nolog](performance-analysis-kit-terminology.md#nolog版本)版本，并且关闭[开发者选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)**。<br/> - **应用一天内，最多触发一次主线程超时事件trace采集流程。** |
 
-   主线程处理时长 > 450ms：仅触发主线程超时采样Trace。**同一个应用的UID一天仅会触发一次主线程超时事件采样trace。**
+> **注意：**
+>
+> 边界值（主线程处理时长等于450ms）不触发任何采集流程。
+>
+> 关闭开发者模式后，可能无法使用DevEco Studio。因此，可以提前安装应用，再关闭开发者模式。
 
-   主线程处理时长 = 450ms：当前边界值不触发任何采样。
+1. 堆栈采集流程
 
-   > **注意：**
-   >
-   > 启动主线程超时检测抓取trace的功能的前提：**开发者使用[nolog](performance-analysis-kit-terminology.md#nolog版本)版本，并且关闭[开发者模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)**；
-   >
-   > log和nolog版本：在手机中，点击设置——搜索关键字“关于本机”——软件版本进行查看。log版本会以log结尾；
-   >
-   > 关闭开发者模式后，可能无法使用DevEco Studio。因此，可以提前安装应用，再关闭开发者模式。
+   当主线程处理超时（150ms &lt; 主线程处理时长 &lt; 450ms）后，启动周期性检测任务，每隔150ms执行一次任务。前2轮检测中，至少有一轮检测到主线程处理时长超过150ms才会生成堆栈文件。分以下三种情况：
 
-2. 抓栈时机
-
-   主线程处理事件超时后，开始执行周期性任务检测，每隔150ms检测主线程是否再次发生超时事件（1 &lt;= 检测次数 &lt;= 2），共三种情况：
-
-   （1）第一次检测发现超时事件，开始执行堆栈采样，每隔150ms采样一次，共采样10次堆栈，第11次收集堆栈并上报事件，结束检测。
+   （1）第1轮检测到主线程处理超时（主线程处理时长 > 150ms），开始执行堆栈采集，每隔150ms采集1次堆栈，共采集10次堆栈，第11轮收集堆栈并上报事件，结束检测。
 
    ![sample_stack_1](figures/sample_stack_1.png)
 
-   （2）第一轮检测未发生超时事件，第二轮检测发现超时事件，开始执行堆栈采样，每隔150ms采样一轮，共采样10次堆栈，第11轮收集堆栈并上报事件，结束检测。
+   （2）第1轮未检测到主线程处理超时（主线程处理时长 > 150ms），第2轮检测到主线程处理超时（主线程处理时长 > 150ms），开始执行堆栈采集流程，每隔150ms采集1次，共采集10次堆栈，第12轮收集堆栈并上报事件，结束检测。
 
    ![sample_stack_2](figures/sample_stack_2.png)
 
-   （3）两轮检测均未发现超时事件，结束检测。
+   （3）前2轮均未检测到主线程处理超时（主线程处理时长 > 150ms），结束检测。
 
    ![sample_stack_3](figures/sample_stack_3.png)
 
-3. trace采集时机
+2. trace采集流程
 
-   主线程超时抓Trace调用录制函数后，每隔150ms检测主线程是否再次发生超时事件（检测次数 = 20），其中，只要在20个间隔检测时，有一次主线程事件超时150ms，3s检测结束后落盘trace。
+   当主线程处理超时（主线程处理时长 > 450ms），调用开启trace采集接口，启动周期性检测，每隔150ms检测主线程处理时长超过150ms（检测轮数 = 20）。分两种情况：
 
-   （1）20次检测均未发生主线程超时150ms事件，无trace文件生成。
+   （1）20轮均未检测到主线程处理超时（主线程处理时长 > 150ms），无trace文件生成，结束检测。
 
    ![dump-trace1](figures/dump-trace1.PNG)
 
-   （2）20次检测至少有一次发生主线程超时150ms事件，生成trace文件。
+   （2）20轮检测至少有一轮检测发生主线程处理超时（主线程处理时长 > 150ms），生成trace文件并上报事件，结束检测。
+
+   ![dump-trace1](figures/dump-trace2.PNG)
 
 ### 日志获取
 
@@ -75,11 +74,12 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 
 ### 日志规格
 
-1. 日志老化规格
+1. 主线程超时检测采集日志老化规格
 
    一般情况，栈文件的大小为7-10KB，trace大小为1-5MB。应用沙箱内的watchdog目录最大保存10M内容，超出后，会自动触发此目录老化机制，按照文件名顺序最多删除100文件。目录地址：/data/storage/el2/log/watchdog/。
 
-2. 采样栈规格
+2. 主线程超时检测采集堆栈规格
+
    抓栈功能目前只支持ARM64架构，抓栈结果为解析后的混合栈信息，包含native帧和JS帧。
 
    抓栈结果部分示例如下：
@@ -136,7 +136,8 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
    4 表示调用函数所在的路径，文件及行列号。
    ```
 
-3. 采样trace规格
+3. 主线程超时检测采集trace规格
+
    trace文件大小约为1-5M左右。trace文件可以通过[HiSmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host)工具进行可视化分析。工具下载链接：[developtools_smartperf_host官方发行版](https://gitcode.com/openharmony/developtools_smartperf_host/releases)。
 
    trace文件说明参考：[web端加载trace说明](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_systemtrace.md)。
