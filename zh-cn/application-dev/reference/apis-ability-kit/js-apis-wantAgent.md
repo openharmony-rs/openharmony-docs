@@ -44,7 +44,7 @@ getWantAgent(info: WantAgentInfo, callback: AsyncCallback\<WantAgent\>): void
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
 import { BusinessError } from '@ohos.base';
 
-//getWantAgent回调
+// getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
     if (err.code) {
         console.info('getWantAgent Callback err:' + JSON.stringify(err));
@@ -161,10 +161,10 @@ getBundleName(agent: WantAgent, callback: AsyncCallback\<string\>): void
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
 import { BusinessError } from '@ohos.base';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgentObj: _WantAgent;
 
-//getWantAgent回调
+// getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
     console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
@@ -174,7 +174,7 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
         return;
     }
 
-    //getBundleName回调
+    // getBundleName回调
     let getBundleNameCallback = (err: BusinessError, data: string) => {
         console.info('==========================>getBundleNameCallback=======================>');
     }
@@ -238,7 +238,7 @@ getBundleName(agent: WantAgent): Promise\<string\>
 ```ts
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgentObj: _WantAgent;
 
 wantAgent.getWantAgent({
@@ -302,10 +302,10 @@ getUid(agent: WantAgent, callback: AsyncCallback\<number\>): void
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
 import { BusinessError } from '@ohos.base';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgentObj: _WantAgent;
 
-//getWantAgent回调
+// getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
     console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
@@ -315,7 +315,7 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
         return;
     }
 
-    //getUid回调
+    // getUid回调
     let getUidCallback = (err: BusinessError, data: number) => {
         console.info('==========================>getUidCallback=======================>');
     }
@@ -379,7 +379,7 @@ getUid(agent: WantAgent): Promise\<number\>
 ```ts
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgentObj: _WantAgent;
 
 wantAgent.getWantAgent({
@@ -442,10 +442,10 @@ cancel(agent: WantAgent, callback: AsyncCallback\<void\>): void
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
 import { BusinessError } from '@ohos.base';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgentObj: _WantAgent;
 
-//getWantAgent回调
+// getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
     console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
@@ -455,7 +455,7 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
         return;
     }
 
-    //cancel回调
+    // cancel回调
     let cancelCallback = (err: BusinessError) => {
         console.info('==========================>cancelCallback=======================>');
     }
@@ -520,7 +520,7 @@ cancel(agent: WantAgent): Promise\<void\>
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
 import { BusinessError } from '@ohos.base';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgentObj: _WantAgent;
 
 wantAgent.getWantAgent({
@@ -585,10 +585,10 @@ trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: Callback\<Complet
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
 import { BusinessError } from '@ohos.base';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgentObj: _WantAgent;
 
-//getWantAgent回调
+// getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
     console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
@@ -598,7 +598,7 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
         return;
     }
 
-    //trigger回调
+    // trigger回调
     let triggerCallback = (data: wantAgent.CompleteData) => {
         console.info('==========================>triggerCallback=======================>');
     };
@@ -660,11 +660,11 @@ equal(agent: WantAgent, otherAgent: WantAgent, callback: AsyncCallback\<boolean\
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
 import { BusinessError } from '@ohos.base';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgentObj1: _WantAgent;
 let wantAgentObj2: _WantAgent;
 
-//getWantAgent回调
+// getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
     console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
@@ -675,7 +675,7 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
         return;
     }
 
-    //equal回调
+    // equal回调
     let equalCallback = (err: BusinessError, data: boolean) => {
         console.info('==========================>equalCallback=======================>');
     };
@@ -740,7 +740,7 @@ equal(agent: WantAgent, otherAgent: WantAgent): Promise\<boolean\>
 ```ts
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgentObj1: _WantAgent;
 let wantAgentObj2: _WantAgent;
 
