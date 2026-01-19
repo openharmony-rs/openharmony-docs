@@ -17908,7 +17908,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Extension.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":44,
 						"name":"extension_start",
 						"start_line":16
 					}
