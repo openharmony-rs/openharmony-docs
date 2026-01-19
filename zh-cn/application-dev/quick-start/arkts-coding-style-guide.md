@@ -488,6 +488,16 @@ ArkTS中，浮点值包含一个小数点，不要求小数点之前或之后必
 
 <!-- @[check_NaN_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+if (Number.isNaN(foo)) {
+  // ...
+}
+
+if (!Number.isNaN(foo)) {
+  // ...
+}
+```
+
 ### 数组遍历优先使用`Array`对象方法
 
 **【级别】要求**
