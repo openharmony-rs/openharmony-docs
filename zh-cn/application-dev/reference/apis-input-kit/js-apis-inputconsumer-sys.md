@@ -32,7 +32,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 > **说明：**
 >
 > - 支持仅订阅按键的down事件，或者同时订阅按键的down事件和up事件。
-> - 不支持仅订阅按键的up事件。
+> - 若需要仅订阅按键的up事件，会存在down事件被焦点窗口消费，而无up事件闭环的风险，需要排查设计实现是否合理。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
