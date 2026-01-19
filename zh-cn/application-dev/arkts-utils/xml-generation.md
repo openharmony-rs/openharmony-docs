@@ -112,6 +112,10 @@ XML模块的API接口可以参考[@ohos.xml](../reference/apis-arkts/js-apis-xml
 1. 引入模块。
 
    <!-- @[xmlDySerializer_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlDynamicSerializer.ets) -->
+   
+   ``` TypeScript
+   import { xml, util } from '@kit.ArkTS';
+   ```
 
 2. 调用XML元素生成函数。
 
