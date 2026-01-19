@@ -68,10 +68,10 @@
    import { avSession } from '@kit.AVSessionKit';
 
    class MyPage {
-      private avCastPicker: avSession.AVCastPickerHapler;
+      private avCastPicker: avSession.AVCastPickerHelper;
 
       constructor(context: common.Context) {
-        this.avCastPicker = new avSession.AVCastPickerHapler(context);
+        this.avCastPicker = new avSession.AVCastPickerHelper(context);
       }
 
       async selectCastDevice() {
