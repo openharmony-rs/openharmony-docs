@@ -47,7 +47,18 @@ console.info('res = ' + res);
 规避方案：使用/(?<=abcd)ef/代替/(?<=ab(?=c)cd)ef/。
 
 ### 正则运算对于大小写的处理与预期不一致
+<!-- @[test_regexLastIndexWithEmptyGroupInGlobalUnicodeMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
 
+``` TypeScript
+let L = '\ud800';
+let T = '\udc00';
+let u = /()/ug;
+u.lastIndex = 1;
+u.exec(L + T + L + T);
+console.info('u.lastIndex = ' + u.lastIndex);
+// 期望输出: u.lastIndex = 0。
+// 实际输出: u.lastIndex = 1。
+```
 <!-- @[test_regexIgnoreCaseCaseFolding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
 
 规避方案：暂无。
