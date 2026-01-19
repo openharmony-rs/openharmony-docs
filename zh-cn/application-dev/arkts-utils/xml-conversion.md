@@ -32,7 +32,43 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
 
 2. 输入待转换的XML，设置转换选项。支持的转换选项及含义，请参见[ConvertOptions](../reference/apis-arkts/js-apis-convertxml.md#convertoptions)。
 
-   > **说明：**
+   <!-- @[xmlChange_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
+   let xml: string =
+     '<?xml version="1.0" encoding="utf-8"?>' +
+       '<note importance="high" logged="true">' +
+       '    <title>Happy</title>' +
+       '    <todo>Work</todo>' +
+       '    <todo>Play</todo>' +
+       '</note>';
+   let options: convertxml.ConvertOptions = {
+     // trim: false 转换后是否删除文本前后的空格，否
+     // declarationKey: "_declaration" 转换后文件声明使用_declaration来标识
+     // instructionKey: "_instruction" 转换后指令使用_instruction标识
+     // attributesKey: "_attributes" 转换后属性使用_attributes标识
+     // textKey: "_text" 转换后标签值使用_text标识
+     // cdataKey: "_cdata" 转换后未解析数据使用_cdata标识
+     // docTypeKey: "_doctype" 转换后文档类型使用_doctype标识
+     // commentKey: "_comment" 转换后注释使用_comment标识
+     // parentKey: "_parent" 转换后父类使用_parent标识
+     // typeKey: "_type" 转换后元素类型使用_type标识
+     // nameKey: "_name" 转换后标签名称使用_name标识
+     // elementsKey: "_elements" 转换后元素使用_elements标识
+     trim: false,
+     declarationKey: '_declaration',
+     instructionKey: '_instruction',
+     attributesKey: '_attributes',
+     textKey: '_text',
+     cdataKey: '_cdata',
+     doctypeKey: '_doctype',
+     commentKey: '_comment',
+     parentKey: '_parent',
+     typeKey: '_type',
+     nameKey: '_name',
+     elementsKey: '_elements'
+   }
+   ```
    >
    > 请确保传入的XML文本符合标准格式，若包含“&”字符，请使用实体引用“\&amp;”替换。
 
