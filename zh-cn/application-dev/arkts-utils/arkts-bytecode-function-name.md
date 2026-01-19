@@ -157,6 +157,14 @@ let B = {
 * 如果属性名包含`\`，`.`，为防止二义性，其原函数名会按照匿名函数命名。
 <!-- @[special_with_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/test3.ts) -->  
 
+``` TypeScript
+// test3.ts
+let a = {
+  "a.b#c^2": () => {}, // 原函数名为""。
+  "x\\y#": () => {} // 原函数名为"^1"。
+}
+```
+
 **开发者应尽量避免使用除字母、数字、下划线以外的字符命名函数，以免出现二义性。**
 ## 示例
 <!-- @[avoid_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
