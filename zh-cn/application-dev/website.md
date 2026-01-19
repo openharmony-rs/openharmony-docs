@@ -2662,7 +2662,6 @@
         - 结构体<!--arkdata-struct-->
           - [OH_Cursor](reference/apis-arkdata/capi-rdb-oh-cursor.md)
           - [OH_Predicates](reference/apis-arkdata/capi-rdb-oh-predicates.md)
-          - [OH_RDB_ReturningContext](reference/apis-arkdata/capi-rdb-oh-rdb-returningcontext.md)
           - [OH_VObject](reference/apis-arkdata/capi-rdb-oh-vobject.md)
           - [OH_VBucket](reference/apis-arkdata/capi-rdb-oh-vbucket.md)
           - [OH_Rdb_Config](reference/apis-arkdata/capi-rdb-oh-rdb-config.md)
