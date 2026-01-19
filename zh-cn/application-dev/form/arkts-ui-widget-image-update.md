@@ -28,45 +28,45 @@
 3. 在EntryFormAbility中的onAddForm生命周期回调中实现本地文件的刷新。
 
    <!-- @[local_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
-    
-    ``` TypeScript
-    // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
-    const TAG: string = 'WgtImgUpdateEntryFormAbility';
-    const DOMAIN_NUMBER: number = 0xFF00;
-    // ...
-    
-    export default class WgtImgUpdateEntryFormAbility extends FormExtensionAbility {
-      // 在添加卡片时，打开一个本地图片并将图片内容传递给卡片页面显示
-      onAddForm(want: Want): formBindingData.FormBindingData {
-        // 假设在当前卡片应用的tmp目录下有一个本地图片：head.PNG
-        let tempDir = this.context.getApplicationContext().tempDir;
-        hilog.info(DOMAIN_NUMBER, TAG, `tempDir: ${tempDir}`);
-        let imgMap: Record<string, number> = {};
-        try {
-          // 打开本地图片并获取其打开后的fd, FormExtensionAbility进程销毁时释放
-          let file = fileIo.openSync(tempDir + '/' + 'head.PNG');
-          imgMap['imgBear'] = file.fd;
-        } catch (e) {
-          hilog.error(DOMAIN_NUMBER, TAG, `openSync failed: ${JSON.stringify(e as BusinessError)}`);
-        }
-    
-        class FormDataClass {
-          text: string = 'Image: Bear';
-          loaded: boolean = true;
-          // 卡片需要显示图片场景,必须和下列字段formImages中的key 'imgBear'相同。
-          imgName: string = 'imgBear';
-          // 卡片需要显示图片场景,必填字段(formImages不可缺省或改名), 'imgBear'对应fd
-          formImages: Record<string, number> = imgMap;
-        }
-    
-        let formData = new FormDataClass();
-        // 将fd封装在formData中并返回至卡片页面
-        return formBindingData.createFormBindingData(formData);
-      }
-    
-      // ...
-    }
-    ```
+   
+   ``` TypeScript
+   // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
+   const TAG: string = 'WgtImgUpdateEntryFormAbility';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   // ...
+   
+   export default class WgtImgUpdateEntryFormAbility extends FormExtensionAbility {
+     // 在添加卡片时，打开一个本地图片并将图片内容传递给卡片页面显示
+     onAddForm(want: Want): formBindingData.FormBindingData {
+       // 假设在当前卡片应用的tmp目录下有一个本地图片：head.PNG
+       let tempDir = this.context.getApplicationContext().tempDir;
+       hilog.info(DOMAIN_NUMBER, TAG, `tempDir: ${tempDir}`);
+       let imgMap: Record<string, number> = {};
+       try {
+         // 打开本地图片并获取其打开后的fd, FormExtensionAbility进程销毁时释放
+         let file = fileIo.openSync(tempDir + '/' + 'head.PNG');
+         imgMap['imgBear'] = file.fd;
+       } catch (e) {
+         hilog.error(DOMAIN_NUMBER, TAG, `openSync failed: ${JSON.stringify(e as BusinessError)}`);
+       }
+   
+       class FormDataClass {
+         text: string = 'Image: Bear';
+         loaded: boolean = true;
+         // 卡片需要显示图片场景,必须和下列字段formImages中的key 'imgBear'相同。
+         imgName: string = 'imgBear';
+         // 卡片需要显示图片场景,必填字段(formImages不可缺省或改名), 'imgBear'对应fd
+         formImages: Record<string, number> = imgMap;
+       }
+   
+       let formData = new FormDataClass();
+       // 将fd封装在formData中并返回至卡片页面
+       return formBindingData.createFormBindingData(formData);
+     }
+   
+     // ...
+   }
+   ```
 
 4. 在EntryFormAbility中的onFormEvent生命周期回调中实现网络文件的刷新。
 
