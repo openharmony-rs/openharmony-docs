@@ -4525,8 +4525,8 @@ struct RichEditorDemo {
         .width("100%")
         .border({ width: 1, radius: 5 })
         .key('RichEditor')
-        .caretColor(this.color)//光标颜色
-        .selectedBackgroundColor(this.color)//选中背景色
+        .caretColor(this.color)// 光标颜色
+        .selectedBackgroundColor(this.color)// 选中背景色
         .margin({ top: 50 })
     }
     .width('100%')
@@ -5236,11 +5236,11 @@ struct Index {
           })
         }
         Row({space:2}){
-          //将属性字符串转换成span信息
+          // 将属性字符串转换成span信息
           Button("调用fromStyledString").onClick(() => {
             this.controller1.addTextSpan("调用fromStyledString：" +JSON.stringify(this.controller1.fromStyledString(this.mutableStyledString)))
           })
-          //将给定范围的组件内容转换成属性字符串
+          // 将给定范围的组件内容转换成属性字符串
           Button("调用toStyledString").onClick(() => {
             this.controller.setStyledString(this.controller1.toStyledString({start:0,end:13}))
           })

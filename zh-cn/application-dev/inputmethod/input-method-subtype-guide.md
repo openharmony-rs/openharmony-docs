@@ -12,13 +12,15 @@
 
 1. 输入法应用开发者只需要注册实现一个InputMethodExtensionAbility，所有的输入法子类型共用该InputMethodExtensionAbility，在[module.json5配置文件](../quick-start/module-configuration-file.md)中添加metadata，name为ohos.extension.input_method，用于配置所有子类型的资源信息。
 
+   <!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
+   
    ``` JSON5
    "extensionAbilities": [
      {
-       "srcEntry": "./ets/ServiceExtAbility/ServiceExtAbility.ets",
-       "name": "ServiceExtAbility",
+       "srcEntry": "./ets/InputMethodExtensionAbility/InputMethodService.ets",
+       "name": "InputMethodService",
        "label": "$string:MainAbility_label",
-       "description": "$string:extension_ability_descripter",
+       "description": "$string:extension_ability_descriptor",
        "type": "inputMethod",
        "exported": true,
        "metadata": [
@@ -28,7 +30,7 @@
          }
        ]
      }
-   ]
+   ],
    ```
    
 2. 子类型配置文件`input_method_config.json`需要放在应用资源目录的profile文件夹中，格式如下，字段释义参照[InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype)；开发者需要严格按照配置文件格式及字段进行子类型信息配置，locale字段的配置参照[i18n-locale-culture](.././internationalization/i18n-locale-culture.md#实现原理)。

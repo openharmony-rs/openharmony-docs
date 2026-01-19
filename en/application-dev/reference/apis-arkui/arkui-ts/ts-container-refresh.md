@@ -52,8 +52,8 @@ Defines the options of the **Refresh** component.
 | Name        | Type                                     | Read-Only  | Optional| Description                                    |
 | ---------- | ---------------------------------------- | ---- | -- | ---------------------------------------- |
 | refreshing | boolean                                  | No   | No| Whether the component is being refreshed. The value **true** means that the component is being refreshed, and **false** means the opposite.<br>Default value: **false**<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| offset<sup>(deprecated)</sup>    | number \| string   | No   | Yes| Distance from the pull-down starting point to the top of the component.<br>Default value: **16**.<br>Unit: vp.<br> If the type is string, the pixel unit must be explicitly specified, for example, **'10px'**; if the unit is not specified, for example, **'10'**, the default unit vp is used.<br>This API is deprecated since API version 11. No substitute API is provided.<br>**NOTE**<br>The value range of **offset** is [0vp, 64vp]. If the value is greater than 64 vp, the value 64 vp will be used. The value cannot be a percentage or a negative number.|
-| friction<sup>(deprecated)</sup>   | number \| string               | No   | Yes| Coefficient of friction, which indicates the **<Refresh\>** component's sensitivity to the pull-down gesture. The value ranges from 0 to 100.<br>Default value: **62**<br>- **0** indicates that the **Refresh** component is not responsive to the pull-down gesture.<br>- **100** indicates that the **Refresh** component is highly responsive to the pull-down gesture.<br>- A larger value indicates higher responsiveness of the **Refresh** component to the pull-down gesture.<br>This API is deprecated since API version 11. You can use [pullDownRatio](#pulldownratio12) instead since API version 12.|
+| offset<sup>(deprecated)</sup>    | number&nbsp;\|&nbsp;string   | No   | Yes| Distance from the pull-down starting point to the top of the component.<br>Default value: **16**.<br>Unit: vp.<br> If the type is string, the pixel unit must be explicitly specified, for example, **'10px'**; if the unit is not specified, for example, **'10'**, the default unit vp is used.<br>Note: This API is supported since API version 8 and deprecated since API version 11. No substitute is provided.<br>**NOTE**<br>The value range of **offset** is [0vp, 64vp]. If the value is greater than 64 vp, the value 64 vp will be used. The value cannot be a percentage or a negative number.|
+| friction<sup>(deprecated)</sup>   | number&nbsp;\|&nbsp;string               | No   | Yes| Coefficient of friction, which indicates the **<Refresh\>** component's sensitivity to the pull-down gesture. The value ranges from 0 to 100.<br>Default value: **62**<br>- **0** indicates that the **Refresh** component is not responsive to the pull-down gesture.<br>- **100** indicates that the **Refresh** component is highly responsive to the pull-down gesture.<br>- A larger value indicates higher responsiveness of the **Refresh** component to the pull-down gesture.<br>Note: This API is supported since API version 8 and deprecated since API version 11. You are advised to use [pullDownRatio](#pulldownratio12) instead.|
 | builder<sup>10+</sup>    | [CustomBuilder](ts-types.md#custombuilder8) | No   | Yes| Custom content in the refreshing area.<br>**NOTE**<br>In API version 10 and earlier versions, there is a height limit of 64 vp on custom components. This restriction is removed since API version 11.<br>When a custom component is set with a fixed height, it will be displayed below the refreshing area at that fixed height; when the custom component does not have a height set, its height will adapt to the height of the refreshing area, which may result in the height of the custom component changing to 0 along with the refreshing area. To maintain the intended layout, configure a minimum height constraint for a custom component, which ensures that the component's height does not fall below a certain threshold. For details about how to apply this constraint, see [Example 3](#example-3-customizing-the-refreshing-area-content-with-builder).<br>Since API version 12, use **refreshingContent** instead of **builder** for customizing the content of the refreshing area, to avoid animation interruptions caused by the destruction and re-creation of the custom component during the refreshing process.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | promptText<sup>12+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Custom text displayed at the bottom of the refreshing area.<br>**NOTE**<br>When setting the text, follow the constraints on the **Text** components. If you are using **builder** or **refreshingContent** to customize the content displayed in the refreshing area, the text set with **promptText** will not be displayed.<br>When **promptText** is set and effective, the [refreshOffset](#refreshoffset12) attribute defaults to 96 vp.<br>The maximum font scale factor for the custom text, as specified by [maxFontScale](ts-basic-components-text.md#maxfontscale12), is 2.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | refreshingContent<sup>12+</sup>    | [ComponentContent](../js-apis-arkui-ComponentContent.md) | No   | Yes| Custom content in the refreshing area.<br>**NOTE**<br>If this parameter and the **builder** parameter are set at the same time, the **builder** parameter does not take effect.<br>When a custom component is set with a fixed height, it will be displayed below the refreshing area at that fixed height; when the custom component does not have a height set, its height will adapt to the height of the refreshing area, which may result in the height of the custom component changing to 0 along with the refreshing area. To maintain the intended layout, configure a minimum height constraint for a custom component, which ensures that the component's height does not fall below a certain threshold. For details about how to apply this constraint, see [Example 4](#example-4-customizing-the-refreshing-area-content-with-refreshingcontent).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -99,6 +99,22 @@ Sets whether to initiate a refresh when the pull-down distance exceeds the value
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | value  | boolean |  Yes| Whether to initiate a refresh when the pull-down distance exceeds the value of [refreshOffset](#refreshoffset12). The value **true** means to initiate a refresh, and **false** means the opposite.<br>Default value: **true**|
 
+### pullUpToCancelRefresh<sup>23+</sup>
+
+pullUpToCancelRefresh(enabled: boolean | undefined)
+
+Sets whether to enable the pull-up-to-cancel gesture for refreshing operations.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type                | Mandatory| Description                                                        |
+| ------- | -------------------- | ---- | ------------------------------------------------------------ |
+| enabled | boolean \| undefined | Yes  | Whether to enable the pull-up-to-cancel gesture for refreshing operations.<br>**true**: Enable the pull-up-to-cancel gesture. **false**: Disable the pull-up-to-cancel gesture.<br>**undefined**: Enable the pull-up-to-cancel gesture.|
+
 ### pullDownRatio<sup>12+</sup>
 
 pullDownRatio(ratio: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number>)
@@ -113,7 +129,7 @@ Sets the pull-down ratio.
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| ratio  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> |  Yes| Pull-down ratio. A larger value indicates higher responsiveness to the pull-down gesture. The value **0** indicates that the pull-down does not follow the gesture, and **1** indicates that the pull-down follows the gesture proportionally.<br>If this parameter is not set or is set to **undefined**, a dynamic pull-down ratio is used. That is, the larger the pull-down distance, the smaller the ratio.<br>The value ranges from 0 to 1. A value less than 0 is handled as **0**, and a value greater than 1 is handled as **1**.
+| ratio  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> |  Yes| Pull-down ratio. A larger value indicates higher responsiveness to the pull-down gesture. The value **0** indicates that the pull-down does not follow the gesture, and **1** indicates that the pull-down follows the gesture proportionally.<br>If this parameter is not set or is set to **undefined**, a dynamic pull-down ratio is used. That is, the larger the pull-down distance, the smaller the ratio.<br>The value ranges from 0 to 1. A value less than 0 is handled as **0**, and a value greater than 1 is handled as **1**.|
 
 ### maxPullDownDistance<sup>20+</sup>
 
@@ -129,7 +145,7 @@ Sets the maximum pull-down distance.
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| distance  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> |  Yes| Maximum pull-down distance. The minimum value for the maximum pull-down distance is 0. Values less than 0 are treated as **0**. If this value is less than the refresh offset (**refreshOffset**), the refresh action will not be triggered when the pull-down gesture is released.<br>If set to **undefined** or **null**, this parameter is considered not set.<br>Default value: **undefined**.<br>Unit: vp
+| distance  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> |  Yes| Maximum pull-down distance. The minimum value for the maximum pull-down distance is 0. Values less than 0 are treated as **0**. If this value is less than the refresh offset (**refreshOffset**), the refresh action will not be triggered when the pull-down gesture is released.<br>If set to **undefined** or **null**, this parameter is considered not set.<br>Default value: **undefined**.<br>Unit: vp|
 
 ## Events
 
@@ -763,10 +779,10 @@ struct RefreshExample {
   build() {
     Column() {
       Row() {
-        Button('Disable Refresh').onClick(() => {
+        Button('Disable pull-to-refresh').onClick(() => {
           this.ratio = 0
         })
-        Button('Enable Refresh').onClick(() => {
+        Button('Enable pull-to-refresh').onClick(() => {
           this.ratio = undefined
         })
       }
@@ -879,3 +895,105 @@ struct RefreshExample {
 ```
 
 ![refresh_list_edgeEffect](figures/refresh_alwaysEnabled.gif)
+
+### Example 10: Disabling the Pull-Up-to-Cancel Gesture
+
+This example shows how to disable the pull-up-to-cancel gesture for refreshing operations using the [pullUpToCancelRefresh](#pulluptocancelrefresh23) API.
+
+The **pullUpToCancelRefresh** API is supported since API version 23.
+
+```ts
+// xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+
+class Params {
+  refreshStatus: RefreshStatus = RefreshStatus.Inactive;
+
+  constructor(refreshStatus: RefreshStatus) {
+    this.refreshStatus = refreshStatus;
+  }
+}
+
+@Builder
+function customRefreshingContent(params: Params) {
+  Stack() {
+    Row() {
+      LoadingProgress().height(32)
+      Text('refreshStatus: ' + params.refreshStatus).fontSize(16).margin({ left: 20 })
+    }
+    .alignItems(VerticalAlign.Center)
+  }
+  .align(Alignment.Center)
+  .clip(true)
+  .constraintSize({ minHeight: 32 })
+  .width('100%')
+}
+
+@Entry
+@Component
+struct RefreshExample {
+  @State isRefreshing: boolean = false;
+  @State arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']; // The data type is changed to string[].
+  @State refreshStatus: RefreshStatus = RefreshStatus.Inactive;
+  private contentNode?: ComponentContent<Object> = undefined;
+  private params: Params = new Params(RefreshStatus.Inactive);
+
+  aboutToAppear(): void {
+    let uiContext = this.getUIContext();
+    this.contentNode = new ComponentContent(uiContext, wrapBuilder(customRefreshingContent), this.params);
+  }
+
+  build() {
+    Column() {
+      Refresh({ refreshing: $$this.isRefreshing, refreshingContent: this.contentNode }) {
+        List() {
+          ForEach(this.arr, (item: string) => {
+            ListItem() {
+              Text('' + item)
+                .width('70%')
+                .height(80)
+                .fontSize(16)
+                .margin(10)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
+            }
+          }, (item: string) => item)
+        }
+        .onScrollIndex((first: number) => {
+          console.info(first.toString());
+        })
+        .width('100%')
+        .height('100%')
+        .alignListItem(ListItemAlign.Center)
+        .scrollBar(BarState.Off)
+      }
+      .backgroundColor(0x89CFF0)
+      .pullToRefresh(true)
+      .pullUpToCancelRefresh(false)
+      .refreshOffset(96)
+      .onStateChange((refreshStatus: RefreshStatus) => {
+        this.refreshStatus = refreshStatus;
+        this.params.refreshStatus = refreshStatus;
+        this.contentNode?.update(this.params);
+        console.info('Refresh onStatueChange state is ' + refreshStatus);
+      })
+      .onRefreshing(() => {
+        setTimeout(() => {
+          const newArr: string[] = [];
+          const lastNum = parseInt(this.arr[this.arr.length - 1]);
+          for (let i = 0; i < 11; i++) {
+            newArr.push((lastNum + 1 + i).toString());
+          }
+          this.arr = newArr;
+
+          this.isRefreshing = false;
+        }, 6000)
+        console.info('onRefreshing test');
+      })
+    }
+  }
+}
+```
+
+![refresh_pullUpToCancelRefresh](figures/refresh_pullUpToCancelRefresh.gif)

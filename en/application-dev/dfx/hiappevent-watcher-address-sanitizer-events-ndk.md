@@ -75,7 +75,7 @@ The following describes how to subscribe an address sanitizer event for an array
 
    - Watcher of the onReceive type:
 
-      In the **napi_init.cpp** file, define the methods related to the watcher of the onReceive type.
+      In the **napi_init.cpp** file, define the methods related to the watcher of the **onReceive** type.
 
       ```c++
       // Define a variable to cache the pointer to the created watcher.
@@ -132,7 +132,7 @@ The following describes how to subscribe an address sanitizer event for an array
 
    - Watcher of the onTrigger type:
 
-      In the **napi_init.cpp** file, define the methods related to the watcher of the OnTrigger type.
+      In the **napi_init.cpp** file, define the methods related to the watcher of the **OnTrigger** type.
 
       ```c++
       // Define a variable to cache the pointer to the created watcher.
@@ -223,14 +223,14 @@ The following describes how to subscribe an address sanitizer event for an array
    }
    ```
 
-   In the **index.d.ts** file, define ArkTS APIs.
+   In the **index.d.ts** file, define the ArkTS API.
 
    ```typescript
    export const registerWatcher: () => void;
    export const test: () => void;
    ```
 
-3. In the **EntryAbility.ets** file, add the following interface invocation to **onCreate()**.
+3. In the **EntryAbility.ets** file, add the following API to **onCreate()**.
 
    ```typescript
    // Import the dependent module.
