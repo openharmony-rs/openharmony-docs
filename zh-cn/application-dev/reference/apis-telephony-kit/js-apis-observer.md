@@ -1075,9 +1075,11 @@ SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-observer.onGetSimActiveState(0, (err: BusinessError, data: sim.CardType) => {
-    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-});
+let sislotId = 0；
+let simActiveState: Callback<boolean> = (isSimActive: boolean) => {
+    console.info(`simActiveState slotId ${JSON.stringify(isSimActive)}`);
+}
+observer.onGetSimActiveState(slotId, simActiveState);
 ```
 
 ## observer.offGetSimActiveState<sup>10+</sup>
@@ -1113,9 +1115,10 @@ offGetSimActiveState\(callback: Callback\<boolean\>\): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-observer.offGetSimActiveState((err: BusinessError, data: sim.CardType) => {
-    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-});
+let simActiveState: Callback<boolean> = (isSimActive: boolean) => {
+    console.info(`simActiveState slotId ${JSON.stringify(isSimActive)}`);
+}
+observer.offGetSimActiveState(simActiveState);
 ```
 
 ## LockReason<sup>8+</sup>
