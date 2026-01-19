@@ -86,6 +86,7 @@
   - 结构体<!--arkdata-struct-->
     - [OH_Cursor](capi-rdb-oh-cursor.md)
     - [OH_Predicates](capi-rdb-oh-predicates.md)
+    - [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)
     - [OH_VObject](capi-rdb-oh-vobject.md)
     - [OH_VBucket](capi-rdb-oh-vbucket.md)
     - [OH_Rdb_Config](capi-rdb-oh-rdb-config.md)

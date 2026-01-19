@@ -27,7 +27,7 @@
         - [HSP](quick-start/in-app-hsp.md)
       - 应用程序包安装卸载与更新<!--application-package-install-->
         - [应用安装卸载与更新开发指导](quick-start/application-package-install-uninstall.md)
-        - [应用安装与更新一致性校验](quick-start/multi_module_installation_update_consistency_verification.md)
+        - [应用安装与更新一致性校验](quick-start/install-and-update-consistency-verification.md)
     - 应用配置文件（Stage模型）<!--application-configuration-file-stage-->
       - [应用配置文件概述（Stage模型）](quick-start/application-configuration-file-overview-stage.md)
       - [app.json5配置文件](quick-start/app-configuration-file.md)
@@ -46,7 +46,7 @@
       - [HSP转HAR指导](quick-start/hsp-to-har.md)
       - [HAP转HAR指导](quick-start/hap-to-har.md)
       - [集成态HSP](quick-start/integrated-hsp.md)
-    - [应用程序包常见问题](quick-start/common_problem_of_application.md)
+    - [应用程序包常见问题](quick-start/common-problem-of-application.md)
     - [应用程序包术语](quick-start/application-package-glossary.md)
   - [资源分类与访问](quick-start/resource-categories-and-access.md)
   - 学习ArkTS语言<!--learning-arkts-->
@@ -2463,10 +2463,10 @@
             - [BundleResourceInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md)
             - [BusinessAbilityInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-businessAbilityInfo-sys.md)
             - [dispatchInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-dispatchInfo-sys.md)
-            - [LauncherAbilityResourceInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)
+            - [LauncherAbilityResourceInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-launcherAbilityInfo.md)
             - [permissionDef (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-permissionDef-sys.md)
             - [PluginBundleInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-pluginBundleInfo-sys.md)
-            - [recoverableApplicationInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-recoverableApplicationInfo-sys.md)
+            - [recoverableApplicationInfo (系统接口)](reference/apis-ability-kit/js-apis-recoverableApplicationInfo-sys.md)
             - [remoteAbilityInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-remoteAbilityInfo-sys.md)
             - [SharedBundleInfo (系统接口)](reference/apis-ability-kit/js-apis-bundleManager-sharedBundleInfo-sys.md)
             <!--DelEnd-->
@@ -4543,6 +4543,7 @@
             - [@ohos.wallpaper (壁纸)(系统接口)](reference/apis-basic-services-kit/js-apis-wallpaper-sys.md)
             - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility)(系统接口)](reference/apis-basic-services-kit/js-apis-WallpaperExtensionAbility-sys.md)
             - [@ohos.systemTimer (系统定时器)(系统接口)](reference/apis-basic-services-kit/js-apis-system-timer-sys.md)
+            - [@ohos.intelligentScene (情景模式)](reference/apis-basic-services-kit/js-apis-intelligentScene.md)
             <!--DelEnd-->
           - 已停止维护的接口<!--basic-services-arkts-dep-->
             - [系统公共事件定义](reference/apis-basic-services-kit/common_event/commonEvent-definitions.md)
@@ -4630,6 +4631,7 @@
           - [设置数据项错误码](reference/apis-basic-services-kit/errorcode-settings.md)
           <!--Del-->
           - [划词服务错误码](reference/apis-basic-services-kit/errorcode-selection.md)
+          - [情景模式错误码](reference/apis-basic-services-kit/errorcode-intelligentScene.md)
           <!--DelEnd-->
       - Function Flow Runtime Kit（任务并发调度服务）<!--function-flow-runtime-api-->
         - C API<!--function-flow-runtime-c-->

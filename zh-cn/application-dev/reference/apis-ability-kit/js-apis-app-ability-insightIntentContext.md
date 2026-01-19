@@ -51,7 +51,7 @@ import { InsightIntentContext } from '@kit.AbilityKit';
         },
       };
       try {
-        //通过意图实例唯一ID返回意图执行结果
+        // 通过意图实例唯一ID返回意图执行结果
         insightIntentProvider.sendExecuteResult(this.context.instanceId, result)
           .then(() => {
             console.info('testTag setExecuteResult success');
