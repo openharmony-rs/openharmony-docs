@@ -1116,6 +1116,18 @@ ArkTS-Sta
 // ArkTS-Sta只能访问name属性
 console.info(foo.name);
 console.info(arrowFunc.name);
+
+// ArkTS-Sta使用类封装属性
+class T1 {	 
+  static foo(path: string): void {	 
+    console.info(path);	 
+  } 
+
+  static baz: number = 2; 
+} 
+
+T1.foo("example"); 
+console.info(T1.baz);
 ```
 
 ## 不支持TS装饰器
