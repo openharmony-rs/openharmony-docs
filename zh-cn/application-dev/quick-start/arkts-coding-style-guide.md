@@ -275,7 +275,20 @@ b)   在模板中，不用加空格，例如：`abc${name}`。
 
 **【正例】**
 
-<!-- @[highlight_brace_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[many_properties_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+interface I {
+  name: string
+  age: number
+  value: number
+  sum: number
+  foo: boolean
+  bar: boolean
+}
+
+let obj1: I = { name: 'tom', age: 16, value: 1, sum: 2, foo: true, bar: false }
+```
 
 **【正例】**
 
