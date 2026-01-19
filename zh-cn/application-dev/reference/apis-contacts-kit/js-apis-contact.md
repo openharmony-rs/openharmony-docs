@@ -4432,7 +4432,7 @@ addContacts(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 16700001      | General error. |
-| 16700002      | Invalid Parameter value. |
+| 16700002      | Invalid parameter value. |
 
 **示例：**
 
