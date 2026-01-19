@@ -936,7 +936,7 @@ getContractInfo\(slotId: number, requestData: ContractRequestData\): Promise\<st
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | -------------------------------------- |
 | slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。   |
-| requestData | [contractrequestdata](#contractrequestdata) | 是   | 用来加密的信息。   |
+| requestData | [ContractRequestData](./js-apis-esim-sys.md#contractrequestdata20)| 是   | 用来加密的信息。   |
 
 **返回值：**
 
