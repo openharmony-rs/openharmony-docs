@@ -311,7 +311,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    <!-- @[napi_create_async_work_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/workers/Worker.ets) -->
    
    ``` TypeScript
-   // entry/src/main/ets/worker/worker.ets
+   // entry/src/main/ets/workers/Worker.ets
    
    import nativeModule from 'libentry1.so';
    import { worker, MessageEvents } from '@kit.ArkTS';
