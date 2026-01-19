@@ -259,7 +259,12 @@ b)   在模板中，不用加空格，例如：`abc${name}`。
 
 **【反例】**
 
-<!-- @[highlight_keywords_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[single_quotation_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+let message1 = 'world';
+console.info(message1);
+```
 
 **【正例】**
 
