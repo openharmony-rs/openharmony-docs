@@ -499,6 +499,16 @@ ArkTS中，浮点值包含一个小数点，不要求小数点之前或之后必
 
 <!-- @[check_NaN_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+if (foo == Number.NaN) {
+  // ...
+}
+
+if (foo != Number.NaN) {
+  // ...
+}
+```
+
 **【正例】**
 
 <!-- @[check_NaN_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
