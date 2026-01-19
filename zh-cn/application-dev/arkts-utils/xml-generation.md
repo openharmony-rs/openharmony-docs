@@ -120,6 +120,27 @@ XML模块的API接口可以参考[@ohos.xml](../reference/apis-arkts/js-apis-xml
 2. 调用XML元素生成函数。
 
    <!-- @[xmlDySerializer_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlDynamicSerializer.ets) -->
+   
+   ``` TypeScript
+   let dySerializer = new xml.XmlDynamicSerializer('utf-8');
+   dySerializer.setDeclaration(); // 写入XML的声明
+   dySerializer.startElement('bookstore'); // 写入元素开始标记
+   dySerializer.startElement('book'); // 嵌套元素开始标记
+   dySerializer.setAttributes('category', 'COOKING'); // 写入属性及其属性值
+   dySerializer.startElement('title');
+   dySerializer.setAttributes('lang', 'en');
+   dySerializer.setText('Everyday'); // 写入标签值
+   dySerializer.endElement(); // 写入结束标记
+   dySerializer.startElement('author');
+   dySerializer.setText('Giana');
+   dySerializer.endElement();
+   dySerializer.startElement('year');
+   dySerializer.setText('2005');
+   dySerializer.endElement();
+   dySerializer.endElement();
+   dySerializer.endElement();
+   let arrayBuffer = dySerializer.getOutput();
+   ```
 
 3. 使用Uint8Array操作ArrayBuffer，并调用TextDecoder对Uint8Array解码后输出。
 
