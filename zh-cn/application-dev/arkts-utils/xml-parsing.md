@@ -130,6 +130,49 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 <!-- @[example_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ExampleScenario.ets) -->
 
+``` TypeScript
+import { xml, util } from '@kit.ArkTS';
+// ...
+let strXml: string =
+  '<?xml version="1.0" encoding="UTF-8"?>' +
+    '<book category="COOKING">' +
+    '<title lang="en">Everyday</title>' +
+    '<author>Giana</author>' +
+    '</book>';
+let textEncoder: util.TextEncoder = new util.TextEncoder();
+let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml);
+let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+let str: string = '';
+
+function tagFunc(name: string, value: string): boolean {
+  str = name + value;
+  console.info('tag-' + str);
+  return true;
+}
+
+function attFunc(name: string, value: string): boolean {
+  str = name + ' ' + value;
+  console.info('attri-' + str);
+  return true;
+}
+
+function tokenFunc(name: xml.EventType, value: xml.ParseInfo): boolean {
+  str = name + ' ' + value.getDepth();
+  console.info('token-' + str);
+  // ...
+  return true;
+}
+// ...
+  let options: xml.ParseOptions = {
+    supportDoctype: true,
+    ignoreNameSpace: true,
+    tagValueCallbackFunction: tagFunc,
+    attributeValueCallbackFunction: attFunc,
+    tokenValueCallbackFunction: tokenFunc
+  };
+  xmlParser.parseXml(options);
+```
+
 输出结果如下所示：
 
 ```txt
