@@ -239,7 +239,15 @@ pointX = 10; pointY = 0;
 <!-- @[variable_definitions_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ### 空格应该突出关键字和重要信息，避免不必要的空格
+<!-- @[highlight_else_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+if (flag) {
+  // ...
+} else { // else 与其前面的大括号 } 之间增加空格。
+  // ...
+}
+```
 **【级别】建议**
 
 **【描述】**
