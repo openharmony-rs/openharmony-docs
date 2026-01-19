@@ -428,9 +428,9 @@ static resolveUIContext(): ResolvedUIContext
 
 **示例：**
 
-ArkTS-Sta示例：
+ArkTS-Dyn示例：
 
-``` ts
+```ts
 import { UIContext } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -451,7 +451,7 @@ struct Index {
 ```
 ArkTS-Sta示例：
 
-``` ts
+```ts
 import { Entry, Text, Column, Component, Button, RelativeContainer, FontWeight, AlignRuleOption, VerticalAlign, HorizontalAlign, State, UIContext } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';
 
@@ -501,28 +501,30 @@ isAvailable(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-import { UIContext } from '@kit.ArkUI'
+import { UIContext } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct UIContextCompare {
-  @State result1: string = ""
-  @State result2: string = ""
+  @State result1: string = ''
+  @State result2: string = ''
 
   build() {
     Column() {
-      Text("getUIContext() 结果: " + this.result1)
+      Text('getUIContext() 结果: ' + this.result1)
         .fontSize(20)
         .margin(10)
 
-      Text("new UIContext() 结果: " + this.result2)
+      Text('new UIContext() 结果: ' + this.result2)
         .fontSize(20)
         .margin(10)
 
       Divider().margin(20)
 
-      Button("getUIContext()")
+      Button('getUIContext()')
         .width("70%")
         .height(50)
         .margin(10)
@@ -531,14 +533,14 @@ struct UIContextCompare {
             const ctx: UIContext = this.getUIContext();
             const available: boolean = ctx.isAvailable();
             this.result1 = `可用状态: ${available} UI实例有效 `;
-            console.log("getUIContext测试:", available);
+            console.log('getUIContext测试:', available);
           } catch (e) {
-            this.result1 = "错误: " + (e instanceof Error ? e.message : String(e));
+            this.result1 = '错误: ' + (e instanceof Error ? e.message : String(e));
           }
         })
 
-      Button("new UIContext()")
-        .width("70%")
+      Button('new UIContext()')
+        .width('70%')
         .height(50)
         .margin(10)
         .onClick(() => {
@@ -546,18 +548,79 @@ struct UIContextCompare {
             const ctx: UIContext = new UIContext();
             const available: boolean = ctx.isAvailable();
             this.result2 = `可用状态: ${available} UI实例无效`;
-            console.log("new UIContext测试:", available);
+            console.log('new UIContext测试:', available);
           } catch (e) {
-            this.result2 = "错误: " + (e instanceof Error ? e.message : String(e));
+            this.result2 = '错误: ' + (e instanceof Error ? e.message : String(e));
           }
         })
     }
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
     .padding(20)
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, State, Column, Text, Divider, Button, UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct UIContextCompare {
+  @State result1: string = ''
+  @State result2: string = ''
+
+  build() {
+    Column() {
+      Text('getUIContext() 结果: ' + this.result1)
+        .fontSize(20)
+        .margin(10)
+
+      Text('new UIContext() 结果: ' + this.result2)
+        .fontSize(20)
+        .margin(10)
+
+      Divider().margin(20)
+
+      Button('getUIContext()')
+        .width('70%')
+        .height(50)
+        .margin(10)
+        .onClick(() => {
+          try {
+            const ctx: UIContext = this.getUIContext();
+            const available: boolean = ctx.isAvailable();
+            this.result1 = `可用状态: ${available} UI实例有效 `;
+            console.log('getUIContext测试:', available);
+          } catch (e) {
+            this.result1 = '错误: ' + (e instanceof Error ? e.message : String(e));
+          }
+        })
+
+      Button('new UIContext()')
+        .width('70%')
+        .height(50)
+        .margin(10)
+        .onClick(() => {
+          try {
+            const ctx: UIContext = new UIContext();
+            const available: boolean = ctx.isAvailable();
+            this.result2 = `可用状态: ${available} UI实例无效`;
+            console.log('new UIContext测试:', available);
+          } catch (e) {
+            this.result2 = '错误: ' + (e instanceof Error ? e.message : String(e));
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
 ![example](figures/uicontext_isavailable.gif)
 ### getFont
 
