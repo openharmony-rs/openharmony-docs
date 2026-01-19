@@ -13,7 +13,7 @@
 | [onCancelMessages(hashCodes: Array\<string>): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#oncancelmessages) | 取消通知时的回调。 |
 
 ## 前提条件
-申请ohos.permission.SUBSCRIBE_NOTIFICATION权限。
+申请[ohos.permission.SUBSCRIBE_NOTIFICATION](../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限。
 
 ## 开发步骤
 
@@ -22,7 +22,7 @@
 1. 在entry/src/main/ets/创建目录extensionability。
 
 2. 在entry/src/main/ets/extensionability目录下创建NotificationSubscriberExtAbility.ets，其内容如下。
-   <!--@[callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
+   <!--@[callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -86,24 +86,121 @@
 2. 用户收到消息后，假如蓝牙连接是无效的，则建立蓝牙连接。
 3. 假如蓝牙连接已经存在，则直接使用这个连接发送消息。
 4. 如果使用该连接发送消息失败，则重新建立连接，如果连接能建立成功则发送消息。
-   <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
+5. 需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，具体操作请参考[声明权限](../security/AccessToken/declare-permissions.md)和[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
+   <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
-   import SppClientManager from '../utils/SppClientManager'
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { socket } from '@kit.ConnectivityKit'
+   import {util} from '@kit.ArkTS'; 
    
    const DOMAIN = 0x0000;
+   class TransferInfo {
+     public type: string = ''
+     public info: notificationExtensionSubscription.NotificationInfo | undefined
+     public cancelHashCodes: Array<string> | undefined
+   }
    
-   export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
+   class SppClientManager {
+     private clientNumber: number = -1;
+     private peerDevice: string = '';
+   
+     constructor(peerDevice: string) {
+       this.peerDevice = peerDevice
+     }
+   
+     public isConnect(): boolean {
+       return this.clientNumber !== -1;
+     }
+   
+     public async startConnect(): Promise<boolean> {
+       let option: socket.SppOptions = {
+         uuid: '00009999-0000-1000-8000-00805F9B34FB',
+         secure: false,
+         type: socket.SppType.SPP_RFCOMM
+       };
+       socket.sppConnect(this.peerDevice, option, (err: BusinessError, num: number) => {
+         if (err) {
+           hilog.error(DOMAIN, 'testTag', `cpp connect failed, errCode: ${err.code}, errMessage: ${err.message}`);
+         } else {
+           hilog.info(DOMAIN, 'testTag', `spp connect success clientNumber: ${num}`);
+           this.clientNumber = num;
+         }
+       });
+       return true
+     }
+   
+     private sendData(jsonStr: string) {
+       if (!this.isConnect()) {
+         hilog.error(DOMAIN, 'testTag', `server is not connected`);
+         return;
+       }
+       if (!jsonStr) {
+         hilog.error(DOMAIN, 'testTag', 'json is empty');
+         return;
+       }
+       hilog.info(DOMAIN, 'testTag', `prepare sending data to client ${this.clientNumber}`);
+       const textEncoder:util.TextEncoder = new util.TextEncoder();
+       const uint8Array: Uint8Array = textEncoder.encodeInto(jsonStr);
+       const arrayBuffer = uint8Array.buffer;
+   
+       socket.sppWrite(this.clientNumber, arrayBuffer);
+       hilog.info(DOMAIN, 'testTag', `sending success size：${arrayBuffer.byteLength} bytes, data: ${jsonStr}`);
+     }
+   
+     public sendNotificationData(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
+       let info: TransferInfo = {
+         type: 'publish',
+         info: notificationInfo,
+         cancelHashCodes: undefined
+       };
+   
+       let jsonStr = JSON.stringify(info);
+       this.sendData(jsonStr);
+     }
+   
+     public sendCancelNotificationData(cancelHashCodes: Array<string>) {
+       let info: TransferInfo = {
+         type: 'cancel',
+         cancelHashCodes: cancelHashCodes,
+         info: undefined
+       };
+   
+       let jsonStr = JSON.stringify(info);
+       this.sendData(jsonStr);
+     }
+   
+     public read = (dataBuffer: ArrayBuffer) => {
+       let data = new Uint8Array(dataBuffer);
+       hilog.info(DOMAIN, 'testTag', `client data: ${JSON.stringify(data)}`);
+     };
+   
+     public stopConnect() {
+       hilog.info(DOMAIN, 'testTag', `closeSppClient ${this.clientNumber}`);
+       try {
+         socket.off('sppRead', this.clientNumber, this.read);
+       } catch (err) {
+         hilog.error(DOMAIN, 'testTag', `off sppRead errCode: ${err.code}, errMessage: ${err.message}`);
+       }
+       try {
+         socket.sppCloseClientSocket(this.clientNumber);
+         this.clientNumber = -1;
+       } catch (err) {
+         hilog.error(DOMAIN, 'testTag', `stopConnect errCode: ${err.code}, errMessage: ${err.message}`);
+       }
+     }
+   }
+   
+   // export SppClientManager;
+   export class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
      private sppClientManager: SppClientManager | undefined;
-   
      onDestroy(): void {
        hilog.info(DOMAIN, 'testTag', 'onDestroy');
        this.sppClientManager!.stopConnect();
      }
-   
-     //Called back when a notification is published.
+     // Called back when a notification is published.
      onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
        hilog.info(DOMAIN, 'testTag', `on receive message ${JSON.stringify(notificationInfo)}`)
        notificationExtensionSubscription.getSubscribeInfo()
@@ -119,9 +216,11 @@
                this.sendPublishWithRetry(notificationInfo);
              }, 3000)
            }
-         })
+         }).catch((err: BusinessError) => {
+         hilog.error(DOMAIN, 'testTag',
+           `notificationExtensionSubscription failed, errCode ${err.code}, errorMessage ${err.message}`);
+       });
      }
-   
      // Sends a publish notification and retries once upon failure.
      private sendPublishWithRetry(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
        try {
@@ -135,7 +234,7 @@
        }
      }
    
-     //Called back when notifications is cancelled.
+     // Called back when notifications is cancelled.
      onCancelMessages(hashCodes: Array<string>): void {
        hilog.info(DOMAIN, 'testTag', `on cancel message ${JSON.stringify(hashCodes)}`)
        notificationExtensionSubscription.getSubscribeInfo()
@@ -151,9 +250,10 @@
                this.sendCancelWithRetry(hashCodes);
              }, 3000)
            }
-         })
+         }).catch((err: BusinessError) => {
+         hilog.error(DOMAIN, 'testTag', `notificationExtensionSubscription failed, errCode ${err.code}, errorMessage ${err.message}`);
+       });
      }
-   
      // Retries a cancel operation if it fails.
      private sendCancelWithRetry(hashCodes: string[]) {
        try {
@@ -168,4 +268,4 @@
      }
    }
    ```
-注意：请勿频繁建立链接，可能会影响功能。
+注意：请勿频繁建立连接，可能会影响功能。

@@ -42,7 +42,7 @@ constructor(durationTime: number);
 
 > **说明：**
 >
-> 从API version 12开始废弃。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 

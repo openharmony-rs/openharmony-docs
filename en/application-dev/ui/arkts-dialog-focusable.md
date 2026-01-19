@@ -29,7 +29,7 @@ The [openCustomDialog](arkts-uicontext-custom-dialog.md) and [CustomDialog](arkt
     
     ``` TypeScript
     @State dialogIdIndex: number = 0;
-    // Replace 'dialog_message' with the resource name you use.
+    // Configure the resource whose name is 'dialog_message' and value is a non-empty string in the resources\base\element\string.json file.
     private message: string =
       this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('dialog_message') as string;
     
@@ -79,7 +79,7 @@ This example demonstrates how to achieve the following effect: When the user is 
 @Component
 export struct Index {
   @State dialogIdIndex: number = 0;
-  // Replace 'dialog_message' with the resource name you use.
+  // Configure the resource whose name is 'dialog_message' and value is a non-empty string in the resources\base\element\string.json file.
   private message: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('dialog_message') as string;
 

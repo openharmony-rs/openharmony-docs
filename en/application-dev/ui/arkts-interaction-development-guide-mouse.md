@@ -87,11 +87,12 @@ struct MouseMove {
 }
 ```
 
-In the preceding example, the **onMouse** API is bound to the **Button** component and its parent **Column** container. The callback displays key event parameters such as **button** and **action**. The entire process can be divided into the following two actions:
+In the preceding example, the **onMouse** API is bound to the **Button** component. The callback displays the values of callback parameters, such as **button** and **action**. Apply the same settings to the outer **Column** container. The entire process can be divided into the following two actions:
 
 1. Moving the mouse pointer: Before the mouse pointer moves from outside the **Button** component to inside, only the **onMouse** callback of the **Column** component is triggered. When the mouse pointer enters the **Button** component, as the **onMouse** event bubbles up by default, both the **onMouse** callbacks of the **Column** and **Button** components are invoked. Because no mouse button is clicked during this process, the displayed information shows **button** as **0** (enumerated value of **MouseButton.None**) and **action** as **3** (enumerated value of **MouseAction.Move**).
 
 2. Clicking the mouse button: After the mouse pointer enters the **Button** component, clicking the component twice (left-click and right-click) produces the following results:
+
    Left-click: button = 1 (enumerated value of **MouseButton.Left**); action = 1 (enumerated value of **MouseAction.Press**); action = 2 (enumerated value of **MouseAction.Release**).
 
    Right-click: button = 2 (enumerated value of **MouseButton.Right**); action = 1 (enumerated value of **MouseAction.Press**); action = 2 (enumerated value of **MouseAction.Release**)
@@ -213,7 +214,7 @@ When a user presses a mouse button, a mouse press event is triggered. You can ac
 
 The following example demonstrates multi-selection functionality using mouse button processing:
 
-<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->
+<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->   
 
 ``` TypeScript
 class ListDataSource implements IDataSource {
@@ -263,12 +264,12 @@ class ListDataSource implements IDataSource {
 @Component
 struct ListExample {
   private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  private allSelectedItems: Array<number> = []
-  @State isSelected: boolean[] = []
+  private allSelectedItems: Array<number> = [];
+  @State isSelected: boolean[] = [];
 
   @Styles
   selectedStyle(): void {
-    .backgroundColor(Color.Green)
+    .backgroundColor(Color.Blue);
   }
 
   isItemSelected(item: number): boolean {
@@ -304,25 +305,25 @@ struct ListExample {
             // Check whether the left mouse button is pressed.
             if (event.button === MouseButton.Left && event.action === MouseAction.Press) {
               // Check the item selected state.
-              let isSelected: boolean = this.isItemSelected(index)
+              let isSelected: boolean = this.isItemSelected(index);
               // Check the Ctrl key state.
-              let isCtrlPressing: boolean = false
+              let isCtrlPressing: boolean = false;
               if (event.getModifierKeyState) {
-                isCtrlPressing = event.getModifierKeyState(['Ctrl'])
+                isCtrlPressing = event.getModifierKeyState(['Ctrl']);
               }
               // If the mouse is clicked without the Ctrl key held down, forcefully clear other selected items and keep only the current item selected.
               if (!isCtrlPressing) {
-                this.allSelectedItems = []
+                this.allSelectedItems = [];
                 for (let i = 0; i < this.isSelected.length; i++) {
-                  this.isSelected[i] = false
+                  this.isSelected[i] = false;
                 }
               }
               if (isSelected) {
-                this.allSelectedItems.filter(item => item !== index)
-                this.isSelected[index] = false
+                this.allSelectedItems.filter(item => item !== index);
+                this.isSelected[index] = false;
               } else {
-                this.allSelectedItems.push(index)
-                this.isSelected[index] = true
+                this.allSelectedItems.push(index);
+                this.isSelected[index] = true;
               }
             }
           })
@@ -347,6 +348,7 @@ struct ListExample {
 ## Processing Mouse Wheel Input
 
 The mouse wheel is primarily used for vertical scrolling. When a user scrolls the wheel, the system generates a vertical [axis event](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md) and dispatches it to the application. Components can handle this event using the [onAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#onaxisevent) API. The event includes the cursor position and the angle of wheel rotation, accessible using the **axisVertical** property of the [BaseEvent](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8) object.
+
 Mouse wheel axis events follow a structured lifecycle: Each scroll interaction begins with an [AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).BEGIN event. When scrolling ends, an [AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).End event is emitted. For slow or intermittent scrolling, multiple **BEGIN** and **END** events may be reported. The **axisVertical** value represents the angular change during a single scroll tick. Key characteristics include:
 - It reflects the delta of one scroll action, not the cumulative scroll distance.
 - The value is influenced by system-level wheel sensitivity settings.
@@ -354,6 +356,7 @@ Mouse wheel axis events follow a structured lifecycle: Each scroll interaction b
 - A forward scroll (wheel up) yields a negative value. A backward scroll (wheel down) yields a positive value.
 
 Built-in scrollable components automatically handle wheel input. No additional configuration is required.
+
 When [PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md) is used, wheel input maps to vertical offset values: For forward scrolling, **offsetY** is positive; for backward scrolling, **offsetY** is negative.
 
 > **NOTE**

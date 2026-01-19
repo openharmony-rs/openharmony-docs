@@ -28,10 +28,11 @@ import { application } from '@kit.AbilityKit';
 
 | 名称                 | 值  | 说明                               |
 | -------------------- | --- | --------------------------------- |
-| UNSPECIFIED    | 0   |    未发生预加载或预加载数据已被清除。       |
+| UNSPECIFIED                  | 0   |    未发生预加载或预加载数据已被清除。       |
 | TYPE_CREATE_PROCESS          | 1   |    进程最终预加载到进程创建完成阶段。      |
-| TYPE_CREATE_ABILITY_STAGE  | 2   |     进程最终预加载到[AbilityStage](./js-apis-app-ability-abilityStage.md)创建完成阶段。   |
-| TYPE_CREATE_WINDOW_STAGE        | 3   |    进程最终预加载到[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。           |
+| TYPE_CREATE_ABILITY_STAGE    | 2   |     进程最终预加载到[AbilityStage](./js-apis-app-ability-abilityStage.md)创建完成阶段。   |
+| TYPE_CREATE_WINDOW_STAGE     | 3   |    进程最终预加载到[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。           |
+| TYPE_CREATE_BACKGROUND_ABILITY <sup>23+</sup>          | 4   |    进程最终预加载到[onBackground](./js-apis-app-ability-uiAbility.md#onbackground)执行完成阶段。      |
 
 ## application.createModuleContext<sup>12+</sup>
 

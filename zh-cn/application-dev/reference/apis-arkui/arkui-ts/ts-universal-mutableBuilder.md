@@ -6,7 +6,7 @@
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
-使用mutableBuilder封装全局@Builder，实现全局@Builder的动态切换。开发指南见[mutableBuilder: 实现全局@Builder动态更新](../../../ui/state-management/arkts-mutableBuilder.md) 
+使用mutableBuilder封装全局@Builder，实现全局@Builder的动态切换。开发指南见[mutableBuilder：实现全局@Builder动态更新](../../../ui/state-management/arkts-mutableBuilder.md) 
 
 > **说明：**
 >
@@ -19,6 +19,7 @@
 mutableBuilder\<Args extends Object[]\>(builder: BuilderCallback): MutableBuilder\<Args\>
 
 `mutableBuilder`是一个模板函数，它返回一个`MutableBuilder`对象，只接受一个全局的`@Builder`函数作为其参数。
+
 该函数返回的[MutableBuilder](#mutablebuilder-1)对象中，`builder`属性方法只能在自定义组件内部使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -81,8 +82,7 @@ struct MyApp {
 
 ## MutableBuilder
 
-class MutableBuilder\<Args extends Object[]\> extends WrappedBuilder\<Args\> {
-}
+class MutableBuilder\<Args extends Object[]\> extends WrappedBuilder\<Args\> { }
 
 用于实现包装[全局\@Builder](../../../ui/state-management/arkts-builder.md#全局自定义构建函数)的动态切换的类，MutableBuilder继承自[WrappedBuilder](./ts-universal-wrapBuilder.md)，其模板参数`Args extends Object[]`应传入@Builder函数的参数类型列表。[mutableBuilder](../../../ui/state-management/arkts-mutableBuilder.md)函数返回MutableBuilder对象。
 

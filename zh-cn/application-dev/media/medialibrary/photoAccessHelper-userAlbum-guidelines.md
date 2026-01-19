@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-photoAccessHelper提供用户相册相关的接口，支持创建和删除相册，以及添加和删除相册中的图片和视频资源。
+photoAccessHelper提供用户相册相关的接口，支持查询和重命名相册，以及添加和删除相册中的图片和视频资源。
 
 > **说明：**
 >
@@ -14,6 +14,7 @@ photoAccessHelper提供用户相册相关的接口，支持创建和删除相册
 > 文档中使用到photoAccessHelper的地方默认为使用[开发准备](photoAccessHelper-preparation.md)中获取的对象，如未添加此段代码报photoAccessHelper未定义的错误请自行添加。
 
 为了保证应用的运行效率，大部分photoAccessHelper的接口调用都是异步的。以下异步调用的API示例均采用Promise函数，更多方式可以查阅[API参考](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)。
+
 如无特别说明，文档中涉及的待获取资源均视为已预置，并且数据库中存在相应数据。如果按照示例代码执行后获取资源为空，请确认文件是否已预置，以及数据库中是否存在该文件的数据。
 
 <!--Del-->
@@ -202,7 +203,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
-
 // ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -237,10 +237,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('succeed to add ' + photoAsset.displayName + ' to ' + album.albumName);
     albumFetchResult.close();
     photoFetchResult.close();
-    // ...
+    return true;
   } catch (err) {
     console.error('addAssets failed with err: ' + err);
-    // ...
+    return false;
   }
 }
 ```
@@ -380,10 +380,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('succeed to remove ' + photoAsset.displayName + ' from ' + album.albumName);
     albumFetchResult.close();
     photoFetchResult.close();
-    // ...
+    return true;
   } catch (err) {
     console.error('removeAssets failed with err: ' + err);
-    // ...
+    return false;
   }
 }
 ```

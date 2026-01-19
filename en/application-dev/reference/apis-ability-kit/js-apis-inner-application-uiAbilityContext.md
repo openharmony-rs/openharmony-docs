@@ -1150,7 +1150,9 @@ This API cannot be used to start the UIAbility with the launch type set to [spec
 
 > **NOTE**
 >
-> In versions earlier than API version 11, this API requires the ohos.permission.ABILITY_BACKGROUND_COMMUNICATION permission, which is available only for system applications. Starting from API version 11, this API requires the ohos.permission.DISTRIBUTED_DATASYNC permission.
+> - For API version 10 and earlier, the permission ohos.permission.ABILITY_BACKGROUND_COMMUNICATION is required. This permission is available only to system applications.
+>
+> - For API version 11 and later, only the permission ohos.permission.DISTRIBUTED_DATASYNC is required. This permission is verified by the DSoftBus subsystem only when the link between applications is established. No verification is conducted during the application launch phase.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2230,7 +2232,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 Starts a UIAbility by using <!--RP2-->[App Linking](../../application-models/app-linking-startup.md)<!--RP2End--> or [Deep Linking](../../application-models/deep-linking-startup.md), and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. It can be called only by the main thread.
 
 A URL in the standard format is passed in to the **link** field to start the target UIAbility based on the implicit Want matching rules. The target UIAbility must have the following filter characteristics to process links of App Linking:
-- The **actions** field contains **ohos.want.3action.viewData**.
+- The **actions** field contains **ohos.want.action.viewData**.
 - The **entities** field contains **entity.system.browsable**.
 - The **uris** field contains elements whose **scheme** is **https** and **domainVerify** is **true**.
 

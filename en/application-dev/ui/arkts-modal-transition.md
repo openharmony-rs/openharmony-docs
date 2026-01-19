@@ -72,7 +72,7 @@ import { curves } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 interface PersonList {
-  name: string,
+  name: Resource,
   cardNum: string
 }
 
@@ -81,10 +81,14 @@ interface PersonList {
 struct BindContentCoverDemo {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   private personList: Array<PersonList> = [
-    { name: this.context.resourceManager.getStringByNameSync('modal_transition_text1'), cardNum: '1234***********789' },
-    { name: this.context.resourceManager.getStringByNameSync('modal_transition_text2'), cardNum: '2345***********789' },
-    { name: this.context.resourceManager.getStringByNameSync('modal_transition_text3'), cardNum: '3456***********789' },
-    { name: this.context.resourceManager.getStringByNameSync('modal_transition_text4'), cardNum: '4567***********789' }
+    // Replace $r('app.string.modal_transition_text1') with the actual resource file. In this example, the value in the resource file is "Wang **".
+    { name: $r('app.string.modal_transition_text1'), cardNum: '1234***********789' },
+    // Replace $r('app.string.modal_transition_text2') with the actual resource file. In this example, the value in the resource file is "Song **".
+    { name: $r('app.string.modal_transition_text2'), cardNum: '2345***********789' },
+    // Replace $r('app.string.modal_transition_text3') with the actual resource file. In this example, the value in the resource file is "Xu **".
+    { name: $r('app.string.modal_transition_text3'), cardNum: '3456***********789' },
+    // Replace $r('app.string.modal_transition_text4') with the actual resource file. In this example, the value in the resource file is "Tang **".
+    { name: $r('app.string.modal_transition_text4'), cardNum: '4567***********789' }
   ];
   // Step 1: Define bindContentCover.
   // Define the state variable to control the visibility of the modal.
@@ -96,7 +100,8 @@ struct BindContentCoverDemo {
   MyBuilder() {
     Column() {
       Row() {
-        Text(this.context.resourceManager.getStringByNameSync('modal_transition_text5'))
+        // Replace $r('app.string.modal_transition_text5') with the actual resource file. In this example, the value in the resource file is "Select passenger".
+        Text($r('app.string.modal_transition_text5'))
           .fontSize(20)
           .fontColor(Color.White)
           .width('100%')
@@ -106,7 +111,8 @@ struct BindContentCoverDemo {
       .backgroundColor(0x007dfe)
 
       Row() {
-        Text(this.context.resourceManager.getStringByNameSync('modal_transition_text6'))
+        // Replace $r('app.string.modal_transition_text6') with the actual resource file. In this example, the value in the resource file is "+Add passenger".
+        Text($r('app.string.modal_transition_text6'))
           .fontSize(16)
           .fontColor(0x333333)
           .margin({ top: 10 })
@@ -148,7 +154,8 @@ struct BindContentCoverDemo {
             .alignItems(HorizontalAlign.Start)
 
             Column() {
-              Text(this.context.resourceManager.getStringByNameSync('modal_transition_text7'))
+              // Replace $r('app.string.modal_transition_text7') with the actual resource file. In this example, the value in the resource file is "Edit".
+              Text($r('app.string.modal_transition_text7'))
                 .fontColor(0x007dfe)
                 .fontSize(16)
             }
@@ -161,8 +168,8 @@ struct BindContentCoverDemo {
         })
       }
       .padding({ top: 20, bottom: 20 })
-
-      Text(this.context.resourceManager.getStringByNameSync('modal_transition_text8'))
+      //Replace $r('app.string.modal_transition_text8') with the actual resource file. In this example, the value in the resource file is "Confirm".
+      Text($r('app.string.modal_transition_text8'))
         .width('90%')
         .height(40)
         .textAlign(TextAlign.Center)
@@ -182,7 +189,8 @@ struct BindContentCoverDemo {
   build() {
     Column() {
       Row() {
-        Text(this.context.resourceManager.getStringByNameSync('modal_transition_text9'))
+        // Replace $r('app.string.modal_transition_text9') with the actual resource file. In this example, the value in the resource file is "Confirm order".
+        Text($r('app.string.modal_transition_text9'))
           .fontSize(20)
           .fontColor(Color.White)
           .width('100%')
@@ -195,19 +203,22 @@ struct BindContentCoverDemo {
         Row() {
           Column() {
             Text('00:25')
-            Text(this.context.resourceManager.getStringByNameSync('modal_transition_text10'))
+            // Replace $r('app.string.modal_transition_text10') with the actual resource file. In this example, the value in the resource file is "Start station".
+            Text($r('app.string.modal_transition_text10'))
           }
           .width('30%')
 
           Column() {
             Text('G1234')
-            Text(this.context.resourceManager.getStringByNameSync('modal_transition_text11'))
+            // Replace $r('app.string.modal_transition_text11') with the actual resource file. In this example, the value in the resource file is "8:01".
+            Text($r('app.string.modal_transition_text11'))
           }
           .width('30%')
 
           Column() {
             Text('08:26')
-            Text(this.context.resourceManager.getStringByNameSync('modal_transition_text12'))
+            // Replace $r('app.string.modal_transition_text12') with the actual resource file. In this example, the value in the resource file is "Terminal station".
+            Text($r('app.string.modal_transition_text12'))
           }
           .width('30%')
         }
@@ -220,7 +231,8 @@ struct BindContentCoverDemo {
       .borderRadius(10)
 
       Column() {
-        Text(this.context.resourceManager.getStringByNameSync('modal_transition_text13'))
+        // Replace $r('app.string.modal_transition_text13') with the actual resource file. In this example, the value in the resource file is "+ Select passenger".
+        Text($r('app.string.modal_transition_text13'))
           .fontSize(18)
           .fontColor(Color.Orange)
           .fontWeight(FontWeight.Bold)
@@ -274,13 +286,20 @@ struct BindSheetDemo {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   // Set visibility of the sheet.
   @State isShowSheet: boolean = false;
-  private menuList: string[] = [this.context.resourceManager.getStringByNameSync('modal_transition_text14'),
-    this.context.resourceManager.getStringByNameSync('modal_transition_text15'),
-    this.context.resourceManager.getStringByNameSync('modal_transition_text16'),
-    this.context.resourceManager.getStringByNameSync('modal_transition_text17'),
-    this.context.resourceManager.getStringByNameSync('modal_transition_text18'),
-    this.context.resourceManager.getStringByNameSync('modal_transition_text19'),
-    this.context.resourceManager.getStringByNameSync('modal_transition_text20')];
+  // Replace $r('app.string.modal_transition_text14') with the actual resource file. In this example, the value in the resource file is "No spicy".
+  private menuList: Resource[] = [$r('app.string.modal_transition_text14'),
+    // Replace $r('app.string.modal_transition_text15') with the actual resource file. In this example, the value in the resource file is "Mildly spicy".
+    $r('app.string.modal_transition_text15'),
+    // Replace $r('app.string.modal_transition_text16') with the actual resource file. In this example, the value in the resource file is "Extra spicy".
+    $r('app.string.modal_transition_text16'),
+    // Replace $r('app.string.modal_transition_text17') with the actual resource file. In this example, the value in the resource file is "No cilantro".
+    $r('app.string.modal_transition_text17'),
+    // Replace $r('app.string.modal_transition_text18') with the actual resource file. In this example, the value in the resource file is "No chives".
+    $r('app.string.modal_transition_text18'),
+    // Replace $r('app.string.modal_transition_text19') with the actual resource file. In this example, the value in the resource file is "No disposable tableware".
+    $r('app.string.modal_transition_text19'),
+    // Replace $r('app.string.modal_transition_text20') with the actual resource file. In this example, the value in the resource file is "Need disposable tableware".
+    $r('app.string.modal_transition_text20')];
 
   // Use @Builder to build a sheet view.
   @Builder
@@ -306,7 +325,8 @@ struct BindSheetDemo {
 
   build() {
     Column() {
-      Text(this.context.resourceManager.getStringByNameSync('modal_transition_text21'))
+      // Replace $r('app.string.modal_transition_text21') with the actual resource file. In this example, the value in the resource file is "Flavor and tableware".
+      Text($r('app.string.modal_transition_text21'))
         .fontSize(28)
         .padding({ top: 30, bottom: 30 })
       Column() {
@@ -319,7 +339,8 @@ struct BindSheetDemo {
             .borderRadius(20)
 
           Column() {
-            Text(this.context.resourceManager.getStringByNameSync('modal_transition_text22'))
+            // Replace $r('app.string.modal_transition_text22') with the actual resource file. In this example, the value in the resource file is "Select flavor and tableware."
+            Text($r('app.string.modal_transition_text22'))
               .fontSize(16)
               .fontWeight(FontWeight.Medium)
           }
@@ -396,13 +417,15 @@ struct BindMenuDemo {
   // Step 1: Define a data array to represent menu items.
   @State items: BMD[] = [
     {
-      value: this.context.resourceManager.getStringByNameSync('modal_transition_text23'),
+      // Replace $r('app.string.modal_transition_text23') with the actual resource file. In this example, the value in the resource file is "Menu item 1".
+      value: $r('app.string.modal_transition_text23'),
       action: () => {
         hilog.info(DOMAIN, TAG, 'handle Menu1 select');
       }
     },
     {
-      value: this.context.resourceManager.getStringByNameSync('modal_transition_text24'),
+      // Replace $r('app.string.modal_transition_text24') with the actual resource file. In this example, the value in the resource file is "Menu item 2".
+      value: $r('app.string.modal_transition_text24'),
       action: () => {
         hilog.info(DOMAIN, TAG, 'handle Menu2 select');
       }
@@ -442,10 +465,13 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct BindContextMenuDemo {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  private menu: string[] = [this.context.resourceManager.getStringByNameSync('modal_transition_text25'),
-    this.context.resourceManager.getStringByNameSync('modal_transition_text26'),
-    this.context.resourceManager.getStringByNameSync('modal_transition_text27')];
-  // Replace $r('app.media.xxx') with the image resource file you use.
+  // Replace $r('app.string.modal_transition_text25') with the actual resource file. In this example, the value in the resource file is "Save image".
+  private menu: Resource[] = [$r('app.string.modal_transition_text25'),
+    // Replace $r('app.string.modal_transition_text26') with the actual resource file. In this example, the value in the resource file is "Favorites".
+    $r('app.string.modal_transition_text26'),
+    // Replace $r('app.string.modal_transition_text27') with the actual resource file. In this example, the value in the resource file is "Search".
+    $r('app.string.modal_transition_text27')];
+  // Replace $r('app.mdia.icon_2') with the actual resource file.
   private pics: Resource[] = [$r('app.media.icon_1'), $r('app.media.icon_2')];
 
   // Use @Builder to build custom menu items.
@@ -472,7 +498,8 @@ struct BindContextMenuDemo {
   build() {
     Column() {
       Row() {
-        Text(this.context.resourceManager.getStringByNameSync('modal_transition_text28'))
+        // Replace $r('app.string.modal_transition_text28') with the actual resource file. In this example, the value in the resource file is "View image".
+        Text($r('app.string.modal_transition_text28'))
           .fontSize(20)
           .fontColor(Color.White)
           .width('100%')
@@ -591,12 +618,18 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct ModalTransitionWithIf {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  private listArr: string[] = ['WLAN', this.context.resourceManager.getStringByNameSync('modal_transition_text29'),
-    this.context.resourceManager.getStringByNameSync('modal_transition_text30'),
-    this.context.resourceManager.getStringByNameSync('modal_transition_text31')];
-  private shareArr: string[] = [this.context.resourceManager.getStringByNameSync('modal_transition_text32'),
-    this.context.resourceManager.getStringByNameSync('modal_transition_text33'), 'VPN',
-    this.context.resourceManager.getStringByNameSync('modal_transition_text34'), 'NFC'];
+  // Replace $r('app.string.modal_transition_text29') with the actual resource file. In this example, the value in the resource file is "Bluetooth."
+  private listArr: ResourceStr[] = ['WLAN', $r('app.string.modal_transition_text29'),
+    // Replace $r('app.string.modal_transition_text30') with the actual resource file. In this example, the value in the resource file is "Personal hotspot."
+    $r('app.string.modal_transition_text30'),
+    // Replace $r('app.string.modal_transition_text31') with the actual resource file. In this example, the value in the resource file is "Connect and share."
+    $r('app.string.modal_transition_text31')];
+  // Replace $r('app.string.modal_transition_text32') with the actual resource file. In this example, the value in the resource file is "Projection."
+  private shareArr: ResourceStr[] = [$r('app.string.modal_transition_text32'),
+    // Replace $r('app.string.modal_transition_text33') with the actual resource file. In this example, the value in the resource file is "Print."
+    $r('app.string.modal_transition_text33'), 'VPN',
+    // Replace $r('app.string.modal_transition_text34') with the actual resource file. In this example, the value in the resource file is "Private DNS."
+    $r('app.string.modal_transition_text34'), 'NFC'];
   // Step 1: Define a state variable to control page display.
   @State isShowShare: boolean = false;
 
@@ -611,15 +644,16 @@ struct ModalTransitionWithIf {
     Stack() {
       Column() {
         Column() {
-          Text(this.context.resourceManager.getStringByNameSync('modal_transition_text35'))
+          // Replace $r('app.string.modal_transition_text35') with the actual resource file. In this example, the value in the resource file is "Settings."
+          Text($r('app.string.modal_transition_text35'))
             .fontSize(28)
             .fontColor(0x333333)
         }
         .width('90%')
         .padding({ top: 30, bottom: 15 })
         .alignItems(HorizontalAlign.Start)
-
-        TextInput({ placeholder: this.context.resourceManager.getStringByNameSync('modal_transition_text36') })
+        // Replace $r('app.string.modal_transition_text36') with the actual resource file. In this example, the value in the resource file is "Search by keyword."
+        TextInput({ placeholder: $r('app.string.modal_transition_text36') })
           .width('90%')
           .height(40)
           .margin({ bottom: 10 })
@@ -671,6 +705,7 @@ struct ModalTransitionWithIf {
             .width('100%')
             .onClick(() => {
               // Step 5: Change the state variable to display the modal view.
+              // Configure the resource whose name is 'modal_transition_text37' and value is a non-empty string in the resources\base\element\string.json file.
               if (item.slice(-2) === this.context.resourceManager.getStringByNameSync('modal_transition_text37')) {
                 this.shareFunc();
               }
@@ -702,8 +737,8 @@ struct ModalTransitionWithIf {
               .onClick(() => {
                 this.shareFunc();
               })
-
-              Text(this.context.resourceManager.getStringByNameSync('modal_transition_text31'))
+              // Replace $r('app.string.modal_transition_text31') with the actual resource file. In this example, the value in the resource file is "Connect and share."
+              Text($r('app.string.modal_transition_text31'))
                 .fontSize(28)
                 .fontColor(0x333333)
             }

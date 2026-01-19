@@ -49,8 +49,8 @@ Defines the options of the **Video** component.
 | Name      | Type   | Read-Only| Optional| Description                        |
 | ------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | src                 | string \| [Resource](ts-types.md#resource)                            | No  | Yes| Video source, which can be either a local or a network video.<br>The Resource type allows cross-package and cross-module access to resource files and is commonly used for accessing local videos.<br>- Only resources in the rawfile folder are supported, which means that you can reference video files only with **$rawfile**.<br>The string type is used for loading local videos and, more frequently, network videos.<br>- Network video URLs are supported.<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, are supported. They are used to access resources in the application sandbox path. Ensure that the application has the read permission to the files in the specified path.<br>The default value is an empty string.<br>If an invalid value is passed, the default value will be used.<br>**NOTE**<br>The supported video formats are MP4, MKV, and TS.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| currentProgressRate | number \| string \| [PlaybackSpeed<sup>8+</sup>](#playbackspeed8) | No  | Yes| Video playback speed.<br>**NOTE**<br>The value of the number type can only be **0.75**, **1.0**, **1.25**, **1.75**, or **2.0**. Values 0.5, 1.5, 3, 0.25, and 0.125 are supported since API version 22.<br>For the string type, numeric string values, for example **0.75**, **1.0**, **1.25**, **1.75**, and **2.0**, are supported. Values "0.5", "1.5", "3", "0.25", and "0.125" are supported since API version 22.<br>Other values, for example, **"abc"** or **"1.5+1.5"**, are considered as invalid values.<br>Default value: 1.0 \| PlaybackSpeed.Speed_Forward_1_00_X<br>If an invalid value is passed, the default value will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| previewUri          | string \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [Resource](ts-types.md#resource)  | No | Yes | Path of the preview image displayed before the video playback starts. By default, no preview image is displayed.<br>The string type can be used to load online images and local images.<br>- URLs are supported for loading online images.<br>- Relative paths are supported for loading local images, for example, **previewUri: "common/test.jpg"**. When using an image referenced using a relative path, the component cannot be called across bundles or modules.<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, are supported. They are used to access resources in the application sandbox path. Ensure that the application has the read permission to the files in the specified path.<br>The Resource type allows cross-package and cross-module access to resource files.<br>- Resources in the rawfile folder are supported, which means that you can reference image files with **$rawfile**.<br>- \$r can be used to reference images in system resources or application resources.<br>The default value is an empty string.<br>If an invalid value is passed, the default value will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                |
+| currentProgressRate | number \| string \| [PlaybackSpeed<sup>8+</sup>](#playbackspeed8) | No  | Yes| Video playback speed.<br>**NOTE**<br>The value of the number type can only be **0.75**, **1.0**, **1.25**, **1.75**, or **2.0**. Values **0.5**, **1.5**, **3**, **0.25**, and **0.125** are supported since API version 22.<br>For the string type, numeric string values, for example **0.75**, **1.0**, **1.25**, **1.75**, and **2.0**, are supported. Values **"0.5"**, **"1.5"**, **"3"**, **"0.25"**, and **"0.125"** are supported since API version 22.<br>Other values, for example, **"abc"** or **"1.5+1.5"**, are considered as invalid values.<br>Default value: 1.0 \| PlaybackSpeed.Speed_Forward_1_00_X<br>If an invalid value is passed, the default value will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| previewUri          | string \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [Resource](ts-types.md#resource)  | No | Yes | Path of the preview image displayed before the video playback starts. By default, no preview image is displayed.<br>The string type can be used to load network images and local images.<br>- URLs are supported for loading online images.<br>- Relative paths are supported for loading local images, for example, **previewUri: "common/test.jpg"**. When using an image referenced using a relative path, the component cannot be called across bundles or modules.<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, are supported. They are used to access resources in the application sandbox path. Ensure that the application has the read permission to the files in the specified path.<br>The Resource type allows cross-package and cross-module access to resource files.<br>- Resources in the **rawfile** folder are supported, which means that you can reference image files with **$rawfile**.<br>- \$r can be used to reference images in system resources or application resources.<br>The default value is an empty string.<br>If an invalid value is passed, the default value will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                |
 | controller          | [VideoController](#videocontroller)                          | No| Yes  | Video controller to control the video playback status.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
 | imageAIOptions<sup>12+</sup>  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | No| Yes  | AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | posterOptions<sup>18+</sup>  | [PosterOptions](#posteroptions18) | No| Yes  | Display options for the first frame of the video.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
@@ -460,7 +460,7 @@ Defines display options for the first frame of the video.
 | Name      | Type   | Read-Only| Optional| Description                        |
 | ----------- | ------- | ---- | ---- | ---------------------------- |
 | showFirstFrame   | boolean | No| Yes| Whether to enable first frame display, showing the first frame of the video as a preview. When first frame display is enabled, the previewUri field in [VideoOptions](#videooptions) has no effect.<br>**true**: Enable first frame display.<br>**false**: Disable first frame display.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
-| contentTransitionEffect<sup>21+</sup>   | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | No| Yes| Transition effect when the preview image of the current video changes. This field does not take effect if showFirstFrame is set to true (that is, the first frame display is enabled) or previewUri of the valid [VideoOptions](#videooptions) object is not set.<br>Default value: **ContentTransitionEffect.IDENTITY**.<br>If this parameter is set to undefined or null, the value is ContentTransitionEffect.IDENTITY.<br>**Atomic service API**: This API can be used in atomic services since API version 21.     |
+| contentTransitionEffect<sup>21+</sup>   | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | No| Yes| Transition effect to apply when the video preview image changes. This parameter does not take effect if **showFirstFrame** is **true**, or if a valid **previewUri** in [VideoOptions](#videooptions) is not provided.<br>Default value: **ContentTransitionEffect.IDENTITY**.<br>If this parameter is set to **undefined** or **null**, it defaults to **ContentTransitionEffect.IDENTITY**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.     |
 
 ## VideoController
 
@@ -825,7 +825,7 @@ struct Index {
         .width('100%')
         .height(600)
         .onPrepared(() => {
-          // Start playing the video when it is ready.
+          // Execute the controller's start method in the onPrepared callback to ensure the video starts playing immediately after the source is changed.
           this.controller.start();
         })
         .onDrop((e: DragEvent) => {
@@ -858,7 +858,7 @@ struct VideoObject {
 
   build() {
     Column() {
-      Text("ImageFit.Contain").fontSize(12)
+      Text('ImageFit.Contain').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -870,7 +870,7 @@ struct VideoObject {
         .objectFit(ImageFit.Contain) // Set the video fill mode to ImageFit.Contain.
         .margin(5)
 
-      Text("ImageFit.Fill").fontSize(12)
+      Text('ImageFit.Fill').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -882,7 +882,7 @@ struct VideoObject {
         .objectFit(ImageFit.Fill) // Set the video fill mode to ImageFit.Fill.
         .margin(5)
 
-      Text("ImageFit.START").fontSize(12)
+      Text('ImageFit.START').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -908,7 +908,7 @@ This example uses an invalid video resource path to demonstrate how the **Video*
 @Entry
 @Component
 struct VideoErrorComponent {
-  @State videoSrc: string = "video.mp4"; // Enter an invalid video resource path.
+  @State videoSrc: string = 'video.mp4'; // Enter an invalid video resource path.
   @State isAutoPlay: boolean = false;
   @State showControls: boolean = true;
   @State showFirstFrame: boolean = false;
@@ -934,8 +934,8 @@ struct VideoErrorComponent {
       // Pass in an invalid video resource path. Expected result: "code is 103602, message is Not a valid source."
       Text(this.errorMessage)
     }
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
     .backgroundColor('rgb(213,213,213)')
   }
 }

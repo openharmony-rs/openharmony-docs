@@ -54,9 +54,9 @@ Enumerates the error codes returned by Wi-Fi APIs.
 | WIFI_SUCCESS = 0 | Operation success.|
 | WIFI_PERMISSION_DENIED = 201 | Permission verification fails.|
 | WIFI_INVALID_PARAM = 401 | Invalid parameter.<br> Possible causes: 1. The input parameter is a null pointer. 2. The parameter value is out of the value range.|
-| WIFI_NOT_SUPPORTED = 801 | Function not supported. due to limited device capabilities.|
+| WIFI_NOT_SUPPORTED = 801 | Function not supported due to limited device capabilities.|
 | WIFI_OPERATION_FAILED = 2501000 | Operation failed.<br> Possible cause: The internal execution of the service fails.|
-| WIFI_STA_DISABLED = 2501001 | STA service not started.<br> Possible cause: Wi-Fi is disabled.|
+| WIFI_STA_DISABLED = 2501001 | STA service not started.<br> Possible cause: Wi-Fi is disabled.<br>**Since**: 21|
 
 
 ## Function Description

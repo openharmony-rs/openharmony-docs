@@ -224,6 +224,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    | 96000 |  8192  |
 
    单次编码输入的数据量（单位：字节）为：SAMPLES_PER_FRAME * 声道数 * 单个采样点的占用字节。
+   
    使用示例：
    ```c++
    int32_t SAMPLES_PER_FRAME = 1024;

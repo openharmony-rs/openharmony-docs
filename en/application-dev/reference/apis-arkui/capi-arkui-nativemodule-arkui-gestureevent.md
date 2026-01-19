@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_GestureEvent ArkUI_GestureEvent
+```
+
 ## Overview
 
 Defines the gesture event.

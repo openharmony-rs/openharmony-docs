@@ -62,7 +62,7 @@ Repeat<string>(this.arr)
 
 each(itemGenerator: (repeatItem: RepeatItem\<T\>) => void)
 
-组件生成函数。当所有`.template()`的type和`.templateId()`返回值不匹配（即当前item不适用任何template定义的样式）时，将使用`.each()`处理数据项。
+组件生成函数。当所有[`.template()`](#template)的type和[`.templateId()`](#templateid)返回值不匹配（即当前item不适用任何template定义的样式）时，将使用`.each()`处理数据项。
 
 > **说明**
 >
@@ -81,7 +81,7 @@ each(itemGenerator: (repeatItem: RepeatItem\<T\>) => void)
 
 | 参数名 | 类型   | 必填 | 说明 |
 | ------ | ---------- | -------- | -------- |
-| repeatItem  | [RepeatItem](#repeatitemt)\<T\> | 否 | repeat数据项。 |
+| itemGenerator  | (repeatItem: [RepeatItem\<T\>](#repeatitemt)) => void | 是 | 组件生成函数。 |
 
 **示例：**
 ```ts
@@ -110,8 +110,7 @@ key(keyGenerator: (item: T, index: number) => string)
 
 | 参数名 | 类型   | 必填 | 说明  |
 | ------ | ---------- | -------- | -------- |
-| item  | T | 否 | `arr`数组中的数据项。 |
-| index  | number | 否 | `arr`数组中的数据项索引。 |
+| keyGenerator  | (item: T, index: number) => string | 是 | 键值生成函数。<br/>item：`arr`数组中的数据项，可选。<br/>index：`arr`数组中的数据项索引，可选。 |
 
 **示例：**
 ```ts
@@ -256,7 +255,7 @@ Repeat数据源参数联合类型。
 
 ## VirtualScrollOptions
 
-配置懒加载模式下的期望数据长度、复用能力、数据精准懒加载能力。
+配置懒加载模式下期望加载的数据项总数、复用能力、数据精准懒加载能力。
 
 ### 属性
 
@@ -266,8 +265,8 @@ Repeat数据源参数联合类型。
 
 | 名称     | 类型   | 只读 | 可选 | 说明                                                         |
 | ---------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| totalCount | number | 否 | 是  | 期望加载的数据项总数，可以不等于数据源长度（实际传入Repeat的数组的长度）。<br>取值范围：自然数。<br>totalCount缺省或超出取值范围时，totalCount取值为数据源长度，列表正常滚动。<br>totalCount = 0时，不加载数据。<br>0 < totalCount <= 数据源长度时，界面中只渲染区间[0, totalCount - 1]范围内的数据。<br>totalCount > 数据源长度时，Repeat将渲染区间[0, totalCount - 1]范围内的数据，容器组件滚动条样式根据totalCount值变化。在容器组件滚动过程中，应用需要保证在列表即将滑动到数据源末尾时请求后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。建议配合使用[onLazyLoading](#onlazyloading19数据精准懒加载)实现数据懒加载。<br>除totalCount属性外，开发者也可以通过[onTotalCount](#ontotalcount19计算期望加载的数据源长度)方法设置自定义方法，计算期望加载的数据项总数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| reusable<sup>18+</sup> | boolean | 否 | 是  | 是否开启复用功能。true代表开启复用，false代表关闭复用。<br>默认值：true<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| totalCount | number | 否 | 是  | 期望加载的数据项总数，可以不等于数据源长度（实际传入Repeat的数组的长度）。<br>取值范围：自然数。<br>totalCount缺省或超出取值范围时，totalCount取值为数据源长度，列表正常滚动。<br>totalCount = 0时，不加载数据。<br>0 < totalCount <= 数据源长度时，界面中只渲染区间[0, totalCount - 1]范围内的数据。<br>totalCount > 数据源长度时，Repeat将渲染区间[0, totalCount - 1]范围内的数据，容器组件滚动条样式根据totalCount值变化。在容器组件滚动过程中，应用需要保证在列表即将滑动到数据源末尾时请求后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。建议配合使用[onLazyLoading](#onlazyloading19)实现数据懒加载。<br>除totalCount属性外，开发者也可以通过[onTotalCount](#ontotalcount19)方法设置自定义方法，计算期望加载的数据项总数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| reusable<sup>18+</sup> | boolean | 否 | 是  | 是否开启复用功能。<br>true：开启复用。<br>false：关闭复用。<br>默认值：true<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 **示例**
 
@@ -281,19 +280,19 @@ List() {
 }
 ```
 
-### onTotalCount<sup>19+</sup>：计算期望加载的数据源长度
+### onTotalCount<sup>19+</sup>
 
 onTotalCount?(): number
 
-可选方法，计算期望加载的数据源长度。需要开发者给定计算方法，其返回值可以不等于数据源长度（实际传入Repeat的数组的长度）。
+可选方法，计算期望加载的数据项总数。需要开发者给定计算方法，其返回值可以不等于数据源长度（实际传入Repeat的数组的长度）。
 
-[totalCount](#virtualscrolloptions)和onTotalCount()的返回值都表示期望加载的数据长度。开发者可直接设置totolCount属性，给出期望加载的数据长度，也可以通过onTotalCount()设定自定义方法，计算期望加载的数据长度。totalCount与onTotalCount()最多设置一个。如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略totalCount。
+[totalCount](#virtualscrolloptions)和onTotalCount()的返回值都表示期望加载的数据项总数。开发者可直接设置totalCount属性，给出期望加载的数据项总数，也可以通过onTotalCount()设定自定义方法，计算期望加载的数据项总数。totalCount与onTotalCount()最多设置一个。如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略totalCount。
 
 onTotalCount()不同返回值的数据加载处理规则与totalCount一致，具体如下：
 
 - onTotalCount()返回值 = 0时，不加载数据。
 - 0 < onTotalCount()返回值 <= 数据源长度时，只加载区间[0, onTotalCount()返回值 - 1]索引范围内的数据。
-- onTotalCount()返回值 > 数据源长度时，代表Repeat期望加载区间[0, onTotalCount()返回值 - 1]索引范围内的数据，容器组件滚动条样式根据totalCount值变化。在容器组件滚动过程中，应用需要保证在列表即将滑动到数据源末尾时请求后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。建议配合使用[onLazyLoading](#onlazyloading19数据精准懒加载)实现数据懒加载。
+- onTotalCount()返回值 > 数据源长度时，代表Repeat期望加载区间[0, onTotalCount()返回值 - 1]索引范围内的数据，容器组件滚动条样式根据totalCount值变化。在容器组件滚动过程中，应用需要保证在列表即将滑动到数据源末尾时请求后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。建议配合使用[onLazyLoading](#onlazyloading19)实现数据懒加载。
 - onTotalCount()返回值是非自然数时，由数据源长度取代其返回值。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
@@ -306,13 +305,13 @@ onTotalCount()不同返回值的数据加载处理规则与totalCount一致，�
 | ------ | ---------- |
 |  number |  期望加载的数据项总数。<br>取值范围：自然数。 |
 
-### onLazyLoading<sup>19+</sup>：数据精准懒加载
+### onLazyLoading<sup>19+</sup>
 
 onLazyLoading?(index: number): void
 
-可选方法，懒加载指定index处的数据。需要开发者给定数据加载方法。
+可选方法，懒加载指定索引的数据。需要开发者给定数据加载方法。
 
-从API version 19开始，支持onLazyLoading，需在懒加载场景下使用。开发者可设置自定义方法，用于向指定的数据源index中写入数据。以下为onLazyLoading的处理规则：
+onLazyLoading方法需在懒加载场景下使用。开发者可设置自定义方法，用于向指定的数据源index中写入数据。以下为onLazyLoading的处理规则：
 
 - Repeat读取数据源中index对应的数据之前，会先检查index处是否存在数据。
 - 如果不存在数据，但开发者提供了onLazyLoading方法，Repeat将调用此方法。

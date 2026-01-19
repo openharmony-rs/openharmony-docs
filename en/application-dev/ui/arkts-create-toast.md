@@ -45,7 +45,7 @@ Before displaying a TOP_MOST toast, a full-screen subwindow is created (the size
 
 |Item|DEFAULT|TOP_MOST|
 | --- | --- | --- |
-| Subwindow creation | No| Yes|
+| Subwindow creation| No| Yes|
 | Layer order| The toast is displayed within the main window, with the same layer level as the main window, generally low.| The toast is displayed in a subwindow, generally higher than the main window, higher than other dialog box components, but lower than the soft keyboard and permission request dialog box.|
 | Soft keyboard avoidance| The toast always moves up the soft keyboard when it is displayed.| The toast avoids the keyboard only if the toast is blocked, and after avoidance, the distance between the bottom of the toast and the soft keyboard is 80 vp.|
 | UIExtension layout| The toast is aligned with UIExtension as the main window, with alignment consistent with UIExtension.| The toast is aligned with the host window as the main window, with alignment consistent with the host window.|
@@ -137,7 +137,7 @@ export struct CreateToastExample {
   private uiContext: UIContext = this.getUIContext();
   private promptAction: PromptAction = this.uiContext.getPromptAction();
   build() {
-    // ···
+    // ...
       Column() {
         Button('Show toast').fontSize(20)
           .onClick(() => {
@@ -153,7 +153,7 @@ export struct CreateToastExample {
             }
           })
       }.height('100%').width('100%').justifyContent(FlexAlign.Center)
-    // ···
+      // ...
   }
 }
 ```
@@ -182,7 +182,7 @@ export struct OpenCloseToastExample {
   private promptAction: PromptAction = this.uiContext.getPromptAction();
 
   build() {
-    // ···
+    // ...
       Column() {
         Button('Open Toast')
           .height(100)
@@ -215,7 +215,7 @@ export struct OpenCloseToastExample {
             }
           })
       }.height('100%').width('100%').justifyContent(FlexAlign.Center)
-    // ···
+      // ...
   }
 }
 ```

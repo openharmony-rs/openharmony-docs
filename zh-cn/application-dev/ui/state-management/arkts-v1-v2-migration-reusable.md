@@ -28,7 +28,7 @@
 
 **迁移规则**
 
-- [aboutToRecyle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)生命周期无需改动，可保留原实现。
+- [aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)生命周期无需改动，可保留原实现。
 - [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18)生命周期在组件复用V2中进行了优化，去除了参数的同时，在[复用前会自动重置各状态变量](arkts-new-reusableV2.md#复用前的组件内状态变量重置)，无需开发者在aboutToReuse中手动赋值回初始值。
 
 ```ts
@@ -317,13 +317,13 @@ export struct OneMoment {
 }
 ```
 
-### 列表滚动-Repeat非懒加载使用场景
+### 列表滚动-Repeat全量加载使用场景
 
 状态管理V2推荐使用[Repeat全量加载模式](../rendering-control/arkts-new-rendering-control-repeat.md#懒加载能力说明)替代[ForEach](../rendering-control/arkts-rendering-control-foreach.md)实现循环渲染。
 
 @Reusable使用示例请参考[列表滚动-ForEach使用场景](arkts-reusable.md#列表滚动-foreach使用场景)。
 
-@ReusableV2的列表滚动-Repeat非懒加载使用场景示例代码如下：
+@ReusableV2的列表滚动-Repeat全量加载使用场景示例代码如下：
 
 ```ts
 // xxx.ets

@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 The **wifiManagerExt** module provides WLAN extension APIs for non-universal products.
 
-> **NOTE**
+> **NOTE**<br>
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 The APIs described in this document are used only for non-universal products, such as routers.
 
@@ -25,7 +25,7 @@ enableHotspot(): void
 
 Enables the WLAN hotspot.
 
-> **NOTE**
+> **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
@@ -60,7 +60,7 @@ disableHotspot(): void
 
 Disables the WLAN hotspot.
 
-> **NOTE**
+> **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
@@ -173,7 +173,7 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 
 Obtains the power mode. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
@@ -261,7 +261,7 @@ setPowerMode(mode: PowerMode) : void
 
  Sets the power mode.
 
-> **NOTE**
+> **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT_EXT

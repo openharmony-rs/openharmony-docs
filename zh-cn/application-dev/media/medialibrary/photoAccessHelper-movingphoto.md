@@ -43,7 +43,7 @@
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
-import { fileIo } from '@kit.CoreFileKit';
+// ...
 
 @Entry({ routeName : 'Scene1' })
 @Component
@@ -272,13 +272,39 @@ async function example(context: Context): Promise<string> {
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { common } from '@kit.AbilityKit';
 // ...
 @Entry({ routeName : 'Scene4' })
 @Component
 export struct Scene4 {
+  @State movingPhotoObj: photoAccessHelper.MovingPhoto | null = null;
+  @State statusMessage: string = '';
   // ...
 
-  // ...
+  build() {
+    NavDestination() {
+      Column({ space: 20 }) {
+        // ...
+        Button('example')
+          .width('80%')
+          .height(50)
+          .fontSize(16)
+          .onClick(async () => {
+            if (this.movingPhotoObj) {
+              let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+              this.statusMessage = await example(this.movingPhotoObj, context);
+            } else {
+              this.statusMessage = 'Please prepare and load moving photo first!';
+            }
+          })
+        // ...
+      }
+      .width('100%')
+      .height('100%')
+    }
+    // ...
+  }
+}
 
 async function example(movingPhoto: photoAccessHelper.MovingPhoto, context: Context): Promise<string> {
   try {

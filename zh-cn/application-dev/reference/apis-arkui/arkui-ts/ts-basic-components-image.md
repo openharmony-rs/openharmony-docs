@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Image为图片组件，常用于在应用中显示图片。Image支持加载[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)、[ResourceStr](ts-types.md#resourcestr)和[DrawableDescriptor](#drawabledescriptor10)类型的数据源，支持png、jpg、jpeg、bmp、svg、webp、gif和heif类型的图片格式，不支持apng和svga格式。
+Image为图片组件，常用于在应用中显示图片。Image支持加载[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)、[ResourceStr](ts-types.md#resourcestr)和[DrawableDescriptor](#drawabledescriptor10)类型的数据源，支持png、jpg、jpeg、bmp、svg、webp、gif、tiff和heif类型的图片格式，不支持apng和svga格式。
 
 > **说明：**
 >
@@ -18,7 +18,7 @@ Image为图片组件，常用于在应用中显示图片。Image支持加载[Pix
 >
 > 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)事件触发的，当可见阈值ratios大于0时，表明Image处于可见状态。
 >
->如果图片加载过程中出现白色块，请参考[Image白块问题解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-image-white-lump-solution)。如果图片加载时间过长，请参考[预置图片资源加载优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-texture-compression-improve-performance)。
+>如果图片加载过程中出现白色块，请参考[Image白块解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-image-white-lump-solution)。如果图片加载时间过长，请参考[预置图片资源加载优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-texture-compression-improve-performance)。
 
 ## 需要权限
 
@@ -46,7 +46,7 @@ Image加载成功且组件不设置宽高时，其显示大小自适应父组件
 
 >**说明：**
 >
-> - Image直接传入URL可能会带来的潜在性能问题，例如：(1) 大图加载时无法提前下载，白块显示的时间较长；(2) 小图设置同步加载，在弱网环境下，可能会阻塞UI线程造成冻屏问题；(3) 在快速滑动的瀑布流中，无法提前对即将要显示的图片进行下载，导致滑动白块较多。不同场景下，性能问题会有不同的表现，建议将网络下载部分与Image的显示剥离，可提前下载或者异步下载。如果图片加载过程中出现白色块，请参考[Image白块问题解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-image-white-lump-solution)。如果图片加载时间过长，请参考[预置图片资源加载优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-texture-compression-improve-performance)。
+> - Image直接传入URL可能会带来的潜在性能问题，例如：(1) 大图加载时无法提前下载，白块显示的时间较长；(2) 小图设置同步加载，在弱网环境下，可能会阻塞UI线程造成冻屏问题；(3) 在快速滑动的瀑布流中，无法提前对即将要显示的图片进行下载，导致滑动白块较多。不同场景下，性能问题会有不同的表现，建议将网络下载部分与Image的显示剥离，可提前下载或者异步下载。如果图片加载过程中出现白色块，请参考[Image白块解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-image-white-lump-solution)。如果图片加载时间过长，请参考[预置图片资源加载优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-texture-compression-improve-performance)。
 >
 > - src由有效值（可正常解析并加载的图片资源）切换为无效值（无法解析或加载的图片路径）时，组件保持显示此前成功加载的图片内容，不进行清除或重置操作。
 >
@@ -56,7 +56,7 @@ Image加载成功且组件不设置宽高时，其显示大小自适应父组件
 >
 >   1. image/subType用于声明数据内容的类型。Image组件不会强制校验声明的类型与Base64解码后的实际图片格式是否完全一致。在部分场景下，即使声明的类型与真实格式不一致，图片仍可能正常显示。为避免未来行为变化或未知问题，建议始终保持类型与实际图片格式一致。
 >
->   2. Image组件不支持`data:image/*;base64,Base64EncodedData`的通配写法，subType必须显示声明具体的图片类型。
+>   2. Image组件不支持`data:image/*;base64,Base64EncodedData`的通配写法，subType必须显式声明具体的图片类型。
 >
 >   3. Image组件不支持通过Base64字符串形式加载SVG图片。
 
@@ -167,7 +167,7 @@ alt(src:&nbsp;ResourceStr&nbsp;|&nbsp;PixelMap &nbsp;|&nbsp;ImageAlt)
 
 objectFit(value: ImageFit)
 
-设置图片的填充效果。
+设置图片的填充效果。未通过该接口设置时，默认为ImageFit.Cover，保持宽高比进行缩小或者放大。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -179,7 +179,7 @@ objectFit(value: ImageFit)
 
 | 参数名 | 类型                                      | 必填 | 说明                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------- |
-| value  | [ImageFit](ts-appendix-enums.md#imagefit) | 是   | 图片的填充效果。<br/>默认值：ImageFit.Cover |
+| value  | [ImageFit](ts-appendix-enums.md#imagefit) | 是   | 图片的填充效果。|
 
 ### imageMatrix<sup>15+</sup>
 
@@ -187,9 +187,9 @@ imageMatrix(matrix: ImageMatrix)
 
 设置图片的变换矩阵。通过[ImageMatrix](#imagematrix15对象说明)对象使用平移、旋转、缩放等函数，实现宫格缩略图的最佳呈现。SVG类型图源不支持该属性。
 
-设置resizable、objectRepeat属性时，该属性设置不生效。该属性只针对图源做处理，不会触发Image组件的回调事件。
+设置[resizable](#resizable11)、[objectRepeat](#objectrepeat)属性时，该属性设置不生效。该属性只针对图源做处理，不会触发Image组件的回调事件。
 
-该属性与[objectFit](#objectfit)属性强关联，仅在[objectFit](#objectfit)属性设置为[ImageFit](ts-appendix-enums.md#imagefit).MATRIX时生效。
+该属性与[objectFit](#objectfit)属性强关联，仅在[objectFit](#objectfit)属性设置为ImageFit.MATRIX时生效。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -247,7 +247,7 @@ renderMode(value: ImageRenderMode)
 
 设置图片的渲染模式。SVG类型图源不支持该属性。
 
-设置 [ColorFilter](#colorfilter9) 时，该属性设置不生效。
+设置[ColorFilter](#colorfilter9)时，该属性设置不生效。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
 
@@ -281,7 +281,7 @@ sourceSize(value: ImageSourceSize)
 
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ImageSourceSize](#imagesourcesize18对象说明) | 是   | 图片解码尺寸参数，降低图片的分辨率，常用于需要让图片显示尺寸比组件尺寸更小的场景。和ImageFit.None配合使用时可在组件内显示小图。 |
+| value  | [ImageSourceSize](#imagesourcesize18对象说明) | 是   | 图片解码尺寸参数，降低图片的分辨率，常用于需要让图片显示尺寸比组件尺寸更小的场景。和[objectFit](#objectfit)接口的ImageFit.None配合使用时可在组件内显示小图。 |
 
 ### matchTextDirection
 
@@ -469,7 +469,7 @@ colorFilter(value: ColorFilter | DrawingColorFilter)
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12) | 是   | 1. 给图像设置颜色滤镜效果，入参为一个的4x5的RGBA转换矩阵。<br/>2. 从API version12开始支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>API version 11及之前，SVG类型图源不支持该属性。<br/>从API version 12开始，该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，SVG类型的图源只有设置了stroke属性（无论是否有值）才会生效。<br/>从API version 21开始，当[supportSvg2](#supportsvg221)属性设置为true时，colorFilter属性对整个SVG图源起作用。|
 
-颜色滤镜通过一个4x5的矩阵来设置图像的颜色滤镜，矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下（其中矩阵值的范围[0, 1]）：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>该属性的具体使用可以参考[示例9](#示例9为图像设置颜色滤镜效果)。
+颜色滤镜通过一个4x5的矩阵来设置图像的颜色滤镜，矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>该属性的具体使用可以参考[示例9](#示例9为图像设置颜色滤镜效果)。
 
 ### draggable<sup>9+</sup>
 
@@ -493,11 +493,11 @@ enableAnalyzer(enable:&nbsp;boolean)
 
 设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能。<!--RP3--><!--RP3End-->
 
-不能和[overlay](ts-universal-attributes-overlay.md)属性同时使用，两者同时设置时overlay中[CustomBuilder](ts-types.md#custombuilder8)属性将失效。该特性依赖设备能力。
+不能和[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时overlay中[CustomBuilder](ts-types.md#custombuilder8)属性将失效。该特性依赖设备能力。
 
 分析图像要求是静态非矢量图，即svg、gif等图像类型不支持分析，支持传入[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)进行分析，目前仅支持[RGBA_8888](../../apis-image-kit/arkts-apis-image-e.md#pixelmapformat7)类型，使用方式见[示例5开启图像AI分析](#示例5开启图像ai分析)。
 
-[alt](#alt)占位图不支持分析，[objectRepeat](#objectrepeat)属性仅在[ImageRepeat](ts-appendix-enums.md#imagerepeat).NoRepeat下支持分析，隐私遮罩属性[obscured](ts-universal-attributes-obscured.md)打开时不支持分析。
+[alt](#alt)占位图不支持分析，[objectRepeat](#objectrepeat)属性仅在取值为ImageRepeat.NoRepeat时支持分析，隐私遮罩属性[obscured](ts-universal-attributes-obscured.md#obscured)打开时不支持分析。
 
 基于完整原始图像进行分析，设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)、[margin](ts-universal-attributes-size.md#margin)、[borderRadius](ts-universal-attributes-border.md#borderradius)、[position](ts-universal-attributes-location.md#position)和[objectFit](#objectfit)属性导致图像显示不完整，或使用[renderMode](#rendermode)设置蒙层，仍基于完整原始图像进行分析。 [copyOption](#copyoption9)属性不影响AI分析功能。
 
@@ -525,7 +525,7 @@ resizable(value: ResizableOptions)
 
 设置图像拉伸时可调整大小的图像选项。拉伸对拖拽缩略图以及占位图有效。
 
-设置合法的 [ResizableOptions](#resizableoptions11) 时，objectRepeat属性和orientation属性设置不生效。
+设置合法的 [ResizableOptions](#resizableoptions11) 时，objectRepeat属性、antialiased属性和orientation属性设置不生效。
 
 当设置 top +bottom 大于原图的高或者 left + right 大于原图的宽时 [ResizableOptions](#resizableoptions11) 属性设置不生效。
 
@@ -619,7 +619,7 @@ SVG类型图源不支持该属性。
 
 | 参数名   | 类型    | 必填 | 说明                   |
 | -------- | ------- | ---- | ---------------------- |
-| brightness | number | 是   | 用于调整组件展示HDR图片的亮度，该接口仅对HDR图源生效。<br/>默认值：1.0<br/>取值范围：[0.0，1.0]，小于0和大于1.0时取1。0表示图片按照SDR亮度显示，1表示图片按照当前允许的最高HDR亮度显示。  |
+| brightness | number | 是   | 用于调整组件展示HDR图片的亮度，该接口仅对HDR图源生效。<br/>默认值：1.0<br/>取值范围：[0.0，1.0]，小于0和大于1.0时取1.0。0表示图片按照SDR亮度显示，1.0表示图片按照当前允许的最高HDR亮度显示。  |
 
 ### supportSvg2<sup>21+</sup>
 
@@ -655,7 +655,7 @@ contentTransition(transition: ContentTransitionEffect)
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21对象说明) | 是   | 过渡动效的类型。<br/>其中取值为ContentTransitionEffect.OPACITY表示淡入淡出效果，取值为ContentTransitionEffect.IDENTITY表示无动画效果。<br/>默认值：ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。<br/>**说明**：对动态图片资源不生效。 |
+| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21对象说明) | 是   | 过渡动效的类型。<br/>其中取值为ContentTransitionEffect.OPACITY表示淡入淡出效果，取值为ContentTransitionEffect.IDENTITY表示无动画效果。<br/>默认值：ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取默认值ContentTransitionEffect.IDENTITY。<br/>**说明**：对动态图片资源不生效。 |
 
 ### antialiased<sup>23+</sup>
 
@@ -666,6 +666,8 @@ antialiased(isAntialiased: Optional\<boolean>)
 > **说明：**
 >
 > 如果图片设置了背景色属性([backgroundColor](ts-universal-attributes-background.md#backgroundcolor))，图片的抗锯齿属性设置为true不会影响背景色的锯齿效果。
+> 
+> 和[resizable](#resizable11)一起使用时，该属性不生效。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -703,10 +705,10 @@ antialiased(isAntialiased: Optional\<boolean>)
 
 | 名称     | 值 | 说明                       |
 | ------ | - | -------------------------- |
-| None   | - | 最近邻插值。                   |
-| Low    | - | 双线性插值。                     |
-| Medium | - | MipMap插值。                     |
-| High   | - | Cubic插值，插值质量最高，可能会影响图片渲染的速度。 |
+| None   | 0 | 最近邻插值。                   |
+| Low    | 1 | 双线性插值。                     |
+| Medium | 2 | MipMap插值。                     |
+| High   | 3 | Cubic插值，插值质量最高，可能会影响图片渲染的速度。 |
 
 ## ImageRenderMode
 
@@ -720,8 +722,8 @@ antialiased(isAntialiased: Optional\<boolean>)
 
 | 名称     | 值   | 说明           |
 | -------- | ---- | -------------- |
-| Original | -    | 原色渲染模式。 |
-| Template | -    | 黑白渲染模式。 |
+| Original | 0    | 原色渲染模式。 |
+| Template | 1    | 黑白渲染模式。 |
 
 ## ResizableOptions<sup>11+</sup>
 
@@ -734,7 +736,7 @@ antialiased(isAntialiased: Optional\<boolean>)
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --------- |-----------|-----------|-----------|-----------|
 | slice | [EdgeWidths](ts-types.md#edgewidths9) |  否  |  是  | 边框宽度类型，用于描述组件边框不同方向的宽度。<br>**说明：**<br>只有当bottom和right同时大于0时，该属性生效。<br>当设置了top时，图片顶部拉伸，图片的像素值保持不变。<br>当设置了right时，图片右部拉伸，图片的像素值保持不变。<br>当设置了bottom时，图片底部拉伸，图片的像素值保持不变。<br>当设置了left时，图片左部拉伸，图片的像素值保持不变。<br>每个方向的宽度默认值为0，传入数字时默认单位为vp。<br>设置了EdgeWidths后的效果如图1（设置EdgeWidths效果图）所示。|
-| lattice<sup>12+</sup> | [DrawingLattice](#drawinglattice12) |  否  |  是  | 矩形网格对象。<br>**说明：**<br> 通过@ohos.graphics.drawing的createImageLattice接口创建Lattice类型作为入参。将图像划分为矩形网格，同时处于偶数列和偶数行上的网格图像是固定的，不会被拉伸。<br>该参数对[backgroundImageResizable](ts-universal-attributes-background.md#backgroundimageresizable12)接口不生效。<br> 传入数字时默认单位为px。 |
+| lattice<sup>12+</sup> | [DrawingLattice](#drawinglattice12) |  否  |  是  | 矩形网格对象。<br>**说明：**<br> 通过@ohos.graphics.drawing的[createImageLattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md#createimagelattice12)接口创建Lattice类型作为入参。将图像划分为矩形网格，同时处于偶数列和偶数行上的网格图像是固定的，不会被拉伸。其他位置的网格图像会根据slice进行拉伸。<br>该参数对[backgroundImageResizable](ts-universal-attributes-background.md#backgroundimageresizable12)接口不生效。<br> 传入数字时默认单位为px。 |
 
 **图1** 设置EdgeWidths效果图
 ![edgewidths](figures/edgewidths.png)
@@ -778,7 +780,7 @@ antialiased(isAntialiased: Optional\<boolean>)
 
 | 名称     | 值    | 说明                    |
 | ------ | -------------------------- | -------------------------- |
-| AUTO | 0 | 读取图片携带的EXIF元数据作为显示方向，支持旋转和镜像。<br/>PixelMap和DrawableDescriptor类型的图片不包含头信息，调用该接口时图片显示效果不变化。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>![imageRotateOrientation_0](figures/imageRotateOrientation_0.png) |
+| AUTO | 0 | 读取图片携带的EXIF元数据作为显示方向，支持旋转和镜像。<br/>[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)和[DrawableDescriptor](#drawabledescriptor10)类型的图片不包含头信息，调用该接口时图片显示效果不变化。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>![imageRotateOrientation_0](figures/imageRotateOrientation_0.png) |
 | UP | 1 | 默认按照当前图片的像素数据进行显示，不做任何处理。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | RIGHT | 2 | 将当前图片顺时针旋转90度后显示。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>![imageRotateOrientation_2](figures/imageRotateOrientation_2.png) |
 | DOWN | 3 | 将当前图片顺时针旋转180度后显示。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>![imageRotateOrientation_3](figures/imageRotateOrientation_3.png) |
@@ -1033,8 +1035,6 @@ type RequestDownloadInfo = DownloadInfo
 
 用于描述网络图片加载失败或异常时的下载信息。该对象包含本次下载任务的资源信息、网络信息以及性能统计信息，可用于定位加载异常的具体原因。
 
-**需要权限：** ohos.permission.GET_NETWORK_INFO
-
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -1092,7 +1092,7 @@ struct ImageExample1 {
 
 ### 示例2（下载与显示静态网络图片）
 
-加载网络图片时，默认网络超时是5分钟，建议使用alt配置加载时的占位图。使用[HTTP](../../../network/http-request.md)工具包发送网络请求，接着将返回的数据解码为Image组件中的`PixelMap`，加载gif到`PixelMap`时，gif显示为静态图。图片开发可参考[图片处理](../../../media/image/image-overview.md)。
+加载网络图片时，默认网络超时是5分钟，建议使用alt配置加载时的占位图。使用[HTTP](../../../network/http-request.md)工具包发送网络请求，接着将返回的数据解码为Image组件中的`PixelMap`，加载gif到`PixelMap`时，gif显示为静态图。图片开发可参考[Image Kit简介](../../../media/image/image-overview.md)。
 
 使用网络图片时，需要申请权限ohos.permission.INTERNET。具体申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。
 
@@ -1306,14 +1306,14 @@ struct Index {
     Column({ space: 5 }) {
       // 原图效果
       // $r('app.media.landscape')需要替换为开发者所需的图像资源文件。
-      Image($r("app.media.landscape"))
+      Image($r('app.media.landscape'))
         .width(200).height(200)
         .border({ width: 2, color: Color.Pink })
         .objectFit(ImageFit.Contain)
 
       // 图像拉伸效果，设置resizable属性，对图片不同方向进行拉伸
       // $r('app.media.landscape')需要替换为开发者所需的图像资源文件。
-      Image($r("app.media.landscape"))
+      Image($r('app.media.landscape'))
         .resizable({
           slice: {
             //传入数字时默认为vp单位，但在不同设备上vp单位会被解析成不同大小的px单位，可以根据需要选择传入的单位
@@ -1329,22 +1329,22 @@ struct Index {
         .objectFit(ImageFit.Contain)
 
       Row() {
-        Button("add top to " + this.top).fontSize(10)
+        Button('add top to ' + this.top).fontSize(10)
           .onClick(() => {
             this.top += 10;
           })
-        Button("add bottom to " + this.bottom).fontSize(10)
+        Button('add bottom to ' + this.bottom).fontSize(10)
           .onClick(() => {
             this.bottom += 10;
           })
       }
 
       Row() {
-        Button("add left to " + this.left).fontSize(10)
+        Button('add left to ' + this.left).fontSize(10)
           .onClick(() => {
             this.left += 10;
           })
-        Button("add right to " + this.right).fontSize(10)
+        Button('add right to ' + this.right).fontSize(10)
           .onClick(() => {
             this.right += 10;
           })
@@ -1493,13 +1493,17 @@ import { drawing, common2D } from '@kit.ArkGraphics2D';
 @Entry
 @Component
 struct ImageExample3 {
+  // 当加载图片为svg格式时
+  // $r('app.media.svg1')需要替换为开发者所需的图像资源文件。
+  private imageOne: Resource = $r('app.media.svg1');
   // $r('app.media.1')需要替换为开发者所需的图像资源文件。
-  private imageOne: Resource = $r('app.media.1');
-  // $r('app.media.2')需要替换为开发者所需的图像资源文件。
-  private imageTwo: Resource = $r('app.media.2');
+  private imageTwo: Resource = $r('app.media.1');
   @State src: Resource = this.imageOne;
   @State src2: Resource = this.imageTwo;
-  private colorFilterMatrix: number[] = [1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0];
+  private colorFilterMatrix: number[] = [1, 0, 0, 0, 0.5,
+                                         0, 1, 0, 0, 0,
+                                         0, 0, 1, 0, 0,
+                                         0, 0, 0, 1, 0];
   private color: common2D.Color = {
     alpha: 255,
     red: 255,
@@ -1529,9 +1533,9 @@ struct ImageExample3 {
           this.drawingColorFilterSecond = new ColorFilter(this.colorFilterMatrix);
         })
 
-      //当加载图片为svg格式时
-      // $r('app.media.test_self')需要替换为开发者所需的图像资源文件。
-      Image($r('app.media.test_self'))
+      // 当加载图片为svg格式时
+      // $r('app.media.svg2')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.svg2'))
         .width(110)
         .height(110)
         .margin(15)
@@ -1654,7 +1658,7 @@ struct ImageExample {
 
 ### 示例13（为图片设置扫光效果）
 
-该示例通过[linearGradient](./ts-basic-components-datapanel.md#lineargradient10)接口和[animateTo()](./ts-explicit-animation.md)接口实现了给图片设置扫光效果。
+该示例通过[linearGradient](./ts-basic-components-datapanel.md#lineargradient10)接口和[animateTo()](../arkts-apis-uicontext-uicontext.md#animateto)接口实现了给图片设置扫光效果。
 
 ```ts
 import { curves } from '@kit.ArkUI';
@@ -1744,6 +1748,8 @@ struct ImageExample11 {
 ### 示例14（为图片添加变换效果）
 
 该示例通过[imageMatrix](#imagematrix15)和[objectFit](#objectfit)属性，为图片添加旋转和平移的效果。
+
+从API version 15开始，新增imageMatrix属性。
 
 ```ts
 import { matrix4 } from '@kit.ArkUI';
@@ -1949,6 +1955,8 @@ struct Index {
 ### 示例19（设置HDR图源动态提亮）
 
 该示例通过[hdrBrightness](#hdrbrightness19)属性调整HDR图源的亮度，将hdrBrightness从0调整到1。
+
+从API version 19开始，新增hdrBrightness属性。
 
 ```ts
 import { image } from '@kit.ImageKit';
@@ -2268,35 +2276,35 @@ struct fillColorMetricsDemo {
     this.sRGBBlue, ColorContent.ORIGIN, Color.Gray, undefined
   ]
   @State colorArrayStr: string[] = [
-    "P3 Red", "SRGB Red", "P3 Green", "SRGB Green",
-    "P3 Blue", "SRGB Blue", "ORIGIN", "Gray", "undefined"
+    'P3 Red', 'SRGB Red', 'P3 Green', 'SRGB Green',
+    'P3 Blue', 'SRGB Blue', 'ORIGIN', 'Gray', 'undefined'
   ]
   @State arrayIdx: number = 0
   build() {
     Column() {
-      Text("FillColor is " + this.colorArrayStr[this.arrayIdx])
+      Text('FillColor is ' + this.colorArrayStr[this.arrayIdx])
       // $r('app.media.svgExample')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.svgExample'))
         .width(110).height(110).margin(15)
         .fillColor(this.colorArray[this.arrayIdx])
-      Button("ChangeFillColor")
+      Button('ChangeFillColor')
         .onClick(()=>{
           this.arrayIdx = (this.arrayIdx + 1) % this.colorArray.length
         })
       Blank().height(30).width('100%')
-      Text("FillColor is SRGB Red")
+      Text('FillColor is SRGB Red')
       // $r('app.media.svgExample')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.svgExample'))
         .width(110).height(110).margin(15)
         .fillColor(this.sRGBRed)
       Blank().height(30).width('100%')
-      Text("FillColor is SRGB Green")
+      Text('FillColor is SRGB Green')
       // $r('app.media.svgExample')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.svgExample'))
         .width(110).height(110).margin(15)
         .fillColor(this.sRGBGreen)
       Blank().height(30).width('100%')
-      Text("FillColor is SRGB Blue")
+      Text('FillColor is SRGB Blue')
       // $r('app.media.svgExample')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.svgExample'))
         .width(110).height(110).margin(15)
@@ -2368,6 +2376,8 @@ struct Index {
 ### 示例26（使用supportSvg2属性时，SVG图片的显示效果）
 
 该示例通过设置[supportSvg2](#supportsvg221)属性，使SVG标签解析能力增强功能生效。
+
+从API version 21开始，新增supportSvg2属性。
 
 ```ts
 @Entry

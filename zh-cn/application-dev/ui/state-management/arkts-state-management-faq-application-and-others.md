@@ -1,4 +1,4 @@
-# 应用内状态变管理其他常见问题
+# 应用内状态管理和其他常见问题
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
@@ -16,8 +16,10 @@
 
 【反例】
 
-```ts
-// src/main/ets/pages/Index.ets
+<!-- @[lazy_import_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportNeg.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/LazyImportNeg.ets
 import { ErrorEvent, worker, MessageEvents } from '@kit.ArkTS';
 
 @Entry
@@ -25,43 +27,45 @@ import { ErrorEvent, worker, MessageEvents } from '@kit.ArkTS';
 struct Index {
   build() {
     Button('New Worker')
-    .onClick(() => {
-      // 创建Worker对象。
-      const newWorker = new worker.ThreadWorker('../workers/Worker.ets');
+      .onClick(() => {
+        // 创建Worker对象。
+        const newWorker = new worker.ThreadWorker('../workers/LazyImportWorkerNeg.ets');
 
-      // 注册onmessage回调，捕获宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息。该回调在宿主线程执行。
-      newWorker.onmessage = (e: MessageEvents) => {
-        let data: string = e.data;
-        console.info('newWorker onmessage is: ', data);
-      };
+        // 注册onmessage回调，捕获宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息。该回调在宿主线程执行。
+        newWorker.onmessage = (e: MessageEvents) => {
+          let data: string = e.data;
+          console.info('newWorker onmessage is: ', data);
+        };
 
-      // 注册onAllErrors回调，捕获Worker线程的onmessage回调、timer回调以及文件执行等流程产生的全局异常。该回调在宿主线程执行。
-      newWorker.onAllErrors = (err: ErrorEvent) => {
-        console.error('workerInstance onAllErrors message is: ' + err.message);
-      };
+        // 注册onAllErrors回调，捕获Worker线程的onmessage回调、timer回调以及文件执行等流程产生的全局异常。该回调在宿主线程执行。
+        newWorker.onAllErrors = (err: ErrorEvent) => {
+          console.error('workerInstance onAllErrors message is: ' + err.message);
+        };
 
-      // 注册onmessageerror回调，当Worker对象接收到无法序列化的消息时被调用，在宿主线程执行。
-      newWorker.onmessageerror = () => {
-        console.error('workerInstance onmessageerror');
-      };
+        // 注册onmessageerror回调，当Worker对象接收到无法序列化的消息时被调用，在宿主线程执行。
+        newWorker.onmessageerror = () => {
+          console.error('workerInstance onmessageerror');
+        };
 
-      // 注册onexit回调，当Worker销毁时被调用，在宿主线程执行。
-      newWorker.onexit = (e: number) => {
-        // Worker正常退出时，code为0；异常退出时，code为1。
-        console.info('workerInstance onexit code is: ', e);
-      };
+        // 注册onexit回调，当Worker销毁时被调用，在宿主线程执行。
+        newWorker.onexit = (e: number) => {
+          // Worker正常退出时，code为0；异常退出时，code为1。
+          console.info('workerInstance onexit code is: ', e);
+        };
 
-      // 发送消息给Worker线程。
-      newWorker.postMessage('[Main] message from the main thread');
-    })
+        // 发送消息给Worker线程。
+        newWorker.postMessage('[Main] message from the main thread');
+      })
   }
 }
 ```
 
-```ts
-// src/main/ets/workers/Worker.ets
+<!-- @[lazy_import_worker_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/LazyImportWorkerNeg.ets) --> 
+
+``` TypeScript
+// src/main/ets/workers/LazyImportWorkerNeg.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-import { testWithoutObserved } from '../pages/ImportObserved';
+import { testWithoutObserved } from '../pages/LazyImportFuncNeg';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
@@ -87,9 +91,11 @@ workerPort.onerror = (err: ErrorEvent) => {
 };
 ```
 
-```ts
-// src/main/ets/pages/ImportObserved.ets
-import { innerTest } from './Observed';
+<!-- @[lazy_import_function_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportFuncNeg.ets) --> 
+
+``` TypeScript
+// src/main/ets/pages/LazyImportFuncNeg.ets
+import { innerTest } from './LazyImportObservedNeg';
 
 export function testWithObserved(): void {
   innerTest();
@@ -101,8 +107,10 @@ export function testWithoutObserved(): void {
 }
 ```
 
-```ts
-// src/main/ets/pages/Observed.ets
+<!-- @[lazy_import_observed_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportObservedNeg.ets) --> 
+
+``` TypeScript
+// src/main/ets/pages/LazyImportObservedNeg.ets
 export function innerTest(): void {
   console.info('Observed::innerTest call');
 }
@@ -123,8 +131,10 @@ export class Person {
 
 【正例】
 
-```ts
-// src/main/ets/pages/Index.ets
+<!-- @[lazy_import_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportPos.ets) --> 
+
+``` TypeScript
+// src/main/ets/pages/LazyImportPos.ets
 import { ErrorEvent, worker, MessageEvents } from '@kit.ArkTS';
 
 @Entry
@@ -132,43 +142,45 @@ import { ErrorEvent, worker, MessageEvents } from '@kit.ArkTS';
 struct Index {
   build() {
     Button('New Worker')
-    .onClick(() => {
-      // 创建Worker对象。
-      const newWorker = new worker.ThreadWorker('../workers/Worker.ets');
+      .onClick(() => {
+        // 创建Worker对象。
+        const newWorker = new worker.ThreadWorker('../workers/LazyImportWorkerPos.ets');
 
-      // 注册onmessage回调，捕获宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息。该回调在宿主线程执行。
-      newWorker.onmessage = (e: MessageEvents) => {
-        let data: string = e.data;
-        console.info('newWorker onmessage is: ', data);
-      };
+        // 注册onmessage回调，捕获宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息。该回调在宿主线程执行。
+        newWorker.onmessage = (e: MessageEvents) => {
+          let data: string = e.data;
+          console.info('newWorker onmessage is: ', data);
+        };
 
-      // 注册onAllErrors回调，捕获Worker线程的onmessage回调、timer回调以及文件执行等流程产生的全局异常。该回调在宿主线程执行。
-      newWorker.onAllErrors = (err: ErrorEvent) => {
-        console.error('workerInstance onAllErrors message is: ' + err.message);
-      };
+        // 注册onAllErrors回调，捕获Worker线程的onmessage回调、timer回调以及文件执行等流程产生的全局异常。该回调在宿主线程执行。
+        newWorker.onAllErrors = (err: ErrorEvent) => {
+          console.error('workerInstance onAllErrors message is: ' + err.message);
+        };
 
-      // 注册onmessageerror回调，当Worker对象接收到无法序列化的消息时被调用，在宿主线程执行。
-      newWorker.onmessageerror = () => {
-        console.error('workerInstance onmessageerror');
-      };
+        // 注册onmessageerror回调，当Worker对象接收到无法序列化的消息时被调用，在宿主线程执行。
+        newWorker.onmessageerror = () => {
+          console.error('workerInstance onmessageerror');
+        };
 
-      // 注册onexit回调，当Worker销毁时被调用，在宿主线程执行。
-      newWorker.onexit = (e: number) => {
-        // Worker正常退出时，code为0；异常退出时，code为1。
-        console.info('workerInstance onexit code is: ', e);
-      };
+        // 注册onexit回调，当Worker销毁时被调用，在宿主线程执行。
+        newWorker.onexit = (e: number) => {
+          // Worker正常退出时，code为0；异常退出时，code为1。
+          console.info('workerInstance onexit code is: ', e);
+        };
 
-      // 发送消息给Worker线程。
-      newWorker.postMessage('[Main] message from the main thread');
-    })
+        // 发送消息给Worker线程。
+        newWorker.postMessage('[Main] message from the main thread');
+      })
   }
 }
 ```
 
-```ts
-// src/main/ets/workers/Worker.ets
+<!-- @[lazy_import_worker_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/LazyImportWorkerPos.ets) -->
+
+``` TypeScript
+// src/main/ets/workers/LazyImportWorkerPos.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-import { testWithoutObserved } from '../pages/ImportObserved';
+import { testWithoutObserved } from '../pages/LazyImportFuncPos';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
@@ -194,9 +206,12 @@ workerPort.onerror = (err: ErrorEvent) => {
 };
 ```
 
-```ts
+<!-- @[lazy_import_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportFuncPos.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/LazyImportFuncPos.ets
 // 使用lazy import懒加载包含装饰器的文件。
-import lazy { innerTest } from './Observed';
+import lazy { innerTest } from './LazyImportObservedPos';
 
 export function testWithObserved(): void {
   innerTest();
@@ -208,8 +223,10 @@ export function testWithoutObserved(): void {
 }
 ```
 
-```ts
-// src/main/ets/pages/Observed.ets
+<!-- @[lazy_import_observed_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportObservedPos.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/LazyImportObservedPos.ets
 export function innerTest(): void {
   console.info('Observed::innerTest call');
 }
@@ -232,8 +249,10 @@ export class Person {
 
 【反例】
 
-```ts
-// src/main/ets/pages/Index.ets
+<!-- @[decorator_use_isolation_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/DecUseIsolationNeg.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/DecUseIsolationNeg.ets
 import { ErrorEvent, worker, MessageEvents } from '@kit.ArkTS';
 
 @Entry
@@ -241,43 +260,45 @@ import { ErrorEvent, worker, MessageEvents } from '@kit.ArkTS';
 struct Index {
   build() {
     Button('New Worker')
-    .onClick(() => {
-      // 创建Worker对象。
-      const newWorker = new worker.ThreadWorker('../workers/Worker.ets');
+      .onClick(() => {
+        // 创建Worker对象。
+        const newWorker = new worker.ThreadWorker('../workers/UseIsolationWorkerNeg.ets');
 
-      // 注册onmessage回调，捕获宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息。该回调在宿主线程执行。
-      newWorker.onmessage = (e: MessageEvents) => {
-        let data: string = e.data;
-        console.info('newWorker onmessage is: ', data);
-      };
+        // 注册onmessage回调，捕获宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息。该回调在宿主线程执行。
+        newWorker.onmessage = (e: MessageEvents) => {
+          let data: string = e.data;
+          console.info('newWorker onmessage is: ', data);
+        };
 
-      // 注册onAllErrors回调，捕获Worker线程的onmessage回调、timer回调以及文件执行等流程产生的全局异常。该回调在宿主线程执行。
-      newWorker.onAllErrors = (err: ErrorEvent) => {
-        console.error('workerInstance onAllErrors message is: ' + err.message);
-      };
+        // 注册onAllErrors回调，捕获Worker线程的onmessage回调、timer回调以及文件执行等流程产生的全局异常。该回调在宿主线程执行。
+        newWorker.onAllErrors = (err: ErrorEvent) => {
+          console.error('workerInstance onAllErrors message is: ' + err.message);
+        };
 
-      // 注册onmessageerror回调，当Worker对象接收到无法序列化的消息时被调用，在宿主线程执行。
-      newWorker.onmessageerror = () => {
-        console.error('workerInstance onmessageerror');
-      };
+        // 注册onmessageerror回调，当Worker对象接收到无法序列化的消息时被调用，在宿主线程执行。
+        newWorker.onmessageerror = () => {
+          console.error('workerInstance onmessageerror');
+        };
 
-      // 注册onexit回调，当Worker销毁时被调用，在宿主线程执行。
-      newWorker.onexit = (e: number) => {
-        // Worker正常退出时，code为0；异常退出时，code为1。
-        console.info('workerInstance onexit code is: ', e);
-      };
+        // 注册onexit回调，当Worker销毁时被调用，在宿主线程执行。
+        newWorker.onexit = (e: number) => {
+          // Worker正常退出时，code为0；异常退出时，code为1。
+          console.info('workerInstance onexit code is: ', e);
+        };
 
-      // 发送消息给Worker线程。
-      newWorker.postMessage('[Main] message from the main thread');
-    })
+        // 发送消息给Worker线程。
+        newWorker.postMessage('[Main] message from the main thread');
+      })
   }
 }
 ```
 
-```ts
-// src/main/ets/workers/Worker.ets
+<!-- @[use_isolation_worker_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/UseIsolationWorkerNeg.ets) -->
+
+``` TypeScript
+// src/main/ets/workers/UseIsolationWorkerNeg.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-import { testWithObserved } from '../pages/ImportObserved';
+import { testWithObserved } from '../pages/UseIsolationFuncNeg';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
@@ -303,9 +324,11 @@ workerPort.onerror = (err: ErrorEvent) => {
 };
 ```
 
-```ts
-// src/main/ets/pages/ImportObserved.ets
-import { innerTest } from './Observed';
+<!-- @[use_isolation_function_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationFuncNeg.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/UseIsolationFuncNeg.ets
+import { innerTest } from './UseIsolationObservedNeg';
 
 export function testWithObserved(): void {
   innerTest();
@@ -317,8 +340,10 @@ export function testWithoutObserved(): void {
 }
 ```
 
-```ts
-// src/main/ets/pages/Observed.ets
+<!-- @[use_isolation_observed_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationObservedNeg.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/UseIsolationObservedNeg.ets
 export function innerTest(): void {
   console.info('Observed::innerTest call');
 }
@@ -337,8 +362,10 @@ export class Person {
 
 【正例】
 
-```ts
-// src/main/ets/pages/Index.ets
+<!-- @[decorator_use_isolation_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/DecUseIsolationPos.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/DecUseIsolationPos.ets
 import { ErrorEvent, worker, MessageEvents } from '@kit.ArkTS';
 
 @Entry
@@ -346,43 +373,45 @@ import { ErrorEvent, worker, MessageEvents } from '@kit.ArkTS';
 struct Index {
   build() {
     Button('New Worker')
-    .onClick(() => {
-      // 创建Worker对象。
-      const newWorker = new worker.ThreadWorker('../workers/Worker.ets');
+      .onClick(() => {
+        // 创建Worker对象。
+        const newWorker = new worker.ThreadWorker('../workers/UseIsolationWorkerPos.ets');
 
-      // 注册onmessage回调，捕获宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息。该回调在宿主线程执行。
-      newWorker.onmessage = (e: MessageEvents) => {
-        let data: string = e.data;
-        console.info('newWorker onmessage is: ', data);
-      };
+        // 注册onmessage回调，捕获宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息。该回调在宿主线程执行。
+        newWorker.onmessage = (e: MessageEvents) => {
+          let data: string = e.data;
+          console.info('newWorker onmessage is: ', data);
+        };
 
-      // 注册onAllErrors回调，捕获Worker线程的onmessage回调、timer回调以及文件执行等流程产生的全局异常。该回调在宿主线程执行。
-      newWorker.onAllErrors = (err: ErrorEvent) => {
-        console.error('workerInstance onAllErrors message is: ' + err.message);
-      };
+        // 注册onAllErrors回调，捕获Worker线程的onmessage回调、timer回调以及文件执行等流程产生的全局异常。该回调在宿主线程执行。
+        newWorker.onAllErrors = (err: ErrorEvent) => {
+          console.error('workerInstance onAllErrors message is: ' + err.message);
+        };
 
-      // 注册onmessageerror回调，当Worker对象接收到无法序列化的消息时被调用，在宿主线程执行。
-      newWorker.onmessageerror = () => {
-        console.error('workerInstance onmessageerror');
-      };
+        // 注册onmessageerror回调，当Worker对象接收到无法序列化的消息时被调用，在宿主线程执行。
+        newWorker.onmessageerror = () => {
+          console.error('workerInstance onmessageerror');
+        };
 
-      // 注册onexit回调，当Worker销毁时被调用，在宿主线程执行。
-      newWorker.onexit = (e: number) => {
-        // Worker正常退出时，code为0；异常退出时，code为1。
-        console.info('workerInstance onexit code is: ', e);
-      };
+        // 注册onexit回调，当Worker销毁时被调用，在宿主线程执行。
+        newWorker.onexit = (e: number) => {
+          // Worker正常退出时，code为0；异常退出时，code为1。
+          console.info('workerInstance onexit code is: ', e);
+        };
 
-      // 发送消息给Worker线程。
-      newWorker.postMessage('[Main] message from the main thread');
-    })
+        // 发送消息给Worker线程。
+        newWorker.postMessage('[Main] message from the main thread');
+      })
   }
 }
 ```
 
-```ts
-// src/main/ets/workers/Worker.ets
+<!-- @[use_isolation_worker_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/UseIsolationWorkerPos.ets) -->
+
+``` TypeScript
+// src/main/ets/workers/UseIsolationWorkerPos.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-import { testWithObserved } from '../pages/ImportObserved';
+import { testWithObserved } from '../pages/UseIsolationFuncPos';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
@@ -408,9 +437,11 @@ workerPort.onerror = (err: ErrorEvent) => {
 };
 ```
 
-```ts
-// src/main/ets/pages/ImportObserved.ets
-import { innerTest } from './Addition';
+<!-- @[use_isolation_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationFuncPos.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/UseIsolationFuncPos.ets
+import { innerTest } from './UseIsolationAdditionPos';
 
 export function testWithObserved(): void {
   innerTest();
@@ -422,16 +453,20 @@ export function testWithoutObserved(): void {
 }
 ```
 
-```ts
-// src/main/ets/pages/Addition.ets
+<!-- @[use_isolation_addition_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationAdditionPos.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/UseIsolationAdditionPos.ets
 // 函数拆分，装饰器使用隔离。
 export function innerTest(): void {
   console.info('Addition::innerTest call');
 }
 ```
 
-```ts
-// src/main/ets/pages/Observed.ets
+<!-- @[use_isolation_observed_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationObservedPos.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/UseIsolationObservedPos.ets
 @Observed
 export class Person {
   public name: string;

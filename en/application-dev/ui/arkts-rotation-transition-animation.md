@@ -6,10 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Rotation transition animations are designed to create seamless visual transitions when the screen display orientation changes. There are two approaches to choose from:
-
-- [Rotation transition animation with layout switching](#rotation-transition-animation-with-layout-switching): This animation is your go-to solution for an out-of-the-box implementation experience. It can be achieved by simply configuring automatic rotation (or setting the window display orientation) in the **module.json5** file.
-- [Rotation transition animation with opacity changing](#rotation-transition-animation-with-opacity-changing): This animation adds a touch of sophistication with fade-in and fade-out effects for components during screen rotations. It requires additional setup beyond the **module.json5** configuration, including the preparation of two sets of visuals.
+Rotation transition animations are designed to create seamless visual transitions when the screen display orientation changes. There are two approaches to choose from:<br> [Rotation transition animation with layout switching](#rotation-transition-animation-with-layout-switching): This animation is your go-to solution for an out-of-the-box implementation experience. It can be achieved by simply configuring automatic rotation (or setting the window display orientation) in the **module.json5** file.<br> [Rotation transition animation with opacity changing](#rotation-transition-animation-with-opacity-changing): This animation adds a touch of sophistication with fade-in and fade-out effects for components during screen rotations. It requires additional setup beyond the **module.json5** configuration, including the preparation of two sets of visuals.
 
 ## Rotation Transition Animation with Layout Switching
 
@@ -25,6 +22,7 @@ This animation is activated once the user rotates the screen.
 struct rotation {
   build() {
     Stack() {
+      // Replace $r('app.media.tree') with the actual resource file.
       Image($r('app.media.tree'))
         .position({ x: 0, y: 0 })
         .size({ width: 100, height: 100 })
@@ -37,7 +35,7 @@ struct rotation {
 ```
 
 
-To enable this animation, add **"orientation": "auto_rotation"** to the **abilities** list in the **module.json5** file of the project.
+Add **"orientation": "auto_rotation"** to the **abilities** list in the **module.json5** file of the project.
 ```json
 "orientation": "auto_rotation",
 ```
@@ -67,6 +65,7 @@ struct rotation {
 
       // Switch the component's visual effect when the screen display orientation changes.
       if (this.myOrientation == display.Orientation.PORTRAIT || this.myOrientation == display.Orientation.PORTRAIT_INVERTED) {
+        // Replace $r('app.media.sky') with the actual resource file.
         Image($r('app.media.sky'))
           .size({ width: 100, height: 100 })
           .id('image1')
@@ -74,6 +73,7 @@ struct rotation {
         // You can also implement opacity changes for rotation transition animations by setting TransitionEffect.OPACITY.
         // .transition(TransitionEffect.OPACITY)
       } else {
+        // Replace $r('app.media.tree') with the actual resource file.
         Image($r('app.media.tree'))
           .position({ x: 0, y: 0 })
           .size({ width: 200, height: 200 })
@@ -89,7 +89,7 @@ struct rotation {
 }
 ```
 
-Listen for the **windowsSizeChange** event to manage the transitions. For example, you can add logic in the **onWindowStageCreate** API of the **EntryAbility.ets** file to obtain the screen display orientation.
+Listen for the **windowsSizeChange** event to manage the transitions. For example, you can add processing logic to the [onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) method in the **EntryAbility.ets** file to obtain the display orientation of the screen.
 <!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript

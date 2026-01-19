@@ -9,7 +9,7 @@
 
 该组件用于实现支持懒加载的网格布局，其父组件仅限于[WaterFlow](ts-container-waterflow.md)或[FlowItem](ts-container-flowitem.md)，并支持使用自定义组件、[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后，在WaterFlow或FlowItem组件下应用。
 
-该组件仅在WaterFlow组件的单列模式或分段布局中的单列分段，并且布局方向为FlexDirection.Column的情况下支持懒加载。在WaterFlow的多列模式或布局方向为FlexDirection.Row或FlexDirection.RowReverse的情况下使用该组件，则不支持懒加载。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用该组件会导致显示异常。当懒加载功能生效时，该组件仅加载WaterFlow显示区域内的子组件，并在帧间空闲时隙预加载显示区域上方和下方各半屏的内容。
+该组件仅在WaterFlow组件的单列模式或分段布局中的单列分段，并且布局方向[FlexDirection](ts-appendix-enums.md#flexdirection)设置为FlexDirection.Column的情况下支持懒加载。在WaterFlow的多列模式或布局方向为FlexDirection.Row或FlexDirection.RowReverse的情况下使用该组件，则不支持懒加载。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用该组件会导致显示异常。当懒加载功能生效时，该组件仅加载WaterFlow显示区域内的子组件，并在帧间空闲时隙预加载显示区域上方和下方各半屏的内容。
 
 > **说明：**
 >
@@ -45,7 +45,7 @@ columnsTemplate('repeat(auto-fill, track-size)')是设置固定列宽值为track
 columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为track-size，使用columnsGap为最小列间距，自动计算列数和实际列间距。
 
 其中repeat、auto-fit、auto-fill、auto-stretch为关键字。track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包含一个有效列宽。<br/>
-auto-stretch模式只支持track-size为一个有效列宽值，并且track-size只支持px、vp和有效数字，不支持%。
+auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值，并且auto-stretch模式中的track-size只支持px、vp和有效数字，不支持%。auto-fill模式支持一个或多个有效列宽，如columnsTemplate('repeat(auto-fill, 20)')、columnsTemplate('repeat(auto-fill, 20 80px)')。
 
 设置为'0fr'时，该列的列宽为0，不显示子组件。设置为其他非法值时，子组件显示为固定1列。
 
@@ -121,14 +121,28 @@ import { MyDataSource } from './MyDataSource'
 @Entry
 @Component
 struct LazyVGridLayoutSample1 {
-  private arr:MyDataSource<number> = new MyDataSource<number>();
+  private arr1:MyDataSource<number> = new MyDataSource<number>();
+  private arr2:MyDataSource<number> = new MyDataSource<number>();
   build() {
     Column() {
       WaterFlow() {
         LazyVGridLayout() {
-          LazyForEach(this.arr, (item:number)=>{
+          LazyForEach(this.arr1, (item:number)=>{
             Text('item' + item.toString())
               .height(64)
+              .width('100%')
+              .borderRadius(5)
+              .backgroundColor(Color.White)
+              .textAlign(TextAlign.Center)
+          })
+        }
+        .columnsTemplate('1fr')
+        .rowsGap(LengthMetrics.vp(10))
+
+        LazyVGridLayout() {
+          LazyForEach(this.arr2, (item:number)=>{
+            Text('item' + item.toString())
+              .height(128)
               .width('100%')
               .borderRadius(5)
               .backgroundColor(Color.White)
@@ -139,14 +153,18 @@ struct LazyVGridLayoutSample1 {
         .rowsGap(LengthMetrics.vp(10))
         .columnsGap(LengthMetrics.vp(10))
       }.padding(10)
+      .rowsGap(10)
     }
     .width('100%').height('100%')
     .backgroundColor('#DCDCDC')
   }
 
   aboutToAppear(): void {
+    for (let i = 0; i < 6; i++) {
+      this.arr1.pushData(i);
+    }
     for (let i = 0; i < 100; i++) {
-      this.arr.pushData(i);
+      this.arr2.pushData(i);
     }
   }
 }
@@ -243,4 +261,4 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 }
 ```
 
-![](figures/zh-cn_image_lazyvgridlayout1.png)
+![](figures/zh-cn_image_lazyvgridlayout1.gif)

@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_GestureInterruptInfo ArkUI_GestureInterruptInfo
+```
+
 ## Overview
 
 Defines the gesture interruption information.

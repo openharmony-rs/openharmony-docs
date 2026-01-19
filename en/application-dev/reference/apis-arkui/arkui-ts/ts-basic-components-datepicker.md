@@ -1,9 +1,9 @@
 # DatePicker
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @luoying_ace_admin-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 **DatePicker** is a component for selecting a date through scrolling interaction.
@@ -43,7 +43,7 @@ Describes the parameters of the date picker.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type| Read-Only| Optional| Description                                                        |
+| Name    | Type| Read Only| Optional| Description                                                        |
 | -------- | ---- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | start    | Date | No | Yes | Start date of the picker.<br>Default value: **Date('1970-1-1')**<br>Value range: \[Date('1900-01-31'), Date('2100-12-31')].<br>**Atomic service API**: This API can be used in atomic services since API version 11.         |
 | end      | Date | No | Yes | End date of the picker.<br>Default value: **Date('2100-12-31')**<br>Value range: \[Date('1900-01-31'), Date('2100-12-31')].<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
@@ -116,7 +116,7 @@ Sets whether to display dates in lunar calendar format.
 
 lunar(isLunar: Optional\<boolean>)
 
-Sets whether to display dates in lunar calendar format. Compared with [lunar](#lunar), the **isLunar** parameter supports the **undefined** type.
+Sets whether to display dates in lunar calendar format. Compared to [lunar](#lunar), the **isLunar** parameter supports the **undefined** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -152,7 +152,7 @@ Sets the text style for edge items (the second item above or below the selected 
 
 disappearTextStyle(style: Optional\<PickerTextStyle>)
 
-Sets the text style for edge items (the second item above or below the selected item). Compared with [disappearTextStyle<sup>10+</sup>](#disappeartextstyle10), this API supports the **undefined** type for the **style** parameter.
+Sets the text style for edge items (the second item above or below the selected item). Compared to [disappearTextStyle<sup>10+</sup>](#disappeartextstyle10), this API supports the **undefined** type for the **style** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -192,7 +192,7 @@ Sets the text style for candidate items (the first item immediately above or bel
 
 textStyle(style: Optional\<PickerTextStyle>)
 
-Sets the text style for candidate items (the first item immediately above or below the selected item). Compared with [textStyle<sup>10+</sup>](#textstyle10), this API supports the **undefined** type for the **style** parameter.
+Sets the text style for candidate items (the first item immediately above or below the selected item). Compared to [textStyle<sup>10+</sup>](#textstyle10), this API supports the **undefined** type for the **style** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -228,7 +228,7 @@ Sets the text style for the selected item.
 
 selectedTextStyle(style: Optional\<PickerTextStyle>)
 
-Sets the text style for the selected item. Compared with [selectedTextStyle<sup>10+</sup>](#selectedtextstyle10), this API supports the **undefined** type for the **style** parameter.
+Sets the text style for the selected item. Compared to [selectedTextStyle<sup>10+</sup>](#selectedtextstyle10), this API supports the **undefined** type for the **style** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -256,16 +256,15 @@ Sets whether to enable haptic feedback.
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
 | enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>Whether this parameter takes effect after being set to **true** depends on hardware support.<br>If the value of **enable** is **undefined**, the default value is used.|
 
->  **NOTE**
->
->  To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
->  ```json
->  "requestPermissions": [
->  {
->   "name": "ohos.permission.VIBRATE",
->  }
->  ]
->  ```
+To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
+
+```json
+"requestPermissions": [
+   {
+      "name": "ohos.permission.VIBRATE",
+   }
+]
+```
 
 ### digitalCrownSensitivity<sup>18+</sup>
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
@@ -290,7 +289,7 @@ Sets the sensitivity to the digital crown rotation.
 
 canLoop(isLoop: Optional\<boolean>)
 
-Sets whether to enable loop scrolling.
+Sets whether to enable cyclic scrolling.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -300,7 +299,7 @@ Sets whether to enable loop scrolling.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable loop scrolling.<br>- **true**: Loop scrolling is enabled, where the year values increment or decrement with month cycling, and month values increment or decrement with day cycling.<br>- **false**: Loop scrolling is disabled, preventing out-of-bounds scrolling in year, month, and day columns and cross-column value synchronization.<br>Default value: **true**.<br>If the value of **isLoop** is **undefined**, the default value is used. |
+| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable cyclic scrolling.<br>- **true**: Cyclic scrolling is enabled, where the year values increment or decrement with month cycling, and month values increment or decrement with day cycling.<br>- **false**: Cyclic scrolling is disabled, preventing out-of-bounds scrolling in year, month, and day columns and cross-column value synchronization.<br>Default value: **true**.<br>If the value of **isLoop** is **undefined**, the default value is used.|
 
 ## Events
 
@@ -342,7 +341,7 @@ Triggered when the date picker snaps to the selected item. This event cannot be 
 
 onDateChange(callback: Optional\<Callback\<Date>>)
 
-Triggered when the date picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. Compared with [onDateChange<sup>10+</sup>](#ondatechange10), this API supports the **undefined** type for the **callback** parameter.
+Triggered when the date picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. Compared to [onDateChange<sup>10+</sup>](#ondatechange10), this API supports the **undefined** type for the **callback** parameter.
 
 >**NOTE**
 >
@@ -366,7 +365,7 @@ Defines the time format returned by the date picker.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type  | Read-Only| Optional| Description                                      |
+| Name | Type  | Read Only| Optional| Description                                      |
 | ----- | ------ | ---- | ---- | ------------------------------------------ |
 | year  | number | No  | Yes  | Year of the selected date.<br>Value range: depends on **start** and **end**. If **start** and **end** are not set, the default range is [1970, 2100].                            |
 | month | number | No  | Yes  | Zero-based month index of the selected date. **0** indicates January, and **11** indicates December.<br>Value range: depends on **start** and **end**. If **start** and **end** are not set, the default range is [0, 11].|
@@ -449,6 +448,8 @@ struct DatePickerExample {
 
 This example demonstrates how to display year and month, or month and day columns using **mode**.
 
+The **mode** attribute of [DatePickerOptions](#datepickeroptions) is added since API version 18.
+
 ```ts
 // xxx.ets
 @Entry
@@ -495,9 +496,9 @@ struct DatePickerExample {
 ```
 ![datePicker](figures/DatePickerDemo3.gif)
 
-### Example 4: Setting Loop Scrolling
+### Example 4: Setting Cyclic Scrolling
 
-This example demonstrates how to set whether to enable loop scrolling using [canLoop](#canloop20), available since API version 20.
+This example demonstrates how to set whether to enable cyclic scrolling using [canLoop](#canloop20), available since API version 20.
 
 ```ts
 // xxx.ets
@@ -520,7 +521,7 @@ struct DatePickerExample {
         })
 
       Row() {
-        Text('Loop scrolling').fontSize(20)
+        Text('Cyclic scrolling').fontSize(20)
         Toggle({ type: ToggleType.Switch, isOn: true })
           .onChange((isOn: boolean) => {
             this.isLoop = isOn;
@@ -530,4 +531,4 @@ struct DatePickerExample {
   }
 }
 ```
-
+![datePicker](figures/DatePickerDemo4.gif)

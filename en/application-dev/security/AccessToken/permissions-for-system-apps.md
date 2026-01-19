@@ -5356,6 +5356,20 @@ Allows an application to dynamically register or remove custom UTD data types.
 
 **Since**: 22
 
+
+## ohos.permission.MANAGE_MEDIA_SHARED_RESOURCE
+
+Allows a system application to access media sharing resources within the camera framework directory.
+
+**Permission level**：system_basic
+
+**Authorization mode**：system_grant
+
+**Enable via ACL**：true
+
+**Supported devices**：General
+
+**Since**：23
 ## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
 
 Allows an application that has accessed Cloud to manage cloud data.
@@ -5367,5 +5381,47 @@ Allows an application that has accessed Cloud to manage cloud data.
 **Enable via ACL**: true
 
 **Supported devices**: general devices
+
+**Since**: 23
+
+## ohos.permission.MANAGE_RISK_PHOTOS
+
+Allows a system application to access potentially risky images or videos.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 23
+
+## ohos.permission.READ_CLOUD_IMAGEVIDEO
+
+Allows an application to read image or video files from the user's cloud storage.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 23
+
+## ohos.permission.ACCESS_SECURE_FENCE
+
+Allows a system application to access secure access fence capability..
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablet | tv | car
 
 **Since**: 23

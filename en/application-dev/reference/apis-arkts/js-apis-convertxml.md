@@ -71,12 +71,19 @@ try {
     '</note>';
   let conv = new convertxml.ConvertXML();
   let options: convertxml.ConvertOptions = {
-    trim: false, declarationKey: "_declaration",
-    instructionKey: "_instruction", attributesKey: "_attributes",
-    textKey: "_text", cdataKey: "_cdata", doctypeKey: "_doctype",
-    commentKey: "_comment", parentKey: "_parent", typeKey: "_type",
-    nameKey: "_name", elementsKey: "_elements"
-  }
+    trim: false,
+    declarationKey: "_declaration",
+    instructionKey: "_instruction",
+    attributesKey: "_attributes",
+    textKey: "_text",
+    cdataKey: "_cdata",
+    doctypeKey: "_doctype",
+    commentKey: "_comment",
+    parentKey: "_parent",
+    typeKey: "_type",
+    nameKey: "_name",
+    elementsKey: "_elements"
+  };
   let result = JSON.stringify(conv.fastConvertToJSObject(xml, options));
   console.info(result);
 } catch (e) {
@@ -84,6 +91,85 @@ try {
 }
 // Output (non-compact)
 // {"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},"_elements":[{"_type":"element","_name":"note","_attributes":{"importance":"high","logged":"true"},"_elements":[{"_type":"element","_name":"title","_elements":[{"_type":"text","_text":"Hello\nWorld"}]},{"_type":"element","_name":"todo","_elements":[{"_type":"cdata","_cdata":"Work\n"}]}]}]}
+```
+
+### largeConvertToJSObject<sup>23+</sup>
+
+largeConvertToJSObject(xml: string, options?: ConvertOptions): Object
+
+Converts XML text to an object of the object type. This method can parse large XML text whose size of a single node exceeds 10 MB.
+
+> **NOTE**
+>
+> In Windows, a new line is usually represented by the carriage return (CR) followed by the line feed (LF). However, the object obtained by calling this API uses only the LF to indicate a new line.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name | Type                             | Mandatory| Description           |
+| ------- | --------------------------------- | ---- | --------------- |
+| xml     | string                            | Yes  | XML text to convert. If the XML text contains the ampersand (&), replace it with the entity reference **\&amp;**.|
+| options | [ConvertOptions](#convertoptions) | No  | Options for conversion. The default value is a **ConvertOptions** object, which consists of the default values of the attributes in the object.|
+
+**Return value**
+
+| Type  | Description                        |
+| ------ | ---------------------------- |
+| Object | JavaScript object.|
+
+**Error codes**
+
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 10200002 | Invalid xml string. |
+
+**Example**
+
+```ts
+try {
+  let xmlstr =
+    '<?xml version="1.0" encoding="utf-8"?>' +
+    '<?custom-pi processing="example"?>' +
+    '<catalog id="books">' +
+      '<!-- Bestseller Example -->' +
+      '<book category="fiction" ref="B101">' +
+        '<title>Echoes &amp; Whispers</title>' +
+        '<price unit="USD">19.99</price>' +
+        '<descr>' +
+          '<![CDATA[<b>suspense</b>novel & Legendary Stories]]>' +
+        '</descr>' +
+        '<popular/>' +
+      '</book>' +
+    '</catalog>';
+  let conv = new convertxml.ConvertXML();
+  let options: convertxml.ConvertOptions = {
+    trim: false,
+    declarationKey: "_declaration",
+    instructionKey: "_instruction",
+    attributesKey: "_attributes",
+    textKey: "_text",
+    cdataKey: "_cdata",
+    doctypeKey: "_doctype",
+    commentKey: "_comment",
+    parentKey: "_parent",
+    typeKey: "_type",
+    nameKey: "_name",
+    elementsKey: "_elements"
+  };
+  let result = JSON.stringify(conv.largeConvertToJSObject(xmlstr, options));
+  console.info(result);
+} catch (e) {
+  console.error((e as Object).toString());
+}
+// Output (non-compact)
+// {"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},"_elements":[{"_type":"instruction","_name":"custom-pi","_instruction":"processing=\"example\""},{"_type":"element","_name":"catalog","_attributes":{"id":"books"},"_elements":[{"_type":"comment","_comment":" Bestseller Example "},{"_type":"element","_name":"book","_parent":"catalog","_attributes":{"category":"fiction","ref":"B101"},"_elements":[{"_type":"element","_name":"title","_parent":"book","_elements":[{"_type":"text","_text":"Echoes & Whispers"}]},{"_type":"element","_name":"price","_parent":"book","_attributes":{"unit":"USD"},"_elements":[{"_type":"text","_text":"19.99"}]},{"_type":"element","_name":"descr","_parent":"book","_elements":[{"_type":"cdata","_cdata":"<b>suspense</b>novel & Legendary Stories"}]},{"_type":"element","_name":"popular","_parent":"book"}]}]}]}
 ```
 
 ### convertToJSObject<sup>(deprecated)</sup>
@@ -104,7 +190,7 @@ Converts an XML text to an object of the object type.
 
 | Name | Type                             | Mandatory| Description           |
 | ------- | --------------------------------- | ---- | --------------- |
-| xml     | string                            | Yes  | XML text to convert. If the XML text contains the ampersand (&), replace it with the entity reference **\&amp;**.|
+| xml     | string                            | Yes  | If the XML text to convert contains the ampersand (&), replace it with the entity reference **\&amp;**.|
 | options | [ConvertOptions](#convertoptions) | No  | Options for conversion. The default value is a **ConvertOptions** object, which consists of the default values of the attributes in the object.|
 
 **Return value**
@@ -135,12 +221,19 @@ try {
       '</note>';
   let conv = new convertxml.ConvertXML();
   let options: convertxml.ConvertOptions = {
-    trim: false, declarationKey: "_declaration",
-    instructionKey: "_instruction", attributesKey: "_attributes",
-    textKey: "_text", cdataKey: "_cdata", doctypeKey: "_doctype",
-    commentKey: "_comment", parentKey: "_parent", typeKey: "_type",
-    nameKey: "_name", elementsKey: "_elements"
-  }
+    trim: false,
+    declarationKey: "_declaration",
+    instructionKey: "_instruction",
+    attributesKey: "_attributes",
+    textKey: "_text",
+    cdataKey: "_cdata",
+    doctypeKey: "_doctype",
+    commentKey: "_comment",
+    parentKey: "_parent",
+    typeKey: "_type",
+    nameKey: "_name",
+    elementsKey: "_elements"
+  };
   let result = JSON.stringify(conv.convertToJSObject(xml, options));
   console.info(result);
 } catch (e) {
@@ -154,7 +247,7 @@ try {
 
 convert(xml: string, options?: ConvertOptions) : Object
 
-Converts an XML text into a JavaScript object.
+Converts an XML text to a JavaScript object.
 
 > **NOTE**
 >
@@ -166,7 +259,7 @@ Converts an XML text into a JavaScript object.
 
 | Name | Type                             | Mandatory| Description           |
 | ------- | --------------------------------- | ---- | --------------- |
-| xml     | string                            | Yes  | XML text to convert.|
+| xml     | string                            | Yes  | Input XML text.|
 | options | [ConvertOptions](#convertoptions) | No  | Options for conversion. The default value is a **ConvertOptions** object, which consists of the default values of the attributes in the object. |
 
 **Return value**
@@ -186,11 +279,20 @@ let xml =
     '    <todo>Play</todo>' +
     '</note>';
 let conv = new convertxml.ConvertXML();
-let options: convertxml.ConvertOptions = {trim : false, declarationKey:"_declaration",
-  instructionKey : "_instruction", attributesKey : "_attributes",
-  textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
-  commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
-  nameKey : "_name", elementsKey : "_elements"}
+let options: convertxml.ConvertOptions = {
+  trim: false,
+  declarationKey: "_declaration",
+  instructionKey: "_instruction",
+  attributesKey: "_attributes",
+  textKey: "_text",
+  cdataKey: "_cdata",
+  doctypeKey: "_doctype",
+  commentKey: "_comment",
+  parentKey: "_parent",
+  typeKey: "_type",
+  nameKey: "_name",
+  elementsKey: "_elements"
+};
 let result = JSON.stringify(conv.convert(xml, options));
 console.info(result);
 // Output (non-compact)

@@ -274,7 +274,47 @@ The enterprise management policy has been successfully set, but the function has
 **处理步骤**
 
 重启设备，重启后管控生效。在外置存储管控场景下，重启后禁用外置存储生效，不会主动加载外置存储。
-   
+
+## 9200014 启动组件失败
+
+**错误信息**
+
+Failed to start the ability.
+
+**错误描述**
+
+启动组件失败时，会产生此错误码。
+
+**可能原因**
+
+1. 当设置了禁止运行应用名单（例如调用[addDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync)接口），且应用在禁止运行应用名单中时，启动组件会失败。
+2. 当设置了允许运行应用名单（例如调用[addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21)接口），且应用不在允许运行应用名单中时，启动组件会失败。
+
+**处理步骤**
+
+1. 将应用从禁止运行名单中移除，例如调用[removeDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanagerremovedisallowedrunningbundlessync)接口。
+2. 将应用添加到允许运行名单，例如调用[addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21)接口。
+
+## 9200015 组件不存在
+
+**错误信息**
+
+The ability does not exist.
+
+**错误描述**
+
+当组件不存在，启动该组件时，会产生此错误码。
+
+**可能原因**
+
+1. 传入了不存在bundleName和abilityName。
+2. 传入的Ability对外不可见。
+
+**处理步骤**
+
+1. 检查want中的bundleName和abilityName是否正确。
+2. 检查传入的Ability对外是否可见。
+
 ## 9201001 管理证书失败
 
 **错误信息**
@@ -394,3 +434,103 @@ Add keep alive applications failed.
 2. 检查应用是否有MainAbility。
 3. 检查应用是否实现托盘服务。
 4. 检查应用是否已添加到托盘。
+
+## 9201006 安装企业重签名证书超过数量上限
+
+**错误信息**
+
+The number of certificates has reached the limit.
+
+**错误描述**
+
+当企业设备管理已安装的企业重签名证书数量达到10个时，会产生此错误码。
+
+**可能原因**
+
+已安装的企业重签名证书数量达到上限。
+
+**处理步骤**
+
+检查已安装的企业重签名证书数量是否达到10个，卸载多余证书。
+
+## 9201007 企业重签名证书无效
+
+**错误信息**
+
+The certificate is invalid.
+
+**错误描述**
+
+当企业设备管理安装企业重签名证书失败时，会产生此错误码。
+
+**可能原因**
+
+该错误码表示企业设备管理安装企业重签名证书失败，可能原因如下。
+
+1. 证书无效。
+2. 已安装过同名证书。
+
+**处理步骤**
+
+1. 检查证书是否为有效的企业重签名证书。
+2. 检查是否已安装过同名证书。
+
+## 9201008 企业重签名证书不存在
+
+**错误信息**
+
+The certificate does not exist.
+
+**错误描述**
+
+当企业设备管理卸载企业重签名证书失败时，会产生此错误码。
+
+**可能原因**
+
+卸载的证书不存在。
+
+**处理步骤**
+
+检查卸载的证书是否存在。
+
+## 9201009 日志收集任务创建失败
+
+**错误信息**
+
+Collecting logs, please try again later.
+
+**错误描述**
+
+当企业设备管理创建日志收集任务失败时，会产生此错误码。
+
+**可能原因**
+
+当已有一个日志收集任务正在执行时，调用了[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口创建日志收集任务。
+
+**处理步骤**
+
+等前一个日志收集任务完成（即收到[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23)回调）后，再调用[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口创建日志收集任务。
+
+## 9201010 以太网网络接口配置失败
+
+**错误信息**
+
+Ethernet configuration failed. Ethernet device not connected.
+
+**错误描述**
+
+以太网配置失败，或以太网设备未连接。
+
+**可能原因**
+
+该错误码表示以太网配置失败，可能原因如下。
+
+1. 网卡未启用。
+2. 网卡名输入错误。
+3. 配置参数错误。
+
+**处理步骤**
+
+1. 检查网卡是否启用。
+2. 检查输入的网卡名是否正确。
+3. 检查配置的参数是否正确。

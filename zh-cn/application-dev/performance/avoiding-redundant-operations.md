@@ -1,5 +1,12 @@
 # 避免开发过程中的冗余操作
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 概述
 
 在软件开发流程中，识别并减少冗余操作至关重要。为优化性能，开发者需在开发阶段适度增加日志以辅助调试，而在生产环境中则需避免冗余日志和Trace追踪输出。还需要审查并删除无实际功能的空回调函数，确保回调有明确的目的。通过精简日志、合理规划Trace追踪和严谨处理回调函数，能够有效降低冗余，提升代码质量与运行性能，从而提高软件产品的用户体验。接下来，将进一步探讨关注点及优化方法。
@@ -38,24 +45,30 @@ import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 
 @Component
 struct NegativeOfOnDidScroll {
-  Scroll() {
-    ForEach(this.arr, (item: number) => {
-      Text("TextItem" + item)
-      .width("100%")
-      .height(100)
-    }, (item: number) => item.toString())
+  private arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  build() {
+    Scroll() {
+      Column() {
+        ForEach(this.arr, (item: number) => {
+          Text("TextItem" + item)
+            .width("100%")
+            .height(100)
+        }, (item: number) => item.toString())
+      }
+    }
+    .width('100%')
+      .height('100%')
+      .onDidScroll(() => {
+        hiTraceMeter.startTrace("ScrollSlide", 1001);
+        hilog.info(1001, 'Scroll', 'TextItem');
+        // 耗时操作
+        // ...
+        // 业务逻辑
+        // ...
+        hiTraceMeter.finishTrace("ScrollSlide", 1001);
+      })
   }
-  .width('100%')
-  .height('100%')
-  .onDidScroll(() =>{
-    hiTraceMeter.startTrace("ScrollSlide", 1001);
-    hilog.info(1001, 'Scroll', 'TextItem');
-    // 耗时操作
-    // ...
-    // 业务逻辑
-    // ...
-    hiTraceMeter.finishTrace("ScrollSlide", 1001);
-  })
 }
 ```
 
@@ -65,21 +78,29 @@ struct NegativeOfOnDidScroll {
 
 ```typescript
 // onDidScroll高频回调场景正例
+import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';  
+  
 @Component
 struct PositiveOfOnDidScroll {
-  Scroll() {
-    ForEach(this.arr, (item: number) => {
-      Text("ListItem" + item)
-      .width("100%")
-      .height("100%")
-    }, (item: number) => item.toString())
+  private arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  build() {
+    Scroll() {
+      Column() {
+        ForEach(this.arr, (item: number) => {
+          Text("TextItem" + item)
+            .width("100%")
+            .height(100)
+        }, (item: number) => item.toString())
+      }
+    }
+    .width('100%')
+      .height('100%')
+      .onDidScroll(() => {
+        // 业务逻辑
+        // ...
+      })
   }
-  .width('100%')
-  .height('100%')
-  .onDidScroll(() =>{
-    // 业务逻辑
-    // ...
-  })
 }
 ```
 
@@ -101,13 +122,18 @@ struct PositiveOfOnDidScroll {
 
 ```typescript
 // Trace场景反例
+import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+
 @Component
 struct NegativeOfTrace {
   aboutToAppear() {
-    hitrace.startTrace("HITRACE_TAG_APP", 1002);
+    hiTraceMeter.startTrace("HITRACE_TAG_APP", 1002);
     // 业务代码
     // ...
-    hitrace.finishTrace("HITRACE_TAG_APP", 1002);
+    hiTraceMeter.finishTrace("HITRACE_TAG_APP", 1002);
+  }
+
+  build() {
   }
 }
 ```
@@ -118,11 +144,16 @@ struct NegativeOfTrace {
 
 ```typescript
 // Trace场景正例
+import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';  
+  
 @Component
 struct PositiveOfTrace {
   aboutToAppear() {
     // 业务代码
     // ...
+  }
+
+  build() {
   }
 }
 ```
@@ -137,14 +168,21 @@ struct PositiveOfTrace {
 
 ```typescript
 // debug日志打印反例
-@State string1: string = 'a';
-@State string2: string = 'b';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
 @Component
 struct NegativeOfDebug {
+  @State string1: string = 'a';
+  @State string2: string = 'b';
+
   aboutToAppear() {
     hilog.debug(1003, 'Debug', (this.string1 + this.string2));
     // 业务代码
     // ...
+  }
+
+  build() {
+  }
 }
 
 // 实际调用debug方法前会先将参数拼接为msg，再调用debug方法
@@ -162,6 +200,10 @@ hilog.debug(msg);
 struct PositiveOfDebug {
   aboutToAppear() {
     // 业务代码
+    // ...
+  }
+
+  build() {
     // ...
   }
 

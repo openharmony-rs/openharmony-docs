@@ -34,13 +34,14 @@ The **timer.h** file declares the timer APIs in C.
 
 ### ffrt_timer_start()
 
-```
+```c
 FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void* data, ffrt_timer_cb cb, bool repeat)
 ```
 
 **Description**
 
 Starts the timer.
+
 You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **Since**: 12
@@ -64,7 +65,7 @@ You are not advised to call the `exit` function in `cb`. Otherwise, undefined be
 
 ### ffrt_timer_stop()
 
-```
+```c
 FFRT_C_API int ffrt_timer_stop(ffrt_qos_t qos, ffrt_timer_t handle)
 ```
 

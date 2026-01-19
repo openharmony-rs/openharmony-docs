@@ -88,7 +88,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     build() {
       Column() {
         // 画一个宽高都为75的圆
-        // $r('app.string.OriginalSizeCircle')需要替换为开发者所需的资源文件
+        // 请将$r('app.string.OriginalSizeCircle')替换为实际资源文件，在本示例中该资源文件的value值为"原始尺寸Circle组件"
         Text($r('app.string.OriginalSizeCircle')).margin({ top: 20 })
         Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
   
@@ -97,7 +97,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
             // 创建一个宽高都为150的shape组件，背景色为黄色，一个宽高都为75的viewPort。
             // 用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个直径为75的圆。
             // 绘制结束，viewPort会根据组件宽高放大两倍。
-            // $r('app.string.EnlargedCircle')需要替换为开发者所需的资源文件
+            // 请将$r('app.string.EnlargedCircle')替换为实际资源文件，在本示例中该资源文件的value值为"shape内放大的Circle组件"
             Text($r('app.string.EnlargedCircle'))
             Shape() {
               Rect().width('100%').height('100%').fill('rgb(39, 135, 217)')
@@ -113,7 +113,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
             // 创建一个宽高都为150的shape组件，背景色为黄色，一个宽高都为300的viewPort。
             // 用一个绿色的矩形来填充viewPort，在viewPort中绘制一个直径为75的圆。
             // 绘制结束，viewPort会根据组件宽高缩小两倍。
-            // $r('app.string.ShrunkCircle')需要替换为开发者所需的资源文件
+            // 请将$r('app.string.ShrunkCircle')替换为实际资源文件，在本示例中该资源文件的value值为"Shape内缩小的Circle组件"
             Text($r('app.string.ShrunkCircle'))
             Shape() {
               Rect().width('100%').height('100%').fill('rgb(213, 213, 213)')
@@ -275,7 +275,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   ![strokeLineJoin](figures/strokeLineJoin.jpg)
 
 - 通过[strokeMiterLimit](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokemiterlimit)设置斜接长度与边框宽度比值的极限值。
-  斜接长度表示外边框外边交点到内边交点的距离，边框宽度即[strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth)属性的值。strokeMiterLimit取值需大于等于1，且在[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)属性取值LineJoinStyle.Miter时生效。
+
+  斜接长度表示外边框外边交点到内边交点的距离，边框宽度即[strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth)属性的值。
+  
+  strokeMiterLimit取值需大于等于1，且在[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)属性取值LineJoinStyle.Miter时生效。
 
   <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) -->
   

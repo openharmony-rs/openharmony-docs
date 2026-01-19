@@ -150,6 +150,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 |    |——napi_init.cpp 与index.d.ts对应的桥接方法对接Native侧的定义处。
 |    |——NativeEntry.cpp 桥接方法的Native侧实现。
 |    |——NativeEntry.h 桥接方法的Native侧定义。
+|    |——NativeModule.h 提供获取ArkUI在Native侧模块的封装接口。
 |    |——CMakeLists.txt C语言库引用文件。
 |    |——ArkUIBaseNode.h 节点封装扩展类。
 |    |——ArkUINode.h 节点封装扩展类。
@@ -212,6 +213,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     ```
 
 2. 使用Native模板创建工程，并在Native侧提供Node-API的桥接方法，实现ArkTS侧的NativeNode模块接口。
+
    接口声明。
 
     <!-- @[Cpp_indexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/types/libentry/Index.d.ts) -->

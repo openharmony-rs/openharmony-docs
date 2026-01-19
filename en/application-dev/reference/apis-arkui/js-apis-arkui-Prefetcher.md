@@ -10,7 +10,9 @@ Used in conjunction with **LazyForEach**, the **Prefetcher** module provides con
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>  - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+>  - The APIs of this module cannot be used in the Previewer.
 
 ## Modules to Import
 
@@ -29,7 +31,7 @@ Provides prefetching capabilities.
 ### setDataSource
 setDataSource(dataSource: IDataSourcePrefetching): void;
 
-Sets the prefetching-capable data source to bind to the **Prefetcher** object.
+Sets the prefetching-capable data source to bind to the **Prefetcher**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -95,7 +97,7 @@ class MyPrefetcher implements IPrefetcher {
 ### constructor
 constructor(dataSource?: IDataSourcePrefetching);
 
-A constructor used to create a prefetching-capable data source to bind to the **Prefetcher** object.
+A constructor used to create a prefetching-capable data source to bind to the **Prefetcher**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

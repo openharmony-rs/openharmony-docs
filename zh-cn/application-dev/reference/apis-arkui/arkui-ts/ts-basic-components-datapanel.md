@@ -65,8 +65,8 @@ DataPanel(options: DataPanelOptions)
 
 | 名称 | 值 | 说明 |
 | -------| - | ------------ |
-| Line   | - | 线型数据面板。 |
-| Circle | - | 环形数据面板。 |
+| Line   | 0 | 线型数据面板。 |
+| Circle | 4 | 环形数据面板。 |
 
 
 ## 属性
@@ -169,7 +169,7 @@ contentModifier(modifier: ContentModifier\<DataPanelConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<DataPanelConfiguration>](#datapanelconfiguration12对象说明) | 是   | 在DataPanel组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)[\<DataPanelConfiguration>](#datapanelconfiguration12对象说明) | 是   | 在DataPanel组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 
 ## DataPanelShadowOptions<sup>10+</sup>对象说明
@@ -226,7 +226,7 @@ constructor(colorStops: ColorStop[])
 
 | 名称  | 类型    |    只读    |    可选   |  说明              |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| values | number[] | 否 | 否 | 当前DataPanel的数据值。<br>取值范围：[0, 9]，若数据值小于0，则置为0。 |
+| values | number[] | 否 | 否 | 当前DataPanel的数据值。<br>数组长度范围是[0, 9]。<br>**说明：**<br/>如果数组长度大于9，则取前9项。|
 | maxValue | number | 否 | 否 | DataPanel显示的最大值。<br/>默认值：100。<br>**说明：** <br/>如果小于或等于0，maxValue将被设为values数组中所有项的总和，并按比例显示。 |
 
 ## 示例

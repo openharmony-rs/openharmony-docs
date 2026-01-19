@@ -14,7 +14,7 @@
 
 - **信号**
 
-  信号是兼容POSIX的操作系统中进程间通讯的一种方式。一种异步的通知机制，当一个信号发送给一个进程，操作系统中断进程正常的控制流程。
+  信号是兼容POSIX的操作系统中进程间通讯的一种方式。
 
 - **信号处理函数**
 
@@ -199,7 +199,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Timestamp | 故障发生时间戳 | 8 | 是 | - |
 | Pid | 进程号 | 8 | 是 | - |
 | Uid | 用户ID | 8 | 是 | - |
-| HiTraceId | HiTraceChain唯一跟踪标识 | 20 | 否 | 进程开启HiTraceChain功能，详见[HiTraceId](../reference/apis-performance-analysis-kit/capi-hitrace-hitraceid.md)。 |
+| HiTraceId | HiTraceChain唯一跟踪标识 | 20 | 否 | 仅故障线程开启HiTraceChain功能时提供，详见[HiTraceChain介绍](hitracechain-intro.md)。 |
 | Process name | 故障进程名 | 8 | 是 | - |
 | Process life time | 故障进程存活时间 | 8 | 是 | - |
 | Process Memory(kB) | 故障进程内存占用 | 20 | 是 | - |
@@ -259,7 +259,7 @@ IsSystemApp:No <- 应用是否为系统应用
 Timestamp:2017-08-06 21:52:51.000 <- 故障发生时间戳
 Pid:10208 <- 进程号
 Uid:0     <- 用户ID
-HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，进程无HiTraceId不打印)
+HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，故障线程无HiTraceId不打印)
 Process name:./crasher_cpp <- 进程名称
 Process life time:1s  <- 进程存活时间
 Process Memory(kB): 11902(Rss)     <- 进程占用内存
@@ -406,7 +406,7 @@ HiLog: <- 故障之前进程打印的流水日志
 
 **HiTraceId说明**
 
-HiTraceId：HiTraceChain提供的唯一跟踪标识，参考[HiTraceId](../reference/apis-performance-analysis-kit/capi-trace-h.md)。
+HiTraceId：HiTraceChain提供的唯一跟踪标识，参考[HiTraceChain介绍](hitracechain-intro.md)。
 
 **调用栈帧内容说明**
 
@@ -467,7 +467,7 @@ Module name:crasher_cpp            <- 模块名
 Timestamp:2024-05-06 20:10:51.000  <- 故障发生时间戳
 Pid:9623   <- 进程号
 Uid:0         <- 用户ID
-HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，进程无HiTraceId不打印)
+HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，故障线程无HiTraceId不打印)
 Process name:./crasher_cpp         <- 进程名称
 Process life time:1s               <- 进程存活时间
 Process Memory(kB): 11902(Rss)     <- 进程占用内存
@@ -526,7 +526,7 @@ Module name:crasher_cpp                <- 模块名
 Timestamp:2024-05-06 20:18:24.000      <- 故障发生时间戳
 Pid:9838                               <- 进程号
 Uid:0                                  <- 用户ID
-HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，进程无HiTraceId不打印)
+HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，故障线程无HiTraceId不打印)
 Process name:./crasher_cpp             <- 进程名称
 Process life time:2s                   <- 进程存活时间
 Process Memory(kB): 11902(Rss)     <- 进程占用内存
@@ -556,7 +556,7 @@ Module name:crasher_cpp                   <- 模块名
 Timestamp:2024-05-06 20:27:23.2035266415  <- 故障发生时间戳
 Pid:10026                                 <- 进程号
 Uid:0                                     <- 用户ID
-HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，进程无HiTraceId不打印)
+HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，故障线程无HiTraceId不打印)
 Process name:./crasher_cpp                <- 进程名称
 Process life time:1s                      <- 进程存活时间
 Process Memory(kB): 11902(Rss)            <- 进程占用内存
@@ -603,7 +603,7 @@ Module name:crasher_cpp                     <- 模块名
 Timestamp:2024-05-06 20:28:24.000           <- 故障发生时间戳
 Pid:9838                                    <- 进程号
 Uid:0                                       <- 用户ID
-HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，进程无HiTraceId不打印)
+HiTraceId:a92ab1c7eae68fa  <- HiTraceId(非必选，故障线程无HiTraceId不打印)
 Process name:./crasher_cpp                  <- 进程名称
 Process life time:2s                        <- 进程存活时间
 Process Memory(kB): 11902(Rss)            <- 进程占用内存

@@ -45,35 +45,37 @@
 
 - 异步方法示例：
 
-  ```ts
+  <!-- @[pkcs1_verify_rsa_keypair_sign_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_signature_validator/rsa_pkcs1_signature_validator_asynchronous.ets) -->
+
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
 
-  // 完整的明文被拆分为input1和input2。
-  let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  // 完整的明文被拆分为input1和input2
+  let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
 
   async function signMessagePromise(priKey: cryptoFramework.PriKey) {
-    let signAlg = "RSA1024|PKCS1|SHA256";
+    let signAlg = 'RSA1024|PKCS1|SHA256';
     let signer = cryptoFramework.createSign(signAlg);
     await signer.init(priKey);
-    await signer.update(input1); // 如果明文较短，可以直接调用sign接口一次性传入。
+    await signer.update(input1); // 如果明文较短，可以直接调用sign接口一次性传入
     let signData = await signer.sign(input2);
     return signData;
   }
 
   async function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
-    let verifyAlg = "RSA1024|PKCS1|SHA256";
+    let verifyAlg = 'RSA1024|PKCS1|SHA256';
     let verifier = cryptoFramework.createVerify(verifyAlg);
     await verifier.init(pubKey);
-    await verifier.update(input1); // 如果明文较短，可以直接调用verify接口一次性传入。
+    await verifier.update(input1); // 如果明文较短，可以直接调用verify接口一次性传入
     let res = await verifier.verify(input2, signMessageBlob);
-    console.info("verify result is " + res);
+    console.info('verify result is ' + res);
     return res;
   }
 
   async function main() {
-    let keyGenAlg = "RSA1024";
+    let keyGenAlg = 'RSA1024';
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
     let keyPair = await generator.generateKeyPair();
     let signData = await signMessagePromise(keyPair.priKey);
@@ -86,37 +88,40 @@
   }
   ```
 
+
 - 同步方法示例：
 
-  ```ts
+  <!-- @[pkcs1_verify_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_signature_validator/rsa_pkcs1_signature_validator_synchronous.ets) -->
+
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
 
-  // 完整的明文被拆分为input1和input2。
-  let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  // 完整的明文被拆分为input1和input2
+  let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
 
   function signMessagePromise(priKey: cryptoFramework.PriKey) {
-    let signAlg = "RSA1024|PKCS1|SHA256";
+    let signAlg = 'RSA1024|PKCS1|SHA256';
     let signer = cryptoFramework.createSign(signAlg);
     signer.initSync(priKey);
-    signer.updateSync(input1); // 如果明文较短，可以直接调用sign接口一次性传入。
+    signer.updateSync(input1); // 如果明文较短，可以直接调用sign接口一次性传入
     let signData = signer.signSync(input2);
     return signData;
   }
 
   function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
-    let verifyAlg = "RSA1024|PKCS1|SHA256";
+    let verifyAlg = 'RSA1024|PKCS1|SHA256';
     let verifier = cryptoFramework.createVerify(verifyAlg);
     verifier.initSync(pubKey);
-    verifier.updateSync(input1); // 如果明文较短，可以直接调用verify接口一次性传入。
+    verifier.updateSync(input1); // 如果明文较短，可以直接调用verify接口一次性传入
     let res = verifier.verifySync(input2, signMessageBlob);
-    console.info("verify result is " + res);
+    console.info('verify result is ' + res);
     return res;
   }
 
   function main() {
-    let keyGenAlg = "RSA1024";
+    let keyGenAlg = 'RSA1024';
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
     let keyPair = generator.generateKeyPairSync();
     let signData = signMessagePromise(keyPair.priKey);

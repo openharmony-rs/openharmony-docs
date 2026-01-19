@@ -38,13 +38,16 @@
 
 - 通过await返回结果：
 
-  ```ts
+  <!-- @[use_x963kdf_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/ets/pages/Await.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   async function kdfAwait() {
-    let keyData = new Uint8Array(buffer.from("012345678901234567890123456789", "utf-8").buffer);
-    let infoData = new Uint8Array(buffer.from("infostring", "utf-8").buffer);
+    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
     let spec: cryptoFramework.X963KdfSpec = {
       algName: 'X963KDF',
       key: keyData,
@@ -53,20 +56,24 @@
     };
     let kdf = cryptoFramework.createKdf('X963KDF|SHA256');
     let secret = await kdf.generateSecret(spec);
-    console.info("key derivation output is " + secret.data);
+    console.info('key derivation output is ' + secret.data);
   }
   ```
 
+
 - 通过Promise返回结果：
 
-  ```ts
+  <!-- @[use_x963kdf_for_key_derivation_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/ets/pages/Promise.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function kdfPromise() {
-    let keyData = new Uint8Array(buffer.from("012345678901234567890123456789", "utf-8").buffer);
-    let infoData = new Uint8Array(buffer.from("infostring", "utf-8").buffer);
+    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
     let spec: cryptoFramework.X963KdfSpec = {
       algName: 'X963KDF',
       key: keyData,
@@ -76,22 +83,24 @@
     let kdf = cryptoFramework.createKdf('X963KDF|SHA256');
     let kdfPromise = kdf.generateSecret(spec);
     kdfPromise.then((secret) => {
-      console.info("key derivation output is " + secret.data);
+      console.info('key derivation output is ' + secret.data);
     }).catch((error: BusinessError) => {
-      console.error("key derivation error.");
+      console.error('key derivation error.');
     });
   }
   ```
 
-- 通过同步方式返回结果：
 
-  ```ts
+- 通过同步方式返回结果：
+  <!-- @[use_x963kdf_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/ets/pages/Sync.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function kdfSync() {
-    let keyData = new Uint8Array(buffer.from("012345678901234567890123456789", "utf-8").buffer);
-    let infoData = new Uint8Array(buffer.from("infostring", "utf-8").buffer);
+    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
     let spec: cryptoFramework.X963KdfSpec = {
       algName: 'X963KDF',
       key: keyData,
@@ -100,6 +109,7 @@
     };
     let kdf = cryptoFramework.createKdf('X963KDF|SHA256');
     let secret = kdf.generateSecretSync(spec);
-    console.info("[Sync]key derivation output is " + secret.data);
+    console.info('[Sync]key derivation output is ' + secret.data);
   }
   ```
+

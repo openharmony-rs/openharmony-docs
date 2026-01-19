@@ -14,6 +14,7 @@ photoAccessHelper提供对收藏夹、视频相册、截屏和录屏相册的相
 > 文档中使用到PhotoAccessHelper的地方，默认使用[开发准备](photoAccessHelper-preparation.md)中获取的对象，如未添加此段代码提示PhotoAccessHelper未定义的错误请自行添加。
 
 为了保证应用的运行效率，大部分photoAccessHelper的接口调用都是异步的。以下异步调用的API示例均采用Promise函数，更多方式可以查阅[API参考](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)。
+
 如无特别说明，文档中涉及的待获取的资源均视为已经预置且在数据库中存在相应数据。如出现按照示例代码执行出现获取资源为空的情况，请确认文件是否已预置，数据库中是否存在该文件的数据。
 
 ## 收藏夹
@@ -263,7 +264,40 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 3. 调用Album.getAssets接口获取视频资源。
 4. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个视频。
 
-<!-- @[get_videos_from_video_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getvideosfromvideoalbumability/GetVideosFromVideoAlbumAbility.ets) -->
+<!-- @[get_videos_from_video_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getvideosfromvideoalbumability/GetVideosFromVideoAlbumAbility.ets) --> 
+
+``` TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.VIDEO);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    console.info('get video album successfully, albumUri: ' + album.albumUri);
+
+    let videoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await album.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await videoFetchResult.getFirstObject();
+    console.info('video album getAssets successfully, photoAsset displayName: ' + photoAsset.displayName);
+    videoFetchResult.close();
+    albumFetchResult.close();
+    // ...
+  } catch (err) {
+    console.error('video failed with err: ' + err);
+    // ...
+  }
+}
+```
 
 <!--Del-->
 ## 截屏和录屏相册（仅向系统应用开放）

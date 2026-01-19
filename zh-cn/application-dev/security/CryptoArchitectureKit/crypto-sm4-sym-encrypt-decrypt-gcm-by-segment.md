@@ -49,7 +49,9 @@
 
 - 异步方法示例：
 
-  ```ts
+  <!-- @[async_symmetry_encrypt_decrypt_sm4_gcm_seg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_gcm_seg_encryption_decryption/sm4_gcm_seg_encryption_decryption_asynchronous.ets) -->
+
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
 
@@ -73,24 +75,26 @@
       iv: ivBlob,
       aad: aadBlob,
       authTag: tagBlob,
-      algName: "GcmParamsSpec"
+      algName: 'GcmParamsSpec'
     };
     return gcmParamsSpec;
   }
+
   let gcmParams = genGcmParamsSpec();
-  // 分段加密消息。
+
+  // 分段加密消息
   async function encryptMessageUpdateBySegment(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
     await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-    let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求。
+    let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
     let cipherText = new Uint8Array();
     for (let i = 0; i < plainText.data.length; i += updateLength) {
       let updateMessage = plainText.data.subarray(i, i + updateLength);
       let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-      // 分段update。
+      // 分段update
       let updateOutput = await cipher.update(updateMessageBlob);
-      // 把update的结果拼接起来，得到密文（有些情况下还需拼接doFinal的结果，这取决于分组模式。
-      // 和填充模式，本例中GCM模式的doFinal结果只包含authTag而不含密文，所以不需要拼接）。
+      // 把update的结果拼接起来，得到密文（有些情况下还需拼接doFinal的结果，这取决于分组模式
+      // 和填充模式，本例中GCM模式的doFinal结果只包含authTag而不含密文，所以不需要拼接）
       let mergeText = new Uint8Array(cipherText.length + updateOutput.data.length);
       mergeText.set(cipherText);
       mergeText.set(updateOutput.data, cipherText.length);
@@ -100,30 +104,32 @@
     let cipherBlob: cryptoFramework.DataBlob = { data: cipherText };
     return cipherBlob;
   }
-  // 分段解密消息。
+
+  // 分段解密消息
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
     await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, gcmParams);
-    let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求。
+    let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
     let decryptText = new Uint8Array();
     for (let i = 0; i < cipherText.data.length; i += updateLength) {
       let updateMessage = cipherText.data.subarray(i, i + updateLength);
       let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-      // 分段update。
+      // 分段update
       let updateOutput = await decoder.update(updateMessageBlob);
-      // 把update的结果拼接起来，得到明文。
+      // 把update的结果拼接起来，得到明文
       let mergeText = new Uint8Array(decryptText.length + updateOutput.data.length);
       mergeText.set(decryptText);
       mergeText.set(updateOutput.data, decryptText.length);
       decryptText = mergeText;
     }
     let decryptData = await decoder.doFinal(null);
-    if (decryptData === null) {
+    if (decryptData == null) {
       console.info('GCM decrypt success, decryptData is null');
     }
     let decryptBlob: cryptoFramework.DataBlob = { data: decryptText };
     return decryptBlob;
   }
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let sm4Generator = cryptoFramework.createSymKeyGenerator('SM4_128');
@@ -131,10 +137,11 @@
     console.info('convertKey success');
     return symKey;
   }
+
   async function sm4() {
     let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
     let symKey = await genSymKeyByData(keyData);
-    let message = "aaaaa.....bbbbb.....ccccc.....ddddd.....eee"; // 假设信息总共43字节，根据utf-8解码后，也是43字节。
+    let message = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee'; // 假设信息总共43字节，根据utf-8解码后，也是43字节
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
     let encryptText = await encryptMessageUpdateBySegment(symKey, plainText);
     let decryptText = await decryptMessagePromise(symKey, encryptText);
@@ -147,9 +154,12 @@
   }
   ```
 
+
 - 同步方法示例：
 
-  ```ts
+  <!-- @[sync_symmetry_encrypt_decrypt_sm4_gcm_seg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_gcm_seg_encryption_decryption/sm4_gcm_seg_encryption_decryption_synchronous.ets) -->
+
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
 
@@ -173,24 +183,26 @@
       iv: ivBlob,
       aad: aadBlob,
       authTag: tagBlob,
-      algName: "GcmParamsSpec"
+      algName: 'GcmParamsSpec'
     };
     return gcmParamsSpec;
   }
+
   let gcmParams = genGcmParamsSpec();
-  // 分段加密消息。
+
+  // 分段加密消息
   function encryptMessageUpdateBySegment(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
     cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-    let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求。
+    let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
     let cipherText = new Uint8Array();
     for (let i = 0; i < plainText.data.length; i += updateLength) {
       let updateMessage = plainText.data.subarray(i, i + updateLength);
       let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-      // 分段update。
+      // 分段update
       let updateOutput = cipher.updateSync(updateMessageBlob);
-      // 把update的结果拼接起来，得到密文（有些情况下还需拼接doFinal的结果，这取决于分组模式。
-      // 和填充模式，本例中GCM模式的doFinal结果只包含authTag而不含密文，所以不需要拼接）。
+      // 把update的结果拼接起来，得到密文（有些情况下还需拼接doFinal的结果，这取决于分组模式
+      // 和填充模式，本例中GCM模式的doFinal结果只包含authTag而不含密文，所以不需要拼接）
       let mergeText = new Uint8Array(cipherText.length + updateOutput.data.length);
       mergeText.set(cipherText);
       mergeText.set(updateOutput.data, cipherText.length);
@@ -200,30 +212,32 @@
     let cipherBlob: cryptoFramework.DataBlob = { data: cipherText };
     return cipherBlob;
   }
-  // 分段解密消息。
+
+  // 分段解密消息
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
     decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, gcmParams);
-    let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求。
+    let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
     let decryptText = new Uint8Array();
     for (let i = 0; i < cipherText.data.length; i += updateLength) {
       let updateMessage = cipherText.data.subarray(i, i + updateLength);
       let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-      // 分段update。
+      // 分段update
       let updateOutput = decoder.updateSync(updateMessageBlob);
-      // 把update的结果拼接起来，得到明文。
+      // 把update的结果拼接起来，得到明文
       let mergeText = new Uint8Array(decryptText.length + updateOutput.data.length);
       mergeText.set(decryptText);
       mergeText.set(updateOutput.data, decryptText.length);
       decryptText = mergeText;
     }
     let decryptData = decoder.doFinalSync(null);
-    if (decryptData === null) {
+    if (decryptData == null) {
       console.info('GCM decrypt success, decryptData is null');
     }
     let decryptBlob: cryptoFramework.DataBlob = { data: decryptText };
     return decryptBlob;
   }
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let sm4Generator = cryptoFramework.createSymKeyGenerator('SM4_128');
@@ -231,10 +245,11 @@
     console.info('convertKeySync success');
     return symKey;
   }
+
   function main() {
     let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
     let symKey = genSymKeyByData(keyData);
-    let message = "aaaaa.....bbbbb.....ccccc.....ddddd.....eee"; // 假设信息总共43字节，根据utf-8解码后，也是43字节。
+    let message = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee'; // 假设信息总共43字节，根据utf-8解码后，也是43字节
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
     let encryptText = encryptMessageUpdateBySegment(symKey, plainText);
     let decryptText = decryptMessage(symKey, encryptText);
@@ -245,5 +260,4 @@
       console.error('decrypt failed');
     }
   }
-
   ```

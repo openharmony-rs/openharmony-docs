@@ -1,10 +1,10 @@
 # @ohos.file.cloudSync (端云同步能力)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @zsyztt; @Hermits; @reminder2352-->
-<!--Designer: @yunlanying-->
+<!--Owner: @Hermits; @reminder2352-->
+<!--Designer: @oh_create_jiawei-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 该模块向应用提供端云同步能力，包括启动/停止端云同步以及启动/停止原图下载功能。
 
@@ -1578,7 +1578,7 @@ isFileConflict(uri: string): Promise&lt;boolean&gt;
 
 获取本地文件版本冲突标志。使用Promise异步回调。此方法只有应用在配置手动解冲突后才会生效，否则默认自动解冲突，返回值为false，由同步流程自动完成解冲突；
 
-当应用配置手动解冲突后，调用此方法会返回当前文件是否与云侧文件产生冲突，并且由应用提示用户对冲突进行处理，在冲突解决前不会再自动同步上云。当处理完冲突后，需要调用[clearfileconflict](#clearfileconflict20)方法来清除冲突标志，后续才会继续触发同步，与云端保持一致。
+当应用配置手动解冲突后，调用此方法会返回当前文件是否与云侧文件产生冲突，并且由应用提示用户对冲突进行处理，在冲突解决前不会再自动同步上云。当处理完冲突后，需要调用[clearFileConflict](#clearfileconflict20)方法来清除冲突标志，后续才会继续触发同步，与云端保持一致。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

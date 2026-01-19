@@ -112,7 +112,7 @@
    <!-- @[module_draggable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
    ``` TypeScript
-   // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+   // 请将$r('app.media.app_icon')替换为实际资源文件
    Image($r('app.media.app_icon'))
      .width(100)
      .height(100)
@@ -176,7 +176,7 @@
    @Builder
    pixelMapBuilder() {
      Column() {
-       // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+       // 请将$r('app.media.startIcon')替换为实际资源文件
        Image($r('app.media.startIcon'))
          .width(120)
          .height(120)
@@ -347,7 +347,7 @@ export struct DefaultDrag {
   @Builder
   pixelMapBuilder() {
     Column() {
-      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      // 请将$r('app.media.startIcon')替换为实际资源文件
       Image($r('app.media.startIcon'))
         .width(120)
         .height(120)
@@ -410,7 +410,7 @@ export struct DefaultDrag {
               .margin(10)
               .backgroundColor('#008888')
             Row() {
-              // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+              // 请将$r('app.media.app_icon')替换为实际资源文件
               Image($r('app.media.app_icon'))
                 .width(100)
                 .height(100)
@@ -742,11 +742,12 @@ build() {
 当开发者需要实现自定义落位动效时，可以禁用系统的默认动效。从API version 18开始，ArkUI提供了[executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18)接口，用于自定义落位动效。以下以Image组件为例，详细介绍使用[executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18)接口的基本步骤，以及开发过程中需要注意的事项。
 
 1. 组件拖拽设置。
+
    设置draggable为true，并配置onDragStart、onDragEnd等回调函数。
    <!-- @[drop_image_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
    
    ``` TypeScript
-   // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+   // 请将$r('app.media.app_icon')替换为实际资源文件
    Image($r('app.media.app_icon'))
      .width(100)
      .height(100)
@@ -839,7 +840,7 @@ export struct DropAnimationExample {
     // ...
       Row() {
         Column() {
-          // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.app_icon')替换为实际资源文件
           Image($r('app.media.app_icon'))
             .width(100)
             .height(100)
@@ -1230,7 +1231,7 @@ Spring Loading，即拖拽悬停检测（又叫弹簧加载）是拖拽操作的
 
 Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -> 结束。在结束之前，如果用户重新开始移动，会自动中断Spring Loading，并通知应用取消。如果在悬停检测期间移动，且尚未进入Spring Loading状态，则不会触发取消通知。
 
-![drag spring loading pharse](figures/drag_springloading-02.png)
+![drag spring loading phase](figures/drag_springloading-02.png)
 
 应用通过回调接收当前的状态，动态改变UI显示，从而达到用户提醒的效果。
 

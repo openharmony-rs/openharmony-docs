@@ -72,7 +72,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
 registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>): Promise\<void>
 
-注册指定外部provider。使用Promise异步回调。
+注册指定的外部provider。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CRYPTO_EXTENSION_REGISTER
 
@@ -137,7 +137,7 @@ huksExternalCrypto.registerProvider(providerName, extProperties)
 
 unregisterProvider(providerName: string, params?: Array\<HuksExternalCryptoParam>): Promise\<void>
 
-注销provider。使用Promise异步回调。
+注销指定的外部provider。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CRYPTO_EXTENSION_REGISTER
 
@@ -166,9 +166,9 @@ unregisterProvider(providerName: string, params?: Array\<HuksExternalCryptoParam
 | 801 | api is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000011 | the provider is not found. |
+| 12000012 | Device environment or input parameter abnormal. This may happen for several reasons, such as the model already being unloaded. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the input parameter is invalid. |
-| 12000020 | an error occurred in the dependent module. |
 
 **示例：**
 
@@ -209,7 +209,7 @@ getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ------- | ---- | ----------|
 | resourceId | string | 是   | 资源ID，可通过[导出证书的接口](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取，其结果中附带资源ID。 |
-| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 操作的属性。 |
+| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 操作的属性。非系统应用传入[HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag)是非法参数。 |
 
 **返回值：**
 
@@ -226,6 +226,8 @@ getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>
 | 801 | api is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | the Ukey driver operation failed. |
+| 12000011 | queried entity does not exist. queried entity does not exist. This may happen because the resource ID has not been opened. |
+| 12000012 | Device environment or input parameter abnormal. This error may occur if the process function is not found, or due to other issues. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the input parameter is invalid. |
 | 12000020 | the provider operation failed. |
@@ -244,7 +246,7 @@ function StringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"userid\":100, \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
+const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 huksExternalCrypto.getUkeyPinAuthState(testResourceId, extProperties)
     .then((data) => {
@@ -256,13 +258,16 @@ huksExternalCrypto.getUkeyPinAuthState(testResourceId, extProperties)
 
 getProperty(resourceId: string, propertyId: string, params?: Array\<HuksExternalCryptoParam>): Promise\<Array\<HuksExternalCryptoParam>>
 
-调用此接口获取属性值并返回结果。使用Promise异步回调。propertyId表示查询属性的ID信息，当前仅支持GMT 0016-2023中定义的SKF接口名作为属性ID，支持的ID包括如下：
+调用此接口获取属性值并返回结果。使用Promise异步回调。
+
+propertyId表示查询属性的ID信息，当前仅支持GMT 0016-2023中定义的SKF接口名作为属性ID，支持的ID包括如下：
 
 - SKF_EnumDev
 - SKF_GetDevInfo
 - SKF_EnumApplication
 - SKF_EnumContainer
-- SKF_ExportPublicKey
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -272,7 +277,7 @@ getProperty(resourceId: string, propertyId: string, params?: Array\<HuksExternal
 | -------- | ------- | ---- | ----------|
 | resourceId | string | 是   | 资源ID，可通过[导出证书的接口](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取，该接口的返回结果中附带resourceId。 |
 | propertyId | string | 是   | 查找操作的属性名称，是GMT 0016-2023中定义的SKF接口名，应用开发者需要针对接口名进行适配。 |
-| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 需要传递给Extension Ability的输入参数。 |
+| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 需要传递给Extension Ability的输入参数。非系统应用传入[HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag)是非法参数。 |
 
 **返回值：**
 
@@ -282,16 +287,21 @@ getProperty(resourceId: string, propertyId: string, params?: Array\<HuksExternal
 
 **错误码：**
 
-以下错误码的详细介绍请参见[HUKS错误码](errorcode-huks.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 12000006 | the Ukey driver operation failed. |
-| 12000011 | if not found the cached resource id. |
-| 12000014 | memory is insufficient. |
-| 12000018 | the input parameter is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000024 | the provider or Ukey is busy. |
+| 801 | API is not supported. |
+| 12000005 | IPC communication failed. |
+| 12000006 | If the Ukey driver operation failed. Possible causes: 1. Error reported when the provider accesses the SKF interface of Ukey. |
+| 12000011 | If the cached resource ID is not found. |
+| 12000012 | Device environment or input parameter abnormal. This error may occur if the process function is not found, or due to other issues. |
+| 12000014 | If the memory is insufficient. |
+| 12000018 | Input parameter is invalid. Possible causes: 1. The resourceId or propertyId length is invalid. 2. The params contains invalid tags or invalid value types. |
+| 12000020 | If the provider operation failed. Possible causes: 1. The provider experienced an internal processing error. |
+| 12000021 | The Ukey PIN is locked. |
+| 12000023 | The Ukey PIN is not authenticated. |
+| 12000024 | If the provider or Ukey is busy. |
 
 **示例：**
 
@@ -302,7 +312,6 @@ const testResourceId = JSON.stringify({
   providerName: "testProviderName",
   bundleName: "com.example.cryptoapplication",
   abilityName: "CryptoExtension",
-  userid: 100,
   index: {
     key: "testKey"
   } as ESObject

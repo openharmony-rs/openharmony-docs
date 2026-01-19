@@ -270,34 +270,36 @@ In the horizontal scrollable grid layout shown in the preceding figure, **rowsTe
 @Entry
 @Component
 export struct ScrollableGrid {
-// ···
+  // ...
   @State services: Array<string> = [
-    // The value in the app.string.Live_Streaming resource file is 'Live'.
+    // Replace $r('app.string.Live_Streaming') with the actual resource file. In this example, the value of the resource file is "Live streaming."
     this.context!.resourceManager.getStringSync($r('app.string.Live_Streaming').id),
-    // The value in the // app.string.Imported resource file is 'Premium'.
+    // Replace $r('app.string.Imported') with the actual resource file. In this example, the value of the resource file is "Import."
     this.context!.resourceManager.getStringSync($r('app.string.Imported').id)
     ];
-// ···
+  // ...
   build() {
-    // ···
+    // ...
 
       Column({ space: 5 }) {
-        // ···
+        // ...
 
           Grid() {
-            ForEach(this.services, (service: string, index) => {
+            ForEach(this.services, (service: string, index: number) => {
               GridItem() {
+                // ...
               }
               .width('25%')
+              // ...
             }, (service: string): string => service)
           }
           .rowsTemplate('1fr 1fr') // Set only the rowsTemplate attribute. When the content exceeds the display area of the grid, the grid can be scrolled horizontally.
           .rowsGap(15)
 
-        // ···
+          // ...
         }
       }
-    // ···
+      // ...
 }
 ```
 
@@ -325,19 +327,19 @@ On the calendar page, when a user clicks the **Next** button, the application re
  ``` TypeScript
  Column({ space: 5 }){
    Grid(this.scroller) {
-   // ···
+     // ...
    }
    .columnsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
-   // ···
+   // ...
    Row({ space: 20 }) {
-     // The value in the app.string.Previous_Page resource file is 'Previous'.
+     // Replace $r('app.string.Previous_Page') with the actual resource file. In this example, the value in the resource file is "Previous."
      Button($r('app.string.Previous_Page'))
        .onClick(() => {
          this.scroller.scrollPage({
            next: false
          });
        })
-     // The value in the app.string.Next_page resource file is 'Next'.
+     // Replace $r('app.string.Next_page') with the actual resource file. In this example, the value in the resource file is "Next."
      Button($r('app.string.Next_page'))
        .onClick(() => {
          this.scroller.scrollPage({
@@ -391,7 +393,7 @@ To add an external scrollbar to a [Grid](../reference/apis-arkui/arkui-ts/ts-con
 
 ## Performance Optimization
 
-Just as [LazyForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) is recommended for [handling a long list](arkts-layout-development-create-list.md#handling-a-long-list), [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md) is recommended for a scrolling grid layout when a large number of grid items is involved.
+Just as [LazyForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) is recommended for [handling a long list](arkts-layout-development-create-list.md#handling-a-long-list), [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md) is recommended for a scrolling grid layout when a large number of grid items are involved.
 
 For details about the implementation of on-demand loading optimization, see the example in [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 

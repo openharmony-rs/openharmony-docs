@@ -6,13 +6,17 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbConfigDescriptor {...} __attribute__((packed)) UsbConfigDescriptor
+```
+
 ## Overview
 
 Defines standard configuration descriptors, which correspond to **Standard Configuration Descriptor** in the USB protocol.
 
 **Since**: 10
 
-**Related module**: [UsbDDK](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-usbddk.md)
 
 **Header file:** [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

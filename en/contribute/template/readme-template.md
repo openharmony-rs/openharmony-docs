@@ -56,6 +56,7 @@ The precautions for writing are as follows:
 The following shows an architecture diagram. Pay attention to the **color and format requirements**.
 
 **Figure 1** Subsystem architecture
+
 ![Architecture](figures/figure02.png)
 
 
@@ -134,6 +135,11 @@ The table below describes the writing requirements. After finishing the writing,
 | F.2.4 | If an API call is involved in a step, provide the API and its usage description or sample code. The code should come from specific instances.|
 
 
+## Changelog
+
+[Writing requirements] Optional. When the repository where the readme file is located is upgraded or adjusted, the change information needs to be maintained in the changelog. [In this open source version, if the update is involved, the change information needs to be provided.]
+
+
 ## Repositories Involved
 
 [Writing Instructions] **Mandatory**. List the links of all related repositories of the subsystem where the current repository is located and mark the current repository in bold.
@@ -142,6 +148,6 @@ Example:
 
 [Kernel](../../readme/kernel.md)
 
-[drivers\_liteos](https://gitee.com/openharmony/drivers_liteos/blob/master/README.md)
+[drivers\_liteos](https://gitcode.com/openharmony/drivers_liteos/blob/master/README.md)
 
-**kernel\_liteos\_a**
+[**kernel\_liteos\_a**](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/README.md)

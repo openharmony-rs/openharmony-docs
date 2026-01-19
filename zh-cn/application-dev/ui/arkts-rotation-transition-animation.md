@@ -22,7 +22,7 @@
 struct rotation {
   build() {
     Stack() {
-      // $r('app.media.tree')需要替换为开发者所需的资源文件
+      // 请将$r('app.media.tree')替换为实际资源文件
       Image($r('app.media.tree'))
         .position({ x: 0, y: 0 })
         .size({ width: 100, height: 100 })
@@ -65,7 +65,7 @@ struct rotation {
 
       // 当屏幕显示方向变化时，切换组件的视图效果
       if (this.myOrientation == display.Orientation.PORTRAIT || this.myOrientation == display.Orientation.PORTRAIT_INVERTED) {
-        // $r('app.media.sky')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.sky')替换为实际资源文件
         Image($r('app.media.sky'))
           .size({ width: 100, height: 100 })
           .id('image1')
@@ -73,7 +73,7 @@ struct rotation {
         // 开发者也可以通过自行设置transition的TransitionEffect.OPACITY转场效果来实现旋转屏动画的透明度变化
         // .transition(TransitionEffect.OPACITY)
       } else {
-        // $r('app.media.tree')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.tree')替换为实际资源文件
         Image($r('app.media.tree'))
           .position({ x: 0, y: 0 })
           .size({ width: 200, height: 200 })
@@ -89,17 +89,18 @@ struct rotation {
 }
 ```
 
-监听窗口旋转的同步事件windowsSizeChange来实现视图的切换。例如可在EntryAbility.ets文件的onWindowStageCreate方法中添加处理逻辑以获取屏幕的显示方向。
+监听窗口旋转的同步事件windowsSizeChange来实现视图的切换。例如可在EntryAbility.ets文件的[onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)方法中添加处理逻辑以获取屏幕的显示方向。
 <!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
+import { display, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
 const TAG: string = 'EntryAbility';
-// ···
+// ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // ···
+    // ...
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
     let mainWindow: window.Window;
     try {
@@ -123,7 +124,7 @@ const TAG: string = 'EntryAbility';
       hilog.error(DOMAIN, TAG, '%{public}s', 'error');
       return;
     }
-    // ···
+    // ...
 
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
@@ -134,10 +135,10 @@ const TAG: string = 'EntryAbility';
     });
   }
 
-// ···
+  // ...
 ```
 
-需要在项目的 module.json5 文件中的 abilities 列表里添加 "orientation"，指定为 "auto_rotation"。
+需要在项目的module.json5文件中的abilities列表里添加"orientation"，指定为"auto_rotation"。
 ```json
 "orientation": "auto_rotation",
 ```

@@ -26,7 +26,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
 
-2. 初始化密钥属性集。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag),[OH_HUKS_TAG_KEY_OVERRIDE](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，避免密钥被覆盖。
+2. 初始化密钥属性集。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)、[OH_HUKS_TAG_KEY_OVERRIDE](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，避免密钥被覆盖。
 
 3. 调用[OH_Huks_GenerateKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_generatekeyitem)生成密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
 
@@ -38,7 +38,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 2. 指定待加密的数据。
 
-3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)。
+3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)。
 
 4. 调用[OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession)初始化密钥会话，并获取会话的句柄handle。
 
@@ -77,14 +77,14 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 static OH_Crypto_ErrCode genRandomNumber(uint32_t randomLength, uint8_t *out)
 {
-    // 创建随机数生成器。
+    /* 创建随机数生成器 */
     OH_CryptoRand *rand = nullptr;
     OH_Crypto_ErrCode ret = OH_CryptoRand_Create(&rand);
     if (ret != CRYPTO_SUCCESS) {
         return ret;
     }
     Crypto_DataBlob blob = {out, randomLength};
-    // 生成指定长度的随机数。
+    /* 生成指定长度的随机数 */
     ret = OH_CryptoRand_GenerateRandom(rand, randomLength, &blob);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoRand_Destroy(rand);
@@ -246,34 +246,34 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
     do {
         /* 1. Generate Key */
         /*
-        * 模拟生成密钥场景
-        * 1.1. 确定密钥别名
-        */
+         * 模拟生成密钥场景
+         * 1.1. 确定密钥别名
+         */
         /*
-        * 1.2. 获取生成密钥算法参数配置
-        */
+         * 1.2. 获取生成密钥算法参数配置
+         */
         ohResult = InitParamSet(&genParamSet, g_genEncDecParams, sizeof(g_genEncDecParams) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
         /*
-        * 1.3. 调用generateKeyItem
-        */
+         * 1.3. 调用generateKeyItem
+         */
         ohResult = OH_Huks_GenerateKeyItem(&keyAlias, genParamSet, nullptr);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
         /* 2. Encrypt */
         /*
-        * 模拟加密场景
-        * 2.1. 获取密钥别名
-        */
+         * 模拟加密场景
+         * 2.1. 获取密钥别名
+         */
         /*
-        * 2.2. 获取待加密的数据
-        */
+         * 2.2. 获取待加密的数据
+         */
         /*
-        * 2.3. 获取加密算法参数配置
-        */
+         * 2.3. 获取加密算法参数配置
+         */
         ohResult = InitParamSet(&encryptParamSet, g_encryptParams, sizeof(g_encryptParams) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
@@ -283,26 +283,26 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
         uint8_t cipher[AES_COMMON_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {AES_COMMON_SIZE, cipher};
         /*
-        * 2.4. 调用initSession获取handle
-        */
+         * 2.4. 调用initSession获取handle
+         */
         /*
-        * 2.5. 调用finishSession获取加密后的密文
-        */
+         * 2.5. 调用finishSession获取加密后的密文
+         */
         ohResult = HksAesCipherTestEncrypt(&keyAlias, encryptParamSet, &inData, &cipherText);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
         /* 3. Decrypt */
         /*
-        * 模拟解密场景
-        * 3.1. 获取密钥别名
-        */
+         * 模拟解密场景
+         * 3.1. 获取密钥别名
+         */
         /*
-        * 3.2. 获取待解密的密文
-        */
+         * 3.2. 获取待解密的密文
+         */
         /*
-        * 3.3. 获取解密算法参数配置
-        */
+         * 3.3. 获取解密算法参数配置
+         */
         ohResult = InitParamSet(&decryptParamSet, g_decryptParams, sizeof(g_decryptParams) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
@@ -310,21 +310,21 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
         uint8_t plain[AES_COMMON_SIZE] = {0};
         struct OH_Huks_Blob plainText = {AES_COMMON_SIZE, plain};
         /*
-        * 3.4. 调用initSession获取handle
-        */
+         * 3.4. 调用initSession获取handle
+         */
         /*
-        * 3.5. 调用finishSession获取解密后的数据
-        */
+         * 3.5. 调用finishSession获取解密后的数据
+         */
         ohResult = HksAesCipherTestDecrypt(&keyAlias, decryptParamSet, &cipherText, &plainText, &inData);
     } while (0);
     /* 4. Delete Key */
     /*
-    * 模拟删除密钥场景
-    * 4.1. 获取密钥别名
-    */
+     * 模拟删除密钥场景
+     * 4.1. 获取密钥别名
+     */
     /*
-    * 4.2. 调用deleteKeyItem删除密钥    
-    */
+     * 4.2. 调用deleteKeyItem删除密钥    
+     */
     (void)OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
         
     OH_Huks_FreeParamSet(&genParamSet);
@@ -345,25 +345,25 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
 
 设备A、设备B各自生成一个非对称密钥，具体请参考[密钥生成](huks-key-generation-overview.md)或[密钥导入](huks-key-import-overview.md)。
 
-密钥生成时，指定参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，用于生成群组密钥。
+密钥生成时，指定参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，用于生成群组密钥。
 
 **导出密钥**
 
-设备A、B导出非对称密钥对的公钥材料，具体请参考[密钥导出](huks-export-key-arkts.md)。
+设备A、B导出非对称密钥对的公钥材料，具体请参考[密钥导出](huks-export-key-ndk.md)。
 
-导出密钥时，指定参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，用于导出群组密钥。
+导出密钥时，指定参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，用于导出群组密钥。
 
 **密钥协商**
 
 设备A、B分别基于本端私钥和对端设备的公钥，协商出共享密钥。
 
-密钥协商时，指定参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，用于协商群组密钥。
+密钥协商时，指定参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，用于协商群组密钥。
 
 **删除密钥**
 
-当密钥废弃不用时，设备A、B均需要删除密钥，具体请参考[密钥删除](huks-delete-key-arkts.md)。
+当密钥废弃不用时，设备A、B均需要删除密钥，具体请参考[密钥删除](huks-delete-key-ndk.md)。
 
-删除密钥时，指定参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，用于删除群组密钥。
+删除密钥时，指定参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，用于删除群组密钥。
 
 ### 开发示例
 
@@ -648,9 +648,9 @@ napi_value X25519AgreeKey(napi_env env, napi_callback_info info)
 
 1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
 
-2. 密钥生成时，指定参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，用于生成群组密钥。
+2. 密钥生成时，指定参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，用于生成群组密钥。
 
-3. 调用[generateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9)生成密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
+3. 调用[OH_Huks_GenerateKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_generatekeyitem)生成密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
 
 除此之外，开发者也可以参考[密钥导入](huks-key-import-overview.md)，导入已有的密钥。
 
@@ -658,17 +658,19 @@ napi_value X25519AgreeKey(napi_env env, napi_callback_info info)
 
 1. 获取密钥别名，指定对应的属性参数HuksOptions，添加参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，用于派生群组密钥。
 
-2. 调用[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
+2. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)。
 
-3. 调用[updateSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksupdatesession9)更新密钥会话。
+3. 调用[OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession)初始化密钥会话，并获取会话的句柄handle。
 
-4. 调用[finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，完成派生。
+4. 调用[OH_Huks_UpdateSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_updatesession)更新密钥会话。
+
+5. 调用[OH_Huks_FinishSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_finishsession)结束密钥会话，完成派生。
 
 **删除密钥**
 
-当密钥废弃不用时，需要调用[deleteKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksdeletekeyitem9)删除密钥，具体请参考[密钥删除](huks-delete-key-arkts.md)。
+当密钥废弃不用时，需要调用[OH_Huks_DeleteKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_deletekeyitem)删除密钥，具体请参考[密钥删除](huks-delete-key-ndk.md)。
 
-删除密钥时，指定参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，用于删除群组密钥。
+删除密钥时，指定参数[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，用于删除群组密钥。
 
 ### 开发示例
 
@@ -739,21 +741,21 @@ static OH_Huks_Result PerformPbkdfDerivation(const struct OH_Huks_Blob *genAlias
     const struct OH_Huks_Blob &inData)
 {
     OH_Huks_Result ohResult;
-    // Init
+    /* Init */
     uint8_t handleD[sizeof(uint64_t)] = {0};
     struct OH_Huks_Blob handleDerive = {sizeof(uint64_t), handleD};
     ohResult = OH_Huks_InitSession(genAlias, hkdfParamSet, &handleDerive, nullptr);
     if (ohResult.errorCode != OH_HUKS_SUCCESS) {
         return ohResult;
     }
-    // Update
+    /* Update */
     uint8_t tmpOut[COMMON_SIZE] = {0};
     struct OH_Huks_Blob outData = {COMMON_SIZE, tmpOut};
     ohResult = OH_Huks_UpdateSession(&handleDerive, hkdfParamSet, &inData, &outData);
     if (ohResult.errorCode != OH_HUKS_SUCCESS) {
         return ohResult;
     }
-    // Finish
+    /* Finish */
     uint8_t outDataD[COMMON_SIZE] = {0};
     struct OH_Huks_Blob outDataDerive = {COMMON_SIZE, outDataD};
     ohResult = OH_Huks_FinishSession(&handleDerive, hkdfFinishParamSet, &inData, &outDataDerive);

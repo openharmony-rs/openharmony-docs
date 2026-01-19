@@ -227,36 +227,36 @@ zh-cn/application-dev/arkts-utils/xml-overview.md @ge-yafang @gongjunsong @black
 zh-cn/application-dev/arkts-utils/xml-generation.md @ge-yafang @gongjunsong @blackstone-oh
 zh-cn/application-dev/arkts-utils/xml-parsing.md @ge-yafang @gongjunsong @blackstone-oh
 zh-cn/application-dev/arkts-utils/xml-conversion.md @ge-yafang @gongjunsong @blackstone-oh
-zh-cn/application-dev/arkts-utils/arkoptions-guide.md @zju-wyx @xiao-peiyang @liyancheng @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/arkts-bytecode-file-format.md @huyunhui1 @oh-rgx1 @zmw1 @ctw-ian @hufeng20 @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/arkts-bytecode-function-name.md @huyunhui1 @oh-rgx1 @zmw1 @ctw-ian @hufeng20 @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/arkts-bytecode-fundamentals.md @huyunhui1 @oh-rgx1 @zmw1 @ctw-ian @hufeng20 @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/arkts-bytecode-overview.md @huyunhui1 @oh-rgx1 @zmw1 @ctw-ian @hufeng20 @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/arkts-cross-language-interaction.md @xliu-huanwei @shilei123 @huanghello @shilei123 @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/arkts-dynamic-import.md @huyunhui1 @oh-rgx1 @zmw1 @ctw-ian @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/arkts-import-native-module.md @yao_dashuai @yao_dashuai @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/arkts-lazy-import.md @DaiHuina1997 @yao_dashuai @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/arkts-module-side-effects.md @wangchen965 @yao_dashuai @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/arkts-runtime-faq.md @DaiHuina1997 @yao_dashuai @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/arkts-runtime-overview.md @guobingbing3 @xwcai98 @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/bytecode-obfuscation-guide.md @oatuwwutao @hufeng20 @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/bytecode-obfuscation-overview.md @oatuwwutao @Valkisop_ @hufeng20 @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/bytecode-obfuscation-practice.md @oatuwwutao @hufeng20 @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/bytecode-obfuscation-questions.md @oatuwwutao @hufeng20 @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/bytecode-obfuscation.md @oatuwwutao @u012789010 @hufeng20 @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/compilation-tool-chain-overview.md @chenmudan @hufeng20 @ctw-ian @hufeng20 @ctw-ian @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/customize-bytecode-during-compilation.md @oatuwwutao @hufeng20 @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/gc-introduction.md @dwhuawei @yingguofeng @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/js-apis-load-native-module.md @shilei123 @yao_dashuai @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/load-module-base-nodeapi.md @yao_dashuai @yao_dashuai @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/module-principle.md @yao_dashuai @yao_dashuai @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/Readme-CN.md @flyingwolf @flyingwolf @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/source-obfuscation-guide.md @zju-wyx @xiao-peiyang @dengxinyu @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/source-obfuscation-overview.md @zju-wyx @xiao-peiyang @dengxinyu @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/source-obfuscation-practice.md @zju-wyx @xiao-peiyang @dengxinyu @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/source-obfuscation-questions.md @zju-wyx @xiao-peiyang @dengxinyu @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/source-obfuscation.md @zju-wyx @xiao-peiyang @dengxinyu @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/arkts-utils/tool-disassembler.md @oatuwwutao @luobohua @hufeng20 @kirl75 @zsw_zhushiwei @foryourself
+zh-cn/application-dev/arkts-utils/arkoptions-guide.md @zju-wyx @xiao-peiyang @liyancheng @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/arkts-bytecode-file-format.md @huyunhui1 @oh-rgx1 @zmw1 @ctw-ian @hufeng20 @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/arkts-bytecode-function-name.md @huyunhui1 @oh-rgx1 @zmw1 @ctw-ian @hufeng20 @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/arkts-bytecode-fundamentals.md @huyunhui1 @oh-rgx1 @zmw1 @ctw-ian @hufeng20 @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/arkts-bytecode-overview.md @huyunhui1 @oh-rgx1 @zmw1 @ctw-ian @hufeng20 @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/arkts-cross-language-interaction.md @xliu-huanwei @shilei123 @huanghello @shilei123 @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/arkts-dynamic-import.md @huyunhui1 @oh-rgx1 @zmw1 @ctw-ian @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/arkts-import-native-module.md @yao_dashuai @yao_dashuai @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/arkts-lazy-import.md @DaiHuina1997 @yao_dashuai @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/arkts-module-side-effects.md @wangchen965 @yao_dashuai @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/arkts-runtime-faq.md @DaiHuina1997 @yao_dashuai @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/arkts-runtime-overview.md @guobingbing3 @xwcai98 @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/bytecode-obfuscation-guide.md @oatuwwutao @hufeng20 @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/bytecode-obfuscation-overview.md @oatuwwutao @Valkisop_ @hufeng20 @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/bytecode-obfuscation-practice.md @oatuwwutao @hufeng20 @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/bytecode-obfuscation-questions.md @oatuwwutao @hufeng20 @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/bytecode-obfuscation.md @oatuwwutao @u012789010 @hufeng20 @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/compilation-tool-chain-overview.md @chenmudan @hufeng20 @ctw-ian @hufeng20 @ctw-ian @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/customize-bytecode-during-compilation.md @oatuwwutao @hufeng20 @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/gc-introduction.md @dwhuawei @yingguofeng @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/js-apis-load-native-module.md @shilei123 @yao_dashuai @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/load-module-base-nodeapi.md @yao_dashuai @yao_dashuai @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/module-principle.md @yao_dashuai @yao_dashuai @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/Readme-CN.md @flyingwolf @flyingwolf @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/source-obfuscation-guide.md @zju-wyx @xiao-peiyang @dengxinyu @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/source-obfuscation-overview.md @zju-wyx @xiao-peiyang @dengxinyu @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/source-obfuscation-practice.md @zju-wyx @xiao-peiyang @dengxinyu @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/source-obfuscation-questions.md @zju-wyx @xiao-peiyang @dengxinyu @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/source-obfuscation.md @zju-wyx @xiao-peiyang @dengxinyu @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/arkts-utils/tool-disassembler.md @oatuwwutao @luobohua @hufeng20 @kirl75 @zsw_zhushiwei @jinqiuheng
 
 
 [开发-ArkUI-UI开发]
@@ -344,7 +344,7 @@ zh-cn/application-dev/ui/arkts-modal-overview.md	@CCFFWW	@lxl007	@Brilliantry_Ru
 zh-cn/application-dev/ui/arkts-modal-transition.md	@CCFFWW	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-navigation-introduction.md	@jiangdayuan	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-navigation-navigation.md	@jiangdayuan	@lxl007	@Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-navigation-tabs.md	@CCFFWW	@lxl007	@Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-navigation-tabs.md	@jiangdayuan @Giacinta	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-page-transition-animation.md	@CCFFWW	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-particle-animation.md	@CCFFWW	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-popup-and-menu-components-menu.md	@zhanghaibo0	@lxl007	@Brilliantry_Rui
@@ -438,7 +438,7 @@ zh-cn/application-dev/ui/ui-js-building-ui-layout-image.md	@weixin_52725220	@xio
 zh-cn/application-dev/ui/ui-js-building-ui-layout-intro.md	@lanshouren	@liuli0427	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-building-ui-layout-text.md	@xiangyuan6	@jiaoaozihao	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-building-ui-routes.md	@jiangdayuan	@lxl007	@Brilliantry_Rui
-zh-cn/application-dev/ui/ui-js-component-tabs.md	@CCFFWW	@lxl007	@Brilliantry_Rui
+zh-cn/application-dev/ui/ui-js-component-tabs.md	@jiangdayuan @Giacinta	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-button.md	@liyi0309	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-canvas.md	@sunbees	@liuli0427	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-canvasrenderingcontext2d.md	@sunbees	@liuli0427	@Brilliantry_Rui
@@ -588,33 +588,33 @@ zh-cn/application-dev/telephony/contacts-intro.md @zhang_yixin13 @yanghaoqian @s
 
 
 [开发-Core File Kit]
-zh-cn/application-dev/file-management/app-file-access.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/app-file-backup-extension.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/file-management/app-file-backup-overview.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/file-management/app-file-backup-sys.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/file-management/app-file-overview.md @wangfenging @liveery @zl_startup @liuhaonan2 @foryourself
-zh-cn/application-dev/file-management/app-fs-space-statistics.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/app-sandbox-directory.md @wangfenging @liveery @zl_startup @liuhaonan2 @foryourself
-zh-cn/application-dev/file-management/core-file-kit-intro.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/dev-user-file-manager-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/distributed-fs-overview.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/file-access-across-devices.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/file-copy-across-devices.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/file-persistPermission.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
-zh-cn/application-dev/file-management/manage-external-storage-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/native-environment-guidelines.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/native-fileio-guidelines.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/native-fileshare-guidelines.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
-zh-cn/application-dev/file-management/native-fileuri-guidelines.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/file-management/Readme-CN.md @wangke25 @bubble_mao @zhuangzhuang @gsl_1234 @liuhonggang123 @foryourself
-zh-cn/application-dev/file-management/request-dir-permission.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/save-user-file.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/select-user-file.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/send-file-to-app-sandbox-sys.md @wangfenging @liveery @zl_startup @liuhaonan2 @foryourself
-zh-cn/application-dev/file-management/set-security-label.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/share-app-file.md @gzhuangzhuang @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/file-management/user-file-overview.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/user-file-uri-intro.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/file-management/app-file-access.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/app-file-backup-extension.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/file-management/app-file-backup-overview.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/file-management/app-file-backup-sys.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/file-management/app-file-overview.md @wangfenging @liveery @zl_startup @liuhaonan2 @jinqiuheng
+zh-cn/application-dev/file-management/app-fs-space-statistics.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/app-sandbox-directory.md @wangfenging @liveery @zl_startup @liuhaonan2 @jinqiuheng
+zh-cn/application-dev/file-management/core-file-kit-intro.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/dev-user-file-manager-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/distributed-fs-overview.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/file-access-across-devices.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/file-copy-across-devices.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/file-persistPermission.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @jinqiuheng
+zh-cn/application-dev/file-management/manage-external-storage-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/native-environment-guidelines.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/native-fileio-guidelines.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/native-fileshare-guidelines.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @jinqiuheng
+zh-cn/application-dev/file-management/native-fileuri-guidelines.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/file-management/Readme-CN.md @wangke25 @bubble_mao @gzhuangzhuang @gsl_1234 @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/file-management/request-dir-permission.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/save-user-file.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/select-user-file.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/send-file-to-app-sandbox-sys.md @wangfenging @liveery @zl_startup @liuhaonan2 @jinqiuheng
+zh-cn/application-dev/file-management/set-security-label.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/share-app-file.md @gzhuangzhuang @wang_zhangjun @chenxi0605 @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/file-management/user-file-overview.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/file-management/user-file-uri-intro.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
 
 [开发-Distributed Service Kit]
 zh-cn/application-dev/distributedservice/distributedservice-kit-intro.md @hu-zhiqiong
@@ -653,17 +653,17 @@ zh-cn/application-dev/mechanicManager/rotation-control-guide-sys.md @hobbycao @s
 
 
 [开发-FFRT]
-zh-cn/application-dev/ffrt/ffrt-api-guideline-c.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/ffrt/ffrt-concurrency-concurrent-queue-c.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/ffrt/ffrt-concurrency-concurrent-queue-cpp.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/ffrt/ffrt-concurrency-graph-c.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/ffrt/ffrt-concurrency-graph-cpp.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/ffrt/ffrt-concurrency-paradigm.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/ffrt/ffrt-concurrency-serial-queue-c.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/ffrt/ffrt-concurrency-serial-queue-cpp.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/ffrt/ffrt-development-guideline.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/ffrt/ffrt-overview.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/ffrt/Readme-CN.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
+zh-cn/application-dev/ffrt/ffrt-api-guideline-c.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-concurrent-queue-c.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-concurrent-queue-cpp.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-graph-c.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-graph-cpp.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-paradigm.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-serial-queue-c.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-serial-queue-cpp.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-development-guideline.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-overview.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/ffrt/Readme-CN.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
 
 
 [开发-DFX]
@@ -672,8 +672,7 @@ zh-cn/application-dev/dfx/appfreeze-guidelines.md @rr_cn @peterhuangyu @gcw_KuLf
 zh-cn/application-dev/dfx/appkilled-guidelines.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/apprecovery-guidelines.md  @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/apptask-timeout-guidelines.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/cppcrash-guidelines.md @chenshi51 @Maplestory @yufeifei @foryourself
-zh-cn/application-dev/dfx/crash-detection-overview.md @chenshi51 @Maplestory @yufeifei @foryourself
+zh-cn/application-dev/dfx/cppcrash-guidelines.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/errormanager-guidelines.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/event-subscription-overview.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/fault-detection-overview.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
@@ -693,9 +692,9 @@ zh-cn/application-dev/dfx/hiappevent-watcher-app-killed-events.md @xuxinao @pete
 zh-cn/application-dev/dfx/hiappevent-watcher-apphicollie-events-arkts.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hiappevent-watcher-apphicollie-events-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hiappevent-watcher-apphicollie-events.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-crash-events-arkts.md @chenshi51 @Maplestory @yufeifei @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-crash-events-ndk.md @chenshi51 @Maplestory @yufeifei @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-crash-events.md @chenshi51 @Maplestory @yufeifei @foryourself
+zh-cn/application-dev/dfx/hiappevent-watcher-crash-events-arkts.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/dfx/hiappevent-watcher-crash-events-ndk.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/dfx/hiappevent-watcher-crash-events.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hiappevent-watcher-freeze-events-arkts.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hiappevent-watcher-freeze-events-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hiappevent-watcher-freeze-events.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
@@ -726,7 +725,7 @@ zh-cn/application-dev/dfx/hitracemeter-guidelines-arkts.md @qq_437963121 @MontSa
 zh-cn/application-dev/dfx/hitracemeter-guidelines-ndk.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hitracemeter-intro.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hitracemeter-view.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/jscrash-guidelines.md @wanghuan2025 @Maplestory @yufeifei @foryourself
+zh-cn/application-dev/dfx/jscrash-guidelines.md @wanghuan2025 @Maplestory @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/performance-analysis-kit-overview.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/performance-analysis-kit-terminology.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/Readme-CN.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
@@ -792,7 +791,7 @@ zh-cn/application-dev/device/stationary/userStatus-guidelines.md @hu-zhiqiong @z
 
 
 [开发-Network Kit]
-zh-cn/application-dev/network/ @zhang_yixin13 @guo-min_net @tongxilin 
+zh-cn/application-dev/network/ @zhang_yixin13 @guo-min_net @tongxilin @wmyao_mm
 
 
 [开发-Neural NetWork Runtime Kit]
@@ -801,7 +800,7 @@ zh-cn/application-dev/napi/neural-network-runtime-guidelines.md @ge-yafang @prin
 
 [开发-NDK]
 zh-cn/application-dev/napi/  @fang-jinxu
-zh-cn/application-dev/napi/rawfile-guidelines.md @Brilliantry_Rui @Buda-Liu @budda-wang @lpw_work
+zh-cn/application-dev/napi/rawfile-guidelines.md @ningningW @lliule21 @lpw_work @budda-wang
 zh-cn/application-dev/napi/usb-ddk-guidelines.md @Kevin-Lau @liuhonggang123
 
 
@@ -1046,9 +1045,9 @@ zh-cn/application-dev/reference/apis-arkts/js-apis-vector.md @gongjunsong @ge-ya
 zh-cn/application-dev/reference/apis-arkts/js-apis-xml.md @gongjunsong @ge-yafang @flyingwolf@blackstone-oh @yingguofeng
 zh-cn/application-dev/reference/apis-arkts/js-apis-worker.md @gongjunsong @ge-yafang @flyingwolf @weng-changcheng @blackstone-oh
 zh-cn/application-dev/reference/apis-arkts/js-apis-taskpool.md @gongjunsong @ge-yafang @flyingwolf @weng-changcheng @blackstone-oh
-zh-cn/application-dev/reference/apis-arkts/errorcode-ets-loader.md @aftott @hufeng20 @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/reference/apis-arkts/errorcode-tsc.md @zju-wyx @xiao-peiyang @liyancheng @kirl75 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/reference/apis-arkts/Readme-CN.md @lijiamin2025 @xliu-huanwei @weng-changcheng @yuanyao14 @kirl75 @zsw_zhushiwei @foryourself
+zh-cn/application-dev/reference/apis-arkts/errorcode-ets-loader.md @aftott @hufeng20 @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/reference/apis-arkts/errorcode-tsc.md @zju-wyx @xiao-peiyang @liyancheng @kirl75 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/reference/apis-arkts/Readme-CN.md @lijiamin2025 @xliu-huanwei @weng-changcheng @yuanyao14 @kirl75 @zsw_zhushiwei @jinqiuheng
 
 [API参考-ArkUI]
 
@@ -1077,6 +1076,7 @@ zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md	@xi
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-uiinspector.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-uiobserver.md	@xiang-shouxing	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-uimaterial-sys.md @CCFFWW	@lxl007 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityactionarguments.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityelementinfo.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityelementinfolist.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
@@ -1507,7 +1507,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-symbolGl
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-text.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textclock.md	@xiangyuan6	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textclock.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textinput-sys.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
@@ -1579,8 +1579,9 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-stack-sys.md	@l
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-stack.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-swiper.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabcontent.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabs.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabs.md	@jiangdayuan @Giacinta	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-unioneffectcomponent-sys.md  @CCFFWW  @lxl007  @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-waterflow.md	@zcdqs	@rongShao-Z @songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-with-theme.md	@lushi871202	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
@@ -1704,6 +1705,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-tool
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-use-effect.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-use-union-effect-sys.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-area-change-event.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
@@ -1927,7 +1929,7 @@ zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-request.md  @m
 zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-update.md @hughes802  @zhangzhengxue @mamba-ting @fang-jinxu
 
 [API参考-Basic Services Kit-时间时区、公共回调、系统设置]
-zh-cn/application-dev/reference/common/js-apis-timer.md @yao_dashuai @yao_dashuai @kirl75; @zsw_zhushiwei @foryourself
+zh-cn/application-dev/reference/common/js-apis-timer.md @yao_dashuai @yao_dashuai @kirl75; @zsw_zhushiwei @jinqiuheng
 zh-cn/application-dev/reference/apis-basic-services-kit/commonEvent-screenlock.md  @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-timer-sys.md   @murphy84 @hu-kai45 @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-time.md   @murphy84 @hu-kai45 @fang-jinxu
@@ -2012,64 +2014,64 @@ zh-cn/application-dev/reference/apis-contacts-kit/  @zhang_yixin13 @shangzhijie 
 
 
 [API参考-Core File Kit]
-zh-cn/application-dev/reference/apis-core-file-kit/capi-environment.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-error-code-h.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-fileio.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-fileshare-fileshare-policyerrorresult.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-fileshare-fileshare-policyinfo.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-fileshare.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-fileuri.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-environment-h.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-file-share-h.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-file-uri-h.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-fileio-h.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/errorcode-filemanagement.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-application-backupExtensionAbility-sys.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-document.md    @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-backup-sys.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsync-sys.md @zsyztt @Hermits @reminder2352 @yunlanying @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsync.md @zsyztt @Hermits @reminder2352 @yunlanying @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsyncmanager-sys.md @zsyztt @Hermits @reminder2352 @yunlanying @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-environment-sys.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-environment.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-fs.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-hash.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-keymanager-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-picker-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-picker.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-recent-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-securityLabel.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-statvfs.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-storage-statistics-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-storage-statistics.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-trash-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-volumemanager-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileAccess-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileExtensionInfo-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileio.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileShare-sys.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileShare.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-statfs.md    @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-system-file.md    @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/capi-environment.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-error-code-h.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-fileio.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-fileshare-fileshare-policyerrorresult.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-fileshare-fileshare-policyinfo.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-fileshare.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-fileuri.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-environment-h.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-file-share-h.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-file-uri-h.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-fileio-h.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/errorcode-filemanagement.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-application-backupExtensionAbility-sys.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-document.md    @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-backup-sys.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsync-sys.md @Hermits @reminder2352 @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsync.md @Hermits @reminder2352 @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsyncmanager-sys.md @Hermits @reminder2352 @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-environment-sys.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-environment.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-fs.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-hash.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-keymanager-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-picker-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-picker.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-recent-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-securityLabel.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-statvfs.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-storage-statistics-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-storage-statistics.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-trash-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-volumemanager-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileAccess-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileExtensionInfo-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileio.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileShare-sys.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileShare.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-statfs.md    @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-system-file.md    @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-userFileManager-sys.md @yixiaoff @liweilu1 @xchaosioda @w_Machine_cc
-zh-cn/application-dev/reference/apis-core-file-kit/Readme-CN.md @wangke25 @bubble_mao @zhuangzhuang @gsl_1234 @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-cloud-disk-error-code-h.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-changedata.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-changesresult.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-displaynameinfo.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-failedlist.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-filesyncstate.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-pathinfo.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-resultlist.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-syncfolder.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-cloud-disk-manager-h.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/errorcode-clouddiskmanager-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-clouddiskmanager-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsyncmanager.md @yunlanying @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/Readme-CN.md @wangke25 @bubble_mao @gzhuangzhuang @gsl_1234 @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-cloud-disk-error-code-h.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-changedata.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-changesresult.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-displaynameinfo.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-failedlist.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-filesyncstate.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-pathinfo.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-resultlist.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-syncfolder.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-cloud-disk-manager-h.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/errorcode-clouddiskmanager-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-clouddiskmanager-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsyncmanager.md @yunlanying @liuhonggang123 @jinqiuheng
 
 
 [API参考-mechanicManager]
@@ -2080,33 +2082,33 @@ zh-cn/application-dev/reference/apis-mechanic-kit/Readme-CN.md @hobbycao @saga20
 
 
 [API参考-FFRT]
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-condition-variable-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-cond-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-condattr-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-dependence-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-deps-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-fiber-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-function-header-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-loop-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-mutex-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-mutexattr-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-queue-attr-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-queue-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-rwlock-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-rwlockattr-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-task-attr-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-task-handle-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-fiber-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-loop-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-mutex-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-queue-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-shared-mutex-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-sleep-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-task-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-timer-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/capi-type-def-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
-zh-cn/application-dev/reference/apis-ffrt-kit/Readme-CN.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @foryourself
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-condition-variable-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-cond-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-condattr-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-dependence-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-deps-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-fiber-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-function-header-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-loop-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-mutex-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-mutexattr-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-queue-attr-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-queue-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-rwlock-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-rwlockattr-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-task-attr-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt-ffrt-task-handle-t.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-ffrt.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-fiber-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-loop-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-mutex-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-queue-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-shared-mutex-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-sleep-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-task-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-timer-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/capi-type-def-h.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
+zh-cn/application-dev/reference/apis-ffrt-kit/Readme-CN.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
 
 [API参考-DFX]
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-cfg-h.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
@@ -2143,7 +2145,7 @@ zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-log-h.md @liu
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-trace-h.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-graphicsmemorysummary.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-processsamplerconfig.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-faultlogger.md @chenshi51 @Maplestory @yufeifei @foryourself
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-faultlogger.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hisysevent-sys.md @lyj_love_code @tangyyan @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hicollie.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
@@ -2153,7 +2155,7 @@ zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-jsleakwa
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-loglibrary-sys.md @BruceZong @gcw_qzKyUhyU @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-trace.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-bytrace.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-faultLogger.md @chenshi51 @Maplestory @yufeifei @foryourself
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-faultLogger.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hichecker.md @lu-tao @martin-duan @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hidebug.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
@@ -2269,24 +2271,43 @@ zh-cn/application-dev/reference/apis-input-kit/ @zhang_yixin13   @hanruofei @Lyu
 zh-cn/application-dev/reference/apis-ipc-kit/js-apis-rpc.md @xdx1921 @zhang_yixin13 @zhaopeng_gitee @Lyuxin
 
 [API参考-Localization Kit]
-zh-cn/application-dev/reference/apis-localization-kit  @ningningW  @lpw_work 
+zh-cn/application-dev/reference/apis-localization-kit  @ningningW  
 zh-cn/application-dev/reference/apis-localization-kit/js-apis-i18n.md  @ningningW @yliupy  @sunyaozu @lpw_work 
 zh-cn/application-dev/reference/apis-localization-kit/js-apis-intl.md  @ningningW @yliupy  @sunyaozu @lpw_work 
 zh-cn/application-dev/reference/apis-localization-kit/js-apis-i18n-sys.md  @ningningW @yliupy  @sunyaozu @lpw_work 
 zh-cn/application-dev/reference/apis-localization-kit/errorcode-i18n.md  @ningningW @yliupy @sunyaozu @lpw_work 
+zh-cn/application-dev/reference/apis-localization-kit/capi-timezone-h.md  @ningningW @yliupy @sunyaozu @lpw_work
+zh-cn/application-dev/reference/apis-localization-kit/capi-errorcode-h.md  @ningningW @yliupy @sunyaozu @lpw_work
+zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-datetimerule.md  @ningningW @yliupy @sunyaozu @lpw_work
+zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-initialtimezonerule.md  @ningningW @yliupy @sunyaozu @lpw_work
+zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-timearraytimezonerule.md  @ningningW @yliupy @sunyaozu @lpw_work
+zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-annualtimezonerule.md  @ningningW @yliupy @sunyaozu @lpw_work
+zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-timezonerules.md  @ningningW @yliupy @sunyaozu @lpw_work
+zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-timezonerulequery.md  @ningningW @yliupy @sunyaozu @lpw_work
 
-zh-cn/application-dev/reference/apis-localization-kit/js-apis-resource-manager.md   @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/js-apis-sendable-resource-manager.md  @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/rawfile.md   @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/resourcemanager.md   @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/raw__dir_8h.md   @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/raw__file__manager_8h.md  @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/raw__file_8h.md   @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/ohresmgr_8h.md  @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/resmgr__common_8h.md  @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/_raw_file_descriptor.md   @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/_raw_file_descriptor64.md   @ningningW @budda-wang @lpw_work 
-zh-cn/application-dev/reference/apis-localization-kit/errorcode-resource-manager.md   @ningningW @budda-wang @lpw_work 
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-resource-manager.md  @ningningW @lliule21 @lpw_work @budda-wang 
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-sendable-resource-manager.md  @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-rawFileDescriptor.md @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-resource.md  @ningningW @lliule21 @lpw_work @budda-wangk
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-sendableResource.md  @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile.md   @ningningW @lliule21 @lpw_work @budda-wang 
+zh-cn/application-dev/reference/apis-localization-kit/capi-resourcemanager.md   @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-ohresmgr-h.md @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-raw-dir-h.md  @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-raw-file-h.md  @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-raw-file-manager-h.md @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-resmgr-common-h.md  @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawdir.md   @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfiledescriptor.md   @ningningW @lliule21 @lpw_work @budda-wang 
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfiledescriptor64.md   @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfile.md   @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfile64.md   @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-nativeresourcemanager.md   @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/capi-resourcemanager-resourcemanager-configuration.md   @ningningW @lliule21 @lpw_work @budda-wang
+
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-font-manager-sys.md  @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/errorcode-font-manager.md @ningningW @lliule21 @lpw_work @budda-wang
+
 
 [API参考-Location Kit]
 zh-cn/application-dev/reference/apis-location-kit/ @cheng_guohong @RayShih @cheng_guohong  
@@ -2334,7 +2355,7 @@ zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-o
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-spatialAwareness-sys.md @hu-zhiqiong @yuxiaoyang @zhaodengqi @codexu62
 
 [API参考-Network Kit]
-zh-cn/application-dev/reference/apis-network-kit/ @zhang_yixin13 @guo-min_net @tongxilin 
+zh-cn/application-dev/reference/apis-network-kit/ @zhang_yixin13 @guo-min_net @tongxilin @wmyao_mm
 
 
 [API参考-Neural NetWork Runtime Kit]
@@ -2420,7 +2441,7 @@ zh-cn/application-dev/tools/unpacking-tool.md @Brilliantry_Rui @jsjzju @lixueqin
 zh-cn/application-dev/tools/app-check-tool.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
 zh-cn/application-dev/tools/cem-tool.md @fang-jinxu @dongqingran @wulong158 @wanghong1997
 zh-cn/application-dev/tools/anm-tool.md @fang-jinxu @dongqingran @wulong158 @wanghong1997
-zh-cn/application-dev/tools/restool.md  @Brilliantry_Rui @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/tools/restool.md   @ningningW @lliule21 @lpw_work @budda-wang
 zh-cn/application-dev/tools/rawheap-translator.md @wanghuan2025 @wanghuan2025 @kir175 @zsw_zhushiwei @foryourself
 zh-cn/application-dev/tools/toybox.md @yan-mingzhen @liveery @liuhaonan2 @foryourself
 zh-cn/application-dev/tools/command-line-tools-overview.md @foryourself @lingminghw @RayShih @foryourself
@@ -2432,5 +2453,5 @@ zh-cn/application-dev/faqs/faqs-ability.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/faqs/faqs-bundle-management.md @Brilliantry_Rui  @changzheng6   @kongjing2  @small_bricklayer
 zh-cn/application-dev/faqs/faqs-event-notification.md @fang-jinxu @dongqingran @wulong158 @wanghong1997
 zh-cn/application-dev/faqs/faqs-dfx.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/faqs/faqs-file-management.md @wangke25	@bubble_mao @zhuangzhuang @gsl_1234	@liuhonggang123	@foryourself
+zh-cn/application-dev/faqs/faqs-file-management.md @wangke25	@bubble_mao @gzhuangzhuang @gsl_1234	@liuhonggang123	@jinqiuheng
 

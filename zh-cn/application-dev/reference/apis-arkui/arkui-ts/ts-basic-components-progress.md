@@ -80,11 +80,11 @@ Progress(options: ProgressOptions)
 
 | 名称        | 值 | 说明                                     |
 | --------- | - | ---------------------------------------- |
-| Linear    | - | 线性样式。                                    |
-| Ring<sup>8+</sup>      | - | 环形圆环逐渐显示直至完全填充。                 |
-| Eclipse   | - | 圆形样式，显示类似月圆月缺的进度展示效果，从月牙逐渐变化至满月。         |
-| ScaleRing<sup>8+</sup> | - | 环形有刻度样式，显示类似时钟刻度形式的进度展示效果。               |
-| Capsule<sup>8+</sup>   | - | 胶囊样式，头尾两端圆弧处的进度展示效果与Eclipse相同，中段的进度展示效果与Linear相同。当高度大于宽度时，自适应垂直显示。 |
+| Linear    | 0 | 线性样式。                                    |
+| Ring<sup>8+</sup>      | 1 | 环形圆环逐渐显示直至完全填充。                 |
+| Eclipse   | 2 | 圆形样式，显示类似月圆月缺的进度展示效果，从月牙逐渐变化至满月。         |
+| ScaleRing<sup>8+</sup> | 3 | 环形有刻度样式，显示类似时钟刻度形式的进度展示效果。               |
+| Capsule<sup>8+</sup>   | 4 | 胶囊样式，头尾两端圆弧处的进度展示效果与Eclipse相同，中段的进度展示效果与Linear相同。当高度大于宽度时，自适应垂直显示。 |
 
 ##  ProgressStyleMap<sup>10+</sup>对象说明
 
@@ -108,7 +108,7 @@ Progress(options: ProgressOptions)
 
 > **说明：**
 >
-> 该组件重写了通用属性[backgroundColor](ts-universal-attributes-background.md)，直接添加在Progress组件上，设置进度条的底色。如需设置整个Progress组件的背景色，需要在外层容器上添加backgroundColor，并用该容器包裹Progress组件。
+> 该组件重写了通用属性[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)，直接添加在Progress组件上，设置进度条的底色。如需设置整个Progress组件的背景色，需要在外层容器上添加backgroundColor，并用该容器包裹Progress组件。
 
 ### value
 
@@ -134,9 +134,9 @@ color(value: ResourceColor | LinearGradient)
 
 设置进度条前景色。
 
-从API version 10开始支持利用LinearGradient设置Ring样式的渐变色。Ring类型不建议设置透明度，如需设置透明度，建议使用[DataPanel](ts-basic-components-datapanel.md)。
+从API version 10开始支持利用[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)设置Ring样式的渐变色。Ring类型不建议设置透明度，如需设置透明度，建议使用[DataPanel](ts-basic-components-datapanel.md)。
 
-从API version 23开始支持利用LinearGradient设置Linear样式和Capsule样式的渐变色。API version 22及之前版本利用LinearGradient设置Linear样式和Capsule样式的渐变色时，会以默认主题色显示。
+从API version 23开始支持利用[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)设置Linear样式和Capsule样式的渐变色。API version 22及之前版本利用LinearGradient设置Linear样式和Capsule样式的渐变色时，会以默认主题色显示。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用，暂不支持LinearGradient。
 
@@ -198,7 +198,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 | 参数名 | 类型                                                      | 必填 | 说明                                                  |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| isPrivacySensitiveMode  | [Optional\<boolean\>] | 是   | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true表示打开隐私敏感，false表示关闭隐私敏感。<br/>**说明：** <br/>设置null表示不敏感。<br/> 默认值：false<!--Del--><br/>需要在卡片中使用Progress，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
+| isPrivacySensitiveMode  | [Optional\<boolean\>](ts-universal-attributes-custom-property.md#optionalt12) | 是   | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br/> 默认值：false<br/>**说明：** <br/>设置null表示不敏感。<!--Del--><br/>需要在卡片中使用Progress，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
 
 ## ProgressConfiguration<sup>12+</sup>
 
@@ -211,7 +211,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 | 名称 | 类型  | 只读 | 可选 |说明         |
 | ------ | ------ | ------- |------------|------------|
 | value  | number | 否 | 否 | 当前进度值。当设置的数值小于0时，将其置为0。当设置的数值大于total时，将其置为total。<br/>默认值：0<br/>取值范围：[0, total] |
-| total  | number | 否 | 否 | 进度总长。<br/>取值范围：[0, 2147483647]   |
+| total  | number | 否 | 否 | 进度总长。<br/>取值范围：[0, 2147483647]<br/>**说明：** <br/>total是负数时，按照100处理。|
 
 ## CommonProgressStyleOptions<sup>10+</sup>
 
@@ -223,7 +223,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 | 名称          | 类型                      | 只读 | 可选 | 说明                                                                                        |
 | ------------ | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| enableSmoothEffect | boolean | 否 | 是 | 进度平滑动效的开关。开启平滑动效后设置进度，进度会从当前值渐变至设定值，页面会有进度变化的动效；否则进度从当前值突变至设定值，页面无动效。<br/>默认值：true，true表示开启进度平滑动效，false表示关闭进度平滑动效。 |
+| enableSmoothEffect | boolean | 否 | 是 | 进度平滑动效的开关。开启平滑动效后设置进度，进度会从当前值渐变至设定值，页面会有进度变化的动效；否则进度从当前值突变至设定值，页面无动效。<br/>true：表示开启进度平滑动效。<br/>false：表示关闭进度平滑动效。<br/>默认值：true |
 
 ## ScanEffectOptions<sup>10+</sup>
 
@@ -235,7 +235,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| enableScanEffect | boolean | 否 | 是 | 扫光效果的开关。<br/>默认值：false，false表示关闭扫光效果，true表示开启扫光效果。仅支持Linear、Ring、Capsule类型的进度条。 |
+| enableScanEffect | boolean | 否 | 是 | 扫光效果的开关。仅支持[Linear、Ring、Capsule](#progresstype8枚举说明)类型的进度条。<br/>true：表示开启扫光效果。<br/>false：表示关闭扫光效果。<br/>默认值：false |
 
 ## ProgressStyleOptions<sup>8+</sup>
 
@@ -251,8 +251,8 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 | 名称          | 类型                      | 只读 | 可选 | 说明                                                                                        |
 | ------------ | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| strokeWidth  | [Length](ts-types.md#length) | 否  | 是  | 设置进度条宽度（不支持百分比设置）。<br/>默认值：4.0vp                                            |
-| scaleCount   | number                       | 否  | 是  | 设置环形进度条总刻度数。<br/>默认值：120 <br/>取值范围：[2, min(width, height)/scaleWidth/2/π]，超出取值范围时，样式显示为环形无刻度进度条。默认情况下宽高最小为77vp。                     |
+| strokeWidth  | [Length](ts-types.md#length) | 否  | 是  | 设置进度条宽度（不支持百分比设置）。<br/>默认值：4.0vp<br/>超出取值范围按默认值处理。                                            |
+| scaleCount   | number                       | 否  | 是  | 设置环形进度条总刻度数。<br/>默认值：120vp <br/>取值范围：[2, min(width, height)/scaleWidth/2/π]，超出取值范围时，样式显示为环形无刻度进度条。默认情况下宽高最小为77vp。                     |
 | scaleWidth   | [Length](ts-types.md#length) | 否  | 是  | 设置环形进度条刻度粗细（不支持百分比设置）。刻度粗细大于进度条宽度时，为系统默认粗细。<br/>默认值：2.0vp |
 
 ## CapsuleStyleOptions<sup>10+</sup>
@@ -272,7 +272,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 | content | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 文本内容，应用可自定义。<br>从API version 20开始，支持Resource类型。 |
 | font | [Font](ts-types.md#font) | 否 | 是 | 文本样式。<br/>默认值：<br/>文本大小（不支持百分比设置）：12fp <br/>其他文本参数跟随[Text](ts-basic-components-text.md)组件的主题值。|
 | fontColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 文本颜色。<br/>默认值：'\#ff182431' |
-| showDefaultPercentage | boolean | 否 | 是 | 显示百分比文本的开关。开启后，进度条上显示当前进度的百分比。设置了content属性时该属性不生效。<br/>默认值：false，false表示不显示百分比文本，true表示显示百分比文本。 |
+| showDefaultPercentage | boolean | 否 | 是 | 显示百分比文本的开关。开启后，进度条上显示当前进度的百分比。设置了content属性时该属性不生效。<br/>true：表示显示百分比文本；false：表示不显示百分比文本。<br/>默认值：false |
 | borderRadius<sup>18+</sup> |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | Capsule进度条圆角半径（不支持百分比设置）。<br/>取值范围：[0, height/2]。默认值：height / 2。<br/>设置非法数值时，按照默认值处理。 |
 
 ## RingStyleOptions<sup>10+</sup>
@@ -288,7 +288,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 | 名称           | 类型                      | 只读 | 可选 | 说明                                                                                        |
 | ------------- | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | strokeWidth   | [Length](ts-types.md#length) | 否  | 是  | 设置进度条宽度（不支持百分比设置）。当宽度大于等于半径时，宽度默认修改为半径值的二分之一。<br/>默认值：4.0vp |
-| shadow        | boolean                      | 否  | 是  | 进度条阴影开关。<br/>默认值：false，false表示关闭进度条阴影，true表示打开进度条阴影。                                                             |
+| shadow        | boolean                      | 否  | 是  | 进度条阴影开关。<br/>true：表示打开进度条阴影；false：表示关闭进度条阴影。<br/>默认值：false                                                             |
 | status        | [ProgressStatus<sup>10+</sup>](#progressstatus10枚举说明) | 否 | 是 | 设置进度条状态。当设置为ProgressStatus.LOADING时会开启检查更新动效，此时设置进度值不生效。当从ProgressStatus.LOADING设置为ProgressStatus.PROGRESSING时，检查更新动效会执行到终点再停止。<br/>默认值：ProgressStatus.PROGRESSING |
 
 ## LinearStyleOptions<sup>10+</sup>
@@ -319,7 +319,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 | 名称          | 类型                      | 只读 | 可选 | 说明                                                                                        |
 | ------------ | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | strokeWidth  | [Length](ts-types.md#length) | 否  | 是  | 设置进度条宽度（不支持百分比设置）。<br/>默认值：4.0vp                                            |
-| scaleCount   | number                       | 否  | 是  | 设置环形进度条总刻度数。<br/>默认值：120 <br/>取值范围：[2, min(width, height)/scaleWidth/2/π]，超出取值范围时，样式显示为环形无刻度进度条。默认情况下宽高最小为77vp。                     |
+| scaleCount   | number                       | 否  | 是  | 设置环形进度条总刻度数。<br/>默认值：120vp <br/>取值范围：[2, min(width, height)/scaleWidth/2/π]，超出取值范围时，样式显示为环形无刻度进度条。默认情况下宽高最小为77vp。                     |
 | scaleWidth   | [Length](ts-types.md#length) | 否  | 是  | 设置环形进度条刻度粗细（不支持百分比设置）。刻度粗细大于进度条宽度时，为系统默认粗细。<br/>默认值：2.0vp |
 
 ## EclipseStyleOptions<sup>10+</sup>
@@ -353,7 +353,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 ### 示例1（设置进度条的类型）
 
-该示例通过type属性，实现了设置进度条类型的功能。
+该示例通过[ProgressOptions](#progressoptions对象说明)的入参type，实现了设置进度条类型的功能。
 
 ```ts
 // xxx.ets
@@ -548,9 +548,9 @@ struct Index {
 ```ts
 // xxx.ets
 class MyProgressModifier implements ContentModifier<ProgressConfiguration> {
-  color: Color = Color.White;
+  color: ResourceColor = Color.White;
 
-  constructor(color: Color) {
+  constructor(color: ResourceColor) {
     this.color = color;
   }
 
@@ -563,7 +563,7 @@ class MyProgressModifier implements ContentModifier<ProgressConfiguration> {
 function myProgress(config: ProgressConfiguration) {
 
   Column({ space: 30 }) {
-    Text("当前进度：" + config.value + "/" + config.total).fontSize(20)
+    Text('当前进度：' + config.value + '/' + config.total).fontSize(20)
     Row() {
       Flex({ justifyContent: FlexAlign.SpaceBetween }) {
         Path()
@@ -599,7 +599,7 @@ function myProgress(config: ProgressConfiguration) {
 @Component
 struct Index {
   @State currentValue: number = 0;
-  modifier = new MyProgressModifier(Color.Red);
+  modifier = new MyProgressModifier('rgb(39, 135, 217)');
   @State myModifier: (MyProgressModifier | undefined) = this.modifier;
 
   build() {
@@ -614,7 +614,7 @@ struct Index {
         if (this.currentValue > 0) {
           this.currentValue -= 1;
         }
-      }).width('30%')
+      }).width('30%').margin('10')
     }.width('100%').height('100%')
   }
 }
@@ -660,7 +660,9 @@ struct ProgressExample {
 
 ### 示例8（设置capsule进度条圆角半径）
 
-该示例通过borderRadius属性，实现了capsule类型进度条圆角半径设置。
+该示例通过[CapsuleStyleOptions](#capsulestyleoptions10)的入参borderRadius，实现了capsule类型进度条圆角半径设置。
+
+从API version 18开始，新增borderRadius属性。
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
@@ -673,14 +675,14 @@ struct ProgressExample {
       Text('Capsule Progress').fontSize(9).width('90%')
       Row({ space: 15 }) {
         Progress({ value: 30, total: 100, type: ProgressType.Capsule })
-          .style({ content: "默认圆角", borderWidth: 5 })
+          .style({ content: '默认圆角', borderWidth: 5 })
           .width(100)
           .height(60)
       }
 
       Row({ space: 15 }) {
         Progress({ value: 30, total: 100, type: ProgressType.Capsule })
-          .style({ content: "圆角为20vp", borderWidth: 5, borderRadius: LengthMetrics.vp(20) })
+          .style({ content: '圆角为20vp', borderWidth: 5, borderRadius: LengthMetrics.vp(20) })
           .width(100)
           .height(60)
       }

@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-开发者经常需要在应用中显示一些图片，例如：按钮中的icon、网络图片、本地图片等。在应用中显示图片需要使用Image组件实现，Image支持多种图片格式，包括png、jpg、jpeg、bmp、svg、webp、gif和heif，不支持apng和svga格式，具体用法请参考[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)组件。
+开发者经常需要在应用中显示一些图片，例如：按钮中的icon、网络图片、本地图片等。在应用中显示图片需要使用Image组件实现，Image支持多种图片格式，包括png、jpg、jpeg、bmp、svg、webp、gif、tiff和heif，不支持apng和svga格式，具体用法请参考[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)组件。
 
 
 Image通过调用接口来创建，接口调用形式如下：
@@ -86,7 +86,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
   <!-- @[resource_icon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
   ``` TypeScript
-  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  // 请将$r('app.media.icon')替换为实际资源文件
   Image($r('app.media.icon'))
   ```
 
@@ -276,27 +276,27 @@ DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将
         return;
       };
       // 创建普通DrawableDescriptor
-      // $r('app.media.landscape')需要替换为开发者所需的图像资源文件。
+      // 请将$r('app.media.landscape')替换为实际资源文件
       let pixmapDescResult = resManager.getDrawableDescriptor($r('app.media.landscape').id);
       if (pixmapDescResult) {
         this.pixmapDesc = pixmapDescResult as DrawableDescriptor;
       };
       // 创建PixelMapDrawableDescriptor
-      // $r('app.media.landscape')需要替换为开发者所需的图像资源文件。
+      // 请将$r('app.media.landscape')替换为实际资源文件
       const pixelMap = await this.getPixmapFromMedia($r('app.media.landscape'));
       this.pixelMapDesc = new PixelMapDrawableDescriptor(pixelMap);
       // 创建分层图标
-      // $r('app.media.foreground')需要替换为开发者所需的图像资源文件。
+      // 请将$r('app.media.foreground')替换为实际资源文件
       const foreground = await this.getDrawableDescriptor($r('app.media.foreground'));
-      // $r('app.media.landscape')需要替换为开发者所需的图像资源文件。
+      // 请将$r('app.media.landscape')替换为实际资源文件
       const background = await this.getDrawableDescriptor($r('app.media.landscape'));
       this.layeredDesc = new LayeredDrawableDescriptor(foreground, background);
       // 创建动画图片（需加载多张图片）
-      // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
+      // 请将$r('app.media.sky')替换为实际资源文件
       const frame1 = await this.getPixmapFromMedia($r('app.media.sky'));
-      // $r('app.media.landscape')需要替换为开发者所需的图像资源文件。
+      // 请将$r('app.media.landscape')替换为实际资源文件
       const frame2 = await this.getPixmapFromMedia($r('app.media.landscape'));
-      // $r('app.media.clouds')需要替换为开发者所需的图像资源文件。
+      // 请将$r('app.media.clouds')替换为实际资源文件
       const frame3 = await this.getPixmapFromMedia($r('app.media.clouds'));
       if (frame1 && frame2 && frame3) {
         this.animatedDesc = new AnimatedDrawableDescriptor([frame1, frame2, frame3], this.animationOptions);
@@ -437,7 +437,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
       Scroll(this.scroller) {
         Row() {
           Column() {
-            // $r('app.media.img_2')需要替换为开发者所需的图像资源文件。
+            // 请将$r('app.media.img_2')替换为实际资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
@@ -448,7 +448,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
               .margin({bottom:25,left:10})
               // overlay接口暂不支持深色模式
               .overlay('Contain', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-            // $r('app.media.img_2')需要替换为开发者所需的图像资源文件。
+            // 请将$r('app.media.img_2')替换为实际资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
@@ -459,7 +459,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
               .margin({bottom:25,left:10})
               // overlay接口暂不支持深色模式
               .overlay('Cover', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-            // $r('app.media.img_2')需要替换为开发者所需的图像资源文件。
+            // 请将$r('app.media.img_2')替换为实际资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
@@ -473,7 +473,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
           }
   
           Column() {
-            // $r('app.media.img_2')需要替换为开发者所需的图像资源文件。
+            // 请将$r('app.media.img_2')替换为实际资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
@@ -484,7 +484,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
               .margin({bottom:25,left:10})
               // overlay接口暂不支持深色模式
               .overlay('Fill', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-            // $r('app.media.img_2')需要替换为开发者所需的图像资源文件。
+            // 请将$r('app.media.img_2')替换为实际资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
@@ -495,7 +495,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
               .margin({bottom:25,left:10})
               // overlay接口暂不支持深色模式
               .overlay('ScaleDown', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-            // $r('app.media.img_2')需要替换为开发者所需的图像资源文件。
+            // 请将$r('app.media.img_2')替换为实际资源文件
             Image($r('app.media.img_2'))
               .width(200)
               .height(150)
@@ -530,7 +530,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     build() {
       Column() {
         Row() {
-          // $r('app.media.grass')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.grass')替换为实际资源文件
           Image($r('app.media.grass'))
             .width('40%')
             // 使用interpolation接口对图片进行插值，显著提升清晰度
@@ -539,7 +539,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             // overlay接口暂不支持深色模式
             .overlay('Interpolation.None', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             .margin(10)
-          // $r('app.media.grass')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.grass')替换为实际资源文件
           Image($r('app.media.grass'))
             .width('40%')
             // 使用interpolation接口对图片进行插值，显著提升清晰度
@@ -552,7 +552,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
         .justifyContent(FlexAlign.Center)
   
         Row() {
-          // $r('app.media.grass')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.grass')替换为实际资源文件
           Image($r('app.media.grass'))
             .width('40%')
             // 使用interpolation接口对图片进行插值，显著提升清晰度
@@ -561,7 +561,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             // overlay接口暂不支持深色模式
             .overlay('Interpolation.Medium', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             .margin(10)
-          // $r('app.media.grass')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.grass')替换为实际资源文件
           Image($r('app.media.grass'))
             .width('40%')
             // 使用interpolation接口对图片进行插值，显著提升清晰度
@@ -595,7 +595,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     build() {
       Column({ space: 10 }) {
         Column({ space: 25 }) {
-          // $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.ic_public_favor_filled_1')替换为实际资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
             .width(160)
             .height(160)
@@ -606,7 +606,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             .objectFit(ImageFit.ScaleDown)
             // overlay接口暂不支持深色模式
             .overlay('ImageRepeat.XY', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-          // $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.ic_public_favor_filled_1')替换为实际资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
             .width(160)
             .height(160)
@@ -617,7 +617,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             .objectFit(ImageFit.ScaleDown)
             // overlay接口暂不支持深色模式
             .overlay('ImageRepeat.Y', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-          // $r('app.media.ic_public_favor_filled_1')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.ic_public_favor_filled_1')替换为实际资源文件
           Image($r('app.media.ic_public_favor_filled_1'))
             .width(160)
             .height(160)
@@ -651,7 +651,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     build() {
       Column({ space: 10 }) {
         Row({ space: 50 }) {
-          // $r('app.media.example')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.example')替换为实际资源文件
           Image($r('app.media.example'))
             // 通过renderMode属性设置图片的渲染模式为原色或黑白
             .renderMode(ImageRenderMode.Original)
@@ -660,7 +660,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             .border({ width: 1 })
             // overlay接口暂不支持深色模式
             .overlay('Original', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
-          // $r('app.media.example')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.example')替换为实际资源文件
           Image($r('app.media.example'))
             // 通过renderMode属性设置图片的渲染模式为原色或黑白
             .renderMode(ImageRenderMode.Template)
@@ -694,7 +694,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     build() {
       Column() {
         Row({ space: 50 }) {
-          // $r('app.media.example')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.example')替换为实际资源文件
           Image($r('app.media.example'))
           // 使用sourceSize接口对图片设置解码尺寸，降低图片分辨率
             .sourceSize({
@@ -707,7 +707,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             .border({ width: 1 })
             // overlay接口暂不支持深色模式
             .overlay('width:40 height:40', { align: Alignment.Bottom, offset: { x: 0, y: 40 } })
-          // $r('app.media.example')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.example')替换为实际资源文件
           Image($r('app.media.example'))
           // 使用sourceSize接口对图片设置解码尺寸，降低图片分辨率
             .sourceSize({
@@ -744,11 +744,11 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     build() {
       Column() {
         Row() {
-          // $r('app.media.example')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.example')替换为实际资源文件
           Image($r('app.media.example'))
             .width('40%')
             .margin(10)
-          // $r('app.media.example')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.example')替换为实际资源文件
           Image($r('app.media.example'))
             .width('40%')
             // 通过colorFilter调整图片的像素颜色，为图片添加滤镜
@@ -805,7 +805,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
     build() {
       Column() {
         Row() {
-          // $r('app.media.ic_img_2')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.ic_img_2')替换为实际资源文件
           Image($r('app.media.ic_img_2'))
             .width(200)
             .height(150)

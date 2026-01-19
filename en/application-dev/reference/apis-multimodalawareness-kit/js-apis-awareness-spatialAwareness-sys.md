@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.spatialAwareness (Spatial Awareness)
+# @ohos.multimodalAwareness.spatialAwareness (Spatial Awareness) (System API)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
@@ -8,7 +8,7 @@
 
 This module provides the distance measurement awareness capability.
 
-> **Notes**:
+> **NOTE**
 >
 > The initial APIs of this module are supported since API version 23. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
@@ -106,8 +106,7 @@ Indicates the configuration parameters of the distance measurement API.
 
 ## spatialAwareness.onDistanceMeasure
 
-onDistanceMeasure(configParams: DistanceMeasurementConfigParams,
-    callback: Callback&lt;DistanceMeasurementResponse&gt;): void;
+onDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
 Subscribes to the distance measurement event and returns the result.
 
@@ -117,7 +116,7 @@ Subscribes to the distance measurement event and returns the result.
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | Yes| Indicates the configuration parameters of the distance measurement API.
+| configParams | DistanceMeasurementConfigParams | Yes| Indicates the configuration parameters of the distance measurement API.|
 | callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | Yes  | Callback function used to return the distance measurement result.                                  |
 
 **Error codes**
@@ -155,8 +154,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.offDistanceMeasure
 
-offDistanceMeasure(configParams: DistanceMeasurementConfigParams,
-    callback?: Callback&lt;DistanceMeasurementResponse&gt;): void;
+offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
 Unsubscribes from a distance measurement event. After the distance measurement event is unsubscribed, distance measurement does not occur.
 
@@ -166,7 +164,7 @@ Unsubscribes from a distance measurement event. After the distance measurement e
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | Yes| Indicates the configuration parameters of the distance measurement API.
+| configParams | DistanceMeasurementConfigParams | Yes| Indicates the configuration parameters of the distance measurement API.|
 | callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | Yes  | Callback function used to return the distance measurement result.                                |
 
 **Error codes**
@@ -204,8 +202,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.onIndoorOrOutdoorIdentify
 
-onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
-    callback: Callback&lt;DoorPositionResponse&gt;): void;
+onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callback: Callback&lt;DoorPositionResponse&gt;): void;
 Subscribes to inside and outside door recognition events and returns the result. Returns whether the device is inside or outside the door.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
@@ -214,7 +211,7 @@ Subscribes to inside and outside door recognition events and returns the result.
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | Yes| Indicates the configuration parameters of the distance measurement API.
+| configParams | DistanceMeasurementConfigParams | Yes| Indicates the configuration parameters of the distance measurement API.|
 | callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | Yes  | Callback used to return the information on whether the device is inside or outside the door.                                  |
 
 **Error codes**
@@ -252,8 +249,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.offIndoorOrOutdoorIdentify
 
-offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
-    callback?: Callback&lt;DoorPositionResponse&gt;): void;
+offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callback?: Callback&lt;DoorPositionResponse&gt;): void;
 
 Unsubscribes from inside and outside door recognition events. No inside and outside door recognition events information is returned.
 
@@ -263,7 +259,7 @@ Unsubscribes from inside and outside door recognition events. No inside and outs
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | Yes| Indicates the configuration parameters of the distance measurement API.
+| configParams | DistanceMeasurementConfigParams | Yes| Indicates the configuration parameters of the distance measurement API.|
 | callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | Yes  | Callback used to return the information on whether the device is inside or outside the door.                                  |
 
 **Error codes**
@@ -272,7 +268,7 @@ For details about the error codes, see [Spatial Awareness Error Codes](errorcode
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system application.
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |

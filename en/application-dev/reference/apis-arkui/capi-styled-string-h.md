@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines text styles for the ArkUI text component on the native side.
+Defines text styles and layout managers for the ArkUI text component on the native side.
 
 **File to include**: <arkui/styled_string.h>
 
@@ -29,6 +29,7 @@ Defines text styles for the ArkUI text component on the native side.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md) | ArkUI_StyledString | Defines a styled string object supported by the text component.|
+| [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md) | ArkUI_TextLayoutManager | Defines a text layout manager.|
 
 ### Functions
 
@@ -46,12 +47,17 @@ Defines text styles for the ArkUI text component on the native side.
 | [int32_t OH_ArkUI_UnmarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_unmarshallstyledstringdescriptor) | Unmarshals a byte array containing styled string information into a styled string.|
 | [int32_t OH_ArkUI_MarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor, size_t* resultSize)](#oh_arkui_marshallstyledstringdescriptor) | Marshals the styled string information into a byte array.|
 | [const char* OH_ArkUI_ConvertToHtml(ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_converttohtml) | Converts styled string information into HTML.|
+| [void OH_ArkUI_TextLayoutManager_Dispose(ArkUI_TextLayoutManager* layoutManager)](#oh_arkui_textlayoutmanager_dispose) | Releases the memory occupied by the text layout manager.|
+| [ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineCount(ArkUI_TextLayoutManager* layoutManager, int32_t* outLineCount)](#oh_arkui_textlayoutmanager_getlinecount) | Obtains the number of lines.|
+| [ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetRectsForRange(ArkUI_TextLayoutManager* layoutManager, int32_t start, int32_t end, OH_Drawing_RectWidthStyle widthStyle, OH_Drawing_RectHeightStyle heightStyle, OH_Drawing_TextBox** outTextBoxes)](#oh_arkui_textlayoutmanager_getrectsforrange) | Obtains the drawing area information of characters or placeholders within a specified text range under the given rectangle width and height.|
+| [ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphPositionAtCoordinate(ArkUI_TextLayoutManager* layoutManager, double dx, double dy, OH_Drawing_PositionAndAffinity** outPos)](#oh_arkui_textlayoutmanager_getglyphpositionatcoordinate) | Obtains the position of the glyph closest to the given coordinates.|
+| [ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineMetrics(ArkUI_TextLayoutManager* layoutManager, int32_t lineNumber, OH_Drawing_LineMetrics* outMetrics)](#oh_arkui_textlayoutmanager_getlinemetrics) | Obtains the information about the specified line, including line metrics, text style information, and font properties.|
 
 ## Function Description
 
 ### OH_ArkUI_StyledString_Create()
 
-```
+```c
 ArkUI_StyledString* OH_ArkUI_StyledString_Create(OH_Drawing_TypographyStyle* style, OH_Drawing_FontCollection* collection)
 ```
 
@@ -76,7 +82,7 @@ Creates an **ArkUI_StyledString** object and returns its pointer.
 
 ### OH_ArkUI_StyledString_Destroy()
 
-```
+```c
 void OH_ArkUI_StyledString_Destroy(ArkUI_StyledString* handle)
 ```
 
@@ -94,7 +100,7 @@ Destroys an **ArkUI_StyledString** object and reclaims the memory occupied by th
 
 ### OH_ArkUI_StyledString_PushTextStyle()
 
-```
+```c
 void OH_ArkUI_StyledString_PushTextStyle(ArkUI_StyledString* handle, OH_Drawing_TextStyle* style)
 ```
 
@@ -113,7 +119,7 @@ Pushes a text style to the top of the style stack of a styled string.
 
 ### OH_ArkUI_StyledString_AddText()
 
-```
+```c
 void OH_ArkUI_StyledString_AddText(ArkUI_StyledString* handle, const char* content)
 ```
 
@@ -132,7 +138,7 @@ Adds text for a styled string.
 
 ### OH_ArkUI_StyledString_PopTextStyle()
 
-```
+```c
 void OH_ArkUI_StyledString_PopTextStyle(ArkUI_StyledString* handle)
 ```
 
@@ -150,7 +156,7 @@ Pops the style at the top of the style stack of a styled string.
 
 ### OH_ArkUI_StyledString_CreateTypography()
 
-```
+```c
 OH_Drawing_Typography* OH_ArkUI_StyledString_CreateTypography(ArkUI_StyledString* handle)
 ```
 
@@ -174,7 +180,7 @@ Creates an **OH_Drawing_Typography** object based on an **ArkUI_StyledString** o
 
 ### OH_ArkUI_StyledString_AddPlaceholder()
 
-```
+```c
 void OH_ArkUI_StyledString_AddPlaceholder(ArkUI_StyledString* handle, OH_Drawing_PlaceholderSpan* placeholder)
 ```
 
@@ -193,7 +199,7 @@ Adds a placeholder.
 
 ### OH_ArkUI_StyledString_Descriptor_Create()
 
-```
+```c
 ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_Create(void)
 ```
 
@@ -211,7 +217,7 @@ Creates an **ArkUI_StyledString_Descriptor** object.
 
 ### OH_ArkUI_StyledString_Descriptor_Destroy()
 
-```
+```c
 void OH_ArkUI_StyledString_Descriptor_Destroy(ArkUI_StyledString_Descriptor* descriptor)
 ```
 
@@ -229,7 +235,7 @@ Destroys an **ArkUI_StyledString_Descriptor** object and reclaims the memory occ
 
 ### OH_ArkUI_UnmarshallStyledStringDescriptor()
 
-```
+```c
 int32_t OH_ArkUI_UnmarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor)
 ```
 
@@ -255,7 +261,7 @@ Unmarshals a byte array containing styled string information into a styled strin
 
 ### OH_ArkUI_MarshallStyledStringDescriptor()
 
-```
+```c
 int32_t OH_ArkUI_MarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor, size_t* resultSize)
 ```
 
@@ -282,7 +288,7 @@ Marshals the styled string information into a byte array.
 
 ### OH_ArkUI_ConvertToHtml()
 
-```
+```c
 const char* OH_ArkUI_ConvertToHtml(ArkUI_StyledString_Descriptor* descriptor)
 ```
 
@@ -303,3 +309,129 @@ Converts styled string information into HTML.
 | Type| Description|
 | -- | -- |
 | const char* | HTML object. The pointer is managed internally and should be destroyed by calling **OH_ArkUI_StyledString_Descriptor_Destroy()** when no longer needed to free the memory.|
+
+### OH_ArkUI_TextLayoutManager_Dispose()
+
+```c
+void OH_ArkUI_TextLayoutManager_Dispose(ArkUI_TextLayoutManager* layoutManager)
+```
+
+**Description**
+
+Releases the memory occupied by the text layout manager.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)* layoutManager | Pointer to the **ArkUI_TextLayoutManager** object.|
+
+### OH_ArkUI_TextLayoutManager_GetLineCount()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineCount(ArkUI_TextLayoutManager* layoutManager, int32_t* outLineCount)
+```
+
+**Description**
+
+Obtains the number of lines.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)* layoutManager | Pointer to the **ArkUI_TextLayoutManager** object.|
+| int32_t* outLineCount | Number of text lines.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextLayoutManager_GetRectsForRange()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetRectsForRange(ArkUI_TextLayoutManager* layoutManager, int32_t start, int32_t end, OH_Drawing_RectWidthStyle widthStyle, OH_Drawing_RectHeightStyle heightStyle, OH_Drawing_TextBox** outTextBoxes)
+```
+
+**Description**
+
+Obtains the drawing area information of characters or placeholders within a specified text range under the given rectangle width and height.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)* layoutManager | Pointer to the **ArkUI_TextLayoutManager** object.|
+| int32_t start | Start index. The value of **start** must be greater than or equal to **0**. Otherwise, a parameter error is returned.|
+| int32_t end | End index. The value of **end** must be greater than or equal to that of **start**. Otherwise, aparameter error is returned.|
+| [OH_Drawing_RectWidthStyle](../apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_rectwidthstyle) widthStyle | Width style of the rectangle.|
+| [OH_Drawing_RectHeightStyle](../apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_rectheightstyle) heightStyle | Height style of the rectangle.|
+| [OH_Drawing_TextBox](../apis-arkgraphics2d/capi-drawing-oh-drawing-textbox.md)** outTextBoxes | Level-2 pointer to the **OH_Drawing_TextBox** object.|
+
+**Return value**
+
+| Type| Description|
+| ---- | --- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+
+### OH_ArkUI_TextLayoutManager_GetGlyphPositionAtCoordinate()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphPositionAtCoordinate(ArkUI_TextLayoutManager* layoutManager, double dx, double dy, OH_Drawing_PositionAndAffinity** outPos)
+```
+
+**Description**
+
+Obtains the position of the glyph closest to the given coordinates.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| ------ | --- |
+| [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)* layoutManager | Pointer to the **ArkUI_TextLayoutManager** object.|
+| double dx | X coordinate relative to the control, in px.|
+| double dy | Y coordinate relative to the control, in px.|
+| [OH_Drawing_PositionAndAffinity](../apis-arkgraphics2d/capi-drawing-oh-drawing-positionandaffinity.md)** outPos | Level-2 pointer to the **OH_Drawing_PositionAndAffinity** object.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextLayoutManager_GetLineMetrics()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineMetrics(ArkUI_TextLayoutManager* layoutManager, int32_t lineNumber, OH_Drawing_LineMetrics* outMetrics)
+```
+
+**Description**
+
+Obtains the information about the specified line, including line metrics, text style information, and font properties.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)* layoutManager | Pointer to the **ArkUI_TextLayoutManager** object.|
+| int32_t lineNumber | Index of the line number. It starts from **0**. If the value of **lineNumber** is less than **0** or greater than or equal to the number of text lines, a parameter error is returned.|
+| [OH_Drawing_LineMetrics](../apis-arkgraphics2d/capi-drawing-oh-drawing-linemetrics.md)* outMetrics | Pointer to the **OH_Drawing_LineMetrics** object.|
+
+**Return value**
+
+| Type| Description|
+| ---- | --- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|

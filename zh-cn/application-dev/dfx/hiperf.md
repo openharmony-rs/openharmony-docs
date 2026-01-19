@@ -295,6 +295,7 @@ Supported events for hardware:
 | --exclude-process | 不采集的进程名，该参数必须和-a一起使用。 |
 | --pipe_input | 在设备开发中，该参数用于客户端进程调用hiperf时建立命令输入通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，无需使用该参数。 |
 | --pipe_output | 在设备开发中，该参数用于客户端进程调用hiperf时建立响应输出通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，无需使用该参数。 |
+| --append-smo-data | 开启此参数后增加打包的so中原始so的名称。<br>**说明**：从API version 23开始，支持该参数。|
 <!--RP1End-->
 
 **命令行示例**：
@@ -335,7 +336,7 @@ $ hiperf record -p 267 -d 10 -s dwarf
 | --app | 采集的应用程序名，以逗号隔开。应用程序必须是启动状态，应用程序未启动时会等待20s，20s内应用程序未启动，命令会自动结束。该参数不能和-a一起使用。 | 
 | --chkms | 设置查询的间隔时间，单位为毫秒，取值范围：1 - 200，默认10。 | 
 | --per-core | 每个CPU核的打印计数。 | 
-| --pre-thread | 每个线程的打印计数。 | 
+| --per-thread | 每个线程的打印计数。 | 
 | --restart | 收集应用启动的性能指标信息，如果进程在30秒内未启动，记录将退出。该参数必须和--app一起使用。 | 
 | --verbose | 输出详细的信息。 | 
 | --dumpoptions | 展示当前列表里所有选项的详细信息。 | 

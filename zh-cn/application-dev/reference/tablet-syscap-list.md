@@ -102,8 +102,6 @@ SysCap，全称SystemCapability，即系统能力，指操作系统中每一个�
 - SystemCapability.Multimedia.Image.ImagePacker
 - SystemCapability.Multimedia.Image.ImageReceiver
 - SystemCapability.Multimedia.ImageEffect.Core
-- SystemCapability.Multimedia.MediaLibrary.Core
-- SystemCapability.Multimedia.MediaLibrary.DistributedCore
 - SystemCapability.Multimedia.SystemSound.Core
 - SystemCapability.Global.I18n
 - SystemCapability.Global.ResourceManager
@@ -185,7 +183,6 @@ SysCap，全称SystemCapability，即系统能力，指操作系统中每一个�
 - SystemCapability.Ability.AbilityRuntime.FAModel
 - SystemCapability.Ability.AbilityRuntime.AbilityCore
 - SystemCapability.Ability.AbilityRuntime.Mission
-- SystemCapability.Ability.AbilityTools.AbilityAssistant
 - SystemCapability.Ability.Form
 - SystemCapability.Ability.DistributedAbilityManager
 - SystemCapability.Applications.CalendarData

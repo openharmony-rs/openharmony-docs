@@ -144,7 +144,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 | OPG<sup>12+</sup>                        | 'general.opg'                  | OPG存档文件类型，归属类型为ARCHIVE。           |
 | TAZ_ARCHIVE<sup>12+</sup>                        | 'general.taz-archive'                  | TAR压缩文件类型，归属类型为TAR_ARCHIVE。           |
 | WEB_ARCHIVE<sup>12+</sup>                        | 'general.web-archive'                  | MHTML网页归档文件类型，归属类型为ARCHIVE。           |
-| DISK_IMAGE<sup>11+</sup>                        | 'general.disk-image'                  | 所有可作为卷装载项的文件类型的基类型，归属类型为ARCHIVE。  |
+| DISK_IMAGE<sup>11+</sup>                        | 'general.disk-image'                  | 所有可作为卷挂载项的文件类型的基类型，归属类型为ARCHIVE。  |
 | ISO<sup>12+</sup>                        | 'general.iso'                  | 光盘映像文件类型，归属类型为DISK_IMAGE。  |
 | TAR_ARCHIVE<sup>11+</sup>                        | 'general.tar-archive'                  | TAR存档文件类型，归属类型为ARCHIVE。           |
 | ZIP_ARCHIVE<sup>11+</sup>                       | 'general.zip-archive'                 | ZIP存档文件类型，归属类型为ARCHIVE。           |
@@ -421,7 +421,7 @@ getTypeDescriptor(typeId: string): TypeDescriptor
 
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
-| typeId    | string  | 是    |[标准化数据类型ID](../../database/uniform-data-type-list.md#基础类型)。   |
+| typeId    | string  | 是    |[标准化数据类型ID](../../database/uniform-data-type-descriptors.md)。   |
 
 **返回值：**
 
@@ -476,7 +476,7 @@ getUniformDataTypeByFilenameExtension(filenameExtension: string, belongsTo?: str
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
 | filenameExtension    | string  | 是    |文件后缀名称。   |
-| belongsTo    | string  | 否    |要查询的标准化数据类型所归属类型ID，无默认值，若不传入此参数则只按照文件后缀名称查询[标准化数据类型ID](../../database/uniform-data-type-list.md#基础类型)。   |
+| belongsTo    | string  | 否    |要查询的标准化数据类型所归属类型ID，无默认值，若不传入此参数则只按照文件后缀名称查询[标准化数据类型ID](../../database/uniform-data-type-descriptors.md)。   |
 
 **返回值：**
 
@@ -533,7 +533,7 @@ getUniformDataTypeByMIMEType(mimeType: string, belongsTo?: string): string
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
 | mimeType    | string  | 是    |MIME类型名称。   |
-| belongsTo    | string  | 否    |要查询的标准化数据类型所归属类型ID。无默认值，若不传入此参数则只按照MIME类型名称查询[标准化数据类型ID](../../database/uniform-data-type-list.md#基础类型)。   |
+| belongsTo    | string  | 否    |要查询的标准化数据类型所归属类型ID。无默认值，若不传入此参数则只按照MIME类型名称查询[标准化数据类型ID](../../database/uniform-data-type-descriptors.md)。   |
 
 **返回值：**
 
@@ -590,7 +590,7 @@ getUniformDataTypesByFilenameExtension(filenameExtension: string, belongsTo?: st
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
 | filenameExtension    | string  | 是    |文件后缀名称。   |
-| belongsTo    | string  | 否    |要查询的标准化数据类型所归属类型ID，无默认值，若不传入此参数则只按照文件后缀名称查询[标准化数据类型ID](../../database/uniform-data-type-list.md#基础类型)。   |
+| belongsTo    | string  | 否    |要查询的标准化数据类型所归属类型ID，无默认值，若不传入此参数则只按照文件后缀名称查询[标准化数据类型ID](../../database/uniform-data-type-descriptors.md)。   |
 
 **返回值：**
 
@@ -647,7 +647,7 @@ getUniformDataTypesByMIMEType(mimeType: string, belongsTo?: string): Array\<stri
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
 | mimeType    | string  | 是    |MIME类型名称。   |
-| belongsTo    | string  | 否    |要查询的标准化数据类型所归属类型ID。无默认值，若不传入此参数则只按照MIME类型名称查询[标准化数据类型ID](../../database/uniform-data-type-list.md#基础类型)。   |
+| belongsTo    | string  | 否    |要查询的标准化数据类型所归属类型ID。无默认值，若不传入此参数则只按照MIME类型名称查询[标准化数据类型ID](../../database/uniform-data-type-descriptors.md)。   |
 
 **返回值：**
 

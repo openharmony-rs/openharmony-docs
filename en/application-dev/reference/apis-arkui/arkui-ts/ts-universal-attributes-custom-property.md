@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-You can set custom properties on components. These custom properties can be obtained on their corresponding FrameNodes, allowing for more flexible component management.
+Sets custom properties for a component. These custom properties can be obtained on their corresponding FrameNodes, allowing for more flexible component management.
 
 >  **NOTE**
 >
@@ -50,7 +50,8 @@ Defines the Optional type. The value can be **undefined**.
 
 | Type| Description                      |
 | ---- | -------------------------- |
-| T \| undefined | Defines the Optional type. The value can be **undefined**.|
+| T | The object can be of any custom type.|
+| undefined | The object can be **undefined**.|
 
 ## Example
 

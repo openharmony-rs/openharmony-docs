@@ -1,10 +1,10 @@
 # @ohos.file.cloudSyncManager (Device-Cloud Sync Management) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @zsyztt; @Hermits; @reminder2352-->
-<!--Designer: @yunlanying-->
+<!--Owner: @Hermits; @reminder2352-->
+<!--Designer: @oh_create_jiawei-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **cloudSyncManager** module provides APIs for managing device-cloud synergy for applications. You can use the APIs to enable or disable device-cloud synergy, change the device-cloud sync switch for an application, notify cloud data changes, and clear or retain cloud files when a cloud account exits.
 
@@ -292,10 +292,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 201 | Permission verification failed. |
-| 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. |
-| 13600001  | IPC error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 13600001  | IPC error. |
 
 **Example**
 
@@ -596,8 +596,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **Example**
@@ -655,7 +655,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.                                                                                                 |
 | 202      | Permission verification failed, application which is not a system application uses system API.                                                                                    |
-| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
@@ -832,7 +832,7 @@ if (needStop) {
 }
 ```
 
-  ## LocalFilePresentStatus<sup>22+</sup>
+  ## LocalFilePresentStatus<sup>23+</sup>
 
   Specifies a result object that contains the application bundle name and the status information about whether there are files that have not been uploaded to the cloud in the cloud storage space.
 
@@ -846,7 +846,7 @@ if (needStop) {
   | bundleName | string | No| No| Bundle name.|
   | isLocalFilePresent | boolean | No| No| Whether there are local files that have not been synchronized to the cloud in the cloud storage space of the application. The value **true** indicates that such file exists, and the value **false** indicates the opposite.|
 
-  ## cloudSyncManager.getBundlesLocalFilePresentStatus<sup>22+</sup>
+  ## cloudSyncManager.getBundlesLocalFilePresentStatus<sup>23+</sup>
 
   getBundlesLocalFilePresentStatus(bundleNames: Array&lt;string&gt;): Promise&lt;Array&lt;LocalFilePresentStatus&gt;&gt;
 
@@ -868,7 +868,7 @@ if (needStop) {
 
   | Type| Description|
   | ---- | ---- |
-  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus22)&gt;&gt; | Promise object, which returns an array of objects. Each object in the array contains the bundle name of the application to be checked and the local file existence status.|
+  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus23)&gt;&gt; | Promise object, which returns an array of objects. Each object in the array contains the bundle name of the application to be checked and the local file existence status.|
 
   **Error codes**
 
@@ -876,10 +876,10 @@ if (needStop) {
 
   | ID| Error Message|
   | -------- | -------- |
-  | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
-  | 202 | Permission verification failed, application which is not a system application uses system API. |
+  | 201 | Permission verification failed. |
+  | 202 | The caller is not a system application. |
   | 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
-  | 13900010 | Try again. Possible causes: 1. The operation timed out. 2. The operation needs to be retried. |
+  | 13900010 | Try again. |
   | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2. The length of the input parameter exceeds the upper limit. 3. The input parameter contains an invalid bundleName. |
   | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 

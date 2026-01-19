@@ -139,6 +139,7 @@ Advantages of lazy import over dynamic loading:
 | import lazy { KitClass } from "@kit.SomeKit"; | "@kit.SomeKit" | "KitClass" | "KitClass"  | API 18      |
 
 - Lazy importing of shared modules or modules within a dependency path that includes shared modules
+
     Lazy import remains effective for shared modules. For details about the constraints, see [Shared Module](../arkts-utils/arkts-sendable-module.md).
 
 ### Incorrect Example
@@ -281,8 +282,9 @@ This tool is used for local detection of file loading during application cold st
     > 2. File generation requires the current process to remain active.
     > 3. No files will be generated if the process exits during capture.
 
-4. Close the tool. 
-Leaving the tool running continuously consumes system resources. Close it promptly after use. 
+4. Close the tool.
+
+   Leaving the tool running continuously consumes system resources. Close it promptly after use. 
 
     ```shell
     hdc shell param set persist.ark.properties 0x000105c
@@ -294,28 +296,37 @@ The tool records the file loading status of the main thread and child thread wit
 For example, if the capture time is set to 1 second, the tool will record the file execution status of the main thread and each child thread within 1 second of their respective starts. 
 
 Generated file path: `data/app/el2/100/base/${bundleName}/files`
+
 Main thread file name: `${bundleName}_redundant_file.txt`
+
 Child thread file name: `${bundleName}_${tId}_redundant_file.txt`
 
 > **NOTE**
 >
 > 1. The main thread file name does not contain the thread ID. Therefore, file overwriting may occur.
+>
 > 2. The child thread file name contains the thread ID (**tId**), and each **tId** is unique. Ensure that each child thread corresponds to an independent file. To find the corresponding thread file, you can match the thread ID in the log or use the trace tool to view the thread ID.
 
 **Example**
+
 The **bundleName** of the test application is **com.example.myapplication**, and the application creates a child thread with a random thread ID of 18089. 
+
 Generated file path: **data/app/el2/100/base/com.example.myapplication/files** 
+
 Main thread file name: **data/app/el2/100/base/com.example.myapplication/files/com.example.myapplication_redundant_file.txt** 
+
 Child thread file name: **data/app/el2/100/base/com.example.myapplication/files/com.example.myapplication_18089_redundant_file.txt** 
 ![deferrable-tool-file](figures/deferrable-tool-file.png)
 
 ### Detection Principles
 
 As shown in the following example, if both file A and file B are dependencies of the **Index** file, they will be loaded and executed directly when the **Index** file is loaded.
+
 During execution, file A completes variable definition, assignment, and export. This accounts for the time it takes to process file A. File B defines and exports a function, which corresponds to its processing time.
+
 When the **Index** file runs, the exported function **func** from file B executes at the top level. As a result, file B's exports cannot be optimized and will be marked as **used** in the tool. However, the exported variable **a** from file A is only used when the **myFunc** function in the **Index** file is called. If no other files call **myFunc** during cold start, file A will be marked as **unused** in the tool, meaning it is eligible for lazy import.
 
- ```ts
+```ts
 // Index.ets
 import { a } from './A';
 import { func } from './B';
@@ -335,6 +346,7 @@ export function func() {
 ### Loading Summary
 
 The following summarizes all files loaded and their loading durations, including both used and unused files and their respective durations.
+
 Example:
 
 ```text
@@ -428,6 +440,7 @@ During cold start, files whose exports are used by other files are called used f
 ### Unused Files
 
 During cold start, files whose exports are not used by other files are considered unused files and are eligible for lazy import.
+
 The scenario is the same as that of used files, but unused files contain no information about variable usage.
 
 - Scenario: When a file is referenced by parent files but its variables remain unused, you can load the unused file using lazy import in the parent file.
@@ -536,9 +549,9 @@ By capturing the trace and viewing the call stack, you can find that the applica
 
 **Optimization Effect**
 
-|     | File Loading Duration (μs)|
-|-----|--------------|
-| Before optimization| 412 μs       |
-| After optimization| 350 μs       |
+| Phase| File Loading Duration (μs)|
+|---------| --------------------- |
+| Before optimization| 412 μs             |
+| After optimization| 350 μs             |
 
 From the comparison, with lazy import in place, file A no longer loads during the application's cold start. This reduces the time spent loading redundant files in the resource loading phase by around 15%, boosting cold start performance. (This example is purely for demonstration, and the optimization data should be treated as reference only. In real-world scenarios, as referenced files increase in both complexity and number, the optimization effect will improve accordingly.)
