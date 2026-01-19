@@ -144,7 +144,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setTitleContent('text2');
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
