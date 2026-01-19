@@ -152,7 +152,7 @@ static getCallingScopeUIContext(): UIContext | undefined
 >
 > 返回的UIContext对象可能指向一个已销毁的UI实例，通常在由已销毁的实例抛出异步任务时出现。建议通过[isAvailable](#isavailable20)接口判断其有效性。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -199,7 +199,7 @@ static getLastFocusedUIContext(): UIContext | undefined
 
 获取最近一次切换到获焦状态的UI实例的UIContext。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -246,7 +246,7 @@ static getLastForegroundUIContext(): UIContext | undefined
 
 获取最近一次切换到前台状态的UI实例的UIContext。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -293,7 +293,7 @@ static getAllUIContexts(): UIContext[]
 
 获取所有当前有效的UIContext实例。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -352,7 +352,7 @@ static resolveUIContext(): ResolvedUIContext
 > 5. 如果存在多个UI实例，则返回实例唯一标识的ID最大的UIContext。
 > 6. 如果以上条件均不满足，则返回一个无效的UIContext实例。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3649,7 +3649,7 @@ enableSwipeBack(enabled: Optional\<boolean\>): void
 
 设置是否支持应用内横向滑动返回上一级。
 
-**原子化服务API:：** 从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -3686,7 +3686,7 @@ getTextMenuController(): TextMenuController
 
 获取[TextMenuController](arkts-apis-uicontext-textmenucontroller.md)对象，可通过该对象控制文本选择菜单。
 
-**原子化服务API:：** 从API version 16 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 16 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3710,7 +3710,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 >
 > 返回的UI上下文只可用于创建[自定义节点](../../ui/arkts-user-defined-node.md)，不能执行其他UI操作。
 
-**原子化服务API:：** 从API version 17 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3760,7 +3760,7 @@ static destroyUIContextWithoutWindow(): void
 
 销毁[createUIContextWithoutWindow](#createuicontextwithoutwindow17)创建的UI实例。
 
-**原子化服务API:：** 从API version 17 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
