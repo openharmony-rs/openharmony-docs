@@ -149,8 +149,10 @@ export const add: (a: number, b: number) => number;
 ```
 
 ``` TypeScript
-// libentry.so对应的index.d.ts。
-export const add: (a: number, b: number) => number;
+// test.ets
+import('libentry.so').then((entry:ESObject) => {
+    entry.default.add(2, 3);
+})
 ```
 
 <!-- @[dynamic_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicExport.ets) -->    
@@ -169,11 +171,6 @@ import('./DynamicExport').then((ns:ESObject) => {
   ns.entry.add(2, 3);
 })
 ```
-<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
-
-<!-- @[dynamic_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicExport.ets) -->    
-
-<!-- @[dynamicImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicImportFromExport.ets) -->  
 
 > **注意：** 
 > 
