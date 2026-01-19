@@ -2028,13 +2028,11 @@ hasRemoteData(): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean; | 当前待粘贴的数据在远端返回true，否则返回false。 |
+| boolean | 当前待粘贴的数据在远端返回true，否则返回false。 |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 
 let result: boolean = systemPasteboard.hasRemoteData();
