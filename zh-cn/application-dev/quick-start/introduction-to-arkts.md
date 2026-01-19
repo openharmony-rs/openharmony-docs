@@ -1374,6 +1374,15 @@ class C {
 1. 当注解定义被导出时，源代码中的注解定义会在.d.ets文件中保留。
 
    <!-- @[annotation_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.ets) -->    
+   
+   ``` TypeScript
+   // a.ets
+   export @interface ClassAuthor5 {}
+   
+   @interface MethodAnno { // 没导出
+     data: number;
+   }
+   ```
 
    <!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.d.ets) -->     
 
