@@ -21,7 +21,13 @@ console.info('res = ' + res);
 // 期望输出: res = ♂。
 // 实际输出: res = /♂/。
 ```
+<!-- @[test_lookbehindWithNestedLookahead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
 
+``` TypeScript
+console.info(`res:${'abcdef'.match(/(?<=ab(?=c)cd)ef/)}`);
+// 期望输出: res:ef。
+// 实际输出: res:null。
+```
 规避方案：暂无。
 > **说明：**
 > 
