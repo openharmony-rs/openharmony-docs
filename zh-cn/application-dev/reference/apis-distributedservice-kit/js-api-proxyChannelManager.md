@@ -12,6 +12,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta
+> 
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 该套接口目前为Beta阶段，暂未开放申请。
@@ -32,13 +34,17 @@ import { proxyChannelManager } from '@kit.DistributedServiceKit';
 
 ## proxyChannelManager.openProxyChannel
 
-openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
+ArkTS-Dyn: openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;</br>ArkTS-Sta: openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;int&gt;
 
 打开代理通道，使用Promise异步回调返回结果。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS_Sta起始版本**：23
 
 **参数：**
 
@@ -50,7 +56,7 @@ openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| &nbsp;Promise&lt;number&gt; | 返回代理通道的channelId，取值范围为1~2147483647。channelId的生命周期和代理通道生命周期相同，不关闭代理时，传入相同入参将返回相同channelId。 |
+| ArkTS-Dyn: Promise&lt;number&gt;</br>ArkTS-Sta: Promise&lt;int&gt; | 返回代理通道的channelId，取值范围为1~2147483647。channelId的生命周期和代理通道生命周期相同，不关闭代理时，传入相同入参将返回相同channelId。|
 
 **错误码：**
 
@@ -68,6 +74,7 @@ openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
 import { BusinessError } from '@ohos.base';
@@ -104,10 +111,47 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例:
+```ts
+import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
+import { BusinessError } from '@ohos.base';
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button("测试")
+        .onClick(() => {
+          let channelInfo: proxyChannelManager.ChannelInfo = {
+            linkType: proxyChannelManager.LinkType.LINK_BR,
+            peerDevAddr: "xx:xx:xx:xx:xx:xx", //穿戴设备蓝牙mac
+            peerUuid: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", //穿戴侧监听的uuid
+          };
+          // 以下为使用 try/catch 判断
+          try {
+            proxyChannelManager.openProxyChannel(channelInfo)
+              .then((channelId: int) => {
+                // 获得通道id
+              })
+              .catch((error: BusinessError) => {
+                console.error(`getErr: ${error.code} ${error.message}`);
+              });
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`getErr: ${error.code} ${error.message}`);
+            // 如果 code:undefined message:"Cannot read property openProxyChannel of undefined"， 则这个 API 在当前镜像不支持
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## proxyChannelManager.closeProxyChannel
 
-closeProxyChannel(channelId:&nbsp;number):&nbsp;void
+ArkTS-Dyn: closeProxyChannel(channelId:&nbsp;number):&nbsp;void</br>ArkTS-Sta: closeProxyChannel(channelId:&nbsp;int):&nbsp;void
 
 关闭已打开的代理通道。
 
@@ -115,11 +159,15 @@ closeProxyChannel(channelId:&nbsp;number):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS_Sta起始版本**：23
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| channelId | number | 是    | 打开代理通道时获取的channelId。 |
+| channelId | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是    | 打开代理通道时获取的channelId。 |
 
 **错误码：**
 
@@ -135,6 +183,34 @@ closeProxyChannel(channelId:&nbsp;number):&nbsp;void
 
 **示例：**
 
+ArkTS-Dyn示例:
+```ts
+import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
+import { BusinessError } from '@ohos.base';
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button("测试")
+        .onClick(() => {
+          // 以下为使用 try/catch 判断
+          try {
+            proxyChannelManager.closeProxyChannel(1);  // 假设通道id为1
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`getErr: ${error.code} ${error.message}`);
+            // 如果 code:undefined message:"Cannot read property closeProxyChannel of undefined"， 则这个 API 在当前镜像不支持
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例:
 ```ts
 import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
 import { BusinessError } from '@ohos.base';
@@ -163,7 +239,7 @@ struct Index {
 
 ## proxyChannelManager.sendData
 
-sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;
+ArkTS-Dyn: sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;</br>ArkTS-Sta: sendData(channelId:int, data:ArrayBuffer):Promise&lt;void&gt;
 
 向对端发送数据，使用Promise异步回调。
 
@@ -171,11 +247,15 @@ sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS_Sta起始版本**：23
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| channelId | number | 是    | 打开代理通道时获取的channelId。 |
+| channelId | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是    | 打开代理通道时获取的channelId。|
 | data      | ArrayBuffer | 是 | 向对端发送的字节消息，长度最大为4096个字节。 |
 
 **返回值：**
@@ -200,6 +280,38 @@ sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
+```ts
+import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
+import { BusinessError } from '@ohos.base';
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button("测试")
+        .onClick(() => {
+          const data = new ArrayBuffer(10); // 创建一个长度为 10 的 ArrayBuffer
+          try {
+            proxyChannelManager.sendData(1, data)  // 假设通道id为1
+              .then(() => {
+              })
+              .catch((error: BusinessError) => {
+                console.error(`getErr: ${error.code} ${error.message}`);
+              });
+          }catch (err) {
+            let error = err as BusinessError;
+            console.error(`getErr: ${error.code} ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例:
 ```ts
 import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
 import { BusinessError } from '@ohos.base';
@@ -239,6 +351,10 @@ on(type:&nbsp;'receiveData', channelId:&nbsp;number, callback:&nbsp;Callback&lt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 
@@ -298,6 +414,10 @@ off(type:&nbsp;'receiveData', channelId:&nbsp;number, callback?:&nbsp;Callback&l
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：20
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -344,6 +464,128 @@ struct Index {
 }
 ```
 
+## proxyChannelManager.onReceiveData
+
+onReceiveData(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;DataInfo&gt;):&nbsp;void
+
+订阅数据接收事件，使用异步回调。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**ArkTS_Sta起始版本**：23
+
+**参数：**
+
+| 参数名       | 类型                                       | 必填   | 说明       |
+| --------- | ---------------------------------------- | ---- | -------- |
+| channelId | int | 是    | 打开代理通道时获取的channelId。 |
+| callback  | Callback&lt;[DataInfo](#datainfo)&gt; | 是 | 回调函数，返回接收到的数据。多次注册回调函数，最后一次注册的回调函数生效。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201      | Permission denied.|
+| 32390004 | ChannelId is invalid or unavailable.|
+| 32390006 | Parameter error.|
+| 32390100 | Internal error.|
+| 32390101 | Call is restricted.|
+
+**示例：**
+
+```ts
+import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
+import { BusinessError } from '@ohos.base';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button("测试")
+        .onClick(() => {
+          const receiveDataCallback = (dataInfo: proxyChannelManager.DataInfo) => {
+          };
+          try {
+            proxyChannelManager.onReceiveData(1, receiveDataCallback); // 假设通道id为1
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`register receiveData error: ${error.code} ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## proxyChannelManager.offReceiveData
+
+offReceiveData(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;DataInfo&gt;):&nbsp;void
+
+取消订阅数据接收事件，停止接收数据。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**ArkTS_Sta起始版本**：23
+
+**参数：**
+
+| 参数名       | 类型                                       | 必填   | 说明       |
+| --------- | ---------------------------------------- | ---- | -------- |
+| channelId | int | 是    | 打开代理通道时获取的channelId。 |
+| callback  | Callback&lt;[DataInfo](#datainfo)&gt; | 否 | 注册的回调函数。如果为空、undefined、null，则取消订阅所有的数据接收事件。如果不为空，传入最后一次注册的回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201      | Permission denied.|
+| 32390004 | ChannelId is invalid or unavailable.|
+| 32390006 | Parameter error.|
+| 32390100 | Internal error.|
+| 32390101 | Call is restricted.|
+
+**示例：**
+
+```ts
+import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
+import { BusinessError } from '@ohos.base';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button("测试")
+        .onClick(() => {
+          try {
+            proxyChannelManager.offReceiveData(1); // 假设通道id为1
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`getErr: ${error.code} ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## proxyChannelManager.on('channelStateChange')
 
 on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callback&lt;ChannelStateInfo&gt;):&nbsp;void
@@ -353,6 +595,10 @@ on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callb
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 
@@ -412,6 +658,10 @@ off(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback?:&nbsp;Cal
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：20
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -458,20 +708,152 @@ struct Index {
 }
 ```
 
+## proxyChannelManager.onChannelStateChange
+
+onChannelStateChange(channelId:&nbsp;int, callback:&nbsp;Callback&lt;ChannelStateInfo&gt;):&nbsp;void
+
+订阅通道状态事件，使用callback进行异步回调。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**ArkTS_Sta起始版本**：23
+
+**参数：**
+
+| 参数名       | 类型                                       | 必填   | 说明       |
+| --------- | ---------------------------------------- | ---- | -------- |
+| channelId | int | 是    | 打开代理通道时获取的channelId。 |
+| callback  | Callback&lt;[ChannelStateInfo](#channelstateinfo)&gt; | 是 | 回调函数，返回接收到的通道状态。多次注册callback，最后一次注册的callback生效 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201      | Permission denied.|
+| 32390004 | ChannelId is invalid or unavailable.|
+| 32390006 | Parameter error.|
+| 32390100 | Internal error.|
+| 32390101 | Call is restricted.|
+
+**示例：**
+
+```ts
+import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
+import { BusinessError } from '@ohos.base';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button("测试")
+        .onClick(() => {
+          const receiveStatusCallback = (channelStateInfo: proxyChannelManager.ChannelStateInfo) => {
+          };
+          try {
+            proxyChannelManager.onChannelStateChange(1, receiveStatusCallback); // 假设打开的通道id为1
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`getErr: ${error.code} ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## proxyChannelManager.offChannelStateChange
+
+offChannelStateChange(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;ChannelStateInfo&gt;):&nbsp;void
+
+取消订阅通道状态事件。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**ArkTS_Sta起始版本**：23
+
+**参数：**
+
+| 参数名       | 类型                                       | 必填   | 说明       |
+| --------- | ---------------------------------------- | ---- | -------- |
+| channelId | int | 是    | 打开代理通道时获取的channelId。 |
+| callback  | Callback&lt;[ChannelStateInfo](#channelstateinfo)&gt; | 否 | 注册的回调函数。如果为空、undefined、null，则取消订阅所有的数据接收事件。如果不为空，传入最后一次注册的回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[代理通道管理错误码](errorcode-proxyChannelManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201      | Permission denied.|
+| 32390004 | ChannelId is invalid or unavailable.|
+| 32390006 | Parameter error.|
+| 32390100 | Internal error.|
+| 32390101 | Call is restricted.|
+
+**示例：**
+
+```ts
+import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
+import { BusinessError } from '@ohos.base';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button("测试")
+        .onClick(() => {
+          try {
+            proxyChannelManager.offChannelStateChange(1); // 假设打开的通道id为1
+          } catch (err) {
+            let error = err as BusinessError;
+            console.error(`getErr: ${error.code} ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## DataInfo
 
 存放接收的数据信息，包括通道Id和数据。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS_Sta起始版本**：23
+
 | 名称       | 类型                                       | 只读   | 可选   | 说明       |
 | --------- | ---------------------------------------- | ---- | ---- | -------- |
-| channelId | number | 否 | 否    | 代理通道的channelId。 |
+| channelId | ArkTS-Dyn: number</br>ArkTS-Sta: int | 否 | 否    | 代理通道的channelId。 |
 | data | ArrayBuffer | 否 | 否 | 接收到的字节数据。 |
 
 ## ChannelInfo
 
 打开代理通道函数的入参，包括对端设备的MAC地址和监听服务的UUID。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS_Sta起始版本**：23
 
 | 名称       | 类型                                       | 只读   | 可选   | 说明       |
 | --------- | ---------------------------------------- | ---- | ---- | -------- |
@@ -485,9 +867,13 @@ struct Index {
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS_Sta起始版本**：23
+
 | 名称       | 类型                                       | 只读   | 可选   | 说明       |
 | --------- | ---------------------------------------- | ---- | ---- | -------- |
-| channelId | number | 否 | 否    | 代理通道的channelId。 |
+| channelId | ArkTS-Dyn: number</br>ArkTS-Sta: int | 否 | 否    | 代理通道的channelId。 |
 | state | [ChannelState](#channelstate) | 否 | 否 | 通道的连接状态。 |
 
 ## ChannelState
@@ -495,6 +881,10 @@ struct Index {
 通道状态发生变化时，代理通道上报的通道连接状态。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS_Sta起始版本**：23
 
 | 名称       | 值                                       | 说明       |
 | --------- | ---------------------------------------- |  -------- |
@@ -508,6 +898,10 @@ struct Index {
 链路类型。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS_Sta起始版本**：23
 
 | 名称       | 值                                       | 说明       |
 | --------- | ---------------------------------------- |  -------- |
