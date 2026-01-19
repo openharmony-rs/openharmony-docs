@@ -73,7 +73,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.info(`formAgent requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formAgent requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -135,7 +135,7 @@ let want: Want = {
 };
 try {
   formAgent.requestPublishForm(want).then((data: string) => {
-    console.info(`formAgent requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+    console.info(`formAgent requestPublishForm success, form ID is : ${data}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });

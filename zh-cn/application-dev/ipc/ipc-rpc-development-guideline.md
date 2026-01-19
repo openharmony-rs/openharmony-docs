@@ -138,7 +138,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
   连接服务，获取代理对象，发送信息给服务端，通信结束后断开连接。
 
-  <!-- @[funcation_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[function_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
   // 连接服务
@@ -161,17 +161,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
           let message = (err as BusinessError).message;
           hilog.error(0x0000, 'testTag', 'IPCClient: register failed, code is ' + code + ', message is ' + message);
         }
-        // 弹窗显示成功连接服务
-        try {
-          promptAction.showToast({
-            message: 'connectAbility success',
-            duration: 2000
-          });
-        } catch (error) {
-          let message = (error as BusinessError).message;
-          let code = (error as BusinessError).code;
-          hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-        };
+        // ...
       },
   
       onDisconnect: (elementName) => {
@@ -186,33 +176,12 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
           hilog.error(0x0000, 'testTag', 'IPCClient: unregister failed, code is ' + code + ', message is ' + message);
         }
         proxy = undefined;
-        isDisconnect = true;
-        // 弹窗显示与服务端断开连接成功
-        try {
-          promptAction.showToast({
-            message: 'disconnectAbility success',
-            duration: 2000
-          });
-        } catch (error) {
-          let message = (error as BusinessError).message;
-          let code = (error as BusinessError).code;
-          hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-        };
+        // ...
       },
   
       onFailed: (code: number) => {
         hilog.info(0x0000, 'testTag', 'IPCClient: onFailed. code is ' + code);
-        // 弹窗显示连接服务失败
-        try {
-          promptAction.showToast({
-            message: 'Connect failed. Please ensure that the service is running in the background.',
-            duration: 2000
-          });
-        } catch (error) {
-          let message = (error as BusinessError).message;
-          let code = (error as BusinessError).code;
-          hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-        };
+        // ...
       },
     }
   
@@ -223,6 +192,21 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
       hilog.error(0x0000, 'testTag', 'IPCClient: connectAbility failed, code is ' + code + ', message is ' + message);
+    }
+  }
+  
+  // 断开连接
+  function disconnectAbility(context: common.UIAbilityContext) {
+    hilog.info(0x00000, 'testTag', 'IPCClient: begin to disconnect Ability. connectId is ' + connectId);
+    if (connectId != undefined) {
+      try {
+        context.disconnectServiceExtensionAbility(connectId);
+        hilog.info(0x00000, 'testTag', 'IPCClient: begin to disconnect Ability end');
+      } catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        hilog.error(0x0000, 'testTag', 'IPCClient: disconnect failed, code is ' + code + ', message is ' + message);
+      }
     }
   }
   
@@ -243,29 +227,11 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
           // 从result.reply里读取结果
           let str = result.reply.readString();
           hilog.info(0x0000, 'testTag', 'IPCClient: sendMessageRequest receive str is  ' + str);
-          try {
-            promptAction.showToast({
-              message: 'sendRequest success',
-              duration: 2000
-            });
-          } catch (error) {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
-            hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-          };
+          // ...
         })
         .catch((e: Error) => {
           hilog.error(0x0000, 'testTag', 'IPCClient: sendMessageRequest failed, error is ' + JSON.stringify(e));
-          try {
-            promptAction.showToast({
-              message: 'sendRequest failed, please connect to the server first',
-              duration: 2000
-            });
-          } catch (error) {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
-            hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-          };
+          // ...
         })
         .finally(() => {
           data.reclaim();
@@ -273,33 +239,9 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
         })
     } else {
       hilog.error(0x0000, 'testTag', 'IPCClient: proxy is invalid');
-      try {
-        promptAction.showToast({
-          message: 'sendRequest failed, please connect to the server first',
-          duration: 2000
-        });
-      } catch (error) {
-        let message = (error as BusinessError).message;
-        let code = (error as BusinessError).code;
-        hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-      };
+      // ...
     }
     hilog.info(0x0000, 'testTag', 'IPCClient: sendString end');
-  }
-  
-  // 断开连接
-  function disconnectAbility(context: common.UIAbilityContext) {
-    hilog.info(0x00000, 'testTag', 'IPCClient: begin to disconnect Ability. connectId is ' + connectId);
-    if (connectId != undefined) {
-      try {
-        context.disconnectServiceExtensionAbility(connectId);
-        hilog.info(0x00000, 'testTag', 'IPCClient: begin to disconnect Ability end');
-      } catch (err) {
-        let code = (err as BusinessError).code;
-        let message = (err as BusinessError).message;
-        hilog.error(0x0000, 'testTag', 'IPCClient: disconnect failed, code is ' + code + ', message is ' + message);
-      }
-    }
   }
   ```
 
@@ -338,7 +280,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
 获取[允许多设备协同的权限](../security/AccessToken/permissions-for-all-user.md#ohospermissiondistributed_datasync)，在组网的情况下获取到对端的设备ID（组网场景下对应设备的唯一网络标识符，可以使用distributedDeviceManager获取目标设备的NetworkId）后连接服务，获取代理对象并发送信息给服务端，当代理对象与服务端的通信结束后，进行断连。
 
-  <!-- @[rpc_funcation_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[rpc_function_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
   // 获取权限
@@ -376,33 +318,13 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
       if (deviceList.length !== 0) {
         deviceId = deviceList[0].networkId;
         hilog.info(0x0000, 'testTag', 'RpcClient: networkId is ' + deviceId);
-        // 弹窗显示获取deviceId失败
-        try {
-          promptAction.showToast({
-            message: 'getDeviceId success.',
-            duration: 2000
-          });
-        } catch (error) {
-          let message = (error as BusinessError).message;
-          let code = (error as BusinessError).code;
-          hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-        };
+        // ...
       }
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
       hilog.error(0x0000, 'testTag', 'RpcClient: getDeviceId failed, code is  ' + code + ', message is ' + message);
-      // 弹窗显示获取deviceId失败
-      try {
-        promptAction.showToast({
-          message: 'getDeviceId failed. please confirm that multiple devices are allowed to collaborate first.',
-          duration: 2000
-        });
-      } catch (error) {
-        let message = (error as BusinessError).message;
-        let code = (error as BusinessError).code;
-        hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-      };
+      // ...
     }
   }
   
@@ -428,17 +350,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
           let message = (err as BusinessError).message;
           hilog.error(0x0000, 'testTag', 'RpcClient: register failed, code is ' + code + ', message is ' + message);
         };
-        // 弹窗显示成功连接服务
-        try {
-          promptAction.showToast({
-            message: 'connectAbility success',
-            duration: 2000
-          });
-        } catch (err) {
-          let code = (err as BusinessError).code;
-          let message = (err as BusinessError).message;
-          hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-        };
+        // ...
       },
       onDisconnect: (elementName) => {
         hilog.info(0x0000, 'testTag', 'RpcClient: onDisconnect. elementName is ' + JSON.stringify(elementName));
@@ -452,32 +364,11 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
           hilog.error(0x0000, 'testTag', 'RpcClient: unregister failed, code is ' + code + ', message is ' + message);
         }
         proxy = undefined;
-        isDisconnect = true;
-        // 弹窗显示与服务端断开连接成功
-        try {
-          promptAction.showToast({
-            message: 'disconnectAbility success',
-            duration: 2000
-          });
-        } catch (error) {
-          let message = (error as BusinessError).message;
-          let code = (error as BusinessError).code;
-          hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-        };
+        // ...
       },
       onFailed: (code: number) => {
         hilog.info(0x0000, 'testTag', 'RpcClient: onFailed. code is :' + code);
-        // 弹窗显示连接服务失败
-        try {
-          promptAction.showToast({
-            message: 'Connect failed. Please ensure that the service is running in the background.',
-            duration: 2000
-          });
-        } catch (error) {
-          let message = (error as BusinessError).message;
-          let code = (error as BusinessError).code;
-          hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-        };
+        // ...
       },
     }
   
@@ -523,30 +414,12 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
           let str = result.reply.readString();
           hilog.info(0x0000, 'testTag', 'RpcClient: sendMessageRequest receive str is  ' + str);
           // 弹窗显示发送消息成功
-          try {
-            promptAction.showToast({
-              message: 'sendRequest success',
-              duration: 2000
-            });
-          } catch (error) {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
-            hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-          };
+          // ...
         })
         .catch((e: Error) => {
           hilog.error(0x0000, 'testTag', 'RpcClient: sendMessageRequest failed, error is ' + JSON.stringify(e));
           // 弹窗显示发送消息失败
-          try {
-            promptAction.showToast({
-              message: 'sendRequest failed, please connect to the server first',
-              duration: 2000
-            });
-          } catch (error) {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
-            hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-          };
+          // ...
         })
         .finally(() => {
           data.reclaim();
@@ -555,16 +428,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
     } else {
       hilog.error(0x0000, 'testTag', 'RpcClient: proxy is invalid');
       // 弹窗显示发送消息失败
-      try {
-        promptAction.showToast({
-          message: 'sendRequest failed, please connect to the server first',
-          duration: 2000
-        });
-      } catch (error) {
-        let message = (error as BusinessError).message;
-        let code = (error as BusinessError).code;
-        hilog.error(0x0000, 'testTag', 'showToast failed, code is ' + code + ', message is ' + message);
-      };
+      // ...
     }
   }
   ```

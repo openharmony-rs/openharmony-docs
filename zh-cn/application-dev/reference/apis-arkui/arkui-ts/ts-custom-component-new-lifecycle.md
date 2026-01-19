@@ -26,7 +26,7 @@ ComponentInit: MethodDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -42,7 +42,7 @@ ComponentAppear: MethodDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -58,7 +58,7 @@ ComponentBuilt: MethodDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -74,7 +74,7 @@ ComponentDisappear: MethodDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -90,7 +90,7 @@ ComponentAttach: MethodDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -106,7 +106,7 @@ ComponentDetach: MethodDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -128,7 +128,7 @@ ComponentReuse: MethodDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -150,7 +150,7 @@ ComponentRecycle: MethodDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -158,7 +158,7 @@ ComponentRecycle: MethodDecorator
 
 ## CustomComponentLifecycle
 
-CustomComponentLifecycle用于监控自定义组件生命周期的变化。
+CustomComponentLifecycle用于监控自定义组件生命周期的变化，开发者可以通过[UIUtils.getLifecycle](../js-apis-stateManagement.md#getlifecycle23)获取CustomComponentLifecycle实例。
 
 ### getCurrentState
 
@@ -170,7 +170,7 @@ getCurrentState函数用于获得自定义组件当前的生命周期状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -209,7 +209,7 @@ addObserver函数用于注册自定义组件生命周期监听器。当自定义
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -227,7 +227,7 @@ removeObserver函数用于移除自定义组件生命周期监听器。解除注
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -249,7 +249,7 @@ aboutToAppear函数在创建自定义组件的新实例后，执行其build()函
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 ### onDidBuild
 
@@ -261,7 +261,7 @@ onDidBuild函数在自定义组件的新实例构建完成后，执行其build()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 ### aboutToDisappear
 
@@ -273,7 +273,7 @@ aboutToDisappear函数在自定义组件被销毁之前执行。不建议在abou
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 ### aboutToAttach
 
@@ -285,7 +285,7 @@ aboutToAttach函数在自定义组件被附加到主树时执行。开发者可�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 ### aboutToDetach
 
@@ -297,7 +297,7 @@ aboutToDetach函数在自定义组件从主树分离时执行。开发者可以�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 ### aboutToReuse
 
@@ -309,7 +309,7 @@ aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -327,7 +327,7 @@ aboutToRecycle?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 ```ts
@@ -387,7 +387,7 @@ struct Child {
 }
 
 export class MyObserver implements CustomComponentLifecycleObserver {
-  // 重写CustomComponentLifecycleObserver中的生命周期事件，CustomComponentLifecycleObserver无法监听父组件的aboutToInit
+  // 重写CustomComponentLifecycleObserver中的生命周期事件。
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToAppear');
   }
@@ -407,7 +407,6 @@ export class MyObserver implements CustomComponentLifecycleObserver {
   aboutToRecycle() {
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToRecycle');
   }
-  // 在父组件的aboutToDelete函数中解除注册监听，则无法监听父组件的aboutToDisappear
   aboutToDisappear() {
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToDisappear');
   }
@@ -435,7 +434,7 @@ export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 值 | 说明 |
 | -- | -- | -- |

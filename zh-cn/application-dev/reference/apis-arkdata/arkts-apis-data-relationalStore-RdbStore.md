@@ -513,8 +513,8 @@ if (store != undefined) {
   try {
     let rowId: number = (store as relationalStore.RdbStore).insertSync("EMPLOYEE", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Insert is successful, rowId = ${rowId}`);
-  } catch (error) {
-    console.error(`Insert is failed, code is ${error.code},message is ${error.message}`);
+  } catch (err) {
+    console.error(`Insert is failed, code is ${err.code},message is ${err.message}`);
   }
 }
 ```
@@ -585,8 +585,8 @@ if (store != undefined) {
   try {
     let rowId: number = (store as relationalStore.RdbStore).insertSync("EMPLOYEE", sendableValuesBucket, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Insert is successful, rowId = ${rowId}`);
-  } catch (error) {
-    console.error(`Insert is failed, code is ${error.code},message is ${error.message}`);
+  } catch (err) {
+    console.error(`Insert is failed, code is ${err.code},message is ${err.message}`);
   }
 }
 ```
@@ -1695,8 +1695,8 @@ if (store != undefined) {
   try {
     let rows: number = (store as relationalStore.RdbStore).updateSync(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Updated row count: ${rows}`);
-  } catch (error) {
-    console.error(`Updated failed, code is ${error.code},message is ${error.message}`);
+  } catch (err) {
+    console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
   }
 }
 ```
@@ -2688,7 +2688,9 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices = dmInstance.getAvailableDeviceListSync();
-  if (devices != undefined) {
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
     deviceId = devices[0].networkId;
   }
 } catch (err) {
@@ -2773,7 +2775,9 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  if (devices != undefined) {
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
     deviceId = devices[0].networkId;
   }
 } catch (err) {
@@ -3690,6 +3694,7 @@ if (store != undefined) {
 beginTransaction():void
 
 在开始执行SQL语句之前，开始事务。
+
 此接口不允许嵌套事务，且不支持在多进程或多线程中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -3879,6 +3884,7 @@ if (store != undefined) {
 commit():void
 
 提交已执行的SQL语句，跟[beginTransaction](#begintransaction)配合使用。
+
 此接口不允许嵌套事务，且不支持在多进程或多线程中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -4007,6 +4013,7 @@ if (store != null) {
 rollBack():void
 
 回滚已经执行的SQL语句。
+
 此接口不允许嵌套事务，且不支持在多进程或多线程中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -4657,7 +4664,11 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices = dmInstance.getAvailableDeviceListSync();
-  deviceId = devices[0].networkId;
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
+    deviceId = devices[0].networkId;
+  }
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -5334,11 +5345,13 @@ on(event: 'statistics', observer: Callback&lt;SqlExecutionInfo&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let sqlExecutionInfo = (sqlExecutionInfo: relationalStore.SqlExecutionInfo) => {
-  console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
-  console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
-  console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
-  console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
-  console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  if (sqlExecutionInfo.sql.length > 0) {
+    console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
+    console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
+    console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
+    console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
+    console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  }
 };
 
 try {
@@ -5424,9 +5437,9 @@ try {
     'salary': 100.5,
     'codes': value,
   };
-  await store.executeSql(CREATE_TABLE_TEST);
   if (store != undefined) {
-    (store as relationalStore.RdbStore).insert('test', valueBucket);
+    await (store as relationalStore.RdbStore).executeSql(CREATE_TABLE_TEST);
+    await (store as relationalStore.RdbStore).insert('test', valueBucket);
   }
 } catch (err) {
   console.error(`Insert fail, code:${err.code}, message: ${err.message}`);
@@ -5464,11 +5477,13 @@ on(event: 'perfStat', observer: Callback&lt;SqlExecutionInfo&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let sqlExecutionInfo = (sqlExecutionInfo: relationalStore.SqlExecutionInfo) => {
-  console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
-  console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
-  console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
-  console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
-  console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  if (sqlExecutionInfo.sql.length > 0) {
+    console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
+    console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
+    console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
+    console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
+    console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  }
 };
 
 try {
@@ -6326,7 +6341,9 @@ lockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 根据RdbPredicates的指定实例对象从数据库中锁定数据，锁定数据不执行端云同步，使用Promise异步回调。
 
 该接口只支持主键为基本类型的表、不支持共享表、无主键表和复合类型主键表。
+
 该接口不支持依赖关系表之间的锁传递，如果表存在依赖关系，需要根据依赖关系手动调用该接口。
+
 该接口不支持对已删除数据的操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -6393,7 +6410,9 @@ unlockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 根据RdbPredicates的指定实例对象从数据库中解锁数据，使用Promise异步回调。
 
 该接口只支持主键为基本类型的表、不支持共享表、无主键表和复合类型主键表。
+
 该接口不支持依赖关系表之间的锁传递，如果表存在依赖关系，需要根据依赖关系手动调用该接口。
+
 该接口不支持对已删除数据的操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core

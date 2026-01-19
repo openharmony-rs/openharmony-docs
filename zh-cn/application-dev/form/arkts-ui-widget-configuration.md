@@ -98,8 +98,8 @@
 | <!--DelRow-->dataProxyEnabled | 表示卡片是否支持[卡片代理刷新](./arkts-ui-widget-update-by-proxy-sys.md)，取值范围：<br/>-&nbsp;true：表示支持代理刷新。<br/>-&nbsp;false：表示不支持代理刷新。<br/>设置为true时，[定时刷新和下次刷新](./arkts-ui-widget-passive-refresh.md#卡片定时刷新)不生效，但不影响[定点刷新](./arkts-ui-widget-passive-refresh.md#卡片定点刷新)。 | 布尔类型 | 可缺省，缺省值为false。 |
 | isDynamic | 表示此卡片是否为动态卡片（仅针对ArkTS卡片生效）。 <br/>-&nbsp;true：为[动态卡片](./arkts-form-overview.md#动态卡片) 。<br/>-&nbsp;false：为[静态卡片](./arkts-form-overview.md#静态卡片)。<br/>| 布尔类型 | 可缺省，缺省值为true。 |
 | fontScaleFollowSystem | 表示卡片使用方设置此卡片的字体是否支持跟随系统变化。 <br/>-&nbsp;true：支持跟随系统字体大小变化。<br/>-&nbsp;false：不支持跟随系统字体大小变化。<br/>| 布尔类型 | 可缺省，缺省值为true。 |
-| supportShapes | 表示卡片的显示形状，取值范围如下：<br/>-&nbsp;rect：表示矩形卡片。<br/>-&nbsp;circle：表示圆形卡片。| 字符串数组 | 可缺省，缺省值：["rect"]。 |
-| previewImages | 表示卡片预览图, 与配置项`supportDimensions`一一对应。智能穿戴卡片必须配置，当前仅支持在智能穿戴上使用。| 字符串数组 | 可缺省，缺省值：[]。 |
+| supportShapes | 表示卡片的显示形状，取值范围如下：<br/>-&nbsp;rect：表示矩形卡片。<br/>-&nbsp;circle：表示圆形卡片。| 字符串数组 | 可缺省，缺省值为“["rect"]”。 |
+| previewImages | 表示卡片预览图, 与配置项`supportDimensions`一一对应。智能穿戴卡片必须配置，当前仅支持在智能穿戴上使用。| 字符串 | 可缺省。 |
 | <!--DelRow-->formVisibleNotify | 表示是否通知卡片提供方可见状态变化（仅对系统应用的卡片生效）。<br/>-&nbsp;true：通知卡片提供方可见状态变化。<br/>-&nbsp;false：不通知卡片提供方可见状态变化。 | 布尔类型 | 可缺省，缺省值为false。 |
 | transparencyEnabled | 表示是否为背板透明卡片（仅对系统应用或者申请了背板透明卡片能力的ArkTS卡片生效）。 <br/>-&nbsp;true：表示是背板透明卡片。<br/>-&nbsp;false：表示不是背板透明卡片。<br/>| 布尔类型 | 可缺省，缺省值为false。 |
 |enableBlurBackground|表示卡片是否使用模糊背板。<br/>-&nbsp;true：开启模糊背板。<br/>-&nbsp;false：关闭模糊背板。|布尔类型|可缺省，缺省值为false。|
@@ -109,9 +109,9 @@
 |[funInteractionParams](#funinteractionparams标签)| 趣味交互类型互动卡片扩展字段。从API version 20开始，支持该字段。| 对象 | 可缺省，缺省为空。funInteractionParams 和 sceneAnimationParams 同时配置时识别为趣味交互类型互动卡片。|
 |[sceneAnimationParams](#sceneanimationparams标签)| [场景动效类型互动卡片](./arkts-ui-liveform-sceneanimation-overview.md)扩展字段。从API version 20开始，支持该字段。| 对象 | 可缺省，缺省为空。funInteractionParams 和 sceneAnimationParams 同时配置时识别为趣味交互类型互动卡片。|
 | resizable | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br/>-&nbsp;true：可以调整大小。<br/>-&nbsp;false：不可以调整大小。<br/>**说明：**<br/>从API version 20开始，支持该字段。 | 布尔类型 | 可缺省，缺省值为false。 |
-| groupId | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享，推荐多张卡片功能相同且需要调整卡片尺寸时配置。<br>示例一：卡片A的groupId配置为'1'，resizeable配置为true，supportDimension为2\*2。卡片B的groupId配置为'1'，resizeable配置为true，supportDimension为2\*4。那么支持卡片A、B之间调整大小。<br>示例二：当supportDimension存在多个，resizable设置为true时，优先在同一张卡片之间调整大小。卡片A的resizeable配置为true，supportDimension为2\*2、2\*4，支持卡片A的两个尺寸之间调整大小。<br>示例三：卡片A的groupId配置为'1'，resizeable配置为true，supportDimension为1\*2。卡片B的groupId配置为'1'，resizeable配置为true，supportDimension为2\*2、2\*4、4\*4。卡片A可以调整到卡片B的2*2，卡片B只支持在B卡片支持的三个尺寸之间调整大小，无法调整为卡片A。<br/>**说明：**<br/>从API version 20开始，支持该字段。 | 字符串 | 可缺省，空字符串。 |
-| [supportDeviceTypes](#supportdevicetypes标签) | 表示特定卡片支持的设备类型。例如，卡片的supportDeviceTypes字段配置了“phone”、“tablet”、“tv”，那么该卡片就支持在手机、平板、大屏上面显示。<br/>**说明：**<br/>从API version 21开始，支持该字段。 | 字符串数组 | 可缺省，缺省值：["phone", "tablet", "tv", "wearable", "car", "2in1"]。 |
-| [supportDevicePerformanceClasses](#supportdeviceperformanceclasses标签) | 表示特定卡片支持的设备性能等级信息。例如，卡片的supportDevicePerformanceClasses字段配置了“high”、“medium”、“low”，那么该卡片就支持在性能等级为“high”、“medium”、“low”设备上面显示。<br/>**说明：**<br/>从API version 21开始，支持该字段。 | 字符串数组 | 可缺省，缺省值：["high", "medium", "low"]。 |
+| groupId | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享，推荐多张卡片功能相同且需要调整卡片尺寸时配置。<br>示例一：卡片A的groupId配置为'1'，resizeable配置为true，supportDimension为2\*2。卡片B的groupId配置为'1'，resizeable配置为true，supportDimension为2\*4。那么支持卡片A、B之间调整大小。<br>示例二：当supportDimension存在多个，resizable设置为true时，优先在同一张卡片之间调整大小。卡片A的resizeable配置为true，supportDimension为2\*2、2\*4，支持卡片A的两个尺寸之间调整大小。<br>示例三：卡片A的groupId配置为'1'，resizeable配置为true，supportDimension为1\*2。卡片B的groupId配置为'1'，resizeable配置为true，supportDimension为2\*2、2\*4、4\*4。卡片A可以调整到卡片B的默认尺寸，卡片B只支持在B卡片支持的三个尺寸之间调整大小，无法调整为卡片A。<br/>**说明：**<br/>从API version 20开始，支持该字段。 | 字符串 | 可缺省，空字符串。 |
+| [supportDeviceTypes](#supportdevicetypes标签) | 表示特定卡片支持的设备类型。例如，卡片的supportDeviceTypes字段配置了“phone”、“tablet”、“tv”，那么该卡片就支持在手机、平板、大屏上面显示。<br/>**说明：**<br/>从API version 21开始，支持该字段。 | 字符串数组 | 可缺省，缺省值为“["phone", "tablet", "tv", "wearable", "car", "2in1"]”。 |
+| [supportDevicePerformanceClasses](#supportdeviceperformanceclasses标签) | 表示特定卡片支持的设备性能等级信息。例如，卡片的supportDevicePerformanceClasses字段配置了“high”、“medium”、“low”，那么该卡片就支持在性能等级为“high”、“medium”、“low”设备上面显示。<br/>**说明：**<br/>从API version 21开始，支持该字段。 | 字符串数组 | 可缺省，缺省值为“["high", "medium", "low"]”。 |
 | [standby](#standby标签) | <!--RP8-->横屏待机显示界面<!--RP8End-->卡片扩展字段。<br/>**说明：**<br/>从API version 23开始，支持该字段。依赖系统实现横屏待机显示应用后展示 | 对象 | 可缺省，属性缺省值见[standby标签](#standby标签)。 |
 
 ### supportDeviceTypes标签

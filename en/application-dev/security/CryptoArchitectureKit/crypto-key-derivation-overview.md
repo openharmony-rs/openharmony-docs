@@ -65,6 +65,11 @@ You can use the following formula to calculate the memory:<br>Memory (in bytes) 
 
 X963KDF is a key derivation function (KDF) based on HMAC. It is usually used with elliptic curves to generate keys.
 
-| KDF Algorithm| String Parameter| API Version| 
-| -------- | -------- | -------- |
-| X963KDF | X963KDF | 22+ | 
+| KDF Algorithm| HMAC Algorithm| String Parameter| API Version| 
+| -------- | -------- | -------- | -------- |
+| X963KDF | SHA1 | X963KDF\|SHA1 | 22+ | 
+| X963KDF | SHA224 | X963KDF\|SHA224 | 22+ | 
+| X963KDF | SHA256 | X963KDF\|SHA256 | 22+ | 
+| X963KDF | SHA384 | X963KDF\|SHA384 | 22+ | 
+| X963KDF | SHA512 | X963KDF\|SHA512 | 22+ | 
+| X963KDF | SM3 | X963KDF\|SM3 | 22+ | 

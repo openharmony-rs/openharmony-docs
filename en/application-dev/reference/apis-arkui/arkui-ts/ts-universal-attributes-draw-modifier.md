@@ -79,6 +79,7 @@ See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-imp
 drawContent?(drawContext: DrawContext): void
 
 Draws the content. Override this method to implement custom content drawing, which will replace the component's default content drawing function.
+
 Note: The Canvas provided in the [DrawContext](../js-apis-arkui-graphics.md#drawcontext) parameter is a temporary command-recording canvas, not the actual rendering canvas of the node. For usage instructions, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -139,7 +140,7 @@ See [Example 2: Implementing Custom Foreground Drawing for a Container Through D
 
 drawOverlay(drawContext: DrawContext): void
 
-Draws the overlay. Override this method to implement custom overlay drawing on the foreground layer of the component. Unlike [drawForeground](#drawforeground20), **drawOverlay** can implement drawing outside the component boundary.
+Draws the overlay. Override this method to implement custom overlay drawing operations in this component. Unlike [drawForeground](#drawforeground20), **drawOverlay** can implement drawing outside the component boundary.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 

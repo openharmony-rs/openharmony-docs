@@ -980,6 +980,56 @@ struct WebComponent {
 }
 ```
 
+## refresh<sup>24+</sup>
+
+refresh(ignoreCache: boolean): void
+
+通知Web组件刷新网页，可以选择是否忽略缓存刷新。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明               |
+| ------- | -------- | ---- | ---------------------- |
+| ignoreCache | boolean  | 是   | Web组件刷新网页，选择是否忽略缓存刷新。<br>true表示忽略缓存刷新，false表示不忽略缓存刷新。<br/>**说明：**<br>传入undefined或null时为false。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('refresh')
+        .onClick(() => {
+          try {
+            this.controller.refresh(true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## accessStep
 
 accessStep(step: number): boolean
@@ -5379,7 +5429,7 @@ struct WebComponent {
 
 static setConnectionTimeout(timeout: number): void
 
-设置网络连接超时时间，使用者可通过Web组件中的onErrorReceive方法获取超时错误码。
+设置网络连接超时时间，使用者可通过Web组件中的onErrorReceive方法获取超时错误码。若未调用该接口则默认超时时间为30秒。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9427,7 +9477,7 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
 | webDebuggingAccess | boolean | 是   | 设置是否启用网页调试功能。<br/>true表示开启网页调试功能，false表示关闭网页调试功能。 |
-| port               | number  | 是   | 指定devtools服务的tcp端口号。如果没有指定port，那么该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess)接口。<br/>取值范围: (1024, 65535]<br/>如果port的值在区间[0, 1024]内，则会抛出BusinessError异常，错误码为17100023。 |
+| port               | number  | 是   | 指定DevTools服务的tcp端口号。如果没有指定port，那么该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess)接口。<br/>取值范围: (1024, 65535]<br/>如果port的值在区间[0, 1024]内，则会抛出BusinessError异常，错误码为17100023。 |
 
 
 **错误码：**

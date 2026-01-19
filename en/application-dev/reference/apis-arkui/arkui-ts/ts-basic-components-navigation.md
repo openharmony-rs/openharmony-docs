@@ -593,6 +593,8 @@ Sets the divider style in the split-column mode of the **Navigation** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name| Type        | Mandatory| Description              |

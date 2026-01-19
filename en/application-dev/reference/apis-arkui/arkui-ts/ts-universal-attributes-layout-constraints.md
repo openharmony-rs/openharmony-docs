@@ -10,7 +10,7 @@ Layout constraints refer to constraints on the aspect ratio and display priority
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## aspectRatio
 

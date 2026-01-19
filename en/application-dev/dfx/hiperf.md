@@ -336,7 +336,7 @@ Monitors the specified application and periodically prints the values of perform
 | --app | Sets the application names to collect. Use commas (,) to separate them. The application must already be running. If it has not started, the command waits up to 20s and then exits automatically. This parameter cannot be used together with **-a**.| 
 | --chkms | Sets the query interval, in milliseconds. The value ranges from 1 to 200. The default value is **10**.| 
 | --per-core | Obtains the print count of each CPU core.| 
-| --pre-thread | Obtains the print count of each thread.| 
+| --per-thread | Obtains the print count of each thread.| 
 | --restart | Collects performance indicator information about application startup. If a process is not started within 30 seconds, the record exits. This parameter must be used together with **--app**.| 
 | --verbose | Outputs detailed information.| 
 | --dumpoptions | Displays details about all options in the list.| 

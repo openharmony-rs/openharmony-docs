@@ -144,7 +144,7 @@ Defines the configuration of a geofence.
 | latitude | number | No| No| Latitude of the geofence center. The value ranges from -90 to 90.|
 | radius | number | No| No| Geofence radius, in meters. The value ranges from 200 to 2000.|
 | delayTime | number | No| Yes| Delay time from geofence entry to event trigger, in seconds. The value ranges from 0 to 300. The default value is **0**.|
-| coordinateSystemType | [coordinatesystemtype](#coordinatesystemtype23) | No| No| Coordinate system type of the center point. |
+| coordinateSystemType | [CoordinateSystemType](#coordinatesystemtype23) | No| No| Coordinate system type of the center point. |
 | monitorEvent | [MonitorEvent](#monitorevent23) | No  | No| Event type for monitoring a geofence.|
 
 ## Trigger<sup>23+</sup>

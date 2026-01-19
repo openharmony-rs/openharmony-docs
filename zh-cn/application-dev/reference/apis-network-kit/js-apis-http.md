@@ -122,13 +122,13 @@ httpRequest.request(// 填写HTTP请求的URL地址，可以带参数也可以�
       console.info('cookies:' + JSON.stringify(data.cookies)); // 自API version 8开始支持cookie。
       // 取消订阅HTTP响应头事件。
       httpRequest.off('headersReceive');
-      // 当该请求使用完毕时，开发者务必调用destroy方法主动销毁该JavaScript Object。
+      // 当该请求使用完毕时，开发者务必调用destroy方法释放资源，避免出现内存泄漏。
       httpRequest.destroy();
     } else {
       console.error('error:' + JSON.stringify(err));
       // 取消订阅HTTP响应头事件。
       httpRequest.off('headersReceive');
-      // 当该请求使用完毕时，开发者务必调用destroy方法主动销毁该JavaScript Object。
+      // 当该请求使用完毕时，开发者务必调用destroy方法释放资源，避免出现内存泄漏。
       httpRequest.destroy();
     }
   });
@@ -146,7 +146,7 @@ createHttp(): HttpRequest
 创建一个HTTP请求，里面包括发起请求、中断请求、订阅/取消订阅HTTP Response Header事件。当发起多个HTTP请求时，需为每个HTTP请求创建对应HttpRequest对象。每一个HttpRequest对象对应一个HTTP请求。
 
 > **说明：**
-> 当该请求使用完毕时，需调用destroy方法主动销毁HttpRequest对象，否则会出现资源泄露问题。
+> 当该请求使用完毕时，需调用destroy方法释放资源，否则会出现内存泄露问题。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -474,7 +474,7 @@ promise.then((data:http.HttpResponse) => {
 
 destroy(): void
 
-中断请求任务。
+终止HTTP请求任务，同时释放系统资源。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1168,8 +1168,9 @@ httpRequest.off("dataSendProgress");
 | sslType<sup>20+</sup> | [SslType](#ssltype20) | 否 | 是 | 使用安全通信协议TLS（默认）或TLCP。如果使用TLCP，相关的选项（如caPath、clientCert和clientEncCert）必须赋有效值。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | clientEncCert<sup>20+</sup> | [ClientCert](#clientcert11) | 否 | 是 | 支持应用程序传入客户端证书，使服务器能够进行验证客户端的加密身份。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | customMethod<sup>23+</sup> | string | 否 | 是 | 支持自定义请求方法，例如实现WebDAV扩展协议，当与method同时配置时，customMethod优先级更高。<br />- 当customMethod符合WebDAV扩展协议请求方式，但服务器不支持时，本次请求的服务器响应码通常为405或501（实际结果与服务器具体行为有关）。<br />- 当customMethod不符合WebDAV扩展协议请求方式时，本次请求的服务器响应码通常为400或405（实际结果与服务器具体行为有关）。 |
-| maxRedirects<sup>23+</sup> | number | 否 | 是 | 支持针对HttpRequest指定最大重定向次数。<br />- 默认最大重定向次数是30次。<br />- 取值范围是：[0，2147483647]，设置0即为关闭重定向，当重定向次数超出设置的最大重定向次数时，会返回错误码2300047。超出此范围该配置不生效，配置默认值30。 |
+| maxRedirects<sup>23+</sup> | number | 否 | 是 | 支持针对HttpRequest指定最大跳转次数。<br />- 默认值为30次。<br />- 取值范围是：[0，2147483647]，设置0即为关闭重定向，当服务器的重定向次数超过设置的最大重定向次数时会返回错误码2300047。超出此范围该配置不生效，配置默认值30。 |
 | sniHostName<sup>23+</sup> | string | 否 | 是 | 支持客户端通过配置SNI（Server Name Indication，服务器名称指示）在TLS握手阶段向服务器声明目标域名，使服务器能够根据域名选择对应的SSL/TLS证书进行加密通信。sniHostName参数长度上限为255个字符。若超出长度限制或设置为空字符串，该设置将不会生效。 |
+| pathPreference<sup>23+</sup> |[PathPreference](#pathpreference23) | 否 | 是 |支持HTTP请求指定特定激活的网络。 |
 
 ## RequestMethod
 
@@ -1429,7 +1430,7 @@ httpRequest.request("EXAMPLE_URL", (err: BusinessError, data: http.HttpResponse)
     httpRequest.destroy();
   } else {
     console.error('error:' + JSON.stringify(err));
-    // 当该请求使用完毕时，开发者务必调用destroy方法主动销毁该JavaScript Object。
+    // 当该请求使用完毕时，开发者务必调用destroy方法释放资源，避免出现内存泄漏。
     httpRequest.destroy();
   }
 });
@@ -1664,7 +1665,7 @@ TLS加密版本及套件配置。
 | ------------------  |---------------------------------|-------- |-------- |---------------|
 | tlsVersionMin       | [TlsVersion](#tlsversion18)     | 否      |否       | TLS最低版本号。     |
 | tlsVersionMax        | [TlsVersion](#tlsversion18)    | 否      |否       | TLS最高版本号。     |
-| cipherSuites        | [CipherSuite](#ciphersuite18)[] | 否      |是       | 声明加密套件类型的数组。 |
+| cipherSuites        | [CipherSuite](#ciphersuite18)[] | 否      |是       | 声明加密套件类型的数组。如果没有设置，默认携带全部支持的加密套件类型，加密套件类型参考[TlsV13SpecificCipherSuite](#tlsv13specificciphersuite18)、[TlsV12SpecificCipherSuite](#tlsv12specificciphersuite18)、[TlsV10SpecificCipherSuite](#tlsv10specificciphersuite18)。 |
 
 ## TlsVersion<sup>18+</sup>
 
@@ -2230,6 +2231,24 @@ httpRequest.request("EXAMPLE_URL", {
   httpRequest.destroy();
 });
 ```
+## PathPreference<sup>23+</sup>
 
+HTTP请求指定特定网络的类型枚举。
+
+> **说明：**
+>
+> 推荐在网络并发等场景下使用。<br>
+> 当指定的网络没有激活时，系统按照指定默认网络处理。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+
+| 类型   | 说明                                   |
+| ------ | -------------------------------------- |
+| 'auto' |表示HTTP请求指定默认的网络连接。|
+| 'primaryCelluar' |表示在蜂窝网络激活的场景下，HTTP请求指定默认的蜂窝网络连接。|
+| 'secondaryCelluar' |表示在双蜂窝网络激活的场景下，HTTP请求指定副卡的蜂窝网络连接。|
 
 

@@ -500,7 +500,7 @@ MyObserver aboutToAttach
 MyObserver aboutToDetach
 ```
 
-可以在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于Appeared状态，所有无法监听组件的aboutToAppear。
+可以在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于Appeared状态，所以无法监听组件的aboutToAppear。
 
 ```ts
 Column() {
@@ -547,6 +547,7 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
+          // this.show为true，创建SwiperExample；this.show为false，销毁SwiperExample
           this.show = !this.show;
         })
       if (this.show) {
