@@ -25,6 +25,10 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
 1. 引入所需的模块。
 
    <!-- @[xmlChange_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { convertxml } from '@kit.ArkTS';
+   ```
 
 2. 输入待转换的XML，设置转换选项。支持的转换选项及含义，请参见[ConvertOptions](../reference/apis-arkts/js-apis-convertxml.md#convertoptions)。
 
