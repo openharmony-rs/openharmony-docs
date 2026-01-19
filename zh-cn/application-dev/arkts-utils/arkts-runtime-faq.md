@@ -166,6 +166,14 @@ try {
 
 <!-- @[test_beforeStringReplaceWithEmptySearchValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
 
+``` TypeScript
+let str = 'dddd';
+let res = str.replace('', 'abc');
+console.info('res = ' + res);
+// 期望输出: res = abcdddd。
+// 实际输出: res = dddd。
+```
+
 规避方案：使用正则表达式 `/^/` 表示字符串起始符，作为第一个参数。
 
 <!-- @[test_afterStringReplaceWithEmptySearchValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
