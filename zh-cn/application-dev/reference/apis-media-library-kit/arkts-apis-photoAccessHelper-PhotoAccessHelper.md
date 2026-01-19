@@ -27,7 +27,7 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
- 通过picker的方式调用该接口来查询指定uri对应的图片或视频资源，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
+ 通过picker的方式调用该接口来查询指定URI对应的图片或视频资源，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[指定URI获取图片或视频资源](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
 
 **参数：**
 
@@ -90,7 +90,7 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
- 通过picker的方式调用该接口来查询指定uri对应的图片或视频资源，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
+ 通过picker的方式调用该接口来查询指定URI对应的图片或视频资源，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[指定URI获取图片或视频资源](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
 
 **参数：**
 
@@ -217,7 +217,7 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 
 指定文件类型、后缀和创建选项，创建图片或视频资源。使用callback方式返回结果。
 
-在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-savebutton.md)。
+在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -276,7 +276,7 @@ createAsset(photoType: PhotoType, extension: string, callback: AsyncCallback&lt;
 
 指定文件类型和后缀，创建图片或视频资源，使用callback方式返回结果。
 
-在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-savebutton.md)。
+在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -331,7 +331,7 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 
 指定文件类型、后缀和创建选项，创建图片或视频资源，以Promise方式返回结果。
 
-在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-savebutton.md)。
+在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -630,11 +630,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   }
   let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
       console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something.
+    // file had changed, do something.
   }
   let onCallback2 = (changeData: photoAccessHelper.ChangeData) => {
       console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something.
+    // file had changed, do something.
   }
   // 注册onCallback1监听。
   phAccessHelper.registerChange(photoAsset.uri, false, onCallback1);
@@ -715,7 +715,7 @@ applyChanges(mediaChangeRequest: MediaChangeRequest): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
-在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-savebutton.md)。
+在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -842,7 +842,7 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 > **说明：**
 >
-> 当传入uri为沙箱路径时，可正常保存图片/视频，但无界面预览。
+> 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -852,14 +852,14 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| srcFileUris | Array&lt;string&gt; | 是 | 需保存到媒体库中的图片/视频文件对应的[媒体库uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>- 一次弹窗最多保存100张图片。<br>- 仅支持处理图片、视频uri。<br>- 不支持手动拼接的uri，需调用接口获取，获取方式参考[媒体文件uri获取方式](../../file-management/user-file-uri-intro.md#媒体文件uri获取方式)。  |
+| srcFileUris | Array&lt;string&gt; | 是 | 需保存到媒体库中的图片/视频文件对应的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>- 一次弹窗最多保存100张图片。<br>- 仅支持处理图片、视频URI。<br>- 不支持手动拼接的URI，需调用接口获取，获取方式参考[媒体文件URI获取方式](../../file-management/user-file-uri-intro.md#媒体文件uri获取方式)。  |
 | photoCreationConfigs | Array&lt;[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt; | 是 | 保存图片或视频到媒体库的配置，包括文件名等，与srcFileUris保持一一对应。<br>**注意：**<br>传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。 |
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回给应用的媒体库文件uri列表。uri已对应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码。<br>返回-3006表示不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回给应用的媒体库文件URI列表。URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>具体返回值情况如下：<br>- 返回-3006表示不允许出现非法字符。<br>- 返回-2004表示图片类型和后缀不符。<br>- 返回-203表示文件操作异常。 |
 
 **错误码：**
 
@@ -1156,7 +1156,7 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 
 requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Array&lt;string&gt;&gt;
 
-<!--RP1--><!--RP1End-->调用接口给未授权的uri进行授权，返回已创建并授予保存权限的uri列表。
+<!--RP1--><!--RP1End-->调用接口给未授权的URI进行授权，返回已创建并授予保存权限的URI列表。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -1166,13 +1166,13 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| srcFileUris | Array&lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的[媒体库uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>仅支持处理图片、视频uri，且最大数量限制为100个。|
+| srcFileUris | Array&lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>仅支持处理图片、视频URI，且最大数量限制为100个。|
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回已授权的uri列表。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回已授权的URI列表。 |
 
 **错误码：**
 

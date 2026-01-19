@@ -1201,7 +1201,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
 
   let info: photoAccessHelper.FormInfo = {
-    //formId是一个由纯数字组成的字符串，uri为图库中存在的图片的uri信息，图库中无图片创建卡片时uri需为空字符串。
+    // formId是一个由纯数字组成的字符串，uri为图库中存在的图片的uri信息，图库中无图片创建卡片时uri需为空字符串。
     formId : "20230116123",
     uri: photoAsset.uri,
   }
@@ -1270,7 +1270,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
 
   let info: photoAccessHelper.FormInfo = {
-    //formId是一个由纯数字组成的字符串，uri为图库中存在的图片的uri信息，图库中无图片创建卡片时uri需为空字符串。
+    // formId是一个由纯数字组成的字符串，uri为图库中存在的图片的uri信息，图库中无图片创建卡片时uri需为空字符串。
     formId: "20230116123",
     uri: photoAsset.uri,
   }
@@ -1323,7 +1323,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('removeFormInfoDemo');
   let info: photoAccessHelper.FormInfo = {
-    //formId是一个由纯数字组成的字符串，移除卡片的时候uri填空即可。
+    // formId是一个由纯数字组成的字符串，移除卡片的时候uri填空即可。
     formId: "20230116123",
     uri: "",
   }
@@ -1383,7 +1383,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('removeFormInfoDemo');
   let info: photoAccessHelper.FormInfo = {
-    //formId是一个由纯数字组成的字符串，移除卡片的时候uri填空即可。
+    // formId是一个由纯数字组成的字符串，移除卡片的时候uri填空即可。
     formId: "20230116123",
     uri: "",
   }
@@ -6385,8 +6385,7 @@ getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise\<FetchRes
 
 **示例：**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper
-](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6435,7 +6434,7 @@ async function example1(phAccessHelper: photoAccessHelper.PhotoAccessHelper) : P
       return;
     }
     let photoAssetList = fetchResult.getAllObjects();
-    console.info('get selected assets in album sucess');
+    console.info('get selected assets in album success');
   } catch (err) {
     console.error(`get selected assets in album fail, error: ${err?.code}, ${err?.message}`);
   }
