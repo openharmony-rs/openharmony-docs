@@ -46,7 +46,7 @@ Creates an **AnimatorResult** object for animations.
 
 > **NOTE**
 > 
-> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) in [UIContext](arkts-apis-uicontext-uicontext.md) instead.
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) instead.
 >
 > - Since API version 10, you can use the [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) API in [UIContext](arkts-apis-uicontext-uicontext.md), which ensures that the object is created in the intended UI instance.
 
@@ -150,7 +150,9 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 Creates an animation.
 
-This API is deprecated since API version 9. You are advised to use[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) in [UIContext](arkts-apis-uicontext-uicontext.md) instead.
+> **NOTE**
+> 
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [create](#createdeprecated) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -508,9 +510,10 @@ Animator options.
 | ---------- | ----------------------------------------------------------- | ---- | ------- | ----------------------------------------------------- |
 | duration   | number                                                      | No| No  | Duration for playing the animation, in milliseconds.<br> Value range: [0, +∞).<br>Default value: **0**                        |
 | easing     | string                                                      | No| No  | Animation interpolation curve. For details about the supported curve types, see Table 1.<br>If the provided string is invalid, **"ease"** is used.|
-| delay      | number                                                      | No| No  | Animation delay duration, in milliseconds. Value **0** means that there is no delay. If the value specified is a negative number, the animation starts playing ahead of its scheduled time. If the amount of time by which the playback is advanced is greater than the total duration of the animation, the animation skips to the end state immediately.<br>Default value: **0**       |
+| delay      | number                                                      | No| No  | Animation delay duration, in milliseconds. Value **0** means that there is no delay. If the value specified is a negative number, the animation starts playing ahead of its scheduled time. If the amount of time by which the playback is advanced exceeds the total duration of the animation, the animation immediately skips to its end state.<br>Default value: **0**       |
 | fill       | 'none' \| 'forwards' \| 'backwards' \| 'both'               | No| No  | State of the animated target after the animation is executed.<br>**'none'**: No style is applied to the target before or after the animation is executed.<br>**'forwards'**: The target keeps the state at the end of the animation (defined in the last key frame) after the animation is executed.<br>**'backwards'**: During the delay period specified in [AnimatorOptions](#animatoroptions), the animation uses the value defined in the first keyframe. When **direction** in [AnimatorOptions](#animatoroptions) is **'normal'** or **'alternate'**, the animation uses the **from** keyframe value. When **direction** in [AnimatorOptions](#animatoroptions) is **'reverse'** or **'alternate-reverse'**, the animation uses the **to** keyframe value.<br>**'both'**: The animation follows the **'forwards'** and **'backwards'** rules.|
 | direction  | 'normal' \| 'reverse' \| 'alternate' \| 'alternate-reverse' | No| No  | Animation playback mode.<br>**'normal'**: plays the animation in forward loop mode.<br>**'reverse'**: plays the animation in reverse loop mode.<br>**'alternate'**: plays the animation in alternating loop mode. When the animation is played for an odd number of times, the playback is in forward direction. When the animation is played for an even number of times, the playback is in reverse direction.<br>**'alternate-reverse'**: plays the animation in reverse alternating loop mode. When the animation is played for an odd number of times, the playback is in reverse direction. When the animation is played for an even number of times, the playback is in forward direction.<br>Default value: **'normal'**|
+| iterations | number                                                      | No| No  | Number of times that the animation is played. The value **0** means the animation is not played, **-1** means the animation is played for an unlimited number of times, and a positive integer means the animation is played that specific number of times.<br>Note: Any negative value other than **-1** is treated as invalid. For invalid values, the animation is played once.|
 | begin      | number                                                      | No| No  | Start point of the animation interpolation.<br>Note: This setting affects the input parameter value of the [onFrame](#properties) callback.<br>Default value: **0**                                             |
 | end        | number                                                      | No| No  | End point of animation interpolation.<br>Note: This setting affects the input parameter value of the [onFrame](#properties) callback.<br>Default value: **1**                                           |
 
@@ -531,8 +534,8 @@ Animator options.
 | "rhythm" | The animation uses the rhythm cubic-bezier curve (0.7, 0.0, 0.2, 1.0).|
 | "sharp" | The animation uses the sharp cubic-bezier curve (0.33, 0.0, 0.67, 1.0).|
 | "smooth" | The animation uses the smooth cubic-bezier curve (0.4, 0.0, 0.4, 1.0).|
-| "cubic-bezier(x1, y1, x2, y2)" | The animation uses the cubic Bézier curve, where the values of **x1** and **x2** must be between 0 and 1. Example: "cubic-bezier(0.42, 0.0, 0.58, 1.0)".|
-| "steps(number, step-position)" | The animation uses the steps curve. The number must be set to a positive integer. The **step-position** parameter is optional. The value can be **start** or **end**. The default value is **end**. Example, **"steps(3, start)"**.|
+| "cubic-bezier(x1, y1, x2, y2)" | The animation uses the cubic Bézier curve, where the values of **x1** and **x2** must be between 0 and 1. Example: **"cubic-bezier(0.42, 0.0, 0.58, 1.0)"**.|
+| "steps(number, step-position)" | The animation uses the steps curve. The number must be set to a positive integer. The **step-position** parameter is optional. The value can be **start** or **end**. The default value is **end**. Example: **"steps(3, start)"**.|
 | interpolating-spring(velocity, mass, stiffness, damping) | The animation uses the interpolating spring curve.<br>The **velocity**, **mass**, **stiffness**, and **damping** parameters are of the numeric type, and the values of **mass**, **stiffness**, and **damping** must be greater than 0. For details about the parameters, see [Curves.interpolatingSpring](./js-apis-curve.md#curvesinterpolatingspring10).<br>When an interpolating spring curve is used, settings for the **duration**, **fill**, **direction**, and **iterations** do not take effect. Rather, the value of **duration** is subject to the spring settings, **fill** is fixed at **forwards**, **direction** at **normal**, and **iterations** at **1**. In addition, invoking [reverse](#reverse) of **animator** is not effective. In other words, when using an interpolating spring curve, the animation can play only once in forward mode.<br>Supported since API version 11 and can be used only in ArkTS.|
 
 ## SimpleAnimatorOptions<sup>18+</sup>
@@ -683,7 +686,7 @@ Sets the playback delay for this animation.
 
 | Name    | Type                                 | Mandatory  | Description     |
 | ------- | ----------------------------------- | ---- | ------- |
-| delay | number | Yes   | Playback delay, in milliseconds. The value **0** indicates no delay. If the value specified is a negative number, the animation starts playing ahead of its scheduled time. If the amount of time by which the playback is advanced is greater than the total duration of the animation, the animation skips to the end state immediately.<br>Default value: **0**|
+| delay | number | Yes   | Playback delay, in milliseconds. The value **0** indicates no delay. If the value specified is a negative number, the animation starts playing ahead of its scheduled time. If the amount of time by which the playback is advanced exceeds the total duration of the animation, the animation immediately skips to its end state.<br>Default value: **0**|
 
 **Return value**
 

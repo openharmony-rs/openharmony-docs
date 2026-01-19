@@ -10,7 +10,9 @@ Used in conjunction with **LazyForEach**, the **Prefetcher** module provides con
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>  - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+>  - The APIs of this module cannot be used in the Previewer.
 
 ## Modules to Import
 
@@ -29,7 +31,7 @@ Provides prefetching capabilities.
 ### setDataSource
 setDataSource(dataSource: IDataSourcePrefetching): void;
 
-Sets the prefetching-capable data source to bind to the **Prefetcher** object.
+Sets the prefetching-capable data source to bind to the **Prefetcher**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -95,7 +97,7 @@ class MyPrefetcher implements IPrefetcher {
 ### constructor
 constructor(dataSource?: IDataSourcePrefetching);
 
-A constructor used to create a data source that supports prefetching to bind to the **Prefetcher**.
+A constructor used to create a prefetching-capable data source to bind to the **Prefetcher**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -110,7 +112,7 @@ A constructor used to create a data source that supports prefetching to bind to 
 ### setDataSource
 setDataSource(dataSource: IDataSourcePrefetching): void;
 
-Sets the prefetching-capable data source to bind to the **Prefetcher** object.
+Sets the prefetching-capable data source to bind to the **Prefetcher**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -140,7 +142,7 @@ Called when the boundaries of the visible area change. This API works with the *
 
 ## IDataSourcePrefetching
 
-Extends the [IDataSource](./arkui-ts/ts-rendering-control-lazyforeach.md#idatasource) API to provide a data source with prefetching capabilities.
+Extends the [IDataSource](./arkui-ts/ts-rendering-control-lazyforeach.md#idatasource) API to add data prefetching capability to your data source.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -283,7 +285,7 @@ class MyDataSource implements IDataSourcePrefetching {
       return;
     }
 
-    // Perform time-consuming operations.
+    // Simulate time-consuming operations.
     return new Promise<void>(resolve => {
       const timeoutId = setTimeout(async () => {
         this.fetches.delete(index);
