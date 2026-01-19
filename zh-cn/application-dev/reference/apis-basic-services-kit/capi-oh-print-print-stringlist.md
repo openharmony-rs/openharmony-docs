@@ -1,4 +1,4 @@
-# Print_Margin
+# Print_StringList
  <!--Kit: Basic Services Kit-->   
  <!--Subsystem: Print-->  
  <!--Owner: @guoshengbang-->  
@@ -7,12 +7,12 @@
  <!--Adviser: @fang-jinxu-->
 
 ```c
-typedef struct {...} Print_Margin
+typedef struct {...} Print_StringList
 ```
 
 ## 概述
 
-表示打印边距。
+表示字符串列表。
 
 **起始版本：** 12
 
@@ -24,10 +24,9 @@ typedef struct {...} Print_Margin
 
 ### 成员变量
 
-| 名称                  | 描述     |
-| --------------------- | -------- |
-| uint32_t leftMargin   | 左边距。 |
-| uint32_t topMargin    | 上边距。 |
-| uint32_t rightMargin  | 右边距。 |
-| uint32_t bottomMargin | 下边距。 |
+| 名称 | 描述 |
+| -- | -- |
+| uint32_t count | 字符串数量。 |
+| char **list | 字符串指针数组。 |
+
 
