@@ -217,6 +217,14 @@ namespace Base64Utils {
 
 <!-- @[line_break_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+// 假设条件语句超出行宽
+if (userCount > MAX_USER_COUNT ||
+  userCount < MIN_USER_COUNT) {
+  doSomething();
+}
+```
+
 ### 多个变量定义和赋值语句不允许写在一行
 
 **【级别】要求**
