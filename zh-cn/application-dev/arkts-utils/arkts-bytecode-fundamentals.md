@@ -125,6 +125,12 @@
 
 示例代码：
 <!-- @[namespaces_Variables_foo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/module_foo.ts) -->  
+
+``` TypeScript
+//module_foo.ts
+export let a: number = 1;
+export let b: number = 2;
+```
 <!-- @[namespaces_Variables_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/module_bar.ts) -->  
 
 ``` TypeScript
