@@ -11,6 +11,23 @@
 1. 定义一个Sendable类，在类属性中存储任务ID。
 
    <!-- @[define_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/utils/Sendable.ets) --> 
+   
+   ``` TypeScript
+   // sendable.ets
+   @Sendable
+   export class SendableTest {
+     // 存储任务ID。
+     private taskId: number = 0;
+   
+     constructor(id: number) {
+       this.taskId = id;
+     }
+   
+     public getTaskId(): number {
+       return this.taskId;
+     }
+   }
+   ```
 
 2. 在UI主线程向TaskPool提交一个延时任务，并在子线程取消该任务。
 
