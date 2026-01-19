@@ -1,4 +1,4 @@
-# 跨设备文件访问
+# 跨设备文件共享和访问
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
@@ -7,6 +7,11 @@
 <!--Adviser: @jinqiuheng-->
 
 分布式文件系统为应用提供了跨设备文件访问的能力，开发者在两个设备上安装同一应用时，通过[基础文件接口](app-file-access.md)，可跨设备读写另一个设备上该应用[分布式目录](app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)（/data/storage/el2/distributedfiles/）下的文件。例如：多设备数据流转的场景，设备组网互联之后，设备A上的应用可访问设备B上的同应用分布式目录下的文件，当期望应用文件被其他设备访问时，只需将文件移动到分布式目录即可。
+
+> **注意**：
+>
+> - [distributedfiles](app-sandbox-directory.md#应用文件目录与应用文件路径)目录为本应用在多设备间共享文件的合集。为避免误删其他设备生成的文件，应用在执行删除操作时，仅对其自身创建的文件进行操作。
+> - [/data/storage/el2/distributedfiles/.remote_share/](app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)目录由系统自动创建并管理。开发者不得手动删除该目录下的文件。该目录中的文件与应用的base目录直接映射（不占用额外存储空间），任何删除操作可能导致base目录中的原始文件永久丢失。
 
 ## 开发步骤
 
