@@ -110,6 +110,16 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 3. 自定义回调函数，示例直接打印元素事件类型及元素深度。
 
    <!-- @[eventTypes_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingEventTypesAndElementInformation.ets) -->
+   
+   ``` TypeScript
+   let str: string = '';
+   function func(name: xml.EventType, value: xml.ParseInfo): boolean {
+     str = name + ' ' + value.getDepth(); // getDepth 获取元素在XML文档中的当前深度
+     console.info(str);
+     // ...
+     return true; // true:继续解析 false:停止解析
+   }
+   ```
 
 4. 设置解析选项，调用parseXml函数。
 
