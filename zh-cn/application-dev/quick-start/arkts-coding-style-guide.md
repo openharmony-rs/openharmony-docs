@@ -204,6 +204,21 @@ namespace Base64Utils {
 
 <!-- @[switch_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+switch (condition) {
+  case 0: {
+    doSomething();
+    break;
+  }
+  case 1: {
+    doOtherthing();
+    break;
+  }
+  default:
+    break;
+}
+```
+
 ### 表达式换行需保持一致性，运算符放行末
 
 **【级别】建议**
