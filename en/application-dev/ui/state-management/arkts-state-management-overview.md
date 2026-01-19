@@ -24,45 +24,7 @@ Custom components have variables. A variable must be decorated by a decorator wh
 
 - State: data that drives UI re-rendering. State data is changed through component event methods, which in turn causes the UI to re-render.
 
-Before implementing state management, you need to understand the basic syntax of the UI paradigm. A review of the following topics would be helpful: [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), [Creating a Custom Component](./arkts-create-custom-components.md).
-
-## Basic Concepts
-
-- State variable: a variable decorated by a state decorator. Its value change will trigger UI re-renders. Example: @State num: number = 1, where @State is a state decorator and **num** is a state variable.
-
-- Regular variable: a variable that is not decorated by a state decorator and is usually used for auxiliary calculation. Its value change will not trigger UI re-renders. In the following example, the **increaseBy** variable is a regular variable.
-
-- Data source/Synchronization source: original source of a state variable, which can be synchronized to different state data. Generally, it is the data passed from the parent component to the child component. In the following example, the data source is **count: 1**.
-
-- Named parameter mechanism: a mechanism where the parent component passes state variables to the child component by specifying parameters. It is the primary means of passing synchronization parameters from the parent component to the child component. Example: **CompA({ aProp: this.aProp })**.
-
-- Initialization from the parent component: a process where the parent component uses the named parameter mechanism to pass specified parameters to the child component. The default value used in local initialization will be overwritten by the value passed from the parent component. Examples:
-
-  ```ts
-  @Component
-  struct MyComponent {
-    @State count: number = 0;
-    private increaseBy: number = 1;
-
-    build() {
-    }
-  }
-
-  @Entry
-  @Component
-  struct Parent {
-    build() {
-      Column() {
-        // Initialization from the parent component: The named parameter specified here will overwrite the default value defined locally.
-        MyComponent({ count: 1, increaseBy: 2 })
-      }
-    }
-  }
-  ```
-
-- Child component initialization: a capability to pass state variables to the child component to initialize the corresponding state variables therein. The example is the same as above.
-
-- Local initialization: a process where a value is assigned to a variable as its default value in the variable declaration. Example: \@State count: number = 0.
+Before implementing state management, you need to understand the basic syntax of the UI paradigm. You are advised to read [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), [State Management Rules](./arkts-state-management-glossary.md), and [Custom Component - Creating a Custom Component](./arkts-create-custom-components.md) in advance.
 
 >**NOTE**
 >
@@ -77,7 +39,7 @@ ArkUI provides two versions of state management: V1 and V2.
 
 ## State Management V1
 
-State management V1 provides a diverse range of decorators for application development.
+State management V1 provides a diverse range of decorators for applicaiton development.
 
 ### State Management V1 Decorators
 
@@ -131,6 +93,13 @@ Decorators for [application-level state management](arkts-application-state-mana
 
 [$$ operator](arkts-two-way-sync.md): creates two-way binding between TypeScript variables and built-in component states.
 
+###  
+
+ 
+
+-  
+
+- [Target Management (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/TargetManagement)
 
 ## State Management V2
 
@@ -159,7 +128,7 @@ State management V2 adopts direct data observation, making the data itself obser
 
 ![arkts-new-state-management](figures/arkts-new-state-management.png)
 
-### State Management V2 Decorators
+### State Management V1 Decorators
 
 State management of V2 provides a new set of decorators.
 
@@ -167,7 +136,7 @@ State management of V2 provides a new set of decorators.
 
 - [\@Trace](arkts-new-observedV2-and-trace.md): \@Trace is used to decorate a property in an \@ObservedV2 class, enabling the property to be observed.
 
-- [\@ComponentV2](arkts-new-componentV2.md): In structs decorated by \@ComponentV2, the following decorators can be used: \@Local, \@Param, \@Event, \@Once, \@Monitor, \@Provider and \@Consumer.
+- [\@ComponentV2](arkts-create-custom-components.md#componentv2): In structs decorated by \@ComponentV2, the following decorators can be used: \@Local, \@Param, \@Event, \@Once, \@Monitor, \@Provider and \@Consumer.
 
 - [\@Local](arkts-new-local.md): An \@Local decorated variable is internal state of the component and cannot be initialized externally.
 
@@ -179,7 +148,7 @@ State management of V2 provides a new set of decorators.
 
 - [\@Monitor](arkts-new-monitor.md): \@Monitor is used in custom components decorated with \@ComponentV2 or classes decorated with \@ObservedV2 to implement deep observation on state variables.
 
-- [\@Provider and \@Consumer](arkts-new-provider-and-consumer.md): These decorators are used to implement two-way synchronization across component levels.
+- [\@Provider and \@Consumer](arkts-new-provider-and-consumer.md): used for cross-component-level bidirectional synchronization.
 
 - [\@Computed](arkts-new-computed.md): An \@Computed decorated method is a computed property, for which computation is performed only once when the value changes. It is mainly used to solve the performance problem caused by repeated computation when the UI reuses the property multiple times.
 
@@ -213,4 +182,3 @@ State management of V2 provides a new set of decorators.
 | animateTo | Partial support| When **animateTo** is used in V2, exceptions may occur under certain scenarios. For details, see [Using animateTo Failed in State Management V2](./arkts-new-local.md#using-animateto-failed-in-state-management-v2).|
 
 For details about how to migrate applications from V1 to V2, see [Migrating Applications from V1 to V2](./arkts-v1-v2-migration.md).<br>For details about how to use decorators of V1 and V2 together, see [Mixing Use of Custom Components](./arkts-custom-component-mixed-scenarios.md).
-<!--no_check-->
