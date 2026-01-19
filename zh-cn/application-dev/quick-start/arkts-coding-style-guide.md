@@ -502,6 +502,13 @@ function foo4() {
 **【正例】**
 
 <!-- @[array_methods_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+const numbers = [1, 2, 3, 4, 5];
+// ...
+// better: 使用map方法是更好的方式
+const increasedByOne2: number[] = numbers.map(num => num + 1);
+```
 <!-- @[finally_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
