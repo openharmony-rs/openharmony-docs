@@ -28,7 +28,6 @@
   - [@ohos.file.cloudSync (端云同步能力)(系统接口)](js-apis-file-cloudsync-sys.md)
   - [@ohos.file.cloudSyncManager (端云同步管理)(系统接口)](js-apis-file-cloudsyncmanager-sys.md)
   - [@ohos.file.environment (目录环境能力)(系统接口)](js-apis-file-environment-sys.md)
-  - [@ohos.file.fileAccess (公共文件访问与管理)(系统接口)](js-apis-fileAccess-sys.md)
   - [@ohos.file.keyManager (用户密钥管理)(系统接口)](js-apis-file-keymanager-sys.md)
   - [@ohos.file.picker (选择器)(系统接口)](js-apis-file-picker-sys.md)
   - [@ohos.file.storageStatistics (应用空间统计)(系统接口)](js-apis-file-storage-statistics-sys.md)
