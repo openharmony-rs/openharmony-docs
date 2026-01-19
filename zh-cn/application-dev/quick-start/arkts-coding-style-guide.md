@@ -615,6 +615,16 @@ class C1 {
 
 <!-- @[accessible_modifiers_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+class C2 {
+  private count: number = 0
+
+  public getCount(): number {
+    return this.count
+  }
+}
+```
+
 ### 不建议省略浮点数小数点前后的0
 
 **【级别】建议**
