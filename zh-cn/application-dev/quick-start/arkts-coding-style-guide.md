@@ -551,6 +551,13 @@ let obj1: I = getObject1(123);
 **【正例】**
 
 <!-- @[assignValues_expressions_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+const isFoo = false; // 在上面赋值，if条件判断中直接使用
+if (isFoo) {
+  // ...
+}
+```
 <!-- @[noESObject_lib_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/lib.ets) -->  
 
 ``` TypeScript
