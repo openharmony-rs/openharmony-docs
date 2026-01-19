@@ -76,6 +76,19 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 2. 对XML文本编码后调用XmlPullParser。
 
    <!-- @[attribute_xmlPullParser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingAttributesAndValues.ets) -->
+   
+   ``` TypeScript
+   let strXml: string =
+     '<?xml version="1.0" encoding="utf-8"?>' +
+       '<note importance="high" logged="true">' +
+       '    <title>Play</title>' +
+       '    <title>Happy</title>' +
+       '    <lens>Work</lens>' +
+       '</note>';
+   let textEncoder: util.TextEncoder = new util.TextEncoder();
+   let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // 对数据进行编码，防止中文字符乱码
+   let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+   ```
 
 3. 自定义回调函数，示例直接打印出属性及属性值。
 
