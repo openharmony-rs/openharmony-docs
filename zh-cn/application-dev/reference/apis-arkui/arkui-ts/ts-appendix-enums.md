@@ -701,6 +701,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 定义触摸测试的响应逻辑及节点阻塞规则。
 
+> **说明：**
+>
+> 当Stack组件中有多个节点触摸区域重叠时，如果最上层节点的子组件命中，则默认只会对显示在最上层的节点做触摸测试。此时只有给显示在最上层的节点设置[hitTestBehavior](./ts-universal-attributes-hit-test-behavior.md#hittestbehavior)为HitTestMode.Transparent时，才能使显示在下层的节点触发触摸测试。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 说明                                       |
