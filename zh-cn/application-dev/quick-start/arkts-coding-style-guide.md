@@ -143,6 +143,14 @@ namespace Base64Utils {
 
 <!-- @[boolean_guide_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+let isNoError = true;
+let isNotFound = false;
+
+function empty() {}
+function next() {}
+```
+
 **【正例】**
 
 <!-- @[boolean_guide_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
