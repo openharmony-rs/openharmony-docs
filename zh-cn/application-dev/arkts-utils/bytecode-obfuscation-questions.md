@@ -270,17 +270,6 @@ export default struct TmsDialog {
 }
 ```
 
-``` TypeScript
-@CustomDialog
-export default struct TmsDialog {
-  controller?: CustomDialogController
-  dialogController:CustomDialogController|null = null;  // 修改此处的定义声明方式。
-
-  build() {
-  }
-}
-```
-
 示例代码1中，在运行时，是无法正常弹出dialogController的，只需要在定义时改为解决方案中的代码，就可以正常弹出dialogController，同时字节码混淆功能正常；
 
 示例代码2中，由于我们只是使用CustomDialogController，因此不需要@CustomDialog，直接删除@CustomDialog即可，删除后功能正常，字节码混淆功能正常。
@@ -343,6 +332,19 @@ import { Want } from '@kit.AbilityKit';
   }
 ```
 
+``` TypeScript
+// 混淆后
+import type Want from "@ohos:app.ability.Want";
+
+let petalMapWant: Want = {
+    bundleName: 'com.example.myapplication',
+    uri: 'maps://',
+    parameters: {
+        i: 'com.other.app'
+    }
+};
+```
+
 **问题原因**：
 
 在这个示例中，所创建的对象的内容需要传递给系统来加载某个页面，因此对象中的属性名称不能被混淆，否则会造成功能异常。示例中parameters的类型为Record<string, Object>，这只是一个表示以字符串为键的对象的泛型定义，并没有详细描述其内部结构和属性类型。因此，混淆工具无法识别该对象内部哪些属性不应被混淆，从而可能导致内部属性名linkSource被混淆。
@@ -362,7 +364,7 @@ linkSource
 
 使用@Type和@Trace组合修饰的装饰器属性，可以正常混淆，但混淆后，功能异常。
 
-<!-- @[export_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->    
+<!-- @[export_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample2.ets) -->    
 
 <!-- @[call_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/a.ets) -->
 
@@ -414,18 +416,6 @@ p123
 
 并且在file2.ts中导入file1.ts的接口。此时，接口中有属性的类型为对象类型，该对象类型的属性在file1.ts中被保留，在file2.ts中被混淆，从而导致调用时引发功能异常。示例如下：
 
-```ts
-// 混淆前
-// file1.ts
-export interface MyInfo {
-    age: number;
-    address: {
-        city1: string;
-    }
-}
-// file2.ts
-import { MyInfo } from './file1';
-
 <!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->
 
 ``` TypeScript
@@ -438,15 +428,7 @@ export interface MyInfo {
   }
 }
 ```
-    age: 20,
-    address: {
-        city1: "shanghai"
-    }
-}
 
-// 混淆后，file1.ts的代码被保留
-// file2.ts
-import { MyInfo } from './file1';
 <!-- @[import_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
 
 ``` TypeScript
@@ -460,172 +442,18 @@ import { MyInfo } from './file1';
     }
   }
 ```
+
+``` TypeScript
+// 混淆后，file1.ts的代码被保留
+// file2.ts
+import { MyInfo } from './file1';
+
 const person: MyInfo = {
     age: 20,
     address: {
         i: "shanghai"
     }
 }
-```
-
-<!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->
-
-<!-- @[import_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
-
-``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
-  const person: MyInfo = {
-    age: 20,
-    address: {
-      city1: 'shanghai'
-    }
-  }
-```
-
-``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
-  const person: MyInfo = {
-    age: 20,
-    address: {
-      city1: 'shanghai'
-    }
-  }
-```
-
-``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
-  const person: MyInfo = {
-    age: 20,
-    address: {
-      city1: 'shanghai'
-    }
-  }
-```
-
-``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
-  const person: MyInfo = {
-    age: 20,
-    address: {
-      city1: 'shanghai'
-    }
-  }
-```
-
-``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
-  const person: MyInfo = {
-    age: 20,
-    address: {
-      city1: 'shanghai'
-    }
-  }
-```
-
-``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
-  const person: MyInfo = {
-    age: 20,
-    address: {
-      city1: 'shanghai'
-    }
-  }
-```
-
-``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
-  const person: MyInfo = {
-    age: 20,
-    address: {
-      city1: 'shanghai'
-    }
-  }
-```
-
-``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
-  const person: MyInfo = {
-    age: 20,
-    address: {
-      city1: 'shanghai'
-    }
-  }
-```
-
-``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
-  const person: MyInfo = {
-    age: 20,
-    address: {
-      city1: 'shanghai'
-    }
-  }
-```
-
-``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
-  const person: MyInfo = {
-    age: 20,
-    address: {
-      city1: 'shanghai'
-    }
-  }
-```
-
-``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
-  const person: MyInfo = {
-    age: 20,
-    address: {
-      city1: 'shanghai'
-    }
-  }
-```
-
-``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
-  const person: MyInfo = {
-    age: 20,
-    address: {
-      city1: 'shanghai'
-    }
-  }
-```
-
-``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
-  const person: MyInfo = {
-    age: 20,
-    address: {
-      city1: 'shanghai'
-    }
-  }
 ```
 
 **问题原因**:
@@ -671,33 +499,9 @@ HSP需要将给其他模块用的方法配置到白名单中。因为主模块�
 
 **案例一：动态导入某个类，类定义的地方被混淆，导入类名时却没有混淆，导致报错**
 
-<!-- @[export_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/utils.ts) -->
+<!-- @[export_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/utils.ts) -->    
 
 <!-- @[import_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
-
-``` TypeScript
-// main.ts
-async function loadAndUseAdd() {
-  let result: number = 0;
-  try {
-    const mathUtils = await import('./utils');
-    result = mathUtils.add(2, 3);
-    console.info(`result = ${result}`);
-  } catch (error) {
-    console.error('Failure reason:', error);
-  }
-}
-// ...
-            loadAndUseAdd();
-```
-        const b1 = a1.add(2, 3);
-    }
-    catch (z) {
-        console.error('Failure reason:', z);
-    }
-}
-i();
-```
 
 函数add在定义时位于顶层作用域，但通过.add访问时被视为属性。由于未开启-enable-property-obfuscation选项，导致add被使用时未进行混淆。
 
@@ -731,6 +535,19 @@ import { NS } from './export';
   NS.foo();
 ```
 
+``` TypeScript
+// 混淆后
+// export.ts
+export namespace i {
+    export function j() {}
+}
+
+// import.ts
+import { i } from './export';
+
+i.foo();
+```
+
 namespace中的foo属于export元素，当通过NS.foo调用时被视为属性。由于未开启-enable-property-obfuscation选项，导致foo在使用时未被混淆。
 
 **解决方案**：
@@ -740,18 +557,6 @@ namespace中的foo属于export元素，当通过NS.foo调用时被视为属性�
 
 **案例三：使用了declare global，混淆后报语法错误**
 
-```ts
-// file.ts
-// 混淆前
-declare global {
-    var myAge : string
-}
-
-// 混淆后
-declare a2 {
-    var b2 : string
-}
-```
 <!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->
 
 ``` TypeScript
@@ -759,6 +564,13 @@ declare a2 {
 // 混淆前。
 declare global {
   var myAge : string
+}
+```
+
+```ts
+// 混淆后
+declare a2 {
+    var b2 : string
 }
 ```
 
