@@ -14,6 +14,13 @@ TaskPool支持使用异步队列来控制任务的并发度，能有效避免资
 
 1. 导入需要用到的模块。
    <!-- @[taskpool_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolAsyncLevel.ets) -->   
+   
+   ``` TypeScript
+   // TaskpoolAsyncLevel.ets
+   import { taskpool } from '@kit.ArkTS';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { PromptAction } from '@kit.ArkUI';
+   ```
 
 2. 定义耗时任务。
 
