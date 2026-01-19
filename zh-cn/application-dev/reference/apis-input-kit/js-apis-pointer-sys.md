@@ -4533,7 +4533,7 @@ ArkTS-Sta: setPointerColor(color: int, callback: AsyncCallback&lt;void&gt;): voi
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| color     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 鼠标光标颜色，默认为黑色：0x000000。   |
+| color     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 鼠标光标颜色，默认为黑色：0x00000000。格式为ARGB，A为透明度，取值范围0-255。例如:0x013F2C4B,01代表透明度。数字越大，透明度越高，颜色越透明，当透明度为负数时也支持。例如color等于-1时，对应的color是0xFFFFFFFF。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，当设置成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -4625,7 +4625,7 @@ ArkTS-Sta: setPointerColor(color: int): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| color  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标颜色，默认为黑色：0x000000。 |
+| color  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标颜色，默认为黑色：0x00000000。格式为ARGB，A为透明度，取值范围0-255。例如:0x013F2C4B,01代表透明度。数字越大，透明度越高，颜色越透明，当透明度为负数时也支持。例如color等于-1时，对应的color是0xFFFFFFFF。 |
 
 **返回值**：
 
@@ -4720,7 +4720,7 @@ ArkTS-Sta: setPointerColorSync(color: int): void
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| color  |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标颜色，默认为黑色：0x000000。 |
+| color  |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标颜色，默认为黑色：0x00000000。格式为ARGB，A为透明度，取值范围0-255。例如:0x013F2C4B,01代表透明度。数字越大，透明度越高，颜色越透明，当透明度为负数时也支持。例如color等于-1时，对应的color是0xFFFFFFFF。 |
 
 **错误码**：
 
