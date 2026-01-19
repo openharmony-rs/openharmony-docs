@@ -86,7 +86,7 @@ libhid.z.so
 
 1. 创建设备。
 
-    使用 **hid_ddk_api.h** 的 **OH_Hid_CreateDevice** 接口创建HID设备，成功返回设备deviceId，失败返回[Hid_DdkErrCode](../../reference/apis-driverdevelopment-kit/capi-hid-ddk-types-h.md#hid_ddkerrcode)。
+   使用 **hid_ddk_api.h** 的 **OH_Hid_CreateDevice** 接口创建HID设备，成功返回设备deviceId，失败返回[Hid_DdkErrCode](../../reference/apis-driverdevelopment-kit/capi-hid-ddk-types-h.md#hid_ddkerrcode)。
 
    <!-- @[driver_hid1_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/inject_thread.cpp) --> 
    
@@ -130,7 +130,7 @@ libhid.z.so
 
 3. 释放资源。
 
-  在所有请求处理完毕，程序退出前，使用 **hid_ddk_api.h** 的 **OH_Hid_DestroyDevice** 接口销毁HID设备。
+   在所有请求处理完毕，程序退出前，使用 **hid_ddk_api.h** 的 **OH_Hid_DestroyDevice** 接口销毁HID设备。
 
    <!-- @[driver_hid1_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/inject_thread.cpp) --> 
    
@@ -164,7 +164,7 @@ libhid.z.so
    <!-- @[driver_hid_report_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
    
    ``` C++
-   // 初始化HidDdk
+   // 初始化HID DDK
    int32_t ret = OH_Hid_Init();
    if (ret != HID_DDK_SUCCESS) {
        OH_LOG_ERROR(LOG_APP, "OH_Hid_Init() return failed: %{public}d", ret);
