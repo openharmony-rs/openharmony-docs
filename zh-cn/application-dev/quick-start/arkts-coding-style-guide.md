@@ -498,6 +498,15 @@ let obj2: I = {
 
 <!-- @[put_else_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+if (isOk) {
+  doThing1();
+  doThing2();
+} else {
+  doThing3();
+}
+```
+
 **【反例】**
 
 <!-- @[put_catch_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
