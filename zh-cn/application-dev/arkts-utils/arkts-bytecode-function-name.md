@@ -143,3 +143,17 @@ namespace A {
 **开发者应尽量避免使用除字母、数字、下划线以外的字符命名函数，以免出现二义性。**
 ## 示例
 <!-- @[avoid_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+namespace A { // namespace在字节码中的函数名为"#&#A"。
+  class B { // 构造函数在字节码中的函数名为"#&A~B=#B"。
+    m() { // 函数m在字节码中的函数名为"#&A~B>#m"。
+      return () => {} // 匿名函数在字节码中的函数名为"#&A~B>m*#"。
+    }
+    static s() {} // 静态函数s在字节码中的函数名为"#&A~B<#s"。
+  }
+  enum E { // enum在字节码中的函数名为"#&A%#E"。
+
+  }
+}
+```
