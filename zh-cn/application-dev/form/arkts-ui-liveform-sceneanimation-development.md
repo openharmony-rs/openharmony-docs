@@ -72,144 +72,6 @@
 
 2. 实现互动卡片页面
 
-<<<<<<< HEAD
-   <!-- @[liveform_MyLiveFormPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets) -->
-    
-    ``` TypeScript
-    // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
-    import { formInfo, formProvider } from '@kit.FormKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { common } from '@kit.AbilityKit';
-    // Constants实现参考“互动卡片动效工具函数实现”小节
-    import { Constants } from '../../common/Constants';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    
-    const ANIMATION_RECT_SIZE: number = 100;
-    const END_SCALE: number = 1.5;
-    const END_TRANSLATE: number = -300;
-    const DOMAIN = 0x0000;
-    
-    @Entry
-    @Component
-    struct MyLiveFormPage {
-      @State columnScale: number = 1.0;
-      @State columnTranslate: number = 0.0;
-    
-      private uiContext: UIContext | undefined = undefined;
-      private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
-      private formId: string | undefined = undefined;
-      private formRect: formInfo.Rect | undefined = undefined;
-      private formBorderRadius: number | undefined = undefined;
-      private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
-    
-      aboutToAppear(): void {
-        this.uiContext = this.getUIContext();
-        if (!this.uiContext) {
-          hilog.error(DOMAIN, 'testTag', 'no uiContext');
-          return;
-        }
-        this.initParams();
-      }
-    
-      private initParams(): void {
-        this.storageForMyLiveFormPage = this.uiContext?.getSharedLocalStorage();
-        this.formId = this.storageForMyLiveFormPage?.get<string>('formId');
-        this.formRect = this.storageForMyLiveFormPage?.get<formInfo.Rect>('formRect');
-        this.formBorderRadius = this.storageForMyLiveFormPage?.get<number>('borderRadius');
-        this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
-      }
-    
-      // 执行动效
-      private runAnimation(): void {
-        this.uiContext?.animateTo({
-          duration: Constants.OVERFLOW_DURATION,
-          curve: Curve.Ease
-        }, () => {
-          this.columnScale = END_SCALE;
-          this.columnTranslate = END_TRANSLATE;
-        });
-      }
-    
-      private startAbilityByLiveForm(): void {
-        try {
-          // 请开发者替换为实际的want信息
-          this.liveFormContext?.startAbilityByLiveForm({
-            bundleName: 'com.samples.formlivedemo',
-            abilityName: 'EntryAbility',
-          })
-            .then(() => {
-              hilog.info(DOMAIN, 'testTag', 'startAbilityByLiveForm succeed');
-            })
-            .catch((err: BusinessError) => {
-              hilog.error(DOMAIN, 'testTag', `startAbilityByLiveForm failed, code is ${err?.code}, message is ${err?.message}`);
-            });
-        } catch (e) {
-          hilog.error(DOMAIN, 'testTag', `startAbilityByLiveForm failed, code is ${e?.code}, message is ${e?.message}`);
-        }
-      }
-    
-      build() {
-        Stack({alignContent: Alignment.TopStart}) {
-          // 背景组件和普通卡片一样大
-          Column()
-            .width(this.formRect? this.formRect.width : 0)
-            .height(this.formRect? this.formRect.height : 0)
-            .offset({
-              x: this.formRect? this.formRect.left : 0,
-              y: this.formRect? this.formRect.top : 0,
-            })
-            .borderRadius(this.formBorderRadius ? this.formBorderRadius : 0)
-            .backgroundColor('#2875F5')
-          Stack() {
-            this.buildContent();
-          }
-          .width('100%')
-          .height('100%')
-        }
-        .width('100%')
-        .height('100%')
-        .onClick(() => {
-          hilog.info(DOMAIN, 'testTag', 'MyLiveFormPage click to start ability');
-          if (!this.liveFormContext) {
-            hilog.info(DOMAIN, 'testTag', 'MyLiveFormPage liveFormContext is empty');
-            return;
-          }
-          this.startAbilityByLiveForm();
-        })
-      }
-    
-      @Builder
-      buildContent() {
-        Stack()
-          .width(ANIMATION_RECT_SIZE)
-          .height(ANIMATION_RECT_SIZE)
-          .backgroundColor(Color.White)
-          .scale({
-            x: this.columnScale,
-            y: this.columnScale,
-          })
-          .translate({
-            y: this.columnTranslate
-          })
-          .onAppear(() => {
-            // 在页面出现时执行动效
-            this.runAnimation();
-          })
-        // $r('app.string.button_cancel')需要在相应的资源文件string.json中定义
-        Button($r('app.string.button_cancel'))
-          .backgroundColor(Color.Grey)
-          .onClick(() => {
-            if (!this.formId) {
-              hilog.info(DOMAIN, 'testTag', 'MyLiveFormPage formId is empty, cancel overflow failed');
-              return;
-            }
-            hilog.info(DOMAIN, 'testTag', 'MyLiveFormPage cancel overflow animation');
-            formProvider.cancelOverflow(this.formId);
-          })
-      }
-    }
-    ```
-=======
    <!-- @[liveform_MyLiveFormPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets) --> 
    
    ``` TypeScript
@@ -346,8 +208,6 @@
      }
    }
    ```
->>>>>>> 75793accd51 (示例代码格式化)
-
 
 3. 互动卡片LiveFormExtensionAbility配置
 
@@ -534,30 +394,6 @@
 
 2. 互动卡片动效工具函数实现
 
-<<<<<<< HEAD
-   <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) -->
-    
-    ``` TypeScript
-    // entry/src/main/ets/common/Constants.ets
-    // 动效相关常量的开发
-    export class Constants {
-      // 互动卡片动效超范围，左侧偏移百分比 = 偏移值/卡片宽度
-      public static readonly OVERFLOW_LEFT_RATIO: number = 0.1;
-    
-      // 互动卡片动效超范围，上侧偏移百分比 = 偏移值/卡片高度
-      public static readonly OVERFLOW_TOP_RATIO: number = 0.15;
-    
-      // 互动卡片动效超范围，宽度放大百分比
-      public static readonly OVERFLOW_WIDTH_RATIO: number = 1.2;
-    
-      // 互动卡片动效超范围，高度放大百分比
-      public static readonly OVERFLOW_HEIGHT_RATIO: number = 1.3;
-    
-      // 互动卡片动效超范围，动效时长
-      public static readonly OVERFLOW_DURATION: number = 3500;
-    }
-    ```
-=======
    <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) --> 
    
    ``` TypeScript
@@ -576,7 +412,6 @@
      public static readonly OVERFLOW_DURATION: number = 3500;
    }
    ```
->>>>>>> 75793accd51 (示例代码格式化)
 
 
 3. 需要的资源文件string.json
