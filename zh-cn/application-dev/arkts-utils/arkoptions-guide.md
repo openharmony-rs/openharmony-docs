@@ -47,7 +47,14 @@ types字段支持填写包名、包所在位置的相对路径以及声明文件
 <!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/global.d.ts) --> 
 
 ``` TypeScript
-declare namespace Global {
+<!-- @[call_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+// 在entry/src/main/ets/pages/Index.ets
+let a: Chai.Message;
+let b: Mocha.HookFunction;
+let c: Global.ObjectType;
+```
   type ObjectType = string | number;
 }
 ```
