@@ -1042,9 +1042,9 @@ observer.off('iccAccountInfoChange');
 ```
 
 
-## observer.onGetSIMActiveState<sup>10+</sup>
+## observer.onGetSimActiveState<sup>10+</sup>
 
-onGetSIMActiveState\(slotId: number, callback: Callback\<boolean\>\): void
+onGetSimActiveState\(slotId: number, callback: Callback\<boolean\>\): void
 
 SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 
@@ -1055,7 +1055,7 @@ SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 |     名称            |         类型      | 只读 | 可选 | 说明                                    |
 | ------------------- | ------------------| ---- | ---- | --------------------------------------- |
 | slotId              | number            | 否   | 否   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
-|callback  | Callback&lt;boolean&gt;|否|否| 以callback形式返回结果。br/>- true：激活。<br/>- false：未激活。|
+|callback  | Callback&lt;boolean&gt;|否|否| 以callback形式返回结果。<br/>- true：激活。<br/>- false：未激活。|
 
 **错误码：**
 
@@ -1094,8 +1094,7 @@ offGetSimActiveState\(callback: Callback\<boolean\>\): void
 
 |     名称            |         类型      | 只读 | 可选 | 说明                                    |
 | ------------------- | ------------------| ---- | ---- | --------------------------------------- |
-
-|callback  | Callback&lt;boolean&gt;|否|否| 以callback形式返回结果。br/>- true：激活。<br/>- false：未激活。|
+|callback  | Callback&lt;boolean&gt;|否|否| 以callback形式返回结果。<br/>- true：激活。<br/>- false：未激活。|
 
 **错误码：**
 
