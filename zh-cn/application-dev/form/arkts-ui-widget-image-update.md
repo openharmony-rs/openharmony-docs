@@ -159,63 +159,63 @@
 5. 在卡片页面通过backgroundImage属性展示EntryFormAbility传递过来的卡片内容。
 
    <!-- @[widget_image_update_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets) --> 
-    
-    ``` TypeScript
-    // entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets
-    let storageWidgetImageUpdate = new LocalStorage();
-    
-    @Entry(storageWidgetImageUpdate)
-    @Component
-    struct WidgetImageUpdateCard {
-      // $r('app.string.loading')需要替换为开发者所需的资源文件
-      @LocalStorageProp('text') text: ResourceStr = $r('app.string.loading');
-      @LocalStorageProp('loaded') loaded: boolean = false;
-      // $r('app.string.imgName')需要替换为开发者所需的资源文件
-      @LocalStorageProp('imgName') imgName: ResourceStr = $r('app.string.imgName');
-    
-      build() {
-        Column() {
-          Column() {
-            Text(this.text)
-              .fontColor('#FFFFFF')
-              .opacity(0.9)
-              .fontSize(12)
-              .textOverflow({ overflow: TextOverflow.Ellipsis })
-              .maxLines(1)
-              .margin({ top: '8%', left: '10%' })
-          }.width('100%').height('50%')
-          .alignItems(HorizontalAlign.Start)
-    
-          Row() {
-            Button() {
-              // $r('app.string.update')需要替换为开发者所需的资源文件
-              Text($r('app.string.update'))
-                .fontColor('#45A6F4')
-                .fontSize(12)
-            }
-            .width(120)
-            .height(32)
-            .margin({ top: '30%', bottom: '10%' })
-            .backgroundColor('#FFFFFF')
-            .borderRadius(16)
-            .onClick(() => {
-              postCardAction(this, {
-                action: 'message',
-                params: {
-                  info: 'refreshImage'
-                }
-              });
-            })
-          }.width('100%').height('40%')
-          .justifyContent(FlexAlign.Center)
-        }
-        .width('100%').height('100%')
-        // $r('app.media.ImageDisp')需要替换为开发者所需的资源文件
-        .backgroundImage(this.loaded ? 'memory://' + this.imgName : $r('app.media.ImageDisp'))
-        .backgroundImageSize(ImageSize.Cover)
-      }
-    }
-    ```
+   
+   ``` TypeScript
+   // entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets
+   let storageWidgetImageUpdate = new LocalStorage();
+   
+   @Entry(storageWidgetImageUpdate)
+   @Component
+   struct WidgetImageUpdateCard {
+     // $r('app.string.loading')需要替换为开发者所需的资源文件
+     @LocalStorageProp('text') text: ResourceStr = $r('app.string.loading');
+     @LocalStorageProp('loaded') loaded: boolean = false;
+     // $r('app.string.imgName')需要替换为开发者所需的资源文件
+     @LocalStorageProp('imgName') imgName: ResourceStr = $r('app.string.imgName');
+   
+     build() {
+       Column() {
+         Column() {
+           Text(this.text)
+             .fontColor('#FFFFFF')
+             .opacity(0.9)
+             .fontSize(12)
+             .textOverflow({ overflow: TextOverflow.Ellipsis })
+             .maxLines(1)
+             .margin({ top: '8%', left: '10%' })
+         }.width('100%').height('50%')
+         .alignItems(HorizontalAlign.Start)
+   
+         Row() {
+           Button() {
+             // $r('app.string.update')需要替换为开发者所需的资源文件
+             Text($r('app.string.update'))
+               .fontColor('#45A6F4')
+               .fontSize(12)
+           }
+           .width(120)
+           .height(32)
+           .margin({ top: '30%', bottom: '10%' })
+           .backgroundColor('#FFFFFF')
+           .borderRadius(16)
+           .onClick(() => {
+             postCardAction(this, {
+               action: 'message',
+               params: {
+                 info: 'refreshImage'
+               }
+             });
+           })
+         }.width('100%').height('40%')
+         .justifyContent(FlexAlign.Center)
+       }
+       .width('100%').height('100%')
+       // $r('app.media.ImageDisp')需要替换为开发者所需的资源文件
+       .backgroundImage(this.loaded ? 'memory://' + this.imgName : $r('app.media.ImageDisp'))
+       .backgroundImageSize(ImageSize.Cover)
+     }
+   }
+   ```
 
 > **说明：**
 >
