@@ -359,6 +359,35 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | MOVING_PHOTO_ENABLED | 1    | 打开动态照片效果。 |
 | MOVING_PHOTO_DISABLED | 2   | 关闭动态照片效果。 |
 
+## SceneType<sup>23+</sup>
+
+枚举，动态照片播放的场景。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                | 值   | 说明             |
+|------------------- |--------|----------------------|
+| GRID_TO_PHOTO_BROWSER   | 0      | 从宫格点击进入大图。 |
+| PHOTO_BROWSER_SWIPE | 1    | 在大图场景左右滑动。 |
+
+## PlayMode<sup>23+</sup>
+
+枚举，是否支持动态照片自动播放。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                | 值   | 说明             |
+|------------------- |--------|----------------------|
+| DEFAULT   | 0      | 不支持动态照片自动播放。 |
+| AUTO_PLAY | 1    | 支持动态照片自动播放。 |
 
 ## VideoMode<sup>22+</sup>
 
