@@ -11887,7 +11887,7 @@ async function example(context: Context) {
 | HIDE_LOCATION_ONLY |  1 |  脱敏地理位置信息。 |
 | HIDE_SHOOTING_PARAM_ONLY |  2 |  脱敏拍摄参数。 |
 | NO_HIDE_SENSITIVE_TYPE |  3 |  不脱敏。 |
-| DEFAULT<sup>23+</sup> |  4 |  根据[ohos.permission.MEDIA_LOCATION](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限进行脱敏。规格为：<br>- 有ohos.permission.MEDIA_LOCATION权限：不脱敏。<br>- 无ohos.permission.MEDIA_LOCATION权限：脱敏地理位置信息。
+| DEFAULT<sup>23+</sup> |  4 |  根据[ohos.permission.MEDIA_LOCATION](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限进行脱敏。规格为：<br>- 有ohos.permission.MEDIA_LOCATION权限：不脱敏。<br>- 无ohos.permission.MEDIA_LOCATION权限：脱敏地理位置信息。|
 
 ## CloudEnhancementTaskStage<sup>13+</sup>
 
