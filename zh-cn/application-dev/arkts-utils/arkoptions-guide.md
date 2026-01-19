@@ -56,6 +56,12 @@ types字段支持填写包名、包所在位置的相对路径以及声明文件
 <!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/global.d.ts) --> 
 
 ``` TypeScript
+declare namespace Global {
+  type ObjectType = string | number;
+}
+```
+
+通过types全局引入后，对全局类型的使用示例如下：
 <!-- @[call_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
@@ -64,12 +70,6 @@ let a: Chai.Message;
 let b: Mocha.HookFunction;
 let c: Global.ObjectType;
 ```
-  type ObjectType = string | number;
-}
-```
-
-通过types全局引入后，对全局类型的使用示例如下：
-<!-- @[call_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/Index.ets) --> 
 
 ## maxFlowDepth
 
