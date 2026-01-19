@@ -1,5 +1,12 @@
 # 智能语音错误码
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @y00416036-->
+<!--Designer: @jinjunwen-->
+<!--Tester: @gx1016-->
+<!--Adviser: @fang-jinxu-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
