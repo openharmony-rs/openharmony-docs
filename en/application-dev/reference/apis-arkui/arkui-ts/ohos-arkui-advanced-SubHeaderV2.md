@@ -36,14 +36,7 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 
 ## SubHeaderV2
 
-SubHeaderV2({
-icon?: SubHeaderV2IconType,
-title?: SubHeaderV2Title,
-select?: SubHeaderV2Select,
-operationType?: SubHeaderV2OperationType,
-operationItems?: SubHeaderV2OperationItem[],
-titleBuild?: SubHeaderV2TitleBuilder;
-})
+SubHeaderV2({ icon?: SubHeaderV2IconType, title?: SubHeaderV2Title, select?: SubHeaderV2Select, operationType?: SubHeaderV2OperationType, operationItems?: SubHeaderV2OperationItem[], titleBuild?: SubHeaderV2TitleBuilder; })
 
 The **SubHeader** component represents a subheader that signifies the top of a list or the beginning a subdivision of content and tells the user what the list or subdivision is about.
 
@@ -88,8 +81,6 @@ Defines the title settings for the subheader.
 
 ### Properties
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
@@ -122,8 +113,6 @@ A constructor used to create a **SubHeaderV2Title** object.
 ## SubHeaderV2TitleOptions
 
 Defines the options for initializing a **SubHeaderV2Title** object.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -174,7 +163,7 @@ A constructor used to create a **SubHeaderV2SelectOptions** object.
 
 | Name   | Type                           | Mandatory| Description            |
 | --------- |-------------------------------| ------ | ------------------ |
-| options | [SubHeaderV2SelectOptions](#subheaderv2selectoptions) | Yes  | Configuration options of the drop-down list box.|
+| options | [SubHeaderV2SelectOptions](#subheaderv2selectoptions) | Yes  | Options of the drop-down list box.|
 
 ## SubHeaderV2SelectOptions
 
@@ -286,7 +275,7 @@ A constructor used to create a **SubHeaderV2OperationItem** object.
 
 | Name   | Type                                                                 | Mandatory| Description            |
 | --------- |---------------------------------------------------------------------| ------ | ------------------ |
-| options | [SubHeaderV2OperationItemOptions](#subheaderv2operationitemoptions) | Yes  | Configuration options of the operation item.|
+| options | [SubHeaderV2OperationItemOptions](#subheaderv2operationitemoptions) | Yes  | Options of the drop-down list box.|
 
 ## SubHeaderV2OperationItemAction
 

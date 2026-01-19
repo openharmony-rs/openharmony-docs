@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Stepper** component provides a step navigator, suitable for guiding users through a step-by-step task completion process.
 
@@ -227,6 +227,4 @@ struct StepperExample {
   }
 }
 ```
-
-
 ![stepper](figures/stepper.gif)

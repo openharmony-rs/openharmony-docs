@@ -382,6 +382,22 @@ Obtains the minimum duration required for the long press gesture to be recognize
 | ------ | --------- |
 | number | Minimum duration, in ms.<br>Value range: [0, +∞).|
 
+### getAllowableMovement<sup>22+</sup>
+
+getAllowableMovement(): number
+
+Obtains the maximum movement distance allowed for gesture recognition by the long press gesture recognizer.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type     | Description        |
+| ------ | --------- |
+| number | Maximum movement distance recognized by the long press gesture recognizer, in px.<br/>Value range: (0, +∞). |
+
 ## SwipeRecognizer<sup>18+</sup>
 
 Implements a swipe gesture recognizer. Inherits from [GestureRecognizer](#gesturerecognizer12).
@@ -599,6 +615,8 @@ Enumerates gesture competition results.
 ## GestureType<sup>11+</sup>
 
 Enumerates gesture recognizer types.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
