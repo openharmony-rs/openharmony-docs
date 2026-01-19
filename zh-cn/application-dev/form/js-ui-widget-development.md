@@ -61,15 +61,15 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 1. 在JsCardFormAbility.ets中，导入相关模块。
 
    <!-- @[JSForm_JsCardFormAbility_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
-    
-    ``` TypeScript
-    // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
-    import { common, Want } from '@kit.AbilityKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { formBindingData, FormExtensionAbility, formProvider } from '@kit.FormKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { preferences } from '@kit.ArkData';
-    ```
+   
+   ``` TypeScript
+   // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
+   import { common, Want } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { formBindingData, FormExtensionAbility, formProvider } from '@kit.FormKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { preferences } from '@kit.ArkData';
+   ```
 
 
 2. 在JsCardFormAbility.ets中，实现FormExtension生命周期接口。
