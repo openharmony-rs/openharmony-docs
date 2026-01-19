@@ -573,6 +573,29 @@ Observed装饰器仅支持在UI线程使用，不能在子线程、Worker、Task
 
 <!-- @[initialize_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteItemInitialized.ets) -->   
 
+``` TypeScript
+// Index.ets
+import { taskpool } from '@kit.ArkTS'
+import { BusinessError } from '@kit.BasicServicesKit'
+import { SendableItem } from './Sendable'
+
+@Concurrent
+function createTask() {
+  let data = new SendableItem();
+}
+
+function executeTask() {
+  let task = new taskpool.Task(createTask);
+  taskpool.execute(task).then((res) => {
+    console.info('execute task success');
+  }).catch((e: BusinessError) => {
+    console.error('execute task error: ' + e.message);
+  })
+}
+
+executeTask();
+```
+
 <!-- @[define_sendableThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->   
 
 <!-- @[define_normalItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ui.ets) -->
