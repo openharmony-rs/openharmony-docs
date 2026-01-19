@@ -192,6 +192,16 @@ namespace Base64Utils {
 
 <!-- @[use_braces_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+let condition = true;
+if (condition) {
+  console.info('success');
+}
+for (let idx = 0; idx < 5; ++idx) {
+  console.info('', idx);
+}
+```
+
 ### `switch`语句的`case`和`default`需缩进一层
 
 **【级别】建议**
