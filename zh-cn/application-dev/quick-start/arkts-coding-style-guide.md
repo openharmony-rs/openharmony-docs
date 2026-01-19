@@ -454,7 +454,12 @@ ArkTS中，浮点值包含一个小数点，不要求小数点之前或之后必
 
 <!-- @[finally_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
-### 避免使用`ESObject`
+<!-- @[use_T[]_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+let x: Array<number> = [1, 2, 3];
+let y: Array<string> = ['a', 'b', 'c'];
+```
 
 **【级别】建议**
 
