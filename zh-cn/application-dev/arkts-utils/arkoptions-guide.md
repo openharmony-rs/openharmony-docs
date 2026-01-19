@@ -26,7 +26,7 @@ arkOptions中types字段示例：
 
 在模块build-profile.json5配置文件buildOption标签的arkOptions属性中添加types字段。
 
-<!-- @[add_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Toolchain/Configuring/ArkoptionsGuide/entry/build-profile.json5) -->
+<!-- @[add_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/build-profile.json5) --> 
 
 types字段支持填写包名、包所在位置的相对路径以及声明文件所在相对路径，仅支持当前模块内的查找，若目录下存在同名文件（后缀不同），默认加载顺序.d.ets > .d.ts。<br />
 （1）填写包名方式：通过包名到oh_modules/@types/目录查找包名中定义的声明文件，如"chai"。<br />
@@ -44,10 +44,10 @@ types字段支持填写包名、包所在位置的相对路径以及声明文件
 ```
 
 如果在types字段中填写声明文件所在相对路径，前提是在模块下存在相应的声明文件，比如模块下存在src/main/ets/pages/global.d.ts声明文件，声明文件内容如下所示：
-<!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Toolchain/Configuring/ArkoptionsGuide/entry/src/main/ets/pages/global.d.ts) --> 
+<!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/global.d.ts) --> 
 
 通过types全局引入后，对全局类型的使用示例如下：
-<!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Toolchain/Configuring/ArkoptionsGuide/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/Index.ets) --> 
 
 ## maxFlowDepth
 
@@ -64,7 +64,7 @@ types字段支持填写包名、包所在位置的相对路径以及声明文件
 arkOptions/tscConfig中maxFlowDepth字段展示。
 在工程级目录下的build-profile.json5配置文件buildOption标签的arkOptions/tscConfig属性中添加maxFlowDepth字段。
 
-<!-- @[add_tscConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Toolchain/Configuring/ArkoptionsGuide/build-profile.json5) --> 
+<!-- @[add_tscConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/build-profile.json5) --> 
 
 ### 注意事项
 
