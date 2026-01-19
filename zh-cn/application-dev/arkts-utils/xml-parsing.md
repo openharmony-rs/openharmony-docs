@@ -84,6 +84,12 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 4. 设置解析选项，调用parseXml函数。
 
    <!-- @[attribute_parseXml](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingAttributesAndValues.ets) -->
+   
+   ``` TypeScript
+   let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, attributeValueCallbackFunction:func};
+   xmlParser.parseXml(options);
+   console.info(str); // 打印所有属性及其值
+   ```
  
    输出结果如下所示：
    ```txt
