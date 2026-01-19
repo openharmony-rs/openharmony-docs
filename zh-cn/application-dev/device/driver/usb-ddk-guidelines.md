@@ -92,7 +92,7 @@ libusb_ndk.z.so
    <!-- @[driver_usb_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
-   // 初始化UsbDdk
+   // 初始化USB DDK
    int32_t ret = OH_Usb_Init();
    OH_LOG_INFO(LOG_APP, "OH_Usb_Init ret=:%{public}d\n", ret);
    // ...
@@ -228,7 +228,7 @@ libusb_ndk.z.so
     if (ret != 0) {
         OH_LOG_ERROR(LOG_APP, "ReleaseInterface failed %{public}d", ret);
     }
-    // 释放UsbDdk
+    // 释放USB DDK
     OH_Usb_Release();
     ```
 
