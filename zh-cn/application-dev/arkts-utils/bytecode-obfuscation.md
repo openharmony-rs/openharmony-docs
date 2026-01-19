@@ -192,10 +192,9 @@ person["personAge"] = 22;
 ```
 <!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->
 
-```ts
-// 混淆后：
-let person = {"a": "abc"};
-person["b"] = 22;
+``` TypeScript
+let person = {"firstName": "abc"};
+person["personAge"] = 22;
 ```
 
 **使用该选项时，需要注意以下事项：**
