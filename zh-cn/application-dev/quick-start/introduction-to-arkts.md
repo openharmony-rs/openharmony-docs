@@ -1375,7 +1375,12 @@ class C {
 
    <!-- @[annotation_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.ets) -->    
    
+   <!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.d.ets) -->     
+   
    ``` TypeScript
+   // a.d.ets
+   export declare @interface ClassAuthor3 {}
+   ```
    // a.ets
    export @interface ClassAuthor5 {}
    
