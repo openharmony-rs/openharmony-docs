@@ -93,6 +93,12 @@ console.info('reg.exec(str) = ' + reg.exec(str));
 
 <!-- @[test_getNamedGroupMatchByIndexFallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
 
+``` TypeScript
+let reg = new RegExp('(a)(?<b>b)');
+let res = reg.exec('ab') as Array<string>;
+console.info('JSON.stringify(res?.groups) = {\'b\':' + JSON.stringify(res[2]) + '}');
+```
+
 ### 正则匹配使用'|'与预期不一致
 
 在使用正则匹配时，如果'|'前是一个空匹配，会导致'|'后的匹配不成功。
