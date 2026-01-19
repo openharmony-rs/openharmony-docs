@@ -85,6 +85,12 @@ console.info('reg.exec(str) = ' + reg.exec(str));
 
 <!-- @[test_afterRegexHyphenInCharacterClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
 
+``` TypeScript
+let str = 'a-b';
+let reg = /[+\-\s]/;
+console.info('reg.exec(str) = ' + reg.exec(str));
+```
+
 ### 正则运算具名捕获组获取与预期不一致
 
 <!-- @[test_namedCaptureGroupAccess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
