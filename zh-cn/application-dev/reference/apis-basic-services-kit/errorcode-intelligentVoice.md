@@ -1,4 +1,4 @@
-# IntelligentVoice错误码
+# 智能语音错误码
 
 > **说明：**
 >
