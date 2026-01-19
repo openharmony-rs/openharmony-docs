@@ -87,23 +87,27 @@ ArkTS-Sta: scrollBar(barState: BarState | undefined)
 
 ### scrollBarColor
 
-scrollBarColor(color: Color | number | string)
+ArkTS-Dyn: scrollBarColor(color: Color | number | string)
 
-设置滚动条的颜色。未通过该接口设置时，默认颜色为'\#66182431'。
+ArkTS-Sta: scrollBarColor(color: Color | int | string | undefined)
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+设置滚动条的颜色。未通过该接口设置时，默认颜色为'\#66182431'（显示为40%不透明度的深蓝主题色）。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | 是   | 滚动条的颜色。<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。   |
+| color  | ArkTS-Dyn: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | 滚动条的颜色。<br/>number或int为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。<br/>取值为undefined时，滚动条的颜色为'\#66182431'（显示为40%不透明度的深蓝主题色）。   |
 
 ### scrollBarColor<sup>22+</sup>
 
@@ -119,7 +123,7 @@ ArkTS-Sta: scrollBarColor(color: Color | int | string | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -328,7 +332,7 @@ ArkTS-Sta: maxZoomScale(scale: double | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -354,7 +358,7 @@ ArkTS-Sta: minZoomScale(scale: double | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -378,7 +382,7 @@ ArkTS-Sta: zoomScale(scale: double | Bindable<double\> | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -400,7 +404,7 @@ ArkTS-Sta: enableBouncesZoom(enable: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -420,7 +424,7 @@ ArkTS-Sta: enableBouncesZoom(enable: boolean | undefined)
 | Horizontal | 1  | 仅支持水平方向滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
 | Free<sup>(deprecated) </sup> | 2 | 支持竖直或水平方向滚动。<br/> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用FREE替代。FREE枚举值从API version 20开始支持。<br/> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br/> **ArkTS-Dyn起始版本：** 7 |
 | None       | ArkTS-Dyn: 3<br/>ArkTS-Sta: 2 | 不可滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
-| FREE<sup>20+</sup>   | 4 | 自由滚动。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
+| FREE<sup>20+</sup>   | 4 | 自由滚动。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 24 |
 
 FREE（自由滚动）模式下支持的能力：
 
@@ -705,7 +709,7 @@ ArkTS-Sta: onDidZoom(event: ScrollOnDidZoomCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -727,7 +731,7 @@ ArkTS-Sta: onZoomStart(event: VoidCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -749,7 +753,7 @@ ArkTS-Sta: onZoomStop(event: VoidCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -885,7 +889,7 @@ Scroll每帧缩放完成时触发的回调。
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1223,7 +1227,7 @@ contentSize() : SizeResult
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -1360,10 +1364,10 @@ contentSize() : SizeResult
 | xOffset<sup>10+</sup>   | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/> ArkTS-Sta: double&nbsp;\|&nbsp;string                                   | 是   | 水平滚动偏移。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为x轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22 |
 | yOffset<sup>10+</sup>   | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/> ArkTS-Sta: double&nbsp;\|&nbsp;string                                   | 是   | 垂直滚动偏移。<br/>**说明：** <br/>该参数值不支持设置百分比。<br/>仅滚动轴为y轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22 |
 | animation<sup>10+</sup> | [ScrollAnimationOptions](#scrollanimationoptions12对象说明)&nbsp;\|&nbsp;boolean | 否   | 动画配置。<br/>- ScrollAnimationOptions:&nbsp; 自定义滚动动效。 <br/>- boolean:&nbsp;使能默认弹簧动效。<br/>默认值：<br/>ScrollAnimationOptions: { duration: 1000, curve: Curve.Ease, canOverScroll: false } <br/>boolean:&nbsp;false<br/>**说明：** <br/>当前List、Scroll、Grid、WaterFlow均支持boolean类型和ICurve曲线。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22 |
-| canOverScroll<sup>20+</sup>   | boolean                                   | 否   | 滚动目标位置是否可以超出边界停留。仅当组件的edgeEffect设置为EdgeEffect.Spring时，滚动能够越界停留。<br/>设置为true时滚动可以在过界后停留，设置为false时滚动无法在过界后停留。<br/>默认值：false <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
+| canOverScroll<sup>20+</sup>   | boolean                                   | 否   | 滚动目标位置是否可以超出边界停留。仅当组件的edgeEffect设置为EdgeEffect.Spring时，滚动能够越界停留。<br/>设置为true时滚动可以在过界后停留，设置为false时滚动无法在过界后停留。<br/>默认值：false <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 24 |
 
 ## UIScrollEvent<sup>19+</sup>
-frameNode中[getEvent('Scroll')](../js-apis-arkui-frameNode.md#geteventscroll19)与[getScrollEvent](../js-apis-arkui-frameNode.md#getscrollevent23)方法的返回值，可用于给Scroll节点设置滚动事件。
+frameNode中[getEvent('Scroll')](../js-apis-arkui-frameNode.md#geteventscroll19)与[getScrollEvent](../js-apis-arkui-frameNode.md#getscrollevent24)方法的返回值，可用于给Scroll节点设置滚动事件。
 
 UIScrollEvent继承于[UIScrollableCommonEvent](./ts-container-scrollable-common.md#uiscrollablecommonevent19)。
 
@@ -1381,7 +1385,7 @@ setOnWillScroll(callback:  ScrollOnWillScrollCallback | undefined): void
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1403,7 +1407,7 @@ setOnDidScroll(callback: ScrollOnScrollCallback | undefined): void
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 

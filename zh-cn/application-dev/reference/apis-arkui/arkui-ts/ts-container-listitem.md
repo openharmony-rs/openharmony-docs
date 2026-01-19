@@ -315,7 +315,7 @@ expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
 **ArkTS-Dyn起始版本：** 21
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -347,7 +347,7 @@ collapse(node: FrameNode): void
 
 **ArkTS-Dyn起始版本：** 21
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -376,7 +376,7 @@ ListItem划出菜单的展开方向。
 
 **ArkTS-Dyn起始版本：** 21
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |

@@ -273,7 +273,9 @@ ArkTS-Sta: type GetItemMainSizeByIndex = (index: int) => double
 
 ### columnsTemplate
 
-columnsTemplate(value: string)
+ArkTS-Dyn: columnsTemplate(value: string)
+
+ArkTS-Sta: columnsTemplate(value: string | undefined)
 
 设置当前瀑布流组件布局列的数量，不设置时默认1列。
 
@@ -281,19 +283,21 @@ columnsTemplate(value: string)
 
 可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp，使用方法参见示例2。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                           |
 | ------ | ------ | ---- | ---------------------------------------------- |
-| value  | string | 是   | 当前瀑布流组件布局列的数量。 |
+| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string&nbsp;\|&nbsp;undefined | 是   | 当前瀑布流组件布局列的数量。<br/>取值为undefined时，当前瀑布流组件布局列的数量为1列。 |
 
 ### columnsTemplate<sup>22+</sup>
 
@@ -315,7 +319,7 @@ ArkTS-Sta: columnsTemplate(value: string | ItemFillPolicy | undefined)
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -587,7 +591,7 @@ ArkTS-Sta: syncLoad(enable: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -691,7 +695,7 @@ ArkTS-Sta: onScrollIndex(event: ((first: int, last: int) => void) | undefined)
 
 
 ## UIWaterFlowEvent<sup>19+</sup>
-frameNode中[getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19)与[getWaterFlowEvent](../js-apis-arkui-frameNode.md#getwaterflowevent23)方法的返回值，可用于给WaterFlow节点设置滚动事件。
+frameNode中[getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19)与[getWaterFlowEvent](../js-apis-arkui-frameNode.md#getwaterflowevent24)方法的返回值，可用于给WaterFlow节点设置滚动事件。
 
 UIWaterFlowEvent继承于[UIScrollableCommonEvent](./ts-container-scrollable-common.md#uiscrollablecommonevent19)。
 
@@ -709,7 +713,7 @@ setOnWillScroll(callback:  OnWillScrollCallback | undefined): void
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -731,7 +735,7 @@ setOnDidScroll(callback: OnScrollCallback | undefined): void
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -753,7 +757,7 @@ setOnScrollIndex(callback: OnWaterFlowScrollIndexCallback | undefined): void
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -775,7 +779,7 @@ WaterFlow组件可见区域item变化事件的回调类型。
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 | 参数名 | 类型   | 必填 | 说明                                  |
 | ------ | ------ | ---- | ------------------------------------- |

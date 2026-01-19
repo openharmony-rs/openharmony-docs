@@ -1495,7 +1495,7 @@ setTextSelection选中文字时的配置。
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 | 名称  | 类型                                                         | 只读 | 可选 | 说明                                   |
 | ----- | ------------------------------------------------------------ | ---- | -- | -------------------------------------- |
@@ -1512,9 +1512,11 @@ type ResponsiveFillType = PresetFillType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 | 类型                    | 说明                        |
 | --------------------- | ------------------------- |
@@ -1528,9 +1530,11 @@ type ResponsiveFillType = PresetFillType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 | 名称   | 类型 |只读|可选| 说明             |
 | ------ | ---- |------|------| ---------------- |
@@ -1544,9 +1548,11 @@ type ResponsiveFillType = PresetFillType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 | 名称  | 类型                                                         | 只读 | 可选 | 说明                                   |
 | ----- | ------------------------------------------------------------ | ---- | -- | -------------------------------------- |
