@@ -18,65 +18,65 @@
 2. 实现卡片布局，在卡片上添加一个刷新按钮，点击按钮后通过[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口，触发onFormEvent回调。
 
    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
-    
-    ``` TypeScript
-    // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
-    let storageUpdateByMsg = new LocalStorage();
-    
-    @Entry(storageUpdateByMsg)
-    @Component
-    struct UpdateByMessageCard {
-      // $r('app.string.default_title')和$r('app.string.DescriptionDefault')需要替换为开发者所需的资源文件
-      @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
-      @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
-    
-      build() {
-        Column() {
-          Column() {
-            Text(this.title)
-              .fontColor('#FFFFFF')
-              .opacity(0.9)
-              .fontSize(14)
-              .margin({ top: '8%', left: '10%' })
-            Text(this.detail)
-              .fontColor('#FFFFFF')
-              .opacity(0.6)
-              .fontSize(12)
-              .margin({ top: '5%', left: '10%' })
-          }.width('100%').height('50%')
-          .alignItems(HorizontalAlign.Start)
-    
-          Row() {
-            // ...
-            Button() {
-              // $r('app.string.update')需要替换为开发者所需的资源文件
-              Text($r('app.string.update'))
-                .fontColor('#45A6F4')
-                .fontSize(12)
-            }
-            .width(120)
-            .height(32)
-            .margin({ top: '30%', bottom: '10%' })
-            .backgroundColor('#FFFFFF')
-            .borderRadius(16)
-            .onClick(() => {
-              postCardAction(this, {
-                action: 'message',
-                params: { msgTest: 'messageEvent' }
-              });
-            })
-          }.width('100%').height('40%')
-          .justifyContent(FlexAlign.Center)
-        }
-        .width('100%')
-        .height('100%')
-        .alignItems(HorizontalAlign.Start)
-        // $r('app.media.CardEvent')需要替换为开发者所需的资源文件
-        .backgroundImage($r('app.media.CardEvent'))
-        .backgroundImageSize(ImageSize.Cover)
-      }
-    }
-    ```
+   
+   ``` TypeScript
+   // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
+   let storageUpdateByMsg = new LocalStorage();
+   
+   @Entry(storageUpdateByMsg)
+   @Component
+   struct UpdateByMessageCard {
+     // $r('app.string.default_title')和$r('app.string.DescriptionDefault')需要替换为开发者所需的资源文件
+     @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
+     @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
+   
+     build() {
+       Column() {
+         Column() {
+           Text(this.title)
+             .fontColor('#FFFFFF')
+             .opacity(0.9)
+             .fontSize(14)
+             .margin({ top: '8%', left: '10%' })
+           Text(this.detail)
+             .fontColor('#FFFFFF')
+             .opacity(0.6)
+             .fontSize(12)
+             .margin({ top: '5%', left: '10%' })
+         }.width('100%').height('50%')
+         .alignItems(HorizontalAlign.Start)
+   
+         Row() {
+           // ...
+           Button() {
+             // $r('app.string.update')需要替换为开发者所需的资源文件
+             Text($r('app.string.update'))
+               .fontColor('#45A6F4')
+               .fontSize(12)
+           }
+           .width(120)
+           .height(32)
+           .margin({ top: '30%', bottom: '10%' })
+           .backgroundColor('#FFFFFF')
+           .borderRadius(16)
+           .onClick(() => {
+             postCardAction(this, {
+               action: 'message',
+               params: { msgTest: 'messageEvent' }
+             });
+           })
+         }.width('100%').height('40%')
+         .justifyContent(FlexAlign.Center)
+       }
+       .width('100%')
+       .height('100%')
+       .alignItems(HorizontalAlign.Start)
+       // $r('app.media.CardEvent')需要替换为开发者所需的资源文件
+       .backgroundImage($r('app.media.CardEvent'))
+       .backgroundImageSize(ImageSize.Cover)
+     }
+   }
+   ```
 
 3. 在onFormEvent回调函数的实现中，通过updateForm接口刷新卡片数据。
 
@@ -88,6 +88,7 @@
    import { Configuration, Want } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
+   
    
    // entry/src/main/ets/entryformability/EntryFormAbility.ts
    const TAG: string = 'EntryFormAbility';
@@ -125,10 +126,12 @@
      onFormEvent(formId: string, message: string): void {
        // ...
        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+   
        class FormDataClass {
          title: string = 'Title Update.'; // 和卡片布局中对应
          detail: string = 'Description update success.'; // 和卡片布局中对应
        }
+   
        // ...
        let formData = new FormDataClass();
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
@@ -150,11 +153,14 @@
        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(config));
      }
    
+   
      onAcquireFormState(want: Want): formInfo.FormState {
        // ...
        return formInfo.FormState.READY;
      }
+   
    }
+   
    ```
 
 4. 资源文件如下。
@@ -384,8 +390,8 @@
              temporary: false,
            })
              .size({
-               width:200,
-               height:200,
+               width: 200,
+               height: 200,
              })
              .borderColor(Color.Black)
              .borderRadius(10)
@@ -409,7 +415,8 @@
                  formHost.requestForm(this.formId).then(() => {
                    hilog.info(DOMAIN_NUMBER, TAG, 'EntryFormAbility requestForm success.');
                  }).catch((error: BusinessError) => {
-                   hilog.error(DOMAIN_NUMBER, TAG, `EntryFormAbility requestForm fail, code: ${error?.code}, message: ${error?.message}`);
+                   hilog.error(DOMAIN_NUMBER, TAG,
+                     `EntryFormAbility requestForm fail, code: ${error?.code}, message: ${error?.message}`);
                    hilog.error(DOMAIN_NUMBER, TAG, `EntryFormAbility requestForm fail, code: ${this.formId}`);
                  })
                }

@@ -51,7 +51,7 @@ struct AnimationCard {
           playMode: PlayMode.Normal,
         })
     }.height('100%')
-     .alignItems(VerticalAlign.Center)
+    .alignItems(VerticalAlign.Center)
   }
 }
 ```

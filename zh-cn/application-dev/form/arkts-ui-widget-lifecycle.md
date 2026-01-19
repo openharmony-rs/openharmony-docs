@@ -68,7 +68,8 @@
       onFormEvent(formId: string, message: string): void {
         // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
         hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
-        // ···
+    
+        // ...
       }
     
       onRemoveForm(formId: string): void {
@@ -84,10 +85,12 @@
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(config));
       }
     
+    
       onAcquireFormState(want: Want): formInfo.FormState {
         // 卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态。
         return formInfo.FormState.READY;
       }
+    
     }
     ```
 
