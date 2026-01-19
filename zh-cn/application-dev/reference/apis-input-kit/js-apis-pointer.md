@@ -796,7 +796,7 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: 
 
 | 参数名           | 类型                             | 必填   | 说明                                  |
 | ------------ | ------------------------------ | ---- | ----------------------------------- |
-| windowId     | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。当windowId的值为-1,表示设置全局的鼠标样式，需要系统应用权限  |
+| windowId     | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。当windowId的值为-1，表示设置全局的鼠标样式，需要系统应用权限。 |
 | pointerStyle | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。                             |
 | callback     | AsyncCallback&lt;void&gt;      | 是    | 回调函数。 |
 
@@ -895,7 +895,7 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise&l
 
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
-| windowId            | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。当windowId的值为-1,表示设置全局的鼠标样式，需要系统应用权限 |
+| windowId            | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。当windowId的值为-1，表示设置全局的鼠标样式，需要系统应用权限。 |
 | pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
 
 **返回值**：
@@ -998,7 +998,7 @@ ArkTS-Sta: setPointerStyleSync(windowId: int, pointerStyle: PointerStyle): void
 
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
-| windowId            | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。当windowId的值为-1,表示设置全局的鼠标样式，需要系统应用权限 |
+| windowId            | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。当windowId的值为-1，表示设置全局的鼠标样式，需要系统应用权限。 |
 | pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
 
 **错误码**：
