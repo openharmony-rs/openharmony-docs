@@ -104,7 +104,7 @@ libusb_serial_ndk.z.so
    <!-- @[driver_serial_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
-   // 初始化USBSerialDDK
+   // 初始化USB Serial DDK
    OH_UsbSerial_Init();
    ```
 
@@ -203,7 +203,7 @@ libusb_serial_ndk.z.so
    <!-- @[driver_serial_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
-   // 释放USBSerialDDK
+   // 初始化USB Serial DDK
    OH_UsbSerial_Release();
    ```
 
