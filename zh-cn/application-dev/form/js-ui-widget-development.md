@@ -180,29 +180,29 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
    配置示例如下：
 
    <!-- @[JSForm_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/module.json5) --> 
-    
-    ``` JSON5
-    {
-      "module": {
-        // ...
-        "extensionAbilities": [
-          {
-            "name": "JsCardFormAbility",
-            "srcEntry": "./ets/jscardformability/JsCardFormAbility.ets",
-            "description": "$string:JSCardFormAbility_desc",
-            "label": "$string:JSCardFormAbility_label",
-            "type": "form",
-            "metadata": [
-              {
-                "name": "ohos.extension.form",
-                "resource": "$profile:form_jscard_config"
-              }
-            ]
-          }
-        ]
-      }
-    }
-    ```
+   
+   ``` JSON5
+   {
+     "module": {
+       // ...
+       "extensionAbilities": [
+         {
+           "name": "JsCardFormAbility",
+           "srcEntry": "./ets/jscardformability/JsCardFormAbility.ets",
+           "description": "$string:JSCardFormAbility_desc",
+           "label": "$string:JSCardFormAbility_label",
+           "type": "form",
+           "metadata": [
+             {
+               "name": "ohos.extension.form",
+               "resource": "$profile:form_jscard_config"
+             }
+           ]
+         }
+       ]
+     }
+   }
+   ```
 
 
 
