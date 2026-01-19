@@ -47,6 +47,21 @@
 | [WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md) | Web插件对接能力。提供插件对接native应用能力。 | 是 | 否 |
 | [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) | 通知订阅拓展能力，用于发送通知数据到三方穿戴设备。 | 是 | 否 |
 | [PartnerAgentExtensionAbility](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) | 基于蓝牙通信技术，提供设备发现与设备下线的通知功能。 | 是 | 否 |
+| FileAccessExtensionAbility | 为文件管理器和picker提供统一访问入口，让其他App可以访问由App储存和管理的文档和目录 | 否 | 否 | 
+| AdsExtensionAbility | 对外提供后台自定义广告业务服务 | 否 | 否 |
+| VoIPExtensionAbility | 网络音视频通话 | 是 | 否 |
+| RemoteLocationExtensionAbility | 与Push业务结合构建Location定位类场景化消息，支持APP在Extension中上报地理位置，弹出dialog和通知等等 | 是 | 否 |
+| RemoteNotificationExtensionAbility | 与Push业务结合构建IM（Extension扩展）场景化消息，支持Push在代理应用弹出通知栏之前拉起应用紫禁城做通知内容替换 | 是 | 否 |
+| PushExtensionAbility | 推送能力管理，查找定位、远程设备连接、配置参数更新、声纹更新 | 是 | 否 |
+| CallInfoQueryExtensionAbility | 来去电时，页面显示已安装企业应用的联系人信息，方便用户识别来去电人信息，快速回应，增强企业内部沟通效率。 | 是 | 否 |
+| InsightIntentUIExtensionAbility | 为开发者提供能被小艺意图调用，以窗口形态呈现内容的扩展能力。 | 是 | 否 |
+| StatusBarViewExtensionAbility | 提供三方接入PC状态栏的能力 | 是 | 否 |
+| [PhotoEditorExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-photoEditorExtensionAbility.md) | 提供给应用实现图片编辑的垂域服务能力 | 是 | 否 |
+| [AutoFillExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md) | 供用户应用的免密登录功能 | 否 | 否 |
+| [VpnExtensionAbility](../reference/apis-network-kit/js-apis-VpnExtensionAbility.md) | 提供三方VPN创建、销毁等生命周期回调。 | 是 | 否 |
+| [FormEditExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formEditExtensionAbility.md) | 卡片统一编辑，用于编辑卡片内容，由卡片应用拓展，由桌面拉起 | 是 | 否 |
+| [LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md) | 提供3D Live卡的垂类，由应用实现3D卡片效果，由卡片使用方拉起 | 是 | 否 |
+| [UIServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md) | 在PC上提供带前台窗口的服务 | 否 | 否 |
 <!--RP2--><!--RP2End-->
 
 > **说明：**
