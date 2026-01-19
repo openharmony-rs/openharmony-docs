@@ -526,6 +526,13 @@ try {
 
 <!-- @[put_brace_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+function foo1()
+{
+  // ...
+}
+```
+
 **【正例】**
 
 <!-- @[put_brace_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
