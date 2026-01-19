@@ -82,6 +82,7 @@
 | [OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params,int* status)](#oh_pasteboard_getdatawithprogress) | - | 获取剪贴板的数据以及粘贴进度，不支持对文件夹的拷贝。 |
 | [uint32_t OH_Pasteboard_GetChangeCount(OH_Pasteboard *pasteboard)](#oh_pasteboard_getchangecount) | - | 获取剪贴板内容的变化次数。 |
 | [void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callback)(int errorCode))](#oh_pasteboard_syncdelayeddataasync) | - | 通知剪贴板从应用同步所有延迟数据，与延迟复制接口[OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata)搭配使用。当应用使用延迟复制功能复制时，仅将应用支持的数据类型写入剪贴板。应用应在退出时，重新调用[OH_Pasteboard_SetData](#oh_pasteboard_setdata)接口主动提交所有复制数据或调用此接口通知剪贴板获取全量数据，等待数据同步完成再继续退出，否则可能导致其他应用粘贴获取不到数据。 |
+| [bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)](#OH_Pasteboard_HasRemoteData) | - | 检查当前待粘贴的剪贴板数据是否在远端设备上。 |
 
 ## 宏定义说明
 
@@ -532,7 +533,7 @@ bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)
 
 **描述：**
 
-判断是否有远端复制数据。
+检查当前待粘贴的剪贴板数据是否在远端设备上。
 
 **起始版本：** 24
 
