@@ -13,11 +13,11 @@ ArkTS规范约束了TypeScript（简称TS）中影响开发正确性或增加运
 
 包含关键字`var`的原始TypeScript代码：
 
-<!-- @[sample_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->   
+<!-- @[sample_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->    
 
 重构后的代码：
 
-<!-- @[sample_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/pages/Index.ets) -->    
+<!-- @[sample_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/pages/Index.ets) -->     
 
 **级别**
 
@@ -152,15 +152,15 @@ let s = +'42'; // 编译时错误
 
 假设两个不相关的类`T`和`U`都拥有相同的`public`API：
 
-<!-- @[struct_typing_caseOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->   
+<!-- @[struct_typing_caseOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->    
 
 类型为`T`的值是否能赋给类型为`U`的变量。
 
-<!-- @[struct_typing_caseTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->   
+<!-- @[struct_typing_caseTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->    
 
 类型为`T`的值是否能传递给接受类型为`U`的参数的函数。
 
-<!-- @[struct_typing_caseThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->   
+<!-- @[struct_typing_caseThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->    
 
 具体采用哪种方法，情况如下：
 
@@ -189,11 +189,11 @@ let s = +'42'; // 编译时错误
 
 **TypeScript**
 
-<!-- @[identifier_prop_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/IdentifiersAsPropNames.ts) -->  
+<!-- @[identifier_prop_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/IdentifiersAsPropNames.ts) -->   
 
 **ArkTS**
 
-<!-- @[identifier_prop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/IdentifiersAsPropNames.ets) -->    
+<!-- @[identifier_prop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/IdentifiersAsPropNames.ets) -->     
 
 ### 不支持`Symbol()`API
 
@@ -219,11 +219,11 @@ ArkTS不支持使用`#`符号开头声明的私有字段。改用`private`关键
 
 **TypeScript**
 
-<!-- @[no_symbol_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoSymbol.ts) -->   
+<!-- @[no_symbol_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoSymbol.ts) -->    
 
 **ArkTS**
 
-<!-- @[no_symbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSymbol.ets) -->   
+<!-- @[no_symbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSymbol.ets) -->    
 
 ### 类型、命名空间的命名必须唯一
 
@@ -237,11 +237,11 @@ ArkTS不支持使用`#`符号开头声明的私有字段。改用`private`关键
 
 **TypeScript**
 
-<!-- @[unique_names_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/UniqueNames.ts) -->   
+<!-- @[unique_names_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/UniqueNames.ts) -->     
 
 **ArkTS**
 
-<!-- @[unique_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/UniqueNames.ets) -->   
+<!-- @[unique_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/UniqueNames.ets) -->     
 
 ### 使用`let`而非`var`
 
