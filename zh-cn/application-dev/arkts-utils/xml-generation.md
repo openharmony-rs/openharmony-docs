@@ -64,6 +64,25 @@ XML模块的API接口可以参考[@ohos.xml](../reference/apis-arkts/js-apis-xml
 3. 调用XML元素生成函数。
 
    <!-- @[xmlSerializer_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlSerializer.ets) -->
+   
+   ``` TypeScript
+   serializer.setDeclaration(); // 写入XML的声明
+   serializer.startElement('bookstore'); // 写入元素开始标记
+   serializer.startElement('book'); // 嵌套元素开始标记
+   serializer.setAttributes('category', 'COOKING'); // 写入属性及其属性值
+   serializer.startElement('title');
+   serializer.setAttributes('lang', 'en');
+   serializer.setText('Everyday'); // 写入标签值
+   serializer.endElement(); // 写入结束标记
+   serializer.startElement('author');
+   serializer.setText('Giana');
+   serializer.endElement();
+   serializer.startElement('year');
+   serializer.setText('2005');
+   serializer.endElement();
+   serializer.endElement();
+   serializer.endElement();
+   ```
 
 4. 使用Uint8Array操作ArrayBuffer，并调用TextDecoder对Uint8Array解码后输出。
 
