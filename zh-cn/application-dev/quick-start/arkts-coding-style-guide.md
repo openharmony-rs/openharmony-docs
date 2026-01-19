@@ -459,7 +459,13 @@ ArkTS中，浮点值包含一个小数点，不要求小数点之前或之后必
 
 <!-- @[assignValues_expressions_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
-### 在`finally`代码块中，不要使用`return`、`break`、`continue`或抛出异常，避免`finally`块非正常结束
+<!-- @[noESObject_app_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+import { getObject2, I } from './lib'
+// ...
+let obj2: I = getObject2(123);
+```
 
 **【级别】要求**
 
