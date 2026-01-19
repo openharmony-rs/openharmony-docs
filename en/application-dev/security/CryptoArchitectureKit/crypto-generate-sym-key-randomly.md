@@ -59,6 +59,7 @@ For details about the algorithm specifications, see [AES](crypto-sym-key-generat
 For details about the algorithm specifications, see [SM4](crypto-sym-key-generation-conversion-spec.md#sm4).
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) with the string parameter **'SM4_128'** to create a symmetric key generator (**SymKeyGenerator**) object for a 128-bit SM4 key.
+
    If you need to use other algorithms, modify the string parameter.
 
 2. Call [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to randomly generate a symmetric key (**SymKey**) object.

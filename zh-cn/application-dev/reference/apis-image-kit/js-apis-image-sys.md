@@ -20,7 +20,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
-## DecodingOptions<sup>12+</sup>
+## DecodingOptions<sup>7+</sup>
 
 图像解码设置选项。
 
@@ -28,13 +28,13 @@ import { image } from '@kit.ImageKit';
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 | 名称               | 类型              | 只读 | 可选 | 说明             |
 | ----------------- | ----------------- | ---- | ---- | ---------------- |
-| resolutionQuality | [ResolutionQuality](#resolutionquality12) | 否   | 是   | 画质效果等级。 |
+| resolutionQuality<sup>12+</sup> | [ResolutionQuality](#resolutionquality12) | 否   | 是   | 画质效果等级。 |
 
 ## ResolutionQuality<sup>12+</sup>
 

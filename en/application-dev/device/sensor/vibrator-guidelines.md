@@ -126,14 +126,14 @@ This JSON file contains three attributes: **MetaData**, **Channels**, and **Para
      | Parameters | Yes    | Channel parameters. Among them, **Index** indicates the channel ID. The value **0** indicates both channels, **1** indicates the left channel, and **2** indicates the right channel. **0** cannot be used as a configuration parameter simultaneously with other channel numbers.|
      | Pattern    | No    | Vibration sequence.                                              |
 
-     **Pattern** is a JSON array that holds the vibration events. Under it, **Event** indicates a vibration event, which can be either of the following types:
+     **Pattern** is a JSON array that holds the vibration events. Under it, **Event** indicates a vibration event, which can be either of the following types.
 
      | Vibration Type  | Description                                          |
      | ---------- | ---------------------------------------------- |
      | transient  | Short vibration.                        |
      | continuous | Long vibration.|
 
-     A vibration event contains the following attributes:
+     A vibration event contains the following attributes.
 
      | Name     | Mandatory| Description                                                        |
      | --------- | ------ | ------------------------------------------------------------ |
@@ -183,7 +183,7 @@ The following requirements must be met:
    import { vibrator } from '@kit.SensorServiceKit';
    import { resourceManager } from '@kit.LocalizationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import hilog from '@ohos.hilog';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
 4. Define constants.
@@ -332,7 +332,7 @@ The following requirements must be met:
    }
    ```
 
-   Scenario 3: Trigger vibration according to the specified pattern.
+   Scenario 4: Trigger vibration according to the specified pattern.
 
    Add a short vibration event as a **VibratorPattern** object and trigger vibration.
 

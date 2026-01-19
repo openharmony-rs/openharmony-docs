@@ -53,7 +53,7 @@ The acceleration sensor is used as an example.
    ``` TypeScript
    import { sensor } from '@kit.SensorServiceKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import hilog from '@ohos.hilog';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
 4. Define constants.

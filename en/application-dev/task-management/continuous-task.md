@@ -27,10 +27,10 @@ The table below lists the types of continuous tasks, which are used in various s
 | BLUETOOTH_INTERACTION | Bluetooth-related services.| bluetoothInteraction | An application transitions into the background during the process of file transfer using Bluetooth.|
 | MULTI_DEVICE_CONNECTION | Multi-device connection.| multiDeviceConnection | Distributed service connection and casting.<br> **Note**: It can be used in atomic services.|
 | <!--DelRow-->WIFI_INTERACTION | WLAN-related services (for system applications only).| wifiInteraction  | An application transitions into the background during the process of file transfer using WLAN.|
-| VOIP<sup>13+</sup> | Audio and video calls.| voip  | Chat applications (with audio and video services) transition into the background during audio and video calls.|
+| VOIP | Audio and video calls.<br>**Note**: It is supported since API version 13.| voip  | Chat applications (with audio and video services) transition into the background during audio and video calls.|
 | TASK_KEEPING | Computing tasks.<br>**Note**: Starting from API version 21, this capability is available for 2-in-1 devices, and non-2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). In API version 20 and earlier versions, this task type is limited to PCs/2-in-1 devices only.| taskKeeping  | Antivirus software is running.|
-| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup> | Multimedia services.| avPlaybackAndRecord  | When an application is in the background during audio/video playback, recording, or audio/video calls, you can select either this task type or the corresponding continuous task type for these three scenarios. For example, in the audio/video playback scenario, you can choose either **AUDIOPLAYBACK** or **MODE_AVPLAYBACK_AND_RECORD**.|
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | Special scenarios (available only for smartphones, tablets, PCs/2-in-1 devices).| specialScenarioProcessing  | Exporting media files in the background, and using third-party casting components for background casting.|
+| MODE_AV_PLAYBACK_AND_RECORD | Multimedia services.<br>**Note**: It is supported since API version 22.| avPlaybackAndRecord  | When an application is in the background during audio/video playback, recording, or audio/video calls, you can select either this task type or the corresponding continuous task type for these three scenarios. For example, in the audio/video playback scenario, you can choose either **AUDIOPLAYBACK** or **MODE_AVPLAYBACK_AND_RECORD**.|
+| MODE_SPECIAL_SCENARIO_PROCESSING | Special scenarios (available only for smartphones, tablets, PCs/2-in-1 devices).<br>**Note**: It is supported since API version 22.| specialScenarioProcessing  | Exporting media files in the background, and using third-party casting components for background casting.|
 
 Description of **DATA_TRANSFER**:
 
@@ -571,12 +571,12 @@ The following walks you through how to request a continuous task for recording t
                "backgroundModes": [
                "audioRecording"
                ], // Background mode
-               "type": "service"  // The ability type is Service.
+               "type": "service"  // The ability type is service.
            }
        ],
        "reqPermissions": [
            {
-               "name": "ohos.permission.KEEP_BACKGROUND_RUNNING" // Continuous task permission
+               "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"  // Continuous task permission
            }
        ]
    }

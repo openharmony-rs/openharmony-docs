@@ -135,11 +135,12 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
   }
   ```
 
-### activateOsAccount<sup>21+</sup>
+### activateOsAccount<sup>23+</sup>
 
 activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
 
 在指定逻辑屏激活（前台启动或切换）目标系统账号。使用Promise异步回调。
+
 当前不支持跨逻辑屏激活，即在指定逻辑屏上激活另一个已在逻辑屏前台运行的系统账号。
 
 **系统接口：** 此接口为系统接口。
@@ -1755,7 +1756,7 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 | 参数名   | 类型                       | 必填 | 说明                                                         |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
 | type     | 'switching'                 | 是   | 订阅类型，switching表示订阅的是系统账号的前后台正在切换事件。 |
-| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台正在切换事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 21开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
+| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台正在切换事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 23开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
 
 **错误码：**
 
@@ -1848,7 +1849,7 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 | 参数名   | 类型                       | 必填 | 说明                                                         |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
 | type     | 'switched'                 | 是   | 订阅类型，switched表示订阅的是系统账号的前后台切换结束事件。 |
-| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台切换结束事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 21开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
+| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台切换结束事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 23开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
 
 **错误码：**
 
@@ -2210,7 +2211,7 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
 ### isMainOsAccount<sup>9+</sup>
 
-isMainOsAccount(): Promise&lt;boolean&gt;;
+isMainOsAccount(): Promise&lt;boolean&gt;
 
 查询当前进程是否处于主用户。使用Promise异步回调。
 
@@ -2252,7 +2253,7 @@ isMainOsAccount(): Promise&lt;boolean&gt;;
   }
   ```
 
-### getForegroundOsAccountLocalId<sup>21+</sup>
+### getForegroundOsAccountLocalId<sup>23+</sup>
 
 getForegroundOsAccountLocalId(displayId: number): Promise&lt;number&gt;
 
@@ -2306,7 +2307,7 @@ getForegroundOsAccountLocalId(displayId: number): Promise&lt;number&gt;
   }
   ```
 
-### getForegroundOsAccountDisplayId<sup>21+</sup>
+### getForegroundOsAccountDisplayId<sup>23+</sup>
 
 getForegroundOsAccountDisplayId(localId: number): Promise&lt;number&gt;
 
@@ -2414,7 +2415,7 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback:
 
 ### getOsAccountConstraintSourceTypes<sup>9+</sup>
 
-getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;;
+getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;
 
 查询指定系统账号的指定约束来源信息。使用Promise异步回调。
 
@@ -2469,7 +2470,7 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&
 
 ### getOsAccountType<sup>12+</sup>
 
-getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;;
+getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;
 
 查询指定系统账号的类型。使用Promise异步回调。
 
@@ -2613,7 +2614,7 @@ constructor()
 
 ### getVersion<sup>8+</sup>
 
-getVersion(): number;
+getVersion(): number
 
 返回版本信息。
 
@@ -2643,7 +2644,7 @@ getVersion(): number;
 
 ### getAvailableStatus<sup>8+</sup>
 
-getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number;
+getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number
 
 获取指定认证类型和认证可信等级的认证能力的可用状态。
 
@@ -2675,6 +2676,7 @@ getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number;
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType or authTrustLevel. |
+| 12300117 | PIN is expired. |
 
 **示例：**
 
@@ -2718,10 +2720,10 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback&lt;ExecutorProp
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -2754,7 +2756,7 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback&lt;ExecutorProp
 
 ### getProperty<sup>8+</sup>
 
-getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;;
+getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
 
 基于指定的请求信息获取属性。使用Promise异步回调。
 
@@ -2782,10 +2784,10 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;;
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -2816,7 +2818,7 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;;
 
 ### getPropertyByCredentialId<sup>14+</sup>
 
-getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyType&gt;): Promise&lt;ExecutorProperty&gt;;
+getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyType&gt;): Promise&lt;ExecutorProperty&gt;
 
 基于凭据id获取关联执行器的指定属性信息。使用Promise异步回调。
 
@@ -2845,9 +2847,9 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid keys. |
+| 12300020 | Device hardware abnormal. |
 | 12300102 | The credential does not exist. |
 
 **示例：**
@@ -2945,7 +2947,7 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback&lt;void&gt;): v
 
 ### setProperty<sup>8+</sup>
 
-setProperty(request: SetPropertyRequest): Promise&lt;void&gt;;
+setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
 
 设置可用于初始化算法的属性。使用Promise异步回调。
 
@@ -3002,7 +3004,7 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;;
 
 ### prepareRemoteAuth<sup>12+</sup>
 
-prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;;
+prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 
 准备远端认证。使用Promise异步回调。
 
@@ -3030,7 +3032,6 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;;
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid remoteNetworkId. |
 | 12300090 | Cross-device capability not supported. |
@@ -3064,7 +3065,7 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;;
 
 ### auth<sup>8+</sup>
 
-auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array;
+auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array
 
 认证当前用户。
 
@@ -3095,7 +3096,6 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300013 | Network exception. |
@@ -3172,7 +3172,6 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType, authTrustLevel or options. |
 | 12300003 | Account not found. |
@@ -3221,7 +3220,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 ### authUser<sup>8+</sup>
 
-authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array;
+authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array
 
 认证指定用户。使用callback异步回调。
 
@@ -3253,7 +3252,6 @@ authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLev
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300003 | Account not found. |
@@ -4235,7 +4233,6 @@ authWithPopup(callback: IUserAuthCallback): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
@@ -4294,7 +4291,6 @@ authWithPopup(localId: number, callback: IUserAuthCallback): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
@@ -4803,7 +4799,7 @@ getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt
 
 ### isAuthenticationExpired<sup>12+</sup>
 
-isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;;
+isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 
 判断指定域账号是否登录超期。使用Promise异步回调。
 
@@ -5009,11 +5005,13 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialInfo, i.e. authType or authSubType. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted account. |
+| 12300020 | Device hardware abnormal. |
+| 12300090 | Cross-device capability not supported. |
+| 12300091 | Cross-device communication failed. |
 | 12300101 | The token is invalid. |
 | 12300106 | The authentication type is not supported. |
 | 12300109 | The authentication, enrollment, or update operation is canceled. |
@@ -5341,8 +5339,8 @@ getAuthInfo(callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -5389,9 +5387,9 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -5416,7 +5414,7 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
 
 ### getAuthInfo<sup>8+</sup>
 
-getAuthInfo(authType?: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;;
+getAuthInfo(authType: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 
 获取认证信息。使用Promise异步回调。
 
@@ -5430,7 +5428,7 @@ getAuthInfo(authType?: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;;
 
 | 参数名    | 类型                                | 必填 | 说明      |
 | -------- | ----------------------------------- | ---- | -------- |
-| authType | [AuthType](#authtype8)              | 否   | 认证类型，默认为空，表示查询所有认证类型的信息。|
+| authType | [AuthType](#authtype8)              | 是   | 认证类型，表示查询所有认证类型的信息。|
 
 **返回值：**
 
@@ -5444,9 +5442,9 @@ getAuthInfo(authType?: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;;
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -5496,10 +5494,10 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid options. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -5554,10 +5552,10 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise&lt;Uint8Array&gt;
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 | 12300102 | The credential does not exist. |
 | 12300106 | The authentication type is not supported. |
 
@@ -5634,7 +5632,7 @@ try {
   console.info('Subscribe to the credential changes successfully');
 } catch (e) {
   const err = e as BusinessError;
-  console.error(`Failed to subscribe to the credetial changes, code is ${err.code}, message is ${err.message}`)
+  console.error(`Failed to subscribe to the credential changes, code is ${err.code}, message is ${err.message}`)
 }
 ```
 
@@ -5687,7 +5685,7 @@ try {
   console.info('Subscribe to the credential changes successfully');
 } catch (e) {
   const err = e as BusinessError;
-  console.error(`Failed to subscribe to the credetial changes, code is ${err.code}, message is ${err.message}`)
+  console.error(`Failed to subscribe to the credential changes, code is ${err.code}, message is ${err.message}`)
 }
 
 try {
@@ -5695,7 +5693,7 @@ try {
   console.info('Unsubscribe from the credential changes successfully');
 } catch (e) {
   const err = e as BusinessError;
-  console.error(`Failed to unsubscribe from the credetial changes, code is ${err.code}, message is ${err.message}`)
+  console.error(`Failed to unsubscribe from the credential changes, code is ${err.code}, message is ${err.message}`)
 }
 ```
 
@@ -5707,7 +5705,7 @@ try {
 
 ### onSetData<sup>8+</sup>
 
-onSetData: (authSubType: AuthSubType, data: Uint8Array) => void;
+onSetData(authSubType: AuthSubType, data: Uint8Array): void
 
 **系统接口：** 此接口为系统接口。
 
@@ -5754,7 +5752,7 @@ onSetData: (authSubType: AuthSubType, data: Uint8Array) => void;
 
 ### onGetData<sup>8+</sup>
 
-onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDataOptions) => void;
+onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDataOptions) => void
 
 通知调用者获取数据的回调函数。
 
@@ -5798,7 +5796,7 @@ onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDat
 
 ### onResult<sup>8+</sup>
 
-onResult: (result: number, extraInfo: AuthResult) => void;
+onResult: (result: number, extraInfo: AuthResult) => void
 
 身份认证结果回调函数，返回结果码和认证结果信息。
 
@@ -5826,7 +5824,7 @@ onResult: (result: number, extraInfo: AuthResult) => void;
 
 ### onAcquireInfo?<sup>8+</sup>
 
-onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void;
+onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 身份认证信息获取回调函数。
 
@@ -5866,7 +5864,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 ### onResult<sup>8+</sup>
 
-onResult: (result: number, extraInfo: RequestResult) => void;
+onResult: (result: number, extraInfo: RequestResult) => void
 
 身份管理操作结果回调函数，返回结果码和请求结果信息。
 
@@ -5894,7 +5892,7 @@ onResult: (result: number, extraInfo: RequestResult) => void;
 
 ### onAcquireInfo?<sup>8+</sup>
 
-onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void;
+onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 身份管理信息获取回调函数。
 
@@ -6322,7 +6320,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | ----------- | ------ | ---- | ---- | ---------- |
 | fromAccountId | number | 否 | 否 | 切换来源系统账号ID。 |
 | toAccountId | number | 否 | 否 | 切换目标系统账号ID。 |
-| displayId<sup>21+</sup> | number | 否 | 是 | 切换事件发生的逻辑屏ID，默认值为0。 |
+| displayId<sup>23+</sup> | number | 否 | 是 | 切换事件发生的逻辑屏ID，默认值为0。 |
 
 ## ConstraintChangeInfo<sup>23+</sup>
 
@@ -6358,10 +6356,6 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
-
-| 名称      | 类型   | 只读  | 可选   | 说明       |
-| ----------- | ------ | ---- | ---- | ---------- |
-| shortName | string | 否 | 否   | 表示账号短名称（用作个人文件夹目录）。 <br/>**约束：** <br>1. 不允许出现的字符：\< \> \| : " * ? / \\<br>2. 不允许独立出现的字符串：.或..<br>3. 长度不超过255个字符。|
 
 ## GetAuthInfoOptions<sup>12+</sup>
 
@@ -6444,7 +6438,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | changeType      | [CredentialChangeType](#credentialchangetype23) | 否 | 否  | 表示凭据变更的类型。     |
 | isSilent | boolean | 否 | 否  | 表示是否为静默变更，静默变更表示变更由系统在后台自动地发起。 |
 | credentialType      | [AuthType](#authtype8) | 否 | 否  | 表示凭据类型。     |
-| accountId | int | 否 | 否  | 表示系统账号标识。 |
+| accountId | number | 否 | 否  | 表示系统账号标识。 |
 | addedCredentialId   | Uint8Array | 否 | 是  | 表示添加的凭据ID，添加凭据和更新凭据操作都会返回该ID。默认为undefined。   |
 | deletedCredentialId | Uint8Array | 否 | 是  | 表示删除的凭据ID，删除凭据和更新凭据操作都会返回该ID。默认为undefined。   |
 

@@ -7,13 +7,16 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
  
-You can convert compressed or uncompressed point data into a **Point** object for generating a key object, or convert a **Point** object into compressed or uncompressed point data. 
+You can convert compressed or uncompressed point data into a **Point** object for generating a key object, or convert a **Point** object into compressed or uncompressed point data.
+
 For details about the ECC algorithm specifications, see [ECC](crypto-asym-key-generation-conversion-spec.md#ecc). 
+
 You can pass in the string parameter **format** to specify the format of the point data to obtain. To obtain compressed point data, set **format** to **COMPRESSED**. To obtain uncompressed point data, set **format** to **UNCOMPRESSED**.
 
 ## Converting Uncompressed Point Data into Compressed Point Data
 
 1. Call [ECCKeyUtil.convertPoint](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpoint12) to convert uncompressed ECC point data of the Uint8Array type into a [Point](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#point10) object.
+
 2. Call [ECCKeyUtil.getEncodedPoint](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpoint12) to obtain compressed point data.
 
 ```ts
@@ -24,14 +27,14 @@ function eccPointUncompressedToCompressed() {
   let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
   console.info('convertPoint success');
   let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'COMPRESSED');
-  console.info('returnData: ' + returnData); // returnData is 2,143,39,57,249,145,50,63,222,35,70,178,121,202,154,21,146,129,75,76,63,8,195,157,111,40,217,215,148,120,224,205,82 (the prefix of the compressed point data is 02 because y is an even number). 
+  console.info('returnData: ' + returnData); // returnData is 2,143,39,57,249,145,50,63,222,35,70,178,121,202,154,21,146,129,75,76,63,8,195,157,111,40,217,215,148,120,224,205,82 (the prefix of the compressed point data is 02 because y is an even number).
 }
 ```
 
 ## Converting Compressed Point Data into a Key Object
 
-1. Call [ECCKeyUtil.convertPoint](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpoint12) to convert the compressed ECC point data of the Uint8Array type into a [Point](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#point10) object.
-2. Call [ECCKeyUtil.genECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#genecccommonparamsspec11) with the curve name set to **NID_brainpoolP256r1** to generate the common key parameters for the ECC key pair.
+1. Call [ECCKeyUtil.convertPoint](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpoint12) to convert compressed ECC point data of the Uint8Array type into a [Point](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#point10) object.
+2. Call [ECCKeyUtil.genECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#genecccommonparamsspec11) with the curve name set to **NID_brainpoolP256r1** to generate the asymmetric common key parameters for the ECC key pair.
 3. Construct a [ECCPubKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#eccpubkeyspec10) object to specify the parameters for the ECC public key. **ECCPubKeySpec** is a child class of **AsyKeySpec**. Set **algName** to **ECC**, specify [AsyKeySpecType.PUBLIC_KEY_SPEC](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#asykeyspectype10), and set **pk** to the point object obtained.
 4. Call [createAsyKeyGeneratorBySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygeneratorbyspec10) with the public key parameters to create an asymmetric key generator (**AsyKeyGeneratorBySpec**) object.
 5. Call [AsyKeyGeneratorBySpec.generatePubKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatepubkey10) to generate the public key.

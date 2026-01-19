@@ -68,7 +68,17 @@ let netConnectionCellular = connection.createNetConnection({
 
 getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 
-异步获取默认激活的数据网络，使用callback方式作为异步方法。可以使用[getNetCapabilities](#connectiongetnetcapabilities)去获取网络类型、拥有能力等信息。
+获取系统默认使用的网络ID，使用callback异步回调。
+
+> **说明：**
+>
+>- 系统默认使用的网络，该网络的capabilities必须具备[NET_CAPABILITY_INTERNET](#netcap)且不是VPN类型的网络。
+>
+>- 该接口的返回由系统决定，与应用是否指定网络无关。
+>
+>- 一般情况下，优先级：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
+>
+>- NetHandle为网络唯一标识，当无网络可用时，返回0，该ID可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -112,7 +122,17 @@ connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
 
 getDefaultNet(): Promise\<NetHandle>
 
-异步获取默认激活的数据网络，使用Promise方式作为异步方法。可以使用[getNetCapabilities](#connectiongetnetcapabilities)去获取网络的类型、拥有的能力等信息。
+获取系统默认使用的网络ID，使用Promise异步回调。
+
+> **说明：**
+>
+>- 系统默认使用的网络，该网络的capabilities必须具备[NET_CAPABILITY_INTERNET](#netcap)且不是VPN类型的网络。
+>
+>- 该接口的返回由系统决定，与应用是否指定网络无关。
+>
+>- 一般情况下，优先级：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
+>
+>- NetHandle为网络唯一标识，当无网络可用时，返回0，该id可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -150,7 +170,17 @@ connection.getDefaultNet().then((data: connection.NetHandle) => {
 
 getDefaultNetSync(): NetHandle
 
-使用同步方法获取默认激活的数据网络。可以使用[getNetCapabilities](#connectiongetnetcapabilities)去获取网络的类型、拥有的能力等信息。
+同步获取系统默认使用的网络ID。
+
+> **说明：**
+>
+>- 系统默认使用的网络，该网络的capabilities必须具备[NET_CAPABILITY_INTERNET](#netcap)且不是VPN类型的网络。
+>
+>- 该接口的返回由系统决定，与应用是否指定网络无关。
+>
+>- 一般情况下，优先级：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
+>
+>- NetHandle为网络唯一标识，当无网络可用时，返回0，该id可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -1449,6 +1479,80 @@ connection.getAddressesByName("xxxx").then((data: connection.NetAddress[]) => {
 });
 ```
 
+## connection.getAddressesByNameWithOptions<sup>23+</sup>
+
+getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Array\<NetAddress\>\>
+
+使用当前默认网络基于指定IP类型进行DNS解析。使用Promise异步回调。
+
+**需要权限**：ohos.permission.INTERNET
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明               |
+| ------ | ------ | ---- | ------------------ |
+| host   | string | 是   | 需要解析的主机名。 |
+| option | [QueryOptions](#queryoptions23) | 否   | 需要查询的IP类型，默认值为FAMILY_TYPE_ALL。 |
+
+**返回值：**
+
+| 类型                                        | 说明                          |
+| ------------------------------------------- | ----------------------------- |
+| Promise\<Array\<[NetAddress](#netaddress)>> | Promise对象，返回查询到的IP地址。返回值中的port字段固定为0，无需关注。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                        |
+| ------- | -----------------------------  |
+| 201     | Permission denied.             |
+| 2100001 | Invalid parameter value.                |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error.         |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+let option: QueryOptions = {
+  family:connection.FAMILY_TYPE_IPV4
+};
+connection.getAddressesByNameWithOptions("www.example.com", option).then((data: connection.NetAddress[]) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+});
+```
+
+
+## QueryOptions<sup>23+</sup>
+
+需要查询的IP类型。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 参数名 | 类型   | 必填 | 说明               |
+| ------ | ------ | ---- | ------------------ |
+| family   | [FamilyType](#familytype23) | 否   | 需要查询的具体IP地址类型，默认值为FAMILY_TYPE_ALL。 |
+
+## FamilyType<sup>23+</sup>
+
+需要查询的具体IP地址类型。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称  |值         | 说明               |
+| ------ |---------- | ------------------ |
+| FAMILY_TYPE_ALL    | 0   | 查询所有IPv4和IPv6地址。 |
+| FAMILY_TYPE_IPV4   | 1   | 仅查询IPv4地址。       |
+| FAMILY_TYPE_IPV6   | 2   | 仅查询IPv6地址。       |
+
 ## connection.addCustomDnsRule<sup>11+</sup>
 
 addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<void\>): void
@@ -1728,7 +1832,12 @@ connection.clearCustomDnsRules().then(() => {
 
 setPacFileUrl(pacFileUrl: string): void
 
-设置当前PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，比如：http://127.0.0.1:21998/PacProxyScript.pac。通过解析脚本地址可以获取代理信息。
+设置PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，并启动PAC代理能力，比如：http://127.0.0.1:21998/PacProxyScript.pac 。通过解析脚本地址可以获取代理信息。
+
+>**注意：**
+>
+> 1、本接口当前只在PC设备上支持解析脚本并启用PAC代理能力，其他设备类型上只保存脚本地址，不会启用PAC代理能力。<br>
+> 2、该接口不会校验URL真实性，PC设备上在设置完成之后，会启动PAC代理，若URL有误，则启动代理失败，返回2100002错误码。
 
 **需要权限**：ohos.permission.SET_PAC_URL
 
@@ -1792,7 +1901,13 @@ console.info(pacFileUrl);
 
 findProxyForUrl(url: string): string
 
-根据给定的URL查找PAC代理信息。
+通过设置的PAC脚本，解析指定的URL代理地址，返回对应的PAC代理信息。
+
+> **说明：**
+>
+> 1、可通过 [setPacFileUrl](#connectionsetpacfileurl20) 或 [setPacUrl](#connectionsetpacurl15) 设置PAC脚本。<br>
+> 2、如果调用本接口前未设置PAC脚本，则返回空字符串。
+> 3、由于[setPacFileUrl](#connectionsetpacfileurl20)接口当前仅支持PC设备解析脚本并启用PAC代理能力，因此本接口当前也仅支持PC设备获取PAC代理信息。 其他设备调用本接口功能不生效，返回空字串。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -1823,6 +1938,10 @@ console.info(proxyInfo);
 setPacUrl(pacUrl: string): void
 
 设置系统级代理自动配置（Proxy Auto Config，PAC）脚本地址。
+
+> **说明：**
+>
+> 只支持设置脚本地址，不支持解析和启用代理功能，如需设置脚本并启用代理，则可调用[setPacFileUrl](#connectionsetpacfileurl20)接口。
 
 **需要权限**：ohos.permission.SET_PAC_URL
 
@@ -2133,6 +2252,117 @@ connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
 }).catch((error: BusinessError) => {
   console.error(`error fetching ip neigh table. Code:${error.code}, message:${error.message}`);
 });
+```
+
+## connection.getConnectOwnerUid<sup>23+</sup>
+
+getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress): Promise\<number>
+
+用于查询发起指定网络连接的应用UID。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口仅限在VPN应用中调用。
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明            |
+| -------- | ------------------------------- | ---- | -------------- |
+| protocol | [ProtocolType](#protocoltype23) | 是   | 网络协议的类型。 |
+| local    | [NetAddress](#netaddress)       | 是   | 源IP地址和端口号。      |
+| remote   | [NetAddress](#netaddress)       | 是   | 目标IP地址和端口号。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ----------------------- |
+| Promise\<number> | Promise对象。以Promise形式返回的应用程序的UID，如果不存在匹配的UID则返回-1。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                          |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100001 | Invalid parameter value.          |
+| 2100002 | Failed to connect to the service. |
+| 2100301 | Incorrect usage in non-VPN application. |
+| 2100003 | System internal error.            |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
+let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
+let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
+connection.getConnectOwnerUid(protocol, local, remote).then((uid) => {
+  console.info(`uid: ${uid}`);
+}).catch((error: BusinessError) => {
+  console.error(`getConnectOwnerUid failed. errorCode: ${error.code} message:${error.message}`);
+});
+```
+
+## connection.getConnectOwnerUidSync<sup>23+</sup>
+
+getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAddress): number
+
+用于查询发起指定网络连接的应用UID。使用同步方式返回。
+
+> **说明：**
+>
+> 该接口仅限在VPN应用中调用。
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明            |
+| -------- | ------------------------------- | ---- | -------------- |
+| protocol | [ProtocolType](#protocoltype23) | 是   | 网络协议的类型。 |
+| local    | [NetAddress](#netaddress)       | 是   | 源IP地址和端口号。      |
+| remote   | [NetAddress](#netaddress)       | 是   | 目标IP地址和端口号。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ----------------------- |
+| number | 应用程序的UID，如果不存在匹配的UID则返回-1。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                          |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100001 | Invalid parameter value.          |
+| 2100002 | Failed to connect to the service. |
+| 2100301 | Incorrect usage in non-VPN application. |
+| 2100003 | System internal error.            |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
+let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
+let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
+let uid = connection.getConnectOwnerUidSync(protocol, local, remote);
+console.info(`uid: ${uid}`);
 ```
 
 ## NetConnection
@@ -2779,6 +3009,65 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
+### getAddressesByNameWithOptions<sup>23+</sup>
+
+getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Array\<NetAddress\>\>
+
+使用当前NetHandle对应的网络基于指定IP类型进行DNS解析。使用Promise异步回调。
+
+**需要权限**：ohos.permission.INTERNET
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明               |
+| ------ | ------ | ---- | ------------------ |
+| host   | string | 是   | 需要解析的主机名。 |
+| QueryOptions | [QueryOptions](#queryoptions23) | 否   | 需要查询的IP类型。 |
+
+**返回值：**
+
+| 类型                                        | 说明                          |
+| ------------------------------------------- | ----------------------------- |
+| Promise\<Array\<[NetAddress](#netaddress)>> | Promise对象，返回查询到的IP地址。返回值中的port字段固定为0，无需关注。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                        |
+| ------- | -----------------------------  |
+| 201     | Permission denied.             |
+| 2100001 | Invalid parameter value.                |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error.         |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    return;
+  }
+  let host = "www.example.com";
+  let option: QueryOptions = {
+      family: connection.FamilyType.FAMILY_TYPE_IPV4
+    };
+  netHandle.getAddressesByNameWithOptions(host, option).then((data: connection.NetAddress[]) => {
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+  });
+});
+```
+
 ### getAddressByName
 
 getAddressByName(host: string, callback: AsyncCallback\<NetAddress>): void
@@ -3019,6 +3308,9 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 ## ConnectionProperties
 
 网络连接信息。
+>**注意：**
+>
+> linkAddresses、routes和dnses可能为空，需要做好空值保护。  
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -3089,7 +3381,7 @@ type HttpRequest = http.HttpRequest
 
 type TCPSocket = socket.TCPSocket
 
-定义一个TCPSocket对象，可以通过[socket.constructTCPSocketInstance](js-apis-socket.md#socketconstructtcpsocketinstance7)创建。
+定义一个TCPSocket对象，可以通过[socket.constructTCPSocketInstance](js-apis-socket.md#socketconstructtcpsocketinstance)创建。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -3121,3 +3413,14 @@ IP邻居表条目信息。
 | ipAddress | [NetAddress](#netaddress)     | 否 | 否 |IP地址相关信息。   |
 | iface       | string                              | 否 | 否 |网卡名。                                    |
 | macAddress | string | 否 | 否 |MAC地址。                                |
+
+## ProtocolType<sup>23+</sup>
+
+网络协议类型的枚举。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称            | 值   | 说明          |
+| --------------- | ---- | ------------ |
+| PROTO_TYPE_TCP  | 6    | TCP网络协议。 |
+| PROTO_TYPE_UDP  | 17   | UDP网络协议。 |

@@ -20,6 +20,7 @@ The following provides examples of CMAC operations with different data passing m
 1. Call [cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac18) with the MAC algorithm set to **CMAC** and symmetric key algorithm set to **AES128** to create a **Mac** instance.
 
 2. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (**SymKey**) using AES256.
+
    For details, see [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md).
 
 3. Call [Mac.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-6) to initialize the **Mac** instance using the shared symmetric key (**SymKey**).
@@ -51,7 +52,7 @@ The following provides examples of CMAC operations with different data passing m
         algName: "CMAC",
         cipherName: "AES128",
     };
-    let message = 'cmacTestMessage'; // Message used to generate a CMAC.
+    let message = 'cmacTestMessage'; // Message to be CMACed.
     let mac = cryptoFramework.createMac(spec);
     await mac.init(key);
     // For a small amount of data, update it by passing in the full data. The API does not have a limit on the length of input parameters.
@@ -84,7 +85,7 @@ The following provides examples of CMAC operations with different data passing m
         algName: "CMAC",
         cipherName: "AES128",
     };
-    let message = 'cmacTestMessage'; // Message used to generate a CMAC.
+    let message = 'cmacTestMessage'; // Message to be CMACed.
     let mac = cryptoFramework.createMac(spec);
     mac.initSync(key);
     // For a small amount of data, update it by passing in the full data. The API does not have a limit on the length of input parameters.
@@ -101,6 +102,7 @@ The following provides examples of CMAC operations with different data passing m
 1. Call [cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac18) with the MAC algorithm set to **CMAC** and symmetric key algorithm set to **AES256** to create a **Mac** instance.
 
 2. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (**SymKey**) using AES256.
+
    For details, see [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md).
 
 3. Call [Mac.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-7) to initialize the **Mac** instance using the shared symmetric key (**SymKey**).

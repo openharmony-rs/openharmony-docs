@@ -81,7 +81,7 @@ struct Index {
 
 on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 
-Enables listening for global mouse events.
+Enables listening for global mouse events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -135,7 +135,7 @@ struct Index {
 
 on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
 
-Enables listening for mouse events. When the mouse pointer moves to the specified rectangular area, a callback is triggered.
+Enables listening for mouse events. When the mouse pointer moves to the specified rectangular area, a callback is triggered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -301,7 +301,7 @@ struct Index {
 
 off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 
-Disables listening for global mouse events.
+Disables listening for global mouse events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -386,7 +386,7 @@ struct Index {
 
 ## TouchEventReceiver
 
-(touchEvent: TouchEvent): Boolean
+type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 
 Callback used to return the touch event.
 
@@ -404,13 +404,12 @@ Callback used to return the touch event.
 
 | Type     | Description                                      |
 | ------- | ---------------------------------------- |
-| Boolean | Result indicating whether the touch event will be dispatched to the window. The value **true** indicates that the touch event will be dispatched to the window, and the value **false** indicates the opposite.|
+| Boolean | Result indicating whether the touch event will be dispatched to the window. The value **true** indicates that the touch event will not be dispatched to the window, and the value **false** indicates the opposite.|
 
 **Example**
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -421,7 +420,7 @@ struct Index {
         .onClick(() => {
           try {
             inputMonitor.on('touch', touchEvent => {
-              if (touchEvent.touches.length == 3) {// Three fingers are pressed.
+              if (touchEvent.touches.length === 3) { // Three fingers are pressed.
                 return true;
               }
               return false;
@@ -439,7 +438,7 @@ struct Index {
 
 on(type: 'pinch', receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
 
-Enables listening for global touchpad pinch events.
+Enables listening for global touchpad pinch events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -466,7 +465,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -493,7 +491,7 @@ struct Index {
 
 off(type: 'pinch', receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
 
-Disables listening for global touchpad pinch events.
+Disables listening for global touchpad pinch events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -580,7 +578,7 @@ struct Index {
 
 on(type: 'threeFingersSwipe', receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
 
-Enables listening for three-finger swipe events.
+Enables listening for three-finger swipe events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -633,7 +631,7 @@ struct Index {
 
 off(type: 'threeFingersSwipe', receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
 
-Disables listening for three-finger swipe events.
+Disables listening for three-finger swipe events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -720,7 +718,7 @@ struct Index {
 
 on(type: 'fourFingersSwipe', receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
 
-Enables listening for four-finger swipe events.
+Enables listening for four-finger swipe events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -773,7 +771,7 @@ struct Index {
 
 off(type: 'fourFingersSwipe', receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
 
-Disables listening for four-finger swipe events.
+Disables listening for four-finger swipe events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -860,7 +858,7 @@ struct Index {
 
 on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void
 
-Enables listening for rotation events of the touchpad.
+Enables listening for rotation events of the touchpad. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -915,7 +913,7 @@ struct Index {
 
 off(type: 'rotate', fingers: number, receiver?: Callback&lt;Rotate&gt;): void
 
-Disables listening for rotation events of the touchpad.
+Disables listening for rotation events of the touchpad. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -1003,7 +1001,7 @@ struct Index {
 
 on(type: 'pinch', fingers: number, receiver: Callback&lt;Pinch&gt;): void
 
-Enables listening for global touchpad pinch events.
+Enables listening for global touchpad pinch events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -1058,7 +1056,7 @@ struct Index {
 
 off(type: 'pinch', fingers: number, receiver?: Callback&lt;Pinch&gt;): void
 
-Disables listening for global touchpad pinch events.
+Disables listening for global touchpad pinch events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -1146,7 +1144,7 @@ struct Index {
 
 on(type: 'threeFingersTap', receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
 
-Enables listening for three-finger tap events.
+Enables listening for three-finger tap events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -1199,7 +1197,7 @@ struct Index {
 
 off(type: 'threeFingersTap', receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
 
-Disables listening for three-finger tap events.
+Disables listening for three-finger tap events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -1286,7 +1284,7 @@ struct Index {
 
 on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGestureEvent&gt;): void
 
-Enables listening for touchscreen swipe events.
+Enables listening for touchscreen swipe events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -1314,7 +1312,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1341,7 +1339,7 @@ struct Index {
 
 off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestureEvent&gt;): void
 
-Disables listening for touchscreen swipe events.
+Disables listening for touchscreen swipe events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -1369,7 +1367,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1397,7 +1395,7 @@ struct Index {
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1426,7 +1424,7 @@ struct Index {
 
 on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGestureEvent&gt;): void
 
-Enables listening for touchscreen pinch events.
+Enables listening for touchscreen pinch events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -1454,7 +1452,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1481,7 +1479,7 @@ struct Index {
 
 off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestureEvent&gt;): void
 
-Disables listening for touchscreen pinch events.
+Disables listening for touchscreen pinch events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -1509,7 +1507,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1537,7 +1535,7 @@ struct Index {
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1566,7 +1564,7 @@ struct Index {
 
 on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEvent&gt;): void
 
-Listens for the press and release events of the specified key, which can be the **META_LEFT**, **META_RIGHT**, power, or volume key.
+Listens for the press and release events of the specified key, which can be the **META_LEFT**, **META_RIGHT**, power, or volume key. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -1621,7 +1619,7 @@ struct Index {
 
 off(type: 'keyPressed', receiver?: Callback&lt;KeyEvent&gt;): void
 
-Cancels listening for the press and release events of the specified key, which can be the **META_LEFT**, **META_RIGHT**, power, or volume key. This API must be used together with **inputMonitor.on ('keyPressed')**.
+Cancels listening for the press and release events of the specified key, which can be the **META_LEFT**, **META_RIGHT**, power, or volume key. This API must be used together with **inputMonitor.on ('keyPressed')**. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -1748,5 +1746,145 @@ try {
   const code = (error as BusinessError).code;
   const message = (error as BusinessError).message;
   console.error(`queryTouchEvents failed, error code: ${code}, message: ${message}.`);
+}
+```
+
+## inputMonitor.on('fingerprint')<sup>12+</sup>
+
+on(type: 'fingerprint', receiver: Callback&lt;FingerprintEvent&gt;): void
+
+Enables listening for fingerprint gesture input events. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.INPUT_MONITORING
+
+**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+
+**Parameters**
+
+| Name  | Type                                                       | Mandatory| Description                                |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| type     | string                                                      | Yes  | Input event type. The value is unique and is **fingerprint**.|
+| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt;    | Yes  | Callback used to receive reported data.        |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputMonitor.on('fingerprint', (FingerprintEvent) => {
+              console.info(`Monitor on success ${JSON.stringify(FingerprintEvent)}`);
+              return false;
+            });
+          } catch (error) {
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.off('fingerprint')<sup>12+</sup>
+
+off(type: 'fingerprint', receiver?: Callback&lt;FingerprintEvent&gt;): void
+
+Disables listening for fingerprint gesture input events. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.INPUT_MONITORING
+
+**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes  | Input event type. The value is **fingerprint**.                   |
+| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt; | No  | Callback for which listening is disabled. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message            |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import { FingerprintEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Disable listening for a single callback.
+          let callback = (fingerprintEvent: FingerprintEvent) => {
+            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            return false;
+          };
+          try {
+            inputMonitor.on('fingerprint', callback);
+            inputMonitor.off("fingerprint", callback);
+            console.info(`Monitor off success`);
+          } catch (error) {
+            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import { FingerprintEvent } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // Cancel listening for all callbacks.
+          let callback = (fingerprintEvent: FingerprintEvent) => {
+            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            return false;
+          };
+          try {
+            inputMonitor.on('fingerprint', callback);
+            inputMonitor.off("fingerprint");
+            console.info(`Monitor off success`);
+          } catch (error) {
+            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```

@@ -588,6 +588,6 @@ struct Index {
   }
 }
 ```
-![AutomicEnergy](figures/AutomicEnergy.gif)
+![AutomaticEnergy](figures/AutomaticEnergy.gif)
 
 <!--RP1--><!--RP1End-->

@@ -72,7 +72,8 @@ write(eventName: string, eventType: EventType, keyValues: object, callback: Asyn
 **示例：**
 
 ```ts
-import { BusinessError } from '@ohos.base'
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let eventParams: Record<string, number | string> = {
   "int_data": 100,
@@ -81,11 +82,11 @@ let eventParams: Record<string, number | string> = {
 hiAppEvent.write("test_event", hiAppEvent.EventType.FAULT, eventParams, (err: BusinessError) => {
   if (err) {
     // 事件写入异常：事件存在异常参数时忽略异常参数后继续写入，或者事件校验失败时不执行写入
-    console.error(`failed to write event, code=${err.code}`);
+    hilog.error(0x0000, 'hiAppEvent', `failed to write event, code: ${err.code}, message: ${err.message}`);
     return;
   }
   // 事件写入正常
-  console.log(`success to write event`);
+  hilog.info(0x0000, 'hiAppEvent', `success to write event`);
 });
 ```
 
@@ -115,7 +116,8 @@ write(eventName: string, eventType: EventType, keyValues: object): Promise&lt;vo
 **示例：**
 
 ```ts
-import { BusinessError } from '@ohos.base'
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let eventParams: Record<string, number | string> = {
   "int_data": 100,
@@ -123,10 +125,10 @@ let eventParams: Record<string, number | string> = {
 };
 hiAppEvent.write("test_event", hiAppEvent.EventType.FAULT, eventParams).then(() => {
   // 事件写入正常
-  console.log(`success to write event`);
+  hilog.info(0x0000, 'hiAppEvent', `success to write event`);
 }).catch((err: BusinessError) => {
   // 事件写入异常：事件存在异常参数时忽略异常参数后继续写入，或者事件校验失败时不执行写入
-  console.error(`failed to write event, code=${err.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `code: ${err.code}, message: ${err.message}`);
 });
 ```
 

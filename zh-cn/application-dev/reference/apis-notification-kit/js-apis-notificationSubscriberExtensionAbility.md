@@ -22,8 +22,6 @@ import { notificationExtensionSubscription, NotificationSubscriberExtensionAbili
 
 ## NotificationSubscriberExtensionAbility
 
-### 属性
-
 **系统能力**：SystemCapability.Notification.Notification
 
 

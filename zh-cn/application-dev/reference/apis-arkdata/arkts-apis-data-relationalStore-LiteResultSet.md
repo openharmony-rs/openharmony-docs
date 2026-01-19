@@ -916,7 +916,7 @@ async function getRowsExample(store : relationalStore.RdbStore) {
 
 ## getRowsData<sup>23+</sup>
 
-getRowsData(maxCount: number, position?: number): Promise<Array\<RowsData>>
+getRowsData(maxCount: number, position?: number): Promise\<RowsData>
 
 从指定位置position开始，最多获取maxCount行数据。使用Promise异步回调。禁止与[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)的其他接口并发调用，否则获取的数据可能非预期。
 

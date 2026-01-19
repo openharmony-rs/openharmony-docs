@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 The **WLAN** module provides basic wireless local area network (WLAN) functions, peer-to-peer (P2P) functions, and WLAN message notification services. It allows applications to communicate with devices over WLAN.
 
-> **NOTE**
+> **NOTE**<br>
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.wifiManager (WLAN)](js-apis-wifiManager.md).
 
@@ -1252,7 +1252,7 @@ Represents the station information. Contains the details about the device that i
 
 ## wifiManager.addHotspotBlockList<sup>11+</sup>
 
-addHotspotBlockList(stationInfo: StationInfo)
+addHotspotBlockList(stationInfo: StationInfo): void
 
 Adds a device to the list of blocked devices of the hotspot. Devices in the list cannot access the hotspot.
 
@@ -1300,7 +1300,7 @@ try {
 
 ## wifiManager.delHotspotBlockList<sup>11+</sup>
 
-delHotspotBlockList(stationInfo: StationInfo)
+delHotspotBlockList(stationInfo: StationInfo): void
 
 Deletes a device from the list of blocked devices of the hotspot.
 
@@ -1582,7 +1582,7 @@ Subscribes to Wi-Fi stream changes. When the service exits, call **off(type: 'st
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **streamChange**.|
-| callback | Callback&lt;number&gt; | Yes| Callback used to return the Wi-Fi stream change, which can be any of the following values:<br>- **0**: No stream.<br>- **1**: Downward.<br>- **2**: Upward.<br>- **3**: Bidirectional.|
+| callback | Callback&lt;number&gt; | Yes| Callback used to return the Wi-Fi stream change, which can be any of the following values:<br>- **0**: No stream<br>- **1**: Downward<br>- **2**: Upward<br>- **3**: Bidirectional|
 
 **Error codes**
 
@@ -1613,7 +1613,7 @@ Unsubscribes from Wi-Fi stream changes. This API uses an asynchronous callback t
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **streamChange**.|
-| callback | Callback&lt;number&gt; | No| Callback to unregister. The stream change can be any of the following values:<br>- **0**: No stream.<br>- **1**: Downward.<br>- **2**: Upward.<br>- **3**: Bidirectional.|
+| callback | Callback&lt;number&gt; | No| Callback used to return the Wi-Fi stream change, which can be any of the following values:<br>- **0**: No stream<br>- **1**: Downward<br>- **2**: Upward<br>- **3**: Bidirectional|
 
 **Error codes**
 
@@ -1623,7 +1623,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 

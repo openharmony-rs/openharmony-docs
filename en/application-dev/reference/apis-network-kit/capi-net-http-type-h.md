@@ -79,7 +79,7 @@ Defines the data structures for the C APIs of the HTTP request module.
 
 ### Http_ErrCode
 
-```
+```c
 enum Http_ErrCode
 ```
 
@@ -128,7 +128,7 @@ Enumerates the error codes of an HTTP request.
 
 ### Http_ResponseCode
 
-```
+```c
 enum Http_ResponseCode
 ```
 
@@ -143,11 +143,11 @@ Enumerates the result codes of an HTTP response.
 | OH_HTTP_OK = 200 | Request succeeded.|
 | OH_HTTP_CREATED = 201 | "Created." The request has been successfully sent and a new resource is created.|
 | OH_HTTP_ACCEPTED = 202 | "Accepted." The request has been accepted for processing, but the processing has not been completed.|
-| OH_HTTP_NOT_AUTHORITATIVE = 203 | "Non-Authoritative Information." The request was successfully processed, but the returned response body contains non-authoritative information.|
+| OH_HTTP_NON_AUTHORITATIVE_INFO = 203 | "Non-Authoritative Information." The request was successfully processed, but the returned response body contains non-authoritative information.|
 | OH_HTTP_NO_CONTENT = 204 | "No Content." The server has successfully fulfilled the request but there is no additional content to send in the response payload body.|
 | OH_HTTP_RESET = 205 | "Reset Content." The server has successfully fulfilled the request and desires that the user agent reset the content.|
 | OH_HTTP_PARTIAL = 206 | "Partial Content." The server has successfully fulfilled the partial GET request for a given resource.|
-| OH_HTTP_MULT_CHOICE = 300 | "Multiple Choices." The requested resource corresponds to any one of a set of representations.|
+| OH_HTTP_MULTI_CHOICE = 300 | "Multiple Choices." The requested resource corresponds to any one of a set of representations.|
 | OH_HTTP_MOVED_PERM = 301 | "Moved Permanently." The requested resource has been assigned a new permanent URI and any future references to this resource will be redirected to this URI.|
 | OH_HTTP_MOVED_TEMP = 302 | "Moved Temporarily." The requested resource is moved temporarily to a different URI.|
 | OH_HTTP_SEE_OTHER = 303 | "See Other." The response to the request can be found under a different URI.|
@@ -167,9 +167,9 @@ Enumerates the result codes of an HTTP response.
 | OH_HTTP_LENGTH_REQUIRED = 411 | "Length Required." The server refuses to process the request without a defined Content-Length.|
 | OH_HTTP_PRECON_FAILED = 412 | "Precondition Failed." The precondition in the request is incorrect.|
 | OH_HTTP_ENTITY_TOO_LARGE = 413 | "Request Entity Too Large." The server refuses to process a request because the request entity is larger than the server is able to process.|
-| OH_HTTP_REQ_TOO_LONG = 414 | "Request-URI Too Long." The Request-URI is too long for the server to process.|
+| OH_HTTP_REQUEST_TOO_LONG = 414 | "Request-URI Too Long." The Request-URI is too long for the server to process.|
 | OH_HTTP_UNSUPPORTED_TYPE = 415 | "Unsupported Media Type." The server is unable to process the media format in the request.|
-| OH_HTTP_RANGE_NOT_SATISFIABLE = 416 | "Range Not Satisfiable." The server cannot serve the requested ranges.|
+| OH_HTTP_RANGE_NOT_MET = 416 | "Range Not Satisfiable." The server cannot serve the requested ranges.|
 | OH_HTTP_INTERNAL_ERROR = 500 | "Internal Server Error." The server encounters an unexpected error that prevents it from fulfilling the request.|
 | OH_HTTP_NOT_IMPLEMENTED = 501 | "Not Implemented." The server does not support the function required to fulfill the request.|
 | OH_HTTP_BAD_GATEWAY = 502 | "Bad Gateway." The server acting as a gateway or proxy receives an invalid response from the upstream server.|
@@ -179,7 +179,7 @@ Enumerates the result codes of an HTTP response.
 
 ### Http_AddressFamilyType
 
-```
+```c
 enum Http_AddressFamilyType
 ```
 
@@ -197,7 +197,7 @@ Defines the IP address family of the target domain name.
 
 ### Http_HttpProtocol
 
-```
+```c
 enum Http_HttpProtocol
 ```
 
@@ -216,7 +216,7 @@ Enumerates HTTP protocol versions.
 
 ### Http_CertType
 
-```
+```c
 enum Http_CertType
 ```
 
@@ -234,7 +234,7 @@ Enumerates certificate types.
 
 ### Http_ProxyType
 
-```
+```c
 enum Http_ProxyType
 ```
 
@@ -255,7 +255,7 @@ Enumerates proxy types.
 
 ### Http_ResponseCallback()
 
-```
+```c
 typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t errCode)
 ```
 
@@ -275,7 +275,7 @@ Callback invoked when an HTTP response is received.
 
 ### Http_OnDataReceiveCallback()
 
-```
+```c
 typedef void (*Http_OnDataReceiveCallback)(const char *data, size_t length)
 ```
 
@@ -295,7 +295,7 @@ Callback invoked when data is received.
 
 ### Http_OnProgressCallback()
 
-```
+```c
 typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferredSize)
 ```
 
@@ -315,7 +315,7 @@ Callback invoked during request/response data transmission.
 
 ### Http_OnHeaderReceiveCallback()
 
-```
+```c
 typedef void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers)
 ```
 
@@ -334,7 +334,7 @@ Callback invoked when an HTTP response header is received.
 
 ### Http_OnVoidCallback()
 
-```
+```c
 typedef void (*Http_OnVoidCallback)(void)
 ```
 

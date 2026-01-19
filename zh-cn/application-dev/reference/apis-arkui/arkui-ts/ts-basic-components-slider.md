@@ -154,44 +154,13 @@ trackColorMetrics(color: ColorMetricsLinearGradient)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | color  | [ColorMetricsLinearGradient](#colormetricslineargradient23) | 是   | 滑轨轨道的线性渐变背景颜色。<br/>设置渐变色时，如果color的值为undefined，渐变色设置无效，轨道背景颜色默认取值为：`$r('sys.color.ohos_id_color_component_normal')`。 |
-
-## ColorMetricsLinearGradient<sup>23+</sup>
-
-滑轨轨道的线性渐变背景颜色。
-
-### constructor<sup>23+</sup>
-
-constructor(colorStops: ColorMetricsStop[])
-
-ColorMetricsLinearGradient的构造函数。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名         | 类型 | 必填 | 说明 |
-| ------------- | ------- | ---- | -------- |
-| colorStops | [ColorMetricsStop](#colormetricsstop23)[] | 是 | 线性渐变颜色断点数组。每个元素用于描述一个颜色及其在渐变中的断点值。 |
-
-## ColorMetricsStop<sup>23+</sup>
-
-线性渐变颜色断点类型，用于描述渐进色颜色断点。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称          | 类型 | 只读 | 可选 | 说明 |
-| ------------- | ------- | ---- | -------- | -------- |
-| color | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 否 | 线性渐变颜色断点的颜色值。 |
-| offset | [Length](ts-types.md#length) | 否 | 否 | 线性渐变颜色断点的断点值，取值为0~1之间的比例值，如果数据值小于0则置为0，如果数据值大于1则置为1。 <br>**说明：** <br/>如果传入字符串类型且内容为数字，则转换为对应的数值。例如'10vp'转换为10，'10%'转换为0.1。 |
 
 ### selectedColor
 
@@ -649,6 +618,43 @@ maxLabel(value: string)
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
 | value  | string | 是   | 最大值。 |
+
+## ColorMetricsLinearGradient<sup>23+</sup>
+
+滑轨轨道的线性渐变背景颜色。
+
+### constructor<sup>23+</sup>
+
+constructor(colorStops: ColorMetricsStop[])
+
+ColorMetricsLinearGradient的构造函数。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名         | 类型 | 必填 | 说明 |
+| ------------- | ------- | ---- | -------- |
+| colorStops | [ColorMetricsStop](#colormetricsstop23)[] | 是 | 线性渐变颜色断点数组。每个元素用于描述一个颜色及其在渐变中的断点值。 |
+
+## ColorMetricsStop<sup>23+</sup>
+
+线性渐变颜色断点类型，用于描述渐进色颜色断点。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称          | 类型 | 只读 | 可选 | 说明 |
+| ------------- | ------- | ---- | -------- | -------- |
+| color | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 否 | 线性渐变颜色断点的颜色值。 |
+| offset | [Length](ts-types.md#length) | 否 | 否 | 线性渐变颜色断点的断点值，取值为0~1之间的比例值，如果数据值小于0则置为0，如果数据值大于1则置为1。 <br>**说明：** <br/>如果传入字符串类型且内容为数字，则转换为对应的数值。例如'10vp'转换为10，'10%'转换为0.1。 |
 
 ## SliderCustomContentOptions<sup>20+</sup>
 

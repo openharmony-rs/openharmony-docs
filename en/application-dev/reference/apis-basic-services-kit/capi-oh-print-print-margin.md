@@ -1,9 +1,9 @@
 # Print_Margin
-<!--Kit: Basic Services Kit-->	
-<!--Subsystem: Print-->	
-<!--Owner: @guoshengbang-->	
-<!--Designer: @Q-haosu-->	
-<!--Tester: @Q-haosu-->	
+<!--Kit: Basic Services Kit-->  
+<!--Subsystem: Print--> 
+<!--Owner: @guoshengbang--> 
+<!--Designer: @Q-haosu-->   
+<!--Tester: @Q-haosu--> 
 <!--Adviser: @fang-jinxu-->
 
 ```c
@@ -12,7 +12,7 @@ typedef struct {...} Print_Margin
 
 ## Overview
 
-Defines the page margin.
+Defines a struct for the page margin.
 
 **Since**: 12
 

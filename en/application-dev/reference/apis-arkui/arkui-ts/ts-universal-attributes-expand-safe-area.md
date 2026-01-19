@@ -10,14 +10,14 @@ A safe area refers to the display area that is not covered by system-defined non
 
 > **NOTE**
 >
-> This attribute is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.<br>
+> The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.<br>
 > The camera cutout area is not considered part of the non-safe area by default, and pages do not automatically avoid it.<br>
 > You can set the camera cutout area as a non-safe area since API version 12, so that content is not displayed in this area. To do so, add the following to the **module.json5** file:<br>
   "metadata": [<br>
-      {<br>
-        "name": "avoid_cutout",<br>
-        "value": "true",<br>
-      }<br>
+    &nbsp;&nbsp;{<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;"name": "avoid_cutout",<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;"value": "true",<br>
+    &nbsp;&nbsp;}<br>
   ],<br>
   
 
@@ -46,7 +46,7 @@ Sets the safe area to be expanded to.
 
 >  **NOTE**
 >
->  When using **expandSafeArea** to expand the drawing of a component, avoid setting fixed width and height values (except percentages). If fixed width and height values are set (including **'auto'**), the edges for expanding the safe area can only be [SafeAreaEdge.TOP, SafeAreaEdge.START], and the size of the component remains unchanged after safe area expansion.
+>  When using **expandSafeArea** to expand the drawing of a component, avoid setting fixed width and height values (except percentages). If fixed width and height values are set (including **'auto'**), the edges for expanding the safe area can only be **[SafeAreaEdge.TOP, SafeAreaEdge.START]**, and the size of the component remains unchanged after safe area expansion.
 >
 >  The safe area does not restrict the layout or size of components inside, nor does it clip the components.
 >
@@ -111,7 +111,7 @@ Sets the avoidance mode for the virtual keyboard.
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | Yes  | Avoidance mode of the virtual keyboard.<br>Default value: **KeyboardAvoidMode.OFFSET**, which means that the page moves up when the keyboard is displayed.<br>If an invalid value is set for **setKeyboardAvoidMode**, the setting will not take effect.|
+| value  | [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | Yes  | Avoidance mode of the virtual keyboard.<br>Default value: **KeyboardAvoidMode.OFFSET**, which means that the page moves up when the keyboard is displayed.<br>When **setKeyboardAvoidMode** is set to an invalid value, this attribute does not take effect.|
 
 >  **NOTE**
 >

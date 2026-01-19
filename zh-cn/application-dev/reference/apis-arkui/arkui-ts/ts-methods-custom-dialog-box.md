@@ -336,7 +336,7 @@ struct CustomDialogUser {
 
 ### 示例2（可在主窗外弹出的弹窗）
 
-在2in1设备上设置showInSubWindow为true时，可以弹出在主窗外显示的弹窗。
+在2in1设备上设置[showInSubWindow](#customdialogcontrolleroptions对象说明)为true时，可以弹出在主窗外显示的弹窗。
 
 ```ts
 // xxx.ets
@@ -609,7 +609,9 @@ struct CustomDialogUser {
 
 ### 示例5（获取弹窗的状态）
 
-该示例实现了在CustomDialogController中调用getState获取弹窗当前状态。
+该示例实现了在[CustomDialogController](#customdialogcontroller)中调用[getState](#getstate20)获取弹窗当前状态。
+
+从API version 20开始，在CustomDialogController中新增了getState接口。
 
 ```ts
 // xxx.ets
@@ -668,7 +670,7 @@ struct CustomDialogUser {
 
 ### 示例6（使用@Link和@Consume监听数据变化）
 
-该示例使用@Link和@Consume实现页面与弹窗内数据的双向绑定。
+该示例使用[@Link](../../../ui/state-management/arkts-link.md)和[@Consume](../../../ui/state-management/arkts-provide-and-consume.md)实现页面与弹窗内数据的双向绑定。
 
 ```ts
 @CustomDialog
@@ -771,7 +773,7 @@ struct CustomDialogUser {
 
 ### 示例7（自定义带loading的弹窗）
 
-该示例使用maskColor，maskRect和LoadingProgress，实现带loading的弹窗，并展示不在maskRect区域的事件透传效果。
+该示例使用[maskColor](#customdialogcontrolleroptions对象说明)，[maskRect](#customdialogcontrolleroptions对象说明)和[LoadingProgress](ts-basic-components-loadingprogress.md)，实现带loading的弹窗，并展示不在maskRect区域的事件透传效果。
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -875,7 +877,9 @@ struct CustomDialogUser {
 
 ### 示例8（不使用keyboardAvoidDistance调整弹窗与软键盘的间距）
 
-该示例通过监听键盘变化，调整布局margin的bottom，实现与使用keyboardAvoidDistance调整弹窗与软键盘的间距一样的效果。
+该示例通过监听键盘变化，调整布局[margin](ts-universal-attributes-size.md#margin)的[bottom](ts-universal-attributes-size.md#padding)，实现与使用[keyboardAvoidDistance](#customdialogcontrolleroptions对象说明)调整弹窗与软键盘的间距一样的效果。
+
+从API version 15开始，在CustomDialogControllerOptions中新增了keyboardAvoidDistance属性。
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -1011,7 +1015,9 @@ struct CustomDialogUser {
 
 ### 示例9（弹窗生命周期）
 
-该示例展示了弹窗生命周期的相关接口的使用方法。
+该示例为弹窗配置生命周期回调。
+
+从API version 19开始，在[CustomDialogControllerOptions](#customdialogcontrolleroptions对象说明)中新增了onDidAppear、onDidDisappear、onWillAppear和onWillDisappear属性。
 
 ```ts
 // xxx.ets
@@ -1106,7 +1112,7 @@ struct Example3 {
 
 ### 示例10（不同customStyle下的弹窗示例）
 
-该示例是在对齐方式为DialogAlignment.Bottom时，展示customStyle不同值下，弹窗内容与安全区域的效果。
+该示例是在对齐方式为[DialogAlignment.Bottom](#customdialogcontrolleroptions对象说明)时，展示[customStyle](#customdialogcontrolleroptions对象说明)不同值下，弹窗内容与安全区域的效果。
 
 ```ts
 @CustomDialog
@@ -1191,7 +1197,9 @@ struct CustomDialogUser {
 
 ### 示例11（自定义背景模糊效果参数）
 
-从API version 19开始，该示例通过配置[backgroundBlurStyleOptions](#customdialogcontrolleroptions对象说明)，实现自定义背景模糊效果。
+该示例通过配置[backgroundBlurStyleOptions](#customdialogcontrolleroptions对象说明)，实现自定义背景模糊效果。
+
+从API version 19开始，在[CustomDialogControllerOptions](#customdialogcontrolleroptions对象说明)中新增了backgroundBlurStyleOptions属性。
 
 ```ts
 @CustomDialog
@@ -1251,7 +1259,9 @@ struct CustomDialogUser {
 
 ### 示例12（自定义背景效果参数）
 
-从API version 19开始，该示例通过配置[backgroundEffect](#customdialogcontrolleroptions对象说明)，实现自定义背景效果。
+该示例通过配置[backgroundEffect](#customdialogcontrolleroptions对象说明)，实现自定义背景效果。
+
+从API version 19开始，在[CustomDialogControllerOptions](#customdialogcontrolleroptions对象说明)中新增了backgroundEffect属性。
 
 ```ts
 @CustomDialog

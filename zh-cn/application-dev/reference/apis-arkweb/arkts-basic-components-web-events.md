@@ -1843,7 +1843,7 @@ onVerifyPin(callback: OnVerifyPinCallback)
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
-import certMgrDialog from '@ohos.security.certManagerDialog';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1875,12 +1875,12 @@ struct Index {
           // 收到客户端证书请求事件
           console.info(`onClientAuthenticationRequest`);
           try {
-            let certTypes: Array<certMgrDialog.CertificateType> = [
-              certMgrDialog.CertificateType.CREDENTIAL_UKEY
+            let certTypes: Array<certificateManagerDialog.CertificateType> = [
+              certificateManagerDialog.CertificateType.CREDENTIAL_UKEY
             ];
             // 调用证书管理，打开证书选择框
-            certMgrDialog.openAuthorizeDialog(this.context, { certTypes: certTypes })
-              .then((data: certMgrDialog.CertReference) => {
+            certificateManagerDialog.openAuthorizeDialog(this.context, { certTypes: certTypes })
+              .then((data: certificateManagerDialog.CertReference) => {
                 console.info(`openAuthorizeDialog request cred auth success`)
                 // 通知web选择的为ukey证书
                 event.handler.confirm(data.keyUri, CredentialType.CREDENTIAL_UKEY);
@@ -1896,7 +1896,7 @@ struct Index {
           // 收到PIN码认证请求事件
           console.info(`onVerifyPin`);
           // 调用证书管理，打开PIN码输入框
-          certMgrDialog.openUkeyAuthDialog(this.context, {keyUri: event.identity})
+          certificateManagerDialog.openUkeyAuthDialog(this.context, {keyUri: event.identity})
             .then(() => {
               // 通知webPIN码认证成功
               console.info(`onVerifyPin success`);
@@ -2688,9 +2688,9 @@ onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
         .allowWindowOpenMethod(true)
         .onWindowNewExt((event) => {
           //以event.navigationPolicy请求的方式打开新窗口
-          console.log("navigationAction: ", event.navigationPolicy)
+          console.info("navigationAction: ", event.navigationPolicy)
           //以event.windowFeatures中的大小及位置信息创建新窗口
-          console.log("windowFeatures: ", JSON.stringify(event.windowFeatures))
+          console.info("windowFeatures: ", JSON.stringify(event.windowFeatures))
           if (this.dialogController) {
             this.dialogController.close();
           }

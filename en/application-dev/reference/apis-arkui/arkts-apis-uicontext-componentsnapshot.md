@@ -582,11 +582,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { UIContext } from '@kit.ArkUI';
-
+// Create a FrameNode node that contains an Image component.
 class MyNodeController extends NodeController {
   public node: FrameNode | null = null;
   public imageNode: FrameNode | null = null;
-
+  // Build a custom node, create the root node FrameNode, add a child node Image, and configure the Image resource and style.
   makeNode(uiContext: UIContext): FrameNode | null {
     this.node = new FrameNode(uiContext);
     this.node.commonAttribute.width('100%').height('100%');
@@ -617,6 +617,7 @@ struct SnapshotExample {
       Button("UniqueId getSync snapshot")
         .onClick(() => {
           try {
+            // Generate a component snapshot synchronously by node ID, with the zoom ratio of 2. The snapshot is generated after the rendering is complete.
             this.pixmap = this.getUIContext()
               .getComponentSnapshot()
               .getSyncWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),

@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-- [Introduction to ArkWeb](web-component-overview.md)
+- [About This Kit](web-component-overview.md)
 - [ArkWeb Process](web_component_process.md)
 - [Lifecycle of Web Components](web-event-sequence.md)
 - Setting Basic Attributes and Events<!--web-set-attributes-events-->

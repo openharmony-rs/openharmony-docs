@@ -84,8 +84,8 @@ To ensure that the event callback can be successfully received in the developmen
    }
    
    static napi_value Leak(napi_env env, napi_callback_info info) {
-   	std::thread t1(NativeLeak);
-   	t1.detach();
+    std::thread t1(NativeLeak);
+    t1.detach();
        return {};
    }
    ```

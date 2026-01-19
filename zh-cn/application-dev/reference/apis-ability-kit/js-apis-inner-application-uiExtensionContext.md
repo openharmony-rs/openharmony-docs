@@ -1098,6 +1098,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;AbilityResult&gt;
 
 打开一个独立窗口的原子化服务，并返回结果。使用Promise异步回调。
+
 分为以下几种情况：
  - 正常情况下可通过调用[terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。
  - 异常情况下比如杀死原子化服务会返回异常信息给调用方，异常信息中resultCode为-1。
@@ -1186,6 +1187,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。
 
 如果希望获取被拉起方终止后的结果，可以设置callback参数，此参数的使用可参照[startAbilityForResult](#startabilityforresult)接口。
+
 传入的参数不合法时，如未设置必选参数或link字符串不是标准格式的URL，接口会直接抛出异常。参数校验通过，拉起目标方时出现的错误通过promise返回错误信息。
 
 > **说明：**
@@ -1443,9 +1445,8 @@ struct Page_UIServiceExtensionAbility {
 
   build() {
     Column() {
-      //...
       Row() {
-        //...
+        // ...
       }.onClick(() => {
         const context = this.getUIContext().getHostContext() as common.UIExtensionContext;
         const want: Want = {
@@ -1518,9 +1519,8 @@ struct Page_UIServiceExtensionAbility {
 
   build() {
     Column() {
-      //...
       Row() {
-        //...
+        // ...
       }.onClick(() => {
         const context = this.getUIContext().getHostContext() as common.UIExtensionContext;
         // this.uiServiceProxy是连接时保存的proxy对象

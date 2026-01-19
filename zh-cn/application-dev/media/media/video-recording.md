@@ -133,6 +133,7 @@ AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis
    ```
 
 4. 获取视频录制需要的SurfaceID。
+
    调用getInputSurface()接口，接口的返回值SurfaceID用于传递给视频数据输入源模块。常用的输入源模块为相机，以下示例代码中，采用相机作为视频输入源为例。
 
      输入源模块通过SurfaceID可以获取到Surface，通过Surface可以将视频数据流传递给AVRecorder，由AVRecorder再进行视频数据的处理。

@@ -506,7 +506,7 @@ struct ChildComponent {
 
 **迁移Repeat**
 
-Repeat需要和状态管理V2一起使用，状态管理V2提供了[@ObserveV2和@Trace](../state-management/arkts-new-observedV2-and-trace.md)装饰器对子属性进行深度观测。迁移时，需要将@Observe和@ObjectLink装饰器迁移至@ObserveV2和@Trace装饰器。
+Repeat需要和状态管理V2一起使用，状态管理V2提供了[@ObservedV2和@Trace](../state-management/arkts-new-observedV2-and-trace.md)装饰器对子属性进行深度观测。迁移时，需要将@Observed和@ObjectLink装饰器迁移至@ObservedV2和@Trace装饰器。
 
 迁移后的示例如下所示。
 
@@ -1076,7 +1076,7 @@ Repeat本身具备组件复用能力，同时也支持与状态管理V2的[@Reus
 1. 直接使用Repeat自身的复用能力。
 2. 使用@ReusableV2装饰器提供的复用能力。
 
-需要注意的是，Repeat默认使能自身的复用能力，且优先级高于@ReusableV2装饰器。若要使用@ReusableV2装饰器，需要先手动关闭Repeat自身的复用能力（@ReusableV2装饰器从API version 18开始支持，Repeat从API version 19开始支持关闭自身复用能力）。
+需要注意的是，Repeat默认使能自身的复用能力，且优先级高于@ReusableV2装饰器。若要使用@ReusableV2装饰器，需要先手动关闭Repeat自身的复用能力（@ReusableV2装饰器从API version 18开始支持，Repeat从API version 18开始支持[关闭自身复用能力](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)）。
 
 **示例7 - 迁移方案1：使用Repeat自身的复用能力**
 

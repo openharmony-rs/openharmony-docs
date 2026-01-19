@@ -11,7 +11,7 @@ The **mouseEvent** module provides mouse events reported by a device. It is inhe
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -101,7 +101,7 @@ Defines the mouse event.
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | action         | [Action](#action)      | No   | No   | Enumerates mouse event types.                        |
 | screenX        | number      | No   | No   | X coordinate of the mouse event in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be set to an integer.|
-| screenY        | number      | No   | No   | X coordinate of the mouse event in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be set to an integer.|
+| screenY        | number      | No   | No   | Y coordinate of the mouse event in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be set to an integer.|
 | windowX        | number      | No   | No   | X coordinate in the relative coordinate system with the upper-left corner of the window where the mouse is located as the origin. The value can only be set to an integer. |
 | windowY        | number      | No   | No   | Y coordinate in the relative coordinate system with the upper-left corner of the window where the mouse is located as the origin. The value can only be set to an integer. |
 | rawDeltaX      | number      | No   | No   | X coordinate offset of the current mouse event relative to the last event. The value can only be set to an integer.|

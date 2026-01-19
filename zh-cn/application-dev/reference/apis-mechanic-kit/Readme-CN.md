@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @saga2025-->
 <!--Tester: @zhaodengqi-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @hu-zhiqiong-->
 
 - ArkTS API<!--mechanic-arkts-->
   - [@ohos.distributedHardware.mechanicManager (机械体控制模块)](js-apis-mechanicManager.md)

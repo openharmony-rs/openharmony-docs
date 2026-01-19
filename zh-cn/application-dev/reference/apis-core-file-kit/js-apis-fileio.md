@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 该模块提供文件存储管理能力，包括文件基本管理、文件目录管理、文件信息统计、文件流式读写等常用功能。
 
@@ -3714,7 +3714,7 @@ read(): Promise&lt;Dirent&gt;
   ```ts
   import { BusinessError } from '@ohos.base';
   dir.read().then((dirent: fileio.Dirent) => {
-    console.log("read succeed, the name of dirent is " + dirent.name);
+    console.info("read succeed, the name of dirent is " + dirent.name);
   }).catch((err: BusinessError) => {
     console.error("read failed with error:" + err);
   });
@@ -3746,7 +3746,7 @@ read(callback: AsyncCallback&lt;Dirent&gt;): void
   dir.read((err: BusinessError, dirent: fileio.Dirent) => {
     if (dirent) {
       // do something
-      console.log("read succeed, the name of file is " + dirent.name);
+      console.info("read succeed, the name of file is " + dirent.name);
     }
   });
   ```

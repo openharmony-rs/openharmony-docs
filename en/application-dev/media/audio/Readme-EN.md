@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-- [Introduction to Audio Kit](audio-kit-intro.md)
+- [About This Kit](audio-kit-intro.md)
 - [Selecting the Appropriate Audio Stream Types](using-right-streamusage-and-sourcetype.md)
 - [Introduction to Audio Focus and Audio Sessions](audio-playback-concurrency.md)
 - Audio Focus Management<!--audio-session-->

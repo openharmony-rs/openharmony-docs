@@ -641,7 +641,7 @@ this.context.resourceManager.getStringSync($r('app.string.test').id);
 ```typescript
 @Entry
 @Component
-struct CEMineButtomView {
+struct CEMineButtonView {
   build() {
     View();
   }
@@ -678,7 +678,7 @@ function viewB() {
 
 @Entry
 @Component
-struct CEMineButtomView {
+struct CEMineButtonView {
   build() {
     Column(){
       viewB()
@@ -855,7 +855,14 @@ let result = that.decodeSync(str);
 **反例**
 
 ```typescript
+@Component
 struct ViewA {
+  private start: boolean = false;
+  private marqueeText: string = 'Running Marquee';
+  private fromStart: boolean = true;
+  private step: number = 10;
+  private loop: number = Number.POSITIVE_INFINITY;
+
   build() {
     Column() {
       Marquee({
@@ -863,7 +870,7 @@ struct ViewA {
         step: this.step,
         loop: this.loop,
         fromStart: this.fromStart,
-        src: this.src
+        src: this.marqueeText
       })
         .width(360)
         .height(80)
@@ -888,10 +895,13 @@ struct ViewA {
 **正例**
 
 ```typescript
+@Component
 struct ViewB {
-  build(){
-    Column(){
-      Text(reply.user)
+  @State marqueeText: string = 'Running Marquee';
+
+  build() {
+    Column() {
+      Text(this.marqueeText)
         .maxLines(1)
         .textOverflow({ overflow: TextOverflow.MARQUEE }) // 跑马灯模式
         .width("30%")
@@ -915,7 +925,18 @@ struct ViewB {
 **反例**
 
 ```typescript
+@Component
 struct ViewA {
+  @State data: TestData = new TestData();
+
+  count(): number {
+    let temp: number = 0;
+    for (let i = 0; i < 10000; i++) {
+      temp += i;
+    }
+    return temp;
+  }
+
   build() {
     Column() {
       List() {
@@ -929,15 +950,69 @@ struct ViewA {
     }
   }
 }
+
+class TestData implements IDataSource {
+  public data: string[] = [];
+  private listeners: DataChangeListener[] = [];
+
+  totalCount(): number {
+    return this.data.length;
+  }
+
+  getData(index: number): string {
+    return this.data[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos: number = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+}
+
+@Reusable
+@Component
+struct ChildComponent {
+  @State desc: string = '';
+  @State sum: number = 0;
+
+  aboutToReuse(params: Record<string, Object>): void {
+    this.sum = params.sum as number;
+  }
+
+  build() {
+    Column() {
+      Text(this.desc)
+      Text(this.sum.toString())
+    }
+  }
+}
 ```
 **正例**
 
 ```typescript
+@Component
 struct ViewB {
   @State sum: number = 0;
+  @State data: TestData = new TestData();
 
   aboutToAppear(): void {
     this.sum = this.count();
+  }
+
+  count(): number {
+    let temp: number = 0;
+    for (let i = 0; i < 10000; i++) {
+      temp += i;
+    }
+    return temp;
   }
 
   build() {
@@ -949,6 +1024,50 @@ struct ViewB {
           }.width('100%').height(100)
         }, (item: string) => item)
       }
+    }
+  }
+}
+
+class TestData implements IDataSource {
+  public data: string[] = [];
+  private listeners: DataChangeListener[] = [];
+
+  totalCount(): number {
+    return this.data.length;
+  }
+
+  getData(index: number): string {
+    return this.data[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos: number = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+}
+
+@Reusable
+@Component
+struct ChildComponent {
+  @State desc: string = '';
+  @State sum: number = 0;
+
+  aboutToReuse(params: Record<string, Object>): void {
+    this.sum = params.sum as number;
+  }
+
+  build() {
+    Column() {
+      Text(this.desc)
+      Text(this.sum.toString())
     }
   }
 }

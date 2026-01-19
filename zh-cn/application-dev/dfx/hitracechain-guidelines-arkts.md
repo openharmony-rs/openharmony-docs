@@ -50,7 +50,7 @@ async/await和promise/then异步任务支持HiTraceChain自动传递，示例结
 
 2. 编辑“entry &gt; src &gt; main &gt; ets &gt; pages &gt; Index.ets”文件，使用HiTraceChain跟踪异步任务，完整的示例代码如下：
 
-   <!-- @[hitracechain_arkts_sample_code_a](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sample_A/entry/src/main/ets/pages/Index.ets) -->   
+   <!-- @[hitracechain_arkts_sample_code_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sample_A/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -234,7 +234,7 @@ async/await和promise/then异步任务支持HiTraceChain自动传递，示例结
 
 2. 编辑工程中的“entry &gt; src &gt; main &gt; ets &gt; pages &gt; Index.ets”文件，使用HiTraceChain跟踪异步任务，完整的示例代码如下：
 
-   <!-- @[hitracechain_arkts_sample_code_b](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sample_B/entry/src/main/ets/pages/Index.ets) -->   
+   <!-- @[hitracechain_arkts_sample_code_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sample_B/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';

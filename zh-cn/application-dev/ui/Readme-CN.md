@@ -79,6 +79,7 @@
     - 辅助接口<!--arkts-state-management-uiutils-->
       - [getTarget接口：获取状态管理框架代理前的原始对象](state-management/arkts-new-getTarget.md)
       - [makeObserved接口：将非观察数据变为可观察数据](state-management/arkts-new-makeObserved.md)
+      - [canBeObserved接口：判断对象是否可被观察](state-management/arkts-new-canBeObserved.md)
       - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management/arkts-new-addMonitor-clearMonitor.md)
       - [applySync/flushUpdates/flushUIUpdates接口：同步刷新](state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)
     - 语法糖<!--arkts-state-management-syntactic-sugar-->
@@ -128,6 +129,8 @@
       - [相对布局 (RelativeContainer)](arkts-layout-development-relative-layout.md)
       - [栅格布局 (GridRow/GridCol)](arkts-layout-development-grid-layout.md)
       - [选项卡 (Tabs)](arkts-navigation-tabs.md)
+    <!--RP1-->
+    <!--RP1End-->
   - 列表与网格<!--arkts-list-and-grid-->
     - [列表与网格概述](arkts-list-grid-development-overview.md)
     - [创建列表 (List)](arkts-layout-development-create-list.md)
@@ -383,3 +386,4 @@
     - [使用文本常见问题](arkts-text-faq.md)
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
+- [ArkUI术语](arkui-glossary.md)

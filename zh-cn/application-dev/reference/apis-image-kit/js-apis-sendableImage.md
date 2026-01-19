@@ -33,7 +33,7 @@ createPixelMap(colors: ArrayBuffer, options: image.InitializationOptions): Promi
 | 参数名  | 类型                                             | 必填 | 说明                                                             |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
 | colors  | ArrayBuffer                                      | 是   | 默认按照BGRA_8888格式处理的颜色数组。                                        |
-| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度，尺寸，缩略值，像素格式和是否可编辑。 |
+| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度，尺寸，缩放值，像素格式和是否可编辑。 |
 
 **返回值：**
 
@@ -221,7 +221,7 @@ createPixelMapSync(colors: ArrayBuffer, options: image.InitializationOptions): P
 | 参数名  | 类型                                             | 必填 | 说明                                                             |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
 | colors  | ArrayBuffer                                      | 是   | BGRA_8888格式的颜色数组。                                        |
-| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度，尺寸，缩略值，像素格式和是否可编辑。 |
+| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度，尺寸，缩放值，像素格式和是否可编辑。 |
 
 **返回值：**
 | 类型                             | 说明                  |
@@ -1786,6 +1786,7 @@ async function Demo(pixelMap: sendableImage.PixelMap) {
 ## Size
 
 表示图片尺寸。
+
 继承自[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -1802,6 +1803,7 @@ async function Demo(pixelMap: sendableImage.PixelMap) {
 ## Region
 
 表示区域信息。
+
 继承自[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。

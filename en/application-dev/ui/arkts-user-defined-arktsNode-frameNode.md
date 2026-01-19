@@ -216,9 +216,10 @@ struct Index {
       List({ space: 20, initialIndex: 0 }) {
         ListItem() {
           Column({ space: 5 }) {
-            // Replace $r('app.media.Verify_The_Child_Node_Function_Of_FrameNode') with the text resource file you use.
+            /* Replace $r('app.string.Verify_The_Child_Node_Function_Of_FrameNode') with the actual resource file.
+               In this example, the value in the resource file is "Verify the addition, deletion, and modification of FrameNode child nodes." */
             Text($r('app.string.Verify_The_Child_Node_Function_Of_FrameNode'))
-            // Replace $r('app.media.Operate_On_Custom_FrameNode') with the text resource file you use.
+            // Replace $r('app.string.Operate_On_Custom_FrameNode') with the actual resource file. In this example, the value in the resource file is "Perform operations on the custom FrameNode."
             Button($r('app.string.Operate_On_Custom_FrameNode'))
               .fontSize(16)
               .width(400)
@@ -226,7 +227,8 @@ struct Index {
                 // Add, delete, and modify FrameNode child nodes, which is properly implemented.
                 this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.frameNode);
               })
-            // Replace $r('app.media.Operate_On_Proxy_Nodes_In_BuilderNode') with the text resource file you use.
+            /* Replace $r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode') with the actual resource file.
+               In this example, the value in the resource file is "Perform operations on the proxy nodes in BuilderNode." */
             Button($r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode'))
               .fontSize(16)
               .width(400)
@@ -235,7 +237,8 @@ struct Index {
                 this.myNodeController.operationFrameNodeWithFrameNode
                 (this.myNodeController?.buttonNode?.getFrameNode());
               })
-            // Replace $r('app.media.Operate_On_Proxy_Nodes_In_System_Components') with the text resource file you use.
+            /* Replace $r('app.string.Operate_On_Proxy_Nodes_In_System_Components') with the actual resource file.
+               In this example, the value in the resource file is "Perform operations on the proxy nodes in the system components." */
             Button($r('app.string.Operate_On_Proxy_Nodes_In_System_Components'))
               .fontSize(16)
               .width(400)
@@ -248,9 +251,10 @@ struct Index {
 
         ListItem() {
           Column({ space: 5 }) {
-            // Replace $r('app.media.Verify_Special_Scenarios_Of_FrameNode_Adding_Child_Nodes') with the text resource file you use.
+            /* Replace $r('app.string.Verify_Special_Scenarios_Of_FrameNode_Adding_Child_Nodes') with the actual resource file.
+               In this example, the value in the resource file is "Verify the special scenario where a child node is added to FrameNode." */
             Text($r('app.string.Verify_Special_Scenarios_Of_FrameNode_Adding_Child_Nodes'))
-            // Replace $r('app.media.Add_Proxy_Nodes_Of_BuilderNode') with the text resource file you use.
+            // Replace $r('app.string.Add_Proxy_Nodes_Of_BuilderNode') with the actual resource file. In this example, the value in the resource file is "Add proxy nodes of BuilderNode."
             Button($r('app.string.Add_Proxy_Nodes_Of_BuilderNode'))
               .fontSize(16)
               .width(400)
@@ -259,7 +263,7 @@ struct Index {
                 buttonNode.build(wrapBuilder<[Params]>(buttonBuilder), { text: 'BUTTON' })
                 this.myNodeController.checkAppendChild(this.myNodeController?.frameNode, buttonNode?.getFrameNode());
               })
-            // Replace $r('app.media.Add_Proxy_Nodes_Of_System_Components') with the text resource file you use.
+            //Replace $r('app.string.Add_Proxy_Nodes_Of_System_Components') with the actual resource file. In this example, the value in the resource file is "Add proxy nodes of system components."
             Button($r('app.string.Add_Proxy_Nodes_Of_System_Components'))
               .fontSize(16)
               .width(400)
@@ -267,7 +271,7 @@ struct Index {
                 this.myNodeController.checkAppendChild(this.myNodeController?.frameNode,
                   this.myNodeController?.rootNode?.getParent());
               })
-            // Replace $r('app.media.Add_Custom_Nodes_With_Existing_Parent_Nodes') with the text resource file you use.
+            // Replace $r('app.string.Add_Custom_Nodes_With_Existing_Parent_Nodes') with the actual resource file. In this example, the value in the resource file is "Add custom nodes with existing parent nodes."
             Button($r('app.string.Add_Custom_Nodes_With_Existing_Parent_Nodes'))
               .fontSize(16)
               .width(400)
@@ -280,9 +284,9 @@ struct Index {
 
         ListItem() {
           Column({ space: 5 }) {
-            // Replace $r('app.media.Verify_Query_Function_Of_FrameNode') with the text resource file you use.
+            // Replace $r('app.string.Verify_Query_Function_Of_FrameNode') with the actual resource file. In this example, the value in the resource file is "Query the FrameNode."
             Text($r('app.string.Verify_Query_Function_Of_FrameNode'))
-            // Replace $r('app.media.Operate_On_Custom_FrameNode_Again') with the text resource file you use.
+            // Replace $r('app.string.Operate_On_Custom_FrameNode_Again') with the actual resource file. In this example, the value in the resource file is "Perform operations on the custom FrameNode."
             Button($r('app.string.Operate_On_Custom_FrameNode_Again'))
               .fontSize(16)
               .width(400)
@@ -294,7 +298,8 @@ struct Index {
                   this.result = this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.frameNode);
                 }, 2000)
               })
-            // Replace $r('app.media.Operate_On_Proxy_Nodes_In_BuilderNode_Again') with the text resource file you use.
+            /* Replace $r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode_Again') with the actual resource file.
+               In this example, the value in the resource file is "Perform operations on the proxy nodes in BuilderNode." */
             Button($r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode_Again'))
               .fontSize(16)
               .width(400)
@@ -303,7 +308,8 @@ struct Index {
                 this.result =
                   this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.buttonNode?.getFrameNode());
               })
-            // Replace $r('app.media.Operate_On_Proxy_Nodes_In_System_Components_Again') with the text resource file you use.
+            /* Replace $r('app.string.Operate_On_Proxy_Nodes_In_System_Components_Again') with the actual resource file.
+               In this example, the value in the resource file is "Perform operations on the proxy nodes in the system components." */
             Button($r('app.string.Operate_On_Proxy_Nodes_In_System_Components_Again'))
               .fontSize(16)
               .width(400)
@@ -420,7 +426,7 @@ struct Index {
     .width('100%')
   }
 }
-``` 
+```
 ![moveToDemo](figures/moveToDemo.gif)
 
 ## Setting Universal Attributes and Event Callbacks
@@ -515,7 +521,7 @@ struct Index {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
       Column({ space: 10 }) {
-        // Replace $r('app.media.Modify_Node_Common_Properties_Width_And_Height') with the text resource file you use.
+        // Replace $r('app.string.Modify_Node_Common_Properties_Width_And_Height') with the actual resource file. In this example, the value in the resource file is "Modify general node properties: width and height."
         Text($r('app.string.Modify_Node_Common_Properties_Width_And_Height'))
         Button('modify ArkTS-FrameNode')
           .onClick(() => {
@@ -561,7 +567,7 @@ struct Index {
       })
 
       Column({ space: 10 }) {
-        // Replace $r('app.media.Modify_Node_Click_Event') with the text resource file you use.
+        // Replace $r('app.string.Modify_Node_Click_Event') with the actual resource file. In this example, the value in the resource file is "Modify the node click event."
         Text($r('app.string.Modify_Node_Click_Event'))
         Button('add click event to ArkTS-FrameNode')
           .onClick(() => {
@@ -615,7 +621,7 @@ struct Index {
     .height('100%')
   }
 }
-``` 
+```
 ## Implementing Custom Measurement, Layout, and Drawing
 
 By overriding the [onDraw](../reference/apis-arkui/js-apis-arkui-frameNode.md#ondraw12) API, you can customize the drawing content of the FrameNode. Use the [invalidate](../reference/apis-arkui/js-apis-arkui-frameNode.md#invalidate12) API to manually trigger a redraw of the node.
@@ -641,7 +647,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 function getChildLayoutConstraint(constraint: LayoutConstraint, child: FrameNode): LayoutConstraint {
-  // Obtain the user‑configured width and height of the child node.
+  // Obtain the user-defined width and height of the child node.
   const size = child.getUserConfigSize();
 
   // Calculate the child node width.
@@ -2198,7 +2204,7 @@ struct ListNodeTest {
     .width("100%")
   }
 }
- ```
+```
  ![invalidateAttributes](./figures/invalidateAttributes.png)
 
  ## Checking Whether a Node Is in Render State
@@ -2269,5 +2275,5 @@ struct Index {
     .width('100%')
   }
 }
- ```
+```
  ![isInRenderState](./figures/isInRenderState.png)

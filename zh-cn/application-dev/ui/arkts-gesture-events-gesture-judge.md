@@ -63,9 +63,8 @@
         LongPressGesture()
           .onAction((event: GestureEvent) => {
             // ...
-            /* 请将$r('app.string.Stop_dragging_prompt')替换为实际资源文件，
-             * 在本示例中该资源文件的value值为"LongPressGesture 长按上半区 红色区域，红色区域响应"
-             */
+            /* 请将$r('app.string.Stop_dragging_prompt')替换为实际资源文件，在本示例中
+               该资源文件的value值为"LongPressGesture 长按上半区 红色区域，红色区域响应" */
             promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt')  });
           })
           .tag('longpress')
@@ -106,10 +105,8 @@
      build() {
        Scroll(this.scroller) {
          Column({ space: 8 }) {
-           /* 请将$r('app.string.Drag_instructions')替换为实际资源文件，
-            * 在本示例中该资源文件的value值为"包括上下两层组件，上层组件绑定长按手势，下层组件绑定拖拽。
-            * 其中上层组件下半区域绑定手势拦截，使该区域响应下层拖拽手势。"
-            */
+           /* 请将$r('app.string.Drag_instructions')替换为实际资源文件，在本示例中该资源文件的value值为"包括上下两层组件，上层组件绑定长按手势，
+              下层组件绑定拖拽。其中上层组件下半区域绑定手势拦截，使该区域响应下层拖拽手势。" */
            Text($r('app.string.Drag_instructions')).width('100%').fontSize(20).fontColor('0xffdd00')
            Stack({ alignContent: Alignment.Center }) {
              Column() {
@@ -136,9 +133,8 @@
              .gesture(GestureGroup(GestureMode.Parallel,
                LongPressGesture()
                  .onAction((event: GestureEvent) => {
-                   /* 请将$r('app.string.Stop_dragging_prompt')替换为实际资源文件，
-                    * 在本示例中该资源文件的value值为"LongPressGesture 长按上半区 红色区域，红色区域响应"
-                    */
+                   /* 请将$r('app.string.Stop_dragging_prompt')替换为实际资源文件，在本示例中
+                      该资源文件的value值为"LongPressGesture 长按上半区 红色区域，红色区域响应" */
                    this.promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt') });
                  })
                  .tag('longpress')
@@ -170,6 +166,7 @@
 **图3** 手势并行动态控制流程图
 
 ![gesture_judge_controller](figures/gesture_judge_controller.png)
+
 手势并行动态控制的前提是手势识别成功，如果手势不成功则不会产生手势回调响应。
 
 1. 业务手势作业流：指真正触发UI变化的业务手势，比如使页面滚动的PanGesture，触发点击的TapGesture等。

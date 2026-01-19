@@ -16,11 +16,13 @@
 
 2. 调用[genEccSignature](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#geneccsignature20)，将EccSignatureSpec对象传入，转换为DER格式的SM2密文。
 
-```ts
+<!-- @[sm2_sign_data_rs_to_der](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_data_format_convertion/sm2_sign_data_rs_to_der.ets) -->
+
+``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function testGenEccSignature() {
+function testSm2SignDataRsToDer() {
   try {
     let spec: cryptoFramework.EccSignatureSpec = {
       r: BigInt('97726608965854271693043443511967021777934035174185659091642456228829830775155'),
@@ -42,11 +44,13 @@ function testGenEccSignature() {
 
 2. 调用[genEccSignatureSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#geneccsignaturespec20)，将DER格式数据传入，转换为(r、s)格式的SM2密文。
 
-```ts
+<!-- @[sm2_sign_data_der_to_rs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_data_format_convertion/sm2_sign_data_der_to_rs.ets) -->
+
+``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function testGenEccSignatureSpec() {
+function testSm2SignDataDerToRs() {
   try {
     let data =
       new Uint8Array([48, 69, 2, 33, 0, 216, 15, 76, 238, 158, 165, 108, 76, 72, 63, 115, 52, 255, 51, 149, 54, 224,

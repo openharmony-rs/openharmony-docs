@@ -10,9 +10,9 @@
 
 > **说明：**
 >
-> 从API Version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。<br />
+> 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。<br />
 > 摄像头挖孔区域不属于避让区，页面默认不避让挖孔。<br />
-> 从API Version 12开始，可在module.json5中添加以下配置项，摄像头挖孔区域会视为避让区，实现页面默认避让挖孔：<br />
+> 从API version 12开始，可在module.json5中添加以下配置项，摄像头挖孔区域会视为避让区，实现页面默认避让挖孔：<br />
   "metadata": [<br />
     &nbsp;&nbsp;{<br />
     &nbsp;&nbsp;&nbsp;&nbsp;"name": "avoid_cutout",<br />

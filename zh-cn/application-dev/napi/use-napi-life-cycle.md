@@ -93,9 +93,8 @@ static napi_value HandleScopeTest(napi_env env, napi_callback_info info)
     napi_get_named_property(env, obj, "key", &result);
     // 关闭句柄作用域，自动释放在该作用域内创建的对象句柄
     napi_close_handle_scope(env, scope);
-    // 此处的result能够得到值“handleScope”
-    return result;
     // result已经离开scope的作用域，继续使用可能会存在稳定性问题，如果需要在作用域外使用对象，建议使用napi_open_escapable_handle_scope系列接口
+    return nullptr;
 }
 
 static napi_value HandleScope(napi_env env, napi_callback_info info)
@@ -152,7 +151,7 @@ try {
 ```
 
 
-框架层的scope嵌入在ArkTS访问native的端到端流程中，即：进入开发者自己写的native方法前open scope, native方法结束后close scope。创建的ArkTS对象的生命周期在调用结束就结束了，不会存在内存泄漏的问题。调用前后如下：
+框架层在核心初始化函数Init中定义了ArkTS侧和native侧的接口映射表，在ArkTS侧通过映射表中的接口访问native侧的函数时，框架层会自动加上scope, 不需要额外增加napi_open_handle_scope、napi_close_handle_scope接口来管理ArkTS对象的生命周期。即：进入开发者自己写的native函数前自动open scope, native函数结束后自动close scope。native侧函数中创建的ArkTS对象的生命周期在native函数返回时结束，不会存在内存泄漏的问题。以NewObject函数举例如下（定义接口映射表中映射的函数不需要手动加napi_open_handle_scope、napi_close_handle_scope管理ArkTS对象的生命周期）：
 ```cpp
 // 调用NewObject前会open scope
 napi_value NewObject(napi_env env, napi_callback_info info)
@@ -169,9 +168,21 @@ napi_value NewObject(napi_env env, napi_callback_info info)
     napi_create_string_utf8(env, "Hello from Node-API!", NAPI_AUTO_LENGTH, &value);
     // 将属性设置到对象上
     napi_set_property(env, object, name, value);
+    //result离开作用域后，对象句柄（handle）跟随释放，返回到ArkTS侧的对象由ArkTS侧管理
     return object;
 }
 // NewObject调用函数结束后框架层会close scope
+
+// 核心初始化函数
+static napi_value Init(napi_env env, napi_value exports)
+{
+    // 定义接口映射表
+    napi_property_descriptor desc[] = {
+        { "newObject", nullptr, NewObject, nullptr, nullptr, nullptr, napi_default, nullptr }
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
 ```
 
 ### napi_open_escapable_handle_scope、napi_close_escapable_handle_scope、napi_escape_handle
@@ -198,15 +209,14 @@ static napi_value EscapableHandleScopeTest(napi_env env, napi_callback_info info
     napi_value value = nullptr;
     napi_create_string_utf8(env, "Test napi_escapable_handle_scope", NAPI_AUTO_LENGTH, &value);
     napi_set_named_property(env, obj, "key", value);
-    // 调用napi_escape_handle将对象逃逸到作用域之外
-    napi_value escapedObj = nullptr;
-    napi_escape_handle(env, scope, obj, &escapedObj);
+    napi_value prop = nullptr;
+    napi_get_named_property(env, obj, "key", &prop);
+    // 调用napi_escape_handle将属性值逃逸到作用域之外
+    napi_value result = nullptr;
+    napi_escape_handle(env, scope, prop, &result);
     // 关闭可逃逸的句柄作用域，清理资源
     napi_close_escapable_handle_scope(env, scope);
-    // 在获取逃逸后的obj：escapedObj的属性并返回，此处也能够得到“napi_escapable_handle_scope”
-    napi_value result = nullptr;
-    // 为了验证逃逸的实现，可以在此处获取obj的属性，此处会得到“undefined”
-    napi_get_named_property(env, escapedObj, "key", &result);
+    // 逃逸后的result可以在作用域外继续使用
     return result;
 }
 ```

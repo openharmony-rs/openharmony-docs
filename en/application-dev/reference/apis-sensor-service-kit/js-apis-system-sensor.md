@@ -23,7 +23,7 @@ The sensors are classified into the following categories based on their function
 ## Modules to Import
 
 
-```
+```ts
 import { Sensor } from '@kit.SensorServiceKit';
 ```
 
@@ -36,6 +36,8 @@ Subscribes to data changes of the acceleration sensor. If this API is called mul
 Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#accelerometer9) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
 
 **Required permissions**: ohos.permission.ACCELEROMETER (a system permission)
 
@@ -77,6 +79,8 @@ Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
+
 **Required permissions**: ohos.permission.ACCELEROMETER (a system permission)
 
 **Example**
@@ -94,6 +98,8 @@ Subscribes to data changes of the compass sensor. If this API is called multiple
 Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#orientationdeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
 
 **Parameters**
 
@@ -130,6 +136,8 @@ Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
+
 **Example**
 
 ```ts
@@ -145,6 +153,8 @@ Subscribes to data changes of the proximity sensor. If this API is called multip
 Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#proximitydeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
 
 **Parameters**
 
@@ -181,6 +191,8 @@ Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
+
 **Example**
 
 ```ts
@@ -196,6 +208,8 @@ Subscribes to data changes of the ambient light sensor. If this API is called mu
 Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#ambient_lightdeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
 
 **Parameters**
 
@@ -232,6 +246,8 @@ Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
+
 **Example**
 
 ```ts
@@ -247,6 +263,8 @@ Subscribes to data changes of the step counter sensor. If this API is called mul
 Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#pedometerdeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -285,6 +303,8 @@ Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
+
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
 **Example**
@@ -303,6 +323,8 @@ Subscribes to data changes of the barometer sensor. If this API is called multip
 Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#barometerdeprecated-1) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
 
 **Parameters**
 
@@ -340,6 +362,8 @@ Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
+
 **Example**
 
 ```ts
@@ -356,6 +380,8 @@ Subscribes to data changes of the heart rate sensor. If this API is called multi
 Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#heart_ratedeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
 
 **Required permissions**: ohos.permission.READ_HEALTH_DATA
 
@@ -395,6 +421,8 @@ Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
+
 **Required permissions**: ohos.permission.READ_HEALTH_DATA
 
 **Example**
@@ -412,6 +440,8 @@ Subscribes to wearing status changes of a wearable device. If this API is called
 Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#wear_detectiondeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
 
 **Parameters**
 
@@ -447,6 +477,8 @@ Unsubscribes from wearing status changes of a wearable device.
 Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.md#wear_detectiondeprecated-2) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
 
 **Example**
 
@@ -496,6 +528,8 @@ Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.m
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
+
 **Parameters**
 
 | Name | Type                                                        | Mandatory| Description                                            |
@@ -534,6 +568,8 @@ Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
+
 **Example**
 
 ```ts
@@ -551,6 +587,8 @@ If this API is called multiple times for the same application, the last call tak
 Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#gyroscopedeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
 
 **Required permissions**: ohos.permission.GYROSCOPE (a system permission)
 
@@ -591,6 +629,8 @@ Unsubscribes from data changes of the gyroscope sensor.
 Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.md#gyroscopedeprecated-2) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
+
+**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
 
 **Required permissions**: ohos.permission.GYROSCOPE (a system permission)
 

@@ -6,7 +6,7 @@
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
 
-- [Introduction to Basic Services Kit](basic-services-kit-overview.md)
+- [About This Kit](basic-services-kit-overview.md)
 - [Process and Thread Communication](common-event/Readme-EN.md)<!--app-events-->
 - [Account Management](account/Readme-EN.md)<!--account-management-->
 - [USB Service](usb/Readme-EN.md)<!--usb-->
@@ -17,3 +17,4 @@
 <!--Del-->
 - [Word Selection Service](selectionInput/Readme-EN.md)<!--selectioninput-->
 <!--DelEnd-->
+- [Power Management](powermgr/Readme-EN.md)<!--powermgr-->

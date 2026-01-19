@@ -117,7 +117,7 @@ struct HoverEventExample {
 
 Diagrams:
 
-The figure below shows how the button looks when not hovered.
+The figure below shows how the button looks in the non-hovered state.
 
  ![nohover](figures/no-hover.png) 
 

@@ -4,7 +4,7 @@
 <!--Owner: @DaiHuina1997-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 正则运算与预期输出结果不一致场景
 
@@ -112,7 +112,7 @@ console.info("testcase: ", parseFloat("5e-324"));
 const arr1: number[] = [1, 2];
 const arr2: number[] = [3, 4];
 const set = new Set<number[]>([arr1, arr2]);
-console.log("res: ", JSON.stringify(Array.from(set)));
+console.info("res: ", JSON.stringify(Array.from(set)));
 // 期望输出: res: [[1,2],[3,4]]
 // 实际输出: res: [2,4]
 ```
@@ -181,6 +181,8 @@ try {
 1. 使用[errorManager.on()](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)捕获到Async函数产生的unhandledrejection事件，再通过编写errorManager.on()注册的回调函数，来进行异常处理操作。
 
    ```ts
+   import { errorManager } from '@kit.AbilityKit';
+
    errorManager.on("unhandledRejection", (a:ESObject, b:Promise<ESObject>) => {
       console.info("Async test", a);
    })
@@ -230,7 +232,7 @@ console.info("res[0] is: ", res[0].toString());
 
 ### ArkUI使用场景
 
-ArkUI状态管理框架会为使用状态变量装饰器（如@State、@Trace、@Local）装饰的Array添加一层代理，用于观测API调用产生的变化。如果状态修饰器与Array组合，并且调用Array.flatMap，会出现如下问题。
+ArkUI状态管理框架会为使用状态变量装饰器（如@State、@Trace、@Local）装饰的Array添加一层代理，用于观测API调用产生的变化。如果状态装饰器与Array组合，并且调用Array.flatMap，会出现如下问题。
 
 以状态管理V2为例：
 

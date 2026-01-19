@@ -8981,7 +8981,7 @@ Sets the expected update interval for visible area changes.
 | Name| Description|
 | -- | -- |
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) *option | Pointer to the instance of visible area change event parameters.|
-| int32_t value | Returns the expected update interval, in ms.  Default value: **1000**.|
+| int32_t value | Returns the expected update interval, in ms. Default value: **1000**.|
 
 **Returns**
 
@@ -9067,7 +9067,7 @@ Obtains the expected update interval for visible area changes.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns the expected update interval, in ms.  Default value: **1000**.|
+| int32_t | Returns the expected update interval, in ms. Default value: **1000**.|
 
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport()

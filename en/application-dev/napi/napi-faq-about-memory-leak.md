@@ -40,11 +40,11 @@ Common causes of memory leaks during Node-API development:
 
 ## What should I do if memory leaks when napi_threadsafe_function is used
 
-When **napi_threadsafe_function** (**tsfn** for short) is used, **napi_acquire_threadsafe_function** is often called to change the reference count of **tsfn** to ensure that **tsfn** is not released unexpectedly. When all the **tsfn** calls are complete, **napi_release_threadsafe_function** should be called in **napi_tsfn_release** mode in a timely manner to ensure that the reference count returns to the value before **napi_acquire_threadsafe_function** is called. **tsfn** can be correctly released only when the reference count is **0**.
+When **napi_threadsafe_function** (tsfn for short) is used, **napi_acquire_threadsafe_function** is often called to change the reference count of tsfn to ensure that tsfn is not released unexpectedly. When all the tsfn calls are complete, **napi_release_threadsafe_function** should be called in **napi_tsfn_release** mode in a timely manner to ensure that the reference count returns to the value before **napi_acquire_threadsafe_function** is called. tsfn can be correctly released only when the reference count is **0**.
 
-When **env** is about to exit but the reference count of **tsfn** is not 0, **napi_release_threadsafe_function** should be called in **napi_tsfn_abort** mode to ensure that **tsfn** is not held or used by **env** after **env** is released. If **env** continues to hold **tsfn** after exiting, the application may crash.
+When **env** is about to exit but the reference count of tsfn is not 0, **napi_release_threadsafe_function** should be called in **napi_tsfn_abort** mode to ensure that tsfn is not held or used by **env** after **env** is released. If **env** continues to hold tsfn after exiting, the application may crash.
 
-The following code shows how to register **env_cleanup** to ensure that **tsfn** is no longer held by **env** after **env** exits.
+The following code shows how to register **env_cleanup** to ensure that tsfn is no longer held by **env** after **env** exits.
 
 ```cpp
 //napi_init.cpp

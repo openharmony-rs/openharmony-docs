@@ -12,7 +12,7 @@ The inputDevice module implements input device management functions such as list
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
 ## Modules to Import
@@ -58,7 +58,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getDeviceList((error: BusinessError, ids: Array<Number>) => {
+            inputDevice.getDeviceList((error: BusinessError, ids: Array<number>) => {
               if (error) {
                 console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -102,7 +102,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getDeviceList().then((ids: Array<Number>) => {
+            inputDevice.getDeviceList().then((ids: Array<number>) => {
               console.info(`Device id list: ${JSON.stringify(ids)}`);
             }).catch((error: BusinessError) => {
               console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -129,7 +129,7 @@ Obtains information about the specified input device. This API uses an asynchron
 | Name    | Type                                                    | Mandatory| Description                                   |
 | -------- | -------------------------------------------------------- | ---- | --------------------------------------- |
 | deviceId | number                                                   | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.                 |
-| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | Yes  | Callback used to return information about the input device, including device ID, name, supported source, physical address, version information, and product information.|
+| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | Yes  | Callback used to return information about the input device, including the device ID, name, supported source, physical address, version information, and product information.|
 
 **Error codes**
 
@@ -245,7 +245,7 @@ Obtains information about the specified input device.
 
 | Type                                              | Description                           |
 | -------------------------------------------------- | ------------------------------- |
-| [InputDeviceData](#inputdevicedata) | information about the input device, including device ID, name, supported source, physical address, version information, and product information.|
+| [InputDeviceData](#inputdevicedata) | Information about the input device, including the device ID, name, supported source, physical address, version information, and product information.|
 
 **Error codes**
 
@@ -280,11 +280,11 @@ struct Index {
 }
 ```
 
-## inputDevice.on<sup>9+</sup>
+## inputDevice.on('change')<sup>9+</sup>
 
 on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 
-Enables listening for device hot swap events. When performing this operation, you need to connect to external devices such as a mouse, keyboard, and touchscreen.
+Enables listening for device hot swap events. When performing this operation, you need to connect to external devices such as a mouse, keyboard, and touchscreen. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -368,11 +368,11 @@ struct Index {
 }
 ```
 
-## inputDevice.off<sup>9+</sup>
+## inputDevice.off('change')<sup>9+</sup>
 
 off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 
-Disables listening for device hot swap events. This API is called before the application exits.
+Disables listening for device hot swap events. This API is called before the application exits. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -463,7 +463,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          inputDevice.getDeviceIds((error: BusinessError, ids: Array<Number>) => {
+          inputDevice.getDeviceIds((error: BusinessError, ids: Array<number>) => {
             if (error) {
               console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
               return;
@@ -507,7 +507,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          inputDevice.getDeviceIds().then((ids: Array<Number>) => {
+          inputDevice.getDeviceIds().then((ids: Array<number>) => {
             console.info(`Device id list: ${JSON.stringify(ids)}`);
           }).catch((error: BusinessError) => {
             console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -814,7 +814,7 @@ struct Index {
         .onClick(() => {
           // Query the keyboard type of the input device whose ID is 1.
           try {
-            inputDevice.getKeyboardType(1, (error: BusinessError, type: Number) => {
+            inputDevice.getKeyboardType(1, (error: BusinessError, type: number) => {
               if (error) {
                 console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -1117,7 +1117,7 @@ Provides information about an input device.
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| id                   | number                                 | No| No| Unique ID of the input device. If the same physical device is repeatedly reinstalled or restarted, its ID may change.|
+| id                   | number                                 | No| No| Unique ID of the input device. If a physical device is repeatedly reinstalled, its ID may change.|
 | name                 | string                                 | No| No| Name of the input device.                                            |
 | sources              | Array&lt;[SourceType](#sourcetype9)&gt; | No| No| Input sources supported by the input device, including the keyboard, mouse, touchscreen, trackball, touchpad, and joystick.|
 | axisRanges           | Array&lt;[AxisRange](#axisrange)&gt;  | No| No| Axis information of the input device.                                          |
@@ -1159,7 +1159,7 @@ Defines the axis range of an input device.
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
 | source                  | [SourceType](#sourcetype9) | No| No| Input sources supported by the input device, including the keyboard, mouse, touchscreen, trackball, touchpad, and joystick.|
-| axis                    | [AxisType](#axistype9)    | No| No| Defines the axis type of an input device.   |
+| axis                    | [AxisType](#axistype9)    | No| No| Axis type of an input device.   |
 | max                     | number                    | No| No| Maximum value of the axis.  |
 | min                     | number                    | No| No| Minimum value of the axis.  |
 | fuzz<sup>9+</sup>       | number                    | No| No| Fuzzy value of the axis.  |
@@ -1170,7 +1170,7 @@ Defines the axis range of an input device.
 
 type SourceType = 'keyboard' | 'mouse' | 'touchpad' | 'touchscreen' | 'joystick' | 'trackball'
 
-Enumerates the input sources supported by the input device, including the keyboard, mouse, touchscreen, trackball, touchpad, and joystick.
+Input sources supported by the input device, including the keyboard, mouse, touchscreen, trackball, touchpad, and joystick.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -1180,7 +1180,7 @@ Enumerates the input sources supported by the input device, including the keyboa
 | 'touchscreen' | The input device is a touchscreen.|
 | 'mouse'       | The input device is a mouse. |
 | 'trackball'   | The input device is a trackball.|
-| 'touchpad'    | Touchpad.|
+| 'touchpad'    | The input device is a touchpad.|
 | 'joystick'   | The input device is a joystick.|
 
 ## ChangedType<sup>9+</sup>

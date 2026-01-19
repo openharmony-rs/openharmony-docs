@@ -641,7 +641,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 > **NOTE**
 >
-> The following sample code shows the basic process for calling the **addSerialRight** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
+> The following sample code shows the basic process for calling the **write** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
 ```ts

@@ -639,7 +639,7 @@
 
 **支持设备**：PC/2in1 | Tablet
 
-**起始版本**：22
+**起始版本**：23
 
 ## ohos.permission.kernel.EXEMPT_ANONYMOUS_EXECUTABLE_MEMORY
 

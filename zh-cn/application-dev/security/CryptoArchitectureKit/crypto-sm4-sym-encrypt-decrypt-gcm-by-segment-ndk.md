@@ -56,14 +56,17 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 4. 调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)，获取解密后的数据。
 
-```c++
-#include <string.h>
+<!-- @[crypt_decrypt_sm4_gcm_seg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4/entry/src/main/cpp/types/project/sm4_gcm_seg_encryption_decryption.cpp) -->
+
+``` C++
+#include <cstring>
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
 
 #define OH_CRYPTO_GCM_TAG_LEN 16
 #define OH_CRYPTO_MAX_TEST_DATA_LEN 128
-static OH_Crypto_ErrCode doTestSm4GcmSeg()
+
+OH_Crypto_ErrCode doTestSm4GcmSeg()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -75,7 +78,7 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
     Crypto_DataBlob msgBlob = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
     uint8_t aad[8] = {1, 2, 3, 4, 5, 6, 7, 8};
     uint8_t tagArr[16] = {0};
-    uint8_t iv[12] = {1, 2, 4, 12, 3, 4, 2, 3, 3, 2, 0, 4}; // iv使用安全随机数生成。
+    uint8_t iv[12] = {1, 2, 4, 12, 3, 4, 2, 3, 3, 2, 0, 4}; // iv使用安全随机数生成
     Crypto_DataBlob tag = {.data = nullptr, .len = 0};
     Crypto_DataBlob ivBlob = {.data = iv, .len = sizeof(iv)};
     Crypto_DataBlob aadBlob = {.data = aad, .len = sizeof(aad)};
@@ -90,9 +93,8 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
     uint8_t cipherText[OH_CRYPTO_MAX_TEST_DATA_LEN] = {0};
     Crypto_DataBlob cipherBlob;
 
-    // 生成密钥。
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &genCtx);
+    // 生成密钥
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &genCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -101,7 +103,7 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
         goto end;
     }
 
-    // 设置参数。
+    // 设置参数
     ret = OH_CryptoSymCipherParams_Create(&params);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -119,7 +121,7 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
         goto end;
     }
 
-    // 加密。
+    // 加密
     ret = OH_CryptoSymCipher_Create("SM4_128|GCM|PKCS7", &encCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -152,8 +154,8 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    
-    // 解密。
+
+    // 解密
     cipherBlob = {.data = reinterpret_cast<uint8_t *>(cipherText), .len = (size_t)cipherLen};
     msgBlob.data -= strlen(plainText) - rem;
     msgBlob.len = strlen(plainText);
@@ -185,3 +187,4 @@ end:
     return ret;
 }
 ```
+

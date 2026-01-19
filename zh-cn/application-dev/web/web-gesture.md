@@ -86,7 +86,7 @@ struct Index {
 
   ArkWeb手势的生成需要Web组件接收触摸事件，有两种拦截方案：
   1. 完全禁止触摸事件发送给Web组件，详见[触摸测试](../ui/arkts-interaction-basic-principles.md#触摸测试)。
-  2. 发送TouchCancel触摸事件给Web组件，详见[OH_ArkUI_TouchRecognizer_CancelTouch](../reference/apis-arkui/capi-native-gesture-h.md#函数)。
+  2. 发送TouchCancel触摸事件给Web组件，CAPI接口介绍详见[OH_ArkUI_TouchRecognizer_CancelTouch](../reference/apis-arkui/capi-native-gesture-h.md#函数)，具体示例请参考<!--RP1-->[NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting)<!--RP1End-->。
 
 
 ## 常见问题

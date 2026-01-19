@@ -6,6 +6,10 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_TextChangeEvent
+```
+
 ## Overview
 
 Defines a hybrid data structure for component events.

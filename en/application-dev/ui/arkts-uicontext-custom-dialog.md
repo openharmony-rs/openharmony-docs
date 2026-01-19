@@ -49,7 +49,7 @@ The dialog box provides lifecycle functions to notify users of its lifecycle eve
    ```
 2. Open the custom dialog box.
    
-   Call **openCustomDialog** to open the custom dialog box, whose **customStyle** is set to **true** by default, meaning that the dialog box is styled entirely based on the **contentNode** settings you provide.
+   Call [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12) to open the custom dialog box, whose **customStyle** is set to **true** by default, meaning that the dialog box is styled entirely based on the **contentNode** settings you provide.
    
    <!-- @[prompt_action_class_open_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
    
@@ -66,7 +66,7 @@ The dialog box provides lifecycle functions to notify users of its lifecycle eve
    ```
 3. Close the custom dialog box.
    
-   Call **closeCustomDialog**, which requires the ComponentContent corresponding to the dialog box to be closed. To set a close method within the dialog box, follow the complete sample to encapsulate this functionality into a static method.
+   Call [closeCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closecustomdialog12), which requires the **ComponentContent** corresponding to the dialog box to be closed. To set a close method within the dialog box, follow the complete sample to encapsulate this functionality into a static method.
    
    To release the corresponding **ComponentContent** after the dialog box is closed, call the [dispose](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#dispose) API of the **ComponentContent**.
    
@@ -97,7 +97,7 @@ this.contentNode.update(new Params('update'))
 
 ## Updating the Attributes of a Custom Dialog Box
 
-You can dynamically update the attributes of the dialog box through **updateCustomDialog**. Currently supported updates include the following: **alignment** (alignment mode), **offset** (position offset relative to alignment), **autoCancel** (whether clicking the mask closes the dialog box), **maskColor** (background mask color).
+You can dynamically update the attributes of the dialog box through **updateCustomDialog**. Currently supported updates include the following attributes of [BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): **alignment** (alignment mode), **offset** (position offset relative to alignment), **autoCancel** (whether clicking the mask closes the dialog box), **maskColor** (background mask color).
 
 During attribute updates, any unspecified attributes revert to their default values. For example, if you initially set **{ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 } }** and then update it to **{ alignment: DialogAlignment.Bottom }**, the initially set **offset: { dx: 0, dy: 50 }** will not be retained; the offset will be restored to the default value.
 
@@ -128,15 +128,18 @@ By default, dialog box content and mask share the same animation when displayed.
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0000;
+
 @Entry
 @Component
-export struct customDialogComponentWithTransition {
+export struct CustomDialogComponentWithTransition {
   private customDialogComponentId: number = 0
+
   @Builder
   customDialogComponent() {
     Row({ space: 50 }) {
-      // The value in the $r('app.string.this_is_a_window') resource file is 'This is a dialog box'.
+      // Replace $r('app.string.this_is_a_window') with the actual resource file. In this example, the value in the resource file is "This is a dialog box."
       Button($r('app.string.this_is_a_window'))
     }.height(200).padding(5)
   }
@@ -145,7 +148,7 @@ export struct customDialogComponentWithTransition {
     NavDestination() {
       Row() {
         Row({ space: 20 }) {
-          // The value in the $r('app.string.open_windows') resource file is 'Open.'
+          // Replace $r('app.string.open_windows') with the actual resource file. In this example, the value in the resource file is "Open."
           Text($r('app.string.open_windows'))
             .fontSize(30)
             .onClick(() => {
@@ -178,7 +181,8 @@ export struct customDialogComponentWithTransition {
                   this.customDialogComponentId = dialogId;
                 })
                 .catch((error: BusinessError) => {
-                  hilog.error(DOMAIN, 'testTag', `openCustomDialog error code is ${error.code}, message is ${error.message}`)
+                  hilog.error(DOMAIN, 'testTag',
+                    `openCustomDialog error code is ${error.code}, message is ${error.message}`)
                 })
             })
         }
@@ -190,7 +194,7 @@ export struct customDialogComponentWithTransition {
 }
 ```
 
-
+ ![UIContextPromptAction](figures/UIContextPromptActionDialogMask.gif)
 
 ## Setting the Distance Between the Dialog Box and the Soft Keyboard
 
@@ -204,11 +208,12 @@ Note that the value of **keyboardAvoidMode** should be set to **KeyboardAvoidMod
 import { BusinessError } from '@kit.BasicServicesKit';
 import { LengthMetrics } from '@kit.ArkUI'
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0000;
 
 @Entry
 @Component
-export struct customDialogWithKeyboardAvoidDistance {
+export struct CustomDialogWithKeyboardAvoidDistance {
   @Builder
   customDialogComponent() {
     Column() {
@@ -223,7 +228,7 @@ export struct customDialogWithKeyboardAvoidDistance {
     NavDestination() {
       Row() {
         Row({ space: 20 }) {
-          // The value in the $r('app.string.open_windows') resource file is 'Open.'
+          // Replace $r('app.string.open_windows') with the actual resource file. In this example, the value in the resource file is "Open."
           Text($r('app.string.open_windows'))
             .fontSize(30)
             .onClick(() => {
@@ -235,7 +240,8 @@ export struct customDialogWithKeyboardAvoidDistance {
                 keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // The dialog box automatically avoids the soft keyboard.
                 keyboardAvoidDistance: LengthMetrics.vp(0) // The distance between the soft keyboard and the dialog box is 0 vp.
               }).catch((error: BusinessError) => {
-                hilog.error(DOMAIN, 'testTag', `openCustomDialog error code is ${error.code}, message is ${error.message}`);
+                hilog.error(DOMAIN, 'testTag',
+                  `openCustomDialog error code is ${error.code}, message is ${error.message}`);
               })
             })
         }
@@ -247,7 +253,7 @@ export struct customDialogWithKeyboardAvoidDistance {
 }
 ```
 
-
+ ![UIContextPromptAction](figures/UIContextPromptActionCustomDialog.gif)
 
 
 ## Sample Code

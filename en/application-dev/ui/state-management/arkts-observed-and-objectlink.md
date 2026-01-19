@@ -37,7 +37,7 @@ The decorators including [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md),
 | \@ObjectLink Decorator| Description                                      |
 | ----------------- | ---------------------------------------- |
 | Decorator parameters            | None.                                      |
-| Allowed variable types        | Class instances of Date and [Array](#two-dimensional-array) can be inherited.<br>API version 11 and later support the class instances of [Map](#extended-map-class) and [Set](#extended-set-class), and the union type consisting of \@Observed decorated class and undefined or null, for example, **ClassA \| ClassB**, **ClassA \| undefined**, or **ClassA \| null. For an example, see [Union Type @ObjectLink](#union-type-objectlink).<br>In versions earlier than API version 19, @ObjectLink must be initialized with an \@Observed decorated class instance.<br>Since API version 19, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19).<br>For details about the scenarios of supported types, see [Observed Changes](#observed-changes).<br>**NOTE**<br>\@ObjectLink does not support simple types. To use simple types, you can use [\@Prop](arkts-prop.md).|
+| Allowed variable types        | Class instances of Date and [Array](#two-dimensional-array) can be inherited.<br>API version 11 and later support the class instances of [Map](#extended-map-class) and [Set](#extended-set-class), and the union type consisting of \@Observed decorated class and undefined or null, for example, **ClassA \| ClassB**, **ClassA \| undefined**, or **ClassA \| null. For an example, see [Union Type @ObjectLink](#union-type-objectlink).<br>In versions earlier than API version 19, @ObjectLink must be initialized with an \@Observed decorated class instance.<br>Since API version 19, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19).<br>For details about the scenarios of supported types, see [Observed Changes](#observed-changes).<br>**NOTE**<br>\@ObjectLink does not support simple types. To use simple types, you can use [\@Prop](arkts-prop.md).|
 | Initial value for the decorated variable        | Disable local initialization.                                    |
 
 An @ObjectLink decorated variable accepts changes to its properties, but the variable itself is read-only.
@@ -208,7 +208,7 @@ When \@ObjectLink decorates a class that extends Set, it enables observation of 
 3. The \@ObjectLink decorator must be used with complex types. Otherwise, an error is reported during compilation.
 
 4. For API version 19 or earlier, the variable type decorated by \@ObjectLink must be the class explicitly decorated by @Observed. If the type is not specified or is not a class decorated by \@Observed, an error is reported during compilation.
-  Since API version 19, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19). If it is not properly initialized, an error is reported during runtime.
+  Since API version 19, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19). If it is not properly initialized, an error is reported during runtime.
 
     ```ts
     @Observed
@@ -608,7 +608,7 @@ struct IndexPage {
 }
 ```
 
-Since API version 19, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19). Therefore, if you do not want to declare the class that inherits from array, you can use **makeV1Observed** to achieve the same effect.
+Since API version 19, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19). Therefore, if you do not want to declare the class that inherits from array, you can use **makeV1Observed** to achieve the same effect.
 
 A complete example is as follows:
 

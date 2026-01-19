@@ -29,8 +29,10 @@
 ### 通过创建弹窗控制器显示自定义弹窗
 
 - 创建弹窗控制器：
+
   [ArkUI_NativeDialogHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog8h.md)表示指向弹窗控制器的指针，可以通过调用[ArkUI_NativeDialogAPI_x](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md)的[create](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md#create)接口创建一个弹窗控制器。
-该方法返回ArkUI_NativeDialogHandle类型的数据。
+
+  该方法返回ArkUI_NativeDialogHandle类型的数据。
   <!-- @[dialog_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
   
   ``` C++
@@ -56,8 +58,10 @@
 ### 通过创建自定义弹窗的内容对象显示自定义弹窗
 
 - 创建弹窗的内容对象：
+
   [ArkUI_CustomDialogOptions](../reference/apis-arkui/capi-arkui-nativemodule-arkui-customdialogoptions.md)自定义弹窗的内容对象，可以通过调用[OH_ArkUI_CustomDialog_CreateOptions](../reference/apis-arkui/capi-native-dialog-h.md#oh_arkui_customdialog_createoptions)接口创建一个自定义弹窗的内容对象。
-该方法返回ArkUI_CustomDialogOptions类型的指针。
+
+  该方法返回ArkUI_CustomDialogOptions类型的指针。
   <!-- @[dialog_createOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
   
   ``` C++
@@ -313,7 +317,9 @@
 ## 弹窗的生命周期
 
 从API version 19开始，弹窗显示和关闭前后，存在四个生命周期：registerOnWillAppear、registerOnDidAppear、registerOnWillDisappear、registerOnDidDisappear。
+
 这些生命周期方法需要在调用show方法之前调用，生命周期的时序如下：
+
 registerOnWillAppear -> 弹窗显示动画开始 -> 弹窗显示动画结束 -> registerOnDidAppear -> 弹窗显示完成 ->
 registerOnWillDisappear -> 弹窗关闭动画开始 ->  弹窗关闭动画结束 -> registerOnDidDisappear -> 弹窗关闭完成。
 

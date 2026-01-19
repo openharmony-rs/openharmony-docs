@@ -31,7 +31,9 @@
 
 - 以使用await方式单次传入数据，获取摘要计算结果为例：
 
-  ```ts
+  <!-- @[message_digest_md5_single_time_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/singleTime/SingleTimeAsync.ets) -->
+
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
 
@@ -44,13 +46,16 @@
     let mdResult = await md.digest();
     console.info('Md result:' + mdResult.data);
     let mdLen = md.getMdLength();
-    console.info("md len: " + mdLen);
+    console.info('md len: ' + mdLen);
   }
   ```
 
+
 - 以使用同步方式单次传入数据，获取摘要计算结果为例：
 
-  ```ts
+  <!-- @[message_digest_md5_single_time_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/singleTime/SingleTimeSync.ets) -->
+
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
 
@@ -63,9 +68,10 @@
     let mdResult = md.digestSync();
     console.info('[Sync]:Md result:' + mdResult.data);
     let mdLen = md.getMdLength();
-    console.info("md len: " + mdLen);
+    console.info('md len: ' + mdLen);
   }
   ```
+
 
 ### 分段摘要算法
 
@@ -79,15 +85,17 @@
 
 - 以使用await方式分段传入数据，获取摘要计算结果为例：
 
-  ```ts
+  <!-- @[message_digest_md5_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/segmentation/SegmentationAsync.ets) -->
+
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
 
   async function doLoopMd() {
-    let mdAlgName = "MD5"; // 摘要算法名。
+    let mdAlgName = 'MD5'; // 摘要算法名。
     let md = cryptoFramework.createMd(mdAlgName);
     // 假设信息总共43字节，根据utf-8解码后，也是43字节。
-    let messageText = "aaaaa.....bbbbb.....ccccc.....ddddd.....eee";
+    let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
     let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
     let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求。
     for (let i = 0; i < messageData.length; i += updateLength) {
@@ -96,23 +104,26 @@
       await md.update(updateMessageBlob);
     }
     let mdOutput = await md.digest();
-    console.info("md result: " + mdOutput.data);
+    console.info('md result: ' + mdOutput.data);
     let mdLen = md.getMdLength();
-    console.info("md len: " + mdLen);
+    console.info('md len: ' + mdLen);
   }
   ```
 
-- 以使用同步方式分段传入数据，获取摘要计算结果为例：
 
-  ```ts
+- 以使用同步方式分段传入数据，获取摘要计算结果为例：
+  <!-- @[message_digest_md5_segmentation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/segmentation/SegmentationSync.ets) -->
+
+  ``` TypeScript
+
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
 
   function doLoopMdBySync() {
-    let mdAlgName = "MD5"; // 摘要算法名。
+    let mdAlgName = 'MD5'; // 摘要算法名。
     let md = cryptoFramework.createMd(mdAlgName);
     // 假设信息总共43字节，根据utf-8解码后，也是43字节。
-    let messageText = "aaaaa.....bbbbb.....ccccc.....ddddd.....eee";
+    let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
     let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
     let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求。
     for (let i = 0; i < messageData.length; i += updateLength) {
@@ -121,8 +132,9 @@
       md.updateSync(updateMessageBlob);
     }
     let mdOutput = md.digestSync();
-    console.info("[Sync]:md result: " + mdOutput.data);
+    console.info('[Sync]:md result: ' + mdOutput.data);
     let mdLen = md.getMdLength();
-    console.info("md len: " + mdLen);
+    console.info('md len: ' + mdLen);
   }
   ```
+

@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 用户需要分享文件、保存图片、视频等用户文件时，开发者可以通过系统预置的[文件选择器（FilePicker）](../reference/apis-core-file-kit/js-apis-file-picker.md)，实现该能力。通过Picker访问相关文件，将拉起对应的应用，引导用户完成界面操作，接口本身无需申请权限。Picker获取的URI只具有临时权限，获取持久化权限需要通过[FilePicker设置永久授权](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)方式获取。
 
@@ -49,7 +49,7 @@
    documentSelectOptions.multiAuthMode = false;
    //需要传入批量授权的uri数组（仅支持文件，文件夹不生效）。配合multiAuthMode使用。当multiAuthMode为false时，配置该参数不生效。该参数在Phone设备中可正常使用，在其他设备中无效果。
    documentSelectOptions.multiUriArray = ["file://docs/storage/Users/currentUser/test", "file://docs/storage/Users/currentUser/2test"];
-   //开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。API version 22及之后的版本当该参数置为非DEFAULT时，仅fileSuffixFilters参数生效，其他参数不生效。
+   //开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。
    //该参数在Phone设备中可正常使用，在其他设备中无效果。
    documentSelectOptions.mergeMode = picker.MergeTypeMode.DEFAULT;
    //是否支持加密（仅支持文件，文件夹不生效），默认为false。该参数为true时，在Picker界面可以选择对文件进行加密。（说明：从API version 19开始支持该参数）。
@@ -153,11 +153,11 @@
 
    ```ts
    if (uris.length > 0) {
-   	let uri: string = uris[0];
-   	//这里需要注意接口权限参数是fs.OpenMode.READ_ONLY。
-  		let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
-   	console.info('file fd: ' + file.fd);
-    }
+      let uri: string = uris[0];
+      //这里需要注意接口权限参数是fs.OpenMode.READ_ONLY。
+      let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
+      console.info('file fd: ' + file.fd);
+   }
    ```
 
 5. 通过fd可以使用[基础文件API的fs.readSync](../reference/apis-core-file-kit/js-apis-file-fs.md#readsync)接口读取这个文件内的数据。

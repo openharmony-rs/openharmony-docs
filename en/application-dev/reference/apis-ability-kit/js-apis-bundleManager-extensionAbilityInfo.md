@@ -9,6 +9,7 @@
 The module defines the ExtensionAbility information. An application can obtain its own ExtensionAbility information through [bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself), with **GET_BUNDLE_INFO_WITH_HAP_MODULE** and **GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY** passed in to [bundleFlags](js-apis-bundleManager.md#bundleflag).
 
 > **NOTE**
+>
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
@@ -39,4 +40,4 @@ import { bundleManager } from '@kit.AbilityKit';
 | writePermission      | string                                                       | Yes  | No  | Permission required for writing data to the ExtensionAbility.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | extensionAbilityTypeName<sup>11+</sup>      | string                                 | Yes  | No  | Type of the ExtensionAbility. For details about available values, see [the type field under the extensionabilities tag](../../quick-start/module-configuration-file.md#extensionabilities).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | skills<sup>12+</sup>             | Array\<[Skill](js-apis-bundleManager-skill.md)>                                                 | Yes  | No  | Skills of the ExtensionAbility.<br>**Atomic service API**: This API can be used in atomic services since API version 12.       |
-| appIndex<sup>12+</sup>    | number    | Yes  | No  | Index of an application clone. It takes effect only for cloned applications.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| appIndex<sup>12+</sup>    | number    | Yes  | No  | Index of an application clone. It takes effect only for cloned applications.|

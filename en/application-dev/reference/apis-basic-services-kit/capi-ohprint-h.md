@@ -1,9 +1,9 @@
 # ohprint.h
-<!--Kit: Basic Services Kit-->	
-<!--Subsystem: Print-->	
-<!--Owner: @guoshengbang-->	
-<!--Designer: @Q-haosu-->	
-<!--Tester: @Q-haosu-->	
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Print-->
+<!--Owner: @guoshengbang-->
+<!--Designer: @Q-haosu-->
+<!--Tester: @Q-haosu-->
 <!--Adviser: @fang-jinxu-->
 
 ## Overview
@@ -26,11 +26,11 @@ Declares APIs for discovering and connecting to printers, printing files, and qu
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [Print_Margin](capi-oh-print-print-margin.md) | Print_Margin | Defines the page margin.|
-| [Print_PageSize](capi-oh-print-print-pagesize.md) | Print_PageSize | Defines the page size.|
-| [Print_Range](capi-oh-print-print-range.md) | Print_Range | Defines the range to print.|
-| [Print_PrintAttributes](capi-oh-print-print-printattributes.md) | Print_PrintAttributes | Defines the print attributes.|
-| [Print_PrintDocCallback](capi-oh-print-print-printdoccallback.md) | Print_PrintDocCallback | Defines the print job callback struct.|
+| [Print_Margin](capi-oh-print-print-margin.md) | Print_Margin | Defines a struct for the page margin.|
+| [Print_PageSize](capi-oh-print-print-pagesize.md) | Print_PageSize | Defines a struct for the page size.|
+| [Print_Range](capi-oh-print-print-range.md) | Print_Range | Defines a struct for the range to print.|
+| [Print_PrintAttributes](capi-oh-print-print-printattributes.md) | Print_PrintAttributes | Defines a struct for the print attributes.|
+| [Print_PrintDocCallback](capi-oh-print-print-printdoccallback.md) | Print_PrintDocCallback | Defines a struct for the print job callback.|
 
 ### Enums
 

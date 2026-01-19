@@ -7,7 +7,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **configPolicy** module provides APIs for obtaining the custom configuration directory and file path based on the predefined configuration level.
+The **configPolicy** module provides APIs for obtaining the corresponding directory and file path based on the predefined custom configuration level.
 
 >  **NOTE**
 >
@@ -25,17 +25,17 @@ import { configPolicy } from '@kit.BasicServicesKit';
 
 getOneCfgFile(relPath: string, callback: AsyncCallback&lt;string&gt;)
 
-Obtains the path of the configuration file with the highest priority based on the specified file name. This API uses an asynchronous callback to return the result.
-If there are two **config.xml** files, **/system/etc/config.xml** and **/sys_pod/etc/config.xml**, in ascending order of priority, **/sys_pod/etc/config.xml** is returned.
+Obtains the path of the configuration file with the highest priority. This API uses an asynchronous callback to return the result.
+For example, if the paths of **config.xml** on the device are **/system/etc/config.xml** and **/sys_pod/etc/config.xml** in ascending order of priority, **/sys_pod/etc/config.xml** is returned.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
 **Parameters**
 
-| Name  | Type                       | Mandatory| Description                                      |
-| -------- | --------------------------- | ---- | ------------------------------------------ |
-| relPath  | string                      | Yes  | Name of the configuration file.                                |
-| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the path of the configuration file.|
+| Name   | Type                        | Mandatory| Description                                 |
+| -------- | --------------------------- | ---- | ------------------------------------ |
+| relPath  | string                      | Yes  | Name of the configuration file.                          |
+| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the result. If the configuration file path is successfully obtained, **err** is **undefined**, and **data** is the path of the configuration file with the highest priority. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -51,11 +51,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   let relpath: string = 'etc/config.xml';
-  configPolicy.getOneCfgFile(relpath, (error: BusinessError, value: string) => {
-    if (error == null) {
-      console.info('value is ' + value);
+  configPolicy.getOneCfgFile(relpath, (err: BusinessError, data: string) => {
+    if (err == null) {
+      console.info('data is ' + data);
     } else {
-      console.error('error: ' + error.code + ', ' + error.message);
+      console.error('err: ' + err.code + ', ' + err.message);
     }
   });
   ```
@@ -64,7 +64,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getOneCfgFile(relPath: string): Promise&lt;string&gt;
 
-Obtains the path of the configuration file with the highest priority based on the specified file name. This API uses a promise to return the result.
+Obtains the path of the configuration file with the highest priority. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
@@ -74,6 +74,12 @@ Obtains the path of the configuration file with the highest priority based on th
 | ------- | ------ | ---- | ---------- |
 | relPath | string | Yes  | Name of the configuration file.|
 
+**Return value**
+
+| Type                  | Description                    |
+| ---------------------- | ------------------------ |
+| Promise&lt;string&gt;  | Promise used to return the path of the configuration file with the highest priority.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -81,12 +87,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
-
-**Return value**
-
-| Type                  | Description                    |
-| ---------------------- | ------------------------ |
-| Promise&lt;string&gt;  | Promise used to return the result.|
 
 **Example**
 
@@ -112,8 +112,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getCfgFiles(relPath: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
-Obtains a list of configuration files with the specified name, sorted in ascending order of priority. This API uses an asynchronous callback to return the result.
-If there are two **config.xml** files, **/system/etc/config.xml** and **/sys_pod/etc/config.xml**, in ascending order of priority, **/system/etc/config.xml, /sys_pod/etc/config.xml** is returned.
+Obtains a list of all files with the specified names, in ascending order of priority. This API uses an asynchronous callback to return the result.
+For example, if the paths of **config.xml** on the device are **/system/etc/config.xml** and **/sys_pod/etc/config.xml** in ascending order of priority, **/system/etc/config.xml, /sys_pod/etc/config.xml** is returned.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
@@ -122,7 +122,7 @@ If there are two **config.xml** files, **/system/etc/config.xml** and **/sys_pod
 | Name  | Type                                    | Mandatory| Description                      |
 | -------- | ---------------------------------------- | ---- | -------------------------- |
 | relPath  | string                                   | Yes  | Name of the configuration file.                |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the file lists.|
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the result. If the file list is successfully obtained, **err** is **undefined**, and **data** is the obtained file list. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -137,11 +137,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   ```ts
   import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
-  configPolicy.getCfgFiles('etc/config.xml', (error: BusinessError, value: Array<string>) => {
-    if (error == null) {
-      console.info('value is ' + value);
+  configPolicy.getCfgFiles('etc/config.xml', (err: BusinessError, data: Array<string>) => {
+    if (err == null) {
+      console.info('data is ' + data);
     } else {
-      console.error('error: ' + error.code + ', ' + error.message);
+      console.error('err: ' + err.code + ', ' + err.message);
     }
   });
   ```
@@ -150,7 +150,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getCfgFiles(relPath: string): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains a list of configuration files with the specified name, sorted in ascending order of priority. This API uses a promise to return the result.
+Obtains a list of all files with the specified names, in ascending order of priority. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
@@ -160,6 +160,12 @@ Obtains a list of configuration files with the specified name, sorted in ascendi
 | ------- | ------ | ---- | ---------- |
 | relPath | string | Yes  | Name of the configuration file.|
 
+**Return value**
+
+| Type                              | Description    |
+| ---------------------------------- | -------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the file list.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -167,12 +173,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
-
-**Return value**
-
-| Type                              | Description    |
-| ---------------------------------- | -------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the result.|
 
 **Example**
 
@@ -198,7 +198,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getCfgDirList(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
-Obtains the list of configuration level directories. This API uses an asynchronous callback to return the result.
+Obtains a list of configuration level directories, in ascending order of priority. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
@@ -206,7 +206,7 @@ Obtains the list of configuration level directories. This API uses an asynchrono
 
 | Name  | Type                                    | Mandatory| Description                              |
 | -------- | ---------------------------------------- | ---- | ---------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the configuration level directory list.|
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the result. If the list of configuration level directories is successfully obtained, **err** is **undefined**, and **data** is the obtained list. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -221,11 +221,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   ```ts
   import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
-  configPolicy.getCfgDirList((error: BusinessError, value: Array<string>) => {
-    if (error == null) {
-      console.info('value is ' + value);
+  configPolicy.getCfgDirList((err: BusinessError, data: Array<string>) => {
+    if (err == null) {
+      console.info('data is ' + data);
     } else {
-      console.error('error: ' + error.code + ', ' + error.message);
+      console.error('err: ' + err.code + ', ' + err.message);
     }
   });
   ```
@@ -234,7 +234,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getCfgDirList(): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains the list of configuration level directories. This API uses a promise to return the result.
+Obtains a list of configuration level directories, in ascending order of priority. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
@@ -242,7 +242,7 @@ Obtains the list of configuration level directories. This API uses a promise to 
 
 | Type                              | Description            |
 | ---------------------------------- | ---------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Obtains the list of configuration level directories. This API returns the result synchronously.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the list of configuration level directories.|
 
 **Example**
 
@@ -267,8 +267,8 @@ Obtains the list of configuration level directories. This API uses a promise to 
 
 getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt;string&gt;)
 
-Obtains the path of the configuration file with the highest priority based on the specified file name and follow mode. This API uses an asynchronous callback to return the result.
-For example, there are three **config.xml** files (in ascending order of priority): **/system/etc/config.xml**, **/sys_pod/etc/config.xml**, and **/sys_pod/etc/carrier/46060/etc/config.xml**. If the opkey of the default card is **46060** and the follow mode is **SIM_DEFAULT**, **/sys_pod/etc/carrier/46060/etc/config.xml** is returned.
+Obtains the path of the configuration file with the highest priority based on the provided follow mode. This API uses an asynchronous callback to return the result.
+For example, if the paths of **config.xml** on the device are **/system/etc/config.xml**, **/sys_pod/etc/config.xml**, and **/sys_pod/etc/carrier/46060/etc/config.xml** in ascending order of priority, the default opkey of the device is **46060**, and **followMode** is set to **configPolicy.FollowXMode.SIM_DEFAULT**, the final return value is **/sys_pod/etc/carrier/46060/etc/config.xml**.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
@@ -278,7 +278,7 @@ For example, there are three **config.xml** files (in ascending order of priorit
 | ---------- | ----------------------------- | ---- | ------------------------------------------ |
 | relPath    | string                        | Yes  | Name of the configuration file.                                |
 | followMode | [FollowXMode](#followxmode11) | Yes  | Follow mode.                                  |
-| callback   | AsyncCallback&lt;string&gt;   | Yes  | Callback used to return the path of the configuration file.|
+| callback   | AsyncCallback&lt;string&gt;   | Yes  | Callback used to return the result. If the configuration file path is successfully obtained, **err** is **undefined**, and **data** is the path of the configuration file with the highest priority. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -295,11 +295,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   let relpath: string = 'etc/config.xml';
   configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
-    (error: BusinessError, value: string) => {
-      if (error == null) {
-        console.info('value is ' + value);
+    (err: BusinessError, data: string) => {
+      if (err == null) {
+        console.info('data is ' + data);
       } else {
-        console.error('error: ' + error.code + ', ' + error.message);
+        console.error('err: ' + err.code + ', ' + err.message);
       }
     });
 
@@ -309,8 +309,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback&lt;string&gt;)
 
-Obtains the path of the configuration file with the highest priority based on the specified file name and follow mode. This API uses an asynchronous callback to return the result.
-For example, there are three **config.xml** files (in ascending order of priority): **/system/etc/config.xml**, **/sys_pod/etc/config.xml**, and **/sys_pod/etc/carrier/46060/etc/config.xml**. If the opkey of card 1 is **46060**, the follow mode is **USER_DEFINED**, and the custom follow rule is **etc/carrier/${telephony.sim.opkey0}**, **/sys_pod/etc/carrier/46060/etc/config.xml** is returned.
+Obtains the path of the configuration file with the highest priority based on the provided follow mode. This API uses an asynchronous callback to return the result.
+For example, if the paths of **config.xml** on the device are **/system/etc/config.xml**, **/sys_pod/etc/config.xml**, and **/sys_pod/etc/carrier/46060/etc/config.xml** in ascending order of priority, the opkey of the device card 1 is **46060**, **followMode** is set to **configPolicy.FollowXMode.USER_DEFINED**, and the custom follow rule is **"etc/carrier/${telephony.sim.opkey0}"**, the final return value is **/sys_pod/etc/carrier/46060/etc/config.xml**.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
@@ -320,8 +320,8 @@ For example, there are three **config.xml** files (in ascending order of priorit
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | Yes  | Name of the configuration file.                                            |
 | followMode | [FollowXMode](#followxmode11) | Yes  | Follow mode.                                              |
-| extra      | string                        | Yes  | Custom follow rule. This parameter is valid only when **followMode** is set to **USER_DEFINED**.|
-| callback   | AsyncCallback&lt;string&gt;   | Yes  | Callback used to return the path of the configuration file.            |
+| extra      | string                        | Yes  | Custom follow rule. This parameter is valid only when **followMode** is set to [USER_DEFINED](#followxmode11).|
+| callback   | AsyncCallback&lt;string&gt;   | Yes  | Callback used to return the result. If the configuration file path is successfully obtained, **err** is **undefined**, and **data** is the path of the configuration file with the highest priority. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -339,11 +339,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   let relpath: string = 'etc/config.xml';
   let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
   configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.USER_DEFINED, extra,
-    (error: BusinessError, value: string) => {
-      if (error == null) {
-        console.info('value is ' + value);
+    (err: BusinessError, data: string) => {
+      if (err == null) {
+        console.info('data is ' + data);
       } else {
-        console.error('error: ' + error.code + ', ' + error.message);
+        console.error('err: ' + err.code + ', ' + err.message);
       }
     });
   ```
@@ -352,7 +352,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string): Promise&lt;string&gt;
 
-Obtains the path of the configuration file with the highest priority based on the specified file name and follow mode. This API uses a promise to return the result.
+Obtains the path of the configuration file with the highest priority based on the provided follow mode. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
@@ -362,7 +362,13 @@ Obtains the path of the configuration file with the highest priority based on th
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | Yes  | Name of the configuration file.                                            |
 | followMode | [FollowXMode](#followxmode11) | Yes  | Follow mode.                                              |
-| extra      | string                        | No  | Custom follow rule. This parameter is mandatory only when **followMode** is set to **USER_DEFINED**.|
+| extra      | string                        | No  | Custom follow rule. This parameter is valid only when **followMode** is set to [USER_DEFINED](#followxmode11).|
+
+**Return value**
+
+| Type                  | Description                    |
+| ---------------------- | ------------------------ |
+| Promise&lt;string&gt;  | Promise used to return the path of the configuration file with the highest priority.|
 
 **Error codes**
 
@@ -371,12 +377,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
-
-**Return value**
-
-| Type                  | Description                    |
-| ---------------------- | ------------------------ |
-| Promise&lt;string&gt;  | Promise used to return the result.|
 
 **Example**
 
@@ -403,7 +403,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: string): string
 
-Obtains the path of the configuration file with the highest priority based on the specified file name and follow mode. This API returns the result synchronously.
+Obtains the path of the configuration file with the highest priority based on the provided follow mode.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
@@ -412,8 +412,14 @@ Obtains the path of the configuration file with the highest priority based on th
 | Name    | Type                         | Mandatory| Description                                                |
 | ---------- | ----------------------------- | ---- | ----------------------------------------------------|
 | relPath    | string                        | Yes  | Name of the configuration file.                                          |
-| followMode | [FollowXMode](#followxmode11) | No  | Follow mode. The default value is **DEFAULT**.                   |
-| extra      | string                        | No  | Custom follow rule. This parameter is mandatory only when **followMode** is set to **USER_DEFINED**.|
+| followMode | [FollowXMode](#followxmode11) | No  | Follow mode. The default value is [DEFAULT](#followxmode11) if this parameter is not set.                   |
+| extra      | string                        | No  | Custom follow rule. This parameter is valid only when **followMode** is set to [USER_DEFINED](#followxmode11).|
+
+**Return value**
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| string | The path of the configuration file with the highest priority obtained.|
 
 **Error codes**
 
@@ -422,13 +428,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
-
-**Return value**
-
-| Type  | Description                    |
-| ------ | ------------------------ |
-| string | Path of the configuration file with the highest priority obtained.|
-
 
 **Example**
 
@@ -451,8 +450,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
-Obtains a list of configuration files based on the specified file name and follow mode, sorted in ascending order of priority. This API uses an asynchronous callback to return the result.
-For example, there are three **config.xml** files (in ascending order of priority): **/system/etc/config.xml**, **/sys_pod/etc/config.xml**, and **/sys_pod/etc/carrier/46060/etc/config.xml**. If the opkey of the default card is **46060** and the follow mode is **SIM_DEFAULT**, **/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml** is returned.
+Obtains a list of all files of a specified file name based on the provided follow mode, in ascending order of priority. This API uses an asynchronous callback to return the result.
+For example, if the paths of **config.xml** on the device are **/system/etc/config.xml**, **/sys_pod/etc/config.xml**, and **/sys_pod/etc/carrier/46060/etc/config.xml** in ascending order of priority, the default opkey of the device is **46060**, and **followMode** is set to **configPolicy.FollowXMode.SIM_DEFAULT**, the return value is **/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml**.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
@@ -462,7 +461,7 @@ For example, there are three **config.xml** files (in ascending order of priorit
 | ---------- | ---------------------------------------- | ---- | -------------------------- |
 | relPath    | string                                   | Yes  | Name of the configuration file.                |
 | followMode | [FollowXMode](#followxmode11)            | Yes  | Follow mode.                  |
-| callback   | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the file lists.|
+| callback   | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the result. If the file list is successfully obtained, **err** is **undefined**, and **data** is the obtained file list. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -479,11 +478,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   let relpath: string = 'etc/config.xml';
   configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
-    (error: BusinessError, value: Array<string>) => {
-      if (error == null) {
-        console.info('value is ' + value);
+    (err: BusinessError, data: Array<string>) => {
+      if (err == null) {
+        console.info('data is ' + data);
       } else {
-        console.error('error: ' + error.code + ', ' + error.message);
+        console.error('err: ' + err.code + ', ' + err.message);
       }
     });
   ```
@@ -492,8 +491,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
-Obtains a list of configuration files based on the specified file name and follow mode, sorted in ascending order of priority. This API uses an asynchronous callback to return the result.
-For example, there are three **config.xml** files (in ascending order of priority): **/system/etc/config.xml**, **/sys_pod/etc/config.xml**, and **/sys_pod/etc/carrier/46060/etc/config.xml**. If the opkey of card 1 is **46060**, the follow mode is **USER_DEFINED**, and the custom follow rule is **etc/carrier/${telephony.sim.opkey0}**, **/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml** is returned.
+Obtains a list of all files of a specified file name based on the provided follow mode, in ascending order of priority. This API uses an asynchronous callback to return the result.
+For example, if the paths of **config.xml** on the device are **/system/etc/config.xml**, **/sys_pod/etc/config.xml**, and **/sys_pod/etc/carrier/46060/etc/config.xml** in ascending order of priority, the opkey of the device card 1 is **46060**, **followMode** is set to **configPolicy.FollowXMode.USER_DEFINED**, and the custom follow rule is **"etc/carrier/${telephony.sim.opkey0}"**, the return value is **/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml**.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
@@ -503,8 +502,8 @@ For example, there are three **config.xml** files (in ascending order of priorit
 | ---------- | ---------------------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                                   | Yes  | Name of the configuration file.                                            |
 | followMode | [FollowXMode](#followxmode11)            | Yes  | Follow mode.                                              |
-| extra      | string                                   | Yes  | Custom follow rule. This parameter is valid only when **followMode** is set to **USER_DEFINED**.|
-| callback   | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the file lists.                            |
+| extra      | string                                   | Yes  | Custom follow rule. This parameter is valid only when **followMode** is set to [USER_DEFINED](#followxmode11).|
+| callback   | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the result. If the file list is successfully obtained, **err** is **undefined**, and **data** is the obtained file list. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -522,11 +521,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   let relpath: string = 'etc/config.xml';
   let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
   configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra,
-    (error: BusinessError, value: Array<string>) => {
-      if (error == null) {
-        console.info('value is ' + value);
+    (err: BusinessError, data: Array<string>) => {
+      if (err == null) {
+        console.info('data is ' + data);
       } else {
-        console.error('error: ' + error.code + ', ' + error.message);
+        console.error('err: ' + err.code + ', ' + err.message);
       }
     });
   ```
@@ -535,7 +534,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getCfgFiles(relPath: string, followMode: FollowXMode, extra?: string): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains a list of configuration files based on the specified file name and follow mode, sorted in ascending order of priority. This API uses a promise to return the result.
+Obtains a list of all files of a specified file name based on the provided follow mode, in ascending order of priority. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
@@ -545,7 +544,13 @@ Obtains a list of configuration files based on the specified file name and follo
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | Yes  | Name of the configuration file.                                            |
 | followMode | [FollowXMode](#followxmode11) | Yes  | Follow mode.                                              |
-| extra      | string                        | No  | Custom follow rule. This parameter is mandatory only when **followMode** is set to **USER_DEFINED**.|
+| extra      | string                        | No  | Custom follow rule. This parameter is valid only when **followMode** is set to [USER_DEFINED](#followxmode11).|
+
+**Return value**
+
+| Type                              | Description    |
+| ---------------------------------- | -------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the file list.|
 
 **Error codes**
 
@@ -554,12 +559,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
-
-**Return value**
-
-| Type                              | Description    |
-| ---------------------------------- | -------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the result.|
 
 **Example**
 
@@ -586,7 +585,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getCfgFilesSync(relPath: string, followMode?: FollowXMode, extra?: string): Array&lt;string&gt;
 
-Obtains a list of configuration files based on the specified file name and follow mode, sorted in ascending order of priority. This API returns the result synchronously.
+Obtains a list of all files of a specified file name based on the provided follow mode, in ascending order of priority.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
@@ -595,8 +594,14 @@ Obtains a list of configuration files based on the specified file name and follo
 | Name    | Type                         | Mandatory| Description                                                  |
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | Yes  | Name of the configuration file.                                            |
-| followMode | [FollowXMode](#followxmode11) | No  | Follow mode. The default value is **DEFAULT**.                   |
-| extra      | string                        | No  | Custom follow rule. This parameter is mandatory only when **followMode** is set to **USER_DEFINED**.|
+| followMode | [FollowXMode](#followxmode11) | No  | Follow mode. The default value is [DEFAULT](#followxmode11) if this parameter is not set.                   |
+| extra      | string                        | No  | Custom follow rule. This parameter is valid only when **followMode** is set to [USER_DEFINED](#followxmode11).|
+
+**Return value**
+
+| Type               | Description    |
+| ------------------- | -------- |
+| Array&lt;string&gt; | List of configuration files obtained.|
 
 **Error codes**
 
@@ -605,13 +610,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
-
-**Return value**
-
-| Type               | Description    |
-| ------------------- | -------- |
-| Array&lt;string&gt; | List of configuration files obtained.|
-
 
 **Example**
 
@@ -634,7 +632,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getCfgDirListSync(): Array&lt;string&gt;
 
-Obtains the list of configuration level directories. This API returns the result synchronously.
+Obtains a list of configuration level directories, in ascending order of priority.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
@@ -664,11 +662,11 @@ Obtains the list of configuration level directories. This API returns the result
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
 
-| Name            | Value | Description                                                                                                                      |
-| ---------------- | --- | -------------------------------------------------------------------------------------------------------------------------- |
-| DEFAULT          | 0   | Files are searched based on the follow rules configured in the **followx_file_list.cfg** file at each configuration level.                               |
-| NO_RULE_FOLLOWED | 1   | No follow rule is used, even if the **followx_file_list.cfg** file exists.                                             |
-| SIM_DEFAULT      | 10  | Files are searched in **etc/carrier/${opkey}** file at each configuration level based on the opkey of the default card.                               |
-| SIM_1            | 11  | Files are searched in **etc/carrier/${opkey}** at each configuration level based on the opkey of card 1.                                     |
-| SIM_2            | 12  | Files are searched in **etc/carrier/${opkey}** at each configuration level based on the opkey of card 2.                                     |
-| USER_DEFINED     | 100 | Files are searched based on the follow rule passed in **extra**, rather than the **followx_file_list.cfg** file at each configuration level.|
+| Name                          | Value | Description                                                                                           |
+| ----------------------------- | --- | ----------------------------------------------------------------------------------------------- |
+| DEFAULT                       | 0   | Files are searched based on the follow rules configured in the **followx_file_list.cfg** file at each configuration level.                  |
+| NO_RULE_FOLLOWED              | 1   | No follow rule is used even if the **followx_file_list.cfg** file exists.                               |
+| SIM_DEFAULT                   | 10  | Files are searched in **etc/carrier/${opkey}** at each configuration level based on the opkey of the default card.                  |
+| SIM_1                         | 11  | Files are searched in **etc/carrier/${opkey}** at each configuration level based on the opkey of card 1.                       |
+| SIM_2                         | 12  | Files are searched in **etc/carrier/${opkey}** at each configuration level based on the opkey of card 2.                       |
+| USER_DEFINED                  | 100 | In user-defined mode, configuration files are obtained based on the follow rule provided by **extra**, and the **followx_file_list.cfg** file at each configuration level is ignored.| 

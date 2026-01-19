@@ -85,10 +85,8 @@ config.json示例：
         "name": ".MainAbility_entry",
         "srcLanguage": "ets",
         "icon": "$media:icon",
-        // $string:MainAbility_entry_desc为资源索引
         "description": "$string:MainAbility_entry_desc",
         "formsEnabled": false,
-        // $string:MainAbility_entry_label为资源索引
         "label": "$string:MainAbility_entry_label",
         "type": "page",
         "launchType": "multiton"

@@ -5,7 +5,7 @@
 <!--Owner: @wangke25-->
 <!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - [Core File Kit简介](core-file-kit-intro.md)
 - 应用文件<!--app-file-->
@@ -22,7 +22,7 @@
   - [应用共享目录配置](share-app-file-configuration.md)
   - 应用数据备份恢复<!--app-file-backup-restore-->
     - [应用数据备份恢复概述](app-file-backup-overview.md)
-    - [应用接入数据备份恢复](app-file-backup-extension.md)
+    - [应用接入数据备份恢复](app-file-backup-extension.md)<!--RP2--><!--RP2End-->
     <!--Del-->
     - [应用触发数据备份/恢复（仅对系统应用开放）](app-file-backup-sys.md)
     <!--DelEnd-->

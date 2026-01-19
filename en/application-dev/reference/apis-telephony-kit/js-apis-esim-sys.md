@@ -61,12 +61,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { eSIM } from '@kit.TelephonyKit';
 
-try {
-    let eid: string = await eSIM.getEid(1);
+eSIM.getEid(1).then((eid) => {
     console.info(`the EID is:` + eid);
-} catch (err) {
-    console.err(`getEid, promise: err->${JSON.stringfy(err)}`)
-}
+}).catch((err:BusinessError<void>) => {
+    console.error(`getEid, promise: err->${JSON.stringify(err)}`)
+});
 ```
 
 ## eSIM.getOsuStatus

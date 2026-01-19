@@ -24,7 +24,8 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 onDataPrepared(data: T, map?: Map<string, string>): void
 
 媒体资源就绪通知，系统在资源准备就绪时回调此方法。若资源准备出错，回调的data为undefined。资源请求与回调一一对应。
-T支持ArrayBuffer, [ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md), [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md)和boolean四种数据类型。其中，ArrayBuffer表示图片/视频资源数据，[ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md)表示图片源，[MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md)表示动态照片对象，boolean表示图片/视频资源是否成功写入应用沙箱。
+
+T支持ArrayBuffer，[ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md)，[MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md)和boolean四种数据类型。其中，ArrayBuffer表示图片/视频资源数据，[ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md)表示图片源，[MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md)表示动态照片对象，boolean表示图片/视频资源是否成功写入应用沙箱。
 
 map支持返回的信息：
 

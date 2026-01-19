@@ -177,6 +177,23 @@ type OnPlaybackRateDone = (rate: number) => void
 | ------ | ------ | ------ | ------------------------------------------------------------ |
 | rate | number | 是 | 播放速率。 |
 
+## OnFrameFetched<sup>23+</sup>
+
+type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError\<void>) => void
+
+批量获取缩略图回调函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ------ | ---------------------------------------------------------- |
+| frameInfo  | [FrameInfo](arkts-apis-media-i.md#frameinfo23) | 是 | 返回的缩略图信息。     |
+| err | BusinessError\<void> | 否 | 获取缩略图时发生错误，默认值为null。 |
+
 ## AVRecorderState<sup>9+</sup>
 
 type AVRecorderState = 'idle' | 'prepared' | 'started' | 'paused' | 'stopped' | 'released' | 'error'
@@ -220,7 +237,7 @@ type SourceOpenCallback = (request: MediaSourceLoadingRequest) => number
 
 由应用实现此回调函数，应用需处理传入的资源打开请求，并返回所打开资源对应的唯一句柄。
 
-> **注意：** 
+> **注意：**
 >
 > 客户端在处理完请求后应立刻返回。
 
@@ -232,7 +249,7 @@ type SourceOpenCallback = (request: MediaSourceLoadingRequest) => number
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| request | [MediaSourceLoadingRequest](arkts-apis-media-MediaSourceLoadingRequest.md) | 是  | 打开请求参数，包含请求资源的具体信息和数据推送方式。 |
+| request | [MediaSourceLoadingRequest](arkts-apis-media-MediaSourceLoadingRequest.md) | 是  |  打开请求参数，包含请求资源的具体信息和数据推送方式。 |
 
 **返回值：**
 
@@ -265,7 +282,7 @@ type SourceReadCallback = (uuid: number, requestedOffset: number, requestedLengt
 由应用实现此回调函数，应用需记录读取请求，并在数据充足时通过对应的MediaSourceLoadingRequest对象的[respondData](arkts-apis-media-MediaSourceLoadingRequest.md#responddata18)方法推送数据。
 
 > **注意：**
-> 
+>
 > 客户端在处理完请求后应立刻返回。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
@@ -276,9 +293,9 @@ type SourceReadCallback = (uuid: number, requestedOffset: number, requestedLengt
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| uuid | number | 是  | 资源句柄的标识。 |
-| requestedOffset | number | 是  | 当前媒体数据相对于资源起始位置的偏移量。 |
-| requestedLength | number | 是  | 当前请求的长度。值为-1时，表示到达资源末尾，此时推送完成后需通过[finishLoading](arkts-apis-media-MediaSourceLoadingRequest.md#finishloading18)方法通知播放器推送结束。 |
+| uuid | number | 是  |  资源句柄的标识。 |
+| requestedOffset | number | 是  |  当前媒体数据相对于资源起始位置的偏移量。 |
+| requestedLength | number | 是  |  当前请求的长度。值为-1时，表示到达资源末尾，此时推送完成后需通过[finishLoading](arkts-apis-media-MediaSourceLoadingRequest.md#finishloading18)方法通知播放器推送结束。 |
 
 **示例：**
 

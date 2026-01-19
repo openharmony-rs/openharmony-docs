@@ -611,7 +611,7 @@ HAP/HSP包没有签名。
 
 方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
-方法三. 如果安装APP时报这个错误码，需要在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)里配置appWithSignedPkg为true，保证APP里的HAP/HSP有签名。
+方法三. 如果安装APP时报这个错误码，需要在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)里配置[packOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215)的appWithSignedPkg属性为true，保证APP里的HAP/HSP有签名。
 
 ### 9568321 签名文件解析失败
 **错误信息**
@@ -837,7 +837,9 @@ error: install parse profile prop check error.
             ```
 
     3. 将步骤1获取到的签名指纹配置到install_list_capability.json文件的app_signature中，注意要配置到对应的bundleName下。
+
        ![示例图](figures/zh-cn_image_0000001635641893.png)
+
     4. 将修改后的install_list_capability.json文件重新推到设备上，并重启设备。
 
         ```shell
@@ -1607,7 +1609,7 @@ error: install verification failed.
 
 **可能原因**
 
-校验唯一标识[appIdentifier](./../quick-start/common_problem_of_application.md#什么是appidentifier)不一样，导致安装失败。
+校验唯一标识[appIdentifier](./../quick-start/common-problem-of-application.md#什么是appidentifier)不一样，导致安装失败。
 
 **处理步骤**
 
@@ -2127,6 +2129,7 @@ error: install version not compatible.
 **可能原因**
 
 当前安装HSP的版本信息与已安装HAP的版本信息不匹配。
+
 安装HSP时会做如下校验：
 1. bundleName和HAP的一致。
 2. version和HAP的一致。
@@ -2572,8 +2575,7 @@ error: Failed to install the HAP because an enterprise normal/MDM bundle cannot 
 
 **可能原因**
 
-当前设备不允许安装<!--RP5-->[Profile签名文件](../security/app-provision-structure.md)<!--RP5End-->中如下两种类型的应用：enterprise_mdm（企业MDM应用）、enterprise_normal（普通企业应用）。
-Profile签名文件类型的取值及含义请参考[ApplicationInfo.appDistributionType](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)。
+当前设备不允许安装<!--RP5-->[Profile签名文件](../security/app-provision-structure.md)<!--RP5End-->中如下两种类型的应用：enterprise_mdm（企业MDM应用）、enterprise_normal（普通企业应用）。Profile签名文件类型的取值及含义请参考[ApplicationInfo.appDistributionType](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)。
 
 **处理步骤**
 
@@ -2770,6 +2772,7 @@ error: bundle cannot be installed because the appId is not same with preinstalle
 **处理步骤**
 
 方法一：重新签名，保证应用签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)和<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->任意一个与预置应用的一致。
+
 方法二：修改安装应用的[bundleName](../quick-start/app-configuration-file.md#配置文件标签)，确保与预置应用的不一致。
 
 ### 9568418 应用设置了卸载处置规则，不允许直接卸载
@@ -2912,7 +2915,7 @@ error: Check pluginDistributionID between plugin and host application failed.
 }
 ``` 
 
-### 9568433 应用缺少ohos.permission.SUPPORT_PLUGIN权限
+### 9568433 应用缺少ohos.permission.kernel.SUPPORT_PLUGIN权限
 **错误信息**
 
 error: Failed to install the plugin because host application check permission failed.
@@ -2923,7 +2926,7 @@ error: Failed to install the plugin because host application check permission fa
 
 **可能原因**
 
-应用缺少ohos.permission.SUPPORT_PLUGIN权限。
+应用缺少ohos.permission.kernel.SUPPORT_PLUGIN权限。
 
 **处理步骤**
 
@@ -3405,7 +3408,7 @@ APP包签名不正确或没有签名。
 <!--Del-->
 ## 常见问题
 
-### 1. 预置系统应用已经卸载，重新安装应用时在特定场景下会报错：降级安装或者签名信息不一致
+### 预置系统应用已经卸载，重新安装应用时在特定场景下会报错：降级安装或者签名信息不一致
 
 **问题描述**
 

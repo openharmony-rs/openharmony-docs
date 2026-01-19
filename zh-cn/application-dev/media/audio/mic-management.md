@@ -1,4 +1,4 @@
-# 管理麦克风
+# 管理麦克风静音状态
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->

@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_AnimateOption ArkUI_AnimateOption
+```
+
 ## Overview
 
 Defines a struct for the animation configuration.

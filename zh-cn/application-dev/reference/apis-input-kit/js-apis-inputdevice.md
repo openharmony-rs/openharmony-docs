@@ -12,7 +12,7 @@
 
 > **说明**：
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -26,7 +26,7 @@ import { inputDevice } from '@kit.InputKit';
 
 getDeviceList(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
-获取所有输入设备的ID列表，使用Callback回调。
+获取所有输入设备的ID列表，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -58,7 +58,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getDeviceList((error: BusinessError, ids: Array<Number>) => {
+            inputDevice.getDeviceList((error: BusinessError, ids: Array<number>) => {
               if (error) {
                 console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -102,7 +102,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getDeviceList().then((ids: Array<Number>) => {
+            inputDevice.getDeviceList().then((ids: Array<number>) => {
               console.info(`Device id list: ${JSON.stringify(ids)}`);
             }).catch((error: BusinessError) => {
               console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -120,7 +120,7 @@ struct Index {
 
 getDeviceInfo(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;): void
 
-获取指定输入设备的信息，使用Callback异步回调。
+获取指定输入设备的信息，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -280,11 +280,11 @@ struct Index {
 }
 ```
 
-## inputDevice.on<sup>9+</sup>
+## inputDevice.on('change')<sup>9+</sup>
 
 on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 
-注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。
+注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -368,11 +368,11 @@ struct Index {
 }
 ```
 
-## inputDevice.off<sup>9+</sup>
+## inputDevice.off('change')<sup>9+</sup>
 
 off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 
-取消监听输入设备的热插拔事件。在应用退出前调用，取消监听。
+取消监听输入设备的热插拔事件。在应用退出前调用，取消监听。使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -436,7 +436,7 @@ struct Index {
 
 getDeviceIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
-获取所有输入设备的ID列表，使用Callback异步回调。
+获取所有输入设备的ID列表，使用callback异步回调。
 
 > **说明**：
 >
@@ -463,7 +463,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          inputDevice.getDeviceIds((error: BusinessError, ids: Array<Number>) => {
+          inputDevice.getDeviceIds((error: BusinessError, ids: Array<number>) => {
             if (error) {
               console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
               return;
@@ -507,7 +507,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          inputDevice.getDeviceIds().then((ids: Array<Number>) => {
+          inputDevice.getDeviceIds().then((ids: Array<number>) => {
             console.info(`Device id list: ${JSON.stringify(ids)}`);
           }).catch((error: BusinessError) => {
             console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -522,7 +522,7 @@ struct Index {
 
 getDevice(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;): void
 
-获取指定id的输入设备信息，使用Callback异步回调。
+获取指定id的输入设备信息，使用callback异步回调。
 
 > **说明**：
 >
@@ -814,7 +814,7 @@ struct Index {
         .onClick(() => {
           // 查询ID为1的输入设备的键盘类型。
           try {
-            inputDevice.getKeyboardType(1, (error: BusinessError, type: Number) => {
+            inputDevice.getKeyboardType(1, (error: BusinessError, type: number) => {
               if (error) {
                 console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;

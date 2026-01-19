@@ -1,4 +1,4 @@
-# 共享音频输入
+# 录音并发策略说明
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->

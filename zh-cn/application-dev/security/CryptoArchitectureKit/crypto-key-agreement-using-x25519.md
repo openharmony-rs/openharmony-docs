@@ -21,24 +21,30 @@
 
 - 异步方法示例：
 
-  ```ts
+  <!-- @[use_x25519a_for_key_negotiation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/X25519/X25519Async.ets) -->
+
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
   async function x25519Await() {
-    // 假设此公私钥对数据为外部传入。
-    let pubKeyArray = new Uint8Array([48, 42, 48, 5, 6, 3, 43, 101, 110, 3, 33, 0, 36, 98, 216, 106, 74, 99, 179, 203, 81, 145, 147, 101, 139, 57, 74, 225, 119, 196, 207, 0, 50, 232, 93, 147, 188, 21, 225, 228, 54, 251, 230, 52]);
-    let priKeyArray = new Uint8Array([48, 46, 2, 1, 0, 48, 5, 6, 3, 43, 101, 110, 4, 34, 4, 32, 112, 65, 156, 73, 65, 89, 183, 39, 119, 229, 110, 12, 192, 237, 186, 153, 21, 122, 28, 176, 248, 108, 22, 242, 239, 179, 106, 175, 85, 65, 214, 90]);
+    // 假设此公私钥对数据为外部传入
+    let pubKeyArray =
+      new Uint8Array([48, 42, 48, 5, 6, 3, 43, 101, 110, 3, 33, 0, 36, 98, 216, 106, 74, 99, 179, 203, 81, 145, 147, 101,
+        139, 57, 74, 225, 119, 196, 207, 0, 50, 232, 93, 147, 188, 21, 225, 228, 54, 251, 230, 52]);
+    let priKeyArray =
+      new Uint8Array([48, 46, 2, 1, 0, 48, 5, 6, 3, 43, 101, 110, 4, 34, 4, 32, 112, 65, 156, 73, 65, 89, 183, 39, 119,
+        229, 110, 12, 192, 237, 186, 153, 21, 122, 28, 176, 248, 108, 22, 242, 239, 179, 106, 175, 85, 65, 214, 90]);
     let keyGen = cryptoFramework.createAsyKeyGenerator('X25519');
-    // 外部传入的公私钥对A。
+    // 外部传入的公私钥对A
     let keyPairA = await keyGen.convertKey({ data: pubKeyArray }, { data: priKeyArray });
-    // 内部生成的公私钥对B。
+    // 内部生成的公私钥对B
     let keyPairB = await keyGen.generateKeyPair();
     let keyAgreement = cryptoFramework.createKeyAgreement('X25519');
-    // 使用A的公钥和B的私钥进行密钥协商。
+    // 使用A的公钥和B的私钥进行密钥协商
     let secret1 = await keyAgreement.generateSecret(keyPairB.priKey, keyPairA.pubKey);
-    // 使用A的私钥和B的公钥进行密钥协商。
+    // 使用A的私钥和B的公钥进行密钥协商
     let secret2 = await keyAgreement.generateSecret(keyPairA.priKey, keyPairB.pubKey);
-    // 两种协商的结果应当一致。
+    // 两种协商的结果应当一致
     if (secret1.data.toString() === secret2.data.toString()) {
       console.info('x25519 success');
       console.info('x25519 output is ' + secret1.data);
@@ -47,27 +53,34 @@
     }
   }
   ```
+
 
 - 同步方法示例：
 
-  ```ts
+  <!-- @[use_x25519a_for_key_negotiation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/X25519/X25519Sync.ets) -->
+
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-  function x25519AgreementSync() {
-    // 假设此公私钥对数据为外部传入。
-    let pubKeyArray = new Uint8Array([48, 42, 48, 5, 6, 3, 43, 101, 110, 3, 33, 0, 36, 98, 216, 106, 74, 99, 179, 203, 81, 145, 147, 101, 139, 57, 74, 225, 119, 196, 207, 0, 50, 232, 93, 147, 188, 21, 225, 228, 54, 251, 230, 52]);
-    let priKeyArray = new Uint8Array([48, 46, 2, 1, 0, 48, 5, 6, 3, 43, 101, 110, 4, 34, 4, 32, 112, 65, 156, 73, 65, 89, 183, 39, 119, 229, 110, 12, 192, 237, 186, 153, 21, 122, 28, 176, 248, 108, 22, 242, 239, 179, 106, 175, 85, 65, 214, 90]);
+  function x25519Await() {
+    // 假设此公私钥对数据为外部传入
+    let pubKeyArray =
+      new Uint8Array([48, 42, 48, 5, 6, 3, 43, 101, 110, 3, 33, 0, 36, 98, 216, 106, 74, 99, 179, 203, 81, 145, 147, 101,
+        139, 57, 74, 225, 119, 196, 207, 0, 50, 232, 93, 147, 188, 21, 225, 228, 54, 251, 230, 52]);
+    let priKeyArray =
+      new Uint8Array([48, 46, 2, 1, 0, 48, 5, 6, 3, 43, 101, 110, 4, 34, 4, 32, 112, 65, 156, 73, 65, 89, 183, 39, 119,
+        229, 110, 12, 192, 237, 186, 153, 21, 122, 28, 176, 248, 108, 22, 242, 239, 179, 106, 175, 85, 65, 214, 90]);
     let keyGen = cryptoFramework.createAsyKeyGenerator('X25519');
-    // 外部传入的公私钥对A。
+    // 外部传入的公私钥对A
     let keyPairA = keyGen.convertKeySync({ data: pubKeyArray }, { data: priKeyArray });
-    // 内部生成的公私钥对B。
+    // 内部生成的公私钥对B
     let keyPairB = keyGen.generateKeyPairSync();
     let keyAgreement = cryptoFramework.createKeyAgreement('X25519');
-    // 使用A的公钥和B的私钥进行密钥协商。
+    // 使用A的公钥和B的私钥进行密钥协商
     let secret1 = keyAgreement.generateSecretSync(keyPairB.priKey, keyPairA.pubKey);
-    // 使用A的私钥和B的公钥进行密钥协商。
+    // 使用A的私钥和B的公钥进行密钥协商
     let secret2 = keyAgreement.generateSecretSync(keyPairA.priKey, keyPairB.pubKey);
-    // 两种协商的结果应当一致。
+    // 两种协商的结果应当一致
     if (secret1.data.toString() === secret2.data.toString()) {
       console.info('x25519 success');
       console.info('x25519 output is ' + secret1.data);
@@ -76,3 +89,4 @@
     }
   }
   ```
+

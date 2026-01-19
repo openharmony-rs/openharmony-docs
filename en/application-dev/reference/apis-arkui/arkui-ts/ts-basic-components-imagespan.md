@@ -4,7 +4,7 @@
 <!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 As a child of the [Text](ts-basic-components-text.md) and [ContainerSpan](ts-basic-components-containerspan.md) components, the **ImageSpan** component is used to display inline images.
 
@@ -30,7 +30,7 @@ ImageSpan(value: ResourceStr | PixelMap)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)  | Yes| Image source. Both local and network images are supported.<br>When using an image referenced using a relative path, for example, **ImageSpan("common/test.jpg")**, the **ImageSpan** component cannot be called across bundles or modules. Therefore, you are advised to use **\$r** to reference image resources that need to be used globally.<br>\- The supported formats include PNG, JPG, BMP, SVG, GIF, and HEIF.<br>\- Base64 strings are supported. The value format is data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where *[base64 data]* is a Base64 string.<br>\- Character string prefixed with file://data/storage, which is used to read image resources in the file folder in the application installation directory. Ensure that the application has the read permission to the files in the specified path.|
+| value | [ResourceStr](ts-types.md#resourcestr) \|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp; | Yes| Image source. Both local and network images are supported.<br>When using an image referenced using a relative path, for example, **ImageSpan("common/test.jpg")**, the **ImageSpan** component cannot be called across bundles or modules. Therefore, you are advised to use **\$r** to reference image resources that need to be used globally.<br>\- The supported formats include PNG, JPG, BMP, SVG, GIF, and HEIF.<br>\- Base64 strings are supported. The value format is data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where *[base64 data]* is a Base64 string.<br>\- Character string prefixed with file://data/storage, which is used to read image resources in the file folder in the application installation directory. Ensure that the application has the read permission to the files in the specified path.|
 
 
 ## Attributes
@@ -71,7 +71,7 @@ Sets the image scale type.
 
 ### alt<sup>12+</sup>
 
-alt(value: PixelMap)
+alt(value:&nbsp;PixelMap)
 
 Sets the placeholder image displayed during image loading.
 
@@ -105,7 +105,7 @@ Sets the color filter for the image.
 
 supportSvg2(enable: Optional\<boolean>)
 
-Sets whether to enable [enhanced SVG parsing](ts-image-svg2-capabilities.md). When this feature is enabled, SVG image rendering behavior changes accordingly.
+Sets whether to enable [enhanced SVG tag parsing](ts-image-svg2-capabilities.md). When this feature is enabled, SVG image rendering behavior changes accordingly.
 
 After the **ImageSpan** component is created, the value of this attribute cannot be dynamically changed.
 
@@ -117,7 +117,7 @@ After the **ImageSpan** component is created, the value of this attribute cannot
 
 | Name| Type                                                    | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enable  | Optional\<boolean> | Yes  | Whether to enable [enhanced SVG parsing](ts-image-svg2-capabilities.md).<br>**true**: Enable enhanced SVG parsing. **false**: Use original SVG parsing.<br>Default value: **false**.|
+| enable  | Optional\<boolean> | Yes  | Whether to enable [enhanced SVG tag parsing capabilities](ts-image-svg2-capabilities.md).<br>**true**: Enable enhanced SVG parsing. **false**: Use original SVG parsing.<br>Default value: **false**.|
 
 ## Events
 
@@ -415,3 +415,43 @@ struct SpanExample {
 ```
 
 ![imagespan](figures/image_span_alt.gif)
+### Example 6: Displaying an SVG Image Using the supportSvg2 Property
+
+This example shows how to enable enhanced SVG usability capabilities through the [SVG tag parsing enhancement feature](ts-image-svg2-capabilities.md#improved-svg-usability) by configuring the [supportSvg2](#supportsvg222) attribute, available since API version 22.
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('Styled string with supportSvg2: false')
+        // Replace $r("app.media.ice") with the image resource file you use.
+        Text() {
+          ImageSpan($r("app.media.ice"))
+            .width(50)
+            .height(50)
+            .colorFilter(drawing.ColorFilter.createBlendModeColorFilter(
+              drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN))
+        }
+        Text('Styled string with supportSvg2: true')
+        // Replace $r("app.media.ice") with the image resource file you use.
+        Text() {
+          ImageSpan($r("app.media.ice"))
+            .width(50)
+            .height(50)
+            .supportSvg2(true)
+            .colorFilter(drawing.ColorFilter.createBlendModeColorFilter(
+              drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN))
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![styledString_17](figures/styledString_17.png)

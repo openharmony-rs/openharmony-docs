@@ -11,6 +11,7 @@ During application launch, multiple service modules need to be loaded. For examp
 By leveraging the TaskPool capabilities provided by ArkTS, different service initialization tasks can be offloaded to child threads. Service modules can be implemented in C++ as [NativeBinding objects](transferabled-object.md) or defined in ArkTS as [Sendable objects](arkts-sendable.md). The initialized modules can then be returned to the UI main thread for use. The implementation involves the following steps:
 
 1. Define each service module (SDK) (using Sendable objects as an example).
+
    Define the calculator service module as follows:
 
    ```ts

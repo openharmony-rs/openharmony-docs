@@ -483,13 +483,13 @@ getTopProportionColors(colorCount: number): Array<Color | null>
 **参数：**
 | 参数名      | 类型   | 必填 | 说明              |
 | ---------- | ------ | ---- | ------------------------------------------- |
-| colorCount | number | 是   | 需要取主色的个数，取值范围为[1, 10]，向下取整。   |
+| colorCount | number | 是   | 需要取主色的个数，向下取整。<br>**说明：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，取值范围为[1, 10]，取色个数大于10视为取前10个；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，取值范围为[1, 20]，取色个数大于20视为取前20个。   |
 
 **返回值：**
 
 | 类型                                     | 说明                                            |
 | :--------------------------------------- | :---------------------------------------------- |
-| Array<[Color](#color) \| null> | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。<br>- 当实际读取的特征色个数小于`colorCount`时，数组大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`[null]`。<br>- 取色个数大于10视为取前10个。 |
+ | Array<[Color](#color) \| null> | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。<br>- 当实际读取的特征色个数小于`colorCount`时，数组大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`[null]`。 |
 
 **示例：**
 
@@ -720,7 +720,7 @@ function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.blur(radius);
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -809,7 +809,7 @@ function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.blur(radius, effectKit.TileMode.DECAL);
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -886,7 +886,7 @@ function ImageInvert(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.invert();
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -983,7 +983,7 @@ function ImageColorFilter(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.setColorMatrix(colorMatrix);
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -1070,7 +1070,7 @@ function ImageBrightness(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.brightness(bright);
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -1151,7 +1151,7 @@ function ImageGrayscale(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.grayscale();
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })

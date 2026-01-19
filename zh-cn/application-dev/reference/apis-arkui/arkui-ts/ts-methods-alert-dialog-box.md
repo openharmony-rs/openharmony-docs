@@ -279,7 +279,7 @@ static show(value: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | A
 
 ### 示例1（弹出多个按钮的弹窗）
 
-该示例实现了分别弹出一、二、三个按钮的弹窗。
+该示例通过[AlertDialogParamWithConfirm](#alertdialogparamwithconfirm对象说明)、[AlertDialogParamWithButtons](#alertdialogparamwithbuttons对象说明)和[AlertDialogParamWithOptions](#alertdialogparamwithoptions10对象说明)实现了分别弹出一、二、三个按钮的弹窗。
 
 ```ts
 // xxx.ets
@@ -423,7 +423,7 @@ struct AlertDialogExample {
 
 ### 示例2（可在主窗外弹出的弹窗）
 
-在2in1设备上设置showInSubWindow为true时，可以弹出在主窗外显示的弹窗。
+在2in1设备上设置[AlertDialogParam](#alertdialogparam对象说明)中showInSubWindow属性的值为true时，可以弹出在主窗外显示的弹窗。
 
 ```ts
 // xxx.ets
@@ -493,7 +493,7 @@ struct AlertDialogExample {
 
 ### 示例3（设置弹窗的动画）
 
-该示例通过配置transition实现弹窗的显示和消失动画。
+该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的transition属性来实现弹窗的显示和消失动画。
 
 ```ts
 // xxx.ets
@@ -713,7 +713,9 @@ struct Example2 {
 
 ### 示例7（自定义背景模糊效果参数）
 
-从API version 19开始，该示例通过配置[backgroundBlurStyleOptions](#alertdialogparam对象说明)，实现自定义背景模糊效果。
+该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的backgroundBlurStyleOptions属性，实现了自定义背景模糊效果。
+
+从API version 19开始，在AlertDialogParam中新增了backgroundBlurStyleOptions属性。
 
 ```ts
 @Entry
@@ -762,7 +764,9 @@ struct AlertDialogExample {
 
 ### 示例8（自定义背景效果参数）
 
-从API version 19开始，该示例通过配置[backgroundEffect](#alertdialogparam对象说明)，实现自定义背景效果。
+该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的backgroundEffect属性，实现自定义背景效果。
+
+从API version 19开始，在AlertDialogParam中新增了backgroundEffect属性。
 
 ```ts
 @Entry

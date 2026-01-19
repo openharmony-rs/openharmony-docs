@@ -101,6 +101,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | TYPE_FOUR_FINGER_SWIPE_DOWN  |66| 表示四指向下滑动的手势。|
 | TYPE_FOUR_FINGER_SWIPE_LEFT  |67| 表示四指向左滑动的手势。|
 | TYPE_FOUR_FINGER_SWIPE_RIGHT  |68| 表示四指向右滑动的手势。|
+| TYPE_PAGE_ACTIVE<sup>23+</sup> |69| 表示页面发生变化。 |
 
 ## AccessibilityAction
 

@@ -39,7 +39,7 @@ The following table lists the common NetConnection APIs. For details, see [net_c
 
 ### How to Develop
 
-To use related APIs to obtain network information, you need to create a Native C++ project, encapsulate the APIs in the source file, and call these APIs at the ArkTs layer. You can use hilog or console.log to print the log information on the console or generate device logs.
+To use related APIs to obtain network information, you need to create a Native C++ project, encapsulate the APIs in the source file, and call these APIs at the ArkTS layer. You can use hilog or console.log to print the log information on the console or generate device logs.
 
 This document describes how to obtain the default active data network as an example.
 
@@ -69,176 +69,176 @@ libnet_connection.so
 
 1. Write the code for calling the API in the source file, encapsulate it into a value of the `napi_value` type, and return the value to the Node.js environment.
 
-<!-- @[build_project1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-// Obtain the default network.
-static napi_value GetDefaultNet(napi_env env, napi_callback_info info)
-{
-    size_t argc = 1; // Expect one function.
-    napi_value args[1] = {nullptr}; // Store the received parameters.
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    // ···
-    int32_t param;
-    napi_get_value_int32(env, args[0], &param); // Obtain an integer from args[0] and store the integer in param.
-    
-    NetConn_NetHandle netHandle;
-    if (param == 0) { // If the parameter is 0
-        param = OH_NetConn_GetDefaultNet(NULL);
-    } else {
-        param = OH_NetConn_GetDefaultNet(&netHandle);
-    }
-
-    napi_value result;
-    napi_create_int32(env, param, &result);
-    return result;
-}
-
-// Obtain the default network ID.
-static napi_value NetId(napi_env env, napi_callback_info info)
-{
-    int32_t defaultNetId;
-    NetConn_NetHandle netHandle;
-    OH_NetConn_GetDefaultNet(&netHandle);
-    defaultNetId = netHandle.netId; // Obtain the default netId.
-    napi_value result;
-    napi_create_int32(env, defaultNetId, &result);
-    return result;
-}
-```
-> **NOTE**<br>The two functions are used to obtain information about the default network connection of the system. Wherein, GetDefaultNet is used to receive the test parameters passed from ArkTs and return the corresponding return value after the API is called. You can change param as needed. If the return value is **0**, the parameters are obtained successfully. If the return value is **401**, the parameters are incorrect. If the return value is **201**, the user does not have the operation permission. NetId indicates the ID of the default network connection. You can use the information for further network operations.
+   <!-- @[build_project1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // Obtain the default network.
+   static napi_value GetDefaultNet(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1; // Expect one function.
+       napi_value args[1] = {nullptr}; // Store the received parameters.
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+       // ...
+       int32_t param;
+       napi_get_value_int32(env, args[0], &param); // Obtain an integer from args[0] and store the integer in param.
+       
+       NetConn_NetHandle netHandle;
+       if (param == 0) { // If the parameter is 0
+           param = OH_NetConn_GetDefaultNet(NULL);
+       } else {
+           param = OH_NetConn_GetDefaultNet(&netHandle);
+       }
+   
+       napi_value result;
+       napi_create_int32(env, param, &result);
+       return result;
+   }
+   
+   // Obtain the default network ID.
+   static napi_value NetId(napi_env env, napi_callback_info info)
+   {
+       int32_t defaultNetId;
+       NetConn_NetHandle netHandle;
+       OH_NetConn_GetDefaultNet(&netHandle);
+       defaultNetId = netHandle.netId; // Obtain the default netId.
+       napi_value result;
+       napi_create_int32(env, defaultNetId, &result);
+       return result;
+   }
+   ```
+   > **NOTE**<br>The two functions are used to obtain information about the default network connection of the system. Wherein, GetDefaultNet is used to receive the test parameters passed from ArkTS and return the corresponding return value after the API is called. You can change param as needed. If the return value is **0**, the parameters are obtained successfully. If the return value is **401**, the parameters are incorrect. If the return value is **201**, the user does not have the operation permission. NetId indicates the ID of the default network connection. You can use the information for further network operations.
 
 
 2. Initialize and export the `napi_value` objects encapsulated through **NAPI**, and expose the preceding two functions to JavaScript through external function APIs.
 
-<!-- @[build_project2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
-{
-    // Information used to describe an exported attribute. Two properties are defined here: `GetDefaultNet` and `NetId`.
-    napi_property_descriptor desc[] = {
-        {"GetDefaultNet", nullptr, GetDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"NetId", nullptr, NetId, nullptr, nullptr, nullptr, napi_default, nullptr},
-        // ···
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    return exports;
-}
-EXTERN_C_END
-```
+   <!-- @[build_project2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       // Information used to describe an exported attribute. Two properties are defined here: `GetDefaultNet` and `NetId`.
+       napi_property_descriptor desc[] = {
+           {"GetDefaultNet", nullptr, GetDefaultNet, nullptr, nullptr, nullptr, napi_default, nullptr},
+           {"NetId", nullptr, NetId, nullptr, nullptr, nullptr, napi_default, nullptr},
+           // ...
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+   ```
 3. Register the objects successfully initialized in the previous step into the `Node.js` file by using the `napi_module_register` function of `RegisterEntryModule`.
 
-<!-- @[build_project3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_module demoModule = {
-    .nm_version = 1,
-    .nm_flags = 0,
-    .nm_filename = nullptr,
-    .nm_register_func = Init,
-    .nm_modname = "entry",
-    .nm_priv = ((void *)0),
-    .reserved = {0},
-};
- 
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
-```
+   <!-- @[build_project3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_module demoModule = {
+       .nm_version = 1,
+       .nm_flags = 0,
+       .nm_filename = nullptr,
+       .nm_register_func = Init,
+       .nm_modname = "entry",
+       .nm_priv = ((void *)0),
+       .reserved = {0},
+   };
+    
+   extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
+   ```
 4. Define the types of the two functions in the `index.d.ts` file of the project.
 
-- The `GetDefaultNet` function accepts the numeric parameter code and returns a numeric value.
-- The `NetId` function does not accept parameters and returns a numeric value.
+   - The `GetDefaultNet` function accepts the numeric parameter code and returns a numeric value.
+   - The `NetId` function does not accept parameters and returns a numeric value.
 
-<!-- @[defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
-``` TypeScript
-export const GetDefaultNet: (code: number) => number;
-export const NetId: () => number;
-```
+   <!-- @[defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
+   export const GetDefaultNet: (code: number) => number;
+   export const NetId: () => number;
+   ```
 5. Call the encapsulated APIs in the `index.ets` file.
 
-<!-- @[build_project5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import testNetManager from 'libentry.so';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-enum ReturnCode {
-  SUCCESS = 0, // Operation succeeded.
-  MISSING_PERMISSION = 201, // Missing permissions.
-  PARAMETER_ERROR = 401, // Parameter error.
-}
-
-// ···
-@Entry
-@Component
-struct Index {
-  @State message: string = ''; // Display log messages.
-// ···
-
-  build() {
-    Column() { // Display logs output by Logger.
-    // ···
-      Text(this.message)
-        .fontSize(16)
-        .fontColor(Color.Black)
-        .margin({ bottom: 10 })
-        .id('test-message') // Set an ID for the test message to facilitate content obtaining.
-
-      Button($r('app.string.GetDefaultNet'))
-        .onClick(() => {
-          this.GetDefaultNet();
-        })
-        // ···
-
-      Button($r('app.string.CodeNumber'))
-        .onClick(() => {
-          this.CodeNumber();
-        })
-        // ···
-    }.width('100%').height('100%').justifyContent(FlexAlign.Center);
-  }
-  
-  GetDefaultNet() {
-    let netId = testNetManager.NetId();
-    // ···
-      hilog.info(0x0000, 'testTag', 'The defaultNetId is [' + netId + ']');
-    // ···
-  }
-
-  CodeNumber() {
-    let testParam = 1;
-    // ···
-      let codeNumber = testNetManager.GetDefaultNet(testParam);
-      switch (codeNumber) {
-        case ReturnCode.SUCCESS:
-          hilog.info(0x0000, 'testTag', 'Test success. [' + codeNumber + ']');
-        // ···
-          break;
-        case ReturnCode.MISSING_PERMISSION:
-          hilog.info(0x0000, 'testTag', 'Missing permissions. [' + codeNumber + ']');
-        // ···
-          break;
-        case ReturnCode.PARAMETER_ERROR:
-          hilog.info(0x0000, 'testTag', 'Parameter error. [' + codeNumber + ']');
-        // ···
-          break;
-        default:
-          hilog.info(0x0000, 'testTag', 'Unexpected result: [' + codeNumber + ']');
-        // ···
-          break;
-      }
-    // ···
-  }
-```
+   <!-- @[build_project5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import testNetManager from 'libentry.so';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   enum ReturnCode {
+     SUCCESS = 0, // Operation succeeded.
+     MISSING_PERMISSION = 201, // Missing permissions.
+     PARAMETER_ERROR = 401, // Parameter error.
+   }
+   
+   // ...
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = ''; // Display log messages.
+     // ...
+   
+     build() {
+       Column() { // Display logs output by Logger.
+         // ...
+         Text(this.message)
+           .fontSize(16)
+           .fontColor(Color.Black)
+           .margin({ bottom: 10 })
+           .id('test-message') // Set an ID for the test message to facilitate content obtaining.
+   
+         Button($r('app.string.GetDefaultNet'))
+           .onClick(() => {
+             this.GetDefaultNet();
+           })
+             // ...
+   
+         Button($r('app.string.CodeNumber'))
+           .onClick(() => {
+             this.CodeNumber();
+           })
+             // ...
+       }.width('100%').height('100%').justifyContent(FlexAlign.Center);
+     }
+     
+     GetDefaultNet() {
+       let netId = testNetManager.NetId();
+       // ...
+         hilog.info(0x0000, 'testTag', 'The defaultNetId is [' + netId + ']');
+         // ...
+     }
+   
+     CodeNumber() {
+       let testParam = 1;
+       // ...
+         let codeNumber = testNetManager.GetDefaultNet(testParam);
+         switch (codeNumber) {
+           case ReturnCode.SUCCESS:
+             hilog.info(0x0000, 'testTag', 'Test success. [' + codeNumber + ']');
+             // ...
+             break;
+           case ReturnCode.MISSING_PERMISSION:
+             hilog.info(0x0000, 'testTag', 'Missing permissions. [' + codeNumber + ']');
+             // ...
+             break;
+           case ReturnCode.PARAMETER_ERROR:
+             hilog.info(0x0000, 'testTag', 'Parameter error. [' + codeNumber + ']');
+             // ...
+             break;
+           default:
+             hilog.info(0x0000, 'testTag', 'Unexpected result: [' + codeNumber + ']');
+             // ...
+             break;
+         }
+       // ...
+     }
+   ```
 6. Configure the `CMakeLists.txt` file. Add the required shared library, that is, `libnet_connection.so`, to `target_link_libraries` in the `CMakeLists.txt` file automatically generated by the project.
 
-> **NOTE**
->
-> As shown in the following figure, `entry` in `add_library` is the `modename` automatically generated by the project. If you want to change its value, ensure that it is the same as the `.nm_modname` in step 3.
+   > **NOTE**
+   >
+   > As shown in the following figure, `entry` in `add_library` is the `modname` automatically generated by the project. If you want to change its value, ensure that it is the same as the `.nm_modname` in step 3.
 
-![netmanager-4.png](./figures/netmanager-4.png)
+   ![netmanager-4.png](./figures/netmanager-4.png)
 
 After the preceding steps, the entire project is set up. Then, you can connect to the device to run the project to view logs.
 
@@ -248,18 +248,18 @@ After the preceding steps, the entire project is set up. Then, you can connect t
 
 2. Run the project. The following figure is displayed on the device.
 
-- If you click `GetDefaultNet`, you'll obtain the default network ID.
-- If you click `codeNumber`, you'll obtain the status code returned by the API.
+   - If you click `GetDefaultNet`, you'll obtain the default network ID.
+   - If you click `codeNumber`, you'll obtain the status code returned by the API.
 
-![netmanager-1.png](./figures/netmanager-1.png)
+   ![netmanager-1.png](./figures/netmanager-1.png)
 
 3. Click `GetDefaultNet`. The following log is displayed, as shown below:
 
-![netmanager-2.png](./figures/netmanager-2.png)
+   ![netmanager-2.png](./figures/netmanager-2.png)
 
 4. Click `codeNumber`. The status code is displayed, as shown below:
 
-![netmanager-3.png](./figures/netmanager-3.png)
+   ![netmanager-3.png](./figures/netmanager-3.png)
 
 ## Samples
 

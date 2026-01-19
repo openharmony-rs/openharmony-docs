@@ -14,7 +14,7 @@
 >
 > - The initial APIs of this class are supported since API version 11.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 >
 > - During the download, the download progress is notified to the user through **WebDownloadDelegate**. The user can operate the download task through the **WebDownloadItem** parameter.
 >

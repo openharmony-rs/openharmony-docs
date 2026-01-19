@@ -243,7 +243,7 @@ Inserts a child node after the specified child node of this FrameNode. If this F
 | Name | Type                                     | Mandatory| Description                                                                        |
 | ------- | ----------------------------------------- | ---- | ---------------------------------------------------------------------------- |
 | child   | [FrameNode](#framenode-1)                   | Yes  | Child node to add.<br>The target child node must not be a declaratively created node, that is, a FrameNode that is not modifiable. Only declarative nodes obtained from a BuilderNode can be used as child nodes. If the child node does not meet the specifications, an exception is thrown.<br> The child node cannot have a parent node. Otherwise, an exception is thrown.                                                          |
-| sibling | [FrameNode](#framenode-1) \| null | Yes  | Node after which the new child node will be inserted. If this parameter is left empty, the new node is inserted before the first subnode.|
+| sibling | [FrameNode](#framenode-1)&nbsp;\|&nbsp;null | Yes  | Node after which the new child node will be inserted. If this parameter is left empty, the new node is inserted before the first subnode.|
 
 **Error codes**
 
@@ -318,7 +318,7 @@ Obtains the child node in the specified position of this node.
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| index  | number | Yes  | Index of the child node to obtain.<br>If the current node has *n* child nodes, the index range is [0, *n*-1].|
+| index  | number | Yes  | Index of the child node to obtain.<br>The value range of index is [0, +∞). If the current node has n child nodes, the valid value range of index is [0, n-1].|
 
 **Return value**
 
@@ -344,7 +344,7 @@ Obtains a child node at a specified index from this FrameNode, with optional sup
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| index  | number | Yes  | Index of the child node to obtain.<br>If the current node has *n* child nodes, the index range is [0, *n*-1].|
+| index  | number | Yes  | Index of the child node to obtain.<br>The value range of index is [0, +∞). If the current node has n child nodes, the valid value range of index is [0, n-1].|
 | expandMode | [ExpandMode](#expandmode15) | No| Expansion mode of the child node.<br>Default value: **ExpandMode.EXPAND**.|
 
 **Return value**
@@ -1252,7 +1252,7 @@ Obtains the opacity of the node. The minimum value is 0, and the maximum value i
 
 | Type                                                          | Description                                                                 |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| number | Opacity of the node. Value range: [0, 1]. A larger value indicates lower transparency.|
+| number | Opacity of the node. Value range: [0, 1]. A larger value indicates lower opacity.|
 
 **Example**
 
@@ -1336,7 +1336,7 @@ Checks whether this FrameNode object has released its reference to its backend e
 
 | Type   | Description              |
 | ------- | ------------------ |
-| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite.
+| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite.|
 
 **Example**
 
@@ -1370,7 +1370,7 @@ The following example shows partial values from the query result of a [Button](a
     "type": "build-in", // "build-in" for built-in components, and "custom" for custom components.
     "$rect": "[498.00, 468.00],[718.00,598.00]", // Coordinates of the upper left corner and lower right corner of the component bounding box.
     "$debugLine ": "", // Component source code debugging information, including the file path and line number.
-    "$attrs": {
+    "$attrs": { // Component attributes. The attributes vary depending on the component. For details about the attributes of each component, see the corresponding component documentation.
         "borderStyle": "BorderStyle.Solid",
         "borderColor": "#FF000000",
         "borderWidth": "0.00vp",
@@ -1386,7 +1386,6 @@ The following example shows partial values from the query result of a [Button](a
     }
 }
 ```
-The attributes in the **\$attrs** field vary by component type. For detailed mappings, see <!--RP2-->[getInspectorInfo Return Result $attrs Mapping Table.xlsx](./figures/getinspectorinfo-return-result-$attrs-mapping-table.xlsx).<!--RP2End-->
 
 **Example**
 
@@ -1430,9 +1429,9 @@ Immediately releases the reference to the underlying FrameNode entity.
 
 > **NOTE**
 >
-> After the **dispose** API is called, the FrameNode object no longer corresponds to any entity FrameNode. In this case, attempts to call certain query APIs, such as [getMeasuredSize](#getmeasuredsize12) and [getLayoutPosition](#getlayoutposition12), will result in a JS crash in the application.
+> - After the **dispose** API is called, the FrameNode object no longer corresponds to any entity FrameNode. In this case, attempts to call certain query APIs, such as [getMeasuredSize](#getmeasuredsize12) and [getLayoutPosition](#getlayoutposition12), will result in a JS crash in the application.
 >
-> To check whether the current FrameNode object corresponds to an entity FrameNode, you can use [getUniqueId](#getuniqueid12) API. A **UniqueId** value greater than 0 indicates that the object is associated with an entity FrameNode.
+> - To check whether the current FrameNode object corresponds to an entity FrameNode, you can use [getUniqueId](#getuniqueid12) API. A **UniqueId** value greater than 0 indicates that the object is associated with an entity FrameNode.
 
 **Example**
 
@@ -1478,7 +1477,7 @@ class MyNodeController extends NodeController {
     const rootRenderNode = this.rootNode.getRenderNode();
     if (rootRenderNode !== null) {
       rootRenderNode.size = { width: 200, height: 200 };
-      rootRenderNode.backgroundColor = 0xff00ff00;
+      rootRenderNode.backgroundColor = 0xffd5d5d5;
       rootRenderNode.appendChild(this.builderNode!.getFrameNode()!.getRenderNode());
     }
 
@@ -1522,6 +1521,8 @@ struct Index {
 }
 ```
 
+![zh-cn_image_dispose](figures/zh-cn_image_dispose.gif)
+
 ### commonAttribute<sup>12+</sup>
 
 get commonAttribute(): CommonAttribute
@@ -1529,6 +1530,13 @@ get commonAttribute(): CommonAttribute
 Obtains the **CommonAttribute** API associated with the FrameNode, which is used to configure [universal attributes](./arkui-ts/ts-component-general-attributes.md) and [universal events](./arkui-ts/ts-component-general-events.md).
 
 Note that only the attributes of a custom node can be modified.
+
+> **NOTE**
+>
+> The visual representation of the FrameNode is similar to that of a [Stack](./arkui-ts/ts-container-stack.md) container that is aligned to the top start edge.
+>
+> For details about the supported attributes, see [attributeModifier Support for Attributes and Events](./../../ui/arkts-user-defined-extension-attributeModifier.md#attributemodifier-support-for-attributes-and-events).
+>
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1539,11 +1547,6 @@ Note that only the attributes of a custom node can be modified.
 | Type                                                          | Description                                                                                                            |
 | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | CommonAttribute | **CommonAttribute** API of the FrameNode, used to configure universal attributes and universal events.|
-
-> **NOTE**
->
-> The visual representation of the FrameNode is similar to that of a [Stack](./arkui-ts/ts-container-stack.md) container that is aligned to the top start edge.
->
 
 **Example**
 
@@ -1758,7 +1761,7 @@ Invalidates this FrameNode to trigger a re-rendering of the self-drawing content
 
 ### addComponentContent<sup>12+</sup>
 
-addComponentContent\<T>(content: ComponentContent\<T>): void
+addComponentContent\<T>(content: ComponentContent\<T> | ReactiveComponentContent\<T>): void
 
 Adds component content. The current node must be modifiable, which means the return value of [isModifiable](#ismodifiable12) must be **true**. If the node is not modifiable, an exception is thrown.
 
@@ -1770,7 +1773,7 @@ Adds component content. The current node must be modifiable, which means the ret
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| content | [ComponentContent](./js-apis-arkui-ComponentContent.md)\<T> | Yes  | Component content to display on the FrameNode.|
+| content | [ComponentContent](./js-apis-arkui-ComponentContent.md)\<T> \| [ReactiveComponentContent](./js-apis-arkui-ComponentContent.md#reactivecomponentcontent22)\<T><sup>22+</sup> | Yes  | Component content to display on the FrameNode.|
 
 **Error codes**
 
@@ -1838,6 +1841,8 @@ Traverses down the tree and recursively releases the subtree with this node as t
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Example**
 
 ```ts
 import { FrameNode, NodeController, BuilderNode } from '@kit.ArkUI';
@@ -2016,9 +2021,7 @@ struct Index {
 }
 ```
 
-**Example**
-
-See [Example of Customizing a Node](#example-of-customizing-a-node).
+![en-us_image_disposeTree](figures/en-us_image_disposeTree.gif)
 
 ### setCrossLanguageOptions<sup>15+</sup>
 
@@ -2038,7 +2041,7 @@ Sets the cross-language access options for this FrameNode. This API allows you t
 
 | Name       | Type                   | Mandatory| Description                 |
 | ------------ | ----------------------- | ---- | --------------------- |
-| options | [CrossLanguageOptions](#crosslanguageoptions15) | Yes  | Cross-language access options.|
+| options | [CrossLanguageOptions](#crosslanguageoptions15) | Yes  | Cross-ArkTS language access options.|
 
 **Error codes**
 
@@ -2064,7 +2067,7 @@ Obtains the cross-language access options for this FrameNode. This API allows yo
 
 | Type                   | Description                 |
 | ----------------------- | --------------------- |
-| [CrossLanguageOptions](#crosslanguageoptions15) | Cross-language access options.|
+| [CrossLanguageOptions](#crosslanguageoptions15) | Cross-ArkTS language access options.|
 
 **Example**
 
@@ -2090,7 +2093,7 @@ Obtains the event binding information for the target node. Returns **undefined**
 
 | Type              | Description              |
 | ------------------ | ------------------ |
-| [InteractionEventBindingInfo](#interactioneventbindinginfo19) \| undefined | Returns an **InteractionEventBindingInfo** object containing event binding details if the interaction event is bound to the current node; returns **undefined** otherwise.|
+| [InteractionEventBindingInfo](#interactioneventbindinginfo19)&nbsp;\|&nbsp;undefined | Returns an **InteractionEventBindingInfo** object containing event binding details if the interaction event is bound to the current node; returns **undefined** otherwise.|
 
 **Example**
 
@@ -2138,7 +2141,7 @@ Adds the polymorphic style states supported by the component.
 
 | Name  | Type                     | Mandatory| Description                                                    |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| uiStates    | number | Yes  | UI states of the target node to be processed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example: targetUIStates = UIState.PRESSED  \|  UIState.FOCUSED.                                      |
+| uiStates    | number | Yes  | UI states of the target node to be processed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example: targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED.                                      |
 | statesChangeHandler | [UIStatesChangeHandler](#uistateschangehandler20) | Yes  | Callback invoked when the state changes.                                          |
 | excludeInner  | boolean | No  | Whether to disable the default state style processing. Default value: **false**.<br> **true**: Disable default state style processing. **false**: Enable default state style processing.|
 
@@ -2160,7 +2163,7 @@ Removes the state processing registration from the component.
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| uiStates  | number  | Yes  | UI states to be removed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example: removeUIStates = UIState.PRESSED  \|  UIState.FOCUSED.                         |
+| uiStates  | number  | Yes  | UI states to be removed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example: removeUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED.                         |
 
 **Example**
 
@@ -2189,7 +2192,7 @@ Creates a property animation for the FrameNode.
 
 | Type              | Description              |
 | ------------------ | ------------------ |
-| boolean | Whether the animation is created successfully.<br>Returns **true** if the animation is created successfully. If an end callback is specified in the animation parameters, it will be invoked upon animation completion.<br>Returns **false** if the animation creation fails. The end callback will not be invoked even if specified.<br>Possible failure reasons:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br> 2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br> 3. There is an invalid property enumeration or length mismatch between the property type and **startValue** or **endValue** arrays.<br> 4. No start value is available (**startValue** is **undefined** for the first animation of a property) or the start and end values are identical.|
+| boolean | Whether the animation is created successfully.<br>Returns **true** if the animation is created successfully. If an end callback is specified in the animation parameters, it will be invoked upon animation completion.<br>Returns **false** if the animation creation fails. The end callback will not be invoked even if specified.<br>Possible failure reasons:<br>Additional notes:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br>2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>3. There is an invalid property enumeration or length mismatch between the property type and **startValue** or **endValue** arrays.<br>4. No start value is available (**startValue** is **undefined** for the first animation of a property) or the start and end values are identical.|
 
 **Example**
 
@@ -2215,7 +2218,7 @@ Cancels all animations for specified properties on the FrameNode. This API execu
 
 | Type              | Description              |
 | ------------------ | ------------------ |
-| boolean | Animation cancellation status.<br>**true**: successful.<br>**false**: failed.<br>The possible causes are as follows:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br> 2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br> 3. The property array contains invalid enumerated values.<br> 4. System error. Example: system IPC communication error.<br>Additional notes:<br> 1. This API returns **true** for properties without active animations, if there are no system errors.<br> 2. Valid parameters with normal node returning **false** indicate a system exception. In this case, you can retry cancellation later or use [createAnimation](#createanimation20) with a zero duration as an alternative.|
+| boolean | Animation cancellation status.<br>**true**: successful.<br>**false**: failed.<br>The possible causes are as follows:<br>Additional notes:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br>2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>3. The property array contains invalid enumerated values.<br>4. System error. Example: system IPC communication error.<br>Additional notes:<br> 1. This API returns **true** for properties without active animations, if there are no system errors.<br>2. Valid parameters with normal node returning **false** indicate a system exception. In this case, you can retry cancellation later or use [createAnimation](#createanimation20) with a zero duration as an alternative.|
 
 **Example**
 
@@ -2263,20 +2266,22 @@ This API ensures rendering synchronization by triggering immediate property upda
 
 **Example**
 
-  Starting from API version 21, when dynamically switching between nodes using **if/else** statements, you can call **invalidateAttributes** during node creation to trigger immediate attribute updates, preventing visual flickering during component switching.
+Starting from API version 21, when dynamically switching between nodes using **if/else** statements, you can call **invalidateAttributes** during node creation to trigger immediate attribute updates, preventing visual flickering during component switching.
  
- ```ts
- //index.ets
+```ts
+// index.ets
 import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
 
 // Implement a custom NodeAdapter controller by extending NodeController.
 class MyNodeAdapterController extends NodeController {
   rootNode: FrameNode | null = null;
   imageUrl: string = "";
-  constructor(imageUrl:string) {
+
+  constructor(imageUrl: string) {
     super();
     this.imageUrl = imageUrl;
   }
+
   makeNode(uiContext: UIContext): FrameNode | null {
     let imageNode = typeNode.createNode(uiContext, "Image");
     imageNode.initialize($r(this.imageUrl))
@@ -2286,10 +2291,12 @@ class MyNodeAdapterController extends NodeController {
     return imageNode;
   }
 }
+
 // Custom component with custom mount event handling that pre-loads sample images before mounting
 @Component
 struct NodeComponent3 {
   private rootSlot: NodeContent = new NodeContent();
+
   aboutToAppear(): void {
     const uiContext = this.getUIContext();
     let imageNode = typeNode.createNode(uiContext, "Image");
@@ -2298,14 +2305,17 @@ struct NodeComponent3 {
     imageNode.invalidateAttributes();
     this.rootSlot.addFrameNode(imageNode);
   }
+
   build() {
     ContentSlot(this.rootSlot)
   }
 }
+
 // Custom component with custom mount event handling that pre-loads sample images before mounting
 @Component
 struct NodeComponent4 {
   private rootSlot: NodeContent = new NodeContent();
+
   aboutToAppear(): void {
     const uiContext = this.getUIContext();
     let imageNode = typeNode.createNode(uiContext, "Image");
@@ -2314,15 +2324,18 @@ struct NodeComponent4 {
     imageNode.invalidateAttributes();
     this.rootSlot.addFrameNode(imageNode);
   }
+
   build() {
     ContentSlot(this.rootSlot)
   }
 }
+
 @Entry
 @Component
 struct ListNodeTest {
   @State flag: boolean = true;
   adapterController: MyNodeAdapterController = new MyNodeAdapterController('app.media.startIcon');
+
   build() {
     Column() {
       Text("ListNode Adapter");
@@ -2348,19 +2361,20 @@ struct ListNodeTest {
       Button('change').onClick(() => {
         this.flag = !this.flag;
       })
-    }.borderWidth(1)
+    }
+    .borderWidth(1)
     .width("100%")
   }
 }
- ```
+```
 
-### adoptChild<sup>23+</sup>
+### adoptChild<sup>22+</sup>
 
 adoptChild(child: FrameNode): void
 
-Adopts the target node as an affiliated node. The adopted node must not have an existing parent. This operation establishes a lifecycle relationship without adding the node as a visual child in the component tree.
+Adopts the target node as an affiliated node. The adopted node must not have an existing parent. This API is not used to add a node as a child node. Instead, it only allows the node to receive lifecycle callbacks of the corresponding child node.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2376,7 +2390,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The current FrameNode is not modifiable. |
 | 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be disposed." |
 | 100026   | The current FrameNode has been disposed. |
 
@@ -2384,13 +2398,13 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 
 See [Example of Adopting a Node as an Affiliate](#example-of-adopting-a-node-as-an-affiliate).
 
-### removeAdoptedChild<sup>23+</sup>
+### removeAdoptedChild<sup>22+</sup>
 
 removeAdoptedChild(child: FrameNode): void
 
-Removes a previously adopted affiliate node.
+Removes a previously adopted node.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2398,7 +2412,7 @@ Removes a previously adopted affiliate node.
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| child | [FrameNode](#framenode-1) | Yes  | Affiliate node to remove.|
+| child | [FrameNode](#framenode-1) | Yes  | Node to remove.|
 
 **Error codes**
 
@@ -2406,14 +2420,14 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The current FrameNode is not modifiable. |
 | 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be null." |
 | 100026   | The current FrameNode has been disposed. |
 
 **Example**
 
 See [Example of Adopting a Node as an Affiliate](#example-of-adopting-a-node-as-an-affiliate).
- 	
+
 ### convertPosition<sup>22+</sup>
 
 convertPosition(position: Position, targetNode: FrameNode): Position
@@ -2597,6 +2611,615 @@ struct Index {
 
 ```
 
+### isOnMainTree<sup>23+</sup>
+
+isOnMainTree(): boolean
+
+Queries whether a node is mounted to the main node tree.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                                                          | Description                                                                 |
+| -------------------------------------------------------------- | --------------------------------------------------------------------- |
+| boolean | Whether the node is mounted to the main node tree.<br>The value **true** means that the node is mounted to the main node tree, and **false** means the opposite.|
+
+**Example**
+
+```ts
+import { NodeController, FrameNode, UIContext, typeNode } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const TEST_TAG: string = 'FrameNode '
+
+// Implement a custom UI controller by extending NodeController.
+class MyNodeController extends NodeController {
+  public frameNode: FrameNode | null = null;
+  public childList: Array<FrameNode> = new Array<FrameNode>();
+  private rootNode: FrameNode | null = null;
+  private uiContext: UIContext | null = null;
+  private childrenCount: number = 0;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.uiContext = uiContext;
+
+    this.frameNode = new FrameNode(uiContext);
+    this.frameNode.commonAttribute.backgroundColor(Color.Pink);
+    this.frameNode.commonAttribute.size({ width: 100, height: 100 });
+    this.addCommonEvent(this.frameNode)
+    this.rootNode.appendChild(this.frameNode);
+    this.childrenCount = this.childrenCount + 1;
+    for (let i = 0; i < 10; i++) {
+      let childNode = new FrameNode(uiContext);
+      this.childList.push(childNode);
+      this.frameNode.appendChild(childNode);
+    }
+    let stackNode = typeNode.createNode(uiContext, 'Stack');
+    this.frameNode.appendChild(stackNode);
+    return this.rootNode;
+  }
+
+  addCommonEvent(frameNode: FrameNode) {
+    frameNode.commonEvent.setOnClick((event: ClickEvent) => {
+      console.info(`Click FrameNode: ${JSON.stringify(event)}`)
+    })
+  }
+
+  createFrameNode() {
+    let frameNode = new FrameNode(this.uiContext!);
+    frameNode.commonAttribute.backgroundColor(Color.Pink);
+    frameNode.commonAttribute.size({ width: 100, height: 100 });
+    frameNode.commonAttribute.position({ x: this.childrenCount * 120, y: 0 });
+
+    return frameNode;
+  }
+
+  appendChild() {
+    const childNode = this.createFrameNode();
+    this.rootNode!.appendChild(childNode);
+    this.childrenCount = this.childrenCount + 1;
+  }
+
+  insertChildAfter(index: number) {
+    let insertNode = this.createFrameNode();
+    let childNode = this.rootNode!.getChild(index);
+    this.rootNode!.insertChildAfter(insertNode, childNode);
+    this.childrenCount = this.childrenCount + 1;
+  }
+
+  removeChild(index: number) {
+    let childNode = this.rootNode!.getChild(index);
+    if (childNode == null) {
+      console.info(`${TEST_TAG} getchild at index {${index}} : fail`);
+      return;
+    }
+    this.rootNode!.removeChild(childNode);
+    this.childrenCount = this.childrenCount - 1;
+  }
+
+  getChildNumber() {
+    console.info(TEST_TAG + ' getChildNumber ' + this.rootNode!.getChildrenCount())
+    console.info(TEST_TAG + ' children count is ' + this.childrenCount);
+  }
+
+  clearChildren() {
+    this.rootNode!.clearChildren();
+  }
+
+  searchFrameNode() {
+    if (this.rootNode!.getFirstChild() === null) {
+      console.info(TEST_TAG + ' the rootNode does not have child node.')
+    }
+    if (this.rootNode!.getFirstChild() === this.frameNode) {
+      console.info(TEST_TAG +
+        ' getFirstChild  result: success. The first child of the rootNode is equals to frameNode.');
+    } else {
+      console.info(TEST_TAG +
+        ' getFirstChild  result: fail. The first child of the rootNode is not equals to frameNode.');
+    }
+    if (this.frameNode!.getChild(5) === this.frameNode!.getChild(4)!.getNextSibling()) {
+      console.info(TEST_TAG + ' getNextSibling  result: success.');
+    } else {
+      console.info(TEST_TAG + ' getNextSibling  result: fail.');
+    }
+    if (this.frameNode!.getChild(3) === this.frameNode!.getChild(4)!.getPreviousSibling()) {
+      console.info(TEST_TAG + ' getPreviousSibling  result: success.');
+    } else {
+      console.info(TEST_TAG + ' getPreviousSibling  result: fail.');
+    }
+    if (this.rootNode!.getFirstChild() !== null && this.rootNode!.getFirstChild()!.getParent() === this.rootNode) {
+      console.info(TEST_TAG + ' getParent  result: success.');
+    } else {
+      console.info(TEST_TAG + ' getParent  result: fail.');
+    }
+    if (this.rootNode!.getParent() !== undefined || this.rootNode!.getParent() !== null) {
+      console.info(TEST_TAG + ' get ArkTsNode success.')
+      console.info(TEST_TAG + ' check rootNode whether is modifiable ' + this.rootNode!.isModifiable())
+      console.info(TEST_TAG + ' check getParent whether is modifiable ' + this.rootNode!.getParent()!.isModifiable())
+    } else {
+      console.info(TEST_TAG + ' get ArkTsNode fail.');
+    }
+  }
+
+  moveFrameNode() {
+    const currentNode = this.frameNode!.getChild(10);
+    try {
+      currentNode!.moveTo(this.rootNode, 0);
+      if (this.rootNode!.getChild(0) === currentNode) {
+        console.info(TEST_TAG + ' moveTo  result: success.');
+      } else {
+        console.info(TEST_TAG + ' moveTo  result: fail.');
+      }
+    } catch (err) {
+      console.info(TEST_TAG + ' ' + (err as BusinessError).code + ' : ' + (err as BusinessError).message);
+      console.info(TEST_TAG + ' moveTo  result: fail.');
+    }
+  }
+
+  getPositionToWindow() {
+    let positionToWindow = this.rootNode?.getPositionToWindow();
+    console.info(TEST_TAG + JSON.stringify(positionToWindow));
+  }
+
+  getPositionToParent() {
+    let positionToParent = this.rootNode?.getPositionToParent();
+    console.info(TEST_TAG + JSON.stringify(positionToParent));
+  }
+
+  getPositionToScreen() {
+    let positionToScreen = this.rootNode?.getPositionToScreen();
+    console.info(TEST_TAG + JSON.stringify(positionToScreen));
+  }
+
+  getGlobalPositionOnDisplay() {
+    let positionOnGlobalDisplay = this.rootNode?.getGlobalPositionOnDisplay();
+    console.info(TEST_TAG + JSON.stringify(positionOnGlobalDisplay));
+  }
+
+  getPositionToWindowWithTransform() {
+    let positionToWindowWithTransform = this.rootNode?.getPositionToWindowWithTransform();
+    console.info(TEST_TAG + JSON.stringify(positionToWindowWithTransform));
+  }
+
+  getPositionToParentWithTransform() {
+    let positionToParentWithTransform = this.rootNode?.getPositionToParentWithTransform();
+    console.info(TEST_TAG + JSON.stringify(positionToParentWithTransform));
+  }
+
+  getPositionToScreenWithTransform() {
+    let positionToScreenWithTransform = this.rootNode?.getPositionToScreenWithTransform();
+    console.info(TEST_TAG + JSON.stringify(positionToScreenWithTransform));
+  }
+
+  getMeasuredSize() {
+    let measuredSize = this.frameNode?.getMeasuredSize();
+    console.info(TEST_TAG + JSON.stringify(measuredSize));
+  }
+
+  getLayoutPosition() {
+    let layoutPosition = this.frameNode?.getLayoutPosition();
+    console.info(TEST_TAG + JSON.stringify(layoutPosition));
+  }
+
+  getUserConfigBorderWidth() {
+    let userConfigBorderWidth = this.frameNode?.getUserConfigBorderWidth();
+    console.info(TEST_TAG + JSON.stringify(userConfigBorderWidth));
+  }
+
+  getUserConfigPadding() {
+    let userConfigPadding = this.frameNode?.getUserConfigPadding();
+    console.info(TEST_TAG + JSON.stringify(userConfigPadding));
+  }
+
+  getUserConfigMargin() {
+    let userConfigMargin = this.frameNode?.getUserConfigMargin();
+    console.info(TEST_TAG + JSON.stringify(userConfigMargin));
+  }
+
+  getUserConfigSize() {
+    let userConfigSize = this.frameNode?.getUserConfigSize();
+    console.info(TEST_TAG + JSON.stringify(userConfigSize));
+  }
+
+  getId() {
+    let id = this.frameNode?.getId();
+    console.info(TEST_TAG + id);
+  }
+
+  getUniqueId() {
+    let uniqueId = this.frameNode?.getUniqueId();
+    console.info(TEST_TAG + uniqueId);
+  }
+
+  getNodeType() {
+    let nodeType = this.frameNode?.getNodeType();
+    console.info(TEST_TAG + nodeType);
+  }
+
+  getOpacity() {
+    let opacity = this.frameNode?.getOpacity();
+    console.info(TEST_TAG + JSON.stringify(opacity));
+  }
+
+  isVisible() {
+    let visible = this.frameNode?.isVisible();
+    console.info(TEST_TAG + JSON.stringify(visible));
+  }
+
+  isClipToFrame() {
+    let clipToFrame = this.frameNode?.isClipToFrame();
+    console.info(TEST_TAG + JSON.stringify(clipToFrame));
+  }
+
+  isAttached() {
+    let attached = this.frameNode?.isAttached();
+    console.info(TEST_TAG + JSON.stringify(attached));
+  }
+
+  isOnMainTree() {
+    let attached = this.frameNode?.isOnMainTree();
+    console.info(TEST_TAG + JSON.stringify(attached));
+  }
+
+  getInspectorInfo() {
+    let inspectorInfo = this.frameNode?.getInspectorInfo();
+    console.info(TEST_TAG + JSON.stringify(inspectorInfo));
+  }
+
+  setCrossLanguageOptions() {
+    console.info(TEST_TAG + ' getCrossLanguageOptions ' + JSON.stringify(this.frameNode?.getCrossLanguageOptions()));
+    try {
+      this.frameNode?.setCrossLanguageOptions({
+        attributeSetting: true
+      });
+      console.info(TEST_TAG + ' setCrossLanguageOptions success.');
+    } catch (err) {
+      console.error(TEST_TAG + ' ' + (err as BusinessError).code + ' : ' + (err as BusinessError).message);
+      console.error(TEST_TAG + ' setCrossLanguageOptions fail.');
+    }
+    console.info(TEST_TAG + ' getCrossLanguageOptions ' + JSON.stringify(this.frameNode?.getCrossLanguageOptions()));
+  }
+
+  getInteractionEventBindingInfo() {
+    let bindingInfo = this.frameNode?.getInteractionEventBindingInfo(EventQueryType.ON_CLICK);
+    console.info(TEST_TAG + bindingInfo?.baseEventRegistered);
+    console.info(TEST_TAG + bindingInfo?.nodeEventRegistered);
+    console.info(TEST_TAG + bindingInfo?.nativeEventRegistered);
+    console.info(TEST_TAG + bindingInfo?.builtInEventRegistered);
+    console.info(TEST_TAG + JSON.stringify(bindingInfo));
+  }
+
+  throwError() {
+    try {
+      this.rootNode!.getParent()!.clearChildren();
+    } catch (err) {
+      console.error(TEST_TAG + ' ' + (err as BusinessError).code + ' : ' + (err as BusinessError).message);
+    }
+    try {
+      this.rootNode!.getParent()!.appendChild(new FrameNode(this.uiContext));
+    } catch (err) {
+      console.error(TEST_TAG + ' ' + (err as BusinessError).code + ' : ' + (err as BusinessError).message);
+    }
+    try {
+      this.rootNode!.getParent()!.removeChild(this.rootNode!.getParent()!.getChild(0));
+    } catch (err) {
+      console.error(TEST_TAG + ' ' + (err as BusinessError).code + ' : ' + (err as BusinessError).message);
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+  private scroller: Scroller = new Scroller();
+  @State index: number = 0;
+
+  build() {
+    Scroll(this.scroller) {
+      Column({ space: 8 }) {
+        Column() {
+          Row() {
+            Button('ADD')
+              .onClick(() => {
+                this.index++;
+              })
+            Button('DEC')
+              .onClick(() => {
+                this.index--;
+              })
+          }
+
+          Text('Current index is ' + this.index)
+            .textAlign(TextAlign.Center)
+            .borderRadius(10)
+            .backgroundColor(0xFFFFFF)
+            .width('100%')
+            .fontSize(16)
+        }
+
+        Column() {
+          Text('This is a NodeContainer.')
+            .textAlign(TextAlign.Center)
+            .borderRadius(10)
+            .backgroundColor(0xFFFFFF)
+            .width('100%')
+            .fontSize(16)
+          NodeContainer(this.myNodeController)
+            .borderWidth(1)
+            .width(300)
+            .height(100)
+        }
+
+        Button('appendChild')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.appendChild();
+          })
+        Button('insertChildAfter')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.insertChildAfter(this.index);
+          })
+        Button('removeChild')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.removeChild(this.index);
+          })
+        Button('clearChildren')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.clearChildren();
+          })
+        Button('getChildNumber')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getChildNumber();
+          })
+        Button('searchFrameNode')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.searchFrameNode();
+          })
+        Button('moveFrameNode')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.moveFrameNode();
+          })
+        Button('getPositionToWindow')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getPositionToWindow();
+          })
+        Button('getPositionToParent')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getPositionToParent();
+          })
+        Button('getPositionToScreen')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getPositionToScreen();
+          })
+        Button('getGlobalPositionOnDisplay')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getGlobalPositionOnDisplay();
+          })
+        Button('getPositionToParentWithTransform')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getPositionToParentWithTransform();
+          })
+        Button('getPositionToWindowWithTransform')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getPositionToWindowWithTransform();
+          })
+        Button('getPositionToScreenWithTransform')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getPositionToScreenWithTransform();
+          })
+        Button('getMeasuredSize')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getMeasuredSize();
+          })
+        Button('getLayoutPosition')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getLayoutPosition();
+          })
+        Button('getUserConfigBorderWidth')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getUserConfigBorderWidth();
+          })
+        Button('getUserConfigPadding')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getUserConfigPadding();
+          })
+        Button('getUserConfigMargin')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getUserConfigMargin();
+          })
+        Button('getUserConfigSize')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getUserConfigSize();
+          })
+        Button('getId')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getId();
+          })
+        Button('getUniqueId')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getUniqueId();
+          })
+        Button('getNodeType')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getNodeType();
+          })
+        Button('getOpacity')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getOpacity();
+          })
+        Button('isVisible')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.isVisible();
+          })
+        Button('isClipToFrame')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.isClipToFrame();
+          })
+        Button('isAttached')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.isAttached();
+          })
+        Button('isOnMainTree')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.isOnMainTree();
+          })
+        Button('getInspectorInfo')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getInspectorInfo();
+          })
+        Button('getCustomProperty')
+          .width(300)
+          .onClick(() => {
+            const uiContext: UIContext = this.getUIContext();
+            if (uiContext) {
+              const node: FrameNode | null = uiContext.getFrameNodeById('Test_Button') || null;
+              if (node) {
+                for (let i = 1; i < 4; i++) {
+                  const key = 'customProperty' + i;
+                  const property = node.getCustomProperty(key);
+                  console.info(TEST_TAG + key, JSON.stringify(property));
+                }
+              }
+            }
+          })
+          .id('Test_Button')
+          .customProperty('customProperty1', {
+            'number': 10,
+            'string': 'this is a string',
+            'bool': true,
+            'object': {
+              'name': 'name',
+              'value': 100
+            }
+          })
+          .customProperty('customProperty2', {})
+          .customProperty('customProperty2', undefined)
+        Button('setCrossLanguageOptions')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.setCrossLanguageOptions();
+          })
+        Button('getInteractionEventBindingInfo')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getInteractionEventBindingInfo();
+          })
+        Button('throwError')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.throwError();
+          })
+      }
+      .width('100%')
+    }
+    .scrollable(ScrollDirection.Vertical) // The scrollbar scrolls in the vertical direction.
+  }
+}
+```
+
+### convertPositionToWindow<sup>23+</sup>
+
+convertPositionToWindow(positionByLocal: Position): Position
+
+Converts the coordinates of a point from the coordinate system of the current node to the coordinate system of the window where the current node is located.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type| Mandatory| Description                                                    |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| positionByLocal | [Position](./js-apis-arkui-graphics.md#position) | Yes  | Coordinates relative to the current node's coordinate system.|
+
+**Return value**
+
+| Type              | Description              |
+| ------------------ | ------------------ |
+| [Position](./js-apis-arkui-graphics.md#position) | Converted coordinates in the coordinate system of the window where the current node is located.|
+
+**Error codes**
+
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
+| ID| Error Message                        |
+| -------- | -------------------------------- |
+| 100026   | The current FrameNode has been disposed. |
+| 100028   | The current FrameNode is not on the main tree. |
+
+**Example**
+
+For details, see [Example of Converting Between Local Coordinates and Window Coordinates](#example-of-converting-between-local-coordinates-and-window-coordinates).
+
+### convertPositionFromWindow<sup>23+</sup>
+
+convertPositionFromWindow(positionByWindow: Position): Position
+
+Converts the coordinates of a point from the coordinate system of the window where the current node is located to the coordinate system of the current node.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type| Mandatory| Description                                                    |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| positionByWindow | [Position](./js-apis-arkui-graphics.md#position) | Yes  | Relative coordinates in the coordinate system of the window where the current node is located.|
+
+**Return value**
+
+| Type              | Description              |
+| ------------------ | ------------------ |
+| [Position](./js-apis-arkui-graphics.md#position) | Converted coordinates in the coordinate system of the current node.|
+
+**Error codes**
+
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
+| ID| Error Message                        |
+| -------- | -------------------------------- |
+| 100026   | The current FrameNode has been disposed. |
+| 100028   | The current FrameNode is not on the main tree. |
+
+**Example**
+
+For details, see [Example of Converting Between Local Coordinates and Window Coordinates](#example-of-converting-between-local-coordinates-and-window-coordinates).
+
 ## TypedFrameNode<sup>12+</sup>
 
 Extends [FrameNode](#framenode-1) to define a FrameNode with specific type constraints.
@@ -2720,7 +3343,7 @@ Obtains the attributes of a **Text** node. If the node is not created using ArkT
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| TextAttribute \| undefined | Attributes of the **Text** node, or **undefined** if they fail to be obtained.|
+| TextAttribute&nbsp;\|&nbsp;undefined | Attributes of the **Text** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -2930,7 +3553,7 @@ Obtains the attributes of a **Column** node. If the node is not created using Ar
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ColumnAttribute \| undefined | Attributes of the **Column** node, or **undefined** if they fail to be obtained.|
+| ColumnAttribute&nbsp;\|&nbsp;undefined | Attributes of the **Column** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -3065,7 +3688,7 @@ Obtains the attributes of a **Row** node. If the node is not created using ArkTS
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| RowAttribute \| undefined | Attributes of the **Row** node, or **undefined** if they fail to be obtained.|
+| RowAttribute&nbsp;\|&nbsp;undefined | Attributes of the **Row** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -3204,7 +3827,7 @@ Obtains the attributes of a **Stack** node. If the node is not created using Ark
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| StackAttribute \| undefined | Attributes of the **Stack** node, or **undefined** if they fail to be obtained.|
+| StackAttribute&nbsp;\|&nbsp;undefined | Attributes of the **Stack** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -3337,7 +3960,7 @@ Represents a FrameNode of the **GridCol** type. This type of node does not allow
 
 | Type                                                    | Description                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[GridColInterface](./arkui-ts/ts-container-gridcol.md#apis), [GridColAttribute](./arkui-ts/ts-container-gridcol.md#attributes)&gt; | FrameNode of the GridCol type.<br> **GridColInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **GridCol** component.<br> **GridColAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **GridCol** component.|
+| TypedFrameNode&lt;[GridColInterface](./arkui-ts/ts-container-gridcol.md#apis), [GridColAttribute](./arkui-ts/ts-container-gridcol.md#attributes)&gt; | FrameNode of the **GridCol** type.<br> **GridColInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **GridCol** component.<br> **GridColAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **GridCol** component.|
 
 ### createNode('GridCol')<sup>12+</sup>
 
@@ -3379,7 +4002,7 @@ class MyGridRowController extends NodeController {
       .height('50%')
       .backgroundColor(Color.Gray)
     node.appendChild(gridRow)
-    // Create a GridCol.
+    // Create a GridCol node.
     let gridCol = typeNode.createNode(uiContext, 'GridCol')
     gridCol.initialize({ span: 2, offset: 4 })
       .height("100%")
@@ -3497,7 +4120,7 @@ Obtains the Flex node attributes. If the node is not created using ArkTS, cross-
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| FlexAttribute \| undefined | Flex node type. If the operation fails, undefined is returned.|
+| FlexAttribute&nbsp;\|&nbsp;undefined | Flex node type. If the operation fails, undefined is returned.|
 
 **Example**
 
@@ -3653,7 +4276,7 @@ Obtains the attributes of a **Swiper** node. If the node is not created using Ar
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| SwiperAttribute \| undefined | Properties of the **Swiper** node, or **undefined** if they fail to be obtained.|
+| SwiperAttribute&nbsp;\|&nbsp;undefined | Properties of the **Swiper** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -3786,7 +4409,7 @@ Obtains the attributes of a **Progress** node. If the node is not created using 
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ProgressAttribute \| undefined | Properties of the **Progress** node, or **undefined** if they fail to be obtained.|
+| ProgressAttribute&nbsp;\|&nbsp;undefined | Properties of the **Progress** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -3839,7 +4462,7 @@ Represents a FrameNode of the **Scroll** type. This type of node allows only one
 
 | Type                                                  | Description                                                        |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ScrollInterface](./arkui-ts/ts-container-scroll.md#apis), [ScrollAttribute](./arkui-ts/ts-container-scroll.md)&gt; | FrameNode of the **Scroll** type.<br> **ScrollInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Scroll** component.<br> **ScrollAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Scroll** component.|
+| TypedFrameNode&lt;[ScrollInterface](./arkui-ts/ts-container-scroll.md#apis), [ScrollAttribute](./arkui-ts/ts-container-scroll.md#attributes)&gt; | FrameNode of the **Scroll** type.<br> **ScrollInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Scroll** component.<br> **ScrollAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Scroll** component.|
 
 ### createNode('Scroll')<sup>12+</sup>
 
@@ -3937,7 +4560,7 @@ Obtains the attributes of a **Scroll** node. If the node is not created using Ar
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ScrollAttribute \| undefined | Attributes of the **Scroll** node, or **undefined** if they fail to be obtained.|
+| ScrollAttribute&nbsp;\|&nbsp;undefined | Attributes of the **Scroll** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -3964,7 +4587,7 @@ Obtains the **UIScrollEvent** object associated with the **Scroll** node for con
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| [UIScrollEvent](./arkui-ts/ts-container-scroll.md#uiscrollevent19) \| undefined | **UIScrollEvent** object for the **Scroll** node, or **undefined** if it fails to be obtained.|
+| [UIScrollEvent](./arkui-ts/ts-container-scroll.md#uiscrollevent19)&nbsp;\|&nbsp;undefined | **UIScrollEvent** object for the **Scroll** node, or **undefined** if it fails to be obtained.|
 
 **Example**
 
@@ -4096,7 +4719,7 @@ Obtains the attributes of a **RelativeContainer** node. If the node is not creat
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| RelativeContainerAttribute \| undefined | Attributes of the **RelativeContainer** node, or **undefined** if they fail to be obtained.|
+| RelativeContainerAttribute&nbsp;\|&nbsp;undefined | Attributes of the **RelativeContainer** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -4310,7 +4933,7 @@ Obtains the attributes of a [LoadingProgress](arkui-ts/ts-basic-components-loadi
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| LoadingProgressAttribute \| undefined | Properties of the **LoadingProgress** node, or **undefined** if they fail to be obtained.|
+| LoadingProgressAttribute&nbsp;\|&nbsp;undefined | Properties of the **LoadingProgress** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -4605,7 +5228,7 @@ Obtains the attributes of an **Image** node. If the node is not created using Ar
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ImageAttribute \| undefined | Properties of the **Image** node, or **undefined** if they fail to be obtained.|
+| ImageAttribute&nbsp;\|&nbsp;undefined | Properties of the **Image** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -4770,7 +5393,7 @@ Obtains the **UIListEvent** object associated with the **List** node for configu
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| [UIListEvent](./arkui-ts/ts-container-list.md#uilistevent19) \| undefined | **UIListEvent** object for the **List** node, or **undefined** if it fails to be obtained.|
+| [UIListEvent](./arkui-ts/ts-container-list.md#uilistevent19)&nbsp;\|&nbsp;undefined | **UIListEvent** object for the **List** node, or **undefined** if it fails to be obtained.|
 
 **Example**
 
@@ -4797,7 +5420,7 @@ Obtains the attributes of a **List** node. If the node is not created using ArkT
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ListAttribute \| undefined | Attributes of the **List** node, or **undefined** if they fail to be obtained.|
+| ListAttribute&nbsp;\|&nbsp;undefined | Attributes of the **List** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -4899,7 +5522,7 @@ Obtains the attributes of a **ListItem** node. If the node is not created using 
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ListItemAttribute \| undefined | Attributes of the **ListItem** node, or **undefined** if they fail to be obtained.|
+| ListItemAttribute&nbsp;\|&nbsp;undefined | Attributes of the **ListItem** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -4997,7 +5620,7 @@ Obtains the attributes of a **TextInput** node. If the node is not created using
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| TextInputAttribute \| undefined | Properties of the **TextInput** node, or **undefined** if they fail to be obtained.|
+| TextInputAttribute&nbsp;\|&nbsp;undefined | Properties of the **TextInput** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -5012,7 +5635,7 @@ class MyNodeController extends NodeController {
     let col = typeNode.createNode(uiContext, 'Column');
     col.initialize({ space: 5 });
     node.appendChild(col);
-    // Create a TextInput node.
+    // Create a TextInput.
     let textInput = typeNode.createNode(uiContext, 'TextInput');
     textInput.initialize({ placeholder: 'TextInput placeholderColor' });
     // Obtain the attributes of the TextInput node.
@@ -5202,7 +5825,7 @@ Obtains the attributes of a **Button** node. If the node is not created using Ar
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ButtonAttribute \| undefined | Attributes of the **Button** node, or **undefined** if they fail to be obtained.|
+| ButtonAttribute&nbsp;\|&nbsp;undefined | Attributes of the **Button** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -5308,7 +5931,7 @@ Obtains the attributes of a **ListItemGroup** node. If the node is not created u
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ListItemGroupAttribute \| undefined | Attributes of the **ListItemGroup** node, or **undefined** if they fail to be obtained.|
+| ListItemGroupAttribute&nbsp;\|&nbsp;undefined | Attributes of the **ListItemGroup** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -5439,7 +6062,7 @@ Obtains the **UIWaterFlowEvent** object associated with the [WaterFlow](#waterfl
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| [UIWaterFlowEvent](./arkui-ts/ts-container-waterflow.md#uiwaterflowevent19) \| undefined | **UIWaterFlowEvent** object for the **WaterFlow** node, or **undefined** if it fails to be obtained.|
+| [UIWaterFlowEvent](./arkui-ts/ts-container-waterflow.md#uiwaterflowevent19)&nbsp;\|&nbsp;undefined | **UIWaterFlowEvent** object for the **WaterFlow** node, or **undefined** if it fails to be obtained.|
 
 **Example**
 
@@ -5466,7 +6089,7 @@ Obtains the attributes of a **WaterFlow** node. If the node is not created using
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| WaterFlowAttribute \| undefined | Properties of the **WaterFlow** node, or **undefined** if they fail to be obtained.|
+| WaterFlowAttribute&nbsp;\|&nbsp;undefined | Properties of the **WaterFlow** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -5569,7 +6192,7 @@ Obtains the attributes of a **FlowItem** node. If the node is not created using 
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| FlowItemAttribute \| undefined | Properties of the **FlowItem** node, or **undefined** if they fail to be obtained.|
+| FlowItemAttribute&nbsp;\|&nbsp;undefined | Properties of the **FlowItem** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -5628,7 +6251,7 @@ class MyNodeController extends NodeController {
       .width('100%')
       .height('100%')
     node.appendChild(col);
-    // Create an XComponent node.
+    // Create an XComponent object.
     let xcomponent = typeNode.createNode(uiContext, 'XComponent');
     xcomponent.attribute.backgroundColor(Color.Red);
     col.appendChild(xcomponent);
@@ -5696,7 +6319,7 @@ class MyNodeController extends NodeController {
       type: XComponentType.SURFACE,
       controller: this.controller
     };
-    // Create an XComponent node.
+    // Create an XComponent object.
     let xcomponent = typeNode.createNode(uiContext, 'XComponent', options);
     xcomponent.attribute.backgroundColor(Color.Red);
     col.appendChild(xcomponent);
@@ -5805,7 +6428,7 @@ Obtain the attributes of an **XComponent** node. If the node is not created usin
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| XComponentAttribute \| undefined | Properties of the **XComponent** node, or **undefined** if they fail to be obtained.|
+| XComponentAttribute&nbsp;\|&nbsp;undefined | Properties of the **XComponent** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -6020,7 +6643,7 @@ Obtains the **UIGridEvent** object associated with the **Grid** node for configu
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| [UIGridEvent](./arkui-ts/ts-container-grid.md#uigridevent19) \| undefined | **UIGridEvent** object for the **Grid** node, or **undefined** if it fails to be obtained.|
+| [UIGridEvent](./arkui-ts/ts-container-grid.md#uigridevent19)&nbsp;\|&nbsp;undefined | **UIGridEvent** object for the **Grid** node, or **undefined** if it fails to be obtained.|
 
 **Example**
 
@@ -6047,7 +6670,7 @@ Obtains the attributes of a **Grid** node. If the node is not created using ArkT
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| GridAttribute \| undefined | Properties of the **Grid** node, or **undefined** if they fail to be obtained.|
+| GridAttribute&nbsp;\|&nbsp;undefined | Properties of the **Grid** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -6150,7 +6773,7 @@ Obtains the attributes of a **GridItem** node. If the node is not created using 
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| GridItemAttribute \| undefined | Properties of the **GridItem** node, or **undefined** if they fail to be obtained.|
+| GridItemAttribute&nbsp;\|&nbsp;undefined | Properties of the **GridItem** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -6412,7 +7035,7 @@ Obtains the attributes of a **TextArea** node. If the node is not created using 
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| TextAreaAttribute \| undefined | Properties of the **TextArea** node, or **undefined** if they fail to be obtained.|
+| TextAreaAttribute&nbsp;\|&nbsp;undefined | Properties of the **TextArea** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -6465,8 +7088,8 @@ Binds a [TextAreaController](arkui-ts/ts-basic-components-textarea.md#textareaco
 
 | Name| Type| Mandatory| Description |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| node | [FrameNode](./js-apis-arkui-frameNode.md) | Yes  | Target node for controller binding.|
-| controller | [TextAreaController](arkui-ts/ts-basic-components-textarea.md#textareacontroller8) | Yes  | **TextAreaController** instance.|
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | Yes  | Target node to which the input box controller is bound.|
+| controller | [TextAreaController](arkui-ts/ts-basic-components-textarea.md#textareacontroller8) | Yes  | Input box controller.|
 | nodeType | 'TextArea' | Yes| Node type. Set to **'TextArea'**.|
 
 **Error codes**
@@ -6692,7 +7315,7 @@ Obtains the attributes of a **Checkbox** node. If the node is not created using 
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| CheckboxAttribute \| undefined | Attributes of the **Checkbox** node, or **undefined** if they fail to be obtained.|
+| CheckboxAttribute&nbsp;\|&nbsp;undefined | Attributes of the **Checkbox** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -6999,7 +7622,7 @@ Obtains the attributes of a **Radio** node. If the node is not created using Ark
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| RadioAttribute \| undefined | Properties of the **Radio** node, or **undefined** if they fail to be obtained.|
+| RadioAttribute&nbsp;\|&nbsp;undefined | Properties of the **Radio** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -7141,7 +7764,7 @@ Obtains the attributes of a **Slider** node. If the node is not created using Ar
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| SliderAttribute \| undefined | Properties of the **Slider** node, or **undefined** if they fail to be obtained.|
+| SliderAttribute&nbsp;\|&nbsp;undefined | Properties of the **Slider** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -7354,7 +7977,7 @@ Obtains the attributes of a **Toggle** node. If the node is not created using Ar
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ToggleAttribute \| undefined | Properties of the **Toggle** node, or **undefined** if they fail to be obtained.|
+| ToggleAttribute&nbsp;\|&nbsp;undefined | Properties of the **Toggle** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -7712,7 +8335,7 @@ Checks whether the NodeAdapter's backend reference has been released. Frontend n
 
 | Type   | Description              |
 | ------- | ------------------ |
-| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite.
+| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite.|
 
 **Example**
 
@@ -7785,16 +8408,21 @@ class MyNodeController extends NodeController {
     this.addCommonEvent(this.frameNode)
     this.rootNode.appendChild(this.frameNode);
     this.childrenCount = this.childrenCount + 1;
+
+    // Create 10 child nodes in batches and mount them to the parent node.
     for (let i = 0; i < 10; i++) {
       let childNode = new FrameNode(uiContext);
       this.childList.push(childNode);
       this.frameNode.appendChild(childNode);
     }
+
+    // Create a Stack container node.
     let stackNode = typeNode.createNode(uiContext, "Stack");
     this.frameNode.appendChild(stackNode);
     return this.rootNode;
   }
 
+  // Add a click event to the node.
   addCommonEvent(frameNode: FrameNode) {
     frameNode.commonEvent.setOnClick((event: ClickEvent) => {
       console.info(`Click FrameNode: ${JSON.stringify(event)}`)
@@ -7810,12 +8438,14 @@ class MyNodeController extends NodeController {
     return frameNode;
   }
 
+  // Append a child node to the end of the root node.
   appendChild() {
     const childNode = this.createFrameNode();
     this.rootNode!.appendChild(childNode);
     this.childrenCount = this.childrenCount + 1;
   }
 
+  // Insert a new node after the node at the specified index.
   insertChildAfter(index: number) {
     let insertNode = this.createFrameNode();
     let childNode = this.rootNode!.getChild(index);
@@ -7823,6 +8453,7 @@ class MyNodeController extends NodeController {
     this.childrenCount = this.childrenCount + 1;
   }
 
+  // Remove the child node at the specified index.
   removeChild(index: number) {
     let childNode = this.rootNode!.getChild(index);
     if (childNode == null) {
@@ -7833,15 +8464,18 @@ class MyNodeController extends NodeController {
     this.childrenCount = this.childrenCount - 1;
   }
 
+  // Print the number of nodes.
   getChildNumber() {
     console.info(TEST_TAG + " getChildNumber " + this.rootNode!.getChildrenCount())
     console.info(TEST_TAG + " children count is " + this.childrenCount);
   }
 
+  // Clear all child nodes.
   clearChildren() {
     this.rootNode!.clearChildren();
   }
 
+  // Verify the node relationship.
   searchFrameNode() {
     if (this.rootNode!.getFirstChild() === null) {
       console.info(TEST_TAG + " the rootNode does not have child node.")
@@ -7877,6 +8511,7 @@ class MyNodeController extends NodeController {
     }
   }
 
+  // Move the specified node to the first position of the root node.
   moveFrameNode() {
     const currentNode = this.frameNode!.getChild(10);
     try {
@@ -7997,6 +8632,7 @@ class MyNodeController extends NodeController {
     console.info(TEST_TAG + JSON.stringify(inspectorInfo));
   }
 
+  // Set the cross-language interaction option.
   setCrossLanguageOptions() {
     console.info(TEST_TAG + " getCrossLanguageOptions " + JSON.stringify(this.frameNode?.getCrossLanguageOptions()));
     try {
@@ -8061,6 +8697,7 @@ struct Index {
               })
           }
 
+          // Display the current index value.
           Text("Current index is " + this.index)
             .textAlign(TextAlign.Center)
             .borderRadius(10)
@@ -8076,6 +8713,8 @@ struct Index {
             .backgroundColor(0xFFFFFF)
             .width('100%')
             .fontSize(16)
+
+          // Customize a node container.
           NodeContainer(this.myNodeController)
             .borderWidth(1)
             .width(300)
@@ -8227,6 +8866,7 @@ struct Index {
           .onClick(() => {
             const uiContext: UIContext = this.getUIContext();
             if (uiContext) {
+              // Obtain the FrameNode node based on the component ID.
               const node: FrameNode | null = uiContext.getFrameNodeById("Test_Button") || null;
               if (node) {
                 for (let i = 1; i < 4; i++) {
@@ -8551,36 +9191,57 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
+  // Bind interaction events to FrameNode.
   addCommonEvent(frameNode: FrameNode) {
+
+    // Hover event
     frameNode.commonEvent.setOnHover(((isHover: boolean, event: HoverEvent): void => {
       console.info(`isHover FrameNode: ${isHover}`);
       console.info(`isHover FrameNode: ${JSON.stringify(event)}`);
       event.stopPropagation();
     }))
+
+    // Click event
     frameNode.commonEvent.setOnClick((event: ClickEvent) => {
       console.info(`Click FrameNode: ${JSON.stringify(event)}`)
     })
+
+    // Touch event
     frameNode.commonEvent.setOnTouch((event: TouchEvent) => {
       console.info(`touch FrameNode: ${JSON.stringify(event)}`)
     })
+
+    // Display event
     frameNode.commonEvent.setOnAppear(() => {
       console.info(`on Appear FrameNode`)
     })
+
+    // Disappearance event
     frameNode.commonEvent.setOnDisappear(() => {
       console.info(`onDisAppear FrameNode`)
     })
+
+    // Focus event
     frameNode.commonEvent.setOnFocus(() => {
       console.info(`onFocus FrameNode`)
     })
+
+    // Defocus event
     frameNode.commonEvent.setOnBlur(() => {
       console.info(`onBlur FrameNode`)
     })
+
+    // Keyboard event
     frameNode.commonEvent.setOnKeyEvent((event: KeyEvent) => {
       console.info(`Key FrameNode: ${JSON.stringify(event)}`)
     })
+
+    // Mouse event
     frameNode.commonEvent.setOnMouse((event: MouseEvent) => {
       console.info(`Mouse FrameNode: ${JSON.stringify(event)}`)
     })
+
+    // Component area change event
     frameNode.commonEvent.setOnSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
       console.info(`onSizeChange FrameNode: oldValue is ${JSON.stringify(oldValue)} value is ${JSON.stringify(newValue)}`)
     })
@@ -8590,7 +9251,6 @@ class MyNodeController extends NodeController {
 @Entry
 @Component
 struct Index {
-  @State index: number = 0;
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
@@ -8605,7 +9265,7 @@ struct Index {
         .onHover(((isHover: boolean, event: HoverEvent): void => {
           console.info(`isHover Text: ${isHover}`);
           console.info(`isHover Text: ${JSON.stringify(event)}`);
-          event.stopPropagation();
+          event.stopPropagation();  // Prevent event bubbling.
         }))
         .onClick((event: ClickEvent) => {
           console.info(`Click Text    : ${JSON.stringify(event)}`)
@@ -8839,7 +9499,7 @@ export struct TrackNode {
     this.trackShadow.id = node?.getUniqueId()
     this.trackShadow.track = this.track;
     TrackManager.get().addTrack(this.trackShadow.id, this.trackShadow)
-    // Record the visible area of the tracking component by listening to setOnVisibleAreaApproximateChange.
+    // Use setOnVisibleAreaApproximateChange to listen for and record the visible area of the event component.
     node?.commonEvent.setOnVisibleAreaApproximateChange(
       { ratios: [0, 0.1, 0.2, 0.5, 0.8, 1], expectedUpdateInterval: 500 },
       (ratioInc: boolean, ratio: number) => {
@@ -8904,7 +9564,7 @@ export class TrackShadow {
   public area: number = 0
   public visibleRatio: number = 0
 
-  // Output the tracing point tree information through global dump.
+  // Output the tracking tree information through global dump.
   dump(depth: number = 0): void {
     console.info("Track DP:" + depth + " id:" + this.id + " areaPer:" + this.track?.areaPercent + " visibleRatio:" + this.visibleRatio)
     this.childIds.forEach((value: number) => {
@@ -8948,7 +9608,7 @@ export class TrackManager {
   }
 
   startListenClick(context: UIContext) {
-    //Obtain the tracing information of the FrameNode through seamless listening.
+    //Obtain the tracking information of the FrameNode through seamless listening.
     context.getUIObserver().on("willClick", (event: ClickEvent, node?: FrameNode) => {
       console.info("Track clicked:" + node)
       if (node == undefined) {
@@ -9490,32 +10150,32 @@ class MyNodeController extends NodeController {
 
     // Add the polymorphic style processing capability to the Text component.
     styleText.addSupportedUIStates(this.theStatesToBeSupported, (node: FrameNode, currentState: number) => {
-      if (currentState == UIState.NORMAL) { // Check whether the normal state is used.
-        // Update the UI effect of the normal state.
+      if (currentState == UIState.NORMAL) { // Use the equality operator to check NORMAL state.
+        // NORMAL state: Apply normal UI effects.
         console.info('Callback UIState.NORMAL')
         node.commonAttribute.backgroundColor(Color.Green)
         node.commonAttribute.borderWidth(2)
         node.commonAttribute.borderColor(Color.Black)
       }
       if ((currentState & UIState.PRESSED) == UIState.PRESSED) {
-        //Update the UI effect of the press state.
+        // PRESSED state: Apply pressed UI effects.
         console.info('Callback UIState.PRESSED')
         node.commonAttribute.backgroundColor(Color.Brown)
       }
       if ((currentState & UIState.FOCUSED) == UIState.FOCUSED) {
-        //Update the UI effect of the focused state.
+        // FOCUSED state: Apply focused UI effects.
         console.info('Callback UIState.FOCUSED')
         node.commonAttribute.borderWidth(5)
         node.commonAttribute.borderColor(Color.Yellow)
       }
       if ((currentState & UIState.DISABLED) == UIState.DISABLED) {
-        //Update the UI effect of the disabled state.
+        // DISABLED state: Apply disabled UI effects.
         console.info('Callback UIState.DISABLED')
         node.commonAttribute.backgroundColor(Color.Gray)
         node.commonAttribute.borderWidth(0)
       }
       if ((currentState & UIState.SELECTED) == UIState.SELECTED) {
-        //Update the UI effect of the selected state.
+        // SELECTED state: Apply selected UI effects.
         console.info('Callback UIState.SELECTED')
         node.commonAttribute.backgroundColor(Color.Pink)
       }
@@ -9523,7 +10183,7 @@ class MyNodeController extends NodeController {
 
     column.appendChild(styleText);
 
-    //Delete the multi-state style processing capability of the text component.
+    // Delete the multi-state style processing capability of the text component.
     let buttonRemove = typeNode.createNode(uiContext, 'Button');
     buttonRemove.initialize("RemoveUIStatus")
       .width('50%')
@@ -9566,7 +10226,7 @@ struct FrameNodeTypeTest {
 
 ## Example of Creating and Canceling an Animation
 
-This example demonstrates how to use the [createAnimation](#createanimation20), [cancelAnimations](#cancelanimations20), and [getNodePropertyValue](#getnodepropertyvalue20) APIs on FrameNode.
+This example demonstrates how to use the [createAnimation](#createanimation20), [cancelAnimations](#cancelanimations20), and [getNodePropertyValue](#getnodepropertyvalue20) APIs on the FrameNode.
 
 ``` ts
 import { FrameNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -9574,12 +10234,12 @@ import { FrameNode, NodeController, UIContext } from '@kit.ArkUI';
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
-  private isRunning: boolean = false; // Indicates whether the animation is running on the node.
+  private isRunning: boolean = false; // Indicate whether the animation on the node is in progress.
 
   private startInitAnimation() {
     if (this.rootNode) {
       let result: boolean = this.rootNode.createAnimation(AnimationPropertyType.ROTATION, [0, 0, 0], [0, 0, 360],
-        { duration: 3000, curve: Curve.Linear, iterations: -1 }); // Create an animation. Explicitly specify the initial value when creating the animation for the first time. The rotation angle changes from [0,0,0] to [0,0,360] and rotates infinitely.
+        { duration: 3000, curve: Curve.Linear, iterations: -1 }); // Create an animation. Explicitly define the initial value upon first-time animation creation. The rotation angle transitions from [0, 0, 0] to [0, 0, 360], enabling infinite rotation.
       if (result) {
         this.isRunning = true;
       } else {
@@ -9596,7 +10256,7 @@ class MyNodeController extends NodeController {
       } else {
         console.warn('cancel rotation animation failed');
         if (cnt < 2) { // cnt indicates the number of attempts to cancel the animation.
-          // If the cancellation fails, the cancellation is attempted again after 500 ms.
+          // Retry cancellation after a 500 ms delay if the initial attempt fails.
           setTimeout(() => {
             this.cancelAnimation(cnt + 1);
           }, 500);
@@ -9608,13 +10268,13 @@ class MyNodeController extends NodeController {
   continueAnimation() {
     if (this.rootNode && !this.isRunning) {
       let currentProperty: number[] =
-        this.rootNode.getNodePropertyValue(AnimationPropertyType.ROTATION); // Obtain the final rotation attribute value of the current node.
-      if (currentProperty.length == 3) { // The rotation attribute is obtained successfully. The length of the rotation attribute array is 3, which are the rotation angles in the x, y, and z directions.
+        this.rootNode.getNodePropertyValue(AnimationPropertyType.ROTATION); // Obtain the current node's final rotation property value.
+      if (currentProperty.length == 3) { // The rotation attribute is acquired successfully; the 3-element array represents rotation angles on the x, y, and z axes respectively.
         let endValue: number[];
         let startValue: number[] | undefined = undefined;
         if (currentProperty[2] >= 360) {
           startValue = [currentProperty[0], currentProperty[1],
-            currentProperty[2] - 360]; // If the rotation attribute is too large, the z direction rotates 360 degrees less to avoid the z direction angle increasing due to multiple animation start and stop.
+            currentProperty[2] - 360]; // Reduce the z-axis rotation by 360° for excessively large values, preventing cumulative growth of the z-angle caused by repeated animation starts and stops.
           endValue = [currentProperty[0], currentProperty[1], currentProperty[2]];
         } else {
           endValue = [currentProperty[0], currentProperty[1], currentProperty[2] + 360]; // When the current rotation angle is less than 360 degrees, add one full rotation cycle from the last angle.
@@ -10048,7 +10708,7 @@ struct Index {
 
 ## Example of Adopting a Node as an Affiliate
 
-This example demonstrates how to adopt a node as an affiliate node using the [adoptChild](#adoptchild23) and [removeAdoptedChild](#removeadoptedchild23) APIs of FrameNode, supported since API version 23.
+This example demonstrates how to adopt a node as an affiliate node using the [adoptChild](#adoptchild22) and [removeAdoptedChild](#removeadoptedchild22) APIs of FrameNode, supported since API version 22.
 
 ```ts
 import {NodeController, FrameNode, UIContext} from '@kit.ArkUI';
@@ -10120,6 +10780,69 @@ struct Index {
         .onClick(() => {
           this.myNodeController.removeAdoptedChild();
         })
+    }
+  }
+}
+```
+
+## Example of Converting Between Local Coordinates and Window Coordinates
+
+This example demonstrates how to convert between local coordinates and window coordinates using the [convertPositionToWindow](#convertpositiontowindow23) and [convertPositionFromWindow](#convertpositionfromwindow23) APIs of the FrameNode.
+
+The **convertPositionToWindow** and **convertPositionFromWindow** APIs are available starting from API version 23.
+
+```ts
+import { Position } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ConvertPositionWithWindow {
+  private uiContext: UIContext = this.getUIContext();
+  @State message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .id('testNodeA')
+        .fontSize($r('app.float.page_text_font_size')) // Replace this resource placeholder with the actual resource.
+        .fontWeight(FontWeight.Bold)
+      Button('Run convertPositionToWindow and convertPositionFromWindow Test')
+        .onClick(() => {
+          this.runBasicTest();
+        })
+        .margin(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  private runBasicTest() {
+    // Wait for UI rendering completion.
+    if (!this.uiContext) {
+      return;
+    }
+    const nodeA = this.uiContext.getAttachedFrameNodeById('testNodeA');
+
+    if (!nodeA) {
+      console.info('Failed to obtain test nodes');
+      return;
+    }
+
+    const testPoint: Position = { x: 10, y: 10 };
+    try {
+      const result: Position = nodeA.convertPositionToWindow(testPoint); // The explicit declaration may return undefined.
+      console.info(`Node-relative coordinates (10, 10) are converted to window-relative coordinates (${result?.x}, ${result?.y}).`);
+    } catch (e) {
+      const exception = e as BusinessError<void>;
+      console.error(`convertPositionToWindow throw error! code: ${exception.code}, message: ${exception.message}`);
+    }
+
+    try {
+      const result: Position = nodeA.convertPositionFromWindow(testPoint); // The explicit declaration may return undefined.
+      console.info(`Window-relative coordinates (10, 10) are converted to node-relative coordinates (${result?.x}, ${result?.y}).`);
+    } catch (e) {
+      const exception = e as BusinessError<void>;
+      console.error(`convertPositionFromWindow throw error! code: ${exception.code}, message: ${exception.message}`);
     }
   }
 }

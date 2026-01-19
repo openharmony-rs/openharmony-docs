@@ -834,6 +834,7 @@ if (wakeupManager != null) {
 ## SensibilityType
 
 枚举，唤醒灵敏度类型。
+
 灵敏度用于调整唤醒的门限，灵敏度越高，门限越低，就越容易唤醒。
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core

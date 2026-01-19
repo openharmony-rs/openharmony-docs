@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-工具栏用于展示针对当前界面内容的操作选项，在界面底部显示。底部最多显示5个入口，超过则收纳入“更多”子项中，在最右侧显示。
+工具栏组件，用于展示针对当前界面内容的操作选项，在界面底部显示。底部最多显示5个入口，超过则收纳入“更多”子项中，在最右侧显示。
 
 
 > **说明：**
@@ -30,6 +30,8 @@ import { SymbolGlyphModifier, DividerModifier, ToolBar, ToolBarOptions, ToolBarM
 ## ToolBar
 
 Toolbar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsController, dividerModifier?: DividerModifier, toolBarModifier?: ToolBarModifier})
+
+工具栏组件，用于展示针对当前界面内容的操作选项，在界面底部显示。底部最多显示5个入口，超过则收纳入“更多”子项中，在最右侧显示。
 
 **装饰器类型：**\@Component
 
@@ -58,6 +60,10 @@ Toolbar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsCo
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 ## ToolBarOption
+
+ToolBarOption({content?: ResourceStr, action?: () => void, icon?: Resource, state?: ItemState, iconColor?: ResourceColor, activatedIconColor?: ResourceColor, textColor?: ResourceColor, activatedTextColor?: ResourceColor, toolBarSymbolOptions?: ToolBarSymbolGlyphOptions, accessibilityText?: ResourceStr, accessibilityDescription?: ResourceStr, accessibilityLevel?: string})
+
+定义工具栏的列表内容和属性。
 
 **装饰器类型：**\@Observed
 
@@ -199,6 +205,8 @@ stateEffect(stateEffect: boolean): ToolBarModifier
 | ACTIVATE | 3 | 工具栏子项为激活状态，可点击。 |
 
 ## ToolBarSymbolGlyphOptions<sup>13+</sup>
+
+ToolBarSymbolGlyphOptions({normal?: SymbolGlyphModifier, activated?: SymbolGlyphModifier})
 
 ToolBarSymbolGlyphOptions定义图标的属性。
 

@@ -39,6 +39,9 @@
 
 ## 约束和限制
 
+### 支持的场景
+当前互动卡片动效只有在[FormLocation](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formlocation20)为“DESKTOP”的单张卡片上面才能生效。
+
 ### 请求参数约束
 1. 互动卡片申请动效的最大合法动效时长：3500ms，倒计时结束时，卡片将切换回非激活态。<!--Del-->系统应用额外支持长时激活卡片，其动效的时间不受限制，可参考[场景动效类型互动卡片开发指导（仅对系统应用开放）](arkts-ui-liveform-sceneanimation-development-sys.md)。<!--DelEnd-->
 2. 由卡片定时定点刷新触发的互动卡片动效，一天内单张卡片最多触发50次。

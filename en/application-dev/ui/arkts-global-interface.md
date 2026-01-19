@@ -37,6 +37,7 @@ The following figure illustrates the execution scenario of asynchronous tasks in
 An ambiguous UI context occurs when the target UI instance cannot be clearly identified at the call site when invoking ArkUI global APIs.
 
 Currently, the system supports two [application models](../application-models/application-models.md): the FA model and the stage model. In the FA model, each UI instance runs on an independent ArkTS engine. Global APIs can be traced to the corresponding UI instance via the engine, ensuring a clear UI context.
+
 In the stage model, multiple UI instances can coexist within a single ArkTS engine. Global APIs determine the current UI context by analyzing context information in the call chain. However, asynchronous APIs and non-UI APIs may fail to trace context correctly.
 
 To ensure the reliable functionality of global APIs in multi-instance scenarios, replace them with UIContext APIs.
@@ -258,7 +259,6 @@ export default class EntryAbility extends UIAbility {
   // ...
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
     // Remove the invalid UIContext when the window is destroyed.
     PixelUtil.removeUIContext();
@@ -393,17 +393,14 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
   onForeground(): void {
-    // Ability has brought to foreground
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
   }
 
   onBackground(): void {
-    // Ability has back to background
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
   }
 }
@@ -612,7 +609,6 @@ export default class EntryAbility extends UIAbility {
   // ...
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
     // Remove the invalid UIContext when the window is destroyed.
     PixelUtil.removeUIContext();

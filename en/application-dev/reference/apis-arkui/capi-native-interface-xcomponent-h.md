@@ -2231,7 +2231,7 @@ Sets whether the surface held by the **XComponent** should be treated as opaque 
 | Name| Description|
 | -- | -- |
 | [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)* config | Pointer to the target [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md) instance.|
-| bool isOpaque | Whether the surface held by the **XComponent** should be treated as opaque during rendering, regardless of the actual pixel transparency. **true** if the surface should be treated as opaque, **false** otherwise. The default value is **false**, which means the transparency of pixels in the surface content will be applied during rendering.|
+| bool isOpaque | Whether the surface held by the **XComponent** should be treated as opaque during rendering. **true** if the surface should be treated as opaque, **false** otherwise. The default value is **false**, which means pixel opacity of the surface content will be applied during rendering.|
 
 ### OH_ArkUI_SurfaceHolder_SetSurfaceConfig()
 

@@ -7,10 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-This topic describes how to use the HitraceMeter APIs. You can call them to log traces, and then use the trace collection APIs provided by [hitrace](hitrace.md) or [hidebug](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugstartapptracecapture12) to obtain the trace information generated during application running. In this way, you can learn about the application running process, thread, timestamp, and CPU information for performance profiling and optimization.
+This topic describes how to use the HiTraceMeter APIs. You can call them to log traces, and then use [hitrace](hitrace.md) or the trace collection APIs provided by [hidebug](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugstartapptracecapture12) to obtain the trace information generated during application running. In this way, you can learn about the application running process, thread, timestamp, and CPU information for performance profiling and optimization.
 
 
-HitraceMeter provides ArkTs and C/C++ APIs. You can select the APIs as required.
+HitraceMeter provides ArkTS and C/C++ APIs. You can select the APIs as required.
 
 
 - [Using HiTraceMeter (ArkTS)](hitracemeter-guidelines-arkts.md)

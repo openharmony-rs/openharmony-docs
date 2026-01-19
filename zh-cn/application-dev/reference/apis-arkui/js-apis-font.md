@@ -134,7 +134,7 @@ struct FontExample {
 
 getSystemFontList(): Array\<string>
 
-获取风格字体列表。
+获取系统字体列表。
 
 该接口仅在PC/2in1设备上生效，在其他设备上返回空数组。
 

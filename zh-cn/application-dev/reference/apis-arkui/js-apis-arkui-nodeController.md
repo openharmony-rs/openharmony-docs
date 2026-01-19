@@ -31,6 +31,7 @@ import {  NodeController  } from '@kit.ArkUI';
 abstract makeNode(uiContext : UIContext): FrameNode | null
 
 当实例绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)创建的时候进行回调。回调方法将返回一个节点，将该节点挂载至[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)。
+
 或者可以通过NodeController的rebuild()方法进行回调的触发。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。

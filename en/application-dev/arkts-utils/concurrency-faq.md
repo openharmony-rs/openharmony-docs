@@ -13,6 +13,7 @@ If a task in a TaskPool is not executed, perform the following steps to quickly 
 1. Check whether the **taskpool.execute** API is called.
 
    When the **taskpool.execute** API is called, HiLog prints a TaskPool call state log (**Task Allocation: taskId:**).
+
    If this log is missing, **taskpool.execute** is not actually called. Check whether the service logic preceding this API has been completed.
 
    ```ts
@@ -56,6 +57,7 @@ If a task in a TaskPool is not executed, perform the following steps to quickly 
 2. Check whether the task in the TaskPool is executed.
 
    Calling the **taskpool.execute** API will print a call state log **Task Allocation: taskId:**.
+   
    After locating the **Task Allocation: taskId:** log for the target task, search for the ID following **taskId** in the log. Under normal circumstances, an execution state log (**Task Perform: name:**) and an end state log (**Task PerformTask End: taskId:**) should be printed.
 
    1.  If the call state log exists but the execution state log is missing, it may be because a preceding task has blocked the worker thread of the TaskPool, rendering it unavailable for subsequent tasks to execute. You should check the service logic or use trace to further pinpoint the issue.
@@ -397,6 +399,46 @@ ArkTS runtime strictly checks type consistency during property assignment. If th
 2. A type mismatch exception is thrown when the application runs the assignment statement **this.g = g**. It is found that the property **g** uses the @State decorator, causing the original object to become a Proxy object, resulting in a type mismatch. 
 **Solution**: Remove the @State decorator.
 
+3. A custom Sendable class inherits from collections.Array and overrides the constructor. When the slice function is called after the class is instantiated, a type mismatch exception will be thrown. This is because when the slice function is called, collections.Array creates a new SendableArray internally. The input parameter of the constructor is the length of the new array, which is of number type. Since **ans** is of the string type, and the input parameter of the number type is used to assign a value to **ans** in the constructor, assigning a value of number type to a variable of string type is not allowed in the Sendable class. As a result, an exception is thrown.
+
+   ``` ts
+   // Add the following code to Index.ets.
+   import { collections } from '@kit.ArkTS'
+   
+   @Sendable
+   export class collectionsArray extends collections.Array<string> {
+     ans: string = 'test';
+     constructor(heldValue: string) {
+       super();
+       this.ans = heldValue;
+     }
+   } 
+   let arr = new collectionsArray("test");
+   arr.slice(1) 
+   ```
+
+   **Solution**: Use an independent API to assign values to properties.
+
+   ``` ts
+   // Add the following code to Index.ets.
+   import { collections } from '@kit.ArkTS'
+   
+   @Sendable
+   export class collectionsArray extends collections.Array<string> {
+     ans: string = 'test';
+     constructor() {
+       super();
+     }
+   
+     set(str: string) {
+       this.ans = str;
+     }
+   } 
+   let arr = new collectionsArray();
+   arr.slice(1) 
+   arr.set("success")
+   ```
+
 ### Adding Property Exception
 
 **Symptom**
@@ -415,7 +457,7 @@ Since the layout of Sendable classes is fixed and does not allow adding or remov
 **Solution**: Due to specification limitations, merging Sendable classes and namespaces with the same name is currently not supported.
 
 2. An exception is thrown when the application attempts to add a new property while using the Sendable feature in a HAR. The exception code line is located in a .js file, and the Sendable feature is not supported in .js files, resulting in the exception. 
-**Solution**: When using the Sendable feature in a HAR, [build TS files for the HAR](../quick-start/har-package.md#building-ts-files).
+**Solution**: When using the Sendable feature in the HAR, [configure UseTsHar](sendable-constraints.md#rules-for-using-sendable-in-hars).
 
 3. An exception is thrown when the application attempts to add a new property while using the Sendable feature in Local Test or Previewer. Since the Sendable feature is currently not supported in Local Test and Previewer, the exception is thrown. 
 **Solution**: Due to specification limitations, this is currently not supported.

@@ -46,8 +46,7 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 | options         | [SegmentButtonOptions](#segmentbuttonoptions) | Yes  | @ObjectLink | Options of the **SegmentButton** component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | selectedIndexes | number[]                                      | Yes  | @Link       | Indexes of selected items of the **SegmentButton**. The index is zero-based and increments by 1.<br>**NOTE**<br>**selectedIndexes** is decorated with [@Link](../../../ui/state-management/arkts-link.md) to implement parent-child two-way synchronization. If no items are selected, an empty array **[]** can be passed in. <br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onItemClicked<sup>13+</sup> | Callback\<number\> | No| - | Callback function triggered when a segment button option is tapped. The subscript of the tapped option is passed as a parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| maxFontScale<sup>14+</sup> | number \| [Resource](ts-types.md#resource) | Yes| @Prop | Maximum font scale for the text in the **SegmentButton**.<br>Value range: [1, 2]<br>Values less than 1 are treated as 1, and values greater than 2 are treated as 2.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| enableStateAnimation<sup>23+</sup> | boolean   | No| @Prop | Whether to enable animation when switching selected items by modifying **selectedIndexes**.<br>**true** to enable, **false** otherwise.<br>Default value: **false**.<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br> By default, only item switching triggered by a click action has animation.<br>When this parameter is enabled, item switching triggered by modifying **selectedIndexes** also has animation.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| maxFontScale<sup>14+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes| @Prop | Maximum font scale for the text in the **SegmentButton**.<br>Value range: [1, 2]<br>Values less than 1 are treated as 1, and values greater than 2 are treated as 2.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 
 >**NOTE**
 >
@@ -71,11 +70,11 @@ Provides initial data and custom properties for the **SegmentButton** component.
 
 | Name                 | Type                                                        | Read-Only                                                    | Optional                                                    | Description                                                      |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| type                    | "tab" \|"capsule"                                 | No                                      | No                                      | Type of the **SegmentButton** component.<br>**NOTE**<br>**'tab'**: tab-style segmented buttons, designed for page or content section switching.<br>**'capsule'**: capsule-style segmented buttons, suitable for single or multiple selection scenarios.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| type                    | "tab" \|"capsule"                                  | No                                      | No                                      | Type of the **SegmentButton** component.<br>**NOTE**<br>**"tab"**: tab-style segmented buttons, designed for page or content section switching.<br>**"capsule"**: capsule-style segmented buttons, suitable for single or multiple selection scenarios.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | multiply                | boolean                                                      | No                                                 | No                                              | Whether multiple items can be selected.<br>**true**: Multiple items can be selected.<br>**false**: Multiple items cannot be selected. For the **SegmentButton** component consisting of tab-style buttons, only one item can be selected. In this case, setting **multiply** to **true** does not take effect.<br>If the value is **undefined**, the component does not support selection of multiple items.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | buttons                 | [SegmentButtonItemOptionsArray](#segmentbuttonitemoptionsarray) | No| No| Button information of the component, including the icon and text.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | No                | No             | Text color of the unselected button.<br>If the value is **undefined**, the color is $r('sys.color.ohos_id_color_text_secondary').<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | No                | No              | Text color of the selected button.<br>If the value is **undefined**, the color is $r('sys.color.ohos_id_color_text_primary') when type is set to "tab".<br>When type is set to "capsule", the color is $r('sys.color.ohos_id_color_foreground_contrary').<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | No                | No              | Text color of the selected button.<br>If the value is **undefined**, the color is $r('sys.color.ohos_id_color_text_primary') when type is set to **"tab"**.<br>When type is set to **"capsule"**, the color is $r('sys.color.ohos_id_color_foreground_contrary').<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | fontSize                | [DimensionNoPercentage](#dimensionnopercentage)              | No           | No          | Font size of the unselected button. The value cannot be set in percentage.<br>If the value is **undefined**, the font size is $r('sys.float.ohos_id_text_size_body2').<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | selectedFontSize        | [DimensionNoPercentage](#dimensionnopercentage)              | No           | No          | Font size of the selected button. The value cannot be set in percentage.<br>If the value is **undefined**, the font size is $r('sys.float.ohos_id_text_size_body2').<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | fontWeight              | [FontWeight](ts-appendix-enums.md#fontweight)                | No             | No            | Font weight of the unselected button.<br>If the value is **undefined**, the font weight is **FontWeight.Regular**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -83,21 +82,21 @@ Provides initial data and custom properties for the **SegmentButton** component.
 | backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | No                | No               | Background color of the component.<br>If the value is **undefined**, the background color is $r('sys.color.ohos_id_color_button_normal').<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | No                | No               | Background color of the selected button.<br>When the value is **undefined** and **type** is **"tab"**, the background color is $r('sys.color.ohos_id_color_foreground_contrary').<br>When **type** is **"capsule"**, the background color is $r('sys.color.ohos_id_color_emphasize').<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | imageSize               | [SizeOptions](ts-types.md#sizeoptions)                       | No                    | No                   | Image size of the component.<br>When the value is **undefined**, the image size is { width: 24, height: 24 }.<br>Unit: vp<br>**NOTE**<br>This attribute is effective only for buttons that contain icons.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| buttonPadding           | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | No| No| Button padding of the component.<br>When the value is **undefined**, the button padding settings are as follows:<br>Icon button and text button: **{ top: 4, right: 8, bottom: 4, left: 8 }**.<br>Icon + text button: **{ top: 6, right: 8, bottom: 6, left: 8 }**.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| textPadding             | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | No| No| Text padding of the component.<br>When the value is **undefined**, the text padding is 0.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| buttonPadding           | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | No| No| Button padding of the component.<br>When the value is **undefined**, the button padding settings are as follows:<br>Icon button and text button: **{ top: 4, right: 8, bottom: 4, left: 8 }**.<br>Icon + text button: **{ top: 6, right: 8, bottom: 6, left: 8 }**.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| textPadding             | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | No| No| Text padding of the component.<br>When the value is **undefined**, the text padding is 0.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | localizedButtonPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12)                 | No              | Yes            | Button padding of the component.<br>Default value:<br>Icon button and text button: **{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }**.<br>Icon + text button: **{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) **}.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | localizedTextPadding<sup>12+</sup>   | [LocalizedPadding](ts-types.md#localizedpadding12)                 | No              | Yes              | Text padding.<br>Default value: **0**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | No                                          | Yes                                          | Layout direction of the component.<br>Default value: **Direction.Auto**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | No              | No             | Background blur style of the component.<br>If the value is **undefined**, it defaults to **BlurStyle.NONE**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | No| Yes| Border radius mode, used to control the border radius calculation method.<br>Default value: **BorderRadiusMode.DEFAULT**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No| Yes| Container border radius.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.<br>For capsule-style multi-select segmented buttons (with **type** being **'capsule'** and **multiply** being **true**), this attribute does not take effect and **itemBorderRadius** must be used to set the border radius.<br>The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.<br>Default value: **$r('sys.float.segmentbutton_container_shape')**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No| Yes| Individual button border radius.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.<br>For capsule-style multi-select segmented buttons (with **type** being **'capsule'** and **multiply** being **true**), this attribute only affects end items.<br>The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.<br>Default value: **$r('sys.float.segmentbutton_selected_background_shape')**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No| Yes| Container border radius.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.<br>For capsule-style multi-selection segmented buttons (with **type** being **"capsule"** and **multiply** being **true**), this attribute does not take effect and **itemBorderRadius** must be used to set the border radius.<br>The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.<br>Default value: **$r('sys.float.segmentbutton_container_shape')**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No| Yes| Individual button border radius.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.<br>For capsule-style multi-selection segmented buttons (with **type** being **"capsule"** and **multiply** being **true**), this attribute only affects end items.<br>The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.<br>Default value: **$r('sys.float.segmentbutton_selected_background_shape')**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ### constructor
 
 constructor(options: TabSegmentButtonOptions | CapsuleSegmentButtonOptions)
 
-A constructor used to create a **SegmentButton** instance with specified configuration options.
+Constructor.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -190,23 +189,23 @@ Defines the customizable attributes of a segment button component.
 | Name                 | Type                                                        | Read-Only                                                    | Optional                                                    | Description                                                      |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | No                | Yes                | Font color of the unselected item.<br>Default value: **$r('sys.color.ohos_id_color_text_secondary')**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | No                | Yes                | Font color of the selected item.<br>Default value:<br>Default value: **$r('sys.color.ohos_id_color_text_primary')** when **type** is **"tab"**<br>and **$r('sys.color.ohos_id_color_foreground_contrary')** when **type** is **"capsule"**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | No                | Yes                | Font color of the selected item.<br>Default value:<br>The default value is **$r('sys.color.ohos_id_color_text_primary')** when **type** is **"tab"**<br>The default value is **$r('sys.color.ohos_id_color_foreground_contrary')** when **type** is **"capsule"**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | fontSize                | [DimensionNoPercentage](#dimensionnopercentage)              | No           | Yes           | Font size of the unselected item. It cannot be set in percentage.<br>Default value: **$r('sys.float.ohos_id_text_size_body2')**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | selectedFontSize        | [DimensionNoPercentage](#dimensionnopercentage)              | No           | Yes           | Font size of the selected item. It cannot be set in percentage.<br>Default value: **$r('sys.float.ohos_id_text_size_body2')**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | fontWeight              | [FontWeight](ts-appendix-enums.md#fontweight)                | No             | Yes             | Font weight of the unselected item.<br>Default value: **FontWeight.Regular**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | selectedFontWeight      | [FontWeight](ts-appendix-enums.md#fontweight)                | No             | Yes             | Font weight of the selected item.<br>Default value: FontWeight.Medium<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | No                | Yes                | Background color of the unselected item.<br>Default value: **$r('sys.color.ohos_id_color_button_normal')**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | No                | Yes                | Background color of the button in the selected state.<br>Default value:<br>Default value: **$r('sys.color.ohos_id_color_foreground_contrary')** when **type** is **"tab"**<br>and **$r('sys.color.ohos_id_color_emphasize')** when **type** is **"capsule"**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | No                | Yes                | Background color of the button in the selected state.<br>Default value:<br>The default value is **$r('sys.color.ohos_id_color_foreground_contrary')** when **type** is **"tab"**<br>The default value is **$r('sys.color.ohos_id_color_emphasize')** when **type** is **"capsule"**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | imageSize               | [SizeOptions](ts-types.md#sizeoptions)                       | No                    | Yes                    | Defines the image size.<br>Default value: { width: 24, height: 24 }<br>Unit: vp<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>The imageSize attribute takes effect only for icon buttons and icon+text buttons.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| buttonPadding           | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | No| Yes| Button padding.<br>Default value:<br>For icon buttons and text buttons: { top: 4, right: 8, bottom: 4, left: 8 }<br>For icon+text buttons: { top: 6, right: 8, bottom: 6, left: 8 }<br>Unit: vp<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| textPadding             | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | No| Yes| Text padding.<br>Default value: **0**<br>Unit: vp<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| buttonPadding           | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | No| Yes| Button padding.<br>Default value:<br>For icon buttons and text buttons: { top: 4, right: 8, bottom: 4, left: 8 }<br>For icon+text buttons: { top: 6, right: 8, bottom: 6, left: 8 }<br>Unit: vp<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| textPadding             | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | No| Yes| Text padding.<br>Default value: **0**<br>Unit: vp<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | localizedButtonPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12)                 | No              | Yes              | Button padding.<br>Default value:<br>Icon button and text button: **{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }**.<br>Icon + text button: **{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) **}.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | localizedTextPadding<sup>12+</sup>   | [LocalizedPadding](ts-types.md#localizedpadding12)                 | No              | Yes              | Text padding.<br>Default value: **0**<br>Unit: vp<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | No                                          | Yes                                          | Layout direction.<br>Default value: **Direction.Auto**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | No              | Yes              | Background blur style applied between the content and the background.<br>Default value: **BlurStyle.NONE**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | No| Yes| Border radius mode, used to control the border radius calculation method.<br>Default value: **BorderRadiusMode.DEFAULT**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No| Yes| Container border radius.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.<br>For capsule-style multi-select segmented buttons (with **type** being **'capsule'** and **multiply** being **true**), this attribute does not take effect and **itemBorderRadius** must be used to set the border radius.<br>The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.<br>Default value: **$r('sys.float.segmentbutton_container_shape')**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No| Yes| Individual button border radius.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.<br>For capsule-style multi-select segmented buttons (with **type** being **'capsule'** and **multiply** being **true**), this attribute only affects end items.<br>The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.<br>Default value: **$r('sys.float.segmentbutton_selected_background_shape')**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No| Yes| Container border radius.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.<br>For capsule-style multi-selection segmented buttons (with **type** being **"capsule"** and **multiply** being **true**), this attribute does not take effect and **itemBorderRadius** must be used to set the border radius.<br>The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.<br>Default value: **$r('sys.float.segmentbutton_container_shape')**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No| Yes| Individual button border radius.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.<br>For capsule-style multi-selection segmented buttons (with **type** being **"capsule"** and **multiply** being **true**), this attribute only affects end items.<br>The maximum value for the border radius is half of the component's width or height, and percentage values are not supported.<br>Default value: **$r('sys.float.segmentbutton_selected_background_shape')**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## BorderRadiusMode<sup>20+</sup>
 
@@ -326,7 +325,7 @@ Represents an array for storing button information.
 
 constructor(elements: SegmentButtonItemTuple)
 
-A constructor used to create a **SegmentButtonItemOptionsArray** instance.
+Constructor.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -358,7 +357,7 @@ Adds the specified elements to the end of this array and returns the new length 
 
 | Name| Type                                             | Mandatory| Description                                                       |
 | ------ | ------------------------------------------------- | ---- | ----------------------------------------------------------- |
-| items  | [SegmentButtonItemArray](#segmentbuttonitemarray) | No  | Elements to add to the end of the array.<br>Default value: 0 added button information array.|
+| items  | [SegmentButtonItemArray](#segmentbuttonitemarray) | No  | Elements to add to the end of the array.<br>Default value: array with 0 new button information items|
 
 **Return value**
 
@@ -386,7 +385,7 @@ Removes the last element from this array and returns that element.
 
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
-| [SegmentButtonItemOptions](#segmentbuttonitemoptions) \| undefined | Element removed from the array.|
+| [SegmentButtonItemOptions](#segmentbuttonitemoptions)&nbsp;\|&nbsp;undefined | Element removed from the array.|
 
 >**NOTE**
 >
@@ -408,7 +407,7 @@ Removes the first element from this array and returns that element.
 
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
-| [SegmentButtonItemOptions](#segmentbuttonitemoptions) \| undefined | Element removed from the array.|
+| [SegmentButtonItemOptions](#segmentbuttonitemoptions)&nbsp;\|&nbsp;undefined | Element removed from the array.|
 
 >**NOTE**
 >
@@ -431,7 +430,7 @@ Adds an element to the beginning of this array and returns the new length of the
 
 | Name | Type                                             | Mandatory| Description                |
 | ----- | ------------------------------------------------- | ---- | -------------------- |
-| items | [SegmentButtonItemArray](#segmentbuttonitemarray) | No| Elements to add to the beginning of the array.<br>Default value: array with 0 new button information items.|
+| items | [SegmentButtonItemArray](#segmentbuttonitemarray) | No| Elements to add to the beginning of the array.<br>Default value: array with 0 new button information items|
 
 **Return value**
 
@@ -511,7 +510,7 @@ Provides configuration options for tab-style segmented buttons. Inherits from [T
 
 | Name| Type | Read-Only| Optional| Description                  |
 | ---- | ----- | ---- | ---- | ---------------------- |
-| type | "tab" | No  | No  | Type of the segmented buttons, which is **'tab'** in this case.|
+| type | "tab" | No  | No  | Type of the segmented buttons, which is **"tab"** in this case.|
 
 ## CapsuleSegmentButtonOptions
 
@@ -525,7 +524,7 @@ Provides configuration options for capsule-style segmented buttons. Inherits fro
 
 | Name| Type     | Read-Only| Optional| Description                       |
 | ---- | --------- | ---- | ----------------------------- | ----------------------------- |
-| type | "capsule" | No | No| Type of the segmented buttons, which is **'capsule'** in this case.|
+| type | "capsule" | No | No| Type of the segmented buttons, which is **"capsule"** in this case.|
 
 ## SegmentButtonTextItem
 
@@ -538,7 +537,7 @@ Text button information.
 | Name| Type                                  | Read-Only| Optional| Description     |
 | ---- | -------------------------------------- | ---- | ---------- | ---------- |
 | text | [ResourceStr](ts-types.md#resourcestr) | No | No | Button text.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| accessibilityLevel<sup>13+</sup> | string | No | Yes | Accessibility level, which is used to set whether the current component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: The component can be recognized by accessibility services.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| accessibilityLevel<sup>13+</sup> | string | No | Yes | Accessibility level, which is used to set whether the current component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: The component can be recognized by accessibility services.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description, which is used to explain component operations to users. You can set detailed description text to help users understand the operation consequences. If a component has both text and accessibility description, the text is read first, and then the accessibility description is read.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 
 ## SegmentButtonIconItem
@@ -555,12 +554,12 @@ Icon button information.
 | iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the unselected item.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | selectedIcon | [ResourceStr](ts-types.md#resourcestr) | No | No | Icon of the selected item.<br>If the value is undefined, no icon is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the selected item.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| accessibilityLevel<sup>13+</sup> | string | No | Yes | Accessibility level, which is used to set whether the current component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: The component can be recognized by accessibility services.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| accessibilityLevel<sup>13+</sup> | string | No | Yes | Accessibility level, which is used to set whether the current component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: The component can be recognized by accessibility services.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description. You can specify further explanation of the current component, for example, possible operation consequences, especially those that cannot be learned from component attributes and accessibility text. If a component contains both text information and the accessibility description, the text is read first and then the accessibility description, when the component is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 
 >**NOTE**
 >
->Both the icon and selectedIcon attributes must be set. Setting only one of them is invalid.
+>Both the **icon** and **selectedIcon** attributes must be set. Setting only one of them is invalid.
 
 ## SegmentButtonIconTextItem
 
@@ -577,12 +576,12 @@ Icon and text button information.
 | selectedIcon | [ResourceStr](ts-types.md#resourcestr) | No | No | Icon of the selected item.<br>If the value is undefined, no icon is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the selected item.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | text         | [ResourceStr](ts-types.md#resourcestr) | No | No | Button text.<br>If the value is undefined, no text is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| accessibilityLevel<sup>13+</sup> | string | No | Yes | Accessibility level, which is used to set whether the current component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: The component can be recognized by accessibility services.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| accessibilityLevel<sup>13+</sup> | string | No | Yes | Accessibility level, which is used to set whether the current component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: The component can be recognized by accessibility services.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description. You can specify further explanation of the current component, for example, possible operation consequences, especially those that cannot be learned from component attributes and accessibility text. If a component contains both text information and the accessibility description, the text is read first and then the accessibility description, when the component is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 
 >**NOTE**
 >
->Both the icon in the unselected state and the icon in the selected state must be set. If only one of them is set, the setting is invalid.
+>Both the **icon** and **selectedIcon** attributes must be set. Setting only one of them is invalid.
 
 ## SegmentButtonItemOptions
 
@@ -603,14 +602,14 @@ Button options in a segmented button.
 | selectedIcon | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Icon of the selected item.<br>Default value: no button icon in the selected state<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the selected item.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | text         | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Button text.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| accessibilityLevel<sup>13+</sup> | string | No | Yes | Accessibility level, which is used to set whether the current component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: The component can be recognized by accessibility services.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| accessibilityLevel<sup>13+</sup> | string | No | Yes | Accessibility level, which is used to set whether the current component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: The component can be recognized by accessibility services.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description. You can specify further explanation of the current component, for example, possible operation consequences, especially those that cannot be learned from component attributes and accessibility text. If a component contains both text information and the accessibility description, the text is read first and then the accessibility description, when the component is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 
 ### constructor
 
 constructor(options: SegmentButtonItemOptionsConstructorOptions)
 
-A constructor used to create a **SegmentButtonItemOptions** instance.
+Constructor.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -640,7 +639,7 @@ Construct parameters for SegmentButtonItemOptions.
 | selectedIcon | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Icon of the selected item.<br>Default value: no button icon in the selected state<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the selected item.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | text         | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Button text.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| accessibilityLevel<sup>13+</sup> | string | No| Yes | Accessibility level, which is used to set whether the current component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: The component can be recognized by accessibility services.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| accessibilityLevel<sup>13+</sup> | string | No| Yes | Accessibility level, which is used to set whether the current component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: The component can be recognized by accessibility services.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description. You can specify further explanation of the current component, for example, possible operation consequences, especially those that cannot be learned from component attributes and accessibility text. If a component contains both text information and the accessibility description, the text is read first and then the accessibility description, when the component is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 
 ## Example
@@ -668,12 +667,12 @@ struct Index {
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   });
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
-    buttons: [{ text: 'Single-select 1' }, { text: 'Single-select 2' }, { text: 'Single-select 3' }] as SegmentButtonItemTuple,
+    buttons: [{ text: 'Single-selection 1' }, { text: 'Single-selection 2' }, { text: 'Single-selection 3' }] as SegmentButtonItemTuple,
     multiply: false,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   });
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
-    buttons: [{ text: 'Multi-select 1' }, { text: 'Multi-select 2' }, { text: 'Multi-select 3' }] as SegmentButtonItemTuple,
+    buttons: [{ text: 'Multi-selection 1' }, { text: 'Multi-selection 2' }, { text: 'Multi-selection 3' }] as SegmentButtonItemTuple,
     multiply: true
   });
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
@@ -756,28 +755,28 @@ struct Index {
       text: 'Tab 3'
     }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundColor: 'rgb(213,213,213)',
-    selectedBackgroundColor: 'rgb(112,112,112)',
+    selectedBackgroundColor: 'rgb(112,112,112)', // Configure CommonSegmentButtonOptions to implement the selected background color.
     textPadding: {
       top: 10,
       right: 10,
       bottom: 10,
       left: 10
-    },
+    }, // Configure CommonSegmentButtonOptions to implement the text padding.
   });
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
-    buttons: [{ text: 'Single-select 1' }, { text: 'Single-select 2' }, { text: 'Single-select 3' }] as SegmentButtonItemTuple,
+    buttons: [{ text: 'Single-selection 1' }, { text: 'Single-selection 2' }, { text: 'Single-selection 3' }] as SegmentButtonItemTuple,
     multiply: false,
-    fontColor: 'rgb(0,74,175)',
-    selectedFontColor: 'rgb(247,247,247)',
-    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
+    fontColor: 'rgb(0,74,175)', // Configure CommonSegmentButtonOptions to implement the text color.
+    selectedFontColor: 'rgb(247,247,247)', // Configure CommonSegmentButtonOptions to implement the selected text color.
+    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK // Configure CommonSegmentButtonOptions to implement the background blur style.
   });
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
-    buttons: [{ text: 'Multi-select 1' }, { text: 'Multi-select 2' }, { text: 'Multi-select 3' }] as SegmentButtonItemTuple,
+    buttons: [{ text: 'Multi-selection 1' }, { text: 'Multi-selection 2' }, { text: 'Multi-selection 3' }] as SegmentButtonItemTuple,
     multiply: true,
     fontSize: 18,
     selectedFontSize: 18,
-    fontWeight: FontWeight.Bolder,
-    selectedFontWeight: FontWeight.Lighter,
+    fontWeight: FontWeight.Bolder, // Configure CommonSegmentButtonOptions to implement the text weight.
+    selectedFontWeight: FontWeight.Lighter, // Configure CommonSegmentButtonOptions to implement the weight of the selected text.
   });
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
@@ -934,7 +933,7 @@ struct Index {
     },
   });
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
-    buttons: [{ text: 'Single-select 1' }, { text: 'Single-select 2' }, { text: 'Single-select 3' }],
+    buttons: [{ text: 'Single-selection 1' }, { text: 'Single-selection 2' }, { text: 'Single-selection 3' }],
     multiply: false,
     direction: Direction.Rtl,
     fontColor: Color.Black,
@@ -942,7 +941,7 @@ struct Index {
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   });
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
-    buttons: [{ text: 'Multi-select 1' }, { text: 'Multi-select 2' }, { text: 'Multi-select 3' }],
+    buttons: [{ text: 'Multi-selection 1' }, { text: 'Multi-selection 2' }, { text: 'Multi-selection 3' }],
     multiply: true,
     direction: Direction.Rtl,
     fontSize: 18,
@@ -1181,7 +1180,7 @@ struct Index {
       text: 'Tab 3'
     }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK,
-    borderRadiusMode: BorderRadiusMode.CUSTOM,
+    borderRadiusMode: BorderRadiusMode.CUSTOM, // Customize the corner radius of the border.
     backgroundBorderRadius: LengthMetrics.vp(8),
     itemBorderRadius: LengthMetrics.vp(6)
   });

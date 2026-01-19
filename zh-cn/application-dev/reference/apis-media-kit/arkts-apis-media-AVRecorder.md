@@ -186,6 +186,7 @@ avRecorder.prepare(avRecorderConfig).then(() => {
 getInputSurface(callback: AsyncCallback\<string>): void
 
 获得录制需要的surface。使用callback异步回调。
+
 开发者从此surface中获取surfaceBuffer，填入相应的视频数据。
 
 应当注意，填入的视频数据需要携带时间戳（单位ns）和buffersize。时间戳的起始时间请以系统启动时间为基准。
@@ -232,6 +233,7 @@ avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 getInputSurface(): Promise\<string>
 
 获得录制需要的surface。使用Promise异步回调。
+
 开发者从此surface中获取surfaceBuffer，填入相应的视频数据。
 
 应当注意，填入的视频数据需要携带时间戳（单位ns）和buffersize。时间戳的起始时间请以系统启动时间为基准。

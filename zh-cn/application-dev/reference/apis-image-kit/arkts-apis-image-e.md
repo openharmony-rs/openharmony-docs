@@ -79,6 +79,7 @@
 | EXIF_METADATA     | 1    | exif数据。         |
 | FRAGMENT_METADATA | 2    | 水印裁剪图元数据。 |
 | GIF_METADATA<sup>20+</sup> | 5    | GIF图片元数据。 |
+| HEIFS_METADATA<sup>23+</sup> | 15    | HEIF序列图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ScaleMode<sup>9+</sup>
 
@@ -313,6 +314,18 @@
 | GIF_DELAY_TIME    | "GifDelayTime"    | GIF图片的每帧播放时长（单位为毫秒）。 |
 | GIF_DISPOSAL_TYPE | "GifDisposalType" | GIF图片每帧的帧过渡模式。 |
 
+## HeifsPropertyKey<sup>23+</sup>
+
+枚举，HEIF序列图片信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称              | 值                | 说明                   |
+| ----------------- | ----------------- | --------------------- |
+| HEIFS_DELAY_TIME    | 'HeifsDelayTime'    | HEIF序列图片的每帧延迟时长。<br>单位为毫秒。 |
+
 ## ImageFormat<sup>9+</sup>
 
 枚举，图片格式。
@@ -433,3 +446,53 @@
 | AUTO         | 0    | 系统决定内存申请方式。     |
 | DMA          | 1    | 使用DMA内存申请方式。            |
 | SHARE_MEMORY | 2    | 使用SHARE_MEMORY的内存申请方式。 |
+
+## Orientation<sup>23+</sup>
+
+枚举，图像方向类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称         | 值   | 说明                                |
+| ------------ | ---- | ----------------------------------- |
+| TOP_LEFT     | 1    | 图像未旋转。                        |
+| TOP_RIGHT    | 2    | 图像是水平镜像的。                  |
+| BOTTOM_RIGHT | 3    | 图像旋转180度。                   |
+| BOTTOM_LEFT  | 4    | 图像垂直镜像。                      |
+| LEFT_TOP     | 5    | 图像水平镜像，然后顺时针旋转270度。 |
+| RIGHT_TOP    | 6    | 图像顺时针旋转90度。                |
+| RIGHT_BOTTOM | 7    | 图像水平镜像，然后顺时针旋转90度。  |
+| LEFT_BOTTOM  | 8    | 图像顺时针旋转270度。               |
+
+## FocusMode<sup>23+</sup>
+
+枚举，焦点模式类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称 | 值   | 说明           |
+| ---- | ---- | -------------- |
+| AF_A | 0    | 自动对焦。     |
+| AF_S | 1    | 单次自动对焦。 |
+| AF_C | 2    | 连续自动对焦。 |
+| MF   | 3    | 手动对焦。     |
+
+## XmageColorMode<sup>23+</sup>
+
+枚举，XMAGE颜色模式类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称   | 值   | 说明       |
+| ------ | ---- | ---------- |
+| NORMAL | 0    | 标准模式。 |
+| BRIGHT | 1    | 明亮模式。 |
+| SOFT   | 2    | 柔焦模式。 |
+| MONO   | 3    | 黑白模式。 |
+

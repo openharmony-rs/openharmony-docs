@@ -80,3 +80,4 @@ import { wantConstant } from '@kit.AbilityKit';
 | ----------------------------------- |---|--------------|
 | WINDOW        | 0 | 表示独立窗口拉起模式。  |
 | EMBEDDED_FULL       | 1 | 表示嵌入式全屏拉起模式。 |
+| EMBEDDED_HALF<sup>23+</sup>       | 2 | 表示嵌入式半屏拉起模式。 |

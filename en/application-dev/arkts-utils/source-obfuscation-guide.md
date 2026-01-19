@@ -13,7 +13,7 @@ The source code obfuscation feature is integrated into the system and can be ena
 
 * Enabling the obfuscation switch 
     To enable obfuscation, set the **enable** field to **true** under **arkOptions.obfuscation.ruleOptions** in the **build-profile.json5** file of your module.
-    ```
+    ```text
     "arkOptions": {
       "obfuscation": {
         "ruleOptions": {
@@ -28,7 +28,7 @@ The source code obfuscation feature is integrated into the system and can be ena
     Enabling the obfuscation switch activates the default settings, which include obfuscation of local variables and parameters. To enable additional obfuscation features, customize the **obfuscation-rules.txt** file specified in the **files** field. Note that the default values in this file may vary across different versions of DevEco Studio.
 
     For example, in DevEco Studio of version 5.0.3.600 and later, the obfuscation configuration file is as follows, which indicates that property name obfuscation, top-level scope name obfuscation, file name obfuscation, and imported/exported name obfuscation are enabled.
-    ```
+    ```text
     -enable-property-obfuscation
     -enable-toplevel-obfuscation
     -enable-filename-obfuscation
@@ -36,7 +36,7 @@ The source code obfuscation feature is integrated into the system and can be ena
     ```
 
     You can also add comments to the obfuscation rule file by prefixing lines with the `#` symbol. The sample code is as follows:
-    ```
+    ```text
     # options:
     -enable-property-obfuscation
     -enable-toplevel-obfuscation
@@ -63,7 +63,7 @@ The source code obfuscation feature is integrated into the system and can be ena
 
     > **NOTE**
     >
-    > The differences between release and debug builds extend beyond obfuscation. To determine whether application behavior differences are due to obfuscation, you should enable or disable the obfuscation switch rather than simply switching between release and debug builds.
+    > The differences between release and debug builds include but are not limited to whether obfuscation is enabled. To determine whether application behavior differences are due to obfuscation, you should enable or disable the obfuscation switch rather than simply switching between release and debug builds.
 
 ### Obfuscation Configuration Files
 * `obfuscation-rules.txt`  
@@ -72,7 +72,7 @@ The source code obfuscation feature is integrated into the system and can be ena
 * `consumer-rules.txt`  
     For HAR and HSP modules, an additional **arkOptions.obfuscation.consumerFiles** field is available in the **build-profile.json5** file. This field specifies obfuscation rules that should be applied when this package is depended upon in the current compilation process. A default **consumer-rules.txt** file is created when a new HAR or HSP module is set up. The key difference between **consumer-rules.txt** and **obfuscation-rules.txt** is as follows: **obfuscation-rules.txt** applies to the compilation of the current module, whereas **consumer-rules.txt** applies to the compilation of other modules that depend on the current module.
 
-	Configuration example of the **build-profile.json5** file:
+  Configuration example of the **build-profile.json5** file:
     ```json
     "arkOptions": {
       "obfuscation": {
@@ -162,6 +162,8 @@ After obfuscation is complete, the obfuscated intermediate products are generate
 
 In applications that have undergone obfuscation, code names are changed, making the error stacks printed during crashes harder to understand. You can use the [hstack plugin](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-command-line-hstack) in Command Line Tools of DevEco Studio to deobfuscate the source code stack and analyze issues.
 The deobfuscation tool requires the `sourceMaps.map` file and the obfuscation name mapping file **nameCache.json** generated during compilation. Be sure to back them up locally.
+
+If you use a self-built online platform or pipeline to build an application, the **sourceMaps.map** file and the obfuscation name mapping file **namecache.json** generated during compilation cannot be obtained. You can use the corresponding files generated during local compilation.
 * The source code mapping file, named **sourceMaps.map**, records the mappings between the compressed/converted code and the original source code.
 
 ![obfuscation-product](figures/obfuscation-product.png)

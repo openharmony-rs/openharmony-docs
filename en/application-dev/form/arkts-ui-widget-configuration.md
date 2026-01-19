@@ -110,6 +110,7 @@ In the **metadata** configuration item of FormExtensionAbility, you can specify 
 | groupId | Common ID of a group of widgets. If the values of **groupId** of multiple widgets are the same and the value of **resizable** is **true**, the **supportDimensions** configuration of multiple widgets is shared. For example, if the **groupId** values of widgets A and B are the same and the **resizable** values are **true**, widget A can be adjusted to any size specified by **supportDimensions**.<br>It is recommended that this field be set when multiple widgets with the same functionality need to be resized.<br>**Note:**<br>This field is supported since API version 20.| String| Yes (initial value: **false**)|
 | [supportDeviceTypes](#supportdevicetypes-field)| Device type supported by a widget. For example, if **supportDeviceTypes** is set to **phone**, **tablet**, and **tv**, the widget can be displayed on smartphones, tablets, and Visions.<br>**Note:**<br>This field is supported since API version 21.| String array| Yes. The default values are **phone**, **tablet**, **tv**, **wearable**, **car**, and **2in1**.|
 | [supportDevicePerformanceClasses](#supportdeviceperformanceclasses-field)| Device performance class supported by a widget. For example, if **supportDevicePerformanceClasses** is set to **high**, **medium**, and **low**, the widget can be displayed on devices with the performance class of high, medium, and low.<br>**Note:**<br>This field is supported since API version 21.| String array| Yes. The default values are **high**, **medium**, and **low**.|
+| [standby](#standby-field)| <!--RP8-->Landscape standby mode.<!--RP8End--> It is an extended widget field.<br>**Note:**<br>This field is supported since API version 23. Widgets can be displayed in landscape standby mode only when this feature is enabled.| Object| Yes. For details about the default value, see [standby Field](#standby-field).|
 
 ### supportDeviceTypes Field
 
@@ -122,7 +123,7 @@ Specifies the device type supported by the widget.
    | tv | Vision| String|
    | wearable | Wearable| String|
    | car | Head unit| String|
-   | 2in1 | PC/2-in-1 Device| String|
+   | 2in1 | PC/2-in-1 device| String|
 
 ### supportDevicePerformanceClasses Field
 
@@ -136,7 +137,7 @@ Specifies the device performance class supported by the widget.
 
 ### window Field
 
-Describes the internal structure of a window object. This field is supported only in JS widgets.
+Defines the internal structure of the **window** object. This field is supported only in JS widgets.
 
    | Field| Description| Data Type| Default Value Allowed|
    | -------- | -------- | -------- | -------- |
@@ -197,6 +198,31 @@ Specifies a scene-based widget. If **funInteractionParams** and **sceneAnimation
    }
    ```
 <!--RP2End-->
+
+### standby Field
+
+Defines the internal structure of the **standby** object. Widgets can be displayed in landscape standby mode only when the application obtains the required open capability and the **isSupported** property is set to **true**.
+
+| Field| Description| Data Type| Default Value Allowed|
+| -------- | -------- | -------- | -------- |
+| isSupported | Whether a widget can be displayed in landscape standby mode.<br>- **true**: The widget can be displayed in landscape standby mode.<br>- **false**: The widget cannot be displayed in landscape standby mode.| Boolean| Yes (initial value: **true**)|
+| isAdapted | Whether a widget has been adapted to the landscape standby mode. If it is set to **true**, the background image of the widget will be removed.<br>- **true**: The widget has been adapted to the landscape standby mode.<br>- **false**: The widget has not been adapted to the landscape standby mode.| Boolean| Yes (initial value: **false**)|
+| isPrivacySensitive | Whether a widget is privacy-sensitive. Private widget data will be hidden with a mask in landscape standby mode.<br>- **true**: The widget is privacy-sensitive.<br>- **false**: The widget is not privacy-sensitive.| Boolean| Yes (initial value: **false**)|
+
+   ```json
+   {
+     "forms": [
+       {
+         // ...
+         "standby": {
+           "isSupported": true,
+           "isAdapted": false,
+           "isPrivacySensitive": false
+         }          
+       }
+     ]
+   }
+   ```
 
 ### Configuration File Example
 

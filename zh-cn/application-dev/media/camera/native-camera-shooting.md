@@ -71,7 +71,7 @@
    >
    > 不建议开发者同时注册PhotoAssetAvailable和PhotoAvailable。
 
-   **单段式拍照开发流程（PhotoAssetAvailable）**：
+   **单段式拍照开发流程（PhotoAvailable）**：
 
    - 在会话commitConfig前注册单段式拍照回调。
    - 在单段式拍照回调函数中获取图片信息，解析出buffer数据，做自定义业务处理。
@@ -106,7 +106,7 @@
          Image_ErrorCode imageErr = OH_ImageNative_GetImageSize(imageNative, &size);
          if (imageErr != IMAGE_SUCCESS) {
               OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetImageSize call failed, errorCode: %{public}d", imageErr);
-              OH_ImageNative_Release(imageNative);
+              OH_PhotoNative_Release(photo);
               return;
           }
          OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d width:%{public}d height:%{public}d", imageErr,
@@ -116,7 +116,7 @@
          imageErr = OH_ImageNative_GetComponentTypes(imageNative, nullptr, &componentTypeSize);
          if (imageErr != IMAGE_SUCCESS || componentTypeSize == 0) {
              OH_LOG_ERROR(LOG_APP, "cOH_ImageNative_GetComponentTypes call failed, errorCode: %{public}d", imageErr);
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              return;
          }
          OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d componentTypeSize:%{public}zu", imageErr,
@@ -125,13 +125,13 @@
          uint32_t* components = new (std::nothrow) uint32_t[componentTypeSize];
          if (!components) {
              OH_LOG_ERROR(LOG_APP, "Failed to allocate memory");
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              return;
          }
          imageErr = OH_ImageNative_GetComponentTypes(imageNative, &components, &componentTypeSize);
          if (imageErr != IMAGE_SUCCESS) {
              OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetComponentTypes call failed, errorCode: %{public}d", imageErr);
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              delete[] components;
              return;
          }
@@ -141,7 +141,7 @@
          imageErr = OH_ImageNative_GetByteBuffer(imageNative, components[0], &nativeBuffer);
          if (imageErr != IMAGE_SUCCESS) {
              OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetByteBuffer call failed, errorCode: %{public}d", imageErr);
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              delete[] components;
              return;
          }
@@ -151,7 +151,7 @@
          imageErr = OH_ImageNative_GetBufferSize(imageNative, components[0], &nativeBufferSize);
          if (imageErr != IMAGE_SUCCESS) {
              OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetBufferSize call failed, errorCode: %{public}d", imageErr);
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              delete[] components;
              return;
          }
@@ -162,7 +162,7 @@
          imageErr = OH_ImageNative_GetRowStride(imageNative, components[0], &rowStride);
          if (imageErr != IMAGE_SUCCESS) {
              OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetRowStride call failed, errorCode: %{public}d", imageErr);
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              delete[] components;
              return;
          }
@@ -172,7 +172,7 @@
          imageErr = OH_ImageNative_GetPixelStride(imageNative, components[0], &pixelStride);
          if (imageErr != IMAGE_SUCCESS) {
              OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetPixelStride call failed, errorCode: %{public}d", imageErr);
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              delete[] components;
              return;
          }
@@ -182,7 +182,7 @@
          int32_t ret = OH_NativeBuffer_Map(nativeBuffer, &virAddr); // 映射后通过第二个参数virAddr返回内存的首地址。
          if (ret != 0) {
              OH_LOG_ERROR(LOG_APP, "OH_NativeBuffer_Map call failed, errorCode: %{public}d", ret);
-             OH_ImageNative_Release(imageNative);
+             OH_PhotoNative_Release(photo);
              delete[] components;
              return;
          }
@@ -196,9 +196,9 @@
          cb(virAddr, nativeBufferSize);
          // 释放资源。
          delete[] components;
-         ret = OH_ImageNative_Release(imageNative);
+         ret = OH_PhotoNative_Release(photo);
          if (ret != 0) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_Release call failed., errorCode: %{public}d", ret);
+             OH_LOG_ERROR(LOG_APP, "OH_PhotoNative_Release call failed., errorCode: %{public}d", ret);
          }
          ret = OH_NativeBuffer_Unmap(nativeBuffer); // 在处理完之后，解除映射并释放缓冲区。
          if (ret != 0) {
@@ -313,6 +313,7 @@
 6. 创建拍照类型会话，参考[会话管理(C/C++)](./native-camera-session-management.md)，开启会话，准备拍照。
 
 7. 配置拍照参数（可选）。
+
    配置相机的参数可以调整拍照的一些功能，包括闪光灯、变焦、焦距等。
 
    ```c++

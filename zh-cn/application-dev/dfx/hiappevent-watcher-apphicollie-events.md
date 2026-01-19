@@ -13,7 +13,7 @@
 
 ## 检测原理
 
-详见[任务执行超时检测原理](apptask-timeout-guidelines.md#检测原理)。
+详见[任务执行超时检测原理](apptask-timeout-guidelines.md#任务执行超时检测)。
 
 ## 接口说明
 
@@ -24,7 +24,7 @@
 
 > **说明：**
 >
-> 任务执行超时事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
+> 任务执行超时事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，不支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
 
 ## 事件字段说明
 

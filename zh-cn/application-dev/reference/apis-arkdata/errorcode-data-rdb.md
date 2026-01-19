@@ -335,7 +335,7 @@ SQLite数据库文件已锁定。
 
 **可能原因**
 
-1. 同一应用两个进程，例如UIability和datashareability同时打开了同一个数据库，进行增删改操作，或者不同应用的同一个group组内的进程通过group组打开同一个数据库，进行增删改操作。
+1. 同一应用两个进程，例如UIAbility和DataShareExtensionAbility同时打开了同一个数据库，进行增删改操作，或者不同应用的同一个group组内的进程通过group组打开同一个数据库，进行增删改操作。
 2. 参见SQLITE_BUSY的相关错误场景。
 
 **处理步骤**

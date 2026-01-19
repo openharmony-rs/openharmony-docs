@@ -44,7 +44,9 @@
 
 - 异步方法示例：
 
-  ```ts
+  <!-- @[async_symmetry_encrypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceDES/entry/src/main/ets/pages/des/des_ecb_encryption_decryption_asynchronous.ets) -->
+
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
 
@@ -55,6 +57,7 @@
     let encryptData = await cipher.doFinal(plainText);
     return encryptData;
   }
+
   // 解密消息。
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('DES64|ECB|PKCS7');
@@ -62,6 +65,7 @@
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
+
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let symGenerator = cryptoFramework.createSymKeyGenerator('DES64');
@@ -69,10 +73,11 @@
     console.info('convertKey success');
     return symKey;
   }
+
   async function main() {
     let keyData = new Uint8Array([238, 249, 61, 55, 128, 220, 183, 224]);
     let symKey = await genSymKeyByData(keyData);
-    let message = "This is a test";
+    let message = 'This is a test';
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
     let encryptText = await encryptMessagePromise(symKey, plainText);
     let decryptText = await decryptMessagePromise(symKey, encryptText);
@@ -85,9 +90,12 @@
   }
   ```
 
+
 - 同步方法示例：
 
-  ```ts
+  <!-- @[sync_symmetry_encrypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceDES/entry/src/main/ets/pages/des/des_ecb_encryption_decryption_synchronous.ets) -->
+
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
 
@@ -98,6 +106,7 @@
     let encryptData = cipher.doFinalSync(plainText);
     return encryptData;
   }
+
   // 解密消息。
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('DES64|ECB|PKCS7');
@@ -105,6 +114,7 @@
     let decryptData = decoder.doFinalSync(cipherText);
     return decryptData;
   }
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let symGenerator = cryptoFramework.createSymKeyGenerator('DES64');
@@ -112,10 +122,11 @@
     console.info('convertKeySync success');
     return symKey;
   }
+
   function main() {
     let keyData = new Uint8Array([238, 249, 61, 55, 128, 220, 183, 224]);
     let symKey = genSymKeyByData(keyData);
-    let message = "This is a test";
+    let message = 'This is a test';
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
     let encryptText = encryptMessage(symKey, plainText);
     let decryptText = decryptMessage(symKey, encryptText);

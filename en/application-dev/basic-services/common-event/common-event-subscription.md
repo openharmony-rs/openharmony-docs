@@ -36,9 +36,9 @@ For details about the APIs, see [@ohos.commonEventManager (Common Event)](../../
 
 ## How to Develop
 
-1. Import the **commonEventManager** module.
+1. Import the related modules.
    
-   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
@@ -49,21 +49,35 @@ For details about the APIs, see [@ohos.commonEventManager (Common Event)](../../
    ```
 
 2. Create a **subscribeInfo** object. For details about the data types and parameters of the object, see [CommonEventSubscribeInfo](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscribeInfo.md).
+   - Custom common events: defined by applications.
    
-   <!-- @[CreateSubscriberInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+     <!-- @[CreateCustomSubscriberInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+     
+     ``` TypeScript
+     // Used to save the created subscriber object for subsequent subscription and unsubscription.
+     let subscriberCustom: commonEventManager.CommonEventSubscriber | null = null;
+     // Subscriber information. Replace the 'event' field with the actual event name.
+     let subscribeInfoCustom: commonEventManager.CommonEventSubscribeInfo = {
+       events: ['event']  // Subscribe to a custom common event.
+     };
+     ```
+
+   - System common events: defined in CES. Currently, only system applications and system services can publish system common events, such as HAP installation, update, and uninstall. For details about the supported system common events, see [System Common Events](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md).
    
-   ``` TypeScript
-   // Used to save the created subscriber object for subsequent subscription and unsubscription.
-   let subscriber: commonEventManager.CommonEventSubscriber | null = null;
-   // Subscriber information. Replace the event field with the actual event name.
-   let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-     events: [commonEventManager.Support.COMMON_EVENT_SCREEN_OFF], // Subscribe to the screen-off event.
-   };
-   ```
+     <!-- @[CreateSystemSubscriberInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+     
+     ``` TypeScript
+     // Used to save the created subscriber object for subsequent subscription and unsubscription.
+     let subscriberSystem: commonEventManager.CommonEventSubscriber | null = null;
+     // Subscriber information. Use the corresponding common event as required.
+     let subscribeInfoSystem: commonEventManager.CommonEventSubscribeInfo = {
+       events: [commonEventManager.Support.COMMON_EVENT_SCREEN_OFF]  // Subscribe to the screen-off event.
+     };
+     ```
 
 3. Create a subscriber object and save the returned object for subsequent operations such as subscription, unsubscription, and event callback.
    
-   <!-- @[CreateSubscriberCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   <!-- @[CreateSubscriberCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    // Callback for subscriber creation.
@@ -81,7 +95,7 @@ For details about the APIs, see [@ohos.commonEventManager (Common Event)](../../
 
 4. Create a subscription callback, which is triggered when an event is received. The data returned in the subscription callback contains information such as the common event name and data carried by the publisher. For details about the data types and parameters of the common event data, see [CommonEventData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventData.md).
    
-   <!-- @[SubscribeToPublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   <!-- @[SubscribeToPublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    // Callback for common event subscription.

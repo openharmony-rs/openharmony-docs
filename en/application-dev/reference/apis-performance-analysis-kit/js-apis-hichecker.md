@@ -155,7 +155,7 @@ addRule(rule: bigint): void
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [hichecker.addCheckRule](#hicheckeraddcheckrule9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hichecker.addCheckRule](#hicheckeraddcheckrule9) instead.
 
 Adds one or more rules. HiChecker detects unexpected operations or gives feedback based on the added rules.
 
@@ -184,7 +184,7 @@ removeRule(rule: bigint): void
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [hichecker.removeCheckRule](#hicheckerremovecheckrule9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hichecker.removeCheckRule](#hicheckerremovecheckrule9) instead.
 
 Removes one or more rules. The removed rules will become ineffective.
 
@@ -237,7 +237,7 @@ contains(rule: bigint): boolean
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [hichecker.containsCheckRule](#hicheckercontainscheckrule9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hichecker.containsCheckRule](#hicheckercontainscheckrule9) instead.
 
 Checks whether the specified rule exists in the collection of added rules. If the rule is of the thread level, this operation is performed only on the current thread.
 

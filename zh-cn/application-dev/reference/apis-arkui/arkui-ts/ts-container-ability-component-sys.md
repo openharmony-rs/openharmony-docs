@@ -11,9 +11,9 @@
 
 >  **说明：**
 >
->  从API Version 10开始，该组件不再维护，推荐使用[UIExtensionComponent](ts-container-ui-extension-component-sys.md)。
+>  从API version 10开始，该组件不再维护，推荐使用[UIExtensionComponent](ts-container-ui-extension-component-sys.md)。
 >
->  该组件从API Version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  本模块为系统接口。
 

@@ -259,7 +259,7 @@ radiusGradientBlur(value: number, options: LinearGradientBlurOptions): Filter
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
 | value  | number         | 是   | 模糊半径，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
-| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12对象说明)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
+| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12对象)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
 
 **返回值：**
 
@@ -328,8 +328,7 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 **示例：**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
-import { common2D } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -342,7 +341,7 @@ struct BezierWarpExample {
 
   build() {
     Column() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
         .foregroundFilter(uiEffect.createFilter().bezierWarp(this.valueBezier))
     }
   }
@@ -458,7 +457,7 @@ struct Index {
     blue: 1,
     alpha: 1
   }
-  @State lightIntentsity2: number = 1
+  @State lightIntensity2: number = 1
 
   build() {
     Column() {
@@ -467,7 +466,7 @@ struct Index {
           .width('646px')
           .height('900px')
           .borderRadius(10)
-          .foregroundFilter(uiEffect.createFilter().contentLight(this.point2, this.color2, this.lightIntentsity2))
+          .foregroundFilter(uiEffect.createFilter().contentLight(this.point2, this.color2, this.lightIntensity2))
       }
       .width('100%')
       .height('55%')
@@ -1012,8 +1011,8 @@ struct Index {
   @State color1:common2D.Color = {
     red:1,green:1,blue:1,alpha:1
   }
-  @State lightIntentsity1:number = 1
-  @State bordrwidth:number = 20
+  @State lightIntensity1:number = 1
+  @State borderWidth:number = 20
 
   build() {
     Column() {
@@ -1026,8 +1025,8 @@ struct Index {
           .width('646px')
           .height('900px')
           .borderRadius(10)
-          .visualEffect(uiEffect.createEffect().borderLight(this.point1, this.color1, this.lightIntentsity1,
-            this.bordrwidth))
+          .visualEffect(uiEffect.createEffect().borderLight(this.point1, this.color1, this.lightIntensity1,
+            this.borderWidth))
       }
       .width('100%')
       .height('55%')
@@ -1436,6 +1435,7 @@ static createPixelMapMask(pixelMap: image.PixelMap): Mask
 ```ts
 import { uiEffect } from '@kit.ArkGraphics2D';
 import { image } from '@kit.ImageKit';
+import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
@@ -1454,8 +1454,8 @@ struct Index {
 
   private getPixelMap(): image.PixelMap | undefined {
     try {
-      let context: Context = getContext(this) as Context;
-      // this path should be creater in local
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      // this path should be created in local
       const path: string = context.resourceDir + "/perlin_worley_noise_3d_64.bmp";
       const imageSource: image.ImageSource = image.createImageSource(path);
       if (!imageSource) {
@@ -1543,7 +1543,7 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 **示例：**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
+import { uiEffect } from '@kit.ArkGraphics2D'
 // values: [[1.0, 0.5], [1.0, 1.0]] => color0: 1.0; color1: 1.0; position0: 0.5; position1: 1.0
 let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[1.0, 0.5], [1.0, 1.0]]);
 @Entry
@@ -1551,7 +1551,7 @@ let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[
 struct RadialGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')
@@ -1604,7 +1604,7 @@ let mask = uiEffect.Mask.createWaveGradientMask({x: 0.5, y: 0.5}, 0.01, 0.5, 0.1
 struct WaveGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')

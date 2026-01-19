@@ -44,40 +44,38 @@ Describes the parameters of the time picker.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                | Type                                           | Read-Only| Optional| Description                                                        |
+| Name                | Type                                           | Read Only| Optional| Description                                                        |
 | -------------------- | ----------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | selected             | Date                                            | No  | Yes  | Time of the selected item.<br>Default value: current system time<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | format<sup>11+</sup> | [TimePickerFormat](#timepickerformat11)| No  | Yes  | Time format.<br>Default value: **TimePickerFormat.HOUR_MINUTE**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | start<sup>18+</sup>  | Date                                            | No  | Yes  | Start time of the time picker.<br>Default value: **Date(0, 0, 0, 0, 0, 0)**<br>**NOTE**<br>1. Only the hour and minute values take effect.<br>2. If **start** is set and is not the default value, **loop** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | end<sup>18+</sup>    | Date                                            | No  | Yes  | End time of the time picker.<br>Default value: **Date(0, 0, 0, 23, 59, 59)**.<br>**NOTE**<br>1. Only the hour and minute values take effect.<br>2. If **end** is set and is not the default value, **loop** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
->  **NOTE**
->
->  - Property modifications made to **TimePickerOptions** during the **TimePicker** scrolling process may not take effect.
->
->  - The **Date** object is used to handle dates and time. It can be used in the following ways:
->
->  **Method 1**: new Date ()
->
->  Obtains the current system date and time.
->
->  **Method 2**: new Date(value: number | string)
->
->  | Name | Type | Mandatory | Description |
->  | ------- | ------ | ---- | ------ |
->  | value   | number \| string  | Yes | Date format.<br>**number**: number of milliseconds since 00:00:00 on January 1, 1970.<br>**string**: date string in formats such as 2025-02 2025-02-20 08:00:00 or 2025-02 2025-02-20T08:00:00.|
->
->  **Method 3**: new Date(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number)
->
->  | Name | Type | Mandatory | Description |
->  | --------| ------ | ---- | ------ |
->  | year        | number | Yes   | Year. Example: **2025**.|
->  | monthIndex  | number | Yes   | Month index, for example, **2** for March.|
->  | date        | number | No   | Day of the month, for example, **10**. (Required if **hours** is set.) |
->  | hours       | number | No   | Hour, for example, **15**. (Required if **minutes** is set.) |
->  | minutes     | number | No   | Minute, for example, **20**. (Required if **seconds** is set.) |
->  | seconds     | number | No   | Second, for example, **20**. (Required if **ms** is set.) |
->  | ms          | number | No   | Millisecond, for example, **10**.|
+Property modifications made to **TimePickerOptions** during the **TimePicker** scrolling process may not take effect.
+
+The **Date** object is used to handle dates and time. It can be used in the following ways:
+
+**Method 1**: new Date ()
+
+Obtains the current system date and time.
+
+**Method 2**: new Date(value: number | string)
+
+| Name  | Type  | Mandatory| Description  |
+| ------- | ------ | ---- | ------ |
+| value   | number&nbsp;\|&nbsp;string  | Yes| Date format.<br>**number**: number of milliseconds since 00:00:00 on January 1, 1970.<br>**string**: date string in formats such as 2025-02 2025-02-20 08:00:00 or 2025-02 2025-02-20T08:00:00.|
+
+**Method 3**: new Date(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number)
+
+| Name  | Type  | Mandatory| Description  |
+| --------| ------ | ---- | ------ |
+| year        | number | Yes  | Year, for example, **2025**.|
+| monthIndex  | number | Yes  | Month index, for example, **2** for March.|
+| date        | number | No  | Date, for example, **10** (if **hours** is set, **date** cannot be omitted).|
+| hours       | number | No  | Hour, for example, **15** (if **minutes** is set, **hours** cannot be omitted).|
+| minutes     | number | No  | Minute, for example, **20** (if **seconds** is set, **minutes** cannot be omitted).|
+| seconds     | number | No  | Second, for example, **20** (if **ms** is set, **seconds** cannot be omitted).|
+| ms          | number | No  | Millisecond, for example, **10**.|
 
 **Handling in the case of date configuration exceptions**
 
@@ -100,8 +98,8 @@ Enumerates time display formats of the time picker.
 
 | Name              | Value| Description                    |
 | ------------------ | - | ------------------------ |
-| HOUR_MINUTE        | - | Time format displaying hours and minutes.      |
-| HOUR_MINUTE_SECOND | - | Time format displaying hours, minutes, and seconds.|
+| HOUR_MINUTE        | 0 | Time format displaying hours and minutes.      |
+| HOUR_MINUTE_SECOND | 1 | Time format displaying hours, minutes, and seconds.|
 
 ## Attributes
 
@@ -111,7 +109,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 useMilitaryTime(value: boolean)
 
-Sets whether to display the time in 24-hour format. The 12-hour format is used by default.
+Sets whether the time is displayed in 24-hour format. If this attribute is not set, the time is displayed in the system time format by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -121,13 +119,13 @@ Sets whether to display the time in 24-hour format. The 12-hour format is used b
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | boolean | Yes  | Whether to display the time in 24-hour format or 12-hour format.<br>- **true**: 24-hour format.<br>- **false**: 12-hour format.<br>Default value: **false**.|
+| value  | boolean | Yes  | Whether to display the time in 24-hour format or 12-hour format.<br>- **true**: 24-hour format.<br>- **false**: 12-hour format.|
 
 ### useMilitaryTime<sup>18+</sup>
 
 useMilitaryTime(isMilitaryTime: Optional\<boolean>)
 
-Sets whether to display the time in 24-hour format. The 12-hour format is used by default. Compared with [useMilitaryTime](#usemilitarytime), this API supports the **undefined** type for the **isMilitaryTime** parameter.
+Whether the displayed time is in 24-hour format. If this API is not called to set the time format, the system setting is used by default. Compared with [useMilitaryTime](#usemilitarytime), this API supports the **undefined** type for the **isMilitaryTime** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -137,7 +135,7 @@ Sets whether to display the time in 24-hour format. The 12-hour format is used b
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | ------------------------------------------ |
-| isMilitaryTime | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to display the time in 24-hour format or 12-hour format.<br>- **true**: 24-hour format.<br>- **false**: 12-hour format.<br>Default value: **false**.<br>If the value of **isMilitaryTime** is **undefined**, the default value is used.|
+| isMilitaryTime | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to display the time in 24-hour format or 12-hour format.<br>- **true**: 24-hour format.<br>- **false**: 12-hour format.<br>When the value of isMilitaryTime is undefined, the system setting is used.|
 
 ### disappearTextStyle<sup>10+</sup>
 
@@ -325,6 +323,16 @@ enableHapticFeedback(enable: boolean)
 
 Sets whether to enable haptic feedback.
 
+To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
+
+``` json
+"requestPermissions": [
+   {
+      "name": "ohos.permission.VIBRATE",
+   }
+]
+```
+
 >**NOTE**
 >
 > This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 18.
@@ -339,22 +347,21 @@ Sets whether to enable haptic feedback.
 | ------ | --------------------------------------------- | ----- |-------------------------------------------------------------------------------------|
 | enable  | boolean | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>Whether this parameter takes effect after being set to **true** depends on hardware support.|
 
->  **NOTE**
->
->  To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
->  ```json
->  "requestPermissions": [
->  {
->   "name": "ohos.permission.VIBRATE",
->  }
->  ]
->  ```
-
 ### enableHapticFeedback<sup>18+</sup>
 
 enableHapticFeedback(enable: Optional\<boolean>)
 
 Sets whether to enable haptic feedback. Compared with [enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback12), this API supports the **undefined** type for the **enable** parameter.
+
+To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
+
+``` json
+"requestPermissions": [
+  {
+    "name": "ohos.permission.VIBRATE",
+  }
+]
+```
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -366,22 +373,11 @@ Sets whether to enable haptic feedback. Compared with [enableHapticFeedback<sup>
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
 | enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>If the value of **enable** is **undefined**, the default value is used.<br>Whether this parameter takes effect after being set to **true** depends on hardware support.|
 
->  **NOTE**
->
->  To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
->  ```json
->  "requestPermissions": [
->  {
->   "name": "ohos.permission.VIBRATE",
->  }
->  ]
->  ```
-
 ### enableCascade<sup>18+</sup>
 
 enableCascade(enabled: boolean)
 
-Sets whether the AM/PM indicator automatically switches based on the hour value. This setting only takes effect when **useMilitaryTime** is set to **false**.
+Sets whether the AM/PM indicator automatically switches based on the hour value. Only takes effect when [useMilitaryTime](#usemilitarytime) is set to **false**.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -391,7 +387,7 @@ Sets whether the AM/PM indicator automatically switches based on the hour value.
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enabled | boolean | Yes  | Whether the AM/PM indicator automatically switches based on the hour value. This setting only takes effect when **useMilitaryTime** is set to **false**.<br>- **true**: The AM/PM indicator automatically switches based on the hour value.<br>- **false**: The AM/PM indicator remains static regardless of hour changes.<br>Default value: **false**.<br>When **enabled** is set to **true**, it only takes effect if the **loop** parameter is also **true**.|
+| enabled | boolean | Yes  | Sets whether the AM/PM indicator automatically switches based on the hour value. This setting only takes effect when **useMilitaryTime** is set to **false**.<br>- **true**: The AM/PM indicator automatically switches based on the hour value.<br>- **false**: The AM/PM indicator remains static regardless of hour changes.<br>Default value: **false**.<br>When **enabled** is set to **true**, it only takes effect if the **loop** parameter is also **true**.|
 
 ### digitalCrownSensitivity<sup>18+</sup>
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
@@ -418,7 +414,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 ### onChange
 
-onChange(callback: (value: TimePickerResult ) =&gt; void)
+onChange(callback:&nbsp;(value:&nbsp;TimePickerResult )&nbsp;=&gt;&nbsp;void)
 
 Triggered when the time picker snaps to the selected item. This event cannot be triggered by two-way bound state variables.
 
@@ -512,7 +508,7 @@ Describes a time in 24-hour format.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                | Type  | Read-Only| Optional| Description                               |
+| Name                | Type  | Read Only| Optional| Description                               |
 | -------------------- | ------ | ---- | ---- | ----------------------------------- |
 | hour                 | number | No  | No  | Hour portion of the selected time.<br>Value range: [0-23]|
 | minute               | number | No  | No  | Minute portion of the selected time.<br>Value range: [0-59]|
@@ -728,6 +724,8 @@ struct TimePickerExample {
 ### Example 7: Enabling the AM/PM Indicator to Automatically Switch Based on the Hour Value in 12-hour Format
 
 This example demonstrates how to enable the AM/PM indicator to automatically switch based on the hour value in 12-hour format using [enableCascade](#enablecascade18) and [loop](#loop11).
+
+The **enableCascade** API is added since API version 18.
 
 ```ts
 // xxx.ets

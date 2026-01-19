@@ -1,4 +1,4 @@
-# Introduction to Ability Kit
+# About This Kit
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

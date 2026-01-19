@@ -69,7 +69,7 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
    NavDestination() {
      Column() {
        // ...
-       // $r('app.media.startIcon')需要替换为开发者所需的资源文件
+       // 请将$r('app.media.startIcon')替换为实际资源文件
        Image($r('app.media.startIcon'))
          .geometryTransition('sharedId')
          .width(100)
@@ -84,7 +84,7 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
    // 目的页配置共享元素id
    NavDestination() {
      Column() {
-       // $r('app.media.startIcon')需要替换为开发者所需的资源文件
+       // 请将$r('app.media.startIcon')替换为实际资源文件
        Image($r('app.media.startIcon'))
          .geometryTransition('sharedId')
          .width(200)

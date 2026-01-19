@@ -39,7 +39,7 @@ Since API version 19, the custom dialog box provides lifecycle callbacks to noti
    
      build() {
        Column() {
-         // The value in the $r('app.string.i_am_content') resource file is 'I am content.'
+         // Replace $r('app.string.i_am_content') with the actual resource file. In this example, the value in the resource file is "I am content."
          Text($r('app.string.i_am_content'))
            .fontSize(20)
        }.height(60).justifyContent(FlexAlign.Center)
@@ -63,7 +63,6 @@ Since API version 19, the custom dialog box provides lifecycle callbacks to noti
    }
    ```
    
-
 3. Click the component bound to the **onClick** event to display the dialog box.
    
    <!-- @[create_custom_dialog_new_customDialog_controller_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
@@ -109,17 +108,17 @@ Custom dialog boxes support data interactions to complete various operations.
    
      build() {
        Column() {
-         // The value in the $r('app.string.i_am_content') resource file is 'I am content.'
+         // Replace $r('app.string.i_am_content') with the actual resource file. In this example, the value in the resource file is "I am content."
          Text($r('app.string.i_am_content')).fontSize(20).margin({ top: 10, bottom: 10 })
          Flex({ justifyContent: FlexAlign.SpaceAround }) {
-           Button('Cancel')
+           Button('cancel')
              .onClick(() => {
                this.controller?.close();
                if (this.cancel) {
                  this.cancel();
                }
              }).backgroundColor(0xffffff).fontColor(Color.Black)
-           Button('Obtain')
+           Button('confirm')
              .onClick(() => {
                this.controller?.close();
                if (this.confirm) {
@@ -188,23 +187,23 @@ Custom dialog boxes support data interactions to complete various operations.
       build() {
         Column({ space: 20 }) {
           if (this.textValue !== '') {
-            // The value in the $r('app.string.the_second_page_is') resource file is 'Content of the second page.'
+            // Replace $r('app.string.the_second_page_is') with the actual resource file. In this example, the value in the resource file is "Content of the second page."
             Text($r('app.string.the_second_page_is')+`: ${this.textValue}`)
               .fontSize(20)
           } else {
-            // The value in the $r('app.string.whether_to_get_the_second_page') resource file is 'Obtain the content of the second page?'
+            // Replace $r('app.string.whether_to_get_the_second_page') with the actual resource file. In this example, the value in the resource file is "Obtain the content of the second page?"
             Text($r('app.string.whether_to_get_the_second_page'))
               .fontSize(20)
           }
           Flex({ justifyContent: FlexAlign.SpaceAround }) {
-            Button('Cancel')
+            Button('cancel')
               .onClick(() => {
                 if (this.controller !== undefined) {
                   this.controller.close();
                   this.cancel();
                 }
               }).backgroundColor(0xffffff).fontColor(Color.Black)
-            Button('Obtain')
+            Button('confirm')
               .onClick(() => {
                 if (this.controller !== undefined && this.textValue !== '') {
                   this.controller.close();
@@ -283,7 +282,7 @@ Custom dialog boxes support data interactions to complete various operations.
     @Entry
     @Component
     struct IndexNew {
-      // The value in the $r('app.string.click_and_return') resource file is 'Touch to go back.'
+      // Replace $r('app.string.click_and_return') with the actual resource file. In this example, the value in the resource file is "Back."
       @State message: string = $r('app.string.click_and_return');
     
       build() {
@@ -310,7 +309,7 @@ Custom dialog boxes support data interactions to complete various operations.
 
 ## Defining the Custom Dialog Box Animation
 
-You can define the custom dialog box animation, including its duration and speed, through **openAnimation**.
+You can define the custom dialog box animation, including its duration and speed, through **openAnimation** of [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions).
 
 <!-- @[dialog_animation_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogAnimationNew.ets) -->
 
@@ -388,7 +387,7 @@ struct CustomDialogExample {
 
   build() {
     Column() {
-      // The value in the $r('app.string.i_am_content') resource file is 'I am content.'
+      // Replace $r('app.string.i_am_content') with the actual resource file. In this example, the value in the resource file is "I am content."
       Text($r('app.string.i_am_content')).fontSize(16).margin({ bottom: 10 })
     }
   }
@@ -563,7 +562,7 @@ Note: Defining dialog 2 within dialog 1 is not recommended, as components cannot
 ## Implementing Physical Back Button Interception
 
 When the **onWillDismiss** callback in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) is registered, the dialog box will not be dismissed immediately after the user touches the mask or the Back button, presses the Esc key, or swipes left or right on the screen. The callback provides the dismissal reason via **reason** in [DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12), allowing conditional dismissal.
- 
+
 <!-- @[dialog_with_physical_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogWithPhysicalBack.ets) -->
 
 ``` TypeScript
@@ -584,7 +583,7 @@ struct CustomDialogExample {
           bottom: 10
         })
       Row() {
-        Button('Cancel')
+        Button('cancel')
           .onClick(() => {
             if (this.controller !== undefined) {
               this.controller.close();
@@ -592,7 +591,7 @@ struct CustomDialogExample {
           })
           .backgroundColor(0xffffff)
           .fontColor(Color.Black)
-        Button('Obtain')
+        Button('confirm')
           .onClick(() => {
             if (this.controller !== undefined) {
               this.controller.close();
@@ -665,8 +664,9 @@ export struct DialogWithPhysicalBack {
 ## Setting the Distance Between the Dialog Box and the Soft Keyboard
 
 To maintain dialog box independence, dialog boxes automatically avoid surrounding elements like status bars, navigation bars, and keyboards. When the soft keyboard appears, dialog boxes maintain a default 16 vp distance. Since API version 15, use **keyboardAvoidMode** and **keyboardAvoidDistance** in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) to configure keyboard avoidance behavior.
+
 Note that the value of **keyboardAvoidMode** should be set to **KeyboardAvoidMode.DEFAULT**.
-  
+
 <!-- @[dialog_avoid_soft_key_board](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogAvoidSoftKeyboard.ets) -->
 
 ``` TypeScript
@@ -676,6 +676,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 @CustomDialog
 struct CustomDialogExample {
   controller?: CustomDialogController;
+
   build() {
     Column() {
       Column() {
@@ -692,15 +693,14 @@ struct CustomDialogExample {
 @Component
 export struct DialogAvoidSoftKeyboard {
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
-    }),
+    builder: CustomDialogExample({}),
     autoCancel: true,
     gridCount: 4,
     showInSubWindow: true,
     isModal: true,
     customStyle: false,
     cornerRadius: 30,
-    alignment:DialogAlignment.Bottom,
+    alignment: DialogAlignment.Bottom,
     keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // The dialog box automatically avoids the soft keyboard.
     keyboardAvoidDistance: LengthMetrics.vp(0) // The distance between the soft keyboard and the dialog box is 0 vp.
   })
@@ -709,7 +709,7 @@ export struct DialogAvoidSoftKeyboard {
     NavDestination() {
       Row() {
         Row({ space: 20 }) {
-          // The value in the $r('app.string.open_windows') resource file is 'Open.'
+          // Replace $r('app.string.open_windows') with the actual resource file. In this example, the value in the resource file is "Open."
           Text($r('app.string.open_windows'))
             .fontSize(30)
             .onClick(() => {
@@ -727,11 +727,12 @@ export struct DialogAvoidSoftKeyboard {
 ```
 
 
-
+ ![UIContextPromptAction](figures/UIContextPromptActionCustomDialog.gif)
 
 ## Obtaining the Dialog Box Status
 
 In service modules, multiple dialog boxes may appear simultaneously. To prevent duplicate openings, check the dialog box status via the controller before display. If a dialog box is already displayed, do not open it again.
+
 The **getState** API, available since API version 20, obtains the current dialog box status. For details about the dialog box status, see [CommonState](../reference/apis-arkui/js-apis-promptAction.md#commonstate20).
 
 The following example uses [getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18) and [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller) to obtain the dialog box status.
@@ -746,21 +747,21 @@ struct CustomDialogExample {
 
   build() {
     Column() {
-      // The value in the $r('app.string.search_by_dialog') resource file is 'Check Status: Custom Component Controller.'
+      // Replace $r('app.string.search_by_dialog') with the actual resource file. In this example, the value in the resource file is "Check Status: Custom Component Controller."
       Button($r('app.string.search_by_dialog'))
         .onClick(() => {
           if (this.getDialogController() !== undefined) {
-            hilog.info(DOMAIN, 'testTag', 'state:' + this.getDialogController().getState())
+            hilog.info(DOMAIN, 'testTag', 'state:' + this.getDialogController().getState());
           } else {
-            hilog.info(DOMAIN, 'testTag', 'state: no exist')
+            hilog.info(DOMAIN, 'testTag', 'state: no exist');
           }
         }).margin(20)
-      // The value in the $r('app.string.search_by_dialog_controller') resource file is 'Check Status: CustomDialogController.'
+      // Replace $r('app.string.search_by_dialog_controller') with the actual resource file. In this example, the value in the resource file is "Check Status: CustomDialogController."
       Button($r('app.string.search_by_dialog_controller'))
         .onClick(() => {
-          hilog.info(DOMAIN, 'testTag', 'state:' + this.controller?.getState())
+          hilog.info(DOMAIN, 'testTag', 'state:' + this.controller?.getState());
         }).margin(20)
-      // The value in the $r('app.string.close_widows') resource file is 'Close Dialog Box.'
+      // Replace $r('app.string.close_widows') with the actual resource file. In this example, the value in the resource file is "Close Dialog Box."
       Button($r('app.string.close_widows'))
         .onClick(() => {
           if (this.getDialogController() !== undefined) {
@@ -796,5 +797,4 @@ export struct GetDialogStatus {
 }
 ```
 
-
-<!--no_check-->
+![getState1](figures/getState1.gif)

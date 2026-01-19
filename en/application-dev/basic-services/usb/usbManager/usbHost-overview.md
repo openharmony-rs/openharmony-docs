@@ -10,6 +10,7 @@
 ## Basic Concepts
 
 The USB service is an abstraction of underlying hardware-based USB devices. It is classified into a host and a device.
+
 In a host, with the APIs provided by the USB service, you can obtain the list of connected USB devices, manage device access permissions, and perform data transfer or control transfer with the connected devices. In addition, for transfer modes, synchronous transfer and asynchronous transfer are available; for transfer types, interrupt transfer, isochronous transfer, and bulk transfer are supported. Before data transfer, you need to obtain the device list, verify the device access permission, enable or connect to the device, and declare the device APIs.
 
 

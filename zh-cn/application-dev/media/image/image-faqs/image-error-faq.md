@@ -91,7 +91,7 @@ C接口统一通过[Image错误码](../../../reference/apis-image-kit/errorcode-
 
 1. 通过ImageInfo获取图像信息。
 
-`Image_ErrorCode OH_PixelmapNative_GetImageInfo(OH_PixelmapNative *pixelmap, OH_Pixelmap_ImageInfo *imageInfo)`
+   `Image_ErrorCode OH_PixelmapNative_GetImageInfo(OH_PixelmapNative *pixelmap, OH_Pixelmap_ImageInfo *imageInfo)`
 
    ```cpp
    // 需要在src/main/cpp/CMakeLists.txt文件中链接so库文件：target_link_libraries(entry PUBLIC libhilog_ndk.z.so libpixelmap.so)。
@@ -138,7 +138,7 @@ C接口统一通过[Image错误码](../../../reference/apis-image-kit/errorcode-
 
 2. 修改EXIF信息。
 
-`Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)`
+   `Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)`
 
    ```cpp
    // 需要在src/main/cpp/CMakeLists.txt文件中链接so库文件：target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)。

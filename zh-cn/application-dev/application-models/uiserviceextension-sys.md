@@ -171,7 +171,6 @@
     ```json
     {
       "module": {
-        // ...
         "extensionAbilities": [
           {
             "name": "UIServiceExtAbility",
@@ -249,9 +248,8 @@ struct Index {
 
       build() {
         Column() {
-          //...
           Row() {
-            //...
+            // ...
           }.onClick(() => {
             const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             const want: Want = {
@@ -293,9 +291,8 @@ struct Index {
 
       build() {
         Column() {
-          //...
           Row() {
-            //...
+            // ...
           }.onClick(() => {
             const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             // this.uiServiceProxy是连接时保存的proxy对象

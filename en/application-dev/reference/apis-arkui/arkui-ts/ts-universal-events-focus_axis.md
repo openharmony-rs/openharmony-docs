@@ -1,7 +1,7 @@
 # Focus Axis Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -80,7 +80,9 @@ struct FocusAxisEventExample {
           let absBrake = event.axisMap.get(AxisModel.ABS_BRAKE);
           let absHat0X = event.axisMap.get(AxisModel.ABS_HAT0X);
           let absHat0Y = event.axisMap.get(AxisModel.ABS_HAT0Y);
-          this.axisValue = 'absX: ' + absX + '; absY: ' + absY + '; absZ: ' + absZ + '; absRz: ' + absRz + '; absGas: ' + absGas + '; absBrake: ' + absBrake + '; absHat0X: ' + absHat0X + '; absHat0Y: ' + absHat0Y;
+          this.axisValue =
+            'absX: ' + absX + '; absY: ' + absY + '; absZ: ' + absZ + '; absRz: ' + absRz + '; absGas: ' + absGas +
+              '; absBrake: ' + absBrake + '; absHat0X: ' + absHat0X + '; absHat0Y: ' + absHat0Y;
           this.text = JSON.stringify(event);
         })
       Text(this.axisValue).padding(15)
@@ -90,6 +92,6 @@ struct FocusAxisEventExample {
 }
 ```
 
-When the game controller's joystick is moved, the **onFocusAxisEvent** callback is triggered, and the axis values are updated accordingly.
+The figure below shows the result when the game controller's joystick is moved.
 
 ![onFocusAxisEvent](figures/onFocusAxisEvent.png)

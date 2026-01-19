@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-- [Introduction to Connectivity Kit](connectivity-kit-intro.md)
+- [About This Kit](connectivity-kit-intro.md)
 - Bluetooth<!--bluetooth-->
   - [Bluetooth Overview](bluetooth/bluetooth-overview.md)
   - [Bluetooth Setting Development](bluetooth/br-development-guide.md)

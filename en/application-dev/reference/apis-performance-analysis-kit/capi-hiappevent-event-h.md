@@ -43,6 +43,7 @@ Defines the names of all predefined events. In addition to custom events associa
 | [EVENT_APP_KILLED](#event_app_killed) "APP_KILLED"                                                         | Application killed event.<br>**Since**: 20     |
 | [EVENT_AUDIO_JANK_FRAME](#event_audio_jank_frame) "AUDIO_JANK_FRAME"                                       | Audio jank event.<br>**Since**: 21     |
 | [DOMAIN_OS](#domain_os) "OS"                                                                               | OS scope.<br>**Since**: 12       |
+| [EVENT_MAIN_THREAD_JANK_V2](#event_main_thread_jank_v2) "MAIN_THREAD_JANK_V2"                              | Sets the main thread jank event configuration policy.<br>**Since**: 22   |
 
 ## Macro Description
 
@@ -237,3 +238,15 @@ Audio jank event.
 OS scope.
 
 **Since**: 12
+
+### EVENT_MAIN_THREAD_JANK_V2
+
+```c
+#define EVENT_MAIN_THREAD_JANK_V2 "MAIN_THREAD_JANK_V2"
+```
+
+**Description**
+
+Sets the main thread jank event configuration policy.
+
+**Since**: 22

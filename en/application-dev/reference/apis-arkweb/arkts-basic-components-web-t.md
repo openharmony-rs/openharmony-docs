@@ -10,7 +10,7 @@
 >
 > - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## WebviewController<sup>9+</sup>
 
@@ -154,8 +154,7 @@ Defines a callback invoked when the first meaningful paint occurs on the page.
 
 ## OnLargestContentfulPaintCallback<sup>12+</sup>
 
-type OnLargestContentfulPaintCallback = (largestContentfulPaint: [LargestContentfulPaint](./arkts-basic-components-web-i.md#largestcontentfulpaint12
-)) => void
+type OnLargestContentfulPaintCallback = (largestContentfulPaint: [LargestContentfulPaint](./arkts-basic-components-web-i.md#largestcontentfulpaint12)) => void
 
 Defines a callback invoked when the largest content paint occurs on the web page.
 

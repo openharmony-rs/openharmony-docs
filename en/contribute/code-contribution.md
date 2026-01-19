@@ -8,14 +8,14 @@
 
 - [OpenHarmony Security Design Specifications](OpenHarmony-security-design-guide.md)
 
-- [OpenHarmony Build Specifications](https://gitee.com/openharmony/community/blob/master/sig/sig_buildsystem/sig_build_system.md)
+- [OpenHarmony Build Specifications](https://gitcode.com/openharmony/community/blob/master/sig/sig_buildsystem/sig_build_system.md)
 
 ### Coding Style
 
 Develop, review, and test code following the OpenHarmony coding standards. Make sure code is written in the same style.
 
 - [TypeScript and JavaScript Coding Style Guide](OpenHarmony-Application-Typescript-JavaScript-coding-guide.md)
-- [TypeScript and JavaScript High-Performance Programming Practices and Tools](../application-dev/performance/high-performance-programming.md)
+- TypeScript and JavaScript High-Performance Programming Practices and Tools
 - [C++ Coding Style Guide](OpenHarmony-cpp-coding-style-guide.md)
 - [C Coding Style Guide](OpenHarmony-c-coding-style-guide.md)
 - [JavaScript Coding Style Guide](OpenHarmony-JavaScript-coding-style-guide.md) 
@@ -40,5 +40,5 @@ Develop, review, and test code following the OpenHarmony coding standards. Make 
 
 ## Security Issue Disclosure
 
-- [OpenHarmony Security Vulnerability Governance](https://gitee.com/openharmony/security/blob/master/en/security-process/README.md)
-- [OpenHarmony Security and Disclosure Statement](https://gitee.com/openharmony/security/blob/master/en/security-process/security-disclosure.md)
+- [OpenHarmony Security Vulnerability Governance](https://gitcode.com/openharmony/security/blob/master/en/security-process/README.md)
+- [OpenHarmony Security and Disclosure Statement](https://gitcode.com/openharmony/security/blob/master/en/security-process/security-disclosure.md)

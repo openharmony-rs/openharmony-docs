@@ -15,7 +15,7 @@
 
 **Error Information**
 
-VPN creation denied. Check the user type.
+VPN creation denied, please check the user type.
 
 **Description**
 
@@ -34,7 +34,7 @@ Check the type of the login user.
 
 **Error Information**
 
-VPN already exists.
+VPN exist already, please execute destory first.
 
 **Description**
 

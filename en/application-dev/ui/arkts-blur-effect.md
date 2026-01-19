@@ -41,7 +41,7 @@ struct BlurEffectsExample {
         .fontColor(Color.White)
         .textAlign(TextAlign.Center)
         .backdropBlur(10)// Apply background blur.
-         // Replace $r("app.media.bg") with the image resource file you use.
+        // Replace $r('app.media.bg') with the actual resource file.
         .backgroundImage($r('app.media.bg'))
         .backgroundImageSize({ width: 400, height: 300 })
     }
@@ -69,10 +69,12 @@ struct Index {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State radius: number = 0;
   @State text: string = '';
-  @State y: Resource | string = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text1').id);// The value in the app.string.animation_blur_text1 resource file is 'Finger not on the screen.'
+  @State y: Resource | string = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text1').id);// Configure the resource whose name is 'animation_blur_text1' and value is a non-empty string in the resources\base\element\string.json file.
 
   aboutToAppear() {
-    // Replace $r('app.string.xxx') with the resource file you use.
+    // Configure the resource whose name is 'animation_blur_text2' and value is a non-empty string in the resources\base\element\string.json file.
+    // Configure the resource whose name is 'animation_blur_text3' and value is a non-empty string in the resources\base\element\string.json file.
+    // Configure the resource whose name is 'animation_blur_text4' and value is a non-empty string in the resources\base\element\string.json file.
     this.text = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text2').id) + 
     "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text3').id) + this.y +
       "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text4').id) + this.radius;
@@ -86,7 +88,7 @@ struct Index {
         .fontWeight(FontWeight.Bold)
         .fontFamily("cursive")
         .fontStyle(FontStyle.Italic)
-      // Replace $r("app.media.bg") with the image resource file you use.
+      // Replace $r('app.media.bg') with the actual resource file.
       Image($r("app.media.bg"))
         .blur(this.radius)// Apply foreground blur.
         .height('100%')
@@ -102,11 +104,13 @@ struct Index {
         }
         if (event.type === TouchType.Up) {
           this.radius = 0;
-          // The value in the app.string.animation_blur_text1 resource file is 'Finger not on the screen.'
+          // Configure a resource whose name is 'animation_blur_text1' and value is a non-empty string in the resources\base\element\string.json file.
           this.y = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text1').id);
         }
       }
-      // Replace $r('app.string.xxx') with the resource file you use.
+      // Configure the resource whose name is 'animation_blur_text2' and value is a non-empty string in the resources\base\element\string.json file.
+      // Configure the resource whose name is 'animation_blur_text3' and value is a non-empty string in the resources\base\element\string.json file.
+      // Configure the resource whose name is 'animation_blur_text4' and value is a non-empty string in the resources\base\element\string.json file.
       this.text = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text2').id) + "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text3').id) + this.y +
         "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text4').id) + this.radius;
     })
@@ -115,12 +119,12 @@ struct Index {
 ```
 
 
-
+![en-us_image_0000001599813588](figures/en-us_image_0000001599813588.gif)
 
 
 ## Applying Background Blur with backgroundBlurStyle
 
-<!-- @[animationBlur_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template3/BackDropBlurStyleDemo.ets) -->
+<!-- @[animationBlur_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template3/BackDropBlurStyleDemo.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -131,7 +135,7 @@ struct BackDropBlurStyleDemo {
       GridItem() {
         Column() {
           Column() {
-            // The value in the $r('app.string.originalImage') resource file is 'Original.'
+            // Replace $r('app.string.originalImage') with the actual resource file. In this example, the value in the resource file is "Original."
             Text($r('app.string.originalImage'))
               .fontSize(20)
               .fontColor(Color.White)
@@ -142,15 +146,16 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
 
-          // The value in the $r('app.string.originalImage') resource file is 'Original.'
+          // Replace $r('app.string.originalImage') with the actual resource file. In this example, the value in the resource file is "Original."
           Text($r('app.string.originalImage'))
             .fontSize(12)
             .fontColor(Color.Black)
         }
         .height('100%')
+        .margin({ top: 20 })
         .justifyContent(FlexAlign.Start)
       }
       .width(200)
@@ -169,7 +174,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
           // BlurStyle.Thin: Thin blur is applied.
           // ThemeColorMode.LIGHT: The light color mode is used.
@@ -186,6 +191,7 @@ struct BackDropBlurStyleDemo {
             .fontColor(Color.Black)
         }
         .height('100%')
+        .margin({ top: 20 })
         .justifyContent(FlexAlign.Start)
       }
       .width(200)
@@ -204,7 +210,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.Regular, {
             colorMode: ThemeColorMode.LIGHT,
@@ -235,7 +241,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.Thick, {
             colorMode: ThemeColorMode.LIGHT,
@@ -266,7 +272,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_THIN, {
             colorMode: ThemeColorMode.LIGHT,
@@ -297,7 +303,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_REGULAR, {
             colorMode: ThemeColorMode.LIGHT,
@@ -328,7 +334,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -359,7 +365,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_ULTRA_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -404,7 +410,7 @@ struct ForegroundBlurStyleDemo {
       GridItem() {
         Column() {
           Column() {
-            // The value in the $r('app.string.originalImage') resource file is 'Original.'
+            // Replace $r('app.string.originalImage') with the actual resource file. In this example, the value in the resource file is "Original."
             Text($r('app.string.originalImage'))
               .fontSize(20)
               .fontColor(Color.White)
@@ -415,10 +421,10 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
 
-          // The value in the $r('app.string.originalImage') resource file is 'Original.'
+          // Replace $r('app.string.originalImage') with the actual resource file. In this example, the value in the resource file is "Original."
           Text($r('app.string.originalImage'))
             .fontSize(12)
             .fontColor(Color.Black)
@@ -442,7 +448,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
           // BlurStyle.Thin: Thin blur is applied.
           // ThemeColorMode.LIGHT: The light color mode is used.
@@ -477,7 +483,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.Regular, {
             colorMode: ThemeColorMode.LIGHT,
@@ -508,7 +514,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.Thick, {
             colorMode: ThemeColorMode.LIGHT,
@@ -539,7 +545,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_THIN, {
             colorMode: ThemeColorMode.LIGHT,
@@ -570,7 +576,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_REGULAR, {
             colorMode: ThemeColorMode.LIGHT,
@@ -601,7 +607,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -632,7 +638,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // Replace $r('app.media.bg') with the resource file you use.
+          // Replace $r('app.media.bg') with the actual resource file.
           .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_ULTRA_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -683,7 +689,7 @@ struct motionBlurTest {
   build() {
     Column() {
       Column() {
-        // Replace $r('app.media.testImg') with the resource file you use.
+        // Replace $r('app.media.testImg') with the actual resource file.
         Image($r('app.media.testImg'))
           .width(this.widthSize)
           .height(this.heightSize)

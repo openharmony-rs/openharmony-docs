@@ -21,7 +21,7 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
 
-## launcherBundleManager.getLauncherAbilityInfo<sup>9+</sup>
+## launcherBundleManager.getLauncherAbilityInfo
 
 getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>) : void
 
@@ -61,22 +61,22 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    launcherBundleManager.getLauncherAbilityInfo('com.example.demo', 100,
-        (errData: BusinessError, data: launcherBundleManager.LauncherAbilityInfo[]) => {
-        if (errData !== null) {
-            console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-        } else {
-            console.info('data is ' + JSON.stringify(data));
-        }
+  launcherBundleManager.getLauncherAbilityInfo('com.example.demo', 100,
+    (errData: BusinessError, data: launcherBundleManager.LauncherAbilityInfo[]) => {
+      if (errData !== null) {
+        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+      } else {
+        console.info('data is ' + JSON.stringify(data));
+      }
     })
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
-## launcherBundleManager.getLauncherAbilityInfo<sup>9+</sup>
+## launcherBundleManager.getLauncherAbilityInfo
 
 getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
 
@@ -121,20 +121,20 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    launcherBundleManager.getLauncherAbilityInfo("com.example.demo", 100)
-        .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
-        console.info('data is ' + JSON.stringify(data));
-    }).catch ((errData: BusinessError) => {
-        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-    })
+  launcherBundleManager.getLauncherAbilityInfo("com.example.demo", 100)
+    .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
+      console.info('data is ' + JSON.stringify(data));
+    }).catch((errData: BusinessError) => {
+    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+  })
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
-## launcherBundleManager.getAllLauncherAbilityInfo<sup>9+</sup>
+## launcherBundleManager.getAllLauncherAbilityInfo
 
 getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>) : void
 
@@ -172,21 +172,21 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    launcherBundleManager.getAllLauncherAbilityInfo(100,
-        (errData: BusinessError, data: launcherBundleManager.LauncherAbilityInfo[]) => {
-        if (errData !== null) {
-            console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-        } else {
-            console.info('data is ' + JSON.stringify(data));
-        }
+  launcherBundleManager.getAllLauncherAbilityInfo(100,
+    (errData: BusinessError, data: launcherBundleManager.LauncherAbilityInfo[]) => {
+      if (errData !== null) {
+        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+      } else {
+        console.info('data is ' + JSON.stringify(data));
+      }
     });
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
-## launcherBundleManager.getAllLauncherAbilityInfo<sup>9+</sup>
+## launcherBundleManager.getAllLauncherAbilityInfo
 
 getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
 
@@ -229,20 +229,20 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    launcherBundleManager.getAllLauncherAbilityInfo(100)
-        .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
-        console.info('data is ' + JSON.stringify(data));
-    }).catch ((errData: BusinessError) => {
-        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-    });
+  launcherBundleManager.getAllLauncherAbilityInfo(100)
+    .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
+      console.info('data is ' + JSON.stringify(data));
+    }).catch((errData: BusinessError) => {
+    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+  });
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
-## launcherBundleManager.getShortcutInfo<sup>9+</sup>
+## launcherBundleManager.getShortcutInfo
 
 getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo\>\>) : void
 
@@ -282,22 +282,22 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    launcherBundleManager.getShortcutInfo("com.example.demo",
-        (errData: BusinessError, data: launcherBundleManager.ShortcutInfo[]) => {
-        if (errData !== null) {
-            console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-        } else {
-            console.info('data is ' + JSON.stringify(data));
-        }
+  launcherBundleManager.getShortcutInfo("com.example.demo",
+    (errData: BusinessError, data: launcherBundleManager.ShortcutInfo[]) => {
+      if (errData !== null) {
+        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+      } else {
+        console.info('data is ' + JSON.stringify(data));
+      }
     });
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
-## launcherBundleManager.getShortcutInfo<sup>9+</sup>
+## launcherBundleManager.getShortcutInfo
 
 getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 
@@ -342,16 +342,16 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    launcherBundleManager.getShortcutInfo("com.example.demo")
-        .then((data: launcherBundleManager.ShortcutInfo[]) => {
-        console.info('data is ' + JSON.stringify(data));
-    }).catch ((errData: BusinessError) => {
-        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-    });
+  launcherBundleManager.getShortcutInfo("com.example.demo")
+    .then((data: launcherBundleManager.ShortcutInfo[]) => {
+      console.info('data is ' + JSON.stringify(data));
+    }).catch((errData: BusinessError) => {
+    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+  });
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -400,12 +400,12 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let data = launcherBundleManager.getShortcutInfoSync("com.example.demo");
-    console.info('data is ' + JSON.stringify(data));
+  let data = launcherBundleManager.getShortcutInfoSync("com.example.demo");
+  console.info('data is ' + JSON.stringify(data));
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -456,12 +456,12 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let data = launcherBundleManager.getShortcutInfoSync("com.example.demo", 100);
-    console.info('data is ' + JSON.stringify(data));
+  let data = launcherBundleManager.getShortcutInfoSync("com.example.demo", 100);
+  console.info('data is ' + JSON.stringify(data));
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -509,26 +509,26 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let data : Array<launcherBundleManager.ShortcutInfo> = launcherBundleManager.getShortcutInfoSync("com.example.demo");
-    console.info('data is ' + JSON.stringify(data));
-    if (data) {
-        try {
-            launcherBundleManager.startShortcut(data[0])
-                .then(() => {
-                console.info('startShortcut success');
-            }).catch ((err: BusinessError) => {
-                console.error(`errData is errCode:${err.code}  message:${err.message}`);
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`error is errCode:${code}  message:${message}`);
-        }
+  let data: Array<launcherBundleManager.ShortcutInfo> = launcherBundleManager.getShortcutInfoSync("com.example.demo");
+  console.info('data is ' + JSON.stringify(data));
+  if (data) {
+    try {
+      launcherBundleManager.startShortcut(data[0])
+        .then(() => {
+          console.info('startShortcut success');
+        }).catch((err: BusinessError) => {
+        console.error(`errData is errCode:${err.code}  message:${err.message}`);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`error is errCode:${code}  message:${message}`);
     }
+  }
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -541,7 +541,6 @@ Starts an ability based on the specified shortcut information, and carries the r
 The launched ability can obtain the launch reason through the **launchReasonMessage** field of [LaunchParam](js-apis-app-ability-abilityConstant.md#launchparam) and handle service logic accordingly.
 
 **Required permissions**: ohos.permission.START_SHORTCUT and ohos.permission.SET_LAUNCH_REASON_MESSAGE
-
 (If the caller has the ohos.permission.START_SHORTCUT permission but not the ohos.permission.SET_LAUNCH_REASON_MESSAGE permission, the ability can be started, but the shortcut launch reason carried is invalid.)
 
 **System API**: This is a system API.
@@ -581,27 +580,28 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { AbilityConstant } from '@kit.AbilityKit';
 
 try {
-    let data : Array<launcherBundleManager.ShortcutInfo> = launcherBundleManager.getShortcutInfoSync("com.example.myapplication");
-    console.info('startShortcutWithReason data is ' + JSON.stringify(data));
-    let startReason = AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT;
-    if (data) {
-        try {
-            launcherBundleManager.startShortcutWithReason(data[0], startReason)
-                .then(() => {
-                console.info('startShortcutWithReason success');
-            }).catch ((err: BusinessError) => {
-                console.error(`startShortcutWithReason errData is errCode:${err.code}  message:${err.message}`);
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`startShortcutWithReason error is errCode:${code}  message:${message}`);
-        }
+  let data: Array<launcherBundleManager.ShortcutInfo> =
+    launcherBundleManager.getShortcutInfoSync("com.example.myapplication");
+  console.info('startShortcutWithReason data is ' + JSON.stringify(data));
+  let startReason = AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT;
+  if (data) {
+    try {
+      launcherBundleManager.startShortcutWithReason(data[0], startReason)
+        .then(() => {
+          console.info('startShortcutWithReason success');
+        }).catch((err: BusinessError) => {
+        console.error(`startShortcutWithReason errData is errCode:${err.code}  message:${err.message}`);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`startShortcutWithReason error is errCode:${code}  message:${message}`);
     }
+  }
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`startShortcutWithReason errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`startShortcutWithReason errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -651,11 +651,11 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let data = launcherBundleManager.getShortcutInfoByAppIndex("com.example.demo", 1);
-    console.info('getShortcutInfoByAppIndex successfully, data is ' + JSON.stringify(data));
+  let data = launcherBundleManager.getShortcutInfoByAppIndex("com.example.demo", 1);
+  console.info('getShortcutInfoByAppIndex successfully, data is ' + JSON.stringify(data));
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`Failed to getShortcutInfoByAppIndex. Code: ${code}, message: ${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`Failed to getShortcutInfoByAppIndex. Code: ${code}, message: ${message}`);
 }
 ```

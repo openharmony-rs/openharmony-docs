@@ -28,7 +28,7 @@ The memory allocation failed.
 **Solution**
 
 1. Check whether the system is running properly.
-2. Check whether the service data is too long. 
+2. Check whether the service data is too long.
 
 ## 17620002 Runtime Error
 
@@ -64,5 +64,7 @@ An error occurs when the cryptography framework interacts with a third-party alg
 
 **Solution**
 
-1. Check whether the input parameters are correct.
-2. Check whether the third-party algorithm library functions properly.
+Check whether the input parameters of the API or associated APIs are correct.
+
+For details about AES decryption failure, see [AES Decryption Failure Returning 17630001](../../security/CryptoArchitectureKit/crypto-aes-decryption-error-faq.md).
+<!--no_check-->

@@ -281,197 +281,197 @@ The TCP socket connection process on the server is as follows:
 
 1. Import the required socket module.
 
-<!-- @[multicast_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
-
-``` TypeScript
-import { socket } from '@kit.NetworkKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[multicast_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
+   
+   ``` TypeScript
+   import { socket } from '@kit.NetworkKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. Create a **MulticastSocket** object.
 
-<!-- @[multicast_worker_multicast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
-
-``` TypeScript
-// Create a MulticastSocket object.
-let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-```
+   <!-- @[multicast_worker_multicast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
+   
+   ``` TypeScript
+   // Create a MulticastSocket object.
+   let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+   ```
 
 3. Specify a **MulticastSocket** object by the IP address and port number, and add it to the multicast group.
-```ts
-// Construct a object to add it to a multicast group.
-let addr : socket.NetAddress = {
-  address: '239.255.0.1',
-  port: 32123,
-  family: 1
-}
-```
-<!-- @[multicast_worker_multicastConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
-
-``` TypeScript
-// Add the MulticastSocket object to a multicast group.
-multicast.addMembership(addr).then(() => {
-  // ···
-  hilog.info(0x0000, 'testTag', 'addMembership success');
-}).catch((err: BusinessError) => {
-  // ···
-  hilog.error(0x0000, 'testTag', 'addMembership fail');
-});
-```
+   ```ts
+   // Construct a object to add it to a multicast group.
+   let addr : socket.NetAddress = {
+     address: '239.255.0.1',
+     port: 32123,
+     family: 1
+   }
+   ```
+   <!-- @[multicast_worker_multicastConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
+   
+   ``` TypeScript
+   // Add the MulticastSocket object to a multicast group.
+   multicast.addMembership(addr).then(() => {
+     // ...
+     hilog.info(0x0000, 'testTag', 'addMembership success');
+   }).catch((err: BusinessError) => {
+     // ...
+     hilog.error(0x0000, 'testTag', 'addMembership fail');
+   });
+   ```
 
 4. Subscribe to **message** events.
 
-<!-- @[multicast_worker_on_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
-
-``` TypeScript
-// Subscribe to message events and convert the received data of the ArrayBuffer type to strings.
-class SocketInfo {
-  public message: ArrayBuffer = new ArrayBuffer(1);
-  public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
-}
-multicast.on('message', (data: SocketInfo) => {
-  hilog.info(0x0000, 'testTag', 'Received data: ' + JSON.stringify(data))
-  const uintArray = new Uint8Array(data.message)
-  let str = ''
-  for (let i = 0; i < uintArray.length; ++i) {
-    str += String.fromCharCode(uintArray[i])
-  }
-  hilog.info(0x0000, 'testTag', str)
-  // ···
-});
-```
+   <!-- @[multicast_worker_on_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
+   
+   ``` TypeScript
+   // Subscribe to message events and convert the received data of the ArrayBuffer type to strings.
+   class SocketInfo {
+     public message: ArrayBuffer = new ArrayBuffer(1);
+     public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
+   }
+   multicast.on('message', (data: SocketInfo) => {
+     hilog.info(0x0000, 'testTag', 'Received data: ' + JSON.stringify(data))
+     const uintArray = new Uint8Array(data.message)
+     let str = ''
+     for (let i = 0; i < uintArray.length; ++i) {
+       str += String.fromCharCode(uintArray[i])
+     }
+     hilog.info(0x0000, 'testTag', str)
+     // ...
+   });
+   ```
 
 5. Send data in broadcast mode. All **MulticastSocket** objects in the same multicast group for which **message** event listening has been enabled will receive the data.
 
-<!-- @[multicast_worker_send](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
-
-``` TypeScript
-// Send a multicast message.
-multicast.send({ data: 'Hello multicast group!', address: addr }).then(() => {
-  hilog.info(0x0000, 'testTag', 'Multicast: Message sent successfully');
-}).catch((err: BusinessError) => {
-  hilog.error(0x0000, 'testTag', `Multicast: Failed to send message - ${JSON.stringify(err)}`);
-});
-```
+   <!-- @[multicast_worker_send](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
+   
+   ``` TypeScript
+   // Send a multicast message.
+   multicast.send({ data: 'Hello multicast group!', address: addr }).then(() => {
+     hilog.info(0x0000, 'testTag', 'Multicast: Message sent successfully');
+   }).catch((err: BusinessError) => {
+     hilog.error(0x0000, 'testTag', `Multicast: Failed to send message - ${JSON.stringify(err)}`);
+   });
+   ```
 
 6. Unsubscribe from **message** events.
 
-<!-- @[multicast_worker_off_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
-
-``` TypeScript
-// Unsubscribe from message events.
-multicast.off('message');
-```
+   <!-- @[multicast_worker_off_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
+   
+   ``` TypeScript
+   // Unsubscribe from message events.
+   multicast.off('message');
+   ```
 
 7. Drop the **MulticastSocket** object from the multicast group.
 
-<!-- @[multicast_worker_dropMembership](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
-
-``` TypeScript
-// Drop the MulticastSocket object from the multicast group.
-multicast.dropMembership(addr).then(() => {
-// ···
-  hilog.info(0x0000, 'testTag', 'Multicast: Dropped membership successfully');
-}).catch((err: BusinessError) => {
-  hilog.error(0x0000, 'testTag', `Multicast: Failed to drop membership - ${JSON.stringify(err)}`);
-});
-```
+   <!-- @[multicast_worker_dropMembership](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
+   
+   ``` TypeScript
+   // Drop the MulticastSocket object from the multicast group.
+   multicast.dropMembership(addr).then(() => {
+     // ...
+     hilog.info(0x0000, 'testTag', 'Multicast: Dropped membership successfully');
+   }).catch((err: BusinessError) => {
+     hilog.error(0x0000, 'testTag', `Multicast: Failed to drop membership - ${JSON.stringify(err)}`);
+   });
+   ```
 ## Transmitting Data over Local Socket Connections
 
 1. Import the required socket module.
 
-<!-- @[local_socket_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-import { socket } from '@kit.NetworkKit';
-import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[local_socket_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
+   
+   ``` TypeScript
+   import { socket } from '@kit.NetworkKit';
+   import { common } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. Call **constructLocalSocketInstance** to create a **LocalSocket** object.
 
-<!-- @[local_socket_worker_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-// Create a local socket connection. A LocalSocket object is returned.
-let client: socket.LocalSocket = socket.constructLocalSocketInstance();
-```
+   <!-- @[local_socket_worker_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
+   
+   ``` TypeScript
+   // Create a local socket connection. A LocalSocket object is returned.
+   let client: socket.LocalSocket = socket.constructLocalSocketInstance();
+   ```
 
 3. Subscribe to **message** events of the **LocalSocket** object and other events (optional).
 
-<!-- @[local_socket_worker_on_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-client.on('message', (value: socket.LocalSocketMessageInfo) => {
-  const uintArray = new Uint8Array(value.message);
-  let messageView = '';
-  for (let i = 0; i < uintArray.length; i++) {
-    messageView += String.fromCharCode(uintArray[i]);
-  }
-  hilog.info(0x0000, 'testTag', 'total receive: ' + JSON.stringify(value));
-  hilog.info(0x0000, 'testTag', 'message information: ' + messageView);
-});
-
-client.on('connect', () => {
-  // ···
-  hilog.info(0x0000, 'testTag', 'Client connected');
-});
-
-client.on('close', () => {
-  // ···
-  hilog.info(0x0000, 'testTag', 'Client closed');
-});
-```
+   <!-- @[local_socket_worker_on_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
+   
+   ``` TypeScript
+   client.on('message', (value: socket.LocalSocketMessageInfo) => {
+     const uintArray = new Uint8Array(value.message);
+     let messageView = '';
+     for (let i = 0; i < uintArray.length; i++) {
+       messageView += String.fromCharCode(uintArray[i]);
+     }
+     hilog.info(0x0000, 'testTag', 'total receive: ' + JSON.stringify(value));
+     hilog.info(0x0000, 'testTag', 'message information: ' + messageView);
+   });
+   
+   client.on('connect', () => {
+     // ...
+     hilog.info(0x0000, 'testTag', 'Client connected');
+   });
+   
+   client.on('close', () => {
+     // ...
+     hilog.info(0x0000, 'testTag', 'Client closed');
+   });
+   ```
 4. Connect to server based on the specified address of the local socket file. After the connection is established successfully, you can then send data over it.
 
-```ts
-// Specify the address of local socket file to connect to the server.
-let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let sandboxPath: string = context.filesDir + '/testSocket';
-let localAddress : socket.LocalAddress = {
-  address: sandboxPath
-}
-let connectOpt: socket.LocalConnectOptions = {
-  address: localAddress,
-  timeout: 6000
-}
-let sendOpt: socket.LocalSendOptions = {
-  data: 'Hello world!'
-}
-```
-<!-- @[local_socket_worker_sendOpt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-client.connect(connectOpt).then(() => {
-  hilog.info(0x0000, 'testTag', `connect success`);
-  // Send data.
-  client.send(sendOpt).then(() => {
-    hilog.info(0x0000, 'testTag', `send success`);
-  }).catch((err: Object) => {
-    hilog.info(0x0000, 'testTag', `send failed: ` + JSON.stringify(err));
-  });
-}).catch((err: Object) => {
-  hilog.info(0x0000, 'testTag', `connect fail: ` + JSON.stringify(err));
-});
-```
+   ```ts
+   // Specify the address of local socket file to connect to the server.
+   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   let sandboxPath: string = context.filesDir + '/testSocket';
+   let localAddress : socket.LocalAddress = {
+     address: sandboxPath
+   }
+   let connectOpt: socket.LocalConnectOptions = {
+     address: localAddress,
+     timeout: 6000
+   }
+   let sendOpt: socket.LocalSendOptions = {
+     data: 'Hello world!'
+   }
+   ```
+   <!-- @[local_socket_worker_sendOpt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
+   
+   ``` TypeScript
+   client.connect(connectOpt).then(() => {
+     hilog.info(0x0000, 'testTag', `connect success`);
+     // Send data.
+     client.send(sendOpt).then(() => {
+       hilog.info(0x0000, 'testTag', `send success`);
+     }).catch((err: Object) => {
+       hilog.info(0x0000, 'testTag', `send failed: ` + JSON.stringify(err));
+     });
+   }).catch((err: Object) => {
+     hilog.info(0x0000, 'testTag', `connect fail: ` + JSON.stringify(err));
+   });
+   ```
 
 5. If the socket connection is no longer needed, unsubscribe from message events and close the connection.
 
-<!-- @[local_socket_worker_close_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-// If the socket connection is no longer needed, unsubscribe from message events and close the connection.
-client.off('message');
-client.off('connect');
-client.off('close');
-client.close().then(() => {
-  hilog.info(0x0000, 'testTag', 'close client success')
-  // ···
-}).catch((err: Object) => {
-  hilog.error(0x0000, 'testTag', 'close client err: ' + JSON.stringify(err))
-  // ···
-})
-```
+   <!-- @[local_socket_worker_close_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
+   
+   ``` TypeScript
+   // If the socket connection is no longer needed, unsubscribe from message events and close the connection.
+   client.off('message');
+   client.off('connect');
+   client.off('close');
+   client.close().then(() => {
+     hilog.info(0x0000, 'testTag', 'close client success')
+     // ...
+   }).catch((err: Object) => {
+     hilog.error(0x0000, 'testTag', 'close client err: ' + JSON.stringify(err))
+     // ...
+   })
+   ```
 
 ## Transmitting Data over Local Socket Server Connections
 
@@ -479,104 +479,104 @@ The local socket connection process on the server is as follows:
 
 1. Import the required socket module.
 
-<!-- @[local_socket_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-import { socket } from '@kit.NetworkKit';
-import { common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[local_socket_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
+   
+   ``` TypeScript
+   import { socket } from '@kit.NetworkKit';
+   import { common } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. Call **constructLocalSocketServerInstance** to create a **LocalSocketServer** object.
 
-<!-- @[local_socket_server_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-// Create a local socket server connection. A LocalSocketServer object is returned.
-let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
-```
+   <!-- @[local_socket_server_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
+   
+   ``` TypeScript
+   // Create a local socket server connection. A LocalSocketServer object is returned.
+   let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+   ```
 
 3. Bind the address of the local socket file.
 
-  ``` TypeScript
-    // Create and bind the local socket file testSocket for listening.
-    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    let sandboxPath: string = context.filesDir + '/testSocket';
-    let listenAddr: socket.LocalAddress = {
-      address: sandboxPath
-    }
-  ```
-<!-- @[local_socket_worker_server_listen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-server.listen(listenAddr).then(() => {
-  // ···
-  hilog.info(0x0000, 'testTag', `Server listening on ${address}`);
-}).catch((err: object) => {
-  // ···
-  hilog.error(0x0000, 'testTag', `Server listen error: ${JSON.stringify(err)}`);
-});
-```
+   ``` TypeScript
+   // Create and bind the local socket file testSocket for listening.
+   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   let sandboxPath: string = context.filesDir + '/testSocket';
+   let listenAddr: socket.LocalAddress = {
+     address: sandboxPath
+   }
+   ```
+   <!-- @[local_socket_worker_server_listen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
+   
+   ``` TypeScript
+   server.listen(listenAddr).then(() => {
+     // ...
+     hilog.info(0x0000, 'testTag', `Server listening on ${address}`);
+   }).catch((err: object) => {
+     // ...
+     hilog.error(0x0000, 'testTag', `Server listen error: ${JSON.stringify(err)}`);
+   });
+   ```
 
 4. Subscribe to the **connect** and optionally other events of the local socket client . A **LocalSocketConnection** object is returned after a connection established between the client and the server. Through this object, you can subscribe to the **message** and optionally other events of the client, send data over the connection, disconnect from the client, and unsubscribe from events of **LocalSocketConnection**.
 
-<!-- @[local_socket_worker_server_connection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-// Subscribe to connect events of the LocalSocketServer object.
-server.on('connect', (connection: socket.LocalSocketConnection) => {
-  // Subscribe to events of the LocalSocketConnection object.
-  connection.on('error', (err: Object) => {
-    hilog.info(0x0000, 'testTag', 'on error success');
-  });
-
-  connection.on('message', (value: socket.LocalSocketMessageInfo) => {
-    const uintArray = new Uint8Array(value.message);
-    let messageView = '';
-    for (let i = 0; i < uintArray.length; i++) {
-      messageView += String.fromCharCode(uintArray[i]);
-    }
-    hilog.info(0x0000, 'testTag', `Server received: ${messageView}`);
-  });
-
-  connection.on('error', (err: Object) => {
-    hilog.error(0x0000, 'testTag', 'err:' + JSON.stringify(err));
-  })
-
-  // Send data to the client.
-  let sendOpt : socket.LocalSendOptions = {
-    data: 'Hello world!'
-  };
-  connection.send(sendOpt).then(() => {
-    hilog.info(0x0000, 'testTag', 'Server send success');
-  }).catch((err: object) => {
-    hilog.error(0x0000, 'testTag', `Server send failed: ${JSON.stringify(err)}`);
-  });
-
-  // ···
-    // Close the connection between the client and the server.
-    connection.close().then(() => {
-      hilog.info(0x0000, 'testTag', 'close success');
-    }).catch((err: Object) => {
-      hilog.error(0x0000, 'testTag', 'close failed: ' + JSON.stringify(err));
-    });
-
-    // Unsubscribe from events of the LocalSocketConnection object.
-    connection.off('message');
-    connection.off('error');
-  // ···
-});
-```
+   <!-- @[local_socket_worker_server_connection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
+   
+   ``` TypeScript
+   // Subscribe to connect events of the LocalSocketServer object.
+   server.on('connect', (connection: socket.LocalSocketConnection) => {
+     // Subscribe to events of the LocalSocketConnection object.
+     connection.on('error', (err: Object) => {
+       hilog.info(0x0000, 'testTag', 'on error success');
+     });
+   
+     connection.on('message', (value: socket.LocalSocketMessageInfo) => {
+       const uintArray = new Uint8Array(value.message);
+       let messageView = '';
+       for (let i = 0; i < uintArray.length; i++) {
+         messageView += String.fromCharCode(uintArray[i]);
+       }
+       hilog.info(0x0000, 'testTag', `Server received: ${messageView}`);
+     });
+   
+     connection.on('error', (err: Object) => {
+       hilog.error(0x0000, 'testTag', 'err:' + JSON.stringify(err));
+     })
+   
+     // Send data to the client.
+     let sendOpt : socket.LocalSendOptions = {
+       data: 'Hello world!'
+     };
+     connection.send(sendOpt).then(() => {
+       hilog.info(0x0000, 'testTag', 'Server send success');
+     }).catch((err: object) => {
+       hilog.error(0x0000, 'testTag', `Server send failed: ${JSON.stringify(err)}`);
+     });
+   
+     // ...
+       // Close the connection between the client and the server.
+       connection.close().then(() => {
+         hilog.info(0x0000, 'testTag', 'close success');
+       }).catch((err: Object) => {
+         hilog.error(0x0000, 'testTag', 'close failed: ' + JSON.stringify(err));
+       });
+   
+       // Unsubscribe from events of the LocalSocketConnection object.
+       connection.off('message');
+       connection.off('error');
+       // ...
+   });
+   ```
 
 5.  Disable listening for events of the **LocalSocketServer** object.
 
-<!-- @[local_socket_worker_server_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
-
-``` TypeScript
-// Unsubscribe from events of the LocalSocketServer object.
-server.off('connect');
-server.off('error');
-```
+    <!-- @[local_socket_worker_server_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
+    
+    ``` TypeScript
+    // Unsubscribe from events of the LocalSocketServer object.
+    server.off('connect');
+    server.off('error');
+    ```
 
 ## Implementing Encrypted Data Transmission over TLS Socket Connections
 
@@ -584,232 +584,232 @@ To implement the TLS socket process (two-way authentication) on the client, perf
 
 1. Import the required socket module.
 
-<!-- @[two_way_tls_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
-
-``` TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[two_way_tls_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
+   
+   ``` TypeScript
+   import { socket } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. Create a TLSSocket connection. A **TLSSocket** object is returned.
 
-<!-- @[two-way_constructTLSSocketInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
-
-``` TypeScript
-// Create a TLS socket connection (for two-way authentication). A TLSSocketConnection object is returned.
-let tlsSocket: socket.TLSSocket | null = socket.constructTLSSocketInstance();
-```
+   <!-- @[two-way_constructTLSSocketInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
+   
+   ``` TypeScript
+   // Create a TLS socket connection (for two-way authentication). A TLSSocketConnection object is returned.
+   let tlsSocket: socket.TLSSocket | null = socket.constructTLSSocketInstance();
+   ```
 
 3. Bind the local IP address and port. Ensure that the bind operation is successful before subscribing to events of the **TLSSocket** object. Upload the client CA certificate and digital certificate, and call the [connect](../reference/apis-network-kit/js-apis-socket.md#connect9) API to establish a connection. After the connection is successful, call the [send](../reference/apis-network-kit/js-apis-socket.md#send9) API to send data.
-```ts
-  // Bind the local IP address and port number.
-  let ipAddress : socket.NetAddress = {} as socket.NetAddress;
-  ipAddress.address = "192.168.xxx.xxx";
-  ipAddress.port = 4512;
+   ```ts
+   // Bind the local IP address and port number.
+   let ipAddress : socket.NetAddress = {} as socket.NetAddress;
+   ipAddress.address = "192.168.xxx.xxx";
+   ipAddress.port = 4512;
   
-  // Server IP address and port number.
-  let serverAddress : socket.NetAddress = {} as socket.NetAddress;
-  serverAddress.address = "192.168.xxx.xxx";
-  serverAddress.port = 1234;
+   // Server IP address and port number.
+   let serverAddress : socket.NetAddress = {} as socket.NetAddress;
+   serverAddress.address = "192.168.xxx.xxx";
+   serverAddress.port = 1234;
 
-  let tlsSecureOption : socket.TLSSecureOptions = {} as socket.TLSSecureOptions;
-  tlsSecureOption.key = "xxxx";
-  tlsSecureOption.cert = "xxxx";
-  tlsSecureOption.ca = ["xxxx"];
-  tlsSecureOption.password = "xxxx";
-  tlsSecureOption.protocols = [socket.Protocol.TLSv12];
-  tlsSecureOption.useRemoteCipherPrefer = true;
-  tlsSecureOption.signatureAlgorithms = "rsa_pss_rsae_sha256:ECDSA+SHA256";
-  tlsSecureOption.cipherSuite = "AES256-SHA256";
+   let tlsSecureOption : socket.TLSSecureOptions = {} as socket.TLSSecureOptions;
+   tlsSecureOption.key = "xxxx";
+   tlsSecureOption.cert = "xxxx";
+   tlsSecureOption.ca = ["xxxx"];
+   tlsSecureOption.password = "xxxx";
+   tlsSecureOption.protocols = [socket.Protocol.TLSv12];
+   tlsSecureOption.useRemoteCipherPrefer = true;
+   tlsSecureOption.signatureAlgorithms = "rsa_pss_rsae_sha256:ECDSA+SHA256";
+   tlsSecureOption.cipherSuite = "AES256-SHA256";
 
-  let tlsTwoWayConnectOption : socket.TLSConnectOptions = {} as socket.TLSConnectOptions;
-  tlsTwoWayConnectOption.address = serverAddress;
-  tlsTwoWayConnectOption.secureOptions = tlsSecureOption;
-  tlsTwoWayConnectOption.ALPNProtocols = ["spdy/1", "http/1.1"];
-  ```
-  <!-- @[two-way_bindTlsSocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
-  
-  ``` TypeScript
-    class SocketInfo {
-      public message: ArrayBuffer = new ArrayBuffer(1);
-      public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
-    }
-    // Bind the local IP address and port number.
-    tlsSocket!.bind(ipAddress).then(() => {
-      hilog.info(0x0000, 'testTag', 'bind success');
-      // ···
-      // Subscribe to events of the TLSSocket object after successful binding.
-      tlsSocket!.on('message', (value: SocketInfo) => {
-        hilog.info(0x0000, 'testTag', 'on message');
-        let buffer = value.message;
-        let dataView = new DataView(buffer);
-        let str = '';
-        for (let i = 0; i < dataView.byteLength; ++i) {
-          str += String.fromCharCode(dataView.getUint8(i));
-        }
-        hilog.info(0x0000, 'testTag', 'on connect received:' + str);
-      });
-  
-      tlsSocket!.on('connect', () => {
-      // ···
-        hilog.info(0x0000, 'testTag', 'on connect');
-      });
-      // Listen to connection closure.
-      tlsSocket!.on('close', () => { 
-        hilog.info(0x0000, 'testTag', 'on close');
-      // ···
-      });
-      tlsSocket!.connect({ address: serverAddress, secureOptions: opt }).then(() => {
-        hilog.info(0x0000, 'testTag', 'Connected successfully');
-      // ···
-      }).catch((e: BusinessError) => {
-        hilog.error(0x0000, 'testTag', `Failed to connect: ${e.message}`);
-      // ···
-      });
-    }).catch((e: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'bind fail');
-      // ···
-    });
-  // ···
-    tlsSocket!.send('message').then(() => {
-      hilog.info(0x0000, 'testTag', 'send successfully');
-      // ···
-    }).catch((e: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'send failed ' + JSON.stringify(e));
-      // ···
-    });
-  ```
+   let tlsTwoWayConnectOption : socket.TLSConnectOptions = {} as socket.TLSConnectOptions;
+   tlsTwoWayConnectOption.address = serverAddress;
+   tlsTwoWayConnectOption.secureOptions = tlsSecureOption;
+   tlsTwoWayConnectOption.ALPNProtocols = ["spdy/1", "http/1.1"];
+   ```
+   <!-- @[two-way_bindTlsSocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
+   
+   ``` TypeScript
+   class SocketInfo {
+     public message: ArrayBuffer = new ArrayBuffer(1);
+     public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
+   }
+   // Bind the local IP address and port number.
+   tlsSocket!.bind(ipAddress).then(() => {
+     hilog.info(0x0000, 'testTag', 'bind success');
+     // ...
+     // Subscribe to events of the TLSSocket object after successful binding.
+     tlsSocket!.on('message', (value: SocketInfo) => {
+       hilog.info(0x0000, 'testTag', 'on message');
+       let buffer = value.message;
+       let dataView = new DataView(buffer);
+       let str = '';
+       for (let i = 0; i < dataView.byteLength; ++i) {
+         str += String.fromCharCode(dataView.getUint8(i));
+       }
+       hilog.info(0x0000, 'testTag', 'on connect received:' + str);
+     });
+   
+     tlsSocket!.on('connect', () => {
+       // ...
+       hilog.info(0x0000, 'testTag', 'on connect');
+     });
+     // Listen to connection closure.
+     tlsSocket!.on('close', () => { 
+       hilog.info(0x0000, 'testTag', 'on close');
+       // ...
+     });
+     tlsSocket!.connect({ address: serverAddress, secureOptions: opt }).then(() => {
+       hilog.info(0x0000, 'testTag', 'Connected successfully');
+       // ...
+     }).catch((e: BusinessError) => {
+       hilog.error(0x0000, 'testTag', `Failed to connect: ${e.message}`);
+       // ...
+     });
+   }).catch((e: BusinessError) => {
+     hilog.error(0x0000, 'testTag', 'bind fail');
+     // ...
+   });
+   // ...
+   tlsSocket!.send('message').then(() => {
+     hilog.info(0x0000, 'testTag', 'send successfully');
+     // ...
+   }).catch((e: BusinessError) => {
+     hilog.error(0x0000, 'testTag', 'send failed ' + JSON.stringify(e));
+     // ...
+   });
+   ```
 
 5. Enable the TLS socket connection to be automatically closed after use.
 
-<!-- @[two-way_closeTlsSocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
-
-``` TypeScript
-// Enable the socket connection to be automatically closed after use. Then, unsubscribe from events of the connection.
-tlsSocket!.close((err: BusinessError) => {
-  if (err) {
-    hilog.error(0x0000, 'testTag', 'close callback error = ' + err);
-  } else {
-    hilog.info(0x0000, 'testTag', 'close success');
-  }
-  tlsSocket!.off('message');
-  tlsSocket!.off('connect');
-  tlsSocket!.off('close');
-});
-```
+   <!-- @[two-way_closeTlsSocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
+   
+   ``` TypeScript
+   // Enable the socket connection to be automatically closed after use. Then, unsubscribe from events of the connection.
+   tlsSocket!.close((err: BusinessError) => {
+     if (err) {
+       hilog.error(0x0000, 'testTag', 'close callback error = ' + err);
+     } else {
+       hilog.info(0x0000, 'testTag', 'close success');
+     }
+     tlsSocket!.off('message');
+     tlsSocket!.off('connect');
+     tlsSocket!.off('close');
+   });
+   ```
 
 To implement the TLS socket process (one-way authentication) on the client, perform the following steps:
 
 1. Import the required socket module.
 
-<!-- @[one_way_tls_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
-
-``` TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[one_way_tls_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
+   
+   ``` TypeScript
+   import { socket } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. Create a TLSSocket connection. A **TLSSocket** object is returned.
 
-<!-- @[create_tls_worker_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
-
-``` TypeScript
-// Create a TLS socket connection (for one-way authentication). A TLSSocketConnection object is returned.
-let tlsOneWaySocket: socket.TLSSocket = socket.constructTLSSocketInstance();  // One way authentication
-```
+   <!-- @[create_tls_worker_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
+   
+   ``` TypeScript
+   // Create a TLS socket connection (for one-way authentication). A TLSSocketConnection object is returned.
+   let tlsOneWaySocket: socket.TLSSocket = socket.constructTLSSocketInstance();  // One way authentication
+   ```
 
 3. Bind the local IP address and port. Ensure that the bind operation is successful before subscribing to events of the **TLSSocket** object. Upload the client CA certificate and digital certificate, and call the [connect](../reference/apis-network-kit/js-apis-socket.md#connect9) API to establish a connection. After the connection is successful, call the [send](../reference/apis-network-kit/js-apis-socket.md#send9) API to send data.
-```ts
-  // Bind the local IP address and port number.
-  let ipAddress : socket.NetAddress = {} as socket.NetAddress;
-  ipAddress.address = "192.168.xxx.xxx";
-  ipAddress.port = 5445;
+   ```ts
+   // Bind the local IP address and port number.
+   let ipAddress : socket.NetAddress = {} as socket.NetAddress;
+   ipAddress.address = "192.168.xxx.xxx";
+   ipAddress.port = 5445;
   
-  // Server IP address and port number.
-  let serverAddress : socket.NetAddress = {} as socket.NetAddress;
-  serverAddress.address = "192.168.xxx.xxx";
-  serverAddress.port = 8789;
-  let tlsOneWaySecureOption : socket.TLSSecureOptions = {} as socket.TLSSecureOptions;
-  tlsOneWaySecureOption.ca = ["xxxx", "xxxx"];
-  tlsOneWaySecureOption.cipherSuite = "AES256-SHA256";
+   // Server IP address and port number.
+   let serverAddress : socket.NetAddress = {} as socket.NetAddress;
+   serverAddress.address = "192.168.xxx.xxx";
+   serverAddress.port = 8789;
+   let tlsOneWaySecureOption : socket.TLSSecureOptions = {} as socket.TLSSecureOptions;
+   tlsOneWaySecureOption.ca = ["xxxx", "xxxx"];
+   tlsOneWaySecureOption.cipherSuite = "AES256-SHA256";
 
-  let tlsOneWayConnectOptions: socket.TLSConnectOptions = {} as socket.TLSConnectOptions;
-  tlsOneWayConnectOptions.address = serverAddress;
-  tlsOneWayConnectOptions.secureOptions = tlsOneWaySecureOption;
-  ```
-<!-- @[tls_worker_bind_the_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
-
-``` TypeScript
-class SocketInfo {
-  public message: ArrayBuffer = new ArrayBuffer(1);
-  public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
-}
-// ···
-  // Bind the local IP address and port number.
-  tlsOneWaySocket!.bind(ipAddress).then(() => {
-    hilog.info(0x0000, 'testTag', 'bind success');
-    // ···
-    /// Subscribe to events of the TLSSocket object.
-    tlsOneWaySocket!.on('message', (value: SocketInfo) => {
-      hilog.info(0x0000, 'testTag', 'on message');
-      let buffer = value.message;
-      let dataView = new DataView(buffer);
-      let str = '';
-      for (let i = 0; i < dataView.byteLength; ++i) {
-        str += String.fromCharCode(dataView.getUint8(i));
-      }
-      hilog.info(0x0000, 'testTag', 'on connect received:' + str);
-    });
-    tlsOneWaySocket!.on('connect', () => {
-      hilog.info(0x0000, 'testTag', 'on connect');
-    });
-    tlsOneWaySocket!.on('close', () => {
-      hilog.info(0x0000, 'testTag', 'on close');
-    // ···
-    });
-    tlsOneWaySocket!.connect({ address: serverAddress, secureOptions: opt }).then(() => {
-      hilog.info(0x0000, 'testTag', 'connect successfully');
-    // ···
-    }).catch((e: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `Failed to connect: ${e.message}`);
-    // ···
-    });
-  }).catch((e: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'bind fail');
-    // ···
-  });
-// ···
-  // Establish a connection. After the connection is established successfully, you can then send data over it.
-  tlsOneWaySocket.send(message + '\r\n').then(() => {
-    hilog.info(0x0000, 'testTag', 'send successfully');
-    // ···
-  }).catch((e: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'send failed ' + JSON.stringify(e));
-    // ···
-  });
-```
+   let tlsOneWayConnectOptions: socket.TLSConnectOptions = {} as socket.TLSConnectOptions;
+   tlsOneWayConnectOptions.address = serverAddress;
+   tlsOneWayConnectOptions.secureOptions = tlsOneWaySecureOption;
+   ```
+   <!-- @[tls_worker_bind_the_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
+   
+   ``` TypeScript
+   class SocketInfo {
+     public message: ArrayBuffer = new ArrayBuffer(1);
+     public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
+   }
+   // ...
+     // Bind the local IP address and port number.
+     tlsOneWaySocket!.bind(ipAddress).then(() => {
+       hilog.info(0x0000, 'testTag', 'bind success');
+       // ...
+       /// Subscribe to events of the TLSSocket object.
+       tlsOneWaySocket!.on('message', (value: SocketInfo) => {
+         hilog.info(0x0000, 'testTag', 'on message');
+         let buffer = value.message;
+         let dataView = new DataView(buffer);
+         let str = '';
+         for (let i = 0; i < dataView.byteLength; ++i) {
+           str += String.fromCharCode(dataView.getUint8(i));
+         }
+         hilog.info(0x0000, 'testTag', 'on connect received:' + str);
+       });
+       tlsOneWaySocket!.on('connect', () => {
+         hilog.info(0x0000, 'testTag', 'on connect');
+       });
+       tlsOneWaySocket!.on('close', () => {
+         hilog.info(0x0000, 'testTag', 'on close');
+         // ...
+       });
+       tlsOneWaySocket!.connect({ address: serverAddress, secureOptions: opt }).then(() => {
+         hilog.info(0x0000, 'testTag', 'connect successfully');
+         // ...
+       }).catch((e: BusinessError) => {
+         hilog.error(0x0000, 'testTag', `Failed to connect: ${e.message}`);
+         // ...
+       });
+     }).catch((e: BusinessError) => {
+       hilog.error(0x0000, 'testTag', 'bind fail');
+       // ...
+     });
+     // ...
+     // Establish a connection. After the connection is established successfully, you can then send data over it.
+     tlsOneWaySocket.send(message + '\r\n').then(() => {
+       hilog.info(0x0000, 'testTag', 'send successfully');
+       // ...
+     }).catch((e: BusinessError) => {
+       hilog.error(0x0000, 'testTag', 'send failed ' + JSON.stringify(e));
+       // ...
+     });
+   ```
 
 4. Enable the TLS socket connection to be automatically closed after use.
 
-<!-- @[tls_worker_close_the_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
-
-``` TypeScript
-// Enable the socket connection to be automatically closed after use. Then, unsubscribe from events of the connection.
-tlsOneWaySocket!.close((err: BusinessError) => {
-  if (err) {
-    hilog.error(0x0000, 'testTag', 'close callback error = ' + err);
-  // ···
-  } else {
-    hilog.info(0x0000, 'testTag', 'close success');
-  // ···
-  }
-  tlsOneWaySocket!.off('message');
-  tlsOneWaySocket!.off('connect');
-  tlsOneWaySocket!.off('close');
-});
-```
+   <!-- @[tls_worker_close_the_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
+   
+   ``` TypeScript
+   // Enable the socket connection to be automatically closed after use. Then, unsubscribe from events of the connection.
+   tlsOneWaySocket!.close((err: BusinessError) => {
+     if (err) {
+       hilog.error(0x0000, 'testTag', 'close callback error = ' + err);
+       // ...
+     } else {
+       hilog.info(0x0000, 'testTag', 'close success');
+       // ...
+     }
+     tlsOneWaySocket!.off('message');
+     tlsOneWaySocket!.off('connect');
+     tlsOneWaySocket!.off('close');
+   });
+   ```
 
 ## Implementing Encrypted Data Transmission by Upgrading a TCP Socket Connection to a TLS Socket Connection
 
@@ -817,112 +817,112 @@ The following uses two-way authentication as an example to describe how to upgra
 
 1. Import the required socket module.
 
-<!-- @[tcp_to_tls_server_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
-
-``` TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[tcp_to_tls_server_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
+   
+   ``` TypeScript
+   import { socket } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. Create a TCP socket connection. For details, see [Transmitting Data over TCP Socket or UDP Socket Connections](#transmitting-data-over-tcp-socket-or-udp-socket-connections).
 
-<!-- @[tcp_to_tls_server_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
-
-``` TypeScript
-// Create a TCP socket connection. A TCPSocket object is returned.
-let tcpSocket: socket.TCPSocket = socket.constructTCPSocketInstance();
-```
+   <!-- @[tcp_to_tls_server_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
+   
+   ``` TypeScript
+   // Create a TCP socket connection. A TCPSocket object is returned.
+   let tcpSocket: socket.TCPSocket = socket.constructTCPSocketInstance();
+   ```
 
 3. Bind the local IP address and port. After the binding is successful, connect to the specified IP address and port of the server. After the connection is successful, use the **TCPSocket** object to create a **TLSSocket** object, enable two-way authentication, and upload the client CA certificate and digital certificate to establish a TLS socket connection. If the connection is no longer needed, close the connection and unsubscribe from related events.
-```ts
-    // Connect to the specified IP address and port of the server.
-    let serverAddress: socket.NetAddress = {} as socket.NetAddress;
-    serverAddress.address = "192.168.xxx.xxx";
-    serverAddress.port = 1234;
+   ```ts
+   // Connect to the specified IP address and port of the server.
+   let serverAddress: socket.NetAddress = {} as socket.NetAddress;
+   serverAddress.address = "192.168.xxx.xxx";
+   serverAddress.port = 1234;
 
-    let tcpConnect: socket.TCPConnectOptions = {} as socket.TCPConnectOptions;
-    tcpConnect.address = serverAddress;
-    tcpConnect.timeout = 6000;
+   let tcpConnect: socket.TCPConnectOptions = {} as socket.TCPConnectOptions;
+   tcpConnect.address = serverAddress;
+   tcpConnect.timeout = 6000;
 
-    // Configure the destination address and certificate of the TLSSocket object.
-    let tlsSecureOption: socket.TLSSecureOptions = {} as socket.TLSSecureOptions;
-    tlsSecureOption.key = "xxxx";
-    tlsSecureOption.cert = "xxxx";
-    tlsSecureOption.ca = ["xxxx"];
-    tlsSecureOption.password = "xxxx";
-    tlsSecureOption.protocols = [socket.Protocol.TLSv12];
-    tlsSecureOption.useRemoteCipherPrefer = true;
-    tlsSecureOption.signatureAlgorithms = "rsa_pss_rsae_sha256:ECDSA+SHA256";
-    tlsSecureOption.cipherSuite = "AES256-SHA256";
+   // Configure the destination address and certificate of the TLSSocket object.
+   let tlsSecureOption: socket.TLSSecureOptions = {} as socket.TLSSecureOptions;
+   tlsSecureOption.key = "xxxx";
+   tlsSecureOption.cert = "xxxx";
+   tlsSecureOption.ca = ["xxxx"];
+   tlsSecureOption.password = "xxxx";
+   tlsSecureOption.protocols = [socket.Protocol.TLSv12];
+   tlsSecureOption.useRemoteCipherPrefer = true;
+   tlsSecureOption.signatureAlgorithms = "rsa_pss_rsae_sha256:ECDSA+SHA256";
+   tlsSecureOption.cipherSuite = "AES256-SHA256";
 
-    let tlsTwoWayConnectOption: socket.TLSConnectOptions = {} as socket.TLSConnectOptions;
-    tlsSecureOption.key = "xxxx";
-    tlsTwoWayConnectOption.address = serverAddress;
-    tlsTwoWayConnectOption.secureOptions = tlsSecureOption;
-    tlsTwoWayConnectOption.ALPNProtocols = ["spdy/1", "http/1.1"];
-  ```
-<!-- @[tcp_Upgrade_to_tls_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
-
-``` TypeScript
-// If a specific port needs to be bound, the bind API can be used.
-tcpSocket.connect(tcpConnect).then(() => {
-  hilog.info(0x0000, 'testTag', 'connect success');
-  // ···
-  // After TCP socket connection is established, upgrade it to a TLS socket connection.
-  tlsSocket = socket.constructTLSSocketInstance(tcpSocket);
-  // Subscribe to events of the TLSSocket object.
-  tlsSocket.on('message', (value: SocketInfo) => {
-    hilog.info(0x0000, 'testTag', 'tls on message');
-    let buffer = value.message;
-    let dataView = new DataView(buffer);
-    let str = '';
-    for (let i = 0; i < dataView.byteLength; ++i) {
-      str += String.fromCharCode(dataView.getUint8(i));
-    }
-    hilog.info(0x0000, 'testTag', 'tls on connect received:' + str);
-  });
-  tlsSocket.on('connect', () => {
-    hilog.info(0x0000, 'testTag', 'tls on connect');
-  });
-  tlsSocket!.on('close', () => {
-    hilog.info(0x0000, 'testTag', 'tls on close');
-  // ···
-  });
-  // ···
-  // Establish a TLS socket connection.
-  tlsSocket.connect(tlsTwoWayConnectOption).then(() => {
-    hilog.info(0x0000, 'testTag', 'tls connect success');
-  // ···
-  }).catch((e: BusinessError) => {
-    hilog.info(0x0000, 'testTag', 'tls connect fail');
-  // ···
-  });
-}).catch((e: BusinessError) => {
-  hilog.error(0x0000, 'testTag', 'connect fail');
-  // ···
-});
-```
+   let tlsTwoWayConnectOption: socket.TLSConnectOptions = {} as socket.TLSConnectOptions;
+   tlsSecureOption.key = "xxxx";
+   tlsTwoWayConnectOption.address = serverAddress;
+   tlsTwoWayConnectOption.secureOptions = tlsSecureOption;
+   tlsTwoWayConnectOption.ALPNProtocols = ["spdy/1", "http/1.1"];
+   ```
+   <!-- @[tcp_Upgrade_to_tls_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
+   
+   ``` TypeScript
+   // If a specific port needs to be bound, the bind API can be used.
+   tcpSocket.connect(tcpConnect).then(() => {
+     hilog.info(0x0000, 'testTag', 'connect success');
+     // ...
+     // After TCP socket connection is established, upgrade it to a TLS socket connection.
+     tlsSocket = socket.constructTLSSocketInstance(tcpSocket);
+     // Subscribe to events of the TLSSocket object.
+     tlsSocket.on('message', (value: SocketInfo) => {
+       hilog.info(0x0000, 'testTag', 'tls on message');
+       let buffer = value.message;
+       let dataView = new DataView(buffer);
+       let str = '';
+       for (let i = 0; i < dataView.byteLength; ++i) {
+         str += String.fromCharCode(dataView.getUint8(i));
+       }
+       hilog.info(0x0000, 'testTag', 'tls on connect received:' + str);
+     });
+     tlsSocket.on('connect', () => {
+       hilog.info(0x0000, 'testTag', 'tls on connect');
+     });
+     tlsSocket!.on('close', () => {
+       hilog.info(0x0000, 'testTag', 'tls on close');
+       // ...
+     });
+     // ...
+     // Establish a TLS socket connection.
+     tlsSocket.connect(tlsTwoWayConnectOption).then(() => {
+       hilog.info(0x0000, 'testTag', 'tls connect success');
+       // ...
+     }).catch((e: BusinessError) => {
+       hilog.info(0x0000, 'testTag', 'tls connect fail');
+       // ...
+     });
+   }).catch((e: BusinessError) => {
+     hilog.error(0x0000, 'testTag', 'connect fail');
+     // ...
+   });
+   ```
 
 4. Enable the TCPSocket connection to be automatically closed after use. Then, disable listening for TCPSocket events.
 
-<!-- @[tls_server_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
-
-``` TypeScript
-// Enable the socket connection to be automatically closed after use. Then, unsubscribe from events of the connection.
-tlsSocket!.close((err: BusinessError) => {
-  if (err) {
-  // ···
-    hilog.error(0x0000, 'testTag', 'tls close callback error = ' + err);
-  } else {
-    hilog.info(0x0000, 'testTag', 'tls close success');
-  // ···
-  }
-  tlsSocket!.off('message');
-  tlsSocket!.off('connect');
-  tlsSocket!.off('close');
-});
-```
+   <!-- @[tls_server_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
+   
+   ``` TypeScript
+   // Enable the socket connection to be automatically closed after use. Then, unsubscribe from events of the connection.
+   tlsSocket!.close((err: BusinessError) => {
+     if (err) {
+       // ...
+       hilog.error(0x0000, 'testTag', 'tls close callback error = ' + err);
+     } else {
+       hilog.info(0x0000, 'testTag', 'tls close success');
+       // ...
+     }
+     tlsSocket!.off('message');
+     tlsSocket!.off('connect');
+     tlsSocket!.off('close');
+   });
+   ```
 
 ## Implementing Encrypted Data Transmission over TLS Socket Server Connections
 
@@ -930,113 +930,113 @@ The TLS socket connection process on the server is as follows:
 
 1. Import the required socket module.
 
-<!-- @[tls_server_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
-
-``` TypeScript
-import { socket } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[tls_server_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
+   
+   ``` TypeScript
+   import { socket } from '@kit.NetworkKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 2. Create a TLS socket server connection.
 
-<!-- @[tls_server_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
-
-``` TypeScript
-let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
-```
+   <!-- @[tls_server_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
+   
+   ``` TypeScript
+   let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+   ```
 
 3. Start the service and bind the IP address and port number to set up a TLS socket connection. Then, create and initialize a TLS session, and load and verify the certificate key.
-```ts
-  let netAddress: socket.NetAddress = {
-    address: '192.168.xx.xxx',
-    port: 8080
-  }
+   ```ts
+   let netAddress: socket.NetAddress = {
+     address: '192.168.xx.xxx',
+     port: 8080
+   }
 
-  let tlsSecureOptions: socket.TLSSecureOptions = {
-    key: "xxxx",
-    cert: "xxxx",
-    ca: ["xxxx"],
-    password: "xxxx",
-    protocols: socket.Protocol.TLSv12,
-    useRemoteCipherPrefer: true,
-    signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-    cipherSuite: "AES256-SHA256"
-  }
+   let tlsSecureOptions: socket.TLSSecureOptions = {
+     key: "xxxx",
+     cert: "xxxx",
+     ca: ["xxxx"],
+     password: "xxxx",
+     protocols: socket.Protocol.TLSv12,
+     useRemoteCipherPrefer: true,
+     signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+     cipherSuite: "AES256-SHA256"
+   }
 
-  let tlsConnectOptions: socket.TLSConnectOptions = {
-    address: netAddress,
-    secureOptions: tlsSecureOptions,
-    ALPNProtocols: ["spdy/1", "http/1.1"]
-  }
-  ```
-<!-- @[tlsServer_start_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
-
-``` TypeScript
-tlsServer.listen(tlsConnectOptions).then(() => {
-  hilog.info(0x0000, 'testTag', 'listen callback success');
-// ···
-}).catch((err: BusinessError) => {
-  hilog.error(0x0000, 'testTag', 'failed' + err);
-// ···
-});
-```
+   let tlsConnectOptions: socket.TLSConnectOptions = {
+     address: netAddress,
+     secureOptions: tlsSecureOptions,
+     ALPNProtocols: ["spdy/1", "http/1.1"]
+   }
+   ```
+   <!-- @[tlsServer_start_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
+   
+   ``` TypeScript
+   tlsServer.listen(tlsConnectOptions).then(() => {
+     hilog.info(0x0000, 'testTag', 'listen callback success');
+     // ...
+   }).catch((err: BusinessError) => {
+     hilog.error(0x0000, 'testTag', 'failed' + err);
+     // ...
+   });
+   ```
 
 4. Subscribe to the **connect** events of the **TLSSocketServer** object. After receiving a client connection, obtain the **TLSSocketConnection** object through the callback. Through this object, you can subscribe to events of the **TLSSocketConnection** object and send data to the client. If the TLS socket connection is no longer needed, close the connection and unsubscribe from related events.
 
-<!-- @[tlsServer_connection_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
-
-``` TypeScript
-class SocketInfo {
-  public message: ArrayBuffer = new ArrayBuffer(1);
-  public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
-}
-let callback = (value: SocketInfo) => {
-  let messageView = '';
-  for (let i: number = 0; i < value.message.byteLength; i++) {
-    let uint8Array = new Uint8Array(value.message)
-    let messages = uint8Array[i]
-    let message = String.fromCharCode(messages);
-    messageView += message;
-  }
-  hilog.info(0x0000, 'testTag', 'on message message: ' + JSON.stringify(messageView));
-  hilog.info(0x0000, 'testTag', 'remoteInfo: ' + JSON.stringify(value.remoteInfo));
-// ···
-}
-// ···
-  tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
-    client.on('message', callback);
-    // Send data.
-    client.send('Hello, client!').then(() => {
-      hilog.info(0x0000, 'testTag', 'send success');
-    // ···
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'send fail');
-    // ···
-    });
-    // Close the connection.
-    client.close().then(() => {
-      hilog.info(0x0000, 'testTag', 'close success');
-    // ···
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'close fail');
-    // ···
-    });
-
-    // You can pass the callback of the on function if you want to unsubscribe from a certain type of events. If you do not pass the callback, you will unsubscribe from all events.
-    client.off('message', callback);
-    client.off('message');
-```
+   <!-- @[tlsServer_connection_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
+   
+   ``` TypeScript
+   class SocketInfo {
+     public message: ArrayBuffer = new ArrayBuffer(1);
+     public remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
+   }
+   let callback = (value: SocketInfo) => {
+     let messageView = '';
+     for (let i: number = 0; i < value.message.byteLength; i++) {
+       let uint8Array = new Uint8Array(value.message)
+       let messages = uint8Array[i]
+       let message = String.fromCharCode(messages);
+       messageView += message;
+     }
+     hilog.info(0x0000, 'testTag', 'on message message: ' + JSON.stringify(messageView));
+     hilog.info(0x0000, 'testTag', 'remoteInfo: ' + JSON.stringify(value.remoteInfo));
+     // ...
+   }
+   // ...
+     tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
+       client.on('message', callback);
+       // Send data.
+       client.send('Hello, client!').then(() => {
+         hilog.info(0x0000, 'testTag', 'send success');
+         // ...
+       }).catch((err: BusinessError) => {
+         hilog.error(0x0000, 'testTag', 'send fail');
+         // ...
+       });
+       // Close the connection.
+       client.close().then(() => {
+         hilog.info(0x0000, 'testTag', 'close success');
+         // ...
+       }).catch((err: BusinessError) => {
+         hilog.error(0x0000, 'testTag', 'close fail');
+         // ...
+       });
+   
+       // You can pass the callback of the on function if you want to unsubscribe from a certain type of events. If you do not pass the callback, you will unsubscribe from all events.
+       client.off('message', callback);
+       client.off('message');
+   ```
 
 5. // Unsubscribe from events of the TLSSocketServer object.
 
-<!-- @[tlsServer_off_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
-
-``` TypeScript
-tlsServer.close();
-// Unsubscribe from events of the TLSSocketServer object.
-tlsServer.off('connect');
-```
+   <!-- @[tlsServer_off_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
+   
+   ``` TypeScript
+   tlsServer.close();
+   // Unsubscribe from events of the TLSSocketServer object.
+   tlsServer.off('connect');
+   ```
 
 ## Samples
 

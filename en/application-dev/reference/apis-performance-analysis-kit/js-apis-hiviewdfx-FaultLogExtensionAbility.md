@@ -11,6 +11,7 @@ This module implements the delayed fault notification feature.
 When the crash and freeze events are subscribed by [HiAppEvent](js-apis-hiviewdfx-hiappevent.md), the previous event can be received only after the application restarts. If the application fails to start or remains unresponsive for a long time, the fault may not be reported in time.
 
 This module provides APIs for solving this issue. After the application implements FaultLogExtensionAbility, the system service is expected to start FaultLogExtensionAbility 30 minutes later after the application crashes or freezes.
+
 You can subscribe to and process fault events through [onFaultReportReady](#onfaultreportready).
 
 > **NOTE**
@@ -112,8 +113,7 @@ The following table lists the APIs that cannot be called by this module.
 | Kit| Module|
 | ------- | ------- |
 | AVSessionKit | [@ohos.multimedia.avsession (AVSession Management)](../apis-avsession-kit/arkts-apis-avsession.md)|
-| AbilityKit | [@ohos.UIAbilityContext](../apis-ability-kit/js-apis-inner-application-EmbeddableUIAbilityContext.md) |
-| ArkUI | [@ohos.multimedia.cameraLibrary (Media Query)](../apis-arkui/js-apis-mediaquery.md)|
+| AbilityKit | [@ohos.UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) |
 | ArkUI | [@ohos.window (Window)](../apis-arkui/arkts-apis-window.md)|
 | AudioKit | [@ohos.multimedia.audio (Audio Management)](../apis-audio-kit/arkts-apis-audio.md)|
 | BackgroundTasksKit | [@ohos.backgroundTaskManager (Background Task Management)](../apis-backgroundtasks-kit/js-apis-backgroundTaskManager.md)|

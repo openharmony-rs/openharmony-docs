@@ -10,7 +10,7 @@ The overlay feature allows you to place elements on top of a component.
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>  The feature is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## overlay
 
@@ -87,7 +87,7 @@ Adds an overlay to this component, which can be text, a custom component, or [Co
 
 type ComponentContent\<T \= Object\> = ComponentContent\<T\>
 
-A constructor used to create a **ComponentContent** object.
+Represents a constructor used to create a **ComponentContent** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -95,7 +95,7 @@ A constructor used to create a **ComponentContent** object.
 
 | Type|Description|
 | ----- | ----------------- |
-| [ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | A constructor used to create a **ComponentContent** object.|
+| [ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | Constructor used to create a **ComponentContent** object.|
 
 ## Example
 

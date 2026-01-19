@@ -19,7 +19,7 @@
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function StringToUint8Array(str: string) {
   let arr: number[] = [];
@@ -68,7 +68,7 @@ async function TestRegisterProvider() {
 **注销单个ability**
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function StringToUint8Array(str: string) {
   let arr: number[] = [];
@@ -109,7 +109,7 @@ async function TestRegisterProvider() {
 **批量注销**
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function unregisterProvider(): Promise<void> {
   try {

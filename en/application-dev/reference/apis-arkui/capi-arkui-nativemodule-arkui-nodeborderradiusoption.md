@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_NodeBorderRadius ArkUI_NodeBorderRadiusOption
+```
+
 ## Overview
 
 Defines a struct for the node border radius configuration.

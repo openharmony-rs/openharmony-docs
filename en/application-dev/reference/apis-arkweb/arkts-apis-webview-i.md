@@ -10,7 +10,7 @@
 >
 > - The initial APIs of this module are supported since API version 9. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## WebStorageOrigin
 
@@ -168,7 +168,7 @@ Describes the attach status of WebViewController and the **Web** component.
 
 ## BlanklessInfo<sup>20+</sup>
 
-Describes prediction information about blankless loading, including the first screen similarity, first screen loading duration, and error code. The application determines whether to enable the blankless loading solution based on the prediction information.
+Describes the prediction information about blankless loading, including the first screen similarity, first screen loading duration, and error code. The application determines whether to enable the blankless loading solution based on the prediction information.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -177,6 +177,36 @@ Describes prediction information about blankless loading, including the first sc
 | errCode | WebBlanklessErrorCode | No  | No  | Error code of blankless loading. For details, see [WebBlanklessErrorCode](./arkts-apis-webview-e.md#webblanklesserrorcode20).|
 | similarity | number | No  | No  | First screen similarity, which is calculated based on the historical first screen content. The value ranges from 0 to 1.0. 1.0 indicates that the content is the same. A value closer to 1 indicates a higher similarity. This value is lagging, and the similarity of local loading is displayed in the next loading. You are advised not to enable the blankless loading solution when the similarity is low.|
 | loadingTime | number | No  | No  | Loading duration estimated based on the historical first screen loading durations, in milliseconds. The value must be greater than 0.|
+
+## BlanklessFrameInterpolationInfo<sup>23+</sup>
+
+Describes the blankless loading frame interpolation status information, which is used as the callback input parameter in [BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23).
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name       | Type  | Read-Only| Optional|Description                |
+| ----------- | ------ | -----|------|------------------- |
+| key | string | No  | No  | Key value that uniquely identifies the page where the frame is interpolated. The value is the same as the key value of [setBlanklessLoadingWithParams](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithparams23).|
+| state | [BlanklessFrameInterpolationState](./arkts-apis-webview-e.md#blanklessframeinterpolationstate-23) | No  | No  | Current frame interpolation state.|
+| timestamp | number | No  | No  | Time when the frame interpolation is successful, fails, or removed, in ms (UTC time).|
+| reason | string | No  | No  | Reason for the frame interpolation failure.|
+
+## BlanklessLoadingParam<sup>23+</sup>
+
+Describes the blankless loading frame interpolation parameters.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name       | Type  | Read-Only| Optional|Description                |
+| ----------- | ------ | -----|------|------------------- |
+| enable | boolean | No  | No  | Whether to enable blankless loading frame interpolation.<br>The value **true** means to enable blankless loading frame interpolation, and **false** means the opposite.|
+| duration | number | No  | Yes  | Duration of frame interpolation.<br>The value range is the union of **[200, 2000]** and **{0}**, where **0** indicates that the duration is not specified and the system automatically sets a proper duration.<br>Unit: ms.|
+| expirationTime | number | No  | Yes  | Expiration time of the historical frame, in UTC time.<br>**T** indicates the current UTC time. If the expiration time is 30 days, the value is 2592000000 ms. The value range is the union of **(T, T + 2592000000]** and **{0}**. **0** indicates that the expiration time is not specified and the default expiration time (7 days) is used.<br>Unit: ms.|
+| callback | Callback<[BlanklessFrameInterpolationInfo](./arkts-apis-webview-i.md#blanklessframeinterpolationinfo23)> | No  | Yes  | Callback executed after frame interpolation is successful, fails, or removed.<br>This parameter takes effect only when **enable** is set to **true**. It is optional. If it is not set, no operation is performed.|
 
 ## HistoryItem
 
@@ -193,8 +223,7 @@ Describes a historical page record.
 
 ## MediaInfo<sup>12+<sup>
 
-Represents a **MediaInfo** object used as a parameter of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback.
-The object contains information about media on the web page. The application may create, based on the information, a player that takes over media playback of the web page.
+Represents a **MediaInfo** object used as a parameter of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback. The object contains information about media on the web page. The application may create, based on the information, a player that takes over media playback of the web page.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -234,7 +263,7 @@ Defines cookie-related fields.
 | Name| Type| Read-Only| Optional| Description|
 | ---- | --- | ---- | ---- | ---- |
 | samesitePolicy | [WebHttpCookieSameSitePolicy](./arkts-apis-webview-e.md#webhttpcookiesamesitepolicy23) | Yes| No| Same-site policy of the cookie.|
-| expiresDate | string | Yes| No| Expiration time of the cookie.|
+| expiresDate | string | Yes| No| Expiration time of the cookie. The value is in GMT format.|
 | name | string | Yes| No| Name of the cookie.|
 | isSessionCookie | boolean | Yes| No| Whether the cookie is a session cookie.<br>The value **true** indicates that the cookie is a session cookie, and **false** indicates the opposite.|
 | value | string | Yes| No| Value of the cookie.|

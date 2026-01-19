@@ -7,7 +7,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-This module provides common event capabilities, including publishing, subscribing to, and unsubscribing from common events.
+This module provides common event capabilities to publish, subscribe to, and unsubscribe from common events.
 
 > **NOTE**
 >
@@ -85,7 +85,7 @@ try {
 
 publishAsUser(event: string, userId: number, options: CommonEventPublishData, callback: AsyncCallback\<void>): void
 
-Publishes a common event with given attributes to a specific user. This API uses an asynchronous callback to return the result.
+Publishes a common event with given properties to a specific user. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -97,7 +97,7 @@ Publishes a common event with given attributes to a specific user. This API uses
 | -------- | ---------------------- | ---- | ---------------------- |
 | event    | string                 | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). |
 | userId   | number | Yes| User ID.|
-| options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Attributes of the common event to publish.|
+| options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
 | callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. |
 
 **Error codes**
@@ -118,9 +118,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Attributes of a common event.
+// Information of the common event.
 let options:commonEventManager.CommonEventPublishData = {
-  code: 0,			 // Result code of the common event.
+  code: 0,       // Initial code of the common event.
   data: 'initial data', // Initial data of the common event.
 }
 
