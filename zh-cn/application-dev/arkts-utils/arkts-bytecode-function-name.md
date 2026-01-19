@@ -137,6 +137,13 @@ namespace A {
 2. 如果匿名函数在对象字面量中定义并且被赋值给了一个字面量属性：
 * 如果属性名中不包含`\`和`.`，则其原函数名即为该属性名。
 <!-- @[special_without_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/test2.ts) -->  
+
+``` TypeScript
+// test2.ts
+let B = {
+  b : () => {} // 原函数名为"b"。
+}
+```
 * 如果属性名包含`\`，`.`，为防止二义性，其原函数名会按照匿名函数命名。
 <!-- @[special_with_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/test3.ts) -->  
 
