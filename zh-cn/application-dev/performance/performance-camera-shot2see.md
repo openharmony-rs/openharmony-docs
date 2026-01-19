@@ -83,90 +83,90 @@
 
 2. initCamera函数完成一个相机生命周期初始化的过程。
 
-- 首先通过[getCameraManager](../reference/apis-camera-kit/arkts-apis-camera-f.md#cameragetcameramanager)来获取CameraMananger相机管理器类。
-- 调用[getSupportedCameras](../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)和[getSupportedOutputCapability](../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)方法来获取支持的camera设备以及设备能力集。
-- 调用[createPreviewOutput](../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)和[createPhotoOutput](../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法来创建预览输出和拍照输出对象。
-- 使用CameraInput的open方法来打开相机输入，通过onCameraStatusChange函数来创建CameraManager注册回调。
-- 最后调用sessionFlowFn函数创建并开启Session。具体代码如下所示：
+   - 首先通过[getCameraManager](../reference/apis-camera-kit/arkts-apis-camera-f.md#cameragetcameramanager)来获取CameraManager相机管理器类。
+   - 调用[getSupportedCameras](../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)和[getSupportedOutputCapability](../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)方法来获取支持的camera设备以及设备能力集。
+   - 调用[createPreviewOutput](../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)和[createPhotoOutput](../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法来创建预览输出和拍照输出对象。
+   - 使用CameraInput的open方法来打开相机输入，通过onCameraStatusChange函数来创建CameraManager注册回调。
+   - 最后调用sessionFlowFn函数创建并开启Session。具体代码如下所示：
 
    ```typescript
    async initCamera(surfaceId: string, cameraDeviceIndex: number): Promise<void> {
      Logger.info(TAG, `initCamera cameraDeviceIndex: ${cameraDeviceIndex}`);
-     this.photoMode = AppStorage.get('photoMode')
-     if (!this.photoMode) {
-       return;
+       this.photoMode = AppStorage.get('photoMode')
+         if (!this.photoMode) {
+           return;
+         }
+       try {
+         await this.releaseCamera();
+         // 获取相机管理器实例
+         this.cameraManager = this.getCameraManagerFn();
+         if (this.cameraManager === undefined) {
+           Logger.error(TAG, 'cameraManager is undefined');
+           return;
+         }
+         // 获取支持指定的相机设备对象
+         this.cameras = this.getSupportedCamerasFn(this.cameraManager);
+         if (this.cameras.length < 1 || this.cameras.length < cameraDeviceIndex + 1) {
+           return;
+         }
+         this.curCameraDevice = this.cameras[cameraDeviceIndex];
+         let isSupported = this.isSupportedSceneMode(this.cameraManager, this.curCameraDevice);
+         if (!isSupported) {
+           Logger.error(TAG, 'The current scene mode is not supported.');
+           return;
+         }
+         let cameraOutputCapability =
+           this.cameraManager.getSupportedOutputCapability(this.curCameraDevice, this.curSceneMode);
+         let previewProfile = this.getPreviewProfile(cameraOutputCapability);
+         if (previewProfile === undefined) {
+           Logger.error(TAG, 'The resolution of the current preview stream is not supported.');
+           return;
+         }
+         this.previewProfileObj = previewProfile;
+         // 创建previewOutput输出对象
+         this.previewOutput = this.createPreviewOutputFn(this.cameraManager, this.previewProfileObj, surfaceId);
+         if (this.previewOutput === undefined) {
+           Logger.error(TAG, 'Failed to create the preview stream.');
+           return;
+         }
+         // 监听预览事件
+         this.previewOutputCallBack(this.previewOutput);
+         let photoProfile = this.getPhotoProfile(cameraOutputCapability);
+         if (photoProfile === undefined) {
+           Logger.error(TAG, 'The resolution of the current photo stream is not supported.');
+           return;
+         }
+         this.photoProfileObj = photoProfile;
+         // 创建photoOutPut输出对象
+         this.photoOutput = this.createPhotoOutputFn(this.cameraManager, this.photoProfileObj);
+         if (this.photoOutput === undefined) {
+           Logger.error(TAG, 'Failed to create the photo stream.');
+           return;
+         }
+         // 创建cameraInput输出对象
+         this.cameraInput = this.createCameraInputFn(this.cameraManager, this.curCameraDevice);
+         if (this.cameraInput === undefined) {
+           Logger.error(TAG, 'Failed to create the camera input.');
+           return;
+         }
+         // 打开相机
+         let isOpenSuccess = await this.cameraInputOpenFn(this.cameraInput);
+         if (!isOpenSuccess) {
+           Logger.error(TAG, 'Failed to open the camera.');
+           return;
+         }
+         // 镜头状态回调
+         this.onCameraStatusChange(this.cameraManager);
+         // 监听CameraInput的错误事件
+         this.onCameraInputChange(this.cameraInput, this.curCameraDevice);
+         // 会话流程
+         await this.sessionFlowFn(this.cameraManager, this.cameraInput, this.previewOutput, this.photoOutput);
+       } catch (error) {
+         let err = error as BusinessError;
+         Logger.error(TAG, `initCamera fail: ${err.code}`);
+       }
      }
-     try {
-       await this.releaseCamera();
-       // 获取相机管理器实例
-       this.cameraManager = this.getCameraManagerFn();
-       if (this.cameraManager === undefined) {
-         Logger.error(TAG, 'cameraManager is undefined');
-         return;
-       }
-       // 获取支持指定的相机设备对象
-       this.cameras = this.getSupportedCamerasFn(this.cameraManager);
-       if (this.cameras.length < 1 || this.cameras.length < cameraDeviceIndex + 1) {
-         return;
-       }
-       this.curCameraDevice = this.cameras[cameraDeviceIndex];
-       let isSupported = this.isSupportedSceneMode(this.cameraManager, this.curCameraDevice);
-       if (!isSupported) {
-         Logger.error(TAG, 'The current scene mode is not supported.');
-         return;
-       }
-       let cameraOutputCapability =
-         this.cameraManager.getSupportedOutputCapability(this.curCameraDevice, this.curSceneMode);
-       let previewProfile = this.getPreviewProfile(cameraOutputCapability);
-       if (previewProfile === undefined) {
-         Logger.error(TAG, 'The resolution of the current preview stream is not supported.');
-         return;
-       }
-       this.previewProfileObj = previewProfile;
-       // 创建previewOutput输出对象
-       this.previewOutput = this.createPreviewOutputFn(this.cameraManager, this.previewProfileObj, surfaceId);
-       if (this.previewOutput === undefined) {
-         Logger.error(TAG, 'Failed to create the preview stream.');
-         return;
-       }
-       // 监听预览事件
-       this.previewOutputCallBack(this.previewOutput);
-       let photoProfile = this.getPhotoProfile(cameraOutputCapability);
-       if (photoProfile === undefined) {
-         Logger.error(TAG, 'The resolution of the current photo stream is not supported.');
-         return;
-       }
-       this.photoProfileObj = photoProfile;
-       // 创建photoOutPut输出对象
-       this.photoOutput = this.createPhotoOutputFn(this.cameraManager, this.photoProfileObj);
-       if (this.photoOutput === undefined) {
-         Logger.error(TAG, 'Failed to create the photo stream.');
-         return;
-       }
-       // 创建cameraInput输出对象
-       this.cameraInput = this.createCameraInputFn(this.cameraManager, this.curCameraDevice);
-       if (this.cameraInput === undefined) {
-         Logger.error(TAG, 'Failed to create the camera input.');
-         return;
-       }
-       // 打开相机
-       let isOpenSuccess = await this.cameraInputOpenFn(this.cameraInput);
-       if (!isOpenSuccess) {
-         Logger.error(TAG, 'Failed to open the camera.');
-         return;
-       }
-       // 镜头状态回调
-       this.onCameraStatusChange(this.cameraManager);
-       // 监听CameraInput的错误事件
-       this.onCameraInputChange(this.cameraInput, this.curCameraDevice);
-       // 会话流程
-       await this.sessionFlowFn(this.cameraManager, this.cameraInput, this.previewOutput, this.photoOutput);
-     } catch (error) {
-       let err = error as BusinessError;
-       Logger.error(TAG, `initCamera fail: ${err.code}`);
-     }
-   }
-   ```
+     ```
 
 3. 确定拍照输出流。通过cameraManager.createPhotoOutput方法创建拍照输出流，参数为[CameraOutputCapability](../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)类中的photoProfiles属性。
 
@@ -261,7 +261,7 @@
 
 由于分段式拍照和单段式拍照[步骤1](#场景示例)-步骤4相同，就不再进行赘述。
 
-5. 设置拍照[photoAssetAvailable](../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoassetavailable12)的回调来获取photoAsset，点击拍照按钮，触发此回调函数，然后执行handlePhotoAssetCb函数来完成photoAsset全局的存储并跳转到预览页面。注意:如果已经注册了photoAssetAvailable回调，并且在Session开始之后又注册了photoAvailable回调，会导致流被重启。不建议开发者同时注册photoAvailable和photoAssetAvailable。
+1. 设置拍照[photoAssetAvailable](../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoassetavailable12)的回调来获取photoAsset，点击拍照按钮，触发此回调函数，然后执行handlePhotoAssetCb函数来完成photoAsset全局的存储并跳转到预览页面。注意:如果已经注册了photoAssetAvailable回调，并且在Session开始之后又注册了photoAvailable回调，会导致流被重启。不建议开发者同时注册photoAvailable和photoAssetAvailable。
 
    ```typescript
    photoOutput.on('photoAssetAvailable', (err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset) => {
@@ -290,7 +290,7 @@
    }
    ```
 
-6. 进入预览界面通过GlobalContext.get().getT<image.PixelMap>('imageInfo')方法获取PhotoAsset信息，执行requestImage函数中的photoAccessHelper.MediaAssetManager.requestImageData方法根据不同的策略模式，请求图片资源数据，这里的请求策略为均衡模式BALANCE_MODE，
+2. 进入预览界面通过GlobalContext.get().getT<image.PixelMap>('imageInfo')方法获取PhotoAsset信息，执行requestImage函数中的photoAccessHelper.MediaAssetManager.requestImageData方法根据不同的策略模式，请求图片资源数据，这里的请求策略为均衡模式BALANCE_MODE，
 最后分段式子服务会根据系统压力以及定制化场景进行调度，将后处理好的原图回传给媒体库来替换低质量图。具体代码如下所示：
 
    ```typescript
@@ -342,7 +342,7 @@
    }
    ```
 
-7. 将步骤6获取的PixelMap对象数据通过Image组件进行渲染显示。
+3. 将步骤6获取的PixelMap对象数据通过Image组件进行渲染显示。
 
    ```typescript
    Image(this.curPixelMap)
