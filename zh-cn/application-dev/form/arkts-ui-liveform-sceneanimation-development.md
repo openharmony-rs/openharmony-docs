@@ -72,11 +72,7 @@
 
 2. 实现互动卡片页面
 
-<<<<<<< HEAD
-    <!-- @[liveform_MyLiveFormPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets) -->
-=======
-   <!-- @[liveform_MyLiveFormPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets) --> 
->>>>>>> 4d6e658ea15 (sample示例代码格式化)
+   <!-- @[liveform_MyLiveFormPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets) -->
     
     ``` TypeScript
     // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
@@ -399,11 +395,7 @@
 
 2. 互动卡片动效工具函数实现
 
-<<<<<<< HEAD
-    <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) -->
-=======
-   <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) --> 
->>>>>>> 4d6e658ea15 (sample示例代码格式化)
+   <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) -->
     
     ``` TypeScript
     // entry/src/main/ets/common/Constants.ets
