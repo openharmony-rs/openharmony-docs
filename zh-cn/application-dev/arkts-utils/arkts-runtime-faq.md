@@ -170,6 +170,11 @@ try {
 
 <!-- @[test_afterStringReplaceWithEmptySearchValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
 
+``` TypeScript
+let str = 'dddd';
+let res = str.replace(/^/, 'abc');
+```
+
 ## Async函数内部异常的处理机制
 
 **场景**
