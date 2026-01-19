@@ -403,7 +403,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 | event_message: commit navigation in main frame, routing_id: 4, url: *** | Commit到子进程。 |
 | RenderFrameImpl::CommitNavigation、<br> event_message: page load start | 子进程收到commit。|
 | NWebHandlerDelegate::OnNavigationEntryCommitted、<br> event_message: Commit source_id xxx | 主进程收到DidCommitNavigation。|
-| event_message: load_timing_info errpr_code:0,...| 主资源加载完成，以及各阶段耗时。|
+| event_message: load_timing_info error_code:0,...| 主资源加载完成，以及各阶段耗时。|
 | event_message: MarkFirstContentfulPaint| 标记解析到有可显示内容的元素。|
 | NWebHandlerDelegate::OnPageVisible| 第一帧展示。|
 | NWebHandlerDelegate::OnFirstContentfulPaint| 第一帧有内容展示。|

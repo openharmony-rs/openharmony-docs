@@ -19,8 +19,8 @@ PersistenceV2提供状态变量持久化能力，开发者可以通过connect或
 >PersistenceV2从API version 12开始支持。
 >
 >globalConnect从API version 18开始支持，行为和connect保持一致，唯一的区别为connect的底层存储路径为module级别的路径，而globalConnect的底层存储路径为应用级别，详细区别见使用场景[在不同的module中使用connect和globalConnect](#在不同的module中使用connect和globalconnect)。
-
->globalConnect从API version 23开始支持[集合类型Array，Map，Set，Date，collections.Array, collections.Map, collections.Set的持久化](#globalconnect支持集合的类型)，支持在UI线程持久化@Sendable类型的数据持久化，支持持久化循环引用的对象，支持持久化单个key超过8k的数据。目前建议开发者使用API version 23的新增的globalConnect接口。
+>
+>globalConnect从API version 23开始支持[集合类型](#globalconnect支持集合的类型)（Array、Map、Set、Date、collections.Array、collections.Map、collections.Set）的持久化，支持在UI线程持久化@Sendable类型的数据持久化，支持持久化循环引用的对象，支持持久化单个key超过8k的数据。目前建议开发者使用API version 23的新增的globalConnect接口。
 
 ## 概述
 
@@ -57,7 +57,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
 2、在API version 23以前，不支持`collections.Set`、`collections.Map`等类型。
 
-- 从API version 23开始， 提供globalConnect接口，支持`collections.Set`、`collections.Map`和`collections.Array`。`collections.Set`、`collections.Map`和`collections.Array`本身无法观察，在globalConnect接口使用defaultCreator时，需要使用[UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)，才能在值变化时自动保存，如果不使用，开发者需要手动调用[PersistenceV2.save(key)](../../reference/apis-arkui/js-apis-stateManagement.md#save)保存变化的数据。
+- 从API version 23开始， 提供globalConnect接口，支持[`collections.Set`](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)、[`collections.Map`](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)和[`collections.Array`](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)。`collections.Set`、`collections.Map`和`collections.Array`本身无法观察，在globalConnect接口使用defaultCreator时，需要使用[UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)，才能在值变化时自动保存，如果不使用，开发者需要手动调用[PersistenceV2.save(key)](../../reference/apis-arkui/js-apis-stateManagement.md#save)保存变化的数据。
 
    如下是新增接口globalConnect支持collections.Array的示例代码:
     
@@ -474,12 +474,12 @@ class PersistClass {
 
 ### globalConnect支持集合的类型
 
-集合类型是指`Array<V>`, `Map<K, V>`, `Set<V>`, `collection.Array<V>`, `collection.Map<K, V>`, `collection.Set<V>`。
-其中，`Map<K, V>`和`collection.Map<k, V>`中的key值类型（`K`）是指`string`或`number`类型。
+集合类型是指`Array<V>`、`Map<K, V>`、`Set<V>`、`collections.Array<V>`、`collections.Map<K, V>`、`collections.Set<V>`。
+其中，`Map<K, V>`和`collections.Map<k, V>`中的key值类型（`K`）是指`string`或`number`类型。
 
-`Array<V>`, `Map<K, V>`, `Set<V>`中`V`的类型包括：`boolean`、`number`、`string`、`Date`、`Number`、`Boolean`、`String`、interface类型和class类型。
+`Array<V>`、`Map<K, V>`和 `Set<V>`中，`V`的类型包括：`boolean`、`number`、`string`、`Date`、`Number`、`Boolean`、`String`、interface类型和class类型。
 
-`collection.Array<V>`、`collection.Map<K, V>`、`collection.Set<V>`要求`V`的类型必须是`@Sendable`类型的数据（`boolean`、`number`、`string`类型）。
+`collections.Array<V>`、`collections.Map<K, V>`、`collections.Set<V>`要求`V`的类型必须是`@Sendable`类型的数据（`boolean`、`number`、`string`类型）。
 
 如下展示`globalConnect`持久化`Array<ClassA>`的示例：
 

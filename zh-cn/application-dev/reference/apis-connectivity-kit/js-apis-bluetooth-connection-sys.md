@@ -870,14 +870,14 @@ try {
 
 | 名称                               | 值    | 说明              |
 | -------------------------------- | ------ | --------------- |
-| DEVICE_TYPE_DEFAULT<sup>12+</sup> | 0 | 默认设备类型，与原类型一致。<br/>此接口为系统接口。 |
-| DEVICE_TYPE_CAR<sup>12+</sup>  | 1 | 汽车。<br/>此接口为系统接口。  |
-| DEVICE_TYPE_HEADSET<sup>12+</sup>  | 2 | 耳机。<br/>此接口为系统接口。  |
-| DEVICE_TYPE_HEARING<sup>12+</sup>   | 3 | 助听器<br/>此接口为系统接口。  |
-| DEVICE_TYPE_GLASSES<sup>12+</sup>    | 4 | 眼镜。<br/>此接口为系统接口。  |
-| DEVICE_TYPE_WATCH<sup>12+</sup>     | 5 | 手表。<br/>此接口为系统接口。  |
-| DEVICE_TYPE_SPEAKER<sup>12+</sup>     | 6 | 音响。<br/>此接口为系统接口。  |
-| DEVICE_TYPE_OTHERS<sup>12+</sup>     | 7 | 其他设备。<br/>此接口为系统接口。  |
+| DEVICE_TYPE_DEFAULT | 0 | 默认设备类型，与原类型一致。<br/>此接口为系统接口。 |
+| DEVICE_TYPE_CAR  | 1 | 汽车。<br/>此接口为系统接口。  |
+| DEVICE_TYPE_HEADSET  | 2 | 耳机。<br/>此接口为系统接口。  |
+| DEVICE_TYPE_HEARING   | 3 | 助听器<br/>此接口为系统接口。  |
+| DEVICE_TYPE_GLASSES    | 4 | 眼镜。<br/>此接口为系统接口。  |
+| DEVICE_TYPE_WATCH     | 5 | 手表。<br/>此接口为系统接口。  |
+| DEVICE_TYPE_SPEAKER     | 6 | 音响。<br/>此接口为系统接口。  |
+| DEVICE_TYPE_OTHERS     | 7 | 其他设备。<br/>此接口为系统接口。  |
 
 
 ## BatteryInfo<sup>12+</sup>
