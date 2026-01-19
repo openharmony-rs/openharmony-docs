@@ -506,6 +506,14 @@ let obj2: I = {
 
 <!-- @[put_catch_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+try {
+  doSomething();
+} catch (err) {
+  // 处理错误。
+}
+```
+
 ### 大括号`{`和语句在同一行
 
 **【级别】建议**
