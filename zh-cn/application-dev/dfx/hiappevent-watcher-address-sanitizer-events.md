@@ -22,7 +22,7 @@
 
 ## 检测原理
 
-详见[AddrSanitizer（地址越界）检测](address-sanitizer-guidelines.md)。
+详见[地址越界类问题检测](address-sanitizer-guidelines.md)。
 
 ## 事件字段说明
 
