@@ -401,23 +401,23 @@
 2. 互动卡片动效工具函数实现
 
    <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) --> 
-    
-    ``` TypeScript
-    // entry/src/main/ets/common/Constants.ets
-    // 动效相关常量的开发
-    export class Constants {
-      // 互动卡片动效超范围，左侧偏移百分比 = 偏移值/卡片宽度
-      public static readonly OVERFLOW_LEFT_RATIO: number = 0.1;
-      // 互动卡片动效超范围，上侧偏移百分比 = 偏移值/卡片高度
-      public static readonly OVERFLOW_TOP_RATIO: number = 0.15;
-      // 互动卡片动效超范围，宽度放大百分比
-      public static readonly OVERFLOW_WIDTH_RATIO: number = 1.2;
-      // 互动卡片动效超范围，高度放大百分比
-      public static readonly OVERFLOW_HEIGHT_RATIO: number = 1.3;
-      // 互动卡片动效超范围，动效时长
-      public static readonly OVERFLOW_DURATION: number = 3500;
-    }
-    ```
+   
+   ``` TypeScript
+   // entry/src/main/ets/common/Constants.ets
+   // 动效相关常量的开发
+   export class Constants {
+     // 互动卡片动效超范围，左侧偏移百分比 = 偏移值/卡片宽度
+     public static readonly OVERFLOW_LEFT_RATIO: number = 0.1;
+     // 互动卡片动效超范围，上侧偏移百分比 = 偏移值/卡片高度
+     public static readonly OVERFLOW_TOP_RATIO: number = 0.15;
+     // 互动卡片动效超范围，宽度放大百分比
+     public static readonly OVERFLOW_WIDTH_RATIO: number = 1.2;
+     // 互动卡片动效超范围，高度放大百分比
+     public static readonly OVERFLOW_HEIGHT_RATIO: number = 1.3;
+     // 互动卡片动效超范围，动效时长
+     public static readonly OVERFLOW_DURATION: number = 3500;
+   }
+   ```
 
 
 3. 需要的资源文件string.json
