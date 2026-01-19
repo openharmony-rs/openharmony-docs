@@ -46,6 +46,22 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 3. 自定义回调函数，本例直接打印出标签及标签值。
 
    <!-- @[parsingXML_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
+   
+   ``` TypeScript
+   function func(name: string, value: string): boolean {
+     if (name == 'note') {
+       console.info(name);
+     }
+     if (value == 'Play' || value == 'Work') {
+       console.info('    ' + value);
+       // ...
+     }
+     if (name == 'title' || name == 'lens') {
+       console.info('  ' + name);
+     }
+     return true; //true:继续解析 false:停止解析
+   }
+   ```
 
 4. 设置解析选项，调用parseXml函数。
 
