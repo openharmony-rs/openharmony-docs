@@ -89,6 +89,14 @@ console.info('reg.exec(str) = ' + reg.exec(str));
 
 <!-- @[test_namedCaptureGroupAccess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
 
+``` TypeScript
+let reg = new RegExp('(a)(?<b>b)');
+let res = reg.exec('ab');
+console.info('JSON.stringify(res?.groups) = ' + JSON.stringify(res?.groups));
+// 期望输出: JSON.stringify(res?.groups) = {"b":"b"}。
+// 实际输出: JSON.stringify(res?.groups) = {"b":"a"}。
+```
+
 规避方案：计算具名捕获组位置获取具名捕获组匹配的内容。
 
 <!-- @[test_getNamedGroupMatchByIndexFallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
