@@ -479,45 +479,9 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
 ```ts
 JS异常：TypeError: Cannot add property in prevent extensions
 ```
-   <!-- @[define_sendableTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->    
-   
-   ``` TypeScript
-   // sendable.ets，与Index.ets在同级目录下。
-   @Sendable
-   export class TestClass {
-     public name: string = 'test';
-     setName(name: string) {
-       this.name = name;
-     }
-     getName(): string {
-       return this.name;
-     }
-   }
-   ```
+
 **问题原因与解决方案**
-   <!-- @[save_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SaveResult.ets) -->    
-   
-   ``` TypeScript
-   // Index.ets
-   import { taskpool } from '@kit.ArkTS'
-   import { BusinessError } from '@kit.BasicServicesKit'
-   import { TestClass } from './Sendable'
-   
-   @Concurrent
-   function createTask(a: number): string {
-     return `test${a}`;
-   }
-   function executeTask() {
-     let testObject: TestClass = new TestClass();
-     let task: taskpool.Task = new taskpool.Task(createTask, 1)
-     taskpool.execute(task).then((res) => {
-       testObject.setName(res as string);
-       console.info('execute task success, name is ' + testObject.getName());
-     }).catch((e: BusinessError) => {
-       console.error('execute task error: ' + e.message);
-     })
-   }
-   ```
+
 由于Sendable类的布局固定，不允许增删属性，对Sendable对象新增属性时会抛出上述JS异常。应用需要基于JS异常栈定位到对应的ts文件代码行，排查相应的业务逻辑。
 
 **异常场景示例**
@@ -569,38 +533,7 @@ import { taskpool } from '@kit.ArkTS'
 import { BusinessError } from '@kit.BasicServicesKit'
 import { SendableItem } from './sendable'
 
-<!-- @[initialize_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteItemInitialized.ets) -->   
-
-``` TypeScript
-// Index.ets
-import { taskpool } from '@kit.ArkTS'
-import { BusinessError } from '@kit.BasicServicesKit'
-import { SendableItem } from './Sendable'
-
 @Concurrent
-function createTask() {
-  let data = new SendableItem();
-}
-<!-- @[define_normalItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ui.ets) -->
-
-``` TypeScript
-// ui.ets
-@Observed
-export class NormalItem {
-  public age: number = 0;
-}
-```
-function executeTask() {
-  let task = new taskpool.Task(createTask);
-  taskpool.execute(task).then((res) => {
-    console.info('execute task success');
-  }).catch((e: BusinessError) => {
-    console.error('execute task error: ' + e.message);
-  })
-}
-
-executeTask();
-```
 function createTask() {
   let data = new SendableItem();
 }
