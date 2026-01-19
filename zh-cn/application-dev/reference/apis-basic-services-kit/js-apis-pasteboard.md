@@ -2028,7 +2028,7 @@ hasRemoteData(): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 当前待粘贴的数据在远端返回true，否则返回false。 |
+| boolean | 表示用于指示剪贴板数据是否在远端设备上。true表示剪贴板数据在远端设备上；false表示剪贴板数据不在远端设备上。默认为true/false。 |
 
 **示例：**
 

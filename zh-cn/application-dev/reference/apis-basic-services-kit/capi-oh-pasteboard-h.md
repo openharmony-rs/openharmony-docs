@@ -537,7 +537,6 @@ bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)
 
 **起始版本：** 24
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -548,7 +547,7 @@ bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 当前待粘贴的数据在远端返回true，否则返回false。 |
+| bool | 表示用于指示剪贴板数据是否在远端设备上。true表示剪贴板数据在远端设备上；false表示剪贴板数据不在远端设备上。默认为true/false。 |
 
 ### OH_Pasteboard_GetData()
 
