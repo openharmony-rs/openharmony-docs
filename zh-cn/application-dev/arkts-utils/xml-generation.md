@@ -54,6 +54,12 @@ XML模块的API接口可以参考[@ohos.xml](../reference/apis-arkts/js-apis-xml
    方式2：基于DataView构造XmlSerializer对象
 
    <!-- @[xmlSerializer_differentFunction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlSerializer.ets) -->
+   
+   ``` TypeScript
+   let arrayBuffer: ArrayBuffer = new ArrayBuffer(2048); // 创建一个2048字节的缓冲区
+   let dataView: DataView = new DataView(arrayBuffer); // 创建一个DataView
+   let serializer: xml.XmlSerializer = new xml.XmlSerializer(dataView); // 基于DataView构造XmlSerializer对象
+   ```
 
 3. 调用XML元素生成函数。
 
