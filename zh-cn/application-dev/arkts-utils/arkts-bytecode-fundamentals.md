@@ -88,6 +88,15 @@
 
 示例代码：
 <!-- @[global_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+let a = 1;
+let b = 1;
+function foo1(): void {
+  a += 2;
+  b = 5;
+}
+```
 字节码中的相关指令：
 ```assembly
 .function any .foo(any a0, any a1, any a2) {
