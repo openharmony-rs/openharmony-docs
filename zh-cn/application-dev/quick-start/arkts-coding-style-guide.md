@@ -469,7 +469,21 @@ ArkTS中，浮点值包含一个小数点，不要求小数点之前或之后必
 **【正例】**
 
 <!-- @[array_methods_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[finally_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+function foo5() {
+  try {
+    // ...
+    return 1;
+  } catch (err) {
+    // ...
+    return 2;
+  } finally {
+    console.info('XXX!');
+  }
+}
+```
 ### 不要在控制性条件表达式中执行赋值操作
 
 **【级别】要求**
