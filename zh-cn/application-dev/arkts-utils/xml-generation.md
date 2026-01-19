@@ -35,6 +35,10 @@ XML模块的API接口可以参考[@ohos.xml](../reference/apis-arkts/js-apis-xml
 1. 引入模块。
 
    <!-- @[xmlSerializer_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlSerializer.ets) -->
+   
+   ``` TypeScript
+   import { xml, util } from '@kit.ArkTS';
+   ```
 
 2. 创建缓冲区，构造XmlSerializer对象。可以基于ArrayBuffer构造XmlSerializer对象，也可以基于DataView构造XmlSerializer对象。
 
