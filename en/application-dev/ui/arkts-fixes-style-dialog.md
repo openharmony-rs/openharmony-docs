@@ -50,7 +50,7 @@ import { PromptAction } from '@kit.ArkUI';
 @Component
 export struct ShowActionMenuExample {
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
 
         Column() {
@@ -86,7 +86,7 @@ export struct ShowActionMenuExample {
       }
       .width('100%')
       .height('100%')
-    // ···
+      // ...
   }
 }
 ```
@@ -112,7 +112,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 export struct ShowDialogExample {
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
         Column() {
           Button('ShowDialog')
@@ -152,7 +152,7 @@ export struct ShowDialogExample {
       .width('100%')
       .height('100%')
       .padding({ left: 12, right: 12 })
-    // ···
+      // ...
   }
 }
 ```
@@ -167,9 +167,9 @@ The picker dialog box is typically used to display specific information or optio
 
 The calendar picker dialog box provides a calendar view that includes year, month, and weekday information, implemented through the [CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md) API. You can call the **show** API to define and display the calendar picker dialog box.
 
-The display of the calendar picker dialog box depends on the UI execution context and cannot be used in places where the [UI context is ambiguous](./arkts-global-interface.md#ambiguous-ui-context). For specific constraints, see the [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) documentation.
+The display of the calendar picker dialog box depends on the UI execution context and cannot be used in places where the [UI context is ambiguous](arkts-global-interface.md#ambiguous-ui-context). For specific constraints, see the [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) documentation.
 
-You can also define custom button styles by configuring **acceptButtonStyle** and **cancelButtonStyle**.
+You can also define custom button styles by configuring **acceptButtonStyle** and **cancelButtonStyle** of [CalendarDialogOptions](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md#calendardialogoptions).
 
 <!-- @[calender_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/CalendarPickerDialog.ets) -->
 
@@ -217,8 +217,8 @@ export struct CalendarDialog {
       .height('100%')
       .padding({ left: 12, right: 12 })
     }
-    // ···
-    // Replace $r('app.string.xxx') with the string resource file you use.
+    // ...
+    // Replace $r('app.string.CustomDialog_calender') with the actual resource file. In this example, the value in the resource file is "Calendar Picker Dialog Box."
     .title($r('app.string.CustomDialog_calender'))
   }
 }
@@ -233,7 +233,7 @@ The date picker dialog box allows users to select a date from the given range, p
 
 You use the [showDatePickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showdatepickerdialog) API in **UIContext** to implement a date picker dialog box.
 
-When **lunarSwitch** and **showTime** in [DatePickerDialogOprions](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md#datepickerdialogoptions) are set to **true** for the dialog box, it displays a check box for toggling the lunar calendar and time. When the check box is selected, the lunar calendar is shown. When the confirm button is touched, the dialog box returns the currently selected date through **onDateAccept**. To display the last confirmed date when the dialog box is shown again, reassign the value to **selectTime** in the callback.
+When **lunarSwitch** and **showTime** in [DatePickerDialogOptions](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md#datepickerdialogoptions) are set to **true** for the dialog box, it displays a check box for toggling the lunar calendar and time. When the check box is selected, the lunar calendar is shown. When the confirm button is touched, the dialog box returns the currently selected date through **onDateAccept**. To display the last confirmed date when the dialog box is shown again, reassign the value to **selectTime** in the callback.
 
 <!-- @[date_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerDialog.ets) -->
 
@@ -271,7 +271,7 @@ export struct DatePickerDialogExample {
       .height('100%')
       .padding({ left: 12, right: 12 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -319,7 +319,7 @@ export struct DatePickerCustomDialogExample {
           })
       }.width('100%').margin({ top: 5 })
     }
-    // ···
+    // ...
     }
 }
 ```
@@ -372,9 +372,9 @@ export struct TimePickerDialogExample {
             })
         }.width('100%').margin({ top: 5 })
       }
-    // ···
+      // ...
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -410,7 +410,7 @@ export struct TextPickerCNDialogExample {
     {
       text: 'Heilongjiang Province',
       children: [{ text: 'Harbin', children: [{ text: 'Daoli District' }, { text: 'Daowai District' }, { text: 'Nangang District' }] },
-        { text: 'Mudanjiang', children: [{ text: `Dong'an District` }, { text: `Xi'an District` }, { text: 'Aimin District' }] }]
+        { text: 'Qiqihar', children: [{ text: 'Longsha District' }, { text: 'Jianhua District' }, { text: 'Tiefeng District' }] }]
     }
   ];
   private select: number = 0;
@@ -516,7 +516,7 @@ export struct showActionSheetExample {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // Replace $r('app.string.xxx') with the string resource file you use.
+    // Replace $r('app.string.CustomDialog_ActionSheet') with the actual resource file. In this example, the value in the resource file is "ActionSheet".
     .title($r('app.string.CustomDialog_ActionSheet'))
   }
 }
@@ -546,7 +546,6 @@ import { PromptAction } from '@kit.ArkUI';
 @Entry
 @Component
 export struct showAlertDialogExample {
-
   build() {
     NavDestination() {
       Column({ space: 12 }) {
@@ -569,7 +568,7 @@ export struct showAlertDialogExample {
                     .animation({ duration: 3000, curve: Curve.Sharp })),
                     TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
                       .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 })
-                        .animation({ duration: 100, curve: Curve.Smooth }))),
+                      .animation({ duration: 100, curve: Curve.Smooth }))),
                   buttons: [{
                     value: 'cancel',
                     action: () => {
@@ -596,7 +595,7 @@ export struct showAlertDialogExample {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // Replace $r('app.string.xxx') with the string resource file you use.
+    // Replace $r('app.string.CustomDialog_AlertDialog') with the actual resource file. In this example, the value in the resource file is "AlertDialog."
     .title($r('app.string.CustomDialog_AlertDialog'))
   }
 }

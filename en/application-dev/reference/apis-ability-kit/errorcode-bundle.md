@@ -1273,9 +1273,11 @@ The Bundle Manager service is abnormal.
 
 **Possible Causes**<br>
 Scenario 1:
+
 An unknown system exception occurs.
 
 Scenario 2:
+
 The system throws an uncaught error code, such as IPC failure or file copy failure.
 
 **Solution**<br>
@@ -1442,6 +1444,7 @@ The **shortcutInfo** list contains a combination of **bundleName** and **appInde
 
 **Possible Causes**<br>
 The **shortcutInfo** list contains a combination of **bundleName** and **appIndex** that is inconsistent with other entries.
+
 For example, the following list is passed to [shortcutManager.addDynamicShortcutInfos](../apis-ability-kit/js-apis-shortcutManager-sys.md#shortcutmanageradddynamicshortcutinfos23):
 ```ts
 const bundleName = "com.example.dynamic";

@@ -44,6 +44,8 @@ import { AbilityConstant } from '@kit.AbilityKit';
 | lastExitReason | [LastExitReason](#lastexitreason) | 否 | 否 | 枚举类型，表示Ability上次退出原因。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | lastExitMessage<sup>12+</sup> | string | 否 | 否 | 表示Ability上次退出的详细原因。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | lastExitDetailInfo<sup>18+</sup> | [LastExitDetailInfo](#lastexitdetailinfo18) | 否 | 是 | 表示Ability上次退出时的关键运行信息（含进程ID、退出时间戳、RSS内存值等）。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
+| launchUTCTime<sup>23+</sup> | number | 否 | 是 | 表示UIAbility开始启动的UTC时间戳，单位为毫秒。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**约束：**<br/>该功能仅在启动UIAbility时生效。对于其他类型的Ability（例如UIExtensionAbility），所获取的启动时间为默认值0。|
+| launchUptime<sup>23+</sup> | number | 否 | 是 | 表示UIAbility开始启动时系统已运行的时间（自系统开机启动以来的时间），单位为毫秒。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**约束：**<br/>该功能仅在启动UIAbility时生效。对于其他类型的Ability（例如UIExtensionAbility），所获取的启动时间为默认值0。|
 
 ## LaunchReason
 
@@ -186,19 +188,13 @@ export default class MyAbility extends UIAbility {
 
 整机可用内存级别，该类型为枚举，可配合UIAbility的[onMemoryLevel()](js-apis-app-ability-ability.md#abilityonmemorylevel)方法根据level执行不同内存级别的相应操作。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称                         | 值 | 说明                |
 | ---                         | --- | ---           |
-| MEMORY_LEVEL_MODERATE       | 0   | 表示整机可用内存适中。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。| 
-| MEMORY_LEVEL_LOW            | 1   | 表示整机可用内存低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。| 
-| MEMORY_LEVEL_CRITICAL       | 2   | 表示整机可用内极低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。|
-| MEMORY_LEVEL_UI_HIDDEN<sup>23+</sup>      | 3   | 表示应用程序的所有UI界面已不可见，此时应该释放一些资源。该枚举仅对从前台切换到后台的应用生效。|  
-| MEMORY_LEVEL_BACKGROUND_MODERATE<sup>23+</sup>     | 4   | 表示应用刚被使用过，即处于应用使用排序链表（LRU）的前三分之一区间，暂时不会被系统清理。该枚举仅对后台应用生效。|  
-| MEMORY_LEVEL_BACKGROUND_LOW<sup>23+</sup>    | 5   | 表示应用已被用户使用完一段时间，即处于应用使用排序链表（LRU）的中间三分之一区间，存在被系统清理的风险。该枚举仅对后台应用生效。| 
-| MEMORY_LEVEL_BACKGROUND_CRITICAL<sup>23+</sup>    | 6   | 表示应用长期未被使用，即处于应用使用排序链表（LRU）的后三分之一区间，会被系统优先清理。该枚举仅对后台应用生效。|
+| MEMORY_LEVEL_MODERATE       | 0   | 表示整机可用内存适中。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。| 
+| MEMORY_LEVEL_LOW            | 1   | 表示整机可用内存低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。| 
+| MEMORY_LEVEL_CRITICAL       | 2   | 表示整机可用内极低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
 
 > **说明：**
 > 
@@ -206,8 +202,6 @@ export default class MyAbility extends UIAbility {
 >   - 当整机可用内存下降至1700M~1800M时，会触发取值为0的onMemoryLevel回调，表示当前整机可用内存适中。
 >   - 当整机可用内存下降至1600M~1700M时，会触发取值为1的onMemoryLevel回调，表示当前整机可用内存偏低。
 >   - 当整机可用内存下降至1600M以下时，会触发取值为2的onMemoryLevel回调，表示当前整机可用内存很低。
->
-> - LRU：表示按应用最近使用顺序排序的链表。通常将最近使用的应用放在链表头部（位置靠前），将最不常用的应用放在链表尾部（位置靠后）。当内存不足时，位置靠后的应用将优先被清理。
 
 **示例：**
 

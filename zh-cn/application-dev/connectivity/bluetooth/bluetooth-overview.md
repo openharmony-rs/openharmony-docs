@@ -21,3 +21,22 @@
 低功耗蓝牙（Bluetooth Low Energy, BLE）是从蓝牙4.0开始支持的技术。相比于传统蓝牙，BLE在保障一定的传输速率情况下，具备更低功耗的特点，广泛使用于续航要求较高的蓝牙设备中。其最高传输速率可达1Mbps，通信范围通常为10米左右。
 
 相比于传统蓝牙，BLE以其低功耗的特点，广泛应用于穿戴设备、智能家居和物联网传感器等领域。
+
+## 蓝牙设备地址类型
+
+在蓝牙服务开发过程中，涉及两种维度的地址类型定义。
+
+![bluetooth address type](figures/bt_address_type.png)
+
+**图1** 蓝牙设备地址类型
+
+- 蓝牙子系统定义的地址类型。蓝牙设备的实际MAC地址属于用户的隐私信息，在发现设备的过程中，蓝牙子系统会给每个蓝牙外设分配一个虚拟MAC地址，并保存该虚拟MAC地址和外设实际MAC地址的映射关系。
+
+- 蓝牙协议定义的地址类型。蓝牙协议定义的蓝牙设备地址类型主要可以分为两大类：Public Address和Random Address。传统蓝牙使用的是Public Address，低功耗蓝牙可以使用Public Address和Random Address。其中，Random Address又包括Static Random Adress和Private Random Address两种类型。Private Random Address可以继续分为Non-resolvable Private Address和Resolvable Private Address两种类型。每种地址类型介绍如下：
+
+| 类型                | 说明     |
+| ------------------ |  ------ |
+| Public Address       | 公共设备地址，该类型地址由IEEE组织分配并保证唯一性，永久不变。|
+| Static Random Address       | 静态随机地址，该类型地址在蓝牙设备上电初始化时随机生成，本次上电周期内不会改变。|
+| Resolvable Private Address      | 可解析私有地址，该类型地址通过一组地址解析秘钥（Identity Resolving Key, IRK）生成，会定期（蓝牙协议建议15分钟更新一次）发生变化。若一个蓝牙设备A拥有另一个蓝牙设备B的IRK，即可通过解析设备B的可解析私有地址来识别设备B。|
+| Non-resolvable Private Address       | 不可解析私有地址，该类型地址是完全随机的临时地址，会定期（蓝牙协议建议15分钟更新一次）发生变化，难以追踪。|

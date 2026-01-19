@@ -37,7 +37,7 @@ Enumerates the bundle flags, which indicate the type of bundle information to ob
 | GET_BUNDLE_INFO_WITH_MENU<sup>11+</sup>       | 0x00000100 | Used to obtain the bundle information with the file context menu configuration. It must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | GET_BUNDLE_INFO_WITH_ROUTER_MAP<sup>12+</sup> | 0x00000200 | Used to obtain the bundle information with the router map. It must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | GET_BUNDLE_INFO_WITH_SKILL<sup>12+</sup>      | 0x00000800 | Used to obtain the bundle information with the skills. It must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE**, **GET_BUNDLE_INFO_WITH_ABILITY**, and **GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| GET_BUNDLE_INFO_WITH_ENTRY_MODULE<sup>22+</sup>      | 0x00010000 | Used to obtain the bundle information with the HAP module information. It is valid only for bundleInfo.hapModulesInfo corresponding to the entry module. If the entry module does not exist, the bundleInfo.hapModulesInfo list is empty. The obtained bundle information does not contain information about the signature, application, ability, ExtensionAbility, or permission.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| GET_BUNDLE_INFO_WITH_ENTRY_MODULE<sup>23+</sup>      | 0x00010000 | Used to obtain the bundle information with the HAP module information. It is valid only for bundleInfo.hapModulesInfo corresponding to the entry module. If the entry module does not exist, the bundleInfo.hapModulesInfo list is empty. The obtained bundle information does not contain information about the signature, application, ability, ExtensionAbility, or permission.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## ExtensionAbilityType
 
@@ -270,7 +270,8 @@ import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_METADATA;
+let bundleFlags =
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_METADATA;
 
 try {
   bundleManager.getBundleInfoForSelf(bundleFlags).then((data) => {
@@ -317,7 +318,9 @@ import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION;
+let bundleFlags =
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY |
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION;
 
 try {
   bundleManager.getBundleInfoForSelf(bundleFlags, (err, data) => {
@@ -733,7 +736,8 @@ let metadataName = 'ability_metadata';
 
 try {
   let data = bundleManager.getProfileByExtensionAbilitySync(moduleName, extensionAbilityName);
-  hilog.info(0x0000, 'testTag', 'getProfileByExtensionAbilitySync successfully. Data: %{public}s', JSON.stringify(data));
+  hilog.info(0x0000, 'testTag', 'getProfileByExtensionAbilitySync successfully. Data: %{public}s',
+    JSON.stringify(data));
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getProfileByExtensionAbilitySync failed. Cause: %{public}s', message);
@@ -741,7 +745,8 @@ try {
 
 try {
   let data = bundleManager.getProfileByExtensionAbilitySync(moduleName, extensionAbilityName, metadataName);
-  hilog.info(0x0000, 'testTag', 'getProfileByExtensionAbilitySync successfully. Data: %{public}s', JSON.stringify(data));
+  hilog.info(0x0000, 'testTag', 'getProfileByExtensionAbilitySync successfully. Data: %{public}s',
+    JSON.stringify(data));
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getProfileByExtensionAbilitySync failed. Cause: %{public}s', message);
@@ -928,20 +933,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundleName = 'com.example.myapplication';
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY;
+let bundleFlags =
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY;
 let userId = 100;
 
 try {
-    bundleManager.getBundleInfo(bundleName, bundleFlags, userId, (err, data) => {
-        if (err) {
-            hilog.error(0x0000, 'testTag', 'getBundleInfo failed: %{public}s', err.message);
-        } else {
-            hilog.info(0x0000, 'testTag', 'getBundleInfo successfully: %{public}s', JSON.stringify(data));
-        }
-    });
+  bundleManager.getBundleInfo(bundleName, bundleFlags, userId, (err, data) => {
+    if (err) {
+      hilog.error(0x0000, 'testTag', 'getBundleInfo failed: %{public}s', err.message);
+    } else {
+      hilog.info(0x0000, 'testTag', 'getBundleInfo successfully: %{public}s', JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleInfo failed: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInfo failed: %{public}s', message);
 }
 ```
 
@@ -952,20 +958,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundleName = 'com.example.myapplication';
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_METADATA;
+let bundleFlags =
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_METADATA;
 let userId = 100;
 
 try {
-    bundleManager.getBundleInfo(bundleName, bundleFlags, userId, (err, data) => {
-        if (err) {
-            hilog.error(0x0000, 'testTag', 'getBundleInfo failed: %{public}s', err.message);
-        } else {
-            hilog.info(0x0000, 'testTag', 'getBundleInfo successfully: %{public}s', JSON.stringify(data));
-        }
-    });
+  bundleManager.getBundleInfo(bundleName, bundleFlags, userId, (err, data) => {
+    if (err) {
+      hilog.error(0x0000, 'testTag', 'getBundleInfo failed: %{public}s', err.message);
+    } else {
+      hilog.info(0x0000, 'testTag', 'getBundleInfo successfully: %{public}s', JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleInfo failed: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInfo failed: %{public}s', message);
 }
 ```
 
@@ -1009,19 +1016,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundleName = 'com.example.myapplication';
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY;
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE |
+bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY;
 
 try {
-    bundleManager.getBundleInfo(bundleName, bundleFlags, (err, data) => {
-        if (err) {
-            hilog.error(0x0000, 'testTag', 'getBundleInfo failed: %{public}s', err.message);
-        } else {
-            hilog.info(0x0000, 'testTag', 'getBundleInfo successfully: %{public}s', JSON.stringify(data));
-        }
-    });
+  bundleManager.getBundleInfo(bundleName, bundleFlags, (err, data) => {
+    if (err) {
+      hilog.error(0x0000, 'testTag', 'getBundleInfo failed: %{public}s', err.message);
+    } else {
+      hilog.info(0x0000, 'testTag', 'getBundleInfo successfully: %{public}s', JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleInfo failed: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInfo failed: %{public}s', message);
 }
 ```
 
@@ -1072,18 +1080,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundleName = 'com.example.myapplication';
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
 let userId = 100;
 
 try {
-    bundleManager.getBundleInfo(bundleName, bundleFlags, userId).then((data) => {
-        hilog.info(0x0000, 'testTag', 'getBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', err.message);
-    });
+  bundleManager.getBundleInfo(bundleName, bundleFlags, userId).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', err.message);
+  });
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', message);
 }
 ```
 
@@ -1096,16 +1105,15 @@ let bundleName = 'com.example.myapplication';
 let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
 
 try {
-    bundleManager.getBundleInfo(bundleName, bundleFlags).then((data) => {
-        hilog.info(0x0000, 'testTag', 'getBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', err.message);
-    });
+  bundleManager.getBundleInfo(bundleName, bundleFlags).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', err.message);
+  });
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', message);
 }
-
 ```
 
 ## bundleManager.getBundleInfoSync<sup>14+</sup>
@@ -1158,11 +1166,11 @@ let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMIS
 let userId = 100;
 
 try {
-    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-    hilog.info(0x0000, 'testTag', 'getBundleInfoSync successfully: %{public}s', JSON.stringify(data));
+  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+  hilog.info(0x0000, 'testTag', 'getBundleInfoSync successfully: %{public}s', JSON.stringify(data));
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleInfoSync failed: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInfoSync failed: %{public}s', message);
 }
 ```
 
@@ -1212,11 +1220,11 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let bundleName = 'com.example.myapplication';
 let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION;
 try {
-    let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags);
-    hilog.info(0x0000, 'testTag', 'getBundleInfoSync successfully: %{public}s', JSON.stringify(data));
+  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags);
+  hilog.info(0x0000, 'testTag', 'getBundleInfoSync successfully: %{public}s', JSON.stringify(data));
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleInfoSync failed: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInfoSync failed: %{public}s', message);
 }
 ```
 
@@ -1256,16 +1264,16 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let uid = 20010005;
 try {
-    bundleManager.getBundleNameByUid(uid, (err, data) => {
-        if (err) {
-            hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed: %{public}s', err.message);
-        } else {
-            hilog.info(0x0000, 'testTag', 'getBundleNameByUid successfully: %{public}s', JSON.stringify(data));
-        }
-    });
+  bundleManager.getBundleNameByUid(uid, (err, data) => {
+    if (err) {
+      hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed: %{public}s', err.message);
+    } else {
+      hilog.info(0x0000, 'testTag', 'getBundleNameByUid successfully: %{public}s', JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed: %{public}s', message);
 }
 ```
 
@@ -1310,14 +1318,14 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let uid = 20010005;
 try {
-    bundleManager.getBundleNameByUid(uid).then((data) => {
-        hilog.info(0x0000, 'testTag', 'getBundleNameByUid successfully. Data: %{public}s', JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed. Cause: %{public}s', err.message);
-    });
+  bundleManager.getBundleNameByUid(uid).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getBundleNameByUid successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed. Cause: %{public}s', err.message);
+  });
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed. Cause: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed. Cause: %{public}s', message);
 }
 ```
 
@@ -1362,11 +1370,11 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let uid = 20010005;
 try {
-    let data = bundleManager.getBundleNameByUidSync(uid);
-    hilog.info(0x0000, 'testTag', 'getBundleNameByUidSync successfully. Data: %{public}s', JSON.stringify(data));
+  let data = bundleManager.getBundleNameByUidSync(uid);
+  hilog.info(0x0000, 'testTag', 'getBundleNameByUidSync successfully. Data: %{public}s', JSON.stringify(data));
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleNameByUidSync failed. Cause: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleNameByUidSync failed. Cause: %{public}s', message);
 }
 ```
 
@@ -1412,14 +1420,14 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 let uid = 20010005;
 
 try {
-    bundleManager.getAppCloneIdentity(uid).then((res) => {
-        hilog.info(0x0000, 'testTag', 'getAppCloneIdentity res = %{public}s', JSON.stringify(res));
-    }).catch((err: BusinessError) => {
-        hilog.error(0x0000, 'testTag', 'getAppCloneIdentity failed. Cause: %{public}s', err.message);
-    });
+  bundleManager.getAppCloneIdentity(uid).then((res) => {
+    hilog.info(0x0000, 'testTag', 'getAppCloneIdentity res = %{public}s', JSON.stringify(res));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAppCloneIdentity failed. Cause: %{public}s', err.message);
+  });
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getAppCloneIdentity failed. Cause: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAppCloneIdentity failed. Cause: %{public}s', message);
 }
 ```
 
@@ -1463,11 +1471,11 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let uid = 20010005; // Replace uid with the UID of the corresponding application.
 try {
-    let data = bundleManager.getSignatureInfo(uid);
-    hilog.info(0x0000, 'testTag', 'getSignatureInfo successfully. Data: %{public}s', JSON.stringify(data));
+  let data = bundleManager.getSignatureInfo(uid);
+  hilog.info(0x0000, 'testTag', 'getSignatureInfo successfully. Data: %{public}s', JSON.stringify(data));
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getSignatureInfo failed. Cause: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getSignatureInfo failed. Cause: %{public}s', message);
 }
 ```
 
@@ -1515,18 +1523,18 @@ import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_WITH_APPLICATION;
-let uri = "https://www.example.com"; 
+let uri = "https://www.example.com";
 
 try {
-    bundleManager.getAbilityInfo(uri, abilityFlags).then((data) => {
-        console.info('getAbilityInfo successfully. Data: ' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        let message = (err as BusinessError).message;
-        console.error('getAbilityInfo failed. Cause: ' + message);
-    });
-} catch (err) {
+  bundleManager.getAbilityInfo(uri, abilityFlags).then((data) => {
+    console.info('getAbilityInfo successfully. Data: ' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
     let message = (err as BusinessError).message;
     console.error('getAbilityInfo failed. Cause: ' + message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  console.error('getAbilityInfo failed. Cause: ' + message);
 }
 ```
 
@@ -1552,7 +1560,7 @@ Clears the application cache. This API uses a promise to return the result.
 import { bundleManager } from '@kit.AbilityKit';
 
 bundleManager.cleanBundleCacheFilesForSelf().then(() => {
-    console.info('cleanBundleCacheFilesForSelf complete.');
+  console.info('cleanBundleCacheFilesForSelf complete.');
 });
 ```
 

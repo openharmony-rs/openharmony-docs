@@ -4,7 +4,7 @@
 <!--Owner: @DaiHuina1997-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 随着应用程序功能的扩展，冷启动时间显著增加，主要是因为启动初期加载了大量未实际执行的模块。这不仅延长了应用的初始化时间，还浪费了资源。需要精简加载流程，剔除非必需的文件执行，优化冷启动性能，确保用户体验流畅。
 
@@ -135,8 +135,8 @@ lazy-import 相较于动态加载的优势：
 |:----------------------------------------------|:---------------|:-----------|:------------|:-----------|
 | import lazy { x } from "mod";                 | "mod"          | "x"        | "x"         | API 12      |
 | import lazy { x as v } from "mod";            | "mod"          | "x"        | "v"         | API 12      |
-| import lazy x from "mod";                     | "mod"          | "default"  | "x"         | API 18      |
-| import lazy { KitClass } from "@kit.SomeKit"; | "@kit.SomeKit" | "KitClass" | "KitClass"  | API 18      |
+| import lazy x from "mod";                     | "mod"          | "default"  | "x"         | API 12      |
+| import lazy { KitClass } from "@kit.SomeKit"; | "@kit.SomeKit" | "KitClass" | "KitClass"  | API 12      |
 
 - 延迟加载共享模块或依赖路径内包含共享模块。
 
@@ -201,7 +201,7 @@ import { b } from "./mod1";         // 再次获取"mod1"内属性，未标记la
 > - strict：严格模式，报Error。
 > - 该字段从DevEco Studio 5.0.13.200版本开始支持。
 
-这种方式导出的变量c未在B.ets中使用，因此B.ets不会触发执行。在A.ets中使用变量c时，由于该变量未被初始化，将会抛出JavaScript异常。
+这种方式导出的变量c未在B.ets中使用，因此C.ets不会触发执行。在A.ets中使用变量c时，由于该变量未被初始化，将会抛出JavaScript异常。
 
 ```typescript
 // A.ets
@@ -363,15 +363,15 @@ export function func() {
 
     ```text
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
-        parentModule 1: &entry/src/main/ets/pages/outter& a
+        parentModule 1: &entry/src/main/ets/pages/outer& a
     ```  
 
     对应写法示例：
 
     ```ts
-    // entry/src/main/ets/pages/outter.ets
-    import { a } from './1' // outter文件从1文件中加载了a变量
-    console.info("example ", a); // a变量在outter文件执行时就被使用
+    // entry/src/main/ets/pages/outer.ets
+    import { a } from './1' // outer文件从1文件中加载了a变量
+    console.info("example ", a); // a变量在outer文件执行时就被使用
     ```  
 
 - 场景2：通过静态加载所加载的文件，存在多个父文件。  
@@ -379,16 +379,16 @@ export function func() {
     ```text
     // 说明：显示顺序不代表父文件的加载顺序。
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
-       parentModule 1: &entry/src/main/ets/pages/outter& a
+       parentModule 1: &entry/src/main/ets/pages/outer& a
        parentModule 2: &entry/src/main/ets/pages/innerinner& a
     ```
 
     对应写法示例：
 
     ```ts
-    // entry/src/main/ets/pages/outter.ets
-    import { a } from './1' // outter文件从1文件中加载了a变量
-    console.info("example ", a); // a变量在outter文件执行时就被使用
+    // entry/src/main/ets/pages/outer.ets
+    import { a } from './1' // outer文件从1文件中加载了a变量
+    console.info("example ", a); // a变量在outer文件执行时就被使用
 
     // entry/src/main/ets/pages/innerinner.ets
     import { a } from './1' // innerinner文件从1文件中加载了a变量
@@ -399,13 +399,13 @@ export function func() {
 
     ```text
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
-       parentModule 1: &entry/src/main/ets/pages/outter& a
+       parentModule 1: &entry/src/main/ets/pages/outer& a
     ```
 
     对应写法示例：
 
     ```ts
-    // entry/src/main/ets/pages/outter.ets
+    // entry/src/main/ets/pages/outer.ets
     import { a , b } from './1' // 加载1文件的多个变量
     console.info("example ", a); // a被使用
     export function myFunc() {

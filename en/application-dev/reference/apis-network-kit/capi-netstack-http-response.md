@@ -42,7 +42,7 @@ Defines the structure of HTTP responses.
 
 ### destroyResponse()
 
-```
+```c
 void (*destroyResponse)(struct Http_Response **response)
 ```
 

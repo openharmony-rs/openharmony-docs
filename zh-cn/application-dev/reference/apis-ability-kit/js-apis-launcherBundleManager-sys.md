@@ -274,6 +274,7 @@ getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not support. |
 | 17700001 | The specified bundle name is not found.  |
+| 17700026 | The specified bundle is disabled.        |
 
 **示例：**
 
@@ -334,6 +335,7 @@ getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not support. |
 | 17700001 | The specified bundle name is not found.  |
+| 17700026 | The specified bundle is disabled.        |
 
 **示例：**
 
@@ -392,6 +394,7 @@ getShortcutInfoSync(bundleName : string) : Array\<ShortcutInfo\>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not support. |
 | 17700001 | The specified bundle name is not found.  |
+| 17700026 | The specified bundle is disabled.        |
 
 **示例：**
 
@@ -447,7 +450,8 @@ getShortcutInfoSync(bundleName: string, userId: number) : Array\<ShortcutInfo\>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not support. |
 | 17700001 | The specified bundle name is not found.  |
-| 17700004 | The specified user ID is not found.     |
+| 17700004 | The specified user ID is not found.      |
+| 17700026 | The specified bundle is disabled.        |
 
 **示例：**
 
@@ -500,7 +504,7 @@ startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise\<void
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not support. |
-| 17700065 | The ability specified by want in the ShortcutInfo struct cannot be started.  |
+| 17700065 | The specified shortcut want in shortcut info is not supported to be started.  |
 
 **示例：**
 

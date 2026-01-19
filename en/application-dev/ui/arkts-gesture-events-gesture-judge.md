@@ -43,8 +43,8 @@ In the following example, the **Image** and **Stack** components are located in 
    Image($r('sys.media.ohos_app_icon'))
      .draggable(true)
      .onDragStart(()=>{
-     // ···
-       // Replace $r('app.string.Allow_dragging_prompt') with the resource file you use.
+       // ...
+       // Replace $r('app.string.Allow_dragging_prompt') with the actual resource file. In this example, the value in the resource file is "Dragging the lower half of Stack triggers the Image response."
        promptAction.showToast({ message: $r('app.string.Allow_dragging_prompt') });
      })
      .width('200vp').height('200vp')
@@ -62,8 +62,9 @@ In the following example, the **Image** and **Stack** components are located in 
       .gesture(GestureGroup(GestureMode.Parallel,
         LongPressGesture()
           .onAction((event: GestureEvent) => {
-            // ···
-            // Replace $r('app.string.Stop_dragging_prompt') with the resource file you use.
+            // ...
+            /* Replace $r('app.string.Stop_dragging_prompt') with the actual resource file.
+               The value in the resource file is "Long-pressing the upper half of Stack triggers the Stack response." */
             promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt')  });
           })
           .tag('longpress')
@@ -104,7 +105,8 @@ In the following example, the **Image** and **Stack** components are located in 
      build() {
        Scroll(this.scroller) {
          Column({ space: 8 }) {
-           // Replace $r('app.string.Drag_instructions') with the resource file you use.
+           /* Replace $r('app.string.Drag_instructions') with the actual resource file. In this example, the value in the resource file is "Two-layer components: Upper-layer component is bound to a long press gesture,
+              and the lower-layer component is bound to the drag gesture. Allow the drag gesture to work on the lower-half area of the upper-layer component via gesture interception." */
            Text($r('app.string.Drag_instructions')).width('100%').fontSize(20).fontColor('0xffdd00')
            Stack({ alignContent: Alignment.Center }) {
              Column() {
@@ -118,7 +120,7 @@ In the following example, the **Image** and **Stack** components are located in 
              Image($r('sys.media.ohos_app_icon'))
                .draggable(true)
                .onDragStart(() => {
-                 // Replace $r('app.string.Allow_dragging_prompt') with the resource file you use.
+                 // Replace $r('app.string.Allow_dragging_prompt') with the actual resource file. In this example, the value in the resource file is "Dragging the lower half of Stack triggers the Image response."
                  this.promptAction.showToast({ message: $r('app.string.Allow_dragging_prompt') });
                })
                .width('200vp').height('200vp')
@@ -131,7 +133,8 @@ In the following example, the **Image** and **Stack** components are located in 
              .gesture(GestureGroup(GestureMode.Parallel,
                LongPressGesture()
                  .onAction((event: GestureEvent) => {
-                   // Replace $r('app.string.Stop_dragging_prompt') with the resource file you use.
+                   /* Replace $r('app.string.Stop_dragging_prompt') with the actual resource file.
+                      The value in the resource file is "Long-pressing the upper half of Stack triggers the Stack response." */
                    this.promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt') });
                  })
                  .tag('longpress')
@@ -163,6 +166,7 @@ Parallel gesture dynamic control allows you to manage whether a gesture callback
 **Figure 3** Parallel gesture dynamic control process
 
 ![gesture_judge_controller](figures/gesture_judge_controller.png)
+
 Parallel gesture dynamic control is based on the successful recognition of a gesture. If the gesture is not recognized, no callback response will be triggered.
 
 1. Service gesture workflow: This refers to gestures that directly cause changes in the UI, such as **PanGesture** for scrolling pages or **TapGesture** for clicks.
@@ -573,8 +577,8 @@ struct Index {
       this.currentWidth = '100%';
       this.currentHeight = '50%';
     };
-    // Replace $r('app.string.Play_full_screen') with the resource file you use.
-    // Replace $r('app.string.Exit_play_full_screen') with the resource file you use.
+    // Replace $r('app.string.Play_full_screen') with the actual resource file. In this example, the value in the resource file is "Play in full-screen mode."
+    // Replace $r('app.string.Exit_play_full_screen') with the actual resource file. In this example, the value in the resource file is "Exit full-screen mode."
     this.showMessage(this.currentFullScreenState
       ? this.context!.resourceManager.getStringSync($r('app.string.Play_full_screen').id)
       : this.context!.resourceManager.getStringSync($r('app.string.Exit_play_full_screen').id));
@@ -588,8 +592,8 @@ struct Index {
       // Restart the timer.
       this.startNormalPlayTimer();
     };
-    // Replace $r('app.string.stop_playing') with the resource file you use.
-    // Replace $r('app.string.Continue_playing') with the resource file you use.
+    // Replace $r('app.string.stop_playing') with the actual resource file. In this example, the value in the resource file is "Pause."
+    // Replace $r('app.string.Continue_playing') with the actual resource file. In this example, the value in the resource file is "Play."
     this.showMessage(this.isPlaying
       ? this.context!.resourceManager.getStringSync($r('app.string.stop_playing').id)
       : this.context!.resourceManager.getStringSync($r('app.string.Continue_playing').id));
@@ -599,7 +603,7 @@ struct Index {
     if (!start) { // Stop fast-forwarding and resume normal playback.
       this.stopFastForwardTimer();
       this.startNormalPlayTimer();
-      // Replace $r('app.string.Cancel_FastForwarding') with the resource file you use.
+      // Replace $r('app.string.Cancel_FastForwarding') with the actual resource file. In this example, the value in the resource file is "Stop fast-forwarding."
       this.showMessage(
         this.context!.resourceManager.getStringSync($r('app.string.Cancel_FastForwarding').id));
       return;
@@ -607,7 +611,7 @@ struct Index {
 
     this.stopNormalPlayTimer();
     this.startFastForwardTimer();
-    // Replace $r('app.string.Start_FastForwarding') with the resource file you use.
+    // Replace $r('app.string.Start_FastForwarding') with the actual resource file. In this example, the value in the resource file is "Start fast-forwarding."
     this.showMessage(
       this.context!.resourceManager.getStringSync($r('app.string.Start_FastForwarding').id));
   };
@@ -616,15 +620,15 @@ struct Index {
     let newY = event.fingerList[0].localY;
     if (start) {
       this.currentPosY = newY;
-      // Replace $r('app.string.Start_adjusting_brightness') with the resource file you use.
+      //Replace $r('app.string.Start_adjusting_brightness') with the actual resource file. In this example, the value in the resource file is "Adjust brightness."
       this.showMessage(this.context!.resourceManager
         .getStringSync($r('app.string.Start_adjusting_brightness').id));
       return;
     };
     let offsetY = newY - this.currentPosY;
     if (Math.abs(offsetY) > 10) {
-      // Replace $r('app.string.Reduce_brightness') with the resource file you use.
-      // Replace $r('app.string.Increase_brightness') with the resource file you use.
+      // Replace $r('app.string.Reduce_brightness') with the actual resource file. In this example, the value in the resource file is "Decrease brightness."
+      // Replace $r('app.string.Increase_brightness') with the actual resource file. In this example, the value in the resource file is "Increase brightness."
       this.showMessage((offsetY > 0)
         ? this.context!.resourceManager.getStringSync($r('app.string.Reduce_brightness').id)
         : this.context!.resourceManager.getStringSync($r('app.string.Increase_brightness').id))
@@ -636,7 +640,7 @@ struct Index {
     let newX = event.fingerList[0].localX;
     if (start) {
       this.currentPosX = newX;
-      // Replace $r('app.string.Adjust_schedule') with the resource file you use.
+      // Replace $r('app.string.Adjust_schedule') with the actual resource file. In this example, the value of the resource file is "Seek playback."
       this.showMessage(this.context!.resourceManager
         .getStringSync($r('app.string.Adjust_schedule').id));
       return;
@@ -650,7 +654,7 @@ struct Index {
     Stack({ alignContent: Alignment.Center }) {
       Column() {
         Column() {
-          // Replace $r('app.string.Playback_progress') with the resource file you use.
+          // Replace $r('app.string.Playback_progress') with the actual resource file. In this example, the value in the resource file is "Playback progress."
           Text(this.context!.resourceManager.getStringSync($r('app.string.Playback_progress').id) + this.progress)
         }
         .width('100%').height('90%')
@@ -739,5 +743,6 @@ struct Index {
     .height(this.currentHeight)
   }
 }
-
 ```
+
+![Gesure20251119002](figures/Gesure20251119002.gif)

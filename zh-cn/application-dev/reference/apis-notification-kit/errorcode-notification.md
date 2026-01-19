@@ -421,6 +421,7 @@ The specified bundle is invalid.
 检查包信息是否正确。
 <!--DelEnd-->
 
+<!--Del-->
 ## 1600023 app NotificationSubscriberExtensionAbility未实现
 
 **错误信息**
@@ -438,6 +439,7 @@ The application does not implement the NotificationSubscriberExtensionAbility.
 **处理步骤**
 
 应用需创建NotificationSubscriberExtensionAbility，具体配置方法参考[ExtensionAbility组件](../../application-models/extensionability-overview.md)中的[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)。
+<!--DelEnd-->
 
 <!--Del-->
 ## 1600024 未配置自定义铃声
@@ -459,6 +461,7 @@ The specified bundle has no custom ringtone information.
 检查指定应用是否配置自定义铃声信息。
 <!--DelEnd-->
 
+<!--Del-->
 ## 1600025 地理围栏开关关闭
 
 **错误信息**
@@ -476,3 +479,44 @@ Geofencing disabled.
 **处理步骤**
 
 需要用户在通知设置里开启地理围栏开关。
+<!--DelEnd-->
+
+<!--Del-->
+## 1600026 位置功能开关关闭
+
+**错误信息**
+
+The location switch is off.
+
+**错误描述**
+
+位置功能的开关未开启导致注册地理围栏失败。
+
+**可能原因**
+
+位置功能的开关未开启，导致持续定位，单次定位和地理围栏等功能不可用。
+
+**处理步骤**
+
+请提示用户开启位置功能的开关。
+<!--DelEnd-->
+
+<!--Del-->
+## 1600027 位置系统服务的“感知与提醒”开关关闭
+
+**错误信息**
+
+The "Awareness & suggestions" switch of the location-based service is off.
+
+**错误描述**
+
+位置系统服务的“感知与提醒”开关关闭，导致注册地理围栏失败。
+
+**可能原因**
+
+设置->隐私和安全->位置->最底部“系统服务”->感知与提醒 开关被关闭。
+
+**处理步骤**
+
+打开如下位置开关，设置->隐私和安全->位置->最底部“系统服务”->感知与提醒。
+<!--DelEnd-->

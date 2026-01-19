@@ -11,13 +11,12 @@
 - 故障检测<!--fault-analysis-->
   - [简介](fault-detection-overview.md)
   - 崩溃检测<!--crash-detection-->
-    - [崩溃检测概述](crash-detection-overview.md)
     - [JS Crash（进程崩溃）检测](jscrash-guidelines.md)
     - [Cpp Crash（进程崩溃）检测](cppcrash-guidelines.md)
   - [AddrSanitizer（地址越界）检测](address-sanitizer-guidelines.md)
-  - [AppFreeze（应用冻屏）检测](appfreeze-guidelines.md)
+  - [AppFreeze（应用冻屏）检测](appfreeze-guidelines.md)<!--RP1--><!--RP1End-->
   - [任务超时检测](apptask-timeout-guidelines.md)
-  - [应用终止检测](appkilled-guidelines.md)
+  - [应用终止检测](appkilled-guidelines.md)<!--RP2--><!--RP2End-->
 - 日志打印<!--hilog-dev-->
   - [使用HiLog打印日志（ArkTS）](hilog-guidelines-arkts.md)
   - [使用HiLog打印日志（C/C++）](hilog-guidelines-ndk.md)
@@ -58,7 +57,7 @@
         - [订阅应用终止事件（C/C++）](hiappevent-watcher-app-killed-events-ndk.md)
       - ArkWeb抛滑丢帧事件<!--scroll-arkweb-fling-jank-events-->
         - [ArkWeb抛滑丢帧事件介绍](hiappevent-watcher-web-fling-jank-events.md)
-        - [订阅ArkWeb抛滑丢帧事件（ArkTS）](hiappevent-watcher-web-fling-jank-events-arkts.md)
+        - [订阅ArkWeb抛滑丢帧事件（ArkTS）](hiappevent-watcher-web-fling-jank-events-arkts.md)<!--RP3--><!--RP3End-->
   <!--Del-->
   - [事件上报](hiappevent-event-reporting.md)
   <!--DelEnd-->
@@ -88,7 +87,7 @@
 - [Performance Analysis Kit术语](performance-analysis-kit-terminology.md)
 - 命令行工具<!--perform-command-line-utilities-->
   - [hdc](hdc.md)
-  - [hilog](hilog.md)
+  - [hilog](hilog.md)<!--RP4--><!--RP4End-->
   - hidumper<!--hidumper-tool-->
     - [hidumper](hidumper.md)
     - [PrivacyManagerService](hidumper-PrivacyManagerService.md)

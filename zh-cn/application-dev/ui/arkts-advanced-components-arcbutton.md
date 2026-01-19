@@ -173,15 +173,18 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
 ``` TypeScript
 import { LengthMetrics, LengthUnit, ArcButton, ArcButtonOptions, ArcButtonStyleMode } from '@kit.ArkUI';
 
+const BRIGHT_NESS_VALUE = 30;
+const BRIGHT_NESS_VALUE_DEFAULT = 50;
+
 @Entry
 @ComponentV2
 struct BrightnessPage {
-  @Local brightnessValue: number = 30;
-  private defaultBrightnessValue: number = 50;
+  @Local brightnessValue: number = BRIGHT_NESS_VALUE;
+  private defaultBrightnessValue: number = BRIGHT_NESS_VALUE_DEFAULT;
 
   build() {
     RelativeContainer() {
-      // $r('app.string.Reset')需要替换为开发者所需的资源文件
+      // 请将$r('app.string.Brightness')替换为实际资源文件，在本示例中该资源文件的value值为"设置亮度"
       Text($r('app.string.Brightness'))
         .fontColor(Color.White)
         .id('id_brightness_set_text')
@@ -222,7 +225,7 @@ struct BrightnessPage {
 
       ArcButton({
         options: new ArcButtonOptions({
-          // $r('app.string.Reset')需要替换为开发者所需的资源文件
+          // 请将$r('app.string.Reset')替换为实际资源文件，在本示例中该资源文件的value值为"重置"
           label: $r('app.string.Reset'),
           styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
           fontSize: new LengthMetrics(19, LengthUnit.FP),

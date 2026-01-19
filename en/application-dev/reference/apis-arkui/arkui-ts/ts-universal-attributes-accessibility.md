@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -19,6 +19,7 @@ accessibilityGroup(value: boolean):T
 Sets whether to enable accessibility grouping. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components.
 
 If accessibility grouping is enabled for a component that does not contain a universal text attribute or an [accessibility text](#accessibilitytext) attribute, the system will concatenate the universal text attributes of its child components to generate merged text for the component. Child components without universal text attributes will be ignored during concatenation, and their accessibility text (if any) won't be used in the merged text.
+
 When a child component's [accessibilityLevel](#accessibilitylevel) is set to **"yes"**, it becomes focusable by screen readers when other accessibility criteria are met, bypassing **accessibilityGroup** constraints.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -31,7 +32,7 @@ When a child component's [accessibilityLevel](#accessibilitylevel) is set to **"
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Accessibility grouping. If this parameter is set to true, the component and all its child components are considered as a whole selectable component. The accessibility service does not pay attention to the content of the child components, combines the text and accessibility information of the child components, and sends the information to the accessibility service. If this parameter is set to false, accessibility grouping is disabled.<br>Default value: **false**|
+| value  | boolean | Yes  | Whether to enable accessibility grouping. The value **true** means to enable accessibility grouping, and **false** means the opposite. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components. Text and accessibility information from child components are merged and sent to the accessibility service as a whole.<br>Default value: **false**|
 
 **Return value**
 
@@ -46,11 +47,12 @@ accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 Sets whether to enable accessibility grouping. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components.
 
 If accessibility grouping is enabled for a component that does not contain a universal text attribute or an [accessibility text](#accessibilitytext) attribute, the system will concatenate the universal text attributes of its child components to generate merged text for the component. Child components without universal text attributes will be ignored during concatenation.
+
 When a child component's [accessibilityLevel](#accessibilitylevel) is set to **"yes"**, it becomes focusable by screen readers when other accessibility criteria are met, bypassing **accessibilityGroup** constraints.
 
-When **accessibilityPreferred** is set to **true**, the system will prioritize concatenating the accessibility text attributes of the child components. If a child component has no accessibility text set, its universal text attribute will be used instead. Components without either attribute will be excluded from concatenation.
+After [accessibilityPreferred](ts-types.md#accessibilityoptions14) is used to enable the function of preferentially concatenating accessibility text for reading, the accessibility text attribute of its subcomponents is preferentially concatenated as the merged text of the component. If a child component has no accessibility text set, its universal text attribute will be used instead. Components without either attribute will be excluded from concatenation.
 
-Starting from API version 22, you can use the state information and tap events of specific child components as the accessibility capabilities of the current aggregated component through the **stateController** and **actionController** parameters.
+Since API version 23, the **stateController** and **actionController** parameters can be used to use the status information and click events of a specific subcomponent as the accessibility capability of the current aggregation component.
 
 > **NOTE**
 >
@@ -66,7 +68,7 @@ Starting from API version 22, you can use the state information and tap events o
 
 | Name              | Type                                                   | Mandatory| Description                                                        |
 | -------------------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| isGroup              | boolean                                                 | Yes  | Accessibility grouping. If this parameter is set to true, the component and all its child components are considered as a whole selectable component. The accessibility service does not pay attention to the content of the child components, combines the text and accessibility information of the child components, and sends the information to the accessibility service. If this parameter is set to false, accessibility grouping is disabled.<br>Default value: **false**|
+| isGroup              | boolean                                                 | Yes  | Whether to enable accessibility grouping. The value **true** means to enable accessibility grouping, and **false** means the opposite. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components. Text and accessibility information from child components are merged and sent to the accessibility service as a whole.<br>Default value: **false**|
 | accessibilityOptions | [AccessibilityOptions](ts-types.md#accessibilityoptions14) | Yes  | Options for accessibility grouping. When **accessibilityPreferred** is set to **true**, the system will prioritize concatenating accessibility text for screen readers. When **accessibilityPreferred** is set to **false**, accessibility text will not be prioritized.<br>**stateController** and **actionController** enable the current aggregated component to use the state information and tap events of specific child components as its accessibility capabilities.|
 
 **Return value**
@@ -622,6 +624,54 @@ Sets the drawing level for the accessibility focus highlight (green frame).
 | -------- | -------- |
 | T | Current object.|
 
+## accessibilityStateDescription<sup>23+</sup>
+
+accessibilityStateDescription(description: string | Resource | undefined): T
+
+Sets the status broadcast text of a component, which is used to clearly describe the real-time status of the component in the screen reading scenario. The status text will be broadcast first during screen reading.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                                        |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| description  | string \| [Resource](ts-types.md#resource) \| undefined | Yes  | Text to be played for the current status of the component.<br>If the text contains more than 1000 characters, the first 1000 characters will be played.<br>undefined: The announcement text is empty by default.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
+
+## accessibilityActionOptions<sup>23+</sup>
+
+accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
+
+Optional parameter for setting accessibility operations of a component, which is used to restrict or modify the operations initiated by auxiliary applications such as ScreenReader.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                                        |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| option  | [AccessibilityActionOptions](ts-types.md#accessibilityactionoptions23)\| undefined | Yes  | Parameter of the accessibility operation, which is used to restrict or modify the sliding behavior in the accessibility operation.<br>The scrollStep parameter in AccessibilityActionOptions is used to set the number of sliding steps in the accessibility operation.<br>When the value is undefined, scrollStep is processed as 1.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
+
 ## Example
 
 ### Example 1: Setting Accessibility Text and Description
@@ -920,6 +970,63 @@ struct Index {
       .width('80%')
       .border({ color : Color.Black, width : 2 })
 
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### Example 7 (Setting the Status Broadcast Information of the Accessibility Component)
+
+In this example, the [accessibilityStateDescription](ts-universal-attributes-accessibility.md#accessibilitystatedescription23) interface is used to modify the status broadcast of a component. After the accessibility function is enabled, when a component is focused or tapped, the screen reads the component status information.
+
+The accessibilityStateDescription API is added since API version 23.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isSelected: boolean = false;
+
+  build() {
+    Column({ space: 20 }) {
+      Button (this.isSelected? 'Liked':'Not liked')
+        .accessibilityLevel('yes')
+        .onClick(() => {
+          this.isSelected = !this.isSelected;
+        })
+        .accessibilityStateDescription (this.isSelected?'Liked':'Not liked')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+### Example 8 (Setting the Accessibility Action Option to Modify the Component Scrolling Step)
+
+This sample demonstrates how to customize the scrolling step of a component by using the scrollStep parameter in [accessibilityActionOptions](ts-types.md#accessibilityactionoptions23). The following uses a sliding distance change of the Slider component in the screen reading scenario as an example for description.
+
+**AccessibilityActionOptions** is added since API version 23.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 20 }) {
+      Row() {
+        Slider({
+          min: 0,
+          max: 100,
+          style: SliderStyle.OutSet
+        })
+          // Adjust the slider step in the screen reading gesture.
+          .accessibilityActionOptions({ scrollStep : 10 })
+      }
+      .width('80%')
     }
     .height('100%')
     .width('100%')

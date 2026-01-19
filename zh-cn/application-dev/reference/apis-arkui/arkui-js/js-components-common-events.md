@@ -26,9 +26,9 @@
 | touchcancel              | TouchEvent | 手指触摸屏幕中动作被打断时触发该事件。                       | 是<sup>5+</sup>                                       | 是<sup>5+</sup> |
 | touchend                 | TouchEvent | 手指触摸结束离开屏幕时触发该事件。                           | 是<sup>5+</sup>                                       | 是<sup>5+</sup> |
 | click                    | BaseEvent  | 点击动作触发该事件。                                         | 是<sup>6+</sup>                                       | 否              |
-| doubleclick<sup>7+</sup> | BaseEvent  | 双击动作触发该事件。                                           | 否<br/> 从API&nbsp;Version&nbsp;9&nbsp;开始支持冒泡。 | 否              |
-| longpress                | BaseEvent  | 长按动作触发该事件。                                         | 否<br/>从API&nbsp;Version&nbsp;9&nbsp;开始支持冒泡。  | 否              |
-| swipe<sup>5+</sup>       | SwipeEvent | 组件上快速滑动后触发该事件。 SwipeEvent具体可参考表4 。      | 否<br/>从API&nbsp;Version&nbsp;9&nbsp;开始支持冒泡。  | 否              |
+| doubleclick<sup>7+</sup> | BaseEvent  | 双击动作触发该事件。                                           | 否<br/> 从API&nbsp;version&nbsp;9&nbsp;开始支持冒泡。 | 否              |
+| longpress                | BaseEvent  | 长按动作触发该事件。                                         | 否<br/>从API&nbsp;version&nbsp;9&nbsp;开始支持冒泡。  | 否              |
+| swipe<sup>5+</sup>       | SwipeEvent | 组件上快速滑动后触发该事件。 SwipeEvent具体可参考表4 。      | 否<br/>从API&nbsp;version&nbsp;9&nbsp;开始支持冒泡。  | 否              |
 | attached<sup>6+</sup>    | -          | 当前组件节点挂载在渲染树后触发。                             | 否                                                    | 否              |
 | detached<sup>6+</sup>    | -          | 当前组件节点从渲染树中移除后触发。                           | 否                                                    | 否              |
 | pinchstart<sup>7+</sup>  | PinchEvent | 手指开始执行捏合操作时触发该事件。<br/>PinchEvent具体可参考表5。 | 否                                                    | 否              |
@@ -203,6 +203,7 @@ dragEnd(e){
 clearData(key?: string): boolean
 
 删除给定key关联的数据。如果没有与该key关联的数据，则该方法不会产生任何效果。
+
 如果key为空，则删除所有数据。
 
 **参数：** 
@@ -250,9 +251,11 @@ setDragImage(pixelMap: PixelMap, offsetX: number,offsetY: number): boolean
 import image from '@ohos.multimedia.image';
 
 export default {
+    // 生成96x96尺寸的PixelMap，创建颜色缓冲区并填充随机色值，配置PixelMap参数后生成实例
     createPixelMap() {
         let color = new ArrayBuffer(4 * 96 * 96);
         var buffer = new Uint8Array(color);
+        // 循环填充缓冲区色值
         for (var i = 0; i < buffer.length; i++) {
             buffer[i] = (i + 1) % 255;
         }
@@ -265,6 +268,7 @@ export default {
                 height: 96, width: 96
             }
         }
+        // 调用image.createPixelMap生成PixelMap实例
         const promise = image.createPixelMap(color, opts);
         promise.then((data) => {
             console.error('-create pixelMap has info message:' + JSON.stringify(data));
@@ -273,10 +277,12 @@ export default {
         })
     },
 
+    // 初始化方法，调用createPixelMap生成PixelMap
     onInit() {
         this.createPixelMap()
     },
-
+    
+    // 拖拽开始回调，设置拖拽预览图为生成的PixelMap，偏移量为(50, 50)
     dragStart(e) {
         e.dataTransfer.setDragImage(this.pixelMapReader, 50, 50);
     }

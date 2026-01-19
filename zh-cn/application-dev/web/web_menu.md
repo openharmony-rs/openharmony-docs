@@ -990,7 +990,7 @@ struct WebComponent {
         'clearSelection()',
         (error, result) => {
           if (error) {
-            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: $  {(error as BusinessError).message}`);
+            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             return;
           }
           if (result) {
@@ -998,7 +998,7 @@ struct WebComponent {
           }
         });
     } catch (error) {
-      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+      console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
     }
   }
 
@@ -1012,7 +1012,7 @@ struct WebComponent {
               'copySelectedText()',
               (error, result) => {
                 if (error) {
-                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code},    Message: ${(error as BusinessError).message}`);
+                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
                   return;
                 }
                 if (result) {
@@ -1020,7 +1020,7 @@ struct WebComponent {
                 }
               });
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
           this.clearSelection()
         }).backgroundColor(Color.Pink)

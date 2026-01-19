@@ -9,6 +9,7 @@
 为了实现更好的转场效果，推荐使用[Navigation转场动画](./arkts-navigation-animation.md)和[模态转场](arkts-modal-transition.md)。
 
 两个页面间发生跳转，一个页面消失，另一个页面出现，这时可以配置各自页面的页面转场参数实现自定义的页面转场效果。[页面转场](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md)效果写在pageTransition函数中，通过[PageTransitionEnter](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionenter)和[PageTransitionExit](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionexit)指定页面进入和退出的动画效果。
+
 pageTransition的函数为：
 
 ```ts
@@ -178,7 +179,7 @@ pageTransition() {
 struct PageTransitionSrc1 {
   build() {
     Column() {
-      // $r('app.media.mountain')需要替换为开发者所需的资源文件
+      // 请将$r('app.media.mountain')替换为实际资源文件
       Image($r('app.media.mountain'))
         .width('90%')
         .height('80%')
@@ -231,7 +232,7 @@ struct PageTransitionSrc1 {
 struct PageTransitionDst1 {
   build() {
     Column() {
-      // $r('app.media.forest')需要替换为开发者所需的资源文件
+      // 请将$r('app.media.forest')替换为实际资源文件
       Image($r('app.media.forest'))
         .width('90%')
         .height('80%')
@@ -289,7 +290,7 @@ struct PageTransitionDst1 {
 struct PageTransitionSrc2 {
   build() {
     Column() {
-      // $r('app.media.mountain')需要替换为开发者所需的资源文件
+      // 请将$r('app.media.mountain')替换为实际资源文件
       Image($r('app.media.mountain'))
         .width('90%')
         .height('80%')
@@ -337,7 +338,7 @@ struct PageTransitionSrc2 {
 struct PageTransitionDst2 {
   build() {
     Column() {
-      // $r('app.media.forest')需要替换为开发者所需的资源文件
+      // 请将$r('app.media.forest')替换为实际资源文件
       Image($r('app.media.forest'))
         .width('90%')
         .height('80%')

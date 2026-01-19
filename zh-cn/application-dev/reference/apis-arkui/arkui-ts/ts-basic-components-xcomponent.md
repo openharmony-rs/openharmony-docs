@@ -77,7 +77,7 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 12开始废弃，建议使用[XComponent(options: XComponentOptions)](#xcomponent12)替代。
+> 从API version 8开始支持，从API version 12开始废弃，建议使用[XComponent(value: {id: string, type: XComponentType, libraryname?: string, controller?: XComponentController})](#xcomponent10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,7 +135,9 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 enableAnalyzer(enable: boolean)
 
 设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能。
+
 本功能需要搭配XComponentController的[StartImageAnalyzer](#startimageanalyzer12)和[StopImageAnalyzer](#stopimageanalyzer12)一起使用。
+
 不能和[overlay](ts-universal-attributes-overlay.md)属性同时使用，两者同时设置时overlay中CustomBuilder属性将失效。该特性依赖设备能力。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。

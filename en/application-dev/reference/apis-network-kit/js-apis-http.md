@@ -106,7 +106,9 @@ httpRequest.request(// Customize EXAMPLE_URL in extraData on your own. It is up 
         remoteFileName: 'fileName.txt' // Optional. This field is supported since API version 11.
       }
     ],
-    addressFamily: http.AddressFamily.DEFAULT // Optional. By default, the IPv4 or IPv6 address of the target domain name is selected. This attribute is supported since API version 15.
+    addressFamily: http.AddressFamily.DEFAULT // Optional. By default, the IPv4 or IPv6 address of the target domain name is selected. Supported since API 15.
+    customMethod: 'GET', // Optional. Supported since API 23.
+    maxRedirects: 30 // Optional. The default value is 30. Supported since API 23.
   },
   (err: BusinessError, data: http.HttpResponse) => {
     if (!err) {
@@ -761,7 +763,7 @@ on(type: "headerReceive", callback: AsyncCallback\<Object\>): void
 Registers an observer for HTTP Response Header events.
 
 > **NOTE**
-> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [on("headersReceive")<sup>8+</sup>](#onheadersreceive8) instead.
+> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [on("headersReceive")](#onheadersreceive8) instead.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -792,7 +794,7 @@ Unregisters the observer for HTTP Response Header events.
 
 > **NOTE**
 >
-> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [off("headersReceive")<sup>8+</sup>](#offheadersreceive8) instead.
+> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [off("headersReceive")](#offheadersreceive8) instead.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1164,6 +1166,8 @@ Defines the options for initiating an HTTP request.
 | serverAuthentication<sup>18+</sup> | [ServerAuthentication](#serverauthentication18)                     | No| Yes| Indicates whether to verify the server identity during a secure connection. The identity is not verified by default.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | sslType<sup>20+</sup> | [SslType](#ssltype20) | No| Yes| Security communication protocol. You can use TLS (default) or TLCP. If TLCP is used, the related options (such as **caPath**, **clientCert**, and **clientEncCert**) must be set to valid values.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | clientEncCert<sup>20+</sup> | [ClientCert](#clientcert11) | No| Yes| Client certificate, which is used by the server to verify the client identity.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| customMethod<sup>23+</sup> | string | No| Yes| Custom request method. For example, when the WebDAV extension protocol is implemented, **customMethod** has a higher priority than **method**.<br>- If **customMethod** meets the WebDAV extension protocol request requirements but the server does not support the request, the server response code of the request is usually 405 or 501 (the actual result depends on the server behavior).<br>- If **customMethod** does not meet the WebDAV extension protocol request requirements, the server response code of the request is usually 400 or 405 (the actual result depends on the server behavior).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| maxRedirects<sup>23+</sup> | number | No| Yes| The maximum number of redirections can be specified for HttpRequest.<br>- The default maximum number of redirections is **30**.<br>- The value range is [0, 2147483647]. If this parameter is set to **0**, redirection is disabled. If the number of redirections exceeds the maximum number of redirections, error code 2300047 is returned. If the value is out of the range, the default value **30** takes effect.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## RequestMethod
 
@@ -1504,7 +1508,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 
@@ -1540,7 +1544,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 
@@ -1868,7 +1872,7 @@ Defines the secure communications protocol.
 | Type  | Description                                  |
 | ------ | -------------------------------------- |
 | 'TLS' | TLS protocol. The value is fixed to **TLS**.  |
-| 'TLCP' | TLCP protocol. The value is fixed to **TLCP**.|
+| 'TLCP' | TLCP protocol. The value is fixed to **TLCP**.<br>**NOTE**<br>(1) The certificate supports the following string specifications:<br> - UTF8String (English character set)<br> - PrintableString<br>  - IA5String<br>Supported since API Version 22:<br> - TeletexString<br>(2) The certificate supports the following extended specifications:<br> - BasicConstraints (OID 2.5.29.19)<br> - KeyUsage (OID2.5.29.15)<br> - SubjectKeyIdentifier (OID2.5.29.14)<br> - AuthorityKeyIdentifier (OID2.5.29.35)<br>Supported since API Version 22:<br> - SubjectAltName (OID 2.5.29.17)<br> - ExtendedKeyUsage (OID 2.5.29.37)<br>|
 
 ## InterceptorType<sup>22+</sup>
 
@@ -1878,7 +1882,7 @@ Enumerates the types of HTTP interceptors.
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Type  | Value|Description                                  |
+| Name  | Value|Description                                  |
 | ------ | --|-------------------------------------- |
 | INITIAL_REQUEST |'INITIAL_REQUEST' |Intercepts after the initial HTTP request is assembled.|
 | REDIRECTION | 'REDIRECTION' |Intercepts when a redirection response is received.|
@@ -1914,7 +1918,7 @@ Whether to continue to process the interceptor chain.
 
 | Type  | Description                                   |
 | ------ | -------------------------------------- |
-| boolean | true indicates to continue processing the interceptor chain，false indicates to stop and return an HTTP response. |
+| boolean | The value **true** indicates that the interceptor chain continues to be processed, and the value **false** indicates that the interceptor chain is terminated and an HTTP response is returned.                  |
 
 ## HttpInterceptor<sup>22+</sup>
 
@@ -2064,11 +2068,9 @@ try {
   let success = interceptorChain.addChain([authInterceptor, loggingInterceptor]);
   if (!success) {
     console.error('Failed to add interceptor chain');
-    return;
   }
 } catch (e) {
   console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
-  return;
 }
 ```
 
@@ -2114,11 +2116,9 @@ try {
   let success = interceptorChain.addChain([customInterceptor]);
   if (!success) {
     console.error('Failed to add interceptor chain');
-    return;
   }
 } catch (e) {
   console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
-  return;
 }
 
 // Obtain all interceptors in the current interceptor chain.
@@ -2204,18 +2204,15 @@ try {
   let success = interceptorChain.addChain([authInterceptor, loggingInterceptor]);
   if (!success) {
     console.error('Failed to add interceptor chain');
-    return;
   }
 
   // Apply the interceptor chain to the HTTP request.
   let applySuccess = interceptorChain.apply(httpRequest);
   if (!applySuccess) {
     console.error('Failed to apply interceptor chain');
-    return;
   }
 } catch (e) {
   console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
-  return;
 }
 
 // Initiate an HTTP request. If interception is required, the request can be initiated only through the request API.

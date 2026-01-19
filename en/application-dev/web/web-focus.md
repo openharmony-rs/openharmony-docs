@@ -147,19 +147,19 @@ Use **requestFocus** to request focus, and change the border color of the **Web*
 
 ## Controlling the Focus of HTML5 Elements in the Web Component
 - Use the **focus** event of the W3C standards to detect whether an element is focused on a web page.
-```
+```js
 addEventListener("focus", (event) => {});
 
 onfocus = (event) => {};
 ```
 - Use the **blur** event of the W3C standards to detect whether an element loses focus on a web page.
-```
+```js
 addEventListener("blur", (event) => {});
 
 onblur = (event) => {};
 ```
 - Use W3C **autofocus** to focus an element when the page is loaded or the **dialog** to which the element belongs is displayed.
-```
+```js
 <input name="q" autofocus />
 ```
 In a document or dialog box, only one element can have the **autofocus** attribute. If you apply this attribute to multiple elements, the first element will be focused.

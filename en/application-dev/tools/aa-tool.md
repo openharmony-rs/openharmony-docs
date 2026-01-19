@@ -88,7 +88,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
   | -N | Whether to enable debugging during the startup phase. This parameter is optional.       |
   | -C | Whether to enable ASan debugging. This parameter is optional.       |
   | -p | Optimization mode. This parameter is optional. This command can be customized.       |
-  | -W | Optimization mode. This parameter is optional. It measures the time taken for a UIAbility to launch and transition to the foreground.<br>**NOTE**<br>&emsp; - This parameter is supported since API version 20.<br>&emsp; - This parameter is valid only when the UIAbility starts explicitly (the **-b** and **-a** parameters must be passed in).<br>**In normal cases, the following information is displayed**:<br>&emsp; - **StartMode**: UIAbility startup mode. The value can be **Cold** or **Hot**.<br>&emsp; - **BundleName**: bundle name of the target application.<br>&emsp; - **AbilityName**: ability name of the target application.<br>&emsp; - **ModuleName**: module name of the target application. If the command contains the **-m** parameter, **moduleName** is printed.<br>&emsp; - **TotalTime**:<br>&emsp;&emsp;&emsp;Cold start scenario: duration from when the system receives the request for starting the UIAbility from AA to when the first frame of the UIAbility is drawn, in ms.<br>&emsp;&emsp;&emsp;Hot start scenario: duration from when the system receives the request for starting the UIAbility from AA to when the UIAbility is switched to the foreground, in ms.<br>&emsp; - **WaitTime**: duration from when the command starts to when the command execution is complete, in ms.<br>**If an exception occurs, the following information is displayed**:<br>&emsp; - "The wait option does not support starting implict": Implicit startup is not supported.<br>&emsp; - "The wait option does not support starting non-uiability": Non-UIAbility components cannot be started.  |
+  | -W | Optimization mode. This parameter is optional. It measures the time taken for a UIAbility to launch and transition to the foreground.<br>**NOTE**<br>&emsp; - This parameter is supported since API version 20.<br>&emsp; - This parameter is valid only when the UIAbility starts explicitly (the **-b** and **-a** parameters must be passed in).<br>**In normal cases, the following information is displayed**:<br>&emsp; - **StartMode**: UIAbility startup mode. The value can be **Cold** or **Hot**.<br>&emsp; - **BundleName**: bundle name of the target application.<br>&emsp; - **AbilityName**: ability name of the target application.<br>&emsp; - **ModuleName**: module name of the target application. If the command contains the **-m** parameter, **moduleName** is printed.<br>&emsp; - **TotalTime**:<br>&emsp;&emsp;&emsp;Cold start scenario: duration from when the system receives the request for starting the UIAbility from AA to when the first frame of the UIAbility is drawn, in ms.<br>&emsp;&emsp;&emsp;Hot start scenario: duration from when the system receives the request for starting the UIAbility from AA to when the UIAbility is switched to the foreground, in ms.<br>&emsp; - **WaitTime**: duration from when the command starts to when the command execution is complete, in ms.<br>**If an exception occurs, the following information is displayed**:<br>&emsp; - "The wait option does not support starting implicit": Implicit startup is not supported.<br>&emsp; - "The wait option does not support starting non-uiability": Non-UIAbility components cannot be started.  |
 
   **Return value**
 
@@ -127,7 +127,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
 
   - Configure **uris** for the target ability in the **module.json5** file.
 
-      ```json
+      ```json5
       {
         "name": "TargetAbility",
         // ......
@@ -515,7 +515,7 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
 
   **Return value**
 
-  "start native process successfully." is returned if this command is executed successfully; "start native process successfully." is returned if this command fails to be executed; "start native process successfully." and the help information are returned if the specified parameter is invalid.
+  "start native process successfully." is returned if this command is executed successfully; "error: failed to start native process." is returned if this command fails to be executed; "error: option requires a value." and the help information are returned if the specified parameter is invalid.
 
   | ID| Error Message|
   | ------- | -------- |

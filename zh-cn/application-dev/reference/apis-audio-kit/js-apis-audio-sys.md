@@ -437,6 +437,23 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | SOURCE_TYPE_WAKEUP <sup>10+</sup>            | 3 | 语音唤醒音频流录制音频源。<br/>**需要权限：** ohos.permission.MANAGE_INTELLIGENT_VOICE |
 | SOURCE_TYPE_VOICE_CALL<sup>11+</sup>            | 4 | 通话录音的音频源。<br/>**需要权限：** ohos.permission.RECORD_VOICE_CALL |
 | SOURCE_TYPE_VOICE_TRANSCRIPTION<sup>18+</sup>   | 12     | 语音转写音频源。 |
+| SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT<sup>23+</sup>   | 19     | 未处理的语音助手音频源。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## AudioCapturerMicInConfig<sup>23+</sup>
+
+音频采集器选项信息，可采集未经任何处理的麦克风输入（mic-in）音频数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+| 名称                                | 类型                                                      | 只读 | 可选 | 说明                                                         |
+| ----------------------------------- | --------------------------------------------------------- | ---- |---| ------------------------------------------------------------ |
+| micInStreamInfo                          | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)                      | 否 | 否 | 麦克风音频流信息。   |
+| capturerInfo                        | [AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。         |
+| ecStreamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 否 | 是 | 回声消除音频流信息。<br>若未设置此属性，采集器将仅录制麦克风输入的音频流。    |
 
 ## VolumeAdjustType<sup>10+</sup>
 
@@ -5137,6 +5154,8 @@ tonePlayer.release().then(() => {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**设备行为差异：** 当本模块接口在TV设备上使用时，将不会产生效果。
+
 ### setAsrAecMode<sup>12+</sup>
 
 setAsrAecMode(mode: AsrAecMode): boolean
@@ -5568,4 +5587,89 @@ async function getTarget(){
   let renderTarget = audioRenderer.getTarget();
   console.info(`Succeeded in getting target, RenderTarget: ${renderTarget}.`);
 }
+```
+
+## audio.createMicInAudioCapturer<sup>23+</sup>
+
+function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise\<AudioCapturer | null>
+
+获取音频采集器。使用Promise异步回调。
+
+> **说明：**
+>
+> - 此采集器可用于同时录制麦克风输入（Mic-In）音频数据和回声参考信号，供应用层进行算法处理。
+> - 麦克风输入音频数据和回声参考信号会根据应用层设置的配置，被放入同一个缓冲区或多个独立缓冲区中。
+> - 仅允许使用[SourceType](js-apis-audio-sys.md#sourcetype8)为SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT类型的音源输入，其他类型的音源输入将被系统拒绝。此外，当应用处于后台运行状态时，不允许创建该采集器实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MICROPHONE
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名  | 类型                                           | 必填 | 说明             |
+| :------ | :--------------------------------------------- | :--- | :--------------- |
+| config | [AudioCapturerMicInConfig](js-apis-audio-sys.md#audiocapturermicinconfig23) | 是   | 配置音频采集器。 |
+
+**返回值：**
+
+| 类型                                      | 说明                   |
+| ----------------------------------------- |----------------------|
+| Promise<[AudioCapturer](arkts-apis-audio-AudioCapturer.md) \| null> | Promise对象，成功将返回音频采集器对象，失败时将返回包含错误信息的error对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------|
+|     201 | Permission denied, including background recording.             |
+|     202 | Not system App.                |
+| 6800101 | Parameter verification failed. |
+| 6800104 | Capturer creation is not supported, may caused by following problems: <br> 1.Source type is unsupported for this capturer, only [SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT](js-apis-audio-sys.md#sourcetype8) is supported currently. <br> 2.Echo reference signal's config is unsupported, echo reference's sampling rate and format must be the same as MicIn audio data currently.            |
+| 6800301 | Audio system internal error, such as system process crash.            |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let audioEcStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
+
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT, // 音源类型：Mic音频源。SourceType需为SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT。
+  capturerFlags: 0 // 音频采集器标志。
+};
+
+let audioMicInStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
+
+let audioCapturerMicInConfig: audio.AudioCapturerMicInConfig = {
+  ecStreamInfo: audioEcStreamInfo,
+  capturerInfo: audioCapturerInfo,
+  micInStreamInfo: audioMicInStreamInfo
+};
+
+let audioCapturer: audio.AudioCapturer | null = null;
+
+audio.createMicInAudioCapturer(audioCapturerMicInConfig).then((data) => {
+  audioCapturer = data;
+  console.info('AudioCapturer Created : SUCCESS');
+}).catch((err: BusinessError) => {
+  console.error(`AudioCapturer Created : ERROR : ${err}`);
+});
 ```

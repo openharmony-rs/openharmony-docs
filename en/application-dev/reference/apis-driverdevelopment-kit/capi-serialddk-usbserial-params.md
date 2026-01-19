@@ -16,7 +16,7 @@ Defines the USB serial port parameters for the USB SERIAL DDK.
 
 **Since**: 18
 
-**Related module**: [SerialDdk](capi-serialddk.md)
+**Related module**: [USBSerialDDK](capi-serialddk.md)
 
 **Header file:** [usb_serial_types.h](capi-usb-serial-types-h.md)
 

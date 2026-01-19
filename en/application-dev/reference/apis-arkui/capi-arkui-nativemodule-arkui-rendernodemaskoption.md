@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_RenderNodeMaskOption ArkUI_RenderNodeMaskOption
+```
+
 ## Overview
 
 Defines a struct for the render node mask configuration.

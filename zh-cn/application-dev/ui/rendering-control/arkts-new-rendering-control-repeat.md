@@ -8,9 +8,11 @@
 
 > **说明：**
 > 
-> Repeat从API version 12开始支持。
+> - Repeat从API version 12开始支持。
 > 
-> 本文档仅为开发指南。组件接口规范见[Repeat API参数说明](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)。
+> - 本文档仅为开发指南。组件接口规范见[Repeat API参数说明](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)。
+> 
+> - 由于不同设备屏幕宽高不同，本指南内的示例的实际效果和截图有偏差。
 
 ## 概述
 
@@ -253,7 +255,7 @@ Repeat具有节点复用能力。Repeat子组件从组件树中移除时，会�
 
 Repeat组件默认开启节点复用功能。从API version 18开始，在懒加载模式下，可以通过配置`reusable`字段选择是否启用复用功能。为了提高渲染性能，建议开发者保持节点复用。代码示例见[VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)。
 
-从API version 18开始，Repeat支持懒加载模式下L2缓存自定义组件冻结。详细描述见[缓存池自定义组件冻结](../state-management/arkts-custom-components-freezeV2.md#repeat)。
+从API version 18开始，Repeat支持懒加载模式下[缓存池自定义组件冻结](../state-management/arkts-custom-components-freezeV2.md#repeat)。
 
 > **说明：**
 > 
@@ -280,7 +282,7 @@ Repeat组件默认开启节点复用功能。从API version 18开始，在懒加
 
 2. 滑动场景。
 
-   将屏幕向下滑动一个节点的距离，Repeat会复用缓存池中的节点。
+   将列表向下滑动一个节点的距离，Repeat会复用缓存池中的节点。
 
    1）index=10的节点进入预加载区域，计算出其template type为`bb`。由于`bb`缓存池非空，Repeat会从`bb`缓存池中取出一个空闲节点进行复用，更新其节点属性（数据item和索引index），该子组件中涉及数据item和索引index的其他孙子组件会根据[状态管理（V2）](../state-management/arkts-state-management-overview.md#状态管理v2)的规则做同步更新。<br/>
    2）index=0的节点滑出了预加载区域。当UI主线程空闲时，会检查`aa`缓存池是否已满，此时`aa`缓存池未满，将该节点加入到对应的缓存池中。<br/>
@@ -683,7 +685,7 @@ struct PreInsertDemo {
 
 ### 数据展示&操作
 
-下面的代码示例展示了Repeat修改数组的常见操作，包括**插入数据、修改数据、删除数据、交换数据**。点击下拉框选择索引index值，点击相应的按钮即可操作数据项，依次点击两个数据项可以进行交换。
+下面的代码示例展示了Repeat修改数组的常见操作，包括**插入数据、修改数据、删除数据、交换数据**。点击下拉框选择索引index值，点击相应的按钮即可操作数据项，依次点击两个不同的数据项可以进行交换。
 
 
 <!-- @[repeat_scroll_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatVirtualScroll2T.ets) -->
@@ -1227,6 +1229,7 @@ struct DemoSwiper {
 ### 显示区域外增删数据时保持滚动位置不变
 
 下面的场景示例中，滚动列表显示区域外的增删数据操作将影响[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)列表滚动条停留的位置：
+
 在List组件中声明Repeat组件，实现key值生成逻辑和each逻辑（如下示例代码），点击按钮“insert”，在屏幕显示的第一个元素前面插入一个元素，列表显示区域数据向下滚动。
 
 <!-- @[repeat_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatTemplateSingle.ets) -->
@@ -1293,6 +1296,7 @@ struct RepeatTemplateSingle {
 ![repeat-case1-wrong](figures/repeat-case1-wrong.gif)
 
 以下为修正后的示例：
+
 在部分场景中，我们不希望显示区域外的数据源增删操作或高度变化影响屏幕中[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)列表Scroller停留的位置，可以通过List组件的[onScrollIndex](../../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex)事件对列表滚动动作进行监听，当列表发生滚动时，获取列表滚动位置。使用Scroller组件的[scrollToIndex](../../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrolltoindex)特性，滑动到指定index位置，实现屏幕外的数据源增加/删除数据时，Scroller停留的位置不变的效果。
 
 示例代码仅对增加数据的情况进行展示。

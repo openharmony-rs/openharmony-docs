@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 如果开发者希望自定义修改方舟字节码文件的内容，可以使用ArkTS编译工具链提供的方法自定义修改方舟字节码文件。
 
@@ -36,27 +36,27 @@
    }
    ```
 
-2. 使用c语言编译工具（这里使用g++）编译动态库。
+2. 使用C语言编译工具（这里使用g++）编译动态库。
 
    Windows平台：
 
-   ```
+   ```bash
    g++ --shared -o example.dll example.cpp
    ```
 
    Linux平台：
 
-   ```
+   ```bash
    g++ --shared -o example.so example.cpp
    ```
 
    Mac平台：
 
-   ```
+   ```bash
    g++ --shared -o example.so example.cpp
    ```
 
-3. 在DevEco Studio中配置build-profile.json5的transformLib选项（以windows环境为例）。
+3. 在DevEco Studio中配置build-profile.json5的transformLib选项（以Windows环境为例）。
 
    选项中配置的路径为步骤2生成的链接库文件在项目中的路径（这里是dll目录下）。
 

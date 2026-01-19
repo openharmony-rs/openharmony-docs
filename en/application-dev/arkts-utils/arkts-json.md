@@ -32,11 +32,11 @@ Parses a JSON string and supports BigInt mode.
 
 **Differences from native**
 
-| Feature| Native parse | Current parse|
+| Feature| Native parse| Current parse|
 | -------- | -------- | -------- |
 | BigInt support| Not supported (throws **TypeError**)|Supported (via **parseBigInt** extension)|
 | Parameter verification| Weak verification|Strong verification (throws **BusinessError**)|
-| Error message| Native error (such as **SyntaxError**)|	Custom **BusinessError**|
+| Error message| Native error (such as **SyntaxError**)| Custom **BusinessError**|
 | **reviver** parameter| Supported| Supported, with strict type checking|
 
 ### stringify
@@ -82,9 +82,9 @@ Removes a specified property from an object.
 
 | Feature| Native JSON| This Library|
 | ----- | ----- | -----| 
-| Strict parameter verification| Not supported|	Supported|
-| Circular reference detection| Not supported|	Supported|
-| BigInt processing| Not supported|	Supported|
+| Strict parameter verification| Not supported| Supported|
+| Circular reference detection| Not supported| Supported|
+| BigInt processing| Not supported| Supported|
 | Enhanced error handling (**BusinessError**)| Not supported| Supported|
 | Additional methods (**has** or **remove**)| Not supported| Supported|
 

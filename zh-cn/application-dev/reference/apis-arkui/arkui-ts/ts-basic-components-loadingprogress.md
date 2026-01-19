@@ -119,9 +119,9 @@ contentModifier(modifier: ContentModifier\<LoadingProgressConfiguration>)
 
 | 名称                     | 值 | 说明                                     |
 | ---------------------- | - | ---------------------------------------- |
-| Default       | - | 默认加载样式。API version 8及以后不支持设置。            |
-| Circular      | - | 环形加载样式。API version 8及以后不支持设置。            |
-| Orbital       | - | 彗星形加载样式。API version 8及以后默认为彗星形样式。         |
+| Default       | 1 | 默认加载样式。API version 8及以后不支持设置。            |
+| Circular      | 2 | 环形加载样式。API version 8及以后不支持设置。            |
+| Orbital       | 3 | 彗星形加载样式。API version 8及以后默认为彗星形样式。         |
 
 ## 示例
 
@@ -170,8 +170,8 @@ class MyLoadingProgressStyle implements ContentModifier<LoadingProgressConfigura
 }
 
 let arr1: string[] =
-  ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"];
-let arr2: string[] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
+let arr2: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 @Builder
 function buildLoadingProgress(config: LoadingProgressConfiguration) {
@@ -208,10 +208,10 @@ function buildLoadingProgress(config: LoadingProgressConfiguration) {
         }) {
           Column() {
             Text('60')
-              .maxFontSize("180sp")
-              .minFontSize("160.0vp")
+              .maxFontSize('180sp')
+              .minFontSize('160.0vp')
               .fontWeight(FontWeight.Medium)
-              .fontColor("#ff182431")
+              .fontColor('#ff182431')
               .width('40%')
               .height('30%')
               .textAlign(TextAlign.Center)
@@ -260,7 +260,7 @@ function buildLoadingProgress(config: LoadingProgressConfiguration) {
       .scrollBar(BarState.Off)
     }
 
-  }.width("100%").padding(10)
+  }.width('100%').padding(10)
 }
 
 

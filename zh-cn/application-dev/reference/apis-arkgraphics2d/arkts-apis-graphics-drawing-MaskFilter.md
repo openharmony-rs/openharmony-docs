@@ -58,7 +58,7 @@ static createBlurMaskFilter(blurType: BlurType, sigma: number): MaskFilter
 
 ```ts
 import { RenderNode } from '@kit.ArkUI';
-import { common2D, drawing } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {

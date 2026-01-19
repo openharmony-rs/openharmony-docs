@@ -3,15 +3,15 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **&lt;toolbar&gt;** component shows actions available on the current screen and can be used for level-1 navigation. For details, see [toolbar](../reference/apis-arkui/arkui-js/js-components-basic-toolbar.md).
+The **\<toolbar>** component shows actions available on the current screen and can be used for level-1 navigation. For details, see [toolbar](../reference/apis-arkui/arkui-js/js-components-basic-toolbar.md).
 
 
-## Creating a &lt;toolbar&gt; Component
+## Creating a \<toolbar> Component
 
-Create a **&lt;toolbar&gt;** component in the .hml file under **pages/index**.
+Create a **\<toolbar>** component in the .hml file under **pages/index**.
 
 
 ```html
@@ -40,12 +40,12 @@ toolbar-item{
 }
 ```
 
-![en-us_image_0000001275922977](figures/en-us_image_0000001275922977.gif)
+![en-us_image_0000001175668970](figures/en-us_image_0000001175668970.gif)
 
 
 ## Adding Child Components
 
-The **&lt;toolbar&gt;** component supports only the **&lt;toolbar-item&gt;** child component and can display a maximum of five **&lt;toolbar-item&gt;** child components on a page. If there are six or more **&lt;toolbar-item&gt;** child components, the first four child components are retained, and the rest are moved to the **More** option on the toolbar and can be displayed on a pop-up window by clicking **More**. Under **More**, the child components are displayed in the default style; the custom style settings do not take effect.
+  The **\<toolbar>** component supports only the **\<toolbar-item>** child component and can display a maximum of five **\<toolbar-item>** child components on a page. If there are six or more **\<toolbar-item>** child components, the first four child components are retained, and the rest are moved to the **More** option on the toolbar and can be displayed on a pop-up window by clicking **More**. Under **More**, the child components are displayed in the default style; the custom style settings do not take effect.
 
 ```html
 <!-- xxx.hml -->
@@ -77,12 +77,12 @@ toolbar-item{
 }
 ```
 
-![en-us_image_0000001232002988](figures/en-us_image_0000001232002988.gif)
+![en-us_image_0000001175828962](figures/en-us_image_0000001175828962.gif)
 
 
 ## Setting Styles
 
-Set the **position** style for the **&lt;toolbar&gt;** component and set the font color, size, and background color of **&lt;toolbar-item&gt;** child components.
+Set the **position** style for the **\<toolbar>** component and set the font color, size, and background color of **\<toolbar-item>** child components.
 
 ```html
 <!-- xxx.hml -->
@@ -114,12 +114,12 @@ toolbar-item{
 ```
 
 
-![en-us_image_0000001275803149](figures/en-us_image_0000001275803149.png)
+![en-us_image_0000001218279254](figures/en-us_image_0000001218279254.png)
 
 
 ## Binding Events
 
-Bind the click event and long press event to the **&lt;toolbar-item&gt;** child components, so that the text of these components turns red upon click and turns blue upon long press.
+Bind the click event and long press event to the **\<toolbar-item>** child components, so that the text of these components turns red upon click and turns blue upon long press.
 
 
 ```html
@@ -168,7 +168,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001275803153](figures/en-us_image_0000001275803153.gif)
+![en-us_image_0000001218439306](figures/en-us_image_0000001218439306.gif)
 
 > **NOTE**
 >
@@ -177,9 +177,9 @@ export default {
 
 ## Example Scenario
 
-In this example, you'll implement a **&lt;toolbar-item&gt;** component, clicking which will trigger a change in the text color and the image corresponding to the component.
+In this example, you'll implement a **\<toolbar-item>** component, clicking which will trigger a change in the text color and the image corresponding to the component.
 
-Use the **for** loop to create a **&lt;toolbar-item&gt;** component and bind a click event to it, so that clicking the component will obtain and store an index value. When setting the text color, the system checks whether the current index value is the stored value. If yes, the system sets the color to red. If no, the system uses the default color.
+  Use the **for** loop to create a **\<toolbar-item>** component and bind a click event to it, so that clicking the component will obtain and store an index value. When setting the text color, the system checks whether the current index value is the stored value. If yes, the system sets the color to red. If no, the system uses the default color.
 
 ```html
 <!-- xxx.hml -->
@@ -226,4 +226,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001231683128](figures/en-us_image_0000001231683128.gif)
+![en-us_image_0000001263279105](figures/en-us_image_0000001263279105.gif)

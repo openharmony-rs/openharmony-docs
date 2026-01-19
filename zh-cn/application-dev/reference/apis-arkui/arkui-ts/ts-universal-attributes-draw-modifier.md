@@ -79,6 +79,7 @@ drawFront?(drawContext: DrawContext): void
 drawContent?(drawContext: DrawContext): void
 
 自定义绘制内容的接口，若重载该方法则可进行内容的自定义绘制，会替换组件原本的内容绘制函数。
+
 该接口的[DrawContext](../js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-extension-drawModifier.md#调整自定义绘制canvas的变换矩阵)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -139,7 +140,7 @@ drawForeground(drawContext: DrawContext): void
 
 drawOverlay(drawContext: DrawContext): void
 
-自定义绘制遮罩层的接口，若重载该方法则可进行遮罩层的自定义绘制。需要对其组件的遮罩层进行绘制时重载该方法。与[drawForeground](#drawforeground20)不同的是，drawOverlay可以在组件的边界之外绘制。
+自定义绘制遮罩层的接口，若重载该方法则可进行遮罩层的自定义绘制。需要对其组件的遮罩层进行绘制时重载该方法。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 

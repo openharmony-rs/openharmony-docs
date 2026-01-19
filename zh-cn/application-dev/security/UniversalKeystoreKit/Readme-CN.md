@@ -55,7 +55,7 @@
   - 密钥证明<!--huks-key-attestation-->
     - [密钥证明介绍及算法规格](huks-key-attestation-overview.md)
     - [匿名密钥证明(ArkTS)](huks-key-anon-attestation-arkts.md)
-    - [匿名密钥证明(C/C++)](huks-key-anon-attestation-ndk.md)
+    - [匿名密钥证明(C/C++)](huks-key-anon-attestation-ndk.md)<!--RP3--><!--RP3End-->
     <!--Del-->
     - [非匿名密钥证明(仅对系统应用开放)(ArkTS)](huks-key-attestation-arkts-sys.md)
     - [非匿名密钥证明(仅对系统应用开放)(C/C++)](huks-key-attestation-ndk-sys.md)
@@ -106,4 +106,4 @@
     - [通用查询(C/C++)](huks-ukey-general-query-ndk.md)
   - 驱动HAP ExtensionAbility适配指导<!--huks-extension-ability-support-->
     - [CryptoExtensionAbility扩展能力介绍](huks-extension-ability-support-overview.md)
-    - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)
+    - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)<!--RP4--><!--RP4End-->

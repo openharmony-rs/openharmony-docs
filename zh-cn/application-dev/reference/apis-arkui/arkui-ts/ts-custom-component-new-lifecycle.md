@@ -20,13 +20,13 @@ ComponentInit: MethodDecorator
 
 > **说明：**
 >
-> 在该回调函数内，不可以更改状态变量，否则会导致程序崩溃。
+> 在@Component装饰的struct中，\@ComponentInit装饰的函数内不可以更改状态变量，否则会导致运行时crash。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -42,7 +42,7 @@ ComponentAppear: MethodDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -58,7 +58,7 @@ ComponentBuilt: MethodDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -74,7 +74,7 @@ ComponentDisappear: MethodDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -84,13 +84,13 @@ ComponentDisappear: MethodDecorator
 
 ComponentAttach: MethodDecorator
 
-\@ComponentAttach装饰的函数在自定义组件完成挂载到主树后执行，即从CustomComponentLifecycleState.MOUNTED到CustomComponentLifecycleState.BUILT的阶段触发。开发者可以在此阶段实现一些不影响实际UI的功能，例如事件数据上报。
+\@ComponentAttach装饰的函数在自定义组件完成挂载到主树后执行，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.MOUNTED的阶段触发。开发者可以在此阶段实现一些不影响实际UI的功能，例如事件数据上报。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -106,7 +106,7 @@ ComponentDetach: MethodDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -116,25 +116,25 @@ ComponentDetach: MethodDecorator
 
 ComponentReuse: MethodDecorator
 
-当可复用的自定义组件从缓存中重新添加到节点树时调用\@ComponentReuse装饰的函数，即从CustomComponentLifecycleState.RECYCLED到CustomComponentLifecycleState.BUILT阶段触发，以接收组件的构造参数。最后，\@ComponentReuse装饰的函数会递归遍历所有子组件，对每个完成复用的组件调用\@ComponentReuse装饰的函数。
+当可复用的自定义组件从缓存中重新添加到节点树时调用\@ComponentReuse装饰的函数，即从CustomComponentLifecycleState.RECYCLED到CustomComponentLifecycleState.BUILT阶段触发，以接收组件的构造参数。最后，复用会递归遍历所有子组件，对每个完成复用的子组件，会调用子组件中\@ComponentReuse装饰的函数。
 
 > **说明：**
 >
-> -  当params不为undefined时，它适用于复用状态管理V1组件的回调函数。
+> -  在状态管理V1的组件里，\@ComponentReuse装饰的函数允许有一个入参或者无参。入参params建议为Record\<string, Object \| undefined \| null\>类型。
 >
-> -  当params为undefined时，它适用于复用状态管理V2组件的回调函数。
+> -  在状态管理V2的组件里，\@ComponentReuse装饰的函数没有入参。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明                                       |
 | ---- | ------ | ---- | ------- |
-| params   | Record\<string, Object \| undefined \| null> | 否    | 当param不为undefined时，表示V1组件的复用回调。当param为undefined时，表示V2组件的复用回调。 |
+| params   | Record\<string, Object \| undefined \| null\> | 否    | 当params存在时，表示V1组件的复用回调。 |
 
 **示例：**
 
@@ -144,13 +144,13 @@ ComponentReuse: MethodDecorator
 
 ComponentRecycle: MethodDecorator
 
-当组件被回收后触发，先执行应用程序中定义的必要回收操作，完成回收后调用此函数，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.RECYCLED阶段触发。最后，\@ComponentRecycle装饰的函数会递归遍历所有子组件，对每个完成回收的组件调用\@ComponentRecycle装饰的函数。
+当组件被回收后触发，先执行应用程序中定义的必要回收操作，完成回收后调用此装饰器装饰的函数，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.RECYCLED阶段触发。最后，回收会递归遍历所有子组件，对每个完成回收的子组件调用子组件中\@ComponentRecycle装饰的函数。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -158,7 +158,7 @@ ComponentRecycle: MethodDecorator
 
 ## CustomComponentLifecycle
 
-CustomComponentLifecycle用于监控自定义组件生命周期的变化。
+CustomComponentLifecycle用于监控自定义组件生命周期的变化，开发者可以通过[UIUtils.getLifecycle](../js-apis-stateManagement.md#getlifecycle23)获取CustomComponentLifecycle实例。
 
 ### getCurrentState
 
@@ -170,7 +170,7 @@ getCurrentState函数用于获得自定义组件当前的生命周期状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -209,7 +209,7 @@ addObserver函数用于注册自定义组件生命周期监听器。当自定义
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -227,7 +227,7 @@ removeObserver函数用于移除自定义组件生命周期监听器。解除注
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -249,7 +249,7 @@ aboutToAppear函数在创建自定义组件的新实例后，执行其build()函
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 ### onDidBuild
 
@@ -261,19 +261,19 @@ onDidBuild函数在自定义组件的新实例构建完成后，执行其build()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 ### aboutToDisappear
 
 aboutToDisappear?(): void
 
-aboutToDisappear函数在自定义组件被销毁之前执行。不建议在aboutToDisappear函数中修改状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。其功能与aboutToDisappear类似，但由于aboutToDisappear是在自定义组件状态机的约束下触发的，因此为了兼容性考虑，增加了aboutToDisappear接口。
+aboutToDisappear函数在自定义组件被销毁之前执行。不建议在aboutToDisappear函数中修改状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。其功能与[aboutToDisappear](./ts-custom-component-lifecycle.md#abouttodisappear)类似，不同的是，CustomComponentLifecycleObserver中的aboutToDisappear函数受状态机约束，只有被监听的自定义组件状态向CustomComponentLifecycleState.DISAPPEARED转变前触发回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 ### aboutToAttach
 
@@ -285,7 +285,7 @@ aboutToAttach函数在自定义组件被附加到主树时执行。开发者可�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 ### aboutToDetach
 
@@ -297,25 +297,25 @@ aboutToDetach函数在自定义组件从主树分离时执行。开发者可以�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 ### aboutToReuse
 
 aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 
-当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数，以接收组件的构造函数。当param不为undefined时，表示V1组件的复用回调。当param为undefined时，表示V2组件的复用回调。
+当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数，以接收组件的构造函数。当params存在时，表示V1组件的复用回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明                                       |
 | ---- | ------ | ---- | ------- |
-| params   | Record\<string, Object \| undefined \| null> | 否    | 当param不为undefined时，表示V1组件的复用回调。当param为undefined时，表示V2组件的复用回调。 |
+| params   | Record\<string, Object \| undefined \| null\> | 否    | 当params存在时，表示V1组件的复用回调。 |
 
 ### aboutToRecycle
 
@@ -327,7 +327,7 @@ aboutToRecycle?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 ```ts
@@ -387,7 +387,7 @@ struct Child {
 }
 
 export class MyObserver implements CustomComponentLifecycleObserver {
-  // 重写CustomComponentLifecycleObserver中的生命周期事件，CustomComponentLifecycleObserver无法监听父组件的aboutToInit
+  // 重写CustomComponentLifecycleObserver中的生命周期事件。
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToAppear');
   }
@@ -400,14 +400,13 @@ export class MyObserver implements CustomComponentLifecycleObserver {
   aboutToDetach() {
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToDetach');
   }
-  aboutToReuse(param?: ESObject) {
-    // param不为undefined，为V1的复用；param为undefined，为V2的复用
+  aboutToReuse(params?: Record<string, Object | undefined | null>) {
+    // params存在时，为V1的复用；
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToReuse');
   }
   aboutToRecycle() {
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToRecycle');
   }
-  // 在父组件的aboutToDelete函数中解除注册监听，则无法监听父组件的aboutToDisappear
   aboutToDisappear() {
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToDisappear');
   }
@@ -435,7 +434,7 @@ export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束:** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 值 | 说明 |
 | -- | -- | -- |

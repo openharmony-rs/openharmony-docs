@@ -6,33 +6,33 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
+## 概述
+
 已有的[自定义组件生命周期](./arkts-page-custom-components-lifecycle.md)回调函数触发只取决于事件的触发，在某些特定的情况下，会出现自定义组件生命周期回调函数的触发顺序不符合预期。比如：[aboutToDisappear在特定情况下会误调用aboutToAppear、组件未展开被复用时，会误调用aboutToReuse](#生命周期回调函数的区别)。新的自定义组件生命周期回调函数受[状态机](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate)限制，生命周期回调函数调用时机符合预期。
 
-自定义组件生命周期，即用[@Component](arkts-create-custom-components.md#component)或[@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件的生命周期，从API version 23开始，提供以下生命周期接口：
+自定义组件生命周期，即用[@Component](arkts-create-custom-components.md#component)或[@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件的生命周期，从API version 23开始，提供以下生命周期装饰器：
 
-- [\@ComponentInit](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinit)：\@Componentinit装饰的函数在自定义组件即将构造完毕时执行。不允许在此函数中改变状态变量，会导致程序崩溃。可以在此函数中注册监听和修改非状态变量。
+- [\@ComponentInit](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinit)：\@Componentinit装饰的函数在自定义组件即将构造完毕时执行。可以在此函数中注册监听和修改非状态变量。
 
-- [\@ComponentAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentappear)：组件即将出现时回调该接口，具体时机为在创建自定义组件的新实例后，在执行其build函数之前执行。
+- [\@ComponentAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentappear)：组件即将出现时回调该装饰器装饰的函数，具体时机为在创建自定义组件的新实例后，在执行其build函数之前执行。
 
-- [\@ComponentBuilt](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentbuilt)：在组件首次渲染触发的build函数执行完成之后回调该接口，后续组件重新渲染将不回调该接口。开发者可以在这个阶段实现数据上报等不影响实际UI的功能。
+- [\@ComponentBuilt](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentbuilt)：在组件首次渲染触发的build函数执行完成后，回调该装饰器装饰的函数，后续组件重新渲染将不再回调该函数。开发者可以在此阶段实现数据上报等不影响实际UI的功能。
 
-- [\@ComponentDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentdisappear)：该接口在自定义组件析构销毁之前执行。不建议在\@ComponentDisappear装饰的函数中改变状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。
+- [\@ComponentDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentdisappear)：该装饰器装饰的函数在自定义组件析构销毁之前执行。不建议在\@ComponentDisappear装饰的函数中改变状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。
 
-- [\@ComponentAttach](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentattach)：该接口在自定义组件完成挂载到主树后执行，开发者可以在此阶段实现一些不影响实际UI的功能，例如事件数据上报。
+- [\@ComponentAttach](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentattach)：该装饰器装饰的函数在自定义组件完成挂载到主树后执行，开发者可以在此阶段实现一些不影响实际UI的功能，例如事件数据上报。
 
-- [\@ComponentDetach](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentdetach)：该接口在自定义组件完成从主树分离后执行。开发者可以在此阶段实现一些不影响实际UI的功能，例如初始化非状态变量数据。
+- [\@ComponentDetach](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentdetach)：该装饰器装饰的函数在自定义组件完成从主树分离后执行。开发者可以在此阶段实现一些不影响实际UI的功能，例如初始化非状态变量数据。
 
-- [\@ComponentReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentreuse)：当可复用的自定义组件从缓存中重新添加到节点树时调用该接口，以接收组件的构造入参。最后，\@ComponentReuse装饰的函数会递归遍历所有子组件，对每个完成复用的组件调用\@ComponentReuse装饰的函数。
+- [\@ComponentReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentreuse)：当可复用的自定义组件从缓存中重新添加到节点树时调用该装饰器装饰的函数，以接收组件的构造入参。最后，\@ComponentReuse装饰的函数会递归遍历所有子组件，对每个完成复用的组件调用\@ComponentReuse装饰的函数。
 
-- [\@ComponentRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentrecycle)：当组件被回收后触发，先执行应用程序中定义的必要回收操作，完成回收后调用该接口。最后，\@ComponentRecycle装饰的函数会递归遍历所有子组件，对每个完成回收的组件调用\@ComponentRecycle装饰的函数。
+- [\@ComponentRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentrecycle)：当组件被回收后触发，先执行应用程序中定义的必要回收操作，完成回收后调用该装饰器装饰的函数。最后，\@ComponentRecycle装饰的函数会递归遍历所有子组件，对每个完成回收的组件调用\@ComponentRecycle装饰的函数。
 
 自定义组件生命周期受状态机限制，流程如下图所示。
 
 ![custom-component-lifecycle-demo1](figures/customcomponent-lifecycle-new-state.png)
 
-根据上面的流程图，接下来从自定义组件的初始创建、删除和复用来详细说明。
-
-## 自定义组件的创建和渲染流程
+### 自定义组件的创建和渲染流程
 
 1. 自定义组件的创建：自定义组件的实例由ArkUI框架创建。
 
@@ -40,7 +40,7 @@
 
 3. 在首次渲染的时候，执行build函数渲染系统组件，如果子组件为自定义组件，则创建自定义组件的实例。在首次渲染的过程中，框架会记录状态变量和组件的映射关系，当状态变量改变时，驱动其相关的组件刷新。
 
-## 自定义组件的删除
+### 自定义组件的删除
 
 例如if组件的分支改变或ForEach循环渲染中数组的个数改变，组件将被移除：
 
@@ -48,7 +48,23 @@
 
 2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如[@Link](arkts-link.md)、[@Prop](arkts-prop.md)、[@StorageLink](arkts-appstorage.md#storagelink)），将从[同步源](arkts-state-management-glossary.md#数据源同步源data-source)上取消注册。
 
-## 自定义组件嵌套使用与示例
+## 限制条件
+
+1. \@ComponentInit、\@ComponentAppear、\@ComponentBuilt、\@ComponentDisappear、\@ComponentAttach、\@ComponentDetach、\@ComponentReuse和\@ComponentRecycle只能在\@Component或者\@ComponentV2装饰的struct中使用，否则编译时会抛出警告。
+
+2. \@ComponentInit、\@ComponentAppear、\@ComponentBuilt、\@ComponentDisappear、\@ComponentAttach、\@ComponentDetach和\@ComponentRecycle装饰的函数不能有入参，否则编译时会抛出警告。
+
+3. 在@Component装饰的struct中，不允许在\@ComponentInit装饰的函数中改变状态变量，否则会导致运行时crash。在@ComponentV2装饰的struct中，允许在\@ComponentInit装饰的函数中改变状态变量。
+
+4. 在\@Component装饰的struct中，\@ComponentReuse装饰的函数可以没有入参或者有一个入参，否则编译时会抛出警告。
+
+5. 在\@ComponentV2装饰的struct中，\@ComponentReuse装饰的函数不能有入参，否则编译时会抛出警告。
+
+6. 使用[NavDestination](../arkts-navigation-architecture.md#navdestination子页面容器)的struct不触发上下主树的行为，所以\@ComponentAttach和\@ComponentDetach装饰的函数不会触发回调。
+
+## 使用场景
+
+### 自定义组件嵌套使用
 
 通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
 
@@ -180,9 +196,9 @@ Child myBuilt
 
 ![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-nest.png)
 
-## 自定义组件回收复用和上树下树的使用与示例
+### 自定义组件回收复用和上下主树
 
-通过以下示例，来详细说明自定义组件在使用时，回收复用和上树下树的生命周期调用时序：
+通过以下示例，来详细说明自定义组件在使用时，回收复用和上下主树的生命周期调用时序：
 
 ```ts
 import { ComponentInit, ComponentAppear, ComponentBuilt, ComponentAttach, ComponentDetach, ComponentDisappear, ComponentReuse, ComponentRecycle } from '@kit.ArkUI';
@@ -262,7 +278,7 @@ struct Child {
     hilog.info(0x0000, 'testTag', 'Child myDisappear');
   }
   @ComponentReuse
-  myReuse(param?: ESObject) {
+  myReuse(params?: Record<string, Object | undefined | null>) {
     this.label = 'myReuse';
     hilog.info(0x0000, 'testTag', 'Child myReuse');
   }
@@ -328,7 +344,7 @@ struct GrandChild {
     hilog.info(0x0000, 'testTag', 'GrandChild myDisappear');
   }
   @ComponentReuse
-  myReuse(param?: ESObject) {
+  myReuse(params?: Record<string, Object | undefined | null>) {
     this.label = 'myReuse';
     hilog.info(0x0000, 'testTag', 'GrandChild myReuse');
   }
@@ -368,9 +384,139 @@ Child myRecycle
 GrandChild myRecycle
 ```
 
+### 自定义组件生命周期的注册监听
+
+CustomComponentLifecycleObserver用于监听自定义组件的生命周期，开发者可以根据自己的需求重写CustomComponentLifecycleObserver中的回调函数。
+
+```ts
+import { ComponentInit, ComponentDisappear, UIUtils, CustomComponentLifecycleObserver, CustomComponentLifecycle } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export class Message {
+  value: string | undefined;
+  constructor(value: string) {
+    this.value = value;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State switch: boolean = true;
+
+  build() {
+    Column() {
+      Button('Hello')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.switch = !this.switch;
+        })
+      if (this.switch) {
+        // 如果只有一个复用的组件，可以不用设置reuseId。
+        Child({ message: new Message('Child') })
+          .reuseId('Child')
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Reusable
+@Component
+struct Child {
+  @State message: Message = new Message('AboutToReuse');
+  @State label: string = 'HelloWorld';
+  @ComponentInit
+  myInit(): void {
+    registerObserver(UIUtils.getLifecycle(this));
+  }
+  @ComponentDisappear
+  myDisappear(): void {
+    unRegisterObserver(UIUtils.getLifecycle(this));
+  }
+
+  build() {
+    Column() {
+      Text(this.message.value)
+        .fontSize(30)
+    }
+  }
+}
+
+export class MyObserver implements CustomComponentLifecycleObserver {
+  // 重写CustomComponentLifecycleObserver中的生命周期事件，CustomComponentLifecycleObserver无法监听父组件的aboutToInit
+  aboutToAppear() {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToAppear');
+  }
+  onDidBuild() {
+    hilog.info(0x0000, 'testTag', 'MyObserver onDidBuild');
+  }
+  aboutToAttach() {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToAttach');
+  }
+  aboutToDetach() {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToDetach');
+  }
+  aboutToReuse(params?: Record<string, Object | undefined | null>) {
+    // params存在时，为V1的复用；
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToReuse');
+  }
+  aboutToRecycle() {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToRecycle');
+  }
+  // 在父组件的aboutToDelete函数中解除注册监听，则无法监听父组件的aboutToDisappear
+  aboutToDisappear() {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToDisappear');
+  }
+}
+
+// 创建Observer对象
+const observer = new MyObserver();
+export function registerObserver(lifeCycle: CustomComponentLifecycle) {
+  // 向lifeCycle注册监听
+  lifeCycle.addObserver(observer);
+}
+export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
+  // 向lifeCycle取消注册监听
+  lifeCycle.removeObserver(observer);
+}
+
+```
+
+在@ComponentDisappear装饰的函数中解除注册监听，所以监听器无法监听到aboutToDisappear。
+
+按两次Hello按钮，然后关闭程序，此时日志输出信息如下：
+
+```ts
+MyObserver aboutToAppear
+MyObserver onDidBuild
+MyObserver aboutToAttach
+MyObserver aboutToDetach
+MyObserver aboutToRecycle
+MyObserver aboutToReuse
+MyObserver aboutToAttach
+MyObserver aboutToDetach
+```
+
+可以在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于Appeared状态，所以无法监听组件的aboutToAppear。
+
+```ts
+Column() {
+  Text('Hello World')
+}
+.onAppear(() => {
+  registerObserver(UIUtils.getLifecycle(this));
+})
+.onDisAppear(() => {
+  unRegisterObserver(UIUtils.getLifecycle(this));
+})
+```
+
 ## 生命周期回调函数的区别
 
-**\@ComponentAppear、\@ComponentDisappear与aboutToAppear、aboutToDisappear的区别**
+### \@ComponentAppear、\@ComponentDisappear与aboutToAppear、aboutToDisappear的区别
 
 自定义组件在INIT状态时，即将转化为APPEARED时，先调用aboutToAppear后调用\@ComponentAppear装饰的函数。
 
@@ -401,6 +547,7 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
+          // this.show为true，创建SwiperExample；this.show为false，销毁SwiperExample
           this.show = !this.show;
         })
       if (this.show) {
@@ -553,7 +700,7 @@ SwiperPage:aboutToDisappear 4
 ...
 ```
 
-**\@ComponentReuse、\@ComponentRecycle与aboutToReuse、aboutToRecycle的区别**
+### \@ComponentReuse、\@ComponentRecycle与aboutToReuse、aboutToRecycle的区别
 
 自定义组件在RECYCLED状态时，即将转化为BUILT时，先调用aboutToReuse后调用\@ComponentReuse装饰的函数。
 
@@ -615,11 +762,11 @@ struct ReusableComp3 {
   aboutToAppear(): void {
     hilog.info(0x0000, 'testTag', 'ReusableComp3 aboutToAppear');
   }
-  aboutToReuse(param: ESObject): void {
+  aboutToReuse(params: Record<string, Object | undefined | null>): void {
     hilog.info(0x0000, 'testTag', 'ReusableComp3 aboutToReuse');
   }
   @ComponentReuse
-  myReuse(param: ESObject): void {
+  myReuse(params: Record<string, Object | undefined | null>): void {
     hilog.info(0x0000, 'testTag', 'ReusableComp3 myReuse');
   }
   @ComponentAppear
@@ -652,133 +799,3 @@ ReusableComp3 myAttach
 ```
 
 ReusableComp3从未创建过，但按下b按钮后，ReusableComp3的aboutToReuse误调用，同时ReusableComp3的aboutToAppear和myBuilt被调用。而myReuse没有被误调用，这是因为myReuse受状态机约束，当组件不是RECYCLED状态时，不会执行myReuse。
-
-## 注册监听的使用与示例
-
-CustomComponentLifecycleObserver用于监听自定义组件的生命周期，开发者可以根据自己的需求重写CustomComponentLifecycleObserver中的回调函数。
-
-```ts
-import { ComponentInit, ComponentDisappear, UIUtils, CustomComponentLifecycleObserver, CustomComponentLifecycle } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-export class Message {
-  value: string | undefined;
-  constructor(value: string) {
-    this.value = value;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State switch: boolean = true;
-
-  build() {
-    Column() {
-      Button('Hello')
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-        .onClick(() => {
-          this.switch = !this.switch;
-        })
-      if (this.switch) {
-        // 如果只有一个复用的组件，可以不用设置reuseId。
-        Child({ message: new Message('Child') })
-          .reuseId('Child')
-      }
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-
-@Reusable
-@Component
-struct Child {
-  @State message: Message = new Message('AboutToReuse');
-  @State label: string = 'HelloWorld';
-  @ComponentInit
-  myInit(): void {
-    registerObserver(UIUtils.getLifecycle(this));
-  }
-  @ComponentDisappear
-  myDisappear(): void {
-    unRegisterObserver(UIUtils.getLifecycle(this));
-  }
-
-  build() {
-    Column() {
-      Text(this.message.value)
-        .fontSize(30)
-    }
-  }
-}
-
-export class MyObserver implements CustomComponentLifecycleObserver {
-  // 重写CustomComponentLifecycleObserver中的生命周期事件，CustomComponentLifecycleObserver无法监听父组件的aboutToInit
-  aboutToAppear() {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToAppear');
-  }
-  onDidBuild() {
-    hilog.info(0x0000, 'testTag', 'MyObserver onDidBuild');
-  }
-  aboutToAttach() {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToAttach');
-  }
-  aboutToDetach() {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToDetach');
-  }
-  aboutToReuse(param?: ESObject) {
-    // param不为undefined，为V1的复用；param为undefined，为V2的复用
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToReuse');
-  }
-  aboutToRecycle() {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToRecycle');
-  }
-  // 在父组件的aboutToDelete函数中解除注册监听，则无法监听父组件的aboutToDisappear
-  aboutToDisappear() {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToDisappear');
-  }
-}
-
-// 创建Observer对象
-const observer = new MyObserver();
-export function registerObserver(lifeCycle: CustomComponentLifecycle) {
-  // 向lifeCycle注册监听
-  lifeCycle.addObserver(observer);
-}
-export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
-  // 向lifeCycle取消注册监听
-  lifeCycle.removeObserver(observer);
-}
-
-```
-
-在@ComponentDisappear装饰的函数中解除注册监听，所以监听器无法监听到aboutToDisappear。
-
-按两次Hello按钮，然后关闭程序，此时日志输出信息如下：
-
-```ts
-MyObserver aboutToAppear
-MyObserver onDidBuild
-MyObserver aboutToAttach
-MyObserver aboutToDetach
-MyObserver aboutToRecycle
-MyObserver aboutToReuse
-MyObserver aboutToAttach
-MyObserver aboutToDetach
-```
-
-可以在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于Appeared状态，所有无法监听组件的aboutToAppear。
-
-```ts
-Column() {
-  Text('Hello World')
-}
-.onAppear(() => {
-  registerObserver(UIUtils.getLifecycle(this));
-})
-.onDisAppear(() => {
-  unRegisterObserver(UIUtils.getLifecycle(this));
-})
-```

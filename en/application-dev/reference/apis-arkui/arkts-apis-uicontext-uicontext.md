@@ -945,7 +945,7 @@ Obtains the **LocalStorage** instance shared by this stage.
 
 | Type                            | Description               |
 | ------------------------------ | ----------------- |
-| [LocalStorage](arkui-ts/ts-state-management.md#localstorage9) \| undefined | **LocalStorage** instance if it exists; **undefined** if it does not exist.|
+| [LocalStorage](arkui-ts/ts-state-management.md#localstorage9)&nbsp;\|&nbsp;undefined | **LocalStorage** instance if it exists; **undefined** if it does not exist.|
 
 **Example**
 
@@ -1006,7 +1006,7 @@ Obtains the context of this ability.
 
 | Type| Description                            |
 | ------ | ------------------------------- |
-| [Context](arkts-apis-uicontext-t.md#context12) \| undefined | Context of the ability. The context type depends on the ability type. For example, if this API is called in a page within a UIAbility window, the returned context type is [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1). If this API is called in a page within an ExtensionAbility window, the returned context type is [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md). If the ability context does not exist, **undefined** is returned.|
+| [Context](arkts-apis-uicontext-t.md#context12)&nbsp;\|&nbsp;undefined | Context of the ability. The context type depends on the ability type. For example, if this API is called in a page within a UIAbility window, the returned context type is [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1). If this API is called in a page within an ExtensionAbility window, the returned context type is [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md). If the ability context does not exist, **undefined** is returned.|
 
 **Example**
 
@@ -1286,7 +1286,7 @@ Shows an alert dialog box.
 
 | Name    | Type                                      | Mandatory  | Description                 |
 | ------- | ---------------------------------------- | ---- | ------------------- |
-| options | [AlertDialogParamWithConfirm](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithconfirm) \| [AlertDialogParamWithButtons](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithbuttons) \| [AlertDialogParamWithOptions](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithoptions10) | Yes   | Shows an **AlertDialog** component in the given settings.|
+| options | [AlertDialogParamWithConfirm](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithconfirm)&nbsp;\|&nbsp;[AlertDialogParamWithButtons](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithbuttons)&nbsp;\|&nbsp;[AlertDialogParamWithOptions](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithoptions10) | Yes   | Shows an **AlertDialog** component in the given settings.|
 
 
 **Example**
@@ -1470,7 +1470,7 @@ struct DatePickerDialogExample {
   }
 }
 ```
-
+![showDatePickerDialog](figures/showDatePickerDialog.gif)
 
 ## showTimePickerDialog
 
@@ -1615,6 +1615,7 @@ struct TextPickerDialogExample {
   }
 }
 ```
+![showTextPickerDialog](figures/showTextPickerDialog.gif)
 
 ## showTextPickerDialog<sup>20+</sup>
 
@@ -2215,7 +2216,7 @@ result1: {"$type":"root","width":"1260.000000","height":"2720.000000","$resoluti
 result2: {"$type":"Text","$ID":6,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"id":"TEXT","isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":false}}
 result3: {"$type":"Text","$ID":6,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":false}}
 ```
-To obtain the component specified by the **id** parameter in the **getFilteredInspectorTreeById** API, you must first convert the API's result into a JSON object (as demonstrated in the sample code), and then extract the first item from the **$children** array. A comparison between **result2** and **result3** reveals that, if the **filters** parameter is changed from **["id", "src"]** to **["src"]**, the **$attrs** property obtained does not contain the **id** key.
+To obtain the component specified by the **id** parameter in the **getFilteredInspectorTreeById** API, you must first convert the API's result into a JSON object (as demonstrated in the sample code), and then extract the first item from the **$children** array. A comparison between **result2** and **result3** reveals that, if the **filters** parameter is changed from **["id", "src"]** to **["src"]**, the **\$attrs** property obtained does not contain the **id** key.
 
 ## getCursorController<sup>12+</sup>
 
@@ -2684,7 +2685,7 @@ struct Index {
 ```
 ## getWindowId<sup>23+</sup>
 
-getWindowId(): number | undefiend
+getWindowId(): number | undefined
 
 Obtains the ID of the window to which the current application instance belongs.
 
@@ -4076,4 +4077,3 @@ Obtains a [Magnifier](arkts-apis-uicontext-magnifier.md) object, which can be us
 **Example**
 
 See the example of the [bind](arkts-apis-uicontext-magnifier.md#bind) API in [Magnifier](arkts-apis-uicontext-magnifier.md).
-<!--no_check-->

@@ -30,7 +30,7 @@ publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback\<number>):
 
 > **说明：**
 >
-> 该接口需要申请通知弹窗权限[NotificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
+> 该接口需要申请通知弹窗权限[notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
 >
 > <!--RP1--><!--RP1End-->
 
@@ -84,7 +84,7 @@ publishReminder(reminderReq: ReminderRequest): Promise\<number>
 
 > **说明：**
 >
-> 该接口需要申请通知弹窗权限[NotificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
+> 该接口需要申请通知弹窗权限[notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
 >
 > <!--RP1--><!--RP1End-->
 
@@ -864,6 +864,103 @@ reminderAgentManager.cancelReminderOnDisplay(reminderId).then(() => {
 });
 ```
 
+## reminderAgentManager.subscribeReminderState<sup>23+</sup>
+
+subscribeReminderState(callback: Callback\<Array\<ReminderState>>): Promise\<void>
+
+订阅代理提醒状态。使用Promise异步回调。
+
+**需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Notification.ReminderAgent
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                               |
+| ---------- | ------ | ---- | ---------------------------------- |
+| callback | Callback\<Array\<[ReminderState](#reminderstate23)>> | 是   | 回调函数，返回代理提醒状态信息。 |
+
+**返回值：**
+
+| 类型                   | 说明                              |
+| ---------------------- | --------------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[reminderAgentManager错误码](errorcode-reminderAgentManager.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | ---------------------------- |
+| 201      | Permission denied.           |
+| 1700007  | If the input parameter is not valid parameter. |
+
+**示例：**
+
+``` ts
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
+  console.info('length is : ' + states.length);
+}
+
+reminderAgentManager.subscribeReminderState(this.reminderStateCallback).then(() => {
+  console.info('subscribe succeed');
+}).catch((err: BusinessError) => {
+  console.error('promise err code:' + err.code + ' message:' + err.message);
+});
+```
+
+## reminderAgentManager.unsubscribeReminderState<sup>23+</sup>
+
+unsubscribeReminderState(callback?: Callback\<Array\<ReminderState>>): Promise\<void>
+
+取消订阅代理提醒状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Notification.ReminderAgent
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                               |
+| ---------- | ------ | ---- | ---------------------------------- |
+| callback | Callback\<Array\<[ReminderState](#reminderstate23)>> | 否   | 回调函数。如果不传参数callback，则取消所有订阅。 |
+
+**返回值：**
+
+| 类型                   | 说明                              |
+| ---------------------- | --------------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[reminderAgentManager错误码](errorcode-reminderAgentManager.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | ---------------------------- |
+| 1700007  | If the input parameter is not valid parameter. |
+
+**示例：**
+
+``` ts
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
+  console.info('length is : ' + states.length);
+}
+
+reminderAgentManager.unsubscribeReminderState(this.reminderStateCallback).then(() => {
+  console.info('unsubscribe succeed');
+}).catch((err: BusinessError) => {
+  console.error('promise err code:' + err.code + ' message:' + err.message);
+});
+```
+
 ## ActionButtonType
 
 提醒上的按钮的类型。
@@ -1043,3 +1140,18 @@ ReminderRequestTimer extends ReminderRequest
 | reminderId  | number                              | 否   | 否   | 发布提醒后返回的id。 |
 | reminderReq | [ReminderRequest](#reminderrequest) | 否   | 否   | 代理提醒对象。       |
 
+## ReminderState<sup>23+</sup>
+
+代理提醒状态信息。状态信息会在如下两种情况发送通知：<br>
+1. 用户点击代理提醒的通知按钮时，如果应用进程存在，则会发送用户点击的按钮类型的通知给应用。如果应用未运行，则无法收到通知。
+2. 由于第1点不能保证应用可以收到通知，因此应用注册新的回调函数时，会将该应用下所有用户点击的按钮类型回调给应用。状态信息最多保存30天，应用注册新的回调函数时或者超过30天未注册回调函数，会删除缓存的状态信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Notification.ReminderAgent
+
+| 名称        | 类型                                  | 只读 | 可选 | 说明                 |
+| ----------- | ------------------------------------- | ---- | ---- | -------------------- |
+| reminderId  | number                                | 否   | 否   | 发布提醒后返回的id。 |
+| buttonType  | [ActionButtonType](#actionbuttontype) | 否   | 否   | 按钮类型。 |
+| isMessageResent | boolean | 否   | 否   | 信息是否为重复发送。<br> - false：信息首次发送。具体场景包括：用户点击代理提醒的通知按钮时，应用进程存在；用户点击代理提醒的通知按钮时，应用未运行，后续应用注册新的回调函数。<br> - true：信息重复发送，具体场景为：应用进程存在，用户点击代理提醒的通知按钮后，应用注册新的回调函数。 |

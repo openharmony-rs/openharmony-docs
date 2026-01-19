@@ -3,10 +3,10 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-This topic guides you through the transition from using APIs in the **Router** module to using the **Navigation** component. The **Navigation** component stands out for its wider range of animations, higher flexibility in one-time development for multi-device deployment, and more adaptable stack operations.
+This topic guides you through the transition from using APIs in the Router module to using the **Navigation** component. The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component stands out for its wider range of animations, higher flexibility in one-time development for multi-device deployment, and more adaptable stack operations.
 
 ## Page Structure
 
@@ -99,7 +99,7 @@ struct pageOne {
 }
 ```
 
-Pages using **Navigation** are divided into navigation pages and subpages. The navigation page, also known as a NavBar, is a child component of **Navigation**, while subpages are child components of **NavDestination**.
+Pages using **Navigation** are divided into navigation pages and subpages. The navigation page, also known as a [Navbar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12), is a child component of **Navigation**, while subpages are child components of [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md).
 
 The following is an example of the navigation page using **Navigation**.
 
@@ -147,7 +147,7 @@ export struct PageOne {
   build() {
     NavDestination() {
       Column() {
-        // Replace $r('app.string.routerToNavigation_nav_text1_backHome') with the resource file you use.
+        // Replace $r('app.string.routerToNavigation_nav_text1_backHome') with the actual resource file. In this example, the value in the resource file is "Back to Home Page."
         Button($r('app.string.routerToNavigation_nav_text1_backHome'), { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -308,7 +308,7 @@ export struct PageOne {
 }
 ```
 
-**Method 2**: Use the **OnReady** callback.
+**Method 2**: Use the [OnReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11) callback.
 
 <!-- @[router_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router2.ets) -->
 
@@ -436,6 +436,7 @@ The sequence of these lifecycle events is illustrated in the figure below.
 ![image](figures/router_page_lifecycle.png)
 
 **Navigation**, as a routing container, hosts its lifecycle within the **NavDestination** component and exposes lifecycle events as component events.
+
 For details about the lifecycle, see [Page Lifecycle](./arkts-navigation-navdestination.md#page-lifecycle).
 
 <!-- @[life_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/lifeCycle/Index.ets) -->
@@ -485,6 +486,7 @@ For **Navigation**, a routing container component, page transition animations ar
 ## Shared Element Transition
 
 To animate shared elements during page transitions with **Router**, use the **sharedTransition** API. For details, see
+
 [Shared Element Transition (sharedTransition)](../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md).
 
 To animate shared elements during page transitions with **Navigation**, use the **geometryTransition** API. For details, see [Shared Element Transition](./arkts-navigation-animation.md#shared-element-transition).
@@ -598,7 +600,7 @@ As a routing component, **Navigation** natively supports cross-package navigatio
    export { PageInHSP } from './src/main/ets/pages/PageInHSP'
    ```
 
-3. To use cross-package routing for redirection, you must configure dependencies in the **oh-package.json5** file of the application package. Example:
+3. To use cross-package routing for redirection, you must configure dependencies in the **oh-package.json5** file of the application package. For example:
 
    ```ts
    "dependencies": {
@@ -672,16 +674,17 @@ The basic implementation is similar to the aforementioned dynamic routing with *
 4. Each routing page registers its module name, route name, and the **WrappedBuilder**-encapsulated build function with the routing management module.
 5. The routing management module completes dynamic imports and route transitions as needed.
 
-For details about the building process, refer to the **Navigation** example for [auto‑generating dynamic routes](https://gitcode.com/harmonyos-cases/cases/blob/master/CommonAppDevelopment/common/routermodule/README_AUTO_GENERATE.md).
+For details about the building process, refer to the **Navigation** example for [auto-generating dynamic routes](https://gitcode.com/harmonyos-cases/cases/blob/master/CommonAppDevelopment/common/routermodule/README_AUTO_GENERATE.md).
 
 **Solution 2: System Routing Table**
 
 Since API version 12, **Navigation** supports a system-wide cross-module routing table solution, which centralizes routing management through individual **router_map.json** files in each service module (HSP/HAR). When a route transition is initiated using **NavPathStack**, the system automatically performs dynamic module loading, component construction, and completes the route transition, achieving module decoupling at the development level.
+
 For details, see [System Routing Table](./arkts-navigation-cross-package.md#system-routing-table).
 
 ## Lifecycle Listening
 
-You can use the observer to register for lifecycle events with the **Router**. For details about the APIs, see [observer.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate11).
+You can use the observer to register a listening for the lifecycle events with the **Router**. For details about the APIs, see [observer.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate11).
 
 
 <!-- @[observer_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Comm.ets) -->
@@ -824,4 +827,3 @@ struct MyComponent {
 **Router** does not provide route interception, so you must implement it by creating custom routing APIs for redirection and interception logic.
 
 **Navigation** provides the [setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12) API for setting callbacks to intercept page navigation. For details, see [Route Interception](./arkts-navigation-jump.md#route-interception).
-<!--no_check-->

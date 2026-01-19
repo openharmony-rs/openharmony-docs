@@ -18,7 +18,8 @@
 
 ## 子组件
 
-仅支持[GridItem](ts-container-griditem.md)子组件和自定义组件。自定义组件在Grid下使用时，建议使用GridItem作为自定组件的顶层组件，不建议给自定义组件设置属性和事件方法。
+仅支持[GridItem](ts-container-griditem.md)子组件和自定义组件。自定义组件在Grid下使用时，建议使用GridItem作为自定义组件的顶层组件，不建议给自定义组件设置属性和事件方法。
+
 支持通过渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
 
 >  **说明：**
@@ -98,10 +99,10 @@ columnsTemplate('repeat(auto-fit, track-size)')是设置最小列宽值为track-
 
 columnsTemplate('repeat(auto-fill, track-size)')是设置固定列宽值为track-size，自动计算列数。
 
-columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为track-size，使用columnsGap为最小列间距，自动计算列数和实际列间距。
+columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为track-size，使用columnsGap作为最小列间距，自动计算列数和实际列间距。
 
 其中repeat、auto-fit、auto-fill、auto-stretch为关键字。track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包括一个有效列宽。<br/>
-auto-stretch模式只支持track-size为一个有效列宽值，并且track-size只支持px、vp和有效数字，不支持%。
+auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值，并且auto-stretch模式中的track-size只支持px、vp和有效数字，不支持%。auto-fill模式支持一个或多个有效列宽，如columnsTemplate('repeat(auto-fill, 20)')、columnsTemplate('repeat(auto-fill, 20 80px)')。
 
 使用效果可以参考[示例8](#示例8设置自适应列数)。
 
@@ -154,7 +155,7 @@ rowsTemplate('repeat(auto-fill, track-size)')是设置固定行高值为track-si
 rowsTemplate('repeat(auto-stretch, track-size)')是设置固定行高值为track-size，使用rowsGap为最小行间距，自动计算行数和实际行间距。
 
 其中repeat、auto-fit、auto-fill、auto-stretch为关键字。track-size为行高，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包括一个有效行高。<br/>
-auto-stretch模式只支持track-size为一个有效行高值，并且track-size只支持px、vp和有效数字，不支持%。
+auto-fit模式和auto-stretch模式只支持track-size为一个有效行高值，并且auto-stretch模式中的track-size只支持px、vp和有效数字，不支持%。auto-fill模式支持一个或多个有效行高，如rowsTemplate('repeat(auto-fill, 20)')、rowsTemplate('repeat(auto-fill, 20 80px)')。
 
 设置为'0fr'，则这一行的行高为0，这一行GridItem不显示。设置为其他非法值，按固定1行处理。
 
@@ -588,7 +589,9 @@ syncLoad(enable: boolean)
 
 supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
-设置当前Grid组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。
+设置当前Grid组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。未设置时不支持空分支节点。此属性初次赋值后不支持更新，所以赋值后无法在支持空分支、不支持空分支行为之间切换。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -599,6 +602,22 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
 | supported  | boolean \| undefined | 是   | 当前Grid组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示支持空分支节点；false表示不支持空分支节点。</br>值为undefined时，按false处理。 |
+
+### editModeOptions<sup>23+</sup>
+
+editModeOptions(options?: EditModeOptions)
+
+配置编辑模式选项参数。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| options   | [EditModeOptions](ts-container-scrollable-common.md#editmodeoptions23对象说明) | 否   | 编辑模式选项。|
 
 ## GridItemAlignment<sup>12+</sup>枚举说明
 
@@ -2793,6 +2812,7 @@ struct GridItemExample {
 ### 示例17（通过拖拽事件实现GridItem拖拽）
 
 该示例通过[拖拽事件](./ts-universal-events-drag-drop.md)实现拖拽GridItem到Grid边缘时Grid自动滚动的功能。
+
 GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
@@ -3009,3 +3029,107 @@ struct GridExample {
 }
 ```
 ![gridContentSize](figures/gridContentSize.gif)
+
+### 示例20（设置多选聚拢动画）
+
+该示例通过打开Grid多选聚拢动画开关，实现了在GridItem上[长按弹出菜单](ts-universal-attributes-menu.md#bindcontextmenu8)时聚拢显示范围内被选中的GridItem。
+
+从API version 23开始，Grid组件新增[编辑模式选项](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
+
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+```ts
+// xxx.ets
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource(['1', '2', '3', '4', '5', '6', '7', '8', '9']);
+  @State isSelected: boolean[] = [];
+  selectedCount: number = 0;
+
+  @Styles
+  normalStyles(): void {
+    .opacity(1.0)
+  }
+
+  @Styles
+  selectStyles(): void {
+    .opacity(0.4)
+  }
+
+  onPageShow(): void {
+    let i: number = 0;
+    for (i = 0; i < 9; i++) {
+      this.isSelected.push(false);
+    }
+  }
+
+  @Builder
+  MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Text('menu item 1')
+        .fontSize(18)
+        .width(120)
+        .height(50)
+        .textAlign(TextAlign.Center)
+      Divider().height(10)
+      Text('menu item 2')
+        .fontSize(18)
+        .width(120)
+        .height(50)
+        .textAlign(TextAlign.Center)
+    }.width(100)
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Text('Grid')
+      Grid() {
+        LazyForEach(this.numbers, (day: string, index: number) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .selected(this.isSelected[index])
+          // 设置多选显示效果
+          .stateStyles({
+            normal: this.normalStyles,
+            selected: this.selectStyles
+          })
+          .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
+            { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
+          .onClick(() => {
+            this.isSelected[index] = !this.isSelected[index];
+            console.info(`item:${index}, this.isSelected[item]:${this.isSelected[index]}`)
+            if (this.isSelected[index]) {
+              ++this.selectedCount;
+            } else {
+              --this.selectedCount;
+            }
+          })
+        }, (day: string) => day)
+      }
+      .editModeOptions({
+        enableGatherSelectedItemsAnimation: true, onGetPreviewBadge: () => {
+          return this.selectedCount;
+        }
+      })
+      .columnsTemplate('1fr 1fr 1fr')
+      .rowsTemplate('1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .width('90%')
+      .backgroundColor(0xFAEEE0)
+      .height(300)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+![gridMultiselectAnimation](figures/gridMultiselectAnimation.gif)

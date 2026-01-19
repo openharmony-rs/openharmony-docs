@@ -10,8 +10,7 @@ Stabilization 继承自 [StabilizationQuery](arkts-apis-camera-StabilizationQuer
 
 提供设备在录像模式下设置视频防抖的操作。
 
-需要会话中有录像流（[VideoOutput](arkts-apis-camera-VideoOutput.md)）的前提下，才可以对视频进行防抖设置，
-其中[VideoStabilizationMode](arkts-apis-camera-e.md#videostabilizationmode)中的枚举HIGH需要在[Profile](arkts-apis-camera-i.md#profile)的分辨率为1920*1080的场景下生效。
+需要会话中有录像流（[VideoOutput](arkts-apis-camera-VideoOutput.md)）的前提下，才可以对视频进行防抖设置，其中[VideoStabilizationMode](arkts-apis-camera-e.md#videostabilizationmode)中的枚举HIGH需要在[Profile](arkts-apis-camera-i.md#profile)的分辨率为1920*1080的场景下生效。
 
 > **说明：**
 >

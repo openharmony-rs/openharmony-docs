@@ -1,4 +1,4 @@
-# Introduction to Background Tasks Kit
+# About This Kit
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->

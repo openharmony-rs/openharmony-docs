@@ -12,6 +12,7 @@ VPN 管理模块，支持 VPN 的启动和停止功能。
 本模块是操作系统提供的内置VPN功能，允许用户通过系统的网络设置进行VPN连接，通常提供的功能较少，而且有比较严格的限制。
 
 > **说明：**
+>
 > 本模块首批接口从 API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 本模块为系统接口。
 
@@ -294,9 +295,9 @@ struct Index {
       timeout: 6000
     }
     tcp.connect(addressConnect);
-    tcp.getSocketFd().then((tunnelfd: number) => {
-      console.info("tunenlfd: " + tunnelfd);
-      this.VpnConnection.protect(tunnelfd, (error: BusinessError) => {
+    tcp.getSocketFd().then((tunnelFd: number) => {
+      console.info("tunenlfd: " + tunnelFd);
+      this.VpnConnection.protect(tunnelFd, (error: BusinessError) => {
         console.error(JSON.stringify(error));
       });
     });
@@ -375,9 +376,9 @@ struct Index {
       timeout: 6000
     }
     tcp.connect(addressConnect);
-    tcp.getSocketFd().then((tunnelfd: number) => {
-      console.info("tunenlfd: " + tunnelfd);
-      this.VpnConnection.protect(tunnelfd).then(() => {
+    tcp.getSocketFd().then((tunnelFd: number) => {
+      console.info("tunenlfd: " + tunnelFd);
+      this.VpnConnection.protect(tunnelFd).then(() => {
         console.info("protect success.");
       }).catch((err: BusinessError) => {
         console.error("protect fail" + JSON.stringify(err));
@@ -510,6 +511,7 @@ VPN 配置参数。
 
 | 名称                | 类型                                                           | 只读 |可选| 说明                                |
 | ------------------- | -------------------------------------------------------------- | ---- | ---|----------------------------------- |
+| vpnId<sup>20+</sup>           | string | 否   |是| VPN唯一标识。            |
 | addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\> | 否   |否| VPN虚拟网卡的 IP 地址。            |
 | routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>     | 否   |是 | VPN虚拟网卡的路由信息。            |
 | dnsAddresses        | Array\<string\>                                                | 否   |是 | DNS服务器地址信息。                |

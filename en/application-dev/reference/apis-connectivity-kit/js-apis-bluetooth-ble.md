@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-The **ble** module provides [Bluetooth Low Energy (BLE)](../../connectivity/terminology.md#ble) capabilities, including BLE scan, BLE advertising, and [Generic Attribute Profile (GATT)](../../connectivity/terminology.md#ble)-based connection and data transmission.
+The **ble** module provides [Bluetooth Low Energy (BLE)](../../connectivity/terminology.md#ble) capabilities, including BLE scan, BLE advertising, and [Generic Attribute Profile (GATT)](../../connectivity/terminology.md#gatt)-based connection and data transmission.
 
 > **NOTE**
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -66,7 +66,7 @@ console.info('gatt success');
 
 createGattClientDevice(deviceId: string): GattClientDevice
 
-Creates a [GattClientDevice] instance, which represents the client in a GATT connection.
+Creates a [GattClientDevice](#gattclientdevice) instance, which represents the client in a GATT connection.
 - You can use this instance to operate the client, for example, call [connect](#connect) to initiate a connection to the peer device and call [getServices](#getservices) to obtain all service capabilities supported by the peer device.
 - This API requires the device address of the server. You can obtain the device address of the server by calling [ble.startBLEScan](#blestartblescan) or [startScan](#startscan15) of [BleScanner](#blescanner15). Ensure that the BLE advertising of the server is enabled.
 
@@ -264,8 +264,8 @@ stopBLEScan(): void
 
 Stops BLE scanning.
 - You can call [ble.startBLEScan](#blestartblescan) to stop the BLE scan.
-- Call this API to stop the Bluetooth scan if device discovery is no longer needed.
-- Scan results will not be reported after this API is called. You need to start a Bluetooth scan again for device discovery.
+- Call this API to stop the scanning if BLE device scanning is no longer needed.
+- Scan results will not be reported after this API is called. You need to start a BLE device scan again for device discovery.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1581,7 +1581,7 @@ Obtains the service capabilities of a specified server.
 
 | Name        | Type    | Mandatory  | Description                                      |
 | ----------- | ------ | ---- | ---------------------------------------- |
-| serviceUuid | string | Yes   | UUID of the service to be obtained. for example, 00001810-0000-1000-8000-00805F9B34FB.|
+| serviceUuid | string | Yes   | UUID of the service to be obtained, for example, 00001810-0000-1000-8000-00805F9B34FB.|
 
 **Return value**
 
@@ -2292,7 +2292,7 @@ gattServer.off('descriptorWrite');
 
 on(type: 'connectionStateChange', callback: Callback&lt;BLEConnectionChangeState&gt;): void
 
-Subscribes to GATT connection state change events on the server. This API uses an asynchronous callback to return the result.
+Subscribes to GATT profile connection state change events on the server. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -2339,7 +2339,7 @@ try {
 
 off(type: 'connectionStateChange', callback?: Callback&lt;BLEConnectionChangeState&gt;): void
 
-Unsubscribes from GATT connection state change events on the server.
+Unsubscribes from GATT profile connection state change events on the server.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -2472,7 +2472,7 @@ Obtains the current connection status with the client device.
 
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| deviceId     | string | Yes   | Address of the peer Bluetooth device whose connection status is to be queried. for example, XX:XX:XX:XX:XX:XX.|
+| deviceId     | string | Yes   | Address of the peer Bluetooth device whose connection status is to be queried. Example: XX:XX:XX:XX:XX:XX|
 
 **Return value**
 
@@ -2872,7 +2872,7 @@ readCharacteristicValue(characteristic: BLECharacteristic, callback: AsyncCallba
 Reads the value of the specified characteristic. This API uses an asynchronous callback to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included. Otherwise, the read operation will fail.<br>
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
-- During characteristic reading, ensure that the **serviceUuid** and **characteristicUuid** in **BLECharacteristic** are correct. The data length of **characteristicValue** can be customized, which does not affect the actually read characteristic value.
+- During characteristic reading, ensure that the **serviceUuid** and **characteristicUuid** in **[BLECharacteristic](#blecharacteristic)** are correct. The data length of **characteristicValue** can be customized, which does not affect the actually read characteristic value.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -2951,7 +2951,7 @@ readCharacteristicValue(characteristic: BLECharacteristic): Promise&lt;BLECharac
 Reads the value of the specified characteristic. This API uses a promise to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included. Otherwise, the read operation will fail.<br>
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
-- During characteristic reading, ensure that the **serviceUuid** and **characteristicUuid** in **BLECharacteristic** are correct. The data length of **characteristicValue** can be customized, which does not affect the actually read characteristic value.
+- During characteristic reading, ensure that the **serviceUuid** and **characteristicUuid** in **[BLECharacteristic](#blecharacteristic)** are correct. The data length of **characteristicValue** can be customized, which does not affect the actually read characteristic value.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3026,7 +3026,7 @@ readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback&lt;BLEDes
 Reads data from the specified descriptor. This API uses an asynchronous callback to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified descriptor is included. Otherwise, the read operation will fail.<br>
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
-- During descriptor reading, ensure that the **serviceUuid**, **characteristicUuid**, and **descriptorUuid** of **BLEDescriptor** are correct. The data length of **descriptorValue** can be customized, which does not affect the actually read descriptor value.
+- During descriptor reading, ensure that the **serviceUuid**, **characteristicUuid**, and **descriptorUuid** of **[BLEDescriptor](#bledescriptor)** are correct. The data length of **descriptorValue** can be customized, which does not affect the actually read descriptor value.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3098,7 +3098,7 @@ readDescriptorValue(descriptor: BLEDescriptor): Promise&lt;BLEDescriptor&gt;
 Reads data from the specified descriptor. This API uses a promise to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified descriptor is included. Otherwise, the read operation will fail.<br>
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
-- During descriptor reading, ensure that the **serviceUuid**, **characteristicUuid**, and **descriptorUuid** of **BLEDescriptor** are correct. The data length of **descriptorValue** can be customized, which does not affect the actually read descriptor value.
+- During descriptor reading, ensure that the **serviceUuid**, **characteristicUuid**, and **descriptorUuid** of **[BLEDescriptor](#bledescriptor)** are correct. The data length of **descriptorValue** can be customized, which does not affect the actually read descriptor value.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -4188,7 +4188,7 @@ let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:X
 try {
     gattClient.on('serviceChange', ServiceChangedEvent);
 } catch (err) {
-    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
 ```
 
@@ -4233,7 +4233,7 @@ let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:X
 try {
     gattClient.off('serviceChange', ServiceChangedEvent);
 } catch (err) {
-    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
 ```
 
@@ -4283,7 +4283,7 @@ try {
 
 updateConnectionParam(param: ConnectionParam): Promise&lt;void&gt;
 
-Initiates a connection parameter update request to the peer device. After this API is successfully called, the data transmission speed with the peer device can be switched.
+Initiates a connection parameter update request to the peer device. After this API is successfully called, the data transmission speed with the peer device can be switched. This API uses a promise to return the result.
 - You can call this API only after the GATT profile is connected by calling [connect](#connect).
 - If this API is not called, the default connection parameter type is [ble.ConnectionParam.BALANCED](#connectionparam22).
 
@@ -4437,7 +4437,7 @@ stopScan(): Promise&lt;void&gt;
 
 Stops an ongoing BLE scan. This API uses a promise to return the result.<br>
 - This API works for a scan initiated by calling [startScan](#startscan15).<br>
-- Call this API to stop the Bluetooth scan if device discovery is no longer needed.
+- Call this API to stop the scanning if BLE device scanning is no longer needed.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -4573,7 +4573,7 @@ try {
 
 ## GattService
 
-Defines the structure of GATT service, which can contain multiple [characteristics](#blecharacteristic) and other dependent services.
+Defines the structure of GATT service, which can contain multiple [BLECharacteristics](#blecharacteristic) and other dependent services.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4581,7 +4581,7 @@ Defines the structure of GATT service, which can contain multiple [characteristi
 
 | Name             | Type                                    | Read-Only| Optional  | Description                                      |
 | --------------- | ---------------------------------------- |---- | ---- | ---------------------------------------- |
-| serviceUuid     | string                                   | No| No   | UUID of the GATT service. for example, 00001888-0000-1000-8000-00805f9b34fb.|
+| serviceUuid     | string                                   | No| No   | UUID of the GATT service, for example, 00001888-0000-1000-8000-00805f9b34fb.|
 | isPrimary       | boolean                                  | No| No   | Whether the service is a primary service. The value **true** indicates that the service is a primary service, and the value **false** indicates the opposite.               |
 | characteristics | Array&lt;[BLECharacteristic](#blecharacteristic)&gt; | No| No   | Characteristics of the GATT service.                            |
 | includeServices | Array&lt;[GattService](#gattservice)&gt; | No| Yes   | Services on which the service depends.                            |
@@ -4596,12 +4596,12 @@ Defines the structure of GATT characteristic, which is the core data unit of [Ga
 
 | Name                 | Type                                    | Read-Only| Optional  | Description                                |
 | ------------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid         | string                                   | No| No   | Service UUID of the characteristic. for example, 00001888-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| characteristicUuid  | string                  | No| No   | Characteristic UUID. for example, 00002a11-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceUuid         | string                                   | No| No   | Service UUID of the characteristic, for example, 00001888-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| characteristicUuid  | string                  | No| No   | Characteristic UUID, for example, 00002a11-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | characteristicValue | ArrayBuffer                              | No| No   | Characteristic value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                     |
 | descriptors         | Array&lt;[BLEDescriptor](#bledescriptor)&gt; | No| No   | Descriptors contained in the characteristic.<br>**Atomic service API**: This API can be used in atomic services since API version 12.               |
 | properties  | [GattProperties](#gattproperties) | No| Yes    | Properties supported by the characteristic.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
-| characteristicValueHandle<sup>18+</sup> | number                           | No   | Yes   | Unique handle of the characteristic. It can be used to distinguish descriptors if the BLE device that serves as the server provides multiple descriptors with the same UUID.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                     |
+| characteristicValueHandle<sup>18+</sup> | number                           | No   | Yes   | Unique handle of the characteristic. It can be used to distinguish characteristics if the BLE device that serves as the server provides multiple characteristics with the same UUID.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                     |
 | permissions<sup>20+</sup> | [GattPermissions](#gattpermissions20)   | No   | Yes   | Permissions required for characteristic read and write operations.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                 |
 
 
@@ -4613,9 +4613,9 @@ Defines the structure of GATT descriptor, which is the data unit of [BLECharacte
 
 | Name                | Type       | Read-Only| Optional  | Description                                      |
 | ------------------ | ----------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid        | string      | No| No   | Service UUID of the characteristic. for example, 00001888-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| characteristicUuid | string      | No| No   | Characteristic UUID of the descriptor. for example, 00002a11-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| descriptorUuid     | string      | No| No   | Descriptor UUID. for example, 00002902-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceUuid        | string      | No| No   | Service UUID of the characteristic, for example, 00001888-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| characteristicUuid | string      | No| No   | Characteristic UUID of the descriptor, for example, 00002a11-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| descriptorUuid     | string      | No| No   | Descriptor UUID, for example, 00002902-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | descriptorValue    | ArrayBuffer | No| No   | Descriptor value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                             |
 | descriptorHandle<sup>18+</sup> | number        | No   | Yes   | Unique handle of the descriptor. It can be used to distinguish descriptors if the BLE device that serves as the server provides multiple descriptors with the same UUID.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                     |
 | permissions<sup>20+</sup> | [GattPermissions](#gattpermissions20)       | No   | Yes   | Permissions required for descriptor read and write operations.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                 |
@@ -4631,8 +4631,8 @@ Defines the structure of characteristic notification.
 
 | Name                 | Type       | Read-Only| Optional  | Description                                      |
 | ------------------- | ----------- | ---- | ---- | ---------------------------------------- |
-| serviceUuid         | string      | No| No   | Service UUID of the characteristic. for example, 00001888-0000-1000-8000-00805f9b34fb.|
-| characteristicUuid  | string      | No| No   | Characteristic UUID. for example, 00002a11-0000-1000-8000-00805f9b34fb.|
+| serviceUuid         | string      | No| No   | Service UUID of the characteristic, for example, 00001888-0000-1000-8000-00805f9b34fb.|
+| characteristicUuid  | string      | No| No   | Characteristic UUID, for example, 00002a11-0000-1000-8000-00805f9b34fb.|
 | characteristicValue | ArrayBuffer | No| No   | Characteristic value.                              |
 | confirm             | boolean     | No| No   | Whether confirmation is required. The value **true** indicates that confirmation is required for an indication, and the value **false** indicates that confirmation is not required for a notification.|
 
@@ -4647,11 +4647,11 @@ Defines the structure of characteristic read request sent from the client.
 
 | Name                | Type  | Read-Only| Optional  | Description                                      |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| deviceId           | string | No| No   | Bluetooth device address of the client. for example, XX:XX:XX:XX:XX:XX.|
+| deviceId           | string | No| No   | Bluetooth device address of the client. Example: XX:XX:XX:XX:XX:XX|
 | transId            | number | No| No   | Transaction identifier of the characteristic read request. It must be the same as the **transId** in the response returned by the server.      |
 | offset             | number | No| No   | Read offset of the client. For example, **k** indicates that the read starts from the kth byte.<br>It must be the same as the **offset** in the response returned by the server.|
-| characteristicUuid | string | No| No   | Characteristic UUID. for example, 00002a11-0000-1000-8000-00805f9b34fb.|
-| serviceUuid        | string | No| No   | Service UUID of the characteristic. for example, 00001888-0000-1000-8000-00805f9b34fb.|
+| characteristicUuid | string | No| No   | Characteristic UUID, for example, 00002a11-0000-1000-8000-00805f9b34fb.|
+| serviceUuid        | string | No| No   | Service UUID of the characteristic, for example, 00001888-0000-1000-8000-00805f9b34fb.|
 
 
 ## CharacteristicWriteRequest
@@ -4664,14 +4664,14 @@ Defines the structure of characteristic write request sent from the client.
 
 | Name                | Type  | Read-Only| Optional  | Description                                      |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| deviceId           | string | No| No   | Bluetooth device address of the client. for example, XX:XX:XX:XX:XX:XX.|
+| deviceId           | string | No| No   | Bluetooth device address of the client. Example: XX:XX:XX:XX:XX:XX|
 | transId            | number | No| No   | Transaction identifier of the characteristic write request. It must be the same as the **transId** in the response returned by the server.      |
 | offset             | number | No| No   | Write offset of the client. For example, **k** indicates that the write starts from the kth byte.<br>It must be the same as the **offset** in the response returned by the server.|
 | isPrepared             | boolean | No| No   | Whether to respond immediately after receiving a write request from the client.<br>The value **true** means to respond at a later time, and the value **false** means to respond immediately.|
 | needRsp             | boolean | No| No   | Whether to respond to the client.<br>The value **true** means to respond to the client, and the value **false** means to respond immediately.|
 | value             | ArrayBuffer | No| No   | Characteristic value to write.|
-| characteristicUuid | string | No| No   | Characteristic UUID. for example, 00002a11-0000-1000-8000-00805f9b34fb.|
-| serviceUuid        | string | No| No   | Service UUID of the characteristic. for example, 00001888-0000-1000-8000-00805f9b34fb.|
+| characteristicUuid | string | No| No   | Characteristic UUID, for example, 00002a11-0000-1000-8000-00805f9b34fb.|
+| serviceUuid        | string | No| No   | Service UUID of the characteristic, for example, 00001888-0000-1000-8000-00805f9b34fb.|
 
 
 ## DescriptorReadRequest
@@ -4684,12 +4684,12 @@ Defines the structure of descriptor read request sent from the client.
 
 | Name                | Type  | Read-Only| Optional  | Description                                      |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| deviceId           | string | No| No   | Bluetooth device address of the client. for example, XX:XX:XX:XX:XX:XX.|
+| deviceId           | string | No| No   | Bluetooth device address of the client. Example: XX:XX:XX:XX:XX:XX|
 | transId            | number | No| No   | Transaction identifier of the characteristic read request. It must be the same as the **transId** in the response returned by the server.      |
 | offset             | number | No| No   | Read offset of the client. For example, **k** indicates that the read starts from the kth byte.<br>It must be the same as the **offset** in the response returned by the server.|
-| descriptorUuid     | string | No| No   | Descriptor UUID. for example, 00002902-0000-1000-8000-00805f9b34fb.|
-| characteristicUuid | string | No| No   | Characteristic UUID of the descriptor. for example, 00002a11-0000-1000-8000-00805f9b34fb.|
-| serviceUuid        | string | No| No   | Service UUID of the characteristic. for example, 00001888-0000-1000-8000-00805f9b34fb.|
+| descriptorUuid     | string | No| No   | Descriptor UUID, for example, 00002902-0000-1000-8000-00805f9b34fb.|
+| characteristicUuid | string | No| No   | Characteristic UUID of the descriptor, for example, 00002a11-0000-1000-8000-00805f9b34fb.|
+| serviceUuid        | string | No| No   | Service UUID of the characteristic, for example, 00001888-0000-1000-8000-00805f9b34fb.|
 
 
 ## DescriptorWriteRequest
@@ -4702,15 +4702,15 @@ Defines the structure of descriptor write request sent from the client.
 
 | Name                | Type       | Read-Only| Optional  | Description                                      |
 | ------------------ | ----------- | ---- | ---- | ---------------------------------------- |
-| deviceId           | string      | No| No   | Bluetooth device address of the client. for example, XX:XX:XX:XX:XX:XX.|
+| deviceId           | string      | No| No   | Bluetooth device address of the client. Example: XX:XX:XX:XX:XX:XX|
 | transId            | number      | No| No   | Transaction identifier of the characteristic write request. It must be the same as the **transId** in the response returned by the server.      |
 | offset             | number      | No| No   | Write offset of the client. For example, **k** indicates that the write starts from the kth byte.<br>It must be the same as the **offset** in the response returned by the server.|
 | isPrepared         | boolean     | No| No   | Whether to respond immediately after receiving a write request from the client.<br>The value **true** means to respond at a later time, and the value **false** means to respond immediately.                            |
 | needRsp            | boolean     | No| No   | Whether to respond to the client.<br>The value **true** means to respond to the client, and the value **false** means to respond immediately.                      |
 | value              | ArrayBuffer | No| No   | Descriptor value to write.                          |
-| descriptorUuid     | string      | No| No   | Descriptor UUID. for example, 00002902-0000-1000-8000-00805f9b34fb.|
-| characteristicUuid | string      | No| No   | Characteristic UUID of the descriptor. for example, 00002a11-0000-1000-8000-00805f9b34fb.|
-| serviceUuid        | string      | No| No   | Service UUID of the characteristic. for example, 00001888-0000-1000-8000-00805f9b34fb.|
+| descriptorUuid     | string      | No| No   | Descriptor UUID, for example, 00002902-0000-1000-8000-00805f9b34fb.|
+| characteristicUuid | string      | No| No   | Characteristic UUID of the descriptor, for example, 00002a11-0000-1000-8000-00805f9b34fb.|
+| serviceUuid        | string      | No| No   | Service UUID of the characteristic, for example, 00001888-0000-1000-8000-00805f9b34fb.|
 
 
 ## ServerResponse
@@ -4723,7 +4723,7 @@ Defines the structure of server response to a read/write request from the client
 
 | Name      | Type       | Read-Only| Optional  | Description                                    |
 | -------- | ----------- | ---- |  ---- | -------------------------------------- |
-| deviceId | string      | No| No   | Bluetooth device address of the client. for example, XX:XX:XX:XX:XX:XX.      |
+| deviceId | string      | No| No   | Bluetooth device address of the client. Example: XX:XX:XX:XX:XX:XX      |
 | transId  | number      | No| No   | Transaction identifier of the read/write request. It must be the same as the **transId** in the response returned by the server.       |
 | status   | number      | No| No   | Response state. Set this parameter to **0**, which indicates a normal response.                  |
 | offset   | number      | No| No   | Read/write offset. It must be the same as the **offset** in the read/write request sent from the client.|
@@ -4738,7 +4738,7 @@ Defines the connection status of the GATT profile.
 
 | Name    | Type                                         | Read-Only| Optional| Description                                         |
 | -------- | ------------------------------------------------- | ---- | ---- | --------------------------------------------- |
-| deviceId | string                                            | No| No  | Peer Bluetooth device address. for example, XX:XX:XX:XX:XX:XX.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| deviceId | string                                            | No| No  | Peer Bluetooth device address. Example: XX:XX:XX:XX:XX:XX<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | No| No  | Connection status of the GATT profile.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | reason<sup>20+</sup>    | [GattDisconnectReason](#gattdisconnectreason20) | No| Yes  | Reason why the GATT connection is disconnected. This parameter is available only when the connection status is [STATE_DISCONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate). Otherwise, the default value **undefined** is used.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 
@@ -4751,7 +4751,7 @@ Defines the scan result to be reported upon scanning advertising packets that me
 
 | Name      | Type       | Read-Only| Optional  | Description                                |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
-| deviceId | string      | No| No   | Bluetooth device address. for example, XX:XX:XX:XX:XX:XX.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| deviceId | string      | No| No   | Bluetooth device address. Example: XX:XX:XX:XX:XX:XX<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | rssi     | number      | No| No   | Signal strength, in dBm.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | data     | ArrayBuffer | No| No   | Raw unresolved broadcast packets sent by the discovered device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | deviceName | string | No| No   | Name of the discovered device, which is parsed from the data field of the raw data. The broadcast data type in the Bluetooth protocol is 0x09.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -4805,7 +4805,7 @@ Defines the parameters for initial BLE advertising.
 | advertisingSettings<sup>11+</sup> | [AdvertiseSetting](#advertisesetting) | No| No   | Advertising settings.   |
 | advertisingData<sup>11+</sup>    | [AdvertiseData](#advertisedata) | No| No   | Advertising data.     |
 | advertisingResponse<sup>11+</sup> | [AdvertiseData](#advertisedata) | No| Yes   | Advertising response.|
-| duration<sup>11+</sup>    | number   | No| Yes   | Advertising duration. The value range is [1,65535], in 10 ms.<br>If this parameter is not specified or set to **0**, advertising packets are sent continuously.   |
+| duration<sup>11+</sup>    | number   | No| Yes   | Advertising duration. The value range is [1, 65535], in 10 ms.<br>If this parameter is not specified or set to **0**, advertising packets are sent continuously.   |
 
 ## AdvertisingEnableParams<sup>11+</sup>
 
@@ -4816,7 +4816,7 @@ Defines the parameters for enabling BLE advertising.
 | Name               | Type                  | Read-Only| Optional | Description                     |
 | ------------------- | --------------------- | ----- | ----- | ------------------------ |
 | advertisingId       | number                | No| No   | Advertising ID.    |
-| duration            | number                | No| Yes   | Advertising duration. The value range is [1,65535], in 10 ms.<br>If this parameter is not specified or set to **0**, advertising packets are sent continuously.  |
+| duration            | number                | No| Yes   | Advertising duration. The value range is [1, 65535], in 10 ms.<br>If this parameter is not specified or set to **0**, advertising packets are sent continuously.  |
 
 ## AdvertisingDisableParams<sup>11+</sup>
 
@@ -4871,23 +4871,22 @@ Represents the service data in the BLE advertising packet data.
 
 Defines the scan filters for BLE advertising packet data. Only advertising packets that meet the filter criteria are reported.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 | Name                                    | Type   | Read-Only| Optional | Description                                                        |
 | ------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
-| deviceId                                 | string      | No| Yes   | BLE device address. for example, XX:XX:XX:XX:XX:XX.          |
-| name                                     | string      | No| Yes   | BLE device name.                                       |
-| serviceUuid                              | string      | No| Yes   | Service UUID. for example, 00001888-0000-1000-8000-00805f9b34fb.|
-| serviceUuidMask             | string      | No| Yes    | Service UUID mask. This parameter can be used with **serviceUuid** to filter specific service UUIDs. for example, FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF.|
-| serviceSolicitationUuid     | string      | No| Yes    | Service solicitation UUID. for example, 00001888-0000-1000-8000-00805F9B34FB.|
-| serviceSolicitationUuidMask | string      | No| Yes    | Service solicitation UUID mask. This parameter can be used with **serviceSolicitationUuid** to filter specific service solicitation UUIDs. for example, FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF.|
-| serviceData                 | ArrayBuffer | No| Yes    | Service data. for example, [0x90,0x00,0xF1,0xF2].|
-| serviceDataMask             | ArrayBuffer | No| Yes    | Service data mask. This parameter can be used with **serviceData** to filter specific service data. for example, [0xFF,0xFF,0xFF,0xFF].|
-| manufactureId               | number      | No| Yes    | Manufacturer ID. for example, 0x0006.                |
-| manufactureData             | ArrayBuffer | No| Yes    | Manufacturer data. This parameter can be used with **manufactureId** to filter specific manufacturers. for example, [0x1F,0x2F,0x3F].|
-| manufactureDataMask         | ArrayBuffer | No| Yes    | Manufacturer data mask. This parameter can be used with **manufactureData** to filter specific manufacturer data. for example, [0xFF,0xFF,0xFF].|
+| deviceId                                 | string      | No| Yes   | BLE device address. Example: XX:XX:XX:XX:XX:XX<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| name                                     | string      | No| Yes   | BLE device name.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
+| serviceUuid                              | string      | No| Yes   | Service UUID. This parameter is usually carried in the broadcast packets of a peripheral device, indicating the service UUID supported by the peripheral device. for example, 00001888-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceUuidMask             | string      | No| Yes    | Service UUID mask. This parameter can be used with **serviceUuid** to filter specific service UUIDs. Example: FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceSolicitationUuid     | string      | No| Yes    | Service solicitation UUID. This parameter is usually carried in the broadcast packets of a central device, indicating the UUID of the service that the central device wants to search for. for example, 00001888-0000-1000-8000-00805F9B34FB.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceSolicitationUuidMask | string      | No| Yes    | Service solicitation UUID mask. This parameter can be used with **serviceSolicitationUuid** to filter specific service solicitation UUIDs. Example: FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceData                 | ArrayBuffer | No| Yes    | Service data, for example, [0x90,0x00,0xF1,0xF2].<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceDataMask             | ArrayBuffer | No| Yes    | Service data mask. This parameter can be used with **serviceData** to filter specific service data. Example: [0xFF,0xFF,0xFF,0xFF]<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| manufactureId               | number      | No| Yes    | Manufacturer ID, for example, 0x0006.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| manufactureData             | ArrayBuffer | No| Yes    | Manufacturer data. This parameter can be used with **manufactureId** to filter specific manufacturers. Example: [0x1F,0x2F,0x3F]<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| manufactureDataMask         | ArrayBuffer | No| Yes    | Manufacturer data mask. This parameter can be used with **manufactureData** to filter specific manufacturer data. Example: [0xFF,0xFF,0xFF]<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| rssiThreshold<sup>23+</sup>    | number      | No| Yes    | RSSI threshold. The value range can be [–128, 127] according to the Bluetooth protocol. You are advised to set a value in the range of [–90, 127].<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 
 ## ScanOptions
@@ -4916,8 +4915,8 @@ Describes the properties supported by a GATT characteristic. The properties dete
 | write    | boolean | No| Yes | Whether the write operation is supported.<br>The value **true** indicates that the write operation is supported and a response is required, and the value **false** indicates that the write operation is not supported. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | writeNoResponse | boolean | No| Yes  | Whether the write operation is supported.<br>The value **true** indicates that the write operation is supported without requiring a response, and the value **false** indicates that the write operation is not supported. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | read | boolean   | No|  Yes   | Whether the read operation is supported.<br>**true** if it has flash, **false** otherwise. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| notify | boolean   | No| Yes   | Whether the notification operation is supported.<br>The value **true** indicates that the notification operation is supported and a response is required, and the value **false** indicates the notification operation is not supported. false<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| indicate | boolean   | No| Yes   | Whether the indication operation is supported.<br>The value **true** indicates that the indication operation is supported without requiring a response, and the value **false** indicates the indication operation is not supported. false<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| notify | boolean   | No| Yes   | Whether the notification operation is supported.<br>The value **true** indicates that the notification operation is supported without requiring a confirmation response, and the value **false** indicates the notification operation is not supported. false<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| indicate | boolean   | No| Yes   | Whether the indication operation is supported.<br>The value **true** indicates that the indication operation is supported with requiring a confirmation response, and the value **false** indicates the indication operation is not supported. false<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | broadcast<sup>20+</sup> | boolean   | No| Yes   | Whether the characteristic can be sent by the server in advertising packets.<br>The value **true** indicates that the characteristic can be sent by the server as [ServiceData](#servicedata) in advertising packets, and the value **false** indicates the opposite. false<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | authenticatedSignedWrite<sup>20+</sup> | boolean   | No| Yes   | Whether the characteristic can be written with a signature.<br>The value **true** indicates that the characteristic can be written with a signature, and the value **false** indicates the opposite. Set this parameter to **true** if you want to replace the encryption process with signature verification. Ensure that **writeSigned** or **writeSignedMitm** in [GattPermissions](#gattpermissions20) is also set to **true**. Otherwise, this parameter does not take effect. false<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | extendedProperties<sup>20+</sup> | boolean   | No| Yes   | Whether the characteristic has extended attributes.<br>The value **true** indicates that the characteristic has extended attributes, and the value **false** indicates the opposite. false<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
@@ -5073,7 +5072,7 @@ Enumerates scan result reporting modes.
 | --------  | ---- | ------------------------------ |
 | NORMAL  | 1    | Conventional reporting mode. The BLE advertising packets that meet the filter criteria are reported immediately after being scanned.<br>**Atomic service API**: This API can be used in atomic services since API version 15.      |
 | BATCH<sup>19+</sup>  | 2    | Batch scan reporting mode.<br>- This mode reduces the frequency at which scan results are reported, enabling the system to remain in sleep mode for extended periods and thus reducing the overall power consumption of the device.<br>- In this mode, the BLE advertising packets that meet the filtering criteria are not reported immediately. Instead, they are reported after being cached for a period of time (specified by **interval** in [ScanOptions](#scanoptions)).<br>**Atomic service API**: This API can be used in atomic services since API version 19.      |
-| FENCE_SENSITIVITY_LOW<sup>18+</sup>  | 10    | Low-sensitivity geofence reporting mode.<br>- In this mode, advertising packets are reported only when the device enters or leaves the geofence.<br>- This mode is applicable when the signal strength is relatively high and advertising packets are transmitted sparsely within a short period of time.<br>- When advertising packets are detected for the first time, the device enters the geofence and reporting is triggered once.<br>- If no advertising packets are detected within the specified period of time, the device leaves the geofence and reporting is triggered once.<br>**Atomic service API**: This API can be used in atomic services since API version 18.   |
+| FENCE_SENSITIVITY_LOW<sup>18+</sup>  | 10    | Low-sensitivity geofence reporting mode.<br>- In this mode, advertising packets are reported only when the device enters or leaves the geofence.<br>- This mode is applicable when the signal strength is relatively high and advertising packets are transmitted densely within a short period of time.<br>- When advertising packets are detected for the first time, the device enters the geofence and reporting is triggered once.<br>- If no advertising packets are detected within the specified period of time, the device leaves the geofence and reporting is triggered once.<br>**Atomic service API**: This API can be used in atomic services since API version 18.   |
 | FENCE_SENSITIVITY_HIGH<sup>18+</sup>  | 11    | High-sensitivity geofence reporting mode.<br>- In this mode, advertising packets are reported only when the device enters or leaves the geofence.<br>- This mode is applicable when the signal strength is relatively low and advertising packets are transmitted sparsely within a short period of time.<br>- When advertising packets are detected for the first time, the device enters the geofence and reporting is triggered once.<br>- If no advertising packets are detected within the specified period of time, the device leaves the geofence and reporting is triggered once.<br>**Atomic service API**: This API can be used in atomic services since API version 18.   |
 
 ## ConnectionParam<sup>22+</sup>

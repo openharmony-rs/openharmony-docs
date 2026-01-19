@@ -1885,7 +1885,6 @@ try {
 | -------- | -------- | -------- | -------- | -------- |
 | appIndex | number | 否 | 否 | 表示DLP沙箱应用索引。 |
 | tokenID | number | 否 | 否 | 表示DLP沙箱应用的tokenID。 |
-| bindAppIndex<sup>23+</sup> | number | 否 | 是 | 表示被绑定的DLP沙箱应用的应用索引。 |
 
 ## DLPSandboxState
 

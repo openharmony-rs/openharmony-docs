@@ -4,15 +4,15 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
-
-> **说明：**
->
-> 该模块接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+<!--Adviser: @jinqiuheng-->
 
 选择器(Picker)是一个封装DocumentViewPicker、AudioViewPicker、PhotoViewPicker的API模块，具有选择与保存的能力。应用可以选择使用以下API来实现文件的选择和保存的功能。该类接口，需要应用在界面UIAbility中调用，否则无法拉起FilePicker应用、AudioPicker应用或PhotoPicker应用。
 
 调用本模块接口返回的URI数组，URI中的中文及非数字字母的特殊字符会被编码为对应的ASCII码并拼接到URI中。
+
+> **说明：**
+>
+> 该模块接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 导入模块
 
@@ -140,7 +140,7 @@ struct Index {
 
 select(option?: DocumentSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
-通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。接口采用Promise异步返回形式，传入可选参数DocumentSelectOptions对象，返回选择文件的URI数组。
+通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。使用Promise异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -184,7 +184,7 @@ async function example07(context: common.UIAbilityContext) { // 需确保 contex
 
 select(option: DocumentSelectOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。接口采用callback异步返回形式，传入参数DocumentSelectOptions对象，返回选择文件的URI数组。
+通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。使用callback异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -225,7 +225,7 @@ async function example08(context: common.UIAbilityContext) { // 需确保 contex
 
 select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。接口采用callback异步返回形式，返回选择文件的URI数组。
+通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。使用callback异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -264,7 +264,7 @@ async function example09(context: common.UIAbilityContext) { // 需确保 contex
 
 save(option?: DocumentSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
-通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。接口采用Promise异步返回形式，传入可选参数DocumentSaveOptions对象，返回保存文件的URI数组。
+通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。使用Promise异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -309,7 +309,7 @@ async function example10(context: common.UIAbilityContext) { // 需确保 contex
 
 save(option: DocumentSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。接口采用callback异步返回形式，传入参数DocumentSaveOptions对象，返回保存文件的URI数组。
+通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。使用callback异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -351,7 +351,7 @@ async function example11(context: common.UIAbilityContext) { // 需确保 contex
 
 save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。接口采用callback异步返回形式，返回保存文件的URI数组。
+通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。使用callback异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -509,7 +509,7 @@ let audioPicker = new picker.AudioViewPicker(); // 不推荐使用无参构造�
 
 select(option?: AudioSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
-通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。接口采用Promise异步返回形式，传入可选参数AudioSelectOptions对象，返回选择音频文件的URI数组。
+通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。使用Promise异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -553,7 +553,7 @@ async function example13(context: common.UIAbilityContext) { // 需确保 contex
 
 select(option: AudioSelectOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。接口采用callback异步返回形式，传入参数AudioSelectOptions对象，返回选择音频文件的URI数组。
+通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -592,7 +592,7 @@ async function example14(context: common.UIAbilityContext) { // 需确保 contex
 
 select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。接口采用callback异步返回形式，返回选择音频文件的URI数组。
+通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。使用callback异步回调。
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **参数：**
@@ -628,7 +628,7 @@ async function example15(context: common.UIAbilityContext) { // 需确保 contex
 
 save(option?: AudioSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
-通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。接口采用Promise异步返回形式，传入可选参数AudioSaveOptions对象，返回保存音频文件的URI数组。
+通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。使用Promise异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -673,7 +673,7 @@ async function example16(context: common.UIAbilityContext) { // 需确保 contex
 
 save(option: AudioSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。接口采用callback异步返回形式，传入参数AudioSaveOptions对象，返回保存音频文件的URI数组。
+通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -713,7 +713,7 @@ async function example17(context: common.UIAbilityContext) { // 需确保 contex
 
 save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。接口采用callback异步返回形式，返回保存音频文件的URI数组。
+通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -777,7 +777,7 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 | authMode<sup>12+</sup>    | boolean                              | 否   |  是 | 拉起授权Picker，默认为false（非授权模式）。当authMode为true时为授权模式，defaultFilePathUri必填，表明待授权URI。<br>**设备行为差异**：该参数在2in1设备中可正常使用，在其他设备中无效果。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection  |
 |multiAuthMode<sup>15+</sup>  | boolean                             |否    |  是 | 支持批量授权模式，默认为false（非批量授权模式）。当multiAuthMode为true时为批量授权模式。当multiAuthMode为true时，只有multiUriArray参数生效，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
 |multiUriArray<sup>15+</sup>  | Array&lt;string&gt;                             |否    |  是 | 传入需要批量授权的URI数组（仅支持文件，文件夹不生效）。配合multiAuthMode使用。当multiAuthMode为false时，配置该参数不生效。默认为空（效果为拉起批量授权页面后展示的文件为空）。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
-|mergeMode<sup>15+</sup>  | [MergeTypeMode](#mergetypemode15)                             |否    |  是 | 开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。<br>API version 22及之后的版本当该参数置为非DEFAULT时，仅fileSuffixFilters参数生效，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
+|mergeMode<sup>15+</sup>  | [MergeTypeMode](#mergetypemode15)                             |否    |  是 | 开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
 |isEncryptionSupported<sup>19+</sup>    | boolean |否    |  是 | 是否支持加密（仅支持文件，文件夹不生效），默认为false。该参数为true时，在Picker界面可以选择对文件进行加密。<br>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。<br> **系统能力**：SystemCapability.FileManagement.UserFileService |
 
 ## DocumentPickerMode<sup>12+</sup>
@@ -825,6 +825,7 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 | defaultFilePathUri<sup>10+</sup>    | string  | 否| 是    | 指定保存的文件或者目录的URI。默认为空。  |
 | fileSuffixChoices<sup>10+</sup>     | Array&lt;string&gt; | 否| 是    | 保存文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为要保存的后缀。没有"\|\"则没有描述，该项整体是一个保存的后缀。默认没有后缀类型。 |
 | pickerMode<sup>12+</sup>     | [DocumentPickerMode](#documentpickermode12) | 否| 是    | 拉起picker的类型, 默认为DEFAULT。当pickerMode设置为DOWNLOAD时，用户配置的参数newFileNames、defaultFilePathUri和fileSuffixChoices将不会生效。 |
+| autoCreateEmptyFile<sup>23+</sup> | boolean | 否 | 是 | 保存文件时，由应用决定是否预置空文件。默认为true，Picker会预置空文件并且返回文件的URI数组。false不预置空文件，只会返回文件的URI数组。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection |
 
 ## AudioSelectOptions
 
