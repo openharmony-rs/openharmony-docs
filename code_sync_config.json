@@ -7022,19 +7022,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp",
 				"functions":[
 					{
-						"end_line":470,
+						"end_line":482,
 						"name":"abilitycap_one_start",
 						"start_line":16
 					},
 					{
-						"end_line":251,
+						"end_line":257,
 						"name":"abilitycap_two_start",
-						"start_line":114
+						"start_line":116
 					},
 					{
-						"end_line":331,
+						"end_line":338,
 						"name":"abilitycap_three_start",
-						"start_line":279
+						"start_line":285
 					},
 					{
 						"end_line":264,
@@ -7047,7 +7047,7 @@
 						"start_line":266
 					},
 					{
-						"end_line":387,
+						"end_line":399,
 						"name":"abilitycap_six_start",
 						"start_line":36
 					},
