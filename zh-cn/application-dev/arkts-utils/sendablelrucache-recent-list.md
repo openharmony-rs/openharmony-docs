@@ -126,7 +126,8 @@
      }
    }
    ```
-   ```json
+   
+   ``` json
    // main_pages.json
 
    {
