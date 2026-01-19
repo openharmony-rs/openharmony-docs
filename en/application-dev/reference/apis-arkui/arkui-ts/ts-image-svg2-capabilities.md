@@ -12,7 +12,7 @@ In API version 21 and later, when the [supportSvg2](./ts-basic-components-image.
 
 - Advanced affine transformation support: configurable global pivot points, local rotation centers for **rotate** transformations, matrix transformation modes, invalid value detection and handling, affine transformations in clipping paths, and combined transformation scenarios.
 
-- Extended parsing features: (1) The **viewBox** attribute supports configuration of alignment and scaling rules. (2) Unit parsing is available for clipping paths, gradients, masks, mask content, patterns, pattern content, filters, and primitives.
+- Extended parsing capabilities: [viewBox](./ts-image-svg2-capabilities.md#configurable-alignment-and-scaling-rules-for-viewbox) attributes allow users to customize alignment and scaling rules; parsing of clipping path units; parsing of gradient units; parsing of mask units and mask content units; parsing of pattern units and pattern content units; parsing of filter units and primitive units.
 
 - Enhanced display effects: (1) The opacity attribute of the **\<g>** (group) element takes effect for all nested child elements in the group. (2) The following features are enhanced: processing for the **clip-path** rule in **\<g>** tags, tiling effects and offset value processing for pattern elements, and translation and scaling effects for linear and radial gradients; (3) The default behavior for abnormal mask and filter parameters is updated.
 
@@ -23,14 +23,14 @@ The following table describes the SVG elements and attributes affected when enha
 | Element          | Attribute                                                        | Description                                                        |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clipPath       | clipPathUnits                                                | **clipPathUnits**: defines the coordinate system reference for the clipping path.<br>Values:<br>**userSpaceOnUse** (absolute coordinate system) and **objectBoundingBox** (coordinate system relative to the bounding box of the applied element).|
-| filter         | filterUnits<br>primitiveUnits<br>x<br>y<br>width<br>height | **filterUnits**: coordinate and size reference for the filter effect area.<br>**primitiveUnits**: coordinate and size reference for filter primitive elements.<br>Values of **filterUnits** and **primitiveUnits**:<br>**userSpaceOnUse** (absolute coordinate system) and **objectBoundingBox** (coordinate system relative to the bounding box of the applied element).<br>**x**: x-axis offset component of the filter area. The default value is **-10%**.<br>**y**: y-axis offset component of the filter area. The default value is **-10%**.<br>**width**: width of the filter area. The default value is **120%**.<br>**height**: height of the filter area. The default value is **120%**.|
-| mask           | maskUnits<br>maskContentUnits<br>x<br>y<br>width<br>height | **maskUnits**: coordinate system and rendering mode for the mask.<br>**maskContentUnits**: coordinate system and rendering mode for elements within the mask.<br>Values of **maskUnits** and **maskContentUnits**:<br>**userSpaceOnUse** (absolute coordinate system) and **objectBoundingBox** (coordinate system relative to the bounding box of the applied element).<br>**x**: x-axis offset component of the mask area. The default value is **-10%**.<br>**y**: y-axis offset component of the mask area. The default value is **-10%**.<br>**width**: width of the mask area. The default value is **120%**.<br>**height**: height of the mask area. The default value is **120%**.|
+| filter         | filterUnits<br>primitiveUnits<br>x<br>y<br>width<br>height | **filterUnits**: coordinate and size reference for the filter effect area.<br>**primitiveUnits**: coordinate and size reference for filter primitive elements.<br>Values of **filterUnits** and **primitiveUnits**:<br>**userSpaceOnUse** (absolute coordinate system) and **objectBoundingBox** (coordinate system relative to the bounding box of the applied element).<br>**x**: x-axis offset component of the filter area. The default value is **-10%**.<br>**y**: y-axis offset component of the filter area. The default value is **-10%**.<br>**width**: width of the filter area. The default value is **120%**.<br>**height**: height of the filter area. The default value is **120%**. |
+| mask           | maskUnits<br>maskContentUnits<br>x<br>y<br>width<br>height | **maskUnits**: coordinate system and rendering mode for the mask.<br>**maskContentUnits**: coordinate system and rendering mode for elements within the mask.<br>Values of **maskUnits** and **maskContentUnits**:<br>**userSpaceOnUse** (absolute coordinate system) and **objectBoundingBox** (coordinate system relative to the bounding box of the applied element).<br>**x**: x-axis offset component of the mask area. The default value is **-10%**.<br>**y**: y-axis offset component of the mask area. The default value is **-10%**.<br>**width**: width of the mask area. The default value is **120%**.<br>**height**: height of the mask area. The default value is **120%**. |
 | radialGradient | gradientUnits                                                | **gradientUnits**: coordinate reference system for the gradient.<br>Values:<br>**userSpaceOnUse** (absolute coordinate system) and **objectBoundingBox** (coordinate system relative to the bounding box of the applied element).|
 | linearGradient | gradientUnits                                                | **gradientUnits**: coordinate reference system for the gradient.<br>Values:<br>**userSpaceOnUse** (absolute coordinate system) and **objectBoundingBox** (coordinate system relative to the bounding box of the applied element).|
 | pattern        | patternUnits<br>patternContentUnits                        | **patternUnits**: coordinate system and scaling for the **\<pattern>** element.<br>**patternContentUnits**: coordinate system and scaling for elements within the pattern.<br>Values of **patternUnits** and **patternContentUnits**:<br>**userSpaceOnUse** (absolute coordinate system) and **objectBoundingBox** (coordinate system relative to the bounding box of the applied element).|
 | g              | opacity<br>clip-path                                       | **opacity**: applies to all child elements within the group.<br>**clip-path**: applies to all child elements within the group.|
 | General          | transform                                                    | Performs 2D transformations (such as translation, rotation, scaling, and skewing) on SVG elements.<br>translate(x, y): translates an element along the x- or y-axis. ‌<br>rotate(angle, [cx], [cy]): rotates an element. (The optional parameters specify the rotation center.)<br> scale(sx, [sy]): scales an element. (When there is only one parameter, the element is scaled proportionally on the x- or y-axis.)<br> skewX(angle)/skewY(angle): skews an element along the x- or y-axis. ‌<br>matrix(a, b, c, d, e, f): defines complex transformations through a matrix.|
-| General          | transform-origin                                             | Defines the transformation reference point. Must be used together with the **transform** attribute.<br>When **transform-origin** is configured, the specified (x, y) offset serves as the center point for affine transformations.|
+| General          | transform-origin                                             | Defines the transformation reference point. This attribute must be used with the [transform](./ts-universal-attributes-transformation.md#transform) attribute.<br>When **transform-origin** is configured, the specified (x, y) offset serves as the center point for affine transformations.|
 
 ## Improved SVG Usability
 
@@ -42,7 +42,7 @@ When SVG image sources use hexadecimal color formats, the default parsing has ch
 
 >**NOTE**
 >
->The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
+>The final display of SVG images is affected by the value of the objectFit parameter of the Image component. To ensure that SVG images are completely and correctly displayed, 'objectFit(ImageFit.Contain)' is configured for the images in this document. You need to correctly configure the [objectFit](../../apis-media-library-kit/ohos-multimedia-movingphotoview.md#objectfit) parameter based on the actual display effect.
 
 8-digit hexadecimal color example:
 
@@ -54,7 +54,7 @@ When SVG image sources use hexadecimal color formats, the default parsing has ch
 
 | Before Enhancement                                               | After Enhancement                                               |
 | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| Parsed as #ARGB.<br>Display effect of the rectangle with **fill="#ff000030"**<br> ![Before](figures/8hex_color_before.PNG)| Parsed as #RGBA.<br>Display effect of the rectangle with fill="#ff000030"<br>![After](figures/8hex_color_after.PNG)|
+| Parsed as #ARGB.<br>Example: display effect of the rectangle with **fill="#ff000030"**<br> ![Before](figures/8hex_color_before.PNG)| Parsed as #RGBA.<br>Example: display effect of the rectangle with **fill="#ff000030"**<br>![After](figures/8hex_color_after.PNG)|
 
 7-digit hexadecimal color example:
 
@@ -72,13 +72,13 @@ When SVG image sources use hexadecimal color formats, the default parsing has ch
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="180" height="80" fill="#8888" />
+        <rect x="10" y="10" width="180" height="80" fill="#0000" />
 </svg>
 ```
 
 | Before Enhancement                                               | After Enhancement                                               |
 | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| Parsed as #ARGB.<br>Display effect of the rectangle with **fill="#8888"**<br> ![Before](figures/4hex_color_before.png)| Parsed as #RGBA.<br>Display effect of the rectangle with **fill="#8888"** (fully transparent)<br> ![After](figures/4hex_color_after.png)|
+| Parsed as #ARGB.<br>Display effect of the rectangle with **fill="#8888"**<br> ![Before](figures/4hex_color_before.png)| Parsed as #RGBA.<br>Example: display effect of the rectangle with **fill="#0000"** (fully transparent)<br> ![After](figures/4hex_color_after.png)|
 
 ### Strict IRI Type Validation
 
@@ -90,7 +90,7 @@ URL references for **filter**, **clip-path**, and **mask** now undergo strict ty
 
 | Before Enhancement                                            | After Enhancement                                    |
 | :---------------------------------------------------------: | :-------------------------------------------------: |
-| Mismatched URL types for **filter**, **clip-path**, and **mask** references caused incorrect display effects.| When URL types for **filter**, **clip-path**, and **mask** references do not match, the corresponding effects are not applied.<br> For example, **mask**, **clipPath**, **filter**, **pattern**, and **gradient** tags each have unique IDs. Effects only apply when: **mask** attributes reference mask tag IDs; **clip-path** attributes reference **clipPath** tag IDs; **filter** attributes reference filter tag IDs.|
+| Mismatched URL types for **filter**, **clip-path**, and **mask** references caused incorrect display effects.| When URL types for **filter**, **clip-path**, and **mask** references do not match, the corresponding effects are not applied.<br> For example, the mask, clippath, filter, pattern, and gradient tags have their own IDs. If the filter, clip-path, and mask attributes are bound to the IDs of other types of tags, the corresponding effects do not take effect. The corresponding effect takes effect only when the mask attribute is bound to the mask tag ID, the clip-path attribute is bound to the clipPath tag ID, and the filter attribute is bound to the filter tag ID.|
 
 For example, if the URL types do not match, the mask effect does not take effect.
 ```xml
@@ -145,8 +145,8 @@ struct Index {
           .width(220)
           .height(220)
           .colorFilter(
-            [ 0.6, 0, 0, 0, 0,
-              0.2, 0.8, 0, 0, 0,
+            [ 0.6, 0,   0,   0, 0,
+              0.2, 0.8, 0,   0, 0,
               0.2, 0.2, 1.2, 0, 0,
               0,   0,   0,   1, 0 ]
           )
@@ -175,7 +175,7 @@ The sample image and sample code are as follows:
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
   <!-- Rectangle -->
-  <rect x="10" y="10" width="180" height="80" stroke="blue" stroke-width='2' fill="none"/>
+  <rect x="10" y="10" width="180" height="80" fill="none"/>
 </svg>
 ```
 ```ts
@@ -204,15 +204,15 @@ struct Index {
 
 ## Extended Affine Transformation Capabilities
 
-The **transform** attribute now supports the following: configurable global pivot points, local rotation centers, matrix transformation modes, invalid value verification, affine transformations in clipping paths, and combined transformation scenarios.
+The [transform](./ts-universal-attributes-transformation.md#transform) attribute now supports the following: configurable global pivot points, local rotation centers, matrix transformation modes, invalid value verification, affine transformations in clipping paths, and combined transformation scenarios.
 
 ### Configurable Global Transformation Center
 
-SVG now parses the **transform-origin** attribute to define global transformation centers.
+SVG supports the capability of parsing the [transform-origin](../arkui-js/js-components-common-animation.md) attribute to configure the global center point. The following table describes the effect before and after the enhancement.
 
 >**NOTE**
 >
->The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
+>The final display of SVG images is influenced by the **Image** component's '[objectFit](./ts-basic-components-image.md#objectfit)' value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
 |                           SVG Scenario                           |                        Before Enhancement                        |                        After Enhancement                        |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
@@ -305,7 +305,7 @@ The transform operation is applied within a **\<use>** element that references a
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <mask id="mask1"  width="1" height="1" maskContentUnits="objectBoundingBox">
-	  <use xlink:href="#rect1" transform="translate(0.6, 0.000000) scale(0.5 0.5)" />
+      <use xlink:href="#rect1" transform="translate(0.6, 0.000000) scale(0.5 0.5)" />
       <rect id="rect1" x="0" y="0" width="0.5" height="0.5" fill="red"  />
     </mask>
   </defs>
@@ -324,7 +324,7 @@ The transform operation is applied within a **\<g>** element without scaling.
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <mask id="mask1"  width="1" height="1" maskContentUnits="objectBoundingBox">
-    	<g transform="translate(0.6, 0.000000)">
+        <g transform="translate(0.6, 0.000000)">
       <rect id="rect1" x="0" y="0" width="0.5" height="0.5"  fill="red"  />
       </g>
     </mask>
@@ -340,7 +340,7 @@ The transform operation is applied within a **\<g>** element without scaling.
 
 ## Extended SVG Parsing Capabilities
 
-The **viewBox** attribute now supports configuration of alignment and scaling rules. Unit parsing is available for clipping paths, gradients, masks, mask content, patterns, pattern content, filters, and primitives.
+[viewBox](./ts-image-svg2-capabilities.md#configurable-alignment-and-scaling-rules-for-viewbox) The attribute supports the customization of alignment and scaling rules. The cropping path unit, gradient unit, mask unit, and mask content unit can be parsed. Parsing of pattern units, pattern content units, filter units, and primitive units.
 
 ### Configurable Alignment and Scaling Rules for viewBox
 
@@ -394,7 +394,7 @@ Example with **preserveAspectRatio** set to **&lt;align&gt; [&lt;meetOrSlice&gt;
 
 ### Clipping Path Unit Parsing
 
-The **clipPathUnits** attribute value for clipping path units is now properly parsed. Support has been added for the scenario where **clipPathUnits** is set to **objectBoundingBox**, which uses a coordinate system based on the bounding box of the applied element.
+Supported the parsing of the clip path unit value [clipPathUnits](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes). Added the processing of the scenario where clipPathUnits is objectBoundingBox (the border of the applied element is used as the reference coordinate system).
 
 >**NOTE**
 >
@@ -419,7 +419,7 @@ In the example below, when the clipping path unit is set to **objectBoundingBox*
 
 ### Gradient Unit Parsing
 
-The **gradientUnits** attribute value for gradient units is now properly parsed. Support has been added for the scenario where **gradientUnits** is set to **objectBoundingBox**, which uses a coordinate system based on the bounding box of the applied element.
+The gradient unit value [gradientUnits](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes) can be parsed. The processing in the scenario where gradientUnits is objectBoundingBox (the border of the applied element is used as the reference coordinate system) is added.
 
 >**NOTE**
 >
@@ -463,7 +463,7 @@ This example illustrates a radial gradient originating from the absolute coordin
 
 ### Mask Unit and Mask Content Unit Parsing
 
-The **maskUnits** and **maskContentUnits** attribute values for mask units and mask content units are now properly parsed. Support has been added for the scenario where **maskUnits** or **maskContentUnits** is set to **objectBoundingBox**, which uses a coordinate system based on the bounding box of the applied element.
+The mask unit [maskUnits](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes) and mask content unit [maskContentUnits](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes) can be parsed, added the processing for the scenario where maskContentUnits and maskUnits are set to objectBoundingBox (the border of the applied element is used as the reference coordinate system).
 
 >**NOTE**
 >
@@ -475,7 +475,7 @@ This example demonstrates a five-pointed star mask defined within absolute coord
 <svg width="220" height="220" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <mask id="mask1" maskUnits="userSpaceOnUse" x="10" y="10" width="200" height="200" clip-rule="evenodd" maskContentUnits="objectBoundingBox">
-		<path d="M 0.5,0.05 L 0.2,0.99 L 0.95,0.39 L 0.05,0.39 L 0.8,0.99 Z" fill="blue" fill-rule="nonzero"/>
+        <path d="M 0.5,0.05 L 0.2,0.99 L 0.95,0.39 L 0.05,0.39 L 0.8,0.99 Z" fill="blue" fill-rule="nonzero"/>
     </mask>
   </defs>
   <rect x="10" y="10" width="200" height="200" fill="red" mask="url(#mask1)" />
@@ -488,7 +488,7 @@ This example demonstrates a five-pointed star mask defined within absolute coord
 
 ### Pattern Unit and Pattern Content Unit Parsing
 
-The **patternUnits** and **patternContentUnits** attribute values for pattern units and pattern content units are now properly parsed. Support has been added for the scenario where **patternUnits** or **patternContentUnits** is set to **objectBoundingBox**, which uses a coordinate system based on the bounding box of the applied element.
+Support parsing of the [patternUnits](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes) and [patternContentUnits](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes). Added handling for the scenario where patternUnits and patternContentUnits are set to objectBoundingBox (a coordinate system based on the bounding box of the applied element).
 
 >**NOTE**
 >
@@ -514,14 +514,13 @@ In this example, the source pattern's position and size are defined in absolute 
 
 ### Filter Unit and Primitive Unit Parsing
 
-The **filterUnits** and **primitiveUnits** attribute values for filter units and primitive units are now properly parsed. Support has been added for the scenario where **filterUnits** or **primitiveUnits** is set to **objectBoundingBox**, which uses a coordinate system based on the bounding box of the applied element. Currently, the following primitives are supported: **feFlood**, **feOffset**, **feGaussianBlur**, **feBlood**, **feColorMatrix**, and **feComposite**.
+Support parsing of the filter unit [filterUnits](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes) and primitive unit [primitiveUnits](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes). Added handling for the scenario where filterUnits and primitiveUnits are set to objectBoundingBox (a coordinate system based on the bounding box of the applied element). Currently, the following primitives are supported: **feFlood**, **feOffset**, **feGaussianBlur**, **feBlood**, **feColorMatrix**, and **feComposite**.
 
 >**NOTE**
 >
 >The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-Example: When **primitiveUnits** is set to **objectBoundingBox**, the **stdDeviation** values for both x-axis and y-axis in **feGaussianBlur** are multiplied by
-the width and height of the applied element's bounding box respectively. The x- and y- coordinates of filter primitive subregions are multiplied by the bounding box width and height relative to the upper left corner of the graphic, while the width and height parameters of filter primitive subregions are multiplied by the bounding box width and height respectively.
+Graph source example: When the primitive value is objectBoundingBox, the fuzzy standard deviation X of feGaussianBlur and the stdDeviation value of the Y axis need to be multiplied by the width and height of the bounding box of the applied filter. The x- and y- coordinates of filter primitive subregions are multiplied by the bounding box width and height relative to the upper left corner of the graphic, while the width and height parameters of filter primitive subregions are multiplied by the bounding box width and height respectively.
 
 ```xml
  <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg"> 
@@ -586,8 +585,7 @@ The processing of **clip-path** clipping rules within **\<g>** elements has been
 >
 >The final display of SVG images is influenced by the **Image** component's **objectFit** value. All examples in this document use **'objectFit(ImageFit.Contain)'** to ensure complete and correct rendering. Configure **objectFit** appropriately based on actual display requirements.
 
-In this example, the source image is cropped using the path defined within the **\<g>** element. The default clipping rule is **nonezero**, while the fill rule specified in the path element is **evenodd**.
-In the resulting image, the left section demonstrates the **evenodd** fill rule, and the right section shows the default **nonezero** clipping rule.
+The source cropping path of the example image is referenced in the g label. The default cropping path rule is "nonzero," and the filling rule in the path label is "evenodd." The actual filling rule in the left image is "evenodd," and the filling rule in the right image is the default rule of the cropping path, that is, nonzero.
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -611,7 +609,7 @@ In the resulting image, the left section demonstrates the **evenodd** fill rule,
 
 ### Pattern Tiling Enhancement
 
-Patterns now support proper tiling effects.
+[pattern](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes) Patterns can be tiled repeatedly.
 
 >**NOTE**
 >
@@ -661,7 +659,7 @@ When pattern **x** and **y** parameters are non-zero, the entire pattern is now 
 
 ### Linear Gradient
 
-Linear gradients now support proper translation and scaling effects.
+[linearGradient](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes) Linear gradient supports translation and scaling.
 
 >**NOTE**
 >
@@ -686,7 +684,7 @@ Linear gradients now support proper translation and scaling effects.
 
 ### Radial Gradient
 
-Radial gradients now support proper translation and scaling effects.
+[RadialGradient](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes) Radial gradient supports translation and scaling.
 
 >**NOTE**
 >
@@ -711,7 +709,7 @@ Radial gradients now support proper translation and scaling effects.
 
 ### Default Mask Behavior for Invalid Parameters
 
-When mask **x**, **y**, **width**, or **height** parameters accept numeric values, percentages, and decimal numbers. When these parameters are assigned incorrect types, their values now default to **{-10%, -10%, 120%, 120%}** instead of **0**.
+[mask](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes) The x, y, width, and height parameters of the mask can be numbers, percentages, and decimals. When the parameter is assigned an error type: The value is changed from 0 to the default value {-10%, -10%, 120%, 120%}.
 
 >**NOTE**
 >
@@ -735,7 +733,7 @@ When mask **x**, **y**, **width**, or **height** parameters accept numeric value
 
 ### Default Filter Behavior for Invalid Parameters
 
-When filter **x**, **y**, **width**, or **height** parameters accept numeric values, percentages, and decimal numbers. When these parameters are assigned incorrect types, their values now default to **{-10%, -10%, 120%, 120%}** instead of **0**.
+[filter](./ts-image-svg2-capabilities.md#impact-of-enhanced-svg-tag-parsing-on-elements-and-attributes) The x, y, width, and height parameters of the filter can be numbers, percentages, and decimals. When an error type is assigned to a parameter: The value is changed from 0 to the default value {-10%, -10%, 120%, 120%}.
 
 >**NOTE**
 >

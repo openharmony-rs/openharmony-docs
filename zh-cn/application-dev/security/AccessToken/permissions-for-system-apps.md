@@ -5345,6 +5345,20 @@
 
 **起始版本**：22
 
+## ohos.permission.MANAGE_MEDIA_SHARED_RESOURCE
+
+允许系统应用使用相机框架目录的媒体共享资源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
 ## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
 
 允许已接入云空间的应用管理云空间云侧数据。

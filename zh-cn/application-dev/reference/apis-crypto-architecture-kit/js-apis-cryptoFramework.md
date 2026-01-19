@@ -2251,8 +2251,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名     | 类型       | 必填 | 说明                           |
 | -------- | ----------- | ---- | ------------------------------ |
-| pubKey   | [DataBlob](#datablob) \| null<sup>10+</sup>    | 是   | 指定的公钥材料。如果公钥不需要转换，可直接传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
-| priKey   | [DataBlob](#datablob) \| null<sup>10+</sup>   | 是   | 指定的私钥材料。如果私钥不需要转换，可直接传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
+| pubKey   | [DataBlob](#datablob) \| null<sup>10+</sup>    | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
+| priKey   | [DataBlob](#datablob) \| null<sup>10+</sup>   | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
 | callback | AsyncCallback\<[KeyPair](#keypair)> | 是   | 回调函数，用于获取非对称密钥。 |
 
 **错误码：**
@@ -2300,8 +2300,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定的公钥材料。如果公钥不需要转换，可直接传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
-| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定的私钥材料。如果私钥不需要转换，可直接传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
 
 **返回值：**
 
@@ -2352,8 +2352,8 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定公钥材料。如果公钥无需转换，传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
-| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定私钥材料。API 10前仅支持DataBlob，API 10起支持传入null。 |
+| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定公钥材料。如果公钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
+| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定私钥材料。如果私钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
 
 **返回值：**
 
@@ -2419,8 +2419,8 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | string \| null | 是  | 指定的公钥材料。如果公钥不需要转换，可直接传入null。|
-| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，可直接传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
+| pubKey | string \| null | 是  | 指定的公钥材料。如果公钥不需要转换，请传入null。|
+| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，请传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
 
 **返回值：**
 
@@ -2497,8 +2497,8 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | string \| null | 是  | 指定的公钥材料。如果公钥不需要转换，可直接传入null。|
-| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，可直接传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
+| pubKey | string \| null | 是  | 指定的公钥材料。如果公钥不需要转换，请传入null。|
+| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，请传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
 | password | string | 是 | 指定口令，用于解密私钥。|
 
 **返回值：**
@@ -2570,8 +2570,8 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | string \| null| 是   | 指定的公钥材料。如果公钥不需要转换，可直接传入null。|
-| priKey | string \| null| 是   | 指定私钥材料。私钥无需转换时，可直接传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
+| pubKey | string \| null| 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。|
+| priKey | string \| null| 是   | 指定私钥材料。私钥无需转换时，请传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
 
 **返回值：**
 
@@ -2648,8 +2648,8 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | string \| null| 是   | 指定的公钥材料。如果公钥不需要转换，可传入null。|
-| priKey | string \| null| 是   | 指定私钥材料。若无需转换，传入 null。注意：公钥与私钥材料不可同时为 null。|
+| pubKey | string \| null| 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。|
+| priKey | string \| null| 是   | 指定私钥材料。若无需转换，请传入 null。注意：公钥与私钥材料不可同时为 null。|
 | password | string | 是 | 指定口令，用于解密私钥。|
 
 **返回值：**
@@ -3875,7 +3875,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | opMode   | [CryptoMode](#cryptomode) | 是   | 加密或者解密模式。                                           |
 | key      | [Key](#key)               | 是   | 指定加密或解密的密钥。                                       |
-| params   | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，可以传入null。API 10之前只支持ParamsSpec， API 10之后增加支持null。 |
+| params   | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec， API 10之后增加支持null。 |
 | callback | AsyncCallback\<void>      | 是   | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。     |
 
 **错误码：**
@@ -3910,7 +3910,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | ------ | ------------------------- | ---- | ------------------------------------------------------------ |
 | opMode | [CryptoMode](#cryptomode) | 是   | 加密或者解密模式。                                           |
 | key    | [Key](#key)               | 是   | 指定加密或解密的密钥。                                       |
-| params | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，可以传入null。API 10之前仅支持ParamsSpec，从API 10开始增加对null的支持。 |
+| params | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前仅支持ParamsSpec，从API 10开始增加对null的支持。 |
 
 **返回值：**
 
@@ -3948,7 +3948,7 @@ initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
 | opMode | [CryptoMode](#cryptomode)                       | 是   | 加密或者解密模式。                                           |
 | key    | [Key](#key)                                     | 是   | 指定加密或解密的密钥。                                       |
-| params | [ParamsSpec](#paramsspec)  \| null| 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，可以传入null。 |
+| params | [ParamsSpec](#paramsspec)  \| null| 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。 |
 
 **错误码：**
 

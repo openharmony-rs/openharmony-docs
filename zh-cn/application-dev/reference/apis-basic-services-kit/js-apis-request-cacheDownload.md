@@ -3,8 +3,8 @@
 <!--Subsystem: Request-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 request部件主要给应用提供上传下载文件、后台传输代理的基础能力。
 
@@ -131,7 +131,7 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 | 名称          | 类型                                    | 只读 | 可选 | 说明        |
 |-------------|---------------------------------------|----|----|-----------|
 | errorCode    | [ErrorCode](#errorcode23)       | 是  | 否  | 预下载错误回调返回的特定错误类型。 |
-| message     | string         | 是  | 否  | 返回[通用错误的错误描述](../../reference/errorcode-universal.md)或[http错误的错误描述](../../reference/apis-network-kit/errorcode-net-http.md)。 |
+| message     | string         | 是  | 否  | 返回[通用错误码](../../reference/errorcode-universal.md)或[HTTP错误码](../../reference/apis-network-kit/errorcode-net-http.md)。 |
 
 ## cacheDownload.download
 
@@ -422,7 +422,7 @@ getDownloadInfo(url: string): DownloadInfo | undefined
     // 在缓存下载完成后，获取缓存下载的信息。
     let downloadInfo = cacheDownload.getDownloadInfo("https://www.example.com");
     if (downloadInfo == undefined) {
-      console.info(`CacheDownload get download info undefined.`);
+      console.error(`CacheDownload get download info undefined.`);
     } else {
       console.info(`CacheDownload get download info : ${JSON.stringify(downloadInfo)}`);
     }
@@ -485,7 +485,7 @@ onDownloadSuccess(url: string, callback: Callback&lt;void&gt;): void
   
   try {
     const successCallback = () => {
-      console.info("Success callback from cacheDownload");
+      console.info("Succeeded in getting callback from cacheDownload");
     };
     // 订阅预下载的完成事件，当下载完成时执行回调
     cacheDownload.onDownloadSuccess("https://www.example.com", successCallback)
@@ -551,7 +551,7 @@ offDownloadSuccess(url: string, callback?: Callback&lt;void&gt;): void
   
   try {
     const successCallback = () => {
-      console.info("Success callback from cacheDownload");
+      console.info("Succeeded in getting callback from cacheDownload");
     };
     // 订阅预下载的完成事件，当下载完成时执行回调
     cacheDownload.onDownloadSuccess("https://www.example.com", successCallback);

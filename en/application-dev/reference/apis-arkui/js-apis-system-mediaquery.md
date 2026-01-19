@@ -11,7 +11,7 @@ The **mediaquery** module provides different styles for different media types.
 
 > **NOTE**
 >
-> - The APIs of this module are no longer maintained since API version 7. You are advised to use [`@ohos.mediaquery`](js-apis-mediaquery.md) instead.
+> - The APIs of this module are no longer maintained since API version 7. You are advised to use [@ohos.mediaquery](js-apis-mediaquery.md) instead.
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 

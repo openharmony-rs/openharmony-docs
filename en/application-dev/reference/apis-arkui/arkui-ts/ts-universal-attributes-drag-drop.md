@@ -20,7 +20,8 @@ The ArkUI framework provides default drag and drop capabilities for the followin
 
 - The following component do not support drag actions: [ArcScrollBar](./ts-basic-components-arcscrollbar.md), [MultiNavigation](./ohos-arkui-advanced-MultiNavigation.md), [ToolBarItem](./ts-basic-components-toolbaritem.md), [ArcSlider](./ohos-arkui-advanced-ArcSlider.md), [Span](./ts-basic-components-span.md), [ImageSpan](./ts-basic-components-imagespan.md), [ContainerSpan](./ts-basic-components-containerspan.md), [SymbolSpan](./ts-basic-components-symbolSpan.md), [ArcAlphabetIndexer](./ts-container-arc-alphabet-indexer.md), [OffscreenCanvas](./ts-components-offscreencanvas.md), [Menu](./ts-basic-components-menu.md), [MenuItem](./ts-basic-components-menuitem.md), [MenuItemGroup](./ts-basic-components-menuitemgroup.md), [PasteButton](./ts-security-components-pastebutton.md), [SaveButton](./ts-security-components-savebutton.md), [WithTheme](./ts-container-with-theme.md), [NavPushPathHelper](./ohos-atomicservice-NavPushPathHelper.md), [ContentSlot](./ts-components-contentSlot.md), [Chip](./ohos-arkui-advanced-Chip.md), [ExceptionPrompt](./ohos-arkui-advanced-ExceptionPrompt.md), [Filter](./ohos-arkui-advanced-Filter.md), [FormMenu](./ohos-arkui-advanced-formmenu.md), [Popup](./ohos-arkui-advanced-Popup.md), [SelectionMenu](./ohos-arkui-advanced-SelectionMenu.md), [SplitLayout](./ohos-arkui-advanced-SplitLayout.md), and all popup window components.
 
-<!--RP1--><!--RP1End-->To enable drag and drop for other components that support drag actions, set their **draggable** attribute to **true** and implement data transmission in APIs such as **onDragStart**.
+<!--RP1--><!--RP1End-->
+To enable drag and drop for other components, you need to set the **draggable** attribute to **true** and implement data transmission in APIs such as [onDragStart](./ts-universal-events-drag-drop.md#ondragstart).
 
 > **NOTE**
 >
@@ -28,7 +29,7 @@ The ArkUI framework provides default drag and drop capabilities for the followin
 
 ## allowDrop
 
-allowDrop(value: Array&lt;UniformDataType&gt; | null): T
+allowDrop(value: Array&lt;UniformDataType&gt; | null | Array&lt;string&gt;): T
 
 Sets the types of data that can be dropped to the component. If **allowDrop** is not set, the component accepts all data types by default.
 
@@ -40,7 +41,7 @@ Sets the types of data that can be dropped to the component. If **allowDrop** is
 
 | Name| Type                                                        | Mandatory| Description                                           |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| value  | Array\<[UniformDataType](#uniformdatatype)> \| null<sup>12+</sup> | Yes  | Types of data that can be dropped to the component. Since API version 12, this parameter can be set to **null** to make the component reject all data types.|
+| value  | Array\<[UniformDataType](#uniformdatatype)> \| null<sup>12+</sup> \| Array\<string><sup>23+</sup> | Yes  | Types of data that can be dropped to the component. Since API version 12, this parameter can be set to **null** to make the component reject all data types. Since API version 23, the custom data type Array\<string> can be set. The custom data type is a data type string defined by the application. There is no requirement on the string format, but the string cannot be the same as the UniformDataType standard format. You are advised to define the string in an easy-to-remember and easy-to-distinguish manner.|
 
 **Return value**
 
@@ -84,7 +85,7 @@ Sets the preview image displayed during component drag operations.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CustomBuilder](ts-types.md#custombuilder8) \| [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) \| string<sup>12+</sup> | Yes  | Preview image displayed during component drag operations. It only applies to [onDragStart](ts-universal-events-drag-drop.md#ondragstart) drag mode.<br>If the component supports drag and drop and a preview is specified through [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8), that specified preview is displayed when the component is dragged. The priority of the background image returned in [onDragStart](ts-universal-events-drag-drop.md#ondragstart) is lower than that of the preview set in [dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11). This means that, once set, the latter will be used in place of the former. Using [CustomBuilder](ts-types.md#custombuilder8) requires offline rendering and may increase performance overhead and latency. In light of this, you are advised to use [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) in [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) instead.<br> When an ID of the string type is passed in, the snapshot of the component assigned the ID is used as the preview image. If the component assigned the ID cannot be found or its [Visibility](ts-appendix-enums.md#visibility) attribute is set to **None** or **Hidden**, a snapshot of the current component is used as the preview image. Currently, snapshots do not support visual effects, such as brightness, shadow, blur, and rotation.|
+| value  | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) \| string<sup>12+</sup> | Yes  | Preview image displayed during component drag operations. It only applies to [onDragStart](ts-universal-events-drag-drop.md#ondragstart) drag mode.<br>If the component supports drag and drop and a preview is specified through [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8), that specified preview is displayed when the component is dragged. The priority of the background image returned in [onDragStart](ts-universal-events-drag-drop.md#ondragstart) is lower than that of the preview set in [dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11). This means that, once set, the latter will be used in place of the former. Using [CustomBuilder](ts-types.md#custombuilder8) requires offline rendering and may increase performance overhead and latency. In light of this, you are advised to use [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) in [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) instead.<br> When an ID of the string type is passed in, the snapshot of the component assigned the ID is used as the preview image. If the component assigned the ID cannot be found or its [Visibility](ts-appendix-enums.md#visibility) attribute is set to **None** or **Hidden**, a snapshot of the current component is used as the preview image. Currently, snapshots do not support visual effects, such as brightness, shadow, blur, and rotation.|
 
 **Return value**
 
@@ -110,7 +111,7 @@ Sets the drag preview for the component. This API specifically configures or dis
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| preview  | [CustomBuilder](ts-types.md#custombuilder8) \| [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) \| string | Yes  | Preview image displayed during component drag operations. It only applies to [onDragStart](ts-universal-events-drag-drop.md#ondragstart) drag mode.<br>If the component supports drag and drop and a preview is specified through [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8), that specified preview is displayed when the component is dragged. The priority of the background image returned in [onDragStart](ts-universal-events-drag-drop.md#ondragstart) is lower than that of the preview set in [dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11). This means that, once set, the latter will be used in place of the former. Using [CustomBuilder](ts-types.md#custombuilder8) requires offline rendering and may increase performance overhead and latency. In light of this, you are advised to use [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) in [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) instead.<br> When an ID of the string type is passed in, the snapshot of the component assigned the ID is used as the preview image. If the component assigned the ID cannot be found or its [Visibility](ts-appendix-enums.md#visibility) attribute is set to **None** or **Hidden**, a snapshot of the current component is used as the preview image. Currently, snapshots do not support visual effects, such as brightness, shadow, blur, and rotation.|
+| preview  | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) \| string | Yes  | Preview image displayed during component drag operations. It only applies to [onDragStart](ts-universal-events-drag-drop.md#ondragstart) drag mode.<br>If the component supports drag and drop and a preview is specified through [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8), that specified preview is displayed when the component is dragged. The priority of the background image returned in [onDragStart](ts-universal-events-drag-drop.md#ondragstart) is lower than that of the preview set in [dragPreview](ts-universal-attributes-drag-drop.md#dragpreview11). This means that, once set, the latter will be used in place of the former. Using [CustomBuilder](ts-types.md#custombuilder8) requires offline rendering and may increase performance overhead and latency. In light of this, you are advised to use [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) in [DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo) instead.<br> When an ID of the string type is passed in, the snapshot of the component assigned the ID is used as the preview image. If the component assigned the ID cannot be found or its [Visibility](ts-appendix-enums.md#visibility) attribute is set to **None** or **Hidden**, a snapshot of the current component is used as the preview image. Currently, snapshots do not support visual effects, such as brightness, shadow, blur, and rotation.|
 | config | [PreviewConfiguration](ts-universal-events-drag-drop.md#previewconfiguration15) | No| Additional settings for the drag preview.<br>This parameter is effective only for previews set using [dragPreview](#dragpreview11).|
 
 **Return value**
@@ -137,7 +138,7 @@ Sets the preview image processing mode, badge count, and interaction behavior du
 
 | Name| Type                                                           | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [DragPreviewOptions](#dragpreviewoptions11)<sup>11+</sup>      | Yes  | Preview image processing mode and badge count during dragging.|
+| value  | [DragPreviewOptions](#dragpreviewoptions11-1)<sup>11+</sup>      | Yes  | Preview image processing mode and badge count during dragging.|
 | options<sup>12+</sup>| [DragInteractionOptions](#draginteractionoptions12)<sup>12+</sup>| No  | Interaction behavior for the floating preview image.<br>Default value: empty|
 
 **Return value**
@@ -152,12 +153,14 @@ Sets the preview image processing mode, badge count, and interaction behavior du
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | --- |
-| mode | [DragPreviewMode](#dragpreviewmode11)  \|  Array<[DragPreviewMode](#dragpreviewmode11)><sup>12+</sup>| No| Yes| How the background image is processed when the component is dragged.<br>Default value: **DragPreviewMode.AUTO**<br>If **DragPreviewMode.AUTO** is set concurrently with other enumerated values, **DragPreviewMode.AUTO** takes precedence and the other values are ignored.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| numberBadge<sup>12+</sup> | boolean  \|  number | No| Yes| Whether to display the number badge or the number displayed on the badge. For a number badge, the value range is [0, 2<sup>31</sup>-1]. Values outside this range will be processed as the default state. If the value specified is a floating-point number, only the integer part is displayed.<br>**NOTE**<br>When multiple items are dragged, use this API to set the number of items dragged.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| mode | [DragPreviewMode](#dragpreviewmode11) &nbsp;\|&nbsp; Array<[DragPreviewMode](#dragpreviewmode11)><sup>12+</sup>| No| Yes| How the background image is processed when the component is dragged.<br>Default value: **DragPreviewMode.AUTO**<br>If **DragPreviewMode.AUTO** is set concurrently with other enumerated values, **DragPreviewMode.AUTO** takes precedence and the other values are ignored.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| numberBadge<sup>12+</sup> | boolean &nbsp;\|&nbsp; number | No| Yes| Whether to display the number badge or the number displayed on the badge. For a number badge, the value range is [0, 2<sup>31</sup>-1]. Values outside this range will be processed as the default state. If the value specified is a floating-point number, only the integer part is displayed.<br>**NOTE**<br>When multiple items are dragged, use this API to set the number of items dragged.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | modifier<sup>12+</sup> | [ImageModifier](#imagemodifier12)| No| Yes| Drag preview style modifier. It applies image component attributes and styles to configure preview appearance (see Example 6). Supported effects: opacity, shadow, background blur, and rounded corners. Text drag previews only support default styling.<br>1. Opacity<br>Use [opacity](ts-universal-attributes-opacity.md#opacity). The value ranges from 0 to 1. If the value is set to **0** or left unspecified, it reverts to the default value **0.95**. Setting it to **1** or invalid values result in full opacity.<br>2. Shadow<br>Use [shadow](ts-universal-attributes-image-effect.md#shadow).<br>3. Background blur<br>Use [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11) or [backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9). If both are set, the latter setting takes precedence.<br>4. Rounded corners<br>Use [border](ts-universal-attributes-border.md#border) or [borderRadius](ts-universal-attributes-border.md#borderradius). Modifier settings override mode settings.<br>Default value: empty (unmodifiable).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | sizeChangeEffect<sup>19+</sup> | [DraggingSizeChangeEffect](#draggingsizechangeeffect19)<sup>19+</sup> | No| Yes| Transition effect between the floating image and drag preview.<br>Default value: **DraggingSizeChangeEffect.DEFAULT**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 
 ## DragPreviewMode<sup>11+</sup>
+
+Sets the display mode of the drag preview.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -192,7 +195,7 @@ Enumerates the transition effects for switching between the floating image (set 
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | ---- |
-| isMultiSelectionEnabled | boolean | No| Yes| Whether to enable multi-select clustering during drag operations. **true** to enable, **false** otherwise. This parameter takes effect only for the [grid items](ts-container-griditem.md) and [list items](ts-container-listitem.md) in the [Grid](ts-container-grid.md) and [List](ts-container-list.md) containers.<br>When this feature is enabled, child components cannot be dragged individually. Preview priority: string in [dragPreview](#dragpreview11) > PixelMap in **dragPreview** > component snapshot. Builder previews not supported.<br>This parameter is incompatible with bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12) using **isShown** parameter.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| isMultiSelectionEnabled | boolean | No| Yes| Whether to enable multi-select clustering during drag operations. **true** to enable, **false** otherwise. This parameter takes effect only for the [grid items](ts-container-griditem.md) and [list items](ts-container-listitem.md) in the [Grid](ts-container-grid.md) and [List](ts-container-list.md) containers.<br>When this feature is enabled, child components cannot be dragged individually. Preview priority: string in [dragPreview](#dragpreview11) > PixelMap in **dragPreview** > component snapshot. Builder previews not supported.<br>This parameter is incompatible with bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12) using **isShown** parameter.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | defaultAnimationBeforeLifting | boolean | No| Yes| Whether to enable the default press animation (scale-down) during long-press lift phase. **true** to enable, **false** otherwise.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | isLiftingDisabled<sup>15+</sup> | boolean | No| Yes| Whether to disable the lift animation effect during dragging. <br>**true**: Disable the lifting effect during dragging.<br>**false**: Enable the lifting effect during dragging.<br>With the value **true**, only the custom menu preview (set using [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)), also known as the long-press preview, is displayed if both the long-press preview and drag preview are configured.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | enableEdgeAutoScroll<sup>18+</sup> | boolean | No| Yes| Whether to trigger automatic scrolling when users drag to the edges of a scrollable container. <br>**true**: Trigger automatic scrolling.<br>**false**: Do not trigger automatic scrolling.<br>Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
@@ -216,7 +219,7 @@ Defines the uniform data type.
 
 type ImageModifier = ImageModifier
 
-Defines the image component modifier object.
+Defines the image component modifier.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -224,7 +227,7 @@ Defines the image component modifier object.
 
 | Type| Description|
 | ----- | ----------------- |
-| [ImageModifier](ts-universal-attributes-attribute-modifier.md) | Image component modifier object.|
+| [ImageModifier](ts-universal-attributes-attribute-modifier.md) | Image component modifier.|
 
 ## Example
 ### Example 1: Allowing Drag and Drop
@@ -249,6 +252,7 @@ struct ImageExample {
       Text('Image drag and drop')
         .fontSize('30dp')
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+        // Replace $r('app.media.icon') with the image resource file you use.
         Image($r('app.media.icon'))
           .width(100)
           .height(100)
@@ -394,6 +398,7 @@ struct DragPreviewDemo{
   build() {
     Row() {
       Column() {
+        // Replace '/resource/image.jpeg' with the image resource file you use.
         Image('/resource/image.jpeg')
           .width("30%")
           .draggable(true)
@@ -424,11 +429,13 @@ struct dragPreviewOptionsDemo{
   build() {
     Row() {
       Column() {
+        // Replace '/resource/image.jpeg' with the image resource file you use.
         Image('/resource/image.jpeg')
           .margin({ top: 10 })
           .width("30%")
           .draggable(true)
           .dragPreviewOptions({ mode: DragPreviewMode.AUTO })
+        // Replace '/resource/image.jpeg' with the image resource file you use.
         Image('/resource/image.jpeg')
           .margin({ top: 10 })
           .width("30%")
@@ -561,6 +568,7 @@ struct dragPreviewOptionsDemo{
               this.OpacityIndex = 0
             }
           })
+        // Replace $r('app.media.image') with the image resource file you use.
         Image($r('app.media.image'))
           .margin({ top: 10 })
           .width("100%")
@@ -579,6 +587,7 @@ struct dragPreviewOptionsDemo{
 ### Example 7: Configuring Image Dragging Settings
 
 This example demonstrates drag configuration for different image types (online resources, local resources, and PixelMap).
+
 The **ohos.permission.INTERNET** permission is required for using online images. For details about how to apply for a permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
 
 ```ts
@@ -647,6 +656,7 @@ struct ImageDrag {
         // Drag a local image.
         Column() {
           Text('Local Image').fontSize(14)
+          // Replace $r('app.media.example') with the image resource file you use.
           Image($r('app.media.example'))
             .objectFit(ImageFit.Contain)
             .draggable(true)
@@ -666,6 +676,7 @@ struct ImageDrag {
         // Drag a PixelMap object.
         Column() {
           Text('PixelMap').fontSize(14)
+          // Replace $r('app.media.example') with the image resource file you use.
           Image(this.context?.resourceManager.getDrawableDescriptor($r('app.media.example').id).getPixelMap())
             .objectFit(ImageFit.Contain)
             .draggable(true)
@@ -835,6 +846,7 @@ struct DragPreviewDemo{
   build() {
     Row() {
       Column() {
+        // Replace $r('app.media.app_icon') with the image resource file you use.
         Image($r('app.media.app_icon'))
           .width("30%")
           .draggable(true)
@@ -901,6 +913,7 @@ struct LiftingExampleDemo {
           .height(30)
           .backgroundColor('#FFFFFF')
           .margin({ top: 30 })
+        // Replace $r('app.media.startIcon') with the image resource file you use.
         Image($r('app.media.startIcon'))
           .width("40%")
           .draggable(true)
@@ -922,6 +935,7 @@ struct LiftingExampleDemo {
           .height(30)
           .backgroundColor('#FFFFFF')
           .margin({ top: 80 })
+        // Replace $r('app.media.startIcon') with the image resource file you use.
         Image($r('app.media.startIcon'))
           .width("40%")
           .draggable(true)
@@ -955,10 +969,12 @@ This example configures [DragPreviewMode](#dragpreviewmode11) as **ENABLE_TOUCH_
 @Entry
 @Component
 struct Index {
+  // Replace $r('app.media.app_icon') with the image resource file you use.
   private iconStr: ResourceStr = $r("app.media.app_icon")
 
   @Builder
   MyPreview() {
+    // Replace $r('app.media.image') with the image resource file you use.
     Image($r('app.media.image'))
       .width(100)
       .height(100)
@@ -967,6 +983,7 @@ struct Index {
   @Builder
   MyMenuPreview() {
     Column() {
+      // Replace $r('app.media.image') with the image resource file you use.
       Image($r('app.media.image'))
         .width(100)
         .height(100)
@@ -997,6 +1014,7 @@ struct Index {
       Scroll() {
         Column() {
           Text("no ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW")
+          // Replace $r('app.media.image') with the image resource file you use.
           Image($r('app.media.image'))
             .width(200)
             .height(200)
@@ -1007,6 +1025,7 @@ struct Index {
             .draggable(true)
 
           Text("ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW")
+          // Replace $r('app.media.image') with the image resource file you use.
           Image($r('app.media.image'))
             .width(200)
             .height(200)
@@ -1027,7 +1046,7 @@ struct Index {
 }
 ```
 
-
+![touchPointer.gif](figures/touchPointer.gif)
 
 ### Example 11: Implementing Transition Effects Between Floating Images and Drag Previews
 This example demonstrates how to implement different transition effects between floating images and drag previews by configuring [DraggingSizeChangeEffect](#draggingsizechangeeffect19), supported since API version 19.
@@ -1035,10 +1054,12 @@ This example demonstrates how to implement different transition effects between 
 @Entry
 @Component
 struct Index {
+  // Replace $r('app.media.app_icon') with the image resource file you use.
   private iconStr: ResourceStr = $r("app.media.app_icon")
 
   @Builder
   MyPreview() {
+    // Replace $r('app.media.image') with the image resource file you use.
     Image($r('app.media.image'))
       .width(200)
       .height(200)
@@ -1047,6 +1068,7 @@ struct Index {
   @Builder
   MyMenuPreviewSame() {
     Column() {
+      // Replace $r('app.media.image') with the image resource file you use.
       Image($r('app.media.image'))
         .width(300)
         .height(300)
@@ -1056,6 +1078,7 @@ struct Index {
   @Builder
   MyMenuPreview() {
     Column() {
+      // Replace $r('app.media.startIcon') with the image resource file you use.
       Image($r('app.media.startIcon'))
         .width(300)
         .height(300)
@@ -1082,6 +1105,7 @@ struct Index {
     Column() {
       Text("sizeChangeEffect: SIZE_TRANSITION - Long press to open menu, drag to transition from menu preview to drag preview with scaling effect (no overlay)"")
         .margin({ top: 10 })
+      // Replace $r('app.media.image') with the image resource file you use.
       Image($r('app.media.image'))
         .width(200)
         .height(200)
@@ -1096,6 +1120,7 @@ struct Index {
 
       Text("sizeChangeEffect: SIZE_CONTENT_TRANSITION - Long press to open menu, drag to transition with two-layer overlay effect (menu preview and drag preview)")
         .margin({ top: 10 })
+      // Replace $r('app.media.image') with the image resource file you use.
       Image($r('app.media.image'))
         .width(200)
         .height(200)
@@ -1110,6 +1135,134 @@ struct Index {
     }
     .height('100%')
     .width('100%')
+  }
+}
+```
+
+
+### Example 12: Setting Dropping of a Custom Component
+In API version 23 and later, this example demonstrates the drag-and-drop dropping functionality for custom components by passing their type through the component's onDragStart interface and setting the target component's allowDrop property to allow dropping of that type.
+```ts
+import { unifiedDataChannel } from '@kit.ArkData';
+
+@Entry
+@Component
+struct CustomExample {
+  // Store information about the placed component.
+  @State droppedItems: Array<string> = []
+
+  build() {
+    Column() {
+      // Title.
+      Text ('Custom component dragged and dropped')
+        .fontSize(25)
+        .fontWeight(FontWeight.Bold)
+        .margin(10)
+
+      // Container of the drag and drop areas.
+      Row() {
+        // Left - drag start area
+        Column() {
+          Text ('Drag source area')
+            .fontSize(18)
+            .fontWeight(FontWeight.Medium)
+            .margin(10)
+
+          // Custom component (dragable)
+          CustomCard ({title:'Custom Card', color: Color.Blue})
+            .draggable(true)
+            .onDragStart((event: DragEvent) => {
+              // Construct data of the UnifiedData type.
+              let customCardData : Record<string, string> = {
+                'uniformDataType' : 'custom.card',
+                'value':'Custom card'
+              }
+              let unifiedRecord = new unifiedDataChannel.UnifiedRecord('custom.card', customCardData);
+              let unifiedData = new unifiedDataChannel.UnifiedData(unifiedRecord);
+              event.setData(unifiedData);
+            })
+        }
+        .backgroundColor(Color.White)
+        .border({ color: '#ff0e0303', width: 1 })
+        .width('40%')
+        .height(300)
+
+        // Right - Placement area
+        Column() {
+          Text ('Place area')
+            .fontSize(18)
+            .fontWeight(FontWeight.Medium)
+            .margin(10)
+
+          // Place the content in the area.
+          if (this.droppedItems.length === 0) {
+            Text ('Drag the component here.')
+              .fontSize(16)
+              .opacity(0.6)
+          } else {
+            // Display the placed components.
+            ForEach(this.droppedItems, (item: string) => {
+              CustomCard({ title: item, color: Color.Blue })
+            }, (item: string) => item)
+          }
+        }
+        .backgroundColor(Color.White)
+        .border({ color: '#ff0e0303', width: 1 })
+        .width('40%')
+        .height(300)
+        // Allowed type: string array
+        .allowDrop(['custom.card'])
+        .onDrop((event: DragEvent) => {
+          console.info('setData onDrop success');
+          let data = event.getData()
+          let arr: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
+          if (arr.length > 0) {
+            if (arr[0].getTypes()[0] === 'custom.card') {
+              let customCardData = arr[0].getValue() as Record<string, string>;
+              this.droppedItems.push(customCardData.value)
+            }
+          }
+        })
+      }
+      .justifyContent(FlexAlign.SpaceAround)
+      .width('100%')
+      .height('70%')
+
+      // Operation description
+      Text ('Operation description: Touch and hold a card on the left and drag it to the area on the right.')
+        .fontSize(14)
+        .opacity(0.7)
+        .margin(10)
+    }
+    .width('100%')
+    .height('65%')
+    .backgroundColor('#f8f9fa')
+  }
+}
+
+// Customize a card component.
+@Component
+struct CustomCard {
+  title: string ='Default title'
+  color: Color = Color.Gray
+
+  build() {
+    Column() {
+      Text(this.title)
+        .fontSize(16)
+        .fontColor(Color.White)
+        .fontWeight(FontWeight.Medium)
+        .margin(5)
+
+      Text ('This is a custom component.')
+        .fontColor(Color.White)
+        .fontSize(14)
+        .opacity(0.7)
+    }
+    .backgroundColor(this.color)
+    .borderRadius(12)
+    .width(120)
+    .height(100)
   }
 }
 ```

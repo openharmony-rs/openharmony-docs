@@ -222,7 +222,7 @@
           - [Storage接口切换](application-models/storage-switch.md)
       <!--DelEnd-->
       - Native子进程开发指导<!--native-childprocess-development-->
-          - [创建Native子进程](application-models/capi_nativechildprocess_development_guideline.md)
+          - [创建Native子进程](application-models/capi-nativechildprocess-development-guideline.md)
           - [获取Native子进程退出信息](application-models/capi-nativechildprocess-exit-info.md)
       - [Ability Kit术语](application-models/ability-terminology.md)
     - ArkData（方舟数据管理）<!--arkdata-->
@@ -3844,9 +3844,9 @@
         - [@ohos.resourceschedule.usageStatistics (设备使用信息统计)(系统接口)](reference/apis-backgroundtasks-kit/js-apis-resourceschedule-deviceUsageStatistics-sys.md)
         <!--DelEnd-->
         - application<!--background-tasks-arkts-application-->
-          - [WorkSchedulerExtensionContext](reference/apis-backgroundtasks-kit/js-apis-inner-application-WorkSchedulerExtensionContext.md)
+          - [WorkSchedulerExtensionContext](reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionContext.md)
           <!--Del-->
-          - [WorkSchedulerExtensionContext(系统接口)](reference/apis-backgroundtasks-kit/js-apis-inner-application-WorkSchedulerExtensionContext-sys.md)
+          - [WorkSchedulerExtensionContext(系统接口)](reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionContext-sys.md)
           <!--DelEnd-->
         - 已停止维护的接口<!--background-tasks-arkts-dep-->
           - [@ohos.backgroundTaskManager (后台任务管理)](reference/apis-backgroundtasks-kit/js-apis-backgroundTaskManager.md)
