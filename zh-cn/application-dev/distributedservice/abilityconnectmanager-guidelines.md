@@ -458,4 +458,4 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 **解决措施**
 
-应用[申请长时任务](../task-management/continuous-task.md)，消除此限制。
+应用申请[长时任务(ArkTS)](../task-management/continuous-task.md)，消除此限制。
