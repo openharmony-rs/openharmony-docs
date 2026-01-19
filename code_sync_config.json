@@ -9121,7 +9121,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets",
 				"functions":[
 					{
-						"end_line":81,
+						"end_line":82,
 						"name":"widget_event_call_card_entry_ability",
 						"start_line":16
 					}
@@ -9161,7 +9161,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts",
 				"functions":[
 					{
-						"end_line":110,
+						"end_line":111,
 						"name":"update_by_status_form_ability",
 						"start_line":16
 					}
@@ -9176,7 +9176,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormManagerDemo/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":60,
 						"name":"FormManagerDemo",
 						"start_line":15
 					}
@@ -19158,7 +19158,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/ArkTSCardDocsSample/entry/src/main/ets/widget/pages/AnimationCard.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":41,
 						"name":"animation_card",
 						"start_line":16
 					}
@@ -19183,7 +19183,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":71,
 						"name":"widget_update_router_card",
 						"start_line":16
 					}
@@ -19193,7 +19193,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":70,
 						"name":"widget_event_router_entry_ability",
 						"start_line":16
 					}
@@ -19203,7 +19203,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":72,
 						"name":"widget_update_call_card",
 						"start_line":16
 					}
@@ -19213,7 +19213,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts",
 				"functions":[
 					{
-						"end_line":95,
+						"end_line":96,
 						"name":"widget_callee_entry_ability",
 						"start_line":16
 					}
@@ -19253,7 +19253,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/customcanvasdrawing/pages/CustomCanvasDrawingCard.ets",
 				"functions":[
 					{
-						"end_line":97,
+						"end_line":98,
 						"name":"custom_drawing",
 						"start_line":16
 					}
@@ -19268,7 +19268,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets",
 				"functions":[
 					{
-						"end_line":75,
+						"end_line":76,
 						"name":"update_by_message_card",
 						"start_line":16
 					}
@@ -19278,9 +19278,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts",
 				"functions":[
 					{
-						"end_line":136,
+						"end_line":142,
 						"name":"update_form_interface",
-						"start_line":27
+						"start_line":28
 					}
 				]
 			}
@@ -19573,7 +19573,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets",
 				"functions":[
 					{
-						"end_line":80,
+						"end_line":81,
 						"name":"widget_event_router_card",
 						"start_line":16
 					}
@@ -19583,7 +19583,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryability/EntryAbility.ts",
 				"functions":[
 					{
-						"end_line":80,
+						"end_line":81,
 						"name":"entry_ability",
 						"start_line":16
 					}
@@ -19593,7 +19593,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/funpages/FunA.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":64,
 						"name":"fun_a",
 						"start_line":16
 					}
@@ -19603,7 +19603,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/funpages/FunB.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":64,
 						"name":"fun_b",
 						"start_line":16
 					}
@@ -22942,7 +22942,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":72,
 						"name":"widget_image_update_card",
 						"start_line":16
 					}
@@ -22957,14 +22957,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts",
 				"functions":[
 					{
-						"end_line":23,
+						"end_line":24,
 						"name":"import_entry_form_ability",
 						"start_line":16
 					},
 					{
-						"end_line":134,
+						"end_line":140,
 						"name":"entry_form_ability",
-						"start_line":26
+						"start_line":27
 					}
 				]
 			}
@@ -22977,7 +22977,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":51,
 						"name":"liveform_LiveFormExtensionAbility",
 						"start_line":16
 					}
@@ -23007,7 +23007,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/widget/pages/WidgetCard.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":47,
 						"name":"liveform_WidgetCard",
 						"start_line":15
 					}
@@ -23017,7 +23017,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets",
 				"functions":[
 					{
-						"end_line":78,
+						"end_line":79,
 						"name":"liveform_EntryFormAbility",
 						"start_line":16
 					}
@@ -23027,7 +23027,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":32,
 						"name":"liveform_Constants",
 						"start_line":16
 					}
@@ -23042,7 +23042,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets",
 				"functions":[
 					{
-						"end_line":75,
+						"end_line":76,
 						"name":"update_by_message_card",
 						"start_line":16
 					}
@@ -23052,7 +23052,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts",
 				"functions":[
 					{
-						"end_line":138,
+						"end_line":144,
 						"name":"update_by_message_form_ability",
 						"start_line":17
 					}
@@ -23062,7 +23062,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":86,
+						"end_line":88,
 						"name":"FormUpdate_page",
 						"start_line":15
 					}
@@ -23072,7 +23072,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":45,
 						"name":"ReloadByUIAbilityCard",
 						"start_line":16
 					}
@@ -23082,7 +23082,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/entryformability/EntryFormAbility.ets",
 				"functions":[
 					{
-						"end_line":65,
+						"end_line":66,
 						"name":"EntryFormAbility",
 						"start_line":16
 					}
@@ -23092,7 +23092,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":63,
 						"name":"index",
 						"start_line":16
 					}
@@ -23167,7 +23167,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/processdataentryability/ProcessDataFormAbility.ts",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":46,
 						"name":"process_data_form_ability",
 						"start_line":16
 					}
@@ -23177,7 +23177,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetprocessdata/pages/WidgetProcessDataCard.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":44,
 						"name":"widget_process_data_card",
 						"start_line":16
 					}
@@ -23187,7 +23187,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/persistentdataformability/PersistentDataFormAbility.ts",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":59,
 						"name":"persistent_data_form_ability",
 						"start_line":16
 					}
@@ -23197,7 +23197,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetpersistentdata/pages/WidgetPersistentDataCard.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":44,
 						"name":"widget_persistent_data_card",
 						"start_line":16
 					}
