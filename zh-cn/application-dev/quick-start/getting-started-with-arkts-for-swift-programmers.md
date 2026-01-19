@@ -97,6 +97,13 @@ function foo(x: number | string): void {  /*  函数实现。       */
 
 <!-- @[optional_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
 
+``` TypeScript
+function foo2(name?: string) {}  /*  name为可选参数。  */
+// ...
+  foo2('hello');     //  OK，传入name参数。
+  foo2();     //  OK，不传name参数。
+```
+
 ### 基础类库
 
 ArkTS基础类库和容器类库增强了语言的基础功能，包括高精度浮点运算、二进制Buffer、XML生成解析转换和多种容器库等能力，协助开发者简化开发工作，提升开发效率。
