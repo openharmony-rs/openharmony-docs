@@ -5424,4 +5424,4 @@ Allows a system application to access the runtime capability framework.
 
 **Supported devices**: general devices
 
-**Since**: 24
+**Since**: 23
