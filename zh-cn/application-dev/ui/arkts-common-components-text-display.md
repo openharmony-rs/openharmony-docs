@@ -217,7 +217,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 | textIndent | 设置首行文本缩进。 |
 | textOverflow | 控制文本超长处理方式。 |
 | textSelectable | 设置文本是否可选择。 |
-| textVerticalAlign | 设置文本在垂直方向的对齐方式。 |
+| textVerticalAlign | 设置文本段落在垂直方向的对齐方式。 |
 | wordBreak | 设置断行规则。 |
 
 下面对常用的接口进行举例说明。
@@ -1213,7 +1213,7 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 
 ## 实现热搜榜
 
-该示例通过maxLines、textOverflow、textAlign、constraintSize属性展示了热搜榜的效果。
+该示例通过[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)、[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)、[textAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textalign)、[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)属性展示了热搜榜的效果。
 
   <!-- @[the_text_fact_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets) -->
   
