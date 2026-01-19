@@ -81,11 +81,11 @@ function add(x: number, y: number): number {
 
 **ArkTS示例：** ArkTS函数重载
 
-<!-- @[function_overload_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[function_overload_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
 
 2. ArkTS可选参数使用`?`，如`function foo(name?: string)`，而非Swift的默认值语法。
 
-<!-- @[optional_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[optional_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
 
 ### 基础类库
 
