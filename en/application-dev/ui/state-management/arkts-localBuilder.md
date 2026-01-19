@@ -450,7 +450,7 @@ struct ParentPage {
 ```
 
 ## FAQs
-### The UI is not refreshed when the @LocalBuilder function is used together with the **$$** parameter.
+### UI Is Not Refreshed When the @LocalBuilder Function Is Used Together with the $$ Parameter
 
 If the \@LocalBuilder function is used together with the `$$` operator, when a child component calls the \@LocalBuilder function of the parent component, parameter changes from the child component will not trigger UI re-rendering in the @LocalBuilder function.
 

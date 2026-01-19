@@ -1175,7 +1175,7 @@ struct Index {
 }
 ```
 
-### PersistentStorage->PersistenceV2
+### PersistentStorage -> PersistenceV2
 In V1, **PersistentStorage** provides UI data persistence. In V2, this functionality is replaced by the more convenient **PersistenceV2** API.
 - In V1, persistence triggering relies on AppStorage's observation capability and is coupled with AppStorage. As a result, you cannot control when to read or write persistent data.
 - **PersistentStorage** uses serialization and deserialization without explicit type information, resulting in type loss after persistence, and object methods cannot be persisted.
