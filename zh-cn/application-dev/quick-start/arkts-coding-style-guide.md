@@ -238,6 +238,13 @@ pointX = 10; pointY = 0;
 
 <!-- @[variable_definitions_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+let maxCount = 10;
+let isCompleted = false;
+let pointX = 0;
+let pointY = 0;
+```
+
 ### 空格应该突出关键字和重要信息，避免不必要的空格
 <!-- @[highlight_else_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
