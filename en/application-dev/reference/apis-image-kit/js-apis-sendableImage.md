@@ -33,7 +33,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 | Name | Type                                            | Mandatory| Description                                                            |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
 | colors  | ArrayBuffer                                      | Yes  | Color array in BGRA_8888 format.                                       |
-| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editable.|
+| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editability.|
 
 **Return value**
 
@@ -221,7 +221,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 | Name | Type                                            | Mandatory| Description                                                            |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
 | colors  | ArrayBuffer                                      | Yes  | Color array in BGRA_8888 format.                                       |
-| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editable.|
+| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editability.|
 
 **Return value**
 | Type                            | Description                 |
@@ -265,7 +265,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 
 | Name | Type                                            | Mandatory| Description                                                            |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| pixelmap | [image.PixelMap](arkts-apis-image-PixelMap.md) | Yes  | PixelMap object under image.|
+| pixelmap | [image.PixelMap](arkts-apis-image-PixelMap.md) | Yes  | Non-sendable PixelMap object under **image**.|
 
 **Return value**
 | Type                            | Description                 |

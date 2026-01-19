@@ -11,14 +11,14 @@ HUKS provides attestation for the public keys of asymmetric key pairs.
 
 HUKS issues a certificate for the public key of an asymmetric key pair stored in HUKS using the public key infrastructure (PKI) certificate chain technology. The certificate can prove the validity of the public key. The service can use the root CA certificate provided by the system to verify the key certificates issued by HUKS level by level to ensure that the public key and private key in the certificates are from a trusted hardware device and stored in HUKS.
 
-> **NOTE**
+> **NOTE**<br>
 > 1. Key attestation is not supported if the caller is a system service with APL of **normal**. In this case, **processName** and **APL** are left empty.
 > 2. Key attestation is not supported in Emulator scenarios.
 > 3. <!--RP1-->Mini-system devices<!--RP1End--> do not support key attestation.
 > 4. Key attestation is available to both the keys generated and imported. The service side needs to check whether the key source meets the expectation based on the key source field in the service certificate on the server.
 
 The **Extensions** field is in the ASN.1 DER encoding format. The data structure is defined as follows:
-```
+```asn1
 KeyAttestation ::= SEQUENCE {
   version            AttestationVersion DEFAULT v1,
   claim1             AttestationClaim,
@@ -51,7 +51,7 @@ ApplicationIDType ::= SEQUENCE {
 | 1.3.6.1.4.1.2011.2.376.2.2.4.8 | UTF8_STR | Reserved.| Product model, supported since API version 20.|
 
 <!--Del-->
-> **NOTE**
+> **NOTE**<br>
 > OEMs can decide whether to implement these fields based on their needs.
 <!--DelEnd-->
 
@@ -71,7 +71,7 @@ The key attestation process is as follows:
 
 <!--RP2-->
 Currently, the system provides two key attestation modes.
-- Anonymous key attestation: This type of attestation will not disclose the device information, and the caller does not require any permission. Anonymous key attestation is available to all applications. To protect user device information, third-party applications can use anonymous attestation only.
+- Anonymous key attestation: This type of attestation will not disclose the device information, and the caller does not require any permission. Anonymous key attestation is available to all applications. To protect user device information, third-party applications can use anonymous attestation only. By default, each application's instantaneous traffic for calling the anonymous key attestation API shall not exceed 35 requests per second.<!--RP3--><!--RP3End-->
 - Non-anonymous key attestation: The device information of the caller can be viewed, and the caller must have the [ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key) permission.
 <!--RP2End-->
 

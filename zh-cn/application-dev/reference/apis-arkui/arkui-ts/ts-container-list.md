@@ -1446,6 +1446,13 @@ export class ListDataSource implements IDataSource {
     }
   }
 
+  // 通知LazyForEach组件需要重载所有子组件
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    });
+  }
+
   // 通知控制器数据删除
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
@@ -1470,6 +1477,10 @@ export class ListDataSource implements IDataSource {
   public insertItem(index: number, data: number): void {
     this.list.splice(index, 0, data);
     this.notifyDataAdd(index);
+  }
+
+  public reloadData(): void {
+    this.notifyDataReload();
   }
 }
 ```
@@ -1599,7 +1610,7 @@ import { ListDataSource } from './ListDataSource';
 @Entry
 @Component
 struct ListExample {
-  arr: ListDataSource=new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   @State editFlag: boolean = false;
 
   build() {
@@ -1625,6 +1636,7 @@ struct ListExample {
                     if (index != undefined) {
                       console.info(this.arr.getData(index) + 'Delete');
                       this.arr.deleteItem(index);
+                      this.arr.reloadData();
                       console.info(JSON.stringify(this.arr));
                       this.editFlag = false;
                     }
@@ -1632,7 +1644,7 @@ struct ListExample {
                 }
               }
             }
-          }, (item: number) => item.toString())
+          }, (item: number, index: number) => item.toString() + index.toString())
         }.width('90%')
         .scrollBar(BarState.Off)
         .friction(0.6)

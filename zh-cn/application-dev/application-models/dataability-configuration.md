@@ -49,7 +49,7 @@ URI示例：
 config.json配置样例
 
 
-```json
+```json5
 "abilities": [
   ...
   {

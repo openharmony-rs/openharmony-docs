@@ -508,7 +508,7 @@ arrayList.forEach((value: number, index?: number) => {
 
 ### sort
 
-sort(comparator?: ArrayListComparatorFn\<T\>): void
+sort(comparator?: (firstValue: T, secondValue: T) => number): void
 
 根据指定比较器所定义的顺序，对ArrayList中的元素进行排序。
 
@@ -520,7 +520,14 @@ sort(comparator?: ArrayListComparatorFn\<T\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| comparator | [ArrayListComparatorFn\<T\>](#arraylistcomparatorfnt22) | 否 | 回调函数，默认为升序排序的回调函数。<br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
+| comparator | function | 否 | 回调函数，默认为升序排序的回调函数。 |
+
+comparator的参数说明：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| firstValue | T | 是 | 前一项元素。 |
+| secondValue | T | 是 | 后一项元素。 |
 
 **错误码：**
 
@@ -928,26 +935,3 @@ while(!temp.done) {
 // value: 5
 // value: 4
 ```
-
-### ArrayListComparatorFn\<T\><sup>22+</sup>
-
-type ArrayListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
-
-ArrayList中sort方法的回调函数。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| firstValue | T | 是 | 需要排序的前一项元素。 |
-| secondValue | T | 是 | 需要排序的后一项元素。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| number | 通过回调函数返回的值，ArrayList能够根据自定义的比较规则维护元素的顺序。 |

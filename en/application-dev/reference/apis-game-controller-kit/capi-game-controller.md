@@ -31,22 +31,22 @@ Provides APIs for game controller functionality.
 
 ### Types
 
-| Name| Description| 
+| Name| Description|
 | -------- | -------- |
-| typedef enum [GameController_ErrorCode](#gamecontroller_errorcode) [GameController_ErrorCode](#gamecontroller_errorcode) | Defines error codes of the game controller.| 
-| typedef struct [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) | Defines the calling result of [OH_GameDevice_GetAllDeviceInfos](#oh_gamedevice_getalldeviceinfos).| 
-| typedef enum [GameDevice_StatusChangedType](#gamedevice_statuschangedtype) [GameDevice_StatusChangedType](#gamedevice_statuschangedtype) | Defines status change types of devices.| 
-| typedef enum [GameDevice_DeviceType](#gamedevice_devicetype) [GameDevice_DeviceType](#gamedevice_devicetype) | Defines device types.| 
-| typedef struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) [GameDevice_DeviceInfo](#gamedevice_deviceinfo) | Defines the device information.| 
-| typedef struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) [GameDevice_DeviceEvent](#gamedevice_deviceevent) | Defines device status change events.| 
-| typedef void(\*[GameDevice_DeviceMonitorCallback](#gamedevice_devicemonitorcallback)) (const struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) \*deviceEvent) | Defines the callback function used in [OH_GameDevice_RegisterDeviceMonitor](#oh_gamedevice_registerdevicemonitor). Called when the device goes online or offline.| 
-| typedef enum [GamePad_AxisSourceType](#gamepad_axissourcetype) [GamePad_AxisSourceType](#gamepad_axissourcetype) | Defines source types of game controller axis events.| 
-| typedef enum [GamePad_Button_ActionType](#gamepad_button_actiontype) [GamePad_Button_ActionType](#gamepad_button_actiontype) | Defines button action types of the game controller.| 
-| typedef struct [GamePad_ButtonEvent](#gamepad_buttonevent) [GamePad_ButtonEvent](#gamepad_buttonevent) | Defines game controller button events.| 
-| typedef struct [GamePad_AxisEvent](#gamepad_axisevent) [GamePad_AxisEvent](#gamepad_axisevent) | Defines game controller axis events.| 
-| typedef struct [GamePad_PressedButton](#gamepad_pressedbutton) [GamePad_PressedButton](#gamepad_pressedbutton) | Defines pressed buttons.| 
-| typedef void(\*[GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback)) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent) | Defines the callback function used in the button event registration listening API. Called when a player presses a button.| 
-| typedef void(\*[GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback)) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent) | Defines the callback function used in the axis event registration listening API. Called when a player operates a joystick.| 
+| typedef enum [GameController_ErrorCode](#gamecontroller_errorcode) [GameController_ErrorCode](#gamecontroller_errorcode) | Defines error codes of the game controller.|
+| typedef struct [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) | Defines the calling result of [OH_GameDevice_GetAllDeviceInfos](#oh_gamedevice_getalldeviceinfos).|
+| typedef enum [GameDevice_StatusChangedType](#gamedevice_statuschangedtype) [GameDevice_StatusChangedType](#gamedevice_statuschangedtype) | Defines status change types of game devices. |
+| typedef enum [GameDevice_DeviceType](#gamedevice_devicetype) [GameDevice_DeviceType](#gamedevice_devicetype) | Defines game device types. |
+| typedef struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) [GameDevice_DeviceInfo](#gamedevice_deviceinfo) | Defines the game device information. |
+| typedef struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) [GameDevice_DeviceEvent](#gamedevice_deviceevent) | Defines game device status change events. |
+| typedef void(\*[GameDevice_DeviceMonitorCallback](#gamedevice_devicemonitorcallback)) (const struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) \*deviceEvent) | Defines the callback function used in [OH_GameDevice_RegisterDeviceMonitor](#oh_gamedevice_registerdevicemonitor). Called when the game device goes online or offline.|
+| typedef enum [GamePad_AxisSourceType](#gamepad_axissourcetype) [GamePad_AxisSourceType](#gamepad_axissourcetype) | Defines source types of game controller axis events.|
+| typedef enum [GamePad_Button_ActionType](#gamepad_button_actiontype) [GamePad_Button_ActionType](#gamepad_button_actiontype) | Defines button action types of the game controller.|
+| typedef struct [GamePad_ButtonEvent](#gamepad_buttonevent) [GamePad_ButtonEvent](#gamepad_buttonevent) | Defines game controller button events.|
+| typedef struct [GamePad_AxisEvent](#gamepad_axisevent) [GamePad_AxisEvent](#gamepad_axisevent) | Defines game controller axis events.|
+| typedef struct [GamePad_PressedButton](#gamepad_pressedbutton) [GamePad_PressedButton](#gamepad_pressedbutton) | Defines pressed buttons.|
+| typedef void(\*[GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback)) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent) | Defines the callback function used in the button event registration listening API. Called when a player presses a button.|
+| typedef void(\*[GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback)) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent) | Defines the callback function used in the axis event registration listening API. Called when a player operates a joystick.|
 
 
 ### Enums
@@ -54,8 +54,8 @@ Provides APIs for game controller functionality.
 | Name| Description| 
 | -------- | -------- |
 | [GameController_ErrorCode](#gamecontroller_errorcode) {<br>GAME_CONTROLLER_SUCCESS = 0,<br>GAME_CONTROLLER_PARAM_ERROR = 401,<br>GAME_CONTROLLER_MULTIMODAL_INPUT_ERROR = 32200001,<br>GAME_CONTROLLER_NO_MEMORY = 32200002<br>} | Game controller error codes.| 
-| [GameDevice_StatusChangedType](#gamedevice_statuschangedtype) {<br>OFFLINE = 0,<br>ONLINE = 1<br>} | Device status change types.| 
-| [GameDevice_DeviceType](#gamedevice_devicetype) {<br>UNKNOWN = 0,<br>GAME_PAD = 1<br>} | Device types.| 
+| [GameDevice_StatusChangedType](#gamedevice_statuschangedtype) {<br>OFFLINE = 0,<br>ONLINE = 1<br>} | Game device status change types.| 
+| [GameDevice_DeviceType](#gamedevice_devicetype) {<br>UNKNOWN = 0,<br>GAME_PAD = 1<br>} | Game device types.| 
 | [GamePad_AxisSourceType](#gamepad_axissourcetype) {<br>DPAD = 0,<br>LEFT_THUMBSTICK = 1,<br>RIGHT_THUMBSTICK = 2,<br>LEFT_TRIGGER = 3,<br>RIGHT_TRIGGER = 4<br>} | Source types of game controller axis events.| 
 | [GamePad_Button_ActionType](#gamepad_button_actiontype) {<br>DOWN = 0,<br>UP = 1<br>} | Button action types of the game controller.| 
 
@@ -64,21 +64,21 @@ Provides APIs for game controller functionality.
 
 | Name| Description| 
 | -------- | -------- |
-| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_GetAllDeviceInfos](#oh_gamedevice_getalldeviceinfos) ([GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*\*allDeviceInfos) | Obtains information about all online devices.| 
-| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_RegisterDeviceMonitor](#oh_gamedevice_registerdevicemonitor) ([GameDevice_DeviceMonitorCallback](#gamedevice_devicemonitorcallback) deviceMonitorCallback) | Registers the listening callback for device status change events.| 
-| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_UnregisterDeviceMonitor](#oh_gamedevice_unregisterdevicemonitor) (void) | Unregisters the listening callback for device status change events.| 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_GetAllDeviceInfos](#oh_gamedevice_getalldeviceinfos) ([GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*\*allDeviceInfos) | Obtains information about all online controllers.| 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_RegisterDeviceMonitor](#oh_gamedevice_registerdevicemonitor) ([GameDevice_DeviceMonitorCallback](#gamedevice_devicemonitorcallback) deviceMonitorCallback) | Registers the listening callback for game device status change events.| 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_UnregisterDeviceMonitor](#oh_gamedevice_unregisterdevicemonitor) (void) | Unregisters the listening callback for game device status change events.| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DestroyAllDeviceInfos](#oh_gamedevice_destroyalldeviceinfos) ([GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*\*allDeviceInfos) | Destroys the [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) instance when it is no longer in use.| 
-| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_AllDeviceInfos_GetCount](#oh_gamedevice_alldeviceinfos_getcount) (const struct [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*allDeviceInfos, int32_t \*count) | Obtains the number of devices.| 
-| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_AllDeviceInfos_GetDeviceInfo](#oh_gamedevice_alldeviceinfos_getdeviceinfo) (const struct [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*allDeviceInfos, const int32_t index, [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*\*deviceInfo) | Obtains information about a device with a specified index.| 
-| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceEvent_GetChangedType](#oh_gamedevice_deviceevent_getchangedtype) (const struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) \*deviceEvent, [GameDevice_StatusChangedType](#gamedevice_statuschangedtype) \*statusChangedType) | Obtains the status change type from a device status change event.| 
-| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceEvent_GetDeviceInfo](#oh_gamedevice_deviceevent_getdeviceinfo) (const struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) \*deviceEvent, [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*\*deviceInfo) | Obtains the device information from a device status change event.| 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_AllDeviceInfos_GetCount](#oh_gamedevice_alldeviceinfos_getcount) (const struct [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*allDeviceInfos, int32_t \*count) | Obtains the number of game devices.| 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_AllDeviceInfos_GetDeviceInfo](#oh_gamedevice_alldeviceinfos_getdeviceinfo) (const struct [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*allDeviceInfos, const int32_t index, [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*\*deviceInfo) | Obtains information about a game device with a specified index.| 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceEvent_GetChangedType](#oh_gamedevice_deviceevent_getchangedtype) (const struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) \*deviceEvent, [GameDevice_StatusChangedType](#gamedevice_statuschangedtype) \*statusChangedType) | Obtains the status change type from a game device status change event.| 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceEvent_GetDeviceInfo](#oh_gamedevice_deviceevent_getdeviceinfo) (const struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) \*deviceEvent, [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*\*deviceInfo) | Obtains the game device information from a device status change event.| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DestroyDeviceInfo](#oh_gamedevice_destroydeviceinfo) ([GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*\*deviceInfo) | Destroys the [GameDevice_DeviceInfo](#gamedevice_deviceinfo) instance when it is no longer in use.| 
-| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetDeviceId](#oh_gamedevice_deviceinfo_getdeviceid) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, char \*\*deviceId) | Obtains the device ID from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).| 
-| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetName](#oh_gamedevice_deviceinfo_getname) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, char \*\*name) | Obtains the device name from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).| 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetDeviceId](#oh_gamedevice_deviceinfo_getdeviceid) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, char \*\*deviceId) | Obtains the game device ID from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).| 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetName](#oh_gamedevice_deviceinfo_getname) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, char \*\*name) | Obtains the game device name from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetProduct](#oh_gamedevice_deviceinfo_getproduct) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, int32_t \*product) | Obtains the product information from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetVersion](#oh_gamedevice_deviceinfo_getversion) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, int32_t \*version) | Obtains the version information from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetPhysicalAddress](#oh_gamedevice_deviceinfo_getphysicaladdress) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, char \*\*physicalAddress) | Obtains the physical address from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).| 
-| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetDeviceType](#oh_gamedevice_deviceinfo_getdevicetype) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, [GameDevice_DeviceType](#gamedevice_devicetype) \*deviceType) | Obtains the device type from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).| 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetDeviceType](#oh_gamedevice_deviceinfo_getdevicetype) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, [GameDevice_DeviceType](#gamedevice_devicetype) \*deviceType) | Obtains the game device type from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_LeftShoulder_RegisterButtonInputMonitor](#oh_gamepad_leftshoulder_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | Registers the listening callback for the Left Shoulder button event.| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_LeftShoulder_UnregisterButtonInputMonitor](#oh_gamepad_leftshoulder_unregisterbuttoninputmonitor) (void) | Unregisters the listening callback for the Left Shoulder button event.| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_RightShoulder_RegisterButtonInputMonitor](#oh_gamepad_rightshoulder_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | Registers the listening callback for the Right Shoulder button event.| 
@@ -123,7 +123,7 @@ Provides APIs for game controller functionality.
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_RightThumbstick_UnregisterButtonInputMonitor](#oh_gamepad_rightthumbstick_unregisterbuttoninputmonitor) (void) | Unregisters the listening callback for the Right Thumbstick button event.| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_RightThumbstick_RegisterAxisInputMonitor](#oh_gamepad_rightthumbstick_registeraxisinputmonitor) ([GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback) inputMonitorCallback) | Registers the listening callback for the Right Thumbstick axis event.| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_RightThumbstick_UnregisterAxisInputMonitor](#oh_gamepad_rightthumbstick_unregisteraxisinputmonitor) (void) | Unregisters the listening callback for the Right Thumbstick axis event.| 
-| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonEvent_GetDeviceId](#oh_gamepad_buttonevent_getdeviceid) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, char \*\*deviceId) | Obtains the device ID from [GamePad_ButtonEvent](#gamepad_buttonevent).| 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonEvent_GetDeviceId](#oh_gamepad_buttonevent_getdeviceid) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, char \*\*deviceId) | Obtains the game device ID from [GamePad_ButtonEvent](#gamepad_buttonevent).| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonEvent_GetButtonAction](#oh_gamepad_buttonevent_getbuttonaction) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, [GamePad_Button_ActionType](#gamepad_button_actiontype) \*actionType) | Obtains the button action type from [GamePad_ButtonEvent](#gamepad_buttonevent).| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonEvent_GetButtonCode](#oh_gamepad_buttonevent_getbuttoncode) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, int32_t \*code) | Obtains the button code from [GamePad_ButtonEvent](#gamepad_buttonevent).| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonEvent_GetButtonCodeName](#oh_gamepad_buttonevent_getbuttoncodename) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, char \*\*codeName) | Obtains the button name from [GamePad_ButtonEvent](#gamepad_buttonevent).| 
@@ -133,7 +133,7 @@ Provides APIs for game controller functionality.
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_PressedButton_GetButtonCode](#oh_gamepad_pressedbutton_getbuttoncode) (const struct [GamePad_PressedButton](#gamepad_pressedbutton) \*pressedButton, int32_t \*code) | Obtains the button code from [GamePad_PressedButton](#gamepad_pressedbutton).| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_PressedButton_GetButtonCodeName](#oh_gamepad_pressedbutton_getbuttoncodename) (const struct [GamePad_PressedButton](#gamepad_pressedbutton) \*pressedButton, char \*\*codeName) | Obtains the button name from [GamePad_PressedButton](#gamepad_pressedbutton).| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonEvent_GetActionTime](#oh_gamepad_buttonevent_getactiontime) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, int64_t \*actionTime) | Obtains the button action time from [GamePad_ButtonEvent](#gamepad_buttonevent).| 
-| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetDeviceId](#oh_gamepad_axisevent_getdeviceid) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, char \*\*deviceId) | Obtains the device ID from [GamePad_AxisEvent](#gamepad_axisevent).| 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetDeviceId](#oh_gamepad_axisevent_getdeviceid) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, char \*\*deviceId) | Obtains the game device ID from [GamePad_AxisEvent](#gamepad_axisevent).| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetAxisSourceType](#oh_gamepad_axisevent_getaxissourcetype) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, [GamePad_AxisSourceType](#gamepad_axissourcetype) \*axisSourceType) | Obtains the source type of axis event from [GamePad_AxisEvent](#gamepad_axisevent).| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetXAxisValue](#oh_gamepad_axisevent_getxaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | Obtains the X-axis value from [GamePad_AxisEvent](#gamepad_axisevent).| 
 | [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetYAxisValue](#oh_gamepad_axisevent_getyaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | Obtains the Y-axis value from [GamePad_AxisEvent](#gamepad_axisevent).| 
@@ -183,7 +183,7 @@ typedef struct GameDevice_DeviceEvent GameDevice_DeviceEvent
 
 **Description**
 
-Defines device status change events.
+Defines game device status change events.
 
 **Since**: 21
 
@@ -196,7 +196,7 @@ typedef struct GameDevice_DeviceInfo GameDevice_DeviceInfo
 
 **Description**
 
-Defines the device information.
+Defines the game device information.
 
 **Since**: 21
 
@@ -209,7 +209,7 @@ typedef void(*GameDevice_DeviceMonitorCallback) (const struct GameDevice_DeviceE
 
 **Description**
 
-Defines the callback function used in [OH_GameDevice_RegisterDeviceMonitor](#oh_gamedevice_registerdevicemonitor). Called when the device goes online or offline.
+Defines the callback function used in [OH_GameDevice_RegisterDeviceMonitor](#oh_gamedevice_registerdevicemonitor). Called when the game device goes online or offline.
 
 **Since**: 21
 
@@ -217,7 +217,7 @@ Defines the callback function used in [OH_GameDevice_RegisterDeviceMonitor](#oh_
 
 | Name| Description| 
 | -------- | -------- |
-| deviceEvent | Output parameter. Device status change event [GameDevice_DeviceEvent](#gamedevice_deviceevent).| 
+| deviceEvent | Output parameter. Game device status change event [GameDevice_DeviceEvent](#gamedevice_deviceevent).| 
 
 
 ### GameDevice_DeviceType
@@ -228,7 +228,7 @@ typedef enum GameDevice_DeviceType GameDevice_DeviceType
 
 **Description**
 
-Defines device types.
+Defines game device types.
 
 **Since**: 21
 
@@ -241,7 +241,7 @@ typedef enum GameDevice_StatusChangedType GameDevice_StatusChangedType
 
 **Description**
 
-Defines status change types of devices.
+Defines status change types of game devices.
 
 **Since**: 21
 
@@ -368,8 +368,8 @@ Defines error codes of the game controller.
 | -------- | -------- |
 | GAME_CONTROLLER_SUCCESS | Success.| 
 | GAME_CONTROLLER_PARAM_ERROR | Invalid parameter.| 
-| GAME_CONTROLLER_MULTIMODAL_INPUT_ERROR | Failed to query all device information in multimodal input.| 
-| GAME_CONTROLLER_NO_MEMORY | Insufficient device memory.| 
+| GAME_CONTROLLER_MULTIMODAL_INPUT_ERROR | Failed to query all game device information in multimodal input.| 
+| GAME_CONTROLLER_NO_MEMORY | Insufficient game device memory.| 
 
 
 ### GameDevice_DeviceType
@@ -380,7 +380,7 @@ enum GameDevice_DeviceType
 
 **Description**
 
-Defines device types.
+Defines game device types.
 
 **Since**: 21
 
@@ -398,14 +398,14 @@ enum GameDevice_StatusChangedType
 
 **Description**
 
-Defines status change types of devices.
+Defines status change types of game devices.
 
 **Since**: 21
 
 | Value| Description| 
 | -------- | -------- |
-| OFFLINE | The device is offline.| 
-| ONLINE | The device is online.| 
+| OFFLINE | The game device is offline.| 
+| ONLINE | The game device is online.| 
 
 
 ### GamePad_AxisSourceType
@@ -458,7 +458,7 @@ GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetCount (const struct Gam
 
 **Description**
 
-Obtains the number of devices.
+Obtains the number of game devices.
 
 **Since**: 21
 
@@ -467,7 +467,7 @@ Obtains the number of devices.
 | Name| Description| 
 | -------- | -------- |
 | allDeviceInfos | Pointer to the [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) instance. The pointer cannot be null. Otherwise, an error code is returned.| 
-| count | Output parameter. Number of devices.| 
+| count | Output parameter. Number of game devices.| 
 
 **Returns**
 
@@ -486,7 +486,7 @@ GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetDeviceInfo (const struc
 
 **Description**
 
-Obtains information about a device with a specified index.
+Obtains information about a game device with a specified index.
 
 **Since**: 21
 
@@ -495,7 +495,7 @@ Obtains information about a device with a specified index.
 | Name| Description| 
 | -------- | -------- |
 | allDeviceInfos | Pointer to the [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) instance. The pointer cannot be null. Otherwise, an error code is returned.| 
-| index | Index of the device to be queried.| 
+| index | Index of the game device to be queried.| 
 | deviceInfo | Output parameter. The level-2 pointer points to the [GameDevice_DeviceInfo](#gamedevice_deviceinfo) instance.| 
 
 **Returns**
@@ -504,7 +504,7 @@ Execution result of the function, with the error code [GameController_ErrorCode]
 
 - **GAME_CONTROLLER_SUCCESS**: Success.
 
-- **GAME_CONTROLLER_PARAM_ERROR**: **allDeviceInfos** is null, or the index is less than 0 or greater than or equal to the total number of devices.
+- **GAME_CONTROLLER_PARAM_ERROR**: **allDeviceInfos** is null, or the index is less than 0 or greater than or equal to the total number of game devices.
 
 
 ### OH_GameDevice_DestroyAllDeviceInfos()
@@ -578,7 +578,7 @@ Obtains the status change type from [GameDevice_DeviceEvent](#gamedevice_devicee
 | Name| Description| 
 | -------- | -------- |
 | deviceEvent | Pointer to the [GameDevice_DeviceEvent](#gamedevice_deviceevent) instance. The pointer cannot be null. Otherwise, an error code is returned.| 
-| statusChangedType | Output parameter. Device status change type.| 
+| statusChangedType | Output parameter. Game device status change type.| 
 
 **Returns**
 
@@ -597,7 +597,7 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo (const struct G
 
 **Description**
 
-Obtains the device information from [GameDevice_DeviceEvent](#gamedevice_deviceevent).
+Obtains the game device information from [GameDevice_DeviceEvent](#gamedevice_deviceevent).
 
 **Since**: 21
 
@@ -634,7 +634,7 @@ Obtains the device ID from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).
 | Name| Description| 
 | -------- | -------- |
 | deviceInfo | Pointer to the [GameDevice_DeviceInfo](#gamedevice_deviceinfo) instance. The pointer cannot be null. Otherwise, an error code is returned.| 
-| deviceId | Output parameter. The level-2 pointer points to the device ID.| 
+| deviceId | Output parameter. The level-2 pointer points to the game device ID.| 
 
 **Returns**
 
@@ -644,7 +644,7 @@ Execution result of the function, with the error code [GameController_ErrorCode]
 
 - **GAME_CONTROLLER_PARAM_ERROR**: **deviceInfo** or **deviceId** is null.
 
-- **GAME_CONTROLLER_NO_MEMORY**: Insufficient device memory.
+- **GAME_CONTROLLER_NO_MEMORY**: Insufficient game device memory.
 
 
 ### OH_GameDevice_DeviceInfo_GetDeviceType()
@@ -655,7 +655,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType (const struct Ga
 
 **Description**
 
-Obtains the device type from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).
+Obtains the game device type from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).
 
 **Since**: 21
 
@@ -664,7 +664,7 @@ Obtains the device type from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).
 | Name| Description| 
 | -------- | -------- |
 | deviceInfo | Pointer to the [GameDevice_DeviceInfo](#gamedevice_deviceinfo) instance. The pointer cannot be null. Otherwise, an error code is returned.| 
-| deviceType | Output parameter. Device type.| 
+| deviceType | Output parameter. Game device type.| 
 
 **Returns**
 
@@ -683,7 +683,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetName (const struct GameDevi
 
 **Description**
 
-Obtains the device name from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).
+Obtains the game device name from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).
 
 **Since**: 21
 
@@ -692,7 +692,7 @@ Obtains the device name from [GameDevice_DeviceInfo](#gamedevice_deviceinfo).
 | Name| Description| 
 | -------- | -------- |
 | deviceInfo | Pointer to the [GameDevice_DeviceInfo](#gamedevice_deviceinfo) instance. The pointer cannot be null. Otherwise, an error code is returned.| 
-| name | Output parameter. The level-2 pointer points to the device name.| 
+| name | Output parameter. The level-2 pointer points to the game device name.| 
 
 **Returns**
 
@@ -702,7 +702,7 @@ Execution result of the function, with the error code [GameController_ErrorCode]
 
 - **GAME_CONTROLLER_PARAM_ERROR**: **deviceInfo** or **name** is null.
 
-- **GAME_CONTROLLER_NO_MEMORY**: Insufficient device memory.
+- **GAME_CONTROLLER_NO_MEMORY**: Insufficient game device memory.
 
 
 ### OH_GameDevice_DeviceInfo_GetPhysicalAddress()
@@ -732,7 +732,7 @@ Execution result of the function, with the error code [GameController_ErrorCode]
 
 - **GAME_CONTROLLER_PARAM_ERROR**: **deviceInfo** or **physicalAddress** is null.
 
-- **GAME_CONTROLLER_NO_MEMORY**: Insufficient device memory.
+- **GAME_CONTROLLER_NO_MEMORY**: Insufficient game device memory.
 
 
 ### OH_GameDevice_DeviceInfo_GetProduct()
@@ -799,7 +799,7 @@ GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos (GameDevice_AllDeviceIn
 
 **Description**
 
-Obtains information about all online devices.
+Obtains information about all online game devices.
 
 **Since**: 21
 
@@ -815,7 +815,7 @@ Execution result of the function, with the error code [GameController_ErrorCode]
 
 - **GAME_CONTROLLER_SUCCESS**: Success.
 
-- **GAME_CONTROLLER_MULTIMODAL_INPUT_ERROR**: Failed to query all device information in multimodal input.
+- **GAME_CONTROLLER_MULTIMODAL_INPUT_ERROR**: Failed to query all game device information in multimodal input.
 
 
 ### OH_GameDevice_RegisterDeviceMonitor()
@@ -826,7 +826,7 @@ GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor (GameDevice_DeviceM
 
 **Description**
 
-Registers the listening callback for device status change events.
+Registers the listening callback for game device status change events.
 
 **Since**: 21
 
@@ -853,7 +853,7 @@ GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor (void)
 
 **Description**
 
-Unregisters the listening callback for device status change events.
+Unregisters the listening callback for game device status change events.
 
 **Since**: 21
 
@@ -954,7 +954,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetDeviceId (const struct GamePad_
 
 **Description**
 
-Obtains the device ID from [GamePad_AxisEvent](#gamepad_axisevent).
+Obtains the game device ID from [GamePad_AxisEvent](#gamepad_axisevent).
 
 **Since**: 21
 
@@ -963,7 +963,7 @@ Obtains the device ID from [GamePad_AxisEvent](#gamepad_axisevent).
 | Name| Description| 
 | -------- | -------- |
 | axisEvent | Pointer to the [GamePad_AxisEvent](#gamepad_axisevent) instance. The pointer cannot be null. Otherwise, an error code is returned.| 
-| deviceId | Output parameter. The level-2 pointer points to the device ID.| 
+| deviceId | Output parameter. The level-2 pointer points to the game device ID.| 
 
 **Returns**
 
@@ -973,7 +973,7 @@ Execution result of the function, with the error code [GameController_ErrorCode]
 
 - **GAME_CONTROLLER_PARAM_ERROR**: **axisEvent** or **deviceId** is null.
 
-- **GAME_CONTROLLER_NO_MEMORY**: Insufficient device memory.
+- **GAME_CONTROLLER_NO_MEMORY**: Insufficient game device memory.
 
 
 ### OH_GamePad_AxisEvent_GetGasAxisValue()
@@ -1415,7 +1415,7 @@ Execution result of the function, with the error code [GameController_ErrorCode]
 
 - **GAME_CONTROLLER_PARAM_ERROR**: **buttonEvent** or **codeName** is null.
 
-- **GAME_CONTROLLER_NO_MEMORY**: Insufficient device memory.
+- **GAME_CONTROLLER_NO_MEMORY**: Insufficient game device memory.
 
 
 ### OH_GamePad_ButtonEvent_GetDeviceId()
@@ -1426,7 +1426,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetDeviceId (const struct GamePa
 
 **Description**
 
-Obtains the device ID from [GamePad_ButtonEvent](#gamepad_buttonevent).
+Obtains the game device ID from [GamePad_ButtonEvent](#gamepad_buttonevent).
 
 **Since**: 21
 
@@ -1435,7 +1435,7 @@ Obtains the device ID from [GamePad_ButtonEvent](#gamepad_buttonevent).
 | Name| Description| 
 | -------- | -------- |
 | buttonEvent | Pointer to the [GamePad_ButtonEvent](#gamepad_buttonevent) instance. The pointer cannot be null. Otherwise, an error code is returned.| 
-| deviceId | Output parameter. The level-2 pointer points to the device ID.| 
+| deviceId | Output parameter. The level-2 pointer points to the game device ID.| 
 
 **Returns**
 
@@ -1445,7 +1445,7 @@ Execution result of the function, with the error code [GameController_ErrorCode]
 
 - **GAME_CONTROLLER_PARAM_ERROR**: **buttonEvent** or **deviceId** is null.
 
-- **GAME_CONTROLLER_NO_MEMORY**: Insufficient device memory.
+- **GAME_CONTROLLER_NO_MEMORY**: Insufficient game device memory.
 
 
 ### OH_GamePad_ButtonHome_RegisterButtonInputMonitor()
@@ -2146,7 +2146,7 @@ Execution result of the function, with the error code [GameController_ErrorCode]
 
 - **GAME_CONTROLLER_PARAM_ERROR**: **pressedButton** or **codeName** is null.
 
-- **GAME_CONTROLLER_NO_MEMORY**: Insufficient device memory.
+- **GAME_CONTROLLER_NO_MEMORY**: Insufficient game device memory.
 
 
 ### OH_GamePad_PressedButtons_GetButtonInfo()
