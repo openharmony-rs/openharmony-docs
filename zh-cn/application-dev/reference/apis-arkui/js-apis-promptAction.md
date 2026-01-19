@@ -116,7 +116,7 @@ closeToast(toastId: number): void
 
 > **说明：**
 > 
-> 直接使用closeToast可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用UIContext中的getPromptAction方法获取到PromptAction对象，再通过该对象调用[openToast](arkts-apis-uicontext-promptaction.md#closetoast18)实现。
+> 直接使用closeToast可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用UIContext中的getPromptAction方法获取到PromptAction对象，再通过该对象调用[closeToast](arkts-apis-uicontext-promptaction.md#closetoast18)实现。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
