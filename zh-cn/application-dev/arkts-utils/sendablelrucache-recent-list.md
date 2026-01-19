@@ -17,6 +17,50 @@
    此例设置SendableLruCache实例的最大容量为4，用SendableClass类管理，并导出SendableClass类实例对象。
 
    <!-- @[define_SendableClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/utils/LruCache.ets) -->  
+   
+   ``` TypeScript
+   // LruCache.ets
+   import { ArkTSUtils } from '@kit.ArkTS';
+   
+   // 使用use shared标记为共享模块。
+   'use shared'
+   
+   // SendableClass实例对象在不同线程间可共享。
+   @Sendable
+   class SendableClass {
+     // 使用SendableLruCache实例对象时需加锁，避免多线程同时操作导致数据不一致。
+     private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+     private books_: ArkTSUtils.SendableLruCache<string, string> = new ArkTSUtils.SendableLruCache<string, string>(4);
+   
+     constructor() {
+       this.books_.put('fourth', 'Book4');
+       this.books_.put('third', 'Book3');
+       this.books_.put('second', 'Book2');
+       this.books_.put('first', 'Book1');
+     }
+   
+     // 封装put、get、keys方法，加锁操作。
+     public async put(key: string, value: string) {
+       await this.lock_.lockAsync(() => {
+         this.books_.put(key, value);
+       })
+     }
+   
+     public async get(key: string): Promise<string | undefined> {
+       return this.lock_.lockAsync(() => {
+         return this.books_.get(key);
+       });
+     }
+   
+     public async keys(): Promise<string[]> {
+       return this.lock_.lockAsync(() => {
+         return this.books_.keys();
+       });
+     }
+   }
+   
+   export let lruCache = new SendableClass();
+   ```
 
 2. 在Index.ets页面同目录下创建4个图书页面，每个页面显示相应的图书信息，并将每个页面的路径注册到`src/main/resources/base/profile/main_pages.json`文件中。
 
