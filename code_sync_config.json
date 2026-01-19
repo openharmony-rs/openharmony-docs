@@ -9306,9 +9306,9 @@
 						"start_line":158
 					},
 					{
-						"end_line":683,
+						"end_line":687,
 						"name":"richEditor_prepareMenu",
-						"start_line":582
+						"start_line":584
 					},
 					{
 						"end_line":153,
@@ -9316,7 +9316,7 @@
 						"start_line":70
 					},
 					{
-						"end_line":289,
+						"end_line":291,
 						"name":"richEditor_maxLines",
 						"start_line":248
 					},
