@@ -97,6 +97,15 @@ arkOptions/tscConfig中maxFlowDepth字段展示。
 
 <!-- @[add_tscConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/build-profile.json5) --> 
 
+``` JSON5
+// 在工程名/build-profile.json5文件中。
+"arkOptions": {
+  "tscConfig": {
+    "maxFlowDepth": 2222
+  }
+}
+```
+
 ### 注意事项
 
 - 仅可在工程级目录下build-profile.json5文件中配置maxFlowDepth字段。
