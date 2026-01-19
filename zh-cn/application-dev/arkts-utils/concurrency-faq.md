@@ -518,6 +518,20 @@ TaskPool的任务执行函数Concurrent函数只能使用局部变量和函数�
 2. TaskPool任务执行后的结果可以在.then中返回，需要保存的数据如果仅在当前线程使用，可以在.then中将执行结果保存到自定义的数据结构中。
 
    <!-- @[define_sendableTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->    
+   
+   ``` TypeScript
+   // sendable.ets，与Index.ets在同级目录下。
+   @Sendable
+   export class TestClass {
+     public name: string = 'test';
+     setName(name: string) {
+       this.name = name;
+     }
+     getName(): string {
+       return this.name;
+     }
+   }
+   ```
 
    <!-- @[save_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SaveResult.ets) -->    
    
