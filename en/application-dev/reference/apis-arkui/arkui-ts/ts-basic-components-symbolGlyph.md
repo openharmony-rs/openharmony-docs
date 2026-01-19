@@ -84,7 +84,7 @@ The display size of the symbol glyph is controlled by the **fontSize** setting. 
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Size of the **SymbolGlyph** component.<br>Default value: **16fp**<br>Unit: [fp](ts-pixel-units.md)<br>Percentage strings are not supported.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Size of the **SymbolGlyph** component.<br>Default value: **16fp**<br>Unit: [fp](ts-pixel-units.md)<br>Percentage strings are not supported.|
 
 ### fontWeight
 
@@ -108,7 +108,7 @@ The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 
 | Name| Type                                                        | Mandatory| Description                                               |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| value  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string | Yes  | Font weight of the **SymbolGlyph** component.<br>Default value: **FontWeight.Normal**|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | Yes  | Font weight of the **SymbolGlyph** component.<br>Default value: **FontWeight.Normal**|
 
 ### renderingStrategy
 
@@ -214,7 +214,7 @@ Sets the minimum font scale factor for the **SymbolGlyph** component.
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)>  | Yes  | Minimum font scale factor for the **SymbolGlyph** component.<br>Value range: [0, 1]<br>The value **0** results in the minimum scaling.<br>**NOTE**<br>A value less than 0 is handled as 0. A value greater than 1 is handled as 1. Abnormal values are ineffective by default.  |
+| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | Yes  | Minimum font scale factor for the **SymbolGlyph** component.<br>Value range: [0, 1]<br>The value **0** results in the minimum scaling.<br>**NOTE**<br>A value less than 0 is handled as 0. A value greater than 1 is handled as 1. Abnormal values are ineffective by default.  |
 
 ### maxFontScale<sup>18+</sup>
 
@@ -230,15 +230,15 @@ Sets the maximum font scale factor for the **SymbolGlyph** component.
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)>  | Yes  | Maximum font scale factor for the **SymbolGlyph** component.<br>Value range: [1, +∞)<br>**NOTE**<br>A value less than 1 is handled as **1**. Abnormal values are ineffective by default.|
+| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | Yes  | Maximum font scale factor for the **SymbolGlyph** component.<br>Value range: [1, +∞)<br>**NOTE**<br>A value less than 1 is handled as **1**. Abnormal values are ineffective by default.|
 
 ### shaderStyle<sup>20+</sup>
 
 shaderStyle(shader: Array\<ShaderStyle | undefined\> | ShaderStyle)
 
-Sets the gradient effect of the **SymbolGlyph** component.
+Applies a gradient or solid color shader effect to the **SymbolGlyph** component.
 
-Applies gradient or solid color effects to text. Supports [RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20), [LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20), and [ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20). **shaderStyle** takes precedence over [fontColor](../arkui-ts/ts-basic-components-symbolSpan.md#fontcolor) and AI-based styling. For solid colors, prefer using [fontColor](../arkui-ts/ts-basic-components-symbolSpan.md#fontcolor).
+This API supports [RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20), [LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20), and [ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20). When set, **shaderStyle** takes precedence over [fontColor](../arkui-ts/ts-basic-components-symbolSpan.md#fontcolor) and any AI-based styling. To apply a simple solid color, using [fontColor](../arkui-ts/ts-basic-components-symbolSpan.md#fontcolor) is recommended.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -248,7 +248,7 @@ Applies gradient or solid color effects to text. Supports [RadialGradientStyle](
 
 | Name    | Type                                        | Mandatory                            | Description                              |
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
-| shader | Array\<[ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined\> \| [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) | Yes| Shader effect.<br>When ShaderStyle is passed, all layers are overwritten. When an array is passed, if the data item is ShaderStyle, the layer is applied. If the array item is undefined, the layer uses the default SymbolGlyph color. The layers that are not set also use the default color. Based on the input, the system applies a radial gradient ([RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)), linear gradient ([LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)), or solid color ([ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)).<br>**NOTE**<br>Unit: [vp](ts-pixel-units.md)<br>Use the center point by percentage. If a non-percentage (for example, 10PX) is used, the effect is the same as that of 1000%.<br>You are advised to use a percentage as the radius.<br>The percentage is based on the icon size. The recommended value range is [0, 1).|
+| shader | Array\<[ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined\> \| [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) | Yes| Shader effect.<br>Input types and behavior:<br>Single **ShaderStyle** object: applies the specified effect to all layers. Array of **ShaderStyle** objects: applies the specified effect to the corresponding layer. Array of **undefined**: applies the default **SymbolGlyph** color to the corresponding layer. Layers unset retain their default color.<br> Based on the input, the system applies a radial gradient ([RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)), linear gradient ([LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)), or solid color ([ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)) to the **SymbolGlyph** component.<br>**NOTE**<br>Unit: [vp](ts-pixel-units.md)<br>Specify the center point and radius using percentages. If a non-percentage value (e.g., **10px**) is provided, it will be interpreted as 1000%.<br>You are advised to specify the radius using percentages.<br>Percentages are relative to the icon's size. The recommended value range is [0, 1).|
 
 ### symbolShadow<sup>20+</sup>
 
@@ -266,7 +266,7 @@ Sets the shadow effect of the **SymbolGlyph** component.
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| shadow  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)\>  | Yes | Shadow effect of the **SymbolGlyph** component.<br>Unit: [vp](ts-pixel-units.md)<br>Default value: {<br>radius: 0,<br>color: Color.Black<br>offsetX: 0,<br>offsetY: 0<br>} <br>The fill and type attributes and the enumerated values of ColoringStrategy in color are not supported.|
+| shadow  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)\>  | Yes | Shadow effect of the **SymbolGlyph** component.<br>Unit: [vp](ts-pixel-units.md)<br>Default value: {<br>radius: 0,<br>color: Color.Black<br>offsetX: 0,<br>offsetY: 0<br>} <br>The **fill** and **type** attributes, as well as the enumerated values of **ColoringStrategy** within the **color **attribute, are not supported.|
 
 ## ScaleSymbolEffect<sup>12+</sup>
 
@@ -496,7 +496,7 @@ A constructor used to create a **ReplaceSymbolEffect** instance, which comes wit
 | Name| Type| Mandatory| Description |
 | ---- | ---- | ---- | ---- |
 | scope  | [EffectScope](#effectscope12) | No  | Effect scope.<br>Default value: **EffectScope.LAYER**|
-| replaceType  | [ReplaceEffectType](#replaceeffecttype20) | No  | Replaces the animation type.<br>Default value: ReplaceEffectType.SEQUENTIAL|
+| replaceType  | [ReplaceEffectType](#replaceeffecttype20) | No  | Replacement effect type.<br>Default value: **ReplaceEffectType.SEQUENTIAL**|
 
 ## SymbolEffectStrategy<sup>11+</sup>
 
@@ -542,7 +542,7 @@ Defines the **SymbolEffect** class.
 
 ## PulseSymbolEffect<sup>12+</sup>
 
-PulseSymbolEffect inherits from the parent class SymbolEffect.
+Inherits from **SymbolEffect**.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -663,7 +663,7 @@ struct Index {
         }
 
         Column() {
-          Text("Layered mode")
+          Text ("Layered mode")
           SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
             .fontSize(96)
             .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)

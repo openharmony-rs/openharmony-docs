@@ -220,7 +220,7 @@ Enumerates alignment types.
 ## Example
 ### Example 1: Implementing a Calendar Picker
 
-This example shows how to implement a calendar picker component.
+This example uses **calendarPicker** to implement the **CalendarPicker** component and provides a drop-down calendar.
 
 ```ts
 // xxx.ets
@@ -253,6 +253,8 @@ struct CalendarPickerExample {
 
 This example demonstrates how to set the start and end dates for the calendar picker using **start** and **end**.
 
+Since API version 18., the **start** and **end** attributes are added to [CalendarOptions](#calendaroptions).
+
 ```ts
 // xxx.ets
 @Entry
@@ -278,11 +280,13 @@ struct CalendarPickerExample {
 }
 ```
 
-
+![CalendarPicker](figures/calendar_picker_start_end.png)
 
 ### Example 3: Highlighting the Current System Date and Disabling a Specific Date Range
 
-This example shows how to highlight the current system date using [markToday](#marktoday19) and disable a specific date range using [disabledDateRange](#calendaroptions).
+This example shows how to highlight the current system date using **markToday** and disable a specific date range using **disabledDateRange**.
+
+Since API version 19, the [markToday](#marktoday19) API is added, and the **disabledDateRange** attribute is added to [CalendarOptions](#calendaroptions).
 
 ```ts
 // xxx.ets
@@ -310,4 +314,4 @@ struct CalendarPickerExample {
 }
 ```
 
-
+![CalendarPicker](figures/calendar_picker_mark_disabled.gif)

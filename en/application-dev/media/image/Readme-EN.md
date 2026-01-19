@@ -11,7 +11,7 @@
   - Image Decoding<!--image-decoding-arts-->
     - [Using ImageSource to Decode Images](image-decoding.md)
     - [Using ImageSource to Decode Pictures](image-picture-decoding.md)
-    - [Allocating Memory for Image Decoding](image-allocator-type.md)
+    - [Optimizing Memory for Image Decoding (ArkTS)](image-allocator-type.md)
   - Image Encoding<!--image-encoding-arts-->
     - [Using ImagePacker to Encode Images](image-encoding.md)
     - [Using ImagePacker to Encode Pictures](image-picture-encoding.md)
@@ -25,7 +25,7 @@
   - Image Decoding<!--image-decoding-c-->
     - [Using Image_NativeModule to Decode Images](image-source-c.md)
     - [Using Image_NativeModule to Decode Pictures](image-source-picture-c.md)
-    - [Allocating Memory for Image Decoding](image-allocator-type-c.md)
+    - [Optimizing Memory for Image Decoding (C/C++)](image-allocator-type-c.md)
   - Image Encoding<!--image-encoding-c-->
     - [Using Image_NativeModule to Encode Images](image-packer-c.md)
     - [Using Image_NativeModule to Encode Pictures](image-packer-picture-c.md)

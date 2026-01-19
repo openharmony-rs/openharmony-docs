@@ -507,7 +507,7 @@ OH_Drawing_Array* OH_Drawing_GetRunGlyphAdvances(OH_Drawing_Run* run, uint32_t s
 | -- | -- |
 | [OH_Drawing_Run](capi-drawing-oh-drawing-run.md)* run | 指向渲染单元[OH_Drawing_Run](capi-drawing-oh-drawing-run.md)对象的指针。 |
 | uint32_t start | 渲染单元内指定的开始位置，传入负数时该方法返回空指针。 |
-| uint32_t length | 渲染单元内指定的长度，如果length是0表示从start开始获取到渲染块结束，length小于0时该方法返回空指针。 |
+| uint32_t length | 渲染单元内指定的长度，如果length是0表示从start开始获取到渲染单元结束，length小于0时该方法返回空指针。 |
 
 **返回：**
 

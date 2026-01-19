@@ -44,7 +44,7 @@ There are two scenarios for projection implemented using the distributed AVSessi
   This type of projection takes effect for all applications. After a system projection, all audio files on the local device are played from the distributed device by default.
 
 - Application projection: An audio and video application integrates the projection component to initiate a projection. (This scenario is not supported yet.)
-  
+
   This type of projection takes effect for a single application. After an application projection, audio of the application on the local device is played from the distributed device, and audio of other applications is still played from the local device.
 
 Projection preemption is supported. If application A initiates a projection to a remote device and then application B initiates a projection to the same device, then audio of application B is played on the remote device.

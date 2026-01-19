@@ -1,7 +1,7 @@
 # Focus Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,15 +10,15 @@ A focus event is triggered when the page focus moves between components. It can 
 
 >  **NOTE**
 >
->  - The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - Sequential keyboard navigation is not supported for nested scrollable components.
+> - Sequential keyboard navigation is not supported for nested scrollable components.
 >
->  - Components that have default interaction logic, such as [Button](ts-basic-components-button.md) and [TextInput](ts-basic-components-textinput.md), are focusable by default. Other components, such as [Text](ts-basic-components-text.md) and [Image](ts-basic-components-image.md), are not focusable by default. Only focusable components can trigger a focus event. To enable a component to be focusable, set its [focusable](ts-universal-attributes-focus.md#focusable) attribute to **true**.
+> - Components that have default interaction logic, such as [Button](ts-basic-components-button.md) and [TextInput](ts-basic-components-textinput.md), are focusable by default. Other components, such as [Text](ts-basic-components-text.md) and [Image](ts-basic-components-image.md), are not focusable by default. Only focusable components can trigger a focus event. To enable a component to be focusable, set its [focusable](ts-universal-attributes-focus.md#focusable) attribute to **true**.
 >  
->  - Container components that can gain focus, such as [Stack](ts-container-stack.md) and [Row](ts-container-row.md), are not focusable if they do not have any focusable child components. When configured with an **onClick** event or a single-finger tap gesture, the component implicitly becomes focusable if the **focusable** attribute is not explicitly set.
+> - Container components that can gain focus, such as [Stack](ts-container-stack.md) and [Row](ts-container-row.md), are not focusable if they do not have any focusable child components. When configured with an **onClick** event or a single-finger tap gesture, the component implicitly becomes focusable if the **focusable** attribute is not explicitly set.
 > 
->  - For details about focus development and component focusability, see [Focus Event](../../../ui/arkts-common-events-focus-event.md).
+> - For details about focus development and component focusability, see [Focus Event](../../../ui/arkts-common-events-focus-event.md).
 
 ## onFocus
 
@@ -44,7 +44,7 @@ Triggered when the current component obtains focus.
 
 ## onBlur
 
-onBlur(event:() =&gt; void): T
+onBlur(event:()&nbsp;=&gt;&nbsp;void): T
 
 Triggered when the current component loses focus.
 
@@ -79,7 +79,7 @@ struct FocusEventExample {
 
   build() {
     Column({ space: 20 }) {
-      // You can use the up and down arrow keys on an external keyboard to move the focus between the three buttons. When a button gains focus, its color changes. When it loses focus, its color changes back.
+      // Activate the focus by pressing **Tab** on an external keyboard and navigate it among the three buttons using the up/down arrow keys. The focused button receives a color highlight, which disappears when focus moves away.
       Button('First Button')
         .backgroundColor(this.oneButtonColor)
         .width(260)

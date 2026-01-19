@@ -207,7 +207,7 @@ OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,
   // AUDIO_SESSION_SCENE_MEDIA 仅为示例，实际使用时请根据具体情况进行修改。
   OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
 
-  // CONCURRENCY_MIX_WITH_OTHERS 是示例，实际使用时请根据情况修改
+  // CONCURRENCY_MIX_WITH_OTHERS 是示例，实际使用时请根据情况修改。
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
 
   result = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);

@@ -175,7 +175,7 @@ Minimizes the window that displays the animation. This API uses a promise to ret
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| windowTarget | [WindowAnimationTarget](#windowanimationtarget) | Yes| Target window to display the animation.|
+| windowTarget | [WindowAnimationTarget](#windowanimationtarget) | Yes| Target window to minimize.|
 
 **Return value**
 

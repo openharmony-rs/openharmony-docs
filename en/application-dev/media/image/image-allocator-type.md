@@ -1,4 +1,4 @@
-# Allocating Memory for Image Decoding (ArkTS)
+# Optimizing Memory for Image Decoding (ArkTS)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
