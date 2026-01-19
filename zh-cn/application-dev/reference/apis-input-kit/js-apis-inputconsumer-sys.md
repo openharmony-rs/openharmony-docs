@@ -29,6 +29,7 @@ import { inputConsumer } from '@kit.InputKit';
 on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): void
 
 订阅系统快捷键，当满足条件的组合按键输入事件发生时，使用callback异步方式上报组合按键数据。
+订阅方式说明：1、支持仅订阅按键的down事件，或者同时订阅按键的down事件和up事件；2、不支持仅订阅按键的up事件。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
