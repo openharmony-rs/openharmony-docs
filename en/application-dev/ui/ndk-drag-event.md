@@ -222,12 +222,12 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
                break;
            case NODE_ON_DRAG_START: {
                OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DRAG_START Event Receive");
-               // ···
+               // ...
                break;
            }
            case NODE_ON_DRAG_END: {
                OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DRAG_END Event Receive");
-               // ···
+               // ...
                break;
            }
            default:
@@ -327,7 +327,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
                "OH_ArkUI_DragEvent_GetDataTypes returnValue = %{public}s", eventTypeArray[i]);
        }
    }
-   // ···
+   // ...
                case NODE_ON_DROP: {
                    OH_ArkUI_DragEvent_SetSuggestedDropOperation(dragEvent, ARKUI_DROP_OPERATION_COPY);
                    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DROP EventReceiver");
@@ -475,7 +475,7 @@ In addition to the basic drag-and-drop functionality, ArkUI allows you to initia
        switch (eventType) {
            case NODE_ON_TOUCH_INTERCEPT: {
                OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_TOUCH_INTERCEPT EventReceiver");
-               // ···
+               // ...
                break;
            }
            default: {
@@ -515,7 +515,7 @@ In addition to the basic drag-and-drop functionality, ArkUI allows you to initia
                    OH_ArkUI_DragAction_Dispose(action);
                    break;
                }
-               // ···
+               // ...
    void SetDragActionData()
    {
        // Create an OH_UdmfRecord object.
@@ -609,7 +609,7 @@ In addition to the basic drag-and-drop functionality, ArkUI allows you to initia
                    OH_ArkUI_DragAction_UnregisterStatusListener(action);
                    break;
                }
-               // ···
+               // ...
    void GetUdmfDataText(ArkUI_DragEvent* dragEvent)
    {
        // Obtain the UDMF data.
