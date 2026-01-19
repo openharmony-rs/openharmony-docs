@@ -155,6 +155,14 @@ function next() {}
 
 <!-- @[boolean_guide_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+let isError = false;
+let isFound = true;
+
+function isEmpty() {}
+function hasNext() {}
+```
+
 ## 格式
 
 ### 使用空格缩进，禁止使用tab字符
