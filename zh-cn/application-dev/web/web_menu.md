@@ -809,13 +809,13 @@ struct WebComponent {
     let buf = new ArrayBuffer(bufsize);
     let off = 0;
     let len = 0;
-    let readedLen = 0;
+    let readLen = 0;
     while ((len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) != 0) {
-      readedLen += len;
+      readLen += len;
       fs.writeSync(dest.fd, buf, { offset: off, length: len });
       off = off + len;
-      if ((srcFileDes.length - readedLen) < bufsize) {
-        bufsize = srcFileDes.length - readedLen;
+      if ((srcFileDes.length - readLen) < bufsize) {
+        bufsize = srcFileDes.length - readLen;
       }
     }
     fs.close(dest.fd);
