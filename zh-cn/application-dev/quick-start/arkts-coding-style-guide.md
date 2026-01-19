@@ -172,6 +172,43 @@ function next() {}
 
 <!-- @[spaces_indentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+class DataSource {
+  id: number = 0
+  title: string = ''
+  content: string = ''
+}
+
+const dataSource: DataSource[] = [
+  {
+    id: 1,
+    title: 'Title 1',
+    content: 'Content 1'
+  },
+  {
+    id: 2,
+    title: 'Title 2',
+    content: 'Content 2'
+  }
+
+];
+
+function test(dataSource: DataSource[]) {
+  if (!dataSource.length) {
+    return;
+  }
+
+  for (let data of dataSource) {
+    if (!data || !data.id || !data.title || !data.content) {
+      continue;
+    }
+    // some code
+  }
+
+  // some code
+}
+```
+
 ### 行宽不超过120个字符
 
 **【级别】建议**
