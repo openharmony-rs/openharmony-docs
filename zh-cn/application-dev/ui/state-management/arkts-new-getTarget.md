@@ -35,10 +35,11 @@
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';
-  let res = UIUtils.getTarget(2); // 非对象类型入参，直接返回传入值
+  let resNumber = UIUtils.getTarget(2); //非对象类型入参，编译时报错
+  let resObject = UIUtils.getTarget(2 as Object); // 非对象类型入参，绕过编译拦截，直接返回传入值，错误用法
   @Observed
   class Info {
-    name: string = "Tom";
+    name: string = 'Tom';
   }
   let info: Info = new Info();
   let rawInfo: Info = UIUtils.getTarget(info); // 正确用法
@@ -50,7 +51,7 @@
   import { UIUtils } from '@kit.ArkUI';
   @Observed
   class Info {
-    name: string = "Tom";
+    name: string = 'Tom';
   }
   @Entry
   @Component
@@ -60,14 +61,14 @@
     build() {
       Column() {
         Text(`info.name: ${this.info.name}`)
-        Button(`更改代理对象的属性`)
+        Button('更改代理对象的属性')
           .onClick(() => {
-            this.info.name = "Alice"; // Text组件能够刷新
+            this.info.name = 'Alice'; // Text组件能够刷新
           })
-        Button(`更改原始对象的属性`)
+        Button('更改原始对象的属性')
           .onClick(() => {
             let rawInfo: Info = UIUtils.getTarget(this.info);
-            rawInfo.name = "Bob"; // Text组件不能刷新
+            rawInfo.name = 'Bob'; // Text组件不能刷新
           })
       }
     }
@@ -85,10 +86,10 @@
 ```ts
 @Observed
 class ObservedClass {
-  name: string = "Tom";
+  name: string = 'Tom';
 }
 class NonObservedClass {
-  name: string = "Tom";
+  name: string = 'Tom';
 }
 let observedClass: ObservedClass = new ObservedClass(); // 被代理
 let nonObservedClass: NonObservedClass = new NonObservedClass(); // 不被代理
@@ -99,10 +100,10 @@ let nonObservedClass: NonObservedClass = new NonObservedClass(); // 不被代理
 ```ts
 @Observed
 class ObservedClass {
-  name: string = "Tom";
+  name: string = 'Tom';
 }
 class NonObservedClass {
-  name: string = "Tom";
+  name: string = 'Tom';
 }
 let observedClass: ObservedClass = new ObservedClass(); // 被代理
 let nonObservedClass: NonObservedClass = new NonObservedClass(); // 不被代理
@@ -112,7 +113,7 @@ struct Index {
   @State observedObject: ObservedClass = observedClass; // 已被代理数据不会重复创建代理
   @State nonObservedObject: NonObservedClass = nonObservedClass; // 创建代理
   @State numberList: number[] = [1, 2, 3]; // Array类型创建代理
-  @State sampleMap: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]); // Map类型创建代理
+  @State sampleMap: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]); // Map类型创建代理
   @State sampleSet: Set<number> = new Set([0, 1, 2, 3, 4]); // Set类型创建代理
   @State sampleDate: Date = new Date(); // Date类型创建代理
   
@@ -131,15 +132,15 @@ struct Index {
 import { UIUtils } from '@kit.ArkUI';
 @Observed
 class ObservedClass {
-  name: string = "Tom";
+  name: string = 'Tom';
 }
 class NonObservedClass {
-  name: string = "Tom";
+  name: string = 'Tom';
 }
 let observedClass: ObservedClass = new ObservedClass(); // 被代理
 let nonObservedClass: NonObservedClass = new NonObservedClass(); // 不被代理
 let globalNumberList: number[] = [1, 2, 3]; // 不被代理
-let globalSampleMap: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]); // 不被代理
+let globalSampleMap: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]); // 不被代理
 let globalSampleSet: Set<number> = new Set([0, 1, 2, 3, 4]); // 不被代理
 let globalSampleDate: Date = new Date(); // 不被代理
 @Entry
@@ -178,11 +179,11 @@ struct Index {
 ```ts
 @ObservedV2
 class ObservedClass {
-  @Trace name: string = "Tom";
+  @Trace name: string = 'Tom';
 }
 let globalObservedObject: ObservedClass = new ObservedClass(); // 不被代理
 let globalNumberList: number[] = [1, 2, 3]; // 不被代理
-let globalSampleMap: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]); // 不被代理
+let globalSampleMap: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]); // 不被代理
 let globalSampleSet: Set<number> = new Set([0, 1, 2, 3, 4]); // 不被代理
 let globalSampleDate: Date = new Date(); // 不被代理
 @Entry
@@ -209,11 +210,11 @@ struct Index {
 import { UIUtils } from '@kit.ArkUI';
 @ObservedV2
 class ObservedClass {
-  @Trace name: string = "Tom";
+  @Trace name: string = 'Tom';
 }
 let globalObservedObject: ObservedClass = new ObservedClass(); // 不被代理
 let globalNumberList: number[] = [1, 2, 3]; // 不被代理
-let globalSampleMap: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]]); // 不被代理
+let globalSampleMap: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]); // 不被代理
 let globalSampleSet: Set<number> = new Set([0, 1, 2, 3, 4]); // 不被代理
 let globalSampleDate: Date = new Date(); // 不被代理
 @Entry
@@ -250,7 +251,7 @@ struct Index {
 // ObservedV2装饰的类
 @ObservedV2
 class Info {
-  @Trace name: string = "Tom";
+  @Trace name: string = 'Tom';
   @Trace age: number = 24;
 }
 let info: Info = new Info(); // NAPI接口传入info实例
@@ -258,12 +259,12 @@ let info: Info = new Info(); // NAPI接口传入info实例
 
 | 影响接口名              | 影响结果                                       |
 | ----------------------- | ---------------------------------------------- |
-| napi_get_property_names | 返回值为"\_\_ob\_name"，"\_\_ob\_age"。        |
-| napi_set_property       | 使用"name"，"\_\_ob\_name"均能赋值成功。       |
-| napi_get_property       | 使用"name"，"\_\_ob\_name"均能获取到值。       |
-| napi_has_property       | 使用"name"，"\_\_ob\_name"均返回true。         |
-| napi_delete_property    | 删除属性时需要加上"\_\_ob\_"前缀才能删除成功。 |
-| napi_has_own_property   | 使用"name"，"\_\_ob\_name"均返回true。         |
-| napi_set_named_property | 使用"name"，"\_\_ob\_name"均能赋值成功。       |
-| napi_get_named_property | 使用"name"，"\_\_ob\_name"均能获取到值。       |
-| napi_has_named_property | 使用"name"，"\_\_ob\_name"均返回true。         |
+| [napi_get_property_names](../../napi/use-napi-about-property.md#napi_get_property_names) | 返回值为"\_\_ob\_name"，"\_\_ob\_age"。        |
+| [napi_set_property](../../napi/use-napi-about-property.md#napi_set_property)       | 使用"name"，"\_\_ob\_name"均能赋值成功。       |
+| [napi_get_property](../../napi/use-napi-about-property.md#napi_get_property)       | 使用"name"，"\_\_ob\_name"均能获取到值。       |
+| [napi_has_property](../../napi/use-napi-about-property.md#napi_has_property)       | 使用"name"，"\_\_ob\_name"均返回true。         |
+| [napi_delete_property](../../napi/use-napi-about-property.md#napi_delete_property)    | 删除属性时需要加上"\_\_ob\_"前缀才能删除成功。 |
+| [napi_has_own_property](../../napi/use-napi-about-property.md#napi_has_own_property)   | 使用"name"，"\_\_ob\_name"均返回true。         |
+| [napi_set_named_property](../../napi/use-napi-about-property.md#napi_set_named_property) | 使用"name"，"\_\_ob\_name"均能赋值成功。       |
+| [napi_get_named_property](../../napi/use-napi-about-property.md#napi_get_named_property) | 使用"name"，"\_\_ob\_name"均能获取到值。       |
+| [napi_has_named_property](../../napi/use-napi-about-property.md#napi_has_named_property) | 使用"name"，"\_\_ob\_name"均返回true。         |

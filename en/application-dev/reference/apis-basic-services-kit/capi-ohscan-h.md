@@ -140,7 +140,7 @@ Starts scanner discovery and registers a callback used to process the discovered
 
 | Name| Description|
 | -- | -- |
-| [Scan_ScannerDiscoveryCallback](capi-ohscan-h.md#scan_scannerdiscoverycallback) callback | Callback used to discover scanners.|
+| [Scan_ScannerDiscoveryCallback](capi-ohscan-h.md#scan_scannerdiscoverycallback) callback | [Scan_ScannerDiscoveryCallback](capi-ohscan-h.md#scan_scannerdiscoverycallback) used to discover scanners.|
 
 **Returns**
 

@@ -25,3 +25,5 @@ Represents the permission policy information.
 | char *uri | Pointer to the URI, on which the permission is to be granted or activated.|
 | unsigned int length | Length of the URI, in bytes.|
 | unsigned int operationMode | URI operation mode.<br> Example:<br>FileShare_OperationMode.READ_MODE<br>FileShare_OperationMode.WRITE_MODE<br> Or FileShare_OperationMode.READ_MODE\|FileShare_OperationMode.WRITE_MODE| |
+
+

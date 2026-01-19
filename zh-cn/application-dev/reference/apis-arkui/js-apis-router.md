@@ -22,7 +22,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { router } from '@kit.ArkUI';
 ```
 
@@ -1666,7 +1666,9 @@ push(options: RouterOptions): void
 
 跳转到应用内的指定页面。
 
-从API version9开始不再维护，建议使用[pushUrl](arkts-apis-uicontext-router.md#pushurl)
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[pushUrl](arkts-apis-uicontext-router.md#pushurl)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1710,7 +1712,9 @@ replace(options: RouterOptions): void
 
 用应用内的某个页面替换当前页面，并销毁被替换的页面。
 
-从API version9开始不再维护，建议使用[replaceUrl](arkts-apis-uicontext-router.md#replaceurl)
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[replaceUrl](arkts-apis-uicontext-router.md#replaceurl)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -1743,7 +1747,9 @@ enableAlertBeforeBackPage(options: EnableAlertOptions): void
 
 开启页面返回询问对话框。
 
-从API version9开始不再维护，建议使用[showAlertBeforeBackPage](arkts-apis-uicontext-router.md#showalertbeforebackpage)
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[showAlertBeforeBackPage](arkts-apis-uicontext-router.md#showalertbeforebackpage)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1767,7 +1773,9 @@ disableAlertBeforeBackPage(): void
 
 禁用页面返回询问对话框。
 
-从API version9开始不再维护，建议使用[hideAlertBeforeBackPage](arkts-apis-uicontext-router.md#hidealertbeforebackpage)
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[hideAlertBeforeBackPage](arkts-apis-uicontext-router.md#hidealertbeforebackpage)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

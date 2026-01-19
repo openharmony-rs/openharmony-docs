@@ -207,7 +207,7 @@ function isCameraMuteSupported(cameraManager: camera.CameraManager): boolean {
 }
 ```
 
-### muteCamera
+### muteCamera<sup>(deprecated)</sup>
 
 muteCamera(mute: boolean): void
 
@@ -523,8 +523,8 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
-| 7400101 	      |  Parameter missing or parameter type incorrect. |
+| 202             |  Not System Application.       |
+| 7400101         |  Parameter missing or parameter type incorrect. |
 
 **Example**
 
@@ -602,7 +602,7 @@ Describes the camera output capability.
 
 | Name                          | Type                                               | Read-only| Optional| Description               |
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
-| depthProfiles                 | Array\<[DepthProfile](#depthprofile13)\>              |  Yes | No| Supported depth stream profiles.       |
+| depthProfiles<sup>13+</sup>       | Array\<[DepthProfile](#depthprofile13)\>              |  Yes | No| Supported depth stream profiles.       |
 
 ## CameraFormat
 
@@ -761,17 +761,31 @@ Describes a depth data object.
 | format | [CameraFormat](#cameraformat)   | Yes|  No | Camera output format.|
 | depthMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)    | Yes|  No | Depth map.|
 | qualityLevel | [DepthDataQualityLevel](#depthdataqualitylevel13)   | Yes|  No | Quality level of the depth map.|
-| accuracy | [DepthDataAccuracy](#depthdataaccuracy13) | Yes|  No | Accuracy of the depth map.|
+| dataAccuracy | [DepthDataAccuracy](#depthdataaccuracy13) | Yes|  No | Accuracy of the depth map.|
 
 ### release<sup>13+</sup>
 
-release(): void
+release(): Promise\<void\>
 
-Releases depth data output resources.
+Releases depth data output resources. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type           | Description                    |
+| -------------- | ----------------------- |
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 202 | Not System Application. |
 
 **Example**
 
@@ -1064,7 +1078,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function isDepthFusionSupported(DepthFusionQuery: camera.DepthFusionQuery): void {
   try {
-    let isSupperted: boolean = DepthFusionQuery.isDepthFusionSupported();
+    let isSupported: boolean = DepthFusionQuery.isDepthFusionSupported();
     console.info('Indicate that isDepthFusionSupported method execution success.');
   } catch (error) {
     let err = error as BusinessError;
@@ -1144,6 +1158,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 function isDepthFusionEnabled(DepthFusion: camera.DepthFusion): boolean {
   let isEnable: boolean = false;
   try {
@@ -1571,7 +1586,7 @@ A class object that functions as a thumbnail proxy.
 
 getThumbnail(): Promise<image.PixelMap>
 
-Obtains the PixelMap of a thumbnail.
+Obtains the PixelMap of a thumbnail. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1589,7 +1604,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 
 **Example**
 
@@ -1625,7 +1640,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 
 **Example**
 
@@ -1667,7 +1682,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 | 7400101         |  Parameter missing or parameter type incorrect.          |
 | 7400104         |  Session not running.          |
 | 7400201         |  Camera service fatal error.   |
@@ -1715,7 +1730,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 | 7400104         |  Session not running.          |
 | 7400201         |  Camera service fatal error.   |
 
@@ -1953,7 +1968,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 
 **Example**
 
@@ -1999,7 +2014,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202         	  |  Not System Application.       |
+| 202             |  Not System Application.       |
 
 **Example**
 
@@ -2046,7 +2061,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202                	 |  Not System Application.        |
+| 202                    |  Not System Application.        |
 | 7400104                |  session is not running.        |
 
 **Example**
@@ -2108,7 +2123,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202                	 |  Not System Application.        |
+| 202                    |  Not System Application.        |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400104                |  session is not running.        |
 | 7400201                |  Camera service fatal error.        |
@@ -2659,7 +2674,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 202                	 |  Not System Application.  |
+| 202                    |  Not System Application.  |
 | 7400102                |  Operation not allowed.   |
 | 7400103                |  Session not config.      |
 
@@ -2690,8 +2705,6 @@ Enumerates the tripod statuses.
 ## SceneFeatureType<sup>12+</sup>
 
 Enumerates the scene features.
-
-**System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2869,7 +2882,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                      |
-| 7400103                |  Session not config.                          |
+| 7400103                |  Session not config, only throw in session usage.      |
 
 **Example**
 
@@ -3240,7 +3253,7 @@ function getSupportedPortraitEffects(portraitPhotoSession: camera.PortraitPhotoS
 }
 ```
 
-### setPortraitEffect<sup>10+</sup>
+### setPortraitEffect
 
 setPortraitEffect(effect: PortraitEffect): void
 
@@ -3566,12 +3579,11 @@ Obtains the supported beauty types.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
-| 202             |  Not System Application.                      |
 
 **Example**
 
@@ -3738,7 +3750,7 @@ function getBeauty(captureSession: camera.CaptureSession): number {
 
 ## PhotoSessionForSys<sup>11+</sup>
 
-PhotoSessionForSys extends PhotoSession, Beauty, ColorEffect, ColorManagement, SceneDetection
+PhotoSessionForSys extends PhotoSession, Beauty, ColorEffect, ColorManagement, Macro, SceneDetection, EffectSuggestion, DepthFusion
 
 Implements a photo session for system applications, which sets the parameters of the normal photo mode and saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera. It inherits from [Session](arkts-apis-camera-Session.md).
 
@@ -6270,7 +6282,9 @@ setIso(iso: number): void
 
 Sets the ISO.
 
-**NOTE**: When the ISO is set to 0, automatic ISO is used.
+> **NOTE**
+>
+> When the ISO is set to 0, automatic ISO is used.
 
 **System API**: This is a system API.
 
@@ -8000,8 +8014,8 @@ Describes the Try AE parameters. Try AE indicates that the hardware reports the 
 
 | Name| Type   | Read-only| Optional| Description          |
 | ---- | ------- | ---- |--| -------------- |
-| isTryAEDone        | boolean  | Yes  | No| Whether Try AE is complete.       |
-| isTryAEHintNeeded  | boolean  | Yes  | Yes| Whether Try AE is required.       |
+| isTryAEDone        | boolean  | Yes  | No| Whether Try AE is complete. **true** if complete, **false** otherwise.      |
+| isTryAEHintNeeded  | boolean  | Yes  | Yes| Whether Try AE is required. **true** if required, **false** otherwise.       |
 | previewType        | [TimeLapsePreviewType](#timelapsepreviewtype12) | Yes  | Yes| Preview type.       |
 | captureInterval    | number   | Yes  | Yes| Shooting interval, in ms.       |
 
@@ -8524,6 +8538,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103 | Session not config.     |
+| 7400201 | Camera service fatal error.     |
 
 **Example**
 

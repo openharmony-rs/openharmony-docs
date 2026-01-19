@@ -1,4 +1,10 @@
 # ContinueCallback (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @w_Machine_cc-->
 
 The ContinueCallback module defines the callback function that indicates the result of mission continuation. For details about mission continuation, see [continueMission](js-apis-distributedMissionManager-sys.md#distributedmissionmanagercontinuemission).
 
@@ -40,12 +46,12 @@ distributedMissionManager.continueMission(
   },
   {
     onContinueDone(result: number) {
-      console.log(`onContinueDone, result: ${JSON.stringify(result)}`);
+      console.info(`onContinueDone, result: ${JSON.stringify(result)}`);
     }
   }, (error: BusinessError) => {
   if (error && error.code) {
     console.error(`continueMission failed, error.code: ${error.code}, error.message: ${error.message}`);
   }
-  console.log(`continueMission finished`);
+  console.info(`continueMission finished`);
 });
 ```

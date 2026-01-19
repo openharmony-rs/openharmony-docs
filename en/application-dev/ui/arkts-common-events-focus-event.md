@@ -12,34 +12,31 @@
 
 **Focus, Focus Chain, and Focus Traversal**
 
-- **Focus**: refers to the single interactive element on the current application screen. When users interact indirectly with the application using non-pointing input devices such as keyboards, TV remote controls, or in-car joysticks/knobs, navigation and interaction based on focus are crucial input methods.
+- **Focus**: refers to the single interactive element on the current application screen. When users interact indirectly with the application using non-pointing input devices such as keyboards, TV remote controls, or in-car joysticks/knobs, navigation and interaction based on focus are crucial means of input.
 - **Focus chain**: refers to the sequence of nodes from the root to a focused component in the application's component tree, where all nodes are focused.
 - **Focus traversal**: refers to the behavior of focus shifting between components in an application. This process is transparent to the user but can be monitored through **onFocus** and **onBlur** events. For details on how focus traversal is managed, see [Focus Traversal Guidelines](#focus-traversal-guidelines).
 
 
 **Focus Activation State**
 
-The focus activation state is used to display the visual style of the focus box of the component that obtains focus.
+The focus activation state determines the visual style (focus indicator) of the component that currently holds focus.
 
-- **Presentation rules**:
+- **Presentation rules**
+- Default state: The focus activation state is hidden by default.
+  - Activation condition: The activation style is displayed only when the application is in the activated state.
+  - Key relationships:
+    - A component that obtains focus may not show its activation style (if the application is not in the activated state).
+    - A component that displays the activation style must be the component that currently holds focus.
+  - Style customization: Components usually have built-in activation styles. You can override these default styles using style-related APIs.
+  - Display priority: When multiple components are focused simultaneously, the system preferentially shows the activation style of the deepest child component, and only one activation style is visible at a time.
+  
+- **Methods to enter the activated state**
+  - Press the **Tab** key on an external keyboard. (Note: The **Tab** key is used only for the initial activation of the application and does not move focus at that moment.)
+  - Call the **activate(true)** method of [FocusController](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md).
 
-  - **Default state**: The focus activation state is hidden by default.
-  - **Activation condition**: The focus activation state is displayed only when the application enters the activated state.
-  - **Key relationships**:
-    - The component that obtains focus may not display the activation state (depending on whether the application is in the activated state).
-    - The component that displays the activation state must be the component that obtains focus.
-  - **Style customization**: Components usually have built-in activation state styles. Developers can customize the styles through style APIs. Customized styles override default styles.
-  - **Display priority**: When multiple components have focus simultaneously, the system preferentially displays the activation state of the child component, and displays only one activation state at a time.
-
-- **How to enter the activated state**:
-
-  - Press the Tab key on an external keyboard. (Note: The Tab key is used only for activation when the application is activated for the first time and does not trigger focus movement.)
-  - Call the activate(true) method of [FocusController](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md).
-
-- **How to exit the activated state**:
-
-  - Call the activate(false) method of FocusController.
-  - A click event occurs (including a touchscreen click or left mouse button click).
+- **Methods to exit the activated state**
+  - Call the **activate(false)** method of **FocusController**.
+  - A click event occurs (including a touchscreen tap or a left-mouse-button click).
 
 ```ts
 @Entry
@@ -59,48 +56,48 @@ struct FocusActiveExample {
 ```
 
 
-Focus is activated when you press Tab. Clicking the mouse button exits the focus activation state.
+Focus activation is triggered when the **Tab** key is pressed. Clicking the mouse button exits the focus activation state.
 
 ![Active_Focus_1](figures/Active_Focus_1.gif)
 
 
-You can call the [activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14) API to enter and exit the focus activation state.
+You can call the [activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14) API to programmatically enter and exit the focus activation state.
 
 ![Active_Focus_2](figures/Active_Focus_2.gif)
 
-Example steps:
-1. Click **Set Active** to call the [activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14) API to enter the focus activation state.
-2. Press Tab to move focus to the **Set Not Active** button, press Enter to trigger a key event, and call the [activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14) API to exit the focus activation state.
+Example flow:
+1. Click the **Set Active** button, which calls [activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14) to enter the focus activation state.
+2. Press **Tab** to move focus to the **Set Not Active** button, and then press **Enter** to trigger its click event. This calls [activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14) to exit the focus activation state.
 
 **Hierarchical Pages**
 
 Hierarchical pages are specialized container components, such as **Page**, **Dialog**, **SheetPage**, **ModalPage**, **Menu**, **Popup**, **NavBar**, and **NavDestination**, within a focus framework. These components typically have the following key features:
 
-- **Visual layering**: They appear on top of other content, creating a distinct visual hierarchy.
-- **Focus capture**: They automatically take focus when first displayed.
-- **Focus limitation**: When focus is within these components, users cannot use keyboard keys to move focus outside to other elements. In other words, focus movement is confined within the component.
+- Visual layering: They appear on top of other content, creating a distinct visual hierarchy.
+- Focus capture: They automatically take focus when first displayed.
+- Focus limitation: When focus is within these components, users cannot use keyboard keys to move focus outside to other elements. In other words, focus movement is confined within the component.
 
-An application always has at least one hierarchical page in focus. When this hierarchical page is closed or no longer visible, focus shifts to another, ensuring smooth user interaction.
+An application always has at least one hierarchical page in focus. When this hierarchical page is closed or no longer visible, the focus shifts to another, ensuring smooth user interaction.
 
 > **NOTE**
 >
 > The **Popup** component does not capture focus if it has **focusable** set to **false**.
 >
-> The **NavBar** and **NavDestination** components do not restrict focus movement and share the focus scope of their immediate parent hierarchical page.
+> The **NavBar** and **NavDestination** components share the focus scope of their immediate parent hierarchical page and do not restrict focus movement.
 
 **Root Container**
 
-The root container is a concept in [hierarchical pages](#basic-concepts). When a [hierarchical page](#basic-concepts) is created and displayed for the first time, focus is immediately captured by the page based on the [hierarchical page](#basic-concepts) characteristics. In this case, the end node of the focus chain where the [hierarchical page](#basic-concepts) is located becomes the default focus, and the default focus is usually located on the root container of the [hierarchical page](#basic-concepts).
+The root container is a concept in [hierarchical pages](#basic-concepts). When a [hierarchical page](#basic-concepts) is created and displayed for the first time, it immediately captures focus due to the inherent characteristics of hierarchical pages. In this case, the end node of the focus chain where the hierarchical page resides becomes the default focus, which is typically the page's root container.
 
 You can change the default focus using the **defaultFocus** attribute.
 
-When focus is on the root container, pressing the Tab key for the first time not only activates focus but also transfers focus according to the [focus transfer rules](#focus-transfer-rules).
+When focus resides on the root container, pressing the **Tab** key for the first time not only activates the focus but also transfers focus according to the [focus transfer rules](#focus-transfer-rules).
 
 ### Focus Transfer Rules
 
-Focus transfer refers to the process of transferring focus from the root node to a specific component level by level when a user activates the application focus system for the first time.
+Focus transfer refers to the process where focus is transferred level by level from the root node to a specific component when a user activates the application's focus system for the first time.
 
-Components on the focus chain are in the focus state. When a component is focused, the focus state is recursively passed downwards to the first child component until the leaf node.
+Components in the focus chain are in a focusable state. When a component gains focus, the focus state is recursively propagated down to its first child component until a leaf node is reached.
 
 ```ts
 @Entry
@@ -163,7 +160,7 @@ struct Index {
 }
 ```
 
-After the app runs, click **Button1** to request focus for the Row component. The first focusable child node **Button2** of the Row component is focused.
+After the application runs, click **Button 1** to request focus for the **Row** component. The Row component's first focusable child node, **Button 2**, will gain focus.
 
 ![Liner_Focus_1](figures/Focus_transfer.gif)
 
@@ -177,25 +174,25 @@ Focus traversal can be divided into active and passive based on how it is trigge
 Active focus traversal refers to focus movement initiated by deliberate actions, such as keyboard shortcuts (**Tab**, **Shift+Tab**, arrow keys) and programmatic focus control through **requestFocus**, **clearFocus**, and **focusOnTouch**.
 
 
-- **Keyboard traversal**:
-  1. **Prerequisite**: The application is in the focus activation state.
-  2. **Scope**: Limited to the currently focused hierarchical page, as detailed in the "Focus limitation" section under "Hierarchical Pages."
-  3. **Key types**:
-     - **Tab** key: Follows a Z-shaped logic to traverse all leaf nodes within the scope, looping back to the first after the last.
-     - **Shift+Tab**: Reverses the direction of the **Tab** key.
-     - **Arrow keys** (up, down, left, and right): Moves focus in a cross-shaped pattern, with container-specific algorithms determining the next focus in a single-layer container. If the algorithm determines the next focus should be on a container component, the system uses a center-point distance priority algorithm to further identify the target child node within the container.
-  4. **Traversal algorithm**: Each focusable container has a unique algorithm defining how focus moves.
-  5. **Priority**: Child components take precedence in handling keyboard events over parents.
+- **Keyboard traversal**
+1. Prerequisite: The application is in the focus activation state.
+2. Scope: limited to the currently focused hierarchical page, as detailed in the "Focus limitation" section under "Hierarchical Pages."
+3. Key types:
+- **Tab** key: follows a Z-shaped logic to traverse all leaf nodes within the scope, looping back to the first after the last.
+- **Shift+Tab**: reverses the direction of the **Tab** key.
+- Arrow keys (up, down, left, and right): moves focus in a cross-shaped pattern, with container-specific algorithms determining the next focus in a single-layer container. If the algorithm determines the next focus should be on a container component, the system uses a center-point distance priority algorithm to further identify the target child node within the container.
+4. Traversal algorithm: Each focusable container has a unique algorithm defining how focus moves.
+5. Priority: Child components take precedence in handling keyboard events over parents.
 
-- **requestFocus**:
-  Moves focus to a specific component, which is allowed across hierarchical pages but not across windows or different ArkUI instances.
-  For details, see [Active Focus Acquisition/Loss](#active-focus-acquisitionloss).
+- **requestFocus**
+Moves focus to a specific component, which is allowed across hierarchical pages but not across windows or different ArkUI instances.
+For details, see [Active Focus Acquisition/Loss](#active-focus-acquisitionloss).
 
-- **clearFocus**:
-  Clears focus within the current hierarchical page, with focus reverting to the root container. For details, see [clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12).
+- **clearFocus**
+Clears the focus within the current hierarchical page, with focus reverting to the root container. For details, see [clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12).
 
-- **focusOnTouch**:
-  Enables a component to gain focus on touch. It is ineffective on non-focusable components. For container components, focus goes to the last focused child or the first focusable child upon touch. For details, see [focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9).
+- **focusOnTouch**
+Enables a component to gain focus on touch. For details, see [focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9). This API is ineffective on non-focusable components. For container components, focus goes to the last focused child or the first focusable child upon touch.
 
 
 **Passive Focus Traversal**
@@ -205,10 +202,10 @@ Passive focus traversal occurs when focus automatically shifts due to system act
 
 Mechanisms that trigger passive focus traversal include:
 
-- **Component removal**: If a focused component is removed, the system tries to shift focus to the next available sibling, following a back-to-front order. If no siblings are focusable, focus is released to the parent component.
-- **Attribute change**: Changing a component's **focusable** or **enabled** to **false**, or **visibility** to invisible causes the system to automatically move focus to another focusable component, using the same method as for component removal.
-- [**Hierarchical page**](#basic-concepts) **switching**: During [hierarchical page](#basic-concepts) switching, for example, from one [hierarchical page](#basic-concepts) to another, focus of the current [hierarchical page](#basic-concepts) is automatically released, and the new [hierarchical page](#basic-concepts) may automatically gain focus based on preset logic.
-- **Web component initialization**: The **Web** component may immediately gain focus upon creation if designed to do so (for example, certain dialog boxes or text boxes), which is part of the component's behavior and not governed by the focus framework specifications.
+- Component removal: If a focused component is removed, the system tries to shift focus to the next available sibling, following a back-to-front order. If no siblings are focusable, focus is released to the parent component.
+- Attribute change: Changing a component's **focusable** or **enabled** to **false**, or **visibility** to invisible causes the system to automatically move focus to another focusable component, using the same method as for component removal.
+- [Hierarchical page](#basic-concepts) switching: During switching between hierarchical pages (for example, from one hierarchical page to another), the focus of the current hierarchical page is automatically released, and the new hierarchical page may automatically gain focus based on preset logic.
+- **Web** component initialization: The **Web** component may immediately gain focus upon creation if designed to do so (for example, certain dialog boxes or text boxes), which is part of the component's behavior and not governed by the focus framework specifications.
 
 ### Focus Traversal Algorithms
 
@@ -222,10 +219,10 @@ The algorithm used by a container is based on its UX design and is implemented b
 The linear focus traversal algorithm is the default algorithm, focusing on the order of child nodes in the node tree, commonly used in single-direction layouts such as **Row**, **Column**, and **Flex** containers. Its operation rules are as follows:
 
 
-- **Order dependency**: Focus order is based solely on the mounting sequence of child nodes in the node tree, independent of their visual layout.
-- **Tab key focus traversal**: The **Tab** key moves focus through focusable elements in the order they are mounted in the component tree.
-- **Arrow key focus traversal**: Arrow keys perpendicular to the container's layout direction are ignored. For example, a horizontal **Row** container does not accept focus requests from up and down keys.
-- **Boundary handling**: The container rejects focus requests in the opposite direction from the current focus edge. For example, if focus is on the first child of a horizontal **Row** container, it won't process leftward focus requests.
+- Order dependency: The focus order is based solely on the mounting sequence of child nodes in the node tree, independent of their visual layout.
+- **Tab** key focus traversal: The **Tab** key moves focus through focusable elements in the order they are mounted in the component tree.
+- Arrow key focus traversal: Arrow keys perpendicular to the container's layout direction are ignored. For example, a horizontal **Row** container does not accept focus requests from up and down keys.
+- Boundary handling: The container rejects focus requests in the opposite direction from the current focus edge. For example, if focus is on the first child of a horizontal **Row** container, it won't process leftward focus requests.
 
 ```ts
 @Entry
@@ -279,12 +276,12 @@ In a horizontal **Row** container, use the left and right arrow keys to navigate
 
 **Projection-based Focus Traversal Algorithm**
 
-The projection-based focus traversal algorithm determines the next focus based on the overlap area and center-point distance of the projection of the current focused component in the direction of focus movement. This algorithm applies to containers with child components of different sizes. Currently, only the Flex component with the wrap attribute configured is supported. Its operation rules are as follows:
+The projection-based focus traversal algorithm determines the next focus based on the overlap area and center-point distance of the projection of the current focused component in the direction of focus movement. This algorithm is designed for containers whose children vary in size. Currently, it is supported only by the **Flex** component when its **wrap** attribute is set. Its operation rules are as follows:
 
 
-- When arrow keys are used to move focus, the overlapping area between the projection and the child component area is determined. Among all child components whose area is not 0, the straight-line distance between the child components and the center point of the current focused component is calculated, and the child component with the shortest distance is selected. If there are multiple candidate child components, the child component that is closer to the node tree is selected. If no child component overlaps with the projection, the container cannot process the focus movement request of the arrow key.
-- When the Tab key is used to move focus, specification 1 is used first. If the focus movement request is found, the process exits. If the focus movement request is not found, the position of the currently focused child component is simulated to move downwards by the height of the focused child component, and then the projection is determined according to the left arrow key. The child component with the overlapping projection and the shortest straight-line distance between the center points wins. If no child component overlaps with the projection, the container cannot process the focus movement request of the Tab key.
-- **Shift+Tab** key: It mimics a leftward shift to find the next focus; If the focus movement request is not found, the position of the currently focused child component is simulated to move upwards by the height of the focused child component, and then the projection is determined according to the right arrow key. The child component with the overlapping projection and the shortest straight-line distance between the center points wins. If no child component overlaps with the projection, the container cannot process the focus movement request of the Shift+Tab key.
+- **Arrow key navigation**: When an arrow key is pressed, the algorithm first checks for any overlap between the projection and the areas of child components. Among all child components whose overlapping area is greater than zero, the straight‑line distance from each child's center to the center of the currently focused component is calculated. The child with the shortest distance is selected. If multiple candidates have the same minimal distance, the child that appears earlier in the node tree is chosen. If no child overlaps with the projection, the container cannot process the arrow key focus movement request.
+- **Tab key navigation**: For **Tab** key presses, the algorithm first applies the preceding arrow key navigation rule. If a valid focus target is found, the process ends. If not, the algorithm simulates shifting the position of the currently focused child component downward by its own height, then calculates the projection as if the left arrow key were pressed. The child component that overlaps with this projection and has the shortest center-to-center distance is selected. If no child overlaps, the container cannot process the **Tab** key focus movement request.
+- **Shift+Tab key navigation**: For **Shift+Tab** key presses, the algorithm mimics a leftward shift to locate the next focus. If no target is found, it simulates moving the currently focused child component upward by its own height, then calculates the projection as if the right arrow key were pressed. The child component that overlaps with this projection and has the shortest center-to-center distance is selected. If no child overlaps, the container cannot process the **Shift+Tab **key focus movement request.
 
 ```ts
 @Entry
@@ -343,7 +340,7 @@ struct ProjectAreaFocusExample2 {
 }
 ```
 
-When components in a **Flex** multi-line layout have varying sizes and overlap vertically, the **Tab** key focus traversal fails to reach the buttons labeled **3**, **4**, and **5** in the lower row.
+When components in a **Flex** multi-line layout have varying sizes and overlap vertically, the **Tab** key focus traversal fails to reach the buttons labeled **4** and **5** in the lower row.
 
 ![Project_Area_Focus_2](figures/Project_Area_Focus_2.gif)
 
@@ -509,12 +506,20 @@ Sets whether the component is focusable.
 
 Components can be classified into the following types based on their focus capability:
 
-- **Default focusable components**: These components are usually interactive components, such as **Button**, **Checkbox**, and **TextInput**.
+- **Inherently focusable components**: These components are usually interactive components, such as **Button**, **Checkbox**, and **TextInput**. They can receive focus without any explicit configuration.
 
-- **Components with focus capability but not focusable by default**: Typical examples are **Text** and **Image**. To enable them to be focusable, set **focusable(true)**. Components that can be focused but cannot be focused by default if the focusable attribute is not configured, such as container components without focusable child components. If you configure the onClick or single-finger tap gesture for these components, the components become focusable components implicitly. However, when these components have the **focusable** attribute set to **false**, they are still not focusable even if you bind the aforementioned event or gesture to them.
+- **Conditionally focusable components**: Typical examples are **Text** and **Image**, which are not focusable by default. To make them focusable, you must explicitly set **focusable(true)**. Container components that contain no focusable children are also non-focusable by default. However, if you bind an **onClick** event or a single-tap gesture to such a container, it implicitly gains focusability. Note that if the container's **focusable** attribute is explicitly set to **false**, it remains non-focusable even if an event or gesture is attached.
 
-- **Non-focusable components**: Components that do not allow for interactions, such as **Blank** and **Circle**, cannot be made focusable, even with the **focusable** attribute applied.
+- **Non-focusable components**: Components that do not allow for interactions, such as **Blank** and **Circle**, cannot be made focusable, regardless of whether the **focusable** attribute is applied.
 
+Setting a container component as focusable:
+
+The primary purpose of gaining focus is to enable interaction. If a component inherently lacks interactive capabilities, it cannot be made focusable. Container components (such as **Stack** and **Column**) are typically not interactive by themselves. Therefore, even if a container component is a leaf node in the view tree, it cannot be made focusable simply by calling **.focusable(true)**. Note that this same rule applies to [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md) objects created dynamically.
+To make a leaf node container focusable, you can use one of these approaches:
+
+- Place a component that natively supports focus, such as a **Button** component, inside the container.
+
+- Bind a gesture (such as **onClick** or a tap gesture) to the container.
 
 ```ts
 enabled(value: boolean)
@@ -526,7 +531,7 @@ Sets the component's interactivity. If [enabled](../reference/apis-arkui/arkui-t
 visibility(value: Visibility)
 ```
 
-Sets the component's visibility. If [visibility](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility) is set to **Visibility.None** or **Visibility.Hidden**, the component becomes invisible and cannot gain focus.
+Sets the component's visibility. If [visibility](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility) set to **Visibility.None** or **Visibility.Hidden**, the component becomes invisible and cannot gain focus.
 
 ```ts
 focusOnTouch(value: boolean)
@@ -536,7 +541,7 @@ Sets whether the component is focusable on touch.
 
 > **NOTE**
 >
-> When a component that is currently focused has its **focusable** or **enabled** attribute set to **false**, it automatically loses focus. Focus then shifts to another component according to the [Focus Traversal Guidelines](#focus-traversal-guidelines).
+>When a component that is currently focused has its **focusable** or **enabled** attribute set to **false**, it automatically loses focus. The focus then shifts to another component according to the [Focus Traversal Guidelines](#focus-traversal-guidelines).
 
 ```ts
 // xxx.ets
@@ -631,8 +636,8 @@ Operation result:
 The preceding example includes three steps:
 
 - As the first **Text** component does not have **focusable(true)** set, it is not focusable.
-- The second **Text** component is set with **focusOnTouch(true)**, allowing it to gain focus on touch. Pressing the **Tab** key triggers focus traversal, but focus remains on the second component. When the **F** key is pressed, the **onKeyEvent** callback toggles **focusable** to **false**, making the second **Text** component not focusable, and focus shifts to the next available focusable component, which is the third **Text** component.
-- Pressing the **G** key triggers the **onKeyEvent** callback, which sets **enabled** to **false**, making the third **Text** component not focusable. Focus then automatically moves to the **Row** container, where the default configuration causes focus to shift to **Button1**.
+- The second **Text** component is set with **focusOnTouch(true)**, allowing it to gain focus on touch. Pressing the **Tab** key triggers focus traversal, but the focus remains on the second component. When the **F** key is pressed, the **onKeyEvent** callback toggles **focusable** to **false**, making the second **Text** component not focusable, and the focus shifts to the next available focusable component, which is the third **Text** component.
+- Pressing the **G** key triggers the **onKeyEvent** callback, which sets **enabled** to **false**, making the third **Text** component not focusable. The focus then automatically moves to the **Row** container, where the default configuration causes the focus to shift to **Button1**.
 
 ## Setting the Focus Box for a Container
 
@@ -743,7 +748,7 @@ Set whether the current component is the default focus on the current [hierarchi
 // xxx.ets
 @Entry
 @Component
-struct morenjiaodian {
+struct DefaultFocus {
   @State oneButtonColor: Color = Color.Gray;
   @State twoButtonColor: Color = Color.Gray;
   @State threeButtonColor: Color = Color.Gray;
@@ -803,8 +808,8 @@ struct morenjiaodian {
 
 The preceding example includes two steps:
 
-- defaultFocus(true) is set on the third button. After the [Hierarchical Page](#basic-concepts) is displayed, the third button is focused by default and displayed in green.
-- Pressing the **Tab** key triggers focus traversal, and since the third **Button** component is in focus, a focus frame appears around it.
+- **defaultFocus(true)** is set on the third button. When the hierarchical page is displayed, the third button automatically receives focus and turns green.
+- Pressing the **Tab** key triggers focus traversal, and since the third **Button** component is in focus, a focus indicator appears around it.
 
 ### Default Focus for Containers
 
@@ -835,32 +840,32 @@ struct Index {
 
 **Overall Focus and Non-Overall Focus**
 
-- **Overall focus**: The entire [hierarchical page](#basic-concepts) or container gains focus first, and then focus shifts to its child components. Examples include [hierarchical page](#basic-concepts) transitions, route switches within **Navigation** components, focus group traversal, and when a container component proactively calls **requestFocusById**.
+- Overall focus: The entire [hierarchical page](#basic-concepts) or container gains focus first, and then focus shifts to its child components. Examples include [hierarchical page](#basic-concepts) transitions, route switches within **Navigation** components, focus group traversal, and when a container component proactively calls **requestFocusById**.
 
-- **Non-overall focus**: A specific component gains focus, pulling its parent components into focus. Examples include a **TextInput** component proactively obtaining focus or using the **Tab** key for traversal in non-focus group.
+- Non-overall focus: A specific component gains focus, pulling its parent components into focus. Examples include a **TextInput** component proactively obtaining focus or using the **Tab** key for traversal in non-focus group.
 
 **Formation of the Focus Chain in Overall Focus**
 
-1. When the [hierarchical page](#basic-concepts) is focused for the first time:
+1. When a hierarchical page first receives focus:
 
-   - The leaf node of the focus chain is the node with **defaultFocus** set.
+- The leaf node of the focus chain is the node with **defaultFocus** set.
 
-   - If defaultFocus is not configured, focus stays on the root container of the [hierarchical page](#basic-concepts).
+- If **defaultFocus** is not configured on any node, focus remains on the root container of the hierarchical page.
 
-2. When the [hierarchical page](#basic-concepts) is not focused for the first time, the node that was focused last time is focused.
+2. When a hierarchical page is not focused for the first time, the node that was focused the last time the page was active regains focus.
 
 3. Focus chain with priority configuration:
 
-   - If a container has a component with a focus priority higher than **PREVIOUS**, the component with the highest priority gains focus.
+- If a container has a component with a focus priority higher than **PREVIOUS**, the component with the highest priority gains focus.
 
-   - If no component with a priority higher than **PREVIOUS** exists, the last focused node regains focus, such as when a window refocuses after being out of focus.
+- If no component with a priority higher than **PREVIOUS** exists, the last focused node regains focus, such as when a window refocuses after being out of focus.
 
 
 ## Focus Style
 
 > **NOTE**
 >
-> When a component is in the focus activated state, its [zIndex](../reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex) value is automatically elevated to **INT_MAX** to ensure that it is rendered above other components. If the component already has a specified **zIndex** value, this value will not be adjusted. When the component exits the focus activated state (for example, loses focus or leaves the focus chain), its **zIndex** value will revert to its original settings.
+> When a component is in the focus activation state, its [zIndex](../reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex) value is automatically elevated to **INT_MAX** to ensure that it is rendered above other components. If the component already has a specified **zIndex** value, this value will not be adjusted. When the component exits the focus activation state (for example, loses focus or leaves the focus chain), its **zIndex** value will revert to its original settings.
 >
 
 ```ts
@@ -900,12 +905,12 @@ struct RequestFocusExample {
 
 The preceding example includes two steps:
 
-- After the [hierarchical page](#basic-concepts) opens, pressing the Tab key initiates focus traversal. The first **Button** gains focus, displaying a small, black focus box that is closely fitted to the edge.
+- After the [hierarchical page](#basic-concepts) opens, pressing the **Tab** key initiates focus traversal. The first **Button** gains focus, displaying a small, black focus box that is closely fitted to the edge.
 - Pressing the Tab key again shifts focus to the second **Button**, which features a large, red focus box with a thicker stroke and a more significant margin from the edge.
 
 ## Active Focus Acquisition/Loss
 
-- **Using FocusController APIs**
+- Using **FocusController** APIs
 
   You are advised to use **requestFocus** from **FocusController** for actively acquiring focus. It provides the following benefits:
   - Takes effect in the current frame, preventing interference from subsequent component tree changes.
@@ -924,7 +929,7 @@ The preceding example includes two steps:
   ```
   Clears focus and forcibly moves focus to the root container node of the current [hierarchical page](#basic-concepts). Other nodes on the focus chain all lose focus.
 
-- **Using focusControl APIs**
+- Using **focusControl** APIs
   ```ts
   requestFocus(value: string): boolean
   ```
@@ -1021,7 +1026,7 @@ The preceding example includes three steps:
 nextFocus(nextStep: Optional<FocusMovement>): T
 ```
 
-If a component is configured with nextFocus, focus is moved only according to the nextFocus sequence. If no component or container is configured with nextFocus, the default focus sequence is used.
+When a component is configured with **nextFocus**, focus movement strictly follows the sequence defined by **nextFocus**. If no component or container has **nextFocus** configured, the default focus sequence applies.
 
 >  **NOTE**
 >
@@ -1060,11 +1065,11 @@ struct NextFocusExample {
   }
 }
 ```
-Focus sequence using the Tab key: If nextFocus is not configured, the focus sequence using the Tab key is A->B -> C->D -> E->F. After nextFocus is configured, the focus sequence of the Tab key is A->F -> B->C -> D->E -> A.
+Focus navigation order for the **Tab** key: Without **nextFocus** configured: The focus navigation order is A -> B -> C -> D -> E -> F. With **nextFocus** configured: The focus navigation order is A ->F -> B ->C -> D ->E -> A.
 
 ![NextFocus_Focus_1.gif](figures/NextFocus_Focus_1.gif)
 
-Focus by pressing the down arrow key (for example): If nextFocus is not configured, after the Tab key is pressed to activate the focus state, the focus sequence of the down arrow key is A->D -> E->F. After nextFocus is configured, after the Tab key is pressed to activate the focus state, the focus sequence of the down arrow key is A->B -> C->D -> E->F -> A.
+Focus navigation order for the down arrow key (example): Without **nextFocus** configured: After the focus activation state is triggered with the **Tab** key, the focus navigation order is A ->D -> E -> F. With **nextFocus** configured: After the focus activation state is triggered with the **Tab** key, the focus navigation order is A -> B -> C->D -> E->F -> A.
 
 ![NextFocus_Focus_2.gif](figures/NextFocus_Focus_2.gif)
 
@@ -1074,7 +1079,7 @@ Focus by pressing the down arrow key (for example): If nextFocus is not configur
 tabIndex(index: number)
 ```
 
-tabIndex customizes the focus sequence of the Tab key.
+The **tabIndex** attribute customizes the focus navigation order for the **Tab** key.
 
 When components with positive **tabIndex** values are present, only these components are reachable through sequential focus navigation, and they are navigated cyclically in ascending order based on the **tabIndex** value. When components with positive **tabIndex** values are not present, those components with a **tabIndex** value of **0** are navigated based on the preset focus navigation rule.
 
@@ -1082,9 +1087,9 @@ When components with positive **tabIndex** values are present, only these compon
 >
 > **tabIndex** and **focusScopeId** cannot be both set on the same component.
 > 
-> You are advised not to set the tabIndex attribute of a component to a negative number on the [hierarchical page](#basic-concepts) to control the focus capability. You can use the focusable attribute instead.
+> Avoid setting a component's **tabIndex** to a negative number on a hierarchical page to control its focusability. Use the **focusable** attribute for that purpose instead.
 > 
-> tabIndex can only customize the focus of the Tab key. If you want to customize the focus capability of the arrow key, you are advised to use [nextfocus](#setting-the-focus-navigation-order-with-nextfocus).
+> **tabIndex** only customizes **Tab** key navigation. For arrow key navigation customization, use [nextfocus](#setting-the-focus-navigation-order-with-nextfocus).
 
 ```ts
 @Entry
@@ -1299,8 +1304,8 @@ struct FocusableExample {
 
 The preceding example includes two steps:
 
-- The **TextInput** component is part of a focus group. When the **Tab** key is pressed, focus quickly moves out of the **TextInput** component to the next focusable element outside the group. Arrow keys can be used to move focus within the **TextInput** component.
-- The **Column** component in the upper left corner does not have a focus group set. Therefore, focus can only be traversed one by one with the **Tab** key.
+- The **TextInput** component is part of a focus group. When the **Tab** key is pressed, the focus quickly moves out of the **TextInput** component to the next focusable element outside the group. Arrow keys can be used to move focus within the **TextInput** component.
+- The two **Column** components on the left do not have a focus group set. Therefore, focus can only be traversed one by one with the **Tab** key.
 
 
 In API version 14, you can use the **arrowStepOut** parameter on a focus group to specify whether focus can move out of the group using arrow keys.

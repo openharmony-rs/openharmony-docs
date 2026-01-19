@@ -11,6 +11,8 @@
 
 声明电池API以获取当前电池容量和电源类型的信息，定义电池相应常见事件。
 
+**引用文件：** <BasicServicesKit/ohbattery_info.h>
+
 **库：** libohbattery_info.so
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core

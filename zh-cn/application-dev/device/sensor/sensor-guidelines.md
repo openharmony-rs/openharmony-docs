@@ -10,7 +10,7 @@
 
 当设备需要获取传感器数据时，可以使用sensor模块，例如：通过订阅方向传感器数据感知用户设备当前的朝向，通过订阅计步传感器数据统计用户的步数等。
 
-详细的接口介绍请参考[Sensor接口](../../reference/apis-sensor-service-kit/js-apis-sensor.md)。
+详细的接口介绍请参考[@ohos.sensor (传感器)](../../reference/apis-sensor-service-kit/js-apis-sensor.md)。
 
 
 ## 接口说明
@@ -39,36 +39,33 @@
 
 2. 查询设备支持的所有传感器的参数，如果获取不到某个传感器则代表该传感器在此设备上不存在或不可用，如果订阅没查到的传感器时需要处理异常。
 
-    ```ts    
-    sensor.getSensorList((error: BusinessError, data: Array<sensor.Sensor>) => {
-        if (error) {
-            console.error('getSensorList failed');
-        } else {
-            console.info('getSensorList success');
-            for (let i = 0; i < data.length; i++) {
-                console.info(JSON.stringify(data[i]));
-            }
-        }
-    });
-    ```
-
-    ![输入图片说明](figures/001.png)
-
-    该传感器支持的最小采样周期为5000000纳秒，最大采样周期是200000000纳秒。不同传感器支持的采样周期范围也不同，interval应该设置在传感器支持范围内，大于最大值时以最大值上报数据，小于最小值时以最小值上报数据。设置数值越小数据上报越频繁，其功耗越大。
-
-    根据设备Id查询传感器。
-    ```ts
-    try {
-      const deviceId = 1;
-      // 第一个参数deviceId 非必填，缺省默认查询的为本地设备。
-      const sensorList: sensor.Sensor[] = sensor.getSensorListByDeviceSync(deviceId);
-      console.info(`sensorList length: ${sensorList.length}`);
-      console.info(`sensorList: ${JSON.stringify(sensorList)}`);
-    } catch (error) {
-      let e: BusinessError = error as BusinessError;
-      console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
-    }
-    ```
+   ```ts
+   sensor.getSensorList((error: BusinessError, data: Array<sensor.Sensor>) => {
+       if (error) {
+           console.error('getSensorList failed');
+       } else {
+           console.info('getSensorList success');
+           for (let i = 0; i < data.length; i++) {
+               console.info(JSON.stringify(data[i]));
+           }
+       }
+   });
+   ```
+   ![输入图片说明](figures/001.png)
+   该传感器支持的最小采样周期为5000000纳秒，最大采样周期是200000000纳秒。不同传感器支持的采样周期范围也不同，interval应该设置在传感器支持范围内， 于最大值时以最大值上报数据，小于最小值时以最小值上报数据。设置数值越小数据上报越频繁，其功耗越大。
+   根据设备Id查询传感器。
+   ```ts
+   try {
+     const deviceId = 1;
+     // 第一个参数deviceId 非必填，缺省默认查询的为本地设备。
+     const sensorList: sensor.Sensor[] = sensor.getSensorListByDeviceSync(deviceId);
+     console.info(`sensorList length: ${sensorList.length}`);
+     console.info(`sensorList: ${JSON.stringify(sensorList)}`);
+   } catch (error) {
+     let e: BusinessError = error as BusinessError;
+     console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
+   }
+   ```
 
 3. 检查是否已经配置相应权限，具体配置方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
@@ -119,29 +116,27 @@
 
 5. 取消持续监听。
 
-    取消持续监听，此场景下未订阅而取消监听为异常行为，需处理异常。
-    ```ts
-    sensor.off(sensor.SensorId.ACCELEROMETER);
-    ```
-
-    根据SensorInfoParam取消监听。
-    ```ts
-    sensor.off(sensor.SensorId.ACCELEROMETER, { deviceId: 1, sensorIndex: 3 });
-    ```
+   取消持续监听，此场景下未订阅而取消监听为异常行为，需处理异常。
+   ```ts
+   sensor.off(sensor.SensorId.ACCELEROMETER);
+   ```
+   根据SensorInfoParam取消监听。
+   ```ts
+   sensor.off(sensor.SensorId.ACCELEROMETER, { deviceId: 1, sensorIndex: 3 });
+   ```
 
 6. 动态传感器状态的监听，在收到设备下线事件通知时，用户应主动调用off关闭该设备上的传感器。 
 
-    注册监听, SensorStatusEvent 会返回事件时间戳、传感器ID、传感器索引、上线或下线、设备id、设备名称等值。
-    ```ts
-    sensor.on('sensorStatusChange', (data: sensor.SensorStatusEvent) => {
-          console.info(`timestamp: ${data.timestamp},
-            deviceId: ${data.deviceId} deviceName: ${data.deviceName}
-            sensorId: ${data.sensorId} sensorIndex:${data.sensorIndex} isSensorOnline: ${data.isSensorOnline}`)
-    });
-    ```
-
-    取消监听。
-    ```ts
-    // 注意：取消监听前，请确保已通过 on('sensorStatusChange', ...) 成功订阅，否则此调用无意义。
-    sensor.off('sensorStatusChange');
-    ```
+   注册监听, SensorStatusEvent 会返回事件时间戳、传感器ID、传感器索引、上线或下线、设备id、设备名称等值。
+   ```ts
+   sensor.on('sensorStatusChange', (data: sensor.SensorStatusEvent) => {
+         console.info(`timestamp: ${data.timestamp},
+           deviceId: ${data.deviceId} deviceName: ${data.deviceName}
+           sensorId: ${data.sensorId} sensorIndex:${data.sensorIndex} isSensorOnline: ${data.isSensorOnline}`)
+   });
+   ```
+   取消监听。
+   ```ts
+   // 注意：取消监听前，请确保已通过 on('sensorStatusChange', ...) 成功订阅，否则此调用无意义。
+   sensor.off('sensorStatusChange');
+   ```

@@ -19,10 +19,10 @@
     import { fileIo } from '@kit.CoreFileKit';
     import { formBindingData, FormExtensionAbility } from '@kit.FormKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    
+
     const TAG: string = 'WgtImgUpdateEntryFormAbility';
     const DOMAIN_NUMBER: number = 0xFF00;
-    
+
     export default class WgtImgUpdateEntryFormAbility extends FormExtensionAbility {
       // 在添加卡片时，打开一个本地图片并将图片内容传递给卡片页面显示
       onAddForm(want: Want): formBindingData.FormBindingData {
@@ -31,13 +31,13 @@
         hilog.info(DOMAIN_NUMBER, TAG, `tempDir: ${tempDir}`);
         let imgMap: Record<string, number> = {};
         try {
-          // 打开本地图片并获取其打开后的fd
+          // 打开本地图片并获取其打开后的fd, FormExtensionAbility进程销毁时释放
           let file = fileIo.openSync(tempDir + '/' + 'head.PNG');
           imgMap['imgBear'] = file.fd;
         } catch (e) {
           hilog.error(DOMAIN_NUMBER, TAG, `openSync failed: ${JSON.stringify(e as BusinessError)}`);
         }
-    
+
         class FormDataClass {
           text: string = 'Image: Bear';
           loaded: boolean = true;
@@ -51,100 +51,104 @@
         // 将fd封装在formData中并返回至卡片页面
         return formBindingData.createFormBindingData(formData);
       }
+
       //...
     }
     ```
 
 3. 在EntryFormAbility中的onFormEvent生命周期回调中实现网络文件的刷新。
 
-      ```ts
-      import { BusinessError } from '@kit.BasicServicesKit';
-      import { fileIo } from '@kit.CoreFileKit';
-      import { formBindingData, FormExtensionAbility, formProvider } from '@kit.FormKit';
-      import { http } from '@kit.NetworkKit';
-      import { hilog } from '@kit.PerformanceAnalysisKit';
+    ```ts
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { fileIo } from '@kit.CoreFileKit';
+    import { formBindingData, FormExtensionAbility, formProvider } from '@kit.FormKit';
+    import { http } from '@kit.NetworkKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
 
-      const TAG: string = 'WgtImgUpdateEntryFormAbility';
-      const DOMAIN_NUMBER: number = 0xFF00;
+    const TAG: string = 'WgtImgUpdateEntryFormAbility';
+    const DOMAIN_NUMBER: number = 0xFF00;
 
-      export default class WgtImgUpdateEntryFormAbility extends FormExtensionAbility {
-        async onFormEvent(formId: string, message: string): Promise<void> {
+    export default class WgtImgUpdateEntryFormAbility extends FormExtensionAbility {
+      async onFormEvent(formId: string, message: string): Promise<void> {
+        let param: Record<string, string> = {
+          'text': '刷新中...'
+        };
+        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+        formProvider.updateForm(formId, formInfo);
+
+        // 注意：FormExtensionAbility在触发生命周期回调时被拉起，仅能在后台存在5秒
+        // 建议下载能快速下载完成的小文件，如在5秒内未下载完成，则此次网络图片无法刷新至卡片页面上
+        let netFile =
+          'https://cn-assets.gitee.com/assets/mini_app-e5eee5a21c552b69ae6bf2cf87406b59.jpg'; // 需要在此处使用真实的网络图片下载链接
+        let tempDir = this.context.getApplicationContext().tempDir;
+        let fileName = 'file' + Date.now();
+        let tmpFile = tempDir + '/' + fileName;
+        let imgMap: Record<string, number> = {};
+
+        class FormDataClass {
+          text: string = 'Image: Bear' + fileName;
+          loaded: boolean = true;
+          // 卡片需要显示图片场景, 必须和下列字段formImages 中的key fileName 相同。
+          imgName: string = fileName;
+          // 卡片需要显示图片场景, 必填字段(formImages 不可缺省或改名), fileName 对应 fd
+          formImages: Record<string, number> = imgMap;
+        }
+
+        let httpRequest = http.createHttp()
+        let data = await httpRequest.request(netFile);
+        if (data?.responseCode == http.ResponseCode.OK) {
+          try {
+            let imgFile = fileIo.openSync(tmpFile, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+            imgMap[fileName] = imgFile.fd;
+            try {
+              let writeLen: number = await fileIo.write(imgFile.fd, data.result as ArrayBuffer);
+              hilog.info(DOMAIN_NUMBER, TAG, "write data to file succeed and size is:" + writeLen);
+              hilog.info(DOMAIN_NUMBER, TAG, 'ArkTSCard download complete: %{public}s', tmpFile);
+              try {
+                let formData = new FormDataClass();
+                let formInfo = formBindingData.createFormBindingData(formData);
+                await formProvider.updateForm(formId, formInfo);
+                hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'FormAbility updateForm success.');
+              } catch (error) {
+                hilog.error(DOMAIN_NUMBER, TAG, `FormAbility updateForm failed: ${JSON.stringify(error)}`);
+              }
+            } catch (err) {
+              hilog.error(DOMAIN_NUMBER, TAG,
+                "write data to file failed with error message: " + err.message + ", error code: " + err.code);
+            } finally {
+              // 在fileIo.closeSync执行之前，确保formProvider.updateForm已执行完毕。
+              fileIo.closeSync(imgFile);
+            }
+            ;
+          } catch (e) {
+            hilog.error(DOMAIN_NUMBER, TAG, `openSync failed: ${JSON.stringify(e as BusinessError)}`);
+          }
+
+        } else {
+          hilog.error(DOMAIN_NUMBER, TAG, `ArkTSCard download task failed`);
           let param: Record<string, string> = {
-            'text': '刷新中...'
+            'text': '刷新失败'
           };
           let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
           formProvider.updateForm(formId, formInfo);
-
-          // 注意：FormExtensionAbility在触发生命周期回调时被拉起，仅能在后台存在5秒
-          // 建议下载能快速下载完成的小文件，如在5秒内未下载完成，则此次网络图片无法刷新至卡片页面上
-          let netFile = 'https://cn-assets.gitee.com/assets/mini_app-e5eee5a21c552b69ae6bf2cf87406b59.jpg'; // 需要在此处使用真实的网络图片下载链接
-          let tempDir = this.context.getApplicationContext().tempDir;
-          let fileName = 'file' + Date.now();
-          let tmpFile = tempDir + '/' + fileName;
-          let imgMap: Record<string, number> = {};
-
-          class FormDataClass {
-            text: string = 'Image: Bear' + fileName;
-            loaded: boolean = true;
-            // 卡片需要显示图片场景, 必须和下列字段formImages 中的key fileName 相同。
-            imgName: string = fileName;
-            // 卡片需要显示图片场景, 必填字段(formImages 不可缺省或改名), fileName 对应 fd
-            formImages: Record<string, number> = imgMap;
-          }
-
-          let httpRequest = http.createHttp()
-          let data = await httpRequest.request(netFile);
-          if (data?.responseCode == http.ResponseCode.OK) {
-            try {
-              let imgFile = fileIo.openSync(tmpFile, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-              imgMap[fileName] = imgFile.fd;
-              try{
-                let writeLen: number = await fileIo.write(imgFile.fd, data.result as ArrayBuffer);
-                hilog.info(DOMAIN_NUMBER, TAG, "write data to file succeed and size is:" + writeLen);
-                hilog.info(DOMAIN_NUMBER, TAG, 'ArkTSCard download complete: %{public}s', tmpFile);
-                try {
-                  let formData = new FormDataClass();
-                  let formInfo = formBindingData.createFormBindingData(formData);
-                  await formProvider.updateForm(formId, formInfo);
-                  hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'FormAbility updateForm success.');
-                } catch (error) {
-                  hilog.error(DOMAIN_NUMBER, TAG, `FormAbility updateForm failed: ${JSON.stringify(error)}`);
-                }
-              } catch (err) {
-                hilog.error(DOMAIN_NUMBER, TAG, "write data to file failed with error message: " + err.message + ", error code: " + err.code);
-              } finally {
-                // 在fileIo.closeSync执行之前，确保formProvider.updateForm已执行完毕。
-                fileIo.closeSync(imgFile);
-              };
-            } catch (e) {
-              hilog.error(DOMAIN_NUMBER, TAG, `openSync failed: ${JSON.stringify(e as BusinessError)}`);
-            }
-
-          } else {
-            hilog.error(DOMAIN_NUMBER, TAG, `ArkTSCard download task failed`);
-            let param: Record<string, string> = {
-              'text': '刷新失败'
-            };
-            let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
-            formProvider.updateForm(formId, formInfo);
-          }
-          httpRequest.destroy();
         }
+        httpRequest.destroy();
       }
-      ```
+    }
+    ```
 
 4. 在卡片页面通过backgroundImage属性展示EntryFormAbility传递过来的卡片内容。
 
     ```ts
     let storageWidgetImageUpdate = new LocalStorage();
-    
+
     @Entry(storageWidgetImageUpdate)
     @Component
     struct WidgetImageUpdateCard {
       @LocalStorageProp('text') text: ResourceStr = $r('app.string.loading');
       @LocalStorageProp('loaded') loaded: boolean = false;
       @LocalStorageProp('imgName') imgName: ResourceStr = $r('app.string.imgName');
-    
+
       build() {
         Column() {
           Column() {

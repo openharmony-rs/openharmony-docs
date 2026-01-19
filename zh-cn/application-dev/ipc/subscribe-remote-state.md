@@ -3,7 +3,7 @@
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
 <!--Designer: @zhaopeng_gitee-->
-<!--Tester: @maxiaorong-->
+<!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
 
 IPC/RPC提供了订阅远端Stub对象状态的机制。当远端Stub对象死亡时，可以自动触发本端Proxy注册的死亡通知。这种死亡通知订阅需要调用指定接口[registerDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#registerdeathrecipient9-1)完成。不再需要订阅时，也需要调用指定接口[unregisterDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#unregisterdeathrecipient9-1)取消订阅。
@@ -19,9 +19,11 @@ IPC/RPC提供了订阅远端Stub对象状态的机制。当远端Stub对象死�
 IPC/RPC的订阅机制适用于以下场景：</br>
 1. IPC通信，Proxy对象需要感知远端Stub对象所在进程的状态。
 2. RPC通信，Proxy对象需要感知远端Stub对象所在进程的状态，或者RPC通信依赖的软总线连接断开。
-当Proxy感知到Stub端死亡后，应该清理本地Proxy对象以及相关资源。
-> **注意：** 
-> 
+
+   当Proxy感知到Stub端死亡后，应该清理本地Proxy对象以及相关资源。
+   
+> **注意：**
+>
 > RPC不支持匿名Stub对象（没有向SAMgr注册）的死亡通知，IPC支持匿名Stub对象的死亡通知。
 
 ## ArkTS侧接口
@@ -40,126 +42,128 @@ IPC/RPC的订阅机制适用于以下场景：</br>
 
 ### 参考代码
 
-  在IPC场景中，创建变量want和connect。
-  ```ts
-    import { Want, common } from '@kit.AbilityKit';
-    import { rpc } from '@kit.IPCKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
+在IPC场景中，创建变量want和connect。
 
-    let proxy: rpc.IRemoteObject | undefined;
+```ts
+import { Want, common } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-    let want: Want = {
-      // 包名和组件名写实际的值
-      bundleName: "ohos.rpc.test.server",
-      abilityName: "ohos.rpc.test.server.ServiceAbility",
-    };
-    let connect: common.ConnectOptions = {
-      onConnect: (elementName, remoteProxy) => {
-        hilog.info(0x0000, 'testTag', 'RpcClient: js onConnect called');
-        proxy = remoteProxy;
-      },
-      onDisconnect: (elementName) => {
-        hilog.info(0x0000, 'testTag', 'RpcClient: onDisconnect');
-      },
-      onFailed: () => {
-        hilog.info(0x0000, 'testTag', 'RpcClient: onFailed');
-      }
-    };
-  ```
+let proxy: rpc.IRemoteObject | undefined;
 
-  在RPC场景中，创建变量want和connect。
-  ```ts 
-    import { Want, common } from '@kit.AbilityKit';
-    import { rpc } from '@kit.IPCKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
+let want: Want = {
+  // 包名和组件名写实际的值
+  bundleName: "ohos.rpc.test.server",
+  abilityName: "ohos.rpc.test.server.ServiceAbility",
+};
+let connect: common.ConnectOptions = {
+  onConnect: (elementName, remoteProxy) => {
+    hilog.info(0x0000, 'testTag', 'RpcClient: js onConnect called');
+    proxy = remoteProxy;
+  },
+  onDisconnect: (elementName) => {
+    hilog.info(0x0000, 'testTag', 'RpcClient: onDisconnect');
+  },
+  onFailed: () => {
+    hilog.info(0x0000, 'testTag', 'RpcClient: onFailed');
+  }
+};
+```
 
-    let dmInstance: distributedDeviceManager.DeviceManager | undefined;
-    let proxy: rpc.IRemoteObject | undefined;
-    let deviceList: Array<distributedDeviceManager.DeviceBasicInfo> | undefined;
-    let networkId: string | undefined;
-    let want: Want | undefined;
-    let connect: common.ConnectOptions | undefined;
+在RPC场景中，创建变量want和connect。
 
-    try{
-      dmInstance = distributedDeviceManager.createDeviceManager("ohos.rpc.test");
-    } catch(error) {
-      let err: BusinessError = error as BusinessError;
-      hilog.error(0x0000, 'testTag', 'createDeviceManager errCode:' + err.code + ', errMessage:' + err.message);
-    }
+```ts
+import { Want, common } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-    // 使用distributedDeviceManager获取目标设备NetworkId
-    if (dmInstance != undefined) {
-      try {
-        deviceList = dmInstance.getAvailableDeviceListSync();
-        if (deviceList.length !== 0) {
-          networkId = deviceList[0].networkId;
-          want = {
-            bundleName: "ohos.rpc.test.server",
-            abilityName: "ohos.rpc.test.service.ServiceAbility",
-            deviceId: networkId,
-          };
-          connect = {
-            onConnect: (elementName, remoteProxy) => {
-              hilog.info(0x0000, 'testTag', 'RpcClient: js onConnect called');
-              proxy = remoteProxy;
-            },
-            onDisconnect: (elementName) => {
-              hilog.info(0x0000, 'testTag', 'RpcClient: onDisconnect');
-            },
-            onFailed: () => {
-              hilog.info(0x0000, 'testTag', 'RpcClient: onFailed');
-            }
-          };
+let dmInstance: distributedDeviceManager.DeviceManager | undefined;
+let proxy: rpc.IRemoteObject | undefined;
+let deviceList: Array<distributedDeviceManager.DeviceBasicInfo> | undefined;
+let networkId: string | undefined;
+let want: Want | undefined;
+let connect: common.ConnectOptions | undefined;
+
+try{
+  dmInstance = distributedDeviceManager.createDeviceManager("ohos.rpc.test");
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  hilog.error(0x0000, 'testTag', 'createDeviceManager errCode:' + err.code + ', errMessage:' + err.message);
+}
+
+// 使用distributedDeviceManager获取目标设备NetworkId
+if (dmInstance != undefined) {
+  try {
+    deviceList = dmInstance.getAvailableDeviceListSync();
+    if (deviceList.length !== 0) {
+      networkId = deviceList[0].networkId;
+      want = {
+        bundleName: "ohos.rpc.test.server",
+        abilityName: "ohos.rpc.test.service.ServiceAbility",
+        deviceId: networkId,
+      };
+      connect = {
+        onConnect: (elementName, remoteProxy) => {
+          hilog.info(0x0000, 'testTag', 'RpcClient: js onConnect called');
+          proxy = remoteProxy;
+        },
+        onDisconnect: (elementName) => {
+          hilog.info(0x0000, 'testTag', 'RpcClient: onDisconnect');
+        },
+        onFailed: () => {
+          hilog.info(0x0000, 'testTag', 'RpcClient: onFailed');
         }
-      }catch(error) {
-        let err: BusinessError = error as BusinessError;
-        hilog.error(0x0000, 'testTag', 'createDeviceManager err:' + err);
-      }
+      };
     }
-  ```
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'createDeviceManager err:' + err);
+  }
+}
+```
 
-  FA模型使用[connectAbility](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityconnectability7)接口连接Ability。
+FA模型使用[connectAbility](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityconnectability7)接口连接Ability。
 
-  <!--code_no_check_fa-->
-  ```ts
-    import { featureAbility } from '@kit.AbilityKit';
+<!--code_no_check_fa-->
+```ts
+import { featureAbility } from '@kit.AbilityKit';
 
-    // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
-    let connectId = featureAbility.connectAbility(want, connect);
-  ```
+// 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
+let connectId = featureAbility.connectAbility(want, connect);
+```
 
-  Stage模型使用common.UIAbilityContext的[connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)接口连接Ability。
+Stage模型使用common.UIAbilityContext的[connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)接口连接Ability。
   在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
-  ```ts
-    let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
-    // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
-    let connectId = context.connectServiceExtensionAbility(want,connect);
-   ```
+<!--code_no_check-->
+```ts
+let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
+// 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
+let connectId = context.connectServiceExtensionAbility(want, connect);
+```
 
-  成功连接服务后，onConnect回调函数中的Proxy对象会被赋值。此时，可以调用Proxy对象的[registerDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#registerdeathrecipient9-1)接口方法注册死亡回调，在Proxy不再使用的时候，调用[unregisterDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#unregisterdeathrecipient9-1)接口方法注销死亡回调。
+成功连接服务后，onConnect回调函数中的Proxy对象会被赋值。此时，可以调用Proxy对象的[registerDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#registerdeathrecipient9-1)接口方法注册死亡回调，在Proxy不再使用的时候，调用[unregisterDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#unregisterdeathrecipient9-1)接口方法注销死亡回调。
 
-  ```ts
-  import { rpc } from '@kit.IPCKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+```ts
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  let proxy: rpc.IRemoteObject | undefined;
+let proxy: rpc.IRemoteObject | undefined;
 
-  class MyDeathRecipient implements rpc.DeathRecipient{
-    onRemoteDied() {
-      hilog.info(0x0000, 'testTag', 'server died');
-    }
+class MyDeathRecipient implements rpc.DeathRecipient{
+  onRemoteDied() {
+    hilog.info(0x0000, 'testTag', 'server died');
   }
-  let deathRecipient = new MyDeathRecipient();
-  if (proxy != undefined) {
-    // 此处的0为注册死亡监听的死亡通知的保留标志，暂无实际意义。且移除监听仅为示例，实际移除时机由业务自行判断
-    proxy.registerDeathRecipient(deathRecipient, 0);
-    proxy.unregisterDeathRecipient(deathRecipient, 0);
-  }
-  ```
+}
+let deathRecipient = new MyDeathRecipient();
+if (proxy != undefined) {
+  // 此处的0为注册死亡监听的死亡通知的保留标志，暂无实际意义。且移除监听仅为示例，实际移除时机由业务自行判断
+  proxy.registerDeathRecipient(deathRecipient, 0);
+  proxy.unregisterDeathRecipient(deathRecipient, 0);
+}
+```
 
 ## Stub反向感知Proxy死亡状态（匿名Stub的特殊用法）
 

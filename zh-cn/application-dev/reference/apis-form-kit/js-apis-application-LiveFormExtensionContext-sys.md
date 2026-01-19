@@ -1,4 +1,4 @@
-# LiveFormExtensionContext（仅对系统应用开放）
+# LiveFormExtensionContext (系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
@@ -42,10 +42,13 @@ LiveFormExtensionContext是LiveFormExtensionAbility的上下文环境。
 connectServiceExtensionAbility(want: Want, connection: ConnectOptions): number
 
 将当前LiveFormExtensionAbility客户端连接到一个[ServiceExtensionAbility](../../application-models/serviceextensionability-sys.md)服务端。
+
 调用该接口前，必须实现[ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md)接口。
+
 通过本接口连接成功后，LiveFormExtensionAbility可以通过ConnectOptions返回的[IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject)与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。
 
 ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-models/extensionability-overview.md)组件，这类组件由系统提供，通常用于提供指定场景后台服务能力，不支持开发者自定义。
+
 ServiceExtensionAbility提供后台服务扩展能力，支持后台运行并对外提供相应能力。三方应用可以连接该ExtensionAbility，并进行通信。
 通过本接口连接成功后，会启动ServiceExtensionAbility组件，具体请参考[组件启动规则](../../application-models/component-startup-rules.md)。
 
@@ -101,6 +104,7 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 import { Want, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
+// 通过以下方式导入LiveFormExtensionContext，在DevEco Studio中标红，但不影响编译运行。
 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
 
 @Entry
@@ -215,6 +219,7 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 // pages/MyLiveFormPage.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
+// 通过以下方式导入LiveFormExtensionContext，在DevEco Studio中标红，但不影响编译运行。
 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
 
 @Entry

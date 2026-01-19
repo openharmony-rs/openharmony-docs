@@ -5,15 +5,15 @@
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
+A linear data structure that is implemented on arrays and can be passed between ArkTS concurrent instances.
+
+Pass-by-reference is recommended for better transfer performance.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - This module can be imported only to ArkTS files (with the file name extension .ets).
-
-A linear data structure that is implemented on arrays and can be passed between ArkTS concurrent instances.
-
-Pass-by-reference is recommended for better transfer performance.
 
 This section uses the following to identify the use of generics:
 
@@ -150,7 +150,7 @@ Creates an ArkTS array of a fixed length, with each element set to a given initi
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -186,7 +186,7 @@ Creates an ArkTS array from an array-like object.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -231,7 +231,7 @@ Creates an ArkTS array from an iterable object.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -274,7 +274,7 @@ Creates an ArkTS array from an array-like object, and uses a custom function to 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -313,7 +313,7 @@ Creates an ArkTS array from an array-like object, and uses a custom function to 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1598,7 +1598,7 @@ Removes elements from a specified position (start) and all elements after the sp
 
 | Name| Type | Mandatory| Description                                                               |
 | ----- | ------ | -- | ------------------------------------------------------------------- |
-| start | number | Yes| Index from which the removal starts. If `-array.length =< start < 0`, the removal starts from `start + array.length`. If `start < -array.length`, the removal starts from **0**.|
+| start | number | Yes| Start index of the range. If `-array.length =< start < 0`, the removal starts from `start + array.length`. If `start < -array.length`, the removal starts from **0**.|
 
 **Return value**
 
@@ -1708,7 +1708,7 @@ Removes elements from a specified position in an array, and inserts new elements
 
 | Name      | Type  | Mandatory| Description                                                               |
 | ----------- | ------ | --  | ------------------------------------------------------------------- |
-| start       | number | Yes | Index from which the removal starts. If `-array.length =< start < 0`, the removal starts from `start + array.length`. If `start < -array.length`, the removal starts from **0**.|
+| start       | number | Yes | Start index of the range. If `-array.length =< start < 0`, the removal starts from `start + array.length`. If `start < -array.length`, the removal starts from **0**.|
 | deleteCount | number | Yes | Number of elements to remove. If `deleteCount <= 0`, no element is removed.|
 | items       | T[]    | No | New elements to insert from the `start` position. If no value is passed in, only the elements in the array are removed.       |
 

@@ -94,43 +94,43 @@ try {
    import { wifiManager } from '@kit.ConnectivityKit';
 
    try {
-       let recvWifiConnectionChangeFunc = (result:number) => {
+     let recvWifiConnectionChangeFunc = (result: number) => {
        console.info("Receive wifi connection change event: " + result);
      }
 
-     let config:wifiManager.WifiDeviceConfig = {
-       ssid : "****",
-       bssid : "****",
-       preSharedKey : "****",
-       securityType : 0
-	   }
+     let config: wifiManager.WifiDeviceConfig = {
+       ssid: "****",
+       bssid: "****",
+       preSharedKey: "****",
+       securityType: 0
+     }
 
-       // 更新当前Wi-Fi连接状态
+     // 更新当前Wi-Fi连接状态
      wifiManager.on("wifiConnectionChange", recvWifiConnectionChangeFunc);
-       // 添加候选网络配置
-	   wifiManager.addCandidateConfig(config).then(result => {
+     // 添加候选网络配置
+     wifiManager.addCandidateConfig(config).then(result => {
        // 连接指定网络
        wifiManager.connectToCandidateConfig(result);
      });
 
      if (!wifiManager.isConnected()) {
-         console.info("Wi-Fi not connected");
+       console.info("Wi-Fi not connected");
      }
-      // 获取连接信息
+     // 获取连接信息
      wifiManager.getLinkedInfo().then(data => {
        console.info("get Wi-Fi linked info: " + JSON.stringify(data));
      })
      // 查询信号强度
      let rssi = -88;
      let band = 1;
-     let level = wifiManager.getSignalLevel(rssi,band);
+     let level = wifiManager.getSignalLevel(rssi, band);
      console.info("level:" + JSON.stringify(level));
-
+   
      // 取消注册，停止更新当前Wi-Fi连接状态
      wifiManager.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
    } catch (error) {
      console.error(`WiFi Connection failed. ${error.message}`);
    }
    ```
-6. Wi-Fi连接状态值，详情请参考[ConnState](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#connstate9)。
+6. Wi-Fi连接状态值，详情请参考[ConnState](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#connstate)。
 7. 错误码详情请参见[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。

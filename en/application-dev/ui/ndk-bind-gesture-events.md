@@ -31,7 +31,7 @@ The following is a simple example to illustrate how to implement gesture binding
    nodeAPI->setAttribute(column, NODE_HEIGHT, &height);
    ```
 
-2. Create a single-finger long-press gesture with a 1-second activation threshold.
+2. Create a single-finger long press gesture with a 1-second activation threshold.
    ```
    // Obtain the set of native gesture APIs.
    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(

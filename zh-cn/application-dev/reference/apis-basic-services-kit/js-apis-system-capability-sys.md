@@ -17,10 +17,10 @@
 ## 导入模块
 
 ```ts
-import { systemcapability } from '@kit.BasicServicesKit';
+import { systemCapability } from '@kit.BasicServicesKit';
 ```
 
-## systemcapability.querySystemCapabilities
+## systemCapability.querySystemCapabilities
 
 querySystemCapabilities(callback: AsyncCallback&lt;string&gt;): void
 
@@ -39,7 +39,7 @@ querySystemCapabilities(callback: AsyncCallback&lt;string&gt;): void
 
 ```ts
 try {
-    systemcapability.querySystemCapabilities((err:Error, data:string) => {
+    systemCapability.querySystemCapabilities((err:Error, data:string) => {
     if (err == undefined) {
         console.info("get system capabilities:" + data);
     } else {
@@ -51,7 +51,7 @@ try {
 ```
 
 
-## systemcapability.querySystemCapabilities
+## systemCapability.querySystemCapabilities
 
 querySystemCapabilities(): Promise&lt;string&gt;
 
@@ -69,7 +69,7 @@ querySystemCapabilities(): Promise&lt;string&gt;
 
 ```ts
 try {
-    systemcapability.querySystemCapabilities().then((value:string) => {
+    systemCapability.querySystemCapabilities().then((value:string) => {
         console.info("get system capabilities: " + value);
     }).catch((err:Error) => {
         console.error("get system capabilities error: " + err);

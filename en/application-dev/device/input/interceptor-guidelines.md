@@ -46,7 +46,7 @@ Declare the required permission in the **module.json5** file. For details, see [
 
 ### Creating an Event Interceptor
 
-#### Key Events
+- **Key event**
 
 ```c++
 #include "multimodalinput/oh_input_manager.h"
@@ -67,16 +67,16 @@ void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
 }
 
-void TestInterceptor()
+void TestKeyEventInterceptor()
 {
-    // Add the key event interceptor.
+    // Add an interceptor for key events.
     Input_Result ret = OH_Input_AddKeyEventInterceptor(OnKeyEventCallback, nullptr);
-    // Remove the key event interceptor.
+    // Remove the listener for key events.
     ret = OH_Input_RemoveKeyEventInterceptor();
 }
 ```
 
-#### Input Events
+- **Input Events (Mouse, Touch, and Axis Events)**
 
 ```c++
 #include "multimodalinput/oh_input_manager.h"
@@ -172,7 +172,7 @@ void OnAxisEventCallback(const Input_AxisEvent* axisEvent)
 // Structure of the input event callback function
 Input_InterceptorEventCallback g_eventCallback;
 
-void TestInterceptor()
+void TestInputEventInterceptor()
 {
     // Set the mouse event callback function.
     g_eventCallback.mouseCallback = OnMouseEventCallback;
@@ -181,9 +181,13 @@ void TestInterceptor()
     // Set the axis event callback function.
     g_eventCallback.axisCallback = OnAxisEventCallback;
 
-    // Add the input event interceptor.
+    // Add an interceptor for input events.
     Input_Result ret = OH_Input_AddInputEventInterceptor(&g_eventCallback, nullptr);
-    // Remove the input event interceptor.
+    // Remove the listener for input events.
     ret = OH_Input_RemoveInputEventInterceptor();
 }
 ```
+
+## Sample Code
+
+- [Input Event Interception (C/C++) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/input/NDKInputEventInterceptor)

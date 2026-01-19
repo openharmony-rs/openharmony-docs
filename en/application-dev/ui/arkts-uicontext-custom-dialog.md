@@ -1,4 +1,4 @@
-# Global Custom Dialog Box Independent of UI Components (openCustomDialog) (Recommended)
+# Global Custom Dialog Box Independent of UI Components (openCustomDialog)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-For complex application scenarios, use the [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12) API from the **PromptAction** object obtained through UIContext to implement custom dialog boxes. Compared with [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller), this approach offers better page decoupling and supports [dynamic updates](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update).
+In scenarios that require user interaction responses such as advertisements, prize notifications, warnings, and software updates, you can use the [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12) API provided by the **PromptAction** object obtained from **UIContext** to implement custom dialog boxes. Compared with [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller), its advantages include decoupling from pages and support for [dynamic updates](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update).
 
 > **NOTE**
 > 
@@ -26,8 +26,8 @@ The dialog box provides lifecycle functions to notify users of its lifecycle eve
 
 | Name           |Type| Description                      |
 | ----------------- | ------ | ---------------------------- |
-| onDidAppear    | () => void  | Callback invoked when the dialog box appears.   |
-| onDidDisappear |() => void  | Callback invoked when the dialog box disappears.   |
+| onDidAppear    | () => void  | Callback invoked after the dialog box appears.   |
+| onDidDisappear |() => void  | Callback invoked after the dialog box disappears.   |
 | onWillAppear    | () => void | Callback invoked when the dialog box is about to appear.|
 | onWillDisappear | () => void | Callback invoked when the dialog box is about to disappear.|
 
@@ -121,7 +121,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct Index {
-  private customDialogComponentId: number = 0
+  private customDialogComponentId: number = 0;
+
   @Builder
   customDialogComponent() {
     Row({ space: 50 }) {
@@ -135,28 +136,36 @@ struct Index {
         Text('Open dialog box')
           .fontSize(30)
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              isModal:true,
-              showInSubWindow:false,
-              maskColor: Color.Pink,
-              maskRect:{ x: 20, y: 20, width: '90%', height: '90%' },
+            this.getUIContext()
+              .getPromptAction()
+              .openCustomDialog({
+                builder: () => {
+                  this.customDialogComponent()
+                },
+                isModal: true,
+                showInSubWindow: false,
+                maskColor: Color.Pink,
+                maskRect: {
+                  x: 20,
+                  y: 20,
+                  width: '90%',
+                  height: '90%'
+                },
 
-              dialogTransition: // Set the transition effect for dialog box content display.
-              TransitionEffect.translate({ x: 0, y: 290, z: 0 })
-                .animation({ duration: 4000, curve: Curve.Smooth }),// 4-second translation animation
+                dialogTransition: // Set the transition effect for dialog box content display.
+                TransitionEffect.translate({ x: 0, y: 290, z: 0 })
+                  .animation({ duration: 4000, curve: Curve.Smooth }), // 4-second translation animation
 
-              maskTransition: // Set the transition effect for mask display.
-              TransitionEffect.opacity(0)
-                .animation({ duration: 4000, curve: Curve.Smooth }) // 4-second opacity animation
+                maskTransition: // Set the transition effect for mask display.
+                TransitionEffect.opacity(0)
+                  .animation({ duration: 4000, curve: Curve.Smooth }) // 4-second opacity animation
 
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
+              })
+              .then((dialogId: number) => {
+                this.customDialogComponentId = dialogId;
+              })
               .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
+                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`);
               })
           })
       }
@@ -202,7 +211,7 @@ struct Index {
               builder: () => {
                 this.customDialogComponent()
               },
-              alignment:DialogAlignment.Bottom,
+              alignment: DialogAlignment.Bottom,
               keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // The dialog box automatically avoids the soft keyboard.
               keyboardAvoidDistance: LengthMetrics.vp(0) // The distance between the soft keyboard and the dialog box is 0 vp.
             }).catch((error: BusinessError) => {

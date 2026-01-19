@@ -2491,7 +2491,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 getCurrentWifiBssidForLocating(): string
 
-Obtains the Basic Service Set Identifier (BSSID) of the connected Wi-Fi access point (AP).
+Obtains the Basic Service Set Identifier (BSSID) of the connected Wi-Fi access point (AP). If the device is not connected to a Wi-Fi network, error code **3301900** will be returned. You are advised to use the **try-catch** structure to capture exceptions according to the sample code.
 
 **Required permissions**: ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2657,7 +2657,7 @@ Queries whether the system supports the POI service.
 
 getPoiInfo(): Promise&lt;PoiInfo&gt;
 
-Obtains the POI near the current location.
+Obtains the POI near the current location. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2932,7 +2932,7 @@ Checks whether the current device supports beacon fences.
 
 isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, needStartScan: boolean): Promise&lt;boolean&gt;
 
-Checks whether a specified BSSID exists in the latest WLAN scan result.
+Checks whether a specified BSSID exists in the latest WLAN scan result. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 

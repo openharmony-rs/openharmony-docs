@@ -6,22 +6,25 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Reusable装饰器标记的自定义组件支持视图节点、组件实例和状态上下文的复用，避免重复创建和销毁，提升性能。
-
-## 概述
-
-使用\@Reusable装饰器时，表示该自定义组件可以复用。与[\@Component装饰器](arkts-create-custom-components.md#component)结合使用，标记为\@Reusable的自定义组件在从组件树中移除时，组件及其对应的JS对象将被放入复用缓存中。后续创建新自定义组件节点时，将复用缓存中的节点，从而节约组件重新创建的时间。
+\@Reusable装饰的自定义组件支持组件复用。当自定义组件从组件树上移除时，会被存入缓存池，后续在创建相同类型的组件节点时，将优先复用缓存池中的组件对象，从而避免重复创建和销毁，提升性能。
 
 > **说明：**
 >
 > API version 10开始支持@Reusable，支持在ArkTS中使用。
 >
-> 关于组件复用的原理与使用、优化方法、适用场景，请参考最佳实践[组件复用最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-reuse)。
->
-> \@Reusable标识之后，在组件上下树时ArkUI框架会调用该组件的[aboutToReuse](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)方法和[aboutToRecycle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)方法，因此，开发者在实现复用时，大部分代码都集中在这两个生命周期方法中。
->
-> 如果一个组件里可复用的组件不止一个，可以使用[reuseId](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md)来区分不同结构的复用组件。
->
+> 关于组件复用的原理与使用、优化方法、适用场景，请参考[组件复用最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-reuse)。
+
+## 概述
+
+\@Reusable用于装饰自定义组件，表示该自定义组件具有被复用的能力。
+
+在开发复杂界面时，UI渲染效率是一个需要考虑的问题。例如在长列表快速滑动时，大量列表项的创建和销毁可能导致界面卡顿。组件复用是一种优化UI性能的重要方法。通过复用先前创建并且已经下树的组件对象，降低组件创建和销毁的频率，从而减小计算开销，提升UI渲染效率。
+
+> **注意：**
+> - \@Reusable装饰的自定义组件在从组件树中移除时，自定义组件（包含视图节点、组件实例和状态上下文）将被放入其父自定义组件的缓存池中。后续创建新自定义组件节点时，将优先复用>缓存池中的节点，从而节约组件重新创建的时间。
+> - \@Reusable提供了[aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)和[aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)两个生命周期，在组件被回收时调用aboutToRecycle，在组件被复用时调用aboutToReuse。开发者可以在这两个生命周期中实现组件回收、复用相关的业务逻辑。
+> - \@Reusable装饰的自定义组件下有子组件时，会在回收和复用时递归调用子组件的aboutToRecycle和aboutToReuse（与子组件是否被@Reusable标记无关），直到遍历完所有子组件。
+> - 组件复用前后应保持组件结构不变。针对组件结构存在差异的场景，可以使用[reuseId](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md)来区分不同结构的复用组件。
 
 ## 限制条件
 
@@ -253,6 +256,206 @@ struct Index {
 
     build() {
       Text('ReuseComponentChild num:' + this.num.toString())
+    }
+  }
+  ```
+
+- 被@Reusable装饰的自定义组件在复用前后，应保持组件的结构不变。否则，会在复用过程中创建或销毁子组件，降低复用效率和性能，甚至造成应用行为异常。</br>
+  对于复用过程中创建的子组件，框架会在其创建后依次调用aboutToReuse方法和aboutToAppear方法。在调用aboutToReuse方法时，由于其aboutToAppear方法还未执行，且内部子组件还未创建，因此可能引起预期外的行为。在调用aboutToReuse方法后，框架会再调用aboutToAppear方法并初始化组件。</br>
+  针对组件结构存在差异的场景，开发者需要通过设定不同的reuseId来进行区分，具体方式请参考[多种条目类型使用场景](#多种条目类型使用场景)。
+
+  【反例】
+
+  组件结构存在差异，但未通过reuseId进行区分。</br>
+  以下示例中，先点击“show/hide branch A”按钮，组件被回收，再点击“show/hide branch B”按钮，组件被复用。子组件ReusableChildB在复用过程中被创建，aboutToReuse方法和aboutToAppear方法被同时依次调用。
+
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG = '[Sample_ReusableComponent]';
+  const DOMAIN = 0xF811;
+  const BUNDLE = 'ReusableComponent_';
+  
+  @Entry
+  @Component
+  struct Index {
+    @State showBranchA: boolean = true;
+    @State showBranchB: boolean = false;
+  
+    build() {
+      Column({ space: 5 }) {
+        Button('show/hide branch A')
+          .onClick(() => {
+            this.showBranchA = !this.showBranchA;
+          })
+        if (this.showBranchA) {
+          ReusableComponent({ flag: true })
+        }
+        Button('show/hide branch B')
+          .onClick(() => {
+            this.showBranchB = !this.showBranchB;
+          })
+        if (this.showBranchB) {
+          ReusableComponent({ flag: false })
+        }
+      }
+    }
+  }
+  
+  @Reusable
+  @Component
+  struct ReusableComponent {
+    @Require @Prop flag: boolean = true;
+  
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToAppear');
+    }
+  
+    aboutToReuse(params: ESObject) {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToReuse');
+      this.flag = params.flag;
+    }
+  
+    build() {
+      Column({ space: 5 }) {
+        Text('ReusableComponent')
+        if (this.flag) {
+          ReusableChildA()
+        } else {
+          ReusableChildB()
+        }
+      }.border({ width: 1 })
+    }
+  }
+  
+  @Component
+  struct ReusableChildA {
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToAppear');
+    }
+  
+    aboutToReuse() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToReuse');
+    }
+  
+    build() {
+      Text('ReusableChildA')
+        .border({ width: 1 })
+    }
+  }
+  
+  @Component
+  struct ReusableChildB {
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToAppear');
+    }
+  
+    aboutToReuse() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToReuse');
+    }
+  
+    build() {
+      Text('ReusableChildB')
+        .border({ width: 1 })
+    }
+  }
+  ```
+
+
+  【正例】
+
+  组件结构存在差异，通过reuseId进行区分。
+  
+  ```ts
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG = '[Sample_ReusableComponent]';
+  const DOMAIN = 0xF811;
+  const BUNDLE = 'ReusableComponent_';
+  
+  @Entry
+  @Component
+  struct Index {
+    @State showBranchA: boolean = true;
+    @State showBranchB: boolean = false;
+  
+    build() {
+      Column({ space: 5 }) {
+        Button('show/hide branch A')
+          .onClick(() => {
+            this.showBranchA = !this.showBranchA;
+          })
+        if (this.showBranchA) {
+          ReusableComponent({ flag: true })
+            .reuseId('ReuseA') // 通过reuseId区分不同结构的复用组件
+        }
+        Button('show/hide branch B')
+          .onClick(() => {
+            this.showBranchB = !this.showBranchB;
+          })
+        if (this.showBranchB) {
+          ReusableComponent({ flag: false })
+            .reuseId('ReuseB') // 通过reuseId区分不同结构的复用组件
+        }
+      }
+    }
+  }
+  
+  @Reusable
+  @Component
+  struct ReusableComponent {
+    @Require @Prop flag: boolean = true;
+  
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToAppear');
+    }
+  
+    aboutToReuse(params: ESObject) {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToReuse');
+      this.flag = params.flag;
+    }
+  
+    build() {
+      Column({ space: 5 }) {
+        Text('ReusableComponent')
+        if (this.flag) {
+          ReusableChildA()
+        } else {
+          ReusableChildB()
+        }
+      }.border({ width: 1 })
+    }
+  }
+  
+  @Component
+  struct ReusableChildA {
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToAppear');
+    }
+  
+    aboutToReuse() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToReuse');
+    }
+  
+    build() {
+      Text('ReusableChildA')
+        .border({ width: 1 })
+    }
+  }
+  
+  @Component
+  struct ReusableChildB {
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToAppear');
+    }
+  
+    aboutToReuse() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToReuse');
+    }
+  
+    build() {
+      Text('ReusableChildB')
+        .border({ width: 1 })
     }
   }
   ```

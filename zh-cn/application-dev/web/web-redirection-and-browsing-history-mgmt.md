@@ -14,7 +14,7 @@
 
 页面加载涉及网络资源时，需在module.json5中配置网络访问权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-  ```
+  ```JSON5
   "requestPermissions":[
       {
         "name" : "ohos.permission.INTERNET"

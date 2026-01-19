@@ -23,6 +23,6 @@ The struct describes an externally defined format.
 
 | Name| Description|
 | -- | -- |
-| VkStructureType sType | Struct type.|
-| void* pNext | Pointer to the next-level struct.|
+| VkStructureType sType | Struct type. The value must be **VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_OHOS**.|
+| void* pNext | Either nullptr or a pointer to the next struct in the chain.|
 | uint64_t externalFormat | Externally defined format.|

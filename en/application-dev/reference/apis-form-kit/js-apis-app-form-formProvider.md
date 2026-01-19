@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 The **formProvider** module provides APIs to obtain widget information, update widgets, and set the update time.
 
@@ -408,7 +408,7 @@ Opens the widget editing page.
 | ------ | ------ |----|----------------------------------------------------|
 | abilityName | string | Yes | Ability name on the editing page.                                    |
 | formId | string | Yes | Widget ID.                                             |
-| isMainPage | boolean | No | Whether the page is the main editing page.<br>- **true**: The page is the main editing page.<br>- **false**: The page is not the main editing page.<br> |
+| isMainPage | boolean | No | Whether the page is the main editing page.<br>- **true**: The page is the main editing page.<br>- **false**: The page is not the main editing page.<br>Default value: **true**.|
 
 **Error codes**
 

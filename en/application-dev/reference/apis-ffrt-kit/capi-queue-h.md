@@ -228,6 +228,7 @@ FFRT_C_API void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_funct
 **Description**
 
 Sets a callback that is invoked when a queue task times out.
+
 You are not advised to call the `exit` function in `f`. Otherwise, undefined behavior may occur.
 
 **Since**: 10
@@ -590,3 +591,5 @@ Obtains the ArkTS Worker thread queue.
 | Type| Description|
 | -- | -- |
 | FFRT_C_API ffrt_queue_t | Returns the handle to the thread queue.|
+
+

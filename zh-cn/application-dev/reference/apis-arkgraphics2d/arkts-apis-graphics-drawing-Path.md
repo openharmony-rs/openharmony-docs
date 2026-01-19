@@ -7,6 +7,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+由直线、圆弧、二阶贝塞尔、三阶贝塞尔组成的复合几何路径。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -14,8 +16,6 @@
 > - 本模块使用屏幕物理像素单位px。
 >
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
-
-由直线、圆弧、二阶贝塞尔、三阶贝塞尔组成的复合几何路径。
 
 ## 导入模块
 
@@ -476,9 +476,13 @@ path.rCubicTo(200, 0, 0, 200, -20, 0);
 addArc(rect: common2D.Rect, startAngle: number, sweepAngle: number): void
 
 向路径添加一段圆弧。
+
 当startAngle和sweepAngle同时满足以下两种情况时，添加整个椭圆而不是圆弧:
+
 1.startAngle对90取余接近于0；
+
 2.sweepAngle不在(-360, 360)区间内。
+
 其余情况sweepAngle会对360取余后添加圆弧。
 
 **系统能力：** SystemCapability.Graphics.Drawing

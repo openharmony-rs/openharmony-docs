@@ -40,7 +40,7 @@
 | blue                 | \#0000ff | ![blue](figures/blue.png)                |
 | blueviolet           | \#8a2be2 | ![blueviolet](figures/blueviolet.png)    |
 | brown                | \#a52a2a | ![brown](figures/brown.png)              |
-| burlywood            | \#deB887 | ![burlywood](figures/burlywood.png)      |
+| burlywood            | \#deb887 | ![burlywood](figures/burlywood.png)      |
 | cadetblue            | \#5f9ea0 | ![cadetblue](figures/cadetblue.png)      |
 | chartreuse           | \#7fff00 | ![chartreuse](figures/chartreuse.png)    |
 | chocolate            | \#d2691e | ![chocolate](figures/chocolate.png)      |
@@ -166,7 +166,7 @@
 | steelblue            | \#4682b4 | ![steelblue](figures/steelblue.png)      |
 | tan                  | \#d2b48c | ![tan](figures/tan.png)                  |
 | teal                 | \#008080 | ![teal](figures/teal.png)                |
-| thistle              | \#d8Bfd8 | ![thistle](figures/thistle.png)          |
+| thistle              | \#d8bfd8 | ![thistle](figures/thistle.png)          |
 | tomato               | \#ff6347 | ![tomato](figures/tomato.png)            |
 | turquoise            | \#40e0d0 | ![turquoise](figures/turquoise.png)      |
 | violet               | \#ee82ee | ![violet](figures/violet.png)            |

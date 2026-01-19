@@ -5,7 +5,7 @@
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
 <!--Adviser: @Brilliantry_Rui-->
-- [Introduction to Form Kit](formkit-overview.md)
+- [About This Kit](formkit-overview.md)
 - ArkTS Widget Development (Recommended)<!--arkts-ui-->
   - [ArkTS Widget Overview](arkts-form-overview.md)
   - [Creating an ArkTS Widget](arkts-ui-widget-creation.md)

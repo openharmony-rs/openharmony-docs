@@ -35,7 +35,7 @@
 
 如果上下文环境不一致，这些NAPI接口会将当前的运行时环境切换成接口参数指定的上下文环境。
 
-当然不涉及主动切换上下文环境的接口意味着这部分接口和运行时上下文无关，使用任意一个有效的上下文环境都行正常执行。
+当然不涉及主动切换上下文环境的接口意味着这部分接口和运行时上下文无关，使用任意一个有效的上下文环境都能正常执行。
 
 | 接口 | 是否会主动进行上下文切换 |
 | -------- | -------- |
@@ -84,6 +84,8 @@
 |napi_create_string_latin1 | 否 |
 |napi_create_string_utf8 | 否 |
 |napi_create_string_utf16 | 否 |
+|napi_create_external_string_ascii | 否 |
+|napi_create_external_string_utf16 | 否 |
 |napi_create_symbol | 否 |
 |napi_create_function | 是 |
 |napi_create_error | 是 |
@@ -197,6 +199,12 @@
 |napi_delete_serialization_data | 否 |
 |napi_call_threadsafe_function_with_priority | 否 |
 |napi_wrap_enhance | 是 |
+|napi_open_critical_scope | 否 |
+|napi_close_critical_scope | 否 |
+|napi_get_buffer_string_utf16_in_critical_scope | 否 |
+|napi_create_strong_reference | 否 |
+|napi_delete_strong_reference | 否 |
+|napi_get_strong_reference_value | 否 |
 
 ## 不支持多运行时上下文环境调用的NAPI接口
 | 接口 | 多运行时上下文环境调用返回值 |
@@ -215,6 +223,9 @@
 |napi_run_event_loop | napi_invalid_arg |
 |napi_stop_event_loop | napi_invalid_arg |
 |napi_get_uv_event_loop | napi_invalid_arg |
+|napi_create_strong_sendable_reference | napi_invalid_arg |
+|napi_delete_strong_sendable_reference | napi_invalid_arg |
+|napi_get_strong_sendable_reference_value | napi_invalid_arg |
 
 ### 示例代码
 - 模块注册
@@ -347,7 +358,7 @@
 
 - 编译配置
 1. CMakeLists.txt文件需要按照如下配置
-    ```
+    ```txt
     // CMakeLists.txt
     # the minimum version of CMake.
     cmake_minimum_required(VERSION 3.5.0)

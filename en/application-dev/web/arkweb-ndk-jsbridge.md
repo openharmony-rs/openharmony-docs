@@ -7,7 +7,8 @@
 <!--Adviser: @HelloShuo-->
 
 This guide applies to the communication between ArkWeb applications and frontend pages. You can use the ArkWeb native APIs to conduct the service communication mechanism (native JSBridge for short) based on the application architecture.
-For details about how to optimize the performance of JSBridge, see [JSBridge Optimization Solution] (https://developer.huawei.com/consumer/en/doc/best-practices/bpta-web-develop-optimization#section58781855115017).
+
+For details about how to optimize the performance of JSBridge, see [JSBridge Optimization Solution](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-web-develop-optimization#section58781855115017).
 
 ## Applicable Application Architecture
 
@@ -128,7 +129,7 @@ Register the component lifecycle callback using [ArkWeb_ComponentAPI](../referen
 
 ### Invoking Application Functions on the Frontend Page
 
-Use [registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex) to register the application function with the frontend page. You are advised to register the application function in the [onControllerAttached](../reference/apis-arkweb/capi-web-arkweb-componentapi.md#oncontrollerattached) callback. To register the application function at other time, you need to call [refresh](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#refresh) for the registration to take effect.
+Register the application functions with the frontend page through [registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex). The registration takes effect after the next loading or reloading.
 
   ```c++
   // Register an object.
@@ -844,7 +845,7 @@ Register the component lifecycle callback using [ArkWeb_ComponentAPI](../referen
 
 ### Invoking Application Functions on the Frontend Page
 
-Use [registerJavaScriptProxy](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxy) to register the application function with the frontend page. You are advised to register the application function in the [onControllerAttached](../reference/apis-arkweb/capi-web-arkweb-componentapi.md#oncontrollerattached) callback. To register the application function at other time, you need to call [refresh](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#refresh) for the registration to take effect.
+Register the application functions with the frontend page through [registerJavaScriptProxy](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxy). The registration takes effect after the next loading or reloading.
 
   ```c++
   // Register an object.

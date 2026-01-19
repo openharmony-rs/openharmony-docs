@@ -30,17 +30,17 @@ NavDestination组件状态。
 
 | 名称      | 值  | 说明                     |
 | --------- | --- | ------------------------ |
-| ON_SHOWN  | 0   | NavDestination组件显示。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_HIDDEN | 1   | NavDestination组件隐藏。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_APPEAR<sup>12+</sup> | 2   | NavDestination从组件树上挂载。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ON_DISAPPEAR<sup>12+</sup> | 3   | NavDestination从组件树上卸载。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_WILL_SHOW<sup>12+</sup> | 4   | NavDestination组件显示之前。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_WILL_HIDE<sup>12+</sup> | 5   | NavDestination组件隐藏之前。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_WILL_APPEAR<sup>12+</sup>| 6   | NavDestination挂载到组件树之前。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ON_WILL_DISAPPEAR<sup>12+</sup>| 7   | NavDestination从组件树上卸载之前。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ON_ACTIVE<sup>17+</sup> | 8 | NavDestination组件处于激活态。**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
-| ON_INACTIVE<sup>17+</sup> | 9 | NavDestination组件处于非激活态。**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
-| ON_BACKPRESS<sup>12+</sup> | 100   | NavDestination组件返回。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_SHOWN  | 0   | NavDestination组件显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_HIDDEN | 1   | NavDestination组件隐藏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_APPEAR<sup>12+</sup> | 2   | NavDestination从组件树上挂载。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| ON_DISAPPEAR<sup>12+</sup> | 3   | NavDestination从组件树上卸载。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_WILL_SHOW<sup>12+</sup> | 4   | NavDestination组件显示之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_WILL_HIDE<sup>12+</sup> | 5   | NavDestination组件隐藏之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_WILL_APPEAR<sup>12+</sup>| 6   | NavDestination挂载到组件树之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| ON_WILL_DISAPPEAR<sup>12+</sup>| 7   | NavDestination从组件树上卸载之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| ON_ACTIVE<sup>17+</sup> | 8 | NavDestination组件处于激活态。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
+| ON_INACTIVE<sup>17+</sup> | 9 | NavDestination组件处于非激活态。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
+| ON_BACKPRESS<sup>12+</sup> | 100   | NavDestination组件返回。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## ScrollEventType<sup>12+</sup>
 
@@ -259,12 +259,14 @@ struct Index {
   }
 
   aboutToAppear() {
+    // 注册监听
     uiObserver.on('navDestinationUpdate', (info) => {
       console.info(`NavDestination state update ${JSON.stringify(info)}`);
     });
   }
 
   aboutToDisappear() {
+    // 注销监听
     uiObserver.off('navDestinationUpdate');
   }
 
@@ -309,7 +311,7 @@ off(type: 'navDestinationUpdate', callback?: Callback\<NavDestinationInfo\>): vo
 
 on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback: Callback\<NavDestinationInfo\>): void
 
-监听NavDestination组件的状态变化。
+监听NavDestination组件的状态变化。与[uiObserver.on](#uiobserveronnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -351,12 +353,14 @@ struct Index {
   }
 
   aboutToAppear() {
+    // 注册监听，指定Navigation的id
     uiObserver.on('navDestinationUpdate', { navigationId: "testId" }, (info) => {
       console.info(`NavDestination state update ${JSON.stringify(info)}`);
     });
   }
 
   aboutToDisappear() {
+    // 注销监听
     uiObserver.off('navDestinationUpdate', { navigationId: "testId" });
   }
 
@@ -381,7 +385,7 @@ struct Index {
 
 off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback?: Callback\<NavDestinationInfo\>): void
 
-取消监听NavDestination组件的状态变化。
+取消监听NavDestination组件的状态变化。与[uiObserver.off](#uiobserveroffnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -518,12 +522,14 @@ struct Index {
       Row() {
         Button('UIObserver on')
           .onClick(() => {
+            // 注册监听
             uiObserver.on('scrollEvent', (info) => {
               console.info(`scrollEventInfo ${JSON.stringify(info)}`);
             });
           })
         Button('UIObserver off')
           .onClick(() => {
+            // 注销监听
             uiObserver.off('scrollEvent');
           })
       }
@@ -531,12 +537,14 @@ struct Index {
       Row() {
         Button('UIObserverWithId on')
           .onClick(() => {
+            // 注册监听，指定组件的id
             uiObserver.on('scrollEvent', this.options, (info) => {
               console.info(`scrollEventInfo ${JSON.stringify(info)}`);
             });
           })
         Button('UIObserverWithId off')
           .onClick(() => {
+            // 注销监听
             uiObserver.off('scrollEvent',this.options);
           })
       }
@@ -661,7 +669,7 @@ on(type: 'densityUpdate', context: UIContext, callback: Callback\<DensityInfo\>)
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。 |
 | context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
-| callback | Callback\<[DensityInfo](#densityinfo12)\>        | 是   | 回调函数。携带densityInfo，返回变化后的屏幕像素密度。                 |
+| callback | Callback\<[DensityInfo](#densityinfo12)\>        | 是   | 回调函数。携带DensityInfo，返回变化后的屏幕像素密度。                 |
 
 **示例：**
 
@@ -1067,7 +1075,7 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, callbac
 
 on(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observerOptions: NavDestinationSwitchObserverOptions, callback: Callback\<NavDestinationSwitchInfo\>): void
 
-监听Navigation的页面切换事件。
+监听Navigation的页面切换事件。与[uiObserver.on](#uiobserveronnavdestinationswitch12)相比，新增了observerOptions参数，即支持设置监听选项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1199,7 +1207,7 @@ struct Index {
 
 off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observerOptions: NavDestinationSwitchObserverOptions, callback?: Callback\<NavDestinationSwitchInfo\>): void
 
-取消监听Navigation的页面切换事件。
+取消监听Navigation的页面切换事件。与[uiObserver.off](#uiobserveroffnavdestinationswitch12)相比，新增了observerOptions参数，即支持设置监听选项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1249,10 +1257,12 @@ function callbackFunc(info: uiObserver.TabContentInfo) {
 struct TabsExample {
 
   aboutToAppear(): void {
+    // 注册监听
     uiObserver.on('tabContentUpdate', callbackFunc);
   }
 
   aboutToDisappear(): void {
+    // 注销监听
     uiObserver.off('tabContentUpdate', callbackFunc);
   }
 
@@ -1337,10 +1347,12 @@ function callbackFunc(info: uiObserver.TabContentInfo) {
 struct TabsExample {
 
   aboutToAppear(): void {
+    // 注册监听，指定Tabs的id
     uiObserver.on('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 
   aboutToDisappear(): void {
+    // 注销监听
     uiObserver.off('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 

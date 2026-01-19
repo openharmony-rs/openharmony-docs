@@ -1,4 +1,10 @@
 # input
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @kangshihui-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **\<input>** component provides an interactive interface to receive user input. It can be a radio button, check box, or button.
 

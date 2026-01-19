@@ -163,7 +163,7 @@ Checks whether the current application is allowed to access the network when run
 
 | Type             | Description                                                                                |
 | ----------------- | ------------------------------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return the result. If the operation is successful, the value **true** is returned, indicating that the application is allowed to access the network when running at the background. If the operation fails, an error message is returned.|
+| Promise\<boolean> |  Promise used to return the result. The value **true** indicates that the background policy is allowed, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -739,7 +739,7 @@ Checks whether the application specified by a given UID is allowed to access a m
 
 | Type             | Description                         |
 | ----------------- | ----------------------------- |
-| Promise\<boolean> | Promise used to return the result.|
+| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the UID can access the metering or non-metering network, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -832,7 +832,7 @@ Checks whether an application is allowed to access the specified network. This A
 
 | Type             | Description                                                   |
 | ----------------- | ------------------------------------------------------- |
-| Promise\<boolean> | Promise used to return the result. |
+| Promise\<boolean> | Promise used to return the result. The value **true** means that the application is allowed to access the specified network, and the value **false** means the opposite.|
 
 **Error codes**
 
@@ -2209,8 +2209,8 @@ Defines the network for which the quota policy is set.
 | Name    | Type                                                | Read-Only|Optional| Description                                                                        |
 | -------- | ---------------------------------------------------- | ---- | ------|---------------------------------------------------------------------- |
 | netType  | [NetBearType](js-apis-net-connection.md#netbeartype) | No  |No|Network type.                                                                  |
-| simId    | string                                               | No   |No|Identifier of the SIM card on the metered cellular network.<br>It is not used for Ethernet and Wi-Fi networks.                    |
-| identity | string                                               | No  |No|ID of the SIM card on the metered cellular network.<br>It is used for Ethernet and Wi-Fi networks.<br>It is used together with **iccid**.|
+| simId    | string                                               | No   |No|Identifier of the SIM card on the metered cellular network. It is not used for Wi-Fi networks.                    |
+| identity | string                                               | No  |No|ID of the SIM card on the metered cellular network. It is used for Wi-Fi networks. It is used together with **iccid**.|
 
 ## QuotaPolicy<sup>10+</sup>
 
@@ -2225,10 +2225,10 @@ Defines the network quota policy.
 | periodDuration    | string                        | No  |No|Metering period for the quota limit. **D1**, **M1**, and **Y1** indicate one day, one month, and one year, respectively. If the specified metering period is exceeded, the quota is not limited.|
 | warningBytes      | number                        | No  |No|Data volume threshold for generating an alarm.                                         |
 | limitBytes        | number                        | No  |No|Data volume quota.                                           |
-| metered           | boolean                       | No  |No|Whether the network is a metered network. The value **true** indicates that the network is a metered network, and the value **false** indicates the opposite.                                        |
+| metered           | boolean                       | No  |No|Whether the network is a metered network. The value **true** indicates that the network is a metered network, and the value **false** indicates the opposite.                                           |
 | limitAction       | [LimitAction](#limitaction10) | No  | No|Action to take when the data volume quota is reached.                                        |
-| lastWarningRemind | number                        | No  |Yes|Last time when an alarm was generated. Default value: **-1**.                                 |
-| lastLimitRemind   | number                        | No  |Yes|Last time when the quota was exhausted. Default value: **-1**.                                     |
+| lastWarningRemind | number                        | No  |Yes|Last time when an alarm was generated. Default value: **-1**                                 |
+| lastLimitRemind   | number                        | No  |Yes|Last time when the quota was exhausted. Default value: **-1**                                       |
 
 ## LimitAction<sup>10+</sup>
 
@@ -2324,8 +2324,8 @@ Network access policy.
 
 | Name             | Type      | Read-Only| Optional|Description                         |
 | ----------------- | --------- | ---- | ------|----------------------- |
-| allowWiFi         | boolean   | No  |No|Whether the application is allowed to access the Wi-Fi network. The value **true** indicates that the application is allowed to access the Wi-Fi network, and the value **false** indicates the opposite.|
-| allowCellular     | boolean   | No |No|Whether the application is allowed to access the cellular network. The value **true** indicates that the application is allowed to access the cellular network, and the value **false** indicates the opposite.|
+| allowWiFi         | boolean   | No  |Yes|Whether to allow access to the Wi-Fi network. The value **true** means to allow access to the Wi-Fi network, and the value **false** means the opposite.|
+| allowCellular     | boolean   | No |Yes|Whether to allow access to the cellular network. The value **true** means to allow access to the cellular network, and the value **false** means the opposite.|
 
 ## UidNetworkAccessPolicy<sup>12+</sup>
 
@@ -2337,4 +2337,4 @@ Defines the network policy for an application with the specified UID.
 
 | Name      | Type                                                        | Read-Only|Optional|Description                |
 | --------- | -----------------------------------------------------------  | ---- | ---|---------------- |
-| undefined | [uid: string]: [NetworkAccessPolicy](#networkaccesspolicy12) | No  |Yes|Network policy. The data type is key-value pair.     |
+| undefined | [uid: string]: [NetworkAccessPolicy](#networkaccesspolicy12) | No  |No|Network policy. The data type is key-value pair.     |

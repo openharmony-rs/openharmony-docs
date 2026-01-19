@@ -32,7 +32,7 @@ target_link_libraries(entry PUBLIC libomp.a libace_napi.z.so libhilog_ndk.z.so)
 
 (2) Open the **entry/build-profile.json5** file, and add **-static-openmp -fopenmp** to **cppFlags** under **buildOption** > **externalNativeOptions**.
 
-```
+```JSON
 "buildOption": {
     "externalNativeOptions": {
       "path": "./src/main/cpp/CMakeLists.txt",
@@ -52,7 +52,7 @@ target_link_libraries(entry PUBLIC libomp.so libace_napi.z.so libhilog_ndk.z.so)
 
  (2) Open the **entry/build-profile.json5** file, and add **-fopenmp** to **cppFlags** under **buildOption** > **externalNativeOptions**.
 
-```
+```JSON
 "buildOption": {
     "externalNativeOptions": {
       "path": "./src/main/cpp/CMakeLists.txt",

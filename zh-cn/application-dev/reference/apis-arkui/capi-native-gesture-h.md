@@ -1,7 +1,7 @@
 # native_gesture.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -19,8 +19,6 @@
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
-
-**相关示例：** <!--RP1-->[NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting)<!--RP1End-->、<!--RP2-->[NdkGestureNestScroll](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureNestScroll)<!--RP2End-->、<!--RP3-->[NdkGestureBlocking](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureBlocking)<!--RP3End-->
 
 ## 汇总
 
@@ -117,6 +115,14 @@
 |----------|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
 | uint32_t | ArkUI_GestureDirectionMask | 定义滑动手势方向集合。<br>例：ArkUI_GestureDirectionMask directions = GESTURE_DIRECTION_LEFT \| GESTURE_DIRECTION_RIGHT。<br>directions 表明支持左右水平方向。 |
 | uint32_t | ArkUI_GestureEventActionTypeMask   | 定义手势事件类型集合。例：ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \| GESTURE_EVENT_ACTION_UPDATE;                   |
+
+### 示例
+
+| 名称 |  描述 |
+| -- | -- |
+| [NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting) | 从API version 20开始，新增手势绑定、手势移除以及自定义手势判断的示例。 |
+| [NdkGestureNestScroll](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureNestScroll) | 从API version 20开始，新增手势接口实现嵌套滚动的示例。 |
+| [NdkGestureBlocking](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureBlocking) | 从API version 20开始，新增手势拦截的示例。 |
 
 ## 枚举类型说明
 
@@ -236,14 +242,14 @@ enum ArkUI_GestureRecognizerType
 | 枚举项 | 描述                                |
 | -- |-----------------------------------|
 | TAP_GESTURE = 0 | 敲击手势。                             |
-| LONG_PRESS_GESTURE | 长按手势。                             |
-| PAN_GESTURE | 滑动手势。                             |
-| PINCH_GESTURE | 捏合手势。                             |
-| ROTATION_GESTURE | 旋转手势。                             |
-| SWIPE_GESTURE | 快滑手势。                             |
-| GROUP_GESTURE | 手势组合。                             |
-| CLICK_GESTURE | 通过onClick注册的点击手势。<br>**起始版本：** 20 |
-| DRAG_DROP | 用于拖放的拖拽手势。<br>**起始版本：** 20        |
+| LONG_PRESS_GESTURE = 1 | 长按手势。                             |
+| PAN_GESTURE = 2 | 滑动手势。                             |
+| PINCH_GESTURE = 3 | 捏合手势。                             |
+| ROTATION_GESTURE = 4 | 旋转手势。                             |
+| SWIPE_GESTURE = 5 | 快滑手势。                             |
+| GROUP_GESTURE = 6 | 手势组合。                             |
+| CLICK_GESTURE = 7 | 通过onClick注册的点击手势。<br>**起始版本：** 20 |
+| DRAG_DROP = 8 | 用于拖放的拖拽手势。<br>**起始版本：** 20        |
 
 ### ArkUI_GestureInterruptResult
 
@@ -261,7 +267,7 @@ enum ArkUI_GestureInterruptResult
 | 枚举项 | 描述 |
 | -- | -- |
 | GESTURE_INTERRUPT_RESULT_CONTINUE = 0 | 手势继续。 |
-| GESTURE_INTERRUPT_RESULT_REJECT | 手势打断。 |
+| GESTURE_INTERRUPT_RESULT_REJECT = 1 | 手势打断。 |
 
 ### ArkUI_GestureRecognizerState
 

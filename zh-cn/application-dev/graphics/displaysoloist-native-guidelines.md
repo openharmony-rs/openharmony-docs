@@ -7,6 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 如果开发者想在独立线程中实现帧率控制的Native侧业务，可以通过DisplaySoloist来实现，如游戏、自绘制UI框架对接等场景。
+
 开发者可以选择多个DisplaySoloist实例共享一个线程，也可以选择每个DisplaySoloist实例独占一个线程。
 
 ## 接口说明
@@ -203,7 +204,7 @@ libnative_display_soloist.so
                // 120Hz绘制时，每帧移动的距离为4像素
                render->ConstructPath(4, 4, render->defaultOffsetY);
            }
-     	 // ...
+       // ...
        }
    }
    ```

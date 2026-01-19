@@ -12,7 +12,7 @@ Page loading is a basic capability of the **Web** component. Depending on the da
 
 To obtain network resources during page loading, configure the network access permission in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
-  ```
+  ```JSON5
   "requestPermissions":[
       {
         "name" : "ohos.permission.INTERNET"
@@ -70,7 +70,7 @@ To reference a local CSS file when loading a local HTML file, perform the follow
 
 ```html
 <link rel="stylesheet" href="resource://rawfile/xxx.css">
-<link rel="stylesheet" href="file:// /data/storage/el2/base/haps/entry/cache/xxx.css">// Load the local CSS file in the sandbox path.
+<link rel="stylesheet" href="file:///data/storage/el2/base/haps/entry/cache/xxx.css">// Load the local CSS file in the sandbox path.
 ```
 
 - Local page file in the application's resources/rawfile directory:
@@ -199,7 +199,7 @@ Example of loading local page files in the sandbox:
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
        // Data synchronization between the UIAbility component and UI can be implemented by binding filesDir to the GlobalContext object.
        GlobalContext.getContext().setObject("filesDir", this.context.filesDir);
-       console.log("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
+       console.info("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
      }
    }
    ```
@@ -289,10 +289,10 @@ struct ResourceWebComponent {
 
   build() {
     Column() {
-      Button('Load resources')
+      Button('Load Resource')
         .onClick(() => {
           try {
-            // Load the index1.html file in resources/rawfile through using the resource protocol.
+            // Load the index1.html file in resources/rawfile using the resource protocol.
             this.controller.loadUrl('resource://rawfile/index1.html');
           } catch (error) {
             console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);

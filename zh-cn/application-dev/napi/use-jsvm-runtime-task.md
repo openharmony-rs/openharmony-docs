@@ -16,7 +16,7 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
 
 创建多个JS运行时环境并运行JS代码
 
-  ```cpp
+```cpp
 #include <map>
 #include <mutex>
 #include <deque>
@@ -339,7 +339,7 @@ static int32_t TestJSVM() {
 ```
 <!-- @[runtime_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmDebug/runtimetask/src/main/cpp/hello.cpp) -->
 预计的输出结果：
-```
+```cpp
 JSVM CreateJsCore START
 JSVM CreateJsCore END
 TEST coreId: 0

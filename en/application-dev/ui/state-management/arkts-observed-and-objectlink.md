@@ -8,7 +8,7 @@
 
 The decorators including [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md), [\@Link](./arkts-link.md), [\@Provide and \@Consume](./arkts-provide-and-consume.md) can only observe the top-layer changes. However, in actual application development, the application encapsulates its own data model based on the requirements. In the case of multi-layer nesting, such as two-dimensional arrays, object arrays, and nested classes, attribute changes at the second layer cannot be observed. Therefore, to observe changes of deep attributes in nested data structures, the \@Observed and \@ObjectLink decorators are introduced.
 
-\@Observed and \@ObjectLink are used to observe changes of nested object attributes. You need to understand the basic observation capabilities of the decorators before reading this document. For details, see [\@State](./arkts-state.md). For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management).
+\@Observed and \@ObjectLink are used to observe changes of nested object attributes (the attributes of an object are objects). Developers need to understand the basic observation capabilities of the decorators before reading this document. For details, see [\@State](./arkts-state.md). For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management).
 
 > **NOTE**
 >
@@ -18,13 +18,13 @@ The decorators including [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md),
 
 ## Overview
 
-\@ObjectLink and \@Observed class decorators are used for two-way data synchronization in scenarios involving nested objects or arrays:
+\@ObjectLink and \@Observed are used for two-way data synchronization in nested objects or arrays.
 
 - Use new to create a class decorated with \@Observed to observe changes of attributes in the class.
 
 - The \@ObjectLink decorated state variable in the child component is used to accept the instance of the \@Observed decorated class and establish two-way data binding with the corresponding state variable in the parent component. The instance can be an \@Observed decorated item in the array or an \@Observed decorated property in the class object.
 
-- \@Observed is used to observe object attribute changes in nested scenarios. It must be used together with custom components. For details, see [Nested Object](#nested-object). To perform bidirectional or unidirectional data synchronization, use it together with \@ObjectLink or \@Prop, for details, see [Differences Between \@Prop and \@ObjectLink](#differences-between-prop-and-objectlink).
+- Using \@Observed alone has no effect in nested classes. To observe changes of class properties, it must be used with a custom component. For examples, see [Nested Object](#nested-object). To create a two-way or one-way synchronization, it must be used with \@ObjectLink or with \@Prop. For details, see [Differences Between \@Prop and \@ObjectLink](#differences-between-prop-and-objectlink).
 
 
 ## Decorator Description
@@ -37,7 +37,7 @@ The decorators including [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md),
 | \@ObjectLink Decorator| Description                                      |
 | ----------------- | ---------------------------------------- |
 | Decorator parameters            | None.                                      |
-| Allowed variable types        | Class instances of Date and [Array](#two-dimensional-array) can be inherited.<br>API version 11 and later support the class instances of [Map](#extended-map-class) and [Set](#extended-set-class), and the union type consisting of \@Observed decorated class and undefined or null, for example, **ClassA \| ClassB**, **ClassA \| undefined**, or **ClassA \| null. For an example, see [Union Type @ObjectLink](#union-type-objectlink).<br>In versions earlier than API version 19, @ObjectLink must be initialized with an \@Observed decorated class instance.<br>Since API version 19, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19).<br>For details about the scenarios of supported types, see [Observed Changes](#observed-changes).<br>**NOTE**<br>\@ObjectLink does not support simple types. To use simple types, you can use [\@Prop](arkts-prop.md).|
+| Allowed variable types        | Class instances of Date and [Array](#two-dimensional-array) can be inherited.<br>API version 11 and later support the class instances of [Map](#extended-map-class) and [Set](#extended-set-class), and the union type consisting of \@Observed decorated class and undefined or null, for example, **ClassA \| ClassB, ClassA \| undefined**, or **ClassA \| null. For an example, see [Union Type @ObjectLink](#union-type-objectlink).<br>In versions earlier than API version 19, @ObjectLink must be initialized with an \@Observed decorated class instance.<br>API version 19 or later: \@ObjectLink can be initialized by complex types, that is, class, object, or built-in types. For details, see [Observed Changes](#observed-changes).<br>**NOTE**<br>\@ObjectLink does not support simple types. To use simple types, you can use [\@Prop](arkts-prop.md).|
 | Initial value for the decorated variable        | Disable local initialization.                                    |
 
 An @ObjectLink decorated variable accepts changes to its properties, but the variable itself is read-only.
@@ -62,24 +62,21 @@ this.objLink= ...
 
 | \@ObjectLink Transfer/Access| Description                                      |
 | ----------------- | ---------------------------------------- |
-| Initialization from the parent component          | Mandatory.<br>To initialize an \@ObjectLink decorated variable, a variable in the parent component must meet all the following conditions:<br>- The variable type is an \@Observed decorated class.<br>- The initialized value must be an array item or a class property.<br>- The class or array of the synchronization source must be decorated by [\@State](./arkts-state.md), [\@Link](./arkts-link.md), [\@Provide](./arkts-provide-and-consume.md), [\@Consume](./arkts-provide-and-consume.md), or \@ObjectLink.<br>For an example where the synchronization source is an array item, see [Object Array](#object-array). For an example of the initialized class, see [Nested Object](#nested-object).|
+| Initialization from the parent component          | Mandatory.<br>The variable decorated by \@ObjectLink must be initialized using a complex type. To observe changes, the following conditions must be met:<br>-&nbsp. The type must be the class decorated by \@Observed or the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19).<br>- The initialized value must be an array item or a class property.<br>- The class or array of the synchronization source must be decorated by [\@State](./arkts-state.md), [\@Link](./arkts-link.md), [\@Provide](./arkts-provide-and-consume.md), [\@Consume](./arkts-provide-and-consume.md), or \@ObjectLink.<br>For an example where the synchronization source is an array item, see [Object Array](#object-array). For an example of the initialized class, see [Nested Object](#nested-object).|
 | Synchronization with the source           | Two-way.                                     |
 | Subnode initialization         | Supported; can be used to initialize a regular variable or \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.|
 
 
   **Figure 1** Initialization rule 
 
-
-![en-us_image_0000001502255262](figures/en-us_image_0000001502255262.png)
+  ![en-us_image_0000001502255261](figures/en-us_image_0000001502255261.png)
 
 
 ## Observed Changes and Behavior
 
-
 ### Observed Changes
 
 If the attribute of the class decorated with \@Observed is not a simple type, such as class, Object, or array, the attribute must also be decorated with \@Observed. Otherwise, the changes of the attribute cannot be observed.
-
 
 ```ts
 class Child {
@@ -116,7 +113,11 @@ this.parent.count = 5;
 this.parent.child.num = 5;
 ```
 
-\@ObjectLink: \@ObjectLink can only accept instances of classes decorated by \@Observed. When possible, design a separate custom component to render each array or object. In this case, an object array or nested object (which is an object whose property is an object) requires two custom components: one for rendering an external array/object, and the other for rendering a class object nested within the array/object. The following can be observed:
+When \@ObjectLink receives an object, if the object is decorated with \@State or other state variable decorators, the first-layer changes can be observed. For details, see [Object Type] (#object-type).
+
+When \@ObjectLink receives a nested object, the inner object must be of the class type decorated with \@Observed. From API version 19 onwards, the return value of the inner object can also be processed by [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19). For details, see [Nested Object](#nested-object).
+
+It is recommended that you design a separate custom component to render each array or object using \@ObjectLink. In this case, the object array or nested object requires two custom components. One custom component displays the external array or object, and the other custom component displays the class object nested in the array or object. The following can be observed:
 
 - Value changes of the properties that **Object.keys(observedObject)** returns. For details, see [Nested Object](#nested-object).
 
@@ -183,9 +184,9 @@ struct Parent {
 }
 ```
 
-When \@ObjectLink decorates a class that extends Map, it enables observation of the entire Set instance's value assignments. Additionally, calling Map APIs like set, clear, and delete triggers updates to the observed Map value. For details, see [Extended Map Class](#extended-map-class).
+When \@ObjectLink decorates a class that extends **Map**, it enables observation of the entire Set instance's value assignments. Additionally, calling **Map** APIs like **set**, **clear**, and **delete** triggers updates to the observed **Map** value. For details, see [Extended Map Class](#extended-map-class).
 
-When \@ObjectLink decorates a class that extends Set, it enables observation of the entire Set instance's value assignments. Additionally, calling Set APIs like add, clear, and delete triggers updates to the observed Set value. For details, see [Extended Set Class](#extended-set-class).
+When \@ObjectLink decorates a class that extends **Set**, it enables observation of the entire Set instance's value assignments. Additionally, calling **Set** APIs like **add**, **clear**, and **delete** triggers updates to the observed **Set** value. For details, see [Extended Set Class](#extended-set-class).
 
 
 ### Framework Behavior
@@ -203,12 +204,12 @@ When \@ObjectLink decorates a class that extends Set, it enables observation of 
 
 1. Using \@Observed to decorate a class changes the original prototype chain of the class. Using \@Observed and other class decorators to decorate the same class may cause problems.
 
-2. The \@ObjectLink decorator cannot be used in custom components decorated by [\@Entry](./arkts-create-custom-components.md#entry).
+2. It is not recommended that the \@ObjectLink decorator be used in a custom component decorated with [\@Entry](./arkts-create-custom-components.md#entry). An alarm is generated during compilation.
 
 3. The \@ObjectLink decorator must be used with complex types. Otherwise, an error is reported during compilation.
 
 4. For API version 19 or earlier, the variable type decorated by \@ObjectLink must be the class explicitly decorated by @Observed. If the type is not specified or is not a class decorated by \@Observed, an error is reported during compilation.
-  Since API version 19, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19). If it is not properly initialized, an error is reported during runtime.
+  Since API version 19, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19). If it is not properly initialized, an error is reported during runtime.
 
     ```ts
     @Observed
@@ -347,6 +348,53 @@ When \@ObjectLink decorates a class that extends Set, it enables observation of 
 
 
 ## Use Scenarios
+
+### Object Type
+
+This scenario includes built-in types (Array, Map, Set, and Date) and common classes. @ObjectLink receives built-in types and common class objects transferred by @State. You can observe the API calling and first-layer changes without adding @Observed. State variable decorators such as @State add a layer of proxy packaging to objects (outer objects). The function is the same as adding the @Observed decorator.
+
+```ts
+class Book {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+@Component
+struct BookCard {
+  @ObjectLink book: Book;
+
+  build() {
+    Column() {
+      Text(`BookCard: ${this.book.name}`) // The name change can be observed.
+        .width(320)
+        .margin(10)
+        .textAlign(TextAlign.Center)
+
+      Button('change book.name')
+        .width(320)
+        .margin(10)
+        .onClick(() => {
+          this.book.name = 'C++';
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State book: Book = new Book('JS');
+
+  build() {
+    Column() {
+      BookCard({ book: this.book })
+    }
+  }
+}
+```
 
 ### Nested Object
 
@@ -506,7 +554,11 @@ struct Parent {
         .width(320)
         .margin(10)
         .onClick(() => {
-          this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
+          if (this.arrA[Math.floor(this.arrA.length / 2)]) {
+            this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
+          } else {
+            console.info('middle element does not exist');
+          }
         })
       Button('ViewParent: item property in middle')
         .width(320)
@@ -608,7 +660,7 @@ struct IndexPage {
 }
 ```
 
-Since API version 19, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19). Therefore, if you do not want to declare the class that inherits from array, you can use **makeV1Observed** to achieve the same effect.
+Since API version 19, \@ObjectLink can also be initialized with the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19). Therefore, if you do not want to declare the class that inherits from array, you can use **makeV1Observed** to achieve the same effect.
 
 A complete example is as follows:
 
@@ -1016,7 +1068,7 @@ class Cousin extends Parent {
   }
 
   setChild(childId: number): void {
-    return this.child.setChildId(childId);
+    this.child.setChildId(childId);
   }
 }
 
@@ -1118,7 +1170,7 @@ class Cousin extends Parent {
   }
 
   setChild(childId: number): void {
-    return this.child.setChildId(childId);
+    this.child.setChildId(childId);
   }
 }
 
@@ -1540,7 +1592,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("The value of renderClass is" + this.renderClass.waitToRender)
+        Text('The value of renderClass is' + this.renderClass.waitToRender)
           .fontSize(20)
       }
       .width('100%')

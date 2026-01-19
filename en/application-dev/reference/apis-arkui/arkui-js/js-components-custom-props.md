@@ -1,4 +1,10 @@
 # Data Transfer and Processing
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @seaside_wu1-->
+<!--Designer: @shiyu_huang-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 ## props
@@ -94,7 +100,7 @@ export default {
     this.$watch('title', 'onPropertyChange');
   },
   onPropertyChange(newV, oldV) {
-    console.info('title attribute changed'+ newV + ' ' + oldV)
+    console.info('title attribute changed'+ newV + ' ' + oldV);
   },
 }
 ```

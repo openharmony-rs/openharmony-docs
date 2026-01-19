@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## getHeader<sup>12+</sup>
 
@@ -136,7 +136,7 @@ getHttpBodyStream(): WebHttpBodyStream | null
 
 | 类型     | 说明            |
 | ------ | ------------- |
-| [WebHttpBodyStream](./arkts-apis-webview-WebSchemeHandler.md) \| null | 返回资源请求中的WebHttpBodyStream，如果没有则返回null。 |
+| [WebHttpBodyStream](./arkts-apis-webview-WebHttpBodyStream.md) \| null | 返回资源请求中的WebHttpBodyStream，如果没有则返回null。 |
 
 **示例：**
 

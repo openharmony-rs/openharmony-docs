@@ -50,7 +50,7 @@
         // liveFormInfo.rect字段表示非激活态卡片组件相对激活态UI的位置和尺寸信息
         let formRect: formInfo.Rect = liveFormInfo.rect;
         storage.setOrCreate('formRect', formRect);
-        console.log(`MyLiveFormExtensionAbility onSessionCreate formId: ${formId}` +
+        console.info(`MyLiveFormExtensionAbility onSessionCreate formId: ${formId}` +
           `, borderRadius: ${borderRadius}, formRectInfo: ${JSON.stringify(formRect)}`);
     
         // 加载互动页面
@@ -58,7 +58,7 @@
       }
     
       onLiveFormDestroy(liveFormInfo: LiveFormInfo) {
-        console.log(`MyLiveFormExtensionAbility onDestroy`);
+        console.info(`MyLiveFormExtensionAbility onDestroy`);
       }
     };
     ```
@@ -69,19 +69,20 @@
     // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
     import { formInfo, formProvider } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
+    // LiveFormExtensionContext导入编译器会标红，但是可以正常编译运行。
     import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../../common/Constants';
-    
+
     const ANIMATION_RECT_SIZE: number = 100;
     const END_SCALE: number = 1.5;
     const END_TRANSLATE: number = -300;
-    
+
     @Entry
     @Component
     struct MyLiveFormPage {
       @State columnScale: number = 1.0;
       @State columnTranslate: number = 0.0;
-    
       private uiContext: UIContext | undefined = undefined;
       private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
       private formId: string | undefined = undefined;
@@ -97,53 +98,16 @@
         }
         this.initParams();
       }
-    
-      private initParams(): void {
-        this.storageForMyLiveFormPage = this.uiContext?.getSharedLocalStorage();
-        this.formId = this.storageForMyLiveFormPage?.get<string>('formId');
-        this.formRect = this.storageForMyLiveFormPage?.get<formInfo.Rect>('formRect');
-        this.formBorderRadius = this.storageForMyLiveFormPage?.get<number>('borderRadius');
-        this.liveFormContext = this.storageForMyLiveFormPage?.get<LiveFormExtensionContext>('context');
-      }
-    
-      // 执行动效
-      private runAnimation(): void {
-        this.uiContext?.animateTo({
-          duration: Constants.OVERFLOW_DURATION,
-          curve: Curve.Ease
-        }, () => {
-          this.columnScale = END_SCALE;
-          this.columnTranslate = END_TRANSLATE;
-        });
-      }
-
-       private startAbilityByLiveForm(): void {
-        try {
-          // 请开发者替换为实际的want信息
-          this.liveFormContext?.startAbilityByLiveForm({
-            bundleName: 'com.example.liveformdemo',
-            abilityName: 'EntryAbility',
-          })
-            .then(() => {
-              console.info('startAbilityByLiveForm succeed');
-            })
-            .catch((err: BusinessError) => {
-              console.error(`startAbilityByLiveForm failed, code is ${err?.code}, message is ${err?.message}`);
-            });
-        } catch (e) {
-          console.error(`startAbilityByLiveForm failed, code is ${e?.code}, message is ${e?.message}`);
-        }
-      }
 
       build() {
-        Stack({alignContent: Alignment.TopStart}) {
+        Stack({ alignContent: Alignment.TopStart }) {
           // 背景组件，和普通卡片等大
           Column()
-            .width(this.formRect? this.formRect.width : 0)
-            .height(this.formRect? this.formRect.height : 0)
+            .width(this.formRect ? this.formRect.width : 0)
+            .height(this.formRect ? this.formRect.height : 0)
             .offset({
-              x: this.formRect? this.formRect.left : 0,
-              y: this.formRect? this.formRect.top : 0,
+              x: this.formRect ? this.formRect.left : 0,
+              y: this.formRect ? this.formRect.top : 0,
             })
             .borderRadius(this.formBorderRadius ? this.formBorderRadius : 0)
             .backgroundColor('#2875F5')
@@ -164,7 +128,7 @@
           this.startAbilityByLiveForm();
         })
       }
-    
+
       @Builder
       buildContent() {
         Stack()
@@ -182,7 +146,7 @@
             // 在页面出现时执行动效
             this.runAnimation();
           })
-    
+
         Button('强制取消动效')
           .backgroundColor(Color.Grey)
           .onClick(() => {
@@ -193,6 +157,43 @@
             console.info('MyLiveFormPage cancel overflow animation');
             formProvider.cancelOverflow(this.formId);
           })
+      }
+
+      private initParams(): void {
+        this.storageForMyLiveFormPage = this.uiContext?.getSharedLocalStorage();
+        this.formId = this.storageForMyLiveFormPage?.get<string>('formId');
+        this.formRect = this.storageForMyLiveFormPage?.get<formInfo.Rect>('formRect');
+        this.formBorderRadius = this.storageForMyLiveFormPage?.get<number>('borderRadius');
+        this.liveFormContext = this.storageForMyLiveFormPage?.get<LiveFormExtensionContext>('context');
+      }
+
+      // 执行动效
+      private runAnimation(): void {
+        this.uiContext?.animateTo({
+          duration: Constants.OVERFLOW_DURATION,
+          curve: Curve.Ease
+        }, () => {
+          this.columnScale = END_SCALE;
+          this.columnTranslate = END_TRANSLATE;
+        });
+      }
+
+      private startAbilityByLiveForm(): void {
+        try {
+          // 请开发者替换为实际的want信息
+          this.liveFormContext?.startAbilityByLiveForm({
+            bundleName: 'com.example.liveformdemo',
+            abilityName: 'EntryAbility',
+          })
+            .then(() => {
+              console.info('startAbilityByLiveForm succeed');
+            })
+            .catch((err: BusinessError) => {
+              console.error(`startAbilityByLiveForm failed, code is ${err?.code}, message is ${err?.message}`);
+            });
+        } catch (e) {
+          console.error(`startAbilityByLiveForm failed, code is ${e?.code}, message is ${e?.message}`);
+        }
       }
     }
     ```
@@ -244,7 +245,6 @@
             Text('点击触发互动卡片动效')
               .fontSize($r('app.float.font_size'))
               .fontWeight(FontWeight.Medium)
-              // $r('sys.color.font_primary')需开发者根据实际情况替换相应的资源或值
               .fontColor($r('sys.color.font_primary'))
           }
           .width('100%')
@@ -313,17 +313,16 @@
     ```ts
     // entry/src/main/ets/entryformability/EntryFormAbility.ets
     import {
-      formInfo,
-      formProvider,
-      FormExtensionAbility,
+      formInfo, formProvider, FormExtensionAbility,
     } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../common/Constants';
-    
+
     export default class EntryFormAbility extends FormExtensionAbility {
       async onFormEvent(formId: string, message: string) {
         let shortMessage: string = JSON.parse(message)['message'];
-    
+
         // 当接收的 message 为 requestOverflow，触发互动卡片动效
         if (shortMessage === 'requestOverflow') {
           let formRect: formInfo.Rect = await formProvider.getFormRect(formId);
@@ -331,36 +330,42 @@
           return;
         }
       }
-    
+
       private requestOverflow(formId: string, formWidth: number, formHeight: number): void {
         if (formWidth <= 0 || formHeight <= 0) {
-          console.log('requestOverflow failed, form size is not correct.');
+          console.info('requestOverflow failed, form size is not correct.');
           return;
         }
-    
+
         // 基于卡片自身尺寸信息，计算卡片动效渲染区域
         let left: number = -Constants.OVERFLOW_LEFT_RATIO * formWidth;
         let top: number = -Constants.OVERFLOW_TOP_RATIO * formHeight;
         let width: number = Constants.OVERFLOW_WIDTH_RATIO * formWidth;
         let height: number = Constants.OVERFLOW_HEIGHT_RATIO * formHeight;
         let duration: number = Constants.OVERFLOW_DURATION;
-    
+
         // 发起互动卡片动效申请
         try {
           formProvider.requestOverflow(formId, {
             // 动效申请范围
-            area: { left: left, top: top, width: width, height: height },
+            area: {
+              left: left,
+              top: top,
+              width: width,
+              height: height
+            },
             // 动效持续时间
             duration: duration,
             // 指定是否使用系统提供的默认切换动效
             useDefaultAnimation: true,
           }).then(() => {
-            console.log('requestOverflow requestOverflow succeed');
+            console.info('requestOverflow requestOverflow succeed');
           }).catch((error: BusinessError) => {
-            console.log(`requestOverflow requestOverflow catch error` + `, code: ${error.code}, message: ${error.message}`);
+            console.info(`requestOverflow requestOverflow catch error` +
+              `, code: ${error.code}, message: ${error.message}`);
           })
         } catch (e) {
-          console.log(`requestOverflow call requestOverflow catch error` + `, code: ${e.code}, message: ${e.message}`);
+          console.info(`requestOverflow call requestOverflow catch error` + `, code: ${e.code}, message: ${e.message}`);
         }
       }
     }
@@ -387,6 +392,7 @@
       public static readonly OVERFLOW_DURATION: number = 3500;
     }
     ```
+
 ## 实现效果
 以下是按照本文档代码示例开发而成的效果demo，demo执行动效时，点击按钮，将调用 [formProvider.cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20) 接口，打断当前破框动效，卡片切换为非激活态。
 

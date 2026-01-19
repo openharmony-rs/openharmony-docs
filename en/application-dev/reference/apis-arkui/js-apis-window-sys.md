@@ -18,6 +18,8 @@ This module provides the following common window-related functions:
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.window (Window)](arkts-apis-window.md).
+>
+> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
 ## Modules to Import
 
@@ -2480,7 +2482,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal.                |
-| 1300003 | This window manager service works abnormally. |                       |
+| 1300003 | This window manager service works abnormally. |
 
 **Example**
 
@@ -3291,6 +3293,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
+
 
 **Example**
 

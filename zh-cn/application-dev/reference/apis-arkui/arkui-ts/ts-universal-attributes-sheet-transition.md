@@ -48,7 +48,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 >
 > 2. 为了使isShow参数值与半模态界面的状态同步，建议使用[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定isShow参数。从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 >
-> 3. 在半模态单挡位向上拖拽或是多挡位上滑换挡情况下，内容在拖拽结束或换挡结束后更新显示区域。
+> 3. 在半模态单档位向上拖拽或是多档位上滑换档情况下，内容在拖拽结束或换挡结束后更新显示区域。
 >
 > 4. 半模态是一个严格和宿主节点绑定在一起的弹窗。若是想实现类似“页面显示的瞬间就弹出半模态”的效果，请确认宿主节点是否已挂载上树。若宿主节点还没上树就将isShow置为true，半模态将不生效。建议使用[onAppear](ts-universal-events-show-hide.md#onappear)函数，确保在宿主节点挂载后再显示半模态。
 > 尤其是 [SheetMode](#sheetmode12枚举说明) = EMBEDDED 时，除宿主节点外，还需确保对应的页面节点成功挂载。
@@ -172,7 +172,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 1. 侧边样式默认转场方向为从右向左，退出则是原地向右退出；镜像场景默认转场则是从左向右，退出则是原地向左退出。不支持自定义转场。
 
-2. 无多挡位能力，不支持detents和detentSelection接口。同样也不支持控制条相关能力接口，如dragBar接口。
+2. 无多档位能力，不支持detents和detentSelection接口。同样也不支持控制条相关能力接口，如dragBar接口。
 
 3. 底部弹窗样式可以在转场结束后向上滑动交互，但侧边弹窗样式不支持在转场结束后往左滑动交互，只支持往右滑动关闭。镜像场景则能力相反。
 
@@ -191,15 +191,15 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | 名称             | 说明              |
 | --------------- |  --------------- |
 | height          | 高度只支持全屏高度。 |
-| detents | 无挡位能力。| 
+| detents | 无档位能力。| 
 | dragBar         | 不支持DragBar。  |
-| onDetentsDidChange | 无挡位能力。|
+| onDetentsDidChange | 无档位能力。|
 | uiContext | 不支持指定显示层级。|
 | mode | 不支持指定显示层级。 |
-| scrollSizeMode | 无挡位能力。  |
+| scrollSizeMode | 无档位能力。  |
 | enableHoverMode  | 无悬停态避让能力。|
 | hoverModeArea    | 无悬停态避让能力。|
-| detentSelection | 无挡位能力。 |
+| detentSelection | 无档位能力。 |
 | placement | 只支持气泡样式。 |
 | placementOnTarget | 只支持气泡样式。|
 | showInSubWindow | 不支持指定显示层级。 |
@@ -230,18 +230,18 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | --------------- |  --------------- |
 | height          | 高度只支持全屏高度。 |
 | width           | 宽度只支持全屏宽度。 |
-| detents | 无挡位能力。|
+| detents | 无档位能力。|
 | dragBar         | 不支持拖动条。  |
-| onDetentsDidChange | 无挡位能力。|
+| onDetentsDidChange | 无档位能力。|
 | showClose          | 不支持显示关闭按钮。 |
 | title          | 不支持显示标题栏。 |
 | uiContext | 不支持指定显示层级。|
 | mode | 不支持指定显示层级。 |
-| scrollSizeMode | 无挡位能力。  |
+| scrollSizeMode | 无档位能力。  |
 | keyboardAvoidMode | 无避让软键盘能力，需自定义避让。 |
 | enableHoverMode  | 无悬停态避让能力。|
 | hoverModeArea    | 无悬停态避让能力。|
-| detentSelection | 无挡位能力。 |
+| detentSelection | 无档位能力。 |
 | showInSubWindow | 不支持指定显示层级。 |
 | radius         | 不支持圆角。  |
 | borderWidth         | 不支持边框宽度。  |

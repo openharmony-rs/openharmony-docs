@@ -7,9 +7,9 @@
 <!--Adviser: @ge-yafang-->
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This module can be imported only to ArkTS files (with the file name extension .ets).
+> - This module can be imported only to ArkTS files (with the file name extension .ets).
 
 ## ISendable
 
@@ -71,8 +71,7 @@ Defines the ArkTS Array reduction function, which is used by the **some** and **
 | boolean | Result of the reduction function, indicating whether the current element meets the test condition. The value **true** means that the current element or a previous element meets the condition, and **false** means that no element meets the condition.|
 
 ## ArrayReduceCallback<sup>18+</sup>
-type ArrayReduceCallback<AccType, ElementType, ArrayType> =
-    (previousValue: AccType, currentValue: ElementType, currentIndex: number, array: ArrayType) => AccType
+type ArrayReduceCallback<AccType, ElementType, ArrayType> = (previousValue: AccType, currentValue: ElementType, currentIndex: number, array: ArrayType) => AccType
 
 Defines the ArkTS Array reduction function, which is used by the **reduceRight** API of the Array class.
 
@@ -155,9 +154,9 @@ Describes the traversal function of the ArkTS TypedArray.
 
 | Name | Type  | Mandatory| Description                         |
 | ------- | ------ | ---- | --------------------------- |
-| value | ElementType | Yes| Element that is being traversed in the ArkTS TypedArray.|
-| index | number | Yes| Index of the element, beginning at 0.|
-| array | ArrayType | Yes| ArkTS TypedArray that is being traversed.|
+| value | ElementType | No| Element that is being traversed in the ArkTS TypedArray.|
+| index | number | No| Index of the element, beginning at 0.|
+| array | ArrayType | No| ArkTS TypedArray that is being traversed.|
 
 ## TypedArrayMapCallback
 type TypedArrayMapCallback\<ElementType, ArrayType> = (value: ElementType, index: number, array: ArrayType) => ElementType

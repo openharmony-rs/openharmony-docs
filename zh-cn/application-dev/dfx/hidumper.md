@@ -42,7 +42,7 @@ HiDumper命令行工具使用常见问题汇总在[常见问题](#常见问题)�
 | [--cpuusage [pid]](#查询进程cpu使用率) | 获取CPU使用率，取值范围(0, CPU核数]，按进程和类别分类；如果指定pid，则获取指定pid的CPU使用率。 |
 | [--cpufreq](#查询cpu频率) | 获取CPU每个核的真实频率，单位：kHz。 |
 | [--mem [--prune]](#查询整机内存) | 获取总内存使用情况。如果指定--prune，只导出精简的内存使用情况。<br />**说明**：从API version 20开始，支持--prune参数。 |
-| [--mem pid [--show-ashmem] [--show-dmabuf]](#查询进程内存) | 获取指定pid的进程内存使用情况。<br />指定 --show-ashmem，则补充打印该进程的ashmem使用详细信息。<br />如果是应用进程，指定--show-dmabuf，则补充打印DMA内存详情信息。<br />**说明**：从API version 20开始，支持--show-ashmem、--show-dmabuf参数。 |
+| [--mem pid [--show-ashmem] [--show-dmabuf]](#查询进程内存) | 获取指定pid的进程内存使用情况。<br />指定--show-ashmem，则补充打印该进程的ashmem使用详细信息。<br />指定--show-dmabuf，则补充打印DMA内存使用详情信息。<br />**说明**：<br />从API version 20开始，支持--show-ashmem、应用进程的--show-dmabuf参数。 |
 | [--zip](#导出信息压缩存储) | 保存命令输出到 /data/log/hidumper 下的压缩文件，压缩格式为 ZIP。 |
 | [--ipc [pid]/-a --start-stat/stat/--stop-stat](#获取进程间通信信息) | 统计一段时间进程IPC信息。如果使用-a，则统计所有进程IPC数据。使用--start-stat开始统计，使用--stat获取统计数据，使用--stop-stat结束统计。 |
 | [--mem-smaps pid [-v]](#查询进程内存) | 获取pid内存统计信息，数据来源于/proc/pid/smaps，使用-v指定更多详细信息。（仅支持导出[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)）<br />**说明**：从API version 20开始，支持该参数。 |
@@ -59,7 +59,7 @@ HiDumper内存信息查询模块主要用于查看系统整机内存使用情况
 
 打印效果为：
 
-```
+```shell
 $ hidumper --mem
 -------------------------------[memory]-------------------------------
 Total Memory Usage by PID:
@@ -675,7 +675,7 @@ dumpNode                      |dump render node info
 dumpExistPidMem               |dumpExistPidMem [pid], dump exist pid mem info
 fps                           |[windowname] fps, dump the fps info of window
 flushJankStatsRs              |flush rs jank stats hisysevent
-screen                        |dump all screen infomation in the system
+screen                        |dump all screen information in the system
 ```
 
 
@@ -1328,7 +1328,7 @@ Navigation number: 4
 ## 常见问题
 
 
-### hidumper 查询到的内存使用情况与hidebug接口获取到的内存使用情况之间的关系
+### hidumper 查询到的内存使用情况与Hidebug接口获取到的内存使用情况之间的关系
 
 **现象描述**
 
@@ -1347,7 +1347,7 @@ hidumper --mem命令与HiDebug接口内存获取功能详细对比参考下表�
 | hidumper --mem-smaps [pid] | 命令行获取**单个进程**的详细内存使用情况 | 系统节点：/proc/pid/smaps_rollup | 否 |
 | [hidebug.getAppNativeMemInfo](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebuggetappnativememinfo12) | 获取**应用自身**的内存使用情况 | 系统节点：/proc/pid/smaps_rollup | 否 |
 
-若想通过hidebug获取图形内存，请参考[HiDebug能力概述](hidebug-guidelines.md)中的相关说明。
+若想通过Hidebug获取图形内存，请参考[HiDebug能力概述](hidebug-guidelines.md)中的相关说明。
 
 
 ### hidumper获取进程虚拟机内存和泄露对象信息为空

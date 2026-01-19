@@ -22,7 +22,7 @@ ArkUI提供的Native侧Node类型接口集合。Node模块相关接口需要在�
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t version | 结构体版本。 |
+| int32_t version | 结构体版本，当前使用的ArkUI_NativeNodeAPI_1结构体的版本编号，由系统提供，开发者无需修改。 |
 
 
 ### 成员函数

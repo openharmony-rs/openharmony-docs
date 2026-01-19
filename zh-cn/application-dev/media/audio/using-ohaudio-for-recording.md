@@ -117,16 +117,16 @@ OH_AudioStreamBuilder_Destroy(builder);
     }
 
     // 配置音频中断事件回调函数。
-    OH_AudioCapturer_OnInterruptCallback OnIntereruptCb = MyOnInterruptEvent;
-    OH_AudioStreamBuilder_SetCapturerInterruptCallback(builder, OnIntereruptCb, nullptr);
+    OH_AudioCapturer_OnInterruptCallback onInterruptCb = MyOnInterruptEvent;
+    OH_AudioStreamBuilder_SetCapturerInterruptCallback(builder, onInterruptCb, nullptr);
 
     // 配置音频异常回调函数。
-    OH_AudioCapturer_OnErrorCallback OnErrorCb = MyOnError;
-    OH_AudioStreamBuilder_SetCapturerErrorCallback(builder, OnErrorCb, nullptr);
+    OH_AudioCapturer_OnErrorCallback onErrorCb = MyOnError;
+    OH_AudioStreamBuilder_SetCapturerErrorCallback(builder, onErrorCb, nullptr);
 
     // 配置音频输入流的回调。
-    OH_AudioCapturer_OnReadDataCallback OnReadDataCb = MyOnReadData;
-    OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, OnReadDataCb, nullptr);
+    OH_AudioCapturer_OnReadDataCallback onReadDataCb = MyOnReadData;
+    OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, onReadDataCb, nullptr);
     ```
 
 4. 构造录制音频流。

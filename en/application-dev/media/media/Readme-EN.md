@@ -7,7 +7,7 @@
 <!--Tester: @zengxi_3007-->
 <!--Adviser: @w_Machine_cc-->
 
-- [Introduction to Media Kit](media-kit-intro.md)
+- [About This Kit](media-kit-intro.md)
 - Media Development (ArkTS)<!--media-kit-dev--arkts-->
   - Playback<!--media-playback-arkts-->
     - [Using AVPlayer to Play Audio (ArkTS)](using-avplayer-for-playback.md)
@@ -35,7 +35,7 @@
   - Recording<!--media-recording-c-->
     - [Using AVRecorder to Record Audio (C/C++)](using-ndk-avrecorder-for-audio-recording.md)
     - [Using AVRecorder to Record Videos (C/C++)](using-ndk-avrecorder-for-video-recording.md)
-    - Screen and Stream Capture with AVScreenCapture (C/C++)<!--using-avscreencapture-for-buffer-->
+    - Using AVScreenCapture to Capture Screens and Obtain Streams (C/C++)<!--using-avscreencapture-for-buffer-->
       - [Using AVScreenCapture in Basic Scenarios](avscreencapture-c-basic-process.md)
       - [Using AVScreenCapture in Custom Scenarios](avscreencapture-c-custom-scenarios.md)
       - [Screen Capture FAQs](avscreencapture-faqs.md)

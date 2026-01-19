@@ -7,7 +7,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-- [Introduction to Notification Kit](notification-overview.md)
+- [About This Kit](notification-overview.md)
 - [Requesting Notification Authorization](notification-enable.md)
 - [Managing the Notification Badge](notification-badge.md)
 - [Managing Notification Slots](notification-slot.md)

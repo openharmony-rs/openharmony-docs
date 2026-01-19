@@ -39,7 +39,7 @@
 | digitColorNight  | &lt;color&gt;  | 与digitColor保持一致 | 否    | 夜间时段（18:00-次日6:00）的表盘文本颜色。<br/>- 该属性未设置时，取digitColor的值作为digitColorNight的值（digitColor被设置时，取digitColor被设置的值）。<br/>- 请注意缺省状态下使用digitColor的值作为digitColorNight的值时，夜间时段表盘文本颜色与夜间时段表盘背景（faceNight）的颜色配合问题。 |
 | faceNight        | &lt;string&gt; | -               | 否    | 夜间时段的表盘资源路径。<br/>未设置时使用face的资源路径作为夜间时段的表盘资源路径。 |
 | hourHandNight    | &lt;string&gt; | -               | 否    | 夜间时段的时针资源路径。<br/>未设置时使用hourHand的资源路径作为夜间时段的时针资源路径。 |
-| minuteHandNight  | &lt;string&gt; | -               | 否    | 夜间时段的分针资源路径。<br/>设置时使用minuteHand的资源路径作为夜间时段的分针资源路径。 |
+| minuteHandNight  | &lt;string&gt; | -               | 否    | 夜间时段的分针资源路径。<br/>未设置时使用minuteHand的资源路径作为夜间时段的分针资源路径。 |
 | secondHandNight  | &lt;string&gt; | -               | 否    | 夜间时段的秒针资源路径。<br/>未设置时使用secondHand的资源路径作为夜间时段的秒针资源路径。 |
 | digitRadiusRatio | number         | 0.7             | 否    | 表盘数字中心到表盘中心距离&nbsp;/&nbsp;表盘资源边长的一半。<br/>- 有效范围为(0,&nbsp;1]。<br/>- 该参数用于计算表盘数字在表盘上距离圆心的位置。<br/>- 该参数可以保证同一套表盘资源在不同组件尺寸下都有同样的相对位置，而不需要针对每个组件尺寸都重新调整数字位置。<br/>- 该参数设为1时数字会有部分区域超出表盘，建议结合表盘区域合理设置digitRadiusRatio。 |
 | digitSizeRatio   | number         | 0.08            | 否    | 表盘数字尺寸/表盘资源边长。<br/>- 有效范围为(0,&nbsp;0.142]。<br/>- 该参数用于计算表盘数字相对表盘尺寸的大小。<br/>- 该参数可以保证同一套表盘资源在不同组件尺寸下都有同样的相对大小，而不需要针对每个组件尺寸都重新调整字号。 |

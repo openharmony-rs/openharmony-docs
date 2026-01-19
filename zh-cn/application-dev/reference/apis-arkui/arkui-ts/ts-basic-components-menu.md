@@ -163,7 +163,9 @@ fontSize(value: Length)
 
 统一设置Menu中所有文本的尺寸。
 
-从API Version 10开始废弃，建议使用[font](#font10)代替。
+> **说明：** 
+>
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[font](#font10)代替。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

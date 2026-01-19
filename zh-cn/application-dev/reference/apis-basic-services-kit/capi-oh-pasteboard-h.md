@@ -228,7 +228,7 @@ int OH_PasteboardObserver_Destroy(OH_PasteboardObserver* observer)
 
 | 类型 | 说明                                                                                                                                                                                                                                  |
 | -- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示执行成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_PasteboardObserver_SetData()
 
@@ -256,7 +256,7 @@ int OH_PasteboardObserver_SetData(OH_PasteboardObserver* observer, void* context
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示执行成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_Create()
 
@@ -320,7 +320,7 @@ int OH_Pasteboard_Subscribe(OH_Pasteboard* pasteboard, int type, const OH_Pasteb
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示执行成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_Unsubscribe()
 
@@ -347,7 +347,7 @@ int OH_Pasteboard_Unsubscribe(OH_Pasteboard* pasteboard, int type, const OH_Past
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示执行成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_IsRemoteData()
 
@@ -399,7 +399,7 @@ int OH_Pasteboard_GetDataSource(OH_Pasteboard* pasteboard, char* source, unsigne
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示执行成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_HasType()
 
@@ -504,7 +504,7 @@ int OH_Pasteboard_SetData(OH_Pasteboard* pasteboard, OH_UdmfData* data)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示执行成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_ClearData()
 
@@ -529,7 +529,7 @@ int OH_Pasteboard_ClearData(OH_Pasteboard* pasteboard)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示指向成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示执行成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
 
 ### OH_Pasteboard_GetMimeTypes()
 
@@ -746,7 +746,7 @@ OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteb
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_UdmfData](../apis-arkdata/capi-udmf-oh-udmfdata.md)* | 执行成功时返回统一数据对象OH_PasteData实例的指针。否则返回空指针。 |
+| [OH_UdmfData](../apis-arkdata/capi-udmf-oh-udmfdata.md)* | 执行成功时返回统一数据对象OH_UdmfData实例的指针。否则返回空指针。 |
 
 ### OH_Pasteboard_GetChangeCount()
 
@@ -783,9 +783,8 @@ void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callba
 
 通知剪贴板从应用同步所有延迟数据，与延迟复制接口[OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata)搭配使用。当应用使用延迟复制功能复制时，仅将应用支持的数据类型写入剪贴板。应用应在退出时，重新调用[OH_Pasteboard_SetData](#oh_pasteboard_setdata)接口主动提交所有复制数据或调用此接口通知剪贴板获取全量数据，等待数据同步完成再继续退出，否则可能导致其他应用粘贴获取不到数据。
 
-**注意：**
-
-调用此接口会延长退出过程，建议应用直接设置数据到剪贴板，而不是调用延迟复制接口[OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata)和此接口。
+> **注意：**
+> - 调用此接口会延长退出过程，建议应用直接设置数据到剪贴板，而不是调用延迟复制接口[OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata)和此接口。
 
 **起始版本：** 21
 

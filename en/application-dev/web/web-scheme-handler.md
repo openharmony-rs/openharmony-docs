@@ -10,7 +10,7 @@ The application can use [onInterceptRequest](../reference/apis-arkweb/arkts-basi
 
 > **NOTE**
 >
-> You cannot obtain post data using the **onInterceptRequest** API. To obtain post data, use the SchemeHandler mechanism to intercept network requests.
+> - You cannot obtain post data using the **onInterceptRequest** API. To obtain post data, use the SchemeHandler mechanism to intercept network requests.
 
 ## Intercepting Network Requests (by onInterceptRequest)
 
@@ -27,11 +27,15 @@ ArkWeb allows you to use SchemeHandler to intercept HTTP(s) and custom protocol 
 When the web kernel sends a scheme request, the callback of SchemeHandler set for the scheme is triggered. SchemeHandler contains two callbacks: one for the request start and the other for the request end. The application needs to notify the web kernel whether to intercept the request in the callback for the request start, and clear related resources after the request ends to avoid memory leaks.
 
 Callbacks for the request start: 
+
 NDK: [ArkWeb_OnRequestStart](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststart) 
+
 ArkTS: [onRequestStart](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststart12) 
 
 Callbacks for the request end: 
+
 NDK: [ArkWeb_OnRequestStop](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop) 
+
 ArkTS: [onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststop12) 
 
 > **NOTE**
@@ -106,7 +110,7 @@ C++ implementation of **testNapi.registerCustomSchemes**:
 
 In ArkTS, you can register a custom scheme using **customizeSchemes**. The sample code is as follows:
 
- ``` ts
+  ``` ts
     // xxx.ets
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -196,6 +200,7 @@ In ArkTS, obtain information about intercepted requests:
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
+    return true;
   })
   ```
 
@@ -204,12 +209,14 @@ In ArkTS, obtain information about intercepted requests:
 The network interception provides custom response information for intercepted requests in stream mode in the worker thread. You can also use a specific network error code to end the current intercepted request.
 
 Error codes: 
+
 NDK: [arkweb_net_error_list.h](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md) 
+
 ArkTS: [@ohos.web.netErrorList(The List of ArkWeb Network Protocol Stack Errors)](../reference/apis-arkweb/arkts-apis-netErrorList.md) 
 
 > **NOTE**
 >
-> ArkWeb does not support custom error codes. Use the error codes provided by ArkWeb to end requests.
+> - ArkWeb does not support custom error codes. Use the error codes provided by ArkWeb to end requests.
 
 In the NDK, provide custom responses for intercepted requests.
 
@@ -270,8 +277,9 @@ In ArkTS, provide custom response information for intercepted requests.
     } catch (error) {
       console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
-  })
-  ```
+    return true;
+   })
+   ```
 
 Before calling [OH_ArkWebResourceHandler_DidFailWithError](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror) or [didFail(code: WebNetErrorList)](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail12) to end the current request, you must return a response header to the web kernel through [OH_ArkWebResourceHandler_DidReceiveResponse](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) or [didReceiveResponse](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12). Otherwise, the request cannot be ended.
 
@@ -289,6 +297,7 @@ ArkTS sample code:
   this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
     // Call didFail(WebNetErrorList.ERR_CONNECTION_FAILED, true) to automatically construct a network request error ERR_CONNECTION_FAILED.
     resourceHandler.didFail(WebNetErrorList.ERR_CONNECTION_FAILED, true);
+    return true;
   })
   ```
 

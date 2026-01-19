@@ -3,9 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
-Stage模型是从API 9开始支持，目前主推且会长期演进的模型。该模型采用面向对象的方式，将应用组件以类接口的形式开放给开发者，可以进行派生，利于扩展能力。
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
+Stage模型是从API version 9开始支持，目前主推且会长期演进的模型。该模型采用面向对象的方式，将应用组件以类接口的形式开放给开发者，可以进行派生，利于扩展能力。
 
 ## 接口说明
 
@@ -56,7 +56,7 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 
 ### 创建卡片FormExtensionAbility
 
-创建Stage模型的卡片，需实现FormExtensionAbility生命周期接口。先参考<!--RP1-->[DevEco Studio服务卡片开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-service-widget-V5)<!--RP1End-->生成服务卡片模板。
+创建Stage模型的卡片，需实现FormExtensionAbility生命周期接口。先参考<!--RP1-->[创建ArkTS卡片](./arkts-ui-widget-creation.md)<!--RP1End-->生成服务卡片模板。
 
 1. 在EntryFormAbility.ets中，导入相关模块。
     ```ts
@@ -83,10 +83,12 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
         let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
         return formData;
       }
+
       onCastToNormalForm(formId: string): void {
         // 使用方将临时卡片转换为常态卡片触发，提供方需要做相应的处理，当前卡片使用方不存在临时卡片场景
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onCastToNormalForm');
       }
+
       onUpdateForm(formId: string): void {
         // 若卡片支持定时更新/定点更新/卡片使用方主动请求更新功能，则提供方需要重写该方法以支持数据更新
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
@@ -99,20 +101,24 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
           hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
         });
       }
+
       onChangeFormVisibility(newStatus: Record<string, number>): void {
         // 使用方发起可见或者不可见通知触发，提供方需要做相应的处理，仅系统应用生效
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onChangeFormVisibility');
         //...
       }
+
       onFormEvent(formId: string, message: string): void {
         // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onFormEvent');
       }
+
       onRemoveForm(formId: string): void {
         // 删除卡片实例数据
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
         //...
       }
+
       onAcquireFormState(want: Want): formInfo.FormState {
         return formInfo.FormState.READY;
       }
@@ -217,23 +223,25 @@ const TAG: string = 'JsCardFormAbility';
 const DATA_STORAGE_PATH: string = '/data/storage/el2/base/haps/form_store';
 const DOMAIN_NUMBER: number = 0xFF00;
 
-let storeFormInfo = async (formId: string, formName: string, tempFlag: boolean, context: common.FormExtensionContext): Promise<void> => {
-  // 此处仅对卡片ID：formId，卡片名：formName和是否为临时卡片：tempFlag进行了持久化
-  let formInfo: Record<string, string | boolean | number> = {
-    'formName': formName,
-    'tempFlag': tempFlag,
-    'updateCount': 0
-  };
-  try {
-    const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
-    // put form info
-    await storage.put(formId, JSON.stringify(formInfo));
-    hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] storeFormInfo, put form info successfully, formId: ${formId}`);
-    await storage.flush();
-  } catch (err) {
-    hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to storeFormInfo, err: ${JSON.stringify(err as BusinessError)}`);
+let storeFormInfo =
+  async (formId: string, formName: string, tempFlag: boolean, context: common.FormExtensionContext): Promise<void> => {
+    // 此处仅对卡片ID：formId，卡片名：formName和是否为临时卡片：tempFlag进行了持久化
+    let formInfo: Record<string, string | boolean | number> = {
+      'formName': formName,
+      'tempFlag': tempFlag,
+      'updateCount': 0
+    };
+    try {
+      const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
+      // put form info
+      await storage.put(formId, JSON.stringify(formInfo));
+      hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] storeFormInfo, put form info successfully, formId: ${formId}`);
+      await storage.flush();
+    } catch (err) {
+      hilog.error(DOMAIN_NUMBER, TAG,
+        `[EntryFormAbility] failed to storeFormInfo, err: ${JSON.stringify(err as BusinessError)}`);
+    }
   }
-}
 
 export default class JsCardFormAbility extends FormExtensionAbility {
   onAddForm(want: Want): formBindingData.FormBindingData {
@@ -280,8 +288,10 @@ let deleteFormInfo = async (formId: string, context: common.FormExtensionContext
     hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] deleteFormInfo, del form info successfully, formId: ${formId}`);
     await storage.flush();
   } catch (err) {
-    hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to deleteFormInfo, err: ${JSON.stringify(err as BusinessError)}`);
-  };
+    hilog.error(DOMAIN_NUMBER, TAG,
+      `[EntryFormAbility] failed to deleteFormInfo, err: ${JSON.stringify(err as BusinessError)}`);
+  }
+  ;
 };
 
 export default class JsCardFormAbility extends FormExtensionAbility {

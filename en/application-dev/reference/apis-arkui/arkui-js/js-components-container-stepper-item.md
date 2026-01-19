@@ -1,4 +1,10 @@
 # stepper-item
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 > This component is supported since API version 5. Updates will be marked with a superscript to indicate their earliest API version.

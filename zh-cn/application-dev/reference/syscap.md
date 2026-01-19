@@ -65,28 +65,28 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 ```json
 // syscap.json
 {
-	"devices": {
-		"general": [            // 每一个典型设备对应一个syscap支持能力集，可配置多个典型设备
-			"default",
-			"car"
-		],
-		"custom": [             // 厂家自定义设备
-			{
-				"某自定义设备": [
-					"SystemCapability.Communication.SoftBus.Core"
-				]
-			}
-		]
-	},
-	"development": {             // addedSysCaps内的sycap集合与devices中配置的各设备支持的syscap集合的并集共同构成联想能力集
-		"addedSysCaps": [
-			"SystemCapability.Location.Location.Lite"
-		]
-	},
-	"production": {              // 用于生成rpcid，慎重添加，可能导致应用无法分发到目标设备上
-		"addedSysCaps": [],      // devices中配置的各设备支持的syscap集合的交集，添加addedSysCaps集合再除去removedSysCaps集合，共同构成要求能力集
-		"removedSysCaps": []     // 当该要求能力集为某设备的子集时，应用才可被分发到该设备上
-	}
+    "devices": {
+        "general": [            // 每一个典型设备对应一个syscap支持能力集，可配置多个典型设备
+            "default",
+            "car"
+        ],
+        "custom": [             // 厂家自定义设备
+            {
+                "某自定义设备": [
+                    "SystemCapability.Communication.SoftBus.Core"
+                ]
+            }
+        ]
+    },
+    "development": {             // addedSysCaps内的syscap集合与devices中配置的各设备支持的syscap集合的并集共同构成联想能力集
+        "addedSysCaps": [
+            "SystemCapability.Location.Location.Lite"
+        ]
+    },
+    "production": {              // 用于生成rpcid，慎重添加，可能导致应用无法分发到目标设备上
+        "addedSysCaps": [],      // devices中配置的各设备支持的syscap集合的交集，添加addedSysCaps集合再除去removedSysCaps集合，共同构成要求能力集
+        "removedSysCaps": []     // 当该要求能力集为某设备的子集时，应用才可被分发到该设备上
+    }
 }
 ```
 <!--DelEnd-->
@@ -115,7 +115,7 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 
     ```ts
     if (canIUse("SystemCapability.ArkUI.ArkUI.Full")) {
-	   console.info("该设备支持SystemCapability.ArkUI.ArkUI.Full");
+       console.info("该设备支持SystemCapability.ArkUI.ArkUI.Full");
     } else {
        console.info("该设备不支持SystemCapability.ArkUI.ArkUI.Full");
     }
@@ -123,32 +123,32 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 
   - 方法2：开发者可通过import的方式将模块导入，若当前设备不支持该模块，import的结果为undefined，开发者在使用其API时，需要判断其是否存在。
 
-	```ts
-	import { geoLocationManager } from '@kit.LocationKit';
+    ```ts
+    import { geoLocationManager } from '@kit.LocationKit';
 
-	try {
-	geolocationManager.getCurrentLocation((location) => {
-		console.info('current location: ' + JSON.stringify(location));
-	});
-	} catch(err) {
-	    console.error('该设备不支持位置信息' + err);
-	}
-	```
+    try {
+    geoLocationManager.getCurrentLocation((location) => {
+        console.info('current location: ' + JSON.stringify(location));
+    });
+    } catch(err) {
+        console.error('该设备不支持位置信息' + err);
+    }
+    ```
 - Native API
 
-	```c
-	#include <stdio.h>
-	#include <stdlib.h>
-	#include "syscap_ndk.h"
+    ```c
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include "syscap_ndk.h"
 
-	char syscap[] = "SystemCapability.ArkUI.ArkUI.Full";
-	bool result = canIUse(syscap);
-	if (result) {
-		printf("SysCap: %s is supported!\n", syscap);
-	} else {
-		printf("SysCap: %s is not supported!\n", syscap);
-	}
-	```
+    char syscap[] = "SystemCapability.ArkUI.ArkUI.Full";
+    bool result = canIUse(syscap);
+    if (result) {
+        printf("SysCap: %s is supported!\n", syscap);
+    } else {
+        printf("SysCap: %s is not supported!\n", syscap);
+    }
+    ```
 
 除此之外，开发者可以通过API参考文档查询API接口所属的SysCap。
 

@@ -72,14 +72,14 @@ Click **Report** to access the report list. Touch a report to view its details.
 
 - Switching to Shell
 
-  ```
+  ```shell
   C:\Users\issusser>hdc shell
   $
   ```
 
 - Starting and Viewing the daemon Process
 
-  ```
+  ```shell
   C:\Users\issusser>hdc shell
   // Start the daemon process.
   $ SP_daemon 
@@ -92,7 +92,7 @@ Click **Report** to access the report list. Touch a report to view its details.
 
 - Viewing the Help Information
 
-  ```
+  ```shell
   $ SP_daemon --help
   OpenHarmony performance testing tool SmartPerf command-line version
    Usage: SP_daemon [options] [arguments]
@@ -187,7 +187,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Collect the number of application threads once based on the bundle name.
 
-  ```
+  ```shell
     $ SP_daemon -N 1 -PKG ohos.samples.ecg -threads
  
     order:0 timestamp=1741415592481
@@ -200,7 +200,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Collect the frequency and usage of CPU cores twice.
 
-  ```
+  ```shell
     $ SP_daemon -N 2 -c
 
     order:0 timestamp=1501839064260
@@ -257,7 +257,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Collect the frequency and usage of CPU cores and CPU usage and load of processes twice based on the bundle name.
 
-  ```
+  ```shell
     $ SP_daemon -N 2 -PKG ohos.samples.ecg -c
 
 
@@ -296,7 +296,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Collect the frequency and usage of CPU cores and CPU usage and load of processes twice based on the process ID.
 
-  ```
+  ```shell
     $ SP_daemon -N 2 -PID 18847 -c
  
  
@@ -336,7 +336,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Collect the GPU frequency and load of the system once.
  
-  ```
+  ```shell
     $ SP_daemon -N 1 -g
     
     
@@ -351,7 +351,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Collect the system temperature twice.
 
-  ```
+  ```shell
     $ SP_daemon -N 2 -t
 
     order:0 timestamp=1502720711191
@@ -369,7 +369,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Collect the memory information of the system twice.
 
-  ```
+  ```shell
     $ SP_daemon -N 2 -r
     order:0 timestamp=1705041562521
     order:1 memAvailable=7339224
@@ -387,7 +387,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Collect the memory of the system and specified application process once based on the bundle name.
 
-  ```
+  ```shell
     $ SP_daemon -N 1 -PKG ohos.samples.ecg -r
  
  
@@ -433,7 +433,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Collect the memory of the system and specified application process once based on the process ID.
 
-  ```
+  ```shell
     $ SP_daemon -N 1 -PID 18847 -r
  
  
@@ -483,7 +483,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Collect the number of CPU instructions of the system once.
 
-  ```
+  ```shell
     $ SP_daemon -N 1 -ci
 
     order:0 cycles per instruction=4.098151
@@ -496,7 +496,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Collect the number of CPU instructions of the system and specified application once based on the bundle name.
 
-  ```
+  ```shell
     $ SP_daemon -N 1 -PKG ohos.samples.ecg -ci
 
     order:0 cycles per instruction=4.121963
@@ -512,7 +512,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Take two screenshots.
 
-  ```
+  ```shell
     $ SP_daemon -N 2 -snapshot
 
     order:0 timestamp=1501837609657
@@ -535,7 +535,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Collect the network speeds twice.
 
-  ```
+  ```shell
     $ SP_daemon -N 2 -net
 
     order:0 timestamp=1705041904832
@@ -552,7 +552,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Collect the frame rate of a specified application five times based on the bundle name.
 
-  ```
+  ```shell
     $ SP_daemon -N 5 -PKG ohos.samples.ecg -f
 
     order:0 timestamp=1705306472232
@@ -572,7 +572,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
  
 - Collect the frame rate of the specified view layer 10 times.
 
-  ```
+  ```shell
     $ SP_daemon -N 10 -VIEW DisplayNode -f
     order:0 timestamp=1705306822850
     order:1 fps=15
@@ -598,7 +598,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Collect DDR information once.
 
-  ```
+  ```shell
     $ SP_daemon -N 1 -d
     
     order:0 timestamp=1710916175201
@@ -610,7 +610,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Example 1: Collect the full information of the system, including the CPU, GPU, temperature, memory, DDR, network speed, and screenshot information.
  
-  ```
+  ```shell
     $ SP_daemon -N 10 -c -g -t -r -d -net -snapshot
 
     order:0 timestamp=1501837838664
@@ -678,7 +678,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Example 2: Collect the full information of the specified application based on the bundle name, including the CPU, GPU, temperature, frame rate, memory, DDR, network speed, and screenshot information.
  
-  ```
+  ```shell
     $ SP_daemon -N 10 -PKG ohos.samples.ecg -c -g -t -f -r -d -net -snapshot -threads
     
     order:0 timestamp=1741415955626
@@ -749,7 +749,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 
 - Example 3: Collect the full information of the specified application based on the process ID, including the CPU, GPU, temperature, frame rate, memory, DDR, network speed, and screenshot information.
  
-  ```
+  ```shell
     $ SP_daemon -N 10 -PID 18847 -c -g -t -f -r -d -net -snapshot -threads
     
     order:0 timestamp=1741416084766
@@ -834,7 +834,7 @@ Run the **start** command to start the collection. After operating the device or
   
 - Start and stop collecting the frequency and usage of CPU cores.
 
-   ```
+   ```shell
    # Start data collection
    $ SP_daemon -start -c
    SP_daemon Collection begins
@@ -855,7 +855,7 @@ Run the **start** command to start the collection. After operating the device or
 
 - Start and stop collecting the frequency and usage of CPU cores and print the information.
 
-   ```
+   ```shell
     # Start data collection
     # Start printing the collection information
     $ SP_daemon -start -c -print
@@ -931,7 +931,7 @@ If the collection result is saved in a CSV file, perform the following steps to 
 
   - Check the path to the result file.
 
-    ```
+    ```shell
     C:\Users\issusser>hdc shell
     $ cd data/local/tmp
     # ls
@@ -940,7 +940,7 @@ If the collection result is saved in a CSV file, perform the following steps to 
     ```
 
   - Export the file to the specified path.
-    ```
+    ```shell
     C:\Users\issusser>hdc file recv data/local/tmp/data.csv D:\
     [I][2023-11-08 16:16:41] HdcFile::TransferSummary success
     FileTransfer finish, Size:429, File count = 1, time:6ms rate:71.50kB/s
@@ -1040,7 +1040,7 @@ In addition to basic collection, the response and completion latency can be coll
 
 - Collect the application response latency. (This command supports only the RK3568 device.)
 
-  ```
+  ```shell
    $ SP_daemon -editor responseTime ohos.samples.ecg ohtest
    time:544ms
 
@@ -1052,7 +1052,7 @@ In addition to basic collection, the response and completion latency can be coll
 
 - Collect the application completion latency. (This command supports only the RK3568 device.)
 
-  ```
+  ```shell
    $ SP_daemon -editor completeTime ohos.samples.ecg ohtest
    time:677ms
 
@@ -1064,7 +1064,7 @@ In addition to basic collection, the response and completion latency can be coll
 
 - Use the validator to obtain the application page frame rate.
 
-  ```
+  ```shell
    $ SP_daemon -editor fpsohtest
    set num:10 successfps:0|1726909713442fps:97|1726909714442fps:113|1726909715442fps:116|1726909716442fps:116|1726909717442fps:118|1726909718442fps:114|1726909719442fps:114|1726909720442fps:115|1726909721442fps:118|1726909722442SP_daemon exec finished!
   ```
@@ -1089,7 +1089,7 @@ The power collection result of the current device can be written into the **data
 
 - Obtain the screen resolution.
 
-  ```
+  ```shell
    $ SP_daemon -screen
    activeMode: 720x1280, refreshrate=69
     
@@ -1103,7 +1103,7 @@ The power collection result of the current device can be written into the **data
 
 - Obtain the device information.
 
-  ```
+  ```shell
    $ SP_daemon -deviceinfo
    abilist: default
    activeMode: 720x1280
@@ -1129,7 +1129,7 @@ The power collection result of the current device can be written into the **data
 
 - Start a process to listen for the socket messages of the **start** and **stop** commands.
 
-  ```
+  ```shell
    $ SP_daemon -server
    $
    $ pidof SP_daemon
@@ -1142,7 +1142,7 @@ The power collection result of the current device can be written into the **data
 
 - Clear the SP_daemon process ID.
 
-  ```
+  ```shell
    $ pidof SP_daemon
    2725   
    $ SP_daemon -clear
@@ -1159,7 +1159,7 @@ The power collection result of the current device can be written into the **data
 
 - Obtain the frame rate of the current page using a validator.
 
-  ```
+  ```shell
    $ SP_daemon -ohtestfps 10
    set num:10 success
    fps:1|1501926684532
@@ -1182,7 +1182,7 @@ The power collection result of the current device can be written into the **data
 
 - Start a process to listen for the socket messages of the editor tool.
 
-  ```
+  ```shell
    $ SP_daemon -editorServer
     
     
@@ -1192,7 +1192,7 @@ The power collection result of the current device can be written into the **data
 
 - Obtain the battery level.
 
-  ```
+  ```shell
    $ SP_daemon -recordcapacity
    recordTime: 1726903063
    recordPower: 5502
@@ -1205,7 +1205,7 @@ The power collection result of the current device can be written into the **data
 
 - Collect the frame rate of the current page.
 
-  ```
+  ```shell
     $ SP_daemon -profilerfps 10
     set num:10 success
     fps:0|1711692357278
@@ -1227,7 +1227,7 @@ The power collection result of the current device can be written into the **data
 
 - Collect the frame rate by time segment.
 
-  ```
+  ```shell
     $ SP_daemon -profilerfps 100 -sections 10
     set num:100 success
     fps:0|1711692393278

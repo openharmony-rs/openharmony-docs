@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-This topic walks you through on how to perform encryption and decryption using AES128, RSA2048, and SM2. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-encryption-decryption-overview.md#supported-algorithms).
+This topic uses AES-128, RSA-2048, and SM2 as examples to describe the encryption and decryption workflows. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-encryption-decryption-overview.md#supported-algorithms).
 
 ## How to Develop
 
@@ -31,7 +31,7 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
    The parameters to be configured vary with the algorithm used.
    - If the AES algorithm is used for encryption, the block mode is CBC, and the padding mode is PKCS7, the **IV** parameter is mandatory. For details, see [AES/CBC/PKCS7](#aescbcpkcs7).
-   - If the AES algorithm is used for encryption and the block mode is GCM, the **NONCE** and**AAD** parameters are optional. For details, see [AES/GCM/NoPadding](#aesgcmnopadding).
+   - If the AES algorithm is used for encryption and the block mode is GCM, the **NONCE** and **AAD** parameters are optional. For details, see [AES/GCM/NoPadding](#aesgcmnopadding).
    - If the RSA algorithm is used for encryption, you need to select the corresponding block mode, padding mode, and digest algorithm. For details, see [RSA/ECB/PKCS1_V1_5](#rsaecbpkcs1_v1_5) and [RSA/ECB/OAEP/SHA256](#rsaecboaepsha256).
    - If the SM2 algorithm is used for encryption, the digest algorithm must be SM3. For details, see [SM2](#sm2).
    <!--Del-->
@@ -729,7 +729,7 @@ async function TestEncryptDecrypt()
 
 ```ts
 /*
- * The following uses RSA/ECB/OAEP/SHA256 with promise-based APIs.
+ * The following uses RSA/ECB/OAEP/SHA-256 with promise-based APIs.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from "@kit.BasicServicesKit";

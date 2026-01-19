@@ -26,7 +26,7 @@
 | touchcancel              | TouchEvent | 手指触摸屏幕中动作被打断时触发该事件。                       | 是<sup>5+</sup>                                       | 是<sup>5+</sup> |
 | touchend                 | TouchEvent | 手指触摸结束离开屏幕时触发该事件。                           | 是<sup>5+</sup>                                       | 是<sup>5+</sup> |
 | click                    | BaseEvent  | 点击动作触发该事件。                                         | 是<sup>6+</sup>                                       | 否              |
-| doubleclick<sup>7+</sup> | BaseEvent  | 双击动作触发该事件                                           | 否<br/> 从API&nbsp;Version&nbsp;9&nbsp;开始支持冒泡。 | 否              |
+| doubleclick<sup>7+</sup> | BaseEvent  | 双击动作触发该事件。                                           | 否<br/> 从API&nbsp;Version&nbsp;9&nbsp;开始支持冒泡。 | 否              |
 | longpress                | BaseEvent  | 长按动作触发该事件。                                         | 否<br/>从API&nbsp;Version&nbsp;9&nbsp;开始支持冒泡。  | 否              |
 | swipe<sup>5+</sup>       | SwipeEvent | 组件上快速滑动后触发该事件。 SwipeEvent具体可参考表4 。      | 否<br/>从API&nbsp;Version&nbsp;9&nbsp;开始支持冒泡。  | 否              |
 | attached<sup>6+</sup>    | -          | 当前组件节点挂载在渲染树后触发。                             | 否                                                    | 否              |
@@ -107,7 +107,7 @@
 
 | 属性                   | 类型     | 说明                                       |
 | -------------------- | ------ | ---------------------------------------- |
-| dataSet<sup>6+</sup> | Object | 组件上通过通用属性设置的[data-*](js-components-common-attributes.md)的自定义属性组成的集合。 |
+| dataSet<sup>6+</sup> | Object | 组件上通过通用属性设置的[data-*](js-components-common-attributes.md#常规属性)的自定义属性组成的集合。 |
 
 **示例：**
 
@@ -157,14 +157,14 @@ setData(key: string, value: object): boolean
 ```js
 // setData的value参数，可以是基本数据类型。
 dragStart(e) {
-	var isSetOK = e.dataTransfer.setData('name', 1);
+    var isSetOK = e.dataTransfer.setData('name', 1);
 },
 // setData的value参数，也可以是对象类型。
 dragStart(e) {
-	var person = new Object();
-	person.name = "tom";
-	person.age = 21;
-	var isSetOK = e.dataTransfer.setData('person', person);
+    var person = new Object();
+    person.name = "tom";
+    person.age = 21;
+    var isSetOK = e.dataTransfer.setData('person', person);
 }
 ```
 ### getData<sup>9+</sup>
@@ -189,13 +189,13 @@ getData(key: string): object
 
 ```js
 dragStart(e) {
-	var person = new Object();
-	person.name = "tom";
-	person.age = 21;
-	e.dataTransfer.setData('person', person);
+    var person = new Object();
+    person.name = "tom";
+    person.age = 21;
+    e.dataTransfer.setData('person', person);
 },
 dragEnd(e){
-	var person = e.dataTransfer.getData('person');
+    var person = e.dataTransfer.getData('person');
 },
 ```
 ### clearData<sup>9+</sup>
@@ -221,7 +221,7 @@ clearData(key?: string): boolean
 
 ```js
 dragEnd(e) {
-	var isSuccess = e.dataTransfer.clearData('name');
+    var isSuccess = e.dataTransfer.clearData('name');
 }
 ```
 ### setDragImage<sup>9+</sup>

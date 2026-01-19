@@ -26,5 +26,3 @@ Enumerates the widget parameters.
 | Name       | Value  | Description        |
 | ----------- | ---- | ------------ |
 | IDENTITY_KEY     | 'ohos.extra.param.key.form_identity'    | Widget ID.<br>**System API**: This is a system API.  |
-
-

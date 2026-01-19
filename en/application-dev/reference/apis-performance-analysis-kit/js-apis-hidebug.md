@@ -366,7 +366,7 @@ startProfiling(filename: string): void
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [hidebug.startJsCpuProfiling](#hidebugstartjscpuprofiling9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hidebug.startJsCpuProfiling](#hidebugstartjscpuprofiling9) instead.
 
 Starts the VM profiling method. **startProfiling(filename: string)** and **stopProfiling()** are called in pairs. **startProfiling(filename: string)** always occurs before **stopProfiling()**. You are advised not to call either of these methods repeatedly. Otherwise, an exception may occur.
 
@@ -396,7 +396,7 @@ stopProfiling(): void
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [hidebug.stopJsCpuProfiling](#hidebugstopjscpuprofiling9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hidebug.stopJsCpuProfiling](#hidebugstopjscpuprofiling9) instead.
 
 Stops the VM profiling method. **stopProfiling()** and **startProfiling(filename: string)** are called in pairs. **startProfiling(filename: string)** always occurs before **stopProfiling()**. You are advised not to call either of these methods repeatedly. Otherwise, an exception may occur.
 
@@ -420,7 +420,7 @@ dumpHeapData(filename: string): void
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9) instead.
 
 Dumps the VM heap data and generates the **filename.heapsnapshot** file.
 
@@ -879,7 +879,7 @@ Obtains the specified system [GC](../../arkts-utils/gc-introduction.md) statisti
 
 | Name  | Type  | Mandatory| Description         |
 | -------- | ------ | ---- |-------------|
-| item | string | Yes  | Type of the statistics to obtain. The following statistics can be obtained:<br>**"ark.gc.gc-count"**: number of GC times of the current thread.<br>**"ark.gc.gc-time"**: total GC duration triggered by the current thread, in milliseconds.<br>**"ark.gc.gc-bytes-allocated"**: size of the Ark VM memory allocated to the current thread, in bytes.<br>**"ark.gc.gc-bytes-freed"**: memory freed by the GC of the current thread, in bytes.<br> **"ark.gc.fullgc-longtime-count"**: number of longtime full GCs triggered by the current thread.|
+| item | string | Yes  | Type of the statistics to obtain. The following statistics can be obtained:<br>**"ark.gc.gc-count"**: number of GC times of the current thread.<br>**"ark.gc.gc-time"**: total GC duration triggered by the current thread, in milliseconds.<br>**"ark.gc.gc-bytes-allocated"**: size of the Ark VM memory allocated to the current thread, in bytes.<br>**"ark.gc.gc-bytes-freed"**: memory freed by GC of the current thread, in bytes.<br> **"ark.gc.fullgc-longtime-count"**: number of longtime full GC times triggered by the current thread.|
 
 **Return value**
 
@@ -1042,7 +1042,7 @@ Describes the key-value pair used to store GC statistics. This type does not sup
 
 | Type     | Description                         |
 | -----------| ---------------------------- |
-| Record&lt;string, number&gt;     | Key-value pair format used to store GC statistics. It contains the following information:<br>**"ark.gc.gc-count"**: number of GC times of the current thread.<br>**"ark.gc.gc-time"**: total GC duration triggered by the current thread, in milliseconds.<br>**"ark.gc.gc-bytes-allocated"**: size of the Ark VM memory allocated to the current thread, in bytes.<br>**"ark.gc.gc-bytes-freed"**: memory freed by the GC of the current thread, in bytes.<br> **"ark.gc.fullgc-longtime-count"**: number of longtime full GCs triggered by the current thread.   |
+| Record&lt;string, number&gt;     | Key-value pair format used to store GC statistics. It contains the following information:<br>**"ark.gc.gc-count"**: number of GC times of the current thread.<br>**"ark.gc.gc-time"**: total GC duration triggered by the current thread, in milliseconds.<br>**"ark.gc.gc-bytes-allocated"**: size of the Ark VM memory allocated to the current thread, in bytes.<br>**"ark.gc.gc-bytes-freed"**: memory freed by GC of the current thread, in bytes.<br> **"ark.gc.fullgc-longtime-count"**: number of longtime full GC times triggered by the current thread.   |
 
 ## JsRawHeapTrimLevel<sup>20+</sup>
 
@@ -1277,7 +1277,7 @@ This API is used to dynamically configure and enable GWP-ASan to adapt to the cu
 
 | Name  | Type  | Mandatory| Description  |
 |---------|---------|--------|-----|
-| options | [GwpAsanOptions](#gwpasanoptions20) | No| GWP-ASan configuration items. If this parameter is not set, the default parameter is used.|
+| options | [GwpAsanOptions](#gwpasanoptions20) | No| GWP-ASan configuration options. If this parameter is not set, the default parameter is used.|
 | duration | number | No| GWP-ASan duration, in days. The default value is 7. The value must be a positive integer greater than 0.|
 
 **Error codes**
@@ -1310,7 +1310,7 @@ try {
 }
 ```
 ## GwpAsanOptions<sup>20+</sup>
-Enumerates the GWP-ASan configuration items. You can configure whether to enable GWP-Asan, the sampling frequency, and the maximum number of allocated slots.
+Enumerates the GWP-ASan configuration options. You can configure whether to enable GWP-Asan, the sampling frequency, and the maximum number of allocated slots.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1395,5 +1395,5 @@ Describes the GPU memory data of an application, including the GL and Graph part
 
 | Name     | Type    | Read Only | Optional| Description                                                                             |
 | --------- |--------| ---- |---- |---------------------------------------------------------------------------------|
-| gl  | number |  No |   No | GL memory size (DMA memory usage of the process), in KB, including the DMA buffers obtained directly through the API and those obtained through **allocator_host**.|
-| graph  | number |  No |   No | Graph memory size (memory occupied by RenderService for loading required resources, such as images and textures), in KB.                        |
+| gl  | number |  No |   No | GL memory size (memory occupied by RenderService for loading required resources, such as images and textures), in KB.|
+| graph  | number |  No |   No | Graph memory size (DMA memory usage of the process), in KB, including the DMA buffers obtained directly through the API and those obtained through **allocator_host**.|

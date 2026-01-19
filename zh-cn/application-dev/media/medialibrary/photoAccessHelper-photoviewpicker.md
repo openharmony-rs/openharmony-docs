@@ -118,7 +118,8 @@
      };
    
      try {
-       let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+       let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
+        await phAccessHelper.getAssets(fetchOptions);
        let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
        console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
        // 获取属性值，以标题为例；对于非默认查询的属性，get前需要在fetchColumns中添加对应列名。
@@ -127,7 +128,8 @@
        let requestOptions: photoAccessHelper.RequestOptions = {
          deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
        }
-       await photoAccessHelper.MediaAssetManager.requestImageData(context, photoAsset, requestOptions, new MediaDataHandler());
+       await photoAccessHelper.MediaAssetManager.requestImageData(
+        context, photoAsset, requestOptions, new MediaDataHandler());
        console.info('requestImageData successfully');
        fetchResult.close();
      } catch (err) {

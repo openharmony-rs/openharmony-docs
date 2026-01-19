@@ -26,10 +26,10 @@ NetConnection常用接口如下表所示，详细的接口说明请参考[net_co
 | OH_NetConn_GetAddrInfo (char \*host, char \*serv, struct addrinfo \*hint, struct addrinfo \*\*res, int32_t netId) | 通过netId获取DNS结果。 |
 | OH_NetConn_FreeDnsResult(struct addrinfo \*res) | 释放DNS结果内存。 |
 | OH_NetConn_GetAllNets(NetConn_NetHandleList \*netHandleList) | 获取所有处于连接状态的网络列表。 |
-| OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver) | 注册自定义dns解析器。<br/>**弃用：** 从API version 13开始废弃。<br/>**替代：** 推荐使用OH_NetConn_RegisterDnsResolver。|
-| OHOS_NetConn_UnregisterDnsResolver(void) | 取消注册自定义dns解析器。<br/>**弃用：** 从API version 13开始废弃。<br/>**替代：** 推荐使用OH_NetConn_UnregisterDnsResolver。|
-| OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver) | 注册自定义dns解析器。 |
-| OH_NetConn_UnregisterDnsResolver(void) | 取消注册自定义dns解析器。|
+| OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver) | 注册自定义DNS解析器。<br/>**弃用：** 从API version 13开始废弃。<br/>**替代：** 推荐使用OH_NetConn_RegisterDnsResolver。|
+| OHOS_NetConn_UnregisterDnsResolver(void) | 取消注册DNS自定义解析器。<br/>**弃用：** 从API version 13开始废弃。<br/>**替代：** 推荐使用OH_NetConn_UnregisterDnsResolver。|
+| OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver) | 注册自定义DNS解析器。 |
+| OH_NetConn_UnregisterDnsResolver(void) | 取消注册自定义DNS解析器。|
 | OH_NetConn_SetPacUrl(const char \*pacUrl) | 设置系统级代理自动配置(PAC)脚本地址。 |
 | OH_NetConn_GetPacUrl(char \*pacUrl) | 获取系统级代理自动配置(PAC)脚本地址。 |
 | OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn_ProbeResultInfo *probeResultInfo)| 查询探测结果。 |
@@ -39,7 +39,7 @@ NetConnection常用接口如下表所示，详细的接口说明请参考[net_co
 
 ### 开发步骤
 
-使用本文档涉及接口获取网络相关信息时，需先创建Native C++工程，在源文件中将相关接口封装，再在ArkTs层对封装的接口进行调用，使用hilog或者console.info等手段选择打印在控制台或者生成设备日志。
+使用本文档涉及接口获取网络相关信息时，需先创建Native C++工程，在源文件中将相关接口封装，再在ArkTS层对封装的接口进行调用，使用hilog或者console.info等手段选择打印在控制台或者生成设备日志。
 
 本文以实现获取默认激活的数据网络为例，给出具体的开发指导。
 
@@ -105,7 +105,7 @@ libnet_connection.so
     }
     ```
 
-    简要说明：这两个函数用于获取系统默认网络连接的相关信息。其中，GetDefaultNet是接收ArkTs端传入的测试参数，返回调用接口后对应的返回值，param可以自行调整；如果返回值为0，代表获取成功，401代表参数错误，201代表没有权限；而NetId函数则用于获取默认网络连接的ID。这些信息可以用于进一步的网络操作。
+    简要说明：这两个函数用于获取系统默认网络连接的相关信息。其中，GetDefaultNet是接收ArkTS端传入的测试参数，返回调用接口后对应的返回值，param可以自行调整；如果返回值为0，代表获取成功，401代表参数错误，201代表没有权限；而NetId函数则用于获取默认网络连接的ID。这些信息可以用于进一步的网络操作。
 
 
 2. 将通过napi封装好的`napi_value`类型对象初始化导出，通过外部函数接口，将以上两个函数暴露给JavaScript使用。
@@ -205,7 +205,7 @@ libnet_connection.so
 
     > **注意：**
     >
-    > 如图所示，在`add_library`中的`entry`是工程自动生成的`modename`。若要做修改，需和步骤3中`.nm_modname`保持一致。
+    > 如图所示，在`add_library`中的`entry`是工程自动生成的`modname`。若要做修改，需和步骤3中`.nm_modname`保持一致。
 
     ![netmanager-4.png](./figures/netmanager-4.png)
 

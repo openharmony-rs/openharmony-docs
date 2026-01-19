@@ -1,4 +1,4 @@
-# 使用 JSVM-API 提供的proxy接口
+# 使用JSVM-API提供的proxy接口
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou; @string_sz-->

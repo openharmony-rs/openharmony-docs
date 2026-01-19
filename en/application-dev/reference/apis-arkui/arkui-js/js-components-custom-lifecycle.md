@@ -1,4 +1,10 @@
 # Lifecycle Definition
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -35,17 +41,17 @@ export default {
     value: "Create a component."
   },
   onInit() {
-    console.log("Component created.")
+    console.info("Component created.")
   },
   onAttached() {
-    this.value = "Load the component."
-    console.log("Component loaded.")
+    this.value = "Load the component.",
+    console.info("Component loaded.")
   },
   onShow() {
-    console.log("Page displayed.")
+    console.info("Page displayed.")
   },
   onHide() {
-    console.log("Page hidden.")
+    console.info("Page hidden.")
   }
 }
 ```

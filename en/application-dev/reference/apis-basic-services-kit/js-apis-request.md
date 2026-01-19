@@ -45,8 +45,8 @@ import { request } from '@kit.BasicServicesKit';
 | EXCEPTION_FILEPATH<sup>9+</sup> | number |   13400002   | (Specific error codes) Abnormal file path.|
 | EXCEPTION_SERVICE<sup>9+</sup> | number |   13400003   | (Specific error codes) Abnormal service.|
 | EXCEPTION_OTHERS<sup>9+</sup> | number |   13499999   | (Specific error codes) Other errors.|
-| NETWORK_MOBILE<sup>6+</sup> | number | 0x00000001 | (Network type) Bit flag download allowed on a mobile network.|
-| NETWORK_WIFI<sup>6+</sup> | number | 0x00010000 | (Network type) Bit flag download allowed on a WLAN.|
+| NETWORK_MOBILE | number | 0x00000001 | (Network type) Bit flag download allowed on a mobile network.|
+| NETWORK_WIFI | number | 0x00010000 | (Network type) Bit flag download allowed on a WLAN.|
 | ERROR_CANNOT_RESUME<sup>7+</sup> | number |   0   | (Download error codes) Failure to resume the download due to network errors.|
 | ERROR_DEVICE_NOT_FOUND<sup>7+</sup> | number |   1   | (Download error codes) Failure to find a storage device such as a memory card.|
 | ERROR_FILE_ALREADY_EXISTS<sup>7+</sup> | number |   2   | (Download error codes) Failure to download the file because it already exists.|
@@ -89,7 +89,7 @@ Uploads a file. This API uses a promise to return the result. HTTP is supported.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
-| config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
+| config | [UploadConfig](#uploadconfig) | Yes| Upload configurations.|
 
 
 **Return value**
@@ -155,7 +155,7 @@ Uploads a file. This API uses an asynchronous callback to return the result. HTT
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
-| config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
+| config | [UploadConfig](#uploadconfig) | Yes| Upload configurations.|
 | callback | AsyncCallback&lt;[UploadTask](#uploadtask)&gt; | Yes| Callback used to return the **UploadTask** object. If the operation is successful, **err** is **undefined**, and **data** is the **UploadTask** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -217,7 +217,7 @@ Uploads files. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
+| config | [UploadConfig](#uploadconfig) | Yes| Upload configurations.|
 
 **Return value**
 
@@ -272,7 +272,7 @@ Uploads files. This API uses an asynchronous callback to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
+| config | [UploadConfig](#uploadconfig) | Yes| Upload configurations.|
 | callback | AsyncCallback&lt;[UploadTask](#uploadtask)&gt; | Yes| Callback used to return the **UploadTask** object. If the operation is successful, **err** is **undefined**, and **data** is the **UploadTask** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -693,7 +693,7 @@ Removes this upload task. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [delete](#delete9) instead.
+> This API is supported since API version 6 and is deprecated since API version 9. You are advised to use [delete](#delete9) instead.
 
 **Return value**
 
@@ -732,7 +732,7 @@ Removes an upload task. This API uses an asynchronous callback to return the res
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [delete](#delete9-1) instead.
+> This API is supported since API version 6 and is deprecated since API version 9. You are advised to use [delete](#delete9-1) instead.
 
 **Parameters**
 
@@ -762,7 +762,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
   });
   ```
 
-## UploadConfig<sup>6+</sup>
+## UploadConfig
 Describes the configuration of an upload task.
 
 **System capability**: SystemCapability.MiscServices.Upload
@@ -808,7 +808,7 @@ The following table describes the enum values of **responseCode**.
 | 20  | Other errors. Verify the parameter configuration or the network connection, or try again.       |
 
 ## File
-Defines the list of files in [UploadConfig](#uploadconfig6).
+Describes the list of files in [UploadConfig](#uploadconfig).
 
 **System capability**: SystemCapability.MiscServices.Download
 
@@ -821,7 +821,7 @@ Defines the list of files in [UploadConfig](#uploadconfig6).
 
 
 ## RequestData
-Defines the form data in [UploadConfig](#uploadconfig6).
+Describes the form data in [UploadConfig](#uploadconfig).
 
 **System capability**: SystemCapability.MiscServices.Download
 
@@ -1979,7 +1979,7 @@ Removes this download task. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [delete](#delete9-2) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [delete](#delete9-2) instead.
 
 **Return value**
 
@@ -2018,7 +2018,7 @@ Removes a download task. This API uses an asynchronous callback to return the re
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [delete](#delete9-3) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [delete](#delete9-3) instead.
 
 **Parameters**
 
@@ -2059,7 +2059,7 @@ Queries this download task. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [getTaskInfo](#gettaskinfo9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getTaskInfo](#gettaskinfo9) instead.
 
 **Return value**
 
@@ -2139,7 +2139,7 @@ Queries the MIME type of this download task. This API uses a promise to return t
 
 > **NOTE**
 >
-> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [getTaskMimeType](#gettaskmimetype9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getTaskMimeType](#gettaskmimetype9) instead.
 
 **Return value**
 
@@ -2299,7 +2299,7 @@ Resumes this download task. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [restore](#restore9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [restore](#restore9) instead.
 
 **Return value**
 
@@ -2376,7 +2376,7 @@ Defines the download task configuration.
 |------|--------|----|----|-------------------------------|
 | url | string | No| No| Resource URL. From API version 6 to 14, the value contains a maximum of 2048 characters; since API version 15, the value contains a maximum of 8192 characters. [Intercepting HTTP](../../basic-services/request/app-file-upload-download.md#intercepting-http) is supported.|
 | header | Object | No| Yes| HTTPS flag header to be included in the download request.|
-| enableMetered | boolean | No| Yes| Whether download is allowed on a metered connection. The value **true** means the download is allowed, and **false** means the opposite. The default value is **false**.<br>**Note:** In general cases, a mobile data connection is metered, while a Wi-Fi connection is not.|
+| enableMetered | boolean | No| Yes| Whether download is allowed on a metered connection. The value **true** means the download is allowed, and **false** means the opposite. The default value is **false**.<br>**NOTE**<br> In general cases, a mobile data connection is metered, while a Wi-Fi connection is not.|
 | enableRoaming | boolean | No| Yes| Whether download is allowed on a roaming network. The value **true** means the download is allowed, and **false** means the opposite. The default value is **false**.|
 | description | string | No| Yes| Description of the download session. The default value is an empty string.|
 | filePath<sup>7+</sup> | string | No| Yes| Path where the downloaded file is stored. The default value is the cache directory of the caller (that is, the input **context**). The default file name is the part truncated from the last slash (/) in the URL.<br>- In the FA model, use [context](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir) to obtain the application storage path.<br>- In the stage model, use [AbilityContext](../apis-ability-kit/js-apis-inner-application-context.md) to obtain the application storage path.|
@@ -2404,7 +2404,7 @@ Defines the download task information, which is the callback parameter of the [g
 | description | string | No| No| Description of the download task.|
 | downloadedBytes | number | No| No| Real-time download size, in bytes.|
 
-## request.agent
+## request.agent<sup>10+</sup>
 
 ### Constants<sup>21+</sup>
 
@@ -2519,10 +2519,10 @@ Provides the configuration information of an upload or download task.
 | data | string \| Array&lt;[FormItem](#requestagentformitem10)&gt; | No| Yes| - For the download task, the value is a string, typically in JSON format (an object will be converted to a JSON string); the default value is null.<br>- For the upload task, the value is Array&lt;[FormItem](#requestagentformitem10)&gt;. Since API version 15, a maximum of 100 files can be uploaded in a single task. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | saveas | string | No| Yes| Path for storing downloaded files. The options are as follows:<br>- Relative path, which is in the cache directory of the caller, for example, **./xxx/yyy/zzz.html** or **xxx/yyy/zzz.html**.<br>- Internal protocol path, which can be **internal://** or its subdirectory. **internal** indicates the cache directory of the caller (that is, the input **context**), and **internal://cache** corresponds to **context.cacheDir**, for example, **internal://cache/path/to/file.txt**.<br>- Application sandbox path. Only the **base** directory and its subdirectories are supported, for example, **/data/storage/el1/base/path/to/file.txt**.<br>- File protocol path, which can be the path of an application file or a user file. For the application file, the application bundle name must be matched and only the **base** directory and its subdirectories are supported, for example, **file://com.example.test/data/storage/el2/base/file.txt**. For the user file, its path must be the user file URI created by the caller.<br>Since API version 20, the default file path can be the cache path of the caller (that is, the passed context), except for [downloading network resource files to the user file](../../basic-services/request/app-file-upload-download.md#downloading-network-resource-files-to-the-user-file). The default file name is the part truncated from the last slash (/) in the URL.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | network | [Network](#requestagentnetwork10) | No| Yes| Network used for the task. The default value is **ANY** (Wi-Fi or cellular).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| metered | boolean | No| Yes| Whether the task is allowed on a metered network.<br>- **true**: The task is allowed on a metered network.<br>- **false** (default): The task is not allowed on a metered network.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| roaming | boolean | No| Yes| Whether the task is allowed on a roaming network.<br>- **true** (default): The task is allowed on a roaming network.<br>- **false**: The task is not allowed on a roaming network.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| retry | boolean | No| Yes| Whether automatic retry is enabled for the task. This parameter is only applicable to background tasks.<br>- **true** (default): The automatic retry is enabled.<br>- **false**: The automatic retry is disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| redirect | boolean | No| Yes| Whether redirection is allowed.<br>- **true** (default): The redirection is allowed.<br>- **false**: The redirection is not allowed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| metered | boolean | No| Yes| Whether the task is allowed on a metered network. The default value is **false**.<br>- **true**: The task is allowed on a metered network.<br>- **false**: The task is not allowed on a metered network.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| roaming | boolean | No| Yes| Whether the task is allowed on a roaming network. The default value is **true**.<br>- **true**: The task is allowed on a roaming network.<br>- **false**: The task is not allowed on a roaming network.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| retry | boolean | No| Yes| Whether automatic retry is enabled for the task. This parameter is only applicable to background tasks. The default value is **true**.<br>- **true**: The automatic retry is enabled.<br>- **false**: The automatic retry is disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| redirect | boolean | No| Yes| Whether redirection is allowed. The default value is **true**.<br>- **true**: The redirection is allowed.<br>- **false**: The redirection is not allowed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | proxy<sup>12+</sup> | string | No| Yes| Proxy address. The value contains a maximum of 512 characters.<br>It is in the format of http://\<domain or address\>:\<port\>. By default, this parameter is left blank.|
 | index | number | No| Yes| Path index of the task. It is usually used for resumable transfers. The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | begins | number | No| Yes| File start point of the task. It is usually used for resumable transfers. The default value is **0**. The value is a closed interval.<br>- For the download task, the value is obtained by sending an HTTP range request to read the start position when the server starts to download files.<br>- For the upload task, the value is obtained at the beginning of the upload.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -2663,7 +2663,6 @@ Describes the custom information of the notification bar.
 | title   | string | No| Yes| Custom title, with a maximum of 1024 bytes. The default title is used if this parameter is not set.  |
 | text    | string | No| Yes| Custom body text, with a maximum of 3072 bytes. The default text is used if this parameter is not set.   |
 | visibility<sup>21+</sup> | number | No| Yes| Task visibility mode for the notification bar, which is determined by bitwise operations on the [VISIBILITY constant](#constants21). The options are as follows:<br>- Only the completion notification is displayed. The parameter is **VISIBILITY_COMPLETION** or **1**. The corresponding notification is displayed after the task is complete or fails. <br>- Only the progress notification is displayed when the task is in progress. The parameter is **VISIBILITY_PROGRESS** or **2**. Completion notification is not displayed when the download task is complete or fails.<br>- The progress notification and completion notification are displayed. The parameter is **VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS** or **3**. The progress notification is displayed when the task is in progress. When the download task is complete or fails, the completion notification is displayed as well.<br>If this parameter is not set, the **gauge** field is used for determination. If there is no **gauge** field, only the completion notification is displayed.|
-
 
 **Example**
   <!--code_no_check-->

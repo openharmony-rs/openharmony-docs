@@ -77,6 +77,7 @@ Example of the JSON string of `attributes`:
 **Return Value**
 
 If the session is created successfully, the value of **error** in the return value **OH_QoS_GewuCreateSessionResult** is **OH_QOS_GEWU_OK**, and the value of **session** is the created session handle.
+
 If the session fails to be created, the value of **error** in the return value **OH_QoS_GewuCreateSessionResult** is the cause of the error. **OH_QOS_GEWU_NOMEM** indicates that no sufficient memory is available for creating the session.
 
 **`OH_QoS_GewuDestroySession`**
@@ -100,6 +101,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuDestroySession(OH_QoS_GewuSession session);
 **Return Value**
 
 If the session is destroyed successfully, the return value is **OH_QOS_GEWU_OK**.
+
 If the session fails to be destroyed, the return value is the cause of the error. **OH_QOS_GEWU_NOENT** indicates that the session cannot be found.
 
 **`OH_QoS_GewuSubmitRequest`**
@@ -140,10 +142,10 @@ The parameters of the **OH_QoS_GewuOnResponse** callback are as follows:
 * **void* context**: **context** pointer passed in when **OH_QoS_GewuSubmitRequest** is called.
 * **const char* response**: JSON string of the response, which contains the following fields:
     * **"message"**: response message, which contains the following fields:
-        * **"role": string**: Role of the message, which should be **assistant**.
-        * **"content": string**: Message content.
-    * **"finish_reason": string or null**: Stop reason, which can be:
-        * **null**: The request is not stopped. In streaming inference, there are multiple responses, and only the last response has a non-empty **finish_reason**. For non-streaming inference, there is only one response, and **finish_reason** is not empty.
+        * **"role"**: string. Role type of the message, which should be **"assistant"**.
+        * **"content"**: string. Message content.
+    * **"finish_reason"**: string or null. Finish reason. The possible values are as follows:
+        * **null**: The request is not stopped. In streaming inference, there are multiple responses, and only the last response has a non-empty **finish_reason**. In non-streaming inference, there is only one response, and **finish_reason** is not empty.
         * **"stop"**: The request is stopped normally.
         * **"abort"**: The request is stopped by the user in advance.
         * **"length"**: The number of tokens exceeds the upper limit.
@@ -151,6 +153,7 @@ The parameters of the **OH_QoS_GewuOnResponse** callback are as follows:
 **Return Value**
 
 If the request is submitted successfully, the value of **error** in **OH_QoS_GewuSubmitRequestResult** is **OH_QOS_GEWU_OK**, and the value of **request** is the request handle.
+
 If the request fails to be submitted, the value of **error** in **OH_QoS_GewuSubmitRequestResult** is the cause of the error. **OH_QOS_GEWU_NOMEM** indicates that memory is insufficient for processing the request.
 
 **`OH_QoS_GewuAbortRequest`**
@@ -159,7 +162,8 @@ If the request fails to be submitted, the value of **error** in **OH_QoS_GewuSub
 
 Aborts a request in advance.
 
-In normal cases, after calling the **OH_QoS_GewuSubmitRequest** API to submit a request, you only need to wait until the inference is complete (that is, the response where **finish_reason** is not empty is received); you do not need to call the **OH_QoS_GewuAbortRequest** API.
+In normal cases, after calling the **OH_QoS_GewuSubmitRequest** API to submit a request, you only need to wait until the inference is complete (that is, the response where **"finish_reason"** is not empty is received); you do not need to call the **OH_QoS_GewuAbortRequest** API.
+
 You need to call the **OH_QoS_GewuAbortRequest** API only when you want to abort an inference request in advance.
 
 After this function is successfully called, you will not receive any response to the request, and the request handle cannot be used.
@@ -178,6 +182,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuAbortRequest(OH_QoS_GewuSession session, OH_QoS_
 **Return Value**
 
 If the request is aborted successfully, the return value is **OH_QOS_GEWU_OK**.
+
 If the request fails to be aborted, the return value is the cause of the error. **OH_QOS_GEWU_NOENT** indicates that the request cannot be found.
 
 

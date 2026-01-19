@@ -47,7 +47,7 @@ HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安�
     "requestPermissions": [
       {
         "name": "ohos.permission.NFC_CARD_EMULATION",
-        // 必须要添加reason: card_mulation_reason
+        // 必须要添加reason: card_emulation_reason
         "reason": "$string:card_emulation_reason"
       }
     ]
@@ -89,7 +89,7 @@ HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安�
     "reqPermissions": [
       {
         "name": "ohos.permission.NFC_CARD_EMULATION",
-        // 必须要添加reason: card_mulation_reason
+        // 必须要添加reason: card_emulation_reason
         "reason": "$string:card_emulation_reason",
         "usedScene":{
           "ability":[
@@ -100,7 +100,7 @@ HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安�
       },
       {
         "name": "ohos.permission.NFC_TAG",
-        // 必须要添加reason: card_mulation_reason
+        // 必须要添加reason: card_emulation_reason
         "reason": "$string:card_emulation_reason",
         "usedScene":{
           "ability":[

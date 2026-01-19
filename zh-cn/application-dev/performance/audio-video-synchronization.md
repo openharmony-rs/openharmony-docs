@@ -28,16 +28,17 @@
 
 ## 实现原理 
 音视频数据的最小处理单元称为帧。音频流和视频流都被分割成帧，所有帧都被标记为需要按特定的时间戳显示。音频和视频可以独立下载和解码，但具有匹配时间戳的音频和视频帧应同时呈现，以达到音视频（A/V）同步的效果。
+
 ### 音画同步标准   
 1. 为了衡量音画同步的性能，用对应音频和视频帧实际播放时间的差值作为数值指标，数值大于0ms表示声音提前画面，小于0ms表示声音落后画面。  
 2. 最大卡顿时长，单帧图像停滞时间超过100ms的，定义为卡顿一次，连续测试5分钟。  
 3. 平均播放帧率，平均每秒播放帧数，不反映每帧显示时长。  
 
-| 时间差范围     | 主观体验                                                      |
-| ------------ | :-----------------------------------------------------------|
-| [-80ms,25ms] | 无法察觉                                               |
-| [-125ms,45ms] | 能够察觉
-| [-185ms,90ms] | 无法接受 
+| 时间差范围      | 主观体验  |
+|---------------|-------|
+| [-80ms,25ms]  | 无法察觉。 |
+| [-125ms,45ms] | 能够察觉。 |
+| [-185ms,90ms] | 无法接受。 |
 
 >**说明：**
 >- 以上标准基于一倍速场景。  
@@ -67,6 +68,7 @@
 
 
 ## 连续播放音频帧方案
+
 ### 场景描述
 综合上述三种方案的优缺点对比，此处采用主流的连续播放音频帧方案。使用音频播放位置作为主时间参考，并将视频播放位置与其匹配，使音画同步指标达到用户无法察觉的[-80ms,25ms]范围。    
 该解决方案使用：    
@@ -96,8 +98,7 @@
     >- 音频设备切换过程中[OH_AudioRenderer_GetTimestamp()](../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_gettimestamp)接口返回的framePosition和timestamp保证不会倒退，但由于新设备写入有时延，会出现短暂时间内音频进度无增长，建议画面帧保持流畅播放不要产生卡顿。  
     >- [OH_AudioRenderer_GetTimestamp()](../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_gettimestamp)接口获取的是实际写到硬件的采样帧数，不受倍速影响。对AudioRender设置了倍速的场景下，播放进度计算需要特殊处理，系统保证应用设置完倍速接口后，新写入AudioRender的采样点才会做倍速处理。
 
-
-2. 音频启动前暂不做音画同步，视频帧直接送显。  
+2. 音频启动前暂不做音画同步，视频帧直接送显。
 
    音频未启动前，timestamp和framePostion返回结果为0。为避免出现卡顿等问题，暂不同步，视频帧直接送显。
     ```c++
@@ -111,6 +112,7 @@
         continue;
     }
     ```
+
 3. 根据视频帧pts和音频渲染位置计算延迟。  
 
     - audioPlayedTime: 音频帧期望渲染时间。
@@ -158,6 +160,7 @@
         }
     }
     ```
+   
 5. 进行音画渐进同步。    
 
    视频帧较早时，等待一段时间送显。   
@@ -168,3 +171,8 @@
     lastPushTime = std::chrono::system_clock::now();
     ret = videoDecoder->FreeOutputBuffer(bufferInfo.bufferIndex, !dropFrame);
     ```
+
+   
+## 示例代码
+
+[AudioToVideoSync](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AudioToVideoSync)

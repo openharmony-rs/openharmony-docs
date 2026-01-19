@@ -60,7 +60,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | buildHost | string | 是 | 构建主机。<br/>示例：default |
 | buildTime | string | 是 | 构建时间。<br/>示例：default |
 | buildRootHash | string | 是 | 构建版本Hash。<br/>示例：default |
-| udid<sup>7+</sup> | string | 是 | 设备Udid。<br/>**说明**：数据长度为65字节。可作为设备唯一识别码。<br/>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业定制应用申请)<br/>示例：9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412  |
+| udid<sup>7+</sup> | string | 是 | 设备Udid。<br/>**说明**：数据长度为65字节。可作为设备唯一识别码。<br/>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业类应用申请)<br/>示例：9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412  |
 | distributionOSName<sup>10+</sup> | string | 是 | 发行版系统名称<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：OpenHarmony |
 | distributionOSVersion<sup>10+</sup> | string | 是 | 发行版系统版本号<!--Del-->，由发行方定义<!--DelEnd-->。<!--RP11--><!--RP11End--><br/>示例：5.0.0  |
 | distributionOSApiVersion<sup>10+</sup> | number| 是 | 发行版系统api版本<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：50001 |
@@ -68,8 +68,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | distributionOSReleaseType<sup>10+</sup> | string | 是 | 发行版系统类型<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：Release |
 | ODID<sup>12+</sup> | string | 是 |开发者匿名设备标识符。<br/>**ODID值会在以下场景重新生成**：<br/>手机恢复出厂设置。<br/>同一设备上同一个开发者(developerId相同)的应用全部卸载后重新安装时。<br/>**ODID生成规则**：<br/>根据签名信息里developerId解析出的groupId生成，developerId规则为groupId.developerId，若无groupId则取整个developerId作为groupId。<br/>同一设备上运行的同一个开发者(developerId相同)的应用，ODID相同。<br/>同一个设备上不同开发者(developerId不同)的应用，ODID不同。<br/>不同设备上同一个开发者(developerId相同)的应用，ODID不同。<br/>不同设备上不同开发者(developerId不同)的应用，ODID不同。<br/>**说明**：数据长度为37字节。<br/>示例：1234a567-XXXX-XXXX-XXXX-XXXXXXXXXXXX |
 | diskSN<sup>15+</sup> | string | 是 | 硬盘序列号。<br/> **说明** ：该字段只能在2in1上设备进行查询，其他设备查询结果为空。<br/> **需要权限**：ohos.permission.ACCESS_DISK_PHY_INFO <br/> 示例：2502EM400567 |
-| performanceClass<sup>19+</sup> | [PerformanceClassLevel](#performanceclasslevel19) | 是 | 描述设备能力等级。 |
-| chipType<sup>21+</sup> | string | 是 | 当前设备CPU芯片型号<br/> 示例：kirin9000s |
+| performanceClass<sup>19+</sup> | [PerformanceClassLevel](#performanceclasslevel19) | 是 | 描述设备能力等级，基于CPU、内存、存储读写性能和屏幕分辨率等因素综合评估。 |
+| chipType<sup>21+</sup> | string | 是 | 当前设备CPU芯片型号<br/> 示例：xxxxx |
 | bootCount<sup>21+</sup> | number | 是 | 当前设备重启次数，获取失败时返回-1<br/> 示例：100 |
 
 **示例**
@@ -228,7 +228,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
     console.info('the value of the deviceInfo performanceClass is :' + performanceClass);
 
     let chipType: string = deviceInfo.chipType;
-    // 输出结果：the value of the deviceInfo chipType is :kirin9000s
+    // 输出结果：the value of the deviceInfo chipType is :xxxxx
     console.info('the value of the deviceInfo chipType is :' + chipType);
 
     let bootCount: number = deviceInfo.bootCount

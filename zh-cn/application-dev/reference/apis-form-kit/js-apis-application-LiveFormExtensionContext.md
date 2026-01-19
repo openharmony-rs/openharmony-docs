@@ -82,6 +82,7 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 ```ts
 // pages/MyLiveFormPage.ets
 import { BusinessError } from '@kit.BasicServicesKit';
+// 通过以下方式导入LiveFormExtensionContext，在DevEco Studio中标红，但不影响编译运行。
 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
 
 @Entry

@@ -26,6 +26,10 @@ ArkWeb图片上传可参考：[使用Web组件上传文件](../../../web/web-fil
 
 ### 上传HEIF图片时提示：“不支持的格式”
 
+可以使用[ImageSource](../../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#属性)的supportedFormats属性和[ImagePacker](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#属性)的supportedFormats属性，来查看系统支持编解码的图片格式。只要查询到的结果中包含"image/heic"，即代表该设备支持HEIF图片编解码。
+
+在支持HEIF图片编解码的设备上，系统不会对HEIF图片处理施加限制。
+
 一般是由于应用对后缀名为.heic、.heif、.HEIC、.HEIF的图片文件做了过滤限制。
 
 对于使用系统图片处理能力的应用，只需要解除过滤限制，即可正常上传、显示HEIF图片。

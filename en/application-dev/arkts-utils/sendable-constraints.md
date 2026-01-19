@@ -535,4 +535,25 @@ To observe data changes in Sendable objects when interacting with UI, Sendable d
 
 ## Rules for Using Sendable in HARs
 
-When using Sendable in HAR, you must enable the configuration for compiling and generating TS files. For details, see [Building TS Files](../quick-start/har-package.md#building-ts-files).
+Sendable can be used in [HARs](../quick-start/har-package.md). When Sendable is used in a bytecode HAR, no additional configuration is required. When Sendable is used in a TS HAR, set **name** under **metadata** to **UseTsHar** in the **module.json5** file of the HAR module. The configuration is as follows:
+
+<!-- @[har_package_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    "name": "library",
+    "type": "har",
+    "deviceTypes": [
+      "tablet",
+      "2in1"
+    ],
+    "metadata": [
+      {
+        "name": "UseTsHar",
+        "value": "true"
+      }
+    ]
+  }
+}
+```

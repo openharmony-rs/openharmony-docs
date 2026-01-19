@@ -6,12 +6,12 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+The **Metadata** class provides APIs for storing image metadata. For details about the supported metadata types, see [MetadataType](arkts-apis-image-e.md#metadatatype13).
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 13.
-
-The **Metadata** class is used to store image metadata. For details about the supported metadata types, see [MetadataType](arkts-apis-image-e.md#metadatatype13).
 
 ## Modules to Import
 
@@ -57,7 +57,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function GetProperties(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains EXIF metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -116,7 +116,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function SetProperties(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains EXIF metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -164,7 +164,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function GetAllProperties(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains EXIF metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -208,7 +208,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function Clone(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains EXIF metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }

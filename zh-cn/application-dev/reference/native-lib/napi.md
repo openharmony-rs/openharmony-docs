@@ -50,7 +50,7 @@ libace_napi.z.so
 |FUNC|napi_is_exception_pending|判断是否出现了异常。|10|
 |FUNC|napi_fatal_error|引发致命错误以立即终止进程。|10|
 |FUNC|napi_open_handle_scope|创建一个上下文环境使用。|10|
-|FUNC|napi_close_handle_scope|关闭传入的上下文环境，关闭后，全部在其中声明的引用都将被关闭。|10|
+|FUNC|napi_close_handle_scope|关闭传入的上下文环境，关闭后，所有在其中声明的引用都将被关闭。|10|
 |FUNC|napi_open_escapable_handle_scope|创建出一个可逃逸的handle scope，可将范围内声明的值返回到父作用域。|10|
 |FUNC|napi_close_escapable_handle_scope|关闭传入的可逃逸的handle scope。|10|
 |FUNC|napi_escape_handle|提升传入的js object的生命周期到其父作用域。|10|
@@ -224,35 +224,35 @@ libace_napi.z.so
 
 **参数：**
 
-- code: 该导出接口支持String或Number类型。
+- code: OpenHarmony中支持String或Number类型,但标准库接口的code类型仅支持String类型。
 
 **返回：**
 
-- 当code类型不匹配时，该导出接口返回napi_invalid_arg。
+- 当code类型不匹配时，OpenHarmony接口返回napi_invalid_arg，标准库接口返回napi_string_expected。
 
-- 该导出接口允许code属性设置失败。
+- OpenHarmony的导出接口允许code属性设置失败，标准库接口会判断设置执行情况，若设置失败，返回napi_generic_failure。
 
-- OpenHarmony中创建的错误类型为Error。
+- OpenHarmony中创建的错误类型为Error，标准库创建的错误类型为TypeError。
 
 ### napi_create_range_error
 
 **参数：**
 
-- code: OpenHarmony中支持String或Number类型。
+- code: OpenHarmony中支持String或Number类型,但标准库接口的code类型仅支持String类型。
 
 **返回：**
 
-- 当code类型不匹配时，该导出接口返回napi_invalid_arg。
+- 当code类型不匹配时，OpenHarmony接口返回napi_invalid_arg，标准库接口返回napi_string_expected。
 
-- 该导出接口允许code属性设置失败。
+- OpenHarmony的导出接口允许code属性设置失败，标准库接口会判断设置执行情况，若设置失败，返回napi_geneic_failure。
 
-- OpenHarmony中创建的错误类型为Error。
+- OpenHarmony中创建的错误类型为Error，标准库创建的错误类型为RangeError。
 
 ### napi_create_reference
 
 **参数：**
 
-- value: 标准库中仅支持Object、Function、Symbol类型，而该导出接口对value的类型没有限制。
+- value: OpenHarmony接口对value的类型没有限制，而标准库中仅支持Object、Function、Symbol类型。
 
 ### napi_delete_reference
 
@@ -649,13 +649,11 @@ libace_napi.z.so
 
 **说明：**
 
-- OpenHarmony中，当强引用delete时直接进行回调，无需等到对象析构。
+- OpenHarmony在强引用delete的时候直接回调，标准库是在对象析构时候才会回调。
 
-- 回调主动抛出异常时，OpenHarmony会触发JSCrash。
+- 回调主动抛出异常时，OpenHarmony会触发JSCrash，标准库不会触发crash。
 
-**说明：**
-
-- 标准库中返回弱引用， OpenHarmony在result不为空时返回强引用。
+- OpenHarmony在result非空时创建强引用，标准库则创建弱引用。
 
 ### napi_fatal_exception
 
@@ -721,6 +719,12 @@ libace_napi.z.so
 |FUNC|napi_create_ark_context|创建一个新的运行时上下文环境。|20|
 |FUNC|napi_switch_ark_context|切换到指定的运行时上下文环境。|20|
 |FUNC|napi_destroy_ark_context|销毁通过接口napi_create_ark_context创建的一个上下文环境。|20|
+|FUNC|napi_open_critical_scope|打开临界区作用域。|21|
+|FUNC|napi_close_critical_scope|关闭临界区作用域。|21|
+|FUNC|napi_get_buffer_string_utf16_in_critical_scope|获取ArkTS String的UTF-16编码内存缓冲区数据。|21|
+|FUNC|napi_create_strong_reference|创建指向ArkTS对象的强引用。|21|
+|FUNC|napi_delete_strong_reference|删除强引用。|21|
+|FUNC|napi_get_strong_reference_value|根据强引用获取其关联的ArkTS对象值。|21|
 
 > 说明：
 >
@@ -1528,6 +1532,147 @@ napi_status napi_destroy_ark_context(napi_env env)
 
 如果API成功，则返回napi_ok。
 
+### napi_open_critical_scope
+
+```cpp
+napi_status napi_open_critical_scope(napi_env env, napi_critical_scope* scope);
+```
+
+**描述：**
+
+打开临界区作用域。使用该接口需要注意以下几点：
+1. 不能重复打开临界区作用域，必须在关闭当前作用域后才能再次打开。
+2. 在临界区作用域内，不能调用非临界区接口。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [out] scope：一个napi_critical_scope的指针，用于表示打开的临界区作用域。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_close_critical_scope
+
+```cpp
+napi_status napi_close_critical_scope(napi_env env, napi_critical_scope scope);
+```
+
+**描述：**
+
+关闭临界区作用域。使用该接口需要注意以下几点：
+1. 不能重复关闭临界区作用域，必须确保作用域已经打开且未被关闭。
+2. 关闭临界区作用域后，请勿使用临界接口及其返回结果，否则可能导致程序崩溃或数据损坏。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] scope：表示需要被关闭的临界区作用域。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_get_buffer_string_utf16_in_critical_scope
+
+```cpp
+napi_status napi_get_buffer_string_utf16_in_critical_scope(napi_env env,
+                                                           napi_value value,
+                                                           const char16_t** buffer,
+                                                           size_t* length);
+```
+
+**描述：**
+
+获取ArkTS String的UTF-16编码内存缓冲区数据。使用该接口需要注意以下几点：
+1. 当ArkTS String以UTF-16编码存储时，`napi_get_buffer_string_utf16_in_critical_scope`才能正确获取其内存缓冲区，否则该函数返回错误。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] value：ArkTS String对象。
+
+- [out] buffer：接收UTF-16编码内存缓冲区数据的指针。
+
+- [out] length：接收字符串长度的指针。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_create_strong_reference
+
+```cpp
+napi_status napi_create_strong_reference(napi_env env, napi_value value, napi_strong_ref* result);
+```
+
+**描述：**
+
+创建指向ArkTS对象的强引用。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] value：ArkTS对象。
+
+- [out] result：接收强引用的指针。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_delete_strong_reference
+
+```cpp
+napi_status napi_delete_strong_reference(napi_env env, napi_value value, napi_strong_ref ref);
+```
+
+**描述：**
+
+删除强引用。使用该接口需要注意以下几点：
+1. 不能重复删除同一个强引用。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] value：ArkTS对象。
+
+- [in] ref：要删除的强引用。
+
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_get_strong_reference_value
+
+```c
+napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, napi_value* result)
+```
+
+**描述：**
+
+根据强引用获取其关联的ArkTS对象值。使用该接口需要注意以下几点：
+1. 不能使用已删除的强引用去获取ArkTS对象值，否则可能预期外的错误。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] ref：强引用。
+
+- [out] result：接收ArkTS对象值的指针。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
 ### napi_finalize回调函数说明
 
 ```cpp
@@ -1551,5 +1696,4 @@ typedef void (*napi_finalize)(napi_env env,
 **返回：**
 
 - void：此回调函数无返回值。
-
 <!--no_check-->

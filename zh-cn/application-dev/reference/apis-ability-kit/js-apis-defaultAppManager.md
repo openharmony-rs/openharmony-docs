@@ -75,8 +75,8 @@ defaultAppManager.isDefaultApplication(defaultAppManager.ApplicationType.BROWSER
   .then((data) => {
     console.info('Operation successful. IsDefaultApplication ? ' + JSON.stringify(data));
   }).catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  });
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+});
 ```
 
 ## defaultAppManager.isDefaultApplication
@@ -155,7 +155,7 @@ import { defaultAppManager } from '@kit.AbilityKit';
 try {
   let data = defaultAppManager.isDefaultApplicationSync(defaultAppManager.ApplicationType.BROWSER)
   console.info('Operation successful. IsDefaultApplicationSync ? ' + JSON.stringify(data));
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
-};
+}
 ```

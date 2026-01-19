@@ -6,13 +6,19 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+ImagePacker类，用于图片压缩和编码。
+
+在调用ImagePacker的方法前，需要先通过[image.createImagePacker](arkts-apis-image-f.md#imagecreateimagepacker)构建一个ImagePacker实例。
+
+编码期间，请避免修改或释放作为输入的ImageSource/PixelMap/Picture对象，以免出现crash或其他未定义行为。
+
+由于图片占用内存较大，所以当ImagePacker实例使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
+当前支持的格式有：jpeg、webp、png、heic<sup>12+</sup>、gif<sup>18+</sup>（不同硬件设备支持情况不同，可通过ImagePacker的supportedFormats属性查看）。
+
 > **说明：**
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-图片编码器类，用于图片压缩和编码。在调用ImagePacker的方法前，需要先通过[createImagePacker](arkts-apis-image-f.md#imagecreateimagepacker)构建一个ImagePacker实例。
-
-当前支持的格式有：jpeg、webp、png、heic<sup>12+</sup>、gif<sup>18+</sup>（不同硬件设备支持情况不同，可通过ImagePacker的supportedFormats属性查看）。
 
 ## 导入模块
 
@@ -26,7 +32,7 @@ import { image } from '@kit.ImageKit';
 
 | 名称             | 类型           | 只读 | 可选 | 说明                       |
 | ---------------- | -------------- | ---- | ---- | -------------------------- |
-| supportedFormats | Array\<string> | 是   | 否   | 图片编码支持的格式。 |
+| supportedFormats | Array\<string> | 是   | 否   | 图片编码支持的格式，包括：jpeg、webp、png、heic<sup>12+</sup>、gif<sup>18+</sup>（不同硬件设备支持情况不同）。 |
 
 ## packToData<sup>13+</sup>
 
@@ -45,6 +51,12 @@ packToData(source: ImageSource, options: PackingOption): Promise\<ArrayBuffer>
 | source | [ImageSource](arkts-apis-image-ImageSource.md)     | 是   | 编码的ImageSource。 |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。 |
 
+**返回值：**
+
+| 类型                         | 说明                                          |
+| ---------------------------- | --------------------------------------------- |
+| Promise\<ArrayBuffer>        | Promise对象，返回压缩或编码后的数据。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
@@ -60,12 +72,6 @@ packToData(source: ImageSource, options: PackingOption): Promise\<ArrayBuffer>
 | 62980120 | Add pixelmap out of range. |
 | 62980172 | Failed to encode icc. |
 | 62980252 | Failed to create surface. |
-
-**返回值：**
-
-| 类型                         | 说明                                          |
-| ---------------------------- | --------------------------------------------- |
-| Promise\<ArrayBuffer>        | Promise对象，返回压缩或编码后的数据。 |
 
 **示例：**
 
@@ -202,7 +208,6 @@ async function Packing(context: Context) {
     let opts: image.PackingOption = {
       format: "image/jpeg",
       quality: 98,
-      bufferSize: 10,
       desiredDynamicRange: image.PackingDynamicRange.AUTO,
       needsPackProperties: true};
     await imagePackerObj.packing(pictureObj, opts).then((data: ArrayBuffer) => {
@@ -278,7 +283,9 @@ release(callback: AsyncCallback\<void>): void
 
 释放图片编码实例。使用callback异步回调。
 
-ArkTS有内存回收机制，ImagePacker对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+由于图片占用内存较大，所以当ImagePacker实例使用完成后，应主动调用该方法，及时释放内存。
+
+释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -311,7 +318,9 @@ release(): Promise\<void>
 
 释放图片编码实例。使用Promise异步回调。
 
-ArkTS有内存回收机制，ImagePacker对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+由于图片占用内存较大，所以当ImagePacker实例使用完成后，应主动调用该方法，及时释放内存。
+
+释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -634,7 +643,6 @@ async function PackToFile(context: Context) {
     let packOpts: image.PackingOption = {
       format: "image/jpeg",
       quality: 98,
-      bufferSize: 10,
       desiredDynamicRange: image.PackingDynamicRange.AUTO,
       needsPackProperties: true};
     await imagePackerObj.packToFile(pictureObj, file.fd, packOpts).then(() => {

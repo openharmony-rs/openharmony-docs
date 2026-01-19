@@ -150,7 +150,7 @@ The following demonstrates how to add a widget to the home screen and update the
       ]
     }
     ```
-### Running Result
+### Running Effect
 ![WidgetPrinciple](figures/active-update-result.gif)
 <!--Del-->
 

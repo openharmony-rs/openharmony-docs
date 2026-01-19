@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 概述
@@ -36,7 +36,7 @@
 | [InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool showKeyboard, InputMethod_RequestKeyboardReason requestKeyboardReason)](#oh_attachoptions_createwithrequestkeyboardreason) | 创建一个新的[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)实例。     |
 | [void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)](#oh_attachoptions_destroy) | 销毁一个[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)实例。    |
 | [InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions *options, bool *showKeyboard)](#oh_attachoptions_isshowkeyboard) | 从[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)中获取是否显示键盘的值。 |
-| [InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)](#oh_attachoptions_getrequestkeyboardreason) | 从[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)中获取请求软键盘输入的原因。 |
+| [InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)](#oh_attachoptions_getrequestkeyboardreason) | 从[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)中获取触发输入法拉起的场景原因。 |
 
 ## 函数说明
 
@@ -57,7 +57,7 @@ InputMethod_AttachOptions *OH_AttachOptions_Create(bool showKeyboard)
 
 | 参数项 | 描述 |
 | -- | -- |
-| bool showKeyboard | 表示是否显示键盘。 |
+| bool showKeyboard | 表示绑定时是否显示键盘。true - 表示绑定完成时需要显示键盘。false - 表示绑定完成时不需要显示键盘。 |
 
 **返回：**
 
@@ -82,7 +82,7 @@ InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool
 
 | 参数项 | 描述 |
 | -- | -- |
-| bool showKeyboard | 表示是否显示键盘。 |
+| bool showKeyboard | 表示绑定时是否显示键盘。true - 表示绑定完成时需要显示键盘。false - 表示绑定完成时不需要显示键盘。 |
 | [InputMethod_RequestKeyboardReason](capi-inputmethod-types-capi-h.md#inputmethod_requestkeyboardreason) requestKeyboardReason |  表示请求键盘输入的原因。 |
 
 **返回：**

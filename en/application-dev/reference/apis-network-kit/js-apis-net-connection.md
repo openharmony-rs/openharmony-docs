@@ -27,7 +27,9 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 
 Creates a **NetConnection** object, where [netSpecifier](#netspecifier) specifies the network, and **timeout** specifies the timeout duration in ms. **timeout** is configurable only when **netSpecifier** is specified. If neither of them is present, the default network is used.
 
-**Note**: **createNetConnection** supports up to 2,000 registered callbacks. Exceeding this limit will result in a registration failure.
+>**NOTE**
+>
+>The number of callback functions registered by **createNetConnection** cannot exceed 2000. Otherwise, network listening cannot be registered.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -538,7 +540,7 @@ Obtains the list of all connected networks. This API uses an asynchronous callba
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | Yes| Callback used to return the result. If the list of all connected networks is obtained successfully, **error** is **undefined** and **data** is the list of activated data networks. Otherwise, **error** is an error object.|
+| callback | AsyncCallback&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | Yes| Callback used to return the result. If the list of all connected networks is obtained successfully, **error** is **undefined** and **data** is the list of activated data networks. Otherwise, **error** is an error object. If Wi-Fi and cellular data are both enabled, and no application specifies the use of cellular data, only Wi-Fi is activated. In this case, only the NetHandle of Wi-Fi is returned. The NetHandle of Wi-Fi and cellular data can be obtained at the same time only when a specific application enables the cellular network.|
 
 **Error codes**
 
@@ -2103,7 +2105,9 @@ register(callback: AsyncCallback\<void>): void
 
 Registers a listener for network status changes. To listen for a specific type of events, call **on** to enable listening and then call **register** to register an event listener.
 
-**Note**: After using this API, you need to call **unregister** to cancel the registration in a timely manner.
+>**NOTE**
+>
+>After using the **register** API, you need to call **unregister** to deregister the listener.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -2635,7 +2639,7 @@ Obtains all IP addresses by using the network specified by **NetHandle** to reso
 
 | Name  | Type                                             | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| host     | string                                            | Yes  | Host name to resolve.                                          |
+| host     | string                                            | Yes  | Host name to resolve. For example, www.example.com.                                          |
 | callback | AsyncCallback\<Array\<[NetAddress](#netaddress)>> | Yes  | Callback used to return the result. If all IP addresses are successfully obtained, **error** is **undefined**, and **data** is the list of all obtained IP addresses. Otherwise, **error** is an error object.|
 
 **Error codes**
@@ -2661,7 +2665,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressesByName(host, (error: BusinessError, data: connection.NetAddress[]) => {
     if (error) {
       console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
@@ -2688,7 +2692,7 @@ Obtains all IP addresses by using the network specified by **NetHandle** to reso
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | Yes  | Host name to resolve.|
+| host   | string | Yes  | Host name to resolve. For example, www.example.com.|
 
 **Return value**
 
@@ -2718,7 +2722,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressesByName(host).then((data: connection.NetAddress[]) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });
@@ -2739,7 +2743,7 @@ Obtains the first IP address by using the network specified by **NetHandle** to 
 
 | Name  | Type                                     | Mandatory| Description                                                        |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| host     | string                                    | Yes  | Host name to resolve.                                          |
+| host     | string                                    | Yes  | Host name to resolve. For example, www.example.com.                                          |
 | callback | AsyncCallback\<[NetAddress](#netaddress)> | Yes  | Callback used to return the result. If the first IP address is obtained successfully, **error** is **undefined**, and **data** is the first obtained IP address. Otherwise, **error** is an error object.|
 
 **Error codes**
@@ -2765,7 +2769,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
     if (error) {
       console.error(`Failed to get address. Code:${error.code}, message:${error.message}`);
@@ -2790,7 +2794,7 @@ Obtains the first IP address by using the network specified by **NetHandle** to 
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | Yes  | Host name to resolve.|
+| host   | string | Yes  | Host name to resolve. For example, www.example.com.|
 
 **Return value**
 
@@ -2820,7 +2824,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });
@@ -2989,7 +2993,7 @@ Defines network route information.
 | destination    | [LinkAddress](#linkaddress) | No| No|Destination address.      |
 | gateway        | [NetAddress](#netaddress)   | No| No|Gateway address.      |
 | hasGateway     | boolean                     | No| No| Whether a gateway is present. Whether a gateway is available. The value **true** indicates that a gateway is available, and the value **false** indicates the opposite.    |
-| isDefaultRoute | boolean                     | No| No| Whether the route is the default one. Whether the route is the default route. The value **true** indicates that the route is the default route, and the value **false** indicates the opposite.|
+| isDefaultRoute | boolean                     | No| No| Whether the route is the default one. Whether the route is the default route. The value **true** indicates that the route is the default route, and the value **false** indicates the opposite. IPv4 default route: The destination address of the route is **0.0.0.0/0**. IPv6 default route: The destination address of the route **is::/0**.|
 | isExcludedRoute<sup>20+</sup>| boolean                     | No| Yes|Whether the route is excluded. The value **true** indicates that the route is excluded, and the value **false** indicates the opposite.|
 
 ## LinkAddress

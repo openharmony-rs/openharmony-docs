@@ -10,7 +10,7 @@
 
 ## 概述
 
-提供封装的OH_NativeXComponent_KeyEvent实例。
+提供封装按键事件信息的OH_NativeXComponent_KeyEvent实例。
 
 **起始版本：** 10
 

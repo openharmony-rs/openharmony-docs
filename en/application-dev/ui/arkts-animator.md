@@ -99,11 +99,11 @@ To create a simple animator and print the current interpolation value in each fr
      }
      // Invoked when the animation is canceled.
      this.animatorOptions.onCancel = () => {
-       this.animatorStatus = 'Canceled'
+       this.animatorStatus = 'Canceled';
      }
      // Invoked when the animation finishes playing.
      this.animatorOptions.onFinish = () => {
-       this.animatorStatus = 'Finished'
+       this.animatorStatus = 'Finished';
      }
      // Invoked when the animation repeats.
      this.animatorOptions.onRepeat = () => {
@@ -143,8 +143,8 @@ import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  @State animatorOptions: AnimatorResult | undefined = undefined;
-  @State animatorStatus: string =' Created'
+  @State animatorResult: AnimatorResult | undefined = undefined;
+  @State animatorStatus: string =' Created';
   begin: number = 0;
   end: number = 300;
   topWidth: number = 150;
@@ -164,33 +164,33 @@ struct Index {
   @State translateY: number = 0;
 
   onPageShow(): void {
-    this.animatorOptions = this.getUIContext().createAnimator(this.animatorOption)
-    this.animatorOptions.onFrame = (progress: number) => {
+    this.animatorResult = this.getUIContext().createAnimator(this.animatorOption)
+    this.animatorResult.onFrame = (progress: number) => {
       this.translateX = progress;
       if (progress > this.topWidth && this.translateY < this.bottomHeight) {
         this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
       }
     }
-    this.animatorOptions.onCancel = () => {
-      this.animatorStatus = 'Canceled'
+    this.animatorResult.onCancel = () => {
+      this.animatorStatus = 'Canceled';
     }
-    this.animatorOptions.onFinish = () => {
-      this.animatorStatus = 'Finished'
+    this.animatorResult.onFinish = () => {
+      this.animatorStatus = 'Finished';
     }
-    this.animatorOptions.onRepeat = () => {
+    this.animatorResult.onRepeat = () => {
       console.info("Animation repeating");
     }
   }
 
   onPageHide(): void {
-    this.animatorOptions = undefined;
+    this.animatorResult = undefined;
   }
 
   build() {
     Column() {
       Column({ space: 30 }) {
         Button('Play').onClick(() => {
-          this.animatorOptions?.play();
+          this.animatorResult?.play();
           this.animatorStatus = 'Playing';
         }).width(80).height(35)
         Button("Reset").onClick(() => {
@@ -198,7 +198,7 @@ struct Index {
           this.translateY = 0;
         }).width(80).height(35)
         Button("Pause").onClick(() => {
-          this.animatorOptions?.pause();
+          this.animatorResult?.pause();
           this.animatorStatus = 'Paused';
         }).width(80).height(35)
       }.width("100%").height('25%')

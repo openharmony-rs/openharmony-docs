@@ -19,7 +19,7 @@
 * OverlayManager上节点安全区域内外的绘制方式与Page一致，键盘避让方式与Page一致。
 * 推荐使用AppStorage存储与OverlayManager相关的属性，以避免页面切换时属性值变化导致业务错误。
 * 当使用API version 19以下版本时，OverlayManager不支持侧滑（左滑/右滑）关闭，需在[onBackPress](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress)中添加OverlayManager关闭的逻辑。API 19及以上版本可通过配置[OverlayManagerOptions](../reference/apis-arkui/arkts-apis-uicontext-i.md#overlaymanageroptions15)中的enableBackPressedEvent属性设置OverlayManager是否响应侧滑手势。
-* OverlayManager中的事件机制优先被WrappedBuilder装饰的组件接收。若需实现浮层底部接收事件，可通过设置hitTestBehavior为HitTestMode.Transparent将事件传递至底层。
+* OverlayManager中的事件机制优先被[WrappedBuilder](state-management/arkts-wrapBuilder.md)装饰的组件接收。若需实现浮层底部接收事件，可通过设置[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)为HitTestMode.Transparent将事件传递至底层。
 
 ## 设置浮层
 
@@ -45,13 +45,6 @@ function builderText(params: Params) {
       .fontSize(30)
       .fontWeight(FontWeight.Bold)
   }.offset(params.offset)
-}
-
-function initOverlayNode(uiContext: UIContext): OverlayManager {
-  uiContext.setOverlayManagerOptions({
-    enableBackPressedEvent: true
-  });
-  return uiContext.getOverlayManager();
 }
 
 @Entry
@@ -171,7 +164,6 @@ function builderOverlay(params: Params) {
 @Entry
 @Component
 struct OverlayExample {
-  @State message: string = 'ComponentContent';
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
   private overlayContent:ComponentContent<Params>[] = [];

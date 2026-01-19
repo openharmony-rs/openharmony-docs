@@ -484,7 +484,7 @@ Obtains the ISV distribution OS name. ISVs can use their own OS names.
 
 | Type| Description|
 | -- | -- |
-| const char* | Returns an ISV distribution OS name.<br>If no ISV is specified, an empty string is returned. |
+| const char* | Returns an ISV distribution OS name.<br>If no ISV is specified, an empty string is returned.|
 
 ### OH_GetDistributionOSVersion()
 
@@ -502,7 +502,7 @@ Obtains the ISV distribution OS version.
 
 | Type| Description                                                                        |
 | -- |----------------------------------------------------------------------------|
-| const char* | Returns an ISV distribution OS version.<br>If no ISV is specified, the value of [OH_GetOSFullName](#oh_getosfullname) is returned. |
+| const char* | Returns an ISV distribution OS version.<br>If no ISV is specified, the value of [OH_GetOSFullName](#oh_getosfullname) is returned.|
 
 ### OH_GetDistributionOSApiVersion()
 
@@ -520,7 +520,7 @@ Obtains the ISV distribution OS API version.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an ISV distribution OS API version.<br> If no ISV is specified, the value of [OH_GetOSFullName](#oh_getosfullname) is returned.|
+| int | Returns an ISV distribution OS API version.<br>If no ISV is specified, the value of [OH_GetOSFullName](#oh_getosfullname) is returned.|
 
 ### OH_GetDistributionOSReleaseType()
 
@@ -538,4 +538,4 @@ Obtains the ISV distribution OS release type.
 
 | Type| Description                                                                             |
 | -- |---------------------------------------------------------------------------------|
-| const char | Returns an ISV distribution OS release type.<br>If no ISV is specified, the value of [OH_GetOsReleaseType](#oh_getosreleasetype) is returned. |
+| const char | Returns an ISV distribution OS release type.<br>If no ISV is specified, the value of [OH_GetOsReleaseType](#oh_getosreleasetype) is returned.|

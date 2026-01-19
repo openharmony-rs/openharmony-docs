@@ -1,4 +1,10 @@
 # video
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zjsxstar-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 >  **NOTE**
@@ -46,14 +52,14 @@ In addition to the [universal events](js-components-common-events.md), the follo
 
 | Name        | Parameter                                      | Description                                   |
 | ---------- | ---------------------------------------- | ------------------------------------- |
-| prepared   | { duration: value }<sup>5+</sup> | Triggered when the video preparation is complete. The video duration (in seconds) is obtained from **duration**.|
+| prepared   | { duration: value }<sup>5+</sup>         | Triggered when the video preparation is complete. The video duration (in seconds) is obtained from **duration**.|
 | start      | -                                        | Triggered when the video is played.                            |
 | pause      | -                                        | Triggered when the video playback is paused.                            |
 | finish     | -                                        | Triggered when the video playback is finished.                          |
 | error      | -                                        | Triggered when the video playback fails.                          |
-| seeking    | { currenttime: value }    | Triggered to report the time (in seconds) when the progress bar is being dragged.                 |
-| seeked     | { currenttime: value }    | Triggered to report the playback time (in seconds) when the user finishes dragging the progress bar.              |
-| timeupdate | { currenttime: value }    | Triggered once per 250 ms when the playback progress changes. The unit of the current playback time is second.      |
+| seeking    | { currenttime: value }                   | Triggered to report the time (in seconds) when the progress bar is being dragged.                 |
+| seeked     | { currenttime: value }                   | Triggered to report the playback time (in seconds) when the user finishes dragging the progress bar.              |
+| timeupdate | { currenttime: value }                   | Triggered once per 250 ms when the playback progress changes. The unit of the current playback time is second.      |
 
 
 ## Methods
@@ -75,14 +81,15 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 ```html
 <!-- xxx.hml -->
 <div class="container">
-  <video id='videoId' src='/common/myDeram.mp4' muted='false' autoplay='false'
-         controls='true' onprepared='preparedCallback' onstart='startCallback'
-         onpause='pauseCallback' onfinish='finishCallback' onerror='errorCallback'
-         onseeking='seekingCallback' onseeked='seekedCallback' 
-         ontimeupdate='timeupdateCallback'
-         style="object-fit:fill; width:80%; height:400px;"
-         onclick="change_start_pause">
-   </video>
+<!-- Replace '/common/myDream.mp4' with the resource file you use. -->
+    <video id='videoId' src='/common/myDream.mp4' muted='false' autoplay='false'
+           controls='true' onprepared='preparedCallback' onstart='startCallback'
+           onpause='pauseCallback' onfinish='finishCallback' onerror='errorCallback'
+           onseeking='seekingCallback' onseeked='seekedCallback'
+           ontimeupdate='timeupdateCallback'
+           style="object-fit: fill; width: 80%; height: 400px;"
+           onclick="change_start_pause">
+    </video>
 </div>
 ```
 
@@ -97,29 +104,44 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 ```js
 // xxx.js
 export default {
-  data: {
-    event:'',
-    seekingtime:'',
-    timeupdatetime:'',
-    seekedtime:'',
-    isStart: true,
-    duration: '',
-  },
-  preparedCallback:function(e){ this.event = 'Video successfully connected'; this.duration = e.duration;},
-  startCallback:function(){this.event = 'Playback starts.';},
-  pauseCallback:function(){this.event = 'Playback pauses.';},
-  finishCallback:function(){this.event = 'Playback ends.';},
-  errorCallback:function(){this.event = 'Playback error.';},
-  seekingCallback:function(e){ this.seekingtime = e.currenttime; },
-  timeupdateCallback:function(e){ this.timeupdatetime = e.currenttime;},
-  change_start_pause: function() {
-    if(this.isStart) {
-      this.$element('videoId').pause();
-      this.isStart = false;
-    } else {
-      this.$element('videoId').start();
-      this.isStart = true; 
-    }
-  },
+    data: {
+        event: '',
+        seekingTime: '',
+        timeupdateTime: '',
+        seekedTime: '',
+        isStart: true,
+        duration: '',
+    },
+    preparedCallback: function (e) {
+        this.event = 'Video successfully connected.';
+        this.duration = e.duration;
+    },
+    startCallback: function () {
+        this.event = 'Playback starts.';
+    },
+    pauseCallback: function () {
+        this.event = 'Playback pauses.';
+    },
+    finishCallback: function () {
+        this.event = 'Playback ends.';
+    },
+    errorCallback: function () {
+        this.event = 'Playback error.';
+    },
+    seekingCallback: function (e) {
+        this.seekingTime = e.currenttime;
+    },
+    timeupdateCallback: function (e) {
+        this.timeupdateTime = e.currenttime;
+    },
+    change_start_pause: function () {
+        if (this.isStart) {
+            this.$element('videoId').pause();
+            this.isStart = false;
+        } else {
+            this.$element('videoId').start();
+            this.isStart = true;
+        }
+    },
 }
 ```

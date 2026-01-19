@@ -11,7 +11,7 @@
 
 A list is a container that displays a collection of items. If the list items go beyond the screen, the list can scroll to reveal the content off the screen. The list is applicable for presenting similar data types or data type sets, such as images and text. Some common lists seen in applications are the contacts list, playlist, and shopping list.
 
-You can use lists to easily and efficiently display structured, scrollable information. Specifically, you can provide a single view of rows or columns by arranging the [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) or [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) child components linearly in a vertical or horizontal direction in the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component, or use [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) to iterate over a group of rows or columns, or mix any number of single views and **ForEach** structures to build a list. The **List** component supports the generation of child components in various [rendering](../ui/rendering-control/arkts-rendering-control-overview.md) modes, including conditional rendering, iterative rendering, and lazy data loading.
+You can use lists to easily and efficiently display structured, scrollable information. Specifically, you can provide a single view of rows or columns by arranging the [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) or [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) child components linearly in a vertical or horizontal direction in the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component, or use [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) to iterate over a group of rows or columns, or mix any number of single views and **ForEach** structures to build a list. The **List** component supports the generation of child components in various [rendering](../ui/rendering-control/arkts-rendering-control-overview.md) modes, including [conditional rendering](../ui/rendering-control/arkts-rendering-control-ifelse.md), rendering of repeated content, and [lazy data loading](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 
 On devices with circular screens, the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component is recommended. For details, see [Creating an Arc List (ArcList)](./arkts-layout-development-create-arclist.md).
 
@@ -102,7 +102,7 @@ List() {
 
 ### Setting the Cross Axis Layout
 
-The cross axis layout of the **List** component can be set using the **lanes** and **alignListItem** attributes. The **lanes** attribute controls the number of list items along the cross axis, and the **alignListItem** attribute controls the alignment mode of child components along the cross axis.
+The cross axis layout of the **List** component can be set using the [lanes](../reference/apis-arkui/arkui-ts/ts-container-list.md#lanes9) and [alignListItem](../reference/apis-arkui/arkui-ts/ts-container-list.md#alignlistitem9) attributes. The **lanes** attribute controls the number of list items along the cross axis, and the **alignListItem** attribute controls the alignment mode of child components along the cross axis.
 
 The **lanes** attribute of the **List** component is usually used to adaptively construct lists with different numbers of rows or columns for devices of different sizes, enabling one-time development for multi-device deployment. Its value type is number or [LengthConstrain](../reference/apis-arkui/arkui-ts/ts-types.md#lengthconstrain). If you are building a two-column vertical list shown on the right in Figure 2, set the **lanes** attribute to **2**. The default value of **lanes** is **1**.
 
@@ -330,7 +330,7 @@ In the **List** component, **ForEach** can be used to render **ListItemGroup** i
 
 ### Setting the Spacing
 
-When initializing a list, you can use the **space** parameter to add spacing between list items. In the following example, a 10 vp spacing is added between list items along the main axis:
+When initializing the **List** component, use the **space** parameter of [ListOptions](../reference/apis-arkui/arkui-ts/ts-container-list.md#listoptions18) to configure spacing between list items. In the following example, a 10 vp spacing is added between list items along the main axis:
 
 
 ```ts
@@ -348,7 +348,7 @@ A divider separates UI items to make them easier to identify. In the following f
 
 ![en-us_image_0000001511580960](figures/en-us_image_0000001511580960.png)
 
-To add dividers between list items, you can use the **divider** attribute together with the following style attributes:
+To add dividers between list items,  use the [divider](../reference/apis-arkui/arkui-ts/ts-container-list.md#divider) attribute together with the following style attributes:
 
 - **strokeWidth** and **color**: stroke width and color of the diver, respectively.
 
@@ -647,7 +647,7 @@ Another common example is a scrolling list working with a multi-level index bar,
 
 ![en-us_image_0000001563060769](figures/en-us_image_0000001563060769.gif)
 
-As shown above, when the contacts list scrolls from group A to B, the alphabetical index bar on the right also changes from A to B. This scenario can be implemented by listening for the **onScrollIndex** event of the **List** component. The alphabet index bar is implemented using the [AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md) component.
+As shown above, when the contacts list scrolls from group A to B, the alphabetical index bar on the right updates from A to B. This behavior can be implemented by listening for the [onScrollIndex](../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex) event of the **List** component. The alphabetical index bar is implemented using the [AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md) component.
 
 When the list scrolls, the **selectedIndex** value of the letter to highlight in the alphabet index bar is recalculated based on the **firstIndex** value of the item to which the list has scrolled. In the **AlphabetIndexer** component, the index of the highlighted item is set through the **selected** attribute. When the value of **selectedIndex** changes, the **AlphabetIndexer** component is re-rendered to highlight the corresponding letter.
 
@@ -1193,7 +1193,7 @@ The process of implementing the collapsing and expanding effect of list items is
     }
     ```
 
-3. Control whether each list item is expanded by changing the state of **ListItem**, and achieve the animation effects during the expanding and collapsing process through **animation** and **animateTo**.
+3. Control list item expansion by changing the state of **ListItem** components, and implement expand/collapse animations through [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md#animation) and [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto).
 
     ```ts
     @Builder
@@ -1239,7 +1239,7 @@ In certain scenarios, you may want a list to automatically scroll upward when ne
     }
     ```
 
-2. Construct a list structure and set **stackFromEnd** to **true**. In this way, the list content automatically scrolls upward to reveal newly inserted data items.
+2. Construct a list structure and set [stackFromEnd](../reference/apis-arkui/arkui-ts/ts-container-list.md#stackfromend19) to **true**. This configuration causes the list to automatically scroll upward when new items are inserted at the bottom.
 
     ```ts
     @State messages: Message[] = [
@@ -1317,7 +1317,7 @@ Since API version 20, scrollable components ([Grid](../reference/apis-arkui/arku
      })
      ```
 
-   - The current item's position information is obtained through the **getItemRect** API.
+   - The current item's position information is obtained through the [getItemRect](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#getitemrect11) API.
 
      ```ts
      // Implementation reference

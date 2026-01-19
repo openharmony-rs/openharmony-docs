@@ -16,6 +16,8 @@
 
 ## InputType枚举说明
 
+单行文本输入框类型。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                                 | 值 | 说明                                       |

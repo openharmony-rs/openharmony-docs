@@ -170,6 +170,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 ### 生成VPN Id
 
 创建新的VPN时，应生成一个VPN Id作为VPN的唯一标识。
+
 可参考如下示例：
 
 ```ts
@@ -215,7 +216,7 @@ export default class VpnTest extends VpnExtensionAbility {
 
 ## VPN Config参数说明
 
-| 名称                | 类型                                                         | 只读 |可选| 说明                                                         |
+| 名称| 类型 | 只读 |可选| 说明 |
 | ------------------- | ------------------------------------------------------------ | ---- | ---|------------------------------------------------------------ |
 | addresses           | Array\<[LinkAddress](../reference/apis-network-kit/js-apis-net-connection.md#linkaddress)\> | 否   |否| VPN虚拟网卡的IP地址。                                        |
 | routes              | Array\<[RouteInfo](../reference/apis-network-kit/js-apis-net-connection.md#routeinfo)\> | 否   | 是|VPN虚拟网卡的路由信息(目前最多可配置1024条路由)。            |
@@ -267,9 +268,9 @@ let vpnConfig: vpnExtension.VpnConfig = {
   mtu: 1400,
   // 配置VPN使用的DNS服务器。
   dnsAddresses: ['223.x.x.5', '223.x.x.6'],
-  // VPN生效白名单的应用。
+  // 受信任的应用信息列表。
   trustedApplications: ['com.test.browser'],
-  // 不生效VPN黑名单的应用。
+  // 被阻止的应用信息列表。
   blockedApplications: ['com.test.games'],
 }
 let context: vpnExtension.VpnExtensionContext;

@@ -106,15 +106,15 @@ libusb_ndk.z.so
     struct UsbDdkConfigDescriptor *config = nullptr;
     // Obtain the configuration descriptor.
     OH_Usb_GetConfigDescriptor(deviceId, 1, &config);
-    // Obtain the index of the target USB interface based on the configuration descriptor.
+    // Find the interfaceIndex required for communication based on the configuration descriptor.
     uint8_t interfaceIndex = 0;
-    // Declare the USB interface.
+    // Declare an API.
     uint64_t interfaceHandle = 0;
     OH_Usb_ClaimInterface(deviceId, interfaceIndex, &interfaceHandle);
     // Release the configuration descriptor.
     OH_Usb_FreeConfigDescriptor(config);
     ```
-3. Obtain the activated alternate setting of a USB interface.
+3. (Optional) Obtain the activated alternate setting of a USB interface.
 
     Call **OH_Usb_GetCurrentInterfaceSetting** of **usb_ddk_api.h** to obtain the alternate setting, and call **OH_Usb_SelectInterfaceSetting** to activate it.
 
@@ -126,12 +126,12 @@ libusb_ndk.z.so
     // Activate the alternate setting.
     OH_Usb_SelectInterfaceSetting(interfaceHandle, settingIndex);
     ```
-4. Send control read requests and control write requests.
+4. (Optional) Send control read requests and control write requests.
 
     Call **OH_Usb_SendControlReadRequest** of **usb_ddk_api.h** to send a control read request, or call **OH_Usb_SendControlWriteRequest** to send a control write request.
 
     ```c++
-        // Timeout interval. Set it to 1s.
+        // Set the timeout interval to 1s.
     uint32_t timeout = 1000;
 
     struct UsbControlRequestSetup setupRead;
@@ -157,7 +157,7 @@ libusb_ndk.z.so
     OH_Usb_SendControlWriteRequest(interfaceHandle, &setupWrite, timeout, dataWrite, dataWriteLen);
     ```
 
-5. Create a buffer, and send a request.
+5. (Optional) Create a buffer, and send a request.
 
     Call **OH_Usb_CreateDeviceMemMap** of **usb_ddk_api.h** to create the buffer **devMmap**, and call **OH_Usb_SendPipeRequest** to send a request.
 
@@ -168,7 +168,7 @@ libusb_ndk.z.so
     OH_Usb_CreateDeviceMemMap(deviceId, bufferLen, &devMmap);
     struct UsbRequestPipe pipe;
     pipe.interfaceHandle = interfaceHandle;
-    // Obtain the target endpoint based on the configuration descriptor.
+    // Find the endpoint required for communication based on the configuration descriptor.
     pipe.endpoint = 128;
     pipe.timeout = UINT32_MAX;
     // Send a request.
@@ -187,7 +187,7 @@ libusb_ndk.z.so
     // Release the USB DDK.
     OH_Usb_Release();
     ```
-7. (Optional) Obtain the USB device ID list.
+7. (Optional) Obtain the USB device list.
 
     After the driver is started, call **OH_Usb_GetDevices** to obtain the device ID that matches the VID in the driver configuration for subsequent application development. (VID is the ID of the device vendor and is configured in the driver application to indicate the applicable devices. The queried device IDs need to be filtered by VID.)
 

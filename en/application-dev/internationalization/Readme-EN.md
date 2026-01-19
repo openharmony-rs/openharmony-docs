@@ -7,7 +7,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
-- [Introduction to Localization Kit](i18n-l10n.md)
+- [About This Kit](i18n-l10n.md)
 - Application Internationalization<!--i18n-->
     - [UI Design for Internationalization](i18n-ui-design.md)
     - [Locale and Cultural Habit Division](i18n-locale-culture.md)

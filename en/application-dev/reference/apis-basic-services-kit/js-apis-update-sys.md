@@ -1467,7 +1467,7 @@ updater.off(eventClassifyInfo, (eventInfo: update.EventInfo) => {
 
 factoryReset(callback: AsyncCallback\<void>): void
 
-Restores the scale to its factory settings. This API uses an asynchronous callback to return the result.
+Restores a device to its factory settings. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Update.UpdateService
 
@@ -1501,7 +1501,7 @@ restorer.factoryReset((err) => {
 
 factoryReset(): Promise\<void>
 
-Restores the scale to its factory settings. This API uses a promise to return the result.
+Restores a device to its factory settings. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Update.UpdateService
 

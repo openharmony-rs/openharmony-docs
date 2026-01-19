@@ -30,7 +30,7 @@ visualEffect(effect: VisualEffect): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| effect | [VisualEffect](#visualeffect) | 是   | 非滤镜视觉效果。 |
+| effect | [VisualEffect](#visualeffect-1) | 是   | 非滤镜视觉效果。 |
 
 **返回值：**
 
@@ -167,6 +167,7 @@ struct FilterEffectExample {
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
+        // $r("app.media.app_icon")需替换为开发者所需的资源文件
         .backgroundImage($r("app.media.app_icon"))
         .backgroundImageSize({ width: 80, height: 80 })
         .foregroundFilter(this.filterTest1) // 通过 foregroundFilter 设置模糊效果
@@ -176,6 +177,7 @@ struct FilterEffectExample {
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
+        // $r("app.media.app_icon")需替换为开发者所需的资源文件
         .backgroundImage($r("app.media.app_icon"))
         .backgroundImageSize({ width: 80, height: 80 })
         .backgroundFilter(this.filterTest2) // 通过 backgroundFilter 设置模糊效果
@@ -185,6 +187,7 @@ struct FilterEffectExample {
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
+        // $r("app.media.app_icon")需替换为开发者所需的资源文件
         .backgroundImage($r("app.media.app_icon"))
         .backgroundImageSize({ width: 80, height: 80 })
         .compositingFilter(this.filterTest3) // 通过 compositingFilter 设置模糊效果

@@ -9,29 +9,38 @@
 ## 当前是否有机制来检查是否有泄漏的napi_ref
 
 - 具体问题：napi_create_reference可以创建对js对象的引用，保持js对象不释放，正常来说使用完需要使用napi_delete_reference进行释放，但怕漏delete导致js对象内存泄漏，当前是否有机制来检查/测试是否有泄漏的napi_ref？  
-- 检测方式：  
+- 检测方式： 
+ 
 可使用 DevEco Studio（IDE）提供的 Allocation 工具进行检测。  
+
 [基础内存分析：Allocation分析](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-allocations)  
-napi_create_reference这个接口内部实现会new一个C++对象，因此，如果忘记使用napi_delete_reference接口，那这个new出来的C++对象也会泄漏，这时候就可以用Allocation工具来进行检测，这个工具会把未释放的对象的分配栈都打印出来，如果napi_ref泄漏了，可以在分配栈上看出来  
+
+napi_create_reference这个接口内部实现会new一个C++对象，因此，如果忘记使用napi_delete_reference接口，那这个new出来的C++对象也会泄漏，这时候就可以用Allocation工具来进行检测，这个工具会把未释放的对象的分配栈都打印出来，如果napi_ref泄漏了，可以在分配栈上看出来。  
 
 ## napi开发过程中遇见内存泄漏问题要怎么定位解决
 
 点击按钮时内存增加，即使主动触发GC也无法回收。如何在Node-API开发过程中定位和解决内存泄漏问题？
 
 - 解决建议：  
-需先了解Node-API生命周期机制，相关材料如下：  
+
+需先了解Node-API生命周期机制，相关材料如下： 
+
 [使用Node-API接口进行生命周期相关开发](use-napi-life-cycle.md)  
+
 使用Node-API时导致内存泄漏的常见原因：  
-1. napi_value不在napi_handle_scope管理中，导致napi_value持有的ArkTS对象无法释放，该问题常见于直接使用uv_queue_work的场景中。解决方法是添加napi_open_handle_scope和napi_close_handle_scope接口。
-此类泄漏可通过snapshot分析定位原因，泄漏的ArkTS对象distance为1，即不知道被谁持有，这种情况下一般就是被native（napi_value是个指针，指向native持有者）持有了，且napi_value不在napi_handle_scope范围内，可参考[易错API的使用规范](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)   
+1. napi_value不在napi_handle_scope管理中，导致napi_value持有的ArkTS对象无法释放，该问题常见于[直接使用uv_queue_work的场景](napi-guidelines.md#异步任务)中。解决方法是添加napi_open_handle_scope和napi_close_handle_scope接口。
+
+   此类泄漏可通过snapshot分析定位原因，泄漏的ArkTS对象distance为1，即不知道被谁持有，这种情况下一般就是被native（napi_value是个指针，指向native持有者）持有了，且napi_value不在napi_handle_scope范围内，可参考[易错API的使用规范](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。   
+
 2. 使用 `napi_create_reference` 为 ArkTS 对象创建了强引用（`initial_refcount` 参数大于 0），且一直未删除，导致 ArkTS 对象无法被回收。`napi_create_reference` 接口内部会创建一个 C++ 对象，因此这种泄漏通常表现为ArkTS对象与Native对象的双重泄漏。可以使用 Allocation 工具捕获Native对象泄漏栈，检查是否存在 `napi_create_reference` 相关的栈帧。  
-[基础内存分析：Allocation分析](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-allocations)  
+
+   [基础内存分析：Allocation分析](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-allocations)  
 
 3. 被其它存活的ArkTS对象持有时，使用snapshot查看泄漏对象的持有者。  
 
 ## napi_threadsafe_function内存泄漏应该如何处理
 
-`napi_threadsafe_function`（下文简称tsfn）在使用时，常常会调用 `napi_acquire_threadsafe_function` 来更改tsfn的引用计数，确保tsfn不会意外被释放。但在使用完成后，应该及时使用 `napi_tsfn_release` 模式调用 `napi_release_threadsafe_function` 方法，以确保在所有调用回调都执行完成后，其引用计数能回归到调用 `napi_acquire_threadsafe_function` 方法之前的水平。当其引用计数归为0时，tsfn才能正确的被释放。
+`napi_threadsafe_function`（下文简称tsfn）在使用时，常常会调用 `napi_acquire_threadsafe_function` 来更改tsfn的引用计数，确保tsfn不会意外被释放。但在使用完成后，应该及时使用 `napi_tsfn_release` 模式调用 `napi_release_threadsafe_function` 方法，以确保在所有调用回调都执行完成后，其引用计数能回归到调用 `napi_acquire_threadsafe_function` 方法之前的水平。当其引用计数归零时，tsfn才能正确的被释放。
 
 当env即将退出，但tsfn的引用计数未归零时，应使用 `napi_tsfn_abort` 模式调用 `napi_release_threadsafe_function` 方法，确保env释放后不再持有或使用tsfn。env退出后继续持有tsfn将导致未定义行为，可能引发崩溃。
 

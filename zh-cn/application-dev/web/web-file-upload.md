@@ -137,8 +137,7 @@ Web组件支持前端页面选择文件上传功能，应用开发者可以使�
 
 Web组件支持前端页面上传图片文件时调用相机即时拍照，应用开发者可以使用[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口来处理前端页面文件上传的请求并自行拉起相机，如果应用开发者不做任何处理，Web会提供默认行为来处理前端页面调用相机的请求。
 
-此示例中，应用侧通过监听[onShowFileSelector](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)事件并返回`true`拦截ArkWeb默认弹窗,并调用系统CameraPicker拉起相机。
-应用可以通过获取AcceptType对不同类型的目标文件做更精细的筛选。
+此示例中，应用侧通过监听[onShowFileSelector](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)事件并返回`true`拦截ArkWeb默认弹窗,并调用系统CameraPicker拉起相机。应用可以通过获取AcceptType对不同类型的目标文件做更精细的筛选。
 
 ```ts
 // xxx.ets

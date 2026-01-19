@@ -141,6 +141,7 @@ struct BackDropBlurStyleDemo {
             .fontColor(Color.Black)
         }
         .height('100%')
+        .margin({ top: 20 })
         .justifyContent(FlexAlign.Start)
       }
       .width(200)
@@ -176,6 +177,7 @@ struct BackDropBlurStyleDemo {
             .fontColor(Color.Black)
         }
         .height('100%')
+        .margin({ top: 20 })
         .justifyContent(FlexAlign.Start)
       }
       .width(200)
@@ -660,43 +662,38 @@ import { curves } from '@kit.ArkUI';
 @Entry
 @Component
 struct motionBlurTest {
-  @State widthSize: number = 400;
-  @State heightSize: number = 320;
+  @State widthSize: number = 300;
+  @State heightSize: number = 240;
   @State flag: boolean = true;
   @State radius: number = 0;
-  @State x: number = 0;
-  @State y: number = 0;
+  @State x: number = 0.5;
+  @State y: number = 0.5;
 
   build() {
     Column() {
       Column() {
-        // $r('app.media.testImg')需要替换为开发者所需的图像资源文件
+        // $r('app.media.testImg')需要替换为开发者所需要的资源文件
         Image($r('app.media.testImg'))
           .width(this.widthSize)
           .height(this.heightSize)
+          .scale({ x: this.flag ? 1 : 0.8,y: this.flag ? 1 : 0.8 ,centerX: '50%', centerY: '50%' })
           .onClick(() => {
-            this.radius = 5;
+            this.radius = 50;
             this.x = 0.5;
             this.y = 0.5;
-            if (this.flag) {
-              this.widthSize = 100;
-              this.heightSize = 80;
-            } else {
-              this.widthSize = 400;
-              this.heightSize = 320;
-            }
             this.flag = !this.flag;
           })
           .animation({
             duration: 2000,
-            curve: curves.springCurve(10, 1, 228, 30),
+            iterations:1,
+            playMode:PlayMode.Alternate,
             onFinish: () => {
               this.radius = 0;
             }
           })
           .motionBlur({ radius: this.radius, anchor: { x: this.x, y: this.y } })
       }
-    }.width('100%').margin({ top: 5 })
+    }.width('100%').margin({ top: 50 })
   }
 }
 ```

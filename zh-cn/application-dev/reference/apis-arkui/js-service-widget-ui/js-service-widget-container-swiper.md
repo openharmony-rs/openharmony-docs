@@ -99,7 +99,7 @@
   }
 }
 ```
-**4*4卡片**
+**4×4卡片**
 
 ![卡片swiper](figures/swiper.png)
 

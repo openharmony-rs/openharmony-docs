@@ -23,9 +23,9 @@ Before reading this topic, it is recommended to familiarize yourself with [Creat
 
 ## Overview
 
-The principles of component freezing are as follows:
-1. Set the **freezeWhenInactive** attribute to activate the component freezing mechanism.
-2. After enabling this function, the system re-renders only the active custom components. This allows the UI framework to narrow the re-render scope to the (active) custom components visible to users, improving re-render efficiency in complex UI scenarios.
+Principles of freezing a component are as follows:
+1. Set the [freezeWhenInactive](../../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions) attribute to activate the component freezing mechanism.
+2. After component freezing is enabled, the system re-renders only the active custom components. This allows the UI framework to narrow the re-render scope to the (active) custom components visible to users, improving re-render efficiency in complex UI scenarios.
 3. When an inactive custom component becomes active, the state management framework performs necessary re-render operations to ensure correct UI display.
 
 In summary, component freezing aims to optimize UI re-render performance on complex UIs. When multiple invisible custom components exist, such as in multiple page stacks, long lists, or grids, you can freeze these components to re-render only visible custom components as needed. The re-render of invisible custom components is delayed until they become visible.

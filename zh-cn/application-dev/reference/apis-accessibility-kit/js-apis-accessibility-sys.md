@@ -25,7 +25,9 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 无障碍事件类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 
 | 名称                     | 值                    |说明|
@@ -61,7 +63,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | TYPE_PAGE_OPEN  |28| 表示页面打开。|
 | TYPE_PAGE_CLOSE  |29| 表示页面关闭。|
 | TYPE_SWIPE_LEFT           |30| 表示向左的手势。    |
-| TYPE_SWIPE_LEFT_THEN_RIGHT  |31| 	表示先向左再向右的手势。|
+| TYPE_SWIPE_LEFT_THEN_RIGHT  |31| 表示先向左再向右的手势。|
 | TYPE_SWIPE_LEFT_THEN_UP     |32| 表示先向左再向上的手势。|
 | TYPE_SWIPE_LEFT_THEN_DOWN   |33| 表示先向左再向下的手势。|
 | TYPE_SWIPE_RIGHT          |34| 表示向右的手势。    |
@@ -77,7 +79,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | TYPE_SWIPE_DOWN_THEN_RIGHT  |44| 表示先向下再向右的手势。|
 | TYPE_SWIPE_DOWN_THEN_UP     |45| 表示先向下再向上的手势。|
 | TYPE_TWO_FINGER_SINGLE_TAP   |46| 表示双指单击的手势。|
-| TYPE_TWO_FINGER_DOUBLE_TAP   |47| 	表示双指双击的手势。|
+| TYPE_TWO_FINGER_DOUBLE_TAP   |47| 表示双指双击的手势。|
 | TYPE_TWO_FINGER_DOUBLE_TAP_AND_HOLD      | 48   | 表示双指双击且长按的手势。          |
 | TYPE_TWO_FINGER_TRIPLE_TAP   |49| 表示双指三击的手势。|
 | TYPE_TWO_FINGER_TRIPLE_TAP_AND_HOLD      | 50   | 表示双指三击且长按的手势。          |
@@ -93,7 +95,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | TYPE_FOUR_FINGER_TRIPLE_TAP_AND_HOLD     | 60   | 表示四指三击且长按的手势。          |
 | TYPE_THREE_FINGER_SWIPE_UP   |61| 表示三指向上滑动的手势。|
 | TYPE_THREE_FINGER_SWIPE_DOWN  |62| 表示三指向下滑动的手势。|
-| TYPE_THREE_FINGER_SWIPE_LEFT  |63| 	表示三指向左滑动的手势。|
+| TYPE_THREE_FINGER_SWIPE_LEFT  |63| 表示三指向左滑动的手势。|
 | TYPE_THREE_FINGER_SWIPE_RIGHT  |64| 表示三指向右滑动的手势。|
 | TYPE_FOUR_FINGER_SWIPE_UP    |65| 表示四指向上滑动的手势。|
 | TYPE_FOUR_FINGER_SWIPE_DOWN  |66| 表示四指向下滑动的手势。|
@@ -106,7 +108,9 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 无障碍节点元素是指，UI界面上可执行无障碍操作的一些组件，例如：按钮、文本输入框等组件。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                         | 值    | 说明                       |
 | -------------------------- | ---- | ------------------------ |

@@ -84,7 +84,7 @@ AddFormMenuItem(
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
-| 名称            | 类型           | 只读|可选| 说明   
+| 名称 | 类型 | 只读 |可选| 说明 |
 | --------------- | ----------------- | ---- | ---- | ---- |
 | options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions对象说明) | 否   | 是  | 包含设置MenuItem的各项信息。|
 

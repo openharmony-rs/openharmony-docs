@@ -761,7 +761,7 @@ on(type: "headerReceive", callback: AsyncCallback\<Object\>): void
 订阅HTTP Response Header 事件。
 
 > **说明：**
-> 从API version 6开始支持，从API version 8开始废弃，建议使用[on("headersReceive")<sup>8+</sup>](#onheadersreceive8)替代。
+> 从API version 6开始支持，从API version 8开始废弃，建议使用[on("headersReceive")](#onheadersreceive8)替代。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -792,7 +792,7 @@ off(type: "headerReceive", callback?: AsyncCallback\<Object\>): void
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 8开始废弃，建议使用[off("headersReceive")<sup>8+</sup>](#offheadersreceive8)替代。
+> 从API version 6开始支持，从API version 8开始废弃，建议使用[off("headersReceive")](#offheadersreceive8)替代。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -1504,7 +1504,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 
@@ -1540,7 +1540,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 

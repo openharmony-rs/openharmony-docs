@@ -16,7 +16,7 @@ The Network Connection Management module provides basic network management capab
 
 ## Basic Concepts
 
-- Producer: a provider of data networks,  such as Wi-Fi, cellular, and Ethernet.
+- Producer: a provider of data networks, such as Wi-Fi, cellular, and Ethernet.
 - Consumer: a user of data networks, for example, an application or a system service.
 - Network probe: a mechanism used to detect the network availability to prevent the switch from an available network to an unavailable network. The probe type can be binding network detection, DNS detection, HTTP detection, or HTTPS detection.
 - Network selection: a mechanism used to select the optimal network when multiple networks coexist. It is triggered when the network status, network information, or network quality evaluation score changes.
@@ -36,7 +36,8 @@ The following describes the development procedure specific to each application s
 ## Subscribing to Status Changes of the Specified Network
 
 1. Declare the required permission: **ohos.permission.GET_NETWORK_INFO**.
-This permission is of the **normal** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
+
+   This permission is of the **normal** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
 2. Import the **connection** namespace from **@kit.NetworkKit**.
 
@@ -197,13 +198,13 @@ Close the original socket and re-establish a socket connection when the default 
 ## Obtaining the List of All Registered Networks
 
 1. Declare the required permission: **ohos.permission.GET_NETWORK_INFO**.
-This permission is of the **normal** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
+
+   This permission is of the **normal** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
 2. Obtain the list of all connected networks.
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     /// Call getAllNets to obtain the list of all connected networks.
     connection.getAllNets().then((data: connection.NetHandle[]) => {
@@ -217,7 +218,8 @@ This permission is of the **normal** level. Before applying for the permission, 
 ## Querying the Connection Information of the Default Network or the Specified Network
 
 1. Declare the required permission: **ohos.permission.GET_NETWORK_INFO**.
-This permission is of the **normal** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
+
+   This permission is of the **normal** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 2. Query the connection information of the default network or the specified network.
    
    Call [getDefaultNet](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnet) to obtain the default data network identified by **NetHandle** and call [getNetCapabilities](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilities) to obtain its network capability information. The capability information includes information such as the network type (cellular, Wi-Fi, or Ethernet network) and the specific network capabilities. Alternatively, you can call [getConnectionProperties](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetconnectionproperties) to obtain the connection information of the data network specified by **NetHandle**.
@@ -226,7 +228,6 @@ This permission is of the **normal** level. Before applying for the permission, 
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
     
     function getDefaultNetsInfo() {
       let netHandleInfo:connection.NetHandle|null = null;
@@ -297,7 +298,6 @@ This permission is of the **normal** level. Before applying for the permission, 
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     function getAllNetsInfo() {
       // Call getAllNets to obtain the list of all connected networks specified by Array<NetHandle>.
@@ -327,17 +327,18 @@ This permission is of the **normal** level. Before applying for the permission, 
 If an application needs to check whether the current network supports Internet access, perform the following steps:
 
 1. Declare the required permission: **ohos.permission.GET_NETWORK_INFO**.
-This permission is of the **normal** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
+
+   This permission is of the **normal** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
 2. Check whether the default network supports Internet access.
    
    Call [getDefaultNetSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnetsync9) to obtain **netHandle** of the default network. If **netHandle** is valid, call [getNetCapabilitiesSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilitiessync10) to obtain the capability information of the corresponding network via **networkCap** and determine whether Internet access is supported.
+
    **NET_CAPABILITY_CHECKING_CONNECTIVITY** indicates that a network connectivity check is in progress. The network connectivity verification is successful if the network connectivity check is complete and **NET_CAPABILITY_VALIDATED** is contained in **networkCap**.
 
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
 
     // Obtain the default active data network.
     let netHandle = connection.getDefaultNetSync();
@@ -368,7 +369,8 @@ This permission is of the **normal** level. Before applying for the permission, 
 ## Resolving the Domain Name of the Default Network to Obtain All IP Addresses
 
 1. Declare the required permission: **ohos.permission.GET_NETWORK_INFO**.
-This permission is of the **normal** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
+
+   This permission is of the **normal** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
 2. Use the default network to resolve the host name to obtain the list of all IP addresses.
    
@@ -376,10 +378,14 @@ This permission is of the **normal** level. Before applying for the permission, 
     ```ts
     // Import the connection namespace from @kit.NetworkKit.
     import { connection } from '@kit.NetworkKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
     // Use the default network to resolve the host name to obtain the list of all IP addresses.
     connection.getAddressesByName("xxxx").then((data: connection.NetAddress[]) => {
       console.info("Succeeded to get data: " + JSON.stringify(data));
     });
     ```
 
+## Samples
+
+The following samples are provided to help you better understand how to develop network connection features:
+
+- [NetConnection_Manage_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case)

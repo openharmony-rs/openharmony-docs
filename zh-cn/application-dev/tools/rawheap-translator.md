@@ -73,7 +73,7 @@ rawheap_translator [rawheap_file] [heapsnapshot_file]
 | 选项 | 必选 | 描述 |
 | -------- | --- | ----------------- |
 | [rawheap_file] | 是 | 需要解析的应用OOM时生成的.rawheap文件路径。 |
-| [heapsnapshot_file] | 否 | 解析生成的heapsnapshot文件路径，路径必须具有读写权限。<br>参数缺省时，默认为当前执行命令的路径。<br>参数给定时，文件的后缀名必须是heapsnapshot。
+| [heapsnapshot_file] | 否 | 解析生成的heapsnapshot文件路径，路径必须具有读写权限。<br>参数缺省时，默认为当前执行命令的路径。<br>参数给定时，文件的后缀名必须是heapsnapshot。|
 
 ## 解析命令示例
 
@@ -81,21 +81,25 @@ rawheap_translator [rawheap_file] [heapsnapshot_file]
 
 
 OHOS设备中解析示例
+
 OHOS设备内工具路径：/bin/rawheap_translator，推荐指定生成heapsnapshot文件路径为/data/local/tmp，其他路径可能面临没有写权限问题。
 ```bash
 > /bin/rawheap_translator /data/log/reliability/resource_leak/memory_leak/memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap /data/local/tmp/myapplication-7979-7979.heapsnapshot
 ```
 Windows系统中解析示例
+
 打开cmd并进入rawheap文件路径，调用解析工具命令，指定在当前路径下生成heapsnapshot文件。
 ```bash
 > rawheap_translator.exe memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
 ```
 Linux系统中解析示例
+
 进入rawheap文件路径，调用解析工具命令，指定在当前路径下生成heapsnapshot文件。
 ```bash
 > ./rawheap_translator memory_leak/memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
 ```
 MacOS系统中解析示例
+
 打开终端并进入rawheap文件路径，调用解析工具命令，指定在当前路径下生成heapsnapshot文件。
 ```bash
 > rawheap_translator memory_leak/memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
@@ -123,7 +127,7 @@ MacOS系统中解析示例
 
 rawheap文件的大小和生成耗时与当前ArkTS堆内存大小及存活对象数量呈强正相关。当ArkTS堆内存占用较大、存活对象数量较多时，生成的rawheap文件会更大，耗时也会更长。开发者可以订阅[资源泄漏事件](../dfx/hiappevent-watcher-resourceleak-events.md)，自定义事件处理逻辑。
 
-从API version 20开始，虚拟机支持两种规格的HeapDump。
+从API version 20开始，虚拟机支持两种规格的HeapDump，具体切换操作可参考[设置当前进程转储虚拟机原始堆快照的裁剪级别](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugsetjsrawheaptrimlevel20)。
 | 规格 | 特点 |
 | :--- | :--- |
 | TRIM_LEVEL_1 | dump速度快，生成的rawheap文件大。<br>API version 20之前版本，虚拟机默认为TRIM_LEVEL_1规格。 |

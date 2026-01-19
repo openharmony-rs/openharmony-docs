@@ -106,7 +106,7 @@
     }
 
     onWindowStageCreate(windowStage: window.WindowStage): void {
-      
+
       hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
 
       windowStage.loadContent('pages/Index', (err, data) => {
@@ -117,6 +117,7 @@
         hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
       });
     }
+
     // ...
   }
   ```
@@ -187,34 +188,34 @@
   import { formBindingData, formProvider } from '@kit.FormKit';
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
   const TAG: string = 'WidgetCalleeEntryAbility';
   const DOMAIN_NUMBER: number = 0xFF00;
   const MSG_SEND_METHOD: string = 'funA';
   const CONST_NUMBER_1: number = 1;
-  
+
   class MyParcelable implements rpc.Parcelable {
     num: number;
     str: string;
-  
+
     constructor(num: number, str: string) {
       this.num = num;
       this.str = str;
     };
-  
+
     marshalling(messageSequence: rpc.MessageSequence): boolean {
       messageSequence.writeInt(this.num);
       messageSequence.writeString(this.str);
       return true;
     };
-  
+
     unmarshalling(messageSequence: rpc.MessageSequence): boolean {
       this.num = messageSequence.readInt();
       this.str = messageSequence.readString();
       return true;
     };
   }
-  
+
   // 在收到call事件后会触发callee监听的方法
   let funACall = (data: rpc.MessageSequence): MyParcelable => {
     // 获取call事件中传递的所有参数
@@ -235,7 +236,7 @@
     }
     return new MyParcelable(CONST_NUMBER_1, 'aaa');
   };
-  
+
   export default class WidgetCalleeEntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
       try {
@@ -245,11 +246,11 @@
         hilog.error(DOMAIN_NUMBER, TAG, `${MSG_SEND_METHOD} register failed with error ${JSON.stringify(error)}`);
       }
     }
-  
+
     onWindowStageCreate(windowStage: window.WindowStage): void {
       // Main window is created, set main page for this ability
       hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
-  
+
       windowStage.loadContent('pages/Index', (err, data) => {
         if (err.code) {
           hilog.error(DOMAIN_NUMBER, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');

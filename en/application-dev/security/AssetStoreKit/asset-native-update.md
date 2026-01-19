@@ -58,6 +58,10 @@ The following table describes the attributes for updating an asset.
 
 ## Example
 
+> **NOTE**
+>
+> Before updating an asset, ensure that the asset exists. For details about how to add an asset, see [Adding an Asset](asset-native-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
+
 Update asset **demo_alias** as follows: change the asset plaintext to **demo_pwd_new** and additional attribute to **demo_label_new**.
 
 For details about how to update an asset in a group, see [Updating an asset in a Group](asset-native-group-access-control.md#updating-an-asset-in-a-group).

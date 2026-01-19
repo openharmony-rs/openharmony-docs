@@ -6,7 +6,7 @@
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-## AVCastPickerState<sup>11+</sup>
+## AVCastPickerState
 
 Enumerates the states of the **AVCastPicker** component.
 

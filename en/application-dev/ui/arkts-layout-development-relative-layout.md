@@ -26,7 +26,7 @@ A child element does not necessarily adopt the dependency shown above to determi
 
 - Reference boundary: boundary of the current component used for alignment with the anchor.
 
-- Anchor: element relative to which an element's position is specified.
+- Anchor: element used as a reference point for specifying another element's position.
 
 - Alignment mode: how the current element is aligned with the anchor, which can be top-, center-, or bottom-aligned in the vertical direction or left-, center-, and right-aligned in the horizontal direction.
 
@@ -161,45 +161,60 @@ To properly define an anchor, each child element in **RelativeContainer** must h
     build() {
       Row() {
         RelativeContainer() {
-          Row(){Text('row1')}.justifyContent(FlexAlign.Center).width(100).height(100)
+          Row() {
+            Text('row1')
+          }
+          .justifyContent(FlexAlign.Center)
+          .width(100)
+          .height(100)
           .backgroundColor('#a3cf62')
           .alignRules({
-            top: {anchor: "__container__", align: VerticalAlign.Top},
-            left: {anchor: "__container__", align: HorizontalAlign.Start}
+            top: { anchor: "__container__", align: VerticalAlign.Top },
+            left: { anchor: "__container__", align: HorizontalAlign.Start }
           })
           .id("row1")
 
-          Row(){Text('row2')}.justifyContent(FlexAlign.Center).width(100)
+          Row() {
+            Text('row2')
+          }
+          .justifyContent(FlexAlign.Center)
+          .width(100)
           .backgroundColor('#00ae9d')
           .alignRules({
-            top: {anchor: "__container__", align: VerticalAlign.Top},
-            right: {anchor: "__container__", align: HorizontalAlign.End},
-            bottom: {anchor: "row1", align: VerticalAlign.Center},
+            top: { anchor: "__container__", align: VerticalAlign.Top },
+            right: { anchor: "__container__", align: HorizontalAlign.End },
+            bottom: { anchor: "row1", align: VerticalAlign.Center },
           })
           .id("row2")
 
-          Row(){Text('row3')}.justifyContent(FlexAlign.Center).height(100)
+          Row() {
+            Text('row3')
+          }
+          .justifyContent(FlexAlign.Center)
+          .height(100)
           .backgroundColor('#0a59f7')
           .alignRules({
-            top: {anchor: "row1", align: VerticalAlign.Bottom},
-            left: {anchor: "row1", align: HorizontalAlign.Start},
-            right: {anchor: "row2", align: HorizontalAlign.Start}
+            top: { anchor: "row1", align: VerticalAlign.Bottom },
+            left: { anchor: "row1", align: HorizontalAlign.Start },
+            right: { anchor: "row2", align: HorizontalAlign.Start }
           })
           .id("row3")
 
-          Row(){Text('row4')}.justifyContent(FlexAlign.Center)
+          Row() {
+            Text('row4')
+          }.justifyContent(FlexAlign.Center)
           .backgroundColor('#2ca9e0')
           .alignRules({
-            top: {anchor: "row3", align: VerticalAlign.Bottom},
-            left: {anchor: "row1", align: HorizontalAlign.Center},
-            right: {anchor: "row2", align: HorizontalAlign.End},
-            bottom: {anchor: "__container__", align: VerticalAlign.Bottom}
+            top: { anchor: "row3", align: VerticalAlign.Bottom },
+            left: { anchor: "row1", align: HorizontalAlign.Center },
+            right: { anchor: "row2", align: HorizontalAlign.End },
+            bottom: { anchor: "__container__", align: VerticalAlign.Bottom }
           })
           .id("row4")
         }
         .width(300).height(300)
-        .margin({left: 50})
-        .border({width:2, color: "#6699FF"})
+        .margin({ left: 50 })
+        .border({ width: 2, color: "#6699FF" })
       }
       .height('100%')
     }
@@ -342,14 +357,12 @@ struct Index {
 
 ## Aligning Components in Multiple Layouts
 
-You can set components in multiple layout components, such as **Row**, **Column**, **Flex**, and **Stack**, to be aligned based on the **RelativeContainer** rules.
+You can set components in multiple layout components, such as **Row**, **Column**, **Flex**, and **Stack**, to be aligned based on the relative layout rules.
 
   ```ts
 @Entry
 @Component
 struct Index {
-  @State value: number = 0
-
   build() {
     Row() {
 
@@ -391,7 +404,11 @@ struct Index {
         .id("row3")
 
         Stack({ alignContent: Alignment.Bottom }) {
-          Text('First child, show in bottom').width('90%').height('100%').backgroundColor('#a3cf62').align(Alignment.Top)
+          Text('First child, show in bottom')
+            .width('90%')
+            .height('100%')
+            .backgroundColor('#a3cf62')
+            .align(Alignment.Top)
           Text('Second child, show in top').width('70%').height('60%').backgroundColor('#00ae9d').align(Alignment.Top)
         }
         .margin({ top: 5 })
@@ -524,6 +541,7 @@ Chain formation relies on associations between components. Consider a basic hori
 * The chain direction and format are declared in the [chainMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainmode12) API of the chain header component. The **bias** attribute for all elements within the chain is ignored, with only the chain header element's **bias** attribute taking effect as the bias for the entire chain. The chain header is the first component that satisfies chain formation rules. It starts from the left in horizontal layouts (or from the right in mirrored language layouts), and from the top in vertical layouts.
 * When the combined size of all chain elements exceeds the chain's anchor constraints, the excess space is evenly distributed to both ends of the chain. In [PACKED](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainstyle12) chains, you can use [Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias) to control how the excess space is distributed.
 
+In the following example, nine **Row** components within the container are grouped into three horizontal chains using **alignRules** and **chainMode**. Components **row1**, **row2**, and **row3** are top-aligned and form a SPREAD chain horizontally; components within the chain are evenly distributed between anchors. Components **row4**, **row5**, and **row6** are centered vertically based on the container and form a SPREAD_INSIDE chain horizontally; the first and last components are aligned with anchors, and others are evenly distributed within the chain. Components **row7**, **row8**, and **row9** are bottom-aligned and form a PACKED chain horizontally; components within the chain have no gaps between them.
 
 ```ts
 @Entry

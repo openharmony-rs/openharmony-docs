@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块面向输入法应用（包括系统输入法应用、三方输入法应用），为输入法应用提供能力，包括：创建软键盘窗口、插入/删除字符、选中文本、监听物理键盘按键事件等。
@@ -113,7 +113,7 @@ getInputMethodEngine(): InputMethodEngine
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getInputMethodAbility()](#inputmethodenginegetinputmethodability9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[getInputMethodAbility](#inputmethodenginegetinputmethodability9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -137,7 +137,7 @@ createKeyboardDelegate(): KeyboardDelegate
 
 > **说明：**
 >
->从API version 8开始支持，API version 9开始废弃，建议使用[getKeyboardDelegate()](#inputmethodenginegetkeyboarddelegate9)替代。
+>从API version 8开始支持，API version 9开始废弃，建议使用[getKeyboardDelegate](#inputmethodenginegetkeyboarddelegate9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1664,7 +1664,7 @@ panel.startMoving();
 
 getDisplayId(): Promise\<number>
 
-获取当前窗口的所在id,使用Promise异步回调。
+获取当前窗口的所在id，使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2346,7 +2346,7 @@ getSystemPanelCurrentInsets(displayId: number): Promise\<SystemPanelInsets>
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| displayId | number | 是   | 输入法键盘所在屏幕的displayId,可通过[getDisplayId](#getdisplayid15)获取 |
+| displayId | number | 是   | 输入法键盘所在屏幕的displayId，可通过[getDisplayId](#getdisplayid15)获取 |
 
 **返回值：**
 
@@ -3983,6 +3983,8 @@ sendExtendAction(action: ExtendAction, callback: AsyncCallback&lt;void&gt;): voi
 > **说明**
 >
 > 输入法应用调用该接口向编辑框发送扩展编辑操作，编辑框监听相应事件[on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10)，从而进一步做出处理。
+>
+> 编辑框响应[ExtendAction](#extendaction10)的PASTE命令时，需要编辑框应用申请[ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)权限。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4026,6 +4028,8 @@ sendExtendAction(action: ExtendAction): Promise&lt;void&gt;
 >**说明**
 >
 > 输入法应用调用该接口向编辑框发送扩展编辑操作，编辑框监听相应事件[on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10)，从而进一步做出处理。
+>
+> 编辑框响应[ExtendAction](#extendaction10)的PASTE命令时，需要编辑框应用申请[ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)权限。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4067,7 +4071,7 @@ inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY).then(() => {
 
 sendPrivateCommand(commandData: Record&lt;string, CommandDataType&gt;): Promise&lt;void&gt;
 
-发送私有数据至需要与输入法应用通信的系统其他部分。
+发送私有数据至需要与输入法应用通信的系统其他部分。使用promise异步回调。
 
 >**说明:**
 >
@@ -4692,11 +4696,11 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 
 ## TextInputClient<sup>(deprecated)</sup>
 
+下列API示例中都需使用[on('inputStart')](#oninputstart)回调获取到TextInputClient实例，再通过此实例调用对应方法。
+
 > **说明：** 
 >
 > 从API version 8开始支持，API version 9开始废弃，建议使用[InputClient](#inputclient9)替代。
-
-下列API示例中都需使用[on('inputStart')](#oninputstart)回调获取到TextInputClient实例，再通过此实例调用对应方法。
 
 ### getForward<sup>(deprecated)</sup>
 

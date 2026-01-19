@@ -116,7 +116,7 @@ Enumerates the types of audio devices.
 | AUDIO_DEVICE_TYPE_DISPLAY_PORT = 23 | Display port device.|
 | AUDIO_DEVICE_TYPE_REMOTE_CAST = 24 | Remote cast device.|
 | AUDIO_DEVICE_TYPE_USB_DEVICE = 25 | USB device (excluding USB headsets).<br>**Since**: 18|
-| AUDIO_DEVICE_TYPE_ACCESSORY = 26 | Accessory device, such as the microphone on a remote control.<br>**Since**: 18|
+| AUDIO_DEVICE_TYPE_ACCESSORY = 26 | Accessory device, such as the microphone on a remote control.<br>**Since**: 19|
 | AUDIO_DEVICE_TYPE_HDMI = 27 | HDMI device (such as HDMI, ARC, and eARC).<br>**Since**: 19|
 | AUDIO_DEVICE_TYPE_LINE_DIGITAL = 28 | Wired digital device (such as S/PDIF)<br>**Since**: 19|
 | AUDIO_DEVICE_TYPE_HEARING_AID = 30 |  Hearing aid device.<br>**Since**: 20|

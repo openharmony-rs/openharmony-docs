@@ -89,7 +89,7 @@ Step 1: Create a project
 
 Step 2: Run the project
 
-Click the **Run** button in DevEco Studio to run the project, and click **testHiDebugNdk** to trigger the calling of the NDK API.
+Click the **Run** button in DevEco Studio to run the project, and click **testHiDebugNdk** to trigger the NDK API call.
 
 ### Obtaining the CPU Usage of a Thread
 
@@ -297,7 +297,7 @@ Step 1: Create a project
        auto startFp = reinterpret_cast<ucontext_t *>(context)->uc_mcontext.regs[29]; // Read the fp address stored in register X29.
        std::unique_lock<std::mutex> lock(mutex_);
        pcSize = BackTraceObject::GetInstance().BackTraceFromFp(reinterpret_cast<void*>(startFp), MAX_FRAME_SIZE); // This function is asyn-signal-safe. Only the asyn-signal-safe function can be used in the signal processing function.
-       cv_.notify_all(); // Notify the thread that requests stack trace data when the stack back tracing is complete.
+       cv_.notify_all(); // Notify the thread that requests stack trace data when the stack backtracing is complete.
    }
    
    void InitSignalHandle() { // Register the signal processing function.
@@ -305,7 +305,7 @@ Step 1: Create a project
        sigfillset(&action.sa_mask);
        action.sa_sigaction = SignalHandler;
        action.sa_flags = SA_RESTART | SA_SIGINFO | SA_ONSTACK;
-       sigaction(SIGUSR1, &action, nullptr); // Ensure that the signal does not conflict with the original signal.
+       sigaction(SIGUSR1, &action, nullptr); // Note: The signals must not conflict with the original signals.
    }
    
    void BacktraceFrames() { // This API is not thread-safe. It can be used by only one thread at a time.
@@ -324,7 +324,7 @@ Step 1: Create a project
        }
        {
            std::unique_lock<std::mutex> lock(mutex_);
-           cv_.wait(lock, []{return pcSize >= 0;}); // Wait for the main thread to perform stack back tracing in the signal processing function.
+           cv_.wait(lock, []{return pcSize >= 0;}); // Wait for the main thread to perform stack backtracing in the signal processing function.
        }
        for (int i = 0; i < pcSize; i++) {
            BackTraceObject::GetInstance().SymbolicAddress(i); // The main thread parses the value of PC after obtaining it.
@@ -362,7 +362,7 @@ Step 1: Create a project
        std::thread([]{
            std::this_thread::sleep_for(std::chrono::seconds(1));
            BacktraceFrames();
-       }).detach(); // Start the second thread to capture the stack of the main thread.
+       }).detach(); // Start the second thread to capture the main thread stack.
        TestNativeFrames(1); 
        return nullptr;
    }

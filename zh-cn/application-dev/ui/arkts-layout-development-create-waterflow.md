@@ -86,9 +86,9 @@ ArkUI提供了WaterFlow容器组件，用于构建瀑布流布局。WaterFlow组
 
 ```
 
-在此处应通过在数据末尾添加元素的方式来新增数据，不可直接修改dataArray后通过LazyForEach的onDataReloaded()方法通知瀑布流重新加载数据。
+在此处应通过在数据末尾添加元素的方式来新增数据，不可直接修改dataArray后通过LazyForEach的[onDataReloaded](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondatareloaded)方法通知瀑布流重新加载数据。
 
-由于在瀑布流布局中，各子节点的高度不一致，下面的节点位置依赖于上面的节点，所以重新加载所有数据会触发整个瀑布流重新计算布局，可能会导致卡顿。在数据末尾增加数据后，应使用`onDatasetChange([{ type: DataOperationType.ADD, index: len, count: count }])`通知，以使瀑布流能够识别新增数据并继续加载，同时避免对已有数据进行重复处理。
+由于在瀑布流布局中，各子节点的高度不一致，下面的节点位置依赖于上面的节点，所以重新加载所有数据会触发整个瀑布流重新计算布局，可能会导致卡顿。在数据末尾增加数据后，应使用[`onDatasetChange([{ type: DataOperationType.ADD, index: len, count: count }])`](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondatasetchange12)通知，以使瀑布流能够识别新增数据并继续加载，同时避免对已有数据进行重复处理。
 
 ![](figures/waterflow-demo1.gif)
 
@@ -134,10 +134,7 @@ ArkUI提供了WaterFlow容器组件，用于构建瀑布流布局。WaterFlow组
 
 通过动态调整瀑布流的列数，应用能够实现在列表模式与瀑布流模式间的切换，或适应屏幕宽度的变化。 若要动态设置列数，建议采用瀑布流的移动窗口布局模式，这可以实现更快速的列数转换。
 
-```ts
-// 通过状态变量设置列数，可以按需修改触发布局更新
-@State columns: number = 2;
-
+``` TypeScript
 @Reusable
 @Component
 struct ReusableListItem {
@@ -153,49 +150,71 @@ struct ReusableListItem {
         .objectFit(ImageFit.Fill)
         .height(100)
         .aspectRatio(1)
-      Text("N" + this.item).fontSize(12).height('16').layoutWeight(1).textAlign(TextAlign.Center)
+      Text('N' + this.item).fontSize(12).height('16').layoutWeight(1).textAlign(TextAlign.Center)
     }
   }
 }
 
+@Entry
+@Component
+export struct WaterFlowDynamicSwitchover {
+  // 通过状态变量设置列数，可以按需修改触发布局更新
+  @State columns: number = 2;
+
+  // ...
   build() {
-    Column({ space: 2 }) {
-      Button('切换列数').fontSize(20).onClick(() => {
-        if (this.columns === 2) {
-          this.columns = 1;
-        } else {
-          this.columns = 2;
-        }
-      })
-      WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
-        LazyForEach(this.dataSource, (item: number) => {
-          FlowItem() {
-            if (this.columns === 1) {
-              ReusableListItem({ item: item })
-            } else {
-              ReusableFlowItem({ item: item })
+    NavDestination() {
+      Column({ space: 12 }) {
+        // $r('app.string.WaterFlowDynamicSwitchover_title')需要替换为开发者所需的资源文件
+        ComponentCard({ title: $r('app.string.WaterFlowDynamicSwitchover_title') }) {
+          Column({ space: 2 }) {
+            // 请将$r('app.string.waterFlow_text2')替换为实际资源文件，在本示例中该资源文件的value值为"切换列数 "
+            Button($r('app.string.waterFlow_text2')).fontSize(20).onClick(() => {
+              if (this.columns === 2) {
+                this.columns = 1;
+              } else {
+                this.columns = 2;
+              }
+            })
+            WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
+              LazyForEach(this.dataSource, (item: number) => {
+                FlowItem() {
+                  if (this.columns === 1) {
+                    ReusableListItem({ item: item })
+                  } else {
+                    ReusableFlowItem({ item: item })
+                  }
+                }
+                .width('100%')
+                .aspectRatio(this.columns === 2 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
+                .backgroundColor(this.colors[item % 5])
+              }, (item: string) => item)
             }
+            .columnsTemplate('1fr '.repeat(this.columns))
+            .backgroundColor(0xFAEEE0)
+            .width('100%')
+            .height('100%')
+            .layoutWeight(1)
+            // 即将触底时提前增加数据
+            .onScrollIndex((first: number, last: number) => {
+              if (last + 20 >= this.dataSource.totalCount()) {
+                setTimeout(() => {
+                  this.dataSource.addNewItems(100);
+                }, 1000);
+              }
+            })
+            // ...
           }
-          .width('100%')
-          .aspectRatio(this.columns === 2 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
-          .backgroundColor(this.colors[item % 5])
-        }, (item: string) => item)
+        }
       }
-      .columnsTemplate('1fr '.repeat(this.columns))
-      .backgroundColor(0xFAEEE0)
       .width('100%')
       .height('100%')
-      .layoutWeight(1)
-      // 即将触底时提前增加数据
-      .onScrollIndex((first: number, last: number) => {
-        if (last + 20 >= this.dataSource.totalCount()) {
-          setTimeout(() => {
-            this.dataSource.addNewItems(100);
-          }, 1000);
-        }
-      })
     }
+    .backgroundColor('#f1f2f3')
+    // $r('app.string.WaterFlowDynamicSwitchover_title')需要替换为开发者所需的资源文件
+    .title($r('app.string.WaterFlowDynamicSwitchover_title'))
   }
+}
 ```
 
 ![](figures/waterflow-columns.gif)
@@ -206,7 +225,7 @@ struct ReusableListItem {
 
 ![](figures/waterflow-sections1.png)
 
-如果能够将不同部分的子节点整合到一个数据源中，那么通过设置 WaterFlowSections，可以在一个 WaterFlow 容器内实现混合布局。与嵌套滚动相比，这种方法可以简化滚动事件处理等应用逻辑。
+如果能够将不同部分的子节点整合到一个数据源中，那么通过设置[WaterFlowSections](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#waterflowsections12)，可以在一个 WaterFlow 容器内实现混合布局。与嵌套滚动相比，这种方法可以简化滚动事件处理等应用逻辑。
 
 每个瀑布流分组可以分别设置自己的列数、行间距、列间距、margin和子节点总数，如下代码可以实现上述效果：
 

@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 Page routing refers to the redirection and data transfer between different pages in an application. It can be implemented through APIs of the **Router** module. Through different URLs, you can easily navigate users through pages. This document outlines the key features of the **Router** module, including: [Page Redirection](#page-redirection), [Page Return](#page-return), [Adding a Confirmation Dialog Box Before Page Return](#adding-a-confirmation-dialog-box-before-page-return), and [Named Route](#named-route).
@@ -15,23 +15,23 @@ Page routing refers to the redirection and data transfer between different pages
 
 ## Page Redirection
 
-Page redirection is an important part of the development process. When using an application, you usually need to jump between different pages, and sometimes you need to pass data from one page to another.
+Page redirection is a fundamental part of development. Users often need to move between different pages within an application, and sometimes data must be passed from one page to another.
 
   **Figure 1** Page redirection 
 ![router-jump-to-detail](figures/router-jump-to-detail.gif)
 
-The Router module provides two redirection modes: [pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl) and [replaceUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#replaceurl). Whether the target page will replace the current page depends on the mode used.
+The **Router** module provides two redirection modes: [pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl) and [replaceUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#replaceurl). Whether the target page will replace the current page depends on the mode used.
 
-- pushUrl: The target page is not replaced with the current page. Instead, the target page is pushed to the page stack. In this way, the status of the current page can be retained, and the current page can be returned by pressing the back button or calling the [back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back) method.
+- **pushUrl**: The target page does not replace the current page. Instead, it is pushed onto the page stack. In this mode, the state of the current page is retained, and users can return to the current page by pressing the back button or calling the [back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back) API.
 
-- replaceUrl: The target page replaces the current page and destroys the current page. In this mode, the resources of the current page can be released, and users cannot return to the current page.
+- **replaceUrl**: The target page replaces the current page, and the current page is destroyed. In this mode, the resources of the current page are released, and users cannot return to the current page.
 
 >**NOTE**
 >
 >- When creating a page, configure the route to this page by following instructions in <!--RP1-->[Building the Second Page](../quick-start/start-with-ets-stage.md#building-the-second-page)<!--RP1End-->.
 >
 >
->- The maximum capacity of a page stack is 32 pages. If the number of pages exceeds the limit, you can call the [clear](../reference/apis-arkui/arkts-apis-uicontext-router.md#clear) method to clear the historical page stack and release the memory space.
+>- The maximum capacity of a page stack is 32 pages. If this limit is exceeded, the [clear](../reference/apis-arkui/arkts-apis-uicontext-router.md#clear) API can be called to clear the historical page stack and free the memory.
 
 The **Router** module also provides two instance modes: **Standard** and **Single**. Depending on the mode, the target URL is mapped to one or more instances.
 
@@ -42,17 +42,26 @@ The **Router** module also provides two instance modes: **Standard** and **Singl
 - Scenario 1: There is a home page (**Home**) and a details page (**Detail**). You want to click an offering on the home page to go to the details page. In addition, the home page needs to be retained in the page stack so that the status can be restored when the page is returned. In this scenario, you can use the **pushUrl** API and use the **Standard** instance mode (which can also be omitted).
 
   ```ts
-  // On the Home page
-  onJumpClick(): void {
-    this.getUIContext().getRouter().pushUrl({
-      url: 'pages/Detail' // Target URL.
-    }, router.RouterMode.Standard, (err) => {
-      if (err) {
-        console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      console.info('Invoke pushUrl succeeded.');
-    });
+  import { router } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Index {
+    // On the Home page
+    onJumpClick(): void {
+      this.getUIContext().getRouter().pushUrl({
+        url: 'pages/Detail' // Target URL.
+      }, router.RouterMode.Standard, (err) => {
+        if (err) {
+          console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        console.info('Invoke pushUrl succeeded.');
+      });
+    }
+
+    build() {
+    }
   }
   ```
 
@@ -63,17 +72,26 @@ The **Router** module also provides two instance modes: **Standard** and **Singl
 - Scenario 2: There is a login page (**Login**) and a personal center page (**Profile**). After a user successfully logs in from the **Login** page, the **Profile** page is displayed. At the same time, the **Login** page is destroyed, and the application exits when the back button is pressed. In this scenario, you can use the **replaceUrl** API and use the Standard instance mode (which can also be omitted).
 
   ```ts
-  // On the Login page
-  onJumpClick(): void {
-    this.getUIContext().getRouter().replaceUrl({
-      url: 'pages/Profile' // Target URL.
-    }, router.RouterMode.Standard, (err) => {
-      if (err) {
-        console.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      console.info('Invoke replaceUrl succeeded.');
-    })
+  import { router } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Index {
+    // On the Login page
+    onJumpClick(): void {
+      this.getUIContext().getRouter().replaceUrl({
+        url: 'pages/Profile' // Target URL.
+      }, router.RouterMode.Standard, (err) => {
+        if (err) {
+          console.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        console.info('Invoke replaceUrl succeeded.');
+      })
+    }
+
+    build() {
+    }
   }
   ```
 
@@ -84,34 +102,52 @@ The **Router** module also provides two instance modes: **Standard** and **Singl
 - Scenario 3: There is a **Setting** page and a **Theme** page. After a theme option on the **Setting** page is clicked, the **Theme** page is displayed. Only one **Theme** page exists in the page stack at the same time. When the back button is clicked on the **Theme** page, the **Setting** page is displayed. In this scenario, you can use the **pushUrl** API and use the **Single** instance mode.
 
   ```ts
-  // On the Setting page
-  onJumpClick(): void {
-    this.getUIContext().getRouter().pushUrl({
-      url: 'pages/Theme' // Target URL.
-    }, router.RouterMode.Single, (err) => {
-      if (err) {
-        console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      console.info('Invoke pushUrl succeeded.');
-    });
+  import { router } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Index {
+    // On the Setting page
+    onJumpClick(): void {
+      this.getUIContext().getRouter().pushUrl({
+        url: 'pages/Theme' // Target URL.
+      }, router.RouterMode.Single, (err) => {
+        if (err) {
+          console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        console.info('Invoke pushUrl succeeded.');
+      });
+    }
+
+    build() {
+    }
   }
   ```
 
 - Scenario 4: There is a search result list page (**SearchResult**) and a search result details page (**SearchDetail**). You want to click a result on the **SearchResult** page to go to the **SearchDetail** page. In addition, if the result has been viewed before, clicking the result displays the existing details page, instead of creating a new one. In this scenario, you can use the **replaceUrl** API and use the **Single** instance mode.
 
   ```ts
-  // On the SearchResult page
-  onJumpClick(): void {
-    this.getUIContext().getRouter().replaceUrl({
-      url: 'pages/SearchDetail' // Target URL.
-    }, router.RouterMode.Single, (err) => {
-      if (err) {
-        console.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      console.info('Invoke replaceUrl succeeded.');
-    })
+  import { router } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Index {
+    // On the SearchResult page
+    onJumpClick(): void {
+      this.getUIContext().getRouter().replaceUrl({
+        url: 'pages/SearchDetail' // Target URL.
+      }, router.RouterMode.Single, (err) => {
+        if (err) {
+          console.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        console.info('Invoke replaceUrl succeeded.');
+      })
+    }
+
+    build() {
+    }
   }
   ```
 
@@ -152,7 +188,7 @@ onJumpClick(): void {
 }
 ```
 
-On the target page, you can call the [getParams](../reference/apis-arkui/arkts-apis-uicontext-router.md#getparams) method of the Router module to obtain the passed parameters. Example:
+On the target page, you can call the [getParams](../reference/apis-arkui/arkts-apis-uicontext-router.md#getparams) API of the **Router** module to obtain the passed parameters. Example:
 
 
 ```ts
@@ -208,7 +244,7 @@ You can use any of the following methods to return to a page:
 
   ```ts
   this.getUIContext().getRouter().back({
-    url: 'myPage' // myPage is the returned alias of the naming route page.
+    url: 'myPage' // myPage is the alias of the page to return to.
   });
   ```
 
@@ -232,16 +268,16 @@ You can use any of the following methods to return to a page:
 
   ```ts
   this.getUIContext().getRouter().back({
-    url: 'yPage', // myPage is the alias of the named route page to be returned.
+    url: 'myPage', // myPage is the alias of the page to return to.
     params: {
       info: 'From Home Page'
     }
   });
   ```
 
-  This method not only allows you to return to the specified page, but also pass in custom parameter information during the return process. You can call the [getParams](../reference/apis-arkui/arkts-apis-uicontext-router.md#getparams) method on the target page to obtain and parse the parameters.
+  This method not only lets you return to the specified page, but also allows custom parameters to be passed during the return. On the target page, you can call the [getParams](../reference/apis-arkui/arkts-apis-uicontext-router.md#getparams) method to obtain and parse these parameters.
 
-On the target page, call the [getParams](../reference/apis-arkui/arkts-apis-uicontext-router.md#getparams) method where parameters need to be obtained, for example, in the [onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow) lifecycle callback.
+On the target page, call [getParams](../reference/apis-arkui/arkts-apis-uicontext-router.md#getparams) where the parameters are needed, for example, in the [onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow) lifecycle callback.
 
 > **NOTE**
 > 
@@ -266,39 +302,39 @@ struct Home {
 
 >**NOTE**
 >
->When the back method is used to return to a specified page, all pages from the original top page (included) to the specified page (excluded) are popped out of the stack and destroyed.
+>When the **back** API is used to return to a specified page, all pages between the top page (included) and the specified page (excluded) are pushed from the page stack and destroyed.
 >
-> In addition, if the back method is used to return to the original page, the original page is not created repeatedly. Therefore, variables declared using \@State are not declared repeatedly, and the aboutToAppear lifecycle callback of the page is not triggered. If you want to use the custom parameters transferred from the returned page on the original page, you can parse the parameters in the required position. For example, parameter parsing can be performed in the **onPageShow** lifecycle callback.
+> If the **back** API is used to return to the original page, the original page will not be created repeatedly. Therefore, the variable declared using \@State will not be declared repeatedly, and the **aboutToAppear** lifecycle callback of the page will not be triggered. If you want to use the custom parameters transferred from the returned page on the original page, you can parse the parameters in the required position. For example, parameter parsing can be performed in the **onPageShow** lifecycle callback.
 
 ## Lifecycle
 
-[\@Entry](state-management/arkts-create-custom-components.md#entry)-decorated component lifecycle. The following lifecycle APIs are provided:
+The [router](../reference/apis-arkui/js-apis-router.md) page lifecycle refers to the lifecycle of components decorated with [\@Entry](state-management/arkts-create-custom-components.md#entry). The following lifecycle callbacks are provided:
 
 - [onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow): Invoked each time the page is displayed, for example, during page redirection or when the application is switched to the foreground.
 
 - [onPageHide](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpagehide): Invoked each time the page is hidden, for example, during page redirection or when the application is switched to the background.
 
-- [onBackPress](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress): Invoked when the user clicks the **Back** button.
+- [onBackPress](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress): Invoked when the user clicks the back button.
 
 ```ts
 // Index.ets
 @Entry
 @Component
 struct MyComponent {
-  // Only components decorated by @Entry can call the lifecycle callbacks of a page.
+  // Only components decorated with @Entry can call the lifecycle callbacks of a page.
   onPageShow() {
     console.info('Index onPageShow');
   }
 
-  // Only components decorated by @Entry can call the lifecycle callbacks of a page.
+  // Only components decorated with @Entry can call the lifecycle callbacks of a page.
   onPageHide() {
     console.info('Index onPageHide');
   }
 
-  // Only components decorated by @Entry can call the lifecycle callbacks of a page.
+  // Only components decorated with @Entry can call the lifecycle callbacks of a page.
   onBackPress() {
     console.info('Index onBackPress');
-    // If true is returned, the page processes the return logic and does not perform page routing. If false is returned, the default return logic is used. If no return value is set, false is used.
+    // The value true means that the page executes its own return logic, and false (default) means that the default return logic is used.
     return true;
   }
 
@@ -321,18 +357,18 @@ struct Page {
   @State textColor: Color = Color.Black;
   @State num: number = 0;
 
-  // Only components decorated by @Entry can call the lifecycle callbacks of a page.
+  // Only components decorated with @Entry can call the lifecycle callbacks of a page.
   onPageShow() {
     console.info('Page onPageShow');
     this.num = 5;
   }
 
-  // Only components decorated by @Entry can call the lifecycle callbacks of a page.
+  // Only components decorated with @Entry can call the lifecycle callbacks of a page.
   onPageHide() {
     console.info('Page onPageHide');
   }
 
-  // Only components decorated by @Entry can call the lifecycle callbacks of a page.
+  // Only components decorated with @Entry can call the lifecycle callbacks of a page.
   onBackPress() { // If the value is not set, false is used.
     console.info('Page onBackPress');
     this.textColor = Color.Grey;
@@ -358,11 +394,11 @@ struct Page {
   }
 }
 ```
-
+![router_2025-07-02_152548](figures/router_2025-07-02_152548.gif)
 
 ## Defining a Custom Transition
 
-[pageTransition](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#pagetransition9) can be used to customize the transition of router. For details, see [Page Transition (pageTransition)](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md).
+[pageTransition](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#pagetransition9) can be used to customize router page transitions. For details, see [Page Transition (pageTransition)](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md).
 
 ## Adding a Confirmation Dialog Box Before Page Return
 
@@ -377,11 +413,11 @@ Such a dialog box can be in the [default style](#default-confirmation-dialog-box
 
 ### Default Confirmation Dialog Box
 
-You can use the [showAlertBeforeBackPage](../reference/apis-arkui/arkts-apis-uicontext-router.md#showalertbeforebackpage) and [back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back) methods provided by the router module to implement this function.
+To implement this feature, you can use the showAlertBeforeBackPage](../reference/apis-arkui/arkts-apis-uicontext-router.md#showalertbeforebackpage) and [back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back) APIs provided by the **Router** module.
 
 Directly using **router** can lead to the issue of [ambiguous UI context](./arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) instance using the **getUIContext()** API, and then obtain the **router** object bound to that instance through the [getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter) API.
 
-If you want to display a confirmation dialog box on the target page, you need to call the [showAlertBeforeBackPage](../reference/apis-arkui/arkts-apis-uicontext-router.md#showalertbeforebackpage) method to set the information about the confirmation dialog box before calling the [back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back) method. For example, define a click event processing function for the back button on the payment page:
+To enable the confirmation dialog box for page return, call the [showAlertBeforeBackPage](../reference/apis-arkui/arkts-apis-uicontext-router.md#showalertbeforebackpage) API (for setting the information about the dialog box), then the [back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back) API. For example, define a click event processing function for the back button on the payment page:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -404,20 +440,20 @@ function onBackClick(): void {
 }
 ```
 
-The this.getUIContext().getRouter().showAlertBeforeBackPage method receives an object as a parameter. The object contains the following attributes:
+The **this.getUIContext().getRouter().showAlertBeforeBackPage** API receives an object as a parameter. The object contains the following attributes:
 
 **message**: content of the dialog box. The value is of the string type.
 If the API is called successfully, the confirmation dialog box is displayed on the target page. Otherwise, an exception is thrown and the error code and error information is obtained through **err.code** and **err.message**.
 
-When the user clicks the back button, a confirmation dialog box is displayed, prompting the user to confirm their operation. If you tap Cancel, the current page is displayed. If you tap OK, the [back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back) method is triggered, and the jump is determined based on the parameter.
+When the user clicks the back button, a confirmation dialog box is displayed, prompting the user to confirm their operation. If the user selects **Cancel**, the application stays on the current page. If the user selects **OK**, the [back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back) API is called and the redirection is performed based on the parameters.
 
 ### Custom Confirmation Dialog Box
 
-You can customize a dialog box by using the [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1) or custom pop-up window. . This topic uses the APIs in the **PromptAction** module an example to describe how to implement a custom confirmation dialog box.
+To implement a custom confirmation dialog box, use [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1) or create a custom dialog box . This topic uses the APIs in the **PromptAction** module an example to describe how to implement a custom confirmation dialog box.
 
 Directly using **router** can lead to the issue of [ambiguous UI context](./arkts-global-interface.md). To avoid this, obtain a [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) instance using the **getUIContext()** API, and then obtain the **router** object bound to that instance through the [getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter) API.
 
-In the event callback, call the [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1) method of the pop-up window.
+In the event callback, call the [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1) API.
 
 ```ts
 import { promptAction} from '@kit.ArkUI';
@@ -455,24 +491,17 @@ onBackClick() {
 }
 ```
 
-When the user clicks the back button, the custom confirmation dialog box is displayed, prompting the user to confirm their operation. If the user taps Cancel, the user stays on the current page. If the user taps OK, the [back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back) method is triggered, and the redirection is determined based on the parameters.
+When the user clicks the back button, the custom confirmation dialog box is displayed, prompting the user to confirm their operation. If the user selects **Cancel**, the application stays on the current page. If the user selects **OK**, the [back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back) API is called and the redirection is performed based on the parameters.
 
 ## Named Route
 
-You can use [pushNamedRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushnamedroute) to redirect to a page in a shared package [HAR](../quick-start/har-package.md) or [HSP](../quick-start/in-app-hsp.md).
+To redirect to a page in a [HAR](../quick-start/har-package.md) or [HSP](../quick-start/in-app-hsp.md), you can use [pushNamedRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushnamedroute).
 
   **Figure 4** Named route redirection 
 
 ![(figures/router-add-query-box-before-back.gif)](figures/namedroute-jump-to-mypage.gif)
 
-Before using the **Router** module, import it first.
-
-
-```ts
-import { router } from '@kit.ArkUI';
-```
-
-In the shared package [HAR](../quick-start/har-package.md) or [HSP](../quick-start/in-app-hsp.md) page to which you want to redirect, name the custom component EntryOptions decorated with [@Entry](../ui/state-management/arkts-create-custom-components.md#entry).
+In the target[HAR](../quick-start/har-package.md) or [HSP](../quick-start/in-app-hsp.md), name the [@Entry](../ui/state-management/arkts-create-custom-components.md#entry) decorated custom component in **EntryOptions**.
 
 ```ts
 // library/src/main/ets/pages/Index.ets
@@ -502,14 +531,14 @@ When the configuration is successful, import the named route page to the page fr
 >
 >```ts
 >"dependencies": {
->    "@ohos/library": "file:../library",
+>    "library": "file:../library",
 >    // ...
 > }
 >```
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import '@ohos/library/src/main/ets/pages/Index'; // Import the named route page from the library of the shared package.
+import 'library/src/main/ets/pages/Index'; // Import the named route page from the library of the shared package.
 
 @Entry
 @Component
@@ -531,7 +560,7 @@ struct Index {
                   data3: [123, 456, 789]
                 }
               }
-            })
+            });
           } catch (err) {
             let message = (err as BusinessError).message;
             let code = (err as BusinessError).code;

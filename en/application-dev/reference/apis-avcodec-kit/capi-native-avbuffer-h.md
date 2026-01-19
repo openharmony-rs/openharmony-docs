@@ -44,7 +44,7 @@ The file declares the functions of the media struct AVBuffer.
 | [OH_AVErrCode OH_AVBuffer_SetParameter(OH_AVBuffer *buffer, const OH_AVFormat *format)](#oh_avbuffer_setparameter) | Sets parameters except basic attributes of a buffer. The information is carried in an OH_AVFormat instance.|
 | [uint8_t *OH_AVBuffer_GetAddr(OH_AVBuffer *buffer)](#oh_avbuffer_getaddr) | Obtains the virtual address of a data buffer.|
 | [int32_t OH_AVBuffer_GetCapacity(OH_AVBuffer *buffer)](#oh_avbuffer_getcapacity) | Obtains the capacity (in bytes) of a buffer.|
-| [OH_NativeBuffer *OH_AVBuffer_GetNativeBuffer(OH_AVBuffer *buffer)](#oh_avbuffer_getnativebuffer) | Obtains the pointer to an OH_NativeBuffer instance. You must call **OH_NativeBuffer_Unreference** to release the OH_NativeBuffer instance returned.|
+| [OH_NativeBuffer *OH_AVBuffer_GetNativeBuffer(OH_AVBuffer *buffer)](#oh_avbuffer_getnativebuffer) | Obtains the pointer to an OH_NativeBuffer instance. You must call [OH_NativeBuffer_Unreference](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_unreference) to manually release the OH_NativeBuffer instance returned.|
 
 ## Function Description
 
@@ -313,4 +313,3 @@ Obtains the pointer to an OH_NativeBuffer instance. You must call [OH_NativeBuff
 | Type| Description|
 | -- | -- |
 | [OH_NativeBuffer](capi-core-oh-nativebuffer.md) * | Pointer to the OH_NativeBuffer instance created. If the operation fails, NULL is returned.<br> The possible causes of an operation failure are as follows:<br> 1. The value of **buffer** is a null pointer.<br> 2. The value of **OH_AVBuffer** fails parameter structure verification.<br> 3. An internal error occurs.|
-<!--no_check-->

@@ -10,7 +10,7 @@ You can use the AVRecorder to develop the audio and video recording service. The
 
 In this topic, you will learn how to use the AVRecorder to complete the process of starting, pausing, resuming, and stopping video recording.
 
-During application development, you can use the **state** property of the AVRecorder to obtain the AVRecorder state or call **OH_AVRecorder_SetStateCallback** to listen for state changes. Your code must meet the state machine requirements. For example, **OH_AVRecorder_Pause()** is called only when the AVRecorder is in the **started** state, and **OH_AVRecorder_Resume()** is called only when it is in the **paused** state.
+During application development, you can use the **state** property of the AVRecorder to obtain the AVRecorder state or call **OH_AVRecorder_SetStateCallback** to listen for state changes. Your code must meet the state machine requirements. For example, **pause()** is called only when the AVRecorder is in the **started** state, and **resume()** is called only when it is in the **paused** state.
 
 **Figure 1** Recording state transition
 
@@ -223,8 +223,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
         SetConfig(*config);
     
         // 1. Set the URL. (This operation is required when APP_CREATE is selected for fileGenerationMode.)
-        const std::string AVREORDER_ROOT = "/data/storage/el2/base/files/";
-        int32_t outputFd = open((AVREORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // Set the file name.
+        const std::string AVRECORDER_ROOT = "/data/storage/el2/base/files/";
+        int32_t outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // Set the file name.
         std::string fileUrl = "fd://" + std::to_string(outputFd);
         config->url = const_cast<char *>(fileUrl.c_str());
         OH_LOG_INFO(LOG_APP, "config.url is: %s", const_cast<char *>(fileUrl.c_str()));
@@ -451,8 +451,8 @@ Refer to the sample code below to complete the process of creating a recorder in
       SetConfig(*config);
 
       // 1.1 Set the URL. (This operation is required when APP_CREATE is selected for fileGenerationMode.)
-      const std::string AVREORDER_ROOT = "/data/storage/el2/base/files/";
-      g_outputFd = open((AVREORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // Set the file name.
+      const std::string AVRECORDER_ROOT = "/data/storage/el2/base/files/";
+      g_outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp4").c_str(), O_RDWR | O_CREAT, 0777); // Set the file name.
       std::string fileUrl = "fd://" + std::to_string(g_outputFd);
       config->url = const_cast<char *>(fileUrl.c_str());
 

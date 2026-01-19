@@ -278,6 +278,8 @@ off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void):
 
 ## TreeListenType
 
+定义树视图节点的监听事件类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

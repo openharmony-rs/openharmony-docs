@@ -86,7 +86,7 @@ The rules of \@State also apply to \@Provide. The difference is that \@Provide a
 
   **Figure 1** \@Provide initialization rule 
 
-![en-us_image_0000001552614217](figures/en-us_image_0000001552614217.png)
+![provide-initialization](figures/provide-initialization.png)
 
 | \@Consume Transfer/Access| Description                                      |
 | -------------- | ---------------------------------------- |
@@ -98,7 +98,7 @@ The rules of \@State also apply to \@Provide. The difference is that \@Provide a
   **Figure 2** \@Consume initialization rule 
 
 
-![en-us_image_0000001502094666](figures/en-us_image_0000001502094666.png)
+![consume-initialization](figures/consume-initialization.png)
 
 ## Observed Changes and Behavior
 

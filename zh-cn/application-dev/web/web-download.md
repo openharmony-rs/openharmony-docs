@@ -95,6 +95,7 @@ struct WebComponent {
 ## 使用Web组件发起一个下载任务
 
 使用[startDownload()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#startdownload11)接口发起一个下载。
+
 Web组件发起的下载会根据当前显示的url以及Web组件默认的Referrer Policy来计算referrer。
 
 在下面的示例中，先点击setDownloadDelegate按钮向Web注册一个监听类，然后点击startDownload主动发起了一个下载，该下载任务也会通过设置的DownloadDelegate来通知app下载的进度。
@@ -336,7 +337,7 @@ struct WebComponent {
 ```ts
 // downloadUtil.ets
 import { util } from '@kit.ArkTS';
-import fileStream from '@ohos.file.fs';
+import { fileIo as fs } from '@kit.CoreFileKit';
 
 const helper = new util.Base64Helper();
 
@@ -366,7 +367,7 @@ export namespace  downloadUtil {
 
   export function fileExists(filePath: string): boolean {
     try {
-      return fileStream.accessSync(filePath);
+      return fs.accessSync(filePath);
     } catch (error) {
       return false;
     }
@@ -374,19 +375,19 @@ export namespace  downloadUtil {
 
   export function mkDirectorySync(directoryPath: string, recursion?: boolean): void {
     try {
-      fileStream.mkdirSync(directoryPath, recursion ?? false);
+      fs.mkdirSync(directoryPath, recursion ?? false);
     } catch (error) {
       console.error(`mk dir error. err message: ${error.message}, err code: ${error.code}`);
     }
   }
 
   export function writeToFileSync(dir: string, fileName: string, msg: string): void {
-    let file = fileStream.openSync(dir + '/' + fileName, fileStream.OpenMode.WRITE_ONLY | fileStream.OpenMode.CREATE);
-    fileStream.writeSync(file.fd, msg);
+    let file = fs.openSync(dir + '/' + fileName, fs.OpenMode.WRITE_ONLY | fs.OpenMode.CREATE);
+    fs.writeSync(file.fd, msg);
   }
 
   export function readFileSync(dir: string, fileName: string): string {
-    return fileStream.readTextSync(dir + '/' + fileName);
+    return fs.readTextSync(dir + '/' + fileName);
   }
 
 }

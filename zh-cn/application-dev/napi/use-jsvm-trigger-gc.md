@@ -30,6 +30,7 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
 ### OH_JSVM_AddHandlerForGC & OH_JSVM_RemoveHandlerForGC
 
 可以多次调用OH_JSVM_AddHandlerForGC向VM注册回调函数，所有注册的回调函数都会生效。注册时，以回调函数指针和native-data作为键。如果多次注册存在相同的键，则视为无效注册，并返回JSVM_INVALID_ARG错误码。在相同触发条件下，回调函数的回调顺序与注册顺序不严格一致。
+
 通过OH_JSVM_RemoveHandlerForGC可以从VM中移除注册过的回调函数。重复移除具有相同key的回调函数，则会判定为无效移除，并返回JSVM_INVALID_ARG错误码。
 
 **cpp部分代码**

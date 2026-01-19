@@ -409,8 +409,7 @@ arrayList.removeByRange(2, 4);
 
 ### replaceAllElements
 
-replaceAllElements(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) => T,
-thisArg?: Object): void
+replaceAllElements(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) => T, thisArg?: Object): void
 
 Replaces all elements in this ArrayList with new elements, and returns the new ones.
 
@@ -458,8 +457,7 @@ arrayList.replaceAllElements((value: number): number => {
 
 ### forEach
 
-forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) => void,
-thisArg?: Object): void
+forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) => void, thisArg?: Object): void
 
 Uses a callback to traverse each element in the **ArrayList** instance.
 
@@ -512,7 +510,7 @@ arrayList.forEach((value: number, index?: number) => {
 
 sort(comparator?: (firstValue: T, secondValue: T) => number): void
 
-Sorts elements in this ArrayList.
+Sorts elements in an ArrayList according to the order defined by the specified comparator.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

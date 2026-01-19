@@ -20,6 +20,10 @@ This topic describes the crash event detection principles, field meanings, and s
 
 - [Subscribing to Crash Events (C/C++)](hiappevent-watcher-crash-events-ndk.md)
 
+> **NOTE**
+>
+> Crash events can be subscribed to using HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) and atomic services. 
+
 ## Detection Principles
 
 ### NativeCrash

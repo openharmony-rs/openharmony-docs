@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-当某些组件本身的绘制内容不满足需求时，可使用自定义组件绘制功能，在原有组件基础上部分绘制、或者全部自行绘制，以达到预期效果。例如：独特的按钮形状、文字和图像混合的图标等。自定义组件绘制提供了自定义绘制修改器，来实现更自由地组件绘制。
+当某些组件本身的绘制内容不满足需求时，可使用自定义组件绘制功能，在原有组件基础上部分绘制，或者全部自行绘制，以达到预期效果。例如：独特的按钮形状、文字和图像混合的图标等。自定义组件绘制提供了自定义绘制修改器，来实现更自由地组件绘制。
 
 > **说明：**
 >
@@ -319,6 +319,7 @@ struct DrawModifierExample {
         Button('create')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             this.create();
@@ -326,6 +327,7 @@ struct DrawModifierExample {
         Button('play')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             if (this.drawAnimator) {
@@ -335,6 +337,7 @@ struct DrawModifierExample {
         Button('changeModifier')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             this.count += 1;

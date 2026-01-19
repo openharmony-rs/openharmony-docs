@@ -8,11 +8,11 @@
 
 开发者可以了解音频流输出设备变更信息，并完成相应适配，比如：应用在播放音乐时发现输出设备下线，为避免打扰用户，应该立即暂停音乐。
 
-开发者可使用AudioRenderer的[outputDeviceChangeWithInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onoutputdevicechangewithinfo11)，用于监听音频流输出设备变化及原因。当系统出现音频输出设备的上下线、用户强选、设备抢占或设备选择策略变更等情况，导致音频流输出设备变更时，系统将通过该接口通知应用当前音频流设备变更信息，包含当前音频流输出设备信息和设备变更原因。
+开发者可使用AudioRenderer的[on('outputDeviceChangeWithInfo')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onoutputdevicechangewithinfo11)或AudioSessionManager的[on('currentOutputDeviceChanged')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#oncurrentoutputdevicechanged20)，用于监听音频流输出设备变化及原因。当系统出现音频输出设备的上下线、用户强选、设备抢占或设备选择策略变更等情况，导致音频流输出设备变更时，系统将通过该接口通知应用当前音频流设备变更信息，包含当前音频流输出设备信息和设备变更原因。
 
 ## 音频流输出设备信息
 
-在[outputDeviceChangeWithInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onoutputdevicechangewithinfo11)返回的音频流设备变更信息中，包含当前音频流输出设备信息，以数组形式发送，一般该列表仅包含一个设备信息，具体可参考[AudioDeviceDescriptors](../../reference/apis-audio-kit/arkts-apis-audio-t.md#audiodevicedescriptors)（设备信息列表）。
+在AudioRenderer的[on('outputDeviceChangeWithInfo')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onoutputdevicechangewithinfo11)或AudioSessionManager的[on('currentOutputDeviceChanged')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#oncurrentoutputdevicechanged20)返回的音频流设备变更信息中，包含当前音频流输出设备信息，以数组形式发送，一般该列表仅包含一个设备信息，具体可参考[AudioDeviceDescriptors](../../reference/apis-audio-kit/arkts-apis-audio-t.md#audiodevicedescriptors)（设备信息列表）。
 
 ## 音频流输出设备变更原因
 
@@ -49,6 +49,8 @@
 - **REASON_UNKNOWN**：未知原因。
 
 ## 参考示例
+
+### AudioRenderer示例
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -97,5 +99,64 @@
           break;
       }
     });
+  }
+  ```
+
+### AudioSessionManager示例
+
+  ```ts
+  import { audio } from '@kit.AudioKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let audioRenderer: audio.AudioRenderer | undefined = undefined;
+  let audioStreamInfo: audio.AudioStreamInfo = {
+    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+    channels: audio.AudioChannel.CHANNEL_2, // 通道。
+    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+  };
+  let audioRendererInfo: audio.AudioRendererInfo = {
+    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+    rendererFlags: 0 // 音频渲染器标志。
+  };
+  let audioRendererOptions: audio.AudioRendererOptions = {
+    streamInfo: audioStreamInfo,
+    rendererInfo: audioRendererInfo
+  };
+  
+  // 创建AudioRenderer实例。
+  audio.createAudioRenderer(audioRendererOptions).then((data) => {
+    audioRenderer = data;
+    console.info('AudioFrameworkRenderLog: AudioRenderer Created : Success : Stream Type: SUCCESS');
+  }).catch((err: BusinessError) => {
+    console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
+  });
+  
+  if (audioRenderer) {
+    try {
+      let sessionManager = audio.getAudioManager().getSessionManager();
+      sessionManager.activateAudioSession({ concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS });
+      // 订阅监听音频流输出设备变化及原因。
+      sessionManager.on('currentOutputDeviceChanged', async (deviceChangeInfo: audio.CurrentOutputDeviceChangedEvent) => {
+        switch (deviceChangeInfo.changeReason) {
+          case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
+            // 响应设备不可用事件，如果应用处于播放状态，应暂停播放，更新UX界面。
+            // await audioRenderer.pause();
+            console.info('REASON_OLD_DEVICE_UNAVAILABLE, pause audio is recommended');
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
+            // 应用根据业务情况响应设备可用事件。
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:
+            // 应用根据业务情况响应设备强选事件。
+            break;
+          case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:
+            // 应用根据业务情况响应未知原因事件。
+            break;
+        }
+      });
+    } catch (err) {
+      console.error(`on sessionManager#currentOutputDeviceChanged fail: ${err}`);
+    }
   }
   ```

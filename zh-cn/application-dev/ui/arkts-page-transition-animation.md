@@ -22,18 +22,18 @@ pageTransition() {
 PageTransitionEnter的接口为：
 
 ```ts
-PageTransitionEnter({type?: RouteType,duration?: number,curve?: Curve | string,delay?: number})
+PageTransitionEnter({ type?: RouteType, duration?: number, curve?: Curve | string, delay?: number })
 ```
 
 
 PageTransitionExit的接口为：
 
 ```ts
-PageTransitionExit({type?: RouteType,duration?: number,curve?: Curve | string,delay?: number})
+PageTransitionExit({ type?: RouteType, duration?: number, curve?: Curve | string, delay?: number })
 ```
 
 
-上述接口定义了PageTransitionEnter和PageTransitionExit组件，可通过slide、translate、scale、opacity属性定义不同的页面转场效果。对于PageTransitionEnter而言，这些效果表示入场时起点值，对于PageTransitionExit而言，这些效果表示退场的终点值，这一点与组件转场transition配置方法类似。此外，PageTransitionEnter提供了onEnter接口进行自定义页面入场动画的回调，PageTransitionExit提供了onExit接口进行自定义页面退场动画的回调。
+上述接口定义了PageTransitionEnter和PageTransitionExit组件，可通过[slide](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#slide)、[translate](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#translate)、[scale](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#scale)、[opacity](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#opacity)属性定义不同的页面转场效果。对于PageTransitionEnter而言，这些效果表示入场时起点值，对于PageTransitionExit而言，这些效果表示退场的终点值，这一点与组件转场[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)配置方法类似。此外，PageTransitionEnter提供了onEnter接口进行自定义页面入场动画的回调，PageTransitionExit提供了onExit接口进行自定义页面退场动画的回调。
 
 
 上述接口中的参数type，表示路由生效的类型，这一点开发者容易混淆其含义。页面转场的两个页面，必定有一个页面退出，一个页面进入。如果通过[pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl)操作从页面A跳转到页面B，则页面A退出，做页面退场动画，页面B进入，做页面入场动画。如果通过[back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back)操作从页面B返回到页面A，则页面B退出，做页面退场动画，页面A进入，做页面入场动画。即页面的PageTransitionEnter既可能是由于新增页面(push，入栈)引起的新页面的入场动画，也可能是由于页面返回(back，或pop，出栈)引起的页面栈中老页面的入场动画，为了能区分这两种形式的入场动画，提供了type参数，这样开发者能完全定义所有类型的页面转场效果。
@@ -85,7 +85,7 @@ pageTransition() {
 
 ## type配置为RouteType.Push或RouteType.Pop
 
-type为RouteType.Push表示仅对页面栈的push操作生效，type为RouteType.Pop表示仅对页面栈的pop操作生效。
+[type](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionoptions对象说明)为[RouteType.Push](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#routetype枚举说明)表示仅对页面栈的push操作生效，type为RouteType.Pop表示仅对页面栈的pop操作生效。
 
 
 ```ts
@@ -136,15 +136,16 @@ pageTransition() {
 | back，从页面A返回到页面B       | 页面退出，PageTransitionExit且type为RouteType.Pop的转场样式生效，向右侧滑出屏幕 | 页面进入，PageTransitionEnter且type为RouteType.Pop的转场样式生效，从左侧滑入屏幕 |
 
 
->**说明：**
+> **说明：**
 >
->    1. 由于每个页面的页面转场样式都可由开发者独立配置，而页面转场涉及到两个页面，开发者应考虑两个页面的页面转场效果的衔接，如时长尽量保持一致。
+> - 由于每个页面的页面转场样式都可由开发者独立配置，而页面转场涉及到两个页面，开发者应考虑两个页面的页面转场效果的衔接，如时长尽量保持一致。
 >
->    2. 如果没有定义匹配的页面转场样式，则该页面使用系统默认的页面转场样式。
+> - 如果没有定义匹配的页面转场样式，则该页面使用系统默认的页面转场样式。
 
 
 ## 禁用某页面的页面转场
 
+通过设置页面转场的时长为0，可使该页面无页面转场动画。
 
 ```ts
 pageTransition() {
@@ -152,10 +153,6 @@ pageTransition() {
   PageTransitionExit({ type: RouteType.None, duration: 0 })
 }
 ```
-
-
-通过设置页面转场的时长为0，可使该页面无页面转场动画。
-
 
 ## 场景示例
 

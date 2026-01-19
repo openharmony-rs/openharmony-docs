@@ -241,7 +241,7 @@ Sets the callback for long press gesture cancellation. This callback is triggere
 
 Provides the parameters of the long press gesture handler. Inherits from [BaseHandlerOptions](#basehandleroptions15).
 
-**Atomic service API**: This API can be used in atomic services since API version 15.
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -250,7 +250,7 @@ Provides the parameters of the long press gesture handler. Inherits from [BaseHa
 | fingers | number | No| Yes| Minimum number of fingers to trigger a long press gesture. The value ranges from 1 to 10.<br>Default value: **1**.<br>Value range: [1, 10].<br> **NOTE**<br>If a finger moves more than 15 px after being pressed, the gesture recognition fails.|
 | repeat | boolean | No| Yes| Whether to continuously trigger the event callback. The value **true** means to continuously trigger the event callback, and **false** means the opposite.<br>Default value: **false**. .|
 | duration | number | No| Yes| Minimum hold-down time, in ms.<br>Default value: **500**.<br>**NOTE**<br>Value range: [0, +∞). If the value is less than or equal to 0, the default value **500** is used. |
-| isFingerCountLimited<sup>15+</sup> | boolean | No| Yes| Whether to enforce the exact number of fingers touching the screen. **true**: Enforce the exact number of fingers touching the screen. **false**: Do not enforce the exact number of fingers touching the screen. With the value **true**, the gesture recognition fails if the number of fingers touching the screen does not match the configured value of **fingers**.<br>For gestures that have already been successfully recognized, changes in the number of fingers touching the screen will not trigger the **repeat** event. However, if the number of fingers touching the screen returns to the configured minimum number, the [onAction](ts-basic-gestures-longpressgesture.md#events) event can be triggered. The [onActionEnd](ts-basic-gestures-longpressgesture.md#events) event can also be triggered regardless of the finger count.<br>Default value: **false**.|
+| isFingerCountLimited<sup>15+</sup> | boolean | No| Yes| Whether to enforce the exact number of fingers touching the screen. **true**: Enforce the exact number of fingers touching the screen. **false**: Do not enforce the exact number of fingers touching the screen. With the value **true**, the gesture recognition fails if the number of fingers touching the screen does not match the configured value of **fingers**.<br>For gestures that have already been successfully recognized, changes in the number of fingers touching the screen will not trigger the **repeat** event. However, if the number of fingers touching the screen returns to the configured minimum number, the [onAction](ts-basic-gestures-longpressgesture.md#events) event can be triggered. The [onActionEnd](ts-basic-gestures-longpressgesture.md#events) event can also be triggered regardless of the finger count.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 
 ## PanGestureHandler
 

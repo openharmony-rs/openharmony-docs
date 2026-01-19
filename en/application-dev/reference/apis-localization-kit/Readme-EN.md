@@ -11,7 +11,7 @@
   - [@ohos.i18n (Internationalization)](js-apis-i18n.md)
   - [@ohos.intl (Internationalization)](js-apis-intl.md)
   - [@ohos.resourceManager (Resource Management)](js-apis-resource-manager.md)
-  - [@ohos.sendableResourceManager (resource management)] (js-apis-sendable-resource-manager.md)
+  - [@ohos.sendableResourceManager (resource management)](js-apis-sendable-resource-manager.md)
   <!--Del-->
   - [@ohos.fontManager (Font Management) (System API)](js-apis-font-manager-sys.md)
   - [@ohos.i18n (Internationalization) (System API)](js-apis-i18n-sys.md)

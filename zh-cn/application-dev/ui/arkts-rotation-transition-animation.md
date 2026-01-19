@@ -22,6 +22,7 @@ struct rotation {
 
   build() {
     Stack() {
+      // $r('app.media.tree')需要替换为开发者所需的资源文件
       Image($r('app.media.tree'))
         .position({ x: 0, y: 0 })
         .size({ width: 100, height: 100 })
@@ -62,6 +63,7 @@ struct rotation {
 
       // 当屏幕显示方向变化时，切换组件的视图效果
       if (this.myOrientation == display.Orientation.PORTRAIT || this.myOrientation == display.Orientation.PORTRAIT_INVERTED) {
+        // $r('app.media.sky')需要替换为开发者所需的资源文件
         Image($r('app.media.sky'))
           .size({ width: 100, height: 100 })
           .id('image1')
@@ -69,6 +71,7 @@ struct rotation {
           // 开发者也可以通过自行设置transition的TransitionEffect.OPACITY转场效果来实现旋转屏动画的透明度变化
           // .transition(TransitionEffect.OPACITY)
       } else {
+        // $r('app.media.tree')需要替换为开发者所需的资源文件
         Image($r('app.media.tree'))
           .position({ x: 0, y: 0 })
           .size({ width: 200, height: 200 })
@@ -84,8 +87,10 @@ struct rotation {
 }
 ```
 
-监听窗口旋转的同步事件windowsSizeChange来实现视图的切换。例如可在EntryAbility.ets文件的onWindowStageCreate方法中添加处理逻辑以获取屏幕的显示方向。
+监听窗口旋转的同步事件windowsSizeChange来实现视图的切换。例如可在EntryAbility.ets文件的[onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)方法中添加处理逻辑以获取屏幕的显示方向。
 ```ts
+import { display, window } from '@kit.ArkUI';
+
 onWindowStageCreate(windowStage: window.WindowStage): void {
 
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
@@ -123,7 +128,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 }
 ```
 
-需要在项目的 module.json5 文件中的 abilities 列表里添加 "orientation"，指定为 "auto_rotation"。
+需要在项目的module.json5文件中的abilities列表里添加"orientation"，指定为"auto_rotation"。
 ```json
 "orientation": "auto_rotation",
 ```

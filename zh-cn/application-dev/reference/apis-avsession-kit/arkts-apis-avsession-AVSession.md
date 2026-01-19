@@ -198,25 +198,43 @@ setCallMetadata(data: CallMetadata): Promise\<void>
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
 
-async function setCallMetadata() {
-  try {
-    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-    let imageSource = await image.createImageSource(value.buffer);
-    let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
-    let calldata: avSession.CallMetadata = {
-      name: "xiaoming",
-      phoneNumber: "111xxxxxxxx",
-      avatar: imagePixel
-    };
-    currentAVSession.setCallMetadata(calldata).then(() => {
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text('Hello World')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+class CallManager {
+  private currentAVSession: avSession.AVSession | null = null;
+
+  async setCallMetadata() {
+    try {
+      let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+      let imageSource = await image.createImageSource(value.buffer);
+      let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+      let calldata: avSession.CallMetadata = {
+        name: "xiaoming",
+        phoneNumber: "111xxxxxxxx",
+        avatar: imagePixel
+      };
+      await this.currentAVSession?.setCallMetadata(calldata);
       console.info('setCallMetadata successfully');
-    }).catch((err: BusinessError) => {
-      console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
-    });
-  } catch (err) {
-    if (err) {
-      console.error(`setCallMetadata Error: code: ${err.code}, message: ${err.message}`);
+    } catch (err) {
+      if (err) {
+        console.error('setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}');
+      } else {
+        console.error('setCallMetadata Error: ${err}')
+      }
     }
   }
 }
@@ -253,27 +271,44 @@ setCallMetadata(data: CallMetadata, callback: AsyncCallback\<void>): void
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
 
-async function setCallMetadata() {
-  try {
-    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-    let imageSource = await image.createImageSource(value.buffer);
-    let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
-    let calldata: avSession.CallMetadata = {
-      name: "xiaoming",
-      phoneNumber: "111xxxxxxxx",
-      avatar: imagePixel
-    };
-    currentAVSession.setCallMetadata(calldata, (err: BusinessError) => {
-      if (err) {
-        console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
-      } else {
-        console.info('setCallMetadata successfully');
-      }
-    });
-  } catch (err) {
-    if (err) {
-      console.error(`setCallMetadata Error: code: ${err.code}, message: ${err.message}`);
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text('Hello World')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+class CallManager {
+  private currentAVSession: avSession.AVSession | null = null;
+
+  async setCallMetadata() {
+    try {
+      let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+      let imageSource = await image.createImageSource(value.buffer);
+      let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+      let calldata: avSession.CallMetadata = {
+        name: "xiaoming",
+        phoneNumber: "111xxxxxxxx",
+        avatar: imagePixel
+      };
+      this.currentAVSession?.setCallMetadata(calldata, (err: BusinessError) => {
+        if (err) {
+          console.error('setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}');
+        } else {
+          console.info("setCallMetadata successfully");
+        }
+      });
+    }catch (syncErr) {
+      console.error('Syncronous operation failed: ${syncErr}');
     }
   }
 }
@@ -614,7 +649,7 @@ wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
 
 ## dispatchSessionEvent<sup>10+</sup>
 
-dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<void>
+dispatchSessionEvent(event: string, args: Record\<string, Object>): Promise\<void>
 
 媒体提供方设置一个会话内自定义事件，包括事件名和键值对形式的事件内容，结果通过Promise异步回调方式返回。
 
@@ -627,7 +662,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
 | event | string | 是   | 需要设置的会话事件的名称。 |
-| args | {[key: string]: Object} | 是   | 需要传递的会话事件内容。 |
+| args |Record\<string, Object>| 是   | 需要传递的会话事件内容。<br>API version 20开始发生兼容变更，在API version 19及之前的版本args的参数类型为：{[key: string]: Object}。|
 
 > **说明：**
 > 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
@@ -644,7 +679,6 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -691,7 +725,7 @@ struct Index {
 
 ## dispatchSessionEvent<sup>10+</sup>
 
-dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: AsyncCallback\<void>): void
+dispatchSessionEvent(event: string, args: Record\<string, Object>, callback: AsyncCallback\<void>): void
 
 媒体提供方设置一个会话内自定义事件，包括事件名和键值对形式的事件内容，结果通过callback异步回调方式返回。
 
@@ -702,7 +736,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
 | event | string | 是   | 需要设置的会话事件的名称。 |
-| args | {[key: string]: Object} | 是   | 需要传递的会话事件内容。 |
+| args |Record\<string, Object>| 是   | 需要传递的会话事件内容。<br>API version 20开始发生兼容变更，在API version 19及之前的版本args的参数类型为：{[key: string]: Object}。|
 | callback | AsyncCallback\<void>                          | 是   | 回调函数。当会话事件设置成功，err为undefined，否则返回错误对象。 |
 
 > **说明：**
@@ -715,7 +749,6 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -798,6 +831,21 @@ setAVQueueItems(items: Array\<AVQueueItem>): Promise\<void>
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+interface ExtrasType {
+  extras: string;
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+    }
+  }
+}
+
+let currentAVSession: avSession.AVSession;
 
 async function setAVQueueItems() {
   try {
@@ -815,7 +863,7 @@ async function setAVQueueItems() {
     let queueItem_1: avSession.AVQueueItem = {
       itemId: 1,
       description: queueItemDescription_1
-    };
+    } as avSession.AVQueueItem;
     let queueItemDescription_2: avSession.AVMediaDescription = {
       assetId: '002',
       title: 'music_name',
@@ -827,7 +875,7 @@ async function setAVQueueItems() {
     let queueItem_2: avSession.AVQueueItem = {
       itemId: 2,
       description: queueItemDescription_2
-    };
+    } as avSession.AVQueueItem;
     let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
     currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
       console.info('SetAVQueueItems successfully');
@@ -873,19 +921,35 @@ setAVQueueItems(items: Array\<AVQueueItem>, callback: AsyncCallback\<void>): voi
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit'
+
+interface ExtrasType {
+  extras: string;
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+    }
+  }
+}
+
+let currentAVSession: avSession.AVSession;
 
 async function setAVQueueItems() {
   try {
     let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
     let imageSource = await image.createImageSource(value.buffer);
-    let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+    let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
     let queueItemDescription_1: avSession.AVMediaDescription = {
       assetId: '001',
       title: 'music_name',
       subtitle: 'music_sub_name',
       description: 'music_description',
-      mediaImage : imagePixel,
-      extras: {extras:'any'}
+      mediaImage: imagePixel,
+      extras: { extras: 'any' }
     };
     let queueItem_1: avSession.AVQueueItem = {
       itemId: 1,
@@ -897,7 +961,7 @@ async function setAVQueueItems() {
       subtitle: 'music_sub_name',
       description: 'music_description',
       mediaImage: imagePixel,
-      extras: {extras:'any'}
+      extras: { extras: 'any' }
     };
     let queueItem_2: avSession.AVQueueItem = {
       itemId: 2,
@@ -1006,7 +1070,7 @@ currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
 
 ## setExtras<sup>10+</sup>
 
-setExtras(extras: {[key: string]: Object}): Promise\<void>
+setExtras(extras: Record\<string, Object>): Promise\<void>
 
 媒体提供方设置键值对形式的自定义媒体数据包，结果通过Promise异步回调方式返回。
 
@@ -1018,7 +1082,7 @@ setExtras(extras: {[key: string]: Object}): Promise\<void>
 
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
-| extras | {[key: string]: Object} | 是   | 需要传递的自定义媒体数据包键值对。 |
+| extras | Record\<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。<br>API version 20开始发生兼容变更，在API version 19及之前的版本args的参数类型为：{[key: string]: Object}。|
 
 > **说明：**
 
@@ -1739,7 +1803,7 @@ on(type: 'play', callback: () => void): void
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件为`'play'`，当播放命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。                                        |
+| callback | () => void | 是   | 回调函数。    |
 
 **错误码：**
   
@@ -2350,7 +2414,7 @@ currentAVSession.on('outputDeviceChange', (state: avSession.ConnectionState, dev
 
 ## on('commonCommand')<sup>10+</sup>
 
-on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Object}) => void): void
+on(type: 'commonCommand', callback: (command: string, args: Record\<string, Object>) => void): void
 
 设置自定义控制命令变化的监听器。
 
@@ -2365,7 +2429,7 @@ on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Obje
 | 参数名   | 类型  |   必填 | 说明     |
 | -------- | --------- | ---- | --------- |
 | type     | string    | 是   | 事件回调类型，支持事件`'commonCommand'`：当自定义控制命令变化时，触发该事件。 |
-| callback | (command: string, args: {[key: string]: Object}) => void         | 是   | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](arkts-apis-avsession-AVSessionController.md#sendcommoncommand10)方法设置的参数内容完全一致。          |
+| callback | (command: string, args: Record\<string, Object>) => void         | 是   | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](arkts-apis-avsession-AVSessionController.md#sendcommoncommand10)方法设置的参数内容完全一致。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(command: string, args:{[key: string]: Object}) => void。|
 
 **错误码：**
 
@@ -2373,7 +2437,6 @@ on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Obje
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -2911,7 +2974,7 @@ currentAVSession.off('outputDeviceChange');
 
 ## off('commonCommand')<sup>10+</sup>
 
-off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Object}) => void): void
+off(type: 'commonCommand', callback?: (command: string, args: Record\<string, Object>) => void): void
 
 取消自定义控制命令的变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -2924,7 +2987,7 @@ off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Ob
 | 参数名   | 类型  |   必填 | 说明  |
 | -------- | --------- | ---- | ----------------------|
 | type     | string    | 是   | 取消对应的监听事件，支持事件`'commonCommand'`。    |
-| callback | (command: string, args: {[key: string]: Object}) => void         | 否   | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。                      |
+| callback |(command: string, args: Record\<string, Object>) => void| 否   | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(command: string, args:{[key: string]: Object}) => void。|
 
 **错误码：**
 
@@ -2932,7 +2995,6 @@ off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Ob
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 

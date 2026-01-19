@@ -210,7 +210,7 @@ struct SectionOption {
     int32_t crossCount;
     float columnsGap;
     float rowsGap;
-    // top right bottom left
+    // {Top margin, right margin, bottom margin, left margin}
     ArkUI_Margin margin{0, 0, 0, 0};
     float (*onGetItemMainSizeByIndex)(int32_t itemIndex);
     void *userData;
@@ -277,7 +277,7 @@ public:
     ArkUIWaterflowNode() {
         
         OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeApi_);
-        // Create a Waterflow component.
+        // Create a Waterflow component instance.
         waterflow_ = nodeApi_->createNode(ARKUI_NODE_WATER_FLOW);
         
     }
@@ -334,7 +334,7 @@ public:
 };
 }// namespace NativeModule
 
-#endif // MYAPPLICATION_WATERFLOWE_H
+#endif // MYAPPLICATION_WATERFLOW_H
 ```
 
 ## Implementing a WaterFlow Component

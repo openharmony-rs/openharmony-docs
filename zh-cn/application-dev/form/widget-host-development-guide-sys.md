@@ -1,4 +1,10 @@
-# 卡片使用方开发指导（仅对系统应用开放）
+# ArkTS卡片使用方开发指导（仅对系统应用开放）
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 ## 卡片概述
 
@@ -14,7 +20,7 @@
   
   - 卡片管理服务：用于管理系统中所添加卡片的常驻代理服务，包括卡片对象的管理与使用，以及卡片周期性刷新等。
   
-   ![formHostMoudle](./figures/widget-host-development-guide-1.png)
+   ![formHostModule](./figures/widget-host-development-guide-1.png)
 
 ## 场景介绍
 

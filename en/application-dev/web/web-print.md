@@ -10,7 +10,7 @@ With the **Web** component, you can print HTML pages through W3C standards-compl
 
 Before using the print capability, declare related permissions in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
-  ```
+  ```json
   "requestPermissions":[
       {
         "name" : "ohos.permission.PRINT"

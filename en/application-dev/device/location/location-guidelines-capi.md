@@ -30,6 +30,7 @@ You can call location-related APIs to listen for device location changes.
 
 ## How to Develop
 1. Create a native C++ project.
+   
    ![](figures/001.png)
 
 2. Before using system basic location capabilities, check whether your application has been granted the permission to access the device location information. If not, your application first needs to apply for the required permission. For details, see [Applying for Location Permissions](location-permission-guidelines.md).
@@ -54,6 +55,7 @@ You can call location-related APIs to listen for device location changes.
    ```
 
 5. Call **isLocationEnabled** to check whether the location switch is enabled. 
+   
    The return result is a Boolean value. The value **true** indicates that the location switch is enabled, and the value **false** indicates the opposite.
 
    ```c
@@ -79,82 +81,82 @@ You can call location-related APIs to listen for device location changes.
    ```
 
 6. Start positioning and subscribe to location changes.
+   
+   ```c
+   // Define a location request.
+   struct Location_RequestConfig *g_requestConfig = NULL;
+   void *mydata = NULL;
+   
+   // Define a callback to receive location information.
+   void reportLocation(Location_Info* location, void* userData)
+   {
+       Location_BasicInfo baseInfo = OH_LocationInfo_GetBasicInfo(location);
+       char additionalInfo[1024] = "";
+       Location_ResultCode result = OH_LocationInfo_GetAdditionalInfo(location, additionalInfo, sizeof(additionalInfo));
+       if (mydata == userData) {
+        OH_LOG_INFO(LOG_APP, "userData is mydata");
+       }
+       return;
+   }
 
-    ```c
-    // Define a location request.
-    struct Location_RequestConfig *g_requestConfig = NULL;
-    void *mydata = NULL;
+   // Subscribe to location information.
+   static napi_value OhLocationStartLocating(napi_env env, napi_callback_info info)
+   {
+       if (g_requestConfig == NULL) {
+        g_requestConfig = OH_Location_CreateRequestConfig();
+       }
+       OH_LocationRequestConfig_SetUseScene(g_requestConfig, LOCATION_USE_SCENE_NAVIGATION);
+       OH_LocationRequestConfig_SetInterval(g_requestConfig, 1);
+       mydata = (void *)malloc(sizeof("mydata")); // Custom data, which is transparently returned through callback.
+       OH_LocationRequestConfig_SetCallback(g_requestConfig, reportLocation, mydata);
+       OH_Location_StartLocating(g_requestConfig);
+       int32_t ret = 0;
+       napi_value result = NULL;
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
 
-    // Define a callback to receive location information.
-    void reportLocation(Location_Info* location, void* userData)
-    {
-        Location_BasicInfo baseInfo = OH_LocationInfo_GetBasicInfo(location);
-        char additionalInfo[1024] = "";
-        Location_ResultCode result = OH_LocationInfo_GetAdditionalInfo(location, additionalInfo, sizeof(additionalInfo));
-        if (mydata == userData) {
-            OH_LOG_INFO(LOG_APP, "userData is mydata");
-        }
-        return;
-    }
+   // Unsubscribe from location information. The value of g_requestConfig must be the same as the object passed during subscription.
+   static napi_value OhLocationStopLocating(napi_env env, napi_callback_info info)
+   {
+       OH_Location_StopLocating(g_requestConfig);
+       if (g_requestConfig != NULL) {
+           OH_Location_DestroyRequestConfig(g_requestConfig);
+           g_requestConfig = NULL;
+       }
+       free(mydata);
+       mydata = NULL;
+       int32_t ret = 0;
+       napi_value result = NULL;
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
 
-    // Subscribe to location information.
-    static napi_value OhLocationStartLocating(napi_env env, napi_callback_info info)
-    {
-        if (g_requestConfig == NULL) {
-            g_requestConfig = OH_Location_CreateRequestConfig();
-        }
-        OH_LocationRequestConfig_SetUseScene(g_requestConfig, LOCATION_USE_SCENE_NAVIGATION);
-        OH_LocationRequestConfig_SetInterval(g_requestConfig, 1);
-        mydata = (void *) malloc (sizeof ("mydata")); // Custom data, which is transparently returned through callback.
-        OH_LocationRequestConfig_SetCallback(g_requestConfig, reportLocation, mydata);
-        OH_Location_StartLocating(g_requestConfig);
-        int32_t ret = 0;
-        napi_value result = NULL;
-        napi_create_int32(env, ret, &result);
-        return result;
-    }
+   // Add related APIs to the Init function.
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           {"ohLocationStartLocating", NULL, OhLocationStartLocating, NULL, NULL, NULL, napi_default, NULL},
+           {"ohLocationStopLocating", NULL, OhLocationStopLocating, NULL, NULL, NULL, napi_default, NULL},
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+   ```
 
-    // Unsubscribe from location information. The value of g_requestConfig must be the same as the object passed during subscription.
-    static napi_value OhLocationStopLocating(napi_env env, napi_callback_info info)
-    {
-        OH_Location_StopLocating(g_requestConfig);
-        if (g_requestConfig != NULL) {
-            OH_Location_DestroyRequestConfig(g_requestConfig);
-            g_requestConfig = NULL;
-        }
-        free(mydata);
-        mydata = NULL;
-        int32_t ret = 0;
-        napi_value result = NULL;
-        napi_create_int32(env, ret, &result);
-        return result;
-    }
+7. Introduce the NAPI APIs to the **index.d.ts** file in **types/libentry**.
+   ```c
+       export const ohLocationIsEnabled: () => boolean;
+       export const ohLocationStartLocating: () => number;
+       export const ohLocationStopLocating: () => number;
+   ```
 
-    // Add related APIs to the Init function.
-    EXTERN_C_START
-    static napi_value Init(napi_env env, napi_value exports)
-    {
-        napi_property_descriptor desc[] = {
-            {"ohLocationStartLocating", NULL, OhLocationStartLocating, NULL, NULL, NULL, napi_default, NULL},
-            {"ohLocationStopLocating", NULL, OhLocationStopLocating, NULL, NULL, NULL, napi_default, NULL},
-        };
-        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-        return exports;
-    }
-    EXTERN_C_END
-    ```
+8. Delete deprecated functions from the **Index.ets** file.
 
-6. Introduce the NAPI APIs to the **index.d.ts** file in **types/libentry**.
-    ```c
-     export const ohLocationIsEnabled: () => boolean;
-     export const ohLocationStartLocating: () => number;
-     export const ohLocationStopLocating: () => number;
-    ```
-
-7. Delete deprecated functions from the **Index.ets** file.
-
-    ```js
-    .onClick(() => {
-        hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
-    })
-    ```
+   ```js
+   .onClick(() => {
+       hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
+   })
+   ```

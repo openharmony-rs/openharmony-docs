@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-鉴于组件导航(Navigation)支持更丰富的动效、一次开发多端部署能力和更灵活的栈操作。本文主要从页面跳转、动效和生命周期等方面介绍如何从Router切换到Navigation。
+鉴于组件导航（[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)）支持更丰富的动效、一次开发多端部署能力和更灵活的栈操作。本文主要从页面跳转、动效和生命周期等方面介绍如何从Router切换到Navigation。
 
 ## 页面结构
 
@@ -91,7 +91,7 @@ struct pageOne {
 }
 ```
 
-而基于Navigation的路由页面分为导航页和子页，导航页又叫Navbar，是Navigation包含的子组件，子页是NavDestination包含的子组件。
+而基于Navigation的路由页面分为导航页和子页，导航页又叫[Navbar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)，是Navigation包含的子组件，子页是[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)包含的子组件。
 
 以下为Navigation导航页的示例。
 
@@ -152,11 +152,11 @@ export struct PageOne {
 }
 ```
 
-每个子页也需要配置到系统配置文件`route_map.json`中（参考[系统路由表](arkts-navigation-navigation.md#系统路由表)）。
+每个子页也需要配置到系统配置文件`router_map.json`中（参考[系统路由表](arkts-navigation-navigation.md#系统路由表)）。
 
 ```json
-// 工程配置文件module.json5中配置 {"routerMap": "$profile:route_map"}
-// route_map.json
+// 工程配置文件module.json5中配置 {"routerMap": "$profile:router_map"}
+// router_map.json
 {
   "routerMap": [
     {
@@ -287,7 +287,7 @@ export struct PageOne {
 }
 ```
 
-**方式二**：子页面通过`OnReady`回调获取。
+**方式二**：子页面通过[OnReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)回调获取。
 
 ```ts
 @Component
@@ -479,7 +479,16 @@ Router可以通过命名路由的方式实现跨包跳转。
    }
    ```
 
-2. 配置成功后需要在跳转的页面中引入命名路由的页面并跳转。
+2. 使用命名路由方式跳转时，需要在当前应用包的oh-package.json5文件中配置依赖。例如：
+
+   ```ts
+   "dependencies": {
+       "library": "file:../library",
+       // ...
+   }
+   ```
+
+3. 配置成功后需要在跳转的页面中引入命名路由的页面并跳转。
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -545,11 +554,20 @@ Navigation作为路由组件，默认支持跨包跳转。
    export { PageInHSP } from "./src/main/ets/pages/PageInHSP"
    ```
 
-3. 配置好HSP（HAR）的项目依赖后，在mainPage中导入自定义组件，并添加到pageMap中，即可正常调用。
+3. 使用跨包路由方式跳转时，需要在当前应用包的oh-package.json5文件中配置依赖。例如：
+
+   ```ts
+   "dependencies": {
+       "library": "file:../library",
+       // ...
+   }
+   ```
+
+4. 配置好HSP（HAR）的项目依赖后，在mainPage中导入自定义组件，并添加到pageMap中，即可正常调用。
 
    ```
    // 1.导入跨包的路由页面
-   import { PageInHSP } from 'library/src/main/ets/pages/PageInHSP'
+   import { PageInHSP } from 'library';
    
    @Entry
    @Component

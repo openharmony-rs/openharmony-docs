@@ -14,25 +14,25 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
 
 1. Import the camera module, which provides camera-related properties and methods.
 
-    ```ts
-    import { camera } from '@kit.CameraKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    ```
+   ```ts
+   import { camera } from '@kit.CameraKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
 
 2. Call [isMacroSupported](../../reference/apis-camera-kit/arkts-apis-camera-MacroQuery.md#ismacrosupported19) to check whether the current device supports macro photography.
 
-    ```ts
+   ```ts
    let isSupported: boolean = photoSession.isMacroSupported();
    ```
-   
+    
 3. Call [enableMacro](../../reference/apis-camera-kit/arkts-apis-camera-Macro.md#enablemacro19) to enable or disable macro photography.
 
-    ```ts
+   ```ts
    function EnableMacro(photoSession: camera.PhotoSession): void {
-   let isSupported: boolean = photoSession.isMacroSupported();
-   if (isSupported) {
-      photoSession.enableMacro(true);
-   }
+      let isSupported: boolean = photoSession.isMacroSupported();
+      if (isSupported) {
+         photoSession.enableMacro(true);
+      }
    }
    ```
 
@@ -60,4 +60,4 @@ Call [on('macroStatusChanged')](../../reference/apis-camera-kit/arkts-apis-camer
    function unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
       photoSession.off('macroStatusChanged');
    }
-   ```
+   ```  

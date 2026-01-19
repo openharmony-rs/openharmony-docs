@@ -52,7 +52,7 @@ align(alignment: Alignment | LocalizedAlignment): T
 
 | 参数名 | 类型                                        | 必填 | 说明                                                         |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| alignment  | [Alignment](ts-appendix-enums.md#alignment) \| [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) | 是   | 设置容器元素绘制区域内的子元素的对齐方式，增加支持镜像的能力。<br/>LocalizedAlignment只在[Shape](ts-drawing-components-shape.md)、[Button](ts-basic-components-button.md)、[GridItem](ts-container-griditem.md)、[FlowItem](ts-container-flowitem.md)、[ImageAnimator](ts-basic-components-imageanimator.md)、[LoadingProgress](ts-basic-components-loadingprogress.md)、[PatternLock](ts-basic-components-patternlock.md)、[Progress](ts-basic-components-progress.md)、[QRCode](ts-basic-components-qrcode.md)、[TextClock](ts-basic-components-textclock.md)、[TextTimer](ts-basic-components-texttimer.md)、[StepperItem](ts-basic-components-stepperitem.md)、[MenuItem](ts-basic-components-menuitem.md)、[Toggle](ts-basic-components-toggle.md)、[Checkbox](ts-basic-components-checkbox.md)、[ListItem](ts-container-listitem.md)中有效果。<br/>其中，除[ListItem](ts-container-listitem.md)与Alignment的效果保持一致以外，其他组件镜像切换均生效；其他设置LocalizedAlignment无效果的组件按其默认效果显示。<br/>默认值：Alignment.Center、LocalizedAlignment.CENTER<br/>**说明：** <br/>Alignment类型不支持镜像能力；LocalizedAlignment类型支持镜像能力，选择LocalizedAlignment中的枚举值，根据direction或系统语言方向的改变实现镜像切换。其中direction的优先级高于系统语言方向，当设置direction且不为auto时，LocalizedAlignment的镜像按照direction进行布局；当设置direction为auto或未设置时，LocalizedAlignment的镜像按照系统语言方向进行布局。<br/>align属性入参为undefined或null时按默认值处理，效果为居中显示。 |
+| alignment  | [Alignment](ts-appendix-enums.md#alignment) \| [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) | 是   | 设置容器元素绘制区域内的子元素的对齐方式，增加支持镜像的能力。<br/>LocalizedAlignment只在[Shape](ts-drawing-components-shape.md)、[Button](ts-basic-components-button.md)、[GridItem](ts-container-griditem.md)、[FlowItem](ts-container-flowitem.md)、[ImageAnimator](ts-basic-components-imageanimator.md)、[LoadingProgress](ts-basic-components-loadingprogress.md)、[PatternLock](ts-basic-components-patternlock.md)、[Progress](ts-basic-components-progress.md)、[QRCode](ts-basic-components-qrcode.md)、[TextClock](ts-basic-components-textclock.md)、[TextTimer](ts-basic-components-texttimer.md)、[StepperItem](ts-basic-components-stepperitem.md)、[MenuItem](ts-basic-components-menuitem.md)、[Toggle](ts-basic-components-toggle.md)、[Checkbox](ts-basic-components-checkbox.md)、[ListItem](ts-container-listitem.md)中有效果。<br/>其中，除[ListItem](ts-container-listitem.md)与Alignment的效果保持一致以外，其他组件镜像切换均生效；其他设置LocalizedAlignment无效果的组件按其默认效果显示。<br/>默认值：Alignment.Center、LocalizedAlignment.CENTER<br/>设置异常值按默认值处理，效果为居中显示。<br/>**说明：** <br/>Alignment类型不支持镜像能力；LocalizedAlignment类型支持镜像能力，选择LocalizedAlignment中的枚举值，根据direction或系统语言方向的改变实现镜像切换。其中direction的优先级高于系统语言方向，当设置direction且不为auto时，LocalizedAlignment的镜像按照direction进行布局；当设置direction为auto或未设置时，LocalizedAlignment的镜像按照系统语言方向进行布局。|
 
 **返回值：**
 
@@ -88,7 +88,16 @@ direction(value: Direction): T
 
 position(value: Position | Edges | LocalizedEdges): T
 
-绝对定位，确定子组件相对父组件内容区的位置。父组件内容区的大小为父组件大小减去[border](ts-universal-attributes-border.md#border)、[padding](ts-universal-attributes-size.md#padding)、[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)提供给子组件可布局的内容区域大小。position对位置的影响作用在组件的尺寸测量完成之后，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+绝对定位，确定子组件相对父组件内容区的位置，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+
+> **说明：**
+> 
+> - position对位置的影响作用在组件的尺寸测量完成之后。
+> - 当父容器为Row/Column/Flex时，设置position的子组件不占位。
+> - Position类型基于父组件内容区左上角确定位置；Edges类型基于父组件内容区四边确定位置，top/left/right/bottom分别为组件各边距离父组件内容区相应边的边距，通过边距来确定组件相对于父组件内容区的位置；LocalizedEdges类型基于父组件内容区四边确定位置，支持镜像模式。
+> - 本属性适用于置顶显示、悬浮按钮等组件在父容器中位置固定的场景。
+> - 本属性不支持在宽高为零的布局容器上设置。
+> - 当父容器为[RelativeContainer](ts-container-relativecontainer.md)，且子组件设置了alignRules属性时，子组件的position属性不生效。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -100,7 +109,7 @@ position(value: Position | Edges | LocalizedEdges): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | 是   | 绝对定位，确定子组件相对父组件内容区的位置。当父容器为Row/Column/Flex时，设置position的子组件不占位。<br/>Position类型基于父组件内容区左上角确定位置；Edges类型基于父组件内容区四边确定位置，top/left/right/bottom分别为组件各边距离父组件内容区相应边的边距，通过边距来确定组件相对于父组件内容区的位置；LocalizedEdges类型基于父组件内容区四边确定位置，支持镜像模式。<br/>适用于置顶显示、悬浮按钮等组件在父容器中位置固定的场景。<br/>不支持在宽高为零的布局容器上设置。<br/>当父容器为[RelativeContainer](ts-container-relativecontainer.md)，且子组件设置了alignRules属性时，子组件的position属性不生效。 |
+| value  | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | 是   | 绝对定位，确定子组件相对父组件内容区的位置，父组件内容区的大小为父组件大小减去[border](ts-universal-attributes-border.md#border)、[padding](ts-universal-attributes-size.md#padding)、[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)后提供给子组件可布局的内容区域大小。<br/>设置异常值时该属性不生效。 |
 
 **返回值：**
 
@@ -124,7 +133,7 @@ markAnchor(value: Position | LocalizedPosition): T
 
 | 参数名 | 类型                             | 必填 | 说明                                                         |
 | ------ | -------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) \| [LocalizedPosition<sup>12+</sup>](ts-types.md#localizedposition12) | 是   | 设置元素在位置定位时的锚点，从position或offset的位置上，进一步偏移。<br/>设置.position({x: value1, y: value2}).markAnchor({x: value3, y: value4})，效果等于设置.position({x: value1 - value3, y: value2 - value4})，offset同理。<br/>单独使用markAnchor，设置.markAnchor({x: value1, y: value2})，效果等于设置.offset({x: -value1, y: -value2})。<br/>API version 9及以前，默认值为：<br/>{<br/>x: 0,<br/>y: 0<br/>}<br/>API version 10：无默认值。 |
+| value  | [Position](ts-types.md#position) \| [LocalizedPosition<sup>12+</sup>](ts-types.md#localizedposition12) | 是   | 设置元素在位置定位时的锚点，基于position或offset的初始位置，进行进一步的偏移调整。<br/>设置.position({x: value1, y: value2}).markAnchor({x: value3, y: value4})，效果等于设置.position({x: value1 - value3, y: value2 - value4})，offset同理。<br/>单独设置.markAnchor({x: value1, y: value2})，效果等于设置.offset({x: -value1, y: -value2})。<br/>API version 9及以前，默认值为：{x: 0, y: 0}<br/>API version 10：无默认值。 <br/>设置异常值时该属性不生效。|
 
 **返回值：**
 
@@ -148,7 +157,7 @@ offset(value: Position | Edges | LocalizedEdges): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12)  \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | 是   | 相对偏移，组件相对原本的布局位置进行偏移。offset属性不影响父容器布局，仅在绘制时调整位置。<br/>Position类型基于组件自身左上角偏移，Edges类型基于组件自身四边偏移。 offset属性设置 {x: x, y: y} 与设置 {left: x, top: y} 以及 {right: -x, bottom: -y} 效果相同,  类型LocalizedEdges支持镜像模式：LTR模式下start 等同于x，RTL模式下等同于-x<br/>API version 9及以前，默认值为：<br/>{<br/>x: 0,<br/>y: 0<br/>}<br/>默认单位：vp<br/>API version 10：无默认值。 |
+| value  | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12)  \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | 是   | 相对偏移，组件基于原本的布局位置进行偏移。offset属性不影响父容器布局，仅在绘制时调整位置。<br/>Position类型基于组件自身左上角偏移，Edges类型基于组件自身四边偏移。 offset属性设置 {x: x, y: y} 与设置 {left: x, top: y} 以及 {right: -x, bottom: -y} 效果相同,  类型LocalizedEdges支持镜像模式：LTR模式下start 等同于x，RTL模式下等同于-x<br/>API version 9及以前，默认值为：{x: 0, y: 0}<br/>默认单位：vp<br/>API version 10：无默认值。<br/>设置异常值时该属性不生效。|
 
 **返回值：**
 
@@ -507,30 +516,68 @@ struct PositionExample2 {
 @Component
 struct Example3 {
   build() {
-    Column({ space: 20 }){
+    Column({ space: 20 }) {
       Text('position use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
       Row() {
-        Text('bottom:0, right:0').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({bottom: 0, right: 0})
-        Text('top:0, left:0').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({top: 0, left: 0})
-        Text('top:10%, left:50%').size({ width: '50%', height: '30' }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({ top: '10%', left: '50%' })
-        Text('bottom:0, left:30').size({ width: '50%', height: '30' }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({ bottom: 0, left: 30 })
+        Text('bottom:0, right:0')
+          .size({ width: '30%', height: '50' })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ bottom: 0, right: 0 })
+        Text('top:0, left:0')
+          .size({ width: '30%', height: '50' })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ top: 0, left: 0 })
+        Text('top:10%, left:50%')
+          .size({ width: '50%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ top: '10%', left: '50%' })
+        Text('bottom:0, left:30')
+          .size({ width: '50%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ bottom: 0, left: 30 })
       }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
 
 
       Text('offset use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
       Row() {
-        Text('1').size({ width: '25%', height: 50 }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+        Text('1')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
           .textAlign(TextAlign.Center)
-        Text('2 top:30, left:0').size({ width: '25%', height: 50 }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).offset({top: 30, left: 0})
-        Text('3').size({ width: '25%', height: 50 }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+        Text('2 top:30, left:0')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
           .textAlign(TextAlign.Center)
-        Text('4 bottom:10, right:30').size({ width: '25%', height: 50 }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(12)
-          .textAlign(TextAlign.Center).offset({bottom: 10, right: 30})
+          .offset({ top: 30, left: 0 })
+        Text('3')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 bottom:10, right:30')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(12)
+          .textAlign(TextAlign.Center)
+          .offset({ bottom: 10, right: 30 })
       }.width('90%').height(150).border({ width: 1, style: BorderStyle.Dashed })
     }.width('100%').margin({ top: 25 })
   }
@@ -541,11 +588,13 @@ struct Example3 {
 
 ### 示例4（镜像效果）
 
-通用布局属性支持镜像能力。从上到下依次通过position，offset，markAnchor实现镜像效果。浅蓝色赋值为原本效果，深蓝色赋值为镜像效果。
+通用布局属性支持[镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)。
+下述示例从上到下依次通过[position](#position)，[offset](#offset)，[markAnchor](#markanchor)实现镜像效果，为对比镜像前后的差异，浅蓝色赋值为原本效果，深蓝色赋值为镜像效果。
 
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Example4 {
@@ -559,47 +608,55 @@ struct Example4 {
             RelativeContainer() {
               Row() {
               }
-              .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) })
+              .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) }) // position接口中的参数使用LocalizedEdges类型，支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .position({ left:'200px', top: '100px' })
+              .position({ left: '200px', top: '100px' }) // position接口中的参数使用Edges类型，不支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200)  })
+              .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200) }) // offset接口中的参数使用LocalizedEdges类型，支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .offset({ left: 100, top: 200  })
+              .offset({ left: 100, top: 200 }) // offset接口中的参数使用Edges类型，不支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .markAnchor({ start: LengthMetrics.fp(100), top: LengthMetrics.fp(-350) })
+              .markAnchor({
+                start: LengthMetrics.fp(100),
+                top: LengthMetrics.fp(-350)
+              }) // markAnchor接口中的参数使用LocalizedPosition类型，支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .markAnchor({ x: '100fp', y: '-350fp' })
+              .markAnchor({ x: '100fp', y: '-350fp' }) // markAnchor接口中的参数使用Position类型，不支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(39, 135, 217)')
@@ -628,11 +685,11 @@ struct Example4 {
 }
 ```
 
-镜像前：
+镜像前效果：
 
 ![position.png](figures/position3.png)
 
-镜像后：
+镜像后效果如下，镜像生效条件请参考[使用镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)：
 
 ![position.png](figures/positionEdge.png)
 

@@ -1,6 +1,6 @@
-# Universal Keystore Kit (Key Management Service)
+# Universal Keystore Kit
 
-- [Introduction to Universal Keystore Kit](huks-overview.md)
+- [About This Kit](huks-overview.md)
 - [Basic Concepts of HUKS](huks-concepts.md)
 - Key Generation and Import<!--huks-key-generation-import-->
   - Key Generation<!--huks-key-generation-->
@@ -46,7 +46,7 @@
     - [HMAC Overview and Algorithm Specifications](huks-hmac-overview.md)
     - Development<!--huks-hmac-dev-->
       - [HMAC(ArkTS)](huks-hmac-arkts.md)
-      - [HMAC(C/C++)](huks-hmac-ndk.md)
+      - [HMAC(C/C++)](huks-hmac-ndk.md)<!--RP1--><!--RP1End-->
 - Key Deletion <!--huks-delete-key-->
   - [Deleting a Key (ArkTS)](huks-delete-key-arkts.md)
   - [Deleting a Key (C/C++)](huks-delete-key-ndk.md)

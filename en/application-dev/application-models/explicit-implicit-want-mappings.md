@@ -105,7 +105,7 @@ There are four combinations of **uri** and **type** settings. The matching rules
 
 - Both **uri** and **type** are null in the **want** parameter.
   - If the **uris** array under **skills** of an application component is null, the matching is successful.
-  - If the **uris** array under **skills** of an application component contains an URI element whose **scheme** and **type** are null, the matching is successful.
+  - If the **uris** array under **skills** of an application component contains a URI element whose **scheme** and **type** are null, the matching is successful.
   - In other cases, the matching fails.
 
 - Only **uri** is not null in the **want** parameter.
@@ -115,7 +115,7 @@ There are four combinations of **uri** and **type** settings. The matching rules
 
 - Only **type** is not null in the **want** parameter.
   - If the **uris** array under **skills** of an application component is null, the matching fails.
-  - If the **uris** array under **skills** of an application component contains an URI element whose **scheme** is null and [type is matched](#matching-rules-of-type), the matching is successful. Otherwise, the matching fails.
+  - If the **uris** array under **skills** of an application component contains a URI element whose **scheme** is null and [type is matched](#matching-rules-of-type), the matching is successful. Otherwise, the matching fails.
 
 - Both **uri** and **type** are not null in the **want** parameter, as shown below.
   - If the **uris** array under **skills** of an application component is null, the matching fails.

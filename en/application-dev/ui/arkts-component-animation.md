@@ -53,7 +53,7 @@ Some components allow for animation customization for their child components thr
 
 - For a scroll or click gesture, you can implement various effects by changing affine properties of the child component.
 
-- To customize the animation for a scroll , you can add a listener to listen for scroll distance in the **onScroll** callback and calculate the affine property of each component. You can also define gestures, monitor positions through the gestures, and manually call **ScrollTo** to change the scrolled-to position.
+- To customize the animation for a scroll, you can add a listener to listen for scroll distance in the **onScroll** callback and calculate the affine property of each component. You can also define gestures, monitor positions through the gestures, and manually call **ScrollTo** to change the scrolled-to position.
 
 - Fine-tune the final scrolled-to position in the **onScrollStop** callback or gesture end callback.
 

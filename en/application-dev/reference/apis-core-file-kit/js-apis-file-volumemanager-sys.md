@@ -52,7 +52,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
     // do something with volumes, which is an array
   }).catch((error: BusinessError) => {
@@ -93,7 +93,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   volumeManager.getAllVolumes((error: BusinessError, volumes: Array<volumeManager.Volume>) => {
     // Do something.
   });
@@ -142,7 +142,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   volumeManager.mount(volumeId).then(() => {
     // Do something.
@@ -189,7 +189,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   volumeManager.mount(volumeId, (error: BusinessError) => {
     // Do something.
@@ -239,7 +239,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   volumeManager.unmount(volumeId).then(() => {
     // Do something.
@@ -286,7 +286,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   volumeManager.unmount(volumeId, (error: BusinessError) => {
     // Do something.
@@ -333,7 +333,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let uuid: string = "";
   volumeManager.getVolumeByUuid(uuid).then((volume: volumeManager.Volume) => {
     console.info("getVolumeByUuid successfully:" + JSON.stringify(volume));
@@ -377,7 +377,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let uuid: string = "";
   volumeManager.getVolumeByUuid(uuid, (error: BusinessError, volume: volumeManager.Volume) => {
     // Do something.   
@@ -424,7 +424,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   volumeManager.getVolumeById(volumeId).then((volume: volumeManager.Volume) => {
     console.info("getVolumeById successfully:" + JSON.stringify(volume));
@@ -468,7 +468,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   volumeManager.getVolumeById(volumeId, (error: BusinessError, volume: volumeManager.Volume) => {
     // Do something.   
@@ -518,7 +518,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let uuid: string = "";
   let description: string = "";
   volumeManager.setVolumeDescription(uuid, description).then(() => {
@@ -566,7 +566,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let uuid: string = "";
   let description: string = "";
   volumeManager.setVolumeDescription(uuid, description, (error: BusinessError) => {
@@ -617,7 +617,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   let fsType: string = "";
   volumeManager.format(volumeId, fsType).then(() => {
@@ -665,7 +665,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   let fsType: string = "";
   volumeManager.format(volumeId, fsType, (error: BusinessError) => {
@@ -714,7 +714,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let diskId: string = "";
   let type: number = 0;
   volumeManager.partition(diskId, type).then(() => {
@@ -760,7 +760,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let diskId: string = "";
   let type: number = 0;
   volumeManager.partition(diskId, type, (error: BusinessError) => {

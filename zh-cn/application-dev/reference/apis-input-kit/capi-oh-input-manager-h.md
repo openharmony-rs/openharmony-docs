@@ -407,7 +407,7 @@ enum Input_Result
 | INPUT_PERMISSION_DENIED = 201 | 权限验证失败。 |
 | INPUT_NOT_SYSTEM_APPLICATION = 202 | 非系统应用。 |
 | INPUT_PARAMETER_ERROR = 401 | 参数检查失败。 |
-| INPUT_DEVICE_NOT_SUPPORTED = 801 | 表示不支持该功能。<br>**起始版本：** 14。|
+| INPUT_DEVICE_NOT_SUPPORTED = 801 | 表示不支持该功能。 |
 | INPUT_SERVICE_EXCEPTION = 3800001 | 服务异常。 |
 | INPUT_REPEAT_INTERCEPTOR = 4200001 | 应用创建拦截后，再次执行创建拦截的操作。 |
 | INPUT_OCCUPIED_BY_SYSTEM = 4200002 | 已经被系统应用占用。<br>**起始版本：** 14。 |
@@ -434,6 +434,13 @@ typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey)
 回调函数，用于回调快捷键事件。
 
 **起始版本：** 14
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | hotkey 快捷键对象的实例。 |
 
 ### Input_KeyEventCallback()
 
@@ -2983,7 +2990,7 @@ Input_Result OH_Input_GetIntervalSinceLastInput(int64_t *timeInterval)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetIntervalSinceLastInput 函数错误码。<br>         若获取时间间隔成功，则返回[INPUT_SUCCESS](#input_result)；若获取失败，返回[INPUT_SERVICE_EXCEPTION](#input_result)。 |
+| [Input_Result](#input_result) | OH_Input_GetIntervalSinceLastInput 函数错误码。<br>若获取时间间隔成功，则返回[INPUT_SUCCESS](#input_result)；若获取失败，返回[INPUT_SERVICE_EXCEPTION](#input_result)；若参数错误，返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_CreateHotkey()
 
@@ -3705,7 +3712,7 @@ Input_Result OH_Input_GetDeviceAddress(Input_DeviceInfo *deviceInfo, char **addr
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) 表示操作成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示deviceInfo或者address是空指针。 |
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示deviceInfo或者address是空指针。 |
 
 ### OH_Input_GetFunctionKeyState()
 
@@ -3731,7 +3738,7 @@ Input_Result OH_Input_GetFunctionKeyState(int32_t keyCode, int32_t *state)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetFunctionKeyState的执行结果。<br>         [INPUT_SUCCESS](#input_result) 表示获取状态成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         {@link INPUT_DEVICE_NOT_EXIST } 表示键盘设备不存在。 |
+| [Input_Result](#input_result) | OH_Input_GetFunctionKeyState的执行结果。<br>  [INPUT_SUCCESS](#input_result) 表示获取状态成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>  [INPUT_KEYBOARD_DEVICE_NOT_EXIST](#input_result) 表示键盘设备不存在。 |
 
 ### OH_Input_InjectTouchEvent()
 

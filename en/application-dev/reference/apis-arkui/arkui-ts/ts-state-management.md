@@ -1667,7 +1667,7 @@ Defines a key-value pair object used to specify persistent properties and their 
 
 ## PersistentStorage
 
-For details about how to use PersistentStorage on the UI, see [PersistentStorage: Persisting Application State](../../../ui/state-management/arkts-persiststorage.md).
+For details about how to use PersistentStorage on the UI, see [PersistentStorage: Persisting UI State](../../../ui/state-management/arkts-persiststorage.md).
 
 > **NOTE**
 >

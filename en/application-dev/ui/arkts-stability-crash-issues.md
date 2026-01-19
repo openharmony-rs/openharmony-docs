@@ -81,7 +81,7 @@ When examining the component tree, ensure that variables decorated with @Provide
 
 **Reference**
 
-[\@Provider and \@Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner](state-management/arkts-new-Provider-and-Consumer.md)
+[\@Provider and \@Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner](state-management/arkts-new-provider-and-consumer.md)
 
 
 ## Incorrect Data Source Type for @Link
@@ -127,4 +127,4 @@ Use **allowOverride** when declaring @Provide variables that may be overridden. 
 
 **Reference**
 
-[\@Provider and \@Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner](state-management/arkts-new-Provider-and-Consumer.md)
+[\@Provider and \@Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner](state-management/arkts-new-provider-and-consumer.md)

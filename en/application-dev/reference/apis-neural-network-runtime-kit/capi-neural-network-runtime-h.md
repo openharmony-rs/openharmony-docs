@@ -16,7 +16,7 @@ Currently, the APIs of Neural Network Runtime do not support multi-thread callin
 
 **Library**: libneural_network_runtime.so
 
-**System capability**: SystemCapability.Ai.NeuralNetworkRuntime
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
 

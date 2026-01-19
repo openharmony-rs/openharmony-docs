@@ -22,6 +22,12 @@
 
 ## 汇总
 
+### 结构体
+
+| 名称               | 描述 |
+|------------------|--|
+| [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md) | 画中画参数配置器。  |
+
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |

@@ -431,7 +431,7 @@ TextInput ({ placeholder: 'Enter your email address...' })
   For the settings to work, **overflow** must be set to **TextOverflow.Ellipsis**. Setting **ellipsisMode** alone does not take effect.
 
   ```ts
-  TextInput ({ text: 'This is a text used to display the ellipsis mode.' })
+  TextInput ({ text: 'This is text used to display the ellipsis mode.' })
     .textOverflow(TextOverflow.Ellipsis)
     .ellipsisMode(EllipsisMode.END)
     .style(TextInputStyle.Inline)
@@ -615,7 +615,7 @@ struct TextExample {
 
       Blank(50)
 
-      Button ("Add Input")
+      Button("Add Input")
         .onClick(() => {
           this.fullText += "I am TextArea";
         })

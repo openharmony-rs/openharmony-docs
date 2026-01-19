@@ -21,12 +21,12 @@ If the network or file access permission is not added for the application, or th
 * Ensure that the network permission **ohos.permission.INTERNET** is added to the application (mandatory for accessing online pages).
   ```
   // Add the required permission in module.json5.
-    "requestPermissions":[
-      {
+  "requestPermissions":[
+     {
         "name" : "ohos.permission.INTERNET"
-      }
+     }
   ]
-    ```
+  ```
 * The following table lists attributes used to enable related permissions.
     | Name  | Description |                       
     | ----   | -------------------------------- |
@@ -39,54 +39,54 @@ If the network or file access permission is not added for the application, or th
 
   ```ts
   // xxx.ets
-    import { webview } from '@kit.ArkWeb';
-    
-    @Entry
-    @Component
-    struct WebComponent {
-      controller: webview.WebviewController = new webview.WebviewController();
-    
-      build() {
-        Column() {
-          Web({ src: 'www.example.com', controller: this.controller })
-            .domStorageAccess(true)
-            .fileAccess(true)
-            .imageAccess(true)
-            .onlineImageAccess(true)
-            .javaScriptAccess(true)
-        }
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .domStorageAccess(true)
+          .fileAccess(true)
+          .imageAccess(true)
+          .onlineImageAccess(true)
+          .javaScriptAccess(true)
       }
     }
-    ```
+  }
+  ```
 * Modify the [UserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10) and check whether the page is restored.
 
   ```ts
   // xxx.ets
-    import { webview } from '@kit.ArkWeb';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    
-    @Entry
-    @Component
-    struct WebComponent {
-      controller: webview.WebviewController = new webview.WebviewController();
-      @State customUserAgent: string = ' DemoApp';
-    
-      build() {
-        Column() {
-          Web({ src: 'www.example.com', controller: this.controller })
-            .onControllerAttached(() => {
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    @State customUserAgent: string = ' DemoApp';
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
           console.info("onControllerAttached");
-              try {
-                let userAgent = this.controller.getUserAgent() + this.customUserAgent;
-                this.controller.setCustomUserAgent(userAgent);
-              } catch (error) {
+          try {
+            let userAgent = this.controller.getUserAgent() + this.customUserAgent;
+            this.controller.setCustomUserAgent(userAgent);
+          } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-              }
-            })
-        }
+          }
+        })
       }
     }
-    ```
+  }
+  ```
 ## Debugging Pages by Using DevTools
 If a white screen issue persists after the network and permission configurations are correctly configured, use DevTools to debug the frontend page and listen for the web-related error reporting APIs to locate the error type.
 
@@ -95,7 +95,7 @@ If a white screen issue persists after the network and permission configurations
    ![web-white-devtools](figures/web-white-devtools.PNG)
 
 2. Check the console to see if there are any exceptions caused by the Mixed Content policy or CORS policy, or JS errors. For details, see [Resolving Cross-Origin Resource Access](web-cross-origin.md). For security purposes, the ArkWeb kernel does not allow the file and resource protocols to access cross-origin requests. As such, the **Web** component blocks such accesses when loading local offline resources. When **Web** components cannot access local cross-origin resources, the DevTools console displays the following error message:
-    ```
+    ```txt
     Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes:   http, arkweb, data, chrome-extension, chrome, https, chrome-untrusted.
     ```
     You can use either of the following methods to solve the problem:
@@ -169,12 +169,13 @@ If a white screen issue persists after the network and permission configurations
 
     ```html
     <!-- main/resources/rawfile/index.html -->
+    <!DOCTYPE html>
     <html>
     <head>
-  	  <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
     </head>
     <body>
-    <script crossorigin src="./js/script.js"></script>
+      <script crossorigin src="./js/script.js"></script>
     </body>
     </html>
     ```
@@ -218,13 +219,13 @@ If a white screen issue persists after the network and permission configurations
     // main/ets/pages/Index.ets
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
-    
+
     @Entry
     @Component
     struct WebComponent {
       controller: WebviewController = new webview.WebviewController();
       uiContext: UIContext = this.getUIContext();
-    
+
       build() {
         Row() {
           Web({ src: "", controller: this.controller })
@@ -256,37 +257,37 @@ If a white screen issue persists after the network and permission configurations
     <head>
         <meta charset="utf-8">
         <title>Demo</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,   viewport-fit=cover">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
         <script>
-  		  function getFile() {
-  			  var file = "file:///data/storage/el1/bundle/entry/resources/resfile/js/script.js";
-          // Use the file protocol to access the local JS file through XMLHttpRequest.
-  			  var xmlHttpReq = new XMLHttpRequest();
-  			  xmlHttpReq.onreadystatechange = function(){
-  			      console.info("readyState:" + xmlHttpReq.readyState);
-  			      console.info("status:" + xmlHttpReq.status);
-  				  if(xmlHttpReq.readyState == 4){
-  				      if (xmlHttpReq.status == 200) {
-                    // If the path list is set on eTS, resources can be obtained.
-  				          const element = document.getElementById('text');
-                            element.textContent = "load " + file + " success";
-  				      } else {
+            function getFile() {
+              var file = "file:///data/storage/el1/bundle/entry/resources/resfile/js/script.js";
+              // Use the file protocol to access the local JS file through XMLHttpRequest.
+              var xmlHttpReq = new XMLHttpRequest();
+              xmlHttpReq.onreadystatechange = function(){
+              console.info("readyState:" + xmlHttpReq.readyState);
+              console.info("status:" + xmlHttpReq.status);
+              if(xmlHttpReq.readyState == 4){
+                if (xmlHttpReq.status == 200) {
+                   // If the path list is set on eTS, resources can be obtained.
+                  const element = document.getElementById('text');
+                  element.textContent = "load " + file + " success";
+                } else {
                     // If the path list is not set on eTS, a CORS error is triggered.
-  				          const element = document.getElementById('text');
-                            element.textContent = "load " + file + " failed";
-  				      }
-  				  }
-  			  }
-  			  xmlHttpReq.open("GET", file);
-  			  xmlHttpReq.send(null);
-  		  }
+                    const element = document.getElementById('text');
+                    element.textContent = "load " + file + " failed";
+                  }
+              }
+            }
+            xmlHttpReq.open("GET", file);
+            xmlHttpReq.send(null);
+          }
         </script>
     </head>
 
     <body>
-    <div class="page">
-        <button id="example" onclick="getFile()">loadFile</button>
-    </div>
+      <div class="page">
+          <button id="example" onclick="getFile()">loadFile</button>
+      </div>
     <div id="text"></div>
     </body>
 
@@ -314,6 +315,7 @@ If a white screen issue persists after the network and permission configurations
 
 ## Resolving White Screen Issues Caused by Complex Layout and Rendering Modes
 If a page uses a complex layout or rendering mode, pay attention to its application scenarios and constraints. Improper use of the layout or rendering mode may cause layout disorder or white screen.
+
 The **Web** component provides two rendering modes, which can be adapted to different container sizes as required. For details, see [Rendering Modes of the Web Component](web-render-mode.md). Pay attention to the following points:
 - In asynchronous rendering mode (renderMode: [RenderMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#rendermode12).ASYNC_RENDER), the width and height of a **Web** component cannot exceed 7,680 px (physical pixels). Otherwise, a white screen is displayed.
 
@@ -324,7 +326,7 @@ The **Web** component provides the capability of adapting to the page layout. Fo
 - Do not enable the **RESIZE_CONTENT** attribute in **FIT_CONTENT** mode to avoid layout invalidation.
 - If the CSS **height: <number& > vh** is conflict with the **Web** component size adaptation page layout, check whether **height: vh** is the first CSS height style from the body node. As shown in the following example. The height of the DOM node whose ID is 2 is 0, causing a white screen.
 
-  ```
+  ```html
   <body>
     <div id = "1">
       <div id = "2" style = "height: 100vh">Child DOM</div>
@@ -334,7 +336,7 @@ The **Web** component provides the capability of adapting to the page layout. Fo
   ```
   The reference solution to the white screen problem is as follows:
   - Use a specific height style for the child DOM to extend the parent element.
-    ```
+    ```html
     <body>
       <div id = "1">
         <div id = "2"><div style = "height: 20px"><div/></div>
@@ -343,7 +345,7 @@ The **Web** component provides the capability of adapting to the page layout. Fo
     </body>
     ```
   - Use the actual height style for the parent element.
-    ```
+    ```html
     <body>
       <div id = "1">
         <div id = "2" style = "height: 20px">Child DOM</div>
@@ -376,7 +378,7 @@ The following table lists log keywords and the corresponding descriptions.
 | StartRenderProcess failed | The rendering process fails to be started.|
 | MEMORY_PRESSURE_LEVEL_CRITICAL | The device memory pressure reaches the threshold. If the device continues to be used, a black screen, screen flickering, or white screen may occur.|
 | crashpad SandboxedHandler::HandlerCrash, received signo = xxx | The render process crashes, causing problems such as white screen and **Web** component suspension.|
-| SharedContextState context lost via Skia OOM | The shared memory is insufficient, which may cause the application to crash, produce artifacts, or become suspended.
+| SharedContextState context lost via Skia OOM | The shared memory is insufficient, which may cause the application to crash, produce artifacts, or become suspended.|
 | CreateNativeViewGLSurfaceEGLOhos::normal surface | The EGL surface is successfully created. If this log is not displayed, a white screen occurs.|
 | INFO: request had no response within 5 seconds | Network timeout.|
 | final url: ***, error_code xxx(net::ERR_XXX) | An error is reported during the main resource loading.|
@@ -389,7 +391,7 @@ The following figure shows the key points contained during the **Web** component
 | NWebRenderMain start  | The child process starts.|
 | RendererMain startup,<br> render thread init | The child process initialization starts.|
 | event_message: WillProcessNavigationResponse source_id xxx navigation_handle id: xxx| The response of the main resource is received.|
-| event_message: commit navigation in main frame, routing_id: 4, url: *** | The navigation is committed to the child process.
+| event_message: commit navigation in main frame, routing_id: 4, url: *** | The navigation is committed to the child process.|
 | RenderFrameImpl::CommitNavigation,<br> event_message: page load start | The child process receives the commit message.|
 | NWebHandlerDelegate::OnNavigationEntryCommitted,<br> event_message: Commit source_id xxx | The main process receives **DidCommitNavigation**.|
 | event_message: load_timing_info errpr_code:0,...| The main resource loading is complete, and the time required for each phase is displayed.|

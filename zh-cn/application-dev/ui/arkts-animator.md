@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-帧动画具备逐帧回调的特性，便于开发者在每一帧中处理需调整的属性。通过向应用提供onFrame逐帧回调，帧动画使开发者能够在应用的每一帧设置属性值，从而实现组件属性值变化的自然过渡，营造出动画效果。帧动画接口详情可参考[@ohos.animator (动画)](../reference/apis-arkui/js-apis-animator.md)。
+帧动画具备逐帧回调的特性，便于开发者在每一帧中处理需调整的属性。通过向应用提供[AnimatorResult](../reference/apis-arkui/js-apis-animator.md#animatorresult)的onFrame属性逐帧回调，帧动画使开发者能够在应用的每一帧设置属性值，从而实现组件属性值变化的自然过渡，营造出动画效果。帧动画接口详情可参考[@ohos.animator (动画)](../reference/apis-arkui/js-apis-animator.md)。
 
 与属性动画相比，帧动画能让开发者实时感知动画进程，即时调整UI值，具备事件即时响应和可暂停的优势，但在性能上略逊于属性动画。当属性动画能满足需求时，建议优先采用属性动画接口实现。属性动画接口可参考[实现属性动画](./arkts-attribute-animation-apis.md)。
 
@@ -143,7 +143,7 @@ import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  @State animatorOptions: AnimatorResult | undefined = undefined;
+  @State animatorResult: AnimatorResult | undefined = undefined;
   @State animatorStatus: string = '创建';
   begin: number = 0;
   end: number = 300;
@@ -164,33 +164,33 @@ struct Index {
   @State translateY: number = 0;
 
   onPageShow(): void {
-    this.animatorOptions = this.getUIContext().createAnimator(this.animatorOption)
-    this.animatorOptions.onFrame = (progress: number) => {
+    this.animatorResult = this.getUIContext().createAnimator(this.animatorOption)
+    this.animatorResult.onFrame = (progress: number) => {
       this.translateX = progress;
       if (progress > this.topWidth && this.translateY < this.bottomHeight) {
         this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
       }
     }
-    this.animatorOptions.onCancel = () => {
+    this.animatorResult.onCancel = () => {
       this.animatorStatus = '取消';
     }
-    this.animatorOptions.onFinish = () => {
+    this.animatorResult.onFinish = () => {
       this.animatorStatus = '完成';
     }
-    this.animatorOptions.onRepeat = () => {
+    this.animatorResult.onRepeat = () => {
       console.info("动画重复播放");
     }
   }
 
   onPageHide(): void {
-    this.animatorOptions = undefined;
+    this.animatorResult = undefined;
   }
 
   build() {
     Column() {
       Column({ space: 30 }) {
         Button('播放').onClick(() => {
-          this.animatorOptions?.play();
+          this.animatorResult?.play();
           this.animatorStatus = '播放中';
         }).width(80).height(35)
         Button("重置").onClick(() => {
@@ -198,7 +198,7 @@ struct Index {
           this.translateY = 0;
         }).width(80).height(35)
         Button("暂停").onClick(() => {
-          this.animatorOptions?.pause();
+          this.animatorResult?.pause();
           this.animatorStatus = '暂停';
         }).width(80).height(35)
       }.width("100%").height('25%')

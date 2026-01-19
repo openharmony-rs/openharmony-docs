@@ -56,9 +56,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         Button('constructor')
         .onClick(async() => {
             try {
-              let SyncFolderAccessor: cloudDiskManager.SyncFolderAccessor = new cloudDiskManager.SyncFolderAccessor();
-            } catch (error) {
-              console.error(`register failed. Code: ${error.code}, message: ${error.message}`);
+              let syncFolderAccessor: cloudDiskManager.SyncFolderAccessor = new cloudDiskManager.SyncFolderAccessor();
+            } catch (err) {
+                let error: BusinessError = err as BusinessError;
+                console.error(`SyncFolderAccessor constructor failed. Code: ${error.code}, message: ${error.message}`);
             }
         });
       }
@@ -105,27 +106,31 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const TAG: string = '[cloudDiskManager]';
 
 try {
-    console.log(TAG + `getAllRoots start`);
-    let syncFolerAccess: cloudDiskManager.SyncFolderAccessor = new cloudDiskManager.SyncFolderAccessor();
-    let syncInfoList: Array<string> = [];
-    syncFolerAccess.getAllSyncFolders().then((syncFolderExts) => {
-        if (syncFolderExts) {
-            console.info(TAG + `getAllRoots success`);
-            this.syncExtList = syncFolderExts;
-            syncInfoList.push('syncFolderExts length: ' + syncFolderExts.length);
-            this.firstLevelTitle = 'query syncfolder info';
-            this.secondLevelTitle = 'result';
-            this.getSyncRootRet = JSON.stringify(syncInfoList);
-            this.dialogControllerConfirm.open();
+    console.info(TAG + `getAllSyncFolders start`);
+    let syncFolderAccessor: cloudDiskManager.SyncFolderAccessor = new cloudDiskManager.SyncFolderAccessor();
+    syncFolderAccessor.getAllSyncFolders().then((syncFolders) => {
+        if (syncFolders) {
+            console.info(TAG + `getAllSyncFolders success, length: ${syncFolders.length}`);
+            for (let i = 0; i < syncFolders.length; ++i) {
+                console.info(TAG + `syncFolders[${i}].path: ${syncFolders[i].path}`);
+                console.info(TAG + `syncFolders[${i}].bundleName: ${syncFolders[i].bundleName}`);
+                console.info(TAG + `syncFolders[${i}].state: ${syncFolders[i].state}`);
+                if (syncFolders[i].displayNameResId) {
+                    console.info(TAG + `syncFolders[${i}].displayNameResId: ${syncFolders[i].displayNameResId}`);
+                }
+                if (syncFolders[i].customAlias) {
+                    console.info(TAG + `syncFolders[${i}].customAlias: ${syncFolders[i].customAlias}`);
+                }
+            }
         } else {
-            console.info(TAG + `getAllRoots failed`);
+            console.info(TAG + `getAllSyncFolders failed`);
         }
     }).catch((e: BusinessError<object>) => {
-        console.error(TAG + `then catch err, err is: ${e.code}, message: ${e.message}`);
+        console.error(TAG + `getAllSyncFolders then catch err, code: ${e.code}, message: ${e.message}`);
     })
 } catch (err) {
     let error: BusinessError = err as BusinessError;
-    console.error(TAG + `getLocalCapabilities failed. Code: ${error.code}, message: ${error.message}`);
+    console.error(TAG + `getAllSyncFolders failed. code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -140,10 +145,10 @@ Encapsulates the sync root information.
 | Name     | Type  | Read-Only| Optional| Description     |
 | --------- | ------ | ---- | ---- | ---------------------------- |
 | path | string | No  | No  | URI of the sync root.    |
-| bundleNme   | string | No  | No  | Bundle name of the sync root.  |
+| bundleName   | string | No  | No  | Bundle name of the sync root.  |
 | state   | [SyncFolderState](#syncfolderstate) | No  | No  | State of the sync root.  |
-| displayNameResId   | number | No  | Yes  | Resource ID, which can be mapped to the alias displayed in the File Manager list. The default value is **0**.  |
-| customAlias   | string | No  | Yes  | Custom alias displayed in the File Manager list. The default value is an empty string.  |
+| displayNameResId   | number | No  | Yes  | Resource ID, which can be mapped to the alias displayed in the File Manager list. The default value is **undefined**.  |
+| customAlias   | string | No  | Yes  | Custom alias displayed in the File Manager list. The default value is **undefined**.  |
 
 ## SyncFolderState
 

@@ -78,7 +78,7 @@
   border-radius: 16px;
 }
 ```
-**4*4卡片**
+**4×4卡片**
 
 ![卡片 stack](figures/stack.PNG)
 

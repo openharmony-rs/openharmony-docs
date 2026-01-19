@@ -37,7 +37,7 @@ Create a **\<button>** component in the .hml file under **pages/index**.
 
 ## Setting the Button Type
 
-Set the **type** attribute of the **Button** component to **circle**, **text**, or any other supported value.
+Set the **type** attribute of the **\<button>** component to **circle**, **text**, or any other supported value.
 
 
 ```html
@@ -81,7 +81,7 @@ Set the **type** attribute of the **Button** component to **circle**, **text**, 
 
 > **NOTE**
 > 
->If the icon used by the **Button** component is from the cloud, you must declare the **ohos.permission.INTERNET** permission in the **config.json** file under the **resources** folder.
+>If the icon used by the **\<button>** component is from the cloud, you must declare the **ohos.permission.INTERNET** permission in the **config.json** file under the **resources** folder.
 
 
 Sample code for declaring the **ohos.permission.INTERNET** permission in the **config.json** file under the **resources** folder:
@@ -99,7 +99,7 @@ Sample code for declaring the **ohos.permission.INTERNET** permission in the **c
 
 ## Showing the Download Progress
 
-Add the **progress** method to the **Button** component to display the download progress in real time.
+Add the **progress** method to the **\<button>** component to display the download progress in real time.
 
 ```html
 <!-- xxx.hml -->

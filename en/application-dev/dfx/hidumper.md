@@ -42,7 +42,7 @@ For FAQs about hidumper, see [FAQs](#faqs).
 | [--cpuusage [pid]](#querying-process-cpu-usage)| Obtains the CPU usage by process and category. If a PID is specified, the CPU usage of the specified PID is displayed. The value range is (0, Number of CPU cores].|
 | [--cpufreq](#querying-cpu-frequency)| Obtains the actual CPU frequency of each core, in kHz.|
 | [--mem [--prune]](#querying-device-memory)| Obtains the total memory usage. If **--prune** is specified, only simplified memory usage is exported.<br>Note: The **--prune** parameter is supported since API version 20.|
-| [--mem pid [--show-ashmem] [--show-dmabuf]](#querying-process-memory)| Obtains the memory usage of a specified process.<br>When **--show-ashmem** is specified, the ashmem usage details of the process are printed.<br>When **--show-dmabuf** is specified for an application process, the DMA memory details are printed.<br>Note: The **--show-ashmem** and **--show-dmabuf** parameters are supported since API version 20.|
+| [--mem pid [--show-ashmem] [--show-dmabuf]](#querying-process-memory)| Obtains the memory usage of a specified process.<br>When **--show-ashmem** is specified, the ashmem usage details of the process are printed.<br>When **--show-dmabuf** is specified, the DMA memory usage details are printed.<br>**NOTE**<br>Since API version 20, the **--show-ashmem** parameter and the **--show-dmabuf** parameter of application processes are supported.<br>Since API version 23, the**--show-dmabuf** parameter of system service processes is supported.|
 | [--zip](#compressing-exported-information)| Saves the command output to a compressed file in ZIP format in **/data/log/hidumper**.|
 | [--ipc [pid]/-a --start-stat/stat/--stop-stat](#obtaining-ipc-information)| Collects IPC information of a process in a specified period. If **-a** is used, IPC information of all processes is collected. **--start-stat** starts the IPC information collection. **--stat** obtains the IPC information. **--stop-stat** stops the IPC information collection.|
 | [--mem-smaps pid [-v]](#querying-process-memory)| Obtains the memory usage of a specified process from **/proc/pid/smaps**. **-v** is used to specify more details about the process. (This command is available only for [applications of the debug version](performance-analysis-kit-terminology.md#applications-of-the-debug-version).)<br>Note: This parameter is supported since API version 20.|
@@ -59,7 +59,7 @@ Run the **hidumper --mem** command to obtain the device memory usage.
 
 The output is as follows:
 
-```
+```shell
 $ hidumper --mem
 -------------------------------[memory]-------------------------------
 Total Memory Usage by PID:
@@ -348,7 +348,7 @@ Size        Rss         Pss         Clean       Dirty       Clean       Dirty   
 
 The **hidumper --mem-smaps \[pid] \[-v]** command should be used for [applications of the debug version](performance-analysis-kit-terminology.md#applications-of-the-debug-version).
 
-To check whether the application specified by the command is a debug application, run the **hdc shell "bm dump -n [application bundle name] | grep appProvisionType"** command. The expected result is **"appProvisionType": "debug"**.
+To check whether the application specified by the command is a debug-type application, run the **hdc shell "bm dump -n [application bundle name] | grep appProvisionType"** command. The expected result is **"appProvisionType": "debug"**.
 
 For example, run the following command to check the bundle name **com.example.myapplication**:
 
@@ -402,7 +402,7 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw]** comman
   ```
   <!--RP4End-->
 
-- Run the **hidumper --mem-jsheap pid [-T tid] --raw** command to obtain the VM heap memory of a specified process or JS thread. The generated heap memory file is in .rawheap format and is named in the format of <!--RP1-->**jsheap-Process ID-JS thread ID-Timestamp**<!--RP1End-->**.rawheap**. For details about how to parse and convert the .rawheap file, see [rawheap-translator](../tools/rawheap-translator.md).
+- Run the **hidumper --mem-jsheap pid \[-T tid] --raw** command to obtain the VM heap memory of a specified process or JS thread. The generated heap memory file is in .rawheap format and is named in the format of <!--RP1-->**jsheap-Process ID-JS thread ID-Timestamp**<!--RP1End-->**.rawheap**. For details about how to parse and convert the .rawheap file, see [rawheap-translator](../tools/rawheap-translator.md).
 
   Example:
 

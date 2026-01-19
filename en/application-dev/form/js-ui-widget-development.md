@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 The stage model is supported since API version 9. It is the mainstream model with a long evolution plan. This model is object-oriented and provides open application components as classes. You can derive application components for capability expansion.
 
 ## Available APIs
@@ -56,7 +56,7 @@ The widget provider development based on the [stage model](../application-models
 
 ### Creating a FormExtensionAbility Instance
 
-To create a widget in the stage model, you need to implement the lifecycle callbacks of FormExtensionAbility. For details about how to generate a service widget template, see <!--RP1-->[Developing a Service Widget](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-service-widget-V5)<!--RP1End-->.
+To create a widget in the stage model, you need to implement the lifecycle callbacks of FormExtensionAbility. Before that, generate a widget template by referring to <!--RP1-->[Creating an ArkTS Widget](./arkts-ui-widget-creation.md)<!--RP1End-->.
 
 1. Import related modules to **EntryFormAbility.ets**.
     ```ts
@@ -83,10 +83,12 @@ To create a widget in the stage model, you need to implement the lifecycle callb
         let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
         return formData;
       }
+
       onCastToNormalForm(formId: string): void {
         // Called when the widget host converts a temporary widget into a normal one. The widget provider should respond to the conversion. (Currently, there is no temporary widget scenario.)
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onCastToNormalForm');
       }
+
       onUpdateForm(formId: string): void {
         // Override this method to support scheduled updates, periodic updates, or updates requested by the widget host.
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
@@ -99,20 +101,24 @@ To create a widget in the stage model, you need to implement the lifecycle callb
           hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
         });
       }
+
       onChangeFormVisibility(newStatus: Record<string, number>): void {
         // Called when the widget host initiates an event about visibility changes. The widget provider should do something to respond to the notification. This callback takes effect only for system applications.
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onChangeFormVisibility');
         //...
       }
+
       onFormEvent(formId: string, message: string): void {
         // If the widget supports event triggering, override this method and implement the trigger.
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onFormEvent');
       }
+
       onRemoveForm(formId: string): void {
         // Delete widget data.
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
         //...
       }
+
       onAcquireFormState(want: Want): formInfo.FormState {
         return formInfo.FormState.READY;
       }
@@ -217,23 +223,25 @@ const TAG: string = 'JsCardFormAbility';
 const DATA_STORAGE_PATH: string = '/data/storage/el2/base/haps/form_store';
 const DOMAIN_NUMBER: number = 0xFF00;
 
-let storeFormInfo = async (formId: string, formName: string, tempFlag: boolean, context: common.FormExtensionContext): Promise<void> => {
-  // Only the widget ID (formId), widget name (formName), and whether the widget is a temporary one (tempFlag) are persistently stored.
-  let formInfo: Record<string, string | boolean | number> = {
-    'formName': formName,
-    'tempFlag': tempFlag,
-    'updateCount': 0
-  };
-  try {
-    const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
-    // put form info
-    await storage.put(formId, JSON.stringify(formInfo));
-    hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] storeFormInfo, put form info successfully, formId: ${formId}`);
-    await storage.flush();
-  } catch (err) {
-    hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to storeFormInfo, err: ${JSON.stringify(err as BusinessError)}`);
+let storeFormInfo =
+  async (formId: string, formName: string, tempFlag: boolean, context: common.FormExtensionContext): Promise<void> => {
+    // Only the widget ID (formId), widget name (formName), and whether the widget is a temporary one (tempFlag) are persistently stored.
+    let formInfo: Record<string, string | boolean | number> = {
+      'formName': formName,
+      'tempFlag': tempFlag,
+      'updateCount': 0
+    };
+    try {
+      const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
+      // put form info
+      await storage.put(formId, JSON.stringify(formInfo));
+      hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] storeFormInfo, put form info successfully, formId: ${formId}`);
+      await storage.flush();
+    } catch (err) {
+      hilog.error(DOMAIN_NUMBER, TAG,
+        `[EntryFormAbility] failed to storeFormInfo, err: ${JSON.stringify(err as BusinessError)}`);
+    }
   }
-}
 
 export default class JsCardFormAbility extends FormExtensionAbility {
   onAddForm(want: Want): formBindingData.FormBindingData {
@@ -280,8 +288,10 @@ let deleteFormInfo = async (formId: string, context: common.FormExtensionContext
     hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] deleteFormInfo, del form info successfully, formId: ${formId}`);
     await storage.flush();
   } catch (err) {
-    hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to deleteFormInfo, err: ${JSON.stringify(err as BusinessError)}`);
-  };
+    hilog.error(DOMAIN_NUMBER, TAG,
+      `[EntryFormAbility] failed to deleteFormInfo, err: ${JSON.stringify(err as BusinessError)}`);
+  }
+  ;
 };
 
 export default class JsCardFormAbility extends FormExtensionAbility {

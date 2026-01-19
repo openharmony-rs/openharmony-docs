@@ -23,6 +23,6 @@ The struct describes the usage of the NativeBuffer.
 
 | Name| Description|
 |----| -- |
-| VkStructureType sType   | Struct type.|
+| VkStructureType sType   | Struct type. The value must be **VK_STRUCTURE_TYPE_NATIVE_BUFFER_USAGE_OHOS**.|
 | void* pNext   | Pointer to the next-level struct.|
 | uint64_t OHOSNativeBufferUsage  | Usage of the NativeBuffer.|

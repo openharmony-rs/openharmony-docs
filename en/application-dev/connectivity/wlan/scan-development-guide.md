@@ -86,7 +86,7 @@ The following table describes the related APIs.
    }
    ```
 
- 5. For details about error codes, see [Wi-Fi Error Codes](../../reference/apis-connectivity-kit/errorcode-wifi.md).
+6. For details about error codes, see [Wi-Fi Error Codes](../../reference/apis-connectivity-kit/errorcode-wifi.md).
 
  ### PNO Scan
 

@@ -12,7 +12,7 @@ The following universal events are supported: [onAppear](../apis-arkui/arkui-ts/
 >
 > - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## onAlert
 
@@ -671,6 +671,10 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 
 Triggered to notify the host application that the page loading starts. This method is called once each time the main frame content is loaded. Therefore, for pages that contain iframes or frameset, **onLoadStarted** is called only once for the main frame. This means that when the content of the embedded frame changes, for example, a link or a fragment navigation in the iframe is clicked (navigation to **#fragment_id**), **onLoadStarted** is not invoked.
 
+> **NOTE**
+>
+> - When the document of the pop-up window is modified by JavaScript before being loaded, **onLoadStarted** is simulated and the URL is set to null, because displaying the URL that is being loaded may be insecure. **onPageBegin** will not be simulated.
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Parameters**
@@ -708,6 +712,12 @@ Triggered to notify the host application that the page loading starts. This meth
 onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
 
 Triggered to notify the host application that the page has been loaded. This method is called only when the main frame loading is complete. For fragment navigations (navigations to **#fragment_id**), **onLoadFinished** is also triggered.
+
+> **NOTE**
+>
+> - Fragment navigation also triggers **onLoadFinished**, but **onPageEnd** is not triggered.
+> - If the main frame is automatically redirected before the page is fully loaded, **onLoadFinished** is triggered only once. **onPageEnd** is triggered each time the main frame is navigated.
+> - When the document of the pop-up window is modified by JavaScript before being loaded, **onLoadStarted** is simulated and the URL is set to null, because displaying the URL that is being loaded may be insecure. **onPageBegin** will not be simulated.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1352,6 +1362,7 @@ Triggered when an HTTP authentication request is received.
 onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
 
 Triggered to notify the host application when an SSL error occurs while loading the main-frame resource.
+
 To support errors for loading subframe resources, use the [OnSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12) API.
 
 > **NOTE**
@@ -1691,7 +1702,7 @@ Interconnect with certificate management to implement two-way authentication.
     ```
 
 2. Construct a **CertManagerService** object to interconnect with certificate management.
-<!--code_no_check-->
+    <!--code_no_check-->
     ```ts
     // CertMgrService.ets
     import { bundleManager, common, Want } from "@kit.AbilityKit";
@@ -1749,7 +1760,7 @@ Interconnect with certificate management to implement two-way authentication.
     }
     ```
 3. Implement two-way authentication.
-<!--code_no_check-->
+    <!--code_no_check-->
     ```ts
     import { webview } from '@kit.ArkWeb';
     import CertManagerService from './CertMgrService';
@@ -2407,10 +2418,13 @@ Triggered when the **Web** component exits full screen mode.
 onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 Triggered to notify the user of a new window creation request, when **multiWindowAccess** is enabled.
+
 If the [setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9) API is not called, the render process will be blocked.
+
 If no new window is created, set this parameter to **null** when invoking the [setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9) API to notify the **Web** component that no new window is created.
 
 The new window cannot be directly overlaid on the original **Web** component, and its URL (for example, address bar) must be clearly displayed in the same way as the main page to prevent confusion. If visible management of trusted URLs cannot be implemented, consider prohibiting the creation of new windows.
+
 Note that the source of a new window request cannot be reliably traced. The request may be initiated by a third-party iframe. By default, the application needs to take defense measures such as sandbox isolation and permission restriction to ensure security.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -2942,7 +2956,7 @@ Triggered when the first content paint occurs on the web page.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback    | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | Yes| Callback invoked when the first content paint occurs on the web page.      |
+| callback    | Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | Yes| Callback invoked when the first content paint occurs on the web page.         |
 
 **Example**
 
@@ -3222,6 +3236,7 @@ Triggered when the web page is overscrolled. It is used to notify the applicatio
 onControllerAttached(callback: () => void)
 
 Triggered when the controller is successfully bound to the **Web** component. The controller must be **WebviewController**. Do not call APIs related to the **Web** component before this callback event. Otherwise, a js-error exception will be thrown.
+
 The web page has not been loaded when the callback is called. Therefore, APIs related to web page operations, such as [zoomIn](./arkts-apis-webview-WebviewController.md#zoomin), [zoomOut](./arkts-apis-webview-WebviewController.md#zoomout), cannot be used in the callback. You can use APIs irrelevant to web page operations, such as [loadUrl](./arkts-apis-webview-WebviewController.md#loadurl), [getWebId](./arkts-apis-webview-WebviewController.md#getwebid).
 
 For details about the component lifecycle, see [Lifecycle of the Web Component](../../web/web-event-sequence.md).
@@ -3365,8 +3380,7 @@ Called when the safe browsing check result is received.
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onSafeBrowsingCheckResult((callback) => {
-            let jsonData = JSON.stringify(callback);
-            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
+            let json: ThreatType = JSON.parse(JSON.stringify(callback)).threatType;
             console.info("onSafeBrowsingCheckResult: [threatType]= " + json);
           })
       }
@@ -3378,7 +3392,7 @@ Called when the safe browsing check result is received.
 
 onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 
-Called when the safe browsing check is complete.
+Called when the safe browsing check is complete. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3386,7 +3400,7 @@ Called when the safe browsing check is complete.
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback  | [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) | Yes| Callback invoked when the safe browsing check result is received.|
+| callback  | [OnSafeBrowsingCheckResultCallback](./arkts-basic-components-web-t.md#onsafebrowsingcheckresultcallback11) | Yes| Callback used to return the safe browsing check result.|
 
 **Example**
 
@@ -3403,8 +3417,7 @@ Called when the safe browsing check is complete.
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onSafeBrowsingCheckFinish((callback) => {
-            let jsonData = JSON.stringify(callback);
-            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
+            let json: ThreatType = JSON.parse(JSON.stringify(callback)).threatType;
             console.info("onSafeBrowsingCheckFinish: [threatType]= " + json);
           })
       }
@@ -3813,7 +3826,7 @@ Triggered when the URL is about to be loaded in the current web page, allowing t
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | Yes| Callback for **onOverrideUrlLoading**.<br>Return value: boolean<br> The value **true** means to stop loading the URL, and the value **false** means the opposite. |
+| callback       | [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) | Yes| Callback for **onOverrideUrlLoading**.<br>Return value: boolean<br> The value **true** means to stop loading the URL, and the value **false** means the opposite.|
 
 **Example**
 
@@ -4544,30 +4557,30 @@ In addition, this feature takes effect only after the default error page is enab
 **Example**
 
   ```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-  build() {
-    Column() {
-      Web({ src: "www.error-test.com", controller: this.controller })
-       .onControllerAttached(() => {
-            this.controller.setErrorPageEnabled(true);
-            if (!this.controller.getErrorPageEnabled()) {
-                this.controller.setErrorPageEnabled(true);
-            }
-        })
-        .onOverrideErrorPage(event => {
-              let htmlStr = "<html><h1>error occur : ";
-              htmlStr += event.error.getErrorCode();
-              htmlStr += "</h1></html>";
-              return htmlStr;
-        })
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    build() {
+      Column() {
+        Web({ src: "www.error-test.com", controller: this.controller })
+         .onControllerAttached(() => {
+              this.controller.setErrorPageEnabled(true);
+              if (!this.controller.getErrorPageEnabled()) {
+                  this.controller.setErrorPageEnabled(true);
+              }
+          })
+          .onOverrideErrorPage(event => {
+                let htmlStr = "<html><h1>error occur : ";
+                htmlStr += event.error.getErrorCode();
+                htmlStr += "</h1></html>";
+                return htmlStr;
+          })
+      }
     }
   }
-}
   ```
 
 ## onSslErrorReceive<sup>(deprecated)</sup>
@@ -4612,7 +4625,10 @@ Triggered to process an HTML form whose input type is **file**, in response to t
 onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => boolean)
 
 Triggered when the **Web** component is about to access a URL. This API is used to determine whether to block the access.
-This API is deprecated since API version 10. You are advised to use [onLoadIntercept<sup>10+</sup>](#onloadintercept10) instead.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 10. You are advised to use [onLoadIntercept<sup>10+</sup>](#onloadintercept10) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4740,6 +4756,6 @@ For details, see [Lifecycle of the Web Component](../../web/web-event-sequence.m
 
 **Parameters**
 
-| Name             | Type                                    | Mandatory  | Description            |
+| Name | Type | Mandatory | Description|
 | ---------------- | ---------------------------------------- | ---- | ---------------- |
 | callback |(event?: { detail: object }) => boolean | Yes   | Callback triggered when the rendering process exits abnormally.|

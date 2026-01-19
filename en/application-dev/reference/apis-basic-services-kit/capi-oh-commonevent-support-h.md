@@ -33,8 +33,8 @@ Provides common event constants defined by the system.
 | static const char * const COMMON_EVENT_POWER_DISCONNECTED = "usual.event.POWER_DISCONNECTED" | Indicates the common event that the device is disconnected from the external power supply.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_SCREEN_OFF = "usual.event.SCREEN_OFF" | Indicates the common event that the device screen is off and the device is sleeping.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_SCREEN_ON = "usual.event.SCREEN_ON" | Indicates the common event that the device screen is on and the device is in interactive state.<br>**Since**: 12|
-| static const char * const COMMON_EVENT_ENTER_HIBERNATE = "usual.event.ENTER_HIBERNATE" | Indicates that the device is about to enter the hibernation mode.<br>**Since**: 15|
-| static const char * const COMMON_EVENT_EXIT_HIBERNATE = "usual.event.EXIT_HIBERNATE" | Indicates that the device exits the hibernation mode.<br>**Since**: 15|
+| static const char * const COMMON_EVENT_ENTER_HIBERNATE = "usual.event.ENTER_HIBERNATE" | Indicates the common event that the device is about to enter the hibernation mode.<br>**Since**: 15 |
+| static const char * const COMMON_EVENT_EXIT_HIBERNATE = "usual.event.EXIT_HIBERNATE" | Indicates the common event that the device exits the hibernation mode.<br>**Since**: 15 |
 | static const char * const COMMON_EVENT_THERMAL_LEVEL_CHANGED = "usual.event.THERMAL_LEVEL_CHANGED" | Indicates the common event that the device's thermal level has changed.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_TIME_TICK = "usual.event.TIME_TICK" | Indicates the common event that the system time has changed.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_TIME_CHANGED = "usual.event.TIME_CHANGED" | Indicates the common event that the system time has been set.<br>**Since**: 12|
@@ -95,6 +95,6 @@ Provides common event constants defined by the system.
 | static const char * const COMMON_EVENT_SCREEN_LOCKED = "usual.event.SCREEN_LOCKED" | Indicates the common event that the screen has been locked.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_HTTP_PROXY_CHANGE = "usual.event.HTTP_PROXY_CHANGE" | Indicates the common event that the HTTP proxy configuration has changed.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_CONNECTIVITY_CHANGE = "usual.event.CONNECTIVITY_CHANGE" | Indicates the common event that the network connection state has changed.<br>**Since**: 12|
-| static const char * const COMMON_EVENT_MINORSMODE_ON = "usual.event.MINORSMODE_ON" | Indicates that the minor mode is enabled.<br>**Since**: 12|
+| static const char * const COMMON_EVENT_MINORSMODE_ON = "usual.event.MINORSMODE_ON" | Indicates the common event that the minor mode is enabled.<br>**Since**: 12 |
 | static const char * const COMMON_EVENT_MINORSMODE_OFF = "usual.event.MINORSMODE_OFF" | Indicates the common event that the minor mode is disabled.<br>**Since**: 12|
-| static const char * const COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED = "usual.event.MANAGED_BROWSER_POLICY_CHANGED" | Indicates that the browser hosting policy has been changed.<br>**Since**: 15|
+| static const char * const COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED = "usual.event.MANAGED_BROWSER_POLICY_CHANGED" | Indicates the common event that the browser hosting policy has been changed.<br>**Since**: 15 |

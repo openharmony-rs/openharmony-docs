@@ -197,18 +197,18 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
   ```javascript
   // entry/src/main/ets/pages/Index.ets
   import testNapi from 'libentry.so'
-  import web_webview from '@ohos.web.webview';
-  import { BusinessError } from '@ohos.base';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   @Entry
   @Component
   struct Index {
     @State webTag: string = 'postMessage';
-    controller: web_webview.WebviewController = new web_webview.WebviewController(this.webTag);
+    controller: webview.WebviewController = new webview.WebviewController(this.webTag);
     @State h5Log: string = 'Display received message send from HTML';
 
     aboutToAppear() {
-      web_webview.WebviewController.setWebDebuggingAccess(true);
+      webview.WebviewController.setWebDebuggingAccess(true);
       // 初始化web ndk
       testNapi.nativeWebInit(this.webTag);
     }

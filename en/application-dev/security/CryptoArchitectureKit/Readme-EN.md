@@ -1,4 +1,4 @@
-# Crypto Architecture Kit (Crypto Architecture Kit)
+# Crypto Architecture Kit
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-- [Introduction to Crypto Architecture Kit](crypto-architecture-kit-intro.md)
+- [About This Kit](crypto-architecture-kit-intro.md)
 - Key Generation and Conversion<!--crypto-key-generation-conversion-->
   - [Key Generation and Conversion Overview](crypto-key-generation-conversion-overview.md)
   - Key Generation and Conversion Specifications<!--crypto-key-generation-conversion-spec-->
@@ -121,4 +121,4 @@
   - [Key Derivation Using HKDF (ArkTS)](crypto-key-derivation-using-hkdf.md)
   - [Key Derivation Using HKDF (C/C++)](crypto-key-derivation-using-hkdf-ndk.md)
   - [Key Derivation Using Scrypt (ArkTS)](crypto-key-derivation-using-scrypt.md)
-  - [Key Derivation Using Scrypt (C/C++)](crypto-key-derivation-using-scrypt-ndk.md)
+  - [Key Derivation Using Scrypt (C/C++)](crypto-key-derivation-using-scrypt-ndk.md)<!--RP1--><!--RP1End-->

@@ -5,7 +5,7 @@
 <!--Owner: @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **WaterFlow** component is a water flow container that consists of cells formed by rows and columns and arranges items of different sizes from top to bottom according to the preset rules.
 
@@ -26,7 +26,7 @@ Subcomponents can be dynamically generated using rendering control types [if/els
 >  **NOTE**
 >
 >  When its **visibility** attribute is set to **None**, a **FlowItem** is not displayed in the container, but its **columnsGap**, **rowsGap**, and **margin** settings are still effective.
->  If there are a large number of child components, you are advised to use lazy loading, data caching, component reuse, fixed width and height, and layout optimization to improve performance and reduce memory usage. For details, see [Optimizing the Frame Loss Caused by Slow Waterfall Loading](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-waterflow-performance-optimization).
+>  If there are a large number of child components, you are advised to use lazy loading, data caching, component reuse, fixed width and height, and layout optimization to improve performance and reduce memory usage. For best practices, see [Optimizing Frame Loss for Waterfall Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-waterflow-performance-optimization).
 >
 > In vertical layout mode, WaterFlow calculates the accumulated height of child components in each column and places new child components in the column with the smallest accumulated height to keep the overall layout compact.
 >
@@ -556,6 +556,10 @@ onScrollIndex(event: (first: number, last: number) => void)
 Triggered when the first or last item displayed in the component changes. It is triggered once when the component is initialized.
 
 This event is triggered when either of the preceding indexes changes.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1345,7 +1349,7 @@ struct WaterFlowDemo {
     }
   }
 
-  //Component lifecycle: Initialize data and restore the previous column settings.
+  // Component lifecycle: Initialize data and restore the previous column settings.
   aboutToAppear() {
     // Read the last switched column count.
     let lastCount = AppStorage.get<number>('columnsCount');
@@ -1628,7 +1632,7 @@ struct WaterFlowDemo {
 
 ### Example 7: Setting and Changing the Footer Component in the WaterFlow Component
 
-This example demonstrates how to set and dynamically change the footer component in the **WaterFlow** component using **footerContent**. The footer component is updated using the **update** API of **ComponentContent**.
+Starting from API version 18, this example demonstrates the implementation of setting a footer component for the **WaterFlow** component through the **footerContent** API of [WaterFlowOptions](#waterflowoptions). Update the footer component using the update feature of [ComponentContent](../js-apis-arkui-ComponentContent.md).
 
 For details about **WaterFlowDataSource** and the complete code, see [Example 1: Using a Basic WaterFlow Component](#example-1-using-a-basic-waterflow-component).
 

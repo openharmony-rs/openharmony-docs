@@ -198,25 +198,43 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
 
-async function setCallMetadata() {
-  try {
-    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-    let imageSource = await image.createImageSource(value.buffer);
-    let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
-    let calldata: avSession.CallMetadata = {
-      name: "xiaoming",
-      phoneNumber: "111xxxxxxxx",
-      avatar: imagePixel
-    };
-    currentAVSession.setCallMetadata(calldata).then(() => {
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text('Hello World')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+class CallManager {
+  private currentAVSession: avSession.AVSession | null = null;
+
+  async setCallMetadata() {
+    try {
+      let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+      let imageSource = await image.createImageSource(value.buffer);
+      let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+      let calldata: avSession.CallMetadata = {
+        name: "xiaoming",
+        phoneNumber: "111xxxxxxxx",
+        avatar: imagePixel
+      };
+      await this.currentAVSession?.setCallMetadata(calldata);
       console.info('setCallMetadata successfully');
-    }).catch((err: BusinessError) => {
-      console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
-    });
-  } catch (err) {
-    if (err) {
-      console.error(`setCallMetadata Error: code: ${err.code}, message: ${err.message}`);
+    } catch (err) {
+      if (err) {
+        console.error('setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}');
+      } else {
+        console.error('setCallMetadata Error: ${err}')
+      }
     }
   }
 }
@@ -253,27 +271,44 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
 
-async function setCallMetadata() {
-  try {
-    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-    let imageSource = await image.createImageSource(value.buffer);
-    let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
-    let calldata: avSession.CallMetadata = {
-      name: "xiaoming",
-      phoneNumber: "111xxxxxxxx",
-      avatar: imagePixel
-    };
-    currentAVSession.setCallMetadata(calldata, (err: BusinessError) => {
-      if (err) {
-        console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
-      } else {
-        console.info('setCallMetadata successfully');
-      }
-    });
-  } catch (err) {
-    if (err) {
-      console.error(`setCallMetadata Error: code: ${err.code}, message: ${err.message}`);
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text('Hello World')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+class CallManager {
+  private currentAVSession: avSession.AVSession | null = null;
+
+  async setCallMetadata() {
+    try {
+      let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+      let imageSource = await image.createImageSource(value.buffer);
+      let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+      let calldata: avSession.CallMetadata = {
+        name: "xiaoming",
+        phoneNumber: "111xxxxxxxx",
+        avatar: imagePixel
+      };
+      this.currentAVSession?.setCallMetadata(calldata, (err: BusinessError) => {
+        if (err) {
+          console.error('setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}');
+        } else {
+          console.info("setCallMetadata successfully");
+        }
+      });
+    }catch (syncErr) {
+      console.error('Syncronous operation failed: ${syncErr}');
     }
   }
 }
@@ -614,7 +649,7 @@ wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
 
 ## dispatchSessionEvent<sup>10+</sup>
 
-dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<void>
+dispatchSessionEvent(event: string, args: Record\<string, Object>): Promise\<void>
 
 Dispatches a custom event in the session, including the event name and event content in key-value pair format. This API uses a promise to return the result. It is called by the provider.
 
@@ -627,7 +662,7 @@ Dispatches a custom event in the session, including the event name and event con
 | Name | Type                                         | Mandatory| Description    |
 | ------- | --------------| ---- | ----------------------------|
 | event | string | Yes  | Name of the session event.|
-| args | {[key: string]: Object} | Yes  | Content of the session event.|
+| args |Record\<string, Object>| Yes  | Content of the session event.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is {[key: string]: Object}.|
 
 > **NOTE**
 > The **args** parameter supports the following data types: string, number, Boolean, object, array, and file descriptor. For details, see [@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md).
@@ -644,7 +679,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -653,6 +687,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -691,7 +726,7 @@ struct Index {
 
 ## dispatchSessionEvent<sup>10+</sup>
 
-dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: AsyncCallback\<void>): void
+dispatchSessionEvent(event: string, args: Record\<string, Object>, callback: AsyncCallback\<void>): void
 
 Dispatches a custom event in the session, including the event name and event content in key-value pair format. This API uses an asynchronous callback to return the result. It is called by the provider.
 
@@ -702,7 +737,7 @@ Dispatches a custom event in the session, including the event name and event con
 | Name | Type                                         | Mandatory| Description    |
 | ------- | --------------| ---- | ----------------------------|
 | event | string | Yes  | Name of the session event.|
-| args | {[key: string]: Object} | Yes  | Content of the session event.|
+| args |Record\<string, Object>| Yes  | Content of the session event.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is {[key: string]: Object}.|
 | callback | AsyncCallback\<void>                          | Yes  | Callback used to return the result. If the setting is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 > **NOTE**
@@ -715,7 +750,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -798,6 +832,21 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+interface ExtrasType {
+  extras: string;
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+    }
+  }
+}
+
+let currentAVSession: avSession.AVSession;
 
 async function setAVQueueItems() {
   try {
@@ -815,7 +864,7 @@ async function setAVQueueItems() {
     let queueItem_1: avSession.AVQueueItem = {
       itemId: 1,
       description: queueItemDescription_1
-    };
+    } as avSession.AVQueueItem;
     let queueItemDescription_2: avSession.AVMediaDescription = {
       assetId: '002',
       title: 'music_name',
@@ -827,7 +876,7 @@ async function setAVQueueItems() {
     let queueItem_2: avSession.AVQueueItem = {
       itemId: 2,
       description: queueItemDescription_2
-    };
+    } as avSession.AVQueueItem;
     let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
     currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
       console.info('SetAVQueueItems successfully');
@@ -873,19 +922,35 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit'
+
+interface ExtrasType {
+  extras: string;
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+    }
+  }
+}
+
+let currentAVSession: avSession.AVSession;
 
 async function setAVQueueItems() {
   try {
     let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
     let imageSource = await image.createImageSource(value.buffer);
-    let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+    let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
     let queueItemDescription_1: avSession.AVMediaDescription = {
       assetId: '001',
       title: 'music_name',
       subtitle: 'music_sub_name',
       description: 'music_description',
-      mediaImage : imagePixel,
-      extras: {extras:'any'}
+      mediaImage: imagePixel,
+      extras: { extras: 'any' }
     };
     let queueItem_1: avSession.AVQueueItem = {
       itemId: 1,
@@ -897,7 +962,7 @@ async function setAVQueueItems() {
       subtitle: 'music_sub_name',
       description: 'music_description',
       mediaImage: imagePixel,
-      extras: {extras:'any'}
+      extras: { extras: 'any' }
     };
     let queueItem_2: avSession.AVQueueItem = {
       itemId: 2,
@@ -1006,7 +1071,7 @@ currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
 
 ## setExtras<sup>10+</sup>
 
-setExtras(extras: {[key: string]: Object}): Promise\<void>
+setExtras(extras: Record\<string, Object>): Promise\<void>
 
 Sets a custom media packet in the form of key-value pairs. This API uses a promise to return the result. It is called by the provider.
 
@@ -1018,7 +1083,7 @@ Sets a custom media packet in the form of key-value pairs. This API uses a promi
 
 | Name | Type                                         | Mandatory| Description    |
 | ------- | --------------| ---- | ----------------------------|
-| extras | {[key: string]: Object} | Yes  | Key-value pairs of the custom media packet.|
+| extras | Record\<string, Object> | Yes  | Key-value pairs of the custom media packet.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is {[key: string]: Object}.|
 
 > **NOTE**
 
@@ -1739,10 +1804,10 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                | Mandatory| Description    |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | Yes  | Event type. The event **'play'** is triggered when the command for starting playback is sent to the session.|
-| callback | () => void | Yes  | Callback used for subscription. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object.                                       |
+| callback | () => void | Yes  | Callback used to return the result.        |
 
 **Error codes**
-
+  
 For details about the error codes, see [AVSession Management Error Codes](errorcode-avsession.md).
 
 | ID| Error Message|
@@ -2350,7 +2415,7 @@ currentAVSession.on('outputDeviceChange', (state: avSession.ConnectionState, dev
 
 ## on('commonCommand')<sup>10+</sup>
 
-on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Object}) => void): void
+on(type: 'commonCommand', callback: (command: string, args: Record\<string, Object>) => void): void
 
 Subscribes to custom control command change events.
 
@@ -2365,7 +2430,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type |   Mandatory| Description    |
 | -------- | --------- | ---- | --------- |
 | type     | string    | Yes  | Event type. The event **'commonCommand'** is triggered when a custom control command changes.|
-| callback | (command: string, args: {[key: string]: Object}) => void         | Yes  | Callback used for subscription. The **command** parameter in the callback indicates the name of the changed custom control command, and **args** indicates the parameters carried in the command. The parameters must be the same as those set in [sendCommonCommand](arkts-apis-avsession-AVSessionController.md#sendcommoncommand10).         |
+| callback | (command: string, args: Record\<string, Object>) => void         | Yes  | Callback used for subscription. The **command** parameter in the callback indicates the name of the changed custom control command, and **args** indicates the parameters carried in the command. The parameters must be the same as those set in [sendCommonCommand](arkts-apis-avsession-AVSessionController.md#sendcommoncommand10).<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is (command :string, args:{[key: string]: Object}) => void.|
 
 **Error codes**
 
@@ -2373,7 +2438,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -2911,7 +2975,7 @@ currentAVSession.off('outputDeviceChange');
 
 ## off('commonCommand')<sup>10+</sup>
 
-off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Object}) => void): void
+off(type: 'commonCommand', callback?: (command: string, args: Record\<string, Object>) => void): void
 
 Unsubscribes from custom control command change events. If a callback is specified, the corresponding listener is unregistered. If no callback is specified, all listeners for the specified event are unregistered.
 
@@ -2924,7 +2988,7 @@ Unsubscribes from custom control command change events. If a callback is specifi
 | Name  | Type |   Mandatory| Description |
 | -------- | --------- | ---- | ----------------------|
 | type     | string    | Yes  | Event type, which is **'commonCommand'** in this case.   |
-| callback | (command: string, args: {[key: string]: Object}) => void         | No  | Callback used for unsubscription. The **command** parameter in the callback indicates the name of the changed custom control command, and **args** indicates the parameters carried in the command.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                     |
+| callback |(command: string, args: Record\<string, Object>) => void| No  | Callback used for unsubscription. The **command** parameter in the callback indicates the name of the changed custom control command, and **args** indicates the parameters carried in the command.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.<br>Starting from API version 20, a compatibility change occurred. In API version 19 and earlier, the parameter type is (command: string, args:{[key: string]: Object}) => void.|
 
 **Error codes**
 
@@ -2932,7 +2996,6 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message|
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 

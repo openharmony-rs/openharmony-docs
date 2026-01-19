@@ -73,35 +73,46 @@
   例如，通过断点设置将应用宽度分成6个区间，通过columns配置各断点下栅格容器的栅格列数。
 
 
-  ```ts
+  ``` TypeScript
   // xxx.ets
   @Entry
   @Component
   struct Index {
+    @State currentBp: string = "unknown"
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
+
     build() {
-      GridRow({
-        columns: {
-          xs: 2, // 窗口宽度落入xs断点上，栅格容器分为2列。
-          sm: 4, // 窗口宽度落入sm断点上，栅格容器分为4列。
-          md: 8, // 窗口宽度落入md断点上，栅格容器分为8列。
-          lg: 12, // 窗口宽度落入lg断点上，栅格容器分为12列。
-          xl: 12, // 窗口宽度落入xl断点上，栅格容器分为12列。
-          xxl: 12 // 窗口宽度落入xxl断点上，栅格容器分为12列。
-        },
-        breakpoints: {
-          value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'], // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
-          reference: BreakpointsReference.WindowSize
+      Column({ space: 6 }) {
+        Text(this.currentBp)
+
+        GridRow({
+          columns: {
+            xs: 2, // 窗口宽度落入xs断点上，栅格容器分为2列。
+            sm: 4, // 窗口宽度落入sm断点上，栅格容器分为4列。
+            md: 8, // 窗口宽度落入md断点上，栅格容器分为8列。
+            lg: 12, // 窗口宽度落入lg断点上，栅格容器分为12列。
+            xl: 12, // 窗口宽度落入xl断点上，栅格容器分为12列。
+            xxl: 12 // 窗口宽度落入xxl断点上，栅格容器分为12列。
+          },
+          breakpoints: {
+            value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'], // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
+            reference: BreakpointsReference.WindowSize
+          }
+        }) {
+          ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
+            GridCol({ span: 1 }) { // 所有子组件占一列。
+              Row() {
+                Text(`${index}`)
+              }.width('100%').height('50vp')
+            }.backgroundColor(color)
+          })
         }
-      }) {
-        ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
-          GridCol({ span: 1 }) { // 所有子组件占一列。
-            Row() {
-              Text(`${index}`)
-            }.width("100%").height('50vp')
-          }.backgroundColor(color)
+        .height(200)
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .onBreakpointChange((breakPoint) => {
+          this.currentBp = breakPoint
         })
       }
     }
@@ -153,60 +164,68 @@ GridRow中通过columns设置栅格布局的总列数。
 columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)两种类型, 可按两种方式设置栅格布局的总列数。
 - 当columns类型为number时，栅格布局在任何尺寸设备下都被分为同一列数。下面分别设置栅格布局列数为4和8，子元素占一列，效果如下：
 
-  ```ts
+  ``` TypeScript
   // xxx.ets
   @Entry
   @Component
-  struct Index {
+  struct FixedFourColumnGrid {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-    @State currentBp: string = 'unknown';
+
     build() {
-      Row() {
-        GridRow({ columns: 4 }) {
-          ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
-            GridCol({ span: 1 }) {
-              Row() {
-                Text(`${index}`)
-              }.width('100%').height('50')
-            }.backgroundColor(item)
-          })
+      Column({ space: 6 }) {
+        Text('columns：4').alignSelf(ItemAlign.Start)
+
+        Row() {
+          GridRow({ columns: 4 }) {
+            ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+              GridCol({ span: 1 }) {
+                Row() {
+                  Text(`${index}`)
+                }.width('100%').height('50')
+              }.backgroundColor(item)
+            })
+          }
+          .width('100%').height('100%')
         }
-        .width('100%').height('100%')
+        .height(160)
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .width('90%')
       }
-      .height(160)
-      .border({ color: 'rgb(39,135,217)', width: 2 })
-      .width('90%')
     }
   }
   ```
 
-  ```ts
+  ``` TypeScript
   // xxx.ets
   @Entry
   @Component
-  struct Index {
+  struct FixedEightColumnGrid {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-    @State currentBp: string = 'unknown';
+
     build() {
-      Row() {
-        GridRow({ columns: 8 }) {
-          ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
-            GridCol({ span: 1 }) {
-              Row() {
-                Text(`${index}`)
-              }.width('100%').height('50')
-            }.backgroundColor(item)
-          })
+      Column({ space: 6 }) {
+        Text('columns：8').alignSelf(ItemAlign.Start)
+
+        Row() {
+          GridRow({ columns: 8 }) {
+            ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+              GridCol({ span: 1 }) {
+                Row() {
+                  Text(`${index}`)
+                }.width('100%').height('50')
+              }.backgroundColor(item)
+            })
+          }
+          .width('100%').height('100%')
         }
-        .width('100%').height('100%')
+        .height(160)
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .width('90%')
       }
-      .height(160)
-      .border({ color: 'rgb(39,135,217)', width: 2 })
-      .width('90%')
     }
   }
   ```
@@ -308,32 +327,32 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
 
     ```ts
-  let Gspan:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
-  GridCol({ span: 2 }){}
-  GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }){}
-  GridCol(){}.span(2)
-  GridCol(){}.span(Gspan)
+    let Gspan:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
+    GridCol({ span: 2 }){}
+    GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }){}
+    GridCol(){}.span(2)
+    GridCol(){}.span(Gspan)
     ```
 
 - 设置offset。
 
 
     ```ts
-  let Goffset:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
-  GridCol({ offset: 2, span: 1 }){}
-  GridCol({ offset: { xs: 2, sm: 2, md: 2, lg: 2 }, span: 1 }){}
-  GridCol({ span: 1 }){}.offset(Goffset) 
+    let Goffset:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
+    GridCol({ offset: 2, span: 1 }){}
+    GridCol({ offset: { xs: 2, sm: 2, md: 2, lg: 2 }, span: 1 }){}
+    GridCol({ span: 1 }){}.offset(Goffset) 
     ```
 
 - 设置order。
 
 
     ```ts
-  let Gorder:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
-  GridCol({ order: 2, span: 1 }){}
-  GridCol({ order: { xs: 1, sm: 2, md: 3, lg: 4 }, span: 1 }){}
-  GridCol({ span: 1 }){}.order(2)
-  GridCol({ span: 1 }){}.order(Gorder)
+    let Gorder:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
+    GridCol({ order: 2, span: 1 }){}
+    GridCol({ order: { xs: 1, sm: 2, md: 3, lg: 4 }, span: 1 }){}
+    GridCol({ span: 1 }){}.order(2)
+    GridCol({ span: 1 }){}.order(Gorder)
     ```
 
 
@@ -345,16 +364,18 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 - 当span类型为number时，子组件在所有尺寸设备下占用的列数相同。
 
 
-    ```ts
+    ``` TypeScript
+    // xxx.ets
     @Entry
     @Component
-    struct Index {
+    struct SpanNumberExample {
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
+
       build() {
         GridRow({ columns: 8 }) {
-          ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
+          ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
             GridCol({ span: 2 }) {
               Row() {
                 Text(`${index}`)
@@ -363,8 +384,10 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
             .backgroundColor(color)
           })
         }
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .height('150vp')
       }
-    }               
+    }
     ```
 
     ![zh-cn_image_0000001511421264](figures/zh-cn_image_0000001511421264.png)
@@ -375,20 +398,38 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     ```ts
     @Entry
     @Component
-    struct Index {
+    struct SpanColumnOptionExample {
+      @State currentBp: string = "unknown"
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
+
       build() {
-        GridRow({ columns: 8 }) {
-          ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
-            GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
-              Row() {
-                Text(`${index}`)
-              }.width('100%').height('50vp')
-            }
-            .backgroundColor(color)
+        Column({ space: 6 }) {
+          GridRow({ columns: 8 }) {
+            ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
+              GridCol({
+                span: {
+                  xs: 1,
+                  sm: 2,
+                  md: 3,
+                  lg: 4
+                }
+              }) {
+                Row() {
+                  Text(`${index}`)
+                }.width('100%').height('50vp')
+              }
+              .backgroundColor(color)
+            })
+          }
+          .border({ color: 'rgb(39,135,217)', width: 2 })
+          .height('150vp')
+          .onBreakpointChange((breakPoint) => {
+            this.currentBp = breakPoint
           })
+
+          Text(this.currentBp)
         }
       }
     }
@@ -404,57 +445,79 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 - 当offset类型为number时，子组件偏移相同列数。
 
 
-    ```ts
+    ``` TypeScript
     @Entry
     @Component
-    struct Index {
+    struct OffsetNumberExample {
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
+
       build() {
-        GridRow() {
-          ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
-            GridCol({ offset: 2, span: 1 }) {
-              Row() {
-                Text('' + index)
-              }.width('100%').height('50vp')
-            }
-            .backgroundColor(color)
-          })
-        }
+        Column() {
+          GridRow({ columns: 12 }) {
+            ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
+              GridCol({ offset: 2, span: 1 }) {
+                Row() {
+                  Text('' + index)
+                }.width('100%').height('50vp')
+              }
+              .backgroundColor(color)
+            })
+          }
+
+          Blank().width('100%').height(150)
+        }.border({ color: 'rgb(39,135,217)', width: 2 })
       }
-    }                
+    }
     ```
 
     ![zh-cn_image_0000001563060705](figures/zh-cn_image_0000001563060705.png)
 
-  栅格分成12列，每一个子组件占1列，偏移2列，每个子组件及间距共占3列，1行放4个子组件。
+  在lg及以上尺寸的设备上，栅格分成12列，每一个子组件占1列，偏移2列，每个子组件及间距共占3列，1行放4个子组件。
 
 - 当offset类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件所占列数设置，各个尺寸下数值可不同。
 
 
-    ```ts
+    ``` TypeScript
     @Entry
     @Component
-    struct Index {
+    struct OffsetColumnOptionExample {
+      @State currentBp: string = "unknown"
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
+
       build() {
-        GridRow({ columns: 12 }) {
-          ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
-            GridCol({ offset: { xs: 1, sm: 2, md: 3, lg: 4 }, span: 1 }) {
-              Row() {
-                Text('' + index)
-              }.width('100%').height('50vp')
-            }
-            .backgroundColor(color)
+        Column({ space: 6 }) {
+          GridRow({ columns: 12 }) {
+            ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
+              GridCol({
+                offset: {
+                  xs: 1,
+                  sm: 2,
+                  md: 3,
+                  lg: 4
+                },
+                span: 1
+              }) {
+                Row() {
+                  Text('' + index)
+                }.width('100%').height('50vp')
+              }
+              .backgroundColor(color)
+            })
+          }
+          .height(200)
+          .border({ color: 'rgb(39,135,217)', width: 2 })
+          .onBreakpointChange((breakPoint) => {
+            this.currentBp = breakPoint
           })
+
+          Text(this.currentBp)
         }
-        .height(200)
-        .border({ color: 'rgb(39,135,217)', width: 2 })
       }
-    }         
+    }
     ```
 
     ![zh-cn_image_0000001562700433](figures/zh-cn_image_0000001562700433.gif)
@@ -469,29 +532,32 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 - 当order类型为number时，子组件在任何尺寸下排序次序一致。
 
 
-    ```ts
+    ``` TypeScript
     GridRow({ columns: 12 }) {
-      GridCol({ order: 4, span: 1 }) {
-        Row() {
-          Text('1')
-        }.width('100%').height('50vp')
-      }.backgroundColor('rgb(213,213,213)')
-      GridCol({ order: 3, span: 1 }) {
-        Row() {
-          Text('2')
-        }.width('100%').height('50vp')
-      }.backgroundColor('rgb(150,150,150)')
-      GridCol({ order: 2, span: 1 }) {
-        Row() {
-          Text('3')
-        }.width('100%').height('50vp')
-      }.backgroundColor('rgb(0,74,175)')
-      GridCol({ order: 1, span: 1 }) {
-        Row() {
-          Text('4')
-        }.width('100%').height('50vp')
-      }.backgroundColor('rgb(39,135,217)')
-    }
+        GridCol({ order: 4, span: 1 }) {
+          Row() {
+            Text('1')
+          }.width('100%').height('50vp')
+        }.backgroundColor('rgb(213,213,213)')
+
+        GridCol({ order: 3, span: 1 }) {
+          Row() {
+            Text('2')
+          }.width('100%').height('50vp')
+        }.backgroundColor('rgb(150,150,150)')
+
+        GridCol({ order: 2, span: 1 }) {
+          Row() {
+            Text('3')
+          }.width('100%').height('50vp')
+        }.backgroundColor('rgb(0,74,175)')
+
+        GridCol({ order: 1, span: 1 }) {
+          Row() {
+            Text('4')
+          }.width('100%').height('50vp')
+        }.backgroundColor('rgb(39,135,217)')
+      }
     ```
 
     ![zh-cn_image_0000001511580892](figures/zh-cn_image_0000001511580892.png)

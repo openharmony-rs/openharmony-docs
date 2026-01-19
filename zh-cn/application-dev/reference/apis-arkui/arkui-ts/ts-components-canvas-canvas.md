@@ -105,7 +105,7 @@ Canvas组件初始化完成或者发生大小变化时的事件回调，支持[a
 
 ### 示例1（使用CanvasRenderingContext2D中的方法）
 
-该示例实现了如何在Canvas组件使用CanvasRenderingContext2D中的方法进行绘制。
+该示例实现了如何在Canvas组件使用[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)中的方法进行绘制。
 
 ```ts
 // xxx.ets
@@ -134,7 +134,7 @@ struct CanvasExample {
 
 ### 示例2（使用DrawingRenderingContext中的方法）
 
-该示例实现了如何在Canvas组件使用DrawingRenderingContext中的方法进行绘制。
+该示例实现了如何在Canvas组件使用[DrawingRenderingContext](./ts-drawingrenderingcontext.md)中的方法进行绘制。
 
 ```ts
 // xxx.ets
@@ -163,7 +163,7 @@ struct CanvasExample {
 
 ### 示例3（使用attributeModifier动态设置Canvas组件的属性及方法）
 
-该示例展示了如何使用attributeModifier动态设置Canvas组件的enableAnalyzer属性和onReady方法。
+该示例展示了如何使用[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置Canvas组件的[enableAnalyzer](#enableanalyzer12)属性和[onReady](#onready)方法。
 
 ```ts
 // xxx.ets

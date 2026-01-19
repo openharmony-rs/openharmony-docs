@@ -27,7 +27,7 @@ The following table lists the functions supported by the HTTP request. The optio
 | Basic    | Setting the request method                     | Specifies the request method, including **GET**, **POST**, **HEAD**, **PUT**, **DELETE**, **TRACE**, **CONNECT**, and **OPTIONS**. The default value is **GET**. |  API version 6  |
 | Basic    | Setting additional data of the request                | Specifies additional data can be carried with the request. This parameter is not used by default.| API version 6    |
 | Basic    | Setting the read timeout interval                | Specifies the total time from the start to the end of a request, including DNS resolution, connection setup, and transmission. The default value is **60000**, in ms.|  API version 6   |
-| Basic    | Sets a connection timeout interval.                | Specifies the connection timeout interval. The default value is **60000**, in ms.|  API version 6   |
+| Basic    | Setting the connection timeout interval                | Specifies the connection timeout interval. The default value is **60000**, in ms.|  API version 6   |
 | Basic    | Setting the HTTP request header                 | Specifies the HTTP request header. If the request method is **POST**, **PUT**, **DELETE**, or left empty, the default value is {'content-Type': 'application/json'}. Otherwise, the default value is {'content-Type': 'application/x-www-form-urlencoded'}.|  API version 6   |
 | Basic    | Setting the response data type               | Specifies the type of the HTTP response data. This parameter is not used by default. If this parameter is set, the system returns the specified type of data preferentially.|  API version 9   |
 | Basic    | Setting the priority of concurrent requests             |  Specifies the priority of concurrent HTTP/HTTPS requests. A larger value indicates a higher priority. The value ranges from 1 to 1000. The default value is **1**.|  API version 9   |
@@ -213,37 +213,37 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
 3. Subscribe to HTTP streaming response events on demand.
 
 	The server response is returned via the **dataReceive** callback. You can subscribe to this callback to obtain the server response. You can also subscribe to other streaming response events as needed.
-    ```ts
-	// Subscribe to events indicating receiving of HTTP streaming responses.
-    let res = new ArrayBuffer(0);
-    httpRequest.on('dataReceive', (data: ArrayBuffer) => {
-      const newRes = new ArrayBuffer(res.byteLength + data.byteLength);
-      const resView = new Uint8Array(newRes);
-      resView.set(new Uint8Array(res));
-      resView.set(new Uint8Array(data), res.byteLength);
-      res = newRes;
-      console.info('res length: ' + res.byteLength);
-    });
+   ```ts
+   // Subscribe to events indicating receiving of HTTP streaming responses.
+   let res = new ArrayBuffer(0);
+   httpRequest.on('dataReceive', (data: ArrayBuffer) => {
+     const newRes = new ArrayBuffer(res.byteLength + data.byteLength);
+     const resView = new Uint8Array(newRes);
+     resView.set(new Uint8Array(res));
+     resView.set(new Uint8Array(data), res.byteLength);
+     res = newRes;
+     console.info('res length: ' + res.byteLength);
+   });
     
-    // Subscribe to events indicating completion of receiving HTTP streaming responses.
-    httpRequest.on('dataEnd', () => {
-      console.info('No more data in response, data receive end');
-    });
+   // Subscribe to events indicating completion of receiving HTTP streaming responses.
+   httpRequest.on('dataEnd', () => {
+     console.info('No more data in response, data receive end');
+   });
     
-    // Subscribe to events indicating progress of receiving HTTP streaming responses. When downloading data from the server, you can obtain the data download progress through this callback.
-    httpRequest.on('dataReceiveProgress', (data: http.DataReceiveProgressInfo) => {
-      console.info("dataReceiveProgress receiveSize:" + data.receiveSize + ", totalSize:" + data.totalSize);
-    });
+   // Subscribe to events indicating progress of receiving HTTP streaming responses. When downloading data from the server, you can obtain the data download progress through this callback.
+   httpRequest.on('dataReceiveProgress', (data: http.DataReceiveProgressInfo) => {
+     console.info("dataReceiveProgress receiveSize:" + data.receiveSize + ", totalSize:" + data.totalSize);
+   });
 
-    // Subscribe to events indicating progress of sending HTTP streaming responses. When uploading data from the server, you can obtain the data upload progress through this callback.
-    httpRequest.on('dataSendProgress', (data: http.DataSendProgressInfo) => {
-      console.info("dataSendProgress receiveSize:" + data.sendSize + ", totalSize:" + data.totalSize);
-    });
-    ```
+   // Subscribe to events indicating progress of sending HTTP streaming responses. When uploading data from the server, you can obtain the data upload progress through this callback.
+   httpRequest.on('dataSendProgress', (data: http.DataSendProgressInfo) => {
+     console.info("dataSendProgress receiveSize:" + data.sendSize + ", totalSize:" + data.totalSize);
+   });
+   ```
 
 4. Initiate an HTTP streaming request to obtain server data.
 
-    ```ts
+   ```ts
     let streamInfo: http.HttpRequestOptions = {
       method: http.RequestMethod.POST, // Optional. The default value is http.RequestMethod.GET. The GET method is used to retrieve data from the server while the POST method is used to submit data such as forms and files to the server.
       // You can add header fields based on service requirements.
@@ -271,7 +271,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
       // Unsubscribe from the events subscribed in step 3, and call the destroy method to destroy the httpRequest object.
       this.destroyRequest(httpRequest); 
    });
-    ```
+   ```
 
 5. Unsubscribe from the HTTP streaming response events subscribed in step 3, and call **destroy()** to destroy the **httpRequest** object.
 
@@ -296,6 +296,59 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
 ## Configuring Certificate Verification
 
 Certificate-related configurations are required for using the HTTPS protocol. The applications that provide services for Internet users only need to trust the system's prebuilt CA certificates. Currently, the HTTP module trusts the CA certificates preset in the system by default. No special setting is required. If an application needs to trust only the certificates specified by developers, or skip certificate verification, you can configure certificate pinning.
+
+### Certificate Verification Process on the TLS Client
+
+   During the TLS handshake, the client verifies the server certificate to ensure that the connection is trusted. The server certificate usually includes the domain name certificate and intermediate CA certificate.
+
+ **Certificate Chain Composition**
+ 
+   The certificate chain adopts the hierarchical trust structure: **server certificate ← intermediate CA certificate ← root CA certificate**. The **←** symbol indicates the issuance and trust relationship. The certificate chain must be fully traceable back to a trusted root certificate.
+
+**Process to Be Verified**
+
+   After receiving the certificate chain, the client performs three-level verification:
+
+1. Verify the integrity of the certificate chain.
+   - Starting from the server certificate, verify the digital signature level by level to ensure that each level of the certificate is validly issued by the previous level, thereby forming a complete trust chain.
+
+2. Verify the trustworthiness of the root certificate.
+   - Check whether the root certificate exists in the certificate repository.
+   - The repository sources are as follows:
+     - Preset certificate.
+     - Application trust certificate.
+     - CA certificate specified by the request.
+   - You can specify the application-level and request-level trust certificates using related APIs (for details, see the following **Configuration Reference**).
+
+3. Verify the validity of the certificate content.
+   - Certificate validity period check.
+   - Domain name matching verification: The subject alternative name (SAN) and common name (CN) are the same as the access domain name.
+   - Certificate revocation status check: Certificate Revocation List (CRL) and Online Certificate Status Protocol (OCSP).
+
+ Verification Result
+ 
+   - Verification succeeds: The TLS handshake continues and a secure connection is established.
+   - Verification fails: The connection is terminated and an error message is displayed.
+
+This process ensures that only the server that holds a valid and trusted certificate can establish a secure connection.
+
+ **Configuration Reference**
+ 
+1. Configuring the application trust certificate: [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-network-ca-security#section5454123841911).
+2. Configuring the request-level CA certificate:
+   - Configuring the HTTPS request CA certificate through the caPath and caData fields of [httprequestoptions](../reference/apis-network-kit/js-apis-http.md#httprequestoptions).
+   - Configuring the WebSocket request CA certificate through the caPath field of [websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions).
+   - Specifying the TLS request CA certificate through the ca field of [tlssecureoptions](../reference/apis-network-kit/js-apis-socket.md#tlssecureoptions9).
+3. Configuring certificate verification skipping:
+   - HTTPS: configure through [remoteValidation](../reference/apis-network-kit/js-apis-http.md#remotevalidation18) = 'skip'.
+   - WebSocket: configure through skipServerCertVerification = false of [websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions).
+   - TLSSocket: configure through skipRemoteValidation = false of [tlsconnectoptions](../reference/apis-network-kit/js-apis-socket.md#tlsconnectoptions9).
+
+ **Debugging Reference**
+ 
+   - Check whether the specified certificate is trusted through the API. For details, see [networkSecurity.certVerification](../reference/apis-network-kit/js-apis-networkSecurity.md#networksecuritycertverification).
+   - Check whether the certificate chain of the domain name server is trusted by the system using the openssl command: `hdc shell openssl s_client -connect *host name*:*port* -CApath /etc/security/certificates -brief` If `Verification: OK` is displayed, the certificate chain is trusted. You can replace `-trace -showcerts` with `-brief` to print detailed TLS handshake information.
+
 
 ### Certificate Pinning
 
@@ -400,33 +453,6 @@ The following is an example of prebuilt certificate public key hash values:
 }
 ```
 
-The following is an example configuration for overall and host name–based HTTP access:
-
-```
-{
-  "network-security-config": {
-    "base-config": {
-      "cleartextTrafficPermitted": true
-    },
-    "domain-config": [
-      {
-        "domains": [
-          {
-            "include-subdomains": true,
-            "name": "example.com"
-          }
-        ],
-        "cleartextTrafficPermitted": false
-      }
-    ],
-    "component-config": {
-    	"Network Kit": true,
-    	"ArkWeb": true
-    }
-  }
-}
-```
-
 The following is an example configuration of the certificate pin:
 
 ```
@@ -473,7 +499,6 @@ The following is an example configuration of the certificate pin:
 |pin                        | array           |Certificate public key hash. The value can contain any number of items. An item must contain one **digest-algorithm** and **digest**.|
 |digest-algorithm           | string          |Digest algorithm used to generate hashes. Currently, only `sha256` is supported.                                   |
 |digest                     | string          |Public key hash.|
-|cleartextTrafficPermitted  | boolean          |Whether plaintext HTTP is allowed. The value **true** indicates that plaintext HTTP is allowed, and the value **false** indicates the opposite.|
 
 ### Configuring Untrusted User-Installed CA Certificates
 
@@ -488,4 +513,59 @@ By default, the system trusts the prebuilt CA certificates and user-installed CA
   "trust-current-user-ca" : false // Set whether to trust the certificate installed by the current user. The default value is true.
 }
 ```
+### Configuring Plaintext HTTP Access Permissions
 
+This configuration item is used to control whether HTTP requests can be transmitted in plaintext. The following is an example of configuring plaintext HTTP access permissions (including application, component, and domain name configurations) and the description of each field. For more network connection security configurations, see [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-network-ca-security#section5454123841911).
+> **NOTE**
+>
+> The configuration priority rules are as follows: **component-config** > **domain-config** > **base-config**. The configuration with a higher priority overrides the configuration with a lower priority.
+
+
+```
+// src/main/resources/base/profile/network_config.json
+{
+  "network-security-config": {
+    "base-config": {
+      "cleartextTrafficPermitted": true // Optional, supported since API 20.
+    },
+    "domain-config": [
+      {
+        "domains": [
+          {
+            "include-subdomains": true,
+            "name": "example.com"
+          }
+        ],
+        "cleartextTrafficPermitted": false // Optional, supported since API 20.
+      }
+    ],
+    "component-config": {
+    	"Network Kit": true, // Optional, supported since API 20.
+    	"ArkWeb": false // Optional, supported since API 20.
+    }
+  }
+}
+```
+
+**Description of fields**
+
+| Field                     | Type           | Mandatory| Description                                  |
+| --------------------------| --------------- |--------- |-------------------------------------- |
+|base-config                     | array          | No| Indicates the plaintext configuration of the application scope. This field has the lowest priority.|
+|cleartextTrafficPermitted  | boolean          |No| Whether plaintext HTTP is allowed. The value **true** indicates that plaintext HTTP is allowed, and the value **false** indicates the opposite.|
+|domain-config                     | array          | No|  Indicates the plaintext configuration of each domain. The value can contain any number of items. Each item must contain one **domains**. If rules conflict in the same domain, the first matched rule is used. The priority is lower than that of **component-config**.|
+|include-subdomains         | boolean         | No| Whether a rule applies to subdomains. The value **true** indicates that the rule applies to subdomains, and the value **false** indicates the opposite. The default value is **false**.|
+|name         | string         | No| Main domain name.|
+|component-config                    | array          |  No| Indicates the plaintext configuration of each component. This field has the highest priority.|
+|Network Kit                 | boolean          |No| Whether plaintext transmission is disabled in Network Kit. The value **true** indicates that plaintext transmission is disabled, and the value **false** indicates the opposite. The default value is **true**.|
+|ArkWeb                    | boolean          |No| Whether plaintext transmission is disabled in ArkWeb. The value **true** indicates that plaintext transmission is disabled, and the value **false** indicates the opposite. The default value is **false**.|
+
+## Samples
+
+The following sample is provided to help you better understand how to develop the HTTP data request feature:
+
+* [Upload and Download (ArkTS) (API10)] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/UploadAndDownLoad)
+
+* [Http (ArkTS) (API10) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Http)
+
+* [Http_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case)

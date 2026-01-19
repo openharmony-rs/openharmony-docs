@@ -26,10 +26,11 @@ This guide covers [basic usage](#basic-usage), [advanced usage](#advanced-usage)
 - Generated child components must be valid within the parent container component of **LazyForEach**.
 - **LazyForEach** can be used within **if/else** statements and may itself contain such statements.
 - The key generation function must produce unique values for each data item. Duplicate key values will cause rendering issues.
-- **LazyForEach** must be updated through the **DataChangeListener** object. Reassigning the **dataSource** parameter will cause exceptions. When **dataSource** is a state variable, changes to that variable will not trigger **LazyForEach** UI re-rendering.
+- **LazyForEach** must be updated through a **DataChangeListener** object (for details, see [LazyForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)). Reassigning the dataSource (first parameter) causes an exception. If dataSource uses a state variable, changes to the state variable will not trigger UI refresh in **LazyForEach**.
 - For optimal rendering performance, ensure the **onDataChange** API of **DataChangeListener** generates new key values different from previous ones to trigger component re-rendering.
 - **LazyForEach** can be combined with [\@Reusable](../state-management/arkts-reusable.md) to enable node reuse. For details, see [List Scrolling with LazyForEach](../state-management/arkts-reusable.md#list-scrolling-with-lazyforeach).
 - **LazyForEach** also supports integration with [\@ReusableV2](../state-management/arkts-new-reusableV2.md). For details, see [Using in LazyForEach](../state-management/arkts-new-reusableV2.md#using-in-lazyforeach).
+- When child nodes of **LazyForEach** leave both the visible area and preload area, they are not destroyed or recycled immediately. LazyForEach performs destruction and reclamation during idle periods.
 
 ## Basic Usage
 
@@ -53,12 +54,14 @@ These requirements ensure correct and efficient child component updates. Violati
 
 ### Component Creation Rules
 
-After the key generation rules are determined, the **itemGenerator** function – the second parameter in **LazyForEach** – creates a component for each array item of the data source based on the rules. Component creation involves two scenarios: [initial rendering](#initial-rendering) and [non-initial rendering](#data-update).
+After the key generation rules are determined, the **itemGenerator** function – the second parameter in **LazyForEach** – creates a component for each array item of the data source based on the rules. Component creation involves two scenarios: [initial rendering](#initial-rendering) and [date updates](#data-update) in non-initial rendering.
 
 ### Initial Rendering
 
 When implementing **LazyForEach**, you must provide three elements: the data source, a key generation function, and a component creation function. Ensure the key generation function produces distinct keys for each data item.<br>
 During initial rendering, **LazyForEach** generates unique keys for all data source items based on the key generation rules and creates corresponding components for each.
+
+If node creation in the preload area is time-consuming, the framework distributes creation tasks across multiple frames.
 
 ```ts
 /** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
@@ -108,7 +111,7 @@ struct MyComponent {
 }
 ```
 
-In the preceding code, the return value of the **keyGenerator** function is **item**. During **LazyForEach** rendering, keys (from **Hello 0**, **Hello 1**, through to **Hello 20**) are generated in sequence for data source array items, and corresponding list items are created and rendered to the UI.
+In the preceding code, the return value of the **keyGenerator** function is **item**. During loop rendering, **LazyForEach** generates keys in the sequence of **Hello 0**, **Hello 1**, ..., **Hello 20** for the array item of the data source, creates the corresponding **ListItem** child components and render them on the GUI.
 
 The figure below shows the effect.
 
@@ -160,7 +163,7 @@ struct MyComponent {
               })
           }.margin({ left: 10, right: 10 })
         }
-      }, (item: string) => `same key`) // The custom key generation function returns identical keys for all items.
+      }, (item: string) => same key) // The custom key generation function returns identical keys for all items.
     }.cachedCount(5)
   }
 }
@@ -183,7 +186,7 @@ LazyForEach(this.data, (item: string) => {
       })
     }.margin({ left: 10, right: 10 })
   }
-}, (item: string, index: number) => `${item}-${index}`) // The customize the key generation function generates unique keys.
+}, (item: string, index: number) => ${item}-${index}) // The customize the key generation function generates unique keys.
 ```
 
 The corrected implementation produces the following rendering behavior.
@@ -458,7 +461,7 @@ struct MyComponent {
 }
 ```
 
-When a **LazyForEach** child component is clicked, the data source's **changeData** method updates the corresponding data item and calls **notifyDataChange**. This invokes **listener.onDataChange**, prompting **LazyForEach** to rebuild the child component at that index with the modified data.
+When a **LazyForEach** child component is clicked, the current data is modified first, then the data source's **changeData** method is invoked. This method calls **notifyDataChange**, which triggers **listener.onDataChange** to notify the **LazyForEach** component of the data change. **LazyForEach** then rebuilds the child component at the corresponding index.
 
 The figure below shows the effect.
 
@@ -694,18 +697,18 @@ Key usage considerations:
 1. Do not combine **onDatasetChange** with other data operation APIs within the same update cycle.
 2. For the **operations** parameter passed to **onDatasetChange**, the index of each operation is calculated based on the original array (before modification). As a result, the index in **operations** does not always align with the index in **Datasource**, and the index must not be a negative number.
 
-Example analysis:
+   Example analysis:
 
-```ts
-// Array before modification.
-['Hello a','Hello b','Hello c','Hello d','Hello e','Hello f','Hello g','Hello h','Hello i','Hello j','Hello k','Hello l','Hello m','Hello n','Hello o','Hello p','Hello q','Hello r']
-//Array after modification.
-['Hello a','Hello c','Hello d','Hello b','Hello g','Hello f','Hello e','Hello h','Hello 1','Hello 2','Hello i','Hello j','Hello m','Hello n','Hello o','Hello p','Hello q','Hello r']
-```
-**Hello b** moves from index 2 to index 4. Therefore, the first **operation** is written in **type: DataOperationType.MOVE, index: { from: 1, to: 3 } }**.
-**Hello e** (at index 4) and **Hello g** (at index 6) swap positions. Therefore, the second **operation** is written in **{ type: DataOperationType.EXCHANGE, index: { start: 4, end: 6 } }**.
-**Hello 1** and **Hello 2** are inserted after **Hello h** whose index is 7 in the original array. Therefore, the third **operation** is written in **{ type: DataOperationType.ADD, index: 8, count: 2 }**.
-**Hello k** whose index is 10 and **Hello l** whose index is 11 are deleted in the original array. Therefore, the fourth **operation** is written in **{ type: DataOperationType.DELETE, index: 10, count: 2 }**.
+   ```ts
+   // Array before modification.
+   ['Hello a','Hello b','Hello c','Hello d','Hello e','Hello f','Hello g','Hello h','Hello i','Hello j','Hello k','Hello l','Hello m','Hello n','Hello o','Hello p','Hello q','Hello r']
+   //Array after modification.
+   ['Hello a','Hello c','Hello d','Hello b','Hello g','Hello f','Hello e','Hello h','Hello 1','Hello 2','Hello i','Hello j','Hello m','Hello n','Hello o','Hello p','Hello q','Hello r']
+   ```
+   **Hello b** moves from index 2 to index 4. Therefore, the first **operation** is written in **type: DataOperationType.MOVE, index: { from: 1, to: 3 } }**.
+   **Hello e** (at index 4) and **Hello g** (at index 6) swap positions. Therefore, the second **operation** is written in **{ type: DataOperationType.EXCHANGE, index: { start: 4, end: 6 } }**.
+   **Hello 1** and **Hello 2** are inserted after **Hello h** whose index is 7 in the original array. Therefore, the third **operation** is written in **{ type: DataOperationType.ADD, index: 8, count: 2 }**.
+   **Hello k** whose index is 10 and **Hello l** are deleted in the original array. Therefore, the fourth **operation** is written in **{ type: DataOperationType.DELETE, index: 10, count: 2 }**.
 
 3. When data is processed in batches within the same **onDatasetChange** callback, if multiple **DataOperation** instances target the same index, only the first **DataOperation** will take effect.
 4. In operations where you specify keys on your own, **LazyForEach** does not call the key generator to obtain keys. As such, make sure the specified keys are correct.
@@ -1297,7 +1300,7 @@ struct MyComponent {
           item.message += '00';
           this.data.reloadData();
         })
-      }, (item: StringData, index: number) => item.message)
+      }, (item: StringData, index: number) => item.message) // Modifying the message property will change the key value.
     }.cachedCount(5)
   }
 }
@@ -1306,9 +1309,9 @@ struct MyComponent {
 **Figure 15** Unwanted image flickering with LazyForEach 
 ![LazyForEach-Image-Flush](figures/LazyForEach-Image-Flush.gif)
 
-In the example, when a list item is clicked, only the **message** property of the item is changed. Yet, along with the text change comes the unwanted image flickering. This is because, with the **LazyForEach** update mechanism, the entire list item is rebuilt. As the **Image** component is updated asynchronously, flickering occurs. The solution is to use @ObjectLink and @Observed to refresh the Text child component separately.
+In the example, when a list item is clicked, only the **message** property of the item is changed. However, because the key value changes, the entire list item is recreated. Due to the **Image** component's asynchronous refresh behavior, flickering occurs. The solution is to maintain consistent key values and use @ObjectLink with @Observed to refresh only the **Text** child component independently.
 
-The code for fixing the issue is as follows:
+The following shows the code snippet after optimization:
 
 ```ts
 /** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
@@ -1363,7 +1366,7 @@ struct MyComponent {
         .onClick(() => {
           item.message += '0';
         })
-      }, (item: StringData, index: number) => index.toString())
+      }, (item: StringData, index: number) => index.toString()) // Key values are independent of the message property.
     }.cachedCount(5)
   }
 }
@@ -1474,9 +1477,9 @@ struct ChildComponent {
 **Figure 17** UI not re-rendered when @ObjectLink property is changed 
 ![LazyForEach-ObjectLink-NotRenderUI](figures/LazyForEach-ObjectLink-NotRenderUI.gif)
 
-The @ObjectLink decorator can only observe changes to direct sub-properties of its bound object and cannot listen for deeply nested properties. As a result, component re-rendering can only be triggered by modifying these direct sub-properties. For details, see the [usage and constraints of @ObjectLink and @Observed](../state-management/arkts-observed-and-objectlink.md).
+The @ObjectLink decorator can only observe changes to direct sub-properties of its bound object and cannot listen for deeply nested properties. As a result, component re-rendering can only be triggered by modifying these direct sub-properties. For details, see [usage and restrictions of the @ObjectLink and @Observed decorators](../state-management/arkts-observed-and-objectlink.md).
 
-The corrected code is as follows:
+The following shows the code snippet after optimization:
 
 ```ts
 /** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
@@ -1709,7 +1712,7 @@ struct MyComponent {
 
 ### Component Reuse Rendering Exception
 
-If @Reusable is used together with [\@ComponentV2](../state-management/arkts-new-componentV2.md), the component rendering will be abnormal.
+Mixing the @Reusable decorator with the [\@ComponentV2](../state-management/arkts-new-componentV2.md) decorator may cause component rendering anomalies.
 
 ```ts
 /** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/

@@ -188,19 +188,19 @@ struct SwitchBootcamp {
 
 ### 示例2（设置onAccessibilityFocus回调函数）
 
-从API version 18开始，当获焦、失焦状态发生变化时，触发该回调函数。本示例展示了[onAccessibilityFocus](ts-universal-accessibility-event.md#onaccessibilityfocus)的基本用法。当聚焦到onAccessibilityFocusTest2时，会打印出“[testingTag] isFocus current is true”，聚焦到除了onAccessibilityFocusTest2以外的地方都会打印“[testingTag] isFocus current is false”。
+从API version 18开始，当获焦、失焦状态发生变化时，触发该回调函数。本示例展示了[onAccessibilityFocus](ts-universal-accessibility-event.md#onaccessibilityfocus)的基本用法，聚焦到"onAccessibilityFocus takes effect"时，会打印"[testingTag] isFocus current is true"，聚焦到除了"onAccessibilityFocus takes effect"以外的地方都会打印"[testingTag] isFocus current is false"。
 
 ```ts
 // xxx.ets
 @Entry
 @Component
-struct index {
+struct OnAccessibilityFocusExample {
 
   build() {
     NavDestination() {
       Column() {
-        Text("onAccessibilityFocusTest1")
-        Text("onAccessibilityFocusTest2")
+        Text("onAccessibilityFocus doesn't take effect")
+        Text("onAccessibilityFocus takes effect")
         .onAccessibilityFocus((isFocus)=>{
           console.info('[testingTag] isFocus current is ${isFocus}')
           })
@@ -211,5 +211,3 @@ struct index {
   }
 }
 ```
-
-![onAccessibilityFocus](figures/onAccessibilityFocus.png)

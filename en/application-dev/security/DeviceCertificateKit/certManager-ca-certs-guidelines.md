@@ -42,13 +42,13 @@ The following table describes the commonly used APIs.
 
 1. Request and declare permissions.
 
-    To use the API for installing or deleting a certificate, request the **ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT** or **ohos.permission.ACCESS_USER_TRUSTED_CERT** permission.
-    
-    To use the API for obtaining the certificate list or details, request the **ohos.permission.ACCESS_CERT_MANAGER** permission.
-    
-    For details about how to request permissions, see [Workflow for Requesting Permissions](../AccessToken/determine-application-mode.md).
-    
-    For details about how to declare permissions, see [Declaring Permissions](../AccessToken/declare-permissions.md).
+   To use the API for installing or deleting a certificate, request the **ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT** or **ohos.permission.ACCESS_USER_TRUSTED_CERT** permission.
+
+   To use the API for obtaining the certificate list or details, request the **ohos.permission.ACCESS_CERT_MANAGER** permission.
+
+   For details about how to request permissions, see [Workflow for Requesting Permissions](../AccessToken/determine-application-mode.md).
+
+   For details about how to declare permissions, see [Declaring Permissions](../AccessToken/declare-permissions.md).
 
 2. Import the required module.
 
@@ -83,7 +83,7 @@ The following table describes the commonly used APIs.
        0x18, 0x6E, 0x91, 0xA6, 0xB3, 0x5E, 0x2C, 0xF0, 0x68, 0x45, 0x11, 0x1D, 0xA0, 0xCB, 0x83, 0xEB,
        0xE6, 0x25,
      ]);
-   
+
      let certUri: string = '';
      let certScope = certificateManager.CertScope.CURRENT_USER;
      try {
@@ -94,7 +94,7 @@ The following table describes the commonly used APIs.
      } catch (err) {
        console.error(`Failed to install user ca cert. Code: ${err.code}, message: ${err.message}`);
      }
-   
+
      try {
        /* Obtain the details of the user CA certificate. */
        let result = await certificateManager.getUserTrustedCertificate(certUri);
@@ -107,7 +107,7 @@ The following table describes the commonly used APIs.
      } catch (err) {
        console.error(`Failed to get user ca certificate. Code: ${err.code}, message: ${err.message}`);
      }
-   
+
      try {
        /* Obtain the list of user CA certificates in the current user directory. */
        let result = await certificateManager.getAllUserTrustedCertificates(certScope);
@@ -122,7 +122,7 @@ The following table describes the commonly used APIs.
      } catch (err) {
        console.error(`Failed to get user ca certificate. Code: ${err.code}, message: ${err.message}`);
      }
-   
+
      try {
        /* Delete the installed user CA certificate. */
        certificateManager.uninstallUserTrustedCertificateSync(certUri);
@@ -143,7 +143,7 @@ The following table describes the commonly used APIs.
        }
        let systemCAPath = certificateManager.getCertificateStorePath(property1);
        console.info(`Success to get system ca path: ${systemCAPath}`);
-   
+
        /* Obtain the storage path of the CA certificates for the current user. */
        let property2: certificateManager.CertStoreProperty = {
          certType: certificateManager.CertType.CA_CERT_USER,
@@ -151,7 +151,7 @@ The following table describes the commonly used APIs.
        }
        let userCACurrentPath = certificateManager.getCertificateStorePath(property2);
        console.info(`Success to get current user's user ca path: ${userCACurrentPath}`);
-   
+
        /* Obtain the storage path of the CA certificates for all users. */
        let property3: certificateManager.CertStoreProperty = {
          certType: certificateManager.CertType.CA_CERT_USER,

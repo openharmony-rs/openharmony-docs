@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Progress** component represents a progress indicator that displays the progress of content loading or an operation.
 
@@ -182,6 +182,10 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 Sets whether to enable privacy mode.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -192,7 +196,7 @@ Sets whether to enable privacy mode.
 
 | Name| Type                                                     | Mandatory| Description                                                 |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| isPrivacySensitiveMode  | [Optional\<boolean\>] | Yes  | Whether to enable privacy mode, in which the progress is cleared and the text is obscured. The value **true** means to enable privacy mode, and **false** means the opposite.<br>**NOTE**<br>The value null indicates insensitive.<!--Del--><br>For widgets, this property must be used with [FormComponent](./ts-basic-components-formcomponent-sys.md) and the [obscured](./ts-universal-attributes-obscured.md) attribute to display privacy masking effects.<!--DelEnd--> |
+| isPrivacySensitiveMode  | [Optional\<boolean\>] | Yes  | Whether to enable privacy mode, in which the progress is cleared and the text is obscured. The value **true** means to enable privacy mode, and **false** means the opposite.<br>**NOTE**<br>The value null indicates insensitive.<br> Default value: **false**<!--Del--><br>For widgets, this property must be used with [FormComponent](./ts-basic-components-formcomponent-sys.md) and the [obscured](./ts-universal-attributes-obscured.md) attribute to display privacy masking effects.<!--DelEnd--> |
 
 ## ProgressConfiguration<sup>12+</sup>
 
@@ -264,7 +268,7 @@ Inherits from [ScanEffectOptions](#scaneffectoptions10) and [CommonProgressStyle
 | borderColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Border color.<br>Default value:<br>API version 10: **'\#33006cde'**<br>API version 11 or later: **'\#33007dff'**|
 | borderWidth | [Length](ts-types.md#length) | No| Yes| Border width. It cannot be set in percentage.<br>Default value: **1vp**|
 | content | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Text content, which can be customized .<br>The Resource type is supported since API version 20.|
-| font | [Font](ts-types.md#font) | No| Yes| Text style.<br>Default value:<br>- Font size (cannot be set in percentage): **12fp**<br>- Other attributes: following the settings of the **Text** component.|
+| font | [Font](ts-types.md#font) | No| Yes| Text style.<br>Default value:<br>Font size (cannot be set in percentage): **12fp**<br>Other text parameters are subject to the theme values of the [Text](ts-basic-components-text.md) component.|
 | fontColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color.<br>Default value: **'\#ff182431'**|
 | showDefaultPercentage | boolean | No| Yes| Whether to display the percentage text. After this function is enabled, the progress percentage is displayed on the progress bar. This attribute does not take effect when the **content** attribute is set.<br>Default value: **false**.<br>**true**: Show the percentage of the current progress.<br>**false**: Do not show the percentage of the current progress.|
 | borderRadius<sup>18+</sup> |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Corner radius. The value cannot be set in percentage.<br>Value range: [0, height/2]<br> Default value: height/2<br>If an invalid value is set, the default value is used.|
@@ -314,7 +318,7 @@ Inherits [CommonProgressStyleOptions](#commonprogressstyleoptions10).
 | ------------ | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | strokeWidth  | [Length](ts-types.md#length) | No | Yes | Stroke width of the progress indicator. It cannot be set in percentage.<br>Default value: **4.0vp**                                           |
 | scaleCount   | number                       | No | Yes | Number of divisions on the ring-style process indicator.<br>Default value: **120**<br>Value range: [2, min(width, height)/scaleWidth/2/π]. If the value is out of the range, the progress bar is displayed as a ring without scales. By default, the minimum width and height are 77 vp.                    |
-| scaleWidth   | [Length](ts-types.md#length) | No | Yes | Width of the ring progress bar scale. The value cannot be a percentage. If the scale width is greater than the progress bar width, the default width is used.<br>Default value: **2.0vp**|
+| scaleWidth   | [Length](ts-types.md#length) | No | Yes | Width of the ring progress bar scale. The value cannot be set in percentage. If the scale width is greater than the progress bar width, the default width is used.<br>Default value: **2.0vp**|
 
 ## EclipseStyleOptions<sup>10+</sup>
 

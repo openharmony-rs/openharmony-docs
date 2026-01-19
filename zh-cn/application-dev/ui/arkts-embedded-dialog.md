@@ -17,7 +17,7 @@ ArkUI的弹出框默认设置为全局级别，弹窗节点作为页面根节点
 >
 > 页面级弹出框的使用方式是在当前弹出框的入参之中新增了相关属性能力，使用前可以通过[弹出框概述](arkts-base-dialog-overview.md)了解基础的弹出框使用方法。
 
-## 设置页面级弹出框参数
+## 设置参数
 
 > **说明：**
 > 
@@ -36,9 +36,11 @@ this.getUIContext().getPromptAction().openCustomDialog({
 })
 ```
 
-## 弹出框在指定页面内弹出
+如果希望弹出框显示在某个指定页面内，需通过第二个参数[levelUniqueId](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)来实现。此参数接收页面内的节点id，设置后，弹出框显示时会自动查询此id对应的节点所在的[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)页面，并将其挂载在子页面的[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)节点下。
 
-如果希望弹出框显示在某个指定页面内，需通过第二个参数levelUniqueId来实现。此参数接收页面内的节点id，设置后，弹出框显示时会自动查询此id对应的节点所在的[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)页面，并将其挂载在子页面的[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)节点下。
+> **说明：**
+> 
+> 当levelMode参数设置为LevelMode.EMBEDDED，但是levelUniqueId传入的ID无法正确找到节点时，页面级能力不生效。如果levelUniqueId所映射的节点存在但向上遍历不存在NavDestination节点则会将弹出框节点挂载在Page节点下。
 
 如下代码示例所示，Text节点为指定页面的节点，设置自定义id后，通过[getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12)方法获取该节点，再通过[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)获取节点的内部id，并将其作为levelUniqueId的值传入。
 
@@ -55,8 +57,6 @@ Text(this.message).id("test_text")
     })
   })
 ```
-
-## 设置页面级弹出框蒙层样式
 
 如果弹出框配置了蒙层，蒙层的遮盖范围会根据页面层级的变化进行调整，默认遮罩范围为弹出框父节点的显示区域（Page页面或者Navigation页面）。此时，状态栏和导航条不会被蒙层遮挡。若希望遮挡状态栏和导航条，可将[immersiveMode](../reference/apis-arkui/js-apis-promptAction.md#immersivemode15枚举说明)参数的值设为ImmersiveMode.EXTEND。
 
@@ -84,6 +84,9 @@ Text(this.message).id("test_text")
 2. 点击弹出框的蒙层，默认会关闭弹出框，点击蒙层以外的区域则不会。
 
 ## 完整示例
+
+下述示例为基于Router路由模式下的页面级弹出框。
+
 ```ts
 // Index.ets
 import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
@@ -96,8 +99,8 @@ function customDialogBuilder(uiContext: UIContext) {
     Text('Custom dialog Message').fontSize(20).height(100)
     Row() {
       Button("Next").onClick(() => {
-        // 在弹窗内部进行路由跳转。
-        uiContext.getRouter().pushUrl({url: 'pages/Next'});
+        // 在弹窗内部进行路由跳转
+        uiContext.getRouter().pushUrl({ url: 'pages/Next' });
       })
       Blank().width(50)
       Button("Close").onClick(() => {
@@ -121,11 +124,11 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text(this.message).id("test_text")
+        Text(this.message).id('test_text')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            const node: FrameNode | null = this.getUIContext().getFrameNodeById("test_text") || null;
+            const node: FrameNode | null = this.getUIContext().getFrameNodeById('test_text') || null;
             this.uiContext.getPromptAction().openCustomDialog({
               builder: () => {
                 this.customDialogComponent();
@@ -144,6 +147,7 @@ struct Index {
   }
 }
 ```
+
 ```ts
 // Next.ets
 @Entry
@@ -168,3 +172,105 @@ struct Next {
 }
 ```
 ![embedded_dialog](figures/embedded_dialog.gif)
+
+下述示例为基于Navigation导航模式下的页面级弹出框。使用本示例前需要参考[Navigation使用NavDestination作为导航页](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例16navigation使用navdestination作为导航页)文档完成Index首页和router_map.json的创建与配置。并使用下述示例代码中的PageLevelDialogInNavigation和PageLevelDialogInNavigationTestTwo组件替换Navigation参考文档中的PageHome和PageOne组件。
+
+```ts
+import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
+ 	 
+let customDialogId: number = 0;
+
+@Builder
+function customDialogBuilder(uiContext: UIContext, stack: NavPathStack | undefined) {
+  Column() {
+    Text('Custom dialog Message').fontSize(20).height(100)
+    Row() {
+      Button('Next').onClick(() => {
+        // 在弹窗内部进行路由跳转
+        if (stack) {
+          stack.pushPath({ name: 'PageLevelDialogInNavigationPageTwo'})
+        }
+      })
+      Blank().width(50)
+      Button('Close').onClick(() => {
+        uiContext.getPromptAction().closeCustomDialog(customDialogId);
+      })
+    }
+  }.padding(20)
+}
+
+@Component
+export struct PageLevelDialogInNavigation {
+  @State info: string = '';
+  private stack: NavPathStack | undefined = undefined;
+  private uiContext: UIContext = this.getUIContext();
+  @State message: string = 'Hello World';
+
+  @Builder
+  customDialogComponent() {
+    customDialogBuilder(this.uiContext, this.stack);
+  }
+
+  build() {
+    NavDestination() {
+      Stack({alignContent: Alignment.Center}) {
+        Column() {
+          Text(this.message).id('test_text')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+            .onClick(() => {
+              const node: FrameNode | null = this.getUIContext().getFrameNodeById('test_text') || null;
+              this.uiContext.getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.customDialogComponent();
+                },
+                levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
+                levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
+                immersiveMode: ImmersiveMode.EXTEND, // 设置页面级弹出框蒙层的显示模式
+              }).then((dialogId: number) => {
+                customDialogId = dialogId;
+              })
+            })
+        }
+        .width('100%')
+      }.width('100%').height('100%')
+    }
+    .width('100%').height('100%')
+    .title('PageOne')
+    .onReady((ctx: NavDestinationContext) => {
+      this.stack = ctx.pathStack;
+    })
+  }
+}
+
+@Component
+export struct PageLevelDialogInNavigationTestTwo {
+  @State message: string = 'Back';
+  private stack: NavPathStack | undefined = undefined;
+
+  build() {
+    NavDestination() {
+      Stack({alignContent: Alignment.Center}) {
+        Column() {
+          Button(this.message)
+            .fontSize(20)
+            .fontWeight(FontWeight.Bold)
+            .onClick(() => {
+              if (this.stack) {
+                this.stack.pop()
+              }
+            })
+        }
+        .width('100%')
+      }.width('100%').height('100%')
+    }
+    .width('100%').height('100%')
+    .title('PageTwo')
+    .onReady((ctx: NavDestinationContext) => {
+      this.stack = ctx.pathStack;
+    })
+  }
+}
+```
+
+![embedded_dialog_navigation](figures/page_dialog_in_navigation.gif)

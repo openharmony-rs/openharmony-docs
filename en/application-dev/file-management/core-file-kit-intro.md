@@ -1,4 +1,4 @@
-# Introduction to Core File Kit
+# About This Kit
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->

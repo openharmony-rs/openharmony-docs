@@ -124,9 +124,9 @@ text{
 
 > **NOTE**
 > - The **digital** attribute takes effect only when the **indicator** attribute is set to **true**.
-> 
+>
 > - The **loop** attribute takes effect only when there are two or more child components of the **&lt;swiper&gt;** component.
-> 
+>
 > - The **scrolleffect** attribute takes effect only when the **loop** attribute value is set to **false**.
 
 

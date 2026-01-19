@@ -310,7 +310,7 @@ OH_Drawing_RectDestroy(rect);
 
 The effect is as follows:
 
-![image_draw_rect](figures/image_draw_rect.png)
+![image_0000002194025273](figures/image_0000002194025273.png)
 
 
 ## Drawing a Rounded Rectangle

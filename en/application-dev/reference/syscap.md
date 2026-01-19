@@ -124,10 +124,10 @@ You can use either the ArkTS or native API to determine whether an API is availa
   - Method 2: Import a module using the **import** API. If the current device does not support the module, the import result is **undefined**. Before using an API, you must make sure the API is available.
 
 	```ts
-	import { geolocationManager } from '@kit.LocationKit';
+	import { geoLocationManager } from '@kit.LocationKit';
 
 	try {
-	geolocationManager.getCurrentLocation((location) => {
+	geoLocationManager.getCurrentLocation((location) => {
 		console.info('current location: ' + JSON.stringify(location));
 	});
 	} catch(err) {
@@ -159,7 +159,7 @@ The performance of a SysCap may vary by device type. For example, a tablet is su
 The following code snippet uses the facial recognition capability as an example:
 
 ```ts
-import userAuth from '@ohos.userIAM.userAuth';
+import { userAuth } from '@kit.UserAuthenticationKit';
 
 const authParam : userAuth.AuthParam = {
   challenge: new Uint8Array(),

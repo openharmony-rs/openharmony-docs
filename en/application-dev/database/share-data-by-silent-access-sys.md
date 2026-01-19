@@ -412,7 +412,7 @@ The data provider calls the **enableSilentProxy** API to dynamically enable sile
    let dseUri = ('datashare:///com.ohos.settingsdata/entry/DB00/TBL00');
    ```
 
-3. Create a **DataShareHelper** instance.
+3. Create a **DataAbilityHelper** instance.
 
    ```ts
    let abilityContext: Context;

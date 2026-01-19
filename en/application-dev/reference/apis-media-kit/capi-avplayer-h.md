@@ -940,6 +940,10 @@ Sets an AVPlayer callback.<br> The callbacks [OH_AVPlayerOnInfo](capi-avplayer-b
 
 **Since**: 11
 
+**Deprecated from**: 12
+
+**Substitute**: [OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback)
+
 **Parameters**
 
 | Parameter| Description|

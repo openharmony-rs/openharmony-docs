@@ -247,7 +247,7 @@ import { Want } from '@kit.AbilityKit';
     * parameters参数用法：parameters携带开发者自定义参数，由UIAbilityA传递给UIAbilityB，并在UIAbilityB中进行获取。
 
         ```ts
-        // (1) UIAbilityA通过startability启动UIAbilityB
+        // (1) UIAbilityA通过startAbility启动UIAbilityB
         import { UIAbility, Want } from '@kit.AbilityKit';
         import { window } from '@kit.ArkUI';
         import { BusinessError } from '@kit.BasicServicesKit';

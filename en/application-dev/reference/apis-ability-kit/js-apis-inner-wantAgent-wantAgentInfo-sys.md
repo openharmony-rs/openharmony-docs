@@ -1,4 +1,4 @@
-# WantAgentInfo
+# WantAgentInfo (System API)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

@@ -15,7 +15,7 @@
 在下面的示例中，将test()方法注册在前端页面中， 该函数可以在前端页面触发运行。
 
 
-- [javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)接口使用示例如下。
+应用侧使用[javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)接口注册示例：
 
   ```ts
   // xxx.ets
@@ -44,6 +44,7 @@
           .onClick(() => {
             try {
               this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.refresh();
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
@@ -68,46 +69,55 @@
     }
   }
   ```
-- 应用侧使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口注册示例如下。
+  应用侧使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口注册。
 
-  ```ts
+  > **说明：**
+  >
+  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册，在下次加载或者重新加载后生效。
+
+- 示例1：
+  
+  ``` TypeScript
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class TestClass {
     constructor() {
     }
-
+  
     test(): string {
-      return "ArkUI Web Component";
+      return 'ArkUI Web Component';
     }
-
+  
     toString(): void {
       console.info('Web Component toString');
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
-        Button('refresh')
+        // 注册到window上的javaScript对象不再使用后，需解除注册，防止内存泄漏
+        Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
+              this.webviewController.deleteJavaScriptRegister('testObjName');
               this.webviewController.refresh();
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Button('Register JavaScript To Window')
-          .onClick(() => {
+        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        // 在页面加载前注册，页面加载完成后生效
+          .onControllerAttached(()=>{
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"],
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
                       // 可选参数, asyncMethodList
                       [],
                       // 可选参数, permission
@@ -121,23 +131,76 @@
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Button('deleteJavaScriptRegister')
-          .onClick(() => {
-            try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
       }
     }
   }
   ```
-
-  > **说明：**
-  >
-  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册后在下次加载或者重新加载后生效。
+ 
+- 示例2：
+   
+   ``` TypeScript
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   class TestClass {
+     constructor() {
+     }
+   
+     test(): string {
+       return 'ArkUI Web Component';
+     }
+   
+     toString(): void {
+       console.info('Web Component toString');
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     webviewController: webview.WebviewController = new webview.WebviewController();
+     @State testObj: TestClass = new TestClass();
+     @State isRegistered: boolean = false;
+   
+     build() {
+       Column() {
+         // 注册到window上的javaScript对象不再使用后，需解除注册，防止内存泄漏
+         Button('deleteJavaScriptRegister')
+           .onClick(() => {
+             try {
+               this.webviewController.deleteJavaScriptRegister('testObjName');
+               this.webviewController.refresh();
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: $rawfile('index.html'), controller: this.webviewController })
+           .onPageEnd(()=>{
+             try {
+               if(!this.isRegistered){
+               this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
+                       // 可选参数, asyncMethodList
+                       [],
+                       // 可选参数, permission
+                       '{"javascriptProxyPermission":{"urlPermissionList":[{"scheme":"resource","host":"rawfile","port":"","path":""},' +
+                       '{"scheme":"e","host":"f","port":"g","path":"h"}],"methodList":[{"methodName":"test","urlPermissionList":' +
+                       '[{"scheme":"https","host":"xxx.com","port":"","path":""},{"scheme":"resource","host":"rawfile","port":"","path":""}]},' +
+                       '{"methodName":"test11","urlPermissionList":[{"scheme":"q","host":"r","port":"","path":"t"},' +
+                       '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
+                 );
+                 this.isRegistered = true;
+                 // onPageEnd中注册方法后，需重新加载后生效
+                 this.webviewController.refresh();              
+               }
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+       }
+     }
+   }
+   ```
 
 - 可选参数permission是一个json字符串，示例如下：
   ```json

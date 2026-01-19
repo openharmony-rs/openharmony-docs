@@ -20,7 +20,7 @@ Subscribing to a common event in static mode is achieved by configuring a declar
 
 ## Lifecycle
 
-The [StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md) module is destroyed 15 seconds after [`onReceiveEvent()`](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent) is executed.
+The [StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md) module is destroyed 15 seconds after [onReceiveEvent()](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent) is executed.
 
 ## How to Develop
 
@@ -52,7 +52,7 @@ The [StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/j
    ```json
    {
      "module": {
-   	// ...
+    // ...
        "extensionAbilities": [
          {
            "name": "StaticSubscriber",
@@ -70,7 +70,7 @@ The [StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/j
            ]
          }
        ],
-   	// ...
+    // ...
      }
    }
    ```

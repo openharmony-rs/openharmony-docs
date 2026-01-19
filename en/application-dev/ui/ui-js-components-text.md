@@ -38,7 +38,7 @@ Create a **&lt;text&gt;** component in the .hml file under **pages/index**.
 ## Setting the Text Style and Attributes
 
 - Adding a text style
-  
+
   Set the **color**, **font-size**, **allow-scale**, **word-spacing**, and **text-align** attributes to add the color, size, zoom, text spacing, and vertical alignment of the text.
 
   ```html
@@ -69,10 +69,10 @@ Create a **&lt;text&gt;** component in the .hml file under **pages/index**.
     ![en-us_image_0000001222967764](figures/en-us_image_0000001222967764.png)
 
 
-- Adding a text decoration
-  
-  Set the **text-decoration** and **text-decoration-color** attributes to add an underline, overline, line-through, or a combination of lines in the specified color to selected text. For values of **text-decoration**, see [Text Styles](../reference/apis-arkui/arkui-js/js-components-basic-text.md).
 
+- Adding a text decoration
+
+  Set the **text-decoration** attribute to add a decoration line to selected text. Set the **text-decoration-color** attribute to apply specific color to the decoration line. For values of **text-decoration**, see text styles.
 
   ```html
   <!-- xxx.hml -->
@@ -103,10 +103,10 @@ Create a **&lt;text&gt;** component in the .hml file under **pages/index**.
   ![en-us_image_0000001223287688](figures/en-us_image_0000001223287688.png)
 
 
+
 - Hiding text content
 
   Set the **text-overflow** attribute to **ellipsis** so that overflowed text is displayed as an ellipsis.
-
 
   ```html
   <!-- xxx.hml -->
@@ -138,11 +138,11 @@ Create a **&lt;text&gt;** component in the .hml file under **pages/index**.
   > - **text-overflow** must be used together with **max-lines**.
   > - **max-lines** indicates the maximum number of lines in the text.
 
+
   ![en-us_image_0000001267647865](figures/en-us_image_0000001267647865.png)
 
-
 - Setting the [&lt;span&gt;](../reference/apis-arkui/arkui-js/js-components-basic-span.md) child component
-  
+
   ```html
   <!-- xxx.hml -->
   <div class="container" style="justify-content: center; align-items: center;flex-direction: column;background-color: #F1F3F5;  width: 100%;height: 100%;">
@@ -159,10 +159,9 @@ Create a **&lt;text&gt;** component in the .hml file under **pages/index**.
   ```
 
   ![en-us_image_0000001223127720](figures/en-us_image_0000001223127720.png)
-
   > **NOTE**
   > - When the **&lt;span&gt;** child component is used to form a text paragraph, incorrect **&lt;span&gt;** attribute settings (for example, setting of **font-weight** to **1000**) will result in abnormal display of the text paragraph.
-  > 
+    >
   > - When the **&lt;span&gt;** child component is being used, do not include any text you want to show in the **&lt;text&gt;** component, as such text will not be displayed if you do so.
 
 

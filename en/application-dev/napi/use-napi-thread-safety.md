@@ -122,9 +122,9 @@
        napi_value resolvedCallback = nullptr;
        napi_value rejectedCallback = nullptr;
        napi_create_function(env, "resolvedCallback", NAPI_AUTO_LENGTH, ResolvedCallback, data,
-   					     &resolvedCallback);
+                         &resolvedCallback);
        napi_create_function(env, "rejectedCallback", NAPI_AUTO_LENGTH, RejectedCallback, data,
-   					     &rejectedCallback);
+                         &rejectedCallback);
        napi_value argv[2] = {resolvedCallback, rejectedCallback};
        napi_call_function(env, promise, thenFunc, INT_NUM_2, argv, nullptr);
    }

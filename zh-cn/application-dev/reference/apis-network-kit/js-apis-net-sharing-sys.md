@@ -24,7 +24,7 @@ import { sharing } from '@kit.NetworkKit';
 
 isSharingSupported(callback: AsyncCallback\<boolean>): void
 
-判断是否支持网络共享，使用 callback 方式作为异步方法。
+判断是否支持网络共享，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -36,7 +36,7 @@ isSharingSupported(callback: AsyncCallback\<boolean>): void
 
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数，返回 true 代表支持网络共享。 |
+| callback | AsyncCallback\<boolean> | 是   | 回调函数，返回 true 表示支持网络共享,返回false表示不支持网络共享。 |
 
 **错误码：**
 
@@ -64,7 +64,7 @@ sharing.isSharingSupported((error: BusinessError, data: boolean) => {
 
 isSharingSupported(): Promise\<boolean>
 
-判断是否支持网络共享，使用 Promise 方式作为异步方法。
+判断是否支持网络共享，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -76,7 +76,7 @@ isSharingSupported(): Promise\<boolean>
 
 | 类型              | 说明                                  |
 | ----------------- | ------------------------------------- |
-| Promise\<boolean> | 以 Promise 形式返回是否支持共享结果。 |
+| Promise\<boolean> | Promise 对象。返回true表示支持网络共享，返回false表示不支持网络共享。 |
 
 **错误码：**
 
@@ -108,7 +108,7 @@ sharing
 
 isSharing(callback: AsyncCallback\<boolean>): void
 
-获取当前网络共享状态，使用 callback 方式作为异步方法。
+获取当前网络共享状态，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -120,7 +120,7 @@ isSharing(callback: AsyncCallback\<boolean>): void
 
 | 参数名   | 类型                    | 必填 | 说明                                 |
 | -------- | ----------------------- | ---- | ------------------------------------ |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数，返回 true 代表网络共享中。 |
+| callback | AsyncCallback\<boolean> | 是   | 回调函数，返回 true 表示网络共享中；返回false表示不在网络共享中。 |
 
 **错误码：**
 
@@ -148,7 +148,7 @@ sharing.isSharing((error: BusinessError, data: boolean) => {
 
 isSharing(): Promise\<boolean>
 
-获取当前网络共享状态，使用 Promise 方式作为异步方法。
+获取当前网络共享状态，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -160,7 +160,7 @@ isSharing(): Promise\<boolean>
 
 | 类型              | 说明                                                            |
 | ----------------- | --------------------------------------------------------------- |
-| Promise\<boolean> | 以 Promise 形式返回网络共享状态结果，返回 true 代表网络共享中。 |
+| Promise\<boolean> | 以 Promise 形式返回网络共享状态结果，返回 true 表示网络共享中；返回false表示不在网络共享中。 |
 
 **错误码：**
 
@@ -192,7 +192,7 @@ sharing
 
 startSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
-开启指定类型共享，使用 callback 方式作为异步方法。
+开启指定类型共享，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -239,7 +239,7 @@ sharing.startSharing(SHARING_WIFI, (error: BusinessError) => {
 
 startSharing(type: SharingIfaceType): Promise\<void>
 
-开启指定类型共享，使用 Promise 方式作为异步方法。
+开启指定类型共享，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -296,7 +296,7 @@ sharing
 
 stopSharing(type: SharingIfaceType, callback: AsyncCallback\<void>): void
 
-关闭指定类型共享，使用 callback 方式作为异步方法。
+关闭指定类型共享，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -342,7 +342,7 @@ sharing.stopSharing(SHARING_WIFI, (error: BusinessError) => {
 
 stopSharing(type: SharingIfaceType): Promise\<void>
 
-关闭指定类型共享，使用 Promise 方式作为异步方法。
+关闭指定类型共享，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -398,7 +398,7 @@ sharing
 
 getStatsRxBytes(callback: AsyncCallback\<number>): void
 
-获取共享网络接收数据量，使用 callback 方式作为异步方法。
+获取共享网络接收数据量，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -438,7 +438,7 @@ sharing.getStatsRxBytes((error: BusinessError, data: number) => {
 
 getStatsRxBytes(): Promise\<number>
 
-获取共享网络接收数据量，使用 Promise 方式作为异步方法。
+获取共享网络接收数据量，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -482,7 +482,7 @@ sharing
 
 getStatsTxBytes(callback: AsyncCallback\<number>): void
 
-获取共享网络发送数据量，使用 callback 方式作为异步方法。
+获取共享网络发送数据量，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -522,7 +522,7 @@ sharing.getStatsTxBytes((error: BusinessError, data: number) => {
 
 getStatsTxBytes(): Promise\<number>
 
-获取共享网络发送数据量，使用 Promise 方式作为异步方法。
+获取共享网络发送数据量，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -566,7 +566,7 @@ sharing
 
 getStatsTotalBytes(callback: AsyncCallback\<number>): void
 
-获取共享网络总数据量，使用 callback 方式作为异步方法。
+获取共享网络总数据量，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -606,7 +606,7 @@ sharing.getStatsTotalBytes((error: BusinessError, data: number) => {
 
 getStatsTotalBytes(): Promise\<number>
 
-获取共享网络总数据量，使用 Promise 方式作为异步方法。
+获取共享网络总数据量，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -650,7 +650,7 @@ sharing
 
 getSharingIfaces(state: SharingIfaceState, callback: AsyncCallback\<Array\<string>>): void
 
-获取指定状态的网卡名称列表，使用 callback 方式作为异步方法。
+获取指定状态的网卡名称列表，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -693,7 +693,7 @@ sharing.getSharingIfaces(SHARING_BLUETOOTH, (error: BusinessError, data: string[
 
 getSharingIfaces(state: SharingIfaceState): Promise\<Array\<string>>
 
-获取指定状态的网卡名称列表，使用 Promise 方式作为异步方法。
+获取指定状态的网卡名称列表，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -745,7 +745,7 @@ sharing
 
 getSharingState(type: SharingIfaceType, callback: AsyncCallback\<SharingIfaceState\>): void
 
-获取指定类型网络共享状态，使用 callback 方式作为异步方法。
+获取指定类型网络共享状态，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -788,7 +788,7 @@ sharing.getSharingState(SHARING_WIFI, (error: BusinessError, data: sharing.Shari
 
 getSharingState(type: SharingIfaceType): Promise\<SharingIfaceState\>
 
-获取指定类型网络共享状态，使用 Promise 方式作为异步方法。
+获取指定类型网络共享状态，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -840,7 +840,7 @@ sharing
 
 getSharableRegexes(type: SharingIfaceType, callback: AsyncCallback\<Array\<string\>\>): void
 
-获取指定类型网卡名称正则表达式列表，使用 callback 方式作为异步方法。
+获取指定类型网卡名称正则表达式列表，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -883,7 +883,7 @@ sharing.getSharableRegexes(SHARING_WIFI, (error: BusinessError, data: string[]) 
 
 getSharableRegexes(type: SharingIfaceType): Promise\<Array\<string>>
 
-获取指定类型网卡名称正则表达式列表，使用 Promise 方式作为异步方法。
+获取指定类型网卡名称正则表达式列表，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -935,7 +935,7 @@ sharing
 
 on(type: 'sharingStateChange', callback: Callback\<boolean>): void
 
-注册网络共享状态变化事件，使用 callback 方式作为异步方法。
+注册网络共享状态变化事件，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -948,7 +948,7 @@ on(type: 'sharingStateChange', callback: Callback\<boolean>): void
 | 参数名   | 类型                    | 必填 | 说明                         |
 | -------- | ----------------------- | ---- | ---------------------------- |
 | type     | string                  | 是   | 订阅的事件类型。'sharingStateChange'：注册网络共享状态变化事件。                   |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数，返回网络共享状态。 |
+| callback | AsyncCallback\<boolean> | 是   | 回调函数，返回true表示网络处于共享状态；返回false表示网络不处于共享状态。 |
 
 **错误码：**
 
@@ -972,7 +972,7 @@ sharing.on('sharingStateChange', (data: boolean) => {
 
 off(type: 'sharingStateChange', callback?: Callback\<boolean>): void
 
-注销网络共享状态变化事件，使用 callback 方式作为异步方法。
+注销网络共享状态变化事件，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -985,7 +985,7 @@ off(type: 'sharingStateChange', callback?: Callback\<boolean>): void
 | 参数名   | 类型                    | 必填 | 说明                         |
 | -------- | ----------------------- | ---- | ---------------------------- |
 | type     | string                  | 是   | 注销的事件类型。'sharingStateChange'：注销网络共享状态变化事件。                   |
-| callback | AsyncCallback\<boolean> | 否   | 回调函数，返回网络共享状态。 |
+| callback | AsyncCallback\<boolean> | 否   | 回调函数，返回true表示网络处于共享状态；返回false表示网络不处于共享状态。 |
 
 **错误码：**
 
@@ -1009,7 +1009,7 @@ sharing.off('sharingStateChange', (data: boolean) => {
 
 on(type: 'interfaceSharingStateChange', callback: Callback\<InterfaceSharingStateInfo\>): void
 
-注册网卡网络共享状态变化事件，使用 callback 方式作为异步方法。
+注册网卡网络共享状态变化事件，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1046,7 +1046,7 @@ sharing.on('interfaceSharingStateChange', (data: object) => {
 
 off(type: 'interfaceSharingStateChange', callback?: Callback\<InterfaceSharingStateInfo\>): void
 
-注销网卡网络共享状态变化事件，使用 callback 方式作为异步方法。
+注销网卡网络共享状态变化事件，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1083,7 +1083,7 @@ sharing.off('interfaceSharingStateChange', (data: object) => {
 
 on(type: 'sharingUpstreamChange', callback: Callback\<NetHandle>): void
 
-注册上行网络变化事件，使用 callback 方式作为异步方法。
+注册上行网络变化事件，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1120,7 +1120,7 @@ sharing.on('sharingUpstreamChange', (data: object) => {
 
 off(type: 'sharingUpstreamChange', callback?: Callback\<NetHandle>): void
 
-注销上行网络变化事件，使用 callback 方式作为异步方法。
+注销上行网络变化事件，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 

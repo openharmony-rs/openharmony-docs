@@ -29,3 +29,4 @@
   - [通知消息跨设备协同管理（仅对系统应用开放）](notification-distributed-notdistributed-sys.md)
   <!--DelEnd-->
   - [清除跨设备场景下的重复通知](notification-distributed-messageid.md)
+<!--RP2--><!--RP2End-->

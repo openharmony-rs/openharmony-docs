@@ -93,6 +93,7 @@ napi_release_threadsafe_function(napi_threadsafe_function func,
 - If the **mode** value is **napi_tsfn_release**, the number of threads held by the thread-safe function is reduced by one. When the number of threads is reduced to 0, the thread-safe function is destroyed.
 
 - If the value is **napi_tsfn_abort**, this thread-safe function is disabled and cannot be called.
+
   If **napi_tsfn_abort** is set, calling this thread-safe function using **napi_call_threadsafe_function** may cause a UAF issue. When **napi_tsfn_abort** is set, the thread-safe function is disabled and cannot be called. If **napi_call_threadsafe_function** is called, the system may return **napi_closing**, indicating that the thread-safe function is being disabled, and the data passed to the thread-safe function is not put into the queue. This means that the data may not be correctly processed. If the memory to which data points has been freed (for example, the thread-safe function resources have been freed), but the caller still tries to access or use data, a Use-After-Free (UAF) issue may occur.
 
 ### napi_threadsafe_function_call_mode

@@ -141,7 +141,7 @@
     ```
 
 
-3. 获取XComponent的NativeWindowd对象，根据NativeWindow对象创建出Vulkan环境的VkSurface，用于绘制显示内容。
+3. 获取XComponent的NativeWindow对象，根据NativeWindow对象创建出Vulkan环境的VkSurface，用于绘制显示内容。
     ```c++
     void VulkanRenderThread::UpdateNativeWindow(void *window, uint64_t width, uint64_t height) {
         OH_LOG_Print(LOG_APP, LOG_DEBUG, LOG_PRINT_DOMAIN, "RenderThread", "UpdateNativeWindow.");

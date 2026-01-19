@@ -11,6 +11,8 @@
 
 Declares the battery APIs that are used to obtain the current battery capacity and power supply type and define common battery events.
 
+**Reference file**: <BasicServicesKit/ohbattery_info.h>
+
 **Library**: libohbattery_info.so
 
 **System capability**: SystemCapability.PowerManager.BatteryManager.Core

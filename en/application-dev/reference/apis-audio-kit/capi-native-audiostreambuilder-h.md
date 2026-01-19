@@ -309,8 +309,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetVolumeMode(OH_AudioStreamBuilder*
 
 Sets the volume mode for an audio stream.
 
-**Since**: 18
-
+**Since**: 19
 
 **Parameters**
 
@@ -565,7 +564,7 @@ Sets the frame size for each callback during playback. The frame size must be at
 
 In the case of low-latency playback, **frameSize** can be set to the frame length corresponding to the audio that lasts for 5 ms, 10 ms, 15 ms, or 20 ms.
 
-In the case of common playback, **frameSize** can be set to the frame length corresponding to the audio that lasts for 20 ms to 100 ms.
+In the case of common playback, **frameSize** can be set to the frame length corresponding to the audio that lasts for 20 ms to 100 ms. For example, if the sampling rate is 48000 Hz, the frame length of 20 ms audio data is calculated as follows: frameSize = 48000 x 0.02, that is, 960 sampling points.
 
 **Since**: 11
 
@@ -662,7 +661,7 @@ Unlike **OH_AudioStreamBuilder_SetRendererWriteDataCallback**, **OH_AudioStreamB
 | Name| Description|
 | -- | -- |
 | [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | Pointer to an audio stream builder instance, which is created by calling [OH_AudioStreamBuilder_Create](#oh_audiostreambuilder_create).|
-| [OH_AudioRenderer_OnWriteDataCallbackAdvanced](capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallbackadvanced) callback | Callback to be used to write audio data.|
+| [OH_AudioRenderer_OnWriteDataCallbackAdvanced](capi-native-audiorenderer-h.md#oh_audiorenderer_onwritedatacallbackadvanced) callback | Callback to be used to write audio data.|
 | void* userData | Pointer to the application data passed through the callback.|
 
 **Returns**

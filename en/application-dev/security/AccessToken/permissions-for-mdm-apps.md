@@ -252,32 +252,6 @@ Allows a device administrator application to obtain the **Settings** application
 
 **Valid since**: 10
 
-## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
-
-Allows installation of enterprise MDM applications on enterprise devices.
-
-**Permission level**: system_core
-
-**Authorization mode**: system_grant
-
-<!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
-
-**Valid since**: 10
-
-## ohos.permission.INSTALL_SELF_BUNDLE
-
-Allows automatic updates of enterprise MDM applications on enterprise devices.
-
-**Permission level**: system_core
-
-**Authorization mode**: system_grant
-
-<!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
-
-**Valid since**: 10
-
 ## ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
 Allows the device to set or cancel browser policies.

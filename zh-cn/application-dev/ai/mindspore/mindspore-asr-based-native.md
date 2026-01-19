@@ -833,3 +833,4 @@ struct Index {
 
 - [基于Native接口的MindSpore Lite ASR应用开发（C/C++）（API14）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR)
 
+<!--RP1--><!--RP1End-->

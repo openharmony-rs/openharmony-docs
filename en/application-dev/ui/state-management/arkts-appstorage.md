@@ -22,6 +22,8 @@ Properties stored in AppStorage are accessed through unique string-type property
 
 AppStorage enables UI state sharing among multiple [UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) instances within the application's [main thread](../../application-models/thread-model-stage.md).
 
+  
+
 Properties in AppStorage support two-way synchronization and offer extended features, such as data persistence (see [PersistentStorage](arkts-persiststorage.md)). These UI states are implemented through service logic and decoupled from the UI. To use these UI states in the UI, the [@StorageProp](#storageprop) and [@StorageLink](#storagelink) decorators are required.
 
 ## \@StorageProp
@@ -52,7 +54,7 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 
   **Figure 1** \@StorageProp initialization rule 
 
-![en-us_image_0000001552978157](figures/en-us_image_0000001552978157.png)
+![storageprop-initialization](figures/storageprop-initialization.png)
 
 ### Observed Changes and Behavior
 
@@ -105,7 +107,7 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 
   **Figure 2** \@StorageLink initialization rule 
 
-![en-us_image_0000001501938718](figures/en-us_image_0000001501938718.png)
+![storagelink-initialization](figures/storagelink-initialization.png)
 
 ### Observed Changes and Behavior
 
@@ -158,7 +160,7 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 
 4. Changes to variables decorated with state decorators will trigger UI re-rendering. If a variable is modified only for message passing (not for UI updates), using the **emitter** API is recommended. For the example, see [Avoiding @StorageLink for Event Notification](#avoiding-storagelink-for-event-notification).
 
-5. AppStorage is shared within the same process. Since the UIAbility and <!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability-sys.md)<!--DelEnd--> run in separate processes, the <!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability-sys.md)<!--DelEnd--> does not share the AppStorage of the main process.
+5. AppStorage is shared within the same process. Since the UIAbility and <!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability-sys.md)<!--DelEnd--> run in separate processes, the UIExtensionAbility does not share the AppStorage of the main process.
 
 ## Use Scenarios
 

@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Component navigation, implemented using the [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component, is instrumental for managing transitions between navigation pages (**NavDestination** components). It allows for the passing of parameters across various navigation pages and offers flexible navigation stack operations to simplify access to and reuse of pages. This documentation delves into the display modes, routing operations, subpage management, cross-package navigation, and navigation transition effects.
 
@@ -33,13 +33,13 @@ The **Navigation** component uses the **mode** attribute to set the page display
 
 - Single-column mode
 
-  Single-column mode is designed for narrow-screen devices. When route navigation occurs, the entire page is replaced.
+  The single-column mode is designed for narrow-screen devices. When route navigation occurs, the entire page content is replaced.
 
-    **Figure 1** Single-page mode 
+    **Figure 1** Single-column mode 
 
   ![en-us_image_0000001511740532](figures/en-us_image_0000001511740532.png)
 
-  To configure the **Navigation** component for single-column display mode, set **mode** to **NavigationMode.Stack**.
+  To configure the **Navigation** component to single-column mode, set **mode** to **NavigationMode.Stack**.
 
 
   ```ts
@@ -59,23 +59,25 @@ The **Navigation** component uses the **mode** attribute to set the page display
 
   ![en-us_image_0000001562820845](figures/en-us_image_0000001562820845.png)
 
-  To configure the **Navigation** component for split-column display mode, set **mode** to **NavigationMode.Split**.
+  To configure the **Navigation** component to split-column mode, set **mode** to **NavigationMode.Split**.
 
 
-  ```ts
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  const DOMAIN = 0x0000;
   @Entry
   @Component
   struct NavigationExample {
-    @State TooTmp: ToolbarItem = {
+    @State toolTmp: ToolbarItem = {
       'value': "func",
       'icon': "./image/ic_public_highlights.svg",  // Icon resource in the image folder in the current directory.
       'action': () => {}
-    }
-    @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
+    };
+    @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
     private arr: number[] = [1, 2, 3];
 
     @Builder
-    PageMap(name: string) {
+    pageMap(name: string) {
       if (name === "NavDestinationTitle1") {
         pageOneTmp();
       } else if (name === "NavDestinationTitle2") {
@@ -87,7 +89,7 @@ The **Navigation** component uses the **mode** attribute to set the page display
 
     build() {
       Column() {
-        Navigation(this.pageInfos) {
+        Navigation(this.navPathStack) {
           TextInput({ placeholder: 'Search...' })
             .width("90%")
             .height(40)
@@ -105,7 +107,7 @@ The **Navigation** component uses the **mode** attribute to set the page display
                   .fontWeight(500)
                   .textAlign(TextAlign.Center)
                   .onClick(() => {
-                    this.pageInfos.pushPath({ name: "NavDestinationTitle" + item });
+                    this.navPathStack.pushPath({ name: 'NavDestinationTitle' + item });
                   })
               }
             }, (item: number) => item.toString())
@@ -115,7 +117,7 @@ The **Navigation** component uses the **mode** attribute to set the page display
         }
         .title("Main Title")
         .mode(NavigationMode.Split)
-        .navDestination(this.PageMap)
+        .navDestination(this.pageMap)
         .menus([
           {
             value: "", icon: "./image/ic_public_search.svg", action: () => {
@@ -138,7 +140,7 @@ The **Navigation** component uses the **mode** attribute to set the page display
             }
           }
         ])
-        .toolbarConfiguration([this.TooTmp, this.TooTmp, this.TooTmp])
+        .toolbarConfiguration([this.toolTmp, this.toolTmp, this.toolTmp])
       }
       .height('100%')
       .width('100%')
@@ -149,8 +151,8 @@ The **Navigation** component uses the **mode** attribute to set the page display
   // PageOne.ets
   @Component
   export struct pageOneTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
-
+    @Consume('navPathStack') navPathStack: NavPathStack;
+    context = this.getUIContext().getHostContext();
     build() {
       NavDestination() {
         Column() {
@@ -158,8 +160,10 @@ The **Navigation** component uses the **mode** attribute to set the page display
         }.width('100%').height('100%')
       }.title("NavDestinationTitle1")
       .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // Pop the top element out of the navigation stack.
-        console.log('pop' + 'return value' + JSON.stringify(popDestinationInfo));
+        const popDestinationInfo = this.navPathStack.pop(); // Pop the top element out of the navigation stack.
+        // Replace $r('app.string.returnValue') with the string resource file you use.
+        hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
+          JSON.stringify(popDestinationInfo));
         return true;
       })
     }
@@ -168,8 +172,8 @@ The **Navigation** component uses the **mode** attribute to set the page display
   // PageTwo.ets
   @Component
   export struct pageTwoTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
-
+    @Consume('navPathStack') navPathStack: NavPathStack;
+    context = this.getUIContext().getHostContext();
     build() {
       NavDestination() {
         Column() {
@@ -177,8 +181,10 @@ The **Navigation** component uses the **mode** attribute to set the page display
         }.width('100%').height('100%')
       }.title("NavDestinationTitle2")
       .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // Pop the top element out of the navigation stack.
-        console.log('pop' + 'return value' + JSON.stringify(popDestinationInfo));
+        const popDestinationInfo = this.navPathStack.pop(); // Pop the top element out of the navigation stack.
+        // Replace $r('app.string.returnValue') with the string resource file you use.
+        hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
+          JSON.stringify(popDestinationInfo));
         return true;
       })
     }
@@ -187,8 +193,8 @@ The **Navigation** component uses the **mode** attribute to set the page display
   // PageThree.ets
   @Component
   export struct pageThreeTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
-
+    @Consume('navPathStack') navPathStack: NavPathStack;
+    context = this.getUIContext().getHostContext();
     build() {
       NavDestination() {
         Column() {
@@ -196,8 +202,10 @@ The **Navigation** component uses the **mode** attribute to set the page display
         }.width('100%').height('100%')
       }.title("NavDestinationTitle3")
       .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // Pop the top element out of the navigation stack.
-        console.log('pop' + 'return value' + JSON.stringify(popDestinationInfo));
+        const popDestinationInfo = this.navPathStack.pop(); // Pop the top element out of the navigation stack.
+        // Replace $r('app.string.returnValue') with the string resource file you use.
+        hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
+          JSON.stringify(popDestinationInfo));
         return true;
       })
     }
@@ -256,44 +264,52 @@ The menu bar is in the upper right corner of the **Navigation** component. You c
 
 ![menu-bar-2](figures/menu-bar-2.jpg)
 
-```ts
-let TooTmp: NavigationMenuItem = {'value': "", 'icon': "./image/ic_public_highlights.svg", 'action': ()=> {}}
-Navigation() {
-  // ...
-}
-.menus([TooTmp,
-  TooTmp,
-  TooTmp])
-```
+   ``` TypeScript
+   let toolTmp: NavigationMenuItem  = {
+     'value': 'func',
+     'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
+     'action': () => {}
+   };
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
+         }
+         .menus([toolTmp, toolTmp, toolTmp])
+   ```
 
 You can also reference images in the **resources** folder.
 
-```ts
-let TooTmp: NavigationMenuItem = {'value': "", 'icon': "resources/base/media/ic_public_highlights.svg", 'action': ()=> {}}
-Navigation() {
-  // ...
-}
-.menus([TooTmp,
-  TooTmp,
-  TooTmp])
-```
+   ``` TypeScript
+   let toolTmp: NavigationMenuItem  = {
+     'value': 'func',
+     'icon': 'resources/base/media/ic_public_add.svg',
+     'action': () => {}
+   };
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
+         }
+         .menus([toolTmp, toolTmp, toolTmp])
+   ```
 
 **Figure 6** Menu bar with four icons 
 
 ![menu-bar](figures/menu-bar.jpg)
 
-```ts
-let TooTmp: NavigationMenuItem = {'value': "", 'icon': "./image/ic_public_highlights.svg", 'action': ()=> {}}
-Navigation() {
-  // ...
-}
-// In portrait mode, the toolbar shows a maximum of five icons, with any additional icons placed under an automatically generated More icon.
-.menus([TooTmp,
-  TooTmp,
-  TooTmp,
-  TooTmp])
-```
-
+   
+   ``` TypeScript
+   let toolTmp: NavigationMenuItem  = {
+     'value': 'func',
+     'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
+     'action': () => {}
+   };
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
+         }
+         // In portrait mode, the toolbar shows a maximum of three icons, with any additional icons placed under an automatically generated More icon.
+         .menus([toolTmp, toolTmp, toolTmp, toolTmp])
+   ```
 
 ## Setting the Toolbar
 
@@ -304,14 +320,19 @@ Use the [toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-compone
 
 ![free3](figures/free3.jpg)
 
-```ts
-let TooTmp: ToolbarItem = {'value': "func", 'icon': "./image/ic_public_highlights.svg", 'action': ()=> {}};
-let TooBar: ToolbarItem[] = [TooTmp,TooTmp,TooTmp];
-Navigation() {
-  // ...
-}
-.toolbarConfiguration(TooBar)
-```
+   ``` TypeScript
+   let toolTmp: ToolbarItem = {
+     'value': 'func',
+     'icon': 'ets/pages/navigation/template1/image/ic_public_highlights.svg',
+     'action': () => {}
+   };
+   let tooBar: ToolbarItem[] = [toolTmp,toolTmp,toolTmp];
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
+         }
+         .toolbarConfiguration(tooBar)
+   ```
 
 ## Routing Operations
 
@@ -329,7 +350,7 @@ Since API version 12, the navigation controller can be inherited. You can custom
 @Entry
 @Component
 struct Index {
-  // Create a navigation controller object and pass it to the Navigation component.
+  //Create a navigation controller object and pass it to the Navigation component.
   pageStack: NavPathStack = new NavPathStack();
 
   build() {
@@ -342,7 +363,7 @@ struct Index {
 
 ### Page Navigation
 
-**NavPathStack** implements the following types of page navigation through **Push** related APIs:
+**NavPathStack** uses push-related APIs (such as [pushPath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpath10), [pushPathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpathbyname10), [pushDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushdestination11), and [pushDestinationByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushdestinationbyname11)) to implement page redirection. Page redirection can be classified into the following types:
 
 1. Normal navigation: Navigation is conducted by page name and allows for passing of **param**.
 
@@ -355,7 +376,7 @@ struct Index {
 
     ```ts
     this.pageStack.pushPathByName('PageOne', "PageOne Param", (popInfo) => {
-      console.log('Pop page name is: ' + popInfo.info.name + ', result: ' + JSON.stringify(popInfo.result));
+      console.info('Pop page name is: ' + popInfo.info.name + ', result: ' + JSON.stringify(popInfo.result));
     });
     ```
 
@@ -378,7 +399,7 @@ struct Index {
 
 ### Page Return
 
-**NavPathStack** implements the page return feature through **Pop** related APIs.
+**NavPathStack** implements the page return feature through pop-related APIs, including [pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop10), [popToName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#poptoname10), [popToIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#poptoindex10), and [clear](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#clear10).
 
 ```ts
 // Return to the previous page.
@@ -393,7 +414,7 @@ this.pageStack.clear();
 
 ### Page Replacement
 
-**NavPathStack** implements the page replacement feature through **Replace** related APIs.
+**NavPathStack** provides replace-related APIs (such as [replacePath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepath11), [replacePathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepathbyname11), and [replaceDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacedestination18)) to implement the page replacement functionality.
 
 ```ts
 // Replace the top page of the stack with PageOne.
@@ -410,7 +431,7 @@ this.pageStack.replaceDestination({name: "PageOne", param: "PageOne Param"})
 
 ### Page Deletion
 
-**NavPathStack** implements the page deletion feature through **Remove** related APIs.
+**NavPathStack** provides remove-related APIs (such as [removeByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyname11), [removeByIndexes](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyindexes11), and [removeByNavDestinationId](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebynavdestinationid12)) to remove pages from the navigation stack.
 
 ```ts
 // Remove all pages whose name is PageOne from the stack.
@@ -423,7 +444,7 @@ this.pageStack.removeByNavDestinationId("1");
 
 ### Page Moving
 
-**NavPathStack** implements the page moving feature through **Move** related APIs.
+**NavPathStack** provides move-related APIs (such as [moveToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#movetotop10) and [moveIndexToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#moveindextotop10)) to move a specific page to the top of the navigation stack.
 
 ```ts
 // Move the page named PageOne to the top of the stack.
@@ -470,16 +491,16 @@ struct DemoNavDestination {
     }
     .onResult((param: Object) => {
       if (param instanceof NavParam) {
-        console.log('TestTag', 'get NavParam, its desc: ' + (param as NavParam).desc);
+        console.info('TestTag', 'get NavParam, its desc: ' + (param as NavParam).desc);
         return;
       }
-      console.log('TestTag', 'param not instance of NavParam');
+      console.info('TestTag', 'param not instance of NavParam');
     })
   }
 }
 ```
 
-For other use cases, you can retrieve parameters from specific pages by actively calling the get-related APIs of **NavPathStack**.
+For other service scenarios, you can proactively call the getter APIs of **NavPathStack** (such as [getAllPathName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getallpathname10), [getParamByIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyindex10), [getParamByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyname10), and [getIndexByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getindexbyname10)) to obtain parameters from specific pages.
 
 ```ts
 // Obtain all page names in the stack.
@@ -504,16 +525,16 @@ this.pageStack.getIndexByName("PageOne");
 
 > **NOTE**
 >
-> Regardless of which callback is invoked, the routing stack has already changed when the callback is executed.
+> Regardless of which callback is invoked, the route stack has already changed when the callback is executed.
 
-You can implement route interception and redirection capabilities by modifying the routing stack in the **willShow** callback.
+You can implement route interception and redirection capabilities by modifying the route stack within the **willShow** callback.
 
 ```ts
 this.pageStack.setInterception({
   willShow: (from: NavDestinationContext | "navBar", to: NavDestinationContext | "navBar",
     operation: NavigationOperation, animated: boolean) => {
     if (typeof to === "string") {
-      console.log("target page is navigation home page.");
+      console.info("target page is navigation home page.");
       return;
     }
     // Redirect navigation intended for PageTwo to PageOne.
@@ -676,18 +697,18 @@ To facilitate the decoupling of components from pages, custom components within 
    // Used in UIAbility
    import { UIContext, uiObserver } from '@kit.ArkUI';
   
-   // callBackFunc is a callback defined by you.
-   function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {}
-   uiObserver.on('navDestinationSwitch', this.context, callBackFunc);
+   // callback is a callback defined by you.
+   function callbackFunc(info: uiObserver.NavDestinationSwitchInfo) {}
+   uiObserver.on('navDestinationSwitch', this.context, callbackFunc);
   
    // The getUIContext() API of the window can be used to obtain the corresponding UIContent.
    uiContext: UIContext | null = null;
-   uiObserver.on('navDestinationSwitch', this.uiContext, callBackFunc);
+   uiObserver.on('navDestinationSwitch', this.uiContext, callbackFunc);
   ```
 
 ## Page Transition
 
-The **Navigation** component provides default transition animations for switching between pages. These animations are activated when operations are performed using the navigation controller, producing different transition effects. Note that for pages in dialog mode, the default transition animations are available only since API version 13. The **Navigation** component also offers advanced features such as disabling the default transitions and implementing custom transitions as well as shared element transitions.
+The **Navigation** component provides default transition animations for switching between pages. These animations are activated when operations are performed using the navigation controller, producing different transition effects. Note that for pages in dialog mode, the default transition animations are available only since API version 13. The **Navigation** component also offers advanced features such as disabling the default transitions and implementing custom transitions as well as shared element transitions. The default animation duration is determined by physical curve parameters and varies across different devices.
 
 ### Disabling Transitions
 
@@ -732,6 +753,11 @@ The **Navigation** component provides default transition animations for switchin
 
   For details about the sample code, see [Example 2: Setting a Custom Transitions for the NavDestination Component](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#example-2-setting-a-custom-transitions-for-the-navdestination-component).
 
+- How to Use
+  1. [customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11) controls all pages within the **Navigation** component and provides unified transition animation effects.
+  2. [customTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15) controls the transition effect for individual pages.
+  3. When both [customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11) and [customTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15) are used, **customNavContentTransition** takes precedence.
+
 ### Defining a Shared Element Transition
 
 You can implement shared element transitions between navigation destination pages using [geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md#geometrytransition). Ensure that the default transition animations are disabled for pages configured with shared element transitions.
@@ -742,6 +768,7 @@ You can implement shared element transitions between navigation destination page
     NavDestination() {
       Column() {
         // ...
+        // Replace $r('app.media.startIcon') with the resource file you use.
         Image($r('app.media.startIcon'))
         .geometryTransition('sharedId')
         .width(100)
@@ -754,6 +781,7 @@ You can implement shared element transitions between navigation destination page
     NavDestination() {
       Column() {
         // ...
+        // Replace $r('app.media.startIcon') with the resource file you use.
         Image($r('app.media.startIcon'))
         .geometryTransition('sharedId')
         .width(200)
@@ -782,25 +810,24 @@ You can implement shared element transitions between navigation destination page
     .title('FromPage')
     ```
 
-## Cross-Package Dynamic Routing
+## Cross-Package Routing
 
-Using static imports for page routing can lead to coupling between different modules and prolonged home page loading times.
-
-The purpose of dynamic routing is to allow multiple modules (HARs/HSPs) to reuse the same business logic, with decoupling between different modules and integration of routing functionality.
-
-**Advantages of dynamic routing**
-
-- In addition to the URL for navigation, you can configure various information, such as the default orientation (landscape or portrait) and whether authentication is required. The configuration is processed in a unified manner during routing
-- You can assign a name to each routing page and navigate by name instead of file path.
-- Dynamic imports (on-demand loading) can be used to load pages to prevent the first page from loading a large amount of code, which can cause stuttering.
-
-Dynamic routing provides two modes: [System Routing Table](#system-routing-table) and [Custom Routing Table](#custom-routing-table).
+The system provides two implementation modes: [system routing table](#system-routing-table) and [custom routing table](#custom-routing-table).
 
 - The system routing table is easier to use than the custom routing table. It only requires adding the corresponding page navigation configuration items to implement page navigation.
 
 - The custom route table is more complex to use, but can be customized to meet specific service requirements.
 
 The custom route table and system route table can be used together.
+
+### Routing Table Capability Comparison
+
+Different routing modes meet different requirements. Usability and scalability should be balanced based on project characteristics.
+
+| Routing Mode    | Cross-Package Redirection Capability            | Scalability    | Usability                              |
+| ------------ | ------------------------ | ------------ | ------------------------------------ |
+| [System routing table](#system-routing-table)  | No need to import page files before redirection; pages are dynamically loaded on demand| Moderate| High; the system automatically maintains the routing table      |
+| [Custom routing table](#custom-routing-table)| Page files must be imported before redirection| High| Moderate; you must maintain the routing table manually|
 
 ### System Routing Table
 
@@ -884,15 +911,132 @@ The system routing table is an implementation of dynamic routing. **Navigation**
 
 ### Custom Routing Table
 
-The custom routing table is also an implementation of dynamic routing. You can implement cross-package dynamic routing through a <!--RP1-->[custom routing table](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/DynamicRouter)<!--RP1End-->.
+A custom routing table is implemented by configuring the Builder function for the [navDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) attribute of **Navigation**. This approach requires importing page modules, which can be done through either static or dynamic import. The differences between these two methods are as follows.
 
-**Implementation:**
+| Import Mode| Module Coupling  | Implementation Complexity| Performance                                    |
+| ---------- | -------------- | ---------- | ---------------------------------------- |
+| Dynamic import| Low coupling between modules| High| Excellent; pages are loaded on demand, with target pages loaded just before navigation|
+| Static import| High coupling between modules| Low| Average; all dependent pages are loaded during initialization|
+
+**Dynamic Import (Recommended)**
+
+Dynamic import enables reuse of service logic across multiple modules (HAR/HSP) to achieve service module decoupling. In addition, it supports route function extension and integration while allowing on-demand loading. For implementation details, see <!--RP1-->the [dynamic route example](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/DynamicRouter)<!--RP1End-->.
+
+Dynamic import offers the following advantages:
+
+- Beyond the navigation URL, you can configure extended information in route definitions, such as the default orientation (landscape or portrait) and authentication requirements, which is processed during route navigation.
+- You can assign a name to each routing page and navigate by name instead of file path.
+- Dynamic imports (on-demand loading) can be used to load pages to prevent the first page from loading a large amount of code, which can cause stuttering.
+
+Implementation solution:
 
 1. Define page navigation configuration items.
    - Use resource files for definitions and use the [@ohos.resourceManager](../reference/apis-localization-kit/js-apis-resource-manager.md) module to parse the resource files at runtime.
    - Configure the route loading options in the .ets file, including the route page name (that is, the alias of the page in APIs like **pushPath**), name of the module where the file is located (name of the HSP/HAR module), and path to the target page in the module (relative to the **src** directory).
 2. Use [dynamic import](../arkts-utils/arkts-dynamic-import.md) to load the module containing the target page at runtime. Once the module is loaded, call a method within the module that uses **import** to load and display the target page, then return the **Builder** function defined after the page has finished loading.
 3. Execute the **Builder** function loaded in step 2 on the [navDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) attribute of the **Navigation** component to navigate to the target page.
+
+**Static Import**
+
+Static import is straightforward to implement. However, using static imports for routing navigation creates dependency coupling between modules and increases the initial page loading time. Whenever possible, use either dynamic imports with a [custom routing table](#custom-routing-table) or the [system routing table](#system-routing-table) instead.
+
+Implementation solution:
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0000;
+@Entry
+@Component
+struct NavigationExample {
+  @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
+  private arr: number[] = [1, 2];
+
+  @Builder
+  pageMap(name: string) {
+    if (name === "NavDestinationTitle1") {
+      pageOneTmp();
+    } else if (name === "NavDestinationTitle2") {
+      pageTwoTmp();
+    }
+  }
+
+  build() {
+    Column() {
+      Navigation(this.navPathStack) {
+        TextInput({ placeholder: 'Search...' })
+          .width("90%")
+          .height(40)
+
+        List({ space: 12 }) {
+          ForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text("Page" + item)
+                .width("100%")
+                .height(72)
+                .borderRadius(24)
+                .fontSize(16)
+                .fontWeight(500)
+                .textAlign(TextAlign.Center)
+                .onClick(() => {
+                  this.navPathStack.pushPath({ name: 'NavDestinationTitle' + item });
+                })
+            }
+          }, (item: number) => item.toString())
+        }
+        .width("90%")
+        .margin({ top: 12 })
+      }
+      // Replace $r('app.string.mainTitle') with the string resource file you use.
+      .title($r('app.string.mainTitle'))
+      .navDestination(this.pageMap)
+      .mode(NavigationMode.Split)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+export struct pageTwoTmp {
+  @Consume('navPathStack') navPathStack: NavPathStack;
+  context = this.getUIContext().getHostContext();
+  build() {
+    NavDestination() {
+      Column() {
+        Text("NavDestinationContent2")
+      }.width('100%').height('100%')
+    }.title("NavDestinationTitle2")
+    .onBackPressed(() => {
+      const popDestinationInfo = this.navPathStack.pop(); // Pop the top element out of the navigation stack.
+      // Replace $r('app.string.returnValue') with the string resource file you use.
+      hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
+        JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+// pageOne.ets
+@Component
+export struct pageOneTmp {
+  @Consume('navPathStack') navPathStack: NavPathStack;
+  context = this.getUIContext().getHostContext();
+  build() {
+    NavDestination() {
+      Column() {
+        Text("NavDestinationContent1")
+      }.width('100%').height('100%')
+    }.title("NavDestinationTitle1")
+    .onBackPressed(() => {
+      const popDestinationInfo = this.navPathStack.pop(); // Pop the top element out of the navigation stack.
+      // Replace $r('app.string.returnValue') with the string resource file you use.
+      hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
+        JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+```
 
 ## Navigation Examples
 
@@ -908,12 +1052,12 @@ The implementation procedure is as follows:
 @Entry
 @Component
 struct NavigationDemo {
-  @Provide('pathInfos') pathInfos: NavPathStack = new NavPathStack();
+  @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
   private listArray: Array<string> = ['WLAN', 'Bluetooth', 'Personal Hotspot', 'Connect & Share'];
 
   build() {
     Column() {
-      Navigation(this.pathInfos) {
+      Navigation(this.navPathStack) {
         TextInput({ placeholder: 'Search by keyword' })
           .width('90%')
           .height(40)
@@ -965,7 +1109,7 @@ struct NavigationDemo {
             }
             .width('100%')
             .onClick(() => {
-              this.pathInfos.pushPathByName(`${item}`, 'Details page parameters'); // Push the navigation destination page specified by name, with the data specified by param, to the routing stack.
+              this.navPathStack.pushPathByName(`${item}`, 'Details page parameters'); // Push the navigation destination page specified by name, with the data specified by param, to the navigation stack.
             })
           }, (item: string): string => item)
         }
@@ -1003,9 +1147,9 @@ export function PageOneBuilder(name: string, param: string) {
 
 @Component
 export struct PageOne {
-  pathInfos: NavPathStack = new NavPathStack();
-  name: String = '';
-  @State value: String = '';
+  navPathStack: NavPathStack = new NavPathStack();
+  name: string = '';
+  @State value: string = '';
 
   build() {
     NavDestination() {
@@ -1034,14 +1178,14 @@ export struct PageOne {
           .margin({ top: 50 })
           .onClick(() => {
             // Pop the top element of the routing stack and return to the previous page.
-            this.pathInfos.pop();
+            this.navPathStack.pop();
           })
       }
       .size({ width: '100%', height: '100%' })
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
       // Obtain the current navigation controller via NavDestinationContext.
-      this.pathInfos = ctx.pathStack;
+      this.navPathStack = ctx.pathStack;
     })
   }
 }
@@ -1062,8 +1206,8 @@ export function PageTwoBuilder(name: string) {
 
 @Component
 export struct PageTwo {
-  pathInfos: NavPathStack = new NavPathStack();
-  name: String = '';
+  navPathStack: NavPathStack = new NavPathStack();
+  name: string = '';
   private listArray: Array<string> = ['Projection', 'Print', 'VPN', 'Private DNS', 'NFC'];
 
   build() {
@@ -1114,7 +1258,7 @@ export struct PageTwo {
             }
             .width('100%')
             .onClick(() => {
-              this.pathInfos.pushPathByName(`${item}`, 'Parameters');
+              this.navPathStack.pushPathByName(`${item}`, 'Parameters');
             })
           }, (item: string): string => item)
         }
@@ -1127,7 +1271,7 @@ export struct PageTwo {
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
       // Obtain the current navigation controller via NavDestinationContext.
-      this.pathInfos = ctx.pathStack;
+      this.navPathStack = ctx.pathStack;
     })
   }
 }

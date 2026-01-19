@@ -23,7 +23,7 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 ## metadataBinding.encodeImage
 encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelMap&gt;
 
-Encodes metadata into an image.
+Encodes metadata into an image. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalAwareness.metadataBinding
 
@@ -40,7 +40,7 @@ Encodes metadata into an image.
 
   | Type                          | Description        |
   | ---------------------------- | ---------- |
-  | Promise&lt;image.PixelMap&gt; | Promise used to return the image with encoded metadata.|
+  | Promise&lt;image.PixelMap&gt; | Promise object, which is used to return the image with encoded metadata.|
 
 **Error codes** 
 
@@ -72,7 +72,7 @@ metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) 
 ## metadataBinding.decodeImage
 function decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 
-Decodes the information carried in the image.
+Decodes the information carried in the image. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalAwareness.metadataBinding
 
@@ -88,7 +88,7 @@ Decodes the information carried in the image.
 
   | Type                          | Description        |
   | ---------------------------- | ---------- |
-  | Promise&lt;string&gt; | Promise used to return the encoded metadata of the image.|
+  | Promise&lt;string&gt; | Promise object, which is used to return the encoded metadata of the image.|
 
 **Error codes** 
 
@@ -116,9 +116,9 @@ metadataBinding.decodeImage(encodeImage).then((metadata: string) => {
 ```
 
 ## metadataBinding.notifyMetadataBindingEvent
-notifyMetadataBindingEvent(metadata: string): void
+notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 
-Transfers metadata to the application or service that calls the encoding API.
+Transfers metadata to the application or service that calls the encoding API. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalAwareness.metadataBinding
 
@@ -128,7 +128,13 @@ Transfers metadata to the application or service that calls the encoding API.
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| metadata     | string                           | Yes  | Metadata to be encoded.|
+|bundleName|string|Yes|Bundle name used to obtain the app link.|
+
+**Return value**
+
+| Type                         | Description       |
+| ---------------------------- | ---------- |
+| Promise&lt;string&gt; | Promise used to return the app link information of the current page.|
 
 **Error codes** 
 
@@ -145,8 +151,10 @@ For details about the error codes, see [Metadata Binding Error Codes](errorcode-
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let metadata: string = '';
-metadataBinding.notifyMetadataBindingEvent(metadata).catch((error: BusinessError) => {
+let bundleName: string = '';
+metadataBinding.notifyMetadataBindingEvent(bundleName).then((appLink:string)=>{
+  console.info("notify metadata:" + appLink);
+}).catch((error: BusinessError) => {
   console.error("notify metadata error" + error);
 });
 ```

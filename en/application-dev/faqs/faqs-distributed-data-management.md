@@ -62,7 +62,7 @@ struct Index {
 
 **Reference**
 
-[PersistentStorage: Persisting Application State](../ui/state-management/arkts-persiststorage.md)
+[PersistentStorage: Persisting UI State](../ui/state-management/arkts-persiststorage.md)
 
 
 ## How do I save pixel map data to a database? (API version 9)
@@ -152,8 +152,7 @@ RDB stores use SQLite. The default in-memory database mode is file, which cannot
 
 **Solution**
 
-You can use [execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12) to obtain the size of an RDB store, for example, **SELECT page_count * page_size AS size FROM pragma_page_count(), pragma_page_size()**.
-The RDB store uses the WAL mode. Before querying the database size, you can execute an SQL statement to trigger a checkpoint to update the database file size, for example, **PRAGMA wal_checkpoint**.
+You can use [execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12) to obtain the size of an RDB store, for example, **SELECT page_count * page_size AS size FROM pragma_page_count(), pragma_page_size()**. The RDB store uses the WAL mode. Before querying the database size, you can execute an SQL statement to trigger a checkpoint to update the database file size, for example, **PRAGMA wal_checkpoint**.
 
 
 ## How do I obtain the path of an RDB store?

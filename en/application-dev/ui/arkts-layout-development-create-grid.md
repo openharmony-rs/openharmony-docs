@@ -5,7 +5,7 @@
 <!--Owner: @zcdqs; @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -15,7 +15,7 @@ ArkUI provides the [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)
 
 > **NOTE**
 >
-> This document only shows key code snippets. For the complete code that can run, see <!--RP2-->[Creating a Grid](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ScrollableComponent)<!--RP2End-->.
+> This document provides key code excerpts for reference.<!--RP2--><!--RP2End-->
 
 ## Layout and Constraints
 
@@ -49,7 +49,7 @@ Depending on the settings of the quantity and proportion of rows and columns, th
 
 ### Setting the Number and Proportion of Rows and Columns
 
-You can set the number and proportion of rows and columns to determine the overall arrangement mode of the grid layout. To do so, use the **rowsTemplate** and **columnsTemplate** attributes of the **Grid** component.
+You can set the number and proportion of rows and columns to determine the overall arrangement mode of the grid layout. To do so, use the [rowsTemplate](../reference/apis-arkui/arkui-ts/ts-container-grid.md#rowstemplate) and [columnsTemplate](../reference/apis-arkui/arkui-ts/ts-container-grid.md#columnstemplate) attributes of the **Grid** component.
 
 The values of **rowsTemplate** and **columnsTemplate** are a string consisting of 'number+fr' segments, separated by spaces. Wherein **fr** indicates the number of rows or columns in the grid layout, and the number in front of **fr** is used to calculate the proportion of the row or column in the grid width, thereby determining the width of the row or column.
 
@@ -88,7 +88,7 @@ A common application with an uneven grid layout is the calculator. As shown in t
 
 ![en-us_image_0000001511421292](figures/en-us_image_0000001511421292.png)
 
-In the grid, use the **onGetRectByIndex** callback to return the array [rowStart, columnStart, rowSpan, columnSpan] to achieve a layout that spans rows and columns, wherein **rowStart** and **rowEnd** indicate the start and end row numbers of the current element, and **columnStart** and **columnEnd** indicate the start and end column numbers of the current element.
+In the grid, use the **onGetRectByIndex** callback to return the array [rowStart, columnStart, rowSpan, columnSpan] to achieve a layout that spans rows and columns, wherein **rowStart** and **columnStart** indicate the start row number and start column number of the current element, and **rowSpan** and **columnSpan** indicate the number of rows and columns occupied by the current element.
 
 To make the **0** key span across the first and second columns, and the **=** key span across the fifth and sixth rows, set **onGetRectByIndex** for **0** and **=** as follows: for **0**, set **rowStart** and **columnStart** at **6** and **0**, and **rowSpan** and **columnSpan** at **1** and **2**; for **=**, set **rowStart** and **columnStart** at **5** and **3**, and **rowSpan** and **columnSpan** at **2** and **1**.
 
@@ -117,7 +117,7 @@ Grid(undefined, this.layoutOptions) {
 
 ### Setting the Main Axis Direction
 
-When neither the number nor proportion is set for rows and columns in a grid layout, you can use the **layoutDirection** attribute to set the main axis direction and thereby specify the arrangement mode of child components. In addition, you can use the **minCount** and **maxCount** attributes to restrict the number of grid cells along the main axis.
+When neither the number nor proportion is set for rows and columns in a grid layout, you can use the [layoutDirection](../reference/apis-arkui/arkui-ts/ts-container-grid.md#layoutdirection8) attribute to set the main axis direction and thereby specify the arrangement mode of child components. In addition, you can use the [minCount](../reference/apis-arkui/arkui-ts/ts-container-grid.md#mincount8) and [maxCount](../reference/apis-arkui/arkui-ts/ts-container-grid.md#maxcount8) attributes to restrict the number of grid cells along the main axis.
 
   **Figure 6** Main axis direction 
 
@@ -206,13 +206,13 @@ struct OfficeService {
 
 ## Setting the Gap Between Rows and Columns
 
-The horizontal spacing between two grid cells is called row spacing, and the vertical spacing is called column spacing, as shown in the following figure.
+The horizontal spacing between grid cells is called row spacing, and the vertical spacing is called column spacing, as illustrated below.
 
 **Figure 8** Row spacing and column spacing 
 
 ![en-us_image_0000001511580908](figures/en-us_image_0000001511580908.png)
 
-You can use **rowsGap** and **columnsGap** to set the row spacing and column spacing of the grid layout. In the calculator shown in Figure 5, the row spacing is 15 vp, and the column spacing is 10vp.
+To configure the row and column spacing of a grid layout, use the [rowsGap](../reference/apis-arkui/arkui-ts/ts-container-grid.md#rowsgap) and [columnsGap](../reference/apis-arkui/arkui-ts/ts-container-grid.md#columnsgap) attributes of the **Grid** component. In the calculator shown in Figure 5, the row spacing is 15 vp, and the column spacing is 10vp.
 
 
 ```ts
@@ -341,9 +341,9 @@ To add an external scrollbar to a [Grid](../reference/apis-arkui/arkui-ts/ts-con
 
 Just as [LazyForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) is recommended for [handling a long list](arkts-layout-development-create-list.md#handling-a-long-list), [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md) is recommended for a scrolling grid layout when a large number of grid items is involved.
 
-For details about the implementation of on-demand loading optimization, see the example in [LazyForEach: Lazy Data Loading](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
+For details about the implementation of on-demand loading optimization, see the example in [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 
-When the grid is rendered in lazy loading mode, to improve the grid scrolling experience and minimize white blocks during grid scrolling, you can use the **cachedCount** parameter of the **Grid** component. This parameter sets the number of grid items preloaded outside of the screen and is valid only in **LazyForEach**.
+When the grid is rendered in lazy loading mode, to improve the grid scrolling experience and minimize white blocks during grid scrolling, you can use the [cachedCount](../reference/apis-arkui/arkui-ts/ts-container-grid.md#cachedcount) attribute of the **Grid** component. This attribute sets the number of grid items preloaded outside of the screen and is valid only in [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 
   Specifically, the number of the grid items to cache before and after the currently displayed one equals the value of **cachedCount** multiplied by the number of columns. Grid items that exceed the display and cache range are released.
 

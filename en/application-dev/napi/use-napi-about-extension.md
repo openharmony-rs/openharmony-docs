@@ -25,7 +25,7 @@ The following modules are required for the ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
-import taskpool from '@kit.ArkTS';
+import { taskpool } from '@kit.ArkTS';
 ```
 
 ## Module Loading
@@ -245,7 +245,7 @@ let value2 = testNapi.createObjectWithNameProperties('ls');
 try {
   hilog.info(0x0000, 'testTag', 'Node-API napi_create_object_with_named_properties:%{public}s', JSON.stringify(value2));
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'TNode-API napi_create_object_with_named_properties: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Node-API napi_create_object_with_named_properties: %{public}s', error.message);
 }
 ```
 

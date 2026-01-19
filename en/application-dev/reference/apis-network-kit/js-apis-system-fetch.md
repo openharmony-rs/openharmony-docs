@@ -1,4 +1,4 @@
-# @system.fetch (Data Request) (Deprecated)
+# @system.fetch (Data Request)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -105,16 +105,16 @@ export default {
 > **NOTE**
 >   HTTPS is supported by default. To support HTTP, you need to add **"network"** to the **config.json** file, and set the attribute **"cleartextTraffic"** to **true**, as shown below:
 >   
-> ```
-> {
->   "deviceConfig": {
->     "default": {
->       "network": {
->         "cleartextTraffic": true
->       }
->       ... // Other configuration information
->     }
->   }
->   ... // Other configuration information
-> }
-> ```
+ ```
+ {
+   "deviceConfig": {
+     "default": {
+       "network": {
+         "cleartextTraffic": true
+       }
+       ... // Other configuration information
+     }
+   }
+   ... // Other configuration information
+ }
+ ```

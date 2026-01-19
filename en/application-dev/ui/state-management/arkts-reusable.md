@@ -27,6 +27,8 @@ When applied to a custom component, the \@Reusable decorator marks the component
 
 - The \@Reusable decorator only applies to custom components.
 
+- \@Reusable is not compatible with [\@ComponentV2](./arkts-new-componentV2.md). For component reuse in V2, use the [\@ReusableV2decorator](./arkts-new-reusableV2.md) instead.
+
 ```ts
 import { ComponentContent } from "@kit.ArkUI";
 
@@ -363,7 +365,6 @@ struct Child {
   @State message: Message = new Message('AboutToReuse');
 
   aboutToReuse(params: Record<string, ESObject>) {
-    console.info("Recycle====Child==");
     this.message = params.message as Message;
   }
 
@@ -443,7 +444,7 @@ struct ReuseDemo {
 @Reusable
 @Component
 export struct CardView {
-  // Variables decorated with @State will update; others will not.
+  // Only the item variable decorated with@State will be updated.
   @State item: string = '';
 
   aboutToReuse(params: Record<string, Object>): void {
@@ -797,7 +798,7 @@ struct ReusableChildComponent {
   @State item: number = 0;
 
   // Called before the component is added to the component tree from the reuse cache. The component's state variable can be updated here to display the correct content.
-  // Parameter type: Record<string, number> (explicit type instead of any).
+  // The aboutToReuse parameter no longer supports the any type. Record is used to specify explicit data types, constructing an object type where property keys are strings and property values are numbers.
   aboutToReuse(params: Record<string, number>) {
     this.item = params.item;
   }

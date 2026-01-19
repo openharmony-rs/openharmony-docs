@@ -127,74 +127,77 @@ The following describes the development procedure specific to each application s
 1. Obtain the historical data traffic of the specified NIC. 
 2. Obtain the historical data traffic of the specified application.
 
-```ts
-import { statistics } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+      ```ts
+      import { statistics } from '@kit.NetworkKit';
 
-class IfaceInfo {
-  iface: string = "wlan0"
-  startTime: number = 1685948465
-  endTime: number = 16859485670
-}
-// Obtain the historical data traffic of the specified NIC. 
-statistics.getTrafficStatsByIface(new IfaceInfo()).then((statsInfo: statistics.NetStatsInfo) => {
-  console.info(
-    "getTrafficStatsByIface bytes of received = " +
-    JSON.stringify(statsInfo.rxBytes)
-  );
-  console.info(
-    "getTrafficStatsByIface bytes of sent = " +
-    JSON.stringify(statsInfo.txBytes)
-  );
-  console.info(
-    "getTrafficStatsByIface packets of received = " +
-    JSON.stringify(statsInfo.rxPackets)
-  );
-  console.info(
-    "getTrafficStatsByIface packets of sent = " +
-    JSON.stringify(statsInfo.txPackets)
-  );
-});
+      class IfaceInfo {
+        iface: string = "wlan0"
+        startTime: number = 1685948465
+        endTime: number = 16859485670
+      }
+      // Obtain the historical data traffic of the specified NIC. 
+      statistics.getTrafficStatsByIface(new IfaceInfo()).then((statsInfo: statistics.NetStatsInfo) => {
+        console.info(
+          "getTrafficStatsByIface bytes of received = " +
+          JSON.stringify(statsInfo.rxBytes)
+        );
+        console.info(
+          "getTrafficStatsByIface bytes of sent = " +
+          JSON.stringify(statsInfo.txBytes)
+        );
+        console.info(
+          "getTrafficStatsByIface packets of received = " +
+          JSON.stringify(statsInfo.rxPackets)
+        );
+        console.info(
+          "getTrafficStatsByIface packets of sent = " +
+          JSON.stringify(statsInfo.txPackets)
+        );
+      });
 
-class UidInfo {
-  uid: number = 20010037
-  ifaceInfo: IfaceInfo = new IfaceInfo()
-}
+      class UidInfo {
+        uid: number = 20010037
+        ifaceInfo: IfaceInfo = new IfaceInfo()
+      }
 
-let uidInfo = new UidInfo()
+      let uidInfo = new UidInfo()
 
-// Obtain the historical data traffic of the specified application. 
-statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInfo) => {
-  console.info("getTrafficStatsByUid bytes of received = " + JSON.stringify(statsInfo.rxBytes));
-  console.info("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
-  console.info("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
-  console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
-})
-```
+      // Obtain the historical data traffic of the specified application. 
+      statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInfo) => {
+        console.info("getTrafficStatsByUid bytes of received = " + JSON.stringify(statsInfo.rxBytes));
+        console.info("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
+        console.info("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
+        console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
+      })
+      ```
 
 ## Subscribing to Traffic Change Events
 
 1. Subscribe to traffic change events.
 2. Unsubscribe from traffic change events.
 
-```ts
-import { statistics } from '@kit.NetworkKit';
+      ```ts
+      import { statistics } from '@kit.NetworkKit';
 
-class Data {
-  iface: string = ""
-  uid?: number = 0
-}
+      class Data {
+        iface: string = ""
+        uid?: number = 0
+      }
 
-let callback = (data: Data) => {
-  console.info('on netStatsChange, data:' + JSON.stringify(data));
-};
-// Subscribe to traffic change events.
-statistics.on('netStatsChange', callback);
+      let callback = (data: Data) => {
+        console.info('on netStatsChange, data:' + JSON.stringify(data));
+      };
+      // Subscribe to traffic change events.
+      statistics.on('netStatsChange', callback);
 
-// Unsubscribe from traffic change events. You can pass the callback of the **on** function if you want to unsubscribe from a certain type of event. If you do not pass the callback, you will unsubscribe from all events.
-statistics.off('netStatsChange', callback);
-statistics.off('netStatsChange');
-```
-<!--DelEnd-->
+      // Unsubscribe from traffic change events. You can pass the callback of the **on** function if you want to unsubscribe from a certain type of event. If you do not pass the callback, you will unsubscribe from all events.
+      statistics.off('netStatsChange', callback);
+      statistics.off('netStatsChange');
+      ```
+      <!--DelEnd-->
 
+## Samples
 
+The following samples are provided to help you better understand how to develop traffic management features:
+
+- [Traffic Management] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case)

@@ -114,6 +114,7 @@ struct OverlayExample {
         Text('floating layer')
           .fontSize(12).fontColor(0xCCCCCC).maxLines(1)
         Column() {
+          // $r('app.media.img')需要替换为开发者所需的图像资源文件
           Image($r('app.media.img'))
             .width(240).height(240)
             .overlay("Winter is a beautiful season, especially when it snows.", {
@@ -140,6 +141,7 @@ struct OverlayExample {
 struct OverlayExample {
   @Builder OverlayNode() {
     Column() {
+      // $r('app.media.img1')需要替换为开发者所需的图像资源文件
       Image($r('app.media.img1'))
       Text("This is overlayNode").fontSize(20).fontColor(Color.White)
     }
@@ -151,6 +153,7 @@ struct OverlayExample {
 
   build() {
     Column() {
+      // $r('app.media.img2')需要替换为开发者所需的图像资源文件
       Image($r('app.media.img2'))
         .overlay(this.OverlayNode(), { align: Alignment.Center })
         .objectFit(ImageFit.Contain)

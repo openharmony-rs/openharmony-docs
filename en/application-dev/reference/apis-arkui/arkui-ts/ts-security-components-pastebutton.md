@@ -23,7 +23,7 @@ Not supported
 
 PasteButton()
 
-Creates a **PasteButton** component with an icon, text, and background.
+Creates a **PasteButton** component with an icon, text, and background by default.
 
 You may want to learn the [restrictions on security component styles](../../../security/AccessToken/security-component-overview.md#constraints) to avoid authorization failures caused by incompliant styles.
 
@@ -35,7 +35,7 @@ You may want to learn the [restrictions on security component styles](../../../s
 
 PasteButton(options: PasteButtonOptions)
 
-Creates a **PasteButton** component containing the specified element.
+Creates a **PasteButton** component with the specified element.
 
 You may want to learn the [restrictions on security component styles](../../../security/AccessToken/security-component-overview.md#constraints) to avoid authorization failures caused by incompliant styles.
 
@@ -176,7 +176,7 @@ struct Index {
   build() {
     Row() {
       Column({ space: 10 }) {
-        // Create a default button with an icon, text, and background.
+        // Create a default PasteButton component with an icon, text, and background.
         PasteButton().onClick(this.handlePasteButtonClick)
         // Whether an element is contained depends on whether the parameter corresponding to the element is specified. If buttonType is not passed in, the button uses the ButtonType.Capsule settings.
         PasteButton({ icon: PasteIconStyle.LINES })

@@ -1076,7 +1076,7 @@ Repeat本身具备组件复用能力，同时也支持与状态管理V2的[@Reus
 1. 直接使用Repeat自身的复用能力。
 2. 使用@ReusableV2装饰器提供的复用能力。
 
-需要注意的是，Repeat默认使能自身的复用能力，且优先级高于@ReusableV2装饰器。若要使用@ReusableV2装饰器，需要先手动关闭Repeat自身的复用能力（@ReusableV2装饰器从API version 18开始支持，Repeat从API version 19开始支持关闭自身复用能力）。
+需要注意的是，Repeat默认使能自身的复用能力，且优先级高于@ReusableV2装饰器。若要使用@ReusableV2装饰器，需要先手动关闭Repeat自身的复用能力（@ReusableV2装饰器从API version 18开始支持，Repeat从API version 18开始支持[关闭自身复用能力](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)）。
 
 **示例7 - 迁移方案1：使用Repeat自身的复用能力**
 

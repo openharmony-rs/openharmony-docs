@@ -29,7 +29,7 @@ hdc shell "aa process -b com.example.myapplication -a EntryAbility -p perf-cmd"
 |--------|--------|
 | -h/help |  Displays the help information of the aa tool.|
 | start |  Starts an application component. The target component can be the PageAbility and ServiceAbility components of the FA model or the UIAbility and ServiceExtensionAbility components of the Stage model. The **exported** tag in the configuration file of the target component cannot be set to **false**.|
-| stop-service | Stops an application component. The target component can be the ServiceAbility component of the FA model or the ExtensionAbility component of the Stage model.|
+| stop-service |  Stops an application component. The target component can be the ServiceAbility component of the FA model or the ExtensionAbility component of the Stage model.|
 | dump<sup>(deprecated)</sup> |  Prints information about an application component.|
 | force-stop |  Forcibly stops a process based on the bundle name.|
 | test |  Starts the test framework based on the carried parameters.|
@@ -92,7 +92,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
 
   **Return value**
 
-  Returns "start ability successfully." if the ability is started; returns "error: failed to start ability." and the corresponding error information otherwise.
+  If the ability is started successfully, "start ability successfully." is returned; otherwise, the error message "error: failed to start ability." and the corresponding error information are returned.
 
   **Error codes**
 
@@ -193,7 +193,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
 
 ## stop-service
 
-Stops an application component. The target component can be the ServiceAbility component of the FA model or the ExtensionAbility component of the Stage model.
+ Stops an application component. The target component can be the ServiceAbility component of the FA model or the ExtensionAbility component of the Stage model.
 
 ```bash
 aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName>]
@@ -303,7 +303,7 @@ aa force-stop <bundle-name> [-p pid] [-r kill-reason]
 
   **Return value**
 
-  Returns "force stop process successfully." if the process is forcibly stopped; returns "error: failed to force stop process." otherwise.
+  "force stop process successfully." is returned if the process is forcibly stopped; "error: failed to force stop process." is returned otherwise.
 
   **Error codes**
 
@@ -352,7 +352,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
 
   **Return value**
 
-  Returns "user test started." if the test framework is started; returns "error: failed to start user test." and the corresponding error information otherwise.
+  "user test started." is returned if the test framework is started; "error: failed to start user test." and the corresponding error information are returned otherwise.
 
   **Error codes**
 
@@ -390,7 +390,7 @@ aa attach -b <bundleName>
 
   **Return value**
 
-  Returns "attach app debug successfully." if the application enters the debugging mode; returns "fail: unknown option." and prints the help information if the specified parameter is invalid.
+  "attach app debug successfully." is returned if the application enters the debugging mode; "fail: unknown option." and the help information are returned if the specified parameter is invalid.
 
   **Error codes**
 
@@ -425,7 +425,7 @@ aa detach -b <bundleName>
 
   **Return value**
 
-  Returns "detach app debug successfully." if the application exits the debugging mode; returns "fail: unknown option." and prints the help information if the specified parameter is invalid.
+  "detach app debug successfully." is returned if the application exits the debugging mode; "fail: unknown option." and the help information are returned if the specified parameter is invalid.
 
   **Error codes**
 
@@ -463,7 +463,7 @@ aa appdebug -b <bundleName> [-p]
 
   **Return value**
 
-  Returns "app debug successfully." if the operation is successful; returns "error: not developer mode." if the operation fails because the application is not in developer mode; returns "error: failed to app debug." if the operation fails due to other reasons.
+  "app debug successfully." is returned if the operation is successful; "error: not developer mode." is returned if the operation fails because the application is not in developer mode; "error: failed to app debug." is returned if the operation fails due to other reasons.
 
   **Error codes**
 
@@ -515,7 +515,7 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
 
   **Return value**
 
-  Returns "start native process successfully." if this command is executed successfully; returns "start native process successfully." if this command fails to be executed; returns "start native process successfully." and prints the help information if the specified parameter is invalid.
+  "start native process successfully." is returned if this command is executed successfully; "start native process successfully." is returned if this command fails to be executed; "start native process successfully." and the help information are returned if the specified parameter is invalid.
 
   | ID| Error Message|
   | ------- | -------- |
@@ -552,7 +552,7 @@ aa send-memory-level -p <processId> -l <memoryLevel>
 
 **Return value**
 
-If the command is executed successfully, the message "send memory level successfully." is returned. If the command fails to be executed, the message "error: failed to send memory level." is returned. If the specified parameter value is missing, the message "fail: unknown option." is returned and the help information is printed.
+"send memory level successfully." is returned if the command is executed successfully; "error: failed to send memory level." is returned if the command fails to be executed; "fail: unknown option." and the help information are returned if the specified parameter value is missing.
 
 | ID| Error Message|
 | ------- | -------- |
@@ -741,7 +741,7 @@ The target application is signed by the release certificate.
 
 **Solution**
 
-Use the debug signature certificate to sign the application again. After the HAP is signed, run the command again.
+Use the debug signing certificate to sign the application again. After the HAP is signed, run the command again.
 
 ### 10100101 Failed to Obtain Application Information
 
@@ -1130,4 +1130,5 @@ The value of the **type** parameter in the signing tool is not **debug**.
 **Solution**
 
 Use the debug signature certificate to sign the application again. After the HAP is signed, run the command again.
+
 For details about the signing tool and certificate, see [Signing Your App/Atomic Service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).

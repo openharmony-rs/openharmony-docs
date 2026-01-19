@@ -7,12 +7,16 @@
 <!--Adviser: @foryourself-->
 
 The **faultLogger** APIs can be used to query fault logs of an application cached on the system. The APIs use the application bundle name and the UID allocated by the system as the unique key value.
+
 The number of application fault logs stored in the system is limited by the system log pressure. You are advised to use [@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md) to subscribe to fault events such as **APP_CRASH** and **APP_FREEZE**.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
+> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
 > The APIs of this module are no longer maintained since API version 18. You are advised to use [@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md) to subscribe to the **APP_CRASH** and **APP_FREEZE** events in later versions.
+>
+> For details about how to use HiAppEvent to subscribe to the **APP_CRASH** event, see [Migrating Crash Events from the FaultLogger API](../../dfx/hiappevent-watcher-crash-events-arkts.md#migrating-crash-events-from-the-faultlogger-api).
 
 ## Modules to Import
 

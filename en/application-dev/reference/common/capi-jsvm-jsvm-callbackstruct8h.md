@@ -10,7 +10,7 @@
 
 Defines the pointer types of the native functions provided by user. These functions are exposed to JavaScript via JSVM-API.
 
-**Since**: 12
+**Since**: 11
 
 **Related module**: [JSVM](capi-jsvm.md)
 

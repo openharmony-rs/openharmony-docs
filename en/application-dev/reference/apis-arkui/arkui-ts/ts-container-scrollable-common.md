@@ -316,7 +316,6 @@ A component must have focus to receive [crown events](ts-universal-events-crown.
 | T | Current scrollable component.|
 
 
-
 ## Events
 
 ### onReachStart<sup>11+</sup>
@@ -431,6 +430,10 @@ Triggered when the scrollable component is about to scroll.
 
 The callback provides the amount of offset that is about to be scrolled in the current frame, along with the current scroll status and the source of the scrolling operation. The offset provided in the callback is the calculated intended scrolling offset, not the final actual scrolling offset. You can specify the intended scrolling offset for the scrollable component through the return value of this callback. The parameter type of the [onWillScroll](./ts-container-scroll.md#onwillscroll12) API of the [Scroll](./ts-container-scroll.md) component is [ScrollOnWillScrollCallback](./ts-container-scroll.md#scrollonwillscrollcallback12).
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 14.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -457,6 +460,10 @@ The callback provides the amount of offset that is about to be scrolled in the c
 onDidScroll(handler: OnScrollCallback): T
 
 Triggered when the scrollable component scrolls. The return value is the offset amount by which the list has scrolled and the current scroll state.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 14.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 

@@ -71,12 +71,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 注册监听共享状态的改变
 sharing.on('sharingStateChange', (data: boolean) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 
 // 调用startSharing方法，来开启指定类型共享
 sharing.startSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
-  console.log('start wifi sharing successful');
+  console.info('start wifi sharing successful');
 }).catch((error: BusinessError) => {
   console.error('start wifi sharing failed');
 });
@@ -98,12 +98,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 注册监听共享状态的改变
 sharing.on('sharingStateChange', (data: boolean) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 });
 
 // 调用stopSharing方法，来停止指定类型共享
 sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
-  console.log('stop wifi sharing successful');
+  console.info('stop wifi sharing successful');
 }).catch((error: BusinessError) => {
   console.error('start wifi sharing failed');
 });
@@ -125,28 +125,28 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 调用startSharing方法，来开启指定类型共享
 sharing.startSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
-  console.log('start wifi sharing successful');
+  console.info('start wifi sharing successful');
 }).catch((error: BusinessError) => {
   console.error('start wifi sharing failed');
 });
 
 // 调用getStatsTotalBytes方法，来获取共享网络数据量
 sharing.getStatsTotalBytes().then((data: number) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 }).catch((error: BusinessError) => {
   console.error(JSON.stringify(error));
 });
 
 // 调用stopSharing方法，来停止指定类型共享，共享网络数据量清零
 sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
-  console.log('stop wifi sharing successful');
+  console.info('stop wifi sharing successful');
 }).catch((error: BusinessError) => {
   console.error('start wifi sharing failed');
 });
 
 // 再次调用getStatsTotalBytes方法，共享网络数据量已清零
 sharing.getStatsTotalBytes().then((data: number) => {
-  console.log(JSON.stringify(data));
+  console.info(JSON.stringify(data));
 }).catch((error: BusinessError) => {
   console.error(JSON.stringify(error));
 });

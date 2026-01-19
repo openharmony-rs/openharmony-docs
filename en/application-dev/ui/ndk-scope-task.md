@@ -25,7 +25,7 @@ This example demonstrates the basic usage of the **OH_ArkUI_RunTaskInScope** API
 //page1
 ArkUI_NodeHandle button = nodeAPI->createNode(ARKUI_NODE_BUTTON);
 ArkUI_AttributeItem LABEL_Item = {.string = "pageOneButton"};
-// Set an ID to allow component retrieval from the second page.
+// Set the ID for component retrieval using APIs on the second page.
 ArkUI_AttributeItem id = {.string = "pageOneButton"};
 nodeAPI->setAttribute(button, NODE_ID, &id);
 nodeAPI->setAttribute(button, NODE_BUTTON_LABEL, &LABEL_Item);
@@ -33,7 +33,7 @@ nodeAPI->setAttribute(button, NODE_BUTTON_LABEL, &LABEL_Item);
 
 ```c
 //page2
-// Retrieve the component created on the previous page using its ID.
+// Retrieve pageOneButton created on the previous page using OH_ArkUI_NodeUtils_GetAttachedNodeHandleById.
 ArkUI_NodeHandle pageOneButton = nullptr;
 auto ec = OH_ArkUI_NodeUtils_GetAttachedNodeHandleById("pageOneButton", &pageOneButton);
 auto uiContext = OH_ArkUI_GetContextByNode(pageOneButton);

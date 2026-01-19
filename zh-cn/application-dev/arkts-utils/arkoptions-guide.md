@@ -77,6 +77,7 @@ let c: Global.ObjectType;
 ### arkOptions下的tscConfig中maxFlowDepth字段配置说明
 
 arkOptions/tscConfig中maxFlowDepth字段展示。
+
 在工程级目录下的build-profile.json5配置文件buildOption标签的arkOptions/tscConfig属性中添加maxFlowDepth字段。
 
 ```typescript

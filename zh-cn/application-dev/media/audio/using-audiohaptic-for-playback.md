@@ -25,9 +25,13 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
    > **说明：**
    >
-   > 开发者可通过如下两种方式注册资源：
-   > - 方式1：使用[registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource)接口，通过文件URI来注册资源。
-   > - 方式2（推荐）：从API version 20开始，支持使用[registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20)接口，通过文件描述符来注册资源，更便于开发者使用。
+   > - 开发者可通过如下两种方式注册资源：
+   >
+   >   方式1：使用[registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource)接口，通过文件URI来注册资源。
+   >
+   >   方式2（推荐）：从API version 20开始，支持使用[registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20)接口，通过文件描述符来注册资源，更便于开发者使用。
+   >
+   > - 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 
    ```ts
    import { audio, audioHaptic } from '@kit.AudioKit';
@@ -35,6 +39,9 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    import { common } from '@kit.AbilityKit';
 
    let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.getAudioHapticManager();
+
+   // 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。
+   // 推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 
    // 方法1：使用registerSource接口注册资源。
    let audioUri = 'data/audioTest.wav'; // 此处仅作示例，实际使用时需要将文件替换为应用目标音频资源的Uri。
@@ -132,6 +139,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 7. 将已注册的音频及振动资源移除注册。
 
    ```ts
+   // 对于不再需要使用的资源，建议应用及时取消注册，避免出现资源泄漏或资源数量超上限等问题。
    audioHapticManagerInstance.unregisterSource(idForFd).then(() => {
      console.info(`Promise returned to indicate that unregister source successfully`);
    }).catch((err: BusinessError) => {

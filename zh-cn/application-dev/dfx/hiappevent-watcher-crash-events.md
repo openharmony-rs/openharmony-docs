@@ -20,6 +20,10 @@
 
 - [订阅崩溃事件（C/C++）](hiappevent-watcher-crash-events-ndk.md)。
 
+> **说明：**
+>
+> 崩溃事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)和原子化服务场景下使用HiAppEvent进行订阅。
+
 ## 检测原理
 
 ### NativeCrash崩溃类型检测原理

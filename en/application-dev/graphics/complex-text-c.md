@@ -57,7 +57,7 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 // Add the created TextStyle to the handler.
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
 // Set the text content and add the text to the handler.
-const char *text = "Hello, Chinese\n";
+const char *text = "你好，中文\n";
 OH_Drawing_TypographyHandlerAddText(handler, text);  
 
 // Use the handler to create Typography.
@@ -658,7 +658,7 @@ OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // Enable automatic spacing. The default value is false.
 OH_Drawing_SetTypographyTextAutoSpace(typoStyle, true);
 // Set the text content.
-const char *text = "test test©test© test.";
+const char *text = "test测试©test©测。";
 
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 // Set the text color, size, and weight. If TextStyle is not set, the default TextStyle in TypographyStyle is used.
@@ -1136,3 +1136,4 @@ OH_Drawing_DestroyTypography(typographyCopy);
 ```
 	
 ![image_styleCopy_1](figures/image_styleCopy_1.png)
+<!--no_check-->

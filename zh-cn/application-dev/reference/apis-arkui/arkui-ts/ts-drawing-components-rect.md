@@ -388,7 +388,8 @@ struct RectExample {
 
 ### 示例2（绘制渐变色矩形）
 
-通过通用属性linearGradient、clipShape分别绘制渐变色的矩形。
+通过通用属性[linearGradient](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient18)、[clipShape](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape18)分别绘制渐变色的矩形。
+从API version 18开始，新增linearGradient、clipShape通用属性。
 
 ```ts
 // xxx.ets

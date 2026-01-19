@@ -1,4 +1,4 @@
-# Common Issues with ArkGuard Bytecode Obfuscation
+# Common Issues with ArkGuard in Bytecode Obfuscation
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @oatuwwutao-->
@@ -109,7 +109,7 @@ Source code:
 ```ts
 @Component
 export struct MainPage {
-	@State messageStr: string = 'Hello World';
+    @State messageStr: string = 'Hello World';
     
     build() {
     }
@@ -137,7 +137,7 @@ import { Type } from '@kit.ArkUI';
 // Data center
 @ObservedV2
 class SampleChild {
-	@Trace p123: number = 0;
+    @Trace p123: number = 0;
     p2: number = 10;
 }
 
@@ -150,7 +150,7 @@ export class Sample {
 
 @ObservedV2
 class Info {
-	@Trace sample: Sample = new Sample();
+    @Trace sample: Sample = new Sample();
 }
 ```
 
@@ -227,7 +227,7 @@ Error message: [Class]get different name for method:&entry/src/main/ets/pages/XX
 // Code 1
 @CustomDialog
 export default struct TmsDialog {
-	controller?: CustomDialogController
+    controller?: CustomDialogController
     dialogController:CustomDialogController
     
     build() {
@@ -237,7 +237,7 @@ export default struct TmsDialog {
 // Code 2
 @CustomDialog
 struct Index{
-	controller?: CustomDialogController
+    controller?: CustomDialogController
     dialogController?:CustomDialogController
     
     build() {
@@ -314,10 +314,10 @@ When **Record<string, Object>** is used as an object type, properties like **lin
 import { Want } from '@kit.AbilityKit';
 
 let petalMapWant: Want = {
-	bundleName: 'com.example.myapplication',
+    bundleName: 'com.example.myapplication',
     uri: 'maps://',
     parameters: {
-    	linkSource: 'com.other.app'
+        linkSource: 'com.other.app'
     }
 }
 ```
@@ -326,7 +326,7 @@ let petalMapWant: Want = {
 import type Want from "@ohos:app.ability.Want";
 
 let petalMapWant: Want = {
-	bundleName: 'com.example.myapplication',
+    bundleName: 'com.example.myapplication',
     uri: 'maps://',
     parameters: {
         i: 'com.other.app'
@@ -359,13 +359,13 @@ import { Type } from '@kit.ArkUI';
 
 @ObservedV2
 class SampleChild {
-	@Trace p123: number = 0;
+    @Trace p123: number = 0;
     p2: number = 10;
 }
 
 @ObservedV2
 export class Sample {
-	// For complex objects, use the @Type decorator to ensure successful serialization.
+    // For complex objects, use the @Type decorator to ensure successful serialization.
     @Type(SampleChild)
     @Trace f123: SampleChild = new SampleChild();
 }
@@ -378,11 +378,11 @@ import { Sample } from './Sample';
 @Entry
 @ComponentV2
 struct Page {
-	prop: Sample = PersistenceV2.connect(Sample, () => new Sample())!;
+    prop: Sample = PersistenceV2.connect(Sample, () => new Sample())!;
     
     build() {
-    	Column() {
-        	Text(`Page1 add 1 to prop.p1: ${this.prop.f123.p123}`)
+        Column() {
+            Text(`Page1 add 1 to prop.p1: ${this.prop.f123.p123}`)
         }
     }
 }
@@ -421,18 +421,18 @@ The following obfuscation configuration is used:
 // Before obfuscation:
 // file1.ts
 export interface MyInfo {
-	age: number;
+    age: number;
     address: {
-    	city1: string;
+        city1: string;
     }
 }
 // file2.ts
 import { MyInfo } from './file1';
 
 const person: MyInfo = {
-	age: 20,
+    age: 20,
     address: {
-    	city1: "shanghai"
+        city1: "shanghai"
     }
 }
 
@@ -441,9 +441,9 @@ const person: MyInfo = {
 import { MyInfo } from './file1';
 
 const person: MyInfo = {
-	age: 20,
+    age: 20,
     address: {
-    	i: "shanghai"
+        i: "shanghai"
     }
 }
 ```
@@ -459,10 +459,10 @@ Solution 1: Define the property type using **interface** and export it. This wil
 ```ts
 // file1.ts
 export interface AddressType {
-	city1: string
+    city1: string
 }
 export interface MyInfo {
-	age: number;
+    age: number;
     address: AddressType;
 }
 ```
@@ -479,9 +479,9 @@ city1
 When the two options are configured, method name confusion in the following scenarios is involved when the main module calls the methods of other modules:
 |Main Module|Dependent Module|Imported/Exported Name Obfuscation|
 |-------|--------|---------|
-|HAP/HSP|	HSP	|The HSP and main module are built independently, and different names are generated after obfuscation. Therefore, a trustlist must be configured for both the HSP and main module.|
-|HAP/HSP|	Local HAR|The local HAR is built together with the main module. After obfuscation, the names are the same.|
-|HAP/HSP|	Third-party library|	The names and properties exported from a third-party library are collected to the trustlist. They are not confused during import and export.|
+|HAP/HSP|HSP|The HSP and main module are built independently, and different names are generated after obfuscation. Therefore, a trustlist must be configured for both the HSP and main module.|
+|HAP/HSP|Local HAR|The local HAR is built together with the main module. After obfuscation, the names are the same.|
+|HAP/HSP|Third-party library|The names and properties exported from a third-party library are collected to the trustlist. They are not confused during import and export.|
 
 For the HSP, you must add the methods used by other modules to the trustlist. You must add the same trustlist for the main module. Therefore, you are advised to add the obfuscation file configured with the trustlist (for example, **hsp-white-list.txt**) to the obfuscation configuration item of the module that depends on the obfuscation file, that is, the **files** field shown in the following figure.
 
@@ -493,16 +493,16 @@ For the HSP, you must add the methods used by other modules to the trustlist. Yo
 // Before obfuscation:
 // utils.ts
 export function add(a: number, b: number): number {
-	return a + b;
+    return a + b;
 }
 
 // main.ts
 async function loadAndUseAdd() {
-	try {
-    	const mathUtils = await import('./utils');
-    	const result = mathUtils.add(2, 3);
+    try {
+        const mathUtils = await import('./utils');
+        const result = mathUtils.add(2, 3);
     } catch (error) {
-    	console.error('Failure reason:', error);
+        console.error('Failure reason:', error);
     }
 }
 
@@ -544,7 +544,7 @@ Solution 2: Use **-keep-global-name** to configure **add** to the trustlist.
 // Before obfuscation:
 // export.ts
 export namespace NS {
-	export function foo() {}
+    export function foo() {}
 }
 
 // import.ts
@@ -556,7 +556,7 @@ NS.foo();
 // After obfuscation:
 // export.ts
 export namespace i {
-	export function j() {}
+    export function j() {}
 }
 
 // import.ts
@@ -578,12 +578,12 @@ i.foo();
 // file.ts
 // Before obfuscation:
 declare global {
-	var myAge : string
+    var myAge : string
 }
 
 // After obfuscation:
 declare a2 {
-	var b2 : string
+    var b2 : string
 }
 ```
 
@@ -602,7 +602,7 @@ Since API version 18, **global** has been added to the system trustlist. You do 
 When **-enable-toplevel-obfuscation** is configured, bytecode obfuscation works normally, but a runtime error is reported. The error log is as follows:
 
 ```txt
-Error message:is not callable
+Error message: is not callable
 Stacktrace: Cannot get SourceMap info, dump raw stack: at anonymous (ads_service|@hw-ads/ohos-ads-model|1.0.1|src/main/ets/annotations/FieldType.ts:6:1.
 ```
 
@@ -619,7 +619,7 @@ import 'reflect-metadata';
 export const FIELD_TYPE_KEY = Symbol('fieldType');
 export function FieldType(...types: Function[]): PropertyDecorator {
     return (target, key) => {
-    	Reflect.defineMetadata(FIELD_TYPE_KEY, types, target, key);
+        Reflect.defineMetadata(FIELD_TYPE_KEY, types, target, key);
     };
 }
 ```

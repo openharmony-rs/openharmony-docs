@@ -277,7 +277,7 @@ struct BindSheetDemo {
             .backgroundColor(0xf1f1f1)
             .borderRadius(8)
             .margin(10)
-            .padding(10)
+            .padding(15)
         })
       }
       .padding({ top: 18 })
@@ -384,7 +384,6 @@ struct BindMenuDemo {
     Column() {
       Button('click')
         .backgroundColor(0x409eff)
-        .borderRadius(5)
           // 第二步: 通过bindMenu接口将菜单数据绑定给元素
         .bindMenu(this.items)
     }

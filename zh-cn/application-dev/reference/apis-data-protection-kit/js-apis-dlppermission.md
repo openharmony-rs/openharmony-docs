@@ -1122,14 +1122,18 @@ async function ExampleFunction() {
 ## dlpPermission.isDLPFeatureProvided<sup>12+<sup>
 isDLPFeatureProvided(): Promise&lt;boolean&gt;
 
-查询当前系统是否提供DLP特性，使用Promise方式异步返回结果。
+查询当前系统是否提供加密保护特性，使用Promise方式异步返回结果。
+
+>**说明：**
+>
+> 该接口由[MDM](../../mdm/mdm-kit-intro.md)配置使能，且使能场景为企业设备。其他设备（如消费者终端设备）无需关注该接口，如若调用该接口，则返回值为false。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前系统提供DLP特性，返回false表示不提供DLP特性。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前系统提供加密保护特性，返回false表示不提供加密保护特性。 |
 
 **错误码：**
 

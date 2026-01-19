@@ -29,6 +29,7 @@ import { worker } from '@kit.ArkTS';
 ## RestrictedWorker<sup>11+</sup>
 
 RestrictedWorker类继承[ThreadWorker<sup>9+</sup>](js-apis-worker.md#threadworker9)，具有ThreadWorker中所有的方法。
+
 RestrictedWorker主要作用是提供受限的Worker线程运行环境，该线程运行环境中只允许导入Worker模块，不允许导入其他API。
 
 ### constructor<sup>11+</sup>

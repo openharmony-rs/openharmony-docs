@@ -24,12 +24,12 @@
 
 1. 组件的direction属性设置为Direction.Rtl。
 
-2. 组件的direction属性设置为Direction.Auto，且当前的系统语言（如维吾尔语）的阅读习惯是从右向左。
+2. 组件的direction属性设置为Direction.Auto，且当前的系统语言（如维吾尔语）的阅读习惯是从右到左。
 
 ### 基本概念
 
-- LTR：顺序为从左向右。
-- RTL：顺序为从右向左。
+- LTR：顺序为从左到右。
+- RTL：顺序为从右到左。
 
 ### 使用约束
 
@@ -163,7 +163,7 @@ struct Index {
 |![](figures/mirroring_2-0.jpg)|![](figures/mirroring_2-1.jpg)|
 
 ### 镜像状态字符对齐
-[Direction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#direction)是指文字的方向，即文本在屏幕上呈现时字符的顺序。在从左到右（LTR）文本中，显示顺序是从左向右；在从右到左（RTL）文本中，显示顺序是从右向左。
+[Direction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#direction)是指文字的方向，即文本在屏幕上呈现时字符的顺序。在从左到右（LTR）文本中，显示顺序是从左到右；在从右到左（RTL）文本中，显示顺序是从右到左。
 
 [TextAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#textalign)是将文本作为一个整体，在布局上的影响，具体位置会受Direction影响，以TextAlign为start为例，当Direction为LTR时，布局位置靠左；当Direction为RTL时，布局位置靠右。
 

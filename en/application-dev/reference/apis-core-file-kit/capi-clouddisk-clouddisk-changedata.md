@@ -30,3 +30,5 @@ A struct that encapsulates the event data generated when a single file under the
 | uint64_t size{0} | File size, in bytes.|
 | uint64_t mtime{0} | File modification time, in milliseconds.|
 | uint64_t timeStamp{0} | Time when a change event occurs, in milliseconds.|
+
+

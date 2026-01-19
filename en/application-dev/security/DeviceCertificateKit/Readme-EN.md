@@ -1,4 +1,4 @@
-# Device Certificate Kit
+# Device Certificate Kit (Device Certificate Service)
 
 <!--Kit: Device Certificate Kit-->
 <!--Subsystem: Security-->
@@ -7,7 +7,7 @@
 <!--Tester: @PAFT--; @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
 
-- [Introduction to Device Certificate Kit](device-certificate-kit-intro.md)
+- [About This Kit](device-certificate-kit-intro.md)
 - Certificate Framework<!--certificate-framework-->
   - [Certificate Framework Overview](certificate-framework-overview.md)
   - [Certificate Development](create-parse-verify-cert-object.md)

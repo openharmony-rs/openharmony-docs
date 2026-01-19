@@ -19,11 +19,11 @@
 import { statistics } from '@kit.NetworkKit';
 ```
 
-## statistics.getIfaceRxBytes<sup>10+</sup>
+## statistics.getIfaceRxBytes
 
 getIfaceRxBytes(nic: string, callback: AsyncCallback\<number>): void
 
-获取指定网卡实时下行流量，使用callback方式作为异步方法。
+获取指定网卡实时下行流量，使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -59,11 +59,11 @@ statistics.getIfaceRxBytes("wlan0", (error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getIfaceRxBytes<sup>10+</sup>
+## statistics.getIfaceRxBytes
 
 getIfaceRxBytes(nic: string): Promise\<number>
 
-获取指定网卡实时下行流量，使用 Promise 方式作为异步方法。
+获取指定网卡实时下行流量，使用 Promise 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -101,11 +101,11 @@ statistics.getIfaceRxBytes("wlan0").then((stats: number) => {
 });
 ```
 
-## statistics.getIfaceTxBytes<sup>10+</sup>
+## statistics.getIfaceTxBytes
 
 getIfaceTxBytes(nic: string, callback: AsyncCallback\<number>): void
 
-获取指定网卡实时上行流量，使用 callback 方式作为异步方法。
+获取指定网卡实时上行流量，使用 callback 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -141,11 +141,11 @@ statistics.getIfaceTxBytes("wlan0", (error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getIfaceTxBytes<sup>10+</sup>
+## statistics.getIfaceTxBytes
 
 getIfaceTxBytes(nic: string): Promise\<number>
 
-获取指定网卡实时上行流量，使用 Promise 方式作为异步方法。
+获取指定网卡实时上行流量，使用 Promise 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -183,11 +183,11 @@ statistics.getIfaceTxBytes("wlan0").then((stats: number) => {
 });
 ```
 
-## statistics.getCellularRxBytes<sup>10+</sup>
+## statistics.getCellularRxBytes
 
 getCellularRxBytes(callback: AsyncCallback\<number>): void
 
-获取蜂窝实时下行流量，使用 callback 方式作为异步方法。
+获取蜂窝实时下行流量，使用 callback 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -221,11 +221,11 @@ statistics.getCellularRxBytes((error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getCellularRxBytes<sup>10+</sup>
+## statistics.getCellularRxBytes
 
 getCellularRxBytes(): Promise\<number>
 
-获取蜂窝实时下行流量，使用 Promise 方式作为异步方法。
+获取蜂窝实时下行流量，使用 Promise 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -256,11 +256,11 @@ statistics.getCellularRxBytes().then((stats: number) => {
 });
 ```
 
-## statistics.getCellularTxBytes<sup>10+</sup>
+## statistics.getCellularTxBytes
 
 getCellularTxBytes(callback: AsyncCallback\<number>): void
 
-获取蜂窝实时上行流量，使用 callback 方式作为异步方法。
+获取蜂窝实时上行流量，使用 callback 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -294,11 +294,11 @@ statistics.getCellularTxBytes((error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getCellularTxBytes<sup>10+</sup>
+## statistics.getCellularTxBytes
 
 getCellularTxBytes(): Promise\<number>
 
-获取蜂窝实时上行流量，使用 Promise 方式作为异步方法。
+获取蜂窝实时上行流量，使用 Promise 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -329,11 +329,11 @@ statistics.getCellularTxBytes().then((stats: number) => {
 });
 ```
 
-## statistics.getAllRxBytes<sup>10+</sup>
+## statistics.getAllRxBytes
 
 getAllRxBytes(callback: AsyncCallback\<number>): void
 
-获取所有网卡实时下行流量，使用 callback 方式作为异步方法。
+获取所有网卡实时下行流量，使用 callback 异步回调。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -368,11 +368,11 @@ statistics.getAllRxBytes((error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getAllRxBytes<sup>10+</sup>
+## statistics.getAllRxBytes
 
 getAllRxBytes(): Promise\<number>
 
-获取所有网卡实时下行流量，使用 Promise 方式作为异步方法。
+获取所有网卡实时下行流量，使用 Promise 异步回调。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -404,11 +404,11 @@ statistics.getAllRxBytes().then((stats: number) => {
 });
 ```
 
-## statistics.getAllTxBytes<sup>10+</sup>
+## statistics.getAllTxBytes
 
 getAllTxBytes(callback: AsyncCallback\<number>): void
 
-获取所有网卡实时上行流量，使用 callback 方式作为异步方法。
+获取所有网卡实时上行流量，使用 callback 异步回调。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -443,11 +443,11 @@ statistics.getAllTxBytes((error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getAllTxBytes<sup>10+</sup>
+## statistics.getAllTxBytes
 
 getAllTxBytes(): Promise\<number>
 
-获取所有网卡实时上行流量，使用 Promise 方式作为异步方法。
+获取所有网卡实时上行流量，使用 Promise 异步回调。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -479,11 +479,11 @@ statistics.getAllTxBytes().then((stats: number) => {
 });
 ```
 
-## statistics.getUidRxBytes<sup>10+</sup>
+## statistics.getUidRxBytes
 
 getUidRxBytes(uid: number, callback: AsyncCallback\<number>): void
 
-获取指定应用实时下行流量，使用 callback 方式作为异步方法。
+获取指定应用实时下行流量，使用 callback 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -518,11 +518,11 @@ statistics.getUidRxBytes(20010038, (error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getUidRxBytes<sup>10+</sup>
+## statistics.getUidRxBytes
 
 getUidRxBytes(uid: number): Promise\<number>
 
-获取指定应用实时下行流量，使用 Promise 方式作为异步方法。
+获取指定应用实时下行流量，使用 Promise 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -559,11 +559,11 @@ statistics.getUidRxBytes(20010038).then((stats: number) => {
 });
 ```
 
-## statistics.getUidTxBytes<sup>10+</sup>
+## statistics.getUidTxBytes
 
 getUidTxBytes(uid: number, callback: AsyncCallback\<number>): void
 
-获取指定应用实时上行流量，使用 callback 方式作为异步方法。
+获取指定应用实时上行流量，使用 callback 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -598,11 +598,11 @@ statistics.getUidTxBytes(20010038, (error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getUidTxBytes<sup>10+</sup>
+## statistics.getUidTxBytes
 
 getUidTxBytes(uid: number): Promise\<number>
 
-获取指定应用实时上行流量，使用 Promise 方式作为异步方法。
+获取指定应用实时上行流量，使用 Promise 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -644,7 +644,7 @@ statistics.getUidTxBytes(20010038).then((stats: number) => {
 
 getSockfdRxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
-获取指定socket的下行流量信息，使用 callback 方式作为异步方法。
+获取指定socket的下行流量信息，使用 callback 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -683,7 +683,7 @@ statistics.getSockfdRxBytes(sockfd, (error: BusinessError, stats: number) => {
 
 getSockfdRxBytes(sockfd: number): Promise\<number\>
 
-获取指定socket的下行流量信息，使用 Promise 方式作为异步方法。
+获取指定socket的下行流量信息，使用 Promise 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -728,7 +728,7 @@ statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
 
 getSockfdTxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
-获取指定socket的上行流量信息，使用 callback 方式作为异步方法。
+获取指定socket的上行流量信息，使用 callback 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -767,7 +767,7 @@ statistics.getSockfdTxBytes(sockfd, (error: BusinessError, stats: number) => {
 
 getSockfdTxBytes(sockfd: number): Promise\<number\>
 
-获取指定socket的上行流量信息，使用 Promise 方式作为异步方法。
+获取指定socket的上行流量信息，使用 Promise 异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 

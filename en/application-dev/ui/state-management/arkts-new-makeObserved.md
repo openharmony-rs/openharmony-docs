@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-To convert unobservable data into observable data, use the [makeObserved](../../reference/apis-arkui/js-apis-StateManagement.md#makeobserved) API.
+To convert unobservable data into observable data, use the [makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved) API.
 
 
 **makeObserved** is designed for scenarios where \@Trace cannot be applied. Before reading this topic, it is recommended to familiarize yourself with [\@Trace](./arkts-new-observedV2-and-trace.md).
@@ -138,7 +138,7 @@ To convert unobservable data into observable data, use the [makeObserved](../../
   }
   ```
 
-## Supported Types and Observable Changes
+## Supported Types and Observed Changes
 
 ### Supported Data Types
 
@@ -148,11 +148,11 @@ To convert unobservable data into observable data, use the [makeObserved](../../
 - Objects returned by JSON.parse.
 - Classes decorated with @Sendable.
 
-### Observable Changes
+### Observed Changes
 
 - When an instance of a built-in type or collections type is passed to **makeObserved**, the following changes can be observed:
 
-  | Type | Change-Triggering APIs                                             |
+  | Type | Change-Triggering API                                             |
   | ----- | ------------------------------------------------------------ |
   | Array | push, pop, shift, unshift, splice, copyWithin, fill, reverse, sort|
   | collections.Array | push, pop, shift, unshift, splice, fill, reverse, sort, shrinkTo, extendTo|
@@ -195,7 +195,7 @@ import { UIUtils } from '@kit.ArkUI';
 
 @Concurrent
 function threadGetData(param: string): SendableData {
-  // Process data in the worker thread.
+  // Process data in the child thread.
   let ret = new SendableData();
   console.info(`Concurrent threadGetData, param ${param}`);
   ret.name = param + '-o';
@@ -228,7 +228,7 @@ struct ObservedSendableTest {
   }
 }
 ```
-**NOTE**<br>Data can be constructed and processed in worker threads. However, observable data can only be processed in the main thread. Therefore, in the preceding example, only the **name** attribute of **this.send** is passed to the worker thread.
+Note: Data construction and processing can be done in the child thread, but observable data cannot be passed to the child thread (observable data can only be manipulated in the main thread).
 
 ### Using makeObserved with collections.Array/collections.Set/collections.Map
 **collections** provide ArkTS container classes for high-performance data passing in concurrent scenarios. For details, see [@arkts.collections (ArkTS Collections)](../../reference/apis-arkts/arkts-apis-arkts-collections.md).
@@ -515,7 +515,7 @@ struct Index {
 ```
 
 ### Using makeObserved with V2 Decorators
-**makeObserved** can be used with V2 decorators. [@Monitor](./arkts-new-monitor.md) and [@Computed](./arkts-new-Computed.md) cannot be defined within a class because makeObserved returns a class instance decorated with @Observed or ObservedV2. Therefore, @Monitor or @Computed must be defined within custom components.
+**makeObserved** can be used with V2 decorators. [@Monitor](./arkts-new-monitor.md) and [@Computed](./arkts-new-computed.md) cannot be defined within a class because makeObserved returns a class instance decorated with @Observed or ObservedV2. Therefore, @Monitor or @Computed must be defined within custom components.
 
 Example:
 ```ts

@@ -67,20 +67,20 @@ On the widget page, you can trigger a message event via the [postCardAction](../
   import { BusinessError } from '@kit.BasicServicesKit';
   import { formBindingData, FormExtensionAbility, formProvider } from '@kit.FormKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
   const TAG: string = 'EntryFormAbility';
   const DOMAIN_NUMBER: number = 0xFF00;
-  
+
   export default class EntryFormAbility extends FormExtensionAbility {
     onFormEvent(formId: string, message: string): void {
       // Called when the message event of the postCardAction API of the widget provider is triggered.
       hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${JSON.stringify(message)}`);
-  
+
       class FormDataClass {
         title: string = 'Title Update.'; // It matches the widget layout.
         detail: string = 'Description update success.'; // It matches the widget layout.
       }
-  
+
       // Replace it with the actual widget data.
       let formData = new FormDataClass();
       let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
@@ -90,12 +90,13 @@ On the widget page, you can trigger a message event via the [postCardAction](../
         hilog.info(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
       })
     }
+
     //...
   }
   ```
   
   The figure below shows the effect.
   
-  | Initial State                                               | Touch to Refresh                                             |
+  | Initial State                                               | Tap to Refresh                                             |
   | ------------------------------------------------------- | ----------------------------------------------------- |
   | ![WidgetUpdateBefore](figures/widget-update-before.PNG) | ![WidgetUpdateAfter](figures/widget-update-after.PNG) |

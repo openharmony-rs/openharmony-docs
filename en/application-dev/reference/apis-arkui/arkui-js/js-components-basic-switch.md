@@ -1,4 +1,10 @@
 # switch
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -63,7 +69,7 @@ The [universal methods](js-components-common-methods.md) are supported.
 ```html
 <!-- xxx.hml -->
 <div class="container">
-    <switch @change="normalswitchChange">
+    <switch @change="normalSwitchChange">
     </switch>
     <switch class="switch" showtext="true" texton="On" textoff="Off" @change="switchChange">
     </switch>
@@ -108,7 +114,7 @@ export default {
             });
         }
     },
-    normalswitchChange(e) {
+    normalSwitchChange(e) {
         if (e.checked) {
             promptAction.showToast({
                 message: "switch on"

@@ -55,7 +55,7 @@ Represents the transparently transmitted data, which contains information requir
 | Name     | Type  | Read-Only| Optional| Description                                                        |
 | --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | eventId   | string | No  | No  | Event ID. The value **cloud_data_change** indicates cloud data changes.             |
-| extraData | string | No  | No  | Data to be transmitted transparently. **extraData** is a JSON string that must contain the **data** field. The **data** field contains information required for a change notification, including the account ID, application name, database name, database type, and database table name. All the fields cannot be empty.
+| extraData | string | No  | No  | Data to be transmitted transparently. **extraData** is a JSON string that must contain the **data** field. The **data** field contains information required for a change notification, including the account ID, application name, database name, database type, and database table name. All the fields cannot be empty. |
 
 **Example**
 
@@ -2069,4 +2069,4 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
 }))
 
 ```
- 
+

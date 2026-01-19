@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @foryourself-->
 
-- [Introduction to ArkTS](arkts-overview.md)
+- [About This Kit](arkts-overview.md)
 - ArkTS Common Library<!--arkts-utils-->
   - [Overview of the ArkTS Common Library](arkts-utils-overview.md)
   - XML Generation, Parsing, and Conversion<!--xml-generation-parsing-conversion-->
@@ -101,6 +101,7 @@
     - [Ark Bytecode Fundamentals](arkts-bytecode-fundamentals.md)
     - [Naming Conventions for Ark Bytecode Functions](arkts-bytecode-function-name.md)
     - [Customizing Ark Bytecode During Compilation](customize-bytecode-during-compilation.md)
+    - [Ark Bytecode Generation FAQs](es2abc-faq.md)
   - [Disassembler](tool-disassembler.md)
   - ArkGuard for Source Code Obfuscation<!--arkts-arkguard-->
     - [Overview of ArkGuard for Source Code Obfuscation](source-obfuscation-overview.md)

@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-More often than not, you may need to display images in your application, for example, icons in buttons, online images, and local images. This is where the **Image** component comes in handy. The **Image** component supports a wide range of image formats, including PNG, JPG, BMP, SVG, GIF, and HEIF, but does not support APNG and SVGA. For details, see [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md).
+More often than not, you may need to display images in your application, for example, icons in buttons, online images, and local images. This is where the **Image** component comes in handy. The **Image** component supports a wide range of image formats, including PNG, JPEG, BMP, SVG, WEBP, GIF, and HEIF, but does not support APNG and SVGA. For details, see [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md).
 
 
 To use the **Image** component, call the following API:
@@ -18,7 +18,7 @@ Image(src: PixelMap | ResourceStr | DrawableDescriptor)
 
 This API obtains a local or online image from the data source specified by **src**. For details about how to load the data source, see [Loading Image Resources](#loading-image-resources).
 
-For details about how to resolve white block issues during image loading, see [Solution to White Image Blocks](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-image-white-lump-solution). 
+For details about how to resolve white block issues during image loading, see [Solution to White Image Blocks](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-image-white-lump-solution).
 
 
 ## Loading Image Resources
@@ -49,11 +49,19 @@ Archived data sources can be classified into local resources, network resources,
 
   Currently, the **Image** component supports only simple network images.
 
-  If a network image has been loaded before, the **Image** component can obtain it from the cache, instead of having to request it from the Internet again. For details about the image cache, see [setImageCacheCount](../reference/apis-arkui/js-apis-system-app.md#setimagecachecount7), [setImageRawDataCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagerawdatacachesize7), and [setImageFileCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagefilecachesize7). Note that these cache APIs have limited flexibility and are not recommended for future development. For complex scenarios, you are advised to use [ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife) instead.
+  When the **Image** component loads a network image for the first time, it needs to request network resources. If this component is not loaded for the first time, it directly reads the image from the cache by default.
+  
+  For more image cache settings, see [setImageCacheCount](../reference/apis-arkui/js-apis-system-app.md#setimagecachecount7), [setImageRawDataCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagerawdatacachesize7), and [setImageFileCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagefilecachesize7). The three image cache APIs are used to support simple and common scenarios. They will not evolve in the future, and have certain limitations in flexibility and scalability. For example:
+  - They cannot obtain the current cache usage. The **Image** component does not support querying the real-time status of the disk cache, including the total file size and file quantity.
+  - The cache policy cannot be customized, and the cache status cannot be observed. You cannot obtain runtime metrics such as the cache hit ratio and eviction count through APIs, so it is difficult to implement dynamic optimization based on the actual cache effect.
+
+  For complex scenarios, you are advised to use [ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife), which provides more flexible and scalable cache policies and comprehensive lifecycle management capabilities.
 
   Network images must comply with the RFC 9113 standard. Otherwise, the loading will fail. For images larger than 10 MB or bulk downloads, use the [HTTP](../network/http-request.md) API for pre-downloading to improve loading performance and simplify data management.
 
-  The **Image** component employs a decoupled architecture where download and cache operations are handled by the unified [download and cache module](../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md). This module provides pre-download capabilities, allowing images to be fetched before the **Image** component is created. Once the component is created, it requests the image data from the download and cache module. This way, the display performance of the **Image** component is improved. All network cache files are stored in the application's **cache** directory.
+  The **Image** component employs a decoupled architecture where download and cache operations are handled by the unified [download and cache module](../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md). For details, see [Example 3: Downloading and Displaying Online GIF Images](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#example-3-downloading-and-displaying-online-gif-images).
+  
+  The download and cache module provides pre-download capabilities, allowing images to be fetched before the **Image** component is created. After the **Image** component is created, it can directly obtain downloaded image data from the cache, accelerating image display, improving the loading experience, and effectively avoiding delays caused by fetching network images repeatedly. All network cache files are stored in the application's **cache** directory.
 
   ```ts
   Image('https://www.example.com/example.JPG') // Replace the URL with the actual URL.
@@ -207,7 +215,7 @@ A pixel map is a pixel image obtained after image decoding. For details, see [In
 
 ### DrawableDescriptor
 
-DrawableDescriptor is an advanced image abstraction mechanism in ArkUI that encapsulates image resources into programmable objects. It enables dynamic composition and runtime control capabilities beyond traditional Image components, supporting advanced features such as layered overlays (such as badge icons), dynamic attribute adjustments (e.g., color filters), and complex animation sequences. This mechanism is particularly suitable for scenarios requiring flexible image manipulation or complex visual interactions. For complete API details, see [DrawableDescriptor](../../application-dev/reference/apis-arkui/js-apis-arkui-drawableDescriptor.md).
+DrawableDescriptor is an advanced image abstraction mechanism in ArkUI that encapsulates image resources into programmable objects. It enables dynamic composition and runtime control capabilities beyond traditional Image components, supporting advanced features like layered overlays (such as badge icons), dynamic attribute adjustments (for example, color filters), and complex animation sequences. This mechanism is particularly suitable for scenarios requiring flexible image manipulation or complex visual interactions. For complete API details, see [DrawableDescriptor](../../application-dev/reference/apis-arkui/js-apis-arkui-drawableDescriptor.md).
 
 The following example demonstrates image display and animation implementation using DrawableDescriptor:
 
@@ -360,7 +368,7 @@ Image("images/icon.svg")
 ```
 In your SVG file, use the **xlink:href** attribute within the **\<image>** tag to reference the local bitmap. Ensure the bitmap path is relative to the SVG file location.
 
-```
+```xml
 <svg width="200" height="200">
   <image width="200" height="200" xlink:href="sky.png"></image>
 </svg>
@@ -375,7 +383,7 @@ Setting attributes for the **Image** component can spruce up the image with cust
 
 ### Setting the Image Scale Mode
 
-You can use the **objectFit** attribute to scale an image to fit it into a container whose height and width are determined.
+You can use the [objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md#objectfit) attribute to scale an image to fit it into a container whose height and width are determined.
 
 
 ```ts
@@ -451,7 +459,7 @@ struct MyComponent {
 
 ### Using Image Interpolation
 
-An image of low resolution may suffer quality loss with aliasing when scaled up. If this is the case, you can use the **interpolation** attribute to conduct image interpolation and improve image quality.
+An image of low resolution may suffer quality loss with aliasing when scaled up. If this is the case, you can use the [interpolation](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#interpolation) attribute to conduct image interpolation and improve image quality.
 
 
 ```ts

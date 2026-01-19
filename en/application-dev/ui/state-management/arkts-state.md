@@ -32,7 +32,7 @@ A variable decorated by \@State has the following features:
 | ------------------ | ------------------------------------------------------------ |
 | Parameters        | None                                                          |
 | Synchronization type          | Does not synchronize with any type of variable in the parent component.                            |
-| Allowed variable types| Object, class, string, number, Boolean, enum, and array of these types.<br>API version 10 and later: [Date type](#decorating-variables-of-the-date-type).<br>API version 11 and later: [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), undefined, null, union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor). For details, see [Using Union Types](#using-union-types).<br>For details about the supported scenarios, see [Observed Changes](#observed-changes).|
+| Allowed variable types| Object, class, string, number, Boolean, enum, and array of these types.<br>API version 10 and later: [Date type](#decorating-variables-of-the-date-type).<br>API version 11 and later: [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), undefined, null, union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor). For details, see [Using Union Types](#using-union-types).<br>For details about the scenarios of supported types, see [Observed Changes](#observed-changes).|
 | Disallowed variable types| Function.     |
 | Initial value for the decorated variable| Required.     |
 
@@ -46,7 +46,7 @@ A variable decorated by \@State has the following features:
 
   **Figure 1** Initialization rule
 
-![en-us_image_0000001502091796](figures/en-us_image_0000001502091796.png)
+![state-initialization](figures/state-initialization.png)
 
 ## Observed Changes and Behavior
 
@@ -826,7 +826,7 @@ struct ConsumerChild {
 }
 ```
 
-In the preceding example, each time the **change to self** button is clicked, the same class constant is assigned to a state variable of the class type. This operation triggers re-rendering and logs **this.dataObj.name change: a**. In state management V1, \@Observed decorated class objects and @State decorated objects of Class, Date, Map, Set, or Array types are wrapped with proxies to observe top-level property changes or API calls. 
+In the preceding example, each time the **change to self** button is clicked, the same class instance is assigned to a state variable of the class type. This operation triggers re-rendering and logs **this.dataObj.name change: a**. In state management V1, \@Observed decorated class objects and @State decorated objects of Class, Date, Map, Set, or Array types are wrapped with proxies to observe top-level property changes or API calls. 
 When **list[0]** is reassigned, **dataObjFromList** is a Proxy instance while **list[0]** is a plain Object. The system detects them as different values, triggering assignment and re-rendering.
 To avoid unnecessary value changes and re-renders, use \@Observed to decorate the class, or use [UIUtils.getTarget()](./arkts-new-getTarget.md) to obtain the original value and compare it with the new value. If they are the same, skip the assignment. 
 Method 1: Apply the \@Observed decorator.
@@ -927,7 +927,7 @@ In the preceding example, **getTarget** is used to obtain the original value of 
 
 ### Changing State Variables in build() Is Forbidden
 
-State variables cannot be changed in **build()**. Otherwise, the state management framework reports error logs during runtime.
+State variables cannot be changed in **build()**. Doing so causes the state management framework to generate runtime error logs. Update state variables through event callbacks or asynchronous callbacks instead. For example, modify \@State variables in **onClick**.
 
 The rendering process is as follows:
 
@@ -965,7 +965,7 @@ During the initial creation of the component, the **Text** component is rendered
 When the framework detects that a state variable is modified within the **build()** method, it generates the following error log:
 
 ```ts
-FIX THIS APPLICATION ERROR: @Component 'Index'[4]: State variable 'count' has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!
+FIX THIS APPLICATION ERROR: @Component 'Index': State variable 'count' has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!
 ```
 
 In the preceding example, even though the **Text** component is rendered multiple times. This error does not cause immediate serious consequences and may be overlooked.

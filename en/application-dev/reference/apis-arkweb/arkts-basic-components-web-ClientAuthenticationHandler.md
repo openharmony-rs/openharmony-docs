@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Implements a **ClientAuthenticationHandler** object returned by the **Web** component. For details about the sample code, see [onClientAuthenticationRequest](./arkts-basic-components-web-events.md#onclientauthenticationrequest9).
+Implements a **ClientAuthenticationHandler** object to handle SSL client certificate request events returned by the **Web** component. For details about the sample code, see [onClientAuthenticationRequest](./arkts-basic-components-web-events.md#onclientauthenticationrequest9).
 
 > **NOTE**
 >
@@ -14,7 +14,7 @@ Implements a **ClientAuthenticationHandler** object returned by the **Web** comp
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor<sup>9+</sup>
 
@@ -58,7 +58,7 @@ Instructs the **Web** component to use the specified credentials (obtained from 
 | authUri | string | Yes   | Key value of the credentials.|
 
 The following table lists the supported certificate signature algorithms and key lengths.
-| Signature Algorithm    | Key Length  | 
+| Signing Algorithm    | Key Length  | 
 | ------- | ------ |
 | SSL_SIGN_RSA_PKCS1_SHA256 | 1024 (supported since API version 18), 2048, 3072, and 4096| 
 | SSL_SIGN_RSA_PKCS1_SHA384 | 1024 (supported since API version 18), 2048, 3072, and 4096| 

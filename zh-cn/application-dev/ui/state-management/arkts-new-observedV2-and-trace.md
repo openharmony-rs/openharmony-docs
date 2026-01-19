@@ -410,11 +410,13 @@ struct Index {
 class Pencil {
   @Trace length: number = 21; // 当length变化时，会刷新关联的组件
 }
+
 class Bag {
   width: number = 50;
   height: number = 60;
   pencil: Pencil = new Pencil();
 }
+
 class Son {
   age: number = 5;
   school: string = 'some';
@@ -426,6 +428,7 @@ class Son {
 struct Page {
   son: Son = new Son();
   renderTimes: number = 0;
+
   isRender(id: number): number {
     console.info(`id: ${id} renderTimes: ${this.renderTimes}`);
     this.renderTimes++;
@@ -434,8 +437,8 @@ struct Page {
 
   build() {
     Column() {
-      Text('pencil length'+ this.son.bag.pencil.length)
-        .fontSize(this.isRender(1))   // UINode (1)
+      Text('pencil length' + this.son.bag.pencil.length)
+        .fontSize(this.isRender(1)) // UINode (1)
       Button('change length')
         .onClick(() => {
           // 点击更改length值，UINode（1）会刷新

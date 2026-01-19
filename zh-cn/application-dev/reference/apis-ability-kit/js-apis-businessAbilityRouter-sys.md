@@ -17,7 +17,7 @@
 ## 导入模块
 
 ``` ts
-import businessAbilityRouter from '@ohos.app.businessAbilityRouter';
+import { businessAbilityRouter } from '@kit.AbilityKit';
 ```
 
 ## 权限列表
@@ -87,22 +87,22 @@ queryBusinessAbilityInfo(filter: BusinessAbilityFilter, callback: AsyncCallback\
 **示例：**
 
 ```ts
-import businessAbilityRouter from '@ohos.app.businessAbilityRouter';
-import { BusinessError } from '@ohos.base';
+import { businessAbilityRouter } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let filter: businessAbilityRouter.BusinessAbilityFilter = {businessType: businessAbilityRouter.BusinessType.SHARE};
+let filter: businessAbilityRouter.BusinessAbilityFilter = { businessType: businessAbilityRouter.BusinessType.SHARE };
 
 try {
-    businessAbilityRouter.queryBusinessAbilityInfo(filter, (error, data) => {
-        if (error) {
-            console.error('queryBusinessAbilityInfo failed ' + error.message);
-            return;
-        }
-        console.info('queryBusinessAbilityInfo success');
-    });
+  businessAbilityRouter.queryBusinessAbilityInfo(filter, (error, data) => {
+    if (error) {
+      console.error('queryBusinessAbilityInfo failed ' + error.message);
+      return;
+    }
+    console.info('queryBusinessAbilityInfo success');
+  });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('queryBusinessAbilityInfo failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('queryBusinessAbilityInfo failed ' + message);
 }
 ```
 
@@ -143,20 +143,20 @@ queryBusinessAbilityInfo(filter: BusinessAbilityFilter): Promise\<Array\<Busines
 **示例：**
 
 ```ts
-import businessAbilityRouter from '@ohos.app.businessAbilityRouter';
-import { BusinessError } from '@ohos.base';
+import { businessAbilityRouter } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let filter: businessAbilityRouter.BusinessAbilityFilter = {businessType: businessAbilityRouter.BusinessType.SHARE};
+let filter: businessAbilityRouter.BusinessAbilityFilter = { businessType: businessAbilityRouter.BusinessType.SHARE };
 
 try {
-    businessAbilityRouter.queryBusinessAbilityInfo(filter)
-        .then(() => {
-            console.info('queryBusinessAbilityInfo success');
-        }).catch((error: BusinessError) => {
-            console.error('queryBusinessAbilityInfo failed ' + error.message);
-        });
+  businessAbilityRouter.queryBusinessAbilityInfo(filter)
+    .then(() => {
+      console.info('queryBusinessAbilityInfo success');
+    }).catch((error: BusinessError) => {
+    console.error('queryBusinessAbilityInfo failed ' + error.message);
+  });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('queryBusinessAbilityInfo failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('queryBusinessAbilityInfo failed ' + message);
 }
 ```

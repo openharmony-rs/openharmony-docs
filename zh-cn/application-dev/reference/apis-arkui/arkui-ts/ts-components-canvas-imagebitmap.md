@@ -188,7 +188,7 @@ struct Demo {
 
 > **说明：**
 >
-> DevEco Studio的预览器不支持显示在worker线程中绘制的内容。
+> DevEco Studio的预览器不支持显示在Worker线程中绘制的内容。
 
 ```ts
 import { worker } from '@kit.ArkTS';
@@ -226,6 +226,10 @@ struct imageBitmapExamplePage {
 Worker线程在onmessage中接收到主线程postMessage发送的ImageBitmap，并进行绘制。
 
 ```ts
+import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+import { image } from '@kit.ImageKit';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents) => {
   if (e.data.myImage) {
     let img: ImageBitmap = e.data.myImage

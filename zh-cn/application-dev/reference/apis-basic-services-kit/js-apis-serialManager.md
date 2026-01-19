@@ -441,7 +441,7 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 |---------|------------|----|------------------|
 | portId  | number     | 是  | 端口号。      |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：ms），可选参数，默认为0不超时，用户按需选择。 |
+| timeout | number     | 否  | 超时时间（单位：ms），API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
 
 **返回值：**
 
@@ -528,7 +528,7 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 |---------|------------|----|------------------|
 | portId  | number     | 是  | 端口号。|
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：ms），可选参数，默认为0不超时，用户按需选择。 |
+| timeout | number     | 否  | 超时时间（单位：ms），API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
 
 **返回值：**
 
@@ -641,7 +641,7 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 
 > **说明：**
 >
-> 以下示例代码只是调用addSerialRight接口的必要流程，需要放入具体的方法中执行。实际调用时，设备开发者需要遵循设备相关协议进行调用。
+> 以下示例代码只是调用write接口的必要流程，需要放入具体的方法中执行。实际调用时，设备开发者需要遵循设备相关协议进行调用。
 
 <!--code_no_check-->
 ```ts
@@ -1012,7 +1012,7 @@ function cancelSerialRight() {
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
 | PARITY_NONE | 0 | 无校验。 |
-| PARITY_ODD | 1 | 奇检验。 |
+| PARITY_ODD | 1 | 奇校验。 |
 | PARITY_EVEN | 2 | 偶校验。 |
 | PARITY_MARK | 3 | 固定为1。 |
 | PARITY_SPACE | 4 | 固定为0。 |

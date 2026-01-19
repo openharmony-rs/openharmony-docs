@@ -19,7 +19,7 @@ Defines the names of all predefined event parameters. In addition to custom even
 
 **Since**: 8
 
-**Related Module**: [HiAppEvent](capi-hiappevent.md)
+**Related module**: [HiAppEvent](capi-hiappevent.md)
 
 ## Summary
 

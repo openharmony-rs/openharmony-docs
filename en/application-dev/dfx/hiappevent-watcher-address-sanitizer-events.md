@@ -10,7 +10,7 @@
 
 An address sanitizer error refers to an invalid memory access that causes application exceptions or crashes.
 
-You can subscribe to address sanitizer events using the ArkTs and C/C++ APIs provided by HiAppEvent. For details, see the following documents:
+You can subscribe to address sanitizer events using the ArkTS and C/C++ APIs provided by HiAppEvent. For details, see the following documents:
 
 - [Subscribing to Address Sanitizer Events (ArkTS)](hiappevent-watcher-address-sanitizer-events-arkts.md)
 

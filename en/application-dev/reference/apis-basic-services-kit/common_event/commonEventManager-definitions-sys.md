@@ -131,6 +131,7 @@ Indicates that the kiosk mode is disabled. When this mode is off, the common eve
 Indicates that the exemption list for resource usage restrictions has been updated in idle mode.
 
 When the exemption list for resource usage restrictions is updated, the common event service is triggered to publish this event.
+
 Resources include application network access, Timer usage, and WorkScheduler task usage.
 
 System applications can call JavaScript APIs to apply for removing resource usage restrictions.
@@ -379,6 +380,19 @@ When a data migration application starts the backup and restore framework to per
 
 **Value**: "usual.event.RESTORE_START"
 
+### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+<sup>
+
+Indicates that the sync root of the cloud disk has been updated.
+
+When the sync root update is complete, the common event service is triggered to publish this event.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
+**Required permissions**: ohos.permission.ACCESS_CLOUD_DISK_INFO (for system applications only)
+
+**Value**: usual.event.CLOUD_DISK_STATE_CHANGED
 
 ## Media Kit
 
@@ -689,7 +703,6 @@ When an STK Alpha identifier is sent, the common event service is triggered to p
 **Required permissions**: none
 
 **Value**: usual.event.STK_ALPHA_IDENTIFIER
-
 
 ### COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED<sup>10+</sup>
 

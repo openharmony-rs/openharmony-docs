@@ -18,7 +18,7 @@ AccessibilityExtensionContext是AccessibilityExtensionAbility上下文环境，�
 
 ## 使用说明
 
-在使用AccessibilityExtensionContext的功能前，需要通过AccessibilityExtensionAbility子类实例获取AccessibilityExtensionContex的实例。
+在使用AccessibilityExtensionContext功能前，需要先通过AccessibilityExtensionAbility子类实例获取一个AccessibilityExtensionContext的实例。
 
 ```ts
 import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
@@ -37,7 +37,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                  | 类型     | 只读  |可选| 说明                                |
 | ------------------- | ------ | ---- | ----|--------------------------------- |
@@ -59,7 +59,9 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 辅助功能网格信息。
 详见[AccessibilityElement.currentItem](#accessibilityelement12)。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                  | 类型     | 只读  |可选| 说明                                |
 | ------------------- | ------ | ---- | ----|--------------------------------- |
@@ -72,7 +74,9 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 辅助功能超链接文本信息。
 详见[AccessibilityElement.spans](#accessibilityelement12)。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                  | 类型     | 只读  |可选| 说明                                |
 | ------------------- | ------ | ---- | ----|--------------------------------- |
@@ -85,9 +89,11 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 
 ## startAbility<sup>12+</sup>
 
-startAbility(want: Want): Promise\<void>;
+startAbility(want: Want): Promise\<void>
 
 提供拉起前台页面的能力。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -163,9 +169,11 @@ export default class AccessibilityManager {
 
 ## AccessibilityExtensionContext.getElements<sup>18+</sup>
 
-getElements(windowId: number, elementId?: number): Promise<Array&lt;AccessibilityElement&gt;>;
+getElements(windowId: number, elementId?: number): Promise<Array&lt;AccessibilityElement&gt;>
 
 提供批量查询节点的能力。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -240,9 +248,11 @@ export default class AccessibilityManager {
 
 ## AccessibilityExtensionContext.getDefaultFocusedElementIds<sup>18+</sup>
 
-getDefaultFocusedElementIds(windowId: number): Promise<Array&lt;number&gt;>;
+getDefaultFocusedElementIds(windowId: number): Promise<Array&lt;number&gt;>
 
 提供查询应用自定义默认焦点的能力。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -320,6 +330,8 @@ holdRunningLockSync(): void
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **错误码：**
@@ -380,6 +392,8 @@ unholdRunningLockSync(): void
 释放RunningLock锁，恢复自动灭屏。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -443,6 +457,8 @@ on(type: 'preDisconnect', callback: Callback&lt;void&gt;): void
 此注册函数需要与[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)配合使用，如果不调用[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)，则默认等待30秒后，无障碍扩展服务会自动关闭。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -513,6 +529,8 @@ off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 取消已经向无障碍服务注册的预关闭回调函数，无障碍服务关闭该扩展服务前不再执行该回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -586,6 +604,8 @@ notifyDisconnect(): void
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **错误码：**
@@ -646,6 +666,8 @@ getAccessibilityFocusedElement(): Promise\<AccessibilityElement>;
 获取当前获得焦点的元素。使用Promise异步回调。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -715,6 +737,8 @@ getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#acce
 获取活动窗口根元素。使用Promise异步回调。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -791,6 +815,8 @@ getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**系统接口**：此接口为系统接口。
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -863,6 +889,8 @@ export default class AccessibilityManager {
 ## AccessibilityElement<sup>12+</sup>
 
 无障碍节点元素。在调用 **AccessibilityElement** 的 API 之前，应该调用 [AccessibilityExtensionContext.getAccessibilityFocusedElement()](#getaccessibilityfocusedelement20) 或 [AccessibilityExtensionContext.getRootInActiveWindow()](#getrootinactivewindow20) 来获取一个 **AccessibilityElement** 实例。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -989,9 +1017,11 @@ export default class AccessibilityManager {
 
 ### enableScreenCurtain<sup>12+</sup>
 
-enableScreenCurtain(isEnable: boolean): void;
+enableScreenCurtain(isEnable: boolean): void
 
 提供开启/关闭幕帘屏的能力。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1058,9 +1088,11 @@ export default class AccessibilityManager {
 
 ### findElement('elementId')<sup>12+</sup>
 
-findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement>;
+findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement>
 
-根据elementId查询当前活动窗口下的节点元素，使用Promise异步回调。
+根据elementId查询当前活动窗口下的节点元素。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1104,9 +1136,11 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
 
 ### findElement('textType')<sup>12+</sup>
 
-findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>;
+findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>
 
 根据节点配置的accessibilityTextHint无障碍文本类型查询所有节点元素，使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1150,9 +1184,11 @@ rootElement.findElement('textType', condition).then((data: AccessibilityElement[
 
 ### getCursorPosition<sup>12+</sup>
 
-getCursorPosition(): Promise\<number>;
+getCursorPosition(): Promise\<number>
 
 获取文本组件中光标位置，使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1177,9 +1213,11 @@ rootElement.getCursorPosition().then((data: number) => {
 
 ### getCursorPosition<sup>12+</sup>
 
-getCursorPosition(callback: AsyncCallback\<number>): void;
+getCursorPosition(callback: AsyncCallback\<number>): void
 
 获取文本组件中光标位置，使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1207,11 +1245,13 @@ rootElement.getCursorPosition((err: BusinessError, data: number) => {
 
 ### executeAction<sup>20+</sup>
 
-executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<void>;
+executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<void>
 
 根据action指定的操作类型和parameters传入的参数，执行特定操作。使用Promise异步回调。
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1219,7 +1259,7 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
 
 | 参数名         | 类型                                     | 必填   | 说明                                                       |
 | ----------- | ---------------------------------------- | ---- |----------------------------------------------------------|
-| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| 是    | 无障碍节点可执行的操作。
+| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| 是    | 无障碍节点可执行的操作。|
 | parameters | [Parameter](#parameter20) | 否    | 执行操作时设置的参数值，默认为空。                            |
 
 **返回值：**
@@ -1291,11 +1331,13 @@ try {
 
 ### getParent<sup>20+</sup>
 
-getParent(): Promise\<AccessibilityElement>;
+getParent(): Promise\<AccessibilityElement>
 
 获取无障碍节点元素的父元素。使用Promise异步回调。
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1333,11 +1375,13 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
 
 ### getChildren<sup>20+</sup>
 
-getChildren(): Promise\<Array\<AccessibilityElement>>;
+getChildren(): Promise\<Array\<AccessibilityElement>>
 
 获取元素的子元素列表。使用Promise异步回调。
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1375,11 +1419,13 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
 
 ### getRoot<sup>20+</sup>
 
-getRoot(): Promise\<AccessibilityElement>;
+getRoot(): Promise\<AccessibilityElement>
 
 获取活动窗口中的根元素。使用Promise异步回调。
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1416,11 +1462,13 @@ for (let window of windows) {
 
 ### findElementByContent<sup>20+</sup>
 
-findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>;
+findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>
 
 根据内容查找元素。使用Promise异步回调。
 
 **权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1475,11 +1523,13 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 
 ### findElementByFocusDirection<sup>20+</sup>
 
-findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityElement>;
+findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityElement>
 
 根据焦点方向查找元素。使用Promise异步回调。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1537,11 +1587,13 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 
 ### findElementsByAccessibilityHintText<sup>20+</sup>
 
-findElementsByAccessibilityHintText(condition: string): Promise\<Array\<AccessibilityElement>>;
+findElementsByAccessibilityHintText(condition: string): Promise\<Array\<AccessibilityElement>>
 
 根据提示文本查找元素。使用Promise异步回调。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1601,11 +1653,13 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 
 ### findElementById<sup>20+</sup>
 
-findElementById(condition: number): Promise\<AccessibilityElement>;
+findElementById(condition: number): Promise\<AccessibilityElement>
 
 根据元素 ID 查找元素。使用Promise异步回调。
 
 **权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统接口**：此接口为系统接口。
 
 **系统能力:** SystemCapability.BarrierFree.Accessibility.Core
 

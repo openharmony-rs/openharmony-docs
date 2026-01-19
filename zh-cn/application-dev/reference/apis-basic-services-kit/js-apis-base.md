@@ -10,8 +10,14 @@
 
 ## 导入模块
 
-```
+ArkTS示例： 
+```typescript
 import { AsyncCallback, BusinessError, Callback, ErrorCallback } from '@kit.BasicServicesKit';
+```
+JS示例：
+
+```typescript
+import base from '@ohos.base';
 ```
 
 ## Callback

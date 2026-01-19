@@ -58,7 +58,7 @@ Defines the commands that can be sent by a cast controller.
 
 ## ExtraInfo<sup>18+</sup>
 
-type ExtraInfo = Record\<string, Object\>  
+type ExtraInfo = { [key: string]: Object; }
 
 Defines the custom media packet set by the provider.
 
@@ -66,7 +66,7 @@ Defines the custom media packet set by the provider.
 
 | Type                               | Description                         |
 | ----------------------------------- | ----------------------------- |
-|Record\<string, Object\>| **key** specifies the remote distributed event type. Currently, the following event types are supported:<br>**AUDIO_GET_VOLUME**: obtains the volume of the remote device.<br>**AUDIO_GET_AVAILABLE_DEVICES**: obtains all remote devices that can be connected.<br>**AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO**: obtains the actual remote audio device.<br>The provider returns the corresponding media packet object based on the event type.|
+|{ [key: string]: Object; }| **key** specifies the remote distributed event type. Currently, the following event types are supported:<br>**AUDIO_GET_VOLUME**: obtains the volume of the remote device.<br>**AUDIO_GET_AVAILABLE_DEVICES**: obtains all remote devices that can be connected.<br>**AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO**: obtains the actual remote audio device.<br>The provider returns the corresponding media packet object based on the event type.|
 
 ## KeyRequestCallback<sup>12+</sup>
 
@@ -111,8 +111,8 @@ You can use the union of the strings listed in the following table.
 | 'stop'           | Stop the playback. No parameter is required.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | 'playNext'       | Play the next media asset. No parameter is required.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | 'playPrevious'   | Play the previous media asset. No parameter is required.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| 'fastForward'    | Fast-forward. No parameter is required.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| 'rewind'         | Rewind. No parameter is required.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| 'fastForward'    | Fast-forward. For details about the corresponding parameters, see [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| 'rewind'         | Rewind. For details about the corresponding parameters, see [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | 'seek'           | Seek to a playback position. The corresponding parameter is of the number type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | 'setSpeed'       | Set the playback speed. The corresponding parameter is of the number type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | 'setLoopMode'    | Set the loop mode. The corresponding parameter is [LoopMode](arkts-apis-avsession-e.md#loopmode10).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|

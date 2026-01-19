@@ -27,7 +27,9 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 
 创建一个NetConnection对象，[netSpecifier](#netspecifier)指定关注的网络的各项特征；timeout是超时时间(单位是毫秒)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。
 
-**注意：** createNetConnection注册回调函数的数量不能超过2000（个），否则无法继续注册网络监听。
+>**注意：**
+>
+>createNetConnection注册回调函数的数量不能超过2000（个），否则无法继续注册网络监听。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1726,7 +1728,13 @@ connection.clearCustomDnsRules().then(() => {
 
 setPacFileUrl(pacFileUrl: string): void
 
-设置当前PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，比如：http://127.0.0.1:21998/PacProxyScript.pac。通过解析脚本地址可以获取代理信息。
+设置PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，并启动PAC代理能力，比如：http://127.0.0.1:21998/PacProxyScript.pac 。通过解析脚本地址可以获取代理信息。
+ 	 
+>**注意：**
+>
+> 1、本接口当前只在PC设备上支持解析脚本并启用PAC代理能力，其他设备类型上只保存脚本地址，启用PAC代理能力。<br>
+> 2、该接口不会校验URL真实性，PC设备上在设置完成之后，会启动PAC代理，若URL有误，则启动代败，返回2100002错误码。
+
 
 **需要权限**：ohos.permission.SET_PAC_URL
 
@@ -1790,7 +1798,13 @@ console.info(pacFileUrl);
 
 findProxyForUrl(url: string): string
 
-根据给定的URL查找PAC代理信息。
+通过设置的PAC脚本，解析指定的URL代理地址，返回对应的PAC代理信息。
+ 	 
+> **说明：**
+>
+> 1、可通过 [setPacFileUrl](#connectionsetpacfileurl20) 或 [setPacUrl](#connectionsetpacurl15) 设置PAC脚本。<br>
+> 2、如果调用本接口前未设置PAC脚本，则返回空字符串。
+> 3、由于[setPacFileUrl](#connectionsetpacfileurl20)接口当前仅支持PC设备解析脚本并启用PAC代理能力，因此本接口当前也仅支持PC设备获取PAC代理信息。 其他设备调用本接口功能不生效，返回空字串。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -1821,6 +1835,9 @@ console.info(proxyInfo);
 setPacUrl(pacUrl: string): void
 
 设置系统级代理自动配置（Proxy Auto Config，PAC）脚本地址。
+> **说明：**
+>
+> 只支持设置脚本地址，不支持解析和启用代理功能，如需设置脚本并启用代理，则可调用[setPacFileUrl](#connectionsetpacfileurl20)接口。
 
 **需要权限**：ohos.permission.SET_PAC_URL
 
@@ -2103,7 +2120,9 @@ register(callback: AsyncCallback\<void>): void
 
 订阅指定网络状态变化的通知。如需监听特定事件，确保调用on监听事件后再调用register进行注册。
 
-**注意：** 使用完register接口后需要及时调用unregister取消注册。
+>**注意：**
+>
+>使用完register接口后需要及时调用unregister取消注册。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -2989,7 +3008,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。       |
 | gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。       |
 | hasGateway     | boolean                     | 否 | 否 | 是否有网关。true：有网关；false：无网关。     |
-| isDefaultRoute | boolean                     | 否 | 否 | 是否为默认路由。true：默认路由；false：非默认路由。 |
+| isDefaultRoute | boolean                     | 否 | 否 | 是否为默认路由。true：默认路由；false：非默认路由。IPv4默认路由：目的地址为0.0.0.0/0的路由；IPv6默认路由：目的地址为::/0的路由。 |
 | isExcludedRoute<sup>20+</sup>| boolean                     | 否 | 是 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。|
 
 ## LinkAddress

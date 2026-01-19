@@ -9,7 +9,7 @@
 
 The **userAuth** module provides APIs for user authentication, which applies to scenarios such as device unlocking, payment, and application login.
 
-> **NOTE**
+> **NOTE**<br>
 >
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
@@ -26,6 +26,21 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 | Name       | Type  | Value  | Description      |
 | ----------- | ---- | ---- | ---------- |
 | MAX_ALLOWABLE_REUSE_DURATION<sup>12+</sup>     | number | 300000   | Maximum reuse duration of the unlock authentication result, in milliseconds. The value is **300000**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| PERMANENT_LOCKOUT_DURATION<sup>22+</sup>      | number | 0x7fffffff | Permanent lockout duration, in milliseconds. The value is **0x7fffffff**.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+
+## AuthLockState<sup>22+</sup>
+
+Enumerates the lockout status of an identity authentication type.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.UserIAM.UserAuth.Core
+
+| Name        | Type   | Read-Only| Optional| Description                |
+| ------------ | ---------- | ---- | ---- | -------------------- |
+| isLocked       | boolean | No  |  No| Whether the authentication is locked. **true** means yes; **false** otherwise.|
+| remainingAuthAttempts        | number | No  |  No| Number of remaining attempts before the authentication is locked. The maximum value is **5**.|
+| lockoutDuration        | number | No  |  No| Remaining lockout duration, in milliseconds.<br>If the authentication is permanently locked, the value is **PERMANENT_LOCKOUT_DURATION**. You need to unlock it using the PIN.|
 
 ## UserAuthTipCode<sup>20+</sup>
 
@@ -74,7 +89,7 @@ Enumerates the modes for reusing authentication results.
 ## ReuseUnlockResult<sup>12+</sup>
 
 Represents information about the authentication result reuse.
-> **NOTE**
+> **NOTE**<br>
 >
 > If the credential changes within the reuse duration after a successful identity authentication (including device unlock authentication), the authentication result can still be reused and the actual **EnrolledState** is returned in the authentication result. If the credential used for the previous authentication has been deleted when the authentication result is used:<br>- If the deleted credential is face or fingerprint, the authentication result can still be reused, but **credentialCount** and **credentialDigest** in the **EnrolledState** returned are both **0**.<br>- If the deleted credential is a lock screen password, the reuse will fail.
 
@@ -118,7 +133,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | ------- |
 | 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. |
+| 401 | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified.|
 | 12500002 | General operation error. |
 | 12500005 | The authentication type is not supported. |
 | 12500010 | The type of credential has not been enrolled. |
@@ -202,7 +217,7 @@ Called to return the authentication result. If the authentication is successful,
 **Example 1**
 
 Initiate a lock screen password authentication request at ATL3 or higher.
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -252,7 +267,7 @@ try {
 **Example 2**
 
 Initiate a lock screen password authentication request at ATL3 or higher, and enable the authentication result to be reused for the same type of authentication within the specified time.
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -306,7 +321,7 @@ try {
 **Example 3**
 
 Initiate a lock screen authentication request at ATL3 or higher, and enable the authentication result to be reused for any type of authentication within the maximum reuse duration of any application.
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -387,7 +402,7 @@ Defines the callback to return the intermediate authentication status.
 | authTipInfo | [AuthTipInfo](#authtipinfo20)   | Yes  | Intermediate authentication status.|
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -443,6 +458,10 @@ on(type: 'result', callback: IAuthCallback): void
 
 Subscribes to the user authentication result. This API is used to obtain the final identity authentication result after the user completes identity authentication interaction with the authentication component. Before the authentication component disappears, the authentication failure attempts are not returned through this API. To perceive each authentication failure, use the [on('authTip')](#on20) API for subscription.
 
+> **NOTE**<br>
+>
+> On PCs/2-in-1 devices, if an application initiates authentication in modal application mode (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](#widgetparam10) is configured) and receives the authentication result, if other windows need to be displayed, the application needs to obtain the flag message released by the component pop-up window and subscribe to the component release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](#on20) API.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
@@ -466,7 +485,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example 1**
 
 Perform user identity authentication in modal system mode.
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -585,7 +604,7 @@ off(type: 'result', callback?: IAuthCallback): void
 
 Unsubscribes from the user authentication result.
 
-> **NOTE**
+> **NOTE**<br>
 > 
 > The [UserAuthInstance](#userauthinstance10) instance used to invoke this API must be the one used to subscribe to the event.
 
@@ -610,7 +629,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12500002 | General operation error. |
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -676,7 +695,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                        |
 | -------- | ------------------------------------------------ |
-| 201      | Permission denied. Possible causes: <br>1. No permission to access biometric. <br>2. No permission to start authentication from background.|
+| 201      | Permission denied. Possible causes: <br>1. No permission to access biometric. <br>2. No permission to start authentication from background. |
 | 401      | Parameter error. Possible causes: <br>1. Incorrect parameter types. |
 | 12500002 | General operation error.                         |
 | 12500003 | Authentication canceled.                         |
@@ -688,7 +707,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12500013 | Operation failed because of PIN expired. |
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -733,7 +752,7 @@ cancel(): void
 
 Cancels this authentication.
 
-> **NOTE**
+> **NOTE**<br>
 >
 > **UserAuthInstance** must be the instance being authenticated.
 
@@ -752,7 +771,7 @@ Cancels this authentication.
 | 12500002 | General operation error.        |
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -800,6 +819,10 @@ on(type: 'authTip', callback: AuthTipCallback): void
 
 Subscribes to authentication tip information. This API is used to obtain the component startup and exit messages and each authentication failure. This API uses an asynchronous callback to return the result.
 
+> **NOTE**<br>
+>
+> On PCs/2-in-1 devices, if an application initiates authentication in modal application mode (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](#widgetparam10) is configured) and receives the authentication result, if other windows need to be displayed, the application needs to obtain the flag message released by the component pop-up window and subscribe to the component release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](#on20) API.
+
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
@@ -820,7 +843,7 @@ For details about the error codes, see [User Authentication Error Codes](errorco
 | 12500002 | General operation error. |
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -870,7 +893,7 @@ off(type: 'authTip', callback?: AuthTipCallback): void
 
 Unsubscribes from the event for intermediate authentication status.
 
-> **NOTE**
+> **NOTE**<br>
 > 
 > The [UserAuthInstance](#userauthinstance10) instance used to invoke this API must be the one used to subscribe to the event.
 
@@ -894,7 +917,7 @@ For details about the error codes, see [User Authentication Error Codes](errorco
 | 12500002 | General operation error. |
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -967,13 +990,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                        |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | 12500002 | General operation error.                         |
 | 12500005 | The authentication type is not supported.        |
 | 12500006 | The authentication trust level is not supported. |
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -1911,7 +1934,7 @@ type SecureLevel = string
 
 Enumerates the authentication security levels.
 
-**NOTE**<br>This API is supported since API version 6 and deprecated since API version 8.
+**Atomic service API**: This API is supported since API version 6 and deprecated since API version 8.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
@@ -1925,7 +1948,7 @@ type AuthType = string
 
 Enumerates the authentication types.
 
-**NOTE**<br>This API is supported since API version 6 and deprecated since API version 8.
+**Atomic service API**: This API is supported since API version 6 and deprecated since API version 8.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
@@ -1940,7 +1963,8 @@ getAuthenticator(): Authenticator
 Obtains an **Authenticator** instance for user authentication.
 
 > **NOTE**<br>
-> This API is deprecated since API version 8. Use [constructor](#constructordeprecated) instead.
+>
+> This API is supported since API version 6 and deprecated since API version 8. Use [constructor](#constructordeprecated) instead.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
@@ -1971,7 +1995,8 @@ execute(type: AuthType, level: SecureLevel, callback: AsyncCallback&lt;number&gt
 Starts user authentication. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>
-> This API is deprecated since API version 8. Use [auth](#authdeprecated) instead.
+>
+> This API is supported since API version 6 and deprecated since API version 8. Use [auth](#authdeprecated) instead.
 
 **Required permissions**: ohos.permission.ACCESS_BIOMETRIC
 
@@ -2008,7 +2033,8 @@ execute(type : AuthType, level : SecureLevel): Promise&lt;number&gt;
 Starts user authentication. This API uses a promise to return the result.
 
 > **NOTE**<br>
-> This API is deprecated since API version 8. Use [auth](#authdeprecated) instead.
+>
+> This API is supported since API version 6 and deprecated since API version 8. Use [auth](#authdeprecated) instead.
 
 **Required permissions**: ohos.permission.ACCESS_BIOMETRIC
 

@@ -41,6 +41,7 @@ FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void*
 **Description**
 
 Starts the timer.
+
 You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **Since**: 12
@@ -87,3 +88,5 @@ Stops the timer.
 | Type| Description|
 | -- | -- |
 | FFRT_C_API int | Returns **0** if the timer is stopped successfully; returns **-1** otherwise.|
+
+

@@ -1,4 +1,4 @@
-# MVVM
+# MVVM (V1)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zzq212050299-->
@@ -84,7 +84,7 @@ This section describes how to develop a memo application to help you understand 
 
 ### @State
 
-* The @State decorator is one of the most commonly used decorators. It is used to define state variables. Generally, these state variables are used as the data source of the parent component. When you tap the component, the state variables are updated and the UI is refreshed.
+* [@State](./arkts-state.md) is one of the most commonly used decorators. It is used to define state variables. Generally, these state variables are used as the data source of the parent component. When you tap the component, the state variables are updated and the UI is refreshed.
 
 ```typescript
 @Entry
@@ -142,10 +142,10 @@ The following figure shows the final effect.
 
 ### @Prop and @Link
 
-In the preceding example, all code is written in the @Entry decorated component. As more and more components need to be rendered, you need to split the @Entry decorated component and use the @Prop and @Link decorators to decorate the split child components.
+In the preceding example, all code is written in the @Entry component. As more and more components need to be rendered, the @Entry component must be split. Therefore, the split child components need to use the \@Prop and \@Link decorators.
 
-* @Prop creates a one-way synchronization between the parent and child components. The child component can perform deep copy of the data from the parent component or update the data from the parent component or itself. However, it cannot synchronize data from the parent component.
-* @Link creates a two-way synchronization between the parent and child components. When the parent component changes, all @Links are notified. In addition, when @Link is updated, the corresponding variables of the parent component are notified as well.
+* [\@Prop](./arkts-prop.md) creates a one-way synchronization between the parent and child components. The child component can perform deep copy of the data from the parent component or update the data from the parent component or itself. However, the update will not be synchronized back to the parent component.
+* [\@Link](./arkts-link.md) creates a two-way synchronization between the parent and child components. When the parent component changes, all @Links are notified. In addition, when \@Link is updated, the data source of the parent component is notified as well.
 
 ```typescript
 @Component
@@ -540,12 +540,12 @@ The previous section shows the code organization mode in non-MVVM mode. As the c
 ```
 ├── src
 │   ├── ets
-│ │ ├── pages: stores page components.
-│ │ ├── views: stores service components.
-│ │ ├── shares: stores common components.
-│ │ └── viewModel: data service.
-│ │ │ ├── LoginViewModel.ets: ViewModel of the login page.
-│ │ │ └── xxxViewModel.ets: ViewModel of other pages.
+│   │   ├── pages Stores page components.
+│   │   ├── views Stores service components.
+│   │   ├── shares Stores common components.
+│   │   └── viewModel Data service.
+│   │   │   ├── LoginViewModel.ets ViewModel of the login page.
+│   │   │   └── xxxViewModel.ets ViewModel of other pages.
 │
 ```
 
@@ -827,7 +827,7 @@ The code is as follows:
     }
 
     addSuffixes(): void {
-      this.thingName += 'La'
+      this.thingName += 'la';
     }
   }
   ```
@@ -871,13 +871,13 @@ The code is as follows:
 
   ```typescript
   [
-    {"thingName": "7.30 wake up", "isFinish": false},
-    {"thingName": "8.30 breakfast", "isFinish": false},
-    {"thingName": "11.30 lunch", "isFinish": false},
-    {"thingName": "17.30 dinner", "isFinish": false},
-    {"thingName": "21.30 midnight snack", "isFinish": false},
-    {"thingName": "22.30 shower", "isFinish": false},
-    {"thingName": "1.30 sleep", "isFinish": false}
+    {"thingName": "7:30 Get up", "isFinish": false},
+    {"thingName": "8:30 Breakfast", "isFinish": false},
+    {"thingName": "11:30 Lunch", "isFinish": false},
+    {"thingName": "17:30 Dinner", "isFinish": false},
+    {"thingName": "21:30 Snack", "isFinish": false},
+    {"thingName": "22:30 Shower", "isFinish": false},
+    {"thingName": "1:30 Go to bed", "isFinish": false}
   ]
   ```
 

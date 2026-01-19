@@ -12,7 +12,7 @@ The APIs provided by **DataSharePredicates** correspond to the filter criteria o
 
 **DataSharePredicates** applies to the following scenario:
 
-- It is used as a search criteria when APIs of the [RDB store](js-apis-data-relationalStore-sys.md) and [KV store](js-apis-distributedKVStore-sys.md) are called. In this scenario, use the corresponding predicate based on the database type.
+- It is used as the search criteria when APIs of the [RDB store](js-apis-data-relationalStore-sys.md) and [KV store](js-apis-distributedKVStore-sys.md) are called. In this scenario, use the corresponding predicate based on the database type.
 
 > **NOTE**
 >
@@ -37,9 +37,9 @@ Provides methods for setting different **DataSharePredicates** objects. This typ
 
 notEqualTo(field: string, value: ValueType): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that is not equal to the specified value.
+Creates a **DataSharePredicates** object to match the data that is not equal to the specified value.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System API**: This is a system API.
 
@@ -69,7 +69,7 @@ predicates.notEqualTo("NAME", "Rose");
 
 beginWrap(): DataSharePredicates
 
-Adds a left parenthesis to this **DataSharePredicates**. This API is similar to "(" in an SQL statement and must be used with **endWrap**.
+Adds a left parenthesis to this **DataSharePredicates**. This API is similar to "(" in an SQL statement and must be used with the right parenthesis.
 
 Currently, only RDB store supports this predicate.
 
@@ -129,9 +129,9 @@ predicates.equalTo("NAME", "lisi")
 
 or(): DataSharePredicates
 
-Adds the OR condition to this **DataSharePredicates** object.
+Creates a **DataSharePredicates** object to add the OR condition.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System API**: This is a system API.
 
@@ -141,7 +141,7 @@ Currently, both the RDB stote and KV store support this predicate.
 
 | Type                                       | Description                  |
 | ------------------------------------------- | ---------------------- |
-| [DataSharePredicates](#datasharepredicates) | **DataSharePredicates** object with the OR condition.|
+| [DataSharePredicates](#datasharepredicates) | **DataSharePredicates** object with the OR operator.|
 
 **Example**
 
@@ -156,7 +156,7 @@ predicates.equalTo("NAME", "lisi")
 
 contains(field: string, value: string): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that contains the specified value.
+Creates a **DataSharePredicates** object to match the data that contains the specified value.
 
 Currently, only RDB store supports this predicate.
 
@@ -188,7 +188,7 @@ predicates.contains("NAME", "os");
 
 beginsWith(field: string, value: string): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that begins with the specified value.
+Creates a **DataSharePredicates** object to match the data that begins with the specified value.
 
 Currently, only RDB store supports this predicate.
 
@@ -220,7 +220,7 @@ predicates.beginsWith("NAME", "os");
 
 endsWith(field: string, value: string): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that ends with the specified value.
+Creates a **DataSharePredicates** object to match the data that ends with the specified value.
 
 Currently, only RDB store supports this predicate.
 
@@ -252,9 +252,9 @@ predicates.endsWith("NAME", "os");
 
 isNull(field: string): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data whose value is null.
+Creates a **DataSharePredicates** object to match the data whose value is null.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System API**: This is a system API.
 
@@ -283,9 +283,9 @@ predicates.isNull("NAME");
 
 isNotNull(field: string): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data whose value is not null.
+Creates a **DataSharePredicates** object to match the data whose value is not null.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System API**: This is a system API.
 
@@ -314,9 +314,9 @@ predicates.isNotNull("NAME");
 
 like(field: string, value: string): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that matches the specified wildcard expression.
+Creates a **DataSharePredicates** object to match the data that matches the specified wildcard expression.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System API**: This is a system API.
 
@@ -346,9 +346,9 @@ predicates.like("NAME", "%os%");
 
 unlike(field: string, value: string): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that does not match the specified wildcard expression.
+Creates a **DataSharePredicates** object to match the data that does not match the specified wildcard expression.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System API**: This is a system API.
 
@@ -378,7 +378,7 @@ predicates.unlike("NAME", "%os%");
 
 glob(field: string, value: string): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that matches the specified wildcard expression.
+Creates a **DataSharePredicates** object to match the data that matches the specified wildcard expression.
 
 Currently, only RDB store supports this predicate.
 
@@ -410,7 +410,7 @@ predicates.glob("NAME", "?h*g");
 
 between(field: string, low: ValueType, high: ValueType): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that is within the specified range, including the start and end values. The data type must be int.
+Creates a **DataSharePredicates** object to match the data that is within the specified range, including the start and end values.
 
 Currently, only RDB store supports this predicate.
 
@@ -422,9 +422,9 @@ Currently, only RDB store supports this predicate.
 
 | Name| Type                                               | Mandatory| Description                    |
 | ------ | --------------------------------------------------- | ---- | ------------------------ |
-| field  | string                                              | Yes  | Column name in the database table.      |
-| low    | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | The lowest value of the range.|
-| high   | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | The highest value of the range.|
+| field  | string                                              | Yes  | Column name in the database table.|
+| low    | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | Minimum value of the range to set.<br>If **low** is set to a number, the matching range is specified based on the numeric order.<br>If **low** is set to a string, the matching range is specified based on the lexicographical order.<br>If **low** is set to boolean, the matching range is specified based on the numeric order.|
+| high   | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | Maximum value to match the **DataAbilityPredicates**.<br>If **high** is set to a number, the matching range is specified based on the numeric order.<br>If **high** is set to a string, the matching range is specified based on the lexicographical order.<br>If **high** is set to boolean, the matching range is specified based on the numeric order.|
 
 **Return value**
 
@@ -443,7 +443,7 @@ predicates.between("AGE", 10, 50);
 
 notBetween(field: string, low: ValueType, high: ValueType): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that is out of the specified range, excluding the start and end values. The data type must be int.
+Creates a **DataSharePredicates** object to match the data that is out of the specified range, excluding the start and end values.
 
 Currently, only RDB store supports this predicate.
 
@@ -455,9 +455,9 @@ Currently, only RDB store supports this predicate.
 
 | Name| Type                                               | Mandatory| Description                    |
 | ------ | --------------------------------------------------- | ---- | ------------------------ |
-| field  | string                                              | Yes  | Column name in the database table.      |
-| low    | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | The lowest value of the range.|
-| high   | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | The highest value of the range.|
+| field  | string                                              | Yes  | Column name in the database table.|
+| low    | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | Minimum value of the range to set.<br>If **low** is set to a number, the matching range is specified based on the numeric order.<br>If **low** is set to a string, the matching range is specified based on the lexicographical order.<br>If **low** is set to boolean, the matching range is specified based on the numeric order.|
+| high   | [ValueType](js-apis-data-valuesBucket.md#valuetype) | Yes  | Maximum value to match the **DataAbilityPredicates**.<br>If **high** is set to a number, the matching range is specified based on the numeric order.<br>If **high** is set to a string, the matching range is specified based on the lexicographical order.<br>If **high** is set to boolean, the matching range is specified based on the numeric order.|
 
 **Return value**
 
@@ -476,9 +476,9 @@ predicates.notBetween("AGE", 10, 50);
 
 greaterThan(field: string, value: ValueType): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that is greater than the specified value.
+Creates a **DataSharePredicates** object to match the data that is greater than the specified value.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System API**: This is a system API.
 
@@ -508,9 +508,9 @@ predicates.greaterThan("AGE", 10);
 
 lessThan(field: string, value: ValueType): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that is less than the specified value.
+Creates a **DataSharePredicates** object to match the data that is less than the specified value.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System API**: This is a system API.
 
@@ -540,9 +540,9 @@ predicates.lessThan("AGE", 50);
 
 greaterThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that is greater than or equal to the specified value.
+Creates a **DataSharePredicates** object to match the data that is greater than or equal to the specified value.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System API**: This is a system API.
 
@@ -572,9 +572,9 @@ predicates.greaterThanOrEqualTo("AGE", 10);
 
 lessThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that is less than or equal to the specified value.
+Creates a **DataSharePredicates** object to match the data that is less than or equal to the specified value.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System API**: This is a system API.
 
@@ -604,7 +604,7 @@ predicates.lessThanOrEqualTo("AGE", 50);
 
 distinct(): DataSharePredicates
 
-Sets a **DataSharePredicates** object to filter out duplicate data records.
+Creates a **DataSharePredicates** object to filter out duplicate data records.
 
 Currently, only RDB store supports this predicate.
 
@@ -629,7 +629,7 @@ predicates.equalTo("NAME", "Rose").distinct();
 
 groupBy(fields: Array&lt;string&gt;): DataSharePredicates
 
-Sets a **DataSharePredicates** object group the records according to the specified fields.
+Creates a **DataSharePredicates** object group the records according to the specified fields.
 
 Currently, only RDB store supports this predicate.
 
@@ -660,7 +660,7 @@ predicates.groupBy(["AGE", "NAME"]);
 
 indexedBy(field: string): DataSharePredicates
 
-Sets a **DataSharePredicates** object to list data by the specified index. Before using this API, ensure that the index column exists.
+Creates a **DataSharePredicates** object to list data by the specified index. Before using this API, ensure that the index column exists.
 
 Currently, only RDB store supports this predicate.
 
@@ -691,9 +691,9 @@ predicates.indexedBy("SALARY_INDEX");
 
 notIn(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that is not in the specified value.
+Creates a **DataSharePredicates** object to match the data that is not in the specified value.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System API**: This is a system API.
 
@@ -704,7 +704,7 @@ Currently, both the RDB stote and KV store support this predicate.
 | Name | Type            | Mandatory| Description                                   |
 | ------- | ---------------- | ---- | --------------------------------------- |
 | field   | string           | Yes  | Column name in the database table.                     |
-| value | Array&lt;[ValueType](js-apis-data-valuesBucket.md#valuetype)&gt; | Yes  | Array of the values to match.|
+| value | Array&lt;[ValueType](js-apis-data-valuesBucket.md#valuetype)&gt; | Yes  | Array of **ValueType**s to match.|
 
 **Return value**
 
@@ -723,7 +723,7 @@ predicates.notIn("NAME", ["Lisa", "Rose"]);
 
 prefixKey(prefix: string): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data with the specified key prefix.
+Creates a **DataSharePredicates** object to match the data with the specified key prefix.
 
 Currently, only the KVDB supports this **DataSharePredicates** object.
 
@@ -754,7 +754,7 @@ predicates.prefixKey("NAME");
 
 inKeys(keys: Array&lt;string&gt;): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data whose keys are within the given range.
+Creates a **DataSharePredicates** object to match the data whose keys are within the given range.
 
 Currently, only the KVDB supports this **DataSharePredicates** object.
 

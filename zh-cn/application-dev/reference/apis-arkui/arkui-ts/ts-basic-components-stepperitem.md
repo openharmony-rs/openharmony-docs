@@ -83,7 +83,7 @@ status(value?: ItemState)
 >
 >  - StepperItem组件不支持设置通用宽度属性，其宽度默认撑满Stepper父组件。
 >  - StepperItem组件不支持设置通用高度属性，其高度由Stepper父组件高度减去label按钮组件高度。
->  - StepperItem组件不支持设置aspectRadio/constrainSize影响长宽的属性。
+>  - StepperItem组件不支持设置[aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio)/[constraintSize](ts-universal-attributes-size.md#constraintsize)影响长宽的属性。
 ## ItemState枚举说明
 
 步骤导航器nextLabel的显示状态。
@@ -92,12 +92,12 @@ status(value?: ItemState)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-|   名称    | 说明 |
-| -------- |-------- |
-| Normal |正常状态，右侧文本按钮正常显示，可点击进入下一个StepperItem。 |
-| Disabled |不可用状态，右侧文本按钮灰度显示，不可点击进入下一个StepperItem。 |
-| Waiting | 等待状态，右侧文本按钮不显示，显示等待进度条，不可点击进入下一个StepperItem。 |
-| Skip |跳过状态，右侧文本按钮默认显示“跳过”，此时可在Stepper的onSkip回调中自定义相关逻辑。 |
+|   名称    | 值 | 说明 |
+| -------- |-------- |-------- |
+| Normal | 0 |正常状态，右侧文本按钮正常显示，可点击进入下一个StepperItem。 |
+| Disabled | 1 |不可用状态，右侧文本按钮灰度显示，不可点击进入下一个StepperItem。 |
+| Waiting | 2 | 等待状态，右侧文本按钮不显示，显示等待进度条，不可点击进入下一个StepperItem。 |
+| Skip | 3 | 跳过状态，右侧文本按钮默认显示“跳过”，此时可在Stepper的onSkip回调中自定义相关逻辑。 |
 
 
 ## 示例

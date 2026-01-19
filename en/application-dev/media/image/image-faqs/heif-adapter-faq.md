@@ -24,17 +24,21 @@ For details about how to upload HEIF images using ArkWeb, see [Uploading a File 
 
 ## FAQs
 
-### What should I do when a message is displayed indicating unsupported format when uploading HEIF images?
+### What should I do when a message is displayed indicating unsupported format when uploading HEIF images
 
-This issue typically arises because the application has filtering restrictions on image files with extensions .heic, .heif, .HEIC, and .HEIF.
+You can use the **supportedFormats** property of [ImageSource](../../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#properties) and [ImagePacker](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#properties) to view the image formats supported for encoding and decoding. If the query result contains **image/heic**, the device supports HEIF image encoding and decoding.
+
+On devices that support HEIF image encoding and decoding, the system does not restrict the processing of HEIF images.
+
+This issue usually happens because the application has filtering restrictions on image files with the extensions .heic, .heif, .HEIC, or .HEIF.
 
 For applications using the image processing capabilities of the system, simply remove the filtering restrictions for normal uploading and displaying of HEIF images.
 
-If your application does not use the image processing capabilities of the system, additional adaptations may be necessary. One optional solution is to transcode HEIF images into JPEG images.
+If the application does not use the system's image processing capabilities, more adaptation might be needed. One option is to convert HEIF images to JPEG images.
 
-### How do I use JPEG or PNG images to avoid compatibility issues with HEIF images?
+### How do I use JPEG or PNG images to avoid compatibility issues with HEIF images
 
-You can use the image encoding and decoding capabilities of Image Kit to transcode HEIF images into JPEG images. Here is an example code snippet:
+You can use the image encoding and decoding capabilities provided by Image Kit to transcode HEIF images into JPEG format. The sample code is as follows:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
@@ -63,4 +67,4 @@ async function reEncoding(context : Context, fd : number) {
 }
 ```
 
-The process of transcoding images using C APIs is similar. First, create ImageSource and ImagePacker instances, then specify encoding parameters and call the image encoding interface to complete the transcoding. For details about the sample code, see [Using Image_NativeModule to Encode Images](../image-packer-c.md).
+The process for using C APIs to transcode images is similar. First, create instances of ImageSource and ImagePacker, specify the encoding options, and call the image encoding interface to complete the transcoding. For details about the sample code, see [Using Image_NativeModule to Encode Images](../image-packer-c.md).

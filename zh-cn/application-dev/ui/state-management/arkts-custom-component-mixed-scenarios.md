@@ -40,8 +40,11 @@ V2的提出不仅解决了V1对嵌套类观测的不足，还增强了部分装�
 * 组件间不存在变量传递时，V2自定义组件可以使用V1的自定义组件，包括import第三方\@Component装饰的自定义组件。
 
 * 组件间存在变量传递时，V2的变量传递给V1的自定义组件，有以下限制：
-  - V2中未被装饰器装饰的变量（后称普通变量）：若V1使用装饰器装饰接收的数据，只能通过\@State、\@Prop、\@Provide。
-  - V2中被装饰器装饰的变量（后称状态变量）：若V1使用装饰器装饰接收的数据，不支持内置类型数据：Array、Set、Map、Date。
+  - V2普通变量（未使用状态变量装饰器）传递给V1自定义组件：
+    如果V1使用状态变量接收该数据，只能使用[\@State](./arkts-state.md)、[\@Prop](./arkts-prop.md)、[\@Provide](./arkts-provide-and-consume.md)这三种V1的状态变量装饰器。
+  - V2状态变量（使用状态变量装饰器）传递给V1自定义组件：
+    如果V1使用状态变量装饰器（同样仅限\@State、\@Prop、\@Provide支持）装饰接收的数据，不支持内置类型数据：Array、Set、Map、Date。需要注意V2状态变量支持Function类型，但是V1的状态变量装饰器均不支持Function类型，传递Function类型会导致运行时校验。以\@State为例，详情见[\@State限制条件](./arkts-state.md#限制条件)。
+  - V1中[\@Link](./arkts-link.md)遵循其原本初始化规则，只能被V1状态变量初始化，详情见[\@Link初始化规则](./arkts-link.md#变量的传递访问规则说明)。
 
 ## 状态管理装饰器总览
 
@@ -84,7 +87,7 @@ V2的提出不仅解决了V1对嵌套类观测的不足，还增强了部分装�
 struct Child {
   // @Param不可以在@Component中使用，编译报错
   // @Once @Require都是@Param的能力扩展装饰器，必须和@Param一起连用
-  @Param message: string = "";	                 
+  @Param message: string = "";                 
   @Event changeMessage: (val: string) => void;  // @Event 不可以在@Component中使用，编译报错
 
   build() {
@@ -133,7 +136,7 @@ V2的组件内装饰器不支持在V1的自定义组件中使用，编译会报�
 ```typescript
 @ComponentV2
 struct Child {
-  @Prop message: string = "";  	// @Prop不可以在@ComponentV2中使用，编译报错
+  @Prop message: string = "";  // @Prop不可以在@ComponentV2中使用，编译报错
   @Link myId: number;           // @Link不可以在@ComponentV2中使用，编译报错
 
   build() {
@@ -195,7 +198,7 @@ V1的组件内装饰器不支持在V2的自定义组件中使用，编译会报�
 ```typescript
 @Component
 struct Child {
-  @State @Prop message: string = "";	// 多个V1的装饰器不可以修饰同一个变量，编译器报错
+  @State @Prop message: string = "";    // 多个V1的装饰器不可以修饰同一个变量，编译器报错
 
   build() {
     Column() {
@@ -242,9 +245,9 @@ struct Index {
 ```typescript
 @ObservedV2
 class Info {
-  @Trace myId: number;   		// 有观测能力
-  name: string;           		// 无观测能力
-  @Track trackId: number = 1; 	// @Track作为V1的装饰器，不能在@ObservedV2中使用，编译时报错；消除编译错误请去掉@Track
+  @Trace myId: number;   // 有观测能力
+  name: string;           // 无观测能力
+  @Track trackId: number = 1; // @Track作为V1的装饰器，不能在@ObservedV2中使用，编译时报错；消除编译错误请去掉@Track
   
   constructor(id?: number, name?: string) {
     this.myId = id || 0;
@@ -253,7 +256,7 @@ class Info {
 }
 
 @Observed
-class message extends Info {	// 继承自@ObservedV2装饰的类不可以被Observed装饰，编译时报错；消除编译错误请去掉@Observed
+class message extends Info {// 继承自@ObservedV2装饰的类不可以被Observed装饰，编译时报错；消除编译错误请去掉@Observed
 }
 
 class MessageInfo extends Info {
@@ -316,9 +319,9 @@ struct Index {
 ```typescript
 @Observed
 class Info {
-  @Track myId: number;   		  // 无观测能力，只能防止因其他属性改变而导致的连带刷新
-  name: string;           		  // 无观测能力
-  @Trace trackId: number = 1; 	  // @Trace作为V2的装饰器，不能在@Observed中使用，编译时报错；消除编译错误请去掉@Trace
+  @Track myId: number;     // 无观测能力，只能防止因其他属性改变而导致的连带刷新
+  name: string;             // 无观测能力
+  @Trace trackId: number = 1;   // @Trace作为V2的装饰器，不能在@Observed中使用，编译时报错；消除编译错误请去掉@Trace
   constructor(id?: number, name?: string) {
     this.myId = id || 0;
     this.name = name || 'aaa';
@@ -494,9 +497,9 @@ class Info {
 @ComponentV2
 struct Child {  
   // V2对数据输入有严格的管理，从父组件接受数据时，必须@Param装饰器进行数据接收
-  @Param @Once message: string = "hello";	              // 可以观测到变化，同步回父组件依赖@Event，使用了@Once可以修改@Param装饰的变量
+  @Param @Once message: string = "hello";             // 可以观测到变化，同步回父组件依赖@Event，使用了@Once可以修改@Param装饰的变量
   @Param @Once undefinedVal: string | undefined = undefined;  // 使用了@Once可以修改@Param装饰的变量
-  @Param info: Info = new Info();		                 // 观测不到类属性变化
+  @Param info: Info = new Info();                 // 观测不到类属性变化
   @Require @Param set: Set<number>;
   
   build() {
@@ -679,13 +682,13 @@ class Info {
 @Component
 struct Child {  
   // V1从V2接收的状态变量，若使用装饰器，仅可使用@State、@Prop、@Provide接收
-  @State  message: string = "hello";	         // 可以观测到变化
-  @State info: Info = new Info();		      	// 可以观测一层类属性变化
+  @State  message: string = "hello";         // 可以观测到变化
+  @State info: Info = new Info();      // 可以观测一层类属性变化
   @Prop undefinedVal: undefined | string = undefined;
   @Provide setMap: Set<number> = new Set();
   build() {
     Column() {
-      Text(`child message:${this.message}`) 	// 显示string
+      Text(`child message:${this.message}`) // 显示string
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
@@ -693,7 +696,7 @@ struct Child {
         })
       Divider()
         .color(Color.Blue)
-      Text(`undefinedVal:${this.undefinedVal}`) 	// 显示undefinedVal
+      Text(`undefinedVal:${this.undefinedVal}`) // 显示undefinedVal
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
@@ -701,7 +704,7 @@ struct Child {
         })
       Divider()
         .color(Color.Blue)
-      Text(`info id:${this.info.myId}`)		 	// 显示info:myId
+      Text(`info id:${this.info.myId}`)    // 显示info:myId
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
@@ -771,13 +774,13 @@ class Info {
 @Component
 struct Child {  
   // V1从V2接收的状态变量，仅可使用@State、@Prop、@Provide接收
-  @State  message: string = "hello";	        // 可以观测到变化
-  @State info: Info = new Info();		        // 可以观测一层类属性变化
+  @State  message: string = "hello";        // 可以观测到变化
+  @State info: Info = new Info();        // 可以观测一层类属性变化
   @Prop undefinedVal: undefined | string = undefined;
   @Provide set: Set<number> = new Set();
   build() {
     Column() {
-      Text(`child message:${this.message}`) 	// 显示 string
+      Text(`child message:${this.message}`)  // 显示 string
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
@@ -785,7 +788,7 @@ struct Child {
         })
       Divider()
         .color(Color.Blue)
-      Text(`undefinedVal:${this.undefinedVal}`) 	// 显示 undefinedVal
+      Text(`undefinedVal:${this.undefinedVal}`) // 显示 undefinedVal
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
@@ -793,7 +796,7 @@ struct Child {
         })
       Divider()
         .color(Color.Blue)
-      Text(`info id:${this.info.myId}`) 	// 显示 info:myId
+      Text(`info id:${this.info.myId}`) // 显示 info:myId
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
@@ -814,10 +817,10 @@ struct Child {
 @Entry
 @ComponentV2
 struct Index {
-  @Local message: string = 'Hello World';       	// 简单数据类型，支持传递
+  @Local message: string = 'Hello World';       // 简单数据类型，支持传递
   @Provider() undefinedVal: undefined = undefined;   // 简单数据类型，undefined，支持传递
-  @Consumer() info: Info = new Info();          	// Class类型，支持传递
-  @Param set: Set<number> = new Set([10, 20]);  	// 内置类型，不支持传递；消除编译错误请去掉@Param
+  @Consumer() info: Info = new Info();          // Class类型，支持传递
+  @Param set: Set<number> = new Set([10, 20]);  // 内置类型，不支持传递；消除编译错误请去掉@Param
 
   build() {
     Column() {
@@ -878,7 +881,7 @@ class Info {
 }
 
 @Observed
-class MessageInfo { 		// 一层嵌套
+class MessageInfo { // 一层嵌套
   @Track info: Info;        // 防止messageId改变导致info的连带刷新
   @Track messageId: number; // 防止messageId改变导致info的连带刷新
 
@@ -889,7 +892,7 @@ class MessageInfo { 		// 一层嵌套
 }
 
 @Observed
-class MessageInfoNested {	 // 二层嵌套
+class MessageInfoNested { // 二层嵌套
   messageInfo: MessageInfo;
 
   constructor(messageInfo?: MessageInfo) {
@@ -930,7 +933,7 @@ struct Child {
         .onClick(() => {
           this.messageInfo.info.myId++;
         })
-      GrandSon({info: this.messageInfo.info});				// 继续拆解一层子组件
+      GrandSon({info: this.messageInfo.info});    // 继续拆解一层子组件
     }
   }
 }

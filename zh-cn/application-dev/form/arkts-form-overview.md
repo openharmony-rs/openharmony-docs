@@ -19,7 +19,7 @@
 
     - 新增了动效的能力：ArkTS卡片开放了[属性动画](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)和[显式动画](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)的能力，使卡片的交互更加友好。
     - 新增了自定义绘制的能力：ArkTS卡片开放了[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)画布组件的能力，卡片可以使用自定义绘制的能力构建更多样的显示和交互效果。
-    - 允许卡片中运行逻辑代码：开放逻辑代码运行能力后，因此部分业务逻辑可以在内部实现，拓宽了卡片的业务适用场景。
+    - 允许卡片中运行逻辑代码：开放逻辑代码运行能力后，部分业务逻辑可以在卡片内部实现，拓宽了业务适用场景。
 
 ## 实现原理
 
@@ -62,8 +62,7 @@ ArkTS卡片中提供了[postCardAction](../reference/apis-arkui/js-apis-postCard
 - message事件：可以使用message拉起FormExtensionAbility，通过onFormEvent接口回调通知，以完成卡片内控件点击消息传递，从而更新卡片内容。
 
 ### 静态卡片
-ArkTS卡片提供FormLink静态卡片交互组件，用于静态卡片内部和提供方应用间的交互，当前支持router、message和call三种类型的事件。
-请参见[FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)。
+ArkTS卡片提供FormLink静态卡片交互组件，用于静态卡片内部和提供方应用间的交互，当前支持router、message和call三种类型的事件。请参见[FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)。
 
 ### 互动卡片
 从API version 20开始支持互动卡片，互动卡片提供溢出动效能力，并实现人机交互，提升信息提醒、浅层交互和可玩性。具体请参考[互动卡片概述](arkts-ui-liveform-overview.md)。

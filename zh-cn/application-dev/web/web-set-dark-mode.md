@@ -209,17 +209,20 @@ Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/
 
   ```ts
   // EntryAbility.ets
+  import { AbilityConstant, ConfigurationConstant, UIAbility, Want, Configuration } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
   export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-      // 将当前colorMode放在AppStorage中
+      // 将当前colorMode放在AppStorage中。
       AppStorage.setOrCreate<ConfigurationConstant.ColorMode>('currentColorMode', this.context.config.colorMode);
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     }
 
     // ...
-
+    
     onConfigurationUpdate(newConfig: Configuration): void {
-      // 动态更新深浅色状态
+      // 动态更新深浅色状态。
       const currentColorMode: ConfigurationConstant.ColorMode | undefined = AppStorage.get('currentColorMode');
       if (currentColorMode !== newConfig.colorMode) {
         AppStorage.setOrCreate<ConfigurationConstant.ColorMode>('currentColorMode', newConfig.colorMode);

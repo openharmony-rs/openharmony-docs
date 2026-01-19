@@ -1,7 +1,7 @@
 # 触摸热区设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -11,7 +11,9 @@
 
 >  **说明：**
 >
->  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 设置触摸热区属性时，手指需在热区内按下，随后抬起时若满足事件响应条件，事件将被触发。此外，在当前手势结束前，若条件满足，可持续触发的事件也会被激活。
 
 ## responseRegion
 
@@ -76,17 +78,19 @@ mouseResponseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
   >  **说明：**
   >
-  >  x和y可以设置正负值百分比。当x设置为'100%'时表示热区往右偏移组件本身宽度大小，当x设置为'-100%'时表示热区往左偏移组件本身宽度大小。当y设置为'100%'时表示热区往下偏移组件本身高度大小，当y设置为'-100%'时表示热区往上偏移组件本身高度大小。
+  > - x和y可以设置正负值百分比。当x设置为'100%'时表示热区往右偏移组件本身宽度大小，当x设置为'-100%'时表示热区往左偏移组件本身宽度大小。当y设置为'100%'时表示热区往下偏移组件本身高度大小，当y设置为'-100%'时表示热区往上偏移组件本身高度大小。
   >
-  >  width和height只能设置正值百分比。width：'100%'表示热区宽度设置为该组件本身的宽度。比如组件本身宽度是100vp，那么'100%'表示热区宽度也为100vp。height：'100%'表示热区高度设置为该组件本身的高度。
+  > - width和height只能设置正值百分比。width：'100%'表示热区宽度设置为该组件本身的宽度。比如组件本身宽度是100vp，那么'100%'表示热区宽度也为100vp。height：'100%'表示热区高度设置为该组件本身的高度。
   >
-  >  百分比相对于组件自身宽高进行计算。
+  > - 百分比相对于组件自身宽高进行计算。
   >
-  >  当父组件设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)(true)时，子组件的响应会受到父组件触摸热区的影响，不在父组件触摸热区内的子组件无法响应手势和事件。
+  > - 当父组件设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)(true)时，子组件的响应会受到父组件触摸热区的影响，不在父组件触摸热区内的子组件无法响应手势和事件。
   >
-  >  width和height不支持calc()的动态计算。
+  > - width和height不支持calc()的动态计算。
 
 ## 示例
+
+### 示例1（通过responseRegion接口设置触摸热区）
 
 该示例通过responseRegion设置按钮的触摸热区以响应点击事件。
 
@@ -133,3 +137,96 @@ struct TouchTargetExample {
 ```
 
 ![touchtarget.gif](figures/touchtarget.gif)
+
+
+### 示例2（设置鼠标的触摸热区以响应点击事件）
+
+该示例通过[mouseResponseRegion](ts-universal-attributes-touch-target.md#mouseresponseregion10)设置鼠标的触摸热区以响应点击事件。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct MouseResponseRegionExample {
+  @State clickInfo: string = '点击热区触发事件';
+
+  build() {
+    Column({ space: 30 }) {
+      // 示例1：单个热区（仅按钮左半部分响应鼠标点击）
+      Text('热区：按钮左半区域（点击左半才触发）')
+        .fontSize(14)
+      Button('Button1（左半热区）')
+        .width(200)
+        .height(60)
+        // 鼠标热区：仅按钮左半部分（x/y相对组件自身，宽度50%）
+        .mouseResponseRegion({
+          // 热区相对组件的X坐标（左上角为原点）
+          x: 0,
+          // 热区相对组件的Y坐标
+          y: 0,
+          // 热区宽度（按钮的50%）
+          width: '50%',
+          // 热区高度（按钮的100%）
+          height: '100%'
+        })
+        .onClick(() => {
+          this.clickInfo = 'Button1 左半热区被点击';
+        })
+      // 示例2：多个热区（按钮左半 + 按钮下方区域都响应）
+      Text('热区：按钮左半 + 按钮下方区域（点击两处都触发）')
+        .fontSize(14)
+      Button('Button2（多热区）')
+        .width(200)
+        .height(60)
+        // 鼠标热区：数组形式，包含2个独立热区
+        .mouseResponseRegion([
+          // 热区1：按钮左半部分
+          {
+            x: 0,
+            y: 0,
+            width: '50%',
+            height: '100%'
+          },
+          // 热区2：按钮正下方区域（y=100%表示按钮底部，高度60vp）
+          {
+            x: 0,
+            y: '100%',
+            width: '100%',
+            height: 60
+          }
+        ])
+        .onClick(() => {
+          this.clickInfo = 'Button2 任一热区被点击';
+        })
+      // 示例3：热区在按钮外部（按钮右侧空白处响应）
+      Text('热区：按钮右侧外部（点击按钮右边空白处触发）')
+        .fontSize(14)
+      Button('Button3（右侧外热区）')
+        .width(200)
+        .height(60)
+        // 鼠标热区：按钮右侧外部区域（x=100%表示按钮右边缘）
+        .mouseResponseRegion({
+          // 热区X坐标：按钮右边缘
+          x: '100%',
+          y: 0,
+          // 热区宽度80vp
+          width: 80,
+          height: '100%'
+        })
+        .onClick(() => {
+          this.clickInfo = 'Button3 右侧外热区被点击';
+        })
+      // 显示点击结果
+      Text(this.clickInfo)
+        .fontSize(16)
+        .margin({ top: 20 })
+    }
+    .width('100%')
+    .height('100%')
+    // 整体居中显示
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![touchtarget3.gif](figures/touchtarget3.gif)

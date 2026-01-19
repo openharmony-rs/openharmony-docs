@@ -1,27 +1,32 @@
 # Building Custom Components
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
-
-The ArkUI development framework provides capabilities for creating custom UI components through NDK APIs, including custom measurement, layout, and drawing. You can integrate into ArkUI's layout and rendering process by registering custom callback events using the [registerNodeCustomEvent](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#registernodecustomevent) function and adding custom event listeners for components with the [addNodeCustomEventReceiver](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#addnodecustomeventreceiver) function. The logic for custom measurement, layout, and drawing is handled within the callback functions of these listeners.
+The ArkUI development framework provides capabilities for creating custom UI components through NDK APIs, including custom measurement, layout, and drawing. You can integrate into ArkUI's layout and rendering process by registering custom callback events using the [registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent) function and adding custom event listeners for components with the [addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver) function. The logic for custom measurement, layout, and drawing is handled within the callback functions of these listeners.
 
 
 > **NOTE**
 >
-> - Custom component event registration requires [addNodeCustomEventReceiver](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#addnodecustomeventreceiver) to declare the listener registration and registerNodeCustomEvent](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#registernodecustomevent) to declare the required custom event types; listeners can only listen to declared events.
+> - Custom component event registration requires [addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver) to declare the listener registration and [registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent) to declare the required custom event types; listeners can only listen for declared events.
 > 
-> - Pay attention to the logic of event deregistration, such as calling [removeNodeCustomEventReceiver](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#removenodecustomeventreceiver) to remove the event listener before the component is destroyed, and [unregisterNodeCustomEvent](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#unregisternodecustomevent) to notify the ArkUI framework that the custom component events that have been listened to are no longer needed.
+> - Pay attention to the logic of event deregistration. For example, before the component is destroyed, call [removeNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodecustomeventreceiver) to remove the event listener and [unregisterNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodecustomevent) to notify the ArkUI framework that the listened events no longer need to be listened for.
 > 
-> - [addNodeCustomEventReceiver](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#addnodecustomeventreceiver) can add multiple function pointers, each of which is triggered when the corresponding event occurs. To remove a listener, the corresponding [removeNodeCustomEventReceiver](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#removenodecustomeventreceiver) function must be called with the exact function pointer used for adding the listener.
+> - [addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver) can add multiple function pointers, each of which is triggered when the corresponding event occurs. To remove a listener, the corresponding [removeNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodecustomeventreceiver) function must be called with the exact function pointer used for adding the listener.
 > 
-> - [registerNodeCustomEventReceiver](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#registernodecustomeventreceiver) is a global event listener function. Unlike [addNodeCustomEventReceiver](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#addnodecustomeventreceiver), **registerNodeCustomEventReceiver** can listen for the event triggers of all native components, but it can only accept a single function pointer. If it is called multiple times, only the last function pointer provided will be used for callbacks. To release the listener, use the **unregisterNodeCustomEventReceiver** function.
+> - [registerNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomeventreceiver) is a global event listener function. Unlike [addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver), [registerNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomeventreceiver) can listen for the event triggers of all native components, but it can only accept a single function pointer. If it is called multiple times, only the last function pointer provided will be used for callbacks. To release the listener, use the **unregisterNodeCustomEventReceiver** function.
 > 
-> - Custom component-related APIs ([measureNode](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#measurenode), [layoutNode](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#layoutnode), [setMeasuredSize](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#setmeasuredsize), [setLayoutPosition](../reference/apis-arkui/_ark_u_i___native_node_a_p_i__1.md#setlayoutposition)) can only be used in the corresponding custom event callbacks ([ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE, ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_nodecustomeventtype)).
+> - Custom component-related APIs ([measureNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#measurenode), [layoutNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#layoutnode), [setMeasuredSize](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setmeasuredsize), and [setLayoutPosition](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlayoutposition)) can only be used in the corresponding custom event callbacks ([ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE, ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodecustomeventtype)).
 
 
 ## Custom Layout Container
 
 The following example creates a custom container that uses the maximum size of its child components, plus additional padding, as its own size, while center-aligning the child components.
 
-**Figure 1** Custom container component 
+**Figure 1** Custom container component
 
 ![customContainer](figures/customContainer.png)
 
@@ -52,9 +57,9 @@ The following example creates a custom container that uses the maximum size of i
        }
    
        ~ArkUICustomContainerNode() override {
-           // Deregister the custom event listener.
+           // Unregister the custom event listener.
            nativeModule_->removeNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-           // Undeclare the custom event.
+           // Remove the declaration of the custom event.
            nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE);
            nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT);
        }
@@ -108,7 +113,7 @@ The following example creates a custom container that uses the maximum size of i
                    maxHeight = size.height;
                }
            }
-           // Custom measurement is the sum of all child node sizes plus a fixed margin.
+           // The custom measurement result equals the sum of all child node sizes plus a fixed margin. The final size of the custom node will be set to this calculated value.
            nativeModule_->setMeasuredSize(handle_, maxWidth + 2 * padding_, maxHeight + 2 * padding_);
        }
    
@@ -138,20 +143,24 @@ The following example creates a custom container that uses the maximum size of i
    #endif // MYAPPLICATION_ARKUICUSTOMCONTAINERNODE_H
    ```
 
-3. Use the custom container to create a sample UI with text, and continue with the [timer module simple implementation](ndk-loading-long-list.md).
+3. Use the custom container to create a sample UI with text, and continue with the [timer module simple implementation](ndk-embed-arkts-components.md).
    ```c
-   // Custom NDK API entry point.
+   // NativeEntry.cpp
    
    #include "NativeEntry.h"
    
    #include "ArkUICustomContainerNode.h"
    #include "ArkUITextNode.h"
+   #include "UITimer.h"
    
    #include <arkui/native_node_napi.h>
    #include <arkui/native_type.h>
    #include <js_native_api.h>
    
    namespace NativeModule {
+   namespace {
+   napi_env g_env;
+   } // namespace
    
    napi_value CreateNativeRoot(napi_env env, napi_callback_info info) {
        size_t argc = 1;
@@ -175,7 +184,7 @@ The following example creates a custom container that uses the maximum size of i
        node->AddChild(textNode);
        CreateNativeTimer(env, textNode.get(), 1, [](void *userData, int32_t count) {
            auto textNode = reinterpret_cast<ArkUITextNode *>(userData);
-           textNode->SetCircleColor(0xFF00FF7F);
+           textNode->SetFontColor(0xFF00FF7F);
        });
    
        // Keep the native side object in the management class to maintain its lifecycle.
@@ -192,7 +201,55 @@ The following example creates a custom container that uses the maximum size of i
    
    } // namespace NativeModule
    ```
+4. Update the **CMakeLists.txt** file and add the required link libraries.
+   ```cpp
+     # CMakeLists.txt
 
+     # the minimum version of CMake.
+     cmake_minimum_required(VERSION 3.4.1)
+     project(testndk)
+
+     set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+     include_directories(${NATIVERENDER_ROOT_PATH}
+                          ${NATIVERENDER_ROOT_PATH}/include)
+
+     add_library(entry SHARED NativeEntry.cpp napi_init.cpp)
+     # target_link_libraries(entry PUBLIC libace_napi.z.so, libace_ndk.z.so, libhilog_ndk.z.so)
+
+     find_library(
+          # Sets the name of the path variable.
+          hilog-lib
+          # Specifies the name of the NDK library that
+          # you want CMake to locate.
+          hilog_ndk.z
+      )
+
+     find_library(
+          # Sets the name of the path variable.
+          libace-lib
+          # Specifies the name of the NDK library that
+          # you want CMake to locate.
+          ace_ndk.z
+      )
+
+     find_library(
+          # Sets the name of the path variable.
+          libnapi-lib
+          # Specifies the name of the NDK library that
+          # you want CMake to locate.
+          ace_napi.z
+      )
+
+      find_library(
+           # Sets the name of the path variable.
+           libuv-lib
+           uv
+       )
+
+     target_link_libraries(entry PUBLIC
+          ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} )
+   ```
 
 ## Custom Drawing Component
 
@@ -232,9 +289,9 @@ The following example creates a custom drawing component that can draw a custom 
        }
    
        ~ArkUICustomNode() override {
-           // Deregister the custom event listener.
+           // Unregister the custom event listener.
            nativeModule_->removeNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-           // Undeclare the custom event.
+           // Remove the declaration of the custom event.
            nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW);
        }
    
@@ -290,20 +347,24 @@ The following example creates a custom drawing component that can draw a custom 
    #endif // MYAPPLICATION_ARKUICUSTOMNODE_H
    ```
 
-3. Create a sample UI using the custom drawing component and the custom container, and continue with the [timer module simple implementation](ndk-loading-long-list.md).
+3. Create a sample UI using the custom drawing component and the custom container, and continue with the [timer module simple implementation](ndk-embed-arkts-components.md).
    ```c
-   // Custom NDK API entry point.
+   // NativeEntry.cpp
    
    #include "NativeEntry.h"
    
    #include "ArkUICustomContainerNode.h"
    #include "ArkUICustomNode.h"
+   #include "UITimer.h"
    
    #include <arkui/native_node_napi.h>
    #include <arkui/native_type.h>
    #include <js_native_api.h>
    
    namespace NativeModule {
+   namespace {
+   napi_env g_env;
+   } // namespace
    
    napi_value CreateNativeRoot(napi_env env, napi_callback_info info) {
        size_t argc = 1;
@@ -343,4 +404,54 @@ The following example creates a custom drawing component that can draw a custom 
    
    } // namespace NativeModule
    
+   ```
+
+4. Update the **CMakeLists.txt** file and add the required link libraries.
+   ```cpp
+     # CMakeLists.txt
+
+     # the minimum version of CMake.
+     cmake_minimum_required(VERSION 3.4.1)
+     project(testndk)
+
+     set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+     include_directories(${NATIVERENDER_ROOT_PATH}
+                          ${NATIVERENDER_ROOT_PATH}/include)
+
+     add_library(entry SHARED NativeEntry.cpp napi_init.cpp)
+     # target_link_libraries(entry PUBLIC libace_napi.z.so, libace_ndk.z.so, libhilog_ndk.z.so)
+
+     find_library(
+          # Sets the name of the path variable.
+          hilog-lib
+          # Specifies the name of the NDK library that
+          # you want CMake to locate.
+          hilog_ndk.z
+      )
+
+     find_library(
+          # Sets the name of the path variable.
+          libace-lib
+          # Specifies the name of the NDK library that
+          # you want CMake to locate.
+          ace_ndk.z
+      )
+
+     find_library(
+          # Sets the name of the path variable.
+          libnapi-lib
+          # Specifies the name of the NDK library that
+          # you want CMake to locate.
+          ace_napi.z
+      )
+
+      find_library(
+           # Sets the name of the path variable.
+           libuv-lib
+           uv
+       )
+
+     target_link_libraries(entry PUBLIC
+          ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libnative_drawing.so)
    ```

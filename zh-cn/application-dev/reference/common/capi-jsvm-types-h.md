@@ -53,6 +53,7 @@
 | [JSVM_Deferred__*](capi-jsvm-jsvm-deferred--8h.md)                                                | JSVM_Deferred                           | 表示Promise延迟对象。                                                                                                                                                                                                                                                                                                                                                                                                              |
 | [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md) | JSVM_PropertyHandlerCfg                 | 包含属性监听回调的结构的指针类型。                                                                                                                                                                                                                                                                                                                                                                                                           |
 | [JSVM_CallbackStruct*](capi-jsvm-jsvm-callbackstruct8h.md)                                         | JSVM_Callback   | 用户提供的native函数的函数指针类型，这些函数通过JSVM-API接口暴露给JavaScript。                                 |
+| [JSVM_CompileProfile](capi-jsvm-jsvm-compileprofile.md) | JSVM_CompileProfile | 与JSVM_COMPILE_COMPILE_PROFILE一起传递的编译采样文件。 |
 
 ### 枚举
 
@@ -91,6 +92,12 @@
 | [typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location,const char* message)](#jsvm_handlerforfatalerror)                                       | JSVM_CDECL* JSVM_HandlerForFatalError | Fatal-Error回调的函数指针类型。 |
 | [typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)](#jsvm_handlerforpromisereject) | JSVM_CDECL* JSVM_HandlerForPromiseReject | Promise-Reject回调的函数指针类型。 |
 
+### 变量
+
+| 名称 | typedef关键字 | 描述 |
+| ---- | ------------- | ---- |
+| uint16_t    | char16_t   | 为uint16_t创建一个别名——char16_t。<br>这段代码的核心目的是确保 char16_t 这个类型在所有目标编译环境中都可用，即使在一些不支持它的旧环境里。char16_t 是 C++11 标准中引入的一个新的基本数据类型，专门用于存储16位字符，通常用来表示UTF-16编码的字符。<br>如果编译器本身不认识char16_t，手动创建一个底层实现是16位无符号的整数类型。前置生效条件为：当前编译器——非C++编译器编译 \|\| 是微软Visual C++编译器且版本早于Visual Studio 2015（不含）。 |
+
 ## 枚举类型说明
 
 ### JSVM_PropertyAttributes
@@ -105,15 +112,18 @@ enum JSVM_PropertyAttributes
 
 **起始版本：** 11
 
-| 枚举项                                                                             | 描述                                                  |
-|---------------------------------------------------------------------------------|-----------------------------------------------------|
-| JSVM_DEFAULT = 0                                                                | 没有在属性上设置显式属性。                                       |
-| JSVM_WRITABLE = 1 << 0                                                          | 该属性是可写的。                                            |
-| JSVM_ENUMERABLE = 1 << 1                                                        | 该属性是可枚举的。                                           |
-| JSVM_CONFIGURABLE = 1 << 2                                                      | 该属性是可配置的。                                           |
-| JSVM_STATIC = 1 << 10                                                           | 该属性将被定义为类的静态属性，而不是默认的实例属性。这仅由OH_JSVM_DefineClass使用。 |
-| JSVM_DEFAULT_METHOD = JSVM_WRITABLE \| JSVM_CONFIGURABLE                        |就像JS类中的方法一样，该属性是可配置和可写的，但不可枚举。                      |
-| JSVM_DEFAULT_JSPROPERTY = JSVM_WRITABLE \| JSVM_ENUMERABLE \| JSVM_CONFIGURABLE | 就像JavaScript中通过赋值设置的属性一样，属性是可写、可枚举和可配置的。 |
+| 枚举项                                                                                | 描述                                                  |
+|---------------------------------------------------------------------------------------|-----------------------------------------------------|
+| JSVM_DEFAULT = 0                                                                      | 没有在属性上设置显式属性。                                       |
+| JSVM_WRITABLE = 1 << 0                                                                | 该属性是可写的。                                            |
+| JSVM_ENUMERABLE = 1 << 1                                                              | 该属性是可枚举的。                                           |
+| JSVM_CONFIGURABLE = 1 << 2                                                            | 该属性是可配置的。                                           |
+| JSVM_NO_RECEIVER_CHECK = 1 << 3                                                       | 用于标记本地方法的接收器无需进行检查。如果未设置 JSVM_NO_RECEIVER_CHECK，则该方法仅接受定义类的实例作为接收器，否则会向 JSVM 抛出异常“类型错误：非法调用”。                                           |
+| JSVM_STATIC = 1 << 10                                                                 | 该属性将被定义为类的静态属性，而不是默认的实例属性。这仅由OH_JSVM_DefineClass使用。 |
+| JSVM_DEFAULT_METHOD = JSVM_WRITABLE \| JSVM_CONFIGURABLE                              | 就像JS类中的方法一样，该属性是可配置和可写的，但不可枚举。                      |
+| JSVM_METHOD_NO_RECEIVER_CHECK = JSVM_DEFAULT_METHOD \| JSVM_NO_RECEIVER_CHECK         | 无需检查接收者的类方法。                      |
+| JSVM_DEFAULT_JSPROPERTY = JSVM_WRITABLE \| JSVM_ENUMERABLE \| JSVM_CONFIGURABLE       | 就像JavaScript中通过赋值设置的属性一样，属性是可写、可枚举和可配置的。 |
+| JSVM_JSPROPERTY_NO_RECEIVER_CHECK = JSVM_DEFAULT_JSPROPERTY \| JSVM_NO_RECEIVER_CHECK | 无需检查接收者的对象属性。 |
 
 ### JSVM_ValueType
 
@@ -391,7 +401,7 @@ JSVM 内部 Trace 事件的类别。
 | JSVM_TRACE_COMPILE | 采集编译相关的接口调用, 例如后台编译。 |
 | JSVM_TRACE_EXECUTE | 采集与运行状态相关的接口调用, 例如中断与微任务。 |
 | JSVM_TRACE_RUNTIME | 采集外部函数调用相关信息。 |
-| JSVM_TRACE_STACK_TRACE | 采集 JSVM 中回栈相关信息。 |
+| JSVM_TRACE_STACK_TRACE | 采集 JSVM 中堆栈相关信息。 |
 | JSVM_TRACE_WASM | 采集主要的 WASM 相关接口调用, 例如编译与实例化 WASM 模块。 |
 | JSVM_TRACE_WASM_DETAILED | 采集更多更细节的 WASM 相关接口调用，例如后台编译、跳板编译。 |
 
@@ -471,7 +481,7 @@ promise-reject事件。
 | -- | -- |
 | JSVM_PROMISE_REJECT_OTHER_REASONS = 0 | Promise被拒绝，但拒绝的原因未知或不明确。 |
 | JSVM_PROMISE_REJECT_WITH_NO_HANDLER = 1 | Promise被拒绝但没有处理程序。 |
-| JSVM_PROMISE_HANDLER_ADDED_AFTER_REJECT = 2 | Promise已被拒绝后，再添加处理程序。 |
+| JSVM_PROMISE_ADD_HANDLER_AFTER_REJECTED = 2 | Promise已被拒绝后，再添加处理程序。 |
 | JSVM_PROMISE_REJECT_AFTER_RESOLVED = 3 | Promise已被解决后，再尝试拒绝该Promise。 |
 | JSVM_PROMISE_RESOLVE_AFTER_RESOLVED = 4 | Promise已被解决后，再尝试解决该Promise。 |
 
@@ -561,7 +571,7 @@ ASCII输出流回调的函数指针类型。参数data是指输出的数据指�
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回true表示流可以继续接受数据，返回false将中止流。 |
+| bool | 返回true表示流可以继续接收数据，返回false将中止流。 |
 
 ### JSVM_HandlerForGC()
 

@@ -363,7 +363,7 @@ std::shared_ptr<ArkUIBaseNode> CreateAnimator()
             OH_ArkUI_AnimatorOption_SetIterations(option, 3);
             OH_ArkUI_AnimatorOption_SetFill(option, ARKUI_ANIMATION_FILL_MODE_NONE);
             OH_ArkUI_AnimatorOption_SetDirection(option, ARKUI_ANIMATION_DIRECTION_NORMAL);
-            ArkUI_CurveHandle curve = OH_ArkUI_Curve_CreateCubicBezierCurve(0.5f, 4.0f, 1.2f, 0.0f); // Create a cubic bezier curve object.
+            ArkUI_CurveHandle curve = OH_ArkUI_Curve_CreateCubicBezierCurve(0.5f, 4.0f, 1.2f, 0.0f); // Create a cubic Bézier curve object.
             OH_ArkUI_AnimatorOption_SetCurve(option, curve);
             OH_ArkUI_AnimatorOption_SetBegin(option, 100);
             OH_ArkUI_AnimatorOption_SetEnd(option, 150);
@@ -412,11 +412,11 @@ std::shared_ptr<ArkUIBaseNode> CreateAnimator()
     createButton->SetButtonLabel("create");
     // Create a container for storing the button.
     auto buttoColumn = std::make_shared<ArkUIColumnNode>();
-    buttoColumn->SetPadding(30, false); // Set layout parameters and adjust internal component spacing.
+    buttoColumn->SetPadding(30, false); // Set the layout padding.
     buttoColumn->SetWidth(300);
     // Create a container for storing playButton.
     auto playButtonColumn = std::make_shared<ArkUIColumnNode>();
-    playButtonColumn->SetPadding(10, false); // Set layout parameters and adjust internal component spacing.
+    playButtonColumn->SetPadding(10, false); // Set the layout padding.
     playButtonColumn->SetWidth(300);
     // Set the Animator play button.
     auto playButton = std::make_shared<ArkUIButtonNode>();
@@ -442,7 +442,7 @@ std::shared_ptr<ArkUIBaseNode> CreateAnimator()
     finishButton->RegisterNodeEventReceiver(onTouchFinish);
     // Create a container for storing resetButton.
     auto resetButtonColumn = std::make_shared<ArkUIColumnNode>();
-    resetButtonColumn->SetPadding(10, false); // Set layout parameters and adjust internal component spacing.
+    resetButtonColumn->SetPadding(10, false); // Set the layout padding.
     resetButtonColumn->SetWidth(300);
     // Set the Animator update button.
     auto resetButton = std::make_shared<ArkUIButtonNode>();
@@ -457,7 +457,7 @@ std::shared_ptr<ArkUIBaseNode> CreateAnimator()
             OH_ArkUI_AnimatorOption_SetIterations(option, 4);
             // Choose the appropriate curve from the following two options to set OH_ArkUI_AnimatorOption_SetCurve.
             auto curve = OH_ArkUI_Curve_CreateCurveByType(ARKUI_CURVE_EASE); // The animation starts slowly, accelerates, and then slows down towards the end.
-            auto stepsCurve = OH_ArkUI_Curve_CreateStepsCurve(20, true); // Create a step curve object.
+            auto stepsCurve = OH_ArkUI_Curve_CreateStepsCurve(20, true); // Create a steps curve object.
             OH_ArkUI_AnimatorOption_SetCurve(option, curve);
             OH_ArkUI_AnimatorOption_SetBegin(option, 200);
             OH_ArkUI_AnimatorOption_SetEnd(option, 100);
@@ -483,7 +483,7 @@ std::shared_ptr<ArkUIBaseNode> CreateAnimator()
     pauseButton->RegisterNodeEventReceiver(onTouchPause);
     // Create a container for storing cancelButton.
     auto cancelButtonColumn = std::make_shared<ArkUIColumnNode>();
-    cancelButtonColumn->SetPadding(10, false); // Set layout parameters and adjust internal component spacing.
+    cancelButtonColumn->SetPadding(10, false); // Set the layout padding.
     cancelButtonColumn->SetWidth(300);
     // Set the Animator cancel button.
     auto cancelButton = std::make_shared<ArkUIButtonNode>();

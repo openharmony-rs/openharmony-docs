@@ -22,6 +22,12 @@ The file declares the APIs related to the Picture in Picture (PiP) feature, incl
 
 ## Summary
 
+### Structs
+
+| Name              | Description|
+|------------------|--|
+| [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md) | PiP configuration. |
+
 ### Enums
 
 | Name| typedef Keyword| Description|
@@ -311,7 +317,7 @@ Destroys a PiP configuration.
 
 | Parameter| Description|
 | -- | -- |
-| [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md)* pipConfig | Pointer to the PiP configuration.|
+| [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md)* pipConfig | PiP configuration.|
 
 **Return value**
 

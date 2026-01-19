@@ -6,7 +6,7 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-The **deviceInfo** module provides terminal device information query, which cannot be configured by developers.
+The deviceInfo module provides terminal device information query, which cannot be configured by developers.
 
 > **NOTE**
 >
@@ -67,9 +67,9 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | distributionOSApiName<sup>13+</sup> | string | Yes| Distribution OS API name.<!--Del--> It is defined by the issuer.<!--DelEnd-->|
 | distributionOSReleaseType<sup>10+</sup> | string | Yes| Distribution OS release type.<!--Del--> It is defined by the issuer.<!--DelEnd--><br>Example: Release|
 | ODID<sup>12+</sup> | string | Yes|Open device identifier.<br>An ODID will be regenerated in the following scenarios:<br>Restore a phone to its factory settings.<br>Uninstall and reinstall all applications with the same **developerId** on one device.<br>An ODID is generated based on the following rules:<br>The value is generated based on the **groupId** parsed from the **developerId** in the signature information. As **groupId.developerId** is the rule, if no **groupId** exists, the **developerId** is used as the **groupId**.<br>Applications with the same **developerId** use the same ODID on one device.<br>Applications with different **developerId**s use different ODIDs on one device.<br>Applications with the same **developerId** use different ODIDs on different devices.<br>Applications with different **developerId**s use different ODIDs on different devices.<br>**NOTE**<br>The data length is 37 bytes.<br>Example: 1234a567-XXXX-XXXX-XXXX-XXXXXXXXXXXX|
-| diskSN<sup>15+</sup> | string | Yes| Disk SN.<br>**NOTE**<br>This field can be queried only on the 2-in-1 device. For other devices, the query result is empty.<br>**Required permissions**: ohos.permission.ACCESS_DISK_PHY_INFO<br>Example: 2502EM400567 |
-| performanceClass<sup>19+</sup> | [PerformanceClassLevel](#performanceclasslevel19) | Yes| Device capability level.|
-| chipType<sup>21+</sup> | string | Yes| CPU chip model.<br> Example: Kirin9000S|
+| diskSN<sup>15+</sup> | string | Yes| Disk SN.<br>**NOTE**<br>This field can be queried only on the 2-in-1 device. For other devices, the query result is empty.<br>**Required permissions**: ohos.permission.ACCESS_DISK_PHY_INFO<br>Example: 2502EM400567|
+| performanceClass<sup>19+</sup> | [PerformanceClassLevel](#performanceclasslevel19) | Yes| Device capability level, which is evaluated based on the CPU, memory, storage read/write performance, and screen resolution.|
+| chipType<sup>21+</sup> | string | Yes| CPU chip model.<br> Example: xxxxx|
 | bootCount<sup>21+</sup> | number | Yes| Number of device reboots. If the number cannot be obtained, **–1** is returned.<br> Example: 100|
 
 **Example**
@@ -228,7 +228,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
     console.info('the value of the deviceInfo performanceClass is :' + performanceClass);
 
     let chipType: string = deviceInfo.chipType;
-    // Output: the value of the deviceInfo chipType is :kirin9000s
+    // Output: the value of the deviceInfo chipType is :xxxxx
     console.info('the value of the deviceInfo chipType is :' + chipType);
 
     let bootCount: number = deviceInfo.bootCount

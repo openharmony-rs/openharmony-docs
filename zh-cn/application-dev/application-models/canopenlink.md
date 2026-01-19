@@ -17,6 +17,7 @@
 在entry模块的module.json5文件中的[querySchemes](../quick-start/module-configuration-file.md)字段中，从API version 21开始，最多允许配置200个URL scheme。API version 20及之前的版本，最多允许配置50个URL scheme。
 ## 接口说明
 canOpenLink是[bundleManager](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagercanopenlink12)提供的支持判断目标应用是否可访问的接口。
+
 匹配规则请参考[显式Want与隐式Want匹配规则](explicit-implicit-want-mappings.md)。
 ## 操作步骤
 ### 调用方操作步骤
@@ -41,6 +42,7 @@ canOpenLink是[bundleManager](../reference/apis-ability-kit/js-apis-bundleManage
     import { bundleManager } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
+
     try {
       let link = 'app1Scheme://test.example.com/home';
       let canOpen = bundleManager.canOpenLink(link);
@@ -64,7 +66,9 @@ canOpenLink是[bundleManager](../reference/apis-ability-kit/js-apis-bundleManage
         "skills": [
           {
             // actions不能为空，actions为空会造成目标方匹配失败
-            "actions": ["ohos.want.action.home"],
+            "actions": [
+              "ohos.want.action.home"
+            ],
             "uris": [
               {
                 "scheme": "app1Scheme",

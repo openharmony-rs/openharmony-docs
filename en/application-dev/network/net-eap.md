@@ -19,6 +19,7 @@ To implement extensible authentication, the clients should be able to:
 
 1. Encapsulate private data into EAP protocol packets based on the data structure agreed upon by the client and authentication server.
 2. During the authentication, perform custom actions such as security check scanning on the local host, and send an authentication response after the custom action is complete.
+
    The OS is required to provide a mechanism for third-party clients to participate in 802.1X authentication.
 
 

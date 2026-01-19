@@ -47,14 +47,14 @@ Provides the C APIs of the network connection module for network management.
 
 | Name| Description| 
 | -------- | -------- |
-| **NETCONN_MAX_RTT_NUM** | 4 | 
-| **NETCONN_MAX_NET_SIZE** | 32 | 
-| **NETCONN_MAX_BEARER_TYPE_SIZE** | 32 | 
-| **NETCONN_MAX_CAP_SIZE** | 32 | 
-| **NETCONN_MAX_ADDR_SIZE** | 32 | 
-| **NETCONN_MAX_ROUTE_SIZE** | 64 | 
-| **NETCONN_MAX_EXCLUSION_SIZE** | 256 | 
-| **NETCONN_MAX_STR_LEN** | 256 | 
+| NETCONN_MAX_RTT_NUM   4  | Length of the **rtt** array of the [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) member variable.| 
+| NETCONN_MAX_NET_SIZE   32     | Length of the **netHandles** array of the [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md) member variable.| 
+| NETCONN_MAX_BEARER_TYPE_SIZE   32    | Length of the **bearerTypes** array of the [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) member variable.| 
+| NETCONN_MAX_CAP_SIZE   32    | Length of the **netCaps** array of the [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) member variable.| 
+| NETCONN_MAX_ADDR_SIZE   32    | Length of the **netAddrList** and **dnsList** arrays of the [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) member variable.| 
+| NETCONN_MAX_ROUTE_SIZE   64   | Length of **routeList** array of [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) member variable.| 
+| NETCONN_MAX_EXCLUSION_SIZE   256   | Length of the **exclusionList** array of [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) member variable.| 
+| NETCONN_MAX_STR_LEN   256   | Length of the **host** array of [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) member variable.| 
 
 ### Functions
 

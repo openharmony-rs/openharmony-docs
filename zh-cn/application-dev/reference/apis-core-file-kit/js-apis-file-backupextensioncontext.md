@@ -37,7 +37,7 @@ BackupExtensionContext主要用于获取备份恢复过程中的临时路径。
 **示例：**
 
 ```ts
-import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
+import { BackupExtensionAbility } from '@kit.CoreFileKit';
 import { contextConstant } from '@kit.AbilityKit';
 
 export default class MyBackupExtAbility extends BackupExtensionAbility {

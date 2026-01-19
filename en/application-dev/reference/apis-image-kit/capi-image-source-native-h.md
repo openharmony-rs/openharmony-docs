@@ -1218,7 +1218,7 @@ Modifies the value of an image property.
 | Name| Description|
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | Pointer to an OH_ImageSourceNative object.|
-| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property key. For details, see [Image_String](capi-image-nativemodule-image-string.md). **key** is an EXIF constant. The memory must be released after the image source is used. For details, see [OH_ImageSourceNative_Release](#oh_imagesourcenative_release).|
+| [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the property key. For details, see [Image_String](capi-image-nativemodule-image-string.md). **key** is an Exif constant. The memory must be released after the image source is used. For details, see [OH_ImageSourceNative_Release](#oh_imagesourcenative_release).|
 | [Image_String](capi-image-nativemodule-image-string.md) *value | Pointer to the new value.|
 
 **Returns**

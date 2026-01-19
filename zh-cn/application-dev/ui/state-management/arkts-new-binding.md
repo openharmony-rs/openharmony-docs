@@ -25,15 +25,59 @@
 ## 使用场景
 
 ### 自定义组件间双向绑定
-1. 在Index中构造Star子组件，双向绑定父子组件中的value，并初始化子组件的`@Param value`和`@Event $value`。
+1. 在Index中构造Star子组件，双向绑定父子组件中的value属性，并初始化子组件的`@Param value`和`@Event $value`。
 
-   双向绑定语法糖。
+   @Param与@Event装饰器配合使用的双向绑定语法糖。
+   
+   ``` TypeScript
+   Child({ value: this.value, $value: (val: number) => { this.value = val; } })
+   ```
 
-   ```
-   Star({ value: this.value, $value: (val: number) => { this.value = val; }})
-   ```
-2. 点击Index中的Button改变value值，父组件Index和子组件Star中的Text将同步更新。
-3. 点击子组件Star中的Button，调用`this.$value(10)`方法，父组件Index和子组件Star中的Text将同步更新。
+   上述语法可以简化为!!双向绑定语法糖。
+    
+    ``` TypeScript
+    Star({ value: this.value!! })
+    ```
+
+2. 使用`@Param value`与`@Event $value`语法实现自定义组件双向绑定。
+    
+    ``` TypeScript
+    @Entry
+    @ComponentV2
+    struct Parent {
+      @Local value: number = 0;
+    
+      build() {
+        Column() {
+          Text(`${this.value}`)
+          // 点击Index中的Button改变value值，父组件Parent和子组件Child中的Text将同步更新。
+          Button(`change value`).onClick(() => {
+            this.value++;
+          })
+          // 使用@Param与@Event语法实现自定义组件双向绑定。
+          Child({ value: this.value, $value: (val: number) => { this.value = val; } })
+        }
+      }
+    }
+    
+    @ComponentV2
+    struct Child {
+      @Param value: number = 0;
+      @Event $value: (val: number) => void = (val: number) => {};
+    
+      build() {
+        Column() {
+          Text(`${this.value}`)
+          // 点击子组件Child中的Button，调用`this.$value(10)`方法，父组件Parent和子组件Child中的Text将同步更新。
+          Button(`change value`).onClick(() => {
+            this.$value(10);
+          })
+        }
+      }
+    }
+    ```
+
+3. 使用!!语法糖实现自定义组件双向绑定。
 
    ```ts
    @Entry
@@ -44,9 +88,11 @@
      build() {
        Column() {
          Text(`${this.value}`)
+         // 点击Index中的Button改变value值，父组件Index和子组件Star中的Text将同步更新。
          Button(`change value`).onClick(() => {
            this.value++;
          })
+         // 使用!!语法糖实现自定义组件双向绑定。
          Star({ value: this.value!! })
        }
      }
@@ -61,6 +107,7 @@
      build() {
        Column() {
          Text(`${this.value}`)
+         // 点击子组件Star中的Button，调用`this.$value(10)`方法，父组件Index和子组件Star中的Text将同步更新。
          Button(`change value`).onClick(() => {
            this.$value(10);
          })

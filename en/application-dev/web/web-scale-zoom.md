@@ -46,7 +46,7 @@ struct WebComponent {
 
 ### Setting Forcible Gesture Zoom
 
-You can use the [forceEnableZoom](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forceenablezoom21) attribute to set the forcible zooming functionality of a web page. When this attribute is set to **true**, the gesture zooming behavior is not restricted by **minimum-scale**, **maximum-scale**, and **user-scalable=no**.
+You can use the [forceEnableZoom](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forceenablezoom21) attribute to set the forcible zoom functionality of a web page. When this attribute is set to **true**, the gesture zoom behavior is not restricted by **minimum-scale**, **maximum-scale**, and **user-scalable=no**.
 
 ### Setting Keyboard and Mouse Wheel Zoom
 
@@ -85,8 +85,7 @@ struct WebComponent {
 
 ## Listening for Page Zoom Scale Changes
 
-The application can listen for page zoom scale changes through the [onScaleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onscalechange9) API.
-This API event corresponds to the gesture event (zoom with two fingers). **event.newScale** corresponds to the web page attribute **visualViewport.scale**.
+The application can listen for page zoom scale changes through the [onScaleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onscalechange9) API. This API event corresponds to the gesture event (zoom with two fingers). **event.newScale** corresponds to the web page attribute **visualViewport.scale**.
 
 ```ts
 // xxx.ets
@@ -198,7 +197,7 @@ struct WebComponent {
 
 You can call the **onScaleChange** API to obtain the current page zoom scale, and then call the **zoom** API to zoom in or out the page to the specified scale. You can calculate the input parameter of **zoom** based on **pageFactor** and **targetFactor** as follows:
 
-```
+```TypeScript
 factor = 100 * targetFactor / pageFactor
 ```
 

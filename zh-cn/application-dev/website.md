@@ -271,6 +271,7 @@
       - [应用数据向量化 (ArkTS)](database/aip-data-intelligence-embedding.md)
       - [SQLite调试工具指导](database/sqlite-database-debug-tool.md)
       - [ArkData术语](database/data-terminology.md)
+      - [ArkData常见问题](database/data-faq.md)
     - ArkTS（方舟编程语言）<!--arkts-->
       - [ArkTS简介](arkts-utils/arkts-overview.md)
       - ArkTS基础类库<!--arkts-utils-->
@@ -367,6 +368,7 @@
           - [方舟字节码基本原理](arkts-utils/arkts-bytecode-fundamentals.md)
           - [方舟字节码函数命名规则](arkts-utils/arkts-bytecode-function-name.md)
           - [编译期自定义修改方舟字节码](arkts-utils/customize-bytecode-during-compilation.md)
+          - [方舟字节码生成常见问题](arkts-utils/es2abc-faq.md)
         - [Disassembler反汇编工具](arkts-utils/tool-disassembler.md)
         - ArkGuard源码混淆<!--arkts-arkguard-->
           - [ArkGuard混淆概述](arkts-utils/source-obfuscation-overview.md)
@@ -731,6 +733,7 @@
         - UI开发常见问题<!--ui-development-faq-->
           - [自定义节点常见问题](ui/arkts-user-defined-node-faq.md)
           - [按钮与选择组件常见问题](ui/arkts-select-component-faq.md)
+          - [使用文本常见问题](ui/arkts-text-faq.md)
       - 窗口管理<!--window-manager-->
         - [窗口开发概述](windowmanager/window-overview.md)
         - [管理应用窗口（Stage模型）](windowmanager/application-window-stage.md)
@@ -739,7 +742,6 @@
         - [窗口元数据配置](windowmanager/window-config-m.md)
         <!--Del-->
         - [管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)](windowmanager/system-window-stage-sys.md)
-        - [WindowExtensionAbility（仅对系统应用开放）](windowmanager/windowextensionability-sys.md)
         <!--DelEnd-->
         - [使用WindowManager管理多模输入事件（C/C++）](windowmanager/native-window-event-filter.md)
         - 应用启动页的配置与使用<!--launch-page-->
@@ -747,6 +749,7 @@
           - [配置应用启动页](windowmanager/launch-page-config.md)
           - [启动页资源分类配置](windowmanager/launch-page-resource-config.md)
         - [窗口开发术语](windowmanager/window-terminology.md)
+        - [窗口开发常见问题](windowmanager/window-faqs.md)
       - 屏幕管理<!--display-manager-->
         - [屏幕管理简介](displaymanager/displayManager-overview.md)
         - [使用OH_DisplayManager实现屏幕基础信息查询和状态监听 (C/C++)](displaymanager/native-display-manager.md)
@@ -754,6 +757,8 @@
         <!--Del-->
         - [虚拟屏的创建和使用 (ArkTS) (仅对系统应用开放)](displaymanager/virtualScreen-guideline-sys.md)
         <!--DelEnd-->
+        - [屏幕管理开发术语](displaymanager/display-terminology.md)
+      - [ArkUI术语](ui/arkui-glossary.md)
     - ArkWeb（方舟Web）<!--arkweb-->
       - [ArkWeb简介](web/web-component-overview.md)
       - [ArkWeb进程](web/web_component_process.md)
@@ -1018,7 +1023,7 @@
           - [查询关键资产(ArkTS)](security/AssetStoreKit/asset-js-query.md)
           - [查询需要用户认证的关键资产(ArkTS)](security/AssetStoreKit/asset-js-query-auth.md)
           - [管理群组关键资产(ArkTS)](security/AssetStoreKit/asset-js-group-access-control.md)
-          - [同步（备份恢复）关键资产](security/AssetStoreKit/asset-js-sync.md)
+          - [同步（备份恢复）关键资产(ArkTS)](security/AssetStoreKit/asset-js-sync.md)
           <!--Del-->
           - [操作指定用户空间下的关键资产(仅对系统应用开放)(ArkTS)](security/AssetStoreKit/asset-as-user-sys.md)
           <!--DelEnd-->
@@ -1387,8 +1392,8 @@
           - [压缩与解压](basic-services/compress/deflate-and-inflate.md)
         <!--Del-->
         - 划词服务<!--selectioninput-->
-          - [划词服务概述（仅对系统应用开放）](basic-services/selectionInput/selection-services-intro-sys.md)
-          - [实现一个划词应用（仅对系统应用开放）](basic-services/selectionInput/selection-services-application-guide-sys.md)
+          - [划词服务子系统概述（仅对系统应用开放）](basic-services/selectionInput/selection-services-intro-sys.md)
+          - [实现一个划词扩展能力（仅对系统应用开放）](basic-services/selectionInput/selection-services-application-guide-sys.md)
         <!--DelEnd-->
       - Function Flow Runtime Kit（任务并发调度服务）<!--ffrt-kit-->
         - [Function Flow Runtime Kit概述](ffrt/ffrt-overview.md)
@@ -1615,6 +1620,9 @@
         <!--Del-->
         - [分布式音频播放(仅对系统应用开放)](media/audio/distributed-audio-playback-sys.md)
         <!--DelEnd-->
+        <!--Del-->
+        - [移动全景声管理（仅对系统应用开放）](media/audio/audio-collaborative-management-sys.md)
+        <!--DelEnd-->
       - 音频录制<!--audio-recording-->
         - [音频录制开发概述](media/audio/audio-recording-overview.md)
         - [使用AudioCapturer开发音频录制功能](media/audio/using-audiocapturer-for-recording.md)
@@ -1625,12 +1633,12 @@
         - [共享音频输入](media/audio/audio-recording-concurrency.md)
         - [实现音频耳返](media/audio/audio-ear-monitor.md)
         - [实现音频低时延耳返](media/audio/audio-ear-monitor-loopback.md)
-	  - 音频设备路由管理<!--audio-device-->
-	    - [查询和监听音频输入设备](media/audio/audio-input-device-management.md)
-		- [查询和监听音频输出设备](media/audio/audio-output-device-management.md)
-		- [实现音频输入设备路由切换](media/audio/audio-input-device-switcher.md)
-		- [实现音频输出设备路由切换](media/audio/audio-output-device-switcher.md)
-	    - [响应输出设备变更时合理暂停](media/audio/audio-output-device-change.md)
+      - 音频设备路由管理<!--audio-device-->
+        - [查询和监听音频输入设备](media/audio/audio-input-device-management.md)
+        - [查询和监听音频输出设备](media/audio/audio-output-device-management.md)
+        - [实现音频输入设备路由切换](media/audio/audio-input-device-switcher.md)
+        - [实现音频输出设备路由切换](media/audio/audio-output-device-switcher.md)
+        - [响应输出设备变更时合理暂停](media/audio/audio-output-device-change.md)
       - 音频通话<!--audio-call-->
         - [音频通话开发概述](media/audio/audio-call-overview.md)
         - [开发音频通话功能](media/audio/audio-call-development.md)
@@ -1920,7 +1928,6 @@
       - [获取设备的位置信息开发指导(ArkTS)](device/location/location-guidelines.md)
       - [地理编码转化与逆地理编码转化开发指导(ArkTS)](device/location/geocode-guidelines.md)
       - [基于设备自身定位的地理围栏开发指导(ArkTS)](device/location/geofence-guidelines.md)
-      - [基于FenceExtensionAbility的云侧地理围栏开发指导](device/location/fenceExtensionAbility.md)
       - [相关实例](device/location/app-samples.md)
     - Notification Kit（用户通知服务）<!--notification-kit-->
       - [Notification Kit简介](notification/notification-overview.md)
@@ -2053,15 +2060,15 @@
             - [使用JSVM-API判断给定的两个JS value是否严格相等](napi/use-jsvm-strict-equals.md)
             - [使用JSVM-API进行异常的定制化处理](napi/use-jsvm-trigger-exceptions.md)
             - [使用JSVM-API感知JSVM引擎生命周期管理](napi/use-jsvm-trigger-gc.md)
-            - [使用JSVM-API接口进行 private 属性相关开发](napi/use-jsvm-about-private.md)
-            - [使用JSVM-API接创建 external string](napi/use-jsvm-about-external-string.md)
-            - [使用JSVM-API接口进行Proxy相关开发](napi/use-jsvm-about-proxy.md)
+            - [使用JSVM-API接口进行private相关开发](napi/use-jsvm-about-private.md)
+            - [使用JSVM-API接口提供Latin1/UTF16格式字符串相关开发](napi/use-jsvm-about-external-string.md)
+            - [使用JSVM-API提供的proxy接口](napi/use-jsvm-about-proxy.md)
             - [使用JSVM-API接口进行well-known symbols相关开发](napi/use-jsvm-about-well-known-symbols.md)
-            - [使用JSVM-API接口进行装箱类型判断相关开发](napi/use-jsvm-about-wrapper-object.md)
+            - [使用JSVM-API接口进行Wrapper object相关开发](napi/use-jsvm-about-wrapper-object.md)
             - [使用JSVM-API接口创建和获取数值](napi/use-jsvm-basic-data-types.md)
         - JSVM-API典型使用场景指导<!--jsvm-scenarios-->
             - [JSVM-API调试&定位](napi/jsvm-debugger-cpuprofiler-heapsnapshot.md)
-            - [JSVM-API Tracing](napi/use-jsvm-about-trace.md)
+            - [使用JSVM-API接口进行Trace相关开发](napi/use-jsvm-about-trace.md)
             - [JSVM-API 申请JIT权限指导](napi/jsvm-apply-jit-profile.md)
             - [JSVM-API 坚盾守护模式](napi/jsvm-secure-shield-mode.md)
             - [JSVM-API 内存泄漏问题定位指导](napi/jsvm-locate-memory-leak.md)
@@ -2079,7 +2086,7 @@
       - 资源管理<!--resource-management-->
         - [Rawfile开发指导](napi/rawfile-guidelines.md)
       - 线程调度<!--thread-scheduling-->
-        - [QOS开发指导](napi/qos-guidelines.md)
+        - [QoS开发指导](napi/qos-guidelines.md)
         - [格物开发指导](napi/gewu-ndk-api-guidelines.md)
       - 内存管理<!--memory-management-->
         - [Purgeable memory开发指导](napi/purgeable-memory-guidelines.md)
@@ -2135,7 +2142,7 @@
       - [文件上传下载性能提升指导](performance/improve-file-upload-and-download-performance.md)
       - [减少首帧绘制时的冗余操作](performance/reduce-redundant-operations-when-render-first-frame.md)
       - [列表场景性能提升实践](performance/list-perf-improvment.md)
-      - [动效能力实践](performance/animation_practice.md)
+      - [应用程序动效能力实践](performance/animation_practice.md)
       - [性能提升的其他方法](performance/arkts-performance-improvement-recommendation.md)
       - [运行时动态加载页面提升性能](performance/performance-dynamic-import.md)
       - [合理使用缓存提升性能](performance/reasonable_using_cache_improve_performance.md)
@@ -2917,7 +2924,7 @@
           - 其他<!--other-property-->
             - [复用标识](reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md)
             - [复用选项](reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md)
-            - [自定义窗口工具栏](reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md)
+            - [工具栏设置](reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md)
         - 手势处理<!--gesture-handling-->
           - 绑定手势<!--gesture-binding-->
             - [绑定手势方法](reference/apis-arkui/arkui-ts/ts-gesture-settings.md)
@@ -3118,6 +3125,7 @@
           - [SaveButton](reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)
           <!--Del-->
           - [SaveButton (系统接口)](reference/apis-arkui/arkui-ts/ts-security-components-savebutton-sys.md)
+          - [安全控件通用属性 (系统接口)](reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes-sys.md)
           <!--DelEnd-->
         - 主题<!--themes-->
           - [WithTheme](reference/apis-arkui/arkui-ts/ts-container-with-theme.md)
@@ -3400,6 +3408,7 @@
           - [ArkUI_EventModule](reference/apis-arkui/capi-arkui-eventmodule.md)
           - [WindowManager](reference/apis-arkui/capi-windowmanager.md)
           - [OH_DisplayManager](reference/apis-arkui/capi-oh-displaymanager.md)
+          - [ArkUI_RenderNodeUtils](reference/apis-arkui/capi-arkui-rendernodeutils.md)
         - 头文件<!--arkui-headerfile-->
           - [drag_and_drop.h](reference/apis-arkui/capi-drag-and-drop-h.md)
           - [drawable_descriptor.h](reference/apis-arkui/capi-drawable-descriptor-h.md)
@@ -3648,7 +3657,7 @@
           - [Interfaces（其他）](reference/apis-arkweb/arkts-apis-webview-i.md)
           - [Enums](reference/apis-arkweb/arkts-apis-webview-e.md)
           - [Types](reference/apis-arkweb/arkts-apis-webview-t.md)
-        - [@ohos.web.netErrorList](reference/apis-arkweb/arkts-apis-netErrorList.md)
+        - [@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)](reference/apis-arkweb/arkts-apis-netErrorList.md)
         - [@ohos.web.webNativeMessagingExtensionAbility](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)
         - [@ohos.web.webNativeMessagingExtensionContext](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md)
         - [@ohos.web.webNativeMessagingExtensionManager](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md)
@@ -3855,7 +3864,7 @@
           - [LiveFormExtensionContext](reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md)
           <!--Del-->
           - [FormExtensionContext(系统接口)](reference/apis-form-kit/js-apis-inner-application-formExtensionContext-sys.md)
-          - [LiveFormExtensionContext（仅对系统应用开放）](reference/apis-form-kit/js-apis-application-LiveFormExtensionContext-sys.md)
+          - [LiveFormExtensionContext (系统接口)](reference/apis-form-kit/js-apis-application-LiveFormExtensionContext-sys.md)
           <!--DelEnd-->
       - 已停止维护的接口<!--form-arkts-dep-->
         - [@ohos.application.formBindingData (卡片数据绑定类)](reference/apis-form-kit/js-apis-application-formBindingData.md)
@@ -3921,10 +3930,11 @@
           - [ipc_error_code.h](reference/apis-ipc-kit/capi-ipc-error-code-h.md)
           - [ipc_kit.h](reference/apis-ipc-kit/capi-ipc-kit-h.md)
         - 结构体<!--ipc-struct-->
-            - [OH_IPC_MessageOption](reference/apis-ipc-kit/capi-ohipcremoteobject-oh-ipc-messageoption.md)
-            - [OHIPCRemoteProxy](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremoteproxy.md)
-            - [OHIPCRemoteStub](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremotestub.md)
-            - [OHIPCDeathRecipient](reference/apis-ipc-kit/capi-ohipcremoteobject-ohipcdeathrecipient.md)
+          - [OHIPCParcel](reference/apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md)
+          - [OH_IPC_MessageOption](reference/apis-ipc-kit/capi-ohipcremoteobject-oh-ipc-messageoption.md)
+          - [OHIPCRemoteProxy](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremoteproxy.md)
+          - [OHIPCRemoteStub](reference/apis-ipc-kit/capi-ohipcparcel-ohipcremotestub.md)
+          - [OHIPCDeathRecipient](reference/apis-ipc-kit/capi-ohipcremoteobject-ohipcdeathrecipient.md)
       - 错误码<!--ipc-arkts-errcode-->
         - [RPC错误码](reference/apis-ipc-kit/errorcode-rpc.md)
     - Localization Kit（本地化开发服务）<!--localization-api-->
@@ -4120,19 +4130,19 @@
     - 网络<!--system-network-api-->
       - Connectivity Kit（短距通信服务）<!--connectivity-api-->
         - ArkTS API<!--connectivity-arkts-->
-          - [@ohos.bluetooth.a2dp(蓝牙a2dp模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-a2dp.md)
-          - [@ohos.bluetooth.access(蓝牙access模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-access.md)
-          - [@ohos.bluetooth.baseProfile(蓝牙baseProfile模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-baseProfile.md)
-          - [@ohos.bluetooth.ble(蓝牙ble模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-ble.md)
-          - [@ohos.bluetooth.connection(蓝牙connection模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-connection.md)
-          - [@ohos.bluetooth.constant(蓝牙constant模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-constant.md)
-          - [@ohos.bluetooth.common(蓝牙common模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-common.md)
-          - [@ohos.bluetooth.hfp(蓝牙hfp模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-hfp.md)
-          - [@ohos.bluetooth.hid(蓝牙hid模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-hid.md)
-          - [@ohos.bluetooth.pan(蓝牙pan模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-pan.md)
-          - [@ohos.bluetooth.socket(蓝牙socket模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-socket.md)
-          - [@ohos.bluetooth.pbap(蓝牙pbap模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-pbap.md)
-          - [@ohos.bluetooth.map(蓝牙map模块)(推荐)](reference/apis-connectivity-kit/js-apis-bluetooth-map.md)
+          - [@ohos.bluetooth.a2dp(蓝牙a2dp模块)](reference/apis-connectivity-kit/js-apis-bluetooth-a2dp.md)
+          - [@ohos.bluetooth.access(蓝牙access模块)](reference/apis-connectivity-kit/js-apis-bluetooth-access.md)
+          - [@ohos.bluetooth.baseProfile(蓝牙baseProfile模块)](reference/apis-connectivity-kit/js-apis-bluetooth-baseProfile.md)
+          - [@ohos.bluetooth.ble(蓝牙ble模块)](reference/apis-connectivity-kit/js-apis-bluetooth-ble.md)
+          - [@ohos.bluetooth.connection(蓝牙connection模块)](reference/apis-connectivity-kit/js-apis-bluetooth-connection.md)
+          - [@ohos.bluetooth.constant(蓝牙constant模块)](reference/apis-connectivity-kit/js-apis-bluetooth-constant.md)
+          - [@ohos.bluetooth.common(蓝牙common模块)](reference/apis-connectivity-kit/js-apis-bluetooth-common.md)
+          - [@ohos.bluetooth.hfp(蓝牙hfp模块)](reference/apis-connectivity-kit/js-apis-bluetooth-hfp.md)
+          - [@ohos.bluetooth.hid(蓝牙hid模块)](reference/apis-connectivity-kit/js-apis-bluetooth-hid.md)
+          - [@ohos.bluetooth.pan(蓝牙pan模块)](reference/apis-connectivity-kit/js-apis-bluetooth-pan.md)
+          - [@ohos.bluetooth.socket(蓝牙socket模块)](reference/apis-connectivity-kit/js-apis-bluetooth-socket.md)
+          - [@ohos.bluetooth.pbap(蓝牙pbap模块)](reference/apis-connectivity-kit/js-apis-bluetooth-pbap.md)
+          - [@ohos.bluetooth.map(蓝牙map模块)](reference/apis-connectivity-kit/js-apis-bluetooth-map.md)
           - [@ohos.connectedTag (有源标签)](reference/apis-connectivity-kit/js-apis-connectedTag.md)
           - [@ohos.nfc.cardEmulation (标准NFC-cardEmulation)](reference/apis-connectivity-kit/js-apis-cardEmulation.md)
           - [@ohos.nfc.controller (标准NFC)](reference/apis-connectivity-kit/js-apis-nfcController.md)
@@ -4141,19 +4151,19 @@
           - [@ohos.wifiManager (WLAN)(推荐)](reference/apis-connectivity-kit/js-apis-wifiManager.md)
           - [@ohos.wifiManagerExt (WLAN扩展接口)(推荐)](reference/apis-connectivity-kit/js-apis-wifiManagerExt.md)
           <!--Del-->
-          - [@ohos.bluetooth.a2dp(蓝牙a2dp模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-a2dp-sys.md)
-          - [@ohos.bluetooth.access(蓝牙access模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-access-sys.md)
-          - [@ohos.bluetooth.baseProfile(蓝牙baseProfile模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-baseProfile-sys.md)
-          - [@ohos.bluetooth.connection(蓝牙connection模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-connection-sys.md)
-          - [@ohos.bluetooth.constant(蓝牙constant模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-constant-sys.md)
-          - [@ohos.bluetooth.hfp(蓝牙hfp模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-hfp-sys.md)
-          - [@ohos.bluetooth.hid(蓝牙hid模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-hid-sys.md)
-          - [@ohos.bluetooth.opp(蓝牙opp模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-opp-sys.md)
-          - [@ohos.bluetooth.pan(蓝牙pan模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-pan-sys.md)
-          - [@ohos.bluetooth.pbap(蓝牙pbap模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-pbap-sys.md)
-          - [@ohos.bluetooth.map(蓝牙map模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-map-sys.md)
-          - [@ohos.bluetooth.wearDetection(蓝牙佩戴检测模块)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-wearDetection-sys.md)
-          - [@ohos.bluetoothManager (蓝牙)(待停用)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetoothManager-sys.md)
+          - [@ohos.bluetooth.a2dp(蓝牙a2dp模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-a2dp-sys.md)
+          - [@ohos.bluetooth.access(蓝牙access模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-access-sys.md)
+          - [@ohos.bluetooth.baseProfile(蓝牙baseProfile模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-baseProfile-sys.md)
+          - [@ohos.bluetooth.connection(蓝牙connection模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-connection-sys.md)
+          - [@ohos.bluetooth.constant(蓝牙constant模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-constant-sys.md)
+          - [@ohos.bluetooth.hfp(蓝牙hfp模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-hfp-sys.md)
+          - [@ohos.bluetooth.hid(蓝牙hid模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-hid-sys.md)
+          - [@ohos.bluetooth.opp(蓝牙opp模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-opp-sys.md)
+          - [@ohos.bluetooth.pan(蓝牙pan模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-pan-sys.md)
+          - [@ohos.bluetooth.pbap(蓝牙pbap模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-pbap-sys.md)
+          - [@ohos.bluetooth.map(蓝牙map模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-map-sys.md)
+          - [@ohos.bluetooth.wearDetection(蓝牙佩戴检测模块)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-wearDetection-sys.md)
+          - [@ohos.bluetoothManager (蓝牙)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetoothManager-sys.md)
           - [@ohos.nfc.cardEmulation (标准NFC-cardEmulation)(系统接口)](reference/apis-connectivity-kit/js-apis-cardEmulation-sys.md)
           - [@ohos.nfc.tag (标准NFC-Tag)(系统接口)](reference/apis-connectivity-kit/js-apis-nfcTag-sys.md)
           - [@ohos.wifiManager (WLAN)(推荐)(系统接口)](reference/apis-connectivity-kit/js-apis-wifiManager-sys.md)
@@ -4174,13 +4184,13 @@
           - [NFC错误码](reference/apis-connectivity-kit/errorcode-nfc.md)
           - [SE(secureElement)错误码](reference/apis-connectivity-kit/errorcode-se.md)
         - 已停止维护的接口<!--connectivity-arkts-dep-->
-          - [@ohos.bluetooth (蓝牙)(待停用)](reference/apis-connectivity-kit/js-apis-bluetooth.md)
-          - [@ohos.bluetoothManager (蓝牙)(待停用)](reference/apis-connectivity-kit/js-apis-bluetoothManager.md)
+          - [@ohos.bluetooth (蓝牙)](reference/apis-connectivity-kit/js-apis-bluetooth.md)
+          - [@ohos.bluetoothManager (蓝牙)](reference/apis-connectivity-kit/js-apis-bluetoothManager.md)
           - [@ohos.wifi (WLAN)(待停用)](reference/apis-connectivity-kit/js-apis-wifi.md)
           - [@ohos.wifiext (WLAN扩展接口)(待停用)](reference/apis-connectivity-kit/js-apis-wifiext.md)
           - [@system.bluetooth (蓝牙)](reference/apis-connectivity-kit/js-apis-system-bluetooth.md)
           <!--Del-->
-          - [@ohos.bluetooth (蓝牙)(待停用)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-sys.md)
+          - [@ohos.bluetooth (蓝牙)(系统接口)](reference/apis-connectivity-kit/js-apis-bluetooth-sys.md)
           - [@ohos.wifi (WLAN)(待停用)(系统接口)](reference/apis-connectivity-kit/js-apis-wifi-sys.md)
           <!--DelEnd-->
       - Distributed Service Kit（分布式管理服务）<!--distributed-service-api-->
@@ -4595,7 +4605,7 @@
       - MDM Kit（企业设备管理服务）<!--mdm-api-->
         - ArkTS API<!--mdm-arkts-->
           - [@ohos.enterprise.accountManager（账户管理）](reference/apis-mdm-kit/js-apis-enterprise-accountManager.md)
-          - [@ohos.enterprise.adminManager (企业设备管理)](reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)
+          - [@ohos.enterprise.adminManager (admin权限管理)](reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)
           - [@ohos.enterprise.applicationManager（应用管理）](reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md)
           - [@ohos.enterprise.bluetoothManager（蓝牙管理）](reference/apis-mdm-kit/js-apis-enterprise-bluetoothManager.md)
           - [@ohos.enterprise.browser（浏览器管理）](reference/apis-mdm-kit/js-apis-enterprise-browser.md)
@@ -4731,8 +4741,8 @@
           <!--Del-->
           - [@ohos.sensor(传感器)(系统接口)](reference/apis-sensor-service-kit/js-apis-sensor-sys.md)
           <!--DelEnd-->
-          - [@ohos.sensor(传感器)(已废弃接口)](reference/apis-sensor-service-kit/js-apis-system-sensor.md)
-          - [@ohos.vibrator(振动)(已废弃接口)](reference/apis-sensor-service-kit/js-apis-system-vibrate.md)
+          - [@system.sensor (传感器)](reference/apis-sensor-service-kit/js-apis-system-sensor.md)
+          - [@system.vibrator (振动)](reference/apis-sensor-service-kit/js-apis-system-vibrate.md)
         - C API<!--sensor-service-c-->
           - 模块<!--sensor-service-module-->
             - [Sensor](reference/apis-sensor-service-kit/capi-sensor.md)
@@ -5425,7 +5435,7 @@
           - [模块描述](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing.md)
           - [Class (Brush)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Brush.md)
           - [Class (Canvas)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)
-          - [Class (ClorFilter)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)
+          - [Class (ColorFilter)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)
           - [Class (Font)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md)
           - [Class (ImageFilter)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-ImageFilter.md)
           - [Class (Lattice)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md)
@@ -5811,6 +5821,7 @@
         - [JSVM_Deferred__*](reference/common/capi-jsvm-jsvm-deferred--8h.md)
         - [JSVM_CallbackStruct*](reference/common/capi-jsvm-jsvm-callbackstruct8h.md)
         - [JSVM_PropertyHandlerConfigurationStruct*](reference/common/capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md)
+        - [JSVM_CompileProfile](reference/common/capi-jsvm-jsvm-compileprofile.md)
         - [PurgMem*](reference/common/capi-memory-purgmem.md)
   - 标准库<!--standard-library-->
     - [libc标准库](reference/native-lib/musl.md)

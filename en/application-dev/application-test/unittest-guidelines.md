@@ -226,7 +226,7 @@ Example 11: Execute test cases for a specified number of times.
 * Checking the test result
 
 1. During the test execution in the CLI, the framework prints the following log information:
-    ```
+    ```txt
     OHOS_REPORT_STATUS: class=ActsAbilityTest
     OHOS_REPORT_STATUS: current=1
     OHOS_REPORT_STATUS: id=JS
@@ -234,7 +234,7 @@ Example 11: Execute test cases for a specified number of times.
     OHOS_REPORT_STATUS: stream=
     OHOS_REPORT_STATUS: test=testExample
     OHOS_REPORT_STATUS_CODE: 1
-
+    
     OHOS_REPORT_STATUS: class=ActsAbilityTest
     OHOS_REPORT_STATUS: current=1
     OHOS_REPORT_STATUS: id=JS
@@ -252,13 +252,13 @@ Example 11: Execute test cases for a specified number of times.
     | OHOS_REPORT_STATUS: numtests | Total number of test cases in the current test package.|
     | OHOS_REPORT_STATUS: stream | Error information of the current test case.|
     | OHOS_REPORT_STATUS: test| Name of the current test case.|
-    | OHOS_REPORT_STATUS_CODE | Execution result of the current test case. **0**: pass.<br>**1**: error.<br>**2**: fail.|
+    | OHOS_REPORT_STATUS_CODE | Execution status of the current test case. **1**: The test case starts to be executed. **0**: The test case is successfully executed. **-1**: An error is reported during the test case execution. **-2**: The test case fails to be executed.|
     | OHOS_REPORT_STATUS: consuming | Time spent in executing the current test case, in milliseconds.|
 2. After the command execution is complete, the framework prints the following log information:
-    ```
+    ```txt
     OHOS_REPORT_RESULT: stream=Tests run: 447, Failure: 0, Error: 1, Pass: 201, Ignore: 245
     OHOS_REPORT_CODE: 0
-
+    
     OHOS_REPORT_RESULT: breakOnError model, Stopping whole test suite if one specific test case failed or error
     OHOS_REPORT_STATUS: taskconsuming=16029
     ```
@@ -597,7 +597,7 @@ Since@ohos/hypium 1.0.1, JSUnit supports the mock capability. For details about 
 
 **Mockit**
 
-Mockit is used to specify the instances and functions to be mocked.
+MockKit is used to specify the instances and functions to be mocked.
 | Name| Description                |
 | --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
 | mockFunc| Mocks a function in a class instance. Asynchronous functions are supported.                                                |
@@ -634,7 +634,7 @@ After the **when** function is executed, you need to use the following functions
 
 **ArgumentMatchers**
 
-**ArgumentMatchers** provides enums and functions for customizing function parameters. You can use it to set an expected return value based on a rule.
+**ArgumentMatchers** is used to customize function parameters, allowing you to set expected return values based on rules. It is provided as an enumeration value or a function.
 | Enum| Description                          |
 | --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
 | any | Returns the expected value if a parameter of any type (except **undefined** and **null**) is passed in. **ArgumentMatchers.any** must be used.                                                                          |
@@ -642,11 +642,11 @@ After the **when** function is executed, you need to use the following functions
 | anyBoolean | Returns the expected value if a Boolean value is passed in. This API must be called by **ArgumentMatchers.anyBoolean**.                                                                              |
 | anyFunction | Returns the expected value if a function is passed in. This API must be called by **ArgumentMatchers.anyFunction**.                                                                            |
 | anyNumber | Returns the expected value if a number is passed in. This API must be called by **ArgumentMatchers.anyNumber**.                                                                                    |
-| anyObj | Returns the expected value if an object is passed in. This API must be called by **ArgumentMatchers.anyObj**.
+| anyObj | Returns the expected value if an object is passed in. This API must be called by **ArgumentMatchers.anyObj**.|
 
 | API| Description   |
 | --- |--------------|                                           
-| matchRegexs | Returns the expected value if a parameter that matches the regular expression is passed in. This API must be called by **ArgumentMatchers.matchRegexs(Regex)**.
+| matchRegexs | Returns the expected value if a parameter that matches the regular expression is passed in. This API must be called by **ArgumentMatchers.matchRegexs(Regex)**.|
 
 
 > **NOTE**
@@ -1078,7 +1078,7 @@ export default function staticTest() {
       let mocker: MockKit = new MockKit();
       // Mock method_1 of the ClassName object.
       let func_1: Function = mocker.mockFunc(ClassName, ClassName.method_1);
-      // It is expected that 'ock_data' is returned after the function is mocked.
+      // It is expected that 'mock_data' is returned after the function is mocked.
       when(func_1)(ArgumentMatchers.any).afterReturn('mock_data');
       let mock_result = ClassName.method_1();
       expect(mock_result).assertEqual('mock_data');// The assertion is successful.

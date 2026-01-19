@@ -404,6 +404,7 @@ console.info("har NumberString.ets execute.");
 1. 如果main.ets只需要依赖har中的NumberString模块，import xxx from "har"的写法会导致har整条链路上的模块被解析、执行，**导致模块解析及执行耗时增加**。上述例子中的har/Index、OtherModule1、OtherModule2、Utils、OtherModule3、OtherModule4、NumberString模块均会被解析、执行。
 
 2. 在模块解析阶段会通过深度优先遍历的方式建立变量的绑定关系，main.ets中使用的har.One变量是由har/src/main/ets/NumberString.ets导出的，由于使用了export *的写法，建立变量的绑定关系时需要递归去进行变量名的匹配，从而**导致模块解析耗时增加**。
+
 在上述例子中，会先查找 `har/Index.ets` 文件。该文件中有多个 `export *` 语句，因此会依次检查 `OtherModule1` 和 `OtherModule2` 是否导出 `One` 变量。接着，找到 `Utils` 模块，该模块也有 `export *` 语句，因此会继续检查 `OtherModule3` 和 `OtherModule4`，最终确定 `One` 变量是从 `NumberString` 模块导出的。
 
 优化方式：改为如下的代码写法，跳过中间的依赖路径，直接依赖变量对应的模块。

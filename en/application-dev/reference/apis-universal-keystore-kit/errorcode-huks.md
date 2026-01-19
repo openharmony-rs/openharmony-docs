@@ -126,11 +126,11 @@ Crypto engine error.
 
 **Description**
 
-Crypto operation failed.
+The crypto operation failed.
 
 **Possible Causes**
 
-The algorithm library operation fails. The possible causes include the following:
+The possible causes include the following:
 
 1. The encryption and decryption on the algorithm library failed due to incorrect ciphertext data.
 2. Incorrect key parameters exist.

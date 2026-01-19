@@ -66,7 +66,7 @@ Next, you need to configure, start, and stop the VPN in the created **VpnExtensi
 To start a connection from the VPN application, you need to call **startVpnExtensionAbility** with the **VpnExtensionAbility** information specified. Make sure that **bundleName** is the same as that of the VPN application, and **abilityName** is the name of the **VpnExtensionAbility** you created. The sample code is as follows:
 
 ```ts
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
 
 let want: Want = {
@@ -110,7 +110,7 @@ To stop a VPN connection, the VPN application needs to call **stopVpnExtensionAb
 The sample code is as follows:
 
 ```ts
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
 
 let want: Want = {
@@ -150,7 +150,6 @@ After the **VPNExtensionAbility** is stopped, call [onDestroy](../reference/apis
 
 ```ts
 import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
-import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let context: vpnExtension.VpnExtensionContext;
@@ -171,11 +170,11 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 ### Generating a VPN ID
 
 When creating a VPN, generate a VPN ID as the unique identifier of the VPN.
+
 The sample code is as follows:
 
 ```ts
-import VpnExtensionAbility from "@ohos.app.ability.VpnExtensionAbility";
-import { vpnExtension } from "@kit.NetworkKit";
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 
 export default class VpnTest extends VpnExtensionAbility {
   vpnId: string = ''
@@ -195,8 +194,7 @@ export default class VpnTest extends VpnExtensionAbility {
 
 To disconnect from the VPN, use the sample code below:
 ```ts
-import VpnExtensionAbility from "@ohos.app.ability.VpnExtensionAbility";
-import { vpnExtension } from "@kit.NetworkKit";
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 
 export default class VpnTest extends VpnExtensionAbility {
   vpnId: string = 'test_vpn_id'
@@ -218,7 +216,7 @@ To ensure network connectivity, the system automatically stops the VPN connectio
 
 ## Description of VPN Config parameters
 
-| Name               | Type                                                        | Read-only|Optional| Description                                                        |
+| Name| Type| Read-only|Optional| Description|
 | ------------------- | ------------------------------------------------------------ | ---- | ---|------------------------------------------------------------ |
 | addresses           | Array\<[LinkAddress](../reference/apis-network-kit/js-apis-net-connection.md#linkaddress)\> | No  |No| IP addresses of virtual network interface cards (vNICs).                                       |
 | routes              | Array\<[RouteInfo](../reference/apis-network-kit/js-apis-net-connection.md#routeinfo)\> | No  | Yes|Routes of vNICs. Currently, a maximum of 1024 routes can be configured.           |
@@ -270,9 +268,9 @@ let vpnConfig: vpnExtension.VpnConfig = {
   mtu: 1400,
   // Configure IP addresses of DNS serves.
   dnsAddresses: ['223.x.x.5', '223.x.x.6'],
-  // Configure trusted VPN applications.
+  // List of trusted applications.
   trustedApplications: ['com.test.browser'],
-  // Configure blocked VPN applications.
+  // List of blocked applications.
   blockedApplications: ['com.test.games'],
 }
 let context: vpnExtension.VpnExtensionContext;

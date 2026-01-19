@@ -1,4 +1,10 @@
 # 使用Neon指令扩展
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @liyiming13-->
+<!--Designer: @liyiming13-->
+<!--Tester: @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 
 ARM Neon是ARM架构的SIMD（Single Instruction Multiple Data）扩展实现，提供一条指令处理多个数据的并行处理能力，广泛用于多媒体编解码、2D/3D图形处理等领域，提高执行性能。
@@ -16,7 +22,7 @@ ARMv8a架构CPU默认集成Neon扩展，在AArch64与AArch32两种状态下都�
 
 在OpenHarmony SDK的LLVM工具链中，为armeabi-v7a ABI提供了对多种配置的预编译运行时库的支持，供开发者根据不同的配置进行选择。具体目录结构如下，native-root表示NDK所在的native包解压根目录。
 
-```
+```txt
 {native-root}/llvm/lib/clang/current/lib/arm-linux-ohos/
     |-- a7_hard_neon-vfpv4
     |       |-- clang_rt.crtbegin.o

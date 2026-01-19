@@ -21,7 +21,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 ```
 
 
-## shortcutManager.addDesktopShortcutInfo<sup>12+</sup>
+## shortcutManager.addDesktopShortcutInfo
 
 addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md), userId: number) : Promise\<void>
 
@@ -106,7 +106,7 @@ struct ShortcutExample {
 }
 ```
 
-## shortcutManager.deleteDesktopShortcutInfo<sup>12+</sup>
+## shortcutManager.deleteDesktopShortcutInfo
 
 deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md), userId: number) : Promise\<void>
 
@@ -187,7 +187,7 @@ struct ShortcutExample {
 }
 ```
 
-## shortcutManager.getAllDesktopShortcutInfo<sup>12+</sup>
+## shortcutManager.getAllDesktopShortcutInfo
 
 getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)>>
 

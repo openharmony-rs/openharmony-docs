@@ -133,16 +133,16 @@ OH_AudioStreamBuilder_Destroy(builder);
     }
 
     // 配置音频中断事件回调函数。
-    OH_AudioRenderer_OnInterruptCallback OnIntereruptCb = MyOnInterruptEvent;
-    OH_AudioStreamBuilder_SetRendererInterruptCallback(builder, OnIntereruptCb, nullptr);
+    OH_AudioRenderer_OnInterruptCallback onInterruptCb = MyOnInterruptEvent;
+    OH_AudioStreamBuilder_SetRendererInterruptCallback(builder, onInterruptCb, nullptr);
 
     // 配置音频异常回调函数。
-    OH_AudioRenderer_OnErrorCallback OnErrorCb = MyOnError;
-    OH_AudioStreamBuilder_SetRendererErrorCallback(builder, OnErrorCb, nullptr);
+    OH_AudioRenderer_OnErrorCallback onErrorCb = MyOnError;
+    OH_AudioStreamBuilder_SetRendererErrorCallback(builder, onErrorCb, nullptr);
 
     // 配置写入音频数据回调函数。
-    OH_AudioRenderer_OnWriteDataCallback writeDataCb = MyOnWriteData;
-    OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, writeDataCb, nullptr);
+    OH_AudioRenderer_OnWriteDataCallback onWriteDataCb = MyOnWriteData;
+    OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, onWriteDataCb, nullptr);
     ```
 
 4. 构造播放音频流。

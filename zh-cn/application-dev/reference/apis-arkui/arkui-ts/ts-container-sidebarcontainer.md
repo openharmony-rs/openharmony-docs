@@ -48,11 +48,11 @@ SideBarContainer( type?: SideBarContainerType )
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| Embed | 侧边栏嵌入到组件内，和内容区并列显示。<br/>整体容器大小不变时，显示侧边栏会导致内容区缩小，隐藏侧边栏会扩大内容区。<br/>组件尺寸小于minContentWidth + minSideBarWidth，并且未设置showSideBar时，侧边栏自动隐藏。<br/>未设置minSideBarWidth或者minContentWidth采用未设置接口的默认值进行计算。<br/> 组件在自动隐藏后，如果通过点击控制按钮唤出侧边栏，则侧边栏悬浮在内容区上显示。|
-| Overlay | 侧边栏浮在内容区上面，不会影响内容区的大小。 |
-| AUTO<sup>10+</sup> | 组件尺寸大于等于minSideBarWidth+minContentWidth时，采用Embed模式显示。<br/>组件尺寸小于minSideBarWidth+minContentWidth时，采用Overlay模式显示。<br/>未设置minSideBarWidth或minContentWidth时，会使用未设置接口的默认值进行计算，若计算的值小于600vp，则使用600vp做为模式切换的断点值。|
+| 名称 | 值 | 说明 |
+| -------- | -------- |-------- |
+| Embed | 0 |侧边栏嵌入到组件内，和内容区并列显示。<br/>整体容器大小不变时，显示侧边栏会导致内容区缩小，隐藏侧边栏会扩大内容区。<br/>组件尺寸小于[minContentWidth](#mincontentwidth10) + [minSideBarWidth](#minsidebarwidth)，并且未设置showSideBar时，侧边栏自动隐藏。<br/>未设置minSideBarWidth或者minContentWidth采用未设置接口的默认值进行计算。<br/> 组件在自动隐藏后，如果通过点击控制按钮唤出侧边栏，则侧边栏悬浮在内容区上显示。|
+| Overlay | 1 |侧边栏浮在内容区上面，不会影响内容区的大小。 |
+| AUTO<sup>10+</sup> | 2 |组件尺寸大于等于minSideBarWidth + minContentWidth时，采用Embed模式显示。<br/>组件尺寸小于minSideBarWidth + minContentWidth时，采用Overlay模式显示。<br/>未设置minSideBarWidth或minContentWidth时，会使用未设置接口的默认值进行计算，若计算的值小于600vp，则使用600vp做为模式切换的断点值。|
 
 ## 属性
 
@@ -206,7 +206,7 @@ maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时
 
 maxSideBarWidth(value: Length)
 
-设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。
+设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。与[maxSideBarWidth](#maxsidebarwidth)相比，value参数新增了对百分比字符串和其他[像素单位](ts-pixel-units.md)的支持。
 
 maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时默认值优先级高于侧边栏子组件maxWidth。
 
@@ -284,10 +284,10 @@ Embed场景下，增大组件尺寸时仅增大内容区的尺寸。
 
 当缩小侧边栏的尺寸至minSideBarWidth后，继续缩小组件尺寸时，
 
-- 如果autoHide属性为false，则会保持侧边栏宽度minSideBarWidth和内容区宽度minContentWidth不变，但内容区会被截断显示；
+- 如果[autoHide](#autohide9)属性为false，则会保持侧边栏宽度[minSideBarWidth](#minsidebarwidth)和内容区宽度minContentWidth不变，但内容区会被截断显示；
 - 如果autoHide属性为true，则会优先隐藏侧边栏，然后继续缩小至内容区宽度minContentWidth后，内容区宽度保持不变，但内容区会被截断显示。
 
-minContentWidth优先于侧边栏的maxSideBarWidth与sideBarWidth属性，minContentWidth未设置时默认值优先级低于设置的minSideBarWidth与maxSideBarWidth属性。
+minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBarWidth属性，minContentWidth未设置时默认值优先级低于设置的minSideBarWidth与maxSideBarWidth属性。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -345,10 +345,10 @@ minContentWidth优先于侧边栏的maxSideBarWidth与sideBarWidth属性，minCo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| Start | 侧边栏位于容器左侧。 |
-| End | 侧边栏位于容器右侧。 |
+| 名称 | 值 | 说明 |
+| -------- | ---- | -------- |
+| Start | 0 | 侧边栏位于容器左侧。 |
+| End | 1 | 侧边栏位于容器右侧。 |
 
 ## DividerStyle<sup>10+</sup>对象说明
 
@@ -369,9 +369,9 @@ minContentWidth优先于侧边栏的maxSideBarWidth与sideBarWidth属性，minCo
 >  针对侧边栏子组件设置[通用属性宽高](ts-universal-attributes-size.md)时，宽高都不生效。
 >  针对侧边栏内容区设置[通用属性宽高](ts-universal-attributes-size.md)时，宽高都不生效，默认占满SideBarContainer的剩余空间。
 >
->  当showSideBar属性未设置时，依据组件大小进行自动显示：
+>  当[showSideBar](#showsidebar)属性未设置时，依据组件大小进行自动显示：
 >
->  - 小于minSideBarWidth + minContentWidth：默认不显示侧边栏。
+>  - 小于[minSideBarWidth](#minsidebarwidth) + [minContentWidth](#mincontentwidth10)：默认不显示侧边栏。
 >  - 大于等于minSideBarWidth + minContentWidth：默认显示侧边栏。
 
 ## 事件
@@ -386,11 +386,9 @@ onChange(callback: (value: boolean) =&gt; void)
 
 触发该事件的条件：
 
-1、showSideBar属性值变换时；
-
-2、showSideBar属性自适应行为变化时；
-
-3、分割线拖拽触发autoHide时。
+1. showSideBar属性值变换时。
+2. showSideBar属性自适应行为变化时。
+3. 分割线拖拽触发[autoHide](#autohide9)时。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -412,6 +410,7 @@ onChange(callback: (value: boolean) =&gt; void)
 @Entry
 @Component
 struct SideBarContainerExample {
+  // $r("app.media.icon")需要替换为开发者所需的图像资源文件。
   normalIcon: Resource = $r("app.media.icon");
   selectedIcon: Resource = $r("app.media.icon");
   @State arr: number[] = [1, 2, 3];
@@ -444,6 +443,7 @@ struct SideBarContainerExample {
     }
     .controlButton({
       icons: {
+        // $r('app.media.drawer')需要替换为开发者所需的图像资源文件。
         hidden: $r('app.media.drawer'),
         shown: $r('app.media.drawer'),
         switching: $r('app.media.drawer')

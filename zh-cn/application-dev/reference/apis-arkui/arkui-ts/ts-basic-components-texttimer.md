@@ -72,7 +72,7 @@ format(value: string)
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value  | string | 是   | 自定义格式。<br/>默认值：'HH:mm:ss.SS' |
+| value  | string | 是   | 自定义日期显示的格式。<br/>默认值：'HH:mm:ss.SS' |
 
 
 ### fontColor
@@ -91,7 +91,7 @@ fontColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 字体颜色。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 字体颜色。<br/>Wearable设备上默认值为：'#c5ffffff'，显示白色。<br/>其他设备上默认值：'#e6182431'，显示黑色。|
 
 ### fontSize
 
@@ -127,7 +127,7 @@ fontStyle(value: FontStyle)
 
 | 参数名 | 类型                                        | 必填 | 说明                                    |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 字体样式。<br/>默认值：FontStyle.Normal |
+| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 字体样式，例如斜体的字体样式。<br/>默认值：FontStyle.Normal |
 
 ### fontWeight
 
@@ -183,7 +183,7 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 是   | 文字阴影效果。 |
+| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 是   | 文字阴影效果的参数，包括颜色、模糊半径、偏移量。 |
 
 ### contentModifier<sup>12+</sup>
 
@@ -199,7 +199,7 @@ contentModifier(modifier: ContentModifier\<TextTimerConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<TextTimerConfiguration>](#texttimerconfiguration12对象说明) | 是   | 在TextTimer组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)[\<TextTimerConfiguration>](#texttimerconfiguration12对象说明) | 是   | 在TextTimer组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## 事件
 
@@ -208,7 +208,7 @@ contentModifier(modifier: ContentModifier\<TextTimerConfiguration>)
 onTimer(event:&nbsp;(utc:&nbsp;number,&nbsp;elapsedTime:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
 时间文本发生变化时触发该事件。锁屏状态和应用后台状态下不会触发该事件。
-设置高精度的format（SSS、SS）时，回调间隔可能会出现波动。
+设置高精度的[format](#format)（SSS、SS）时，回调间隔可能会出现波动。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -298,8 +298,8 @@ ContentModifier接口使用的TextTimer配置。
 | 名称 | 类型    |  只读  |  可选   |  说明              |
 | ------ | ------ | ------ | ------ |-------------------------------- |
 | count | number | 否 | 否 | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。 0<count<86400000时，count值为倒计时初始值。否则，使用默认值为倒计时初始值。<br> 默认值：60000。 |
-| isCountDown | boolean| 否 | 否 | 是否倒计时。值为true时，计时器开启倒计时，例如从30秒 ~ 0秒。值为false时，计时器开始计时，例如从0秒 ~ 30秒。<br> 默认值：false |
-| started | boolean | 否 | 否 | 是否已经开始了计时。默认值：false， 表示未开始计时。|
+| isCountDown | boolean| 否 | 否 | 是否倒计时。<br/>true：计时器开启倒计时，例如从30秒 ~ 0秒；false：计时器开始计时，例如从0秒 ~ 30秒。<br/> 默认值：false |
+| started | boolean | 否 | 否 | 是否已经开始了计时。<br/>true：开始计时；false：未开始计时。<br/>默认值：false|
 | elapsedTime | number | 否 | 否 |计时器经过的时间，单位为设置格式的最小单位。 |
 
 ## 示例
@@ -327,13 +327,13 @@ struct TextTimerExample {
           console.info('textTimer notCountDown utc is：' + utc + ', elapsedTime: ' + elapsedTime);
         })
       Row() {
-        Button("start").onClick(() => {
+        Button('start').onClick(() => {
           this.textTimerController.start();
         })
-        Button("pause").onClick(() => {
+        Button('pause').onClick(() => {
           this.textTimerController.pause();
         })
-        Button("reset").onClick(() => {
+        Button('reset').onClick(() => {
           this.textTimerController.reset();
         })
       }
@@ -412,13 +412,13 @@ function buildTextTimer(config: TextTimerConfiguration) {
       Circle({ width: 150, height: 150 })
         .fill(config.started ? (config.isCountDown ? 0xFF232323 : 0xFF717171) : 0xFF929292)
       Column() {
-        Text(config.isCountDown ? "倒计时" : "正计时").fontColor(Color.White)
+        Text(config.isCountDown ? '倒计时' : '正计时').fontColor(Color.White)
         Text(
-          (config.isCountDown ? "剩余" : "已经过去了") + (config.isCountDown ?
-            (Math.max(config.count / 1000 - config.elapsedTime / 100, 0)).toFixed(1) + "/" +
+          (config.isCountDown ? '剩余' : '已经过去了') + (config.isCountDown ?
+            (Math.max(config.count / 1000 - config.elapsedTime / 100, 0)).toFixed(1) + '/' +
             (config.count / 1000).toFixed(0)
             : ((config.elapsedTime / 100).toFixed(0))
-          ) + "秒"
+          ) + '秒'
         ).fontColor(Color.White)
       }
     }
@@ -448,15 +448,15 @@ struct Index {
             console.info('textTimer onTimer utc is：' + utc + ', elapsedTime: ' + elapsedTime);
           })
         Row() {
-          Button("start").onClick(() => {
+          Button('start').onClick(() => {
             this.countDownTextTimerController.start();
             this.countUpTextTimerController.start();
           }).margin(10)
-          Button("pause").onClick(() => {
+          Button('pause').onClick(() => {
             this.countDownTextTimerController.pause();
             this.countUpTextTimerController.pause();
           }).margin(10)
-          Button("reset").onClick(() => {
+          Button('reset').onClick(() => {
             this.countDownTextTimerController.reset();
             this.countUpTextTimerController.reset();
           }).margin(10)
@@ -495,7 +495,64 @@ struct TextTimerStart {
           this.textTimerController.start();
         })
     }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```
 ![text_timer_auto_start](figures/text_timer_auto_start.gif)
+
+### 示例5（设置文本样式）
+
+该示例通过[fontColor](#fontcolor)、[fontSize](#fontsize)、[fontStyle](#fontstyle)、[fontWeight](#fontweight)、[fontFamily](#fontfamily)属性展示了不同样式的文本效果。
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct demo {
+  textTimerController: TextTimerController = new TextTimerController();
+  @State format: string = 'HH:mm:ss.SS';
+  @State countValue: number = 5025678;
+
+  build() {
+    Column({ space: 10 }) {
+      Text('设置字体颜色').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontColor(Color.Blue)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontColor(Color.Gray)
+
+      Text('设置字体大小').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontSize(10)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontSize(30)
+
+      Text('设置字体样式').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontStyle(FontStyle.Normal)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontStyle(FontStyle.Italic)
+
+      Text('设置字重').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontWeight(FontWeight.Lighter)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontWeight(FontWeight.Bolder)
+
+      Text('设置字体族').fontColor(0xCCCCCC)
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontFamily('HMOS Color Emoji')
+      TextTimer({ isCountDown: true, count: this.countValue, controller: this.textTimerController })
+        .fontFamily('HarmonyOS Sans')
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![](figures/text_timer_example_font_setting.png)

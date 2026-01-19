@@ -15,13 +15,14 @@ The current configuration file format uses [EasyList](https://easylist-downloads
 | Type    | Description  | Example|
 | ---------- | ------ | ---- |
 | URL blocking rule| Blocks all sub-resource requests whose URLs match **example.com/js/*_tv.js**. This rule is used to block a specified domain name and all its subdomain names.| \|\|example.com/js/*_tv.js   |
-| URL blocking rule| Blocks third-party resources whose URLs match **"alimama.cn"** from websites whose domain names are neither **alimama.com** nor **taobao.com**. **\$third\_party** is an options syntax used to match third-party resources. A tilde (~) before a domain name indicates that the domain name is not included.| \|\|alimama.cn^$third-party,domain\=~alimama.com\|\~taobao.com   |
+| URL blocking rule| Blocks third-party resources whose URLs match **"alimama.cn"** on websites whose domain names are neither **alimama.com** nor **taobao.com**. **\$third\_party** is an options syntax used to match third-party resources. A tilde (~) before a domain name indicates that the domain name is not included.| \|\|alimama.cn^$third-party,domain\=~alimama.com\|\~taobao.com   |
 | Exception rule| Disables ad blocking on **example.com**. **@@** is the syntax keyword that indicates no blocking.| \@\@\|\|example.com^$document   |
 | Exception rule| Disables the blocking of subresources that match **".adserver"** in the web page whose domain name is **litv.tv**.| \@\@.adserver.$domain=litv.tv   |
 | Element hiding rule| Hides all elements whose class is **i528** in the web page whose domain name is **myabandonware.com** or **myware.com**. **##** is used to hide an element.| myabandonware.com, myware.com##.i528   |
 | Element hiding exception rule| Disables the hiding of elements whose IDs are **ad_1** in **sdf-event.sakura.ne.jp**.| sdf-event.sakura.ne.jp#@##ad_1   |
 
 Exception rules are usually used together with common rules. In some specific scenarios, common rules are not applicable, and exception rules do not have effects.
+
 For example, if you configure a blocking rule **||abc.com/js/123.js** to block websites, but some websites are blocked by mistake or cannot be blocked, you can configure exception rules for these websites.
 
 ## Constraints
@@ -159,7 +160,7 @@ Add the domain name to **DisallowedList** of **AdsBlockManager** through [addAds
 
 **AdsBlockManager** caches two lists of domain names, including **DisallowedList** and **AllowList**. **DisallowedList** is used to disable ad blocking on web pages, and **AllowList** is used to enable ad blocking disabled by **DisallowedList**. **AllowList** has a higher priority. When a web page is loaded, the system matches the web page URL with **AllowList**. If the matching is successful, the ad blocking feature is enabled. Otherwise, the system continues to match the web page URL with **DisallowedList**. If the matching is successful, the ad blocking feature is disabled. If the accessed web page is neither list in **AllowList** nor in **DisallowedList**, the ad blocking feature for this web page is enabled by default.
 
-For example, if you want to enable ad blocking for** news.example.com** and **sport.example.com** in an application, but not for other web pages under the **example.com** domain, you can use **addAdsBlockDisallowedList()** to add **example.com** to **DisallowedList**, and then use **addAdsBlockAllowedList()** to add **news.example.com** and **sport.example.com** to **AllowedList**.
+For example, if you want to enable ad blocking for **news.example.com** and **sport.example.com** in an application, but not for other web pages under the **example.com** domain, you can use **addAdsBlockDisallowedList()** to add **example.com** to **DisallowedList**, and then use **addAdsBlockAllowedList()** to add **news.example.com** and **sport.example.com** to **AllowedList**.
 
 ```ts
 // xxx.ets
@@ -216,6 +217,7 @@ struct WebComponent {
 ```
 
 Note that the **DisallowedList** and **AllowedList** of the **AdsBlockManager** are not persisted. Therefore, the lists are reset to empty when the application is restarted.
+
 If the ad blocking feature of the **Web** component is not enabled through [enableAdsBlock()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#enableadsblock12), the preceding APIs do not take effect in the **Web** component.
 
 ### Collecting Ad Blocking Information

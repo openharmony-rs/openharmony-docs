@@ -159,10 +159,10 @@ import { util } from '@kit.ArkTS';
 
 class Contact {
   key: string = util.generateRandomUUID(true);
-  name: string;
+  name: ResourceStr;
   icon: Resource;
 
-  constructor(name: string, icon: Resource) {
+  constructor(name: ResourceStr, icon: Resource) {
     this.name = name;
     this.icon = icon;
   }
@@ -171,12 +171,13 @@ class Contact {
 @Entry
 @Component
 struct SimpleContacts {
-  private contacts: Array<object> = [
-    new Contact('小红', $r("app.media.ic_contact")),
-    new Contact('小兰', $r("app.media.ic_contact")),
-    new Contact('小王', $r("app.media.ic_contact")),
-    new Contact('小李', $r("app.media.ic_contact")),
-    new Contact('小明', $r("app.media.ic_contact"))
+  @State private contacts: Array<object> = [
+ 	 // 请将$r('app.string.xxx')替换为实际资源文件
+ 	 new Contact($r('app.string.name_xiaohong'), $r('app.media.ic_contact')),
+ 	 new Contact($r('app.string.name_xiaolan'), $r('app.media.ic_contact')),
+ 	 new Contact($r('app.string.name_xiaowang'), $r('app.media.ic_contact')),
+ 	 new Contact($r('app.string.name_xiaoli'), $r('app.media.ic_contact')),
+ 	 new Contact($r('app.string.name_xiaoming'), $r('app.media.ic_contact'))
   ];
 
   build() {

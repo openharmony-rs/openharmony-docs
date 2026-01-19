@@ -83,6 +83,8 @@ getPlayingState(deviceId: string): PlayingState
 
 获取本端和对端设备间的媒体音频播放状态。
 
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取媒体音频播放状态。
+
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core

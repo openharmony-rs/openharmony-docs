@@ -704,7 +704,7 @@ blur(radius: number): Filter
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
@@ -793,7 +793,7 @@ blur(radius: number, tileMode: TileMode): Filter
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
@@ -871,7 +871,7 @@ invert(): Filter
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
@@ -962,7 +962,7 @@ setColorMatrix(colorMatrix: Array\<number>): Filter
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
@@ -1054,7 +1054,7 @@ brightness(bright: number): Filter
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
@@ -1136,7 +1136,7 @@ grayscale(): Filter
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
@@ -1292,7 +1292,7 @@ getPixelMap(): image.PixelMap
 
 > **说明：**
 >
-> 此接口从API version 9开始支持，从API version 11开始废弃，推荐使用[getEffectPixelMap](#geteffectpixelmap11)。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[getEffectPixelMap](#geteffectpixelmap11)替代。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

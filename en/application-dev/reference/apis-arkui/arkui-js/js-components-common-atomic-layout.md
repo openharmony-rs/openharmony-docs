@@ -1,5 +1,12 @@
 # Atomic Layout
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
 >  **NOTE**
 >
 >  This component is supported since API version 5. Updates will be marked with a superscript to indicate their earliest API version.

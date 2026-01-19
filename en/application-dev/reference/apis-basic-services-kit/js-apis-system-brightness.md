@@ -186,7 +186,7 @@ Options for setting the screen brightness.
 | Name    | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | value    | number                               | Yes  | Screen brightness. The value is an integer ranging from **1** to **255**.<br>- If the value is less than or equal to **0**, value **1** will be used.<br>- If the value is greater than **255**, value **255** will be used.<br>- If the value contains decimals, the integral part of the value will be used. For example, if value **8.1** is set, value **8** will be used.|
-| success  | () => void                           | No  | Called when API call is successful.                                    |
+| success  | () => void                           | No  | Called when an API call is successful.                                    |
 | fail     | (data: string, code: number) => void | No  | Called when an API call has failed. **data** indicates the error information, and **code** indicates the error code.      |
 | complete | () => void                           | No  | Called when an API call is complete.                                    |
 
@@ -221,7 +221,7 @@ Options for setting the screen brightness mode.
 | Name    | Type                                | Mandatory| Description                                                  |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------ |
 | mode     | number                               | Yes  | The value **0** indicates the manual adjustment mode, and the value **1** indicates the automatic adjustment mode.|
-| success  | () => void                           | No  | Called when API call is successful.                              |
+| success  | () => void                           | No  | Called when an API call is successful.                              |
 | fail     | (data: string, code: number) => void | No  | Called when an API call has failed. **data** indicates the error information, and **code** indicates the error code.|
 | complete | () => void                           | No  | Called when an API call is complete.                              |
 
@@ -244,6 +244,6 @@ Options for setting the screen to be steady on.
 | Name        | Type                                | Mandatory| Description                                                  |
 | ------------ | ------------------------------------ | ---- | ------------------------------------------------------ |
 | keepScreenOn | boolean                              | Yes  | The value **true** means to keep the screen steady on, and the value **false** indicates the opposite.         |
-| success      | () => void                           | No  | Called when API call is successful.                              |
+| success      | () => void                           | No  | Called when an API call is successful.                              |
 | fail         | (data: string, code: number) => void | No  | Called when an API call has failed. **data** indicates the error information, and **code** indicates the error code.|
 | complete     | () => void                           | No  | Called when an API call is complete.                              |

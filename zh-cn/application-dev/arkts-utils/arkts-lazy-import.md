@@ -139,6 +139,7 @@ lazy-import 相较于动态加载的优势：
 | import lazy { KitClass } from "@kit.SomeKit"; | "@kit.SomeKit" | "KitClass" | "KitClass"  | API 18      |
 
 - 延迟加载共享模块或依赖路径内包含共享模块。
+
     延迟加载对于共享模块依旧生效，使用限制参考[共享模块开发指导](../arkts-utils/arkts-sendable-module.md)。
 
 ### 错误示例
@@ -281,8 +282,9 @@ ReferenceError: module environment is undefined
     > 2. 生成文件的操作需要在当前进程存活时执行。
     > 3. 如果抓取过程中进程退出，那么不会生成对应的文件。
 
-4. 关闭工具  
-工具常开会损耗性能，使用后应及时关闭。  
+4. 关闭工具
+
+   该工具常开会损耗性能，使用后应及时关闭。  
 
     ```shell
     hdc shell param set persist.ark.properties 0x000105c
@@ -290,32 +292,41 @@ ReferenceError: module environment is undefined
 
 ### 生成文件介绍
 
-工具会根据设置的抓取时间，分别记录主线程和子线程在该时间内的文件加载情况。各线程独立计时。  
+工具会根据设置的抓取时间，分别记录主线程和子线程在该时间内的文件加载情况。各线程独立计时。
+
 例如，设置时间为1秒，工具将记录主线程和子线程各自启动后1秒内的文件执行情况。  
 
 文件生成路径：`data/app/el2/100/base/${bundleName}/files`
+
 主线程文件名：`${bundleName}_redundant_file.txt`
+
 子线程文件名：`${bundleName}_${tId}_redundant_file.txt`
 
 > **说明：**
 >
 > 1. 主线程文件名不含线程号信息，因此写入文件时会发生覆盖。
+>
 > 2. 子线程文件名包含线程号tId，且每个tId唯一，确保每个子线程对应一个单独的文件。若需查找对应线程文件，可依据日志中的线程号或使用trace工具查看线程号进行匹配。
 
 **示例**
-当前测试应用bundleName为com.example.myapplication，应用内创建了一个子线程，线程号为18089（随机）。  
+当前测试应用bundleName为com.example.myapplication，应用内创建了一个子线程，线程号为18089（随机）。 
+
 文件生成路径：data/app/el2/100/base/com.example.myapplication/files  
-主线程文件名：data/app/el2/100/base/com.example.myapplication/files/com.example.myapplication_redundant_file.txt  
-子线程文件名：data/app/el2/100/base/com.example.myapplication/files/com.example.myapplication_18089_redundant_file.txt  
+
+主线程文件名：data/app/el2/100/base/com.example.myapplication/files/com.example.myapplication_redundant_file.txt 
+
+子线程文件名：data/app/el2/100/base/com.example.myapplication/files/com.example.myapplication_18089_redundant_file.txt 
 ![deferrable-tool-file](figures/deferrable-tool-file.png)
 
 ### 检测原理
 
 如下例所示，A文件和B文件同时被Index文件依赖，那么A、B会随着Index文件的加载被直接加载执行。
+
 A文件执行过程完成了变量定义赋值并进行导出，对应A文件的耗时。B文件定义了一个函数并导出，对应B文件的耗时。
+
 在Index文件执行时，B文件的导出函数func被顶层执行，因此B文件的导出是无法优化的，在工具侧就会显示used。但是A文件的导出变量a在Index文件的myFunc函数被调用时才使用，如果冷启动阶段没有其他文件调用myFunc函数，那么A文件在工具侧就会显示unused，即可以延迟加载。
 
- ```ts
+```ts
 // Index.ets
 import { a } from './A';
 import { func } from './B';
@@ -335,6 +346,7 @@ export function func() {
 ### 加载情况总结
 
 总结加载时间内所有文件及其耗时，包括已使用的文件及其耗时和未使用的文件及其耗时。
+
 例：
 
 ```text
@@ -347,7 +359,7 @@ export function func() {
 
 在冷启动阶段，导出内容被其他文件使用的文件称为used file。  
 
-- 场景1：通过静态加载加载的文件，其父文件（parentModule）代表该文件的引入方。
+- 场景1：通过静态加载所加载的文件，其父文件（parentModule）代表该文件的引入方。
 
     ```text
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
@@ -362,7 +374,7 @@ export function func() {
     console.info("example ", a); // a变量在outter文件执行时就被使用
     ```  
 
-- 场景2：通过静态加载加载的文件，存在多个父文件。  
+- 场景2：通过静态加载所加载的文件，存在多个父文件。  
 
     ```text
     // 说明：显示顺序不代表父文件的加载顺序。
@@ -383,7 +395,7 @@ export function func() {
     console.info("example ", a); // a变量在innerinner文件执行时就被使用
     ```  
 
-- 场景3：通过静态加载加载的文件，存在多个导出，但是只显示了一部分。
+- 场景3：通过静态加载所加载的文件，存在多个导出，但是只显示了一部分。
 
     ```text
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
@@ -428,6 +440,7 @@ export function func() {
 ### 未被使用文件
 
 在冷启动阶段，导出内容没有被其他文件使用的文件称为未使用的文件，代表可以延迟加载。
+
 场景与被使用文件场景一致，但未被使用文件没有变量被使用的信息。
 
 - 场景：文件被这些父文件引用，但变量未被使用。可在引入未使用文件处（父文件）使用延迟加载方式加载该文件。
@@ -536,8 +549,8 @@ struct Index {
 
 **优化效果**
 
-|     | 加载文件耗时（微秒μs） |
-|-----|--------------|
+| 优化效果 | 加载文件耗时（微秒μs） |
+|---------|-----------------------|
 | 优化前 | 412us        |
 | 优化后 | 350us        |
 

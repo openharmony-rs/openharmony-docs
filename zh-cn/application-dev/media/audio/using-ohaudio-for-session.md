@@ -47,7 +47,7 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 
   ```cpp
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
-  
+
   OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
   ```
 
@@ -114,7 +114,7 @@ OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,
   ```cpp
   #include <cstdint>
   #include "ohaudio/native_audio_session_manager.h"
-  
+
   int32_t MyAudioSessionDeactivatedCallback(OH_AudioSession_DeactivatedEvent event)
   {
     switch(event.reason) {
@@ -126,28 +126,28 @@ OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,
         return 0;
     }
   }
-  
+
   OH_AudioSessionManager *audioSessionManager;
 
   // 创建音频会话管理器。
   OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
-  
+
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
 
   // 设置音频并发模式并激活音频会话。
   OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
-  
+
   // 查询音频会话是否已激活。
   bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
-  
+
   // 监听音频会话停用事件。
   OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager, MyAudioSessionDeactivatedCallback);
 
   // 音频会话激活后应用在此处正常执行音频播放、暂停、停止、释放等操作即可。 
-  
+
   // 取消监听音频会话停用事件。
   OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager, MyAudioSessionDeactivatedCallback);
-  
+
   // 停用音频会话。
   OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
   ```
@@ -155,7 +155,6 @@ OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,
 应用通过AudioSession申请焦点。首先要调用接口[OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)设置场景参数，然后调用[OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession)接口激活AudioSession。
 
   ```cpp
-
   OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
 
   OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
@@ -169,13 +168,12 @@ OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,
 **AudioSession申请焦点以及监听焦点变化事件的完整示例：**
 
   ```cpp
+  OH_AudioSessionManager *audioSessionManager;
 
-OH_AudioSessionManager *audioSessionManager;
+  // 创建音频会话管理器。
+  OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
 
-// 创建音频会话管理器。
-OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
-
-void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
+  void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
   {
     switch(event.stateChangeHint) {
       case AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE:
@@ -201,7 +199,7 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
         break;
       default:
         break;
-      }
+    }
   }
 
   OH_AudioCommon_Result result = OH_AudioSessionManager_RegisterStateChangeCallback(audioSessionManager, AudioSessionStateChangedCallback);
@@ -219,5 +217,4 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
   result = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
 
   result = OH_AudioSessionManager_UnregisterStateChangeCallback(audioSessionManager, AudioSessionStateChangedCallback);
-
   ```
