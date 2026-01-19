@@ -509,24 +509,6 @@ city1
 |-------|--------|---------|
 |HAP/HSP|HSP|HSP和主模块是独立编译的，混淆后名称会不一致，因此都需要配置白名单|
 |HAP/HSP|本地HAR|本地HAR与主模块一起编译，混淆后名称一致|
-<!-- @[import_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
-
-``` TypeScript
-// main.ts
-async function loadAndUseAdd() {
-  let result: number = 0;
-  try {
-    const mathUtils = await import('./utils');
-    result = mathUtils.add(2, 3);
-    console.info(`result = ${result}`);
-  } catch (error) {
-    console.error('Failure reason:', error);
-  }
-}
-// ...
-            loadAndUseAdd();
-```
-
 HSP需要将给其他模块用的方法配置到白名单中。因为主模块里也需要配置相同的白名单，所以推荐将HSP配置了白名单的混淆文件（假设名称为hsp-white-list.txt）添加到依赖它的模块的混淆配置项里，即下图files字段里。
 
 ![bytecode-buildoptionset](figures/bytecode-buildoptionset.png)
@@ -543,7 +525,25 @@ export function add(a: number, b: number): number {
 }
 ```
 
-<!-- @[import_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
+``` TypeScript
+// 混淆后
+// utils.ts
+export function c1(d1: number, e1: number): number {
+    return d1 + e1;
+}
+
+// main.ts
+async function i() {
+    try {
+        const a1 = await import("@normalized:N&&&entry/src/main/ets/pages/utils&");
+        const b1 = a1.add(2, 3);
+    }
+    catch (z) {
+        console.error('Failure reason:', z);
+    }
+}
+i();
+```
 
 函数add在定义时位于顶层作用域，但通过.add访问时被视为属性。由于未开启-enable-property-obfuscation选项，导致add被使用时未进行混淆。
 
@@ -677,6 +677,15 @@ const person = {
   myAge: 18
 }
 person["myAge"] = 20;
+```
+
+``` TypeScript
+// file.ts
+// 混淆后
+const person = {
+    myAge: 18
+}
+person["m"] = 20;
 ```
 
 **解决方案**：
