@@ -60,7 +60,11 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 
 1. 在JsCardFormAbility.ets中，导入相关模块。
 
+<<<<<<< HEAD
     <!-- @[JSForm_JsCardFormAbility_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+=======
+   <!-- @[JSForm_JsCardFormAbility_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
+>>>>>>> 4d6e658ea15 (sample示例代码格式化)
     
     ``` TypeScript
     // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -74,7 +78,11 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 
 2. 在JsCardFormAbility.ets中，实现FormExtension生命周期接口。
 
+<<<<<<< HEAD
     <!-- @[JSForm_JsCardFormAbility_FormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+=======
+   <!-- @[JSForm_JsCardFormAbility_FormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+>>>>>>> 4d6e658ea15 (sample示例代码格式化)
     
     ``` TypeScript
     // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -173,7 +181,11 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 1. 卡片需要在[module.json5配置文件](../quick-start/module-configuration-file.md)中的extensionAbilities标签下，配置ExtensionAbility相关信息。FormExtensionAbility需要填写metadata元信息标签，其中键名称为固定字符串"ohos.extension.form"，资源为卡片的具体配置信息的索引。
    配置示例如下：
 
+<<<<<<< HEAD
     <!-- @[JSForm_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/module.json5) -->
+=======
+   <!-- @[JSForm_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/module.json5) --> 
+>>>>>>> 4d6e658ea15 (sample示例代码格式化)
     
     ``` JSON5
     {
