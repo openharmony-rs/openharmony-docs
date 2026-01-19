@@ -536,6 +536,16 @@ ArkTS提供了`private`, `protected`和`public`可访问修饰符。默认情况
 
 <!-- @[accessible_modifiers_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+class C1 {
+  count: number = 0
+
+  getCount(): number {
+    return this.count
+  }
+}
+```
+
 **【正例】**
 
 <!-- @[accessible_modifiers_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
