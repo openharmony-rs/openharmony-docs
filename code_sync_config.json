@@ -16986,17 +16986,17 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h",
 				"functions":[
 					{
-						"end_line":243,
+						"end_line":247,
 						"name":"Lazy_loading_of_text_list",
 						"start_line":15
 					},
 					{
-						"end_line":238,
+						"end_line":242,
 						"name":"Item_adapter",
 						"start_line":16
 					},
 					{
-						"end_line":239,
+						"end_line":243,
 						"name":"Remove_Item",
 						"start_line":17
 					}
@@ -17056,7 +17056,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemNode.h",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":60,
 						"name":"Provide_wrapper_class_list_items",
 						"start_line":15
 					}
@@ -17066,7 +17066,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemGroupNode.h",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":73,
 						"name":"Use_grouped_lists",
 						"start_line":16
 					}
