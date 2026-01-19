@@ -9342,8 +9342,6 @@ static createAnalysisAlbumRequest(context: Context, name: string, subtype: Album
 > 相册名的参数规格如下：
 > - 相册名字符串长度为[1, 255]。
 > - 不允许出现非法英文字符，包括：. .. \ / : * ? " ' ` < > | { } [ ]
-> - 英文字符不区分大小写。
-> - 不允许相册名重复命名。
 
 ​**模型约束**：此接口仅可在Stage模型下使用。
 
