@@ -14,16 +14,16 @@
 2. 在WgtImgUpdateEntryFormAbility.ts文件中导入相关模块。
 
    <!-- @[refresh_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
-    
-    ``` TypeScript
-    // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
-    import { Want } from '@kit.AbilityKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { fileIo } from '@kit.CoreFileKit';
-    import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { http } from '@kit.NetworkKit';
-    ```
+   
+   ``` TypeScript
+   // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
+   import { Want } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo } from '@kit.CoreFileKit';
+   import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { http } from '@kit.NetworkKit';
+   ```
 
 3. 在EntryFormAbility中的onAddForm生命周期回调中实现本地文件的刷新。
 
