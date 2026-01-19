@@ -102,6 +102,10 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 1. 引入模块。
 
    <!-- @[eventTypes_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingEventTypesAndElementInformation.ets) -->
+   
+   ``` TypeScript
+   import { xml, util } from '@kit.ArkTS'; // 使用util模块函数对文本编码
+   ```
 
 2. 对XML文本编码后调用XmlPullParser。
 
