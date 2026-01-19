@@ -158,13 +158,13 @@ test(a2);
   TestA.prop1;
   ```
   <!-- @[optionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
-
-  ```
-  // 混淆后：
+  
+  ``` TypeScript
+  // 混淆前：
   class TestA {
-    static i: number = 0;
+    static prop1: number = 0;
   }
-  TestA.i;
+  TestA.prop1;
   ```
 
 配置该选项后，所有属性名将被混淆，以下场景除外：
