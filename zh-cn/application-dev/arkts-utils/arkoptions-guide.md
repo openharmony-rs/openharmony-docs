@@ -64,7 +64,16 @@ let c: Global.ObjectType;
 
 ## maxFlowDepth
 
-### maxFlowDepth配置文件标签说明
+<!-- @[add_tscConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/build-profile.json5) --> 
+
+``` JSON5
+// 在工程名/build-profile.json5文件中。
+"arkOptions": {
+  "tscConfig": {
+    "maxFlowDepth": 2222
+  }
+}
+```
 
   arkOptions下tscConfig中maxFlowDepth字段配置文件标签说明：
 
