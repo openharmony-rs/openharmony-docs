@@ -60,6 +60,12 @@
 
 示例代码：
 <!-- @[registers_accumulator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function foo0(): number {
+  return 1;
+}
+```
 字节码中的相关指令：
 ```assembly
 .function any .foo(any a0, any a1, any a2) {
