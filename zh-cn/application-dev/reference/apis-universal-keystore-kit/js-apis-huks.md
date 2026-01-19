@@ -537,6 +537,12 @@ attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<H
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
+<!--RP6-->
+> **说明：** 
+>
+> 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认），如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。
+<!--RP6End-->
+
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                                          |
@@ -665,6 +671,12 @@ attestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 **需要权限**：ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
+
+<!--RP6-->
+> **说明：** 
+>
+> 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认），如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。
+<!--RP6End-->
 
 **参数：**
 
