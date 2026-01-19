@@ -247,7 +247,12 @@ pointX = 10; pointY = 0;
 空格应该突出关键字和重要信息。总体建议如下：
 1.   `if`, `for`, `while`, `switch`等关键字与左括号`(`之间加空格。
 2.   在函数定义和调用时，函数名称与参数列表的左括号`(`之间不加空格。
-3.   关键字`else`或`catch`与其之前的大括号`}`之间加空格。
+<!-- @[highlight_comma_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+const arr = [1, 2, 3]; // 数组初始化中的逗号后面加个空格，逗号前面不加空格
+myFunc(bar1, foo1, baz); // 函数的多个参数之间的逗号后加个空格，逗号前面不加空格
+```
 4.   任何打开大括号(`{`)之前加空格，有两个例外：
 a)   在作为函数的第一个参数或数组中的第一个元素时，对象之前不用加空格，例如：`foo({ name: 'abc' })`。
 b)   在模板中，不用加空格，例如：`abc${name}`。
