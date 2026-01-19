@@ -63,6 +63,12 @@
 
 <!-- @[test_afterRegexAlternationOperator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
 
+``` TypeScript
+let reg1 = /a(?:|x)$/;
+let reg2 = /a(?:x)?$/;
+let reg3 = /a(?:x){0,1}$/;
+```
+
 ### TypedArray.prototype.map触发内联缓存优化后，在回调中将数值number转为浮点数number与期望不一致
 
 ```ts
