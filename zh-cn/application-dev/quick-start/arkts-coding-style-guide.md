@@ -476,7 +476,19 @@ ArkTS中，浮点值包含一个小数点，不要求小数点之前或之后必
 
 **【反例】**
 
-<!-- @[assignValues_expressions_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[noESObject_lib_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/lib.ets) -->  
+
+``` TypeScript
+// lib.ets
+export interface I {
+  sum: number
+}
+
+export function getObject1(value: number): I {
+  let obj: I = { sum: value };
+  return obj
+}
+```
 <!-- @[noESObject_app_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
