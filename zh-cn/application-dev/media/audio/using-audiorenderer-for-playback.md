@@ -94,13 +94,29 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      }
      // ...
        let bufferSize: number = 0;
-       let file = await context.resourceManager.getRawFd('32_xiyouji.pcm');
+       let file = await context.resourceManager.getRawFd('S16LE_2_48000.pcm');
        writeDataCallback = (buffer: ArrayBuffer) => {
          let options: Options = {
-           offset: bufferSize,
+           offset: bufferSize + file.offset,
            length: buffer.byteLength
          };
-         // ...
+         if (bufferSize > file.length) {
+           return audio.AudioDataCallbackResult.INVALID;
+         }
+         try {
+           let bufferLength = fs.readSync(file.fd, buffer, options);
+           bufferSize += buffer.byteLength;
+           // 系统会判定buffer有效，正常播放
+           // ...
+           return audio.AudioDataCallbackResult.VALID;
+         } catch (error) {
+           console.error('Error reading file:', error);
+           // 系统会判定buffer无效，不播放
+           // ...
+           return audio.AudioDataCallbackResult.INVALID;
+         }
+       };
+       // ...
              audioRenderer.on('writeData', writeDataCallback);
      ```
 
@@ -116,26 +132,25 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      > - 在写数据回调中，避免与耗时业务耦合或等待其他业务操作，例如写数据时不要等待UI绘制。否则，可能会导致数据传输不及时，从而产生卡顿现象。
 
      <!-- @[init_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-     ``` TypeScript	
-     import { audio } from '@kit.AudioKit';
-     import { BusinessError } from '@kit.BasicServicesKit';	
-     import { fileIo as fs } from '@kit.CoreFileKit';	
-     import { common } from '@kit.AbilityKit';	
-     // ...	
-     class Options {	
-       public offset?: number;	
-       public length?: number;	
-     }	
-     // ...	
-       let bufferSize: number = 0;	
-       let file = await context.resourceManager.getRawFd('32_xiyouji.pcm');	
-       writeDataCallback = (buffer: ArrayBuffer) => {	
-         let options: Options = {	
-           offset: bufferSize,	
-           length: buffer.byteLength	
-         };	
-         // ...	
+     
+     ``` TypeScript
+     import { BusinessError } from '@kit.BasicServicesKit';
+     import { fileIo as fs } from '@kit.CoreFileKit';
+     import { common } from '@kit.AbilityKit';
+     // ...
+     class Options {
+       public offset?: number;
+       public length?: number;
+     }
+     // ...
+       let bufferSize: number = 0;
+       let file = await context.resourceManager.getRawFd('S16LE_2_48000.pcm');
+       writeDataCallback = (buffer: ArrayBuffer) => {
+         let options: Options = {
+           offset: bufferSize + file.offset,
+           length: buffer.byteLength
+         };
+         // ...
              audioRenderer.on('writeData', writeDataCallback);
      ```
 
@@ -257,20 +272,22 @@ let writeDataCallback: audio.AudioRendererWriteDataCallback;
 
 async function initArguments(context: common.UIAbilityContext) {
   let bufferSize: number = 0;
-  let file = await context.resourceManager.getRawFd('32_xiyouji.pcm');
+  let file = await context.resourceManager.getRawFd('S16LE_2_48000.pcm');
   writeDataCallback = (buffer: ArrayBuffer) => {
     let options: Options = {
-      offset: bufferSize,
+      offset: bufferSize + file.offset,
       length: buffer.byteLength
     };
-
+    if (bufferSize > file.length) {
+      return audio.AudioDataCallbackResult.INVALID;
+    }
     try {
       let bufferLength = fs.readSync(file.fd, buffer, options);
       bufferSize += buffer.byteLength;
-      // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充，否则会导致播放出现杂音。
-      if (bufferLength < buffer.byteLength) {
+      // 系统会判定buffer有效，正常播放
+      if (bufferSize > file.length) {
         let view = new DataView(buffer);
-        for (let i = bufferLength; i < buffer.byteLength; i++) {
+        for (let i = bufferSize - file.length; i < buffer.byteLength; i++) {
           // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
           view.setUint8(i, 0);
         }
