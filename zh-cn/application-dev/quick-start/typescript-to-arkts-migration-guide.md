@@ -2104,6 +2104,11 @@ declare module 'someModule' {
 
 <!-- @[no_ambientDecls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoAmbientDecls.ets) -->   
 
+``` TypeScript
+// 从原始模块中导入需要的内容
+import { normalize } from './ExportMod'
+```
+
 ### 不支持在模块名中使用通配符
 
 **规则：**`arkts-no-module-wildcards`
