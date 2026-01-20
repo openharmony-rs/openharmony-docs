@@ -1030,6 +1030,16 @@ ArkTS中只有接口可以被`implements`，类不允许被`implements`。
 
 <!-- @[impl_onlyIface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ImplOnlyIface.ets) -->   
 
+``` TypeScript
+interface C {
+  foo(): void
+}
+
+class C1 implements C {
+  foo() {}
+}
+```
+
 ### 不支持修改对象的方法
 
 **规则：**`arkts-no-method-reassignment`
