@@ -704,6 +704,16 @@ ArkTS语法禁止在接口（interface）中定义构造签名。作为替代方
 
 <!-- @[no_ctorSignaturesIface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesIface.ets) -->  
 
+``` TypeScript
+interface I {
+  create(s: string): I;
+}
+
+function fn(i: I) {
+  return i.create('hello');
+}
+```
+
 ### 不支持索引访问类型
 
 **规则：**`arkts-no-aliases-by-index`
