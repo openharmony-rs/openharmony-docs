@@ -1825,6 +1825,15 @@ ArkTS仅支持使用展开运算符展开数组、`Array`的子类和`TypedArray
 
 <!-- @[no_spreadOne_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoSpread.ts) -->   
 
+``` TypeScript
+function foo(x: number, y: number, z: number) {
+  // ...
+}
+
+let args: [number, number, number] = [0, 1, 2];
+foo(...args);
+```
+
 **ArkTS**
 
 <!-- @[no_spreadOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSpread.ets) -->    
