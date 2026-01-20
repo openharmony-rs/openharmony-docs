@@ -1085,6 +1085,17 @@ function test(str: string, obj: Record<string, Object>) {
 
 <!-- @[object_keys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
 
+``` TypeScript
+function test(str: string, obj: Record<string, Object>) {
+  for (let i of Object.keys(obj)) {
+    if (i == str) {
+      return true;
+    }
+  }
+  return false;
+}
+```
+
 ## arkts-no-destruct-assignment
 
 使用索引访问元素或手动赋值代替解构赋值。
