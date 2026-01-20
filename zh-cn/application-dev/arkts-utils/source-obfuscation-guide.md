@@ -124,6 +124,16 @@
        const fieldName = 'static' + 'Name';  // 动态构建属性名，需使用-keep-property-name staticName来保留该属性名。
        console.info(obj001[fieldName]);  // 使用方括号语法动态访问属性。
        ```
+       
+       ``` TypeScript
+       // 静态定义，动态访问：属性名在对象定义时是静态的，但访问时通过动态构建属性名（通常使用字符串拼接）来访问。
+       // example.ts
+       const obj001 = {
+         staticName: 'value'  // 静态定义属性。
+       };
+       const fieldName = 'static' + 'Name';  // 动态构建属性名，需使用-keep-property-name staticName来保留该属性名。
+       console.info(obj001[fieldName]);  // 使用方括号语法动态访问属性。
+       ```
 
        <!-- @[example_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->      
     2. 若代码中使用点语法访问未在ArkTS/TS/JS代码中定义的字段，比如访问native实现的so库，字段固定的json文件与数据库等场景：
