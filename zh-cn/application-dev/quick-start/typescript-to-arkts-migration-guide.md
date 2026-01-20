@@ -194,6 +194,16 @@ class U {
 
 <!-- @[struct_typing_caseThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->    
 
+``` TypeScript
+function greeter(u: U) {
+  console.info('To ' + u.name);
+  u.greet();
+}
+
+let t: T = new T();
+greeter(t); // 是否允许？
+```
+
 具体采用哪种方法，情况如下：
 
 - `T`和`U`没有继承关系或没有`implements`相同的接口，但由于它们具有相同的`public`API，它们“在某种程度上是相等的”，因此上述两个问题的答案都是“是”。
