@@ -863,6 +863,12 @@ class Y {
 
 <!-- @[interface_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->   
 
+``` TypeScript
+interface Style {
+  color: string;
+}
+```
+
 <!-- @[interface_set_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->   
 
 ``` TypeScript
