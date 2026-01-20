@@ -131,14 +131,7 @@ import * as add from './test1'
 ```
 
 ## 动态导入
-<!-- @[dynamic_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicImport.ets) -->    
 
-``` TypeScript
-// DynamicImport.ets
-import('libentry.so').then((entry:ESObject) => {
-  entry.default.add(2, 3);
-})
-```
 ### 直接导入
 
 <!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
@@ -148,13 +141,15 @@ import('libentry.so').then((entry:ESObject) => {
 export const add: (a: number, b: number) => number;
 ```
 
+<!-- @[dynamic_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicImport.ets) -->    
+
 ``` TypeScript
-// test.ets
+// DynamicImport.ets
 import('libentry.so').then((entry:ESObject) => {
-    entry.default.add(2, 3);
+  entry.default.add(2, 3);
 })
 ```
-
+### 间接导入
 <!-- @[dynamic_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicExport.ets) -->    
 
 ``` TypeScript
