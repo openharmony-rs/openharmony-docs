@@ -1035,7 +1035,21 @@ const jsonStr = JSON.stringify(obj); // prop1 和 prop2 会被混淆，应该被
 }
 ```
 
-<!-- @[optionExample_keepPropertyName3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->      
+<!-- @[optionExample_keepPropertyName3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+
+``` TypeScript
+import jsonData from './test.json';
+// ...
+let jsonProp = jsonData.jsonProperty; // jsonProperty应该被保留。
+
+class jsonTest {
+  prop1: string = '';
+  prop2: number = 0
+}
+
+let obj = new jsonTest();
+const jsonStr = JSON.stringify(obj); // prop1 和 prop2 会被混淆，应该被保留。
+```
 
 5.使用到的数据库相关的字段，需要手动保留。例如，数据库键值对类型（ValuesBucket）中的属性：
 
