@@ -311,6 +311,16 @@ class C {
 
 <!-- @[ts_no_ctor_prop_decls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
 
+``` TypeScript
+class Person {
+  constructor(readonly name: string) {}
+
+  getName(): string {
+    return this.name;
+  }
+}
+```
+
 **建议改法**
 
 <!-- @[no_ctor_prop_decls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
