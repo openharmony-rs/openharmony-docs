@@ -938,6 +938,12 @@ let z = greet<string>();
 
 <!-- @[no_untypedCaseFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->   
 
+``` TypeScript
+abstract class A {}
+class C extends A {}
+let o6: C = {}; // 或 let o6: C = new C()。
+```
+
 **例子5**
 
 **TypeScript**
