@@ -255,6 +255,14 @@ class TestMenu {
 
 <!-- @[ts_no_indexed_signatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
 
+``` TypeScript
+function foo1(data: { [key: string]: string }) {
+  data['a'] = 'a';
+  data['b'] = 'b';
+  data['c'] = 'c';
+}
+```
+
 **建议改法**
 
 <!-- @[no_indexed_signatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
