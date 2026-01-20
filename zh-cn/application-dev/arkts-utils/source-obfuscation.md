@@ -920,6 +920,28 @@ export class MyClass05 {
 
 <!-- @[optionExample_useKeepInSource8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
 
+``` TypeScript
+// example.ts。
+const myMethodName = "myMethod";
+
+// 11，aa，myMethod不会被收集到白名单中。
+class MyClass06 {
+  // @KeepSymbol
+  11:11;
+  // @KeepSymbol
+  'aa':'aa';
+  // @KeepSymbol
+  [myMethodName](){}
+}
+
+// RED不会被收集到白名单中。
+enum MyEnum {
+  // @KeepSymbol
+  'RED',
+  BLUE
+}
+```
+
 ## 保留选项
 
 开启混淆后，代码中的方法、属性或路径被混淆。但是在程序运行时，如果访问未混淆的方法、属性或路径，可能导致功能不可用。因此需要根据不同的场景配置保留选项。
