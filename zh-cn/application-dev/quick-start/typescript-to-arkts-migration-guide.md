@@ -954,6 +954,15 @@ ArkTS不支持使用对象字面量声明类型，建议使用类或接口声明
 
 <!-- @[no_objLiteralsAsTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoObjLiteralsAsTypes.ts) -->   
 
+``` TypeScript
+let o: { x: number, y: number } = {
+  x: 2,
+  y: 3
+}
+
+type S = Set<{ x: number, y: number }>
+```
+
 **ArkTS**
 
 <!-- @[no_objLiteralsAsTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoObjLiteralsAsTypes.ets) -->   
