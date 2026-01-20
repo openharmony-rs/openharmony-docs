@@ -530,6 +530,17 @@ console.info(obj['t' + '1']); // t1应该被保留。
 
 <!-- @[optionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->       
 
+``` TypeScript
+// 混淆配置：
+// -enable-property-obfuscation
+// -enable-string-property-obfuscation
+obj2.t = "0";
+console.info(obj2['t']); // 此时，'t'会被正确混淆，t可以选择性保留。
+
+obj2['v'] = "0";
+console.info(obj2['v']); // 此时，'v'会被正确混淆，v可以选择性保留。
+```
+
 2.对于间接导出的场景，例如`export MyClass`和`let a = MyClass; export {a};`，如果不想混淆它们的属性名，那么需要使用[保留选项](#保留选项)来保留这些属性名。另外，对于直接导出的类或对象的属性的属性名，例如下面例子中的`firstName`和`personAge`，如果不想混淆它们，那么也需要使用[保留选项](#保留选项)来保留这些属性名。
 
 <!-- @[optionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->            
