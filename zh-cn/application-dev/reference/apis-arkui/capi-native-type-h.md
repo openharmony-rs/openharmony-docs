@@ -10278,7 +10278,7 @@ ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t t
 
 | 参数项 | 描述                           |
 | -- |------------------------------|
-| int32_t | 指定动效的转场方式。值为0表示无动效转场，值为1时表示淡入淡出动效转场。|
+| int32_t type | 指定动效的转场方式。值为0表示无动效转场，值为1时表示淡入淡出动效转场。|
 
 **返回：**
 
