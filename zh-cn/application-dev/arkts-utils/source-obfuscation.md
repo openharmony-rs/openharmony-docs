@@ -1070,7 +1070,24 @@ const valueBucket: ValuesBucket = {
 
 示例：
 
-<!-- @[optionExample_keepPropertyName5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->         
+<!-- @[optionExample_keepPropertyName5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->       
+
+``` TypeScript
+function CustomDecorator(target: Object, propertyKey: string) {}
+function MethodDecorator(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {}
+function ParamDecorator(target: Object, propertyKey: string, parameterIndex: number) {}
+
+class A {
+  // 1.成员变量装饰器。
+  @CustomDecorator
+  propertyName1: string = ""   // propertyName1 需要被保留。
+  // 2.成员方法装饰器。
+  @MethodDecorator
+  methodName1() {} // methodName1 需要被保留。
+  // 3.方法参数装饰器。
+  methodName2(@ParamDecorator param: string): void {} // methodName2 需要被保留。
+}
+```
 
 7.使用到的数据请求相关的字段需要手动保留，例如，传递给数据请求方的字段需要手动保留：
 
