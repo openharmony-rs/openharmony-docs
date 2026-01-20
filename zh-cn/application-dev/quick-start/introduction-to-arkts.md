@@ -965,6 +965,14 @@ s.push(55); // 将会产生编译时错误
 
 <!-- @[generic_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->   
 
+``` TypeScript
+function last(x: number[]): number {
+  return x[x.length - 1];
+}
+// ...
+  last([1, 2, 3]); // 3
+```
+
 如果需要为任何数组定义相同的函数，使用类型参数将该函数定义为泛型：
 
 <!-- @[generic_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->   
