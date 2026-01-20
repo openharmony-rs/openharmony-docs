@@ -17,6 +17,20 @@
 
 <!-- @[ts_identifiers_as_prop_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->     
 
+``` TypeScript
+interface W {
+  bundleName: string
+  action: string
+  entities: string[]
+}
+
+let wantInfo: W = {
+  'bundleName': 'com.huawei.hmos.browser',
+  'action': 'ohos.want.action.viewData',
+  'entities': ['entity.system.browsable']
+}
+```
+
 **建议改法**
 
 <!-- @[identifiers_as_prop_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->     
