@@ -1046,6 +1046,25 @@ ArkTS不支持修改对象的方法。在静态语言中，对象布局固定，
 
 <!-- @[no_reassignMethod_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMethodreassignment.ts) -->   
 
+``` TypeScript
+class C {
+  foo() {
+    console.info('foo');
+  }
+}
+
+function bar() {
+  console.info('bar');
+}
+
+let c1 = new C();
+let c2 = new C();
+c2.foo = bar;
+
+c1.foo(); // foo。
+c2.foo(); // bar。
+```
+
 **ArkTS**
 
 <!-- @[no_reassignMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoMethodreassignment.ets) -->   
