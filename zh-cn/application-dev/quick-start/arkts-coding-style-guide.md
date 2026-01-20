@@ -533,6 +533,27 @@ console.info(message2);
 
 <!-- @[many_properties_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+interface I {
+  name: string
+  age: number
+  value: number
+  sum: number
+  foo: boolean
+  bar: boolean
+}
+
+// ...
+let obj2: I = {
+  name: 'tom',
+  age: 16,
+  value: 1,
+  sum: 2,
+  foo: true,
+  bar: false
+}
+```
+
 ### 把`else`/`catch`放在`if`/`try`代码块关闭括号的同一行
 
 **【级别】建议**
