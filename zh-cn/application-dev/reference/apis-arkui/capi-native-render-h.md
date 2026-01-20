@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供NativeRender接口的类型定义。
+提供NativeRender接口的类型定义。更多详细介绍请参考[构建渲染节点](../../ui/ndk-embed-render-components.md)。
 
 **引用文件：** <arkui/native_render.h>
 
