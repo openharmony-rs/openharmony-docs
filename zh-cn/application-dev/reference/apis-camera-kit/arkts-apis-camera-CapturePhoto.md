@@ -1,4 +1,4 @@
-# Interface (PhotoEx)
+# Interface (CapturePhoto)
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
@@ -49,7 +49,7 @@ release(): Promise\<void\>
 ```ts
 import { camera } from '@kit.CameraKit';
 
-async function releasePhotoEx(photoEx: camera.PhotoEx): Promise<void> {
-  await photoEx.release();
+async function releaseCapturePhoto(capturePhoto: camera.CapturePhoto): Promise<void> {
+  await capturePhoto.release();
 }
 ```
