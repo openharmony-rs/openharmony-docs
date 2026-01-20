@@ -1094,6 +1094,22 @@ let e2 = (new Number(5.0)) instanceof Number; // true。
 
 <!-- @[as_casts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/AsCasts.ets) -->   
 
+``` TypeScript
+class TestShape {}     
+class TestCircle extends TestShape { public x: number = 5 }     
+
+
+function createShape(): TestShape {     
+  return new TestCircle();     
+}     
+
+
+let c1 = createShape() as TestCircle;
+
+// 创建Number对象，获得预期结果：
+let e1 = (new Number(5.0)) instanceof Number; // true
+```
+
 ### 不支持JSX表达式
 
 **规则：**`arkts-no-jsx`
