@@ -788,6 +788,15 @@ class Derived extends Base {
 
 <!-- @[object_literal_as_class_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
+``` TypeScript
+class C {
+  public n: number = 0;
+  public s: string = '';
+}
+
+let c: C = {n: 42, s: 'foo'};
+```
+
 ArkTS是静态类型语言，如上述示例所示，对象字面量只能在可以推导出该字面量类型的上下文中使用。其他正确的例子如下所示：
 
 <!-- @[structural_typing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
