@@ -200,6 +200,15 @@ test(a2);
 * 字符串字面量属性名不会被混淆，并且与其同名的属性名也不会被混淆。例如，下面例子中的`exampleName`和`exampleAge`不会被混淆。
 
   <!-- @[optionExample_enablePropertyObfuscation3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  
+  ``` TypeScript
+  // example.ts
+  let person = {"exampleName": "abc"};
+  person["exampleAge"] = 22;
+  
+  let person1 = {exampleName: "aaa"};
+  let name = person1.exampleName;
+  ```
 
 * 注解成员名不会被混淆。例如，下面例子中的`authorName`和`revision`不会被混淆。
 
