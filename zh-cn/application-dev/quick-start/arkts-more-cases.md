@@ -550,6 +550,15 @@ let t: Test = { value: 2 };
 
 <!-- @[remove_the_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->    
 
+``` TypeScript
+// 去除构造函数
+class Test {
+  public value: number = 1
+}
+
+let t: Test = { value: 2 };
+```
+
 **建议改法2**
 
 <!-- @[use_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->    
