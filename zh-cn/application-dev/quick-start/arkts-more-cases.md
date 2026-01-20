@@ -149,6 +149,20 @@ function printProperties(obj: Record<string, Object>) {
 
 <!-- @[ts_no_call_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->      
 
+``` TypeScript
+interface I {
+  (value: string): void;
+}
+
+function foo(fn: I) {
+  fn('abc');
+}
+
+foo((value: string) => {
+  console.info(value);
+})
+```
+
 **建议改法**
 
 <!-- @[no_call_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
