@@ -220,7 +220,7 @@ let c: ColorSet = ColorSet.Red;
 ``` TypeScript
 enum ColorSet { White = 0xFF, Grey = 0x7F, Black = 0x00 }
 let c: ColorSet = ColorSet.Black;
-``
+```
 
 **`Union`类型**
 
@@ -1852,6 +1852,22 @@ let res3: number = last([1, 2, 3]);
 泛型类型的类型参数可以设置默认值，这样无需指定实际类型实参，直接使用泛型类型名称即可。以下示例展示了类和函数的这一特性。
 
 <!-- @[generic_defaultValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->
+
+``` TypeScript
+class SomeType {}
+interface Interface <T1 = SomeType> { }
+class Base <T2 = SomeType> { }
+class Derived1 extends Base implements Interface { }
+// Derived1在语义上等价于Derived2
+class Derived2 extends Base<SomeType> implements Interface<SomeType> { }
+
+function foo<T = number>(): void {
+  // ...
+}
+foo();
+// 此函数在语义上等价于下面的调用
+foo<number>();
+```
 
 ## 空安全
 
