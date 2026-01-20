@@ -1332,6 +1332,12 @@ class C1 {
 
 <!-- @[annotation_export_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.ets) -->   
 
+``` TypeScript
+// a.ets
+export @interface MyAnno2 {}
+export @interface ClassAuthor2 {}
+```
+
 <!-- @[annotation_export_example_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->   
 
 ``` TypeScript
