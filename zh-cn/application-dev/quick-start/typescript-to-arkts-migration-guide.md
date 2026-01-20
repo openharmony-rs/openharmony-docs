@@ -1048,6 +1048,30 @@ ArkTS不支持修改对象的方法。在静态语言中，对象布局固定，
 
 <!-- @[as_casts_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/AsCasts.ts) -->   
 
+``` TypeScript
+class testShape { }
+class testCircle extends testShape { x: number = 5 }
+class testSquare extends testShape { y: string = 'a' }
+
+function createShape(): testShape {
+    return new testCircle();
+}
+
+let c1 = <testCircle>createShape();
+
+let c2 = createShape() as testCircle;
+
+// 如果转换错误，不会产生编译时或运行时报错。
+let c3 = createShape() as testSquare;
+console.info(c3.y); // undefined。
+
+// 在TS中，由于`as`关键字不会在运行时生效，所以`instanceof`的左操作数不会在运行时被装箱成引用类型。
+let e1 = (5.0 as Number) instanceof Number; // false。
+
+// 创建Number对象，获得预期结果：
+let e2 = (new Number(5.0)) instanceof Number; // true。
+```
+
 **ArkTS**
 
 <!-- @[as_casts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/AsCasts.ets) -->   
