@@ -154,6 +154,24 @@ let s = +'42'; // 编译时错误
 
 <!-- @[struct_typing_caseOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->    
 
+``` TypeScript
+class T {
+  public name: string = ''
+
+  public greet(): void {
+    console.info('Hello, ' + this.name);
+  }
+}
+
+class U {
+  public name: string = ''
+
+  public greet(): void {
+    console.info('Greetings, ' + this.name);
+  }
+}
+```
+
 类型为`T`的值是否能赋给类型为`U`的变量。
 
 <!-- @[struct_typing_caseTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->    
