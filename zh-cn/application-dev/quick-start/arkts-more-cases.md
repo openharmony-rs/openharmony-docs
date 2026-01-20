@@ -563,6 +563,19 @@ let t: Test = { value: 2 };
 
 <!-- @[use_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->    
 
+``` TypeScript
+// 使用new
+class Test {
+  public value: number = 1
+
+  constructor(value: number) {
+    this.value = value;
+  }
+}
+
+let t: Test = new Test(2);
+```
+
 **原因**
 
 <!-- @[ts_no_structural_typing_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
