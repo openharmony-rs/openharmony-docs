@@ -483,7 +483,7 @@ module.json5配置示例如下：
 
 在应用开发中，有以下两种方式可判断应用是否处于自由悬浮窗口模式。
 
-- 可通过[getWindowStatus()](../reference/arkts-apis-window-Window.md#getwindowstatus12)直接查询当前的窗口模式。当WindowStatusType为FLOATING时，表示应用处于自由悬浮窗口模式。
+- 可通过[getWindowStatus()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12)直接查询当前的窗口模式。当WindowStatusType为FLOATING时，表示应用处于自由悬浮窗口模式。
 
   不同返回值及对应的窗口模式如下表所示：
 
