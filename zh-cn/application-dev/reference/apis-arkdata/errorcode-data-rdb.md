@@ -75,11 +75,11 @@ Failed to open or delete the database by an invalid database path.
 
 **错误信息**
 
-Failed to open the database because it is corrupted.
+The current operation failed because the database is corrupted.
 
 **错误描述**
 
-数据库异常，打开失败。
+数据库异常，当前操作失败。
 
 **可能原因**
 
@@ -130,19 +130,19 @@ ResultSet is empty or column index is out of bounds.
 2. 检查结果集当前行号、列号是否超出范围。
 3. 检查当前列数据类型是否支持。
 
-## 14800014 数据库或结果集关闭
+## 14800014 目标实例已关闭
 
 **错误信息**
 
-The RdbStore or ResultSet is already closed.
+The target instance is already closed.
 
 **错误描述**
 
-数据库或结果集关闭。
+目标实例已关闭。
 
 **可能原因**
 
-RdbStore或者ResultSet等带有close接口的对象，已调用过close或者没有打开成功。
+实例未成功打开，或者所属实例已关闭（如RdbStore、ResultSet对象已调用close方法，Transaction对象已调用commit或rollback方法）。
 
 **处理步骤**
 
