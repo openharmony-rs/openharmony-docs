@@ -41,10 +41,12 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 1. 查询返听能力并创建AudioLoopback实例，音频返听模式可以查看[AudioLoopbackMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackmode20)。
 
    > **说明：**
-   >
+   > 
    > 返听需要申请麦克风权限ohos.permission.MICROPHONE，申请方式参考：[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
-   ```ts
+   <!-- @[create_AudioLoopback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+   ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -53,8 +55,8 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    let isSupported = audio.getAudioManager().getStreamManager().isAudioLoopbackSupported(mode);
    if (isSupported) {
      audio.createAudioLoopback(mode).then((loopback) => {
-       audioLoopback = loopback;
        console.info('Succeeded in creating audio loopback.');
+       audioLoopback = loopback;
      }).catch((err: BusinessError) => {
        console.error(`Failed to create audio loopback. Code: ${err.code}, message: ${err.message}`);
      });
@@ -64,10 +66,12 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 2. 调用[getStatus](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getstatus20)方法，查询当前返听状态。
 
    > **注意：**
-   >
+   > 
    > 音频返听状态受音频焦点、低时延管控、采集与播放设备等因素影响。
 
-   ```ts
+   <!-- @[get_Status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+   ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
 
    audioLoopback.getStatus().then((status: audio.AudioLoopbackStatus) => {
@@ -80,116 +84,182 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 3. 调用[setVolume](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setvolume20)方法，设置音频返听音量。
 
    > **注意：**
-   >
+   > 
    > - 在启用返听前设置音量，音量将在启用返听成功后生效。
    > - 在启用返听后设置音量，音量将立即生效。
    > - 启用返听前未设置音量，启用返听时将采用默认音量0.5。
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   audioLoopback.setVolume(0.5).then(() => {
-     console.info('Succeeded in setting volume.');
-   }).catch((err: BusinessError) => {
-     console.error(`Failed to set volume. Code: ${err.code}, message: ${err.message}`);
-   });
+   <!-- @[set_Volume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
+   // ...
+       try {
+         await audioLoopback.setVolume(volume);
+         console.info(`Invoke setVolume ${volume} succeeded.`);
+         // ...
+       } catch (err) {
+         console.error(`Invoke setVolume failed, code is ${err.code}, message is ${err.message}.`);
+         // ...
+       }
    ```
 
 4. 从API21开始，支持调用[setReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setreverbpreset21)方法，设置音频返听的混响模式。
 
    > **注意：**
-   >
+   > 
    > - 在启用返听前设置混响模式，混响模式将在启用返听成功后生效。
    > - 在启用返听后设置混响模式，混响模式将立即生效。
    > - 启用返听前未设置混响模式，启用返听时将采用默认混响模式[THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21)。
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    try {
-      audioLoopback.setReverbPreset(audio.AudioLoopbackReverbPreset.THEATER);
-    } catch (err) {
-      console.error(`Failed to set reverb preset. Code: ${err.code}, message: ${err.message}`);
-    }
+   <!-- @[set_ReverbPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
+   // ...
+       try {
+         audioLoopback.setReverbPreset(preset);
+         console.info(`setReverbPreset( ${preset} succeeded.`);
+         // ...
+         currentReverbPreset = audioLoopback.getReverbPreset(); // 查询当前的混响模式，防止设置失败。
+       } catch (err) {
+         console.error(`setReverbPreset( failed, code is ${err.code}, message is ${err.message}.`);
+         // ...
+       }
    ```
 
 5. 从API21开始，支持调用[getReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getreverbpreset21)方法，查询当前的音频返听的混响模式。
 
    > **注意：**
-   >
+   > 
    > 若未设置混响模式，查询得到将是默认混响模式[THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21)。
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    try {
-      let reverbPreset = audioLoopback.getReverbPreset();
-    } catch (err) {
-      console.error(`Failed to get reverb preset. Code: ${err.code}, message: ${err.message}`);
-    }
+   <!-- @[get_ReverbPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
+   // ...
+       try {
+         let reverbPreset = audioLoopback.getReverbPreset();
+       } catch (err) {
+         console.error(`getReverbPreset:ERROR: ${err}`);
+         // ...
+       }
    ```
 
 6. 从API21开始，支持调用[setEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setequalizerpreset21)方法，设置音频返听的均衡器类型。
 
    > **注意：**
-   >
+   > 
    > - 在启用返听前设置均衡器类型，均衡器类型将在启用返听成功后生效。
    > - 在启用返听后设置均衡器类型，均衡器类型将立即生效。
    > - 启用返听前未设置均衡器类型，启用返听时将采用默认均衡器类型[FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21)。
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    try {
-      audioLoopback.setEqualizerPreset(audio.AudioLoopbackEqualizerPreset.FULL);
-    } catch (err) {
-      console.error(`Failed to set equalizer preset. Code: ${err.code}, message: ${err.message}`);
-    }
+   <!-- @[set_EqualizerPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   try {
+     audioLoopback.setEqualizerPreset(audio.AudioLoopbackEqualizerPreset.FULL);
+   } catch (err) {
+     console.error(`setEqualizerPreset :ERROR: ${err}`);
+   }
    ```
 
 7. 从API21开始，支持调用[getEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getequalizerpreset21)方法，查询当前的音频返听的均衡器类型。
 
    > **注意：**
-   >
+   > 
    > 若未设置均衡器类型，查询得到将是默认均衡器类型[FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21)。
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    try {
-      let reverbPreset = audioLoopback.getEqualizerPreset();
-    } catch (err) {
-      console.error(`Failed to get equalizer preset. Code: ${err.code}, message: ${err.message}`);
-    }
+   <!-- @[get_EqualizerPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
+   // ...
+       try {
+         let equalizerPreset = audioLoopback.getEqualizerPreset();
+       } catch (err) {
+         console.error(`getEqualizerPreset:ERROR: ${err}`);
+         // ...
+       }
    ```
 
 8. 调用[enable](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#enable20)方法，启用或禁用音频返听功能。
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    audioLoopback.enable(true).then((isSuccess) => {
-      if (isSuccess) {
-        console.info('Succeeded in using enable function.');
-      } else {
-        console.info('Failed to use enable function.');
-      }
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to use enable function. code: ${err.code}, message: ${err.message}`);
-    });
-
-    audioLoopback.enable(false).then((isSuccess) => {
-      if (isSuccess) {
-        console.info('Succeeded in using enable function.');
-      } else {
-        console.info('Failed to use enable function.');
-      }
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to use enable function. code: ${err.code}, message: ${err.message}`);
-    });
+   <!-- @[enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
+   // ...
+   // 设置监听事件，启用音频返听。
+   async function enable(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+     if (audioLoopback !== undefined) {
+       try {
+         let status = await audioLoopback.getStatus();
+         if (status == audio.AudioLoopbackStatus.AVAILABLE_IDLE) {
+           // 注册监听。
+           audioLoopback.on('statusChange', statusChangeCallback);
+           // 启动返听。
+           let success = await audioLoopback.enable(true);
+           if (success) {
+             console.info('Invoke enable succeeded');
+             // ...
+           } else {
+             status = await audioLoopback.getStatus();
+             statusChangeCallback(status);
+           }
+         } else {
+           statusChangeCallback(status);
+         }
+       } catch (err) {
+         console.error(`Invoke enable failed, code is ${err.code}, message is ${err.message}.`);
+         // ...
+       }
+     } else {
+       console.error('Audio loopback not created.');
+       // ...
+     }
+   }
+   
+   // 禁用音频返听，关闭监听事件。
+   async function disable(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+     if (audioLoopback !== undefined) {
+       try {
+         let status = await audioLoopback.getStatus();
+         if (status == audio.AudioLoopbackStatus.AVAILABLE_RUNNING) {
+           // 禁用返听。
+           let success = await audioLoopback.enable(false);
+           if (success) {
+             console.info('Invoke disable succeeded');
+             // ...
+             // 关闭监听。
+             audioLoopback.off('statusChange', statusChangeCallback);
+           } else {
+             status = await audioLoopback.getStatus();
+             statusChangeCallback(status);
+           }
+         } else {
+           statusChangeCallback(status);
+         }
+       } catch (err) {
+         console.error(`Invoke disable failed, code is ${err.code}, message is ${err.message}.`);
+         // ...
+       }
+     } else {
+       console.error('Audio loopback not created.');
+       // ...
+     }
+   }
    ```
 
 ### 完整示例
 
 使用AudioLoopback启用音频低时延返听示例代码如下所示。
 
-```ts
+<!-- @[all_audioLoopback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+
+``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
