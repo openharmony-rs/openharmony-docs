@@ -482,6 +482,18 @@ ArkTS不支持对象类型中的构造签名。改用类。
 
 <!-- @[no_ctorSignatures_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorSignaturesType.ts) -->   
 
+``` TypeScript
+class SomeObject { }
+
+type SomeConstructor = {
+  new(s: string): SomeObject
+}
+
+function fn(ctor: SomeConstructor) {
+  return new ctor('hello');
+}
+```
+
 **ArkTS**
 
 <!-- @[no_ctorSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesType.ets) -->   
