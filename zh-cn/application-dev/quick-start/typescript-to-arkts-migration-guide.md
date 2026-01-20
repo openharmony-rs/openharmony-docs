@@ -1922,6 +1922,11 @@ with (Math) { // 编译时错误, 但是仍能生成JavaScript代码
 
 <!-- @[no_with](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoWith.ets) -->   
 
+``` TypeScript
+let r: number = 42;
+let area: number = Math.PI * r * r;
+```
+
 ### 限制`throw`语句中表达式的类型
 
 **规则：**`arkts-limited-throw`
