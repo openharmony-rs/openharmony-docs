@@ -1083,6 +1083,13 @@ function foo(a: A | null) {
 
 <!-- @[module_import_as](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
 
+``` TypeScript
+import * as Utils from './utils';
+// ...
+Utils.X // 表示来自Utils的X
+Utils.Y // 表示来自Utils的Y
+```
+
 导入绑定`{ ident1, ..., identN }`表示将导出的实体与指定名称绑定，该名称可以用作简单名称：
 
 <!-- @[module_import_ident](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
