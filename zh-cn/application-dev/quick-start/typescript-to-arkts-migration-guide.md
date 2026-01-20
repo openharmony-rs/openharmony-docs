@@ -956,6 +956,14 @@ let z = greet<string>();
 
 <!-- @[no_untypedCaseThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->   
 
+``` TypeScript
+class C3 {
+  public n: number = 0;
+  public s: string = '';
+}
+let o5: C3 = {n: 42, s: 'foo'};
+```
+
 **例子4**
 
 **TypeScript**
