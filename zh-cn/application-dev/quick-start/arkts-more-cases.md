@@ -1061,6 +1061,12 @@ export { C }
 
 <!-- @[no_type_query_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/module2.ets) -->  
 
+``` TypeScript
+// 文件名：module2.ets
+import { C } from './module1'
+let t: C = { value: 123 };
+```
+
 ## arkts-no-in
 
 ### 使用Object.keys判断属性是否存在
