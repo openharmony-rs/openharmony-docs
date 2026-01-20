@@ -902,6 +902,20 @@ let y: Array<string> = ['a', 'b', 'c'];
 
 <!-- @[finally_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+function foo5() {
+  try {
+    // ...
+    return 1;
+  } catch (err) {
+    // ...
+    return 2;
+  } finally {
+    console.info('XXX!');
+  }
+}
+```
+
 <!-- @[use_T[]_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
