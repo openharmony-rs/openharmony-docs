@@ -11166,7 +11166,7 @@ try {
 | deviceId<sup>19+</sup>      | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是  | 是  | 设备ID。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23            |
 | deviceName<sup>19+</sup>    | string  | 是  | 是  | 设备名称。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23            |
 | isLocalSensor<sup>19+</sup> | boolean | 是  | 是  | 是否本地传感器。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23         |
-| isMockSensor<sup>23+</sup> | boolean | 是  | 是  | 是否模拟传感器。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23         |
+| isMockSensor<sup>23+</sup> | boolean | 是  | 是  | 是否模拟传感器。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23        |
 
 ## AccelerometerResponse
 
