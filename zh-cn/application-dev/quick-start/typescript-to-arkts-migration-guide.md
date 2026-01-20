@@ -15,6 +15,13 @@ ArkTS规范约束了TypeScript（简称TS）中影响开发正确性或增加运
 
 <!-- @[sample_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->    
 
+``` TypeScript
+function addTen(x: number): number {
+  var ten = 10;
+  return x + ten;
+}
+```
+
 重构后的代码：
 
 <!-- @[sample_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/pages/Index.ets) -->     
