@@ -20,10 +20,10 @@
    - 使用应用证书凭据对数据进行签名、验签。
    - 卸载指定的应用证书凭据。
 
-2. 支持安装的应用证书凭据算法类型和签名验签支持的参数组合。
+2. 安装应用证书凭据支持的算法类型和签名验签支持的参数组合。
 
    - 证书管理安装凭据及使用凭据中的密钥进行签名、验签，依赖[密钥管理服务](../UniversalKeystoreKit/huks-overview.md)（HUKS）能力。
-   - 证书管理支持的算法为其子集，当前仅支持RSA、ECC及SM2算法类型的私有凭据安装及使用。
+   - 证书管理支持的算法为HUKS支持的子集，当前仅支持RSA、ECC及SM2算法类型的私有凭据安装及使用。
    - 签名、验签支持的参数组合，详见HUKS声明的[签名/验签介绍及算法规格](../UniversalKeystoreKit/huks-signing-signature-verification-overview.md)中RSA、ECC及SM2的描述。
 
 ## 接口说明
@@ -69,7 +69,7 @@
    
 3. 安装应用证书凭据，获取应用证书凭据，并使用应用证书凭据进行签名、验签，最后删除应用证书凭据。
 
-<!-- @[certificate_management_development_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/pages/CertManagerGuidelines.ets) -->
+   <!-- @[certificate_management_development_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/pages/CertManagerGuidelines.ets) -->
 
 ``` TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';
