@@ -56,15 +56,15 @@
 | CONSTRAINT         | 1      | 允许图像内容使用一些扩展范围。|
 | STANDARD            | 2      | 允许图像内容动态单位限制在标准范围内，显示SDR效果，需要使用的解码格式UNKNOWN或者RGBA_8888。|
 
-## 属性
+## MovingPhotoViewAttribute
   
 ### setPlaybackStrategy<sup>23+</sup>
 
-setPlaybackStrategy(strategy: media.PlaybackStrategy)
+setPlaybackStrategy(strategy: media.PlaybackStrategy): MovingPhotoViewAttribute
 
 设置动态照片边播边处理策略。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -86,7 +86,7 @@ setPlaybackStrategy(strategy: media.PlaybackStrategy)
 
 **示例：**
 
-系统应用设置动态照片解码格式、HDR效果格式和边播边处理。
+系统应用设置动态照片解码格式、HDR效果格式和边播边处理策略。
 
 ```ts
 // 该示例只展示参数用法，具体可以执行用例参考动态照片公开接口文档
@@ -277,11 +277,11 @@ enableAutoPlay(enabled: boolean)
 
 ### notifyMovingPhotoTransition<sup>23+</sup>
  	 
-notifyMovingPhotoTransition()
+notifyMovingPhotoTransition(): void
 
 通知组件执行封面图的过渡动效。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
