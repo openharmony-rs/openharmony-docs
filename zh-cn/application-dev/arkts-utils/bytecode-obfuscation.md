@@ -550,6 +550,12 @@ let d = new MyClass();      // MyClass 可以被正确地混淆。
 
 <!-- @[dtsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
 
+``` TypeScript
+// src/main/cpp/types/libentry/Index.d.ts。
+declare function testNapi2(): void;
+declare function testNapi3(): void;
+```
+
 <!-- @[etsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->       
 
 ### -keep-file-name
