@@ -2089,6 +2089,12 @@ import fileContent from 'some.txt!text'
 
 <!-- @[no_moduleWildCards](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoModuleWildcards.ets) -->   
 
+``` TypeScript
+// 使用代码。
+import * as m from './ExportMod'
+console.info('N.foo called: ' + m.N.foo(42));
+```
+
 ### 不支持通用模块定义(UMD)
 
 **规则：**`arkts-no-umd`
