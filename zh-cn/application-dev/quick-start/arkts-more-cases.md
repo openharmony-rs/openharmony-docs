@@ -219,6 +219,34 @@ console.info(t.createController()!.value);
 
 <!-- @[no_ctor_signatures_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
 
+``` TypeScript
+class Controller {
+  public value: string = ''
+
+  constructor(value: string) {
+    this.value = value;
+  }
+}
+
+type ControllerConstructor = () => Controller;
+
+class TestMenu {
+  public controller: ControllerConstructor = () => {
+    return new Controller('abc');
+  }
+
+  createController() {
+    if (this.controller) {
+      return this.controller();
+    }
+    return null;
+  }
+}
+// ...
+  let t: TestMenu = new TestMenu();
+  console.info(t.createController()!.value);
+```
+
 ## arkts-no-indexed-signatures
 
 使用Record类型进行替代。
