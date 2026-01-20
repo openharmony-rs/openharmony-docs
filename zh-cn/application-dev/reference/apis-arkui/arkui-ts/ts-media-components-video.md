@@ -466,7 +466,7 @@ onFullscreenChange(callback: Callback\<FullscreenInfo>)
 
 ## VideoController
 
-一个VideoController对象可以控制一个或多个Video，可用视频播放实例请参考[@ohos.multimedia.media](../../apis-media-kit/arkts-apis-media.md)。
+一个VideoController对象可以控制一个或多个Video。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
