@@ -2095,6 +2095,14 @@ let p = Pt.Point.origin;
 **ArkTS**
 
  <!-- @[no_exportAssignOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->   
+ 
+ ``` TypeScript
+ // module1。
+ export class Point {
+   constructor(x: number, y: number) {}
+   public static origin = new Point(0, 0)
+ }
+ ```
 
 <!-- @[no_exportAssignTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoExportAssignment.ets) -->   
 
