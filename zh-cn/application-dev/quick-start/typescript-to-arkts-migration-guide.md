@@ -972,6 +972,10 @@ ArkTS将数组字面量的类型推断为所有元素的联合类型。如果其
 
 <!-- @[no_unInferred_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNoninferrableArrLiterals.ts) -->   
 
+``` TypeScript
+let a = [{ n: 1, s: '1' }, { n: 2, s: '2' }];
+```
+
 **ArkTS**
 
 <!-- @[no_unInferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNoninferrableArrLiterals.ets) -->   
