@@ -834,6 +834,21 @@ test.foo('', option);
 
 <!-- @[no_spread_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/test1.d.ets) -->  
 
+``` TypeScript
+// test.d.ets
+declare namespace Test {
+  interface I {
+    id: string;
+    type: number;
+  }
+
+  function foo(name: string, option: I): void;
+  function foo(): I;
+}
+
+export default Test;
+```
+
 <!-- @[no_spread_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/app.ets) -->  
 
 **原因**
