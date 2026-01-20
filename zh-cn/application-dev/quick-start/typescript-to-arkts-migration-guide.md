@@ -1382,6 +1382,18 @@ ArkTS中`this`只能在类的实例方法中使用，不支持在函数和类的
 
 <!-- @[no_generators_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoGenerators.ts) -->   
 
+``` TypeScript
+function* counter(start: number, end: number) {
+  for (let i = start; i <= end; i++) {
+    yield i;
+  }
+}
+
+for (let num of counter(1, 5)) {
+  console.info(num.toString());
+}
+```
+
 **ArkTS**
 
 <!-- @[no_generators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoGenerators.ets) -->    
