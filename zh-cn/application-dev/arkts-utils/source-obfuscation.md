@@ -1123,7 +1123,15 @@ printPersonName
 
 `namespace`中导出的名称也可以通过`-keep-global-name`选项保留，示例如下：
 
-<!-- @[optionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->          
+<!-- @[optionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->       
+
+``` TypeScript
+// example.ts
+export namespace Ns {
+  export const myAge = 18 // -keep-global-name myAge 保留变量myAge。
+  export function myFunc() {} // -keep-global-name myFunc 保留函数myFunc。
+}
+```
 
 **使用该选项时，需要注意以下事项：**
 
