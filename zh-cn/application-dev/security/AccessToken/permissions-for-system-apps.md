@@ -5414,3 +5414,17 @@
 **支持设备**：Phone | PC/2in1 | Tablet | TV | Car
 
 **起始版本**：23
+
+## ohos.permission.ACCESS_MINI_SYSTEM
+ 	 
+允许系统应用接入运行态能力框架。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**： General
+
+**起始版本**：23
