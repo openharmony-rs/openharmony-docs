@@ -1950,6 +1950,18 @@ c.initAge(10);
 
 <!-- @[strict_typingRequired_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDefiniteAssignment.ts) -->  
 
+``` TypeScript
+// @ts-nocheck
+// ...
+// 关闭了类型检查后的代码
+// ...
+
+let s1: string = null; // 没有报错。
+
+// @ts-ignore
+let s2: string = null; // 没有报错。
+```
+
 **ArkTS**
 
 ```typescript
