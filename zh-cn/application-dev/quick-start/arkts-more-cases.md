@@ -870,6 +870,15 @@ t.type = 0;
 
 <!-- @[ts_rest_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
 
+``` TypeScript
+function emit(event: string, ...args: Object[]): void {}
+
+emit('', {
+  'action': 11,
+  'outers': false
+});
+```
+
 **建议改法**
 
 <!-- @[passing_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
