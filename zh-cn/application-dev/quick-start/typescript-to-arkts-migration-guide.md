@@ -2110,6 +2110,10 @@ import m = require('mod')
  
 <!-- @[no_require](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoRequire.ets) -->   
 
+``` TypeScript
+import * as m from './ExportMod'
+```
+
 ### 不支持`export = ...`语法
 
 **规则：**`arkts-no-export-assignment`
