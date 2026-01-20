@@ -11,7 +11,7 @@
 ## 导入模块
 
 ```js
-import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '@kit.InputKit';
+ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '@kit.InputKit';
 ```
 
 ## Pinch
@@ -106,3 +106,4 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '
 | BEGIN       | 1   | 手势开始。         |
 | UPDATE      | 2   | 手势更新。         |
 | END         | 3   | 手势结束。         |
+
