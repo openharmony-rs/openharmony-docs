@@ -574,13 +574,13 @@ html示例
       let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
       let bufsize = 4096;
       let buf = new ArrayBuffer(bufsize);
-      let off = 0, len = 0, readedLen = 0;
+      let off = 0, len = 0, readLen = 0;
       while (len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) {
-        readedLen += len;
+        readLen += len;
         fs.writeSync(dest.fd, buf, { offset: off, length: len });
         off = off + len;
-        if ((srcFileDes.length - readedLen) < bufsize) {
-          bufsize = srcFileDes.length - readedLen;
+        if ((srcFileDes.length - readLen) < bufsize) {
+          bufsize = srcFileDes.length - readLen;
         }
       }
       fs.close(dest.fd);
@@ -775,7 +775,7 @@ Web组件的[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-we
 2. 在onContextMenuShow中获取图片url，通过copyLocalPicToDir或copyUrlPicToDir将图片保存至应用沙箱。
 3. 通过detectBarcode.decode解析保存在沙箱中的图片，获取到结果。
 
-<!-- @[web_Scan_QR_code](https://gitee.com/harmonyos_samples/guide-snippets/blob/master/ArkWebKit/ArkWebMenu/entry/src/main/ets/pages/WebScanQRCode.ets) -->
+<!-- @[web_Scan_QR_code](https://gitcode.com/HarmonyOS_Samples/guide-snippets/blob/master/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebScanQRCode.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
