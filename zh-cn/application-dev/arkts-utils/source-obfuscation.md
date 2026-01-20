@@ -569,6 +569,15 @@ test(a2);
      member2 = outdoor + member1 + 2
    }
    ```
+   
+   ``` TypeScript
+   // example.ts
+   let outdoor = 1;
+   enum Test2 {
+     member1,
+     member2 = outdoor + member1 + 2
+   }
+   ```
 
     其中，编译HAP/HSP模块时，enum白名单内容为['outdoor', 'member1']；编译字节码HAR模块时，enum白名单内容为['outdoor', 'member1', 'member2']。
 
