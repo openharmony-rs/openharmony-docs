@@ -1327,6 +1327,10 @@ class C1 {
 
 <!-- @[annotation_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->   
 
+``` TypeScript
+export @interface MyAnno1 {}
+```
+
 针对导入，当前仅支持`import {}`和`import * as`两种方式。<br>
 **示例：**
 
