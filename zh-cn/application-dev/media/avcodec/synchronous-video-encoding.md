@@ -242,8 +242,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                     // 异常处理。
                 }
                 // 获取新宽高。
-                bool getIntRet = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_PIC_WIDTH, &width) &&
-                                 OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_PIC_HEIGHT, &height);
+                bool getIntRet = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_WIDTH, &width) &&
+                                 OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_HEIGHT, &height);
                 if (!getIntRet) {
                     // 异常处理。
                 }
