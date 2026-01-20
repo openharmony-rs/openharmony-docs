@@ -466,7 +466,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
       try {
         let promise = extensionWindow.occupyEvents(uiExtension.EventFlag.EVENT_CLICK | uiExtension.EventFlag.EVENT_LONG_PRESS);
         promise.then(() => {
-          console.info(`Successed in occupy events`);
+          console.info(`Succeeded in occupy events`);
         }).catch((err: BusinessError) => {
           console.error(`Failed to occupy events. Cause code: ${err.code}, message: ${err.message}`);
         });
