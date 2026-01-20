@@ -960,6 +960,21 @@ let permissionList: PermissionItem[] = [
 
 <!-- @[ts_no_method_reassignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
 
+``` TypeScript
+class C {
+  add(left: number, right: number): number {
+    return left + right;
+  }
+}
+
+function sub(left: number, right: number): number {
+  return left - right;
+}
+
+let c1 = new C();
+c1.add = sub;
+```
+
 **建议改法**
 
 <!-- @[no_method_reassignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
