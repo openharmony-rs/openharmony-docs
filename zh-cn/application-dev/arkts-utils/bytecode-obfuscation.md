@@ -634,6 +634,14 @@ printPersonName
 
 <!-- @[optionExample_keepGlobalName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->        
 
+``` TypeScript
+// example.ts
+export namespace Ns {
+  export const myAge = 18 // -keep-global-name myAge 保留变量myAge。
+  export function myFunc() {} // -keep-global-name myFunc 保留函数myFunc。
+}
+```
+
 > **注意**
 >
 > `-keep-global-name`指定的白名单作用于全局。即代码中出现多个顶层作用域名称或者导出名称，只要与`-keep-global-name`配置的白名单名称相同，均不会被混淆。
