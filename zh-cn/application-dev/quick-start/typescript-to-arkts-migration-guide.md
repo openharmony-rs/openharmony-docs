@@ -3474,6 +3474,13 @@ let s2: string = null; // 编译时报错
 
 <!-- @[export_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/ExportMod.ts) -->    
 
+``` TypeScript
+// app.ets
+export class C {
+  // ...
+}
+```
+
 <!-- @[no_tsDeps_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTsDeps.ts) -->    
 
 **ArkTS**
