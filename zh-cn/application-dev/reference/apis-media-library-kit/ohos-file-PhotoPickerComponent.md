@@ -699,7 +699,7 @@ import {
   videoPlayStateChangedCallback,
   VideoPlayerState,
   photoAccessHelper
-} from '@kit.MediaLibraryKit'
+} from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
 import { common } from '@kit.AbilityKit';
 
