@@ -1806,6 +1806,23 @@ ArkTS不支持解构赋值。可使用其他替代方法，例如，使用临时
 
 <!-- @[no_destructAssignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructAssignment.ets) -->   
 
+``` TypeScript
+let arr: number[] = [1, 2];
+let one = arr[0];
+let two = arr[1];
+
+let tmp = one;
+one = two;
+two = tmp;
+
+let data: Number[] = [1, 2, 3, 4];
+let head = data[0];
+let tail: Number[] = [];
+for (let i = 1; i < data.length; ++i) {
+  tail.push(data[i]);
+}
+```
+
 ### 逗号运算符`,`仅用在`for`循环语句中
 
 **规则：**`arkts-no-comma-outside-loops`
