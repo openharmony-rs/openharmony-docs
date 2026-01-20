@@ -167,6 +167,19 @@ foo((value: string) => {
 
 <!-- @[no_call_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
 
+``` TypeScript
+type I = (value: string) => void
+
+function foo(fn: I) {
+  fn('abc');
+}
+// ...
+  foo((value: string) => {
+    console.info(value);
+    // ...
+  })
+```
+
 ## arkts-no-ctor-signatures-type
 
 使用工厂函数（() => Instance）替代构造函数签名。
