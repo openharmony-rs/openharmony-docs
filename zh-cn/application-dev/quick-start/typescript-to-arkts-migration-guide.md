@@ -1845,6 +1845,22 @@ ArkTS不支持解构变量声明。解构变量声明是一个依赖于结构兼
 
 <!-- @[no_destructDecls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructDecls.ets) -->   
 
+``` TypeScript
+class Point {
+  public x: number = 0.0;
+  public y: number = 0.0;
+}
+
+function returnZeroPoint(): Point {
+  return new Point();
+}
+
+// 创建一个局部变量来处理每个字段。
+let zp = returnZeroPoint();
+let x = zp.x;
+let y = zp.y;
+```
+
 ### 不支持在catch语句标注类型
 
 **规则：**`arkts-no-types-in-catch`
