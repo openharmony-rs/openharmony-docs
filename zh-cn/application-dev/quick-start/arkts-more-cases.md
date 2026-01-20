@@ -534,6 +534,18 @@ const area: image.PositionArea = { // 写明具体类型
 
 <!-- @[ts_no_structural_typing_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
 
+``` TypeScript
+class Test {
+  value: number = 1
+  // 有构造函数
+  constructor(value: number) {
+    this.value = value;
+  }
+}
+
+let t: Test = { value: 2 };
+```
+
 **建议改法1**
 
 <!-- @[remove_the_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->    
