@@ -413,6 +413,17 @@ const person: MyInfo = {
 
 <!-- @[export_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/file2.ts) -->  
 
+``` TypeScript
+// file1.ts
+export interface AddressType {
+  city1: string
+}
+export interface MyInfo2 {
+  age: number;
+  address: AddressType;
+}
+```
+
 方案二：使用`-keep-property-name`选项，将未直接导出的类型内的属性配置到属性白名单中。示例如下：
 
 ```text
