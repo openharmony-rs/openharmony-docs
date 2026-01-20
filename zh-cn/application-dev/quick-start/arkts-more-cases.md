@@ -480,6 +480,10 @@ let originMenusMap: Map<string, C | null> = new Map<string, C | null>
 
 <!-- @[ts_no_regexp_literals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
 
+``` TypeScript
+let regex: RegExp = /\s*/g;
+```
+
 **建议改法**
 
 <!-- @[no_regexp_literals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
