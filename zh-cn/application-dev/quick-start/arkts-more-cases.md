@@ -488,6 +488,10 @@ let regex: RegExp = /\s*/g;
 
 <!-- @[no_regexp_literals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
 
+``` TypeScript
+let regexp: RegExp = new RegExp('\\s*','g');
+```
+
 **原因**
 
 如果正则表达式中使用了标志符，需要将其作为`new RegExp()`的参数。
