@@ -1414,7 +1414,7 @@ getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-| Promise<[ExtraInfo](arkts-apis-avsession-t.md#extrainfo18)\>   | Promise对象，返回远端分布式媒体提供方设置的自定义媒体数据包。<br>参数ExtraInfo支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。 |
+| Promise<[ExtraInfo](arkts-apis-avsession-t.md#extrainfo18)\>   | Promise对象，返回远端分布式媒体提供方设置的自定义媒体数据包。<br>参数ExtraInfo支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。 |
 
 **错误码：**
 
