@@ -94,7 +94,7 @@ export default class EntryAbility extends UIAbility {
 
 固定态软键盘为一种特定的避让区域类型，[AvoidAreaType](../reference/apis-arkui/arkts-apis-window-e.md#avoidareatype7)中对应为固定态软键盘（TYPE_KEYBOARD）类型，可以通过[getWindowAvoidArea()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowavoidarea9)和[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onavoidareachange9)动态监听软键盘避让区高度的变化。
 
-另外，开发者也可以通过[on('keyboardHeightChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onkeyboardheightchange7)接口监听软键盘的占用高度。与避让区域不同的是，此接口回调仅返回软键盘的高度数值（number），而[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onavoidareachange9)回调会返回整个软键盘区域（[Rect](../reference/apis-arkui/arkts-apis-window-i#rect7)）。
+另外，开发者也可以通过[on('keyboardHeightChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onkeyboardheightchange7)接口监听软键盘的占用高度。与避让区域不同的是，此接口回调仅返回软键盘的高度数值（number），而[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onavoidareachange9)回调会返回整个软键盘区域（[Rect](../reference/apis-arkui/arkts-apis-window-i.md#rect7)）。
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -350,7 +350,7 @@ struct OrientationTestView {
 
 先通过[display.getDefaultDisplaySync()](../reference/apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获取当前默认的Display实例对象。
 
-再通过该实例对象获取对应的[](../reference/apis-arkui/js-apis-display.md#orientation10)属性，以判断当前设备的横竖屏状态。
+再通过该实例对象获取对应的[Orientation](../reference/apis-arkui/js-apis-display.md#orientation10)属性，以判断当前设备的横竖屏状态。
 
 Orientation是显示设备当前显示的方向枚举，具体包括以下四种类型：
 
@@ -363,7 +363,7 @@ Orientation是显示设备当前显示的方向枚举，具体包括以下四种
 
 > **说明：**
 > 
-> 通过[](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置旋转策略为LANDSCAPE，此时通过以上步骤获取到的[](../reference/apis-arkui/js-apis-display.md#orientation10)属性为反向横屏（即LANDSCAPE_INVERTED），这是因为窗口的方向与屏幕的方向定义不一致。开发者也可以通过[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)来获取转换结果。
+> 通过[setPreferredOrientation](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置旋转策略为LANDSCAPE，此时通过以上步骤获取到的[Orientation](../reference/apis-arkui/js-apis-display.md#orientation10)属性为反向横屏（即LANDSCAPE_INVERTED），这是因为窗口的方向与屏幕的方向定义不一致。开发者也可以通过[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)来获取转换结果。
 
 示例代码如下所示：
 
