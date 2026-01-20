@@ -2905,9 +2905,9 @@ export struct Child04 {
 
 ## V1调V2组件使用场景
 
-### enableV2Compatiblity使用场景
+### enableV2Compatibility使用场景
 
-在V1组件中使用[enableV2Compatiblity](./arkts-v1-v2-mixusage.md#enablev2compatibility)方法封装的对象，可在V1和V2组件中收集到对象关联的系统组件，V2无法收集自定义组件，V1根据使用的装饰器收集对象关联的组件。
+在V1组件中使用[enableV2Compatibility](./arkts-v1-v2-mixusage.md#enablev2compatibility)方法封装的对象，可在V1和V2组件中收集到对象关联的系统组件，V2无法收集自定义组件，V1根据使用的装饰器收集对象关联的组件。
 
 代码示例：
 

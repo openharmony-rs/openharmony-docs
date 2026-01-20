@@ -653,7 +653,7 @@ $ hidumper -s RenderService -a "h"
 -------------------------------[ability]-------------------------------
 
 ----------------------------------RenderService----------------------------------
------- Graphic2D--RenderSerice ------
+------ Graphic2D--RenderService ------
 Usage:
 gles                          |inquire gpu info
 h                             |help text for the tool
@@ -1475,7 +1475,7 @@ This command outputs the information about the application page route stack, whi
 
 > **NOTE**
 >
-> This command can be used only for applications that implement page routing through the Navigation component.
+> This command can be used only for applications that implement page routing through the [Navigation](../ui/arkts-navigation-architecture.md) component.
 
 The command is as follows:
 

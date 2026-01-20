@@ -2167,6 +2167,7 @@ Compress file exception.
 **处理步骤**
 
 根据日志中“Error Message:”，确认异常信息。
+
 检查系统日志，确保文件系统和磁盘正常。
 
 ### 10014009 删除文件失败
@@ -2185,6 +2186,7 @@ File delete failed.
 **处理步骤**
 
 根据日志中“Error Message:”信息确认文件路径。
+
 确保文件当前不被其它进程占用，手动删除文件。
 
 ### 10015001 文件I/O异常
@@ -2337,6 +2339,7 @@ Check packageName invalid.
 **处理步骤**
 
 根据日志中“Error Message:”信息，确认存在问题的HAP或HSP。
+
 检查参与打包的HAP或HSP的module.json文件，确保module/package标签值不相同或者module/deviceType属性值集合不相交或者module/metadata/resource/distributionFilter属性值集合不相交。
 
 ### 10016006 检查HAP包无效
@@ -2727,6 +2730,7 @@ Add archive entry failed.
 **处理步骤**
 
 仅作告警提示，无需处理。
+
 根据“Error Message:”信息获取待打包空文件目录，确认该空文件符合打包预期。
 
 ### 10018005 打包libs目录异常

@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Application Lifecycle
@@ -12,10 +12,10 @@ You can define the following application lifecycle methods in the **app.js** fil
 
 | API| Type| Description| Called When|
 | -------- | -------- | -------- | -------- |
-| onCreate | () =&gt; void | Listens for application creation.| The application is created.|
-| onShow<sup>6+</sup> | () =&gt; void | Listens for whether the application is running in the foreground.| The application is running in the foreground.|
-| onHide<sup>6+</sup> | () =&gt; void | Listens for whether the application is running in the background.| The application is running in the background.|
-| onDestroy | () =&gt; void | Listens for application uninstallation.| The application exits.|
+| onCreate | ()&nbsp;=&gt;&nbsp;void | Listens for application creation.| The application is created.|
+| onShow<sup>6+</sup> | ()&nbsp;=&gt;&nbsp;void | Listens for whether the application is running in the foreground.| The application is running in the foreground.|
+| onHide<sup>6+</sup> | ()&nbsp;=&gt;&nbsp;void | Listens for whether the application is running in the background.| The application is running in the background.|
+| onDestroy | ()&nbsp;=&gt;&nbsp;void | Listens for application uninstallation.| The application exits.|
 
 
 ## Page Lifecycle
@@ -24,15 +24,15 @@ You can define the following page lifecycle functions in the **.js** file of the
 
 | API| Type| Description| Called When|
 | -------- | -------- | -------- | -------- |
-| onInit | () =&gt; void | Listens for page initialization.| Page initialization is complete. This function is called only once in the page lifecycle.|
-| onReady | () =&gt; void | Listens for page creation.| A page is created. This function is called only once in the page lifecycle.|
-| onShow | () =&gt; void | Listens for page display.| The page is displayed.|
-| onHide | () =&gt; void | Listens for page hiding.| The page is hidden.|
-| onDestroy | () =&gt; void | Listens for page destruction.| The page is destroyed.|
-| onBackPress | () =&gt; boolean | Listens for the back button action.| The back button is touched.<br>- **true**: The page handles the return logic itself.<br>- **false**: The default return logic is used.<br>- No value: The default return logic is used.|
-| onActive()<sup>5+</sup> | () =&gt; void | Listens for page activation.| The page is activated.|
-| onInactive()<sup>5+</sup> | () =&gt; void | Listens for page suspension.| The page is suspended.|
-| onNewRequest()<sup>5+</sup> | () =&gt; void | Listens for a new FA request.| The FA has been started and a new request is received.|
+| onInit | ()&nbsp;=&gt;&nbsp;void | Listens for page initialization.| Page initialization is complete. This function is called only once in the page lifecycle.|
+| onReady | ()&nbsp;=&gt;&nbsp;void | Listens for page creation.| A page is created. This function is called only once in the page lifecycle.|
+| onShow | ()&nbsp;=&gt;&nbsp;void | Listens for page display.| The page is displayed.|
+| onHide | ()&nbsp;=&gt;&nbsp;void | Listens for page hiding.| The page is hidden.|
+| onDestroy | ()&nbsp;=&gt;&nbsp;void | Listens for page destruction.| The page is destroyed.|
+| onBackPress | ()&nbsp;=&gt;&nbsp;boolean | Listens for the back button action.| The back button is touched.<br>- **true**: The page handles the return logic itself.<br>- **false**: The default return logic is used.<br>- No value: The default return logic is used.|
+| onActive()<sup>5+</sup> | ()&nbsp;=&gt;&nbsp;void | Listens for page activation.| The page is activated.|
+| onInactive()<sup>5+</sup> | ()&nbsp;=&gt;&nbsp;void | Listens for page suspension.| The page is suspended.|
+| onNewRequest()<sup>5+</sup> | ()&nbsp;=&gt;&nbsp;void | Listens for a new FA request.| The FA has been started and a new request is received.|
 
 The typical call sequence of lifecycle functions is illustrated below.
 

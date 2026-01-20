@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Particle animation is an animation composed of a multitude of particles randomly generated within a certain range. The particles can be points or images. By animating different aspects of the particles, such as color, opacity, scale, velocity, acceleration, and spin angle, you can create engaging and dynamic aesthetics. For example, you can create an impressive snowfall animation by animating the particles – snowflakes.
 
@@ -13,9 +13,9 @@ The component used for producing particle animations is **Particle**.
 
 >  **NOTE**
 >
->  This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  If the screen is turned off and then turned on again, or the application is switched to the background and then brought back to the foreground, the particle animation will automatically pause.
+> - If the screen is turned off and then turned on again, or the application is switched to the background and then brought back to the foreground, the particle animation will automatically pause.
 
 
 ## Child Components
@@ -55,7 +55,7 @@ interface ParticleInterface {
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | ---- | ---- | -------- |
-| particles | [Particles](#particles18)<<br>  [PARTICLE](#particletype), <br>  [COLOR_UPDATER](#particleupdater),<br>  [OPACITY_UPDATER](#particleupdater),<br>  [SCALE_UPDATER](#particleupdater),<br>  [ACC_SPEED_UPDATER](#particleupdater),<br>  [ACC_ANGLE_UPDATER](#particleupdater),<br>  [SPIN_UPDATER](#particleupdater)<br>><br>| No| No| Particles. For details, see [Particles](#particles18).|
+| particles | [Particles](#particles18)<<br>&nbsp;&nbsp;[PARTICLE](#particletype), <br>&nbsp;&nbsp;[COLOR_UPDATER](#particleupdater),<br>&nbsp;&nbsp;[OPACITY_UPDATER](#particleupdater),<br>&nbsp;&nbsp;[SCALE_UPDATER](#particleupdater),<br>&nbsp;&nbsp;[ACC_SPEED_UPDATER](#particleupdater),<br>&nbsp;&nbsp;[ACC_ANGLE_UPDATER](#particleupdater),<br>&nbsp;&nbsp;[SPIN_UPDATER](#particleupdater)<br>><br>| No| No| Particles. For details, see [Particles](#particles18).|
 
 ## Attributes
 
@@ -91,6 +91,36 @@ Sets the emitter parameters.
 | Name| Type   | Mandatory| Description                        |
 | ------ | ------- | ---- | ---------------------------- |
 | value  | Array<[EmitterProperty](#emitterproperty12)> | Yes  | Array of emitter parameters to set.|
+
+### rippleFields<sup>22+</sup>
+rippleFields(fields: Array&lt;RippleFieldOptions&gt;\|undefined)
+
+Sets the particle wave field. The wave field applies a force that changes according to the waveform to particles within the affected range, producing an effect similar to the spreading of ripples.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| fields  | Array<[RippleFieldOptions](#ripplefieldoptions22)>\|undefined | Yes  | Particle wave field array. You can set multiple particle wave fields in array form. If this parameter is set to undefined, no wave field is available.|
+
+### velocityFields<sup>22+</sup>
+velocityFields(fields: Array&lt;VelocityFieldOptions&gt;\|undefined)
+
+Sets the particle velocity field. The velocity field applies a force to particles within the affected range, so that the particles move at the velocity specified by the velocity field in addition to their original velocity.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                        |
+| ------ | ------- | ---- | ---------------------------- |
+| fields  | Array<[VelocityFieldOptions](#velocityfieldoptions22)>\|undefined | Yes  | Particle velocity field array. You can set multiple particle velocity fields in array form. If this parameter is set to undefined, there is no velocity field.|
 
 ## Events
 The [universal events](ts-component-general-events.md) are supported.
@@ -135,7 +165,6 @@ Sets particle parameters.
 
 
 ## EmitterOptions
-Provides particle emitter configuration.
 
 ```typescript
 interface EmitterOptions<PARTICLE extends ParticleType> {   
@@ -148,15 +177,17 @@ interface EmitterOptions<PARTICLE extends ParticleType> {
 }
 ```
 
+Particle emitter configuration.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | ---- | ---- | -------- |
-| particle | [EmitterParticleOptions](#emitterparticleoptions18)<[PARTICLE](#particletype)> | No| No| Particle configuration.<br>- **type**: particle type, which can be **IMAGE** or **POINT**.<br>- **config**: configuration of the particle type.<br>- The value type of **config** is subject to the value of **type**.<br>1. If **type** is **ParticleType.POINT**, the **config** type is [PointParticleParameters](#pointparticleparameters).<br>2. If **type** is **ParticleType.IMAGE**, the **config** type is [ImageParticleParameters](#imageparticleparameters).<br>- **count**: number of particles. The value is greater than or equal to -1. The value **-1** indicates that the number of particles is infinite.<br>- **lifetime**: lifetime of a single particle. The default value is **1000** (that is, 1000 ms, 1s). The value is greater than or equal to -1. The value **-1** indicates that the lifetime of the particle is infinite. If the value specified is less than **-1**, the default value is used.<br>Note: Setting the lifespan to **-1** is not recommended unless continuous animation is required, as it may significantly impact performance.<br>- **lifeTimeRange**: range of particle lifetime values. After **lifeTimeRange** is set, the lifetime of a particle is a random integer between [lifetime – lifeTimeRange, lifetime + lifeTimeRange]. The default value of lifeTimeRange is 0. The value ranges from 0 to positive infinity. If it is set to a negative value, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| particle | [EmitterParticleOptions](#emitterparticleoptions18)<[PARTICLE](#particletype)> | No| No| Particle configuration.<br>- **type**: particle type, which can be **IMAGE** or **POINT**.<br>- **config**: configuration of the particle type.<br>- The value type of **config** is subject to the value of **type**.<br>1. If the type is ParticleType.POINT, the config type is [PointParticleParameters](#pointparticleparameters).<br>2. If the type is ParticleType.IMAGE, the config type is [ImageParticleParameters](#imageparticleparameters).<br>- **count**: number of particles. The value is greater than or equal to -1. The value **-1** indicates that the number of particles is infinite.<br>- **lifetime**: lifetime of a single particle. The default value is **1000** (that is, 1000 ms, 1s). The value is greater than or equal to -1. The value **-1** indicates that the lifetime of the particle is infinite. If the value specified is less than **-1**, the default value is used.<br>Note: If you do not want the animation to keep playing, you are advised not to set the lifetime to –1, which may greatly affect the performance.<br>The **lifeTimeRange** parameter indicates the range of the particle lifetime. After this parameter is set, the lifetime of a particle is a random integer within the range of [lifetime – lifeTimeRange, lifetime + lifeTimeRange]. The default value of lifeTimeRange is 0. The value ranges from 0 to positive infinity. If it is set to a negative value, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | emitRate | number | No| Yes| Emit rate (that is, the number of particles emitted per second).<br> Default value: **5**. If the value specified is less than 0, the default value is used.<br> The **emitRate** value can significantly impact performance when it exceeds 5000; you are advised to set it to be less than 5000.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| shape | [ParticleEmitterShape](#particleemittershape) | No| Yes| Emitter shape.<br> Default value: **ParticleEmitterShape.RECTANGLE**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| shape | [ParticleEmitterShape](#particleemittershape) | No| Yes| Emitter shape.<br><br>Default value: ParticleEmitterShape.RECTANGLE<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | position | [ParticleTuple](#particletuple18)<[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)> | No| Yes| Emitter position (distance from the upper left corner of the component). The first parameter indicates the relative offset along the x-axis, and the second parameter indicates the relative offset along the y-axis.<br>Default value: **[0.0, 0.0]**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| size |  [ParticleTuple](#particletuple18)<[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)>     |No| Yes| Size of the emit window. The first parameter indicates the emitter width, and the second parameter indicates the emitter height.<br>Default value: **['100%', '100%']** (that is, the emit window fully occupies the component).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| size |  [ParticleTuple](#particletuple18)<[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)>     |No| Yes| Size of the emit window. The first parameter indicates the emitter width, and the second parameter indicates the emitter height.<br>Default value: **['100%','100%']** (that is, the emission window occupies the entire Particle component.)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | annulusRegion<sup>20+</sup>  | [ParticleAnnulusRegion](ts-particle-animation.md#particleannulusregion20)| No| Yes |Annulus emitter parameters. This parameter takes effect only when the emitter shape is annulus (that is, the shape parameter is ParticleEmitterShape.ANNULUS). For an annulus emitter, the shape information must be specified by the annulusRegion parameter, and the position and size parameters do not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## ParticleConfigs
@@ -231,7 +262,7 @@ Sets the configuration of the particle color attribute updater.
 | -------- | -------- | ---- | ---- | -------- |
 |[ParticleUpdater.NONE]|void | No| No| The color does not change.|
 | [ParticleUpdater.RANDOM] | [ParticleColorOptions](#particlecoloroptions18) | No| No| The color changes randomly, with the per-second change difference being a value randomly generated from the range. The target color is obtained by applying the change difference to the current color value of each of the R, G, B, A channels.  |
-[ParticleUpdater.CURVE]|Array<[ParticlePropertyAnimation](#particlepropertyanimation)\<[ResourceColor](ts-types.md#resourcecolor)\>> | No| No| The color changes with the animation curve. The array type indicates that multiple animation segments can be set for the current property, for example, 0–3000 ms, 3000–5000 ms, and 5000–8000 ms.|
+| [ParticleUpdater.CURVE]|Array<[ParticlePropertyAnimation](#particlepropertyanimation)\<[ResourceColor](ts-types.md#resourcecolor)\>> | No| No| The color changes with the animation curve. The array type indicates that multiple animation segments can be set for the current property, for example, 0–3000 ms, 3000–5000 ms, and 5000–8000 ms.|
 
 ## ParticlePropertyOptions
 ```typescript
@@ -249,7 +280,7 @@ Sets particle attributes.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | ---- | ---- | -------- |
-| range | [ParticleTuple](#particletuple18)<[TYPE](#particleupdater), [TYPE](#particleupdater)> | No| No| Initial property value range of the particle. The initial property value of particles generated by the particle emitter is randomly selected in this range.<br>**NOTE**<br>If a property is set to an invalid value, the default value will be used. If the maximum value is less than the minimum value, the default range will be used. **TYPE** is number.<br>The default value varies by property:<br>1. **opacity** property: **range:[1.0,1.0]**; the value range is [0, 1]; the default value is **1.0**.<br>2. **scale** property: **range:[1.0,1.0]**; the value range is [0, 10000]; the default value is **1.0**.<br>3. **acceleration** speed property: **range:[0.0,0.0]**; the value range is [0, 10000]; the default value is **0.0**.<br>4. **acceleration** angle property: **range:[0.0,0.0]**; the value range is [-10000, 10000]; the default value is **0.0**.<br>5. **spin** speed property: **range:[0.0,0.0]**; the value range is [-10000, 10000]; the default value is **0.0**.
+| range | [ParticleTuple](#particletuple18)<[TYPE](#particleupdater), [TYPE](#particleupdater)> | No| No| Initial property value range of the particle. The initial property value of particles generated by the particle emitter is randomly selected in this range.<br>**NOTE**<br>If a property is set to an invalid value, the default value will be used. If the maximum value is less than the minimum value, the default range will be used. **TYPE** is number.<br>The default value varies by property:<br>1. **opacity** property: **range:[1.0,1.0]**; the value range is [0, 1]; the default value is **1.0**.<br>2. **scale** property: **range:[1.0,1.0]**; the value range is [0, 10000]; the default value is **1.0**.<br>3. **acceleration** speed property: **range:[0.0,0.0]**; the value range is [0, 10000]; the default value is **0.0**.<br>4. **acceleration** angle property: **range:[0.0,0.0]**; the value range is [-10000, 10000]; the default value is **0.0**.<br>5. **spin** speed property: **range:[0.0,0.0]**; the value range is [-10000, 10000]; the default value is **0.0**.|
 | updater | [ParticleUpdaterOptions](#particleupdateroptions18)<[TYPE](#particleupdater), [UPDATER](#particleupdater)> | No| Yes| How the property is updated. The available options of **type** are as follows:<br>1. **ParticleUpdater.NONE**: The property does not change. In this case, the **config** type is [ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.NONE].<br>2. **ParticleUpdater.RANDOM**: The property changes randomly. In this case, the **config** type is [ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.RANDOM].<br>3. **ParticleUpdater.CURVE**: The property changes with the animation curve. In this case, the **config** type is [ParticlePropertyUpdaterConfigs](#particlepropertyupdaterconfigs)[ParticleUpdater.CURVE].<br>The default value of **type** is **ParticleUpdater.NONE**.|
 
 
@@ -270,7 +301,7 @@ Sets the particle property updater configuration.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | ---- | ---- | -------- |
-[[ParticleUpdater.NONE]|void | No| No| The color does not change.|
+| [ParticleUpdater.NONE]|void | No| No| The color does not change.|
 | [ParticleUpdater.RANDOM] | [ParticleTuple](#particletuple18)<T, T> | No| No| The property changes randomly, with the per-second change difference being a value randomly generated from the range.<br>The target property value is obtained by applying the change difference to the current property value. For example, if the current property value is **0.2** and **config** is set to **[0.1,1.0]**, then:<br>1. When the random change difference is 0.5, the target property value is 0.2 + 0.5 = 0.7.<br>2. The change difference may also be a negative value. For example, if the current property value is **0.2** and **config** is set to **[-3.0,2.0]**, then when the random change difference is **-2.0**, the target property value is 0.2 - 2.0 = -1.8.<br>**NOTE**<br>**config** sets the value range of the change difference. While the change difference does not have a maximum or minimum value limit, the target property value does. Therefore, if the target property value is greater than the maximum property value, the maximum property value will be used instead; if the target property value is less than the minimum property value, the minimum property value will be used instead. **T** represents a number.<br>For example, if the value range of **opacity** is **[0.0, 1.0]**, then if the target property value is greater than 1.0, **1.0** will be used instead.|
 |[ParticleUpdater.CURVE]|Array<[ParticlePropertyAnimation](#particlepropertyanimation)\<T\>> | No| No| The property changes with the animation curve. The array type indicates that multiple animation segments can be set for the current property, for example, 0-3000 ms, 3000-5000 ms, and 5000-8000 ms. **T** represents a number.|
 
@@ -297,7 +328,7 @@ Lifecycle of a particle attribute.
 | to | T | No| No| Target value of the property. If the value is invalid, the default value will be used.|
 |startMillis|number | No| No| Start time of the animation.<br>Unit: ms.<br>Value range: [0, +∞).|
 |endMillis|number | No| No| End time of the animation.<br>Unit: ms.<br>Value range: [0, +∞).|
-|curve|[Curve](ts-appendix-enums.md#curve) \| [ICurve](../js-apis-curve.md#icurve9)| No| Yes| Animation curve.<br>Default value: **Curve.Linear**|
+|curve|[Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)| No| Yes| Animation curve.<br>Default value: **Curve.Linear**|
 
 
 ## ParticleType
@@ -318,8 +349,6 @@ Particle type.
 ## ParticleEmitterShape
 
 Particle emitter shape.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -394,8 +423,6 @@ Particle shape.
 
 Sets the emitter attributes.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type   | Read-Only| Optional| Description                        |
@@ -454,11 +481,13 @@ An array of particle options,
 >
 > To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
 
+**Atomic service API**: This API can be used in atomic services since API version 18.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name   | Type                          | Read-Only| Optional| Description                                                                                                                    |
 | ------ | ------------------------------ | ---- | ------------------------------------------ | ----------------------------------------------------------------------------- |
-| particles<sup>10+</sup>  | Array<<br>  ParticleOptions<<br>    PARTICLE,<br>    COLOR_UPDATER,<br>    OPACITY_UPDATER,<br>    SCALE_UPDATER,<br>    ACC_SPEED_UPDATER,<br>    ACC_ANGLE_UPDATER,<br>    SPIN_UPDATER<br>  ><br>>  | No| No  | An array of particle options, each of which covers the emitter, color, opacity, scale, velocity, acceleration, and spin speed of particles. For details, see [ParticleOptions](#particleoptions).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| particles<sup>10+</sup>  | Array<<br>&nbsp;&nbsp;ParticleOptions<<br>&nbsp;&nbsp;&nbsp;&nbsp;PARTICLE,<br>&nbsp;&nbsp;&nbsp;&nbsp;COLOR_UPDATER,<br>&nbsp;&nbsp;&nbsp;&nbsp;OPACITY_UPDATER,<br>&nbsp;&nbsp;&nbsp;&nbsp;SCALE_UPDATER,<br>&nbsp;&nbsp;&nbsp;&nbsp;ACC_SPEED_UPDATER,<br>&nbsp;&nbsp;&nbsp;&nbsp;ACC_ANGLE_UPDATER,<br>&nbsp;&nbsp;&nbsp;&nbsp;SPIN_UPDATER<br>&nbsp;&nbsp;><br>>  | No| No  | An array of particle options, each of which covers the emitter, color, opacity, scale, velocity, acceleration, and spin speed of particles. For details, see [ParticleOptions](#particleoptions).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## VelocityOptions<sup>18+</sup>
 
@@ -529,9 +558,9 @@ Particle configuration.
 | Name   | Type                                               | Read-Only| Optional| Description                                                      |
 | ------ | --------------------------------------------------- | ---- | ----------- | ---------------------------------------------- |
 | type<sup>10+</sup>  | [PARTICLE](#particletype)  | No| No  | Particle type, which can be **IMAGE** or **POINT**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.          |
-| config<sup>10+</sup>  | [ParticleConfigs](#particleconfigs)[PARTICLE]  | No| No  | Configuration of the particle type.<br>The value type of **config** is subject to the value of **type**.<br>1. If **type** is **ParticleType.POINT**, the **config** type is [PointParticleParameters](#pointparticleparameters).<br>2. If **type** is **ParticleType.IMAGE**, the **config** type is [ImageParticleParameters](#imageparticleparameters).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| config<sup>10+</sup>  | [ParticleConfigs](#particleconfigs)[PARTICLE]  | No| No  | Configuration of the particle type.<br>The value type of **config** is subject to the value of **type**.<br>1. If the type is ParticleType.POINT, the config type is [PointParticleParameters](#pointparticleparameters).<br>2. If the type is ParticleType.IMAGE, the config type is [ImageParticleParameters](#imageparticleparameters).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | count<sup>10+</sup>  | number  | No| No  | Number of particles. The value is greater than or equal to -1. The value **-1** indicates that the number of particles is infinite.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| lifetime<sup>10+</sup>  | number  | No| Yes  | Lifetime of a single particle. The default value is **1000** (that is, 1000 ms, 1s). The value is greater than or equal to -1. The value **-1** indicates that the lifetime of the particle is infinite. If the value specified is less than **-1**, the default value is used.<br>Note: Setting the lifespan to **-1** is not recommended unless continuous animation is required, as it may significantly impact performance.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| lifetime<sup>10+</sup>  | number  | No| Yes  | Lifetime of a single particle. The default value is **1000** (that is, 1000 ms, 1s). The value is greater than or equal to -1. The value **-1** indicates that the lifetime of the particle is infinite. If the value specified is less than **-1**, the default value is used.<br>Note: If you do not want the animation to keep playing, you are advised not to set the lifetime to –1, which may greatly affect the performance.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | lifetimeRange<sup>12+</sup>  | number  | No| Yes  | Random integer within the range of [lifetime – lifetimeRange, lifetime + lifetimeRange]. After lifetimeRange is set, the particle lifecycle is a random integer within the range. The default value is 0. The value range is from 0 to positive infinity. If it is set to a negative value, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## ParticleUpdaterOptions<sup>18+</sup>
@@ -605,6 +634,17 @@ The color changes randomly, with the per-second change difference being a value 
 
 Configures the annular emitter area.
 
+> **NOTE**
+>
+> - If the value of outerRadius or innerRadius is less than 0 or uses the percentage unit, the value is considered as 0.
+>
+> - If the value of outerRadius is less than that of innerRadius, the smaller value is used as the new inner radius and the larger value is used as the new outer radius.
+>
+> - If the value of endAngle is less than that of startAngle, the smaller value is used as the new start angle and the larger value is used as the new end angle.
+>
+> ![](figures/annulus.png)
+
+
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -617,16 +657,64 @@ Configures the annular emitter area.
 | startAngle | number | No| Yes  | Start angle of the ring.<br>Unit: kWh<br>Default value: **0**. |
 | endAngle | number | No| Yes  | End angle of the ring.<br>Unit: kWh<br>Default value: **360** |
 
+## Vector2T\<T><sup>22+</sup>
 
->  **NOTE**
->
->  1. If outerRadius or innerRadius is less than 0 or uses the percentage unit, the value 0 is used.
->
->  2. If outerRadius is less than innerRadius, the smaller value is used as the new inner radius, and the larger value is used as the new outer radius.
->
->  3. If endAngle is less than startAngle, the smaller value is used as the new start angle, and the larger value is used as the new end angle.
+type Vector2T\<T> = Vector2T\<T>
 
-![](figures/annulus.png)
+Defines the Vector2T type. The Vector2T type contains two attribute values: x and y.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type                        | Description                               |
+| ---------------------------- | ----------------------------------- |
+| [Vector2T\<T>](../js-apis-arkui-graphics.md#vector2tt12) | Represents a vector of the T type that contains two values: x and y. x indicates the value in the x-axis direction of the vector. y indicates the value in the y-axis direction of the vector.<br>Unit: vp|
+
+
+## FieldRegion<sup>22+</sup>
+
+Defines the area information of the particle field.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Type  | Read-Only| Optional| Description|
+| ------ | ------ | -- | -- | ---- |
+| shape      | [DisturbanceFieldShape](#disturbancefieldshape12) | No| Yes | Shape of the particle field.<br>Default value: DisturbanceFieldShape.RECT |
+| position      | [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;number&gt; | No| Yes| Center position of the particle field. The unit of coordinates is vp.<br>Default value: {x:0, y:0} |
+| size  | [SizeT](../js-apis-arkui-graphics.md#sizett12)&lt;number&gt; | No| Yes | Size of the particle field. The unit of the value is vp.<br>Default value: {width:0, height:0}<br>The value can be:<br>width: [0, +∞)<br>height: [0, +∞)<br>If the width or height of the size is set to a negative value, the default value of width or height is used. |
+
+## RippleFieldOptions<sup>22+</sup>
+
+Parameter that describes the information about a particle disturbance field.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Type  | Read-Only| Optional| Description|
+| ------ | ------ | -- | -- | ---- |
+| amplitude      | number | No| Yes | Amplitude of the wave in the particle disturbance field. The greater the amplitude, the stronger the force of the disturbance field.<br>Value range: [0, +∞).<br>Default value: **0**.<br>If it is set to a negative value, the default value is used. |
+| wavelength      | number | No| Yes| Wavelength of the wave in the particle disturbance field, that is, the distance of a wave period. The greater the wavelength, the slower the wave changes with the distance, and the less obvious the disturbance.<br>Value range: [0, +∞).<br>Default value: **0**.<br>If it is set to a negative value, the default value is used. |
+| waveSpeed  | number | No| Yes | Wave speed in the particle disturbance field. The greater the wave speed, the faster the wave changes with time, and the more obvious the disturbance.<br>Value range: [0, +∞).<br>Default value: **0**.<br>If it is set to a negative value, the default value is used. |
+| attenuation  | number | No| Yes | Attenuation coefficient of the wave in the particle disturbance field. The greater the attenuation coefficient, the faster the wave attenuates with time.<br>Value range: [0,1].<br>Default value: 0.0<br>If the value is not within the specified range, the default value is used. |
+| center  | [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;number&gt; | No| Yes | Center position of the force generated by the disturbance field. The upper left corner of the component is the origin of coordinates. The unit of coordinates is vp.<br>Default value: {x:0, y:0}|
+| region  | [FieldRegion](ts-particle-animation.md#fieldregion22) | No| Yes | Information about the area affected by the disturbance field, including the shape, size, and center position of the area.<br>Default value: {shape:DisturbanceFieldShape.RECT, position:{x:0, y:0}, size:{width:0, height:0}} |
+
+## VelocityFieldOptions<sup>22+</sup>
+
+Parameter used to describe the velocity field of particles.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Type  | Read-Only| Optional| Description|
+| ------ | ------ | -- | -- | ---- |
+| velocity      | [Vector2T](#vector2tt22)\<number> | No| Yes | Velocity values in each direction of the velocity field. A particle can only obtain the velocity when it is within the velocity field. After the particle leaves the velocity field, it will not be affected by the velocity field and will not obtain the additional velocity.<br>Default value: {x:0, y:0} |
+| region  | [FieldRegion](ts-particle-animation.md#fieldregion22) | No| Yes | Information about the area affected by the velocity field, including the shape, size, and center position of the area.<br>Default value: {shape:DisturbanceFieldShape.RECT, position:{x:0, y:0}, size:{width:0, height:0}} |
 
 ## Example
 
@@ -634,8 +722,9 @@ Configures the annular emitter area.
 
 This example demonstrates the basic usage of particle animations by initializing particles with circular shapes.
 
-```ts
-// xxx.ets
+<!-- @[particle_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template1/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct ParticleExample {
@@ -662,6 +751,7 @@ struct ParticleExample {
             },
             color: {
               range: [Color.Red, Color.Yellow], // Initial color range.
+              distributionType: DistributionType.GAUSSIAN, // Random distribution of initial color values.
               updater: {
                 type: ParticleUpdater.CURVE, // Change with the animation curve.
                 config: [
@@ -743,7 +833,7 @@ struct ParticleExample {
           }
         ]
       }).width(300).height(300)
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
@@ -1147,10 +1237,12 @@ struct ParticleExample {
 
 This example demonstrates how to change the motion trajectories of particles by applying disturbances through the particle disturbance field.
 
-```
+<!-- @[particle_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template3/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample3 {
   build() {
     Stack() {
       Text()
@@ -1263,19 +1355,20 @@ struct ParticleExample {
         noiseFrequency: 15,
         noiseAmplitude: 5
       }])
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
-
 ```
 ![particle](figures/disturbanceFields.gif)
 
 ### Example 4: Adjusting the Emitter Position
 This example demonstrates how to adjust the position of the particle emitter through **emitter()**.
-```ts
+<!-- @[particle_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template4/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample4 {
   @State emitterProperties: Array<EmitterProperty> = [
     {
       index: 0,
@@ -1283,7 +1376,7 @@ struct ParticleExample {
       position: { x: 60, y: 80 },
       size: { width: 200, height: 200 }
     }
-  ]
+  ];
 
   build() {
     Stack() {
@@ -1340,7 +1433,7 @@ struct ParticleExample {
         .width(300)
         .height(300)
         .emitter(this.emitterProperties)
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
@@ -1348,12 +1441,14 @@ struct ParticleExample {
 
 ### Example 5: Creating a Ring Emitter
 This example describes the basic usage of creating a ring emitter.
-```ts
+<!-- @[particle_example5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template5/Index.ets) -->
+
+``` TypeScript
 import { LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample5 {
   build() {
     Stack() {
       Text()
@@ -1424,33 +1519,34 @@ struct ParticleExample {
           }
         ]
       }).width(300).height(300)
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
 ![](figures/annulusCreate.gif)
 
-### Example 6: Ring Emitter Update
+### Example 6: Updating the Ring Emitter
 This example describes the basic usage of updating the ring emitter of a particle animation.
-```ts
-// xxx.ets
+<!-- @[particle_example6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template6/Index.ets) -->
+
+``` TypeScript
 import { LengthMetrics } from '@kit.ArkUI'
 
 @Entry
 @Component
-struct ParticleExample {
+struct ParticleExample6 {
 
-  @State radius: number = 1
-  @State shape: ParticleEmitterShape = ParticleEmitterShape.ANNULUS
-  @State emitRate: number = 200
-  @State count: number = 2000
-  private timerID: number = -1
-  private centerX: LengthMetrics = LengthMetrics.percent(0.5)
-  private centerY: LengthMetrics = LengthMetrics.percent(0.5)
-  private inRadius: LengthMetrics = LengthMetrics.vp(120)
-  private outRadius: LengthMetrics = LengthMetrics.vp(120)
-  private startAngle: number = 0
-  private endAngle: number = 90
+  @State radius: number = 1;
+  @State shape: ParticleEmitterShape = ParticleEmitterShape.ANNULUS;
+  @State emitRate: number = 200;
+  @State count: number = 2000;
+  private timerID: number = -1;
+  private centerX: LengthMetrics = LengthMetrics.percent(0.5);
+  private centerY: LengthMetrics = LengthMetrics.percent(0.5);
+  private inRadius: LengthMetrics = LengthMetrics.vp(120);
+  private outRadius: LengthMetrics = LengthMetrics.vp(120);
+  private startAngle: number = 0;
+  private endAngle: number = 90;
   @State emitterProperties: Array<EmitterProperty> = [
     {
       index: 0,
@@ -1506,8 +1602,8 @@ struct ParticleExample {
               },
             },
           ]
-        }).width("100%")
-          .height("100%")
+        }).width('100%')
+          .height('100%')
           .emitter(this.emitterProperties)
           .onClick(()=>{
             // Clear the existing timer.
@@ -1543,11 +1639,137 @@ struct ParticleExample {
 
           })
       }
-      .width("100%")
-      .height("100%")
+      .width('100%')
+      .height('100%')
       .align(Alignment.Center)
     }
   }
 }
 ```
 ![](figures/annulusUpdate.gif)
+
+### Example 7: Setting the Ripple Field and Velocity Field
+Starting from API version 22, the ripple field and velocity field can be set for particles. This example shows how to use the rippleFields API to set the ripple field of particles to produce a ripple effect. The velocityFields API is used to set the velocity field of particles, so that the velocity specified by the velocity field is added to the original velocity of particles.
+```ts
+// xxx.ets
+@Entry
+@Component
+struct ParticleExample {
+  @State count: number = 1000
+  @State particle: EmitterParticleOptions<ParticleType> = {
+    type: ParticleType.POINT, // Particle type.
+    config: {
+      radius: 1 // Radius of the dot
+    },
+    count: this.count, // Total number of particles
+    lifetime: 9000, //Particle lifetime, in ms
+    lifetimeRange: 100 // Range of particle lifetime values, in ms.
+  }
+  build() {
+    Column() {
+      Text('Wave field')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      Stack() {
+        Text()
+          .width(300).height(300).backgroundColor(Color.Black)
+        Particle({
+          particles: [
+            {
+              emitter: {
+                particle: this.particle,
+                emitRate: 10000, //Number of particles emitted per second
+                position: [0, 0],
+                shape: ParticleEmitterShape.RECTANGLE // Emitter shape.
+              },
+              color: {
+                range: [Color.White, Color.White], // initial color range
+              },
+              scale: {
+                range: [0.2, 1.5], //Initial size range
+              },
+              opacity : {
+                range: [0.2, 0.8], //Initial transparency range
+              }
+            }
+          ]
+        }).width(300).height(300)
+          .rippleFields([
+            {
+              amplitude: 120, //Amplitude of the wave field
+              wavelength: 500, //Wavelength of the wave field
+              waveSpeed: 220, //Wave speed of the wave field
+              center: { x: 150, y: 150 }, //Center of the force field of the wave field
+              attenuation: 0, //Attenuation coefficient of the wave field over time
+              region: {
+                //Affected area of the wave field.
+                shape: DisturbanceFieldShape.RECT, // Shape of the disturbance field's affected area
+                position: { x: 150, y: 150 }, // Center of the disturbance field's affected area
+                size: { width: 300, height: 300 } // Size of the disturbance field's affected area
+              }
+            }
+          ])
+      }.width("100%").height(300).align(Alignment.Center)
+      Text ('Velocity field')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      Stack() {
+        Text()
+          .width(300).height(300).backgroundColor(Color.Black)
+        Particle({
+          particles: [
+            {
+              emitter: {
+                particle: {
+                  type: ParticleType.POINT, // Particle type.
+                  config: {
+                    radius: 2 // Radius of the dot
+                  },
+                  count: 1000, // Total number of particles
+                  lifetime: 1000, // Particle lifetime, in ms
+                  lifetimeRange: 0 // Particle lifetime range, in ms
+                },
+                emitRate: 120, // Number of particles emitted per second
+                position: [0, 0],
+                size: [300, 300],
+                shape: ParticleEmitterShape.RECTANGLE // Emitter shape.
+              },
+              color: {
+                range: [Color.White, Color.White], // Initial color range
+              },
+              opacity: {
+                range: [1.0, 1.0],
+                updater: {
+                  type: ParticleUpdater.CURVE, // Transparency changes by curve
+                  config: [
+                    {
+                      from: 1.0,
+                      to: 0.0,
+                      startMillis: 0,
+                      endMillis: 1000,
+                      curve: Curve.EaseIn
+                    }
+                  ]
+                }
+              },
+            }
+          ]
+        }).width(300).height(300)
+          .margin({ top: 30 })
+          .velocityFields([
+            {
+              velocity: { x: 100, y: 0 }, // Velocity of the velocity field
+              region: {
+                // Affected area of the velocity field
+                shape: DisturbanceFieldShape.RECT, // Shape of the velocity field's affected area
+                position: { x: 150, y: 150 }, // Center of the area affected by the velocity field
+                size: { width: 200, height: 200 } // Size of the area affected by the velocity field.
+              }
+            }
+          ])
+      }.width("100%").height(300).align(Alignment.Center)
+    }
+  }
+}
+```
+

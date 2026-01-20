@@ -215,7 +215,7 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
   <!-- @[Main_WrappedBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/WrappedBuilder.ets) -->
   
   ``` TypeScript
-  import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
+  import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI'; 
   
   class Params {
     public text: string = '';
@@ -234,9 +234,9 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
       Row() {
         Column() {
           Text(this.message)
-            .fontSize(50)
+            .fontSize(40)
             .fontWeight(FontWeight.Bold)
-            .margin({ bottom: 36 })
+            .margin({ bottom: 10 })
             .backgroundColor(Color.Gray)
         }
       }
@@ -247,11 +247,15 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
   function buildText(params: Params) {
     Column() {
       Text(params.text)
-        .fontSize(50)
+        .fontSize(40)
         .fontWeight(FontWeight.Bold)
-        .margin({ bottom: 36 })
+        .margin({ bottom: 10 })
       TextBuilder({ message: params.text }) // 自定义组件
     }
+    .width('100%')
+    .alignItems(HorizontalAlign.Center)
+    .justifyContent(FlexAlign.Center)
+  
   }
   
   class TextNodeController extends NodeController {
@@ -286,10 +290,10 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
   
     build() {
       Row() {
-        Column() {
+        Column({ space: 25}) {
           NodeContainer(this.textNodeController)
             .width('100%')
-            .height(200)
+            .height(110)
             .backgroundColor('#FFF0F0F0')
           Button('Update')
             .onClick(() => {
@@ -297,6 +301,8 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
               const message = 'Update' + this.count.toString();
               this.textNodeController.update(message);
             })
+            .fontSize(20)
+            .fontWeight(FontWeight.Bold)
         }
         .width('100%')
         .height('100%')
@@ -1500,7 +1506,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
 | [NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md) | [addFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#addframenode12)、[removeFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#removeframenode12) |
 | [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md) | [makeNode](../reference/apis-arkui/js-apis-arkui-nodeController.md#makenode) |
 | [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) | [appendChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#appendchild)、[insertChildAfter](../reference/apis-arkui/js-apis-arkui-renderNode.md#insertchildafter)、[removeChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#removechild)、[clearChildren](../reference/apis-arkui/js-apis-arkui-renderNode.md#clearchildren) |
-| [NodeAdaper](../reference/apis-arkui/js-apis-arkui-frameNode.md#nodeadapter12) | 节点通过[懒加载](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)方式上下树时 |
+| [NodeAdapter](../reference/apis-arkui/js-apis-arkui-frameNode.md#nodeadapter12) | 节点通过[懒加载](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)方式上下树时 |
 
 > **说明：**
 >
@@ -2537,7 +2543,7 @@ struct FreezeBuildNode {
     // 用于控制和反馈对应的NodeContainer上的节点的行为，需要与NodeContainer一起使用。
     export class MyNodeController2 extends NodeController {
       private rootnode: BuilderNode<Data[]> | null = null;
-      // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContaine中。
+      // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中。
       // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
       makeNode(uiContext: UIContext): FrameNode | null {
         hilog.info(0xF811,'testTag','%{public}s',' uicontext is undefined :' + (uiContext === undefined));

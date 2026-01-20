@@ -1435,6 +1435,7 @@ static createPixelMapMask(pixelMap: image.PixelMap): Mask
 ```ts
 import { uiEffect } from '@kit.ArkGraphics2D';
 import { image } from '@kit.ImageKit';
+import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
@@ -1453,7 +1454,7 @@ struct Index {
 
   private getPixelMap(): image.PixelMap | undefined {
     try {
-      let context: Context = this.getUIContext().getHostContext as common.UIAbilityContext;
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       // this path should be created in local
       const path: string = context.resourceDir + "/perlin_worley_noise_3d_64.bmp";
       const imageSource: image.ImageSource = image.createImageSource(path);

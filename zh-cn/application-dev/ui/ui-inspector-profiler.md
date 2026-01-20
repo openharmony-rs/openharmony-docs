@@ -206,7 +206,7 @@ DevEco Studio的Profiler工具可抓取状态变量的变化打点。在Profiler
 
 **图1** 录制ArkUI State泳道流程示意图
 
-![UI-StateProfier1](figures/UI-StateProfier1.gif)
+![UI-StateProfier1](figures/UI-StateProfiler1.gif)
 
 步骤3：选中状态变量变化的打点，将显示当前状态变量更新触发了哪些组件的刷新，以及对应组件的创建、测量和布局的耗时。
 

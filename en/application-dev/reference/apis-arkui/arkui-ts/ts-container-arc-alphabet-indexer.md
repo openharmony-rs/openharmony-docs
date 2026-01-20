@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **ArcAlphabetIndexer** component is an arc-shaped component designed for quick navigation through alphabetically sorted items. It can be integrated with container components to quickly locate items within the visible area.
@@ -23,13 +23,13 @@ The **ArcAlphabetIndexer** component is an arc-shaped component designed for qui
 
 API version 21 and earlier:
 
-```
+```ts
 import { ArcAlphabetIndexer, ArcAlphabetIndexerAttribute } from '@kit.ArkUI';
 ```
 
 API version 22 and later:
 
-```
+```ts
 import { ArcAlphabetIndexer } from '@kit.ArkUI';
 ```
 
@@ -74,7 +74,7 @@ Sets the text color of the index items in the normal state.
 
 | Name| Type                                      | Mandatory| Description                               |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Text color.<br>Default value: **0xFFFFFF**|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | Yes  | Text color.<br>Default value: **0xFFFFFF**, displayed as white|
 
 ### selectedColor
 
@@ -90,7 +90,7 @@ Sets the text color of the selected item.
 
 | Name| Type                                      | Mandatory| Description                                     |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Text color of the selected item.<br>Default value: **0xFFFFFF**|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | Yes  | Text color of the selected item.<br>Default value: **0xFFFFFF**, displayed as white|
 
 ### popupColor
 
@@ -106,7 +106,7 @@ Sets the text color for the pop-up window.
 
 | Name| Type                                      | Mandatory| Description                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------- |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Text color of the pop-up window.<br>Default value: **0xFFFFFF**|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | Yes  | Text color of the pop-up window.<br>Default value: **0xFFFFFF**, displayed as white|
 
 ### selectedBackgroundColor
 
@@ -122,7 +122,7 @@ Sets the background color of the selected item.
 
 | Name| Type                                      | Mandatory| Description                                     |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Background color of the selected item.<br>Default value: **0x1F71FF**|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | Yes  | Background color of the selected item.<br>Default value: **0x1F71FF**, displayed as dark blue|
 
 ### popupBackground
 
@@ -138,7 +138,7 @@ Sets the background color of the pop-up window.
 
 | Name| Type                                                    | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| color  | [Optional&lt;ColorMetrics&gt;](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Background color of the pop-up window.<br>Default value: **0xD8404040**|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | Yes  | Background color of the pop-up window.<br>Default value: **0xD8404040**, displayed as dark gray with slight transparency|
 
 >  **NOTE**
 >
@@ -158,7 +158,7 @@ Sets whether to display the pop-up window.
 
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------- | ---- | -------------------------------------- |
-| enabled | Optional&lt;boolean&gt; | Yes  | Whether to display the pop-up window. **true**: display the pop-up window. **false**: Do not display the pop-up window.<br>Default value: **false**.|
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | Yes  | Whether to display the pop-up window.<br>**true**: yes; **false**: no<br>Default value: **false**|
 
 ### selectedFont
 
@@ -174,7 +174,7 @@ Sets the font style of the selected item, including size, weight, style, and fon
 
 | Name| Type                                    | Mandatory| Description                                                        |
 | ------ | ---------------------------------------- | ---- | ------------------------------------------------------------ |
-| font   | [Optional&lt;Font&gt;](ts-types.md#font) | Yes  | Font style of the selected item.<br>Default value: {<br>size:'13.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
+| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[Font](ts-types.md#font)&gt; | Yes  | Font style of the selected item.<br>Default value: {<br>size:'13.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
 
 ### popupFont
 
@@ -190,7 +190,7 @@ Sets the font style of the pop-up window.
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| font  | [Optional&lt;Font&gt;](ts-types.md#font) | Yes  | Font style of the pop-up window.<br>Default value:<br>{<br>size:'19.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
+| font  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[Font](ts-types.md#font)&gt; | Yes  | Font style of the pop-up window.<br>Default value:<br>{<br>size:'19.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
 
 ### font
 
@@ -206,7 +206,7 @@ Sets the default font style of the index items.
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| font   | [Optional&lt;Font&gt;](ts-types.md#font) | Yes  | Default font style of the index items.<br>Default value:<br>{<br>size:'13.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
+| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[Font](ts-types.md#font)&gt; | Yes  | Default font style of the index items.<br>Default value:<br>{<br>size:'13.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
 
 ### itemSize
 
@@ -222,7 +222,7 @@ Sets the size of the index item area.
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| size  | [Optional&lt;LengthMetrics&gt;](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes  | Size of the index item area. For the circular item area, this represents the diameter of the circle. Percentage values are not supported.<br>Default value: **24.0**<br>Unit: vp|
+| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | Yes  | Size of the index item area. For the circular item area, this represents the diameter of the circle. Percentage values are not supported.<br>Default value: **24.0**<br>Unit: vp|
 
 ### selected
 
@@ -254,13 +254,17 @@ Sets whether to enable the adaptive collapse behavior for the indexer.
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | ------------------------------------------ |
-| enable  | Optional&lt;boolean&gt; | Yes  | Whether to enable the adaptive collapse behavior for the indexer.<br>Default value: **true**.<br>**true**: Enable the adaptive collapse behavior.<br>**false**: Disable the adaptive collapse behavior.|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | Yes  | Whether to enable the adaptive collapse behavior for the indexer.<br>Default value: **true**.<br>**true**: Enable the adaptive collapse behavior.<br>**false**: Disable the adaptive collapse behavior.|
 
 ### popupBackgroundBlurStyle
 
 popupBackgroundBlurStyle(style: Optional&lt;BlurStyle&gt;)
 
-Sets the background blur style of the pop-up window.
+Sets the background blur style of the pop-up window. If this API is not used, the blur is disabled by default. The corresponding value is **NONE** in **BlurStyle**.
+
+> **NOTE**
+>
+> After configuring the pop-up window background blur style with **popupBackgroundBlurStyle**, avoid applying background colors via [popupBackground](#popupbackground).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -270,11 +274,7 @@ Sets the background blur style of the pop-up window.
 
 | Name| Type                                        | Mandatory| Description                                                        |
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| style  | [Optional&lt;BlurStyle&gt;](ts-universal-attributes-background.md#blurstyle9) | Yes  | Background blur style of the pop-up window.<br>Preset value: **NONE**.|
-
->  **NOTE**
->
->  After configuring the pop-up window background blur style with **popupBackgroundBlurStyle**, avoid applying background colors via [popupBackground](#popupbackground).
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[BlurStyle](ts-universal-attributes-background.md#blurstyle9)&gt; | Yes  | Background blur style of the pop-up window.|
 
 ## Events
 
@@ -294,7 +294,7 @@ Triggered when an index item is selected. The return value is the index of the s
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| handler  | Optional&lt;[OnSelectCallback](#onselectcallback)&gt; | Yes  | Callback used to return the result.|
+| handler  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[OnSelectCallback](#onselectcallback)&gt; | Yes  | Callback used to return the result.|
 
 
 ## ArcAlphabetIndexerInitInfo
@@ -344,20 +344,6 @@ import {
   ArcAlphabetIndexerAttribute
 } from '@kit.ArkUI';
 // Starting from API version 22, you do not need to manually import ArcListAttribute, ArcListItemAttribute, and ArcAlphabetIndexerAttribute. For details, refer to the Modules to Import section of ArcList, ArcListItem, and ArcAlphabetIndexer.
-
-@Builder
-function buildText() {
-  Stack() {
-    Text("head")
-      .fontSize(30)
-      .padding(10)
-      .backgroundColor(0xF9CF93)
-      .border({ width: '1px', color: Color.Black })
-
-    Divider().width('100%').height('1px')
-  }
-  .alignContent(Alignment.Bottom)
-}
 
 @Entry
 @Component

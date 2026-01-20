@@ -7,7 +7,7 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **inputConsumer** module provides APIs for subscribing to and unsubscribing from global hotkeys.
+The **inputConsumer** module provides APIs for subscribing to and unsubscribing from global hotkeys. 
 
 > **NOTE**
 >
@@ -24,7 +24,7 @@ The **inputConsumer** module provides APIs for subscribing to and unsubscribing 
 import { inputConsumer } from '@kit.InputKit';
 ```
 
-## inputConsumer.on
+## inputConsumer.on('key')
 
 on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): void
 
@@ -84,11 +84,11 @@ struct Index {
 ```
 
 
-## inputConsumer.off
+## inputConsumer.off('key')
 
 off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
-Disables listening for system hotkey change events.
+Disables listening for system hotkey change events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 

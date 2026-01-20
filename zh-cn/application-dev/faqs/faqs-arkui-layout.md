@@ -60,7 +60,7 @@
 
 **解决措施**
 
-1、如果做页面展示，可通过Text嵌套ImageSpan或者容器组件如Row、Colunm下嵌套Text&Image组件，推荐前者；
+1、如果做页面展示，可通过Text嵌套ImageSpan或者容器组件如Row、Column下嵌套Text&Image组件，推荐前者；
 
 2、如果要进行编辑，可使用RichEditor控件。
 

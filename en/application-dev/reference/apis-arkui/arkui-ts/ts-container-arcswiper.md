@@ -71,7 +71,7 @@ Creates an **ArcSwiper** component.
 
 ## Attributes
 
-In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported. [Menu control](ts-universal-attributes-menu.md) is not supported.
+In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
 
 ### index
 
@@ -87,7 +87,7 @@ Sets the index of the child component currently displayed in the container. If t
 
 | Name| Type  | Mandatory| Description                                            |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| index  | Optional\<number> | Yes  | Index of the child component currently displayed in the container.<br>Default value: **0**|
+| index  | Optional\<number> | Yes  | Index of the child component currently displayed in the container.<br>If **index** is set to **undefined**, the value **0** is used.|
 
 ### indicator
 
@@ -613,6 +613,8 @@ Notifies the **ArcSwiper** component that the custom animation has finished play
 
 ## Example
 
+### Example 1: Configuring the Basic Attributes of arcSwiper
+
 This example demonstrates the basic functionality of the **ArcSwiper** component.
 
 ```ts
@@ -736,3 +738,66 @@ struct TestNewInterface {
 ```
 
 ![arcSwiper](figures/arcSwiper.gif)
+
+### Example 2: Customizing a Page Transition Animation for ArcSwiper
+
+In this example, the [customContentTransition](#customcontenttransition) API is used to define a custom switching animation for the **ArcSwiper** component.
+
+``` ts
+import { Decimal } from '@kit.ArkTS';
+import { CircleShape, ArcSwiper, ArcSwiperAttribute } from '@kit.ArkUI';
+
+// Starting from API version 22, you do not need to manually import ArcSwiperAttribute. For details, refer to the Modules to Import section of the ArcSwiper reference document.
+@Entry
+@Component
+struct TestNewInterface {
+  private backgroundColors: Color[] =
+    [Color.Green, Color.Blue, Color.Yellow, Color.Pink, Color.White, Color.Gray, Color.Orange];
+  @State scaleList: number[] = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < this.backgroundColors.length; i++) {
+      this.scaleList.push(1.0);
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        ArcSwiper() {
+          ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
+            Text(index.toString())
+              .width(233)
+              .height(233)
+              .backgroundColor(backgroundColor)
+              .textAlign(TextAlign.Center)
+              .fontSize(30)
+              .scale({ x: this.scaleList[index], y: this.scaleList[index] })
+          })
+        }
+        .clipShape(new CircleShape({ width: 233, height: 233 }))
+        .effectMode(EdgeEffect.None)
+        .onChange((index: number) => {
+          console.info('onChange:' + index.toString());
+        })
+        .customContentTransition({
+          // The page is removed from the render tree when 1000 ms (timeout time) has elapsed.
+          timeout: 1000,
+          // Called on a frame-by-frame basis for all pages in the viewport. You can change the values of attributes such as opacity in the callback to implement a custom animation.
+          transition: (proxy: SwiperContentTransitionProxy) => {
+            if (proxy.position <= -1 || proxy.position >= 1) {
+              // When a group of pages is completely scrolled out of the viewport, reset the attribute values.
+              this.scaleList[proxy.index] = 1.0;
+            } else {
+              let position: number = Decimal.abs(proxy.position).toNumber();
+              this.scaleList[proxy.index] = 1 - position;
+            }
+          }
+        })
+        .disableTransitionAnimation(false)
+      }.height('100%')
+    }.width('100%')
+  }
+}
+```
+![arcSwiper](figures/arcSwiper1.gif)

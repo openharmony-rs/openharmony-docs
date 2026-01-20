@@ -20,19 +20,21 @@
 
 4. 调用[OH_CryptoEccSignatureSpec_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_destroy)释放对象。
 
-```c++
+<!-- @[sm2_signature_format_conversion_der](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/sm2_signature_format_conversion_der.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_asym_key.h"
 #include "CryptoArchitectureKit/crypto_signature.h"
 
-static OH_Crypto_ErrCode doTestSm2DataChange()
+OH_Crypto_ErrCode DoTestSm2RStoDER()
 {
-    static unsigned char g_rCoordinate[] = {
+    static unsigned char rCoordinate[] = {
         107, 93,  198, 247, 119, 18,  40,  110, 90,  156, 193,
         158, 205, 113, 170, 128, 146, 109, 75,  17,  181, 109,
         110, 91,  149, 5,   110, 233, 209, 78,  229, 96};
 
-    static unsigned char g_sCoordinate[] = {
+    static unsigned char sCoordinate[] = {
         45,  153, 88,  82,  104, 221, 226, 43,  174, 21,  122,
         248, 5,   232, 105, 41,  92,  95,  102, 224, 216, 149,
         85,  236, 110, 6,   64,  188, 149, 70,  70,  183};
@@ -41,10 +43,10 @@ static OH_Crypto_ErrCode doTestSm2DataChange()
     OH_CryptoEccSignatureSpec *spec = NULL;
     Crypto_DataBlob r = {0};
     Crypto_DataBlob s = {0};
-    r.data = g_rCoordinate;
-    r.len = sizeof(g_rCoordinate);
-    s.data = g_sCoordinate;
-    s.len = sizeof(g_sCoordinate);
+    r.data = rCoordinate;
+    r.len = sizeof(rCoordinate);
+    s.data = sCoordinate;
+    s.len = sizeof(sCoordinate);
     OH_Crypto_ErrCode ret = OH_CryptoEccSignatureSpec_Create(NULL, &spec);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoEccSignatureSpec_Destroy(spec);
@@ -65,9 +67,9 @@ static OH_Crypto_ErrCode doTestSm2DataChange()
     OH_CryptoEccSignatureSpec_Destroy(spec);
     spec = NULL;
     return CRYPTO_SUCCESS;
-
 }
 ```
+
 
 **指定DER格式，转换为r、s格式**
 
@@ -77,12 +79,15 @@ static OH_Crypto_ErrCode doTestSm2DataChange()
 
 3. 调用[OH_CryptoEccSignatureSpec_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_destroy)释放内存。
 
-```c++
+<!-- @[sm2_der_convert_r_s](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/sm2_der_convert_r_s.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_asym_key.h"
 #include "CryptoArchitectureKit/crypto_signature.h"
 
-static OH_Crypto_ErrCode doSm2GetRS() {
+OH_Crypto_ErrCode DoTestSm2DerConvertRS()
+{
     uint8_t signText[] = {
         0x30, 0x45, 0x02, 0x21, 0x00, 0xab, 0xf8, 0xe2, 0x96, 0x7d, 0x5b, 0x28, 0xfb, 0x9a, 0xbd, 0x05, 0xa6,
         0x81, 0xd6, 0xb1, 0x55, 0x69, 0x22, 0x25, 0xd2, 0xa3, 0x5d, 0xa8, 0xc0, 0x96, 0xe0, 0x1d, 0x38, 0x74,

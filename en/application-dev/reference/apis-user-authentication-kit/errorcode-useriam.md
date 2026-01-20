@@ -274,7 +274,7 @@ Initiate authentication again and issue a valid token.
 
 **Error Message**
 
-Failed to reuse authtication result.
+Failed to reuse authentication result.
 
 **Description**
 

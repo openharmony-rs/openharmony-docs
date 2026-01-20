@@ -28,7 +28,7 @@ Rotates the component.
 
 | Name| Type                                   | Mandatory| Description                                                        |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [RotateOptions](#rotateoptions) | Yes  | How the component rotates in the coordinate system (as shown below) with the upper left corner of the component as the coordinate origin. (x, y, z) specifies a vector as the axis of rotation.<br>The axis and center of rotation are set based on the coordinate system, which remains where it is when the component is moved.<br>Default value: When **x**, **y**, and **z** are not specified, their default values are **0**, **0**, and **1**, respectively. If any of **x**, **y**, and **z** is specified, the default value for the unspecified one is **0**.<br>{<br>centerX: '50%',<br>centerY: '50%',<br>centerZ: 0,<br>perspective: 0<br>}<br>Unit: vp<br>![coordinates](figures/coordinates.png)<br>Since API version 10, **CenterZ** and **perspective** are supported in ArkTS widgets.|
+| value  | [RotateOptions](#rotateoptions) | Yes  | How the component rotates within the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system), which takes the upper-left corner of the component as the origin (as shown in the figure below). (x, y, z) specifies a vector as the axis of rotation.<br>The axis and center of rotation are set based on the coordinate system, which remains where it is when the component is moved.<br>Default value: When **x**, **y**, and **z** are not specified, their default values are **0**, **0**, and **1**, respectively. If any of **x**, **y**, and **z** is specified, the default value for the unspecified one is **0**.<br>{<br>centerX:&nbsp;'50%',<br>centerY:&nbsp;'50%',<br>centerZ:&nbsp;0,<br>perspective:&nbsp;0<br>}<br>Unit: vp<br>![coordinates](figures/coordinates.png) |
 
 **Return value**
 
@@ -40,7 +40,7 @@ Rotates the component.
 
 rotate(options: Optional\<RotateOptions>): T
 
-Rotates the component. Compared with [rotate](#rotate), this API supports the **undefined** type for the **options** parameter.
+Rotates the component. Compared with [rotate](#rotate), this API supports the **undefined** type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -52,7 +52,7 @@ Rotates the component. Compared with [rotate](#rotate), this API supports the **
 
 | Name | Type                                              | Mandatory| Description                                                        |
 | ------- | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[RotateOptions](#rotateoptions)> | Yes  | How the component rotates in the coordinate system (as shown below) with the upper left corner of the component as the coordinate origin. (x, y, z) specifies a vector as the axis of rotation.<br>The axis and center of rotation are set based on the coordinate system, which remains where it is when the component is moved.<br>Default value: When **x**, **y**, and **z** are not specified, their default values are **0**, **0**, and **1**, respectively. If any of **x**, **y**, and **z** is specified, the default value for the unspecified one is **0**.<br>{<br>centerX: '50%',<br>centerY: '50%',<br>centerZ: 0,<br>perspective: 0<br>}<br>Unit: vp<br>![coordinates](figures/coordinates.png)<br>Since API version 10, **CenterZ** and **perspective** are supported in ArkTS widgets.<br>If **options** is **undefined**, the component reverts to its original state with no rotation.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[RotateOptions](#rotateoptions)> | Yes  | Enables the component to rotate within the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system), which takes the upper-left corner of the component as the origin (as shown in the figure below). (x, y, z) specifies a vector as the axis of rotation.<br>The axis and center of rotation are set based on the coordinate system, which remains where it is when the component is moved.<br>Default value: When **x**, **y**, and **z** are not specified, their default values are **0**, **0**, and **1**, respectively. If any of **x**, **y**, and **z** is specified, the default value for the unspecified one is **0**.<br>{<br>centerX:&nbsp;'50%',<br>centerY:&nbsp;'50%',<br>centerZ:&nbsp;0,<br>perspective:&nbsp;0<br>}<br>Unit: vp<br>![coordinates](figures/coordinates.png)<br>If **options** is **undefined**, the component reverts to its original state with no rotation.|
 
 **Return value**
 
@@ -76,7 +76,7 @@ Sets the component rotation effect. Compared with [rotate](#rotate18), this API 
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[RotateOptions](#rotateoptions) \| [RotateAngleOptions](#rotateangleoptions20)> | Yes  | **RotateOptions**: How the component rotates in the coordinate system (as shown below) with the upper left corner of the component as the coordinate origin. (x, y, z) specifies a vector as the axis of rotation.<br>The axis and center of rotation are set based on the coordinate system, which remains where it is when the component is moved.<br>Default value: When **x**, **y**, and **z** are not specified, their default values are **0**, **0**, and **1**, respectively. If any of **x**, **y**, and **z** is specified, the default value for the unspecified one is **0**.<br>{<br>centerX: '50%',<br>centerY: '50%',<br>centerZ: 0,<br>perspective: 0<br>}<br>**RotateAngleOptions**: How the component rotates in the coordinate system (as shown below) with the upper left corner of the component as the coordinate origin. angleX, angleY, angleZ specifies the rotation angle on the three axes.<br>Default value:<br>{<br>angleX:0,<br>angleY:0,<br>angleZ:0,<br>centerX: '50%',<br>centerY: '50%',<br>centerZ: 0,<br>perspective: 0<br>}<br>![coordinates](figures/coordinates.png)<br>If **options** is **undefined**, the component reverts to its original state with no rotation.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[RotateOptions](#rotateoptions) \| [RotateAngleOptions](#rotateangleoptions20)> | Yes  | **RotateOptions**: How the component rotates in the coordinate system (as shown below) with the upper left corner of the component as the coordinate origin. (x, y, z) specifies a vector as the axis of rotation.<br>The rotation axis and center point are defined based on the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system). When the component moves, the coordinate system does not follow it.<br>Default value: When **x**, **y**, and **z** are not specified, their default values are **0**, **0**, and **1**, respectively. If any of **x**, **y**, and **z** is specified, the default value for the unspecified one is **0**.<br>{<br>centerX:&nbsp;'50%',<br>centerY:&nbsp;'50%',<br>centerZ:&nbsp;0,<br>perspective:&nbsp;0<br>}<br>**RotateAngleOptions**: How the component rotates in the coordinate system (as shown below) with the upper left corner of the component as the coordinate origin. angleX,&nbsp;angleY,&nbsp;angleZ specifies the rotation angle on the three axes.<br>Default value:<br>{<br>angleX:0,<br>angleY:0,<br>angleZ:0,<br>centerX:&nbsp;'50%',<br>centerY:&nbsp;'50%',<br>centerZ:&nbsp;0,<br>perspective:&nbsp;0<br>}<br>![coordinates](figures/coordinates.png)<br>If **options** is **undefined**, the component reverts to its original state with no rotation.|
 
 **Return value**
 
@@ -100,7 +100,7 @@ Translates the component.
 
 | Name| Type                                         | Mandatory| Description                                                        |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [TranslateOptions](#translateoptions) | Yes  | How the component is translated in the coordinate system (as shown below) with the upper left corner of the component as the coordinate origin. Values of **x**, **y**, and **z** indicate the translation distance along the respective axis. A positive value indicates a forward movement towards the respective axis, and a negative value indicates a backward movement towards the respective axis. The translation distance can be a number or a string (for example, **'10px'** or **'10%'**).<br>Default value:<br>{<br>x: 0,<br>y: 0,<br>z: 0<br>}<br>Unit: vp<br>![coordinates](figures/coordinates.png)<br>**NOTE**<br>When the component is translated along the z-axis, the position of the observation point remains unchanged. As such, the component appears larger when the value of **z** places it closer to the observation point and smaller when the value of **z** places it further away from the observation point.<br>![coordinateNode](figures/coordinateNote.png) |
+| value  | [TranslateOptions](#translateoptions) | Yes  | How the component is translated within the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system), which takes the upper-left corner of the component as the origin (as shown in the figure below). Values of **x**, **y**, and **z** indicate the translation distance along the respective axis. A positive value indicates a forward movement towards the respective axis, and a negative value indicates a backward movement towards the respective axis. The translation distance can be a number or a string (for example, **'10px'** or **'10%'**).<br>Default value:<br>{<br>x:&nbsp;0,<br>y:&nbsp;0,<br>z:&nbsp;0<br>}<br>Unit: vp<br>![coordinates](figures/coordinates.png)<br>**NOTE**<br>When the component is translated along the z-axis, the position of the observation point remains unchanged. As such, the component appears larger when the value of **z** places it closer to the observation point and smaller when the value of **z** places it further away from the observation point.<br>![coordinateNode](figures/coordinateNote.png) |
 
 **Return value**
 
@@ -112,7 +112,7 @@ Translates the component.
 
 translate(translate: Optional\<TranslateOptions>): T
 
-Translates the component. Compared with [translate](#translate), this API supports the **undefined** type for the **translate** parameter.
+Translates the component. Compared with [translate](#translate), this API supports the **undefined** type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -124,7 +124,7 @@ Translates the component. Compared with [translate](#translate), this API suppor
 
 | Name   | Type                                                    | Mandatory| Description                                                        |
 | --------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| translate | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TranslateOptions](#translateoptions)> | Yes  | How the component is translated in the coordinate system (as shown below) with the upper left corner of the component as the coordinate origin. Values of **x**, **y**, and **z** indicate the translation distance along the respective axis. A positive value indicates a forward movement towards the respective axis, and a negative value indicates a backward movement towards the respective axis. The translation distance can be a number or a string (for example, **'10px'** or **'10%'**).<br>Default value:<br>{<br>x: 0,<br>y: 0,<br>z: 0<br>}<br>Unit: vp<br>![coordinates](figures/coordinates.png)<br>**NOTE**<br>When the component is translated along the z-axis, the position of the observation point remains unchanged. As such, the component appears larger when the value of **z** places it closer to the observation point and smaller when the value of **z** places it further away from the observation point.<br>![coordinateNode](figures/coordinateNote.png)<br>If **translate** is **undefined**, the component reverts to its original state with no translation.|
+| translate | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TranslateOptions](#translateoptions)> | Yes  | Enables the component to translate within the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system), which takes the upper-left corner of the component as the origin (as shown in the figure below). Values of **x**, **y**, and **z** indicate the translation distance along the respective axis. A positive value indicates a forward movement towards the respective axis, and a negative value indicates a backward movement towards the respective axis. The translation distance can be a number or a string (for example, **'10px'** or **'10%'**).<br>Default value:<br>{<br>x:&nbsp;0,<br>y:&nbsp;0,<br>z:&nbsp;0<br>}<br>Unit: vp<br>![coordinates](figures/coordinates.png)<br>**NOTE**<br>When the component is translated along the z-axis, the position of the observation point remains unchanged. As such, the component appears larger when the value of **z** places it closer to the observation point and smaller when the value of **z** places it further away from the observation point.<br>![coordinateNode](figures/coordinateNote.png)<br>If **translate** is **undefined**, the component reverts to its original state with no translation.|
 
 **Return value**
 
@@ -148,7 +148,7 @@ Scales the component.
 
 | Name| Type                                 | Mandatory| Description                                                        |
 | ------ | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ScaleOptions](#scaleoptions) | Yes  | Scale ratio along the x-, y-, and z-axis. The default value is **1**. **centerX** and **centerY** are used to set the scale center point.<br>Default value:<br>{<br>x: 1,<br>y: 1,<br>z: 1,<br>centerX:'50%',<br>centerY:'50%'<br>} |
+| value  | [ScaleOptions](#scaleoptions) | Yes  | Scale ratio along the x-, y-, and z-axis. The default value is **1**. **centerX** and **centerY** are used to set the scale center point.<br>Default value:<br>{<br>x:&nbsp;1,<br>y:&nbsp;1,<br>z:&nbsp;1,<br>centerX:'50%',<br>centerY:'50%'<br>} |
 
 **Return value**
 
@@ -160,7 +160,7 @@ Scales the component.
 
 scale(options: Optional\<ScaleOptions>): T
 
-Scales the component. Compared with [scale](#scale), this API supports the **undefined** type for the **options** parameter.
+Scales the component. Compared with [scale](#scale), this API supports the **undefined** type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -172,7 +172,7 @@ Scales the component. Compared with [scale](#scale), this API supports the **und
 
 | Name | Type                                            | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ScaleOptions](#scaleoptions)> | Yes  | Scale ratio along the x-, y-, and z-axis. The default value is **1**. **centerX** and **centerY** are used to set the scale center point.<br>Default value:<br>{<br>x: 1,<br>y: 1,<br>z: 1,<br>centerX:'50%',<br>centerY:'50%'<br>}<br>If **options** is **undefined**, the component reverts to its original state with no scaling.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ScaleOptions](#scaleoptions)> | Yes  | Scale ratio along the x-, y-, and z-axis. The default value is **1**. **centerX** and **centerY** are used to set the scale center point.<br>Default value:<br>{<br>x:&nbsp;1,<br>y:&nbsp;1,<br>z:&nbsp;1,<br>centerX:'50%',<br>centerY:'50%'<br>}<br>If **options** is **undefined**, the component reverts to its original state with no scaling.|
 
 **Return value**
 
@@ -260,6 +260,8 @@ type Matrix4Transit = Matrix4Transit
 
 ## RotateOptions
 
+Defines component rotation parameters.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -269,11 +271,11 @@ type Matrix4Transit = Matrix4Transit
 | x                         | number                     | No  | Yes  | X coordinate of the rotation axis vector.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
 | y                         | number                     | No  | Yes  | Y coordinate of the rotation axis vector.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
 | z                         | number                     | No  | Yes  | Z coordinate of the rotation axis vector.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| angle                     | number \| string | No  | No  | Angle to rotate. A positive angle indicates a clockwise rotation, and a negative angle indicates a counterclockwise rotation. The value can be of the string type, for example, **'90deg'**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| centerX                   | number \| string | No  | Yes  | X coordinate of the transformation center point (anchor). The value can be of the string type, for example, **'50'** and **'50%'**.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| centerY                   | number \| string | No  | Yes  | Y coordinate of the transformation center point (anchor). The value can be of the string type, for example, **'50'** and **'50%'**.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
+| angle                     | number&nbsp;\|&nbsp;string | No  | No  | Angle to rotate. A positive angle indicates a clockwise rotation, and a negative angle indicates a counterclockwise rotation. The value can be of the string type, for example, **'90deg'**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| centerX                   | number&nbsp;\|&nbsp;string | No  | Yes  | X coordinate of the transformation center point (anchor). The value can be of the string type, for example, **'50'** and **'50%'**.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| centerY                   | number&nbsp;\|&nbsp;string | No  | Yes  | Y coordinate of the transformation center point (anchor). The value can be of the string type, for example, **'50'** and **'50%'**.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
 | centerZ<sup>10+</sup>     | number                     | No  | Yes  | Z-axis anchor, that is, the z-component of the 3D rotation center point.<br>Default value: **0**.<br>Unit: px<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
-| perspective<sup>10+</sup> | number                     | No  | Yes  | Z-axis coordinate of the camera. The value indicates the viewing distance, that is, the distance between the camera and the z=0 plane. The positive and negative values of the parameter determine the camera observation direction. When perspective is set to 0, the system automatically calculates a proper camera Z-axis position. The value is negative.<br>The axis and center of rotation are set based on the coordinate system, which remains where it is when the component is moved.<br>Default value: **0**.<br>Unit: px<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
+| perspective<sup>10+</sup> | number                     | No  | Yes  | Z-axis coordinate of the camera. The value indicates the viewing distance, that is, the distance between the camera and the z=0 plane. The positive and negative values of the parameter determine the camera observation direction. When perspective is set to 0, the system automatically calculates a proper camera Z-axis position. The value is negative.<br>The rotation axis and center point are defined based on the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system). When the component moves, the coordinate system does not follow it.<br>Default value: **0**.<br>Unit: px<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
 
 ## RotateAngleOptions<sup>20+</sup>
 Rotation parameter option of the rotation angle on each axis.
@@ -286,13 +288,13 @@ Rotation parameter option of the rotation angle on each axis.
 
 | Name                     | Type                      | Read-Only| Optional| Description                                                        |
 | ------------------------- | -------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| angleX                    | number \| string | No  | Yes  | Rotation angle along the x-axis. A positive value indicates clockwise rotation relative to the rotation axis, and a negative value indicates counterclockwise rotation. The value can be of the string type, for example, **'90deg'**.<br>Default value: **0**.<br>Value range: (-∞, +∞).|
-| angleY                    | number \| string | No  | Yes  | Rotation angle along the y-axis. A positive value indicates clockwise rotation relative to the rotation axis, and a negative value indicates counterclockwise rotation. The value can be of the string type, for example, **'90deg'**.<br>Default value: **0**.<br>Value range: (-∞, +∞).|
-| angleZ                    | number \| string | No  | Yes  | Rotation angle along the z-axis. A positive value indicates clockwise rotation relative to the rotation axis, and a negative value indicates counterclockwise rotation. The value can be of the string type, for example, **'90deg'**.<br>Default value: **0**.<br>Value range: (-∞, +∞).|
-| centerX                   | number \| string | No  | Yes  | X coordinate of the transformation center point (anchor).<br>Unit: vp<br>Default value: **'50%'**.<br>Value range: (-∞, +∞).|
-| centerY                   | number \| string | No  | Yes  | Y coordinate of the transformation center point (anchor).<br>Unit: vp<br>Default value: **'50%'**.<br>Value range: (-∞, +∞).|
+| angleX                    | number&nbsp;\|&nbsp;string | No  | Yes  | Rotation angle along the x-axis. A positive value indicates clockwise rotation relative to the rotation axis, and a negative value indicates counterclockwise rotation. The value can be of the string type, for example, **'90deg'**.<br>Default value: **0**.<br>Value range: (-∞, +∞).|
+| angleY                    | number&nbsp;\|&nbsp;string | No  | Yes  | Rotation angle along the y-axis. A positive value indicates clockwise rotation relative to the rotation axis, and a negative value indicates counterclockwise rotation. The value can be of the string type, for example, **'90deg'**.<br>Default value: **0**.<br>Value range: (-∞, +∞).|
+| angleZ                    | number&nbsp;\|&nbsp;string | No  | Yes  | Rotation angle along the z-axis. A positive value indicates clockwise rotation relative to the rotation axis, and a negative value indicates counterclockwise rotation. The value can be of the string type, for example, **'90deg'**.<br>Default value: **0**.<br>Value range: (-∞, +∞).|
+| centerX                   | number&nbsp;\|&nbsp;string | No  | Yes  | X coordinate of the transformation center point (anchor).<br>Unit: vp<br>Default value: **'50%'**.<br>Value range: (-∞, +∞).|
+| centerY                   | number&nbsp;\|&nbsp;string | No  | Yes  | Y coordinate of the transformation center point (anchor).<br>Unit: vp<br>Default value: **'50%'**.<br>Value range: (-∞, +∞).|
 | centerZ                   | number                     | No  | Yes  | Z-axis anchor, that is, the z-component of the 3D rotation center point.<br>Default value: **0**.<br>Unit: px<br>Value range: (-∞, +∞).|
-| perspective               | number                     | No  | Yes  | Z-axis coordinate of the camera. The value indicates the viewing distance, that is, the distance between the camera and the z=0 plane. The positive and negative values of the parameter determine the camera observation direction. When perspective is set to 0, the system automatically calculates a proper camera Z-axis position. The value is negative.<br>The axis and center of rotation are set based on the coordinate system, which remains where it is when the component is moved.<br>Default value: **0**.<br>Unit: px<br>Value range: (-∞, +∞).|
+| perspective               | number                     | No  | Yes  | Z-axis coordinate of the camera. The value indicates the viewing distance, that is, the distance between the camera and the z=0 plane. The positive and negative values of the parameter determine the camera observation direction. When perspective is set to 0, the system automatically calculates a proper camera Z-axis position. The value is negative.<br>The rotation axis and center point are defined based on the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system). When the component moves, the coordinate system does not follow it.<br>Default value: **0**.<br>Unit: px<br>Value range: (-∞, +∞).|
 
 ## TranslateOptions
 
@@ -304,9 +306,9 @@ Rotation parameter option of the rotation angle on each axis.
 
 | Name| Type                      | Read-Only| Optional| Description           |
 | ---- | -------------------------- | ---- | ---- | --------------- |
-| x    | number \| string | No  | Yes  | Translation distance along the x-axis.<br>For the number type, the unit is vp, and the value range is (-∞, +∞).<br>For the string type, the value follows the format of [Length](ts-types.md#length) string type.|
-| y    | number \| string | No  | Yes  | Translation distance along the y-axis.<br>For the number type, the unit is vp, and the value range is (-∞, +∞).<br>For the string type, the value follows the format of [Length](ts-types.md#length) string type.|
-| z    | number \| string | No  | Yes  | Translation distance along the z-axis.<br>For the number type, the unit is vp, and the value range is (-∞, +∞).<br>For the string type, the value follows the format of [Length](ts-types.md#length) string type.<br>Default value: **0.0**.|
+| x    | number&nbsp;\|&nbsp;string | No  | Yes  | Translation distance along the x-axis.<br>For the number type, the unit is vp, and the value range is (-∞, +∞).<br>Default value: **0**.<br>For the string type, the value follows the format of [Length](ts-types.md#length) string type.|
+| y    | number&nbsp;\|&nbsp;string | No  | Yes  | Translation distance along the y-axis.<br>For the number type, the unit is vp, and the value range is (-∞, +∞).<br>Default value: **0**.<br>For the string type, the value follows the format of [Length](ts-types.md#length) string type.|
+| z    | number&nbsp;\|&nbsp;string | No  | Yes  | Translation distance along the z-axis.<br>For the number type, the unit is vp, and the value range is (-∞, +∞).<br>Default value: **0**.<br>For the string type, the value follows the format of [Length](ts-types.md#length) string type.|
 
 ## ScaleOptions
 
@@ -321,18 +323,18 @@ Rotation parameter option of the rotation angle on each axis.
 | x       | number                     | No  | Yes  | Scale ratio along the x-axis. x > 1: The component is scaled up along the x-axis.<br>0 < x < 1: The component is scaled down along the x-axis.<br>x < 0: The component is scaled in the reverse direction of the x-axis.|
 | y       | number                     | No  | Yes  | Scale ratio along the y-axis. y > 1: The component is scaled up along the y-axis.<br>0 < y < 1: The component is scaled down along the y-axis.<br>y < 0: The component is scaled in the reverse direction of the y-axis.|
 | z       | number                     | No  | Yes  | Scale ratio along the z-axis. z > 1: The component is scaled up along the z-axis.<br>0 < z < 1: The component is scaled down along the z-axis.<br>z < 0: The component is scaled in the reverse direction of the z-axis.|
-| centerX | number \| string | No  | Yes  | X coordinate of the transformation center point (anchor). The value can be of the string type, for example, **'50'** and **'50%'**.<br>Unit: vp|
-| centerY | number \| string | No  | Yes  | Y coordinate of the transformation center point (anchor). The value can be of the string type, for example, **'50'** and **'50%'**.<br>Unit: vp|
+| centerX | number&nbsp;\|&nbsp;string | No  | Yes  | X coordinate of the transformation center point (anchor). The value can be of the string type, for example, **'50'** and **'50%'**.<br>Unit: vp|
+| centerY | number&nbsp;\|&nbsp;string | No  | Yes  | Y coordinate of the transformation center point (anchor). The value can be of the string type, for example, **'50'** and **'50%'**.<br>Unit: vp|
 
 > **NOTE**
 >
-> If the **rotate** and **scale** attributes are both set for a component, the values of **centerX** and **centerY** conflict. In this case, the one that is set later in time is used.
+> If the [rotate](#rotate) and [scale](#scale) attributes are both set for a component, the values of **centerX** and **centerY** conflict. In this case, their values will be determined by the attribute that was set last.
 
 ## Example
 
 ### Example 1: Adding Graphical Transformation Effects
 
-This example demonstrates how to apply various graphical transformations using the **rotate**, **translate**, **scale**, and **transform** APIs.
+This example applies rotation, translation, scaling, and transformation matrix effects to the component using [rotate](#rotate), [translate](#translate), [scale](#scale), and [transform](#transform).
 
 ```ts
 // xxx.ets
@@ -386,7 +388,7 @@ struct TransformExample {
 
 ### Example 2: Setting the Rotation Perspective
 
-This example demonstrates how to use the **perspective** API to add a perspective effect to a component.
+This example demonstrates how to set the rotation perspective for a component by using [perspective](#rotateoptions).
 
 ```ts
 // xxx.ets
@@ -430,7 +432,7 @@ struct Index {
 
 ### Example 3: Implementing Rotation Around a Center Point
 
-This example shows how to achieve the same rotation effect by setting different parameters for** rotate** and **transform**.
+This example shows how to achieve the same rotation effect by setting different parameters for [rotate](#rotate) and [transform](#transform).
 
 ```ts
 import { matrix4 } from '@kit.ArkUI';

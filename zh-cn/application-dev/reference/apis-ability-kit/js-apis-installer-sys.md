@@ -69,7 +69,7 @@ try {
 
 getBundleInstaller(): Promise\<BundleInstaller>
 
-获取BundleInstaller对象。使用callback异步回调。
+获取BundleInstaller对象。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 

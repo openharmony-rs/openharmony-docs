@@ -6,15 +6,15 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Use **RenderingContext** to draw rectangles, text, images, and other objects on a canvas.
+**RenderingContext** is a rendering context for drawing graphics, text, images, and other objects onto a **Canvas** component.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> When you call drawing APIs in this module, the commands are stored in the associated **Canvas** component's command queue. These commands are only executed when the current frame enters the rendering phase and the associated **Canvas** component is visible. Therefore, when the Canvas component is invisible, you should avoid frequently calling the drawing APIs to prevent instructions from being stacked in the queue and prevent excessive memory usage. For details, see [Controlling Canvas Rendering Based on Component Visibility](../../../ui/arkts-drawing-customization-on-canvas.md#controlling-canvas-rendering-based-on-component-visibility).
+> When you call drawing APIs in this module, the commands are stored in the associated **Canvas** component's command queue. These commands are only executed when the current frame enters the rendering phase and the associated **Canvas** component is visible. Therefore, when the **Canvas** component is invisible (for example, off-screen or hidden), avoid frequent drawing calls to prevent command queue buildup and excessive memory usage. For best practices, see [Controlling Canvas Rendering Based on Component Visibility](../../../ui/arkts-drawing-customization-on-canvas.md#controlling-canvas-rendering-based-on-component-visibility).
 >
-> The [beginPath](#beginpath), [moveTo](#moveto), [lineTo](#lineto), [closePath](#closepath), [bezierCurveTo](#beziercurveto), [quadraticCurveTo](#quadraticcurveto), [arc](#arc), [arcTo](#arcto), [ellipse](#ellipse), [rect](#rect), and [roundRect](#roundrect20) APIs can take effect only on paths in CanvasRenderingContext2D and cannot take effect on paths set in [OffscreenCanvasRenderingContext2D](./ts-offscreencanvasrenderingcontext2d.md) and [Path2D](./ts-components-canvas-path2d.md).
+> The following path-related APIs apply only to paths created within **CanvasRenderingContext2D** and do not affect paths defined in [OffscreenCanvasRenderingContext2D](./ts-offscreencanvasrenderingcontext2d.md) or [Path2D](./ts-components-canvas-path2d.md): [beginPath](#beginpath), [moveTo](#moveto), [lineTo](#lineto), [closePath](#closepath), [bezierCurveTo](#beziercurveto), [quadraticCurveTo](#quadraticcurveto), [arc](#arc), [arcTo](#arcto), [ellipse](#ellipse), [rect](#rect), and [roundRect](#roundrect20).
 >
 > If the width or height of the **Canvas** component exceeds 8000 px, the CPU is used for rendering, which can significantly degrade performance.
 
@@ -36,17 +36,17 @@ Constructs a canvas object. You can configure parameters of the CanvasRenderingC
 
 | Name     | Type | Mandatory  | Description   |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| settings | [RenderingContextSettings](#renderingcontextsettings) | No   | Settings of the **CanvasRenderingContext2D** object. For details, see [RenderingContextSettings](#renderingcontextsettings).<br>If the value is undefined or null, the default value of [RenderingContextSettings](#renderingcontextsettings) is used.|
+| settings | [RenderingContextSettings](#renderingcontextsettings) | No   | Settings of the **CanvasRenderingContext2D** object. For details, see [RenderingContextSettings](#renderingcontextsettings).<br>If the value is **undefined** or **null**, the default value of [RenderingContextSettings](#renderingcontextsettings) is used.|
 
 ### constructor<sup>12+</sup>
 
 constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 
-Constructs a canvas object. You can configure parameters and unit modes of the CanvasRenderingContext2D object.
+Creates a **CanvasRenderingContext2D** object, allowing for initial configuration of rendering parameters and unit mode.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
-Atomic service API: This API can be used in atomic services since API version 12.
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,12 +54,12 @@ Atomic service API: This API can be used in atomic services since API version 12
 
 | Name     | Type | Mandatory  | Description   |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| settings | [RenderingContextSettings](#renderingcontextsettings) | No   | Settings of the **CanvasRenderingContext2D** object. For details, see [RenderingContextSettings](#renderingcontextsettings).<br>Undefined and null values are processed based on the default value of [RenderingContextSettings](#renderingcontextsettings).|
-| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | No   | Configures the unit mode of the CanvasRenderingContext2D object. The unit mode cannot be changed after being configured.<br>Invalid values **undefined**, **NaN** and **Infinity** are treated as the default value.<br>Default value: **DEFAULT**.|
+| settings | [RenderingContextSettings](#renderingcontextsettings) | No   | Settings of the **CanvasRenderingContext2D** object. For details, see [RenderingContextSettings](#renderingcontextsettings).<br>If the value is **undefined** or **null**, the default value of [RenderingContextSettings](#renderingcontextsettings) is used.|
+| unit  | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | No   | Unit mode of the **CanvasRenderingContext2D** object. The value cannot be dynamically changed once set.<br>Invalid values **undefined**, **NaN** and **Infinity** are treated as the default value.<br>Default value: **DEFAULT**.|
 
 **Example**
 
-The following example shows how to configure the unit mode of the CanvasRenderingContext2D object. The default unit mode is LengthMetricsUnit.DEFAULT, corresponding to the default unit vp. The unit mode cannot be dynamically changed after being configured. For details, see [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12).
+The following example shows how to specify the unit mode during the creation of a **CanvasRenderingContext2D** object. The default unit mode is **LengthMetricsUnit.DEFAULT**, which corresponds to the default unit vp. Once set, this unit mode cannot be changed dynamically. For details, see [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12).
 
 ```ts
 // xxx.ets
@@ -100,43 +100,25 @@ struct LengthMetricsUnitDemo {
 
 ![CanvasContext2DUnitMode](figures/CanvasContext2DUnitMode.png)
 
-## Attributes
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type| Read Only| Optional| Description|
-| --------- | ------------------------------- | ------------------ | ---------------------- | ---------------------------------------- |
-| [fillStyle](#fillstyle) | string \|number<sup>10+</sup> \|[CanvasGradient](ts-components-canvas-canvasgradient.md) \| [CanvasPattern](ts-components-canvas-canvaspattern.md) | No| No| Sets the fill color to be drawn. This property is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined will be returned.<br>- When the type is string, this attribute indicates the color of the fill area. For details about the color format, see the description for the string type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is number, this attribute indicates the color of the fill area. Fully transparent colors are not supported. For details about the color format, see the description for the number type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is **CanvasGradient**, this attribute indicates a gradient object, which is created using the **[createLinearGradient](#createlineargradient)** API.<br>- When the type is **CanvasPattern**, this attribute indicates a pattern, which is created using the **[createPattern](#createpattern)** API.<br>Default value: '#000000' (black)<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [lineWidth](#linewidth) | number | No| No| Sets the width of a line to be drawn. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain the current value by reading. If you try to read the value, undefined is returned.<br>Default value: **1(px)**<br>Default unit: vp<br> The value of lineWidth cannot be 0 or a negative number. If the value is 0, a negative number, or NaN, the default value is used. If the value is Infinity, the lineWidth attribute is abnormal.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [strokeStyle](#strokestyle)              | string \|number<sup>10+</sup> \|[CanvasGradient](ts-components-canvas-canvasgradient.md) \| [CanvasPattern](ts-components-canvas-canvaspattern.md)  | No| No| Sets the color of a line. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain the current value by reading. If you try to read the value, undefined is returned.<br>- When the type is string, this attribute indicates the stroke color. For details about the color format, see the description for the string type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is number, this attribute indicates the stroke color. Fully transparent colors are not supported. For details about the color format, see the description for the number type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is **CanvasGradient**, this attribute indicates a gradient object, which is created using the **[createLinearGradient](#createlineargradient)** API.<br>- When the type is **CanvasPattern**, this attribute indicates a pattern, which is created using the **[createPattern](#createpattern)** API.<br>Default value: '#000000' (black)<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [lineCap](#linecap)                      | [CanvasLineCap](#canvaslinecap) | No| No| Style of the line endpoint. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>The options are as follows:<br>- **'butt'**: The endpoints of the line are squared off.<br>- **'round'**: The endpoints of the line are rounded.<br>- **'square'**: The endpoints of the line are squared off by adding a box with an equal width and half the height of the line's thickness.<br>Default value: **'butt'**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [lineJoin](#linejoin)                    | [CanvasLineJoin](#canvaslinejoin) | No| No| Style of the intersection point between line segments. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>The options are as follows:<br>- **'round'**: The shape used to join line segments is a sector, whose radius at the rounded corner is equal to the line width.<br>- **'bevel'**: The shape used to join line segments is a triangle. The rectangular corner of each line is independent.<br>- **'miter'**: The shape used to join line segments has a mitered corner by extending the outside edges of the lines until they meet. You can view the effect of this attribute in **miterLimit**.<br>Default value: **'miter'**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [miterLimit](#miterlimit)                | number | No| No| Sets the miter limit, which specifies the distance between the inner and outer corners where lines intersect. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>Default value: **10** (px)<br>Unit: px<br>The value of miterLimit cannot be 0 or a negative number. If the value is 0, a negative number, or NaN, the default value is used. If the value is Infinity, the miterLimit attribute is abnormal.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [font](#font)                            | string | No| No| Sets the font style for text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>Syntax: ctx.font = 'font-style font-weight font-size font-family'<br>- (Optional) **font-style**: font style. Available values are **'normal'** and **'italic'**.<br>- (Optional) **font-weight**: font weight. Available values are as follows: **'normal'**, **'bold'**, **'bolder'**, **'lighter'**, **'100'**, **'200'**, **'300'**, **'400'**, **'500'**, **'600'**, **'700'**, **'800'**, **'900'**.<br>- (Optional) **font-size**: font size and line height. The unit must be specified and can be px or vp.<br>- (Optional) **font-family**: font family. Available values are **'sans-serif'**, **'serif'**, and **'monospace'**. API version 20 and later support registered custom fonts (the DevEco Studio Previewer does not support custom fonts). For details, see [font](#font).<br>Default value: **'normal normal 14px sans-serif'**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [textAlign](#textalign)                  | [CanvasTextAlign](#canvastextalign) | No| No| Sets the text alignment mode during text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.<br>The options are as follows:<br>- **'left'**: The text is left-aligned.<br>- **'right'**: The text is right-aligned.<br>- **'center'**: The text is center-aligned.<br>- **'start'**: The text is aligned with the start bound.<br>- **'end'**: The text is aligned with the end bound.<br>In the LTR layout mode, 'start' is the same as 'left'. In the RTL layout mode, 'start' is the same as 'right'.<br>Default value: 'left'<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [textBaseline](#textbaseline)            | [CanvasTextBaseline](#canvastextbaseline) | No| No| Sets the horizontal alignment mode during text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.<br>The options are as follows:<br>- **'alphabetic'**: The text baseline is the normal alphabetic baseline.<br>- **'top'**: The text baseline is on the top of the text bounding box.<br>- **'hanging'**: The text baseline is a hanging baseline over the text.<br>- **'middle'**: The text baseline is in the middle of the text bounding box.<br>- 'ideographic': The text baseline is an ideographic baseline. If the character itself exceeds the alphabetic baseline, the ideographic baseline is at the bottom of the character.<br>- **'bottom'**: The text baseline is at the bottom of the text bounding box. Its difference from the ideographic baseline is that the ideographic baseline does not consider letters in the next line.<br>Default value: **'alphabetic'**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [globalAlpha](#globalalpha)              | number | No| No| Sets the transparency. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain the current value through a read operation. If you attempt to read the value, undefined is returned.<br>The value range is [0.0, 1.0]. 0.0 indicates completely transparent, and 1.0 indicates completely opaque. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. In API version 18 and later versions, if NaN or Infinity is set, the current API does not take effect. The drawing method with valid parameters is drawn normally.<br>Default value: **1.0**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [lineDashOffset](#linedashoffset)        | number | No| No| Sets the dashed line offset of the canvas. The precision is float. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain the current value through a read operation. If you attempt to read the value, undefined is returned.<br>In versions earlier than API version 18, if NaN or Infinity is set, the line with the dashed line style is drawn as a solid line. In API version 18 and later versions, if NaN or Infinity is set, the current API does not take effect. The line with the dashed line style is drawn as a dashed line.<br>Default value: **0.0**<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [globalCompositeOperation](#globalcompositeoperation) | string | No| No| Sets the blending mode. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>Available values are as follows: **'source-over'**, **'source-atop'**, **'source-in'**, **'source-out'**, **'destination-over'**, **'destination-atop'**, **'destination-in'**, **'destination-out'**, **'lighter'**, **'copy'**, and **'xor'**.<br>Default value: **'source-over'**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [shadowBlur](#shadowblur)                | number | No| No| Sets the blur level when a shadow is drawn. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>A larger value indicates a more blurry shadow. The value is of the float type. The value must be greater than or equal to 0.<br>Default value: **0.0**<br>Unit: px<br>The value of shadowBlur cannot be a negative number. If the value is a negative number, NaN, or Infinity, the default value is used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [shadowColor](#shadowcolor)              | string | No| No| Sets the shadow color when a shadow is drawn. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>For details about the color notation, see the description of the string type in [ResourceColor](ts-types.md#resourcecolor).<br>Default value: transparent black<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [shadowOffsetX](#shadowoffsetx)          | number | No| No| Horizontal offset of the shadow relative to the original object. This property is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>Default value: **0.0**<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [shadowOffsetY](#shadowoffsety)          | number | No| No| Vertical offset of the shadow relative to the original object. This property is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>Default value: **0.0**<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [imageSmoothingEnabled](#imagesmoothingenabled) | boolean | No| No| Whether to adjust the image smoothness when drawing an image. The value true indicates that the image smoothness is adjusted, and the value false indicates that the image smoothness is not adjusted. This property is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.<br>Default value: **true**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [height](#height)                        | number | Yes| No| Component height.<br>Default unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [width](#width)                          | number | Yes| No| Component width.<br>Default unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [imageSmoothingQuality](#imagesmoothingquality) | [ImageSmoothingQuality](#imagesmoothingquality) | No| No| Sets the image smoothing level when imageSmoothingEnabled is true. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.<br>Default value: "low"<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [direction](#direction)                  | [CanvasDirection](#canvasdirection) | No| No| Sets the text direction used for text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.<br>Default value: "inherit"<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-|  [filter](#filter)                        | string | No| No| Sets the filter of an image. You can combine any number of filters. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.<br>Available values are as follows:<br>- **'none'**: no filter effect.<br>- 'blur(\<length>)': sets Gaussian blur for an image. The value must be greater than or equal to 0. The unit can be px, vp, or rem. The default value is blur(0px).<br>- 'brightness([\<number>\|\<percentage>])': applies a linear multiplication to the image to make it look brighter or darker. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **brightness(1)**.<br>- 'contrast([\<number>\|\<percentage>])': adjusts the image contrast. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **contrast(1)**.<br>- 'grayscale([\<number>\|\<percentage>])': converts the image to a grayscale image. The value can be a number or percentage. The value range is [0, 1]. The default value is **grayscale(0)**.<br>- 'hue-rotate(\<angle>)': Applies hue rotation to an image. The value range is 0–360. The default value is hue-rotate(0).<br>- 'invert([\<number>\|\<percentage>])': inverts the input image. The value can be a number or percentage. The value range is [0, 1]. The default value is **invert (0)**.<br>- 'opacity([\<number>\|\<percentage>])': sets the opacity of the image. The value can be a number or percentage. The value range is [0, 1]. The default value is **opacity(1)**.<br>- 'saturate([\<number>\|\<percentage>])': sets the saturation of the image. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **saturate(1)**.<br>- 'sepia([\<number>\|\<percentage>])': converts the image to dark brown. The value can be a number or percentage. The value range is [0, 1]. The default value is **sepia(0)**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| [canvas<sup>13+</sup>](#canvas13)                        | [FrameNode](../../apis-arkui/js-apis-arkui-frameNode.md) | Yes| No| FrameNode instance of the **Canvas** component associated with **CanvasRenderingContext2D**.<br>It can be used to listen for the visibility status of the associated **Canvas** component.<br>Default value: **null**.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| [letterSpacing<sup>18+</sup>](#letterspacing18)                  | string \| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| No| This property is used to specify the spacing between letters when text is drawn. This property is read-only. You can set its value through an assignment statement, but cannot obtain the current value through a read operation. If you attempt to read the value, undefined is returned.<br>Spacing between characters.<br>When the LengthMetrics type is used:<br>The spacing is set according to the specified unit.<br>The FP, PERCENT, and LPX units are not supported and will be treated as invalid values.<br>Negative and fractional values are supported. When set to a fraction, the spacing is not rounded.<br>When the string type is used:<br>Percentage values are not supported and will be treated as invalid.<br>Negative and fractional values are supported. When set to a fraction, the spacing is not rounded.<br>If no unit is specified (for example, **letterSpacing = '10'**) and **LengthMetricsUnit** is not set, the default unit is vp.<br>If **LengthMetricsUnit** is set to px, the default unit is px.<br>If a unit is specified (for example, **letterSpacing='10vp'**), the spacing is set according to the specified unit.<br>Default value: **0** (Invalid values are treated as the default value.)<br>**NOTE**<br>The LengthMetrics type is recommended for better performance.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+## Attributes             
 
 > **NOTE**
 >
 > The string format of fillStyle, shadowColor, and strokeStyle is rgb(255, 255, 255), rgba(255, 255, 255, 1.0), or #FFFFFF.
 
-
 ### fillStyle
+
+Sets the fill color to be drawn. This property is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined will be returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | No| No| - When the type is string, this attribute indicates the color of the fill area. For details about the color format, see the description for the string type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is number, this attribute indicates the color of the fill area. Fully transparent colors are not supported. For details about the color format, see the description for the number type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is **CanvasGradient**, this attribute indicates a gradient object, which is created using the **[createLinearGradient](#createlineargradient)** API.<br>- When the type is **CanvasPattern**, this attribute indicates a pattern, which is created using the **[createPattern](#createpattern)** API.<br>Default value: **'#000000'** (black)<br>Invalid values do not take effect.|
 
 ```ts
 // xxx.ets
@@ -168,6 +150,18 @@ struct FillStyleExample {
 
 ### lineWidth
 
+Sets the width of a line to be drawn. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain the current value by reading. If you try to read the value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | No| No| Default value: **1** (px)<br>Default unit: vp<br> The value of lineWidth cannot be 0 or a negative number. If the value is 0, a negative number, or NaN, the default value is used. If the value is Infinity, the lineWidth attribute is abnormal.|
+
 ```ts
 // xxx.ets
 @Entry
@@ -197,6 +191,18 @@ struct LineWidthExample {
 
 
 ### strokeStyle
+
+Sets the color of a line. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain the current value by reading. If you try to read the value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md)  | No| No| <br>- When the type is string, this attribute indicates the stroke color. For details about the color format, see the description for the string type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is number, this attribute indicates the stroke color. Fully transparent colors are not supported. For details about the color format, see the description for the number type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is **CanvasGradient**, this attribute indicates a gradient object, which is created using the **[createLinearGradient](#createlineargradient)** API.<br>- When the type is **CanvasPattern**, this attribute indicates a pattern, which is created using the **[createPattern](#createpattern)** API.<br>Default value: **'#000000'** (black)<br>Invalid values do not take effect.|
 
 ```ts
 // xxx.ets
@@ -230,6 +236,18 @@ struct StrokeStyleExample {
 
 ### lineCap
 
+Style of the line endpoint. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| [CanvasLineCap](#canvaslinecap) | No| No| Default value: **'butt'**|
+
 ```ts
 // xxx.ets
 @Entry
@@ -243,8 +261,8 @@ struct LineCapExample {
       Canvas(this.context)
         .width('100%')
         .height('100%')
-        .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
           this.context.lineWidth = 8
           this.context.beginPath()
           this.context.lineCap = 'round'
@@ -263,6 +281,18 @@ struct LineCapExample {
 
 
 ### lineJoin
+
+Style of the intersection point between line segments. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| [CanvasLineJoin](#canvaslinejoin) | No| No| <br>The options are as follows:<br>- **'round'**: The shape used to join line segments is a sector, whose radius at the rounded corner is equal to the line width.<br>- **'bevel'**: The shape used to join line segments is a triangle. The rectangular corner of each line is independent.<br>- **'miter'**: The shape used to join line segments has a mitered corner by extending the outside edges of the lines until they meet. You can view the effect of this attribute in **miterLimit**.<br>Default value: **'miter'**|
 
 ```ts
 // xxx.ets
@@ -299,6 +329,18 @@ struct LineJoinExample {
 
 ### miterLimit
 
+Sets the miter limit, which specifies the distance between the inner and outer angles at the intersection of lines. This attribute takes effect only when lineJoin is set to miter. This attribute is a write-only attribute. You can assign a value to it, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined will be returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | No| No| Default value: **10** (px)<br>Unit: px<br>The value of miterLimit cannot be 0 or a negative number. If the value is 0, a negative number, or NaN, the default value is used. If the value is Infinity, the miterLimit attribute is abnormal.|
+
 ```ts
 // xxx.ets
 @Entry
@@ -333,6 +375,16 @@ struct MiterLimit {
 
 
 ### font
+
+Sets the font style for text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned. Custom fonts registered in API version 20 and later are supported. (The previewer of DevEco Studio does not support custom fonts.)
+
+Syntax: ctx.font&nbsp;=&nbsp;'font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family'<br>- (Optional) **font-style**: font style. Available values are **'normal'** and **'italic'**.<br>- (Optional) **font-weight**: font weight. Available values are as follows: **'normal'**, **'bold'**, **'bolder'**, **'lighter'**, **'100'**, **'200'**, **'300'**, **'400'**, **'500'**, **'600'**, **'700'**, **'800'**, **'900'**.<br>- (Optional) **font-size**: font size and line height. The unit must be specified and can be px or vp.<br>- (Optional) **font-family**: font family. Available values are **'sans-serif'**, **'serif'**, and **'monospace'**.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| string | No| No| Default value: **'normal normal 14px sans-serif'**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 > **NOTE**
 >
@@ -379,6 +431,18 @@ struct FontDemo {
 
 ### textAlign
 
+Sets the text alignment mode during text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| [CanvasTextAlign](#canvastextalign) | No| No| In the LTR layout mode, 'start' is the same as 'left'. In the RTL layout mode, 'start' is the same as 'right'.<br>Default value: 'left'<br>|
+
 ```ts
 // xxx.ets
 @Entry
@@ -392,13 +456,13 @@ struct CanvasExample {
       Canvas(this.context)
         .width('100%')
         .height('100%')
-        .backgroundColor('#ffff00')
+        .backgroundColor('rgb(213,213,213)')
         .onReady(() => {
-          this.context.strokeStyle = '#0000ff'
+          this.context.strokeStyle = 'rgb(39,135,217)'
           this.context.moveTo(140, 10)
           this.context.lineTo(140, 160)
           this.context.stroke()
-          this.context.font = '18px sans-serif'
+          this.context.font = '50px sans-serif'
           this.context.textAlign = 'start'
           this.context.fillText('textAlign=start', 140, 60)
           this.context.textAlign = 'end'
@@ -421,6 +485,18 @@ struct CanvasExample {
 
 
 ### textBaseline
+
+Sets the horizontal alignment mode during text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| [CanvasTextBaseline](#canvastextbaseline) | No| No| Default value: **'alphabetic'**|
 
 ```ts
 // xxx.ets
@@ -465,6 +541,18 @@ struct TextBaseline {
 
 ### globalAlpha
 
+Sets the transparency. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain the current value through a read operation. If you attempt to read the value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | No| No| The value range is [0.0, 1.0]. 0.0 indicates completely transparent, and 1.0 indicates completely opaque. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. In API version 18 and later versions, if NaN or Infinity is set, the current API does not take effect. The drawing method with valid parameters is drawn normally.<br>Default value: **1.0**.|
+
 ```ts
 // xxx.ets
 @Entry
@@ -498,26 +586,64 @@ struct GlobalAlpha {
 
 ### lineDashOffset
 
-```ts
+Sets the dashed line offset of the canvas. The value is of the float type. This property takes effect only when setLineDash is called. This property is a write-only property. You can assign a value to it, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined will be returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | No| No| In versions earlier than API version 18, if NaN or Infinity is set, the line with the dashed line style is drawn as a solid line. In API version 18 and later versions, if NaN or Infinity is set, the current API does not take effect. The line with the dashed line style is drawn as a dashed line.<br>Default value: **0.0**<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as the default value.|
+
+``` ts
 // xxx.ets
+import { AnimatorResult } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct LineDashOffset {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private animator: AnimatorResult | undefined = undefined;
+
+  drawAntLine() { // Implement the ant line animation.
+    this.animator = this.getUIContext().createAnimator({
+      duration: 2000,
+      easing: 'linear',
+      delay: 0,
+      fill: 'none',
+      direction: 'normal',
+      iterations: -1,
+      begin: 0, // Start point of the animation interpolation
+      end: 1 // End point of the animation interpolation.}
+    });
+    this.animator.onFrame = (value: number) => {
+      this.context.reset();
+      this.context.lineWidth = 2;
+      this.context.setLineDash([10, 5]);
+      this.context.lineDashOffset = 105 * value;
+      this.context.strokeRect(10, 10, 100, 100);
+    };
+    this.animator.play();
+  }
+
+  aboutToDisappear() {
+    this.animator?.finish();
+    this.animator = undefined;
+  }
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Canvas(this.context)
         .width('100%')
         .height('100%')
-        .backgroundColor('#ffff00')
-        .onReady(() =>{
-          this.context.arc(100, 75, 50, 0, 6.28)
-          this.context.setLineDash([10,20])
-          this.context.lineDashOffset = 10.0
-          this.context.stroke()
-      })
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          this.drawAntLine();
+        })
     }
     .width('100%')
     .height('100%')
@@ -525,10 +651,22 @@ struct LineDashOffset {
 }
 ```
 
-![en-us_image_0000001194352434](figures/en-us_image_0000001194352434.png)
+![en-us_image_0000001194352434](figures/canvas_rendering_context2D_line_dash_offset.gif)
 
 
 ### globalCompositeOperation
+
+Sets the blending mode. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| string | No| No| Available values are as follows: **'source-over'**, **'source-atop'**, **'source-in'**, **'source-out'**, **'destination-over'**, **'destination-atop'**, **'destination-in'**, **'destination-out'**, **'lighter'**, **'copy'**, and **'xor'**.<br>Default value: **'source-over'**|
 
 | Name              | Description                      |
 | ---------------- | ------------------------ |
@@ -544,32 +682,143 @@ struct LineDashOffset {
 | copy             | Displays the new drawing and neglects the existing drawing.       |
 | xor              | Combines the new drawing and existing drawing using the XOR operation.|
 
-```ts
+``` ts
 // xxx.ets
 @Entry
 @Component
 struct GlobalCompositeOperation {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context1: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context2: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context3: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context4: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context5: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context6: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Canvas(this.context)
-        .width('100%')
-        .height('100%')
-        .backgroundColor('#ffff00')
-        .onReady(() =>{
-          this.context.fillStyle = 'rgb(255,0,0)'
-          this.context.fillRect(20, 20, 50, 50)
-          this.context.globalCompositeOperation = 'source-over'
-          this.context.fillStyle = 'rgb(0,0,255)'
-          this.context.fillRect(50, 50, 50, 50)
-          this.context.fillStyle = 'rgb(255,0,0)'
-          this.context.fillRect(120, 20, 50, 50)
-          this.context.globalCompositeOperation = 'destination-over'
-          this.context.fillStyle = 'rgb(0,0,255)'
-          this.context.fillRect(150, 50, 50, 50)
-      })
+    Column() {
+      Row() {
+        // 1. source-over: The new image is overlaid on the original image (default behavior).
+        Canvas(this.context1)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx1 = this.context1;
+            ctx1.fillStyle = 'rgb(39,135,217)';
+            ctx1.fillRect(25, 25, 75, 75); // Original image
+            ctx1.globalCompositeOperation = 'source-over'; // Default value, which can be omitted.
+            ctx1.fillStyle = 'rgb(23,169,141)';
+            ctx1.fillRect(75, 75, 75, 75); // New image overlaying the original image.
+          })
+        // 2. destination-out: The new image erases the original image. (This is the core logic of the eraser.)
+        Canvas(this.context2)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx2 = this.context2;
+            // Draw the background first.
+            ctx2.fillStyle = 'rgb(39,135,217)';
+            ctx2.fillRect(0, 0, ctx2.width, ctx2.height);
+            // Set the blending mode to erase.
+            ctx2.globalCompositeOperation = 'destination-out';
+            // Draw a circle as the eraser.
+            ctx2.beginPath();
+            ctx2.arc(ctx2.width / 2, ctx2.height / 2, 60, 0, Math.PI * 2);
+            ctx2.fill(); // Erase the background of the circle.
+          })
+      }
+      .height('30%')
+
+      Row() {
+        // 3. source-in: Only the overlapping part between the new image and the original image is retained. (Clipping or masking)
+        Canvas(this.context3)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx3 = this.context3;
+            // Draw the original image (circle mask) first.
+            ctx3.beginPath();
+            ctx3.arc(ctx3.width / 2, ctx3.height / 2, 80, 0, Math.PI * 2);
+            ctx3.fillStyle = '#fff';
+            ctx3.fill();
+            // Set the blending mode.
+            ctx3.globalCompositeOperation = 'source-in';
+            // Draw the new image (gradient rectangle).
+            const gradient = ctx3.createLinearGradient(0, 0, ctx3.width, ctx3.height);
+            gradient.addColorStop(0, 'rgb(23,169,141)');
+            gradient.addColorStop(1, 'rgb(39,135,217)');
+            ctx3.fillStyle = gradient;
+            ctx3.fillRect(0, 0, 200, 200); // Only the circular area displays the gradient.
+          })
+        // 4. lighter: The new image is overlaid with the original image (the luminance is added, and the color filtering effect is displayed).
+        Canvas(this.context4)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx4 = this.context4;
+            // Original image (a semitransparent red circle)
+            ctx4.beginPath();
+            ctx4.arc(70, 100, 50, 0, Math.PI * 2);
+            ctx4.fillStyle = 'rgba(234, 67, 53, 0.7)';
+            ctx4.fill();
+            // Set the blending mode.
+            ctx4.globalCompositeOperation = 'lighter';
+            // New image (a semitransparent blue circle)
+            ctx4.beginPath();
+            ctx4.arc(110, 100, 50, 0, Math.PI * 2);
+            ctx4.fillStyle = 'rgba(66, 133, 244, 0.7)';
+            ctx4.fill(); // The overlapping area turns purple (the luminance is added).
+          })
+      }
+      .height('30%')
+
+      Row() {
+        // 5. destination-atop: Only the overlapping part of the original image and the new image is retained, and other parts are removed.
+        Canvas(this.context5)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx5 = this.context5;
+            // Original image (a green rectangle)
+            ctx5.fillStyle = 'rgb(23,169,141)';
+            ctx5.fillRect(0, 0, ctx5.width, ctx5.height);
+            // Set the blending mode.
+            ctx5.globalCompositeOperation = 'destination-atop';
+            // New image (a small circle)
+            ctx5.beginPath();
+            ctx5.arc(ctx5.width / 2, ctx5.height / 2, 60, 0, Math.PI * 2);
+            ctx5.fillStyle = '#000';
+            ctx5.fill(); // Only the overlapping part of the rectangle and circle is retained.
+          })
+        // 6. Text mask (advanced usage of "source-in")
+        Canvas(this.context6)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx6 = this.context6
+            // Draw text first (as a mask).
+            ctx6.font = 'bold 40vp';
+            ctx6.textAlign = 'center';
+            ctx6.textBaseline = 'middle';
+            ctx6.fillText('CANVAS', ctx6.width / 2, ctx6.height / 2);
+            // Set the blending mode.
+            ctx6.globalCompositeOperation = 'source-in';
+            // Draw a gradient background (displayed only in the text area).
+            let textGradient = ctx6.createLinearGradient(50, 0, 300, 100);
+            textGradient.addColorStop(0.0, 'rgb(39,135,217)');
+            textGradient.addColorStop(0.5, 'rgb(255,238,240)');
+            textGradient.addColorStop(1.0, 'rgb(23,169,141)');
+            ctx6.fillStyle = textGradient;
+            ctx6.fillRect(0, 0, 200, 200); // The gradient fills only the text area.
+          })
+      }
+      .height('30%')
     }
     .width('100%')
     .height('100%')
@@ -581,6 +830,18 @@ struct GlobalCompositeOperation {
 
 
 ### shadowBlur
+
+Sets the blur level when a shadow is drawn. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | No| No| A larger value indicates a more blurry shadow. The value is of the float type. The value must be greater than or equal to 0.<br>Default value: **0.0**<br>Unit: px<br>The value of shadowBlur cannot be a negative number. If the value is a negative number, NaN, or Infinity, the default value is used.|
 
 ```ts
 // xxx.ets
@@ -614,6 +875,18 @@ struct ShadowBlur {
 
 ### shadowColor
 
+Sets the shadow color when a shadow is drawn. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| string | No| No| For details about the color notation, see the description of the string type in [ResourceColor](ts-types.md#resourcecolor).<br>Default value: transparent black|
+
 ```ts
 // xxx.ets
 @Entry
@@ -645,6 +918,18 @@ struct ShadowColor {
 
 
 ### shadowOffsetX
+
+Horizontal offset of the shadow relative to the original object. This property is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | No| No| Default value: **0.0**<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as the default value.|
 
 ```ts
 // xxx.ets
@@ -679,6 +964,18 @@ struct ShadowOffsetX {
 
 ### shadowOffsetY
 
+Vertical offset of the shadow relative to the original object. This property is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | No| No| Default value: **0.0**<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as the default value.|
+
 ```ts
 // xxx.ets
 @Entry
@@ -710,6 +1007,18 @@ struct ShadowOffsetY {
 
 
 ### imageSmoothingEnabled
+
+Whether to adjust the image smoothness when drawing an image. The value true indicates that the image smoothness is adjusted, and the value false indicates that the image smoothness is not adjusted. This property is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| boolean | No| No| Default value: **true**.|
 
 ```ts
 // xxx.ets
@@ -743,6 +1052,18 @@ struct ImageSmoothingEnabled {
 
 ### height
 
+Component height.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | Yes| No|  Default unit: vp|
+
 ```ts
 // xxx.ets
 @Entry
@@ -773,6 +1094,18 @@ struct HeightExample {
 
 ### width
 
+Component width.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| number | Yes| No|  Default unit: vp|
+
 ```ts
 // xxx.ets
 @Entry
@@ -802,6 +1135,16 @@ struct WidthExample {
 
 
 ### canvas<sup>13+</sup>
+
+FrameNode instance of the **Canvas** component associated with **CanvasRenderingContext2D**. It can be used to listen for the visibility status of the associated **Canvas** component.
+
+**Atomic service API**: This API can be used in atomic services since API version 13.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| [FrameNode](../../apis-arkui/js-apis-arkui-frameNode.md) | Yes| No| Default value: **null**.|
 
 ```ts
 import { FrameNode } from '@kit.ArkUI'
@@ -848,6 +1191,18 @@ struct CanvasExample {
 
 ### imageSmoothingQuality
 
+Sets the image smoothing level when imageSmoothingEnabled is true. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| [ImageSmoothingQuality](#imagesmoothingquality) | No| No| Default value: "low"|
+
 ```ts
   // xxx.ets
   @Entry
@@ -881,6 +1236,18 @@ struct CanvasExample {
 
 
 ### direction
+
+Sets the text direction used for text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| [CanvasDirection](#canvasdirection) | No| No| Default value: "inherit"|
 
 ```ts
   // xxx.ets
@@ -916,6 +1283,18 @@ struct CanvasExample {
 
 
 ### filter
+
+Sets the filter of an image. You can combine any number of filters. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| string | No| No| <br>Available values are as follows:<br>- **'none'**: no filter effect.<br>- 'blur(\<length>)': sets Gaussian blur for an image. The value must be greater than or equal to 0. The unit can be px, vp, or rem. The default value is blur(0px).<br>- 'brightness([\<number>\|\<percentage>])': applies a linear multiplication to the image to make it look brighter or darker. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **brightness(1)**.<br>- 'contrast([\<number>\|\<percentage>])': adjusts the image contrast. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **contrast(1)**.<br>- 'grayscale([\<number>\|\<percentage>])': converts the image to a grayscale image. The value can be a number or percentage. The value range is [0, 1]. The default value is **grayscale(0)**.<br>- 'hue-rotate(\<angle>)': Applies hue rotation to an image. The value range is 0–360. The default value is hue-rotate(0).<br>- 'invert([\<number>\|\<percentage>])': inverts the input image. The value can be a number or percentage. The value range is [0, 1]. The default value is **invert (0)**.<br>- 'opacity([\<number>\|\<percentage>])': sets the opacity of the image. The value can be a number or percentage. The value range is [0, 1]. The default value is opacity(1).<br>- 'saturate([\<number>\|\<percentage>])': sets the saturation of the image. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **saturate(1)**.<br>- 'sepia([\<number>\|\<percentage>])': converts the image to dark brown. The value can be a number or percentage. The value range is [0, 1]. The default value is **sepia(0)**.<br>|
 
 ```ts
   // xxx.ets
@@ -979,6 +1358,16 @@ struct CanvasExample {
 ![filterDemo](figures/filterDemo.jpeg)
 
 ### letterSpacing<sup>18+</sup>
+
+This property is used to specify the spacing between letters when text is drawn. This property is read-only. You can set its value through an assignment statement, but cannot obtain the current value through a read operation. If you attempt to read the value, undefined is returned.
+
+**Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ---------- | -------------- | ---------------------------------------- |
+| string&nbsp;\| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| No| Spacing between characters.<br>When the LengthMetrics type is used:<br>The spacing is set according to the specified unit.<br>The FP, PERCENT, and LPX units are not supported and will be treated as invalid values.<br>Negative and fractional values are supported. When set to a fraction, the spacing is not rounded.<br>When the string type is used:<br>Percentage values are not supported and will be treated as invalid.<br>Negative and fractional values are supported. When set to a fraction, the spacing is not rounded.<br>If no unit is specified (for example, **letterSpacing = '10'**) and **LengthMetricsUnit** is not set, the default unit is vp.<br>If **LengthMetricsUnit** is set to px, the default unit is px.<br>If a unit is specified (for example, **letterSpacing='10vp'**), the spacing is set according to the specified unit.<br>Default value: **0** (Invalid values are treated as the default value.)<br>**NOTE**<br>The LengthMetrics type is recommended for better performance.|
 
 ```ts
   // xxx.ets
@@ -1449,13 +1838,16 @@ Creates a drawing path.
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() =>{
-            this.context.beginPath()
+          .backgroundColor('rgb(213,213,213)')
+          .onReady(() => {
             this.context.lineWidth = 6
-            this.context.strokeStyle = '#0000ff'
+            this.context.strokeStyle = 'rgb(39,135,217)'
             this.context.moveTo(15, 80)
             this.context.lineTo(280, 160)
+            this.context.stroke()
+            this.context.beginPath()
+            this.context.lineTo(300, 240)
+            this.context.lineTo(15, 240)
             this.context.stroke()
           })
       }
@@ -1707,32 +2099,54 @@ Path for creating a cubic Bezier curve.
 
 **Example**
 
-  ```ts
-  // xxx.ets
-  @Entry
-  @Component
-  struct BezierCurveTo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
+``` ts
+// xxx.ets
+import { Point } from '@kit.TestKit';
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() =>{
-            this.context.beginPath()
-            this.context.moveTo(10, 10)
-            this.context.bezierCurveTo(20, 100, 200, 100, 200, 20)
-            this.context.stroke()
-          })
-      }
-      .width('100%')
-      .height('100%')
+@Entry
+@Component
+struct BezierCurveTo {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private start: Point = { x: 50, y: 50 };
+  private end: Point = { x: 250, y: 100 };
+  private cp1: Point = { x: 200, y: 30 };
+  private cp2: Point = { x: 130, y: 80 };
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          let ctx = this.context;
+          // Cubic Bezier curve
+          ctx.beginPath();
+          ctx.moveTo(this.start.x, this.start.y);
+          ctx.bezierCurveTo(this.cp1.x, this.cp1.y, this.cp2.x, this.cp2.y, this.end.x, this.end.y);
+          ctx.stroke();
+
+          // Start point and end point
+          ctx.fillStyle = 'rgb(39,135,217)';
+          ctx.beginPath();
+          ctx.arc(this.start.x, this.start.y, 5, 0, 2 * Math.PI); // Start point
+          ctx.arc(this.end.x, this.end.y, 5, 0, 2 * Math.PI); // End point
+          ctx.fill();
+
+          // Control points
+          ctx.fillStyle = 'rgb(23,169,141)';
+          ctx.beginPath();
+          ctx.arc(this.cp1.x, this.cp1.y, 5, 0, 2 * Math.PI); // Control point 1
+          ctx.arc(this.cp2.x, this.cp2.y, 5, 0, 2 * Math.PI); // Control point 2
+          ctx.fill();
+        })
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+```
 
   ![en-us_image_0000001239032415](figures/en-us_image_0000001239032415.png)
 
@@ -1760,34 +2174,54 @@ Creates a quadratic Bezier curve.
 
 **Example**
 
-  ```ts
-  // xxx.ets
-  @Entry
-  @Component
-  struct QuadraticCurveTo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
+``` ts
+// xxx.ets
+import { Point } from '@kit.TestKit';
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() =>{
-            this.context.beginPath()
-            this.context.moveTo(20, 20)
-            this.context.quadraticCurveTo(100, 100, 200, 20)
-            this.context.stroke()
+@Entry
+@Component
+struct QuadraticCurveTo {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private start: Point = { x: 50, y: 20 };
+  private end: Point = { x: 50, y: 100 };
+  private cp: Point = { x: 230, y: 30 };
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          let ctx = this.context;
+          // Quadratic Bezier curve
+          ctx.beginPath();
+          ctx.moveTo(this.start.x, this.start.y);
+          ctx.quadraticCurveTo(this.cp.x, this.cp.y, this.end.x, this.end.y);
+          ctx.stroke();
+
+          // Start point and end point
+          ctx.fillStyle = 'rgb(39,135,217)';
+          ctx.beginPath();
+          ctx.arc(this.start.x, this.start.y, 5, 0, 2 * Math.PI); // Start point
+          ctx.arc(this.end.x, this.end.y, 5, 0, 2 * Math.PI); // End point
+          ctx.fill();
+
+          // Control points
+          ctx.fillStyle = 'rgb(23,169,141)';
+          ctx.beginPath();
+          ctx.arc(this.cp.x, this.cp.y, 5, 0, 2 * Math.PI);
+          ctx.fill();
         })
-      }
-      .width('100%')
-      .height('100%')
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+```
 
-  ![en-us_image_0000001193872494](figures/en-us_image_0000001193872494.png)
+![quadraticCurveTo](figures/quadraticCurveTo.png)
 
 
 ### arc
@@ -2253,7 +2687,7 @@ Sets the current path to a clipping area.
 
 | Name      | Type            | Mandatory  | Description                           |
 | -------- | -------------- | ---- | ---------------------------------------- |
-| fillRule | [CanvasFillRule](#canvasfillrule) | No| Rule by which to determine whether a point is inside or outside the area to clip.<br>The options are "nonzero" and "evenodd".<br>If the value is undefined or null, the default value is used.<br>Default value: "nonzero"|
+| fillRule | [CanvasFillRule](#canvasfillrule) | No| Rule by which to determine whether a point is inside or outside the area to clip.<br>The options are "nonzero" and "evenodd".<br>The **undefined** and **null** values are treated as the default value.<br>Default value: "nonzero"|
 
 **Example**
 
@@ -2304,7 +2738,7 @@ Sets a specified path as the clipping path.
 | Name     | Type            | Mandatory  | Description         |
 | -------- | -------------- | ---- | ---------------------------------------- |
 | path     | [Path2D](ts-components-canvas-path2d.md)         | Yes   | A **Path2D** path to use as a clipping area.<br>The **undefined** and **null** values are treated as invalid.|
-| fillRule | [CanvasFillRule](#canvasfillrule) | No | Rule by which to determine whether a point is inside or outside the area to clip.<br>The options are "nonzero" and "evenodd".<br>If the value is undefined or null, the default value is used.<br>Default value: "nonzero"|
+| fillRule | [CanvasFillRule](#canvasfillrule) | No | Rule by which to determine whether a point is inside or outside the area to clip.<br>The options are "nonzero" and "evenodd".<br>The **undefined** and **null** values are treated as the default value.<br>Default value: "nonzero"|
 
 
 **Example**
@@ -2549,8 +2983,8 @@ Scales the canvas based on the given scale factors.
 
 | Name  | Type    | Mandatory | Description   |
 | ---- | ------ | ---- | ----------- |
-| x    | number | Yes | Horizontal scale factor.<br>In versions earlier than API version 18, if this parameter is set to NaN or Infinity, the drawing method executed after this method cannot be drawn. If this parameter is set to null or undefined, this method does not take effect. In API version 18 and later versions, if this parameter is set to NaN, Infinity, null, or undefined, this method does not take effect. If this parameter is set to a valid value, the drawing method is drawn normally.|
-| y    | number | Yes | Vertical scale factor.<br>In versions earlier than API version 18, if this parameter is set to NaN or Infinity, the drawing method executed after this method cannot be drawn. If this parameter is set to null or undefined, this method does not take effect. In API version 18 and later versions, if this parameter is set to NaN, Infinity, null, or undefined, this method does not take effect. If this parameter is set to a valid value, the drawing method is drawn normally.|
+| x    | number | Yes | Horizontal scale factor.<br>In versions earlier than API version 18, if this parameter is set to NaN or Infinity, the drawing method executed after this method cannot be drawn. Setting this parameter to 0, a negative number, null, or undefined will invalidate the current API. In API version 18 and later, if this parameter is set to NaN, Infinity, 0, a negative number, null, or undefined, the current API will not take effect. Other drawing methods with valid parameters can be drawn normally.|
+| y    | number | Yes | Sets the vertical scaling value. Negative numbers are not supported.<br>In versions earlier than API version 18, if this parameter is set to NaN or Infinity, the drawing method executed after this method cannot be drawn. Setting this parameter to 0, a negative number, null, or undefined will invalidate the current API. In API version 18 and later, if this parameter is set to NaN, Infinity, 0, a negative number, null, or undefined, the current API will not take effect. Other drawing methods with valid parameters can be drawn normally.|
 
 **Example**
 
@@ -2597,7 +3031,7 @@ Defines a transformation matrix. To transform a graph, you only need to set para
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 > **NOTE**
->
+> 
 > The coordinates of each point in the graph after transformation can be calculated using the following formula:
 >
 > The following formulas calculate coordinates of the transformed graph. **x** and **y** represent coordinates before transformation, and **x'** and **y'** represent coordinates after transformation.
@@ -2610,12 +3044,12 @@ Defines a transformation matrix. To transform a graph, you only need to set para
 
 | Name  | Type    | Mandatory| Description|
 | ---- | ------ | ---- | -------------------- |
-| a    | number | Yes   | scaleX: horizontal scaling value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this API does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this API does not take effect. If other valid parameters are passed, the drawing method is normal.|
-| b    | number | Yes   | skewY: vertical skewing value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally. |
-| c    | number | Yes   | skewX: horizontal skew value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally. |
-| d    | number | Yes   | scaleY: vertical scale value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.|
-| e    | number | Yes   | translateX: horizontal translation value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
-| f    | number | Yes   | translateY: vertical translation value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
+| a    | number | Yes   | Cell in the first row and first column of the transformation matrix. scaleX: horizontal scaling value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this API does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this API does not take effect. If other valid parameters are passed, the drawing method is normal.|
+| b    | number | Yes   | Cell in the first row and first column of the transformation matrix. skewY: vertical skewing value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally. |
+| c    | number | Yes   | Cell in the first row and second column of the transformation matrix. skewX: horizontal skew value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally. |
+| d    | number | Yes   | Cell in the second row and second column of the transformation matrix. scaleY: vertical scale value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.|
+| e    | number | Yes   | Cell in the first row and third column of the transformation matrix. translateX: horizontal translation value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
+| f    | number | Yes   | Cell in the second row and third column of the transformation matrix. translateY: vertical translation value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
 
 **Example**
 
@@ -2667,7 +3101,7 @@ Resets the existing transformation matrix and creates a new transformation matri
 
 > **NOTE**
 >
-> The coordinates of each point in the graph after transformation may be calculated by using the following coordinate calculation formula.
+> The coordinates of each point in the graph after transformation can be calculated using the following formula:
 >
 > The following formulas calculate coordinates of the transformed graph. **x** and **y** represent coordinates before transformation, and **x'** and **y'** represent coordinates after transformation.
 >
@@ -2679,12 +3113,12 @@ Resets the existing transformation matrix and creates a new transformation matri
 
 | Name  | Type    | Mandatory| Description|
 | ---- | ------ | ---- | -------------------- |
-| a    | number | Yes   | scaleX: horizontal scaling value. The value can be a negative number.<br>In versions earlier than API version 18, when NaN or Infinity is set, the drawing method executed after this method cannot be used for drawing. When null or undefined is set, the current API does not take effect. In API version 18 or later, if NaN, Infinity, null, or undefined is set, the current API does not take effect. Other drawing methods with valid parameters are normal.|
-| b    | number | Yes   | skewY: specifies the vertical skew value. The value can be a negative number.<br>In versions earlier than API version 18, when NaN or Infinity is set, the drawing method executed after this method cannot be used for drawing. When null or undefined is set, the current API does not take effect. In API version 18 or later, if NaN, Infinity, null, or undefined is set, the current API does not take effect. Other drawing methods with valid parameters are normal. |
-| c    | number | Yes   | skewX: specifies the horizontal skew value. The value can be a negative number.<br>In versions earlier than API version 18, when NaN or Infinity is set, the drawing method executed after this method cannot be used for drawing. When null or undefined is set, the current API does not take effect. In API version 18 or later, if NaN, Infinity, null, or undefined is set, the current API does not take effect. Other drawing methods with valid parameters are normal. |
-| d    | number | Yes   | scaleY: specifies the vertical scaling value. The value can be a negative number.<br>In versions earlier than API version 18, when NaN or Infinity is set, the drawing method executed after this method cannot be used for drawing. When null or undefined is set, the current API does not take effect. In API version 18 or later, if NaN, Infinity, null, or undefined is set, the current API does not take effect. Other drawing methods with valid parameters are normal.|
-| e    | number | Yes   | translateX: horizontal translation value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is normal.<br>Default unit: vp|
-| f    | number | Yes   | translateY: vertical translation value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is normal.<br>Default unit: vp|
+| a    | number | Yes   | scaleX: horizontal scaling value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this API does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this API does not take effect. If other valid parameters are passed, the drawing method is normal.|
+| b    | number | Yes   | skewY: vertical skewing value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally. |
+| c    | number | Yes   | skewX: horizontal skew value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally. |
+| d    | number | Yes   | scaleY: vertical scale value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.|
+| e    | number | Yes   | translateX: horizontal translation value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
+| f    | number | Yes   | translateY: vertical translation value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
 
 **Example**
 
@@ -2701,12 +3135,15 @@ Resets the existing transformation matrix and creates a new transformation matri
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() =>{
-            this.context.fillStyle = 'rgb(255,0,0)'
+          .backgroundColor('rgb(213,213,213)')
+          .onReady(() => {
+            this.context.fillStyle = 'rgb(112,112,112)'
             this.context.fillRect(0, 0, 100, 100)
-            this.context.setTransform(1,0.5, -0.5, 1, 10, 10)
-            this.context.fillStyle = 'rgb(0,0,255)'
+            this.context.transform(1, 0.5, -0.5, 1, 10, 10)
+            this.context.fillStyle = 'rgb(23,169,141)'
+            this.context.fillRect(0, 0, 100, 100)
+            this.context.setTransform(1, 0.5, -0.5, 1, 10, 10)
+            this.context.fillStyle = 'rgb(39,135,217)'
             this.context.fillRect(0, 0, 100, 100)
           })
       }
@@ -2859,8 +3296,8 @@ Moves the origin of the coordinate system.
 
 | Name  | Type    | Mandatory  | Description|
 | ---- | ------ | ---- | -------- |
-| x    | number | Yes  | Distance to translate on the x-axis.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
-| y    | number | Yes  | Distance to translate on the y-axis.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
+| x    | number | Yes  | Distance to translate on the x-axis.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
+| y    | number | Yes  | Distance to translate on the y-axis.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
 
 **Example**
 
@@ -2960,8 +3397,8 @@ Stretch or compress the image.
 | Name | Type | Mandatory | Description|
 | ----- | ---------------------------------------- | ---- | ---------------------------------------- |
 | image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Image resource. For details, see **ImageBitmap** or PixelMap.<br>If the value is undefined or null, no drawing is performed.|
-| dx    | number                                   | Yes | X coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value is 0; if the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>Default unit: vp|
-| dy    | number                                   | Yes | Y coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value is 0; if the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>Default unit: vp|
+| dx    | number                                   | Yes | X coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value is 0 and will not be drawn. If the value is NaN or Infinity, the value is invalid and will not be drawn.<br>Default unit: vp|
+| dy    | number                                   | Yes | Y coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value is 0 and will not be drawn. If the value is NaN or Infinity, the value is invalid and will not be drawn.<br>Default unit: vp|
 | dw    | number                                   | Yes | Width of the drawing area. If the width of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>If the value is a negative number, undefined, or null, the value is 0; if the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>Default unit: vp|
 | dh    | number                                   | Yes | Height of the drawing area. If the height of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>If the value is a negative number, undefined, or null, the value is 0; if the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>Default unit: vp|
 
@@ -3016,8 +3453,8 @@ Stretch or compress the cropped image and draw it.
 | sy    | number                                   | Yes | Y coordinate of the upper left corner of the rectangle used to crop the source image.<br>If the value is undefined or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>If the image type is ImageBitmap, the default unit is vp.<br>If the image type is PixelMap, the default unit is px before API version 18, and the default unit is vp in API version 18 and later versions. |
 | sw    | number                                   | Yes | Target width to crop the source image.<br>If the value is a negative number, undefined, or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>If the image type is ImageBitmap, the default unit is vp.<br>If the image type is PixelMap, the default unit is px before API version 18, and the default unit is vp in API version 18 and later versions. |
 | sh    | number                                   | Yes | Target height to crop the source image.<br>If the value is a negative number, undefined, or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>If the image type is ImageBitmap, the default unit is vp.<br>If the image type is PixelMap, the default unit is px before API version 18, and the default unit is vp in API version 18 and later versions. |
-| dx    | number                                   | Yes | X coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>Default unit: vp|
-| dy    | number                                   | Yes | Y coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>Default unit: vp|
+| dx    | number                                   | Yes | X coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value is 0 and will not be drawn. If the value is NaN or Infinity, the value is invalid and will not be drawn.<br>Default unit: vp|
+| dy    | number                                   | Yes | Y coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value is 0 and will not be drawn. If the value is NaN or Infinity, the value is invalid and will not be drawn.<br>Default unit: vp|
 | dw    | number                                   | Yes | Width of the drawing area.<br>If the value is a negative number, undefined, or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the image is not drawn. If the width of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Default unit: vp|
 | dh    | number                                   | Yes | Height of the drawing area.<br>Negative numbers, undefined, and null are processed as 0, and NaN and Infinity are processed as invalid values and not drawn. If the height of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Default unit: vp|
 
@@ -3257,8 +3694,8 @@ Puts an [ImageData](ts-components-canvas-imagedata.md) object onto a rectangular
 | Name| Type| Mandatory | Description|
 | ----------- | ---------------------------------------- | ---- | ----------------------------- |
 | imageData   | [ImageData](ts-components-canvas-imagedata.md) | Yes   | **ImageData** object with pixels to put onto the canvas.<br>If the value is undefined or null, no drawing is performed.|
-| dx          | number \| string<sup>10+</sup> | Yes   | X-axis offset of the rectangular area on the canvas.<br>Abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
-| dy          | number \| string<sup>10+</sup> | Yes   | Y-axis offset of the rectangular area on the canvas.<br>Abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| dx          | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | X-axis offset of the rectangular area on the canvas.<br>Abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| dy          | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Y-axis offset of the rectangular area on the canvas.<br>Abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
 
 **Example**
 
@@ -3313,12 +3750,12 @@ Fills the new rectangular area using the [ImageData](ts-components-canvas-imaged
 | Name| Type| Mandatory | Description|
 | ----------- | ---------------------------------------- | ---- | ----------------------------- |
 | imageData   | [ImageData](ts-components-canvas-imagedata.md) | Yes   | **ImageData** object with pixels to put onto the canvas.<br>If the value is undefined or null, no drawing is performed.|
-| dx          | number \| string<sup>10+</sup> | Yes   | X-axis offset of the rectangular area on the canvas.<br>If the value is undefined, null, NaN, or Infinity, it is processed as 0.<br>Default unit: vp|
-| dy          | number \| string<sup>10+</sup> | Yes   | Y-axis offset of the rectangular area on the canvas.<br>If the value is undefined, null, NaN, or Infinity, it is processed as 0.<br>Default unit: vp|
-| dirtyX      | number \| string<sup>10+</sup> | Yes   | X-axis offset of the upper left corner of the rectangular area relative to that of the source image.<br>If the value is undefined, null, NaN, or Infinity, it is processed as 0.<br>Default unit: vp|
-| dirtyY      | number \| string<sup>10+</sup> | Yes   | Y-axis offset of the upper left corner of the rectangular area relative to that of the source image.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
-| dirtyWidth  | number \| string<sup>10+</sup> | Yes   | Width of the rectangular area to crop the source image.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
-| dirtyHeight | number \| string<sup>10+</sup> | Yes   | Height of the rectangular area to crop the source image.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| dx          | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | X-axis offset of the rectangular area on the canvas.<br>Abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| dy          | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Y-axis offset of the rectangular area on the canvas.<br>Abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| dirtyX      | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | X-axis offset of the upper left corner of the rectangular area relative to that of the source image.<br>If the value is undefined, null, NaN, or Infinity, it is processed as 0.<br>Default unit: vp|
+| dirtyY      | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Y-axis offset of the upper left corner of the rectangular area relative to that of the source image.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| dirtyWidth  | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Width of the rectangular area to crop the source image.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| dirtyHeight | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Height of the rectangular area to crop the source image.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
 
 **Example**
 
@@ -3712,12 +4149,12 @@ Creates a linear gradient.
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
+          .backgroundColor('rgb(213,213,213)')
           .onReady(() =>{
             let grad = this.context.createLinearGradient(50,0, 300,100)
-            grad.addColorStop(0.0, '#ff0000')
-            grad.addColorStop(0.5, '#ffffff')
-            grad.addColorStop(1.0, '#00ff00')
+            grad.addColorStop(0.0, 'rgb(39,135,217)')
+            grad.addColorStop(0.5, 'rgb(255,238,240)')
+            grad.addColorStop(1.0, 'rgb(23,169,141)')
             this.context.fillStyle = grad
             this.context.fillRect(0, 0, 400, 400)
           })
@@ -3769,18 +4206,18 @@ Creates a linear gradient.
   struct CreateRadialGradient {
     private settings: RenderingContextSettings = new RenderingContextSettings(true)
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    
+
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() =>{
-            let grad = this.context.createRadialGradient(200,200,50, 200,200,200)
-            grad.addColorStop(0.0, '#ff0000')
-            grad.addColorStop(0.5, '#ffffff')
-            grad.addColorStop(1.0, '#00ff00')
+          .backgroundColor('rgb(213,213,213)')
+          .onReady(() => {
+            let grad = this.context.createRadialGradient(200, 200, 50, 200, 200, 200)
+            grad.addColorStop(0.0, 'rgb(39,135,217)')
+            grad.addColorStop(0.5, 'rgb(255,238,240)')
+            grad.addColorStop(1.0, 'rgb(112,112,112)')
             this.context.fillStyle = grad
             this.context.fillRect(0, 0, 440, 440)
           })
@@ -3835,9 +4272,9 @@ struct CanvasExample {
         .backgroundColor('#ffffff')
         .onReady(() => {
           let grad = this.context.createConicGradient(0, 50, 80)
-          grad.addColorStop(0.0, '#ff0000')
-          grad.addColorStop(0.5, '#ffffff')
-          grad.addColorStop(1.0, '#00ff00')
+          grad.addColorStop(0.0, 'rgb(39,135,217)')
+          grad.addColorStop(0.5, 'rgb(213,213,213)')
+          grad.addColorStop(1.0, 'rgb(23,160,141)')
           this.context.fillStyle = grad
           this.context.fillRect(0, 30, 100, 100)
         })
@@ -4034,7 +4471,7 @@ struct AttachDetachExample {
 
 startImageAnalyzer(config: ImageAnalyzerConfig): Promise\<void>
 
-Configures and starts the AI analysis function using a promise for asynchronous callback. Before using this method, you need to enable the AI image analysis capability. For details, see ts-components-canvas-canvas.md#enableanalyzer12.<br>Because the image frame used for analysis is the one captured when this API is called, pay attention to the invoking time of this API.<br>If this method is repeatedly called before the execution is complete, an error callback is triggered. For the sample code, see the code for **stopImageAnalyzer**.
+Configures and starts the AI analysis function using a promise for asynchronous callback. Before using this function, set [enableAnalyzer](ts-components-canvas-canvas.md#enableanalyzer12) to true to enable the AI image analysis capability.<br>Because the image frame used for analysis is the one captured when this API is called, pay attention to the invoking time of this API.<br>If this method is repeatedly called before the execution is complete, an error callback is triggered. For the sample code, see the code for **stopImageAnalyzer**.
 
 > **NOTE**
 > 
@@ -4150,6 +4587,89 @@ struct ImageAnalyzerExample {
 
 ![canvasImageAnalyzer](figures/canvasImageAnalyzer.png)
 
+### getContext2DFromDrawingContext<sup>23+</sup>
+
+static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, options?: RenderingContextOptions): CanvasRenderingContext2D
+
+Obtains a CanvasRenderingContext2D object from a DrawingRenderingContext object. The CanvasRenderingContext2D object is bound to the same Canvas component as the DrawingRenderingContext object.
+
+> **NOTE**
+>
+> - The CanvasRenderingContext2D object obtained from this API cannot be used as a parameter to create a [Canvas](ts-components-canvas-canvas.md) component. Otherwise, the application will crash.
+>
+> - If the DrawingRenderingContext object in the input parameter is not bound to a Canvas component, an error code will be returned.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name        | Type                                                        | Mandatory| Description                                   |
+| -------------- | ------------------------------------------------------------ | ---- | --------------------------------------- |
+| drawingContext | [DrawingRenderingContext](ts-drawingrenderingcontext.md) | Yes  | An object of the DrawingRenderingContext type.|
+| options        | [RenderingContextOptions](#renderingcontextoptions23) | No  | Configuration options of the rendering context.<br>Default value: { antialias: false }|
+
+**Return value**
+
+| Type                    | Description                                                        |
+| ------------------------ | ------------------------------------------------------------ |
+| CanvasRenderingContext2D | A CanvasRenderingContext2D object, which is bound to the same Canvas component as the DrawingRenderingContext object in the input parameter.|
+
+**Error codes**
+
+For details about the error codes, see [Canvas Component Error Codes](../errorcode-canvas.md).
+
+| ID| Error Message                                              |
+| -------- | ------------------------------------------------------ |
+| 103702   | The drawingContext is not bound to a canvas component. |
+
+**Example**
+
+``` ts
+// xxx.ets
+import { LengthMetricsUnit } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CanvasExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas({ unit: LengthMetricsUnit.DEFAULT })
+        .onReady((drawingContext?: DrawingRenderingContext) => {
+          if (!drawingContext) {
+            return
+          }
+          let context2D: CanvasRenderingContext2D =
+            CanvasRenderingContext2D.getContext2DFromDrawingContext(drawingContext, { antialias: true })
+          context2D.fillStyle = 'rgb(39,135,217)'
+          context2D.fillRect(10, 30, 100, 100)
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![getContext2DFromDrawingContext](figures/getContext2DFromDrawingContext.png)
+
+## RenderingContextOptions<sup>23+</sup>
+
+Defines the specific configuration parameters of the rendering context.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name     | Type   | Read Only| Optional| Description                                                        |
+| --------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| antialias | boolean | No  | Yes  | Indicates whether to enable anti-aliasing for the rendering context.<br>If the value is undefined, the default value is used.<br>true: Anti-aliasing is enabled. false: Anti-aliasing is disabled.<br>Default value: **false**.|
+
 ## CanvasDirection
 
 type CanvasDirection = "inherit" | "ltr" | "rtl"
@@ -4164,7 +4684,7 @@ Defines the text direction. The value type is a union of the types listed in the
 
 | Type     | Description                 |
 | ------- | ------------------- |
-| inherit | The text direction is inherited from the **Canvas** component.|
+| inherit | Inherits the text direction set by the general attributes of the canvas component. If the direction attribute is not set for the canvas component, the text direction of the system is used.|
 | ltr     | The text direction is from left to right.              |
 | rtl     | The text direction is from right to left.              |
 
@@ -4184,6 +4704,51 @@ Defines the fill pattern algorithm used to determine whether a point is inside o
 | ------- | ----- |
 | evenodd | The inside part of a shape is determined based on whether the counting result is an odd number or not.<br>This rule determines whether a point is inside a shape by shooting a ray from the point in any direction and counting the number of intersections between the ray and the shape path. If the number of intersections is odd, the point is inside the shape. Otherwise, the point is outside the shape.|
 | nonzero | The inside part of a shape is determined based on whether the counting result is zero or not.<br>This rule determines whether a point is inside a shape by shooting a ray from the point in any direction and checking the intersections between the ray and the shape path. The initial count is 0. A direction value is specified for each line segment of the path. The count is incremented by 1 each time the path crosses the ray from left to right, and decremented by 1 each time the path crosses the ray from right to left. If the final result is 0, the point is outside the shape. Otherwise, the point is inside the shape.|
+
+**Example**
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213, 213, 213)')
+        .onReady(() => {
+          let offContext = this.offCanvas.getContext("2d", this.settings)
+          offContext.font = '60px sans-serif'
+          offContext.fillStyle = 'rgb(39, 135, 217)';
+          // Nonzero winding rule (nonzero)
+          offContext.beginPath();
+          offContext.arc(100, 100, 60, 0, Math.PI * 2);
+          offContext.arc(100, 100, 20, 0, Math.PI * 2);
+          offContext.fill('nonzero'); // Use the nonzero winding rule.
+          offContext.fillText('nonzero', 65, 200)
+          // Even-odd winding rule (evenodd)
+          offContext.beginPath();
+          offContext.arc(250, 100, 60, 0, Math.PI * 2);
+          offContext.arc(250, 100, 20, 0, Math.PI * 2);
+          offContext.fill('evenodd'); // Use the even-odd winding rule.
+          offContext.fillText('evenodd', 215, 200)
+          let image = this.offCanvas.transferToImageBitmap()
+          this.context.transferFromImageBitmap(image)
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![](figures/en-us_image_canvas_fill_rule_example.png)
 
 ## CanvasLineCap
 
@@ -4340,4 +4905,4 @@ Constructs a CanvasRenderingContext2D object. Anti-aliasing can be enabled.
 
 | Name    | Type  | Read Only| Optional| Description|
 | ------ | -------- | --------- | ---------- | ------------------------------ |
-| antialias | boolean | No| Yes| Whether to enable antialiasing.<br>If the value is undefined, the default value is used.<br>false: anti-aliasing is disabled. true: anti-aliasing is enabled.<br>Default value: **false**.|
+| antialias | boolean | No| Yes| Whether to enable antialiasing.<br>The abnormal value undefined is processed as the default value.<br>false: anti-aliasing is disabled. true: anti-aliasing is enabled.<br>Default value: **false**.|

@@ -267,14 +267,14 @@ export default {
     })
   },
   stepperChange(e){
-    console.log("stepperChange"+e.index)
+    console.info("stepperChange"+e.index)
     promptAction.showToast({
       // index表示当前步骤的序号
       message: 'Previous step: '+e.prevIndex+"-------Current step:"+e.index
     })
   },
   stepperNext(e){
-    console.log("stepperNext"+e.index)
+    console.info("stepperNext"+e.index)
     promptAction.showToast({
       // pendingIndex表示将要跳转的序号
       message: 'Current step:'+e.index+"-------Next step:"+e.pendingIndex
@@ -283,7 +283,7 @@ export default {
     return index;
   },
   stepperBack(e){
-    console.log("stepperBack"+e.index)
+    console.info("stepperBack"+e.index)
     var index = {pendingIndex: e.pendingIndex }
     return index;
   }

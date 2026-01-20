@@ -70,7 +70,7 @@ Provides context-related APIs for configuring runtime information. These APIs ar
 | [OH_AI_API OH_AI_PerformanceMode OH_AI_DeviceInfoGetPerformanceMode(const OH_AI_DeviceInfoHandle device_info)](#oh_ai_deviceinfogetperformancemode) | Obtains the NNRt performance mode. This function is available only for NNRt devices.|
 | [OH_AI_API void OH_AI_DeviceInfoSetPriority(OH_AI_DeviceInfoHandle device_info, OH_AI_Priority priority)](#oh_ai_deviceinfosetpriority) | Sets the priority of an NNRt task. This function is available only for NNRt devices.|
 | [OH_AI_API OH_AI_Priority OH_AI_DeviceInfoGetPriority(const OH_AI_DeviceInfoHandle device_info)](#oh_ai_deviceinfogetpriority) | Obtains the priority of an NNRt task. This function is available only for NNRt devices.|
-| [OH_AI_API OH_AI_Status OH_AI_DeviceInfoAddExtension(OH_AI_DeviceInfoHandle device_info, const char *name,const char *value, size_t value_size)](#oh_ai_deviceinfoaddextension) | Adds extended configuration in the form of key/value pairs to the device information. This function is available only for NNRt devices.<br>Currently, only the following 11 keys are supported: {"CachePath": "YourCachePath"}, {"CacheVersion": "YourCacheVersion"},<br> {"QuantBuffer": "YourQuantBuffer"}, {"ModelName": "YourModelName"},<br> {"isProfiling": "YourProfilingSwitch"}, {"opLayout": "YourOpLayout"},<br> {"InputDims": "YourInputDims"}, {"DynamicDims": "YourDynamicDims"}<br> {"QuantConfigData": "YourQuantConfigData"}, {"BandMode": "YourBandMode"}, and<br> and {"NPU_FM_SHARED": "YourNPU_FM_SHARED"}. You can configure the value of each key based on the actual requirement.|
+| [OH_AI_API OH_AI_Status OH_AI_DeviceInfoAddExtension(OH_AI_DeviceInfoHandle device_info, const char *name,const char *value, size_t value_size)](#oh_ai_deviceinfoaddextension) | Adds extended configuration in the form of key/value pairs to the device information. This function is available only for NNRt devices.<br>Currently, only the following 11 keys are supported: {"CachePath": "YourCachePath"}, {"CacheVersion": "YourCacheVersion"}, {"QuantBuffer": "YourQuantBuffer"}, {"ModelName": "YourModelName"}, {"isProfiling": "YourProfilingSwitch"}, {"opLayout": "YourOpLayout"}, {"InputDims": "YourInputDims"}, {"DynamicDims": "YourDynamicDims"}, {"QuantConfigData": "YourQuantConfigData"}, {"BandMode": "YourBandMode"}, and {"NPU_FM_SHARED": "YourNPU_FM_SHARED"}. You can configure the value of each key based on the actual requirement.|
 
 ## Function Description
 
@@ -877,7 +877,7 @@ OH_AI_API OH_AI_Priority OH_AI_DeviceInfoGetPriority(const OH_AI_DeviceInfoHandl
 
 Obtains the priority of an NNRt task. This function is available only for NNRt devices.
 
-**Since**: 22
+**Since**: 23
 
 
 **Parameters**
@@ -900,7 +900,7 @@ OH_AI_API OH_AI_Status OH_AI_DeviceInfoAddExtension(OH_AI_DeviceInfoHandle devic
 
 **Description**
 
-Adds extended configuration in the form of key/value pairs to the device information. This function is available only for NNRt devices.<br>Currently, only the following 11 keys are supported: {"CachePath": "YourCachePath"}, {"CacheVersion": "YourCacheVersion"},<br> {"QuantBuffer": "YourQuantBuffer"}, {"ModelName": "YourModelName"},<br> {"isProfiling": "YourProfilingSwitch"}, {"opLayout": "YourOpLayout"},<br> {"InputDims": "YourInputDims"}, {"DynamicDims": "YourDynamicDims"}<br> {"QuantConfigData": "YourQuantConfigData"}, {"BandMode": "YourBandMode"}, and<br> and {"NPU_FM_SHARED": "YourNPU_FM_SHARED"}. You can configure the value of each key based on the actual requirement.
+Adds extended configuration in the form of key/value pairs to the device information. This function is available only for NNRt devices.<br>Currently, only the following 11 keys are supported: {"CachePath": "YourCachePath"}, {"CacheVersion": "YourCacheVersion"}, {"QuantBuffer": "YourQuantBuffer"}, {"ModelName": "YourModelName"}, {"isProfiling": "YourProfilingSwitch"}, {"opLayout": "YourOpLayout"}, {"InputDims": "YourInputDims"}, {"DynamicDims": "YourDynamicDims"}, {"QuantConfigData": "YourQuantConfigData"}, {"BandMode": "YourBandMode"}, and {"NPU_FM_SHARED": "YourNPU_FM_SHARED"}. You can configure the value of each key based on the actual requirement.
 
 **Since**: 10
 

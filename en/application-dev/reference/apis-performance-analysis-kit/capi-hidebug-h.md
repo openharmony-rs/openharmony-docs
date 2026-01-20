@@ -39,9 +39,9 @@ Defines the APIs for debugging.
 | [HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()](#oh_hidebug_stopapptracecapture) | - | Stops application trace collection.|
 | [HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)](#oh_hidebug_getgraphicsmemory) | - | Obtains the size of the GPU memory. Note that this API involves multiple cross-process communications and may take more than 1 second. Therefore, you are advised not to call this API in the main thread.|
 | [int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, void** pcArray, int size)](#oh_hidebug_backtracefromfp) | - | Performs stack back-tracing based on the given fp address. This function is async-signal-safe.|
-| [typedef void (\*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame)](#oh_hidebug_symbolicaddresscallback) | OH_HiDebug_SymbolicAddressCallback | If the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API is successfully called, the parsed stack information is returned to the caller through this function. Note that this API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.|
-| [HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, void* pc, void* arg, OH_HiDebug_SymbolicAddressCallback callback)](#oh_hidebug_symbolicaddress) | - | Obtains detailed symbol information based on the specified PC address. This function is not asyn-signal-safe.|
-| [HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)](#oh_hidebug_createbacktraceobject) | - | Creates an object for stack back-tracing and parsing. This function is not asyn-signal-safe.|
+| [typedef void (\*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame)](#oh_hidebug_symbolicaddresscallback) | OH_HiDebug_SymbolicAddressCallback | If the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API is successfully called, the parsed stack information is returned to the caller through this function.<br>Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.|
+| [HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, void* pc, void* arg, OH_HiDebug_SymbolicAddressCallback callback)](#oh_hidebug_symbolicaddress) | - | Obtains detailed symbol information based on the specified PC address. This function is not asyn-signal-safe.<br>Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.|
+| [HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)](#oh_hidebug_createbacktraceobject) | - | Creates an object for stack back-tracing and parsing. This function is not asyn-signal-safe.<br>Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.|
 | [void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)](#oh_hidebug_destroybacktraceobject) | - | Destroys the object created by [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) to release the resources applied for during stack back-tracing and parsing. This function is not asyn-signal-safe.|
 | [HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatch *dispatchTable)](#oh_hidebug_setmallocdispatchtable) | - | Sets the MallocDispatch table of the basic C library to replace the custom memory operation functions (such as **malloc**, **free**, **calloc**, **realloc**, **mmap**, and **munmap**). The MallocDispatch table is a struct that encapsulates memory operation functions such as **malloc**, **calloc**, **realloc**, and **free** in the basic C library. **HiDebug_MallocDispatch** is only a part of the **MallocDispatch** struct.|
 | [HiDebug_MallocDispatch* OH_HiDebug_GetDefaultMallocDispatchTable(void)](#oh_hidebug_getdefaultmallocdispatchtable) | - | Obtains the default MallocDispatch table of the system C library. You can call [OH_HiDebug_RestoreMallocDispatchTable](capi-hidebug-h.md#oh_hidebug_restoremallocdispatchtable) to restore the table.|
@@ -49,6 +49,8 @@ Defines the APIs for debugging.
 | [HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug_GraphicsMemorySummary *summary)](#oh_hidebug_getgraphicsmemorysummary) | - | Obtains the detailed GPU memory usage of an application.|
 | [typedef void (\*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks)](#oh_hidebug_threadlitesamplingcallback) | OH_HiDebug_ThreadLiteSamplingCallback | Triggered for the lightweight Perf sampling stack content. Note: The sampling data is valid only during the execution of this callback. If you need to use the data outside the function, deep copy the sampling stack content.|
 | [HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)](#oh_hidebug_requestthreadlitesampling) | - | Performs Perf sampling on the specified threads and returns the sampling stack content after the call is complete. Note: After this function is called, the current thread is blocked until the sampling process ends. The system strictly limits the number of times that this API is called. If the number of times that this API is called exceeds the upper limit, the error code [HIDEBUG_RESOURCE_UNAVAILABLE](capi-hidebug-type-h.md#hidebug_errorcode) is returned.|
+| [uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)](#oh_hidebug_setcrashobj) | - | Adds debugging information to the crash logs. This function is used together with [OH_HiDebug_ResetCrashObj](capi-hidebug-h.md#oh_hidebug_resetcrashobj). If a program crashes between **OH_HiDebug_SetCrashObj** and **OH_HiDebug_ResetCrashObj**, the debugging information set by **OH_HiDebug_SetCrashObj** is added to the crash logs.|
+| [void OH_HiDebug_ResetCrashObj(uint64_t crashObj)](#oh_hidebug_resetcrashobj) | - | Resets the debugging information object to the state before **OH_HiDebug_SetCrashObj** is used.|
 
 ## Function Description
 
@@ -118,7 +120,6 @@ Releases the **HiDebug_ThreadCpuUsagePtr**.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -136,7 +137,6 @@ void OH_HiDebug_GetSystemMemInfo(HiDebug_SystemMemInfo *systemMemInfo)
 Obtains system memory information.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -156,7 +156,6 @@ Obtains the memory information of an application process. Note that this API nee
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -174,7 +173,6 @@ void OH_HiDebug_GetAppNativeMemInfoWithCache(HiDebug_NativeMemInfo *nativeMemInf
 Obtains the memory information of an application process. This API has a cache mechanism to improve its performance. The cache value is valid for 5 minutes. Note that this API needs to read the **/proc/{pid}/smaps_rollup** node information, which takes a long time. Therefore, you are advised not to call this API in the main thread.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -195,7 +193,6 @@ Obtains the memory limit of an application process.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -213,7 +210,6 @@ HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64
 Starts application trace collection.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -261,7 +257,6 @@ Obtains the size of the GPU memory. Note that this API involves multiple cross-p
 
 **Since**: 14
 
-
 **Parameters**
 
 | Name| Description|
@@ -285,7 +280,6 @@ int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, v
 Performs stack back-tracing based on the given fp address. This function is async-signal-safe.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -314,14 +308,13 @@ If the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| void* pc | PC address transferred to the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API for parsing.|
-|  void* arg | arg value of the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API.|
-| [ const HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)* frame | Pointer to [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md), which is obtained by parsing the PC address passed to the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API. What the pointer points to is valid only in the function scope.|
+| void\* pc | PC address transferred to the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API for parsing.|
+| void\* arg | arg value of the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API.|
+| [const HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)\* frame | Pointer to [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md), which is obtained by parsing the PC address passed to the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API. What the pointer points to is valid only in the function scope.|
 
 ### OH_HiDebug_SymbolicAddress()
 
@@ -333,8 +326,11 @@ HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, vo
 
 Obtains detailed symbol information based on the specified PC address. This function is not asyn-signal-safe.
 
-**Since**: 20
+> **NOTE**
+>
+> This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.
 
+**Since**: 20
 
 **Parameters**
 
@@ -361,6 +357,10 @@ HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)
 
 Creates an object for stack backtracing and parsing. This function is not asyn-signal-safe.
 
+> **NOTE**
+>
+> This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.
+
 **Since**: 20
 
 **Returns**
@@ -381,7 +381,6 @@ Destroys the object created by [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -399,7 +398,6 @@ HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatc
 Sets the MallocDispatch table of the basic C library to replace the custom memory operation functions (such as **malloc**, **free**, **calloc**, **realloc**, **mmap**, and **munmap**). The MallocDispatch table is a struct that encapsulates memory operation functions such as **malloc**, **calloc**, **realloc**, and **free** in the basic C library. **HiDebug_MallocDispatch** is only a part of the **MallocDispatch** struct.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -455,7 +453,6 @@ Obtains the detailed GPU memory usage of an application.
 
 **Since**: 21
 
-
 **Parameters**
 
 | Name| Description|
@@ -485,7 +482,7 @@ Triggered for the lightweight Perf sampling stack content. Note: The sampling da
 
 | Name| Description|
 | -- | -- |
-| const char* stacks | Content of the sampling call stack.|
+| const char\* stacks | Content of the sampling call stack.|
 
 ### OH_HiDebug_RequestThreadLiteSampling()
 
@@ -511,3 +508,46 @@ Performs Perf sampling on the specified threads and returns the sampling stack c
 | Type| Description|
 | -- | -- |
 | [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code.<br> **HIDEBUG_SUCCESS**: Sampling successful.<br>**HIDEBUG_INVALID_ARGUMENT**: Invalid parameter.<br>         **HIDEBUG_NOT_SUPPORTED**: Perf sampling not supported.<br>         **HIDEBUG_UNDER_SAMPLING**: A sampling task is in progress.<br>         **HIDEBUG_RESOURCE_UNAVAILABLE**: Sampling resources are insufficient or the upper call limit is reached.|
+
+### OH_HiDebug_SetCrashObj()
+
+```c
+uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)
+```
+
+**Description**
+
+Adds debugging information to the crash logs. This function is used together with [OH_HiDebug_ResetCrashObj](capi-hidebug-h.md#oh_hidebug_resetcrashobj). If a program crashes between **OH_HiDebug_SetCrashObj** and **OH_HiDebug_ResetCrashObj**, the debugging information set by **OH_HiDebug_SetCrashObj** is added to the crash logs.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [HiDebug_CrashObjType](capi-hidebug-type-h.md#hidebug_crashobjtype) type | Data type of the debugging information. For details, see [HiDebug_CrashObjType](capi-hidebug-type-h.md#hidebug_crashobjtype).|
+| void* addr | Address of the debugging information. The address must be valid when a crash occurs.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| uint64_t | Object of the debugging information that was set last time. If no debugging information is set last time, the value is **0**.|
+
+### OH_HiDebug_ResetCrashObj()
+
+```c
+void OH_HiDebug_ResetCrashObj(uint64_t crashObj)
+```
+
+**Description**
+
+Resets the debugging information object to the state before **OH_HiDebug_SetCrashObj** is used.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| uint64_t crashObj | Return value of the **OH_HiDebug_SetCrashObj** function.|

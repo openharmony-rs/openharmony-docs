@@ -212,7 +212,7 @@ The desktop lyrics feature is not supported.
 
 **处理步骤**
 
-建议使用[isDesktopLyricSupported](./arkts-apis-avsession-i.md#isdesktoplyricsupported23)接口查询当前设备是否支持桌面歌词功能。
+建议使用[isDesktopLyricSupported](./arkts-apis-avsession-f.md#isdesktoplyricsupported23)接口查询当前设备是否支持桌面歌词功能。
 
 ## 6611000 投播控制器出现未知错误
 

@@ -32,7 +32,7 @@ Defines shortcut key options.
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ------- | ------- | ------- |
 | preKeys   | Array&lt;number&gt; | No     | No     | Modifier key set (including Ctrl, Shift, and Alt). A maximum of two modifier keys are supported. There is no requirement on the sequence of modifier keys.<br>For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys.|
-| finalKey  | number  | No     | No     | Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [Keycode](js-apis-keycode.md).<br>For example, in **Ctrl+Shift+Esc**, **Esc** is the modified key.|
+| finalKey  | number  | No     | No     | Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [Keycode](js-apis-keycode.md).<br>For example, in **Ctrl+Shift+Esc**, **Esc** is the modifier key.|
 | isRepeat  | boolean  | No     | Yes     | Whether to report repeated key events. The value **true** means to report repeated key events, and the value **false** means the opposite. The default value is **true**.|
 
 ## KeyPressedConfig<sup>16+</sup>
@@ -159,7 +159,7 @@ struct Index {
 
 off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptions&gt;): void
 
-Unsubscribes from application shortcut key change events.
+Unsubscribes from application shortcut key change events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -305,7 +305,7 @@ struct Index {
 
 off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
-Disables listening for the **keyPressed** event. This API uses an asynchronous callback to return the result. If the API call is successful, the system's default response to the key event will be resumed; that is, system-level actions, such as volume adjustment, will be triggered normally.
+Unsubscribes from key press events. This API uses an asynchronous callback to return the result. If the API call is successful, the system's default response to the key event will be resumed; that is, system-level actions, such as volume adjustment, will be triggered normally.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 

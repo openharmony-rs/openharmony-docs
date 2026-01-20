@@ -74,7 +74,7 @@ function enableAutoDeviceSwitch(session: camera.PhotoSession) {
 }
 ```
 ## 监听或解监听自动切换摄像头状态
-可以通过[enableAutoDeviceSwitch](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md#onautodeviceswitchstatuschange13)监听自动切换摄像头的结果。系统自动切换镜头结束后会触发该回调。
+可以通过[on('autoDeviceSwitchStatusChange')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md#onautodeviceswitchstatuschange13)监听自动切换摄像头的结果。系统自动切换镜头结束后会触发该回调。
 
 自动切换摄像头期间，禁止调用任何session相关接口。
 ```ts

@@ -140,7 +140,7 @@ drawForeground(drawContext: DrawContext): void
 
 drawOverlay(drawContext: DrawContext): void
 
-自定义绘制遮罩层的接口，若重载该方法则可进行遮罩层的自定义绘制。需要对其组件的遮罩层进行绘制时重载该方法。与[drawForeground](#drawforeground20)不同的是，drawOverlay可以在组件的边界之外绘制。
+自定义绘制遮罩层的接口，若重载该方法则可进行遮罩层的自定义绘制。需要对其组件的遮罩层进行绘制时重载该方法。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 

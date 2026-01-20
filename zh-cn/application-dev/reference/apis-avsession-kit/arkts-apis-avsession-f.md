@@ -781,3 +781,40 @@ struct Index {
   }
 }
 ```
+
+## isDesktopLyricSupported<sup>23+</sup>
+
+isDesktopLyricSupported(): Promise\<boolean>
+
+设备是否支持桌面歌词功能。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型                       | 说明                               |
+|----------------------------|-----------------------------------|
+| Promise\<boolean> | Promise对象。返回true表示设备支持桌面歌词功能；返回false表示设备不支持桌面歌词功能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID   | 错误信息                                             |
+|---------|--------------------------------------------------------|
+| 6600101 | Session service exception.                             |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+
+avSession.isDesktopLyricSupported().then((isSupported: boolean) => {
+  console.info(`isDesktopLyricSupported : SUCCESS : isSupported : ${isSupported}`);
+}).catch((err: BusinessError) => {
+  console.error(`isDesktopLyricSupported BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```

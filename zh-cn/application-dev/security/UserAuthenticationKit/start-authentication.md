@@ -15,14 +15,14 @@
 
 | 接口名称 | 功能描述 | 
 | -------- | -------- |
-| getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthInstance | 获取UserAuthInstance对象，用于执行用户身份认证，并支持使用统一[用户身份认证控件](#用户身份认证控件介绍)。 | 
+| getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthInstance | 获取UserAuthInstance对象，用于执行用户身份认证，并支持使用[统一用户认证控件](#统一用户认证控件介绍)。 | 
 | on(type: 'result', callback: IAuthCallback): void | 订阅用户身份认证结果。 | 
 | off(type: 'result', callback?: IAuthCallback): void | 取消订阅用户身份认证结果。 | 
 | start(): void | 执行用户认证。 | 
 
-## 用户身份认证控件介绍
+## 统一用户认证控件介绍
 
-系统提供了统一的用户认证控件供应用调用，使用用户认证控件的优势：
+系统提供了统一用户认证控件供应用调用，使用统一用户认证控件的优势：
 
 - 统一用户认证服务将通过该控件完成信息的识别和认证，再将认证结果返回给应用，整体过程安全可控，可以更好地保护用户的生物特征信息。
 

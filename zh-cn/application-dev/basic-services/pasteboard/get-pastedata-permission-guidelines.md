@@ -33,7 +33,7 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
 
 - 使用安全控件
 
-    使用[安全控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+    [使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
     已经使用了安全控件的应用无需做任何适配就可以访问剪贴板内容。
 
@@ -47,7 +47,7 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
     
     2.在module.json5配置文件中[声明权限](../../security/AccessToken/declare-permissions.md)。
     
-    3.通过弹窗[向用户申请权限](../../security/AccessToken/request-user-authorization.md)。
+    3.通过弹窗[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
     <!--RP1End-->
 
 ## 剪贴板弹窗适配优化

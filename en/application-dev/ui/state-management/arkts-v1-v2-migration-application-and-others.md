@@ -15,16 +15,17 @@ This guide provides migration instructions for in-application state variables an
 | [Environment](./arkts-environment.md)       | Direct ability API calls to obtain system environment variables  |
 | [PersistentStorage](./arkts-persiststorage.md)     | [PersistenceV2](./arkts-new-persistencev2.md)   |
 | Legacy migration scenarios     | \@ObservedV2, \@Trace, [\@Monitor](./arkts-new-monitor.md)|
-| Scrollable component scenarios     | [makeObserved](./arkts-new-makeObserved.md)|
+| Component scrolling     | [makeObserved](./arkts-new-makeObserved.md)|
 | [Modifier](../arkts-user-defined-modifier.md)      |[makeObserved](./arkts-new-makeObserved.md), \@ObservedV2, \@Trace|
 
 
 ## Migration Examples
 
-### LocalStorage -> \@ObservedV2/\@Trace
+### LocalStorage->\@ObservedV2/\@Trace
 **Migration Rules**
 
 In state management V1, LocalStorage is used to share state variables across pages. However, these variables are tightly coupled with the view layer, requiring framework-level support for sharing.
+
 In state management V2, observation capabilities are embedded directly into the data itself, decoupling state from the view layer. As a result, LocalStorage-style functionality is no longer needed. Instead, you can create state instances using the \@ObservedV2 and \@Trace decorators, and then import or export these instances to enable cross-page state sharing.
 
 **Example**
@@ -34,14 +35,15 @@ In state management V2, observation capabilities are embedded directly into the 
 V1:
 
 Use the windowStage.[loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9) and this.getUIContext().[getSharedLocalStorage](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12) APIs to share state variables between pages.
-```ts
-// EntryAbility.ets
+<!-- @[Internal_@ObservedV2_@Trace_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV1/EntryAbility.ets) -->
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
-  para: Record<string, number> = { 'count': 47 };
-  storage: LocalStorage = new LocalStorage(this.para);
+  public para: Record<string, number> = { 'count': 47 };
+  public storage: LocalStorage = new LocalStorage(this.para);
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Page1', this.storage);
@@ -50,7 +52,9 @@ export default class EntryAbility extends UIAbility {
 ```
 In this example, \@LocalStorageLink is used to synchronize local changes to LocalStorage.
 
-```ts
+<!-- @[Internal_@ObservedV2_@Trace_V1_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV1/pages/Page1.ets) -->
+
+``` TypeScript
 // Page1.ets
 // The Previewer does not support accessing LocalStorage instances shared across pages.
 @Entry({ useSharedStorage: true })
@@ -77,7 +81,9 @@ struct Page1 {
 }
 ```
 
-```ts
+<!-- @[Internal_@ObservedV2_@Trace_V1_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV1/pages/Page2.ets) -->
+
+``` TypeScript
 // Page2.ets
 @Builder
 export function Page2Builder() {
@@ -133,12 +139,12 @@ V2:
 
 - Declare the \@ObservedV2 decorated **MyStorage** class and import it to the page to use.
 - Declare the \@Trace decorated properties as observable data shared between pages.
+<!-- @[Internal_@ObservedV2_@Trace_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/storage.ets) -->
 
-```ts
-// storage.ets
+``` TypeScript
 @ObservedV2
 export class MyStorage {
-  static singleton_: MyStorage;
+  public static singleton_: MyStorage;
 
   static instance() {
     if (!MyStorage.singleton_) {
@@ -146,12 +152,13 @@ export class MyStorage {
     }
     return MyStorage.singleton_;
   }
-
-  @Trace count: number = 47;
+  @Trace public count: number = 47;
 }
 ```
 
-```ts
+<!-- @[Internal_@ObservedV2_@Trace_V2_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/Page1.ets) -->
+
+``` TypeScript
 // Page1.ets
 import { MyStorage } from './storage';
 
@@ -179,7 +186,9 @@ struct Page1 {
 }
 ```
 
-```ts
+<!-- @[Internal_@ObservedV2_@Trace_V2_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/Page2.ets) -->
+
+``` TypeScript
 // Page2.ets
 import { MyStorage } from './storage';
 
@@ -209,6 +218,7 @@ struct Page2 {
   }
 }
 ```
+
 When using **Navigation**, create a **route_map.json** file as shown below in the **src/main/resources/base/profile** directory, replacing the value of **pageSourceFile** with the actual path to **Page2**. Then, add **"routerMap": "$profile: route_map"** to the **module.json5** file.
 ```json
 {
@@ -229,8 +239,9 @@ The following example demonstrates @LocalStorageProp behavior, where local modif
 - In **Page1**, changes to the **count** variable decorated with \@LocalStorageProp remain local to the component and do not synchronize back to LocalStorage.
 - Clicking **push to Page2** navigates to **Page2**, where the **Text** component displays the original value **47** from LocalStorage.
 - Clicking **change Storage Count** updates the value of **count** via **setOrCreate** of LocalStorage and triggers notifications to all bound variables.
+<!-- @[Internal_@Trace_setOrCreate_V1_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV1/Page1.ets) -->
 
-```ts
+``` TypeScript
 // Page1.ets
 export let storage: LocalStorage = new LocalStorage();
 
@@ -264,7 +275,9 @@ struct Page1 {
 }
 ```
 
-```ts
+<!-- @[Internal_@Trace_setOrCreate_V1_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV1/Page2.ets) -->
+
+``` TypeScript
 // Page2.ets
 import { storage } from './Page1'
 
@@ -299,13 +312,18 @@ struct Page2 {
   }
 }
 ```
+
 In V2, you can use \@Local and \@Monitor to achieve the similar behavior.
 - The **count** variable decorated with \@Local is local to the component. Changes to it will not synchronize back to **storage**.
 - \@Monitor listens for changes of **storage.count**. When **storage.count** changes, the \@Local value is updated in the callback of \@Monitor.
+<!-- @[Internal_@ObservedV2_@Trace_V2_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV2/Page1.ets) -->
 
-```ts
+``` TypeScript
 // Page1.ets
 import { MyStorage } from './storage';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 @Entry
 @ComponentV2
@@ -316,7 +334,7 @@ struct Page1 {
 
   @Monitor('storage.count')
   onCountChange(mon: IMonitor) {
-    console.info(`Page1 ${mon.value()?.before} to ${mon.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Page1 ${mon.value()?.before} to ${mon.value()?.now}`);
     this.count = this.storage.count;
   }
 
@@ -342,9 +360,14 @@ struct Page1 {
 }
 ```
 
-```ts
+<!-- @[Internal_@ObservedV2_@Trace_V2_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV2/Page2.ets) -->
+
+``` TypeScript
 // Page2.ets
 import { MyStorage } from './storage';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 @Builder
 export function Page2Builder() {
@@ -359,7 +382,7 @@ struct Page2 {
 
   @Monitor('storage.count')
   onCountChange(mon: IMonitor) {
-    console.info(`Page2 ${mon.value()?.before} to ${mon.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Page2 ${mon.value()?.before} to ${mon.value()?.now}`);
     this.count = this.storage.count;
   }
 
@@ -387,19 +410,22 @@ struct Page2 {
 **Scenario Where a Custom Component Receives a LocalStorage Instance**
 
 To support scenarios where **Navigation** is used, LocalStorage instances can be passed as parameters to custom components and shared with all child components using the current custom component as the root.
+
 In V2, this scenario can be implemented by creating multiple global instances of \@ObservedV2 and \@Trace decorated classes.
 
 V1:
 
-```ts
+<!-- @[Internal_Trace_customize_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/InternalTraceCustomizeV1.ets) -->
+
+``` TypeScript
 let localStorageA: LocalStorage = new LocalStorage();
-localStorageA.setOrCreate('PropA', 'PropA');
+localStorageA.setOrCreate('propA', 'propA');
 
 let localStorageB: LocalStorage = new LocalStorage();
-localStorageB.setOrCreate('PropB', 'PropB');
+localStorageB.setOrCreate('propB', 'propB');
 
 let localStorageC: LocalStorage = new LocalStorage();
-localStorageC.setOrCreate('PropC', 'PropC');
+localStorageC.setOrCreate('propC', 'propC');
 
 @Entry
 @Component
@@ -441,15 +467,15 @@ struct MyNavigationTestStack {
 @Component
 struct PageOneStack {
   @Consume('pageInfo') pageInfo: NavPathStack;
-  @LocalStorageLink('PropA') PropA: string = 'Hello World';
+  @LocalStorageLink('propA') propA: string = 'Hello World';
 
   build() {
     NavDestination() {
       Column() {
-        // Display 'PropA'.
+        // Display 'propA'.
         NavigationContentMsgStack()
-        // Display 'PropA'.
-        Text(`${this.PropA}`)
+        // Display 'propA'.
+        Text(`${this.propA}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -469,15 +495,15 @@ struct PageOneStack {
 @Component
 struct PageTwoStack {
   @Consume('pageInfo') pageInfo: NavPathStack;
-  @LocalStorageLink('PropB') PropB: string = 'Hello World';
+  @LocalStorageLink('propB') propB: string = 'Hello World';
 
   build() {
     NavDestination() {
       Column() {
-        // Display 'Hello'. The current LocalStorage instance localStorageB has no value corresponding to PropA. Therefore, the local default value 'Hello' is used.
+        // Display 'Hello'. The current LocalStorage instance localStorageB has no value corresponding to propA. Therefore, the local default value 'Hello' is used.
         NavigationContentMsgStack()
-        // Display "PropB".
-        Text(`${this.PropB}`)
+        //Display 'propB'.
+        Text(`${this.propB}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -498,15 +524,15 @@ struct PageTwoStack {
 @Component
 struct PageThreeStack {
   @Consume('pageInfo') pageInfo: NavPathStack;
-  @LocalStorageLink('PropC') PropC: string = 'pageThreeStack';
+  @LocalStorageLink('propC') propC: string = 'pageThreeStack';
 
   build() {
     NavDestination() {
       Column() {
-        // Display 'Hello'. The current LocalStorage instance localStorageC has no value corresponding to PropA. Therefore, the local default value 'Hello' is used.
+        // Display 'Hello'. The current LocalStorage instance localStorageC has no value corresponding to propA. Therefore, the local default value 'Hello' is used.
         NavigationContentMsgStack()
-        // Display "PropC".
-        Text(`${this.PropC}`)
+        // Display 'propC'.
+        Text(`${this.propC}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -526,11 +552,11 @@ struct PageThreeStack {
 
 @Component
 struct NavigationContentMsgStack {
-  @LocalStorageLink('PropA') PropA: string = 'Hello';
+  @LocalStorageLink('propA') propA: string = 'Hello';
 
   build() {
     Column() {
-      Text(`${this.PropA}`)
+      Text(`${this.propA}`)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
     }
@@ -540,11 +566,12 @@ struct NavigationContentMsgStack {
 V2:
 
 Declare the \@ObservedV2 decorated class to replace LocalStorage functionality. LocalStorage keys can be replaced with \@Trace decorated properties.
-```ts
-// storage.ets
+<!-- @[Internal_Trace_customize_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/storage.ets) -->
+
+``` TypeScript
 @ObservedV2
 export class MyStorageA {
-  @Trace propA: string = 'Hello';
+  @Trace public propA: string = 'Hello';
 
   constructor(propA?: string) {
     this.propA = propA ? propA : this.propA;
@@ -553,7 +580,7 @@ export class MyStorageA {
 
 @ObservedV2
 export class MyStorageB extends MyStorageA {
-  @Trace propB: string = 'Hello';
+  @Trace public propB: string = 'Hello';
 
   constructor(propB: string) {
     super();
@@ -563,7 +590,7 @@ export class MyStorageB extends MyStorageA {
 
 @ObservedV2
 export class MyStorageC extends MyStorageA {
-  @Trace propC: string = 'Hello';
+  @Trace public propC: string = 'Hello';
 
   constructor(propC: string) {
     super();
@@ -572,9 +599,11 @@ export class MyStorageC extends MyStorageA {
 }
 ```
 
-In the **pageOneStack**, **pageTwoStack**, and **pageThreeStack** components, create instances of **MyStorageA**, **MyStorageB**, and **MyStorageC**, respectively. Pass these instances to the child component **NavigationContentMsgStack** using \@Param. This way, the same cross-component state sharing capability as LocalStorage is achieved.
+In the **PageOneStack**, **PageTwoStack**, and **PageThreeStack** components, create instances of **MyStorageA**, **MyStorageB**, and **MyStorageC**, respectively. Pass these instances to the child component **NavigationContentMsgStack** using \@Param. This way, the same cross-component state sharing capability as LocalStorage is achieved.
 
-```ts
+<!-- @[Internal_Trace_Customize_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/Index.ets) -->
+
+``` TypeScript
 // Index.ets
 import { MyStorageA, MyStorageB, MyStorageC } from './storage';
 
@@ -586,11 +615,11 @@ struct MyNavigationTestStack {
   @Builder
   PageMap(name: string) {
     if (name === 'pageOne') {
-      pageOneStack()
+      PageOneStack()
     } else if (name === 'pageTwo') {
-      pageTwoStack()
+      PageTwoStack()
     } else if (name === 'pageThree') {
-      pageThreeStack()
+      PageThreeStack()
     }
   }
 
@@ -615,7 +644,7 @@ struct MyNavigationTestStack {
 }
 
 @ComponentV2
-struct pageOneStack {
+struct PageOneStack {
   pageInfo: NavPathStack = new NavPathStack();
   @Local storageA: MyStorageA = new MyStorageA('PropA');
 
@@ -646,7 +675,7 @@ struct pageOneStack {
 }
 
 @ComponentV2
-struct pageTwoStack {
+struct PageTwoStack {
   pageInfo: NavPathStack = new NavPathStack();
   @Local storageB: MyStorageB = new MyStorageB('PropB');
 
@@ -678,7 +707,7 @@ struct pageTwoStack {
 }
 
 @ComponentV2
-struct pageThreeStack {
+struct PageThreeStack {
   pageInfo: NavPathStack = new NavPathStack();
   @Local storageC: MyStorageC = new MyStorageC('PropC');
 
@@ -723,15 +752,18 @@ struct NavigationContentMsgStack {
 }
 ```
 
-### AppStorage -> AppStorageV2
+### AppStorage->AppStorageV2
 The approach of creating global \@ObservedV2 and \@Trace decorated instances described in the previous section is not suitable for cross-ability data sharing. For this scenario, you can use AppStorageV2.
 
 V1:
 
-AppStorage is bound to the application process and enables data sharing across abilities.
+AppStorage is bound to the application process and enables data sharing across [abilities](../../reference/apis-ability-kit/js-apis-app-ability-ability.md).
+
 Using \@StorageLink allows local modifications to synchronize back to AppStorage.
 
-```ts
+<!-- @[Internal_AppStorage_V1_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV1one.ets) -->
+
+``` TypeScript
 // EntryAbility Index.ets
 import { common, Want } from '@kit.AbilityKit';
 
@@ -760,7 +792,9 @@ struct Index {
 }
 ```
 
-```ts
+<!-- @[Internal_AppStorage_V1_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV1two.ets) -->
+
+``` TypeScript
 // EntryAbility1 Index1.ets
 import { common, Want } from '@kit.AbilityKit';
 
@@ -791,15 +825,18 @@ struct Index1 {
 V2:
 
 AppStorageV2 can be used to achieve cross-ability data sharing.
+
 Example:
 
-```ts
+<!-- @[Internal_AppStorage_V2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV2one.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { AppStorageV2 } from '@kit.ArkUI';
 
 @ObservedV2
 export class MyStorage {
-  @Trace count: number = 0
+  @Trace public count: number = 0;
 }
 
 @Entry
@@ -825,16 +862,17 @@ struct Index {
     }
   }
 }
-
 ```
 
-```ts
+<!-- @[Internal_AppStorage_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV2two.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { AppStorageV2 } from '@kit.ArkUI';
 
 @ObservedV2
 export class MyStorage {
-  @Trace count: number = 0
+  @Trace public count: number = 0;
 }
 
 @Entry
@@ -843,22 +881,22 @@ struct Index1 {
   @Local storage: MyStorage = AppStorageV2.connect(MyStorage, 'storage', () => new MyStorage())!;
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-    build() {
-      Column() {
-        Text(`EntryAbility1 count: ${this.storage.count}`)
-          .fontSize(50)
-          .onClick(() => {
-            this.storage.count++;
-          })
-        Button('Jump to EntryAbility').onClick(() => {
-          let wantInfo: Want = {
-            bundleName: 'com.example.myapplication', // Replace it with the bundle name in AppScope/app.json5.
-            abilityName: 'EntryAbility'
-          };
-          this.context.startAbility(wantInfo);
+  build() {
+    Column() {
+      Text(`EntryAbility1 count: ${this.storage.count}`)
+        .fontSize(50)
+        .onClick(() => {
+          this.storage.count++;
         })
-      }
+      Button('Jump to EntryAbility').onClick(() => {
+        let wantInfo: Want = {
+          bundleName: 'com.example.myapplication', // Replace it with the bundle name in AppScope/app.json5.
+          abilityName: 'EntryAbility'
+        };
+        this.context.startAbility(wantInfo);
+      })
     }
+  }
 }
 ```
 
@@ -866,7 +904,9 @@ For scenarios that require @StorageProp-like behavior, where local variables can
 
 V1:
 
-```ts
+<!-- @[Internal_StorageProp_V1_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV1one.ets) -->
+
+``` TypeScript
 // EntryAbility Index.ets
 import { common, Want } from '@kit.AbilityKit';
 
@@ -899,7 +939,9 @@ struct Index {
 }
 ```
 
-```ts
+<!-- @[Internal_StorageProp_V1_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV1two.ets) -->
+
+``` TypeScript
 // EntryAbility1 Index1.ets
 import { common, Want } from '@kit.AbilityKit';
 
@@ -936,13 +978,18 @@ V2:
 
 Use \@Monitor and \@Local to achieve the similar behavior:
 
-```ts
+<!-- @[Internal_StorageProp_V2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV2one.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { AppStorageV2 } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 @ObservedV2
 export class MyStorage {
-  @Trace count: number = 0;
+  @Trace public count: number = 0;
 }
 
 @Entry
@@ -954,7 +1001,7 @@ struct Index {
 
   @Monitor('storage.count')
   onCountChange(mon: IMonitor) {
-    console.info(`Index1 ${mon.value()?.before} to ${mon.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Index1 ${mon.value()?.before} to ${mon.value()?.now}`);
     this.count = this.storage.count;
   }
 
@@ -981,13 +1028,18 @@ struct Index {
 }
 ```
 
-```ts
+<!-- @[Internal_StorageProp_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV2two.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { AppStorageV2 } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 @ObservedV2
 export class MyStorage {
-  @Trace count: number = 0;
+  @Trace public count: number = 0;
 }
 
 @Entry
@@ -999,7 +1051,7 @@ struct Index1 {
 
   @Monitor('storage.count')
   onCountChange(mon: IMonitor) {
-    console.info(`Index1 ${mon.value()?.before} to ${mon.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Index1 ${mon.value()?.before} to ${mon.value()?.now}`);
     this.count = this.storage.count;
   }
 
@@ -1028,12 +1080,15 @@ struct Index1 {
 
 ### Environment -> Direct API Calls to Obtain System Environment Variables
 In V1, you can obtain environment variables through **Environment**. However, the result obtained by **Environment** cannot be directly used. It must be combined with AppStorage to obtain the corresponding environment variable values.
+
 After migration to V2, you can directly obtain the system environment variables through the [config](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1) property of **UIAbilityContext**, eliminating the need for the **Environment** API.
 
 V1:
 
 The following uses **languageCode** as an example.
-```ts
+<!-- @[Internal_Environment_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV1.ets) -->
+
+``` TypeScript
 // Store languageCode to AppStorage.
 Environment.envProp('languageCode', 'en');
 
@@ -1057,22 +1112,27 @@ V2:
 
 Encapsulate an **Env** class to manage multiple system environment variables.
 
-```ts
+<!-- @[Internal_Environment_V2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/pages/Env.ets) -->
+
+``` TypeScript
 // Env.ets
 import { ConfigurationConstant } from '@kit.AbilityKit';
 
 export class Env {
-  language: string | undefined;
-  colorMode: ConfigurationConstant.ColorMode | undefined;
-  fontSizeScale: number | undefined;
-  fontWeightScale: number | undefined;
+  public language: string | undefined;
+  public colorMode: ConfigurationConstant.ColorMode | undefined;
+  // Font size scaling multiplier.
+  public fontSizeScale: number | undefined;
+  // Font width scaling multiplier.
+  public fontWeightScale: number | undefined;
 }
 
 export let env: Env = new Env();
 ```
 Obtain the required system environment variables from **onCreate**.
-```ts
-// EntryAbility.ets
+<!-- @[Internal_Environment_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/EntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { env } from '../pages/Env';
@@ -1089,10 +1149,11 @@ export default class EntryAbility extends UIAbility {
     windowStage.loadContent('pages/Index');
   }
 }
-
 ```
 Obtain the current value of **Env** on the page.
-```ts
+<!-- @[Internal_Environment_V2_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/Index.ets) -->
+
+``` TypeScript
 // Index.ets
 import { env } from '../pages/Env';
 
@@ -1124,20 +1185,22 @@ In V1, **PersistentStorage** provides UI data persistence. In V2, this functiona
 
 V1:
 
-```ts
-class data {
-  name: string = 'ZhangSan';
-  id: number = 0;
+<!-- @[Internal_Persistent_Storage_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalPersistentStorageV1.ets) -->
+
+``` TypeScript
+class Data {
+  public name: string = 'ZhangSan';
+  public id: number = 0;
 }
 
 PersistentStorage.persistProp('numProp', 47);
-PersistentStorage.persistProp('dataProp', new data());
+PersistentStorage.persistProp('dataProp', new Data());
 
 @Entry
 @Component
 struct Index {
   @StorageLink('numProp') numProp: number = 48;
-  @StorageLink('dataProp') dataProp: data = new data();
+  @StorageLink('dataProp') dataProp: Data = new Data();
 
   build() {
     Column() {
@@ -1172,56 +1235,64 @@ V2:
 This example demonstrates:
 - Migrating persisted data from PersistentStorage (V1) to PersistenceV2 (V2). In V2, properties decorated with \@Trace are automatically persisted, while non-\@Trace decorated properties require manual **save** calls for persistence.
 - The **move** function and the components to display are placed in the same .ets file in this example. You can define your own **move** functions and place them in appropriate locations for unified migration operations.
-```ts
+<!-- @[Internal_Persistent_Storage_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalPersistentStorageV2.ets) -->
+
+``` TypeScript
 // Migrate to globalConnect.
 import { PersistenceV2, Type } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+const DOMAIN = 0x0000;
 // Register a callback for serialization failure.
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
-  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
+  hilog.error(DOMAIN, 'testTag', '%{public}s', `error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
 
 class Data {
-  name: string = 'ZhangSan';
-  id: number = 0;
+  public name: string = 'ZhangSan';
+  public id: number = 0;
 }
 
 @ObservedV2
 class V2Data {
-  @Trace name: string = '';
-  @Trace Id: number = 1;
+  @Trace public name: string = '';
+  @Trace public id: number = 1;
 }
 
 @ObservedV2
 export class Sample {
   // For complex objects, use the @Type decorator to ensure successful serialization.
   @Type(V2Data)
-  @Trace num: number = 1;
-  @Trace V2: V2Data = new V2Data();
+  @Trace public num: number = 1;
+  @Trace public V2: V2Data = new V2Data();
 }
 
 // Auxiliary data used to determine whether data migration is complete.
 @ObservedV2
 class StorageState {
-  @Trace isCompleteMoving: boolean = false;
+  @Trace public isCompleteMoving: boolean = false;
 }
 
 function move() {
-  let movingState = PersistenceV2.globalConnect({type: StorageState, defaultCreator: () => new StorageState()})!;
+  let movingState = PersistenceV2.globalConnect({ type: StorageState, defaultCreator: () => new StorageState() })!;
   if (!movingState.isCompleteMoving) {
     PersistentStorage.persistProp('numProp', 47);
     PersistentStorage.persistProp('dataProp', new Data());
     let num = AppStorage.get<number>('numProp')!;
-    let V1Data = AppStorage.get<Data>('dataProp')!;
+    let v1Data = AppStorage.get<Data>('dataProp')!;
     PersistentStorage.deleteProp('numProp');
     PersistentStorage.deleteProp('dataProp');
 
     // Create the corresponding V2 data.
-    let migrate = PersistenceV2.globalConnect({type: Sample, key: 'connect2', defaultCreator: () => new Sample()})!;  // You can use the default constructor.
+    let migrate = PersistenceV2.globalConnect({
+      type: Sample,
+      key: 'connect2',
+      defaultCreator: () => new Sample()
+    })!; // You can also use the default constructor.
     // Assign values. Properties decorated with @Trace are automatically saved. For non-@Trace objects, you can call save() to save the data, for example, PersistenceV2.save('connect2').
     migrate.num = num;
-    migrate.V2.name = V1Data.name;
-    migrate.V2.Id = V1Data.id;
+    migrate.V2.name = v1Data.name;
+    migrate.V2.id = v1Data.id;
 
     // Set the migration flag to true.
     movingState.isCompleteMoving = true;
@@ -1235,10 +1306,11 @@ move();
 struct Page1 {
   @Local refresh: number = 0;
   // Store data with key: connect2.
-  @Local p: Sample = PersistenceV2.globalConnect({type: Sample, key:'connect2', defaultCreator:() => new Sample()})!;
+  @Local p: Sample =
+    PersistenceV2.globalConnect({ type: Sample, key: 'connect2', defaultCreator: () => new Sample() })!;
 
   build() {
-    Column({space: 5}) {
+    Column({ space: 5 }) {
       // The current result is saved when the application exits. After the restart, the last saved result is displayed.
       Text(`numProp: ${this.p.num}`)
         .onClick(() => {
@@ -1253,9 +1325,9 @@ struct Page1 {
         })
         .fontSize(30)
       // The current result is saved when the application exits. After the restart, the last saved result is displayed.
-      Text(`dataProp.id: ${this.p.V2.Id}`)
+      Text(`dataProp.id: ${this.p.V2.id}`)
         .onClick(() => {
-          this.p.V2.Id += 1;
+          this.p.V2.id += 1;
         })
         .fontSize(30)
     }
@@ -1268,7 +1340,7 @@ struct Page1 {
 
 For large applications already using V1, a complete one-time migration to V2 is often impractical. Instead, migration typically occurs incrementally by components and modules, resulting in the coexistence of both V1 and V2 components.
 
-A typical scenario is as follows:
+In this scenario, the parent component uses state management V1, while the child component uses state management V2. Take the following components as an example:
 - The parent component is written using V1 state management (\@Component with \@LocalStorageLink as the data source).
 - The child component is written using V2 state management (\@ComponentV2 with \@Param to receive data).
 
@@ -1280,17 +1352,23 @@ In this case, migration can be achieved using the following strategy:
     - To synchronize data from V2 to V1, declare **Monitor** in the class decorated with \@ObservedV2 and use LocalStorage APIs for propagating changes back to V1 state variables.
 
 The following is an example:
-```ts
+<!-- @[Internal_Gradual_Migration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalGradualMigration.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 let storage: LocalStorage = new LocalStorage();
 
 @ObservedV2
 class V1StorageData {
-  @Trace title: string = 'V1OldComponent'
+  @Trace public title: string = 'V1OldComponent';
 
   @Monitor('title')
   onStrChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
-      console.info(`${path} changed from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`)
+      hilog.info(DOMAIN, 'testTag', '%{public}s',
+        `${path} changed from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
       if (path === 'title') {
         storage.setOrCreate('title', this.title);
       }
@@ -1348,7 +1426,7 @@ struct NewV2Component {
 
 ## Other Migration Scenarios
 
-### Scrollable Components
+### Scroll Components
 
 **List**
 
@@ -1359,8 +1437,9 @@ V1:
 In V1, you can use [\@State](./arkts-state.md) to observe API calls.
 
 The following is an example:
+<!-- @[Internal_Other_Migrations_List_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsListV1.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct ListExample {
@@ -1399,10 +1478,10 @@ struct ListExample {
 V2:
 
 In V2, [\@Local](./arkts-new-local.md) can only observe changes to the variable itself, but not its top-level internal changes. In addition, because **ChildrenMainSize** is defined by the framework, you cannot decorate its properties with [\@Trace](./arkts-new-observedV2-and-trace.md). You can use the [makeObserved](./arkts-new-makeObserved.md) instead.
-
 The following is an example:
+<!-- @[Internal_Other_Migrations_List_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsListV2.ets) -->
 
-```ts
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Entry
@@ -1455,7 +1534,9 @@ In V1, you can use [\@State](./arkts-state.md) to observe API calls.
 
 The following is an example:
 
-```ts
+<!-- @[Internal_Other_Migrations_WaterFlow_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsWaterFlowV1.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct WaterFlowSample {
@@ -1536,7 +1617,9 @@ In V2, [\@Local](./arkts-new-local.md) can only observe changes to the variable 
 
 The following is an example:
 
-```ts
+<!-- @[Internal_Other_Migrations_WaterFlow_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsWaterFlowV2.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Entry
@@ -1626,9 +1709,11 @@ In V1, you can use [\@State](./arkts-state.md) to observe changes.
 
 The following is an example:
 
-```ts
+<!-- @[Internal_attribute_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalattributeModifierV1.ets) -->
+
+``` TypeScript
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
-  isDark: boolean = false;
+  public isDark: boolean = false;
 
   applyNormalAttribute(instance: ButtonAttribute): void {
     if (this.isDark) {
@@ -1666,11 +1751,13 @@ In V2, [\@Local](./arkts-new-local.md) can only observe changes to the variable 
 
 The following is an example:
 
-```ts
+<!-- @[Internal_attribute_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalattributeModifierV2.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
-  isDark: boolean = false;
+  public isDark: boolean = false;
 
   applyNormalAttribute(instance: ButtonAttribute): void {
     if (this.isDark) {
@@ -1712,9 +1799,13 @@ V1:
 In V1, you can use [\@State](./arkts-state.md) to observe changes.
 
 The following is an example.
+<!-- @[Internal_Common_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV1.ets) --> 
 
-```ts
-import { CommonModifier } from '@ohos.arkui.modifier';
+``` TypeScript
+import { CommonModifier } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
@@ -1754,14 +1845,14 @@ struct Index {
       Button($r('app.string.EntryAbility_label'))
         .margin(10)
         .onClick(() => {
-          console.info('Modifier', 'onClick');
+          hilog.info(DOMAIN, 'testTag', 'Modifier', 'onClick');
           this.index++;
           if (this.index % 2 === 1) {
             (this.myModifier as MyModifier).setGroup1();
-            console.info('Modifier', 'setGroup1');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup1');
           } else {
             (this.myModifier as MyModifier).setGroup2();
-            console.info('Modifier', 'setGroup2');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup2');
           }
         })
 
@@ -1778,9 +1869,13 @@ In V2, [\@Local](./arkts-new-local.md) can only observe changes to the variable 
 
 The following is an example:
 
-```ts
-import { UIUtils } from '@kit.ArkUI';
-import { CommonModifier } from '@ohos.arkui.modifier';
+<!-- @[Internal_Common_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV2.ets) --> 
+
+``` TypeScript
+import { UIUtils, CommonModifier } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
@@ -1821,14 +1916,14 @@ struct Index {
       Button($r('app.string.EntryAbility_label'))
         .margin(10)
         .onClick(() => {
-          console.info('Modifier', 'onClick');
+          hilog.info(DOMAIN, 'testTag', 'Modifier', 'onClick');
           this.index++;
           if (this.index % 2 === 1) {
             (this.myModifier as MyModifier).setGroup1();
-            console.info('Modifier', 'setGroup1');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup1');
           } else {
             (this.myModifier as MyModifier).setGroup2();
-            console.info('Modifier', 'setGroup2');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup2');
           }
         })
 
@@ -1849,8 +1944,13 @@ In V1, you can use [\@State](./arkts-state.md) to observe changes.
 
 The following is an example:
 
-```ts
-import { TextModifier } from '@ohos.arkui.modifier';
+<!-- @[Internal_Module_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV1.ets) --> 
+
+``` TypeScript
+import { TextModifier } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 class MyModifier extends TextModifier {
   applyNormalAttribute(instance: TextModifier): void {
@@ -1881,14 +1981,14 @@ struct MyImage1 {
       Button($r('app.string.EntryAbility_label'))
         .margin(10)
         .onClick(() => {
-          console.info('Modifier', 'onClick');
+          hilog.info(DOMAIN, 'testTag', 'Modifier', 'onClick');
           this.index++;
           if (this.index % 2 === 1) {
             (this.modifier as MyModifier).setGroup1();
-            console.info('Modifier', 'setGroup1');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup1');
           } else {
             (this.modifier as MyModifier).setGroup2();
-            console.info('Modifier', 'setGroup2');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup2');
           }
         })
     }
@@ -1922,9 +2022,13 @@ In V2, [\@Local](./arkts-new-local.md) can only observe its own changes, but can
 
 The following is an example:
 
-```ts
-import { UIUtils } from '@kit.ArkUI';
-import { TextModifier } from '@ohos.arkui.modifier';
+<!-- @[Internal_Module_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV2.ets) --> 
+
+``` TypeScript
+import { UIUtils, TextModifier } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 class MyModifier extends TextModifier {
   applyNormalAttribute(instance: TextModifier): void {
@@ -1955,14 +2059,14 @@ struct MyImage1 {
       Button($r('app.string.EntryAbility_label'))
         .margin(10)
         .onClick(() => {
-          console.info('Modifier', 'onClick');
+          hilog.info(DOMAIN, 'testTag', 'Modifier', 'onClick');
           this.index++;
           if (this.index % 2 === 1) {
             (this.modifier as MyModifier).setGroup1();
-            console.info('Modifier', 'setGroup1');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup1');
           } else {
             (this.modifier as MyModifier).setGroup2();
-            console.info('Modifier', 'setGroup2');
+            hilog.info(DOMAIN, 'testTag', 'Modifier', 'setGroup2');
           }
         })
     }
@@ -1998,12 +2102,14 @@ V1:
 
 In V1, you can change the **flag** property in **MyButtonModifier** to update the attributes bound to the **Button**. Because \@State supports observation of both the object itself and its top-level properties, simply decorating **AttributeUpdater** with \@State is enough to listen for changes and trigger updates.
 
-```ts
+<!-- @[Internal_Attribute_Updater_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAttributeUpdaterV1.ets) -->
+
+``` TypeScript
 // xxx.ets
 import { AttributeUpdater } from '@kit.ArkUI';
 
 class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
-  flag: boolean = false;
+  public flag: boolean = false;
 
   initializeModifier(instance: ButtonAttribute): void {
     instance.backgroundColor('#ff2787d9')
@@ -2046,13 +2152,15 @@ V2:
 
 Unlike in V1, \@Local in V2 only observes changes to the object itself. Therefore, **MyButtonModifier** must be decorated with \@ObservedV2, and the **flag** property must be decorated with \@Trace. In addition, **flag** must be accessed during component creation to establish its dependency with the **Button** component. In this scenario, it should be accessed in **initializeModifier** (as shown below); otherwise, the dependency will not be established.
 
-```ts
+<!-- @[Internal_Attribute_Updater_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAttributeUpdaterV2.ets) -->
+
+``` TypeScript
 // xxx.ets
 import { AttributeUpdater } from '@kit.ArkUI';
 
 @ObservedV2
 class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
-  @Trace flag: boolean = false;
+  @Trace public flag: boolean = false;
 
   initializeModifier(instance: ButtonAttribute): void {
     // initializeModifier is called during component initialization. Accessing flag here ensures it is bound with the Button component.

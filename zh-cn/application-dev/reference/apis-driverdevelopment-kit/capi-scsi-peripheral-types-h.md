@@ -18,7 +18,7 @@
 
 **起始版本：** 18
 
-**相关模块：** [SCSIPeripheralDDK](capi-scsiperipheralddk.md)
+**相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
 
 ## 汇总
 
@@ -97,4 +97,86 @@ enum ScsiPeripheral_Status
 | SCSIPERIPHERAL_STATUS_ACA_ACTIVE = 0x30 | ACA活动状态。 |
 | SCSIPERIPHERAL_STATUS_TASK_ABORTED = 0x40 | 任务已终止。 |
 
+### SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE
 
+```c
+SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE 8
+```
+
+**描述**
+
+描述符格式传感数据的最小长度。
+
+**起始版本：** 18
+
+### SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE
+
+```c
+SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE 18
+```
+
+**描述**
+
+固定格式传感数据的最小长度。
+
+**起始版本：** 18
+
+### SCSIPERIPHERAL_MAX_CMD_DESC_BLOCK_LEN
+
+```c
+SCSIPERIPHERAL_MAX_CMD_DESC_BLOCK_LEN 16
+```
+
+**描述**
+
+命令描述块的最大长度。
+
+**起始版本：** 18
+
+### SCSIPERIPHERAL_MAX_SENSE_DATA_LEN
+
+```c
+SCSIPERIPHERAL_MAX_SENSE_DATA_LEN 252
+```
+
+**描述**
+
+传感数据的最大长度。
+
+**起始版本：** 18
+
+### SCSIPERIPHERAL_VENDOR_ID_LEN
+
+```c
+SCSIPERIPHERAL_VENDOR_ID_LEN 8
+```
+
+**描述**
+
+厂家标识符的长度。
+
+**起始版本：** 18
+
+### SCSIPERIPHERAL_PRODUCT_ID_LEN
+
+```c
+SCSIPERIPHERAL_PRODUCT_ID_LEN 16
+```
+
+**描述**
+
+产品标识符的长度。
+
+**起始版本：** 18
+
+### SCSIPERIPHERAL_PRODUCT_REV_LEN
+
+```c
+SCSIPERIPHERAL_PRODUCT_REV_LEN 4
+```
+
+**描述**
+
+产品修订版本号的长度。
+
+**起始版本：** 18

@@ -102,7 +102,7 @@ Releases all graphics resources associated with this **ImageBitmap** object and 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type| Read-Only| Optional| Description|
+| Name    | Type| Read Only| Optional| Description|
 | ------ | ------ | ----- | -------- | --------------------------- |
 | width | number | Yes| No| Pixel width of the **ImageBitmap** object.<br>Default unit: vp|
 | height | number | Yes| No| Pixel height of the **ImageBitmap** object.<br>Default unit: vp|
@@ -226,6 +226,10 @@ struct imageBitmapExamplePage {
 In the worker thread, the application uses **onmessage** to receive the **ImageBitmap** object sent by the main thread through **postMessage** and proceeds with rendering.
 
 ```ts
+import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+import { image } from '@kit.ImageKit';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents) => {
   if (e.data.myImage) {
     let img: ImageBitmap = e.data.myImage

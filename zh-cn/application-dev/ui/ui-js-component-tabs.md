@@ -1,9 +1,9 @@
 # tabs开发指导
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
-<!--Tester: @lxl007-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @@jiangdayuan-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 tabs是一种常见的界面导航结构。通过页签容器，用户可以快捷地访问应用的不同模块。具体用法请参考[tabs API](../reference/apis-arkui/arkui-js/js-components-container-tabs.md)。
@@ -165,7 +165,7 @@ export default {
 <div class="container">
   <tabs onchange="changeTabactive">
     <tab-content>
-      <div class="item-container" for="datas.list">
+      <div class="item-container" for="data.list">
         <div if="{{$item.title=='List1'?true:false}}">
           <image src="common/images/bg-tv.jpg" style="object-fit: contain;"> </image>
         </div>
@@ -178,7 +178,7 @@ export default {
       </div>
     </tab-content>
     <tab-bar class="tab_bar mytabs" mode="scrollable">
-      <div class="tab_item" for="datas.list">
+      <div class="tab_item" for="data.list">
         <text style="color: {{$item.color}};">{{$item.title}}</text>
         <div class="underline-show" if="{{$item.show}}"></div>
         <div class="underline-hide" if="{{!$item.show}}"></div>
@@ -226,11 +226,10 @@ background-color:#F1F3F5;
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
 export default {
   data() {
     return {
-      datas: {
+      data: {
         color_normal: '#878787',
         color_active: '#ff4500',
         show: true,
@@ -254,13 +253,13 @@ export default {
     }
   },
   changeTabactive (e) {
-    for (let i = 0; i < this.datas.list.length; i++) {
-      let element = this.datas.list[i];
+    for (let i = 0; i < this.data.list.length; i++) {
+      let element = this.data.list[i];
       element.show = false;
-      element.color = this.datas.color_normal;
+      element.color = this.data.color_normal;
       if (i === e.index) {
         element.show = true;
-        element.color = this.datas.color_active;
+        element.color = this.data.color_active;
       }
     }
   }

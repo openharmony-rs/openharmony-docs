@@ -818,6 +818,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
 let context: Context = this.getUIContext().getHostContext() as Context;
 let windowId = 0; // 获取方式 let windowId = window.findWindow(窗口name).getWindowProperties().id;
 atManager.requestPermissionsFromUserWithWindowId(context, windowId, ['ohos.permission.CAMERA']).then((data: PermissionRequestResult) => {

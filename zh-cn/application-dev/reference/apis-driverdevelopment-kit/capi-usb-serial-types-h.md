@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供USB SERIAL DDK中的枚举变量、结构体定义与宏定义。
+提供USB Serial DDK中的枚举变量、结构体定义与宏定义。
 
 **引用文件：** <usb_serial/usb_serial_types.h>
 
@@ -18,7 +18,7 @@
 
 **起始版本：** 18
 
-**相关模块：** [SerialDdk](capi-serialddk.md)
+**相关模块：** [USBSerialDDK](capi-serialddk.md)
 
 ## 汇总
 
@@ -26,16 +26,16 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [UsbSerial_Params](capi-serialddk-usbserial-params.md) | __attribute__((aligned(8))) UsbSerial_Params | 定义USB SERIAL DDK使用的USB串口参数. |
-| [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md) | UsbSerial_DeviceHandle | USB串口设备数据结构（不透明）。 |
+| [UsbSerial_Params](capi-serialddk-usbserial-params.md) | \_\_attribute\_\_((aligned(8))) UsbSerial_Params | 定义USB Serial DDK使用的USB串口参数. |
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) | UsbSerial_Device | USB串口设备数据结构（不透明）。 |
 
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [UsbSerial_DdkRetCode](#usbserial_ddkretcode) | UsbSerial_DdkRetCode | 定义USB SERIAL DDK使用的返回码。 |
-| [UsbSerial_FlowControl](#usbserial_flowcontrol) | UsbSerial_FlowControl | 定义USB SERIAL DDK中的流量控制。 |
-| [UsbSerial_Parity](#usbserial_parity) | UsbSerial_Parity | 定义USB SERIAL DDK使用的校验参数枚举。 |
+| [UsbSerial_DdkRetCode](#usbserial_ddkretcode) | UsbSerial_DdkRetCode | 定义USB Serial DDK使用的返回码。 |
+| [UsbSerial_FlowControl](#usbserial_flowcontrol) | UsbSerial_FlowControl | 定义USB Serial DDK中的流量控制。 |
+| [UsbSerial_Parity](#usbserial_parity) | UsbSerial_Parity | 定义USB Serial DDK使用的校验参数枚举。 |
 
 ## 枚举类型说明
 
@@ -47,7 +47,7 @@ enum UsbSerial_DdkRetCode
 
 **描述**
 
-定义USB SERIAL DDK使用的返回码。
+定义USB Serial DDK使用的返回码。
 
 **起始版本：** 18
 
@@ -71,7 +71,7 @@ enum UsbSerial_FlowControl
 
 **描述**
 
-定义USB SERIAL DDK中的流量控制。
+定义USB Serial DDK中的流量控制。
 
 **起始版本：** 18
 
@@ -89,7 +89,7 @@ enum UsbSerial_Parity
 
 **描述**
 
-定义USB SERIAL DDK使用的校验参数枚举。
+定义USB Serial DDK使用的校验参数枚举。
 
 **起始版本：** 18
 

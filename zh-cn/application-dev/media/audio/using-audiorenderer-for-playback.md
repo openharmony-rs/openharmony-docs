@@ -23,13 +23,9 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
 在进行应用开发的过程中，建议开发者通过[on('stateChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onstatechange8)方法订阅AudioRenderer的状态变更。因为针对AudioRenderer的某些操作，仅在音频播放器在固定状态时才能执行。如果应用在音频播放器处于错误状态时执行操作，系统可能会抛出异常或生成其他未定义的行为。
 
 - prepared状态： 通过调用[createAudioRenderer()](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)方法进入到该状态。
-
 - running状态： 正在进行音频数据播放，可以在prepared状态通过调用[start()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8)方法进入此状态，也可以在paused状态和stopped状态通过调用[start()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8)方法进入此状态。
-
 - paused状态： 在running状态可以通过调用[pause()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#pause8)方法暂停音频数据的播放并进入paused状态，暂停播放之后可以通过调用[start()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8)方法继续音频数据播放。
-
 - stopped状态： 在paused/running状态可以通过[stop()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#stop8)方法停止音频数据的播放。
-
 - released状态： 在prepared、paused、stopped等状态，用户均可通过[release()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#release8)方法释放掉所有占用的硬件和软件资源，并且不会再进入到其他的任何一种状态了。
 
 ### 开发步骤及注意事项
@@ -81,9 +77,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      > **注意：**
      > 
      > - 能填满回调所需长度数据的情况下，返回audio.AudioDataCallbackResult.VALID，系统会取用完整长度的数据缓冲进行播放。请不要在未填满数据的情况下返回audio.AudioDataCallbackResult.VALID，否则会导致杂音、卡顿等现象。
-     > 
      > - 在无法填满回调所需长度数据的情况下，建议开发者返回audio.AudioDataCallbackResult.INVALID，系统不会处理该段音频数据，然后会再次向应用请求数据，确认数据填满后返回audio.AudioDataCallbackResult.VALID。
-     > 
      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
 
      <!-- @[init_oncallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
@@ -113,16 +107,13 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
    - API version 11该方法不支持返回回调结果，系统默认回调中的数据均为有效数据。
 
      > **注意：**
-     > 
-     > - 开发者应避免在主线程中注册回调，以免被其他业务阻塞导致响应回调不及时造成卡顿。建议使用独立的异步线程池处理回调。
      >
+     > - 开发者应避免在主线程中注册回调，以免被其他业务阻塞导致响应回调不及时造成卡顿。建议使用独立的异步线程池处理回调。
      > - 请确保填满回调所需长度数据，否则会导致杂音、卡顿等现象。
-     > 
      > - 在无法填满回调所需长度数据的情况下，建议开发者选择暂时停止写入数据（不暂停音频流），阻塞回调函数，等待数据充足时，再继续写入数据，确保数据填满。在阻塞回调函数后，如需调用AudioRenderer相关接口，需先解阻塞。
-     > 
      > - 开发者如果不希望播放本次回调中的音频数据，可以主动将回调中的数据块置空（置空后，也会被系统统计到已写入的数据，播放静音帧）。
-     > 
      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
+     > - 在写数据回调中，避免与耗时业务耦合或等待其他业务操作，例如写数据时不要等待UI绘制。否则，可能会导致数据传输不及时，从而产生卡顿现象。
 
      <!-- @[init_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 
