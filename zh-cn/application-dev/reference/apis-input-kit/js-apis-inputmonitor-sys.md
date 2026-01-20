@@ -3774,7 +3774,7 @@ struct Index {
           };
           try {
             inputMonitor.onSwipeInward(callback);
-            inputMonitor.offSwipeInward(callback);
+            inputMonitor.offSwipeInward();
             console.info(`Monitor off success`);
           } catch (error) {
             console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4047,7 +4047,7 @@ struct Index {
           };
           try {
             inputMonitor.onFingerprint(callback);
-            inputMonitor.offFingerprint();
+            inputMonitor.offFingerprint(callback);
             console.info(`Monitor off success`);
           } catch (error) {
             console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
