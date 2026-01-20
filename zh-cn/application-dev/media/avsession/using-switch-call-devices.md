@@ -88,7 +88,7 @@
     }
    ```
 
-3. 创建VOICE_COMMUNICATION类型的AudioRenderer，并开始播放。具体通话音频播放等实现，请参考[AudioKit开发音频通话功能](../audio/audio-call-development.md)。
+3. 创建VOICE_COMMUNICATION类型的AudioRenderer，并开始播放。具体通话音频播放等实现，请参考[开发音频通话功能](../audio/audio-call-development.md)。
 
    ```ts
    import { audio } from '@kit.AudioKit';
@@ -284,7 +284,7 @@
    }
    ```
 
-2. 实现通话功能，请参考[AudioKit开发音频通话功能](../audio/audio-call-development.md)。
+2. 实现通话功能，请参考[开发音频通话功能](../audio/audio-call-development.md)。
 
 ### 自定义实现方式
 
@@ -333,4 +333,4 @@
    }
    ```
 
-2. 实现通话功能，请参考[AudioKit开发音频通话功能](../audio/audio-call-development.md)。
+2. 实现通话功能，请参考[开发音频通话功能](../audio/audio-call-development.md)。
