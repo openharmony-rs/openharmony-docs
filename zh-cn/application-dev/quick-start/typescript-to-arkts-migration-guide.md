@@ -1513,6 +1513,21 @@ ArkTS要求实参必须直接传递给函数，且必须指定到形参。
 
 <!-- @[no_destructParams](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructParams.ets) -->   
 
+``` TypeScript
+function drawText(text: String, location: number[], bold: boolean) {
+  let x = location[0];
+  let y = location[1];
+  text;
+  x;
+  y;
+  bold;
+}
+
+function main() {
+  drawText('Hello, world!', [100, 50], true);
+}
+```
+
 ### 不支持在函数内声明函数
 
 **规则：**`arkts-no-nested-funcs`
