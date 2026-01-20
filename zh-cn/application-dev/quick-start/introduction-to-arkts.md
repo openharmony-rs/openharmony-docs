@@ -855,6 +855,27 @@ class Y {
 
 <!-- @[interface_class_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->   
 
+``` TypeScript
+// 接口：
+interface AreaSize {
+  calculateAreaSize(): number; // 方法的声明
+  someMethod(): void;     // 方法的声明
+}
+
+// 实现：
+class RectangleSize implements AreaSize {
+  private width: number = 0;
+  private height: number = 0;
+  someMethod(): void {
+    console.info('someMethod called');
+  }
+  calculateAreaSize(): number {
+    this.someMethod(); // 调用另一个方法并返回结果
+    return this.width * this.height;
+  }
+}
+```
+
 ### 接口属性
 
 接口属性可以是字段、getter、setter或getter和setter组合的形式。
