@@ -2065,7 +2065,24 @@ ArkTS禁用标准库函数`Function.bind`。标准库使用这些函数显式设
 **规则：**`arkts-no-as-const`
 
 **级别：错误**
+<!-- @[no_asConst_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoAsConst.ts) -->  
 
+``` TypeScript
+// 'string'类型。
+let x: string = 'hello';
+
+// 'number[]'类型。
+let y: number[] = [10, 20];
+
+class Label {
+  text: string = '';
+}
+
+// 'Label'类型。
+let z: Label = {
+  text: 'hello',
+}
+```
 **错误码：10605142**
 
 ArkTS不支持`as const`断言和字面量类型。在标准TypeScript中，`as const`用于标注字面量类型。
