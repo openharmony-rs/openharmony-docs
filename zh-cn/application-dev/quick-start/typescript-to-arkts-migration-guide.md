@@ -643,6 +643,20 @@ class C {
 
 <!-- @[no_typingWithThis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTypingWithThis.ets) -->  
 
+``` TypeScript
+interface testListItem {
+  getHead(): testListItem;
+}
+
+class C {
+  public n: number = 0;
+
+  m(c: C) {
+    // ...
+  }
+}
+```
+
 ### 不支持条件类型
 
 **规则：**`arkts-no-conditional-types`
