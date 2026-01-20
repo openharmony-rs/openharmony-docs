@@ -685,6 +685,22 @@ strip-not-compiled-module-name
 
 <!-- @[optionExample_useKeepInSource2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
 
+``` TypeScript
+// 保留接口名和所有成员名，MyInterface01，name01，foo01不会被混淆。
+// @KeepSymbol
+interface MyInterface01 {
+  name01: string;
+  foo01(): void;
+}
+
+// 保留接口名和指定的字段和方法名，MyInterface02，name02不会被混淆。
+interface MyInterface02 {
+  // @KeepSymbol
+  name02: string;
+  foo02(): void;
+}
+```
+
 **枚举**
 
 当前支持对枚举中的以下语法进行标记：
