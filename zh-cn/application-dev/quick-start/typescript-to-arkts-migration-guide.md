@@ -2140,6 +2140,16 @@ ArkTS不支持`enum`声明合并。
  
 <!-- @[no_enumMerging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoEnumMerging.ets) -->    
 
+``` TypeScript
+enum ColorSet {
+  RED,
+  GREEN,
+  YELLOW,
+  BLACK,
+  BLUE
+}
+```
+
 ### 命名空间不能被用作对象
 
 **规则：**`arkts-no-ns-as-obj`
