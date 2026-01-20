@@ -1112,6 +1112,16 @@ import()语法被称为动态导入（dynamic import），是一种类似函数�
 
 <!-- @[module_import_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/say.ets) -->    
 
+``` TypeScript
+// say.ets
+export function hi() {
+  console.info('Hello');
+}
+export function bye() {
+  console.info('Bye');
+}
+```
+
 那么，可以像下面这样进行动态导入：
 
 <!-- @[module_default_import_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
