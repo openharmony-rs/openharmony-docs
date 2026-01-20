@@ -1294,6 +1294,14 @@ class MyClass {
 
 <!-- @[annotation_statement_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->   
 
+``` TypeScript
+@interface ClassPreamble {
+  authorName: string;
+  revision: number = 1;
+}
+@interface MyAnno {}
+```
+
 当前仅允许对`class declarations`和`method declarations`使用注解，对类和方法可以同时使用同一个注解。<br>注解用法示例如下：
 
 <!-- @[annotation_usages_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->  
