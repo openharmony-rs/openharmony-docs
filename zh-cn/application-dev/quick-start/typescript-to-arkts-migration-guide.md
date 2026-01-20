@@ -1788,6 +1788,15 @@ let b = 'name' in p; // true。
 
 <!-- @[no_in](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIn.ets) -->   
 
+``` TypeScript
+class Person {
+  public name: string = '';
+}
+let p = new Person();
+
+let b = p instanceof Person; // true，且属性name一定存在。
+```
+
 ### 不支持解构赋值
 
 **规则：**`arkts-no-destruct-assignment`
