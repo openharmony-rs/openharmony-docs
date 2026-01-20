@@ -962,6 +962,18 @@ s.push(55); // 将会产生编译时错误
 
 <!-- @[generic_constraint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->   
 
+``` TypeScript
+interface Hashable {
+  hash(): number;
+}
+class MyHashMap<Key extends Hashable, Value> {
+  public set(k: Key, v: Value) {
+    let h = k.hash();
+    // ...其他代码...
+  }
+}
+```
+
 在上面的例子中，`Key`类型扩展了`Hashable`，`Hashable`接口的所有方法都可以为key调用。
 
 ### 泛型函数
