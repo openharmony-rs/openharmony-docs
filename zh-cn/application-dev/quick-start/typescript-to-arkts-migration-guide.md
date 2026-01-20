@@ -1248,6 +1248,15 @@ ArkTS不支持解构赋值。可使用其他替代方法，例如，使用临时
 
 <!-- @[no_commaLoops_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCommaOutsideloops.ts) -->   
 
+``` TypeScript
+for (let i = 0, j = 0; i < 10; ++i, j += 2) {
+  // ...
+}
+
+let x = 0;
+x = (++x, x++); // 1。
+```
+
 **ArkTS**
 
 <!-- @[no_commaLoops](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCommaOutsideloops.ets) -->   
