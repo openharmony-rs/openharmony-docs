@@ -1977,6 +1977,13 @@ let s2: string = null; // 编译时报错
 
 <!-- @[export_classC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->   
 
+``` TypeScript
+// lib1.ets。
+export class C {
+  // ...
+}
+```
+
 <!-- @[no_tsDeps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTsDeps.ets) -->   
 
 ``` TypeScript
