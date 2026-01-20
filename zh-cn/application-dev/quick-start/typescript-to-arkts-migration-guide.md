@@ -960,6 +960,16 @@ let z = greet<string>();
 
 <!-- @[no_untypedCaseTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->   
 
+``` TypeScript
+class C2 {
+  public s: string;
+  constructor(s: string) {
+    this.s = 's =' + s;
+  }
+}
+let o4 = new C2('foo');
+```
+
 **例子3**
 
 **TypeScript**
