@@ -396,6 +396,16 @@ if (flag) {
 4. switch语句中的调用
     例如
     <!-- @[optionExample_removeLog5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+    
+    ``` TypeScript
+    switch (value) {
+      case 1:
+        console.info("in switch case");
+        break;
+      default:
+        console.info("default");
+    }
+    ```
 
 ### -print-namecache
 
