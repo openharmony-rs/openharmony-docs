@@ -626,6 +626,23 @@ let arr: Test[] = [
 
 <!-- @[using_an_identifier_as_the_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
 
+``` TypeScript
+class Test {
+  public value: number = 0
+}
+let arr: Test[] = [
+  {
+    value: 1
+  },
+  {
+    value: 2
+  },
+  {
+    value: 3
+  }
+]
+```
+
 ### 使用Record类型为object literal标注类型，要求使用字符串作为object literal的key
 
 **应用代码**
