@@ -133,7 +133,7 @@ onClick(event: (event: ClickEvent) => void): T
 | 名称   | 类型                    | 只读 | 可选 | 说明         |
 | ---- | ------------------------- |-----|------| ---------- |
 | area | [Area](ts-types.md#area8) | 否 | 否 | 目标元素的区域信息。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| id<sup>15+</sup> | [string](ts-universal-attributes-component-id.md) | 否 | 是 | 开发者设置的节点id。默认值：undefined <br/>**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| id<sup>15+</sup> | string | 否 | 是 | 开发者设置的节点[id](ts-universal-attributes-component-id.md#id)。默认值：undefined <br/>**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 
 ## 示例
 

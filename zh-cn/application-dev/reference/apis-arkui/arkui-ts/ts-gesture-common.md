@@ -696,8 +696,8 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 | 名称      | 类型                                  | 只读   |    可选   | 说明        |
 | ---------  | -------------------------------------|-------| -----------|  -----------|
-| fingerList | [FingerInfo[]](./ts-gesture-common.md#fingerinfo8对象说明) | 否 | 否 | 触发事件的所有手指信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| fingerInfos<sup>20+</sup> | [FingerInfo[]](./ts-gesture-common.md#fingerinfo8对象说明)  | 否 | 是 | 参与触发事件的所有有效触点信息。默认值为空数组[]，返回空数组时，表示当前无有效触点信息。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| fingerList | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[] | 否 | 否 | 触发事件的所有手指信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| fingerInfos<sup>20+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[]  | 否 | 是 | 参与触发事件的所有有效触点信息。默认值为空数组[]，返回空数组时，表示当前无有效触点信息。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## TapGestureEvent<sup>11+</sup>对象说明
 
