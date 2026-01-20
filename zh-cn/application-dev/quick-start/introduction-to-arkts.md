@@ -940,6 +940,14 @@ interface MyInterface {
 
 <!-- @[generic_define](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->   
 
+``` TypeScript
+class CustomStack<Element> {
+  public push(e: Element):void {
+    // ...
+  }
+}
+```
+
 要使用类型CustomStack，必须为每个类型参数指定类型实参：
 
 <!-- @[generic_define_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->   
