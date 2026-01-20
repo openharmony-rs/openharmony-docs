@@ -711,6 +711,17 @@ function foo(obj: Record<string, string>): string {
 
 <!-- @[include_object_literals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
 
+``` TypeScript
+class T {
+  public value: number = 0
+  public name: string = ''
+}
+
+(fn: (v: T) => void) => {
+  fn({ value: 123, name: '' });
+}
+```
+
 ### class/interface 中包含方法
 
 **应用代码**
