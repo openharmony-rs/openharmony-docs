@@ -385,6 +385,13 @@ if (flag) {
   
 3. module或namespace中的调用
     <!-- @[optionExample_removeLog4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+    
+    ``` TypeScript
+    // example.ts
+    namespace ns {
+      console.info('in ns');
+    }
+    ```
   
 4. switch语句中的调用
     例如
