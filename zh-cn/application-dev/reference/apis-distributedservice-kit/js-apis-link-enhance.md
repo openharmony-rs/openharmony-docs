@@ -3,8 +3,10 @@
 linkEnhance模块提供高效的蓝牙连接和数据传输功能，增强设备间连接的稳定性。使用多通道合并算法，增加设备间连接数，提升跨设备数据传输能力，改善用户使用体验。
 
 > **说明：**
->
-> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -22,6 +24,12 @@ createServer(name:&nbsp;string):&nbsp;Server
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -36,7 +44,7 @@ createServer(name:&nbsp;string):&nbsp;Server
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -73,6 +81,12 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名       | 类型                                      | 必填   | 说明        |
@@ -88,7 +102,7 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -130,9 +144,15 @@ start():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -162,15 +182,21 @@ try {
 
 stop():&nbsp;void
 
-使用完服务时，调用`stop`停止服务，停止后可以调用`start`重新开启服务。
+使用完服务时，调用stop()停止服务，停止后可以调用start()重新开启服务。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -206,9 +232,15 @@ close():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -241,7 +273,15 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onConnectionAccepted](#onconnectionaccepted-1)。
+
+**ArkTS-Dyn起始版本**：20
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
@@ -250,7 +290,7 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -290,7 +330,15 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offConnectionAccepted](#offconnectionaccepted-1)。
+
+**ArkTS-Dyn起始版本**：20
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
@@ -299,7 +347,7 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -320,11 +368,11 @@ try {
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
-    hilog.info(0x0000, TAG, 'accpet new connection');
+    hilog.info(0x0000, TAG, 'accept new connection');
   });
   // 取消订阅服务接收
   server.off('connectionAccepted', (connection: linkEnhance.Connection): void => {
-    hilog.info(0x0000, TAG, 'accpet new connection');
+    hilog.info(0x0000, TAG, 'accept new connection');
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -340,7 +388,15 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onServerStopped](#onserverstopped-1)。
+
+**ArkTS-Dyn起始版本**：20
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
@@ -349,7 +405,7 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -390,7 +446,15 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offServerStopped](#offserverstopped-1)。
+
+**ArkTS-Dyn起始版本**：20
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
@@ -399,7 +463,7 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -431,17 +495,261 @@ try {
   (err as BusinessError).message);
 }
 ```
+
+### onConnectionAccepted
+
+onConnectionAccepted(callback: Callback&lt;Connection&gt;): void
+
+创建服务成功后，注册connectionAccepted事件的回调监听，等待对端连接。使用callback异步回调。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('connectionAccepted')](#onconnectionaccepted)。
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| callback | Callback&lt;[Connection](#connection)&gt; | 是    | 注册的回调函数。[Connection](#connection)返回的连接对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode-link-enhance.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201      | Permission denied.|
+| 32390206 | Parameter invalid.  |
+
+**示例：**
+
+```ts
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  // 使用服务名构造Server
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+
+  // 订阅服务接收事件
+  server.onConnectionAccepted((connection: linkEnhance.Connection): void => {
+    hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
+  });
+  // 启动服务
+  server.start();
+} catch (err) {
+  hilog.info(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
+
+### offConnectionAccepted
+
+offConnectionAccepted(callback?: Callback&lt;Connection&gt;): void
+
+取消注册connectionAccepted事件的回调监听。使用callback异步回调。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('connectionAccepted')](#offconnectionaccepted)。
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| callback | Callback&lt;[Connection](#connection)&gt; | 否    | 注册的回调函数。[Connection](#connection)返回的连接对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode-link-enhance.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201      | Permission denied.|
+| 32390206 | Parameter invalid.  |
+
+**示例：**
+
+```ts
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  // 使用服务名构造Server
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+  server.onConnectionAccepted((connection: linkEnhance.Connection): void => {
+    hilog.info(0x0000, TAG, 'accept new connection');
+  });
+  // 取消订阅服务接收
+  server.offConnectionAccepted((connection: linkEnhance.Connection): void => {
+    hilog.info(0x0000, TAG, 'accept new connection');
+  });
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
+
+### onServerStopped
+
+onServerStopped(callback: Callback&lt;int&gt;): void
+
+在创建服务成功后，注册serverStopped回调，监听服务异常停止。使用callback异步回调。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('serverStopped')](#onserverstopped)。
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| callback | Callback&lt;int&gt; | 是    | 注册的回调函数，int为返回的错误码。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode-link-enhance.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201      | Permission denied.|
+| 32390206 | Parameter invalid.  |
+
+**示例：**
+
+```ts
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  // 使用服务名构造Server
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+
+  // 订阅服务停止
+  server.onServerStopped((reason: int): void => {
+    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+  });
+  // 启动服务
+  server.start();
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
+### offServerStopped
+ 	 
+offServerStopped(callback?: Callback&lt;int&gt;): void
+
+取消注册serverStopped事件的回调监听。使用callback异步回调。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('serverStopped')](#offserverstopped)。
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| callback | Callback&lt;int&gt; | 否    | 注册的回调函数，int为返回的错误码。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode-link-enhance.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201      | Permission denied.|
+| 32390206 | Parameter invalid.  |
+
+**示例：**
+
+```ts
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  // 使用服务名构造Server
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+  server.onServerStopped((reason: int): void => {
+    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+  });
+  // 取消订阅服务停止
+  server.offServerStopped((reason: int): void => {
+    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+  });
+} catch (err) {
+  hilog.info(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
 ## ConnectResult
 
 客户端调用connect()后，返回的连接结果。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | 名称                    | 类型       |只读   | 可选   | 说明                 |
 | ----------------- | ------ | ----  | ---- | ------------------ |
 | deviceId          | string | 否    |否    | 对端设备ID，成功返回对端设备的deviceId，失败返回空字符串。     |
 | success           | boolean | 否    |否   | 连接结果，true表示连接成功，false表示连接失败。 |
-| reason            | number | 否    |否    | 连接成功返回0，连接失败返回错误码：<br>- 32390200：表示客户端连接超时。<br>- 32390201：表示服务端服务未启动。<br>- 32390300：表示内部错误。<br>更多关于错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。 |
+| reason            | ArkTS-Dyn: number <br>ArkTS-Sta: int| 否    |否    | 连接成功返回0，连接失败返回错误码：<br>- 32390200：表示客户端连接超时。<br>- 32390201：表示服务端服务未启动。<br>- 32390300：表示内部错误。<br>更多关于错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。 |
 
 ## Connection
 
@@ -457,10 +765,15 @@ connect():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -504,10 +817,15 @@ disconnect():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -525,14 +843,13 @@ try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.connect();
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
     if (result.success) {
       connection.disconnect();
     }
   });
-  connection.disconnect();
+  connection.connect();
 } catch (err) {
     hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
@@ -549,9 +866,15 @@ close():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -570,13 +893,13 @@ try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.connect();
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
     if (result.success) {
       connection.close();
     }
   });
+  connection.connect();
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
@@ -592,6 +915,11 @@ getPeerDeviceId():&nbsp;string
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -602,7 +930,7 @@ getPeerDeviceId():&nbsp;string
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -638,6 +966,12 @@ sendData(data:&nbsp;ArrayBuffer):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名       | 类型                                      | 必填   | 说明    |
@@ -646,7 +980,7 @@ sendData(data:&nbsp;ArrayBuffer):&nbsp;void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -667,7 +1001,6 @@ try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.connect();
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
     if (result.success) {
@@ -675,8 +1008,10 @@ try {
       let arraybuffer = new ArrayBuffer(len); // 创建需要发送的数据
       connection.sendData(arraybuffer);
       hilog.info(0x0000, TAG, "sendData data connection peerDeviceId=%{public}s" + connection.getPeerDeviceId());
+      connection.disconnect();
     }
   });
+  connection.connect();
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
@@ -691,7 +1026,15 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：20
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onConnectResult](#onconnectresult-1)。
 
 **参数：**
 
@@ -702,7 +1045,7 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -742,7 +1085,15 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offConnectResult](#offconnectresult-1)。
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 
@@ -753,7 +1104,7 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -793,7 +1144,15 @@ on(type: 'disconnected', callback: Callback&lt;number&gt;): void
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onDisconnected](#ondisconnected-1)。
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 
@@ -804,7 +1163,7 @@ on(type: 'disconnected', callback: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -841,7 +1200,15 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offDisconnected](#offdisconnected-1)。
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 
@@ -852,7 +1219,7 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -892,7 +1259,15 @@ on(type: 'dataReceived', callback: Callback&lt;ArrayBuffer&gt;): void
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onDataReceived](#ondatareceived-1)。
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 
@@ -903,7 +1278,7 @@ on(type: 'dataReceived', callback: Callback&lt;ArrayBuffer&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -939,7 +1314,15 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offDataReceived](#offdatareceived-1)。
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 
@@ -950,7 +1333,7 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参考[增强连接错误码](errorcode_linkEnhance.md)。
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode_linkEnhance.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -974,6 +1357,352 @@ try {
       hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
   connection.disconnect();
+} catch (err) {
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
+
+### onConnectResult
+
+onConnectResult(callback: Callback&lt;ConnectResult&gt;): void
+
+注册connect事件的回调监听，通过回调函数获取连接结果。使用callback进行异步回调。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('connectResult')](#onconnectresult)。
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| callback | Callback&lt;[ConnectResult](#connectresult)&gt; | 是    | 注册的回调函数。    |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode-link-enhance.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201      | Permission denied.|
+| 32390206 | Invalid parameter.|
+
+**示例：**
+
+```ts
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let peerDeviceId: string = "00:11:22:33:44:55";
+  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+  // 订阅连接结果
+  connection.onConnectResult((result: linkEnhance.ConnectResult): void => {
+    hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
+  });
+
+  // 发起连接
+  connection.connect();
+} catch (err) {
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
+
+### offConnectResult
+
+offConnectResult(callback?: Callback&lt;ConnectResult&gt;): void
+
+取消connect事件的回调监听，使用callback异步回调。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('connectResult')](#offconnectresult)。
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| callback | Callback&lt;[ConnectResult](#connectresult)&gt; | 否    | 注册的回调函数。    |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode-link-enhance.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201      | Permission denied.|
+| 32390206 | Invalid parameter. |
+
+**示例：**
+
+```ts
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const TAG = "testDemo";
+
+try {
+  let peerDeviceId: string = "00:11:22:33:44:55";
+  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+  connection.onConnectResult((result: linkEnhance.ConnectResult): void => {
+    hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
+  });
+  // 取消订阅连接结果
+  connection.offConnectResult((result: linkEnhance.ConnectResult): void => {
+    hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
+  });
+} catch (err) {
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
+
+### onDisconnected
+
+onDisconnected(callback: Callback&lt;int&gt;): void
+
+注册disconnected事件的回调监听，连接被动断开或者底层异常断开时触发该事件。使用callback异步回调。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('disconnected')](#ondisconnected)。
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| callback | Callback&lt;int&gt; | 是    | 注册的回调函数，int为返回的错误码。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode-link-enhance.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201      | Permission denied.|
+| 32390206 | Invalid parameter.|
+
+**示例：**
+
+```ts
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let peerDeviceId: string = "00:11:22:33:44:55";
+  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+  // 订阅断连通知
+  connection.onDisconnected((reason: int) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + reason);
+  });
+} catch (err) {
+  hilog.info(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
+
+### offDisconnected
+
+offDisconnected(callback?: Callback&lt;int&gt;): void
+
+取消注册disconnected事件的回调监听。连接被动断开或底层异常断开时触发该事件，使用callback异步回调。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('disconnected')](#offdisconnected)。
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| callback | Callback&lt;int&gt; | 否   | 注册的回调函数。int为返回的错误码。   |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode-link-enhance.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201      | Permission denied.|
+| 32390206 | Invalid parameter. |
+
+**示例：**
+
+```ts
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let peerDeviceId: string = "00:11:22:33:44:55";
+  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+  connection.onDisconnected((number: int) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  });
+  // 取消订阅断连通知
+  connection.offDisconnected((number: int) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  });
+} catch (err) {
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
+
+### onDataReceived
+
+onDataReceived(callback: Callback&lt;ArrayBuffer&gt;): void
+
+注册dataReceived事件的回调监听。使用callback异步回调。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('dataReceived')](#ondatareceived)。
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 是    | 注册的回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode-link-enhance.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201      | Permission denied.|
+| 32390206 | Invalid parameter.  |
+
+**示例：**
+
+```ts
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let peerDeviceId: string = "00:11:22:33:44:55";
+  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+  connection.connect();
+  connection.onDataReceived((data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  });
+} catch (err) {
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
+
+### offDataReceived
+
+offDataReceived(callback?: Callback&lt;ArrayBuffer&gt;): void
+
+取消dataReceived事件的回调监听，使用callback异步回调。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('dataReceived')](#offdatareceived)。
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 注册的回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[增强连接错误码](errorcode-link-enhance.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201      | Permission denied.|
+| 32390206 | Invalid parameter.  |
+
+**示例：**
+
+```ts
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let peerDeviceId: string = "00:11:22:33:44:55";
+  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+  connection.onDataReceived((data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  });
+  connection.offDataReceived((data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
