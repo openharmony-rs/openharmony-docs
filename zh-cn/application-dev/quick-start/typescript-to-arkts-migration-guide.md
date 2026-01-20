@@ -2179,6 +2179,16 @@ interface Document {
 
 <!-- @[extends_onlyClass_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/ExtendsOnlyClass.ts) -->   
 
+``` TypeScript
+class Control {
+  state: number = 0;
+}
+
+interface SelectableControl extends Control {
+  select(): void
+}
+```
+
 **ArkTS**
  
 <!-- @[extends_onlyClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExtendsOnlyClass.ets) -->    
