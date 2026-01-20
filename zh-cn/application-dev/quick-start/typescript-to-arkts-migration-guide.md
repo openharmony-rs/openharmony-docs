@@ -2017,6 +2017,17 @@ ArkTS要求实参必须直接传递给函数，且必须指定到形参。
 
 <!-- @[no_destructParams_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDestructParams.ts) -->   
 
+``` TypeScript
+function drawText({ text = '', location: [x, y] = [0, 0], bold = false }) {
+  text;
+  x;
+  y;
+  bold;
+}
+
+drawText({ text: 'Hello, world!', location: [100, 50], bold: true });
+```
+
 **ArkTS**
 
 <!-- @[no_destructParams](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructParams.ets) -->   
