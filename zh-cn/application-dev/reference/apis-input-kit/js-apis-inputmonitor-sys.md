@@ -267,7 +267,7 @@ on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): v
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onMouse](#inputmonitoronmouse223)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMouse](#inputmonitoronmouse23-1)。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1970,7 +1970,7 @@ on(type: 'pinch', fingers: number, receiver: Callback&lt;Pinch&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onPinch](#inputmonitoronpinch223)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPinch](#inputmonitoronpinch23-1)。
 
 **ArkTS-Dyn起始版本：** 11
 
