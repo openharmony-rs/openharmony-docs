@@ -979,6 +979,22 @@ c1.add = sub;
 
 <!-- @[no_method_reassignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
 
+``` TypeScript
+class C3 {
+  public add: (left: number, right: number) => number =
+    (left: number, right: number) => {
+      return left + right;
+    }
+}
+
+function sub(left: number, right: number): number {
+  return left - right;
+}
+
+let c1 = new C3();
+c1.add = sub;
+```
+
 ## arkts-no-polymorphic-unops
 
 使用 Number.parseInt()、new Number() 等显式转换函数。
