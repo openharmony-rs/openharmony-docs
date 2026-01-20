@@ -2025,6 +2025,22 @@ ArkTS中`this`只能在类的实例方法中使用，不支持在函数和类的
 
 <!-- @[no_standaloneThis_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoStandaloneThis.ts) -->   
 
+``` TypeScript
+function foo(i: string) {
+  this.count = i; // 只有在开启noImplicitThis选项时会产生编译时错误。
+}
+
+class A {
+  count: string = 'a';
+  m = foo;
+}
+
+let a = new A();
+console.info(a.count); // 打印a。
+a.m('b');
+console.info(a.count); // 打印b。
+```
+
 **ArkTS**
 
 <!-- @[no_standaloneThis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoStandaloneThis.ets) -->    
