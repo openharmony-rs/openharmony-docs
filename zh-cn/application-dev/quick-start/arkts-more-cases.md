@@ -424,6 +424,13 @@ function foo2(params: Object) {
 
 <!-- @[no_props_by_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
 
+``` TypeScript
+function foo2(params: Record<string, string | number>) {
+  let funNum: number = params['funNum'] as number;
+  let target: string = params['target'] as string;
+}
+```
+
 ## arkts-no-inferred-generic-params
 
 所有泛型调用都应显式标注泛型参数类型，如 Map\<string, T\>、.map\<T\>()。
