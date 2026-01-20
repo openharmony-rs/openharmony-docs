@@ -1108,6 +1108,15 @@ import()语法被称为动态导入（dynamic import），是一种类似函数�
 
 <!-- @[module_dynamic_import_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->    
 
+``` TypeScript
+// Index.ets
+import('./Calc').then((obj: ESObject) => {
+  console.info(obj.add(3, 5));
+}).catch((err: Error) => {
+  console.error('Module dynamic import error: ', err);
+});
+```
+
 如果在异步函数中，可以使用let module = await import(modulePath)。
 
 <!-- @[module_import_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/say.ets) -->    
