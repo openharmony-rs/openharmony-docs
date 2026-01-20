@@ -2122,6 +2122,11 @@ logNumbers(numbers[0], numbers[1], numbers[2]);
 
 <!-- @[no_spreadTwo_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoSpread.ts) -->   
 
+``` TypeScript
+let point2d = { x: 1, y: 2 };
+let point3d = { ...point2d, z: 3 };
+```
+
 **ArkTS**
 
 <!-- @[no_spreadTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSpread.ets) -->    
