@@ -866,7 +866,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     ],
     "component-config": {
         "Request": true // 可选，自API 15开始支持该属性。
-    	"Network Kit": true, // 可选，自API 20开始支持该属性。
+    	"Network Kit": true, // 可选，自API 15开始支持该属性。
     	"ArkWeb": false // 可选，自API 20开始支持该属性。
         "Media Kit": false // 可选，自API 23开始支持该属性。
         "Remote Communication Kit": false // 可选，自API 23开始支持该属性。
