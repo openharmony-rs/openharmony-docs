@@ -2170,6 +2170,16 @@ interface Document {
  
 <!-- @[extends_onlyClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExtendsOnlyClass.ets) -->    
 
+``` TypeScript
+interface Control {
+  state: number
+}
+
+interface SelectableControl extends Control {
+  select(): void
+}
+```
+
 ### 不支持构造函数类型
 
 **规则：**`arkts-no-ctor-signatures-funcs`
