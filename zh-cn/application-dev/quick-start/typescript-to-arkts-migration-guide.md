@@ -1937,6 +1937,22 @@ ArkTS不支持构造函数类型，改用lambda函数。
 
 <!-- @[no_ctorSignaturesFuncs_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorSignaturesFuncs.ts) -->   
 
+``` TypeScript
+class Person {
+  constructor(
+    name: string,
+    age: number
+  ) { }
+}
+type PersonCtor = new (name: string, age: number) => Person;
+
+function createPerson(Ctor: PersonCtor, name: string, age: number): Person {
+  return new Ctor(name, age);
+}
+
+const person = createPerson(Person, 'John', 30);
+```
+
 **ArkTS**
  
 <!-- @[no_ctorSignaturesFuncs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesFuncs.ets) -->    
