@@ -234,6 +234,15 @@ person["personAge"] = 22;
 
 <!-- @[optionExample_enableStringPropertyObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->   
 
+``` TypeScript
+// SDK API文件@ohos.app.ability.wantConstant片段：
+export enum Params {
+  ACTION_HOME = 'ohos.want.action.home'
+}
+// 开发者源码示例：
+let params = obj1['ohos.want.action.home'];
+```
+
 因此在开启了`-enable-string-property-obfuscation`选项时，如果想保留代码中使用的SDK API字符串常量的属性不被混淆，例如obj['ohos.want.action.home']，那么需要使用[-keep-property-name选项](#-keep-property-name)保留。
 
 ### -enable-toplevel-obfuscation
