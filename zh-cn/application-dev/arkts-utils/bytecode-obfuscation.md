@@ -545,6 +545,13 @@ console.info(obj2['v']); // 此时，'v'会被正确混淆，v可以选择性保
 
 <!-- @[optionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->            
 
+``` TypeScript
+// myclass.ts
+export class MyClass02 {
+  person = {firstName: "123", personAge: 100};
+}
+```
+
 3.在ArkTS/TS/JS文件中使用so库的API（例如示例中的foo）时，需手动保留API名称。
 
 <!-- @[dtsOptionExample_keepPropertyName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/cpp/types/libentry/Index.d.ts) -->       
