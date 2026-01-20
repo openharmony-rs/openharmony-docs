@@ -259,6 +259,14 @@ class TestMenu {
 
 <!-- @[no_indexed_signatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
 
+``` TypeScript
+function foo1(data: Record<string, string>) {
+  data['a'] = 'a';
+  data['b'] = 'b';
+  data['c'] = 'c';
+}
+```
+
 ## arkts-no-typing-with-this
 
 使用具体类型替代`this`。
