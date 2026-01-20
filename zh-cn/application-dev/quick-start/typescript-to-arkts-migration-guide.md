@@ -1753,6 +1753,15 @@ let result = num instanceof Number; // 编译报错
 
 <!-- @[no_in_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoIn.ts) -->   
 
+``` TypeScript
+class Person {
+  name: string = '';
+}
+let p = new Person();
+
+let b = 'name' in p; // true。
+```
+
 **ArkTS**
 
 <!-- @[no_in](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIn.ets) -->   
