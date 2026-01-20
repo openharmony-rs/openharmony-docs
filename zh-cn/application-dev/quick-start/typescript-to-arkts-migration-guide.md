@@ -2113,6 +2113,23 @@ ArkTS不支持`as const`断言和字面量类型。在标准TypeScript中，`as 
 
 <!-- @[no_asConst](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoAsConst.ets) -->   
 
+``` TypeScript
+// 'string'类型。
+let x: string = 'hello';
+
+// 'number[]'类型。
+let y: number[] = [10, 20];
+
+class Label {
+  public text: string = '';
+}
+
+// 'Label'类型。
+let z: Label = {
+  public text: 'hello',
+}
+```
+
 ### 不支持导入断言
 
 **规则：**`arkts-no-import-assertions`
