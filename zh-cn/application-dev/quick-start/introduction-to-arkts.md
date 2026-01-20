@@ -1334,6 +1334,18 @@ class C1 {
 
 <!-- @[annotation_export_example_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->   
 
+``` TypeScript
+// b.ets
+import { MyAnno2 } from './a';
+import * as ns from './a';
+// ...
+@MyAnno2
+@ns.ClassAuthor2
+class C {
+  // ...
+}
+```
+
 - 不允许在import中对注解进行重命名。
 ```typescript
 import { MyAnno as Anno } from './a'; // 编译错误：不允许在import中对注解进行重命名
