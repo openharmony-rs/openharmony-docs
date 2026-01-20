@@ -2020,6 +2020,22 @@ ArkTS中`this`只能在类的实例方法中使用，不支持在函数和类的
 
 <!-- @[no_standaloneThis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoStandaloneThis.ets) -->    
 
+``` TypeScript
+class A {
+  public count: string = 'a'
+  m(i: string): void {
+    this.count = i;
+  }
+}
+
+function main(): void {
+  let a = new A();
+  console.info(a.count);  // 打印a。
+  a.m('b');
+  console.info(a.count);  // 打印b。
+}
+```
+
 ### 不支持生成器函数
 
 **规则：**`arkts-no-generators`
