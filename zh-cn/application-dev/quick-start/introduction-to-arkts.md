@@ -1187,6 +1187,14 @@ ClassAuthor({authorName: "Bob"}) // 编译错误：注解需要'@'为前缀
 多个注解可以应用于同一个声明（注解间的先后顺序不影响使用）。
 <!-- @[annotation_statement_multiple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->    
 
+``` TypeScript
+@MyAnno()
+@ClassAuthor({authorName: "John Smith"})
+class MyClass1 {
+  // ...
+}
+```
+
 注解不是Typescript中的特性，只能在`.ets/.d.ets`文件中使用。
 
 > **注意**
