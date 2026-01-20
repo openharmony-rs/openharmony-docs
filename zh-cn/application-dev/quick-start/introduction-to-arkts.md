@@ -1302,6 +1302,13 @@ class MyClass {
 
 <!-- @[annotation_field_order](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->  
 
+``` TypeScript
+@ClassPreamble1({authorName: "John", revision: 2})
+// ...
+// the same as:
+@ClassPreamble1({revision: 2, authorName: "John"})
+```
+
 使用注解时，必须给所有没有默认值的字段赋值，否则会发生编译错误。
 >**说明：**
 >
