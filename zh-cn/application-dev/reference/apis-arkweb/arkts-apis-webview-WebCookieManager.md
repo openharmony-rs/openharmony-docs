@@ -45,7 +45,7 @@ static fetchCookieSync(url: string, incognito?: boolean): string
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
 | url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
-| incognito    | boolean | 否   | true表示获取隐私模式下webview的内存cookies，false表示正常非隐私模式下的cookies。<br>默认值：false。 |
+| incognito    | boolean | 否   | true表示获取隐私模式下webview的内存cookies，false表示正常非隐私模式下的cookies。<br>默认值：false。<br>传入undefined或null会抛出异常错误码401。 |
 
 **返回值：**
 
@@ -308,7 +308,7 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 | ------ | ------ | ---- | :------------------------ |
 | url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
 | value  | string | 是   | 要设置的cookie的值。      |
-| incognito    | boolean | 否   | true表示设置隐私模式下对应url的cookies，false表示设置正常非隐私模式下对应url的cookies。<br>默认值：false。 |
+| incognito    | boolean | 否   | true表示设置隐私模式下对应url的cookies，false表示设置正常非隐私模式下对应url的cookies。<br>默认值：false。 <br>传入undefined或null会抛出异常错误码401。|
 
 **错误码：**
 
