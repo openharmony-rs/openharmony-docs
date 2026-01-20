@@ -2115,6 +2115,33 @@ logNumbers(numbers[0], numbers[1], numbers[2]);
 
 <!-- @[no_spreadTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSpread.ets) -->    
 
+``` TypeScript
+class Point2D {
+  public x: number = 0;
+  public y: number = 0;
+}
+
+class Point3D {
+  public x: number = 0;
+  public y: number = 0;
+  public z: number = 0
+  constructor(p2d: Point2D, z: number) {
+    this.x = p2d.x;
+    this.y = p2d.y;
+    this.z = z;
+  }
+}
+
+let p3d = new Point3D({ x: 1, y: 2 } as Point2D, 3);
+
+class DerivedFromArray extends Uint16Array {};
+
+let arr1 = [1, 2, 3];
+let arr2 = new Uint16Array([4, 5, 6]);
+let arr3 = new DerivedFromArray([7, 8, 9]);
+let arr4 = [...arr1, 10, ...arr2, 11, ...arr3];
+```
+
 ### 接口不能继承具有相同方法的两个接口
 
 **规则：**`arkts-no-extend-same-prop`
