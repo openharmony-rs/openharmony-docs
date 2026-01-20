@@ -64,8 +64,8 @@ async function example01(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
     photoSelectOptions.maxSelectNumber = 5;
     let photoPicker = new photoAccessHelper.PhotoViewPicker();
-    photoPicker.select(photoSelectOptions).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
-      console.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' + JSON.stringify(PhotoSelectResult));
+    photoPicker.select(photoSelectOptions).then((photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+      console.info('PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
     }).catch((err: BusinessError) => {
       console.error(`PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
     });
