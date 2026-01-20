@@ -1087,6 +1087,13 @@ function foo(a: A | null) {
 
 <!-- @[module_import_ident](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
 
+``` TypeScript
+import { X, Y } from './utils';
+// ...
+X // 表示来自utils的X
+Y // 表示来自utils的Y
+```
+
 如果标识符列表定义了`ident as alias`，则实体`ident`将绑定在名称`alias`下：
 
 ```typescript
