@@ -1118,6 +1118,27 @@ ArkTS对一元运算符实施严格的类型检查，仅允许操作数值类型
 
 <!-- @[no_polymorphicUnops_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoPolymorphicUnops.ts) -->   
 
+``` TypeScript
+let a = +5;    // 5（number类型）
+let b = +'5';    // 5（number类型）
+let c = -5;    // -5（number类型）
+let d = -'5';    // -5（number类型）
+let e = ~5;    // -6（number类型）
+let f = ~'5';    // -6（number类型）
+let g = +'string'; // NaN（number类型）
+
+function returnTen(): string {
+    return '-10';
+}
+
+function returnString(): string {
+    return 'string';
+}
+
+let x = +returnTen();  // -10（number类型）
+let y = +returnString(); // NaN
+```
+
 **ArkTS**
 
 ```typescript
