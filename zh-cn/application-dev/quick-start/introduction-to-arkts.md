@@ -1316,6 +1316,24 @@ class C1 {
 
 <!-- @[annotation_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->    
 
+``` TypeScript
+@interface ClassPreamble2 {
+  authorName: string;
+  revision: number = 1;
+  reviewers: string[];
+}
+
+@ClassPreamble2(
+{
+  authorName: "Alice",
+  reviewers: ["Bob", "Clara"]
+}
+)
+class C0 {
+  // ...
+}
+```
+
 如果不需要定义注解字段，可以省略注解名称后的括号。
 
 <!-- @[annotation_omit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->   
