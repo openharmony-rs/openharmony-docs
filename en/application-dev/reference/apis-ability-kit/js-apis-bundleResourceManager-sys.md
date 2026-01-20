@@ -696,3 +696,5 @@ Defines the entry icon and name of an application.
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
 | [_LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md#launcherabilityresourceinfo) |Defines the entry icon and name of an application.|
+
+<!--no_check-->

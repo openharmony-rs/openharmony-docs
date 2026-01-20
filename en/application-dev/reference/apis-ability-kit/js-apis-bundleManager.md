@@ -1876,3 +1876,5 @@ Describes the identity information of an application clone.
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
 | [_BundleInfo.AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14) |Identity information of an application clone.|
+
+<!--no_check-->

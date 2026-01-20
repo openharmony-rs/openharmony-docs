@@ -6668,3 +6668,5 @@ Describes the bundle options used to set or query application information.
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
 | [_BundleInfo.BundleOptions](js-apis-bundleManager-BundleInfo-sys.md#bundleoptions) |Bundle options used to set or query application information.|
+
+<!--no_check-->

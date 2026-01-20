@@ -402,7 +402,7 @@ Checks whether animation effects are used when an ability is started.
 | Name| Description|
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | Pointer to an AbilityRuntime_StartOptions object.|
-| bool &withAnimation | Whether animation effects are used.<br>**true** to use, **false** otherwise.|
+| bool &withAnimation | Whether animation effects are used.<br>**true** if used, **false** otherwise. |
 
 **Returns**
 
