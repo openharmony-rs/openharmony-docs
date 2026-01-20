@@ -1343,6 +1343,11 @@ ambientAnnotationDeclaration:
 
 <!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.d.ets) -->    
 
+``` TypeScript
+// a.d.ets
+export declare @interface ClassAuthor3 {}
+```
+
 上述声明中：
 - 不会引入新的注解定义，而是提供注解的类型信息。
 - 注解需定义在其他源代码文件中。
