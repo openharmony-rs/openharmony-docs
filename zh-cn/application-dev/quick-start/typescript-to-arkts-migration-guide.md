@@ -2170,6 +2170,26 @@ const person = createPerson(Person, 'John', 30);
  
 <!-- @[no_ctorSignaturesFuncs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesFuncs.ets) -->    
 
+``` TypeScript
+class Person {
+  constructor(
+    name: string,
+    age: number
+  ) {}
+}
+type PersonCtor = (n: string, a: number) => Person
+
+function createPerson(ctor: PersonCtor, n: string, a: number): Person {
+  return ctor(n, a);
+}
+
+let impersonate: PersonCtor = (n: string, a: number): Person => {
+  return new Person(n, a);
+}
+
+const person = createPerson(impersonate, 'John', 30);
+```
+
 ### 只能使用类型相同的编译时表达式初始化枚举成员
 
 **规则：**`arkts-no-enum-mixed-types`
