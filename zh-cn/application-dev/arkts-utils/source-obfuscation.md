@@ -728,6 +728,22 @@ enum Color02 {
 }
 ```
 
+``` TypeScript
+// 保留枚举名和所有成员名，Color01，RED01，BLUE01不会被混淆。
+// @KeepSymbol
+enum Color01 {
+  RED01,
+  BLUE01
+}
+
+// 保留枚举名指定的枚举成员名。
+enum Color02 {
+  RED02,
+  // @KeepSymbol
+  BLUE02 // Color02，BLUE02不会被混淆。
+}
+```
+
 **函数**
 
 支持对函数名进行标记。
