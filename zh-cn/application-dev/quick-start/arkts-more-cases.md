@@ -504,6 +504,15 @@ let regexp: RegExp = new RegExp('\\s*','g');
 
 <!-- @[ts_no_obj_literals_as_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
 
+``` TypeScript
+const area = { // 没有写明类型 不方便维护
+  pixels: new ArrayBuffer(8),
+  offset: 0,
+  stride: 8,
+  region: { size: { height: 1,width:2 }, x: 0, y: 0 }
+}
+```
+
 **建议改法**
 
 <!-- @[specifying_object_literal_type_for_type_imports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->    
