@@ -2032,30 +2032,6 @@ let a1: A = foo6(1);
 
 修改变量`a`的类型：`let a: A | null = foo()`。
 
-<!-- @[null_is_not_assignable_to_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
-
-``` TypeScript
-class A {
-  bar() {}
-}
-function foo(n: number) {
-  if (n === 0) {
-    return null;
-  }
-  return new A();
-}
-function getNumber() {
-  return 5;
-}
-
-let a: A | null = foo(getNumber());
-a?.bar();
-```
-
-**建议改法2**
-
-如果确定此处调用`foo`一定返回非空值，可以使用非空断言`!`。
-
 <!-- @[null_is_not_assignable_to_type1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
 
 ``` TypeScript
@@ -2080,6 +2056,30 @@ if (a != null) {
 } else {
   // 处理null
 }
+```
+
+**建议改法2**
+
+如果确定此处调用`foo`一定返回非空值，可以使用非空断言`!`。
+
+<!-- @[null_is_not_assignable_to_type2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
+
+``` TypeScript
+class A2 {
+  value: number
+  constructor(value: number) {
+    this.value = value;
+  }
+}
+
+function foo(v: number): A2 | null {
+  if (v > 0) {
+    return new A2(v);
+  }
+  return null;
+}
+
+let a: A2 = foo(123)!;
 ```
 
 ### Cannot invoke an object which is possibly 'undefined'
