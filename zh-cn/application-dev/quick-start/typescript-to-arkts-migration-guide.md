@@ -333,6 +333,11 @@ class C {
 
 <!-- @[unique_names_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/UniqueNames.ts) -->     
 
+``` TypeScript
+let X: string
+type X = number[] // 类型的别名与变量同名。
+```
+
 **ArkTS**
 
 <!-- @[unique_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/UniqueNames.ets) -->     
