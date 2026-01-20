@@ -1038,6 +1038,26 @@ function foo(a: A | null) {
 
 <!-- @[nullSafety_optionalChain_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NullSafety.ets) -->    
 
+``` TypeScript
+class Person {
+  public nick: string | null = null;
+  public spouse?: Person
+
+  setSpouse(spouse: Person): void {
+    this.spouse = spouse;
+  }
+
+  getSpouseNick(): string | null | undefined {
+    return this.spouse?.nick;
+  }
+
+  constructor(nick: string) {
+    this.nick = nick;
+    this.spouse = undefined;
+  }
+}
+```
+
 > **说明**：
 >
 >`getSpouseNick`的返回类型必须为`string | null | undefined`，因为该方法在某些情况下会返回`null`或`undefined`。
