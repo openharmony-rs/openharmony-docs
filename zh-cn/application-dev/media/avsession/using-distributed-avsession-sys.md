@@ -28,14 +28,14 @@
 
 1. 导入模块接口。由于在进行投播之前，需要从audio模块获取音频设备描述符AudioDeviceDescriptor，所以除了导入AVSessionManager模块外，还需要导入audio模块。
      
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-import { audio } from '@kit.AudioKit';
-```
+   ```ts
+   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+   import { audio } from '@kit.AudioKit';
+   ```
 
 2. 通过AVSessionManager的castAudio接口将当前设备所有会话投播到其他设备。
      
-```ts
+   ```ts
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -59,7 +59,7 @@ import { audio } from '@kit.AudioKit';
        });
      }
    }
-```
+   ```
 
    系统应用在投播主控端发起投播后，媒体会话框架会通知远端设备的AVSession服务创建远端媒体会话。投播主控端的媒体会话变化时（例如媒体信息变化、播放状态变化等），媒体会话框架会自动同步变化到远端设备。
 
