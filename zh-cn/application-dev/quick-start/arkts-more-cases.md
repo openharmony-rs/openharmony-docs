@@ -346,6 +346,33 @@ class Person {
 
 <!-- @[ts_no_ctor_signatures_iface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
 
+``` TypeScript
+class Controller {
+  value: string = ''
+
+  constructor(value: string) {
+    this.value = value;
+  }
+}
+
+interface ControllerConstructor {
+  new (value: string): Controller;
+}
+
+class testMenu {
+  controller: ControllerConstructor = Controller
+  createController() {
+    if (this.controller) {
+      return new this.controller('abc');
+    }
+    return null;
+  }
+}
+
+let t = new testMenu();
+console.info(t.createController()!.value);
+```
+
 **建议改法**
 
 <!-- @[no_ctor_signatures_iface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
