@@ -308,7 +308,7 @@ class CallManager {
         }
       });
     }catch (syncErr) {
-      console.error('Syncronous operation failed: ${syncErr}');
+      console.error('Synchronous operation failed: ${syncErr}');
     }
   }
 }
