@@ -1008,6 +1008,20 @@ ArkTS不支持类表达式，必须显式声明一个类。
 
 <!-- @[no_classLiterals_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoClassLiterals.ts) -->   
 
+``` TypeScript
+const Rectangle = class {
+  constructor(height: number, width: number) {
+    this.height = height;
+    this.width = width;
+  }
+
+  height;
+  width;
+}
+
+const rectangle = new Rectangle(0.0, 0.0);
+```
+
 **ArkTS**
 
 <!-- @[no_classLiterals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoClassLiterals.ets) -->   
