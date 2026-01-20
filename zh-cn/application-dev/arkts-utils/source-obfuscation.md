@@ -472,6 +472,22 @@ test(a2);
 4. switch语句中的调用。  
    例如：
    <!-- @[optionExample_removeLog5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+   
+   ``` TypeScript
+   function getDayName(day: number): string {
+     switch (day) {
+       case 1:
+         console.info("Matched case 1: 星期一");
+         return "星期一";
+       case 2:
+         console.info("Matched case 2: 星期二");
+         return "星期二";
+       default:
+         console.error("No matching case for day:", day);
+         return "无效的日期";
+     }
+   }
+   ```
 
 ### -print-namecache
 
