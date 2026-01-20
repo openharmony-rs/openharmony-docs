@@ -120,7 +120,7 @@ jsonProperty
 
 示例代码如下：
 
-<!-- @[ns_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[ns_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
 
 ```ts
 // 混淆后
@@ -163,9 +163,9 @@ foo
 
 示例代码如下：
 
-<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/utils.ts) -->  
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/utils.ts) -->  
 
-<!-- @[add_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[add_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
 
 ```ts
 // 混淆后
@@ -215,9 +215,9 @@ addNum
 
 示例代码如下：
 
-<!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
+<!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
-<!-- @[call_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[call_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
 
 ```ts
 // example.ets
@@ -253,9 +253,9 @@ addNum
 
 示例代码如下：
 
-<!-- @[export_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/sharedlibrary/src/main/ets/pages/Index.ets) -->  
+<!-- @[export_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/sharedlibrary/src/main/ets/pages/Index.ets) -->  
 
-<!-- @[call_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[call_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
 
 ```ts
 // 混淆后
@@ -304,7 +304,7 @@ addNum
 
 示例代码如下：
 
-<!-- @[call_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[call_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
 
 ```ts
 // 混淆后
@@ -348,9 +348,9 @@ linkSource
 
 示例代码如下：
 
-<!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->  
+<!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->  
 
-<!-- @[call_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[call_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
 
 ```ts
 // 混淆后
@@ -381,7 +381,7 @@ const person: MyInfo = {
 
 方案一：使用`interface`定义该属性的类型，并使用`export`进行导出，这样该属性将被自动加入到属性白名单中。示例如下：
 
-<!-- @[export_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/file2.ts) -->  
+<!-- @[export_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/file2.ts) -->  
 
 方案二：使用`-keep-property-name`选项，将未直接导出的类型内的属性配置到属性白名单中。示例如下：
 
