@@ -122,6 +122,13 @@ class A {
 
 <!-- @[ts_record_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->     
 
+``` TypeScript
+function printProperties(obj: any) {
+  console.info(obj.name);
+  console.info(obj.value);
+}
+```
+
 **建议改法**
 
 <!-- @[record_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->     
