@@ -903,6 +903,13 @@ const myVal = 1;
 
 <!-- @[optionExample_useKeepInSource7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
 
+``` TypeScript
+// @KeepAsConsumer
+export class MyClass05 {
+  prop01: string = "prop";
+}
+```
+
 上述示例中`MyClass`会被添加到-keep-global-name和-keep-property-name中，`prop01`会被添加到-keep-property-name中，同时，该规则还会写入`obfuscation.txt`文件中。
 
 **-use-keep-in-source不支持的场景**
