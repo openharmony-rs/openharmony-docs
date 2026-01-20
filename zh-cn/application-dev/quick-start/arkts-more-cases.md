@@ -295,6 +295,14 @@ class C {
 
 <!-- @[no_typing_with_this](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
 
+``` TypeScript
+class C {
+  getInstance(): C {
+    return this;
+  }
+}
+```
+
 ## arkts-no-ctor-prop-decls
 
 显式声明类属性，并在构造函数中手动赋值。
