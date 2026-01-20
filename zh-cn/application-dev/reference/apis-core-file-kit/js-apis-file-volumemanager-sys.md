@@ -52,11 +52,24 @@ getAllVolumes(): Promise&lt;Array&lt;Volume&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
     // do something with volumes, which is an array
   }).catch((error: BusinessError) => {
+    console.error("getAllVolumes failed");
+  });
+  ```
+  
+ArkTS-Sta示例:
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
+    // do something with volumes, which is an array
+  }).catch((error: BusinessError): void => {
     console.error("getAllVolumes failed");
   });
   ```
@@ -99,9 +112,20 @@ getAllVolumes(callback: AsyncCallback&lt;Array&lt;Volume&gt;&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例:
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   volumeManager.getAllVolumes((error: BusinessError, volumes: Array<volumeManager.Volume>) => {
+    // do something
+  });
+  ```
+  
+  ArkTS-Sta示例:
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  volumeManager.getAllVolumes((error: BusinessError | null, volumes: Array<volumeManager.Volume> | undefined) => {
     // do something
   });
   ```
@@ -171,7 +195,7 @@ ArkTS-Sta起始版本： 23
   let volumeId: string = "";
   volumeManager.mount(volumeId).then(() => {
     // do something
-  }).catch((error) => {
+  }).catch((error: BusinessError): void => {
     console.error("mount failed");
   });
   ```
@@ -302,9 +326,9 @@ ArkTS-Sta起始版本： 23
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
-  voluMemanager.unmount(volumeId).then(() => {
+  volumeManager.unmount(volumeId).then(() => {
     // do something
-  }).catch((error) => {
+  }).catch((error: BusinessError): void => {
     console.error("mount failed");
   });
   ```
@@ -361,7 +385,7 @@ unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
-  volumemMnager.unmount(volumeId, (error: BusinessError|null) => {
+  volumeManager.unmount(volumeId, (error: BusinessError|null) => {
     // do something
   });
   ```
@@ -411,12 +435,26 @@ getVolumeByUuid(uuid: string): Promise&lt;Volume&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let uuid: string = "";
   volumeManager.getVolumeByUuid(uuid).then((volume: volumeManager.Volume) => {
     console.info("getVolumeByUuid successfully:" + JSON.stringify(volume));
   }).catch((error: BusinessError) => {
+    console.error("getVolumeByUuid failed with error:" + JSON.stringify(error));
+  });
+  ```
+  
+ArkTS-Sta示例:
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let uuid: string = "";
+  volumeManager.getVolumeByUuid(uuid).then((volume: volumeManager.Volume) => {
+    console.info("getVolumeByUuid successfully:" + JSON.stringify(volume));
+  }).catch((error: BusinessError): void => {
     console.error("getVolumeByUuid failed with error:" + JSON.stringify(error));
   });
   ```
@@ -461,10 +499,22 @@ getVolumeByUuid(uuid: string, callback: AsyncCallback&lt;Volume&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例:
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let uuid: string = "";
   volumeManager.getVolumeByUuid(uuid, (error: BusinessError, volume: volumeManager.Volume) => {
+    // do something    
+  });
+  ```
+  
+ArkTS-Sta示例:
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let uuid: string = "";
+  volumeManager.getVolumeByUuid(uuid, (error: BusinessError | null, volume: volumeManager.Volume | undefined) => {
     // do something    
   });
   ```
@@ -529,9 +579,9 @@ getVolumeById(volumeId: string): Promise&lt;Volume&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
-  volumeManager.getVolumeById(volumeId).then((volume: volumemanager.Volume) => {
+  volumeManager.getVolumeById(volumeId).then((volume: volumeManager.Volume) => {
     console.info("getVolumeById successfully:" + JSON.stringify(volume));
-  }).catch((error) => {
+  }).catch((error: BusinessError): void => {
     console.error("getVolumeById failed with error:" + JSON.stringify(error));
   });
   ```
@@ -589,7 +639,7 @@ getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
-  volumeManager.getVolumeById(volumeId, (error: BusinessError|null, volume: volumemanager.Volume|undefined) => {
+  volumeManager.getVolumeById(volumeId, (error: BusinessError | null, volume: volumeManager.Volume | undefined) => {
     // do something    
   });
   ```
@@ -661,7 +711,7 @@ setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
   let description: string = "";
   volumeManager.setVolumeDescription(uuid, description).then(() => {
     console.info("setVolumeDescription successfully");
-  }).catch((error) => {
+  }).catch((error: BusinessError): void => {
     console.error("setVolumeDescription failed with error:" + JSON.stringify(error));
   });
   ```
@@ -796,7 +846,7 @@ format(volumeId: string, fsType: string): Promise&lt;void&gt;
   let fsType: string = "";
   volumeManager.format(volumeId, fsType).then(() => {
     console.info("format successfully");
-  }).catch((error) => {
+  }).catch((error: BusinessError): void => {
     console.error("format failed with error:" + JSON.stringify(error));
   });
   ```
@@ -931,7 +981,7 @@ ArkTS-Sta: partition(diskId: string, type: int): Promise&lt;void&gt;
   let type: int = 0;
   volumeManager.partition(diskId, type).then(() => {
     console.info("partition successfully");
-  }).catch((error) => {
+  }).catch((error: BusinessError): void => {
     console.error("partition failed with error:" + JSON.stringify(error));
   });
   ```
