@@ -742,7 +742,7 @@ Swiper通过设置[maintainVisibleContentPosition](../reference/apis-arkui/arkui
 
 maintainVisibleContentPosition为true时，显示区域上方或前方插入或删除数据时可见内容位置不变。
 
-关于数据[LazyForEach：懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)的具体使用，可参考数据懒加载章节中的示例。
+关于数据[LazyForEach：数据懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)的具体使用，可参考数据懒加载章节中的示例。
 
 <!-- @[visible_content_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperVisibleContentPosition.ets) -->
 
