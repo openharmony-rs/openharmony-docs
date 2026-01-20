@@ -969,6 +969,12 @@ s.push(55); // 将会产生编译时错误
 
 <!-- @[generic_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->   
 
+``` TypeScript
+function last1<T>(x: T[]): T {
+  return x[x.length - 1];
+}
+```
+
 现在，该函数可以与任何数组一起使用。
 
 在函数调用中，类型实参可以显式或隐式设置：
