@@ -651,7 +651,7 @@ router.pushNamedRoute({
   })
 ```
 
-详细示例请参考：[UI开发-页面路由](../../ui/arkts-routing.md#命名路由)
+详细示例请参考：[UI开发-命名路由](../../ui/arkts-routing.md#命名路由)
 
 ## router.pushNamedRoute<sup>(deprecated)</sup>
 
