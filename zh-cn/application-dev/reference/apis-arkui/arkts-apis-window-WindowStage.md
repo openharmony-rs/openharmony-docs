@@ -2301,7 +2301,7 @@ setWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 **ArkTS-Sta起始版本：** 22
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Phone设备、2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
