@@ -26,35 +26,35 @@ zh-cn/application-dev/quick-start/start-overview.md @ge-yafang
 zh-cn/application-dev/quick-start/start-with-ets-stage.md @ge-yafang
 
 [入门-开发基础知识-应用程序包基础知识与应用配置文件]
-zh-cn/application-dev/quick-start/application*.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/quick-start/app*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/quick-start/module*.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/deviceconfig-structure.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/hap-package.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/har-package.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/in-app-hsp.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/multi_module_installation_update_consistency_verification.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/quick-start/application-configuration-file-overview-stage.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/common_problem_of_application.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/quick-start/quickfix*.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/integrated-hsp.md  @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/har-to-hsp.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/hsp-to-har.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/typical-scenario-configuration.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/app-clone.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/multiInstance.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/layered-image.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/hap-to-har.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/application-package-glossary.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/application-package-structure-fa.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/quick-start/application-package-structure-stage.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/quick-start/application-package-overview.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/quick-start/application-package-install-uninstall.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/quick-start/app-configuration-file.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/quick-start/module-configuration-file.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/quick-start/application-configuration-file-overview-fa.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/quick-start/app-structure.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/quick-start/module-structure.md @Brilliantry_Rui  @hanfeng6  @kongjing2
+zh-cn/application-dev/quick-start/application*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/app*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/module*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/deviceconfig-structure.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/hap-package.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/har-package.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/in-app-hsp.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/multi_module_installation_update_consistency_verification.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/application-configuration-file-overview-stage.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/common_problem_of_application.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/quickfix*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/integrated-hsp.md  @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/har-to-hsp.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/hsp-to-har.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/typical-scenario-configuration.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/app-clone.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/multiInstance.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/layered-image.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/hap-to-har.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/application-package-glossary.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/application-package-structure-fa.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/application-package-structure-stage.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/application-package-overview.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/application-package-install-uninstall.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/app-configuration-file.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/module-configuration-file.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/application-configuration-file-overview-fa.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/app-structure.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/quick-start/module-structure.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
 
 [入门-资源分类与访问]
 zh-cn/application-dev/quick-start/resource-categories-and-access.md @ningningW @lliule21 @lpw_work @budda-wang
@@ -112,9 +112,9 @@ zh-cn/application-dev/application-models/hop-cross-device-migration.md @hu-zhiqi
 zh-cn/application-dev/application-models/hop-multi-device-collaboration.md @hu-zhiqiong @gsxiaowen @hanjiawei
 
 [开发-Ability Kit-包管理]
-zh-cn/application-dev/application-models/canopenlink.md @Brilliantry_Rui  @hanfeng6  @kongjing2 
-zh-cn/application-dev/application-models/application-component-configuration-stage.md @Brilliantry_Rui  @hanfeng6  @kongjing2   
-zh-cn/application-dev/application-models/application-component-configuration-fa.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
+zh-cn/application-dev/application-models/canopenlink.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/application-models/application-component-configuration-stage.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/application-models/application-component-configuration-fa.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
 
 [开发-Accessibility Kit]
 zh-cn/application-dev/kit-readme/Readme-Accessibility-Kit.md  @w_Machine_cc @z7o  @A_qqq
@@ -942,31 +942,31 @@ zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-loopO
 
 
 [API参考-Ability Kit-包管理]
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-installer-sys.md  @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-appControl*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-installer-sys.md  @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-appControl*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-appDomainVerify-sys.md @Brilliantry_Rui @sl_sunshineGirl @xuchuanqi87
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-defaultAppManager.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-defaultAppManager-sys.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-distributedBundleManager.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-freeInstall.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-freeInstall-sys.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-installer.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-launcherBundleManager*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-overlay*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-zlib.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-shortcut*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/errorcode-bundle.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/errorcode-zlib.md @fang-jinxu  @hanfeng6  @kongjing2  
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-defaultAppManager.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-defaultAppManager-sys.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-distributedBundleManager.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-freeInstall.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-freeInstall-sys.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-installer.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-launcherBundleManager*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-overlay*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-zlib.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-shortcut*.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/errorcode-bundle.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/errorcode-zlib.md @fang-jinxu  @hanfeng6  @kongjing2  @jiangminsen
 
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-interface-bundle-h.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-applicationinfo.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-elementname.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-metadata.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-modulemetadata.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/reference/apis-ability-kit/capi-bundle-manager-common-h.md @Brilliantry_Rui  @hanfeng6  @kongjing2
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-abilityresourceinfo.md @Brilliantry_Rui  @hanfeng6  @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-interface-bundle-h.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-applicationinfo.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-elementname.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-metadata.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-modulemetadata.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/capi-bundle-manager-common-h.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-abilityresourceinfo.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
 
 [API参考-Ability Kit-分布式]
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-distributedMissionManager.md @chenmingJay @nan-xiansen @iceice1001 
@@ -2435,7 +2435,7 @@ zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-pasteboard.md	@g
 
 [工具-元能力、包管理、通知等]
 zh-cn/application-dev/tools/aa-tool.md @huipeizi @ccllee1 @lixueqing513
-zh-cn/application-dev/tools/bm-tool.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
+zh-cn/application-dev/tools/bm-tool.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
 zh-cn/application-dev/tools/packing-tool.md @Brilliantry_Rui @jsjzju @lixueqing513
 zh-cn/application-dev/tools/unpacking-tool.md @Brilliantry_Rui @jsjzju @lixueqing513 
 zh-cn/application-dev/tools/app-check-tool.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
