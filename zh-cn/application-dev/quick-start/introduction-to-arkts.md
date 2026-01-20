@@ -1048,6 +1048,21 @@ function foo(a: A | null) {
 
 <!-- @[nullSafety_optionalChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NullSafety.ets) -->   
 
+``` TypeScript
+class Person {
+  public nick: string | null = null;
+  public spouse?: Person;
+
+  constructor(nick: string) {
+    this.nick = nick;
+    this.spouse = undefined;
+  }
+}
+
+let p: Person = new Person('Alice');
+p.spouse?.nick; // undefined
+```
+
 ## 模块
 
 程序可划分为多组编译单元或模块。
