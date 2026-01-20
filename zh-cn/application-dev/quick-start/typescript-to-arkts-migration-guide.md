@@ -342,6 +342,11 @@ type X = number[] // 类型的别名与变量同名。
 
 <!-- @[unique_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/UniqueNames.ets) -->     
 
+``` TypeScript
+let X: string;
+type T = number[]; // 为避免名称冲突，此处不允许使用X。
+```
+
 ### 使用`let`而非`var`
 
 **规则：**`arkts-no-var`
