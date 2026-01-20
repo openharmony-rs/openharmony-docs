@@ -910,6 +910,13 @@ type Person = { name: string, age: number }
 
 <!-- @[no_obj_literals_as_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
 
+``` TypeScript
+interface Person {
+  name: string,
+  age: number
+}
+```
+
 ## arkts-no-noninferrable-arr-literals
 
 显式声明数组元素的类型（使用interface或class），并为数组变量添加类型注解。
