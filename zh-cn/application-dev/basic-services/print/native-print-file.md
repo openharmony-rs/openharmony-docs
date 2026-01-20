@@ -23,7 +23,7 @@ OS提供了两种打印方式：
 
 ## 开发步骤
 
-### 1. 引用头文件
+### 步骤1. 引用头文件
 
 ```c++
 #include <cstdint>
@@ -36,7 +36,7 @@ OS提供了两种打印方式：
 #include "BasicServicesKit/ohprint.h"
 ```
 
-### 2. 在CMake脚本中添加动态链接库
+### 步骤2. 在CMake脚本中添加动态链接库
 
 ```txt
 target_link_libraries(entry PUBLIC
@@ -46,7 +46,7 @@ target_link_libraries(entry PUBLIC
 )
 ```
 
-### 3. 方式一：通过接口拉起系统打印预览界面下发任务
+### 步骤3. 方式一：通过接口拉起系统打印预览界面下发任务
 
 ```ts
 import { Context } from '@kit.AbilityKit';
@@ -119,7 +119,7 @@ Print_ErrorCode ret = OH_Print_StartPrintByNative(printJobName, printDocCallback
 OH_Print_Release()
 ```
 
-### 4. 方式二：通过打印接口自主进行打印设备的发现、连接和打印任务的下发
+### 步骤4. 方式二：通过打印接口自主进行打印设备的发现、连接和打印任务的下发
 
 ```c++
 // 初始化打印服务
