@@ -190,6 +190,10 @@ class U {
 
 <!-- @[struct_typing_caseTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->    
 
+``` TypeScript
+let u: U = new T(); // 是否允许？
+```
+
 类型为`T`的值是否能传递给接受类型为`U`的参数的函数。
 
 <!-- @[struct_typing_caseThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->    
