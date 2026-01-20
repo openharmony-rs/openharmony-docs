@@ -1350,6 +1350,16 @@ import type { MyAnno } from './a'; // 编译错误：注解不允许使用'type'
 
 <!-- @[annotation_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->   
 
+``` TypeScript
+// b.ets
+import { MyAnno2 } from './a';
+import * as ns from './a';
+// 仅引用了Anno注解，不会导致a.ets的console.info执行
+class X {
+  // ...
+}
+```
+
 **.d.ets文件中的注解**
 注解可以出现在.d.ets文件中。
 
