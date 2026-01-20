@@ -1106,6 +1106,15 @@ import()语法被称为动态导入（dynamic import），是一种类似函数�
 
 <!-- @[module_dynamic_import_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Calc.ets) -->   
 
+``` TypeScript
+// Calc.ets
+export function add(a:number, b:number):number {
+  let c = a + b;
+  console.info('Dynamic import, %d + %d = %d', a, b, c);
+  return c;
+}
+```
+
 <!-- @[module_dynamic_import_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->    
 
 ``` TypeScript
