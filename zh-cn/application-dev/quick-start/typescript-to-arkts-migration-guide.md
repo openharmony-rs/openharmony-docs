@@ -2036,6 +2036,21 @@ for (let num of counter(1, 5)) {
 
 <!-- @[no_generators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoGenerators.ets) -->    
 
+``` TypeScript
+async function complexNumberProcessing(num: number): Promise<number> {
+  // ...
+  return num;
+}
+
+async function foo() {
+  for (let i = 1; i <= 5; i++) {
+    await complexNumberProcessing(i);
+  }
+}
+
+foo();
+```
+
 ### 使用`instanceof`和`as`进行类型保护
 
 **规则：**`arkts-no-is`
