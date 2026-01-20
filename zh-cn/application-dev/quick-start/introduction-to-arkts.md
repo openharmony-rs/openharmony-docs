@@ -1005,6 +1005,13 @@ let z: number[] = null;  // 编译时错误
 
 <!-- @[nullSafety_variable_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NullSafety.ets) -->   
 
+``` TypeScript
+let x: number | null = null;
+x = 1;    // ok
+x = null; // ok
+if (x != null) { /* do something */ }
+```
+
 ### 非空断言运算符
 
 后缀运算符`!`可用于断言其操作数为非空。
