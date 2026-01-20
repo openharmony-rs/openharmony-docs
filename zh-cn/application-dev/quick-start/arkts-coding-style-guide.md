@@ -893,6 +893,20 @@ let obj2: I = getObject2(123);
 
 <!-- @[finally_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+function foo4() {
+  try {
+    // ...
+    return 1;
+  } catch (err) {
+    // ...
+    return 2;
+  } finally {
+    return 3;
+  }
+}
+```
+
 <!-- @[use_T[]_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
