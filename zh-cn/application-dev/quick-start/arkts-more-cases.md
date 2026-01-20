@@ -1029,6 +1029,15 @@ let d = new Number('123');
 
 <!-- @[ts_module_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/module1.ts) -->  
 
+``` TypeScript
+// module1.ts
+class C {
+  value: number = 0
+}
+
+export let c = new C()
+```
+
 <!-- @[ts_module_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/module2.ts) -->  
 
 **建议改法**
