@@ -883,6 +883,17 @@ emit('', {
 
 <!-- @[passing_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
 
+``` TypeScript
+function emit(event: string, ...args: Object[]): void {}
+
+let emitArg: Record<string, number | boolean> = {
+  'action': 11,
+  'outers': false
+}
+
+emit('', emitArg);
+```
+
 ## arkts-no-obj-literals-as-types
 
 使用interface显式定义结构类型。
