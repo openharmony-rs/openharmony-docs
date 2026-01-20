@@ -869,6 +869,16 @@ class Y {
 
 <!-- @[interface_class_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->   
 
+``` TypeScript
+interface Style {
+  color: string;
+}
+
+class StyledRectangle implements Style {
+  public color: string = '';
+}
+```
+
 <!-- @[interface_class_set_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->    
 
 ``` TypeScript
