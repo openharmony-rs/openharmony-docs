@@ -579,6 +579,15 @@ const secondItem = myArray[1];
 
 <!-- @[no_indexedSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIndexedSignatures.ets) -->   
 
+``` TypeScript
+class X {
+  public f: string[] = [];
+}
+
+let myArray: X = new X();
+const secondItem = myArray.f[1];
+```
+
 ### 使用继承而非intersection type
 
 **规则：**`arkts-no-intersection-types`
