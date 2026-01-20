@@ -865,6 +865,13 @@ class Y {
 
 <!-- @[interface_set_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->   
 
+``` TypeScript
+interface Style {
+  get color(): string;
+  set color(x: string);
+}
+```
+
 实现接口的类也可以使用以下两种方式：
 
 <!-- @[interface_class_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->   
