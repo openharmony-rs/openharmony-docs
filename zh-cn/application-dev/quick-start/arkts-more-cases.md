@@ -325,6 +325,19 @@ class Person {
 
 <!-- @[no_ctor_prop_decls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
 
+``` TypeScript
+class Person {
+  public name: string
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  getName(): string {
+    return this.name;
+  }
+}
+```
+
 ## arkts-no-ctor-signatures-iface
 
 使用type定义工厂函数或普通函数类型。
