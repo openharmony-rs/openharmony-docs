@@ -141,15 +141,15 @@
          return;
        }
        hilog.info(DOMAIN, 'testTag', `prepare sending data to client ${this.clientNumber}`);
-       const textEncoder = new util.TextEncoder();
-       const uint8Array = textEncoder.encodeInto(jsonStr);
+       const textEncoder:util.TextEncoder = new util.TextEncoder();
+       const uint8Array: Uint8Array = textEncoder.encodeInto(jsonStr);
        const arrayBuffer = uint8Array.buffer;
    
        socket.sppWrite(this.clientNumber, arrayBuffer);
        hilog.info(DOMAIN, 'testTag', `sending success size：${arrayBuffer.byteLength} bytes, data: ${jsonStr}`);
      }
    
-     public sendNotificationData(notificationInfo: extensionSubscription.NotificationInfo) {
+     public sendNotificationData(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
        let info: TransferInfo = {
          type: 'publish',
          info: notificationInfo,
