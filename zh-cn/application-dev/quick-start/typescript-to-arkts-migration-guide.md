@@ -948,6 +948,19 @@ let z = greet<string>();
 
 <!-- @[no_untypedCaseFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) --> 
 
+``` TypeScript
+class C4 {
+  public n: number = 0;
+  public s: string = '';
+  f() {
+    console.info('Hello');
+  }
+}
+let o7 = new C4();
+o7.n = 42;
+o7.s = 'foo';
+```
+
 **例子6**
 
 **TypeScript**
