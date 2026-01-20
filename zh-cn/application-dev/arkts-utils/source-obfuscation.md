@@ -1091,7 +1091,25 @@ class A {
 
 7.使用到的数据请求相关的字段需要手动保留，例如，传递给数据请求方的字段需要手动保留：
 
-<!-- @[etsOptionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->         
+<!-- @[etsOptionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->       
+
+``` TypeScript
+// example.ets。
+import { UIAbility } from '@kit.AbilityKit';
+import { http } from '@kit.NetworkKit';
+// ...
+export default class EntryAbility extends UIAbility {
+  onForeground(): void {
+    let httpRequest = http.createHttp();
+    httpRequest.request('https://www.example/Login',
+      {
+        method: http.RequestMethod.POST,
+        header: { 'Content-Type': 'application/json' },
+        extraData: { usernameTest: 'test1', passwordTest: 'test2'}, // usernameTest 和 passwordTest 需要被保留。
+      })
+  }
+}
+```
 
 ### -keep-global-name
 
