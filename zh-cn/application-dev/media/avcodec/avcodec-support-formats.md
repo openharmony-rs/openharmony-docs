@@ -24,7 +24,7 @@
 | AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | AV1<sup>23+</sup> | [ OH_AVCODEC_MIMETYPE_VIDEO_AV1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| VP8<sup>23+</sup> | [ const char * OH_AVCODEC_MIMETYPE_VIDEO_VP9](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| VP8<sup>23+</sup> | [ OH_AVCODEC_MIMETYPE_VIDEO_VP9](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | VP9<sup>23+</sup> | [ OH_AVCODEC_MIMETYPE_VIDEO_VP8](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 <!--RP14--> <!--RP14End-->
 
