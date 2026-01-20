@@ -867,6 +867,9 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     "component-config": {
     	"Network Kit": true, // 可选，自API 20开始支持该属性。
     	"ArkWeb": false // 可选，自API 20开始支持该属性。
+        "Request": true // 可选，自API 20开始支持该属性。
+        "Media Kit": false // 可选，自API 23开始支持该属性。
+        "Remote Communication Kit": false // 可选，自API 23开始支持该属性。
     }
   }
 }
@@ -879,11 +882,14 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 |base-config                     | array          | 否| 指示应用程序范围的明文配置。优先级最低。 |
 |cleartextTrafficPermitted  | boolean          |否 | 明文HTTP是否允许。true表示允许，false表示不允许，默认为true。 |
 |domain-config                     | array          | 否|  指示每个域的明文配置。可以包含任意个item。每个item必须包含1个domains。若相同域存在规则冲突时，以匹配到的第一条为准。优先级次于component-config。 |
-|include-subdomains         | boolean         | 否| 指示规则是否适用于子域。true表示规则适用于子域，false表示规则不适用于子域，默认为false。 |
+|include-subdomains         | boolean         | 否| 配置为true时，name支持正则匹配。注意：域名配置超过1万以上时，正则匹配会带来耗时 |
 |name         | string         | 否| 配置主域名。 |
 |component-config                    | array          |  否| 指示每个组件的明文配置。优先级最高。|
 |Network Kit                 | boolean          |否| 用于配置Network Kit组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为true。 |
 |ArkWeb                    | boolean          |否| 用于配置ArkWeb组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为false。 |
+|Request                    | boolean          |否| 用于配置Request组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为true。 |
+|Media Kit                    | boolean          |否| 用于配置Media Kit组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为false。 |
+|Remote Communication Kit                    | boolean          |否| 用于配置Remote Communication Kit组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为false。 |
 
 ## HTTP拦截器
 
