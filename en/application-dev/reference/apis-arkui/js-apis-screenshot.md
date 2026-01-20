@@ -117,7 +117,7 @@ This API allows you to take screenshots of different screens by setting various 
 
 **Device behavior differences**: In versions earlier than API version 21, this API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
 
-**Required permissions**: ohos.permission.CAPTURE_SCREEN (for versions earlier than API version 22); ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING (since API version 22)
+**Required permissions**: ohos.permission.CUSTOM_SCREEN_CAPTURE (for versions earlier than API version 22); ohos.permission.CUSTOM_SCREEN_CAPTURE or ohos.permission.CUSTOM_SCREEN_RECORDING (since API version 22)
 
 **Parameters**
 

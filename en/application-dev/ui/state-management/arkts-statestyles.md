@@ -1,7 +1,7 @@
 # stateStyles: Applying Polymorphic Styles
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @zhang_yixin13-->
@@ -41,8 +41,9 @@ stateStyles is an attribute method that sets the style based on the internal sta
 
 This example shows the most basic application scenario of stateStyles. **Button1** is the first component and **Button2** the second component. When either of these components is pressed, the black style specified for **pressed** takes effect. When the **Tab** key is pressed for sequential navigation, **Button1** obtains focus and is displayed in the pink style specified for **focused**. When **Button 2** is focused, it is displayed in the pink style specified for **focused**, and **Button1** changes to the blue style specified for **normal**.
 
+<!-- @[state_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/StateStyle/StateStylesSample.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct StateStylesSample {
@@ -79,6 +80,7 @@ struct StateStylesSample {
 ```
 
 
+
   **Figure 1** Focused and pressed states 
 
 ![Video_2023-03-17_120758](figures/Video_2023-03-17_120758.gif)
@@ -89,8 +91,9 @@ struct StateStylesSample {
 The following example uses \@Styles to specify different states of stateStyles.
 
 
+<!-- @[normal_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/NormalStyle/MyComponent.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct MyComponent {
@@ -101,7 +104,6 @@ struct MyComponent {
   @Styles pressedStyle() {
     .backgroundColor(Color.Red)
   }
-
   build() {
     Column() {
       Text('Text1')
@@ -125,8 +127,9 @@ struct MyComponent {
 
 stateStyles can use **this** to bind regular variables and state variables in a component.
 
+<!-- @[focus_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/FocusStyle/CompWithInlineStateStyles.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct CompWithInlineStateStyles {

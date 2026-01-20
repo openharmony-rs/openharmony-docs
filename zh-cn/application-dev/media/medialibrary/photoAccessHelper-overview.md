@@ -25,22 +25,23 @@ Media Library Kit（媒体文件管理服务）提供了管理相册和媒体文
 面向**三方应用受限**开放如下能力：
 
 > **注意：**
-> 受限开放的能力需要[申请相册管理模块的读写操作权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)。<!--RP1-->这部分权限受限开放。<!--RP1End-->
+>
+> 受限开放的能力需要[申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)。<!--RP1-->这部分权限受限开放。<!--RP1End-->
 
-- [媒体资源（图片、视频）相关](photoAccessHelper-resource-guidelines.md)，包括：
+- [媒体资源使用指导](photoAccessHelper-resource-guidelines.md)，包括：
   - 获取指定媒体资源。
   - 获取图片和视频缩略图。
   - 重命名媒体资源。
-- [用户相册相关](photoAccessHelper-userAlbum-guidelines.md)，包括：
+- [用户相册资源使用指导](photoAccessHelper-userAlbum-guidelines.md)，包括：
   - 获取用户相册。
   - 重命名用户相册。
   - 添加图片和视频到用户相册中。
   - 获取用户相册中的图片和视频。
   - 从用户相册中移除图片和视频。
-- [系统相册相关](photoAccessHelper-systemAlbum-guidelines.md)，包括：
+- [系统相册资源使用指导](photoAccessHelper-systemAlbum-guidelines.md)，包括：
   - 收藏夹。
   - 视频相册。
-- [媒体资源（图片、视频和相册）变更通知相关](photoAccessHelper-notify-guidelines.md)，包括：
+- [媒体资源变更通知相关指导](photoAccessHelper-notify-guidelines.md)，包括：
   - 注册对指定URI的监听。
   - 取消指定URI的监听。
 
