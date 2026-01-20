@@ -752,6 +752,16 @@ let t:T = { foo: (value) => { return value } };
 
 <!-- @[include_method_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
 
+``` TypeScript
+class T {
+  public foo: (value: number) => number = (value: number) => {
+    return value;
+  }
+}
+
+let t:T = new T();
+```
+
 **原因**
 
 class/interface中声明的方法应被所有实例共享。ArkTS不支持通过object literal改写实例方法。ArkTS支持函数类型的属性。
