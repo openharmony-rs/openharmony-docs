@@ -994,6 +994,12 @@ ArkTS不支持函数表达式，使用箭头函数（=>）。
 
 <!-- @[no_funcExpressions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoFuncExpressions.ets) -->   
 
+``` TypeScript
+let f = (s: string) => {
+  console.info(s);
+}
+```
+
 ### 不支持使用类表达式
 
 **规则：**`arkts-no-class-literals`
