@@ -611,6 +611,20 @@ type Employee = Identity & Contact
 
 <!-- @[no_intersectionTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIntersectionTypes.ets) -->  
 
+``` TypeScript
+interface Identity {
+  id: number;
+  name: string;
+}
+
+interface Contact {
+  email: string;
+  phoneNumber: string;
+}
+
+interface Employee extends Identity,  Contact {}
+```
+
 ### 不支持`this`类型
 
 **规则：**`arkts-no-typing-with-this`
