@@ -453,7 +453,7 @@ import {
 } from '@kit.ArkUI';
 
 // 使用`@Extend`装饰的函数需要参照下列代码进行修改
-function fancy(this: TextAttribute, fontSize: number): this {
+function fancy(this: TextAttribute, fontSize: number): TextAttribute {
     this.fontColor(Color.Red);
     this.fontSize(fontSize);
     return this;
@@ -535,7 +535,7 @@ import {
 
 // 使用`@AnimatableExtend`装饰器装饰的函数需要参照下列代码进行修改
 @AnimatableExtend
-function animatableWidth(this: TextAttribute, width: number): this {
+function animatableWidth(this: TextAttribute, width: number): TextAttribute {
     this.width(width);
     return this;
 }
@@ -549,7 +549,7 @@ struct Index {
     Column() {
       Text('AnimatableProperty')
         .animatableWidth(this.textWidth)
-        .animation({ duration: 2000.0, curve: Curve.Ease })
+        .animation({ duration: 2000, curve: Curve.Ease })
       Button("Play")
         .onClick((e: ClickEvent) => {
           this.textWidth = this.textWidth == 80.0 ? 160.0 : 80.0;

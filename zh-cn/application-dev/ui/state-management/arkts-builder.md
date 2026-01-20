@@ -1918,7 +1918,7 @@ class ClassA {
   @Trace props: string = 'Hello';
 }
 
-function textStyles(this: TextAttribute): this {
+function textStyles(this: TextAttribute): TextAttribute {
   this.fontColor('#e6000000');
   this.textAlign(TextAlign.Center);
   this.width(300);
