@@ -1942,6 +1942,11 @@ let s2: string = null; // 编译时报错
 import { C } from './ExportMod'
 ```
 
+``` TypeScript
+// lib2.ets。
+import { C } from './ExportMod'
+```
+
 ### `class`不能被用作对象
 
 **规则：**`arkts-no-classes-as-obj`
