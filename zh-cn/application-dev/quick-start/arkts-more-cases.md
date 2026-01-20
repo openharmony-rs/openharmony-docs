@@ -649,6 +649,13 @@ let arr: Test[] = [
 
 <!-- @[ts_record_type_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
 
+``` TypeScript
+let obj: Record<string, number | string> = {
+  value: 123,
+  name: 'abc'
+}
+```
+
 **建议改法**
 
 <!-- @[using_a_string_as_the_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
