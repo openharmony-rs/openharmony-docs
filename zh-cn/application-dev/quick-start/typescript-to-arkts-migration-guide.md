@@ -2003,7 +2003,22 @@ function main() {
 ### 不支持在函数内声明函数
 
 **规则：**`arkts-no-nested-funcs`
+<!-- @[no_nestedFuncs_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNestedFuncs.ts) -->   
 
+``` TypeScript
+function addNum(a: number, b: number): void {
+
+  // 函数内声明函数。
+  function logToConsole(message: string): void {
+    console.info(message);
+  }
+
+  let result = a + b;
+
+  // 调用函数。
+  logToConsole('result is ' + result);
+}
+```
 **级别：错误**
 
 **错误码：10605092**
