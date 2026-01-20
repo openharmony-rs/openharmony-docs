@@ -294,7 +294,7 @@ on(type:&nbsp;'receiveData', channelId:&nbsp;number, callback:&nbsp;Callback&lt;
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveData](#proxychannelmanageronreceivedata)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveData](#proxychannelmanageronreceivedata23)。
 
 **ArkTS-Dyn起始版本**：20
 
@@ -358,7 +358,7 @@ off(type:&nbsp;'receiveData', channelId:&nbsp;number, callback?:&nbsp;Callback&l
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveData](#proxychannelmanageroffreceivedata)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveData](#proxychannelmanageroffreceivedata23)。
 
 **ArkTS-Dyn起始版本**：20
 
@@ -408,7 +408,7 @@ struct Index {
 }
 ```
 
-## proxyChannelManager.onReceiveData
+## proxyChannelManager.onReceiveData<sup>23+</sup>
 
 onReceiveData(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;DataInfo&gt;):&nbsp;void
 
@@ -419,6 +419,8 @@ onReceiveData(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;DataInfo&gt;):&nb
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('receiveData')](#proxychannelmanageronreceivedata)。
 
 **ArkTS_Sta起始版本**：23
 
@@ -470,7 +472,7 @@ struct Index {
 }
 ```
 
-## proxyChannelManager.offReceiveData
+## proxyChannelManager.offReceiveData<sup>23+</sup>
 
 offReceiveData(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;DataInfo&gt;):&nbsp;void
 
@@ -481,6 +483,8 @@ offReceiveData(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;DataInfo&gt;):&n
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('receiveData')](#proxychannelmanageroffreceivedata)。
 
 **ArkTS_Sta起始版本**：23
 
@@ -542,7 +546,7 @@ on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callb
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onChannelStateChange](#proxychannelmanageronchannelstatechange)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onChannelStateChange](#proxychannelmanageronchannelstatechange23)。
 
 **ArkTS-Dyn起始版本**：20
 
@@ -606,7 +610,7 @@ off(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback?:&nbsp;Cal
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offChannelStateChange](#proxychannelmanageroffchannelstatechange)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offChannelStateChange](#proxychannelmanageroffchannelstatechange23)。
 
 **ArkTS-Dyn起始版本**：20
 
@@ -656,7 +660,7 @@ struct Index {
 }
 ```
 
-## proxyChannelManager.onChannelStateChange
+## proxyChannelManager.onChannelStateChange<sup>23+</sup>
 
 onChannelStateChange(channelId:&nbsp;int, callback:&nbsp;Callback&lt;ChannelStateInfo&gt;):&nbsp;void
 
@@ -667,6 +671,9 @@ onChannelStateChange(channelId:&nbsp;int, callback:&nbsp;Callback&lt;ChannelStat
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('channelStateChange')
+](#proxychannelmanageronchannelstatechange)。
 
 **ArkTS_Sta起始版本**：23
 
@@ -718,7 +725,7 @@ struct Index {
 }
 ```
 
-## proxyChannelManager.offChannelStateChange
+## proxyChannelManager.offChannelStateChange<sup>23+</sup>
 
 offChannelStateChange(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;ChannelStateInfo&gt;):&nbsp;void
 
@@ -729,6 +736,9 @@ offChannelStateChange(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;ChannelSt
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('channelStateChange')
+](#proxychannelmanageroffchannelstatechange)。
 
 **ArkTS_Sta起始版本**：23
 
