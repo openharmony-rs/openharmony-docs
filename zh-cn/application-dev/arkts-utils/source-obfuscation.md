@@ -220,6 +220,13 @@ test(a2);
     revision: number = 1;
   }
   ```
+  
+  ``` TypeScript
+  @interface MyAnnotation1 {
+    authorName: string;
+    revision: number = 1;
+  }
+  ```
 
 ### -enable-string-property-obfuscation
 
