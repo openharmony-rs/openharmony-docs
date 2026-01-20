@@ -248,3 +248,17 @@ function sum(num: number): number {
 优化后的代码示例：
 
 <!-- @[exception_handling_batter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->     
+
+``` TypeScript
+function sumBetter(num: number): number {
+  let sum = 0;
+  for (let t = 1; t < 100; t++) {
+    // 直接拦截异常场景，避免频繁抛出异常
+    if (num <= 0) {
+      console.info('Invalid numbers.');
+    }
+    sum += divBetter(t, num);
+  }
+  return sum;
+}
+```
