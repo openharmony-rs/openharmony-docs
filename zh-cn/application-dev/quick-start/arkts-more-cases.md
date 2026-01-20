@@ -686,6 +686,15 @@ function foo3(obj: { [key: string]: string}): string {
 
 <!-- @[include_index_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
 
+``` TypeScript
+function foo(obj: Record<string, string>): string {
+  if (obj != undefined && obj != null) {
+    return obj.value1 + obj.value2;
+  }
+  return '';
+}
+```
+
 ### 函数实参使用了object literal
 
 **应用代码**
