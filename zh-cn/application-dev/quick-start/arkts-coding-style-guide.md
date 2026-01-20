@@ -970,3 +970,8 @@ ArkTS提供了两种数组类型的表示方式：`T[]`和`Array<T>`。建议所
 **【正例】**
 
 <!-- @[use_T[]_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+let x: Array<number> = [1, 2, 3];
+let y: Array<string> = ['a', 'b', 'c'];
+```
