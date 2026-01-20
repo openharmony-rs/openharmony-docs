@@ -294,7 +294,7 @@ on(type:&nbsp;'receiveData', channelId:&nbsp;number, callback:&nbsp;Callback&lt;
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveData](#proxyChannelManager.onReceiveData)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveData](#proxychannelmanageronreceivedata)。
 
 **ArkTS-Dyn起始版本**：20
 
@@ -358,7 +358,7 @@ off(type:&nbsp;'receiveData', channelId:&nbsp;number, callback?:&nbsp;Callback&l
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveData](#proxyChannelManager.offReceiveData)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveData](#proxychannelmanageroffreceivedata)。
 
 **ArkTS-Dyn起始版本**：20
 
@@ -542,7 +542,7 @@ on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callb
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onChannelStateChange](#proxyChannelManager.onChannelStateChange)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onChannelStateChange](#proxychannelmanageronchannelstatechange)。
 
 **ArkTS-Dyn起始版本**：20
 
@@ -606,7 +606,7 @@ off(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback?:&nbsp;Cal
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offChannelStateChange](#proxyChannelManager.offChannelStateChange)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offChannelStateChange](#proxychannelmanageroffchannelstatechange)。
 
 **ArkTS-Dyn起始版本**：20
 
