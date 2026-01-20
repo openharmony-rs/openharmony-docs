@@ -603,6 +603,23 @@ const jsonStr = JSON.stringify(obj); // prop1 和 prop2 会被混淆，应该被
 
 <!-- @[optionExample_keepPropertyName5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
 
+``` TypeScript
+function CustomDecorator(target: Object, propertyKey: string) {}
+function MethodDecorator(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {}
+function ParamDecorator(target: Object, propertyKey: string, parameterIndex: number) {}
+
+class A {
+  // 1.成员变量装饰器。
+  @CustomDecorator
+  propertyName1: string = ""   // propertyName1 需要被保留。
+  // 2.成员方法装饰器。
+  @MethodDecorator
+  methodName1() {} // methodName1 需要被保留。
+  // 3.方法参数装饰器。
+  methodName2(@ParamDecorator param: string): void {} // methodName2 需要被保留。
+}
+```
+
 ### -keep-global-name
 
 指定要保留的顶层作用域及导入和导出元素的名称，支持使用[名称类通配符](#名称类通配符)。可按如下方式进行配置：
