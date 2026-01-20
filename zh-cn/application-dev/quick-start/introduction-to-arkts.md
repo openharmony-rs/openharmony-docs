@@ -1298,6 +1298,27 @@ class MyClass {
 
 <!-- @[annotation_usages_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->  
 
+``` TypeScript
+@ClassPreamble({authorName: "John", revision: 2})
+class C1 {
+  // ...
+}
+
+
+@ClassPreamble({authorName: "Bob"}) // revision的默认值为1
+class C2 {
+  // ...
+}
+
+@MyAnno() // 对类和方法可以同时使用同一个注解
+class C3 {
+  @MyAnno()
+  foo() {}
+  @MyAnno()
+  static bar() {}
+}
+```
+
 注解中的字段顺序不影响使用。
 
 <!-- @[annotation_field_order](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->  
