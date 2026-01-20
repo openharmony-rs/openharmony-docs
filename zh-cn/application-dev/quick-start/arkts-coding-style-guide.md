@@ -949,6 +949,12 @@ let y: Array<string> = ['a', 'b', 'c'];
 
 <!-- @[noESObject_app_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+import { getObject1 } from './lib'
+// ...
+let obj1: I = getObject1(123);
+```
+
 **【正例】**
 
 <!-- @[noESObject_lib_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/lib.ets) -->  
