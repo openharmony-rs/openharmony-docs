@@ -759,22 +759,33 @@ struct CustomLayout {
   doNothingBuilder() {
   };
 
-  @BuilderParam builder: () => void = this.doNothingBuilder;
+  @BuilderParam
+  builder: () => void = this.doNothingBuilder;
+  result: SizeResult = {
+    width: 0,
+    height: 0
+  };
 
-  onLayout(children: Array<LayoutChild>, constraint: ConstraintSizeOptions) {
+  onPlaceChildren(selfLayoutInfo: GeometryInfo, children: Array<Layoutable>, constraint: ConstraintSizeOptions) {
     let pos = 0;
     children.forEach((child) => {
-      child.layout({ position: { x: pos, y: pos }, constraint: constraint })
+      child.layout({ x: pos, y: pos })
       pos += 70;
     })
   }
 
-  onMeasure(children: Array<LayoutChild>, constraint: ConstraintSizeOptions) {
+  onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;
     children.forEach((child) => {
-      child.measure({ minHeight: size, minWidth: size, maxWidth: size, maxHeight: size })
+      child.measure({
+        minHeight: size,
+        minWidth: size,
+        maxWidth: size,
+        maxHeight: size
+      })
       size += 50;
     })
+    return this.result;
   }
 
   build() {
