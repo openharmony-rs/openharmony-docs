@@ -455,6 +455,19 @@ let originMenusMap:Map<string, C> = new Map(arr.map(item => [item.str, (item ins
 
 <!-- @[no_inferred_generic_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
 
+``` TypeScript
+class A {
+  public str: string = ''
+}
+class B extends A {}
+class C extends A {}
+
+let arr: A[] = [];
+
+let originMenusMap: Map<string, C | null> = new Map<string, C | null>
+(arr.map<[string, C | null]>(item => [item.str, (item instanceof C) ? item: null]));
+```
+
 **原因**
 
 `(item instanceof C) ? item: null` 需要声明类型为`C | null`，由于编译器无法推导出`map`的泛型类型参数，需要显式标注。
