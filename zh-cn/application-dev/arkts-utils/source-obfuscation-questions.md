@@ -122,6 +122,13 @@ jsonProperty
 
 <!-- @[ns_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// import.ts
+import { NS } from './export';
+// ...
+  NS.foo();
+```
+
 ```ts
 // 混淆后
 // export.ts
@@ -173,7 +180,23 @@ export function add(a: number, b: number): number {
 }
 ```
 
-<!-- @[add_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[add_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// main.ts
+async function loadAndUseAdd() {
+  let result: number = 0;
+  try {
+    const mathUtils = await import('./utils');
+    result = mathUtils.add(2, 3);
+    console.info(`result = ${result}`);
+  } catch (error) {
+    console.error('Failure reason:', error);
+  }
+}
+// ...
+          loadAndUseAdd();
+```
 
 ```ts
 // 混淆后
@@ -230,7 +253,15 @@ addNum
 export const addNum: (a: number, b: number) => number;
 ```
 
-<!-- @[call_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[call_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// example.ets
+// 混淆前。
+import testNapi from 'libentry.so';
+// ...
+  let sun = testNapi.addNum(1, 2);
+```
 
 ```ts
 // example.ets
@@ -274,7 +305,14 @@ addNum
 export { addNum } from '../utils/Calc';
 ```
 
-<!-- @[call_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[call_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// entry模块。
+import { addNum } from 'sharedlibrary';
+// ...
+  let sun = addNum(1, 2);
+```
 
 ```ts
 // 混淆后
@@ -323,7 +361,20 @@ addNum
 
 示例代码如下：
 
-<!-- @[call_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[call_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 混淆前。
+import { Want } from '@kit.AbilityKit';
+// ...
+  let petalMapWant: Want = {
+    bundleName: 'com.example.myapplication',
+    uri: 'maps://',
+    parameters: {
+      linkSource: 'com.other.app'
+    }
+  }
+```
 
 ```ts
 // 混淆后
@@ -380,7 +431,19 @@ export interface MyInfo {
 }
 ```
 
-<!-- @[call_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[call_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// file2.ts
+import { MyInfo } from './file1';
+// ...
+  const person: MyInfo = {
+    age: 20,
+    address: {
+      city1: 'shanghai'
+    }
+  }
+```
 
 ```ts
 // 混淆后
