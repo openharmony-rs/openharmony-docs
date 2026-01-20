@@ -604,6 +604,24 @@ let t: C = { value: -2 }; //ArkTS不支持
 
 <!-- @[ts_no_nonInferrable_arr_literals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
 
+``` TypeScript
+class Test {
+  value: number = 0
+}
+
+let arr: Test[] = [
+  {
+    'value': 1
+  },
+  {
+    'value': 2
+  },
+  {
+    'value': 3
+  }
+]
+```
+
 **建议改法**
 
 <!-- @[using_an_identifier_as_the_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
