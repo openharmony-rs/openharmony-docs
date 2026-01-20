@@ -1026,6 +1026,16 @@ ArkTS中只有接口可以被`implements`，类不允许被`implements`。
 
 <!-- @[impl_onlyIface_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/ImplOnlyIface.ts) -->   
 
+``` TypeScript
+class C {
+  foo() { }
+}
+
+class C1 implements C {
+  foo() { }
+}
+```
+
 **ArkTS**
 
 <!-- @[impl_onlyIface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ImplOnlyIface.ets) -->   
