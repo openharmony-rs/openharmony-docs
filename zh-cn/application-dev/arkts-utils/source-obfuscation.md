@@ -770,6 +770,17 @@ function MyAdd(a: number, b:number): number {
 
 <!-- @[etsOptionExample_useKeepInSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->     
 
+``` TypeScript
+// 保留被标记的注解声明，MyAnnotation不会被混淆。
+// @KeepSymbol
+@interface MyAnnotation2 {
+  // 标记注解成员无效，authorName不会被收集到白名单。
+  // @KeepSymbol
+  authorName: string;
+  revision: number = 1;
+}
+```
+
 **白名单添加规则**
 
 被标记的名称根据以下规则添加到混淆白名单，被KeepAsConsumer保留的名称还会生成到`obfuscation.txt`文件中。
