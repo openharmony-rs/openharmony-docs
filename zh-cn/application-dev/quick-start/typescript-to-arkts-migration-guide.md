@@ -1841,6 +1841,19 @@ ArkTS不支持解构变量声明。解构变量声明是一个依赖于结构兼
 
 <!-- @[no_destructDecls_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDestructDecls.ts) -->   
 
+``` TypeScript
+class Point {
+  x: number = 0.0;
+  y: number = 0.0;
+}
+
+function returnZeroPoint(): Point {
+  return new Point();
+}
+
+let { x, y } = returnZeroPoint();
+```
+
 **ArkTS**
 
 <!-- @[no_destructDecls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructDecls.ets) -->   
