@@ -772,6 +772,17 @@ class/interface中声明的方法应被所有实例共享。ArkTS不支持通过
 
 <!-- @[ts_export_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
 
+``` TypeScript
+export default {
+  onCreate() {
+    // ...
+  },
+  onDestroy() {
+    // ...
+  }
+}
+```
+
 **建议改法**
 
 <!-- @[export_default_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
