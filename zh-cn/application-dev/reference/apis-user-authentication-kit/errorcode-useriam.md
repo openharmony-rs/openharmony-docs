@@ -29,7 +29,7 @@ Authentication failed.
 
 重新发起认证。
 
-## 12500002 一般的操作错误
+## 12500002 身份认证系统通用错误码
 
 **错误信息**
 
@@ -37,7 +37,7 @@ General operation error.
 
 **错误描述**
 
-操作错误。
+开发者无法恢复的身份认证系统内部错误。
 
 **可能原因**
 
@@ -99,7 +99,7 @@ The authentication type is not supported.
 
 **可能原因**
 
-1. 传入的认证类型参数不支持，例如调用userAuth模块的getAvailableStatus接口时传入的参数不是FACE或FINGERPRINT类型，则会返回12500005错误码。
+1. 传入的认证类型参数不支持，例如调用userAuth模块的[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)接口时传入的参数不是FACE或FINGERPRINT类型，则会返回12500005错误码。
 2. 传入的认证类型参数在本设备上不支持，例如在没有部署指纹传感器的设备上发起指纹认证，则会返回12500005错误码。
 
 **处理步骤**
@@ -118,14 +118,14 @@ The authentication trust level is not supported.
 
 **可能原因**
 
-1. 调用userAuth模块的getAvailableStatus或getAuthInstance接口时，传入的authTrustLevel参数不在[ATL1, ATL2, ATL3, ATL4]范围内。
+1. 调用userAuth模块的[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)或[getUserAuthInstance](js-apis-useriam-userauth.md#userauthgetuserauthinstance10)接口时，传入的authTrustLevel参数不在[ATL1, ATL2, ATL3, ATL4]范围内。
 2. 当前的设备不支持该认证信任等级，例如在只部署了2D摄像头的设备上发起支付级别的人脸认证，则会返回12500006错误码。
 
 **处理步骤**
 
 检查传入的authTrustLevel是否在合理范围，如果在合理范围，则是当前的设备不支持该认证信任等级。
 
-## 12500007 认证服务已经繁忙
+## 12500007 认证服务繁忙
 
 **错误信息**
 
@@ -133,7 +133,7 @@ Authentication service is busy.
 
 **错误描述**
 
-认证服务已经繁忙。
+认证服务繁忙。
 
 **可能原因**
 
@@ -151,7 +151,7 @@ The parameter is out of range.
 
 **错误描述**
 
-参数校验不通过。
+参数取值超出合法范围。
 
 **可能原因**
 
@@ -191,7 +191,7 @@ The type of credential has not been enrolled.
 
 **可能原因**
 
-例如调用userAuth模块的getAvailableStatus接口，传入的authType参数为FACE，但是当前的设备没有录入人脸凭据，则会返回12500010错误码。调用start接口发起人脸认证，但是目前的设备没有录入人脸凭据，则会返回12500010错误码。
+例如调用userAuth模块的[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)接口，传入的authType参数为FACE，但是当前的设备没有录入人脸凭据，则会返回12500010错误码。调用start接口发起人脸认证，但是目前的设备没有录入人脸凭据，则会返回12500010错误码。
 
 **处理步骤**
 
