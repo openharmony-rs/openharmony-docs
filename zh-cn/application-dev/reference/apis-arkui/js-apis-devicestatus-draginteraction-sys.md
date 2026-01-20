@@ -323,9 +323,9 @@ setDragSwitchState(enabled: boolean): void
 **示例：**
 
 ```ts
-try{
+try {
   dragInteraction.setDragSwitchState(false);
-} catch(err:BusinessError){
+} catch (err:BusinessError) {
   console.error(`Failed to setDragSwitchState, code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -363,9 +363,9 @@ setAppDragSwitchState(enabled: boolean, bundleName: string): void
 **示例：**
 
 ```ts
-try{
+try {
   dragInteraction.setAppDragSwitchState(true, "com.app.bundleName");
-} catch(err:BusinessError){
+} catch (err:BusinessError) {
   console.error(`Failed to setAppDragSwitchState, code: ${err.code}, message: ${err.message}`);
 }
 ```
