@@ -26,6 +26,13 @@ function addTen(x: number): number {
 
 <!-- @[sample_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/pages/Index.ets) -->     
 
+``` TypeScript
+function addTen(x: number): number {
+  let ten = 10;
+  return x + ten;
+}
+```
+
 **级别**
 
 约束分为两个级别：错误、警告。
