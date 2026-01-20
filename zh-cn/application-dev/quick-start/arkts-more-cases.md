@@ -787,6 +787,19 @@ export default {
 
 <!-- @[export_default_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
 
+``` TypeScript
+class Test {
+  onCreate() {
+    // ...
+  }
+  onDestroy() {
+    // ...
+  }
+}
+
+export default new Test()
+```
+
 ### 通过导入namespace获取类型
 
 **应用代码**
