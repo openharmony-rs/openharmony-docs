@@ -1012,6 +1012,20 @@ ArkTS不支持类表达式，必须显式声明一个类。
 
 <!-- @[no_classLiterals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoClassLiterals.ets) -->   
 
+``` TypeScript
+class TestRectangle {
+  constructor(testHeight: number, testWidth: number) {
+    this.testHeight = testHeight;
+    this.testWidth = testWidth;
+  }
+
+  public testHeight: number;
+  public testWidth: number;
+}
+
+const rectangle = new TestRectangle(0.0, 0.0);
+```
+
 ### 类不允许`implements`
 
 **规则：**`arkts-implements-only-iface`
