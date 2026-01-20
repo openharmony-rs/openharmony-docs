@@ -237,6 +237,13 @@ greeter(t); // 是否允许？
 
 <!-- @[identifier_prop_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/IdentifiersAsPropNames.ts) -->   
 
+``` TypeScript
+var x = { 'name': 'x', 2: '3' };
+
+console.info(x['name']); // x。
+console.info(x[2]); // 3。
+```
+
 **ArkTS**
 
 <!-- @[identifier_prop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/IdentifiersAsPropNames.ets) -->     
