@@ -432,6 +432,13 @@ value2 = 42;
 
 <!-- @[no_any_unknown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoAnyUnknown.ets) -->    
 
+``` TypeScript
+let valueB: boolean = true; // 或者 let valueB = true。
+let valueN: number = 42; // 或者 let valueN = 42。
+let valueO1: Object = true;
+let valueO2: Object = 42;
+```
+
 ### 使用`class`而非具有call signature的类型
 
 **规则：**`arkts-no-call-signatures`
