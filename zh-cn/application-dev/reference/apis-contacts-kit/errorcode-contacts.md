@@ -29,6 +29,7 @@ general error.
 系统异常，请稍后重试。
 
 
+
 ## 16700002 参数检查失败
 
 **错误信息**
@@ -37,23 +38,19 @@ Invalid parameter value.
 
 **错误描述**
 
-1. 参数类型不正确。
-
-2. 参数校验失败。
+参数校验失败。
 
 **可能原因**
 
-1. 参数类型错误 (Type Error)。
+1. 空参数错误 (Null Argument Error)。
 
-2. 空参数错误 (Null Argument Error)。
+2. 参数格式错误 (Format Error)。
 
-3. 参数格式错误 (Format Error)。
-
-4. 参数值范围错误 (Value Range Error)。
+3. 参数值范围错误 (Value Range Error)。
 
 **处理步骤**
 
-请检查必选参数是否传入，或者传入的参数类型是否错误。对于参数校验失败，阅读参数规格约束，按照可能原因进行排查。
+请阅读参数规格约束，按照可能原因进行排查。
 
 
 
