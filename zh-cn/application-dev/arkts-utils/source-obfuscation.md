@@ -839,6 +839,20 @@ lastName
 
 <!-- @[optionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->       
 
+``` TypeScript
+// 混淆配置：
+// -enable-property-obfuscation。
+// -enable-string-property-obfuscation。
+
+// example.ts。
+var obj2 = {t:'1', m:'2'};
+obj2.t = 'a';
+console.info(obj2['t']); // 此时，'t'会被正确混淆，t可以选择性保留。
+
+obj2['m'] = 'b';
+console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保留。
+```
+
 2.对于间接或直接导出的类或对象的属性名的场景，如果混淆后出现问题，可以使用[-keep-property-name](#-keep-property-name)来保留这些属性名。
 
 <!-- @[optionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
