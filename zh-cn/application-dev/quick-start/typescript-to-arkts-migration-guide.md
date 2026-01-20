@@ -1899,6 +1899,18 @@ ArkTS不支持映射类型，使用其他语法表示相同语义。
 
 <!-- @[no_mappedTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoMappedTypes.ets) -->   
 
+``` TypeScript
+class C {
+  public n: number = 0;
+  public s: string = '';
+}
+
+class CFlags {
+  public n: boolean = false;
+  public s: boolean = false;
+}
+```
+
 ### 不支持`with`语句
 
 **规则：**`arkts-no-with`
