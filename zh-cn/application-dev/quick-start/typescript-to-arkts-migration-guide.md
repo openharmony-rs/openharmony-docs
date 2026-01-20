@@ -2100,6 +2100,13 @@ import fileContent from 'some.txt!text'
 **ArkTS**
 
  <!-- @[declare_namespace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->   
+ 
+ ``` TypeScript
+ // 声明。
+ export declare namespace N {
+   function foo(x: number): number
+ }
+ ```
 
 <!-- @[no_moduleWildCards](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoModuleWildcards.ets) -->   
 
