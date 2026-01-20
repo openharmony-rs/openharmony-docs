@@ -1014,6 +1014,13 @@ let d = +'string';
 
 <!-- @[no_polymorphic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
 
+``` TypeScript
+let a = Number.parseInt('5'); // 使用Number.parseInt显示转换
+let b = -Number.parseInt('5');
+let c = ~Number.parseInt('5');
+let d = new Number('123');
+```
+
 ## arkts-no-type-query
 
 使用类、接口或类型别名替代typeof，避免依赖变量做类型推导。
