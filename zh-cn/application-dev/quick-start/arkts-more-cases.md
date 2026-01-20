@@ -133,6 +133,14 @@ function printProperties(obj: any) {
 
 <!-- @[record_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->     
 
+``` TypeScript
+function printProperties(obj: Record<string, Object>) {
+  console.info(obj.name as string);
+  console.info(obj.value as string);
+  // ...
+}
+```
+
 ## arkts-no-call-signature
 
 使用函数类型进行替代。
