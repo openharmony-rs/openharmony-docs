@@ -2075,6 +2075,18 @@ ArkTS没有原型的概念，因此不支持在原型上赋值。此特性不符
 
 <!-- @[no_prototypeAssign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoPrototypeAssignment.ets) -->   
 
+``` TypeScript
+class C {
+  public p: string = '';
+  m() {
+    console.info(this.p);
+  }
+  q(r: string) {
+    return this.p === r;
+  }
+}
+```
+
 ### 不支持`globalThis`
 
 **规则：**`arkts-no-globalthis`
