@@ -1895,6 +1895,12 @@ ArkTS不支持映射类型，使用其他语法表示相同语义。
 
 <!-- @[no_mappedTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMappedTypes.ts) -->   
 
+``` TypeScript
+type OptionsFlags<Type> = {
+  [Property in keyof Type]: boolean
+}
+```
+
 **ArkTS**
 
 <!-- @[no_mappedTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoMappedTypes.ets) -->   
