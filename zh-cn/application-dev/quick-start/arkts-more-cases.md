@@ -67,6 +67,15 @@ printObj('abc'); // abc
 
 <!-- @[no_any_unknown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->       
 
+``` TypeScript
+function printObj(obj: string) {
+  console.info(obj);
+  // ...
+}
+// ...
+          printObj('abc'); // abc
+```
+
 ### 标注JSON.parse返回值类型
 
 **应用代码**
