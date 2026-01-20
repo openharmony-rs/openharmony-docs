@@ -877,6 +877,16 @@ class Y {
 
 <!-- @[interface_extends](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->   
 
+``` TypeScript
+interface Style {
+  color: string;
+}
+
+interface ExtendedStyle extends Style {
+  width: number;
+}
+```
+
 继承接口包含被继承接口的所有属性和方法，还可以添加自己的属性和方法。
 
 
