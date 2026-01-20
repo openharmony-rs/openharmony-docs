@@ -107,18 +107,3 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType, SwipeIn
 | UPDATE      | 2   | 手势更新。         |
 | END         | 3   | 手势结束。         |
 
-## SwipeInward<sup>12+</sup>
-
-向内滑动事件。
-
-**系统能力**：SystemCapability.MultimodalInput.Input.Core
-
-**ArkTS-Dyn起始版本**：12
-
-**ArkTS-Sta起始版本**：23
-
-| 名称        | 类型  | 说明             |
-| ----------- | --- | --------------- |
-| type      | ActionType   |        表示向内滑动事件的类型，固定为 SwipeInward。     |
-| x       | ArkTS-Dyn: number<br/>ArkTS-Sta: int   |    滑动事件触发点的横坐标，单位为像素。      |
-| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: int   |     滑动事件触发点的纵坐标，单位为像素。     |
