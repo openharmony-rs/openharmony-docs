@@ -516,6 +516,19 @@ function fn(ctor: SomeConstructor) {
 
 <!-- @[no_ctorSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesType.ets) -->   
 
+``` TypeScript
+class SomeObject {
+  public f: string;
+  constructor (s: string) {
+    this.f = s;
+  }
+}
+
+function fn(s: string): SomeObject {
+  return new SomeObject(s);
+}
+```
+
 ### 仅支持一个静态块
 
 **规则：**`arkts-no-multiple-static-blocks`
