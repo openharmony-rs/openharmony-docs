@@ -1946,6 +1946,10 @@ throw new Error();
 
 <!-- @[limited_throw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/LimitedThrow.ets) -->   
 
+``` TypeScript
+throw new Error();
+```
+
 ### 限制省略函数返回类型标注
 
 **规则：**`arkts-no-implicit-return-types`
