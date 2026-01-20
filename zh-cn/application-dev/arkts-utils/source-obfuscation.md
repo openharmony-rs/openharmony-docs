@@ -981,6 +981,25 @@ lastName
 
 <!-- @[jsOptionExample_keepPropertyName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.js) -->      
 
+``` JavaScript
+// example.js
+let obj = {x0: '0', x1: '1', x2: '2'};
+for (let i = 0; i <= 2; i++) {
+    console.info(obj['x' + i]); // x0, x1, x2应该被保留。
+}
+
+Object.defineProperty(obj, 'y', {}); // y应该被保留。
+Object.getOwnPropertyDescriptor(obj, 'y'); // y应该被保留。
+console.info(obj.y);
+
+obj.s1 = 'a';
+let key = 's1';
+console.info(obj[key]); // key对应的变量值s1应该被保留。
+
+obj.t1 = 'b';
+console.info(obj['t' + '1']); // t1应该被保留。
+```
+
 对于如下的字符串常量形式的属性调用，可以选择性保留：
 
 <!-- @[optionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->       
