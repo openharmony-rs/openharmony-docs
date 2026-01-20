@@ -802,6 +802,15 @@ ArkTS是静态类型语言，如上述示例所示，对象字面量只能在可
 
 <!-- @[record_type_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->  
 
+``` TypeScript
+let map: Record<string, number> = {
+  'John': 25,
+  'Mary': 21
+};
+// ...
+  map['John']; // 25
+```
+
 类型`K`可以是字符串类型或数值类型(不包括BigInt)，而`V`可以是任何类型。
 
 <!-- @[record_type_complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
