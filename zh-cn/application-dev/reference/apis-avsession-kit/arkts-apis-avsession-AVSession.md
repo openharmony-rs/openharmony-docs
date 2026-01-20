@@ -3132,7 +3132,7 @@ on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
 | 参数名   | 类型    | 必填 | 说明     |
 | -------- | --------- | ---- | --------- |
 | type     | string    | 是   | 事件回调类型，支持事件`'handleKeyEvent'`：当按键事件被发送到会话时，触发该事件。 |
-| callback | (event: [@ohos.multimodalInput.keyEvent (按键输入事件)](../apis-input-kit/js-apis-keyevent.md)) => void | 是   | 回调函数。参数event是按键事件。                              |
+| callback | (event: [KeyEvent](../apis-input-kit/js-apis-keyevent.md)) => void | 是   | 回调函数。参数event是按键事件。                              |
 
 **错误码：**
 
@@ -3856,7 +3856,7 @@ off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
 | 参数名   | 类型  |   必填 | 说明     |
 | -------- | --------- | ---- | --------- |
 | type     | string    | 是   | 关闭对应的监听事件，支持关闭事件`'handleKeyEvent'`。             |
-| callback | (event: [@ohos.multimodalInput.keyEvent (按键输入事件)](../apis-input-kit/js-apis-keyevent.md)) => void | 否   | 回调函数，参数event是按键事件。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                              |
+| callback | (event: [KeyEvent](../apis-input-kit/js-apis-keyevent.md)) => void | 否   | 回调函数，参数event是按键事件。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                              |
 
 **错误码：**
 
