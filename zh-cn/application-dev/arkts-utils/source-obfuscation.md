@@ -804,6 +804,15 @@ namespace MyNameSpace {
 }
 ```
 
+``` TypeScript
+// 保留命名空间名以及内部直接导出的成员名称，MyNameSpace以及foo不会被混淆。
+// @KeepSymbol
+namespace MyNameSpace {
+  export function foo(){};
+  function bar(){};
+}
+```
+
 **全局变量**
 
 当前仅支持全局变量的标记，不支持局部变量。
