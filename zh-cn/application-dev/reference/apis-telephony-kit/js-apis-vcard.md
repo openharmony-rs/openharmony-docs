@@ -190,7 +190,7 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 | -------- | --------------------------- | ---- | -------------------------------------- |
 | Context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                    | 是   | 应用上下文。 |
 | predicates| [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md)| 是   | 查询语句。 |
-|  options  | [VCardBuilderOptions](../../../application-dev/reference/apis-telephony-kit/js-apis-vcard-sys.md) | 否   | VCard版本与编码类型。|
+|  options  | [VCardBuilderOptions](js-apis-vcard-sys.md#vcardbuilderoptions11) | 否   | VCard版本与编码类型。|
 | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。生成的 VCF(vcard file)文件地址。                             |
 
 **错误码：**
