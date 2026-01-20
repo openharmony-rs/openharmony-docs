@@ -533,6 +533,19 @@ printPersonName
 
 <!-- @[optionExample_keepGlobalName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
 
+``` TypeScript
+var a = 0;
+console.info(globalThis.a);  // a 应该被保留。
+function foo2(){}
+globalThis.foo2();           // foo2 应该被保留。
+var c = "0";
+console.info(c);             // c 可以被正确地混淆。
+function bar(){}
+bar();                      // bar 可以被正确地混淆。
+class MyClass {}
+let d = new MyClass();      // MyClass 可以被正确地混淆。
+```
+
 2.当以命名导入的方式导入 so 库的 API时，若同时开启`-enable-toplevel-obfuscation`和`-enable-export-obfuscation`选项，需要手动保留API的名称。
 
 <!-- @[dtsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
