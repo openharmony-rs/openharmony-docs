@@ -827,6 +827,23 @@ let x = new X(666)  //编译时错误：不能创建抽象类的具体实例
 
 <!-- @[abstract_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
+``` TypeScript
+abstract class Base {
+  private field: number;
+  constructor(p: number) {
+    this.field = p;
+  }
+}
+
+class Derived extends Base {
+  constructor(p: number) {
+    super(p);
+  }
+}
+
+let x = new Derived(666);
+```
+
 **抽象方法**
 
 带有`abstract`修饰符的方法称为抽象方法，抽象方法可以被声明但不能被实现。
