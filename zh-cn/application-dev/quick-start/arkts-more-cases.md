@@ -101,6 +101,21 @@ class A {
 
 <!-- @[json_parser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->     
 
+``` TypeScript
+class A {
+  public v: number = 0
+  public s: string = ''
+
+  foo(str: string) {
+    let tmpStr: Record<string, Object> = JSON.parse(str);
+    if (tmpStr.add != undefined) {
+      this.v = tmpStr.v as number;
+      this.s = tmpStr.s as string;
+    }
+  }
+}
+```
+
 ### 使用Record类型
 
 **应用代码**
