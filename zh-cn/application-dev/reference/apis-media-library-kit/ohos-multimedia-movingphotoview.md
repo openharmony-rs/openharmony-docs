@@ -178,7 +178,7 @@ enableAnalyzer(enabled: boolean)
 
 onComplete(callback: MovingPhotoViewEventCallback)
 
-动态照片加载完成图片时触发该事件，使用callback异步回调。
+动态照片加载完成图片时触发该事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -195,7 +195,7 @@ onComplete(callback: MovingPhotoViewEventCallback)
 
 onStart(callback: MovingPhotoViewEventCallback)
 
-播放时触发该事件，使用callback异步回调。
+播放时触发该事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -212,7 +212,7 @@ onStart(callback: MovingPhotoViewEventCallback)
 
 onPause(callback: MovingPhotoViewEventCallback)
 
-播放暂停时触发该事件，使用callback异步回调。
+播放暂停时触发该事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -229,7 +229,7 @@ onPause(callback: MovingPhotoViewEventCallback)
 
 onFinish(callback: MovingPhotoViewEventCallback)
 
-播放结束时触发该事件，使用callback异步回调。
+播放结束时触发该事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -246,7 +246,7 @@ onFinish(callback: MovingPhotoViewEventCallback)
 
 onError(callback: MovingPhotoViewEventCallback)
 
-播放失败时触发该事件，使用callback异步回调。
+播放失败时触发该事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -263,7 +263,7 @@ onError(callback: MovingPhotoViewEventCallback)
 
 onStop(callback: MovingPhotoViewEventCallback)
 
-播放停止时触发该事件(当stop()方法被调用后触发)，使用callback异步回调。
+播放停止时触发该事件(当stop()方法被调用后触发)。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -280,7 +280,7 @@ onStop(callback: MovingPhotoViewEventCallback)
 
 onPrepared(callback: MovingPhotoViewEventCallback)
 
-动态照片准备播放时触发该事件，使用callback异步回调。
+动态照片准备播放时触发该事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
