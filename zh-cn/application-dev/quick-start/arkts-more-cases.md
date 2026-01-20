@@ -925,6 +925,14 @@ interface Person {
 
 <!-- @[ts_array_literal_inference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
 
+``` TypeScript
+let permissionList = [
+  { name: '设备信息', value: '用于分析设备的续航、通话、上网、SIM卡故障等' },
+  { name: '麦克风', value: '用于反馈问题单时增加语音' },
+  { name: '存储', value: '用于反馈问题单时增加本地文件附件' }
+]
+```
+
 **建议改法**
 
 为对象字面量声明类型。
