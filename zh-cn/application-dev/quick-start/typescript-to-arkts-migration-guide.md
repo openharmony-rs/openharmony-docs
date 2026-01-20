@@ -453,6 +453,17 @@ ArkTS不支持对象类型中包含call signature。
 
 <!-- @[no_callSignatures_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCallSignatures.ts) -->   
 
+``` TypeScript
+type DescribableFunction = {
+  description: string
+  (someArg: string): string // call signature。
+}
+
+function doSomething(fn: DescribableFunction): void {
+  console.info(fn.description + ' returned ' + fn(''));
+}
+```
+
 **ArkTS**
 
 <!-- @[no_callSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCallSignatures.ets) -->     
