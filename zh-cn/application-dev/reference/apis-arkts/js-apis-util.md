@@ -2475,7 +2475,7 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 
 > **说明：**
 >
-> 此回调方法在[clear<sup>9+</sup>](#clear9)、[updateCapacity<sup>9+</sup>](#updatecapacity9)接口调用后触发执行时，传入的key和value参数类型为MapIterator，可参照示例二进行后续操作。
+> 若此回调方法在[clear<sup>9+</sup>](#clear9)、[updateCapacity<sup>9+</sup>](#updatecapacity9)接口调用之后触发执行，传入的key和value参数类型为MapIterator，可参照示例二进行后续操作。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2498,7 +2498,7 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
-**示例一**
+**示例一：**
 
 ```ts
 class ChildLRUCache<K, V> extends util.LRUCache<K, V> {
@@ -2523,7 +2523,7 @@ lru.put(2, 2);
 lru.put(3, 3);
 ```
 
-**示例二**
+**示例二：**
 
 ```ts
 class TestClass {
