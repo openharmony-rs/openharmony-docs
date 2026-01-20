@@ -149,7 +149,7 @@ import app, { AppResponse } from '@system.app';
 @Component
 struct Index {
   onPageShow() {
-    // Set the upper limit of the memory for caching image data before decoding to 100 MB. (100 x 1024 x 1024 B =104857600 B = 100 MB).
+    // Set the upper limit of the memory for caching image data before decoding to 100 MB. (100 × 1024 × 1024 B =104857600 B = 100 MB).
     app.setImageRawDataCacheSize(104857600); 
     console.info('Application onPageShow');
   }
@@ -193,7 +193,7 @@ import app, { AppResponse } from '@system.app';
 export default class OnC {
   onCreate() {
     app.setImageFileCacheSize(209715200);
-    // Set the upper limit of the image file cache to 200 MB. (200 x 1024 x 1024 B= 209715200 B = 200 MB).
+    // Set the upper limit of the image file cache to 200 MB. (200 × 1024 × 1024 B= 209715200 B = 200 MB).
     console.info('Application onCreate');
   }
   onDestroy() {
@@ -204,7 +204,7 @@ export default class OnC {
 
 ### ScreenOnVisible<sup>(deprecated)</sup>
 
-static screenOnVisible(options?: ScreenOnVisibleOptions): void
+static screenOnVisible(options?: ScreenOnVisibleOptions):&nbsp;void
 
 Defines whether to keep the application visible when the screen is woken up.
 

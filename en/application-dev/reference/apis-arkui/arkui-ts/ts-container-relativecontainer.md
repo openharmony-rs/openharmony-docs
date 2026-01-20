@@ -41,7 +41,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 guideLine(value: Array&lt;GuideLineStyle&gt;)
 
-Sets the guidelines in the **RelativeContainer** component. The value is an array, each element of which is a guideline.
+Sets the [guidelines](../../../ui/arkts-layout-development-relative-layout.md#positioning-child-components-using-guidelines) in the **RelativeContainer** component. The value is an array, each element of which is a guideline.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -57,7 +57,7 @@ Sets the guidelines in the **RelativeContainer** component. The value is an arra
 
 barrier(value: Array&lt;BarrierStyle&gt;)
 
-Sets the barriers in the **RelativeContainer** component. The value is an array, each element of which is a barrier.
+Sets the [barriers](../../../ui/arkts-layout-development-relative-layout.md#setting-barriers-for-multiple-components) in the **RelativeContainer** component. The value is an array, each element of which is a barrier.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -134,12 +134,12 @@ Defines the direction of a barrier.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Description                         |
-| ------ | ----------------------------- |
-| LEFT | The barrier is on the left side of all the referenced components specified by [referencedId](ts-container-relativecontainer.md#barrierstyle12).|
-| RIGHT | The barrier is on the right side of all the referenced components specified by [referencedId](ts-container-relativecontainer.md#barrierstyle12).|
-| TOP  | The barrier is at the top of all the referenced components specified by [referencedId](ts-container-relativecontainer.md#barrierstyle12).|
-| BOTTOM  | The barrier is at the bottom of all the referenced components specified by [referencedId](ts-container-relativecontainer.md#barrierstyle12).|
+| Name    | Value  | Description                         |
+| ------ | ---- | ----------------------------- |
+| LEFT | 0 | The barrier is on the left side of all the referenced components specified by [referencedId](ts-container-relativecontainer.md#barrierstyle12).|
+| RIGHT | 1 | The barrier is on the right side of all the referenced components specified by [referencedId](ts-container-relativecontainer.md#barrierstyle12).|
+| TOP  | 2 | The barrier is at the top of all the referenced components specified by [referencedId](ts-container-relativecontainer.md#barrierstyle12).|
+| BOTTOM  | 3 | The barrier is at the bottom of all the referenced components specified by [referencedId](ts-container-relativecontainer.md#barrierstyle12).|
 
 ## LocalizedBarrierStyle<sup>12+</sup>
 

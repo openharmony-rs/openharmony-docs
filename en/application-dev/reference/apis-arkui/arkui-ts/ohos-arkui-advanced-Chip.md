@@ -237,7 +237,7 @@ Defines text configuration options.
 
 ## CloseOptions<sup>14+</sup>
 
-Defines the accessibility settings of the close icon. The default value of **accessibilityText** is **Delete**.
+Defines the accessibility settings of the default close icon. The default value of **accessibilityText** is **"Delete"**.
 
 Inherits from [AccessibilityOptions](#accessibilityoptions14).
 
@@ -284,7 +284,7 @@ Defines the spacing between the localized text and the left and right icons.
 This example sets a custom suffix icon by configuring **suffixIcon**.
 
 ```ts
-import { Chip, ChipSize } from '@kit.ArkUI';
+import { Chip, ChipSize, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -330,7 +330,7 @@ struct Index {
 This example demonstrates how to display the default suffix delete icon by setting **allowClose** to **true**.
 
 ```ts
-import { Chip, ChipSize } from '@kit.ArkUI';
+import { Chip, ChipSize, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -353,6 +353,7 @@ struct Index {
         },
         size: ChipSize.NORMAL,
         allowClose: true,
+        closeOptions: {fontSize: 12},
         enabled: true,
         backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
         borderRadius: $r('sys.float.ohos_id_corner_radius_button')
@@ -370,7 +371,7 @@ struct Index {
 This example demonstrates how to hide the default suffix delete icon by setting **allowClose** to **false**.
 
 ```ts
-import { Chip, ChipSize } from '@kit.ArkUI';
+import { Chip, ChipSize, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -453,9 +454,10 @@ struct Index {
         }
       })
 
-      Button('Activate/Deactivate').onClick(() => {
-        this.isActivated = !this.isActivated;
-      })
+      Button('Activate/Deactivate')
+        .onClick(() => {
+          this.isActivated = !this.isActivated;
+        })
     }
   }
 }
@@ -555,7 +557,8 @@ struct ChipPage {
         backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
         borderRadius: $r('sys.float.ohos_id_corner_radius_button')
       })
-    }.justifyContent(FlexAlign.Center)
+    }
+    .justifyContent(FlexAlign.Center)
     .width('100%')
     .height('100%')
   }

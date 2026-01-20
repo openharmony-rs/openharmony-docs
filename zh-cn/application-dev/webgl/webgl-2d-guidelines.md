@@ -74,8 +74,8 @@ WebGL的全称为Web Graphics Library（网页图形库），主要用于交互�
 | webgl.getAttribLocation(program: WebGLProgram, name: string): GLint | 从给定WebGL着色程序中获取着色器中attribute变量的地址。 |
 | webgl.vertexAttribPointer(index GLuint, size: GLint, type: GLenum, normalized: GLboolean, stride: GLsizei, offset: GLintptr): void | 将缓冲区对象分配给变量。                               |
 | webgl.enableVertexAttribArray(index: GLuint): void           | 连接变量与分配给它的缓冲区对象。                       |
-| webgl.clearColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf): void | 清空&lt;canvas&gt;指定的颜色。                         |
-| webgl.clear(mask: GLbitfield): void                          | 清空&lt;canvas&gt;。                                   |
+| webgl.clearColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf): void | 清空canvas指定的颜色。                         |
+| webgl.clear(mask: GLbitfield): void                          | 清空canvas。                                   |
 | webgl.drawArrays(mode: GLenum, first: GLint, count: GLsizei): void | 执行数据绘制。                                         |
 | webgl.flush(): void                                          | 刷新数据至GPU，清空缓冲区。                            |
 | webgl.createProgram(): WebGLProgram \| null                  | 创建着色器程序对象。                                   |
