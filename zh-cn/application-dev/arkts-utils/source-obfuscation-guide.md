@@ -26,18 +26,6 @@
       }
     },
     ```
-    
-    ``` JSON5
-    "arkOptions": {
-      "obfuscation": {
-        "ruleOptions": {
-          "enable": true, // 开启混淆开关。
-          "files": ["./obfuscation-rules.txt"] // 指定配置混淆规则文件, 在编译本模块时生效。
-        },
-        // ...
-      }
-    },
-    ```
 
 * 配置混淆规则  
     打开混淆开关，仅开启默认混淆功能，默认混淆范围为局部变量和参数。如需开启更多混淆功能，请在`files`字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。需要注意的是，不同版本的DevEco Studio，`obfuscation-rules.txt`文件中的默认值可能会有所不同。
@@ -126,16 +114,6 @@
 2. 待上述选项应用适配成功后，开启`-enable-property-obfuscation`选项。此选项开启后，以下场景需要适配：
     1. 若代码中存在静态定义、动态访问的情况，或动态定义、静态访问的情况，需要使用`-keep-property-name`保留属性名称。示例如下：
        <!-- @[example_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
-       
-       ``` TypeScript
-       // 静态定义，动态访问：属性名在对象定义时是静态的，但访问时通过动态构建属性名（通常使用字符串拼接）来访问。
-       // example.ts
-       const obj001 = {
-         staticName: 'value'  // 静态定义属性。
-       };
-       const fieldName = 'static' + 'Name';  // 动态构建属性名，需使用-keep-property-name staticName来保留该属性名。
-       console.info(obj001[fieldName]);  // 使用方括号语法动态访问属性。
-       ```
        
        ``` TypeScript
        // 静态定义，动态访问：属性名在对象定义时是静态的，但访问时通过动态构建属性名（通常使用字符串拼接）来访问。
