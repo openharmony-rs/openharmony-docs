@@ -58,6 +58,11 @@ const hello: string = 'hello';
 
 <!-- @[type_inference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
+``` TypeScript
+let hi1: string = 'hello';
+let hi2 = 'hello, world';
+```
+
 ### 类型
 
 **基本类型和引用类型**
@@ -90,9 +95,33 @@ ArkTS提供`number`类型，任何整数和浮点数都可以被赋给此类型�
 
 <!-- @[float_type_factorial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
+``` TypeScript
+let n1 = 3.14;
+let n2 = 3.141592;
+let n3 = 0.5;
+let n4 = 1e2;
+
+function factorial(n: number): number {
+  if (n <= 1) {
+    return 1;
+  }
+  return n * factorial(n - 1);
+}
+// ...
+  factorial(n1) //  7.660344000000002。
+  factorial(n2) //  7.680640444893748。
+  factorial(n3) //  1。
+  factorial(n4) //  9.33262154439441e+157。
+```
+
 `number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`BigInt`类型来确保精度：
 
 <!-- @[big_int_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->  
+
+``` TypeScript
+let bigInt: BigInt = BigInt('999999999999999999999999999999999999999999999999999999999999');
+console.info('bigInt:' + bigInt.toString());
+```
 
 **`boolean`类型**
 
@@ -102,6 +131,16 @@ ArkTS提供`number`类型，任何整数和浮点数都可以被赋给此类型�
 
 <!-- @[bool_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
+``` TypeScript
+let isDone: boolean = false;
+
+// ...
+
+if (isDone) {
+  console.info('Done!');
+}
+```
+
 **`string`类型**
 
 `string`类型代表字符序列，可以使用转义字符来表示字符。
@@ -109,6 +148,13 @@ ArkTS提供`number`类型，任何整数和浮点数都可以被赋给此类型�
 字符串字面量由单引号（'）或双引号（"）之间括起来的零个或多个字符组成。字符串字面量还有一特殊形式，是用反向单引号（\`）括起来的模板字面量。
 
 <!-- @[string_examples](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
+let s1 = 'Hello, world!\n';
+let s2 = 'this is a string';
+let a = 'Success';
+let s3 = `The result is ${a}`;
+```
 
 **`void`类型**
 
@@ -118,6 +164,13 @@ ArkTS提供`number`类型，任何整数和浮点数都可以被赋给此类型�
 
 <!-- @[generic_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->  
 
+``` TypeScript
+class Class<T> {
+  //...
+}
+let instance: Class<void>;
+```
+
 **`Object`类型**
 
 `Object`类型是所有引用类型的基类型。任何值，包括基本类型的值，都可以直接被赋给`Object`类型的变量（基本类型值会被自动装箱）。
@@ -125,6 +178,13 @@ ArkTS提供`number`类型，任何整数和浮点数都可以被赋给此类型�
 `object`类型用于表示除基本类型外的类型。
 
 <!-- @[object_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
+let o1: Object = 'Alice';
+let o2: Object = ['a', 'b'];
+let o3: Object = 1;
+let o4: object = [1, 2, 3];
+```
  
 **`array`类型**
 
@@ -136,6 +196,10 @@ ArkTS提供`number`类型，任何整数和浮点数都可以被赋给此类型�
 
 <!-- @[string_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
+``` TypeScript
+let names: string[] = ['Alice', 'Bob', 'Carol'];
+```
+
 **`enum`类型**
 
 `enum`类型，即枚举类型，是预先定义的一组命名值的值类型，其中命名值又称为枚举常量。
@@ -144,15 +208,52 @@ ArkTS提供`number`类型，任何整数和浮点数都可以被赋给此类型�
 
 <!-- @[enum_color_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->  
 
+``` TypeScript
+enum ColorSet { Red, Green, Blue }
+let c: ColorSet = ColorSet.Red;
+```
+
 常量表达式用于显式设置枚举常量的值。
 
 <!-- @[enum_with_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
+enum ColorSet { White = 0xFF, Grey = 0x7F, Black = 0x00 }
+let c: ColorSet = ColorSet.Black;
+``
 
 **`Union`类型**
 
 `Union`类型，即联合类型，是由多个类型组合成的引用类型。联合类型包含了变量可能的所有类型。
 
 <!-- @[union_type_animal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->    
+
+``` TypeScript
+class Cat {
+  public name: string = 'cat';
+  // ...
+}
+
+class Dog {
+  public name: string = 'dog';
+  // ...
+}
+
+class Frog {
+  public name: string = 'frog';
+  // ...
+}
+
+type Animal = Cat | Dog | Frog | number | string | null | undefined;
+// Cat、Dog、Frog是一些类型（类或接口）
+
+let animal: Animal = new Cat();
+animal = new Frog();
+animal = 42;
+animal = 'dog';
+animal = undefined;
+// 可以将类型为联合类型的变量赋值为任何组成类型的有效值
+```
  
 可以使用不同机制获取联合类型中的特定类型值。
 
@@ -160,11 +261,55 @@ ArkTS提供`number`类型，任何整数和浮点数都可以被赋给此类型�
 
 <!-- @[type_narrowing_animal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->    
 
+``` TypeScript
+class Cat { sleep () {}; meow () {} }
+class Dog { sleep () {}; bark () {} }
+class Frog { sleep () {}; leap () {} }
+
+type Animal = Cat | Dog | Frog;
+
+function foo(animal: Animal) {
+  if (animal instanceof Frog) {  // 判断animal是否是Frog类型
+    animal.leap();  // animal在这里是Frog类型
+  }
+  animal.sleep(); // Animal具有sleep方法
+}
+```
+
 **`Aliases`类型**
 
 `Aliases`类型为匿名类型（如数组、函数、对象字面量或联合类型）提供名称，或为已定义的类型提供替代名称。
 
 <!-- @[type_aliases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
+// 二维数组类型
+type Matrix = number[][];
+const gameBoard: Matrix = [
+  [1, 0],
+  [0, 1]
+];
+
+// 函数类型
+type Handler = (s: string, no: number) => string;
+const repeatString: Handler = (str, times) => {
+  return str.repeat(times);
+};
+console.info(repeatString('abc', 3)); // 'abcabcabc'
+// ...
+// 泛型函数类型
+type Predicate<T> = (x: T) => boolean;
+const isEven: Predicate<number> = (num) => num % 2 === 0;
+
+// 可为空的对象类型
+type NullableObject = Object | null;
+
+class Cat {
+}
+
+let animalData: NullableObject = new Cat();
+let emptyData: NullableObject = null;
+```
 
 ### 运算符
 
@@ -193,6 +338,13 @@ ArkTS提供`number`类型，任何整数和浮点数都可以被赋给此类型�
 
 `===`与`==`的区别：
 <!-- @[comparison_operators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->    
+
+``` TypeScript
+// ==只比较目标的值相等
+console.info(String(null == undefined)); // true
+// ===比较目标的值和类型都相等
+console.info(String(null === undefined)); // false
+```
 
 
 **算术运算符**
@@ -247,6 +399,21 @@ obj instanceof className
 
 <!-- @[instanceof_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->    
 
+``` TypeScript
+class Person {}
+const person = new Person();
+if ((person instanceof Person)) {
+  console.info('true'); // true
+}
+
+class Animal {}
+class Bird extends Animal {}
+const bird = new Bird();
+if (bird instanceof Animal) {
+  console.info('true'); // true
+}
+```
+
 ### 语句
 
 **`if`语句**
@@ -271,6 +438,18 @@ if (condition1) {
 
 <!-- @[if_else_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
+``` TypeScript
+let s1 = 'Hello';
+if (s1) {
+  console.info(s1); // 打印"Hello"
+}
+
+let s2 = 'World';
+if (s2.length != 0) {
+  console.info(s2); // 打印"World"
+}
+```
+
 **`switch`语句**
 
 使用`switch`语句执行与`switch`表达式值匹配的代码块。
@@ -278,6 +457,24 @@ if (condition1) {
 `switch`语句如下所示：
 
 <!-- @[switch_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
+switch (expression) {
+  case label1: // 如果label1匹配,则执行
+    // ...
+    // 语句1
+    // ...
+    break; // 可省略
+  case label2:
+  case label3: // 如果label2或label3匹配,则执行
+    // ...
+    // 语句23
+    // ...
+    break; // 可省略
+  default:
+  // 默认语句
+}
+```
 
 如果`switch`表达式的值等于某个label的值，则执行相应的语句。
 
@@ -303,11 +500,24 @@ condition ? expression1 : expression2
 
 <!-- @[conditional_expression](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
+``` TypeScript
+let message = Math.random() > 0.5 ? 'Valid' : 'Failed';
+```
+
 `condition`如果是非bool值则会进行隐式转换。
 
 示例：
 
 <!-- @[conditional_expression_results](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
+console.info('a' ? 'true' : 'false'); // true
+console.info('' ? 'true' : 'false'); // false
+console.info(1 ? 'true' : 'false'); // true
+console.info(0 ? 'true' : 'false'); // false
+console.info(null ? 'true' : 'false'); // false
+console.info(undefined ? 'true' : 'false'); // false
+```
 
 **`for`语句**
 
@@ -337,6 +547,13 @@ for ([init]; [condition]; [update]) {
 
 <!-- @[for_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
+``` TypeScript
+let sum = 0;
+for (let i = 0; i < 10; i += 2) {
+  sum += i;
+}
+```
+
 **`for-of`语句**
 
 使用`for-of`语句可遍历数组、Set、Map、字符串等可迭代的类型。示例如下：
@@ -350,6 +567,13 @@ for (forVar of IterableExpression) {
 示例：
 
 <!-- @[for_of_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->    
+
+``` TypeScript
+for (let ch of 'a string object') {
+  console.info(ch);
+  // ...
+}
+```
 
 **`while`语句**
 
@@ -365,6 +589,15 @@ while (condition) {
 
 <!-- @[while_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
+``` TypeScript
+let n = 0;
+let x = 0;
+while (n < 3) {
+  n++;
+  x += n;
+}
+```
+
 **`do-while`语句**
 
 如果`condition`的值为真值（转换后为`true`的值），那么`statements`语句会重复执行。示例如下：
@@ -379,6 +612,13 @@ do {
 
 <!-- @[do_while_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
+``` TypeScript
+let i = 0;
+do {
+  i += 1;
+} while (i < 10)
+```
+
 **`break`语句**
 
 使用`break`语句可以终止循环语句或`switch`。
@@ -387,11 +627,32 @@ do {
 
 <!-- @[break_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
+``` TypeScript
+let x = 0;
+while (true) {
+  x++;
+  if (x > 5) {
+    break;
+  }
+}
+```
+
 如果`break`语句后带有标识符，则将控制流转移到该标识符所包含的语句块之外。
 
 示例：
 
 <!-- @[labeled_break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->    
+
+``` TypeScript
+let x = 1;
+label: while (true) {
+  switch (x) {
+    case 1:
+      // statements
+      break label; // 中断while语句
+  }
+}
+```
 
 **`continue`语句**
 
@@ -400,6 +661,16 @@ do {
 示例：
 
 <!-- @[continue_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
+let sum = 0;
+for (let x = 0; x < 100; x++) {
+  if (x % 2 == 0) {
+    continue;
+  }
+  sum += x;
+}
+```
  
 **`throw`和`try`语句**
 
@@ -407,17 +678,73 @@ do {
 
 <!-- @[throw_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
+``` TypeScript
+throw new Error('this error')
+```
+
 `try`语句用于捕获和处理异常或错误：
 
 <!-- @[try_catch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->    
+
+``` TypeScript
+try {
+  // ...
+} catch (e) {
+  // 异常处理
+  // ...
+}
+```
 
 下面的示例中`throw`和`try`语句用于处理除数为0的错误：
 
 <!-- @[error_handling_divide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
+``` TypeScript
+class ZeroDivisor extends Error {}
+
+function divide (a: number, b: number): number {
+  if (b == 0) {
+    throw new ZeroDivisor();
+  }
+  return a / b;
+}
+
+function process(a: number, b: number) {
+  try {
+    let res = divide(a, b);
+    console.info('result: ' + res);
+  } catch (x) {
+    console.error('some error');
+  }
+}
+```
+
 支持`finally`语句：
 
 <!-- @[try_catch_finally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+
+``` TypeScript
+function processData(s: string) {
+  let error: Error | null = null;
+
+  try {
+    console.info('Data processed: ' + s);
+    // ...
+    // 可能发生异常的语句
+    // ...
+  } catch (e) {
+    error = e as Error;
+    // ...
+    // 异常处理
+    // ...
+  } finally {
+    // 无论是否发生异常都会执行的代码
+    if (error != null) {
+      console.error(`Error caught: input='${s}', message='${error.message}'`);
+    }
+  }
+}
+```
 
 ## 函数
 
@@ -433,6 +760,13 @@ do {
 
 <!-- @[function_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
 
+``` TypeScript
+function add(x: string, y: string): string {
+  let z: string = `${x} ${y}`;
+  return z;
+}
+```
+
 在函数声明中，必须为每个参数标记类型。如果参数为可选参数，那么允许在调用函数时省略该参数。函数的最后一个参数可以是rest参数。
 
 ### 可选参数
@@ -441,9 +775,28 @@ do {
 
 <!-- @[optional_parameter_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
 
+``` TypeScript
+function hello(name?: string) {
+  if (name == undefined) {
+    console.info('Hello!');
+  } else {
+    console.info(`Hello, ${name}!`);
+  }
+}
+```
+
 可选参数的另一种形式为设置的参数默认值。如果在函数调用中这个参数被省略了，则会使用此参数的默认值作为实参。
 
 <!-- @[default_parameter_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
+
+``` TypeScript
+function multiply(n: number, coeff: number = 2): number {
+  return n * coeff;
+}
+// ...
+  multiply(2);  // 返回2*2
+  multiply(2, 3); // 返回2*3
+```
 
 ### rest参数
 
@@ -451,17 +804,43 @@ do {
 
 <!-- @[rest_parameter_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
 
+``` TypeScript
+function sum(...numbers: number[]): number {
+  let res = 0;
+  for (let n of numbers) {
+    res += n;
+  }
+  return res;
+}
+// ...
+  sum(); // 返回0
+  sum(1, 2, 3); // 返回6
+```
+
 ### 返回类型
 
 如果可以从函数体内推断出函数返回类型，则可在函数声明中省略标注返回类型。
 
 <!-- @[return_type_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
 
+``` TypeScript
+// 显式指定返回类型
+function foo(): string { return 'foo'; }
+
+// 推断返回类型为string
+function goo() { return 'goo'; }
+```
+
 不需要返回值的函数的返回类型可以显式指定为`void`或省略标注。这类函数不需要返回语句。
 
 以下示例中两种函数声明方式都是有效的：
 
 <!-- @[void_return_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
+
+``` TypeScript
+function hi1() { console.info('hi'); }
+function hi2(): void { console.info('hi'); }
+```
 
 ### 函数的作用域
 
@@ -471,6 +850,17 @@ do {
 
 <!-- @[variable_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
 
+``` TypeScript
+let outerVar = 'I am outer ';
+
+function func() {
+  let outerVar = 'I am inside';
+  console.info(outerVar); // 输出: I am inside
+}
+// ...
+  func();
+```
+
 ### 函数调用
 
 调用函数以执行其函数体，实参值会赋值给函数的形参。
@@ -479,9 +869,21 @@ do {
 
 <!-- @[function_join_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
 
+``` TypeScript
+function join(x: string, y: string): string {
+  let z: string = `${x} ${y}`;
+  return z;
+}
+```
+
 则此函数的调用需要包含两个`string`类型的参数：
 
 <!-- @[function_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
+
+``` TypeScript
+let x = join('hello', 'world');
+console.info(x); // 输出: hello world
+```
 
 ### 函数类型
 
@@ -489,17 +891,38 @@ do {
 
 <!-- @[function_as_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
 
+``` TypeScript
+type trigFunc = (x: number) => number // 这是一个函数类型
+
+function doAction(f: trigFunc) {
+  f(3.141592653589); // 调用函数
+}
+
+doAction(Math.sin); // 将函数作为参数传入
+```
+
 ### 箭头函数（又名Lambda函数）
 
 函数可以定义为箭头函数，例如：
 
 <!-- @[arrow_function_full](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
 
+``` TypeScript
+let sum = (x: number, y: number): number => {
+  return x + y;
+}
+```
+
 箭头函数的返回类型可以省略，此时返回类型从函数体推断。
 
 表达式可以指定为箭头函数，使表达更简短，因此以下两种表达方式是等价的：
 
 <!-- @[arrow_function_short](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
+
+``` TypeScript
+let sum1 = (x: number, y: number) => { return x + y; }
+let sum2 = (x: number, y: number) => x + y
+```
 
 ### 闭包
 
@@ -509,11 +932,33 @@ do {
 
 <!-- @[closure_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
 
+``` TypeScript
+function f(): () => number {
+  let count = 0;
+  let g = (): number => { count++; return count; };
+  return g;
+}
+// ...
+  let z = f();
+  z(); // 返回：1
+  z(); // 返回：2
+```
+
 ### 函数重载
 
 可以通过编写重载，指定函数的不同调用方式。具体方法是，为同一个函数写入多个同名但签名不同的函数头，函数实现紧随其后。
 
 <!-- @[function_overload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
+
+``` TypeScript
+function foo1(x: number): void;            /* 第一个函数定义 */
+function foo1(x: string): void;            /* 第二个函数定义 */
+function foo1(x: number | string): void {  /* 函数实现 */
+}
+
+foo1(123);     //  OK，使用第一个定义
+foo1('aa'); // OK，使用第二个定义
+```
 
 不允许重载函数有相同的参数列表，否则将导致编译错误。
 
@@ -525,13 +970,40 @@ do {
 
 <!-- @[person_class_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
+``` TypeScript
+class Person {
+  public name: string = '';
+  public surname: string = '';
+  constructor (n: string, sn: string) {
+    this.name = n;
+    this.surname = sn;
+  }
+  fullName(): string {
+    return this.name + ' ' + this.surname;
+  }
+}
+```
+
 定义类后，可以使用关键字`new`创建实例：
 
 <!-- @[create_person_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
+``` TypeScript
+let p = new Person('John', 'Smith');
+console.info(p.fullName());
+```
+
 或者，可以使用对象字面量创建实例：
 
 <!-- @[object_literal_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
+class Point {
+  public x: number = 0;
+  public y: number = 0;
+}
+let p: Point = {x: 42, y: 42};
+```
 
 ### 字段
 
@@ -547,6 +1019,26 @@ do {
 
 <!-- @[instance_field_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
+``` TypeScript
+class Person1 {
+  public name: string = '';
+  public age: number = 0;
+  constructor(n: string, a: number) {
+    this.name = n;
+    this.age = a;
+  }
+
+  getName(): string {
+    return this.name;
+  }
+}
+// ...
+  let p1 = new Person1('Alice', 25);
+  p1.name; // Alice
+  let p2 = new Person1('Bob', 28);
+  p2.getName(); // Bob
+```
+
 **静态字段**
 
 使用关键字`static`将字段声明为静态。静态字段属于类本身，类的所有实例共享一个静态字段。
@@ -554,6 +1046,19 @@ do {
 要访问静态字段，需要使用类名：
 
 <!-- @[static_field_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
+class Person2 {
+  public static numberOfPersons = 0;
+  constructor() {
+    // ...
+    Person2.numberOfPersons++;
+    // ...
+  }
+}
+
+Person2.numberOfPersons;
+```
 
 **字段初始化**
 
@@ -584,6 +1089,26 @@ jack.getName().length; // 运行时异常：name is undefined
 在ArkTS中，开发者应该这样写代码。
 
 <!-- @[non_nullable_field](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->    
+
+``` TypeScript
+class Person3 {
+  public name: string = '';
+
+  setName(n: string): void {
+    this.name = n;
+  }
+
+  // 类型为'string'，不可能为"null"或者"undefined"
+  getName(): string {
+    return this.name;
+  }
+}
+
+
+let jack = new Person3();
+// 假设代码中没有对name赋值，即没有调用"jack.setName('Jack')"
+jack.getName().length; // 0, 没有运行时异常
+```
 
 接下来的代码示例展示了当`name`的值可能为`undefined`时，如何正确编写代码。
 
@@ -622,6 +1147,25 @@ setter和getter可用于提供对类属性的受控访问。
 
 <!-- @[getter_setter_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
+``` TypeScript
+class Person4 {
+  public name: string = '';
+  private _age: number = 0;
+  get age(): number { return this._age; }
+  set age(x: number) {
+    if (x < 0) {
+      throw Error('Invalid age argument');
+    }
+    this._age = x;
+  }
+}
+// ...
+  let p = new Person4();
+  p.age; // 输出0
+  // ...
+    p.age = -42; // 设置无效age值会抛出错误
+```
+
 在类中可以定义getter或者setter。
 
 ### 方法
@@ -636,9 +1180,28 @@ setter和getter可用于提供对类属性的受控访问。
 
 <!-- @[instance_method_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
+``` TypeScript
+class RectangleSize {
+  private height: number = 0;
+  private width: number = 0;
+  constructor(height: number, width: number) {
+    this.height = height;
+    this.width = width;
+  }
+  calculateArea(): number {
+    return this.height * this.width;
+  }
+}
+```
+
 必须通过类的实例调用实例方法：
 
 <!-- @[instance_method_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
+let square = new RectangleSize(10, 10);
+square.calculateArea(); // 输出：100
+```
 
 **静态方法**
 
@@ -649,6 +1212,16 @@ setter和getter可用于提供对类属性的受控访问。
 必须通过类名调用静态方法：
 
 <!-- @[static_method_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
+class C2 {
+  public static staticMethod(): string {
+    return 'this is a static method.';
+  }
+}
+// ...
+  console.info(C2.staticMethod());
+```
 
 **继承**
 
@@ -667,6 +1240,22 @@ class [extends BaseClassName] [implements listOfInterfaces] {
 示例：
 
 <!-- @[class_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
+class Person5 {
+  public name: string = '';
+  public _age = 0;
+  get age(): number {
+    return this._age;
+  }
+}
+class Employee extends Person5 {
+  public salary: number = 0;
+  calculateTaxes(): number {
+    return this.salary * 0.42;
+  }
+}
+```
 
 包含`implements`子句的类必须实现列出的接口中定义的所有方法，但使用默认实现定义的方法除外。
 
@@ -690,17 +1279,73 @@ class MyDate implements DateInterface {
 
 <!-- @[super_call_in_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
+``` TypeScript
+class RectangleSize {
+  protected height: number = 0;
+  protected width: number = 0;
+
+  constructor (h: number, w: number) {
+    this.height = h;
+    this.width = w;
+  }
+
+  draw() {
+    /* 绘制边界 */
+  }
+}
+class FilledRectangle extends RectangleSize {
+  public color = ''
+  constructor (h: number, w: number, c: string) {
+    super(h, w); // 父类构造函数的调用
+    this.color = c;
+  }
+
+  draw() {
+    super.draw(); // 父类方法的调用
+    /* 填充矩形 */
+  }
+}
+```
+
 **方法重写**
 
 子类可以重写其父类中定义的方法的实现。重写的方法必须具有与原始方法相同的参数类型和相同或派生的返回类型。
 
 <!-- @[method_override](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
+``` TypeScript
+class RectangleSize {
+  // ...
+  area(): number {
+    // 实现
+    return 0;
+  }
+}
+class Square extends RectangleSize {
+  private side: number = 0;
+  area(): number {
+    return this.side * this.side;
+  }
+}
+```
+
 **方法重载签名**
 
 通过重载签名，指定方法的不同调用。具体方法为，为同一个方法写入多个同名但签名不同的方法头，方法实现紧随其后。
 
 <!-- @[method_overload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
+class C {
+  foo(x: number): void;            /* 第一个签名 */
+  foo(x: string): void;            /* 第二个签名 */
+  foo(x: number | string): void {  /* 实现签名 */
+  }
+}
+let c = new C();
+c.foo(123);     // OK，使用第一个签名
+c.foo('aa'); // OK，使用第二个签名
+```
 
 如果两个重载签名的名称和参数列表均相同，则为错误。
 
@@ -720,6 +1365,14 @@ constructor ([parameters]) {
 
 <!-- @[default_field_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
+``` TypeScript
+class Point {
+  public x: number = 0;
+  public y: number = 0;
+}
+let p = new Point();
+```
+
 在这种情况下，默认构造函数使用字段类型的默认值初始化实例中的字段。
 
 **派生类的构造函数**
@@ -728,11 +1381,35 @@ constructor ([parameters]) {
 
 <!-- @[constructor_in_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
+``` TypeScript
+class RectangleSize {
+  constructor(width: number, height: number) {
+    // ...
+  }
+}
+class Square extends RectangleSize {
+  constructor(side: number) {
+    super(side, side);
+  }
+}
+```
+
 **构造函数重载签名**
 
 可以通过编写重载签名，指定构造函数的不同调用方式。具体方法是，为同一个构造函数写入多个同名但签名不同的构造函数头，构造函数实现紧随其后。
 
 <!-- @[constructor_overload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->  
+
+``` TypeScript
+class C {
+  constructor(x: number)             /* 第一个签名 */
+  constructor(x: string)             /* 第二个签名 */
+  constructor(x: number | string) {  /* 实现签名 */
+  }
+}
+let c1 = new C(123);      // OK，使用第一个签名
+let c2 = new C('abc');    // OK，使用第二个签名
+```
 
 如果两个重载签名的名称和参数列表均相同，则为错误。
 
@@ -800,6 +1477,24 @@ let c: C = {n: 42, s: 'foo'};
 ArkTS是静态类型语言，如上述示例所示，对象字面量只能在可以推导出该字面量类型的上下文中使用。其他正确的例子如下所示：
 
 <!-- @[structural_typing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+
+``` TypeScript
+class C1 {
+  public n: number = 0;
+  public s: string = '';
+}
+
+function foo(c1: C1) {}
+
+let c1: C1
+
+c1 = {n: 42, s: 'foo'};  // 使用变量的类型
+foo({n: 42, s: 'foo'}); // 使用参数的类型
+
+function bar(): C1 {
+  return {n: 42, s: 'foo'}; // 使用返回类型
+}
+```
 
 也可以在数组元素类型或类字段类型中使用：
 
@@ -1156,7 +1851,7 @@ let res3: number = last([1, 2, 3]);
 
 泛型类型的类型参数可以设置默认值，这样无需指定实际类型实参，直接使用泛型类型名称即可。以下示例展示了类和函数的这一特性。
 
-<!-- @[generic_defaultValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->    
+<!-- @[generic_defaultValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->
 
 ## 空安全
 
