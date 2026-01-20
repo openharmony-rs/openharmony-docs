@@ -35,6 +35,20 @@ let wantInfo: W = {
 
 <!-- @[identifiers_as_prop_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->     
 
+``` TypeScript
+interface W {
+  bundleName: string
+  action: string
+  entities: string[]
+}
+
+let wantInfo: W = {
+  bundleName: 'com.huawei.hmos.browser',
+  action: 'ohos.want.action.viewData',
+  entities: ['entity.system.browsable']
+}
+```
+
 ## arkts-no-any-unknown
 
 ### 按照业务逻辑，将代码中的`any, unknown`改为具体的类型
