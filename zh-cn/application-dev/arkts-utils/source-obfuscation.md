@@ -213,6 +213,13 @@ test(a2);
 * 注解成员名不会被混淆。例如，下面例子中的`authorName`和`revision`不会被混淆。
 
   <!-- @[etsOptionExample_enablePropertyObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->   
+  
+  ``` TypeScript
+  @interface MyAnnotation1 {
+    authorName: string;
+    revision: number = 1;
+  }
+  ```
 
 ### -enable-string-property-obfuscation
 
