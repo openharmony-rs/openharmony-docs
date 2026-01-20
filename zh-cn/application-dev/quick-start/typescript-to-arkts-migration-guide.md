@@ -1565,6 +1565,19 @@ ArkTS不支持在函数内声明函数，改用lambda函数。
 
 <!-- @[no_nestedFuncs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNestedFuncs.ets) -->   
 
+``` TypeScript
+function addNum(a: number, b: number): void {
+  // 使用lambda函数代替声明函数。
+  let logToConsole: (message: string) => void = (message: string): void => {
+    console.info(message);
+  }
+
+  let result = a + b;
+
+  logToConsole('result is ' + result);
+}
+```
+
 ### 不支持在函数和类的静态方法中使用`this`
 
 **规则：**`arkts-no-standalone-this`
