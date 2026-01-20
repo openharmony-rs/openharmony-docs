@@ -584,6 +584,20 @@ ArkTS不支持`this`类型，改用显式具体类型。
 
 <!-- @[no_typingWithThis_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTypingWithThis.ts) -->   
 
+``` TypeScript
+interface ListItem {
+  getHead(): this
+}
+
+class C {
+  n: number = 0
+
+  m(c: this) {
+    // ...
+  }
+}
+```
+
 **ArkTS**
 
 <!-- @[no_typingWithThis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTypingWithThis.ets) -->  
