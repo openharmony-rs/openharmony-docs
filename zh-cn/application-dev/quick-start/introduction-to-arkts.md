@@ -944,6 +944,11 @@ interface MyInterface {
 
 <!-- @[generic_define_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->   
 
+``` TypeScript
+let s = new CustomStack<string>();
+s.push('hello');
+```
+
 编译器在使用泛型类型和函数时会确保类型安全。参见以下示例：
 
 ```typescript
