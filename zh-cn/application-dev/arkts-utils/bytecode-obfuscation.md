@@ -679,6 +679,14 @@ declare function testNapi3(): void;
 
 <!-- @[etsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->         
 
+``` TypeScript
+// example.ets
+import { testNapi2, testNapi3 as myNapi } from 'libentry.so' // testNapi2 和 testNapi3 应该被保留。
+// ...
+testNapi2();
+myNapi();
+```
+
 ### -keep-file-name
 
 指定要保留的文件/文件夹的名称（不需要写文件后缀），支持使用[名称类通配符](#名称类通配符)。例如：
