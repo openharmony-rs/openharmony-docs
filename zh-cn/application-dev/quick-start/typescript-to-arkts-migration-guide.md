@@ -958,6 +958,17 @@ ArkTS不支持使用对象字面量声明类型，建议使用类或接口声明
 
 <!-- @[no_objLiteralsAsTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoObjLiteralsAsTypes.ets) -->   
 
+``` TypeScript
+class O {
+  public x: number = 0;
+  public y: number = 0;
+}
+
+let o: O = {x: 2, y: 3};
+
+type S = Set<O>;
+```
+
 ### 数组字面量必须仅包含可推断类型的元素
 
 **规则：**`arkts-no-noninferrable-arr-literals`
