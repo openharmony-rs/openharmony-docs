@@ -509,7 +509,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                 info.pts = 0;
                 // 输入最后一帧数据时，设置AVCODEC_BUFFER_FLAGS_EOS标识。
                 // info.flags = AVCODEC_BUFFER_FLAGS_EOS;
-                // 避免flags随机初始化为AVCODEC_BUFFER_FLAGS_EOS导致使用异常，flags需要赋值如0（普通帧标识）；
+                // 避免flags随机初始化为AVCODEC_BUFFER_FLAGS_EOS导致使用异常，flags需要赋值如0（普通帧标识）。
                 info.flags = 0;
                 OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &info);
                 if (setBufferRet != AV_ERR_OK) {
