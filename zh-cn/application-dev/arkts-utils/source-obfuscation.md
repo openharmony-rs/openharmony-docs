@@ -1001,7 +1001,14 @@ export class MyClass08 {
 export const add: (a: number, b: number) => number;
 ```
 
-<!-- @[etsOptionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->           
+<!-- @[etsOptionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->         
+
+``` TypeScript
+// example.ets
+import testNapi from 'libentry.so';
+// ...
+testNapi.add(2, 3); // add需要保留，示例如：-keep-property-name add。
+```
 
 4.JSON数据解析和对象序列化时，需要保留使用到的字段，例如：
 
