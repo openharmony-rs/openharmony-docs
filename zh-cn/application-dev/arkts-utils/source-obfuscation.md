@@ -200,15 +200,6 @@ test(a2);
 * 字符串字面量属性名不会被混淆，并且与其同名的属性名也不会被混淆。例如，下面例子中的`exampleName`和`exampleAge`不会被混淆。
 
   <!-- @[optionExample_enablePropertyObfuscation3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
-  
-  ``` TypeScript
-  // example.ts
-  let person = {"exampleName": "abc"};
-  person["exampleAge"] = 22;
-  
-  let person1 = {exampleName: "aaa"};
-  let name = person1.exampleName;
-  ```
 
 * 注解成员名不会被混淆。例如，下面例子中的`authorName`和`revision`不会被混淆。
 
@@ -327,7 +318,7 @@ test(a2);
 
 开启文件/文件夹名称混淆，效果如下：
 
-  <!-- @[testOptionExample_enableFilenameObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/test1/test2.ts) -->     
+  <!-- @[testOptionExample_enableFilenameObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/test1/test2.ts) -->         
 
 
   ```ts
@@ -1011,22 +1002,6 @@ testNapi.add(2, 3); // add需要保留，示例如：-keep-property-name add。
 ```
 
 4.JSON数据解析和对象序列化时，需要保留使用到的字段，例如：
-
-<!-- @[optionExample_keepPropertyName3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->  
-
-``` TypeScript
-import jsonData from './test.json';
-// ...
-let jsonProp = jsonData.jsonProperty; // jsonProperty应该被保留。
-
-class jsonTest {
-  prop1: string = '';
-  prop2: number = 0
-}
-
-let obj = new jsonTest();
-const jsonStr = JSON.stringify(obj); // prop1 和 prop2 会被混淆，应该被保留。
-```
 
 ```json
 {
