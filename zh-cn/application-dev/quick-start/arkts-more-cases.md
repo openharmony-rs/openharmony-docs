@@ -1107,6 +1107,18 @@ for (let [key, value] of map) {
 
 <!-- @[no_destruct_assignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
 
+``` TypeScript
+let map = new Map<string, string>([['a', 'a'], ['b', 'b']]);
+// ...
+for (let arr of map) {
+  let key = arr[0];
+  let value = arr[1];
+  console.info(key);
+  console.info(value);
+  // ...
+}
+```
+
 ## arkts-no-types-in-catch
 
 使用无类型 catch (error)，然后通过类型断言处理。
