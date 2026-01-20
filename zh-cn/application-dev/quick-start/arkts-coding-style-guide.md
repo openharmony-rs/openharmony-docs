@@ -441,6 +441,14 @@ if (flag) {
 
 <!-- @[highlight_else_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+if (flag) {
+  // ...
+} else { // else 与其前面的大括号 } 之间增加空格。
+  // ...
+}
+```
+
 **【正例】**
 
 <!-- @[many_properties_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
