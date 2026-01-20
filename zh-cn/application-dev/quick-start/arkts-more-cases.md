@@ -673,6 +673,15 @@ let obj: Record<string, number | string> = {
 
 <!-- @[ts_index_signature_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
 
+``` TypeScript
+function foo3(obj: { [key: string]: string}): string {
+  if (obj != undefined && obj != null) {
+    return obj.value1 + obj.value2;
+  }
+  return '';
+}
+```
+
 **建议改法**
 
 <!-- @[include_index_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
