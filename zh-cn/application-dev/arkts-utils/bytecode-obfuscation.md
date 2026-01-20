@@ -562,6 +562,13 @@ export const add: (a: number, b: number) => number;
 
 <!-- @[etsOptionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->      
 
+``` TypeScript
+// test.ets
+import testNapi from 'libentry.so'
+// ...
+testNapi.add(2, 3); // add需要保留，示例如：-keep-property-name foo。
+```
+
 4.JSON数据解析及对象序列化时，需要保留使用到的字段，例如：
 
 <!-- @[optionExample_keepPropertyName3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->        
