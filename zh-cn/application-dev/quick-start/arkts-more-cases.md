@@ -1093,6 +1093,14 @@ function test(str: string, obj: Record<string, Object>) {
 
 <!-- @[ts_no_destruct_assignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
 
+``` TypeScript
+let map = new Map<string, string>([['a', 'a'], ['b', 'b']]);
+for (let [key, value] of map) {
+  console.info(key);
+  console.info(value);
+}
+```
+
 **建议改法**
 
 使用数组。
