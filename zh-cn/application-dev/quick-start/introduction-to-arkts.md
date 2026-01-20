@@ -1320,6 +1320,13 @@ class C1 {
 
 <!-- @[annotation_omit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->   
 
+``` TypeScript
+@MyAnno
+class C4 {
+  // ...
+}
+```
+
 
 **导入和导出注解**
 注解也可以被导入导出。针对导出，当前仅支持在定义时的导出，即`export @interface`的形式。<br>
