@@ -740,6 +740,14 @@ let t:T = { foo: (value) => { return value } };
 
 <!-- @[include_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
 
+``` TypeScript
+interface T {
+  foo: (value: number) => number
+}
+
+let t:T = { foo: (value) => { return value } };
+```
+
 **建议改法2**
 
 <!-- @[include_method_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
