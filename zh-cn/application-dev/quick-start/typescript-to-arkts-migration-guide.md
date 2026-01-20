@@ -543,6 +543,19 @@ ArkTS不允许类中存在多个静态块。如果存在多个静态块语句，
 
 <!-- @[no_multipleStaticBlocks_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMultipleStaticBlocks.ts) -->   
 
+``` TypeScript
+class C {
+  static s: string
+
+  static {
+    C.s = 'aa'
+  }
+  static {
+    C.s = C.s + 'bb'
+  }
+}
+```
+
 **ArkTS**
 
 <!-- @[no_multipleStaticBlocks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoMultipleStaticBlocks.ets) -->   
