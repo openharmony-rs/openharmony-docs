@@ -566,6 +566,20 @@ ArkTS不允许index signature，改用数组。
 
 <!-- @[no_intersectionTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoIntersectionTypes.ts) -->   
 
+``` TypeScript
+interface Identity {
+  id: number
+  name: string
+}
+
+interface Contact {
+  email: string
+  phoneNumber: string
+}
+
+type Employee = Identity & Contact
+```
+
 **ArkTS**
 
 <!-- @[no_intersectionTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIntersectionTypes.ets) -->  
