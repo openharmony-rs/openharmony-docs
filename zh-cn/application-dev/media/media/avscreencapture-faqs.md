@@ -11,6 +11,10 @@
 
 实例数量超出规格限制，当前规格为每种数据格式最多两个实例。建议释放多余实例后再使用新实例。
 
+可能原因：录屏过程中，点击不允许、在通知栏停止录屏和通话打断录屏后，未释放资源。
+
+解决方法：在录屏过程中因为状态改变导致录屏停止后，需要在[状态回调](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback)中，对录屏资源进行异步释放。
+
 录屏会话限制策略：
 
 1. 客户端应用数量上限4个，比如会议屏幕共享、会议投屏、后台听歌识曲、系统录屏同时存在。
@@ -21,6 +25,3 @@
 
 如需在通话中开启录屏，可使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置蜂窝通话时是否保持录屏。
 
-## 录屏过程中，点击不允许、在通知栏停止录屏和通话打断录屏后，无法重新开始录屏。
-
-在录屏过程中因为状态改变导致录屏停止后，需要在[状态回调](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback)中，对录屏资源进行异步释放。
