@@ -319,20 +319,10 @@ test(a2);
 开启文件/文件夹名称混淆，效果如下：
 
   <!-- @[testOptionExample_enableFilenameObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/test1/test2.ts) -->         
-
-
-  ```ts
-  // example.ts
-  // 混淆前：
-  import * as m from '../test1/test2';
-  import { foo } from '../test1/test2';
-
-  m.foo();
-  foo();
-  async function func() {
-    const modules = await import('../test1/test2');
-    const result = modules.foo();
-  }
+  
+  ``` TypeScript
+  // test1/test2.ts
+  export function foo () {}
   ```
 
   <!-- @[optionExample_enableFilenameObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
