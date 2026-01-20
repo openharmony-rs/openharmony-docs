@@ -1066,6 +1066,14 @@ function foo(a: A | null) {
 **导出默认导出的对象**
 <!-- @[module_default_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
 
+``` TypeScript
+class Demo{
+  constructor(){
+  }
+}
+export default new Demo();
+```
+
 ### 导入
 
 **静态导入**
