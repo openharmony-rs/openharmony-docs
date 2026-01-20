@@ -3740,7 +3740,7 @@ struct Index {
         .onClick(() => {
           // 取消监听单个回调函数
           let callback = (swipeInward: gestureEvent.SwipeInward) => {
-            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            console.info(`Monitor on success ${JSON.stringify(swipeInward)}`);
             return false;
           };
           try {
@@ -3769,7 +3769,7 @@ struct Index {
         .onClick(() => {
           // 取消监听所有回调函数
           let callback = (swipeInward: gestureEvent.SwipeInward) => {
-            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            console.info(`Monitor on success ${JSON.stringify(swipeInward)}`);
             return false;
           };
           try {
