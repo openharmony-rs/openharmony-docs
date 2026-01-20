@@ -44,6 +44,10 @@ hi = 'hello, world';
 
 <!-- @[const_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
+``` TypeScript
+const hello: string = 'hello';
+```
+
 对常量重新赋值会造成编译时错误。
 
 **自动类型推断**
