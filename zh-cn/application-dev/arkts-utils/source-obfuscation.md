@@ -183,6 +183,17 @@ test(a2);
 * ArkUI组件中的属性名不会被混淆。例如，下面例子中的`message`和`data`不会被混淆。
 
   <!-- @[etsOptionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->
+  
+  ``` TypeScript
+  // example.ets
+  @Component struct MyExample {
+    @State message: string = "hello";
+    data: number[] = [];
+    // ...
+    build() {
+    }
+  }
+  ```
 
 * 被[保留选项](#-keep-property-name)指定的属性名不会被混淆。
 * SDK API列表中的属性名不会被混淆。SDK API列表是构建时从SDK中自动提取出来的一个名称列表。其缓存文件为systemApiCache.json，路径为工程目录/build/default/cache/{...}/release/obfuscation。
