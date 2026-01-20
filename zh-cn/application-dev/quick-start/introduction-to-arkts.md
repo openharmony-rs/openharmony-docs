@@ -33,6 +33,11 @@ ArkTS通过声明引入变量、常量、类型和函数。
 
 <!-- @[variable_reassignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
+``` TypeScript
+let hi: string = 'hello';
+hi = 'hello, world';
+```
+
 **常量声明**
 
 使用关键字`const`声明的常量为只读类型，只能被赋值一次。
