@@ -1647,9 +1647,12 @@ struct Index {
 }
 ```
 
-上面的代码中，由于\@SyncMonitor入参传入非状态变量'name'，编译会报错。建议开发者去除对name属性的监听或者给name加上\@Trace装饰成为状态变量。
+上面的代码中，由于\@SyncMonitor入参传入非状态变量'name'，编译会告警。建议开发者去除对name属性的监听或者给name加上\@Trace装饰成为状态变量。
 
 当点击按钮同时更改状态变量age和非状态变量name时，会输出以下日志：
+```text
+property path:age change from 24 to 25
+```
 
 【正例1】
 
@@ -1703,7 +1706,7 @@ class Info {
     return this.age; // age为非状态变量
   }
 
-  // 监听非@Computed装饰的getter访问器，编译会报错
+  // 监听非@Computed装饰的getter访问器，编译会告警
   @SyncMonitor('myAge')
   onPropertyChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
