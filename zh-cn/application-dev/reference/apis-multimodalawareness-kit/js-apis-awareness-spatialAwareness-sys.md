@@ -20,7 +20,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.TechnologyType
 
-提供信号类型。
+提供输入信号的类型。接口根据输入信号类型，执行对应算法。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -34,7 +34,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.ReportingMode
 
-测距后返回结果的上报模式。
+测距接口执行完成后结果的上报模式。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -45,20 +45,20 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.DistanceRank
 
-距离档位。
+测距结果的距离挡位，不同的挡位对应不同的距离范围。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 | 名称                                 | 值                | 说明                   |
 | ------------------------------------ | ------------------| -----------------------|
-| RANK_ULTRA_SHORT_RANGE               | rankUltraShort    | 表示超短距。           |
-| RANK_SHORT_RANGE                     | rankShort         | 表示短距。             |
-| RANK_SHORT_MEDIUM_RANGE              | rankMediumShort   | 表示中短距。           |
-| RANK_MEDIUM_RANGE                    | rankMedium        | 表示中距。             |
+| RANK_ULTRA_SHORT_RANGE               | rankUltraShort    | 表示超短距。单位:cm，范围:[0:5]    |
+| RANK_SHORT_RANGE                     | rankShort         | 表示短距。单位:cm，范围:(5:100]     |
+| RANK_SHORT_MEDIUM_RANGE              | rankMediumShort   | 表示中短距。单位:cm，范围:(100:500] |
+| RANK_MEDIUM_RANGE                    | rankMedium        | 表示中距。单位:cm，范围:(500:1000]  |
 
 ## spatialAwareness.DistanceMeasurementResponse
 
-测距结果。
+测距接口执行完成后的回调结果。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -71,7 +71,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.PositionRelativeToDoor
 
-门内或者门外。
+门内外识接口返回结果中表示门内或门外位置的枚举。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -82,7 +82,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.DoorPositionResponse
 
-门位置信息。
+门内外识别接口执行完成后的回调结果。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -94,7 +94,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.DistanceMeasurementConfigParams
 
-测距接口配置参数。
+测距接口的输入参数配置。根据不同的参数配置，执行对应的算法。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -103,12 +103,15 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 | deviceList         | string[]              | 是         | 否 | 表示设备列表。|
 | techType           | TechnologyType        | 是         | 否 | 表示信号类型。|
 | reportMode         | ReportingMode         | 是         | 否  | 表示结果上报模式。|
+| reportFrequency    | int                   | 是         | 否  | 表示结果上报频率。|
 
-## spatialAwareness.onDistanceMeasure
+## spatialAwareness.onDistanceMeasure<sup>23+</sup>
 
 onDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
-订阅测距事件后，返回测距结果。
+订阅测距接口。触发测距算法执行，并返回测距结果。
+
+**需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -125,7 +128,7 @@ onDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback: Callb
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system application. |
+| 201      | Permission denied. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100002 | Subscription failed. |
@@ -135,28 +138,30 @@ onDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback: Callb
 
 ```ts
 import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
-   console.info('calllOnDistanceMeasure before');
+   console.info('call onDistanceMeasure before');
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
       reportingMode: 0,
       reportFrequency: 340
    };
-   console.info('calllOnDistanceMeasure start');
+   console.info('call onDistanceMeasure start');
    try {
       spatialAwareness.onDistanceMeasure(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('distanceMeasure result' + ${data.distance});
+         console.info('result = ' + ${data.distance});
       });
    } catch (err) {
-      console.error('distanceMeasure:, errCode = ' + err.code);
+      console.error('call onDistanceMeasure failed, errCode = ' + err.code);
    }
 ```
 
-## spatialAwareness.offDistanceMeasure
+## spatialAwareness.offDistanceMeasure<sup>23+</sup>
 
 offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
-取消订阅测距事件。取消订阅测距事件后，不会发生测距。
+取消订阅测距接口。停止运行已订阅的测距算法。
+
+**需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -165,7 +170,7 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Cal
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数 |
-| callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | 是   | 回调函数，返回测距结果。                                 |
+| callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | 否   | 回调函数，返回测距结果。                                 |
 
 **错误码**：
 
@@ -173,7 +178,7 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Cal
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system application. |
+| 201      | Permission denied. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |
@@ -183,27 +188,30 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Cal
 
 ```ts
 import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
-   console.info('calllOnDistanceMeasure before');
+   console.info('call offDistanceMeasure before');
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
       reportingMode: 0,
       reportFrequency: 340
    };
-   console.info('calllOnDistanceMeasure start');
+   console.info('call offDistanceMeasure start');
    try {
       spatialAwareness.offDistanceMeasure(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('distanceMeasure result' + ${data.distance});
+         console.info('result = ' + ${data.distance});
       });
    } catch (err) {
-      console.error('distanceMeasure:, errCode = ' + err.code);
+      console.error('call offDistanceMeasure failed, errCode = ' + err.code);
    }
 ```
 
-## spatialAwareness.onIndoorOrOutdoorIdentify
+## spatialAwareness.onIndoorOrOutdoorIdentify<sup>23+</sup>
 
 onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callback: Callback&lt;DoorPositionResponse&gt;): void;
-订阅门内外识别事件后返回结果。返回设备在门内还是门外的信息。
+
+订阅门内外识别接口。触发门内外识别算法执行，并返回设备在门内还是门外的信息。
+
+**需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -220,7 +228,7 @@ onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callbac
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system application. |
+| 201      | Permission denied. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100002 | Subscription failed. |
@@ -230,28 +238,30 @@ onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callbac
 
 ```ts
 import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
-   console.info('calllOnDistanceMeasure before');
+   console.info('call onIndoorOrOutdoorIdentify before');
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
       reportingMode: 0,
       reportFrequency: 340
    };
-   console.info('calllOnDistanceMeasure start');
+   console.info('call onIndoorOrOutdoorIdentify start');
    try {
       spatialAwareness.onIndoorOrOutdoorIdentify(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('distanceMeasure result' + ${data.position});
+         console.info('result = ' + ${data.position});
       });
    } catch (err) {
-      console.error('distanceMeasure:, errCode = ' + err.code);
+      console.error('call onIndoorOrOutdoorIdentify failed, errCode = ' + err.code);
    }
 ```
 
-## spatialAwareness.offIndoorOrOutdoorIdentify
+## spatialAwareness.offIndoorOrOutdoorIdentify<sup>23+</sup>
 
 offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callback?: Callback&lt;DoorPositionResponse&gt;): void;
 
-取消识别门内外订阅事件。不返回门内外信息。
+取消订阅门内外识别接口。停止运行已订阅的门内外识别算法。
+
+**需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -260,7 +270,7 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callba
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数 |
-| callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | 是   | 回调函数，返回门内外信息。                                   |
+| callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | 否   | 回调函数，返回门内外信息。                                   |
 
 **错误码**：
 
@@ -268,7 +278,7 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callba
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system application. |
+| 201      | Permission denied. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |
@@ -278,19 +288,19 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callba
 
 ```ts
 import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
-   console.info('calllOnDistanceMeasure before');
+   console.info('call offIndoorOrOutdoorIdentify before');
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
       reportingMode: 0,
       reportFrequency: 340
    };
-   console.info('calllOnDistanceMeasure start');
+   console.info('call offIndoorOrOutdoorIdentify start');
    try {
       spatialAwareness.offIndoorOrOutdoorIdentify(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('distanceMeasure result' + ${data.position});
+         console.info('result = ' + ${data.position});
       });
    } catch (err) {
-      console.error('distanceMeasure:, errCode = ' + err.code);
+      console.error('call offIndoorOrOutdoorIdentify failed, errCode = ' + err.code);
    }
 ```
