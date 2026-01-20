@@ -403,7 +403,7 @@ The following figure shows the key points contained during the **Web** component
 | event_message: commit navigation in main frame, routing_id: 4, url: *** | The navigation is committed to the child process.|
 | RenderFrameImpl::CommitNavigation,<br> event_message: page load start | The child process receives the commit message.|
 | NWebHandlerDelegate::OnNavigationEntryCommitted,<br> event_message: Commit source_id xxx | The main process receives **DidCommitNavigation**.|
-| event_message: load_timing_info errpr_code:0,...| The main resource loading is complete, and the time required for each phase is displayed.|
+| event_message: load_timing_info error_code:0,...| The main resource loading is complete, and the time required for each phase is displayed.|
 | event_message: MarkFirstContentfulPaint| The tag identifies an element with displayable content.|
 | NWebHandlerDelegate::OnPageVisible| The first frame is displayed.|
 | NWebHandlerDelegate::OnFirstContentfulPaint| The first frame content is displayed.|

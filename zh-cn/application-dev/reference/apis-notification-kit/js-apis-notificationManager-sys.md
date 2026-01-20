@@ -5604,8 +5604,6 @@ onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<number\>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 try{
     notificationManager.onBadgeNumberQuery(
         async (bundleOption: notificationManager.BundleOption) => {
@@ -5644,8 +5642,6 @@ offBadgeNumberQuery(): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 try{
     notificationManager.offBadgeNumberQuery();
 } catch(err) {

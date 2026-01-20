@@ -6,7 +6,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 ```c
-typedef struct {...} Http_EventsHandler
+typedef struct Http_EventsHandler {...} Http_EventsHandler
 ```
 
 ## 概述
