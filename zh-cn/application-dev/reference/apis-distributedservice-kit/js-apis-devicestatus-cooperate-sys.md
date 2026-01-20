@@ -590,6 +590,7 @@ try {
 
 ```ts
 // 取消注册所有回调函数
+import { cooperate } from '@kit.DistributedServiceKit';
 function callbackOn(msg: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
   return false;
@@ -1339,6 +1340,7 @@ on(type: 'cooperate', callback: Callback&lt;{ networkId: string, msg: CooperateM
 **示例**：
 
 ```ts
+import { cooperate } from '@kit.DistributedServiceKit';
 class Data {
   networkId: string = "networkId";
   msg: cooperate.CooperateMsg = 0;
