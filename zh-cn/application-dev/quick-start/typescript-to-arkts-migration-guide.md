@@ -1454,6 +1454,16 @@ ArkTS不支持类和接口的声明合并。
  
 <!-- @[no_declMerging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDeclMerging.ets) -->    
 
+``` TypeScript
+interface Document {
+  createElement(tagName: number): number;
+  createElement(tagName: boolean): boolean;
+  createElement(tagName: string, value: number): number;
+  createElement(tagName: string): string;
+  createElement(tagName: Object): object;
+}
+```
+
 ### 接口不能继承类
 
 **规则：**`arkts-extends-only-class`
