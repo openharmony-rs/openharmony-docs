@@ -64,7 +64,7 @@ A constructor used to create a **ComponentContent** object.
 
 | Name   | Type                                     | Mandatory| Description                              |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | UI context required for creating the node.|
+| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | UI context required for creating a node.|
 | builder  | [WrappedBuilder\<[T]>](../../ui/state-management/arkts-wrapBuilder.md) | Yes  |   **WrappedBuilder** object that encapsulates a builder function that has parameters.|
 | args     |     T     |   Yes  |   Parameters of the builder function encapsulated in the **WrappedBuilder** object.|
 
@@ -82,7 +82,7 @@ A constructor used to create a **ComponentContent** object.
 
 | Name   | Type                                     | Mandatory| Description                              |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | UI context required for creating the node.|
+| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | UI context required for creating a node.|
 | builder  | [WrappedBuilder\<[T]>](../../ui/state-management/arkts-wrapBuilder.md) | Yes  |   **WrappedBuilder** object that encapsulates a builder function that has parameters.|
 | args     |     T     |   Yes  |   Parameters of the builder function encapsulated in the **WrappedBuilder** object.|
 | options | [BuildOptions](./js-apis-arkui-builderNode.md#buildoptions12)                                                    | Yes  |  Build options, which determine whether to support the behavior of nesting **@Builder** within **@Builder**.                                        |
@@ -228,7 +228,7 @@ Triggers component reuse for custom components under this **ComponentContent**. 
 
 | Name| Type  | Mandatory| Description                                                                    |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| param  | Object | No  | Parameters for **ComponentContent** reuse. This parameter is passed to all top-level custom components within the **ComponentContent** during reuse and must include all required constructor parameters for each component; otherwise, undefined behavior may occur. Calling this method synchronously triggers the [aboutToReuse](../../reference//apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) lifecycle callback of internal custom components, with this parameter as the callback input. The default value is undefined. In this case, the custom component in ComponentContent directly uses the data source during construction.|
+| param  | Object | No  | Parameters for **ComponentContent** reuse. This parameter is passed to all top-level custom components within the **ComponentContent** during reuse and must include all required constructor parameters for each component; otherwise, undefined behavior may occur. Calling this method synchronously triggers the [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) lifecycle callback of internal custom components, with this parameter as the callback input. The default value is undefined. In this case, the custom component in ComponentContent directly uses the data source during construction.|
 
 ### recycle
 
@@ -617,7 +617,7 @@ Checks whether this **ComponentContent** object has released its reference to it
 
 | Type   | Description              |
 | ------- | ------------------ |
-| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite.
+| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite.|
 
 **Example**
 
@@ -709,7 +709,7 @@ Sets whether this **ComponentContent** object inherits the freeze policy from it
 
 | Name| Type  | Mandatory| Description                                                                    |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| enabled  | boolean | Yes | Whether the current **ComponentContent** object inherits the freeze policy from its parent component's custom components. The value **true** means to inherit the freeze policy from parent component's custom components, and **false** means the opposite.|
+| enabled  | boolean | Yes | Whether the current **ComponentContent** object inherits the freeze policy from its parent component's custom components. The value **true** means to inherit the freeze policy from the parent component's custom components, and **false** means the opposite.|
 
 **Example**
 
@@ -896,7 +896,7 @@ struct TextBuilder {
 }
 ```
 
-
+![](figures/component_content_inheritFreezeOptions.gif)
 
 ## ReactiveComponentContent<sup>22+</sup>
 
@@ -921,7 +921,7 @@ Constructor of ReactiveComponentContent.
 | Name   | Type                                     | Mandatory| Description                              |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
 | uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | UI context for node creation.|
-| builder  | [WrappedBuilder\<[T]>](../../ui/state-management/arkts-wrapBuilder.md) | Yes  |   Encapsulates the WrappedBuilder object of the @Builder function with parameters.|
+| builder  | [WrappedBuilder\<T>](../../ui/state-management/arkts-wrapBuilder.md) | Yes  |   Encapsulates the WrappedBuilder object of the @Builder function with parameters.|
 | config | [BuildOptions](./js-apis-arkui-builderNode.md#buildoptions12)  | Yes  |  Configures the build behavior of the builder. All attributes in BuildOptions are optional. The default value is the corresponding default value in BuildOptions.                                       |
 | ...args     | T      | No  | Parameters of the builder function encapsulated in the **WrappedBuilder** object. Transfers external data to the WrappedBuilder&lt;T&gt and build functions specified in the constructor. Multiple input parameters are supported. The default value is **undefined**.|
 
@@ -994,6 +994,7 @@ struct Index {
 reuse(param?: Object): void
 
 Triggers component reuse for custom components under this **ReactiveComponentContent**. For details about component reuse, see [\@Reusable Decorator: Reusing Components](../../ui/state-management/arkts-reusable.md). For details about the scenarios involving **ReactiveComponentContent** unbinding, see [Canceling the Reference to the Entity Node](../../ui/arkts-user-defined-arktsNode-builderNode.md#canceling-the-reference-to-the-entity-node).
+
 **ReactiveComponentContent** completes the reuse event transfer between internal and external custom components through **reuse** and [recycle](#recycle). For specific usage scenarios, see [Implementing Node Reuse with the BuilderNode reuse and recycle APIs](../../ui/arkts-user-defined-arktsNode-builderNode.md#implementing-node-reuse-with-the-buildernode-reuse-and-recycle-apis).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
@@ -1004,7 +1005,7 @@ Triggers component reuse for custom components under this **ReactiveComponentCon
 
 | Name| Type  | Mandatory| Description                                                                    |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| param  | Object | No  | Parameter used to reuse [ReactiveComponentContent](./js-apis-arkui-builderNode.md#reactivebuildernode22). This parameter is directly used for reusing all top-level custom components in ReactiveComponentContent. It should contain the content required by the constructor parameters of each custom component. Otherwise, undefined behavior may occur. Calling this method synchronously triggers the [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) lifecycle callback of internal custom components, with this parameter as the callback input. The default value is undefined. In this case, the custom component in ReactiveComponentContent directly uses the data source during construction.|
+| param  | Object | No  | Parameter used to reuse [ReactiveComponentContent](./js-apis-arkui-builderNode.md#reactivebuildernode22). This parameter is directly used for reusing all top-level custom components in **ReactiveComponentContent**. It should contain the content required by the constructor parameters of each custom component. Otherwise, undefined behavior may occur. Calling this method synchronously triggers the [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) lifecycle callback of internal custom components, with this parameter as the callback input. The default value is undefined. In this case, the custom component in ReactiveComponentContent directly uses the data source during construction.|
 
 **Example**
 
@@ -1432,7 +1433,7 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
+![](figures/ReactiveComponentContent_updateConfiguration.gif)
 
 ### flushState<sup>22+</sup>
 
@@ -1555,7 +1556,7 @@ struct Index {
 }
 ```
 
-
+![](figures/ReactiveComponentContent_flushState.gif)
 
 ### inheritFreezeOptions<sup>22+</sup>
 
@@ -1565,7 +1566,7 @@ Checks whether this **ReactiveComponentContent** object inherits the [freeze pol
 
 > **NOTE**
 >
-> When **inheritFreezeOptions** is set to **true** for a **ReactiveComponentContent** object, and its parent component is a custom component, **BuilderNode**, **ComponentContent**, **ReactiveBuilderNode**, or **ReactiveComponentContent**, it will inherit the parent component's freeze policy. If the current component acts as a child custom component, its freeze policy will not be propagated to its own child components.
+> When **inheritFreezeOptions** is set to **true** for a **ReactiveComponentContent** object, and its parent component is a custom component, **BuilderNode**, **ComponentContent**, **ReactiveBuilderNode**, or **ReactiveComponentContent**, it will inherit the parent component's freeze policy. If the child component is a custom component, its freeze policy is not transferred to the child component.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1761,13 +1762,13 @@ struct TextBuilder {
 }
 ```
 
-
+![](figures/reactive_component_content_inheritFreezeOptions.gif)
 
 ### isDisposed<sup>22+</sup>
 
 isDisposed(): boolean
 
-Queries whether the current ReactiveComponentContent object has been unbound from the backend entity node. All frontend nodes are bound to corresponding backend entity nodes. After **dispose()** is called, subsequent calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
+Queries whether the current **ReactiveComponentContent** object has been unbound from the backend entity node. All frontend nodes are bound to corresponding backend entity nodes. After **dispose()** is called, subsequent calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
 
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
@@ -1778,7 +1779,7 @@ Queries whether the current ReactiveComponentContent object has been unbound fro
 
 | Type   | Description              |
 | ------- | ------------------ |
-| boolean | Whether the reference to the backend node is released.<br>**true**: The node has been unreferenced from the backend entity node. false: The node has not been unreferenced from the backend entity node.|
+| boolean | Whether the reference to the backend node is released.<br>The value **true** means that the reference to backend node is released, and **false** means the opposite.|
 
 **Example**
 
@@ -1905,4 +1906,3 @@ struct Index {
 ```
 
 ![](figures/ReactiveComponentContent_isDisposed.gif)
-<!--no_check-->

@@ -34,19 +34,19 @@
 
 **场景1:**
 
-![场景1](figures/gesture-senario-01.png)
+![场景1](figures/gesture-scenario-01.png)
 
 Pan A与Pan B为相同阈值条件的滑动手势，Pan B为子组件上的，因此优先级高于父组件上的Pan A，Pan B优先响应成功；
 
 **场景2:**
 
-![场景2](figures/gesture-senario-02.png)
+![场景2](figures/gesture-scenario-02.png)
 
 Pan A与 Pan B为不同阈值条件的滑动手势，Pan B为子组件上的，优先级高于父组件上的Pan A，但由于Pan A的阈值小，因此在相同的报点序列情况下，Pan A会优先判定成功；但要注意的是，如果移动速度特别快，那么同一个报点的间距可能都可以使Pan A和Pan B成功，那么这时候就会是Pan B竞争成功，因为是B先处理报点。
 
 **场景3:**
 
-![场景3](figures/gesture-senario-03.png)
+![场景3](figures/gesture-scenario-03.png)
 
 以实际操作能够响应的手势为准；
 

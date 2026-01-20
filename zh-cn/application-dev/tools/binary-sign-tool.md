@@ -1,17 +1,18 @@
 # 二进制签名工具
-<!--Kit: Ability Kit-->
+<!--Kit: Common-->
 <!--Subsystem: Security-->
-<!--Owner: @xia-bubai-->
-<!--Designer: @linshuqing; @hehehe-li-->
-<!--Tester: @leiyuqian-->
+<!--Owner: @zhanganxiang-->
+<!--Designer: @renzehua; @huangjieliang; @zhanganxiang-->
+<!--Tester: @rongwei-->
 <!--Adviser: @zengyawen-->
 
-Binary Sign Tool （二进制签名工具），是用于在OpenHarmony PC/2in1设备上对二进制文件进行代码签名的工具，支持通过命令行的方式对标准ELF文件进行代码签名或打印已签名ELF的证书信息。
+Binary Sign Tool （二进制签名工具），用于对二进制文件进行代码签名，支持通过命令行的方式对标准ELF文件进行代码签名或打印已签名ELF的权限、证书信息。
 
-工具可以在本地下载的OpenHarmony的SDK库toolchains/lib中找到，文件名为binary-sign-tool。
+## 命令行工具获取
 
-## 环境说明
-在使用本工具前，开发者需要先获取[hdc](../dfx/hdc.md)工具，执行hdc shell命令。
+- 支持运行在Linux平台的工具：下载最新的[Command Line Tools](command-line-tools-overview.md)，可以在SDK库openHarmony/toolchains/lib中找到，文件名为binary-sign-tool。
+
+- 支持运行在OpenHarmony PC/2in1平台的工具：从应用商店下载安装DevBox软件，无需额外配置，即可在终端窗口中执行binary-sign-tool命令。
 
 ## 二进制签名工具命令列表
 
@@ -50,8 +51,10 @@ binary-sign-tool -help
 **示例**：
 
 ```bash
-# 对二进制文件签名
+# 使用证书对二进制文件签名
 binary-sign-tool sign -keyAlias "oh-app1-key-v1" -signAlg "SHA256withECDSA" -appCertFile "app1.pem" -profileFile "app1-profile.p7b" -profileSigned "1" -inFile "unsigned-elf" -keystoreFile "ohtest.p12" -outFile "signed-elf" -keyPwd "123456" -keystorePwd "123456" -moduleFile "module.json"
+# 无证书对二进制文件自签名
+binary-sign-tool sign -inFile "unsigned-elf" -outFile "signed-elf" -selfSign "1"
 # 执行结果
 write code sign data success.
 ```
@@ -70,6 +73,11 @@ write code sign data success.
 # 打印二进制文件签名证书信息
 binary-sign-tool display-sign -inFile "signed-elf"
 # 执行结果 
+# 权限信息输出
+# 1. 无权限信息
+permission is not found
+# 2. 输出权限信息
+# 签名信息输出
 # 1. 无代码签名
 code signature is not found
 # 2. 自签名模式

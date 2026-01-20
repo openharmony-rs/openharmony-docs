@@ -10,10 +10,9 @@ The **RenderNode** module provides APIs for creating a RenderNode in custom draw
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
->
-> Avoid modifying RenderNodes in [BuilderNode](./js-apis-arkui-builderNode.md). The [FrameNode](./js-apis-arkui-frameNode.md) associated with BuilderNode is designed solely for mounting the BuilderNode as a child component. Modifying properties or operations on the FrameNode's child nodes or their corresponding RenderNodes may lead to undefined behavior, including display, event handling, and stability issues.
+> - Avoid modifying RenderNodes in [BuilderNode](./js-apis-arkui-builderNode.md). The [FrameNode](./js-apis-arkui-frameNode.md) associated with BuilderNode is designed solely for mounting the BuilderNode as a child component. Modifying attributes or operations on the FrameNode's child nodes or their corresponding RenderNodes may lead to undefined behavior, including display, event handling, and stability issues.
 
 ## Modules to Import
 
@@ -153,7 +152,7 @@ Inserts a child node after the specified child node of this RenderNode.
 | Name | Type                                       | Mandatory| Description                                                                        |
 | ------- | ------------------------------------------- | ---- | ---------------------------------------------------------------------------- |
 | child   | [RenderNode](#rendernode-1)                   | Yes  | Child node to add.                                                          |
-| sibling | [RenderNode](#rendernode-1) \| null | Yes  | Node after which the new child node will be inserted. If this parameter is left empty, the new node is inserted before the first subnode.|
+| sibling | [RenderNode](#rendernode-1)&nbsp;\|&nbsp;null | Yes  | Node after which the new child node will be inserted. If this parameter is left empty, the new node is inserted before the first subnode.|
 
 **Error codes**
 
@@ -409,7 +408,7 @@ struct Index {
               // Return null if the renderNode has no child node at index 10.
               console.error(`the ${i} of renderNode's childNode is null`);
             } else {
-              // Obtain the child node and log its properties.
+              // Obtain the child node and log its attributes.
               console.info(`the ${i} of renderNode's childNode has a size of {${childNode.size.width},${childNode.size.height}}`);
             }
           }
@@ -1891,6 +1890,7 @@ struct Index {
 draw(context: DrawContext): void
 
 Performs drawing. You need to implement this API. It is called when the RenderNode performs drawing.
+
 Note: The Canvas provided in the [DrawContext](./js-apis-arkui-graphics.md#drawcontext) parameter is a temporary command-recording canvas, not the actual rendering canvas of the node. For usage instructions, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../ui/arkts-user-defined-arktsNode-renderNode.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 > **NOTE**
@@ -2722,7 +2722,7 @@ struct Index {
 
 set markNodeGroup(isNodeGroup: boolean)
 
-Sets whether to enable drawing priority for this node and its child nodes. When this feature is enabled, visual properties like opacity are applied during composition after drawing completes. The configuration result is as follows.
+Sets whether to enable drawing priority for this node and its child nodes. When this feature is enabled, visual attributes like opacity are applied during composition after drawing completes. The configuration result is as follows.
 
 ![markNodeGroup](./figures/renderNode-markNodeGroup.png)
 
@@ -2734,7 +2734,7 @@ Sets whether to enable drawing priority for this node and its child nodes. When 
 
 | Name   | Type                                              | Mandatory| Description              |
 | --------- | -------------------------------------------------- | ---- | ------------------ |
-| isNodeGroup | boolean | Yes  | Whether to enable drawing priority for the node and its child nodes.<br>**true**: Enable drawing priority. **false**: Disable drawing priority.|
+| isNodeGroup | boolean | Yes  | Whether to enable drawing priority for this node and its child nodes.<br>**true**: Enable drawing priority. **false**: Disable drawing priority.|
 
 get markNodeGroup(): boolean
 
@@ -2914,7 +2914,7 @@ Checks whether this RenderNode object has released its reference to its backend 
 
 | Type   | Description              |
 | ------- | ------------------ |
-| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite.
+| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite.|
 
 **Example**
 

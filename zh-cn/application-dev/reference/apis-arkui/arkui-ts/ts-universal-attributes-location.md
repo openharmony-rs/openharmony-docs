@@ -93,7 +93,7 @@ position(value: Position | Edges | LocalizedEdges): T
 > **说明：**
 > 
 > - position对位置的影响作用在组件的尺寸测量完成之后。
-> - 当父容器为Row/Column/Flex时，设置position的子组件不占位。
+> - 当父容器为[Row](./ts-container-row.md)、[Column](./ts-container-column.md)或[Flex](./ts-container-flex.md)时，设置position的子组件不占位。
 > - Position类型基于父组件内容区左上角确定位置；Edges类型基于父组件内容区四边确定位置，top/left/right/bottom分别为组件各边距离父组件内容区相应边的边距，通过边距来确定组件相对于父组件内容区的位置；LocalizedEdges类型基于父组件内容区四边确定位置，支持镜像模式。
 > - 本属性适用于置顶显示、悬浮按钮等组件在父容器中位置固定的场景。
 > - 本属性不支持在宽高为零的布局容器上设置。
@@ -590,7 +590,7 @@ struct Example3 {
 ### 示例4（镜像效果）
 
 通用布局属性支持[镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)。
-下述示例从上到下依次通过[position](#position)，[offset](#offset)，[markAnchor](#markanchor)实现镜像效果，为对比镜像前后的差异，浅蓝色赋值为原本效果，深蓝色赋值为镜像效果。
+下述示例从上到下依次通过[position](#position)，[offset](#offset)，[markAnchor](#markanchor)实现镜像效果，为对比镜像前后的差异，浅蓝色对应镜像前效果，深蓝色对应镜像后效果。
 
 ```ts
 // xxx.ets

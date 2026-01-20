@@ -18,7 +18,7 @@ Provides the enum variables, structures, and macros used in the SCSI Peripheral 
 
 **Since**: 18
 
-**Related module**: [SCSIPeripheralDDK](capi-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
 
 ## Summary
 
@@ -96,3 +96,87 @@ Enumerates the SCSI status codes used for the response.
 | SCSIPERIPHERAL_STATUS_TASK_SET_FULL = 0x28 | Task set already full.|
 | SCSIPERIPHERAL_STATUS_ACA_ACTIVE = 0x30 | ACA activity status.|
 | SCSIPERIPHERAL_STATUS_TASK_ABORTED = 0x40 | Task aborted.|
+
+### SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE
+
+```c
+SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE 8
+```
+
+**Description**
+
+Minimum length of the sensing data in the descriptor format.
+
+**Since**: 18
+
+### SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE
+
+```c
+SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE 18
+```
+
+**Description**
+
+Minimum length of the sensing data in a fixed format.
+
+**Since**: 18
+
+### SCSIPERIPHERAL_MAX_CMD_DESC_BLOCK_LEN
+
+```c
+SCSIPERIPHERAL_MAX_CMD_DESC_BLOCK_LEN 16
+```
+
+**Description**
+
+Maximum length of a command description block.
+
+**Since**: 18
+
+### SCSIPERIPHERAL_MAX_SENSE_DATA_LEN
+
+```c
+SCSIPERIPHERAL_MAX_SENSE_DATA_LEN 252
+```
+
+**Description**
+
+Maximum length of the sensing data.
+
+**Since**: 18
+
+### SCSIPERIPHERAL_VENDOR_ID_LEN
+
+```c
+SCSIPERIPHERAL_VENDOR_ID_LEN 8
+```
+
+**Description**
+
+Length of a vendor ID.
+
+**Since**: 18
+
+### SCSIPERIPHERAL_PRODUCT_ID_LEN
+
+```c
+SCSIPERIPHERAL_PRODUCT_ID_LEN 16
+```
+
+**Description**
+
+Length of a product ID.
+
+**Since**: 18
+
+### SCSIPERIPHERAL_PRODUCT_REV_LEN
+
+```c
+SCSIPERIPHERAL_PRODUCT_REV_LEN 4
+```
+
+**Description**
+
+Length of a product revision version.
+
+**Since**: 18

@@ -9,7 +9,7 @@
 
 Ensure network connection during the operation.
 
-## Add the dynamic library in the CMake script.
+## Linking the Dynamic Library in the CMake Script
 ```txt
 target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```

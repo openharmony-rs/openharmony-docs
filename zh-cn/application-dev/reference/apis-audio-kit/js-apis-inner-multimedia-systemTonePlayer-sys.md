@@ -570,7 +570,7 @@ on(type: 'error', callback: ErrorCallback): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 systemTonePlayer.on('error', (err: BusinessError) => {
-  console.log("on error, err:" + JSON.stringify(err));
+  console.info(`Succeeded in using on function. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -610,7 +610,7 @@ systemTonePlayer.off('error');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let callback = (err: BusinessError) => {
-  console.log("on error, err:" + JSON.stringify(err));
+  console.info(`Succeeded in using on or off function. code: ${err.code}, message: ${err.message}`);
 };
 
 systemTonePlayer.on('error', callback);

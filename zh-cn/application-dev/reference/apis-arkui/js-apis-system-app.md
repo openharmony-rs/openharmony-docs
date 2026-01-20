@@ -45,7 +45,7 @@ import app, { AppResponse } from '@system.app';
 export default class Info {
   getInfo() {
     let info:AppResponse = app.getInfo();
-    console.log(JSON.stringify(info));
+    console.info(JSON.stringify(info));
   }
 }
 ```

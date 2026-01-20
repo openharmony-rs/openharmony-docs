@@ -47,6 +47,7 @@ Defines the structs of the HiDebug module.
 | [HiDebug_ErrorCode](#hidebug_errorcode) | HiDebug_ErrorCode | Enumerates the error codes used in the HiDebug module.|
 | [HiDebug_TraceFlag](#hidebug_traceflag) | HiDebug_TraceFlag | Enumerates the thread types for trace collection.|
 | [HiDebug_StackFrameType](#hidebug_stackframetype) | HiDebug_StackFrameType | Enumerates the stack frame types.|
+| [HiDebug_CrashObjType](#hidebug_crashobjtype) | HiDebug_CrashObjType | Enumerates the data types of debugging information.|
 
 ### Macros
 
@@ -146,6 +147,26 @@ Enumerates the stack frame types.
 | HIDEBUG_STACK_FRAME_TYPE_JS = 1 | JS stack frame.|
 | HIDEBUG_STACK_FRAME_TYPE_NATIVE = 2 | Native stack frame.|
 
+### HiDebug_CrashObjType
+
+```c
+enum HiDebug_CrashObjType
+```
+
+**Description**
+
+Enumerates the data types of debugging information.
+
+**Since**: 23
+
+| Enum Item| Description|
+| -- | -- |
+| HIDEBUG_CRASHOBJ_STRING = 0 | String.|
+| HIDEBUG_CRASHOBJ_MEMORY_64B = 1 | 64-byte memory block.|
+| HIDEBUG_CRASHOBJ_MEMORY_256B = 2 | 256-byte memory block.|
+| HIDEBUG_CRASHOBJ_MEMORY_1024B = 3 | 1024-byte memory block.|
+| HIDEBUG_CRASHOBJ_MEMORY_2048B = 4 | 2048-byte memory block.|
+| HIDEBUG_CRASHOBJ_MEMORY_4096B = 5 | 4096-byte memory block.|
 
 ## Macro Description
 

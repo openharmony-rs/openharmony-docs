@@ -27,13 +27,12 @@ startAbility接口由FA模型切换到Stage模型的示例：
   @Entry
   @Component
   struct PagePageAbilityFirst {
-    
     build() {
       Column() {
         List({ initialIndex: 0 }) {
           ListItem() {
             Flex({ justifyContent: FlexAlign.SpaceBetween, alignContent: FlexAlign.Center }) {
-              //...
+              // ...
             }
             .onClick(() => {
               (async (): Promise<void> => {
@@ -46,21 +45,16 @@ startAbility接口由FA模型切换到Stage模型的示例：
                   };
                   await featureAbility.startAbility({ want: want });
                   hilog.info(domain, TAG, `Start ability succeed`);
-                }
-                catch (error) {
+                } catch (error) {
                   hilog.error(domain, TAG, 'Start ability failed with ' + error);
                 }
               })()
             })
           }
-          //...
         }
-        //...
       }
-      //...
     }
   }
-
   ```
 
 - Stage模型示例
@@ -78,13 +72,12 @@ startAbility接口由FA模型切换到Stage模型的示例：
   struct Page_UIAbilityComponentsInteractive {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     caller: Caller | undefined = undefined;
+
     build() {
       Column() {
-        //...
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
             }
             .onClick(() => {
               // context为Ability对象的成员，在非Ability对象内部调用需要
@@ -106,11 +99,8 @@ startAbility接口由FA模型切换到Stage模型的示例：
               });
             })
           }
-          //...
         }
-        //...
       }
-      //...
     }
   }
   ```

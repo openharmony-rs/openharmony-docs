@@ -132,7 +132,7 @@ Defines the frequency range of IR signals.
 
 hasIrEmitter(): Promise&lt;boolean&gt;
 
-Checks whether the device has an infrared transmitter.
+Checks whether the device has an infrared transmitter. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 

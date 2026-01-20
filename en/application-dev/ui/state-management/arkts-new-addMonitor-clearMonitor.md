@@ -15,8 +15,8 @@ Before using these APIs, it is recommended that you familiarize yourself with th
 >The **addMonitor** and **clearMonitor** APIs from **UIUtils** are supported in state management V2 since API version 20.
 
 
-## Overview
-The [\@Monitor](./arkts-new-monitor.md) decorator, when declared within an [\@ObservedV2](./arkts-new-observedV2-and-trace.md) or [\@ComponentV2](./arkts-new-componentV2.md) decorated class, automatically applies the same listener callback to all instances of that class. These \@Monitor decorated callbacks are static and cannot be removed.
+## **Overview**
+If the decorator [\@Monitor](./arkts-new-monitor.md) is declared in [\@ObservedV2](./arkts-new-observedV2-and-trace.md) and [\@ComponentV2](./arkts-create-custom-components.md#componentv2), all \@ObservedV2 and \@ComponentV2 instances will have the same listening callback by default, and the corresponding listening callback cannot be canceled or deleted.
 
 For scenarios requiring dynamic management of listeners, use the [addMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#addmonitor20) and [clearMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#clearmonitor20) APIs to add or remove listeners on individual \@ObservedV2 and \@ComponentV2 instances.
 
@@ -29,7 +29,7 @@ For scenarios requiring dynamic management of listeners, use the [addMonitor](..
 
 - The **clearMonitor** API can only remove listeners added dynamically via **addMonitor**; it cannot remove static callbacks defined using the \@Monitor decorator.
 
-## Usage Rules
+## Use Rules
 - The **addMonitor** and **clearMonitor** APIs support batch processing by accepting an array of state variable paths to add or remove listeners for multiple properties simultaneously.
 ```ts
 import { UIUtils } from '@kit.ArkUI';
@@ -120,7 +120,7 @@ struct Page {
 
   aboutToAppear(): void {
     // Error: Attempting to register another listener named onChange1 for age
-    // fails with this log: FIX THIS APPLICATION ERROR: AddMonitor onChange1 failed when adding path age because duplicate key.
+    // Fails with this log: FIX THIS APPLICATION ERROR: AddMonitor onChange1 failed when adding path age because duplicate key.
     UIUtils.addMonitor(this.user, 'age', this.onChange1);
   }
 
@@ -154,7 +154,7 @@ class User {
     // Correct usage: Register the onChange1 listener with the default synchronization mode configuration.
     UIUtils.addMonitor(this, 'age', this.onChange1);
     // Error: Attempting to modify the synchronization mode after initial registration
-    // fails with this log: FIX THIS APPLICATION ERROR: addMonitor failed, current function onChange1 has already register as async, cannot change to sync anymore.
+    // Fails with this log: FIX THIS APPLICATION ERROR: addMonitor failed, current function onChange1 has already register as async, cannot change to sync anymore.
     UIUtils.addMonitor(this, 'age', this.onChange1, { isSynchronous: true });
   }
 }
@@ -179,7 +179,8 @@ struct Page {
 }
 ```
 - The **clearMonitor** API enables removal of listeners for specified paths. You can either remove a specific listener by providing the listener parameter, or remove all listeners for the path by omitting this parameter.
-Note: A warning log is generated if the specified listener is not registered for the given path, or if the path has no registered listeners.
+
+  Note: A warning log is generated if the specified listener is not registered for the given path, or if the path has no registered listeners.
 Once the listener is removed, state changes no longer invoke the corresponding callback.
 ```ts
 import { UIUtils } from '@kit.ArkUI';
@@ -239,7 +240,7 @@ struct Page {
       })
       Button('clear name monitors').onClick(() => {
         // Step 5: Click the button to remove listeners for the name property. This operation fails because there are no listeners registered.
-        // Print the error log FIX THIS APPLICATION ERROR: cannot clear path name for current target User because no Monitor function for this path was registered.
+        // Print error log: FIX THIS APPLICATION ERROR: cannot clear path name for current target User because no Monitor function for this path was registered
         UIUtils.clearMonitor(this.user, 'name');
       })
     }
@@ -249,7 +250,8 @@ struct Page {
 
 ## Constraints
 - The **addMonitor** and **clearMonitor** APIs only support adding or removing listeners for instances decorated with \@ComponentV2 or \@ObservedV2 that contain at least one \@Trace decorated variable. Attempting to use these APIs on non-conforming instances will result in a runtime error (error code: 130000).
-The following example demonstrates this constraint for **addMonitor**; the same limitation applies to **clearMonitor**.
+
+  The following example demonstrates this constraint for **addMonitor**; the same limitation applies to **clearMonitor**.
   ```ts
   import { UIUtils } from '@kit.ArkUI';
 
@@ -310,7 +312,8 @@ The following example demonstrates this constraint for **addMonitor**; the same 
   let c: C = new C();
   ```
 - The observation path in **addMonitor** and **clearMonitor** must be a string or array. Passing any unsupported type will trigger a runtime error with code 130001.
-The following example demonstrates this constraint for **addMonitor**; the same limitation applies to **clearMonitor**.
+
+  The following example demonstrates this constraint for **addMonitor**; the same limitation applies to **clearMonitor**.
   ```ts
   import { UIUtils } from '@kit.ArkUI';
   
@@ -341,7 +344,8 @@ The following example demonstrates this constraint for **addMonitor**; the same 
   let a: A = new A();
   ```
 - The callback function in **addMonitor** is mandatory and must be a named function (not anonymous) and of method type. Passing an unsupported type will trigger a runtime error with code 130002.
-For **clearMonitor**, the callback function is optional. When provided, it must be a named function (not anonymous) and of function type.
+
+  For **clearMonitor**, the callback function is optional. When provided, it must be a named function (not anonymous) and of function type.
   ```ts
   import { UIUtils } from '@kit.ArkUI';
   
@@ -393,7 +397,7 @@ For **clearMonitor**, the callback function is optional. When provided, it must 
 ## Rules for Listening for Changes with addMonitor
 The rules for listening for changes with **addMonitor** and the [\@Monitor](./arkts-new-monitor.md) decorator are largely consistent. The comparison is shown in the table below.
 
-|  Scenario| addMonitor| @Monitor  |
+|  When to Use| addMonitor| @Monitor  |
 |------|----|------|
 | [Listening for @Trace decorated properties in \@ObservedV2 classes](#listening-for-trace-decorated-properties-in-observedv2-classes-and-state-variables-in-componentv2-components)   | Supported| Supported|
 | [Listening for state variables in \@ComponentV2 components](#listening-for-trace-decorated-properties-in-observedv2-classes-and-state-variables-in-componentv2-components) | Supported| Supported|
@@ -405,7 +409,7 @@ The rules for listening for changes with **addMonitor** and the [\@Monitor](./ar
 | [Listening for synchronous state variable changes in constructors](#listening-for-synchronous-state-variable-changes-in-constructors)  | Supported| Not supported|
 | [Dynamically canceling listening of \@ObservedV2/\@ComponentV2 instances](#dynamically-canceling-listening-of-observedv2componentv2-instances)  | Supported| Not supported|
 
-## Use Scenarios
+## When to Use
 ### Listening for @Trace Decorated Properties in \@ObservedV2 Classes and State Variables in \@ComponentV2 Components
 
 In the following example:
@@ -539,8 +543,9 @@ struct Page {
 
 ### Listening for Paths Independently
 \@Monitor does not support independent path listening, requiring correct parameters to be passed. [Passing non-state variables may cause unintended side-effect monitoring](./arkts-new-monitor.md#passing-correct-input-parameters-to-monitor).
+
 **addMonitor** implements independent listening for different paths. In this example, clicking **Button('change age&name')** outputs:
-```
+``` ts
 property path:age change from 24 to 25
 ```
 
@@ -580,7 +585,7 @@ struct Index {
 ```
 
 ### Listening for Variable Accessibility Changes
-[\@Monitor](./arkts-new-monitor.md#variables-cannot-be-observed-during-accessibility-changes) cannot observe accessibility transitions.
+[\@Monitor](./arkts-new-monitor.md#variables-cannot-be-observed-during-accessibility-changes) does not record the state of a state variable when it is inaccessible, so it cannot listen for accessibility changes.
 
 **addMonitor** records inaccessible states, enabling listening for accessibility changes. Example:
 
@@ -631,7 +636,7 @@ struct Page {
 ```
 ### Configuring Synchronous Listeners
 Unlike \@Monitor, which only supports asynchronous listening, **addMonitor** can be configured with synchronous listeners. In the following example, clicking **Text(`User age ${this.user.age}`)** increments the value of **age** twice, triggering the **onChange** listener twice:
-```
+``` ts
 onChange: User property user.age change from 10 to 11
 onChange: User property user.age change from 11 to 12
 ```
@@ -669,7 +674,7 @@ struct Page {
 }
 ```
 With \@Monitor, only one callback is triggered:
-```
+``` ts
 onChange: User property user.age change from 10 to 12
 ```
 
@@ -703,11 +708,12 @@ struct Page {
 ```
 
 ### Listening for Synchronous State Variable Changes in Constructors
-Unlike [\@Monitor, which constructs asynchronously](./arkts-new-monitor.md#effective-and-expiration-time-of-variable-observation-by-monitor-in-classes), **addMonitor** operates synchronously. The listener **this.onMessageChange** is added to **message** immediately after **UIUtils.addMonitor(this, 'message', this.onMessageChange);** execution. In the following example:
+Unlike [\@Monitor, which constructs asynchronously](./arkts-new-monitor.md#effective-and-expiration-time-of-variable-listening-by-the-monitor-in-the-class), **addMonitor** operates synchronously. The listener **this.onMessageChange** is added to **message** immediately after **UIUtils.addMonitor(this, 'message', this.onMessageChange);** execution. In the following example:
 - Page initialization constructs an **Info** instance, triggering **onMessageChange**.
 - Clicking **Button('change message')** also triggers **onMessageChange**.
+
 The output logs are as follows:
-```
+``` ts
 message change from not initialized to initialized
 message change from initialized to Index aboutToAppear
 message change from Index aboutToAppear to Index click to change message

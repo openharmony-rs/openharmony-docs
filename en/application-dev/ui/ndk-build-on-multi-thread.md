@@ -8,13 +8,13 @@
 
 ## Overview
 
-In versions earlier than API version 22, UI component creation and attribute setting must be performed in the application's UI thread. This means that when integrating NDK APIs, you must submit component creation and attribute setting tasks to the UI thread for execution. This limits both the flexibility of component creation and application performance.
+In versions earlier than API version 22, UI component creation and attribute setting must be performed in the application's UI thread. This means that when using NDK APIs, you must submit component creation and attribute setting tasks to the UI thread for execution. This limits both the flexibility of component creation and application performance.
 
-As application functionality grows increasingly complex, numerous components need to be dynamically created on application pages. Executing all these component creation tasks in a single UI thread leads to slow application startup, animation frame drops, and page freezes, directly impacting user experience.
+As application functionality grows increasingly complex, numerous UI components need to be dynamically created on application pages. Executing all these component creation tasks in a single UI thread leads to slow application startup, animation frame drops, and page freezes, directly impacting user experience.
 
 To address these issues, multi-threaded support has been introduced to NDK APIs starting from API version 22. This enhancement provides the following benefits:
 
-- **Simplified calling process**: You no longer need to switch threads or submit component creation tasks through task queues. Instead, you can directly call component creation APIs from any thread, reducing thread context switches and simplifying interaction logic between the UI framework and the application.
+- **Simplified calling process**: You no longer need to switch threads or submit component creation tasks through task queues. Instead, you can directly call APIs for creating components and setting attributes from any thread, reducing thread context switches and simplifying interaction logic between the UI framework and the application.
 
 - **Optimized performance and experience**: Component creation and attribute setting APIs can be called concurrently across multiple threads, fully utilizing the device's multi-core CPU and reducing overall page creation time. The UI thread can then focus on animation rendering and user input, ensuring smooth UI interactions.
 
@@ -28,7 +28,7 @@ In summary, multi-threaded NDK APIs deliver a high-performance UI page creation 
 
 - To minimize adaptation costs, the method for obtaining and using multi-threaded NDK APIs remains the same as existing NDK APIs. Simply call the [OH_ArkUI_GetModuleInterface](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface) API with [ARKUI_MULTI_THREAD_NATIVE_NODE](../reference/apis-arkui/capi-native-interface-h.md#arkui_nativeapivariantkind) as the input parameter to obtain the multi-threaded NDK API set. Example:
 
-  ```cpp
+  ``` cpp
   ArkUI_NativeNodeAPI_1 *multiThreadNodeAPI = nullptr;
   // Obtain the multi-threaded NDK API set.
   OH_ArkUI_GetModuleInterface(ARKUI_MULTI_THREAD_NATIVE_NODE, ArkUI_NativeNodeAPI_1, multiThreadNodeAPI);
@@ -37,53 +37,62 @@ In summary, multi-threaded NDK APIs deliver a high-performance UI page creation 
     return;
   }
   // Call the multi-threaded createNode API in the set to create a UI component.
-  multiThreadNodeAPI->createNode(ARKUI_NODE_COLUMN);
+  auto node = multiThreadNodeAPI->createNode(ARKUI_NODE_COLUMN);
   ```
 
-  For the complete list of NDK APIs supporting multi-threading, see [Multi-threaded NDK API Set Specifications](#multi-threaded-ndk-api-set-specifications).
+For the complete list of NDK APIs supporting multi-threading, see [Multi-threaded NDK API Set Specifications](#multi-threaded-ndk-api-set-specifications).
+
+You can use the multi-thread NDK API to create a UI component and set its attributes in any thread. However, the UI component must be mounted to the main UI tree in the UI thread. The following APIs can be used to dispatch and execute multi-thread UI component creation tasks.
 
 - For tasks that can be executed in non-UI threads (such as component creation and attribute setting), use the [OH_ArkUI_PostAsyncUITask](https://../reference/apis-arkui/capi-native-node-h.md#oh_arkui_postasyncuitask) API to schedule them to the system thread pool, and then submit the component mounting task to the UI thread for execution.
 
 - When creating UI components in custom non-UI threads, use the [OH_ArkUI_PostUITask](https://../reference/apis-arkui/capi-native-node-h.md#oh_arkui_postuitask) API to submit the component mounting task to the UI thread.
   
-- When calling UI-thread-only functions during multi-threaded component creation, use the [OH_ArkUI_PostUITaskAndWait](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_postuitaskandwait) API to submit the function to the UI thread. Note that this API may block the calling thread if the UI thread is heavily loaded, potentially affecting multi-threading performance gains. Use this API sparingly.
+- When executing UI-thread-only tasks during multi-threaded UI component creation, use the [OH_ArkUI_PostUITaskAndWait](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_postuitaskandwait) API to submit the task to the UI thread. Note that this API may block the calling thread if the UI thread is heavily loaded, potentially affecting multi-threading performance gains. Use this API sparingly.
 
 ## Multi-threaded NDK API Adaptation
 
 1. Multi-threaded NDK APIs are suitable for high-load, performance-sensitive scenarios like page navigation and list scrolling, where UI thread component creation tasks take milliseconds to tens of milliseconds. Split these tasks into subtasks and distribute them across multiple threads for concurrent execution to reduce UI thread load and improve page startup and update smoothness.
 
-2. When creating UI components in non-UI threads, it is recommended that you limit concurrent threads to no more than four, based on the device's CPU core count, to avoid thread scheduling overhead.
+2. When creating UI components in your own threads, it is recommended that you limit concurrent threads to no more than four, based on the device's CPU core count, to avoid thread scheduling overhead.
 
 3. Pre-create common component trees in non-UI threads to enhance user experience in performance-sensitive scenarios.
 
-## Multi-threaded NDK API Calling Specifications and Thread Safety
+## Multi-threaded NDK API Calling Specifications
 
-- For multi-thread NDK API calling specifications, see [Multi-threaded NDK API Set Specifications](#multi-threaded-ndk-api-set-specifications). Always check return values when calling multi-threaded NDK APIs.
+UI components are classified into two states: free and attached.
 
-- Calling non-multi-threaded APIs from non-UI threads returns error code [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode).
+UI components created using the multi-threaded [createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode) APIs are in the free state by default and can be switched between the free and attached states. UI components created using other methods are in the attached state by default and cannot be switched between the states.
 
-- Operating on different components across multiple threads using multi-thread NDK APIs is thread-safe. However, operating on the same component or component tree from multiple threads is not thread-safe and may yield unpredictable results.
+> **NOTE**
+>
+> - You can use multi-threaded NDK APIs to operate free components in any thread. To ensure normal application functions and thread security, comply with the following constraints:
+>   - Do not operate the same free component or component tree in multiple threads at the same time. A free component is lock-free, and stability issues may occur if multiple threads access the component at the same time.
+>   - Do not use any NDK APIs other than the APIs from [multi-threaded NDK API set](#multi-threaded-ndk-api-set-specifications) to operate a component in the free state. You must first change the component to the attached state before using other NDK APIs in the UI thread. Otherwise, the API functions abnormally.
+>
+> - To ensure performance, the preceding constraints are not verified at runtime on the framework. Therefore, you need to ensure that the constraints are met.
+>
+> - To ensure multi-threaded security of APIs, some attributes of a component in the free state cannot be read immediately by calling [getAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute) after being set by calling [setAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute). You need to change the component to the attached state before reading the correct attribute values.
 
-- Components created using multi-thread NDK APIs have two states:
+The UI component state changes from free to attached after the following operations are performed:
 
-  - **Free state**: The component is not mounted to the main UI tree. It can be operated from any thread using multi-threaded NDK APIs.
-  - **Attached state**: The component is mounted to the main UI tree and managed by the UI pipeline. It must be operated from the UI thread using multi-thread NDK APIs; otherwise, error code [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) is returned.
+- After the [markDirty](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#markdirty), [measureNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#measurenode), or [layoutNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#layoutnode) API is called to mark, measure, or layout a component in the free state, all free components in the component tree where the component is located are changed to the attached state.
+- After the multi-threaded [component tree operation](#component-tree-operations) API is called to mount a free component as a child component of an attached component, all free components in the component tree where the component is located are changed to the attached state.
+- After the multi-threaded [component tree operation](#component-tree-operations) API is called to mount an attached component as a child component of a free component, all free components in the component tree where the component is located are changed to the attached state.
 
-- Components created using non-multi-threaded NDK APIs (such as ArkTS components) are managed by the UI pipeline and must be operated from the UI thread. Operating them from non-UI threads returns error code [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode). Avoid using multi-threaded NDK APIs to operate such components unless necessary.
+For an attached component whose state can be changed, the UI component state changes from attached to free when the following conditions are met:
 
-- ArkTS components can be mounted to a component using multi-threaded [component tree operation](#component-tree-operations) APIs in the UI thread. However, the component cannot be operated from non-UI threads after ArkTS components are mounted to it, as this may cause application crashes when accessing unsafe ArkTS components from non-UI threads.
+- The component is removed from the component tree by using the multi-thread [component tree operation](#component-tree-operations) API, and the component tree where the removed component is located does not contain any attached component whose state cannot be changed. In this case, all components in the component tree where the removed component is located are changed to the free state.
 
-- Components can be operated from non-UI threads only after all mounted ArkTS components are removed in the UI thread. Before unmounting a component from the main UI tree, the ArkUI framework checks for mounted ArkTS components and logs the following:
-
-    ```
-    CheckIsThreadSafeNodeTree failed. thread safe node tree contains unsafe node: ${nodeid}
-    ```
+According to the preceding state switching rules, all components in each UI component tree are in the same state.
 
 ## Errors and Exceptions of Multi-threaded NDK APIs
 
-- Calling unsupported multi-threaded APIs from non-UI threads returns error code [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode).
-- Operating components that have been mounted to the main UI tree from non-UI threads returns error code [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode).
-- Operating components created by non-multi-thread NDK APIs from non-UI threads returns error code [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode).
+For multi-thread NDK API calling specifications, see [Multi-threaded NDK API Set Specifications](#multi-threaded-ndk-api-set-specifications). When calling multi-threaded NDK APIs, you must check the return values. The APIs return the error code [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) in the following situations:
+
+- An API that does not support multi-thread operations is called in a non-UI thread.
+
+- A multi-threaded NDK API is called in a non-UI thread to operate an attached component.
 
 <!--Del-->
 For common issues during multi-threaded NDK adaptation, see [NDK Usage](../faqs/faqs-ndk.md).
@@ -99,55 +108,55 @@ The following APIs are UI-thread only: [global event registration and deregistra
 
 | API| Description| Non-UI Thread| Multi-thread Specifications|
 | -------- | ------- | ------- | ------- |
-| [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode) )([ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype) type) | Creates a node based on [ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype) and returns the node object pointer. | Supported| Callable from any thread.|
-| void(\* [disposeNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Destroys the node object to which the node pointer points. | Supported| Ineffective if called from a non-UI thread on a node mounted to the UI tree.|
+| [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode) )([ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype) type) | Creates a free node based on [ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype) and returns the free node object pointer. | Supported| Callable from any thread.|
+| void(\* [disposeNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Destroys the node object to which the node pointer points. | Supported| Ineffective if called from a non-UI thread on an attached node.|
 
 ### Component Attribute Read/Write
 
 | API| Description| Non-UI Thread| Multi-thread Specifications|
 | -------- | ------- | ------- | ------- |
-| int32_t(\* [setAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) attribute, const [ArkUI_AttributeItem](../reference/apis-arkui/capi-arkui-nativemodule-arkui-attributeitem.md) \*item) | Sets node attributes.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| const [ArkUI_AttributeItem](../reference/apis-arkui/capi-arkui-nativemodule-arkui-attributeitem.md) \*(\* [getAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) attribute) | Obtains node attributes.| Supported| Returns a null pointer if called from a non-UI thread on a node mounted to the UI tree.|
-| int32_t(\* [resetAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) attribute) | Resets node attributes to default values. | Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| int32_t(\* [setLengthMetricUnit](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_LengthMetricUnit](../reference/apis-arkui/capi-native-type-h.md#arkui_lengthmetricunit) unit) | Sets the node unit.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
+| int32_t(\* [setAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) attribute, const [ArkUI_AttributeItem](../reference/apis-arkui/capi-arkui-nativemodule-arkui-attributeitem.md) \*item) | Sets node attributes.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| const [ArkUI_AttributeItem](../reference/apis-arkui/capi-arkui-nativemodule-arkui-attributeitem.md) \*(\* [getAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) attribute) | Obtains node attributes.| Supported| Returns a null pointer if called from a non-UI thread on an attached node.|
+| int32_t(\* [resetAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) attribute) | Resets node attributes to default values. | Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| int32_t(\* [setLengthMetricUnit](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_LengthMetricUnit](../reference/apis-arkui/capi-native-type-h.md#arkui_lengthmetricunit) unit) | Sets the node unit.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
 
 ### Component Event Registration and Deregistration
 
 | API| Description| Non-UI Thread| Multi-thread Specifications|
 | -------- | ------- | ------- | ------- |
-| int32_t(\* [registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) eventType, int32_t targetId, void \*userData) | Registers an event with a node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| void(\* [unregisterNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodeevent) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) eventType) | Unregisters an event from a node.| Supported| Ineffective if called from a non-UI thread on a node mounted to the UI tree.|
-| int32_t(\* [registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodecustomeventtype) eventType, int32_t targetId, void \*userData) | Registers a custom event with a node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| void(\* [unregisterNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodecustomevent) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodecustomeventtype) eventType) | Deregisters a custom event from a node.| Supported| Ineffective if called from a non-UI thread on a node mounted to the UI tree.|
-| int32_t(\* [addNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodeeventreceiver) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void(\*eventReceiver)([ArkUI_NodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodeevent.md) \*event)) | Registers an event callback function with a node to receive component events generated by the component.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| int32_t(\* [removeNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodeeventreceiver) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void(\*eventReceiver)([ArkUI_NodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodeevent.md) \*event)) | Removes the event callback function registered on a node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| int32_t(\* [addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void(\*eventReceiver)([ArkUI_NodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodecustomevent.md) \*event)) | Registers a custom event callback function with a node to receive custom events (such as layout events and drawing events) generated by the component.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| int32_t(\* [removeNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodecustomeventreceiver) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void(\*eventReceiver)([ArkUI_NodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodecustomevent.md) \*event)) | Removes the custom event callback function registered on a node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
+| int32_t(\* [registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) eventType, int32_t targetId, void \*userData) | Registers an event with a node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| void(\* [unregisterNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodeevent) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) eventType) | Unregisters an event from a node.| Supported| Ineffective if called from a non-UI thread on an attached node.|
+| int32_t(\* [registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodecustomeventtype) eventType, int32_t targetId, void \*userData) | Registers a custom event with a node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| void(\* [unregisterNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodecustomevent) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodecustomeventtype) eventType) | Deregisters a custom event from a node.| Supported| Ineffective if called from a non-UI thread on an attached node.|
+| int32_t(\* [addNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodeeventreceiver) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void(\*eventReceiver)([ArkUI_NodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodeevent.md) \*event)) | Registers an event callback function with a node to receive component events generated by the component.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| int32_t(\* [removeNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodeeventreceiver) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void(\*eventReceiver)([ArkUI_NodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodeevent.md) \*event)) | Removes the event callback function registered on a node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| int32_t(\* [addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void(\*eventReceiver)([ArkUI_NodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodecustomevent.md) \*event)) | Registers a custom event callback function with a node to receive custom events (such as layout events and drawing events) generated by the component.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| int32_t(\* [removeNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodecustomeventreceiver) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void(\*eventReceiver)([ArkUI_NodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodecustomevent.md) \*event)) | Removes the custom event callback function registered on a node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
 
 ### Component Tree Operations
 
 | API| Description| Non-UI Thread| Multi-thread Specifications|
 | -------- | ------- | ------- | ------- |
-| int32_t(\* [addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child) | Adds a child node to the child node list of a parent node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| int32_t(\* [removeChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removechild) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child) | Removes a child node from the child node list of a parent node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| int32_t(\* [insertChildAfter](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildafter) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) sibling) | Inserts a child node after a sibling node in the child node list of a parent node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| int32_t(\* [insertChildBefore](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildbefore) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) sibling) | Inserts a child node before a sibling node in the child node list of a parent node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| int32_t(\* [insertChildAt](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildat) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child, int32_t position) | Inserts a child node at the specified position in the child node list of a parent node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getParent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getparent) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the parent node of a node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| int32_t(\* [removeAllChildren](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removeallchildren) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent) | Removes all child nodes of a node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| uint32_t(\* [getTotalChildCount](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#gettotalchildcount) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the number of child nodes of a node.| Supported| Returns **0** if called from a non-UI thread on a node mounted to the UI tree.|
-| [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getChildAt](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getchildat) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, int32_t position) | Obtains the pointer to the child node at the specified position.| Supported| Returns a null pointer if called from a non-UI thread on a node mounted to the UI tree.|
-| [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getFirstChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getfirstchild) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the pointer to the first child node of a node.| Supported| Returns a null pointer if called from a non-UI thread on a node mounted to the UI tree.|
-| [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getLastChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getlastchild) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the pointer to the last child node of a node.| Supported| Returns a null pointer if called from a non-UI thread on a node mounted to the UI tree.|
-| [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getPreviousSibling](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getprevioussibling) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the pointer to the previous sibling node of a node.| Supported| Returns a null pointer if called from a non-UI thread on a node mounted to the UI tree.|
-| [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getNextSibling](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getnextsibling) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the pointer to the next sibling node of a node.| Supported| Returns a null pointer if called from a non-UI thread on a node mounted to the UI tree.|
+| int32_t(\* [addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child) | Adds a child node to the child node list of a parent node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| int32_t(\* [removeChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removechild) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child) | Removes a child node from the child node list of a parent node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| int32_t(\* [insertChildAfter](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildafter) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) sibling) | Inserts a child node after a sibling node in the child node list of a parent node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| int32_t(\* [insertChildBefore](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildbefore) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) sibling) | Inserts a child node before a sibling node in the child node list of a parent node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| int32_t(\* [insertChildAt](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildat) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent, [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) child, int32_t position) | Inserts a child node at the specified position in the child node list of a parent node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getParent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getparent) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the parent node of a node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| int32_t(\* [removeAllChildren](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removeallchildren) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) parent) | Removes all child nodes of a node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| uint32_t(\* [getTotalChildCount](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#gettotalchildcount) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the number of child nodes of a node.| Supported| Returns **0** if called from a non-UI thread on an attached node.|
+| [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getChildAt](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getchildat) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, int32_t position) | Obtains the pointer to the child node at the specified position.| Supported| Returns a null pointer if called from a non-UI thread on an attached node.|
+| [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getFirstChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getfirstchild) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the pointer to the first child node of a node.| Supported| Returns a null pointer if called from a non-UI thread on an attached node.|
+| [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getLastChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getlastchild) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the pointer to the last child node of a node.| Supported| Returns a null pointer if called from a non-UI thread on an attached node.|
+| [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getPreviousSibling](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getprevioussibling) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the pointer to the previous sibling node of a node.| Supported| Returns a null pointer if called from a non-UI thread on an attached node.|
+| [ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)(\* [getNextSibling](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getnextsibling) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the pointer to the next sibling node of a node.| Supported| Returns a null pointer if called from a non-UI thread on an attached node.|
 
 ### Custom Component Data Read/Write
 
 | API| Description| Non-UI Thread| Multi-thread Specifications|
 | -------- | ------- | ------- | ------- |
-| int32_t(\* [setUserData](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setuserdata) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void \*userData) | Sets node data for a node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate a mounted node from non-UI thread.|
-| void \*(\* [getUserData](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getuserdata) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the custom data stored on a node.| Supported|  Returns a null pointer if called from a non-UI thread on a node mounted to the UI tree.|
+| int32_t(\* [setUserData](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setuserdata) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, void \*userData) | Sets node data for a node.| Supported| Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if any attempt is made to operate an attached node from a non-UI thread.|
+| void \*(\* [getUserData](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getuserdata) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the custom data stored on a node.| Supported|  Returns a null pointer if called from a non-UI thread on an attached node.|
 
 ### Global Event Registration and Deregistration
 
@@ -166,9 +175,9 @@ The following APIs are UI-thread only: [global event registration and deregistra
 | int32_t(\* [setLayoutPosition](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlayoutposition) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, int32_t positionX, int32_t positionY) | Sets the position of a component in the layout callback function.| Not supported| UI thread only. Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if called from a non-UI thread.|
 | [ArkUI_IntSize](../reference/apis-arkui/capi-arkui-nativemodule-arkui-intsize.md)(\* [getMeasuredSize](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getmeasuredsize) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the width and height of a node after measurement.| Not supported| UI thread only. Returns the default value if called from a non-UI thread.|
 | [ArkUI_IntOffset](../reference/apis-arkui/capi-arkui-nativemodule-arkui-intoffset.md)(\* [getLayoutPosition](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getlayoutposition) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node) | Obtains the position of a node after the layout is complete.| Not supported| UI thread only. Returns the default value if called from a non-UI thread.|
-| int32_t(\* [measureNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#measurenode) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_LayoutConstraint](../reference/apis-arkui/capi-arkui-nativemodule-arkui-layoutconstraint.md) \*Constraint) | Measures a node. You can use the **getMeasuredSize** API to obtain the size after the measurement.| Not supported| UI thread only. Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if called from a non-UI thread.|
-| int32_t(\* [layoutNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#layoutnode) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, int32_t positionX, int32_t positionY) | Lays outs a node and specifies the expected position of the node relative to its parent.| Not supported| UI thread only. Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if called from a non-UI thread.|
-| void(\* [markDirty](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#markdirty) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeDirtyFlag](../reference/apis-arkui/capi-native-node-h.md#arkui_nodedirtyflag) dirtyFlag) | Forces a node to be marked for re-measurement, layout, or drawing.| Not supported| UI thread only.|
+| int32_t(\* [measureNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#measurenode) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_LayoutConstraint](../reference/apis-arkui/capi-arkui-nativemodule-arkui-layoutconstraint.md) \*Constraint) | Measures a node. You can use the **getMeasuredSize** API to obtain the size after the measurement. The state of all free nodes in the component tree where the node is located is changed to attached.| Not supported| UI thread only. Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if called from a non-UI thread.|
+| int32_t(\* [layoutNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#layoutnode) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, int32_t positionX, int32_t positionY) | Lays outs a node and specifies the expected position of the node relative to its parent. The state of all free nodes in the component tree where the node is located is changed to attached.| Not supported| UI thread only. Returns [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode) if called from a non-UI thread.|
+| void(\* [markDirty](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#markdirty) )([ArkUI_NodeHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) node, [ArkUI_NodeDirtyFlag](../reference/apis-arkui/capi-native-node-h.md#arkui_nodedirtyflag) dirtyFlag) | Forces a node to be marked for re-measurement, layout, or drawing. The state of all free nodes in the component tree where the node is located is changed to attached.| Not supported| UI thread only.|
 
 ## Example
 
@@ -182,7 +191,7 @@ The example shows how to obtain and use multi-threaded NDK APIs, and utilize [OH
 
 To simplify programming, **ArkUI_NodeHandle** is encapsulated as an ArkUINode object on the native side using object-oriented principles, following the [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md) guide.
 
-```ts
+``` ts
 // index.ets
 import { NodeContent } from '@kit.ArkUI';
 import entry from 'libentry.so';
@@ -193,12 +202,12 @@ struct CAPIComponent {
 
   aboutToAppear(): void {
     // Create native components in multiple threads before page display.
-    entry.CreateNodeTreeOnMultiThread(this.rootSlot, this.getUIContext());
+    entry.createNodeTreeOnMultiThread(this.rootSlot, this.getUIContext());
   }
 
   aboutToDisappear(): void {
     // Release created native components before page destruction.
-    entry.DisposeNodeTreeOnMultiThread(this.rootSlot);
+    entry.disposeNodeTreeOnMultiThread(this.rootSlot);
   }
 
   build() {
@@ -240,7 +249,35 @@ struct Index {
 
 ```
 
-```cpp
+``` ts
+// index.d.ts
+// entry/src/main/cpp/types/libentry/Index.d.ts
+export const createNativeRoot: (content: Object) => void;
+export const destroyNativeRoot: () => void;
+export const createNodeTreeOnMultiThread: (content1: Object, content2: Object) => void;
+export const disposeNodeTreeOnMultiThread: (content1: Object) => void;
+```
+
+``` cpp
+# CMakeLists.txt
+# the minimum version of CMake.
+cmake_minimum_required(VERSION 3.5.0)
+project(ndk_build_on_multi_thread)
+
+set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+if(DEFINED PACKAGE_FIND_FILE)
+    include(${PACKAGE_FIND_FILE})
+endif()
+
+include_directories(${NATIVERENDER_ROOT_PATH}
+                    ${NATIVERENDER_ROOT_PATH}/include)
+
+add_library(entry SHARED napi_init.cpp NativeEntry.cpp NativeModule.h ArkUIBaseNode.h ArkUINode.h ArkUIListNode.h ArkUIListItemNode.h ArkUITextNode.h NormalTextListExample.h CreateNode.h CreateNode.cpp)
+target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so libhilog_ndk.z.so)
+```
+
+``` cpp
 // NativeModule.h
 #ifndef MYAPPLICATION_NATIVEMODULE_H
 #define MYAPPLICATION_NATIVEMODULE_H
@@ -274,12 +311,12 @@ private:
 #endif // MYAPPLICATION_NATIVEMODULE_H
 ```
 
-```cpp
+``` cpp
 // CreateNode.h
 #ifndef MYAPPLICATION_CREATENODE_H
 #define MYAPPLICATION_CREATENODE_H
 
-#include "common/ArkUINode.h"
+#include "ArkUINode.h"
 
 #include <js_native_api.h>
 
@@ -328,12 +365,14 @@ napi_value DisposeNodeTreeOnMultiThread(napi_env env, napi_callback_info info);
 ```
 
 
-```cpp
+``` cpp
 // CreateNode.cpp
-#include "node/CreateNode.h"
+#include "CreateNode.h"
 
 #include <cstdint>
+#include <hilog/log.h>
 #include <map>
+#include <thread>
 #include <napi/native_api.h>
 #include <arkui/native_node_napi.h>
 
@@ -551,3 +590,47 @@ napi_value DisposeNodeTreeOnMultiThread(napi_env env, napi_callback_info info)
 } // namespace NativeModule
 ```
 
+``` cpp
+// napi_init.cpp
+#include "napi/native_api.h"
+#include "NativeEntry.h"
+#include "CreateNode.h"
+
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    // Bind the native creation and destruction of components.
+    napi_property_descriptor desc[] = {
+        {"createNativeRoot", nullptr,
+        NativeModule::CreateNativeRoot, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+        
+        {"destroyNativeRoot", nullptr,
+        NativeModule::DestroyNativeRoot, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+        
+        {"createNodeTreeOnMultiThread", nullptr,
+        NativeModule::CreateNodeTreeOnMultiThread, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+        
+        {"disposeNodeTreeOnMultiThread", nullptr,
+        NativeModule::DisposeNodeTreeOnMultiThread, nullptr, nullptr,
+        nullptr, napi_default, nullptr}
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+EXTERN_C_END
+
+static napi_module demoModule = {
+    .nm_version = 1,
+    .nm_flags = 0,
+    .nm_filename = nullptr,
+    .nm_register_func = Init,
+    .nm_modname = "entry",
+    .nm_priv = ((void *)0),
+    .reserved = {0},
+};
+
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
+```

@@ -97,7 +97,7 @@ ArkUI_NodeHandle (*createNode)(ArkUI_NodeType type)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | 返回创建完成的组件操作指针，如果创建失败返回NULL。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | 返回创建完成的组件操作指针，如果创建失败返回NULL。需要开发者自行管理返回的组件对象指针的生命周期，否则有可能导致Use After Free等进程崩溃或内存泄漏问题。 |
 
 ### disposeNode()
 
@@ -107,7 +107,7 @@ void (*disposeNode)(ArkUI_NodeHandle node)
 
 **描述：**
 
-销毁组件指针指向的组件对象。
+销毁组件指针指向的组件对象。在非主线程调用时需要注意待销毁组件对象的生命周期，生命周期管理不当有可能导致应用崩溃，因此不建议在非主线程上调用本接口。
 
 **参数：**
 

@@ -27,7 +27,7 @@ Defines the struct for the basic location information.
 | Name| Description|
 | -- | -- |
 | double latitude | Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from –90 to 90. Only the WGS84 coordinate system is supported.|
-| double longitude | Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude. The value ranges from -180 to 180. Only the WGS84 coordinate system is supported.|
+| double longitude | Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from -180 to 180. Only the WGS84 coordinate system is supported.|
 | double altitude | Location altitude, in meters.|
 | double accuracy | Location accuracy, in meters.|
 | double speed | Speed, in m/s.|

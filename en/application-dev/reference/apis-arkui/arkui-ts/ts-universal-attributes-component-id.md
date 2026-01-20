@@ -10,7 +10,7 @@
 
 >  **NOTE**
 >
-> - The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > - If a component is assigned multiple **id** or **key** values, the last one set takes effect.
 

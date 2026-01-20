@@ -20,7 +20,7 @@ In the stage model, a window stage or window can use the **loadContent** API to 
 
 In the following API examples, you must first use [getUIContext()](arkts-apis-window-Window.md#getuicontext10) in **@ohos.window** to obtain a **UIContext** instance, and then call the APIs using the obtained instance. Alternatively, you can obtain a **UIContext** instance through the built-in method [getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext) of the custom component. In this document, the **UIContext** instance is represented by **uiContext**.
 
-### setDynamicDimming<sup>12+<sup>
+### setDynamicDimming<sup>12+</sup>
 
 setDynamicDimming(id: string, value: number): void
 
@@ -62,85 +62,6 @@ struct Index {
 }
 ```
 ![api-switch-overview](../apis-arkui/figures/dynamicDinning.gif)
-
-### animateToImmediately<sup>12+</sup>
-
-animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
-
-Implements immediate delivery of an explicit animation through a **UIContext** object. When multiple property animations are loaded at once, you can call this API to immediately execute the transition animation for state changes caused by the specified closure function.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name  | Type                                      | Mandatory  | Description                                   |
-| ----- | ---------------------------------------- | ---- | ------------------------------------- |
-| param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam) | Yes   | Animation settings.                          |
-| processor | Callback&lt;void&gt;                              | Yes   | Closure function that displays the animation. The system automatically inserts the transition animation if the state changes in the closure function.|
-
-**Example**
-
-This example shows how to use **animateToImmediately** to implement immediate delivery of an explicit animation through a **UIContext** object.
-
-```ts
-// xxx.ets
-@Entry
-@Component
-struct AnimateToImmediatelyExample {
-  @State widthSize: number = 250
-  @State heightSize: number = 100
-  @State opacitySize: number = 0
-  private flag: boolean = true
-  uiContext: UIContext | null | undefined = this.getUIContext();
-
-  build() {
-    Column() {
-      Column()
-        .width(this.widthSize)
-        .height(this.heightSize)
-        .backgroundColor(Color.Green)
-        .opacity(this.opacitySize)
-      Button('change size')
-        .margin(30)
-        .onClick(() => {
-          if (this.flag) {
-            this.uiContext?.animateToImmediately({
-              delay: 0,
-              duration: 1000
-            }, () => {
-              this.opacitySize = 1
-            })
-            this.uiContext?.animateTo({
-              delay: 1000,
-              duration: 1000
-            }, () => {
-              this.widthSize = 150
-              this.heightSize = 60
-            })
-          } else {
-            this.uiContext?.animateToImmediately({
-              delay: 0,
-              duration: 1000
-            }, () => {
-              this.widthSize = 250
-              this.heightSize = 100
-            })
-            this.uiContext?.animateTo({
-              delay: 1000,
-              duration: 1000
-            }, () => {
-              this.opacitySize = 0
-            })
-          }
-          this.flag = !this.flag
-        })
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-![animateToImmediately](figures/animateToImmediately.gif)
 
 ### freezeUINode<sup>18+</sup>
 
@@ -524,12 +445,13 @@ Captures a snapshot of the area between two specified components. This API uses 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message               |
 | ------ | ------- |
-| 202     | The caller is not a system application. |
+| 202    | The caller is not a system application. |
 | 100001 | Invalid ID detected. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 **Example**
 
@@ -580,3 +502,47 @@ struct SnapshotExample {
 ```
 
 ![en-us_image_getWithRange](figures/en-us_image_getWithRange.gif)
+
+### recycleInvisibleImageMemory<sup>23+</sup>
+
+recycleInvisibleImageMemory(enabled: boolean): void
+
+Sets the memory reclamation switch for invisible **Image** components. ([Component visibility](../../../application-dev/ui/arkts-manage-components-visibility.md) refers to the display status of a component on the screen.) After this feature is enabled, the image memory resources held by the **Image** component will be automatically reclaimed when the system is idle (for example, when the application is running in the background) if the component is not involved in rendering. This reduces the memory usage of the application. When the component is involved in rendering again, the related image resources will be reloaded as required.
+
+This API is mainly used for optimization in memory-sensitive scenarios, such as scenarios where there are a large number of images, pages are frequently switched between the foreground and background, or the component visibility changes significantly.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description|
+| -------- | ------- | ---- | ---- |
+| enabled  | boolean | Yes  | Whether to enable memory reclamation for invisible **Image** components.<br>The value **true** means to enable memory reclamation and the image memory resources are automatically released when the **Image** component is invisible;<br>**false** means to disable memory reclamation and the image memory resources are still retained when the **Image** component is invisible.<br>The default value is **false**. If **undefined** is passed, the default value is used.|
+
+**Example**
+
+```ts
+@Entry
+@Component
+struct ImageRecycleSample {
+  build() {
+    Column({ space: 12 }) {
+      Button('Enable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(true)
+        })
+
+      Button('Disable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(false)
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```

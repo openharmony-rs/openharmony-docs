@@ -24,7 +24,11 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 import { common } from '@kit.MDMKit';
 ```
 
-## startAbilityByAdmin
+## EnterpriseAdminExtensionContext
+
+[EnterpriseAdminExtensionAbility](js-apis-EnterpriseAdminExtensionAbility.md)的上下文，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
+
+### startAbilityByAdmin
 
 startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
 

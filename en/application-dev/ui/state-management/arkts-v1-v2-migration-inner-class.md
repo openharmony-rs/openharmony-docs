@@ -4,7 +4,7 @@
 <!--Owner: @jiyujia926-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This document explains how to migrate data object state variables from V1 to V2.
 | V1 Decorator               | V2 Decorator                 |
@@ -30,11 +30,12 @@ In V2, \@ObservedV2 and \@Trace simplify the observation model. Observation capa
 In V1, changes to nested object properties are not directly observable; only top-level property changes can be detected. Observation of nested object properties require a custom component with \@ObjectLink. V2 introduces \@ObservedV2 and \@Trace to enable direct observation of nested properties, significantly reducing complexity.
 
 V1:
+<!-- @[Migration_Nested_Object_Properties_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationNestedObjectPropertiesV1.ets) -->
 
-```ts
+``` TypeScript
 @Observed
 class Address {
-  city: string;
+  public city: string;
 
   constructor(city: string) {
     this.city = city;
@@ -43,8 +44,8 @@ class Address {
 
 @Observed
 class User {
-  name: string;
-  address: Address;
+  public name: string;
+  public address: Address;
 
   constructor(name: string, address: Address) {
     this.name = name;
@@ -60,9 +61,9 @@ struct AddressView {
   build() {
     Column() {
       Text(`City: ${this.address.city}`)
-      Button("city +a")
+      Button('city +a')
         .onClick(() => {
-          this.address.city += "a";
+          this.address.city += 'a';
         })
     }
   }
@@ -71,7 +72,7 @@ struct AddressView {
 @Entry
 @Component
 struct UserProfile {
-  @State user: User = new User("Alice", new Address("New York"));
+  @State user: User = new User('Alice', new Address('New York'));
 
   build() {
     Column() {
@@ -85,11 +86,12 @@ struct UserProfile {
 ```
 
 V2 migration policy: Use \@ObservedV2 and \@Trace.
+<!-- @[Migration_Nested_Object_Properties_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationNestedObjectPropertiesV2.ets) -->
 
-```ts
+``` TypeScript
 @ObservedV2
 class Address {
-  @Trace city: string;
+  @Trace public city: string;
 
   constructor(city: string) {
     this.city = city;
@@ -98,8 +100,8 @@ class Address {
 
 @ObservedV2
 class User {
-  @Trace name: string;
-  @Trace address: Address;
+  @Trace public name: string;
+  @Trace public address: Address;
 
   constructor(name: string, address: Address) {
     this.name = name;
@@ -110,32 +112,34 @@ class User {
 @Entry
 @ComponentV2
 struct UserProfile {
-  @Local user: User = new User("Alice", new Address("New York"));
+  @Local user: User = new User('Alice', new Address('New York'));
 
   build() {
     Column() {
       Text(`Name: ${this.user.name}`)
       // Use @ObservedV2 and @Trace to directly observe nested object properties.
       Text(`City: ${this.user.address.city}`)
-      Button("city +a")
+      Button('city +a')
         .onClick(() => {
-          this.user.address.city += "a";
+          this.user.address.city += 'a';
         })
     }
   }
 }
 ```
+
 **Observing Class Properties**
 
 In V1, \@Observed decorates a class to enable observation at the object level, while @Track is used for specific property-level observation within that class. V2 simplifies this model: \@Trace handles property-level observation, and \@ObservedV2 is optimized for efficient UI updates at the object level.
 
 V1:
+<!-- @[Migration_Class_Attribute_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationClassAttributeV1.ets) -->
 
-```ts
+``` TypeScript
 @Observed
 class User {
-  @Track name: string;
-  @Track age: number;
+  @Track public name: string;
+  @Track public age: number;
 
   constructor(name: string, age: number) {
     this.name = name;
@@ -152,7 +156,7 @@ struct UserProfile {
     Column() {
       Text(`Name: ${this.user.name}`)
       Text(`Age: ${this.user.age}`)
-      Button("increase age")
+      Button('increase age')
         .onClick(() => {
           this.user.age++;
         })
@@ -162,12 +166,13 @@ struct UserProfile {
 ```
 
 V2 migration policy: Use \@ObservedV2 and \@Trace.
+<!-- @[Migration_Class_Attribute_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationClassAttributeV2.ets) -->
 
-```ts
+``` TypeScript
 @ObservedV2
 class User {
-  @Trace name: string;
-  @Trace age: number;
+  @Trace public name: string;
+  @Trace public age: number;
 
   constructor(name: string, age: number) {
     this.name = name;
@@ -184,7 +189,7 @@ struct UserProfile {
     Column() {
       Text(`Name: ${this.user.name}`)
       Text(`Age: ${this.user.age}`)
-      Button("Increase age")
+      Button('Increase age')
         .onClick(() => {
           this.user.age++;
         })

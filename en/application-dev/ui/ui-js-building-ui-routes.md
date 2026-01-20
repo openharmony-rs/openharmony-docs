@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 An application generally consists of more than one page. For example, a music application may come with a music list page and a playback page. You need to link these pages through the page router to implement redirection as required.
@@ -12,7 +12,7 @@ An application generally consists of more than one page. For example, a music ap
 The page router finds the target page based on the page URI. The following describes how to implement redirection between two pages:
 
 
-1. In the **Project** window of DevEco Studio, choose **src** > **main** > **js** > **MainAbility**. Right-click the **pages** folder and choose **NewJS Page** from the shortcut menu to create the **detail** page.
+1. In the **Project** window, open **src** > **main** > **MainAbility**, right-click the **pages** folder, and choose **NewJS Page **from the shortcut menu to create a details page.
 
 2. Call **router.push()** to navigate users to the **detail** page.
 
@@ -90,4 +90,4 @@ export default {
 
 The figure below shows the effect.
 
-![en-us_image_0000001222967784](figures/en-us_image_0000001222967784.png)
+![en-us_image_0000001070707559](figures/en-us_image_0000001070707559.png)

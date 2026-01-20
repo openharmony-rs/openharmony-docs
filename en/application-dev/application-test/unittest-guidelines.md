@@ -35,7 +35,7 @@ JsUnit is released as an ohpm package. For details about the version information
 **Configuration Example**
 ```json
 "devDependencies": {
-    "@ohos/hypium": "1.0.24"
+    "@ohos/hypium": "1.0.25"
   }
 ```
 
@@ -294,7 +294,7 @@ JSUnit provides the basic process APIs required for executing test scripts. You 
 |  afterItSpecified  | Presets a clear action, which is performed only after the specified unit test case ends.<br>**Note**: This API is supported since @ohos/hypium 1.0.15.|
 |  expect            | Defines a variety of assertion capabilities, which are used to declare expected Boolean conditions.                       |
 |  xdescribe    | Defines a skipped test suite. Multiple test case functions can be defined in a test suite, but asynchronous functions are not supported.<br>**Note**: This API is supported since @ohos/hypium 1.0.17.                            |
-|  xit                | Defines a skipped test case.<br>**Note**: This API is supported since @ohos/hypium 1.0.17.                    |
+|  xit                | Defines a skipped test case.<br>**Note**: This API is supported since @ohos/hypium 1.0.17.                   |
 
 **Example 1**: Execute **beforeAll**, **beforeEach**, **afterEach**, and **afterAll**.
 
@@ -400,7 +400,47 @@ export default function describeExampleTest() {
 }
 ```
 
+**Example 4**: Use **beforeEachIt** and **afterEachIt**. They are supported since version 1.0.25.
+
+<!-- @[order4_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder4.test.ets) -->
+
+``` TypeScript
+import { describe, beforeEach, afterEach, beforeEachIt, afterEachIt, it, expect } from '@ohos/hypium';
+let str = "";
+export default function test() {
+  describe('test0', () => {
+    beforeEach(async () => {
+      str += "A"
+    })
+    beforeEachIt(async () => {
+      str += "B"
+    })
+    afterEach(async () => {
+      str += "C"
+    })
+    afterEachIt(async () => {
+      str += "D"
+    })
+    it('test0000', 0, () => {
+      expect(str).assertEqual("BA");
+    })
+    describe('test1', () => {
+      beforeEach(async () => {
+        str += "E"
+      })
+      beforeEachIt(async () => {
+        str += "F"
+      })
+      it('test1111', 0, async () => {
+        expect(str).assertEqual("BACDBFE");
+      })
+    })
+  })
+}
+```
+
 ### Assertion
+
 JSUnit provides various assertion APIs for different test scenarios. For details, see the following table.
 | Name               | Description                                                       |
 | :------------------|-------------------------------------------------------------|
@@ -607,7 +647,6 @@ Since@ohos/hypium 1.0.1, JSUnit supports the mock capability. For details about 
 >
 >Only custom objects in application projects can be mocked. System API objects cannot be mocked. For details about how to mock system APIs, see [Mocking System Modules or External Dependency Modules](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-test-mock#section8353132513310).
 >
->Private functions of objects cannot be mocked.
 
 **Mockit**
 
@@ -1113,6 +1152,94 @@ export default function staticTest() {
 }
 ```
 
+**Example 12**: Mock private functions. (This feature is supported since @ohos/hypium 1.0.25.)
+
+<!-- @[mockPrivateFunc_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockPrivateFunc.test.ets) -->
+
+``` TypeScript
+import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+
+class ClassName {
+  constructor() {
+  }
+  method(arg: number):number {
+    return this.method_1(arg);
+  }
+  private method_1(arg: number) {
+    return arg;
+  }
+}
+
+export default function staticTest() {
+  describe('privateTest', () => {
+    it('private_001', 0, () => {
+      let claser: ClassName = new ClassName(); 
+      let really_result = claser.method(123);
+      expect(really_result).assertEqual(123);
+      // 1. Create a MockKit object.
+      let mocker: MockKit = new MockKit();
+      // 2. Mock the private method of the ClassName object, for example, method_1.
+      let func_1: Function = mocker.mockPrivateFunc(claser, "method_1");
+      // 3. The expected result returned by the mocked function is 456.
+      when(func_1)(ArgumentMatchers.any).afterReturn(456);
+      let mock_result = claser.method(123);
+      expect(mock_result).assertEqual(456);
+      // Clear the mock capability.
+      mocker.clear(claser);
+      let really_result1 = claser.method(123);
+      expect(really_result1).assertEqual(123);
+    })
+  })
+}
+```
+
+**Example 13**: Mock member variables. (This feature is supported since @ohos/hypium 1.0.25.)
+
+<!-- @[mockProperty_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockProperty.test.ets) -->
+
+``` TypeScript
+import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+
+class ClassName {
+  constructor() {
+  }
+  data = 1;
+  private priData = 2;
+  method() {
+    return this.priData;
+  }
+}
+
+export default function staticTest() {
+  describe('propertyTest', () => {
+    it('property_001', 0, () => {
+      let claser: ClassName = new ClassName(); 
+      let data = claser.data;
+      expect(data).assertEqual(1);
+      let priData = claser.method();
+      expect(priData).assertEqual(2);
+      // 1. Create a MockKit object.
+      let mocker: MockKit = new MockKit();
+      // 2. Mock the member variable data of the ClassName object.
+      mocker.mockProperty(claser, "data", 3);
+      mocker.mockProperty(claser, "priData", 4);
+      // 3. The expected values of the mocked member and private member are 3 and 4 respectively.
+      let mock_result = claser.data;
+      let mock_private_result = claser.method();
+      expect(mock_result).assertEqual(3);
+      expect(mock_private_result).assertEqual(4);
+      // Clear the mock capability.
+      mocker.ignoreMock(claser, "data");
+      mocker.ignoreMock(claser, "priData");
+      let really_result = claser.data;
+      expect(really_result).assertEqual(1);
+      let really_private_result = claser.method();
+      expect(really_private_result).assertEqual(2);
+    })
+  })
+}
+```
+
 ### Data-driven Capability
 
 Since [@ohos/hypium 1.0.2](https://ohpm.openharmony.cn/#/en/detail/@ohos%2Fhypium), JSUnit supports the data-driven capability. You can reuse test case code, configure input data and expected result data in the data configuration file, and obtain data in the test case for implementation and assertion processing, reducing redundant test code.
@@ -1194,13 +1321,13 @@ export default class TestAbility extends UIAbility {
 ```
 
  <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) -->
-
+ 
  ``` TypeScript
  import { describe, it } from '@ohos/hypium';
  
  export default function abilityTest() {
    describe('AbilityTest', () => {
-     it('testDataDriverAsync', 0, async (done: Function, data: ParmObj) => {
+     it('testDataDriverAsync', 0, async (done: Function, data: ParamObj) => {
        done();
      });
  
@@ -1209,7 +1336,7 @@ export default class TestAbility extends UIAbility {
    })
  }
  
- interface ParmObj {
+ interface ParamObj {
    name: string,
    value: string
  }

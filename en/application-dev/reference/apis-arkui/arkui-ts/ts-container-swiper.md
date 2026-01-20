@@ -1,4 +1,10 @@
 # Swiper
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @Giacinta-->
+<!--Adviser: @Brilliantry_Rui-->
 
  The **Swiper** component is able to display child components in a carousel-like manner.
 
@@ -6,7 +12,7 @@
 >
 > - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The **Swiper** component incorporates a [PanGesture](ts-basic-gestures-pangesture.md) event that facilitates the swiping action to cycle through its child components. Setting [disableSwipe](#disableswipe8) to **true** will cancel the internal listening for the **PanGesture** event, disabling the swiping interaction.
+> - The Swiper component implements the scrolling effect through the built-in [PanGesture](ts-basic-gestures-pangesture.md) gesture. When the [disableSwipe](#disableswipe8) attribute is set to true, the gesture listening is disabled, thereby preventing the scrolling operation.
 >
 > - When [NodeContainer](./ts-basic-components-nodecontainer.md) is reused in the **Swiper** component, recursive updates of parent component state variables by child nodes are prohibited.
 
@@ -16,7 +22,7 @@ Supported
 
 >  **NOTE**
 >
->  - Allowed child component types: built-in and custom components, including rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)). To maximize the benefits of lazy loading, avoid mixing lazy loading components (including **LazyForEach** and **Repeat**) and non-lazy loading components, and exercise caution when using multiple lazy loading components. Avoid modifying the data source while an animation is in progress, as doing so can lead to layout issues.
+>  - Child component types: system components and custom components. The rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) are supported. To maximize the benefits of lazy loading, avoid mixing lazy loading components (including **LazyForEach** and **Repeat**) and non-lazy loading components, and exercise caution when using multiple lazy loading components. Avoid modifying the data source while an animation is in progress, as doing so can lead to layout issues.
 >
 >  - If a child component has its [visibility](ts-universal-attributes-visibility.md#visibility) attribute set to **Visibility.None** and the **Swiper** component has its **displayCount** attribute set to **'auto'**, the child component does not take up space in the viewport, but does not affect the number of navigation points. If a child component has its **visibility** attribute set to **Visibility.None** or **Visibility.Hidden**, it takes up space in the viewport, but is not displayed.
 >
@@ -57,7 +63,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 index(value: number)
 
-Sets the index of the child component currently displayed in the container. If the value is less than 0 or greater than or equal to the number of child components, the default value **0** is used.
+Sets the index of the child component currently displayed in the container.
 
 Since API version 10, this attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
 
@@ -91,7 +97,7 @@ If [loop](#loop) is set to **false**, the automatic playback stops at the last p
 
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------- | ---- | -------------------------------------- |
-| value  | boolean | Yes  | Whether to enable automatic playback for child components.<br>Default value: **false** (automatic playback is disabled for child components).|
+| value  | boolean | Yes  | Whether to enable automatic playback for child components.<br>true: automatically play; false: not automatically play.<br>If an invalid value is passed, the value false is used.|
 
 ### autoPlay<sup>18+</sup>
 
@@ -111,26 +117,8 @@ If [loop](#loop) is set to **false**, automatic playback stops at the last page 
 
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------- | ---- | -------------------------------------- |
-| autoPlay  | boolean | Yes  | Whether to enable automatic playback for child components.<br>Default value: **false** (automatic playback is disabled for child components).|
-| options  | [AutoPlayOptions](#autoplayoptions18)  | Yes  | Whether child components stop automatic playback when the screen is pressed by fingers, a mouse device, or other input devices. If **stopWhenTouched** is set to **true**, automatic playback resumes after any finger lifts in multi-touch scenarios.<br>Default value: **{ stopWhenTouched: true }**.|
-
-### interval
-
-interval(value: number)
-
-Sets the interval for automatic playback.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 10.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type  | Mandatory| Description                                                      |
-| ------ | ------ | ---- | ---------------------------------------------------------- |
-| value  | number | Yes  | Interval for automatic playback. If the value is smaller than the value of [duration](#duration), the next carousel starts immediately after page switching completes.<br>Default value: **3000**.<br>Unit: ms<br>Value range: [0, +∞). If a value less than 0 is set, the default value is used.|
+| autoPlay  | boolean | Yes  | Whether to enable automatic playback for child components.<br>true: The child component automatically plays. false: The child component does not automatically play.<br>If an invalid value is passed, the value false is used.|
+| options  | [AutoPlayOptions](#autoplayoptions18)&nbsp; | Yes  | Whether child components stop automatic playback when the screen is pressed by fingers, a mouse device, or other input devices. If **stopWhenTouched** is set to **true**, automatic playback resumes after any finger lifts in multi-touch scenarios.<br>Default value: **{ stopWhenTouched: true }**.|
 
 ### indicator
 
@@ -148,13 +136,17 @@ Sets the style of the navigation indicator.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [DotIndicator](#dotindicator10)<sup>10+</sup> \| [DigitIndicator](#digitindicator10)<sup>10+</sup> \| boolean | Yes  | Style of the navigation indicator.<br> \- **DotIndicator**: dot style.<br> \- **DigitIndicator**: digit style.<br> \- **boolean**: whether to enable the navigation indicator. The value **true** means to enable the feature, and **false** means the opposite.<br>  Default value: **true**<br>  Default style: **DotIndicator**|
+| value  | [DotIndicator](#dotindicator10)<sup>10+</sup>&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)<sup>10+</sup>&nbsp;\|&nbsp;boolean | Yes  | Style of the navigation indicator.<br> \- **DotIndicator**: dot style.<br> \- **DigitIndicator**: digit style.<br> \- **boolean**: whether to enable the navigation indicator. The value **true** means to enable the feature, and **false** means the opposite.<br>  Default value: **true**<br>  Default style: **DotIndicator**|
 
 ### indicator<sup>15+</sup>
 
 indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicator | boolean)
 
 Sets the navigation indicator for the component.
+
+>  **NOTE**
+>
+> After the controller of the navigation point component bound externally is set, the navigation point component can be used together with the external navigation point. The display position and size of the external navigation point can be customized. For details, see [Indicator](ts-swiper-components-indicator.md).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 15.
 
@@ -166,14 +158,33 @@ Sets the navigation indicator for the component.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| indicator  | [IndicatorComponentController](ts-swiper-components-indicator.md#indicatorcomponentcontroller)<sup>15+</sup> \| [DotIndicator](#dotindicator10) \| [DigitIndicator](#digitindicator10) \| boolean| Yes  | Style of the navigation indicator.<br>\- **IndicatorComponentController**: separate navigation indicator controller. This controller can be bound to an external navigation indicator, but the external and internal indicators cannot coexist.<br> \- **DotIndicator**: dot style.<br> \- **DigitIndicator**: digit style.<br> \- **boolean**: whether to enable the navigation indicator. The value **true** means to enable the feature, and **false** means the opposite.<br>  Default value: **true**<br>  Default style: **DotIndicator**|
+| indicator  | [IndicatorComponentController](ts-swiper-components-indicator.md#indicatorcomponentcontroller)<sup>15+</sup>&nbsp;\| [DotIndicator](#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)&nbsp;\|&nbsp;boolean| Yes  | Style of the navigation indicator.<br>\- **IndicatorComponentController**: separate navigation indicator controller. This controller can be bound to an external navigation indicator, but the external and internal indicators cannot coexist.<br> \- **DotIndicator**: dot style.<br> \- **DigitIndicator**: digit style.<br> \- **boolean**: whether to enable the navigation indicator. The value **true** means to enable the feature, and **false** means the opposite.<br>  Default value: **true**<br>  Default style: **DotIndicator**|
 
+### nestedScroll<sup>11+</sup>
+
+nestedScroll(value: SwiperNestedScrollMode)
+
+Sets the nested scrolling mode of the **Swiper** component and its parent container. When [loop](#loop) is set to true, the Swiper component does not have edges and does not trigger nested scrolling of the parent component.
+
+> **NOTE**
+>
+> The **Swiper** component's flick animation logic differs from other scrollable components, as **Swiper** can only slide one page at a time and performs a page-flip animation during a flick. When a **Swiper** component is nested with other scrollable components, it will not accept the scroll offset values transmitted by its child nodes after its page-turning animation has already started. At this point, the page-turning animation of the **Swiper** and the edge effect animation of the child node will be executed simultaneously.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                       | Mandatory| Description                                                        |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | [SwiperNestedScrollMode](#swipernestedscrollmode11) | Yes  | Nested scrolling mode of the **Swiper** component and its parent container.<br>If an invalid value is passed, SwiperNestedScrollMode.SELF_ONLY is used.|
 
 ### loop
 
 loop(value: boolean)
 
-Sets whether to enable loop playback. The value **true** means to enable loop playback. When LazyForEach is used, it is recommended that the number of the components to load exceed 5.
+Sets whether to enable loop playback. In LazyForEach lazy loop loading mode, it is recommended that the number of loaded components be greater than 5.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -185,7 +196,43 @@ Sets whether to enable loop playback. The value **true** means to enable loop pl
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| value  | boolean | Yes  | Whether to enable loop playback. The value **true** means to enable loop playback, and **false** means the opposite.<br>Default value: **true**.|
+| value  | boolean | Yes  | Whether to enable loop playback.<br>true: yes; false: no.<br>If the input parameter is invalid, the value **true** is used.|
+
+### effectMode<sup>8+</sup>
+
+effectMode(value: EdgeEffect)
+
+Edge sliding effect. This parameter takes effect only when [loop](#loop) is set to false or all child nodes are displayed on one screen in the Swiper view. When the [SwiperController.changeIndex()](#changeindex12), [SwiperController.showNext()](#shownext), or [SwiperController.showPrevious()](#showprevious) API is called to go to the first or last page, the rebound effect does not take effect.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 10.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                         | Mandatory| Description                                        |
+| ------ | --------------------------------------------- | ---- | -------------------------------------------- |
+| value  | [EdgeEffect](ts-appendix-enums.md#edgeeffect) | Yes  | Effect used when the component is at one of the edges.<br>Default value: **EdgeEffect.Spring**|
+
+### interval
+
+interval(value: number)
+
+Sets the interval for automatic playback.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 10.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                                      |
+| ------ | ------ | ---- | ---------------------------------------------------------- |
+| value  | number | Yes  | Interval for automatic playback. If the value of this parameter is less than that of the [duration](#duration) parameter, the next slide is played immediately after the current slide is played.<br>Default value: **3000**.<br>Unit: ms<br>Value range: [0, +∞). If a value less than 0 is set, the default value is used.|
 
 ### duration
 
@@ -206,6 +253,24 @@ The default curve for the animation is [interpolatingSpring](../js-apis-curve.md
 | Name| Type  | Mandatory| Description                                                 |
 | ------ | ------ | ---- | ----------------------------------------------------- |
 | value  | number | Yes  | Duration of the autoplay for child component switching.<br>Default value: **400**<br>Unit: ms<br>Value range: [0, +∞). If a value less than 0 is set, the default value is used.|
+
+### curve<sup>8+</sup>
+
+curve(value: Curve | string | ICurve)
+
+Sets the animation curve. The interpolating spring curve is used by default. For details about common curves, see [Curve](ts-appendix-enums.md#curve). You can also create custom curves (interpolation curve objects) by using the API provided by the [interpolation calculation](../js-apis-curve.md) module.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 10.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description                                       |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------- |
+| value  | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9) | Yes  | Animation curve.<br>The **string** type is deprecated since API version 9 (see [curves.init](../js-apis-curve.md#curvesinitdeprecated), [curves.steps](../js-apis-curve.md#curvesstepsdeprecated), [curves.cubicBezier](../js-apis-curve.md#curvescubicbezierdeprecated), and [curves.spring](../js-apis-curve.md#curvesspringdeprecated)). Use **Curve** or **ICurve** instead.<br>Default value: **[interpolatingSpring](../js-apis-curve.md#curvesinterpolatingspring10)(-1, 1, 328, 34)**.|
 
 ### vertical
 
@@ -243,25 +308,7 @@ If the type is number, the default unit is vp. If the type is string, the pixel 
 
 | Name| Type                      | Mandatory| Description                                  |
 | ------ | -------------------------- | ---- | -------------------------------------- |
-| value  | number \| string | Yes  | Space between child components.<br>Default value: **0**<br>Value range: [0, +∞). Values less than 0 or exceeding the **Swiper** component width are treated as the default value.|
-
-### displayMode
-
-displayMode(value: SwiperDisplayMode)
-
-Sets the mode in which elements are displayed along the main axis. This API takes effect only when **displayCount** is not set.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 10.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                           | Mandatory| Description                                                        |
-| ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [SwiperDisplayMode](#swiperdisplaymode) | Yes  | Mode in which elements are displayed along the main axis.<br>Default value: **SwiperDisplayMode.STRETCH**|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Space between child components.<br>Default value: **0**<br>Value range: [0, +∞). Values less than 0 or exceeding the **Swiper** component width are treated as the default value.|
 
 ### cachedCount<sup>8+</sup>
 
@@ -272,6 +319,8 @@ Sets the number of child components to be preloaded (cached), which are needed f
 >  **NOTE**
 >
 >  - In continuous scrolling scenarios where one **Swiper** child component is displayed per screen, setting **cachedCount** to **1** or **2** is typically sufficient. For best practices, see [Optimizing Frame Loss During Swiper Component Loading – Caching Data Items](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-swiper_high_performance_development_guide#section143504547145).
+>
+>  - This parameter takes effect only in [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) and [Repeat ](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) with virtualScroll enabled. After this parameter takes effect, child nodes that exceed the display and cache range are released.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -291,6 +340,10 @@ cachedCount(count: number, isShown: boolean)
 
 Sets the number of child components to be cached.
 
+>  **NOTE**
+>
+>  - When the value of isShown is true and the value of count is too large, if the number of nodes that can be loaded in the preloading range is insufficient, the same node that can be loaded is displayed only on one side in cyclic scenarios.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 15.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
@@ -302,7 +355,7 @@ Sets the number of child components to be cached.
 | Name| Type  | Mandatory| Description                            |
 | ------ | ------ | ---- | -------------------------------- |
 | count  | number | Yes  | Number of child components to be preloaded (cached).<br>Default value: **1**<br>Value range: [0, +∞). If a value less than 0 is set, the default value is used.|
-| isShown  | boolean | Yes  | Whether the cached nodes within the range rendered without being added to the render tree.<br>Default value: **false**, indicating that cached nodes within the range are rendered.|
+| isShown  | boolean | Yes  | Whether the cached nodes within the range rendered without being added to the render tree.<br>true: Nodes in the preloading range are drawn. false: Nodes in the preloading range are not drawn.<br>If an invalid value is passed, false is used.|
 
 ### disableSwipe<sup>8+</sup>
 
@@ -322,57 +375,29 @@ Sets whether to disable the swipe feature.
 | ------ | ------- | ---- | ---------------------------------------- |
 | value  | boolean | Yes  | Whether to disable the swipe feature. The value **true** means to disable the feature, and **false** means the opposite.<br>Default value: **false**.|
 
-### curve<sup>8+</sup>
-
-curve(value: Curve | string | ICurve)
-
-Sets the animation curve. The interpolating spring curve is used by default. For details about common curves, see [Curve](ts-appendix-enums.md#curve). You can also create custom curves (interpolation curve objects) by using the API provided by the [interpolation calculation](../js-apis-curve.md) module.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 10.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                        | Mandatory| Description                                       |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------- |
-| value  | [Curve](ts-appendix-enums.md#curve) \| string \| [ICurve](../js-apis-curve.md#icurve9)<sup>10+</sup> | Yes  | Animation curve.<br>The **string** type is deprecated since API version 9 (see [curves.init](../js-apis-curve.md#curvesinitdeprecated), [curves.steps](../js-apis-curve.md#curvesstepsdeprecated), [curves.cubicBezier](../js-apis-curve.md#curvescubicbezierdeprecated), and [curves.spring](../js-apis-curve.md#curvesspringdeprecated)). Use **Curve** or **ICurve** instead.<br>Default value: **[interpolatingSpring](../js-apis-curve.md#curvesinterpolatingspring10)(-1, 1, 328, 34)**.|
-
-### indicatorStyle<sup>(deprecated)</sup>
-
-indicatorStyle(value?: IndicatorStyle)
-
-Sets the style of the navigation indicator.
-
-This API is supported since API version 8 and is deprecated since API version 10. You are advised to use [indicator](#indicator10) instead.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                               | Mandatory| Description        |
-| ------ | --------------------------------------------------- | ---- | ------------ |
-| value  | [IndicatorStyle](#indicatorstyledeprecated) | No  | Style of the navigation indicator.|
-
 ### displayCount<sup>8+</sup>
 
-displayCount(value: number | string | [SwiperAutoFill](#swiperautofill10), swipeByGroup?: boolean)
+displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean)
 
 Sets the number of elements to display per page.
 
-**number** type: Child elements' main-axis width adapts to the **Swiper** component's main-axis width. The child elements are stretched or shrunk to equally divide the **Swiper** component's width (minus **displayCount-1** times **itemSpace**). Values less than or equal to 0 are treated as the default value **1**.<br>
-**string** type: Only **'auto'** is supported. Child elements are laid out linearly based on their main-axis width without adapting to the **Swiper** component's width. [customContentTransition](#customcontenttransition12) and [onContentDidScroll](#oncontentdidscroll12) events are disabled.<br>
+**number** type: Child elements' main-axis width adapts to the **Swiper** component's main-axis width. The child elements are stretched or shrunk to equally divide the **Swiper** component's width (minus **displayCount-1** times **itemSpace**). Values less than or equal to 0 are treated as the default value **1**.
+
+**string** type: Only **'auto'** is supported. Child elements are laid out linearly based on their main-axis width without adapting to the **Swiper** component's width. [customContentTransition](#customcontenttransition12) and [onContentDidScroll](#oncontentdidscroll12) events are disabled.
+
 **SwiperAutoFill** type: Child elements' main-axis width adapts to the **Swiper** component's main-axis width. The system automatically works out the number of elements per page based on the width and **minSize** settings of the **Swiper** component. If **minSize** is left empty or set to a value less than or equal to 0, the **Swiper** component displays one column.
 
 > **NOTE**
 >
->1. When turning pages by group is used, the drag distance threshold for turning pages is half of the width of the **Swiper** component (50% of the child elements width if turning pages by child element is used). If the number of child elements in the last group is less than the value of **displayCount**, placeholders are used, but they show the **Swiper** background style directly and do not display any content.
+> - When pages are turned by group, the drag distance threshold for page turning is adjusted to 50% of the Swiper width. (If pages are turned by child element, the threshold is 50% of the child element width.) If the number of child elements in the last group is less than the value of **displayCount**, placeholders are used, but they show the **Swiper** background style directly and do not display any content.
 >
->2. When **displayCount** is set to **'auto'** and looping is disabled, the position of the selected navigation indicator aligns with the first page in the viewport. If the first page is only partially displayed in the viewport after switching, the selected navigation indicator remains aligned with the page's position, between two unselected indicators. In this case, you are advised to hide the navigation indicators.
+> - When displayCount is set to auto and the value of loop is set to false, the position of the selected navigation point is the same as that of the first page in the view. If the first page is only partially displayed in the viewport after switching, the selected navigation indicator remains aligned with the page's position, between two unselected indicators. In this case, you are advised to hide the navigation indicators.
 >
->3. If the navigation indicator is in dot style, the number of displayed navigation dots equals the number of child elements when the number of child elements displayed in the viewport is 1 (single-page scenario) or **displayCount** is set to **'auto'**.
+> - The navigation point style is set to a round navigation point. When the number of child elements displayed in the view is 1 (single-page scenario) or displayCount is set to auto, the number of displayed navigation points is equal to the number of child elements.
+>
+> - When displayCount is set to auto, if swipeByGroup is set to true, pages are turned by group for a single child element, and only one page can be turned at a time. In this case, you are advised not to set swipeByGroup or set swipeByGroup to false.
+>
+> - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 18.
 
 When the navigation dot is set to dot style and the number of child elements displayed in the viewport is greater than 1 (multi-page scenario), the number of displayed navigation dots follows the rules below.
 
@@ -395,41 +420,54 @@ When the navigation dot is set to dot style and the number of child elements dis
 
 | Name                    | Type                                                        | Mandatory| Description                                                        |
 | -------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value                      | number \| string \| [SwiperAutoFill](#swiperautofill10)<sup>10+</sup> | Yes  | Number of elements to display per page.<br> Default value: **1**<br>Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used.|
+| value                      | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[SwiperAutoFill](#swiperautofill10)<sup>10+</sup> | Yes  | Number of elements to display per page.<br> Default value: **1**<br>Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used.|
 | swipeByGroup<sup>11+</sup> | boolean                                                      | No  | Whether to turn pages by group. The value **true** means to turn pages by group, and **false** means to turn pages by child element. When turning pages by group is used, the number of child elements per group is the value of **displayCount**.<br> Default value: **false**.|
 
-> **NOTE**
->
->  When the number of child components is less than or equal to the total number of allowed nodes in the content area (totalDisplayCount = displayCount + prevMargin? (1 : 0 ) + nextMargin? (1 : 0 )), the **Swiper** component generally uses the non-looping mode for layout. In this case, the child components specified by **nextMargin** and **prevMargin** take up space in the viewport, but are not displayed. The specifications of the **Swiper** component are calculated based on the value of **totalDisplayCount**. The exceptions are as follows:
->    
->  - When the number of child components is equal to the total number of allowed nodes in the content area and both **prevMargin** and **nextMargin** take effect, set **loop** to **true** to enable loop playback.
->
->  - When the number of child components is equal to the value of **displayCount** plus 1 and at least one of **prevMargin** and **nextMargin** takes effect, set **loop** to **true** to enable loop playback. When loop playback is enabled, a snapshot is generated as the placeholder image. (The snapshot may not be correctly generated for those components that take a long time to display, such as those that use asynchronous image loading. Avoid enabling loop playback under this scenario.)
->
+### displayCount<sup>22+</sup>
 
-### effectMode<sup>8+</sup>
+displayCount(value: number | string | SwiperAutoFill | ItemFillPolicy, swipeByGroup?: boolean)
 
-effectMode(value: EdgeEffect)
+Sets the number of elements to display per page.
 
-Sets the effect used when the component is at one of the edges, which is effective only when [loop](#loop) is set to **false**. This effect does not apply when **SwiperController.changeIndex()**, **SwiperController.showNext()**, or **SwiperController.showPrevious()** is used to navigate to the first or last page.
+**number** type: Child elements' main-axis width adapts to the **Swiper** component's main-axis width. The child elements are stretched or shrunk to equally divide the **Swiper** component's width (minus **displayCount-1** times **itemSpace**). Values less than or equal to 0 are treated as the default value **1**.<br>
+**string** type: Only **'auto'** is supported. Child elements are laid out linearly based on their main-axis width without adapting to the **Swiper** component's width. [customContentTransition](#customcontenttransition12) and [onContentDidScroll](#oncontentdidscroll12) events are disabled.<br>
+**SwiperAutoFill** type: Child elements' main-axis width adapts to the **Swiper** component's main-axis width. The system automatically works out the number of elements per page based on the width and **minSize** settings of the **Swiper** component. If **minSize** is left empty or set to a value less than or equal to 0, the **Swiper** component displays one column.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 10.
+When the ItemFillPolicy type is used, the main axis width of the subelement adapts to the main axis width of the Swiper. The number of displayed elements is determined based on the breakpoint type corresponding to the Swiper component width. For example, if the breakpoint type is set to ItemFillPolicy.BREAKPOINT_DEFAULT, one column is displayed when the component width is equivalent to the sm breakpoint or a smaller breakpoint, two columns are displayed when the component width is equivalent to the md breakpoint, and three columns are displayed when the component width is equivalent to the lg breakpoint or a larger breakpoint.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+For details about the parameters, see [displayCount](#displaycount8).
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 22.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name| Type                                         | Mandatory| Description                                        |
-| ------ | --------------------------------------------- | ---- | -------------------------------------------- |
-| value  | [EdgeEffect](ts-appendix-enums.md#edgeeffect) | Yes  | Effect used when the component is at one of the edges.<br>Default value: **EdgeEffect.Spring**|
+| Name                    | Type                                                        | Mandatory| Description                                                        |
+| -------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value                      | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[SwiperAutoFill](#swiperautofill10)&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22) | Yes  | Number of elements to display per page.<br> The value range is (0, +∞). If the value is less than or equal to 0, the value 1 is used.|
+| swipeByGroup | boolean                                                      | No  | Whether to turn pages by group. If this parameter is set to true, pages are turned by group. The number of child elements in each group is the value of displayCount. If this parameter is set to false, the default page turning behavior is used, that is, pages are turned by child element.<br> Default value: **false**.|
+
+> **NOTE**
+>
+>  When the number of Swiper child components is less than or equal to the total number of nodes displayed in the content area of the Swiper component (totalDisplayCount = DisplayCount + prevMargin?(1 : 0) + nextMargin? (1 : 0)), the layout is processed in non-loop mode. In this case, the child components corresponding to the previous and next margins are not displayed, but still occupy the space in the viewport. The specifications of the **Swiper** component are calculated based on the value of **totalDisplayCount**. The exceptions are as follows:
+>
+>  - When the number of child components is equal to the total number of allowed nodes in the content area and both **prevMargin** and **nextMargin** take effect, set **loop** to **true** to enable loop playback.
+>
+>  - When the number of Swiper child components is equal to the value of DisplayCount of the Swiper component plus 1 and at least one of prevMargin and nextMargin takes effect, set loop to true in non-group-based page turning mode. In this case, a screenshot placeholder component is generated. (If a component with a long display time, such as asynchronous image loading, is used, the screenshot may not be correctly generated. Therefore, you are advised not to enable loop in this scenario.)
+>
 
 ### displayArrow<sup>10+</sup>
 
 displayArrow(value: ArrowStyle | boolean, isHoverShow?: boolean)
 
 Sets the arrow style of the navigation indicator.
+
+> **NOTE**
+>
+> When all child nodes fit within the viewport, resulting in only one screen's worth of content being visible, the **Swiper** component displays only that screen without any left or right page-turning arrows.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -439,12 +477,26 @@ Sets the arrow style of the navigation indicator.
 
 | Name                    | Type                                            | Mandatory| Description                                                        |
 | -------------------------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value                      | [ArrowStyle](#arrowstyle10) \| boolean | Yes  | Arrow and background to set. In cases of exceptions, the default values in the **ArrowStyle** object are used. The value **true** means to show the arrow and background in the default styles, and **false** means to hide the arrow and background.<br>Default value: **false**.|
-| isHoverShow                | boolean                                          | No  | Whether to show the arrow on mouse hover.<br>Default value: **false**.<br>**NOTE**<br>1. **false**: The arrow is always displayed.<br>2. **true**: The arrow is displayed only mouse over.<br>With navigation dots, the arrow is displayed when mouse pointer hovers over the dots or arrows area.<br>Without navigation dots, the arrow is displayed when mouse pointer hovers over the **Swiper** display area.<br>3. When the arrow is displayed, clicking the arrow turns pages.|
+| value                      | [ArrowStyle](#arrowstyle10)&nbsp;\|&nbsp;boolean | Yes  | Arrow and background to set. In cases of exceptions, the default values in the **ArrowStyle** object are used. The value **true** means to show the arrow and background in the default styles, and **false** means to hide the arrow and background.<br>Default value: **false**.|
+| isHoverShow                | boolean                                          | No  | Whether to show the arrow on mouse hover.<br>Default value: **false**.<br>**NOTE**<br>1. When isHoverShow is set to false, the arrow is always displayed.<br>2. When isHoverShow is set to true, the arrow is displayed when the mouse pointer is hovered over the navigation point and arrow range, and the arrow is displayed when the mouse pointer is hovered over the Swiper display range when there is no navigation point.<br>3. When the arrow is displayed, you can tap the arrow to turn pages.|
 
-> **NOTE**
->
-> When all child nodes fit within the viewport, resulting in only one screen's worth of content being visible, the **Swiper** component displays only that screen without any left or right page-turning arrows.
+### displayMode
+
+displayMode(value: SwiperDisplayMode)
+
+Sets the mode of arranging elements in the main axis direction. The number of elements displayed is preferentially determined by the value of [displayCount](#displaycount8). If displayCount is not set, this attribute takes effect.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 10.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                           | Mandatory| Description                                                        |
+| ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | [SwiperDisplayMode](#swiperdisplaymode) | Yes  | Mode in which elements are displayed along the main axis.<br>Default value: **SwiperDisplayMode.STRETCH**|
 
 ### nextMargin<sup>10+</sup>
 
@@ -452,9 +504,15 @@ nextMargin(value: Length, ignoreBlank?:boolean)
 
 Sets the trailing margin to reveal a portion of the next item. For the implementation example, see [Example 1: Setting the Navigation Indicator Interaction and Page Turning Effect](#example-1-setting-the-navigation-indicator-interaction-and-page-turning-effect). This attribute is effective only when the layout mode of the child components in **Swiper** is set to stretch, which mainly includes two scenarios: 1. **displayMode** is set to **SwiperDisplayMode.STRETCH**; 2. **displayCount** is assigned a numeric value.
 
-When the main axis runs horizontally and either **nextMargin** or **prevMargin** is greater than the measured width of the child component, both margins are hidden.
+When the main axis direction is horizontal, if either nextMargin or prevMargin is greater than the calculated width of the child component, nextMargin and prevMargin are not displayed.
 
-When the main axis runs vertically and either **nextMargin** or **prevMargin** is greater than the measured height of the child component, both margins are hidden.
+When the main axis direction is vertical, if either nextMargin or prevMargin is greater than the calculated height of the child component, nextMargin and prevMargin are not displayed.
+
+When using the **nextMargin** or **prevMargin** API, avoid applying [size constraints](ts-universal-attributes-size.md#constraintsize) to child components. Otherwise, the main axis of the child nodes will not be stretched to the expected length, causing the margins to lose their effect.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -477,6 +535,12 @@ When the main axis runs horizontally and either **nextMargin** or **prevMargin**
 
 When the main axis runs vertically and either **nextMargin** or **prevMargin** is greater than the measured height of the child component, both margins are hidden.
 
+When using the **nextMargin** or **prevMargin** API, avoid applying [size constraints](ts-universal-attributes-size.md#constraintsize) to child components. Otherwise, the main axis of the child nodes will not be stretched to the expected length, causing the margins to lose their effect.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -485,34 +549,14 @@ When the main axis runs vertically and either **nextMargin** or **prevMargin** i
 
 | Name| Type                        | Mandatory| Description                  |
 | ------ | ---------------------------- | ---- | ---------------------- |
-| value  | [Length](ts-types.md#length) | Yes  | Leading margin. Percentage values are not supported.<br>Default value: **0**.|
+| value  | [Length](ts-types.md#length) | Yes  | Leading margin. Percentage values are not supported.<br>Default value: **0**|
 | ignoreBlank<sup>12+</sup>  | boolean | No  | Whether to hide the leading margin for the first page in non-loop scenarios.<br> **true**: Hide the leading margin, in which case, the left edge of the first page is aligned with that of the **Swiper** component's viewable area.<br>**false**: Show the leading margin, in which case, the first page has a **prevMargin**-specified gap from the **Swiper** component's left edge.<br>Default value: **false**.<br>**NOTE**<br>On the first page, the values of **prevMargin** and **nextMargin** are added to create a right margin that allows the next page to be displayed partially.|
-
-### nestedScroll<sup>11+</sup>
-
-nestedScroll(value: SwiperNestedScrollMode)
-
-Sets the nested scrolling mode of the **Swiper** component and its parent container. When **loop** is set to **true**, the **Swiper** component has no edge effect and does not trigger nested scrolling of its parent container.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                       | Mandatory| Description                                                        |
-| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [SwiperNestedScrollMode](#swipernestedscrollmode11) | Yes  | Nested scrolling mode of the **Swiper** component and its parent container.<br>Default value: **SwiperNestedScrollMode.SELF_ONLY**|
-
-> **NOTE**
->
-> The **Swiper** component's flick animation logic differs from other scrollable components, as **Swiper** can only slide one page at a time and performs a page-flip animation during a flick. When a **Swiper** component is nested with other scrollable components, it will not accept the scroll offset values transmitted by its child nodes after its page-turning animation has already started. At this point, the page-turning animation of the **Swiper** and the edge effect animation of the child node will be executed simultaneously.
 
 ### indicatorInteractive<sup>12+</sup>
 
 indicatorInteractive(value: boolean)
 
-Sets whether the navigation indicator is interactive. The value **true** means that the navigation indicator is interactive.
+Sets whether the navigation indicator is interactive.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -522,13 +566,13 @@ Sets whether the navigation indicator is interactive. The value **true** means t
 
 | Name| Type                                                       | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether the navigation indicator is interactive. The value **true** means that the navigation indicator is interactive, and **false** means the opposite.<br>Default value: **true**.|
+| value  | boolean | Yes  | Whether the navigation indicator is interactive.<br>true: The navigation point can be interacted. false: The navigation point cannot be interacted.<br>If the input parameter is invalid, the value **true** is used.|
 
 ### pageFlipMode<sup>15+</sup>
 
 pageFlipMode(mode: Optional\<PageFlipMode>)
 
-Sets the mode for flipping pages using the mouse wheel.
+Sets the mode for flipping pages using the mouse wheel. If this interface is not used, the continuous page flipping mode is used by default. The value is PageFlipMode.CONTINUOUS.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 15.
 
@@ -540,15 +584,15 @@ Sets the mode for flipping pages using the mouse wheel.
 
 | Name| Type                                                       | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode  | Optional\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | Yes  | Mode for flipping pages using the mouse wheel.<br>Default value: **PageFlipMode.CONTINUOUS**|
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | Yes  | Mode for flipping pages using the mouse wheel.<br>If the value is undefined, the value PageFlipMode.CONTINUOUS is used.|
 
 ### maintainVisibleContentPosition<sup>20+</sup>
 
 maintainVisibleContentPosition(enabled: boolean)
 
-Sets whether to maintain the visible content position when data is inserted or deleted above or ahead of the viewport. This applies to **Swiper** components using a single [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) as the child node, where the data source is modified using **LazyForEach** API such as [onDateAdd](ts-rendering-control-lazyforeach.md#ondataadd8) or [onDataDelete](ts-rendering-control-lazyforeach.md#ondatadelete8).
+Sets whether to maintain the visible content position when data is inserted or deleted above or ahead of the viewport. This method is applicable to the scenario where a single [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) is used as a Swiper child node. You can modify the data source through the [onDateAdd](ts-rendering-control-lazyforeach.md#ondataadd8) and [onDataDelete](ts-rendering-control-lazyforeach.md#ondatadelete8) APIs of LazyForEach. In other scenarios, the position of the visible content changes when data is inserted or deleted above or before the display area.
 
-When **swipeByGroup** in [displayCount](#displaycount8) is set to **true**, the visible content position remains unchanged only if the inserted or deleted data quantity is a multiple of the group size. Otherwise, the visible content position may change during group recalculation.
+When the swipeByGroup parameter of the [displayCount](#displaycount8) attribute is set to true, that is, the swipeByGroup parameter takes effect, the position of the visible content can remain unchanged only when data is inserted or deleted above or before the display area at a time and the inserted or deleted data volume is a multiple of the number of nodes in a group. Otherwise, the position of the visible content may change with the regrouping of each group of data.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 20.
 
@@ -562,22 +606,24 @@ When **swipeByGroup** in [displayCount](#displaycount8) is set to **true**, the 
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | enabled  | boolean | Yes  | Whether to maintain the visible content position when data is inserted or deleted above or ahead of the viewport.<br>Default value: **false**.<br>**false**: The visible content position will change when data is inserted or deleted. **true**: The visible content position remains unchanged when data is inserted or deleted. Animations stop if the data source is modified during an animation due to target index changes.|
 
-## IndicatorStyle<sup>(deprecated)</sup>
+### indicatorStyle<sup>(deprecated)</sup>
 
-This API is supported since API version 8 and is deprecated since API version 10. You are advised to use [indicator](#indicator10) instead.
+indicatorStyle(value?: IndicatorStyle)
+
+Sets the style of the navigation indicator.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 10. No replacement is available. You can use [Indicator](#indicator10), [DigitIndicator](#digitindicator10), and [DotIndicator](#dotindicator10) to set the indicator style.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Type                                      | Mandatory| Description                                                |
-| ------------- | ------------------------------------------ | ---- | ---------------------------------------------------- |
-| left          | [Length](ts-types.md#length)               | No  | Position of the navigation indicator relative to the left edge of the **Swiper** component.<br>If neither **left** nor **right** is set, the navigation indicator is centered along the main axis based on its own size and the size of the **Swiper** component.<br>If the value specified is **0**, the navigation indicator is placed at the position 0.<br>Priority: higher than the **right** property<br>Value range: [0, Swiper width - Navigation indicator area width]. Values outside this range are adjusted to the nearest boundary.                |
-| top           | [Length](ts-types.md#length)               | No  | Position of the navigation indicator relative to the top edge of the **Swiper** component.<br>If neither **top** nor **bottom** is set, the navigation indicator is aligned at the bottom along the cross axis based on its own size and the size of the **Swiper** component, which is the same effect as setting **bottom=0**.<br>If the value specified is **0**, the navigation indicator is placed at the position 0.<br>Priority: higher than the **bottom** property<br>Value range: [0, Swiper height - Navigation indicator area height]. Values outside this range are adjusted to the nearest boundary.                |
-| right         | [Length](ts-types.md#length)               | No  | Position of the navigation indicator relative to the right edge of the **Swiper** component.<br>If neither **left** nor **right** is set, the navigation indicator is centered along the main axis based on its own size and the size of the **Swiper** component.<br>If the value specified is **0**, the navigation indicator is placed at the position 0.<br>Priority: lower than the **left** property.<br>Value range: [0, Swiper width - Navigation indicator area width]. Values outside this range are adjusted to the nearest boundary.                |
-| bottom        | [Length](ts-types.md#length)               | No  | Position of the navigation indicator relative to the bottom edge of the **Swiper** component.<br>If neither **top** nor **bottom** is set, the navigation indicator is aligned at the bottom along the cross axis based on its own size and the size of the **Swiper** component, which is the same effect as setting **bottom=0**.<br>If the value specified is **0**, the navigation indicator is placed at the position 0.<br>Priority: lower than the **top** property<br>Value range: [0, Swiper height - Navigation indicator area height]. Values outside this range are adjusted to the nearest boundary.                |
-| size          | [Length](ts-types.md#length)               | No  | Diameter of the navigation indicator. Percentage values are not supported.<br>Default value: **6vp**|
-| mask          | boolean                                    | No  | Whether to enable the mask for the navigation indicator.<br>The value **true** means to enable the mask for the navigation indicator, and **false** means the opposite.                        |
-| color         | [ResourceColor](ts-types.md#resourcecolor) | No  | Color of the navigation indicator.                                  |
-| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | No  | Color of the selected navigation indicator.                            |
+**Parameters**
+
+| Name| Type                                               | Mandatory| Description        |
+| ------ | --------------------------------------------------- | ---- | ------------ |
+| value  | [IndicatorStyle](#indicatorstyledeprecated) | No  | Style of the navigation indicator.|
+
 
 ## SwiperDisplayMode
 
@@ -585,12 +631,12 @@ Enumerates the modes in which elements are displayed along the main axis.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                              | Description                                                        |
-| ---------------------------------- | ------------------------------------------------------------ |
-| Stretch<sup>(deprecated)</sup>     | The width of each page in the **Swiper** component equals the component's own width.<br>This API is deprecated since API version 10. You are advised to use **STRETCH** instead.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 7.|
-| AutoLinear<sup>(deprecated)</sup>  | The width of each page in the **Swiper** component equals the maximum width of child components. This enumerated value behaves the same as setting [displayCount](#displaycount8) to **'auto'** (string type). For details, see [displayCount](#displaycount8).<br>This API is deprecated since API version 10. You are advised to use [Scroller.scrollTo](ts-container-scroll.md#scrollto) instead.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 7.|
-| STRETCH<sup>10+</sup>              | The width of each page in the **Swiper** component equals the component's own width.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| AUTO_LINEAR<sup>(deprecated)</sup> | The width of each page in the **Swiper** component equals the width of the leftmost child component in the viewport. This enumerated value behaves the same as setting [displayCount](#displaycount8) to **'auto'** (string type). For details, see [displayCount](#displaycount8).<br>This API is supported since API version 10 and is deprecated since API version 12. You are advised to use [Scroller.scrollTo](ts-container-scroll.md#scrollto) instead.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Name                              |  Value|Description                                                        |
+| ---------------------------------- | -- |------------------------------------------------------------ |
+| Stretch<sup>(deprecated)</sup>     | 0 |The width of each page in the **Swiper** component equals the component's own width.<br>Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use STRETCH instead.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 7.|
+| AutoLinear<sup>(deprecated)</sup>  | 1 |The width of each page in the **Swiper** component equals the maximum width of child components. This enumerated value behaves the same as setting [displayCount](#displaycount8) to **'auto'** (string type). For details, see [displayCount](#displaycount8).<br>Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **AUTO_LINEAR** instead.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 7.|
+| STRETCH<sup>10+</sup>              | 0 |The width of each page in the **Swiper** component equals the component's own width.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| AUTO_LINEAR<sup>(deprecated)</sup> | 1 |The width of each page in the **Swiper** component equals the width of the leftmost child component in the viewport. This enumerated value behaves the same as setting [displayCount](#displaycount8) to **'auto'** (string type). For details, see [displayCount](#displaycount8).<br>Note: This API is supported since API version 10 and deprecated since API version 12. You are advised to use [Scroller.scrollTo](ts-container-scroll.md#scrollto) instead.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## SwiperNestedScrollMode<sup>11+</sup>
 
@@ -690,7 +736,7 @@ Moves to a specific page.
 | Name     | Type      | Mandatory | Description    |
 | -------- | ---------- | ---- | -------- |
 | index| number | Yes   | Index of the target page in the **Swiper** component.<br>**NOTE**<br>If the value specified is less than 0 or greater than the maximum page index, the value **0** is used.|
-| animationMode| [SwiperAnimationMode](#swiperanimationmode15) \| boolean | No   | Animation mode for moving to the specified page.<br>Default value: **SwiperAnimationMode.NO_ANIMATION**<br> **NOTE**<br>The value **true** is equivalent to **SwiperAnimationMode.DEFAULT_ANIMATION**, which means to use the default animation. The value **false** is equivalent to **SwiperAnimationMode.NO_ANIMATION**, which means to use no animation.|
+| animationMode| [SwiperAnimationMode](#swiperanimationmode15)&nbsp;\|&nbsp;boolean | No   | Animation mode for moving to the specified page.<br>Default value: **SwiperAnimationMode.NO_ANIMATION**<br> **NOTE**<br>The value **true** is equivalent to **SwiperAnimationMode.DEFAULT_ANIMATION**, which means to use the default animation. The value **false** is equivalent to **SwiperAnimationMode.NO_ANIMATION**, which means to use no animation.|
 
 ### finishAnimation
 
@@ -714,11 +760,15 @@ Stops an animation.
 
 preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
-Preloads child nodes. After this API is called, all specified child nodes will be loaded at once. Therefore, for performance considerations, it is recommended that you load child nodes in batches.
+Preloads child nodes. After this API is called, all specified child nodes will be loaded at once. Therefore, for performance considerations, it is recommended that you load child nodes in batches. This API uses a promise to return the result.
 
 If the **SwiperController** object is not bound to any **Swiper** component, any attempt to call APIs on it will result in a JavaScript exception, together with the error code 100004. Therefore, you are advised to use **try-catch** to handle potential exceptions when calling APIs on **SwiperController**.
 
-When combining **SwiperController** with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) and custom components, be aware that **LazyForEach** only retains custom components within the cache range. Components outside this range are removed. Therefore, make sure the nodes to preload are within the cache range of **LazyForEach** to avoid issues.
+When this API is used together with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) and custom components, only custom components within the cache range are retained. Therefore, ensure that the index of the node preloaded through this API is within the cache range.
+
+> **NOTE**
+>
+> The preloadItems method of Swiper needs to be called after Swiper is created. It is recommended that the first preload be controlled in the [onAppear](./ts-universal-events-show-hide.md#onappear) lifecycle of Swiper.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -730,13 +780,13 @@ When combining **SwiperController** with [LazyForEach](../../../ui/rendering-con
 
 | Name  | Type  | Mandatory  | Description                                    |
 | ----- | ------ | ---- | ---------------------------------------- |
-| indices | Optional\<Array\<number>> | Yes| Array of indexes of the child nodes to preload.<br>The default value is an empty array.|
+| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<Array\<number>> | Yes| Array of indexes of the child nodes to preload.|
 
 **Return value**
 
 | Type                                                        | Description                    |
 | ------------------------------------------------------------ | ------------------------ |
-| Promise\<void> | Promise used to return the value.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -765,7 +815,7 @@ Enumerates the animation mode for moving to a specific page in the **Swiper** co
 
 ## Indicator<sup>10+</sup>
 
-Sets the distance between the navigation indicator and the **Swiper** component. Note that due to its default interaction area height of 32 vp, the navigation indicator cannot be placed flush against the bottom edge.
+Sets the distance between the navigation indicator and the **Swiper** component. Note that due to its default interaction area height of 32 vp, the navigation indicator cannot be placed flush against the bottom edge. To implement the function of completely attaching to the bottom, you can use the [IndicatorComponent](ts-swiper-components-indicator.md#indicatorcomponent) component to adjust the position more flexibly.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -886,8 +936,8 @@ Sets the position of the navigation indicator relative to the bottom edge of the
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| bottom  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [Length](ts-types.md#length)| Yes  | Position of the navigation indicator relative to the bottom edge of the **Swiper** component.<br>If neither **top** nor **bottom** is set, the navigation indicator is aligned at the bottom along the cross axis based on its own size and the size of the **Swiper** component, which is the same effect as setting **bottom=0**.<br>If the value specified is **0**, the navigation indicator is placed at the position 0.<br>Priority: lower than the **top** property<br>Value range: [0, Swiper height - Navigation indicator area height]. Values outside this range are adjusted to the nearest boundary.|
-| ignoreSize  | boolean | Yes  | Whether to ignore the size of the navigation indicator.<br>Default value: **false**.<br>Setting **true** positions the indicator closer to the **Swiper** component's bottom. For the usage, see [Example 9: Using the space and bottom APIs on the Navigation Indicator](#example-9-using-the-space-and-bottom-apis-on-the-navigation-indicator).<br> **NOTE**<br>The **ignoreSize** property does not apply to the digit-style navigation indicator in the following scenarios:<br> &bull;  [vertical](#vertical) is set to **false** and the value of **bottom** is greater than 0.<br>  &bull;  When [vertical](#vertical) is set to **true**:<br>1. The value of **bottom** is greater than 0.<br> 2. The value of **bottom** is **undefined**.<br> 3. **isSidebarMiddle** is set to **false**.|
+| bottom  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[Length](ts-types.md#length)| Yes  | Position of the navigation indicator relative to the bottom edge of the **Swiper** component.<br>If neither **top** nor **bottom** is set, the navigation indicator is aligned at the bottom along the cross axis based on its own size and the size of the **Swiper** component, which is the same effect as setting **bottom=0**.<br>If the value specified is **0**, the navigation indicator is placed at the position 0.<br>Priority: lower than the **top** property<br>Value range: [0, Swiper height - Navigation indicator area height]. Values outside this range are adjusted to the nearest boundary.|
+| ignoreSize  | boolean | Yes  | Whether to ignore the size of the navigation indicator.<br>Default value: **false**.<br>Setting **true** positions the indicator closer to the **Swiper** component's bottom. For the usage, see [Example 9: Using the space and bottom APIs on the Navigation Indicator](#example-9-using-the-space-and-bottom-apis-on-the-navigation-indicator).<br> **NOTE**<br>The **ignoreSize** property does not apply to the digit-style navigation indicator in the following scenarios:<br> &bull; [vertical](#vertical) is set to **false** and the value of **bottom** is greater than 0.<br>  &bull; When [vertical](#vertical) is set to **true**:<br>1. The value of **bottom** is greater than 0.<br> 2. The value of **bottom** is **undefined**.<br> 3. **isSidebarMiddle** is set to **false**.|
 
 **Return value**
 
@@ -899,7 +949,7 @@ Sets the position of the navigation indicator relative to the bottom edge of the
 
 start(value: LengthMetrics): T
 
-Sets the distance between the navigation indicator and the right edge (in right-to-left scripts) or the left edge (in left-to-right scripts) of the **Swiper** component.
+In [RTL](../arkui-ts/ts-state-management-environment-variables.md#layoutdirection) mode, this parameter indicates the distance between the navigation point and the right side of the Swiper component. In [LTR](../arkui-ts/ts-state-management-environment-variables.md#layoutdirection) mode, this parameter indicates the distance between the navigation point and the left side of the Swiper component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -911,7 +961,7 @@ Sets the distance between the navigation indicator and the right edge (in right-
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes  | Distance between the navigation indicator and the right edge (in right-to-left scripts) or the left edge (in left-to-right scripts) of the **Swiper** component.<br>Default value: **0**<br>Unit: vp|
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes  | Sets the distance between the navigation point and the right side of the Swiper component in RTL mode, or the distance between the navigation point and the left side of the Swiper component in LTR mode.<br>Default value: **0**<br>Unit: vp<br>Value range: [0, Swiper width - Navigation point area width]. If the value is out of the range, the nearest boundary value is used.|
 
 **Return value**
 
@@ -935,7 +985,7 @@ Sets the distance between the navigation indicator and the left edge (in right-t
 
 | Name| Type                        | Mandatory | Description                                    |
 | ------ | ---------------------------- | ---- | ---------------------------------------- |
-| value | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes   | Distance between the navigation indicator and the left edge (in right-to-left scripts) or the right edge (in left-to-right scripts) of the **Swiper** component.<br>Default value: **0**<br>Unit: vp |
+| value | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes   | Distance between the navigation indicator and the left edge (in right-to-left scripts) or the right edge (in left-to-right scripts) of the **Swiper** component.<br>Default value: **0**<br>Unit: vp<br>The value range is [0, Swiper width – Navigation point area width]. If the value is out of the range, the nearest boundary value is used. |
 
 **Return value**
 
@@ -983,6 +1033,26 @@ Returns **DigitIndicator** object.
 
 A constructor used to create a **DotIndicator** object. It inherits from [Indicator](#indicator10).
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 10.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+### constructor
+
+constructor()
+
+A constructor used to create a **DotIndicator** object.
+
+> **NOTE**
+>
+> - When pressed, the navigation indicator is zoomed in to 1.33 times. To account for this, there is a certain distance between the navigation indicator's visible boundary and its actual boundary in the non-pressed state. The distance increases with the value of **itemWidth**, **itemHeight**, **selectedItemWidth**, and **selectedItemHeight**.
+>
+> - If there are too many pages and dots are displayed on multiple pages, you are advised to use the maxDisplayCount parameter to set the number of dots to be displayed.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 10.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -1003,7 +1073,7 @@ Sets the width of the dot-style navigation indicator. This parameter cannot be s
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Width of the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp|
+| value  | [Length](ts-types.md#length) | Yes  | Width of the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp<br>Value range: [0, +∞)|
 
 **Return value**
 
@@ -1027,7 +1097,7 @@ Sets the height of the dot-style navigation indicator. This parameter cannot be 
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Height of the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp|
+| value  | [Length](ts-types.md#length) | Yes  | Height of the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp<br>Value range: [0, +∞)|
 
 **Return value**
 
@@ -1051,7 +1121,7 @@ Sets the width of the selected dot in the dot-style navigation indicator. This p
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Width of the selected dot in the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp|
+| value  | [Length](ts-types.md#length) | Yes  | Width of the selected dot in the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp<br>Value range: [0, +∞)|
 
 **Return value**
 
@@ -1075,7 +1145,7 @@ Sets the height of the selected dot in the dot-style navigation indicator. This 
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Height of the selected dot in the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp|
+| value  | [Length](ts-types.md#length) | Yes  | Height of the selected dot in the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp<br>Value range: [0, +∞)|
 
 **Return value**
 
@@ -1123,7 +1193,7 @@ Sets the color of the dot-style navigation indicator.
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the dot-style navigation indicator.<br>Default value: **'\#182431'** (10% opacity)|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the dot-style navigation indicator.<br>Default value: '#1A182431' (light gray)|
 
 **Return value**
 
@@ -1147,7 +1217,7 @@ Sets the color of the selected dot in the dot-style navigation indicator.
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the selected dot in the dot-style navigation indicator.<br>Default value: **'\#007DFF'**|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the selected dot in the dot-style navigation indicator.<br>Default value: '#007DFF' (blue)|
 
 **Return value**
 
@@ -1169,7 +1239,7 @@ Sets the maximum number of navigation dots in the dot-style navigation indicator
 
 | Name         | Type  | Mandatory| Description                                                        |
 | --------------- | ------ | ---- | ------------------------------------------------------------ |
-| maxDisplayCount | number | Yes  | Maximum number of navigation dots in the dot-style navigation indicator. If the actual number of navigation dots exceeds this limit, the overflow effect is activated, as shown in Example 5.<br>This parameter has no default value. If an invalid value is set, no overflow effect is applied.<br>Value range: [6, 9].<br>**NOTE**<br>In scenarios involving overflow display:<br>1. Interactive features, such as gestures and mouse operations, are not supported.<br>2. The position of the selected navigation dot corresponding to the middle page is not strictly fixed; it depends on the sequence of previous page-turning operations.<br>3. Currently, only scenarios with **displayCount** set to **1** are supported.|
+| maxDisplayCount | number | Yes  | Maximum number of navigation dots in the dot-style navigation point indicator. If the actual number of navigation dots exceeds this limit, the overflow effect is activated, as shown in [Example 5](#example-5-configuring-overflow-for-the-dot-indicator).<br>This parameter has no default value. If an invalid value is set, no overflow effect is applied.<br>Value range: [6, 9].<br>**NOTE**<br>In scenarios involving overflow display:<br>1. Interactive features, such as gestures and mouse operations, are not supported.<br>2. The position of the selected navigation dot corresponding to the middle page is not strictly fixed; it depends on the sequence of previous page-turning operations.<br>3. Currently, only scenarios with **displayCount** set to **1** are supported.|
 
 **Return value**
 
@@ -1193,29 +1263,13 @@ Sets the spacing between the dots in a dot-style navigation indicator for the **
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| space  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | Yes  | Spacing between the dots in the dot-style navigation indicator. Percentage values are not supported.<br>Default value: **8**<br>Unit: vp|
+| space  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | Yes  | Spacing between the dots in the dot-style navigation indicator. Percentage values are not supported.<br>Default value: **8**<br>Unit: vp<br>Value range: [0, +∞)|
 
 **Return value**
 
 | Type                           | Description        |
 | ------------------------------- | ------------ |
 | [DotIndicator](#dotindicator10) | Current dot-style navigation indicator.|
-
-### constructor
-
-constructor()
-
-A constructor used to create a **DotIndicator** object.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 10.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
->**NOTE**
->
->When pressed, the navigation indicator is zoomed in to 1.33 times. To account for this, there is a certain distance between the navigation indicator's visible boundary and its actual boundary in the non-pressed state. The distance increases with the value of **itemWidth**, **itemHeight**, **selectedItemWidth**, and **selectedItemHeight**.
 
 ## DigitIndicator<sup>10+</sup>
 
@@ -1229,8 +1283,11 @@ A constructor used to create a **DigitIndicator** object. It inherits from [Indi
 
 >**NOTE**
 >
->When pages are turned by group, the child nodes displayed in the digit-style navigation indicator do not count placeholder nodes.<br>
+>When pages are turned by group, the number of subnodes displayed in the number navigation point does not include the placeholder node.
+>
 >The maximum value of [maxFontScale](ts-basic-components-text.md#maxfontscale12) for the digit-style navigation indicator is 2.
+>
+>The mirror display of the page number depends on the RTL status of the system.
 
 ### fontColor
 
@@ -1296,7 +1353,7 @@ Sets the font style of the digit-style navigation indicator.
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Font](ts-types.md#font) | Yes  | Font style of the digit-style navigation indicator.<br>Only the **size** and **weight** parameters in **Font** are adjustable. Setting **family** and **style** has no effect.<br>Default value:<br>{ size: 14, weight: FontWeight.Normal } |
+| value  | [Font](ts-types.md#font) | Yes  | Font style of the digit-style navigation indicator.<br>Only the **size** and **weight** parameters in **Font** are adjustable. Setting **family** and **style** has no effect.<br>Default value:<br>{&nbsp;size:&nbsp;14,&nbsp;weight:&nbsp;FontWeight.Normal&nbsp;} |
 
 **Return value**
 
@@ -1320,11 +1377,11 @@ Sets the font style of the selected digit in the digit-style navigation indicato
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Font](ts-types.md#font) | Yes  | Font style of the selected digit in the digit-style navigation indicator.<br>Default value:<br>{ size: 14, weight: FontWeight.Normal } |
+| value  | [Font](ts-types.md#font) | Yes  | Font style of the selected digit in the digit-style navigation indicator.<br>Default value:<br>{&nbsp;size:&nbsp;14,&nbsp;weight:&nbsp;FontWeight.Normal&nbsp;} |
 
 >**NOTE**
 >
-> When pages are turned by group, the child nodes displayed in the digit-style navigation indicator do not count placeholder nodes.
+> When pages are turned by group, the number of subnodes displayed in the navigation indicator does not include the placeholder node.
 
 **Return value**
 
@@ -1351,14 +1408,14 @@ Describes the left and right arrow attributes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name             | Type                                    | Mandatory | Description                                    |
-| ---------------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| showBackground   | boolean                                  | No   | Whether to show the background for the arrow. The value **true** means to show the background for the arrow, and **false** means the opposite.<br>Default value: **false**.               |
-| isSidebarMiddle  | boolean                                  | No   | Whether the arrow is centered on both sides of the **Swiper** component. The value **true** means that the arrow is centered on both sides of the **Swiper** component, and **false** means that the arrow is show on either side of the navigation indicator.<br>Default value: **false**.<br> |
-| backgroundSize   | [Length](ts-types.md#length)             | No   | Size of the background.<br>On both sides of the navigation indicator:<br>Default value: **24vp**.<br>On both sides of the component:<br>Default value: **32vp**.<br>Percentage values are not supported.|
-| backgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | No   | Color of the background.<br>On both sides of the navigation indicator:<br>Default value: **'\#00000000'**.<br>On both sides of the component:<br>Default value: **'\#19182431'**.|
-| arrowSize        | [Length](ts-types.md#length)             | No   | Size of the arrow.<br>On both sides of the navigation indicator:<br>Default value: **18vp**.<br>On both sides of the component:<br>Default value: **24vp**.<br>**NOTE**<br>If **showBackground** is set to **true**, the value of **arrowSize** is 3/4 of the value of **backgroundSize**.<br>Percentage values are not supported.|
-| arrowColor       | [ResourceColor](ts-types.md#resourcecolor) | No   | Color of the arrow.<br>Default value: **'\#182431'**                |
+| Name             | Type                                    | Read Only | Optional | Description                                    |
+| ---------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
+| showBackground   | boolean                                  | No   | Yes  | Whether to show the background for the arrow. The value **true** means to show the background for the arrow, and **false** means the opposite.<br>Default value: **false**.               |
+| isSidebarMiddle  | boolean                                  | No   | Yes  | Whether the arrow is centered on both sides of the **Swiper** component. If this parameter is set to true, the arrow is displayed in the middle of the Swiper component. If this parameter is set to false, the arrow is displayed on both sides of the navigation indicator.<br>Default value: **false**.<br> |
+| backgroundSize   | [Length](ts-types.md#length)             | No   | Yes  | Size of the background.<br>On both sides of the navigation indicator:<br>Default value: **24vp**.<br>On both sides of the component:<br>Default value: **32vp**.<br>Percentage values are not supported.|
+| backgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | No   | Yes  | Color of the background.<br>On both sides of the navigation indicator:<br>Default value: **'\#00000000'**.<br>On both sides of the component:<br>Default value: **'\#19182431'**.|
+| arrowSize        | [Length](ts-types.md#length)             | No   | Yes  | Size of the arrow.<br>On both sides of the navigation indicator:<br>Default value: **18vp**.<br>On both sides of the component:<br>Default value: **24vp**.<br>**NOTE**<br>If **showBackground** is set to **true**, the value of **arrowSize** is 3/4 of the value of **backgroundSize**.<br>Percentage values are not supported.|
+| arrowColor       | [ResourceColor](ts-types.md#resourcecolor) | No   | Yes  | Color of the arrow.<br>Default value: **'\#182431'**                |
 
 ## SwiperAutoFill<sup>10+</sup>
 
@@ -1370,9 +1427,9 @@ Describes the auto-fill attribute.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type            | Mandatory| Description                            |
-| ------- | -------------------- | ------ | ------------------------------------ |
-| minSize | [VP](ts-types.md#vp10) | Yes    | Minimum width of the element.<br>Default value: **0**.|
+| Name | Type            | Read Only| Optional| Description                            |
+| ------- | -------------------- | ------ | ------ | ------------------------------------ |
+| minSize | [VP](ts-types.md#vp10) | No | No    | Minimum width of the element.<br>Default value: **0**.|
 
 ## AutoPlayOptions<sup>18+</sup>
 
@@ -1384,9 +1441,9 @@ Defines the properties for controlling the automatic playback behavior.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name             | Type                                    | Mandatory | Description                                    |
-| ---------------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| stopWhenTouched   | boolean                                  | Yes   | Whether the automatic playback stops immediately when the component is touched.<br>The value **true** means that the automatic playback stops immediately when the component is touched, and **false** means the opposite.<br>Default value: **true**.|
+| Name             | Type                                | Read Only  | Optional | Description                                    |
+| ---------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
+| stopWhenTouched   | boolean                              | No  | No   | Whether the automatic playback stops immediately when the component is touched.<br>The value **true** means that the automatic playback stops immediately when the component is touched, and **false** means the opposite.<br>Default value: **true**.|
 
 ## Events
 
@@ -1396,9 +1453,14 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 onChange(event: Callback\<number>)
 
-Triggered when the index of the currently displayed child component changes. The return value is the index of the currently displayed child component.
+This event is triggered when the index of the currently displayed element changes. The return value is the index of the currently displayed element.
+
 
 When the **Swiper** component is used together with **LazyForEach**, the subpage UI update cannot be triggered in the **onChange** event.
+
+> **NOTE**
+>
+> If the index change is caused by an animation, this callback is triggered when the animation ends.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -1418,9 +1480,11 @@ onAnimationStart(event: OnSwiperAnimationStartCallback)
 
 Triggered when the page transition animation starts.
 
->  **NOTE**
+> **NOTE**
 >
->  - When this callback is invoked, the page transition animation logic is executed in the rendering thread, allowing the idle main thread to load resources required by child components. This reduces preloading time for nodes within the **cachedCount** range. For best practices, see [Optimizing Frame Loss During Swiper Component Loading – Preloading Data](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-swiper_high_performance_development_guide#section8783121513246).
+> - When this callback is invoked, the page transition animation logic is executed in the rendering thread, allowing the idle main thread to load resources required by child components. This reduces preloading time for nodes within the **cachedCount** range. For best practices, see [Optimizing Frame Loss During Swiper Component Loading – Preloading Data](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-swiper_high_performance_development_guide#section8783121513246).
+>
+> - When the duration of the page transition animation is set to 0, this callback is triggered only in the following scenarios: swiping to turn pages, automatic playback, calling **SwiperController.showNext()** or **SwiperController.showPrevious()**, and touching navigation points to navigate.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -1433,10 +1497,6 @@ Triggered when the page transition animation starts.
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
 | event  | [OnSwiperAnimationStartCallback](#onswiperanimationstartcallback18) | Yes  | Callback triggered when the page transition animation starts.|
-
->**NOTE**
->
->- When the duration of the page transition animation is set to 0, this callback is triggered only in the following scenarios: swiping to turn pages, automatic playback, calling **SwiperController.showNext()** or **SwiperController.showPrevious()**, and touching navigation points to navigate.
 
 ### onAnimationEnd<sup>9+</sup>
 
@@ -1586,6 +1646,24 @@ Triggered when the **Swiper** component is about to scroll. This event allows yo
 | ------ | ---- | ---- | ---- |
 | handler | [ContentWillScrollCallback](#contentwillscrollcallback15) | Yes| Callback triggered when content in the **Swiper** component scrolls.|
 
+### onScrollStateChanged<sup>20+</sup>
+
+onScrollStateChanged(event: Callback\<ScrollState>)
+
+Callback triggered when the Swiper sliding status changes. This callback is triggered when the Swiper sliding status changes to hand-following sliding, hand-leave animation, or stop. The return value is the current sliding status.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 20.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------ | ---- | ---- | ---- |
+| event  | [Callback](./ts-types.md#callback12)\<[ScrollState](ts-container-list.md#scrollstate)> | Yes  | Callback triggered when the sliding status changes.|
+
 ## OnSwiperAnimationStartCallback<sup>18+</sup>
 
 type OnSwiperAnimationStartCallback = (index: number, targetIndex: number, extraInfo: SwiperAnimationEvent) => void
@@ -1652,6 +1730,8 @@ Triggered during the swipe action of the **Swiper** component. For details about
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
 | Name| Type| Mandatory| Description|
 | ------ | ---- | ---- | ---- |
 | selectedIndex | number | Yes| Index of the currently selected page.|
@@ -1693,11 +1773,11 @@ Provides information related to the upcoming scroll action, including the index 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| ------ | ---- | ---- | ---- |
-| currentIndex | number | Yes| Index of the current page. During a finger swipe, this value remains constant as long as the finger is on the screen, even if the page has completely moved out of view.|
-| comingIndex | number | Yes| Index of the page that will be displayed in the scroll direction.|
-| offset | number | Yes| Displacement of the scroll action, which is signed to indicate different swipe directions. A positive value indicates a swipe from index=1 to index=0, while a negative value indicates a swipe from index=0 to index=1.<br>This value represents the offset for each frame during a finger swipe and the distance for page turning when the mouse wheel or keyboard navigation is used.|
+| Name| Type| Read Only| Optional| Description|
+| ------ | ---- | ---- | ---- | ---- |
+| currentIndex | number | No| No| Index of the current page. During a finger swipe, this value remains constant as long as the finger is on the screen, even if the page has completely moved out of view.|
+| comingIndex | number | No| No| Index of the page that will be displayed in the scroll direction.|
+| offset | number | No| No| Displacement of the scroll action, which is signed to indicate different swipe directions. A positive value indicates a swipe from index=1 to index=0, while a negative value indicates a swipe from index=0 to index=1.<br>This value represents the offset for each frame during a finger swipe and the distance for page turning when the mouse wheel or keyboard navigation is used.|
 
 ## SwiperAnimationEvent<sup>10+</sup>
 
@@ -1707,7 +1787,7 @@ Describes the animation information of the **Swiper** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name           | Type      | Read-Only| Optional| Description                                      |
+| Name           | Type      | Read Only| Optional| Description                                      |
 | ------------- | ----------- | ---- | ---- |------------------------------- |
 | currentOffset | number | No| No| Offset of the currently displayed element relative to the start position of the **Swiper** along the main axis. Unit: vp<br>Default value: **0**|
 | targetOffset | number | No| No| Offset of the target element relative to the start position of the **Swiper** along the main axis. Unit: vp<br>Default value: **0**|
@@ -1721,10 +1801,10 @@ Provides the information about the custom page transition animation.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| ------ | ---- | ---- | ---- |
-| timeout | number | No| Timeout for the page transition animation. The timeout timer starts when the default animation (page scrolling) reaches the point where the first frame is moved out of the viewport. If you do not call the **finishTransition** API of [SwiperContentTransitionProxy](#swipercontenttransitionproxy12) before the timer expires, the component considers that the custom animation of the page ends and immediately removes the page node from the render tree. The unit is ms. The default value is **0**.|
-| transition | Callback<[SwiperContentTransitionProxy](#swipercontenttransitionproxy12)> | Yes| Content of the custom page transition animation.|
+| Name| Type| Read Only| Optional| Description|
+| ------ | ---- | ---- | ---- | ---- |
+| timeout | number | No| Yes| Timeout for the page transition animation. The timeout timer starts when the default animation (page scrolling) reaches the point where the first frame is moved out of the viewport. If you do not call the **finishTransition** API of [SwiperContentTransitionProxy](#swipercontenttransitionproxy12) before the timer expires, the component considers that the custom animation of the page ends and immediately removes the page node from the render tree. The unit is ms. The default value is **0**.|
+| transition | Callback<[SwiperContentTransitionProxy](#swipercontenttransitionproxy12)> | No| No| Content of the custom page transition animation.|
 
 ## SwiperContentTransitionProxy<sup>12+</sup>
 
@@ -1736,7 +1816,7 @@ Implements the proxy object returned during the execution of the custom page tra
 
 ### Attributes
 
-| Name| Type| Read-Only| Optional| Description|
+| Name| Type| Read Only| Optional| Description|
 | ---- | ---- | --- | ---- | --- |
 | selectedIndex | number | No| No| Index of the currently selected page.|
 | index | number | No| No| Index of a page in the viewport.|
@@ -1760,11 +1840,33 @@ Notifies the **Swiper** component that the custom animation has finished playing
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+
+## IndicatorStyle<sup>(deprecated)</sup>
+
+Style of the navigation indicator.
+
+> **NOTE**
+>
+> This component is supported since API version 8 and deprecated since API version 10. You are advised to use the [indicator](#indicator10) component instead.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name         | Type                                      | Read Only| Optional| Description                                                |
+| ------------- | ------------------------------------------ | ---- | ---- | ---------------------------------------------------- |
+| left          | [Length](ts-types.md#length)               | No  | Yes  | Position of the navigation indicator relative to the left edge of the **Swiper** component.<br>If neither **left** nor **right** is set, the navigation indicator is centered along the main axis based on its own size and the size of the **Swiper** component.<br>If the value specified is **0**, the navigation indicator is placed at the position 0.<br>Priority: higher than the **right** property<br>Value range: [0, Swiper width - Navigation indicator area width]. Values outside this range are adjusted to the nearest boundary.                |
+| top           | [Length](ts-types.md#length)               | No  | Yes  | Position of the navigation indicator relative to the top edge of the **Swiper** component.<br>If neither **top** nor **bottom** is set, the navigation indicator is aligned at the bottom along the cross axis based on its own size and the size of the **Swiper** component, which is the same effect as setting **bottom=0**.<br>If the value specified is **0**, the navigation indicator is placed at the position 0.<br>Priority: higher than the **bottom** property<br>Value range: [0, Swiper height - Navigation indicator area height]. Values outside this range are adjusted to the nearest boundary.                |
+| right         | [Length](ts-types.md#length)               | No  | Yes  | Position of the navigation indicator relative to the right edge of the **Swiper** component.<br>If neither **left** nor **right** is set, the navigation indicator is centered along the main axis based on its own size and the size of the **Swiper** component.<br>If the value specified is **0**, the navigation indicator is placed at the position 0.<br>Priority: lower than the **left** property.<br>Value range: [0, Swiper width - Navigation indicator area width]. Values outside this range are adjusted to the nearest boundary.                |
+| bottom        | [Length](ts-types.md#length)               | No  | Yes  | Position of the navigation indicator relative to the bottom edge of the **Swiper** component.<br>If neither **top** nor **bottom** is set, the navigation indicator is aligned at the bottom along the cross axis based on its own size and the size of the **Swiper** component, which is the same effect as setting **bottom=0**.<br>If the value specified is **0**, the navigation indicator is placed at the position 0.<br>Priority: lower than the **top** property<br>Value range: [0, Swiper height - Navigation indicator area height]. Values outside this range are adjusted to the nearest boundary.                |
+| size          | [Length](ts-types.md#length)               | No  | Yes  | Diameter of the navigation indicator. Percentage values are not supported.<br>Default value: **6vp**|
+| mask          | boolean                                    | No  | Yes  | Whether to enable the mask for the navigation indicator.<br>true: The navigation point mask style is displayed. false: The navigation point mask style is not displayed.<br>Default value: **false**.                        |
+| color         | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Color of the navigation indicator.<br>Default value: '#1A182431' (light gray)                                  |
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Color of the selected navigation indicator.<br>Default value: '#007DFF' (blue)                           |
+
 ## Example
 
 ### Example 1: Setting the Navigation Indicator Interaction and Page Turning Effect
 
-This example demonstrates how to use the **changeIndex** API with **SwiperAnimationMode** to move to a specific page in the **Swiper** component.
+In this example, the [changeIndex](#changeindex15) API is used to set the [SwiperAnimationMode](#swiperanimationmode15) animation mode to implement the page turning of the Swiper component to a specified page.
 
 ```ts
 // xxx.ets
@@ -1846,6 +1948,9 @@ struct SwiperExample {
       .onChange((index: number) => {
         console.info(index.toString());
       })
+      .onScrollStateChanged((event: ScrollState) => {
+        console.info("event: " + event);
+      })
       .onGestureSwipe((index: number, extraInfo: SwiperAnimationEvent) => {
         console.info("index: " + index);
         console.info("current offset: " + extraInfo.currentOffset);
@@ -1875,14 +1980,17 @@ struct SwiperExample {
       Row({ space: 5 }) {
         Button('FAST 0')
           .onClick(() => {
+            // Controller: Jump to index 0 and use the fast animation mode.
             this.swiperController.changeIndex(0, SwiperAnimationMode.FAST_ANIMATION);
           })
         Button('FAST 3')
           .onClick(() => {
+            // Controller: Jump to index 3 and use the fast animation mode.
             this.swiperController.changeIndex(3, SwiperAnimationMode.FAST_ANIMATION);
           })
         Button('FAST ' + 9)
           .onClick(() => {
+            // Controller: Jump to index 9 and use the fast animation mode.
             this.swiperController.changeIndex(9, SwiperAnimationMode.FAST_ANIMATION);
           })
       }.margin(5)
@@ -1896,7 +2004,7 @@ struct SwiperExample {
 
 ### Example 2: Implementing a Digit Indicator
 
-This example showcases how to implement a digit indicator using the **DigitIndicator** API.
+This example uses the [DigitIndicator](#digitindicator10) API to implement the effect and functions of a digit indicator.
 
 ```ts
 // xxx.ets
@@ -1982,7 +2090,7 @@ struct SwiperExample {
 
 ### Example 3: Configuring Group Page-Turning
 
-This example illustrates the group page-turning effect using the **displayCount** property.
+In this example, the [displayCount](#displaycount8) attribute is used to implement the group-based page turning effect.
 
 ```ts
 // xxx.ets
@@ -2034,7 +2142,7 @@ struct SwiperExample {
             .fontSize(30)
         }, (item: string) => item)
       }
-      .displayCount(3, true)
+      .displayCount (3, true) // Enable the function of turning pages by group. Three carousel items are displayed on each page, and the entire group is switched during page turning.
       .autoPlay(true)
       .interval(4000)
       .loop(true)
@@ -2066,9 +2174,9 @@ struct SwiperExample {
 ```
 ![swiper](figures/swiper-swipe-by-group.gif)
 
-### Example 4: Customizing the Page Page Transition Animation
+### Example 4: Customizing the Page Transition Animation
 
-This example presents how to implement a custom page transition animation for the **Swiper** component through the **customContentTransition** API.
+This example presents how to implement a custom page transition animation for the **Swiper** component through the [customContentTransition](#customcontenttransition12) API.
 
 <!--code_no_check-->
 
@@ -2092,10 +2200,8 @@ export default class EntryAbility extends UIAbility {
 
 ```ts
 // CommonUtil.ets
-import { i18n, intl } from '@kit.LocalizationKit';
-
 export class CommonUtil {
-  private static isRTL: boolean = i18n.isRTL((new intl.Locale()).language);
+  private static isRTL: boolean = false;
 
   public static setIsRTL(isRTL: boolean): void {
     CommonUtil.isRTL = isRTL;
@@ -2211,7 +2317,7 @@ struct SwiperCustomAnimationExample {
 
 ### Example 5: Configuring Overflow for the Dot Indicator
 
-This example illustrates the activation of the overflow effect when the number of navigation dots exceeds the limit set through the **maxDisplayCount** property of the **DotIndicator** API.
+This example uses the [maxDisplayCount](#maxdisplaycount12) attribute of the DotIndicator API to implement the overflow display animation effect of dots.
 
 ```ts
 class MyDataSource implements IDataSource {
@@ -2277,7 +2383,7 @@ struct Index {
           .selectedItemHeight(8)
           .color(Color.Gray)
           .selectedColor(Color.Blue)
-          .maxDisplayCount(9))
+          .maxDisplayCount(9)) // Set the maximum number of navigation points to 9.
       .displayArrow({ // Set the arrow style of the navigation indicator.
         showBackground: true,
         isSidebarMiddle: true,
@@ -2307,7 +2413,7 @@ struct Index {
 
 ### Example 6: Preloading Child Nodes
 
-This example shows how to use the **preloadItems** API to preload specified child nodes.
+This example uses the [preloadItems](#preloaditems18) API to preload specified subnodes.
 
 ```ts
 // xxx.ets
@@ -2379,7 +2485,7 @@ struct MyComponent {
 
 ### Example 7: Implementing Synchronized Switching Between the Tabs and Swiper Components
 
-This example shows how to implement synchronized switching between the **Tabs** and **Swiper** components using the **onSelected** callback.
+This example associates [Tabs](ts-container-tabs.md) with Swiper through the [onSelected](#onselected18) API.
 
 ```ts
 // xxx.ets
@@ -2471,9 +2577,12 @@ struct TabsSwiperExample {
         }, (item: string) => item)
       }
       .loop(false)
+      // Triggered when a tab is selected or switched.
       .onSelected((index: number) => {
         console.info("onSelected:" + index);
+        // Synchronize the selected index to currentIndex (update the selected tab).
         this.currentIndex = index;
+        // Control the tabs to switch to the corresponding index tab.
         this.tabsController.changeIndex(index);
       })
     }
@@ -2484,7 +2593,7 @@ struct TabsSwiperExample {
 
 ### Example 8: Intercepting the Scrolling Behavior
 
-This example demonstrates how to use the **onContentWillScroll** event to allow only forward scrolling and intercept backward scrolling.
+In this example, the [onContentWillScroll](#oncontentwillscroll15) event is used to implement one-way sliding page turning. That is, only forward sliding page turning is allowed, and backward sliding page turning is intercepted.
 
 ```ts
 // xxx.ets
@@ -2543,6 +2652,10 @@ struct SwiperExample {
         this.currentIndex = index;
       })
       .onContentWillScroll((result: SwiperContentWillScrollResult) => {
+        // result.comingIndex: target index to which the view is about to be scrolled.
+        // Interception logic:
+        // 1. If the target index is greater than the current index, return false to intercept the scrolling behavior.
+        // 2. If the target index is less than the current index, return true to allow the scrolling behavior.
         if (result.comingIndex > this.currentIndex) {
           return false;
         }
@@ -2564,10 +2677,11 @@ struct SwiperExample {
   }
 }
 ```
+![swiper](figures/oncontentwillscroll.gif)
 
 ### Example 9: Using the space and bottom APIs on the Navigation Indicator
 
-This example demonstrates how to use the **bottom** and **space** APIs to set the spacing between the dots in a dot-style navigation indicator and the bottom margin of the **Swiper** component.
+This example uses the [bottom](#bottom19) and [space](#space19) APIs to control the spacing between navigation points and the bottom and between navigation points.
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
@@ -2633,8 +2747,8 @@ struct SwiperExample {
           }, (item: string) => item)
         }
         .indicator(new DotIndicator()
-          .space(this.space)
-          .bottom(LengthMetrics.vp(0), this.ignoreSize)
+          .space (this.space) // Spacing between navigation points
+          .bottom(LengthMetrics.vp(0), this.ignoreSize) // Spacing between the navigation points and the Swiper bottom
           .itemWidth(15)
           .itemHeight(15)
           .selectedItemWidth(15)
@@ -2667,3 +2781,71 @@ struct SwiperExample {
 }
 ```
 ![swiper](figures/indicator_space.gif)
+
+### Example 10: Displaying the Number of Swiper Elements Based on Breakpoints
+
+This example shows the effect of the Swiper component with the number of elements displayed configured based on breakpoints.
+
+From API version 22 onwards, the [displaycount](#displaycount22) API is added to set the number of elements displayed in the Swiper view.
+
+```ts
+class MyDataSource implements IDataSource {
+  private list: number[] = [];
+
+  constructor(list: number[]) {
+    this.list = list;
+  }
+
+  totalCount(): number {
+    return this.list.length;
+  }
+
+  getData(index: number): number {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+  }
+
+  unregisterDataChangeListener() {
+  }
+}
+
+@Entry
+@Component
+struct SwiperExample {
+  private data: MyDataSource = new MyDataSource([]);
+
+  aboutToAppear(): void {
+    let list: number[] = [];
+    for (let i = 1; i <= 10; i++) {
+      list.push(i);
+    }
+    this.data = new MyDataSource(list);
+  }
+
+  build() {
+    Column() {
+      Swiper() {
+        LazyForEach(this.data, (item: string) => {
+          Text(item.toString())
+            .height(160)
+            .backgroundColor(0xAFEEEE)
+            .textAlign(TextAlign.Center)
+            .fontSize(30)
+        }, (item: string) => item)
+      }
+      .width('100%')
+      .displayCount({fillType:PresetFillType.BREAKPOINT_SM1MD2LG3}) // Setting the Number of Elements to Be Displayed in a Viewport Based on Breakpoints
+    }
+  }
+}
+```
+
+When the Swiper width is within the [sm](../../../ui/arkts-layout-development-grid-layout.md#breakpoints) and smaller breakpoint range, one column is displayed.
+
+![swiper](figures/displaycount_1.jpg)
+
+When the Swiper width is within the [md](../../../ui/arkts-layout-development-grid-layout.md#breakpoints], two columns are displayed.
+
+![swiper](figures/displaycount_2.jpg)

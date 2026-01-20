@@ -42,31 +42,31 @@
     {
       "shortcuts": [
        {
-          "shortcutId": "id_test1",  // 标识快捷方式，在应用有多个快捷方式时，该字段可作为快捷方式的唯一标识符，不支持通过资源索引的方式（$string）配置该字段
-          "label": "$string:add",  // 标识该快捷方式对外显示的名称
-          "icon": "$media:add_icon",  // 标识该快捷方式对外显示的图片，需要在entry/src/main/resources/base/media中添加名称为add_icon的图片
+          "shortcutId": "id_test1",
+          "label": "$string:add",
+          "icon": "$media:add_icon",
           "wants": [
             {
-              "bundleName": "com.ohos.hello",   // 对应该快捷方式对应拉起组件的包名
-              "moduleName": "entry",    // 对应该快捷方式对应拉起组件的模块名
-              "abilityName": "EntryAbility1",   // 对应该快捷方式对应拉起组件的组件名
+              "bundleName": "com.ohos.hello",
+              "moduleName": "entry",
+              "abilityName": "EntryAbility1",
               "parameters": {
-                "testKey": "testValue"   // 表示拉起快捷方式时的自定义数据
+                "testKey": "testValue"
               }
             }
           ]
         },
         {
-          "shortcutId": "id_test2",  // 标识快捷方式，在应用有多个快捷方式时，该字段可作为快捷方式的唯一标识符，不支持通过资源索引的方式（$string）配置该字段
-          "label": "$string:share",  // 标识该快捷方式对外显示的名称
-          "icon": "$media:share_icon",  // 标识该快捷方式对外显示的图片，需要在entry/src/main/resources/base/media中添加名称为share_icon的图片
+          "shortcutId": "id_test2",
+          "label": "$string:share",
+          "icon": "$media:share_icon",
           "wants": [
             {
-              "bundleName": "com.ohos.hello",   // 对应该快捷方式对应拉起组件的包名
-              "moduleName": "entry",    // 对应该快捷方式对应拉起组件的模块名
-              "abilityName": "EntryAbility",   // 对应该快捷方式对应拉起组件的组件名
+              "bundleName": "com.ohos.hello",
+              "moduleName": "entry",
+              "abilityName": "EntryAbility",
               "parameters": {
-                "testKey": "testValue"   // 表示拉起快捷方式时的自定义数据
+                "testKey": "testValue"
               }
             }
           ]
