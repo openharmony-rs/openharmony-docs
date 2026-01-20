@@ -2077,6 +2077,19 @@ ArkTS不支持将命名空间用作对象，可以使用类或模块。
  
 <!-- @[no_nsStatements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNsStatements.ets) -->    
 
+``` TypeScript
+namespace A {
+  export let x: number
+
+  export function init() {
+    x = 1;
+  }
+}
+
+// 调用初始化函数来执行。
+A.init();
+```
+
 ### 不支持`require`和`import`赋值表达式
 
 **规则：**`arkts-no-require`
