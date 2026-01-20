@@ -851,6 +851,16 @@ class Y {
 
 <!-- @[interface_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->    
 
+``` TypeScript
+interface Style {
+  color: string; // 属性
+}
+interface AreaSize {
+  calculateAreaSize(): number; // 方法的声明
+  someMethod(): void;     // 方法的声明
+}
+```
+
 实现接口的类示例：
 
 <!-- @[interface_class_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Interface.ets) -->   
