@@ -650,6 +650,17 @@ ArkTS不支持条件类型别名，建议引入带显式约束的新类型，或
 
 <!-- @[no_conditionalTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoConditionalTypes.ets) -->  
 
+``` TypeScript
+// 在类型别名中提供显式约束。
+type X1<T extends number> = T;
+
+// 用Object重写，类型控制较少，需要更多的类型检查以确保安全。
+type X2<T> = Object;
+
+// Item必须作为泛型参数使用，并能正确实例化。
+type YI<Item, T extends Array<Item>> = Item;
+```
+
 ### 不支持在`constructor`中声明字段
 
 **规则：**`arkts-no-ctor-prop-decls`
