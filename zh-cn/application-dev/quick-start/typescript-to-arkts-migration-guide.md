@@ -2113,6 +2113,22 @@ ArkTS没有原型的概念，因此不支持在原型上赋值。此特性不符
 
 <!-- @[no_prototypeAssign_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoPrototypeAssignment.ts) -->  
 
+``` TypeScript
+let C = function (p) {
+  this.p = p; // 只有在开启noImplicitThis选项时会产生编译时错误。
+}
+
+C.prototype = {
+  m() {
+    console.info(this.p);
+  }
+}
+
+C.prototype.q = function (r: string) {
+  return this.p == r;
+}
+```
+
 **ArkTS**
 
 <!-- @[no_prototypeAssign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoPrototypeAssignment.ets) -->   
