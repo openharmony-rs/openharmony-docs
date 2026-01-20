@@ -1032,6 +1032,16 @@ function foo(a: A | null) {
 
 <!-- @[nullSafety_ternary](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NullSafety.ets) -->   
 
+``` TypeScript
+class Person {
+  // ...
+  public nick: string | null = null;
+  getNick(): string {
+    return this.nick ?? '';
+  }
+}
+```
+
 ### 可选链
 
 访问对象属性时，如果属性是`undefined`或`null`，可选链运算符返回`undefined`。
