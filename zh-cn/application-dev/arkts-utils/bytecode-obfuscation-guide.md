@@ -24,6 +24,18 @@
     在本模块`build-profile.json5`配置文件中的`arkOptions.obfuscation.ruleOptions`字段中，通过`enable`字段配置是否开启混淆。
 
     <!-- @[set_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/build-profile.json5) -->    
+    
+    ``` JSON5
+    "arkOptions": {
+      "obfuscation": {
+        "ruleOptions": {
+          "enable": true, // 开启混淆开关。
+          "files": ["./obfuscation-rules.txt"] // 指定配置混淆规则文件, 在编译本模块时生效。
+        },
+        // ...
+      }
+    },
+    ```
 
     在files字段对应的混淆配置文件`obfuscation-rules.txt`中进行选项配置，需要手动修改，启用以下混淆项：
 
