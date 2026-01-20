@@ -26,6 +26,18 @@
       }
     },
     ```
+    
+    ``` JSON5
+    "arkOptions": {
+      "obfuscation": {
+        "ruleOptions": {
+          "enable": true, // 开启混淆开关。
+          "files": ["./obfuscation-rules.txt"] // 指定配置混淆规则文件, 在编译本模块时生效。
+        },
+        // ...
+      }
+    },
+    ```
 
 * 配置混淆规则  
     打开混淆开关，仅开启默认混淆功能，默认混淆范围为局部变量和参数。如需开启更多混淆功能，请在`files`字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。需要注意的是，不同版本的DevEco Studio，`obfuscation-rules.txt`文件中的默认值可能会有所不同。
