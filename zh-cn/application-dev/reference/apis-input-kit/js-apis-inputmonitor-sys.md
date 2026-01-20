@@ -340,7 +340,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onMouse2<sup>23+</sup>
+## inputMonitor.onMouse<sup>23+</sup>
 
 onMouse(rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
 
@@ -2019,7 +2019,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.onPinch2<sup>23+</sup>
+## inputMonitor.onPinch<sup>23+</sup>
 
 onPinch(fingers: int, receiver: Callback&lt;Pinch&gt;): void
 
