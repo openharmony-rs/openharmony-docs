@@ -1967,6 +1967,29 @@ doOperation(2, 3);
 
 <!-- @[no_implicitReturnTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoImplicitReturnTypes.ets) -->   
 
+``` TypeScript
+// 需标注返回类型：
+function f(x: number): number {
+  if (x <= 0) {
+    return x;
+  }
+  return g(x);
+}
+
+// 可以省略返回类型，返回类型可以从f的类型标注推导得到。
+function g(x: number): number {
+  return f(x - 1);
+}
+
+// 可以省略返回类型。
+function doOperation(x: number, y: number) {
+  return x + y;
+}
+
+f(10);
+doOperation(2, 3);
+```
+
 ### 不支持参数解构的函数声明
 
 **规则：**`arkts-no-destruct-params`
