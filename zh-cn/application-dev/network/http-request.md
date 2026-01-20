@@ -865,9 +865,9 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
       }
     ],
     "component-config": {
+        "Request": true // 可选，自API 15开始支持该属性。
     	"Network Kit": true, // 可选，自API 20开始支持该属性。
     	"ArkWeb": false // 可选，自API 20开始支持该属性。
-        "Request": true // 可选，自API 20开始支持该属性。
         "Media Kit": false // 可选，自API 23开始支持该属性。
         "Remote Communication Kit": false // 可选，自API 23开始支持该属性。
     }
@@ -885,9 +885,9 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 |include-subdomains         | boolean         | 否| 配置为true时，name支持正则匹配。注意：域名配置超过1万以上时，正则匹配会带来耗时 |
 |name         | string         | 否| 配置主域名。 |
 |component-config                    | array          |  否| 指示每个组件的明文配置。优先级最高。|
+|Request                    | boolean          |否| 用于配置Request组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为true。 |
 |Network Kit                 | boolean          |否| 用于配置Network Kit组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为true。 |
 |ArkWeb                    | boolean          |否| 用于配置ArkWeb组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为false。 |
-|Request                    | boolean          |否| 用于配置Request组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为true。 |
 |Media Kit                    | boolean          |否| 用于配置Media Kit组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为false。 |
 |Remote Communication Kit                    | boolean          |否| 用于配置Remote Communication Kit组件是否支持禁止明文传输。true表示支持，false表示不支持，默认为false。 |
 
