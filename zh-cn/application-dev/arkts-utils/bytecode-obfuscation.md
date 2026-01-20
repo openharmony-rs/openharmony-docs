@@ -491,18 +491,6 @@ lastName
 **2.** 属性白名单作用于全局。即代码中出现多个重名属性，只要与`-keep-property-name`配置白名单名称相同，均不会被混淆。
 
 **哪些属性名应该被保留?**
-<!-- @[optionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->   
-
-``` TypeScript
-// 混淆配置：
-// -enable-property-obfuscation
-// -enable-string-property-obfuscation
-obj2.t = "0";
-console.info(obj2['t']); // 此时，'t'会被正确混淆，t可以选择性保留。
-
-obj2['v'] = "0";
-console.info(obj2['v']); // 此时，'v'会被正确混淆，v可以选择性保留。
-```
 1.如果代码中通过字符串拼接、变量访问或使用`defineProperty`方法来定义对象属性，则这些属性名应被保留。例如：
 
 <!-- @[jsOptionExample_keepPropertyName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.js) -->       
