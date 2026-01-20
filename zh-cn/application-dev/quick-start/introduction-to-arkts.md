@@ -1063,6 +1063,21 @@ function foo(a: A | null) {
 未导出的声明名称被视为私有名称，只能在声明该名称的模块中使用。
 
 <!-- @[module_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
+
+``` TypeScript
+export class Point {
+  public x: number = 0;
+  public y: number = 0;
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+}
+export let origin = new Point(0, 0);
+export function Distance(p1: Point, p2: Point): number {
+  return Math.sqrt((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y));
+}
+```
 **导出默认导出的对象**
 <!-- @[module_default_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
 
