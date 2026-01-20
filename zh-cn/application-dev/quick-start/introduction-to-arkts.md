@@ -806,6 +806,17 @@ ArkTS是静态类型语言，如上述示例所示，对象字面量只能在可
 
 <!-- @[record_type_complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
+``` TypeScript
+interface PersonInfo {
+  age: number;
+  salary: number;
+}
+let map: Record<string, PersonInfo> = {
+  'John': { age: 25, salary: 10},
+  'Mary': { age: 21, salary: 20}
+}
+```
+
 ### 抽象类 
 
 带有`abstract`修饰符的类称为抽象类。抽象类可用于表示一组更具体的概念所共有的概念。
