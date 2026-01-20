@@ -16,7 +16,9 @@ import storageStatistics from "@ohos.file.storageStatistics";
 
 ## storageStatistics.getTotalSizeOfVolume
 
-getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
+ArkTS-Dyn: getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
+
+ArkTS-Sta: getTotalSizeOfVolume(volumeUuid: string): Promise&lt;long&gt;
 
 异步获取外置存储设备中指定卷设备的总空间大小（单位为Byte），以Promise方式返回。
 
@@ -25,6 +27,10 @@ getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -36,7 +42,7 @@ getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
   | 类型                  | 说明             |
   | --------------------- | ---------------- |
-  | Promise&lt;number&gt; | Promise对象，返回指定卷设备的总空间大小（单位为Byte）。 |
+  |  ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回指定卷设备的总空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -53,13 +59,34 @@ getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
 **示例：**
 
+  ArkTS-Dyn示例：
+
   ```ts
   import volumemanager from "@ohos.file.volumeManager";
   import { BusinessError } from '@ohos.base';
+
   volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
     let uuid: string = volumes[0].uuid;
-    storageStatistics.getTotalSizeOfVolume(uuid).then((number: number) => {
-      console.info("getTotalSizeOfVolume successfully:" + number);
+    storageStatistics.getTotalSizeOfVolume(uuid).then((totalSize: number) => {
+      console.info("getTotalSizeOfVolume successfully:" + totalSize);
+    }).catch((err: BusinessError) => {
+      console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(err));
+    });
+  }).catch((err: BusinessError) => {
+    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+  });
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import volumemanager from "@ohos.file.volumeManager";
+  import { BusinessError } from '@ohos.base';
+
+  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+    let uuid: string = volumes[0].uuid;
+    storageStatistics.getTotalSizeOfVolume(uuid).then((totalSize: long) => {
+      console.info("getTotalSizeOfVolume successfully:" + totalSize);
     }).catch((err: BusinessError) => {
       console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(err));
     });
@@ -70,7 +97,9 @@ getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
 ## storageStatistics.getTotalSizeOfVolume
 
-getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;long&gt;): void
 
 异步获取外置存储设备中指定卷设备的总空间大小（单位为Byte），以callback方式返回。
 
@@ -80,12 +109,16 @@ getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;):
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
   | volumeUuid | string                               | 是   | 卷设备uuid。                       |
-  | callback   | AsyncCallback&lt;number&gt;          | 是   | 获取指定卷设备总空间之后的回调。 |
+  | callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;   | 是   | 获取指定卷设备总空间之后的回调。 |
 
 **错误码：**
 
@@ -102,17 +135,41 @@ getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;):
 
 **示例：**
 
+  ArkTS-Dyn示例：
+
   ```ts
   import volumemanager from "@ohos.file.volumeManager";
   import { BusinessError } from '@ohos.base';
+
   volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
     let uuid: string = volumes[0].uuid;
-    storageStatistics.getTotalSizeOfVolume(uuid, (error: BusinessError, number: number) => {
+    storageStatistics.getTotalSizeOfVolume(uuid, (error: BusinessError, totalSize: number) => {
       if (error) {
         console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(error));
       } else {
         // do something
-        console.info("getTotalSizeOfVolume successfully:" + number);
+        console.info("getTotalSizeOfVolume successfully:" + totalSize);
+      }
+    });
+  }).catch((err: BusinessError) => {
+    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+  });
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import volumemanager from "@ohos.file.volumeManager";
+  import { BusinessError } from '@ohos.base';
+
+  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+    let uuid: string = volumes[0].uuid;
+    storageStatistics.getTotalSizeOfVolume(uuid, (error: BusinessError, totalSize: long) => {
+      if (error) {
+        console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(error));
+      } else {
+        // do something
+        console.info("getTotalSizeOfVolume successfully:" + totalSize);
       }
     });
   }).catch((err: BusinessError) => {
@@ -122,7 +179,9 @@ getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;):
 
 ## storageStatistics.getFreeSizeOfVolume
 
-getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
+ArkTS-Dyn: getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
+
+ArkTS-Sta: getFreeSizeOfVolume(volumeUuid: string): Promise&lt;long&gt;
 
 异步获取外置存储设备中指定卷设备的可用空间大小（单位为Byte），以Promise方式返回。
 
@@ -131,6 +190,10 @@ getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -142,7 +205,7 @@ getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
   | 类型                  | 说明               |
   | --------------------- | ------------------ |
-  | Promise&lt;number&gt; | Promise对象，返回指定卷的可用空间大小（单位为Byte）。 |
+  | ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt;  | Promise对象，返回指定卷的可用空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -159,13 +222,34 @@ getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
 **示例：**
 
+  ArkTS-Dyn示例：
+
   ```ts
   import volumemanager from "@ohos.file.volumeManager";
   import { BusinessError } from '@ohos.base';
+
   volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
     let uuid: string = volumes[0].uuid;
-    storageStatistics.getFreeSizeOfVolume(uuid).then((number: number) => {
+    storageStatistics.getFreeSizeOfVolume(uuid).then((freeSize: number) => {
       console.info("getFreeSizeOfVolume successfully:" + number);
+    }).catch((err: BusinessError) => {
+      console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(err));
+    });
+  }).catch((err: BusinessError) => {
+    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+  });
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import volumemanager from "@ohos.file.volumeManager";
+  import { BusinessError } from '@ohos.base';
+
+  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+    let uuid: string = volumes[0].uuid;
+    storageStatistics.getFreeSizeOfVolume(uuid).then((freeSize: long) => {
+      console.info("getFreeSizeOfVolume successfully:" + freeSize);
     }).catch((err: BusinessError) => {
       console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(err));
     });
@@ -176,7 +260,9 @@ getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
 ## storageStatistics.getFreeSizeOfVolume
 
-getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;long&gt;): void
 
 异步获取外置存储设备中指定卷设备的可用空间大小（单位为Byte），以callback方式返回。
 
@@ -186,12 +272,16 @@ getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): 
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
   | 参数名     | 类型                                 | 必填 | 说明                         |
   | ---------- | ------------------------------------ | ---- | ---------------------------- |
   | volumeUuid | string                               | 是   | 卷设备uuid。                         |
-  | callback   | AsyncCallback&lt;number&gt;          | 是   | 获取指定卷可用空间之后的回调。 |
+  | callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;       | 是   | 获取指定卷可用空间之后的回调。 |
 
 **错误码：**
 
@@ -208,17 +298,41 @@ getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): 
 
 **示例：**
 
+  ArkTS-Dyn示例：
+
   ```ts
   import volumemanager from "@ohos.file.volumeManager";
   import { BusinessError } from '@ohos.base';
+
   volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
     let uuid: string = volumes[0].uuid;
-    storageStatistics.getFreeSizeOfVolume(uuid, (error: BusinessError, number: number) => {
+    storageStatistics.getFreeSizeOfVolume(uuid, (error: BusinessError, freeSize: number) => {
       if (error) {
         console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(error));
       } else {
         // do something
-        console.info("getFreeSizeOfVolume successfully: " + number);
+        console.info("getFreeSizeOfVolume successfully: " + freeSize);
+      }
+    });
+  }).catch((err: BusinessError) => {
+    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+  });
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import volumemanager from "@ohos.file.volumeManager";
+  import { BusinessError } from '@ohos.base';
+
+  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+    let uuid: string = volumes[0].uuid;
+    storageStatistics.getFreeSizeOfVolume(uuid, (error: BusinessError, freeSize: long) => {
+      if (error) {
+        console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(error));
+      } else {
+        // do something
+        console.info("getFreeSizeOfVolume successfully: " + freeSize);
       }
     });
   }).catch((err: BusinessError) => {
@@ -228,7 +342,9 @@ getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): 
 
 ## storageStatistics.getBundleStats<sup>9+</sup>
 
-getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
+ArkTS-Dyn: getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
+
+ArkTS-Sta: getBundleStats(packageName: string, index?: int): Promise&lt;BundleStats&gt;
 
 异步获取应用存储数据的空间大小（单位为Byte），以Promise方式返回。
 
@@ -238,12 +354,16 @@ getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
   | 参数名      | 类型   | 必填 | 说明     |
   | ----------- | ------ | ---- | -------- |
   | packageName | string | 是   | 应用包名。 |
-  | index<sup>12+</sup> | number | 否   | 分身应用的索引号，默认值为0（表示未分身的主应用）。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)接口获得。|
+  | index<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 分身应用的索引号，默认值为0（表示未分身的主应用）。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)接口获得。|
 
 **返回值：**
 
@@ -265,6 +385,8 @@ getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
 | 13900042 | Unknown error. |
 
 **示例：**
+
+  ArkTS-Dyn示例：
 
   ```ts
   import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
@@ -292,9 +414,39 @@ getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
   }
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
+  import storageStatistics from "@ohos.file.storageStatistics";
+  import { BusinessError } from '@ohos.base';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  let bundleName = "com.example.myapplication";
+  let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+  try {
+    let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
+    hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+
+    let packageName:string = bundleName;
+    let index:int = resourceInfo.appIndex;
+    storageStatistics.getBundleStats(packageName, index).then((BundleStats: storageStatistics.BundleStats) => {
+      hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
+    }).catch((err: BusinessError) => {
+      hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
+    });
+  
+  } catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed with error: %{public}s', message);
+  }
+  ```
+
 ## storageStatistics.getBundleStats<sup>9+</sup>
 
-getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, index?: number): void
+ArkTS-Dyn: getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, index?: number): void
+
+ArkTS-Sta: getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, index?: int): void
 
 异步获取应用存储数据的空间大小（单位为Byte），以callback方式返回。
 
@@ -304,13 +456,17 @@ getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, 
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
   | 参数名   | 类型                                                      | 必填 | 说明                                 |
   | -------- | --------------------------------------------------------- | ---- | ------------------------------------ |
   | packageName | string | 是   | 应用包名。 |
   | callback | AsyncCallback&lt;[Bundlestats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | 是   | 获取指定卷上的应用存储数据的空间大小之后的回调。 |
-  | index<sup>12+</sup> | number | 否   | 分身应用的索引号，默认值为0（表示未分身的主应用）。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)接口获得。|
+  | index<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 分身应用的索引号，默认值为0（表示未分身的主应用）。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)接口获得。|
 
 **错误码：**
 
@@ -326,6 +482,8 @@ getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, 
 | 13900042 | Unknown error. |
 
 **示例：**
+
+  ArkTS-Dyn示例：
 
   ```ts
   import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
@@ -355,9 +513,41 @@ getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, 
   }
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
+  import storageStatistics from "@ohos.file.storageStatistics";
+  import { BusinessError } from '@ohos.base';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  let bundleName = "com.example.myapplication";
+  let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+  try {
+    let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
+    hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+
+    let packageName:string = bundleName;
+    let index:int = resourceInfo.appIndex;
+    storageStatistics.getBundleStats(packageName, (err: BusinessError, BundleStats: storageStatistics.BundleStats) => {
+      if (err) {
+        hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
+      } else {
+        hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
+      }
+    }, index);
+  
+  } catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed: %{public}s', message);
+  }
+  ```
+
 ## storageStatistics.getSystemSize<sup>9+</sup>
 
-getSystemSize(): Promise&lt;number&gt;
+ArkTS-Dyn: getSystemSize(): Promise&lt;number&gt;
+
+ArkTS-Sta: getSystemSize(): Promise&lt;long&gt;
 
 异步获取系统数据的空间大小（单位为Byte），以Promise方式返回。
 
@@ -367,11 +557,15 @@ getSystemSize(): Promise&lt;number&gt;
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 
   | 类型                  | 说明             |
   | --------------------- | ---------------- |
-  | Promise&lt;number&gt; | Promise对象，返回系统数据的空间大小（单位为Byte）。 |
+  | ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回系统数据的空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -387,10 +581,23 @@ getSystemSize(): Promise&lt;number&gt;
 
 **示例：**
 
+  ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@ohos.base';
-  storageStatistics.getSystemSize().then((number: number) => {
-    console.info("getSystemSize successfully:" + number);
+  storageStatistics.getSystemSize().then((systemSize: number) => {
+    console.info("getSystemSize successfully:" + systemSize);
+  }).catch((err: BusinessError) => {
+    console.error("getSystemSize failed with error:" + JSON.stringify(err));
+  });
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@ohos.base';
+  storageStatistics.getSystemSize().then((systemSize: long) => {
+    console.info("getSystemSize successfully:" + systemSize);
   }).catch((err: BusinessError) => {
     console.error("getSystemSize failed with error:" + JSON.stringify(err));
   });
@@ -398,7 +605,9 @@ getSystemSize(): Promise&lt;number&gt;
 
 ## storageStatistics.getSystemSize<sup>9+</sup>
 
-getSystemSize(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getSystemSize(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getSystemSize(callback: AsyncCallback&lt;long&gt;): void
 
 异步获取系统数据的空间大小（单位为Byte），以callback方式返回。
 
@@ -408,11 +617,15 @@ getSystemSize(callback: AsyncCallback&lt;number&gt;): void
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | callback   |  AsyncCallback&lt;number&gt;         | 是   | 获取系统数据的空间大小之后的回调。 |
+  | callback   |  ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;   | 是   | 获取系统数据的空间大小之后的回调。 |
 
 **错误码：**
 
@@ -428,14 +641,30 @@ getSystemSize(callback: AsyncCallback&lt;number&gt;): void
 
 **示例：**
 
+  ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@ohos.base';
-  storageStatistics.getSystemSize((error: BusinessError, number: number) => {
+  storageStatistics.getSystemSize((error: BusinessError, systemSize: number) => {
     if (error) {
       console.error("getSystemSize failed with error:" + JSON.stringify(error));
     } else {
       // do something
-      console.info("getSystemSize successfully:" + number);
+      console.info("getSystemSize successfully:" + systemSize);
+    }
+  });
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@ohos.base';
+  storageStatistics.getSystemSize((error: BusinessError, systemSize: long) => {
+    if (error) {
+      console.error("getSystemSize failed with error:" + JSON.stringify(error));
+    } else {
+      // do something
+      console.info("getSystemSize successfully:" + systemSize);
     }
   });
   ```
