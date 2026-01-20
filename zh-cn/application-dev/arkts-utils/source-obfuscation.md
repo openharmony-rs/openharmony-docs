@@ -674,6 +674,33 @@ strip-not-compiled-module-name
 **示例**
 
 <!-- @[optionExample_useKeepInSource1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
+
+``` TypeScript
+// 保留类名和所有成员名。
+// @KeepSymbol
+class MyClass02 {
+  prop01: string = "prop"; // MyClass02和prop01不会被混淆。
+}
+
+// 通过构造函数保留类名。
+class MyClass03 {
+  prop02: string = "prop";
+  // @KeepSymbol
+  constructor() {}; // MyClass03不会被混淆。
+}
+
+// 保留类名和指定的字段名和方法，类中MyClass04，prop03_1，method03_2不会被混淆。
+class MyClass04 {
+  // @KeepSymbol
+  prop03_1: string = "prop";
+  prop03_2: number = 1;
+  constructor() {};
+
+  method03_1(): void {};
+  // @KeepSymbol
+  method03_2(): void {};
+}
+```
 **接口**
 
 当前支持对接口中的以下语法进行标记：
