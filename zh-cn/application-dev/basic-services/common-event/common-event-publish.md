@@ -51,7 +51,7 @@
        hilog.error(DOMAIN_NUMBER, TAG,
          `Publish failed, code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
      } else {
-       //...
+       // ...
        hilog.info(DOMAIN_NUMBER, TAG, `Publish success`);
      }
    });
@@ -97,7 +97,7 @@
        hilog.error(DOMAIN_NUMBER, TAG,
          `Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
      } else {
-       //...
+       // ...
        hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in publishing common event.`);
      }
    });
