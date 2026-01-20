@@ -264,6 +264,10 @@ try {
 
 在Node-API模块中运行abc文件。
 
+> **注意**
+>
+> 在信号函数中调用不安全，直接调用可能导致栈溢出。
+
 cpp部分代码
 
 <!-- @[node_api_module_run_script_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
