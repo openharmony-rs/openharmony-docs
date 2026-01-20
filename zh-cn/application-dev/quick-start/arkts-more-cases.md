@@ -439,6 +439,18 @@ function foo2(params: Record<string, string | number>) {
 
 <!-- @[ts_no_inferred_generic_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
 
+``` TypeScript
+class A {
+  str: string = ''
+}
+class B extends A {}
+class C extends A {}
+
+let arr: Array<A> = [];
+
+let originMenusMap:Map<string, C> = new Map(arr.map(item => [item.str, (item instanceof C) ? item: null]));
+```
+
 **建议改法**
 
 <!-- @[no_inferred_generic_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
