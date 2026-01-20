@@ -82,6 +82,21 @@ function printObj(obj: string) {
 
 <!-- @[ts_json_parser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->     
 
+``` TypeScript
+class A {
+  v: number = 0
+  s: string = ''
+
+  foo(str: string) {
+    let tmpStr = JSON.parse(str);
+    if (tmpStr.add != undefined) {
+      this.v = tmpStr.v;
+      this.s = tmpStr.s;
+    }
+  }
+}
+```
+
 **建议改法**
 
 <!-- @[json_parser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->     
