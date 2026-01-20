@@ -413,6 +413,16 @@ ArkTS不支持`any`和`unknown`类型。显式指定具体类型。
 
 <!-- @[no_any_unknown_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoAnyUnknown.ts) -->   
 
+``` TypeScript
+let value1: any
+value1 = true;
+value1 = 42;
+
+let value2: unknown
+value2 = true;
+value2 = 42;
+```
+
 **ArkTS**
 
 <!-- @[no_any_unknown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoAnyUnknown.ets) -->    
