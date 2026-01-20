@@ -1836,6 +1836,17 @@ x = (++x, x++); // 1。
 
 <!-- @[no_commaLoops](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCommaOutsideloops.ets) -->   
 
+``` TypeScript
+for (let i = 0, j = 0; i < 10; ++i, j += 2) {
+  // ...
+}
+
+// 通过语句表示执行顺序，而非逗号运算符。
+let x = 0;
+++x;
+x = x++;
+```
+
 ### 不支持解构变量声明
 
 **规则：**`arkts-no-destruct-decls`
