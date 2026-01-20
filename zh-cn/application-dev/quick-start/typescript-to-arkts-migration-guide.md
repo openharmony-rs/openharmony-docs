@@ -1155,6 +1155,16 @@ let y = +returnString(); // 编译时错误
 
 <!-- @[no_delete_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDelete.ts) -->   
 
+``` TypeScript
+class Point {
+  x?: number = 0.0;
+  y?: number = 0.0;
+}
+
+let p = new Point();
+delete p.y;
+```
+
 **ArkTS**
 
 <!-- @[no_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDelete.ets) -->   
