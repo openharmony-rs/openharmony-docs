@@ -4118,7 +4118,7 @@ Sets whether to support the **viewport** attribute of the HTML **\<meta>** tag. 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 10. No substitute API is provided.
+> This API is supported since API version 8 and deprecated since API version 10. You are advised to use [metaViewport<sup>12+</sup>](#metaviewport12) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
