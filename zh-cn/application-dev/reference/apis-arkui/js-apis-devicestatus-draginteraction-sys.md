@@ -4,8 +4,8 @@
 
 > **说明：**
 >
-> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口均为系统接口。
 
 ## 导入模块
@@ -22,6 +22,10 @@ import { dragInteraction } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                  | 值   | 说明           |
 | --------------------- | ---- | -------------- |
 | MSG_DRAG_STATE_START  | 1    | 表示开始拖拽。 |
@@ -36,24 +40,30 @@ import { dragInteraction } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型     | 必填 | 说明               |
 | ---------- | -------- | ---- | ------------------ |
 | dataType   | string   | 是   | 拖拽对象类型。     |
-| dataSize   | number   | 是   | 拖拽对象数据长度。 |
+| dataSize   | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 是   | 拖拽对象数据长度。 |
 
-## dragInteraction.on('drag')
+## dragInteraction.on('drag')<sup>12+</sup>
 
 on(type: 'drag', callback: Callback\<DragState>): void
 
 注册监听拖拽状态。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDragStateChange](#dragInteractionondragstatechange23)。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
-**ArkTS-Dyn起始版本**：12
-
-**ArkTS-Sta起始版本**：22
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -83,19 +93,63 @@ try {
 }
 ```
 
-## dragInteraction.off('drag')
+## dragInteraction.onDragStateChange<sup>23+</sup>
 
-off(type: 'drag', callback?: Callback\<DragState>): void
+onDragStateChange(callback: Callback<DragState>): void
 
-取消监听拖拽状态。
+注册监听拖拽状态。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('drag')](#dragInteractionondrag12)。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Sta起始版本：** 23
 
-**ArkTS-Sta起始版本**：22
+**参数：**
+
+| 参数名   | 类型                               | 必填 | 说明                             |
+| -------- | ---------------------------------- | ---- | -------------------------------- |
+| callback | Callback\<[DragState](#dragstate)> | 是   | 回调函数，异步返回拖拽状态消息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息          |
+| -------- | ----------------- |
+| 202 | Not system application. |
+
+**示例：**
+
+```ts
+try {
+  dragInteraction.onDragStateChange((data: dragInteraction.DragState) => {
+    console.log(`Drag interaction event: ${JSON.stringify(data)}`);
+  });
+} catch (error) {
+  console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+## dragInteraction.off('drag')<sup>12+</sup>
+
+off(type: 'drag', callback?: Callback\<DragState>): void
+
+取消监听拖拽状态。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDragStateChange](#dragInteractionoffdragstatechange23)。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -143,6 +197,66 @@ try {
 }
 ```
 
+## dragInteraction.offDragStateChange<sup>23+</sup>
+
+offDragStateChange(callback?: Callback<DragState>): void
+
+取消监听拖拽状态。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('drag')](#dragInteractionoffdrag12)。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                               | 必填 | 说明                                                                   |
+| -------- | ---------------------------------- | ---- | ---------------------------------------------------------------------- |
+| callback | Callback\<[DragState](#dragstate)> | 否   | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息          |
+| -------- | ----------------- |
+| 202 | Not system application. |
+
+**示例：**
+
+```ts
+// 取消注册单个回调函数
+function single_callback(event: dragInteraction.DragState) {
+  console.log(`Drag interaction event: ${JSON.stringify(event)}`);
+  return;
+}
+try {
+  dragInteraction.onDragStateChange(single_callback);
+  dragInteraction.offDragStateChange(single_callback);
+} catch (error) {
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+```ts
+// 取消注册所有回调函数
+function all_callback(event: dragInteraction.DragState) {
+  console.log(`Drag interaction event: ${JSON.stringify(event)}`);
+  return;
+}
+try {
+  dragInteraction.onDragStateChange(all_callback);
+  dragInteraction.offDragStateChange();
+} catch (error) {
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
 ## dragInteraction.getDataSummary<sup>11+</sup>
 
 getDataSummary(): Array\<Summary>
@@ -153,9 +267,9 @@ getDataSummary(): Array\<Summary>
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -188,9 +302,9 @@ setDragSwitchState(enabled: boolean): void
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -209,7 +323,11 @@ setDragSwitchState(enabled: boolean): void
 **示例：**
 
 ```ts
-dragInteraction.setDragSwitchState(false);
+try{
+  dragInteraction.setDragSwitchState(false);
+} catch(err:BusinessError){
+  console.error(`Failed to setDragSwitchState, code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## dragInteraction.setAppDragSwitchState<sup>18+</sup>
@@ -222,21 +340,21 @@ setAppDragSwitchState(enabled: boolean, bundleName: string): void
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
-**ArkTS-Dyn起始版本**：18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                               | 必填 | 说明                                                                   |
 | --------   | ---------------------------------- | ---- | ---------------------------------------------------------------------- |
 | enabled    | boolean                            | 是   | 设置开关状态。<br>false：关闭，true：开启。                                              |
-| bundleName | string                             | 是   | 设置指定应用包名开关状态。                                               |
+| bundleName | string                             | 是   | 设置指定应用包名开关状态。长度取值范围（0-128）不能大于128。       |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
+	
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
 | 202 | Not system application. |
@@ -245,5 +363,9 @@ setAppDragSwitchState(enabled: boolean, bundleName: string): void
 **示例：**
 
 ```ts
-dragInteraction.setAppDragSwitchState(true, "com.app.bundleName");
+try{
+  dragInteraction.setAppDragSwitchState(true, "com.app.bundleName");
+} catch(err:BusinessError){
+  console.error(`Failed to setAppDragSwitchState, code: ${err.code}, message: ${err.message}`);
+}
 ```
