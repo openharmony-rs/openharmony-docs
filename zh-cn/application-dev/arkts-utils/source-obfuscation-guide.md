@@ -89,6 +89,18 @@
 
 	build-profile.json5配置示例：
     <!-- @[set_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/build-profile.json5) -->    
+    
+    ``` JSON5
+    "arkOptions": {
+      "obfuscation": {
+        "ruleOptions": {
+          "enable": true, // 开启混淆开关。
+          "files": ["./obfuscation-rules.txt"] // 指定配置混淆规则文件, 在编译本模块时生效。
+        },
+        "consumerFiles": ["./consumer-rules.txt"] // 指定配置混淆规则文件, 在编译依赖本模块的其他模块时生效。
+      }
+    },
+    ```
 
   > **说明**：
   >
