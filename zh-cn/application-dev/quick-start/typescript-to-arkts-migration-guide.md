@@ -2088,6 +2088,14 @@ ArkTS不支持将命名空间用作对象，可以使用类或模块。
  
 <!-- @[no_nsAsObj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNsAsObj.ets) -->    
 
+``` TypeScript
+namespace MyNamespace {
+  export let x: number;
+}
+
+MyNamespace.x = 2;
+```
+
 ### 不支持命名空间中的非声明语句
 
 **规则：**`arkts-no-ns-statements`
