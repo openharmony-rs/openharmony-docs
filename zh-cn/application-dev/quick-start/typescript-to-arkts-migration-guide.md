@@ -944,6 +944,17 @@ let z = greet<string>();
 
 <!-- @[no_untypedCaseFive_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->   
 
+``` TypeScript
+class C4 {
+  n: number = 0;
+  s: string = '';
+  f() {
+    console.info('Hello');
+  }
+}
+let o7: C4 = { n: 42, s: 'foo', f: () => { } };
+```
+
 **ArkTS**
 
 <!-- @[no_untypedCaseFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) --> 
