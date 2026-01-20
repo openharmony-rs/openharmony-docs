@@ -700,6 +700,16 @@ ArkTS语法禁止在接口（interface）中定义构造签名。作为替代方
 
 <!-- @[no_ctorSignaturesIface_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorSignaturesIface.ts) -->   
 
+``` TypeScript
+interface I {
+  new(s: string): I;
+}
+
+function fn(i: I) {
+  return new i('hello');
+}
+```
+
 **ArkTS**
 
 <!-- @[no_ctorSignaturesIface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesIface.ets) -->  
