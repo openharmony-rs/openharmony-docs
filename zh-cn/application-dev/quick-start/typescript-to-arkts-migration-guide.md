@@ -2111,6 +2111,31 @@ logNumbers(numbers[0], numbers[1], numbers[2]);
 
 <!-- @[no_extendSameProp_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoExtendSameProp.ts) -->   
 
+``` TypeScript
+interface Mover {
+  getStatus(): { speed: number }
+}
+interface Shaker {
+  getStatus(): { frequency: number }
+}
+
+interface MoverShaker extends Mover, Shaker {
+  getStatus(): {
+    speed: number
+    frequency: number
+  }
+}
+
+class C implements MoverShaker {
+  private speed: number = 0
+  private frequency: number = 0
+
+  getStatus() {
+    return { speed: this.speed, frequency: this.frequency };
+  }
+}
+```
+
 **ArkTS**
 
 <!-- @[no_extendSameProp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoExtendSameProp.ets) -->    
