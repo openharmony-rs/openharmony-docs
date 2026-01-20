@@ -1064,7 +1064,21 @@ export const add: (a: number, b: number) => number;
 
 4.JSON数据解析和对象序列化时，需要保留使用到的字段，例如：
 
-示例JSON文件结构（test.json）：
+<!-- @[optionExample_keepPropertyName3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->  
+
+``` TypeScript
+import jsonData from './test.json';
+// ...
+let jsonProp = jsonData.jsonProperty; // jsonProperty应该被保留。
+
+class jsonTest {
+  prop1: string = '';
+  prop2: number = 0
+}
+
+let obj = new jsonTest();
+const jsonStr = JSON.stringify(obj); // prop1 和 prop2 会被混淆，应该被保留。
+```
 
 ```json
 {
