@@ -796,6 +796,14 @@ ArkTS是静态类型语言，如上述示例所示，对象字面量只能在可
 
 <!-- @[class_array_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
+``` TypeScript
+class C {
+  public n: number = 0;
+  public s: string = '';
+}
+let cc: C[] = [{n: 1, s: 'a'}, {n: 2, s: 'b'}];
+```
+
 **`Record`类型的对象字面量**
 
 泛型`Record<K, V>`用于将类型（键类型）的属性映射到另一个类型（值类型）。常用对象字面量来初始化该类型的值：
