@@ -663,6 +663,18 @@ class [extends BaseClassName] [implements listOfInterfaces] {
 
 <!-- @[interface_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
+``` TypeScript
+interface DateInterface {
+  now(): string;
+}
+class MyDate implements DateInterface {
+  now(): string {
+    // 在此实现
+    return 'now';
+  }
+}
+```
+
 **父类访问**
 
 关键字`super`可用于访问父类的方法和构造函数。在实现子类功能时，可以通过该关键字从父类中获取所需接口：
