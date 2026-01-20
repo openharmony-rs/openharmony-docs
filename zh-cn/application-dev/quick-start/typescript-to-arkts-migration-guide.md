@@ -980,6 +980,16 @@ let a = [{ n: 1, s: '1' }, { n: 2, s: '2' }];
 
 <!-- @[no_unInferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNoninferrableArrLiterals.ets) -->   
 
+``` TypeScript
+class C {
+  public n: number = 0
+  public s: string = ''
+}
+
+let a1 = [{n: 1, s: '1'} as C, {n: 2, s: '2'} as C]; // a1的类型为“C[]”。
+let a2: C[] = [{n: 1, s: '1'}, {n: 2, s: '2'}];    // a2的类型为“C[]”。
+```
+
 ### 使用箭头函数而非函数表达式
 
 **规则：**`arkts-no-func-expressions`
