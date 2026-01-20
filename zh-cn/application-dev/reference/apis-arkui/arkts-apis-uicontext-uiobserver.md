@@ -2018,7 +2018,7 @@ on(type: 'afterPanStart', callback: PanListenerCallback): void
 
 off(type: 'afterPanStart', callback?: PanListenerCallback): void
 
-取消[on('afterPanStart')](#onafterpanstart19)监听Pan手势[onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行后的callback回调。
+取消[on('afterPanStart')](#onafterpanstart19)监听Pan手势[onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart)事件执行后的callback回调。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 

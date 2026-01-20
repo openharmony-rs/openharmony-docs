@@ -20,7 +20,7 @@ background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions):
 
 >**说明：**
 >
-> - 不支持[onAppear](./ts-universal-events-show-hide.md#onappear)和[onDisappear](./ts-universal-events-show-hide.md#ondisappear)等和节点挂载/卸载相关的事件。
+> - 不支持[onAppear](./ts-universal-events-show-hide.md#onappear)和[onDisAppear](./ts-universal-events-show-hide.md#ondisappear)等和节点挂载/卸载相关的事件。
 >
 > - 从API version 20开始，该接口仅当content的入参类型为ResourceColor时支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
@@ -415,7 +415,7 @@ backdropBlur(radius: Optional\<number>, options?: BlurOptions): T
 
 >  **说明：**
 >
->  blur和backdropBlur是实时模糊接口，会每帧进行实时渲染，性能负载较高。当模糊内容和模糊半径都不需要变化时，建议使用[静态模糊接口](../../apis-arkgraphics2d/js-apis-effectKit.md#blur)。
+>  blur和backdropBlur是实时模糊接口，会每帧进行实时渲染，性能负载较高。当模糊内容和模糊半径都不需要变化时，建议使用静态模糊接口[blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur)。
 
 ## backdropBlur<sup>19+</sup>
 
