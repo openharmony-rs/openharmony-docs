@@ -1134,6 +1134,15 @@ import()语法被称为动态导入（dynamic import），是一种类似函数�
 
 <!-- @[this_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
 
+``` TypeScript
+class A {
+  private count: string = 'a';
+  m(i: string): void {
+    this.count = i;
+  }
+}
+```
+
 使用限制：
 
 * 不支持`this`类型
