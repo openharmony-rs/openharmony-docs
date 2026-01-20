@@ -947,6 +947,18 @@ let y: Array<string> = ['a', 'b', 'c'];
 
 <!-- @[noESObject_lib_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/lib.ets) -->  
 
+``` TypeScript
+// lib.ets
+export interface I {
+  sum: number
+}
+
+export function getObject1(value: number): I {
+  let obj: I = { sum: value };
+  return obj
+}
+```
+
 <!-- @[noESObject_app_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
