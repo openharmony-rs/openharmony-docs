@@ -71,56 +71,56 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 console.info(`devicesList = ${devicesList}`);
 /*
-devicesList 返回的数据结构,此处提供一个简单的示例，如下
-[
-  {
-    name: "1-1",
-    serial: "",
-    manufacturerName: "",
-    productName: "",
-    version: "",
-    vendorId: 7531,
-    productId: 2,
-    clazz: 9,
-    subClass: 0,
-    protocol: 1,
-    devAddress: 1,
-    busNum: 1,
-    configs: [
-      {
-        id: 1,
-        attributes: 224,
-        isRemoteWakeup: true,
-        isSelfPowered: true,
-        maxPower: 0,
-        name: "1-1",
-        interfaces: [
-          {
-            id: 0,
-            protocol: 0,
-            clazz: 9,
-            subClass: 0,
-            alternateSetting: 0,
-            name: "1-1",
-            endpoints: [
-              {
-                address: 129,
-                attributes: 3,
-                interval: 12,
-                maxPacketSize: 4,
-                direction: 128,
-                number: 1,
-                type: 3,
-                interfaceId: 0,
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-]
-*/
+  devicesList 返回的数据结构,此处提供一个简单的示例，如下
+  [
+    {
+      name: "1-1",
+      serial: "",
+      manufacturerName: "",
+      productName: "",
+      version: "",
+      vendorId: 7531,
+      productId: 2,
+      clazz: 9,
+      subClass: 0,
+      protocol: 1,
+      devAddress: 1,
+      busNum: 1,
+      configs: [
+        {
+          id: 1,
+          attributes: 224,
+          isRemoteWakeup: true,
+          isSelfPowered: true,
+          maxPower: 0,
+          name: "1-1",
+          interfaces: [
+            {
+              id: 0,
+              protocol: 0,
+              clazz: 9,
+              subClass: 0,
+              alternateSetting: 0,
+              name: "1-1",
+              endpoints: [
+                {
+                  address: 129,
+                  attributes: 3,
+                  interval: 12,
+                  maxPacketSize: 4,
+                  direction: 128,
+                  number: 1,
+                  type: 3,
+                  interfaceId: 0,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ]
+ */
 ```
 
 ## usbManager.connectDevice
@@ -806,9 +806,9 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 > 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
 
 ```ts
-//usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
-//把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
-//才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
+// usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
+// 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
+// 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
 function bulkTransfer() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
@@ -875,9 +875,9 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 <!--code_no_check-->
 ```ts
-//usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
-//把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
-//才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
+// usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
+// 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
+// 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
 function usbSubmitTransfer() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
@@ -887,11 +887,11 @@ function usbSubmitTransfer() {
   let device: usbManager.USBDevice = devicesList[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  //获取endpoint端点地址。
+  // 获取endpoint端点地址。
   let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
   })
-  //获取设备的第一个id。
+  // 获取设备的第一个id。
   let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
 
   let transferParams: usbManager.UsbDataTransferParams = {
@@ -958,9 +958,9 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 <!--code_no_check-->
 ```ts
-//usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
-//把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
-//才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
+// usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
+// 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
+// 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
 function usbCancelTransfer() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
@@ -970,11 +970,11 @@ function usbCancelTransfer() {
   let device: usbManager.USBDevice = devicesList[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  //获取endpoint端点地址。
+  // 获取endpoint端点地址。
   let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
   })
-  //获取设备的第一个id。
+  // 获取设备的第一个id。
   let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,

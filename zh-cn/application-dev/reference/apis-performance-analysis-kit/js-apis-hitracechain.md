@@ -249,7 +249,7 @@ hiTraceChain.end(traceId);
 
 tracepoint(mode: HiTraceCommunicationMode, type: HiTraceTracepointType, id: HiTraceId, msg?: string): void
 
-[HiTraceMeter](./js-apis-hitracemeter.md)跟踪信息埋点，同步接口。
+[@ohos.hiTraceMeter (性能打点)](./js-apis-hitracemeter.md)跟踪信息埋点，同步接口。
 
 当type为客户端发送CS和服务端接收SR时，进行同步HiTraceMeter开始打点；当type为客户端接收CR和服务端发送SS时，进行同步HiTraceMeter结束打点；当type为通用类型GENERAL时，不会进行HiTraceMeter打点。
 

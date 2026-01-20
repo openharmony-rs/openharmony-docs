@@ -547,7 +547,7 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 | localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 | 是|本地端口：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
 | remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
 | domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表：当ruleType=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
-| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当ruleType=RULE_DNS时有效，否则将被忽略。                  |
+| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当ruleType=RULE_DNS时有效，否则将被忽略。当ruleType=RULE_DNS时，该字段不能为空。                 |
 
 ## RequestParam
 
@@ -688,6 +688,10 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 ## NetFirewallDnsParams
 
 防火墙规则DNS信息。
+
+ > **说明**
+ >
+ >  当[addNetFirewallRule](#netfirewalladdnetfirewallrule)的入参rule.type配置为RULE_DNS时，该字段不能为空。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 

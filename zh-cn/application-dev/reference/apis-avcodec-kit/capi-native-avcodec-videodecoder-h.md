@@ -46,13 +46,13 @@
 | [OH_AVErrCode OH_VideoDecoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)](#oh_videodecoder_setcallback) | 设置异步回调函数，让应用可以响应视频解码器生成的事件。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口（从API version 11开始废弃）。 |
 | [OH_AVErrCode OH_VideoDecoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)](#oh_videodecoder_registercallback) | 注册异步回调函数，让应用可以响应视频解码器生成的事件。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口。 |
 | [OH_AVErrCode OH_VideoDecoder_SetSurface(OH_AVCodec *codec, OHNativeWindow *window)](#oh_videodecoder_setsurface) | 设置输出surface以提供视频解码输出。<br> 在初始化阶段，必须在调用OH_VideoDecoder_Prepare接口之前调用此接口。在Executing状态可以直接调用该接口。 |
-| [OH_AVErrCode OH_VideoDecoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)](#oh_videodecoder_configure) | 配置视频解码器，通常需要配置解码视频的描述信息，这些信息可以从{@link OH_AVSource}中提取。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口。 |
+| [OH_AVErrCode OH_VideoDecoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)](#oh_videodecoder_configure) | 配置视频解码器，通常需要配置解码视频的描述信息，这些信息可以从[OH_AVSource](capi-avsource-oh-avsource.md)中提取。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口。 |
 | [OH_AVErrCode OH_VideoDecoder_Prepare(OH_AVCodec *codec)](#oh_videodecoder_prepare) | 准备解码器的内部资源，在调用该接口之前，必须调用OH_VideoDecoder_Configure接口。 |
 | [OH_AVErrCode OH_VideoDecoder_Start(OH_AVCodec *codec)](#oh_videodecoder_start) | 调用[OH_VideoDecoder_Prepare](#oh_videodecoder_prepare)接口成功后调用此接口启动解码器。成功启动后，解码器将开始报告注册的回调事件。 |
 | [OH_AVErrCode OH_VideoDecoder_Stop(OH_AVCodec *codec)](#oh_videodecoder_stop) | 停止解码器，释放输入输出buffer。停止后，可以通过调用OH_VideoDecoder_Start接口重新进入Running状态。<br> 需要注意的是，如果编解码器特定数据以前已输入到解码器，则需要再次输入。 |
 | [OH_AVErrCode OH_VideoDecoder_Flush(OH_AVCodec *codec)](#oh_videodecoder_flush) | 清除解码器中缓存的输入和输出数据及参数集如H.264格式的PPS/SPS。<br> 调用此接口后，以前通过异步回调上报的所有缓冲区index都将失效，请确保不要访问这些index对应的缓冲区。 |
 | [OH_AVErrCode OH_VideoDecoder_Reset(OH_AVCodec *codec)](#oh_videodecoder_reset) | 重置解码器，解码器回到初始化状态。如果要继续解码，需要再次调用OH_VideoDecoder_Configure接口配置解码器实例。 |
-| [OH_AVFormat *OH_VideoDecoder_GetOutputDescription(OH_AVCodec *codec)](#oh_videodecoder_getoutputdescription) | 获取解码器输出数据的OH_AVFormat信息，请参阅{@link OH_AVFormat}。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需开发者通过调用接口{@link OH_AVFormat_Destroy}释放。 |
+| [OH_AVFormat *OH_VideoDecoder_GetOutputDescription(OH_AVCodec *codec)](#oh_videodecoder_getoutputdescription) | 获取解码器输出数据的OH_AVFormat信息，请参阅[OH_AVFormat](capi-core-oh-avformat.md)。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需开发者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。 |
 | [OH_AVErrCode OH_VideoDecoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format)](#oh_videodecoder_setparameter) | 设置解码器的动态参数。<br> 注意，该接口只能在解码器启动后调用。同时，参数配置错误可能会导致解码失败。 |
 | [OH_AVErrCode OH_VideoDecoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH_AVCodecBufferAttr attr)](#oh_videodecoder_pushinputdata) | 将填充数据的输入缓冲区提交给视频解码器。<br> 输入回调将报告可用的输入缓冲区和相应的index值，请参阅{@OH_AVCodecOnNeedInputData}。一旦具有指定index的缓冲区提交到视频解码器，则无法再次访问缓冲区，直到再次收到输入回调，报告具有相同index的缓冲区可用。此外，对于某些解码器，需要在开始时向解码器输入编解码特定数据，以初始化解码器的解码过程，如H.264格式的PPS/SPS数据（从API version 11开始废弃）。 |
 | [OH_AVErrCode OH_VideoDecoder_RenderOutputData(OH_AVCodec *codec, uint32_t index)](#oh_videodecoder_renderoutputdata) | 将处理后的输出buffer返回给解码器，并通知解码器完成在输出surface上渲染buffer中包含的解码数据。<br> 如果之前没有配置输出surface，则调用此接口仅将指定index对应的输出缓冲区返回给解码器（从API version 11开始废弃）。 |
@@ -243,7 +243,7 @@ OH_AVErrCode OH_VideoDecoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 
 **描述**
 
-配置视频解码器，通常需要配置解码视频的描述信息，这些信息可以从{@link OH_AVSource}中提取。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口。<br> 以下参数的配置范围可通过[能力查询](../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_ROTATION配置的参数都支持。<br> 设置OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY接口时如果当前平台不支持，不报错，走正常解码流程。
+配置视频解码器，通常需要配置解码视频的描述信息，这些信息可以从[OH_AVSource](capi-avsource-oh-avsource.md)中提取。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口。<br> 以下参数的配置范围可通过[能力查询](../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_ROTATION配置的参数都支持。<br> 设置OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY接口时如果当前平台不支持，不报错，走正常解码流程。
 
 参数校验规则：
 | Key    | 配置正常范围的值 | 配置超出范围的值 | 不配置该参数 |
@@ -413,7 +413,7 @@ OH_AVFormat *OH_VideoDecoder_GetOutputDescription(OH_AVCodec *codec)
 
 **描述**
 
-获取解码器输出数据的OH_AVFormat信息，请参阅{@link OH_AVFormat}。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需开发者通过调用接口{@link OH_AVFormat_Destroy}释放。
+获取解码器输出数据的OH_AVFormat信息，请参阅[OH_AVFormat](capi-core-oh-avformat.md)。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需开发者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -577,7 +577,7 @@ OH_AVErrCode OH_VideoDecoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 <br>         AV_ERR_DRM_DECRYPT_FAILED：受DRM保护的视频缓冲区解密失败，建议查看日志。|
 
 ### OH_VideoDecoder_RenderOutputBuffer()
 
@@ -742,7 +742,7 @@ OH_AVErrCode OH_VideoDecoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_SERVICE_DIED：编解码服务已终止。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：禁止异步模式下使用。<br>         AV_ERR_TRY_AGAIN_LATER：查询失败，建议等待短暂间隔后重试。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：禁止异步模式下使用。<br>         AV_ERR_TRY_AGAIN_LATER：查询失败，建议等待短暂间隔后重试。 |
 
 ### OH_VideoDecoder_GetInputBuffer()
 
@@ -797,7 +797,7 @@ OH_AVErrCode OH_VideoDecoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_SERVICE_DIED：编解码服务已终止。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：禁止异步模式下使用。<br>         AV_ERR_STREAM_CHANGED：流格式已变更，可以通过调用[OH_VideoDecoder_GetOutputDescription](#oh_videodecoder_getoutputdescription)接口获取新的流信息。<br>         AV_ERR_TRY_AGAIN_LATER：查询失败，建议等待短暂间隔后重试。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：禁止异步模式下使用。<br>         AV_ERR_STREAM_CHANGED：流格式已变更，可以通过调用[OH_VideoDecoder_GetOutputDescription](#oh_videodecoder_getoutputdescription)接口获取新的流信息。<br>         AV_ERR_TRY_AGAIN_LATER：查询失败，建议等待短暂间隔后重试。 |
 
 ### OH_VideoDecoder_GetOutputBuffer()
 

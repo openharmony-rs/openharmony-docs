@@ -655,6 +655,7 @@
     - [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md)
     - [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)
     - [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)
+    - [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md)
     - [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md)
     - [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md)
     - [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)

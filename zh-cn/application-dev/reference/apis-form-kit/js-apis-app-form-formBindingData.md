@@ -106,7 +106,7 @@ struct Index {
       };
       formBindingData.createFormBindingData(createFormBindingDataParam);
     } catch (error) {
-      console.error(`catch error, error: ${JSON.stringify(error)}`);
+      console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
     }
   }
 

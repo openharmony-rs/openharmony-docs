@@ -162,6 +162,8 @@ getVolumeManager(): AudioVolumeManager
 
 获取音频音量管理器。
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **返回值：**
@@ -413,9 +415,9 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&l
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，替代接口仅面向系统应用开放。
+> - 从API version 7开始支持，从API version 9开始废弃，替代接口仅面向系统应用开放。
 > 
-> 应用无法直接调节系统音量，建议通过系统音量面板组件调节音量。具体样例和介绍请查看[AVVolumePanel参考文档](ohos-multimedia-avvolumepanel.md)。
+> - 应用无法直接调节系统音量，建议通过系统音量面板组件调节音量。具体样例和介绍请查看API文档：[音量面板](ohos-multimedia-avvolumepanel.md)。
 
 **需要权限：** ohos.permission.ACCESS_NOTIFICATION_POLICY
 
@@ -453,9 +455,9 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，替代接口仅面向系统应用开放。
+> - 从API version 7开始支持，从API version 9开始废弃，替代接口仅面向系统应用开放。
 >
-> 应用无法直接调节系统音量，建议通过系统音量面板组件调节音量。具体样例和介绍请查看[AVVolumePanel参考文档](ohos-multimedia-avvolumepanel.md)。
+> - 应用无法直接调节系统音量，建议通过系统音量面板组件调节音量。具体样例和介绍请查看API文档：[音量面板](ohos-multimedia-avvolumepanel.md)。
 
 **需要权限：** ohos.permission.ACCESS_NOTIFICATION_POLICY
 

@@ -5379,7 +5379,7 @@ struct WebComponent {
 
 static setConnectionTimeout(timeout: number): void
 
-设置网络连接超时时间，使用者可通过Web组件中的onErrorReceive方法获取超时错误码。
+设置网络连接超时时间，使用者可通过Web组件中的onErrorReceive方法获取超时错误码。若未调用该接口则默认超时时间为30秒。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

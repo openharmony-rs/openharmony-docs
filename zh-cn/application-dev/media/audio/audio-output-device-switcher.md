@@ -18,7 +18,7 @@
 
 ### 外接设备路由切换
 
-应用可使用[AVCastPicker通话组件](../avsession/using-switch-call-devices.md)进行通话类应用外接输出设备路由切换。
+应用可[使用通话设备切换组件](../avsession/using-switch-call-devices.md)进行通话类应用外接输出设备路由切换。
 
 ### 内置听筒和扬声器路由切换
 

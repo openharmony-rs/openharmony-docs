@@ -558,7 +558,7 @@ typedef void (*OH_AVMediaSourceLoaderOnSourceReadCallback)(int64_t uuid, int64_t
 | -- | -- |
 | int64_t uuid | 资源句柄的ID。 |
 | int64_t requestedOffset | 当前媒体数据相对于资源起始位置的偏移量。 |
-| int64_t requestedLength | 当前请求的数据长度。-1 表示已到达资源末尾，需通过[finishLoading](arkts-apis-media-MediaSourceLoadingRequest.md#finishloading18)方法通知播放器推送结束。 |
+| int64_t requestedLength | 当前请求的数据长度。-1 表示已到达资源末尾，需通过[OH_AVMediaSourceLoadingRequest_FinishLoading](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_finishloading)方法通知播放器推送结束。 |
 | void \*userData | 用户在OH_AVMediaSourceLoader_SetSourceReadCallback中设置的数据。 |
 
 ### OH_AVMediaSourceLoaderOnSourceClosedCallback()

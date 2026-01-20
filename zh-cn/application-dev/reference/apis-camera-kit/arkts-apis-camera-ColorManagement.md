@@ -33,11 +33,21 @@ setColorSpace(colorSpace: colorSpaceManager.ColorSpace): void
 
 应用可以下发不同的色彩空间(ColorSpace)参数来支持P3广色域以及HDR的功能。 
 
-当应用不主动设置色彩空间时，拍照模式默认为SDR拍摄效果。  
-
-在拍照模式下若需要获取HDR高显效果的图片可通过设置色彩空间P3色域实现。
-
 应用针对不同模式使能HDR效果、设置的色彩空间以及设置相机输出流[Profile](arkts-apis-camera-i.md#profile)中的[CameraFormat](arkts-apis-camera-e.md#cameraformat)一一对应关系可参考下表。例如，在录像模式下若需要选择HDR拍摄，相机预览输出流和录像输出流[Profile](arkts-apis-camera-i.md#profile)中的[CameraFormat](arkts-apis-camera-e.md#cameraformat)可选择CAMERA_FORMAT_YCRCB_P010，色彩空间ColorSpace可选择设置2020_HLG_LIMIT。
+
+在拍照模式下，若需要获取HDR高显效果的图片，可通过设置色彩空间（ColorSpace）为DISPLAY_P3或BT2020_HLG实现。其中BT2020_HLG能够表示更广的色域，需要搭配使用预览输出格式（Profile.format）P010（CAMERA_FORMAT_YCRCB_P010/CAMERA_FORMAT_YCBCR_P010）来提升图像质感。
+
+从API version 23开始，可以通过接口[getSupportedFullOutputCapability](arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23)查询是否支持拍照模式下的预览P010格式。
+ - 若应用不主动设置色彩空间，在拍照模式下，当预览输出格式为CAMERA_FORMAT_YUV_420_SP时，色彩空间默认为SRGB；当预览输出格式为CAMERA_FORMAT_YCRCB_P010/CAMERA_FORMAT_YCBCR_P010时，色彩空间默认为BT2020_HLG。
+ - 若应用主动设置色彩空间，在拍照模式下，预览输出格式与色彩空间必须按照下列表格中的对应关系配置，若不满足则会在[setColorSpace](arkts-apis-camera-ColorManagement.md#setcolorspace12)或[commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)时返回错误码。
+
+  **拍照模式：**
+
+  | SDR/HDR拍摄        | 预览输出格式 | 色彩空间 |
+  |--------------------|------------| ------------|
+  | SDR(Default)       | CAMERA_FORMAT_YUV_420_SP       | SRGB       |
+  | HDR P3               | CAMERA_FORMAT_YUV_420_SP | DISPLAY_P3 |
+  | HDR BT.2020 | CAMERA_FORMAT_YCRCB_P010、<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG |
 
 在录像模式下，使能SDR或HDR_VIVID拍摄效果时，CameraFormat与ColorSpace必须按照下列表格中的对应关系配置，若不满足表格中CameraFormat与ColorSpace配置，会导致预览异常等问题。
 
@@ -47,13 +57,6 @@ setColorSpace(colorSpace: colorSpaceManager.ColorSpace): void
 |--------------------|--------------------------|------------------|
 | SDR                | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT      |
 | HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT<br>BT2020_HLG_FULL |
-
-**拍照模式：**
-
-| SDR/HDR拍摄        | ColorSpace |
-|--------------------|------------|
-| SDR(Default)       | SRGB       |
-| HDR                | DISPLAY_P3 |
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
