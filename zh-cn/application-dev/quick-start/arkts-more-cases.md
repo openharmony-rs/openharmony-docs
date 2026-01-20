@@ -851,6 +851,14 @@ export default Test;
 
 <!-- @[no_spread_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/app.ets) -->  
 
+``` TypeScript
+// app.ets
+import test from './test';
+
+let t: test.I = test.foo();
+t.type = 0;
+```
+
 **原因**
 
 对象字面量缺少类型，根据`test.foo`分析可以得知，`option`的类型来源于声明文件，那么只需要将类型导入即可。
