@@ -548,6 +548,20 @@ ArkTS不允许index signature，改用数组。
 
 <!-- @[no_indexedSignatures_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoIndexedSignatures.ts) -->   
 
+``` TypeScript
+// 带index signature的接口：
+interface StringArray {
+  [index: number]: string
+}
+
+function getStringArray(): StringArray {
+  return ['a', 'b', 'c'];
+}
+
+const myArray: StringArray = getStringArray();
+const secondItem = myArray[1];
+```
+
 **ArkTS**
 
 <!-- @[no_indexedSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIndexedSignatures.ets) -->   
