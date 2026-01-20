@@ -183,34 +183,6 @@ ArkTS-Dyn: closeProxyChannel(channelId:&nbsp;number):&nbsp;void</br>ArkTS-Sta: c
 
 **示例：**
 
-ArkTS-Dyn示例:
-```ts
-import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
-import { BusinessError } from '@ohos.base';
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Button("测试")
-        .onClick(() => {
-          // 以下为使用 try/catch 判断
-          try {
-            proxyChannelManager.closeProxyChannel(1);  // 假设通道id为1
-          } catch (err) {
-            let error = err as BusinessError;
-            console.error(`getErr: ${error.code} ${error.message}`);
-            // 如果 code:undefined message:"Cannot read property closeProxyChannel of undefined"， 则这个 API 在当前镜像不支持
-          }
-        })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
-ArkTS-Sta示例:
 ```ts
 import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
 import { BusinessError } from '@ohos.base';
@@ -280,38 +252,6 @@ ArkTS-Dyn: sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;</br>
 
 **示例：**
 
-ArkTS-Dyn示例:
-```ts
-import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
-import { BusinessError } from '@ohos.base';
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Button("测试")
-        .onClick(() => {
-          const data = new ArrayBuffer(10); // 创建一个长度为 10 的 ArrayBuffer
-          try {
-            proxyChannelManager.sendData(1, data)  // 假设通道id为1
-              .then(() => {
-              })
-              .catch((error: BusinessError) => {
-                console.error(`getErr: ${error.code} ${error.message}`);
-              });
-          }catch (err) {
-            let error = err as BusinessError;
-            console.error(`getErr: ${error.code} ${error.message}`);
-          }
-        })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
-ArkTS-Sta示例:
 ```ts
 import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';
 import { BusinessError } from '@ohos.base';
@@ -353,6 +293,8 @@ on(type:&nbsp;'receiveData', channelId:&nbsp;number, callback:&nbsp;Callback&lt;
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveData](#proxyChannelManager.onReceiveData)。
 
 **ArkTS-Dyn起始版本**：20
 
@@ -415,6 +357,8 @@ off(type:&nbsp;'receiveData', channelId:&nbsp;number, callback?:&nbsp;Callback&l
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveData](#proxyChannelManager.offReceiveData)。
 
 **ArkTS-Dyn起始版本**：20
 
@@ -598,6 +542,8 @@ on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callb
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口**：该接口对应的ArkTS-Sta接口是[onChannelStateChange](#proxyChannelManager.onChannelStateChange)。
+
 **ArkTS-Dyn起始版本**：20
 
 **参数：**
@@ -659,6 +605,8 @@ off(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback?:&nbsp;Cal
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offChannelStateChange](#proxyChannelManager.offChannelStateChange)。
 
 **ArkTS-Dyn起始版本**：20
 
