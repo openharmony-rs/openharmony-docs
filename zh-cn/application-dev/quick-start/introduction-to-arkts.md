@@ -1348,6 +1348,15 @@ import type { MyAnno } from './a'; // 编译错误：注解不允许使用'type'
 
 <!-- @[annotation_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.ets) -->   
 
+``` TypeScript
+// a.ets
+export @interface Anno {}
+
+export @interface ClassAuthor1 {}
+
+console.info('hello');
+```
+
 <!-- @[annotation_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->   
 
 ``` TypeScript
