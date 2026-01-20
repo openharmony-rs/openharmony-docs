@@ -939,6 +939,19 @@ let permissionList = [
 
 <!-- @[no_nonInferrable_arr_literals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
 
+``` TypeScript
+class PermissionItem {
+  public name?: string
+  public value?: string
+}
+
+let permissionList: PermissionItem[] = [
+  { name: '设备信息', value: '用于分析设备的续航、通话、上网、SIM卡故障等' },
+  { name: '麦克风', value: '用于反馈问题单时增加语音' },
+  { name: '存储', value: '用于反馈问题单时增加本地文件附件' }
+]
+```
+
 ## arkts-no-method-reassignment
 
 使用函数类型的类字段（class field）代替原型方法。
