@@ -92,6 +92,18 @@
     对于HAR和HSP模块，在`build-profile.json5`中包含`arkOptions.obfuscation.consumerFiles`字段，**用于指定当本包被依赖时，期望在其他模块生效的混淆规则**，新建HAR或HSP模块时会创建默认文件`consumer-rules.txt`。它与`obfuscation-rules.txt`字段的区别是：**`obfuscation-rules.txt`在编译本模块时生效，`consumer-rules.txt`在编译依赖本模块的其他模块时生效**。
 
     <!-- @[set_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/build-profile.json5) -->      
+    
+    ``` JSON5
+    "arkOptions": {
+      "obfuscation": {
+        "ruleOptions": {
+          "enable": true, // 开启混淆开关。
+          "files": ["./obfuscation-rules.txt"] // 指定配置混淆规则文件, 在编译本模块时生效。
+        },
+        "consumerFiles": ["./consumer-rules.txt"] // 指定配置混淆规则文件, 在编译依赖本模块的其他模块时生效。
+      }
+    },
+    ```
 
 * `obfuscation.txt`
     不同于以上两种开发者可自行修改的配置文件，`obfuscation.txt`是在编译构建HAR或HSP时根据`consumer-rules.txt`和依赖模块的混淆规则文件自动生成的文件，它作为一种编译产物存在于发布的HAR或HSP包中，用于在其他应用使用该发布包时应用相应的混淆规则。`obfuscation.txt`内容的生成逻辑请参考[混淆规则合并策略](bytecode-obfuscation.md#混淆规则合并策略)。
