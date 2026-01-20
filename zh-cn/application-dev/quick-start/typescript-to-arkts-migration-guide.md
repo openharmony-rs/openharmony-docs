@@ -468,6 +468,24 @@ function doSomething(fn: DescribableFunction): void {
 
 <!-- @[no_callSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCallSignatures.ets) -->     
 
+``` TypeScript
+class DescribableFunction {
+  public description: string;
+  public invoke(someArg: string): string {
+    return someArg;
+  }
+  constructor() {
+    this.description = 'desc';
+  }
+}
+
+function doSomething(fn: DescribableFunction): void {
+  console.info(fn.description + ' returned ' + fn.invoke(''));
+}
+
+doSomething(new DescribableFunction());
+```
+
 ### 使用`class`而非具有构造签名的类型
 
 **规则：**`arkts-no-ctor-signatures-type`
