@@ -806,6 +806,20 @@ export default new Test()
 
 <!-- @[ts_namespace_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/test.d.ts) -->  
 
+``` TypeScript
+// test.d.ets
+declare namespace test {
+  interface I {
+    id: string;
+    type: number;
+  }
+
+  function foo(name: string, option: I): void;
+}
+
+export default test;
+```
+
 <!-- @[ts_namespace_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/app.ets) -->  
 
 **建议改法**
