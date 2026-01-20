@@ -732,6 +732,28 @@ ArkTS支持通过索引访问`TypedArray`（例如`Int32Array`）中的元素。
 
 <!-- @[noProps_byIndex_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoPropsByIndex.ts) -->    
 
+``` TypeScript
+class Point {
+  x: string = '';
+  y: string = '';
+}
+let p: Point = { x: '1', y: '2' };
+console.info(p['x']); // 1。
+
+class Person {
+  name: string = '';
+  age: number = 0;
+  [key: string]: string | number;
+}
+
+let person: Person = {
+  name: 'John',
+  age: 30,
+  email: '***@example.com',
+  phoneNumber: '18*********',
+}
+```
+
 **ArkTS**
 
 ```typescript
