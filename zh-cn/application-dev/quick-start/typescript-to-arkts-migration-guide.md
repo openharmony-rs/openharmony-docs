@@ -2139,6 +2139,23 @@ ArkTS不支持使用运行期间计算的表达式初始化枚举成员。枚举
  
 <!-- @[no_enumMixedTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoEnumMixedTypes.ets) -->    
 
+``` TypeScript
+enum E1 {
+  A = 0xa,
+  B = 0xb,
+  C = 0xc,
+  D = 0xd,
+  E // 推断出0xe。
+}
+
+enum E2 {
+  A = '0xa',
+  B = '0xb',
+  C = '0xc',
+  D = '0xd'
+}
+```
+
 ### 不支持`enum`声明合并
 
 **规则：**`arkts-no-enum-merging`
