@@ -369,6 +369,17 @@ linkSource
 
 <!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->  
 
+``` TypeScript
+// 混淆前。
+// file1.ts
+export interface MyInfo {
+  age: number;
+  address: {
+    city1: string;
+  }
+}
+```
+
 <!-- @[call_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->  
 
 ```ts
