@@ -34,13 +34,13 @@ import { common } from '@kit.AbilityKit';
 | abilityInfo | [AbilityInfo](js-apis-bundleManager-abilityInfo.md) | No| No| UIAbility information.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | No| No| Information about the HAP to which the UIAbility belongs.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | config | [Configuration](js-apis-app-ability-configuration.md) | No| No| Environment variables for the application runtime, such as language and color mode.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| windowStage<sup>12+</sup> | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | No| No| WindowStage object. It can be called only by the main thread.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| windowStage<sup>12+</sup> | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | No| No| WindowStage object. It can be called only on the main thread.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ### startAbility
 
 startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
-Starts a UIAbility. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -128,7 +128,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&gt;): void
 
-Starts a UIAbility. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -223,7 +223,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
-Starts a UIAbility. This API uses a promise to return the result. It can be called only by the main thread.
+Starts a UIAbility. This API uses a promise to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -324,7 +324,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityForResult(want: Want, callback: AsyncCallback&lt;AbilityResult&gt;): void
 
-Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 The following situations may be possible for a started UIAbility:
  - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.
@@ -418,7 +418,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback&lt;AbilityResult&gt;): void
 
-Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 The following situations may be possible for a started UIAbility:
  - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.
@@ -515,7 +515,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityResult&gt;
 
-Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. It can be called only by the main thread.
+Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. It can be called only on the main thread.
 
 The following situations may be possible for a started UIAbility:
  - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.
@@ -618,7 +618,7 @@ export default class EntryAbility extends UIAbility {
 
 terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 
-Terminates this UIAbility. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Terminates this UIAbility. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -677,7 +677,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 2. (Optional) To remove the mission from the task center (that is, not to retain the snapshot in the recent tasks list) when terminating the UIAbility, set the **removeMissionAfterTerminate** field to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file.
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -695,7 +695,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 terminateSelf(): Promise&lt;void&gt;
 
-Terminates this UIAbility. This API uses a promise to return the result. It can be called only by the main thread.
+Terminates this UIAbility. This API uses a promise to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -754,7 +754,7 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
 
 2. (Optional) To remove the mission from the task center (that is, not to retain the snapshot in the recent tasks list) when terminating the UIAbility, set the **removeMissionAfterTerminate** field to **true** in the [module.json5](../../quick-start/module-configuration-file.md) file.
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -772,7 +772,7 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
 
 terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback&lt;void&gt;): void
 
-Terminates this UIAbility. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Terminates this UIAbility. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 The result is returned to the caller when **terminateSelfWithResult** is called to terminate the UIAbility that is started by calling [startAbilityForResult](#startabilityforresult).
 
@@ -847,7 +847,7 @@ export default class EntryAbility extends UIAbility {
 
 terminateSelfWithResult(parameter: AbilityResult): Promise&lt;void&gt;
 
-Terminates this UIAbility. This API uses a promise to return the result. It can be called only by the main thread.
+Terminates this UIAbility. This API uses a promise to return the result. It can be called only on the main thread.
 
 The result is returned to the caller when **terminateSelfWithResult** is called to terminate the UIAbility that is started by calling [startAbilityForResult](#startabilityforresult).
 
@@ -926,7 +926,7 @@ export default class EntryAbility extends UIAbility {
 
 connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
-Connects this UIAbility to a [ServiceExtensionAbility](../../application-models/extensionability-overview.md). It enables communication with the ServiceExtensionAbility via a proxy, allowing access to the capabilities exposed by the ServiceExtensionAbility. It can be called only by the main thread.
+Connects this UIAbility to a [ServiceExtensionAbility](../../application-models/extensionability-overview.md). It enables communication with the ServiceExtensionAbility via a proxy, allowing access to the capabilities exposed by the ServiceExtensionAbility. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -1011,7 +1011,7 @@ export default class EntryAbility extends UIAbility {
 
 disconnectServiceExtensionAbility(connection: number): Promise\<void>
 
-Disconnects from a [ServiceExtensionAbility](../../application-models/extensionability-overview.md). Once the connection is terminated, set the remote object, which is returned when the connection is established, to null. This API uses a promise to return the result. It can be called only by the main thread.
+Disconnects from a [ServiceExtensionAbility](../../application-models/extensionability-overview.md). Once the connection is terminated, set the remote object, which is returned when the connection is established, to null. This API uses a promise to return the result. It can be called only on the main thread.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1074,7 +1074,7 @@ export default class EntryAbility extends UIAbility {
 
 disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback\<void>): void
 
-Disconnects from a [ServiceExtensionAbility](../../application-models/extensionability-overview.md). Once the connection is terminated, set the remote object, which is returned when the connection is established, to null. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Disconnects from a [ServiceExtensionAbility](../../application-models/extensionability-overview.md). Once the connection is terminated, set the remote object, which is returned when the connection is established, to null. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1134,13 +1134,13 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 
-Obtains a [Caller](./js-apis-app-ability-uiAbility.md#caller) object for communicating with a [Callee](./js-apis-app-ability-uiAbility.md#callee) object. If the specified UIAbility is not started, the UIAbility will be started in the foreground or background. This API uses a promise to return the result. It can be called only by the main thread.
+Obtains a [Caller](./js-apis-app-ability-uiAbility.md#caller) object for communicating with a [Callee](./js-apis-app-ability-uiAbility.md#callee) object. If the specified UIAbility is not started, the UIAbility will be started in the foreground or background. This API uses a promise to return the result. It can be called only on the main thread.
 
 This API cannot be used to start the UIAbility with the launch type set to [specified](../../application-models/uiability-launch-type.md#specified).
 
 > **NOTE**
 >
-> - For a successful launch in cross-device scenarios, the caller and target must be the same application and have the ohos.permission.DISTRIBUTED_DATASYNC permission.
+> - In cross-device scenarios, the caller and the target must belong to the same application.
 >
 > - For a successful launch in the same device scenario, the caller and target must be different applications and have the ohos.permission.ABILITY_BACKGROUND_COMMUNICATION permission (available only for system applications).
 >
@@ -1462,7 +1462,7 @@ export default class EntryAbility extends UIAbility {
 
 restoreWindowStage(localStorage: LocalStorage): void
 
-Restores the WindowStage data in the UIAbility. It can be called only by the main thread.
+Restores the WindowStage data in the UIAbility. It can be called only on the main thread.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1538,7 +1538,7 @@ export default class EntryAbility extends UIAbility {
 
 requestDialogService(want: Want, result: AsyncCallback&lt;dialogRequest.RequestResult&gt;): void
 
-Starts a ServiceExtensionAbility that supports modal dialog boxes. After the ServiceExtensionAbility is started, the application displays a modal dialog box. You can call [setRequestResult](js-apis-app-ability-dialogRequest.md#requestcallbacksetrequestresult) to obtain the result. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a ServiceExtensionAbility that supports modal dialog boxes. After the ServiceExtensionAbility is started, the application displays a modal dialog box. You can call [setRequestResult](js-apis-app-ability-dialogRequest.md#requestcallbacksetrequestresult) to obtain the result. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -1615,7 +1615,7 @@ export default class EntryAbility extends UIAbility {
 
 requestDialogService(want: Want): Promise&lt;dialogRequest.RequestResult&gt;
 
-Starts a ServiceExtensionAbility that supports modal dialog boxes. After the ServiceExtensionAbility is started, the application displays a modal dialog box. You can call [setRequestResult](js-apis-app-ability-dialogRequest.md#requestcallbacksetrequestresult) to obtain the result. This API uses a promise to return the result. It can be called only by the main thread.
+Starts a ServiceExtensionAbility that supports modal dialog boxes. After the ServiceExtensionAbility is started, the application displays a modal dialog box. You can call [setRequestResult](js-apis-app-ability-dialogRequest.md#requestcallbacksetrequestresult) to obtain the result. This API uses a promise to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -1756,8 +1756,7 @@ export default class EntryAbility extends UIAbility {
 
 ### startAbilityByType<sup>11+</sup>
 
-startAbilityByType(type: string, wantParam: Record<string, Object>,
-    abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>) : void
+startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>) : void
 
 Implicitly starts a given type of [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). This API uses an asynchronous callback to return the result. It can be called only in the main thread and by applications running in the foreground.
 
@@ -1815,8 +1814,7 @@ export default class EntryAbility extends UIAbility {
 
 ### startAbilityByType<sup>11+</sup>
 
-startAbilityByType(type: string, wantParam: Record<string, Object>,
-    abilityStartCallback: AbilityStartCallback) : Promise\<void>
+startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback) : Promise\<void>
 
 Implicitly starts a given type of [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). This API uses a promise to return the result. It can be called only in the main thread and by applications running in the foreground.
 
@@ -1880,13 +1878,13 @@ export default class EntryAbility extends UIAbility {
 
 showAbility(): Promise\<void>
 
-Shows this UIAbility. This API uses a promise to return the result. It can be called only by the main thread.
+Shows this UIAbility. This API uses a promise to return the result. It can be called only on the main thread.
 
 Before calling this API, ensure that the application has been added to the status bar.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on PC/2-in-1 devices and tablets. On other devices, it returns the error code 801.
 
 **Return value**
 
@@ -1980,13 +1978,13 @@ export default class EntryAbility extends UIAbility {
 
 hideAbility(): Promise\<void>
 
-Hides this UIAbility. This API uses a promise to return the result. It can be called only by the main thread.
+Hides this UIAbility. This API uses a promise to return the result. It can be called only on the main thread.
 
 Before calling this API, ensure that the application has been added to the status bar.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on PC/2-in-1 devices and tablets. On other devices, it returns the error code 801.
 
 **Return value**
 
@@ -2080,7 +2078,7 @@ export default class EntryAbility extends UIAbility {
 
 moveAbilityToBackground(): Promise\<void>
 
-Moves this UIAbility from the foreground to the background. This API uses a promise to return the result. It can be called only by the main thread.<br><!--RP1--><!--RP1End-->
+Moves this UIAbility from the foreground to the background. This API uses a promise to return the result. It can be called only on the main thread.<br><!--RP1--><!--RP1End-->
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2146,7 +2144,7 @@ struct Index {
 
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;AbilityResult&gt;
 
-Opens an atomic service in an independent window. This API uses a promise to return the result. It can be called only by the main thread.
+Opens an atomic service in an independent window. This API uses a promise to return the result. It can be called only on the main thread.
 
 After an atomic service is started, the following situations may occur:
  - Normally, the atomic service can call [terminateSelfWithResult](#terminateselfwithresult) to terminate itself. The result is returned to the caller.
@@ -2229,14 +2227,15 @@ export default class EntryAbility extends UIAbility {
 
 openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
 
-Starts a UIAbility by using <!--RP2-->[App Linking](../../application-models/app-linking-startup.md)<!--RP2End--> or [Deep Linking](../../application-models/deep-linking-startup.md), and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. It can be called only by the main thread.
+Starts a UIAbility by using <!--RP2-->[App Linking](../../application-models/app-linking-startup.md)<!--RP2End--> or [Deep Linking](../../application-models/deep-linking-startup.md), and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. It can be called only on the main thread.
 
 A URL in the standard format is passed in to the **link** field to start the target UIAbility based on the implicit Want matching rules. The target UIAbility must have the following filter characteristics to process links of App Linking:
-- The **actions** field contains **ohos.want.action.viewData**.
-- The **entities** field contains **entity.system.browsable**.
-- The **uris** field contains elements whose **scheme** is **https** and **domainVerify** is **true**.
+- The **actions** field must contain **ohos.want.action.viewData**.
+- The **entities** field must contain **entity.system.browsable**.
+- The **uris** field must contain elements whose **scheme** is **https** and **domainVerify** is **true**.
 
 If you want to obtain the result after the started UIAbility is terminated, set the **callback** parameter. For details about how to use this parameter, see [startAbilityForResult](#startabilityforresult).
+
 If an input parameter is invalid, for example, a mandatory parameter is not set or the URL set in **link** is not in the standard format, an exception is thrown. If the parameter verification is successful but an error occurs when starting the target UIAbility, the error information is returned through promise.
 
 > **NOTE**
@@ -2541,6 +2540,8 @@ Starts a UIServiceExtensionAbility. This API uses a promise to return the result
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
 **Parameters**
 
 | Name  | Type                                    | Mandatory| Description                    |
@@ -2626,6 +2627,8 @@ Connects to a UIServiceExtensionAbility. This API uses a promise to return the r
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -2831,7 +2834,7 @@ Sets the icon and label for this UIAbility. The icon and label can be displayed 
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -2940,7 +2943,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     >
     >  - If the UIAbility is started by calling [startAbilityByCall](#startabilitybycall), the system ignores **abilitySrcEntryDelegator** and **abilityStageSrcEntryDelegator** configured in the [module.json5](../../quick-start/module-configuration-file.md) file.
     >  - The module name specified by **abilityStageSrcEntryDelegator** must be different from the current module name.
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -2973,7 +2976,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 
-Sets the dark/light color mode for this UIAbility. Before calling this API, ensure that the page corresponding to the UIAbility has been loaded. This API can be called only by the main thread.
+Sets the dark/light color mode for this UIAbility. Before calling this API, ensure that the page corresponding to the UIAbility has been loaded. This API can be called only on the main thread.
 
 > **NOTE**
 > - Before calling this API, ensure that the window has been created and the page corresponding to the UIAbility has been loaded (using the [loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) API in the [onWindowStageCreate()](js-apis-app-ability-uiAbility.md#onwindowstagecreate) lifecycle).
@@ -3031,7 +3034,7 @@ Starts an [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAb
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -3111,7 +3114,7 @@ Stops an [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbi
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -3179,7 +3182,7 @@ export default class EntryAbility extends UIAbility {
 
 connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 
-Connects this UIAbility to an [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md). It enables communication with the AppServiceExtensionAbility via a proxy, allowing access to the capabilities exposed by the AppServiceExtensionAbility. It can be called only by the main thread.
+Connects this UIAbility to an [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md). It enables communication with the AppServiceExtensionAbility via a proxy, allowing access to the capabilities exposed by the AppServiceExtensionAbility. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -3187,7 +3190,7 @@ Connects this UIAbility to an [AppServiceExtensionAbility](js-apis-app-ability-a
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -3264,13 +3267,13 @@ export default class EntryAbility extends UIAbility {
 
 disconnectAppServiceExtensionAbility(connection: number): Promise\<void>
 
-Disconnects from an [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md). It can be called only by the main thread. This API uses a promise to return the result.
+Disconnects from an [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md). It can be called only on the main thread. This API uses a promise to return the result.
 
 Once the connection is terminated, you are advised to set the remote object returned when the connection is established to null, so as to prevent communication using the remote object that may become invalid.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -3331,7 +3334,7 @@ export default class EntryAbility extends UIAbility {
 
 setOnNewWantSkipScenarios(scenarios: number): Promise\<void>
 
-Sets whether to trigger the [onNewWant](./js-apis-app-ability-uiAbility.md#onnewwant) lifecycle callback when a UIAbility is started in a specific scenario. It can be called only by the main thread. This API uses a promise to return the result.
+Sets whether to trigger the [onNewWant](./js-apis-app-ability-uiAbility.md#onnewwant) lifecycle callback when a UIAbility is started in a specific scenario. It can be called only on the main thread. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -3474,7 +3477,7 @@ export default class EntryAbility extends UIAbility {
 
 restartApp(want: Want): Promise\<void>
 
-Called by a focused UIAbility to restart its own process and launch a specified UIAbility within the same application. This API can be called only by the main thread. This API uses a promise to return the result.
+Called by a focused UIAbility to restart its own process and launch a specified UIAbility within the same application. This API can be called only on the main thread. This API uses a promise to return the result.
 
 If the target UIAbility is the current one, this action resets the window to its initial state. If it is a different UIAbility, the system navigates to and open a new window for that UIAbility.
 
@@ -3569,6 +3572,8 @@ Sets the icon for this UIAbility, which is displayed in the application window, 
 > There is no priority relationship among the **setMissionWindowIcon**<!--Del-->, [setMissionIcon](./js-apis-inner-application-uiAbilityContext-sys.md#setmissionicon),<!--DelEnd--> and [setAbilityInstanceInfo](./js-apis-inner-application-uiAbilityContext.md#setabilityinstanceinfo15). The icon set by the last called API takes effect. If these APIs are called sequentially, the icon set by the last call takes precedence and overwrites any previous settings.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 

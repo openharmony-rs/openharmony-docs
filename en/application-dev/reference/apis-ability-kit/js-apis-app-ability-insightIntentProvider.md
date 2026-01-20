@@ -86,7 +86,7 @@ export default class InsightIntentExecutorUI extends InsightIntentExecutor {
     };
     let storage: LocalStorage = new LocalStorage(localStorageData);
     // Load the page through pageLoader.
-    pageLoader.loadContent('pages/UiabilityIndex', storage, (err, data) => {
+    pageLoader.loadContent('pages/UIAbilityIndex', storage, (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
       } else {
@@ -208,7 +208,7 @@ export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResul
   episodeNumber: number = 12;
 
   onExecute(): Promise<insightIntent.IntentResult<PlayVideoResultDef>> {
-    console.log('testTag', 'PlayVideo onExecute success')
+    console.info('testTag', 'PlayVideo onExecute success')
     let result: insightIntent.IntentResult<PlayVideoResultDef> = {
       code: 0,
       result: {
@@ -226,7 +226,7 @@ export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResul
     } catch (error) {
       let code = (error as BusinessError).code;
       let msg = (error as BusinessError).message;
-      console.error(`testTag: setReturnModeForUIAbilityForeground faild, error code: ${code}, error msg: ${msg}.`);
+      console.error(`testTag: setReturnModeForUIAbilityForeground failed, error code: ${code}, error msg: ${msg}.`);
     }
 
     try {
@@ -237,11 +237,11 @@ export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResul
       let storage: LocalStorage = new LocalStorage(localStorageData);
       // Load the page through pageLoader.
       this.windowStage?.loadContent('pages/Index', storage);
-      console.log('testTag', 'Succeeded in loading the content1')
+      console.info('testTag', 'Succeeded in loading the content1')
     } catch (err) {
       let code = (err as BusinessError).code;
       let msg = (err as BusinessError).message;
-      console.log(`testTag loadContent error code: ${code}, error msg: ${msg}.`);
+      console.error(`testTag loadContent error code: ${code}, error msg: ${msg}.`);
     }
     return Promise.resolve(result);
   }
