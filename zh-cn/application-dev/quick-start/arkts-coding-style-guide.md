@@ -512,6 +512,11 @@ console.info(message1);
 
 <!-- @[single_quotation_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+let message2 = 'world';
+console.info(message2);
+```
+
 ### 对象字面量属性超过4个，需要都换行
 
 **【级别】建议**
