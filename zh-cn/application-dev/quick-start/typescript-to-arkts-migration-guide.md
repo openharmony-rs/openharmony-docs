@@ -646,6 +646,11 @@ ArkTS不支持条件类型别名，建议引入带显式约束的新类型，或
 
 <!-- @[no_conditionalTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoConditionalTypes.ts) -->   
 
+``` TypeScript
+type X<T> = T extends number ? T : never;
+type Y<T> = T extends Array<infer Item> ? Item : never;
+```
+
 **ArkTS**
 
 <!-- @[no_conditionalTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoConditionalTypes.ets) -->  
