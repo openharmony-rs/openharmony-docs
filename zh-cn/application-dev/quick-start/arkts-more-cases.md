@@ -517,6 +517,17 @@ const area = { // 没有写明类型 不方便维护
 
 <!-- @[specifying_object_literal_type_for_type_imports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->    
 
+``` TypeScript
+import { image } from '@kit.ImageKit';
+// ...
+const area: image.PositionArea = { // 写明具体类型
+  pixels: new ArrayBuffer(8),
+  offset: 0,
+  stride: 8,
+  region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+}
+```
+
 ### 用class为object literal标注类型，要求class的构造函数无参数
 
 **应用代码**
