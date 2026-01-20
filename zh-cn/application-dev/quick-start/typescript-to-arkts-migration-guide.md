@@ -2124,6 +2124,15 @@ let n2: number = 0;
 
 <!-- @[no_definiteAssignment_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDefiniteAssignment.ts) -->  
 
+``` TypeScript
+class C {
+  name: string  // 只有在开启strictPropertyInitialization选项时会产生编译时错误。
+  age: number   // 只有在开启strictPropertyInitialization选项时会产生编译时错误。
+}
+
+let c = new C();
+```
+
 **ArkTS**
 
 ```typescript
