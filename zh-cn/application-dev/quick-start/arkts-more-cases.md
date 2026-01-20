@@ -283,6 +283,14 @@ function foo1(data: Record<string, string>) {
 
 <!-- @[ts_no_typing_with_this](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
 
+``` TypeScript
+class C {
+  getInstance(): this {
+    return this;
+  }
+}
+```
+
 **建议改法**
 
 <!-- @[no_typing_with_this](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
