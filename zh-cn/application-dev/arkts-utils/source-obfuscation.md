@@ -1153,6 +1153,14 @@ declare function testNapi3(): void;
 
 <!-- @[etsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->         
 
+``` TypeScript
+// example.ets
+import { testNapi2, testNapi3 as myNapi } from 'libentry.so'; // testNapi2 和 testNapi3 应该被保留。
+// ...
+testNapi2();
+myNapi();
+```
+
 
 ### -keep-file-name
 
