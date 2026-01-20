@@ -1139,6 +1139,17 @@ try {
 
 <!-- @[no_types_in_catch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
 
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit'
+// ...
+try {
+  // ...
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(e.message, e.code);
+}
+```
+
 ## arkts-no-for-in
 
 使用 Object.entries(obj) + for of 替代 for in。
