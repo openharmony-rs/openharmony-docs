@@ -704,6 +704,14 @@ strip-not-compiled-module-name
 
 <!-- @[optionExample_useKeepInSource4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
 
+``` TypeScript
+// 保留函数名，MyAdd不会被混淆。
+// @KeepSymbol
+function MyAdd(a: number, b:number): number {
+  return a + b;
+}
+```
+
 **命名空间**
 
 支持对命名空间名称进行标记。
