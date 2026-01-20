@@ -1085,13 +1085,13 @@ try {
 | GRANTED | 0  | 已静默授予。 |
 | DENIED | -1  | 已静默拒绝。 |
 
-## securityManager.installEnterpriseReSignatureCertificate<sup>23+</sup>
+## securityManager.installEnterpriseReSignatureCertificate<sup>24+</sup>
 
 installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: number, accountId: number): void
 
 安装企业重签名证书。
 
-同一用户下最多可下发10本不同证书。证书别名作为证书的唯一标识，不支持重复下发相同别名的证书。如需更新同一别名的证书，需先调用[uninstallEnterpriseReSignatureCertificate](#securitymanageruninstallenterpriseresignaturecertificate23)进行卸载。
+同一用户下最多可下发10本不同证书。证书别名作为证书的唯一标识，不支持重复下发相同别名的证书。如需更新同一别名的证书，需先调用[uninstallEnterpriseReSignatureCertificate](#securitymanageruninstallenterpriseresignaturecertificate24)进行卸载。
 
 在MDM应用卸载或admin取消激活场景下，已安装的证书会保留在设备上，不会被移除。
 
@@ -1161,7 +1161,7 @@ try {
 };
 ```
 
-## securityManager.uninstallEnterpriseReSignatureCertificate<sup>23+</sup>
+## securityManager.uninstallEnterpriseReSignatureCertificate<sup>24+</sup>
 
 uninstallEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, accountId: number): void
 
