@@ -247,4 +247,4 @@ function sum(num: number): number {
 
 优化后的代码示例：
 
-<!-- @[exception_handling_batter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[exception_handling_batter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->     
