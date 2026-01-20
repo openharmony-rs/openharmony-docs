@@ -503,6 +503,11 @@ let obj2: I = {
 
 <!-- @[single_quotation_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+let message1 = 'world';
+console.info(message1);
+```
+
 **【正例】**
 
 <!-- @[single_quotation_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
