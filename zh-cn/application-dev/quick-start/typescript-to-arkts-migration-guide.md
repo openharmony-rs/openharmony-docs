@@ -946,6 +946,14 @@ let z = greet<string>();
 
 <!-- @[no_untypedCaseOne_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->    
 
+``` TypeScript
+let o1 = { n: 42, s: 'foo' };
+let o2: Object = { n: 42, s: 'foo' };
+let o3: object = { n: 42, s: 'foo' };
+
+let oo: Object[] = [{ n: 1, s: '1' }, { n: 2, s: '2' }];
+```
+
 **ArkTS**
 
 <!-- @[no_untypedCaseOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->  
