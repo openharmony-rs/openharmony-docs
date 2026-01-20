@@ -14096,7 +14096,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListShow.ets",
 				"functions":[
 					{
-						"end_line":131,
+						"end_line":135,
 						"name":"arcListShow_start",
 						"start_line":16
 					}
@@ -14106,9 +14106,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListContents.ets",
 				"functions":[
 					{
-						"end_line":87,
+						"end_line":91,
 						"name":"arcListContentsTitle_start",
-						"start_line":15
+						"start_line":16
 					}
 				]
 			},
@@ -14231,7 +14231,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowInfiniteScrolling.ets",
 				"functions":[
 					{
-						"end_line":148,
+						"end_line":152,
 						"name":"WaterFlowInfiniteScrolling_start",
 						"start_line":96
 					}
@@ -14241,7 +14241,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowInfiniteScrollingEarly.ets",
 				"functions":[
 					{
-						"end_line":150,
+						"end_line":154,
 						"name":"waterFlowInfiniteScrollingEarly_start",
 						"start_line":111
 					}
@@ -14251,7 +14251,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowDynamicSwitchover.ets",
 				"functions":[
 					{
-						"end_line":190,
+						"end_line":194,
 						"name":"waterFlowDynamicSwitchover_start",
 						"start_line":40
 					}
@@ -14261,7 +14261,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowGroupingMixing.ets",
 				"functions":[
 					{
-						"end_line":148,
+						"end_line":152,
 						"name":"waterFlowGroupingMixing_start",
 						"start_line":40
 					}
@@ -16211,7 +16211,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets",
 				"functions":[
 					{
-						"end_line":97,
+						"end_line":116,
 						"name":"parent_component",
 						"start_line":19
 					}
@@ -16526,7 +16526,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/CreateApply.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":48,
 						"name":"createStyledString_start",
 						"start_line":17
 					}
@@ -16626,7 +16626,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringImageAttachment.ets",
 				"functions":[
 					{
-						"end_line":186,
+						"end_line":192,
 						"name":"styledStringImageAttachment_start",
 						"start_line":18
 					}
@@ -16636,7 +16636,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringGestureStyle.ets",
 				"functions":[
 					{
-						"end_line":170,
+						"end_line":174,
 						"name":"styledStringGestureStyle_start",
 						"start_line":17
 					}
@@ -16646,7 +16646,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringHtml.ets",
 				"functions":[
 					{
-						"end_line":101,
+						"end_line":106,
 						"name":"styledStringHtml_start",
 						"start_line":18
 					}
@@ -16666,7 +16666,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringSceneExample.ets",
 				"functions":[
 					{
-						"end_line":180,
+						"end_line":187,
 						"name":"styledStringSceneExample_start",
 						"start_line":18
 					}
@@ -20748,7 +20748,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolSceneExample.ets",
 				"functions":[
 					{
-						"end_line":234,
+						"end_line":239,
 						"name":"symbol_glyph_span_scene_example",
 						"start_line":18
 					}
@@ -21127,19 +21127,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets",
 				"functions":[
 					{
-						"end_line":26,
+						"end_line":27,
 						"name":"set_selection_menu_with_bindselectionmenu",
 						"start_line":23
 					},
 					{
-						"end_line":119,
+						"end_line":128,
 						"name":"set_selection_menu_with_bindselectionmenu_sec",
-						"start_line":102
+						"start_line":109
 					},
 					{
-						"end_line":46,
+						"end_line":48,
 						"name":"Right_Click_Text_CustomMenu",
-						"start_line":27
+						"start_line":28
 					},
 					{
 						"end_line":131,
@@ -21147,9 +21147,9 @@
 						"start_line":123
 					},
 					{
-						"end_line":88,
+						"end_line":95,
 						"name":"onCreate_Menu",
-						"start_line":47
+						"start_line":49
 					}
 				]
 			},
