@@ -252,7 +252,7 @@ try {
 ```
 ### napi_ref
 
-napi_ref 是 napi 中用于管理 ArkTS 对象生命周期的引用类型，分为强引用和弱引用两种类型。当ref计数为0时为若引用，计数大于0时为强应用。强引用会阻止垃圾回收器回收被引用的对象，适用于需要长期保持对象存活的场景，但必须手动管理引用计数和释放，否则会导致内存泄漏；弱引用则不会阻止垃圾回收，允许对象在不再被其他强引用持有时被正常回收，适用于缓存、观察者模式等临时性引用场景，能够自动失效但需要在获取时检查对象是否仍存活。正确选择强弱引用类型对于平衡内存管理和性能至关重要。
+napi_ref 是 napi 中用于管理 ArkTS 对象生命周期的引用类型，分为强引用和弱引用两种类型。当ref计数为0时为弱引用，计数大于0时为强引用。强引用会阻止垃圾回收器回收被引用的对象，适用于需要长期保持对象存活的场景，但必须手动管理引用计数和释放，否则会导致内存泄漏；弱引用则不会阻止垃圾回收，允许对象在不再被其他强引用持有时被正常回收，适用于缓存等临时性引用场景，能够自动失效但需要在获取时检查对象是否仍存活。正确选择强弱引用类型对于平衡内存管理和性能至关重要。
 
 ### napi_create_reference、napi_delete_reference
 
@@ -274,6 +274,10 @@ napi_ref 是 napi 中用于管理 ArkTS 对象生命周期的引用类型，分�
 >
 > 这意味着你可能在napi_ref有效的情况下，通过本接口获取到一个空指针。
 
+**弱引用示例代码：**
+
+cpp部分代码
+
 ``` C++
 #include "napi/native_api.h"
 
@@ -293,7 +297,7 @@ static napi_value CreateWeakReference(napi_env env, napi_callback_info info)
         g_weakRef = nullptr;
     }
 
-    // 创建弱引用
+    // 创建弱引用，不会阻止垃圾回收，没有其他强引用持有时会被正常回收
     napi_status status = napi_create_reference(env, jsObject, 0, &g_weakRef);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Failed to create weak reference");
@@ -341,7 +345,98 @@ ArkTS侧示例代码
 ``` TypeScript
 try {
     testNapi.createWeakReference();
-    hilog.info(DOMAIN, 'testTag', 'reference test: %{public}s', testNapi.getWeakReferenceValue());
+    hilog.info(0x0000, 'testTag', 'reference test: %{public}s', testNapi.getWeakReferenceValue());
+} catch (error) {
+    hilog.error(0x0000, 'testTag', `调用错误：${error.message}`);
+}
+```
+
+**强引用示例代码：**
+
+cpp部分代码
+
+``` C++
+#include "napi/native_api.h"
+
+// 全局强引用
+napi_ref g_strongRef = nullptr;
+
+// 创建强引用
+static napi_value CreateStrongReference(napi_env env, napi_callback_info info)
+{
+    napi_value value = nullptr;
+    napi_create_string_utf8(env, "This is a test property", NAPI_AUTO_LENGTH, &value);
+    napi_value jsObject = nullptr;
+    napi_create_object(env, &jsObject);
+    napi_set_named_property(env, jsObject, "test", value);
+
+    // 清理之前的强引用（如果存在）
+    if (g_strongRef != nullptr) {
+        napi_delete_reference(env, g_strongRef);
+        g_strongRef = nullptr;
+    }
+
+    // 创建强引用（初始引用计数为1），阻止垃圾回收器回收
+    napi_status status = napi_create_reference(env, jsObject, 1, &g_strongRef);
+
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to create strong reference");
+        return nullptr;
+    }
+
+    return nullptr;
+}
+
+static napi_value GetStrongReferenceValue(napi_env env, napi_callback_info info)
+{
+    napi_value jsValue;
+    napi_status status = napi_get_reference_value(env, g_strongRef, &jsValue);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to get reference value");
+        return nullptr;
+    }
+
+    // 尝试获取对象的属性来确认它仍然有效
+    napi_value result = nullptr;
+    napi_get_named_property(env, jsValue, "test", &result);
+
+    return result;
+}
+
+// 清理强引用
+static napi_value CleanupStrongReference(napi_env env, napi_callback_info info) {
+    napi_value ret = nullptr;
+    if (g_strongRef != nullptr) {
+        // 强制删除引用，即使引用计数不为0
+        napi_delete_reference(env, g_strongRef);
+        g_strongRef = nullptr;
+        napi_get_boolean(env, true, &ret);
+        return ret;
+    }
+    napi_get_boolean(env, false, &ret);
+    return ret;
+}
+```
+
+接口声明
+
+// index.d.ts
+
+``` TypeScript
+export const createStrongReference: () => void;
+
+export const getStrongReferenceValue: () => string;
+
+export const cleanupStrongReference: () => void;
+```
+
+ArkTS侧示例代码
+
+``` TypeScript
+try {
+    testNapi.createStrongReference();
+    hilog.info(0x0000, 'testTag', 'reference test: %{public}s', testNapi.getStrongReferenceValue());
+    testNapi.cleanupStrongReference();
 } catch (error) {
     hilog.error(0x0000, 'testTag', `调用错误：${error.message}`);
 }
