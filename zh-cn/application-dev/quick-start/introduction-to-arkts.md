@@ -1170,6 +1170,19 @@ function foo(arg1: number) {
 
 <!-- @[annotation_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->    
 
+``` TypeScript
+// 注解的声明：
+@interface ClassAuthor {
+  authorName: string
+}
+
+// 注解的使用：
+@ClassAuthor({authorName: "Bob"})
+class MyClass {
+  // ...
+}
+```
+
 - 使用@interface声明注解。
 - 注解`ClassAuthor`需要将元信息添加到类声明中。
 - 注解必须放置在声明之前。
