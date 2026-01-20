@@ -574,13 +574,13 @@ html示例
       let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
       let bufsize = 4096;
       let buf = new ArrayBuffer(bufsize);
-      let off = 0, len = 0, readedLen = 0;
+      let off = 0, len = 0, readLen = 0;
       while (len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) {
-        readedLen += len;
+        readLen += len;
         fs.writeSync(dest.fd, buf, { offset: off, length: len });
         off = off + len;
-        if ((srcFileDes.length - readedLen) < bufsize) {
-          bufsize = srcFileDes.length - readedLen;
+        if ((srcFileDes.length - readLen) < bufsize) {
+          bufsize = srcFileDes.length - readLen;
         }
       }
       fs.close(dest.fd);
