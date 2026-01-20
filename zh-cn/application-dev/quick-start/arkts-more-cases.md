@@ -660,6 +660,13 @@ let obj: Record<string, number | string> = {
 
 <!-- @[using_a_string_as_the_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
 
+``` TypeScript
+let obj: Record<string, number | string> = {
+  'value': 123,
+  'name': 'abc'
+}
+```
+
 ### 函数参数类型包含index signature
 
 **应用代码**
