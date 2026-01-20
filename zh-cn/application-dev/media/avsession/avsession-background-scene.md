@@ -21,7 +21,7 @@
 
   AVSession Kit（音视频播控服务）是系统提供的音视频管控服务，用于统一管理系统中音视频行为，帮助开发者快速构建音视频统一展示和控制能力。音视频类应用接入AVSession后，可以设置应用的数据（如正在播放的歌曲、歌曲的播放状态等）。用户可以通过系统播控中心来展示和控制不同应用的播放。AVSession会对后台的媒体播放有约束行为，所以通常来说，音频应用、听书类应用、视频应用等都需要接入AVSession。如果应用在没有创建AVSession的情况进行上述业务，系统会在检测到应用退至后台时，停止对应的音视频播放，以达到约束应用行为的目的。
 
-- AVPlayer：参考[Media Kit简介](../media/media-kit-intro.md#avplayer)说明。
+- AVPlayer：参考[AVPlayer](../media/media-kit-intro.md#avplayer)说明。
 
   AVPlayer是一款功能强大的媒体播放器。使用AVPlayer可以实现端到端地播放多种音视频格式（如mp4、mp3、mkv、mpeg-ts等），开发者提供媒体源即可启动播放，无需关注复杂的解封装、解码处理。
 
@@ -31,7 +31,7 @@
 
 ## 应用接入规范
 
-- 当应用需要在后台播放媒体类型（流类型为STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE和STREAM_USAGE_AUDIOBOOK）和游戏类型（流类型为STREAM_USAGE_GAME）时，必须接入AVSession和申请长时任务。流类型请参考[使用合适的音频流类型](../audio/using-right-streamusage-and-sourcetype.md)，长时任务支持的类型请参考[@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode)。
+- 当应用需要在后台播放媒体类型（流类型为STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE和STREAM_USAGE_AUDIOBOOK）和游戏类型（流类型为STREAM_USAGE_GAME）时，必须接入AVSession和申请长时任务。流类型请参考[使用合适的音频流类型](../audio/using-right-streamusage-and-sourcetype.md)，长时任务支持的类型请参考[BackgroundMode](../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode)。
 
 - 除了上述播放类型，针对用户可感知的其他播放任务，如果应用需要在后台长时间运行该任务，必须申请AUDIO_PLAYBACK类型长时任务。
 
