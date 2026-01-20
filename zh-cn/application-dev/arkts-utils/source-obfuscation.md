@@ -453,6 +453,12 @@ test(a2);
 2. 代码块中的调用。  
    例如：
    <!-- @[optionExample_removeLog3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+   
+   ``` TypeScript
+   function foo1() {
+     console.info('in block');
+   }
+   ```
 3. module或namespace中的调用。  
    例如：
    <!-- @[optionExample_removeLog4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
