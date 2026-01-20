@@ -954,6 +954,24 @@ let z = greet<string>();
 
 <!-- @[no_untypedCaseSix_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->   
 
+``` TypeScript
+class Point {
+  x: number = 0;
+  y: number = 0;
+}
+
+function getPoint(o: Point): Point {
+  return o;
+}
+
+// TS支持structural typing，可以推断p的类型为Point。
+let p = { x: 5, y: 10 };
+getPoint(p);
+
+// 可通过上下文推断出对象字面量的类型为Point。
+getPoint({ x: 5, y: 10 });
+```
+
 **ArkTS**
 
 <!-- @[no_untypedCaseSix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) --> 
