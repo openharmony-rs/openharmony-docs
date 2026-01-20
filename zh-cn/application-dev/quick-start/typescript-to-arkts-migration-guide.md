@@ -313,6 +313,12 @@ class C {
 
 <!-- @[no_symbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSymbol.ets) -->    
 
+``` TypeScript
+class C {
+  private foo: number = 42;
+}
+```
+
 ### 类型、命名空间的命名必须唯一
 
 **规则：**`arkts-unique-names`
