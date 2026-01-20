@@ -3480,6 +3480,11 @@ let s2: string = null; // 编译时报错
 // lib.ts
 import { C } from './ExportMod'
 ```
+
+``` TypeScript
+// lib.ts
+import { C } from './ExportMod'
+```
 // app.ets
 export class C {
   // ...
