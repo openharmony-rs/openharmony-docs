@@ -887,7 +887,7 @@ onPinch(receiver: Callback&lt;Pinch&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronpinch10)。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2187,7 +2187,7 @@ offPinch(fingers: int, receiver?: Callback&lt;Pinch&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#inputmonitoroffpinch11)。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3409,7 +3409,7 @@ ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
