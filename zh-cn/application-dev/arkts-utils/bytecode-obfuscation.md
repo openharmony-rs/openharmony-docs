@@ -321,6 +321,13 @@ TestA.prop1;
 
 <!-- @[optionExample_removeLog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
 
+``` TypeScript
+// 混淆前：
+if (flag) {
+  console.info("hello");
+}
+```
+
 
 若配置该选项，以下场景中的console.*语句会被删除：
 
